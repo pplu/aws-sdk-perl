@@ -81,8 +81,9 @@ Valid values are: C<"IMPORT">, C<"EXPORT">, C<"LOCAL_USE">
 =head2 KmsKeyARN => Str
 
 The C<KmsKeyARN> that you want to associate with this job.
-C<KmsKeyARN>s are created using the CreateKey AWS Key Management
-Service (KMS) API action.
+C<KmsKeyARN>s are created using the CreateKey
+(http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html)
+AWS Key Management Service (KMS) API action.
 
 
 
@@ -112,8 +113,9 @@ are UTF-8 binary sorted.
 =head2 RoleARN => Str
 
 The C<RoleARN> that you want to associate with this job. C<RoleArn>s
-are created using the CreateRole AWS Identity and Access Management
-(IAM) API action.
+are created using the CreateRole
+(http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
+AWS Identity and Access Management (IAM) API action.
 
 
 

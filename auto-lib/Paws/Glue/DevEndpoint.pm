@@ -86,7 +86,8 @@ separated by a comma.
 
 Please note that only pure Python libraries can currently be used on a
 DevEndpoint. Libraries that rely on C extensions, such as the pandas
-Python data analysis library, are not yet supported.
+(http://pandas.pydata.org/) Python data analysis library, are not yet
+supported.
 
 
 =head2 FailureReason => Str

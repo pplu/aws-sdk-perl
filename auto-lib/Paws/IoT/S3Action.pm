@@ -47,7 +47,8 @@ Describes an action to write data to an Amazon S3 bucket.
 =head2 CannedAcl => Str
 
   The Amazon S3 canned ACL that controls access to the object identified
-by the object key. For more information, see S3 canned ACLs.
+by the object key. For more information, see S3 canned ACLs
+(http://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl).
 
 
 =head2 B<REQUIRED> Key => Str

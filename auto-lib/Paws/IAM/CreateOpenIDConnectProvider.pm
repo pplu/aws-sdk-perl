@@ -73,8 +73,9 @@ would be the hex-encoded SHA-1 hash value of the certificate used by
 https://keys.server.example.com.
 
 For more information about obtaining the OIDC provider's thumbprint,
-see Obtaining the Thumbprint for an OpenID Connect Provider in the
-I<IAM User Guide>.
+see Obtaining the Thumbprint for an OpenID Connect Provider
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/identity-providers-oidc-obtain-thumbprint.html)
+in the I<IAM User Guide>.
 
 
 

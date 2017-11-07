@@ -78,7 +78,9 @@ Valid values are integers that range from Java's C<Integer.MIN_VALUE>
 indicate higher priority.
 
 For more information about setting task priority, see Setting Task
-Priority in the I<Amazon SWF Developer Guide>.
+Priority
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 DefaultTaskScheduleToCloseTimeout => Str

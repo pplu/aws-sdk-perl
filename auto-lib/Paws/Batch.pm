@@ -181,13 +181,16 @@ In an unmanaged compute environment, you can manage your own compute
 resources. This provides more compute resource configuration options,
 such as using a custom AMI, but you must ensure that your AMI meets the
 Amazon ECS container instance AMI specification. For more information,
-see Container Instance AMIs in the I<Amazon EC2 Container Service
-Developer Guide>. After you have created your unmanaged compute
-environment, you can use the DescribeComputeEnvironments operation to
-find the Amazon ECS cluster that is associated with it and then
-manually launch your container instances into that Amazon ECS cluster.
-For more information, see Launching an Amazon ECS Container Instance in
-the I<Amazon EC2 Container Service Developer Guide>.
+see Container Instance AMIs
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container_instance_AMIs.html)
+in the I<Amazon EC2 Container Service Developer Guide>. After you have
+created your unmanaged compute environment, you can use the
+DescribeComputeEnvironments operation to find the Amazon ECS cluster
+that is associated with it and then manually launch your container
+instances into that Amazon ECS cluster. For more information, see
+Launching an Amazon ECS Container Instance
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 
 =head2 CreateJobQueue(ComputeEnvironmentOrder => ArrayRef[L<Paws::Batch::ComputeEnvironmentOrder>], JobQueueName => Str, Priority => Int, [State => Str])

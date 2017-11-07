@@ -54,8 +54,9 @@ The name of the new repository to be created.
 The repository name must be unique across the calling AWS account. In
 addition, repository names are limited to 100 alphanumeric, dash, and
 underscore characters, and cannot include certain characters. For a
-full description of the limits on repository names, see Limits in the
-AWS CodeCommit User Guide. The suffix ".git" is prohibited.
+full description of the limits on repository names, see Limits
+(http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html) in
+the AWS CodeCommit User Guide. The suffix ".git" is prohibited.
 
 
 

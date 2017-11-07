@@ -60,7 +60,8 @@ Represents the output of a C<BatchRead> success response operation.
 
   Returns a paginated list of all the incoming TypedLinkSpecifier
 information for an object. It also supports filtering by typed link
-facet and identity attributes. For more information, see Typed link.
+facet and identity attributes. For more information, see Typed link
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
 =head2 ListIndex => L<Paws::CloudDirectory::BatchListIndexResponse>
@@ -83,7 +84,8 @@ given object.
 
   Retrieves all available parent paths for any object type such as node,
 leaf node, policy node, and index node objects. For more information
-about objects, see Directory Structure.
+about objects, see Directory Structure
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#dirstructure).
 
 
 =head2 ListObjectPolicies => L<Paws::CloudDirectory::BatchListObjectPoliciesResponse>
@@ -95,7 +97,8 @@ about objects, see Directory Structure.
 
   Returns a paginated list of all the outgoing TypedLinkSpecifier
 information for an object. It also supports filtering by typed link
-facet and identity attributes. For more information, see Typed link.
+facet and identity attributes. For more information, see Typed link
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
 =head2 ListPolicyAttachments => L<Paws::CloudDirectory::BatchListPolicyAttachmentsResponse>
@@ -112,7 +115,8 @@ If policies are present, and if some objects don't have the policies
 attached, it returns the C<ObjectIdentifier> for such objects. If
 policies are present, it returns C<ObjectIdentifier>, C<policyId>, and
 C<policyType>. Paths that don't lead to the root from the target object
-are ignored. For more information, see Policies.
+are ignored. For more information, see Policies
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies).
 
 
 

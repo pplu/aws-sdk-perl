@@ -722,7 +722,9 @@ The Letter of Authorization - Connecting Facility Assignment (LOA-CFA)
 is a document that your APN partner or service provider uses when
 establishing your cross connect to AWS at the colocation facility. For
 more information, see Requesting Cross Connects at AWS Direct Connect
-Locations in the AWS Direct Connect user guide.
+Locations
+(http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html)
+in the AWS Direct Connect user guide.
 
 
 =head2 DescribeConnections([ConnectionId => Str])
@@ -822,8 +824,9 @@ Returns the LOA-CFA for an Interconnect.
 The Letter of Authorization - Connecting Facility Assignment (LOA-CFA)
 is a document that is used when establishing your cross connect to AWS
 at the colocation facility. For more information, see Requesting Cross
-Connects at AWS Direct Connect Locations in the AWS Direct Connect user
-guide.
+Connects at AWS Direct Connect Locations
+(http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html)
+in the AWS Direct Connect user guide.
 
 
 =head2 DescribeInterconnects([InterconnectId => Str])
@@ -862,8 +865,9 @@ group (LAG).
 The Letter of Authorization - Connecting Facility Assignment (LOA-CFA)
 is a document that is used when establishing your cross connect to AWS
 at the colocation facility. For more information, see Requesting Cross
-Connects at AWS Direct Connect Locations in the AWS Direct Connect user
-guide.
+Connects at AWS Direct Connect Locations
+(http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html)
+in the AWS Direct Connect user guide.
 
 
 =head2 DescribeLocations( => )
@@ -898,7 +902,9 @@ Returns a list of virtual private gateways owned by the AWS account.
 You can create one or more AWS Direct Connect private virtual
 interfaces linking to a virtual private gateway. A virtual private
 gateway can be managed via Amazon Virtual Private Cloud (VPC) console
-or the EC2 CreateVpnGateway action.
+or the EC2 CreateVpnGateway
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html)
+action.
 
 
 =head2 DescribeVirtualInterfaces([ConnectionId => Str, VirtualInterfaceId => Str])

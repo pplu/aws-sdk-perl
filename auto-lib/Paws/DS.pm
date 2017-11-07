@@ -252,15 +252,17 @@ setup and run directories in the AWS cloud, or connect your AWS
 resources with an existing on-premises Microsoft Active Directory. This
 guide provides detailed information about AWS Directory Service
 operations, data types, parameters, and errors. For information about
-AWS Directory Services features, see AWS Directory Service and the AWS
-Directory Service Administration Guide.
+AWS Directory Services features, see AWS Directory Service
+(https://aws.amazon.com/directoryservice/) and the AWS Directory
+Service Administration Guide
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html).
 
 AWS provides SDKs that consist of libraries and sample code for various
 programming languages and platforms (Java, Ruby, .Net, iOS, Android,
 etc.). The SDKs provide a convenient way to create programmatic access
 to AWS Directory Service and other AWS services. For more information
 about the AWS SDKs, including how to download and install them, see
-Tools for Amazon Web Services.
+Tools for Amazon Web Services (http://aws.amazon.com/tools/).
 
 =head1 METHODS
 
@@ -281,7 +283,8 @@ Before you call I<AddIpRoutes>, ensure that all of the required
 permissions have been explicitly granted through a policy. For details
 about what permissions are required to run the I<AddIpRoutes>
 operation, see AWS Directory Service API Permissions: Actions,
-Resources, and Conditions Reference.
+Resources, and Conditions Reference
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 
 
 =head2 AddTagsToResource(ResourceId => Str, Tags => ArrayRef[L<Paws::DS::Tag>])
@@ -320,7 +323,8 @@ Before you call I<ConnectDirectory>, ensure that all of the required
 permissions have been explicitly granted through a policy. For details
 about what permissions are required to run the I<ConnectDirectory>
 operation, see AWS Directory Service API Permissions: Actions,
-Resources, and Conditions Reference.
+Resources, and Conditions Reference
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 
 
 =head2 CreateAlias(Alias => Str, DirectoryId => Str)
@@ -371,7 +375,8 @@ Before you call I<CreateDirectory>, ensure that all of the required
 permissions have been explicitly granted through a policy. For details
 about what permissions are required to run the I<CreateDirectory>
 operation, see AWS Directory Service API Permissions: Actions,
-Resources, and Conditions Reference.
+Resources, and Conditions Reference
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 
 
 =head2 CreateMicrosoftAD(Name => Str, Password => Str, VpcSettings => L<Paws::DS::DirectoryVpcSettings>, [Description => Str, ShortName => Str])
@@ -386,7 +391,8 @@ Before you call I<CreateMicrosoftAD>, ensure that all of the required
 permissions have been explicitly granted through a policy. For details
 about what permissions are required to run the I<CreateMicrosoftAD>
 operation, see AWS Directory Service API Permissions: Actions,
-Resources, and Conditions Reference.
+Resources, and Conditions Reference
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 
 
 =head2 CreateSnapshot(DirectoryId => Str, [Name => Str])
@@ -441,7 +447,8 @@ Before you call I<DeleteDirectory>, ensure that all of the required
 permissions have been explicitly granted through a policy. For details
 about what permissions are required to run the I<DeleteDirectory>
 operation, see AWS Directory Service API Permissions: Actions,
-Resources, and Conditions Reference.
+Resources, and Conditions Reference
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 
 
 =head2 DeleteSnapshot(SnapshotId => Str)

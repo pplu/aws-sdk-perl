@@ -699,14 +699,18 @@ in your hybrid environment that has been configured for Systems
 Manager.
 
 This reference is intended to be used with the Amazon EC2 Systems
-Manager User Guide.
+Manager User Guide
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/).
 
 To get started, verify prerequisites and configure managed instances.
-For more information, see Systems Manager Prerequisites.
+For more information, see Systems Manager Prerequisites
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html).
 
 For information about other API actions you can perform on Amazon EC2
-instances, see the Amazon EC2 API Reference. For information about how
-to use a Query API, see Making API Requests.
+instances, see the Amazon EC2 API Reference
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/). For
+information about how to use a Query API, see Making API Requests
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html).
 
 =head1 METHODS
 
@@ -737,7 +741,8 @@ meaning to Amazon EC2 and are interpreted strictly as a string of
 characters.
 
 For more information about tags, see Tagging Your Amazon EC2 Resources
-in the I<Amazon EC2 User Guide>.
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in
+the I<Amazon EC2 User Guide>.
 
 
 =head2 CancelCommand(CommandId => Str, [InstanceIds => ArrayRef[Str|Undef]])
@@ -761,7 +766,8 @@ Registers your on-premises server or virtual machine with Amazon EC2 so
 that you can manage these resources using Run Command. An on-premises
 server or virtual machine that has been registered with EC2 is called a
 managed instance. For more information about activations, see Setting
-Up Systems Manager in Hybrid Environments.
+Up Systems Manager in Hybrid Environments
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html).
 
 
 =head2 CreateAssociation(Name => Str, [AssociationName => Str, DocumentVersion => Str, InstanceId => Str, OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>, Parameters => L<Paws::SSM::Parameters>, ScheduleExpression => Str, Targets => ArrayRef[L<Paws::SSM::Target>]])
@@ -847,7 +853,8 @@ that you enable encryption in Amazon S3 to ensure secure data storage.
 We also recommend that you secure access to the Amazon S3 bucket by
 creating a restrictive bucket policy. To view an example of a
 restrictive Amazon S3 bucket policy for Resource Data Sync, see
-Configuring Resource Data Sync for Inventory.
+Configuring Resource Data Sync for Inventory
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-configuring.html#sysman-inventory-datasync).
 
 
 =head2 DeleteActivation(ActivationId => Str)
@@ -1370,7 +1377,8 @@ Each argument is described in detail in: L<Paws::SSM::GetParametersByPath>
 Returns: a L<Paws::SSM::GetParametersByPathResult> instance
 
 Retrieve parameters in a specific hierarchy. For more information, see
-Working with Systems Manager Parameters.
+Working with Systems Manager Parameters
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working.html).
 
 Request results are returned on a best-effort basis. If you specify
 C<MaxResults> in the request, the response includes information up to

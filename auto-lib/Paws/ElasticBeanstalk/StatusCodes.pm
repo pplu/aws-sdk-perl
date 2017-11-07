@@ -36,7 +36,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 Represents the percentage of requests over the last 10 seconds that
 resulted in each type of status code response. For more information,
-see Status Code Definitions.
+see Status Code Definitions
+(http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
 
 =head1 ATTRIBUTES
 

@@ -319,8 +319,9 @@ Creates a new origin access identity. If you're using Amazon S3 for
 your origin, you can use an origin access identity to require users to
 access your content using a CloudFront URL instead of the Amazon S3
 URL. For more information about how to use origin access identities,
-see Serving Private Content through CloudFront in the I<Amazon
-CloudFront Developer Guide>.
+see Serving Private Content through CloudFront
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 CreateDistribution(DistributionConfig => L<Paws::CloudFront::DistributionConfig>)
@@ -374,7 +375,9 @@ C<Status> is C<Deployed>, your distribution is ready. A distribution
 usually deploys in less than 15 minutes.
 
 For more information about web distributions, see Working with RTMP
-Distributions in the I<Amazon CloudFront Developer Guide>.
+Distributions
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-rtmp.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 Beginning with the 2012-05-05 version of the CloudFront API, we made
 substantial changes to the format of the XML document that you include
@@ -488,8 +491,9 @@ confirm that the distribution was successfully deleted.
 =back
 
 For information about deleting a distribution using the CloudFront
-console, see Deleting a Distribution in the I<Amazon CloudFront
-Developer Guide>.
+console, see Deleting a Distribution
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 GetCloudFrontOriginAccessIdentity(Id => Str)
@@ -649,7 +653,9 @@ steps.
 
 For information about updating a distribution using the CloudFront
 console, see Creating or Updating a Web Distribution Using the
-CloudFront Console in the I<Amazon CloudFront Developer Guide>.
+CloudFront Console
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-creating-console.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 B<To update a web distribution using the CloudFront API>
 

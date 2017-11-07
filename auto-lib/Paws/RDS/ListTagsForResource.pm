@@ -44,7 +44,8 @@ This parameter is not currently supported.
 
 The Amazon RDS resource with tags to be listed. This value is an Amazon
 Resource Name (ARN). For information about creating an ARN, see
-Constructing an RDS Amazon Resource Name (ARN).
+Constructing an RDS Amazon Resource Name (ARN)
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
 
 
 

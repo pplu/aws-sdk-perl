@@ -48,7 +48,9 @@ How long CloudFront caches HTTP status codes in the 4xx and 5xx range.
 =back
 
 For more information about custom error pages, see Customizing Error
-Responses in the I<Amazon CloudFront Developer Guide>.
+Responses
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 =head1 ATTRIBUTES
 

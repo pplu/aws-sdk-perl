@@ -64,8 +64,9 @@ where the output should continue from.
 The unique identifier (ID) of the policy for which you want to know its
 attachments.
 
-The regex pattern for a policy ID string requires "p-" followed by from
-8 to 128 lower-case letters or digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for a policy ID
+string requires "p-" followed by from 8 to 128 lower-case letters or
+digits.
 
 
 

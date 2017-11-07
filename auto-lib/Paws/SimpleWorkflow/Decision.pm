@@ -132,8 +132,9 @@ use IAM policies to express permissions for the list of decisions
 returned by this action as if they were members of the API. Treating
 decisions as a pseudo API maintains a uniform conceptual model and
 helps keep policies readable. For details and example IAM policies, see
-Using IAM to Manage Access to Amazon SWF Workflows in the I<Amazon SWF
-Developer Guide>.
+Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 B<Decision Failure>
 
@@ -161,8 +162,9 @@ One of the following events might be added to the history to indicate
 an error. The event attribute's C<cause> parameter indicates the cause.
 If C<cause> is set to C<OPERATION_NOT_PERMITTED>, the decision failed
 because it lacked sufficient permissions. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 =over
 

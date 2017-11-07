@@ -40,7 +40,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The unique identifier (ID) of the OU or account whose parent containers
 you want to list. Do not specify a root.
 
-The regex pattern for a child ID string requires one of the following:
+The regex pattern (http://wikipedia.org/wiki/regex) for a child ID
+string requires one of the following:
 
 =over
 

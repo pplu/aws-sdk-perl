@@ -151,6 +151,7 @@ The user pool ID for the user pool you want to update.
 
 The cost allocation tags for the user pool. For more information, see
 Adding Cost Allocation Tags to Your User Pool
+(http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html)
 
 
 

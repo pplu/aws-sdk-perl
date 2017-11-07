@@ -236,7 +236,8 @@ The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
 a monitoring role, go to To create an IAM role for Amazon RDS Enhanced
-Monitoring.
+Monitoring
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole).
 
 If C<MonitoringInterval> is set to a value other than 0, then you must
 supply a C<MonitoringRoleArn> value.
@@ -322,7 +323,10 @@ C<arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-20161115>.
 
 To learn how to generate a Signature Version 4 signed request, see
 Authenticating Requests: Using Query Parameters (AWS Signature Version
-4) and Signature Version 4 Signing Process.
+4)
+(http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
+and Signature Version 4 Signing Process
+(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 
 
@@ -397,7 +401,8 @@ Replica, specify a valid DB instance identifier.
 
 If the source DB instance is in a different AWS Region than the Read
 Replica, specify a valid DB instance ARN. For more information, go to
-Constructing a Amazon RDS Amazon Resource Name (ARN).
+Constructing a Amazon RDS Amazon Resource Name (ARN)
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
 
 =back
 

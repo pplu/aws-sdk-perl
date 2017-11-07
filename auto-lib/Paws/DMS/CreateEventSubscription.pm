@@ -51,8 +51,9 @@ B<false> to create the subscription but not activate it.
 A list of event categories for a source type that you want to subscribe
 to. You can see a list of the categories for a given source type by
 calling the B<DescribeEventCategories> action or in the topic Working
-with Events and Notifications in the AWS Database Migration Service
-User Guide.
+with Events and Notifications
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in
+the AWS Database Migration Service User Guide.
 
 
 

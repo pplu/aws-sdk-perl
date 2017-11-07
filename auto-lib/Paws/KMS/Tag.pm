@@ -37,8 +37,9 @@ and tag values are both required, but tag values can be empty (null)
 strings.
 
 For information about the rules that apply to tag keys and tag values,
-see User-Defined Tag Restrictions in the I<AWS Billing and Cost
-Management User Guide>.
+see User-Defined Tag Restrictions
+(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html)
+in the I<AWS Billing and Cost Management User Guide>.
 
 =head1 ATTRIBUTES
 

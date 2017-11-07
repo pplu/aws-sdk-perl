@@ -48,19 +48,23 @@ from the default configuration provided by Docker.
 =head2 Devices => ArrayRef[L<Paws::ECS::Device>]
 
   Any host devices to expose to the container. This parameter maps to
-C<Devices> in the Create a container section of the Docker Remote API
-and the C<--device> option to docker run.
+C<Devices> in the Create a container
+(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+section of the Docker Remote API
+(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
+and the C<--device> option to docker run
+(https://docs.docker.com/engine/reference/run/).
 
 
 =head2 InitProcessEnabled => Bool
 
   Run an C<init> process inside the container that forwards signals and
 reaps processes. This parameter maps to the C<--init> option to docker
-run. This parameter requires version 1.25 of the Docker Remote API or
-greater on your container instance. To check the Docker Remote API
-version on your container instance, log into your container instance
-and run the following command: C<sudo docker version | grep "Server API
-version">
+run (https://docs.docker.com/engine/reference/run/). This parameter
+requires version 1.25 of the Docker Remote API or greater on your
+container instance. To check the Docker Remote API version on your
+container instance, log into your container instance and run the
+following command: C<sudo docker version | grep "Server API version">
 
 
 

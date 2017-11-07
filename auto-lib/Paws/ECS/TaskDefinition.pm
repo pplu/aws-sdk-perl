@@ -50,7 +50,9 @@ Details of a task definition.
   A list of container definitions in JSON format that describe the
 different containers that make up your task. For more information about
 container definition parameters and defaults, see Amazon ECS Task
-Definitions in the I<Amazon EC2 Container Service Developer Guide>.
+Definitions
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 
 =head2 Family => Str
@@ -69,8 +71,9 @@ network mode offers the highest networking performance for containers
 because it uses the host network stack instead of the virtualized
 network stack provided by the C<bridge> mode.
 
-For more information, see Network settings in the I<Docker run
-reference>.
+For more information, see Network settings
+(https://docs.docker.com/engine/reference/run/#network-settings) in the
+I<Docker run reference>.
 
 
 =head2 PlacementConstraints => ArrayRef[L<Paws::ECS::TaskDefinitionPlacementConstraint>]
@@ -113,8 +116,9 @@ permissions that are specified in this role.
 =head2 Volumes => ArrayRef[L<Paws::ECS::Volume>]
 
   The list of volumes in a task. For more information about volume
-definition parameters and defaults, see Amazon ECS Task Definitions in
-the I<Amazon EC2 Container Service Developer Guide>.
+definition parameters and defaults, see Amazon ECS Task Definitions
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 
 

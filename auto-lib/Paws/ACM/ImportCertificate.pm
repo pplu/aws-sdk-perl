@@ -63,8 +63,10 @@ or after it expires (the certificate's C<NotAfter> date).
 
 =head2 CertificateArn => Str
 
-The Amazon Resource Name (ARN) of an imported certificate to replace.
-To import a new certificate, omit this field.
+The Amazon Resource Name (ARN)
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+of an imported certificate to replace. To import a new certificate,
+omit this field.
 
 
 

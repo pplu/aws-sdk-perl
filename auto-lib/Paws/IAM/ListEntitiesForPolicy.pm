@@ -79,11 +79,12 @@ The path prefix for filtering the results. This parameter is optional.
 If it is not included, it defaults to a slash (/), listing all
 entities.
 
-This paramater allows (per its regex pattern) a string of characters
-consisting of either a forward slash (/) by itself or a string that
-must begin and end with forward slashes, containing any ASCII character
-from the ! (\u0021) thru the DEL character (\u007F), including most
-punctuation characters, digits, and upper and lowercased letters.
+This paramater allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+either a forward slash (/) by itself or a string that must begin and
+end with forward slashes, containing any ASCII character from the !
+(\u0021) thru the DEL character (\u007F), including most punctuation
+characters, digits, and upper and lowercased letters.
 
 
 
@@ -93,7 +94,9 @@ The Amazon Resource Name (ARN) of the IAM policy for which you want the
 versions.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces in the I<AWS General Reference>.
+AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+in the I<AWS General Reference>.
 
 
 

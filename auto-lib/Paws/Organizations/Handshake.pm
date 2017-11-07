@@ -90,7 +90,9 @@ enable all features.
   The Amazon Resource Name (ARN) of a handshake.
 
 For more information about ARNs in Organizations, see ARN Formats
-Supported by Organizations in the I<AWS Organizations User Guide>.
+Supported by Organizations
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns)
+in the I<AWS Organizations User Guide>.
 
 
 =head2 ExpirationTimestamp => Str
@@ -105,8 +107,9 @@ the handshake becomes inactive and is no longer valid.
   The unique identifier (ID) of a handshake. The originating account
 creates the ID when it initiates the handshake.
 
-The regex pattern for handshake ID string requires "h-" followed by
-from 8 to 32 lower-case letters or digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for handshake ID
+string requires "h-" followed by from 8 to 32 lower-case letters or
+digits.
 
 
 =head2 Parties => ArrayRef[L<Paws::Organizations::HandshakeParty>]

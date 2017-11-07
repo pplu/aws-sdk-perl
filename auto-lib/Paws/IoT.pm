@@ -592,7 +592,8 @@ processing and integration with other services, organize resources
 associated with each thing (Thing Registry), configure logging, and
 create and manage policies and credentials to authenticate things.
 
-For more information about how AWS IoT works, see the Developer Guide.
+For more information about how AWS IoT works, see the Developer Guide
+(http://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html).
 
 =head1 METHODS
 
@@ -1086,7 +1087,8 @@ Each argument is described in detail in: L<Paws::IoT::ListPrincipalPolicies>
 Returns: a L<Paws::IoT::ListPrincipalPoliciesResponse> instance
 
 Lists the policies attached to the specified principal. If you use an
-Cognito identity, the ID must be in AmazonCognito Identity format.
+Cognito identity, the ID must be in AmazonCognito Identity format
+(http://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax).
 
 
 =head2 ListPrincipalThings(Principal => Str, [MaxResults => Int, NextToken => Str])

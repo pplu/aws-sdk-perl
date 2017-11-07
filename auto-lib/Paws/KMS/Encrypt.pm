@@ -41,7 +41,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 Name-value pair that specifies the encryption context to be used for
 authenticated encryption. If used here, the same value must be supplied
 to the C<Decrypt> API or decryption will fail. For more information,
-see Encryption Context.
+see Encryption Context
+(http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html).
 
 
 
@@ -49,8 +50,9 @@ see Encryption Context.
 
 A list of grant tokens.
 
-For more information, see Grant Tokens in the I<AWS Key Management
-Service Developer Guide>.
+For more information, see Grant Tokens
+(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 

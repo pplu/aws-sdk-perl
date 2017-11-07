@@ -39,8 +39,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The unique identifier (ID) of the policy you want to detach. You can
 get the ID from the ListPolicies or ListPoliciesForTarget operations.
 
-The regex pattern for a policy ID string requires "p-" followed by from
-8 to 128 lower-case letters or digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for a policy ID
+string requires "p-" followed by from 8 to 128 lower-case letters or
+digits.
 
 
 
@@ -50,7 +51,8 @@ The unique identifier (ID) of the root, OU, or account from which you
 want to detach the policy. You can get the ID from the ListRoots,
 ListOrganizationalUnitsForParent, or ListAccounts operations.
 
-The regex pattern for a target ID string requires one of the following:
+The regex pattern (http://wikipedia.org/wiki/regex) for a target ID
+string requires one of the following:
 
 =over
 

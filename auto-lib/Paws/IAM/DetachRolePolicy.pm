@@ -39,7 +39,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The Amazon Resource Name (ARN) of the IAM policy you want to detach.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces in the I<AWS General Reference>.
+AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+in the I<AWS General Reference>.
 
 
 
@@ -48,9 +50,10 @@ AWS Service Namespaces in the I<AWS General Reference>.
 The name (friendly name, not ARN) of the IAM role to detach the policy
 from.
 
-This parameter allows (per its regex pattern) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: _+=,.@-
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+upper and lowercase alphanumeric characters with no spaces. You can
+also include any of the following characters: _+=,.@-
 
 
 

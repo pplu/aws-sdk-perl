@@ -39,7 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The unique identifier (ID) of the account that you want to move.
 
-The regex pattern for an account ID string requires exactly 12 digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for an account ID
+string requires exactly 12 digits.
 
 
 
@@ -48,7 +49,8 @@ The regex pattern for an account ID string requires exactly 12 digits.
 The unique identifier (ID) of the root or organizational unit that you
 want to move the account to.
 
-The regex pattern for a parent ID string requires one of the following:
+The regex pattern (http://wikipedia.org/wiki/regex) for a parent ID
+string requires one of the following:
 
 =over
 
@@ -74,7 +76,8 @@ lower-case letters or digits.
 The unique identifier (ID) of the root or organizational unit that you
 want to move the account from.
 
-The regex pattern for a parent ID string requires one of the following:
+The regex pattern (http://wikipedia.org/wiki/regex) for a parent ID
+string requires one of the following:
 
 =over
 

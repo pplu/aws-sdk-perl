@@ -52,8 +52,9 @@ IAM access policy as a JSON-formatted string.
 
 Option to allow references to indices in an HTTP request body. Must be
 C<false> when configuring access to individual sub-resources. By
-default, the value is C<true>. See Configuration Advanced Options for
-more information.
+default, the value is C<true>. See Configuration Advanced Options
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options)
+for more information.
 
 
 
@@ -84,7 +85,9 @@ instance type and number of instances in the domain cluster.
 
 String of format X.Y to specify version for the Elasticsearch domain
 eg. "1.5" or "2.3". For more information, see Creating Elasticsearch
-Domains in the I<Amazon Elasticsearch Service Developer Guide>.
+Domains
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains)
+in the I<Amazon Elasticsearch Service Developer Guide>.
 
 
 
@@ -105,8 +108,9 @@ Default value is 0 hours.
 =head2 VPCOptions => L<Paws::ES::VPCOptions>
 
 Options to specify the subnets and security groups for VPC endpoint.
-For more information, see Creating a VPC in I<VPC Endpoints for Amazon
-Elasticsearch Service Domains>
+For more information, see Creating a VPC
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc)
+in I<VPC Endpoints for Amazon Elasticsearch Service Domains>
 
 
 

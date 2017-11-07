@@ -157,10 +157,12 @@ a convenient way to create programmatic access to AWSCloudTrail. For
 example, the SDKs take care of cryptographically signing requests,
 managing errors, and retrying requests automatically. For information
 about the AWS SDKs, including how to download and install them, see the
-Tools for Amazon Web Services page.
+Tools for Amazon Web Services page (http://aws.amazon.com/tools/).
 
-See the AWS CloudTrail User Guide for information about the data that
-is included with each AWS API call listed in the log files.
+See the AWS CloudTrail User Guide
+(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)
+for information about the data that is included with each AWS API call
+listed in the log files.
 
 =head1 METHODS
 
@@ -239,6 +241,7 @@ all.
 =back
 
 For more information, see Logging Data and Management Events for Trails
+(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html)
 in the I<AWS CloudTrail User Guide>.
 
 
@@ -381,8 +384,9 @@ which the trail was created; otherwise, an
 C<InvalidHomeRegionException> is thrown.
 
 You can configure up to five event selectors for each trail. For more
-information, see Logging Data and Management Events for Trails in the
-I<AWS CloudTrail User Guide>.
+information, see Logging Data and Management Events for Trails
+(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html)
+in the I<AWS CloudTrail User Guide>.
 
 
 =head2 RemoveTags(ResourceId => Str, [TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]])

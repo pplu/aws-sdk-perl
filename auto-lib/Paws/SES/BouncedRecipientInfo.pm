@@ -39,7 +39,8 @@ Notification (DSN) when an email that Amazon SES receives on your
 behalf bounces.
 
 For information about receiving email through Amazon SES, see the
-Amazon SES Developer Guide.
+Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html).
 
 =head1 ATTRIBUTES
 
@@ -61,7 +62,8 @@ C<RecipientDsnFields>.
 the identity that is associated with the sending authorization policy
 that permits you to receive email for the recipient of the bounced
 email. For more information about sending authorization, see the Amazon
-SES Developer Guide.
+SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
 
 =head2 RecipientDsnFields => L<Paws::SES::RecipientDsnFields>

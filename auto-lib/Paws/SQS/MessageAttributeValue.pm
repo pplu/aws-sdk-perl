@@ -65,8 +65,9 @@ C<Number>, and C<Binary>. For the C<Number> data type, you must use
 C<StringValue>.
 
 You can also append custom labels. For more information, see Message
-Attribute Data Types and Validation in the I<Amazon Simple Queue
-Service Developer Guide>.
+Attribute Data Types and Validation
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-data-types-validation)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 
 =head2 StringListValues => ArrayRef[Str|Undef]
@@ -77,7 +78,8 @@ Service Developer Guide>.
 =head2 StringValue => Str
 
   Strings are Unicode with UTF-8 binary encoding. For a list of code
-values, see ASCII Printable Characters.
+values, see ASCII Printable Characters
+(http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters).
 
 
 

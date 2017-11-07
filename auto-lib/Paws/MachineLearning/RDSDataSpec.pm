@@ -209,7 +209,9 @@ value. Use the following format to define your C<DataSchema>.
   The role (DataPipelineDefaultResourceRole) assumed by an Amazon Elastic
 Compute Cloud (Amazon EC2) instance to carry out the copy operation
 from Amazon RDS to an Amazon S3 task. For more information, see Role
-templates for data pipelines.
+templates
+(http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
+for data pipelines.
 
 
 =head2 B<REQUIRED> S3StagingLocation => Str
@@ -237,7 +239,9 @@ C<DataSource>.
 
   The role (DataPipelineDefaultRole) assumed by AWS Data Pipeline service
 to monitor the progress of the copy task from Amazon RDS to Amazon S3.
-For more information, see Role templates for data pipelines.
+For more information, see Role templates
+(http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
+for data pipelines.
 
 
 =head2 B<REQUIRED> SubnetId => Str

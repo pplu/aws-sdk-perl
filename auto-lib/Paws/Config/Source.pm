@@ -56,7 +56,8 @@ evaluate your AWS resources.
 
   For AWS Config managed rules, a predefined identifier from a list. For
 example, C<IAM_PASSWORD_POLICY> is a managed rule. To reference a
-managed rule, see Using AWS Managed Config Rules.
+managed rule, see Using AWS Managed Config Rules
+(http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html).
 
 For custom rules, the identifier is the Amazon Resource Name (ARN) of
 the rule's AWS Lambda function, such as

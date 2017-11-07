@@ -95,8 +95,9 @@ Paws::CloudHSMv2 - Perl Interface to AWS AWS CloudHSM V2
 
 =head1 DESCRIPTION
 
-For more information about AWS CloudHSM, see AWS CloudHSM and the AWS
-CloudHSM User Guide.
+For more information about AWS CloudHSM, see AWS CloudHSM
+(http://aws.amazon.com/cloudhsm/) and the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/).
 
 =head1 METHODS
 

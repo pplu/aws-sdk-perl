@@ -75,7 +75,8 @@ Leaf node: Cannot have children but can have multiple parents.
 =item *
 
 Policy: Allows you to store a policy document and policy type. For more
-information, see Policies.
+information, see Policies
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies).
 
 =back
 

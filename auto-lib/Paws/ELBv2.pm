@@ -311,7 +311,8 @@ instance in your virtual private cloud (VPC).
 A Classic Load Balancer makes routing and load balancing decisions
 either at the transport layer (TCP/SSL) or the application layer
 (HTTP/HTTPS), and supports either EC2-Classic or a VPC. For more
-information, see the Elastic Load Balancing User Guide.
+information, see the Elastic Load Balancing User Guide
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/).
 
 This reference covers the 2015-12-01 API, which supports Application
 Load Balancers and Network Load Balancers. The 2012-06-01 API supports
@@ -411,8 +412,11 @@ with both the listener and the load balancer, you can delete them both
 using DeleteLoadBalancer.
 
 For more information, see Listeners for Your Application Load Balancers
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html)
 in the I<Application Load Balancers Guide> and Listeners for Your
-Network Load Balancers in the I<Network Load Balancers Guide>.
+Network Load Balancers
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html)
+in the I<Network Load Balancers Guide>.
 
 
 =head2 CreateLoadBalancer(Name => Str, [IpAddressType => Str, Scheme => Str, SecurityGroups => ArrayRef[Str|Undef], SubnetMappings => ArrayRef[L<Paws::ELBv2::SubnetMapping>], Subnets => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELBv2::Tag>], Type => Str])
@@ -434,13 +438,18 @@ DeleteLoadBalancer.
 
 You can create up to 20 load balancers per region per account. You can
 request an increase for the number of load balancers for your account.
-For more information, see Limits for Your Application Load Balancer in
-the I<Application Load Balancers Guide> and Limits for Your Network
-Load Balancer in the I<Network Load Balancers Guide>.
+For more information, see Limits for Your Application Load Balancer
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html)
+in the I<Application Load Balancers Guide> and Limits for Your Network
+Load Balancer
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html)
+in the I<Network Load Balancers Guide>.
 
-For more information, see Application Load Balancers in the
-I<Application Load Balancers Guide> and Network Load Balancers in the
-I<Network Load Balancers Guide>.
+For more information, see Application Load Balancers
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html)
+in the I<Application Load Balancers Guide> and Network Load Balancers
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html)
+in the I<Network Load Balancers Guide>.
 
 
 =head2 CreateRule(Actions => ArrayRef[L<Paws::ELBv2::Action>], Conditions => ArrayRef[L<Paws::ELBv2::RuleCondition>], ListenerArn => Str, Priority => Int)
@@ -455,8 +464,9 @@ associated with an Application Load Balancer.
 Rules are evaluated in priority order, from the lowest value to the
 highest value. When the condition for a rule is met, the specified
 action is taken. If no conditions are met, the action for the default
-rule is taken. For more information, see Listener Rules in the
-I<Application Load Balancers Guide>.
+rule is taken. For more information, see Listener Rules
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules)
+in the I<Application Load Balancers Guide>.
 
 To view your current rules, use DescribeRules. To update a rule, use
 ModifyRule. To set the priorities of your rules, use SetRulePriorities.
@@ -482,8 +492,12 @@ group in an action using CreateListener or CreateRule.
 To delete a target group, use DeleteTargetGroup.
 
 For more information, see Target Groups for Your Application Load
-Balancers in the I<Application Load Balancers Guide> or Target Groups
-for Your Network Load Balancers in the I<Network Load Balancers Guide>.
+Balancers
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html)
+in the I<Application Load Balancers Guide> or Target Groups for Your
+Network Load Balancers
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html)
+in the I<Network Load Balancers Guide>.
 
 
 =head2 DeleteListener(ListenerArn => Str)
@@ -558,9 +572,12 @@ Returns: a L<Paws::ELBv2::DescribeAccountLimitsOutput> instance
 Describes the current Elastic Load Balancing resource limits for your
 AWS account.
 
-For more information, see Limits for Your Application Load Balancers in
-the I<Application Load Balancer Guide> or Limits for Your Network Load
-Balancers in the I<Network Load Balancers Guide>.
+For more information, see Limits for Your Application Load Balancers
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html)
+in the I<Application Load Balancer Guide> or Limits for Your Network
+Load Balancers
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html)
+in the I<Network Load Balancers Guide>.
 
 
 =head2 DescribeListenerCertificates(ListenerArn => Str, [Marker => Str, PageSize => Int])
@@ -625,8 +642,9 @@ Returns: a L<Paws::ELBv2::DescribeSSLPoliciesOutput> instance
 Describes the specified policies or all policies used for SSL
 negotiation.
 
-For more information, see Security Policies in the I<Application Load
-Balancers Guide>.
+For more information, see Security Policies
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
+in the I<Application Load Balancers Guide>.
 
 
 =head2 DescribeTags(ResourceArns => ArrayRef[Str|Undef])

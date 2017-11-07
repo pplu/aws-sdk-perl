@@ -42,7 +42,8 @@ Notification (DSN) when an email that Amazon SES receives on your
 behalf bounces.
 
 For information about receiving email through Amazon SES, see the
-Amazon SES Developer Guide.
+Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html).
 
 =head1 ATTRIBUTES
 
@@ -51,13 +52,14 @@ Amazon SES Developer Guide.
 
   The action performed by the reporting mail transfer agent (MTA) as a
 result of its attempt to deliver the message to the recipient address.
-This is required by RFC 3464.
+This is required by RFC 3464 (https://tools.ietf.org/html/rfc3464).
 
 
 =head2 DiagnosticCode => Str
 
   An extended explanation of what went wrong; this is usually an SMTP
-response. See RFC 3463 for the correct formatting of this parameter.
+response. See RFC 3463 (https://tools.ietf.org/html/rfc3463) for the
+correct formatting of this parameter.
 
 
 =head2 ExtensionFields => ArrayRef[L<Paws::SES::ExtensionField>]
@@ -75,26 +77,28 @@ recipient in C<BouncedRecipientInfo> must be a recipient of the
 original bounced message.
 
 Do not prepend the C<FinalRecipient> email address with C<rfc 822;>, as
-described in RFC 3798.
+described in RFC 3798 (https://tools.ietf.org/html/rfc3798).
 
 
 =head2 LastAttemptDate => Str
 
-  The time the final delivery attempt was made, in RFC 822 date-time
-format.
+  The time the final delivery attempt was made, in RFC 822
+(https://www.ietf.org/rfc/rfc0822.txt) date-time format.
 
 
 =head2 RemoteMta => Str
 
   The MTA to which the remote MTA attempted to deliver the message,
-formatted as specified in RFC 3464 (C<mta-name-type; mta-name>). This
-parameter typically applies only to propagating synchronous bounces.
+formatted as specified in RFC 3464
+(https://tools.ietf.org/html/rfc3464) (C<mta-name-type; mta-name>).
+This parameter typically applies only to propagating synchronous
+bounces.
 
 
 =head2 B<REQUIRED> Status => Str
 
   The status code that indicates what went wrong. This is required by RFC
-3464.
+3464 (https://tools.ietf.org/html/rfc3464).
 
 
 

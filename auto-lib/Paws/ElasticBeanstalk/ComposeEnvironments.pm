@@ -47,7 +47,9 @@ belong.
 The name of the group to which the target environments belong. Specify
 a group name only if the environment name defined in each target
 environment's manifest ends with a + (plus) character. See Environment
-Manifest (env.yaml) for details.
+Manifest (env.yaml)
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
+for details.
 
 
 

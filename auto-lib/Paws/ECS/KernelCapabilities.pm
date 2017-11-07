@@ -35,9 +35,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Kernel
 The Linux capabilities for the container that are added to or dropped
 from the default configuration provided by Docker. For more information
 on the default capabilities and the non-default available capabilities,
-see Runtime privilege and Linux capabilities in the I<Docker run
-reference>. For more detailed information on these Linux capabilities,
-see the capabilities(7) Linux manual page.
+see Runtime privilege and Linux capabilities
+(https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)
+in the I<Docker run reference>. For more detailed information on these
+Linux capabilities, see the capabilities(7)
+(http://man7.org/linux/man-pages/man7/capabilities.7.html) Linux manual
+page.
 
 =head1 ATTRIBUTES
 
@@ -46,8 +49,12 @@ see the capabilities(7) Linux manual page.
 
   The Linux capabilities for the container that have been added to the
 default configuration provided by Docker. This parameter maps to
-C<CapAdd> in the Create a container section of the Docker Remote API
-and the C<--cap-add> option to docker run.
+C<CapAdd> in the Create a container
+(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+section of the Docker Remote API
+(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
+and the C<--cap-add> option to docker run
+(https://docs.docker.com/engine/reference/run/).
 
 Valid values: C<"ALL" | "AUDIT_CONTROL" | "AUDIT_WRITE" |
 "BLOCK_SUSPEND" | "CHOWN" | "DAC_OVERRIDE" | "DAC_READ_SEARCH" |
@@ -64,8 +71,12 @@ Valid values: C<"ALL" | "AUDIT_CONTROL" | "AUDIT_WRITE" |
 
   The Linux capabilities for the container that have been removed from
 the default configuration provided by Docker. This parameter maps to
-C<CapDrop> in the Create a container section of the Docker Remote API
-and the C<--cap-drop> option to docker run.
+C<CapDrop> in the Create a container
+(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+section of the Docker Remote API
+(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
+and the C<--cap-drop> option to docker run
+(https://docs.docker.com/engine/reference/run/).
 
 Valid values: C<"ALL" | "AUDIT_CONTROL" | "AUDIT_WRITE" |
 "BLOCK_SUSPEND" | "CHOWN" | "DAC_OVERRIDE" | "DAC_READ_SEARCH" |

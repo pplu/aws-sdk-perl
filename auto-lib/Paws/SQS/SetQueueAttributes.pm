@@ -66,8 +66,9 @@ seconds, from 60 (1 minute) to 1,209,600 (14 days). The default is
 =item *
 
 C<Policy> - The queue's policy. A valid AWS policy. For more
-information about policy structure, see Overview of AWS IAM Policies in
-the I<Amazon IAM User Guide>.
+information about policy structure, see Overview of AWS IAM Policies
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html)
+in the I<Amazon IAM User Guide>.
 
 =item *
 
@@ -80,8 +81,9 @@ values: an integer from 0 to 20 (seconds). The default is 0.
 C<RedrivePolicy> - The string that includes the parameters for the
 dead-letter queue functionality of the source queue. For more
 information about the redrive policy and dead-letter queues, see Using
-Amazon SQS Dead-Letter Queues in the I<Amazon Simple Queue Service
-Developer Guide>.
+Amazon SQS Dead-Letter Queues
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 =over
 
@@ -107,45 +109,54 @@ standard queue.
 C<VisibilityTimeout> - The visibility timeout for the queue. Valid
 values: an integer from 0 to 43,200 (12 hours). The default is 30. For
 more information about the visibility timeout, see Visibility Timeout
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 =back
 
-The following attributes apply only to server-side-encryption:
+The following attributes apply only to server-side-encryption
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html):
 
 =over
 
 =item *
 
 C<KmsMasterKeyId> - The ID of an AWS-managed customer master key (CMK)
-for Amazon SQS or a custom CMK. For more information, see Key Terms.
+for Amazon SQS or a custom CMK. For more information, see Key Terms
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
 While the alias of the AWS-managed CMK for Amazon SQS is always
 C<alias/aws/sqs>, the alias of a custom CMK can, for example, be
-C<alias/I<MyAlias> >. For more examples, see KeyId in the I<AWS Key
-Management Service API Reference>.
+C<alias/I<MyAlias> >. For more examples, see KeyId
+(http://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
+in the I<AWS Key Management Service API Reference>.
 
 =item *
 
 C<KmsDataKeyReusePeriodSeconds> - The length of time, in seconds, for
-which Amazon SQS can reuse a data key to encrypt or decrypt messages
-before calling AWS KMS again. An integer representing seconds, between
-60 seconds (1 minute) and 86,400 seconds (24 hours). The default is 300
-(5 minutes). A shorter time period provides better security but results
-in more calls to KMS which might incur charges after Free Tier. For
-more information, see How Does the Data Key Reuse Period Work?.
+which Amazon SQS can reuse a data key
+(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys)
+to encrypt or decrypt messages before calling AWS KMS again. An integer
+representing seconds, between 60 seconds (1 minute) and 86,400 seconds
+(24 hours). The default is 300 (5 minutes). A shorter time period
+provides better security but results in more calls to KMS which might
+incur charges after Free Tier. For more information, see How Does the
+Data Key Reuse Period Work?
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work).
 
 =back
 
 The following attribute applies only to FIFO (first-in-first-out)
-queues:
+queues
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html):
 
 =over
 
 =item *
 
 C<ContentBasedDeduplication> - Enables content-based deduplication. For
-more information, see Exactly-Once Processing in the I<Amazon Simple
-Queue Service Developer Guide>.
+more information, see Exactly-Once Processing
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 =over
 

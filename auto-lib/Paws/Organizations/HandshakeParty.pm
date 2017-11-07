@@ -41,8 +41,9 @@ Identifies a participant in a handshake.
 
   The unique identifier (ID) for the party.
 
-The regex pattern for handshake ID string requires "h-" followed by
-from 8 to 32 lower-case letters or digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for handshake ID
+string requires "h-" followed by from 8 to 32 lower-case letters or
+digits.
 
 
 =head2 B<REQUIRED> Type => Str

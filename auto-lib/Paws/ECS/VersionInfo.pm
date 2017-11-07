@@ -42,7 +42,9 @@ container instance.
 =head2 AgentHash => Str
 
   The Git commit hash for the Amazon ECS container agent build on the
-amazon-ecs-agent GitHub repository.
+amazon-ecs-agent
+(https://github.com/aws/amazon-ecs-agent/commits/master) GitHub
+repository.
 
 
 =head2 AgentVersion => Str

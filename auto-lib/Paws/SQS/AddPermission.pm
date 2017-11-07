@@ -74,6 +74,7 @@ C<SendMessage>
 =back
 
 For more information about these actions, see Understanding Permissions
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/acp-overview.html#PermissionTypes)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 Specifying C<SendMessage>, C<DeleteMessage>, or
@@ -86,11 +87,13 @@ C<ChangeMessageVisibilityBatch>.
 
 =head2 B<REQUIRED> AWSAccountIds => ArrayRef[Str|Undef]
 
-The AWS account number of the principal who is given permission. The
-principal must have an AWS account, but does not need to be signed up
-for Amazon SQS. For information about locating the AWS account
-identification, see Your AWS Identifiers in the I<Amazon Simple Queue
-Service Developer Guide>.
+The AWS account number of the principal
+(http://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P) who is
+given permission. The principal must have an AWS account, but does not
+need to be signed up for Amazon SQS. For information about locating the
+AWS account identification, see Your AWS Identifiers
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AWSCredentials.html)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 
 

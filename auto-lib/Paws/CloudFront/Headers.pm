@@ -43,8 +43,9 @@ you configure CloudFront to cache your content based on values in the
 C<product> header. CloudFront forwards the C<product> header to the
 origin and caches the response from the origin once for each header
 value. For more information about caching based on header values, see
-How CloudFront Forwards and Caches Headers in the I<Amazon CloudFront
-Developer Guide>.
+How CloudFront Forwards and Caches Headers
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 =head1 ATTRIBUTES
 
@@ -97,10 +98,12 @@ origin. See the following documentation:
 
 B<S3 bucket>: See HTTP Request Headers That CloudFront Removes or
 Updates
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorS3Origin.html#request-s3-removed-headers)
 
 =item *
 
 B<Custom origin>: See HTTP Request Headers and CloudFront Behavior
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-headers-behavior)
 
 =back
 

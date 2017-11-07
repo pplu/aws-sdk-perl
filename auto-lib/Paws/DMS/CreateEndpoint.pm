@@ -65,7 +65,8 @@ The name of the endpoint database.
 Settings in JSON format for the target Amazon DynamoDB endpoint. For
 more information about the available settings, see the B<Using Object
 Mapping to Migrate Data to DynamoDB> section at Using an Amazon
-DynamoDB Database as a Target for AWS Database Migration Service.
+DynamoDB Database as a Target for AWS Database Migration Service
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html).
 
 
 
@@ -113,7 +114,8 @@ Settings in JSON format for the source MongoDB endpoint. For more
 information about the available settings, see the B<Configuration
 Properties When Using MongoDB as a Source for AWS Database Migration
 Service> section at Using Amazon S3 as a Target for AWS Database
-Migration Service.
+Migration Service
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html).
 
 
 
@@ -134,7 +136,8 @@ The port used by the endpoint database.
 Settings in JSON format for the target S3 endpoint. For more
 information about the available settings, see the B<Extra Connection
 Attributes> section at Using Amazon S3 as a Target for AWS Database
-Migration Service.
+Migration Service
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html).
 
 
 

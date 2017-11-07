@@ -28,7 +28,8 @@ CreateStack or UpdateStack actions with your template; otherwise, those
 actions return an InsufficientCapabilities error.
 
 For more information, see Acknowledging IAM Resources in AWS
-CloudFormation Templates.
+CloudFormation Templates
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
 
 
 =head2 CapabilitiesReason => Str

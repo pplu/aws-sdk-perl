@@ -61,7 +61,8 @@ use UDP instead.
 =item *
 
 C<all> - All transport layer protocol types. For more general
-information, see Transport layer on Wikipedia.
+information, see Transport layer
+(https://en.wikipedia.org/wiki/Transport_layer) on Wikipedia.
 
 =item *
 

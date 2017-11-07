@@ -188,8 +188,9 @@ C<E<lt>OriginProtocolPolicyE<gt>match-viewerE<lt>OriginProtocolPolicyE<gt>>
 
 =back
 
-For more information, see Using Alternate Domain Names and HTTPS in the
-I<Amazon CloudFront Developer Guide>.
+For more information, see Using Alternate Domain Names and HTTPS
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html#CNAMEsAndHTTPS)
+in the I<Amazon CloudFront Developer Guide>.
 
 =head1 ATTRIBUTES
 
@@ -305,8 +306,9 @@ value that you specify for C<MinimumProtocolVersion>.
 For information about the relationship between the security policy that
 you choose and the protocols and ciphers that CloudFront uses to
 communicate with viewers, see Supported SSL/TLS Protocols and Ciphers
-for Communication Between Viewers and CloudFront in the I<Amazon
-CloudFront Developer Guide>.
+for Communication Between Viewers and CloudFront
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/secure-connections-supported-viewer-protocols-ciphers.html#secure-connections-supported-ciphers)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 SSLSupportMethod => Str
@@ -361,8 +363,9 @@ Use HTTP instead of HTTPS.
 Don't specify a value for C<SSLSupportMethod> if you specified
 C<E<lt>CloudFrontDefaultCertificateE<gt>trueE<lt>CloudFrontDefaultCertificateE<gt>>.
 
-For more information, see Using Alternate Domain Names and HTTPS in the
-I<Amazon CloudFront Developer Guide>.
+For more information, see Using Alternate Domain Names and HTTPS
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html#CNAMEsAndHTTPS.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 

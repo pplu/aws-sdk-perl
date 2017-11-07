@@ -57,8 +57,8 @@ the key cannot be used.
 
 =head2 B<REQUIRED> UploadDate => Str
 
-  The date and time, in ISO 8601 date-time format, when the SSH public
-key was uploaded.
+  The date and time, in ISO 8601 date-time format
+(http://www.iso.org/iso/iso8601), when the SSH public key was uploaded.
 
 
 =head2 B<REQUIRED> UserName => Str

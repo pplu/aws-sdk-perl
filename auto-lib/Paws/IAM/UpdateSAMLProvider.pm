@@ -50,7 +50,9 @@ software that is used as your organization's IdP.
 The Amazon Resource Name (ARN) of the SAML provider to update.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces in the I<AWS General Reference>.
+AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+in the I<AWS General Reference>.
 
 
 

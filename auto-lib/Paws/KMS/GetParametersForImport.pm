@@ -65,7 +65,9 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 
 The algorithm you will use to encrypt the key material before importing
 it with ImportKeyMaterial. For more information, see Encrypt the Key
-Material in the I<AWS Key Management Service Developer Guide>.
+Material
+(http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 Valid values are: C<"RSAES_PKCS1_V1_5">, C<"RSAES_OAEP_SHA_1">, C<"RSAES_OAEP_SHA_256">
 

@@ -79,7 +79,8 @@ Specify this option if you are copying a snapshot from one AWS Region
 to another, and your DB instance uses a nondefault option group. If
 your source DB instance uses Transparent Data Encryption for Oracle or
 Microsoft SQL Server, you must specify this option when copying across
-regions. For more information, see Option Group Considerations.
+regions. For more information, see Option Group Considerations
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopySnapshot.Options).
 
 
 
@@ -135,7 +136,10 @@ C<arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20161115>
 
 To learn how to generate a Signature Version 4 signed request, see
 Authenticating Requests: Using Query Parameters (AWS Signature Version
-4) and Signature Version 4 Signing Process.
+4)
+(http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
+and Signature Version 4 Signing Process
+(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 
 

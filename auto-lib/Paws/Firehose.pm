@@ -168,7 +168,9 @@ Kinesis Firehose assumes the IAM role that is configured as part of the
 destination. The role should allow the Kinesis Firehose principal to
 assume the role, and the role should have permissions that allow the
 service to deliver the data. For more information, see Amazon S3 Bucket
-Access in the I<Amazon Kinesis Firehose Developer Guide>.
+Access
+(http://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3)
+in the I<Amazon Kinesis Firehose Developer Guide>.
 
 
 =head2 DeleteDeliveryStream(DeliveryStreamName => Str)
@@ -247,7 +249,8 @@ per second, 5,000 records per second, or 5 MB per second. Note that if
 you use PutRecord and PutRecordBatch, the limits are an aggregate
 across these two operations for each delivery stream. For more
 information about limits and how to request an increase, see Amazon
-Kinesis Firehose Limits.
+Kinesis Firehose Limits
+(http://docs.aws.amazon.com/firehose/latest/dev/limits.html).
 
 You must specify the name of the delivery stream and the data record
 when using PutRecord. The data record consists of a data blob that can
@@ -292,7 +295,8 @@ By default, each delivery stream can take in up to 2,000 transactions
 per second, 5,000 records per second, or 5 MB per second. If you use
 PutRecord and PutRecordBatch, the limits are an aggregate across these
 two operations for each delivery stream. For more information about
-limits, see Amazon Kinesis Firehose Limits.
+limits, see Amazon Kinesis Firehose Limits
+(http://docs.aws.amazon.com/firehose/latest/dev/limits.html).
 
 Each PutRecordBatch request supports up to 500 records. Each record in
 the request can be as large as 1,000 KB (before 64-bit encoding), up to

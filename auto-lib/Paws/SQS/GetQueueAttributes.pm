@@ -54,8 +54,9 @@ C<All> - Returns all values.
 
 C<ApproximateNumberOfMessages> - Returns the approximate number of
 visible messages in a queue. For more information, see Resources
-Required to Process Messages in the I<Amazon Simple Queue Service
-Developer Guide>.
+Required to Process Messages
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-resources-required-process-messages.html)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 =item *
 
@@ -66,13 +67,14 @@ of messages that are waiting to be added to the queue.
 
 C<ApproximateNumberOfMessagesNotVisible> - Returns the approximate
 number of messages that have not timed-out and aren't deleted. For more
-information, see Resources Required to Process Messages in the I<Amazon
-Simple Queue Service Developer Guide>.
+information, see Resources Required to Process Messages
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-resources-required-process-messages.html)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 =item *
 
 C<CreatedTimestamp> - Returns the time when the queue was created in
-seconds (epoch time).
+seconds (epoch time (http://en.wikipedia.org/wiki/Unix_time)).
 
 =item *
 
@@ -81,7 +83,8 @@ C<DelaySeconds> - Returns the default delay on the queue in seconds.
 =item *
 
 C<LastModifiedTimestamp> - Returns the time when the queue was last
-changed in seconds (epoch time).
+changed in seconds (epoch time
+(http://en.wikipedia.org/wiki/Unix_time)).
 
 =item *
 
@@ -112,8 +115,9 @@ arrive.
 C<RedrivePolicy> - Returns the string that includes the parameters for
 dead-letter queue functionality of the source queue. For more
 information about the redrive policy and dead-letter queues, see Using
-Amazon SQS Dead-Letter Queues in the I<Amazon Simple Queue Service
-Developer Guide>.
+Amazon SQS Dead-Letter Queues
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 =over
 
@@ -134,11 +138,14 @@ source queue before being moved to the dead-letter queue.
 
 C<VisibilityTimeout> - Returns the visibility timeout for the queue.
 For more information about the visibility timeout, see Visibility
-Timeout in the I<Amazon Simple Queue Service Developer Guide>.
+Timeout
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 =back
 
-The following attributes apply only to server-side-encryption:
+The following attributes apply only to server-side-encryption
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html):
 
 =over
 
@@ -146,37 +153,42 @@ The following attributes apply only to server-side-encryption:
 
 C<KmsMasterKeyId> - Returns the ID of an AWS-managed customer master
 key (CMK) for Amazon SQS or a custom CMK. For more information, see Key
-Terms.
+Terms
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
 
 =item *
 
 C<KmsDataKeyReusePeriodSeconds> - Returns the length of time, in
 seconds, for which Amazon SQS can reuse a data key to encrypt or
 decrypt messages before calling AWS KMS again. For more information,
-see How Does the Data Key Reuse Period Work?.
+see How Does the Data Key Reuse Period Work?
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work).
 
 =back
 
-The following attributes apply only to FIFO (first-in-first-out)
-queues:
+The following attributes apply only to FIFO (first-in-first-out) queues
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html):
 
 =over
 
 =item *
 
 C<FifoQueue> - Returns whether the queue is FIFO. For more information,
-see FIFO Queue Logic in the I<Amazon Simple Queue Service Developer
-Guide>.
+see FIFO Queue Logic
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
-To determine whether a queue is FIFO, you can check whether
-C<QueueName> ends with the C<.fifo> suffix.
+To determine whether a queue is FIFO
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html),
+you can check whether C<QueueName> ends with the C<.fifo> suffix.
 
 =item *
 
 C<ContentBasedDeduplication> - Returns whether content-based
 deduplication is enabled for the queue. For more information, see
-Exactly-Once Processing in the I<Amazon Simple Queue Service Developer
-Guide>.
+Exactly-Once Processing
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 =back
 

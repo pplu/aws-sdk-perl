@@ -46,7 +46,8 @@ recipient address of the message, Amazon SES executes all of the
 receipt rule's actions on the message.
 
 For information about setting up receipt rules, see the Amazon SES
-Developer Guide.
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html).
 
 =head1 ATTRIBUTES
 

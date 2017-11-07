@@ -75,7 +75,9 @@ in B<RoleARN>.
   The Elasticsearch index rotation period. Index rotation appends a time
 stamp to the IndexName to facilitate the expiration of old data. For
 more information, see Index Rotation for Amazon Elasticsearch Service
-Destination. The default value is C<OneDay>.
+Destination
+(http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#es-index-rotation).
+The default value is C<OneDay>.
 
 
 =head2 ProcessingConfiguration => L<Paws::Firehose::ProcessingConfiguration>
@@ -93,7 +95,8 @@ documents to Amazon ES. The default value is 300 (5 minutes).
 
   The ARN of the IAM role to be assumed by Kinesis Firehose for calling
 the Amazon ES Configuration API and for indexing documents. For more
-information, see Amazon S3 Bucket Access.
+information, see Amazon S3 Bucket Access
+(http://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3).
 
 
 =head2 S3BackupMode => Str
@@ -105,8 +108,9 @@ elasticsearch-failed/ appended to the key prefix. When set to
 AllDocuments, Kinesis Firehose delivers all incoming records to Amazon
 S3, and also writes failed documents with elasticsearch-failed/
 appended to the prefix. For more information, see Amazon S3 Backup for
-Amazon Elasticsearch Service Destination. Default value is
-FailedDocumentsOnly.
+Amazon Elasticsearch Service Destination
+(http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#es-s3-backup).
+Default value is FailedDocumentsOnly.
 
 
 =head2 B<REQUIRED> S3Configuration => L<Paws::Firehose::S3DestinationConfiguration>

@@ -38,7 +38,8 @@ Notification (DSN) when an email that Amazon SES receives on your
 behalf bounces.
 
 For information about receiving email through Amazon SES, see the
-Amazon SES Developer Guide.
+Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html).
 
 =head1 ATTRIBUTES
 
@@ -46,7 +47,8 @@ Amazon SES Developer Guide.
 =head2 ArrivalDate => Str
 
   When the message was received by the reporting mail transfer agent
-(MTA), in RFC 822 date-time format.
+(MTA), in RFC 822 (https://www.ietf.org/rfc/rfc0822.txt) date-time
+format.
 
 
 =head2 ExtensionFields => ArrayRef[L<Paws::SES::ExtensionField>]
@@ -57,8 +59,9 @@ Amazon SES Developer Guide.
 =head2 B<REQUIRED> ReportingMta => Str
 
   The reporting MTA that attempted to deliver the message, formatted as
-specified in RFC 3464 (C<mta-name-type; mta-name>). The default value
-is C<dns; inbound-smtp.[region].amazonaws.com>.
+specified in RFC 3464 (https://tools.ietf.org/html/rfc3464)
+(C<mta-name-type; mta-name>). The default value is C<dns;
+inbound-smtp.[region].amazonaws.com>.
 
 
 

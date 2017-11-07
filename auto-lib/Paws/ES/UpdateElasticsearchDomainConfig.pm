@@ -52,7 +52,9 @@ IAM access policy as a JSON-formatted string.
 Modifies the advanced option to allow references to indices in an HTTP
 request body. Must be C<false> when configuring access to individual
 sub-resources. By default, the value is C<true>. See Configuration
-Advanced Options for more information.
+Advanced Options
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options)
+for more information.
 
 
 
@@ -91,8 +93,9 @@ snapshot. Default value is C<0> hours.
 =head2 VPCOptions => L<Paws::ES::VPCOptions>
 
 Options to specify the subnets and security groups for VPC endpoint.
-For more information, see Creating a VPC in I<VPC Endpoints for Amazon
-Elasticsearch Service Domains>
+For more information, see Creating a VPC
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc)
+in I<VPC Endpoints for Amazon Elasticsearch Service Domains>
 
 
 

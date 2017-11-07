@@ -791,7 +791,8 @@ an AWS account. The response indicates how many offerings are currently
 available and the offerings that will be available in the next period.
 The API returns a C<NotEligible> error if the user is not permitted to
 invoke the operation. Please contact aws-devicefarm-support@amazon.com
-if you believe that you should be able to invoke this operation.
+(mailto:aws-devicefarm-support@amazon.com) if you believe that you
+should be able to invoke this operation.
 
 
 =head2 GetProject(Arn => Str)
@@ -913,8 +914,9 @@ Returns: a L<Paws::DeviceFarm::ListOfferingPromotionsResult> instance
 Returns a list of offering promotions. Each offering promotion record
 contains the ID and description of the promotion. The API returns a
 C<NotEligible> error if the caller is not permitted to invoke the
-operation. Contact aws-devicefarm-support@amazon.com if you believe
-that you should be able to invoke this operation.
+operation. Contact aws-devicefarm-support@amazon.com
+(mailto:aws-devicefarm-support@amazon.com) if you believe that you
+should be able to invoke this operation.
 
 
 =head2 ListOfferings([NextToken => Str])
@@ -927,8 +929,9 @@ Returns a list of products or offerings that the user can manage
 through the API. Each offering record indicates the recurring price per
 unit and the frequency for that offering. The API returns a
 C<NotEligible> error if the user is not permitted to invoke the
-operation. Please contact aws-devicefarm-support@amazon.com if you
-believe that you should be able to invoke this operation.
+operation. Please contact aws-devicefarm-support@amazon.com
+(mailto:aws-devicefarm-support@amazon.com) if you believe that you
+should be able to invoke this operation.
 
 
 =head2 ListOfferingTransactions([NextToken => Str])
@@ -942,7 +945,8 @@ renewal transactions for an AWS account. The list is paginated and
 ordered by a descending timestamp (most recent transactions are first).
 The API returns a C<NotEligible> error if the user is not permitted to
 invoke the operation. Please contact aws-devicefarm-support@amazon.com
-if you believe that you should be able to invoke this operation.
+(mailto:aws-devicefarm-support@amazon.com) if you believe that you
+should be able to invoke this operation.
 
 
 =head2 ListProjects([Arn => Str, NextToken => Str])
@@ -1027,8 +1031,9 @@ Immediately purchases offerings for an AWS account. Offerings renew
 with the latest total purchased quantity for an offering, unless the
 renewal was overridden. The API returns a C<NotEligible> error if the
 user is not permitted to invoke the operation. Please contact
-aws-devicefarm-support@amazon.com if you believe that you should be
-able to invoke this operation.
+aws-devicefarm-support@amazon.com
+(mailto:aws-devicefarm-support@amazon.com) if you believe that you
+should be able to invoke this operation.
 
 
 =head2 RenewOffering([OfferingId => Str, Quantity => Int])
@@ -1040,8 +1045,9 @@ Returns: a L<Paws::DeviceFarm::RenewOfferingResult> instance
 Explicitly sets the quantity of devices to renew for an offering,
 starting from the C<effectiveDate> of the next period. The API returns
 a C<NotEligible> error if the user is not permitted to invoke the
-operation. Please contact aws-devicefarm-support@amazon.com if you
-believe that you should be able to invoke this operation.
+operation. Please contact aws-devicefarm-support@amazon.com
+(mailto:aws-devicefarm-support@amazon.com) if you believe that you
+should be able to invoke this operation.
 
 
 =head2 ScheduleRun(DevicePoolArn => Str, ProjectArn => Str, Test => L<Paws::DeviceFarm::ScheduleRunTest>, [AppArn => Str, Configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>, ExecutionConfiguration => L<Paws::DeviceFarm::ExecutionConfiguration>, Name => Str])

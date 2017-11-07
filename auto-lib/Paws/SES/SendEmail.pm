@@ -95,7 +95,8 @@ C<arn:aws:ses:us-east-1:123456789012:identity/example.com>, and the
 C<ReturnPath> to be C<feedback@example.com>.
 
 For more information about sending authorization, see the Amazon SES
-Developer Guide.
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
 
 
@@ -104,18 +105,20 @@ Developer Guide.
 The email address that is sending the email. This email address must be
 either individually verified with Amazon SES, or from a domain that has
 been verified with Amazon SES. For information about verifying
-identities, see the Amazon SES Developer Guide.
+identities, see the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html).
 
 If you are sending on behalf of another user and have been permitted to
 do so by a sending authorization policy, then you must also specify the
 C<SourceArn> parameter. For more information about sending
-authorization, see the Amazon SES Developer Guide.
+authorization, see the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
 In all cases, the email address must be 7-bit ASCII. If the text must
 contain any other characters, then you must use MIME encoded-word
 syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax
 uses the following form: C<=?charset?encoding?encoded-text?=>. For more
-information, see RFC 2047.
+information, see RFC 2047 (https://tools.ietf.org/html/rfc2047).
 
 
 
@@ -134,7 +137,8 @@ C<arn:aws:ses:us-east-1:123456789012:identity/example.com>, and the
 C<Source> to be C<user@example.com>.
 
 For more information about sending authorization, see the Amazon SES
-Developer Guide.
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
 
 

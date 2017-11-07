@@ -69,7 +69,8 @@ number of values.
 
 =back
 
-For more information, see the Amazon Machine Learning Developer Guide.
+For more information, see the Amazon Machine Learning Developer Guide
+(http://docs.aws.amazon.com/machine-learning/latest/dg).
 
 Valid values are: C<"REGRESSION">, C<"BINARY">, C<"MULTICLASS">
 

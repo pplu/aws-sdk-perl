@@ -174,7 +174,8 @@ performance tuning. Developers gain access to this functionality within
 Amazon's proven computing environment, are able to scale instantly, and
 pay only for what they use.
 
-Visit http://aws.amazon.com/simpledb/ for more information.
+Visit http://aws.amazon.com/simpledb/ (http://aws.amazon.com/simpledb/)
+for more information.
 
 =head1 METHODS
 
@@ -279,7 +280,8 @@ more seconds to complete.
 The client can create up to 100 domains per account.
 
 If the client requires additional domains, go to
-http://aws.amazon.com/contact-us/simpledb-limit-request/.
+http://aws.amazon.com/contact-us/simpledb-limit-request/
+(http://aws.amazon.com/contact-us/simpledb-limit-request/).
 
 
 =head2 DeleteAttributes(DomainName => Str, ItemName => Str, [Attributes => ArrayRef[L<Paws::SDB::DeletableAttribute>], Expected => L<Paws::SDB::UpdateCondition>])
@@ -346,11 +348,11 @@ Returns: a L<Paws::SDB::ListDomainsResult> instance
 
 The C<ListDomains> operation lists all domains associated with the
 Access Key ID. It returns domain names up to the limit set by
-MaxNumberOfDomains. A NextToken is returned if there are more than
-C<MaxNumberOfDomains> domains. Calling C<ListDomains> successive times
-with the C<NextToken> provided by the operation returns up to
-C<MaxNumberOfDomains> more domain names with each successive operation
-call.
+L<MaxNumberOfDomains|/MaxNumberOfDomains>. A L<NextToken|/NextToken> is
+returned if there are more than C<MaxNumberOfDomains> domains. Calling
+C<ListDomains> successive times with the C<NextToken> provided by the
+operation returns up to C<MaxNumberOfDomains> more domain names with
+each successive operation call.
 
 
 =head2 PutAttributes(Attributes => ArrayRef[L<Paws::SDB::ReplaceableAttribute>], DomainName => Str, ItemName => Str, [Expected => L<Paws::SDB::UpdateCondition>])

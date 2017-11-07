@@ -73,12 +73,15 @@ limited number of attached policies.
 =head2 AttachTypedLink => L<Paws::CloudDirectory::BatchAttachTypedLink>
 
   Attaches a typed link to a specified source and target object. For more
-information, see Typed link.
+information, see Typed link
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
 =head2 CreateIndex => L<Paws::CloudDirectory::BatchCreateIndex>
 
-  Creates an index object. See Indexing for more information.
+  Creates an index object. See Indexing
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_indexing.html)
+for more information.
 
 
 =head2 CreateObject => L<Paws::CloudDirectory::BatchCreateObject>
@@ -109,7 +112,8 @@ information, see Typed link.
 =head2 DetachTypedLink => L<Paws::CloudDirectory::BatchDetachTypedLink>
 
   Detaches a typed link from a specified source and target object. For
-more information, see Typed link.
+more information, see Typed link
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
 =head2 RemoveFacetFromObject => L<Paws::CloudDirectory::BatchRemoveFacetFromObject>

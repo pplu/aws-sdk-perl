@@ -105,7 +105,7 @@ application that is directed in whole or in part, to children under age
 COPPA. For information regarding the use of Amazon Lex in connection
 with websites, programs, or other applications that are directed or
 targeted, in whole or in part, to children under age 13, see the Amazon
-Lex FAQ.
+Lex FAQ. (https://aws.amazon.com/lex/faqs#data-security)
 
 
 
@@ -190,7 +190,8 @@ Valid values are: C<"SAVE">, C<"BUILD">
 The Amazon Polly voice ID that you want Amazon Lex to use for voice
 interactions with the user. The locale configured for the voice must
 match the locale of the bot. For more information, see Available Voices
-in the I<Amazon Polly Developer Guide>.
+(http://docs.aws.amazon.com/polly/latest/dg/voicelist.html) in the
+I<Amazon Polly Developer Guide>.
 
 
 

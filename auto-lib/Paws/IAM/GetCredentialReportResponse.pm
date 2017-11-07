@@ -25,7 +25,7 @@ Contains the credential report. The report is Base64-encoded.
 =head2 GeneratedTime => Str
 
 The date and time when the credential report was created, in ISO 8601
-date-time format.
+date-time format (http://www.iso.org/iso/iso8601).
 
 
 =head2 ReportFormat => Str

@@ -67,8 +67,8 @@ C<FromArn> parameter and the corresponding X-header, Amazon SES uses
 the value of the C<FromArn> parameter.
 
 For information about when to use this parameter, see the description
-of C<SendRawEmail> in this guide, or see the Amazon SES Developer
-Guide.
+of C<SendRawEmail> in this guide, or see the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
 
 
 
@@ -94,7 +94,8 @@ Each part of a multipart MIME message must be formatted properly.
 =item *
 
 MIME content types must be among those supported by Amazon SES. For
-more information, go to the Amazon SES Developer Guide.
+more information, go to the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html).
 
 =item *
 
@@ -102,8 +103,9 @@ Must be base64-encoded.
 
 =item *
 
-Per RFC 5321, the maximum length of each line of text, including the
-E<lt>CRLFE<gt>, must not exceed 1,000 characters.
+Per RFC 5321 (https://tools.ietf.org/html/rfc5321#section-4.5.3.1.6),
+the maximum length of each line of text, including the E<lt>CRLFE<gt>,
+must not exceed 1,000 characters.
 
 =back
 
@@ -130,8 +132,8 @@ both the C<ReturnPathArn> parameter and the corresponding X-header,
 Amazon SES uses the value of the C<ReturnPathArn> parameter.
 
 For information about when to use this parameter, see the description
-of C<SendRawEmail> in this guide, or see the Amazon SES Developer
-Guide.
+of C<SendRawEmail> in this guide, or see the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
 
 
 
@@ -145,7 +147,7 @@ By default, the string must be 7-bit ASCII. If the text must contain
 any other characters, then you must use MIME encoded-word syntax (RFC
 2047) instead of a literal string. MIME encoded-word syntax uses the
 following form: C<=?charset?encoding?encoded-text?=>. For more
-information, see RFC 2047.
+information, see RFC 2047 (https://tools.ietf.org/html/rfc2047).
 
 If you specify the C<Source> parameter and have feedback forwarding
 enabled, then bounces and complaints will be sent to this email
@@ -174,8 +176,8 @@ the C<SourceArn> parameter and the corresponding X-header, Amazon SES
 uses the value of the C<SourceArn> parameter.
 
 For information about when to use this parameter, see the description
-of C<SendRawEmail> in this guide, or see the Amazon SES Developer
-Guide.
+of C<SendRawEmail> in this guide, or see the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
 
 
 

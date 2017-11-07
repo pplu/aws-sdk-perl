@@ -43,8 +43,9 @@ Describes a lifecycle hook, which tells Auto Scaling that you want to
 perform an action whenever it launches instances or whenever it
 terminates instances.
 
-For more information, see Auto Scaling Lifecycle Hooks in the I<Auto
-Scaling User Guide>.
+For more information, see Auto Scaling Lifecycle Hooks
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html)
+in the I<Auto Scaling User Guide>.
 
 =head1 ATTRIBUTES
 

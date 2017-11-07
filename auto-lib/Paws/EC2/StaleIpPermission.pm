@@ -50,7 +50,8 @@ type number. A value of C<-1> indicates all ICMP types.
 =head2 IpProtocol => Str
 
   The IP protocol name (for C<tcp>, C<udp>, and C<icmp>) or number (see
-Protocol Numbers).
+Protocol Numbers)
+(http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 
 
 =head2 IpRanges => ArrayRef[Str|Undef]

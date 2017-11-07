@@ -66,7 +66,8 @@ health status.
 
   Represents the color indicator that gives you information about the
 health of the EC2 instance. For more information, see Health Colors and
-Statuses.
+Statuses
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html).
 
 
 =head2 Deployment => L<Paws::ElasticBeanstalk::Deployment>
@@ -77,7 +78,8 @@ Statuses.
 =head2 HealthStatus => Str
 
   Returns the health status of the specified instance. For more
-information, see Health Colors and Statuses.
+information, see Health Colors and Statuses
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html).
 
 
 =head2 InstanceId => Str

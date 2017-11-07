@@ -66,7 +66,9 @@ a string of the form C<df-297EG78HU43EEXAMPLE>.
 
   A list of tags to associated with a pipeline. Tags let you control
 access to pipelines. For more information, see Controlling User Access
-to Pipelines in the I<AWS Data Pipeline Developer Guide>.
+to Pipelines
+(http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html)
+in the I<AWS Data Pipeline Developer Guide>.
 
 
 

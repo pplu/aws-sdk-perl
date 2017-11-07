@@ -45,6 +45,7 @@ Setting this value to true increases the likelihood that the CMK
 becomes unmanageable. Do not set this value to true indiscriminately.
 
 For more information, refer to the scenario in the Default Key Policy
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam)
 section in the I<AWS Key Management Service Developer Guide>.
 
 Use this parameter only when you intend to prevent the principal that
@@ -94,8 +95,9 @@ must meet the following criteria:
 It must allow the principal that is making the C<PutKeyPolicy> request
 to make a subsequent C<PutKeyPolicy> request on the CMK. This reduces
 the likelihood that the CMK becomes unmanageable. For more information,
-refer to the scenario in the Default Key Policy section in the I<AWS
-Key Management Service Developer Guide>.
+refer to the scenario in the Default Key Policy
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam)
+section in the I<AWS Key Management Service Developer Guide>.
 
 =item *
 
@@ -104,8 +106,9 @@ visible to AWS KMS. When you create a new AWS principal (for example,
 an IAM user or role), you might need to enforce a delay before
 specifying the new principal in a key policy because the new principal
 might not immediately be visible to AWS KMS. For more information, see
-Changes that I make are not always immediately visible in the I<IAM
-User Guide>.
+Changes that I make are not always immediately visible
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency)
+in the I<IAM User Guide>.
 
 =back
 

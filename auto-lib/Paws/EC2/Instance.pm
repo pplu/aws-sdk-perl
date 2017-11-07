@@ -245,7 +245,9 @@ NAT. This controls whether source/destination checking is enabled on
 the instance. A value of C<true> means that checking is enabled, and
 C<false> means that checking is disabled. The value must be C<false>
 for the instance to perform NAT. For more information, see NAT
-Instances in the I<Amazon Virtual Private Cloud User Guide>.
+Instances
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 SpotInstanceRequestId => Str

@@ -119,8 +119,9 @@ global secondary index, consisting of read and write capacity units.
 
 Specifies the attributes that make up the primary key for a table or an
 index. The attributes in C<KeySchema> must also be defined in the
-C<AttributeDefinitions> array. For more information, see Data Model in
-the I<Amazon DynamoDB Developer Guide>.
+C<AttributeDefinitions> array. For more information, see Data Model
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 Each C<KeySchemaElement> in the array is composed of:
 
@@ -166,8 +167,9 @@ provide exactly two elements, in this order: The first element must
 have a C<KeyType> of C<HASH>, and the second element must have a
 C<KeyType> of C<RANGE>.
 
-For more information, see Specifying the Primary Key in the I<Amazon
-DynamoDB Developer Guide>.
+For more information, see Specifying the Primary Key
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -245,7 +247,9 @@ Represents the provisioned throughput settings for a specified table or
 index. The settings can be modified using the C<UpdateTable> operation.
 
 For current minimum and maximum provisioned throughput values, see
-Limits in the I<Amazon DynamoDB Developer Guide>.
+Limits
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 

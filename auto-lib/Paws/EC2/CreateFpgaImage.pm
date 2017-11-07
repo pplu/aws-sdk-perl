@@ -42,7 +42,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see Ensuring
-Idempotency.
+Idempotency
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
 
 
 

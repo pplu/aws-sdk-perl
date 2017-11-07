@@ -36,7 +36,8 @@ When included in a receipt rule, this action adds a header to the
 received email.
 
 For information about adding a header using a receipt rule, see the
-Amazon SES Developer Guide.
+Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-add-header.html).
 
 =head1 ATTRIBUTES
 

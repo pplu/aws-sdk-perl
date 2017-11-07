@@ -53,8 +53,9 @@ configuration snapshot. For more information, see
 ConfigSnapshotDeliveryProperties.
 
 For more information about developing and using AWS Config rules, see
-Evaluating AWS Resource Configurations with AWS Config in the I<AWS
-Config Developer Guide>.
+Evaluating AWS Resource Configurations with AWS Config
+(http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html)
+in the I<AWS Config Developer Guide>.
 
 =head1 ATTRIBUTES
 

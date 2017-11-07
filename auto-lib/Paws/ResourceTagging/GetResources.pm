@@ -70,16 +70,19 @@ General Reference> for the following:
 
 =item *
 
-For a list of service name strings, see AWS Service Namespaces.
+For a list of service name strings, see AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces).
 
 =item *
 
-For resource type strings, see Example ARNs.
+For resource type strings, see Example ARNs
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax).
 
 =item *
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces.
+AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 =back
 

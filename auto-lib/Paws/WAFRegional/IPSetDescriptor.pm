@@ -63,7 +63,8 @@ C<192.0.2.0/24>.
 =back
 
 For more information about CIDR notation, see the Wikipedia entry
-Classless Inter-Domain Routing.
+Classless Inter-Domain Routing
+(https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 Specify an IPv6 address by using CIDR notation. For example:
 

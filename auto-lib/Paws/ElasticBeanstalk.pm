@@ -289,18 +289,21 @@ manage scalable, fault-tolerant applications running on the Amazon Web
 Services cloud.
 
 For more information about this product, go to the AWS Elastic
-Beanstalk details page. The location of the latest AWS Elastic
-Beanstalk WSDL is
-http://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl.
+Beanstalk (http://aws.amazon.com/elasticbeanstalk/) details page. The
+location of the latest AWS Elastic Beanstalk WSDL is
+http://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl
+(http://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl).
 To install the Software Development Kits (SDKs), Integrated Development
 Environment (IDE) Toolkits, and command line tools that enable you to
-access the API, go to Tools for Amazon Web Services.
+access the API, go to Tools for Amazon Web Services
+(http://aws.amazon.com/tools/).
 
 B<Endpoints>
 
 For a list of region-specific endpoints that AWS Elastic Beanstalk
-supports, go to Regions and Endpoints in the I<Amazon Web Services
-Glossary>.
+supports, go to Regions and Endpoints
+(http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region)
+in the I<Amazon Web Services Glossary>.
 
 =head1 METHODS
 
@@ -345,7 +348,9 @@ component of a single application. Takes a list of version labels that
 specify application source bundles for each of the environments to
 create or update. The name of each environment and other required
 information must be included in the source bundles in an environment
-manifest named C<env.yaml>. See Compose Environments for details.
+manifest named C<env.yaml>. See Compose Environments
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html)
+for details.
 
 
 =head2 CreateApplication(ApplicationName => Str, [Description => Str, ResourceLifecycleConfig => L<Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig>])
@@ -638,7 +643,8 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeInsta
 Returns: a L<Paws::ElasticBeanstalk::DescribeInstancesHealthResult> instance
 
 Retrives detailed information about the health of instances in your AWS
-Elastic Beanstalk. This operation requires enhanced health reporting.
+Elastic Beanstalk. This operation requires enhanced health reporting
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html).
 
 
 =head2 DescribePlatformVersion([PlatformArn => Str])

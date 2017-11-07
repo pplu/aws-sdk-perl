@@ -59,11 +59,14 @@ truncated response you just received.
 The retiring principal for which to list grants.
 
 To specify the retiring principal, use the Amazon Resource Name (ARN)
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 of an AWS principal. Valid AWS principals include AWS accounts (root),
 IAM users, federated users, and assumed role users. For examples of the
 ARN syntax for specifying a principal, see AWS Identity and Access
-Management (IAM) in the Example ARNs section of the I<Amazon Web
-Services General Reference>.
+Management (IAM)
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam)
+in the Example ARNs section of the I<Amazon Web Services General
+Reference>.
 
 
 

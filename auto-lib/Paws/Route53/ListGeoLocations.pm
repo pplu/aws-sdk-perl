@@ -73,7 +73,8 @@ value, enter that value in C<StartCountryCode> to return the next page
 of results.
 
 Amazon Route 53 uses the two-letter country codes that are specified in
-ISO standard 3166-1 alpha-2.
+ISO standard 3166-1 alpha-2
+(https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 
 
 

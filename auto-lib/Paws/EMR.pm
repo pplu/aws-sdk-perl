@@ -410,6 +410,7 @@ can bypass the 256-step limitation in various ways, including using SSH
 to connect to the master node and submitting queries directly to the
 software running on the master node, such as Hive and Hadoop. For more
 information on how to do this, see Add More than 256 Steps to a Cluster
+(http://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/AddMoreThan256Steps.html)
 in the I<Amazon EMR Management Guide>.
 
 A step specifies the location of a JAR file stored either on the master
@@ -436,7 +437,8 @@ Returns: a L<Paws::EMR::AddTagsOutput> instance
 Adds tags to an Amazon EMR resource. Tags make it easier to associate
 clusters in various ways, such as grouping clusters to track your
 Amazon EMR resource allocation costs. For more information, see Tagging
-Amazon EMR Resources.
+Amazon EMR Resources
+(http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html).
 
 
 =head2 CancelSteps([ClusterId => Str, StepIds => ArrayRef[Str|Undef]])
@@ -677,7 +679,8 @@ Returns: a L<Paws::EMR::RemoveTagsOutput> instance
 Removes tags from an Amazon EMR resource. Tags make it easier to
 associate clusters in various ways, such as grouping clusters to track
 your Amazon EMR resource allocation costs. For more information, see
-Tagging Amazon EMR Resources.
+Tagging Amazon EMR Resources
+(http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html).
 
 The following example removes the stack tag with value Prod from a
 cluster:
@@ -710,7 +713,9 @@ can bypass the 256-step limitation in various ways, including using the
 SSH shell to connect to the master node and submitting queries directly
 to the software running on the master node, such as Hive and Hadoop.
 For more information on how to do this, see Add More than 256 Steps to
-a Cluster in the I<Amazon EMR Management Guide>.
+a Cluster
+(http://docs.aws.amazon.com/ElasticMapReduce/latest/Management/Guide/AddMoreThan256Steps.html)
+in the I<Amazon EMR Management Guide>.
 
 For long running clusters, we recommend that you periodically store
 your results.
@@ -745,8 +750,9 @@ C<SetTerminationProtection> to C<true>, you must first unlock the job
 flow by a subsequent call to C<SetTerminationProtection> in which you
 set the value to C<false>.
 
-For more information, seeManaging Cluster Termination in the I<Amazon
-EMR Management Guide>.
+For more information, seeManaging Cluster Termination
+(http://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html)
+in the I<Amazon EMR Management Guide>.
 
 
 =head2 SetVisibleToAllUsers(JobFlowIds => ArrayRef[Str|Undef], VisibleToAllUsers => Bool)

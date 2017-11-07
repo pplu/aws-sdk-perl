@@ -38,8 +38,9 @@ encrypt copied snapshots with the specified customer master key (CMK)
 from AWS KMS in the destination region.
 
 For more information about managing snapshot copy grants, go to Amazon
-Redshift Database Encryption in the I<Amazon Redshift Cluster
-Management Guide>.
+Redshift Database Encryption
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 =head1 ATTRIBUTES
 

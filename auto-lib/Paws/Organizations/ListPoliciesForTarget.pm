@@ -71,7 +71,8 @@ where the output should continue from.
 The unique identifier (ID) of the root, organizational unit, or account
 whose policies you want to list.
 
-The regex pattern for a target ID string requires one of the following:
+The regex pattern (http://wikipedia.org/wiki/regex) for a target ID
+string requires one of the following:
 
 =over
 

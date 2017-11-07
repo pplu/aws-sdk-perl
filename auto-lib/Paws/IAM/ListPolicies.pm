@@ -76,12 +76,12 @@ policies are returned.
 
 The path prefix for filtering the results. This parameter is optional.
 If it is not included, it defaults to a slash (/), listing all
-policies. This paramater allows (per its regex pattern) a string of
-characters consisting of either a forward slash (/) by itself or a
-string that must begin and end with forward slashes, containing any
-ASCII character from the ! (\u0021) thru the DEL character (\u007F),
-including most punctuation characters, digits, and upper and lowercased
-letters.
+policies. This paramater allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+either a forward slash (/) by itself or a string that must begin and
+end with forward slashes, containing any ASCII character from the !
+(\u0021) thru the DEL character (\u007F), including most punctuation
+characters, digits, and upper and lowercased letters.
 
 
 

@@ -41,15 +41,17 @@ CreatePolicyVersion, GetPolicyVersion, ListPolicyVersions, and
 GetAccountAuthorizationDetails actions.
 
 For more information about managed policies, refer to Managed Policies
-and Inline Policies in the I<Using IAM> guide.
+and Inline Policies
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+in the I<Using IAM> guide.
 
 =head1 ATTRIBUTES
 
 
 =head2 CreateDate => Str
 
-  The date and time, in ISO 8601 date-time format, when the policy
-version was created.
+  The date and time, in ISO 8601 date-time format
+(http://www.iso.org/iso/iso8601), when the policy version was created.
 
 
 =head2 Document => Str

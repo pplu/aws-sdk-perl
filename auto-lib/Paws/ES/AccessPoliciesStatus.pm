@@ -42,7 +42,9 @@ endpoints, and the current status of those rules.
 
   The access policy configured for the Elasticsearch domain. Access
 policies may be resource-based, IP-based, or IAM-based. See Configuring
-Access Policiesfor more information.
+Access Policies
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies)for
+more information.
 
 
 =head2 B<REQUIRED> Status => L<Paws::ES::OptionStatus>

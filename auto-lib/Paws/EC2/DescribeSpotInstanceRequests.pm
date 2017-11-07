@@ -196,8 +196,9 @@ to fulfill the request.
 C<state> - The state of the Spot instance request (C<open> | C<active>
 | C<closed> | C<cancelled> | C<failed>). Spot bid status information
 can help you track your Amazon EC2 Spot instance requests. For more
-information, see Spot Bid Status in the Amazon Elastic Compute Cloud
-User Guide.
+information, see Spot Bid Status
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html)
+in the Amazon Elastic Compute Cloud User Guide.
 
 =item *
 

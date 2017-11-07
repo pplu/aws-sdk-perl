@@ -41,7 +41,8 @@ and software bundled with Amazon EMR. A configuration consists of a
 classification, properties, and optional nested configurations. A
 classification refers to an application-specific configuration file.
 Properties are the settings you want to change in that file. For more
-information, see Configuring Applications.
+information, see Configuring Applications
+(http://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-configure-apps.html).
 
 =head1 ATTRIBUTES
 

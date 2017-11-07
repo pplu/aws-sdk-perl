@@ -32,9 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ACM::Renewa
 
 =head1 DESCRIPTION
 
-Contains information about the status of ACM's managed renewal for the
-certificate. This structure exists only when the certificate type is
-C<AMAZON_ISSUED>.
+Contains information about the status of ACM's managed renewal
+(http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for
+the certificate. This structure exists only when the certificate type
+is C<AMAZON_ISSUED>.
 
 =head1 ATTRIBUTES
 
@@ -42,15 +43,18 @@ C<AMAZON_ISSUED>.
 =head2 B<REQUIRED> DomainValidationOptions => ArrayRef[L<Paws::ACM::DomainValidation>]
 
   Contains information about the validation of each domain name in the
-certificate, as it pertains to ACM's managed renewal. This is different
-from the initial validation that occurs as a result of the
-RequestCertificate request. This field exists only when the certificate
-type is C<AMAZON_ISSUED>.
+certificate, as it pertains to ACM's managed renewal
+(http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html).
+This is different from the initial validation that occurs as a result
+of the RequestCertificate request. This field exists only when the
+certificate type is C<AMAZON_ISSUED>.
 
 
 =head2 B<REQUIRED> RenewalStatus => Str
 
-  The status of ACM's managed renewal of the certificate.
+  The status of ACM's managed renewal
+(http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) of
+the certificate.
 
 
 

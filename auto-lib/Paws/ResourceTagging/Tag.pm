@@ -34,8 +34,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ResourceTag
 
 The metadata that you apply to AWS resources to help you categorize and
 organize them. Each tag consists of a key and an optional value, both
-of which you define. For more information, see Tag Basics in the
-I<Amazon EC2 User Guide for Linux Instances>.
+of which you define. For more information, see Tag Basics
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-basics)
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 =head1 ATTRIBUTES
 

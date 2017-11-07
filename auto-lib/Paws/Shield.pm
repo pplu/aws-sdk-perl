@@ -97,7 +97,8 @@ developers who need detailed information about the AWS Shield Advanced
 API actions, data types, and errors. For detailed information about AWS
 WAF and AWS Shield Advanced features and an overview of how to use the
 AWS WAF and AWS Shield Advanced APIs, see the AWS WAF and AWS Shield
-Developer Guide.
+Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 =head1 METHODS
 

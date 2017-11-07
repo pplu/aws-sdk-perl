@@ -79,8 +79,8 @@ Cannot contain any of the following characters: '/', '"', or '@'.
 
 =back
 
-For more information, see AUTH password at
-http://redis.io/commands/AUTH.
+For more information, see AUTH password (http://redis.io/commands/AUTH)
+at http://redis.io/commands/AUTH.
 
 
 
@@ -238,9 +238,12 @@ Supported node types are available in all regions except as noted in
 the following table.
 
 For a complete listing of node types and specifications, see Amazon
-ElastiCache Product Features and Details and either Cache Node
-Type-Specific Parameters for Memcached or Cache Node Type-Specific
-Parameters for Redis.
+ElastiCache Product Features and Details
+(http://aws.amazon.com/elasticache/details) and either Cache Node
+Type-Specific Parameters for Memcached
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific)
+or Cache Node Type-Specific Parameters for Redis
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific).
 
 
 
@@ -271,7 +274,8 @@ Amazon Virtual Private Cloud (Amazon VPC).
 
 If you're going to launch your cluster in an Amazon VPC, you need to
 create a subnet group before you start creating a cluster. For more
-information, see Subnets and Subnet Groups.
+information, see Subnets and Subnet Groups
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SubnetGroups.html).
 
 
 
@@ -290,10 +294,12 @@ cluster. To view the supported cache engine versions, use the
 DescribeCacheEngineVersions operation.
 
 B<Important:> You can upgrade to a newer engine version (see Selecting
-a Cache Engine and Version), but you cannot downgrade to an earlier
-engine version. If you want to use an earlier engine version, you must
-delete the existing cache cluster or replication group and create it
-anew with the earlier engine version.
+a Cache Engine and Version
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement)),
+but you cannot downgrade to an earlier engine version. If you want to
+use an earlier engine version, you must delete the existing cache
+cluster or replication group and create it anew with the earlier engine
+version.
 
 
 
@@ -315,7 +321,8 @@ Memcached, this value must be between 1 and 20.
 
 If you need more than 20 nodes for your Memcached cluster, please fill
 out the ElastiCache Limit Increase Request form at
-http://aws.amazon.com/contact-us/elasticache-node-limit-request/.
+http://aws.amazon.com/contact-us/elasticache-node-limit-request/
+(http://aws.amazon.com/contact-us/elasticache-node-limit-request/).
 
 
 

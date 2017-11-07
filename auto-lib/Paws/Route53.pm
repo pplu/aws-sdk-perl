@@ -418,7 +418,8 @@ friendly domains names like www.example.com into IP addresses like
 192.0.2.1. Amazon Route 53 responds to DNS queries using a global
 network of authoritative DNS servers, which reduces latency. For a list
 of the locations of Amazon Route 53 DNS servers, see The Amazon Route
-53 Global Network on the Amazon Route 53 detail page.
+53 Global Network (http://aws.amazon.com/route53/#details) on the
+Amazon Route 53 detail page.
 
 =head1 METHODS
 
@@ -488,7 +489,9 @@ policy with one or more domain names (such as example.com) or subdomain
 names (such as www.example.com), in the same hosted zone or in multiple
 hosted zones. You can roll back the updates if the new configuration
 isn't performing as expected. For more information, see Using Traffic
-Flow to Route DNS Traffic in the I<Amazon Route 53 Developer Guide>.
+Flow to Route DNS Traffic
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/traffic-flow.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 B<Create, Delete, and Upsert>
 
@@ -540,7 +543,9 @@ see GetChange.
 B<Limits on ChangeResourceRecordSets Requests>
 
 For information about the limits on a C<ChangeResourceRecordSets>
-request, see Limits in the I<Amazon Route 53 Developer Guide>.
+request, see Limits
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 
 =head2 ChangeTagsForResource(ResourceId => Str, ResourceType => Str, [AddTags => ArrayRef[L<Paws::Route53::Tag>], RemoveTagKeys => ArrayRef[Str|Undef]])
@@ -552,7 +557,9 @@ Returns: a L<Paws::Route53::ChangeTagsForResourceResponse> instance
 Adds, edits, or deletes tags for a health check or a hosted zone.
 
 For information about using tags for cost allocation, see Using Cost
-Allocation Tags in the I<AWS Billing and Cost Management User Guide>.
+Allocation Tags
+(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+in the I<AWS Billing and Cost Management User Guide>.
 
 
 =head2 CreateHealthCheck(CallerReference => Str, HealthCheckConfig => L<Paws::Route53::HealthCheckConfig>)
@@ -601,7 +608,8 @@ status of the Amazon EC2 C<StatusCheckFailed> metric, add an alarm to
 the metric, and then create a health check that is based on the state
 of the alarm. For information about creating CloudWatch metrics and
 alarms by using the CloudWatch console, see the Amazon CloudWatch User
-Guide.
+Guide
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/WhatIsCloudWatch.html).
 
 =back
 
@@ -622,7 +630,7 @@ vice versa. Instead, you must create a new hosted zone with the same
 name and create new resource record sets.
 
 For more information about charges for hosted zones, see Amazon Route
-53 Pricing.
+53 Pricing (http://aws.amazon.com/route53/pricing/).
 
 Note the following:
 
@@ -637,6 +645,7 @@ You can't create a hosted zone for a top-level domain (TLD).
 Amazon Route 53 automatically creates a default SOA record and four NS
 records for the zone. For more information about SOA and NS records,
 see NS and SOA Records that Amazon Route 53 Creates for a Hosted Zone
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/SOA-NSrecords.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 If you want to use the same name servers for multiple hosted zones, you
@@ -648,7 +657,9 @@ zone. See the C<DelegationSetId> element.
 If your domain is registered with a registrar other than Amazon Route
 53, you must update the name servers with your registrar to make Amazon
 Route 53 your DNS service. For more information, see Configuring Amazon
-Route 53 as your DNS Service in the I<Amazon Route 53 Developer Guide>.
+Route 53 as your DNS Service
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/creating-migrating.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 =back
 
@@ -784,7 +795,8 @@ assigned number, for example, DFW3. The three-letter code typically
 corresponds with the International Air Transport Association airport
 code for an airport near the edge location. (These abbreviations might
 change in the future.) For a list of edge locations, see "The Amazon
-Route 53 Global Network" on the Amazon Route 53 Product Details page.
+Route 53 Global Network" on the Amazon Route 53 Product Details
+(http://aws.amazon.com/route53/details/) page.
 
 =item Queries That Are Logged
 
@@ -798,19 +810,21 @@ queries are submitted for a resource record set, and depending on the
 TTL for that resource record set, query logs might contain information
 about only one query out of every several thousand queries that are
 submitted to DNS. For more information about how DNS works, see Routing
-Internet Traffic to Your Website or Web Application in the I<Amazon
-Route 53 Developer Guide>.
+Internet Traffic to Your Website or Web Application
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 =item Log File Format
 
 For a list of the values in each query log and the format of each
-value, see Logging DNS Queries in the I<Amazon Route 53 Developer
-Guide>.
+value, see Logging DNS Queries
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 =item Pricing
 
 For information about charges for query logs, see Amazon CloudWatch
-Pricing.
+Pricing (http://aws.amazon.com/cloudwatch/pricing/).
 
 =item How to Stop Logging
 
@@ -837,7 +851,8 @@ A reusable delegation set can't be associated with a private hosted
 zone.
 
 For information on how to use a reusable delegation set to configure
-white label name servers, see Configuring White Label Name Servers.
+white label name servers, see Configuring White Label Name Servers
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/white-label-name-servers.html).
 
 
 =head2 CreateTrafficPolicy(Document => Str, Name => Str, [Comment => Str])
@@ -915,8 +930,9 @@ sets. If you delete a health check and you don't update the associated
 resource record sets, the future status of the health check can't be
 predicted and may change. This will affect the routing of DNS queries
 for your DNS failover configuration. For more information, see
-Replacing and Deleting Health Checks in the I<Amazon Route 53 Developer
-Guide>.
+Replacing and Deleting Health Checks
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html#health-checks-deleting.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 
 =head2 DeleteHostedZone(Id => Str)
@@ -1092,6 +1108,7 @@ Returns: a L<Paws::Route53::GetCheckerIpRangesResponse> instance
 C<GetCheckerIpRanges> still works, but we recommend that you download
 ip-ranges.json, which includes IP address ranges for all AWS services.
 For more information, see IP Address Ranges of Amazon Route 53 Servers
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/route-53-ip-addresses.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 
@@ -1189,7 +1206,8 @@ Returns: a L<Paws::Route53::GetQueryLoggingConfigResponse> instance
 Gets information about a specified configuration for DNS query logging.
 
 For more information about DNS query logs, see CreateQueryLoggingConfig
-and Logging DNS Queries.
+and Logging DNS Queries
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html).
 
 
 =head2 GetReusableDelegationSet(Id => Str)
@@ -1308,8 +1326,9 @@ C<com.ex\344mple.>
 
 The labels are reversed and alphabetized using the escaped value. For
 more information about valid domain name formats, including
-internationalized domain names, see DNS Domain Name Format in the
-I<Amazon Route 53 Developer Guide>.
+internationalized domain names, see DNS Domain Name Format
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 Amazon Route 53 returns up to 100 items in each response. If you have a
 lot of hosted zones, use the C<MaxItems> parameter to list them in
@@ -1364,8 +1383,9 @@ specified hosted zone.
 
 For more information about DNS query logs, see
 CreateQueryLoggingConfig. Additional information, including the format
-of DNS query logs, appears in Logging DNS Queries in the I<Amazon Route
-53 Developer Guide>.
+of DNS query logs, appears in Logging DNS Queries
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 
 =head2 ListResourceRecordSets(HostedZoneId => Str, [MaxItems => Str, StartRecordIdentifier => Str, StartRecordName => Str, StartRecordType => Str])
@@ -1447,7 +1467,9 @@ Returns: a L<Paws::Route53::ListTagsForResourceResponse> instance
 Lists tags for one health check or hosted zone.
 
 For information about using tags for cost allocation, see Using Cost
-Allocation Tags in the I<AWS Billing and Cost Management User Guide>.
+Allocation Tags
+(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+in the I<AWS Billing and Cost Management User Guide>.
 
 
 =head2 ListTagsForResources(ResourceIds => ArrayRef[Str|Undef], ResourceType => Str)
@@ -1459,7 +1481,9 @@ Returns: a L<Paws::Route53::ListTagsForResourcesResponse> instance
 Lists tags for up to 10 health checks or hosted zones.
 
 For information about using tags for cost allocation, see Using Cost
-Allocation Tags in the I<AWS Billing and Cost Management User Guide>.
+Allocation Tags
+(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+in the I<AWS Billing and Cost Management User Guide>.
 
 
 =head2 ListTrafficPolicies([MaxItems => Str, TrafficPolicyIdMarker => Str])
@@ -1581,8 +1605,9 @@ Updates an existing health check. Note that some values can't be
 updated.
 
 For more information about updating health checks, see Creating,
-Updating, and Deleting Health Checks in the I<Amazon Route 53 Developer
-Guide>.
+Updating, and Deleting Health Checks
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 
 =head2 UpdateHostedZoneComment(Id => Str, [Comment => Str])

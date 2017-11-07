@@ -42,6 +42,7 @@ prefix user: in the Cost Allocation Report. You cannot backdate the
 application of a tag.
 
 For an overview on tagging DynamoDB resources, see Tagging for DynamoDB
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 =head1 ATTRIBUTES

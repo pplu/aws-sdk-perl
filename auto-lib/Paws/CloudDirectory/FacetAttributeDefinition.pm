@@ -34,8 +34,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-A facet attribute definition. See Attribute References for more
-information.
+A facet attribute definition. See Attribute References
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences)
+for more information.
 
 =head1 ATTRIBUTES
 

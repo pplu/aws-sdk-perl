@@ -67,6 +67,7 @@ If you are using versioning, you can also provide a qualified function
 ARN (ARN that is qualified with function version or alias name as
 suffix). For more information about versioning, see AWS Lambda Function
 Versioning and Aliases
+(http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html)
 
 Note that the length constraint applies only to the ARN. If you specify
 only the function name, it is limited to 64 character in length.

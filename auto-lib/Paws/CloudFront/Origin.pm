@@ -41,8 +41,9 @@ A complex type that describes the Amazon S3 bucket or the HTTP server
 must create at least one origin.
 
 For the current limit on the number of origins that you can create for
-a distribution, see Amazon CloudFront Limits in the I<AWS General
-Reference>.
+a distribution, see Amazon CloudFront Limits
+(http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront)
+in the I<AWS General Reference>.
 
 =head1 ATTRIBUTES
 
@@ -122,6 +123,7 @@ which you want the cache behavior to route requests by specifying the
 value of the C<Id> element for that origin. When a request matches the
 path pattern for that cache behavior, CloudFront routes the request to
 the specified origin. For more information, see Cache Behavior Settings
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior)
 in the I<Amazon CloudFront Developer Guide>.
 
 

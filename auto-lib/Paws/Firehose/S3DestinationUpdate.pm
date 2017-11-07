@@ -80,8 +80,9 @@ no encryption.
 delivered S3 files. You can specify an extra prefix to be added in
 front of the time format prefix. If the prefix ends with a slash, it
 appears as a folder in the S3 bucket. For more information, see Amazon
-S3 Object Name Format in the I<Amazon Kinesis Firehose Developer
-Guide>.
+S3 Object Name Format
+(http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html) in
+the I<Amazon Kinesis Firehose Developer Guide>.
 
 
 =head2 RoleARN => Str

@@ -52,7 +52,8 @@ resource type cannot be determined, null is returned. Some examples of
 resource types are: B<Instance> for EC2, B<Trail> for CloudTrail,
 B<DBInstance> for RDS, and B<AccessKey> for IAM. For a list of resource
 types supported for event lookup, see Resource Types Supported for
-Event Lookup.
+Event Lookup
+(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/lookup_supported_resourcetypes.html).
 
 
 

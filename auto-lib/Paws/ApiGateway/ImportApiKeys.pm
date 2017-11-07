@@ -39,7 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> Body => Str
 
 The payload of the POST request to import API keys. For the payload
-format, see API Key File Format.
+format, see API Key File Format
+(http://docs.aws.amazon.com/apigateway/latest/developerguide/api-key-file-format.html).
 
 
 

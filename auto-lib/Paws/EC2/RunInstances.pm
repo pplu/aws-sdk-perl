@@ -81,7 +81,8 @@ action.
 =head2 ClientToken => Str
 
 Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. For more information, see Ensuring Idempotency.
+of the request. For more information, see Ensuring Idempotency
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 Constraints: Maximum 64 ASCII characters
 
@@ -151,8 +152,9 @@ Valid values are: C<"stop">, C<"terminate">
 
 =head2 InstanceType => Str
 
-The instance type. For more information, see Instance Types in the
-I<Amazon Elastic Compute Cloud User Guide>.
+The instance type. For more information, see Instance Types
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Default: C<m1.small>
 
@@ -183,8 +185,9 @@ a minimum number of instances to launch.
 The ID of the kernel.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
-more information, see PV-GRUB in the I<Amazon Elastic Compute Cloud
-User Guide>.
+more information, see PV-GRUB
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -209,7 +212,9 @@ C<MinCount>.
 Constraints: Between 1 and the maximum number you're allowed for the
 specified instance type. For more information about the default limits,
 and how to request an increase, see How many instances can I run in
-Amazon EC2 in the Amazon EC2 FAQ.
+Amazon EC2
+(http://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2)
+in the Amazon EC2 FAQ.
 
 
 
@@ -222,7 +227,9 @@ Availability Zone, Amazon EC2 launches no instances.
 Constraints: Between 1 and the maximum number you're allowed for the
 specified instance type. For more information about the default limits,
 and how to request an increase, see How many instances can I run in
-Amazon EC2 in the Amazon EC2 General FAQ.
+Amazon EC2
+(http://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2)
+in the Amazon EC2 General FAQ.
 
 
 
@@ -262,8 +269,9 @@ than one instance in the request.
 The ID of the RAM disk.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
-more information, see PV-GRUB in the I<Amazon Elastic Compute Cloud
-User Guide>.
+more information, see PV-GRUB
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -302,10 +310,13 @@ that are created during launch.
 =head2 UserData => Str
 
 The user data to make available to the instance. For more information,
-see Running Commands on Your Linux Instance at Launch (Linux) and
-Adding User Data (Windows). If you are using a command line tool,
-base64-encoding is performed for you, and you can load the text from a
-file. Otherwise, you must provide base64-encoded text.
+see Running Commands on Your Linux Instance at Launch
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html)
+(Linux) and Adding User Data
+(http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data)
+(Windows). If you are using a command line tool, base64-encoding is
+performed for you, and you can load the text from a file. Otherwise,
+you must provide base64-encoded text.
 
 
 

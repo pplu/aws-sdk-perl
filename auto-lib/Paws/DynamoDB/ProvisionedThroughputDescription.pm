@@ -58,7 +58,9 @@ table.
 
   The number of provisioned throughput decreases for this table during
 this UTC calendar day. For current maximums on provisioned throughput
-decreases, see Limits in the I<Amazon DynamoDB Developer Guide>.
+decreases, see Limits
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 =head2 ReadCapacityUnits => Int

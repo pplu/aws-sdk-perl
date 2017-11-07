@@ -90,7 +90,8 @@ www.example.com if users can reach your site by using either name. The
 maximum number of domain names that you can add to an ACM Certificate
 is 100. However, the initial limit is 10 domain names. If you need more
 than 10 names, you must request a limit increase. For more information,
-see Limits.
+see Limits
+(http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html).
 
 
 

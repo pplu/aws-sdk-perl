@@ -66,7 +66,7 @@ application that is directed in whole or in part, to children under age
 COPPA. For information regarding the use of Amazon Lex in connection
 with websites, programs, or other applications that are directed or
 targeted, in whole or in part, to children under age 13, see the Amazon
-Lex FAQ.
+Lex FAQ. (https://aws.amazon.com/lex/faqs#data-security)
 
 
 =head2 ClarificationPrompt => L<Paws::LexModels::Prompt>

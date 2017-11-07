@@ -75,7 +75,8 @@ The minimum size for the Auto Scaling group.
 =head2 Recurrence => Str
 
 The recurring schedule for this action, in Unix cron syntax format. For
-more information, see Cron in Wikipedia.
+more information, see Cron (http://en.wikipedia.org/wiki/Cron) in
+Wikipedia.
 
 
 

@@ -64,8 +64,9 @@ The current status of an Elasticsearch domain.
 =head2 B<REQUIRED> ARN => Str
 
   The Amazon resource name (ARN) of an Elasticsearch domain. See
-Identifiers for IAM Entities in I<Using AWS Identity and Access
-Management> for more information.
+Identifiers for IAM Entities
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html)
+in I<Using AWS Identity and Access Management> for more information.
 
 
 =head2 Created => Bool
@@ -98,7 +99,9 @@ with a letter or number and can contain the following characters: a-z
 =head2 EBSOptions => L<Paws::ES::EBSOptions>
 
   The C<EBSOptions> for the specified domain. See Configuring EBS-based
-Storage for more information.
+Storage
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs)
+for more information.
 
 
 =head2 B<REQUIRED> ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>
@@ -144,7 +147,8 @@ the configuration is active.
 =head2 VPCOptions => L<Paws::ES::VPCDerivedInfo>
 
   The C<VPCOptions> for the specified domain. For more information, see
-VPC Endpoints for Amazon Elasticsearch Service Domains.
+VPC Endpoints for Amazon Elasticsearch Service Domains
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html).
 
 
 

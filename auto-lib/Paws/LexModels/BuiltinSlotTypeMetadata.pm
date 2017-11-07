@@ -40,7 +40,9 @@ Provides information about a built in slot type.
 =head2 Signature => Str
 
   A unique identifier for the built-in slot type. To find the signature
-for a slot type, see Slot Type Reference in the I<Alexa Skills Kit>.
+for a slot type, see Slot Type Reference
+(https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference)
+in the I<Alexa Skills Kit>.
 
 
 =head2 SupportedLocales => ArrayRef[Str|Undef]

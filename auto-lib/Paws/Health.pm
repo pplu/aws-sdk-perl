@@ -170,8 +170,9 @@ Paws::Health - Perl Interface to AWS AWS Health APIs and Notifications
 AWS Health
 
 The AWS Health API provides programmatic access to the AWS Health
-information that is presented in the AWS Personal Health Dashboard. You
-can get information about events that affect your AWS resources:
+information that is presented in the AWS Personal Health Dashboard
+(https://phd.aws.amazon.com/phd/home#/). You can get information about
+events that affect your AWS resources:
 
 =over
 
@@ -213,14 +214,17 @@ that meet specified criteria.
 =back
 
 The Health API requires a Business or Enterprise support plan from AWS
-Support. Calling the Health API from an account that does not have a
-Business or Enterprise support plan causes a
-C<SubscriptionRequiredException>.
+Support (http://aws.amazon.com/premiumsupport/). Calling the Health API
+from an account that does not have a Business or Enterprise support
+plan causes a C<SubscriptionRequiredException>.
 
 For authentication of requests, AWS Health uses the Signature Version 4
-Signing Process.
+Signing Process
+(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
-See the AWS Health User Guide for information about how to use the API.
+See the AWS Health User Guide
+(http://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html)
+for information about how to use the API.
 
 B<Service Endpoint>
 

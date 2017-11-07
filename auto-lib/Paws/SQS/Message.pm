@@ -47,7 +47,8 @@ An Amazon SQS message.
   C<SenderId>, C<SentTimestamp>, C<ApproximateReceiveCount>, and/or
 C<ApproximateFirstReceiveTimestamp>. C<SentTimestamp> and
 C<ApproximateFirstReceiveTimestamp> are each returned as an integer
-representing the epoch time in milliseconds.
+representing the epoch time (http://en.wikipedia.org/wiki/Unix_time) in
+milliseconds.
 
 
 =head2 Body => Str
@@ -65,14 +66,16 @@ representing the epoch time in milliseconds.
   An MD5 digest of the non-URL-encoded message attribute string. You can
 use this attribute to verify that Amazon SQS received the message
 correctly. Amazon SQS URL-decodes the message before creating the MD5
-digest. For information about MD5, see RFC1321.
+digest. For information about MD5, see RFC1321
+(https://www.ietf.org/rfc/rfc1321.txt).
 
 
 =head2 MessageAttributes => L<Paws::SQS::MessageBodyAttributeMap>
 
   Each message attribute consists of a C<Name>, C<Type>, and C<Value>.
-For more information, see Message Attribute Items and Validation in the
-I<Amazon Simple Queue Service Developer Guide>.
+For more information, see Message Attribute Items and Validation
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-items-validation)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 
 =head2 MessageId => Str

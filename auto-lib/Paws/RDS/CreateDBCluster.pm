@@ -58,7 +58,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 A list of EC2 Availability Zones that instances in the DB cluster can
 be created in. For information on regions and Availability Zones, see
-Regions and Availability Zones.
+Regions and Availability Zones
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 
 
 
@@ -283,7 +284,9 @@ parameter.
 
 Default: A 30-minute window selected at random from an 8-hour block of
 time per AWS Region. To see the time blocks available, see Adjusting
-the Preferred Maintenance Window in the I<Amazon RDS User Guide.>
+the Preferred Maintenance Window
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
+in the I<Amazon RDS User Guide.>
 
 Constraints:
 
@@ -320,6 +323,7 @@ Format: C<ddd:hh24:mi-ddd:hh24:mi>
 Default: A 30-minute window selected at random from an 8-hour block of
 time per AWS Region, occurring on a random day of the week. To see the
 time blocks available, see Adjusting the Preferred Maintenance Window
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
 in the I<Amazon RDS User Guide.>
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
@@ -370,7 +374,10 @@ Example: C<arn:aws:rds:us-west-2:123456789012:cluster:aurora-cluster1>.
 
 To learn how to generate a Signature Version 4 signed request, see
 Authenticating Requests: Using Query Parameters (AWS Signature Version
-4) and Signature Version 4 Signing Process.
+4)
+(http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
+and Signature Version 4 Signing Process
+(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 
 

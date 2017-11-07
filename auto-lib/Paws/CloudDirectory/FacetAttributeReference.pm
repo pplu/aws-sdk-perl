@@ -41,13 +41,17 @@ that contains the attribute facet name and attribute name.
 =head2 B<REQUIRED> TargetAttributeName => Str
 
   The target attribute name that is associated with the facet reference.
-See Attribute References for more information.
+See Attribute References
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences)
+for more information.
 
 
 =head2 B<REQUIRED> TargetFacetName => Str
 
   The target facet name that is associated with the facet reference. See
-Attribute References for more information.
+Attribute References
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences)
+for more information.
 
 
 

@@ -184,7 +184,8 @@ functionality that is available in the AWS Snowball Management Console,
 which enables you to create and manage jobs for Snowball. To transfer
 data locally with a Snowball appliance, you'll need to use the Snowball
 client or the Amazon S3 API adapter for Snowball. For more information,
-see the User Guide.
+see the User Guide
+(http://docs.aws.amazon.com/AWSImportExport/latest/ug/api-reference.html).
 
 =head1 METHODS
 

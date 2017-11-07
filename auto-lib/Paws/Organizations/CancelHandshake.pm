@@ -38,8 +38,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The unique identifier (ID) of the handshake that you want to cancel.
 You can get the ID from the ListHandshakesForOrganization operation.
 
-The regex pattern for handshake ID string requires "h-" followed by
-from 8 to 32 lower-case letters or digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for handshake ID
+string requires "h-" followed by from 8 to 32 lower-case letters or
+digits.
 
 
 

@@ -39,7 +39,8 @@ SES should do with mail it receives on behalf of your account's
 verified domains.
 
 For information about setting up receipt rule sets, see the Amazon SES
-Developer Guide.
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).
 
 =head1 ATTRIBUTES
 

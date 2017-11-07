@@ -67,8 +67,9 @@ format with GMT offset, the name of the committer, and the email
 address for the committer, as configured in Git.
 
 For more information about the difference between an author and a
-committer in Git, see Viewing the Commit History in Pro Git by Scott
-Chacon and Ben Straub.
+committer in Git, see Viewing the Commit History
+(http://git-scm.com/book/ch2-3.html) in Pro Git by Scott Chacon and Ben
+Straub.
 
 
 =head2 Message => Str

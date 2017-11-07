@@ -90,14 +90,17 @@ credentials that are used to connect to the Amazon RDS database.
 ResourceRole - A role (DataPipelineDefaultResourceRole) assumed by an
 EC2 instance to carry out the copy task from Amazon RDS to Amazon
 Simple Storage Service (Amazon S3). For more information, see Role
-templates for data pipelines.
+templates
+(http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
+for data pipelines.
 
 =item *
 
 ServiceRole - A role (DataPipelineDefaultRole) assumed by the AWS Data
 Pipeline service to monitor the progress of the copy task from Amazon
-RDS to Amazon S3. For more information, see Role templates for data
-pipelines.
+RDS to Amazon S3. For more information, see Role templates
+(http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
+for data pipelines.
 
 =item *
 

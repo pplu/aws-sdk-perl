@@ -39,8 +39,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The unique identifier for the SSH public key.
 
-This parameter allows (per its regex pattern) a string of characters
-that can consist of any upper or lowercased letter or digit.
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters that can
+consist of any upper or lowercased letter or digit.
 
 
 
@@ -56,9 +57,10 @@ Valid values are: C<"Active">, C<"Inactive">
 
 The name of the IAM user associated with the SSH public key.
 
-This parameter allows (per its regex pattern) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+upper and lowercase alphanumeric characters with no spaces. You can
+also include any of the following characters: =,.@-
 
 
 

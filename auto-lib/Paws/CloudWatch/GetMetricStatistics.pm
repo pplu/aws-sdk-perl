@@ -49,9 +49,12 @@ combination of dimensions as a separate metric. If a specific
 combination of dimensions was not published, you can't retrieve
 statistics for it. You must specify the same dimensions that were used
 when the metrics were created. For an example, see Dimension
-Combinations in the I<Amazon CloudWatch User Guide>. For more
-information about specifying dimensions, see Publishing Metrics in the
-I<Amazon CloudWatch User Guide>.
+Combinations
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations)
+in the I<Amazon CloudWatch User Guide>. For more information about
+specifying dimensions, see Publishing Metrics
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html)
+in the I<Amazon CloudWatch User Guide>.
 
 
 

@@ -111,7 +111,8 @@ to be statistically significant. If you specify C<evaluate> or omit
 this parameter, the alarm is always evaluated and possibly changes
 state no matter how many data points are available. For more
 information, see Percentile-Based CloudWatch Alarms and Low Data
-Samples.
+Samples
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples).
 
 Valid Values: C<evaluate | ignore>
 
@@ -197,7 +198,8 @@ attempts that do not correspond to a one-minute data resolution, and
 the alarm may often lapse into INSUFFICENT_DATA status. Specifying 10
 or 30 also sets this alarm as a high-resolution alarm, which has a
 higher charge than other alarms. For more information about pricing,
-see Amazon CloudWatch Pricing.
+see Amazon CloudWatch Pricing
+(https://aws.amazon.com/cloudwatch/pricing/).
 
 An alarm's total current evaluation period can be no longer than one
 day, so C<Period> multiplied by C<EvaluationPeriods> cannot be more
@@ -223,7 +225,8 @@ The value against which the specified statistic is compared.
 Sets how this alarm is to handle missing data points. If
 C<TreatMissingData> is omitted, the default behavior of C<missing> is
 used. For more information, see Configuring How CloudWatch Alarms
-Treats Missing Data.
+Treats Missing Data
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data).
 
 Valid Values: C<breaching | notBreaching | ignore | missing>
 

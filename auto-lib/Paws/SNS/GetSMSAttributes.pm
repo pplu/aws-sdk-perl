@@ -38,7 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 A list of the individual attribute names, such as C<MonthlySpendLimit>,
 for which you want values.
 
-For all attribute names, see SetSMSAttributes.
+For all attribute names, see SetSMSAttributes
+(http://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html).
 
 If you don't use this parameter, Amazon SNS returns all SMS attributes.
 

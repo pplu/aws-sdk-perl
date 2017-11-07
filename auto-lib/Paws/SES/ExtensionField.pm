@@ -36,7 +36,8 @@ Additional X-headers to include in the Delivery Status Notification
 (DSN) when an email that Amazon SES receives on your behalf bounces.
 
 For information about receiving email through Amazon SES, see the
-Amazon SES Developer Guide.
+Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html).
 
 =head1 ATTRIBUTES
 

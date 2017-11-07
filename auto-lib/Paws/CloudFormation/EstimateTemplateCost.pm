@@ -45,7 +45,9 @@ A list of C<Parameter> structures that specify input parameters.
 
 Structure containing the template body with a minimum length of 1 byte
 and a maximum length of 51,200 bytes. (For more information, go to
-Template Anatomy in the AWS CloudFormation User Guide.)
+Template Anatomy
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+in the AWS CloudFormation User Guide.)
 
 Conditional: You must pass C<TemplateBody> or C<TemplateURL>. If both
 are passed, only C<TemplateBody> is used.
@@ -56,7 +58,9 @@ are passed, only C<TemplateBody> is used.
 
 Location of file containing the template body. The URL must point to a
 template that is located in an Amazon S3 bucket. For more information,
-go to Template Anatomy in the AWS CloudFormation User Guide.
+go to Template Anatomy
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+in the AWS CloudFormation User Guide.
 
 Conditional: You must pass C<TemplateURL> or C<TemplateBody>. If both
 are passed, only C<TemplateBody> is used.

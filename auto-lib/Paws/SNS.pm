@@ -315,15 +315,17 @@ Amazon Simple Notification Service (Amazon SNS) is a web service that
 enables you to build distributed web-enabled applications. Applications
 can use Amazon SNS to easily push real-time notification messages to
 interested subscribers over multiple delivery protocols. For more
-information about this product see http://aws.amazon.com/sns. For
-detailed information about Amazon SNS features and their associated API
-calls, see the Amazon SNS Developer Guide.
+information about this product see http://aws.amazon.com/sns
+(http://aws.amazon.com/sns/). For detailed information about Amazon SNS
+features and their associated API calls, see the Amazon SNS Developer
+Guide (http://docs.aws.amazon.com/sns/latest/dg/).
 
 We also provide SDKs that enable you to access Amazon SNS from your
 preferred programming language. The SDKs contain functionality that
 automatically takes care of tasks such as: cryptographically signing
 your service requests, retrying requests, and handling error responses.
-For a list of available SDKs, go to Tools for Amazon Web Services.
+For a list of available SDKs, go to Tools for Amazon Web Services
+(http://aws.amazon.com/tools/).
 
 =head1 METHODS
 
@@ -389,13 +391,22 @@ PlatformCredential is "private key". For Baidu, PlatformCredential is
 "secret key". The PlatformApplicationArn that is returned when using
 C<CreatePlatformApplication> is then used as an attribute for the
 C<CreatePlatformEndpoint> action. For more information, see Using
-Amazon SNS Mobile Push Notifications. For more information about
-obtaining the PlatformPrincipal and PlatformCredential for each of the
-supported push notification services, see Getting Started with Apple
-Push Notification Service, Getting Started with Amazon Device
-Messaging, Getting Started with Baidu Cloud Push, Getting Started with
-Google Cloud Messaging for Android, Getting Started with MPNS, or
-Getting Started with WNS.
+Amazon SNS Mobile Push Notifications
+(http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html). For more
+information about obtaining the PlatformPrincipal and
+PlatformCredential for each of the supported push notification
+services, see Getting Started with Apple Push Notification Service
+(http://docs.aws.amazon.com/sns/latest/dg/mobile-push-apns.html),
+Getting Started with Amazon Device Messaging
+(http://docs.aws.amazon.com/sns/latest/dg/mobile-push-adm.html),
+Getting Started with Baidu Cloud Push
+(http://docs.aws.amazon.com/sns/latest/dg/mobile-push-baidu.html),
+Getting Started with Google Cloud Messaging for Android
+(http://docs.aws.amazon.com/sns/latest/dg/mobile-push-gcm.html),
+Getting Started with MPNS
+(http://docs.aws.amazon.com/sns/latest/dg/mobile-push-mpns.html), or
+Getting Started with WNS
+(http://docs.aws.amazon.com/sns/latest/dg/mobile-push-wns.html).
 
 
 =head2 CreatePlatformEndpoint(PlatformApplicationArn => Str, Token => Str, [Attributes => L<Paws::SNS::MapStringToString>, CustomUserData => Str])
@@ -414,12 +425,14 @@ C<Subscribe> action for subscription to a topic. The
 C<CreatePlatformEndpoint> action is idempotent, so if the requester
 already owns an endpoint with the same device token and attributes,
 that endpoint's ARN is returned without creating a new endpoint. For
-more information, see Using Amazon SNS Mobile Push Notifications.
+more information, see Using Amazon SNS Mobile Push Notifications
+(http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 When using C<CreatePlatformEndpoint> with Baidu, two attributes must be
 provided: ChannelId and UserId. The token field must also contain the
 ChannelId. For more information, see Creating an Amazon SNS Endpoint
-for Baidu.
+for Baidu
+(http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePushBaiduEndpoint.html).
 
 
 =head2 CreateTopic(Name => Str)
@@ -430,9 +443,9 @@ Returns: a L<Paws::SNS::CreateTopicResponse> instance
 
 Creates a topic to which notifications can be published. Users can
 create at most 100,000 topics. For more information, see
-http://aws.amazon.com/sns. This action is idempotent, so if the
-requester already owns a topic with the specified name, that topic's
-ARN is returned without creating a new topic.
+http://aws.amazon.com/sns (http://aws.amazon.com/sns/). This action is
+idempotent, so if the requester already owns a topic with the specified
+name, that topic's ARN is returned without creating a new topic.
 
 
 =head2 DeleteEndpoint(EndpointArn => Str)
@@ -443,7 +456,8 @@ Returns: nothing
 
 Deletes the endpoint for a device and mobile app from Amazon SNS. This
 action is idempotent. For more information, see Using Amazon SNS Mobile
-Push Notifications.
+Push Notifications
+(http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 When you delete an endpoint that is also subscribed to a topic, then
 you must also unsubscribe the endpoint from the topic.
@@ -457,7 +471,8 @@ Returns: nothing
 
 Deletes a platform application object for one of the supported push
 notification services, such as APNS and GCM. For more information, see
-Using Amazon SNS Mobile Push Notifications.
+Using Amazon SNS Mobile Push Notifications
+(http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 
 =head2 DeleteTopic(TopicArn => Str)
@@ -480,7 +495,8 @@ Returns: a L<Paws::SNS::GetEndpointAttributesResponse> instance
 
 Retrieves the endpoint attributes for a device on one of the supported
 push notification services, such as GCM and APNS. For more information,
-see Using Amazon SNS Mobile Push Notifications.
+see Using Amazon SNS Mobile Push Notifications
+(http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 
 =head2 GetPlatformApplicationAttributes(PlatformApplicationArn => Str)
@@ -491,7 +507,8 @@ Returns: a L<Paws::SNS::GetPlatformApplicationAttributesResponse> instance
 
 Retrieves the attributes of the platform application object for the
 supported push notification services, such as APNS and GCM. For more
-information, see Using Amazon SNS Mobile Push Notifications.
+information, see Using Amazon SNS Mobile Push Notifications
+(http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 
 =head2 GetSMSAttributes([Attributes => ArrayRef[Str|Undef]])
@@ -539,7 +556,8 @@ returned. To receive the next page, you call
 C<ListEndpointsByPlatformApplication> again using the NextToken string
 received from the previous call. When there are no more records to
 return, NextToken will be null. For more information, see Using Amazon
-SNS Mobile Push Notifications.
+SNS Mobile Push Notifications
+(http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 
 =head2 ListPhoneNumbersOptedOut([NextToken => Str])
@@ -574,7 +592,8 @@ first page results, then a NextToken string will be returned. To
 receive the next page, you call C<ListPlatformApplications> using the
 NextToken string received from the previous call. When there are no
 more records to return, NextToken will be null. For more information,
-see Using Amazon SNS Mobile Push Notifications.
+see Using Amazon SNS Mobile Push Notifications
+(http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 
 =head2 ListSubscriptions([NextToken => Str])
@@ -644,7 +663,8 @@ specify the EndpointArn for the TargetArn parameter. The EndpointArn is
 returned when making a call with the C<CreatePlatformEndpoint> action.
 
 For more information about formatting messages, see Send Custom
-Platform-Specific Payloads in Messages to Mobile Devices.
+Platform-Specific Payloads in Messages to Mobile Devices
+(http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-custommessage.html).
 
 
 =head2 RemovePermission(Label => Str, TopicArn => Str)
@@ -664,7 +684,8 @@ Returns: nothing
 
 Sets the attributes for an endpoint for a device on one of the
 supported push notification services, such as GCM and APNS. For more
-information, see Using Amazon SNS Mobile Push Notifications.
+information, see Using Amazon SNS Mobile Push Notifications
+(http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 
 =head2 SetPlatformApplicationAttributes(Attributes => L<Paws::SNS::MapStringToString>, PlatformApplicationArn => Str)
@@ -675,9 +696,11 @@ Returns: nothing
 
 Sets the attributes of the platform application object for the
 supported push notification services, such as APNS and GCM. For more
-information, see Using Amazon SNS Mobile Push Notifications. For
+information, see Using Amazon SNS Mobile Push Notifications
+(http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html). For
 information on configuring attributes for message delivery status, see
-Using Amazon SNS Application Attributes for Message Delivery Status.
+Using Amazon SNS Application Attributes for Message Delivery Status
+(http://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html).
 
 
 =head2 SetSMSAttributes(Attributes => L<Paws::SNS::MapStringToString>)
@@ -691,8 +714,9 @@ and receiving daily SMS usage reports.
 
 You can override some of these settings for a single message when you
 use the C<Publish> action with the C<MessageAttributes.entry.N>
-parameter. For more information, see Sending an SMS Message in the
-I<Amazon SNS Developer Guide>.
+parameter. For more information, see Sending an SMS Message
+(http://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html) in
+the I<Amazon SNS Developer Guide>.
 
 
 =head2 SetSubscriptionAttributes(AttributeName => Str, SubscriptionArn => Str, [AttributeValue => Str])

@@ -399,31 +399,35 @@ GameLift. You can use the API functionality with these tools:
 
 =item *
 
-The Amazon Web Services software development kit (AWS SDK) is available
-in multiple languages including C++ and C#. Use the SDK to access the
-API programmatically from an application, such as a game client.
+The Amazon Web Services software development kit (AWS SDK
+(http://aws.amazon.com/tools/#sdk)) is available in multiple languages
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-supported.html#gamelift-supported-clients)
+including C++ and C#. Use the SDK to access the API programmatically
+from an application, such as a game client.
 
 =item *
 
-The AWS command-line interface (CLI) tool is primarily useful for
-handling administrative actions, such as setting up and managing Amazon
-GameLift settings and resources. You can use the AWS CLI to manage all
-of your AWS services.
+The AWS command-line interface (http://aws.amazon.com/cli/) (CLI) tool
+is primarily useful for handling administrative actions, such as
+setting up and managing Amazon GameLift settings and resources. You can
+use the AWS CLI to manage all of your AWS services.
 
 =item *
 
-The AWS Management Console for Amazon GameLift provides a web interface
-to manage your Amazon GameLift settings and resources. The console
-includes a dashboard for tracking key resources, including builds and
-fleets, and displays usage and performance metrics for your games as
-customizable graphs.
+The AWS Management Console
+(https://console.aws.amazon.com/gamelift/home) for Amazon GameLift
+provides a web interface to manage your Amazon GameLift settings and
+resources. The console includes a dashboard for tracking key resources,
+including builds and fleets, and displays usage and performance metrics
+for your games as customizable graphs.
 
 =item *
 
 Amazon GameLift Local is a tool for testing your game's integration
 with Amazon GameLift before deploying it on the service. This tools
 supports a subset of key API actions, which can be called from either
-the AWS CLI or programmatically. See Testing an Integration.
+the AWS CLI or programmatically. See Testing an Integration
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/integration-testing-local.html).
 
 =back
 
@@ -433,26 +437,33 @@ B<MORE RESOURCES>
 
 =item *
 
-Amazon GameLift Developer Guide -- Learn more about Amazon GameLift
-features and how to use them.
+Amazon GameLift Developer Guide
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/) -- Learn
+more about Amazon GameLift features and how to use them.
 
 =item *
 
-Lumberyard and Amazon GameLift Tutorials -- Get started fast with
+Lumberyard and Amazon GameLift Tutorials
+(https://gamedev.amazon.com/forums/tutorials) -- Get started fast with
 walkthroughs and sample projects.
 
 =item *
 
-GameDev Blog -- Stay up to date with new features and techniques.
+GameDev Blog (http://aws.amazon.com/blogs/gamedev/) -- Stay up to date
+with new features and techniques.
 
 =item *
 
-GameDev Forums -- Connect with the GameDev community.
+GameDev Forums
+(https://gamedev.amazon.com/forums/spaces/123/gamelift-discussion.html)
+-- Connect with the GameDev community.
 
 =item *
 
-Amazon GameLift Document History -- See changes to the Amazon GameLift
-service, SDKs, and documentation, as well as links to release notes.
+Amazon GameLift Document History
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/doc-history.html)
+-- See changes to the Amazon GameLift service, SDKs, and documentation,
+as well as links to release notes.
 
 =back
 
@@ -604,10 +615,12 @@ Local.>
 B<Setting Up and Managing Game Servers>
 
 When setting up Amazon GameLift resources for your game, you first
-create a game build and upload it to Amazon GameLift. You can then use
-these actions to configure and manage a fleet of resources to run your
-game servers, scale capacity to meet player demand, access performance
-and utilization metrics, and more.
+create a game build
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html)
+and upload it to Amazon GameLift. You can then use these actions to
+configure and manage a fleet of resources to run your game servers,
+scale capacity to meet player demand, access performance and
+utilization metrics, and more.
 
 =over
 
@@ -1049,12 +1062,14 @@ files stored in an Amazon Simple Storage Service (Amazon S3) location.
 To use this API call, create a C<.zip> file containing all of the files
 for the build and store it in an Amazon S3 bucket under your AWS
 account. For help on packaging your build files and creating a build,
-see Uploading Your Game to Amazon GameLift.
+see Uploading Your Game to Amazon GameLift
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html).
 
 Use this API action ONLY if you are storing your game build files in an
 Amazon S3 bucket. To create a build using files stored locally, use the
-CLI command C<upload-build> , which uploads the build files from a file
-location you specify.
+CLI command C<upload-build>
+(http://docs.aws.amazon.com/cli/latest/reference/gamelift/upload-build.html),
+which uploads the build files from a file location you specify.
 
 To create a new build using C<CreateBuild>, identify the storage
 location and operating system of your game build. You also have the
@@ -1102,10 +1117,10 @@ Creates a new fleet to run your game servers. A fleet is a set of
 Amazon Elastic Compute Cloud (Amazon EC2) instances, each of which can
 run multiple server processes to host game sessions. You configure a
 fleet to create instances with certain hardware specifications (see
-Amazon EC2 Instance Types for more information), and deploy a specified
-game build to each instance. A newly created fleet passes through
-several statuses; once it reaches the C<ACTIVE> status, it can begin
-hosting game sessions.
+Amazon EC2 Instance Types (http://aws.amazon.com/ec2/instance-types/)
+for more information), and deploy a specified game build to each
+instance. A newly created fleet passes through several statuses; once
+it reaches the C<ACTIVE> status, it can begin hosting game sessions.
 
 To create a new fleet, you must specify the following: (1) fleet name,
 (2) build ID of an uploaded game build, (3) an EC2 instance type, and
@@ -1143,7 +1158,8 @@ included in the metric group's data.
 
 You have the option of creating a VPC peering connection with the new
 fleet. For more information, see VPC Peering with Amazon GameLift
-Fleets.
+Fleets
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 
 If the CreateFleet call is successful, Amazon GameLift performs the
 following tasks:
@@ -1471,9 +1487,11 @@ DescribeMatchmaking; or (2) receiving notifications with Amazon Simple
 Notification Service (SNS). To use notifications, you first need to set
 up an SNS topic to receive the notifications, and provide the topic ARN
 in the matchmaking configuration (see Setting up Notifications for
-Matchmaking). Since notifications promise only "best effort" delivery,
-we recommend calling C<DescribeMatchmaking> if no notifications are
-received within 30 seconds.
+Matchmaking
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html)).
+Since notifications promise only "best effort" delivery, we recommend
+calling C<DescribeMatchmaking> if no notifications are received within
+30 seconds.
 
 Operations related to match configurations and rule sets include:
 
@@ -1527,7 +1545,8 @@ rule sets to handle the scenarios that suit your game (such as for
 different game modes), and create a separate matchmaking configuration
 for each rule set. See additional information on rule set content in
 the MatchmakingRuleSet structure. For help creating rule sets,
-including useful examples, see the topic Adding FlexMatch to Your Game.
+including useful examples, see the topic Adding FlexMatch to Your Game
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html).
 
 Once created, matchmaking rule sets cannot be changed or deleted, so we
 recommend checking the rule set syntax using
@@ -1706,7 +1725,8 @@ the VPC for your Amazon GameLift fleet and a virtual private cloud
 fleet to communicate directly with other AWS resources. Once you've
 received authorization, call CreateVpcPeeringConnection to establish
 the peering connection. For more information, see VPC Peering with
-Amazon GameLift Fleets.
+Amazon GameLift Fleets
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 
 You can peer with VPCs that are owned by any AWS account you have
 access to, including the account that you use to manage your Amazon
@@ -1777,7 +1797,8 @@ directly with other AWS resources. You can peer with VPCs in any AWS
 account that you have access to, including the account that you use to
 manage your Amazon GameLift fleets. You cannot peer with VPCs that are
 in different regions. For more information, see VPC Peering with Amazon
-GameLift Fleets.
+GameLift Fleets
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 
 Before calling this operation to establish the peering connection, you
 first need to call CreateVpcPeeringAuthorization and identify the VPC
@@ -3926,8 +3947,10 @@ session. When a game session is terminated, Amazon GameLift
 automatically stores the logs in Amazon S3 and retains them for 14
 days. Use this URL to download the logs.
 
-See the AWS Service Limits page for maximum log file sizes. Log files
-that exceed this limit are not saved.
+See the AWS Service Limits
+(http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift)
+page for maximum log file sizes. Log files that exceed this limit are
+not saved.
 
 Game-session-related operations include:
 
@@ -4000,7 +4023,8 @@ key must be saved in the proper format to a C<.pem> file before using.
 If you're making this request using the AWS CLI, saving the secret can
 be handled as part of the GetInstanceAccess request. (See the example
 later in this topic). For more information on remote access, see
-Remotely Accessing an Instance.
+Remotely Accessing an Instance
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-remote-access.html).
 
 To request access to a specific instance, specify the IDs of the
 instance and the fleet it belongs to. If successful, an InstanceAccess
@@ -4649,7 +4673,8 @@ together. FlexMatch finds additional players as needed to fill the
 match. Match type, rules, and the queue used to place a new game
 session are defined in a C<MatchmakingConfiguration>. For complete
 information on setting up and using FlexMatch, see the topic Adding
-FlexMatch to Your Game.
+FlexMatch to Your Game
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html).
 
 To start matchmaking, provide a unique ticket ID, specify a matchmaking
 configuration, and include the players to be matched. You must also
@@ -5059,7 +5084,8 @@ fleet's EC2 instance type.
 If you're using autoscaling (see PutScalingPolicy), you may want to
 specify a minimum and/or maximum capacity. If you don't provide these,
 autoscaling can set capacity anywhere between zero and the service
-limits.
+limits
+(http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift).
 
 To update fleet capacity, specify the fleet ID and the number of
 instances you want the fleet to host. If successful, Amazon GameLift

@@ -39,9 +39,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The name of the group to associate the policy with.
 
-This parameter allows (per its regex pattern) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+upper and lowercase alphanumeric characters with no spaces. You can
+also include any of the following characters: =,.@-
 
 
 
@@ -49,13 +50,13 @@ spaces. You can also include any of the following characters: =,.@-
 
 The policy document.
 
-The regex pattern used to validate this parameter is a string of
-characters consisting of any printable ASCII character ranging from the
-space character (\u0020) through end of the ASCII character range as
-well as the printable characters in the Basic Latin and Latin-1
-Supplement character set (through \u00FF). It also includes the special
-characters tab (\u0009), line feed (\u000A), and carriage return
-(\u000D).
+The regex pattern (http://wikipedia.org/wiki/regex) used to validate
+this parameter is a string of characters consisting of any printable
+ASCII character ranging from the space character (\u0020) through end
+of the ASCII character range as well as the printable characters in the
+Basic Latin and Latin-1 Supplement character set (through \u00FF). It
+also includes the special characters tab (\u0009), line feed (\u000A),
+and carriage return (\u000D).
 
 
 
@@ -63,9 +64,10 @@ characters tab (\u0009), line feed (\u000A), and carriage return
 
 The name of the policy document.
 
-This parameter allows (per its regex pattern) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: =,.@-+
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+upper and lowercase alphanumeric characters with no spaces. You can
+also include any of the following characters: =,.@-+
 
 
 

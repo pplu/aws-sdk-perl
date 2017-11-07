@@ -38,7 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The unique identifier (ID) of the member account that you want to
 remove from the organization.
 
-The regex pattern for an account ID string requires exactly 12 digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for an account ID
+string requires exactly 12 digits.
 
 
 

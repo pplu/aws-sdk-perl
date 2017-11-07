@@ -40,7 +40,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The identifier or ARN for the source DB parameter group. For
 information about creating an ARN, see Constructing an RDS Amazon
-Resource Name (ARN).
+Resource Name (ARN)
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
 
 Constraints:
 

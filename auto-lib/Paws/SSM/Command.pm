@@ -103,7 +103,8 @@ user input provided as part of the SendCommand API.
 at the same time. You can specify a number of instances, such as 10, or
 a percentage of instances, such as 10%. The default value is 50. For
 more information about how to use MaxConcurrency, see Executing a
-Command Using Systems Manager Run Command.
+Command Using Systems Manager Run Command
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html).
 
 
 =head2 MaxErrors => Str
@@ -112,7 +113,8 @@ Command Using Systems Manager Run Command.
 the command to additional targets. You can specify a number of errors,
 such as 10, or a percentage or errors, such as 10%. The default value
 is 50. For more information about how to use MaxErrors, see Executing a
-Command Using Systems Manager Run Command.
+Command Using Systems Manager Run Command
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html).
 
 
 =head2 NotificationConfig => L<Paws::SSM::NotificationConfig>
@@ -168,7 +170,9 @@ sending notifications about command status changes.
 information than Status because it includes states resulting from error
 and concurrency control parameters. StatusDetails can show different
 results than Status. For more information about these statuses, see Run
-Command Status. StatusDetails can be one of the following values:
+Command Status
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html).
+StatusDetails can be one of the following values:
 
 =over
 

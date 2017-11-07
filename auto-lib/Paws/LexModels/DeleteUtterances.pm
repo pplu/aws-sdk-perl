@@ -44,8 +44,11 @@ The name of the bot that stored the utterances.
 =head2 B<REQUIRED> UserId => Str
 
 The unique identifier for the user that made the utterances. This is
-the user ID that was sent in the PostContent or PostText operation
-request that contained the utterance.
+the user ID that was sent in the PostContent
+(http://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostContent.html)
+or PostText
+(http://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html)
+operation request that contained the utterance.
 
 
 

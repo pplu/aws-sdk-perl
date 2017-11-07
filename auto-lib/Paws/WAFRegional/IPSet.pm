@@ -43,7 +43,7 @@ address followed by a C</32>, for example, 192.0.2.0/31. To block a
 range of IP addresses, you can specify a C</128>, C</64>, C</56>,
 C</48>, C</32>, C</24>, C</16>, or C</8> CIDR. For more information
 about CIDR notation, see the Wikipedia entry Classless Inter-Domain
-Routing.
+Routing (https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 =head1 ATTRIBUTES
 

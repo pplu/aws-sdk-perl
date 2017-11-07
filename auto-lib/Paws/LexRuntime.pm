@@ -164,7 +164,7 @@ C<x-amz-slot-to-elicit> header is omitted.
 
 In addition, Amazon Lex also returns your application-specific
 C<sessionAttributes>. For more information, see Managing Conversation
-Context.
+Context (http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html).
 
 
 =head2 PostText(BotAlias => Str, BotName => Str, InputText => Str, UserId => Str, [RequestAttributes => L<Paws::LexRuntime::StringMap>, SessionAttributes => L<Paws::LexRuntime::StringMap>])
@@ -257,7 +257,7 @@ is set to ElicitIntent and C<slotToElicit> is set to null.
 
 In addition, Amazon Lex also returns your application-specific
 C<sessionAttributes>. For more information, see Managing Conversation
-Context.
+Context (http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html).
 
 
 

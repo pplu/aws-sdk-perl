@@ -45,7 +45,8 @@ generate output. For example, you can write a SQL statement that reads
 data from one in-application stream, generates a running average of the
 number of advertisement clicks by vendor, and insert resulting rows in
 another in-application stream using pumps. For more inforamtion about
-the typical pattern, see Application Code.
+the typical pattern, see Application Code
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-app-code.html).
 
 You can provide such series of SQL statements, where output of one
 statement can be used as the input for the next statement. You store
@@ -76,7 +77,8 @@ C<sample-app>).
 
 Use this parameter to configure a CloudWatch log stream to monitor
 application configuration errors. For more information, see Working
-with Amazon CloudWatch Logs.
+with Amazon CloudWatch Logs
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html).
 
 
 

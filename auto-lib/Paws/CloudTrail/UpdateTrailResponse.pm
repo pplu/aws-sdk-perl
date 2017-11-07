@@ -77,7 +77,8 @@ log files.
 
 Specifies the Amazon S3 key prefix that comes after the name of the
 bucket you have designated for log file delivery. For more information,
-see Finding Your CloudTrail Log Files.
+see Finding Your CloudTrail Log Files
+(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html).
 
 
 =head2 SnsTopicARN => Str

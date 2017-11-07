@@ -443,7 +443,7 @@ codes.
 AWS OpsWorks Stacks is an application management service that provides
 an integrated experience for overseeing the complete application
 lifecycle. For information about this product, go to the AWS OpsWorks
-details page.
+(http://aws.amazon.com/opsworks/) details page.
 
 B<SDKs and CLI>
 
@@ -457,30 +457,36 @@ information, see:
 =item *
 
 AWS CLI
+(http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html)
 
 =item *
 
 AWS SDK for Java
+(http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/opsworks/AWSOpsWorksClient.html)
 
 =item *
 
 AWS SDK for .NET
+(http://docs.aws.amazon.com/sdkfornet/latest/apidocs/html/N_Amazon_OpsWorks.htm)
 
 =item *
 
 AWS SDK for PHP 2
+(http://docs.aws.amazon.com/aws-sdk-php-2/latest/class-Aws.OpsWorks.OpsWorksClient.html)
 
 =item *
 
-AWS SDK for Ruby
+AWS SDK for Ruby (http://docs.aws.amazon.com/sdkforruby/api/)
 
 =item *
 
 AWS SDK for Node.js
+(http://aws.amazon.com/documentation/sdkforjavascript/)
 
 =item *
 
 AWS SDK for Python(Boto)
+(http://docs.pythonboto.org/en/latest/ref/opsworks.html)
 
 =back
 
@@ -551,7 +557,8 @@ B<Chef Versions>
 When you call CreateStack, CloneStack, or UpdateStack we recommend you
 use the C<ConfigurationManager> parameter to specify the Chef version.
 The recommended and default value for Linux stacks is currently 12.
-Windows stacks use Chef 12.2. For more information, see Chef Versions.
+Windows stacks use Chef 12.2. For more information, see Chef Versions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-chef11.html).
 
 You can specify Chef 12, 11.10, or 11.4 for your Linux stack. We
 recommend migrating your existing Linux stacks to Chef 12 as soon as
@@ -587,7 +594,8 @@ OpsWorks Stacks.
 B<Required Permissions>: To use this action, an AWS Identity and Access
 Management (IAM) user must have a Manage permissions level for the
 stack or an attached policy that explicitly grants permissions. For
-more information on user permissions, see Managing User Permissions.
+more information on user permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 AssignVolume(VolumeId => Str, [InstanceId => Str])
@@ -600,12 +608,14 @@ Assigns one of the stack's registered Amazon EBS volumes to a specified
 instance. The volume must first be registered with the stack by calling
 RegisterVolume. After you register the volume, you must call
 UpdateVolume to specify a mount point before calling C<AssignVolume>.
-For more information, see Resource Management.
+For more information, see Resource Management
+(http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 AssociateElasticIp(ElasticIp => Str, [InstanceId => Str])
@@ -617,12 +627,14 @@ Returns: nothing
 Associates one of the stack's registered Elastic IP addresses with a
 specified instance. The address must first be registered with the stack
 by calling RegisterElasticIp. For more information, see Resource
-Management.
+Management
+(http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 AttachElasticLoadBalancer(ElasticLoadBalancerName => Str, LayerId => Str)
@@ -634,16 +646,19 @@ Returns: nothing
 Attaches an Elastic Load Balancing load balancer to a specified layer.
 AWS OpsWorks Stacks does not support Application Load Balancer. You can
 only use Classic Load Balancer with AWS OpsWorks Stacks. For more
-information, see Elastic Load Balancing.
+information, see Elastic Load Balancing
+(http://docs.aws.amazon.com/opsworks/latest/userguide/layers-elb.html).
 
 You must create the Elastic Load Balancing instance separately, by
 using the Elastic Load Balancing console, API, or CLI. For more
-information, see Elastic Load Balancing Developer Guide.
+information, see Elastic Load Balancing Developer Guide
+(http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/Welcome.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 CloneStack(ServiceRoleArn => Str, SourceStackId => Str, [AgentVersion => Str, Attributes => L<Paws::OpsWorks::StackAttributes>, ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>, CloneAppIds => ArrayRef[Str|Undef], ClonePermissions => Bool, ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>, CustomCookbooksSource => L<Paws::OpsWorks::Source>, CustomJson => Str, DefaultAvailabilityZone => Str, DefaultInstanceProfileArn => Str, DefaultOs => Str, DefaultRootDeviceType => Str, DefaultSshKeyName => Str, DefaultSubnetId => Str, HostnameTheme => Str, Name => Str, Region => Str, UseCustomCookbooks => Bool, UseOpsworksSecurityGroups => Bool, VpcId => Str])
@@ -653,12 +668,15 @@ Each argument is described in detail in: L<Paws::OpsWorks::CloneStack>
 Returns: a L<Paws::OpsWorks::CloneStackResult> instance
 
 Creates a clone of a specified stack. For more information, see Clone a
-Stack. By default, all parameters are set to the values used by the
-parent stack.
+Stack
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-cloning.html).
+By default, all parameters are set to the values used by the parent
+stack.
 
 B<Required Permissions>: To use this action, an IAM user must have an
 attached policy that explicitly grants permissions. For more
-information on user permissions, see Managing User Permissions.
+information on user permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 CreateApp(Name => Str, StackId => Str, Type => Str, [AppSource => L<Paws::OpsWorks::Source>, Attributes => L<Paws::OpsWorks::AppAttributes>, DataSources => ArrayRef[L<Paws::OpsWorks::DataSource>], Description => Str, Domains => ArrayRef[Str|Undef], EnableSsl => Bool, Environment => ArrayRef[L<Paws::OpsWorks::EnvironmentVariable>], Shortname => Str, SslConfiguration => L<Paws::OpsWorks::SslConfiguration>])
@@ -668,12 +686,14 @@ Each argument is described in detail in: L<Paws::OpsWorks::CreateApp>
 Returns: a L<Paws::OpsWorks::CreateAppResult> instance
 
 Creates an app for a specified stack. For more information, see
-Creating Apps.
+Creating Apps
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 CreateDeployment(Command => L<Paws::OpsWorks::DeploymentCommand>, StackId => Str, [AppId => Str, Comment => Str, CustomJson => Str, InstanceIds => ArrayRef[Str|Undef], LayerIds => ArrayRef[Str|Undef]])
@@ -683,12 +703,16 @@ Each argument is described in detail in: L<Paws::OpsWorks::CreateDeployment>
 Returns: a L<Paws::OpsWorks::CreateDeploymentResult> instance
 
 Runs deployment or stack commands. For more information, see Deploying
-Apps and Run Stack Commands.
+Apps
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-deploying.html)
+and Run Stack Commands
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-commands.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Deploy or Manage permissions level for the stack, or an attached policy
 that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 CreateInstance(InstanceType => Str, LayerIds => ArrayRef[Str|Undef], StackId => Str, [AgentVersion => Str, AmiId => Str, Architecture => Str, AutoScalingType => Str, AvailabilityZone => Str, BlockDeviceMappings => ArrayRef[L<Paws::OpsWorks::BlockDeviceMapping>], EbsOptimized => Bool, Hostname => Str, InstallUpdatesOnBoot => Bool, Os => Str, RootDeviceType => Str, SshKeyName => Str, SubnetId => Str, Tenancy => Str, VirtualizationType => Str])
@@ -698,12 +722,14 @@ Each argument is described in detail in: L<Paws::OpsWorks::CreateInstance>
 Returns: a L<Paws::OpsWorks::CreateInstanceResult> instance
 
 Creates an instance in a specified stack. For more information, see
-Adding an Instance to a Layer.
+Adding an Instance to a Layer
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 CreateLayer(Name => Str, Shortname => Str, StackId => Str, Type => Str, [Attributes => L<Paws::OpsWorks::LayerAttributes>, AutoAssignElasticIps => Bool, AutoAssignPublicIps => Bool, CloudWatchLogsConfiguration => L<Paws::OpsWorks::CloudWatchLogsConfiguration>, CustomInstanceProfileArn => Str, CustomJson => Str, CustomRecipes => L<Paws::OpsWorks::Recipes>, CustomSecurityGroupIds => ArrayRef[Str|Undef], EnableAutoHealing => Bool, InstallUpdatesOnBoot => Bool, LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>, Packages => ArrayRef[Str|Undef], UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]])
@@ -712,7 +738,8 @@ Each argument is described in detail in: L<Paws::OpsWorks::CreateLayer>
 
 Returns: a L<Paws::OpsWorks::CreateLayerResult> instance
 
-Creates a layer. For more information, see How to Create a Layer.
+Creates a layer. For more information, see How to Create a Layer
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html).
 
 You should use B<CreateLayer> for noncustom layer types such as PHP App
 Server only if the stack does not have an existing layer of that type.
@@ -724,7 +751,8 @@ B<CreateLayer> as many times as you like for that layer type.
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 CreateStack(DefaultInstanceProfileArn => Str, Name => Str, Region => Str, ServiceRoleArn => Str, [AgentVersion => Str, Attributes => L<Paws::OpsWorks::StackAttributes>, ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>, ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>, CustomCookbooksSource => L<Paws::OpsWorks::Source>, CustomJson => Str, DefaultAvailabilityZone => Str, DefaultOs => Str, DefaultRootDeviceType => Str, DefaultSshKeyName => Str, DefaultSubnetId => Str, HostnameTheme => Str, UseCustomCookbooks => Bool, UseOpsworksSecurityGroups => Bool, VpcId => Str])
@@ -733,11 +761,13 @@ Each argument is described in detail in: L<Paws::OpsWorks::CreateStack>
 
 Returns: a L<Paws::OpsWorks::CreateStackResult> instance
 
-Creates a new stack. For more information, see Create a New Stack.
+Creates a new stack. For more information, see Create a New Stack
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-edit.html).
 
 B<Required Permissions>: To use this action, an IAM user must have an
 attached policy that explicitly grants permissions. For more
-information on user permissions, see Managing User Permissions.
+information on user permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 CreateUserProfile(IamUserArn => Str, [AllowSelfManagement => Bool, SshPublicKey => Str, SshUsername => Str])
@@ -750,7 +780,8 @@ Creates a new user profile.
 
 B<Required Permissions>: To use this action, an IAM user must have an
 attached policy that explicitly grants permissions. For more
-information on user permissions, see Managing User Permissions.
+information on user permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DeleteApp(AppId => Str)
@@ -764,7 +795,8 @@ Deletes a specified app.
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DeleteInstance(InstanceId => Str, [DeleteElasticIp => Bool, DeleteVolumes => Bool])
@@ -776,12 +808,14 @@ Returns: nothing
 Deletes a specified instance, which terminates the associated Amazon
 EC2 instance. You must stop an instance before you can delete it.
 
-For more information, see Deleting Instances.
+For more information, see Deleting Instances
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-delete.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DeleteLayer(LayerId => Str)
@@ -792,12 +826,14 @@ Returns: nothing
 
 Deletes a specified layer. You must first stop and then delete all
 associated instances or unassign registered instances. For more
-information, see How to Delete a Layer.
+information, see How to Delete a Layer
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-delete.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DeleteStack(StackId => Str)
@@ -808,12 +844,14 @@ Returns: nothing
 
 Deletes a specified stack. You must first delete all instances, layers,
 and apps or deregister registered instances. For more information, see
-Shut Down a Stack.
+Shut Down a Stack
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-shutting.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DeleteUserProfile(IamUserArn => Str)
@@ -826,7 +864,8 @@ Deletes a user profile.
 
 B<Required Permissions>: To use this action, an IAM user must have an
 attached policy that explicitly grants permissions. For more
-information on user permissions, see Managing User Permissions.
+information on user permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DeregisterEcsCluster(EcsClusterArn => Str)
@@ -836,13 +875,15 @@ Each argument is described in detail in: L<Paws::OpsWorks::DeregisterEcsCluster>
 Returns: nothing
 
 Deregisters a specified Amazon ECS cluster from a stack. For more
-information, see Resource Management.
+information, see Resource Management
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html#workinglayers-ecscluster-delete).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack or an attached policy that
 explicitly grants permissions. For more information on user
 permissions, see
-http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DeregisterElasticIp(ElasticIp => Str)
@@ -853,12 +894,14 @@ Returns: nothing
 
 Deregisters a specified Elastic IP address. The address can then be
 registered by another stack. For more information, see Resource
-Management.
+Management
+(http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DeregisterInstance(InstanceId => Str)
@@ -875,7 +918,8 @@ OpsWorks Stacks.
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DeregisterRdsDbInstance(RdsDbInstanceArn => Str)
@@ -889,7 +933,8 @@ Deregisters an Amazon RDS instance.
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DeregisterVolume(VolumeId => Str)
@@ -899,12 +944,14 @@ Each argument is described in detail in: L<Paws::OpsWorks::DeregisterVolume>
 Returns: nothing
 
 Deregisters an Amazon EBS volume. The volume can then be registered by
-another stack. For more information, see Resource Management.
+another stack. For more information, see Resource Management
+(http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DescribeAgentVersions([ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>, StackId => Str])
@@ -932,7 +979,8 @@ This call accepts only one resource-identifying parameter.
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DescribeCommands([CommandIds => ArrayRef[Str|Undef], DeploymentId => Str, InstanceId => Str])
@@ -948,7 +996,8 @@ This call accepts only one resource-identifying parameter.
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DescribeDeployments([AppId => Str, DeploymentIds => ArrayRef[Str|Undef], StackId => Str])
@@ -964,7 +1013,8 @@ This call accepts only one resource-identifying parameter.
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DescribeEcsClusters([EcsClusterArns => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, StackId => Str])
@@ -982,7 +1032,8 @@ maximum of one element.
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack or an attached
 policy that explicitly grants permission. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 This call accepts only one resource-identifying parameter.
 
@@ -993,14 +1044,16 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeElasticIps>
 
 Returns: a L<Paws::OpsWorks::DescribeElasticIpsResult> instance
 
-Describes Elastic IP addresses.
+Describes Elastic IP addresses
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html).
 
 This call accepts only one resource-identifying parameter.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DescribeElasticLoadBalancers([LayerIds => ArrayRef[Str|Undef], StackId => Str])
@@ -1016,7 +1069,8 @@ This call accepts only one resource-identifying parameter.
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DescribeInstances([InstanceIds => ArrayRef[Str|Undef], LayerId => Str, StackId => Str])
@@ -1032,7 +1086,8 @@ This call accepts only one resource-identifying parameter.
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DescribeLayers([LayerIds => ArrayRef[Str|Undef], StackId => Str])
@@ -1048,7 +1103,8 @@ This call accepts only one resource-identifying parameter.
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DescribeLoadBasedAutoScaling(LayerIds => ArrayRef[Str|Undef])
@@ -1064,7 +1120,8 @@ You must specify at least one of the parameters.
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DescribeMyUserProfile( => )
@@ -1078,7 +1135,8 @@ Describes a user's SSH information.
 B<Required Permissions>: To use this action, an IAM user must have
 self-management enabled or an attached policy that explicitly grants
 permissions. For more information on user permissions, see Managing
-User Permissions.
+User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DescribePermissions([IamUserArn => Str, StackId => Str])
@@ -1092,7 +1150,8 @@ Describes the permissions for a specified stack.
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DescribeRaidArrays([InstanceId => Str, RaidArrayIds => ArrayRef[Str|Undef], StackId => Str])
@@ -1108,7 +1167,8 @@ This call accepts only one resource-identifying parameter.
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DescribeRdsDbInstances(StackId => Str, [RdsDbInstanceArns => ArrayRef[Str|Undef]])
@@ -1122,7 +1182,8 @@ Describes Amazon RDS instances.
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 This call accepts only one resource-identifying parameter.
 
@@ -1138,7 +1199,8 @@ Describes AWS OpsWorks Stacks service errors.
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 This call accepts only one resource-identifying parameter.
 
@@ -1154,7 +1216,8 @@ Requests a description of a stack's provisioning parameters.
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack or an attached
 policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DescribeStacks([StackIds => ArrayRef[Str|Undef]])
@@ -1168,7 +1231,8 @@ Requests a description of one or more stacks.
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DescribeStackSummary(StackId => Str)
@@ -1184,7 +1248,8 @@ C<online>.
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DescribeTimeBasedAutoScaling(InstanceIds => ArrayRef[Str|Undef])
@@ -1201,7 +1266,8 @@ You must specify at least one of the parameters.
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DescribeUserProfiles([IamUserArns => ArrayRef[Str|Undef]])
@@ -1214,7 +1280,8 @@ Describe specified users.
 
 B<Required Permissions>: To use this action, an IAM user must have an
 attached policy that explicitly grants permissions. For more
-information on user permissions, see Managing User Permissions.
+information on user permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DescribeVolumes([InstanceId => Str, RaidArrayId => Str, StackId => Str, VolumeIds => ArrayRef[Str|Undef]])
@@ -1230,7 +1297,8 @@ This call accepts only one resource-identifying parameter.
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DetachElasticLoadBalancer(ElasticLoadBalancerName => Str, LayerId => Str)
@@ -1244,7 +1312,8 @@ Detaches a specified Elastic Load Balancing instance from its layer.
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 DisassociateElasticIp(ElasticIp => Str)
@@ -1255,12 +1324,14 @@ Returns: nothing
 
 Disassociates an Elastic IP address from its instance. The address
 remains registered with the stack. For more information, see Resource
-Management.
+Management
+(http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 GetHostnameSuggestion(LayerId => Str)
@@ -1275,7 +1346,8 @@ current host name theme.
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 GrantAccess(InstanceId => Str, [ValidForInMinutes => Int])
@@ -1306,12 +1378,14 @@ Each argument is described in detail in: L<Paws::OpsWorks::RebootInstance>
 Returns: nothing
 
 Reboots a specified instance. For more information, see Starting,
-Stopping, and Rebooting Instances.
+Stopping, and Rebooting Instances
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 RegisterEcsCluster(EcsClusterArn => Str, StackId => Str)
@@ -1322,12 +1396,14 @@ Returns: a L<Paws::OpsWorks::RegisterEcsClusterResult> instance
 
 Registers a specified Amazon ECS cluster with a stack. You can register
 only one cluster with a stack. A cluster can be registered with only
-one stack. For more information, see Resource Management.
+one stack. For more information, see Resource Management
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 RegisterElasticIp(ElasticIp => Str, StackId => Str)
@@ -1339,12 +1415,14 @@ Returns: a L<Paws::OpsWorks::RegisterElasticIpResult> instance
 Registers an Elastic IP address with a specified stack. An address can
 be registered with only one stack at a time. If the address is already
 registered, you must first deregister it by calling
-DeregisterElasticIp. For more information, see Resource Management.
+DeregisterElasticIp. For more information, see Resource Management
+(http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 RegisterInstance(StackId => Str, [Hostname => Str, InstanceIdentity => L<Paws::OpsWorks::InstanceIdentity>, PrivateIp => Str, PublicIp => Str, RsaPublicKey => Str, RsaPublicKeyFingerprint => Str])
@@ -1362,19 +1440,22 @@ OpsWorks Stacks agent on the instance, and registering the instance
 with the stack. C<RegisterInstance> handles only the second step. You
 should instead use the AWS CLI C<register> command, which performs the
 entire registration operation. For more information, see Registering an
-Instance with an AWS OpsWorks Stacks Stack.
+Instance with an AWS OpsWorks Stacks Stack
+(http://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register.html).
 
 Registered instances have the same requirements as instances that are
 created by using the CreateInstance API. For example, registered
 instances must be running a supported Linux-based operating system, and
 they must have a supported instance type. For more information about
 requirements for instances that you want to register, see Preparing the
-Instance.
+Instance
+(http://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register-registering-preparer.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 RegisterRdsDbInstance(DbPassword => Str, DbUser => Str, RdsDbInstanceArn => Str, StackId => Str)
@@ -1388,7 +1469,8 @@ Registers an Amazon RDS instance with a stack.
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 RegisterVolume(StackId => Str, [Ec2VolumeId => Str])
@@ -1400,12 +1482,14 @@ Returns: a L<Paws::OpsWorks::RegisterVolumeResult> instance
 Registers an Amazon EBS volume with a specified stack. A volume can be
 registered with only one stack at a time. If the volume is already
 registered, you must first deregister it by calling DeregisterVolume.
-For more information, see Resource Management.
+For more information, see Resource Management
+(http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 SetLoadBasedAutoScaling(LayerId => Str, [DownScaling => L<Paws::OpsWorks::AutoScalingThresholds>, Enable => Bool, UpScaling => L<Paws::OpsWorks::AutoScalingThresholds>])
@@ -1416,7 +1500,8 @@ Returns: nothing
 
 Specify the load-based auto scaling configuration for a specified
 layer. For more information, see Managing Load with Time-based and
-Load-based Instances.
+Load-based Instances
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html).
 
 To use load-based auto scaling, you must create a set of load-based
 auto scaling instances. Load-based auto scaling operates only on the
@@ -1426,7 +1511,8 @@ enough instances to handle the maximum anticipated load.
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 SetPermission(IamUserArn => Str, StackId => Str, [AllowSsh => Bool, AllowSudo => Bool, Level => Str])
@@ -1436,12 +1522,14 @@ Each argument is described in detail in: L<Paws::OpsWorks::SetPermission>
 Returns: nothing
 
 Specifies a user's permissions. For more information, see Security and
-Permissions.
+Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 SetTimeBasedAutoScaling(InstanceId => Str, [AutoScalingSchedule => L<Paws::OpsWorks::WeeklyAutoScalingSchedule>])
@@ -1452,12 +1540,14 @@ Returns: nothing
 
 Specify the time-based auto scaling configuration for a specified
 instance. For more information, see Managing Load with Time-based and
-Load-based Instances.
+Load-based Instances
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 StartInstance(InstanceId => Str)
@@ -1467,12 +1557,14 @@ Each argument is described in detail in: L<Paws::OpsWorks::StartInstance>
 Returns: nothing
 
 Starts a specified instance. For more information, see Starting,
-Stopping, and Rebooting Instances.
+Stopping, and Rebooting Instances
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 StartStack(StackId => Str)
@@ -1486,7 +1578,8 @@ Starts a stack's instances.
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 StopInstance(InstanceId => Str)
@@ -1498,12 +1591,14 @@ Returns: nothing
 Stops a specified instance. When you stop a standard instance, the data
 disappears and must be reinstalled when you restart the instance. You
 can stop an Amazon EBS-backed instance without losing data. For more
-information, see Starting, Stopping, and Rebooting Instances.
+information, see Starting, Stopping, and Rebooting Instances
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 StopStack(StackId => Str)
@@ -1517,7 +1612,8 @@ Stops a specified stack.
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 TagResource(ResourceArn => Str, Tags => L<Paws::OpsWorks::Tags>)
@@ -1528,7 +1624,8 @@ Returns: nothing
 
 Apply cost-allocation tags to a specified stack or layer in AWS
 OpsWorks Stacks. For more information about how tagging works, see Tags
-in the AWS OpsWorks User Guide.
+(http://docs.aws.amazon.com/opsworks/latest/userguide/tagging.html) in
+the AWS OpsWorks User Guide.
 
 
 =head2 UnassignInstance(InstanceId => Str)
@@ -1545,7 +1642,8 @@ that were created with AWS OpsWorks Stacks.
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 UnassignVolume(VolumeId => Str)
@@ -1555,12 +1653,14 @@ Each argument is described in detail in: L<Paws::OpsWorks::UnassignVolume>
 Returns: nothing
 
 Unassigns an assigned Amazon EBS volume. The volume remains registered
-with the stack. For more information, see Resource Management.
+with the stack. For more information, see Resource Management
+(http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 UntagResource(ResourceArn => Str, TagKeys => ArrayRef[Str|Undef])
@@ -1583,7 +1683,8 @@ Updates a specified app.
 B<Required Permissions>: To use this action, an IAM user must have a
 Deploy or Manage permissions level for the stack, or an attached policy
 that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 UpdateElasticIp(ElasticIp => Str, [Name => Str])
@@ -1593,12 +1694,14 @@ Each argument is described in detail in: L<Paws::OpsWorks::UpdateElasticIp>
 Returns: nothing
 
 Updates a registered Elastic IP address's name. For more information,
-see Resource Management.
+see Resource Management
+(http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 UpdateInstance(InstanceId => Str, [AgentVersion => Str, AmiId => Str, Architecture => Str, AutoScalingType => Str, EbsOptimized => Bool, Hostname => Str, InstallUpdatesOnBoot => Bool, InstanceType => Str, LayerIds => ArrayRef[Str|Undef], Os => Str, SshKeyName => Str])
@@ -1612,7 +1715,8 @@ Updates a specified instance.
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 UpdateLayer(LayerId => Str, [Attributes => L<Paws::OpsWorks::LayerAttributes>, AutoAssignElasticIps => Bool, AutoAssignPublicIps => Bool, CloudWatchLogsConfiguration => L<Paws::OpsWorks::CloudWatchLogsConfiguration>, CustomInstanceProfileArn => Str, CustomJson => Str, CustomRecipes => L<Paws::OpsWorks::Recipes>, CustomSecurityGroupIds => ArrayRef[Str|Undef], EnableAutoHealing => Bool, InstallUpdatesOnBoot => Bool, LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>, Name => Str, Packages => ArrayRef[Str|Undef], Shortname => Str, UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]])
@@ -1626,7 +1730,8 @@ Updates a specified layer.
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 UpdateMyUserProfile([SshPublicKey => Str])
@@ -1640,7 +1745,8 @@ Updates a user's SSH public key.
 B<Required Permissions>: To use this action, an IAM user must have
 self-management enabled or an attached policy that explicitly grants
 permissions. For more information on user permissions, see Managing
-User Permissions.
+User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 UpdateRdsDbInstance(RdsDbInstanceArn => Str, [DbPassword => Str, DbUser => Str])
@@ -1654,7 +1760,8 @@ Updates an Amazon RDS instance.
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 UpdateStack(StackId => Str, [AgentVersion => Str, Attributes => L<Paws::OpsWorks::StackAttributes>, ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>, ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>, CustomCookbooksSource => L<Paws::OpsWorks::Source>, CustomJson => Str, DefaultAvailabilityZone => Str, DefaultInstanceProfileArn => Str, DefaultOs => Str, DefaultRootDeviceType => Str, DefaultSshKeyName => Str, DefaultSubnetId => Str, HostnameTheme => Str, Name => Str, ServiceRoleArn => Str, UseCustomCookbooks => Bool, UseOpsworksSecurityGroups => Bool])
@@ -1668,7 +1775,8 @@ Updates a specified stack.
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 UpdateUserProfile(IamUserArn => Str, [AllowSelfManagement => Bool, SshPublicKey => Str, SshUsername => Str])
@@ -1681,7 +1789,8 @@ Updates a specified user profile.
 
 B<Required Permissions>: To use this action, an IAM user must have an
 attached policy that explicitly grants permissions. For more
-information on user permissions, see Managing User Permissions.
+information on user permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 =head2 UpdateVolume(VolumeId => Str, [MountPoint => Str, Name => Str])
@@ -1691,12 +1800,14 @@ Each argument is described in detail in: L<Paws::OpsWorks::UpdateVolume>
 Returns: nothing
 
 Updates an Amazon EBS volume's name or mount point. For more
-information, see Resource Management.
+information, see Resource Management
+(http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+permissions, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 

@@ -85,7 +85,8 @@ C<iam_only>
 =back
 
 For more information on the permissions associated with these levels,
-see Managing User Permissions.
+see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 

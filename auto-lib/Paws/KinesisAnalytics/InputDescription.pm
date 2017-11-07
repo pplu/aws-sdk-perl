@@ -40,7 +40,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 =head1 DESCRIPTION
 
 Describes the application input configuration. For more information,
-see Configuring Application Input.
+see Configuring Application Input
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
 
 =head1 ATTRIBUTES
 

@@ -63,7 +63,9 @@ key attributes, which are automatically projected.
 secondary index.
 
 For current minimum and maximum provisioned throughput values, see
-Limits in the I<Amazon DynamoDB Developer Guide>.
+Limits
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 

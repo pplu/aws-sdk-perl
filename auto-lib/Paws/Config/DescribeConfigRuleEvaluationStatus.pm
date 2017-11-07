@@ -51,7 +51,9 @@ This parameter is required if the rule limit for your account is more
 than the default of 50 rules.
 
 For more information about requesting a rule limit increase, see AWS
-Config Limits in the I<AWS General Reference Guide>.
+Config Limits
+(http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config)
+in the I<AWS General Reference Guide>.
 
 
 

@@ -65,8 +65,9 @@ Information about a load balancer.
 
   The DNS name of the load balancer.
 
-For more information, see Configure a Custom Domain Name in the
-I<Classic Load Balancer Guide>.
+For more information, see Configure a Custom Domain Name
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/using-domain-names-with-elb.html)
+in the I<Classic Load Balancer Guide>.
 
 
 =head2 CanonicalHostedZoneNameID => Str

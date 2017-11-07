@@ -54,8 +54,9 @@ of IOPS that are provisioned for the volume. For General Purpose SSD
 volumes, this represents the baseline performance of the volume and the
 rate at which the volume accumulates I/O credits for bursting. For more
 information on General Purpose SSD baseline performance, I/O credits,
-and bursting, see Amazon EBS Volume Types in the I<Amazon Elastic
-Compute Cloud User Guide>.
+and bursting, see Amazon EBS Volume Types
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Constraint: Range is 100-20000 IOPS for io1 volumes and 100-10000 IOPS
 for C<gp2> volumes.

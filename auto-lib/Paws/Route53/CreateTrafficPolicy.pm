@@ -48,7 +48,8 @@ policy.
 =head2 B<REQUIRED> Document => Str
 
 The definition of this traffic policy in JSON format. For more
-information, see Traffic Policy Document Format.
+information, see Traffic Policy Document Format
+(http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html).
 
 
 

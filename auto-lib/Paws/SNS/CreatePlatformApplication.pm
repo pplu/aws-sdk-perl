@@ -38,6 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> Attributes => L<Paws::SNS::MapStringToString>
 
 For a list of attributes, see SetPlatformApplicationAttributes
+(http://docs.aws.amazon.com/sns/latest/api/API_SetPlatformApplicationAttributes.html)
 
 
 

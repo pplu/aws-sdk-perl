@@ -49,8 +49,9 @@ the default cluster is assumed.
 
 You can filter the results of a C<ListContainerInstances> operation
 with cluster query language statements. For more information, see
-Cluster Query Language in the I<Amazon EC2 Container Service Developer
-Guide>.
+Cluster Query Language
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 
 

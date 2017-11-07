@@ -91,7 +91,9 @@ group and a CIDR IP address range in the same set of permissions.
 =head2 IpProtocol => Str
 
 The IP protocol name (C<tcp>, C<udp>, C<icmp>) or number (see Protocol
-Numbers). Use C<-1> to specify all.
+Numbers
+(http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)).
+Use C<-1> to specify all.
 
 
 

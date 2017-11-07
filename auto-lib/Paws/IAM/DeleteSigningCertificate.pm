@@ -38,9 +38,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The ID of the signing certificate to delete.
 
-The format of this parameter, as described by its regex pattern, is a
-string of characters that can be upper- or lower-cased letters or
-digits.
+The format of this parameter, as described by its regex
+(http://wikipedia.org/wiki/regex) pattern, is a string of characters
+that can be upper- or lower-cased letters or digits.
 
 
 
@@ -48,9 +48,10 @@ digits.
 
 The name of the user the signing certificate belongs to.
 
-This parameter allows (per its regex pattern) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+upper and lowercase alphanumeric characters with no spaces. You can
+also include any of the following characters: =,.@-
 
 
 

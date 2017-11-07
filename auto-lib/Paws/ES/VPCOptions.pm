@@ -34,7 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ES::VPCOpti
 
 Options to specify the subnets and security groups for VPC endpoint.
 For more information, see VPC Endpoints for Amazon Elasticsearch
-Service Domains.
+Service Domains
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html).
 
 =head1 ATTRIBUTES
 

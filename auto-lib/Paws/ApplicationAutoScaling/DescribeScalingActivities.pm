@@ -158,7 +158,9 @@ Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:Targe
 =head2 B<REQUIRED> ServiceNamespace => Str
 
 The namespace of the AWS service. For more information, see AWS Service
-Namespaces in the I<Amazon Web Services General Reference>.
+Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+in the I<Amazon Web Services General Reference>.
 
 Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">
 

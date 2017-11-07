@@ -40,8 +40,9 @@ The unique identifier (ID) of the policy that you want to attach to the
 target. You can get the ID for the policy by calling the ListPolicies
 operation.
 
-The regex pattern for a policy ID string requires "p-" followed by from
-8 to 128 lower-case letters or digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for a policy ID
+string requires "p-" followed by from 8 to 128 lower-case letters or
+digits.
 
 
 
@@ -51,7 +52,8 @@ The unique identifier (ID) of the root, OU, or account that you want to
 attach the policy to. You can get the ID by calling the ListRoots,
 ListOrganizationalUnitsForParent, or ListAccounts operations.
 
-The regex pattern for a target ID string requires one of the following:
+The regex pattern (http://wikipedia.org/wiki/regex) for a target ID
+string requires one of the following:
 
 =over
 

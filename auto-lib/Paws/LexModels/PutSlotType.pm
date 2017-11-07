@@ -85,8 +85,9 @@ name with "AMAZON." removed. For example, because there is a built-in
 slot type called C<AMAZON.DATE>, you can't create a custom slot type
 called C<DATE>.
 
-For a list of built-in slot types, see Slot Type Reference in the
-I<Alexa Skills Kit>.
+For a list of built-in slot types, see Slot Type Reference
+(https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference)
+in the I<Alexa Skills Kit>.
 
 
 

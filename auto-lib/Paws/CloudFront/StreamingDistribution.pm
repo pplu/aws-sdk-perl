@@ -56,8 +56,9 @@ CloudFront key pairs that are associated with the trusted signer's AWS
 account. If no C<KeyPairId> element appears for a C<Signer>, that
 signer can't create signed URLs.
 
-For more information, see Serving Private Content through CloudFront in
-the I<Amazon CloudFront Developer Guide>.
+For more information, see Serving Private Content through CloudFront
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 B<REQUIRED> ARN => Str

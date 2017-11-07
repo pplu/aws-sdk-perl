@@ -63,9 +63,11 @@ If you don't want AWS Config to record all resources, you can specify
 which types of resources it will record with the C<resourceTypes>
 parameter.
 
-For a list of supported resource types, see Supported resource types.
+For a list of supported resource types, see Supported resource types
+(http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources).
 
-For more information, see Selecting Which Resources AWS Config Records.
+For more information, see Selecting Which Resources AWS Config Records
+(http://docs.aws.amazon.com/config/latest/developerguide/select-resources.html).
 
 =head1 ATTRIBUTES
 
@@ -115,7 +117,8 @@ new type of resource, it will not record resources of that type unless
 you manually add that type to your recording group.
 
 For a list of valid C<resourceTypes> values, see the B<resourceType
-Value> column in Supported AWS Resource Types.
+Value> column in Supported AWS Resource Types
+(http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources).
 
 
 

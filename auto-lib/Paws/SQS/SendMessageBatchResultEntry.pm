@@ -51,7 +51,8 @@ SendMessageBatch.>
   An MD5 digest of the non-URL-encoded message attribute string. You can
 use this attribute to verify that Amazon SQS received the message
 correctly. Amazon SQS URL-decodes the message before creating the MD5
-digest. For information about MD5, see RFC1321.
+digest. For information about MD5, see RFC1321
+(https://www.ietf.org/rfc/rfc1321.txt).
 
 
 =head2 B<REQUIRED> MD5OfMessageBody => Str
@@ -59,7 +60,8 @@ digest. For information about MD5, see RFC1321.
   An MD5 digest of the non-URL-encoded message attribute string. You can
 use this attribute to verify that Amazon SQS received the message
 correctly. Amazon SQS URL-decodes the message before creating the MD5
-digest. For information about MD5, see RFC1321.
+digest. For information about MD5, see RFC1321
+(https://www.ietf.org/rfc/rfc1321.txt).
 
 
 =head2 B<REQUIRED> MessageId => Str

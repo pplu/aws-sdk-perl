@@ -45,22 +45,26 @@ attached to.
   The Amazon Resource Name (ARN) of the policy target.
 
 For more information about ARNs in Organizations, see ARN Formats
-Supported by Organizations in the I<AWS Organizations User Guide>.
+Supported by Organizations
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns)
+in the I<AWS Organizations User Guide>.
 
 
 =head2 Name => Str
 
   The friendly name of the policy target.
 
-The regex pattern that is used to validate this parameter is a string
-of any of the characters in the ASCII character range.
+The regex pattern (http://wikipedia.org/wiki/regex) that is used to
+validate this parameter is a string of any of the characters in the
+ASCII character range.
 
 
 =head2 TargetId => Str
 
   The unique identifier (ID) of the policy target.
 
-The regex pattern for a target ID string requires one of the following:
+The regex pattern (http://wikipedia.org/wiki/regex) for a target ID
+string requires one of the following:
 
 =over
 

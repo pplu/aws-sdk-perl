@@ -84,7 +84,9 @@ Must not contain a colon ( : ) or slash ( / ).
 =item *
 
 Cannot be a reserved word. A list of reserved words can be found in
-Reserved Words in the Amazon Redshift Database Developer Guide.
+Reserved Words
+(http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html) in
+the Amazon Redshift Database Developer Guide.
 
 =back
 
@@ -121,7 +123,9 @@ Must not contain a colon ( : ) or slash ( / ).
 =item *
 
 Cannot be a reserved word. A list of reserved words can be found in
-Reserved Words in the Amazon Redshift Database Developer Guide.
+Reserved Words
+(http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html) in
+the Amazon Redshift Database Developer Guide.
 
 =back
 
@@ -139,8 +143,9 @@ matching the value for C<DbUser> doesn't exist and C<Autocreate> is
 C<False>, then the command succeeds but the connection attempt will
 fail because the user doesn't exist in the database.
 
-For more information, see CREATE USER in the Amazon Redshift Database
-Developer Guide.
+For more information, see CREATE USER
+(http://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html) in
+the Amazon Redshift Database Developer Guide.
 
 Constraints:
 
@@ -166,7 +171,9 @@ Must not contain a colon ( : ) or slash ( / ).
 =item *
 
 Cannot be a reserved word. A list of reserved words can be found in
-Reserved Words in the Amazon Redshift Database Developer Guide.
+Reserved Words
+(http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html) in
+the Amazon Redshift Database Developer Guide.
 
 =back
 

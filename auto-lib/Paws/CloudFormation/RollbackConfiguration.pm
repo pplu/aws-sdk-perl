@@ -54,7 +54,8 @@ goes to ALERT state, not INSUFFICIENT_DATA state. To have
 CloudFormation roll back the stack operation if an alarm goes to
 INSUFFICIENT_DATA state as well, edit the CloudWatch alarm to treat
 missing data as C<breaching>. For more information, see Configuring How
-CloudWatch Alarms Treats Missing Data.
+CloudWatch Alarms Treats Missing Data
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html).
 
 AWS CloudFormation does not monitor rollback triggers when it rolls
 back a stack during an update operation.
@@ -78,7 +79,9 @@ triggers, CloudFormation still waits the specified period of time
 before cleaning up old resources for update operations. You can use
 this monitoring period to perform any manual stack validation desired,
 and manually cancel the stack creation or update (using
-CancelUpdateStack, for example) as necessary.
+CancelUpdateStack
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CancelUpdateStack.html),
+for example) as necessary.
 
 If you specify 0 for this parameter, CloudFormation still monitors the
 specified rollback triggers during stack creation and update

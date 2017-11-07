@@ -257,6 +257,7 @@ such as Oracle to MySQL or SQL Server to PostgreSQL.
 
 For more information about AWS DMS, see the AWS DMS user guide at What
 Is AWS Database Migration Service?
+(http://docs.aws.amazon.com/dms/latest/userguide/Welcome.html)
 
 =head1 METHODS
 
@@ -303,7 +304,9 @@ C<SourceType> nor C<SourceIdentifier>, you will be notified of events
 generated from all AWS DMS sources belonging to your customer account.
 
 For more information about AWS DMS events, see Working with Events and
-Notifications in the AWS Database MIgration Service User Guide.
+Notifications
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in
+the AWS Database MIgration Service User Guide.
 
 
 =head2 CreateReplicationInstance(ReplicationInstanceClass => Str, ReplicationInstanceIdentifier => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, EngineVersion => Str, KmsKeyId => Str, MultiAZ => Bool, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, ReplicationSubnetGroupIdentifier => Str, Tags => ArrayRef[L<Paws::DMS::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
@@ -456,8 +459,9 @@ Returns: a L<Paws::DMS::DescribeEventCategoriesResponse> instance
 
 Lists categories for all event source types, or, if specified, for a
 specified source type. You can see a list of the event categories and
-source types in Working with Events and Notifications in the AWS
-Database Migration Service User Guide.
+source types in Working with Events and Notifications
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in
+the AWS Database Migration Service User Guide.
 
 
 =head2 DescribeEvents([Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
@@ -468,7 +472,8 @@ Returns: a L<Paws::DMS::DescribeEventsResponse> instance
 
 Lists events for a given source identifier and source type. You can
 also specify a start and end time. For more information on AWS DMS
-events, see Working with Events and Notifications .
+events, see Working with Events and Notifications
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html).
 
 
 =head2 DescribeEventSubscriptions([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
@@ -628,6 +633,7 @@ you can modify it.
 
 For more information about AWS DMS tasks, see the AWS DMS user guide at
 Working with Migration Tasks
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html)
 
 
 =head2 RefreshSchemas(EndpointArn => Str, ReplicationInstanceArn => Str)
@@ -670,6 +676,7 @@ Starts the replication task.
 
 For more information about AWS DMS tasks, see the AWS DMS user guide at
 Working with Migration Tasks
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html)
 
 
 =head2 StopReplicationTask(ReplicationTaskArn => Str)

@@ -176,11 +176,13 @@ in seconds. Athena is serverless, so there is no infrastructure to set
 up or manage. You pay only for the queries you run. Athena scales
 automaticallyE<mdash>executing queries in parallelE<mdash>so results
 are fast, even with large datasets and complex queries. For more
-information, see What is Amazon Athena in the I<Amazon Athena User
-Guide>.
+information, see What is Amazon Athena
+(http://docs.aws.amazon.com/athena/latest/ug/what-is.html) in the
+I<Amazon Athena User Guide>.
 
 For code samples using the AWS SDK for Java, see Examples and Code
-Samples in the I<Amazon Athena User Guide>.
+Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+in the I<Amazon Athena User Guide>.
 
 =head1 METHODS
 
@@ -222,7 +224,8 @@ Returns: a L<Paws::Athena::CreateNamedQueryOutput> instance
 Creates a named query.
 
 For code samples using the AWS SDK for Java, see Examples and Code
-Samples in the I<Amazon Athena User Guide>.
+Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+in the I<Amazon Athena User Guide>.
 
 
 =head2 DeleteNamedQuery(NamedQueryId => Str)
@@ -234,7 +237,8 @@ Returns: a L<Paws::Athena::DeleteNamedQueryOutput> instance
 Deletes a named query.
 
 For code samples using the AWS SDK for Java, see Examples and Code
-Samples in the I<Amazon Athena User Guide>.
+Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+in the I<Amazon Athena User Guide>.
 
 
 =head2 GetNamedQuery(NamedQueryId => Str)
@@ -277,7 +281,8 @@ Returns: a L<Paws::Athena::ListNamedQueriesOutput> instance
 Provides a list of all available query IDs.
 
 For code samples using the AWS SDK for Java, see Examples and Code
-Samples in the I<Amazon Athena User Guide>.
+Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+in the I<Amazon Athena User Guide>.
 
 
 =head2 ListQueryExecutions([MaxResults => Int, NextToken => Str])
@@ -289,7 +294,8 @@ Returns: a L<Paws::Athena::ListQueryExecutionsOutput> instance
 Provides a list of all available query execution IDs.
 
 For code samples using the AWS SDK for Java, see Examples and Code
-Samples in the I<Amazon Athena User Guide>.
+Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+in the I<Amazon Athena User Guide>.
 
 
 =head2 StartQueryExecution(QueryString => Str, ResultConfiguration => L<Paws::Athena::ResultConfiguration>, [ClientRequestToken => Str, QueryExecutionContext => L<Paws::Athena::QueryExecutionContext>])
@@ -302,7 +308,8 @@ Runs (executes) the SQL query statements contained in the C<Query>
 string.
 
 For code samples using the AWS SDK for Java, see Examples and Code
-Samples in the I<Amazon Athena User Guide>.
+Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+in the I<Amazon Athena User Guide>.
 
 
 =head2 StopQueryExecution(QueryExecutionId => Str)
@@ -314,7 +321,8 @@ Returns: a L<Paws::Athena::StopQueryExecutionOutput> instance
 Stops a query execution.
 
 For code samples using the AWS SDK for Java, see Examples and Code
-Samples in the I<Amazon Athena User Guide>.
+Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+in the I<Amazon Athena User Guide>.
 
 
 

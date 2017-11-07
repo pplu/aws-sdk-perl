@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::I
 
 Contains a description of an Amazon EC2 instance from the Amazon EC2
 metadata service. For more information, see Instance Metadata and User
-Data.
+Data (http://docs.aws.amazon.com/sdkfornet/latest/apidocs/Index.html).
 
 =head1 ATTRIBUTES
 

@@ -1580,8 +1580,9 @@ specify it in the C<Address> parameter. Note that you cannot recover an
 Elastic IP address that you released after it is allocated to another
 AWS account.
 
-For more information, see Elastic IP Addresses in the I<Amazon Elastic
-Compute Cloud User Guide>.
+For more information, see Elastic IP Addresses
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 AllocateHosts(AvailabilityZone => Str, InstanceType => Str, Quantity => Int, [AutoPlacement => Str, ClientToken => Str])
@@ -1607,8 +1608,9 @@ the number of IPv6 addresses to be automatically assigned from within
 the subnet's IPv6 CIDR block range. You can assign as many IPv6
 addresses to a network interface as you can assign private IPv4
 addresses, and the limit varies per instance type. For information, see
-IP Addresses Per Network Interface Per Instance Type in the I<Amazon
-Elastic Compute Cloud User Guide>.
+IP Addresses Per Network Interface Per Instance Type
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 AssignPrivateIpAddresses(NetworkInterfaceId => Str, [AllowReassignment => Bool, PrivateIpAddresses => ArrayRef[Str|Undef], SecondaryPrivateIpAddressCount => Int])
@@ -1623,8 +1625,11 @@ addresses, or you can specify the number of secondary IP addresses to
 be automatically assigned within the subnet's CIDR block range. The
 number of secondary IP addresses that you can assign to an instance
 varies by instance type. For information about instance types, see
-Instance Types in the I<Amazon Elastic Compute Cloud User Guide>. For
-more information about Elastic IP addresses, see Elastic IP Addresses
+Instance Types
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
+in the I<Amazon Elastic Compute Cloud User Guide>. For more information
+about Elastic IP addresses, see Elastic IP Addresses
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 AssignPrivateIpAddresses is available only in EC2-VPC.
@@ -1640,8 +1645,9 @@ Associates an Elastic IP address with an instance or a network
 interface.
 
 An Elastic IP address is for use in either the EC2-Classic platform or
-in a VPC. For more information, see Elastic IP Addresses in the
-I<Amazon Elastic Compute Cloud User Guide>.
+in a VPC. For more information, see Elastic IP Addresses
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 [EC2-Classic, VPC in an EC2-VPC-only account] If the Elastic IP address
 is already associated with a different instance, it is disassociated
@@ -1661,7 +1667,7 @@ This is an idempotent operation. If you perform the operation more than
 once, Amazon EC2 doesn't return an error, and you may be charged for
 each time the Elastic IP address is remapped to the same instance. For
 more information, see the I<Elastic IP Addresses> section of Amazon EC2
-Pricing.
+Pricing (http://aws.amazon.com/ec2/pricing/).
 
 
 =head2 AssociateDhcpOptions(DhcpOptionsId => Str, VpcId => Str, [DryRun => Bool])
@@ -1680,8 +1686,9 @@ pick up the changes within a few hours, depending on how frequently the
 instance renews its DHCP lease. You can explicitly renew the lease
 using the operating system on the instance.
 
-For more information, see DHCP Options Sets in the I<Amazon Virtual
-Private Cloud User Guide>.
+For more information, see DHCP Options Sets
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 AssociateIamInstanceProfile(IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>, InstanceId => Str)
@@ -1708,8 +1715,9 @@ action returns an association ID, which you need in order to
 disassociate the route table from the subnet later. A route table can
 be associated with multiple subnets.
 
-For more information about route tables, see Route Tables in the
-I<Amazon Virtual Private Cloud User Guide>.
+For more information about route tables, see Route Tables
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 AssociateSubnetCidrBlock(Ipv6CidrBlock => Str, SubnetId => Str)
@@ -1734,8 +1742,9 @@ IPv4 CIDR block, or you can associate an Amazon-provided IPv6 CIDR
 block. The IPv6 CIDR block size is fixed at /56.
 
 For more information about associating CIDR blocks with your VPC and
-applicable restrictions, see VPC and Subnet Sizing in the I<Amazon
-Virtual Private Cloud User Guide>.
+applicable restrictions, see VPC and Subnet Sizing
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html#VPC_Sizing)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 AttachClassicLinkVpc(Groups => ArrayRef[Str|Undef], InstanceId => Str, VpcId => Str, [DryRun => Bool])
@@ -1767,7 +1776,8 @@ Returns: nothing
 
 Attaches an Internet gateway to a VPC, enabling connectivity between
 the Internet and the VPC. For more information about your VPC and
-Internet gateway, see the Amazon Virtual Private Cloud User Guide.
+Internet gateway, see the Amazon Virtual Private Cloud User Guide
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/).
 
 
 =head2 AttachNetworkInterface(DeviceIndex => Int, InstanceId => Str, NetworkInterfaceId => Str, [DryRun => Bool])
@@ -1790,12 +1800,17 @@ to the instance with the specified device name.
 
 Encrypted EBS volumes may only be attached to instances that support
 Amazon EBS encryption. For more information, see Amazon EBS Encryption
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 For a list of supported device names, see Attaching an EBS Volume to an
-Instance. Any device names that aren't reserved for instance store
-volumes can be used for EBS volumes. For more information, see Amazon
-EC2 Instance Store in the I<Amazon Elastic Compute Cloud User Guide>.
+Instance
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html).
+Any device names that aren't reserved for instance store volumes can be
+used for EBS volumes. For more information, see Amazon EC2 Instance
+Store
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 If a volume has an AWS Marketplace product code:
 
@@ -1822,11 +1837,13 @@ and attach it to a Linux instance.
 
 =back
 
-For an overview of the AWS Marketplace, see Introducing AWS
-Marketplace.
+For an overview of the AWS Marketplace, see Introducing AWS Marketplace
+(https://aws.amazon.com/marketplace/help/200900000).
 
 For more information about EBS volumes, see Attaching Amazon EBS
-Volumes in the I<Amazon Elastic Compute Cloud User Guide>.
+Volumes
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 AttachVpnGateway(VpcId => Str, VpnGatewayId => Str, [DryRun => Bool])
@@ -1838,8 +1855,9 @@ Returns: a L<Paws::EC2::AttachVpnGatewayResult> instance
 Attaches a virtual private gateway to a VPC. You can attach one virtual
 private gateway to one VPC at a time.
 
-For more information, see AWS Managed VPN Connections in the I<Amazon
-Virtual Private Cloud User Guide>.
+For more information, see AWS Managed VPN Connections
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in
+the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 AuthorizeSecurityGroupEgress(GroupId => Str, [CidrIp => Str, DryRun => Bool, FromPort => Int, IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>], IpProtocol => Str, SourceSecurityGroupName => Str, SourceSecurityGroupOwnerId => Str, ToPort => Int])
@@ -1853,9 +1871,11 @@ use with a VPC. Specifically, this action permits instances to send
 traffic to one or more destination IPv4 or IPv6 CIDR address ranges, or
 to one or more destination security groups for the same VPC. This
 action doesn't apply to security groups for use in EC2-Classic. For
-more information, see Security Groups for Your VPC in the I<Amazon
-Virtual Private Cloud User Guide>. For more information about security
-group limits, see Amazon VPC Limits.
+more information, see Security Groups for Your VPC
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html)
+in the I<Amazon Virtual Private Cloud User Guide>. For more information
+about security group limits, see Amazon VPC Limits
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html).
 
 Each rule consists of the protocol (for example, TCP), plus either a
 CIDR range or a source group. For the TCP and UDP protocols, you must
@@ -1890,7 +1910,8 @@ ranges permission to access a security group in your VPC, or gives one
 or more other security groups (called the I<source groups>) permission
 to access a security group for your VPC. The security groups must all
 be for the same VPC or a peer VPC in a VPC peering connection. For more
-information about VPC security group limits, see Amazon VPC Limits.
+information about VPC security group limits, see Amazon VPC Limits
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html).
 
 You can optionally specify a description for the security group rule.
 
@@ -1909,8 +1930,8 @@ other instance store volumes is not preserved.
 This action is not applicable for Linux/Unix instances or Windows
 instances that are backed by Amazon EBS.
 
-For more information, see Creating an Instance Store-Backed Windows
-AMI.
+For more information, see Creating an Instance Store-Backed Windows AMI
+(http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/Creating_InstanceStoreBacked_WinAMI.html).
 
 
 =head2 CancelBundleTask(BundleId => Str, [DryRun => Bool])
@@ -1936,7 +1957,8 @@ complete or is in the process of transferring the final disk image, the
 command fails and returns an exception.
 
 For more information, see Importing a Virtual Machine Using the Amazon
-EC2 CLI.
+EC2 CLI
+(http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ec2-cli-vmimport-export.html).
 
 
 =head2 CancelExportTask(ExportTaskId => Str)
@@ -1969,8 +1991,9 @@ Returns: a L<Paws::EC2::CancelReservedInstancesListingResult> instance
 Cancels the specified Reserved Instance listing in the Reserved
 Instance Marketplace.
 
-For more information, see Reserved Instance Marketplace in the I<Amazon
-Elastic Compute Cloud User Guide>.
+For more information, see Reserved Instance Marketplace
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 CancelSpotFleetRequests(SpotFleetRequestIds => ArrayRef[Str|Undef], TerminateInstances => Bool, [DryRun => Bool])
@@ -2001,7 +2024,9 @@ instances that Amazon EC2 starts on your behalf when the bid price that
 you specify exceeds the current Spot price. Amazon EC2 periodically
 sets the Spot price based on available Spot instance capacity and
 current Spot instance requests. For more information, see Spot Instance
-Requests in the I<Amazon Elastic Compute Cloud User Guide>.
+Requests
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Canceling a Spot instance request does not terminate running Spot
 instances associated with the request.
@@ -2039,8 +2064,9 @@ current region. You specify the destination region by using its
 endpoint when making the request.
 
 For more information about the prerequisites and limits when copying an
-AMI, see Copying an AMI in the I<Amazon Elastic Compute Cloud User
-Guide>.
+AMI, see Copying an AMI
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 CopySnapshot(SourceRegion => Str, SourceSnapshotId => Str, [Description => Str, DestinationRegion => Str, DryRun => Bool, Encrypted => Bool, KmsKeyId => Str, PresignedUrl => Str])
@@ -2069,8 +2095,9 @@ snapshot.
 Snapshots created by the CopySnapshot action have an arbitrary volume
 ID that should not be used for any purpose.
 
-For more information, see Copying an Amazon EBS Snapshot in the
-I<Amazon Elastic Compute Cloud User Guide>.
+For more information, see Copying an Amazon EBS Snapshot
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 CreateCustomerGateway(BgpAsn => Int, PublicIp => Str, Type => Str, [DryRun => Bool])
@@ -2097,7 +2124,9 @@ with the exception of 7224, which is reserved in the C<us-east-1>
 region, and 9059, which is reserved in the C<eu-west-1> region.
 
 For more information about VPN customer gateways, see AWS Managed VPN
-Connections in the I<Amazon Virtual Private Cloud User Guide>.
+Connections
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in
+the I<Amazon Virtual Private Cloud User Guide>.
 
 You cannot create more than one customer gateway with the same VPN
 type, IP address, and BGP ASN parameter values. If you run an identical
@@ -2115,9 +2144,10 @@ Returns: a L<Paws::EC2::CreateDefaultVpcResult> instance
 
 Creates a default VPC with a size C</16> IPv4 CIDR block and a default
 subnet in each Availability Zone. For more information about the
-components of a default VPC, see Default VPC and Default Subnets in the
-I<Amazon Virtual Private Cloud User Guide>. You cannot specify the
-components of the default VPC yourself.
+components of a default VPC, see Default VPC and Default Subnets
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html)
+in the I<Amazon Virtual Private Cloud User Guide>. You cannot specify
+the components of the default VPC yourself.
 
 You can create a default VPC if you deleted your previous default VPC.
 You cannot have more than one default VPC per region.
@@ -2126,7 +2156,7 @@ If your account supports EC2-Classic, you cannot use this action to
 create a default VPC in a region that supports EC2-Classic. If you want
 a default VPC in a region that supports EC2-Classic, see "I really want
 a default VPC for my existing EC2 account. Is that possible?" in the
-Default VPCs FAQ.
+Default VPCs FAQ (http://aws.amazon.com/vpc/faqs/#Default_VPCs).
 
 
 =head2 CreateDhcpOptions(DhcpConfigurations => ArrayRef[L<Paws::EC2::NewDhcpConfiguration>], [DryRun => Bool])
@@ -2139,7 +2169,8 @@ Creates a set of DHCP options for your VPC. After creating the set, you
 must associate it with the VPC, causing all existing and new instances
 that you launch in the VPC to use this set of DHCP options. The
 following are the individual DHCP options you can specify. For more
-information about the options, see RFC 2132.
+information about the options, see RFC 2132
+(http://www.ietf.org/rfc/rfc2132.txt).
 
 =over
 
@@ -2181,7 +2212,8 @@ servers.
 
 C<netbios-node-type> - The NetBIOS node type (1, 2, 4, or 8). We
 recommend that you specify 2 (broadcast and multicast are not currently
-supported). For more information about these node types, see RFC 2132.
+supported). For more information about these node types, see RFC 2132
+(http://www.ietf.org/rfc/rfc2132.txt).
 
 =back
 
@@ -2190,8 +2222,9 @@ includes only a DNS server that we provide (AmazonProvidedDNS). If you
 create a set of options, and if your VPC has an Internet gateway, make
 sure to set the C<domain-name-servers> option either to
 C<AmazonProvidedDNS> or to a domain name server of your choice. For
-more information about DHCP options, see DHCP Options Sets in the
-I<Amazon Virtual Private Cloud User Guide>.
+more information about DHCP options, see DHCP Options Sets
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 CreateEgressOnlyInternetGateway(VpcId => Str, [ClientToken => Str, DryRun => Bool])
@@ -2240,7 +2273,7 @@ for use, check the output logs.
 An AFI contains the FPGA bitstream that is ready to download to an
 FPGA. You can securely deploy an AFI on one or more FPGA-accelerated
 instances. For more information, see the AWS FPGA Hardware Development
-Kit.
+Kit (https://github.com/aws/aws-fpga/).
 
 
 =head2 CreateImage(InstanceId => Str, Name => Str, [BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>], Description => Str, DryRun => Bool, NoReboot => Bool])
@@ -2258,8 +2291,9 @@ block device mapping information for those volumes. When you launch an
 instance from this new AMI, the instance automatically launches with
 those additional volumes.
 
-For more information, see Creating Amazon EBS-Backed Linux AMIs in the
-I<Amazon Elastic Compute Cloud User Guide>.
+For more information, see Creating Amazon EBS-Backed Linux AMIs
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 CreateInstanceExportTask(InstanceId => Str, [Description => Str, ExportToS3Task => L<Paws::EC2::ExportToS3TaskSpecification>, TargetEnvironment => Str])
@@ -2272,8 +2306,9 @@ Exports a running or stopped instance to an S3 bucket.
 
 For information about the supported operating systems, image formats,
 and known limitations for the types of instances you can export, see
-Exporting an Instance as a VM Using VM Import/Export in the I<VM
-Import/Export User Guide>.
+Exporting an Instance as a VM Using VM Import/Export
+(http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html)
+in the I<VM Import/Export User Guide>.
 
 
 =head2 CreateInternetGateway([DryRun => Bool])
@@ -2286,7 +2321,8 @@ Creates an Internet gateway for use with a VPC. After creating the
 Internet gateway, you attach it to a VPC using AttachInternetGateway.
 
 For more information about your VPC and Internet gateway, see the
-Amazon Virtual Private Cloud User Guide.
+Amazon Virtual Private Cloud User Guide
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/).
 
 
 =head2 CreateKeyPair(KeyName => Str, [DryRun => Bool])
@@ -2307,8 +2343,9 @@ The key pair returned to you is available only in the region in which
 you create it. To create a key pair that is available in all regions,
 use ImportKeyPair.
 
-For more information about key pairs, see Key Pairs in the I<Amazon
-Elastic Compute Cloud User Guide>.
+For more information about key pairs, see Key Pairs
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 CreateNatGateway(AllocationId => Str, SubnetId => Str, [ClientToken => Str])
@@ -2321,8 +2358,9 @@ Creates a NAT gateway in the specified subnet. A NAT gateway can be
 used to enable instances in a private subnet to connect to the
 Internet. This action creates a network interface in the specified
 subnet with a private IP address from the IP address range of the
-subnet. For more information, see NAT Gateways in the I<Amazon Virtual
-Private Cloud User Guide>.
+subnet. For more information, see NAT Gateways
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 CreateNetworkAcl(VpcId => Str, [DryRun => Bool])
@@ -2335,8 +2373,9 @@ Creates a network ACL in a VPC. Network ACLs provide an optional layer
 of security (in addition to security groups) for the instances in your
 VPC.
 
-For more information about network ACLs, see Network ACLs in the
-I<Amazon Virtual Private Cloud User Guide>.
+For more information about network ACLs, see Network ACLs
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 CreateNetworkAclEntry(Egress => Bool, NetworkAclId => Str, Protocol => Str, RuleAction => Str, RuleNumber => Int, [CidrBlock => Str, DryRun => Bool, IcmpTypeCode => L<Paws::EC2::IcmpTypeCode>, Ipv6CidrBlock => Str, PortRange => L<Paws::EC2::PortRange>])
@@ -2361,8 +2400,9 @@ between existing ones without having to renumber the rules.
 After you add an entry, you can't modify it; you must either replace
 it, or create an entry and delete the old one.
 
-For more information about network ACLs, see Network ACLs in the
-I<Amazon Virtual Private Cloud User Guide>.
+For more information about network ACLs, see Network ACLs
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 CreateNetworkInterface(SubnetId => Str, [Description => Str, DryRun => Bool, Groups => ArrayRef[Str|Undef], Ipv6AddressCount => Int, Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6Address>], PrivateIpAddress => Str, PrivateIpAddresses => ArrayRef[L<Paws::EC2::PrivateIpAddressSpecification>], SecondaryPrivateIpAddressCount => Int])
@@ -2374,7 +2414,9 @@ Returns: a L<Paws::EC2::CreateNetworkInterfaceResult> instance
 Creates a network interface in the specified subnet.
 
 For more information about network interfaces, see Elastic Network
-Interfaces in the I<Amazon Virtual Private Cloud User Guide>.
+Interfaces
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html) in
+the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 CreateNetworkInterfacePermission(NetworkInterfaceId => Str, Permission => Str, [AwsAccountId => Str, AwsService => Str, DryRun => Bool])
@@ -2400,7 +2442,9 @@ Creates a placement group that you launch cluster instances into. Give
 the group a name that's unique within the scope of your account.
 
 For more information about placement groups and cluster instances, see
-Cluster Instances in the I<Amazon Elastic Compute Cloud User Guide>.
+Cluster Instances
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 CreateReservedInstancesListing(ClientToken => Str, InstanceCount => Int, PriceSchedules => ArrayRef[L<Paws::EC2::PriceScheduleSpecification>], ReservedInstancesId => Str)
@@ -2435,8 +2479,9 @@ listings then become available for purchase. To view the details of
 your Standard Reserved Instance listing, you can use the
 DescribeReservedInstancesListings operation.
 
-For more information, see Reserved Instance Marketplace in the I<Amazon
-Elastic Compute Cloud User Guide>.
+For more information, see Reserved Instance Marketplace
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 CreateRoute(RouteTableId => Str, [DestinationCidrBlock => Str, DestinationIpv6CidrBlock => Str, DryRun => Bool, EgressOnlyInternetGatewayId => Str, GatewayId => Str, InstanceId => Str, NatGatewayId => Str, NetworkInterfaceId => Str, VpcPeeringConnectionId => Str])
@@ -2473,8 +2518,9 @@ the second route in the list covers a smaller number of IP addresses
 and is therefore more specific, so we use that route to determine where
 to target the traffic.
 
-For more information about route tables, see Route Tables in the
-I<Amazon Virtual Private Cloud User Guide>.
+For more information about route tables, see Route Tables
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 CreateRouteTable(VpcId => Str, [DryRun => Bool])
@@ -2486,8 +2532,9 @@ Returns: a L<Paws::EC2::CreateRouteTableResult> instance
 Creates a route table for the specified VPC. After you create a route
 table, you can add routes and associate the table with a subnet.
 
-For more information about route tables, see Route Tables in the
-I<Amazon Virtual Private Cloud User Guide>.
+For more information about route tables, see Route Tables
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 CreateSecurityGroup(Description => Str, GroupName => Str, [DryRun => Bool, VpcId => Str])
@@ -2500,9 +2547,12 @@ Creates a security group.
 
 A security group is for use with instances either in the EC2-Classic
 platform or in a specific VPC. For more information, see Amazon EC2
-Security Groups in the I<Amazon Elastic Compute Cloud User Guide> and
-Security Groups for Your VPC in the I<Amazon Virtual Private Cloud User
-Guide>.
+Security Groups
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html)
+in the I<Amazon Elastic Compute Cloud User Guide> and Security Groups
+for Your VPC
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 EC2-Classic: You can have up to 500 security groups.
 
@@ -2558,8 +2608,11 @@ encrypted. Volumes that are created from encrypted snapshots are also
 automatically encrypted. Your encrypted volumes and any associated
 snapshots always remain protected.
 
-For more information, see Amazon Elastic Block Store and Amazon EBS
-Encryption in the I<Amazon Elastic Compute Cloud User Guide>.
+For more information, see Amazon Elastic Block Store
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html) and
+Amazon EBS Encryption
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 CreateSpotDatafeedSubscription(Bucket => Str, [DryRun => Bool, Prefix => Str])
@@ -2570,8 +2623,9 @@ Returns: a L<Paws::EC2::CreateSpotDatafeedSubscriptionResult> instance
 
 Creates a data feed for Spot instances, enabling you to view Spot
 instance usage logs. You can create one data feed per AWS account. For
-more information, see Spot Instance Data Feed in the I<Amazon Elastic
-Compute Cloud User Guide>.
+more information, see Spot Instance Data Feed
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 CreateSubnet(CidrBlock => Str, VpcId => Str, [AvailabilityZone => Str, DryRun => Bool, Ipv6CidrBlock => Str])
@@ -2607,8 +2661,9 @@ when restarted). It's therefore possible to have a subnet with no
 running instances (they're all stopped), but no remaining IP addresses
 available.
 
-For more information about subnets, see Your VPC and Subnets in the
-I<Amazon Virtual Private Cloud User Guide>.
+For more information about subnets, see Your VPC and Subnets
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 CreateTags(Resources => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::EC2::Tag>], [DryRun => Bool])
@@ -2622,11 +2677,14 @@ resource or resources. Each resource can have a maximum of 50 tags.
 Each tag consists of a key and optional value. Tag keys must be unique
 per resource.
 
-For more information about tags, see Tagging Your Resources in the
-I<Amazon Elastic Compute Cloud User Guide>. For more information about
-creating IAM policies that control users' access to resources based on
-tags, see Supported Resource-Level Permissions for Amazon EC2 API
-Actions in the I<Amazon Elastic Compute Cloud User Guide>.
+For more information about tags, see Tagging Your Resources
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in
+the I<Amazon Elastic Compute Cloud User Guide>. For more information
+about creating IAM policies that control users' access to resources
+based on tags, see Supported Resource-Level Permissions for Amazon EC2
+API Actions
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-iam-actions-resources.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 CreateVolume(AvailabilityZone => Str, [DryRun => Bool, Encrypted => Bool, Iops => Int, KmsKeyId => Str, Size => Int, SnapshotId => Str, TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>], VolumeType => Str])
@@ -2638,7 +2696,7 @@ Returns: a L<Paws::EC2::Volume> instance
 Creates an EBS volume that can be attached to an instance in the same
 Availability Zone. The volume is created in the regional endpoint that
 you send the HTTP request to. For more information see Regions and
-Endpoints.
+Endpoints (http://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 You can create a new empty volume or restore a volume from an EBS
 snapshot. Any AWS Marketplace product codes from the snapshot are
@@ -2648,13 +2706,17 @@ You can create encrypted volumes with the C<Encrypted> parameter.
 Encrypted volumes may only be attached to instances that support Amazon
 EBS encryption. Volumes that are created from encrypted snapshots are
 also automatically encrypted. For more information, see Amazon EBS
-Encryption in the I<Amazon Elastic Compute Cloud User Guide>.
+Encryption
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 You can tag your volumes during creation. For more information, see
-Tagging Your Amazon EC2 Resources.
+Tagging Your Amazon EC2 Resources
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html).
 
-For more information, see Creating an Amazon EBS Volume in the I<Amazon
-Elastic Compute Cloud User Guide>.
+For more information, see Creating an Amazon EBS Volume
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 CreateVpc(CidrBlock => Str, [AmazonProvidedIpv6CidrBlock => Bool, DryRun => Bool, InstanceTenancy => Str])
@@ -2666,8 +2728,9 @@ Returns: a L<Paws::EC2::CreateVpcResult> instance
 Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you
 can create uses a /28 netmask (16 IPv4 addresses), and the largest uses
 a /16 netmask (65,536 IPv4 addresses). To help you decide how big to
-make your VPC, see Your VPC and Subnets in the I<Amazon Virtual Private
-Cloud User Guide>.
+make your VPC, see Your VPC and Subnets
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 You can optionally request an Amazon-provided IPv6 CIDR block for the
 VPC. The IPv6 CIDR block uses a /56 prefix length, and is allocated
@@ -2677,12 +2740,15 @@ for your VPC.
 By default, each instance you launch in the VPC has the default DHCP
 options, which includes only a default DNS server that we provide
 (AmazonProvidedDNS). For more information about DHCP options, see DHCP
-Options Sets in the I<Amazon Virtual Private Cloud User Guide>.
+Options Sets
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 You can specify the instance tenancy value for the VPC when you create
 it. You can't change this value for the VPC after you create it. For
-more information, see Dedicated Instances in the I<Amazon Elastic
-Compute Cloud User Guide>.
+more information, see Dedicated Instances
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 CreateVpcEndpoint(ServiceName => Str, VpcId => Str, [ClientToken => Str, DryRun => Bool, PolicyDocument => Str, RouteTableIds => ArrayRef[Str|Undef]])
@@ -2745,8 +2811,9 @@ with the new information returned from this call.
 This is an idempotent operation. If you perform the operation more than
 once, Amazon EC2 doesn't return an error.
 
-For more information, see AWS Managed VPN Connections in the I<Amazon
-Virtual Private Cloud User Guide>.
+For more information, see AWS Managed VPN Connections
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in
+the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 CreateVpnConnectionRoute(DestinationCidrBlock => Str, VpnConnectionId => Str)
@@ -2761,7 +2828,9 @@ route allows traffic to be routed from the virtual private gateway to
 the VPN customer gateway.
 
 For more information about VPN connections, see AWS Managed VPN
-Connections in the I<Amazon Virtual Private Cloud User Guide>.
+Connections
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in
+the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 CreateVpnGateway(Type => Str, [AmazonSideAsn => Int, AvailabilityZone => Str, DryRun => Bool])
@@ -2775,7 +2844,9 @@ endpoint on the VPC side of your VPN connection. You can create a
 virtual private gateway before creating the VPC itself.
 
 For more information about virtual private gateways, see AWS Managed
-VPN Connections in the I<Amazon Virtual Private Cloud User Guide>.
+VPN Connections
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in
+the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 DeleteCustomerGateway(CustomerGatewayId => Str, [DryRun => Bool])
@@ -2910,7 +2981,9 @@ Returns: nothing
 Deletes the specified placement group. You must terminate all instances
 in the placement group before you can delete the placement group. For
 more information about placement groups and cluster instances, see
-Cluster Instances in the I<Amazon Elastic Compute Cloud User Guide>.
+Cluster Instances
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DeleteRoute(RouteTableId => Str, [DestinationCidrBlock => Str, DestinationIpv6CidrBlock => Str, DryRun => Bool])
@@ -2967,8 +3040,9 @@ You cannot delete a snapshot of the root device of an EBS volume used
 by a registered AMI. You must first de-register the AMI before you can
 delete the snapshot.
 
-For more information, see Deleting an Amazon EBS Snapshot in the
-I<Amazon Elastic Compute Cloud User Guide>.
+For more information, see Deleting an Amazon EBS Snapshot
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DeleteSpotDatafeedSubscription([DryRun => Bool])
@@ -2999,8 +3073,9 @@ Returns: nothing
 Deletes the specified set of tags from the specified set of resources.
 
 To list the current tags, use DescribeTags. For more information about
-tags, see Tagging Your Resources in the I<Amazon Elastic Compute Cloud
-User Guide>.
+tags, see Tagging Your Resources
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in
+the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DeleteVolume(VolumeId => Str, [DryRun => Bool])
@@ -3014,8 +3089,9 @@ C<available> state (not attached to an instance).
 
 The volume may remain in the C<deleting> state for several minutes.
 
-For more information, see Deleting an Amazon EBS Volume in the I<Amazon
-Elastic Compute Cloud User Guide>.
+For more information, see Deleting an Amazon EBS Volume
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DeleteVpc(VpcId => Str, [DryRun => Bool])
@@ -3170,8 +3246,9 @@ Returns: a L<Paws::EC2::DescribeAddressesResult> instance
 Describes one or more of your Elastic IP addresses.
 
 An Elastic IP address is for use in either the EC2-Classic platform or
-in a VPC. For more information, see Elastic IP Addresses in the
-I<Amazon Elastic Compute Cloud User Guide>.
+in a VPC. For more information, see Elastic IP Addresses
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DescribeAvailabilityZones([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], ZoneNames => ArrayRef[Str|Undef]])
@@ -3186,8 +3263,9 @@ using. If there is an event impacting an Availability Zone, you can use
 this request to view the state and any provided message for that
 Availability Zone.
 
-For more information, see Regions and Availability Zones in the
-I<Amazon Elastic Compute Cloud User Guide>.
+For more information, see Regions and Availability Zones
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DescribeBundleTasks([BundleIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>]])
@@ -3223,10 +3301,12 @@ Each argument is described in detail in: L<Paws::EC2::DescribeConversionTasks>
 Returns: a L<Paws::EC2::DescribeConversionTasksResult> instance
 
 Describes one or more of your conversion tasks. For more information,
-see the VM Import/Export User Guide.
+see the VM Import/Export User Guide
+(http://docs.aws.amazon.com/vm-import/latest/userguide/).
 
 For information about the import manifest referenced by this API
-action, see VM Import Manifest.
+action, see VM Import Manifest
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html).
 
 
 =head2 DescribeCustomerGateways([CustomerGatewayIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>]])
@@ -3238,7 +3318,9 @@ Returns: a L<Paws::EC2::DescribeCustomerGatewaysResult> instance
 Describes one or more of your VPN customer gateways.
 
 For more information about VPN customer gateways, see AWS Managed VPN
-Connections in the I<Amazon Virtual Private Cloud User Guide>.
+Connections
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in
+the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 DescribeDhcpOptions([DhcpOptionsIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>]])
@@ -3249,8 +3331,9 @@ Returns: a L<Paws::EC2::DescribeDhcpOptionsResult> instance
 
 Describes one or more of your DHCP options sets.
 
-For more information about DHCP options sets, see DHCP Options Sets in
-the I<Amazon Virtual Private Cloud User Guide>.
+For more information about DHCP options sets, see DHCP Options Sets
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 DescribeEgressOnlyInternetGateways([DryRun => Bool, EgressOnlyInternetGatewayIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
@@ -3269,7 +3352,8 @@ Each argument is described in detail in: L<Paws::EC2::DescribeElasticGpus>
 Returns: a L<Paws::EC2::DescribeElasticGpusResult> instance
 
 Describes the Elastic GPUs associated with your instances. For more
-information about Elastic GPUs, see Amazon EC2 Elastic GPUs.
+information about Elastic GPUs, see Amazon EC2 Elastic GPUs
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-gpus.html).
 
 
 =head2 DescribeExportTasks([ExportTaskIds => ArrayRef[Str|Undef]])
@@ -3327,8 +3411,9 @@ including offerings that may not match the instance family and region
 of your Dedicated Hosts. When purchasing an offering, ensure that the
 the instance family and region of the offering matches that of the
 Dedicated Host/s it will be associated with. For an overview of
-supported instance types, see Dedicated Hosts Overview in the I<Amazon
-Elastic Compute Cloud User Guide>.
+supported instance types, see Dedicated Hosts Overview
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DescribeHostReservations([Filter => ArrayRef[L<Paws::EC2::Filter>], HostReservationIdSet => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
@@ -3375,8 +3460,9 @@ user, IAM role, or root user. For example, you can view the resource
 types that are enabled for longer IDs. This request only returns
 information about resource types whose ID formats can be modified; it
 does not return information about other resource types. For more
-information, see Resource IDs in the I<Amazon Elastic Compute Cloud
-User Guide>.
+information, see Resource IDs
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 The following resource types support longer IDs: C<instance> |
 C<reservation> | C<snapshot> | C<volume>.
@@ -3510,23 +3596,28 @@ Instance status includes the following components:
 
 B<Status checks> - Amazon EC2 performs status checks on running EC2
 instances to identify hardware and software issues. For more
-information, see Status Checks for Your Instances and Troubleshooting
-Instances with Failed Status Checks in the I<Amazon Elastic Compute
-Cloud User Guide>.
+information, see Status Checks for Your Instances
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html)
+and Troubleshooting Instances with Failed Status Checks
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstances.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item *
 
 B<Scheduled events> - Amazon EC2 can schedule events (such as reboot,
 stop, or terminate) for your instances related to hardware issues,
 software updates, or system maintenance. For more information, see
-Scheduled Events for Your Instances in the I<Amazon Elastic Compute
-Cloud User Guide>.
+Scheduled Events for Your Instances
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-instances-status-check_sched.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item *
 
 B<Instance state> - You can manage your instances from the moment you
 launch them through their termination. For more information, see
-Instance Lifecycle in the I<Amazon Elastic Compute Cloud User Guide>.
+Instance Lifecycle
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =back
 
@@ -3549,8 +3640,9 @@ Returns: a L<Paws::EC2::DescribeKeyPairsResult> instance
 
 Describes one or more of your key pairs.
 
-For more information about key pairs, see Key Pairs in the I<Amazon
-Elastic Compute Cloud User Guide>.
+For more information about key pairs, see Key Pairs
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DescribeMovingAddresses([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, PublicIps => ArrayRef[Str|Undef]])
@@ -3582,8 +3674,9 @@ Returns: a L<Paws::EC2::DescribeNetworkAclsResult> instance
 
 Describes one or more of your network ACLs.
 
-For more information about network ACLs, see Network ACLs in the
-I<Amazon Virtual Private Cloud User Guide>.
+For more information about network ACLs, see Network ACLs
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 DescribeNetworkInterfaceAttribute(NetworkInterfaceId => Str, [Attribute => Str, DryRun => Bool])
@@ -3621,8 +3714,9 @@ Each argument is described in detail in: L<Paws::EC2::DescribePlacementGroups>
 Returns: a L<Paws::EC2::DescribePlacementGroupsResult> instance
 
 Describes one or more of your placement groups. For more information
-about placement groups and cluster instances, see Cluster Instances in
-the I<Amazon Elastic Compute Cloud User Guide>.
+about placement groups and cluster instances, see Cluster Instances
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DescribePrefixLists([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, PrefixListIds => ArrayRef[Str|Undef]])
@@ -3647,7 +3741,8 @@ Returns: a L<Paws::EC2::DescribeRegionsResult> instance
 Describes one or more regions that are currently available to you.
 
 For a list of the regions supported by Amazon EC2, see Regions and
-Endpoints.
+Endpoints
+(http://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region).
 
 
 =head2 DescribeReservedInstances([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], OfferingClass => Str, OfferingType => Str, ReservedInstancesIds => ArrayRef[Str|Undef]])
@@ -3659,6 +3754,7 @@ Returns: a L<Paws::EC2::DescribeReservedInstancesResult> instance
 Describes one or more of the Reserved Instances that you purchased.
 
 For more information about Reserved Instances, see Reserved Instances
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -3689,8 +3785,9 @@ Reserved Instances to you, and continues to sell available Reserved
 Instance listings to you until your demand is met. You are charged
 based on the total price of all of the listings that you purchase.
 
-For more information, see Reserved Instance Marketplace in the I<Amazon
-Elastic Compute Cloud User Guide>.
+For more information, see Reserved Instance Marketplace
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DescribeReservedInstancesModifications([Filters => ArrayRef[L<Paws::EC2::Filter>], NextToken => Str, ReservedInstancesModificationIds => ArrayRef[Str|Undef]])
@@ -3704,8 +3801,9 @@ parameter is specified, information about all your Reserved Instances
 modification requests is returned. If a modification ID is specified,
 only information about the specific modification is returned.
 
-For more information, see Modifying Reserved Instances in the Amazon
-Elastic Compute Cloud User Guide.
+For more information, see Modifying Reserved Instances
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html)
+in the Amazon Elastic Compute Cloud User Guide.
 
 
 =head2 DescribeReservedInstancesOfferings([AvailabilityZone => Str, DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], IncludeMarketplace => Bool, InstanceTenancy => Str, InstanceType => Str, MaxDuration => Int, MaxInstanceCount => Int, MaxResults => Int, MinDuration => Int, NextToken => Str, OfferingClass => Str, OfferingType => Str, ProductDescription => Str, ReservedInstancesOfferingIds => ArrayRef[Str|Undef]])
@@ -3724,8 +3822,9 @@ If you have listed your own Reserved Instances for sale in the Reserved
 Instance Marketplace, they will be excluded from these results. This is
 to ensure that you do not purchase your own Reserved Instances.
 
-For more information, see Reserved Instance Marketplace in the I<Amazon
-Elastic Compute Cloud User Guide>.
+For more information, see Reserved Instance Marketplace
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DescribeRouteTables([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], RouteTableIds => ArrayRef[Str|Undef]])
@@ -3741,8 +3840,9 @@ subnet is not explicitly associated with any route table, it is
 implicitly associated with the main route table. This command does not
 return the subnet ID for implicit associations.
 
-For more information about route tables, see Route Tables in the
-I<Amazon Virtual Private Cloud User Guide>.
+For more information about route tables, see Route Tables
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 DescribeScheduledInstanceAvailability(FirstSlotStartTimeRange => L<Paws::EC2::SlotDateTimeRangeRequest>, Recurrence => L<Paws::EC2::ScheduledInstanceRecurrenceRequest>, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, MaxSlotDurationInHours => Int, MinSlotDurationInHours => Int, NextToken => Str])
@@ -3794,9 +3894,12 @@ Describes one or more of your security groups.
 
 A security group is for use with instances either in the EC2-Classic
 platform or in a specific VPC. For more information, see Amazon EC2
-Security Groups in the I<Amazon Elastic Compute Cloud User Guide> and
-Security Groups for Your VPC in the I<Amazon Virtual Private Cloud User
-Guide>.
+Security Groups
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html)
+in the I<Amazon Elastic Compute Cloud User Guide> and Security Groups
+for Your VPC
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 DescribeSnapshotAttribute(Attribute => Str, SnapshotId => Str, [DryRun => Bool])
@@ -3808,8 +3911,9 @@ Returns: a L<Paws::EC2::DescribeSnapshotAttributeResult> instance
 Describes the specified attribute of the specified snapshot. You can
 specify only one attribute at a time.
 
-For more information about EBS snapshots, see Amazon EBS Snapshots in
-the I<Amazon Elastic Compute Cloud User Guide>.
+For more information about EBS snapshots, see Amazon EBS Snapshots
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DescribeSnapshots([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, OwnerIds => ArrayRef[Str|Undef], RestorableByUserIds => ArrayRef[Str|Undef], SnapshotIds => ArrayRef[Str|Undef]])
@@ -3875,8 +3979,9 @@ results is returned along with a C<NextToken> value that can be passed
 to a subsequent C<DescribeSnapshots> request to retrieve the remaining
 results.
 
-For more information about EBS snapshots, see Amazon EBS Snapshots in
-the I<Amazon Elastic Compute Cloud User Guide>.
+For more information about EBS snapshots, see Amazon EBS Snapshots
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DescribeSpotDatafeedSubscription([DryRun => Bool])
@@ -3886,8 +3991,9 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSpotDatafeedSubscr
 Returns: a L<Paws::EC2::DescribeSpotDatafeedSubscriptionResult> instance
 
 Describes the data feed for Spot instances. For more information, see
-Spot Instance Data Feed in the I<Amazon Elastic Compute Cloud User
-Guide>.
+Spot Instance Data Feed
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DescribeSpotFleetInstances(SpotFleetRequestId => Str, [DryRun => Bool, MaxResults => Int, NextToken => Str])
@@ -3936,8 +4042,9 @@ instances are instances that Amazon EC2 launches when the bid price
 that you specify exceeds the current Spot price. Amazon EC2
 periodically sets the Spot price based on available Spot instance
 capacity and current Spot instance requests. For more information, see
-Spot Instance Requests in the I<Amazon Elastic Compute Cloud User
-Guide>.
+Spot Instance Requests
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 You can use C<DescribeSpotInstanceRequests> to find a running Spot
 instance by examining the response. If the status of the Spot instance
@@ -3957,8 +4064,9 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSpotPriceHistory>
 Returns: a L<Paws::EC2::DescribeSpotPriceHistoryResult> instance
 
 Describes the Spot price history. For more information, see Spot
-Instance Pricing History in the I<Amazon Elastic Compute Cloud User
-Guide>.
+Instance Pricing History
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 When you specify a start and end time, this operation returns the
 prices of the instance types within the time range that you specified
@@ -3987,8 +4095,9 @@ Returns: a L<Paws::EC2::DescribeSubnetsResult> instance
 
 Describes one or more of your subnets.
 
-For more information about subnets, see Your VPC and Subnets in the
-I<Amazon Virtual Private Cloud User Guide>.
+For more information about subnets, see Your VPC and Subnets
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 DescribeTags([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
@@ -3999,8 +4108,9 @@ Returns: a L<Paws::EC2::DescribeTagsResult> instance
 
 Describes one or more of the tags for your EC2 resources.
 
-For more information about tags, see Tagging Your Resources in the
-I<Amazon Elastic Compute Cloud User Guide>.
+For more information about tags, see Tagging Your Resources
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in
+the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DescribeVolumeAttribute(VolumeId => Str, [Attribute => Str, DryRun => Bool])
@@ -4012,8 +4122,9 @@ Returns: a L<Paws::EC2::DescribeVolumeAttributeResult> instance
 Describes the specified attribute of the specified volume. You can
 specify only one attribute at a time.
 
-For more information about EBS volumes, see Amazon EBS Volumes in the
-I<Amazon Elastic Compute Cloud User Guide>.
+For more information about EBS volumes, see Amazon EBS Volumes
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html) in
+the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DescribeVolumes([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
@@ -4032,8 +4143,9 @@ results is returned along with a C<NextToken> value that can be passed
 to a subsequent C<DescribeVolumes> request to retrieve the remaining
 results.
 
-For more information about EBS volumes, see Amazon EBS Volumes in the
-I<Amazon Elastic Compute Cloud User Guide>.
+For more information about EBS volumes, see Amazon EBS Volumes
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html) in
+the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DescribeVolumesModifications([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
@@ -4054,8 +4166,10 @@ of the returned C<VolumeModification> objects are null.
 
 You can also use CloudWatch Events to check the status of a
 modification to an EBS volume. For information about CloudWatch Events,
-see the Amazon CloudWatch Events User Guide. For more information, see
-Monitoring Volume Modifications".
+see the Amazon CloudWatch Events User Guide
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/). For more
+information, see Monitoring Volume Modifications"
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods).
 
 
 =head2 DescribeVolumeStatus([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
@@ -4083,8 +4197,8 @@ all checks pass, the overall status of the volume is C<ok>. If the
 check fails, the overall status is C<impaired>. If the status is
 C<insufficient-data>, then the checks may still be taking place on your
 volume at the time. We recommend that you retry the request. For more
-information on volume status, see Monitoring the Status of Your
-Volumes.
+information on volume status, see Monitoring the Status of Your Volumes
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-status.html).
 
 I<Events>: Reflect the cause of a volume status and may require you to
 take action. For example, if your volume returns an C<impaired> status,
@@ -4136,8 +4250,9 @@ enabled, the DNS hostname of a linked EC2-Classic instance resolves to
 its private IP address when addressed from an instance in the VPC to
 which it's linked. Similarly, the DNS hostname of an instance in a VPC
 resolves to its private IP address when addressed from a linked
-EC2-Classic instance. For more information, see ClassicLink in the
-I<Amazon Elastic Compute Cloud User Guide>.
+EC2-Classic instance. For more information, see ClassicLink
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DescribeVpcEndpoints([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VpcEndpointIds => ArrayRef[Str|Undef]])
@@ -4186,7 +4301,9 @@ Returns: a L<Paws::EC2::DescribeVpnConnectionsResult> instance
 Describes one or more of your VPN connections.
 
 For more information about VPN connections, see AWS Managed VPN
-Connections in the I<Amazon Virtual Private Cloud User Guide>.
+Connections
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in
+the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 DescribeVpnGateways([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], VpnGatewayIds => ArrayRef[Str|Undef]])
@@ -4198,7 +4315,9 @@ Returns: a L<Paws::EC2::DescribeVpnGatewaysResult> instance
 Describes one or more of your virtual private gateways.
 
 For more information about virtual private gateways, see AWS Managed
-VPN Connections in the I<Amazon Virtual Private Cloud User Guide>.
+VPN Connections
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in
+the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 DetachClassicLinkVpc(InstanceId => Str, VpcId => Str, [DryRun => Bool])
@@ -4251,8 +4370,9 @@ detach the root volume, stop the instance first.
 When a volume with an AWS Marketplace product code is detached from an
 instance, the product code is no longer associated with the instance.
 
-For more information, see Detaching an Amazon EBS Volume in the
-I<Amazon Elastic Compute Cloud User Guide>.
+For more information, see Detaching an Amazon EBS Volume
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DetachVpnGateway(VpcId => Str, VpnGatewayId => Str, [DryRun => Bool])
@@ -4301,8 +4421,9 @@ Returns: a L<Paws::EC2::DisableVpcClassicLinkDnsSupportResult> instance
 Disables ClassicLink DNS support for a VPC. If disabled, DNS hostnames
 resolve to public IP addresses when addressed between a linked
 EC2-Classic instance and instances in the VPC to which it's linked. For
-more information about ClassicLink, see ClassicLink in the I<Amazon
-Elastic Compute Cloud User Guide>.
+more information about ClassicLink, see ClassicLink
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DisassociateAddress([AssociationId => Str, DryRun => Bool, PublicIp => Str])
@@ -4315,8 +4436,9 @@ Disassociates an Elastic IP address from the instance or network
 interface it's associated with.
 
 An Elastic IP address is for use in either the EC2-Classic platform or
-in a VPC. For more information, see Elastic IP Addresses in the
-I<Amazon Elastic Compute Cloud User Guide>.
+in a VPC. For more information, see Elastic IP Addresses
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 This is an idempotent operation. If you perform the operation more than
 once, Amazon EC2 doesn't return an error.
@@ -4344,8 +4466,9 @@ Disassociates a subnet from a route table.
 
 After you perform this action, the subnet no longer uses the routes in
 the route table. Instead, it uses the routes in the VPC's main route
-table. For more information about route tables, see Route Tables in the
-I<Amazon Virtual Private Cloud User Guide>.
+table. For more information about route tables, see Route Tables
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 DisassociateSubnetCidrBlock(AssociationId => Str)
@@ -4408,8 +4531,9 @@ addresses. You cannot enable your VPC for ClassicLink if any of your
 VPC's route tables have existing routes for address ranges within the
 C<10.0.0.0/8> IP address range, excluding local routes for VPCs in the
 C<10.0.0.0/16> and C<10.1.0.0/16> IP address ranges. For more
-information, see ClassicLink in the I<Amazon Elastic Compute Cloud User
-Guide>.
+information, see ClassicLink
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 EnableVpcClassicLinkDnsSupport([VpcId => Str])
@@ -4424,7 +4548,9 @@ its private IP address when addressed from an instance in the VPC to
 which it's linked. Similarly, the DNS hostname of an instance in a VPC
 resolves to its private IP address when addressed from a linked
 EC2-Classic instance. For more information about ClassicLink, see
-ClassicLink in the I<Amazon Elastic Compute Cloud User Guide>.
+ClassicLink
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 GetConsoleOutput(InstanceId => Str, [DryRun => Bool])
@@ -4493,8 +4619,11 @@ instance.
 The Windows password is generated at boot by the C<EC2Config> service
 or C<EC2Launch> scripts (Windows Server 2016 and later). This usually
 only happens the first time an instance is launched. For more
-information, see EC2Config and EC2Launch in the Amazon Elastic Compute
-Cloud User Guide.
+information, see EC2Config
+(http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/UsingConfig_WinAMI.html)
+and EC2Launch
+(http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch.html)
+in the Amazon Elastic Compute Cloud User Guide.
 
 For the C<EC2Config> service, the password is not generated for
 rebundled AMIs unless C<Ec2SetPassword> is enabled before bundling.
@@ -4531,7 +4660,9 @@ Returns: a L<Paws::EC2::ImportImageResult> instance
 
 Import single or multi-volume disk images or EBS snapshots into an
 Amazon Machine Image (AMI). For more information, see Importing a VM as
-an Image Using VM Import/Export in the I<VM Import/Export User Guide>.
+an Image Using VM Import/Export
+(http://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html)
+in the I<VM Import/Export User Guide>.
 
 
 =head2 ImportInstance(Platform => Str, [Description => Str, DiskImages => ArrayRef[L<Paws::EC2::DiskImage>], DryRun => Bool, LaunchSpecification => L<Paws::EC2::ImportInstanceLaunchSpecification>])
@@ -4543,10 +4674,12 @@ Returns: a L<Paws::EC2::ImportInstanceResult> instance
 Creates an import instance task using metadata from the specified disk
 image. C<ImportInstance> only supports single-volume VMs. To import
 multi-volume VMs, use ImportImage. For more information, see Importing
-a Virtual Machine Using the Amazon EC2 CLI.
+a Virtual Machine Using the Amazon EC2 CLI
+(http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ec2-cli-vmimport-export.html).
 
 For information about the import manifest referenced by this API
-action, see VM Import Manifest.
+action, see VM Import Manifest
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html).
 
 
 =head2 ImportKeyPair(KeyName => Str, PublicKeyMaterial => Str, [DryRun => Bool])
@@ -4561,8 +4694,9 @@ the key pair and gives the keys to you (AWS keeps a copy of the public
 key). With ImportKeyPair, you create the key pair and give AWS just the
 public key. The private key is never transferred between you and AWS.
 
-For more information about key pairs, see Key Pairs in the I<Amazon
-Elastic Compute Cloud User Guide>.
+For more information about key pairs, see Key Pairs
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 ImportSnapshot([ClientData => L<Paws::EC2::ClientData>, ClientToken => Str, Description => Str, DiskContainer => L<Paws::EC2::SnapshotDiskContainer>, DryRun => Bool, RoleName => Str])
@@ -4581,10 +4715,12 @@ Each argument is described in detail in: L<Paws::EC2::ImportVolume>
 Returns: a L<Paws::EC2::ImportVolumeResult> instance
 
 Creates an import volume task using metadata from the specified disk
-image.For more information, see Importing Disks to Amazon EBS.
+image.For more information, see Importing Disks to Amazon EBS
+(http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/importing-your-volumes-into-amazon-ebs.html).
 
 For information about the import manifest referenced by this API
-action, see VM Import Manifest.
+action, see VM Import Manifest
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html).
 
 
 =head2 ModifyFpgaImageAttribute(FpgaImageId => Str, [Attribute => Str, Description => Str, DryRun => Bool, LoadPermission => L<Paws::EC2::LoadPermissionModifications>, Name => Str, OperationType => Str, ProductCodes => ArrayRef[Str|Undef], UserGroups => ArrayRef[Str|Undef], UserIds => ArrayRef[Str|Undef]])
@@ -4626,7 +4762,9 @@ receive longer IDs (17-character IDs) when they are created.
 
 The following resource types support longer IDs: C<instance> |
 C<reservation> | C<snapshot> | C<volume>. For more information, see
-Resource IDs in the I<Amazon Elastic Compute Cloud User Guide>.
+Resource IDs
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 This setting applies to the principal specified in the request; it does
 not apply to the principal that makes the request.
@@ -4654,8 +4792,9 @@ apply to the entire AWS account. By default, an IAM user defaults to
 the same settings as the root user. If you're using this action as the
 root user, then these settings apply to the entire account, unless an
 IAM user explicitly overrides these settings for themselves. For more
-information, see Resource IDs in the I<Amazon Elastic Compute Cloud
-User Guide>.
+information, see Resource IDs
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Resources created with longer IDs are visible to all IAM roles and
 users, regardless of these settings and provided that they have
@@ -4692,8 +4831,9 @@ Modifies the specified attribute of the specified instance. You can
 specify only one attribute at a time.
 
 To modify some attributes, the instance must be stopped. For more
-information, see Modifying Attributes of a Stopped Instance in the
-I<Amazon Elastic Compute Cloud User Guide>.
+information, see Modifying Attributes of a Stopped Instance
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingAttributesWhileInstanceStopped.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 ModifyInstancePlacement(InstanceId => Str, [Affinity => Str, HostId => Str, Tenancy => Str])
@@ -4745,8 +4885,9 @@ network platform (EC2-Classic or EC2-VPC) of your Reserved Instances.
 The Reserved Instances to be modified must be identical, except for
 Availability Zone, network platform, and instance type.
 
-For more information, see Modifying Reserved Instances in the Amazon
-Elastic Compute Cloud User Guide.
+For more information, see Modifying Reserved Instances
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html)
+in the Amazon Elastic Compute Cloud User Guide.
 
 
 =head2 ModifySnapshotAttribute(SnapshotId => Str, [Attribute => Str, CreateVolumePermission => L<Paws::EC2::CreateVolumePermissionModifications>, DryRun => Bool, GroupNames => ArrayRef[Str|Undef], OperationType => Str, UserIds => ArrayRef[Str|Undef]])
@@ -4766,7 +4907,9 @@ cannot be made public. Snapshots encrypted with your default CMK cannot
 be shared with other accounts.
 
 For more information on modifying snapshot permissions, see Sharing
-Snapshots in the I<Amazon Elastic Compute Cloud User Guide>.
+Snapshots
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 ModifySpotFleetRequest(SpotFleetRequestId => Str, [ExcessCapacityTerminationPolicy => Str, TargetCapacity => Int])
@@ -4822,30 +4965,39 @@ attached to a current-generation EC2 instance type, you may be able to
 apply these changes without stopping the instance or detaching the
 volume from it. For more information about modifying an EBS volume
 running Linux, see Modifying the Size, IOPS, or Type of an EBS Volume
-on Linux. For more information about modifying an EBS volume running
-Windows, see Modifying the Size, IOPS, or Type of an EBS Volume on
-Windows.
+on Linux
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html).
+For more information about modifying an EBS volume running Windows, see
+Modifying the Size, IOPS, or Type of an EBS Volume on Windows
+(http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html).
 
 When you complete a resize operation on your volume, you need to extend
 the volume's file-system size to take advantage of the new storage
 capacity. For information about extending a Linux file system, see
-Extending a Linux File System. For information about extending a
-Windows file system, see Extending a Windows File System.
+Extending a Linux File System
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#recognize-expanded-volume-linux).
+For information about extending a Windows file system, see Extending a
+Windows File System
+(http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html#recognize-expanded-volume-windows).
 
 You can use CloudWatch Events to check the status of a modification to
 an EBS volume. For information about CloudWatch Events, see the Amazon
-CloudWatch Events User Guide. You can also track the status of a
-modification using the DescribeVolumesModifications API. For
-information about tracking status changes using either method, see
-Monitoring Volume Modifications.
+CloudWatch Events User Guide
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/). You can
+also track the status of a modification using the
+DescribeVolumesModifications API. For information about tracking status
+changes using either method, see Monitoring Volume Modifications
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods).
 
 With previous-generation instance types, resizing an EBS volume may
 require detaching and reattaching the volume or stopping and restarting
 the instance. For more information about modifying an EBS volume
 running Linux, see Modifying the Size, IOPS, or Type of an EBS Volume
-on Linux. For more information about modifying an EBS volume running
-Windows, see Modifying the Size, IOPS, or Type of an EBS Volume on
-Windows.
+on Linux
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html).
+For more information about modifying an EBS volume running Windows, see
+Modifying the Size, IOPS, or Type of an EBS Volume on Windows
+(http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html).
 
 If you reach the maximum volume modification rate per volume limit, you
 will need to wait at least six hours before applying further
@@ -4946,6 +5098,7 @@ otherwise during launch. The tenancy of any existing instances in the
 VPC is not affected.
 
 For more information about Dedicated Instances, see Dedicated Instances
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -4957,8 +5110,9 @@ Returns: a L<Paws::EC2::MonitorInstancesResult> instance
 
 Enables detailed monitoring for a running instance. Otherwise, basic
 monitoring is enabled. For more information, see Monitoring Your
-Instances and Volumes in the I<Amazon Elastic Compute Cloud User
-Guide>.
+Instances and Volumes
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 To disable detailed monitoring, see .
 
@@ -5006,8 +5160,11 @@ Instance offerings that match your specifications. After you've
 purchased a Reserved Instance, you can check for your new Reserved
 Instance with DescribeReservedInstances.
 
-For more information, see Reserved Instances and Reserved Instance
-Marketplace in the I<Amazon Elastic Compute Cloud User Guide>.
+For more information, see Reserved Instances
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html)
+and Reserved Instance Marketplace
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 PurchaseScheduledInstances(PurchaseRequests => ArrayRef[L<Paws::EC2::PurchaseRequest>], [ClientToken => Str, DryRun => Bool])
@@ -5044,8 +5201,9 @@ If an instance does not cleanly shut down within four minutes, Amazon
 EC2 performs a hard reboot.
 
 For more information about troubleshooting, see Getting Console Output
-and Rebooting Instances in the I<Amazon Elastic Compute Cloud User
-Guide>.
+and Rebooting Instances
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 RegisterImage(Name => Str, [Architecture => Str, BillingProducts => ArrayRef[Str|Undef], BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>], Description => Str, DryRun => Bool, EnaSupport => Bool, ImageLocation => Str, KernelId => Str, RamdiskId => Str, RootDeviceName => Str, SriovNetSupport => Str, VirtualizationType => Str])
@@ -5056,8 +5214,9 @@ Returns: a L<Paws::EC2::RegisterImageResult> instance
 
 Registers an AMI. When you're creating an AMI, this is the final step
 you must complete before you can launch an instance from the AMI. For
-more information about creating AMIs, see Creating Your Own AMIs in the
-I<Amazon Elastic Compute Cloud User Guide>.
+more information about creating AMIs, see Creating Your Own AMIs
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 For Amazon EBS-backed instances, CreateImage creates and registers the
 AMI in a single request, so you don't have to register the AMI
@@ -5066,8 +5225,9 @@ yourself.
 You can also use C<RegisterImage> to create an Amazon EBS-backed Linux
 AMI from a snapshot of a root device volume. You specify the snapshot
 using the block device mapping. For more information, see Launching a
-Linux Instance from a Backup in the I<Amazon Elastic Compute Cloud User
-Guide>.
+Linux Instance from a Backup
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-launch-snapshot.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 You can't register an image where a secondary (non-root) snapshot has
 AWS Marketplace product codes.
@@ -5171,6 +5331,7 @@ Returns: a L<Paws::EC2::ReplaceNetworkAclAssociationResult> instance
 Changes which network ACL a subnet is associated with. By default when
 you create a subnet, it's automatically associated with the default
 network ACL. For more information about network ACLs, see Network ACLs
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 
@@ -5181,8 +5342,9 @@ Each argument is described in detail in: L<Paws::EC2::ReplaceNetworkAclEntry>
 Returns: nothing
 
 Replaces an entry (rule) in a network ACL. For more information about
-network ACLs, see Network ACLs in the I<Amazon Virtual Private Cloud
-User Guide>.
+network ACLs, see Network ACLs
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 ReplaceRoute(RouteTableId => Str, [DestinationCidrBlock => Str, DestinationIpv6CidrBlock => Str, DryRun => Bool, EgressOnlyInternetGatewayId => Str, GatewayId => Str, InstanceId => Str, NatGatewayId => Str, NetworkInterfaceId => Str, VpcPeeringConnectionId => Str])
@@ -5196,8 +5358,9 @@ provide only one of the following: Internet gateway or virtual private
 gateway, NAT instance, NAT gateway, VPC peering connection, network
 interface, or egress-only Internet gateway.
 
-For more information about route tables, see Route Tables in the
-I<Amazon Virtual Private Cloud User Guide>.
+For more information about route tables, see Route Tables
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 ReplaceRouteTableAssociation(AssociationId => Str, RouteTableId => Str, [DryRun => Bool])
@@ -5209,7 +5372,9 @@ Returns: a L<Paws::EC2::ReplaceRouteTableAssociationResult> instance
 Changes the route table associated with a given subnet in a VPC. After
 the operation completes, the subnet uses the routes in the new route
 table it's associated with. For more information about route tables,
-see Route Tables in the I<Amazon Virtual Private Cloud User Guide>.
+see Route Tables
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 You can also use ReplaceRouteTableAssociation to change which table is
 the main route table in the VPC. You just specify the main route
@@ -5257,8 +5422,9 @@ specifications. By ensuring that the Spot instances in your Spot fleet
 are in different Spot pools, you can improve the availability of your
 fleet.
 
-For more information, see Spot Fleet Requests in the I<Amazon Elastic
-Compute Cloud User Guide>.
+For more information, see Spot Fleet Requests
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 RequestSpotInstances(SpotPrice => Str, [AvailabilityZoneGroup => Str, BlockDurationMinutes => Int, ClientToken => Str, DryRun => Bool, InstanceCount => Int, InstanceInterruptionBehavior => Str, LaunchGroup => Str, LaunchSpecification => L<Paws::EC2::RequestSpotLaunchSpecification>, Type => Str, ValidFrom => Str, ValidUntil => Str])
@@ -5271,8 +5437,9 @@ Creates a Spot instance request. Spot instances are instances that
 Amazon EC2 launches when the bid price that you specify exceeds the
 current Spot price. Amazon EC2 periodically sets the Spot price based
 on available Spot Instance capacity and current Spot instance requests.
-For more information, see Spot Instance Requests in the I<Amazon
-Elastic Compute Cloud User Guide>.
+For more information, see Spot Instance Requests
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 ResetFpgaImageAttribute(FpgaImageId => Str, [Attribute => Str, DryRun => Bool])
@@ -5310,8 +5477,9 @@ stopped.
 The C<sourceDestCheck> attribute controls whether source/destination
 checking is enabled. The default value is C<true>, which means checking
 is enabled. This value must be C<false> for a NAT instance to perform
-NAT. For more information, see NAT Instances in the I<Amazon Virtual
-Private Cloud User Guide>.
+NAT. For more information, see NAT Instances
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 ResetNetworkInterfaceAttribute(NetworkInterfaceId => Str, [DryRun => Bool, SourceDestCheck => Str])
@@ -5333,7 +5501,9 @@ Returns: nothing
 Resets permission settings for the specified snapshot.
 
 For more information on modifying snapshot permissions, see Sharing
-Snapshots in the I<Amazon Elastic Compute Cloud User Guide>.
+Snapshots
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 RestoreAddressToClassic(PublicIp => Str, [DryRun => Bool])
@@ -5425,7 +5595,8 @@ you.
 
 Some instance types must be launched into a VPC. If you do not have a
 default VPC, or if you do not specify a subnet ID, the request fails.
-For more information, see Instance Types Available Only in a VPC.
+For more information, see Instance Types Available Only in a VPC
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-vpc.html#vpc-only-instance-types).
 
 =item *
 
@@ -5436,12 +5607,14 @@ IPv4 range of your subnet.
 =item *
 
 Not all instance types support IPv6 addresses. For more information,
-see Instance Types.
+see Instance Types
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
 
 =item *
 
 If you don't specify a security group ID, we use the default security
-group. For more information, see Security Groups.
+group. For more information, see Security Groups
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html).
 
 =item *
 
@@ -5458,17 +5631,22 @@ An instance is ready for you to use when it's in the C<running> state.
 You can check the state of your instance using DescribeInstances. You
 can tag instances and EBS volumes during launch, after launch, or both.
 For more information, see CreateTags and Tagging Your Amazon EC2
-Resources.
+Resources
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html).
 
 Linux instances have access to the public key of the key pair at boot.
 You can use this key to provide secure access to the instance. Amazon
 EC2 public images use this feature to provide secure access without
-passwords. For more information, see Key Pairs in the I<Amazon Elastic
-Compute Cloud User Guide>.
+passwords. For more information, see Key Pairs
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 For troubleshooting, see What To Do If An Instance Immediately
-Terminates, and Troubleshooting Connecting to Your Instance in the
-I<Amazon Elastic Compute Cloud User Guide>.
+Terminates
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_InstanceStraightToTerminated.html),
+and Troubleshooting Connecting to Your Instance
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 RunScheduledInstances(LaunchSpecification => L<Paws::EC2::ScheduledInstancesLaunchSpecification>, ScheduledInstanceId => Str, [ClientToken => Str, DryRun => Bool, InstanceCount => Int])
@@ -5486,8 +5664,9 @@ You must launch a Scheduled Instance during its scheduled time period.
 You can't stop or reboot a Scheduled Instance, but you can terminate it
 as needed. If you terminate a Scheduled Instance before the current
 scheduled time period ends, you can launch it again after a few
-minutes. For more information, see Scheduled Instances in the I<Amazon
-Elastic Compute Cloud User Guide>.
+minutes. For more information, see Scheduled Instances
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-scheduled-instances.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 StartInstances(InstanceIds => ArrayRef[Str|Undef], [AdditionalInfo => Str, DryRun => Bool])
@@ -5519,8 +5698,9 @@ RAM.
 Performing this operation on an instance that uses an instance store as
 its root device returns an error.
 
-For more information, see Stopping Instances in the I<Amazon Elastic
-Compute Cloud User Guide>.
+For more information, see Stopping Instances
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html) in
+the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 StopInstances(InstanceIds => ArrayRef[Str|Undef], [DryRun => Bool, Force => Bool])
@@ -5556,14 +5736,17 @@ devices attached to the instance persist. When you terminate an
 instance, the root device and any other devices attached during the
 instance launch are automatically deleted. For more information about
 the differences between rebooting, stopping, and terminating instances,
-see Instance Lifecycle in the I<Amazon Elastic Compute Cloud User
-Guide>.
+see Instance Lifecycle
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 When you stop an instance, we attempt to shut it down forcibly after a
 short while. If your instance appears stuck in the stopping state after
 a period of time, there may be an issue with the underlying host
 computer. For more information, see Troubleshooting Stopping Your
-Instance in the I<Amazon Elastic Compute Cloud User Guide>.
+Instance
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 TerminateInstances(InstanceIds => ArrayRef[Str|Undef], [DryRun => Bool])
@@ -5594,11 +5777,14 @@ instance persist. When you terminate an instance, any attached EBS
 volumes with the C<DeleteOnTermination> block device mapping parameter
 set to C<true> are automatically deleted. For more information about
 the differences between stopping and terminating instances, see
-Instance Lifecycle in the I<Amazon Elastic Compute Cloud User Guide>.
+Instance Lifecycle
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 For more information about troubleshooting, see Troubleshooting
-Terminating Your Instance in the I<Amazon Elastic Compute Cloud User
-Guide>.
+Terminating Your Instance
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesShuttingDown.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 UnassignIpv6Addresses(Ipv6Addresses => ArrayRef[Str|Undef], NetworkInterfaceId => Str)
@@ -5627,8 +5813,9 @@ Each argument is described in detail in: L<Paws::EC2::UnmonitorInstances>
 Returns: a L<Paws::EC2::UnmonitorInstancesResult> instance
 
 Disables detailed monitoring for a running instance. For more
-information, see Monitoring Your Instances and Volumes in the I<Amazon
-Elastic Compute Cloud User Guide>.
+information, see Monitoring Your Instances and Volumes
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 UpdateSecurityGroupRuleDescriptionsEgress(IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>], [DryRun => Bool, GroupId => Str, GroupName => Str])

@@ -87,9 +87,10 @@ C<Percentile>
 
 The name of this attribute conflicts with a reserved word, so it cannot
 be used directly in an expression. (For the complete list of reserved
-words, see Reserved Words in the I<Amazon DynamoDB Developer Guide>).
-To work around this, you could specify the following for
-C<ExpressionAttributeNames>:
+words, see Reserved Words
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+in the I<Amazon DynamoDB Developer Guide>). To work around this, you
+could specify the following for C<ExpressionAttributeNames>:
 
 =over
 
@@ -114,7 +115,9 @@ Tokens that begin with the B<:> character are I<expression attribute
 values>, which are placeholders for the actual value at runtime.
 
 For more information on expression attribute names, see Accessing Item
-Attributes in the I<Amazon DynamoDB Developer Guide>.
+Attributes
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 =item *
 
@@ -135,14 +138,17 @@ If no attribute names are specified, then all attributes will be
 returned. If any of the requested attributes are not found, they will
 not appear in the result.
 
-For more information, see Accessing Item Attributes in the I<Amazon
-DynamoDB Developer Guide>.
+For more information, see Accessing Item Attributes
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 =item *
 
 C<AttributesToGet> - This is a legacy parameter. Use
 C<ProjectionExpression> instead. For more information, see
-AttributesToGet in the I<Amazon DynamoDB Developer Guide>.
+AttributesToGet
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 =back
 

@@ -48,7 +48,8 @@ Event destinations are associated with configuration sets, which enable
 you to publish email sending events to Amazon CloudWatch, Amazon
 Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS).
 For information about using configuration sets, see the Amazon SES
-Developer Guide.
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
 
 =head1 ATTRIBUTES
 

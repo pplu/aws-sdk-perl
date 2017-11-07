@@ -399,11 +399,12 @@ and deletes all member resources of the stack together and manages all
 dependencies between the resources for you.
 
 For more information about AWS CloudFormation, see the AWS
-CloudFormation Product Page.
+CloudFormation Product Page (http://aws.amazon.com/cloudformation/).
 
 Amazon CloudFormation makes use of other AWS products. If you need
 additional technical information about a specific AWS product, you can
-find the product's technical documentation at docs.aws.amazon.com.
+find the product's technical documentation at docs.aws.amazon.com
+(http://docs.aws.amazon.com/).
 
 =head1 METHODS
 
@@ -429,6 +430,7 @@ Returns: a L<Paws::CloudFormation::ContinueUpdateRollbackOutput> instance
 For a specified stack that is in the C<UPDATE_ROLLBACK_FAILED> state,
 continues rolling it back to the C<UPDATE_ROLLBACK_COMPLETE> state.
 Depending on the cause of the failure, you can manually fix the error
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed)
 and continue the rollback. By continuing the rollback, you can return
 your stack to a working state (the C<UPDATE_ROLLBACK_COMPLETE> state),
 and then try to update the stack again.
@@ -567,8 +569,9 @@ Returns: a L<Paws::CloudFormation::DescribeChangeSetOutput> instance
 
 Returns the inputs for the change set and a list of changes that AWS
 CloudFormation will make if you execute the change set. For more
-information, see Updating Stacks Using Change Sets in the AWS
-CloudFormation User Guide.
+information, see Updating Stacks Using Change Sets
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html)
+in the AWS CloudFormation User Guide.
 
 
 =head2 DescribeStackEvents([NextToken => Str, StackName => Str])
@@ -579,7 +582,9 @@ Returns: a L<Paws::CloudFormation::DescribeStackEventsOutput> instance
 
 Returns all stack related events for a specified stack in reverse
 chronological order. For more information about a stack's event
-history, go to Stacks in the AWS CloudFormation User Guide.
+history, go to Stacks
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/concept-stack.html)
+in the AWS CloudFormation User Guide.
 
 You can list events for stacks that have failed to create or have been
 deleted by specifying the unique stack identifier (stack ID).
@@ -632,7 +637,8 @@ You must specify either C<StackName> or C<PhysicalResourceId>, but not
 both. In addition, you can specify C<LogicalResourceId> to filter the
 returned result. For more information about resources, the
 C<LogicalResourceId> and C<PhysicalResourceId>, go to the AWS
-CloudFormation User Guide.
+CloudFormation User Guide
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/).
 
 A C<ValidationError> is returned if you specify both C<StackName> and
 C<PhysicalResourceId> in the same request.
@@ -765,10 +771,12 @@ Returns: a L<Paws::CloudFormation::ListExportsOutput> instance
 Lists all exported output values in the account and region in which you
 call this action. Use this action to see the exported output values
 that you can import into other stacks. To import values, use the
-C<Fn::ImportValue> function.
+C<Fn::ImportValue>
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html)
+function.
 
-For more information, see AWS CloudFormation Export Stack Output
-Values.
+For more information, see AWS CloudFormation Export Stack Output Values
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html).
 
 
 =head2 ListImports(ExportName => Str, [NextToken => Str])
@@ -783,7 +791,9 @@ stacks are using it. To see the exported output values in your account,
 see ListExports.
 
 For more information about importing an exported output value, see the
-C<Fn::ImportValue> function.
+C<Fn::ImportValue>
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html)
+function.
 
 
 =head2 ListStackInstances(StackSetName => Str, [MaxResults => Int, NextToken => Str, StackInstanceAccount => Str, StackInstanceRegion => Str])
@@ -898,7 +908,8 @@ To get a copy of the template for an existing stack, you can use the
 GetTemplate action.
 
 For more information about creating an update template, updating a
-stack, and monitoring the progress of the update, see Updating a Stack.
+stack, and monitoring the progress of the update, see Updating a Stack
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html).
 
 
 =head2 UpdateStackSet(StackSetName => Str, [Capabilities => ArrayRef[Str|Undef], Description => Str, OperationId => Str, OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>, Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
@@ -925,11 +936,14 @@ Returns: a L<Paws::CloudFormation::UpdateTerminationProtectionOutput> instance
 Updates termination protection for the specified stack. If a user
 attempts to delete a stack with termination protection enabled, the
 operation fails and the stack remains unchanged. For more information,
-see Protecting a Stack From Being Deleted in the I<AWS CloudFormation
-User Guide>.
+see Protecting a Stack From Being Deleted
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html)
+in the I<AWS CloudFormation User Guide>.
 
-For nested stacks, termination protection is set on the root stack and
-cannot be changed directly on the nested stack.
+For nested stacks
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html),
+termination protection is set on the root stack and cannot be changed
+directly on the nested stack.
 
 
 =head2 ValidateTemplate([TemplateBody => Str, TemplateURL => Str])

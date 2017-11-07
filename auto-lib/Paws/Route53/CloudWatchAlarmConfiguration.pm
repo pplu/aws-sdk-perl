@@ -55,7 +55,9 @@ arithmetic operation that is used for the comparison.
   For the metric that the CloudWatch alarm is associated with, a complex
 type that contains information about the dimensions for the metric. For
 information, see Amazon CloudWatch Namespaces, Dimensions, and Metrics
-Reference in the I<Amazon CloudWatch User Guide>.
+Reference
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html)
+in the I<Amazon CloudWatch User Guide>.
 
 
 =head2 B<REQUIRED> EvaluationPeriods => Int
@@ -73,7 +75,9 @@ of periods that the metric is compared to the threshold.
 
   The namespace of the metric that the alarm is associated with. For more
 information, see Amazon CloudWatch Namespaces, Dimensions, and Metrics
-Reference in the I<Amazon CloudWatch User Guide>.
+Reference
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html)
+in the I<Amazon CloudWatch User Guide>.
 
 
 =head2 B<REQUIRED> Period => Int

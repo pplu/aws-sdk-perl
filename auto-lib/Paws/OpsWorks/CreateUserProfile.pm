@@ -40,7 +40,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Whether users can specify their own SSH public key through the My
 Settings page. For more information, see Setting an IAM User's Public
-SSH Key.
+SSH Key
+(http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html).
 
 
 

@@ -43,8 +43,9 @@ partition key.
 =head2 B<REQUIRED> PartitionKeyPath => Str
 
   The JSON path to be extracted from the event and used as the partition
-key. For more information, see Amazon Kinesis Streams Key Concepts in
-the I<Amazon Kinesis Streams Developer Guide>.
+key. For more information, see Amazon Kinesis Streams Key Concepts
+(http://docs.aws.amazon.com/streams/latest/dev/key-concepts.html#partition-key)
+in the I<Amazon Kinesis Streams Developer Guide>.
 
 
 

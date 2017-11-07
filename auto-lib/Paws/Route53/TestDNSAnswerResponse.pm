@@ -58,7 +58,9 @@ A code that indicates whether the request is valid or not. The most
 common response code is C<NOERROR>, meaning that the request is valid.
 If the response is not valid, Amazon Route 53 returns a response code
 that describes the error. For a list of possible response codes, see
-DNS RCODES on the IANA website.
+DNS RCODES
+(http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6)
+on the IANA website.
 
 
 

@@ -53,12 +53,15 @@ Describes an action that captures a CloudWatch metric.
 
 =head2 MetricTimestamp => Str
 
-  An optional Unix timestamp.
+  An optional Unix timestamp
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp).
 
 
 =head2 B<REQUIRED> MetricUnit => Str
 
-  The metric unit supported by CloudWatch.
+  The metric unit
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit)
+supported by CloudWatch.
 
 
 =head2 B<REQUIRED> MetricValue => Str

@@ -41,7 +41,8 @@ C<arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster> or
 C<arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot>.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces.
+AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
 

@@ -136,7 +136,8 @@ sessions a player can create.
   Set of developer-defined properties for a game session, formatted as a
 set of type:value pairs. These properties are included in the
 GameSession object, which is passed to the game server with a request
-to start a new game session (see Start a Game Session).
+to start a new game session (see Start a Game Session
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 
 
 =head2 GameSessionData => Str
@@ -144,7 +145,8 @@ to start a new game session (see Start a Game Session).
   Set of developer-defined game session properties, formatted as a single
 string value. This data is included in the GameSession object, which is
 passed to the game server with a request to start a new game session
-(see Start a Game Session).
+(see Start a Game Session
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 
 
 =head2 GameSessionId => Str

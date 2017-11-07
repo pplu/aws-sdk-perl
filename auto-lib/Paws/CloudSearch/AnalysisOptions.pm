@@ -46,7 +46,9 @@ Includes tokenization dictionary for Japanese.
   The level of algorithmic stemming to perform: C<none>, C<minimal>,
 C<light>, or C<full>. The available levels vary depending on the
 language. For more information, see Language Specific Text Processing
-Settings in the I<Amazon CloudSearch Developer Guide>
+Settings
+(http://docs.aws.amazon.com/cloudsearch/latest/developerguide/text-processing.html#text-processing-settings)
+in the I<Amazon CloudSearch Developer Guide>
 
 
 =head2 JapaneseTokenizationDictionary => Str
@@ -86,8 +88,9 @@ string:value pairs where the string specifies a term and the array of
 values specifies each of the aliases for that term. An alias is
 considered a synonym of the specified term, but the term is not
 considered a synonym of the alias. For more information about
-specifying synonyms, see Synonyms in the I<Amazon CloudSearch Developer
-Guide>.
+specifying synonyms, see Synonyms
+(http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html#synonyms)
+in the I<Amazon CloudSearch Developer Guide>.
 
 
 

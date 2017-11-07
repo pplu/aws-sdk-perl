@@ -40,8 +40,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 If provided, the new content for the policy. The text must be correctly
 formatted JSON that complies with the syntax for the policy's type. For
-more information, see Service Control Policy Syntax in the I<AWS
-Organizations User Guide>.
+more information, see Service Control Policy Syntax
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html)
+in the I<AWS Organizations User Guide>.
 
 
 
@@ -55,8 +56,9 @@ If provided, the new description for the policy.
 
 If provided, the new name for the policy.
 
-The regex pattern that is used to validate this parameter is a string
-of any of the characters in the ASCII character range.
+The regex pattern (http://wikipedia.org/wiki/regex) that is used to
+validate this parameter is a string of any of the characters in the
+ASCII character range.
 
 
 
@@ -64,8 +66,9 @@ of any of the characters in the ASCII character range.
 
 The unique identifier (ID) of the policy that you want to update.
 
-The regex pattern for a policy ID string requires "p-" followed by from
-8 to 128 lower-case letters or digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for a policy ID
+string requires "p-" followed by from 8 to 128 lower-case letters or
+digits.
 
 
 

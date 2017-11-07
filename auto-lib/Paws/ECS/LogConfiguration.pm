@@ -46,11 +46,11 @@ communicate with by default.
 
 If you have a custom driver that is not listed above that you would
 like to work with the Amazon ECS container agent, you can fork the
-Amazon ECS container agent project that is available on GitHub and
-customize it to work with that driver. We encourage you to submit pull
-requests for changes that you would like to have included. However,
-Amazon Web Services does not currently provide support for running
-modified copies of this software.
+Amazon ECS container agent project that is available on GitHub
+(https://github.com/aws/amazon-ecs-agent) and customize it to work with
+that driver. We encourage you to submit pull requests for changes that
+you would like to have included. However, Amazon Web Services does not
+currently provide support for running modified copies of this software.
 
 This parameter requires version 1.18 of the Docker Remote API or
 greater on your container instance. To check the Docker Remote API

@@ -244,7 +244,8 @@ Default: C<true>
 
 The EC2 Availability Zone that the database instance will be created
 in. For information on regions and Availability Zones, see Regions and
-Availability Zones.
+Availability Zones
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 
 Default: A random, system-chosen Availability Zone in the endpoint's
 AWS Region.
@@ -1159,7 +1160,8 @@ Valid Values: C<0, 1, 5, 10, 15, 30, 60>
 The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
-a monitoring role, go to Setting Up and Enabling Enhanced Monitoring.
+a monitoring role, go to Setting Up and Enabling Enhanced Monitoring
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling).
 
 If C<MonitoringInterval> is set to a value other than 0, then you must
 supply a C<MonitoringRoleArn> value.
@@ -1246,7 +1248,8 @@ Type: Integer
 
 The daily time range during which automated backups are created if
 automated backups are enabled, using the C<BackupRetentionPeriod>
-parameter. For more information, see DB Instance Backups.
+parameter. For more information, see DB Instance Backups
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.BackingUpAndRestoringAmazonRDSInstances.html).
 
 B<Amazon Aurora>
 
@@ -1255,7 +1258,8 @@ managed by the DB cluster. For more information, see CreateDBCluster.
 
 Default: A 30-minute window selected at random from an 8-hour block of
 time per AWS Region. To see the time blocks available, see Adjusting
-the Preferred DB Instance Maintenance Window.
+the Preferred DB Instance Maintenance Window
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow).
 
 Constraints:
 
@@ -1286,13 +1290,15 @@ Must be at least 30 minutes.
 
 The weekly time range during which system maintenance can occur, in
 Universal Coordinated Time (UTC). For more information, see DB Instance
-Maintenance.
+Maintenance
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBMaintenance.html).
 
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
 Default: A 30-minute window selected at random from an 8-hour block of
 time per AWS Region, occurring on a random day of the week. To see the
 time blocks available, see Adjusting the Preferred Maintenance Window
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
 in the I<Amazon RDS User Guide.>
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
@@ -1306,7 +1312,8 @@ Constraints: Minimum 30-minute window.
 A value that specifies the order in which an Aurora Replica is promoted
 to the primary instance after a failure of the existing primary
 instance. For more information, see Fault Tolerance for an Aurora DB
-Cluster.
+Cluster
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance).
 
 Default: 1
 
@@ -1396,7 +1403,8 @@ the device.
 =head2 Timezone => Str
 
 The time zone of the DB instance. The time zone parameter is currently
-supported only by Microsoft SQL Server.
+supported only by Microsoft SQL Server
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.TimeZone).
 
 
 

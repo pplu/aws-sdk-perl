@@ -95,7 +95,8 @@ lexicon which has been deleted is not available for speech synthesis,
 nor is it possible to retrieve it using either the C<GetLexicon> or
 C<ListLexicon> APIs.
 
-For more information, see Managing Lexicons.
+For more information, see Managing Lexicons
+(http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
 
 
 =head2 DescribeVoices([LanguageCode => Str, NextToken => Str])
@@ -133,7 +134,8 @@ Each argument is described in detail in: L<Paws::Polly::GetLexicon>
 Returns: a L<Paws::Polly::GetLexiconOutput> instance
 
 Returns the content of the specified pronunciation lexicon stored in an
-AWS Region. For more information, see Managing Lexicons.
+AWS Region. For more information, see Managing Lexicons
+(http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
 
 
 =head2 ListLexicons([NextToken => Str])
@@ -143,7 +145,8 @@ Each argument is described in detail in: L<Paws::Polly::ListLexicons>
 Returns: a L<Paws::Polly::ListLexiconsOutput> instance
 
 Returns a list of pronunciation lexicons stored in an AWS Region. For
-more information, see Managing Lexicons.
+more information, see Managing Lexicons
+(http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
 
 
 =head2 PutLexicon(Content => Str, Name => Str)
@@ -158,7 +161,8 @@ lexicon. Lexicon operations have eventual consistency, therefore, it
 might take some time before the lexicon is available to the
 SynthesizeSpeech operation.
 
-For more information, see Managing Lexicons.
+For more information, see Managing Lexicons
+(http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
 
 
 =head2 SynthesizeSpeech(OutputFormat => Str, Text => Str, VoiceId => Str, [LexiconNames => ArrayRef[Str|Undef], SampleRate => Str, SpeechMarkTypes => ArrayRef[Str|Undef], TextType => Str])
@@ -171,7 +175,8 @@ Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes. SSML
 input must be valid, well-formed SSML. Some alphabets might not be
 available with all the voices (for example, Cyrillic might not be read
 at all by English voices) unless phoneme mapping is used. For more
-information, see How it Works.
+information, see How it Works
+(http://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html).
 
 
 

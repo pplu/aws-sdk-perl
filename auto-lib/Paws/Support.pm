@@ -169,8 +169,9 @@ This service enables you to manage your AWS Support cases
 programmatically. It uses HTTP methods that return results in JSON
 format.
 
-The AWS Support service also exposes a set of Trusted Advisor features.
-You can retrieve a list of checks and their descriptions, get check
+The AWS Support service also exposes a set of Trusted Advisor
+(http://aws.amazon.com/premiumsupport/trustedadvisor/) features. You
+can retrieve a list of checks and their descriptions, get check
 results, specify checks to refresh, and get the refresh status of
 checks.
 
@@ -235,12 +236,14 @@ of one or more checks.
 =back
 
 For authentication of requests, AWS Support uses Signature Version 4
-Signing Process.
+Signing Process
+(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
-See About the AWS Support API in the I<AWS Support User Guide> for
-information about how to use this service to create and manage your
-support cases, and how to call Trusted Advisor for results of checks on
-your resources.
+See About the AWS Support API
+(http://docs.aws.amazon.com/awssupport/latest/user/Welcome.html) in the
+I<AWS Support User Guide> for information about how to use this service
+to create and manage your support cases, and how to call Trusted
+Advisor for results of checks on your resources.
 
 =head1 METHODS
 
@@ -288,7 +291,8 @@ Each argument is described in detail in: L<Paws::Support::CreateCase>
 Returns: a L<Paws::Support::CreateCaseResponse> instance
 
 Creates a new case in the AWS Support Center. This operation is modeled
-on the behavior of the AWS Support Center Create Case page. Its
+on the behavior of the AWS Support Center Create Case
+(https://console.aws.amazon.com/support/home#/case/create) page. Its
 parameters require you to specify the following information:
 
 =over
@@ -321,12 +325,13 @@ DescribeSeverityLevels.
 =item *
 
 B<subject.> The B<Subject> field on the AWS Support Center Create Case
-page.
+(https://console.aws.amazon.com/support/home#/case/create) page.
 
 =item *
 
 B<communicationBody.> The B<Description> field on the AWS Support
-Center Create Case page.
+Center Create Case
+(https://console.aws.amazon.com/support/home#/case/create) page.
 
 =item *
 
@@ -341,11 +346,12 @@ English and Japanese are currently supported.
 =item *
 
 B<ccEmailAddresses.> The AWS Support Center B<CC> field on the Create
-Case page. You can list email addresses to be copied on any
-correspondence about the case. The account that opens the case is
-already identified by passing the AWS Credentials in the HTTP POST
-method or in a method or function call from one of the programming
-languages supported by an AWS SDK.
+Case (https://console.aws.amazon.com/support/home#/case/create) page.
+You can list email addresses to be copied on any correspondence about
+the case. The account that opens the case is already identified by
+passing the AWS Credentials in the HTTP POST method or in a method or
+function call from one of the programming languages supported by an AWS
+SDK (http://aws.amazon.com/tools/).
 
 =back
 
@@ -437,11 +443,13 @@ set of categories.
 
 The service codes and category codes correspond to the values that are
 displayed in the B<Service> and B<Category> drop-down lists on the AWS
-Support Center Create Case page. The values in those fields, however,
-do not necessarily match the service codes and categories returned by
-the C<DescribeServices> request. Always use the service codes and
-categories obtained programmatically. This practice ensures that you
-always have the most recent set of service and category codes.
+Support Center Create Case
+(https://console.aws.amazon.com/support/home#/case/create) page. The
+values in those fields, however, do not necessarily match the service
+codes and categories returned by the C<DescribeServices> request.
+Always use the service codes and categories obtained programmatically.
+This practice ensures that you always have the most recent set of
+service and category codes.
 
 
 =head2 DescribeSeverityLevels([Language => Str])

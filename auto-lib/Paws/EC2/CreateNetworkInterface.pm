@@ -106,7 +106,9 @@ IP address using C<privateIpAddresses>.
 
 The number of IP addresses you can assign to a network interface varies
 by instance type. For more information, see IP Addresses Per ENI Per
-Instance Type in the I<Amazon Virtual Private Cloud User Guide>.
+Instance Type
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 

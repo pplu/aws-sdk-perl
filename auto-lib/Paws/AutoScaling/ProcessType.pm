@@ -33,8 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 Describes a process type.
 
-For more information, see Auto Scaling Processes in the I<Auto Scaling
-User Guide>.
+For more information, see Auto Scaling Processes
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-suspend-resume-processes.html#process-types)
+in the I<Auto Scaling User Guide>.
 
 =head1 ATTRIBUTES
 

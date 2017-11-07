@@ -55,8 +55,9 @@ using EnableAvailabilityZonesForLoadBalancer.
 
 The listeners.
 
-For more information, see Listeners for Your Classic Load Balancer in
-the I<Classic Load Balancer Guide>.
+For more information, see Listeners for Your Classic Load Balancer
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html)
+in the I<Classic Load Balancer Guide>.
 
 
 
@@ -78,7 +79,9 @@ The type of a load balancer. Valid only for load balancers in a VPC.
 By default, Elastic Load Balancing creates an Internet-facing load
 balancer with a DNS name that resolves to public IP addresses. For more
 information about Internet-facing and Internal load balancers, see Load
-Balancer Scheme in the I<Elastic Load Balancing User Guide>.
+Balancer Scheme
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html#load-balancer-scheme)
+in the I<Elastic Load Balancing User Guide>.
 
 Specify C<internal> to create a load balancer with a DNS name that
 resolves to private IP addresses.
@@ -104,7 +107,9 @@ C<AvailabilityZones>.
 A list of tags to assign to the load balancer.
 
 For more information about tagging your load balancer, see Tag Your
-Classic Load Balancer in the I<Classic Load Balancer Guide>.
+Classic Load Balancer
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html)
+in the I<Classic Load Balancer Guide>.
 
 
 

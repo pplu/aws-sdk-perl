@@ -48,7 +48,8 @@ The domain name of the Amazon CloudFront distribution associated with
 this custom domain name for an edge-optimized endpoint. You set up this
 association when adding a DNS record pointing the custom domain name to
 this distribution name. For more information about CloudFront
-distributions, see the Amazon CloudFront documentation.
+distributions, see the Amazon CloudFront documentation
+(http://aws.amazon.com/documentation/cloudfront/).
 
 
 =head2 DomainName => Str

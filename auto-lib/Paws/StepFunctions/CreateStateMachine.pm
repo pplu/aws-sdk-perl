@@ -45,8 +45,9 @@ The Amazon States Language definition of the state machine.
 
 The name of the state machine. This name must be unique for your AWS
 account and region for 90 days. For more information, see Limits
-Related to State Machine Executions in the I<AWS Step Functions
-Developer Guide>.
+Related to State Machine Executions
+(http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions)
+in the I<AWS Step Functions Developer Guide>.
 
 A name must I<not> contain:
 

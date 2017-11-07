@@ -42,7 +42,8 @@ of one or more email addresses or domains that you own. An instance of
 this data type can represent only one action.
 
 For information about setting up receipt rules, see the Amazon SES
-Developer Guide.
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html).
 
 =head1 ATTRIBUTES
 

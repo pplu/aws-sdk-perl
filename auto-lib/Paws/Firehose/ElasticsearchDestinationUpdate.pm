@@ -74,7 +74,9 @@ specified in B<RoleARN>.
   The Elasticsearch index rotation period. Index rotation appends a time
 stamp to IndexName to facilitate the expiration of old data. For more
 information, see Index Rotation for Amazon Elasticsearch Service
-Destination. Default value is C<OneDay>.
+Destination
+(http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#es-index-rotation).
+Default value is C<OneDay>.
 
 
 =head2 ProcessingConfiguration => L<Paws::Firehose::ProcessingConfiguration>
@@ -92,7 +94,8 @@ documents to Amazon ES. The default value is 300 (5 minutes).
 
   The ARN of the IAM role to be assumed by Kinesis Firehose for calling
 the Amazon ES Configuration API and for indexing documents. For more
-information, see Amazon S3 Bucket Access.
+information, see Amazon S3 Bucket Access
+(http://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3).
 
 
 =head2 S3Update => L<Paws::Firehose::S3DestinationUpdate>

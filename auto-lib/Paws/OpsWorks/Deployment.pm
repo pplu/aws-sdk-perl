@@ -82,7 +82,8 @@ following format:
 C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 
 For more information on custom JSON, see Use Custom JSON to Modify the
-Stack Configuration Attributes.
+Stack Configuration Attributes
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
 
 
 =head2 DeploymentId => Str

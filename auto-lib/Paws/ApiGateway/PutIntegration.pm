@@ -180,8 +180,9 @@ Valid values are: C<"HTTP">, C<"AWS">, C<"MOCK">, C<"HTTP_PROXY">, C<"AWS_PROXY"
 
 Specifies the integration's Uniform Resource Identifier (URI). For HTTP
 integrations, the URI must be a fully formed, encoded HTTP(S) URL
-according to the RFC-3986 specification. For AWS integrations, the URI
-should be of the form
+according to the RFC-3986 specification
+(https://en.wikipedia.org/wiki/Uniform_Resource_Identifier). For AWS
+integrations, the URI should be of the form
 C<arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}>.
 C<Region>, C<subdomain> and C<service> are used to determine the right
 endpoint. For AWS services that use the C<Action=> query string

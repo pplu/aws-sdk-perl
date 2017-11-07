@@ -50,8 +50,9 @@ You can configure up to five event selectors for a trail.
   CloudTrail supports logging only data events for S3 objects. You can
 specify up to 250 S3 buckets and object prefixes for a trail.
 
-For more information, see Data Events in the I<AWS CloudTrail User
-Guide>.
+For more information, see Data Events
+(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events)
+in the I<AWS CloudTrail User Guide>.
 
 
 =head2 IncludeManagementEvents => Bool
@@ -59,8 +60,9 @@ Guide>.
   Specify if you want your event selector to include management events
 for your trail.
 
-For more information, see Management Events in the I<AWS CloudTrail
-User Guide>.
+For more information, see Management Events
+(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events)
+in the I<AWS CloudTrail User Guide>.
 
 By default, the value is C<true>.
 
