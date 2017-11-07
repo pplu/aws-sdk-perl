@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StepFunctio
 
 =head1 DESCRIPTION
 
-This class has no description
+Contains details about an execution.
 
 =head1 ATTRIBUTES
 
@@ -49,6 +49,33 @@ This class has no description
 =head2 B<REQUIRED> Name => Str
 
   The name of the execution.
+
+A name must I<not> contain:
+
+=over
+
+=item *
+
+whitespace
+
+=item *
+
+brackets C<E<lt> E<gt> { } [ ]>
+
+=item *
+
+wildcard characters C<? *>
+
+=item *
+
+special characters C<" # % \ ^ | ~ ` $ & , ; : />
+
+=item *
+
+control characters (C<U+0000-001F>, C<U+007F-009F>)
+
+=back
+
 
 
 =head2 B<REQUIRED> StartDate => Str

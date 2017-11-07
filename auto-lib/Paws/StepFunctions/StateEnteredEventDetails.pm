@@ -32,14 +32,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StepFunctio
 
 =head1 DESCRIPTION
 
-This class has no description
+Contains details about a state entered during an execution.
 
 =head1 ATTRIBUTES
 
 
 =head2 Input => Str
 
-  The JSON input data to the state.
+  The string that contains the JSON input data for the state.
 
 
 =head2 B<REQUIRED> Name => Str

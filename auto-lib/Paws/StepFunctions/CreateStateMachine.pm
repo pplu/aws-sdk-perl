@@ -44,7 +44,36 @@ The Amazon States Language definition of the state machine.
 =head2 B<REQUIRED> Name => Str
 
 The name of the state machine. This name must be unique for your AWS
-account and region.
+account and region for 90 days. For more information, see Limits
+Related to State Machine Executions in the I<AWS Step Functions
+Developer Guide>.
+
+A name must I<not> contain:
+
+=over
+
+=item *
+
+whitespace
+
+=item *
+
+brackets C<E<lt> E<gt> { } [ ]>
+
+=item *
+
+wildcard characters C<? *>
+
+=item *
+
+special characters C<" # % \ ^ | ~ ` $ & , ; : />
+
+=item *
+
+control characters (C<U+0000-001F>, C<U+007F-009F>)
+
+=back
+
 
 
 

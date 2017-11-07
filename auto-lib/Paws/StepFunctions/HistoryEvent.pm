@@ -53,7 +53,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StepFunctio
 
 =head1 DESCRIPTION
 
-This class has no description
+Contains details about the events of an execution.
 
 =head1 ATTRIBUTES
 
@@ -70,7 +70,8 @@ This class has no description
 
 =head2 ActivityScheduleFailedEventDetails => L<Paws::StepFunctions::ActivityScheduleFailedEventDetails>
 
-  
+  Contains details about an activity schedule event which failed during
+an execution.
 
 
 =head2 ActivityStartedEventDetails => L<Paws::StepFunctions::ActivityStartedEventDetails>
@@ -135,12 +136,14 @@ This class has no description
 
 =head2 LambdaFunctionStartFailedEventDetails => L<Paws::StepFunctions::LambdaFunctionStartFailedEventDetails>
 
-  
+  Contains details about a lambda function which failed to start during
+an execution.
 
 
 =head2 LambdaFunctionSucceededEventDetails => L<Paws::StepFunctions::LambdaFunctionSucceededEventDetails>
 
-  
+  Contains details about a lambda function which terminated successfully
+during an execution.
 
 
 =head2 LambdaFunctionTimedOutEventDetails => L<Paws::StepFunctions::LambdaFunctionTimedOutEventDetails>
@@ -165,7 +168,7 @@ This class has no description
 
 =head2 B<REQUIRED> Timestamp => Str
 
-  The date the event occured.
+  The date the event occurred.
 
 
 =head2 B<REQUIRED> Type => Str

@@ -37,14 +37,49 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Input => Str
 
-The JSON input data for the execution.
+The string that contains the JSON input data for the execution, for
+example:
+
+C<"input": "{\"first_name\" : \"test\"}">
+
+If you don't include any JSON input data, you still must include the
+two braces, for example: C<"input": "{}">
 
 
 
 =head2 Name => Str
 
 The name of the execution. This name must be unique for your AWS
-account and region.
+account and region for 90 days. For more information, see Limits
+Related to State Machine Executions in the I<AWS Step Functions
+Developer Guide>.
+
+A name must I<not> contain:
+
+=over
+
+=item *
+
+whitespace
+
+=item *
+
+brackets C<E<lt> E<gt> { } [ ]>
+
+=item *
+
+wildcard characters C<? *>
+
+=item *
+
+special characters C<" # % \ ^ | ~ ` $ & , ; : />
+
+=item *
+
+control characters (C<U+0000-001F>, C<U+007F-009F>)
+
+=back
+
 
 
 

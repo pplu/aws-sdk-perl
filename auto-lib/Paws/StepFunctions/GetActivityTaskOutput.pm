@@ -17,7 +17,7 @@ Paws::StepFunctions::GetActivityTaskOutput
 
 =head2 Input => Str
 
-The JSON input data for the task.
+The string that contains the JSON input data for the task.
 
 
 =head2 TaskToken => Str

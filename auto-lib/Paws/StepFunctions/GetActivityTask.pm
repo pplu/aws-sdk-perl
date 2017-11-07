@@ -36,13 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ActivityArn => Str
 
-The Amazon Resource Name (ARN) of the activity to retrieve tasks from.
+The Amazon Resource Name (ARN) of the activity to retrieve tasks from
+(assigned when you create the task using CreateActivity.)
 
 
 
 =head2 WorkerName => Str
 
-An arbitrary name may be provided in order to identify the worker that
+You can provide an arbitrary name in order to identify the worker that
 the task is assigned to. This name will be used when it is logged in
 the execution history.
 

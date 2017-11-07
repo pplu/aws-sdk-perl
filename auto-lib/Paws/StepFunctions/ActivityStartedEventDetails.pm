@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StepFunctio
 
 =head1 DESCRIPTION
 
-This class has no description
+Contains details about the start of an activity during an execution.
 
 =head1 ATTRIBUTES
 
