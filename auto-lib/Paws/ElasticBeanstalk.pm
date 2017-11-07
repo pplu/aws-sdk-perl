@@ -158,6 +158,11 @@ package Paws::ElasticBeanstalk;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::ListPlatformVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RebuildEnvironment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::RebuildEnvironment', @_);
@@ -213,6 +218,11 @@ package Paws::ElasticBeanstalk;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::UpdateEnvironment', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::UpdateTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ValidateConfigurationSettings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::ValidateConfigurationSettings', @_);
@@ -244,7 +254,7 @@ package Paws::ElasticBeanstalk;
   }
 
 
-  sub operations { qw/AbortEnvironmentUpdate ApplyEnvironmentManagedAction CheckDNSAvailability ComposeEnvironments CreateApplication CreateApplicationVersion CreateConfigurationTemplate CreateEnvironment CreatePlatformVersion CreateStorageLocation DeleteApplication DeleteApplicationVersion DeleteConfigurationTemplate DeleteEnvironmentConfiguration DeletePlatformVersion DescribeApplications DescribeApplicationVersions DescribeConfigurationOptions DescribeConfigurationSettings DescribeEnvironmentHealth DescribeEnvironmentManagedActionHistory DescribeEnvironmentManagedActions DescribeEnvironmentResources DescribeEnvironments DescribeEvents DescribeInstancesHealth DescribePlatformVersion ListAvailableSolutionStacks ListPlatformVersions RebuildEnvironment RequestEnvironmentInfo RestartAppServer RetrieveEnvironmentInfo SwapEnvironmentCNAMEs TerminateEnvironment UpdateApplication UpdateApplicationResourceLifecycle UpdateApplicationVersion UpdateConfigurationTemplate UpdateEnvironment ValidateConfigurationSettings / }
+  sub operations { qw/AbortEnvironmentUpdate ApplyEnvironmentManagedAction CheckDNSAvailability ComposeEnvironments CreateApplication CreateApplicationVersion CreateConfigurationTemplate CreateEnvironment CreatePlatformVersion CreateStorageLocation DeleteApplication DeleteApplicationVersion DeleteConfigurationTemplate DeleteEnvironmentConfiguration DeletePlatformVersion DescribeApplications DescribeApplicationVersions DescribeConfigurationOptions DescribeConfigurationSettings DescribeEnvironmentHealth DescribeEnvironmentManagedActionHistory DescribeEnvironmentManagedActions DescribeEnvironmentResources DescribeEnvironments DescribeEvents DescribeInstancesHealth DescribePlatformVersion ListAvailableSolutionStacks ListPlatformVersions ListTagsForResource RebuildEnvironment RequestEnvironmentInfo RestartAppServer RetrieveEnvironmentInfo SwapEnvironmentCNAMEs TerminateEnvironment UpdateApplication UpdateApplicationResourceLifecycle UpdateApplicationVersion UpdateConfigurationTemplate UpdateEnvironment UpdateTagsForResource ValidateConfigurationSettings / }
 
 1;
 
@@ -659,6 +669,19 @@ Returns: a L<Paws::ElasticBeanstalk::ListPlatformVersionsResult> instance
   Lists the available platforms.
 
 
+=head2 ListTagsForResource(ResourceArn => Str)
+
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::ListTagsForResource>
+
+Returns: a L<Paws::ElasticBeanstalk::ResourceTagsDescriptionMessage> instance
+
+  Returns the tags applied to an AWS Elastic Beanstalk resource. The
+response contains a list of tag key-value pairs.
+
+Currently, Elastic Beanstalk only supports tagging Elastic Beanstalk
+environments.
+
+
 =head2 RebuildEnvironment([EnvironmentId => Str, EnvironmentName => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::RebuildEnvironment>
@@ -828,6 +851,20 @@ When updating the configuration settings to a new template or
 individual settings, a draft configuration is created and
 DescribeConfigurationSettings for this environment returns two setting
 descriptions with different C<DeploymentStatus> values.
+
+
+=head2 UpdateTagsForResource(ResourceArn => Str, [TagsToAdd => ArrayRef[L<Paws::ElasticBeanstalk::Tag>], TagsToRemove => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::UpdateTagsForResource>
+
+Returns: nothing
+
+  Update the list of tags applied to an AWS Elastic Beanstalk resource.
+Two lists can be passed: C<TagsToAdd> for tags to add or update, and
+C<TagsToRemove>.
+
+Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk
+environments.
 
 
 =head2 ValidateConfigurationSettings(ApplicationName => Str, OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>], [EnvironmentName => Str, TemplateName => Str])

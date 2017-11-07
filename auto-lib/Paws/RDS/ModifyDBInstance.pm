@@ -282,19 +282,7 @@ Constraints:
 
 =item *
 
-Must be the identifier for an existing DB instance
-
-=item *
-
-Must contain from 1 to 63 alphanumeric characters or hyphens
-
-=item *
-
-First character must be a letter
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens
+Must match the identifier of an existing DBInstance.
 
 =back
 
@@ -381,15 +369,7 @@ Constraints:
 
 =item *
 
-Must be 1 to 255 alphanumeric characters
-
-=item *
-
-First character must be a letter
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens
+If supplied, must match existing DBSecurityGroups.
 
 =back
 
@@ -407,8 +387,8 @@ Changing the subnet group causes an outage during the change. The
 change is applied during the next maintenance window, unless you
 specify C<true> for the C<ApplyImmediately> parameter.
 
-Constraints: Must contain no more than 255 alphanumeric characters,
-periods, underscores, spaces, or hyphens.
+Constraints: If supplied, must match the name of an existing
+DBSubnetGroup.
 
 Example: C<mySubnetGroup>
 
@@ -550,9 +530,25 @@ cluster. For more information, see ModifyDBCluster.
 
 Default: Uses existing setting
 
-Constraints: Must be 8 to 41 alphanumeric characters (MySQL, MariaDB,
-and Amazon Aurora), 8 to 30 alphanumeric characters (Oracle), or 8 to
-128 alphanumeric characters (SQL Server).
+B<MariaDB>
+
+Constraints: Must contain from 8 to 41 characters.
+
+B<Microsoft SQL Server>
+
+Constraints: Must contain from 8 to 128 characters.
+
+B<MySQL>
+
+Constraints: Must contain from 8 to 41 characters.
+
+B<Oracle>
+
+Constraints: Must contain from 8 to 30 characters.
+
+B<PostgreSQL>
+
+Constraints: Must contain from 8 to 128 characters.
 
 Amazon RDS API actions never return the password, so this action
 provides a way to regain access to a primary instance user if the
@@ -612,18 +608,19 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens
+Must contain from 1 to 63 letters, numbers, or hyphens.
 
 =item *
 
-First character must be a letter
+The first character must be a letter.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Cannot end with a hyphen or contain two consecutive hyphens.
 
 =back
 
+Example: C<mydbinstance>
 
 
 
@@ -787,15 +784,7 @@ Constraints:
 
 =item *
 
-Must be 1 to 255 alphanumeric characters
-
-=item *
-
-First character must be a letter
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens
+If supplied, must match existing VpcSecurityGroupIds.
 
 =back
 

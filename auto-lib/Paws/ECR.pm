@@ -39,6 +39,11 @@ package Paws::ECR;
     my $call_object = $self->new_with_coercions('Paws::ECR::CreateRepository', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteLifecyclePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::DeleteLifecyclePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteRepository {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECR::DeleteRepository', @_);
@@ -69,6 +74,16 @@ package Paws::ECR;
     my $call_object = $self->new_with_coercions('Paws::ECR::GetDownloadUrlForLayer', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetLifecyclePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::GetLifecyclePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetLifecyclePolicyPreview {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::GetLifecyclePolicyPreview', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetRepositoryPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECR::GetRepositoryPolicy', @_);
@@ -89,9 +104,19 @@ package Paws::ECR;
     my $call_object = $self->new_with_coercions('Paws::ECR::PutImage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutLifecyclePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::PutLifecyclePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SetRepositoryPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECR::SetRepositoryPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartLifecyclePolicyPreview {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::StartLifecyclePolicyPreview', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UploadLayerPart {
@@ -171,7 +196,7 @@ package Paws::ECR;
   }
 
 
-  sub operations { qw/BatchCheckLayerAvailability BatchDeleteImage BatchGetImage CompleteLayerUpload CreateRepository DeleteRepository DeleteRepositoryPolicy DescribeImages DescribeRepositories GetAuthorizationToken GetDownloadUrlForLayer GetRepositoryPolicy InitiateLayerUpload ListImages PutImage SetRepositoryPolicy UploadLayerPart / }
+  sub operations { qw/BatchCheckLayerAvailability BatchDeleteImage BatchGetImage CompleteLayerUpload CreateRepository DeleteLifecyclePolicy DeleteRepository DeleteRepositoryPolicy DescribeImages DescribeRepositories GetAuthorizationToken GetDownloadUrlForLayer GetLifecyclePolicy GetLifecyclePolicyPreview GetRepositoryPolicy InitiateLayerUpload ListImages PutImage PutLifecyclePolicy SetRepositoryPolicy StartLifecyclePolicyPreview UploadLayerPart / }
 
 1;
 
@@ -199,13 +224,13 @@ Paws::ECR - Perl Interface to AWS Amazon EC2 Container Registry
 
 =head1 DESCRIPTION
 
-Amazon EC2 Container Registry (Amazon ECR) is a managed AWS Docker
-registry service. Customers can use the familiar Docker CLI to push,
-pull, and manage images. Amazon ECR provides a secure, scalable, and
-reliable registry. Amazon ECR supports private Docker repositories with
-resource-based permissions using AWS IAM so that specific users or
-Amazon EC2 instances can access repositories and images. Developers can
-use the Docker CLI to author and manage images.
+Amazon EC2 Container Registry (Amazon ECR) is a managed Docker registry
+service. Customers can use the familiar Docker CLI to push, pull, and
+manage images. Amazon ECR provides a secure, scalable, and reliable
+registry. Amazon ECR supports private Docker repositories with
+resource-based permissions using IAM so that specific users or Amazon
+EC2 instances can access repositories and images. Developers can use
+the Docker CLI to author and manage images.
 
 =head1 METHODS
 
@@ -257,8 +282,8 @@ Each argument is described in detail in: L<Paws::ECR::CompleteLayerUpload>
 
 Returns: a L<Paws::ECR::CompleteLayerUploadResponse> instance
 
-  Inform Amazon ECR that the image layer upload for a specified registry,
-repository name, and upload ID, has completed. You can optionally
+  Informs Amazon ECR that the image layer upload has completed for a
+specified registry, repository name, and upload ID. You can optionally
 provide a C<sha256> digest of the image layer for data validation
 purposes.
 
@@ -274,6 +299,15 @@ Each argument is described in detail in: L<Paws::ECR::CreateRepository>
 Returns: a L<Paws::ECR::CreateRepositoryResponse> instance
 
   Creates an image repository.
+
+
+=head2 DeleteLifecyclePolicy(RepositoryName => Str, [RegistryId => Str])
+
+Each argument is described in detail in: L<Paws::ECR::DeleteLifecyclePolicy>
+
+Returns: a L<Paws::ECR::DeleteLifecyclePolicyResponse> instance
+
+  Deletes the specified lifecycle policy.
 
 
 =head2 DeleteRepository(RepositoryName => Str, [Force => Bool, RegistryId => Str])
@@ -352,6 +386,25 @@ for general use by customers for pulling and pushing images. In most
 cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 
+=head2 GetLifecyclePolicy(RepositoryName => Str, [RegistryId => Str])
+
+Each argument is described in detail in: L<Paws::ECR::GetLifecyclePolicy>
+
+Returns: a L<Paws::ECR::GetLifecyclePolicyResponse> instance
+
+  Retrieves the specified lifecycle policy.
+
+
+=head2 GetLifecyclePolicyPreview(RepositoryName => Str, [Filter => L<Paws::ECR::LifecyclePolicyPreviewFilter>, ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], MaxResults => Int, NextToken => Str, RegistryId => Str])
+
+Each argument is described in detail in: L<Paws::ECR::GetLifecyclePolicyPreview>
+
+Returns: a L<Paws::ECR::GetLifecyclePolicyPreviewResponse> instance
+
+  Retrieves the results of the specified lifecycle policy preview
+request.
+
+
 =head2 GetRepositoryPolicy(RepositoryName => Str, [RegistryId => Str])
 
 Each argument is described in detail in: L<Paws::ECR::GetRepositoryPolicy>
@@ -404,6 +457,15 @@ for general use by customers for pulling and pushing images. In most
 cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 
+=head2 PutLifecyclePolicy(LifecyclePolicyText => Str, RepositoryName => Str, [RegistryId => Str])
+
+Each argument is described in detail in: L<Paws::ECR::PutLifecyclePolicy>
+
+Returns: a L<Paws::ECR::PutLifecyclePolicyResponse> instance
+
+  Creates or updates a lifecycle policy.
+
+
 =head2 SetRepositoryPolicy(PolicyText => Str, RepositoryName => Str, [Force => Bool, RegistryId => Str])
 
 Each argument is described in detail in: L<Paws::ECR::SetRepositoryPolicy>
@@ -412,6 +474,16 @@ Returns: a L<Paws::ECR::SetRepositoryPolicyResponse> instance
 
   Applies a repository policy on a specified repository to control access
 permissions.
+
+
+=head2 StartLifecyclePolicyPreview(RepositoryName => Str, [LifecyclePolicyText => Str, RegistryId => Str])
+
+Each argument is described in detail in: L<Paws::ECR::StartLifecyclePolicyPreview>
+
+Returns: a L<Paws::ECR::StartLifecyclePolicyPreviewResponse> instance
+
+  Starts a preview of the specified lifecycle policy. This allows you to
+see the results before creating the lifecycle policy.
 
 
 =head2 UploadLayerPart(LayerPartBlob => Str, PartFirstByte => Int, PartLastByte => Int, RepositoryName => Str, UploadId => Str, [RegistryId => Str])

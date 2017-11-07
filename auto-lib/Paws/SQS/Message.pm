@@ -72,7 +72,7 @@ digest. For information about MD5, see RFC1321.
 
   Each message attribute consists of a C<Name>, C<Type>, and C<Value>.
 For more information, see Message Attribute Items and Validation in the
-I<Amazon SQS Developer Guide>.
+I<Amazon Simple Queue Service Developer Guide>.
 
 
 =head2 MessageId => Str

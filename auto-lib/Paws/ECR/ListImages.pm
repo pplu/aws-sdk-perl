@@ -74,14 +74,14 @@ purposes.
 =head2 RegistryId => Str
 
 The AWS account ID associated with the registry that contains the
-repository to list images in. If you do not specify a registry, the
-default registry is assumed.
+repository in which to list images. If you do not specify a registry,
+the default registry is assumed.
 
 
 
 =head2 B<REQUIRED> RepositoryName => Str
 
-The repository whose image IDs are to be listed.
+The repository with image IDs to be listed.
 
 
 

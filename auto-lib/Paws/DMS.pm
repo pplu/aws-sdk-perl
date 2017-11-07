@@ -543,7 +543,7 @@ Returns: a L<Paws::DMS::DescribeSchemasResponse> instance
   Returns information about the schema for the specified endpoint.
 
 
-=head2 DescribeTableStatistics(ReplicationTaskArn => Str, [Marker => Str, MaxRecords => Int])
+=head2 DescribeTableStatistics(ReplicationTaskArn => Str, [Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::DMS::DescribeTableStatistics>
 
@@ -551,6 +551,10 @@ Returns: a L<Paws::DMS::DescribeTableStatisticsResponse> instance
 
   Returns table statistics on the database migration task, including
 table name, rows inserted, rows updated, and rows deleted.
+
+Note that the "last updated" column the DMS console only indicates the
+time that AWS DMS last updated the table statistics record for a table.
+It does not indicate the time of the last update to the table.
 
 
 =head2 ImportCertificate(CertificateIdentifier => Str, [CertificatePem => Str, CertificateWallet => Str, Tags => ArrayRef[L<Paws::DMS::Tag>]])

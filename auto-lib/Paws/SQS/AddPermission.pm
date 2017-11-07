@@ -74,7 +74,7 @@ C<SendMessage>
 =back
 
 For more information about these actions, see Understanding Permissions
-in the I<Amazon SQS Developer Guide>.
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 Specifying C<SendMessage>, C<DeleteMessage>, or
 C<ChangeMessageVisibility> for C<ActionName.n> also grants permissions
@@ -89,8 +89,8 @@ C<ChangeMessageVisibilityBatch>.
 The AWS account number of the principal who is given permission. The
 principal must have an AWS account, but does not need to be signed up
 for Amazon SQS. For information about locating the AWS account
-identification, see Your AWS Identifiers in the I<Amazon SQS Developer
-Guide>.
+identification, see Your AWS Identifiers in the I<Amazon Simple Queue
+Service Developer Guide>.
 
 
 

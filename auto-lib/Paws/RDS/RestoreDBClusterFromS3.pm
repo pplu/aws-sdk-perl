@@ -108,7 +108,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens.
+Must contain from 1 to 63 letters, numbers, or hyphens.
 
 =item *
 
@@ -136,15 +136,8 @@ Constraints:
 
 =item *
 
-Must be 1 to 255 alphanumeric characters
-
-=item *
-
-First character must be a letter
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens
+If supplied, must match the name of an existing
+DBClusterParameterGroup.
 
 =back
 
@@ -155,8 +148,8 @@ Cannot end with a hyphen or contain two consecutive hyphens
 
 A DB subnet group to associate with the restored DB cluster.
 
-Constraints: Must contain no more than 255 alphanumeric characters,
-periods, underscores, spaces, or hyphens. Must not be default.
+Constraints: If supplied, must match the name of an existing
+DBSubnetGroup.
 
 Example: C<mySubnetgroup>
 
@@ -218,7 +211,7 @@ Constraints:
 
 =item *
 
-Must be 1 to 16 alphanumeric characters.
+Must be 1 to 16 letters or numbers.
 
 =item *
 

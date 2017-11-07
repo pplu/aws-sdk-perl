@@ -37,8 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
-The DB instance identifier. This is the unique key that identifies a DB
-instance.
+The identifier of the DB instance that you want to create the snapshot
+of.
 
 Constraints:
 
@@ -46,15 +46,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens
-
-=item *
-
-First character must be a letter
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens
+Must match the identifier of an existing DBInstance.
 
 =back
 
@@ -75,7 +67,7 @@ Cannot be null, empty, or blank
 
 =item *
 
-Must contain from 1 to 255 alphanumeric characters or hyphens
+Must contain from 1 to 255 letters, numbers, or hyphens
 
 =item *
 

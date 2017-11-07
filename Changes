@@ -3,6 +3,18 @@
  - API update: EC2
  - API update: ELBv2
  - API update: OpsWorksCM
+ - API update: WAFRegional
+ - API update: WAF
+ - API update: SQS
+ - API update: SES
+ - API update: ES
+ - API update: CodeCommit
+ - API update: ECR
+ - API update: RDS
+ - API update: DMS
+ - API update: ElasticBeanstalk
+ - API update: Lightsail
+ - API update: SSM
 
 0.36 03 Nov 2017
  - Fix Bug: #210: S3 PutObject was not working: the Content-MD5 header was not 

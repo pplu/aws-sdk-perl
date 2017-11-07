@@ -11,8 +11,11 @@ package Paws::ES::ElasticsearchDomainStatus;
   has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfig', required => 1);
   has ElasticsearchVersion => (is => 'ro', isa => 'Str');
   has Endpoint => (is => 'ro', isa => 'Str');
+  has Endpoints => (is => 'ro', isa => 'Paws::ES::EndpointsMap');
+  has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptions');
   has Processing => (is => 'ro', isa => 'Bool');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptions');
+  has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCDerivedInfo');
 1;
 
 ### main pod documentation begin ###
@@ -32,7 +35,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ES::ElasticsearchDomainStatus object:
 
-  $service_obj->Method(Att1 => { AccessPolicies => $value, ..., SnapshotOptions => $value  });
+  $service_obj->Method(Att1 => { AccessPolicies => $value, ..., VPCOptions => $value  });
 
 =head3 Results returned from an API call
 
@@ -114,6 +117,18 @@ Storage for more information.
 search requests.
 
 
+=head2 Endpoints => L<Paws::ES::EndpointsMap>
+
+  Map containing the Elasticsearch domain endpoints used to submit index
+and search requests. Example C<key, value>:
+C<'vpc','vpc-endpoint-h2dsd34efgyghrtguk5gt6j2foh4.us-east-1.es.amazonaws.com'>.
+
+
+=head2 LogPublishingOptions => L<Paws::ES::LogPublishingOptions>
+
+  Log publishing options for the given domain.
+
+
 =head2 Processing => Bool
 
   The status of the Elasticsearch domain configuration. C<True> if Amazon
@@ -124,6 +139,12 @@ the configuration is active.
 =head2 SnapshotOptions => L<Paws::ES::SnapshotOptions>
 
   Specifies the status of the C<SnapshotOptions>
+
+
+=head2 VPCOptions => L<Paws::ES::VPCDerivedInfo>
+
+  The C<VPCOptions> for the specified domain. For more information, see
+VPC Endpoints for Amazon Elasticsearch Service Domains.
 
 
 

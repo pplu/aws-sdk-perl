@@ -39,6 +39,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The resource ID you want to tag.
 
+For the ManagedInstance, MaintenanceWindow, and PatchBaseline values,
+use the ID of the resource, such as mw-01234361858c9b57b for a
+Maintenance Window.
+
+For the Document and Parameter values, use the name of the resource.
+
 
 
 =head2 B<REQUIRED> ResourceType => Str

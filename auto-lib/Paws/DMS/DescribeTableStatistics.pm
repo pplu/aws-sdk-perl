@@ -1,6 +1,7 @@
 
 package Paws::DMS::DescribeTableStatistics;
   use Moose;
+  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has ReplicationTaskArn => (is => 'ro', isa => 'Str', required => 1);
@@ -35,6 +36,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 Filters => ArrayRef[L<Paws::DMS::Filter>]
+
+Filters applied to the describe table statistics action.
+
+Valid filter names: schema-name | table-name | table-state
+
+A combination of filters creates an AND condition where each record
+matches all specified filters.
+
+
+
 =head2 Marker => Str
 
 An optional pagination token provided by a previous request. If this
@@ -52,7 +64,7 @@ results can be retrieved.
 
 Default: 100
 
-Constraints: Minimum 20, maximum 100.
+Constraints: Minimum 20, maximum 500.
 
 
 

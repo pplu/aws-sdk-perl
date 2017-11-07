@@ -35,8 +35,8 @@ The name of the configuration set.
 
 Configuration sets let you create groups of rules that you can apply to
 the emails you send using Amazon SES. For more information about using
-configuration sets, see Using Amazon SES Configuration Sets in the I<
-Amazon SES Developer Guide.>
+configuration sets, see Using Amazon SES Configuration Sets in the
+Amazon SES Developer Guide.
 
 =head1 ATTRIBUTES
 

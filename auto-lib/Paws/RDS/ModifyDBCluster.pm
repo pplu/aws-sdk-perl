@@ -95,19 +95,7 @@ Constraints:
 
 =item *
 
-Must be the identifier for an existing DB cluster.
-
-=item *
-
-Must contain from 1 to 63 alphanumeric characters or hyphens.
-
-=item *
-
-First character must be a letter.
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens.
+Must match the identifier of an existing DBCluster.
 
 =back
 
@@ -150,11 +138,11 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens
+Must contain from 1 to 63 letters, numbers, or hyphens
 
 =item *
 
-First character must be a letter
+The first character must be a letter
 
 =item *
 

@@ -44,7 +44,7 @@ assumed.
 
 =head2 B<REQUIRED> RepositoryName => Str
 
-The name of the repository whose policy you want to retrieve.
+The name of the repository with the policy to retrieve.
 
 
 

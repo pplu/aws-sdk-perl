@@ -54,7 +54,8 @@ C<All> - Returns all values.
 
 C<ApproximateNumberOfMessages> - Returns the approximate number of
 visible messages in a queue. For more information, see Resources
-Required to Process Messages in the I<Amazon SQS Developer Guide>.
+Required to Process Messages in the I<Amazon Simple Queue Service
+Developer Guide>.
 
 =item *
 
@@ -66,7 +67,7 @@ of messages that are waiting to be added to the queue.
 C<ApproximateNumberOfMessagesNotVisible> - Returns the approximate
 number of messages that have not timed-out and aren't deleted. For more
 information, see Resources Required to Process Messages in the I<Amazon
-SQS Developer Guide>.
+Simple Queue Service Developer Guide>.
 
 =item *
 
@@ -111,7 +112,8 @@ arrive.
 C<RedrivePolicy> - Returns the string that includes the parameters for
 dead-letter queue functionality of the source queue. For more
 information about the redrive policy and dead-letter queues, see Using
-Amazon SQS Dead-Letter Queues in the I<Amazon SQS Developer Guide>.
+Amazon SQS Dead-Letter Queues in the I<Amazon Simple Queue Service
+Developer Guide>.
 
 =over
 
@@ -132,7 +134,7 @@ source queue before being moved to the dead-letter queue.
 
 C<VisibilityTimeout> - Returns the visibility timeout for the queue.
 For more information about the visibility timeout, see Visibility
-Timeout in the I<Amazon SQS Developer Guide>.
+Timeout in the I<Amazon Simple Queue Service Developer Guide>.
 
 =back
 
@@ -163,7 +165,8 @@ queues:
 =item *
 
 C<FifoQueue> - Returns whether the queue is FIFO. For more information,
-see FIFO Queue Logic in the I<Amazon SQS Developer Guide>.
+see FIFO Queue Logic in the I<Amazon Simple Queue Service Developer
+Guide>.
 
 To determine whether a queue is FIFO, you can check whether
 C<QueueName> ends with the C<.fifo> suffix.
@@ -172,7 +175,8 @@ C<QueueName> ends with the C<.fifo> suffix.
 
 C<ContentBasedDeduplication> - Returns whether content-based
 deduplication is enabled for the queue. For more information, see
-Exactly-Once Processing in the I<Amazon SQS Developer Guide>.
+Exactly-Once Processing in the I<Amazon Simple Queue Service Developer
+Guide>.
 
 =back
 
