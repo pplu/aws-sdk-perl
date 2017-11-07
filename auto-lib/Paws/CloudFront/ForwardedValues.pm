@@ -51,7 +51,7 @@ Caches, and Logs Cookies in the I<Amazon CloudFront Developer Guide>.
 =head2 Headers => L<Paws::CloudFront::Headers>
 
   A complex type that specifies the C<Headers>, if any, that you want
-CloudFront to vary upon for this cache behavior.
+CloudFront to base caching on for this cache behavior.
 
 
 =head2 B<REQUIRED> QueryString => Bool

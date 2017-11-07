@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex type that describes the default cache behavior if you do not
+A complex type that describes the default cache behavior if you don't
 specify a C<CacheBehavior> element or if files don't match any of the
 values of C<PathPattern> in C<CacheBehavior> elements. You must create
 exactly one default cache behavior.

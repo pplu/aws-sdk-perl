@@ -84,7 +84,7 @@ elements.
 
 =head2 B<REQUIRED> DefaultCacheBehavior => L<Paws::CloudFront::DefaultCacheBehavior>
 
-  A complex type that describes the default cache behavior if you do not
+  A complex type that describes the default cache behavior if you don't
 specify a C<CacheBehavior> element or if files don't match any of the
 values of C<PathPattern> in C<CacheBehavior> elements. You must create
 exactly one default cache behavior.
@@ -92,8 +92,8 @@ exactly one default cache behavior.
 
 =head2 B<REQUIRED> DomainName => Str
 
-  The domain name that corresponds to the distribution. For example:
-C<d604721fxaaqy9.cloudfront.net>.
+  The domain name that corresponds to the distribution, for example,
+C<d111111abcdef8.cloudfront.net>.
 
 
 =head2 B<REQUIRED> Enabled => Bool

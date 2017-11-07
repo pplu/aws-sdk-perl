@@ -72,8 +72,8 @@ Constraints for Amazon S3 origins:
 
 =item *
 
-If you configured Amazon S3 Transfer Acceleration for your bucket, do
-not specify the C<s3-accelerate> endpoint for C<DomainName>.
+If you configured Amazon S3 Transfer Acceleration for your bucket,
+don't specify the C<s3-accelerate> endpoint for C<DomainName>.
 
 =item *
 

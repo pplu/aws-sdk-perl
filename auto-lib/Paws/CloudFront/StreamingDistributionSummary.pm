@@ -68,8 +68,8 @@ where C<123456789012> is your AWS account ID.
 
 =head2 B<REQUIRED> DomainName => Str
 
-  The domain name corresponding to the distribution. For example:
-C<d604721fxaaqy9.cloudfront.net>.
+  The domain name corresponding to the distribution, for example,
+C<d111111abcdef8.cloudfront.net>.
 
 
 =head2 B<REQUIRED> Enabled => Bool
@@ -80,7 +80,7 @@ content.
 
 =head2 B<REQUIRED> Id => Str
 
-  The identifier for the distribution. For example: C<EDFDVBD632BHDS5>.
+  The identifier for the distribution, for example, C<EDFDVBD632BHDS5>.
 
 
 =head2 B<REQUIRED> LastModifiedTime => Str

@@ -67,8 +67,8 @@ the I<Amazon CloudFront Developer Guide>.
 
 =head2 B<REQUIRED> DomainName => Str
 
-  The domain name that corresponds to the streaming distribution. For
-example: C<s5c39gqb8ow64r.cloudfront.net>.
+  The domain name that corresponds to the streaming distribution, for
+example, C<s5c39gqb8ow64r.cloudfront.net>.
 
 
 =head2 B<REQUIRED> Id => Str

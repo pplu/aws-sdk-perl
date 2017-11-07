@@ -77,6 +77,11 @@ package Paws::CloudFront;
     my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteDistribution', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteServiceLinkedRole {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteServiceLinkedRole', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteStreamingDistribution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteStreamingDistribution', @_);
@@ -267,7 +272,7 @@ package Paws::CloudFront;
   }
 
 
-  sub operations { qw/CreateCloudFrontOriginAccessIdentity CreateDistribution CreateDistributionWithTags CreateInvalidation CreateStreamingDistribution CreateStreamingDistributionWithTags DeleteCloudFrontOriginAccessIdentity DeleteDistribution DeleteStreamingDistribution GetCloudFrontOriginAccessIdentity GetCloudFrontOriginAccessIdentityConfig GetDistribution GetDistributionConfig GetInvalidation GetStreamingDistribution GetStreamingDistributionConfig ListCloudFrontOriginAccessIdentities ListDistributions ListDistributionsByWebACLId ListInvalidations ListStreamingDistributions ListTagsForResource TagResource UntagResource UpdateCloudFrontOriginAccessIdentity UpdateDistribution UpdateStreamingDistribution / }
+  sub operations { qw/CreateCloudFrontOriginAccessIdentity CreateDistribution CreateDistributionWithTags CreateInvalidation CreateStreamingDistribution CreateStreamingDistributionWithTags DeleteCloudFrontOriginAccessIdentity DeleteDistribution DeleteServiceLinkedRole DeleteStreamingDistribution GetCloudFrontOriginAccessIdentity GetCloudFrontOriginAccessIdentityConfig GetDistribution GetDistributionConfig GetInvalidation GetStreamingDistribution GetStreamingDistributionConfig ListCloudFrontOriginAccessIdentities ListDistributions ListDistributionsByWebACLId ListInvalidations ListStreamingDistributions ListTagsForResource TagResource UntagResource UpdateCloudFrontOriginAccessIdentity UpdateDistribution UpdateStreamingDistribution / }
 
 1;
 
@@ -298,10 +303,9 @@ Paws::CloudFront - Perl Interface to AWS Amazon CloudFront
 Amazon CloudFront
 
 This is the I<Amazon CloudFront API Reference>. This guide is for
-developers who need detailed information about the CloudFront API
-actions, data types, and errors. For detailed information about
-CloudFront features and their associated API calls, see the I<Amazon
-CloudFront Developer Guide>.
+developers who need detailed information about CloudFront API actions,
+data types, and errors. For detailed information about CloudFront
+features, see the I<Amazon CloudFront Developer Guide>.
 
 =head1 METHODS
 
@@ -410,6 +414,15 @@ Each argument is described in detail in: L<Paws::CloudFront::DeleteDistribution>
 Returns: nothing
 
   Delete a distribution.
+
+
+=head2 DeleteServiceLinkedRole(RoleName => Str)
+
+Each argument is described in detail in: L<Paws::CloudFront::DeleteServiceLinkedRole>
+
+Returns: nothing
+
+  
 
 
 =head2 DeleteStreamingDistribution(Id => Str, [IfMatch => Str])

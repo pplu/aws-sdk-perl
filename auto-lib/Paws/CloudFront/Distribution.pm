@@ -72,8 +72,8 @@ ID/config> resource.
 
 =head2 B<REQUIRED> DomainName => Str
 
-  The domain name corresponding to the distribution. For example:
-C<d604721fxaaqy9.cloudfront.net>.
+  The domain name corresponding to the distribution, for example,
+C<d111111abcdef8.cloudfront.net>.
 
 
 =head2 B<REQUIRED> Id => Str

@@ -48,7 +48,7 @@ C<myawslogbucket.s3.amazonaws.com>.
 =head2 B<REQUIRED> Enabled => Bool
 
   Specifies whether you want CloudFront to save access logs to an Amazon
-S3 bucket. If you do not want to enable logging when you create a
+S3 bucket. If you don't want to enable logging when you create a
 streaming distribution or if you want to disable logging for an
 existing streaming distribution, specify C<false> for C<Enabled>, and
 specify C<empty Bucket> and C<Prefix> elements. If you specify C<false>
@@ -59,10 +59,10 @@ values are automatically deleted.
 =head2 B<REQUIRED> Prefix => Str
 
   An optional string that you want CloudFront to prefix to the access log
-C<filenames> for this streaming distribution, for example,
-C<myprefix/>. If you want to enable logging, but you do not want to
-specify a prefix, you still must include an empty C<Prefix> element in
-the C<Logging> element.
+filenames for this streaming distribution, for example, C<myprefix/>.
+If you want to enable logging, but you don't want to specify a prefix,
+you still must include an empty C<Prefix> element in the C<Logging>
+element.
 
 
 

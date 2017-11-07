@@ -120,7 +120,7 @@ Responses in the I<Amazon CloudFront Developer Guide>.
 
 =head2 B<REQUIRED> DefaultCacheBehavior => L<Paws::CloudFront::DefaultCacheBehavior>
 
-  A complex type that describes the default cache behavior if you do not
+  A complex type that describes the default cache behavior if you don't
 specify a C<CacheBehavior> element or if files don't match any of the
 values of C<PathPattern> in C<CacheBehavior> elements. You must create
 exactly one default cache behavior.
@@ -135,7 +135,7 @@ distribution (C<http://www.example.com/product-description.html>).
 Specifying a default root object avoids exposing the contents of your
 distribution.
 
-Specify only the object name, for example, C<index.html>. Do not add a
+Specify only the object name, for example, C<index.html>. Don't add a
 C</> before the object name.
 
 If you don't want to specify a default root object when you create a
@@ -188,7 +188,7 @@ In general, you should enable IPv6 if you have users on IPv6 networks
 who want to access your content. However, if you're using signed URLs
 or signed cookies to restrict access to your content, and if you're
 using a custom policy that includes the C<IpAddress> parameter to
-restrict the IP addresses that can access your content, do not enable
+restrict the IP addresses that can access your content, don't enable
 IPv6. If you want to restrict access to some content by IP address and
 not restrict access to other content (or restrict access but not by IP
 address), you can create two distributions. For more information, see
