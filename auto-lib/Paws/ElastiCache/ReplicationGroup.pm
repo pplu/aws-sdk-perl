@@ -1,5 +1,7 @@
 package Paws::ElastiCache::ReplicationGroup;
   use Moose;
+  has AtRestEncryptionEnabled => (is => 'ro', isa => 'Bool');
+  has AuthTokenEnabled => (is => 'ro', isa => 'Bool');
   has AutomaticFailover => (is => 'ro', isa => 'Str');
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has ClusterEnabled => (is => 'ro', isa => 'Bool');
@@ -13,6 +15,7 @@ package Paws::ElastiCache::ReplicationGroup;
   has SnapshottingClusterId => (is => 'ro', isa => 'Str');
   has SnapshotWindow => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+  has TransitEncryptionEnabled => (is => 'ro', isa => 'Bool');
 1;
 
 ### main pod documentation begin ###
@@ -32,14 +35,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ElastiCache::ReplicationGroup object:
 
-  $service_obj->Method(Att1 => { AutomaticFailover => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { AtRestEncryptionEnabled => $value, ..., TransitEncryptionEnabled => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache::ReplicationGroup object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AutomaticFailover
+  $result->Att1->AtRestEncryptionEnabled
 
 =head1 DESCRIPTION
 
@@ -48,11 +51,32 @@ Contains all of the attributes of a specific Redis replication group.
 =head1 ATTRIBUTES
 
 
+=head2 AtRestEncryptionEnabled => Bool
+
+  A flag that enables encryption at-rest when set to C<true>.
+
+You cannot modify the value of C<AtRestEncryptionEnabled> after the
+cluster is created. To enable encryption at-rest on a cluster you must
+set C<AtRestEncryptionEnabled> to C<true> when you create a cluster.
+
+Default: C<false>
+
+
+=head2 AuthTokenEnabled => Bool
+
+  A flag that enables using an C<AuthToken> (password) when issuing Redis
+commands.
+
+Default: C<false>
+
+
 =head2 AutomaticFailover => Str
 
-  Indicates the status of Multi-AZ for this replication group.
+  Indicates the status of Multi-AZ with automatic failover for this Redis
+replication group.
 
-ElastiCache Multi-AZ replication groups are not supported on:
+Amazon ElastiCache for Redis does not support Multi-AZ with automatic
+failover on:
 
 =over
 
@@ -62,7 +86,9 @@ Redis versions earlier than 2.8.6.
 
 =item *
 
-Redis (cluster mode disabled):T1 and T2 cache node types.
+Redis (cluster mode disabled): T1 and T2 cache node types.
+
+=item *
 
 Redis (cluster mode enabled): T1 node types.
 
@@ -146,8 +172,7 @@ Example: C<05:00-09:00>
 If you do not specify this parameter, ElastiCache automatically chooses
 an appropriate time range.
 
-B<Note:> This parameter is only valid if the C<Engine> parameter is
-C<redis>.
+This parameter is only valid if the C<Engine> parameter is C<redis>.
 
 
 =head2 Status => Str
@@ -155,6 +180,18 @@ C<redis>.
   The current state of this replication group - C<creating>,
 C<available>, C<modifying>, C<deleting>, C<create-failed>,
 C<snapshotting>.
+
+
+=head2 TransitEncryptionEnabled => Bool
+
+  A flag that enables in-transit encryption when set to C<true>.
+
+You cannot modify the value of C<TransitEncryptionEnabled> after the
+cluster is created. To enable in-transit encryption on a cluster you
+must set C<TransitEncryptionEnabled> to C<true> when you create a
+cluster.
+
+Default: C<false>
 
 
 

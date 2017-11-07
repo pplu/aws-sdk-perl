@@ -44,7 +44,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The cache node type filter value. Use this parameter to show only the
 available offerings matching the specified cache node type.
 
-Valid node types are as follows:
+The following node types are supported by ElastiCache. Generally
+speaking, the current generation types provide more memory and
+computational power at lower cost when compared to their equivalent
+previous generation counterparts.
 
 =over
 
@@ -56,22 +59,41 @@ General purpose:
 
 =item *
 
-Current generation: C<cache.t2.micro>, C<cache.t2.small>,
-C<cache.t2.medium>, C<cache.m3.medium>, C<cache.m3.large>,
-C<cache.m3.xlarge>, C<cache.m3.2xlarge>, C<cache.m4.large>,
-C<cache.m4.xlarge>, C<cache.m4.2xlarge>, C<cache.m4.4xlarge>,
-C<cache.m4.10xlarge>
+Current generation:
+
+B<T2 node types:> C<cache.t2.micro>, C<cache.t2.small>,
+C<cache.t2.medium>
+
+B<M3 node types:> C<cache.m3.medium>, C<cache.m3.large>,
+C<cache.m3.xlarge>, C<cache.m3.2xlarge>
+
+B<M4 node types:> C<cache.m4.large>, C<cache.m4.xlarge>,
+C<cache.m4.2xlarge>, C<cache.m4.4xlarge>, C<cache.m4.10xlarge>
 
 =item *
 
-Previous generation: C<cache.t1.micro>, C<cache.m1.small>,
-C<cache.m1.medium>, C<cache.m1.large>, C<cache.m1.xlarge>
+Previous generation: (not recommended)
+
+B<T1 node types:> C<cache.t1.micro>
+
+B<M1 node types:> C<cache.m1.small>, C<cache.m1.medium>,
+C<cache.m1.large>, C<cache.m1.xlarge>
 
 =back
 
 =item *
 
-Compute optimized: C<cache.c1.xlarge>
+Compute optimized:
+
+=over
+
+=item *
+
+Previous generation: (not recommended)
+
+B<C1 node types:> C<cache.c1.xlarge>
+
+=back
 
 =item *
 
@@ -81,12 +103,16 @@ Memory optimized:
 
 =item *
 
-Current generation: C<cache.r3.large>, C<cache.r3.xlarge>,
+Current generation:
+
+B<R3 node types:> C<cache.r3.large>, C<cache.r3.xlarge>,
 C<cache.r3.2xlarge>, C<cache.r3.4xlarge>, C<cache.r3.8xlarge>
 
 =item *
 
-Previous generation: C<cache.m2.xlarge>, C<cache.m2.2xlarge>,
+Previous generation: (not recommended)
+
+B<M2 node types:> C<cache.m2.xlarge>, C<cache.m2.2xlarge>,
 C<cache.m2.4xlarge>
 
 =back
@@ -104,9 +130,13 @@ VPC).
 
 =item *
 
-Redis backup/restore is not supported for Redis (cluster mode disabled)
-T1 and T2 instances. Backup/restore is supported on Redis (cluster mode
-enabled) T2 instances.
+Redis (cluster mode disabled): Redis backup/restore is not supported on
+T1 and T2 instances.
+
+=item *
+
+Redis (cluster mode enabled): Backup/restore is not supported on T1
+instances.
 
 =item *
 
@@ -114,6 +144,9 @@ Redis Append-only files (AOF) functionality is not supported for T1 or
 T2 instances.
 
 =back
+
+Supported node types are available in all regions except as noted in
+the following table.
 
 For a complete listing of node types and specifications, see Amazon
 ElastiCache Product Features and Details and either Cache Node

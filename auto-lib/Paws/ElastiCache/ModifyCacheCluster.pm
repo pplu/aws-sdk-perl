@@ -115,7 +115,7 @@ pending cache nodes, whichever is greater, and the value of
 C<NumCacheNodes> in the request.
 
 For example: If you have 3 active cache nodes, 7 pending cache nodes,
-and the number of cache nodes in this C<ModifyCacheCluser> call is 5,
+and the number of cache nodes in this C<ModifyCacheCluster> call is 5,
 you must list 2 (7 - 5) cache node IDs to remove.
 
 

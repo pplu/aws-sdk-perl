@@ -74,7 +74,8 @@ read/write primary if the existing primary encounters a failure.
 
 Valid values: C<true> | C<false>
 
-ElastiCache Multi-AZ replication groups are not supported on:
+Amazon ElastiCache for Redis does not support Multi-AZ with automatic
+failover on:
 
 =over
 
@@ -84,7 +85,9 @@ Redis versions earlier than 2.8.6.
 
 =item *
 
-Redis (cluster mode disabled):T1 and T2 cache node types.
+Redis (cluster mode disabled): T1 and T2 cache node types.
+
+=item *
 
 Redis (cluster mode enabled): T1 node types.
 

@@ -734,7 +734,7 @@ Use this parameter only when you are creating a cluster in an Amazon
 Virtual Private Cloud (Amazon VPC).
 
 
-=head2 CreateReplicationGroup(ReplicationGroupDescription => Str, ReplicationGroupId => Str, [AuthToken => Str, AutomaticFailoverEnabled => Bool, AutoMinorVersionUpgrade => Bool, CacheNodeType => Str, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str|Undef], CacheSubnetGroupName => Str, Engine => Str, EngineVersion => Str, NodeGroupConfiguration => ArrayRef[L<Paws::ElastiCache::NodeGroupConfiguration>], NotificationTopicArn => Str, NumCacheClusters => Int, NumNodeGroups => Int, Port => Int, PreferredCacheClusterAZs => ArrayRef[Str|Undef], PreferredMaintenanceWindow => Str, PrimaryClusterId => Str, ReplicasPerNodeGroup => Int, SecurityGroupIds => ArrayRef[Str|Undef], SnapshotArns => ArrayRef[Str|Undef], SnapshotName => Str, SnapshotRetentionLimit => Int, SnapshotWindow => Str, Tags => ArrayRef[L<Paws::ElastiCache::Tag>]])
+=head2 CreateReplicationGroup(ReplicationGroupDescription => Str, ReplicationGroupId => Str, [AtRestEncryptionEnabled => Bool, AuthToken => Str, AutomaticFailoverEnabled => Bool, AutoMinorVersionUpgrade => Bool, CacheNodeType => Str, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str|Undef], CacheSubnetGroupName => Str, Engine => Str, EngineVersion => Str, NodeGroupConfiguration => ArrayRef[L<Paws::ElastiCache::NodeGroupConfiguration>], NotificationTopicArn => Str, NumCacheClusters => Int, NumNodeGroups => Int, Port => Int, PreferredCacheClusterAZs => ArrayRef[Str|Undef], PreferredMaintenanceWindow => Str, PrimaryClusterId => Str, ReplicasPerNodeGroup => Int, SecurityGroupIds => ArrayRef[Str|Undef], SnapshotArns => ArrayRef[Str|Undef], SnapshotName => Str, SnapshotRetentionLimit => Int, SnapshotWindow => Str, Tags => ArrayRef[L<Paws::ElastiCache::Tag>], TransitEncryptionEnabled => Bool])
 
 Each argument is described in detail in: L<Paws::ElastiCache::CreateReplicationGroup>
 
@@ -1125,6 +1125,14 @@ The reboot causes the contents of the cache (for each cache node being
 rebooted) to be lost.
 
 When the reboot is complete, a cache cluster event is created.
+
+Rebooting a cluster is currently supported on Memcached and Redis
+(cluster mode disabled) clusters. Rebooting is not supported on Redis
+(cluster mode enabled) clusters.
+
+If you make changes to parameters that require a Redis (cluster mode
+enabled) cluster reboot for the changes to be applied, see Rebooting a
+Cluster for an alternate process.
 
 
 =head2 RemoveTagsFromResource(ResourceName => Str, TagKeys => ArrayRef[Str|Undef])

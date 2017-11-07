@@ -1,5 +1,7 @@
 package Paws::ElastiCache::CacheCluster;
   use Moose;
+  has AtRestEncryptionEnabled => (is => 'ro', isa => 'Bool');
+  has AuthTokenEnabled => (is => 'ro', isa => 'Bool');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has CacheClusterCreateTime => (is => 'ro', isa => 'Str');
   has CacheClusterId => (is => 'ro', isa => 'Str');
@@ -22,6 +24,7 @@ package Paws::ElastiCache::CacheCluster;
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::SecurityGroupMembership]');
   has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
   has SnapshotWindow => (is => 'ro', isa => 'Str');
+  has TransitEncryptionEnabled => (is => 'ro', isa => 'Bool');
 1;
 
 ### main pod documentation begin ###
@@ -41,20 +44,39 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ElastiCache::CacheCluster object:
 
-  $service_obj->Method(Att1 => { AutoMinorVersionUpgrade => $value, ..., SnapshotWindow => $value  });
+  $service_obj->Method(Att1 => { AtRestEncryptionEnabled => $value, ..., TransitEncryptionEnabled => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache::CacheCluster object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AutoMinorVersionUpgrade
+  $result->Att1->AtRestEncryptionEnabled
 
 =head1 DESCRIPTION
 
 Contains all of the attributes of a specific cache cluster.
 
 =head1 ATTRIBUTES
+
+
+=head2 AtRestEncryptionEnabled => Bool
+
+  A flag that enables encryption at-rest when set to C<true>.
+
+You cannot modify the value of C<AtRestEncryptionEnabled> after the
+cluster is created. To enable at-rest encryption on a cluster you must
+set C<AtRestEncryptionEnabled> to C<true> when you create a cluster.
+
+Default: C<false>
+
+
+=head2 AuthTokenEnabled => Bool
+
+  A flag that enables using an C<AuthToken> (password) when issuing Redis
+commands.
+
+Default: C<false>
 
 
 =head2 AutoMinorVersionUpgrade => Bool
@@ -91,7 +113,10 @@ nodes>, C<restore-failed>, or C<snapshotting>.
   The name of the compute and memory capacity node type for the cache
 cluster.
 
-Valid node types are as follows:
+The following node types are supported by ElastiCache. Generally
+speaking, the current generation types provide more memory and
+computational power at lower cost when compared to their equivalent
+previous generation counterparts.
 
 =over
 
@@ -103,22 +128,41 @@ General purpose:
 
 =item *
 
-Current generation: C<cache.t2.micro>, C<cache.t2.small>,
-C<cache.t2.medium>, C<cache.m3.medium>, C<cache.m3.large>,
-C<cache.m3.xlarge>, C<cache.m3.2xlarge>, C<cache.m4.large>,
-C<cache.m4.xlarge>, C<cache.m4.2xlarge>, C<cache.m4.4xlarge>,
-C<cache.m4.10xlarge>
+Current generation:
+
+B<T2 node types:> C<cache.t2.micro>, C<cache.t2.small>,
+C<cache.t2.medium>
+
+B<M3 node types:> C<cache.m3.medium>, C<cache.m3.large>,
+C<cache.m3.xlarge>, C<cache.m3.2xlarge>
+
+B<M4 node types:> C<cache.m4.large>, C<cache.m4.xlarge>,
+C<cache.m4.2xlarge>, C<cache.m4.4xlarge>, C<cache.m4.10xlarge>
 
 =item *
 
-Previous generation: C<cache.t1.micro>, C<cache.m1.small>,
-C<cache.m1.medium>, C<cache.m1.large>, C<cache.m1.xlarge>
+Previous generation: (not recommended)
+
+B<T1 node types:> C<cache.t1.micro>
+
+B<M1 node types:> C<cache.m1.small>, C<cache.m1.medium>,
+C<cache.m1.large>, C<cache.m1.xlarge>
 
 =back
 
 =item *
 
-Compute optimized: C<cache.c1.xlarge>
+Compute optimized:
+
+=over
+
+=item *
+
+Previous generation: (not recommended)
+
+B<C1 node types:> C<cache.c1.xlarge>
+
+=back
 
 =item *
 
@@ -128,12 +172,16 @@ Memory optimized:
 
 =item *
 
-Current generation: C<cache.r3.large>, C<cache.r3.xlarge>,
+Current generation:
+
+B<R3 node types:> C<cache.r3.large>, C<cache.r3.xlarge>,
 C<cache.r3.2xlarge>, C<cache.r3.4xlarge>, C<cache.r3.8xlarge>
 
 =item *
 
-Previous generation: C<cache.m2.xlarge>, C<cache.m2.2xlarge>,
+Previous generation: (not recommended)
+
+B<M2 node types:> C<cache.m2.xlarge>, C<cache.m2.2xlarge>,
 C<cache.m2.4xlarge>
 
 =back
@@ -151,9 +199,13 @@ VPC).
 
 =item *
 
-Redis backup/restore is not supported for Redis (cluster mode disabled)
-T1 and T2 instances. Backup/restore is supported on Redis (cluster mode
-enabled) T2 instances.
+Redis (cluster mode disabled): Redis backup/restore is not supported on
+T1 and T2 instances.
+
+=item *
+
+Redis (cluster mode enabled): Backup/restore is not supported on T1
+instances.
 
 =item *
 
@@ -161,6 +213,9 @@ Redis Append-only files (AOF) functionality is not supported for T1 or
 T2 instances.
 
 =back
+
+Supported node types are available in all regions except as noted in
+the following table.
 
 For a complete listing of node types and specifications, see Amazon
 ElastiCache Product Features and Details and either Cache Node
@@ -170,7 +225,7 @@ Parameters for Redis.
 
 =head2 CacheParameterGroup => L<Paws::ElastiCache::CacheParameterGroupStatus>
 
-  
+  Status of the cache parameter group.
 
 
 =head2 CacheSecurityGroups => ArrayRef[L<Paws::ElastiCache::CacheSecurityGroupMembership>]
@@ -213,7 +268,9 @@ this cache cluster.
 
 =head2 NotificationConfiguration => L<Paws::ElastiCache::NotificationConfiguration>
 
-  
+  Describes a notification topic and its status. Notification topics are
+used for publishing ElastiCache events to subscribers using Amazon
+Simple Notification Service (SNS).
 
 
 =head2 NumCacheNodes => Int
@@ -309,6 +366,18 @@ turned off.
 daily snapshot of your cache cluster.
 
 Example: C<05:00-09:00>
+
+
+=head2 TransitEncryptionEnabled => Bool
+
+  A flag that enables in-transit encryption when set to C<true>.
+
+You cannot modify the value of C<TransitEncryptionEnabled> after the
+cluster is created. To enable in-transit encryption on a cluster you
+must set C<TransitEncryptionEnabled> to C<true> when you create a
+cluster.
+
+Default: C<false>
 
 
 
