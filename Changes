@@ -1,5 +1,6 @@
 0.37
  - Big refactor of all result handling for all services
+ - Better docu generation (osoriano)
  - New API: Pricing
  - API update: ECS
  - API update: EC2

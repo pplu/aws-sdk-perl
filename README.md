@@ -295,7 +295,8 @@ Roger Pettett for testing and contributing fixes for tests on MacOSX
 
 Henri Yandell for help with licensing issues
 
-Oriol Soriano (@ureesoriano) for contribution to API builders
+Oriol Soriano (@ureesoriano) for contributions to API builders and better
+documentation generation
 
 H. Daniel Cesario (@maneta) for devel setup instructions on RH and MacOSX
 
