@@ -427,7 +427,7 @@ Each argument is described in detail in: L<[% c.api %]::[% op_name %]>
 
 Returns: [% out_shape = c.shapename_for_operation_output(op_name); IF (out_shape) %]a L<[% c.api %]::[% out_shape %]> instance[% ELSE %]nothing[% END %]
 
-  [% c.doc_for_method(op_name) %]
+[% c.doc_for_method(op_name) %]
 
 [% END %]
 
