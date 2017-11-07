@@ -1,7 +1,6 @@
 package Paws::Pinpoint::WriteEventStream;
   use Moose;
   has DestinationStreamArn => (is => 'ro', isa => 'Str');
-  has ExternalId => (is => 'ro', isa => 'Str');
   has RoleArn => (is => 'ro', isa => 'Str');
 1;
 
@@ -44,12 +43,6 @@ Request to save an EventStream.
 delivery stream to which you want to publish events. Firehose ARN:
 arn:aws:firehose:REGION:ACCOUNT_ID:deliverystream/STREAM_NAME Kinesis
 ARN: arn:aws:kinesis:REGION:ACCOUNT_ID:stream/STREAM_NAME
-
-
-=head2 ExternalId => Str
-
-  The external ID assigned the IAM role that authorizes Amazon Pinpoint
-to publish to the stream.
 
 
 =head2 RoleArn => Str

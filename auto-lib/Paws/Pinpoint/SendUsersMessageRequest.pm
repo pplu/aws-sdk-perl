@@ -2,7 +2,6 @@ package Paws::Pinpoint::SendUsersMessageRequest;
   use Moose;
   has Context => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
   has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::DirectMessageConfiguration');
-  has RequestId => (is => 'ro', isa => 'Str');
   has Users => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEndpointSendConfiguration');
 1;
 
@@ -49,11 +48,6 @@ or added to the email/sms delivery receipt event attributes.
 =head2 MessageConfiguration => L<Paws::Pinpoint::DirectMessageConfiguration>
 
   Message configuration.
-
-
-=head2 RequestId => Str
-
-  Original request Id for which this message is delivered.
 
 
 =head2 Users => L<Paws::Pinpoint::MapOfEndpointSendConfiguration>

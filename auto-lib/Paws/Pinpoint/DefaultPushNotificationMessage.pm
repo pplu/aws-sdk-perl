@@ -3,7 +3,6 @@ package Paws::Pinpoint::DefaultPushNotificationMessage;
   has Action => (is => 'ro', isa => 'Str');
   has Body => (is => 'ro', isa => 'Str');
   has Data => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
-  has JsonData => (is => 'ro', isa => 'Str');
   has SilentPush => (is => 'ro', isa => 'Bool');
   has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
   has Title => (is => 'ro', isa => 'Str');
@@ -62,12 +61,6 @@ message.
 
 
 =head2 Data => L<Paws::Pinpoint::MapOf__string>
-
-  The data payload used for a silent push. This payload is added to the
-notifications' data.pinpoint.jsonBody' object
-
-
-=head2 JsonData => Str
 
   The data payload used for a silent push. This payload is added to the
 notifications' data.pinpoint.jsonBody' object

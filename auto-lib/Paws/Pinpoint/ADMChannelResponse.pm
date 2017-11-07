@@ -3,6 +3,7 @@ package Paws::Pinpoint::ADMChannelResponse;
   has ApplicationId => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
+  has HasCredential => (is => 'ro', isa => 'Bool');
   has Id => (is => 'ro', isa => 'Str');
   has IsArchived => (is => 'ro', isa => 'Bool');
   has LastModifiedBy => (is => 'ro', isa => 'Str');
@@ -57,6 +58,11 @@ Amazon Device Messaging channel definition.
 =head2 Enabled => Bool
 
   If the channel is enabled for sending messages.
+
+
+=head2 HasCredential => Bool
+
+  If the channel is registered with a credential for authentication.
 
 
 =head2 Id => Str

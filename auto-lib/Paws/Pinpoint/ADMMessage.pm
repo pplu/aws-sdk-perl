@@ -8,7 +8,6 @@ package Paws::Pinpoint::ADMMessage;
   has IconReference => (is => 'ro', isa => 'Str');
   has ImageIconUrl => (is => 'ro', isa => 'Str');
   has ImageUrl => (is => 'ro', isa => 'Str');
-  has JsonData => (is => 'ro', isa => 'Str');
   has MD5 => (is => 'ro', isa => 'Str');
   has RawContent => (is => 'ro', isa => 'Str');
   has SilentPush => (is => 'ro', isa => 'Bool');
@@ -103,12 +102,6 @@ notification content view.
 =head2 ImageUrl => Str
 
   The URL that points to an image used in the push notification.
-
-
-=head2 JsonData => Str
-
-  The data payload used for a silent push. This payload is added to the
-notifications' data.pinpoint.jsonBody' object
 
 
 =head2 MD5 => Str

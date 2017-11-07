@@ -1,16 +1,16 @@
-package Paws::Pinpoint::SMSChannelResponse;
+package Paws::Pinpoint::APNSVoipChannelResponse;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
+  has DefaultAuthenticationMethod => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
   has HasCredential => (is => 'ro', isa => 'Bool');
+  has HasTokenKey => (is => 'ro', isa => 'Bool');
   has Id => (is => 'ro', isa => 'Str');
   has IsArchived => (is => 'ro', isa => 'Bool');
   has LastModifiedBy => (is => 'ro', isa => 'Str');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has Platform => (is => 'ro', isa => 'Str');
-  has SenderId => (is => 'ro', isa => 'Str');
-  has ShortCode => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Int');
 1;
 
@@ -18,7 +18,7 @@ package Paws::Pinpoint::SMSChannelResponse;
 
 =head1 NAME
 
-Paws::Pinpoint::SMSChannelResponse
+Paws::Pinpoint::APNSVoipChannelResponse
 
 =head1 USAGE
 
@@ -29,32 +29,37 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Pinpoint::SMSChannelResponse object:
+As an example, if Att1 is expected to be a Paws::Pinpoint::APNSVoipChannelResponse object:
 
   $service_obj->Method(Att1 => { ApplicationId => $value, ..., Version => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::SMSChannelResponse object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::APNSVoipChannelResponse object:
 
   $result = $service_obj->Method(...);
   $result->Att1->ApplicationId
 
 =head1 DESCRIPTION
 
-SMS Channel Response.
+Apple VoIP Push Notification Service channel definition.
 
 =head1 ATTRIBUTES
 
 
 =head2 ApplicationId => Str
 
-  The unique ID of the application to which the SMS channel belongs.
+  Application id
 
 
 =head2 CreationDate => Str
 
-  The date that the settings were last updated in ISO 8601 format.
+  When was this segment created
+
+
+=head2 DefaultAuthenticationMethod => Str
+
+  The default authentication method used for APNs.
 
 
 =head2 Enabled => Bool
@@ -65,6 +70,11 @@ SMS Channel Response.
 =head2 HasCredential => Bool
 
   If the channel is registered with a credential for authentication.
+
+
+=head2 HasTokenKey => Bool
+
+  If the channel is registered with a token key for authentication.
 
 
 =head2 Id => Str
@@ -79,7 +89,7 @@ SMS Channel Response.
 
 =head2 LastModifiedBy => Str
 
-  Who last updated this entry
+  Who made the last change
 
 
 =head2 LastModifiedDate => Str
@@ -89,17 +99,7 @@ SMS Channel Response.
 
 =head2 Platform => Str
 
-  Platform type. Will be "SMS"
-
-
-=head2 SenderId => Str
-
-  Sender identifier of your messages.
-
-
-=head2 ShortCode => Str
-
-  The short code registered with the phone provider.
+  The platform type. Will be APNS.
 
 
 =head2 Version => Int

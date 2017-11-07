@@ -7,13 +7,14 @@ package Paws::Pinpoint::GCMMessage;
   has IconReference => (is => 'ro', isa => 'Str');
   has ImageIconUrl => (is => 'ro', isa => 'Str');
   has ImageUrl => (is => 'ro', isa => 'Str');
-  has JsonData => (is => 'ro', isa => 'Str');
+  has Priority => (is => 'ro', isa => 'Str');
   has RawContent => (is => 'ro', isa => 'Str');
   has RestrictedPackageName => (is => 'ro', isa => 'Str');
   has SilentPush => (is => 'ro', isa => 'Bool');
   has SmallImageIconUrl => (is => 'ro', isa => 'Str');
   has Sound => (is => 'ro', isa => 'Str');
   has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
+  has TimeToLive => (is => 'ro', isa => 'Int');
   has Title => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
 1;
@@ -100,10 +101,9 @@ notification content view.
   The URL that points to an image used in the push notification.
 
 
-=head2 JsonData => Str
+=head2 Priority => Str
 
-  The data payload used for a silent push. This payload is added to the
-notifications' data.pinpoint.jsonBody' object
+  Is this a transaction priority message or lower priority.
 
 
 =head2 RawContent => Str
@@ -142,6 +142,13 @@ app. Android sound files must reside in /res/raw/
 
   Default message substitutions. Can be overridden by individual address
 substitutions.
+
+
+=head2 TimeToLive => Int
+
+  This parameter specifies how long (in seconds) the message should be
+kept in GCM storage if the device is offline. The maximum time to live
+supported is 4 weeks, and the default value is 4 weeks.
 
 
 =head2 Title => Str

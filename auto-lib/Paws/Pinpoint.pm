@@ -48,6 +48,16 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteApnsSandboxChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteApnsVoipChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteApnsVoipChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteApnsVoipSandboxChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteApnsVoipSandboxChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteApp {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteApp', @_);
@@ -101,6 +111,16 @@ package Paws::Pinpoint;
   sub GetApnsSandboxChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetApnsSandboxChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetApnsVoipChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetApnsVoipChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetApnsVoipSandboxChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetApnsVoipSandboxChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetApp {
@@ -238,6 +258,16 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateApnsSandboxChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateApnsVoipChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateApnsVoipChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateApnsVoipSandboxChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateApnsVoipSandboxChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateApplicationSettings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateApplicationSettings', @_);
@@ -286,7 +316,7 @@ package Paws::Pinpoint;
   
 
 
-  sub operations { qw/CreateApp CreateCampaign CreateImportJob CreateSegment DeleteAdmChannel DeleteApnsChannel DeleteApnsSandboxChannel DeleteApp DeleteBaiduChannel DeleteCampaign DeleteEmailChannel DeleteEventStream DeleteGcmChannel DeleteSegment DeleteSmsChannel GetAdmChannel GetApnsChannel GetApnsSandboxChannel GetApp GetApplicationSettings GetApps GetBaiduChannel GetCampaign GetCampaignActivities GetCampaigns GetCampaignVersion GetCampaignVersions GetEmailChannel GetEndpoint GetEventStream GetGcmChannel GetImportJob GetImportJobs GetSegment GetSegmentImportJobs GetSegments GetSegmentVersion GetSegmentVersions GetSmsChannel PutEventStream SendMessages SendUsersMessages UpdateAdmChannel UpdateApnsChannel UpdateApnsSandboxChannel UpdateApplicationSettings UpdateBaiduChannel UpdateCampaign UpdateEmailChannel UpdateEndpoint UpdateEndpointsBatch UpdateGcmChannel UpdateSegment UpdateSmsChannel / }
+  sub operations { qw/CreateApp CreateCampaign CreateImportJob CreateSegment DeleteAdmChannel DeleteApnsChannel DeleteApnsSandboxChannel DeleteApnsVoipChannel DeleteApnsVoipSandboxChannel DeleteApp DeleteBaiduChannel DeleteCampaign DeleteEmailChannel DeleteEventStream DeleteGcmChannel DeleteSegment DeleteSmsChannel GetAdmChannel GetApnsChannel GetApnsSandboxChannel GetApnsVoipChannel GetApnsVoipSandboxChannel GetApp GetApplicationSettings GetApps GetBaiduChannel GetCampaign GetCampaignActivities GetCampaigns GetCampaignVersion GetCampaignVersions GetEmailChannel GetEndpoint GetEventStream GetGcmChannel GetImportJob GetImportJobs GetSegment GetSegmentImportJobs GetSegments GetSegmentVersion GetSegmentVersions GetSmsChannel PutEventStream SendMessages SendUsersMessages UpdateAdmChannel UpdateApnsChannel UpdateApnsSandboxChannel UpdateApnsVoipChannel UpdateApnsVoipSandboxChannel UpdateApplicationSettings UpdateBaiduChannel UpdateCampaign UpdateEmailChannel UpdateEndpoint UpdateEndpointsBatch UpdateGcmChannel UpdateSegment UpdateSmsChannel / }
 
 1;
 
@@ -379,6 +409,24 @@ Each argument is described in detail in: L<Paws::Pinpoint::DeleteApnsSandboxChan
 Returns: a L<Paws::Pinpoint::DeleteApnsSandboxChannelResponse> instance
 
   Delete an APNS sandbox channel
+
+
+=head2 DeleteApnsVoipChannel(ApplicationId => Str)
+
+Each argument is described in detail in: L<Paws::Pinpoint::DeleteApnsVoipChannel>
+
+Returns: a L<Paws::Pinpoint::DeleteApnsVoipChannelResponse> instance
+
+  Delete an APNS VoIP channel
+
+
+=head2 DeleteApnsVoipSandboxChannel(ApplicationId => Str)
+
+Each argument is described in detail in: L<Paws::Pinpoint::DeleteApnsVoipSandboxChannel>
+
+Returns: a L<Paws::Pinpoint::DeleteApnsVoipSandboxChannelResponse> instance
+
+  Delete an APNS VoIP sandbox channel
 
 
 =head2 DeleteApp(ApplicationId => Str)
@@ -478,6 +526,24 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetApnsSandboxChannel
 Returns: a L<Paws::Pinpoint::GetApnsSandboxChannelResponse> instance
 
   Get an APNS sandbox channel
+
+
+=head2 GetApnsVoipChannel(ApplicationId => Str)
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetApnsVoipChannel>
+
+Returns: a L<Paws::Pinpoint::GetApnsVoipChannelResponse> instance
+
+  Get an APNS VoIP channel
+
+
+=head2 GetApnsVoipSandboxChannel(ApplicationId => Str)
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetApnsVoipSandboxChannel>
+
+Returns: a L<Paws::Pinpoint::GetApnsVoipSandboxChannelResponse> instance
+
+  Get an APNS VoipSandbox channel
 
 
 =head2 GetApp(ApplicationId => Str)
@@ -721,6 +787,24 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateApnsSandboxChan
 Returns: a L<Paws::Pinpoint::UpdateApnsSandboxChannelResponse> instance
 
   Update an APNS sandbox channel
+
+
+=head2 UpdateApnsVoipChannel(APNSVoipChannelRequest => L<Paws::Pinpoint::APNSVoipChannelRequest>, ApplicationId => Str)
+
+Each argument is described in detail in: L<Paws::Pinpoint::UpdateApnsVoipChannel>
+
+Returns: a L<Paws::Pinpoint::UpdateApnsVoipChannelResponse> instance
+
+  Update an APNS VoIP channel
+
+
+=head2 UpdateApnsVoipSandboxChannel(APNSVoipSandboxChannelRequest => L<Paws::Pinpoint::APNSVoipSandboxChannelRequest>, ApplicationId => Str)
+
+Each argument is described in detail in: L<Paws::Pinpoint::UpdateApnsVoipSandboxChannel>
+
+Returns: a L<Paws::Pinpoint::UpdateApnsVoipSandboxChannelResponse> instance
+
+  Update an APNS VoIP sandbox channel
 
 
 =head2 UpdateApplicationSettings(ApplicationId => Str, WriteApplicationSettingsRequest => L<Paws::Pinpoint::WriteApplicationSettingsRequest>)

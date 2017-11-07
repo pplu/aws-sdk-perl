@@ -4,6 +4,7 @@ package Paws::Pinpoint::EmailChannelResponse;
   has CreationDate => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
   has FromAddress => (is => 'ro', isa => 'Str');
+  has HasCredential => (is => 'ro', isa => 'Bool');
   has Id => (is => 'ro', isa => 'Str');
   has Identity => (is => 'ro', isa => 'Str');
   has IsArchived => (is => 'ro', isa => 'Bool');
@@ -65,6 +66,11 @@ Email Channel Response.
 =head2 FromAddress => Str
 
   The email address used to send emails from.
+
+
+=head2 HasCredential => Bool
+
+  If the channel is registered with a credential for authentication.
 
 
 =head2 Id => Str

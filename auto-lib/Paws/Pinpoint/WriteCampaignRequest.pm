@@ -10,7 +10,6 @@ package Paws::Pinpoint::WriteCampaignRequest;
   has Schedule => (is => 'ro', isa => 'Paws::Pinpoint::Schedule');
   has SegmentId => (is => 'ro', isa => 'Str');
   has SegmentVersion => (is => 'ro', isa => 'Int');
-  has Trace => (is => 'ro', isa => 'Bool');
   has TreatmentDescription => (is => 'ro', isa => 'Str');
   has TreatmentName => (is => 'ro', isa => 'Str');
 1;
@@ -98,11 +97,6 @@ send messages unless you resume it by setting IsPaused to false.
 =head2 SegmentVersion => Int
 
   The version of the segment to which the campaign sends messages.
-
-
-=head2 Trace => Bool
-
-  Whether or not to enable trace logging for the campaign. Undocumented
 
 
 =head2 TreatmentDescription => Str

@@ -14,7 +14,6 @@ package Paws::Pinpoint::EndpointResponse;
   has Metrics => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__double');
   has OptOut => (is => 'ro', isa => 'Str');
   has RequestId => (is => 'ro', isa => 'Str');
-  has ShardId => (is => 'ro', isa => 'Str');
   has User => (is => 'ro', isa => 'Paws::Pinpoint::EndpointUser');
 1;
 
@@ -131,11 +130,6 @@ of the following values: ALL - User has opted out of all messages. NONE
 =head2 RequestId => Str
 
   The unique ID for the most recent request to update the endpoint.
-
-
-=head2 ShardId => Str
-
-  The ShardId of endpoint.
 
 
 =head2 User => L<Paws::Pinpoint::EndpointUser>
