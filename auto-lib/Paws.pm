@@ -400,6 +400,8 @@ L<Paws::Pinpoint>
 
 L<Paws::Polly>
 
+L<Paws::Pricing>
+
 L<Paws::RDS>
 
 L<Paws::RedShift>

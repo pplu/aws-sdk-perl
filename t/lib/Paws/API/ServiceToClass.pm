@@ -88,6 +88,7 @@ package Paws::API::ServiceToClass;
     opsworkscm => 'OpsWorksCM',
     organizations => 'Organizations',
     pinpoint => 'Pinpoint',
+    pricing => 'Pricing',
     polly => 'Polly',
     rds => 'RDS',
     rekognition => 'Rekognition',

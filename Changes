@@ -1,5 +1,7 @@
 0.37
  - Big refactor of all result handling for all services
+ - New API: Pricing
+ - API update: ECS
  - API update: EC2
  - API update: ELBv2
  - API update: OpsWorksCM
@@ -15,6 +17,12 @@
  - API update: ElasticBeanstalk
  - API update: Lightsail
  - API update: SSM
+ - API update: Pinpoint
+ - API update: DirectConnect
+ - API update: ApiGateway
+ - API update: CloudFront
+ - API update: Glue
+ - API update: ElastiCache
 
 0.36 03 Nov 2017
  - Fix Bug: #210: S3 PutObject was not working: the Content-MD5 header was not 
