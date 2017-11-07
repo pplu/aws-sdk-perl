@@ -926,7 +926,7 @@ Returns: a L<Paws::ApiGateway::DocumentationVersion> instance
   
 
 
-=head2 CreateDomainName(DomainName => Str, [CertificateArn => Str, CertificateBody => Str, CertificateChain => Str, CertificateName => Str, CertificatePrivateKey => Str])
+=head2 CreateDomainName(DomainName => Str, [CertificateArn => Str, CertificateBody => Str, CertificateChain => Str, CertificateName => Str, CertificatePrivateKey => Str, EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>, RegionalCertificateArn => Str, RegionalCertificateName => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateDomainName>
 
@@ -962,7 +962,7 @@ Returns: a L<Paws::ApiGateway::Resource> instance
   Creates a Resource resource.
 
 
-=head2 CreateRestApi(Name => Str, [BinaryMediaTypes => ArrayRef[Str|Undef], CloneFrom => Str, Description => Str, Version => Str])
+=head2 CreateRestApi(Name => Str, [BinaryMediaTypes => ArrayRef[Str|Undef], CloneFrom => Str, Description => Str, EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>, Version => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateRestApi>
 

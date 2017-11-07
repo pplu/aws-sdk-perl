@@ -4,6 +4,7 @@ package Paws::ApiGateway::RestApi;
   has BinaryMediaTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'binaryMediaTypes');
   has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has EndpointConfiguration => (is => 'ro', isa => 'Paws::ApiGateway::EndpointConfiguration', traits => ['NameInRequest'], request_name => 'endpointConfiguration');
   has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
   has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
@@ -35,6 +36,12 @@ The timestamp when the API was created.
 =head2 Description => Str
 
 The API's description.
+
+
+=head2 EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>
+
+The endpoint configuration of this RestApi showing the endpoint types
+of the API.
 
 
 =head2 Id => Str

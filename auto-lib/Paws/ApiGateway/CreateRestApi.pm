@@ -4,6 +4,7 @@ package Paws::ApiGateway::CreateRestApi;
   has BinaryMediaTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'binaryMediaTypes');
   has CloneFrom => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cloneFrom');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has EndpointConfiguration => (is => 'ro', isa => 'Paws::ApiGateway::EndpointConfiguration', traits => ['NameInRequest'], request_name => 'endpointConfiguration');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
 
@@ -54,6 +55,13 @@ The ID of the RestApi that you want to clone from.
 =head2 Description => Str
 
 The description of the RestApi.
+
+
+
+=head2 EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>
+
+The endpoint configuration of this RestApi showing the endpoint types
+of the API.
 
 
 
