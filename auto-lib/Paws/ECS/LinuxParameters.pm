@@ -1,6 +1,8 @@
 package Paws::ECS::LinuxParameters;
   use Moose;
   has Capabilities => (is => 'ro', isa => 'Paws::ECS::KernelCapabilities', request_name => 'capabilities', traits => ['NameInRequest']);
+  has Devices => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Device]', request_name => 'devices', traits => ['NameInRequest']);
+  has InitProcessEnabled => (is => 'ro', isa => 'Bool', request_name => 'initProcessEnabled', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::LinuxParameters object:
 
-  $service_obj->Method(Att1 => { Capabilities => $value, ..., Capabilities => $value  });
+  $service_obj->Method(Att1 => { Capabilities => $value, ..., InitProcessEnabled => $value  });
 
 =head3 Results returned from an API call
 
@@ -41,6 +43,24 @@ KernelCapabilities.
 
   The Linux capabilities for the container that are added to or dropped
 from the default configuration provided by Docker.
+
+
+=head2 Devices => ArrayRef[L<Paws::ECS::Device>]
+
+  Any host devices to expose to the container. This parameter maps to
+C<Devices> in the Create a container section of the Docker Remote API
+and the C<--device> option to docker run.
+
+
+=head2 InitProcessEnabled => Bool
+
+  Run an C<init> process inside the container that forwards signals and
+reaps processes. This parameter maps to the C<--init> option to docker
+run. This parameter requires version 1.25 of the Docker Remote API or
+greater on your container instance. To check the Docker Remote API
+version on your container instance, log into your container instance
+and run the following command: C<sudo docker version | grep "Server API
+version">
 
 
 

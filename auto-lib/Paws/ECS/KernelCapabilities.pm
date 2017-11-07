@@ -49,6 +49,16 @@ default configuration provided by Docker. This parameter maps to
 C<CapAdd> in the Create a container section of the Docker Remote API
 and the C<--cap-add> option to docker run.
 
+Valid values: C<"ALL" | "AUDIT_CONTROL" | "AUDIT_WRITE" |
+"BLOCK_SUSPEND" | "CHOWN" | "DAC_OVERRIDE" | "DAC_READ_SEARCH" |
+"FOWNER" | "FSETID" | "IPC_LOCK" | "IPC_OWNER" | "KILL" | "LEASE" |
+"LINUX_IMMUTABLE" | "MAC_ADMIN" | "MAC_OVERRIDE" | "MKNOD" |
+"NET_ADMIN" | "NET_BIND_SERVICE" | "NET_BROADCAST" | "NET_RAW" |
+"SETFCAP" | "SETGID" | "SETPCAP" | "SETUID" | "SYS_ADMIN" | "SYS_BOOT"
+| "SYS_CHROOT" | "SYS_MODULE" | "SYS_NICE" | "SYS_PACCT" | "SYS_PTRACE"
+| "SYS_RAWIO" | "SYS_RESOURCE" | "SYS_TIME" | "SYS_TTY_CONFIG" |
+"SYSLOG" | "WAKE_ALARM">
+
 
 =head2 Drop => ArrayRef[Str|Undef]
 
@@ -56,6 +66,16 @@ and the C<--cap-add> option to docker run.
 the default configuration provided by Docker. This parameter maps to
 C<CapDrop> in the Create a container section of the Docker Remote API
 and the C<--cap-drop> option to docker run.
+
+Valid values: C<"ALL" | "AUDIT_CONTROL" | "AUDIT_WRITE" |
+"BLOCK_SUSPEND" | "CHOWN" | "DAC_OVERRIDE" | "DAC_READ_SEARCH" |
+"FOWNER" | "FSETID" | "IPC_LOCK" | "IPC_OWNER" | "KILL" | "LEASE" |
+"LINUX_IMMUTABLE" | "MAC_ADMIN" | "MAC_OVERRIDE" | "MKNOD" |
+"NET_ADMIN" | "NET_BIND_SERVICE" | "NET_BROADCAST" | "NET_RAW" |
+"SETFCAP" | "SETGID" | "SETPCAP" | "SETUID" | "SYS_ADMIN" | "SYS_BOOT"
+| "SYS_CHROOT" | "SYS_MODULE" | "SYS_NICE" | "SYS_PACCT" | "SYS_PTRACE"
+| "SYS_RAWIO" | "SYS_RESOURCE" | "SYS_TIME" | "SYS_TTY_CONFIG" |
+"SYSLOG" | "WAKE_ALARM">
 
 
 
