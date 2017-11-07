@@ -403,7 +403,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::AssociateKmsKey
 
 Returns: nothing
 
-  Associates the specified AWS Key Management Service (AWS KMS) customer
+Associates the specified AWS Key Management Service (AWS KMS) customer
 master key (CMK) with the specified log group.
 
 Associating an AWS KMS CMK with a log group overrides any existing
@@ -428,7 +428,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::CancelExportTas
 
 Returns: nothing
 
-  Cancels the specified export task.
+Cancels the specified export task.
 
 The task must be in the C<PENDING> or C<RUNNING> state.
 
@@ -439,7 +439,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::CreateExportTas
 
 Returns: a L<Paws::CloudWatchLogs::CreateExportTaskResponse> instance
 
-  Creates an export task, which allows you to efficiently export data
+Creates an export task, which allows you to efficiently export data
 from a log group to an Amazon S3 bucket.
 
 This is an asynchronous call. If all the required information is
@@ -461,7 +461,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::CreateLogGroup>
 
 Returns: nothing
 
-  Creates a log group with the specified name.
+Creates a log group with the specified name.
 
 You can create up to 5000 log groups per account.
 
@@ -501,7 +501,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::CreateLogStream
 
 Returns: nothing
 
-  Creates a log stream for the specified log group.
+Creates a log stream for the specified log group.
 
 There is no limit on the number of log streams that you can create for
 a log group.
@@ -532,7 +532,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteDestinati
 
 Returns: nothing
 
-  Deletes the specified destination, and eventually disables all the
+Deletes the specified destination, and eventually disables all the
 subscription filters that publish to it. This operation does not delete
 the physical resource encapsulated by the destination.
 
@@ -543,7 +543,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteLogGroup>
 
 Returns: nothing
 
-  Deletes the specified log group and permanently deletes all the
+Deletes the specified log group and permanently deletes all the
 archived log events associated with the log group.
 
 
@@ -553,7 +553,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteLogStream
 
 Returns: nothing
 
-  Deletes the specified log stream and permanently deletes all the
+Deletes the specified log stream and permanently deletes all the
 archived log events associated with the log stream.
 
 
@@ -563,7 +563,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteMetricFil
 
 Returns: nothing
 
-  Deletes the specified metric filter.
+Deletes the specified metric filter.
 
 
 =head2 DeleteResourcePolicy([PolicyName => Str])
@@ -572,7 +572,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteResourceP
 
 Returns: nothing
 
-  Deletes a resource policy from this account. This revokes the access of
+Deletes a resource policy from this account. This revokes the access of
 the identities in that policy to put log events to this account.
 
 
@@ -582,7 +582,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteRetention
 
 Returns: nothing
 
-  Deletes the specified retention policy.
+Deletes the specified retention policy.
 
 Log events do not expire if they belong to log groups without a
 retention policy.
@@ -594,7 +594,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteSubscript
 
 Returns: nothing
 
-  Deletes the specified subscription filter.
+Deletes the specified subscription filter.
 
 
 =head2 DescribeDestinations([DestinationNamePrefix => Str, Limit => Int, NextToken => Str])
@@ -603,7 +603,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeDestina
 
 Returns: a L<Paws::CloudWatchLogs::DescribeDestinationsResponse> instance
 
-  Lists all your destinations. The results are ASCII-sorted by
+Lists all your destinations. The results are ASCII-sorted by
 destination name.
 
 
@@ -613,7 +613,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeExportT
 
 Returns: a L<Paws::CloudWatchLogs::DescribeExportTasksResponse> instance
 
-  Lists the specified export tasks. You can list all your export tasks or
+Lists the specified export tasks. You can list all your export tasks or
 filter the results based on task ID or task status.
 
 
@@ -623,7 +623,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeLogGrou
 
 Returns: a L<Paws::CloudWatchLogs::DescribeLogGroupsResponse> instance
 
-  Lists the specified log groups. You can list all your log groups or
+Lists the specified log groups. You can list all your log groups or
 filter the results by prefix. The results are ASCII-sorted by log group
 name.
 
@@ -634,7 +634,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeLogStre
 
 Returns: a L<Paws::CloudWatchLogs::DescribeLogStreamsResponse> instance
 
-  Lists the log streams for the specified log group. You can list all the
+Lists the log streams for the specified log group. You can list all the
 log streams or filter the results by prefix. You can also control how
 the results are ordered.
 
@@ -648,7 +648,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeMetricF
 
 Returns: a L<Paws::CloudWatchLogs::DescribeMetricFiltersResponse> instance
 
-  Lists the specified metric filters. You can list all the metric filters
+Lists the specified metric filters. You can list all the metric filters
 or filter the results by log name, prefix, metric name, or metric
 namespace. The results are ASCII-sorted by filter name.
 
@@ -659,7 +659,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeResourc
 
 Returns: a L<Paws::CloudWatchLogs::DescribeResourcePoliciesResponse> instance
 
-  Lists the resource policies in this account.
+Lists the resource policies in this account.
 
 
 =head2 DescribeSubscriptionFilters(LogGroupName => Str, [FilterNamePrefix => Str, Limit => Int, NextToken => Str])
@@ -668,7 +668,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeSubscri
 
 Returns: a L<Paws::CloudWatchLogs::DescribeSubscriptionFiltersResponse> instance
 
-  Lists the subscription filters for the specified log group. You can
+Lists the subscription filters for the specified log group. You can
 list all the subscription filters or filter the results by prefix. The
 results are ASCII-sorted by filter name.
 
@@ -679,7 +679,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DisassociateKms
 
 Returns: nothing
 
-  Disassociates the associated AWS Key Management Service (AWS KMS)
+Disassociates the associated AWS Key Management Service (AWS KMS)
 customer master key (CMK) from the specified log group.
 
 After the AWS KMS CMK is disassociated from the log group, AWS
@@ -698,7 +698,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::FilterLogEvents
 
 Returns: a L<Paws::CloudWatchLogs::FilterLogEventsResponse> instance
 
-  Lists log events from the specified log group. You can list all the log
+Lists log events from the specified log group. You can list all the log
 events or filter the results using a filter pattern, a time range, and
 the name of the log stream.
 
@@ -715,7 +715,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::GetLogEvents>
 
 Returns: a L<Paws::CloudWatchLogs::GetLogEventsResponse> instance
 
-  Lists log events from the specified log stream. You can list all the
+Lists log events from the specified log stream. You can list all the
 log events or filter using a time range.
 
 By default, this operation returns as many log events as can fit in a
@@ -729,7 +729,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::ListTagsLogGrou
 
 Returns: a L<Paws::CloudWatchLogs::ListTagsLogGroupResponse> instance
 
-  Lists the tags for the specified log group.
+Lists the tags for the specified log group.
 
 
 =head2 PutDestination(DestinationName => Str, RoleArn => Str, TargetArn => Str)
@@ -738,7 +738,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::PutDestination>
 
 Returns: a L<Paws::CloudWatchLogs::PutDestinationResponse> instance
 
-  Creates or updates a destination. A destination encapsulates a physical
+Creates or updates a destination. A destination encapsulates a physical
 resource (such as an Amazon Kinesis stream) and enables you to
 subscribe to a real-time stream of log events for a different account,
 ingested using PutLogEvents. Currently, the only supported physical
@@ -759,7 +759,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::PutDestinationP
 
 Returns: nothing
 
-  Creates or updates an access policy associated with an existing
+Creates or updates an access policy associated with an existing
 destination. An access policy is an IAM policy document that is used to
 authorize claims to register a subscription filter against a given
 destination.
@@ -771,7 +771,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::PutLogEvents>
 
 Returns: a L<Paws::CloudWatchLogs::PutLogEventsResponse> instance
 
-  Uploads a batch of log events to the specified log stream.
+Uploads a batch of log events to the specified log stream.
 
 You must include the sequence token obtained from the response of the
 previous call. An upload in a newly created log stream does not require
@@ -825,7 +825,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::PutMetricFilter
 
 Returns: nothing
 
-  Creates or updates a metric filter and associates it with the specified
+Creates or updates a metric filter and associates it with the specified
 log group. Metric filters allow you to configure rules to extract
 metric data from log events ingested through PutLogEvents.
 
@@ -839,7 +839,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::PutResourcePoli
 
 Returns: a L<Paws::CloudWatchLogs::PutResourcePolicyResponse> instance
 
-  Creates or updates a resource policy allowing other AWS services to put
+Creates or updates a resource policy allowing other AWS services to put
 log events to this account, such as Amazon Route 53. An account can
 have up to 50 resource policies per region.
 
@@ -850,7 +850,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::PutRetentionPol
 
 Returns: nothing
 
-  Sets the retention of the specified log group. A retention policy
+Sets the retention of the specified log group. A retention policy
 allows you to configure the number of days for which to retain log
 events in the specified log group.
 
@@ -861,7 +861,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::PutSubscription
 
 Returns: nothing
 
-  Creates or updates a subscription filter and associates it with the
+Creates or updates a subscription filter and associates it with the
 specified log group. Subscription filters allow you to subscribe to a
 real-time stream of log events ingested through PutLogEvents and have
 them delivered to a specific destination. Currently, the supported
@@ -903,7 +903,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::TagLogGroup>
 
 Returns: nothing
 
-  Adds or updates the specified tags for the specified log group.
+Adds or updates the specified tags for the specified log group.
 
 To list the tags for a log group, use ListTagsLogGroup. To remove tags,
 use UntagLogGroup.
@@ -918,7 +918,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::TestMetricFilte
 
 Returns: a L<Paws::CloudWatchLogs::TestMetricFilterResponse> instance
 
-  Tests the filter pattern of a metric filter against a sample of log
+Tests the filter pattern of a metric filter against a sample of log
 event messages. You can use this operation to validate the correctness
 of a metric filter pattern.
 
@@ -929,7 +929,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::UntagLogGroup>
 
 Returns: nothing
 
-  Removes the specified tags from the specified log group.
+Removes the specified tags from the specified log group.
 
 To list the tags for a log group, use ListTagsLogGroup. To add tags,
 use UntagLogGroup.
@@ -1024,9 +1024,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

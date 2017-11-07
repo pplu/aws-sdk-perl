@@ -18,7 +18,7 @@ package Paws::CloudFormation::CreateStackInstances;
 
 =head1 NAME
 
-Paws::CloudFormation::CreateStackInstances - Arguments for method CreateStackInstances on Paws::CloudFormation
+Paws::CloudFormation::CreateStackInstances - Arguments for method CreateStackInstances on L<Paws::CloudFormation>
 
 =head1 DESCRIPTION
 
@@ -90,9 +90,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateStackIn
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

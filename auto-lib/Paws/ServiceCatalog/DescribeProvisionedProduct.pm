@@ -15,7 +15,7 @@ package Paws::ServiceCatalog::DescribeProvisionedProduct;
 
 =head1 NAME
 
-Paws::ServiceCatalog::DescribeProvisionedProduct - Arguments for method DescribeProvisionedProduct on Paws::ServiceCatalog
+Paws::ServiceCatalog::DescribeProvisionedProduct - Arguments for method DescribeProvisionedProduct on L<Paws::ServiceCatalog>
 
 =head1 DESCRIPTION
 
@@ -70,9 +70,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeProvi
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

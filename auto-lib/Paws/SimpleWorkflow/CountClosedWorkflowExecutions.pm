@@ -20,7 +20,7 @@ package Paws::SimpleWorkflow::CountClosedWorkflowExecutions;
 
 =head1 NAME
 
-Paws::SimpleWorkflow::CountClosedWorkflowExecutions - Arguments for method CountClosedWorkflowExecutions on Paws::SimpleWorkflow
+Paws::SimpleWorkflow::CountClosedWorkflowExecutions - Arguments for method CountClosedWorkflowExecutions on L<Paws::SimpleWorkflow>
 
 =head1 DESCRIPTION
 
@@ -117,9 +117,9 @@ This class forms part of L<Paws>, documenting arguments for method CountClosedWo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

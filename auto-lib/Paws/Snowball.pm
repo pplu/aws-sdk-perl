@@ -194,7 +194,7 @@ Each argument is described in detail in: L<Paws::Snowball::CancelCluster>
 
 Returns: a L<Paws::Snowball::CancelClusterResult> instance
 
-  Cancels a cluster job. You can only cancel a cluster job while it's in
+Cancels a cluster job. You can only cancel a cluster job while it's in
 the C<AwaitingQuorum> status. You'll have at least an hour after
 creating a cluster job to cancel it.
 
@@ -205,7 +205,7 @@ Each argument is described in detail in: L<Paws::Snowball::CancelJob>
 
 Returns: a L<Paws::Snowball::CancelJobResult> instance
 
-  Cancels the specified job. You can only cancel a job before its
+Cancels the specified job. You can only cancel a job before its
 C<JobState> value changes to C<PreparingAppliance>. Requesting the
 C<ListJobs> or C<DescribeJob> action will return a job's C<JobState> as
 part of the response element data returned.
@@ -217,7 +217,7 @@ Each argument is described in detail in: L<Paws::Snowball::CreateAddress>
 
 Returns: a L<Paws::Snowball::CreateAddressResult> instance
 
-  Creates an address for a Snowball to be shipped to. In most regions,
+Creates an address for a Snowball to be shipped to. In most regions,
 addresses are validated at the time of creation. The address you
 provide must be located within the serviceable area of your region. If
 the address is invalid or unsupported, then an exception is thrown.
@@ -229,7 +229,7 @@ Each argument is described in detail in: L<Paws::Snowball::CreateCluster>
 
 Returns: a L<Paws::Snowball::CreateClusterResult> instance
 
-  Creates an empty cluster. Each cluster supports five nodes. You use the
+Creates an empty cluster. Each cluster supports five nodes. You use the
 CreateJob action separately to create the jobs for each of these nodes.
 The cluster does not ship until these five node jobs have been created.
 
@@ -240,7 +240,7 @@ Each argument is described in detail in: L<Paws::Snowball::CreateJob>
 
 Returns: a L<Paws::Snowball::CreateJobResult> instance
 
-  Creates a job to import or export data between Amazon S3 and your
+Creates a job to import or export data between Amazon S3 and your
 on-premises data center. Your AWS account must have the right trust
 policies and permissions in place to create a job for Snowball. If
 you're creating a job for a node in a cluster, you only need to provide
@@ -254,7 +254,7 @@ Each argument is described in detail in: L<Paws::Snowball::DescribeAddress>
 
 Returns: a L<Paws::Snowball::DescribeAddressResult> instance
 
-  Takes an C<AddressId> and returns specific details about that address
+Takes an C<AddressId> and returns specific details about that address
 in the form of an C<Address> object.
 
 
@@ -264,7 +264,7 @@ Each argument is described in detail in: L<Paws::Snowball::DescribeAddresses>
 
 Returns: a L<Paws::Snowball::DescribeAddressesResult> instance
 
-  Returns a specified number of C<ADDRESS> objects. Calling this API in
+Returns a specified number of C<ADDRESS> objects. Calling this API in
 one of the US regions will return addresses from the list of all
 addresses associated with this account in all US regions.
 
@@ -275,7 +275,7 @@ Each argument is described in detail in: L<Paws::Snowball::DescribeCluster>
 
 Returns: a L<Paws::Snowball::DescribeClusterResult> instance
 
-  Returns information about a specific cluster including shipping
+Returns information about a specific cluster including shipping
 information, cluster status, and other important metadata.
 
 
@@ -285,7 +285,7 @@ Each argument is described in detail in: L<Paws::Snowball::DescribeJob>
 
 Returns: a L<Paws::Snowball::DescribeJobResult> instance
 
-  Returns information about a specific job including shipping
+Returns information about a specific job including shipping
 information, job status, and other important metadata.
 
 
@@ -295,7 +295,7 @@ Each argument is described in detail in: L<Paws::Snowball::GetJobManifest>
 
 Returns: a L<Paws::Snowball::GetJobManifestResult> instance
 
-  Returns a link to an Amazon S3 presigned URL for the manifest file
+Returns a link to an Amazon S3 presigned URL for the manifest file
 associated with the specified C<JobId> value. You can access the
 manifest file for up to 60 minutes after this request has been made. To
 access the manifest file after 60 minutes have passed, you'll have to
@@ -322,7 +322,7 @@ Each argument is described in detail in: L<Paws::Snowball::GetJobUnlockCode>
 
 Returns: a L<Paws::Snowball::GetJobUnlockCodeResult> instance
 
-  Returns the C<UnlockCode> code value for the specified job. A
+Returns the C<UnlockCode> code value for the specified job. A
 particular C<UnlockCode> value can be accessed for up to 90 days after
 the associated job has been created.
 
@@ -343,7 +343,7 @@ Each argument is described in detail in: L<Paws::Snowball::GetSnowballUsage>
 
 Returns: a L<Paws::Snowball::GetSnowballUsageResult> instance
 
-  Returns information about the Snowball service limit for your account,
+Returns information about the Snowball service limit for your account,
 and also the number of Snowballs your account has in use.
 
 The default service limit for the number of Snowballs that you can have
@@ -357,7 +357,7 @@ Each argument is described in detail in: L<Paws::Snowball::ListClusterJobs>
 
 Returns: a L<Paws::Snowball::ListClusterJobsResult> instance
 
-  Returns an array of C<JobListEntry> objects of the specified length.
+Returns an array of C<JobListEntry> objects of the specified length.
 Each C<JobListEntry> object is for a job in the specified cluster and
 contains a job's state, a job's ID, and other information.
 
@@ -368,7 +368,7 @@ Each argument is described in detail in: L<Paws::Snowball::ListClusters>
 
 Returns: a L<Paws::Snowball::ListClustersResult> instance
 
-  Returns an array of C<ClusterListEntry> objects of the specified
+Returns an array of C<ClusterListEntry> objects of the specified
 length. Each C<ClusterListEntry> object contains a cluster's state, a
 cluster's ID, and other important status information.
 
@@ -379,7 +379,7 @@ Each argument is described in detail in: L<Paws::Snowball::ListJobs>
 
 Returns: a L<Paws::Snowball::ListJobsResult> instance
 
-  Returns an array of C<JobListEntry> objects of the specified length.
+Returns an array of C<JobListEntry> objects of the specified length.
 Each C<JobListEntry> object contains a job's state, a job's ID, and a
 value that indicates whether the job is a job part, in the case of
 export jobs. Calling this API action in one of the US regions will
@@ -393,7 +393,7 @@ Each argument is described in detail in: L<Paws::Snowball::UpdateCluster>
 
 Returns: a L<Paws::Snowball::UpdateClusterResult> instance
 
-  While a cluster's C<ClusterState> value is in the C<AwaitingQuorum>
+While a cluster's C<ClusterState> value is in the C<AwaitingQuorum>
 state, you can update some of the information associated with a
 cluster. Once the cluster changes to a different job state, usually 60
 minutes after the cluster being created, this action is no longer
@@ -406,7 +406,7 @@ Each argument is described in detail in: L<Paws::Snowball::UpdateJob>
 
 Returns: a L<Paws::Snowball::UpdateJobResult> instance
 
-  While a job's C<JobState> value is C<New>, you can update some of the
+While a job's C<JobState> value is C<New>, you can update some of the
 information associated with a job. Once the job changes to a different
 job state, usually within 60 minutes of the job being created, this
 action is no longer available.
@@ -451,9 +451,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

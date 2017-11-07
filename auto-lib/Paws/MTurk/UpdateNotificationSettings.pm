@@ -16,7 +16,7 @@ package Paws::MTurk::UpdateNotificationSettings;
 
 =head1 NAME
 
-Paws::MTurk::UpdateNotificationSettings - Arguments for method UpdateNotificationSettings on Paws::MTurk
+Paws::MTurk::UpdateNotificationSettings - Arguments for method UpdateNotificationSettings on L<Paws::MTurk>
 
 =head1 DESCRIPTION
 
@@ -64,9 +64,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateNotific
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -206,7 +206,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::AssociateNode>
 
 Returns: a L<Paws::OpsWorksCM::AssociateNodeResponse> instance
 
-  Associates a new node with the Chef server. This command is an
+Associates a new node with the Chef server. This command is an
 alternative to C<knife bootstrap>. For more information about how to
 disassociate a node, see DisassociateNode.
 
@@ -230,7 +230,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::CreateBackup>
 
 Returns: a L<Paws::OpsWorksCM::CreateBackupResponse> instance
 
-  Creates an application-level backup of a server. While the server is in
+Creates an application-level backup of a server. While the server is in
 the C<BACKING_UP> state, the server cannot be changed, and no
 additional backup can be created.
 
@@ -254,7 +254,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::CreateServer>
 
 Returns: a L<Paws::OpsWorksCM::CreateServerResponse> instance
 
-  Creates and immedately starts a new server. The server is ready to use
+Creates and immedately starts a new server. The server is ready to use
 when it is in the C<HEALTHY> state. By default, you can create a
 maximum of 10 servers.
 
@@ -287,7 +287,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DeleteBackup>
 
 Returns: a L<Paws::OpsWorksCM::DeleteBackupResponse> instance
 
-  Deletes a backup. You can delete both manual and automated backups.
+Deletes a backup. You can delete both manual and automated backups.
 This operation is asynchronous.
 
 An C<InvalidStateException> is thrown when a backup deletion is already
@@ -302,7 +302,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DeleteServer>
 
 Returns: a L<Paws::OpsWorksCM::DeleteServerResponse> instance
 
-  Deletes the server and the underlying AWS CloudFormation stack
+Deletes the server and the underlying AWS CloudFormation stack
 (including the server's EC2 instance). When you run this command, the
 server state is updated to C<DELETING>. After the server is deleted, it
 is no longer returned by C<DescribeServer> requests. If the AWS
@@ -322,7 +322,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DescribeAccountAttr
 
 Returns: a L<Paws::OpsWorksCM::DescribeAccountAttributesResponse> instance
 
-  Describes your account attributes, and creates requests to increase
+Describes your account attributes, and creates requests to increase
 limits before they are reached or exceeded.
 
 This operation is synchronous.
@@ -334,7 +334,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DescribeBackups>
 
 Returns: a L<Paws::OpsWorksCM::DescribeBackupsResponse> instance
 
-  Describes backups. The results are ordered by time, with newest backups
+Describes backups. The results are ordered by time, with newest backups
 first. If you do not specify a BackupId or ServerName, the command
 returns all backups.
 
@@ -351,7 +351,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DescribeEvents>
 
 Returns: a L<Paws::OpsWorksCM::DescribeEventsResponse> instance
 
-  Describes events for a specified server. Results are ordered by time,
+Describes events for a specified server. Results are ordered by time,
 with newest events first.
 
 This operation is synchronous.
@@ -367,7 +367,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DescribeNodeAssocia
 
 Returns: a L<Paws::OpsWorksCM::DescribeNodeAssociationStatusResponse> instance
 
-  Returns the current status of an existing association or disassociation
+Returns the current status of an existing association or disassociation
 request.
 
 A C<ResourceNotFoundException> is thrown when no recent association or
@@ -382,7 +382,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DescribeServers>
 
 Returns: a L<Paws::OpsWorksCM::DescribeServersResponse> instance
 
-  Lists all configuration management servers that are identified with
+Lists all configuration management servers that are identified with
 your account. Only the stored results from Amazon DynamoDB are
 returned. AWS OpsWorks for Chef Automate does not query other services.
 
@@ -399,7 +399,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DisassociateNode>
 
 Returns: a L<Paws::OpsWorksCM::DisassociateNodeResponse> instance
 
-  Disassociates a node from a Chef server, and removes the node from the
+Disassociates a node from a Chef server, and removes the node from the
 Chef server's managed nodes. After a node is disassociated, the node
 key pair is no longer valid for accessing the Chef API. For more
 information about how to associate a node, see AssociateNode.
@@ -417,7 +417,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::RestoreServer>
 
 Returns: a L<Paws::OpsWorksCM::RestoreServerResponse> instance
 
-  Restores a backup to a server that is in a C<CONNECTION_LOST>,
+Restores a backup to a server that is in a C<CONNECTION_LOST>,
 C<HEALTHY>, C<RUNNING>, C<UNHEALTHY>, or C<TERMINATED> state. When you
 run RestoreServer, the server's EC2 instance is deleted, and a new EC2
 instance is configured. RestoreServer maintains the existing server
@@ -438,7 +438,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::StartMaintenance>
 
 Returns: a L<Paws::OpsWorksCM::StartMaintenanceResponse> instance
 
-  Manually starts server maintenance. This command can be useful if an
+Manually starts server maintenance. This command can be useful if an
 earlier maintenance attempt failed, and the underlying cause of
 maintenance failure has been resolved. The server is in an
 C<UNDER_MAINTENANCE> state while maintenance is in progress.
@@ -456,7 +456,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::UpdateServer>
 
 Returns: a L<Paws::OpsWorksCM::UpdateServerResponse> instance
 
-  Updates settings for a server.
+Updates settings for a server.
 
 This operation is synchronous.
 
@@ -467,7 +467,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::UpdateServerEngineA
 
 Returns: a L<Paws::OpsWorksCM::UpdateServerEngineAttributesResponse> instance
 
-  Updates engine-specific attributes on a specified server. The server
+Updates engine-specific attributes on a specified server. The server
 enters the C<MODIFYING> state when this operation is in progress. Only
 one update can occur at a time. You can use this command to reset the
 Chef server's private key (C<CHEF_PIVOTAL_KEY>).
@@ -496,9 +496,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

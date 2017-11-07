@@ -15,7 +15,7 @@ package Paws::RDS::ListTagsForResource;
 
 =head1 NAME
 
-Paws::RDS::ListTagsForResource - Arguments for method ListTagsForResource on Paws::RDS
+Paws::RDS::ListTagsForResource - Arguments for method ListTagsForResource on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -55,9 +55,9 @@ This class forms part of L<Paws>, documenting arguments for method ListTagsForRe
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

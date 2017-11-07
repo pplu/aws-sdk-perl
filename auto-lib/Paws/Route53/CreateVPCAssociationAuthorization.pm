@@ -18,7 +18,7 @@ package Paws::Route53::CreateVPCAssociationAuthorization;
 
 =head1 NAME
 
-Paws::Route53::CreateVPCAssociationAuthorization - Arguments for method CreateVPCAssociationAuthorization on Paws::Route53
+Paws::Route53::CreateVPCAssociationAuthorization - Arguments for method CreateVPCAssociationAuthorization on L<Paws::Route53>
 
 =head1 DESCRIPTION
 
@@ -58,9 +58,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateVPCAsso
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -16,7 +16,7 @@ package Paws::IAM::ListGroupsForUser;
 
 =head1 NAME
 
-Paws::IAM::ListGroupsForUser - Arguments for method ListGroupsForUser on Paws::IAM
+Paws::IAM::ListGroupsForUser - Arguments for method ListGroupsForUser on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -76,9 +76,9 @@ This class forms part of L<Paws>, documenting arguments for method ListGroupsFor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

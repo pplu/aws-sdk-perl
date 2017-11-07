@@ -17,7 +17,7 @@ package Paws::CloudDirectory::ListFacetNames;
 
 =head1 NAME
 
-Paws::CloudDirectory::ListFacetNames - Arguments for method ListFacetNames on Paws::CloudDirectory
+Paws::CloudDirectory::ListFacetNames - Arguments for method ListFacetNames on L<Paws::CloudDirectory>
 
 =head1 DESCRIPTION
 
@@ -61,9 +61,9 @@ This class forms part of L<Paws>, documenting arguments for method ListFacetName
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -14,7 +14,7 @@ package Paws::IAM::GetOpenIDConnectProvider;
 
 =head1 NAME
 
-Paws::IAM::GetOpenIDConnectProvider - Arguments for method GetOpenIDConnectProvider on Paws::IAM
+Paws::IAM::GetOpenIDConnectProvider - Arguments for method GetOpenIDConnectProvider on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -51,9 +51,9 @@ This class forms part of L<Paws>, documenting arguments for method GetOpenIDConn
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

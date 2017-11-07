@@ -375,7 +375,7 @@ Each argument is described in detail in: L<Paws::Config::DeleteConfigRule>
 
 Returns: nothing
 
-  Deletes the specified AWS Config rule and all of its evaluation
+Deletes the specified AWS Config rule and all of its evaluation
 results.
 
 AWS Config sets the state of a rule to C<DELETING> until the deletion
@@ -393,7 +393,7 @@ Each argument is described in detail in: L<Paws::Config::DeleteConfigurationReco
 
 Returns: nothing
 
-  Deletes the configuration recorder.
+Deletes the configuration recorder.
 
 After the configuration recorder is deleted, AWS Config will not record
 resource configuration changes until you create a new configuration
@@ -412,7 +412,7 @@ Each argument is described in detail in: L<Paws::Config::DeleteDeliveryChannel>
 
 Returns: nothing
 
-  Deletes the delivery channel.
+Deletes the delivery channel.
 
 Before you can delete the delivery channel, you must stop the
 configuration recorder by using the StopConfigurationRecorder action.
@@ -424,7 +424,7 @@ Each argument is described in detail in: L<Paws::Config::DeleteEvaluationResults
 
 Returns: a L<Paws::Config::DeleteEvaluationResultsResponse> instance
 
-  Deletes the evaluation results for the specified Config rule. You can
+Deletes the evaluation results for the specified Config rule. You can
 specify one Config rule per request. After you delete the evaluation
 results, you can call the StartConfigRulesEvaluation API to start
 evaluating your AWS resources against the rule.
@@ -436,7 +436,7 @@ Each argument is described in detail in: L<Paws::Config::DeliverConfigSnapshot>
 
 Returns: a L<Paws::Config::DeliverConfigSnapshotResponse> instance
 
-  Schedules delivery of a configuration snapshot to the Amazon S3 bucket
+Schedules delivery of a configuration snapshot to the Amazon S3 bucket
 in the specified delivery channel. After the delivery has started, AWS
 Config sends following notifications using an Amazon SNS topic that you
 have specified.
@@ -466,7 +466,7 @@ Each argument is described in detail in: L<Paws::Config::DescribeComplianceByCon
 
 Returns: a L<Paws::Config::DescribeComplianceByConfigRuleResponse> instance
 
-  Indicates whether the specified AWS Config rules are compliant. If a
+Indicates whether the specified AWS Config rules are compliant. If a
 rule is noncompliant, this action returns the number of AWS resources
 that do not comply with the rule.
 
@@ -510,7 +510,7 @@ Each argument is described in detail in: L<Paws::Config::DescribeComplianceByRes
 
 Returns: a L<Paws::Config::DescribeComplianceByResourceResponse> instance
 
-  Indicates whether the specified AWS resources are compliant. If a
+Indicates whether the specified AWS resources are compliant. If a
 resource is noncompliant, this action returns the number of AWS Config
 rules that the resource does not comply with.
 
@@ -555,7 +555,7 @@ Each argument is described in detail in: L<Paws::Config::DescribeConfigRuleEvalu
 
 Returns: a L<Paws::Config::DescribeConfigRuleEvaluationStatusResponse> instance
 
-  Returns status information for each of your AWS managed Config rules.
+Returns status information for each of your AWS managed Config rules.
 The status includes information such as the last time AWS Config
 invoked the rule, the last time AWS Config failed to invoke the rule,
 and the related error for the last failure.
@@ -567,7 +567,7 @@ Each argument is described in detail in: L<Paws::Config::DescribeConfigRules>
 
 Returns: a L<Paws::Config::DescribeConfigRulesResponse> instance
 
-  Returns details about your AWS Config rules.
+Returns details about your AWS Config rules.
 
 
 =head2 DescribeConfigurationRecorders([ConfigurationRecorderNames => ArrayRef[Str|Undef]])
@@ -576,7 +576,7 @@ Each argument is described in detail in: L<Paws::Config::DescribeConfigurationRe
 
 Returns: a L<Paws::Config::DescribeConfigurationRecordersResponse> instance
 
-  Returns the details for the specified configuration recorders. If the
+Returns the details for the specified configuration recorders. If the
 configuration recorder is not specified, this action returns the
 details for all configuration recorders associated with the account.
 
@@ -590,7 +590,7 @@ Each argument is described in detail in: L<Paws::Config::DescribeConfigurationRe
 
 Returns: a L<Paws::Config::DescribeConfigurationRecorderStatusResponse> instance
 
-  Returns the current status of the specified configuration recorder. If
+Returns the current status of the specified configuration recorder. If
 a configuration recorder is not specified, this action returns the
 status of all configuration recorder associated with the account.
 
@@ -604,7 +604,7 @@ Each argument is described in detail in: L<Paws::Config::DescribeDeliveryChannel
 
 Returns: a L<Paws::Config::DescribeDeliveryChannelsResponse> instance
 
-  Returns details about the specified delivery channel. If a delivery
+Returns details about the specified delivery channel. If a delivery
 channel is not specified, this action returns the details of all
 delivery channels associated with the account.
 
@@ -618,7 +618,7 @@ Each argument is described in detail in: L<Paws::Config::DescribeDeliveryChannel
 
 Returns: a L<Paws::Config::DescribeDeliveryChannelStatusResponse> instance
 
-  Returns the current status of the specified delivery channel. If a
+Returns the current status of the specified delivery channel. If a
 delivery channel is not specified, this action returns the current
 status of all delivery channels associated with the account.
 
@@ -632,7 +632,7 @@ Each argument is described in detail in: L<Paws::Config::GetComplianceDetailsByC
 
 Returns: a L<Paws::Config::GetComplianceDetailsByConfigRuleResponse> instance
 
-  Returns the evaluation results for the specified AWS Config rule. The
+Returns the evaluation results for the specified AWS Config rule. The
 results indicate which AWS resources were evaluated by the rule, when
 each resource was last evaluated, and whether each resource complies
 with the rule.
@@ -644,7 +644,7 @@ Each argument is described in detail in: L<Paws::Config::GetComplianceDetailsByR
 
 Returns: a L<Paws::Config::GetComplianceDetailsByResourceResponse> instance
 
-  Returns the evaluation results for the specified AWS resource. The
+Returns the evaluation results for the specified AWS resource. The
 results indicate which AWS Config rules were used to evaluate the
 resource, when each rule was last used, and whether the resource
 complies with each rule.
@@ -656,7 +656,7 @@ Each argument is described in detail in: L<Paws::Config::GetComplianceSummaryByC
 
 Returns: a L<Paws::Config::GetComplianceSummaryByConfigRuleResponse> instance
 
-  Returns the number of AWS Config rules that are compliant and
+Returns the number of AWS Config rules that are compliant and
 noncompliant, up to a maximum of 25 for each.
 
 
@@ -666,7 +666,7 @@ Each argument is described in detail in: L<Paws::Config::GetComplianceSummaryByR
 
 Returns: a L<Paws::Config::GetComplianceSummaryByResourceTypeResponse> instance
 
-  Returns the number of resources that are compliant and the number that
+Returns the number of resources that are compliant and the number that
 are noncompliant. You can specify one or more resource types to get
 these numbers for each resource type. The maximum number returned is
 100.
@@ -678,7 +678,7 @@ Each argument is described in detail in: L<Paws::Config::GetDiscoveredResourceCo
 
 Returns: a L<Paws::Config::GetDiscoveredResourceCountsResponse> instance
 
-  Returns the resource types, the number of each resource type, and the
+Returns the resource types, the number of each resource type, and the
 total number of resources that AWS Config is recording in this region
 for your AWS account.
 
@@ -751,7 +751,7 @@ Each argument is described in detail in: L<Paws::Config::GetResourceConfigHistor
 
 Returns: a L<Paws::Config::GetResourceConfigHistoryResponse> instance
 
-  Returns a list of configuration items for the specified resource. The
+Returns a list of configuration items for the specified resource. The
 list contains details about each state of the resource during the
 specified time interval.
 
@@ -773,7 +773,7 @@ Each argument is described in detail in: L<Paws::Config::ListDiscoveredResources
 
 Returns: a L<Paws::Config::ListDiscoveredResourcesResponse> instance
 
-  Accepts a resource type and returns a list of resource identifiers for
+Accepts a resource type and returns a list of resource identifiers for
 the resources of that type. A resource identifier includes the resource
 type, ID, and (if available) the custom resource name. The results
 consist of resources that AWS Config has discovered, including those
@@ -797,7 +797,7 @@ Each argument is described in detail in: L<Paws::Config::PutConfigRule>
 
 Returns: nothing
 
-  Adds or updates an AWS Config rule for evaluating whether your AWS
+Adds or updates an AWS Config rule for evaluating whether your AWS
 resources comply with your desired configurations.
 
 You can use this action for custom Config rules and AWS managed Config
@@ -842,7 +842,7 @@ Each argument is described in detail in: L<Paws::Config::PutConfigurationRecorde
 
 Returns: nothing
 
-  Creates a new configuration recorder to record the selected resource
+Creates a new configuration recorder to record the selected resource
 configurations.
 
 You can use this action to change the role C<roleARN> and/or the
@@ -863,7 +863,7 @@ Each argument is described in detail in: L<Paws::Config::PutDeliveryChannel>
 
 Returns: nothing
 
-  Creates a delivery channel object to deliver configuration information
+Creates a delivery channel object to deliver configuration information
 to an Amazon S3 bucket and Amazon SNS topic.
 
 Before you can create a delivery channel, you must create a
@@ -885,7 +885,7 @@ Each argument is described in detail in: L<Paws::Config::PutEvaluations>
 
 Returns: a L<Paws::Config::PutEvaluationsResponse> instance
 
-  Used by an AWS Lambda function to deliver evaluation results to AWS
+Used by an AWS Lambda function to deliver evaluation results to AWS
 Config. This action is required in every AWS Lambda function that is
 invoked by an AWS Config rule.
 
@@ -896,7 +896,7 @@ Each argument is described in detail in: L<Paws::Config::StartConfigRulesEvaluat
 
 Returns: a L<Paws::Config::StartConfigRulesEvaluationResponse> instance
 
-  Runs an on-demand evaluation for the specified Config rules against the
+Runs an on-demand evaluation for the specified Config rules against the
 last known configuration state of the resources. Use
 C<StartConfigRulesEvaluation> when you want to test a rule that you
 updated is working as expected. C<StartConfigRulesEvaluation> does not
@@ -953,7 +953,7 @@ Each argument is described in detail in: L<Paws::Config::StartConfigurationRecor
 
 Returns: nothing
 
-  Starts recording configurations of the AWS resources you have selected
+Starts recording configurations of the AWS resources you have selected
 to record in your AWS account.
 
 You must have created at least one delivery channel to successfully
@@ -966,7 +966,7 @@ Each argument is described in detail in: L<Paws::Config::StopConfigurationRecord
 
 Returns: nothing
 
-  Stops recording configurations of the AWS resources you have selected
+Stops recording configurations of the AWS resources you have selected
 to record in your AWS account.
 
 
@@ -1069,9 +1069,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

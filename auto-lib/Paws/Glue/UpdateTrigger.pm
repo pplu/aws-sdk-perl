@@ -15,7 +15,7 @@ package Paws::Glue::UpdateTrigger;
 
 =head1 NAME
 
-Paws::Glue::UpdateTrigger - Arguments for method UpdateTrigger on Paws::Glue
+Paws::Glue::UpdateTrigger - Arguments for method UpdateTrigger on L<Paws::Glue>
 
 =head1 DESCRIPTION
 
@@ -53,9 +53,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateTrigger
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

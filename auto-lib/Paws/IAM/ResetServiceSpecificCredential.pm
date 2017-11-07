@@ -15,7 +15,7 @@ package Paws::IAM::ResetServiceSpecificCredential;
 
 =head1 NAME
 
-Paws::IAM::ResetServiceSpecificCredential - Arguments for method ResetServiceSpecificCredential on Paws::IAM
+Paws::IAM::ResetServiceSpecificCredential - Arguments for method ResetServiceSpecificCredential on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -62,9 +62,9 @@ This class forms part of L<Paws>, documenting arguments for method ResetServiceS
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

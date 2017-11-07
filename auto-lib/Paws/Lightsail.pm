@@ -515,7 +515,7 @@ Each argument is described in detail in: L<Paws::Lightsail::AllocateStaticIp>
 
 Returns: a L<Paws::Lightsail::AllocateStaticIpResult> instance
 
-  Allocates a static IP address.
+Allocates a static IP address.
 
 
 =head2 AttachStaticIp(InstanceName => Str, StaticIpName => Str)
@@ -524,7 +524,7 @@ Each argument is described in detail in: L<Paws::Lightsail::AttachStaticIp>
 
 Returns: a L<Paws::Lightsail::AttachStaticIpResult> instance
 
-  Attaches a static IP address to a specific Amazon Lightsail instance.
+Attaches a static IP address to a specific Amazon Lightsail instance.
 
 
 =head2 CloseInstancePublicPorts(InstanceName => Str, PortInfo => L<Paws::Lightsail::PortInfo>)
@@ -533,7 +533,7 @@ Each argument is described in detail in: L<Paws::Lightsail::CloseInstancePublicP
 
 Returns: a L<Paws::Lightsail::CloseInstancePublicPortsResult> instance
 
-  Closes the public ports on a specific Amazon Lightsail instance.
+Closes the public ports on a specific Amazon Lightsail instance.
 
 
 =head2 CreateDomain(DomainName => Str)
@@ -542,7 +542,7 @@ Each argument is described in detail in: L<Paws::Lightsail::CreateDomain>
 
 Returns: a L<Paws::Lightsail::CreateDomainResult> instance
 
-  Creates a domain resource for the specified domain (e.g., example.com).
+Creates a domain resource for the specified domain (e.g., example.com).
 
 
 =head2 CreateDomainEntry(DomainEntry => L<Paws::Lightsail::DomainEntry>, DomainName => Str)
@@ -551,7 +551,7 @@ Each argument is described in detail in: L<Paws::Lightsail::CreateDomainEntry>
 
 Returns: a L<Paws::Lightsail::CreateDomainEntryResult> instance
 
-  Creates one of the following entry records associated with the domain:
+Creates one of the following entry records associated with the domain:
 A record, CNAME record, TXT record, or MX record.
 
 
@@ -561,7 +561,7 @@ Each argument is described in detail in: L<Paws::Lightsail::CreateInstances>
 
 Returns: a L<Paws::Lightsail::CreateInstancesResult> instance
 
-  Creates one or more Amazon Lightsail virtual private servers, or
+Creates one or more Amazon Lightsail virtual private servers, or
 I<instances>.
 
 
@@ -571,7 +571,7 @@ Each argument is described in detail in: L<Paws::Lightsail::CreateInstancesFromS
 
 Returns: a L<Paws::Lightsail::CreateInstancesFromSnapshotResult> instance
 
-  Uses a specific snapshot as a blueprint for creating one or more new
+Uses a specific snapshot as a blueprint for creating one or more new
 instances that are based on that identical configuration.
 
 
@@ -581,7 +581,7 @@ Each argument is described in detail in: L<Paws::Lightsail::CreateInstanceSnapsh
 
 Returns: a L<Paws::Lightsail::CreateInstanceSnapshotResult> instance
 
-  Creates a snapshot of a specific virtual private server, or
+Creates a snapshot of a specific virtual private server, or
 I<instance>. You can use a snapshot to create a new instance that is
 based on that snapshot.
 
@@ -592,7 +592,7 @@ Each argument is described in detail in: L<Paws::Lightsail::CreateKeyPair>
 
 Returns: a L<Paws::Lightsail::CreateKeyPairResult> instance
 
-  Creates sn SSH key pair.
+Creates sn SSH key pair.
 
 
 =head2 DeleteDomain(DomainName => Str)
@@ -601,7 +601,7 @@ Each argument is described in detail in: L<Paws::Lightsail::DeleteDomain>
 
 Returns: a L<Paws::Lightsail::DeleteDomainResult> instance
 
-  Deletes the specified domain recordset and all of its domain records.
+Deletes the specified domain recordset and all of its domain records.
 
 
 =head2 DeleteDomainEntry(DomainEntry => L<Paws::Lightsail::DomainEntry>, DomainName => Str)
@@ -610,7 +610,7 @@ Each argument is described in detail in: L<Paws::Lightsail::DeleteDomainEntry>
 
 Returns: a L<Paws::Lightsail::DeleteDomainEntryResult> instance
 
-  Deletes a specific domain entry.
+Deletes a specific domain entry.
 
 
 =head2 DeleteInstance(InstanceName => Str)
@@ -619,7 +619,7 @@ Each argument is described in detail in: L<Paws::Lightsail::DeleteInstance>
 
 Returns: a L<Paws::Lightsail::DeleteInstanceResult> instance
 
-  Deletes a specific Amazon Lightsail virtual private server, or
+Deletes a specific Amazon Lightsail virtual private server, or
 I<instance>.
 
 
@@ -629,7 +629,7 @@ Each argument is described in detail in: L<Paws::Lightsail::DeleteInstanceSnapsh
 
 Returns: a L<Paws::Lightsail::DeleteInstanceSnapshotResult> instance
 
-  Deletes a specific snapshot of a virtual private server (or
+Deletes a specific snapshot of a virtual private server (or
 I<instance>).
 
 
@@ -639,7 +639,7 @@ Each argument is described in detail in: L<Paws::Lightsail::DeleteKeyPair>
 
 Returns: a L<Paws::Lightsail::DeleteKeyPairResult> instance
 
-  Deletes a specific SSH key pair.
+Deletes a specific SSH key pair.
 
 
 =head2 DetachStaticIp(StaticIpName => Str)
@@ -648,7 +648,7 @@ Each argument is described in detail in: L<Paws::Lightsail::DetachStaticIp>
 
 Returns: a L<Paws::Lightsail::DetachStaticIpResult> instance
 
-  Detaches a static IP from the Amazon Lightsail instance to which it is
+Detaches a static IP from the Amazon Lightsail instance to which it is
 attached.
 
 
@@ -658,7 +658,7 @@ Each argument is described in detail in: L<Paws::Lightsail::DownloadDefaultKeyPa
 
 Returns: a L<Paws::Lightsail::DownloadDefaultKeyPairResult> instance
 
-  Downloads the default SSH key pair from the user's account.
+Downloads the default SSH key pair from the user's account.
 
 
 =head2 GetActiveNames([PageToken => Str])
@@ -667,7 +667,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetActiveNames>
 
 Returns: a L<Paws::Lightsail::GetActiveNamesResult> instance
 
-  Returns the names of all active (not deleted) resources.
+Returns the names of all active (not deleted) resources.
 
 
 =head2 GetBlueprints([IncludeInactive => Bool, PageToken => Str])
@@ -676,7 +676,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetBlueprints>
 
 Returns: a L<Paws::Lightsail::GetBlueprintsResult> instance
 
-  Returns the list of available instance images, or I<blueprints>. You
+Returns the list of available instance images, or I<blueprints>. You
 can use a blueprint to create a new virtual private server already
 running a specific operating system, as well as a preinstalled app or
 development stack. The software each instance is running depends on the
@@ -689,7 +689,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetBundles>
 
 Returns: a L<Paws::Lightsail::GetBundlesResult> instance
 
-  Returns the list of bundles that are available for purchase. A bundle
+Returns the list of bundles that are available for purchase. A bundle
 describes the specs for your virtual private server (or I<instance>).
 
 
@@ -699,7 +699,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetDomain>
 
 Returns: a L<Paws::Lightsail::GetDomainResult> instance
 
-  Returns information about a specific domain recordset.
+Returns information about a specific domain recordset.
 
 
 =head2 GetDomains([PageToken => Str])
@@ -708,7 +708,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetDomains>
 
 Returns: a L<Paws::Lightsail::GetDomainsResult> instance
 
-  Returns a list of all domains in the user's account.
+Returns a list of all domains in the user's account.
 
 
 =head2 GetInstance(InstanceName => Str)
@@ -717,7 +717,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetInstance>
 
 Returns: a L<Paws::Lightsail::GetInstanceResult> instance
 
-  Returns information about a specific Amazon Lightsail instance, which
+Returns information about a specific Amazon Lightsail instance, which
 is a virtual private server.
 
 
@@ -727,7 +727,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetInstanceAccessDet
 
 Returns: a L<Paws::Lightsail::GetInstanceAccessDetailsResult> instance
 
-  Returns temporary SSH keys you can use to connect to a specific virtual
+Returns temporary SSH keys you can use to connect to a specific virtual
 private server, or I<instance>.
 
 
@@ -737,7 +737,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetInstanceMetricDat
 
 Returns: a L<Paws::Lightsail::GetInstanceMetricDataResult> instance
 
-  Returns the data points for the specified Amazon Lightsail instance
+Returns the data points for the specified Amazon Lightsail instance
 metric, given an instance name.
 
 
@@ -747,7 +747,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetInstancePortState
 
 Returns: a L<Paws::Lightsail::GetInstancePortStatesResult> instance
 
-  Returns the port states for a specific virtual private server, or
+Returns the port states for a specific virtual private server, or
 I<instance>.
 
 
@@ -757,7 +757,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetInstances>
 
 Returns: a L<Paws::Lightsail::GetInstancesResult> instance
 
-  Returns information about all Amazon Lightsail virtual private servers,
+Returns information about all Amazon Lightsail virtual private servers,
 or I<instances>.
 
 
@@ -767,7 +767,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetInstanceSnapshot>
 
 Returns: a L<Paws::Lightsail::GetInstanceSnapshotResult> instance
 
-  Returns information about a specific instance snapshot.
+Returns information about a specific instance snapshot.
 
 
 =head2 GetInstanceSnapshots([PageToken => Str])
@@ -776,7 +776,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetInstanceSnapshots
 
 Returns: a L<Paws::Lightsail::GetInstanceSnapshotsResult> instance
 
-  Returns all instance snapshots for the user's account.
+Returns all instance snapshots for the user's account.
 
 
 =head2 GetInstanceState(InstanceName => Str)
@@ -785,7 +785,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetInstanceState>
 
 Returns: a L<Paws::Lightsail::GetInstanceStateResult> instance
 
-  Returns the state of a specific instance. Works on one instance at a
+Returns the state of a specific instance. Works on one instance at a
 time.
 
 
@@ -795,7 +795,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetKeyPair>
 
 Returns: a L<Paws::Lightsail::GetKeyPairResult> instance
 
-  Returns information about a specific key pair.
+Returns information about a specific key pair.
 
 
 =head2 GetKeyPairs([PageToken => Str])
@@ -804,7 +804,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetKeyPairs>
 
 Returns: a L<Paws::Lightsail::GetKeyPairsResult> instance
 
-  Returns information about all key pairs in the user's account.
+Returns information about all key pairs in the user's account.
 
 
 =head2 GetOperation(OperationId => Str)
@@ -813,7 +813,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetOperation>
 
 Returns: a L<Paws::Lightsail::GetOperationResult> instance
 
-  Returns information about a specific operation. Operations include
+Returns information about a specific operation. Operations include
 events such as when you create an instance, allocate a static IP,
 attach a static IP, and so on.
 
@@ -824,7 +824,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetOperations>
 
 Returns: a L<Paws::Lightsail::GetOperationsResult> instance
 
-  Returns information about all operations.
+Returns information about all operations.
 
 Results are returned from oldest to newest, up to a maximum of 200.
 Results can be paged by making each subsequent call to C<GetOperations>
@@ -838,7 +838,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetOperationsForReso
 
 Returns: a L<Paws::Lightsail::GetOperationsForResourceResult> instance
 
-  Gets operations for a specific resource (e.g., an instance or a static
+Gets operations for a specific resource (e.g., an instance or a static
 IP).
 
 
@@ -848,7 +848,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetRegions>
 
 Returns: a L<Paws::Lightsail::GetRegionsResult> instance
 
-  Returns a list of all valid regions for Amazon Lightsail. Use the
+Returns a list of all valid regions for Amazon Lightsail. Use the
 C<include availability zones> parameter to also return the availability
 zones in a region.
 
@@ -859,7 +859,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetStaticIp>
 
 Returns: a L<Paws::Lightsail::GetStaticIpResult> instance
 
-  Returns information about a specific static IP.
+Returns information about a specific static IP.
 
 
 =head2 GetStaticIps([PageToken => Str])
@@ -868,7 +868,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetStaticIps>
 
 Returns: a L<Paws::Lightsail::GetStaticIpsResult> instance
 
-  Returns information about all static IPs in the user's account.
+Returns information about all static IPs in the user's account.
 
 
 =head2 ImportKeyPair(KeyPairName => Str, PublicKeyBase64 => Str)
@@ -877,7 +877,7 @@ Each argument is described in detail in: L<Paws::Lightsail::ImportKeyPair>
 
 Returns: a L<Paws::Lightsail::ImportKeyPairResult> instance
 
-  Imports a public SSH key from a specific key pair.
+Imports a public SSH key from a specific key pair.
 
 
 =head2 IsVpcPeered()
@@ -886,7 +886,7 @@ Each argument is described in detail in: L<Paws::Lightsail::IsVpcPeered>
 
 Returns: a L<Paws::Lightsail::IsVpcPeeredResult> instance
 
-  Returns a Boolean value indicating whether your Lightsail VPC is
+Returns a Boolean value indicating whether your Lightsail VPC is
 peered.
 
 
@@ -896,7 +896,7 @@ Each argument is described in detail in: L<Paws::Lightsail::OpenInstancePublicPo
 
 Returns: a L<Paws::Lightsail::OpenInstancePublicPortsResult> instance
 
-  Adds public ports to an Amazon Lightsail instance.
+Adds public ports to an Amazon Lightsail instance.
 
 
 =head2 PeerVpc()
@@ -905,7 +905,7 @@ Each argument is described in detail in: L<Paws::Lightsail::PeerVpc>
 
 Returns: a L<Paws::Lightsail::PeerVpcResult> instance
 
-  Tries to peer the Lightsail VPC with the user's default VPC.
+Tries to peer the Lightsail VPC with the user's default VPC.
 
 
 =head2 PutInstancePublicPorts(InstanceName => Str, PortInfos => ArrayRef[L<Paws::Lightsail::PortInfo>])
@@ -914,7 +914,7 @@ Each argument is described in detail in: L<Paws::Lightsail::PutInstancePublicPor
 
 Returns: a L<Paws::Lightsail::PutInstancePublicPortsResult> instance
 
-  Sets the specified open ports for an Amazon Lightsail instance, and
+Sets the specified open ports for an Amazon Lightsail instance, and
 closes all ports for every protocol not included in the current
 request.
 
@@ -925,7 +925,7 @@ Each argument is described in detail in: L<Paws::Lightsail::RebootInstance>
 
 Returns: a L<Paws::Lightsail::RebootInstanceResult> instance
 
-  Restarts a specific instance. When your Amazon Lightsail instance is
+Restarts a specific instance. When your Amazon Lightsail instance is
 finished rebooting, Lightsail assigns a new public IP address. To use
 the same IP address after restarting, create a static IP address and
 attach it to the instance.
@@ -937,7 +937,7 @@ Each argument is described in detail in: L<Paws::Lightsail::ReleaseStaticIp>
 
 Returns: a L<Paws::Lightsail::ReleaseStaticIpResult> instance
 
-  Deletes a specific static IP from your account.
+Deletes a specific static IP from your account.
 
 
 =head2 StartInstance(InstanceName => Str)
@@ -946,7 +946,7 @@ Each argument is described in detail in: L<Paws::Lightsail::StartInstance>
 
 Returns: a L<Paws::Lightsail::StartInstanceResult> instance
 
-  Starts a specific Amazon Lightsail instance from a stopped state. To
+Starts a specific Amazon Lightsail instance from a stopped state. To
 restart an instance, use the reboot instance operation.
 
 
@@ -956,7 +956,7 @@ Each argument is described in detail in: L<Paws::Lightsail::StopInstance>
 
 Returns: a L<Paws::Lightsail::StopInstanceResult> instance
 
-  Stops a specific Amazon Lightsail instance that is currently running.
+Stops a specific Amazon Lightsail instance that is currently running.
 
 
 =head2 UnpeerVpc()
@@ -965,7 +965,7 @@ Each argument is described in detail in: L<Paws::Lightsail::UnpeerVpc>
 
 Returns: a L<Paws::Lightsail::UnpeerVpcResult> instance
 
-  Attempts to unpeer the Lightsail VPC from the user's default VPC.
+Attempts to unpeer the Lightsail VPC from the user's default VPC.
 
 
 =head2 UpdateDomainEntry(DomainEntry => L<Paws::Lightsail::DomainEntry>, DomainName => Str)
@@ -974,7 +974,7 @@ Each argument is described in detail in: L<Paws::Lightsail::UpdateDomainEntry>
 
 Returns: a L<Paws::Lightsail::UpdateDomainEntryResult> instance
 
-  Updates a domain recordset after it is created.
+Updates a domain recordset after it is created.
 
 
 
@@ -1100,9 +1100,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

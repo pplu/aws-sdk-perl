@@ -18,7 +18,7 @@ package Paws::Batch::UpdateJobQueue;
 
 =head1 NAME
 
-Paws::Batch::UpdateJobQueue - Arguments for method UpdateJobQueue on Paws::Batch
+Paws::Batch::UpdateJobQueue - Arguments for method UpdateJobQueue on L<Paws::Batch>
 
 =head1 DESCRIPTION
 
@@ -76,9 +76,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateJobQueu
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

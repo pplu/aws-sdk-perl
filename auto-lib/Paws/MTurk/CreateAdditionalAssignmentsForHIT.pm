@@ -16,7 +16,7 @@ package Paws::MTurk::CreateAdditionalAssignmentsForHIT;
 
 =head1 NAME
 
-Paws::MTurk::CreateAdditionalAssignmentsForHIT - Arguments for method CreateAdditionalAssignmentsForHIT on Paws::MTurk
+Paws::MTurk::CreateAdditionalAssignmentsForHIT - Arguments for method CreateAdditionalAssignmentsForHIT on L<Paws::MTurk>
 
 =head1 DESCRIPTION
 
@@ -66,9 +66,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateAdditio
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -1545,7 +1545,7 @@ Each argument is described in detail in: L<Paws::EC2::AcceptReservedInstancesExc
 
 Returns: a L<Paws::EC2::AcceptReservedInstancesExchangeQuoteResult> instance
 
-  Accepts the Convertible Reserved Instance exchange quote described in
+Accepts the Convertible Reserved Instance exchange quote described in
 the GetReservedInstancesExchangeQuote call.
 
 
@@ -1555,7 +1555,7 @@ Each argument is described in detail in: L<Paws::EC2::AcceptVpcPeeringConnection
 
 Returns: a L<Paws::EC2::AcceptVpcPeeringConnectionResult> instance
 
-  Accept a VPC peering connection request. To accept a request, the VPC
+Accept a VPC peering connection request. To accept a request, the VPC
 peering connection must be in the C<pending-acceptance> state, and you
 must be the owner of the peer VPC. Use DescribeVpcPeeringConnections to
 view your outstanding VPC peering connection requests.
@@ -1567,7 +1567,7 @@ Each argument is described in detail in: L<Paws::EC2::AllocateAddress>
 
 Returns: a L<Paws::EC2::AllocateAddressResult> instance
 
-  Allocates an Elastic IP address.
+Allocates an Elastic IP address.
 
 An Elastic IP address is for use either in the EC2-Classic platform or
 in a VPC. By default, you can allocate 5 Elastic IP addresses for
@@ -1590,7 +1590,7 @@ Each argument is described in detail in: L<Paws::EC2::AllocateHosts>
 
 Returns: a L<Paws::EC2::AllocateHostsResult> instance
 
-  Allocates a Dedicated Host to your account. At minimum you need to
+Allocates a Dedicated Host to your account. At minimum you need to
 specify the instance size type, Availability Zone, and quantity of
 hosts you want to allocate.
 
@@ -1601,7 +1601,7 @@ Each argument is described in detail in: L<Paws::EC2::AssignIpv6Addresses>
 
 Returns: a L<Paws::EC2::AssignIpv6AddressesResult> instance
 
-  Assigns one or more IPv6 addresses to the specified network interface.
+Assigns one or more IPv6 addresses to the specified network interface.
 You can specify one or more specific IPv6 addresses, or you can specify
 the number of IPv6 addresses to be automatically assigned from within
 the subnet's IPv6 CIDR block range. You can assign as many IPv6
@@ -1617,7 +1617,7 @@ Each argument is described in detail in: L<Paws::EC2::AssignPrivateIpAddresses>
 
 Returns: nothing
 
-  Assigns one or more secondary private IP addresses to the specified
+Assigns one or more secondary private IP addresses to the specified
 network interface. You can specify one or more specific secondary IP
 addresses, or you can specify the number of secondary IP addresses to
 be automatically assigned within the subnet's CIDR block range. The
@@ -1636,7 +1636,7 @@ Each argument is described in detail in: L<Paws::EC2::AssociateAddress>
 
 Returns: a L<Paws::EC2::AssociateAddressResult> instance
 
-  Associates an Elastic IP address with an instance or a network
+Associates an Elastic IP address with an instance or a network
 interface.
 
 An Elastic IP address is for use in either the EC2-Classic platform or
@@ -1670,7 +1670,7 @@ Each argument is described in detail in: L<Paws::EC2::AssociateDhcpOptions>
 
 Returns: nothing
 
-  Associates a set of DHCP options (that you've previously created) with
+Associates a set of DHCP options (that you've previously created) with
 the specified VPC, or associates no DHCP options with the VPC.
 
 After you associate the options with the VPC, any existing instances
@@ -1690,7 +1690,7 @@ Each argument is described in detail in: L<Paws::EC2::AssociateIamInstanceProfil
 
 Returns: a L<Paws::EC2::AssociateIamInstanceProfileResult> instance
 
-  Associates an IAM instance profile with a running or stopped instance.
+Associates an IAM instance profile with a running or stopped instance.
 You cannot associate more than one IAM instance profile with an
 instance.
 
@@ -1701,7 +1701,7 @@ Each argument is described in detail in: L<Paws::EC2::AssociateRouteTable>
 
 Returns: a L<Paws::EC2::AssociateRouteTableResult> instance
 
-  Associates a subnet with a route table. The subnet and route table must
+Associates a subnet with a route table. The subnet and route table must
 be in the same VPC. This association causes traffic originating from
 the subnet to be routed according to the routes in the route table. The
 action returns an association ID, which you need in order to
@@ -1718,7 +1718,7 @@ Each argument is described in detail in: L<Paws::EC2::AssociateSubnetCidrBlock>
 
 Returns: a L<Paws::EC2::AssociateSubnetCidrBlockResult> instance
 
-  Associates a CIDR block with your subnet. You can only associate a
+Associates a CIDR block with your subnet. You can only associate a
 single IPv6 CIDR block with your subnet. An IPv6 CIDR block must have a
 prefix length of /64.
 
@@ -1729,7 +1729,7 @@ Each argument is described in detail in: L<Paws::EC2::AssociateVpcCidrBlock>
 
 Returns: a L<Paws::EC2::AssociateVpcCidrBlockResult> instance
 
-  Associates a CIDR block with your VPC. You can associate a secondary
+Associates a CIDR block with your VPC. You can associate a secondary
 IPv4 CIDR block, or you can associate an Amazon-provided IPv6 CIDR
 block. The IPv6 CIDR block size is fixed at /56.
 
@@ -1744,7 +1744,7 @@ Each argument is described in detail in: L<Paws::EC2::AttachClassicLinkVpc>
 
 Returns: a L<Paws::EC2::AttachClassicLinkVpcResult> instance
 
-  Links an EC2-Classic instance to a ClassicLink-enabled VPC through one
+Links an EC2-Classic instance to a ClassicLink-enabled VPC through one
 or more of the VPC's security groups. You cannot link an EC2-Classic
 instance to more than one VPC at a time. You can only link an instance
 that's in the C<running> state. An instance is automatically unlinked
@@ -1765,7 +1765,7 @@ Each argument is described in detail in: L<Paws::EC2::AttachInternetGateway>
 
 Returns: nothing
 
-  Attaches an Internet gateway to a VPC, enabling connectivity between
+Attaches an Internet gateway to a VPC, enabling connectivity between
 the Internet and the VPC. For more information about your VPC and
 Internet gateway, see the Amazon Virtual Private Cloud User Guide.
 
@@ -1776,7 +1776,7 @@ Each argument is described in detail in: L<Paws::EC2::AttachNetworkInterface>
 
 Returns: a L<Paws::EC2::AttachNetworkInterfaceResult> instance
 
-  Attaches a network interface to an instance.
+Attaches a network interface to an instance.
 
 
 =head2 AttachVolume(Device => Str, InstanceId => Str, VolumeId => Str, [DryRun => Bool])
@@ -1785,7 +1785,7 @@ Each argument is described in detail in: L<Paws::EC2::AttachVolume>
 
 Returns: a L<Paws::EC2::VolumeAttachment> instance
 
-  Attaches an EBS volume to a running or stopped instance and exposes it
+Attaches an EBS volume to a running or stopped instance and exposes it
 to the instance with the specified device name.
 
 Encrypted EBS volumes may only be attached to instances that support
@@ -1835,7 +1835,7 @@ Each argument is described in detail in: L<Paws::EC2::AttachVpnGateway>
 
 Returns: a L<Paws::EC2::AttachVpnGatewayResult> instance
 
-  Attaches a virtual private gateway to a VPC. You can attach one virtual
+Attaches a virtual private gateway to a VPC. You can attach one virtual
 private gateway to one VPC at a time.
 
 For more information, see AWS Managed VPN Connections in the I<Amazon
@@ -1848,7 +1848,7 @@ Each argument is described in detail in: L<Paws::EC2::AuthorizeSecurityGroupEgre
 
 Returns: nothing
 
-  [EC2-VPC only] Adds one or more egress rules to a security group for
+[EC2-VPC only] Adds one or more egress rules to a security group for
 use with a VPC. Specifically, this action permits instances to send
 traffic to one or more destination IPv4 or IPv6 CIDR address ranges, or
 to one or more destination security groups for the same VPC. This
@@ -1874,7 +1874,7 @@ Each argument is described in detail in: L<Paws::EC2::AuthorizeSecurityGroupIngr
 
 Returns: nothing
 
-  Adds one or more ingress rules to a security group.
+Adds one or more ingress rules to a security group.
 
 Rule changes are propagated to instances within the security group as
 quickly as possible. However, a small delay might occur.
@@ -1901,7 +1901,7 @@ Each argument is described in detail in: L<Paws::EC2::BundleInstance>
 
 Returns: a L<Paws::EC2::BundleInstanceResult> instance
 
-  Bundles an Amazon instance store-backed Windows instance.
+Bundles an Amazon instance store-backed Windows instance.
 
 During bundling, only the root device volume (C:\) is bundled. Data on
 other instance store volumes is not preserved.
@@ -1919,7 +1919,7 @@ Each argument is described in detail in: L<Paws::EC2::CancelBundleTask>
 
 Returns: a L<Paws::EC2::CancelBundleTaskResult> instance
 
-  Cancels a bundling operation for an instance store-backed Windows
+Cancels a bundling operation for an instance store-backed Windows
 instance.
 
 
@@ -1929,7 +1929,7 @@ Each argument is described in detail in: L<Paws::EC2::CancelConversionTask>
 
 Returns: nothing
 
-  Cancels an active conversion task. The task can be the import of an
+Cancels an active conversion task. The task can be the import of an
 instance or volume. The action removes all artifacts of the conversion,
 including a partially uploaded volume or instance. If the conversion is
 complete or is in the process of transferring the final disk image, the
@@ -1945,7 +1945,7 @@ Each argument is described in detail in: L<Paws::EC2::CancelExportTask>
 
 Returns: nothing
 
-  Cancels an active export task. The request removes all artifacts of the
+Cancels an active export task. The request removes all artifacts of the
 export, including any partially-created Amazon S3 objects. If the
 export task is complete or is in the process of transferring the final
 disk image, the command fails and returns an error.
@@ -1957,7 +1957,7 @@ Each argument is described in detail in: L<Paws::EC2::CancelImportTask>
 
 Returns: a L<Paws::EC2::CancelImportTaskResult> instance
 
-  Cancels an in-process import virtual machine or import snapshot task.
+Cancels an in-process import virtual machine or import snapshot task.
 
 
 =head2 CancelReservedInstancesListing(ReservedInstancesListingId => Str)
@@ -1966,7 +1966,7 @@ Each argument is described in detail in: L<Paws::EC2::CancelReservedInstancesLis
 
 Returns: a L<Paws::EC2::CancelReservedInstancesListingResult> instance
 
-  Cancels the specified Reserved Instance listing in the Reserved
+Cancels the specified Reserved Instance listing in the Reserved
 Instance Marketplace.
 
 For more information, see Reserved Instance Marketplace in the I<Amazon
@@ -1979,7 +1979,7 @@ Each argument is described in detail in: L<Paws::EC2::CancelSpotFleetRequests>
 
 Returns: a L<Paws::EC2::CancelSpotFleetRequestsResponse> instance
 
-  Cancels the specified Spot fleet requests.
+Cancels the specified Spot fleet requests.
 
 After you cancel a Spot fleet request, the Spot fleet launches no new
 Spot instances. You must specify whether the Spot fleet should also
@@ -1996,7 +1996,7 @@ Each argument is described in detail in: L<Paws::EC2::CancelSpotInstanceRequests
 
 Returns: a L<Paws::EC2::CancelSpotInstanceRequestsResult> instance
 
-  Cancels one or more Spot instance requests. Spot instances are
+Cancels one or more Spot instance requests. Spot instances are
 instances that Amazon EC2 starts on your behalf when the bid price that
 you specify exceeds the current Spot price. Amazon EC2 periodically
 sets the Spot price based on available Spot instance capacity and
@@ -2013,7 +2013,7 @@ Each argument is described in detail in: L<Paws::EC2::ConfirmProductInstance>
 
 Returns: a L<Paws::EC2::ConfirmProductInstanceResult> instance
 
-  Determines whether a product code is associated with an instance. This
+Determines whether a product code is associated with an instance. This
 action can only be used by the owner of the product code. It is useful
 when a product code owner must verify whether another user's instance
 is eligible for support.
@@ -2025,7 +2025,7 @@ Each argument is described in detail in: L<Paws::EC2::CopyFpgaImage>
 
 Returns: a L<Paws::EC2::CopyFpgaImageResult> instance
 
-  Copies the specified Amazon FPGA Image (AFI) to the current region.
+Copies the specified Amazon FPGA Image (AFI) to the current region.
 
 
 =head2 CopyImage(Name => Str, SourceImageId => Str, SourceRegion => Str, [ClientToken => Str, Description => Str, DryRun => Bool, Encrypted => Bool, KmsKeyId => Str])
@@ -2034,7 +2034,7 @@ Each argument is described in detail in: L<Paws::EC2::CopyImage>
 
 Returns: a L<Paws::EC2::CopyImageResult> instance
 
-  Initiates the copy of an AMI from the specified source region to the
+Initiates the copy of an AMI from the specified source region to the
 current region. You specify the destination region by using its
 endpoint when making the request.
 
@@ -2049,7 +2049,7 @@ Each argument is described in detail in: L<Paws::EC2::CopySnapshot>
 
 Returns: a L<Paws::EC2::CopySnapshotResult> instance
 
-  Copies a point-in-time snapshot of an EBS volume and stores it in
+Copies a point-in-time snapshot of an EBS volume and stores it in
 Amazon S3. You can copy the snapshot within the same region or from one
 region to another. You can use the snapshot to create EBS volumes or
 Amazon Machine Images (AMIs). The snapshot is copied to the regional
@@ -2079,7 +2079,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateCustomerGateway>
 
 Returns: a L<Paws::EC2::CreateCustomerGatewayResult> instance
 
-  Provides information to AWS about your VPN customer gateway device. The
+Provides information to AWS about your VPN customer gateway device. The
 customer gateway is the appliance at your end of the VPN connection.
 (The device on the AWS side of the VPN connection is the virtual
 private gateway.) You must provide the Internet-routable IP address of
@@ -2113,7 +2113,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateDefaultVpc>
 
 Returns: a L<Paws::EC2::CreateDefaultVpcResult> instance
 
-  Creates a default VPC with a size C</16> IPv4 CIDR block and a default
+Creates a default VPC with a size C</16> IPv4 CIDR block and a default
 subnet in each Availability Zone. For more information about the
 components of a default VPC, see Default VPC and Default Subnets in the
 I<Amazon Virtual Private Cloud User Guide>. You cannot specify the
@@ -2135,7 +2135,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateDhcpOptions>
 
 Returns: a L<Paws::EC2::CreateDhcpOptionsResult> instance
 
-  Creates a set of DHCP options for your VPC. After creating the set, you
+Creates a set of DHCP options for your VPC. After creating the set, you
 must associate it with the VPC, causing all existing and new instances
 that you launch in the VPC to use this set of DHCP options. The
 following are the individual DHCP options you can specify. For more
@@ -2200,7 +2200,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateEgressOnlyInternetGa
 
 Returns: a L<Paws::EC2::CreateEgressOnlyInternetGatewayResult> instance
 
-  [IPv6 only] Creates an egress-only Internet gateway for your VPC. An
+[IPv6 only] Creates an egress-only Internet gateway for your VPC. An
 egress-only Internet gateway is used to enable outbound communication
 over IPv6 from instances in your VPC to the Internet, and prevents
 hosts outside of your VPC from initiating an IPv6 connection with your
@@ -2213,7 +2213,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateFlowLogs>
 
 Returns: a L<Paws::EC2::CreateFlowLogsResult> instance
 
-  Creates one or more flow logs to capture IP traffic for a specific
+Creates one or more flow logs to capture IP traffic for a specific
 network interface, subnet, or VPC. Flow logs are delivered to a
 specified log group in Amazon CloudWatch Logs. If you specify a VPC or
 subnet in the request, a log stream is created in CloudWatch Logs for
@@ -2231,7 +2231,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateFpgaImage>
 
 Returns: a L<Paws::EC2::CreateFpgaImageResult> instance
 
-  Creates an Amazon FPGA Image (AFI) from the specified design checkpoint
+Creates an Amazon FPGA Image (AFI) from the specified design checkpoint
 (DCP).
 
 The create operation is asynchronous. To verify that the AFI is ready
@@ -2249,7 +2249,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateImage>
 
 Returns: a L<Paws::EC2::CreateImageResult> instance
 
-  Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance
+Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance
 that is either running or stopped.
 
 If you customized your instance with instance store volumes or EBS
@@ -2268,7 +2268,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateInstanceExportTask>
 
 Returns: a L<Paws::EC2::CreateInstanceExportTaskResult> instance
 
-  Exports a running or stopped instance to an S3 bucket.
+Exports a running or stopped instance to an S3 bucket.
 
 For information about the supported operating systems, image formats,
 and known limitations for the types of instances you can export, see
@@ -2282,7 +2282,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateInternetGateway>
 
 Returns: a L<Paws::EC2::CreateInternetGatewayResult> instance
 
-  Creates an Internet gateway for use with a VPC. After creating the
+Creates an Internet gateway for use with a VPC. After creating the
 Internet gateway, you attach it to a VPC using AttachInternetGateway.
 
 For more information about your VPC and Internet gateway, see the
@@ -2295,7 +2295,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateKeyPair>
 
 Returns: a L<Paws::EC2::KeyPair> instance
 
-  Creates a 2048-bit RSA key pair with the specified name. Amazon EC2
+Creates a 2048-bit RSA key pair with the specified name. Amazon EC2
 stores the public key and displays the private key for you to save to a
 file. The private key is returned as an unencrypted PEM encoded PKCS#8
 private key. If a key with the specified name already exists, Amazon
@@ -2317,7 +2317,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateNatGateway>
 
 Returns: a L<Paws::EC2::CreateNatGatewayResult> instance
 
-  Creates a NAT gateway in the specified subnet. A NAT gateway can be
+Creates a NAT gateway in the specified subnet. A NAT gateway can be
 used to enable instances in a private subnet to connect to the
 Internet. This action creates a network interface in the specified
 subnet with a private IP address from the IP address range of the
@@ -2331,7 +2331,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateNetworkAcl>
 
 Returns: a L<Paws::EC2::CreateNetworkAclResult> instance
 
-  Creates a network ACL in a VPC. Network ACLs provide an optional layer
+Creates a network ACL in a VPC. Network ACLs provide an optional layer
 of security (in addition to security groups) for the instances in your
 VPC.
 
@@ -2345,7 +2345,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateNetworkAclEntry>
 
 Returns: nothing
 
-  Creates an entry (a rule) in a network ACL with the specified rule
+Creates an entry (a rule) in a network ACL with the specified rule
 number. Each network ACL has a set of numbered ingress rules and a
 separate set of numbered egress rules. When determining whether a
 packet should be allowed in or out of a subnet associated with the ACL,
@@ -2371,7 +2371,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateNetworkInterface>
 
 Returns: a L<Paws::EC2::CreateNetworkInterfaceResult> instance
 
-  Creates a network interface in the specified subnet.
+Creates a network interface in the specified subnet.
 
 For more information about network interfaces, see Elastic Network
 Interfaces in the I<Amazon Virtual Private Cloud User Guide>.
@@ -2383,7 +2383,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateNetworkInterfacePerm
 
 Returns: a L<Paws::EC2::CreateNetworkInterfacePermissionResult> instance
 
-  Grants an AWS authorized partner account permission to attach the
+Grants an AWS authorized partner account permission to attach the
 specified network interface to an instance in their account.
 
 You can grant permission to a single AWS account only, and only one
@@ -2396,7 +2396,7 @@ Each argument is described in detail in: L<Paws::EC2::CreatePlacementGroup>
 
 Returns: nothing
 
-  Creates a placement group that you launch cluster instances into. Give
+Creates a placement group that you launch cluster instances into. Give
 the group a name that's unique within the scope of your account.
 
 For more information about placement groups and cluster instances, see
@@ -2409,7 +2409,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateReservedInstancesLis
 
 Returns: a L<Paws::EC2::CreateReservedInstancesListingResult> instance
 
-  Creates a listing for Amazon EC2 Standard Reserved Instances to be sold
+Creates a listing for Amazon EC2 Standard Reserved Instances to be sold
 in the Reserved Instance Marketplace. You can submit one Standard
 Reserved Instance listing at a time. To get a list of your Standard
 Reserved Instances, you can use the DescribeReservedInstances
@@ -2445,7 +2445,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateRoute>
 
 Returns: a L<Paws::EC2::CreateRouteResult> instance
 
-  Creates a route in a route table within a VPC.
+Creates a route in a route table within a VPC.
 
 You must specify one of the following targets: Internet gateway or
 virtual private gateway, NAT instance, NAT gateway, VPC peering
@@ -2483,7 +2483,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateRouteTable>
 
 Returns: a L<Paws::EC2::CreateRouteTableResult> instance
 
-  Creates a route table for the specified VPC. After you create a route
+Creates a route table for the specified VPC. After you create a route
 table, you can add routes and associate the table with a subnet.
 
 For more information about route tables, see Route Tables in the
@@ -2496,7 +2496,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateSecurityGroup>
 
 Returns: a L<Paws::EC2::CreateSecurityGroupResult> instance
 
-  Creates a security group.
+Creates a security group.
 
 A security group is for use with instances either in the EC2-Classic
 platform or in a specific VPC. For more information, see Amazon EC2
@@ -2532,7 +2532,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateSnapshot>
 
 Returns: a L<Paws::EC2::Snapshot> instance
 
-  Creates a snapshot of an EBS volume and stores it in Amazon S3. You can
+Creates a snapshot of an EBS volume and stores it in Amazon S3. You can
 use snapshots for backups, to make copies of EBS volumes, and to save
 data before shutting down an instance.
 
@@ -2568,7 +2568,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateSpotDatafeedSubscrip
 
 Returns: a L<Paws::EC2::CreateSpotDatafeedSubscriptionResult> instance
 
-  Creates a data feed for Spot instances, enabling you to view Spot
+Creates a data feed for Spot instances, enabling you to view Spot
 instance usage logs. You can create one data feed per AWS account. For
 more information, see Spot Instance Data Feed in the I<Amazon Elastic
 Compute Cloud User Guide>.
@@ -2580,7 +2580,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateSubnet>
 
 Returns: a L<Paws::EC2::CreateSubnetResult> instance
 
-  Creates a subnet in an existing VPC.
+Creates a subnet in an existing VPC.
 
 When you create each subnet, you provide the VPC ID and the IPv4 CIDR
 block you want for the subnet. After you create a subnet, you can't
@@ -2617,7 +2617,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateTags>
 
 Returns: nothing
 
-  Adds or overwrites one or more tags for the specified Amazon EC2
+Adds or overwrites one or more tags for the specified Amazon EC2
 resource or resources. Each resource can have a maximum of 50 tags.
 Each tag consists of a key and optional value. Tag keys must be unique
 per resource.
@@ -2635,7 +2635,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateVolume>
 
 Returns: a L<Paws::EC2::Volume> instance
 
-  Creates an EBS volume that can be attached to an instance in the same
+Creates an EBS volume that can be attached to an instance in the same
 Availability Zone. The volume is created in the regional endpoint that
 you send the HTTP request to. For more information see Regions and
 Endpoints.
@@ -2663,7 +2663,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateVpc>
 
 Returns: a L<Paws::EC2::CreateVpcResult> instance
 
-  Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you
+Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you
 can create uses a /28 netmask (16 IPv4 addresses), and the largest uses
 a /16 netmask (65,536 IPv4 addresses). To help you decide how big to
 make your VPC, see Your VPC and Subnets in the I<Amazon Virtual Private
@@ -2691,7 +2691,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateVpcEndpoint>
 
 Returns: a L<Paws::EC2::CreateVpcEndpointResult> instance
 
-  Creates a VPC endpoint for a specified AWS service. An endpoint enables
+Creates a VPC endpoint for a specified AWS service. An endpoint enables
 you to create a private connection between your VPC and another AWS
 service in your account. You can specify an endpoint policy to attach
 to the endpoint that will control access to the service from your VPC.
@@ -2707,7 +2707,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateVpcPeeringConnection
 
 Returns: a L<Paws::EC2::CreateVpcPeeringConnectionResult> instance
 
-  Requests a VPC peering connection between two VPCs: a requester VPC
+Requests a VPC peering connection between two VPCs: a requester VPC
 that you own and a peer VPC with which to create the connection. The
 peer VPC can belong to another AWS account. The requester VPC and peer
 VPC cannot have overlapping CIDR blocks.
@@ -2727,7 +2727,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateVpnConnection>
 
 Returns: a L<Paws::EC2::CreateVpnConnectionResult> instance
 
-  Creates a VPN connection between an existing virtual private gateway
+Creates a VPN connection between an existing virtual private gateway
 and a VPN customer gateway. The only supported connection type is
 C<ipsec.1>.
 
@@ -2755,7 +2755,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateVpnConnectionRoute>
 
 Returns: nothing
 
-  Creates a static route associated with a VPN connection between an
+Creates a static route associated with a VPN connection between an
 existing virtual private gateway and a VPN customer gateway. The static
 route allows traffic to be routed from the virtual private gateway to
 the VPN customer gateway.
@@ -2770,7 +2770,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateVpnGateway>
 
 Returns: a L<Paws::EC2::CreateVpnGatewayResult> instance
 
-  Creates a virtual private gateway. A virtual private gateway is the
+Creates a virtual private gateway. A virtual private gateway is the
 endpoint on the VPC side of your VPN connection. You can create a
 virtual private gateway before creating the VPC itself.
 
@@ -2784,7 +2784,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteCustomerGateway>
 
 Returns: nothing
 
-  Deletes the specified customer gateway. You must delete the VPN
+Deletes the specified customer gateway. You must delete the VPN
 connection before you can delete the customer gateway.
 
 
@@ -2794,7 +2794,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteDhcpOptions>
 
 Returns: nothing
 
-  Deletes the specified set of DHCP options. You must disassociate the
+Deletes the specified set of DHCP options. You must disassociate the
 set of DHCP options before you can delete it. You can disassociate the
 set of DHCP options by associating either a new set of options or the
 default set of options with the VPC.
@@ -2806,7 +2806,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteEgressOnlyInternetGa
 
 Returns: a L<Paws::EC2::DeleteEgressOnlyInternetGatewayResult> instance
 
-  Deletes an egress-only Internet gateway.
+Deletes an egress-only Internet gateway.
 
 
 =head2 DeleteFlowLogs(FlowLogIds => ArrayRef[Str|Undef])
@@ -2815,7 +2815,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteFlowLogs>
 
 Returns: a L<Paws::EC2::DeleteFlowLogsResult> instance
 
-  Deletes one or more flow logs.
+Deletes one or more flow logs.
 
 
 =head2 DeleteFpgaImage(FpgaImageId => Str, [DryRun => Bool])
@@ -2824,7 +2824,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteFpgaImage>
 
 Returns: a L<Paws::EC2::DeleteFpgaImageResult> instance
 
-  Deletes the specified Amazon FPGA Image (AFI).
+Deletes the specified Amazon FPGA Image (AFI).
 
 
 =head2 DeleteInternetGateway(InternetGatewayId => Str, [DryRun => Bool])
@@ -2833,7 +2833,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteInternetGateway>
 
 Returns: nothing
 
-  Deletes the specified Internet gateway. You must detach the Internet
+Deletes the specified Internet gateway. You must detach the Internet
 gateway from the VPC before you can delete it.
 
 
@@ -2843,7 +2843,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteKeyPair>
 
 Returns: nothing
 
-  Deletes the specified key pair, by removing the public key from Amazon
+Deletes the specified key pair, by removing the public key from Amazon
 EC2.
 
 
@@ -2853,7 +2853,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteNatGateway>
 
 Returns: a L<Paws::EC2::DeleteNatGatewayResult> instance
 
-  Deletes the specified NAT gateway. Deleting a NAT gateway disassociates
+Deletes the specified NAT gateway. Deleting a NAT gateway disassociates
 its Elastic IP address, but does not release the address from your
 account. Deleting a NAT gateway does not delete any NAT gateway routes
 in your route tables.
@@ -2865,7 +2865,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteNetworkAcl>
 
 Returns: nothing
 
-  Deletes the specified network ACL. You can't delete the ACL if it's
+Deletes the specified network ACL. You can't delete the ACL if it's
 associated with any subnets. You can't delete the default network ACL.
 
 
@@ -2875,7 +2875,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteNetworkAclEntry>
 
 Returns: nothing
 
-  Deletes the specified ingress or egress entry (rule) from the specified
+Deletes the specified ingress or egress entry (rule) from the specified
 network ACL.
 
 
@@ -2885,7 +2885,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteNetworkInterface>
 
 Returns: nothing
 
-  Deletes the specified network interface. You must detach the network
+Deletes the specified network interface. You must detach the network
 interface before you can delete it.
 
 
@@ -2895,7 +2895,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteNetworkInterfacePerm
 
 Returns: a L<Paws::EC2::DeleteNetworkInterfacePermissionResult> instance
 
-  Deletes a permission for a network interface. By default, you cannot
+Deletes a permission for a network interface. By default, you cannot
 delete the permission if the account for which you're removing the
 permission has attached the network interface to an instance. However,
 you can force delete the permission, regardless of any attachment.
@@ -2907,7 +2907,7 @@ Each argument is described in detail in: L<Paws::EC2::DeletePlacementGroup>
 
 Returns: nothing
 
-  Deletes the specified placement group. You must terminate all instances
+Deletes the specified placement group. You must terminate all instances
 in the placement group before you can delete the placement group. For
 more information about placement groups and cluster instances, see
 Cluster Instances in the I<Amazon Elastic Compute Cloud User Guide>.
@@ -2919,7 +2919,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteRoute>
 
 Returns: nothing
 
-  Deletes the specified route from the specified route table.
+Deletes the specified route from the specified route table.
 
 
 =head2 DeleteRouteTable(RouteTableId => Str, [DryRun => Bool])
@@ -2928,7 +2928,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteRouteTable>
 
 Returns: nothing
 
-  Deletes the specified route table. You must disassociate the route
+Deletes the specified route table. You must disassociate the route
 table from any subnets before you can delete it. You can't delete the
 main route table.
 
@@ -2939,7 +2939,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteSecurityGroup>
 
 Returns: nothing
 
-  Deletes a security group.
+Deletes a security group.
 
 If you attempt to delete a security group that is associated with an
 instance, or is referenced by another security group, the operation
@@ -2953,7 +2953,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteSnapshot>
 
 Returns: nothing
 
-  Deletes the specified snapshot.
+Deletes the specified snapshot.
 
 When you make periodic snapshots of a volume, the snapshots are
 incremental, and only the blocks on the device that have changed since
@@ -2977,7 +2977,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteSpotDatafeedSubscrip
 
 Returns: nothing
 
-  Deletes the data feed for Spot instances.
+Deletes the data feed for Spot instances.
 
 
 =head2 DeleteSubnet(SubnetId => Str, [DryRun => Bool])
@@ -2986,7 +2986,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteSubnet>
 
 Returns: nothing
 
-  Deletes the specified subnet. You must terminate all running instances
+Deletes the specified subnet. You must terminate all running instances
 in the subnet before you can delete the subnet.
 
 
@@ -2996,7 +2996,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteTags>
 
 Returns: nothing
 
-  Deletes the specified set of tags from the specified set of resources.
+Deletes the specified set of tags from the specified set of resources.
 
 To list the current tags, use DescribeTags. For more information about
 tags, see Tagging Your Resources in the I<Amazon Elastic Compute Cloud
@@ -3009,7 +3009,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteVolume>
 
 Returns: nothing
 
-  Deletes the specified EBS volume. The volume must be in the
+Deletes the specified EBS volume. The volume must be in the
 C<available> state (not attached to an instance).
 
 The volume may remain in the C<deleting> state for several minutes.
@@ -3024,7 +3024,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteVpc>
 
 Returns: nothing
 
-  Deletes the specified VPC. You must detach or delete all gateways and
+Deletes the specified VPC. You must detach or delete all gateways and
 resources that are associated with the VPC before you can delete it.
 For example, you must terminate all instances running in the VPC,
 delete all security groups associated with the VPC (except the default
@@ -3038,7 +3038,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteVpcEndpoints>
 
 Returns: a L<Paws::EC2::DeleteVpcEndpointsResult> instance
 
-  Deletes one or more specified VPC endpoints. Deleting the endpoint also
+Deletes one or more specified VPC endpoints. Deleting the endpoint also
 deletes the endpoint routes in the route tables that were associated
 with the endpoint.
 
@@ -3049,7 +3049,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteVpcPeeringConnection
 
 Returns: a L<Paws::EC2::DeleteVpcPeeringConnectionResult> instance
 
-  Deletes a VPC peering connection. Either the owner of the requester VPC
+Deletes a VPC peering connection. Either the owner of the requester VPC
 or the owner of the peer VPC can delete the VPC peering connection if
 it's in the C<active> state. The owner of the requester VPC can delete
 a VPC peering connection in the C<pending-acceptance> state.
@@ -3061,7 +3061,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteVpnConnection>
 
 Returns: nothing
 
-  Deletes the specified VPN connection.
+Deletes the specified VPN connection.
 
 If you're deleting the VPC and its associated components, we recommend
 that you detach the virtual private gateway from the VPC and delete the
@@ -3080,7 +3080,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteVpnConnectionRoute>
 
 Returns: nothing
 
-  Deletes the specified static route associated with a VPN connection
+Deletes the specified static route associated with a VPN connection
 between an existing virtual private gateway and a VPN customer gateway.
 The static route allows traffic to be routed from the virtual private
 gateway to the VPN customer gateway.
@@ -3092,7 +3092,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteVpnGateway>
 
 Returns: nothing
 
-  Deletes the specified virtual private gateway. We recommend that before
+Deletes the specified virtual private gateway. We recommend that before
 you delete a virtual private gateway, you detach it from the VPC and
 delete the VPN connection. Note that you don't need to delete the
 virtual private gateway if you plan to delete and recreate the VPN
@@ -3105,7 +3105,7 @@ Each argument is described in detail in: L<Paws::EC2::DeregisterImage>
 
 Returns: nothing
 
-  Deregisters the specified AMI. After you deregister an AMI, it can't be
+Deregisters the specified AMI. After you deregister an AMI, it can't be
 used to launch new instances; however, it doesn't affect any instances
 that you've already launched from the AMI. You'll continue to incur
 usage costs for those instances until you terminate them.
@@ -3123,7 +3123,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeAccountAttributes>
 
 Returns: a L<Paws::EC2::DescribeAccountAttributesResult> instance
 
-  Describes attributes of your AWS account. The following are the
+Describes attributes of your AWS account. The following are the
 supported account attributes:
 
 =over
@@ -3167,7 +3167,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeAddresses>
 
 Returns: a L<Paws::EC2::DescribeAddressesResult> instance
 
-  Describes one or more of your Elastic IP addresses.
+Describes one or more of your Elastic IP addresses.
 
 An Elastic IP address is for use in either the EC2-Classic platform or
 in a VPC. For more information, see Elastic IP Addresses in the
@@ -3180,7 +3180,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeAvailabilityZones>
 
 Returns: a L<Paws::EC2::DescribeAvailabilityZonesResult> instance
 
-  Describes one or more of the Availability Zones that are available to
+Describes one or more of the Availability Zones that are available to
 you. The results include zones only for the region you're currently
 using. If there is an event impacting an Availability Zone, you can use
 this request to view the state and any provided message for that
@@ -3196,7 +3196,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeBundleTasks>
 
 Returns: a L<Paws::EC2::DescribeBundleTasksResult> instance
 
-  Describes one or more of your bundling tasks.
+Describes one or more of your bundling tasks.
 
 Completed bundle tasks are listed for only a limited time. If your
 bundle task is no longer in the list, you can still register an AMI
@@ -3210,7 +3210,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeClassicLinkInstanc
 
 Returns: a L<Paws::EC2::DescribeClassicLinkInstancesResult> instance
 
-  Describes one or more of your linked EC2-Classic instances. This
+Describes one or more of your linked EC2-Classic instances. This
 request only returns information about EC2-Classic instances linked to
 a VPC through ClassicLink; you cannot use this request to return
 information about other instances.
@@ -3222,7 +3222,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeConversionTasks>
 
 Returns: a L<Paws::EC2::DescribeConversionTasksResult> instance
 
-  Describes one or more of your conversion tasks. For more information,
+Describes one or more of your conversion tasks. For more information,
 see the VM Import/Export User Guide.
 
 For information about the import manifest referenced by this API
@@ -3235,7 +3235,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeCustomerGateways>
 
 Returns: a L<Paws::EC2::DescribeCustomerGatewaysResult> instance
 
-  Describes one or more of your VPN customer gateways.
+Describes one or more of your VPN customer gateways.
 
 For more information about VPN customer gateways, see AWS Managed VPN
 Connections in the I<Amazon Virtual Private Cloud User Guide>.
@@ -3247,7 +3247,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeDhcpOptions>
 
 Returns: a L<Paws::EC2::DescribeDhcpOptionsResult> instance
 
-  Describes one or more of your DHCP options sets.
+Describes one or more of your DHCP options sets.
 
 For more information about DHCP options sets, see DHCP Options Sets in
 the I<Amazon Virtual Private Cloud User Guide>.
@@ -3259,7 +3259,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeEgressOnlyInternet
 
 Returns: a L<Paws::EC2::DescribeEgressOnlyInternetGatewaysResult> instance
 
-  Describes one or more of your egress-only Internet gateways.
+Describes one or more of your egress-only Internet gateways.
 
 
 =head2 DescribeElasticGpus([DryRun => Bool, ElasticGpuIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
@@ -3268,7 +3268,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeElasticGpus>
 
 Returns: a L<Paws::EC2::DescribeElasticGpusResult> instance
 
-  Describes the Elastic GPUs associated with your instances. For more
+Describes the Elastic GPUs associated with your instances. For more
 information about Elastic GPUs, see Amazon EC2 Elastic GPUs.
 
 
@@ -3278,7 +3278,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeExportTasks>
 
 Returns: a L<Paws::EC2::DescribeExportTasksResult> instance
 
-  Describes one or more of your export tasks.
+Describes one or more of your export tasks.
 
 
 =head2 DescribeFlowLogs([Filter => ArrayRef[L<Paws::EC2::Filter>], FlowLogIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
@@ -3287,7 +3287,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeFlowLogs>
 
 Returns: a L<Paws::EC2::DescribeFlowLogsResult> instance
 
-  Describes one or more flow logs. To view the information in your flow
+Describes one or more flow logs. To view the information in your flow
 logs (the log streams for the network interfaces), you must use the
 CloudWatch Logs console or the CloudWatch Logs API.
 
@@ -3298,7 +3298,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeFpgaImageAttribute
 
 Returns: a L<Paws::EC2::DescribeFpgaImageAttributeResult> instance
 
-  Describes the specified attribute of the specified Amazon FPGA Image
+Describes the specified attribute of the specified Amazon FPGA Image
 (AFI).
 
 
@@ -3308,7 +3308,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeFpgaImages>
 
 Returns: a L<Paws::EC2::DescribeFpgaImagesResult> instance
 
-  Describes one or more available Amazon FPGA Images (AFIs). These
+Describes one or more available Amazon FPGA Images (AFIs). These
 include public AFIs, private AFIs that you own, and AFIs owned by other
 AWS accounts for which you have load permissions.
 
@@ -3319,7 +3319,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeHostReservationOff
 
 Returns: a L<Paws::EC2::DescribeHostReservationOfferingsResult> instance
 
-  Describes the Dedicated Host Reservations that are available to
+Describes the Dedicated Host Reservations that are available to
 purchase.
 
 The results describe all the Dedicated Host Reservation offerings,
@@ -3337,7 +3337,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeHostReservations>
 
 Returns: a L<Paws::EC2::DescribeHostReservationsResult> instance
 
-  Describes Dedicated Host Reservations which are associated with
+Describes Dedicated Host Reservations which are associated with
 Dedicated Hosts in your account.
 
 
@@ -3347,7 +3347,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeHosts>
 
 Returns: a L<Paws::EC2::DescribeHostsResult> instance
 
-  Describes one or more of your Dedicated Hosts.
+Describes one or more of your Dedicated Hosts.
 
 The results describe only the Dedicated Hosts in the region you're
 currently using. All listed instances consume capacity on your
@@ -3361,7 +3361,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeIamInstanceProfile
 
 Returns: a L<Paws::EC2::DescribeIamInstanceProfileAssociationsResult> instance
 
-  Describes your IAM instance profile associations.
+Describes your IAM instance profile associations.
 
 
 =head2 DescribeIdentityIdFormat(PrincipalArn => Str, [Resource => Str])
@@ -3370,7 +3370,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeIdentityIdFormat>
 
 Returns: a L<Paws::EC2::DescribeIdentityIdFormatResult> instance
 
-  Describes the ID format settings for resources for the specified IAM
+Describes the ID format settings for resources for the specified IAM
 user, IAM role, or root user. For example, you can view the resource
 types that are enabled for longer IDs. This request only returns
 information about resource types whose ID formats can be modified; it
@@ -3391,7 +3391,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeIdFormat>
 
 Returns: a L<Paws::EC2::DescribeIdFormatResult> instance
 
-  Describes the ID format settings for your resources on a per-region
+Describes the ID format settings for your resources on a per-region
 basis, for example, to view which resource types are enabled for longer
 IDs. This request only returns information about resource types whose
 ID formats can be modified; it does not return information about other
@@ -3415,7 +3415,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeImageAttribute>
 
 Returns: a L<Paws::EC2::ImageAttribute> instance
 
-  Describes the specified attribute of the specified AMI. You can specify
+Describes the specified attribute of the specified AMI. You can specify
 only one attribute at a time.
 
 
@@ -3425,7 +3425,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeImages>
 
 Returns: a L<Paws::EC2::DescribeImagesResult> instance
 
-  Describes one or more of the images (AMIs, AKIs, and ARIs) available to
+Describes one or more of the images (AMIs, AKIs, and ARIs) available to
 you. Images available to you include public images, private images that
 you own, and private images owned by other AWS accounts but for which
 you have explicit launch permissions.
@@ -3440,7 +3440,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeImportImageTasks>
 
 Returns: a L<Paws::EC2::DescribeImportImageTasksResult> instance
 
-  Displays details about an import virtual machine or import snapshot
+Displays details about an import virtual machine or import snapshot
 tasks that are already created.
 
 
@@ -3450,7 +3450,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeImportSnapshotTask
 
 Returns: a L<Paws::EC2::DescribeImportSnapshotTasksResult> instance
 
-  Describes your import snapshot tasks.
+Describes your import snapshot tasks.
 
 
 =head2 DescribeInstanceAttribute(Attribute => Str, InstanceId => Str, [DryRun => Bool])
@@ -3459,7 +3459,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeInstanceAttribute>
 
 Returns: a L<Paws::EC2::InstanceAttribute> instance
 
-  Describes the specified attribute of the specified instance. You can
+Describes the specified attribute of the specified instance. You can
 specify only one attribute at a time. Valid attribute values are:
 C<instanceType> | C<kernel> | C<ramdisk> | C<userData> |
 C<disableApiTermination> | C<instanceInitiatedShutdownBehavior> |
@@ -3473,7 +3473,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeInstances>
 
 Returns: a L<Paws::EC2::DescribeInstancesResult> instance
 
-  Describes one or more of your instances.
+Describes one or more of your instances.
 
 If you specify one or more instance IDs, Amazon EC2 returns information
 for those instances. If you do not specify instance IDs, Amazon EC2
@@ -3498,7 +3498,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeInstanceStatus>
 
 Returns: a L<Paws::EC2::DescribeInstanceStatusResult> instance
 
-  Describes the status of one or more instances. By default, only running
+Describes the status of one or more instances. By default, only running
 instances are described, unless you specifically indicate to return the
 status of all instances.
 
@@ -3538,7 +3538,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeInternetGateways>
 
 Returns: a L<Paws::EC2::DescribeInternetGatewaysResult> instance
 
-  Describes one or more of your Internet gateways.
+Describes one or more of your Internet gateways.
 
 
 =head2 DescribeKeyPairs([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], KeyNames => ArrayRef[Str|Undef]])
@@ -3547,7 +3547,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeKeyPairs>
 
 Returns: a L<Paws::EC2::DescribeKeyPairsResult> instance
 
-  Describes one or more of your key pairs.
+Describes one or more of your key pairs.
 
 For more information about key pairs, see Key Pairs in the I<Amazon
 Elastic Compute Cloud User Guide>.
@@ -3559,7 +3559,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeMovingAddresses>
 
 Returns: a L<Paws::EC2::DescribeMovingAddressesResult> instance
 
-  Describes your Elastic IP addresses that are being moved to the EC2-VPC
+Describes your Elastic IP addresses that are being moved to the EC2-VPC
 platform, or that are being restored to the EC2-Classic platform. This
 request does not return information about any other Elastic IP
 addresses in your account.
@@ -3571,7 +3571,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeNatGateways>
 
 Returns: a L<Paws::EC2::DescribeNatGatewaysResult> instance
 
-  Describes one or more of the your NAT gateways.
+Describes one or more of the your NAT gateways.
 
 
 =head2 DescribeNetworkAcls([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], NetworkAclIds => ArrayRef[Str|Undef]])
@@ -3580,7 +3580,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeNetworkAcls>
 
 Returns: a L<Paws::EC2::DescribeNetworkAclsResult> instance
 
-  Describes one or more of your network ACLs.
+Describes one or more of your network ACLs.
 
 For more information about network ACLs, see Network ACLs in the
 I<Amazon Virtual Private Cloud User Guide>.
@@ -3592,7 +3592,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeNetworkInterfaceAt
 
 Returns: a L<Paws::EC2::DescribeNetworkInterfaceAttributeResult> instance
 
-  Describes a network interface attribute. You can specify only one
+Describes a network interface attribute. You can specify only one
 attribute at a time.
 
 
@@ -3602,7 +3602,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeNetworkInterfacePe
 
 Returns: a L<Paws::EC2::DescribeNetworkInterfacePermissionsResult> instance
 
-  Describes the permissions for your network interfaces.
+Describes the permissions for your network interfaces.
 
 
 =head2 DescribeNetworkInterfaces([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], NetworkInterfaceIds => ArrayRef[Str|Undef]])
@@ -3611,7 +3611,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeNetworkInterfaces>
 
 Returns: a L<Paws::EC2::DescribeNetworkInterfacesResult> instance
 
-  Describes one or more of your network interfaces.
+Describes one or more of your network interfaces.
 
 
 =head2 DescribePlacementGroups([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], GroupNames => ArrayRef[Str|Undef]])
@@ -3620,7 +3620,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribePlacementGroups>
 
 Returns: a L<Paws::EC2::DescribePlacementGroupsResult> instance
 
-  Describes one or more of your placement groups. For more information
+Describes one or more of your placement groups. For more information
 about placement groups and cluster instances, see Cluster Instances in
 the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -3631,7 +3631,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribePrefixLists>
 
 Returns: a L<Paws::EC2::DescribePrefixListsResult> instance
 
-  Describes available AWS services in a prefix list format, which
+Describes available AWS services in a prefix list format, which
 includes the prefix list name and prefix list ID of the service and the
 IP address range for the service. A prefix list ID is required for
 creating an outbound security group rule that allows traffic from a VPC
@@ -3644,7 +3644,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeRegions>
 
 Returns: a L<Paws::EC2::DescribeRegionsResult> instance
 
-  Describes one or more regions that are currently available to you.
+Describes one or more regions that are currently available to you.
 
 For a list of the regions supported by Amazon EC2, see Regions and
 Endpoints.
@@ -3656,7 +3656,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeReservedInstances>
 
 Returns: a L<Paws::EC2::DescribeReservedInstancesResult> instance
 
-  Describes one or more of the Reserved Instances that you purchased.
+Describes one or more of the Reserved Instances that you purchased.
 
 For more information about Reserved Instances, see Reserved Instances
 in the I<Amazon Elastic Compute Cloud User Guide>.
@@ -3668,7 +3668,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeReservedInstancesL
 
 Returns: a L<Paws::EC2::DescribeReservedInstancesListingsResult> instance
 
-  Describes your account's Reserved Instance listings in the Reserved
+Describes your account's Reserved Instance listings in the Reserved
 Instance Marketplace.
 
 The Reserved Instance Marketplace matches sellers who want to resell
@@ -3699,7 +3699,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeReservedInstancesM
 
 Returns: a L<Paws::EC2::DescribeReservedInstancesModificationsResult> instance
 
-  Describes the modifications made to your Reserved Instances. If no
+Describes the modifications made to your Reserved Instances. If no
 parameter is specified, information about all your Reserved Instances
 modification requests is returned. If a modification ID is specified,
 only information about the specific modification is returned.
@@ -3714,7 +3714,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeReservedInstancesO
 
 Returns: a L<Paws::EC2::DescribeReservedInstancesOfferingsResult> instance
 
-  Describes Reserved Instance offerings that are available for purchase.
+Describes Reserved Instance offerings that are available for purchase.
 With Reserved Instances, you purchase the right to launch instances for
 a period of time. During that time period, you do not receive
 insufficient capacity errors, and you pay a lower usage rate than the
@@ -3734,7 +3734,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeRouteTables>
 
 Returns: a L<Paws::EC2::DescribeRouteTablesResult> instance
 
-  Describes one or more of your route tables.
+Describes one or more of your route tables.
 
 Each subnet in your VPC must be associated with a route table. If a
 subnet is not explicitly associated with any route table, it is
@@ -3751,7 +3751,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeScheduledInstanceA
 
 Returns: a L<Paws::EC2::DescribeScheduledInstanceAvailabilityResult> instance
 
-  Finds available schedules that meet the specified criteria.
+Finds available schedules that meet the specified criteria.
 
 You can search for an available schedule no more than 3 months in
 advance. You must meet the minimum required duration of 1,200 hours per
@@ -3770,7 +3770,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeScheduledInstances
 
 Returns: a L<Paws::EC2::DescribeScheduledInstancesResult> instance
 
-  Describes one or more of your Scheduled Instances.
+Describes one or more of your Scheduled Instances.
 
 
 =head2 DescribeSecurityGroupReferences(GroupId => ArrayRef[Str|Undef], [DryRun => Bool])
@@ -3779,7 +3779,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSecurityGroupRefer
 
 Returns: a L<Paws::EC2::DescribeSecurityGroupReferencesResult> instance
 
-  [EC2-VPC only] Describes the VPCs on the other side of a VPC peering
+[EC2-VPC only] Describes the VPCs on the other side of a VPC peering
 connection that are referencing the security groups you've specified in
 this request.
 
@@ -3790,7 +3790,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSecurityGroups>
 
 Returns: a L<Paws::EC2::DescribeSecurityGroupsResult> instance
 
-  Describes one or more of your security groups.
+Describes one or more of your security groups.
 
 A security group is for use with instances either in the EC2-Classic
 platform or in a specific VPC. For more information, see Amazon EC2
@@ -3805,7 +3805,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSnapshotAttribute>
 
 Returns: a L<Paws::EC2::DescribeSnapshotAttributeResult> instance
 
-  Describes the specified attribute of the specified snapshot. You can
+Describes the specified attribute of the specified snapshot. You can
 specify only one attribute at a time.
 
 For more information about EBS snapshots, see Amazon EBS Snapshots in
@@ -3818,7 +3818,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSnapshots>
 
 Returns: a L<Paws::EC2::DescribeSnapshotsResult> instance
 
-  Describes one or more of the EBS snapshots available to you. Available
+Describes one or more of the EBS snapshots available to you. Available
 snapshots include public snapshots available for any AWS account to
 launch, private snapshots that you own, and private snapshots owned by
 another AWS account but for which you've been given explicit create
@@ -3885,7 +3885,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSpotDatafeedSubscr
 
 Returns: a L<Paws::EC2::DescribeSpotDatafeedSubscriptionResult> instance
 
-  Describes the data feed for Spot instances. For more information, see
+Describes the data feed for Spot instances. For more information, see
 Spot Instance Data Feed in the I<Amazon Elastic Compute Cloud User
 Guide>.
 
@@ -3896,7 +3896,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSpotFleetInstances
 
 Returns: a L<Paws::EC2::DescribeSpotFleetInstancesResponse> instance
 
-  Describes the running instances for the specified Spot fleet.
+Describes the running instances for the specified Spot fleet.
 
 
 =head2 DescribeSpotFleetRequestHistory(SpotFleetRequestId => Str, StartTime => Str, [DryRun => Bool, EventType => Str, MaxResults => Int, NextToken => Str])
@@ -3905,7 +3905,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSpotFleetRequestHi
 
 Returns: a L<Paws::EC2::DescribeSpotFleetRequestHistoryResponse> instance
 
-  Describes the events for the specified Spot fleet request during the
+Describes the events for the specified Spot fleet request during the
 specified time.
 
 Spot fleet events are delayed by up to 30 seconds before they can be
@@ -3919,7 +3919,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSpotFleetRequests>
 
 Returns: a L<Paws::EC2::DescribeSpotFleetRequestsResponse> instance
 
-  Describes your Spot fleet requests.
+Describes your Spot fleet requests.
 
 Spot fleet requests are deleted 48 hours after they are canceled and
 their instances are terminated.
@@ -3931,7 +3931,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSpotInstanceReques
 
 Returns: a L<Paws::EC2::DescribeSpotInstanceRequestsResult> instance
 
-  Describes the Spot instance requests that belong to your account. Spot
+Describes the Spot instance requests that belong to your account. Spot
 instances are instances that Amazon EC2 launches when the bid price
 that you specify exceeds the current Spot price. Amazon EC2
 periodically sets the Spot price based on available Spot instance
@@ -3956,7 +3956,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSpotPriceHistory>
 
 Returns: a L<Paws::EC2::DescribeSpotPriceHistoryResult> instance
 
-  Describes the Spot price history. For more information, see Spot
+Describes the Spot price history. For more information, see Spot
 Instance Pricing History in the I<Amazon Elastic Compute Cloud User
 Guide>.
 
@@ -3973,7 +3973,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeStaleSecurityGroup
 
 Returns: a L<Paws::EC2::DescribeStaleSecurityGroupsResult> instance
 
-  [EC2-VPC only] Describes the stale security group rules for security
+[EC2-VPC only] Describes the stale security group rules for security
 groups in a specified VPC. Rules are stale when they reference a
 deleted security group in a peer VPC, or a security group in a peer VPC
 for which the VPC peering connection has been deleted.
@@ -3985,7 +3985,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSubnets>
 
 Returns: a L<Paws::EC2::DescribeSubnetsResult> instance
 
-  Describes one or more of your subnets.
+Describes one or more of your subnets.
 
 For more information about subnets, see Your VPC and Subnets in the
 I<Amazon Virtual Private Cloud User Guide>.
@@ -3997,7 +3997,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeTags>
 
 Returns: a L<Paws::EC2::DescribeTagsResult> instance
 
-  Describes one or more of the tags for your EC2 resources.
+Describes one or more of the tags for your EC2 resources.
 
 For more information about tags, see Tagging Your Resources in the
 I<Amazon Elastic Compute Cloud User Guide>.
@@ -4009,7 +4009,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeVolumeAttribute>
 
 Returns: a L<Paws::EC2::DescribeVolumeAttributeResult> instance
 
-  Describes the specified attribute of the specified volume. You can
+Describes the specified attribute of the specified volume. You can
 specify only one attribute at a time.
 
 For more information about EBS volumes, see Amazon EBS Volumes in the
@@ -4022,7 +4022,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeVolumes>
 
 Returns: a L<Paws::EC2::DescribeVolumesResult> instance
 
-  Describes the specified EBS volumes.
+Describes the specified EBS volumes.
 
 If you are describing a long list of volumes, you can paginate the
 output to make the list more manageable. The C<MaxResults> parameter
@@ -4042,7 +4042,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeVolumesModificatio
 
 Returns: a L<Paws::EC2::DescribeVolumesModificationsResult> instance
 
-  Reports the current modification status of EBS volumes.
+Reports the current modification status of EBS volumes.
 
 Current-generation EBS volumes support modification of attributes
 including type, size, and (for C<io1> volumes) IOPS provisioning while
@@ -4064,7 +4064,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeVolumeStatus>
 
 Returns: a L<Paws::EC2::DescribeVolumeStatusResult> instance
 
-  Describes the status of the specified volumes. Volume status provides
+Describes the status of the specified volumes. Volume status provides
 the result of the checks performed on your volumes to determine events
 that can impair the performance of your volumes. The performance of a
 volume can be affected if an issue occurs on the volume's underlying
@@ -4112,7 +4112,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeVpcAttribute>
 
 Returns: a L<Paws::EC2::DescribeVpcAttributeResult> instance
 
-  Describes the specified attribute of the specified VPC. You can specify
+Describes the specified attribute of the specified VPC. You can specify
 only one attribute at a time.
 
 
@@ -4122,7 +4122,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeVpcClassicLink>
 
 Returns: a L<Paws::EC2::DescribeVpcClassicLinkResult> instance
 
-  Describes the ClassicLink status of one or more VPCs.
+Describes the ClassicLink status of one or more VPCs.
 
 
 =head2 DescribeVpcClassicLinkDnsSupport([MaxResults => Int, NextToken => Str, VpcIds => ArrayRef[Str|Undef]])
@@ -4131,7 +4131,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeVpcClassicLinkDnsS
 
 Returns: a L<Paws::EC2::DescribeVpcClassicLinkDnsSupportResult> instance
 
-  Describes the ClassicLink DNS support status of one or more VPCs. If
+Describes the ClassicLink DNS support status of one or more VPCs. If
 enabled, the DNS hostname of a linked EC2-Classic instance resolves to
 its private IP address when addressed from an instance in the VPC to
 which it's linked. Similarly, the DNS hostname of an instance in a VPC
@@ -4146,7 +4146,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeVpcEndpoints>
 
 Returns: a L<Paws::EC2::DescribeVpcEndpointsResult> instance
 
-  Describes one or more of your VPC endpoints.
+Describes one or more of your VPC endpoints.
 
 
 =head2 DescribeVpcEndpointServices([DryRun => Bool, MaxResults => Int, NextToken => Str])
@@ -4155,7 +4155,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeVpcEndpointService
 
 Returns: a L<Paws::EC2::DescribeVpcEndpointServicesResult> instance
 
-  Describes all supported AWS services that can be specified when
+Describes all supported AWS services that can be specified when
 creating a VPC endpoint.
 
 
@@ -4165,7 +4165,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeVpcPeeringConnecti
 
 Returns: a L<Paws::EC2::DescribeVpcPeeringConnectionsResult> instance
 
-  Describes one or more of your VPC peering connections.
+Describes one or more of your VPC peering connections.
 
 
 =head2 DescribeVpcs([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], VpcIds => ArrayRef[Str|Undef]])
@@ -4174,7 +4174,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeVpcs>
 
 Returns: a L<Paws::EC2::DescribeVpcsResult> instance
 
-  Describes one or more of your VPCs.
+Describes one or more of your VPCs.
 
 
 =head2 DescribeVpnConnections([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], VpnConnectionIds => ArrayRef[Str|Undef]])
@@ -4183,7 +4183,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeVpnConnections>
 
 Returns: a L<Paws::EC2::DescribeVpnConnectionsResult> instance
 
-  Describes one or more of your VPN connections.
+Describes one or more of your VPN connections.
 
 For more information about VPN connections, see AWS Managed VPN
 Connections in the I<Amazon Virtual Private Cloud User Guide>.
@@ -4195,7 +4195,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeVpnGateways>
 
 Returns: a L<Paws::EC2::DescribeVpnGatewaysResult> instance
 
-  Describes one or more of your virtual private gateways.
+Describes one or more of your virtual private gateways.
 
 For more information about virtual private gateways, see AWS Managed
 VPN Connections in the I<Amazon Virtual Private Cloud User Guide>.
@@ -4207,7 +4207,7 @@ Each argument is described in detail in: L<Paws::EC2::DetachClassicLinkVpc>
 
 Returns: a L<Paws::EC2::DetachClassicLinkVpcResult> instance
 
-  Unlinks (detaches) a linked EC2-Classic instance from a VPC. After the
+Unlinks (detaches) a linked EC2-Classic instance from a VPC. After the
 instance has been unlinked, the VPC security groups are no longer
 associated with it. An instance is automatically unlinked from a VPC
 when it's stopped.
@@ -4219,7 +4219,7 @@ Each argument is described in detail in: L<Paws::EC2::DetachInternetGateway>
 
 Returns: nothing
 
-  Detaches an Internet gateway from a VPC, disabling connectivity between
+Detaches an Internet gateway from a VPC, disabling connectivity between
 the Internet and the VPC. The VPC must not contain any running
 instances with Elastic IP addresses or public IPv4 addresses.
 
@@ -4230,7 +4230,7 @@ Each argument is described in detail in: L<Paws::EC2::DetachNetworkInterface>
 
 Returns: nothing
 
-  Detaches a network interface from an instance.
+Detaches a network interface from an instance.
 
 
 =head2 DetachVolume(VolumeId => Str, [Device => Str, DryRun => Bool, Force => Bool, InstanceId => Str])
@@ -4239,7 +4239,7 @@ Each argument is described in detail in: L<Paws::EC2::DetachVolume>
 
 Returns: a L<Paws::EC2::VolumeAttachment> instance
 
-  Detaches an EBS volume from an instance. Make sure to unmount any file
+Detaches an EBS volume from an instance. Make sure to unmount any file
 systems on the device within your operating system before detaching the
 volume. Failure to do so can result in the volume becoming stuck in the
 C<busy> state while detaching. If this happens, detachment can be
@@ -4261,7 +4261,7 @@ Each argument is described in detail in: L<Paws::EC2::DetachVpnGateway>
 
 Returns: nothing
 
-  Detaches a virtual private gateway from a VPC. You do this if you're
+Detaches a virtual private gateway from a VPC. You do this if you're
 planning to turn off the VPC and not use it anymore. You can confirm a
 virtual private gateway has been completely detached from a VPC by
 describing the virtual private gateway (any attachments to the virtual
@@ -4278,7 +4278,7 @@ Each argument is described in detail in: L<Paws::EC2::DisableVgwRoutePropagation
 
 Returns: nothing
 
-  Disables a virtual private gateway (VGW) from propagating routes to a
+Disables a virtual private gateway (VGW) from propagating routes to a
 specified route table of a VPC.
 
 
@@ -4288,7 +4288,7 @@ Each argument is described in detail in: L<Paws::EC2::DisableVpcClassicLink>
 
 Returns: a L<Paws::EC2::DisableVpcClassicLinkResult> instance
 
-  Disables ClassicLink for a VPC. You cannot disable ClassicLink for a
+Disables ClassicLink for a VPC. You cannot disable ClassicLink for a
 VPC that has EC2-Classic instances linked to it.
 
 
@@ -4298,7 +4298,7 @@ Each argument is described in detail in: L<Paws::EC2::DisableVpcClassicLinkDnsSu
 
 Returns: a L<Paws::EC2::DisableVpcClassicLinkDnsSupportResult> instance
 
-  Disables ClassicLink DNS support for a VPC. If disabled, DNS hostnames
+Disables ClassicLink DNS support for a VPC. If disabled, DNS hostnames
 resolve to public IP addresses when addressed between a linked
 EC2-Classic instance and instances in the VPC to which it's linked. For
 more information about ClassicLink, see ClassicLink in the I<Amazon
@@ -4311,7 +4311,7 @@ Each argument is described in detail in: L<Paws::EC2::DisassociateAddress>
 
 Returns: nothing
 
-  Disassociates an Elastic IP address from the instance or network
+Disassociates an Elastic IP address from the instance or network
 interface it's associated with.
 
 An Elastic IP address is for use in either the EC2-Classic platform or
@@ -4328,7 +4328,7 @@ Each argument is described in detail in: L<Paws::EC2::DisassociateIamInstancePro
 
 Returns: a L<Paws::EC2::DisassociateIamInstanceProfileResult> instance
 
-  Disassociates an IAM instance profile from a running or stopped
+Disassociates an IAM instance profile from a running or stopped
 instance.
 
 Use DescribeIamInstanceProfileAssociations to get the association ID.
@@ -4340,7 +4340,7 @@ Each argument is described in detail in: L<Paws::EC2::DisassociateRouteTable>
 
 Returns: nothing
 
-  Disassociates a subnet from a route table.
+Disassociates a subnet from a route table.
 
 After you perform this action, the subnet no longer uses the routes in
 the route table. Instead, it uses the routes in the VPC's main route
@@ -4354,7 +4354,7 @@ Each argument is described in detail in: L<Paws::EC2::DisassociateSubnetCidrBloc
 
 Returns: a L<Paws::EC2::DisassociateSubnetCidrBlockResult> instance
 
-  Disassociates a CIDR block from a subnet. Currently, you can
+Disassociates a CIDR block from a subnet. Currently, you can
 disassociate an IPv6 CIDR block only. You must detach or delete all
 gateways and resources that are associated with the CIDR block before
 you can disassociate it.
@@ -4366,7 +4366,7 @@ Each argument is described in detail in: L<Paws::EC2::DisassociateVpcCidrBlock>
 
 Returns: a L<Paws::EC2::DisassociateVpcCidrBlockResult> instance
 
-  Disassociates a CIDR block from a VPC. To disassociate the CIDR block,
+Disassociates a CIDR block from a VPC. To disassociate the CIDR block,
 you must specify its association ID. You can get the association ID by
 using DescribeVpcs. You must detach or delete all gateways and
 resources that are associated with the CIDR block before you can
@@ -4382,7 +4382,7 @@ Each argument is described in detail in: L<Paws::EC2::EnableVgwRoutePropagation>
 
 Returns: nothing
 
-  Enables a virtual private gateway (VGW) to propagate routes to the
+Enables a virtual private gateway (VGW) to propagate routes to the
 specified route table of a VPC.
 
 
@@ -4392,7 +4392,7 @@ Each argument is described in detail in: L<Paws::EC2::EnableVolumeIO>
 
 Returns: nothing
 
-  Enables I/O operations for a volume that had I/O operations disabled
+Enables I/O operations for a volume that had I/O operations disabled
 because the data on the volume was potentially inconsistent.
 
 
@@ -4402,7 +4402,7 @@ Each argument is described in detail in: L<Paws::EC2::EnableVpcClassicLink>
 
 Returns: a L<Paws::EC2::EnableVpcClassicLinkResult> instance
 
-  Enables a VPC for ClassicLink. You can then link EC2-Classic instances
+Enables a VPC for ClassicLink. You can then link EC2-Classic instances
 to your ClassicLink-enabled VPC to allow communication over private IP
 addresses. You cannot enable your VPC for ClassicLink if any of your
 VPC's route tables have existing routes for address ranges within the
@@ -4418,7 +4418,7 @@ Each argument is described in detail in: L<Paws::EC2::EnableVpcClassicLinkDnsSup
 
 Returns: a L<Paws::EC2::EnableVpcClassicLinkDnsSupportResult> instance
 
-  Enables a VPC to support DNS hostname resolution for ClassicLink. If
+Enables a VPC to support DNS hostname resolution for ClassicLink. If
 enabled, the DNS hostname of a linked EC2-Classic instance resolves to
 its private IP address when addressed from an instance in the VPC to
 which it's linked. Similarly, the DNS hostname of an instance in a VPC
@@ -4433,7 +4433,7 @@ Each argument is described in detail in: L<Paws::EC2::GetConsoleOutput>
 
 Returns: a L<Paws::EC2::GetConsoleOutputResult> instance
 
-  Gets the console output for the specified instance.
+Gets the console output for the specified instance.
 
 Instances do not have a physical monitor through which you can view
 their console output. They also lack physical controls that allow you
@@ -4461,7 +4461,7 @@ Each argument is described in detail in: L<Paws::EC2::GetConsoleScreenshot>
 
 Returns: a L<Paws::EC2::GetConsoleScreenshotResult> instance
 
-  Retrieve a JPG-format screenshot of a running instance to help with
+Retrieve a JPG-format screenshot of a running instance to help with
 troubleshooting.
 
 The returned content is Base64-encoded.
@@ -4473,7 +4473,7 @@ Each argument is described in detail in: L<Paws::EC2::GetHostReservationPurchase
 
 Returns: a L<Paws::EC2::GetHostReservationPurchasePreviewResult> instance
 
-  Preview a reservation purchase with configurations that match those of
+Preview a reservation purchase with configurations that match those of
 your Dedicated Host. You must have active Dedicated Hosts in your
 account before you purchase a reservation.
 
@@ -4487,7 +4487,7 @@ Each argument is described in detail in: L<Paws::EC2::GetPasswordData>
 
 Returns: a L<Paws::EC2::GetPasswordDataResult> instance
 
-  Retrieves the encrypted administrator password for a running Windows
+Retrieves the encrypted administrator password for a running Windows
 instance.
 
 The Windows password is generated at boot by the C<EC2Config> service
@@ -4516,7 +4516,7 @@ Each argument is described in detail in: L<Paws::EC2::GetReservedInstancesExchan
 
 Returns: a L<Paws::EC2::GetReservedInstancesExchangeQuoteResult> instance
 
-  Returns a quote and exchange information for exchanging one or more
+Returns a quote and exchange information for exchanging one or more
 specified Convertible Reserved Instances for a new Convertible Reserved
 Instance. If the exchange cannot be performed, the reason is returned
 in the response. Use AcceptReservedInstancesExchangeQuote to perform
@@ -4529,7 +4529,7 @@ Each argument is described in detail in: L<Paws::EC2::ImportImage>
 
 Returns: a L<Paws::EC2::ImportImageResult> instance
 
-  Import single or multi-volume disk images or EBS snapshots into an
+Import single or multi-volume disk images or EBS snapshots into an
 Amazon Machine Image (AMI). For more information, see Importing a VM as
 an Image Using VM Import/Export in the I<VM Import/Export User Guide>.
 
@@ -4540,7 +4540,7 @@ Each argument is described in detail in: L<Paws::EC2::ImportInstance>
 
 Returns: a L<Paws::EC2::ImportInstanceResult> instance
 
-  Creates an import instance task using metadata from the specified disk
+Creates an import instance task using metadata from the specified disk
 image. C<ImportInstance> only supports single-volume VMs. To import
 multi-volume VMs, use ImportImage. For more information, see Importing
 a Virtual Machine Using the Amazon EC2 CLI.
@@ -4555,7 +4555,7 @@ Each argument is described in detail in: L<Paws::EC2::ImportKeyPair>
 
 Returns: a L<Paws::EC2::ImportKeyPairResult> instance
 
-  Imports the public key from an RSA key pair that you created with a
+Imports the public key from an RSA key pair that you created with a
 third-party tool. Compare this with CreateKeyPair, in which AWS creates
 the key pair and gives the keys to you (AWS keeps a copy of the public
 key). With ImportKeyPair, you create the key pair and give AWS just the
@@ -4571,7 +4571,7 @@ Each argument is described in detail in: L<Paws::EC2::ImportSnapshot>
 
 Returns: a L<Paws::EC2::ImportSnapshotResult> instance
 
-  Imports a disk into an EBS snapshot.
+Imports a disk into an EBS snapshot.
 
 
 =head2 ImportVolume(AvailabilityZone => Str, Image => L<Paws::EC2::DiskImageDetail>, Volume => L<Paws::EC2::VolumeDetail>, [Description => Str, DryRun => Bool])
@@ -4580,7 +4580,7 @@ Each argument is described in detail in: L<Paws::EC2::ImportVolume>
 
 Returns: a L<Paws::EC2::ImportVolumeResult> instance
 
-  Creates an import volume task using metadata from the specified disk
+Creates an import volume task using metadata from the specified disk
 image.For more information, see Importing Disks to Amazon EBS.
 
 For information about the import manifest referenced by this API
@@ -4593,7 +4593,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifyFpgaImageAttribute>
 
 Returns: a L<Paws::EC2::ModifyFpgaImageAttributeResult> instance
 
-  Modifies the specified attribute of the specified Amazon FPGA Image
+Modifies the specified attribute of the specified Amazon FPGA Image
 (AFI).
 
 
@@ -4603,7 +4603,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifyHosts>
 
 Returns: a L<Paws::EC2::ModifyHostsResult> instance
 
-  Modify the auto-placement setting of a Dedicated Host. When
+Modify the auto-placement setting of a Dedicated Host. When
 auto-placement is enabled, AWS will place instances that you launch
 with a tenancy of C<host>, but without targeting a specific host ID,
 onto any available Dedicated Host in your account which has
@@ -4619,7 +4619,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifyIdentityIdFormat>
 
 Returns: nothing
 
-  Modifies the ID format of a resource for a specified IAM user, IAM
+Modifies the ID format of a resource for a specified IAM user, IAM
 role, or the root user for an account; or all IAM users, IAM roles, and
 the root user for an account. You can specify that resources should
 receive longer IDs (17-character IDs) when they are created.
@@ -4643,7 +4643,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifyIdFormat>
 
 Returns: nothing
 
-  Modifies the ID format for the specified resource on a per-region
+Modifies the ID format for the specified resource on a per-region
 basis. You can specify that resources should receive longer IDs
 (17-character IDs) when they are created. The following resource types
 support longer IDs: C<instance> | C<reservation> | C<snapshot> |
@@ -4669,7 +4669,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifyImageAttribute>
 
 Returns: nothing
 
-  Modifies the specified attribute of the specified AMI. You can specify
+Modifies the specified attribute of the specified AMI. You can specify
 only one attribute at a time. You can use the C<Attribute> parameter to
 specify the attribute or one of the following parameters:
 C<Description>, C<LaunchPermission>, or C<ProductCode>.
@@ -4688,7 +4688,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifyInstanceAttribute>
 
 Returns: nothing
 
-  Modifies the specified attribute of the specified instance. You can
+Modifies the specified attribute of the specified instance. You can
 specify only one attribute at a time.
 
 To modify some attributes, the instance must be stopped. For more
@@ -4702,7 +4702,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifyInstancePlacement>
 
 Returns: a L<Paws::EC2::ModifyInstancePlacementResult> instance
 
-  Set the instance affinity value for a specific stopped instance and
+Set the instance affinity value for a specific stopped instance and
 modify the instance tenancy setting.
 
 Instance affinity is disabled by default. When instance affinity is
@@ -4730,7 +4730,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifyNetworkInterfaceAttr
 
 Returns: nothing
 
-  Modifies the specified network interface attribute. You can specify
+Modifies the specified network interface attribute. You can specify
 only one attribute at a time.
 
 
@@ -4740,7 +4740,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifyReservedInstances>
 
 Returns: a L<Paws::EC2::ModifyReservedInstancesResult> instance
 
-  Modifies the Availability Zone, instance count, instance type, or
+Modifies the Availability Zone, instance count, instance type, or
 network platform (EC2-Classic or EC2-VPC) of your Reserved Instances.
 The Reserved Instances to be modified must be identical, except for
 Availability Zone, network platform, and instance type.
@@ -4755,7 +4755,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifySnapshotAttribute>
 
 Returns: nothing
 
-  Adds or removes permission settings for the specified snapshot. You may
+Adds or removes permission settings for the specified snapshot. You may
 add or remove specified AWS account IDs from a snapshot's list of
 create volume permissions, but you cannot do both in a single API call.
 If you need to both add and remove account IDs for a snapshot, you must
@@ -4775,7 +4775,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifySpotFleetRequest>
 
 Returns: a L<Paws::EC2::ModifySpotFleetRequestResponse> instance
 
-  Modifies the specified Spot fleet request.
+Modifies the specified Spot fleet request.
 
 While the Spot fleet request is being modified, it is in the
 C<modifying> state.
@@ -4806,7 +4806,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifySubnetAttribute>
 
 Returns: nothing
 
-  Modifies a subnet attribute. You can only modify one attribute at a
+Modifies a subnet attribute. You can only modify one attribute at a
 time.
 
 
@@ -4816,7 +4816,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifyVolume>
 
 Returns: a L<Paws::EC2::ModifyVolumeResult> instance
 
-  You can modify several parameters of an existing EBS volume, including
+You can modify several parameters of an existing EBS volume, including
 volume size, volume type, and IOPS capacity. If your EBS volume is
 attached to a current-generation EC2 instance type, you may be able to
 apply these changes without stopping the instance or detaching the
@@ -4858,7 +4858,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifyVolumeAttribute>
 
 Returns: nothing
 
-  Modifies a volume attribute.
+Modifies a volume attribute.
 
 By default, all I/O operations for the volume are suspended when the
 data on the volume is determined to be potentially inconsistent, to
@@ -4877,7 +4877,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifyVpcAttribute>
 
 Returns: nothing
 
-  Modifies the specified attribute of the specified VPC.
+Modifies the specified attribute of the specified VPC.
 
 
 =head2 ModifyVpcEndpoint(VpcEndpointId => Str, [AddRouteTableIds => ArrayRef[Str|Undef], DryRun => Bool, PolicyDocument => Str, RemoveRouteTableIds => ArrayRef[Str|Undef], ResetPolicy => Bool])
@@ -4886,7 +4886,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifyVpcEndpoint>
 
 Returns: a L<Paws::EC2::ModifyVpcEndpointResult> instance
 
-  Modifies attributes of a specified VPC endpoint. You can modify the
+Modifies attributes of a specified VPC endpoint. You can modify the
 policy associated with the endpoint, and you can add and remove route
 tables associated with the endpoint.
 
@@ -4897,7 +4897,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifyVpcPeeringConnection
 
 Returns: a L<Paws::EC2::ModifyVpcPeeringConnectionOptionsResult> instance
 
-  Modifies the VPC peering connection options on one side of a VPC
+Modifies the VPC peering connection options on one side of a VPC
 peering connection. You can do the following:
 
 =over
@@ -4936,7 +4936,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifyVpcTenancy>
 
 Returns: a L<Paws::EC2::ModifyVpcTenancyResult> instance
 
-  Modifies the instance tenancy attribute of the specified VPC. You can
+Modifies the instance tenancy attribute of the specified VPC. You can
 change the instance tenancy attribute of a VPC to C<default> only. You
 cannot change the instance tenancy attribute to C<dedicated>.
 
@@ -4955,7 +4955,7 @@ Each argument is described in detail in: L<Paws::EC2::MonitorInstances>
 
 Returns: a L<Paws::EC2::MonitorInstancesResult> instance
 
-  Enables detailed monitoring for a running instance. Otherwise, basic
+Enables detailed monitoring for a running instance. Otherwise, basic
 monitoring is enabled. For more information, see Monitoring Your
 Instances and Volumes in the I<Amazon Elastic Compute Cloud User
 Guide>.
@@ -4969,7 +4969,7 @@ Each argument is described in detail in: L<Paws::EC2::MoveAddressToVpc>
 
 Returns: a L<Paws::EC2::MoveAddressToVpcResult> instance
 
-  Moves an Elastic IP address from the EC2-Classic platform to the
+Moves an Elastic IP address from the EC2-Classic platform to the
 EC2-VPC platform. The Elastic IP address must be allocated to your
 account for more than 24 hours, and it must not be associated with an
 instance. After the Elastic IP address is moved, it is no longer
@@ -4985,7 +4985,7 @@ Each argument is described in detail in: L<Paws::EC2::PurchaseHostReservation>
 
 Returns: a L<Paws::EC2::PurchaseHostReservationResult> instance
 
-  Purchase a reservation with configurations that match those of your
+Purchase a reservation with configurations that match those of your
 Dedicated Host. You must have active Dedicated Hosts in your account
 before you purchase a reservation. This action results in the specified
 reservation being purchased and charged to your account.
@@ -4997,7 +4997,7 @@ Each argument is described in detail in: L<Paws::EC2::PurchaseReservedInstancesO
 
 Returns: a L<Paws::EC2::PurchaseReservedInstancesOfferingResult> instance
 
-  Purchases a Reserved Instance for use with your account. With Reserved
+Purchases a Reserved Instance for use with your account. With Reserved
 Instances, you pay a lower hourly rate compared to On-Demand instance
 pricing.
 
@@ -5016,7 +5016,7 @@ Each argument is described in detail in: L<Paws::EC2::PurchaseScheduledInstances
 
 Returns: a L<Paws::EC2::PurchaseScheduledInstancesResult> instance
 
-  Purchases one or more Scheduled Instances with the specified schedule.
+Purchases one or more Scheduled Instances with the specified schedule.
 
 Scheduled Instances enable you to purchase Amazon EC2 compute capacity
 by the hour for a one-year term. Before you can purchase a Scheduled
@@ -5035,7 +5035,7 @@ Each argument is described in detail in: L<Paws::EC2::RebootInstances>
 
 Returns: nothing
 
-  Requests a reboot of one or more instances. This operation is
+Requests a reboot of one or more instances. This operation is
 asynchronous; it only queues a request to reboot the specified
 instances. The operation succeeds if the instances are valid and belong
 to you. Requests to reboot terminated instances are ignored.
@@ -5054,7 +5054,7 @@ Each argument is described in detail in: L<Paws::EC2::RegisterImage>
 
 Returns: a L<Paws::EC2::RegisterImageResult> instance
 
-  Registers an AMI. When you're creating an AMI, this is the final step
+Registers an AMI. When you're creating an AMI, this is the final step
 you must complete before you can launch an instance from the AMI. For
 more information about creating AMIs, see Creating Your Own AMIs in the
 I<Amazon Elastic Compute Cloud User Guide>.
@@ -5092,7 +5092,7 @@ Each argument is described in detail in: L<Paws::EC2::RejectVpcPeeringConnection
 
 Returns: a L<Paws::EC2::RejectVpcPeeringConnectionResult> instance
 
-  Rejects a VPC peering connection request. The VPC peering connection
+Rejects a VPC peering connection request. The VPC peering connection
 must be in the C<pending-acceptance> state. Use the
 DescribeVpcPeeringConnections request to view your outstanding VPC
 peering connection requests. To delete an active VPC peering
@@ -5106,7 +5106,7 @@ Each argument is described in detail in: L<Paws::EC2::ReleaseAddress>
 
 Returns: nothing
 
-  Releases the specified Elastic IP address.
+Releases the specified Elastic IP address.
 
 [EC2-Classic, default VPC] Releasing an Elastic IP address
 automatically disassociates it from any instance that it's associated
@@ -5133,7 +5133,7 @@ Each argument is described in detail in: L<Paws::EC2::ReleaseHosts>
 
 Returns: a L<Paws::EC2::ReleaseHostsResult> instance
 
-  When you no longer want to use an On-Demand Dedicated Host it can be
+When you no longer want to use an On-Demand Dedicated Host it can be
 released. On-Demand billing is stopped and the host goes into
 C<released> state. The host ID of Dedicated Hosts that have been
 released can no longer be specified in another request, e.g.,
@@ -5154,7 +5154,7 @@ Each argument is described in detail in: L<Paws::EC2::ReplaceIamInstanceProfileA
 
 Returns: a L<Paws::EC2::ReplaceIamInstanceProfileAssociationResult> instance
 
-  Replaces an IAM instance profile for the specified running instance.
+Replaces an IAM instance profile for the specified running instance.
 You can use this action to change the IAM instance profile that's
 associated with an instance without having to disassociate the existing
 IAM instance profile first.
@@ -5168,7 +5168,7 @@ Each argument is described in detail in: L<Paws::EC2::ReplaceNetworkAclAssociati
 
 Returns: a L<Paws::EC2::ReplaceNetworkAclAssociationResult> instance
 
-  Changes which network ACL a subnet is associated with. By default when
+Changes which network ACL a subnet is associated with. By default when
 you create a subnet, it's automatically associated with the default
 network ACL. For more information about network ACLs, see Network ACLs
 in the I<Amazon Virtual Private Cloud User Guide>.
@@ -5180,7 +5180,7 @@ Each argument is described in detail in: L<Paws::EC2::ReplaceNetworkAclEntry>
 
 Returns: nothing
 
-  Replaces an entry (rule) in a network ACL. For more information about
+Replaces an entry (rule) in a network ACL. For more information about
 network ACLs, see Network ACLs in the I<Amazon Virtual Private Cloud
 User Guide>.
 
@@ -5191,7 +5191,7 @@ Each argument is described in detail in: L<Paws::EC2::ReplaceRoute>
 
 Returns: nothing
 
-  Replaces an existing route within a route table in a VPC. You must
+Replaces an existing route within a route table in a VPC. You must
 provide only one of the following: Internet gateway or virtual private
 gateway, NAT instance, NAT gateway, VPC peering connection, network
 interface, or egress-only Internet gateway.
@@ -5206,7 +5206,7 @@ Each argument is described in detail in: L<Paws::EC2::ReplaceRouteTableAssociati
 
 Returns: a L<Paws::EC2::ReplaceRouteTableAssociationResult> instance
 
-  Changes the route table associated with a given subnet in a VPC. After
+Changes the route table associated with a given subnet in a VPC. After
 the operation completes, the subnet uses the routes in the new route
 table it's associated with. For more information about route tables,
 see Route Tables in the I<Amazon Virtual Private Cloud User Guide>.
@@ -5223,7 +5223,7 @@ Each argument is described in detail in: L<Paws::EC2::ReportInstanceStatus>
 
 Returns: nothing
 
-  Submits feedback about the status of an instance. The instance must be
+Submits feedback about the status of an instance. The instance must be
 in the C<running> state. If your experience with the instance differs
 from the instance status returned by DescribeInstanceStatus, use
 ReportInstanceStatus to report your experience with the instance.
@@ -5240,7 +5240,7 @@ Each argument is described in detail in: L<Paws::EC2::RequestSpotFleet>
 
 Returns: a L<Paws::EC2::RequestSpotFleetResponse> instance
 
-  Creates a Spot fleet request.
+Creates a Spot fleet request.
 
 You can submit a single request that includes multiple launch
 specifications that vary by instance type, AMI, Availability Zone, or
@@ -5267,7 +5267,7 @@ Each argument is described in detail in: L<Paws::EC2::RequestSpotInstances>
 
 Returns: a L<Paws::EC2::RequestSpotInstancesResult> instance
 
-  Creates a Spot instance request. Spot instances are instances that
+Creates a Spot instance request. Spot instances are instances that
 Amazon EC2 launches when the bid price that you specify exceeds the
 current Spot price. Amazon EC2 periodically sets the Spot price based
 on available Spot Instance capacity and current Spot instance requests.
@@ -5281,7 +5281,7 @@ Each argument is described in detail in: L<Paws::EC2::ResetFpgaImageAttribute>
 
 Returns: a L<Paws::EC2::ResetFpgaImageAttributeResult> instance
 
-  Resets the specified attribute of the specified Amazon FPGA Image (AFI)
+Resets the specified attribute of the specified Amazon FPGA Image (AFI)
 to its default value. You can only reset the load permission attribute.
 
 
@@ -5291,7 +5291,7 @@ Each argument is described in detail in: L<Paws::EC2::ResetImageAttribute>
 
 Returns: nothing
 
-  Resets an attribute of an AMI to its default value.
+Resets an attribute of an AMI to its default value.
 
 The productCodes attribute can't be reset.
 
@@ -5302,7 +5302,7 @@ Each argument is described in detail in: L<Paws::EC2::ResetInstanceAttribute>
 
 Returns: nothing
 
-  Resets an attribute of an instance to its default value. To reset the
+Resets an attribute of an instance to its default value. To reset the
 C<kernel> or C<ramdisk>, the instance must be in a stopped state. To
 reset the C<sourceDestCheck>, the instance can be either running or
 stopped.
@@ -5320,7 +5320,7 @@ Each argument is described in detail in: L<Paws::EC2::ResetNetworkInterfaceAttri
 
 Returns: nothing
 
-  Resets a network interface attribute. You can specify only one
+Resets a network interface attribute. You can specify only one
 attribute at a time.
 
 
@@ -5330,7 +5330,7 @@ Each argument is described in detail in: L<Paws::EC2::ResetSnapshotAttribute>
 
 Returns: nothing
 
-  Resets permission settings for the specified snapshot.
+Resets permission settings for the specified snapshot.
 
 For more information on modifying snapshot permissions, see Sharing
 Snapshots in the I<Amazon Elastic Compute Cloud User Guide>.
@@ -5342,7 +5342,7 @@ Each argument is described in detail in: L<Paws::EC2::RestoreAddressToClassic>
 
 Returns: a L<Paws::EC2::RestoreAddressToClassicResult> instance
 
-  Restores an Elastic IP address that was previously moved to the EC2-VPC
+Restores an Elastic IP address that was previously moved to the EC2-VPC
 platform back to the EC2-Classic platform. You cannot move an Elastic
 IP address that was originally allocated for use in EC2-VPC. The
 Elastic IP address must not be associated with an instance or network
@@ -5355,7 +5355,7 @@ Each argument is described in detail in: L<Paws::EC2::RevokeSecurityGroupEgress>
 
 Returns: nothing
 
-  [EC2-VPC only] Removes one or more egress rules from a security group
+[EC2-VPC only] Removes one or more egress rules from a security group
 for EC2-VPC. This action doesn't apply to security groups for use in
 EC2-Classic. To remove a rule, the values that you specify (for
 example, ports) must match the existing rule's values exactly.
@@ -5377,7 +5377,7 @@ Each argument is described in detail in: L<Paws::EC2::RevokeSecurityGroupIngress
 
 Returns: nothing
 
-  Removes one or more ingress rules from a security group. To remove a
+Removes one or more ingress rules from a security group. To remove a
 rule, the values that you specify (for example, ports) must match the
 existing rule's values exactly.
 
@@ -5402,7 +5402,7 @@ Each argument is described in detail in: L<Paws::EC2::RunInstances>
 
 Returns: a L<Paws::EC2::Reservation> instance
 
-  Launches the specified number of instances using an AMI for which you
+Launches the specified number of instances using an AMI for which you
 have permissions.
 
 You can specify a number of options, or leave the default options. The
@@ -5477,7 +5477,7 @@ Each argument is described in detail in: L<Paws::EC2::RunScheduledInstances>
 
 Returns: a L<Paws::EC2::RunScheduledInstancesResult> instance
 
-  Launches the specified Scheduled Instances.
+Launches the specified Scheduled Instances.
 
 Before you can launch a Scheduled Instance, you must purchase it and
 obtain an identifier using PurchaseScheduledInstances.
@@ -5496,7 +5496,7 @@ Each argument is described in detail in: L<Paws::EC2::StartInstances>
 
 Returns: a L<Paws::EC2::StartInstancesResult> instance
 
-  Starts an Amazon EBS-backed instance that you've previously stopped.
+Starts an Amazon EBS-backed instance that you've previously stopped.
 
 Instances that use Amazon EBS volumes as their root devices can be
 quickly stopped and started. When an instance is stopped, the compute
@@ -5529,7 +5529,7 @@ Each argument is described in detail in: L<Paws::EC2::StopInstances>
 
 Returns: a L<Paws::EC2::StopInstancesResult> instance
 
-  Stops an Amazon EBS-backed instance.
+Stops an Amazon EBS-backed instance.
 
 We don't charge usage for a stopped instance, or data transfer fees;
 however, your root partition Amazon EBS volume remains and continues to
@@ -5572,7 +5572,7 @@ Each argument is described in detail in: L<Paws::EC2::TerminateInstances>
 
 Returns: a L<Paws::EC2::TerminateInstancesResult> instance
 
-  Shuts down one or more instances. This operation is idempotent; if you
+Shuts down one or more instances. This operation is idempotent; if you
 terminate an instance more than once, each call succeeds.
 
 If you specify multiple instances and the request fails (for example,
@@ -5607,7 +5607,7 @@ Each argument is described in detail in: L<Paws::EC2::UnassignIpv6Addresses>
 
 Returns: a L<Paws::EC2::UnassignIpv6AddressesResult> instance
 
-  Unassigns one or more IPv6 addresses from a network interface.
+Unassigns one or more IPv6 addresses from a network interface.
 
 
 =head2 UnassignPrivateIpAddresses(NetworkInterfaceId => Str, PrivateIpAddresses => ArrayRef[Str|Undef])
@@ -5616,7 +5616,7 @@ Each argument is described in detail in: L<Paws::EC2::UnassignPrivateIpAddresses
 
 Returns: nothing
 
-  Unassigns one or more secondary private IP addresses from a network
+Unassigns one or more secondary private IP addresses from a network
 interface.
 
 
@@ -5626,7 +5626,7 @@ Each argument is described in detail in: L<Paws::EC2::UnmonitorInstances>
 
 Returns: a L<Paws::EC2::UnmonitorInstancesResult> instance
 
-  Disables detailed monitoring for a running instance. For more
+Disables detailed monitoring for a running instance. For more
 information, see Monitoring Your Instances and Volumes in the I<Amazon
 Elastic Compute Cloud User Guide>.
 
@@ -5637,7 +5637,7 @@ Each argument is described in detail in: L<Paws::EC2::UpdateSecurityGroupRuleDes
 
 Returns: a L<Paws::EC2::UpdateSecurityGroupRuleDescriptionsEgressResult> instance
 
-  [EC2-VPC only] Updates the description of an egress (outbound) security
+[EC2-VPC only] Updates the description of an egress (outbound) security
 group rule. You can replace an existing description, or add a
 description to a rule that did not have one previously.
 
@@ -5652,7 +5652,7 @@ Each argument is described in detail in: L<Paws::EC2::UpdateSecurityGroupRuleDes
 
 Returns: a L<Paws::EC2::UpdateSecurityGroupRuleDescriptionsIngressResult> instance
 
-  Updates the description of an ingress (inbound) security group rule.
+Updates the description of an ingress (inbound) security group rule.
 You can replace an existing description, or add a description to a rule
 that did not have one previously.
 
@@ -5820,9 +5820,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

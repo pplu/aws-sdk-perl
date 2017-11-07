@@ -20,7 +20,7 @@ package Paws::CognitoIdentity::CreateIdentityPool;
 
 =head1 NAME
 
-Paws::CognitoIdentity::CreateIdentityPool - Arguments for method CreateIdentityPool on Paws::CognitoIdentity
+Paws::CognitoIdentity::CreateIdentityPool - Arguments for method CreateIdentityPool on L<Paws::CognitoIdentity>
 
 =head1 DESCRIPTION
 
@@ -96,9 +96,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateIdentit
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -213,7 +213,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::DeleteAlarms>
 
 Returns: nothing
 
-  Deletes the specified alarms. In the event of an error, no alarms are
+Deletes the specified alarms. In the event of an error, no alarms are
 deleted.
 
 
@@ -223,7 +223,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::DeleteDashboards>
 
 Returns: a L<Paws::CloudWatch::DeleteDashboardsOutput> instance
 
-  Deletes all dashboards that you specify. You may specify up to 100
+Deletes all dashboards that you specify. You may specify up to 100
 dashboards to delete. If there is an error during this call, no
 dashboards are deleted.
 
@@ -234,7 +234,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarmHistor
 
 Returns: a L<Paws::CloudWatch::DescribeAlarmHistoryOutput> instance
 
-  Retrieves the history for the specified alarm. You can filter the
+Retrieves the history for the specified alarm. You can filter the
 results by date range or item type. If an alarm name is not specified,
 the histories for all alarms are returned.
 
@@ -248,7 +248,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarms>
 
 Returns: a L<Paws::CloudWatch::DescribeAlarmsOutput> instance
 
-  Retrieves the specified alarms. If no alarms are specified, all alarms
+Retrieves the specified alarms. If no alarms are specified, all alarms
 are returned. Alarms can be retrieved by using only a prefix for the
 alarm name, the alarm state, or a prefix for any action.
 
@@ -259,7 +259,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarmsForMe
 
 Returns: a L<Paws::CloudWatch::DescribeAlarmsForMetricOutput> instance
 
-  Retrieves the alarms for the specified metric. To filter the results,
+Retrieves the alarms for the specified metric. To filter the results,
 specify a statistic, period, or unit.
 
 
@@ -269,7 +269,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::DisableAlarmActions
 
 Returns: nothing
 
-  Disables the actions for the specified alarms. When an alarm's actions
+Disables the actions for the specified alarms. When an alarm's actions
 are disabled, the alarm actions do not execute when the alarm state
 changes.
 
@@ -280,7 +280,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::EnableAlarmActions>
 
 Returns: nothing
 
-  Enables the actions for the specified alarms.
+Enables the actions for the specified alarms.
 
 
 =head2 GetDashboard([DashboardName => Str])
@@ -289,7 +289,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::GetDashboard>
 
 Returns: a L<Paws::CloudWatch::GetDashboardOutput> instance
 
-  Displays the details of the dashboard that you specify.
+Displays the details of the dashboard that you specify.
 
 To copy an existing dashboard, use C<GetDashboard>, and then use the
 data returned within C<DashboardBody> as the template for the new
@@ -302,7 +302,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::GetMetricStatistics
 
 Returns: a L<Paws::CloudWatch::GetMetricStatisticsOutput> instance
 
-  Gets statistics for the specified metric.
+Gets statistics for the specified metric.
 
 The maximum number of data points returned from a single call is 1,440.
 If you request more than 1,440 data points, CloudWatch returns an
@@ -385,7 +385,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::ListDashboards>
 
 Returns: a L<Paws::CloudWatch::ListDashboardsOutput> instance
 
-  Returns a list of the dashboards for your account. If you include
+Returns a list of the dashboards for your account. If you include
 C<DashboardNamePrefix>, only those dashboards with names starting with
 the prefix are listed. Otherwise, all dashboards in your account are
 listed.
@@ -397,7 +397,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::ListMetrics>
 
 Returns: a L<Paws::CloudWatch::ListMetricsOutput> instance
 
-  List the specified metrics. You can use the returned metrics with
+List the specified metrics. You can use the returned metrics with
 GetMetricStatistics to obtain statistical data.
 
 Up to 500 results are returned for any one call. To retrieve additional
@@ -414,7 +414,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::PutDashboard>
 
 Returns: a L<Paws::CloudWatch::PutDashboardOutput> instance
 
-  Creates a dashboard if it does not already exist, or updates an
+Creates a dashboard if it does not already exist, or updates an
 existing dashboard. If you update a dashboard, the entire contents are
 replaced with what you specify here.
 
@@ -443,7 +443,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::PutMetricAlarm>
 
 Returns: nothing
 
-  Creates or updates an alarm and associates it with the specified
+Creates or updates an alarm and associates it with the specified
 metric. Optionally, this operation can associate one or more Amazon SNS
 resources with the alarm.
 
@@ -507,7 +507,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::PutMetricData>
 
 Returns: nothing
 
-  Publishes metric data points to Amazon CloudWatch. CloudWatch
+Publishes metric data points to Amazon CloudWatch. CloudWatch
 associates the data points with the specified metric. If the specified
 metric does not exist, CloudWatch creates the metric. When CloudWatch
 creates a metric, it can take up to fifteen minutes for the metric to
@@ -555,7 +555,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::SetAlarmState>
 
 Returns: nothing
 
-  Temporarily sets the state of an alarm for testing purposes. When the
+Temporarily sets the state of an alarm for testing purposes. When the
 updated state differs from the previous value, the action configured
 for the appropriate state is invoked. For example, if your alarm is
 configured to send an Amazon SNS message when an alarm is triggered,
@@ -617,9 +617,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

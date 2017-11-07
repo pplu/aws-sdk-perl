@@ -135,7 +135,7 @@ Each argument is described in detail in: L<Paws::MigrationHub::AssociateCreatedA
 
 Returns: a L<Paws::MigrationHub::AssociateCreatedArtifactResult> instance
 
-  Associates a created artifact of an AWS cloud resource, the target
+Associates a created artifact of an AWS cloud resource, the target
 receiving the migration, with the migration task performed by a
 migration tool. This API has the following traits:
 
@@ -167,7 +167,7 @@ Each argument is described in detail in: L<Paws::MigrationHub::AssociateDiscover
 
 Returns: a L<Paws::MigrationHub::AssociateDiscoveredResourceResult> instance
 
-  Associates a discovered resource ID from Application Discovery Service
+Associates a discovered resource ID from Application Discovery Service
 (ADS) with a migration task.
 
 
@@ -177,7 +177,7 @@ Each argument is described in detail in: L<Paws::MigrationHub::CreateProgressUpd
 
 Returns: a L<Paws::MigrationHub::CreateProgressUpdateStreamResult> instance
 
-  Creates a progress update stream which is an AWS resource used for
+Creates a progress update stream which is an AWS resource used for
 access control as well as a namespace for migration task names that is
 implicitly linked to your AWS account. It must uniquely identify the
 migration tool as it is used for all updates made by the tool; however,
@@ -191,7 +191,7 @@ Each argument is described in detail in: L<Paws::MigrationHub::DeleteProgressUpd
 
 Returns: a L<Paws::MigrationHub::DeleteProgressUpdateStreamResult> instance
 
-  Deletes a progress update stream, including all of its tasks, which was
+Deletes a progress update stream, including all of its tasks, which was
 previously created as an AWS resource used for access control. This API
 has the following traits:
 
@@ -237,7 +237,7 @@ Each argument is described in detail in: L<Paws::MigrationHub::DescribeApplicati
 
 Returns: a L<Paws::MigrationHub::DescribeApplicationStateResult> instance
 
-  Gets the migration status of an application.
+Gets the migration status of an application.
 
 
 =head2 DescribeMigrationTask(MigrationTaskName => Str, ProgressUpdateStream => Str)
@@ -246,7 +246,7 @@ Each argument is described in detail in: L<Paws::MigrationHub::DescribeMigration
 
 Returns: a L<Paws::MigrationHub::DescribeMigrationTaskResult> instance
 
-  Retrieves a list of all attributes associated with a specific migration
+Retrieves a list of all attributes associated with a specific migration
 task.
 
 
@@ -256,7 +256,7 @@ Each argument is described in detail in: L<Paws::MigrationHub::DisassociateCreat
 
 Returns: a L<Paws::MigrationHub::DisassociateCreatedArtifactResult> instance
 
-  Disassociates a created artifact of an AWS resource with a migration
+Disassociates a created artifact of an AWS resource with a migration
 task performed by a migration tool that was previously associated. This
 API has the following traits:
 
@@ -288,7 +288,7 @@ Each argument is described in detail in: L<Paws::MigrationHub::DisassociateDisco
 
 Returns: a L<Paws::MigrationHub::DisassociateDiscoveredResourceResult> instance
 
-  Disassociate an Application Discovery Service (ADS) discovered resource
+Disassociate an Application Discovery Service (ADS) discovered resource
 from a migration task.
 
 
@@ -298,7 +298,7 @@ Each argument is described in detail in: L<Paws::MigrationHub::ImportMigrationTa
 
 Returns: a L<Paws::MigrationHub::ImportMigrationTaskResult> instance
 
-  Registers a new migration task which represents a server, database,
+Registers a new migration task which represents a server, database,
 etc., being migrated to AWS by a migration tool.
 
 This API is a prerequisite to calling the C<NotifyMigrationTaskState>
@@ -312,7 +312,7 @@ Each argument is described in detail in: L<Paws::MigrationHub::ListCreatedArtifa
 
 Returns: a L<Paws::MigrationHub::ListCreatedArtifactsResult> instance
 
-  Lists the created artifacts attached to a given migration task in an
+Lists the created artifacts attached to a given migration task in an
 update stream. This API has the following traits:
 
 =over
@@ -340,7 +340,7 @@ Each argument is described in detail in: L<Paws::MigrationHub::ListDiscoveredRes
 
 Returns: a L<Paws::MigrationHub::ListDiscoveredResourcesResult> instance
 
-  Lists discovered resources associated with the given C<MigrationTask>.
+Lists discovered resources associated with the given C<MigrationTask>.
 
 
 =head2 ListMigrationTasks([MaxResults => Int, NextToken => Str, ResourceName => Str])
@@ -349,7 +349,7 @@ Each argument is described in detail in: L<Paws::MigrationHub::ListMigrationTask
 
 Returns: a L<Paws::MigrationHub::ListMigrationTasksResult> instance
 
-  Lists all, or filtered by resource name, migration tasks associated
+Lists all, or filtered by resource name, migration tasks associated
 with the user account making this call. This API has the following
 traits:
 
@@ -378,7 +378,7 @@ Each argument is described in detail in: L<Paws::MigrationHub::ListProgressUpdat
 
 Returns: a L<Paws::MigrationHub::ListProgressUpdateStreamsResult> instance
 
-  Lists progress update streams associated with the user account making
+Lists progress update streams associated with the user account making
 this call.
 
 
@@ -388,7 +388,7 @@ Each argument is described in detail in: L<Paws::MigrationHub::NotifyApplication
 
 Returns: a L<Paws::MigrationHub::NotifyApplicationStateResult> instance
 
-  Sets the migration state of an application. For a given application
+Sets the migration state of an application. For a given application
 identified by the value passed to C<ApplicationId>, its status is set
 or updated by passing one of three values to C<Status>: C<NOT_STARTED |
 IN_PROGRESS | COMPLETED>.
@@ -400,7 +400,7 @@ Each argument is described in detail in: L<Paws::MigrationHub::NotifyMigrationTa
 
 Returns: a L<Paws::MigrationHub::NotifyMigrationTaskStateResult> instance
 
-  Notifies Migration Hub of the current status, progress, or other detail
+Notifies Migration Hub of the current status, progress, or other detail
 regarding a migration task. This API has the following traits:
 
 =over
@@ -430,7 +430,7 @@ Each argument is described in detail in: L<Paws::MigrationHub::PutResourceAttrib
 
 Returns: a L<Paws::MigrationHub::PutResourceAttributesResult> instance
 
-  Provides identifying details of the resource being migrated so that it
+Provides identifying details of the resource being migrated so that it
 can be associated in the Application Discovery Service (ADS)'s
 repository. This association occurs asynchronously after
 C<PutResourceAttributes> returns.
@@ -461,9 +461,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

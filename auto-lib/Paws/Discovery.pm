@@ -223,7 +223,7 @@ Each argument is described in detail in: L<Paws::Discovery::AssociateConfigurati
 
 Returns: a L<Paws::Discovery::AssociateConfigurationItemsToApplicationResponse> instance
 
-  Associates one or more configuration items with an application.
+Associates one or more configuration items with an application.
 
 
 =head2 CreateApplication(Name => Str, [Description => Str])
@@ -232,7 +232,7 @@ Each argument is described in detail in: L<Paws::Discovery::CreateApplication>
 
 Returns: a L<Paws::Discovery::CreateApplicationResponse> instance
 
-  Creates an application with the given name and description.
+Creates an application with the given name and description.
 
 
 =head2 CreateTags(ConfigurationIds => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::Discovery::Tag>])
@@ -241,7 +241,7 @@ Each argument is described in detail in: L<Paws::Discovery::CreateTags>
 
 Returns: a L<Paws::Discovery::CreateTagsResponse> instance
 
-  Creates one or more tags for configuration items. Tags are metadata
+Creates one or more tags for configuration items. Tags are metadata
 that help you categorize IT assets. This API accepts a list of multiple
 configuration items.
 
@@ -252,7 +252,7 @@ Each argument is described in detail in: L<Paws::Discovery::DeleteApplications>
 
 Returns: a L<Paws::Discovery::DeleteApplicationsResponse> instance
 
-  Deletes a list of applications and their associations with
+Deletes a list of applications and their associations with
 configuration items.
 
 
@@ -262,7 +262,7 @@ Each argument is described in detail in: L<Paws::Discovery::DeleteTags>
 
 Returns: a L<Paws::Discovery::DeleteTagsResponse> instance
 
-  Deletes the association between configuration items and one or more
+Deletes the association between configuration items and one or more
 tags. This API accepts a list of multiple configuration items.
 
 
@@ -272,7 +272,7 @@ Each argument is described in detail in: L<Paws::Discovery::DescribeAgents>
 
 Returns: a L<Paws::Discovery::DescribeAgentsResponse> instance
 
-  Lists agents or the Connector by ID or lists all agents/Connectors
+Lists agents or the Connector by ID or lists all agents/Connectors
 associated with your user account if you did not specify an ID.
 
 
@@ -282,7 +282,7 @@ Each argument is described in detail in: L<Paws::Discovery::DescribeConfiguratio
 
 Returns: a L<Paws::Discovery::DescribeConfigurationsResponse> instance
 
-  Retrieves attributes for a list of configuration item IDs. All of the
+Retrieves attributes for a list of configuration item IDs. All of the
 supplied IDs must be for the same asset type (server, application,
 process, or connection). Output fields are specific to the asset type
 selected. For example, the output for a I<server> configuration item
@@ -299,7 +299,7 @@ Each argument is described in detail in: L<Paws::Discovery::DescribeExportConfig
 
 Returns: a L<Paws::Discovery::DescribeExportConfigurationsResponse> instance
 
-  Deprecated. Use C<DescribeExportTasks> instead.
+Deprecated. Use C<DescribeExportTasks> instead.
 
 Retrieves the status of a given export process. You can retrieve status
 from a maximum of 100 processes.
@@ -311,7 +311,7 @@ Each argument is described in detail in: L<Paws::Discovery::DescribeExportTasks>
 
 Returns: a L<Paws::Discovery::DescribeExportTasksResponse> instance
 
-  Retrieve status of one or more export tasks. You can retrieve the
+Retrieve status of one or more export tasks. You can retrieve the
 status of up to 100 export tasks.
 
 
@@ -321,7 +321,7 @@ Each argument is described in detail in: L<Paws::Discovery::DescribeTags>
 
 Returns: a L<Paws::Discovery::DescribeTagsResponse> instance
 
-  Retrieves a list of configuration items that are tagged with a specific
+Retrieves a list of configuration items that are tagged with a specific
 tag. Or retrieves a list of all tags assigned to a specific
 configuration item.
 
@@ -332,7 +332,7 @@ Each argument is described in detail in: L<Paws::Discovery::DisassociateConfigur
 
 Returns: a L<Paws::Discovery::DisassociateConfigurationItemsFromApplicationResponse> instance
 
-  Disassociates one or more configuration items from an application.
+Disassociates one or more configuration items from an application.
 
 
 =head2 ExportConfigurations( => )
@@ -341,7 +341,7 @@ Each argument is described in detail in: L<Paws::Discovery::ExportConfigurations
 
 Returns: a L<Paws::Discovery::ExportConfigurationsResponse> instance
 
-  Deprecated. Use C<StartExportTask> instead.
+Deprecated. Use C<StartExportTask> instead.
 
 Exports all discovered configuration data to an Amazon S3 bucket or an
 application that enables you to view and evaluate the data. Data
@@ -357,7 +357,7 @@ Each argument is described in detail in: L<Paws::Discovery::GetDiscoverySummary>
 
 Returns: a L<Paws::Discovery::GetDiscoverySummaryResponse> instance
 
-  Retrieves a short summary of discovered assets.
+Retrieves a short summary of discovered assets.
 
 
 =head2 ListConfigurations(ConfigurationType => Str, [Filters => ArrayRef[L<Paws::Discovery::Filter>], MaxResults => Int, NextToken => Str, OrderBy => ArrayRef[L<Paws::Discovery::OrderByElement>]])
@@ -366,7 +366,7 @@ Each argument is described in detail in: L<Paws::Discovery::ListConfigurations>
 
 Returns: a L<Paws::Discovery::ListConfigurationsResponse> instance
 
-  Retrieves a list of configuration items according to criteria that you
+Retrieves a list of configuration items according to criteria that you
 specify in a filter. The filter criteria identifies the relationship
 requirements.
 
@@ -377,7 +377,7 @@ Each argument is described in detail in: L<Paws::Discovery::ListServerNeighbors>
 
 Returns: a L<Paws::Discovery::ListServerNeighborsResponse> instance
 
-  Retrieves a list of servers that are one network hop away from a
+Retrieves a list of servers that are one network hop away from a
 specified server.
 
 
@@ -387,7 +387,7 @@ Each argument is described in detail in: L<Paws::Discovery::StartDataCollectionB
 
 Returns: a L<Paws::Discovery::StartDataCollectionByAgentIdsResponse> instance
 
-  Instructs the specified agents or connectors to start collecting data.
+Instructs the specified agents or connectors to start collecting data.
 
 
 =head2 StartExportTask([EndTime => Str, ExportDataFormat => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Discovery::ExportFilter>], StartTime => Str])
@@ -396,7 +396,7 @@ Each argument is described in detail in: L<Paws::Discovery::StartExportTask>
 
 Returns: a L<Paws::Discovery::StartExportTaskResponse> instance
 
-  Begins the export of discovered data to an S3 bucket.
+Begins the export of discovered data to an S3 bucket.
 
 If you specify C<agentId> in a filter, the task exports up to 72 hours
 of detailed data collected by the identified Application Discovery
@@ -417,7 +417,7 @@ Each argument is described in detail in: L<Paws::Discovery::StopDataCollectionBy
 
 Returns: a L<Paws::Discovery::StopDataCollectionByAgentIdsResponse> instance
 
-  Instructs the specified agents or connectors to stop collecting data.
+Instructs the specified agents or connectors to stop collecting data.
 
 
 =head2 UpdateApplication(ConfigurationId => Str, [Description => Str, Name => Str])
@@ -426,7 +426,7 @@ Each argument is described in detail in: L<Paws::Discovery::UpdateApplication>
 
 Returns: a L<Paws::Discovery::UpdateApplicationResponse> instance
 
-  Updates metadata about an application.
+Updates metadata about an application.
 
 
 
@@ -444,9 +444,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

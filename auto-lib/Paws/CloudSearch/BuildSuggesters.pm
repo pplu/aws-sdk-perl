@@ -14,7 +14,7 @@ package Paws::CloudSearch::BuildSuggesters;
 
 =head1 NAME
 
-Paws::CloudSearch::BuildSuggesters - Arguments for method BuildSuggesters on Paws::CloudSearch
+Paws::CloudSearch::BuildSuggesters - Arguments for method BuildSuggesters on L<Paws::CloudSearch>
 
 =head1 DESCRIPTION
 
@@ -46,9 +46,9 @@ This class forms part of L<Paws>, documenting arguments for method BuildSuggeste
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

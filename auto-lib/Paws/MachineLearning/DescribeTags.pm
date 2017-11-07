@@ -15,7 +15,7 @@ package Paws::MachineLearning::DescribeTags;
 
 =head1 NAME
 
-Paws::MachineLearning::DescribeTags - Arguments for method DescribeTags on Paws::MachineLearning
+Paws::MachineLearning::DescribeTags - Arguments for method DescribeTags on L<Paws::MachineLearning>
 
 =head1 DESCRIPTION
 
@@ -53,9 +53,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeTags 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

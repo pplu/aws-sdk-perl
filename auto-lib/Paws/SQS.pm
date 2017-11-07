@@ -265,7 +265,7 @@ Each argument is described in detail in: L<Paws::SQS::AddPermission>
 
 Returns: nothing
 
-  Adds a permission to a queue for a specific principal. This allows
+Adds a permission to a queue for a specific principal. This allows
 sharing access to the queue.
 
 When you create a queue, you have full control access rights for the
@@ -294,7 +294,7 @@ Each argument is described in detail in: L<Paws::SQS::ChangeMessageVisibility>
 
 Returns: nothing
 
-  Changes the visibility timeout of a specified message in a queue to a
+Changes the visibility timeout of a specified message in a queue to a
 new value. The maximum allowed timeout value is 12 hours. Thus, you
 can't extend the timeout of a message in an existing queue to more than
 a total visibility timeout of 12 hours. For more information, see
@@ -342,7 +342,7 @@ Each argument is described in detail in: L<Paws::SQS::ChangeMessageVisibilityBat
 
 Returns: a L<Paws::SQS::ChangeMessageVisibilityBatchResult> instance
 
-  Changes the visibility timeout of multiple messages. This is a batch
+Changes the visibility timeout of multiple messages. This is a batch
 version of C< ChangeMessageVisibility.> The result of the action on
 each message is reported individually in the response. You can send up
 to 10 C< ChangeMessageVisibility > requests with each
@@ -367,7 +367,7 @@ Each argument is described in detail in: L<Paws::SQS::CreateQueue>
 
 Returns: a L<Paws::SQS::CreateQueueResult> instance
 
-  Creates a new standard or FIFO queue. You can pass one or more
+Creates a new standard or FIFO queue. You can pass one or more
 attributes in the request. Keep the following caveats in mind:
 
 =over
@@ -434,7 +434,7 @@ Each argument is described in detail in: L<Paws::SQS::DeleteMessage>
 
 Returns: nothing
 
-  Deletes the specified message from the specified queue. You specify the
+Deletes the specified message from the specified queue. You specify the
 message by using the message's I<receipt handle> and not the
 I<MessageId> you receive when you send the message. Even if the message
 is locked by another reader due to the visibility timeout setting, it
@@ -464,7 +464,7 @@ Each argument is described in detail in: L<Paws::SQS::DeleteMessageBatch>
 
 Returns: a L<Paws::SQS::DeleteMessageBatchResult> instance
 
-  Deletes up to ten messages from the specified queue. This is a batch
+Deletes up to ten messages from the specified queue. This is a batch
 version of C< DeleteMessage.> The result of the action on each message
 is reported individually in the response.
 
@@ -487,7 +487,7 @@ Each argument is described in detail in: L<Paws::SQS::DeleteQueue>
 
 Returns: nothing
 
-  Deletes the queue specified by the C<QueueUrl>, regardless of the
+Deletes the queue specified by the C<QueueUrl>, regardless of the
 queue's contents. If the specified queue doesn't exist, Amazon SQS
 returns a successful response.
 
@@ -509,7 +509,7 @@ Each argument is described in detail in: L<Paws::SQS::GetQueueAttributes>
 
 Returns: a L<Paws::SQS::GetQueueAttributesResult> instance
 
-  Gets attributes for the specified queue.
+Gets attributes for the specified queue.
 
 To determine whether a queue is FIFO, you can check whether
 C<QueueName> ends with the C<.fifo> suffix.
@@ -529,7 +529,7 @@ Each argument is described in detail in: L<Paws::SQS::GetQueueUrl>
 
 Returns: a L<Paws::SQS::GetQueueUrlResult> instance
 
-  Returns the URL of an existing queue. This action provides a simple way
+Returns the URL of an existing queue. This action provides a simple way
 to retrieve the URL of an Amazon SQS queue.
 
 To access a queue that belongs to another AWS account, use the
@@ -546,7 +546,7 @@ Each argument is described in detail in: L<Paws::SQS::ListDeadLetterSourceQueues
 
 Returns: a L<Paws::SQS::ListDeadLetterSourceQueuesResult> instance
 
-  Returns a list of your queues that have the C<RedrivePolicy> queue
+Returns a list of your queues that have the C<RedrivePolicy> queue
 attribute configured with a dead-letter queue.
 
 For more information about using dead-letter queues, see Using Amazon
@@ -560,7 +560,7 @@ Each argument is described in detail in: L<Paws::SQS::ListQueues>
 
 Returns: a L<Paws::SQS::ListQueuesResult> instance
 
-  Returns a list of your queues. The maximum number of queues that can be
+Returns a list of your queues. The maximum number of queues that can be
 returned is 1,000. If you specify a value for the optional
 C<QueueNamePrefix> parameter, only queues with a name that begins with
 the specified value are returned.
@@ -572,7 +572,7 @@ Each argument is described in detail in: L<Paws::SQS::ListQueueTags>
 
 Returns: a L<Paws::SQS::ListQueueTagsResult> instance
 
-  List all cost allocation tags added to the specified Amazon SQS queue.
+List all cost allocation tags added to the specified Amazon SQS queue.
 For an overview, see Tagging Amazon SQS Queues in the I<Amazon Simple
 Queue Service Developer Guide>.
 
@@ -616,7 +616,7 @@ Each argument is described in detail in: L<Paws::SQS::PurgeQueue>
 
 Returns: nothing
 
-  Deletes the messages in a queue specified by the C<QueueURL> parameter.
+Deletes the messages in a queue specified by the C<QueueURL> parameter.
 
 When you use the C<PurgeQueue> action, you can't retrieve a message
 deleted from a queue.
@@ -635,7 +635,7 @@ Each argument is described in detail in: L<Paws::SQS::ReceiveMessage>
 
 Returns: a L<Paws::SQS::ReceiveMessageResult> instance
 
-  Retrieves one or more messages (up to 10), from the specified queue.
+Retrieves one or more messages (up to 10), from the specified queue.
 Using the C<WaitTimeSeconds> parameter enables long-poll support. For
 more information, see Amazon SQS Long Polling in the I<Amazon Simple
 Queue Service Developer Guide>.
@@ -707,7 +707,7 @@ Each argument is described in detail in: L<Paws::SQS::RemovePermission>
 
 Returns: nothing
 
-  Revokes any permissions in the queue policy that matches the specified
+Revokes any permissions in the queue policy that matches the specified
 C<Label> parameter. Only the owner of the queue can remove permissions.
 
 
@@ -717,7 +717,7 @@ Each argument is described in detail in: L<Paws::SQS::SendMessage>
 
 Returns: a L<Paws::SQS::SendMessageResult> instance
 
-  Delivers a message to the specified queue.
+Delivers a message to the specified queue.
 
 A message can include only XML, JSON, and unformatted text. The
 following Unicode characters are allowed:
@@ -735,7 +735,7 @@ Each argument is described in detail in: L<Paws::SQS::SendMessageBatch>
 
 Returns: a L<Paws::SQS::SendMessageBatchResult> instance
 
-  Delivers up to ten messages to the specified queue. This is a batch
+Delivers up to ten messages to the specified queue. This is a batch
 version of C< SendMessage.> For a FIFO queue, multiple messages within
 a single batch are enqueued in the order they are sent.
 
@@ -775,7 +775,7 @@ Each argument is described in detail in: L<Paws::SQS::SetQueueAttributes>
 
 Returns: nothing
 
-  Sets the value of one or more queue attributes. When you change a
+Sets the value of one or more queue attributes. When you change a
 queue's attributes, the change can take up to 60 seconds for most of
 the attributes to propagate throughout the Amazon SQS system. Changes
 made to the C<MessageRetentionPeriod> attribute can take up to 15
@@ -792,7 +792,7 @@ Each argument is described in detail in: L<Paws::SQS::TagQueue>
 
 Returns: nothing
 
-  Add cost allocation tags to the specified Amazon SQS queue. For an
+Add cost allocation tags to the specified Amazon SQS queue. For an
 overview, see Tagging Amazon SQS Queues in the I<Amazon Simple Queue
 Service Developer Guide>.
 
@@ -836,7 +836,7 @@ Each argument is described in detail in: L<Paws::SQS::UntagQueue>
 
 Returns: nothing
 
-  Remove cost allocation tags from the specified Amazon SQS queue. For an
+Remove cost allocation tags from the specified Amazon SQS queue. For an
 overview, see Tagging Amazon SQS Queues in the I<Amazon Simple Queue
 Service Developer Guide>.
 
@@ -889,9 +889,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -22,7 +22,7 @@ package Paws::SES::SendEmail;
 
 =head1 NAME
 
-Paws::SES::SendEmail - Arguments for method SendEmail on Paws::SES
+Paws::SES::SendEmail - Arguments for method SendEmail on L<Paws::SES>
 
 =head1 DESCRIPTION
 
@@ -154,9 +154,9 @@ This class forms part of L<Paws>, documenting arguments for method SendEmail in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

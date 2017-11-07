@@ -16,7 +16,7 @@ package Paws::KMS::Decrypt;
 
 =head1 NAME
 
-Paws::KMS::Decrypt - Arguments for method Decrypt on Paws::KMS
+Paws::KMS::Decrypt - Arguments for method Decrypt on L<Paws::KMS>
 
 =head1 DESCRIPTION
 
@@ -65,9 +65,9 @@ This class forms part of L<Paws>, documenting arguments for method Decrypt in L<
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

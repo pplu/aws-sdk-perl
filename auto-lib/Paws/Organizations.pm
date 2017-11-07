@@ -652,7 +652,7 @@ Each argument is described in detail in: L<Paws::Organizations::AcceptHandshake>
 
 Returns: a L<Paws::Organizations::AcceptHandshakeResponse> instance
 
-  Sends a response to the originator of a handshake agreeing to the
+Sends a response to the originator of a handshake agreeing to the
 action proposed by the handshake request.
 
 This operation can be called only by the following principals when they
@@ -697,7 +697,7 @@ Each argument is described in detail in: L<Paws::Organizations::AttachPolicy>
 
 Returns: nothing
 
-  Attaches a policy to a root, an organizational unit, or an individual
+Attaches a policy to a root, an organizational unit, or an individual
 account. How the policy affects accounts depends on the type of policy:
 
 =over
@@ -764,7 +764,7 @@ Each argument is described in detail in: L<Paws::Organizations::CancelHandshake>
 
 Returns: a L<Paws::Organizations::CancelHandshakeResponse> instance
 
-  Cancels a handshake. Canceling a handshake sets the handshake state to
+Cancels a handshake. Canceling a handshake sets the handshake state to
 C<CANCELED>.
 
 This operation can be called only from the account that originated the
@@ -782,7 +782,7 @@ Each argument is described in detail in: L<Paws::Organizations::CreateAccount>
 
 Returns: a L<Paws::Organizations::CreateAccountResponse> instance
 
-  Creates an AWS account that is automatically a member of the
+Creates an AWS account that is automatically a member of the
 organization whose credentials made the request. This is an
 asynchronous request that AWS performs in the background. If you want
 to check the status of the request later, you need the C<OperationId>
@@ -844,7 +844,7 @@ Each argument is described in detail in: L<Paws::Organizations::CreateOrganizati
 
 Returns: a L<Paws::Organizations::CreateOrganizationResponse> instance
 
-  Creates an AWS organization. The account whose user is calling the
+Creates an AWS organization. The account whose user is calling the
 CreateOrganization operation automatically becomes the master account
 of the new organization.
 
@@ -867,7 +867,7 @@ Each argument is described in detail in: L<Paws::Organizations::CreateOrganizati
 
 Returns: a L<Paws::Organizations::CreateOrganizationalUnitResponse> instance
 
-  Creates an organizational unit (OU) within a root or parent OU. An OU
+Creates an organizational unit (OU) within a root or parent OU. An OU
 is a container for accounts that enables you to organize your accounts
 to apply policies according to your business requirements. The number
 of levels deep that you can nest OUs is dependent upon the policy types
@@ -886,7 +886,7 @@ Each argument is described in detail in: L<Paws::Organizations::CreatePolicy>
 
 Returns: a L<Paws::Organizations::CreatePolicyResponse> instance
 
-  Creates a policy of a specified type that you can attach to a root, an
+Creates a policy of a specified type that you can attach to a root, an
 organizational unit (OU), or an individual AWS account.
 
 For more information about policies and their use, see Managing
@@ -902,7 +902,7 @@ Each argument is described in detail in: L<Paws::Organizations::DeclineHandshake
 
 Returns: a L<Paws::Organizations::DeclineHandshakeResponse> instance
 
-  Declines a handshake request. This sets the handshake state to
+Declines a handshake request. This sets the handshake state to
 C<DECLINED> and effectively deactivates the request.
 
 This operation can be called only from the account that received the
@@ -920,7 +920,7 @@ Each argument is described in detail in: L<Paws::Organizations::DeleteOrganizati
 
 Returns: nothing
 
-  Deletes the organization. You can delete an organization only by using
+Deletes the organization. You can delete an organization only by using
 credentials from the master account. The organization must be empty of
 member accounts, OUs, and policies.
 
@@ -931,7 +931,7 @@ Each argument is described in detail in: L<Paws::Organizations::DeleteOrganizati
 
 Returns: nothing
 
-  Deletes an organizational unit from a root or another OU. You must
+Deletes an organizational unit from a root or another OU. You must
 first remove all accounts and child OUs from the OU that you want to
 delete.
 
@@ -945,7 +945,7 @@ Each argument is described in detail in: L<Paws::Organizations::DeletePolicy>
 
 Returns: nothing
 
-  Deletes the specified policy from your organization. Before you perform
+Deletes the specified policy from your organization. Before you perform
 this operation, you must first detach the policy from all OUs, roots,
 and accounts.
 
@@ -959,7 +959,7 @@ Each argument is described in detail in: L<Paws::Organizations::DescribeAccount>
 
 Returns: a L<Paws::Organizations::DescribeAccountResponse> instance
 
-  Retrieves Organizations-related information about the specified
+Retrieves Organizations-related information about the specified
 account.
 
 This operation can be called only from the organization's master
@@ -972,7 +972,7 @@ Each argument is described in detail in: L<Paws::Organizations::DescribeCreateAc
 
 Returns: a L<Paws::Organizations::DescribeCreateAccountStatusResponse> instance
 
-  Retrieves the current status of an asynchronous request to create an
+Retrieves the current status of an asynchronous request to create an
 account.
 
 This operation can be called only from the organization's master
@@ -985,7 +985,7 @@ Each argument is described in detail in: L<Paws::Organizations::DescribeHandshak
 
 Returns: a L<Paws::Organizations::DescribeHandshakeResponse> instance
 
-  Retrieves information about a previously requested handshake. The
+Retrieves information about a previously requested handshake. The
 handshake ID comes from the response to the original
 InviteAccountToOrganization operation that generated the handshake.
 
@@ -1002,7 +1002,7 @@ Each argument is described in detail in: L<Paws::Organizations::DescribeOrganiza
 
 Returns: a L<Paws::Organizations::DescribeOrganizationResponse> instance
 
-  Retrieves information about the organization that the user's account
+Retrieves information about the organization that the user's account
 belongs to.
 
 This operation can be called from any account in the organization.
@@ -1014,7 +1014,7 @@ Each argument is described in detail in: L<Paws::Organizations::DescribeOrganiza
 
 Returns: a L<Paws::Organizations::DescribeOrganizationalUnitResponse> instance
 
-  Retrieves information about an organizational unit (OU).
+Retrieves information about an organizational unit (OU).
 
 This operation can be called only from the organization's master
 account.
@@ -1026,7 +1026,7 @@ Each argument is described in detail in: L<Paws::Organizations::DescribePolicy>
 
 Returns: a L<Paws::Organizations::DescribePolicyResponse> instance
 
-  Retrieves information about a policy.
+Retrieves information about a policy.
 
 This operation can be called only from the organization's master
 account.
@@ -1038,7 +1038,7 @@ Each argument is described in detail in: L<Paws::Organizations::DetachPolicy>
 
 Returns: nothing
 
-  Detaches a policy from a target root, organizational unit, or account.
+Detaches a policy from a target root, organizational unit, or account.
 If the policy being detached is a service control policy (SCP), the
 changes to permissions for IAM users and roles in affected accounts are
 immediate.
@@ -1064,7 +1064,7 @@ Each argument is described in detail in: L<Paws::Organizations::DisablePolicyTyp
 
 Returns: a L<Paws::Organizations::DisablePolicyTypeResponse> instance
 
-  Disables an organizational control policy type in a root. A policy of a
+Disables an organizational control policy type in a root. A policy of a
 certain type can be attached to entities in a root only if that type is
 enabled in the root. After you perform this operation, you no longer
 can attach policies of the specified type to that root or to any OU or
@@ -1081,7 +1081,7 @@ Each argument is described in detail in: L<Paws::Organizations::EnableAllFeature
 
 Returns: a L<Paws::Organizations::EnableAllFeaturesResponse> instance
 
-  Enables all features in an organization. This enables the use of
+Enables all features in an organization. This enables the use of
 organization policies that can restrict the services and actions that
 can be called in each account. Until you enable all features, you have
 access only to consolidated billing, and you can't use any of the
@@ -1119,7 +1119,7 @@ Each argument is described in detail in: L<Paws::Organizations::EnablePolicyType
 
 Returns: a L<Paws::Organizations::EnablePolicyTypeResponse> instance
 
-  Enables a policy type in a root. After you enable a policy type in a
+Enables a policy type in a root. After you enable a policy type in a
 root, you can attach policies of that type to the root, any OU, or
 account in that root. You can undo this by using the DisablePolicyType
 operation.
@@ -1134,7 +1134,7 @@ Each argument is described in detail in: L<Paws::Organizations::InviteAccountToO
 
 Returns: a L<Paws::Organizations::InviteAccountToOrganizationResponse> instance
 
-  Sends an invitation to another account to join your organization as a
+Sends an invitation to another account to join your organization as a
 member account. Organizations sends email on your behalf to the email
 address that is associated with the other account's owner. The
 invitation is implemented as a Handshake whose details are in the
@@ -1162,7 +1162,7 @@ Each argument is described in detail in: L<Paws::Organizations::LeaveOrganizatio
 
 Returns: nothing
 
-  Removes a member account from its parent organization. This version of
+Removes a member account from its parent organization. This version of
 the operation is performed by the account that wants to leave. To
 remove a member account as a user in the master account, use
 RemoveAccountFromOrganization instead.
@@ -1212,7 +1212,7 @@ Each argument is described in detail in: L<Paws::Organizations::ListAccounts>
 
 Returns: a L<Paws::Organizations::ListAccountsResponse> instance
 
-  Lists all the accounts in the organization. To request only the
+Lists all the accounts in the organization. To request only the
 accounts in a root or OU, use the ListAccountsForParent operation
 instead.
 
@@ -1226,7 +1226,7 @@ Each argument is described in detail in: L<Paws::Organizations::ListAccountsForP
 
 Returns: a L<Paws::Organizations::ListAccountsForParentResponse> instance
 
-  Lists the accounts in an organization that are contained by the
+Lists the accounts in an organization that are contained by the
 specified target root or organizational unit (OU). If you specify the
 root, you get a list of all the accounts that are not in any OU. If you
 specify an OU, you get a list of all the accounts in only that OU, and
@@ -1243,7 +1243,7 @@ Each argument is described in detail in: L<Paws::Organizations::ListChildren>
 
 Returns: a L<Paws::Organizations::ListChildrenResponse> instance
 
-  Lists all of the OUs or accounts that are contained in the specified
+Lists all of the OUs or accounts that are contained in the specified
 parent OU or root. This operation, along with ListParents enables you
 to traverse the tree structure that makes up this root.
 
@@ -1257,7 +1257,7 @@ Each argument is described in detail in: L<Paws::Organizations::ListCreateAccoun
 
 Returns: a L<Paws::Organizations::ListCreateAccountStatusResponse> instance
 
-  Lists the account creation requests that match the specified status
+Lists the account creation requests that match the specified status
 that is currently being tracked for the organization.
 
 This operation can be called only from the organization's master
@@ -1270,7 +1270,7 @@ Each argument is described in detail in: L<Paws::Organizations::ListHandshakesFo
 
 Returns: a L<Paws::Organizations::ListHandshakesForAccountResponse> instance
 
-  Lists the current handshakes that are associated with the account of
+Lists the current handshakes that are associated with the account of
 the requesting user.
 
 Handshakes that are ACCEPTED, DECLINED, or CANCELED appear in the
@@ -1286,7 +1286,7 @@ Each argument is described in detail in: L<Paws::Organizations::ListHandshakesFo
 
 Returns: a L<Paws::Organizations::ListHandshakesForOrganizationResponse> instance
 
-  Lists the handshakes that are associated with the organization that the
+Lists the handshakes that are associated with the organization that the
 requesting user is part of. The C<ListHandshakesForOrganization>
 operation returns a list of handshake structures. Each structure
 contains details and status about a handshake.
@@ -1305,7 +1305,7 @@ Each argument is described in detail in: L<Paws::Organizations::ListOrganization
 
 Returns: a L<Paws::Organizations::ListOrganizationalUnitsForParentResponse> instance
 
-  Lists the organizational units (OUs) in a parent organizational unit or
+Lists the organizational units (OUs) in a parent organizational unit or
 root.
 
 This operation can be called only from the organization's master
@@ -1318,7 +1318,7 @@ Each argument is described in detail in: L<Paws::Organizations::ListParents>
 
 Returns: a L<Paws::Organizations::ListParentsResponse> instance
 
-  Lists the root or organizational units (OUs) that serve as the
+Lists the root or organizational units (OUs) that serve as the
 immediate parent of the specified child OU or account. This operation,
 along with ListChildren enables you to traverse the tree structure that
 makes up this root.
@@ -1335,7 +1335,7 @@ Each argument is described in detail in: L<Paws::Organizations::ListPolicies>
 
 Returns: a L<Paws::Organizations::ListPoliciesResponse> instance
 
-  Retrieves the list of all policies in an organization of a specified
+Retrieves the list of all policies in an organization of a specified
 type.
 
 This operation can be called only from the organization's master
@@ -1348,7 +1348,7 @@ Each argument is described in detail in: L<Paws::Organizations::ListPoliciesForT
 
 Returns: a L<Paws::Organizations::ListPoliciesForTargetResponse> instance
 
-  Lists the policies that are directly attached to the specified target
+Lists the policies that are directly attached to the specified target
 root, organizational unit (OU), or account. You must specify the policy
 type that you want included in the returned list.
 
@@ -1362,7 +1362,7 @@ Each argument is described in detail in: L<Paws::Organizations::ListRoots>
 
 Returns: a L<Paws::Organizations::ListRootsResponse> instance
 
-  Lists the roots that are defined in the current organization.
+Lists the roots that are defined in the current organization.
 
 This operation can be called only from the organization's master
 account.
@@ -1374,7 +1374,7 @@ Each argument is described in detail in: L<Paws::Organizations::ListTargetsForPo
 
 Returns: a L<Paws::Organizations::ListTargetsForPolicyResponse> instance
 
-  Lists all the roots, OUs, and accounts to which the specified policy is
+Lists all the roots, OUs, and accounts to which the specified policy is
 attached.
 
 This operation can be called only from the organization's master
@@ -1387,7 +1387,7 @@ Each argument is described in detail in: L<Paws::Organizations::MoveAccount>
 
 Returns: nothing
 
-  Moves an account from its current source parent root or OU to the
+Moves an account from its current source parent root or OU to the
 specified destination parent root or OU.
 
 This operation can be called only from the organization's master
@@ -1400,7 +1400,7 @@ Each argument is described in detail in: L<Paws::Organizations::RemoveAccountFro
 
 Returns: nothing
 
-  Removes the specified account from the organization.
+Removes the specified account from the organization.
 
 The removed account becomes a stand-alone account that is not a member
 of any organization. It is no longer subject to any policies and is
@@ -1448,7 +1448,7 @@ Each argument is described in detail in: L<Paws::Organizations::UpdateOrganizati
 
 Returns: a L<Paws::Organizations::UpdateOrganizationalUnitResponse> instance
 
-  Renames the specified organizational unit (OU). The ID and ARN do not
+Renames the specified organizational unit (OU). The ID and ARN do not
 change. The child OUs and accounts remain in place, and any attached
 policies of the OU remain attached.
 
@@ -1462,7 +1462,7 @@ Each argument is described in detail in: L<Paws::Organizations::UpdatePolicy>
 
 Returns: a L<Paws::Organizations::UpdatePolicyResponse> instance
 
-  Updates an existing policy with a new name, description, or content. If
+Updates an existing policy with a new name, description, or content. If
 any parameter is not supplied, that value remains unchanged. Note that
 you cannot change a policy's type.
 
@@ -1629,9 +1629,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -197,7 +197,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::CreateTags>
 
 Returns: a L<Paws::WorkSpaces::CreateTagsResult> instance
 
-  Creates tags for a WorkSpace.
+Creates tags for a WorkSpace.
 
 
 =head2 CreateWorkspaces(Workspaces => ArrayRef[L<Paws::WorkSpaces::WorkspaceRequest>])
@@ -206,7 +206,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::CreateWorkspaces>
 
 Returns: a L<Paws::WorkSpaces::CreateWorkspacesResult> instance
 
-  Creates one or more WorkSpaces.
+Creates one or more WorkSpaces.
 
 This operation is asynchronous and returns before the WorkSpaces are
 created.
@@ -218,7 +218,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DeleteTags>
 
 Returns: a L<Paws::WorkSpaces::DeleteTagsResult> instance
 
-  Deletes tags from a WorkSpace.
+Deletes tags from a WorkSpace.
 
 
 =head2 DescribeTags(ResourceId => Str)
@@ -227,7 +227,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DescribeTags>
 
 Returns: a L<Paws::WorkSpaces::DescribeTagsResult> instance
 
-  Describes tags for a WorkSpace.
+Describes tags for a WorkSpace.
 
 
 =head2 DescribeWorkspaceBundles([BundleIds => ArrayRef[Str|Undef], NextToken => Str, Owner => Str])
@@ -236,7 +236,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaceBu
 
 Returns: a L<Paws::WorkSpaces::DescribeWorkspaceBundlesResult> instance
 
-  Obtains information about the WorkSpace bundles that are available to
+Obtains information about the WorkSpace bundles that are available to
 your account in the specified region.
 
 You can filter the results with either the C<BundleIds> parameter, or
@@ -254,7 +254,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaceDi
 
 Returns: a L<Paws::WorkSpaces::DescribeWorkspaceDirectoriesResult> instance
 
-  Retrieves information about the AWS Directory Service directories in
+Retrieves information about the AWS Directory Service directories in
 the region that are registered with Amazon WorkSpaces and are available
 to your account.
 
@@ -270,7 +270,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaces>
 
 Returns: a L<Paws::WorkSpaces::DescribeWorkspacesResult> instance
 
-  Obtains information about the specified WorkSpaces.
+Obtains information about the specified WorkSpaces.
 
 Only one of the filter parameters, such as C<BundleId>, C<DirectoryId>,
 or C<WorkspaceIds>, can be specified at a time.
@@ -287,7 +287,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspacesC
 
 Returns: a L<Paws::WorkSpaces::DescribeWorkspacesConnectionStatusResult> instance
 
-  Describes the connection status of a specified WorkSpace.
+Describes the connection status of a specified WorkSpace.
 
 
 =head2 ModifyWorkspaceProperties(WorkspaceId => Str, WorkspaceProperties => L<Paws::WorkSpaces::WorkspaceProperties>)
@@ -296,7 +296,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::ModifyWorkspaceProp
 
 Returns: a L<Paws::WorkSpaces::ModifyWorkspacePropertiesResult> instance
 
-  Modifies the WorkSpace properties, including the running mode and
+Modifies the WorkSpace properties, including the running mode and
 AutoStop time.
 
 
@@ -306,7 +306,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::RebootWorkspaces>
 
 Returns: a L<Paws::WorkSpaces::RebootWorkspacesResult> instance
 
-  Reboots the specified WorkSpaces.
+Reboots the specified WorkSpaces.
 
 To be able to reboot a WorkSpace, the WorkSpace must have a B<State> of
 C<AVAILABLE>, C<IMPAIRED>, or C<INOPERABLE>.
@@ -321,7 +321,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::RebuildWorkspaces>
 
 Returns: a L<Paws::WorkSpaces::RebuildWorkspacesResult> instance
 
-  Rebuilds the specified WorkSpaces.
+Rebuilds the specified WorkSpaces.
 
 Rebuilding a WorkSpace is a potentially destructive action that can
 result in the loss of data. Rebuilding a WorkSpace causes the following
@@ -358,7 +358,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::StartWorkspaces>
 
 Returns: a L<Paws::WorkSpaces::StartWorkspacesResult> instance
 
-  Starts the specified WorkSpaces. The WorkSpaces must have a running
+Starts the specified WorkSpaces. The WorkSpaces must have a running
 mode of AutoStop and a state of STOPPED.
 
 
@@ -368,7 +368,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::StopWorkspaces>
 
 Returns: a L<Paws::WorkSpaces::StopWorkspacesResult> instance
 
-  Stops the specified WorkSpaces. The WorkSpaces must have a running mode
+Stops the specified WorkSpaces. The WorkSpaces must have a running mode
 of AutoStop and a state of AVAILABLE, IMPAIRED, UNHEALTHY, or ERROR.
 
 
@@ -378,7 +378,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::TerminateWorkspaces
 
 Returns: a L<Paws::WorkSpaces::TerminateWorkspacesResult> instance
 
-  Terminates the specified WorkSpaces.
+Terminates the specified WorkSpaces.
 
 Terminating a WorkSpace is a permanent action and cannot be undone. The
 user's data is not maintained and will be destroyed. If you need to
@@ -442,9 +442,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

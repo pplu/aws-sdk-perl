@@ -20,7 +20,7 @@ package Paws::ELB::CreateLoadBalancer;
 
 =head1 NAME
 
-Paws::ELB::CreateLoadBalancer - Arguments for method CreateLoadBalancer on Paws::ELB
+Paws::ELB::CreateLoadBalancer - Arguments for method CreateLoadBalancer on L<Paws::ELB>
 
 =head1 DESCRIPTION
 
@@ -115,9 +115,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateLoadBal
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

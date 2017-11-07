@@ -14,7 +14,7 @@ package Paws::StorageGateway::RefreshCache;
 
 =head1 NAME
 
-Paws::StorageGateway::RefreshCache - Arguments for method RefreshCache on Paws::StorageGateway
+Paws::StorageGateway::RefreshCache - Arguments for method RefreshCache on L<Paws::StorageGateway>
 
 =head1 DESCRIPTION
 
@@ -46,9 +46,9 @@ This class forms part of L<Paws>, documenting arguments for method RefreshCache 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

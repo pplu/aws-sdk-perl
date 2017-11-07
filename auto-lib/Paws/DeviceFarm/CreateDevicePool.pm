@@ -17,7 +17,7 @@ package Paws::DeviceFarm::CreateDevicePool;
 
 =head1 NAME
 
-Paws::DeviceFarm::CreateDevicePool - Arguments for method CreateDevicePool on Paws::DeviceFarm
+Paws::DeviceFarm::CreateDevicePool - Arguments for method CreateDevicePool on L<Paws::DeviceFarm>
 
 =head1 DESCRIPTION
 
@@ -67,9 +67,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateDeviceP
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -21,7 +21,7 @@ package Paws::ApiGateway::TestInvokeAuthorizer;
 
 =head1 NAME
 
-Paws::ApiGateway::TestInvokeAuthorizer - Arguments for method TestInvokeAuthorizer on Paws::ApiGateway
+Paws::ApiGateway::TestInvokeAuthorizer - Arguments for method TestInvokeAuthorizer on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -95,9 +95,9 @@ This class forms part of L<Paws>, documenting arguments for method TestInvokeAut
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

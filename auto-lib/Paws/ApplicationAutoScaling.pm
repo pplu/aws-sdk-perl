@@ -213,7 +213,7 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DeleteS
 
 Returns: a L<Paws::ApplicationAutoScaling::DeleteScalingPolicyResponse> instance
 
-  Deletes the specified Application Auto Scaling scaling policy.
+Deletes the specified Application Auto Scaling scaling policy.
 
 Deleting a policy deletes the underlying alarm action, but does not
 delete the CloudWatch alarm associated with the scaling policy, even if
@@ -229,7 +229,7 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::Deregis
 
 Returns: a L<Paws::ApplicationAutoScaling::DeregisterScalableTargetResponse> instance
 
-  Deregisters a scalable target.
+Deregisters a scalable target.
 
 Deregistering a scalable target deletes the scaling policies that are
 associated with it.
@@ -244,7 +244,7 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::Describ
 
 Returns: a L<Paws::ApplicationAutoScaling::DescribeScalableTargetsResponse> instance
 
-  Provides descriptive information about the scalable targets in the
+Provides descriptive information about the scalable targets in the
 specified namespace.
 
 You can filter the results using the C<ResourceIds> and
@@ -261,7 +261,7 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::Describ
 
 Returns: a L<Paws::ApplicationAutoScaling::DescribeScalingActivitiesResponse> instance
 
-  Provides descriptive information about the scaling activities in the
+Provides descriptive information about the scaling activities in the
 specified namespace from the previous six weeks.
 
 You can filter the results using the C<ResourceId> and
@@ -279,7 +279,7 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::Describ
 
 Returns: a L<Paws::ApplicationAutoScaling::DescribeScalingPoliciesResponse> instance
 
-  Provides descriptive information about the scaling policies in the
+Provides descriptive information about the scaling policies in the
 specified namespace.
 
 You can filter the results using the C<ResourceId>,
@@ -296,7 +296,7 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::PutScal
 
 Returns: a L<Paws::ApplicationAutoScaling::PutScalingPolicyResponse> instance
 
-  Creates or updates a policy for an Application Auto Scaling scalable
+Creates or updates a policy for an Application Auto Scaling scalable
 target.
 
 Each scalable target is identified by a service namespace, resource ID,
@@ -320,7 +320,7 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::Registe
 
 Returns: a L<Paws::ApplicationAutoScaling::RegisterScalableTargetResponse> instance
 
-  Registers or updates a scalable target. A scalable target is a resource
+Registers or updates a scalable target. A scalable target is a resource
 that Application Auto Scaling can scale out or scale in. After you have
 registered a scalable target, you can use this operation to update the
 minimum and maximum values for your scalable dimension.
@@ -383,9 +383,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -202,7 +202,7 @@ Each argument is described in detail in: L<Paws::ResourceTagging::GetResources>
 
 Returns: a L<Paws::ResourceTagging::GetResourcesOutput> instance
 
-  Returns all the tagged resources that are associated with the specified
+Returns all the tagged resources that are associated with the specified
 tags (keys and values) located in the specified region for the AWS
 account. The tags and the resource types that you specify in the
 request are known as I<filters>. The response includes all tags that
@@ -216,7 +216,7 @@ Each argument is described in detail in: L<Paws::ResourceTagging::GetTagKeys>
 
 Returns: a L<Paws::ResourceTagging::GetTagKeysOutput> instance
 
-  Returns all tag keys in the specified region for the AWS account.
+Returns all tag keys in the specified region for the AWS account.
 
 
 =head2 GetTagValues(Key => Str, [PaginationToken => Str])
@@ -225,7 +225,7 @@ Each argument is described in detail in: L<Paws::ResourceTagging::GetTagValues>
 
 Returns: a L<Paws::ResourceTagging::GetTagValuesOutput> instance
 
-  Returns all tag values for the specified key in the specified region
+Returns all tag values for the specified key in the specified region
 for the AWS account.
 
 
@@ -235,7 +235,7 @@ Each argument is described in detail in: L<Paws::ResourceTagging::TagResources>
 
 Returns: a L<Paws::ResourceTagging::TagResourcesOutput> instance
 
-  Applies one or more tags to the specified resources. Note the
+Applies one or more tags to the specified resources. Note the
 following:
 
 =over
@@ -273,7 +273,7 @@ Each argument is described in detail in: L<Paws::ResourceTagging::UntagResources
 
 Returns: a L<Paws::ResourceTagging::UntagResourcesOutput> instance
 
-  Removes the specified tags from the specified resources. When you
+Removes the specified tags from the specified resources. When you
 specify a tag key, the action removes both that key and its associated
 value. The operation succeeds even if you attempt to remove tags from a
 resource that were already removed. Note the following:
@@ -347,9 +347,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

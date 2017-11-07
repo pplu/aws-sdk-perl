@@ -19,7 +19,7 @@ package Paws::ECS::StartTask;
 
 =head1 NAME
 
-Paws::ECS::StartTask - Arguments for method StartTask on Paws::ECS
+Paws::ECS::StartTask - Arguments for method StartTask on L<Paws::ECS>
 
 =head1 DESCRIPTION
 
@@ -107,9 +107,9 @@ This class forms part of L<Paws>, documenting arguments for method StartTask in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

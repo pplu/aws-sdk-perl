@@ -16,7 +16,7 @@ package Paws::ElasticTranscoder::ListPresets;
 
 =head1 NAME
 
-Paws::ElasticTranscoder::ListPresets - Arguments for method ListPresets on Paws::ElasticTranscoder
+Paws::ElasticTranscoder::ListPresets - Arguments for method ListPresets on L<Paws::ElasticTranscoder>
 
 =head1 DESCRIPTION
 
@@ -58,9 +58,9 @@ This class forms part of L<Paws>, documenting arguments for method ListPresets i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

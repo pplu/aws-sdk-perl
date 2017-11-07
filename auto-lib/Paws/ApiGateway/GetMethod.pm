@@ -17,7 +17,7 @@ package Paws::ApiGateway::GetMethod;
 
 =head1 NAME
 
-Paws::ApiGateway::GetMethod - Arguments for method GetMethod on Paws::ApiGateway
+Paws::ApiGateway::GetMethod - Arguments for method GetMethod on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -61,9 +61,9 @@ This class forms part of L<Paws>, documenting arguments for method GetMethod in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

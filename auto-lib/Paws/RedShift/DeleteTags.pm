@@ -15,7 +15,7 @@ package Paws::RedShift::DeleteTags;
 
 =head1 NAME
 
-Paws::RedShift::DeleteTags - Arguments for method DeleteTags on Paws::RedShift
+Paws::RedShift::DeleteTags - Arguments for method DeleteTags on L<Paws::RedShift>
 
 =head1 DESCRIPTION
 
@@ -54,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteTags in
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

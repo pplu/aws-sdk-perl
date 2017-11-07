@@ -171,7 +171,7 @@ Each argument is described in detail in: L<Paws::Rekognition::CompareFaces>
 
 Returns: a L<Paws::Rekognition::CompareFacesResponse> instance
 
-  Compares a face in the I<source> input image with each face detected in
+Compares a face in the I<source> input image with each face detected in
 the I<target> input image.
 
 If the source image contains multiple faces, the service detects the
@@ -215,7 +215,7 @@ Each argument is described in detail in: L<Paws::Rekognition::CreateCollection>
 
 Returns: a L<Paws::Rekognition::CreateCollectionResponse> instance
 
-  Creates a collection in an AWS Region. You can add faces to the
+Creates a collection in an AWS Region. You can add faces to the
 collection using the operation.
 
 For example, you might create collections, one for each of your
@@ -237,7 +237,7 @@ Each argument is described in detail in: L<Paws::Rekognition::DeleteCollection>
 
 Returns: a L<Paws::Rekognition::DeleteCollectionResponse> instance
 
-  Deletes the specified collection. Note that this operation removes all
+Deletes the specified collection. Note that this operation removes all
 faces in the collection. For an example, see example1.
 
 This operation requires permissions to perform the
@@ -250,7 +250,7 @@ Each argument is described in detail in: L<Paws::Rekognition::DeleteFaces>
 
 Returns: a L<Paws::Rekognition::DeleteFacesResponse> instance
 
-  Deletes faces from a collection. You specify a collection ID and an
+Deletes faces from a collection. You specify a collection ID and an
 array of face IDs to remove from the collection.
 
 This operation requires permissions to perform the
@@ -263,7 +263,7 @@ Each argument is described in detail in: L<Paws::Rekognition::DetectFaces>
 
 Returns: a L<Paws::Rekognition::DetectFacesResponse> instance
 
-  Detects faces within an image (JPEG or PNG) that is provided as input.
+Detects faces within an image (JPEG or PNG) that is provided as input.
 
 For each face detected, the operation returns face details including a
 bounding box of the face, a confidence value (that the bounding box
@@ -290,7 +290,7 @@ Each argument is described in detail in: L<Paws::Rekognition::DetectLabels>
 
 Returns: a L<Paws::Rekognition::DetectLabelsResponse> instance
 
-  Detects instances of real-world labels within an image (JPEG or PNG)
+Detects instances of real-world labels within an image (JPEG or PNG)
 provided as input. This includes objects like flower, tree, and table;
 events like wedding, graduation, and birthday party; and concepts like
 landscape, evening, and nature. For an example, see
@@ -346,7 +346,7 @@ Each argument is described in detail in: L<Paws::Rekognition::DetectModerationLa
 
 Returns: a L<Paws::Rekognition::DetectModerationLabelsResponse> instance
 
-  Detects explicit or suggestive adult content in a specified JPEG or PNG
+Detects explicit or suggestive adult content in a specified JPEG or PNG
 format image. Use C<DetectModerationLabels> to moderate images
 depending on your requirements. For example, you might want to filter
 images that contain nudity, but not images containing suggestive
@@ -363,7 +363,7 @@ Each argument is described in detail in: L<Paws::Rekognition::GetCelebrityInfo>
 
 Returns: a L<Paws::Rekognition::GetCelebrityInfoResponse> instance
 
-  Gets the name and additional information about a celebrity based on his
+Gets the name and additional information about a celebrity based on his
 or her Rekognition ID. The additional information is returned as an
 array of URLs. If there is no additional information about the
 celebrity, this list is empty. For more information, see
@@ -379,7 +379,7 @@ Each argument is described in detail in: L<Paws::Rekognition::IndexFaces>
 
 Returns: a L<Paws::Rekognition::IndexFacesResponse> instance
 
-  Detects faces in the input image and adds them to the specified
+Detects faces in the input image and adds them to the specified
 collection.
 
 Amazon Rekognition does not save the actual faces detected. Instead,
@@ -420,7 +420,7 @@ Each argument is described in detail in: L<Paws::Rekognition::ListCollections>
 
 Returns: a L<Paws::Rekognition::ListCollectionsResponse> instance
 
-  Returns list of collection IDs in your account. If the result is
+Returns list of collection IDs in your account. If the result is
 truncated, the response also provides a C<NextToken> that you can use
 in the subsequent request to fetch the next set of collection IDs.
 
@@ -436,7 +436,7 @@ Each argument is described in detail in: L<Paws::Rekognition::ListFaces>
 
 Returns: a L<Paws::Rekognition::ListFacesResponse> instance
 
-  Returns metadata for faces in the specified collection. This metadata
+Returns metadata for faces in the specified collection. This metadata
 includes information such as the bounding box coordinates, the
 confidence (that the bounding box contains a face), and face ID. For an
 example, see example3.
@@ -451,7 +451,7 @@ Each argument is described in detail in: L<Paws::Rekognition::RecognizeCelebriti
 
 Returns: a L<Paws::Rekognition::RecognizeCelebritiesResponse> instance
 
-  Returns an array of celebrities recognized in the input image. The
+Returns an array of celebrities recognized in the input image. The
 image is passed either as base64-encoded image bytes or as a reference
 to an image in an Amazon S3 bucket. The image must be either a PNG or
 JPEG formatted file. For more information, see celebrity-recognition.
@@ -486,7 +486,7 @@ Each argument is described in detail in: L<Paws::Rekognition::SearchFaces>
 
 Returns: a L<Paws::Rekognition::SearchFacesResponse> instance
 
-  For a given input face ID, searches for matching faces in the
+For a given input face ID, searches for matching faces in the
 collection the face belongs to. You get a face ID when you add a face
 to the collection using the IndexFaces operation. The operation
 compares the features of the input face with faces in the specified
@@ -514,7 +514,7 @@ Each argument is described in detail in: L<Paws::Rekognition::SearchFacesByImage
 
 Returns: a L<Paws::Rekognition::SearchFacesByImageResponse> instance
 
-  For a given input image, first detects the largest face in the image,
+For a given input image, first detects the largest face in the image,
 and then searches the specified collection for matching faces. The
 operation compares the features of the input face with faces in the
 specified collection.
@@ -581,9 +581,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

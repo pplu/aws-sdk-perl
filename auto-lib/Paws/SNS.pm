@@ -333,7 +333,7 @@ Each argument is described in detail in: L<Paws::SNS::AddPermission>
 
 Returns: nothing
 
-  Adds a statement to a topic's access control policy, granting access
+Adds a statement to a topic's access control policy, granting access
 for the specified AWS accounts to the specified actions.
 
 
@@ -343,7 +343,7 @@ Each argument is described in detail in: L<Paws::SNS::CheckIfPhoneNumberIsOptedO
 
 Returns: a L<Paws::SNS::CheckIfPhoneNumberIsOptedOutResponse> instance
 
-  Accepts a phone number and indicates whether the phone holder has opted
+Accepts a phone number and indicates whether the phone holder has opted
 out of receiving SMS messages from your account. You cannot send SMS
 messages to a number that is opted out.
 
@@ -357,7 +357,7 @@ Each argument is described in detail in: L<Paws::SNS::ConfirmSubscription>
 
 Returns: a L<Paws::SNS::ConfirmSubscriptionResponse> instance
 
-  Verifies an endpoint owner's intent to receive messages by validating
+Verifies an endpoint owner's intent to receive messages by validating
 the token sent to the endpoint by an earlier C<Subscribe> action. If
 the token is valid, the action creates a new subscription and returns
 its Amazon Resource Name (ARN). This call requires an AWS signature
@@ -370,7 +370,7 @@ Each argument is described in detail in: L<Paws::SNS::CreatePlatformApplication>
 
 Returns: a L<Paws::SNS::CreatePlatformApplicationResponse> instance
 
-  Creates a platform application object for one of the supported push
+Creates a platform application object for one of the supported push
 notification services, such as APNS and GCM, to which devices and
 mobile apps may register. You must specify PlatformPrincipal and
 PlatformCredential attributes when using the
@@ -404,7 +404,7 @@ Each argument is described in detail in: L<Paws::SNS::CreatePlatformEndpoint>
 
 Returns: a L<Paws::SNS::CreateEndpointResponse> instance
 
-  Creates an endpoint for a device and mobile app on one of the supported
+Creates an endpoint for a device and mobile app on one of the supported
 push notification services, such as GCM and APNS.
 C<CreatePlatformEndpoint> requires the PlatformApplicationArn that is
 returned from C<CreatePlatformApplication>. The EndpointArn that is
@@ -428,7 +428,7 @@ Each argument is described in detail in: L<Paws::SNS::CreateTopic>
 
 Returns: a L<Paws::SNS::CreateTopicResponse> instance
 
-  Creates a topic to which notifications can be published. Users can
+Creates a topic to which notifications can be published. Users can
 create at most 100,000 topics. For more information, see
 http://aws.amazon.com/sns. This action is idempotent, so if the
 requester already owns a topic with the specified name, that topic's
@@ -441,7 +441,7 @@ Each argument is described in detail in: L<Paws::SNS::DeleteEndpoint>
 
 Returns: nothing
 
-  Deletes the endpoint for a device and mobile app from Amazon SNS. This
+Deletes the endpoint for a device and mobile app from Amazon SNS. This
 action is idempotent. For more information, see Using Amazon SNS Mobile
 Push Notifications.
 
@@ -455,7 +455,7 @@ Each argument is described in detail in: L<Paws::SNS::DeletePlatformApplication>
 
 Returns: nothing
 
-  Deletes a platform application object for one of the supported push
+Deletes a platform application object for one of the supported push
 notification services, such as APNS and GCM. For more information, see
 Using Amazon SNS Mobile Push Notifications.
 
@@ -466,7 +466,7 @@ Each argument is described in detail in: L<Paws::SNS::DeleteTopic>
 
 Returns: nothing
 
-  Deletes a topic and all its subscriptions. Deleting a topic might
+Deletes a topic and all its subscriptions. Deleting a topic might
 prevent some messages previously sent to the topic from being delivered
 to subscribers. This action is idempotent, so deleting a topic that
 does not exist does not result in an error.
@@ -478,7 +478,7 @@ Each argument is described in detail in: L<Paws::SNS::GetEndpointAttributes>
 
 Returns: a L<Paws::SNS::GetEndpointAttributesResponse> instance
 
-  Retrieves the endpoint attributes for a device on one of the supported
+Retrieves the endpoint attributes for a device on one of the supported
 push notification services, such as GCM and APNS. For more information,
 see Using Amazon SNS Mobile Push Notifications.
 
@@ -489,7 +489,7 @@ Each argument is described in detail in: L<Paws::SNS::GetPlatformApplicationAttr
 
 Returns: a L<Paws::SNS::GetPlatformApplicationAttributesResponse> instance
 
-  Retrieves the attributes of the platform application object for the
+Retrieves the attributes of the platform application object for the
 supported push notification services, such as APNS and GCM. For more
 information, see Using Amazon SNS Mobile Push Notifications.
 
@@ -500,7 +500,7 @@ Each argument is described in detail in: L<Paws::SNS::GetSMSAttributes>
 
 Returns: a L<Paws::SNS::GetSMSAttributesResponse> instance
 
-  Returns the settings for sending SMS messages from your account.
+Returns the settings for sending SMS messages from your account.
 
 These settings are set with the C<SetSMSAttributes> action.
 
@@ -511,7 +511,7 @@ Each argument is described in detail in: L<Paws::SNS::GetSubscriptionAttributes>
 
 Returns: a L<Paws::SNS::GetSubscriptionAttributesResponse> instance
 
-  Returns all of the properties of a subscription.
+Returns all of the properties of a subscription.
 
 
 =head2 GetTopicAttributes(TopicArn => Str)
@@ -520,7 +520,7 @@ Each argument is described in detail in: L<Paws::SNS::GetTopicAttributes>
 
 Returns: a L<Paws::SNS::GetTopicAttributesResponse> instance
 
-  Returns all of the properties of a topic. Topic properties returned
+Returns all of the properties of a topic. Topic properties returned
 might differ based on the authorization of the user.
 
 
@@ -530,7 +530,7 @@ Each argument is described in detail in: L<Paws::SNS::ListEndpointsByPlatformApp
 
 Returns: a L<Paws::SNS::ListEndpointsByPlatformApplicationResponse> instance
 
-  Lists the endpoints and endpoint attributes for devices in a supported
+Lists the endpoints and endpoint attributes for devices in a supported
 push notification service, such as GCM and APNS. The results for
 C<ListEndpointsByPlatformApplication> are paginated and return a
 limited list of endpoints, up to 100. If additional records are
@@ -548,7 +548,7 @@ Each argument is described in detail in: L<Paws::SNS::ListPhoneNumbersOptedOut>
 
 Returns: a L<Paws::SNS::ListPhoneNumbersOptedOutResponse> instance
 
-  Returns a list of phone numbers that are opted out, meaning you cannot
+Returns a list of phone numbers that are opted out, meaning you cannot
 send SMS messages to them.
 
 The results for C<ListPhoneNumbersOptedOut> are paginated, and each
@@ -566,7 +566,7 @@ Each argument is described in detail in: L<Paws::SNS::ListPlatformApplications>
 
 Returns: a L<Paws::SNS::ListPlatformApplicationsResponse> instance
 
-  Lists the platform application objects for the supported push
+Lists the platform application objects for the supported push
 notification services, such as APNS and GCM. The results for
 C<ListPlatformApplications> are paginated and return a limited list of
 applications, up to 100. If additional records are available after the
@@ -583,7 +583,7 @@ Each argument is described in detail in: L<Paws::SNS::ListSubscriptions>
 
 Returns: a L<Paws::SNS::ListSubscriptionsResponse> instance
 
-  Returns a list of the requester's subscriptions. Each call returns a
+Returns a list of the requester's subscriptions. Each call returns a
 limited list of subscriptions, up to 100. If there are more
 subscriptions, a C<NextToken> is also returned. Use the C<NextToken>
 parameter in a new C<ListSubscriptions> call to get further results.
@@ -595,7 +595,7 @@ Each argument is described in detail in: L<Paws::SNS::ListSubscriptionsByTopic>
 
 Returns: a L<Paws::SNS::ListSubscriptionsByTopicResponse> instance
 
-  Returns a list of the subscriptions to a specific topic. Each call
+Returns a list of the subscriptions to a specific topic. Each call
 returns a limited list of subscriptions, up to 100. If there are more
 subscriptions, a C<NextToken> is also returned. Use the C<NextToken>
 parameter in a new C<ListSubscriptionsByTopic> call to get further
@@ -608,7 +608,7 @@ Each argument is described in detail in: L<Paws::SNS::ListTopics>
 
 Returns: a L<Paws::SNS::ListTopicsResponse> instance
 
-  Returns a list of the requester's topics. Each call returns a limited
+Returns a list of the requester's topics. Each call returns a limited
 list of topics, up to 100. If there are more topics, a C<NextToken> is
 also returned. Use the C<NextToken> parameter in a new C<ListTopics>
 call to get further results.
@@ -620,7 +620,7 @@ Each argument is described in detail in: L<Paws::SNS::OptInPhoneNumber>
 
 Returns: a L<Paws::SNS::OptInPhoneNumberResponse> instance
 
-  Use this request to opt in a phone number that is opted out, which
+Use this request to opt in a phone number that is opted out, which
 enables you to resume sending SMS messages to the number.
 
 You can opt in a phone number only once every 30 days.
@@ -632,7 +632,7 @@ Each argument is described in detail in: L<Paws::SNS::Publish>
 
 Returns: a L<Paws::SNS::PublishResponse> instance
 
-  Sends a message to all of a topic's subscribed endpoints. When a
+Sends a message to all of a topic's subscribed endpoints. When a
 C<messageId> is returned, the message has been saved and Amazon SNS
 will attempt to deliver it to the topic's subscribers shortly. The
 format of the outgoing message to each subscribed endpoint depends on
@@ -653,7 +653,7 @@ Each argument is described in detail in: L<Paws::SNS::RemovePermission>
 
 Returns: nothing
 
-  Removes a statement from a topic's access control policy.
+Removes a statement from a topic's access control policy.
 
 
 =head2 SetEndpointAttributes(Attributes => L<Paws::SNS::MapStringToString>, EndpointArn => Str)
@@ -662,7 +662,7 @@ Each argument is described in detail in: L<Paws::SNS::SetEndpointAttributes>
 
 Returns: nothing
 
-  Sets the attributes for an endpoint for a device on one of the
+Sets the attributes for an endpoint for a device on one of the
 supported push notification services, such as GCM and APNS. For more
 information, see Using Amazon SNS Mobile Push Notifications.
 
@@ -673,7 +673,7 @@ Each argument is described in detail in: L<Paws::SNS::SetPlatformApplicationAttr
 
 Returns: nothing
 
-  Sets the attributes of the platform application object for the
+Sets the attributes of the platform application object for the
 supported push notification services, such as APNS and GCM. For more
 information, see Using Amazon SNS Mobile Push Notifications. For
 information on configuring attributes for message delivery status, see
@@ -686,7 +686,7 @@ Each argument is described in detail in: L<Paws::SNS::SetSMSAttributes>
 
 Returns: a L<Paws::SNS::SetSMSAttributesResponse> instance
 
-  Use this request to set the default settings for sending SMS messages
+Use this request to set the default settings for sending SMS messages
 and receiving daily SMS usage reports.
 
 You can override some of these settings for a single message when you
@@ -701,7 +701,7 @@ Each argument is described in detail in: L<Paws::SNS::SetSubscriptionAttributes>
 
 Returns: nothing
 
-  Allows a subscription owner to set an attribute of the topic to a new
+Allows a subscription owner to set an attribute of the topic to a new
 value.
 
 
@@ -711,7 +711,7 @@ Each argument is described in detail in: L<Paws::SNS::SetTopicAttributes>
 
 Returns: nothing
 
-  Allows a topic owner to set an attribute of the topic to a new value.
+Allows a topic owner to set an attribute of the topic to a new value.
 
 
 =head2 Subscribe(Protocol => Str, TopicArn => Str, [Endpoint => Str])
@@ -720,7 +720,7 @@ Each argument is described in detail in: L<Paws::SNS::Subscribe>
 
 Returns: a L<Paws::SNS::SubscribeResponse> instance
 
-  Prepares to subscribe an endpoint by sending the endpoint a
+Prepares to subscribe an endpoint by sending the endpoint a
 confirmation message. To actually create a subscription, the endpoint
 owner must call the C<ConfirmSubscription> action with the token from
 the confirmation message. Confirmation tokens are valid for three days.
@@ -732,7 +732,7 @@ Each argument is described in detail in: L<Paws::SNS::Unsubscribe>
 
 Returns: nothing
 
-  Deletes a subscription. If the subscription requires authentication for
+Deletes a subscription. If the subscription requires authentication for
 deletion, only the owner of the subscription or the topic's owner can
 unsubscribe, and an AWS signature is required. If the C<Unsubscribe>
 call does not require authentication and the requester is not the
@@ -816,9 +816,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

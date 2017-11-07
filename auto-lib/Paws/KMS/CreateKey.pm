@@ -19,7 +19,7 @@ package Paws::KMS::CreateKey;
 
 =head1 NAME
 
-Paws::KMS::CreateKey - Arguments for method CreateKey on Paws::KMS
+Paws::KMS::CreateKey - Arguments for method CreateKey on L<Paws::KMS>
 
 =head1 DESCRIPTION
 
@@ -146,9 +146,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateKey in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

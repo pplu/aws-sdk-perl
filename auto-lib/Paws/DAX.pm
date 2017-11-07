@@ -166,7 +166,7 @@ Each argument is described in detail in: L<Paws::DAX::CreateCluster>
 
 Returns: a L<Paws::DAX::CreateClusterResponse> instance
 
-  Creates a DAX cluster. All nodes in the cluster run the same DAX
+Creates a DAX cluster. All nodes in the cluster run the same DAX
 caching software.
 
 
@@ -176,7 +176,7 @@ Each argument is described in detail in: L<Paws::DAX::CreateParameterGroup>
 
 Returns: a L<Paws::DAX::CreateParameterGroupResponse> instance
 
-  Creates a new parameter group. A parameter group is a collection of
+Creates a new parameter group. A parameter group is a collection of
 parameters that you apply to all of the nodes in a DAX cluster.
 
 
@@ -186,7 +186,7 @@ Each argument is described in detail in: L<Paws::DAX::CreateSubnetGroup>
 
 Returns: a L<Paws::DAX::CreateSubnetGroupResponse> instance
 
-  Creates a new subnet group.
+Creates a new subnet group.
 
 
 =head2 DecreaseReplicationFactor(ClusterName => Str, NewReplicationFactor => Int, [AvailabilityZones => ArrayRef[Str|Undef], NodeIdsToRemove => ArrayRef[Str|Undef]])
@@ -195,7 +195,7 @@ Each argument is described in detail in: L<Paws::DAX::DecreaseReplicationFactor>
 
 Returns: a L<Paws::DAX::DecreaseReplicationFactorResponse> instance
 
-  Removes one or more nodes from a DAX cluster.
+Removes one or more nodes from a DAX cluster.
 
 You cannot use C<DecreaseReplicationFactor> to remove the last node in
 a DAX cluster. If you need to do this, use C<DeleteCluster> instead.
@@ -207,7 +207,7 @@ Each argument is described in detail in: L<Paws::DAX::DeleteCluster>
 
 Returns: a L<Paws::DAX::DeleteClusterResponse> instance
 
-  Deletes a previously provisioned DAX cluster. I<DeleteCluster> deletes
+Deletes a previously provisioned DAX cluster. I<DeleteCluster> deletes
 all associated nodes, node endpoints and the DAX cluster itself. When
 you receive a successful response from this action, DAX immediately
 begins deleting the cluster; you cannot cancel or revert this action.
@@ -219,7 +219,7 @@ Each argument is described in detail in: L<Paws::DAX::DeleteParameterGroup>
 
 Returns: a L<Paws::DAX::DeleteParameterGroupResponse> instance
 
-  Deletes the specified parameter group. You cannot delete a parameter
+Deletes the specified parameter group. You cannot delete a parameter
 group if it is associated with any DAX clusters.
 
 
@@ -229,7 +229,7 @@ Each argument is described in detail in: L<Paws::DAX::DeleteSubnetGroup>
 
 Returns: a L<Paws::DAX::DeleteSubnetGroupResponse> instance
 
-  Deletes a subnet group.
+Deletes a subnet group.
 
 You cannot delete a subnet group if it is associated with any DAX
 clusters.
@@ -241,7 +241,7 @@ Each argument is described in detail in: L<Paws::DAX::DescribeClusters>
 
 Returns: a L<Paws::DAX::DescribeClustersResponse> instance
 
-  Returns information about all provisioned DAX clusters if no cluster
+Returns information about all provisioned DAX clusters if no cluster
 identifier is specified, or about a specific DAX cluster if a cluster
 identifier is supplied.
 
@@ -266,7 +266,7 @@ Each argument is described in detail in: L<Paws::DAX::DescribeDefaultParameters>
 
 Returns: a L<Paws::DAX::DescribeDefaultParametersResponse> instance
 
-  Returns the default system parameter information for the DAX caching
+Returns the default system parameter information for the DAX caching
 software.
 
 
@@ -276,7 +276,7 @@ Each argument is described in detail in: L<Paws::DAX::DescribeEvents>
 
 Returns: a L<Paws::DAX::DescribeEventsResponse> instance
 
-  Returns events related to DAX clusters and parameter groups. You can
+Returns events related to DAX clusters and parameter groups. You can
 obtain events specific to a particular DAX cluster or parameter group
 by providing the name as a parameter.
 
@@ -291,7 +291,7 @@ Each argument is described in detail in: L<Paws::DAX::DescribeParameterGroups>
 
 Returns: a L<Paws::DAX::DescribeParameterGroupsResponse> instance
 
-  Returns a list of parameter group descriptions. If a parameter group
+Returns a list of parameter group descriptions. If a parameter group
 name is specified, the list will contain only the descriptions for that
 group.
 
@@ -302,7 +302,7 @@ Each argument is described in detail in: L<Paws::DAX::DescribeParameters>
 
 Returns: a L<Paws::DAX::DescribeParametersResponse> instance
 
-  Returns the detailed parameter list for a particular parameter group.
+Returns the detailed parameter list for a particular parameter group.
 
 
 =head2 DescribeSubnetGroups([MaxResults => Int, NextToken => Str, SubnetGroupNames => ArrayRef[Str|Undef]])
@@ -311,7 +311,7 @@ Each argument is described in detail in: L<Paws::DAX::DescribeSubnetGroups>
 
 Returns: a L<Paws::DAX::DescribeSubnetGroupsResponse> instance
 
-  Returns a list of subnet group descriptions. If a subnet group name is
+Returns a list of subnet group descriptions. If a subnet group name is
 specified, the list will contain only the description of that group.
 
 
@@ -321,7 +321,7 @@ Each argument is described in detail in: L<Paws::DAX::IncreaseReplicationFactor>
 
 Returns: a L<Paws::DAX::IncreaseReplicationFactorResponse> instance
 
-  Adds one or more nodes to a DAX cluster.
+Adds one or more nodes to a DAX cluster.
 
 
 =head2 ListTags(ResourceName => Str, [NextToken => Str])
@@ -330,7 +330,7 @@ Each argument is described in detail in: L<Paws::DAX::ListTags>
 
 Returns: a L<Paws::DAX::ListTagsResponse> instance
 
-  List all of the tags for a DAX cluster. You can call C<ListTags> up to
+List all of the tags for a DAX cluster. You can call C<ListTags> up to
 10 times per second, per account.
 
 
@@ -340,7 +340,7 @@ Each argument is described in detail in: L<Paws::DAX::RebootNode>
 
 Returns: a L<Paws::DAX::RebootNodeResponse> instance
 
-  Reboots a single node of a DAX cluster. The reboot action takes place
+Reboots a single node of a DAX cluster. The reboot action takes place
 as soon as possible. During the reboot, the node status is set to
 REBOOTING.
 
@@ -351,7 +351,7 @@ Each argument is described in detail in: L<Paws::DAX::TagResource>
 
 Returns: a L<Paws::DAX::TagResourceResponse> instance
 
-  Associates a set of tags with a DAX resource. You can call
+Associates a set of tags with a DAX resource. You can call
 C<TagResource> up to 5 times per second, per account.
 
 
@@ -361,7 +361,7 @@ Each argument is described in detail in: L<Paws::DAX::UntagResource>
 
 Returns: a L<Paws::DAX::UntagResourceResponse> instance
 
-  Removes the association of tags from a DAX resource. You can call
+Removes the association of tags from a DAX resource. You can call
 C<UntagResource> up to 5 times per second, per account.
 
 
@@ -371,7 +371,7 @@ Each argument is described in detail in: L<Paws::DAX::UpdateCluster>
 
 Returns: a L<Paws::DAX::UpdateClusterResponse> instance
 
-  Modifies the settings for a DAX cluster. You can use this action to
+Modifies the settings for a DAX cluster. You can use this action to
 change one or more cluster configuration parameters by specifying the
 parameters and the new values.
 
@@ -382,7 +382,7 @@ Each argument is described in detail in: L<Paws::DAX::UpdateParameterGroup>
 
 Returns: a L<Paws::DAX::UpdateParameterGroupResponse> instance
 
-  Modifies the parameters of a parameter group. You can modify up to 20
+Modifies the parameters of a parameter group. You can modify up to 20
 parameters in a single request by submitting a list parameter name and
 value pairs.
 
@@ -393,7 +393,7 @@ Each argument is described in detail in: L<Paws::DAX::UpdateSubnetGroup>
 
 Returns: a L<Paws::DAX::UpdateSubnetGroupResponse> instance
 
-  Modifies an existing subnet group.
+Modifies an existing subnet group.
 
 
 
@@ -411,9 +411,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

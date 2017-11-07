@@ -140,7 +140,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::AddApplicatio
 
 Returns: a L<Paws::KinesisAnalytics::AddApplicationCloudWatchLoggingOptionResponse> instance
 
-  Adds a CloudWatch log stream to monitor application configuration
+Adds a CloudWatch log stream to monitor application configuration
 errors. For more information about using CloudWatch log streams with
 Amazon Kinesis Analytics applications, see Working with Amazon
 CloudWatch Logs.
@@ -152,7 +152,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::AddApplicatio
 
 Returns: a L<Paws::KinesisAnalytics::AddApplicationInputResponse> instance
 
-  Adds a streaming source to your Amazon Kinesis application. For
+Adds a streaming source to your Amazon Kinesis application. For
 conceptual information, see Configuring Application Input.
 
 You can add a streaming source either when you create an application or
@@ -174,7 +174,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::AddApplicatio
 
 Returns: a L<Paws::KinesisAnalytics::AddApplicationInputProcessingConfigurationResponse> instance
 
-  Adds an InputProcessingConfiguration to an application. An input
+Adds an InputProcessingConfiguration to an application. An input
 processor preprocesses records on the input stream before the
 application's SQL code executes. Currently, the only input processor
 available is AWS Lambda.
@@ -186,7 +186,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::AddApplicatio
 
 Returns: a L<Paws::KinesisAnalytics::AddApplicationOutputResponse> instance
 
-  Adds an external destination to your Amazon Kinesis Analytics
+Adds an external destination to your Amazon Kinesis Analytics
 application.
 
 If you want Amazon Kinesis Analytics to deliver data from an
@@ -220,7 +220,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::AddApplicatio
 
 Returns: a L<Paws::KinesisAnalytics::AddApplicationReferenceDataSourceResponse> instance
 
-  Adds a reference data source to an existing application.
+Adds a reference data source to an existing application.
 
 Amazon Kinesis Analytics reads reference data (that is, an Amazon S3
 object) and creates an in-application table within your application. In
@@ -242,7 +242,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::CreateApplica
 
 Returns: a L<Paws::KinesisAnalytics::CreateApplicationResponse> instance
 
-  Creates an Amazon Kinesis Analytics application. You can configure each
+Creates an Amazon Kinesis Analytics application. You can configure each
 application with one streaming source as input, application code to
 process the input, and up to five streaming destinations where you want
 Amazon Kinesis Analytics to write the output data from your
@@ -278,7 +278,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::DeleteApplica
 
 Returns: a L<Paws::KinesisAnalytics::DeleteApplicationResponse> instance
 
-  Deletes the specified application. Amazon Kinesis Analytics halts
+Deletes the specified application. Amazon Kinesis Analytics halts
 application execution and deletes the application, including any
 application artifacts (such as in-application streams, reference table,
 and application code).
@@ -293,7 +293,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::DeleteApplica
 
 Returns: a L<Paws::KinesisAnalytics::DeleteApplicationCloudWatchLoggingOptionResponse> instance
 
-  Deletes a CloudWatch log stream from an application. For more
+Deletes a CloudWatch log stream from an application. For more
 information about using CloudWatch log streams with Amazon Kinesis
 Analytics applications, see Working with Amazon CloudWatch Logs.
 
@@ -304,7 +304,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::DeleteApplica
 
 Returns: a L<Paws::KinesisAnalytics::DeleteApplicationInputProcessingConfigurationResponse> instance
 
-  Deletes an InputProcessingConfiguration from an input.
+Deletes an InputProcessingConfiguration from an input.
 
 
 =head2 DeleteApplicationOutput(ApplicationName => Str, CurrentApplicationVersionId => Int, OutputId => Str)
@@ -313,7 +313,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::DeleteApplica
 
 Returns: a L<Paws::KinesisAnalytics::DeleteApplicationOutputResponse> instance
 
-  Deletes output destination configuration from your application
+Deletes output destination configuration from your application
 configuration. Amazon Kinesis Analytics will no longer write data from
 the corresponding in-application stream to the external output
 destination.
@@ -328,7 +328,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::DeleteApplica
 
 Returns: a L<Paws::KinesisAnalytics::DeleteApplicationReferenceDataSourceResponse> instance
 
-  Deletes a reference data source configuration from the specified
+Deletes a reference data source configuration from the specified
 application configuration.
 
 If the application is running, Amazon Kinesis Analytics immediately
@@ -345,7 +345,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::DescribeAppli
 
 Returns: a L<Paws::KinesisAnalytics::DescribeApplicationResponse> instance
 
-  Returns information about a specific Amazon Kinesis Analytics
+Returns information about a specific Amazon Kinesis Analytics
 application.
 
 If you want to retrieve a list of all applications in your account, use
@@ -363,7 +363,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::DiscoverInput
 
 Returns: a L<Paws::KinesisAnalytics::DiscoverInputSchemaResponse> instance
 
-  Infers a schema by evaluating sample records on the specified streaming
+Infers a schema by evaluating sample records on the specified streaming
 source (Amazon Kinesis stream or Amazon Kinesis Firehose delivery
 stream). In the response, the operation returns the inferred schema and
 also the sample records that the operation used to infer the schema.
@@ -384,7 +384,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::ListApplicati
 
 Returns: a L<Paws::KinesisAnalytics::ListApplicationsResponse> instance
 
-  Returns a list of Amazon Kinesis Analytics applications in your
+Returns a list of Amazon Kinesis Analytics applications in your
 account. For each application, the response includes the application
 name, Amazon Resource Name (ARN), and status. If the response returns
 the C<HasMoreApplications> value as true, you can send another request
@@ -405,7 +405,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::StartApplicat
 
 Returns: a L<Paws::KinesisAnalytics::StartApplicationResponse> instance
 
-  Starts the specified Amazon Kinesis Analytics application. After
+Starts the specified Amazon Kinesis Analytics application. After
 creating an application, you must exclusively call this operation to
 start your application.
 
@@ -429,7 +429,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::StopApplicati
 
 Returns: a L<Paws::KinesisAnalytics::StopApplicationResponse> instance
 
-  Stops the application from processing input data. You can stop an
+Stops the application from processing input data. You can stop an
 application only if it is in the running state. You can use the
 DescribeApplication operation to find the application state. After the
 application is stopped, Amazon Kinesis Analytics stops reading data
@@ -446,7 +446,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::UpdateApplica
 
 Returns: a L<Paws::KinesisAnalytics::UpdateApplicationResponse> instance
 
-  Updates an existing Amazon Kinesis Analytics application. Using this
+Updates an existing Amazon Kinesis Analytics application. Using this
 API, you can update application code, input configuration, and output
 configuration.
 
@@ -472,9 +472,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

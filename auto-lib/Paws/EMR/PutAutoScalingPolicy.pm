@@ -16,7 +16,7 @@ package Paws::EMR::PutAutoScalingPolicy;
 
 =head1 NAME
 
-Paws::EMR::PutAutoScalingPolicy - Arguments for method PutAutoScalingPolicy on Paws::EMR
+Paws::EMR::PutAutoScalingPolicy - Arguments for method PutAutoScalingPolicy on L<Paws::EMR>
 
 =head1 DESCRIPTION
 
@@ -62,9 +62,9 @@ This class forms part of L<Paws>, documenting arguments for method PutAutoScalin
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

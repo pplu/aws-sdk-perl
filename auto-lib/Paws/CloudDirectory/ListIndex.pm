@@ -20,7 +20,7 @@ package Paws::CloudDirectory::ListIndex;
 
 =head1 NAME
 
-Paws::CloudDirectory::ListIndex - Arguments for method ListIndex on Paws::CloudDirectory
+Paws::CloudDirectory::ListIndex - Arguments for method ListIndex on L<Paws::CloudDirectory>
 
 =head1 DESCRIPTION
 
@@ -82,9 +82,9 @@ This class forms part of L<Paws>, documenting arguments for method ListIndex in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

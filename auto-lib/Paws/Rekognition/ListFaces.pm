@@ -16,7 +16,7 @@ package Paws::Rekognition::ListFaces;
 
 =head1 NAME
 
-Paws::Rekognition::ListFaces - Arguments for method ListFaces on Paws::Rekognition
+Paws::Rekognition::ListFaces - Arguments for method ListFaces on L<Paws::Rekognition>
 
 =head1 DESCRIPTION
 
@@ -63,9 +63,9 @@ This class forms part of L<Paws>, documenting arguments for method ListFaces in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

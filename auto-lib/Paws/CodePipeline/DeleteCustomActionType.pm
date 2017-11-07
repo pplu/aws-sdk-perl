@@ -16,7 +16,7 @@ package Paws::CodePipeline::DeleteCustomActionType;
 
 =head1 NAME
 
-Paws::CodePipeline::DeleteCustomActionType - Arguments for method DeleteCustomActionType on Paws::CodePipeline
+Paws::CodePipeline::DeleteCustomActionType - Arguments for method DeleteCustomActionType on L<Paws::CodePipeline>
 
 =head1 DESCRIPTION
 
@@ -62,9 +62,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteCustomA
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

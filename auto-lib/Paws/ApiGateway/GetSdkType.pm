@@ -15,7 +15,7 @@ package Paws::ApiGateway::GetSdkType;
 
 =head1 NAME
 
-Paws::ApiGateway::GetSdkType - Arguments for method GetSdkType on Paws::ApiGateway
+Paws::ApiGateway::GetSdkType - Arguments for method GetSdkType on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -47,9 +47,9 @@ This class forms part of L<Paws>, documenting arguments for method GetSdkType in
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

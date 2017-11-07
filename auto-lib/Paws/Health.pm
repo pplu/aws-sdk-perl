@@ -243,7 +243,7 @@ Each argument is described in detail in: L<Paws::Health::DescribeAffectedEntitie
 
 Returns: a L<Paws::Health::DescribeAffectedEntitiesResponse> instance
 
-  Returns a list of entities that have been affected by the specified
+Returns a list of entities that have been affected by the specified
 events, based on the specified filter criteria. Entities can refer to
 individual customer resources, groups of customer resources, or any
 other construct, depending on the AWS service. Events that have impact
@@ -260,7 +260,7 @@ Each argument is described in detail in: L<Paws::Health::DescribeEntityAggregate
 
 Returns: a L<Paws::Health::DescribeEntityAggregatesResponse> instance
 
-  Returns the number of entities that are affected by each of the
+Returns the number of entities that are affected by each of the
 specified events. If no events are specified, the counts of all
 affected entities are returned.
 
@@ -271,7 +271,7 @@ Each argument is described in detail in: L<Paws::Health::DescribeEventAggregates
 
 Returns: a L<Paws::Health::DescribeEventAggregatesResponse> instance
 
-  Returns the number of events of each event type (issue, scheduled
+Returns the number of events of each event type (issue, scheduled
 change, and account notification). If no filter is specified, the
 counts of all events in each category are returned.
 
@@ -282,7 +282,7 @@ Each argument is described in detail in: L<Paws::Health::DescribeEventDetails>
 
 Returns: a L<Paws::Health::DescribeEventDetailsResponse> instance
 
-  Returns detailed information about one or more specified events.
+Returns detailed information about one or more specified events.
 Information includes standard event data (region, service, etc., as
 returned by DescribeEvents), a detailed event description, and possible
 additional metadata that depends upon the nature of the event. Affected
@@ -299,7 +299,7 @@ Each argument is described in detail in: L<Paws::Health::DescribeEvents>
 
 Returns: a L<Paws::Health::DescribeEventsResponse> instance
 
-  Returns information about events that meet the specified filter
+Returns information about events that meet the specified filter
 criteria. Events are returned in a summary form and do not include the
 detailed description, any additional metadata that depends on the event
 type, or any affected resources. To retrieve that information, use the
@@ -315,7 +315,7 @@ Each argument is described in detail in: L<Paws::Health::DescribeEventTypes>
 
 Returns: a L<Paws::Health::DescribeEventTypesResponse> instance
 
-  Returns the event types that meet the specified filter criteria. If no
+Returns the event types that meet the specified filter criteria. If no
 filter criteria are specified, all event types are returned, in no
 particular order.
 
@@ -383,9 +383,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -184,7 +184,7 @@ Each argument is described in detail in: L<Paws::EFS::CreateFileSystem>
 
 Returns: a L<Paws::EFS::FileSystemDescription> instance
 
-  Creates a new, empty file system. The operation requires a creation
+Creates a new, empty file system. The operation requires a creation
 token in the request that Amazon EFS uses to ensure idempotent creation
 (calling the operation with same creation token has no effect). If a
 file system does not currently exist that is owned by the caller's AWS
@@ -250,7 +250,7 @@ Each argument is described in detail in: L<Paws::EFS::CreateMountTarget>
 
 Returns: a L<Paws::EFS::MountTargetDescription> instance
 
-  Creates a mount target for a file system. You can then mount the file
+Creates a mount target for a file system. You can then mount the file
 system on EC2 instances via the mount target.
 
 You can create one mount target in each Availability Zone in your VPC.
@@ -417,7 +417,7 @@ Each argument is described in detail in: L<Paws::EFS::CreateTags>
 
 Returns: nothing
 
-  Creates or overwrites tags associated with a file system. Each tag is a
+Creates or overwrites tags associated with a file system. Each tag is a
 key-value pair. If a tag key specified in the request already exists on
 the file system, this operation overwrites its value with the value
 provided in the request. If you add the C<Name> tag to your file
@@ -434,7 +434,7 @@ Each argument is described in detail in: L<Paws::EFS::DeleteFileSystem>
 
 Returns: nothing
 
-  Deletes a file system, permanently severing access to its contents.
+Deletes a file system, permanently severing access to its contents.
 Upon return, the file system no longer exists and you can't access any
 contents of the deleted file system.
 
@@ -459,7 +459,7 @@ Each argument is described in detail in: L<Paws::EFS::DeleteMountTarget>
 
 Returns: nothing
 
-  Deletes the specified mount target.
+Deletes the specified mount target.
 
 This operation forcibly breaks any mounts of the file system via the
 mount target that is being deleted, which might disrupt instances or
@@ -506,7 +506,7 @@ Each argument is described in detail in: L<Paws::EFS::DeleteTags>
 
 Returns: nothing
 
-  Deletes the specified tags from a file system. If the C<DeleteTags>
+Deletes the specified tags from a file system. If the C<DeleteTags>
 request includes a tag key that does not exist, Amazon EFS ignores it
 and doesn't cause an error. For more information about tags and related
 restrictions, see Tag Restrictions in the I<AWS Billing and Cost
@@ -522,7 +522,7 @@ Each argument is described in detail in: L<Paws::EFS::DescribeFileSystems>
 
 Returns: a L<Paws::EFS::DescribeFileSystemsResponse> instance
 
-  Returns the description of a specific Amazon EFS file system if either
+Returns the description of a specific Amazon EFS file system if either
 the file system C<CreationToken> or the C<FileSystemId> is provided.
 Otherwise, it returns descriptions of all file systems owned by the
 caller's AWS account in the AWS Region of the endpoint that you're
@@ -558,7 +558,7 @@ Each argument is described in detail in: L<Paws::EFS::DescribeMountTargets>
 
 Returns: a L<Paws::EFS::DescribeMountTargetsResponse> instance
 
-  Returns the descriptions of all the current mount targets, or a
+Returns the descriptions of all the current mount targets, or a
 specific mount target, for a file system. When requesting all of the
 current mount targets, the order of mount targets returned in the
 response is unspecified.
@@ -575,7 +575,7 @@ Each argument is described in detail in: L<Paws::EFS::DescribeMountTargetSecurit
 
 Returns: a L<Paws::EFS::DescribeMountTargetSecurityGroupsResponse> instance
 
-  Returns the security groups currently in effect for a mount target.
+Returns the security groups currently in effect for a mount target.
 This operation requires that the network interface of the mount target
 has been created and the lifecycle state of the mount target is not
 C<deleted>.
@@ -604,7 +604,7 @@ Each argument is described in detail in: L<Paws::EFS::DescribeTags>
 
 Returns: a L<Paws::EFS::DescribeTagsResponse> instance
 
-  Returns the tags associated with a file system. The order of tags
+Returns the tags associated with a file system. The order of tags
 returned in the response of one C<DescribeTags> call and the order of
 tags returned across the responses of a multi-call iteration (when
 using pagination) is unspecified.
@@ -619,7 +619,7 @@ Each argument is described in detail in: L<Paws::EFS::ModifyMountTargetSecurityG
 
 Returns: nothing
 
-  Modifies the set of security groups in effect for a mount target.
+Modifies the set of security groups in effect for a mount target.
 
 When you create a mount target, Amazon EFS also creates a new network
 interface. For more information, see CreateMountTarget. This operation
@@ -698,9 +698,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

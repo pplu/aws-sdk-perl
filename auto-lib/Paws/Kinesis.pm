@@ -209,7 +209,7 @@ Each argument is described in detail in: L<Paws::Kinesis::AddTagsToStream>
 
 Returns: nothing
 
-  Adds or updates tags for the specified Amazon Kinesis stream. Each
+Adds or updates tags for the specified Amazon Kinesis stream. Each
 stream can have up to 10 tags.
 
 If tags have already been assigned to the stream, C<AddTagsToStream>
@@ -222,7 +222,7 @@ Each argument is described in detail in: L<Paws::Kinesis::CreateStream>
 
 Returns: nothing
 
-  Creates an Amazon Kinesis stream. A stream captures and transports data
+Creates an Amazon Kinesis stream. A stream captures and transports data
 records that are continuously emitted from different data sources or
 I<producers>. Scale-out within a stream is explicitly supported by
 means of shards, which are uniquely identified groups of data records
@@ -280,7 +280,7 @@ Each argument is described in detail in: L<Paws::Kinesis::DecreaseStreamRetentio
 
 Returns: nothing
 
-  Decreases the Amazon Kinesis stream's retention period, which is the
+Decreases the Amazon Kinesis stream's retention period, which is the
 length of time data records are accessible after they are added to the
 stream. The minimum value of a stream's retention period is 24 hours.
 
@@ -295,7 +295,7 @@ Each argument is described in detail in: L<Paws::Kinesis::DeleteStream>
 
 Returns: nothing
 
-  Deletes an Amazon Kinesis stream and all its shards and data. You must
+Deletes an Amazon Kinesis stream and all its shards and data. You must
 shut down any applications that are operating on the stream before you
 delete the stream. If an application attempts to operate on a deleted
 stream, it will receive the exception C<ResourceNotFoundException>.
@@ -323,7 +323,7 @@ Each argument is described in detail in: L<Paws::Kinesis::DescribeLimits>
 
 Returns: a L<Paws::Kinesis::DescribeLimitsOutput> instance
 
-  Describes the shard limits and usage for the account.
+Describes the shard limits and usage for the account.
 
 If you update your account limits, the old limits might be returned for
 a few minutes.
@@ -337,7 +337,7 @@ Each argument is described in detail in: L<Paws::Kinesis::DescribeStream>
 
 Returns: a L<Paws::Kinesis::DescribeStreamOutput> instance
 
-  Describes the specified Amazon Kinesis stream.
+Describes the specified Amazon Kinesis stream.
 
 The information returned includes the stream name, Amazon Resource Name
 (ARN), creation time, enhanced metric configuration, and shard map. The
@@ -364,7 +364,7 @@ Each argument is described in detail in: L<Paws::Kinesis::DisableEnhancedMonitor
 
 Returns: a L<Paws::Kinesis::EnhancedMonitoringOutput> instance
 
-  Disables enhanced monitoring.
+Disables enhanced monitoring.
 
 
 =head2 EnableEnhancedMonitoring(ShardLevelMetrics => ArrayRef[Str|Undef], StreamName => Str)
@@ -373,7 +373,7 @@ Each argument is described in detail in: L<Paws::Kinesis::EnableEnhancedMonitori
 
 Returns: a L<Paws::Kinesis::EnhancedMonitoringOutput> instance
 
-  Enables enhanced Amazon Kinesis stream monitoring for shard-level
+Enables enhanced Amazon Kinesis stream monitoring for shard-level
 metrics.
 
 
@@ -383,7 +383,7 @@ Each argument is described in detail in: L<Paws::Kinesis::GetRecords>
 
 Returns: a L<Paws::Kinesis::GetRecordsOutput> instance
 
-  Gets data records from an Amazon Kinesis stream's shard.
+Gets data records from an Amazon Kinesis stream's shard.
 
 Specify a shard iterator using the C<ShardIterator> parameter. The
 shard iterator specifies the position in the shard from which you want
@@ -448,7 +448,7 @@ Each argument is described in detail in: L<Paws::Kinesis::GetShardIterator>
 
 Returns: a L<Paws::Kinesis::GetShardIteratorOutput> instance
 
-  Gets an Amazon Kinesis shard iterator. A shard iterator expires five
+Gets an Amazon Kinesis shard iterator. A shard iterator expires five
 minutes after it is returned to the requester.
 
 A shard iterator specifies the shard position from which to start
@@ -497,7 +497,7 @@ Each argument is described in detail in: L<Paws::Kinesis::IncreaseStreamRetentio
 
 Returns: nothing
 
-  Increases the Amazon Kinesis stream's retention period, which is the
+Increases the Amazon Kinesis stream's retention period, which is the
 length of time data records are accessible after they are added to the
 stream. The maximum value of a stream's retention period is 168 hours
 (7 days).
@@ -518,7 +518,7 @@ Each argument is described in detail in: L<Paws::Kinesis::ListStreams>
 
 Returns: a L<Paws::Kinesis::ListStreamsOutput> instance
 
-  Lists your Amazon Kinesis streams.
+Lists your Amazon Kinesis streams.
 
 The number of streams may be too large to return from a single call to
 C<ListStreams>. You can limit the number of returned streams using the
@@ -544,7 +544,7 @@ Each argument is described in detail in: L<Paws::Kinesis::ListTagsForStream>
 
 Returns: a L<Paws::Kinesis::ListTagsForStreamOutput> instance
 
-  Lists the tags for the specified Amazon Kinesis stream.
+Lists the tags for the specified Amazon Kinesis stream.
 
 
 =head2 MergeShards(AdjacentShardToMerge => Str, ShardToMerge => Str, StreamName => Str)
@@ -553,7 +553,7 @@ Each argument is described in detail in: L<Paws::Kinesis::MergeShards>
 
 Returns: nothing
 
-  Merges two adjacent shards in an Amazon Kinesis stream and combines
+Merges two adjacent shards in an Amazon Kinesis stream and combines
 them into a single shard to reduce the stream's capacity to ingest and
 transport data. Two shards are considered adjacent if the union of the
 hash key ranges for the two shards form a contiguous set with no gaps.
@@ -601,7 +601,7 @@ Each argument is described in detail in: L<Paws::Kinesis::PutRecord>
 
 Returns: a L<Paws::Kinesis::PutRecordOutput> instance
 
-  Writes a single data record into an Amazon Kinesis stream. Call
+Writes a single data record into an Amazon Kinesis stream. Call
 C<PutRecord> to send data into the stream for real-time ingestion and
 subsequent processing, one record at a time. Each shard can support
 writes up to 1,000 records per second, up to a maximum data write total
@@ -654,7 +654,7 @@ Each argument is described in detail in: L<Paws::Kinesis::PutRecords>
 
 Returns: a L<Paws::Kinesis::PutRecordsOutput> instance
 
-  Writes multiple data records into an Amazon Kinesis stream in a single
+Writes multiple data records into an Amazon Kinesis stream in a single
 call (also referred to as a C<PutRecords> request). Use this operation
 to send data into the stream for data ingestion and processing.
 
@@ -729,7 +729,7 @@ Each argument is described in detail in: L<Paws::Kinesis::RemoveTagsFromStream>
 
 Returns: nothing
 
-  Removes tags from the specified Amazon Kinesis stream. Removed tags are
+Removes tags from the specified Amazon Kinesis stream. Removed tags are
 deleted and cannot be recovered after this operation successfully
 completes.
 
@@ -742,7 +742,7 @@ Each argument is described in detail in: L<Paws::Kinesis::SplitShard>
 
 Returns: nothing
 
-  Splits a shard into two new shards in the Amazon Kinesis stream to
+Splits a shard into two new shards in the Amazon Kinesis stream to
 increase the stream's capacity to ingest and transport data.
 C<SplitShard> is called when there is a need to increase the overall
 capacity of a stream because of an expected increase in the volume of
@@ -801,7 +801,7 @@ Each argument is described in detail in: L<Paws::Kinesis::StartStreamEncryption>
 
 Returns: nothing
 
-  Enables or updates server-side encryption using an AWS KMS key for a
+Enables or updates server-side encryption using an AWS KMS key for a
 specified stream.
 
 Starting encryption is an asynchronous operation. Upon receiving the
@@ -828,7 +828,7 @@ Each argument is described in detail in: L<Paws::Kinesis::StopStreamEncryption>
 
 Returns: nothing
 
-  Disables server-side encryption for a specified stream.
+Disables server-side encryption for a specified stream.
 
 Stopping encryption is an asynchronous operation. Upon receiving the
 request, Amazon Kinesis returns immediately and sets the status of the
@@ -856,7 +856,7 @@ Each argument is described in detail in: L<Paws::Kinesis::UpdateShardCount>
 
 Returns: a L<Paws::Kinesis::UpdateShardCountOutput> instance
 
-  Updates the shard count of the specified stream to the specified number
+Updates the shard count of the specified stream to the specified number
 of shards.
 
 Updating the shard count is an asynchronous operation. Upon receiving
@@ -950,9 +950,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -16,7 +16,7 @@ package Paws::IAM::ListPolicyVersions;
 
 =head1 NAME
 
-Paws::IAM::ListPolicyVersions - Arguments for method ListPolicyVersions on Paws::IAM
+Paws::IAM::ListPolicyVersions - Arguments for method ListPolicyVersions on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -76,9 +76,9 @@ This class forms part of L<Paws>, documenting arguments for method ListPolicyVer
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

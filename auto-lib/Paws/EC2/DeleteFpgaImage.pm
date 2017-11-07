@@ -15,7 +15,7 @@ package Paws::EC2::DeleteFpgaImage;
 
 =head1 NAME
 
-Paws::EC2::DeleteFpgaImage - Arguments for method DeleteFpgaImage on Paws::EC2
+Paws::EC2::DeleteFpgaImage - Arguments for method DeleteFpgaImage on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -56,9 +56,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteFpgaIma
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

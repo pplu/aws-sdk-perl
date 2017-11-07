@@ -15,7 +15,7 @@ package Paws::IAM::CreateSAMLProvider;
 
 =head1 NAME
 
-Paws::IAM::CreateSAMLProvider - Arguments for method CreateSAMLProvider on Paws::IAM
+Paws::IAM::CreateSAMLProvider - Arguments for method CreateSAMLProvider on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -65,9 +65,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateSAMLPro
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

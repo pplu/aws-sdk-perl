@@ -1003,7 +1003,7 @@ Each argument is described in detail in: L<Paws::RDS::AddRoleToDBCluster>
 
 Returns: nothing
 
-  Associates an Identity and Access Management (IAM) role from an Aurora
+Associates an Identity and Access Management (IAM) role from an Aurora
 DB cluster. For more information, see Authorizing Amazon Aurora to
 Access Other AWS Services On Your Behalf.
 
@@ -1014,7 +1014,7 @@ Each argument is described in detail in: L<Paws::RDS::AddSourceIdentifierToSubsc
 
 Returns: a L<Paws::RDS::AddSourceIdentifierToSubscriptionResult> instance
 
-  Adds a source identifier to an existing RDS event notification
+Adds a source identifier to an existing RDS event notification
 subscription.
 
 
@@ -1024,7 +1024,7 @@ Each argument is described in detail in: L<Paws::RDS::AddTagsToResource>
 
 Returns: nothing
 
-  Adds metadata tags to an Amazon RDS resource. These tags can also be
+Adds metadata tags to an Amazon RDS resource. These tags can also be
 used with cost allocation reporting to track cost associated with
 Amazon RDS resources, or used in a Condition statement in an IAM policy
 for Amazon RDS.
@@ -1039,7 +1039,7 @@ Each argument is described in detail in: L<Paws::RDS::ApplyPendingMaintenanceAct
 
 Returns: a L<Paws::RDS::ApplyPendingMaintenanceActionResult> instance
 
-  Applies a pending maintenance action to a resource (for example, to a
+Applies a pending maintenance action to a resource (for example, to a
 DB instance).
 
 
@@ -1049,7 +1049,7 @@ Each argument is described in detail in: L<Paws::RDS::AuthorizeDBSecurityGroupIn
 
 Returns: a L<Paws::RDS::AuthorizeDBSecurityGroupIngressResult> instance
 
-  Enables ingress to a DBSecurityGroup using one of two forms of
+Enables ingress to a DBSecurityGroup using one of two forms of
 authorization. First, EC2 or VPC security groups can be added to the
 DBSecurityGroup if the application using the database is running on EC2
 or VPC instances. Second, IP ranges are available if the application
@@ -1072,7 +1072,7 @@ Each argument is described in detail in: L<Paws::RDS::CopyDBClusterParameterGrou
 
 Returns: a L<Paws::RDS::CopyDBClusterParameterGroupResult> instance
 
-  Copies the specified DB cluster parameter group.
+Copies the specified DB cluster parameter group.
 
 
 =head2 CopyDBClusterSnapshot(SourceDBClusterSnapshotIdentifier => Str, TargetDBClusterSnapshotIdentifier => Str, [CopyTags => Bool, KmsKeyId => Str, PreSignedUrl => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
@@ -1081,7 +1081,7 @@ Each argument is described in detail in: L<Paws::RDS::CopyDBClusterSnapshot>
 
 Returns: a L<Paws::RDS::CopyDBClusterSnapshotResult> instance
 
-  Copies a snapshot of a DB cluster.
+Copies a snapshot of a DB cluster.
 
 To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
 C<SourceDBClusterSnapshotIdentifier> must be the Amazon Resource Name
@@ -1179,7 +1179,7 @@ Each argument is described in detail in: L<Paws::RDS::CopyDBParameterGroup>
 
 Returns: a L<Paws::RDS::CopyDBParameterGroupResult> instance
 
-  Copies the specified DB parameter group.
+Copies the specified DB parameter group.
 
 
 =head2 CopyDBSnapshot(SourceDBSnapshotIdentifier => Str, TargetDBSnapshotIdentifier => Str, [CopyTags => Bool, KmsKeyId => Str, OptionGroupName => Str, PreSignedUrl => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
@@ -1188,7 +1188,7 @@ Each argument is described in detail in: L<Paws::RDS::CopyDBSnapshot>
 
 Returns: a L<Paws::RDS::CopyDBSnapshotResult> instance
 
-  Copies the specified DB snapshot. The source DB snapshot must be in the
+Copies the specified DB snapshot. The source DB snapshot must be in the
 "available" state.
 
 You can copy a snapshot from one AWS Region to another. In that case,
@@ -1208,7 +1208,7 @@ Each argument is described in detail in: L<Paws::RDS::CopyOptionGroup>
 
 Returns: a L<Paws::RDS::CopyOptionGroupResult> instance
 
-  Copies the specified option group.
+Copies the specified option group.
 
 
 =head2 CreateDBCluster(DBClusterIdentifier => Str, Engine => Str, [AvailabilityZones => ArrayRef[Str|Undef], BackupRetentionPeriod => Int, CharacterSetName => Str, DatabaseName => Str, DBClusterParameterGroupName => Str, DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, EngineVersion => Str, KmsKeyId => Str, MasterUsername => Str, MasterUserPassword => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PreSignedUrl => Str, ReplicationSourceIdentifier => Str, StorageEncrypted => Bool, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
@@ -1217,7 +1217,7 @@ Each argument is described in detail in: L<Paws::RDS::CreateDBCluster>
 
 Returns: a L<Paws::RDS::CreateDBClusterResult> instance
 
-  Creates a new Amazon Aurora DB cluster.
+Creates a new Amazon Aurora DB cluster.
 
 You can use the C<ReplicationSourceIdentifier> parameter to create the
 DB cluster as a Read Replica of another DB cluster or Amazon RDS MySQL
@@ -1235,7 +1235,7 @@ Each argument is described in detail in: L<Paws::RDS::CreateDBClusterParameterGr
 
 Returns: a L<Paws::RDS::CreateDBClusterParameterGroupResult> instance
 
-  Creates a new DB cluster parameter group.
+Creates a new DB cluster parameter group.
 
 Parameters in a DB cluster parameter group apply to all of the
 instances in a DB cluster.
@@ -1272,7 +1272,7 @@ Each argument is described in detail in: L<Paws::RDS::CreateDBClusterSnapshot>
 
 Returns: a L<Paws::RDS::CreateDBClusterSnapshotResult> instance
 
-  Creates a snapshot of a DB cluster. For more information on Amazon
+Creates a snapshot of a DB cluster. For more information on Amazon
 Aurora, see Aurora on Amazon RDS in the I<Amazon RDS User Guide.>
 
 
@@ -1282,7 +1282,7 @@ Each argument is described in detail in: L<Paws::RDS::CreateDBInstance>
 
 Returns: a L<Paws::RDS::CreateDBInstanceResult> instance
 
-  Creates a new DB instance.
+Creates a new DB instance.
 
 
 =head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, EnablePerformanceInsights => Bool, Iops => Int, KmsKeyId => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, OptionGroupName => Str, PerformanceInsightsKMSKeyId => Str, Port => Int, PreSignedUrl => Str, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
@@ -1291,7 +1291,7 @@ Each argument is described in detail in: L<Paws::RDS::CreateDBInstanceReadReplic
 
 Returns: a L<Paws::RDS::CreateDBInstanceReadReplicaResult> instance
 
-  Creates a new DB instance that acts as a Read Replica for an existing
+Creates a new DB instance that acts as a Read Replica for an existing
 source DB instance. You can create a Read Replica for a DB instance
 running MySQL, MariaDB, or PostgreSQL.
 
@@ -1316,7 +1316,7 @@ Each argument is described in detail in: L<Paws::RDS::CreateDBParameterGroup>
 
 Returns: a L<Paws::RDS::CreateDBParameterGroupResult> instance
 
-  Creates a new DB parameter group.
+Creates a new DB parameter group.
 
 A DB parameter group is initially created with the default parameters
 for the database engine used by the DB instance. To provide custom
@@ -1347,7 +1347,7 @@ Each argument is described in detail in: L<Paws::RDS::CreateDBSecurityGroup>
 
 Returns: a L<Paws::RDS::CreateDBSecurityGroupResult> instance
 
-  Creates a new DB security group. DB security groups control access to a
+Creates a new DB security group. DB security groups control access to a
 DB instance.
 
 
@@ -1357,7 +1357,7 @@ Each argument is described in detail in: L<Paws::RDS::CreateDBSnapshot>
 
 Returns: a L<Paws::RDS::CreateDBSnapshotResult> instance
 
-  Creates a DBSnapshot. The source DBInstance must be in "available"
+Creates a DBSnapshot. The source DBInstance must be in "available"
 state.
 
 
@@ -1367,7 +1367,7 @@ Each argument is described in detail in: L<Paws::RDS::CreateDBSubnetGroup>
 
 Returns: a L<Paws::RDS::CreateDBSubnetGroupResult> instance
 
-  Creates a new DB subnet group. DB subnet groups must contain at least
+Creates a new DB subnet group. DB subnet groups must contain at least
 one subnet in at least two AZs in the AWS Region.
 
 
@@ -1377,7 +1377,7 @@ Each argument is described in detail in: L<Paws::RDS::CreateEventSubscription>
 
 Returns: a L<Paws::RDS::CreateEventSubscriptionResult> instance
 
-  Creates an RDS event notification subscription. This action requires a
+Creates an RDS event notification subscription. This action requires a
 topic ARN (Amazon Resource Name) created by either the RDS console, the
 SNS console, or the SNS API. To obtain an ARN with SNS, you must create
 a topic in Amazon SNS and subscribe to the topic. The ARN is displayed
@@ -1406,7 +1406,7 @@ Each argument is described in detail in: L<Paws::RDS::CreateOptionGroup>
 
 Returns: a L<Paws::RDS::CreateOptionGroupResult> instance
 
-  Creates a new option group. You can create up to 20 option groups.
+Creates a new option group. You can create up to 20 option groups.
 
 
 =head2 DeleteDBCluster(DBClusterIdentifier => Str, [FinalDBSnapshotIdentifier => Str, SkipFinalSnapshot => Bool])
@@ -1415,7 +1415,7 @@ Each argument is described in detail in: L<Paws::RDS::DeleteDBCluster>
 
 Returns: a L<Paws::RDS::DeleteDBClusterResult> instance
 
-  The DeleteDBCluster action deletes a previously provisioned DB cluster.
+The DeleteDBCluster action deletes a previously provisioned DB cluster.
 When you delete a DB cluster, all automated backups for that DB cluster
 are deleted and cannot be recovered. Manual DB cluster snapshots of the
 specified DB cluster are not deleted.
@@ -1430,7 +1430,7 @@ Each argument is described in detail in: L<Paws::RDS::DeleteDBClusterParameterGr
 
 Returns: nothing
 
-  Deletes a specified DB cluster parameter group. The DB cluster
+Deletes a specified DB cluster parameter group. The DB cluster
 parameter group to be deleted cannot be associated with any DB
 clusters.
 
@@ -1444,7 +1444,7 @@ Each argument is described in detail in: L<Paws::RDS::DeleteDBClusterSnapshot>
 
 Returns: a L<Paws::RDS::DeleteDBClusterSnapshotResult> instance
 
-  Deletes a DB cluster snapshot. If the snapshot is being copied, the
+Deletes a DB cluster snapshot. If the snapshot is being copied, the
 copy operation is terminated.
 
 The DB cluster snapshot must be in the C<available> state to be
@@ -1460,7 +1460,7 @@ Each argument is described in detail in: L<Paws::RDS::DeleteDBInstance>
 
 Returns: a L<Paws::RDS::DeleteDBInstanceResult> instance
 
-  The DeleteDBInstance action deletes a previously provisioned DB
+The DeleteDBInstance action deletes a previously provisioned DB
 instance. When you delete a DB instance, all automated backups for that
 instance are deleted and cannot be recovered. Manual DB snapshots of
 the DB instance to be deleted by C<DeleteDBInstance> are not deleted.
@@ -1504,7 +1504,7 @@ Each argument is described in detail in: L<Paws::RDS::DeleteDBParameterGroup>
 
 Returns: nothing
 
-  Deletes a specified DBParameterGroup. The DBParameterGroup to be
+Deletes a specified DBParameterGroup. The DBParameterGroup to be
 deleted cannot be associated with any DB instances.
 
 
@@ -1514,7 +1514,7 @@ Each argument is described in detail in: L<Paws::RDS::DeleteDBSecurityGroup>
 
 Returns: nothing
 
-  Deletes a DB security group.
+Deletes a DB security group.
 
 The specified DB security group must not be associated with any DB
 instances.
@@ -1526,7 +1526,7 @@ Each argument is described in detail in: L<Paws::RDS::DeleteDBSnapshot>
 
 Returns: a L<Paws::RDS::DeleteDBSnapshotResult> instance
 
-  Deletes a DBSnapshot. If the snapshot is being copied, the copy
+Deletes a DBSnapshot. If the snapshot is being copied, the copy
 operation is terminated.
 
 The DBSnapshot must be in the C<available> state to be deleted.
@@ -1538,7 +1538,7 @@ Each argument is described in detail in: L<Paws::RDS::DeleteDBSubnetGroup>
 
 Returns: nothing
 
-  Deletes a DB subnet group.
+Deletes a DB subnet group.
 
 The specified database subnet group must not be associated with any DB
 instances.
@@ -1550,7 +1550,7 @@ Each argument is described in detail in: L<Paws::RDS::DeleteEventSubscription>
 
 Returns: a L<Paws::RDS::DeleteEventSubscriptionResult> instance
 
-  Deletes an RDS event notification subscription.
+Deletes an RDS event notification subscription.
 
 
 =head2 DeleteOptionGroup(OptionGroupName => Str)
@@ -1559,7 +1559,7 @@ Each argument is described in detail in: L<Paws::RDS::DeleteOptionGroup>
 
 Returns: nothing
 
-  Deletes an existing option group.
+Deletes an existing option group.
 
 
 =head2 DescribeAccountAttributes()
@@ -1568,7 +1568,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeAccountAttributes>
 
 Returns: a L<Paws::RDS::AccountAttributesMessage> instance
 
-  Lists all of the attributes for a customer account. The attributes
+Lists all of the attributes for a customer account. The attributes
 include Amazon RDS quotas for the account, such as the number of DB
 instances allowed. The description for a quota includes the quota name,
 current usage toward that quota, and the quota's maximum value.
@@ -1582,7 +1582,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeCertificates>
 
 Returns: a L<Paws::RDS::CertificateMessage> instance
 
-  Lists the set of CA certificates provided by Amazon RDS for this AWS
+Lists the set of CA certificates provided by Amazon RDS for this AWS
 account.
 
 
@@ -1592,7 +1592,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeDBClusterParameter
 
 Returns: a L<Paws::RDS::DBClusterParameterGroupsMessage> instance
 
-  Returns a list of C<DBClusterParameterGroup> descriptions. If a
+Returns a list of C<DBClusterParameterGroup> descriptions. If a
 C<DBClusterParameterGroupName> parameter is specified, the list will
 contain only the description of the specified DB cluster parameter
 group.
@@ -1607,7 +1607,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeDBClusterParameter
 
 Returns: a L<Paws::RDS::DBClusterParameterGroupDetails> instance
 
-  Returns the detailed parameter list for a particular DB cluster
+Returns the detailed parameter list for a particular DB cluster
 parameter group.
 
 For more information on Amazon Aurora, see Aurora on Amazon RDS in the
@@ -1620,7 +1620,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeDBClusters>
 
 Returns: a L<Paws::RDS::DBClusterMessage> instance
 
-  Returns information about provisioned Aurora DB clusters. This API
+Returns information about provisioned Aurora DB clusters. This API
 supports pagination.
 
 For more information on Amazon Aurora, see Aurora on Amazon RDS in the
@@ -1633,7 +1633,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeDBClusterSnapshotA
 
 Returns: a L<Paws::RDS::DescribeDBClusterSnapshotAttributesResult> instance
 
-  Returns a list of DB cluster snapshot attribute names and values for a
+Returns a list of DB cluster snapshot attribute names and values for a
 manual DB cluster snapshot.
 
 When sharing snapshots with other AWS accounts,
@@ -1654,7 +1654,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeDBClusterSnapshots
 
 Returns: a L<Paws::RDS::DBClusterSnapshotMessage> instance
 
-  Returns information about DB cluster snapshots. This API action
+Returns information about DB cluster snapshots. This API action
 supports pagination.
 
 For more information on Amazon Aurora, see Aurora on Amazon RDS in the
@@ -1667,7 +1667,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeDBEngineVersions>
 
 Returns: a L<Paws::RDS::DBEngineVersionMessage> instance
 
-  Returns a list of the available DB engines.
+Returns a list of the available DB engines.
 
 
 =head2 DescribeDBInstances([DBInstanceIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
@@ -1676,7 +1676,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeDBInstances>
 
 Returns: a L<Paws::RDS::DBInstanceMessage> instance
 
-  Returns information about provisioned RDS instances. This API supports
+Returns information about provisioned RDS instances. This API supports
 pagination.
 
 
@@ -1686,7 +1686,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeDBLogFiles>
 
 Returns: a L<Paws::RDS::DescribeDBLogFilesResponse> instance
 
-  Returns a list of DB log files for the DB instance.
+Returns a list of DB log files for the DB instance.
 
 
 =head2 DescribeDBParameterGroups([DBParameterGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
@@ -1695,7 +1695,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeDBParameterGroups>
 
 Returns: a L<Paws::RDS::DBParameterGroupsMessage> instance
 
-  Returns a list of C<DBParameterGroup> descriptions. If a
+Returns a list of C<DBParameterGroup> descriptions. If a
 C<DBParameterGroupName> is specified, the list will contain only the
 description of the specified DB parameter group.
 
@@ -1706,7 +1706,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeDBParameters>
 
 Returns: a L<Paws::RDS::DBParameterGroupDetails> instance
 
-  Returns the detailed parameter list for a particular DB parameter
+Returns the detailed parameter list for a particular DB parameter
 group.
 
 
@@ -1716,7 +1716,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeDBSecurityGroups>
 
 Returns: a L<Paws::RDS::DBSecurityGroupMessage> instance
 
-  Returns a list of C<DBSecurityGroup> descriptions. If a
+Returns a list of C<DBSecurityGroup> descriptions. If a
 C<DBSecurityGroupName> is specified, the list will contain only the
 descriptions of the specified DB security group.
 
@@ -1727,7 +1727,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeDBSnapshotAttribut
 
 Returns: a L<Paws::RDS::DescribeDBSnapshotAttributesResult> instance
 
-  Returns a list of DB snapshot attribute names and values for a manual
+Returns a list of DB snapshot attribute names and values for a manual
 DB snapshot.
 
 When sharing snapshots with other AWS accounts,
@@ -1748,7 +1748,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeDBSnapshots>
 
 Returns: a L<Paws::RDS::DBSnapshotMessage> instance
 
-  Returns information about DB snapshots. This API action supports
+Returns information about DB snapshots. This API action supports
 pagination.
 
 
@@ -1758,7 +1758,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeDBSubnetGroups>
 
 Returns: a L<Paws::RDS::DBSubnetGroupMessage> instance
 
-  Returns a list of DBSubnetGroup descriptions. If a DBSubnetGroupName is
+Returns a list of DBSubnetGroup descriptions. If a DBSubnetGroupName is
 specified, the list will contain only the descriptions of the specified
 DBSubnetGroup.
 
@@ -1771,7 +1771,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeEngineDefaultClust
 
 Returns: a L<Paws::RDS::DescribeEngineDefaultClusterParametersResult> instance
 
-  Returns the default engine and system parameter information for the
+Returns the default engine and system parameter information for the
 cluster database engine.
 
 For more information on Amazon Aurora, see Aurora on Amazon RDS in the
@@ -1784,7 +1784,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeEngineDefaultParam
 
 Returns: a L<Paws::RDS::DescribeEngineDefaultParametersResult> instance
 
-  Returns the default engine and system parameter information for the
+Returns the default engine and system parameter information for the
 specified database engine.
 
 
@@ -1794,7 +1794,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeEventCategories>
 
 Returns: a L<Paws::RDS::EventCategoriesMessage> instance
 
-  Displays a list of categories for all event source types, or, if
+Displays a list of categories for all event source types, or, if
 specified, for a specified source type. You can see a list of the event
 categories and source types in the Events topic in the I<Amazon RDS
 User Guide.>
@@ -1806,7 +1806,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeEvents>
 
 Returns: a L<Paws::RDS::EventsMessage> instance
 
-  Returns events related to DB instances, DB security groups, DB
+Returns events related to DB instances, DB security groups, DB
 snapshots, and DB parameter groups for the past 14 days. Events
 specific to a particular DB instance, DB security group, database
 snapshot, or DB parameter group can be obtained by providing the name
@@ -1819,7 +1819,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeEventSubscriptions
 
 Returns: a L<Paws::RDS::EventSubscriptionsMessage> instance
 
-  Lists all the subscription descriptions for a customer account. The
+Lists all the subscription descriptions for a customer account. The
 description for a subscription includes SubscriptionName, SNSTopicARN,
 CustomerID, SourceType, SourceID, CreationTime, and Status.
 
@@ -1833,7 +1833,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeOptionGroupOptions
 
 Returns: a L<Paws::RDS::OptionGroupOptionsMessage> instance
 
-  Describes all available options.
+Describes all available options.
 
 
 =head2 DescribeOptionGroups([EngineName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int, OptionGroupName => Str])
@@ -1842,7 +1842,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeOptionGroups>
 
 Returns: a L<Paws::RDS::OptionGroups> instance
 
-  Describes the available option groups.
+Describes the available option groups.
 
 
 =head2 DescribeOrderableDBInstanceOptions(Engine => Str, [DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
@@ -1851,7 +1851,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeOrderableDBInstanc
 
 Returns: a L<Paws::RDS::OrderableDBInstanceOptionsMessage> instance
 
-  Returns a list of orderable DB instance options for the specified
+Returns a list of orderable DB instance options for the specified
 engine.
 
 
@@ -1861,7 +1861,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribePendingMaintenance
 
 Returns: a L<Paws::RDS::PendingMaintenanceActionsMessage> instance
 
-  Returns a list of resources (for example, DB instances) that have at
+Returns a list of resources (for example, DB instances) that have at
 least one pending maintenance action.
 
 
@@ -1871,7 +1871,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeReservedDBInstance
 
 Returns: a L<Paws::RDS::ReservedDBInstanceMessage> instance
 
-  Returns information about reserved DB instances for this account, or
+Returns information about reserved DB instances for this account, or
 about a specified reserved DB instance.
 
 
@@ -1881,7 +1881,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeReservedDBInstance
 
 Returns: a L<Paws::RDS::ReservedDBInstancesOfferingMessage> instance
 
-  Lists available reserved DB instance offerings.
+Lists available reserved DB instance offerings.
 
 
 =head2 DescribeSourceRegions([Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, RegionName => Str])
@@ -1890,7 +1890,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeSourceRegions>
 
 Returns: a L<Paws::RDS::SourceRegionMessage> instance
 
-  Returns a list of the source AWS regions where the current AWS Region
+Returns a list of the source AWS regions where the current AWS Region
 can create a Read Replica or copy a DB snapshot from. This API action
 supports pagination.
 
@@ -1901,7 +1901,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeValidDBInstanceMod
 
 Returns: a L<Paws::RDS::DescribeValidDBInstanceModificationsResult> instance
 
-  You can call DescribeValidDBInstanceModifications to learn what
+You can call DescribeValidDBInstanceModifications to learn what
 modifications you can make to your DB instance. You can use this
 information when you call ModifyDBInstance.
 
@@ -1912,7 +1912,7 @@ Each argument is described in detail in: L<Paws::RDS::DownloadDBLogFilePortion>
 
 Returns: a L<Paws::RDS::DownloadDBLogFilePortionDetails> instance
 
-  Downloads all or a portion of the specified log file, up to 1 MB in
+Downloads all or a portion of the specified log file, up to 1 MB in
 size.
 
 
@@ -1922,7 +1922,7 @@ Each argument is described in detail in: L<Paws::RDS::FailoverDBCluster>
 
 Returns: a L<Paws::RDS::FailoverDBClusterResult> instance
 
-  Forces a failover for a DB cluster.
+Forces a failover for a DB cluster.
 
 A failover for a DB cluster promotes one of the Aurora Replicas
 (read-only instances) in the DB cluster to be the primary instance (the
@@ -1945,7 +1945,7 @@ Each argument is described in detail in: L<Paws::RDS::ListTagsForResource>
 
 Returns: a L<Paws::RDS::TagListMessage> instance
 
-  Lists all tags on an Amazon RDS resource.
+Lists all tags on an Amazon RDS resource.
 
 For an overview on tagging an Amazon RDS resource, see Tagging Amazon
 RDS Resources.
@@ -1957,7 +1957,7 @@ Each argument is described in detail in: L<Paws::RDS::ModifyDBCluster>
 
 Returns: a L<Paws::RDS::ModifyDBClusterResult> instance
 
-  Modify a setting for an Amazon Aurora DB cluster. You can change one or
+Modify a setting for an Amazon Aurora DB cluster. You can change one or
 more database configuration parameters by specifying these parameters
 and the new values in the request. For more information on Amazon
 Aurora, see Aurora on Amazon RDS in the I<Amazon RDS User Guide.>
@@ -1969,7 +1969,7 @@ Each argument is described in detail in: L<Paws::RDS::ModifyDBClusterParameterGr
 
 Returns: a L<Paws::RDS::DBClusterParameterGroupNameMessage> instance
 
-  Modifies the parameters of a DB cluster parameter group. To modify more
+Modifies the parameters of a DB cluster parameter group. To modify more
 than one parameter, submit a list of the following: C<ParameterName>,
 C<ParameterValue>, and C<ApplyMethod>. A maximum of 20 parameters can
 be modified in a single request.
@@ -2000,7 +2000,7 @@ Each argument is described in detail in: L<Paws::RDS::ModifyDBClusterSnapshotAtt
 
 Returns: a L<Paws::RDS::ModifyDBClusterSnapshotAttributeResult> instance
 
-  Adds an attribute and values to, or removes an attribute and values
+Adds an attribute and values to, or removes an attribute and values
 from, a manual DB cluster snapshot.
 
 To share a manual DB cluster snapshot with other AWS accounts, specify
@@ -2026,7 +2026,7 @@ Each argument is described in detail in: L<Paws::RDS::ModifyDBInstance>
 
 Returns: a L<Paws::RDS::ModifyDBInstanceResult> instance
 
-  Modifies settings for a DB instance. You can change one or more
+Modifies settings for a DB instance. You can change one or more
 database configuration parameters by specifying these parameters and
 the new values in the request. To learn what modifications you can make
 to your DB instance, call DescribeValidDBInstanceModifications before
@@ -2039,7 +2039,7 @@ Each argument is described in detail in: L<Paws::RDS::ModifyDBParameterGroup>
 
 Returns: a L<Paws::RDS::DBParameterGroupNameMessage> instance
 
-  Modifies the parameters of a DB parameter group. To modify more than
+Modifies the parameters of a DB parameter group. To modify more than
 one parameter, submit a list of the following: C<ParameterName>,
 C<ParameterValue>, and C<ApplyMethod>. A maximum of 20 parameters can
 be modified in a single request.
@@ -2067,7 +2067,7 @@ Each argument is described in detail in: L<Paws::RDS::ModifyDBSnapshot>
 
 Returns: a L<Paws::RDS::ModifyDBSnapshotResult> instance
 
-  Updates a manual DB snapshot, which can be encrypted or not encrypted,
+Updates a manual DB snapshot, which can be encrypted or not encrypted,
 with a new engine version.
 
 Amazon RDS supports upgrading DB snapshots for MySQL and Oracle.
@@ -2079,7 +2079,7 @@ Each argument is described in detail in: L<Paws::RDS::ModifyDBSnapshotAttribute>
 
 Returns: a L<Paws::RDS::ModifyDBSnapshotAttributeResult> instance
 
-  Adds an attribute and values to, or removes an attribute and values
+Adds an attribute and values to, or removes an attribute and values
 from, a manual DB snapshot.
 
 To share a manual DB snapshot with other AWS accounts, specify
@@ -2105,7 +2105,7 @@ Each argument is described in detail in: L<Paws::RDS::ModifyDBSubnetGroup>
 
 Returns: a L<Paws::RDS::ModifyDBSubnetGroupResult> instance
 
-  Modifies an existing DB subnet group. DB subnet groups must contain at
+Modifies an existing DB subnet group. DB subnet groups must contain at
 least one subnet in at least two AZs in the AWS Region.
 
 
@@ -2115,7 +2115,7 @@ Each argument is described in detail in: L<Paws::RDS::ModifyEventSubscription>
 
 Returns: a L<Paws::RDS::ModifyEventSubscriptionResult> instance
 
-  Modifies an existing RDS event notification subscription. Note that you
+Modifies an existing RDS event notification subscription. Note that you
 cannot modify the source identifiers using this call; to change source
 identifiers for a subscription, use the
 AddSourceIdentifierToSubscription and
@@ -2132,7 +2132,7 @@ Each argument is described in detail in: L<Paws::RDS::ModifyOptionGroup>
 
 Returns: a L<Paws::RDS::ModifyOptionGroupResult> instance
 
-  Modifies an existing option group.
+Modifies an existing option group.
 
 
 =head2 PromoteReadReplica(DBInstanceIdentifier => Str, [BackupRetentionPeriod => Int, PreferredBackupWindow => Str])
@@ -2141,7 +2141,7 @@ Each argument is described in detail in: L<Paws::RDS::PromoteReadReplica>
 
 Returns: a L<Paws::RDS::PromoteReadReplicaResult> instance
 
-  Promotes a Read Replica DB instance to a standalone DB instance.
+Promotes a Read Replica DB instance to a standalone DB instance.
 
 We recommend that you enable automated backups on your Read Replica
 before promoting the Read Replica. This ensures that no backup is taken
@@ -2155,7 +2155,7 @@ Each argument is described in detail in: L<Paws::RDS::PromoteReadReplicaDBCluste
 
 Returns: a L<Paws::RDS::PromoteReadReplicaDBClusterResult> instance
 
-  Promotes a Read Replica DB cluster to a standalone DB cluster.
+Promotes a Read Replica DB cluster to a standalone DB cluster.
 
 
 =head2 PurchaseReservedDBInstancesOffering(ReservedDBInstancesOfferingId => Str, [DBInstanceCount => Int, ReservedDBInstanceId => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
@@ -2164,7 +2164,7 @@ Each argument is described in detail in: L<Paws::RDS::PurchaseReservedDBInstance
 
 Returns: a L<Paws::RDS::PurchaseReservedDBInstancesOfferingResult> instance
 
-  Purchases a reserved DB instance offering.
+Purchases a reserved DB instance offering.
 
 
 =head2 RebootDBInstance(DBInstanceIdentifier => Str, [ForceFailover => Bool])
@@ -2173,7 +2173,7 @@ Each argument is described in detail in: L<Paws::RDS::RebootDBInstance>
 
 Returns: a L<Paws::RDS::RebootDBInstanceResult> instance
 
-  Rebooting a DB instance restarts the database engine service. A reboot
+Rebooting a DB instance restarts the database engine service. A reboot
 also applies to the DB instance any modifications to the associated DB
 parameter group that were pending. Rebooting a DB instance results in a
 momentary outage of the instance, during which the DB instance status
@@ -2200,7 +2200,7 @@ Each argument is described in detail in: L<Paws::RDS::RemoveRoleFromDBCluster>
 
 Returns: nothing
 
-  Disassociates an Identity and Access Management (IAM) role from an
+Disassociates an Identity and Access Management (IAM) role from an
 Aurora DB cluster. For more information, see Authorizing Amazon Aurora
 to Access Other AWS Services On Your Behalf.
 
@@ -2211,7 +2211,7 @@ Each argument is described in detail in: L<Paws::RDS::RemoveSourceIdentifierFrom
 
 Returns: a L<Paws::RDS::RemoveSourceIdentifierFromSubscriptionResult> instance
 
-  Removes a source identifier from an existing RDS event notification
+Removes a source identifier from an existing RDS event notification
 subscription.
 
 
@@ -2221,7 +2221,7 @@ Each argument is described in detail in: L<Paws::RDS::RemoveTagsFromResource>
 
 Returns: nothing
 
-  Removes metadata tags from an Amazon RDS resource.
+Removes metadata tags from an Amazon RDS resource.
 
 For an overview on tagging an Amazon RDS resource, see Tagging Amazon
 RDS Resources.
@@ -2233,7 +2233,7 @@ Each argument is described in detail in: L<Paws::RDS::ResetDBClusterParameterGro
 
 Returns: a L<Paws::RDS::DBClusterParameterGroupNameMessage> instance
 
-  Modifies the parameters of a DB cluster parameter group to the default
+Modifies the parameters of a DB cluster parameter group to the default
 value. To reset specific parameters submit a list of the following:
 C<ParameterName> and C<ApplyMethod>. To reset the entire DB cluster
 parameter group, specify the C<DBClusterParameterGroupName> and
@@ -2255,7 +2255,7 @@ Each argument is described in detail in: L<Paws::RDS::ResetDBParameterGroup>
 
 Returns: a L<Paws::RDS::DBParameterGroupNameMessage> instance
 
-  Modifies the parameters of a DB parameter group to the engine/system
+Modifies the parameters of a DB parameter group to the engine/system
 default value. To reset specific parameters, provide a list of the
 following: C<ParameterName> and C<ApplyMethod>. To reset the entire DB
 parameter group, specify the C<DBParameterGroup> name and
@@ -2271,7 +2271,7 @@ Each argument is described in detail in: L<Paws::RDS::RestoreDBClusterFromS3>
 
 Returns: a L<Paws::RDS::RestoreDBClusterFromS3Result> instance
 
-  Creates an Amazon Aurora DB cluster from data stored in an Amazon S3
+Creates an Amazon Aurora DB cluster from data stored in an Amazon S3
 bucket. Amazon RDS must be authorized to access the Amazon S3 bucket
 and the data must be created using the Percona XtraBackup utility as
 described in Migrating Data from MySQL by Using an Amazon S3 Bucket.
@@ -2283,7 +2283,7 @@ Each argument is described in detail in: L<Paws::RDS::RestoreDBClusterFromSnapsh
 
 Returns: a L<Paws::RDS::RestoreDBClusterFromSnapshotResult> instance
 
-  Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
+Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
 
 If a DB snapshot is specified, the target DB cluster is created from
 the source DB snapshot with a default configuration and default
@@ -2304,7 +2304,7 @@ Each argument is described in detail in: L<Paws::RDS::RestoreDBClusterToPointInT
 
 Returns: a L<Paws::RDS::RestoreDBClusterToPointInTimeResult> instance
 
-  Restores a DB cluster to an arbitrary point in time. Users can restore
+Restores a DB cluster to an arbitrary point in time. Users can restore
 to any point in time before C<LatestRestorableTime> for up to
 C<BackupRetentionPeriod> days. The target DB cluster is created from
 the source DB cluster with the same configuration as the original DB
@@ -2328,7 +2328,7 @@ Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceFromDBSna
 
 Returns: a L<Paws::RDS::RestoreDBInstanceFromDBSnapshotResult> instance
 
-  Creates a new DB instance from a DB snapshot. The target database is
+Creates a new DB instance from a DB snapshot. The target database is
 created from the source database restore point with the most of
 original configuration with the default security group and the default
 DB parameter group. By default, the new DB instance is created as a
@@ -2357,7 +2357,7 @@ Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceToPointIn
 
 Returns: a L<Paws::RDS::RestoreDBInstanceToPointInTimeResult> instance
 
-  Restores a DB instance to an arbitrary point in time. You can restore
+Restores a DB instance to an arbitrary point in time. You can restore
 to any point in time before the time identified by the
 LatestRestorableTime property. You can restore to a point up to the
 number of days specified by the BackupRetentionPeriod property.
@@ -2377,7 +2377,7 @@ Each argument is described in detail in: L<Paws::RDS::RevokeDBSecurityGroupIngre
 
 Returns: a L<Paws::RDS::RevokeDBSecurityGroupIngressResult> instance
 
-  Revokes ingress from a DBSecurityGroup for previously authorized IP
+Revokes ingress from a DBSecurityGroup for previously authorized IP
 ranges or EC2 or VPC Security Groups. Required parameters for this API
 are one of CIDRIP, EC2SecurityGroupId for VPC, or
 (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or
@@ -2390,7 +2390,7 @@ Each argument is described in detail in: L<Paws::RDS::StartDBInstance>
 
 Returns: a L<Paws::RDS::StartDBInstanceResult> instance
 
-  Starts a DB instance that was stopped using the AWS console, the
+Starts a DB instance that was stopped using the AWS console, the
 stop-db-instance AWS CLI command, or the StopDBInstance action. For
 more information, see Stopping and Starting a DB instance in the AWS
 RDS user guide.
@@ -2402,7 +2402,7 @@ Each argument is described in detail in: L<Paws::RDS::StopDBInstance>
 
 Returns: a L<Paws::RDS::StopDBInstanceResult> instance
 
-  Stops a DB instance. When you stop a DB instance, Amazon RDS retains
+Stops a DB instance. When you stop a DB instance, Amazon RDS retains
 the DB instance's metadata, including its endpoint, DB parameter group,
 and option group membership. Amazon RDS also retains the transaction
 logs so you can do a point-in-time restore if necessary. For more
@@ -2641,9 +2641,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

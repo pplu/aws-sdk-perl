@@ -17,7 +17,7 @@ package Paws::CloudWatchLogs::PutLogEvents;
 
 =head1 NAME
 
-Paws::CloudWatchLogs::PutLogEvents - Arguments for method PutLogEvents on Paws::CloudWatchLogs
+Paws::CloudWatchLogs::PutLogEvents - Arguments for method PutLogEvents on L<Paws::CloudWatchLogs>
 
 =head1 DESCRIPTION
 
@@ -72,9 +72,9 @@ This class forms part of L<Paws>, documenting arguments for method PutLogEvents 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

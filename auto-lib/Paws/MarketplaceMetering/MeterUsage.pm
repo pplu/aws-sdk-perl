@@ -18,7 +18,7 @@ package Paws::MarketplaceMetering::MeterUsage;
 
 =head1 NAME
 
-Paws::MarketplaceMetering::MeterUsage - Arguments for method MeterUsage on Paws::MarketplaceMetering
+Paws::MarketplaceMetering::MeterUsage - Arguments for method MeterUsage on L<Paws::MarketplaceMetering>
 
 =head1 DESCRIPTION
 
@@ -80,9 +80,9 @@ This class forms part of L<Paws>, documenting arguments for method MeterUsage in
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

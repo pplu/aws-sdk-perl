@@ -16,7 +16,7 @@ package Paws::IoT::ReplaceTopicRule;
 
 =head1 NAME
 
-Paws::IoT::ReplaceTopicRule - Arguments for method ReplaceTopicRule on Paws::IoT
+Paws::IoT::ReplaceTopicRule - Arguments for method ReplaceTopicRule on L<Paws::IoT>
 
 =head1 DESCRIPTION
 
@@ -54,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method ReplaceTopicR
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

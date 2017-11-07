@@ -15,7 +15,7 @@ package Paws::Glue::UpdateCrawlerSchedule;
 
 =head1 NAME
 
-Paws::Glue::UpdateCrawlerSchedule - Arguments for method UpdateCrawlerSchedule on Paws::Glue
+Paws::Glue::UpdateCrawlerSchedule - Arguments for method UpdateCrawlerSchedule on L<Paws::Glue>
 
 =head1 DESCRIPTION
 
@@ -56,9 +56,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateCrawler
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

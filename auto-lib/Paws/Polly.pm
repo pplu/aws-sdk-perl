@@ -90,7 +90,7 @@ Each argument is described in detail in: L<Paws::Polly::DeleteLexicon>
 
 Returns: a L<Paws::Polly::DeleteLexiconOutput> instance
 
-  Deletes the specified pronunciation lexicon stored in an AWS Region. A
+Deletes the specified pronunciation lexicon stored in an AWS Region. A
 lexicon which has been deleted is not available for speech synthesis,
 nor is it possible to retrieve it using either the C<GetLexicon> or
 C<ListLexicon> APIs.
@@ -104,7 +104,7 @@ Each argument is described in detail in: L<Paws::Polly::DescribeVoices>
 
 Returns: a L<Paws::Polly::DescribeVoicesOutput> instance
 
-  Returns the list of voices that are available for use when requesting
+Returns the list of voices that are available for use when requesting
 speech synthesis. Each voice speaks a specified language, is either
 male or female, and is identified by an ID, which is the ASCII version
 of the voice name.
@@ -132,7 +132,7 @@ Each argument is described in detail in: L<Paws::Polly::GetLexicon>
 
 Returns: a L<Paws::Polly::GetLexiconOutput> instance
 
-  Returns the content of the specified pronunciation lexicon stored in an
+Returns the content of the specified pronunciation lexicon stored in an
 AWS Region. For more information, see Managing Lexicons.
 
 
@@ -142,7 +142,7 @@ Each argument is described in detail in: L<Paws::Polly::ListLexicons>
 
 Returns: a L<Paws::Polly::ListLexiconsOutput> instance
 
-  Returns a list of pronunciation lexicons stored in an AWS Region. For
+Returns a list of pronunciation lexicons stored in an AWS Region. For
 more information, see Managing Lexicons.
 
 
@@ -152,7 +152,7 @@ Each argument is described in detail in: L<Paws::Polly::PutLexicon>
 
 Returns: a L<Paws::Polly::PutLexiconOutput> instance
 
-  Stores a pronunciation lexicon in an AWS Region. If a lexicon with the
+Stores a pronunciation lexicon in an AWS Region. If a lexicon with the
 same name already exists in the region, it is overwritten by the new
 lexicon. Lexicon operations have eventual consistency, therefore, it
 might take some time before the lexicon is available to the
@@ -167,7 +167,7 @@ Each argument is described in detail in: L<Paws::Polly::SynthesizeSpeech>
 
 Returns: a L<Paws::Polly::SynthesizeSpeechOutput> instance
 
-  Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes. SSML
+Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes. SSML
 input must be valid, well-formed SSML. Some alphabets might not be
 available with all the voices (for example, Cyrillic might not be read
 at all by English voices) unless phoneme mapping is used. For more
@@ -189,9 +189,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

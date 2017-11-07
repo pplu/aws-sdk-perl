@@ -20,7 +20,7 @@ package Paws::Route53::ChangeTagsForResource;
 
 =head1 NAME
 
-Paws::Route53::ChangeTagsForResource - Arguments for method ChangeTagsForResource on Paws::Route53
+Paws::Route53::ChangeTagsForResource - Arguments for method ChangeTagsForResource on L<Paws::Route53>
 
 =head1 DESCRIPTION
 
@@ -90,9 +90,9 @@ This class forms part of L<Paws>, documenting arguments for method ChangeTagsFor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

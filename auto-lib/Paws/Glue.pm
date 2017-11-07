@@ -432,7 +432,7 @@ Each argument is described in detail in: L<Paws::Glue::BatchCreatePartition>
 
 Returns: a L<Paws::Glue::BatchCreatePartitionResponse> instance
 
-  Creates one or more partitions in a batch operation.
+Creates one or more partitions in a batch operation.
 
 
 =head2 BatchDeleteConnection(ConnectionNameList => ArrayRef[Str|Undef], [CatalogId => Str])
@@ -441,7 +441,7 @@ Each argument is described in detail in: L<Paws::Glue::BatchDeleteConnection>
 
 Returns: a L<Paws::Glue::BatchDeleteConnectionResponse> instance
 
-  Deletes a list of connection definitions from the Data Catalog.
+Deletes a list of connection definitions from the Data Catalog.
 
 
 =head2 BatchDeletePartition(DatabaseName => Str, PartitionsToDelete => ArrayRef[L<Paws::Glue::PartitionValueList>], TableName => Str, [CatalogId => Str])
@@ -450,7 +450,7 @@ Each argument is described in detail in: L<Paws::Glue::BatchDeletePartition>
 
 Returns: a L<Paws::Glue::BatchDeletePartitionResponse> instance
 
-  Deletes one or more partitions in a batch operation.
+Deletes one or more partitions in a batch operation.
 
 
 =head2 BatchDeleteTable(DatabaseName => Str, TablesToDelete => ArrayRef[Str|Undef], [CatalogId => Str])
@@ -459,7 +459,7 @@ Each argument is described in detail in: L<Paws::Glue::BatchDeleteTable>
 
 Returns: a L<Paws::Glue::BatchDeleteTableResponse> instance
 
-  Deletes multiple tables at once.
+Deletes multiple tables at once.
 
 
 =head2 BatchGetPartition(DatabaseName => Str, PartitionsToGet => ArrayRef[L<Paws::Glue::PartitionValueList>], TableName => Str, [CatalogId => Str])
@@ -468,7 +468,7 @@ Each argument is described in detail in: L<Paws::Glue::BatchGetPartition>
 
 Returns: a L<Paws::Glue::BatchGetPartitionResponse> instance
 
-  Retrieves partitions in a batch request.
+Retrieves partitions in a batch request.
 
 
 =head2 BatchStopJobRun(JobName => Str, JobRunIds => ArrayRef[Str|Undef])
@@ -477,7 +477,7 @@ Each argument is described in detail in: L<Paws::Glue::BatchStopJobRun>
 
 Returns: a L<Paws::Glue::BatchStopJobRunResponse> instance
 
-  Stops a batch of job runs for a given job.
+Stops a batch of job runs for a given job.
 
 
 =head2 CreateClassifier([GrokClassifier => L<Paws::Glue::CreateGrokClassifierRequest>])
@@ -486,7 +486,7 @@ Each argument is described in detail in: L<Paws::Glue::CreateClassifier>
 
 Returns: a L<Paws::Glue::CreateClassifierResponse> instance
 
-  Creates a C<Classifier> in the user's account.
+Creates a C<Classifier> in the user's account.
 
 
 =head2 CreateConnection(ConnectionInput => L<Paws::Glue::ConnectionInput>, [CatalogId => Str])
@@ -495,7 +495,7 @@ Each argument is described in detail in: L<Paws::Glue::CreateConnection>
 
 Returns: a L<Paws::Glue::CreateConnectionResponse> instance
 
-  Creates a connection definition in the Data Catalog.
+Creates a connection definition in the Data Catalog.
 
 
 =head2 CreateCrawler(DatabaseName => Str, Name => Str, Role => Str, Targets => L<Paws::Glue::CrawlerTargets>, [Classifiers => ArrayRef[Str|Undef], Description => Str, Schedule => Str, SchemaChangePolicy => L<Paws::Glue::SchemaChangePolicy>, TablePrefix => Str])
@@ -504,7 +504,7 @@ Each argument is described in detail in: L<Paws::Glue::CreateCrawler>
 
 Returns: a L<Paws::Glue::CreateCrawlerResponse> instance
 
-  Creates a new C<Crawler> with specified targets, role, configuration,
+Creates a new C<Crawler> with specified targets, role, configuration,
 and optional schedule. At least one crawl target must be specified, in
 either the I<s3Targets> or the I<jdbcTargets> field.
 
@@ -515,7 +515,7 @@ Each argument is described in detail in: L<Paws::Glue::CreateDatabase>
 
 Returns: a L<Paws::Glue::CreateDatabaseResponse> instance
 
-  Creates a new database in a Data Catalog.
+Creates a new database in a Data Catalog.
 
 
 =head2 CreateDevEndpoint(EndpointName => Str, PublicKey => Str, RoleArn => Str, [ExtraJarsS3Path => Str, ExtraPythonLibsS3Path => Str, NumberOfNodes => Int, SecurityGroupIds => ArrayRef[Str|Undef], SubnetId => Str])
@@ -524,7 +524,7 @@ Each argument is described in detail in: L<Paws::Glue::CreateDevEndpoint>
 
 Returns: a L<Paws::Glue::CreateDevEndpointResponse> instance
 
-  Creates a new DevEndpoint.
+Creates a new DevEndpoint.
 
 
 =head2 CreateJob(Command => L<Paws::Glue::JobCommand>, Name => Str, Role => Str, [AllocatedCapacity => Int, Connections => L<Paws::Glue::ConnectionsList>, DefaultArguments => L<Paws::Glue::GenericMap>, Description => Str, ExecutionProperty => L<Paws::Glue::ExecutionProperty>, LogUri => Str, MaxRetries => Int])
@@ -533,7 +533,7 @@ Each argument is described in detail in: L<Paws::Glue::CreateJob>
 
 Returns: a L<Paws::Glue::CreateJobResponse> instance
 
-  Creates a new job.
+Creates a new job.
 
 
 =head2 CreatePartition(DatabaseName => Str, PartitionInput => L<Paws::Glue::PartitionInput>, TableName => Str, [CatalogId => Str])
@@ -542,7 +542,7 @@ Each argument is described in detail in: L<Paws::Glue::CreatePartition>
 
 Returns: a L<Paws::Glue::CreatePartitionResponse> instance
 
-  Creates a new partition.
+Creates a new partition.
 
 
 =head2 CreateScript([DagEdges => ArrayRef[L<Paws::Glue::CodeGenEdge>], DagNodes => ArrayRef[L<Paws::Glue::CodeGenNode>]])
@@ -551,7 +551,7 @@ Each argument is described in detail in: L<Paws::Glue::CreateScript>
 
 Returns: a L<Paws::Glue::CreateScriptResponse> instance
 
-  Transforms a directed acyclic graph (DAG) into a Python script.
+Transforms a directed acyclic graph (DAG) into a Python script.
 
 
 =head2 CreateTable(DatabaseName => Str, TableInput => L<Paws::Glue::TableInput>, [CatalogId => Str])
@@ -560,7 +560,7 @@ Each argument is described in detail in: L<Paws::Glue::CreateTable>
 
 Returns: a L<Paws::Glue::CreateTableResponse> instance
 
-  Creates a new table definition in the Data Catalog.
+Creates a new table definition in the Data Catalog.
 
 
 =head2 CreateTrigger(Actions => ArrayRef[L<Paws::Glue::Action>], Name => Str, Type => Str, [Description => Str, Predicate => L<Paws::Glue::Predicate>, Schedule => Str])
@@ -569,7 +569,7 @@ Each argument is described in detail in: L<Paws::Glue::CreateTrigger>
 
 Returns: a L<Paws::Glue::CreateTriggerResponse> instance
 
-  Creates a new trigger.
+Creates a new trigger.
 
 
 =head2 CreateUserDefinedFunction(DatabaseName => Str, FunctionInput => L<Paws::Glue::UserDefinedFunctionInput>, [CatalogId => Str])
@@ -578,7 +578,7 @@ Each argument is described in detail in: L<Paws::Glue::CreateUserDefinedFunction
 
 Returns: a L<Paws::Glue::CreateUserDefinedFunctionResponse> instance
 
-  Creates a new function definition in the Data Catalog.
+Creates a new function definition in the Data Catalog.
 
 
 =head2 DeleteClassifier(Name => Str)
@@ -587,7 +587,7 @@ Each argument is described in detail in: L<Paws::Glue::DeleteClassifier>
 
 Returns: a L<Paws::Glue::DeleteClassifierResponse> instance
 
-  Removes a C<Classifier> from the metadata store.
+Removes a C<Classifier> from the metadata store.
 
 
 =head2 DeleteConnection(ConnectionName => Str, [CatalogId => Str])
@@ -596,7 +596,7 @@ Each argument is described in detail in: L<Paws::Glue::DeleteConnection>
 
 Returns: a L<Paws::Glue::DeleteConnectionResponse> instance
 
-  Deletes a connection from the Data Catalog.
+Deletes a connection from the Data Catalog.
 
 
 =head2 DeleteCrawler(Name => Str)
@@ -605,7 +605,7 @@ Each argument is described in detail in: L<Paws::Glue::DeleteCrawler>
 
 Returns: a L<Paws::Glue::DeleteCrawlerResponse> instance
 
-  Removes a specified C<Crawler> from the metadata store, unless the
+Removes a specified C<Crawler> from the metadata store, unless the
 C<Crawler> state is C<RUNNING>.
 
 
@@ -615,7 +615,7 @@ Each argument is described in detail in: L<Paws::Glue::DeleteDatabase>
 
 Returns: a L<Paws::Glue::DeleteDatabaseResponse> instance
 
-  Removes a specified Database from a Data Catalog.
+Removes a specified Database from a Data Catalog.
 
 
 =head2 DeleteDevEndpoint(EndpointName => Str)
@@ -624,7 +624,7 @@ Each argument is described in detail in: L<Paws::Glue::DeleteDevEndpoint>
 
 Returns: a L<Paws::Glue::DeleteDevEndpointResponse> instance
 
-  Deletes a specified DevEndpoint.
+Deletes a specified DevEndpoint.
 
 
 =head2 DeleteJob(JobName => Str)
@@ -633,7 +633,7 @@ Each argument is described in detail in: L<Paws::Glue::DeleteJob>
 
 Returns: a L<Paws::Glue::DeleteJobResponse> instance
 
-  Deletes a specified job.
+Deletes a specified job.
 
 
 =head2 DeletePartition(DatabaseName => Str, PartitionValues => ArrayRef[Str|Undef], TableName => Str, [CatalogId => Str])
@@ -642,7 +642,7 @@ Each argument is described in detail in: L<Paws::Glue::DeletePartition>
 
 Returns: a L<Paws::Glue::DeletePartitionResponse> instance
 
-  Deletes a specified partition.
+Deletes a specified partition.
 
 
 =head2 DeleteTable(DatabaseName => Str, Name => Str, [CatalogId => Str])
@@ -651,7 +651,7 @@ Each argument is described in detail in: L<Paws::Glue::DeleteTable>
 
 Returns: a L<Paws::Glue::DeleteTableResponse> instance
 
-  Removes a table definition from the Data Catalog.
+Removes a table definition from the Data Catalog.
 
 
 =head2 DeleteTrigger(Name => Str)
@@ -660,7 +660,7 @@ Each argument is described in detail in: L<Paws::Glue::DeleteTrigger>
 
 Returns: a L<Paws::Glue::DeleteTriggerResponse> instance
 
-  Deletes a specified trigger.
+Deletes a specified trigger.
 
 
 =head2 DeleteUserDefinedFunction(DatabaseName => Str, FunctionName => Str, [CatalogId => Str])
@@ -669,7 +669,7 @@ Each argument is described in detail in: L<Paws::Glue::DeleteUserDefinedFunction
 
 Returns: a L<Paws::Glue::DeleteUserDefinedFunctionResponse> instance
 
-  Deletes an existing function definition from the Data Catalog.
+Deletes an existing function definition from the Data Catalog.
 
 
 =head2 GetCatalogImportStatus([CatalogId => Str])
@@ -678,7 +678,7 @@ Each argument is described in detail in: L<Paws::Glue::GetCatalogImportStatus>
 
 Returns: a L<Paws::Glue::GetCatalogImportStatusResponse> instance
 
-  Retrieves the status of a migration operation.
+Retrieves the status of a migration operation.
 
 
 =head2 GetClassifier(Name => Str)
@@ -687,7 +687,7 @@ Each argument is described in detail in: L<Paws::Glue::GetClassifier>
 
 Returns: a L<Paws::Glue::GetClassifierResponse> instance
 
-  Retrieve a C<Classifier> by name.
+Retrieve a C<Classifier> by name.
 
 
 =head2 GetClassifiers([MaxResults => Int, NextToken => Str])
@@ -696,7 +696,7 @@ Each argument is described in detail in: L<Paws::Glue::GetClassifiers>
 
 Returns: a L<Paws::Glue::GetClassifiersResponse> instance
 
-  Lists all Classifier objects in the metadata store.
+Lists all Classifier objects in the metadata store.
 
 
 =head2 GetConnection(Name => Str, [CatalogId => Str])
@@ -705,7 +705,7 @@ Each argument is described in detail in: L<Paws::Glue::GetConnection>
 
 Returns: a L<Paws::Glue::GetConnectionResponse> instance
 
-  Retrieves a connection definition from the Data Catalog.
+Retrieves a connection definition from the Data Catalog.
 
 
 =head2 GetConnections([CatalogId => Str, Filter => L<Paws::Glue::GetConnectionsFilter>, MaxResults => Int, NextToken => Str])
@@ -714,7 +714,7 @@ Each argument is described in detail in: L<Paws::Glue::GetConnections>
 
 Returns: a L<Paws::Glue::GetConnectionsResponse> instance
 
-  Retrieves a list of connection definitions from the Data Catalog.
+Retrieves a list of connection definitions from the Data Catalog.
 
 
 =head2 GetCrawler(Name => Str)
@@ -723,7 +723,7 @@ Each argument is described in detail in: L<Paws::Glue::GetCrawler>
 
 Returns: a L<Paws::Glue::GetCrawlerResponse> instance
 
-  Retrieves metadata for a specified C<Crawler>.
+Retrieves metadata for a specified C<Crawler>.
 
 
 =head2 GetCrawlerMetrics([CrawlerNameList => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
@@ -732,7 +732,7 @@ Each argument is described in detail in: L<Paws::Glue::GetCrawlerMetrics>
 
 Returns: a L<Paws::Glue::GetCrawlerMetricsResponse> instance
 
-  Retrieves metrics about specified crawlers.
+Retrieves metrics about specified crawlers.
 
 
 =head2 GetCrawlers([MaxResults => Int, NextToken => Str])
@@ -741,7 +741,7 @@ Each argument is described in detail in: L<Paws::Glue::GetCrawlers>
 
 Returns: a L<Paws::Glue::GetCrawlersResponse> instance
 
-  Retrieves metadata for all C<Crawlers> defined in the customer account.
+Retrieves metadata for all C<Crawlers> defined in the customer account.
 
 
 =head2 GetDatabase(Name => Str, [CatalogId => Str])
@@ -750,7 +750,7 @@ Each argument is described in detail in: L<Paws::Glue::GetDatabase>
 
 Returns: a L<Paws::Glue::GetDatabaseResponse> instance
 
-  Retrieves the definition of a specified database.
+Retrieves the definition of a specified database.
 
 
 =head2 GetDatabases([CatalogId => Str, MaxResults => Int, NextToken => Str])
@@ -759,7 +759,7 @@ Each argument is described in detail in: L<Paws::Glue::GetDatabases>
 
 Returns: a L<Paws::Glue::GetDatabasesResponse> instance
 
-  Retrieves all Databases defined in a given Data Catalog.
+Retrieves all Databases defined in a given Data Catalog.
 
 
 =head2 GetDataflowGraph([PythonScript => Str])
@@ -768,7 +768,7 @@ Each argument is described in detail in: L<Paws::Glue::GetDataflowGraph>
 
 Returns: a L<Paws::Glue::GetDataflowGraphResponse> instance
 
-  Transforms a Python script into a directed acyclic graph (DAG).
+Transforms a Python script into a directed acyclic graph (DAG).
 
 
 =head2 GetDevEndpoint(EndpointName => Str)
@@ -777,7 +777,7 @@ Each argument is described in detail in: L<Paws::Glue::GetDevEndpoint>
 
 Returns: a L<Paws::Glue::GetDevEndpointResponse> instance
 
-  Retrieves information about a specified DevEndpoint.
+Retrieves information about a specified DevEndpoint.
 
 
 =head2 GetDevEndpoints([MaxResults => Int, NextToken => Str])
@@ -786,7 +786,7 @@ Each argument is described in detail in: L<Paws::Glue::GetDevEndpoints>
 
 Returns: a L<Paws::Glue::GetDevEndpointsResponse> instance
 
-  Retrieves all the DevEndpoints in this AWS account.
+Retrieves all the DevEndpoints in this AWS account.
 
 
 =head2 GetJob(JobName => Str)
@@ -795,7 +795,7 @@ Each argument is described in detail in: L<Paws::Glue::GetJob>
 
 Returns: a L<Paws::Glue::GetJobResponse> instance
 
-  Retrieves an existing job definition.
+Retrieves an existing job definition.
 
 
 =head2 GetJobRun(JobName => Str, RunId => Str, [PredecessorsIncluded => Bool])
@@ -804,7 +804,7 @@ Each argument is described in detail in: L<Paws::Glue::GetJobRun>
 
 Returns: a L<Paws::Glue::GetJobRunResponse> instance
 
-  Retrieves the metadata for a given job run.
+Retrieves the metadata for a given job run.
 
 
 =head2 GetJobRuns(JobName => Str, [MaxResults => Int, NextToken => Str])
@@ -813,7 +813,7 @@ Each argument is described in detail in: L<Paws::Glue::GetJobRuns>
 
 Returns: a L<Paws::Glue::GetJobRunsResponse> instance
 
-  Retrieves metadata for all runs of a given job.
+Retrieves metadata for all runs of a given job.
 
 
 =head2 GetJobs([MaxResults => Int, NextToken => Str])
@@ -822,7 +822,7 @@ Each argument is described in detail in: L<Paws::Glue::GetJobs>
 
 Returns: a L<Paws::Glue::GetJobsResponse> instance
 
-  Retrieves all current jobs.
+Retrieves all current jobs.
 
 
 =head2 GetMapping(Source => L<Paws::Glue::CatalogEntry>, [Location => L<Paws::Glue::Location>, Sinks => ArrayRef[L<Paws::Glue::CatalogEntry>]])
@@ -831,7 +831,7 @@ Each argument is described in detail in: L<Paws::Glue::GetMapping>
 
 Returns: a L<Paws::Glue::GetMappingResponse> instance
 
-  Creates mappings.
+Creates mappings.
 
 
 =head2 GetPartition(DatabaseName => Str, PartitionValues => ArrayRef[Str|Undef], TableName => Str, [CatalogId => Str])
@@ -840,7 +840,7 @@ Each argument is described in detail in: L<Paws::Glue::GetPartition>
 
 Returns: a L<Paws::Glue::GetPartitionResponse> instance
 
-  Retrieves information about a specified partition.
+Retrieves information about a specified partition.
 
 
 =head2 GetPartitions(DatabaseName => Str, TableName => Str, [CatalogId => Str, Expression => Str, MaxResults => Int, NextToken => Str, Segment => L<Paws::Glue::Segment>])
@@ -849,7 +849,7 @@ Each argument is described in detail in: L<Paws::Glue::GetPartitions>
 
 Returns: a L<Paws::Glue::GetPartitionsResponse> instance
 
-  Retrieves information about the partitions in a table.
+Retrieves information about the partitions in a table.
 
 
 =head2 GetPlan(Mapping => ArrayRef[L<Paws::Glue::MappingEntry>], Source => L<Paws::Glue::CatalogEntry>, [Location => L<Paws::Glue::Location>, Sinks => ArrayRef[L<Paws::Glue::CatalogEntry>]])
@@ -858,7 +858,7 @@ Each argument is described in detail in: L<Paws::Glue::GetPlan>
 
 Returns: a L<Paws::Glue::GetPlanResponse> instance
 
-  Gets a Python script to perform a specified mapping.
+Gets a Python script to perform a specified mapping.
 
 
 =head2 GetTable(DatabaseName => Str, Name => Str, [CatalogId => Str])
@@ -867,7 +867,7 @@ Each argument is described in detail in: L<Paws::Glue::GetTable>
 
 Returns: a L<Paws::Glue::GetTableResponse> instance
 
-  Retrieves the C<Table> definition in a Data Catalog for a specified
+Retrieves the C<Table> definition in a Data Catalog for a specified
 table.
 
 
@@ -877,7 +877,7 @@ Each argument is described in detail in: L<Paws::Glue::GetTables>
 
 Returns: a L<Paws::Glue::GetTablesResponse> instance
 
-  Retrieves the definitions of some or all of the tables in a given
+Retrieves the definitions of some or all of the tables in a given
 C<Database>.
 
 
@@ -887,7 +887,7 @@ Each argument is described in detail in: L<Paws::Glue::GetTableVersions>
 
 Returns: a L<Paws::Glue::GetTableVersionsResponse> instance
 
-  Retrieves a list of strings that identify available versions of a
+Retrieves a list of strings that identify available versions of a
 specified table.
 
 
@@ -897,7 +897,7 @@ Each argument is described in detail in: L<Paws::Glue::GetTrigger>
 
 Returns: a L<Paws::Glue::GetTriggerResponse> instance
 
-  Retrieves the definition of a trigger.
+Retrieves the definition of a trigger.
 
 
 =head2 GetTriggers([DependentJobName => Str, MaxResults => Int, NextToken => Str])
@@ -906,7 +906,7 @@ Each argument is described in detail in: L<Paws::Glue::GetTriggers>
 
 Returns: a L<Paws::Glue::GetTriggersResponse> instance
 
-  Gets all the triggers associated with a job.
+Gets all the triggers associated with a job.
 
 
 =head2 GetUserDefinedFunction(DatabaseName => Str, FunctionName => Str, [CatalogId => Str])
@@ -915,7 +915,7 @@ Each argument is described in detail in: L<Paws::Glue::GetUserDefinedFunction>
 
 Returns: a L<Paws::Glue::GetUserDefinedFunctionResponse> instance
 
-  Retrieves a specified function definition from the Data Catalog.
+Retrieves a specified function definition from the Data Catalog.
 
 
 =head2 GetUserDefinedFunctions(DatabaseName => Str, Pattern => Str, [CatalogId => Str, MaxResults => Int, NextToken => Str])
@@ -924,7 +924,7 @@ Each argument is described in detail in: L<Paws::Glue::GetUserDefinedFunctions>
 
 Returns: a L<Paws::Glue::GetUserDefinedFunctionsResponse> instance
 
-  Retrieves a multiple function definitions from the Data Catalog.
+Retrieves a multiple function definitions from the Data Catalog.
 
 
 =head2 ImportCatalogToGlue([CatalogId => Str])
@@ -933,7 +933,7 @@ Each argument is described in detail in: L<Paws::Glue::ImportCatalogToGlue>
 
 Returns: a L<Paws::Glue::ImportCatalogToGlueResponse> instance
 
-  Imports an existing Athena Data Catalog to AWS Glue
+Imports an existing Athena Data Catalog to AWS Glue
 
 
 =head2 ResetJobBookmark(JobName => Str)
@@ -942,7 +942,7 @@ Each argument is described in detail in: L<Paws::Glue::ResetJobBookmark>
 
 Returns: a L<Paws::Glue::ResetJobBookmarkResponse> instance
 
-  Resets a bookmark entry.
+Resets a bookmark entry.
 
 
 =head2 StartCrawler(Name => Str)
@@ -951,7 +951,7 @@ Each argument is described in detail in: L<Paws::Glue::StartCrawler>
 
 Returns: a L<Paws::Glue::StartCrawlerResponse> instance
 
-  Starts a crawl using the specified C<Crawler>, regardless of what is
+Starts a crawl using the specified C<Crawler>, regardless of what is
 scheduled. If the C<Crawler> is already running, does nothing.
 
 
@@ -961,7 +961,7 @@ Each argument is described in detail in: L<Paws::Glue::StartCrawlerSchedule>
 
 Returns: a L<Paws::Glue::StartCrawlerScheduleResponse> instance
 
-  Changes the schedule state of the specified crawler to C<SCHEDULED>,
+Changes the schedule state of the specified crawler to C<SCHEDULED>,
 unless the crawler is already running or the schedule state is already
 C<SCHEDULED>.
 
@@ -972,7 +972,7 @@ Each argument is described in detail in: L<Paws::Glue::StartJobRun>
 
 Returns: a L<Paws::Glue::StartJobRunResponse> instance
 
-  Runs a job.
+Runs a job.
 
 
 =head2 StartTrigger(Name => Str)
@@ -981,7 +981,7 @@ Each argument is described in detail in: L<Paws::Glue::StartTrigger>
 
 Returns: a L<Paws::Glue::StartTriggerResponse> instance
 
-  Starts an existing trigger.
+Starts an existing trigger.
 
 
 =head2 StopCrawler(Name => Str)
@@ -990,7 +990,7 @@ Each argument is described in detail in: L<Paws::Glue::StopCrawler>
 
 Returns: a L<Paws::Glue::StopCrawlerResponse> instance
 
-  If the specified C<Crawler> is running, stops the crawl.
+If the specified C<Crawler> is running, stops the crawl.
 
 
 =head2 StopCrawlerSchedule(CrawlerName => Str)
@@ -999,7 +999,7 @@ Each argument is described in detail in: L<Paws::Glue::StopCrawlerSchedule>
 
 Returns: a L<Paws::Glue::StopCrawlerScheduleResponse> instance
 
-  Sets the schedule state of the specified crawler to C<NOT_SCHEDULED>,
+Sets the schedule state of the specified crawler to C<NOT_SCHEDULED>,
 but does not stop the crawler if it is already running.
 
 
@@ -1009,7 +1009,7 @@ Each argument is described in detail in: L<Paws::Glue::StopTrigger>
 
 Returns: a L<Paws::Glue::StopTriggerResponse> instance
 
-  Stops a specified trigger.
+Stops a specified trigger.
 
 
 =head2 UpdateClassifier([GrokClassifier => L<Paws::Glue::UpdateGrokClassifierRequest>])
@@ -1018,7 +1018,7 @@ Each argument is described in detail in: L<Paws::Glue::UpdateClassifier>
 
 Returns: a L<Paws::Glue::UpdateClassifierResponse> instance
 
-  Modifies an existing C<Classifier>.
+Modifies an existing C<Classifier>.
 
 
 =head2 UpdateConnection(ConnectionInput => L<Paws::Glue::ConnectionInput>, Name => Str, [CatalogId => Str])
@@ -1027,7 +1027,7 @@ Each argument is described in detail in: L<Paws::Glue::UpdateConnection>
 
 Returns: a L<Paws::Glue::UpdateConnectionResponse> instance
 
-  Updates a connection definition in the Data Catalog.
+Updates a connection definition in the Data Catalog.
 
 
 =head2 UpdateCrawler(Name => Str, [Classifiers => ArrayRef[Str|Undef], DatabaseName => Str, Description => Str, Role => Str, Schedule => Str, SchemaChangePolicy => L<Paws::Glue::SchemaChangePolicy>, TablePrefix => Str, Targets => L<Paws::Glue::CrawlerTargets>])
@@ -1036,7 +1036,7 @@ Each argument is described in detail in: L<Paws::Glue::UpdateCrawler>
 
 Returns: a L<Paws::Glue::UpdateCrawlerResponse> instance
 
-  Updates a C<Crawler>. If a C<Crawler> is running, you must stop it
+Updates a C<Crawler>. If a C<Crawler> is running, you must stop it
 using C<StopCrawler> before updating it.
 
 
@@ -1046,7 +1046,7 @@ Each argument is described in detail in: L<Paws::Glue::UpdateCrawlerSchedule>
 
 Returns: a L<Paws::Glue::UpdateCrawlerScheduleResponse> instance
 
-  Updates the schedule of a crawler using a Cron expression.
+Updates the schedule of a crawler using a Cron expression.
 
 
 =head2 UpdateDatabase(DatabaseInput => L<Paws::Glue::DatabaseInput>, Name => Str, [CatalogId => Str])
@@ -1055,7 +1055,7 @@ Each argument is described in detail in: L<Paws::Glue::UpdateDatabase>
 
 Returns: a L<Paws::Glue::UpdateDatabaseResponse> instance
 
-  Updates an existing database definition in a Data Catalog.
+Updates an existing database definition in a Data Catalog.
 
 
 =head2 UpdateDevEndpoint(EndpointName => Str, [CustomLibraries => L<Paws::Glue::DevEndpointCustomLibraries>, PublicKey => Str, UpdateEtlLibraries => Bool])
@@ -1064,7 +1064,7 @@ Each argument is described in detail in: L<Paws::Glue::UpdateDevEndpoint>
 
 Returns: a L<Paws::Glue::UpdateDevEndpointResponse> instance
 
-  Updates a specified DevEndpoint.
+Updates a specified DevEndpoint.
 
 
 =head2 UpdateJob(JobName => Str, JobUpdate => L<Paws::Glue::JobUpdate>)
@@ -1073,7 +1073,7 @@ Each argument is described in detail in: L<Paws::Glue::UpdateJob>
 
 Returns: a L<Paws::Glue::UpdateJobResponse> instance
 
-  Updates an existing job definition.
+Updates an existing job definition.
 
 
 =head2 UpdatePartition(DatabaseName => Str, PartitionInput => L<Paws::Glue::PartitionInput>, PartitionValueList => ArrayRef[Str|Undef], TableName => Str, [CatalogId => Str])
@@ -1082,7 +1082,7 @@ Each argument is described in detail in: L<Paws::Glue::UpdatePartition>
 
 Returns: a L<Paws::Glue::UpdatePartitionResponse> instance
 
-  Updates a partition.
+Updates a partition.
 
 
 =head2 UpdateTable(DatabaseName => Str, TableInput => L<Paws::Glue::TableInput>, [CatalogId => Str])
@@ -1091,7 +1091,7 @@ Each argument is described in detail in: L<Paws::Glue::UpdateTable>
 
 Returns: a L<Paws::Glue::UpdateTableResponse> instance
 
-  Updates a metadata table in the Data Catalog.
+Updates a metadata table in the Data Catalog.
 
 
 =head2 UpdateTrigger(Name => Str, TriggerUpdate => L<Paws::Glue::TriggerUpdate>)
@@ -1100,7 +1100,7 @@ Each argument is described in detail in: L<Paws::Glue::UpdateTrigger>
 
 Returns: a L<Paws::Glue::UpdateTriggerResponse> instance
 
-  Updates a trigger definition.
+Updates a trigger definition.
 
 
 =head2 UpdateUserDefinedFunction(DatabaseName => Str, FunctionInput => L<Paws::Glue::UserDefinedFunctionInput>, FunctionName => Str, [CatalogId => Str])
@@ -1109,7 +1109,7 @@ Each argument is described in detail in: L<Paws::Glue::UpdateUserDefinedFunction
 
 Returns: a L<Paws::Glue::UpdateUserDefinedFunctionResponse> instance
 
-  Updates an existing function definition in the Data Catalog.
+Updates an existing function definition in the Data Catalog.
 
 
 
@@ -1127,9 +1127,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

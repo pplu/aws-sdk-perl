@@ -14,7 +14,7 @@ package Paws::Organizations::DescribePolicy;
 
 =head1 NAME
 
-Paws::Organizations::DescribePolicy - Arguments for method DescribePolicy on Paws::Organizations
+Paws::Organizations::DescribePolicy - Arguments for method DescribePolicy on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
@@ -51,9 +51,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribePolic
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

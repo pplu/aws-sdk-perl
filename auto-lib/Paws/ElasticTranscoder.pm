@@ -233,7 +233,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::CancelJob>
 
 Returns: a L<Paws::ElasticTranscoder::CancelJobResponse> instance
 
-  The CancelJob operation cancels an unfinished job.
+The CancelJob operation cancels an unfinished job.
 
 You can only cancel a job that has a status of C<Submitted>. To prevent
 a pipeline from starting to process a job while you're getting the job
@@ -246,7 +246,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::CreateJob>
 
 Returns: a L<Paws::ElasticTranscoder::CreateJobResponse> instance
 
-  When you create a job, Elastic Transcoder returns JSON data that
+When you create a job, Elastic Transcoder returns JSON data that
 includes the values that you specified plus information about the job
 that is created.
 
@@ -262,7 +262,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::CreatePipeli
 
 Returns: a L<Paws::ElasticTranscoder::CreatePipelineResponse> instance
 
-  The CreatePipeline operation creates a pipeline with settings that you
+The CreatePipeline operation creates a pipeline with settings that you
 specify.
 
 
@@ -272,7 +272,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::CreatePreset
 
 Returns: a L<Paws::ElasticTranscoder::CreatePresetResponse> instance
 
-  The CreatePreset operation creates a preset with settings that you
+The CreatePreset operation creates a preset with settings that you
 specify.
 
 Elastic Transcoder checks the CreatePreset settings to ensure that they
@@ -299,7 +299,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::DeletePipeli
 
 Returns: a L<Paws::ElasticTranscoder::DeletePipelineResponse> instance
 
-  The DeletePipeline operation removes a pipeline.
+The DeletePipeline operation removes a pipeline.
 
 You can only delete a pipeline that has never been used or that is not
 currently in use (doesn't contain any active jobs). If the pipeline is
@@ -312,7 +312,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::DeletePreset
 
 Returns: a L<Paws::ElasticTranscoder::DeletePresetResponse> instance
 
-  The DeletePreset operation removes a preset that you've added in an AWS
+The DeletePreset operation removes a preset that you've added in an AWS
 region.
 
 You can't delete the default presets that are included with Elastic
@@ -325,7 +325,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::ListJobsByPi
 
 Returns: a L<Paws::ElasticTranscoder::ListJobsByPipelineResponse> instance
 
-  The ListJobsByPipeline operation gets a list of the jobs currently in a
+The ListJobsByPipeline operation gets a list of the jobs currently in a
 pipeline.
 
 Elastic Transcoder returns all of the jobs currently in the specified
@@ -339,7 +339,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::ListJobsBySt
 
 Returns: a L<Paws::ElasticTranscoder::ListJobsByStatusResponse> instance
 
-  The ListJobsByStatus operation gets a list of jobs that have a
+The ListJobsByStatus operation gets a list of jobs that have a
 specified status. The response body contains one element for each job
 that satisfies the search criteria.
 
@@ -350,7 +350,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::ListPipeline
 
 Returns: a L<Paws::ElasticTranscoder::ListPipelinesResponse> instance
 
-  The ListPipelines operation gets a list of the pipelines associated
+The ListPipelines operation gets a list of the pipelines associated
 with the current AWS account.
 
 
@@ -360,7 +360,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::ListPresets>
 
 Returns: a L<Paws::ElasticTranscoder::ListPresetsResponse> instance
 
-  The ListPresets operation gets a list of the default presets included
+The ListPresets operation gets a list of the default presets included
 with Elastic Transcoder and the presets that you've added in an AWS
 region.
 
@@ -371,7 +371,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::ReadJob>
 
 Returns: a L<Paws::ElasticTranscoder::ReadJobResponse> instance
 
-  The ReadJob operation returns detailed information about a job.
+The ReadJob operation returns detailed information about a job.
 
 
 =head2 ReadPipeline(Id => Str)
@@ -380,7 +380,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::ReadPipeline
 
 Returns: a L<Paws::ElasticTranscoder::ReadPipelineResponse> instance
 
-  The ReadPipeline operation gets detailed information about a pipeline.
+The ReadPipeline operation gets detailed information about a pipeline.
 
 
 =head2 ReadPreset(Id => Str)
@@ -389,7 +389,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::ReadPreset>
 
 Returns: a L<Paws::ElasticTranscoder::ReadPresetResponse> instance
 
-  The ReadPreset operation gets detailed information about a preset.
+The ReadPreset operation gets detailed information about a preset.
 
 
 =head2 TestRole(InputBucket => Str, OutputBucket => Str, Role => Str, Topics => ArrayRef[Str|Undef])
@@ -398,7 +398,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::TestRole>
 
 Returns: a L<Paws::ElasticTranscoder::TestRoleResponse> instance
 
-  The TestRole operation tests the IAM role used to create the pipeline.
+The TestRole operation tests the IAM role used to create the pipeline.
 
 The C<TestRole> action lets you determine whether the IAM role you are
 using has sufficient permissions to let Elastic Transcoder perform
@@ -414,7 +414,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::UpdatePipeli
 
 Returns: a L<Paws::ElasticTranscoder::UpdatePipelineResponse> instance
 
-  Use the C<UpdatePipeline> operation to update settings for a pipeline.
+Use the C<UpdatePipeline> operation to update settings for a pipeline.
 
 When you change pipeline settings, your changes take effect
 immediately. Jobs that you have already submitted and that Elastic
@@ -428,7 +428,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::UpdatePipeli
 
 Returns: a L<Paws::ElasticTranscoder::UpdatePipelineNotificationsResponse> instance
 
-  With the UpdatePipelineNotifications operation, you can update Amazon
+With the UpdatePipelineNotifications operation, you can update Amazon
 Simple Notification Service (Amazon SNS) notifications for a pipeline.
 
 When you update notifications for a pipeline, Elastic Transcoder
@@ -441,7 +441,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::UpdatePipeli
 
 Returns: a L<Paws::ElasticTranscoder::UpdatePipelineStatusResponse> instance
 
-  The UpdatePipelineStatus operation pauses or reactivates a pipeline, so
+The UpdatePipelineStatus operation pauses or reactivates a pipeline, so
 that the pipeline stops or restarts the processing of jobs.
 
 Changing the pipeline status is useful if you want to cancel one or
@@ -514,9 +514,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

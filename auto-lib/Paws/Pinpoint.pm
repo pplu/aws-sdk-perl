@@ -354,7 +354,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::CreateApp>
 
 Returns: a L<Paws::Pinpoint::CreateAppResponse> instance
 
-  Creates or updates an app.
+Creates or updates an app.
 
 
 =head2 CreateCampaign(ApplicationId => Str, WriteCampaignRequest => L<Paws::Pinpoint::WriteCampaignRequest>)
@@ -363,7 +363,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::CreateCampaign>
 
 Returns: a L<Paws::Pinpoint::CreateCampaignResponse> instance
 
-  Creates or updates a campaign.
+Creates or updates a campaign.
 
 
 =head2 CreateImportJob(ApplicationId => Str, ImportJobRequest => L<Paws::Pinpoint::ImportJobRequest>)
@@ -372,7 +372,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::CreateImportJob>
 
 Returns: a L<Paws::Pinpoint::CreateImportJobResponse> instance
 
-  Creates or updates an import job.
+Creates or updates an import job.
 
 
 =head2 CreateSegment(ApplicationId => Str, WriteSegmentRequest => L<Paws::Pinpoint::WriteSegmentRequest>)
@@ -381,7 +381,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::CreateSegment>
 
 Returns: a L<Paws::Pinpoint::CreateSegmentResponse> instance
 
-  Used to create or update a segment.
+Used to create or update a segment.
 
 
 =head2 DeleteAdmChannel(ApplicationId => Str)
@@ -390,7 +390,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::DeleteAdmChannel>
 
 Returns: a L<Paws::Pinpoint::DeleteAdmChannelResponse> instance
 
-  Delete an ADM channel
+Delete an ADM channel
 
 
 =head2 DeleteApnsChannel(ApplicationId => Str)
@@ -399,7 +399,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::DeleteApnsChannel>
 
 Returns: a L<Paws::Pinpoint::DeleteApnsChannelResponse> instance
 
-  Deletes the APNs channel for an app.
+Deletes the APNs channel for an app.
 
 
 =head2 DeleteApnsSandboxChannel(ApplicationId => Str)
@@ -408,7 +408,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::DeleteApnsSandboxChan
 
 Returns: a L<Paws::Pinpoint::DeleteApnsSandboxChannelResponse> instance
 
-  Delete an APNS sandbox channel
+Delete an APNS sandbox channel
 
 
 =head2 DeleteApnsVoipChannel(ApplicationId => Str)
@@ -417,7 +417,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::DeleteApnsVoipChannel
 
 Returns: a L<Paws::Pinpoint::DeleteApnsVoipChannelResponse> instance
 
-  Delete an APNS VoIP channel
+Delete an APNS VoIP channel
 
 
 =head2 DeleteApnsVoipSandboxChannel(ApplicationId => Str)
@@ -426,7 +426,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::DeleteApnsVoipSandbox
 
 Returns: a L<Paws::Pinpoint::DeleteApnsVoipSandboxChannelResponse> instance
 
-  Delete an APNS VoIP sandbox channel
+Delete an APNS VoIP sandbox channel
 
 
 =head2 DeleteApp(ApplicationId => Str)
@@ -435,7 +435,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::DeleteApp>
 
 Returns: a L<Paws::Pinpoint::DeleteAppResponse> instance
 
-  Deletes an app.
+Deletes an app.
 
 
 =head2 DeleteBaiduChannel(ApplicationId => Str)
@@ -444,7 +444,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::DeleteBaiduChannel>
 
 Returns: a L<Paws::Pinpoint::DeleteBaiduChannelResponse> instance
 
-  Delete a BAIDU GCM channel
+Delete a BAIDU GCM channel
 
 
 =head2 DeleteCampaign(ApplicationId => Str, CampaignId => Str)
@@ -453,7 +453,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::DeleteCampaign>
 
 Returns: a L<Paws::Pinpoint::DeleteCampaignResponse> instance
 
-  Deletes a campaign.
+Deletes a campaign.
 
 
 =head2 DeleteEmailChannel(ApplicationId => Str)
@@ -462,7 +462,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::DeleteEmailChannel>
 
 Returns: a L<Paws::Pinpoint::DeleteEmailChannelResponse> instance
 
-  Delete an email channel
+Delete an email channel
 
 
 =head2 DeleteEventStream(ApplicationId => Str)
@@ -471,7 +471,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::DeleteEventStream>
 
 Returns: a L<Paws::Pinpoint::DeleteEventStreamResponse> instance
 
-  Deletes the event stream for an app.
+Deletes the event stream for an app.
 
 
 =head2 DeleteGcmChannel(ApplicationId => Str)
@@ -480,7 +480,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::DeleteGcmChannel>
 
 Returns: a L<Paws::Pinpoint::DeleteGcmChannelResponse> instance
 
-  Deletes the GCM channel for an app.
+Deletes the GCM channel for an app.
 
 
 =head2 DeleteSegment(ApplicationId => Str, SegmentId => Str)
@@ -489,7 +489,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::DeleteSegment>
 
 Returns: a L<Paws::Pinpoint::DeleteSegmentResponse> instance
 
-  Deletes a segment.
+Deletes a segment.
 
 
 =head2 DeleteSmsChannel(ApplicationId => Str)
@@ -498,7 +498,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::DeleteSmsChannel>
 
 Returns: a L<Paws::Pinpoint::DeleteSmsChannelResponse> instance
 
-  Delete an SMS channel
+Delete an SMS channel
 
 
 =head2 GetAdmChannel(ApplicationId => Str)
@@ -507,7 +507,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetAdmChannel>
 
 Returns: a L<Paws::Pinpoint::GetAdmChannelResponse> instance
 
-  Get an ADM channel
+Get an ADM channel
 
 
 =head2 GetApnsChannel(ApplicationId => Str)
@@ -516,7 +516,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetApnsChannel>
 
 Returns: a L<Paws::Pinpoint::GetApnsChannelResponse> instance
 
-  Returns information about the APNs channel for an app.
+Returns information about the APNs channel for an app.
 
 
 =head2 GetApnsSandboxChannel(ApplicationId => Str)
@@ -525,7 +525,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetApnsSandboxChannel
 
 Returns: a L<Paws::Pinpoint::GetApnsSandboxChannelResponse> instance
 
-  Get an APNS sandbox channel
+Get an APNS sandbox channel
 
 
 =head2 GetApnsVoipChannel(ApplicationId => Str)
@@ -534,7 +534,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetApnsVoipChannel>
 
 Returns: a L<Paws::Pinpoint::GetApnsVoipChannelResponse> instance
 
-  Get an APNS VoIP channel
+Get an APNS VoIP channel
 
 
 =head2 GetApnsVoipSandboxChannel(ApplicationId => Str)
@@ -543,7 +543,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetApnsVoipSandboxCha
 
 Returns: a L<Paws::Pinpoint::GetApnsVoipSandboxChannelResponse> instance
 
-  Get an APNS VoipSandbox channel
+Get an APNS VoipSandbox channel
 
 
 =head2 GetApp(ApplicationId => Str)
@@ -552,7 +552,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetApp>
 
 Returns: a L<Paws::Pinpoint::GetAppResponse> instance
 
-  Returns information about an app.
+Returns information about an app.
 
 
 =head2 GetApplicationSettings(ApplicationId => Str)
@@ -561,7 +561,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetApplicationSetting
 
 Returns: a L<Paws::Pinpoint::GetApplicationSettingsResponse> instance
 
-  Used to request the settings for an app.
+Used to request the settings for an app.
 
 
 =head2 GetApps([PageSize => Str, Token => Str])
@@ -570,7 +570,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetApps>
 
 Returns: a L<Paws::Pinpoint::GetAppsResponse> instance
 
-  Returns information about your apps.
+Returns information about your apps.
 
 
 =head2 GetBaiduChannel(ApplicationId => Str)
@@ -579,7 +579,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetBaiduChannel>
 
 Returns: a L<Paws::Pinpoint::GetBaiduChannelResponse> instance
 
-  Get a BAIDU GCM channel
+Get a BAIDU GCM channel
 
 
 =head2 GetCampaign(ApplicationId => Str, CampaignId => Str)
@@ -588,7 +588,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetCampaign>
 
 Returns: a L<Paws::Pinpoint::GetCampaignResponse> instance
 
-  Returns information about a campaign.
+Returns information about a campaign.
 
 
 =head2 GetCampaignActivities(ApplicationId => Str, CampaignId => Str, [PageSize => Str, Token => Str])
@@ -597,7 +597,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetCampaignActivities
 
 Returns: a L<Paws::Pinpoint::GetCampaignActivitiesResponse> instance
 
-  Returns information about the activity performed by a campaign.
+Returns information about the activity performed by a campaign.
 
 
 =head2 GetCampaigns(ApplicationId => Str, [PageSize => Str, Token => Str])
@@ -606,7 +606,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetCampaigns>
 
 Returns: a L<Paws::Pinpoint::GetCampaignsResponse> instance
 
-  Returns information about your campaigns.
+Returns information about your campaigns.
 
 
 =head2 GetCampaignVersion(ApplicationId => Str, CampaignId => Str, Version => Str)
@@ -615,7 +615,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetCampaignVersion>
 
 Returns: a L<Paws::Pinpoint::GetCampaignVersionResponse> instance
 
-  Returns information about a specific version of a campaign.
+Returns information about a specific version of a campaign.
 
 
 =head2 GetCampaignVersions(ApplicationId => Str, CampaignId => Str, [PageSize => Str, Token => Str])
@@ -624,7 +624,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetCampaignVersions>
 
 Returns: a L<Paws::Pinpoint::GetCampaignVersionsResponse> instance
 
-  Returns information about your campaign versions.
+Returns information about your campaign versions.
 
 
 =head2 GetEmailChannel(ApplicationId => Str)
@@ -633,7 +633,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetEmailChannel>
 
 Returns: a L<Paws::Pinpoint::GetEmailChannelResponse> instance
 
-  Get an email channel
+Get an email channel
 
 
 =head2 GetEndpoint(ApplicationId => Str, EndpointId => Str)
@@ -642,7 +642,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetEndpoint>
 
 Returns: a L<Paws::Pinpoint::GetEndpointResponse> instance
 
-  Returns information about an endpoint.
+Returns information about an endpoint.
 
 
 =head2 GetEventStream(ApplicationId => Str)
@@ -651,7 +651,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetEventStream>
 
 Returns: a L<Paws::Pinpoint::GetEventStreamResponse> instance
 
-  Returns the event stream for an app.
+Returns the event stream for an app.
 
 
 =head2 GetGcmChannel(ApplicationId => Str)
@@ -660,7 +660,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetGcmChannel>
 
 Returns: a L<Paws::Pinpoint::GetGcmChannelResponse> instance
 
-  Returns information about the GCM channel for an app.
+Returns information about the GCM channel for an app.
 
 
 =head2 GetImportJob(ApplicationId => Str, JobId => Str)
@@ -669,7 +669,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetImportJob>
 
 Returns: a L<Paws::Pinpoint::GetImportJobResponse> instance
 
-  Returns information about an import job.
+Returns information about an import job.
 
 
 =head2 GetImportJobs(ApplicationId => Str, [PageSize => Str, Token => Str])
@@ -678,7 +678,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetImportJobs>
 
 Returns: a L<Paws::Pinpoint::GetImportJobsResponse> instance
 
-  Returns information about your import jobs.
+Returns information about your import jobs.
 
 
 =head2 GetSegment(ApplicationId => Str, SegmentId => Str)
@@ -687,7 +687,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetSegment>
 
 Returns: a L<Paws::Pinpoint::GetSegmentResponse> instance
 
-  Returns information about a segment.
+Returns information about a segment.
 
 
 =head2 GetSegmentImportJobs(ApplicationId => Str, SegmentId => Str, [PageSize => Str, Token => Str])
@@ -696,7 +696,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetSegmentImportJobs>
 
 Returns: a L<Paws::Pinpoint::GetSegmentImportJobsResponse> instance
 
-  Returns a list of import jobs for a specific segment.
+Returns a list of import jobs for a specific segment.
 
 
 =head2 GetSegments(ApplicationId => Str, [PageSize => Str, Token => Str])
@@ -705,7 +705,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetSegments>
 
 Returns: a L<Paws::Pinpoint::GetSegmentsResponse> instance
 
-  Used to get information about your segments.
+Used to get information about your segments.
 
 
 =head2 GetSegmentVersion(ApplicationId => Str, SegmentId => Str, Version => Str)
@@ -714,7 +714,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetSegmentVersion>
 
 Returns: a L<Paws::Pinpoint::GetSegmentVersionResponse> instance
 
-  Returns information about a segment version.
+Returns information about a segment version.
 
 
 =head2 GetSegmentVersions(ApplicationId => Str, SegmentId => Str, [PageSize => Str, Token => Str])
@@ -723,7 +723,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetSegmentVersions>
 
 Returns: a L<Paws::Pinpoint::GetSegmentVersionsResponse> instance
 
-  Returns information about your segment versions.
+Returns information about your segment versions.
 
 
 =head2 GetSmsChannel(ApplicationId => Str)
@@ -732,7 +732,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetSmsChannel>
 
 Returns: a L<Paws::Pinpoint::GetSmsChannelResponse> instance
 
-  Get an SMS channel
+Get an SMS channel
 
 
 =head2 PutEventStream(ApplicationId => Str, WriteEventStream => L<Paws::Pinpoint::WriteEventStream>)
@@ -741,7 +741,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::PutEventStream>
 
 Returns: a L<Paws::Pinpoint::PutEventStreamResponse> instance
 
-  Use to create or update the event stream for an app.
+Use to create or update the event stream for an app.
 
 
 =head2 SendMessages(ApplicationId => Str, MessageRequest => L<Paws::Pinpoint::MessageRequest>)
@@ -750,7 +750,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::SendMessages>
 
 Returns: a L<Paws::Pinpoint::SendMessagesResponse> instance
 
-  Send a batch of messages
+Send a batch of messages
 
 
 =head2 SendUsersMessages(ApplicationId => Str, SendUsersMessageRequest => L<Paws::Pinpoint::SendUsersMessageRequest>)
@@ -759,7 +759,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::SendUsersMessages>
 
 Returns: a L<Paws::Pinpoint::SendUsersMessagesResponse> instance
 
-  Send a batch of messages to users
+Send a batch of messages to users
 
 
 =head2 UpdateAdmChannel(ADMChannelRequest => L<Paws::Pinpoint::ADMChannelRequest>, ApplicationId => Str)
@@ -768,7 +768,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateAdmChannel>
 
 Returns: a L<Paws::Pinpoint::UpdateAdmChannelResponse> instance
 
-  Update an ADM channel
+Update an ADM channel
 
 
 =head2 UpdateApnsChannel(APNSChannelRequest => L<Paws::Pinpoint::APNSChannelRequest>, ApplicationId => Str)
@@ -777,7 +777,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateApnsChannel>
 
 Returns: a L<Paws::Pinpoint::UpdateApnsChannelResponse> instance
 
-  Use to update the APNs channel for an app.
+Use to update the APNs channel for an app.
 
 
 =head2 UpdateApnsSandboxChannel(APNSSandboxChannelRequest => L<Paws::Pinpoint::APNSSandboxChannelRequest>, ApplicationId => Str)
@@ -786,7 +786,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateApnsSandboxChan
 
 Returns: a L<Paws::Pinpoint::UpdateApnsSandboxChannelResponse> instance
 
-  Update an APNS sandbox channel
+Update an APNS sandbox channel
 
 
 =head2 UpdateApnsVoipChannel(APNSVoipChannelRequest => L<Paws::Pinpoint::APNSVoipChannelRequest>, ApplicationId => Str)
@@ -795,7 +795,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateApnsVoipChannel
 
 Returns: a L<Paws::Pinpoint::UpdateApnsVoipChannelResponse> instance
 
-  Update an APNS VoIP channel
+Update an APNS VoIP channel
 
 
 =head2 UpdateApnsVoipSandboxChannel(APNSVoipSandboxChannelRequest => L<Paws::Pinpoint::APNSVoipSandboxChannelRequest>, ApplicationId => Str)
@@ -804,7 +804,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateApnsVoipSandbox
 
 Returns: a L<Paws::Pinpoint::UpdateApnsVoipSandboxChannelResponse> instance
 
-  Update an APNS VoIP sandbox channel
+Update an APNS VoIP sandbox channel
 
 
 =head2 UpdateApplicationSettings(ApplicationId => Str, WriteApplicationSettingsRequest => L<Paws::Pinpoint::WriteApplicationSettingsRequest>)
@@ -813,7 +813,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateApplicationSett
 
 Returns: a L<Paws::Pinpoint::UpdateApplicationSettingsResponse> instance
 
-  Used to update the settings for an app.
+Used to update the settings for an app.
 
 
 =head2 UpdateBaiduChannel(ApplicationId => Str, BaiduChannelRequest => L<Paws::Pinpoint::BaiduChannelRequest>)
@@ -822,7 +822,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateBaiduChannel>
 
 Returns: a L<Paws::Pinpoint::UpdateBaiduChannelResponse> instance
 
-  Update a BAIDU GCM channel
+Update a BAIDU GCM channel
 
 
 =head2 UpdateCampaign(ApplicationId => Str, CampaignId => Str, WriteCampaignRequest => L<Paws::Pinpoint::WriteCampaignRequest>)
@@ -831,7 +831,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateCampaign>
 
 Returns: a L<Paws::Pinpoint::UpdateCampaignResponse> instance
 
-  Use to update a campaign.
+Use to update a campaign.
 
 
 =head2 UpdateEmailChannel(ApplicationId => Str, EmailChannelRequest => L<Paws::Pinpoint::EmailChannelRequest>)
@@ -840,7 +840,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateEmailChannel>
 
 Returns: a L<Paws::Pinpoint::UpdateEmailChannelResponse> instance
 
-  Update an email channel
+Update an email channel
 
 
 =head2 UpdateEndpoint(ApplicationId => Str, EndpointId => Str, EndpointRequest => L<Paws::Pinpoint::EndpointRequest>)
@@ -849,7 +849,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateEndpoint>
 
 Returns: a L<Paws::Pinpoint::UpdateEndpointResponse> instance
 
-  Use to update an endpoint.
+Use to update an endpoint.
 
 
 =head2 UpdateEndpointsBatch(ApplicationId => Str, EndpointBatchRequest => L<Paws::Pinpoint::EndpointBatchRequest>)
@@ -858,7 +858,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateEndpointsBatch>
 
 Returns: a L<Paws::Pinpoint::UpdateEndpointsBatchResponse> instance
 
-  Use to update a batch of endpoints.
+Use to update a batch of endpoints.
 
 
 =head2 UpdateGcmChannel(ApplicationId => Str, GCMChannelRequest => L<Paws::Pinpoint::GCMChannelRequest>)
@@ -867,7 +867,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateGcmChannel>
 
 Returns: a L<Paws::Pinpoint::UpdateGcmChannelResponse> instance
 
-  Use to update the GCM channel for an app.
+Use to update the GCM channel for an app.
 
 
 =head2 UpdateSegment(ApplicationId => Str, SegmentId => Str, WriteSegmentRequest => L<Paws::Pinpoint::WriteSegmentRequest>)
@@ -876,7 +876,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateSegment>
 
 Returns: a L<Paws::Pinpoint::UpdateSegmentResponse> instance
 
-  Use to update a segment.
+Use to update a segment.
 
 
 =head2 UpdateSmsChannel(ApplicationId => Str, SMSChannelRequest => L<Paws::Pinpoint::SMSChannelRequest>)
@@ -885,7 +885,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateSmsChannel>
 
 Returns: a L<Paws::Pinpoint::UpdateSmsChannelResponse> instance
 
-  Update an SMS channel
+Update an SMS channel
 
 
 
@@ -903,9 +903,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

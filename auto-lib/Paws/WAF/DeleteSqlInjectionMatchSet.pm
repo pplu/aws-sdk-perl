@@ -15,7 +15,7 @@ package Paws::WAF::DeleteSqlInjectionMatchSet;
 
 =head1 NAME
 
-Paws::WAF::DeleteSqlInjectionMatchSet - Arguments for method DeleteSqlInjectionMatchSet on Paws::WAF
+Paws::WAF::DeleteSqlInjectionMatchSet - Arguments for method DeleteSqlInjectionMatchSet on L<Paws::WAF>
 
 =head1 DESCRIPTION
 
@@ -55,9 +55,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteSqlInje
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -17,7 +17,7 @@ package Paws::LexModels::GetBotChannelAssociation;
 
 =head1 NAME
 
-Paws::LexModels::GetBotChannelAssociation - Arguments for method GetBotChannelAssociation on Paws::LexModels
+Paws::LexModels::GetBotChannelAssociation - Arguments for method GetBotChannelAssociation on L<Paws::LexModels>
 
 =head1 DESCRIPTION
 
@@ -63,9 +63,9 @@ This class forms part of L<Paws>, documenting arguments for method GetBotChannel
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -15,7 +15,7 @@ package Paws::CloudWatch::PutDashboard;
 
 =head1 NAME
 
-Paws::CloudWatch::PutDashboard - Arguments for method PutDashboard on Paws::CloudWatch
+Paws::CloudWatch::PutDashboard - Arguments for method PutDashboard on L<Paws::CloudWatch>
 
 =head1 DESCRIPTION
 
@@ -60,9 +60,9 @@ This class forms part of L<Paws>, documenting arguments for method PutDashboard 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

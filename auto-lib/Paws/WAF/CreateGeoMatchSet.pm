@@ -15,7 +15,7 @@ package Paws::WAF::CreateGeoMatchSet;
 
 =head1 NAME
 
-Paws::WAF::CreateGeoMatchSet - Arguments for method CreateGeoMatchSet on Paws::WAF
+Paws::WAF::CreateGeoMatchSet - Arguments for method CreateGeoMatchSet on L<Paws::WAF>
 
 =head1 DESCRIPTION
 
@@ -54,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateGeoMatc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

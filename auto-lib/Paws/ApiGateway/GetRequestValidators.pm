@@ -17,7 +17,7 @@ package Paws::ApiGateway::GetRequestValidators;
 
 =head1 NAME
 
-Paws::ApiGateway::GetRequestValidators - Arguments for method GetRequestValidators on Paws::ApiGateway
+Paws::ApiGateway::GetRequestValidators - Arguments for method GetRequestValidators on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -61,9 +61,9 @@ This class forms part of L<Paws>, documenting arguments for method GetRequestVal
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

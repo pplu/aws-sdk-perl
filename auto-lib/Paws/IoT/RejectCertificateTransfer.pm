@@ -16,7 +16,7 @@ package Paws::IoT::RejectCertificateTransfer;
 
 =head1 NAME
 
-Paws::IoT::RejectCertificateTransfer - Arguments for method RejectCertificateTransfer on Paws::IoT
+Paws::IoT::RejectCertificateTransfer - Arguments for method RejectCertificateTransfer on L<Paws::IoT>
 
 =head1 DESCRIPTION
 
@@ -54,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method RejectCertifi
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

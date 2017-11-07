@@ -363,7 +363,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::AbortDocumentVersionU
 
 Returns: nothing
 
-  Aborts the upload of the specified document version that was previously
+Aborts the upload of the specified document version that was previously
 initiated by InitiateDocumentVersionUpload. The client should make this
 call only when it no longer intends to upload the document version, or
 fails to do so.
@@ -375,7 +375,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::ActivateUser>
 
 Returns: a L<Paws::WorkDocs::ActivateUserResponse> instance
 
-  Activates the specified user. Only active users can access Amazon
+Activates the specified user. Only active users can access Amazon
 WorkDocs.
 
 
@@ -385,7 +385,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::AddResourcePermission
 
 Returns: a L<Paws::WorkDocs::AddResourcePermissionsResponse> instance
 
-  Creates a set of permissions for the specified folder or document. The
+Creates a set of permissions for the specified folder or document. The
 resource permissions are overwritten if the principals already have
 different permissions.
 
@@ -396,7 +396,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::CreateComment>
 
 Returns: a L<Paws::WorkDocs::CreateCommentResponse> instance
 
-  Adds a new comment to the specified document version.
+Adds a new comment to the specified document version.
 
 
 =head2 CreateCustomMetadata(CustomMetadata => L<Paws::WorkDocs::CustomMetadataMap>, ResourceId => Str, [AuthenticationToken => Str, VersionId => Str])
@@ -405,7 +405,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::CreateCustomMetadata>
 
 Returns: a L<Paws::WorkDocs::CreateCustomMetadataResponse> instance
 
-  Adds one or more custom properties to the specified resource (a folder,
+Adds one or more custom properties to the specified resource (a folder,
 document, or version).
 
 
@@ -415,7 +415,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::CreateFolder>
 
 Returns: a L<Paws::WorkDocs::CreateFolderResponse> instance
 
-  Creates a folder with the specified name and parent folder.
+Creates a folder with the specified name and parent folder.
 
 
 =head2 CreateLabels(Labels => ArrayRef[Str|Undef], ResourceId => Str, [AuthenticationToken => Str])
@@ -424,7 +424,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::CreateLabels>
 
 Returns: a L<Paws::WorkDocs::CreateLabelsResponse> instance
 
-  Adds the specified list of labels to the given resource (a document or
+Adds the specified list of labels to the given resource (a document or
 folder)
 
 
@@ -434,7 +434,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::CreateNotificationSub
 
 Returns: a L<Paws::WorkDocs::CreateNotificationSubscriptionResponse> instance
 
-  Configure WorkDocs to use Amazon SNS notifications.
+Configure WorkDocs to use Amazon SNS notifications.
 
 The endpoint receives a confirmation message, and must confirm the
 subscription. For more information, see Confirm the Subscription in the
@@ -447,7 +447,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::CreateUser>
 
 Returns: a L<Paws::WorkDocs::CreateUserResponse> instance
 
-  Creates a user in a Simple AD or Microsoft AD directory. The status of
+Creates a user in a Simple AD or Microsoft AD directory. The status of
 a newly created user is "ACTIVE". New users can access Amazon WorkDocs.
 
 
@@ -457,7 +457,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::DeactivateUser>
 
 Returns: nothing
 
-  Deactivates the specified user, which revokes the user's access to
+Deactivates the specified user, which revokes the user's access to
 Amazon WorkDocs.
 
 
@@ -467,7 +467,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::DeleteComment>
 
 Returns: nothing
 
-  Deletes the specified comment from the document version.
+Deletes the specified comment from the document version.
 
 
 =head2 DeleteCustomMetadata(ResourceId => Str, [AuthenticationToken => Str, DeleteAll => Bool, Keys => ArrayRef[Str|Undef], VersionId => Str])
@@ -476,7 +476,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::DeleteCustomMetadata>
 
 Returns: a L<Paws::WorkDocs::DeleteCustomMetadataResponse> instance
 
-  Deletes custom metadata from the specified resource.
+Deletes custom metadata from the specified resource.
 
 
 =head2 DeleteDocument(DocumentId => Str, [AuthenticationToken => Str])
@@ -485,7 +485,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::DeleteDocument>
 
 Returns: nothing
 
-  Permanently deletes the specified document and its associated metadata.
+Permanently deletes the specified document and its associated metadata.
 
 
 =head2 DeleteFolder(FolderId => Str, [AuthenticationToken => Str])
@@ -494,7 +494,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::DeleteFolder>
 
 Returns: nothing
 
-  Permanently deletes the specified folder and its contents.
+Permanently deletes the specified folder and its contents.
 
 
 =head2 DeleteFolderContents(FolderId => Str, [AuthenticationToken => Str])
@@ -503,7 +503,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::DeleteFolderContents>
 
 Returns: nothing
 
-  Deletes the contents of the specified folder.
+Deletes the contents of the specified folder.
 
 
 =head2 DeleteLabels(ResourceId => Str, [AuthenticationToken => Str, DeleteAll => Bool, Labels => ArrayRef[Str|Undef]])
@@ -512,7 +512,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::DeleteLabels>
 
 Returns: a L<Paws::WorkDocs::DeleteLabelsResponse> instance
 
-  Deletes the specified list of labels from a resource.
+Deletes the specified list of labels from a resource.
 
 
 =head2 DeleteNotificationSubscription(OrganizationId => Str, SubscriptionId => Str)
@@ -521,7 +521,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::DeleteNotificationSub
 
 Returns: nothing
 
-  Deletes the specified subscription from the specified organization.
+Deletes the specified subscription from the specified organization.
 
 
 =head2 DeleteUser(UserId => Str, [AuthenticationToken => Str])
@@ -530,7 +530,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::DeleteUser>
 
 Returns: nothing
 
-  Deletes the specified user from a Simple AD or Microsoft AD directory.
+Deletes the specified user from a Simple AD or Microsoft AD directory.
 
 
 =head2 DescribeActivities([AuthenticationToken => Str, EndTime => Str, Limit => Int, Marker => Str, OrganizationId => Str, StartTime => Str, UserId => Str])
@@ -539,7 +539,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::DescribeActivities>
 
 Returns: a L<Paws::WorkDocs::DescribeActivitiesResponse> instance
 
-  Describes the user activities in a specified time period.
+Describes the user activities in a specified time period.
 
 
 =head2 DescribeComments(DocumentId => Str, VersionId => Str, [AuthenticationToken => Str, Limit => Int, Marker => Str])
@@ -548,7 +548,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::DescribeComments>
 
 Returns: a L<Paws::WorkDocs::DescribeCommentsResponse> instance
 
-  List all the comments for the specified document version.
+List all the comments for the specified document version.
 
 
 =head2 DescribeDocumentVersions(DocumentId => Str, [AuthenticationToken => Str, Fields => Str, Include => Str, Limit => Int, Marker => Str])
@@ -557,7 +557,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::DescribeDocumentVersi
 
 Returns: a L<Paws::WorkDocs::DescribeDocumentVersionsResponse> instance
 
-  Retrieves the document versions for the specified document.
+Retrieves the document versions for the specified document.
 
 By default, only active versions are returned.
 
@@ -568,7 +568,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::DescribeFolderContent
 
 Returns: a L<Paws::WorkDocs::DescribeFolderContentsResponse> instance
 
-  Describes the contents of the specified folder, including its documents
+Describes the contents of the specified folder, including its documents
 and subfolders.
 
 By default, Amazon WorkDocs returns the first 100 active document and
@@ -583,7 +583,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::DescribeNotificationS
 
 Returns: a L<Paws::WorkDocs::DescribeNotificationSubscriptionsResponse> instance
 
-  Lists the specified notification subscriptions.
+Lists the specified notification subscriptions.
 
 
 =head2 DescribeResourcePermissions(ResourceId => Str, [AuthenticationToken => Str, Limit => Int, Marker => Str])
@@ -592,7 +592,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::DescribeResourcePermi
 
 Returns: a L<Paws::WorkDocs::DescribeResourcePermissionsResponse> instance
 
-  Describes the permissions of a specified resource.
+Describes the permissions of a specified resource.
 
 
 =head2 DescribeRootFolders(AuthenticationToken => Str, [Limit => Int, Marker => Str])
@@ -601,7 +601,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::DescribeRootFolders>
 
 Returns: a L<Paws::WorkDocs::DescribeRootFoldersResponse> instance
 
-  Describes the current user's special folders; the C<RootFolder> and the
+Describes the current user's special folders; the C<RootFolder> and the
 C<RecyleBin>. C<RootFolder> is the root of user's files and folders and
 C<RecyleBin> is the root of recycled items. This is not a valid action
 for SigV4 (administrative API) clients.
@@ -613,7 +613,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::DescribeUsers>
 
 Returns: a L<Paws::WorkDocs::DescribeUsersResponse> instance
 
-  Describes the specified users. You can describe all users or filter the
+Describes the specified users. You can describe all users or filter the
 results (for example, by status or organization).
 
 By default, Amazon WorkDocs returns the first 24 active or pending
@@ -627,7 +627,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::GetCurrentUser>
 
 Returns: a L<Paws::WorkDocs::GetCurrentUserResponse> instance
 
-  Retrieves details of the current user for whom the authentication token
+Retrieves details of the current user for whom the authentication token
 was generated. This is not a valid action for SigV4 (administrative
 API) clients.
 
@@ -638,7 +638,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::GetDocument>
 
 Returns: a L<Paws::WorkDocs::GetDocumentResponse> instance
 
-  Retrieves details of a document.
+Retrieves details of a document.
 
 
 =head2 GetDocumentPath(DocumentId => Str, [AuthenticationToken => Str, Fields => Str, Limit => Int, Marker => Str])
@@ -647,7 +647,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::GetDocumentPath>
 
 Returns: a L<Paws::WorkDocs::GetDocumentPathResponse> instance
 
-  Retrieves the path information (the hierarchy from the root folder) for
+Retrieves the path information (the hierarchy from the root folder) for
 the requested document.
 
 By default, Amazon WorkDocs returns a maximum of 100 levels upwards
@@ -662,7 +662,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::GetDocumentVersion>
 
 Returns: a L<Paws::WorkDocs::GetDocumentVersionResponse> instance
 
-  Retrieves version metadata for the specified document.
+Retrieves version metadata for the specified document.
 
 
 =head2 GetFolder(FolderId => Str, [AuthenticationToken => Str, IncludeCustomMetadata => Bool])
@@ -671,7 +671,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::GetFolder>
 
 Returns: a L<Paws::WorkDocs::GetFolderResponse> instance
 
-  Retrieves the metadata of the specified folder.
+Retrieves the metadata of the specified folder.
 
 
 =head2 GetFolderPath(FolderId => Str, [AuthenticationToken => Str, Fields => Str, Limit => Int, Marker => Str])
@@ -680,7 +680,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::GetFolderPath>
 
 Returns: a L<Paws::WorkDocs::GetFolderPathResponse> instance
 
-  Retrieves the path information (the hierarchy from the root folder) for
+Retrieves the path information (the hierarchy from the root folder) for
 the specified folder.
 
 By default, Amazon WorkDocs returns a maximum of 100 levels upwards
@@ -695,7 +695,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::InitiateDocumentVersi
 
 Returns: a L<Paws::WorkDocs::InitiateDocumentVersionUploadResponse> instance
 
-  Creates a new document object and version object.
+Creates a new document object and version object.
 
 The client specifies the parent folder ID and name of the document to
 upload. The ID is optionally specified when creating a new version of
@@ -712,7 +712,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::RemoveAllResourcePerm
 
 Returns: nothing
 
-  Removes all the permissions from the specified resource.
+Removes all the permissions from the specified resource.
 
 
 =head2 RemoveResourcePermission(PrincipalId => Str, ResourceId => Str, [AuthenticationToken => Str, PrincipalType => Str])
@@ -721,7 +721,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::RemoveResourcePermiss
 
 Returns: nothing
 
-  Removes the permission for the specified principal from the specified
+Removes the permission for the specified principal from the specified
 resource.
 
 
@@ -731,7 +731,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::UpdateDocument>
 
 Returns: nothing
 
-  Updates the specified attributes of a document. The user must have
+Updates the specified attributes of a document. The user must have
 access to both the document and its parent folder, if applicable.
 
 
@@ -741,7 +741,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::UpdateDocumentVersion
 
 Returns: nothing
 
-  Changes the status of the document version to ACTIVE.
+Changes the status of the document version to ACTIVE.
 
 Amazon WorkDocs also sets its document container to ACTIVE. This is the
 last step in a document upload, after the client uploads the document
@@ -754,7 +754,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::UpdateFolder>
 
 Returns: nothing
 
-  Updates the specified attributes of the specified folder. The user must
+Updates the specified attributes of the specified folder. The user must
 have access to both the folder and its parent folder, if applicable.
 
 
@@ -764,7 +764,7 @@ Each argument is described in detail in: L<Paws::WorkDocs::UpdateUser>
 
 Returns: a L<Paws::WorkDocs::UpdateUserResponse> instance
 
-  Updates the specified attributes of the specified user, and grants or
+Updates the specified attributes of the specified user, and grants or
 revokes administrative privileges to the Amazon WorkDocs site.
 
 
@@ -821,9 +821,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -106,7 +106,7 @@ Each argument is described in detail in: L<Paws::CloudHSMv2::CreateCluster>
 
 Returns: a L<Paws::CloudHSMv2::CreateClusterResponse> instance
 
-  Creates a new AWS CloudHSM cluster.
+Creates a new AWS CloudHSM cluster.
 
 
 =head2 CreateHsm(AvailabilityZone => Str, ClusterId => Str, [IpAddress => Str])
@@ -115,7 +115,7 @@ Each argument is described in detail in: L<Paws::CloudHSMv2::CreateHsm>
 
 Returns: a L<Paws::CloudHSMv2::CreateHsmResponse> instance
 
-  Creates a new hardware security module (HSM) in the specified AWS
+Creates a new hardware security module (HSM) in the specified AWS
 CloudHSM cluster.
 
 
@@ -125,7 +125,7 @@ Each argument is described in detail in: L<Paws::CloudHSMv2::DeleteCluster>
 
 Returns: a L<Paws::CloudHSMv2::DeleteClusterResponse> instance
 
-  Deletes the specified AWS CloudHSM cluster. Before you can delete a
+Deletes the specified AWS CloudHSM cluster. Before you can delete a
 cluster, you must delete all HSMs in the cluster. To see if the cluster
 contains any HSMs, use DescribeClusters. To delete an HSM, use
 DeleteHsm.
@@ -137,7 +137,7 @@ Each argument is described in detail in: L<Paws::CloudHSMv2::DeleteHsm>
 
 Returns: a L<Paws::CloudHSMv2::DeleteHsmResponse> instance
 
-  Deletes the specified HSM. To specify an HSM, you can use its
+Deletes the specified HSM. To specify an HSM, you can use its
 identifier (ID), the IP address of the HSM's elastic network interface
 (ENI), or the ID of the HSM's ENI. You need to specify only one of
 these values. To find these values, use DescribeClusters.
@@ -149,7 +149,7 @@ Each argument is described in detail in: L<Paws::CloudHSMv2::DescribeBackups>
 
 Returns: a L<Paws::CloudHSMv2::DescribeBackupsResponse> instance
 
-  Gets information about backups of AWS CloudHSM clusters.
+Gets information about backups of AWS CloudHSM clusters.
 
 This is a paginated operation, which means that each response might
 contain only a subset of all the backups. When the response contains
@@ -165,7 +165,7 @@ Each argument is described in detail in: L<Paws::CloudHSMv2::DescribeClusters>
 
 Returns: a L<Paws::CloudHSMv2::DescribeClustersResponse> instance
 
-  Gets information about AWS CloudHSM clusters.
+Gets information about AWS CloudHSM clusters.
 
 This is a paginated operation, which means that each response might
 contain only a subset of all the clusters. When the response contains
@@ -181,7 +181,7 @@ Each argument is described in detail in: L<Paws::CloudHSMv2::InitializeCluster>
 
 Returns: a L<Paws::CloudHSMv2::InitializeClusterResponse> instance
 
-  Claims an AWS CloudHSM cluster by submitting the cluster certificate
+Claims an AWS CloudHSM cluster by submitting the cluster certificate
 issued by your issuing certificate authority (CA) and the CA's root
 certificate. Before you can claim a cluster, you must sign the
 cluster's certificate signing request (CSR) with your issuing CA. To
@@ -194,7 +194,7 @@ Each argument is described in detail in: L<Paws::CloudHSMv2::ListTags>
 
 Returns: a L<Paws::CloudHSMv2::ListTagsResponse> instance
 
-  Gets a list of tags for the specified AWS CloudHSM cluster.
+Gets a list of tags for the specified AWS CloudHSM cluster.
 
 This is a paginated operation, which means that each response might
 contain only a subset of all the tags. When the response contains only
@@ -210,7 +210,7 @@ Each argument is described in detail in: L<Paws::CloudHSMv2::TagResource>
 
 Returns: a L<Paws::CloudHSMv2::TagResourceResponse> instance
 
-  Adds or overwrites one or more tags for the specified AWS CloudHSM
+Adds or overwrites one or more tags for the specified AWS CloudHSM
 cluster.
 
 
@@ -220,7 +220,7 @@ Each argument is described in detail in: L<Paws::CloudHSMv2::UntagResource>
 
 Returns: a L<Paws::CloudHSMv2::UntagResourceResponse> instance
 
-  Removes the specified tag or tags from the specified AWS CloudHSM
+Removes the specified tag or tags from the specified AWS CloudHSM
 cluster.
 
 
@@ -239,9 +239,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

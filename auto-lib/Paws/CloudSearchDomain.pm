@@ -79,7 +79,7 @@ Each argument is described in detail in: L<Paws::CloudSearchDomain::Search>
 
 Returns: a L<Paws::CloudSearchDomain::SearchResponse> instance
 
-  Retrieves a list of documents that match the specified search criteria.
+Retrieves a list of documents that match the specified search criteria.
 How you specify the search criteria depends on which query parser you
 use. Amazon CloudSearch supports four query parsers:
 
@@ -117,7 +117,7 @@ Each argument is described in detail in: L<Paws::CloudSearchDomain::Suggest>
 
 Returns: a L<Paws::CloudSearchDomain::SuggestResponse> instance
 
-  Retrieves autocomplete suggestions for a partial query string. You can
+Retrieves autocomplete suggestions for a partial query string. You can
 use suggestions enable you to display likely matches before users
 finish typing. In Amazon CloudSearch, suggestions are based on the
 contents of a particular text field. When you request suggestions,
@@ -143,7 +143,7 @@ Each argument is described in detail in: L<Paws::CloudSearchDomain::UploadDocume
 
 Returns: a L<Paws::CloudSearchDomain::UploadDocumentsResponse> instance
 
-  Posts a batch of documents to a search domain for indexing. A document
+Posts a batch of documents to a search domain for indexing. A document
 batch is a collection of add and delete operations that represent the
 documents you want to add, update, or delete from your domain. Batches
 can be described in either JSON or XML. Each item that you want Amazon
@@ -183,9 +183,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

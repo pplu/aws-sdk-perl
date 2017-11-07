@@ -16,7 +16,7 @@ package Paws::IoT::AcceptCertificateTransfer;
 
 =head1 NAME
 
-Paws::IoT::AcceptCertificateTransfer - Arguments for method AcceptCertificateTransfer on Paws::IoT
+Paws::IoT::AcceptCertificateTransfer - Arguments for method AcceptCertificateTransfer on L<Paws::IoT>
 
 =head1 DESCRIPTION
 
@@ -54,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method AcceptCertifi
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

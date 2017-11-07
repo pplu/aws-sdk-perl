@@ -16,7 +16,7 @@ package Paws::ApiGateway::GetStage;
 
 =head1 NAME
 
-Paws::ApiGateway::GetStage - Arguments for method GetStage on Paws::ApiGateway
+Paws::ApiGateway::GetStage - Arguments for method GetStage on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -54,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method GetStage in L
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

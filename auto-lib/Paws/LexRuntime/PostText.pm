@@ -20,7 +20,7 @@ package Paws::LexRuntime::PostText;
 
 =head1 NAME
 
-Paws::LexRuntime::PostText - Arguments for method PostText on Paws::LexRuntime
+Paws::LexRuntime::PostText - Arguments for method PostText on L<Paws::LexRuntime>
 
 =head1 DESCRIPTION
 
@@ -127,9 +127,9 @@ This class forms part of L<Paws>, documenting arguments for method PostText in L
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

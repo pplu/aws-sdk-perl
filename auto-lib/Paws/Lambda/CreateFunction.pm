@@ -29,7 +29,7 @@ package Paws::Lambda::CreateFunction;
 
 =head1 NAME
 
-Paws::Lambda::CreateFunction - Arguments for method CreateFunction on Paws::Lambda
+Paws::Lambda::CreateFunction - Arguments for method CreateFunction on L<Paws::Lambda>
 
 =head1 DESCRIPTION
 
@@ -186,9 +186,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateFunctio
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

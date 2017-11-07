@@ -17,7 +17,7 @@ package Paws::CloudDirectory::ListAppliedSchemaArns;
 
 =head1 NAME
 
-Paws::CloudDirectory::ListAppliedSchemaArns - Arguments for method ListAppliedSchemaArns on Paws::CloudDirectory
+Paws::CloudDirectory::ListAppliedSchemaArns - Arguments for method ListAppliedSchemaArns on L<Paws::CloudDirectory>
 
 =head1 DESCRIPTION
 
@@ -61,9 +61,9 @@ This class forms part of L<Paws>, documenting arguments for method ListAppliedSc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

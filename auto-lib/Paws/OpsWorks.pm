@@ -565,7 +565,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::AssignInstance>
 
 Returns: nothing
 
-  Assign a registered instance to a layer.
+Assign a registered instance to a layer.
 
 =over
 
@@ -596,7 +596,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::AssignVolume>
 
 Returns: nothing
 
-  Assigns one of the stack's registered Amazon EBS volumes to a specified
+Assigns one of the stack's registered Amazon EBS volumes to a specified
 instance. The volume must first be registered with the stack by calling
 RegisterVolume. After you register the volume, you must call
 UpdateVolume to specify a mount point before calling C<AssignVolume>.
@@ -614,7 +614,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::AssociateElasticIp>
 
 Returns: nothing
 
-  Associates one of the stack's registered Elastic IP addresses with a
+Associates one of the stack's registered Elastic IP addresses with a
 specified instance. The address must first be registered with the stack
 by calling RegisterElasticIp. For more information, see Resource
 Management.
@@ -631,7 +631,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::AttachElasticLoadBala
 
 Returns: nothing
 
-  Attaches an Elastic Load Balancing load balancer to a specified layer.
+Attaches an Elastic Load Balancing load balancer to a specified layer.
 AWS OpsWorks Stacks does not support Application Load Balancer. You can
 only use Classic Load Balancer with AWS OpsWorks Stacks. For more
 information, see Elastic Load Balancing.
@@ -652,7 +652,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::CloneStack>
 
 Returns: a L<Paws::OpsWorks::CloneStackResult> instance
 
-  Creates a clone of a specified stack. For more information, see Clone a
+Creates a clone of a specified stack. For more information, see Clone a
 Stack. By default, all parameters are set to the values used by the
 parent stack.
 
@@ -667,7 +667,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::CreateApp>
 
 Returns: a L<Paws::OpsWorks::CreateAppResult> instance
 
-  Creates an app for a specified stack. For more information, see
+Creates an app for a specified stack. For more information, see
 Creating Apps.
 
 B<Required Permissions>: To use this action, an IAM user must have a
@@ -682,7 +682,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::CreateDeployment>
 
 Returns: a L<Paws::OpsWorks::CreateDeploymentResult> instance
 
-  Runs deployment or stack commands. For more information, see Deploying
+Runs deployment or stack commands. For more information, see Deploying
 Apps and Run Stack Commands.
 
 B<Required Permissions>: To use this action, an IAM user must have a
@@ -697,7 +697,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::CreateInstance>
 
 Returns: a L<Paws::OpsWorks::CreateInstanceResult> instance
 
-  Creates an instance in a specified stack. For more information, see
+Creates an instance in a specified stack. For more information, see
 Adding an Instance to a Layer.
 
 B<Required Permissions>: To use this action, an IAM user must have a
@@ -712,7 +712,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::CreateLayer>
 
 Returns: a L<Paws::OpsWorks::CreateLayerResult> instance
 
-  Creates a layer. For more information, see How to Create a Layer.
+Creates a layer. For more information, see How to Create a Layer.
 
 You should use B<CreateLayer> for noncustom layer types such as PHP App
 Server only if the stack does not have an existing layer of that type.
@@ -733,7 +733,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::CreateStack>
 
 Returns: a L<Paws::OpsWorks::CreateStackResult> instance
 
-  Creates a new stack. For more information, see Create a New Stack.
+Creates a new stack. For more information, see Create a New Stack.
 
 B<Required Permissions>: To use this action, an IAM user must have an
 attached policy that explicitly grants permissions. For more
@@ -746,7 +746,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::CreateUserProfile>
 
 Returns: a L<Paws::OpsWorks::CreateUserProfileResult> instance
 
-  Creates a new user profile.
+Creates a new user profile.
 
 B<Required Permissions>: To use this action, an IAM user must have an
 attached policy that explicitly grants permissions. For more
@@ -759,7 +759,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DeleteApp>
 
 Returns: nothing
 
-  Deletes a specified app.
+Deletes a specified app.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
@@ -773,7 +773,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DeleteInstance>
 
 Returns: nothing
 
-  Deletes a specified instance, which terminates the associated Amazon
+Deletes a specified instance, which terminates the associated Amazon
 EC2 instance. You must stop an instance before you can delete it.
 
 For more information, see Deleting Instances.
@@ -790,7 +790,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DeleteLayer>
 
 Returns: nothing
 
-  Deletes a specified layer. You must first stop and then delete all
+Deletes a specified layer. You must first stop and then delete all
 associated instances or unassign registered instances. For more
 information, see How to Delete a Layer.
 
@@ -806,7 +806,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DeleteStack>
 
 Returns: nothing
 
-  Deletes a specified stack. You must first delete all instances, layers,
+Deletes a specified stack. You must first delete all instances, layers,
 and apps or deregister registered instances. For more information, see
 Shut Down a Stack.
 
@@ -822,7 +822,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DeleteUserProfile>
 
 Returns: nothing
 
-  Deletes a user profile.
+Deletes a user profile.
 
 B<Required Permissions>: To use this action, an IAM user must have an
 attached policy that explicitly grants permissions. For more
@@ -835,7 +835,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DeregisterEcsCluster>
 
 Returns: nothing
 
-  Deregisters a specified Amazon ECS cluster from a stack. For more
+Deregisters a specified Amazon ECS cluster from a stack. For more
 information, see Resource Management.
 
 B<Required Permissions>: To use this action, an IAM user must have a
@@ -851,7 +851,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DeregisterElasticIp>
 
 Returns: nothing
 
-  Deregisters a specified Elastic IP address. The address can then be
+Deregisters a specified Elastic IP address. The address can then be
 registered by another stack. For more information, see Resource
 Management.
 
@@ -867,7 +867,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DeregisterInstance>
 
 Returns: nothing
 
-  Deregister a registered Amazon EC2 or on-premises instance. This action
+Deregister a registered Amazon EC2 or on-premises instance. This action
 removes the instance from the stack and returns it to your control.
 This action can not be used with instances that were created with AWS
 OpsWorks Stacks.
@@ -884,7 +884,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DeregisterRdsDbInstan
 
 Returns: nothing
 
-  Deregisters an Amazon RDS instance.
+Deregisters an Amazon RDS instance.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
@@ -898,7 +898,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DeregisterVolume>
 
 Returns: nothing
 
-  Deregisters an Amazon EBS volume. The volume can then be registered by
+Deregisters an Amazon EBS volume. The volume can then be registered by
 another stack. For more information, see Resource Management.
 
 B<Required Permissions>: To use this action, an IAM user must have a
@@ -913,7 +913,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeAgentVersions
 
 Returns: a L<Paws::OpsWorks::DescribeAgentVersionsResult> instance
 
-  Describes the available AWS OpsWorks Stacks agent versions. You must
+Describes the available AWS OpsWorks Stacks agent versions. You must
 specify a stack ID or a configuration manager. C<DescribeAgentVersions>
 returns a list of available agent versions for the specified stack or
 configuration manager.
@@ -925,7 +925,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeApps>
 
 Returns: a L<Paws::OpsWorks::DescribeAppsResult> instance
 
-  Requests a description of a specified set of apps.
+Requests a description of a specified set of apps.
 
 This call accepts only one resource-identifying parameter.
 
@@ -941,7 +941,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeCommands>
 
 Returns: a L<Paws::OpsWorks::DescribeCommandsResult> instance
 
-  Describes the results of specified commands.
+Describes the results of specified commands.
 
 This call accepts only one resource-identifying parameter.
 
@@ -957,7 +957,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeDeployments>
 
 Returns: a L<Paws::OpsWorks::DescribeDeploymentsResult> instance
 
-  Requests a description of a specified set of deployments.
+Requests a description of a specified set of deployments.
 
 This call accepts only one resource-identifying parameter.
 
@@ -973,7 +973,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeEcsClusters>
 
 Returns: a L<Paws::OpsWorks::DescribeEcsClustersResult> instance
 
-  Describes Amazon ECS clusters that are registered with a stack. If you
+Describes Amazon ECS clusters that are registered with a stack. If you
 specify only a stack ID, you can use the C<MaxResults> and C<NextToken>
 parameters to paginate the response. However, AWS OpsWorks Stacks
 currently supports only one cluster per layer, so the result set has a
@@ -993,7 +993,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeElasticIps>
 
 Returns: a L<Paws::OpsWorks::DescribeElasticIpsResult> instance
 
-  Describes Elastic IP addresses.
+Describes Elastic IP addresses.
 
 This call accepts only one resource-identifying parameter.
 
@@ -1009,7 +1009,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeElasticLoadBa
 
 Returns: a L<Paws::OpsWorks::DescribeElasticLoadBalancersResult> instance
 
-  Describes a stack's Elastic Load Balancing instances.
+Describes a stack's Elastic Load Balancing instances.
 
 This call accepts only one resource-identifying parameter.
 
@@ -1025,7 +1025,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeInstances>
 
 Returns: a L<Paws::OpsWorks::DescribeInstancesResult> instance
 
-  Requests a description of a set of instances.
+Requests a description of a set of instances.
 
 This call accepts only one resource-identifying parameter.
 
@@ -1041,7 +1041,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeLayers>
 
 Returns: a L<Paws::OpsWorks::DescribeLayersResult> instance
 
-  Requests a description of one or more layers in a specified stack.
+Requests a description of one or more layers in a specified stack.
 
 This call accepts only one resource-identifying parameter.
 
@@ -1057,7 +1057,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeLoadBasedAuto
 
 Returns: a L<Paws::OpsWorks::DescribeLoadBasedAutoScalingResult> instance
 
-  Describes load-based auto scaling configurations for specified layers.
+Describes load-based auto scaling configurations for specified layers.
 
 You must specify at least one of the parameters.
 
@@ -1073,7 +1073,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeMyUserProfile
 
 Returns: a L<Paws::OpsWorks::DescribeMyUserProfileResult> instance
 
-  Describes a user's SSH information.
+Describes a user's SSH information.
 
 B<Required Permissions>: To use this action, an IAM user must have
 self-management enabled or an attached policy that explicitly grants
@@ -1087,7 +1087,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribePermissions>
 
 Returns: a L<Paws::OpsWorks::DescribePermissionsResult> instance
 
-  Describes the permissions for a specified stack.
+Describes the permissions for a specified stack.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
@@ -1101,7 +1101,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeRaidArrays>
 
 Returns: a L<Paws::OpsWorks::DescribeRaidArraysResult> instance
 
-  Describe an instance's RAID arrays.
+Describe an instance's RAID arrays.
 
 This call accepts only one resource-identifying parameter.
 
@@ -1117,7 +1117,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeRdsDbInstance
 
 Returns: a L<Paws::OpsWorks::DescribeRdsDbInstancesResult> instance
 
-  Describes Amazon RDS instances.
+Describes Amazon RDS instances.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
@@ -1133,7 +1133,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeServiceErrors
 
 Returns: a L<Paws::OpsWorks::DescribeServiceErrorsResult> instance
 
-  Describes AWS OpsWorks Stacks service errors.
+Describes AWS OpsWorks Stacks service errors.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
@@ -1149,7 +1149,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeStackProvisio
 
 Returns: a L<Paws::OpsWorks::DescribeStackProvisioningParametersResult> instance
 
-  Requests a description of a stack's provisioning parameters.
+Requests a description of a stack's provisioning parameters.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack or an attached
@@ -1163,7 +1163,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeStacks>
 
 Returns: a L<Paws::OpsWorks::DescribeStacksResult> instance
 
-  Requests a description of one or more stacks.
+Requests a description of one or more stacks.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
@@ -1177,7 +1177,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeStackSummary>
 
 Returns: a L<Paws::OpsWorks::DescribeStackSummaryResult> instance
 
-  Describes the number of layers and apps in a specified stack, and the
+Describes the number of layers and apps in a specified stack, and the
 number of instances in each state, such as C<running_setup> or
 C<online>.
 
@@ -1193,7 +1193,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeTimeBasedAuto
 
 Returns: a L<Paws::OpsWorks::DescribeTimeBasedAutoScalingResult> instance
 
-  Describes time-based auto scaling configurations for specified
+Describes time-based auto scaling configurations for specified
 instances.
 
 You must specify at least one of the parameters.
@@ -1210,7 +1210,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeUserProfiles>
 
 Returns: a L<Paws::OpsWorks::DescribeUserProfilesResult> instance
 
-  Describe specified users.
+Describe specified users.
 
 B<Required Permissions>: To use this action, an IAM user must have an
 attached policy that explicitly grants permissions. For more
@@ -1223,7 +1223,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeVolumes>
 
 Returns: a L<Paws::OpsWorks::DescribeVolumesResult> instance
 
-  Describes an instance's Amazon EBS volumes.
+Describes an instance's Amazon EBS volumes.
 
 This call accepts only one resource-identifying parameter.
 
@@ -1239,7 +1239,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DetachElasticLoadBala
 
 Returns: nothing
 
-  Detaches a specified Elastic Load Balancing instance from its layer.
+Detaches a specified Elastic Load Balancing instance from its layer.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
@@ -1253,7 +1253,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::DisassociateElasticIp
 
 Returns: nothing
 
-  Disassociates an Elastic IP address from its instance. The address
+Disassociates an Elastic IP address from its instance. The address
 remains registered with the stack. For more information, see Resource
 Management.
 
@@ -1269,7 +1269,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::GetHostnameSuggestion
 
 Returns: a L<Paws::OpsWorks::GetHostnameSuggestionResult> instance
 
-  Gets a generated host name for the specified layer, based on the
+Gets a generated host name for the specified layer, based on the
 current host name theme.
 
 B<Required Permissions>: To use this action, an IAM user must have a
@@ -1284,7 +1284,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::GrantAccess>
 
 Returns: a L<Paws::OpsWorks::GrantAccessResult> instance
 
-  This action can be used only with Windows stacks.
+This action can be used only with Windows stacks.
 
 Grants RDP access to a Windows instance for a specified time period.
 
@@ -1295,7 +1295,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::ListTags>
 
 Returns: a L<Paws::OpsWorks::ListTagsResult> instance
 
-  Returns a list of tags that are applied to the specified stack or
+Returns a list of tags that are applied to the specified stack or
 layer.
 
 
@@ -1305,7 +1305,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::RebootInstance>
 
 Returns: nothing
 
-  Reboots a specified instance. For more information, see Starting,
+Reboots a specified instance. For more information, see Starting,
 Stopping, and Rebooting Instances.
 
 B<Required Permissions>: To use this action, an IAM user must have a
@@ -1320,7 +1320,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::RegisterEcsCluster>
 
 Returns: a L<Paws::OpsWorks::RegisterEcsClusterResult> instance
 
-  Registers a specified Amazon ECS cluster with a stack. You can register
+Registers a specified Amazon ECS cluster with a stack. You can register
 only one cluster with a stack. A cluster can be registered with only
 one stack. For more information, see Resource Management.
 
@@ -1336,7 +1336,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::RegisterElasticIp>
 
 Returns: a L<Paws::OpsWorks::RegisterElasticIpResult> instance
 
-  Registers an Elastic IP address with a specified stack. An address can
+Registers an Elastic IP address with a specified stack. An address can
 be registered with only one stack at a time. If the address is already
 registered, you must first deregister it by calling
 DeregisterElasticIp. For more information, see Resource Management.
@@ -1353,7 +1353,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::RegisterInstance>
 
 Returns: a L<Paws::OpsWorks::RegisterInstanceResult> instance
 
-  Registers instances that were created outside of AWS OpsWorks Stacks
+Registers instances that were created outside of AWS OpsWorks Stacks
 with a specified stack.
 
 We do not recommend using this action to register instances. The
@@ -1383,7 +1383,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::RegisterRdsDbInstance
 
 Returns: nothing
 
-  Registers an Amazon RDS instance with a stack.
+Registers an Amazon RDS instance with a stack.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
@@ -1397,7 +1397,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::RegisterVolume>
 
 Returns: a L<Paws::OpsWorks::RegisterVolumeResult> instance
 
-  Registers an Amazon EBS volume with a specified stack. A volume can be
+Registers an Amazon EBS volume with a specified stack. A volume can be
 registered with only one stack at a time. If the volume is already
 registered, you must first deregister it by calling DeregisterVolume.
 For more information, see Resource Management.
@@ -1414,7 +1414,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::SetLoadBasedAutoScali
 
 Returns: nothing
 
-  Specify the load-based auto scaling configuration for a specified
+Specify the load-based auto scaling configuration for a specified
 layer. For more information, see Managing Load with Time-based and
 Load-based Instances.
 
@@ -1435,7 +1435,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::SetPermission>
 
 Returns: nothing
 
-  Specifies a user's permissions. For more information, see Security and
+Specifies a user's permissions. For more information, see Security and
 Permissions.
 
 B<Required Permissions>: To use this action, an IAM user must have a
@@ -1450,7 +1450,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::SetTimeBasedAutoScali
 
 Returns: nothing
 
-  Specify the time-based auto scaling configuration for a specified
+Specify the time-based auto scaling configuration for a specified
 instance. For more information, see Managing Load with Time-based and
 Load-based Instances.
 
@@ -1466,7 +1466,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::StartInstance>
 
 Returns: nothing
 
-  Starts a specified instance. For more information, see Starting,
+Starts a specified instance. For more information, see Starting,
 Stopping, and Rebooting Instances.
 
 B<Required Permissions>: To use this action, an IAM user must have a
@@ -1481,7 +1481,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::StartStack>
 
 Returns: nothing
 
-  Starts a stack's instances.
+Starts a stack's instances.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
@@ -1495,7 +1495,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::StopInstance>
 
 Returns: nothing
 
-  Stops a specified instance. When you stop a standard instance, the data
+Stops a specified instance. When you stop a standard instance, the data
 disappears and must be reinstalled when you restart the instance. You
 can stop an Amazon EBS-backed instance without losing data. For more
 information, see Starting, Stopping, and Rebooting Instances.
@@ -1512,7 +1512,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::StopStack>
 
 Returns: nothing
 
-  Stops a specified stack.
+Stops a specified stack.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
@@ -1526,7 +1526,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::TagResource>
 
 Returns: nothing
 
-  Apply cost-allocation tags to a specified stack or layer in AWS
+Apply cost-allocation tags to a specified stack or layer in AWS
 OpsWorks Stacks. For more information about how tagging works, see Tags
 in the AWS OpsWorks User Guide.
 
@@ -1537,7 +1537,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::UnassignInstance>
 
 Returns: nothing
 
-  Unassigns a registered instance from all of it's layers. The instance
+Unassigns a registered instance from all of it's layers. The instance
 remains in the stack as an unassigned instance and can be assigned to
 another layer, as needed. You cannot use this action with instances
 that were created with AWS OpsWorks Stacks.
@@ -1554,7 +1554,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::UnassignVolume>
 
 Returns: nothing
 
-  Unassigns an assigned Amazon EBS volume. The volume remains registered
+Unassigns an assigned Amazon EBS volume. The volume remains registered
 with the stack. For more information, see Resource Management.
 
 B<Required Permissions>: To use this action, an IAM user must have a
@@ -1569,7 +1569,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::UntagResource>
 
 Returns: nothing
 
-  Removes tags from a specified stack or layer.
+Removes tags from a specified stack or layer.
 
 
 =head2 UpdateApp(AppId => Str, [AppSource => L<Paws::OpsWorks::Source>, Attributes => L<Paws::OpsWorks::AppAttributes>, DataSources => ArrayRef[L<Paws::OpsWorks::DataSource>], Description => Str, Domains => ArrayRef[Str|Undef], EnableSsl => Bool, Environment => ArrayRef[L<Paws::OpsWorks::EnvironmentVariable>], Name => Str, SslConfiguration => L<Paws::OpsWorks::SslConfiguration>, Type => Str])
@@ -1578,7 +1578,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::UpdateApp>
 
 Returns: nothing
 
-  Updates a specified app.
+Updates a specified app.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Deploy or Manage permissions level for the stack, or an attached policy
@@ -1592,7 +1592,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::UpdateElasticIp>
 
 Returns: nothing
 
-  Updates a registered Elastic IP address's name. For more information,
+Updates a registered Elastic IP address's name. For more information,
 see Resource Management.
 
 B<Required Permissions>: To use this action, an IAM user must have a
@@ -1607,7 +1607,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::UpdateInstance>
 
 Returns: nothing
 
-  Updates a specified instance.
+Updates a specified instance.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
@@ -1621,7 +1621,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::UpdateLayer>
 
 Returns: nothing
 
-  Updates a specified layer.
+Updates a specified layer.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
@@ -1635,7 +1635,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::UpdateMyUserProfile>
 
 Returns: nothing
 
-  Updates a user's SSH public key.
+Updates a user's SSH public key.
 
 B<Required Permissions>: To use this action, an IAM user must have
 self-management enabled or an attached policy that explicitly grants
@@ -1649,7 +1649,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::UpdateRdsDbInstance>
 
 Returns: nothing
 
-  Updates an Amazon RDS instance.
+Updates an Amazon RDS instance.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
@@ -1663,7 +1663,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::UpdateStack>
 
 Returns: nothing
 
-  Updates a specified stack.
+Updates a specified stack.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
@@ -1677,7 +1677,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::UpdateUserProfile>
 
 Returns: nothing
 
-  Updates a specified user profile.
+Updates a specified user profile.
 
 B<Required Permissions>: To use this action, an IAM user must have an
 attached policy that explicitly grants permissions. For more
@@ -1690,7 +1690,7 @@ Each argument is described in detail in: L<Paws::OpsWorks::UpdateVolume>
 
 Returns: nothing
 
-  Updates an Amazon EBS volume's name or mount point. For more
+Updates an Amazon EBS volume's name or mount point. For more
 information, see Resource Management.
 
 B<Required Permissions>: To use this action, an IAM user must have a
@@ -1726,9 +1726,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

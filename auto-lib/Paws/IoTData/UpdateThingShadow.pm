@@ -16,7 +16,7 @@ package Paws::IoTData::UpdateThingShadow;
 
 =head1 NAME
 
-Paws::IoTData::UpdateThingShadow - Arguments for method UpdateThingShadow on Paws::IoTData
+Paws::IoTData::UpdateThingShadow - Arguments for method UpdateThingShadow on L<Paws::IoTData>
 
 =head1 DESCRIPTION
 
@@ -54,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateThingSh
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

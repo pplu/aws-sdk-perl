@@ -104,7 +104,7 @@ Each argument is described in detail in: L<Paws::Pricing::DescribeServices>
 
 Returns: a L<Paws::Pricing::DescribeServicesResponse> instance
 
-  Returns the metadata for one service or a list of the metadata for all
+Returns the metadata for one service or a list of the metadata for all
 services. Use this without a service code to get the service codes for
 all services. Use it with a service code, such as C<AmazonEC2>, to get
 information specific to that service, such as the attribute names
@@ -119,7 +119,7 @@ Each argument is described in detail in: L<Paws::Pricing::GetAttributeValues>
 
 Returns: a L<Paws::Pricing::GetAttributeValuesResponse> instance
 
-  Returns a list of attribute values. Attibutes are similar to the
+Returns a list of attribute values. Attibutes are similar to the
 details in a Price List API offer file. For a list of available
 attributes, see Offer File Definitions in the AWS Billing and Cost
 Management User Guide.
@@ -131,7 +131,7 @@ Each argument is described in detail in: L<Paws::Pricing::GetProducts>
 
 Returns: a L<Paws::Pricing::GetProductsResponse> instance
 
-  Returns a list of all products that match the filter criteria.
+Returns a list of all products that match the filter criteria.
 
 
 
@@ -149,9 +149,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

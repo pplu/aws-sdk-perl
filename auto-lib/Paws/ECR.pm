@@ -240,7 +240,7 @@ Each argument is described in detail in: L<Paws::ECR::BatchCheckLayerAvailabilit
 
 Returns: a L<Paws::ECR::BatchCheckLayerAvailabilityResponse> instance
 
-  Check the availability of multiple image layers in a specified registry
+Check the availability of multiple image layers in a specified registry
 and repository.
 
 This operation is used by the Amazon ECR proxy, and it is not intended
@@ -254,7 +254,7 @@ Each argument is described in detail in: L<Paws::ECR::BatchDeleteImage>
 
 Returns: a L<Paws::ECR::BatchDeleteImageResponse> instance
 
-  Deletes a list of specified images within a specified repository.
+Deletes a list of specified images within a specified repository.
 Images are specified with either C<imageTag> or C<imageDigest>.
 
 You can remove a tag from an image by specifying the image's tag in
@@ -271,7 +271,7 @@ Each argument is described in detail in: L<Paws::ECR::BatchGetImage>
 
 Returns: a L<Paws::ECR::BatchGetImageResponse> instance
 
-  Gets detailed information for specified images within a specified
+Gets detailed information for specified images within a specified
 repository. Images are specified with either C<imageTag> or
 C<imageDigest>.
 
@@ -282,7 +282,7 @@ Each argument is described in detail in: L<Paws::ECR::CompleteLayerUpload>
 
 Returns: a L<Paws::ECR::CompleteLayerUploadResponse> instance
 
-  Informs Amazon ECR that the image layer upload has completed for a
+Informs Amazon ECR that the image layer upload has completed for a
 specified registry, repository name, and upload ID. You can optionally
 provide a C<sha256> digest of the image layer for data validation
 purposes.
@@ -298,7 +298,7 @@ Each argument is described in detail in: L<Paws::ECR::CreateRepository>
 
 Returns: a L<Paws::ECR::CreateRepositoryResponse> instance
 
-  Creates an image repository.
+Creates an image repository.
 
 
 =head2 DeleteLifecyclePolicy(RepositoryName => Str, [RegistryId => Str])
@@ -307,7 +307,7 @@ Each argument is described in detail in: L<Paws::ECR::DeleteLifecyclePolicy>
 
 Returns: a L<Paws::ECR::DeleteLifecyclePolicyResponse> instance
 
-  Deletes the specified lifecycle policy.
+Deletes the specified lifecycle policy.
 
 
 =head2 DeleteRepository(RepositoryName => Str, [Force => Bool, RegistryId => Str])
@@ -316,7 +316,7 @@ Each argument is described in detail in: L<Paws::ECR::DeleteRepository>
 
 Returns: a L<Paws::ECR::DeleteRepositoryResponse> instance
 
-  Deletes an existing image repository. If a repository contains images,
+Deletes an existing image repository. If a repository contains images,
 you must use the C<force> option to delete it.
 
 
@@ -326,7 +326,7 @@ Each argument is described in detail in: L<Paws::ECR::DeleteRepositoryPolicy>
 
 Returns: a L<Paws::ECR::DeleteRepositoryPolicyResponse> instance
 
-  Deletes the repository policy from a specified repository.
+Deletes the repository policy from a specified repository.
 
 
 =head2 DescribeImages(RepositoryName => Str, [Filter => L<Paws::ECR::DescribeImagesFilter>, ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], MaxResults => Int, NextToken => Str, RegistryId => Str])
@@ -335,7 +335,7 @@ Each argument is described in detail in: L<Paws::ECR::DescribeImages>
 
 Returns: a L<Paws::ECR::DescribeImagesResponse> instance
 
-  Returns metadata about the images in a repository, including image
+Returns metadata about the images in a repository, including image
 size, image tags, and creation date.
 
 Beginning with Docker version 1.9, the Docker client compresses image
@@ -351,7 +351,7 @@ Each argument is described in detail in: L<Paws::ECR::DescribeRepositories>
 
 Returns: a L<Paws::ECR::DescribeRepositoriesResponse> instance
 
-  Describes image repositories in a registry.
+Describes image repositories in a registry.
 
 
 =head2 GetAuthorizationToken([RegistryIds => ArrayRef[Str|Undef]])
@@ -360,7 +360,7 @@ Each argument is described in detail in: L<Paws::ECR::GetAuthorizationToken>
 
 Returns: a L<Paws::ECR::GetAuthorizationTokenResponse> instance
 
-  Retrieves a token that is valid for a specified registry for 12 hours.
+Retrieves a token that is valid for a specified registry for 12 hours.
 This command allows you to use the C<docker> CLI to push and pull
 images with Amazon ECR. If you do not specify a registry, the default
 registry is assumed.
@@ -377,7 +377,7 @@ Each argument is described in detail in: L<Paws::ECR::GetDownloadUrlForLayer>
 
 Returns: a L<Paws::ECR::GetDownloadUrlForLayerResponse> instance
 
-  Retrieves the pre-signed Amazon S3 download URL corresponding to an
+Retrieves the pre-signed Amazon S3 download URL corresponding to an
 image layer. You can only get URLs for image layers that are referenced
 in an image.
 
@@ -392,7 +392,7 @@ Each argument is described in detail in: L<Paws::ECR::GetLifecyclePolicy>
 
 Returns: a L<Paws::ECR::GetLifecyclePolicyResponse> instance
 
-  Retrieves the specified lifecycle policy.
+Retrieves the specified lifecycle policy.
 
 
 =head2 GetLifecyclePolicyPreview(RepositoryName => Str, [Filter => L<Paws::ECR::LifecyclePolicyPreviewFilter>, ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], MaxResults => Int, NextToken => Str, RegistryId => Str])
@@ -401,7 +401,7 @@ Each argument is described in detail in: L<Paws::ECR::GetLifecyclePolicyPreview>
 
 Returns: a L<Paws::ECR::GetLifecyclePolicyPreviewResponse> instance
 
-  Retrieves the results of the specified lifecycle policy preview
+Retrieves the results of the specified lifecycle policy preview
 request.
 
 
@@ -411,7 +411,7 @@ Each argument is described in detail in: L<Paws::ECR::GetRepositoryPolicy>
 
 Returns: a L<Paws::ECR::GetRepositoryPolicyResponse> instance
 
-  Retrieves the repository policy for a specified repository.
+Retrieves the repository policy for a specified repository.
 
 
 =head2 InitiateLayerUpload(RepositoryName => Str, [RegistryId => Str])
@@ -420,7 +420,7 @@ Each argument is described in detail in: L<Paws::ECR::InitiateLayerUpload>
 
 Returns: a L<Paws::ECR::InitiateLayerUploadResponse> instance
 
-  Notify Amazon ECR that you intend to upload an image layer.
+Notify Amazon ECR that you intend to upload an image layer.
 
 This operation is used by the Amazon ECR proxy, and it is not intended
 for general use by customers for pulling and pushing images. In most
@@ -433,7 +433,7 @@ Each argument is described in detail in: L<Paws::ECR::ListImages>
 
 Returns: a L<Paws::ECR::ListImagesResponse> instance
 
-  Lists all the image IDs for a given repository.
+Lists all the image IDs for a given repository.
 
 You can filter images based on whether or not they are tagged by
 setting the C<tagStatus> parameter to C<TAGGED> or C<UNTAGGED>. For
@@ -449,7 +449,7 @@ Each argument is described in detail in: L<Paws::ECR::PutImage>
 
 Returns: a L<Paws::ECR::PutImageResponse> instance
 
-  Creates or updates the image manifest and tags associated with an
+Creates or updates the image manifest and tags associated with an
 image.
 
 This operation is used by the Amazon ECR proxy, and it is not intended
@@ -463,7 +463,7 @@ Each argument is described in detail in: L<Paws::ECR::PutLifecyclePolicy>
 
 Returns: a L<Paws::ECR::PutLifecyclePolicyResponse> instance
 
-  Creates or updates a lifecycle policy.
+Creates or updates a lifecycle policy.
 
 
 =head2 SetRepositoryPolicy(PolicyText => Str, RepositoryName => Str, [Force => Bool, RegistryId => Str])
@@ -472,7 +472,7 @@ Each argument is described in detail in: L<Paws::ECR::SetRepositoryPolicy>
 
 Returns: a L<Paws::ECR::SetRepositoryPolicyResponse> instance
 
-  Applies a repository policy on a specified repository to control access
+Applies a repository policy on a specified repository to control access
 permissions.
 
 
@@ -482,7 +482,7 @@ Each argument is described in detail in: L<Paws::ECR::StartLifecyclePolicyPrevie
 
 Returns: a L<Paws::ECR::StartLifecyclePolicyPreviewResponse> instance
 
-  Starts a preview of the specified lifecycle policy. This allows you to
+Starts a preview of the specified lifecycle policy. This allows you to
 see the results before creating the lifecycle policy.
 
 
@@ -492,7 +492,7 @@ Each argument is described in detail in: L<Paws::ECR::UploadLayerPart>
 
 Returns: a L<Paws::ECR::UploadLayerPartResponse> instance
 
-  Uploads an image layer part to Amazon ECR.
+Uploads an image layer part to Amazon ECR.
 
 This operation is used by the Amazon ECR proxy, and it is not intended
 for general use by customers for pulling and pushing images. In most
@@ -550,9 +550,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

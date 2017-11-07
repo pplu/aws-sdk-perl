@@ -1377,7 +1377,7 @@ Each argument is described in detail in: L<Paws::IAM::AddClientIDToOpenIDConnect
 
 Returns: nothing
 
-  Adds a new client ID (also known as audience) to the list of client IDs
+Adds a new client ID (also known as audience) to the list of client IDs
 already registered for the specified IAM OpenID Connect (OIDC) provider
 resource.
 
@@ -1391,7 +1391,7 @@ Each argument is described in detail in: L<Paws::IAM::AddRoleToInstanceProfile>
 
 Returns: nothing
 
-  Adds the specified IAM role to the specified instance profile. An
+Adds the specified IAM role to the specified instance profile. An
 instance profile can contain only one role, and this limit cannot be
 increased.
 
@@ -1408,7 +1408,7 @@ Each argument is described in detail in: L<Paws::IAM::AddUserToGroup>
 
 Returns: nothing
 
-  Adds the specified user to the specified group.
+Adds the specified user to the specified group.
 
 
 =head2 AttachGroupPolicy(GroupName => Str, PolicyArn => Str)
@@ -1417,7 +1417,7 @@ Each argument is described in detail in: L<Paws::IAM::AttachGroupPolicy>
 
 Returns: nothing
 
-  Attaches the specified managed policy to the specified IAM group.
+Attaches the specified managed policy to the specified IAM group.
 
 You use this API to attach a managed policy to a group. To embed an
 inline policy in a group, use PutGroupPolicy.
@@ -1432,7 +1432,7 @@ Each argument is described in detail in: L<Paws::IAM::AttachRolePolicy>
 
 Returns: nothing
 
-  Attaches the specified managed policy to the specified IAM role. When
+Attaches the specified managed policy to the specified IAM role. When
 you attach a managed policy to a role, the managed policy becomes part
 of the role's permission (access) policy.
 
@@ -1452,7 +1452,7 @@ Each argument is described in detail in: L<Paws::IAM::AttachUserPolicy>
 
 Returns: nothing
 
-  Attaches the specified managed policy to the specified user.
+Attaches the specified managed policy to the specified user.
 
 You use this API to attach a I<managed> policy to a user. To embed an
 inline policy in a user, use PutUserPolicy.
@@ -1467,7 +1467,7 @@ Each argument is described in detail in: L<Paws::IAM::ChangePassword>
 
 Returns: nothing
 
-  Changes the password of the IAM user who is calling this action. The
+Changes the password of the IAM user who is calling this action. The
 root account password is not affected by this action.
 
 To change the password for a different user, see UpdateLoginProfile.
@@ -1481,7 +1481,7 @@ Each argument is described in detail in: L<Paws::IAM::CreateAccessKey>
 
 Returns: a L<Paws::IAM::CreateAccessKeyResponse> instance
 
-  Creates a new AWS secret access key and corresponding AWS access key ID
+Creates a new AWS secret access key and corresponding AWS access key ID
 for the specified user. The default status for new keys is C<Active>.
 
 If you do not specify a user name, IAM determines the user name
@@ -1506,7 +1506,7 @@ Each argument is described in detail in: L<Paws::IAM::CreateAccountAlias>
 
 Returns: nothing
 
-  Creates an alias for your AWS account. For information about using an
+Creates an alias for your AWS account. For information about using an
 AWS account alias, see Using an Alias for Your AWS Account ID in the
 I<IAM User Guide>.
 
@@ -1517,7 +1517,7 @@ Each argument is described in detail in: L<Paws::IAM::CreateGroup>
 
 Returns: a L<Paws::IAM::CreateGroupResponse> instance
 
-  Creates a new group.
+Creates a new group.
 
 For information about the number of groups you can create, see
 Limitations on IAM Entities in the I<IAM User Guide>.
@@ -1529,7 +1529,7 @@ Each argument is described in detail in: L<Paws::IAM::CreateInstanceProfile>
 
 Returns: a L<Paws::IAM::CreateInstanceProfileResponse> instance
 
-  Creates a new instance profile. For information about instance
+Creates a new instance profile. For information about instance
 profiles, go to About Instance Profiles.
 
 For information about the number of instance profiles you can create,
@@ -1542,7 +1542,7 @@ Each argument is described in detail in: L<Paws::IAM::CreateLoginProfile>
 
 Returns: a L<Paws::IAM::CreateLoginProfileResponse> instance
 
-  Creates a password for the specified user, giving the user the ability
+Creates a password for the specified user, giving the user the ability
 to access AWS services through the AWS Management Console. For more
 information about managing passwords, see Managing Passwords in the
 I<IAM User Guide>.
@@ -1554,7 +1554,7 @@ Each argument is described in detail in: L<Paws::IAM::CreateOpenIDConnectProvide
 
 Returns: a L<Paws::IAM::CreateOpenIDConnectProviderResponse> instance
 
-  Creates an IAM entity to describe an identity provider (IdP) that
+Creates an IAM entity to describe an identity provider (IdP) that
 supports OpenID Connect (OIDC).
 
 The OIDC provider that you create with this operation can be used as a
@@ -1581,7 +1581,7 @@ Each argument is described in detail in: L<Paws::IAM::CreatePolicy>
 
 Returns: a L<Paws::IAM::CreatePolicyResponse> instance
 
-  Creates a new managed policy for your AWS account.
+Creates a new managed policy for your AWS account.
 
 This operation creates a policy version with a version identifier of
 C<v1> and sets v1 as the policy's default version. For more information
@@ -1598,7 +1598,7 @@ Each argument is described in detail in: L<Paws::IAM::CreatePolicyVersion>
 
 Returns: a L<Paws::IAM::CreatePolicyVersionResponse> instance
 
-  Creates a new version of the specified managed policy. To update a
+Creates a new version of the specified managed policy. To update a
 managed policy, you create a new policy version. A managed policy can
 have up to five versions. If the policy has five versions, you must
 delete an existing version using DeletePolicyVersion before you create
@@ -1618,7 +1618,7 @@ Each argument is described in detail in: L<Paws::IAM::CreateRole>
 
 Returns: a L<Paws::IAM::CreateRoleResponse> instance
 
-  Creates a new role for your AWS account. For more information about
+Creates a new role for your AWS account. For more information about
 roles, go to Working with Roles. For information about limitations on
 role names and the number of roles you can create, go to Limitations on
 IAM Entities in the I<IAM User Guide>.
@@ -1630,7 +1630,7 @@ Each argument is described in detail in: L<Paws::IAM::CreateSAMLProvider>
 
 Returns: a L<Paws::IAM::CreateSAMLProviderResponse> instance
 
-  Creates an IAM resource that describes an identity provider (IdP) that
+Creates an IAM resource that describes an identity provider (IdP) that
 supports SAML 2.0.
 
 The SAML provider resource that you create with this operation can be
@@ -1659,7 +1659,7 @@ Each argument is described in detail in: L<Paws::IAM::CreateServiceLinkedRole>
 
 Returns: a L<Paws::IAM::CreateServiceLinkedRoleResponse> instance
 
-  Creates an IAM role that is linked to a specific AWS service. The
+Creates an IAM role that is linked to a specific AWS service. The
 service controls the attached policies and when the role can be
 deleted. This helps ensure that the service is not broken by an
 unexpectedly changed or deleted role, which could put your AWS
@@ -1682,7 +1682,7 @@ Each argument is described in detail in: L<Paws::IAM::CreateServiceSpecificCrede
 
 Returns: a L<Paws::IAM::CreateServiceSpecificCredentialResponse> instance
 
-  Generates a set of credentials consisting of a user name and password
+Generates a set of credentials consisting of a user name and password
 that can be used to access the service specified in the request. These
 credentials are generated by IAM, and can be used only for the
 specified service.
@@ -1706,7 +1706,7 @@ Each argument is described in detail in: L<Paws::IAM::CreateUser>
 
 Returns: a L<Paws::IAM::CreateUserResponse> instance
 
-  Creates a new IAM user for your AWS account.
+Creates a new IAM user for your AWS account.
 
 For information about limitations on the number of IAM users you can
 create, see Limitations on IAM Entities in the I<IAM User Guide>.
@@ -1718,7 +1718,7 @@ Each argument is described in detail in: L<Paws::IAM::CreateVirtualMFADevice>
 
 Returns: a L<Paws::IAM::CreateVirtualMFADeviceResponse> instance
 
-  Creates a new virtual MFA device for the AWS account. After creating
+Creates a new virtual MFA device for the AWS account. After creating
 the virtual MFA, use EnableMFADevice to attach the MFA device to an IAM
 user. For more information about creating and working with virtual MFA
 devices, go to Using a Virtual MFA Device in the I<IAM User Guide>.
@@ -1739,7 +1739,7 @@ Each argument is described in detail in: L<Paws::IAM::DeactivateMFADevice>
 
 Returns: nothing
 
-  Deactivates the specified MFA device and removes it from association
+Deactivates the specified MFA device and removes it from association
 with the user name for which it was originally enabled.
 
 For more information about creating and working with virtual MFA
@@ -1752,7 +1752,7 @@ Each argument is described in detail in: L<Paws::IAM::DeleteAccessKey>
 
 Returns: nothing
 
-  Deletes the access key pair associated with the specified IAM user.
+Deletes the access key pair associated with the specified IAM user.
 
 If you do not specify a user name, IAM determines the user name
 implicitly based on the AWS access key ID signing the request. Because
@@ -1767,7 +1767,7 @@ Each argument is described in detail in: L<Paws::IAM::DeleteAccountAlias>
 
 Returns: nothing
 
-  Deletes the specified AWS account alias. For information about using an
+Deletes the specified AWS account alias. For information about using an
 AWS account alias, see Using an Alias for Your AWS Account ID in the
 I<IAM User Guide>.
 
@@ -1778,7 +1778,7 @@ Each argument is described in detail in: L<Paws::IAM::DeleteAccountPasswordPolic
 
 Returns: nothing
 
-  Deletes the password policy for the AWS account. There are no
+Deletes the password policy for the AWS account. There are no
 parameters.
 
 
@@ -1788,7 +1788,7 @@ Each argument is described in detail in: L<Paws::IAM::DeleteGroup>
 
 Returns: nothing
 
-  Deletes the specified IAM group. The group must not contain any users
+Deletes the specified IAM group. The group must not contain any users
 or have any attached policies.
 
 
@@ -1798,7 +1798,7 @@ Each argument is described in detail in: L<Paws::IAM::DeleteGroupPolicy>
 
 Returns: nothing
 
-  Deletes the specified inline policy that is embedded in the specified
+Deletes the specified inline policy that is embedded in the specified
 IAM group.
 
 A group can also have managed policies attached to it. To detach a
@@ -1813,7 +1813,7 @@ Each argument is described in detail in: L<Paws::IAM::DeleteInstanceProfile>
 
 Returns: nothing
 
-  Deletes the specified instance profile. The instance profile must not
+Deletes the specified instance profile. The instance profile must not
 have an associated role.
 
 Make sure you do not have any Amazon EC2 instances running with the
@@ -1831,7 +1831,7 @@ Each argument is described in detail in: L<Paws::IAM::DeleteLoginProfile>
 
 Returns: nothing
 
-  Deletes the password for the specified IAM user, which terminates the
+Deletes the password for the specified IAM user, which terminates the
 user's ability to access AWS services through the AWS Management
 Console.
 
@@ -1848,7 +1848,7 @@ Each argument is described in detail in: L<Paws::IAM::DeleteOpenIDConnectProvide
 
 Returns: nothing
 
-  Deletes an OpenID Connect identity provider (IdP) resource object in
+Deletes an OpenID Connect identity provider (IdP) resource object in
 IAM.
 
 Deleting an IAM OIDC provider resource does not update any roles that
@@ -1865,7 +1865,7 @@ Each argument is described in detail in: L<Paws::IAM::DeletePolicy>
 
 Returns: nothing
 
-  Deletes the specified managed policy.
+Deletes the specified managed policy.
 
 Before you can delete a managed policy, you must first detach the
 policy from all users, groups, and roles that it is attached to, and
@@ -1906,7 +1906,7 @@ Each argument is described in detail in: L<Paws::IAM::DeletePolicyVersion>
 
 Returns: nothing
 
-  Deletes the specified version from the specified managed policy.
+Deletes the specified version from the specified managed policy.
 
 You cannot delete the default version from a policy using this API. To
 delete the default version from a policy, use DeletePolicy. To find out
@@ -1923,7 +1923,7 @@ Each argument is described in detail in: L<Paws::IAM::DeleteRole>
 
 Returns: nothing
 
-  Deletes the specified role. The role must not have any policies
+Deletes the specified role. The role must not have any policies
 attached. For more information about roles, go to Working with Roles.
 
 Make sure you do not have any Amazon EC2 instances running with the
@@ -1938,7 +1938,7 @@ Each argument is described in detail in: L<Paws::IAM::DeleteRolePolicy>
 
 Returns: nothing
 
-  Deletes the specified inline policy that is embedded in the specified
+Deletes the specified inline policy that is embedded in the specified
 IAM role.
 
 A role can also have managed policies attached to it. To detach a
@@ -1953,7 +1953,7 @@ Each argument is described in detail in: L<Paws::IAM::DeleteSAMLProvider>
 
 Returns: nothing
 
-  Deletes a SAML provider resource in IAM.
+Deletes a SAML provider resource in IAM.
 
 Deleting the provider resource from IAM does not update any roles that
 reference the SAML provider resource's ARN as a principal in their
@@ -1969,7 +1969,7 @@ Each argument is described in detail in: L<Paws::IAM::DeleteServerCertificate>
 
 Returns: nothing
 
-  Deletes the specified server certificate.
+Deletes the specified server certificate.
 
 For more information about working with server certificates, including
 a list of AWS services that can use the server certificates that you
@@ -1993,7 +1993,7 @@ Each argument is described in detail in: L<Paws::IAM::DeleteServiceLinkedRole>
 
 Returns: a L<Paws::IAM::DeleteServiceLinkedRoleResponse> instance
 
-  Submits a service-linked role deletion request and returns a
+Submits a service-linked role deletion request and returns a
 C<DeletionTaskId>, which you can use to check the status of the
 deletion. Before you call this operation, confirm that the role has no
 active sessions and that any resources used by the role in the linked
@@ -2021,7 +2021,7 @@ Each argument is described in detail in: L<Paws::IAM::DeleteServiceSpecificCrede
 
 Returns: nothing
 
-  Deletes the specified service-specific credential.
+Deletes the specified service-specific credential.
 
 
 =head2 DeleteSigningCertificate(CertificateId => Str, [UserName => Str])
@@ -2030,7 +2030,7 @@ Each argument is described in detail in: L<Paws::IAM::DeleteSigningCertificate>
 
 Returns: nothing
 
-  Deletes a signing certificate associated with the specified IAM user.
+Deletes a signing certificate associated with the specified IAM user.
 
 If you do not specify a user name, IAM determines the user name
 implicitly based on the AWS access key ID signing the request. Because
@@ -2045,7 +2045,7 @@ Each argument is described in detail in: L<Paws::IAM::DeleteSSHPublicKey>
 
 Returns: nothing
 
-  Deletes the specified SSH public key.
+Deletes the specified SSH public key.
 
 The SSH public key deleted by this action is used only for
 authenticating the associated IAM user to an AWS CodeCommit repository.
@@ -2060,7 +2060,7 @@ Each argument is described in detail in: L<Paws::IAM::DeleteUser>
 
 Returns: nothing
 
-  Deletes the specified IAM user. The user must not belong to any groups
+Deletes the specified IAM user. The user must not belong to any groups
 or have any access keys, signing certificates, or attached policies.
 
 
@@ -2070,7 +2070,7 @@ Each argument is described in detail in: L<Paws::IAM::DeleteUserPolicy>
 
 Returns: nothing
 
-  Deletes the specified inline policy that is embedded in the specified
+Deletes the specified inline policy that is embedded in the specified
 IAM user.
 
 A user can also have managed policies attached to it. To detach a
@@ -2085,7 +2085,7 @@ Each argument is described in detail in: L<Paws::IAM::DeleteVirtualMFADevice>
 
 Returns: nothing
 
-  Deletes a virtual MFA device.
+Deletes a virtual MFA device.
 
 You must deactivate a user's virtual MFA device before you can delete
 it. For information about deactivating MFA devices, see
@@ -2098,7 +2098,7 @@ Each argument is described in detail in: L<Paws::IAM::DetachGroupPolicy>
 
 Returns: nothing
 
-  Removes the specified managed policy from the specified IAM group.
+Removes the specified managed policy from the specified IAM group.
 
 A group can also have inline policies embedded with it. To delete an
 inline policy, use the DeleteGroupPolicy API. For information about
@@ -2112,7 +2112,7 @@ Each argument is described in detail in: L<Paws::IAM::DetachRolePolicy>
 
 Returns: nothing
 
-  Removes the specified managed policy from the specified role.
+Removes the specified managed policy from the specified role.
 
 A role can also have inline policies embedded with it. To delete an
 inline policy, use the DeleteRolePolicy API. For information about
@@ -2126,7 +2126,7 @@ Each argument is described in detail in: L<Paws::IAM::DetachUserPolicy>
 
 Returns: nothing
 
-  Removes the specified managed policy from the specified user.
+Removes the specified managed policy from the specified user.
 
 A user can also have inline policies embedded with it. To delete an
 inline policy, use the DeleteUserPolicy API. For information about
@@ -2140,7 +2140,7 @@ Each argument is described in detail in: L<Paws::IAM::EnableMFADevice>
 
 Returns: nothing
 
-  Enables the specified MFA device and associates it with the specified
+Enables the specified MFA device and associates it with the specified
 IAM user. When enabled, the MFA device is required for every subsequent
 login by the IAM user associated with the device.
 
@@ -2151,7 +2151,7 @@ Each argument is described in detail in: L<Paws::IAM::GenerateCredentialReport>
 
 Returns: a L<Paws::IAM::GenerateCredentialReportResponse> instance
 
-  Generates a credential report for the AWS account. For more information
+Generates a credential report for the AWS account. For more information
 about the credential report, see Getting Credential Reports in the
 I<IAM User Guide>.
 
@@ -2162,7 +2162,7 @@ Each argument is described in detail in: L<Paws::IAM::GetAccessKeyLastUsed>
 
 Returns: a L<Paws::IAM::GetAccessKeyLastUsedResponse> instance
 
-  Retrieves information about when the specified access key was last
+Retrieves information about when the specified access key was last
 used. The information includes the date and time of last use, along
 with the AWS service and region that were specified in the last request
 made with that key.
@@ -2174,7 +2174,7 @@ Each argument is described in detail in: L<Paws::IAM::GetAccountAuthorizationDet
 
 Returns: a L<Paws::IAM::GetAccountAuthorizationDetailsResponse> instance
 
-  Retrieves information about all IAM users, groups, roles, and policies
+Retrieves information about all IAM users, groups, roles, and policies
 in your AWS account, including their relationships to one another. Use
 this API to obtain a snapshot of the configuration of IAM permissions
 (users, groups, roles, and policies) in your account.
@@ -2190,7 +2190,7 @@ Each argument is described in detail in: L<Paws::IAM::GetAccountPasswordPolicy>
 
 Returns: a L<Paws::IAM::GetAccountPasswordPolicyResponse> instance
 
-  Retrieves the password policy for the AWS account. For more information
+Retrieves the password policy for the AWS account. For more information
 about using a password policy, go to Managing an IAM Password Policy.
 
 
@@ -2200,7 +2200,7 @@ Each argument is described in detail in: L<Paws::IAM::GetAccountSummary>
 
 Returns: a L<Paws::IAM::GetAccountSummaryResponse> instance
 
-  Retrieves information about IAM entity usage and IAM quotas in the AWS
+Retrieves information about IAM entity usage and IAM quotas in the AWS
 account.
 
 For information about limitations on IAM entities, see Limitations on
@@ -2213,7 +2213,7 @@ Each argument is described in detail in: L<Paws::IAM::GetContextKeysForCustomPol
 
 Returns: a L<Paws::IAM::GetContextKeysForPolicyResponse> instance
 
-  Gets a list of all of the context keys referenced in the input
+Gets a list of all of the context keys referenced in the input
 policies. The policies are supplied as a list of one or more strings.
 To get the context keys from policies associated with an IAM user,
 group, or role, use GetContextKeysForPrincipalPolicy.
@@ -2233,7 +2233,7 @@ Each argument is described in detail in: L<Paws::IAM::GetContextKeysForPrincipal
 
 Returns: a L<Paws::IAM::GetContextKeysForPolicyResponse> instance
 
-  Gets a list of all of the context keys referenced in all of the IAM
+Gets a list of all of the context keys referenced in all of the IAM
 policies attached to the specified IAM entity. The entity can be an IAM
 user, group, or role. If you specify a user, then the request also
 includes all of the policies attached to groups that the user is a
@@ -2261,7 +2261,7 @@ Each argument is described in detail in: L<Paws::IAM::GetCredentialReport>
 
 Returns: a L<Paws::IAM::GetCredentialReportResponse> instance
 
-  Retrieves a credential report for the AWS account. For more information
+Retrieves a credential report for the AWS account. For more information
 about the credential report, see Getting Credential Reports in the
 I<IAM User Guide>.
 
@@ -2272,7 +2272,7 @@ Each argument is described in detail in: L<Paws::IAM::GetGroup>
 
 Returns: a L<Paws::IAM::GetGroupResponse> instance
 
-  Returns a list of IAM users that are in the specified IAM group. You
+Returns a list of IAM users that are in the specified IAM group. You
 can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
@@ -2283,7 +2283,7 @@ Each argument is described in detail in: L<Paws::IAM::GetGroupPolicy>
 
 Returns: a L<Paws::IAM::GetGroupPolicyResponse> instance
 
-  Retrieves the specified inline policy document that is embedded in the
+Retrieves the specified inline policy document that is embedded in the
 specified IAM group.
 
 Policies returned by this API are URL-encoded compliant with RFC 3986.
@@ -2307,7 +2307,7 @@ Each argument is described in detail in: L<Paws::IAM::GetInstanceProfile>
 
 Returns: a L<Paws::IAM::GetInstanceProfileResponse> instance
 
-  Retrieves information about the specified instance profile, including
+Retrieves information about the specified instance profile, including
 the instance profile's path, GUID, ARN, and role. For more information
 about instance profiles, see About Instance Profiles in the I<IAM User
 Guide>.
@@ -2319,7 +2319,7 @@ Each argument is described in detail in: L<Paws::IAM::GetLoginProfile>
 
 Returns: a L<Paws::IAM::GetLoginProfileResponse> instance
 
-  Retrieves the user name and password-creation date for the specified
+Retrieves the user name and password-creation date for the specified
 IAM user. If the user has not been assigned a password, the action
 returns a 404 (C<NoSuchEntity>) error.
 
@@ -2330,7 +2330,7 @@ Each argument is described in detail in: L<Paws::IAM::GetOpenIDConnectProvider>
 
 Returns: a L<Paws::IAM::GetOpenIDConnectProviderResponse> instance
 
-  Returns information about the specified OpenID Connect (OIDC) provider
+Returns information about the specified OpenID Connect (OIDC) provider
 resource object in IAM.
 
 
@@ -2340,7 +2340,7 @@ Each argument is described in detail in: L<Paws::IAM::GetPolicy>
 
 Returns: a L<Paws::IAM::GetPolicyResponse> instance
 
-  Retrieves information about the specified managed policy, including the
+Retrieves information about the specified managed policy, including the
 policy's default version and the total number of IAM users, groups, and
 roles to which the policy is attached. To retrieve the list of the
 specific users, groups, and roles that the policy is attached to, use
@@ -2363,7 +2363,7 @@ Each argument is described in detail in: L<Paws::IAM::GetPolicyVersion>
 
 Returns: a L<Paws::IAM::GetPolicyVersionResponse> instance
 
-  Retrieves information about the specified version of the specified
+Retrieves information about the specified version of the specified
 managed policy, including the policy document.
 
 Policies returned by this API are URL-encoded compliant with RFC 3986.
@@ -2391,7 +2391,7 @@ Each argument is described in detail in: L<Paws::IAM::GetRole>
 
 Returns: a L<Paws::IAM::GetRoleResponse> instance
 
-  Retrieves information about the specified role, including the role's
+Retrieves information about the specified role, including the role's
 path, GUID, ARN, and the role's trust policy that grants permission to
 assume the role. For more information about roles, see Working with
 Roles.
@@ -2409,7 +2409,7 @@ Each argument is described in detail in: L<Paws::IAM::GetRolePolicy>
 
 Returns: a L<Paws::IAM::GetRolePolicyResponse> instance
 
-  Retrieves the specified inline policy document that is embedded with
+Retrieves the specified inline policy document that is embedded with
 the specified IAM role.
 
 Policies returned by this API are URL-encoded compliant with RFC 3986.
@@ -2436,7 +2436,7 @@ Each argument is described in detail in: L<Paws::IAM::GetSAMLProvider>
 
 Returns: a L<Paws::IAM::GetSAMLProviderResponse> instance
 
-  Returns the SAML provider metadocument that was uploaded when the IAM
+Returns the SAML provider metadocument that was uploaded when the IAM
 SAML provider resource object was created or updated.
 
 This operation requires Signature Version 4.
@@ -2448,7 +2448,7 @@ Each argument is described in detail in: L<Paws::IAM::GetServerCertificate>
 
 Returns: a L<Paws::IAM::GetServerCertificateResponse> instance
 
-  Retrieves information about the specified server certificate stored in
+Retrieves information about the specified server certificate stored in
 IAM.
 
 For more information about working with server certificates, including
@@ -2463,7 +2463,7 @@ Each argument is described in detail in: L<Paws::IAM::GetServiceLinkedRoleDeleti
 
 Returns: a L<Paws::IAM::GetServiceLinkedRoleDeletionStatusResponse> instance
 
-  Retrieves the status of your service-linked role deletion. After you
+Retrieves the status of your service-linked role deletion. After you
 use the DeleteServiceLinkedRole API operation to submit a
 service-linked role for deletion, you can use the C<DeletionTaskId>
 parameter in C<GetServiceLinkedRoleDeletionStatus> to check the status
@@ -2477,7 +2477,7 @@ Each argument is described in detail in: L<Paws::IAM::GetSSHPublicKey>
 
 Returns: a L<Paws::IAM::GetSSHPublicKeyResponse> instance
 
-  Retrieves the specified SSH public key, including metadata about the
+Retrieves the specified SSH public key, including metadata about the
 key.
 
 The SSH public key retrieved by this action is used only for
@@ -2493,7 +2493,7 @@ Each argument is described in detail in: L<Paws::IAM::GetUser>
 
 Returns: a L<Paws::IAM::GetUserResponse> instance
 
-  Retrieves information about the specified IAM user, including the
+Retrieves information about the specified IAM user, including the
 user's creation date, path, unique ID, and ARN.
 
 If you do not specify a user name, IAM determines the user name
@@ -2507,7 +2507,7 @@ Each argument is described in detail in: L<Paws::IAM::GetUserPolicy>
 
 Returns: a L<Paws::IAM::GetUserPolicyResponse> instance
 
-  Retrieves the specified inline policy document that is embedded in the
+Retrieves the specified inline policy document that is embedded in the
 specified IAM user.
 
 Policies returned by this API are URL-encoded compliant with RFC 3986.
@@ -2531,7 +2531,7 @@ Each argument is described in detail in: L<Paws::IAM::ListAccessKeys>
 
 Returns: a L<Paws::IAM::ListAccessKeysResponse> instance
 
-  Returns information about the access key IDs associated with the
+Returns information about the access key IDs associated with the
 specified IAM user. If there are none, the action returns an empty
 list.
 
@@ -2554,7 +2554,7 @@ Each argument is described in detail in: L<Paws::IAM::ListAccountAliases>
 
 Returns: a L<Paws::IAM::ListAccountAliasesResponse> instance
 
-  Lists the account alias associated with the AWS account (Note: you can
+Lists the account alias associated with the AWS account (Note: you can
 have only one). For information about using an AWS account alias, see
 Using an Alias for Your AWS Account ID in the I<IAM User Guide>.
 
@@ -2565,7 +2565,7 @@ Each argument is described in detail in: L<Paws::IAM::ListAttachedGroupPolicies>
 
 Returns: a L<Paws::IAM::ListAttachedGroupPoliciesResponse> instance
 
-  Lists all managed policies that are attached to the specified IAM
+Lists all managed policies that are attached to the specified IAM
 group.
 
 An IAM group can also have inline policies embedded with it. To list
@@ -2586,7 +2586,7 @@ Each argument is described in detail in: L<Paws::IAM::ListAttachedRolePolicies>
 
 Returns: a L<Paws::IAM::ListAttachedRolePoliciesResponse> instance
 
-  Lists all managed policies that are attached to the specified IAM role.
+Lists all managed policies that are attached to the specified IAM role.
 
 An IAM role can also have inline policies embedded with it. To list the
 inline policies for a role, use the ListRolePolicies API. For
@@ -2606,7 +2606,7 @@ Each argument is described in detail in: L<Paws::IAM::ListAttachedUserPolicies>
 
 Returns: a L<Paws::IAM::ListAttachedUserPoliciesResponse> instance
 
-  Lists all managed policies that are attached to the specified IAM user.
+Lists all managed policies that are attached to the specified IAM user.
 
 An IAM user can also have inline policies embedded with it. To list the
 inline policies for a user, use the ListUserPolicies API. For
@@ -2626,7 +2626,7 @@ Each argument is described in detail in: L<Paws::IAM::ListEntitiesForPolicy>
 
 Returns: a L<Paws::IAM::ListEntitiesForPolicyResponse> instance
 
-  Lists all IAM users, groups, and roles that the specified managed
+Lists all IAM users, groups, and roles that the specified managed
 policy is attached to.
 
 You can use the optional C<EntityFilter> parameter to limit the results
@@ -2644,7 +2644,7 @@ Each argument is described in detail in: L<Paws::IAM::ListGroupPolicies>
 
 Returns: a L<Paws::IAM::ListGroupPoliciesResponse> instance
 
-  Lists the names of the inline policies that are embedded in the
+Lists the names of the inline policies that are embedded in the
 specified IAM group.
 
 An IAM group can also have managed policies attached to it. To list the
@@ -2663,7 +2663,7 @@ Each argument is described in detail in: L<Paws::IAM::ListGroups>
 
 Returns: a L<Paws::IAM::ListGroupsResponse> instance
 
-  Lists the IAM groups that have the specified path prefix.
+Lists the IAM groups that have the specified path prefix.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
@@ -2675,7 +2675,7 @@ Each argument is described in detail in: L<Paws::IAM::ListGroupsForUser>
 
 Returns: a L<Paws::IAM::ListGroupsForUserResponse> instance
 
-  Lists the IAM groups that the specified IAM user belongs to.
+Lists the IAM groups that the specified IAM user belongs to.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
@@ -2687,7 +2687,7 @@ Each argument is described in detail in: L<Paws::IAM::ListInstanceProfiles>
 
 Returns: a L<Paws::IAM::ListInstanceProfilesResponse> instance
 
-  Lists the instance profiles that have the specified path prefix. If
+Lists the instance profiles that have the specified path prefix. If
 there are none, the action returns an empty list. For more information
 about instance profiles, go to About Instance Profiles.
 
@@ -2701,7 +2701,7 @@ Each argument is described in detail in: L<Paws::IAM::ListInstanceProfilesForRol
 
 Returns: a L<Paws::IAM::ListInstanceProfilesForRoleResponse> instance
 
-  Lists the instance profiles that have the specified associated IAM
+Lists the instance profiles that have the specified associated IAM
 role. If there are none, the action returns an empty list. For more
 information about instance profiles, go to About Instance Profiles.
 
@@ -2715,7 +2715,7 @@ Each argument is described in detail in: L<Paws::IAM::ListMFADevices>
 
 Returns: a L<Paws::IAM::ListMFADevicesResponse> instance
 
-  Lists the MFA devices for an IAM user. If the request includes a IAM
+Lists the MFA devices for an IAM user. If the request includes a IAM
 user name, then this action lists all the MFA devices associated with
 the specified user. If you do not specify a user name, IAM determines
 the user name implicitly based on the AWS access key ID signing the
@@ -2731,7 +2731,7 @@ Each argument is described in detail in: L<Paws::IAM::ListOpenIDConnectProviders
 
 Returns: a L<Paws::IAM::ListOpenIDConnectProvidersResponse> instance
 
-  Lists information about the IAM OpenID Connect (OIDC) provider resource
+Lists information about the IAM OpenID Connect (OIDC) provider resource
 objects defined in the AWS account.
 
 
@@ -2741,7 +2741,7 @@ Each argument is described in detail in: L<Paws::IAM::ListPolicies>
 
 Returns: a L<Paws::IAM::ListPoliciesResponse> instance
 
-  Lists all the managed policies that are available in your AWS account,
+Lists all the managed policies that are available in your AWS account,
 including your own customer-defined managed policies and all AWS
 managed policies.
 
@@ -2764,7 +2764,7 @@ Each argument is described in detail in: L<Paws::IAM::ListPolicyVersions>
 
 Returns: a L<Paws::IAM::ListPolicyVersionsResponse> instance
 
-  Lists information about the versions of the specified managed policy,
+Lists information about the versions of the specified managed policy,
 including the version that is currently set as the policy's default
 version.
 
@@ -2778,7 +2778,7 @@ Each argument is described in detail in: L<Paws::IAM::ListRolePolicies>
 
 Returns: a L<Paws::IAM::ListRolePoliciesResponse> instance
 
-  Lists the names of the inline policies that are embedded in the
+Lists the names of the inline policies that are embedded in the
 specified IAM role.
 
 An IAM role can also have managed policies attached to it. To list the
@@ -2797,7 +2797,7 @@ Each argument is described in detail in: L<Paws::IAM::ListRoles>
 
 Returns: a L<Paws::IAM::ListRolesResponse> instance
 
-  Lists the IAM roles that have the specified path prefix. If there are
+Lists the IAM roles that have the specified path prefix. If there are
 none, the action returns an empty list. For more information about
 roles, go to Working with Roles.
 
@@ -2811,7 +2811,7 @@ Each argument is described in detail in: L<Paws::IAM::ListSAMLProviders>
 
 Returns: a L<Paws::IAM::ListSAMLProvidersResponse> instance
 
-  Lists the SAML provider resource objects defined in IAM in the account.
+Lists the SAML provider resource objects defined in IAM in the account.
 
 This operation requires Signature Version 4.
 
@@ -2822,7 +2822,7 @@ Each argument is described in detail in: L<Paws::IAM::ListServerCertificates>
 
 Returns: a L<Paws::IAM::ListServerCertificatesResponse> instance
 
-  Lists the server certificates stored in IAM that have the specified
+Lists the server certificates stored in IAM that have the specified
 path prefix. If none exist, the action returns an empty list.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
@@ -2840,7 +2840,7 @@ Each argument is described in detail in: L<Paws::IAM::ListServiceSpecificCredent
 
 Returns: a L<Paws::IAM::ListServiceSpecificCredentialsResponse> instance
 
-  Returns information about the service-specific credentials associated
+Returns information about the service-specific credentials associated
 with the specified IAM user. If there are none, the action returns an
 empty list. The service-specific credentials returned by this action
 are used only for authenticating the IAM user to a specific service.
@@ -2855,7 +2855,7 @@ Each argument is described in detail in: L<Paws::IAM::ListSigningCertificates>
 
 Returns: a L<Paws::IAM::ListSigningCertificatesResponse> instance
 
-  Returns information about the signing certificates associated with the
+Returns information about the signing certificates associated with the
 specified IAM user. If there are none, the action returns an empty
 list.
 
@@ -2876,7 +2876,7 @@ Each argument is described in detail in: L<Paws::IAM::ListSSHPublicKeys>
 
 Returns: a L<Paws::IAM::ListSSHPublicKeysResponse> instance
 
-  Returns information about the SSH public keys associated with the
+Returns information about the SSH public keys associated with the
 specified IAM user. If there are none, the action returns an empty
 list.
 
@@ -2896,7 +2896,7 @@ Each argument is described in detail in: L<Paws::IAM::ListUserPolicies>
 
 Returns: a L<Paws::IAM::ListUserPoliciesResponse> instance
 
-  Lists the names of the inline policies embedded in the specified IAM
+Lists the names of the inline policies embedded in the specified IAM
 user.
 
 An IAM user can also have managed policies attached to it. To list the
@@ -2915,7 +2915,7 @@ Each argument is described in detail in: L<Paws::IAM::ListUsers>
 
 Returns: a L<Paws::IAM::ListUsersResponse> instance
 
-  Lists the IAM users that have the specified path prefix. If no path
+Lists the IAM users that have the specified path prefix. If no path
 prefix is specified, the action returns all users in the AWS account.
 If there are none, the action returns an empty list.
 
@@ -2929,7 +2929,7 @@ Each argument is described in detail in: L<Paws::IAM::ListVirtualMFADevices>
 
 Returns: a L<Paws::IAM::ListVirtualMFADevicesResponse> instance
 
-  Lists the virtual MFA devices defined in the AWS account by assignment
+Lists the virtual MFA devices defined in the AWS account by assignment
 status. If you do not specify an assignment status, the action returns
 a list of all virtual MFA devices. Assignment status can be
 C<Assigned>, C<Unassigned>, or C<Any>.
@@ -2944,7 +2944,7 @@ Each argument is described in detail in: L<Paws::IAM::PutGroupPolicy>
 
 Returns: nothing
 
-  Adds or updates an inline policy document that is embedded in the
+Adds or updates an inline policy document that is embedded in the
 specified IAM group.
 
 A user can also have managed policies attached to it. To attach a
@@ -2968,7 +2968,7 @@ Each argument is described in detail in: L<Paws::IAM::PutRolePolicy>
 
 Returns: nothing
 
-  Adds or updates an inline policy document that is embedded in the
+Adds or updates an inline policy document that is embedded in the
 specified IAM role.
 
 When you embed an inline policy in a role, the inline policy is used as
@@ -2999,7 +2999,7 @@ Each argument is described in detail in: L<Paws::IAM::PutUserPolicy>
 
 Returns: nothing
 
-  Adds or updates an inline policy document that is embedded in the
+Adds or updates an inline policy document that is embedded in the
 specified IAM user.
 
 An IAM user can also have a managed policy attached to it. To attach a
@@ -3023,7 +3023,7 @@ Each argument is described in detail in: L<Paws::IAM::RemoveClientIDFromOpenIDCo
 
 Returns: nothing
 
-  Removes the specified client ID (also known as audience) from the list
+Removes the specified client ID (also known as audience) from the list
 of client IDs registered for the specified IAM OpenID Connect (OIDC)
 provider resource object.
 
@@ -3037,7 +3037,7 @@ Each argument is described in detail in: L<Paws::IAM::RemoveRoleFromInstanceProf
 
 Returns: nothing
 
-  Removes the specified IAM role from the specified EC2 instance profile.
+Removes the specified IAM role from the specified EC2 instance profile.
 
 Make sure you do not have any Amazon EC2 instances running with the
 role you are about to remove from the instance profile. Removing a role
@@ -3055,7 +3055,7 @@ Each argument is described in detail in: L<Paws::IAM::RemoveUserFromGroup>
 
 Returns: nothing
 
-  Removes the specified user from the specified group.
+Removes the specified user from the specified group.
 
 
 =head2 ResetServiceSpecificCredential(ServiceSpecificCredentialId => Str, [UserName => Str])
@@ -3064,7 +3064,7 @@ Each argument is described in detail in: L<Paws::IAM::ResetServiceSpecificCreden
 
 Returns: a L<Paws::IAM::ResetServiceSpecificCredentialResponse> instance
 
-  Resets the password for a service-specific credential. The new password
+Resets the password for a service-specific credential. The new password
 is AWS generated and cryptographically strong. It cannot be configured
 by the user. Resetting the password immediately invalidates the
 previous password associated with this user.
@@ -3076,7 +3076,7 @@ Each argument is described in detail in: L<Paws::IAM::ResyncMFADevice>
 
 Returns: nothing
 
-  Synchronizes the specified MFA device with its IAM resource object on
+Synchronizes the specified MFA device with its IAM resource object on
 the AWS servers.
 
 For more information about creating and working with virtual MFA
@@ -3089,7 +3089,7 @@ Each argument is described in detail in: L<Paws::IAM::SetDefaultPolicyVersion>
 
 Returns: nothing
 
-  Sets the specified version of the specified policy as the policy's
+Sets the specified version of the specified policy as the policy's
 default (operative) version.
 
 This action affects all users, groups, and roles that the policy is
@@ -3106,7 +3106,7 @@ Each argument is described in detail in: L<Paws::IAM::SimulateCustomPolicy>
 
 Returns: a L<Paws::IAM::SimulatePolicyResponse> instance
 
-  Simulate how a set of IAM policies and optionally a resource-based
+Simulate how a set of IAM policies and optionally a resource-based
 policy works with a list of API actions and AWS resources to determine
 the policies' effective permissions. The policies are provided as
 strings.
@@ -3134,7 +3134,7 @@ Each argument is described in detail in: L<Paws::IAM::SimulatePrincipalPolicy>
 
 Returns: a L<Paws::IAM::SimulatePolicyResponse> instance
 
-  Simulate how a set of IAM policies attached to an IAM entity works with
+Simulate how a set of IAM policies attached to an IAM entity works with
 a list of API actions and AWS resources to determine the policies'
 effective permissions. The entity can be an IAM user, group, or role.
 If you specify a user, then the simulation also includes all of the
@@ -3173,7 +3173,7 @@ Each argument is described in detail in: L<Paws::IAM::UpdateAccessKey>
 
 Returns: nothing
 
-  Changes the status of the specified access key from Active to Inactive,
+Changes the status of the specified access key from Active to Inactive,
 or vice versa. This action can be used to disable a user's key as part
 of a key rotation work flow.
 
@@ -3193,7 +3193,7 @@ Each argument is described in detail in: L<Paws::IAM::UpdateAccountPasswordPolic
 
 Returns: nothing
 
-  Updates the password policy settings for the AWS account.
+Updates the password policy settings for the AWS account.
 
 This action does not support partial updates. No parameters are
 required, but if you do not specify a parameter, that parameter's value
@@ -3210,7 +3210,7 @@ Each argument is described in detail in: L<Paws::IAM::UpdateAssumeRolePolicy>
 
 Returns: nothing
 
-  Updates the policy that grants an IAM entity permission to assume a
+Updates the policy that grants an IAM entity permission to assume a
 role. This is typically referred to as the "role trust policy". For
 more information about roles, go to Using Roles to Delegate Permissions
 and Federate Identities.
@@ -3222,7 +3222,7 @@ Each argument is described in detail in: L<Paws::IAM::UpdateGroup>
 
 Returns: nothing
 
-  Updates the name and/or the path of the specified IAM group.
+Updates the name and/or the path of the specified IAM group.
 
 You should understand the implications of changing a group's path or
 name. For more information, see Renaming Users and Groups in the I<IAM
@@ -3242,7 +3242,7 @@ Each argument is described in detail in: L<Paws::IAM::UpdateLoginProfile>
 
 Returns: nothing
 
-  Changes the password for the specified IAM user.
+Changes the password for the specified IAM user.
 
 IAM users can change their own passwords by calling ChangePassword. For
 more information about modifying passwords, see Managing Passwords in
@@ -3255,7 +3255,7 @@ Each argument is described in detail in: L<Paws::IAM::UpdateOpenIDConnectProvide
 
 Returns: nothing
 
-  Replaces the existing list of server certificate thumbprints associated
+Replaces the existing list of server certificate thumbprints associated
 with an OpenID Connect (OIDC) provider resource object with a new list
 of thumbprints.
 
@@ -3281,7 +3281,7 @@ Each argument is described in detail in: L<Paws::IAM::UpdateRoleDescription>
 
 Returns: a L<Paws::IAM::UpdateRoleDescriptionResponse> instance
 
-  Modifies the description of a role.
+Modifies the description of a role.
 
 
 =head2 UpdateSAMLProvider(SAMLMetadataDocument => Str, SAMLProviderArn => Str)
@@ -3290,7 +3290,7 @@ Each argument is described in detail in: L<Paws::IAM::UpdateSAMLProvider>
 
 Returns: a L<Paws::IAM::UpdateSAMLProviderResponse> instance
 
-  Updates the metadata document for an existing SAML provider resource
+Updates the metadata document for an existing SAML provider resource
 object.
 
 This operation requires Signature Version 4.
@@ -3302,7 +3302,7 @@ Each argument is described in detail in: L<Paws::IAM::UpdateServerCertificate>
 
 Returns: nothing
 
-  Updates the name and/or the path of the specified server certificate
+Updates the name and/or the path of the specified server certificate
 stored in IAM.
 
 For more information about working with server certificates, including
@@ -3328,7 +3328,7 @@ Each argument is described in detail in: L<Paws::IAM::UpdateServiceSpecificCrede
 
 Returns: nothing
 
-  Sets the status of a service-specific credential to C<Active> or
+Sets the status of a service-specific credential to C<Active> or
 C<Inactive>. Service-specific credentials that are inactive cannot be
 used for authentication to the service. This action can be used to
 disable a userE<rsquo>s service-specific credential as part of a
@@ -3341,7 +3341,7 @@ Each argument is described in detail in: L<Paws::IAM::UpdateSigningCertificate>
 
 Returns: nothing
 
-  Changes the status of the specified user signing certificate from
+Changes the status of the specified user signing certificate from
 active to disabled, or vice versa. This action can be used to disable
 an IAM user's signing certificate as part of a certificate rotation
 work flow.
@@ -3359,7 +3359,7 @@ Each argument is described in detail in: L<Paws::IAM::UpdateSSHPublicKey>
 
 Returns: nothing
 
-  Sets the status of an IAM user's SSH public key to active or inactive.
+Sets the status of an IAM user's SSH public key to active or inactive.
 SSH public keys that are inactive cannot be used for authentication.
 This action can be used to disable a user's SSH public key as part of a
 key rotation work flow.
@@ -3377,7 +3377,7 @@ Each argument is described in detail in: L<Paws::IAM::UpdateUser>
 
 Returns: nothing
 
-  Updates the name and/or the path of the specified IAM user.
+Updates the name and/or the path of the specified IAM user.
 
 You should understand the implications of changing an IAM user's path
 or name. For more information, see Renaming an IAM User and Renaming an
@@ -3396,7 +3396,7 @@ Each argument is described in detail in: L<Paws::IAM::UploadServerCertificate>
 
 Returns: a L<Paws::IAM::UploadServerCertificateResponse> instance
 
-  Uploads a server certificate entity for the AWS account. The server
+Uploads a server certificate entity for the AWS account. The server
 certificate entity includes a public key certificate, a private key,
 and an optional certificate chain, which should all be PEM-encoded.
 
@@ -3430,7 +3430,7 @@ Each argument is described in detail in: L<Paws::IAM::UploadSigningCertificate>
 
 Returns: a L<Paws::IAM::UploadSigningCertificateResponse> instance
 
-  Uploads an X.509 signing certificate and associates it with the
+Uploads an X.509 signing certificate and associates it with the
 specified IAM user. Some AWS services use X.509 signing certificates to
 validate requests that are signed with a corresponding private key.
 When you upload the certificate, its default status is C<Active>.
@@ -3455,7 +3455,7 @@ Each argument is described in detail in: L<Paws::IAM::UploadSSHPublicKey>
 
 Returns: a L<Paws::IAM::UploadSSHPublicKeyResponse> instance
 
-  Uploads an SSH public key and associates it with the specified IAM
+Uploads an SSH public key and associates it with the specified IAM
 user.
 
 The SSH public key uploaded by this action can be used only for
@@ -3802,9 +3802,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -14,7 +14,7 @@ package Paws::ElastiCache::DeleteCacheSubnetGroup;
 
 =head1 NAME
 
-Paws::ElastiCache::DeleteCacheSubnetGroup - Arguments for method DeleteCacheSubnetGroup on Paws::ElastiCache
+Paws::ElastiCache::DeleteCacheSubnetGroup - Arguments for method DeleteCacheSubnetGroup on L<Paws::ElastiCache>
 
 =head1 DESCRIPTION
 
@@ -49,9 +49,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteCacheSu
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

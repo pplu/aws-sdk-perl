@@ -17,7 +17,7 @@ package Paws::EC2::CreateReservedInstancesListing;
 
 =head1 NAME
 
-Paws::EC2::CreateReservedInstancesListing - Arguments for method CreateReservedInstancesListing on Paws::EC2
+Paws::EC2::CreateReservedInstancesListing - Arguments for method CreateReservedInstancesListing on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -73,9 +73,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateReserve
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -15,7 +15,7 @@ package Paws::ApiGateway::DeleteApiKey;
 
 =head1 NAME
 
-Paws::ApiGateway::DeleteApiKey - Arguments for method DeleteApiKey on Paws::ApiGateway
+Paws::ApiGateway::DeleteApiKey - Arguments for method DeleteApiKey on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -47,9 +47,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteApiKey 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

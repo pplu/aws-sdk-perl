@@ -14,7 +14,7 @@ package Paws::CloudTrail::GetEventSelectors;
 
 =head1 NAME
 
-Paws::CloudTrail::GetEventSelectors - Arguments for method GetEventSelectors on Paws::CloudTrail
+Paws::CloudTrail::GetEventSelectors - Arguments for method GetEventSelectors on L<Paws::CloudTrail>
 
 =head1 DESCRIPTION
 
@@ -77,9 +77,9 @@ This class forms part of L<Paws>, documenting arguments for method GetEventSelec
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

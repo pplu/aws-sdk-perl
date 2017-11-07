@@ -17,7 +17,7 @@ package Paws::ServiceCatalog::ListResourcesForTagOption;
 
 =head1 NAME
 
-Paws::ServiceCatalog::ListResourcesForTagOption - Arguments for method ListResourcesForTagOption on Paws::ServiceCatalog
+Paws::ServiceCatalog::ListResourcesForTagOption - Arguments for method ListResourcesForTagOption on L<Paws::ServiceCatalog>
 
 =head1 DESCRIPTION
 
@@ -70,9 +70,9 @@ This class forms part of L<Paws>, documenting arguments for method ListResources
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

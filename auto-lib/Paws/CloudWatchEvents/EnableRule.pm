@@ -14,7 +14,7 @@ package Paws::CloudWatchEvents::EnableRule;
 
 =head1 NAME
 
-Paws::CloudWatchEvents::EnableRule - Arguments for method EnableRule on Paws::CloudWatchEvents
+Paws::CloudWatchEvents::EnableRule - Arguments for method EnableRule on L<Paws::CloudWatchEvents>
 
 =head1 DESCRIPTION
 
@@ -46,9 +46,9 @@ This class forms part of L<Paws>, documenting arguments for method EnableRule in
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -18,7 +18,7 @@ package Paws::Pricing::GetProducts;
 
 =head1 NAME
 
-Paws::Pricing::GetProducts - Arguments for method GetProducts on Paws::Pricing
+Paws::Pricing::GetProducts - Arguments for method GetProducts on L<Paws::Pricing>
 
 =head1 DESCRIPTION
 
@@ -78,9 +78,9 @@ This class forms part of L<Paws>, documenting arguments for method GetProducts i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

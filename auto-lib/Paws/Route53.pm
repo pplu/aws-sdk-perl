@@ -428,7 +428,7 @@ Each argument is described in detail in: L<Paws::Route53::AssociateVPCWithHosted
 
 Returns: a L<Paws::Route53::AssociateVPCWithHostedZoneResponse> instance
 
-  Associates an Amazon VPC with a private hosted zone.
+Associates an Amazon VPC with a private hosted zone.
 
 To perform the association, the VPC and the private hosted zone must
 already exist. You can't convert a public hosted zone into a private
@@ -448,7 +448,7 @@ Each argument is described in detail in: L<Paws::Route53::ChangeResourceRecordSe
 
 Returns: a L<Paws::Route53::ChangeResourceRecordSetsResponse> instance
 
-  Creates, changes, or deletes a resource record set, which contains
+Creates, changes, or deletes a resource record set, which contains
 authoritative DNS information for a specified domain name or subdomain
 name. For example, you can use C<ChangeResourceRecordSets> to create a
 resource record set that routes traffic for test.example.com to a web
@@ -549,7 +549,7 @@ Each argument is described in detail in: L<Paws::Route53::ChangeTagsForResource>
 
 Returns: a L<Paws::Route53::ChangeTagsForResourceResponse> instance
 
-  Adds, edits, or deletes tags for a health check or a hosted zone.
+Adds, edits, or deletes tags for a health check or a hosted zone.
 
 For information about using tags for cost allocation, see Using Cost
 Allocation Tags in the I<AWS Billing and Cost Management User Guide>.
@@ -561,7 +561,7 @@ Each argument is described in detail in: L<Paws::Route53::CreateHealthCheck>
 
 Returns: a L<Paws::Route53::CreateHealthCheckResponse> instance
 
-  Creates a new health check.
+Creates a new health check.
 
 For information about adding health checks to resource record sets, see
 ResourceRecordSet$HealthCheckId in ChangeResourceRecordSets.
@@ -613,7 +613,7 @@ Each argument is described in detail in: L<Paws::Route53::CreateHostedZone>
 
 Returns: a L<Paws::Route53::CreateHostedZoneResponse> instance
 
-  Creates a new public hosted zone, which you use to specify how the
+Creates a new public hosted zone, which you use to specify how the
 Domain Name System (DNS) routes traffic on the Internet for a domain,
 such as example.com, and its subdomains.
 
@@ -665,7 +665,7 @@ Each argument is described in detail in: L<Paws::Route53::CreateQueryLoggingConf
 
 Returns: a L<Paws::Route53::CreateQueryLoggingConfigResponse> instance
 
-  Creates a configuration for DNS query logging. After you create a query
+Creates a configuration for DNS query logging. After you create a query
 logging configuration, Amazon Route 53 begins to publish log data to an
 Amazon CloudWatch Logs log group.
 
@@ -828,7 +828,7 @@ Each argument is described in detail in: L<Paws::Route53::CreateReusableDelegati
 
 Returns: a L<Paws::Route53::CreateReusableDelegationSetResponse> instance
 
-  Creates a delegation set (a group of four name servers) that can be
+Creates a delegation set (a group of four name servers) that can be
 reused by multiple hosted zones. If a hosted zoned ID is specified,
 C<CreateReusableDelegationSet> marks the delegation set associated with
 that zone as reusable
@@ -846,7 +846,7 @@ Each argument is described in detail in: L<Paws::Route53::CreateTrafficPolicy>
 
 Returns: a L<Paws::Route53::CreateTrafficPolicyResponse> instance
 
-  Creates a traffic policy, which you use to create multiple DNS resource
+Creates a traffic policy, which you use to create multiple DNS resource
 record sets for one domain name (such as example.com) or one subdomain
 name (such as www.example.com).
 
@@ -857,7 +857,7 @@ Each argument is described in detail in: L<Paws::Route53::CreateTrafficPolicyIns
 
 Returns: a L<Paws::Route53::CreateTrafficPolicyInstanceResponse> instance
 
-  Creates resource record sets in a specified hosted zone based on the
+Creates resource record sets in a specified hosted zone based on the
 settings in a specified traffic policy version. In addition,
 C<CreateTrafficPolicyInstance> associates the resource record sets with
 a specified domain name (such as example.com) or subdomain name (such
@@ -872,7 +872,7 @@ Each argument is described in detail in: L<Paws::Route53::CreateTrafficPolicyVer
 
 Returns: a L<Paws::Route53::CreateTrafficPolicyVersionResponse> instance
 
-  Creates a new version of an existing traffic policy. When you create a
+Creates a new version of an existing traffic policy. When you create a
 new version of a traffic policy, you specify the ID of the traffic
 policy that you want to update and a JSON-formatted document that
 describes the new version. You use traffic policies to create multiple
@@ -888,7 +888,7 @@ Each argument is described in detail in: L<Paws::Route53::CreateVPCAssociationAu
 
 Returns: a L<Paws::Route53::CreateVPCAssociationAuthorizationResponse> instance
 
-  Authorizes the AWS account that created a specified VPC to submit an
+Authorizes the AWS account that created a specified VPC to submit an
 C<AssociateVPCWithHostedZone> request to associate the VPC with a
 specified hosted zone that was created by a different account. To
 submit a C<CreateVPCAssociationAuthorization> request, you must use the
@@ -907,7 +907,7 @@ Each argument is described in detail in: L<Paws::Route53::DeleteHealthCheck>
 
 Returns: a L<Paws::Route53::DeleteHealthCheckResponse> instance
 
-  Deletes a health check.
+Deletes a health check.
 
 Amazon Route 53 does not prevent you from deleting a health check even
 if the health check is associated with one or more resource record
@@ -925,7 +925,7 @@ Each argument is described in detail in: L<Paws::Route53::DeleteHostedZone>
 
 Returns: a L<Paws::Route53::DeleteHostedZoneResponse> instance
 
-  Deletes a hosted zone.
+Deletes a hosted zone.
 
 If the name servers for the hosted zone are associated with a domain
 and if you want to make the domain unavailable on the Internet, we
@@ -975,7 +975,7 @@ Each argument is described in detail in: L<Paws::Route53::DeleteQueryLoggingConf
 
 Returns: a L<Paws::Route53::DeleteQueryLoggingConfigResponse> instance
 
-  Deletes a configuration for DNS query logging. If you delete a
+Deletes a configuration for DNS query logging. If you delete a
 configuration, Amazon Route 53 stops sending query logs to CloudWatch
 Logs. Amazon Route 53 doesn't delete any logs that are already in
 CloudWatch Logs.
@@ -990,7 +990,7 @@ Each argument is described in detail in: L<Paws::Route53::DeleteReusableDelegati
 
 Returns: a L<Paws::Route53::DeleteReusableDelegationSetResponse> instance
 
-  Deletes a reusable delegation set.
+Deletes a reusable delegation set.
 
 You can delete a reusable delegation set only if it isn't associated
 with any hosted zones.
@@ -1006,7 +1006,7 @@ Each argument is described in detail in: L<Paws::Route53::DeleteTrafficPolicy>
 
 Returns: a L<Paws::Route53::DeleteTrafficPolicyResponse> instance
 
-  Deletes a traffic policy.
+Deletes a traffic policy.
 
 
 =head2 DeleteTrafficPolicyInstance(Id => Str)
@@ -1015,7 +1015,7 @@ Each argument is described in detail in: L<Paws::Route53::DeleteTrafficPolicyIns
 
 Returns: a L<Paws::Route53::DeleteTrafficPolicyInstanceResponse> instance
 
-  Deletes a traffic policy instance and all of the resource record sets
+Deletes a traffic policy instance and all of the resource record sets
 that Amazon Route 53 created when you created the instance.
 
 In the Amazon Route 53 console, traffic policy instances are known as
@@ -1028,7 +1028,7 @@ Each argument is described in detail in: L<Paws::Route53::DeleteVPCAssociationAu
 
 Returns: a L<Paws::Route53::DeleteVPCAssociationAuthorizationResponse> instance
 
-  Removes authorization to submit an C<AssociateVPCWithHostedZone>
+Removes authorization to submit an C<AssociateVPCWithHostedZone>
 request to associate a specified VPC with a hosted zone that was
 created by a different account. You must use the account that created
 the hosted zone to submit a C<DeleteVPCAssociationAuthorization>
@@ -1048,7 +1048,7 @@ Each argument is described in detail in: L<Paws::Route53::DisassociateVPCFromHos
 
 Returns: a L<Paws::Route53::DisassociateVPCFromHostedZoneResponse> instance
 
-  Disassociates a VPC from a Amazon Route 53 private hosted zone.
+Disassociates a VPC from a Amazon Route 53 private hosted zone.
 
 You can't disassociate the last VPC from a private hosted zone.
 
@@ -1063,7 +1063,7 @@ Each argument is described in detail in: L<Paws::Route53::GetChange>
 
 Returns: a L<Paws::Route53::GetChangeResponse> instance
 
-  Returns the current status of a change batch request. The status is one
+Returns the current status of a change batch request. The status is one
 of the following values:
 
 =over
@@ -1089,7 +1089,7 @@ Each argument is described in detail in: L<Paws::Route53::GetCheckerIpRanges>
 
 Returns: a L<Paws::Route53::GetCheckerIpRangesResponse> instance
 
-  C<GetCheckerIpRanges> still works, but we recommend that you download
+C<GetCheckerIpRanges> still works, but we recommend that you download
 ip-ranges.json, which includes IP address ranges for all AWS services.
 For more information, see IP Address Ranges of Amazon Route 53 Servers
 in the I<Amazon Route 53 Developer Guide>.
@@ -1101,7 +1101,7 @@ Each argument is described in detail in: L<Paws::Route53::GetGeoLocation>
 
 Returns: a L<Paws::Route53::GetGeoLocationResponse> instance
 
-  Gets information about whether a specified geographic location is
+Gets information about whether a specified geographic location is
 supported for Amazon Route 53 geolocation resource record sets.
 
 Use the following syntax to determine whether a continent is supported
@@ -1129,7 +1129,7 @@ Each argument is described in detail in: L<Paws::Route53::GetHealthCheck>
 
 Returns: a L<Paws::Route53::GetHealthCheckResponse> instance
 
-  Gets information about a specified health check.
+Gets information about a specified health check.
 
 
 =head2 GetHealthCheckCount()
@@ -1138,7 +1138,7 @@ Each argument is described in detail in: L<Paws::Route53::GetHealthCheckCount>
 
 Returns: a L<Paws::Route53::GetHealthCheckCountResponse> instance
 
-  Retrieves the number of health checks that are associated with the
+Retrieves the number of health checks that are associated with the
 current AWS account.
 
 
@@ -1148,7 +1148,7 @@ Each argument is described in detail in: L<Paws::Route53::GetHealthCheckLastFail
 
 Returns: a L<Paws::Route53::GetHealthCheckLastFailureReasonResponse> instance
 
-  Gets the reason that a specified health check failed most recently.
+Gets the reason that a specified health check failed most recently.
 
 
 =head2 GetHealthCheckStatus(HealthCheckId => Str)
@@ -1157,7 +1157,7 @@ Each argument is described in detail in: L<Paws::Route53::GetHealthCheckStatus>
 
 Returns: a L<Paws::Route53::GetHealthCheckStatusResponse> instance
 
-  Gets status of a specified health check.
+Gets status of a specified health check.
 
 
 =head2 GetHostedZone(Id => Str)
@@ -1166,7 +1166,7 @@ Each argument is described in detail in: L<Paws::Route53::GetHostedZone>
 
 Returns: a L<Paws::Route53::GetHostedZoneResponse> instance
 
-  Gets information about a specified hosted zone including the four name
+Gets information about a specified hosted zone including the four name
 servers assigned to the hosted zone.
 
 
@@ -1176,7 +1176,7 @@ Each argument is described in detail in: L<Paws::Route53::GetHostedZoneCount>
 
 Returns: a L<Paws::Route53::GetHostedZoneCountResponse> instance
 
-  Retrieves the number of hosted zones that are associated with the
+Retrieves the number of hosted zones that are associated with the
 current AWS account.
 
 
@@ -1186,7 +1186,7 @@ Each argument is described in detail in: L<Paws::Route53::GetQueryLoggingConfig>
 
 Returns: a L<Paws::Route53::GetQueryLoggingConfigResponse> instance
 
-  Gets information about a specified configuration for DNS query logging.
+Gets information about a specified configuration for DNS query logging.
 
 For more information about DNS query logs, see CreateQueryLoggingConfig
 and Logging DNS Queries.
@@ -1198,7 +1198,7 @@ Each argument is described in detail in: L<Paws::Route53::GetReusableDelegationS
 
 Returns: a L<Paws::Route53::GetReusableDelegationSetResponse> instance
 
-  Retrieves information about a specified reusable delegation set,
+Retrieves information about a specified reusable delegation set,
 including the four name servers that are assigned to the delegation
 set.
 
@@ -1209,7 +1209,7 @@ Each argument is described in detail in: L<Paws::Route53::GetTrafficPolicy>
 
 Returns: a L<Paws::Route53::GetTrafficPolicyResponse> instance
 
-  Gets information about a specific traffic policy version.
+Gets information about a specific traffic policy version.
 
 
 =head2 GetTrafficPolicyInstance(Id => Str)
@@ -1218,7 +1218,7 @@ Each argument is described in detail in: L<Paws::Route53::GetTrafficPolicyInstan
 
 Returns: a L<Paws::Route53::GetTrafficPolicyInstanceResponse> instance
 
-  Gets information about a specified traffic policy instance.
+Gets information about a specified traffic policy instance.
 
 After you submit a C<CreateTrafficPolicyInstance> or an
 C<UpdateTrafficPolicyInstance> request, there's a brief delay while
@@ -1236,7 +1236,7 @@ Each argument is described in detail in: L<Paws::Route53::GetTrafficPolicyInstan
 
 Returns: a L<Paws::Route53::GetTrafficPolicyInstanceCountResponse> instance
 
-  Gets the number of traffic policy instances that are associated with
+Gets the number of traffic policy instances that are associated with
 the current AWS account.
 
 
@@ -1246,7 +1246,7 @@ Each argument is described in detail in: L<Paws::Route53::ListGeoLocations>
 
 Returns: a L<Paws::Route53::ListGeoLocationsResponse> instance
 
-  Retrieves a list of supported geo locations.
+Retrieves a list of supported geo locations.
 
 Countries are listed first, and continents are listed last. If Amazon
 Route 53 supports subdivisions for a country (for example, states or
@@ -1260,7 +1260,7 @@ Each argument is described in detail in: L<Paws::Route53::ListHealthChecks>
 
 Returns: a L<Paws::Route53::ListHealthChecksResponse> instance
 
-  Retrieve a list of the health checks that are associated with the
+Retrieve a list of the health checks that are associated with the
 current AWS account.
 
 
@@ -1270,7 +1270,7 @@ Each argument is described in detail in: L<Paws::Route53::ListHostedZones>
 
 Returns: a L<Paws::Route53::ListHostedZonesResponse> instance
 
-  Retrieves a list of the public and private hosted zones that are
+Retrieves a list of the public and private hosted zones that are
 associated with the current AWS account. The response includes a
 C<HostedZones> child element for each hosted zone.
 
@@ -1285,7 +1285,7 @@ Each argument is described in detail in: L<Paws::Route53::ListHostedZonesByName>
 
 Returns: a L<Paws::Route53::ListHostedZonesByNameResponse> instance
 
-  Retrieves a list of your hosted zones in lexicographic order. The
+Retrieves a list of your hosted zones in lexicographic order. The
 response includes a C<HostedZones> child element for each hosted zone
 created by the current AWS account.
 
@@ -1358,7 +1358,7 @@ Each argument is described in detail in: L<Paws::Route53::ListQueryLoggingConfig
 
 Returns: a L<Paws::Route53::ListQueryLoggingConfigsResponse> instance
 
-  Lists the configurations for DNS query logging that are associated with
+Lists the configurations for DNS query logging that are associated with
 the current AWS account or the configuration that is associated with a
 specified hosted zone.
 
@@ -1374,7 +1374,7 @@ Each argument is described in detail in: L<Paws::Route53::ListResourceRecordSets
 
 Returns: a L<Paws::Route53::ListResourceRecordSetsResponse> instance
 
-  Lists the resource record sets in a specified hosted zone.
+Lists the resource record sets in a specified hosted zone.
 
 C<ListResourceRecordSets> returns up to 100 resource record sets at a
 time in ASCII order, beginning at a position specified by the C<name>
@@ -1434,7 +1434,7 @@ Each argument is described in detail in: L<Paws::Route53::ListReusableDelegation
 
 Returns: a L<Paws::Route53::ListReusableDelegationSetsResponse> instance
 
-  Retrieves a list of the reusable delegation sets that are associated
+Retrieves a list of the reusable delegation sets that are associated
 with the current AWS account.
 
 
@@ -1444,7 +1444,7 @@ Each argument is described in detail in: L<Paws::Route53::ListTagsForResource>
 
 Returns: a L<Paws::Route53::ListTagsForResourceResponse> instance
 
-  Lists tags for one health check or hosted zone.
+Lists tags for one health check or hosted zone.
 
 For information about using tags for cost allocation, see Using Cost
 Allocation Tags in the I<AWS Billing and Cost Management User Guide>.
@@ -1456,7 +1456,7 @@ Each argument is described in detail in: L<Paws::Route53::ListTagsForResources>
 
 Returns: a L<Paws::Route53::ListTagsForResourcesResponse> instance
 
-  Lists tags for up to 10 health checks or hosted zones.
+Lists tags for up to 10 health checks or hosted zones.
 
 For information about using tags for cost allocation, see Using Cost
 Allocation Tags in the I<AWS Billing and Cost Management User Guide>.
@@ -1468,7 +1468,7 @@ Each argument is described in detail in: L<Paws::Route53::ListTrafficPolicies>
 
 Returns: a L<Paws::Route53::ListTrafficPoliciesResponse> instance
 
-  Gets information about the latest version for every traffic policy that
+Gets information about the latest version for every traffic policy that
 is associated with the current AWS account. Policies are listed in the
 order in which they were created.
 
@@ -1479,7 +1479,7 @@ Each argument is described in detail in: L<Paws::Route53::ListTrafficPolicyInsta
 
 Returns: a L<Paws::Route53::ListTrafficPolicyInstancesResponse> instance
 
-  Gets information about the traffic policy instances that you created by
+Gets information about the traffic policy instances that you created by
 using the current AWS account.
 
 After you submit an C<UpdateTrafficPolicyInstance> request, there's a
@@ -1498,7 +1498,7 @@ Each argument is described in detail in: L<Paws::Route53::ListTrafficPolicyInsta
 
 Returns: a L<Paws::Route53::ListTrafficPolicyInstancesByHostedZoneResponse> instance
 
-  Gets information about the traffic policy instances that you created in
+Gets information about the traffic policy instances that you created in
 a specified hosted zone.
 
 After you submit a C<CreateTrafficPolicyInstance> or an
@@ -1518,7 +1518,7 @@ Each argument is described in detail in: L<Paws::Route53::ListTrafficPolicyInsta
 
 Returns: a L<Paws::Route53::ListTrafficPolicyInstancesByPolicyResponse> instance
 
-  Gets information about the traffic policy instances that you created by
+Gets information about the traffic policy instances that you created by
 using a specify traffic policy version.
 
 After you submit a C<CreateTrafficPolicyInstance> or an
@@ -1538,7 +1538,7 @@ Each argument is described in detail in: L<Paws::Route53::ListTrafficPolicyVersi
 
 Returns: a L<Paws::Route53::ListTrafficPolicyVersionsResponse> instance
 
-  Gets information about all of the versions for a specified traffic
+Gets information about all of the versions for a specified traffic
 policy.
 
 Traffic policy versions are listed in numerical order by
@@ -1551,7 +1551,7 @@ Each argument is described in detail in: L<Paws::Route53::ListVPCAssociationAuth
 
 Returns: a L<Paws::Route53::ListVPCAssociationAuthorizationsResponse> instance
 
-  Gets a list of the VPCs that were created by other accounts and that
+Gets a list of the VPCs that were created by other accounts and that
 can be associated with a specified hosted zone because you've submitted
 one or more C<CreateVPCAssociationAuthorization> requests.
 
@@ -1565,7 +1565,7 @@ Each argument is described in detail in: L<Paws::Route53::TestDNSAnswer>
 
 Returns: a L<Paws::Route53::TestDNSAnswerResponse> instance
 
-  Gets the value that Amazon Route 53 returns in response to a DNS
+Gets the value that Amazon Route 53 returns in response to a DNS
 request for a specified record name and type. You can optionally
 specify the IP address of a DNS resolver, an EDNS0 client subnet IP
 address, and a subnet mask.
@@ -1577,7 +1577,7 @@ Each argument is described in detail in: L<Paws::Route53::UpdateHealthCheck>
 
 Returns: a L<Paws::Route53::UpdateHealthCheckResponse> instance
 
-  Updates an existing health check. Note that some values can't be
+Updates an existing health check. Note that some values can't be
 updated.
 
 For more information about updating health checks, see Creating,
@@ -1591,7 +1591,7 @@ Each argument is described in detail in: L<Paws::Route53::UpdateHostedZoneCommen
 
 Returns: a L<Paws::Route53::UpdateHostedZoneCommentResponse> instance
 
-  Updates the comment for a specified hosted zone.
+Updates the comment for a specified hosted zone.
 
 
 =head2 UpdateTrafficPolicyComment(Comment => Str, Id => Str, Version => Int)
@@ -1600,7 +1600,7 @@ Each argument is described in detail in: L<Paws::Route53::UpdateTrafficPolicyCom
 
 Returns: a L<Paws::Route53::UpdateTrafficPolicyCommentResponse> instance
 
-  Updates the comment for a specified traffic policy version.
+Updates the comment for a specified traffic policy version.
 
 
 =head2 UpdateTrafficPolicyInstance(Id => Str, TrafficPolicyId => Str, TrafficPolicyVersion => Int, TTL => Int)
@@ -1609,7 +1609,7 @@ Each argument is described in detail in: L<Paws::Route53::UpdateTrafficPolicyIns
 
 Returns: a L<Paws::Route53::UpdateTrafficPolicyInstanceResponse> instance
 
-  Updates the resource record sets in a specified hosted zone that were
+Updates the resource record sets in a specified hosted zone that were
 created based on the settings in a specified traffic policy version.
 
 When you update a traffic policy instance, Amazon Route 53 continues to
@@ -1692,9 +1692,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

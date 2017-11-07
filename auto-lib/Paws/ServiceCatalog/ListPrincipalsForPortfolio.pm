@@ -17,7 +17,7 @@ package Paws::ServiceCatalog::ListPrincipalsForPortfolio;
 
 =head1 NAME
 
-Paws::ServiceCatalog::ListPrincipalsForPortfolio - Arguments for method ListPrincipalsForPortfolio on Paws::ServiceCatalog
+Paws::ServiceCatalog::ListPrincipalsForPortfolio - Arguments for method ListPrincipalsForPortfolio on L<Paws::ServiceCatalog>
 
 =head1 DESCRIPTION
 
@@ -87,9 +87,9 @@ This class forms part of L<Paws>, documenting arguments for method ListPrincipal
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

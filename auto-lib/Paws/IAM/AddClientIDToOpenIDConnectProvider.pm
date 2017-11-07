@@ -15,7 +15,7 @@ package Paws::IAM::AddClientIDToOpenIDConnectProvider;
 
 =head1 NAME
 
-Paws::IAM::AddClientIDToOpenIDConnectProvider - Arguments for method AddClientIDToOpenIDConnectProvider on Paws::IAM
+Paws::IAM::AddClientIDToOpenIDConnectProvider - Arguments for method AddClientIDToOpenIDConnectProvider on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -56,9 +56,9 @@ This class forms part of L<Paws>, documenting arguments for method AddClientIDTo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

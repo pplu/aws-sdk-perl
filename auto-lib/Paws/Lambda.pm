@@ -247,7 +247,7 @@ Each argument is described in detail in: L<Paws::Lambda::AddPermission>
 
 Returns: a L<Paws::Lambda::AddPermissionResponse> instance
 
-  Adds a permission to the resource policy associated with the specified
+Adds a permission to the resource policy associated with the specified
 AWS Lambda function. You use resource policies to grant permissions to
 event sources that use I<push> model. In a I<push> model, event sources
 (such as Amazon S3 and custom applications) invoke your Lambda
@@ -272,7 +272,7 @@ Each argument is described in detail in: L<Paws::Lambda::CreateAlias>
 
 Returns: a L<Paws::Lambda::AliasConfiguration> instance
 
-  Creates an alias that points to the specified Lambda function version.
+Creates an alias that points to the specified Lambda function version.
 For more information, see Introduction to AWS Lambda Aliases.
 
 Alias names are unique for a given function. This requires permission
@@ -285,7 +285,7 @@ Each argument is described in detail in: L<Paws::Lambda::CreateEventSourceMappin
 
 Returns: a L<Paws::Lambda::EventSourceMappingConfiguration> instance
 
-  Identifies a stream as an event source for a Lambda function. It can be
+Identifies a stream as an event source for a Lambda function. It can be
 either an Amazon Kinesis stream or an Amazon DynamoDB stream. AWS
 Lambda invokes the specified function when records are posted to the
 stream.
@@ -319,7 +319,7 @@ Each argument is described in detail in: L<Paws::Lambda::CreateFunction>
 
 Returns: a L<Paws::Lambda::FunctionConfiguration> instance
 
-  Creates a new Lambda function. The function metadata is created from
+Creates a new Lambda function. The function metadata is created from
 the request parameters, and the code for the function is provided by a
 .zip file in the request body. If the function name already exists, the
 operation will fail. Note that the function name is case-sensitive.
@@ -339,7 +339,7 @@ Each argument is described in detail in: L<Paws::Lambda::DeleteAlias>
 
 Returns: nothing
 
-  Deletes the specified Lambda function alias. For more information, see
+Deletes the specified Lambda function alias. For more information, see
 Introduction to AWS Lambda Aliases.
 
 This requires permission for the lambda:DeleteAlias action.
@@ -351,7 +351,7 @@ Each argument is described in detail in: L<Paws::Lambda::DeleteEventSourceMappin
 
 Returns: a L<Paws::Lambda::EventSourceMappingConfiguration> instance
 
-  Removes an event source mapping. This means AWS Lambda will no longer
+Removes an event source mapping. This means AWS Lambda will no longer
 invoke the function for events in the associated source.
 
 This operation requires permission for the
@@ -364,7 +364,7 @@ Each argument is described in detail in: L<Paws::Lambda::DeleteFunction>
 
 Returns: nothing
 
-  Deletes the specified Lambda function code and configuration.
+Deletes the specified Lambda function code and configuration.
 
 If you are using the versioning feature and you don't specify a
 function version in your C<DeleteFunction> request, AWS Lambda will
@@ -387,7 +387,7 @@ Each argument is described in detail in: L<Paws::Lambda::GetAccountSettings>
 
 Returns: a L<Paws::Lambda::GetAccountSettingsResponse> instance
 
-  Returns a customer's account settings.
+Returns a customer's account settings.
 
 You can use this operation to retrieve Lambda limits information, such
 as code size and concurrency limits. For more information about limits,
@@ -401,7 +401,7 @@ Each argument is described in detail in: L<Paws::Lambda::GetAlias>
 
 Returns: a L<Paws::Lambda::AliasConfiguration> instance
 
-  Returns the specified alias information such as the alias ARN,
+Returns the specified alias information such as the alias ARN,
 description, and function version it is pointing to. For more
 information, see Introduction to AWS Lambda Aliases.
 
@@ -414,7 +414,7 @@ Each argument is described in detail in: L<Paws::Lambda::GetEventSourceMapping>
 
 Returns: a L<Paws::Lambda::EventSourceMappingConfiguration> instance
 
-  Returns configuration information for the specified event source
+Returns configuration information for the specified event source
 mapping (see CreateEventSourceMapping).
 
 This operation requires permission for the
@@ -427,7 +427,7 @@ Each argument is described in detail in: L<Paws::Lambda::GetFunction>
 
 Returns: a L<Paws::Lambda::GetFunctionResponse> instance
 
-  Returns the configuration information of the Lambda function and a
+Returns the configuration information of the Lambda function and a
 presigned URL link to the .zip file you uploaded with CreateFunction so
 you can download the .zip file. Note that the URL is valid for up to 10
 minutes. The configuration information is the same information you
@@ -449,7 +449,7 @@ Each argument is described in detail in: L<Paws::Lambda::GetFunctionConfiguratio
 
 Returns: a L<Paws::Lambda::FunctionConfiguration> instance
 
-  Returns the configuration information of the Lambda function. This the
+Returns the configuration information of the Lambda function. This the
 same information you provided as parameters when uploading the function
 by using CreateFunction.
 
@@ -470,7 +470,7 @@ Each argument is described in detail in: L<Paws::Lambda::GetPolicy>
 
 Returns: a L<Paws::Lambda::GetPolicyResponse> instance
 
-  Returns the resource policy associated with the specified Lambda
+Returns the resource policy associated with the specified Lambda
 function.
 
 If you are using the versioning feature, you can get the resource
@@ -488,7 +488,7 @@ Each argument is described in detail in: L<Paws::Lambda::Invoke>
 
 Returns: a L<Paws::Lambda::InvocationResponse> instance
 
-  Invokes a specific Lambda function. For an example, see Create the
+Invokes a specific Lambda function. For an example, see Create the
 Lambda Function and Test It Manually.
 
 If you are using the versioning feature, you can invoke the specific
@@ -510,7 +510,7 @@ Each argument is described in detail in: L<Paws::Lambda::InvokeAsync>
 
 Returns: a L<Paws::Lambda::InvokeAsyncResponse> instance
 
-  This API is deprecated. We recommend you use C<Invoke> API (see
+This API is deprecated. We recommend you use C<Invoke> API (see
 Invoke).
 
 Submits an invocation request to AWS Lambda. Upon receiving the
@@ -528,7 +528,7 @@ Each argument is described in detail in: L<Paws::Lambda::ListAliases>
 
 Returns: a L<Paws::Lambda::ListAliasesResponse> instance
 
-  Returns list of aliases created for a Lambda function. For each alias,
+Returns list of aliases created for a Lambda function. For each alias,
 the response includes information such as the alias ARN, description,
 alias name, and the function version to which it points. For more
 information, see Introduction to AWS Lambda Aliases.
@@ -542,7 +542,7 @@ Each argument is described in detail in: L<Paws::Lambda::ListEventSourceMappings
 
 Returns: a L<Paws::Lambda::ListEventSourceMappingsResponse> instance
 
-  Returns a list of event source mappings you created using the
+Returns a list of event source mappings you created using the
 C<CreateEventSourceMapping> (see CreateEventSourceMapping).
 
 For each mapping, the API returns configuration information. You can
@@ -563,7 +563,7 @@ Each argument is described in detail in: L<Paws::Lambda::ListFunctions>
 
 Returns: a L<Paws::Lambda::ListFunctionsResponse> instance
 
-  Returns a list of your Lambda functions. For each function, the
+Returns a list of your Lambda functions. For each function, the
 response includes the function configuration information. You must use
 GetFunction to retrieve the code for your function.
 
@@ -581,7 +581,7 @@ Each argument is described in detail in: L<Paws::Lambda::ListTags>
 
 Returns: a L<Paws::Lambda::ListTagsResponse> instance
 
-  Returns a list of tags assigned to a function when supplied the
+Returns a list of tags assigned to a function when supplied the
 function ARN (Amazon Resource Name).
 
 
@@ -591,7 +591,7 @@ Each argument is described in detail in: L<Paws::Lambda::ListVersionsByFunction>
 
 Returns: a L<Paws::Lambda::ListVersionsByFunctionResponse> instance
 
-  List all versions of a function. For information about the versioning
+List all versions of a function. For information about the versioning
 feature, see AWS Lambda Function Versioning and Aliases.
 
 
@@ -601,7 +601,7 @@ Each argument is described in detail in: L<Paws::Lambda::PublishVersion>
 
 Returns: a L<Paws::Lambda::FunctionConfiguration> instance
 
-  Publishes a version of your function from the current snapshot of
+Publishes a version of your function from the current snapshot of
 $LATEST. That is, AWS Lambda takes a snapshot of the function code and
 configuration information from $LATEST and publishes a new version. The
 code and configuration cannot be modified after publication. For
@@ -615,7 +615,7 @@ Each argument is described in detail in: L<Paws::Lambda::RemovePermission>
 
 Returns: nothing
 
-  You can remove individual permissions from an resource policy
+You can remove individual permissions from an resource policy
 associated with a Lambda function by providing a statement ID that you
 provided when you added the permission.
 
@@ -637,7 +637,7 @@ Each argument is described in detail in: L<Paws::Lambda::TagResource>
 
 Returns: nothing
 
-  Creates a list of tags (key-value pairs) on the Lambda function.
+Creates a list of tags (key-value pairs) on the Lambda function.
 Requires the Lambda function ARN (Amazon Resource Name). If a key is
 specified without a value, Lambda creates a tag with the specified key
 and a value of null.
@@ -649,7 +649,7 @@ Each argument is described in detail in: L<Paws::Lambda::UntagResource>
 
 Returns: nothing
 
-  Removes tags from a Lambda function. Requires the function ARN (Amazon
+Removes tags from a Lambda function. Requires the function ARN (Amazon
 Resource Name).
 
 
@@ -659,7 +659,7 @@ Each argument is described in detail in: L<Paws::Lambda::UpdateAlias>
 
 Returns: a L<Paws::Lambda::AliasConfiguration> instance
 
-  Using this API you can update the function version to which the alias
+Using this API you can update the function version to which the alias
 points and the alias description. For more information, see
 Introduction to AWS Lambda Aliases.
 
@@ -672,7 +672,7 @@ Each argument is described in detail in: L<Paws::Lambda::UpdateEventSourceMappin
 
 Returns: a L<Paws::Lambda::EventSourceMappingConfiguration> instance
 
-  You can update an event source mapping. This is useful if you want to
+You can update an event source mapping. This is useful if you want to
 change the parameters of the existing mapping without losing your
 position in the stream. You can change which function will receive the
 stream records, but to change the stream itself, you must create a new
@@ -698,7 +698,7 @@ Each argument is described in detail in: L<Paws::Lambda::UpdateFunctionCode>
 
 Returns: a L<Paws::Lambda::FunctionConfiguration> instance
 
-  Updates the code for the specified Lambda function. This operation must
+Updates the code for the specified Lambda function. This operation must
 only be used on an existing Lambda function and cannot be used to
 update the function configuration.
 
@@ -717,7 +717,7 @@ Each argument is described in detail in: L<Paws::Lambda::UpdateFunctionConfigura
 
 Returns: a L<Paws::Lambda::FunctionConfiguration> instance
 
-  Updates the configuration parameters for the specified Lambda function
+Updates the configuration parameters for the specified Lambda function
 by using the values provided in the request. You provide only the
 parameters you want to change. This operation must only be used on an
 existing Lambda function and cannot be used to update the function's
@@ -771,9 +771,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -82,7 +82,7 @@ Each argument is described in detail in: L<Paws::IoTData::DeleteThingShadow>
 
 Returns: a L<Paws::IoTData::DeleteThingShadowResponse> instance
 
-  Deletes the thing shadow for the specified thing.
+Deletes the thing shadow for the specified thing.
 
 For more information, see DeleteThingShadow in the I<AWS IoT Developer
 Guide>.
@@ -94,7 +94,7 @@ Each argument is described in detail in: L<Paws::IoTData::GetThingShadow>
 
 Returns: a L<Paws::IoTData::GetThingShadowResponse> instance
 
-  Gets the thing shadow for the specified thing.
+Gets the thing shadow for the specified thing.
 
 For more information, see GetThingShadow in the I<AWS IoT Developer
 Guide>.
@@ -106,7 +106,7 @@ Each argument is described in detail in: L<Paws::IoTData::Publish>
 
 Returns: nothing
 
-  Publishes state information.
+Publishes state information.
 
 For more information, see HTTP Protocol in the I<AWS IoT Developer
 Guide>.
@@ -118,7 +118,7 @@ Each argument is described in detail in: L<Paws::IoTData::UpdateThingShadow>
 
 Returns: a L<Paws::IoTData::UpdateThingShadowResponse> instance
 
-  Updates the thing shadow for the specified thing.
+Updates the thing shadow for the specified thing.
 
 For more information, see UpdateThingShadow in the I<AWS IoT Developer
 Guide>.
@@ -139,9 +139,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

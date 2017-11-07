@@ -222,7 +222,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::CheckDomainAvai
 
 Returns: a L<Paws::Route53Domains::CheckDomainAvailabilityResponse> instance
 
-  This operation checks the availability of one domain name. Note that if
+This operation checks the availability of one domain name. Note that if
 the availability status of a domain is pending, you must submit another
 request to determine the availability of the domain name.
 
@@ -233,7 +233,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::CheckDomainTran
 
 Returns: a L<Paws::Route53Domains::CheckDomainTransferabilityResponse> instance
 
-  Checks whether a domain name can be transferred to Amazon Route 53.
+Checks whether a domain name can be transferred to Amazon Route 53.
 
 
 =head2 DeleteTagsForDomain(DomainName => Str, TagsToDelete => ArrayRef[Str|Undef])
@@ -242,7 +242,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::DeleteTagsForDo
 
 Returns: a L<Paws::Route53Domains::DeleteTagsForDomainResponse> instance
 
-  This operation deletes the specified tags for a domain.
+This operation deletes the specified tags for a domain.
 
 All tag operations are eventually consistent; subsequent operations
 might not immediately represent all issued operations.
@@ -254,7 +254,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::DisableDomainAu
 
 Returns: a L<Paws::Route53Domains::DisableDomainAutoRenewResponse> instance
 
-  This operation disables automatic renewal of domain registration for
+This operation disables automatic renewal of domain registration for
 the specified domain.
 
 
@@ -264,7 +264,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::DisableDomainTr
 
 Returns: a L<Paws::Route53Domains::DisableDomainTransferLockResponse> instance
 
-  This operation removes the transfer lock on the domain (specifically
+This operation removes the transfer lock on the domain (specifically
 the C<clientTransferProhibited> status) to allow domain transfers. We
 recommend you refrain from performing this action unless you intend to
 transfer the domain to a different registrar. Successful submission
@@ -279,7 +279,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::EnableDomainAut
 
 Returns: a L<Paws::Route53Domains::EnableDomainAutoRenewResponse> instance
 
-  This operation configures Amazon Route 53 to automatically renew the
+This operation configures Amazon Route 53 to automatically renew the
 specified domain before the domain registration expires. The cost of
 renewing your domain registration is billed to your AWS account.
 
@@ -297,7 +297,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::EnableDomainTra
 
 Returns: a L<Paws::Route53Domains::EnableDomainTransferLockResponse> instance
 
-  This operation sets the transfer lock on the domain (specifically the
+This operation sets the transfer lock on the domain (specifically the
 C<clientTransferProhibited> status) to prevent domain transfers.
 Successful submission returns an operation ID that you can use to track
 the progress and completion of the action. If the request is not
@@ -311,7 +311,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::GetContactReach
 
 Returns: a L<Paws::Route53Domains::GetContactReachabilityStatusResponse> instance
 
-  For operations that require confirmation that the email address for the
+For operations that require confirmation that the email address for the
 registrant contact is valid, such as registering a new domain, this
 operation returns information about whether the registrant contact has
 responded.
@@ -326,7 +326,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::GetDomainDetail
 
 Returns: a L<Paws::Route53Domains::GetDomainDetailResponse> instance
 
-  This operation returns detailed information about a specified domain
+This operation returns detailed information about a specified domain
 that is associated with the current AWS account. Contact information
 for the domain is also returned as part of the output.
 
@@ -337,7 +337,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::GetDomainSugges
 
 Returns: a L<Paws::Route53Domains::GetDomainSuggestionsResponse> instance
 
-  The GetDomainSuggestions operation returns a list of suggested domain
+The GetDomainSuggestions operation returns a list of suggested domain
 names given a string, which can either be a domain name or simply a
 word or phrase (without spaces).
 
@@ -348,7 +348,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::GetOperationDet
 
 Returns: a L<Paws::Route53Domains::GetOperationDetailResponse> instance
 
-  This operation returns the current status of an operation that is not
+This operation returns the current status of an operation that is not
 completed.
 
 
@@ -358,7 +358,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::ListDomains>
 
 Returns: a L<Paws::Route53Domains::ListDomainsResponse> instance
 
-  This operation returns all the domain names registered with Amazon
+This operation returns all the domain names registered with Amazon
 Route 53 for the current AWS account.
 
 
@@ -368,7 +368,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::ListOperations>
 
 Returns: a L<Paws::Route53Domains::ListOperationsResponse> instance
 
-  This operation returns the operation IDs of operations that are not yet
+This operation returns the operation IDs of operations that are not yet
 complete.
 
 
@@ -378,7 +378,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::ListTagsForDoma
 
 Returns: a L<Paws::Route53Domains::ListTagsForDomainResponse> instance
 
-  This operation returns all of the tags that are associated with the
+This operation returns all of the tags that are associated with the
 specified domain.
 
 All tag operations are eventually consistent; subsequent operations
@@ -391,7 +391,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::RegisterDomain>
 
 Returns: a L<Paws::Route53Domains::RegisterDomainResponse> instance
 
-  This operation registers a domain. Domains are registered by the AWS
+This operation registers a domain. Domains are registered by the AWS
 registrar partner, Gandi. For some top-level domains (TLDs), this
 operation requires extra parameters.
 
@@ -439,7 +439,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::RenewDomain>
 
 Returns: a L<Paws::Route53Domains::RenewDomainResponse> instance
 
-  This operation renews a domain for the specified number of years. The
+This operation renews a domain for the specified number of years. The
 cost of renewing your domain is billed to your AWS account.
 
 We recommend that you renew your domain several weeks before the
@@ -455,7 +455,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::ResendContactRe
 
 Returns: a L<Paws::Route53Domains::ResendContactReachabilityEmailResponse> instance
 
-  For operations that require confirmation that the email address for the
+For operations that require confirmation that the email address for the
 registrant contact is valid, such as registering a new domain, this
 operation resends the confirmation email to the current email address
 for the registrant contact.
@@ -467,7 +467,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::RetrieveDomainA
 
 Returns: a L<Paws::Route53Domains::RetrieveDomainAuthCodeResponse> instance
 
-  This operation returns the AuthCode for the domain. To transfer a
+This operation returns the AuthCode for the domain. To transfer a
 domain to another registrar, you provide this value to the new
 registrar.
 
@@ -478,7 +478,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::TransferDomain>
 
 Returns: a L<Paws::Route53Domains::TransferDomainResponse> instance
 
-  This operation transfers a domain from another registrar to Amazon
+This operation transfers a domain from another registrar to Amazon
 Route 53. When the transfer is complete, the domain is registered with
 the AWS registrar partner, Gandi.
 
@@ -512,7 +512,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::UpdateDomainCon
 
 Returns: a L<Paws::Route53Domains::UpdateDomainContactResponse> instance
 
-  This operation updates the contact information for a particular domain.
+This operation updates the contact information for a particular domain.
 Information for at least one contact (registrant, administrator, or
 technical) must be supplied for update.
 
@@ -528,7 +528,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::UpdateDomainCon
 
 Returns: a L<Paws::Route53Domains::UpdateDomainContactPrivacyResponse> instance
 
-  This operation updates the specified domain contact's privacy setting.
+This operation updates the specified domain contact's privacy setting.
 When the privacy option is enabled, personal information such as postal
 or email address is hidden from the results of a public WHOIS query.
 The privacy services are provided by the AWS registrar, Gandi. For more
@@ -547,7 +547,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::UpdateDomainNam
 
 Returns: a L<Paws::Route53Domains::UpdateDomainNameserversResponse> instance
 
-  This operation replaces the current set of name servers for the domain
+This operation replaces the current set of name servers for the domain
 with the specified set of name servers. If you use Amazon Route 53 as
 your DNS service, specify the four name servers in the delegation set
 for the hosted zone for the domain.
@@ -564,7 +564,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::UpdateTagsForDo
 
 Returns: a L<Paws::Route53Domains::UpdateTagsForDomainResponse> instance
 
-  This operation adds or updates tags for a specified domain.
+This operation adds or updates tags for a specified domain.
 
 All tag operations are eventually consistent; subsequent operations
 might not immediately represent all issued operations.
@@ -576,7 +576,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::ViewBilling>
 
 Returns: a L<Paws::Route53Domains::ViewBillingResponse> instance
 
-  Returns all the domain-related billing records for the current AWS
+Returns all the domain-related billing records for the current AWS
 account for a specified period
 
 
@@ -619,9 +619,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

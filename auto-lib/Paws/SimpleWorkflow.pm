@@ -387,7 +387,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::CountClosedWork
 
 Returns: a L<Paws::SimpleWorkflow::WorkflowExecutionCount> instance
 
-  Returns the number of closed workflow executions within the given
+Returns the number of closed workflow executions within the given
 domain that meet the specified filtering criteria.
 
 This operation is eventually consistent. The results are best effort
@@ -449,7 +449,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::CountOpenWorkfl
 
 Returns: a L<Paws::SimpleWorkflow::WorkflowExecutionCount> instance
 
-  Returns the number of open workflow executions within the given domain
+Returns the number of open workflow executions within the given domain
 that meet the specified filtering criteria.
 
 This operation is eventually consistent. The results are best effort
@@ -511,7 +511,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::CountPendingAct
 
 Returns: a L<Paws::SimpleWorkflow::PendingTaskCount> instance
 
-  Returns the estimated number of activity tasks in the specified task
+Returns the estimated number of activity tasks in the specified task
 list. The count returned is an approximation and isn't guaranteed to be
 exact. If you specify a task list that no activity task was ever
 scheduled in then C<0> is returned.
@@ -555,7 +555,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::CountPendingDec
 
 Returns: a L<Paws::SimpleWorkflow::PendingTaskCount> instance
 
-  Returns the estimated number of decision tasks in the specified task
+Returns the estimated number of decision tasks in the specified task
 list. The count returned is an approximation and isn't guaranteed to be
 exact. If you specify a task list that no decision task was ever
 scheduled in then C<0> is returned.
@@ -599,7 +599,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::DeprecateActivi
 
 Returns: nothing
 
-  Deprecates the specified I<activity type>. After an activity type has
+Deprecates the specified I<activity type>. After an activity type has
 been deprecated, you cannot create new tasks of that activity type.
 Tasks of this type that were scheduled before the type was deprecated
 continue to run.
@@ -659,7 +659,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::DeprecateDomain
 
 Returns: nothing
 
-  Deprecates the specified domain. After a domain has been deprecated it
+Deprecates the specified domain. After a domain has been deprecated it
 cannot be used to create new workflow executions or register new types.
 However, you can still use visibility actions on this domain.
 Deprecating a domain also deprecates all activity and workflow types
@@ -706,7 +706,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::DeprecateWorkfl
 
 Returns: nothing
 
-  Deprecates the specified I<workflow type>. After a workflow type has
+Deprecates the specified I<workflow type>. After a workflow type has
 been deprecated, you cannot create new executions of that type.
 Executions that were started before the type was deprecated continues
 to run. A deprecated workflow type may still be used when calling
@@ -767,7 +767,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::DescribeActivit
 
 Returns: a L<Paws::SimpleWorkflow::ActivityTypeDetail> instance
 
-  Returns information about the specified activity type. This includes
+Returns information about the specified activity type. This includes
 configuration settings provided when the type was registered and other
 general information about the type.
 
@@ -823,7 +823,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::DescribeDomain>
 
 Returns: a L<Paws::SimpleWorkflow::DomainDetail> instance
 
-  Returns information about the specified domain, including description
+Returns information about the specified domain, including description
 and status.
 
 B<Access Control>
@@ -863,7 +863,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::DescribeWorkflo
 
 Returns: a L<Paws::SimpleWorkflow::WorkflowExecutionDetail> instance
 
-  Returns information about the specified workflow execution including
+Returns information about the specified workflow execution including
 its type and some statistics.
 
 This operation is eventually consistent. The results are best effort
@@ -906,7 +906,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::DescribeWorkflo
 
 Returns: a L<Paws::SimpleWorkflow::WorkflowTypeDetail> instance
 
-  Returns information about the specified I<workflow type>. This includes
+Returns information about the specified I<workflow type>. This includes
 configuration settings specified when the type was registered and other
 information such as creation date, current status, etc.
 
@@ -962,7 +962,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::GetWorkflowExec
 
 Returns: a L<Paws::SimpleWorkflow::History> instance
 
-  Returns the history of the specified workflow execution. The results
+Returns the history of the specified workflow execution. The results
 may be split into multiple pages. To retrieve subsequent pages, make
 the call again using the C<nextPageToken> returned by the initial call.
 
@@ -1006,7 +1006,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::ListActivityTyp
 
 Returns: a L<Paws::SimpleWorkflow::ActivityTypeInfos> instance
 
-  Returns information about all activities registered in the specified
+Returns information about all activities registered in the specified
 domain that match the specified name and registration status. The
 result includes information like creation date, current status of the
 activity, etc. The results may be split into multiple pages. To
@@ -1050,7 +1050,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::ListClosedWorkf
 
 Returns: a L<Paws::SimpleWorkflow::WorkflowExecutionInfos> instance
 
-  Returns a list of closed workflow executions in the specified domain
+Returns a list of closed workflow executions in the specified domain
 that meet the filtering criteria. The results may be split into
 multiple pages. To retrieve subsequent pages, make the call again using
 the nextPageToken returned by the initial call.
@@ -1114,7 +1114,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::ListDomains>
 
 Returns: a L<Paws::SimpleWorkflow::DomainInfos> instance
 
-  Returns the list of domains registered in the account. The results may
+Returns the list of domains registered in the account. The results may
 be split into multiple pages. To retrieve subsequent pages, make the
 call again using the nextPageToken returned by the initial call.
 
@@ -1160,7 +1160,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::ListOpenWorkflo
 
 Returns: a L<Paws::SimpleWorkflow::WorkflowExecutionInfos> instance
 
-  Returns a list of open workflow executions in the specified domain that
+Returns a list of open workflow executions in the specified domain that
 meet the filtering criteria. The results may be split into multiple
 pages. To retrieve subsequent pages, make the call again using the
 nextPageToken returned by the initial call.
@@ -1224,7 +1224,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::ListWorkflowTyp
 
 Returns: a L<Paws::SimpleWorkflow::WorkflowTypeInfos> instance
 
-  Returns information about workflow types in the specified domain. The
+Returns information about workflow types in the specified domain. The
 results may be split into multiple pages that can be retrieved by
 making the call repeatedly.
 
@@ -1265,7 +1265,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::PollForActivity
 
 Returns: a L<Paws::SimpleWorkflow::ActivityTask> instance
 
-  Used by workers to get an ActivityTask from the specified activity
+Used by workers to get an ActivityTask from the specified activity
 C<taskList>. This initiates a long poll, where the service holds the
 HTTP connection open and responds as soon as a task becomes available.
 The maximum time the service holds on to the request before responding
@@ -1318,7 +1318,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::PollForDecision
 
 Returns: a L<Paws::SimpleWorkflow::DecisionTask> instance
 
-  Used by deciders to get a DecisionTask from the specified decision
+Used by deciders to get a DecisionTask from the specified decision
 C<taskList>. A decision task may be returned for any open workflow
 execution that is using the specified task list. The task includes a
 paginated view of the history of the workflow execution. The decider
@@ -1382,7 +1382,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::RecordActivityT
 
 Returns: a L<Paws::SimpleWorkflow::ActivityTaskStatus> instance
 
-  Used by activity workers to report to the service that the ActivityTask
+Used by activity workers to report to the service that the ActivityTask
 represented by the specified C<taskToken> is still making progress. The
 worker can also specify details of the progress, for example percent
 complete, using the C<details> parameter. This action can also be used
@@ -1450,7 +1450,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::RegisterActivit
 
 Returns: nothing
 
-  Registers a new I<activity type> along with its configuration settings
+Registers a new I<activity type> along with its configuration settings
 in the specified domain.
 
 A C<TypeAlreadyExists> fault is returned if the type already exists in
@@ -1512,7 +1512,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::RegisterDomain>
 
 Returns: nothing
 
-  Registers a new domain.
+Registers a new domain.
 
 B<Access Control>
 
@@ -1552,7 +1552,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::RegisterWorkflo
 
 Returns: nothing
 
-  Registers a new I<workflow type> and its configuration settings in the
+Registers a new I<workflow type> and its configuration settings in the
 specified domain.
 
 The retention period for the workflow history is set by the
@@ -1617,7 +1617,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::RequestCancelWo
 
 Returns: nothing
 
-  Records a C<WorkflowExecutionCancelRequested> event in the currently
+Records a C<WorkflowExecutionCancelRequested> event in the currently
 running workflow execution identified by the given domain, workflowId,
 and runId. This logically requests the cancellation of the workflow
 execution as a whole. It is up to the decider to take appropriate
@@ -1668,7 +1668,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::RespondActivity
 
 Returns: nothing
 
-  Used by workers to tell the service that the ActivityTask identified by
+Used by workers to tell the service that the ActivityTask identified by
 the C<taskToken> was successfully canceled. Additional C<details> can
 be provided using the C<details> argument.
 
@@ -1722,7 +1722,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::RespondActivity
 
 Returns: nothing
 
-  Used by workers to tell the service that the ActivityTask identified by
+Used by workers to tell the service that the ActivityTask identified by
 the C<taskToken> completed successfully with a C<result> (if provided).
 The C<result> appears in the C<ActivityTaskCompleted> event in the
 workflow history.
@@ -1776,7 +1776,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::RespondActivity
 
 Returns: nothing
 
-  Used by workers to tell the service that the ActivityTask identified by
+Used by workers to tell the service that the ActivityTask identified by
 the C<taskToken> has failed with C<reason> (if specified). The
 C<reason> and C<details> appear in the C<ActivityTaskFailed> event
 added to the workflow history.
@@ -1824,7 +1824,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::RespondDecision
 
 Returns: nothing
 
-  Used by deciders to tell the service that the DecisionTask identified
+Used by deciders to tell the service that the DecisionTask identified
 by the C<taskToken> has successfully completed. The C<decisions>
 argument specifies the list of decisions made while processing the
 task.
@@ -1852,7 +1852,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::SignalWorkflowE
 
 Returns: nothing
 
-  Records a C<WorkflowExecutionSignaled> event in the workflow execution
+Records a C<WorkflowExecutionSignaled> event in the workflow execution
 history and creates a decision task for the workflow execution
 identified by the given domain, workflowId and runId. The event is
 recorded with the specified user defined signalName and input (if
@@ -1902,7 +1902,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::StartWorkflowEx
 
 Returns: a L<Paws::SimpleWorkflow::Run> instance
 
-  Starts an execution of the workflow type in the specified domain using
+Starts an execution of the workflow type in the specified domain using
 the provided C<workflowId> and input data.
 
 This action returns the newly started workflow execution.
@@ -1983,7 +1983,7 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::TerminateWorkfl
 
 Returns: nothing
 
-  Records a C<WorkflowExecutionTerminated> event and forces closure of
+Records a C<WorkflowExecutionTerminated> event and forces closure of
 the workflow execution identified by the given domain, runId, and
 workflowId. The child policy, registered with the workflow type or
 specified when starting this execution, is applied to any open child
@@ -2130,9 +2130,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

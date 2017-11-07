@@ -14,7 +14,7 @@ package Paws::Support::DescribeTrustedAdvisorCheckRefreshStatuses;
 
 =head1 NAME
 
-Paws::Support::DescribeTrustedAdvisorCheckRefreshStatuses - Arguments for method DescribeTrustedAdvisorCheckRefreshStatuses on Paws::Support
+Paws::Support::DescribeTrustedAdvisorCheckRefreshStatuses - Arguments for method DescribeTrustedAdvisorCheckRefreshStatuses on L<Paws::Support>
 
 =head1 DESCRIPTION
 
@@ -48,9 +48,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeTrust
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

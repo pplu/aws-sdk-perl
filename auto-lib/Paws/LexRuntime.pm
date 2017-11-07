@@ -75,7 +75,7 @@ Each argument is described in detail in: L<Paws::LexRuntime::PostContent>
 
 Returns: a L<Paws::LexRuntime::PostContentResponse> instance
 
-  Sends user input (text or speech) to Amazon Lex. Clients use this API
+Sends user input (text or speech) to Amazon Lex. Clients use this API
 to send text and audio requests to Amazon Lex at runtime. Amazon Lex
 interprets the user input using the machine learning model that it
 built for the bot.
@@ -173,7 +173,7 @@ Each argument is described in detail in: L<Paws::LexRuntime::PostText>
 
 Returns: a L<Paws::LexRuntime::PostTextResponse> instance
 
-  Sends user input (text-only) to Amazon Lex. Client applications can use
+Sends user input (text-only) to Amazon Lex. Client applications can use
 this API to send requests to Amazon Lex at runtime. Amazon Lex then
 interprets the user input using the machine learning model it built for
 the bot.
@@ -275,9 +275,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

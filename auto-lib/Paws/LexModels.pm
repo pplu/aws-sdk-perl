@@ -228,7 +228,7 @@ Each argument is described in detail in: L<Paws::LexModels::CreateBotVersion>
 
 Returns: a L<Paws::LexModels::CreateBotVersionResponse> instance
 
-  Creates a new version of the bot based on the C<$LATEST> version. If
+Creates a new version of the bot based on the C<$LATEST> version. If
 the C<$LATEST> version of this resource hasn't changed since you
 created the last version, Amazon Lex doesn't create a new version. It
 returns the last created version.
@@ -251,7 +251,7 @@ Each argument is described in detail in: L<Paws::LexModels::CreateIntentVersion>
 
 Returns: a L<Paws::LexModels::CreateIntentVersionResponse> instance
 
-  Creates a new version of an intent based on the C<$LATEST> version of
+Creates a new version of an intent based on the C<$LATEST> version of
 the intent. If the C<$LATEST> version of this intent hasn't changed
 since you last updated it, Amazon Lex doesn't create a new version. It
 returns the last version you created.
@@ -274,7 +274,7 @@ Each argument is described in detail in: L<Paws::LexModels::CreateSlotTypeVersio
 
 Returns: a L<Paws::LexModels::CreateSlotTypeVersionResponse> instance
 
-  Creates a new version of a slot type based on the C<$LATEST> version of
+Creates a new version of a slot type based on the C<$LATEST> version of
 the specified slot type. If the C<$LATEST> version of this resource has
 not changed since the last version that you created, Amazon Lex doesn't
 create a new version. It returns the last version that you created.
@@ -297,7 +297,7 @@ Each argument is described in detail in: L<Paws::LexModels::DeleteBot>
 
 Returns: nothing
 
-  Deletes all versions of the bot, including the C<$LATEST> version. To
+Deletes all versions of the bot, including the C<$LATEST> version. To
 delete a specific version of the bot, use the DeleteBotVersion
 operation.
 
@@ -317,7 +317,7 @@ Each argument is described in detail in: L<Paws::LexModels::DeleteBotAlias>
 
 Returns: nothing
 
-  Deletes an alias for the specified bot.
+Deletes an alias for the specified bot.
 
 You can't delete an alias that is used in the association between a bot
 and a messaging channel. If an alias is used in a channel association,
@@ -335,7 +335,7 @@ Each argument is described in detail in: L<Paws::LexModels::DeleteBotChannelAsso
 
 Returns: nothing
 
-  Deletes the association between an Amazon Lex bot and a messaging
+Deletes the association between an Amazon Lex bot and a messaging
 platform.
 
 This operation requires permission for the
@@ -348,7 +348,7 @@ Each argument is described in detail in: L<Paws::LexModels::DeleteBotVersion>
 
 Returns: nothing
 
-  Deletes a specific version of a bot. To delete all versions of a bot,
+Deletes a specific version of a bot. To delete all versions of a bot,
 use the DeleteBot operation.
 
 This operation requires permissions for the C<lex:DeleteBotVersion>
@@ -361,7 +361,7 @@ Each argument is described in detail in: L<Paws::LexModels::DeleteIntent>
 
 Returns: nothing
 
-  Deletes all versions of the intent, including the C<$LATEST> version.
+Deletes all versions of the intent, including the C<$LATEST> version.
 To delete a specific version of the intent, use the DeleteIntentVersion
 operation.
 
@@ -385,7 +385,7 @@ Each argument is described in detail in: L<Paws::LexModels::DeleteIntentVersion>
 
 Returns: nothing
 
-  Deletes a specific version of an intent. To delete all versions of a
+Deletes a specific version of an intent. To delete all versions of a
 intent, use the DeleteIntent operation.
 
 This operation requires permissions for the C<lex:DeleteIntentVersion>
@@ -398,7 +398,7 @@ Each argument is described in detail in: L<Paws::LexModels::DeleteSlotType>
 
 Returns: nothing
 
-  Deletes all versions of the slot type, including the C<$LATEST>
+Deletes all versions of the slot type, including the C<$LATEST>
 version. To delete a specific version of the slot type, use the
 DeleteSlotTypeVersion operation.
 
@@ -423,7 +423,7 @@ Each argument is described in detail in: L<Paws::LexModels::DeleteSlotTypeVersio
 
 Returns: nothing
 
-  Deletes a specific version of a slot type. To delete all versions of a
+Deletes a specific version of a slot type. To delete all versions of a
 slot type, use the DeleteSlotType operation.
 
 This operation requires permissions for the
@@ -436,7 +436,7 @@ Each argument is described in detail in: L<Paws::LexModels::DeleteUtterances>
 
 Returns: nothing
 
-  Deletes stored utterances.
+Deletes stored utterances.
 
 Amazon Lex stores the utterances that users send to your bot unless the
 C<childDirected> field in the bot is set to C<true>. Utterances are
@@ -457,7 +457,7 @@ Each argument is described in detail in: L<Paws::LexModels::GetBot>
 
 Returns: a L<Paws::LexModels::GetBotResponse> instance
 
-  Returns metadata information for a specific bot. You must provide the
+Returns metadata information for a specific bot. You must provide the
 bot name and the bot version or alias.
 
 This operation requires permissions for the C<lex:GetBot> action.
@@ -469,7 +469,7 @@ Each argument is described in detail in: L<Paws::LexModels::GetBotAlias>
 
 Returns: a L<Paws::LexModels::GetBotAliasResponse> instance
 
-  Returns information about an Amazon Lex bot alias. For more information
+Returns information about an Amazon Lex bot alias. For more information
 about aliases, see versioning-aliases.
 
 This operation requires permissions for the C<lex:GetBotAlias> action.
@@ -481,7 +481,7 @@ Each argument is described in detail in: L<Paws::LexModels::GetBotAliases>
 
 Returns: a L<Paws::LexModels::GetBotAliasesResponse> instance
 
-  Returns a list of aliases for a specified Amazon Lex bot.
+Returns a list of aliases for a specified Amazon Lex bot.
 
 This operation requires permissions for the C<lex:GetBotAliases>
 action.
@@ -493,7 +493,7 @@ Each argument is described in detail in: L<Paws::LexModels::GetBotChannelAssocia
 
 Returns: a L<Paws::LexModels::GetBotChannelAssociationResponse> instance
 
-  Returns information about the association between an Amazon Lex bot and
+Returns information about the association between an Amazon Lex bot and
 a messaging platform.
 
 This operation requires permissions for the
@@ -506,7 +506,7 @@ Each argument is described in detail in: L<Paws::LexModels::GetBotChannelAssocia
 
 Returns: a L<Paws::LexModels::GetBotChannelAssociationsResponse> instance
 
-  Returns a list of all of the channels associated with the specified
+Returns a list of all of the channels associated with the specified
 bot.
 
 The C<GetBotChannelAssociations> operation requires permissions for the
@@ -519,7 +519,7 @@ Each argument is described in detail in: L<Paws::LexModels::GetBots>
 
 Returns: a L<Paws::LexModels::GetBotsResponse> instance
 
-  Returns bot information as follows:
+Returns bot information as follows:
 
 =over
 
@@ -545,7 +545,7 @@ Each argument is described in detail in: L<Paws::LexModels::GetBotVersions>
 
 Returns: a L<Paws::LexModels::GetBotVersionsResponse> instance
 
-  Gets information about all of the versions of a bot.
+Gets information about all of the versions of a bot.
 
 The C<GetBotVersions> operation returns a C<BotMetadata> object for
 each version of a bot. For example, if a bot has three numbered
@@ -566,7 +566,7 @@ Each argument is described in detail in: L<Paws::LexModels::GetBuiltinIntent>
 
 Returns: a L<Paws::LexModels::GetBuiltinIntentResponse> instance
 
-  Returns information about a built-in intent.
+Returns information about a built-in intent.
 
 This operation requires permission for the C<lex:GetBuiltinIntent>
 action.
@@ -578,7 +578,7 @@ Each argument is described in detail in: L<Paws::LexModels::GetBuiltinIntents>
 
 Returns: a L<Paws::LexModels::GetBuiltinIntentsResponse> instance
 
-  Gets a list of built-in intents that meet the specified criteria.
+Gets a list of built-in intents that meet the specified criteria.
 
 This operation requires permission for the C<lex:GetBuiltinIntents>
 action.
@@ -590,7 +590,7 @@ Each argument is described in detail in: L<Paws::LexModels::GetBuiltinSlotTypes>
 
 Returns: a L<Paws::LexModels::GetBuiltinSlotTypesResponse> instance
 
-  Gets a list of built-in slot types that meet the specified criteria.
+Gets a list of built-in slot types that meet the specified criteria.
 
 For a list of built-in slot types, see Slot Type Reference in the
 I<Alexa Skills Kit>.
@@ -605,7 +605,7 @@ Each argument is described in detail in: L<Paws::LexModels::GetExport>
 
 Returns: a L<Paws::LexModels::GetExportResponse> instance
 
-  Exports the contents of a Amazon Lex resource in a specified format.
+Exports the contents of a Amazon Lex resource in a specified format.
 
 
 =head2 GetIntent(Name => Str, Version => Str)
@@ -614,7 +614,7 @@ Each argument is described in detail in: L<Paws::LexModels::GetIntent>
 
 Returns: a L<Paws::LexModels::GetIntentResponse> instance
 
-  Returns information about an intent. In addition to the intent name,
+Returns information about an intent. In addition to the intent name,
 you must specify the intent version.
 
 This operation requires permissions to perform the C<lex:GetIntent>
@@ -627,7 +627,7 @@ Each argument is described in detail in: L<Paws::LexModels::GetIntents>
 
 Returns: a L<Paws::LexModels::GetIntentsResponse> instance
 
-  Returns intent information as follows:
+Returns intent information as follows:
 
 =over
 
@@ -652,7 +652,7 @@ Each argument is described in detail in: L<Paws::LexModels::GetIntentVersions>
 
 Returns: a L<Paws::LexModels::GetIntentVersionsResponse> instance
 
-  Gets information about all of the versions of an intent.
+Gets information about all of the versions of an intent.
 
 The C<GetIntentVersions> operation returns an C<IntentMetadata> object
 for each version of an intent. For example, if an intent has three
@@ -673,7 +673,7 @@ Each argument is described in detail in: L<Paws::LexModels::GetSlotType>
 
 Returns: a L<Paws::LexModels::GetSlotTypeResponse> instance
 
-  Returns information about a specific version of a slot type. In
+Returns information about a specific version of a slot type. In
 addition to specifying the slot type name, you must specify the slot
 type version.
 
@@ -686,7 +686,7 @@ Each argument is described in detail in: L<Paws::LexModels::GetSlotTypes>
 
 Returns: a L<Paws::LexModels::GetSlotTypesResponse> instance
 
-  Returns slot type information as follows:
+Returns slot type information as follows:
 
 =over
 
@@ -711,7 +711,7 @@ Each argument is described in detail in: L<Paws::LexModels::GetSlotTypeVersions>
 
 Returns: a L<Paws::LexModels::GetSlotTypeVersionsResponse> instance
 
-  Gets information about all versions of a slot type.
+Gets information about all versions of a slot type.
 
 The C<GetSlotTypeVersions> operation returns a C<SlotTypeMetadata>
 object for each version of a slot type. For example, if a slot type has
@@ -732,7 +732,7 @@ Each argument is described in detail in: L<Paws::LexModels::GetUtterancesView>
 
 Returns: a L<Paws::LexModels::GetUtterancesViewResponse> instance
 
-  Use the C<GetUtterancesView> operation to get information about the
+Use the C<GetUtterancesView> operation to get information about the
 utterances that your users have made to your bot. You can use this list
 to tune the utterances that your bot responds to.
 
@@ -765,7 +765,7 @@ Each argument is described in detail in: L<Paws::LexModels::PutBot>
 
 Returns: a L<Paws::LexModels::PutBotResponse> instance
 
-  Creates an Amazon Lex conversational bot or replaces an existing bot.
+Creates an Amazon Lex conversational bot or replaces an existing bot.
 When you create or update a bot you are only required to specify a
 name. You can use this to add intents later, or to remove intents from
 an existing bot. When you create a bot with a name only, the bot is
@@ -790,7 +790,7 @@ Each argument is described in detail in: L<Paws::LexModels::PutBotAlias>
 
 Returns: a L<Paws::LexModels::PutBotAliasResponse> instance
 
-  Creates an alias for the specified version of the bot or replaces an
+Creates an alias for the specified version of the bot or replaces an
 alias for the specified bot. To change the version of the bot that the
 alias points to, replace the alias. For more information about aliases,
 see versioning-aliases.
@@ -804,7 +804,7 @@ Each argument is described in detail in: L<Paws::LexModels::PutIntent>
 
 Returns: a L<Paws::LexModels::PutIntentResponse> instance
 
-  Creates an intent or replaces an existing intent.
+Creates an intent or replaces an existing intent.
 
 To define the interaction between the user and your bot, you use one or
 more intents. For a pizza ordering bot, for example, you would create
@@ -880,7 +880,7 @@ Each argument is described in detail in: L<Paws::LexModels::PutSlotType>
 
 Returns: a L<Paws::LexModels::PutSlotTypeResponse> instance
 
-  Creates a custom slot type or replaces an existing custom slot type.
+Creates a custom slot type or replaces an existing custom slot type.
 
 To create a custom slot type, specify a name for the slot type and a
 set of enumeration values, which are the values that a slot of this
@@ -910,9 +910,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

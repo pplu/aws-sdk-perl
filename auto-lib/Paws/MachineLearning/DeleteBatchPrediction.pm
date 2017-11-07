@@ -14,7 +14,7 @@ package Paws::MachineLearning::DeleteBatchPrediction;
 
 =head1 NAME
 
-Paws::MachineLearning::DeleteBatchPrediction - Arguments for method DeleteBatchPrediction on Paws::MachineLearning
+Paws::MachineLearning::DeleteBatchPrediction - Arguments for method DeleteBatchPrediction on L<Paws::MachineLearning>
 
 =head1 DESCRIPTION
 
@@ -46,9 +46,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteBatchPr
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -20,7 +20,7 @@ package Paws::MarketplaceCommerceAnalytics::GenerateDataSet;
 
 =head1 NAME
 
-Paws::MarketplaceCommerceAnalytics::GenerateDataSet - Arguments for method GenerateDataSet on Paws::MarketplaceCommerceAnalytics
+Paws::MarketplaceCommerceAnalytics::GenerateDataSet - Arguments for method GenerateDataSet on L<Paws::MarketplaceCommerceAnalytics>
 
 =head1 DESCRIPTION
 
@@ -231,9 +231,9 @@ This class forms part of L<Paws>, documenting arguments for method GenerateDataS
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

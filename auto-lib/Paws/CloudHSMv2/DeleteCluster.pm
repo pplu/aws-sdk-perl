@@ -14,7 +14,7 @@ package Paws::CloudHSMv2::DeleteCluster;
 
 =head1 NAME
 
-Paws::CloudHSMv2::DeleteCluster - Arguments for method DeleteCluster on Paws::CloudHSMv2
+Paws::CloudHSMv2::DeleteCluster - Arguments for method DeleteCluster on L<Paws::CloudHSMv2>
 
 =head1 DESCRIPTION
 
@@ -47,9 +47,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteCluster
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -286,7 +286,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::BatchDeleteBuilds>
 
 Returns: a L<Paws::CodeBuild::BatchDeleteBuildsOutput> instance
 
-  Deletes one or more builds.
+Deletes one or more builds.
 
 
 =head2 BatchGetBuilds(Ids => ArrayRef[Str|Undef])
@@ -295,7 +295,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::BatchGetBuilds>
 
 Returns: a L<Paws::CodeBuild::BatchGetBuildsOutput> instance
 
-  Gets information about builds.
+Gets information about builds.
 
 
 =head2 BatchGetProjects(Names => ArrayRef[Str|Undef])
@@ -304,7 +304,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::BatchGetProjects>
 
 Returns: a L<Paws::CodeBuild::BatchGetProjectsOutput> instance
 
-  Gets information about build projects.
+Gets information about build projects.
 
 
 =head2 CreateProject(Artifacts => L<Paws::CodeBuild::ProjectArtifacts>, Environment => L<Paws::CodeBuild::ProjectEnvironment>, Name => Str, Source => L<Paws::CodeBuild::ProjectSource>, [Description => Str, EncryptionKey => Str, ServiceRole => Str, Tags => ArrayRef[L<Paws::CodeBuild::Tag>], TimeoutInMinutes => Int])
@@ -313,7 +313,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::CreateProject>
 
 Returns: a L<Paws::CodeBuild::CreateProjectOutput> instance
 
-  Creates a build project.
+Creates a build project.
 
 
 =head2 CreateWebhook(ProjectName => Str)
@@ -322,7 +322,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::CreateWebhook>
 
 Returns: a L<Paws::CodeBuild::CreateWebhookOutput> instance
 
-  For an existing AWS CodeBuild build project that has its source code
+For an existing AWS CodeBuild build project that has its source code
 stored in a GitHub repository, enables AWS CodeBuild to begin
 automatically rebuilding the source code every time a code change is
 pushed to the repository.
@@ -344,7 +344,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::DeleteProject>
 
 Returns: a L<Paws::CodeBuild::DeleteProjectOutput> instance
 
-  Deletes a build project.
+Deletes a build project.
 
 
 =head2 DeleteWebhook(ProjectName => Str)
@@ -353,7 +353,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::DeleteWebhook>
 
 Returns: a L<Paws::CodeBuild::DeleteWebhookOutput> instance
 
-  For an existing AWS CodeBuild build project that has its source code
+For an existing AWS CodeBuild build project that has its source code
 stored in a GitHub repository, stops AWS CodeBuild from automatically
 rebuilding the source code every time a code change is pushed to the
 repository.
@@ -365,7 +365,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::ListBuilds>
 
 Returns: a L<Paws::CodeBuild::ListBuildsOutput> instance
 
-  Gets a list of build IDs, with each build ID representing a single
+Gets a list of build IDs, with each build ID representing a single
 build.
 
 
@@ -375,7 +375,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::ListBuildsForProject
 
 Returns: a L<Paws::CodeBuild::ListBuildsForProjectOutput> instance
 
-  Gets a list of build IDs for the specified build project, with each
+Gets a list of build IDs for the specified build project, with each
 build ID representing a single build.
 
 
@@ -385,7 +385,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::ListCuratedEnvironme
 
 Returns: a L<Paws::CodeBuild::ListCuratedEnvironmentImagesOutput> instance
 
-  Gets information about Docker images that are managed by AWS CodeBuild.
+Gets information about Docker images that are managed by AWS CodeBuild.
 
 
 =head2 ListProjects([NextToken => Str, SortBy => Str, SortOrder => Str])
@@ -394,7 +394,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::ListProjects>
 
 Returns: a L<Paws::CodeBuild::ListProjectsOutput> instance
 
-  Gets a list of build project names, with each build project name
+Gets a list of build project names, with each build project name
 representing a single build project.
 
 
@@ -404,7 +404,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::StartBuild>
 
 Returns: a L<Paws::CodeBuild::StartBuildOutput> instance
 
-  Starts running a build.
+Starts running a build.
 
 
 =head2 StopBuild(Id => Str)
@@ -413,7 +413,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::StopBuild>
 
 Returns: a L<Paws::CodeBuild::StopBuildOutput> instance
 
-  Attempts to stop running a build.
+Attempts to stop running a build.
 
 
 =head2 UpdateProject(Name => Str, [Artifacts => L<Paws::CodeBuild::ProjectArtifacts>, Description => Str, EncryptionKey => Str, Environment => L<Paws::CodeBuild::ProjectEnvironment>, ServiceRole => Str, Source => L<Paws::CodeBuild::ProjectSource>, Tags => ArrayRef[L<Paws::CodeBuild::Tag>], TimeoutInMinutes => Int])
@@ -422,7 +422,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::UpdateProject>
 
 Returns: a L<Paws::CodeBuild::UpdateProjectOutput> instance
 
-  Changes the settings of a build project.
+Changes the settings of a build project.
 
 
 
@@ -476,9 +476,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

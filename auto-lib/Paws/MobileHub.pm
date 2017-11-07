@@ -102,7 +102,7 @@ Each argument is described in detail in: L<Paws::MobileHub::CreateProject>
 
 Returns: a L<Paws::MobileHub::CreateProjectResult> instance
 
-  Creates an AWS Mobile Hub project.
+Creates an AWS Mobile Hub project.
 
 
 =head2 DeleteProject(ProjectId => Str)
@@ -111,7 +111,7 @@ Each argument is described in detail in: L<Paws::MobileHub::DeleteProject>
 
 Returns: a L<Paws::MobileHub::DeleteProjectResult> instance
 
-  Delets a project in AWS Mobile Hub.
+Delets a project in AWS Mobile Hub.
 
 
 =head2 DescribeBundle(BundleId => Str)
@@ -120,7 +120,7 @@ Each argument is described in detail in: L<Paws::MobileHub::DescribeBundle>
 
 Returns: a L<Paws::MobileHub::DescribeBundleResult> instance
 
-  Get the bundle details for the requested bundle id.
+Get the bundle details for the requested bundle id.
 
 
 =head2 DescribeProject(ProjectId => Str, [SyncFromResources => Bool])
@@ -129,7 +129,7 @@ Each argument is described in detail in: L<Paws::MobileHub::DescribeProject>
 
 Returns: a L<Paws::MobileHub::DescribeProjectResult> instance
 
-  Gets details about a project in AWS Mobile Hub.
+Gets details about a project in AWS Mobile Hub.
 
 
 =head2 ExportBundle(BundleId => Str, [Platform => Str, ProjectId => Str])
@@ -138,7 +138,7 @@ Each argument is described in detail in: L<Paws::MobileHub::ExportBundle>
 
 Returns: a L<Paws::MobileHub::ExportBundleResult> instance
 
-  Generates customized software development kit (SDK) and or tool
+Generates customized software development kit (SDK) and or tool
 packages used to integrate mobile web or mobile app clients with
 backend AWS resources.
 
@@ -149,7 +149,7 @@ Each argument is described in detail in: L<Paws::MobileHub::ExportProject>
 
 Returns: a L<Paws::MobileHub::ExportProjectResult> instance
 
-  Exports project configuration to a snapshot which can be downloaded and
+Exports project configuration to a snapshot which can be downloaded and
 shared. Note that mobile app push credentials are encrypted in exported
 projects, so they can only be shared successfully within the same AWS
 account.
@@ -161,7 +161,7 @@ Each argument is described in detail in: L<Paws::MobileHub::ListBundles>
 
 Returns: a L<Paws::MobileHub::ListBundlesResult> instance
 
-  List all available bundles.
+List all available bundles.
 
 
 =head2 ListProjects([MaxResults => Int, NextToken => Str])
@@ -170,7 +170,7 @@ Each argument is described in detail in: L<Paws::MobileHub::ListProjects>
 
 Returns: a L<Paws::MobileHub::ListProjectsResult> instance
 
-  Lists projects in AWS Mobile Hub.
+Lists projects in AWS Mobile Hub.
 
 
 =head2 UpdateProject(ProjectId => Str, [Contents => Str])
@@ -179,7 +179,7 @@ Each argument is described in detail in: L<Paws::MobileHub::UpdateProject>
 
 Returns: a L<Paws::MobileHub::UpdateProjectResult> instance
 
-  Update an existing project.
+Update an existing project.
 
 
 
@@ -197,9 +197,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

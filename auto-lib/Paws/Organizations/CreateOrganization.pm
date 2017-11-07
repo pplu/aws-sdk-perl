@@ -14,7 +14,7 @@ package Paws::Organizations::CreateOrganization;
 
 =head1 NAME
 
-Paws::Organizations::CreateOrganization - Arguments for method CreateOrganization on Paws::Organizations
+Paws::Organizations::CreateOrganization - Arguments for method CreateOrganization on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
@@ -65,9 +65,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateOrganiz
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

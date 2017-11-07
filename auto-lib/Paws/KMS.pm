@@ -419,7 +419,7 @@ Each argument is described in detail in: L<Paws::KMS::CancelKeyDeletion>
 
 Returns: a L<Paws::KMS::CancelKeyDeletionResponse> instance
 
-  Cancels the deletion of a customer master key (CMK). When this
+Cancels the deletion of a customer master key (CMK). When this
 operation is successful, the CMK is set to the C<Disabled> state. To
 enable a CMK, use EnableKey. You cannot perform this operation on a CMK
 in a different AWS account.
@@ -435,7 +435,7 @@ Each argument is described in detail in: L<Paws::KMS::CreateAlias>
 
 Returns: nothing
 
-  Creates a display name for a customer master key (CMK). You can use an
+Creates a display name for a customer master key (CMK). You can use an
 alias to identify a CMK in selected operations, such as Encrypt and
 GenerateDataKey.
 
@@ -468,7 +468,7 @@ Each argument is described in detail in: L<Paws::KMS::CreateGrant>
 
 Returns: a L<Paws::KMS::CreateGrantResponse> instance
 
-  Adds a grant to a customer master key (CMK). The grant specifies who
+Adds a grant to a customer master key (CMK). The grant specifies who
 can use the CMK and under what conditions. When setting permissions,
 grants are an alternative to key policies.
 
@@ -484,7 +484,7 @@ Each argument is described in detail in: L<Paws::KMS::CreateKey>
 
 Returns: a L<Paws::KMS::CreateKeyResponse> instance
 
-  Creates a customer master key (CMK) in the caller's AWS account.
+Creates a customer master key (CMK) in the caller's AWS account.
 
 You can use a CMK to encrypt small amounts of data (4 KiB or less)
 directly, but CMKs are more commonly used to encrypt data encryption
@@ -514,7 +514,7 @@ Each argument is described in detail in: L<Paws::KMS::Decrypt>
 
 Returns: a L<Paws::KMS::DecryptResponse> instance
 
-  Decrypts ciphertext. Ciphertext is plaintext that has been previously
+Decrypts ciphertext. Ciphertext is plaintext that has been previously
 encrypted by using any of the following operations:
 
 =over
@@ -550,7 +550,7 @@ Each argument is described in detail in: L<Paws::KMS::DeleteAlias>
 
 Returns: nothing
 
-  Deletes the specified alias. You cannot perform this operation on an
+Deletes the specified alias. You cannot perform this operation on an
 alias in a different AWS account.
 
 Because an alias is not a property of a CMK, you can delete and change
@@ -570,7 +570,7 @@ Each argument is described in detail in: L<Paws::KMS::DeleteImportedKeyMaterial>
 
 Returns: nothing
 
-  Deletes key material that you previously imported. This operation makes
+Deletes key material that you previously imported. This operation makes
 the specified customer master key (CMK) unusable. For more information
 about importing key material into AWS KMS, see Importing Key Material
 in the I<AWS Key Management Service Developer Guide>. You cannot
@@ -590,7 +590,7 @@ Each argument is described in detail in: L<Paws::KMS::DescribeKey>
 
 Returns: a L<Paws::KMS::DescribeKeyResponse> instance
 
-  Provides detailed information about the specified customer master key
+Provides detailed information about the specified customer master key
 (CMK).
 
 To perform this operation on a CMK in a different AWS account, specify
@@ -603,7 +603,7 @@ Each argument is described in detail in: L<Paws::KMS::DisableKey>
 
 Returns: nothing
 
-  Sets the state of a customer master key (CMK) to disabled, thereby
+Sets the state of a customer master key (CMK) to disabled, thereby
 preventing its use for cryptographic operations. You cannot perform
 this operation on a CMK in a different AWS account.
 
@@ -618,7 +618,7 @@ Each argument is described in detail in: L<Paws::KMS::DisableKeyRotation>
 
 Returns: nothing
 
-  Disables automatic rotation of the key material for the specified
+Disables automatic rotation of the key material for the specified
 customer master key (CMK). You cannot perform this operation on a CMK
 in a different AWS account.
 
@@ -629,7 +629,7 @@ Each argument is described in detail in: L<Paws::KMS::EnableKey>
 
 Returns: nothing
 
-  Sets the state of a customer master key (CMK) to enabled, thereby
+Sets the state of a customer master key (CMK) to enabled, thereby
 permitting its use for cryptographic operations. You cannot perform
 this operation on a CMK in a different AWS account.
 
@@ -640,7 +640,7 @@ Each argument is described in detail in: L<Paws::KMS::EnableKeyRotation>
 
 Returns: nothing
 
-  Enables automatic rotation of the key material for the specified
+Enables automatic rotation of the key material for the specified
 customer master key (CMK). You cannot perform this operation on a CMK
 in a different AWS account.
 
@@ -651,7 +651,7 @@ Each argument is described in detail in: L<Paws::KMS::Encrypt>
 
 Returns: a L<Paws::KMS::EncryptResponse> instance
 
-  Encrypts plaintext into ciphertext by using a customer master key
+Encrypts plaintext into ciphertext by using a customer master key
 (CMK). The C<Encrypt> operation has two primary use cases:
 
 =over
@@ -691,7 +691,7 @@ Each argument is described in detail in: L<Paws::KMS::GenerateDataKey>
 
 Returns: a L<Paws::KMS::GenerateDataKeyResponse> instance
 
-  Returns a data encryption key that you can use in your application to
+Returns a data encryption key that you can use in your application to
 encrypt data locally.
 
 You must specify the customer master key (CMK) under which to generate
@@ -764,7 +764,7 @@ Each argument is described in detail in: L<Paws::KMS::GenerateDataKeyWithoutPlai
 
 Returns: a L<Paws::KMS::GenerateDataKeyWithoutPlaintextResponse> instance
 
-  Returns a data encryption key encrypted under a customer master key
+Returns a data encryption key encrypted under a customer master key
 (CMK). This operation is identical to GenerateDataKey but returns only
 the encrypted copy of the data key.
 
@@ -792,7 +792,7 @@ Each argument is described in detail in: L<Paws::KMS::GenerateRandom>
 
 Returns: a L<Paws::KMS::GenerateRandomResponse> instance
 
-  Returns a random byte string that is cryptographically secure.
+Returns a random byte string that is cryptographically secure.
 
 For more information about entropy and random number generation, see
 the AWS Key Management Service Cryptographic Details whitepaper.
@@ -804,7 +804,7 @@ Each argument is described in detail in: L<Paws::KMS::GetKeyPolicy>
 
 Returns: a L<Paws::KMS::GetKeyPolicyResponse> instance
 
-  Gets a key policy attached to the specified customer master key (CMK).
+Gets a key policy attached to the specified customer master key (CMK).
 You cannot perform this operation on a CMK in a different AWS account.
 
 
@@ -814,7 +814,7 @@ Each argument is described in detail in: L<Paws::KMS::GetKeyRotationStatus>
 
 Returns: a L<Paws::KMS::GetKeyRotationStatusResponse> instance
 
-  Gets a Boolean value that indicates whether automatic rotation of the
+Gets a Boolean value that indicates whether automatic rotation of the
 key material is enabled for the specified customer master key (CMK).
 
 To perform this operation on a CMK in a different AWS account, specify
@@ -827,7 +827,7 @@ Each argument is described in detail in: L<Paws::KMS::GetParametersForImport>
 
 Returns: a L<Paws::KMS::GetParametersForImportResponse> instance
 
-  Returns the items you need in order to import key material into AWS KMS
+Returns the items you need in order to import key material into AWS KMS
 from your existing key management infrastructure. For more information
 about importing key material into AWS KMS, see Importing Key Material
 in the I<AWS Key Management Service Developer Guide>.
@@ -853,7 +853,7 @@ Each argument is described in detail in: L<Paws::KMS::ImportKeyMaterial>
 
 Returns: a L<Paws::KMS::ImportKeyMaterialResponse> instance
 
-  Imports key material into an existing AWS KMS customer master key (CMK)
+Imports key material into an existing AWS KMS customer master key (CMK)
 that was created without key material. You cannot perform this
 operation on a CMK in a different AWS account. For more information
 about creating CMKs with no key material and then importing key
@@ -912,7 +912,7 @@ Each argument is described in detail in: L<Paws::KMS::ListAliases>
 
 Returns: a L<Paws::KMS::ListAliasesResponse> instance
 
-  Gets a list of all aliases in the caller's AWS account and region. You
+Gets a list of all aliases in the caller's AWS account and region. You
 cannot list aliases in other accounts. For more information about
 aliases, see CreateAlias.
 
@@ -929,7 +929,7 @@ Each argument is described in detail in: L<Paws::KMS::ListGrants>
 
 Returns: a L<Paws::KMS::ListGrantsResponse> instance
 
-  Gets a list of all grants for the specified customer master key (CMK).
+Gets a list of all grants for the specified customer master key (CMK).
 
 To perform this operation on a CMK in a different AWS account, specify
 the key ARN in the value of the KeyId parameter.
@@ -941,7 +941,7 @@ Each argument is described in detail in: L<Paws::KMS::ListKeyPolicies>
 
 Returns: a L<Paws::KMS::ListKeyPoliciesResponse> instance
 
-  Gets the names of the key policies that are attached to a customer
+Gets the names of the key policies that are attached to a customer
 master key (CMK). This operation is designed to get policy names that
 you can use in a GetKeyPolicy operation. However, the only valid policy
 name is C<default>. You cannot perform this operation on a CMK in a
@@ -954,7 +954,7 @@ Each argument is described in detail in: L<Paws::KMS::ListKeys>
 
 Returns: a L<Paws::KMS::ListKeysResponse> instance
 
-  Gets a list of all customer master keys (CMKs) in the caller's AWS
+Gets a list of all customer master keys (CMKs) in the caller's AWS
 account and region.
 
 
@@ -964,7 +964,7 @@ Each argument is described in detail in: L<Paws::KMS::ListResourceTags>
 
 Returns: a L<Paws::KMS::ListResourceTagsResponse> instance
 
-  Returns a list of all tags for the specified customer master key (CMK).
+Returns a list of all tags for the specified customer master key (CMK).
 
 You cannot perform this operation on a CMK in a different AWS account.
 
@@ -975,7 +975,7 @@ Each argument is described in detail in: L<Paws::KMS::ListRetirableGrants>
 
 Returns: a L<Paws::KMS::ListGrantsResponse> instance
 
-  Returns a list of all grants for which the grant's C<RetiringPrincipal>
+Returns a list of all grants for which the grant's C<RetiringPrincipal>
 matches the one specified.
 
 A typical use is to list all grants that you are able to retire. To
@@ -988,7 +988,7 @@ Each argument is described in detail in: L<Paws::KMS::PutKeyPolicy>
 
 Returns: nothing
 
-  Attaches a key policy to the specified customer master key (CMK). You
+Attaches a key policy to the specified customer master key (CMK). You
 cannot perform this operation on a CMK in a different AWS account.
 
 For more information about key policies, see Key Policies in the I<AWS
@@ -1001,7 +1001,7 @@ Each argument is described in detail in: L<Paws::KMS::ReEncrypt>
 
 Returns: a L<Paws::KMS::ReEncryptResponse> instance
 
-  Encrypts data on the server side with a new customer master key (CMK)
+Encrypts data on the server side with a new customer master key (CMK)
 without exposing the plaintext of the data on the client side. The data
 is first decrypted and then reencrypted. You can also use this
 operation to change the encryption context of a ciphertext.
@@ -1024,7 +1024,7 @@ Each argument is described in detail in: L<Paws::KMS::RetireGrant>
 
 Returns: nothing
 
-  Retires a grant. To clean up, you can retire a grant when you're done
+Retires a grant. To clean up, you can retire a grant when you're done
 using it. You should revoke a grant when you intend to actively deny
 operations that depend on it. The following are permitted to call this
 API:
@@ -1059,7 +1059,7 @@ Each argument is described in detail in: L<Paws::KMS::RevokeGrant>
 
 Returns: nothing
 
-  Revokes the specified grant for the specified customer master key
+Revokes the specified grant for the specified customer master key
 (CMK). You can revoke a grant to actively deny operations that depend
 on it.
 
@@ -1073,7 +1073,7 @@ Each argument is described in detail in: L<Paws::KMS::ScheduleKeyDeletion>
 
 Returns: a L<Paws::KMS::ScheduleKeyDeletionResponse> instance
 
-  Schedules the deletion of a customer master key (CMK). You may provide
+Schedules the deletion of a customer master key (CMK). You may provide
 a waiting period, specified in days, before deletion occurs. If you do
 not provide a waiting period, the default period of 30 days is used.
 When this operation is successful, the state of the CMK changes to
@@ -1100,7 +1100,7 @@ Each argument is described in detail in: L<Paws::KMS::TagResource>
 
 Returns: nothing
 
-  Adds or overwrites one or more tags for the specified customer master
+Adds or overwrites one or more tags for the specified customer master
 key (CMK). You cannot perform this operation on a CMK in a different
 AWS account.
 
@@ -1125,7 +1125,7 @@ Each argument is described in detail in: L<Paws::KMS::UntagResource>
 
 Returns: nothing
 
-  Removes the specified tag or tags from the specified customer master
+Removes the specified tag or tags from the specified customer master
 key (CMK). You cannot perform this operation on a CMK in a different
 AWS account.
 
@@ -1140,7 +1140,7 @@ Each argument is described in detail in: L<Paws::KMS::UpdateAlias>
 
 Returns: nothing
 
-  Associates an existing alias with a different customer master key
+Associates an existing alias with a different customer master key
 (CMK). Each CMK can have multiple aliases, but the aliases must be
 unique within the account and region. You cannot perform this operation
 on an alias in a different AWS account.
@@ -1169,7 +1169,7 @@ Each argument is described in detail in: L<Paws::KMS::UpdateKeyDescription>
 
 Returns: nothing
 
-  Updates the description of a customer master key (CMK). To see the
+Updates the description of a customer master key (CMK). To see the
 decription of a CMK, use DescribeKey.
 
 You cannot perform this operation on a CMK in a different AWS account.
@@ -1238,9 +1238,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -21,7 +21,7 @@ package Paws::Polly::SynthesizeSpeech;
 
 =head1 NAME
 
-Paws::Polly::SynthesizeSpeech - Arguments for method SynthesizeSpeech on Paws::Polly
+Paws::Polly::SynthesizeSpeech - Arguments for method SynthesizeSpeech on L<Paws::Polly>
 
 =head1 DESCRIPTION
 
@@ -103,9 +103,9 @@ This class forms part of L<Paws>, documenting arguments for method SynthesizeSpe
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

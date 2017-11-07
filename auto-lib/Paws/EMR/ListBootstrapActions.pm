@@ -15,7 +15,7 @@ package Paws::EMR::ListBootstrapActions;
 
 =head1 NAME
 
-Paws::EMR::ListBootstrapActions - Arguments for method ListBootstrapActions on Paws::EMR
+Paws::EMR::ListBootstrapActions - Arguments for method ListBootstrapActions on L<Paws::EMR>
 
 =head1 DESCRIPTION
 
@@ -54,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method ListBootstrap
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

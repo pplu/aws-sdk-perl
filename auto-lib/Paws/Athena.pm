@@ -190,7 +190,7 @@ Each argument is described in detail in: L<Paws::Athena::BatchGetNamedQuery>
 
 Returns: a L<Paws::Athena::BatchGetNamedQueryOutput> instance
 
-  Returns the details of a single named query or a list of up to 50
+Returns the details of a single named query or a list of up to 50
 queries, which you provide as an array of query ID strings. Use
 ListNamedQueries to get the list of named query IDs. If information
 could not be retrieved for a submitted query ID, information about the
@@ -206,7 +206,7 @@ Each argument is described in detail in: L<Paws::Athena::BatchGetQueryExecution>
 
 Returns: a L<Paws::Athena::BatchGetQueryExecutionOutput> instance
 
-  Returns the details of a single query execution or a list of up to 50
+Returns the details of a single query execution or a list of up to 50
 query executions, which you provide as an array of query execution ID
 strings. To get a list of query execution IDs, use ListQueryExecutions.
 Query executions are different from named (saved) queries. Use
@@ -219,7 +219,7 @@ Each argument is described in detail in: L<Paws::Athena::CreateNamedQuery>
 
 Returns: a L<Paws::Athena::CreateNamedQueryOutput> instance
 
-  Creates a named query.
+Creates a named query.
 
 For code samples using the AWS SDK for Java, see Examples and Code
 Samples in the I<Amazon Athena User Guide>.
@@ -231,7 +231,7 @@ Each argument is described in detail in: L<Paws::Athena::DeleteNamedQuery>
 
 Returns: a L<Paws::Athena::DeleteNamedQueryOutput> instance
 
-  Deletes a named query.
+Deletes a named query.
 
 For code samples using the AWS SDK for Java, see Examples and Code
 Samples in the I<Amazon Athena User Guide>.
@@ -243,7 +243,7 @@ Each argument is described in detail in: L<Paws::Athena::GetNamedQuery>
 
 Returns: a L<Paws::Athena::GetNamedQueryOutput> instance
 
-  Returns information about a single query.
+Returns information about a single query.
 
 
 =head2 GetQueryExecution(QueryExecutionId => Str)
@@ -252,7 +252,7 @@ Each argument is described in detail in: L<Paws::Athena::GetQueryExecution>
 
 Returns: a L<Paws::Athena::GetQueryExecutionOutput> instance
 
-  Returns information about a single execution of a query. Each time a
+Returns information about a single execution of a query. Each time a
 query executes, information about the query execution is saved with a
 unique ID.
 
@@ -263,7 +263,7 @@ Each argument is described in detail in: L<Paws::Athena::GetQueryResults>
 
 Returns: a L<Paws::Athena::GetQueryResultsOutput> instance
 
-  Returns the results of a single query execution specified by
+Returns the results of a single query execution specified by
 C<QueryExecutionId>. This request does not execute the query but
 returns results. Use StartQueryExecution to run a query.
 
@@ -274,7 +274,7 @@ Each argument is described in detail in: L<Paws::Athena::ListNamedQueries>
 
 Returns: a L<Paws::Athena::ListNamedQueriesOutput> instance
 
-  Provides a list of all available query IDs.
+Provides a list of all available query IDs.
 
 For code samples using the AWS SDK for Java, see Examples and Code
 Samples in the I<Amazon Athena User Guide>.
@@ -286,7 +286,7 @@ Each argument is described in detail in: L<Paws::Athena::ListQueryExecutions>
 
 Returns: a L<Paws::Athena::ListQueryExecutionsOutput> instance
 
-  Provides a list of all available query execution IDs.
+Provides a list of all available query execution IDs.
 
 For code samples using the AWS SDK for Java, see Examples and Code
 Samples in the I<Amazon Athena User Guide>.
@@ -298,7 +298,7 @@ Each argument is described in detail in: L<Paws::Athena::StartQueryExecution>
 
 Returns: a L<Paws::Athena::StartQueryExecutionOutput> instance
 
-  Runs (executes) the SQL query statements contained in the C<Query>
+Runs (executes) the SQL query statements contained in the C<Query>
 string.
 
 For code samples using the AWS SDK for Java, see Examples and Code
@@ -311,7 +311,7 @@ Each argument is described in detail in: L<Paws::Athena::StopQueryExecution>
 
 Returns: a L<Paws::Athena::StopQueryExecutionOutput> instance
 
-  Stops a query execution.
+Stops a query execution.
 
 For code samples using the AWS SDK for Java, see Examples and Code
 Samples in the I<Amazon Athena User Guide>.
@@ -368,9 +368,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

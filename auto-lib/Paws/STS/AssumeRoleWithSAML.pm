@@ -18,7 +18,7 @@ package Paws::STS::AssumeRoleWithSAML;
 
 =head1 NAME
 
-Paws::STS::AssumeRoleWithSAML - Arguments for method AssumeRoleWithSAML on Paws::STS
+Paws::STS::AssumeRoleWithSAML - Arguments for method AssumeRoleWithSAML on L<Paws::STS>
 
 =head1 DESCRIPTION
 
@@ -113,9 +113,9 @@ This class forms part of L<Paws>, documenting arguments for method AssumeRoleWit
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

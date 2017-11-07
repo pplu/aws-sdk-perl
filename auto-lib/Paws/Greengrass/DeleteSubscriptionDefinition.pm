@@ -15,7 +15,7 @@ package Paws::Greengrass::DeleteSubscriptionDefinition;
 
 =head1 NAME
 
-Paws::Greengrass::DeleteSubscriptionDefinition - Arguments for method DeleteSubscriptionDefinition on Paws::Greengrass
+Paws::Greengrass::DeleteSubscriptionDefinition - Arguments for method DeleteSubscriptionDefinition on L<Paws::Greengrass>
 
 =head1 DESCRIPTION
 
@@ -47,9 +47,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteSubscri
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

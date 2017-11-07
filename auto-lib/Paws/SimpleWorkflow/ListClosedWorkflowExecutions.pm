@@ -23,7 +23,7 @@ package Paws::SimpleWorkflow::ListClosedWorkflowExecutions;
 
 =head1 NAME
 
-Paws::SimpleWorkflow::ListClosedWorkflowExecutions - Arguments for method ListClosedWorkflowExecutions on Paws::SimpleWorkflow
+Paws::SimpleWorkflow::ListClosedWorkflowExecutions - Arguments for method ListClosedWorkflowExecutions on L<Paws::SimpleWorkflow>
 
 =head1 DESCRIPTION
 
@@ -155,9 +155,9 @@ This class forms part of L<Paws>, documenting arguments for method ListClosedWor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

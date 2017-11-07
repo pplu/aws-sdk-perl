@@ -18,7 +18,7 @@ package Paws::XRay::PutTelemetryRecords;
 
 =head1 NAME
 
-Paws::XRay::PutTelemetryRecords - Arguments for method PutTelemetryRecords on Paws::XRay
+Paws::XRay::PutTelemetryRecords - Arguments for method PutTelemetryRecords on L<Paws::XRay>
 
 =head1 DESCRIPTION
 
@@ -68,9 +68,9 @@ This class forms part of L<Paws>, documenting arguments for method PutTelemetryR
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

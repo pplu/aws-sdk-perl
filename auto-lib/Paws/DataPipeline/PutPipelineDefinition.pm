@@ -17,7 +17,7 @@ package Paws::DataPipeline::PutPipelineDefinition;
 
 =head1 NAME
 
-Paws::DataPipeline::PutPipelineDefinition - Arguments for method PutPipelineDefinition on Paws::DataPipeline
+Paws::DataPipeline::PutPipelineDefinition - Arguments for method PutPipelineDefinition on L<Paws::DataPipeline>
 
 =head1 DESCRIPTION
 
@@ -68,9 +68,9 @@ This class forms part of L<Paws>, documenting arguments for method PutPipelineDe
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

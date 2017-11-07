@@ -367,7 +367,7 @@ Each argument is described in detail in: L<Paws::ELBv2::AddListenerCertificates>
 
 Returns: a L<Paws::ELBv2::AddListenerCertificatesOutput> instance
 
-  Adds the specified certificate to the specified secure listener.
+Adds the specified certificate to the specified secure listener.
 
 If the certificate was already added, the call is successful but the
 certificate is not added again.
@@ -383,7 +383,7 @@ Each argument is described in detail in: L<Paws::ELBv2::AddTags>
 
 Returns: a L<Paws::ELBv2::AddTagsOutput> instance
 
-  Adds the specified tags to the specified Elastic Load Balancing
+Adds the specified tags to the specified Elastic Load Balancing
 resource. You can tag your Application Load Balancers, Network Load
 Balancers, and your target groups.
 
@@ -400,7 +400,7 @@ Each argument is described in detail in: L<Paws::ELBv2::CreateListener>
 
 Returns: a L<Paws::ELBv2::CreateListenerOutput> instance
 
-  Creates a listener for the specified Application Load Balancer or
+Creates a listener for the specified Application Load Balancer or
 Network Load Balancer.
 
 You can create up to 10 listeners per load balancer.
@@ -421,7 +421,7 @@ Each argument is described in detail in: L<Paws::ELBv2::CreateLoadBalancer>
 
 Returns: a L<Paws::ELBv2::CreateLoadBalancerOutput> instance
 
-  Creates an Application Load Balancer or a Network Load Balancer.
+Creates an Application Load Balancer or a Network Load Balancer.
 
 When you create a load balancer, you can specify security groups,
 subnets, IP address type, and tags. Otherwise, you could do so later
@@ -449,7 +449,7 @@ Each argument is described in detail in: L<Paws::ELBv2::CreateRule>
 
 Returns: a L<Paws::ELBv2::CreateRuleOutput> instance
 
-  Creates a rule for the specified listener. The listener must be
+Creates a rule for the specified listener. The listener must be
 associated with an Application Load Balancer.
 
 Rules are evaluated in priority order, from the lowest value to the
@@ -469,7 +469,7 @@ Each argument is described in detail in: L<Paws::ELBv2::CreateTargetGroup>
 
 Returns: a L<Paws::ELBv2::CreateTargetGroupOutput> instance
 
-  Creates a target group.
+Creates a target group.
 
 To register targets with the target group, use RegisterTargets. To
 update the health check settings for the target group, use
@@ -492,7 +492,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DeleteListener>
 
 Returns: a L<Paws::ELBv2::DeleteListenerOutput> instance
 
-  Deletes the specified listener.
+Deletes the specified listener.
 
 Alternatively, your listener is deleted when you delete the load
 balancer it is attached to using DeleteLoadBalancer.
@@ -504,7 +504,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DeleteLoadBalancer>
 
 Returns: a L<Paws::ELBv2::DeleteLoadBalancerOutput> instance
 
-  Deletes the specified Application Load Balancer or Network Load
+Deletes the specified Application Load Balancer or Network Load
 Balancer and its attached listeners.
 
 You can't delete a load balancer if deletion protection is enabled. If
@@ -523,7 +523,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DeleteRule>
 
 Returns: a L<Paws::ELBv2::DeleteRuleOutput> instance
 
-  Deletes the specified rule.
+Deletes the specified rule.
 
 
 =head2 DeleteTargetGroup(TargetGroupArn => Str)
@@ -532,7 +532,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DeleteTargetGroup>
 
 Returns: a L<Paws::ELBv2::DeleteTargetGroupOutput> instance
 
-  Deletes the specified target group.
+Deletes the specified target group.
 
 You can delete a target group if it is not referenced by any actions.
 Deleting a target group also deletes any associated health checks.
@@ -544,7 +544,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DeregisterTargets>
 
 Returns: a L<Paws::ELBv2::DeregisterTargetsOutput> instance
 
-  Deregisters the specified targets from the specified target group.
+Deregisters the specified targets from the specified target group.
 After the targets are deregistered, they no longer receive traffic from
 the load balancer.
 
@@ -555,7 +555,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeAccountLimits>
 
 Returns: a L<Paws::ELBv2::DescribeAccountLimitsOutput> instance
 
-  Describes the current Elastic Load Balancing resource limits for your
+Describes the current Elastic Load Balancing resource limits for your
 AWS account.
 
 For more information, see Limits for Your Application Load Balancers in
@@ -569,7 +569,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeListenerCertific
 
 Returns: a L<Paws::ELBv2::DescribeListenerCertificatesOutput> instance
 
-  Describes the certificates for the specified secure listener.
+Describes the certificates for the specified secure listener.
 
 
 =head2 DescribeListeners([ListenerArns => ArrayRef[Str|Undef], LoadBalancerArn => Str, Marker => Str, PageSize => Int])
@@ -578,7 +578,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeListeners>
 
 Returns: a L<Paws::ELBv2::DescribeListenersOutput> instance
 
-  Describes the specified listeners or the listeners for the specified
+Describes the specified listeners or the listeners for the specified
 Application Load Balancer or Network Load Balancer. You must specify
 either a load balancer or one or more listeners.
 
@@ -589,7 +589,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeLoadBalancerAttr
 
 Returns: a L<Paws::ELBv2::DescribeLoadBalancerAttributesOutput> instance
 
-  Describes the attributes for the specified Application Load Balancer or
+Describes the attributes for the specified Application Load Balancer or
 Network Load Balancer.
 
 
@@ -599,7 +599,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeLoadBalancers>
 
 Returns: a L<Paws::ELBv2::DescribeLoadBalancersOutput> instance
 
-  Describes the specified load balancers or all of your load balancers.
+Describes the specified load balancers or all of your load balancers.
 
 To describe the listeners for a load balancer, use DescribeListeners.
 To describe the attributes for a load balancer, use
@@ -612,7 +612,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeRules>
 
 Returns: a L<Paws::ELBv2::DescribeRulesOutput> instance
 
-  Describes the specified rules or the rules for the specified listener.
+Describes the specified rules or the rules for the specified listener.
 You must specify either a listener or one or more rules.
 
 
@@ -622,7 +622,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeSSLPolicies>
 
 Returns: a L<Paws::ELBv2::DescribeSSLPoliciesOutput> instance
 
-  Describes the specified policies or all policies used for SSL
+Describes the specified policies or all policies used for SSL
 negotiation.
 
 For more information, see Security Policies in the I<Application Load
@@ -635,7 +635,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeTags>
 
 Returns: a L<Paws::ELBv2::DescribeTagsOutput> instance
 
-  Describes the tags for the specified resources. You can describe the
+Describes the tags for the specified resources. You can describe the
 tags for one or more Application Load Balancers, Network Load
 Balancers, and target groups.
 
@@ -646,7 +646,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeTargetGroupAttri
 
 Returns: a L<Paws::ELBv2::DescribeTargetGroupAttributesOutput> instance
 
-  Describes the attributes for the specified target group.
+Describes the attributes for the specified target group.
 
 
 =head2 DescribeTargetGroups([LoadBalancerArn => Str, Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int, TargetGroupArns => ArrayRef[Str|Undef]])
@@ -655,7 +655,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeTargetGroups>
 
 Returns: a L<Paws::ELBv2::DescribeTargetGroupsOutput> instance
 
-  Describes the specified target groups or all of your target groups. By
+Describes the specified target groups or all of your target groups. By
 default, all target groups are described. Alternatively, you can
 specify one of the following to filter the results: the ARN of the load
 balancer, the names of one or more target groups, or the ARNs of one or
@@ -672,7 +672,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeTargetHealth>
 
 Returns: a L<Paws::ELBv2::DescribeTargetHealthOutput> instance
 
-  Describes the health of the specified targets or all of your targets.
+Describes the health of the specified targets or all of your targets.
 
 
 =head2 ModifyListener(ListenerArn => Str, [Certificates => ArrayRef[L<Paws::ELBv2::Certificate>], DefaultActions => ArrayRef[L<Paws::ELBv2::Action>], Port => Int, Protocol => Str, SslPolicy => Str])
@@ -681,7 +681,7 @@ Each argument is described in detail in: L<Paws::ELBv2::ModifyListener>
 
 Returns: a L<Paws::ELBv2::ModifyListenerOutput> instance
 
-  Modifies the specified properties of the specified listener.
+Modifies the specified properties of the specified listener.
 
 Any properties that you do not specify retain their current values.
 However, changing the protocol from HTTPS to HTTP removes the security
@@ -695,7 +695,7 @@ Each argument is described in detail in: L<Paws::ELBv2::ModifyLoadBalancerAttrib
 
 Returns: a L<Paws::ELBv2::ModifyLoadBalancerAttributesOutput> instance
 
-  Modifies the specified attributes of the specified Application Load
+Modifies the specified attributes of the specified Application Load
 Balancer or Network Load Balancer.
 
 If any of the specified attributes can't be modified as requested, the
@@ -709,7 +709,7 @@ Each argument is described in detail in: L<Paws::ELBv2::ModifyRule>
 
 Returns: a L<Paws::ELBv2::ModifyRuleOutput> instance
 
-  Modifies the specified rule.
+Modifies the specified rule.
 
 Any existing properties that you do not modify retain their current
 values.
@@ -723,7 +723,7 @@ Each argument is described in detail in: L<Paws::ELBv2::ModifyTargetGroup>
 
 Returns: a L<Paws::ELBv2::ModifyTargetGroupOutput> instance
 
-  Modifies the health checks used when evaluating the health state of the
+Modifies the health checks used when evaluating the health state of the
 targets in the specified target group.
 
 To monitor the health of the targets, use DescribeTargetHealth.
@@ -735,7 +735,7 @@ Each argument is described in detail in: L<Paws::ELBv2::ModifyTargetGroupAttribu
 
 Returns: a L<Paws::ELBv2::ModifyTargetGroupAttributesOutput> instance
 
-  Modifies the specified attributes of the specified target group.
+Modifies the specified attributes of the specified target group.
 
 
 =head2 RegisterTargets(TargetGroupArn => Str, Targets => ArrayRef[L<Paws::ELBv2::TargetDescription>])
@@ -744,7 +744,7 @@ Each argument is described in detail in: L<Paws::ELBv2::RegisterTargets>
 
 Returns: a L<Paws::ELBv2::RegisterTargetsOutput> instance
 
-  Registers the specified targets with the specified target group.
+Registers the specified targets with the specified target group.
 
 You can register targets by instance ID or by IP address. If the target
 is an EC2 instance, it must be in the C<running> state when you
@@ -770,7 +770,7 @@ Each argument is described in detail in: L<Paws::ELBv2::RemoveListenerCertificat
 
 Returns: a L<Paws::ELBv2::RemoveListenerCertificatesOutput> instance
 
-  Removes the specified certificate from the specified secure listener.
+Removes the specified certificate from the specified secure listener.
 
 You can't remove the default certificate for a listener. To replace the
 default certificate, call ModifyListener.
@@ -785,7 +785,7 @@ Each argument is described in detail in: L<Paws::ELBv2::RemoveTags>
 
 Returns: a L<Paws::ELBv2::RemoveTagsOutput> instance
 
-  Removes the specified tags from the specified Elastic Load Balancing
+Removes the specified tags from the specified Elastic Load Balancing
 resource.
 
 To list the current tags for your resources, use DescribeTags.
@@ -797,7 +797,7 @@ Each argument is described in detail in: L<Paws::ELBv2::SetIpAddressType>
 
 Returns: a L<Paws::ELBv2::SetIpAddressTypeOutput> instance
 
-  Sets the type of IP addresses used by the subnets of the specified
+Sets the type of IP addresses used by the subnets of the specified
 Application Load Balancer or Network Load Balancer.
 
 Note that Network Load Balancers must use C<ipv4>.
@@ -809,7 +809,7 @@ Each argument is described in detail in: L<Paws::ELBv2::SetRulePriorities>
 
 Returns: a L<Paws::ELBv2::SetRulePrioritiesOutput> instance
 
-  Sets the priorities of the specified rules.
+Sets the priorities of the specified rules.
 
 You can reorder the rules as long as there are no priority conflicts in
 the new order. Any existing rules that you do not specify retain their
@@ -822,7 +822,7 @@ Each argument is described in detail in: L<Paws::ELBv2::SetSecurityGroups>
 
 Returns: a L<Paws::ELBv2::SetSecurityGroupsOutput> instance
 
-  Associates the specified security groups with the specified Application
+Associates the specified security groups with the specified Application
 Load Balancer. The specified security groups override the previously
 associated security groups.
 
@@ -836,7 +836,7 @@ Each argument is described in detail in: L<Paws::ELBv2::SetSubnets>
 
 Returns: a L<Paws::ELBv2::SetSubnetsOutput> instance
 
-  Enables the Availability Zone for the specified subnets for the
+Enables the Availability Zone for the specified subnets for the
 specified Application Load Balancer. The specified subnets replace the
 previously enabled subnets.
 
@@ -894,9 +894,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -351,7 +351,7 @@ Each argument is described in detail in: L<Paws::Glacier::AbortMultipartUpload>
 
 Returns: nothing
 
-  This operation aborts a multipart upload identified by the upload ID.
+This operation aborts a multipart upload identified by the upload ID.
 
 After the Abort Multipart Upload request succeeds, you cannot upload
 any more parts to the multipart upload or complete the multipart
@@ -379,7 +379,7 @@ Each argument is described in detail in: L<Paws::Glacier::AbortVaultLock>
 
 Returns: nothing
 
-  This operation aborts the vault locking process if the vault lock is
+This operation aborts the vault locking process if the vault lock is
 not in the C<Locked> state. If the vault lock is in the C<Locked> state
 when this operation is requested, the operation returns an
 C<AccessDeniedException> error. Aborting the vault locking process
@@ -404,7 +404,7 @@ Each argument is described in detail in: L<Paws::Glacier::AddTagsToVault>
 
 Returns: nothing
 
-  This operation adds the specified tags to a vault. Each tag is composed
+This operation adds the specified tags to a vault. Each tag is composed
 of a key and a value. Each vault can have up to 10 tags. If your
 request would cause the tag limit for the vault to be exceeded, the
 operation throws the C<LimitExceededException> error. If a tag already
@@ -419,7 +419,7 @@ Each argument is described in detail in: L<Paws::Glacier::CompleteMultipartUploa
 
 Returns: a L<Paws::Glacier::ArchiveCreationOutput> instance
 
-  You call this operation to inform Amazon Glacier that all the archive
+You call this operation to inform Amazon Glacier that all the archive
 parts have been uploaded and that Amazon Glacier can now assemble the
 archive from the uploaded parts. After assembling and saving the
 archive to the vault, Amazon Glacier returns the URI path of the newly
@@ -471,7 +471,7 @@ Each argument is described in detail in: L<Paws::Glacier::CompleteVaultLock>
 
 Returns: nothing
 
-  This operation completes the vault locking process by transitioning the
+This operation completes the vault locking process by transitioning the
 vault lock from the C<InProgress> state to the C<Locked> state, which
 causes the vault lock policy to become unchangeable. A vault lock is
 put into the C<InProgress> state by calling InitiateVaultLock. You can
@@ -495,7 +495,7 @@ Each argument is described in detail in: L<Paws::Glacier::CreateVault>
 
 Returns: a L<Paws::Glacier::CreateVaultOutput> instance
 
-  This operation creates a new vault with the specified name. The name of
+This operation creates a new vault with the specified name. The name of
 the vault must be unique within a region for an AWS account. You can
 create up to 1,000 vaults per account. If you need to create more
 vaults, contact Amazon Glacier.
@@ -534,7 +534,7 @@ Each argument is described in detail in: L<Paws::Glacier::DeleteArchive>
 
 Returns: nothing
 
-  This operation deletes an archive from a vault. Subsequent requests to
+This operation deletes an archive from a vault. Subsequent requests to
 initiate a retrieval of this archive will fail. Archive retrievals that
 are in progress for this archive ID may or may not succeed according to
 the following scenarios:
@@ -575,7 +575,7 @@ Each argument is described in detail in: L<Paws::Glacier::DeleteVault>
 
 Returns: nothing
 
-  This operation deletes a vault. Amazon Glacier will delete a vault only
+This operation deletes a vault. Amazon Glacier will delete a vault only
 if there are no archives in the vault as of the last inventory and
 there have been no writes to the vault since the last inventory. If
 either of these conditions is not satisfied, the vault deletion fails
@@ -604,7 +604,7 @@ Each argument is described in detail in: L<Paws::Glacier::DeleteVaultAccessPolic
 
 Returns: nothing
 
-  This operation deletes the access policy associated with the specified
+This operation deletes the access policy associated with the specified
 vault. The operation is eventually consistent; that is, it might take
 some time for Amazon Glacier to completely remove the access policy,
 and you might still see the effect of the policy for a short time after
@@ -622,7 +622,7 @@ Each argument is described in detail in: L<Paws::Glacier::DeleteVaultNotificatio
 
 Returns: nothing
 
-  This operation deletes the notification configuration set for a vault.
+This operation deletes the notification configuration set for a vault.
 The operation is eventually consistent; that is, it might take some
 time for Amazon Glacier to completely disable the notifications and you
 might still receive some notifications for a short time after you send
@@ -645,7 +645,7 @@ Each argument is described in detail in: L<Paws::Glacier::DescribeJob>
 
 Returns: a L<Paws::Glacier::GlacierJobDescription> instance
 
-  This operation returns information about a job you previously
+This operation returns information about a job you previously
 initiated, including the job initiation date, the user who initiated
 the job, the job status code/message and the Amazon SNS topic to notify
 after Amazon Glacier completes the job. For more information about
@@ -675,7 +675,7 @@ Each argument is described in detail in: L<Paws::Glacier::DescribeVault>
 
 Returns: a L<Paws::Glacier::DescribeVaultOutput> instance
 
-  This operation returns information about a vault, including the vault's
+This operation returns information about a vault, including the vault's
 Amazon Resource Name (ARN), the date the vault was created, the number
 of archives it contains, and the total size of all the archives in the
 vault. The number of archives and their total size are as of the last
@@ -703,7 +703,7 @@ Each argument is described in detail in: L<Paws::Glacier::GetDataRetrievalPolicy
 
 Returns: a L<Paws::Glacier::GetDataRetrievalPolicyOutput> instance
 
-  This operation returns the current data retrieval policy for the
+This operation returns the current data retrieval policy for the
 account and region specified in the GET request. For more information
 about data retrieval policies, see Amazon Glacier Data Retrieval
 Policies.
@@ -715,7 +715,7 @@ Each argument is described in detail in: L<Paws::Glacier::GetJobOutput>
 
 Returns: a L<Paws::Glacier::GetJobOutputOutput> instance
 
-  This operation downloads the output of the job you initiated using
+This operation downloads the output of the job you initiated using
 InitiateJob. Depending on the job type you specified when you initiated
 the job, the output will be either the content of an archive or a vault
 inventory.
@@ -767,7 +767,7 @@ Each argument is described in detail in: L<Paws::Glacier::GetVaultAccessPolicy>
 
 Returns: a L<Paws::Glacier::GetVaultAccessPolicyOutput> instance
 
-  This operation retrieves the C<access-policy> subresource set on the
+This operation retrieves the C<access-policy> subresource set on the
 vault; for more information on setting this subresource, see Set Vault
 Access Policy (PUT access-policy). If there is no access policy set on
 the vault, the operation returns a C<404 Not found> error. For more
@@ -781,7 +781,7 @@ Each argument is described in detail in: L<Paws::Glacier::GetVaultLock>
 
 Returns: a L<Paws::Glacier::GetVaultLockOutput> instance
 
-  This operation retrieves the following attributes from the
+This operation retrieves the following attributes from the
 C<lock-policy> subresource set on the specified vault:
 
 =over
@@ -822,7 +822,7 @@ Each argument is described in detail in: L<Paws::Glacier::GetVaultNotifications>
 
 Returns: a L<Paws::Glacier::GetVaultNotificationsOutput> instance
 
-  This operation retrieves the C<notification-configuration> subresource
+This operation retrieves the C<notification-configuration> subresource
 of the specified vault.
 
 For information about setting a notification configuration on a vault,
@@ -848,7 +848,7 @@ Each argument is described in detail in: L<Paws::Glacier::InitiateJob>
 
 Returns: a L<Paws::Glacier::InitiateJobOutput> instance
 
-  This operation initiates a job of the specified type. In this release,
+This operation initiates a job of the specified type. In this release,
 you can initiate a job to retrieve either an archive or a vault
 inventory (a list of archives in a vault).
 
@@ -1026,7 +1026,7 @@ Each argument is described in detail in: L<Paws::Glacier::InitiateMultipartUploa
 
 Returns: a L<Paws::Glacier::InitiateMultipartUploadOutput> instance
 
-  This operation initiates a multipart upload. Amazon Glacier creates a
+This operation initiates a multipart upload. Amazon Glacier creates a
 multipart upload resource and returns its ID in the response. The
 multipart upload ID is used in subsequent requests to upload parts of
 an archive (see UploadMultipartPart).
@@ -1070,7 +1070,7 @@ Each argument is described in detail in: L<Paws::Glacier::InitiateVaultLock>
 
 Returns: a L<Paws::Glacier::InitiateVaultLockOutput> instance
 
-  This operation initiates the vault locking process by doing the
+This operation initiates the vault locking process by doing the
 following:
 
 =over
@@ -1120,7 +1120,7 @@ Each argument is described in detail in: L<Paws::Glacier::ListJobs>
 
 Returns: a L<Paws::Glacier::ListJobsOutput> instance
 
-  This operation lists jobs for a vault, including jobs that are
+This operation lists jobs for a vault, including jobs that are
 in-progress and jobs that have recently finished.
 
 Amazon Glacier retains recently completed jobs for a period before
@@ -1172,7 +1172,7 @@ Each argument is described in detail in: L<Paws::Glacier::ListMultipartUploads>
 
 Returns: a L<Paws::Glacier::ListMultipartUploadsOutput> instance
 
-  This operation lists in-progress multipart uploads for the specified
+This operation lists in-progress multipart uploads for the specified
 vault. An in-progress multipart upload is a multipart upload that has
 been initiated by an InitiateMultipartUpload request, but has not yet
 been completed or aborted. The list returned in the List Multipart
@@ -1211,7 +1211,7 @@ Each argument is described in detail in: L<Paws::Glacier::ListParts>
 
 Returns: a L<Paws::Glacier::ListPartsOutput> instance
 
-  This operation lists the parts of an archive that have been uploaded in
+This operation lists the parts of an archive that have been uploaded in
 a specific multipart upload. You can make this request at any time
 during an in-progress multipart upload before you complete the upload
 (see CompleteMultipartUpload. List Parts returns an error for completed
@@ -1244,7 +1244,7 @@ Each argument is described in detail in: L<Paws::Glacier::ListProvisionedCapacit
 
 Returns: a L<Paws::Glacier::ListProvisionedCapacityOutput> instance
 
-  This operation lists the provisioned capacity for the specified AWS
+This operation lists the provisioned capacity for the specified AWS
 account.
 
 
@@ -1254,7 +1254,7 @@ Each argument is described in detail in: L<Paws::Glacier::ListTagsForVault>
 
 Returns: a L<Paws::Glacier::ListTagsForVaultOutput> instance
 
-  This operation lists all the tags attached to a vault. The operation
+This operation lists all the tags attached to a vault. The operation
 returns an empty map if there are no tags. For more information about
 tags, see Tagging Amazon Glacier Resources.
 
@@ -1265,7 +1265,7 @@ Each argument is described in detail in: L<Paws::Glacier::ListVaults>
 
 Returns: a L<Paws::Glacier::ListVaultsOutput> instance
 
-  This operation lists all vaults owned by the calling user's account.
+This operation lists all vaults owned by the calling user's account.
 The list returned in the response is ASCII-sorted by vault name.
 
 By default, this operation returns up to 1,000 items. If there are more
@@ -1294,7 +1294,7 @@ Each argument is described in detail in: L<Paws::Glacier::PurchaseProvisionedCap
 
 Returns: a L<Paws::Glacier::PurchaseProvisionedCapacityOutput> instance
 
-  This operation purchases a provisioned capacity unit for an AWS
+This operation purchases a provisioned capacity unit for an AWS
 account.
 
 
@@ -1304,7 +1304,7 @@ Each argument is described in detail in: L<Paws::Glacier::RemoveTagsFromVault>
 
 Returns: nothing
 
-  This operation removes one or more tags from the set of tags attached
+This operation removes one or more tags from the set of tags attached
 to a vault. For more information about tags, see Tagging Amazon Glacier
 Resources. This operation is idempotent. The operation will be
 successful, even if there are no tags attached to the vault.
@@ -1316,7 +1316,7 @@ Each argument is described in detail in: L<Paws::Glacier::SetDataRetrievalPolicy
 
 Returns: nothing
 
-  This operation sets and then enacts a data retrieval policy in the
+This operation sets and then enacts a data retrieval policy in the
 region specified in the PUT request. You can set one policy per region
 for an AWS account. The policy is enacted within a few minutes of a
 successful PUT operation.
@@ -1332,7 +1332,7 @@ Each argument is described in detail in: L<Paws::Glacier::SetVaultAccessPolicy>
 
 Returns: nothing
 
-  This operation configures an access policy for a vault and will
+This operation configures an access policy for a vault and will
 overwrite an existing policy. To configure a vault access policy, send
 a PUT request to the C<access-policy> subresource of the vault. An
 access policy is specific to a vault and is also called a vault
@@ -1347,7 +1347,7 @@ Each argument is described in detail in: L<Paws::Glacier::SetVaultNotifications>
 
 Returns: nothing
 
-  This operation configures notifications that will be sent when specific
+This operation configures notifications that will be sent when specific
 events happen to a vault. By default, you don't get any notifications.
 
 To configure vault notifications, send a PUT request to the
@@ -1397,7 +1397,7 @@ Each argument is described in detail in: L<Paws::Glacier::UploadArchive>
 
 Returns: a L<Paws::Glacier::ArchiveCreationOutput> instance
 
-  This operation adds an archive to a vault. This is a synchronous
+This operation adds an archive to a vault. This is a synchronous
 operation, and for a successful upload, your data is durably persisted.
 Amazon Glacier returns the archive ID in the C<x-amz-archive-id> header
 of the response.
@@ -1444,7 +1444,7 @@ Each argument is described in detail in: L<Paws::Glacier::UploadMultipartPart>
 
 Returns: a L<Paws::Glacier::UploadMultipartPartOutput> instance
 
-  This operation uploads a part of an archive. You can upload archive
+This operation uploads a part of an archive. You can upload archive
 parts in any order. You can also upload them in parallel. You can
 upload up to 10,000 parts for a multipart upload.
 
@@ -1564,9 +1564,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

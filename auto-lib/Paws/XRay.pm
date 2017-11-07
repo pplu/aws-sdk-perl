@@ -85,7 +85,7 @@ Each argument is described in detail in: L<Paws::XRay::BatchGetTraces>
 
 Returns: a L<Paws::XRay::BatchGetTracesResult> instance
 
-  Retrieves a list of traces specified by ID. Each trace is a collection
+Retrieves a list of traces specified by ID. Each trace is a collection
 of segment documents that originates from a single request. Use
 C<GetTraceSummaries> to get a list of trace IDs.
 
@@ -96,7 +96,7 @@ Each argument is described in detail in: L<Paws::XRay::GetServiceGraph>
 
 Returns: a L<Paws::XRay::GetServiceGraphResult> instance
 
-  Retrieves a document that describes services that process incoming
+Retrieves a document that describes services that process incoming
 requests, and downstream services that they call as a result. Root
 services process incoming requests and make calls to downstream
 services. Root services are applications that use the AWS X-Ray SDK.
@@ -110,7 +110,7 @@ Each argument is described in detail in: L<Paws::XRay::GetTraceGraph>
 
 Returns: a L<Paws::XRay::GetTraceGraphResult> instance
 
-  Retrieves a service graph for one or more specific trace IDs.
+Retrieves a service graph for one or more specific trace IDs.
 
 
 =head2 GetTraceSummaries(EndTime => Str, StartTime => Str, [FilterExpression => Str, NextToken => Str, Sampling => Bool])
@@ -119,7 +119,7 @@ Each argument is described in detail in: L<Paws::XRay::GetTraceSummaries>
 
 Returns: a L<Paws::XRay::GetTraceSummariesResult> instance
 
-  Retrieves IDs and metadata for traces available for a specified time
+Retrieves IDs and metadata for traces available for a specified time
 frame using an optional filter. To get the full traces, pass the trace
 IDs to C<BatchGetTraces>.
 
@@ -146,7 +146,7 @@ Each argument is described in detail in: L<Paws::XRay::PutTelemetryRecords>
 
 Returns: a L<Paws::XRay::PutTelemetryRecordsResult> instance
 
-  Used by the AWS X-Ray daemon to upload telemetry.
+Used by the AWS X-Ray daemon to upload telemetry.
 
 
 =head2 PutTraceSegments(TraceSegmentDocuments => ArrayRef[Str|Undef])
@@ -155,7 +155,7 @@ Each argument is described in detail in: L<Paws::XRay::PutTraceSegments>
 
 Returns: a L<Paws::XRay::PutTraceSegmentsResult> instance
 
-  Uploads segment documents to AWS X-Ray. The X-Ray SDK generates segment
+Uploads segment documents to AWS X-Ray. The X-Ray SDK generates segment
 documents and sends them to the X-Ray daemon, which uploads them in
 batches. A segment document can be a completed segment, an in-progress
 segment, or an array of subsegments.
@@ -246,9 +246,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -163,7 +163,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::AddTagsToResource>
 
 Returns: a L<Paws::CloudHSM::AddTagsToResourceResponse> instance
 
-  This is documentation for B<AWS CloudHSM Classic>. For more
+This is documentation for B<AWS CloudHSM Classic>. For more
 information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic
 User Guide, and the AWS CloudHSM Classic API Reference.
 
@@ -184,7 +184,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::CreateHapg>
 
 Returns: a L<Paws::CloudHSM::CreateHapgResponse> instance
 
-  This is documentation for B<AWS CloudHSM Classic>. For more
+This is documentation for B<AWS CloudHSM Classic>. For more
 information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic
 User Guide, and the AWS CloudHSM Classic API Reference.
 
@@ -203,7 +203,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::CreateHsm>
 
 Returns: a L<Paws::CloudHSM::CreateHsmResponse> instance
 
-  This is documentation for B<AWS CloudHSM Classic>. For more
+This is documentation for B<AWS CloudHSM Classic>. For more
 information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic
 User Guide, and the AWS CloudHSM Classic API Reference.
 
@@ -230,7 +230,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::CreateLunaClient>
 
 Returns: a L<Paws::CloudHSM::CreateLunaClientResponse> instance
 
-  This is documentation for B<AWS CloudHSM Classic>. For more
+This is documentation for B<AWS CloudHSM Classic>. For more
 information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic
 User Guide, and the AWS CloudHSM Classic API Reference.
 
@@ -247,7 +247,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::DeleteHapg>
 
 Returns: a L<Paws::CloudHSM::DeleteHapgResponse> instance
 
-  This is documentation for B<AWS CloudHSM Classic>. For more
+This is documentation for B<AWS CloudHSM Classic>. For more
 information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic
 User Guide, and the AWS CloudHSM Classic API Reference.
 
@@ -264,7 +264,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::DeleteHsm>
 
 Returns: a L<Paws::CloudHSM::DeleteHsmResponse> instance
 
-  This is documentation for B<AWS CloudHSM Classic>. For more
+This is documentation for B<AWS CloudHSM Classic>. For more
 information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic
 User Guide, and the AWS CloudHSM Classic API Reference.
 
@@ -282,7 +282,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::DeleteLunaClient>
 
 Returns: a L<Paws::CloudHSM::DeleteLunaClientResponse> instance
 
-  This is documentation for B<AWS CloudHSM Classic>. For more
+This is documentation for B<AWS CloudHSM Classic>. For more
 information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic
 User Guide, and the AWS CloudHSM Classic API Reference.
 
@@ -299,7 +299,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::DescribeHapg>
 
 Returns: a L<Paws::CloudHSM::DescribeHapgResponse> instance
 
-  This is documentation for B<AWS CloudHSM Classic>. For more
+This is documentation for B<AWS CloudHSM Classic>. For more
 information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic
 User Guide, and the AWS CloudHSM Classic API Reference.
 
@@ -316,7 +316,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::DescribeHsm>
 
 Returns: a L<Paws::CloudHSM::DescribeHsmResponse> instance
 
-  This is documentation for B<AWS CloudHSM Classic>. For more
+This is documentation for B<AWS CloudHSM Classic>. For more
 information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic
 User Guide, and the AWS CloudHSM Classic API Reference.
 
@@ -334,7 +334,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::DescribeLunaClient>
 
 Returns: a L<Paws::CloudHSM::DescribeLunaClientResponse> instance
 
-  This is documentation for B<AWS CloudHSM Classic>. For more
+This is documentation for B<AWS CloudHSM Classic>. For more
 information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic
 User Guide, and the AWS CloudHSM Classic API Reference.
 
@@ -351,7 +351,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::GetConfig>
 
 Returns: a L<Paws::CloudHSM::GetConfigResponse> instance
 
-  This is documentation for B<AWS CloudHSM Classic>. For more
+This is documentation for B<AWS CloudHSM Classic>. For more
 information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic
 User Guide, and the AWS CloudHSM Classic API Reference.
 
@@ -369,7 +369,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::ListAvailableZones>
 
 Returns: a L<Paws::CloudHSM::ListAvailableZonesResponse> instance
 
-  This is documentation for B<AWS CloudHSM Classic>. For more
+This is documentation for B<AWS CloudHSM Classic>. For more
 information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic
 User Guide, and the AWS CloudHSM Classic API Reference.
 
@@ -386,7 +386,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::ListHapgs>
 
 Returns: a L<Paws::CloudHSM::ListHapgsResponse> instance
 
-  This is documentation for B<AWS CloudHSM Classic>. For more
+This is documentation for B<AWS CloudHSM Classic>. For more
 information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic
 User Guide, and the AWS CloudHSM Classic API Reference.
 
@@ -408,7 +408,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::ListHsms>
 
 Returns: a L<Paws::CloudHSM::ListHsmsResponse> instance
 
-  This is documentation for B<AWS CloudHSM Classic>. For more
+This is documentation for B<AWS CloudHSM Classic>. For more
 information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic
 User Guide, and the AWS CloudHSM Classic API Reference.
 
@@ -431,7 +431,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::ListLunaClients>
 
 Returns: a L<Paws::CloudHSM::ListLunaClientsResponse> instance
 
-  This is documentation for B<AWS CloudHSM Classic>. For more
+This is documentation for B<AWS CloudHSM Classic>. For more
 information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic
 User Guide, and the AWS CloudHSM Classic API Reference.
 
@@ -453,7 +453,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::ListTagsForResource>
 
 Returns: a L<Paws::CloudHSM::ListTagsForResourceResponse> instance
 
-  This is documentation for B<AWS CloudHSM Classic>. For more
+This is documentation for B<AWS CloudHSM Classic>. For more
 information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic
 User Guide, and the AWS CloudHSM Classic API Reference.
 
@@ -470,7 +470,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::ModifyHapg>
 
 Returns: a L<Paws::CloudHSM::ModifyHapgResponse> instance
 
-  This is documentation for B<AWS CloudHSM Classic>. For more
+This is documentation for B<AWS CloudHSM Classic>. For more
 information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic
 User Guide, and the AWS CloudHSM Classic API Reference.
 
@@ -487,7 +487,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::ModifyHsm>
 
 Returns: a L<Paws::CloudHSM::ModifyHsmResponse> instance
 
-  This is documentation for B<AWS CloudHSM Classic>. For more
+This is documentation for B<AWS CloudHSM Classic>. For more
 information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic
 User Guide, and the AWS CloudHSM Classic API Reference.
 
@@ -510,7 +510,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::ModifyLunaClient>
 
 Returns: a L<Paws::CloudHSM::ModifyLunaClientResponse> instance
 
-  This is documentation for B<AWS CloudHSM Classic>. For more
+This is documentation for B<AWS CloudHSM Classic>. For more
 information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic
 User Guide, and the AWS CloudHSM Classic API Reference.
 
@@ -530,7 +530,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::RemoveTagsFromResourc
 
 Returns: a L<Paws::CloudHSM::RemoveTagsFromResourceResponse> instance
 
-  This is documentation for B<AWS CloudHSM Classic>. For more
+This is documentation for B<AWS CloudHSM Classic>. For more
 information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic
 User Guide, and the AWS CloudHSM Classic API Reference.
 
@@ -559,9 +559,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -15,7 +15,7 @@ package Paws::ResourceTagging::UntagResources;
 
 =head1 NAME
 
-Paws::ResourceTagging::UntagResources - Arguments for method UntagResources on Paws::ResourceTagging
+Paws::ResourceTagging::UntagResources - Arguments for method UntagResources on L<Paws::ResourceTagging>
 
 =head1 DESCRIPTION
 
@@ -58,9 +58,9 @@ This class forms part of L<Paws>, documenting arguments for method UntagResource
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -16,7 +16,7 @@ package Paws::ServiceCatalog::DisassociateProductFromPortfolio;
 
 =head1 NAME
 
-Paws::ServiceCatalog::DisassociateProductFromPortfolio - Arguments for method DisassociateProductFromPortfolio on Paws::ServiceCatalog
+Paws::ServiceCatalog::DisassociateProductFromPortfolio - Arguments for method DisassociateProductFromPortfolio on L<Paws::ServiceCatalog>
 
 =head1 DESCRIPTION
 
@@ -77,9 +77,9 @@ This class forms part of L<Paws>, documenting arguments for method DisassociateP
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

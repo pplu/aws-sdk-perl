@@ -132,7 +132,7 @@ Each argument is described in detail in: L<Paws::ES::AddTags>
 
 Returns: nothing
 
-  Attaches tags to an existing Elasticsearch domain. Tags are a set of
+Attaches tags to an existing Elasticsearch domain. Tags are a set of
 case-sensitive key value pairs. An Elasticsearch domain may have up to
 10 tags. See Tagging Amazon Elasticsearch Service Domains for more
 information.
@@ -144,7 +144,7 @@ Each argument is described in detail in: L<Paws::ES::CreateElasticsearchDomain>
 
 Returns: a L<Paws::ES::CreateElasticsearchDomainResponse> instance
 
-  Creates a new Elasticsearch domain. For more information, see Creating
+Creates a new Elasticsearch domain. For more information, see Creating
 Elasticsearch Domains in the I<Amazon Elasticsearch Service Developer
 Guide>.
 
@@ -155,7 +155,7 @@ Each argument is described in detail in: L<Paws::ES::DeleteElasticsearchDomain>
 
 Returns: a L<Paws::ES::DeleteElasticsearchDomainResponse> instance
 
-  Permanently deletes the specified Elasticsearch domain and all of its
+Permanently deletes the specified Elasticsearch domain and all of its
 data. Once a domain is deleted, it cannot be recovered.
 
 
@@ -165,7 +165,7 @@ Each argument is described in detail in: L<Paws::ES::DeleteElasticsearchServiceR
 
 Returns: nothing
 
-  Deletes the service-linked role that Elasticsearch Service uses to
+Deletes the service-linked role that Elasticsearch Service uses to
 manage and maintain VPC domains. Role deletion will fail if any
 existing VPC domains use the role. You must delete any such
 Elasticsearch domains before deleting the role. See Deleting
@@ -179,7 +179,7 @@ Each argument is described in detail in: L<Paws::ES::DescribeElasticsearchDomain
 
 Returns: a L<Paws::ES::DescribeElasticsearchDomainResponse> instance
 
-  Returns domain configuration information about the specified
+Returns domain configuration information about the specified
 Elasticsearch domain, including the domain ID, domain endpoint, and
 domain ARN.
 
@@ -190,7 +190,7 @@ Each argument is described in detail in: L<Paws::ES::DescribeElasticsearchDomain
 
 Returns: a L<Paws::ES::DescribeElasticsearchDomainConfigResponse> instance
 
-  Provides cluster configuration information about the specified
+Provides cluster configuration information about the specified
 Elasticsearch domain, such as the state, creation date, update version,
 and update date for cluster options.
 
@@ -201,7 +201,7 @@ Each argument is described in detail in: L<Paws::ES::DescribeElasticsearchDomain
 
 Returns: a L<Paws::ES::DescribeElasticsearchDomainsResponse> instance
 
-  Returns domain configuration information about the specified
+Returns domain configuration information about the specified
 Elasticsearch domains, including the domain ID, domain endpoint, and
 domain ARN.
 
@@ -212,7 +212,7 @@ Each argument is described in detail in: L<Paws::ES::DescribeElasticsearchInstan
 
 Returns: a L<Paws::ES::DescribeElasticsearchInstanceTypeLimitsResponse> instance
 
-  Describe Elasticsearch Limits for a given InstanceType and
+Describe Elasticsearch Limits for a given InstanceType and
 ElasticsearchVersion. When modifying existing Domain, specify the C<
 DomainName > to know what Limits are supported for modifying.
 
@@ -223,7 +223,7 @@ Each argument is described in detail in: L<Paws::ES::ListDomainNames>
 
 Returns: a L<Paws::ES::ListDomainNamesResponse> instance
 
-  Returns the name of all Elasticsearch domains owned by the current
+Returns the name of all Elasticsearch domains owned by the current
 user's account.
 
 
@@ -233,7 +233,7 @@ Each argument is described in detail in: L<Paws::ES::ListElasticsearchInstanceTy
 
 Returns: a L<Paws::ES::ListElasticsearchInstanceTypesResponse> instance
 
-  List all Elasticsearch instance types that are supported for given
+List all Elasticsearch instance types that are supported for given
 ElasticsearchVersion
 
 
@@ -243,7 +243,7 @@ Each argument is described in detail in: L<Paws::ES::ListElasticsearchVersions>
 
 Returns: a L<Paws::ES::ListElasticsearchVersionsResponse> instance
 
-  List all supported Elasticsearch versions
+List all supported Elasticsearch versions
 
 
 =head2 ListTags(ARN => Str)
@@ -252,7 +252,7 @@ Each argument is described in detail in: L<Paws::ES::ListTags>
 
 Returns: a L<Paws::ES::ListTagsResponse> instance
 
-  Returns all tags for the given Elasticsearch domain.
+Returns all tags for the given Elasticsearch domain.
 
 
 =head2 RemoveTags(ARN => Str, TagKeys => ArrayRef[Str|Undef])
@@ -261,7 +261,7 @@ Each argument is described in detail in: L<Paws::ES::RemoveTags>
 
 Returns: nothing
 
-  Removes the specified set of tags from the specified Elasticsearch
+Removes the specified set of tags from the specified Elasticsearch
 domain.
 
 
@@ -271,7 +271,7 @@ Each argument is described in detail in: L<Paws::ES::UpdateElasticsearchDomainCo
 
 Returns: a L<Paws::ES::UpdateElasticsearchDomainConfigResponse> instance
 
-  Modifies the cluster configuration of the specified Elasticsearch
+Modifies the cluster configuration of the specified Elasticsearch
 domain, setting as setting the instance type and the number of
 instances.
 
@@ -291,9 +291,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

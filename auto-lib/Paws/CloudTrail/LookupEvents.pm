@@ -18,7 +18,7 @@ package Paws::CloudTrail::LookupEvents;
 
 =head1 NAME
 
-Paws::CloudTrail::LookupEvents - Arguments for method LookupEvents on Paws::CloudTrail
+Paws::CloudTrail::LookupEvents - Arguments for method LookupEvents on L<Paws::CloudTrail>
 
 =head1 DESCRIPTION
 
@@ -84,9 +84,9 @@ This class forms part of L<Paws>, documenting arguments for method LookupEvents 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

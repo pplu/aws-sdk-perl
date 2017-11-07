@@ -15,7 +15,7 @@ package Paws::ACM::AddTagsToCertificate;
 
 =head1 NAME
 
-Paws::ACM::AddTagsToCertificate - Arguments for method AddTagsToCertificate on Paws::ACM
+Paws::ACM::AddTagsToCertificate - Arguments for method AddTagsToCertificate on L<Paws::ACM>
 
 =head1 DESCRIPTION
 
@@ -59,9 +59,9 @@ This class forms part of L<Paws>, documenting arguments for method AddTagsToCert
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

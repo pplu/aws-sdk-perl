@@ -541,7 +541,7 @@ Each argument is described in detail in: L<Paws::WAF::CreateByteMatchSet>
 
 Returns: a L<Paws::WAF::CreateByteMatchSetResponse> instance
 
-  Creates a C<ByteMatchSet>. You then use UpdateByteMatchSet to identify
+Creates a C<ByteMatchSet>. You then use UpdateByteMatchSet to identify
 the part of a web request that you want AWS WAF to inspect, such as the
 values of the C<User-Agent> header or the query string. For example,
 you can create a C<ByteMatchSet> that matches any requests with
@@ -584,7 +584,7 @@ Each argument is described in detail in: L<Paws::WAF::CreateGeoMatchSet>
 
 Returns: a L<Paws::WAF::CreateGeoMatchSetResponse> instance
 
-  Creates an GeoMatchSet, which you use to specify which web requests you
+Creates an GeoMatchSet, which you use to specify which web requests you
 want to allow or block based on the country that the requests originate
 from. For example, if you're receiving a lot of requests from one or
 more countries and you want to block the requests, you can create an
@@ -626,7 +626,7 @@ Each argument is described in detail in: L<Paws::WAF::CreateIPSet>
 
 Returns: a L<Paws::WAF::CreateIPSetResponse> instance
 
-  Creates an IPSet, which you use to specify which web requests you want
+Creates an IPSet, which you use to specify which web requests you want
 to allow or block based on the IP addresses that the requests originate
 from. For example, if you're receiving a lot of requests from one or
 more individual IP addresses or one or more ranges of IP addresses and
@@ -669,7 +669,7 @@ Each argument is described in detail in: L<Paws::WAF::CreateRateBasedRule>
 
 Returns: a L<Paws::WAF::CreateRateBasedRuleResponse> instance
 
-  Creates a RateBasedRule. The C<RateBasedRule> contains a C<RateLimit>,
+Creates a RateBasedRule. The C<RateBasedRule> contains a C<RateLimit>,
 which specifies the maximum number of requests that AWS WAF allows from
 a specified IP address in a five-minute period. The C<RateBasedRule>
 also contains the C<IPSet> objects, C<ByteMatchSet> objects, and other
@@ -777,7 +777,7 @@ Each argument is described in detail in: L<Paws::WAF::CreateRegexMatchSet>
 
 Returns: a L<Paws::WAF::CreateRegexMatchSetResponse> instance
 
-  Creates a RegexMatchSet. You then use UpdateRegexMatchSet to identify
+Creates a RegexMatchSet. You then use UpdateRegexMatchSet to identify
 the part of a web request that you want AWS WAF to inspect, such as the
 values of the C<User-Agent> header or the query string. For example,
 you can create a C<RegexMatchSet> that contains a C<RegexMatchTuple>
@@ -823,7 +823,7 @@ Each argument is described in detail in: L<Paws::WAF::CreateRegexPatternSet>
 
 Returns: a L<Paws::WAF::CreateRegexPatternSetResponse> instance
 
-  Creates a C<RegexPatternSet>. You then use UpdateRegexPatternSet to
+Creates a C<RegexPatternSet>. You then use UpdateRegexPatternSet to
 specify the regular expression (regex) pattern that you want AWS WAF to
 search for, such as C<B[a@]dB[o0]t>. You can then configure AWS WAF to
 reject those requests.
@@ -864,7 +864,7 @@ Each argument is described in detail in: L<Paws::WAF::CreateRule>
 
 Returns: a L<Paws::WAF::CreateRuleResponse> instance
 
-  Creates a C<Rule>, which contains the C<IPSet> objects, C<ByteMatchSet>
+Creates a C<Rule>, which contains the C<IPSet> objects, C<ByteMatchSet>
 objects, and other predicates that identify the requests that you want
 to block. If you add more than one predicate to a C<Rule>, a request
 must match all of the specifications to be allowed or blocked. For
@@ -933,7 +933,7 @@ Each argument is described in detail in: L<Paws::WAF::CreateSizeConstraintSet>
 
 Returns: a L<Paws::WAF::CreateSizeConstraintSetResponse> instance
 
-  Creates a C<SizeConstraintSet>. You then use UpdateSizeConstraintSet to
+Creates a C<SizeConstraintSet>. You then use UpdateSizeConstraintSet to
 identify the part of a web request that you want AWS WAF to check for
 length, such as the length of the C<User-Agent> header or the length of
 the query string. For example, you can create a C<SizeConstraintSet>
@@ -977,7 +977,7 @@ Each argument is described in detail in: L<Paws::WAF::CreateSqlInjectionMatchSet
 
 Returns: a L<Paws::WAF::CreateSqlInjectionMatchSetResponse> instance
 
-  Creates a SqlInjectionMatchSet, which you use to allow, block, or count
+Creates a SqlInjectionMatchSet, which you use to allow, block, or count
 requests that contain snippets of SQL code in a specified part of web
 requests. AWS WAF searches for character sequences that are likely to
 be malicious strings.
@@ -1019,7 +1019,7 @@ Each argument is described in detail in: L<Paws::WAF::CreateWebACL>
 
 Returns: a L<Paws::WAF::CreateWebACLResponse> instance
 
-  Creates a C<WebACL>, which contains the C<Rules> that identify the
+Creates a C<WebACL>, which contains the C<Rules> that identify the
 CloudFront web requests that you want to allow, block, or count. AWS
 WAF evaluates C<Rules> in order based on the value of C<Priority> for
 each C<Rule>.
@@ -1076,7 +1076,7 @@ Each argument is described in detail in: L<Paws::WAF::CreateXssMatchSet>
 
 Returns: a L<Paws::WAF::CreateXssMatchSetResponse> instance
 
-  Creates an XssMatchSet, which you use to allow, block, or count
+Creates an XssMatchSet, which you use to allow, block, or count
 requests that contain cross-site scripting attacks in the specified
 part of web requests. AWS WAF searches for character sequences that are
 likely to be malicious strings.
@@ -1117,7 +1117,7 @@ Each argument is described in detail in: L<Paws::WAF::DeleteByteMatchSet>
 
 Returns: a L<Paws::WAF::DeleteByteMatchSetResponse> instance
 
-  Permanently deletes a ByteMatchSet. You can't delete a C<ByteMatchSet>
+Permanently deletes a ByteMatchSet. You can't delete a C<ByteMatchSet>
 if it's still used in any C<Rules> or if it still includes any
 ByteMatchTuple objects (any filters).
 
@@ -1152,7 +1152,7 @@ Each argument is described in detail in: L<Paws::WAF::DeleteGeoMatchSet>
 
 Returns: a L<Paws::WAF::DeleteGeoMatchSetResponse> instance
 
-  Permanently deletes a GeoMatchSet. You can't delete a C<GeoMatchSet> if
+Permanently deletes a GeoMatchSet. You can't delete a C<GeoMatchSet> if
 it's still used in any C<Rules> or if it still includes any countries.
 
 If you just want to remove a C<GeoMatchSet> from a C<Rule>, use
@@ -1187,7 +1187,7 @@ Each argument is described in detail in: L<Paws::WAF::DeleteIPSet>
 
 Returns: a L<Paws::WAF::DeleteIPSetResponse> instance
 
-  Permanently deletes an IPSet. You can't delete an C<IPSet> if it's
+Permanently deletes an IPSet. You can't delete an C<IPSet> if it's
 still used in any C<Rules> or if it still includes any IP addresses.
 
 If you just want to remove an C<IPSet> from a C<Rule>, use UpdateRule.
@@ -1221,7 +1221,7 @@ Each argument is described in detail in: L<Paws::WAF::DeleteRateBasedRule>
 
 Returns: a L<Paws::WAF::DeleteRateBasedRuleResponse> instance
 
-  Permanently deletes a RateBasedRule. You can't delete a rule if it's
+Permanently deletes a RateBasedRule. You can't delete a rule if it's
 still used in any C<WebACL> objects or if it still includes any
 predicates, such as C<ByteMatchSet> objects.
 
@@ -1256,7 +1256,7 @@ Each argument is described in detail in: L<Paws::WAF::DeleteRegexMatchSet>
 
 Returns: a L<Paws::WAF::DeleteRegexMatchSetResponse> instance
 
-  Permanently deletes a RegexMatchSet. You can't delete a
+Permanently deletes a RegexMatchSet. You can't delete a
 C<RegexMatchSet> if it's still used in any C<Rules> or if it still
 includes any C<RegexMatchTuples> objects (any filters).
 
@@ -1291,7 +1291,7 @@ Each argument is described in detail in: L<Paws::WAF::DeleteRegexPatternSet>
 
 Returns: a L<Paws::WAF::DeleteRegexPatternSetResponse> instance
 
-  Permanently deletes a RegexPatternSet. You can't delete a
+Permanently deletes a RegexPatternSet. You can't delete a
 C<RegexPatternSet> if it's still used in any C<RegexMatchSet> or if the
 C<RegexPatternSet> is not empty.
 
@@ -1302,7 +1302,7 @@ Each argument is described in detail in: L<Paws::WAF::DeleteRule>
 
 Returns: a L<Paws::WAF::DeleteRuleResponse> instance
 
-  Permanently deletes a Rule. You can't delete a C<Rule> if it's still
+Permanently deletes a Rule. You can't delete a C<Rule> if it's still
 used in any C<WebACL> objects or if it still includes any predicates,
 such as C<ByteMatchSet> objects.
 
@@ -1338,7 +1338,7 @@ Each argument is described in detail in: L<Paws::WAF::DeleteSizeConstraintSet>
 
 Returns: a L<Paws::WAF::DeleteSizeConstraintSetResponse> instance
 
-  Permanently deletes a SizeConstraintSet. You can't delete a
+Permanently deletes a SizeConstraintSet. You can't delete a
 C<SizeConstraintSet> if it's still used in any C<Rules> or if it still
 includes any SizeConstraint objects (any filters).
 
@@ -1374,7 +1374,7 @@ Each argument is described in detail in: L<Paws::WAF::DeleteSqlInjectionMatchSet
 
 Returns: a L<Paws::WAF::DeleteSqlInjectionMatchSetResponse> instance
 
-  Permanently deletes a SqlInjectionMatchSet. You can't delete a
+Permanently deletes a SqlInjectionMatchSet. You can't delete a
 C<SqlInjectionMatchSet> if it's still used in any C<Rules> or if it
 still contains any SqlInjectionMatchTuple objects.
 
@@ -1410,7 +1410,7 @@ Each argument is described in detail in: L<Paws::WAF::DeleteWebACL>
 
 Returns: a L<Paws::WAF::DeleteWebACLResponse> instance
 
-  Permanently deletes a WebACL. You can't delete a C<WebACL> if it still
+Permanently deletes a WebACL. You can't delete a C<WebACL> if it still
 contains any C<Rules>.
 
 To delete a C<WebACL>, perform the following steps:
@@ -1441,7 +1441,7 @@ Each argument is described in detail in: L<Paws::WAF::DeleteXssMatchSet>
 
 Returns: a L<Paws::WAF::DeleteXssMatchSetResponse> instance
 
-  Permanently deletes an XssMatchSet. You can't delete an C<XssMatchSet>
+Permanently deletes an XssMatchSet. You can't delete an C<XssMatchSet>
 if it's still used in any C<Rules> or if it still contains any
 XssMatchTuple objects.
 
@@ -1477,7 +1477,7 @@ Each argument is described in detail in: L<Paws::WAF::GetByteMatchSet>
 
 Returns: a L<Paws::WAF::GetByteMatchSetResponse> instance
 
-  Returns the ByteMatchSet specified by C<ByteMatchSetId>.
+Returns the ByteMatchSet specified by C<ByteMatchSetId>.
 
 
 =head2 GetChangeToken()
@@ -1486,7 +1486,7 @@ Each argument is described in detail in: L<Paws::WAF::GetChangeToken>
 
 Returns: a L<Paws::WAF::GetChangeTokenResponse> instance
 
-  When you want to create, update, or delete AWS WAF objects, get a
+When you want to create, update, or delete AWS WAF objects, get a
 change token and include the change token in the create, update, or
 delete request. Change tokens ensure that your application doesn't
 submit conflicting requests to AWS WAF.
@@ -1509,7 +1509,7 @@ Each argument is described in detail in: L<Paws::WAF::GetChangeTokenStatus>
 
 Returns: a L<Paws::WAF::GetChangeTokenStatusResponse> instance
 
-  Returns the status of a C<ChangeToken> that you got by calling
+Returns the status of a C<ChangeToken> that you got by calling
 GetChangeToken. C<ChangeTokenStatus> is one of the following values:
 
 =over
@@ -1539,7 +1539,7 @@ Each argument is described in detail in: L<Paws::WAF::GetGeoMatchSet>
 
 Returns: a L<Paws::WAF::GetGeoMatchSetResponse> instance
 
-  Returns the GeoMatchSet that is specified by C<GeoMatchSetId>.
+Returns the GeoMatchSet that is specified by C<GeoMatchSetId>.
 
 
 =head2 GetIPSet(IPSetId => Str)
@@ -1548,7 +1548,7 @@ Each argument is described in detail in: L<Paws::WAF::GetIPSet>
 
 Returns: a L<Paws::WAF::GetIPSetResponse> instance
 
-  Returns the IPSet that is specified by C<IPSetId>.
+Returns the IPSet that is specified by C<IPSetId>.
 
 
 =head2 GetRateBasedRule(RuleId => Str)
@@ -1557,7 +1557,7 @@ Each argument is described in detail in: L<Paws::WAF::GetRateBasedRule>
 
 Returns: a L<Paws::WAF::GetRateBasedRuleResponse> instance
 
-  Returns the RateBasedRule that is specified by the C<RuleId> that you
+Returns the RateBasedRule that is specified by the C<RuleId> that you
 included in the C<GetRateBasedRule> request.
 
 
@@ -1567,7 +1567,7 @@ Each argument is described in detail in: L<Paws::WAF::GetRateBasedRuleManagedKey
 
 Returns: a L<Paws::WAF::GetRateBasedRuleManagedKeysResponse> instance
 
-  Returns an array of IP addresses currently being blocked by the
+Returns an array of IP addresses currently being blocked by the
 RateBasedRule that is specified by the C<RuleId>. The maximum number of
 managed keys that will be blocked is 10,000. If more than 10,000
 addresses exceed the rate limit, the 10,000 addresses with the highest
@@ -1580,7 +1580,7 @@ Each argument is described in detail in: L<Paws::WAF::GetRegexMatchSet>
 
 Returns: a L<Paws::WAF::GetRegexMatchSetResponse> instance
 
-  Returns the RegexMatchSet specified by C<RegexMatchSetId>.
+Returns the RegexMatchSet specified by C<RegexMatchSetId>.
 
 
 =head2 GetRegexPatternSet(RegexPatternSetId => Str)
@@ -1589,7 +1589,7 @@ Each argument is described in detail in: L<Paws::WAF::GetRegexPatternSet>
 
 Returns: a L<Paws::WAF::GetRegexPatternSetResponse> instance
 
-  Returns the RegexPatternSet specified by C<RegexPatternSetId>.
+Returns the RegexPatternSet specified by C<RegexPatternSetId>.
 
 
 =head2 GetRule(RuleId => Str)
@@ -1598,7 +1598,7 @@ Each argument is described in detail in: L<Paws::WAF::GetRule>
 
 Returns: a L<Paws::WAF::GetRuleResponse> instance
 
-  Returns the Rule that is specified by the C<RuleId> that you included
+Returns the Rule that is specified by the C<RuleId> that you included
 in the C<GetRule> request.
 
 
@@ -1608,7 +1608,7 @@ Each argument is described in detail in: L<Paws::WAF::GetSampledRequests>
 
 Returns: a L<Paws::WAF::GetSampledRequestsResponse> instance
 
-  Gets detailed information about a specified number of requests--a
+Gets detailed information about a specified number of requests--a
 sample--that AWS WAF randomly selects from among the first 5,000
 requests that your AWS resource received during a time range that you
 choose. You can specify a sample size of up to 500 requests, and you
@@ -1628,7 +1628,7 @@ Each argument is described in detail in: L<Paws::WAF::GetSizeConstraintSet>
 
 Returns: a L<Paws::WAF::GetSizeConstraintSetResponse> instance
 
-  Returns the SizeConstraintSet specified by C<SizeConstraintSetId>.
+Returns the SizeConstraintSet specified by C<SizeConstraintSetId>.
 
 
 =head2 GetSqlInjectionMatchSet(SqlInjectionMatchSetId => Str)
@@ -1637,7 +1637,7 @@ Each argument is described in detail in: L<Paws::WAF::GetSqlInjectionMatchSet>
 
 Returns: a L<Paws::WAF::GetSqlInjectionMatchSetResponse> instance
 
-  Returns the SqlInjectionMatchSet that is specified by
+Returns the SqlInjectionMatchSet that is specified by
 C<SqlInjectionMatchSetId>.
 
 
@@ -1647,7 +1647,7 @@ Each argument is described in detail in: L<Paws::WAF::GetWebACL>
 
 Returns: a L<Paws::WAF::GetWebACLResponse> instance
 
-  Returns the WebACL that is specified by C<WebACLId>.
+Returns the WebACL that is specified by C<WebACLId>.
 
 
 =head2 GetXssMatchSet(XssMatchSetId => Str)
@@ -1656,7 +1656,7 @@ Each argument is described in detail in: L<Paws::WAF::GetXssMatchSet>
 
 Returns: a L<Paws::WAF::GetXssMatchSetResponse> instance
 
-  Returns the XssMatchSet that is specified by C<XssMatchSetId>.
+Returns the XssMatchSet that is specified by C<XssMatchSetId>.
 
 
 =head2 ListByteMatchSets([Limit => Int, NextMarker => Str])
@@ -1665,7 +1665,7 @@ Each argument is described in detail in: L<Paws::WAF::ListByteMatchSets>
 
 Returns: a L<Paws::WAF::ListByteMatchSetsResponse> instance
 
-  Returns an array of ByteMatchSetSummary objects.
+Returns an array of ByteMatchSetSummary objects.
 
 
 =head2 ListGeoMatchSets([Limit => Int, NextMarker => Str])
@@ -1674,7 +1674,7 @@ Each argument is described in detail in: L<Paws::WAF::ListGeoMatchSets>
 
 Returns: a L<Paws::WAF::ListGeoMatchSetsResponse> instance
 
-  Returns an array of GeoMatchSetSummary objects in the response.
+Returns an array of GeoMatchSetSummary objects in the response.
 
 
 =head2 ListIPSets([Limit => Int, NextMarker => Str])
@@ -1683,7 +1683,7 @@ Each argument is described in detail in: L<Paws::WAF::ListIPSets>
 
 Returns: a L<Paws::WAF::ListIPSetsResponse> instance
 
-  Returns an array of IPSetSummary objects in the response.
+Returns an array of IPSetSummary objects in the response.
 
 
 =head2 ListRateBasedRules([Limit => Int, NextMarker => Str])
@@ -1692,7 +1692,7 @@ Each argument is described in detail in: L<Paws::WAF::ListRateBasedRules>
 
 Returns: a L<Paws::WAF::ListRateBasedRulesResponse> instance
 
-  Returns an array of RuleSummary objects.
+Returns an array of RuleSummary objects.
 
 
 =head2 ListRegexMatchSets([Limit => Int, NextMarker => Str])
@@ -1701,7 +1701,7 @@ Each argument is described in detail in: L<Paws::WAF::ListRegexMatchSets>
 
 Returns: a L<Paws::WAF::ListRegexMatchSetsResponse> instance
 
-  Returns an array of RegexMatchSetSummary objects.
+Returns an array of RegexMatchSetSummary objects.
 
 
 =head2 ListRegexPatternSets([Limit => Int, NextMarker => Str])
@@ -1710,7 +1710,7 @@ Each argument is described in detail in: L<Paws::WAF::ListRegexPatternSets>
 
 Returns: a L<Paws::WAF::ListRegexPatternSetsResponse> instance
 
-  Returns an array of RegexPatternSetSummary objects.
+Returns an array of RegexPatternSetSummary objects.
 
 
 =head2 ListRules([Limit => Int, NextMarker => Str])
@@ -1719,7 +1719,7 @@ Each argument is described in detail in: L<Paws::WAF::ListRules>
 
 Returns: a L<Paws::WAF::ListRulesResponse> instance
 
-  Returns an array of RuleSummary objects.
+Returns an array of RuleSummary objects.
 
 
 =head2 ListSizeConstraintSets([Limit => Int, NextMarker => Str])
@@ -1728,7 +1728,7 @@ Each argument is described in detail in: L<Paws::WAF::ListSizeConstraintSets>
 
 Returns: a L<Paws::WAF::ListSizeConstraintSetsResponse> instance
 
-  Returns an array of SizeConstraintSetSummary objects.
+Returns an array of SizeConstraintSetSummary objects.
 
 
 =head2 ListSqlInjectionMatchSets([Limit => Int, NextMarker => Str])
@@ -1737,7 +1737,7 @@ Each argument is described in detail in: L<Paws::WAF::ListSqlInjectionMatchSets>
 
 Returns: a L<Paws::WAF::ListSqlInjectionMatchSetsResponse> instance
 
-  Returns an array of SqlInjectionMatchSet objects.
+Returns an array of SqlInjectionMatchSet objects.
 
 
 =head2 ListWebACLs([Limit => Int, NextMarker => Str])
@@ -1746,7 +1746,7 @@ Each argument is described in detail in: L<Paws::WAF::ListWebACLs>
 
 Returns: a L<Paws::WAF::ListWebACLsResponse> instance
 
-  Returns an array of WebACLSummary objects in the response.
+Returns an array of WebACLSummary objects in the response.
 
 
 =head2 ListXssMatchSets([Limit => Int, NextMarker => Str])
@@ -1755,7 +1755,7 @@ Each argument is described in detail in: L<Paws::WAF::ListXssMatchSets>
 
 Returns: a L<Paws::WAF::ListXssMatchSetsResponse> instance
 
-  Returns an array of XssMatchSet objects.
+Returns an array of XssMatchSet objects.
 
 
 =head2 UpdateByteMatchSet(ByteMatchSetId => Str, ChangeToken => Str, Updates => ArrayRef[L<Paws::WAF::ByteMatchSetUpdate>])
@@ -1764,7 +1764,7 @@ Each argument is described in detail in: L<Paws::WAF::UpdateByteMatchSet>
 
 Returns: a L<Paws::WAF::UpdateByteMatchSetResponse> instance
 
-  Inserts or deletes ByteMatchTuple objects (filters) in a ByteMatchSet.
+Inserts or deletes ByteMatchTuple objects (filters) in a ByteMatchSet.
 For each C<ByteMatchTuple> object, you specify the following values:
 
 =over
@@ -1833,7 +1833,7 @@ Each argument is described in detail in: L<Paws::WAF::UpdateGeoMatchSet>
 
 Returns: a L<Paws::WAF::UpdateGeoMatchSetResponse> instance
 
-  Inserts or deletes GeoMatchConstraint objects in an C<GeoMatchSet>. For
+Inserts or deletes GeoMatchConstraint objects in an C<GeoMatchSet>. For
 each C<GeoMatchConstraint> object, you specify the following values:
 
 =over
@@ -1890,7 +1890,7 @@ Each argument is described in detail in: L<Paws::WAF::UpdateIPSet>
 
 Returns: a L<Paws::WAF::UpdateIPSetResponse> instance
 
-  Inserts or deletes IPSetDescriptor objects in an C<IPSet>. For each
+Inserts or deletes IPSetDescriptor objects in an C<IPSet>. For each
 C<IPSetDescriptor> object, you specify the following values:
 
 =over
@@ -1981,7 +1981,7 @@ Each argument is described in detail in: L<Paws::WAF::UpdateRateBasedRule>
 
 Returns: a L<Paws::WAF::UpdateRateBasedRuleResponse> instance
 
-  Inserts or deletes Predicate objects in a rule and updates the
+Inserts or deletes Predicate objects in a rule and updates the
 C<RateLimit> in the rule.
 
 Each C<Predicate> object identifies a predicate, such as a ByteMatchSet
@@ -2048,7 +2048,7 @@ Each argument is described in detail in: L<Paws::WAF::UpdateRegexMatchSet>
 
 Returns: a L<Paws::WAF::UpdateRegexMatchSetResponse> instance
 
-  Inserts or deletes RegexMatchSetUpdate objects (filters) in a
+Inserts or deletes RegexMatchSetUpdate objects (filters) in a
 RegexMatchSet. For each C<RegexMatchSetUpdate> object, you specify the
 following values:
 
@@ -2116,7 +2116,7 @@ Each argument is described in detail in: L<Paws::WAF::UpdateRegexPatternSet>
 
 Returns: a L<Paws::WAF::UpdateRegexPatternSetResponse> instance
 
-  Inserts or deletes RegexMatchSetUpdate objects (filters) in a
+Inserts or deletes RegexMatchSetUpdate objects (filters) in a
 RegexPatternSet. For each C<RegexPatternSet> object, you specify the
 following values:
 
@@ -2190,7 +2190,7 @@ Each argument is described in detail in: L<Paws::WAF::UpdateRule>
 
 Returns: a L<Paws::WAF::UpdateRuleResponse> instance
 
-  Inserts or deletes Predicate objects in a C<Rule>. Each C<Predicate>
+Inserts or deletes Predicate objects in a C<Rule>. Each C<Predicate>
 object identifies a predicate, such as a ByteMatchSet or an IPSet, that
 specifies the web requests that you want to allow, block, or count. If
 you add more than one predicate to a C<Rule>, a request must match all
@@ -2258,7 +2258,7 @@ Each argument is described in detail in: L<Paws::WAF::UpdateSizeConstraintSet>
 
 Returns: a L<Paws::WAF::UpdateSizeConstraintSetResponse> instance
 
-  Inserts or deletes SizeConstraint objects (filters) in a
+Inserts or deletes SizeConstraint objects (filters) in a
 SizeConstraintSet. For each C<SizeConstraint> object, you specify the
 following values:
 
@@ -2335,7 +2335,7 @@ Each argument is described in detail in: L<Paws::WAF::UpdateSqlInjectionMatchSet
 
 Returns: a L<Paws::WAF::UpdateSqlInjectionMatchSetResponse> instance
 
-  Inserts or deletes SqlInjectionMatchTuple objects (filters) in a
+Inserts or deletes SqlInjectionMatchTuple objects (filters) in a
 SqlInjectionMatchSet. For each C<SqlInjectionMatchTuple> object, you
 specify the following values:
 
@@ -2399,7 +2399,7 @@ Each argument is described in detail in: L<Paws::WAF::UpdateWebACL>
 
 Returns: a L<Paws::WAF::UpdateWebACLResponse> instance
 
-  Inserts or deletes ActivatedRule objects in a C<WebACL>. Each C<Rule>
+Inserts or deletes ActivatedRule objects in a C<WebACL>. Each C<Rule>
 identifies web requests that you want to allow, block, or count. When
 you update a C<WebACL>, you specify the following values:
 
@@ -2484,7 +2484,7 @@ Each argument is described in detail in: L<Paws::WAF::UpdateXssMatchSet>
 
 Returns: a L<Paws::WAF::UpdateXssMatchSetResponse> instance
 
-  Inserts or deletes XssMatchTuple objects (filters) in an XssMatchSet.
+Inserts or deletes XssMatchTuple objects (filters) in an XssMatchSet.
 For each C<XssMatchTuple> object, you specify the following values:
 
 =over
@@ -2640,9 +2640,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

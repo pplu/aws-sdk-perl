@@ -16,7 +16,7 @@ package Paws::Glacier::AbortVaultLock;
 
 =head1 NAME
 
-Paws::Glacier::AbortVaultLock - Arguments for method AbortVaultLock on Paws::Glacier
+Paws::Glacier::AbortVaultLock - Arguments for method AbortVaultLock on L<Paws::Glacier>
 
 =head1 DESCRIPTION
 
@@ -60,9 +60,9 @@ This class forms part of L<Paws>, documenting arguments for method AbortVaultLoc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

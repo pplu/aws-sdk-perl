@@ -929,7 +929,7 @@ Each argument is described in detail in: L<Paws::GameLift::AcceptMatch>
 
 Returns: a L<Paws::GameLift::AcceptMatchOutput> instance
 
-  Registers a player's acceptance or rejection of a proposed FlexMatch
+Registers a player's acceptance or rejection of a proposed FlexMatch
 match. A matchmaking configuration may require player acceptance; if
 so, then matches built with that configuration cannot be completed
 unless all players accept the proposed match within a specified time
@@ -985,7 +985,7 @@ Each argument is described in detail in: L<Paws::GameLift::CreateAlias>
 
 Returns: a L<Paws::GameLift::CreateAliasOutput> instance
 
-  Creates an alias for a fleet. In most situations, you can use an alias
+Creates an alias for a fleet. In most situations, you can use an alias
 ID in place of a fleet ID. By using a fleet alias instead of a specific
 fleet ID, you can switch gameplay and players to a new fleet without
 changing your game client or other game components. For example, for
@@ -1044,7 +1044,7 @@ Each argument is described in detail in: L<Paws::GameLift::CreateBuild>
 
 Returns: a L<Paws::GameLift::CreateBuildOutput> instance
 
-  Creates a new Amazon GameLift build from a set of game server binary
+Creates a new Amazon GameLift build from a set of game server binary
 files stored in an Amazon Simple Storage Service (Amazon S3) location.
 To use this API call, create a C<.zip> file containing all of the files
 for the build and store it in an Amazon S3 bucket under your AWS
@@ -1098,7 +1098,7 @@ Each argument is described in detail in: L<Paws::GameLift::CreateFleet>
 
 Returns: a L<Paws::GameLift::CreateFleetOutput> instance
 
-  Creates a new fleet to run your game servers. A fleet is a set of
+Creates a new fleet to run your game servers. A fleet is a set of
 Amazon Elastic Compute Cloud (Amazon EC2) instances, each of which can
 run multiple server processes to host game sessions. You configure a
 fleet to create instances with certain hardware specifications (see
@@ -1288,7 +1288,7 @@ Each argument is described in detail in: L<Paws::GameLift::CreateGameSession>
 
 Returns: a L<Paws::GameLift::CreateGameSessionOutput> instance
 
-  Creates a multiplayer game session for players. This action creates a
+Creates a multiplayer game session for players. This action creates a
 game session record and assigns an available server process in the
 specified fleet to host the game session. A fleet must have an
 C<ACTIVE> status before a game session can be created in it.
@@ -1380,7 +1380,7 @@ Each argument is described in detail in: L<Paws::GameLift::CreateGameSessionQueu
 
 Returns: a L<Paws::GameLift::CreateGameSessionQueueOutput> instance
 
-  Establishes a new queue for processing requests to place new game
+Establishes a new queue for processing requests to place new game
 sessions. A queue identifies where new game sessions can be hosted --
 by specifying a list of destinations (fleets or aliases) -- and how
 long requests can wait in the queue before timing out. You can set up a
@@ -1444,7 +1444,7 @@ Each argument is described in detail in: L<Paws::GameLift::CreateMatchmakingConf
 
 Returns: a L<Paws::GameLift::CreateMatchmakingConfigurationOutput> instance
 
-  Defines a new matchmaking configuration for use with FlexMatch. A
+Defines a new matchmaking configuration for use with FlexMatch. A
 matchmaking configuration sets out guidelines for matching players and
 getting the matches into games. You can set up multiple matchmaking
 configurations to handle the scenarios needed for your game. Each
@@ -1517,7 +1517,7 @@ Each argument is described in detail in: L<Paws::GameLift::CreateMatchmakingRule
 
 Returns: a L<Paws::GameLift::CreateMatchmakingRuleSetOutput> instance
 
-  Creates a new rule set for FlexMatch matchmaking. A rule set describes
+Creates a new rule set for FlexMatch matchmaking. A rule set describes
 the type of match to create, such as the number and size of teams, and
 sets the parameters for acceptable player matches, such as minimum
 skill level or character type. Rule sets are used in matchmaking
@@ -1582,7 +1582,7 @@ Each argument is described in detail in: L<Paws::GameLift::CreatePlayerSession>
 
 Returns: a L<Paws::GameLift::CreatePlayerSessionOutput> instance
 
-  Adds a player to a game session and creates a player session record.
+Adds a player to a game session and creates a player session record.
 Before a player can be added, a game session must have an C<ACTIVE>
 status, have a creation policy of C<ALLOW_ALL>, and have an open player
 slot. To add a group of players to a game session, use
@@ -1641,7 +1641,7 @@ Each argument is described in detail in: L<Paws::GameLift::CreatePlayerSessions>
 
 Returns: a L<Paws::GameLift::CreatePlayerSessionsOutput> instance
 
-  Adds a group of players to a game session. This action is useful with a
+Adds a group of players to a game session. This action is useful with a
 team matching feature. Before players can be added, a game session must
 have an C<ACTIVE> status, have a creation policy of C<ALLOW_ALL>, and
 have an open player slot. To add a single player to a game session, use
@@ -1700,7 +1700,7 @@ Each argument is described in detail in: L<Paws::GameLift::CreateVpcPeeringAutho
 
 Returns: a L<Paws::GameLift::CreateVpcPeeringAuthorizationOutput> instance
 
-  Requests authorization to create or delete a peer connection between
+Requests authorization to create or delete a peer connection between
 the VPC for your Amazon GameLift fleet and a virtual private cloud
 (VPC) in your AWS account. VPC peering enables the game servers on your
 fleet to communicate directly with other AWS resources. Once you've
@@ -1770,7 +1770,7 @@ Each argument is described in detail in: L<Paws::GameLift::CreateVpcPeeringConne
 
 Returns: a L<Paws::GameLift::CreateVpcPeeringConnectionOutput> instance
 
-  Establishes a VPC peering connection between a virtual private cloud
+Establishes a VPC peering connection between a virtual private cloud
 (VPC) in an AWS account with the VPC for your Amazon GameLift fleet.
 VPC peering enables the game servers on your fleet to communicate
 directly with other AWS resources. You can peer with VPCs in any AWS
@@ -1834,7 +1834,7 @@ Each argument is described in detail in: L<Paws::GameLift::DeleteAlias>
 
 Returns: nothing
 
-  Deletes an alias. This action removes all record of the alias. Game
+Deletes an alias. This action removes all record of the alias. Game
 clients attempting to access a server process using the deleted alias
 receive an error. To delete an alias, specify the alias ID to be
 deleted.
@@ -1877,7 +1877,7 @@ Each argument is described in detail in: L<Paws::GameLift::DeleteBuild>
 
 Returns: nothing
 
-  Deletes a build. This action permanently deletes the build record and
+Deletes a build. This action permanently deletes the build record and
 any uploaded build files.
 
 To delete a build, specify its ID. Deleting a build does not affect the
@@ -1918,7 +1918,7 @@ Each argument is described in detail in: L<Paws::GameLift::DeleteFleet>
 
 Returns: nothing
 
-  Deletes everything related to a fleet. Before deleting a fleet, you
+Deletes everything related to a fleet. Before deleting a fleet, you
 must set the fleet's desired capacity to zero. See UpdateFleetCapacity.
 
 This action removes the fleet's resources and the fleet record. Once a
@@ -2034,7 +2034,7 @@ Each argument is described in detail in: L<Paws::GameLift::DeleteGameSessionQueu
 
 Returns: a L<Paws::GameLift::DeleteGameSessionQueueOutput> instance
 
-  Deletes a game session queue. This action means that any
+Deletes a game session queue. This action means that any
 StartGameSessionPlacement requests that reference this queue will fail.
 To delete a queue, specify the queue name.
 
@@ -2068,7 +2068,7 @@ Each argument is described in detail in: L<Paws::GameLift::DeleteMatchmakingConf
 
 Returns: a L<Paws::GameLift::DeleteMatchmakingConfigurationOutput> instance
 
-  Permanently removes a FlexMatch matchmaking configuration. To delete,
+Permanently removes a FlexMatch matchmaking configuration. To delete,
 specify the configuration name. A matchmaking configuration cannot be
 deleted if it is being used in any active matchmaking tickets.
 
@@ -2114,7 +2114,7 @@ Each argument is described in detail in: L<Paws::GameLift::DeleteScalingPolicy>
 
 Returns: nothing
 
-  Deletes a fleet scaling policy. This action means that the policy is no
+Deletes a fleet scaling policy. This action means that the policy is no
 longer in force and removes all record of it. To delete a scaling
 policy, specify both the scaling policy name and the fleet ID it is
 associated with.
@@ -2229,7 +2229,7 @@ Each argument is described in detail in: L<Paws::GameLift::DeleteVpcPeeringAutho
 
 Returns: a L<Paws::GameLift::DeleteVpcPeeringAuthorizationOutput> instance
 
-  Cancels a pending VPC peering authorization for the specified VPC. If
+Cancels a pending VPC peering authorization for the specified VPC. If
 the authorization has already been used to create a peering connection,
 call DeleteVpcPeeringConnection to remove the connection.
 
@@ -2271,7 +2271,7 @@ Each argument is described in detail in: L<Paws::GameLift::DeleteVpcPeeringConne
 
 Returns: a L<Paws::GameLift::DeleteVpcPeeringConnectionOutput> instance
 
-  Removes a VPC peering connection. To delete the connection, you must
+Removes a VPC peering connection. To delete the connection, you must
 have a valid authorization for the VPC peering connection that you want
 to delete. You can check for an authorization by calling
 DescribeVpcPeeringAuthorizations or request a new one using
@@ -2320,7 +2320,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeAlias>
 
 Returns: a L<Paws::GameLift::DescribeAliasOutput> instance
 
-  Retrieves properties for an alias. This operation returns all alias
+Retrieves properties for an alias. This operation returns all alias
 metadata and settings. To get an alias's target fleet ID only, use
 C<ResolveAlias>.
 
@@ -2365,7 +2365,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeBuild>
 
 Returns: a L<Paws::GameLift::DescribeBuildOutput> instance
 
-  Retrieves properties for a build. To get a build record, specify a
+Retrieves properties for a build. To get a build record, specify a
 build ID. If successful, an object containing the build properties is
 returned.
 
@@ -2403,7 +2403,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeEC2InstanceLi
 
 Returns: a L<Paws::GameLift::DescribeEC2InstanceLimitsOutput> instance
 
-  Retrieves the following information for the specified EC2 instance
+Retrieves the following information for the specified EC2 instance
 type:
 
 =over
@@ -2532,7 +2532,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeFleetAttribut
 
 Returns: a L<Paws::GameLift::DescribeFleetAttributesOutput> instance
 
-  Retrieves fleet properties, including metadata, status, and
+Retrieves fleet properties, including metadata, status, and
 configuration, for one or more fleets. You can request attributes for
 all fleets, or specify a list of one or more fleet IDs. When requesting
 multiple fleets, use the pagination parameters to retrieve results as a
@@ -2655,7 +2655,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeFleetCapacity
 
 Returns: a L<Paws::GameLift::DescribeFleetCapacityOutput> instance
 
-  Retrieves the current status of fleet capacity for one or more fleets.
+Retrieves the current status of fleet capacity for one or more fleets.
 This information includes the number of instances that have been
 requested for the fleet and the number currently active. You can
 request capacity for all fleets, or specify a list of one or more fleet
@@ -2779,7 +2779,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeFleetEvents>
 
 Returns: a L<Paws::GameLift::DescribeFleetEventsOutput> instance
 
-  Retrieves entries from the specified fleet's event log. You can specify
+Retrieves entries from the specified fleet's event log. You can specify
 a time range to limit the result set. Use the pagination parameters to
 retrieve results as a set of sequential pages. If successful, a
 collection of event log entries matching the request are returned.
@@ -2894,7 +2894,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeFleetPortSett
 
 Returns: a L<Paws::GameLift::DescribeFleetPortSettingsOutput> instance
 
-  Retrieves the inbound connection permissions for a fleet. Connection
+Retrieves the inbound connection permissions for a fleet. Connection
 permissions include a range of IP addresses and port settings that
 incoming traffic can use to access server processes in the fleet. To
 get a fleet's inbound connection permissions, specify a fleet ID. If
@@ -3012,7 +3012,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeFleetUtilizat
 
 Returns: a L<Paws::GameLift::DescribeFleetUtilizationOutput> instance
 
-  Retrieves utilization statistics for one or more fleets. You can
+Retrieves utilization statistics for one or more fleets. You can
 request utilization data for all fleets, or specify a list of one or
 more fleet IDs. When requesting multiple fleets, use the pagination
 parameters to retrieve results as a set of sequential pages. If
@@ -3134,7 +3134,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeGameSessionDe
 
 Returns: a L<Paws::GameLift::DescribeGameSessionDetailsOutput> instance
 
-  Retrieves properties, including the protection policy in force, for one
+Retrieves properties, including the protection policy in force, for one
 or more game sessions. This action can be used in several ways: (1)
 provide a C<GameSessionId> or C<GameSessionArn> to request details for
 a specific game session; (2) provide either a C<FleetId> or an
@@ -3205,7 +3205,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeGameSessionPl
 
 Returns: a L<Paws::GameLift::DescribeGameSessionPlacementOutput> instance
 
-  Retrieves properties and current status of a game session placement
+Retrieves properties and current status of a game session placement
 request. To get game session placement details, specify the placement
 ID. If successful, a GameSessionPlacement object is returned.
 
@@ -3267,7 +3267,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeGameSessionQu
 
 Returns: a L<Paws::GameLift::DescribeGameSessionQueuesOutput> instance
 
-  Retrieves the properties for one or more game session queues. When
+Retrieves the properties for one or more game session queues. When
 requesting multiple queues, use the pagination parameters to retrieve
 results as a set of sequential pages. If successful, a GameSessionQueue
 object is returned for each requested queue. When specifying a list of
@@ -3304,7 +3304,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeGameSessions>
 
 Returns: a L<Paws::GameLift::DescribeGameSessionsOutput> instance
 
-  Retrieves a set of one or more game sessions. Request a specific game
+Retrieves a set of one or more game sessions. Request a specific game
 session or request all game sessions on a fleet. Alternatively, use
 SearchGameSessions to request a set of active game sessions that are
 filtered by certain criteria. To retrieve protection policy settings
@@ -3376,7 +3376,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeInstances>
 
 Returns: a L<Paws::GameLift::DescribeInstancesOutput> instance
 
-  Retrieves information about a fleet's instances, including instance
+Retrieves information about a fleet's instances, including instance
 IDs. Use this action to get details on all instances in the fleet or
 get details on one specific instance.
 
@@ -3392,7 +3392,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeMatchmaking>
 
 Returns: a L<Paws::GameLift::DescribeMatchmakingOutput> instance
 
-  Retrieves a set of one or more matchmaking tickets. Use this operation
+Retrieves a set of one or more matchmaking tickets. Use this operation
 to retrieve ticket information, including status and--once a successful
 match is made--acquire connection information for the resulting new
 game session.
@@ -3437,7 +3437,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeMatchmakingCo
 
 Returns: a L<Paws::GameLift::DescribeMatchmakingConfigurationsOutput> instance
 
-  Retrieves the details of FlexMatch matchmaking configurations. with
+Retrieves the details of FlexMatch matchmaking configurations. with
 this operation, you have the following options: (1) retrieve all
 existing configurations, (2) provide the names of one or more
 configurations to retrieve, or (3) retrieve all configurations that use
@@ -3489,7 +3489,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeMatchmakingRu
 
 Returns: a L<Paws::GameLift::DescribeMatchmakingRuleSetsOutput> instance
 
-  Retrieves the details for FlexMatch matchmaking rule sets. You can
+Retrieves the details for FlexMatch matchmaking rule sets. You can
 request all existing rule sets for the region, or provide a list of one
 or more rule set names. When requesting multiple items, use the
 pagination parameters to retrieve results as a set of sequential pages.
@@ -3537,7 +3537,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribePlayerSession
 
 Returns: a L<Paws::GameLift::DescribePlayerSessionsOutput> instance
 
-  Retrieves properties for one or more player sessions. This action can
+Retrieves properties for one or more player sessions. This action can
 be used in several ways: (1) provide a C<PlayerSessionId> to request
 properties for a specific player session; (2) provide a
 C<GameSessionId> to request properties for all player sessions in the
@@ -3598,7 +3598,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeRuntimeConfig
 
 Returns: a L<Paws::GameLift::DescribeRuntimeConfigurationOutput> instance
 
-  Retrieves the current run-time configuration for the specified fleet.
+Retrieves the current run-time configuration for the specified fleet.
 The run-time configuration tells Amazon GameLift how to launch server
 processes on instances in the fleet.
 
@@ -3712,7 +3712,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeScalingPolici
 
 Returns: a L<Paws::GameLift::DescribeScalingPoliciesOutput> instance
 
-  Retrieves all scaling policies applied to a fleet.
+Retrieves all scaling policies applied to a fleet.
 
 To get a fleet's scaling policies, specify the fleet ID. You can filter
 this request by policy status, such as to retrieve only active scaling
@@ -3830,7 +3830,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeVpcPeeringAut
 
 Returns: a L<Paws::GameLift::DescribeVpcPeeringAuthorizationsOutput> instance
 
-  Retrieves valid VPC peering authorizations that are pending for the AWS
+Retrieves valid VPC peering authorizations that are pending for the AWS
 account. This operation returns all VPC peering authorizations and
 requests for peering. This includes those initiated and received by
 this account.
@@ -3873,7 +3873,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeVpcPeeringCon
 
 Returns: a L<Paws::GameLift::DescribeVpcPeeringConnectionsOutput> instance
 
-  Retrieves information on VPC peering connections. Use this operation to
+Retrieves information on VPC peering connections. Use this operation to
 get peering information for all fleets or for one specific fleet ID.
 
 To retrieve connection information, call this operation from the AWS
@@ -3921,7 +3921,7 @@ Each argument is described in detail in: L<Paws::GameLift::GetGameSessionLogUrl>
 
 Returns: a L<Paws::GameLift::GetGameSessionLogUrlOutput> instance
 
-  Retrieves the location of stored game session logs for a specified game
+Retrieves the location of stored game session logs for a specified game
 session. When a game session is terminated, Amazon GameLift
 automatically stores the logs in Amazon S3 and retains them for 14
 days. Use this URL to download the logs.
@@ -3987,7 +3987,7 @@ Each argument is described in detail in: L<Paws::GameLift::GetInstanceAccess>
 
 Returns: a L<Paws::GameLift::GetInstanceAccessOutput> instance
 
-  Requests remote access to a fleet instance. Remote access is useful for
+Requests remote access to a fleet instance. Remote access is useful for
 debugging, gathering benchmarking data, or watching activity in real
 time.
 
@@ -4014,7 +4014,7 @@ Each argument is described in detail in: L<Paws::GameLift::ListAliases>
 
 Returns: a L<Paws::GameLift::ListAliasesOutput> instance
 
-  Retrieves all aliases for this AWS account. You can filter the result
+Retrieves all aliases for this AWS account. You can filter the result
 set by alias name and/or routing strategy type. Use the pagination
 parameters to retrieve results in sequential pages.
 
@@ -4058,7 +4058,7 @@ Each argument is described in detail in: L<Paws::GameLift::ListBuilds>
 
 Returns: a L<Paws::GameLift::ListBuildsOutput> instance
 
-  Retrieves build records for all builds associated with the AWS account
+Retrieves build records for all builds associated with the AWS account
 in use. You can limit results to builds that are in a specific status
 by using the C<Status> parameter. Use the pagination parameters to
 retrieve results in a set of sequential pages.
@@ -4099,7 +4099,7 @@ Each argument is described in detail in: L<Paws::GameLift::ListFleets>
 
 Returns: a L<Paws::GameLift::ListFleetsOutput> instance
 
-  Retrieves a collection of fleet records for this AWS account. You can
+Retrieves a collection of fleet records for this AWS account. You can
 filter the result set by build ID. Use the pagination parameters to
 retrieve results in sequential pages.
 
@@ -4215,7 +4215,7 @@ Each argument is described in detail in: L<Paws::GameLift::PutScalingPolicy>
 
 Returns: a L<Paws::GameLift::PutScalingPolicyOutput> instance
 
-  Creates or updates a scaling policy for a fleet. An active scaling
+Creates or updates a scaling policy for a fleet. An active scaling
 policy prompts Amazon GameLift to track a certain metric for a fleet
 and automatically change the fleet's capacity in specific
 circumstances. Each scaling policy contains one rule statement. Fleets
@@ -4350,7 +4350,7 @@ Each argument is described in detail in: L<Paws::GameLift::RequestUploadCredenti
 
 Returns: a L<Paws::GameLift::RequestUploadCredentialsOutput> instance
 
-  I<This API call is not currently in use. > Retrieves a fresh set of
+I<This API call is not currently in use. > Retrieves a fresh set of
 upload credentials and the assigned Amazon S3 storage location for a
 specific build. Valid credentials are required to upload your game
 build files to Amazon S3.
@@ -4362,7 +4362,7 @@ Each argument is described in detail in: L<Paws::GameLift::ResolveAlias>
 
 Returns: a L<Paws::GameLift::ResolveAliasOutput> instance
 
-  Retrieves the fleet ID that a specified alias is currently pointing to.
+Retrieves the fleet ID that a specified alias is currently pointing to.
 
 Alias-related operations include:
 
@@ -4402,7 +4402,7 @@ Each argument is described in detail in: L<Paws::GameLift::SearchGameSessions>
 
 Returns: a L<Paws::GameLift::SearchGameSessionsOutput> instance
 
-  Retrieves a set of game sessions that match a set of search criteria
+Retrieves a set of game sessions that match a set of search criteria
 and sorts them in a specified order. A game session search is limited
 to a single fleet. Search results include only game sessions that are
 in C<ACTIVE> status. If you need to retrieve game sessions with a
@@ -4524,7 +4524,7 @@ Each argument is described in detail in: L<Paws::GameLift::StartGameSessionPlace
 
 Returns: a L<Paws::GameLift::StartGameSessionPlacementOutput> instance
 
-  Places a request for a new game session in a queue (see
+Places a request for a new game session in a queue (see
 CreateGameSessionQueue). When processing a placement request, Amazon
 GameLift searches for available resources on the queue's destinations,
 scanning each until it finds resources or the placement request times
@@ -4638,7 +4638,7 @@ Each argument is described in detail in: L<Paws::GameLift::StartMatchmaking>
 
 Returns: a L<Paws::GameLift::StartMatchmakingOutput> instance
 
-  Uses FlexMatch to create a game match for a group of players based on
+Uses FlexMatch to create a game match for a group of players based on
 custom matchmaking rules, and starts a new game for the matched
 players. Each matchmaking request specifies the type of match to build
 (team configuration, rules for an acceptable match, etc.). The request
@@ -4756,7 +4756,7 @@ Each argument is described in detail in: L<Paws::GameLift::StopGameSessionPlacem
 
 Returns: a L<Paws::GameLift::StopGameSessionPlacementOutput> instance
 
-  Cancels a game session placement that is in C<PENDING> status. To stop
+Cancels a game session placement that is in C<PENDING> status. To stop
 a placement, provide the placement ID values. If successful, the
 placement is moved to C<CANCELLED> status.
 
@@ -4818,7 +4818,7 @@ Each argument is described in detail in: L<Paws::GameLift::StopMatchmaking>
 
 Returns: a L<Paws::GameLift::StopMatchmakingOutput> instance
 
-  Cancels a matchmaking ticket that is currently being processed. To stop
+Cancels a matchmaking ticket that is currently being processed. To stop
 the matchmaking operation, specify the ticket ID. If successful, work
 on the ticket is stopped, and the ticket status is changed to
 C<CANCELLED>.
@@ -4853,7 +4853,7 @@ Each argument is described in detail in: L<Paws::GameLift::UpdateAlias>
 
 Returns: a L<Paws::GameLift::UpdateAliasOutput> instance
 
-  Updates properties for an alias. To update properties, specify the
+Updates properties for an alias. To update properties, specify the
 alias ID to be updated and provide the information to be changed. To
 reassign an alias to another fleet, provide an updated routing
 strategy. If successful, the updated alias record is returned.
@@ -4896,7 +4896,7 @@ Each argument is described in detail in: L<Paws::GameLift::UpdateBuild>
 
 Returns: a L<Paws::GameLift::UpdateBuildOutput> instance
 
-  Updates metadata in a build record, including the build name and
+Updates metadata in a build record, including the build name and
 version. To update the metadata, specify the build ID to update and
 provide the new values. If successful, a build object containing the
 updated metadata is returned.
@@ -4935,7 +4935,7 @@ Each argument is described in detail in: L<Paws::GameLift::UpdateFleetAttributes
 
 Returns: a L<Paws::GameLift::UpdateFleetAttributesOutput> instance
 
-  Updates fleet properties, including name and description, for a fleet.
+Updates fleet properties, including name and description, for a fleet.
 To update metadata, specify the fleet ID and the property values that
 you want to change. If successful, the fleet ID for the updated fleet
 is returned.
@@ -5050,7 +5050,7 @@ Each argument is described in detail in: L<Paws::GameLift::UpdateFleetCapacity>
 
 Returns: a L<Paws::GameLift::UpdateFleetCapacityOutput> instance
 
-  Updates capacity settings for a fleet. Use this action to specify the
+Updates capacity settings for a fleet. Use this action to specify the
 number of EC2 instances (hosts) that you want this fleet to contain.
 Before calling this action, you may want to call
 DescribeEC2InstanceLimits to get the maximum capacity based on the
@@ -5179,7 +5179,7 @@ Each argument is described in detail in: L<Paws::GameLift::UpdateFleetPortSettin
 
 Returns: a L<Paws::GameLift::UpdateFleetPortSettingsOutput> instance
 
-  Updates port settings for a fleet. To update settings, specify the
+Updates port settings for a fleet. To update settings, specify the
 fleet ID to be updated and list the permissions you want to update.
 List the permissions you want to add in
 C<InboundPermissionAuthorizations>, and permissions you want to remove
@@ -5297,7 +5297,7 @@ Each argument is described in detail in: L<Paws::GameLift::UpdateGameSession>
 
 Returns: a L<Paws::GameLift::UpdateGameSessionOutput> instance
 
-  Updates game session properties. This includes the session name,
+Updates game session properties. This includes the session name,
 maximum player count, protection policy, which controls whether or not
 an active game session can be terminated during a scale-down event, and
 the player session creation policy, which controls whether or not new
@@ -5363,7 +5363,7 @@ Each argument is described in detail in: L<Paws::GameLift::UpdateGameSessionQueu
 
 Returns: a L<Paws::GameLift::UpdateGameSessionQueueOutput> instance
 
-  Updates settings for a game session queue, which determines how new
+Updates settings for a game session queue, which determines how new
 game session requests in the queue are processed. To update settings,
 specify the queue name to be updated and provide the new settings. When
 updating destinations, provide a complete list of destinations.
@@ -5398,7 +5398,7 @@ Each argument is described in detail in: L<Paws::GameLift::UpdateMatchmakingConf
 
 Returns: a L<Paws::GameLift::UpdateMatchmakingConfigurationOutput> instance
 
-  Updates settings for a FlexMatch matchmaking configuration. To update
+Updates settings for a FlexMatch matchmaking configuration. To update
 settings, specify the configuration name to be updated and provide the
 new settings.
 
@@ -5444,7 +5444,7 @@ Each argument is described in detail in: L<Paws::GameLift::UpdateRuntimeConfigur
 
 Returns: a L<Paws::GameLift::UpdateRuntimeConfigurationOutput> instance
 
-  Updates the current run-time configuration for the specified fleet,
+Updates the current run-time configuration for the specified fleet,
 which tells Amazon GameLift how to launch server processes on instances
 in the fleet. You can update a fleet's run-time configuration at any
 time after the fleet is created; it does not need to be in an C<ACTIVE>
@@ -5574,7 +5574,7 @@ Each argument is described in detail in: L<Paws::GameLift::ValidateMatchmakingRu
 
 Returns: a L<Paws::GameLift::ValidateMatchmakingRuleSetOutput> instance
 
-  Validates the syntax of a matchmaking rule or rule set. This operation
+Validates the syntax of a matchmaking rule or rule set. This operation
 checks that the rule set uses syntactically correct JSON and that it
 conforms to allowed property expressions. To validate syntax, provide a
 rule set string.
@@ -5630,9 +5630,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

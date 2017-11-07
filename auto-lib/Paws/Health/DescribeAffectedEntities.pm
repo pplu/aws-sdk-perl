@@ -17,7 +17,7 @@ package Paws::Health::DescribeAffectedEntities;
 
 =head1 NAME
 
-Paws::Health::DescribeAffectedEntities - Arguments for method DescribeAffectedEntities on Paws::Health
+Paws::Health::DescribeAffectedEntities - Arguments for method DescribeAffectedEntities on L<Paws::Health>
 
 =head1 DESCRIPTION
 
@@ -74,9 +74,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeAffec
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

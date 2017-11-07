@@ -20,7 +20,7 @@ package Paws::CloudWatchLogs::GetLogEvents;
 
 =head1 NAME
 
-Paws::CloudWatchLogs::GetLogEvents - Arguments for method GetLogEvents on Paws::CloudWatchLogs
+Paws::CloudWatchLogs::GetLogEvents - Arguments for method GetLogEvents on L<Paws::CloudWatchLogs>
 
 =head1 DESCRIPTION
 
@@ -97,9 +97,9 @@ This class forms part of L<Paws>, documenting arguments for method GetLogEvents 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

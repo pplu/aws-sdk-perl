@@ -20,7 +20,7 @@ package Paws::CloudDirectory::ListObjectAttributes;
 
 =head1 NAME
 
-Paws::CloudDirectory::ListObjectAttributes - Arguments for method ListObjectAttributes on Paws::CloudDirectory
+Paws::CloudDirectory::ListObjectAttributes - Arguments for method ListObjectAttributes on L<Paws::CloudDirectory>
 
 =head1 DESCRIPTION
 
@@ -88,9 +88,9 @@ This class forms part of L<Paws>, documenting arguments for method ListObjectAtt
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -315,7 +315,7 @@ Each argument is described in detail in: L<Paws::CloudFront::CreateCloudFrontOri
 
 Returns: a L<Paws::CloudFront::CreateCloudFrontOriginAccessIdentityResult> instance
 
-  Creates a new origin access identity. If you're using Amazon S3 for
+Creates a new origin access identity. If you're using Amazon S3 for
 your origin, you can use an origin access identity to require users to
 access your content using a CloudFront URL instead of the Amazon S3
 URL. For more information about how to use origin access identities,
@@ -329,7 +329,7 @@ Each argument is described in detail in: L<Paws::CloudFront::CreateDistribution>
 
 Returns: a L<Paws::CloudFront::CreateDistributionResult> instance
 
-  Creates a new web distribution. Send a C<POST> request to the
+Creates a new web distribution. Send a C<POST> request to the
 C</I<CloudFront API version>/distribution>/C<distribution ID> resource.
 
 
@@ -339,7 +339,7 @@ Each argument is described in detail in: L<Paws::CloudFront::CreateDistributionW
 
 Returns: a L<Paws::CloudFront::CreateDistributionWithTagsResult> instance
 
-  Create a new distribution with tags.
+Create a new distribution with tags.
 
 
 =head2 CreateInvalidation(DistributionId => Str, InvalidationBatch => L<Paws::CloudFront::InvalidationBatch>)
@@ -348,7 +348,7 @@ Each argument is described in detail in: L<Paws::CloudFront::CreateInvalidation>
 
 Returns: a L<Paws::CloudFront::CreateInvalidationResult> instance
 
-  Create a new invalidation.
+Create a new invalidation.
 
 
 =head2 CreateStreamingDistribution(StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>)
@@ -357,7 +357,7 @@ Each argument is described in detail in: L<Paws::CloudFront::CreateStreamingDist
 
 Returns: a L<Paws::CloudFront::CreateStreamingDistributionResult> instance
 
-  Creates a new RMTP distribution. An RTMP distribution is similar to a
+Creates a new RMTP distribution. An RTMP distribution is similar to a
 web distribution, but an RTMP distribution streams media files using
 the Adobe Real-Time Messaging Protocol (RTMP) instead of serving files
 using HTTP.
@@ -395,7 +395,7 @@ Each argument is described in detail in: L<Paws::CloudFront::CreateStreamingDist
 
 Returns: a L<Paws::CloudFront::CreateStreamingDistributionWithTagsResult> instance
 
-  Create a new streaming distribution with tags.
+Create a new streaming distribution with tags.
 
 
 =head2 DeleteCloudFrontOriginAccessIdentity(Id => Str, [IfMatch => Str])
@@ -404,7 +404,7 @@ Each argument is described in detail in: L<Paws::CloudFront::DeleteCloudFrontOri
 
 Returns: nothing
 
-  Delete an origin access identity.
+Delete an origin access identity.
 
 
 =head2 DeleteDistribution(Id => Str, [IfMatch => Str])
@@ -413,7 +413,7 @@ Each argument is described in detail in: L<Paws::CloudFront::DeleteDistribution>
 
 Returns: nothing
 
-  Delete a distribution.
+Delete a distribution.
 
 
 =head2 DeleteServiceLinkedRole(RoleName => Str)
@@ -422,7 +422,7 @@ Each argument is described in detail in: L<Paws::CloudFront::DeleteServiceLinked
 
 Returns: nothing
 
-  
+
 
 
 =head2 DeleteStreamingDistribution(Id => Str, [IfMatch => Str])
@@ -431,7 +431,7 @@ Each argument is described in detail in: L<Paws::CloudFront::DeleteStreamingDist
 
 Returns: nothing
 
-  Delete a streaming distribution. To delete an RTMP distribution using
+Delete a streaming distribution. To delete an RTMP distribution using
 the CloudFront API, perform the following steps.
 
 B<To delete an RTMP distribution using the CloudFront API>:
@@ -498,7 +498,7 @@ Each argument is described in detail in: L<Paws::CloudFront::GetCloudFrontOrigin
 
 Returns: a L<Paws::CloudFront::GetCloudFrontOriginAccessIdentityResult> instance
 
-  Get the information about an origin access identity.
+Get the information about an origin access identity.
 
 
 =head2 GetCloudFrontOriginAccessIdentityConfig(Id => Str)
@@ -507,7 +507,7 @@ Each argument is described in detail in: L<Paws::CloudFront::GetCloudFrontOrigin
 
 Returns: a L<Paws::CloudFront::GetCloudFrontOriginAccessIdentityConfigResult> instance
 
-  Get the configuration information about an origin access identity.
+Get the configuration information about an origin access identity.
 
 
 =head2 GetDistribution(Id => Str)
@@ -516,7 +516,7 @@ Each argument is described in detail in: L<Paws::CloudFront::GetDistribution>
 
 Returns: a L<Paws::CloudFront::GetDistributionResult> instance
 
-  Get the information about a distribution.
+Get the information about a distribution.
 
 
 =head2 GetDistributionConfig(Id => Str)
@@ -525,7 +525,7 @@ Each argument is described in detail in: L<Paws::CloudFront::GetDistributionConf
 
 Returns: a L<Paws::CloudFront::GetDistributionConfigResult> instance
 
-  Get the configuration information about a distribution.
+Get the configuration information about a distribution.
 
 
 =head2 GetInvalidation(DistributionId => Str, Id => Str)
@@ -534,7 +534,7 @@ Each argument is described in detail in: L<Paws::CloudFront::GetInvalidation>
 
 Returns: a L<Paws::CloudFront::GetInvalidationResult> instance
 
-  Get the information about an invalidation.
+Get the information about an invalidation.
 
 
 =head2 GetStreamingDistribution(Id => Str)
@@ -543,7 +543,7 @@ Each argument is described in detail in: L<Paws::CloudFront::GetStreamingDistrib
 
 Returns: a L<Paws::CloudFront::GetStreamingDistributionResult> instance
 
-  Gets information about a specified RTMP distribution, including the
+Gets information about a specified RTMP distribution, including the
 distribution configuration.
 
 
@@ -553,7 +553,7 @@ Each argument is described in detail in: L<Paws::CloudFront::GetStreamingDistrib
 
 Returns: a L<Paws::CloudFront::GetStreamingDistributionConfigResult> instance
 
-  Get the configuration information about a streaming distribution.
+Get the configuration information about a streaming distribution.
 
 
 =head2 ListCloudFrontOriginAccessIdentities([Marker => Str, MaxItems => Str])
@@ -562,7 +562,7 @@ Each argument is described in detail in: L<Paws::CloudFront::ListCloudFrontOrigi
 
 Returns: a L<Paws::CloudFront::ListCloudFrontOriginAccessIdentitiesResult> instance
 
-  Lists origin access identities.
+Lists origin access identities.
 
 
 =head2 ListDistributions([Marker => Str, MaxItems => Str])
@@ -571,7 +571,7 @@ Each argument is described in detail in: L<Paws::CloudFront::ListDistributions>
 
 Returns: a L<Paws::CloudFront::ListDistributionsResult> instance
 
-  List distributions.
+List distributions.
 
 
 =head2 ListDistributionsByWebACLId(WebACLId => Str, [Marker => Str, MaxItems => Str])
@@ -580,7 +580,7 @@ Each argument is described in detail in: L<Paws::CloudFront::ListDistributionsBy
 
 Returns: a L<Paws::CloudFront::ListDistributionsByWebACLIdResult> instance
 
-  List the distributions that are associated with a specified AWS WAF web
+List the distributions that are associated with a specified AWS WAF web
 ACL.
 
 
@@ -590,7 +590,7 @@ Each argument is described in detail in: L<Paws::CloudFront::ListInvalidations>
 
 Returns: a L<Paws::CloudFront::ListInvalidationsResult> instance
 
-  Lists invalidation batches.
+Lists invalidation batches.
 
 
 =head2 ListStreamingDistributions([Marker => Str, MaxItems => Str])
@@ -599,7 +599,7 @@ Each argument is described in detail in: L<Paws::CloudFront::ListStreamingDistri
 
 Returns: a L<Paws::CloudFront::ListStreamingDistributionsResult> instance
 
-  List streaming distributions.
+List streaming distributions.
 
 
 =head2 ListTagsForResource(Resource => Str)
@@ -608,7 +608,7 @@ Each argument is described in detail in: L<Paws::CloudFront::ListTagsForResource
 
 Returns: a L<Paws::CloudFront::ListTagsForResourceResult> instance
 
-  List tags for a CloudFront resource.
+List tags for a CloudFront resource.
 
 
 =head2 TagResource(Resource => Str, Tags => L<Paws::CloudFront::Tags>)
@@ -617,7 +617,7 @@ Each argument is described in detail in: L<Paws::CloudFront::TagResource>
 
 Returns: nothing
 
-  Add tags to a CloudFront resource.
+Add tags to a CloudFront resource.
 
 
 =head2 UntagResource(Resource => Str, TagKeys => L<Paws::CloudFront::TagKeys>)
@@ -626,7 +626,7 @@ Each argument is described in detail in: L<Paws::CloudFront::UntagResource>
 
 Returns: nothing
 
-  Remove tags from a CloudFront resource.
+Remove tags from a CloudFront resource.
 
 
 =head2 UpdateCloudFrontOriginAccessIdentity(CloudFrontOriginAccessIdentityConfig => L<Paws::CloudFront::CloudFrontOriginAccessIdentityConfig>, Id => Str, [IfMatch => Str])
@@ -635,7 +635,7 @@ Each argument is described in detail in: L<Paws::CloudFront::UpdateCloudFrontOri
 
 Returns: a L<Paws::CloudFront::UpdateCloudFrontOriginAccessIdentityResult> instance
 
-  Update an origin access identity.
+Update an origin access identity.
 
 
 =head2 UpdateDistribution(DistributionConfig => L<Paws::CloudFront::DistributionConfig>, Id => Str, [IfMatch => Str])
@@ -644,7 +644,7 @@ Each argument is described in detail in: L<Paws::CloudFront::UpdateDistribution>
 
 Returns: a L<Paws::CloudFront::UpdateDistributionResult> instance
 
-  Updates the configuration for a web distribution. Perform the following
+Updates the configuration for a web distribution. Perform the following
 steps.
 
 For information about updating a distribution using the CloudFront
@@ -731,7 +731,7 @@ Each argument is described in detail in: L<Paws::CloudFront::UpdateStreamingDist
 
 Returns: a L<Paws::CloudFront::UpdateStreamingDistributionResult> instance
 
-  Update a streaming distribution.
+Update a streaming distribution.
 
 
 
@@ -797,9 +797,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

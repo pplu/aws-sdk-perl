@@ -18,7 +18,7 @@ package Paws::Lambda::ListEventSourceMappings;
 
 =head1 NAME
 
-Paws::Lambda::ListEventSourceMappings - Arguments for method ListEventSourceMappings on Paws::Lambda
+Paws::Lambda::ListEventSourceMappings - Arguments for method ListEventSourceMappings on L<Paws::Lambda>
 
 =head1 DESCRIPTION
 
@@ -82,9 +82,9 @@ This class forms part of L<Paws>, documenting arguments for method ListEventSour
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -21,7 +21,7 @@ package Paws::CloudDirectory::ListIncomingTypedLinks;
 
 =head1 NAME
 
-Paws::CloudDirectory::ListIncomingTypedLinks - Arguments for method ListIncomingTypedLinks on Paws::CloudDirectory
+Paws::CloudDirectory::ListIncomingTypedLinks - Arguments for method ListIncomingTypedLinks on L<Paws::CloudDirectory>
 
 =head1 DESCRIPTION
 
@@ -94,9 +94,9 @@ This class forms part of L<Paws>, documenting arguments for method ListIncomingT
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

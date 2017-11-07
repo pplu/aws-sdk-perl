@@ -100,7 +100,7 @@ Each argument is described in detail in: L<Paws::Firehose::CreateDeliveryStream>
 
 Returns: a L<Paws::Firehose::CreateDeliveryStreamOutput> instance
 
-  Creates a delivery stream.
+Creates a delivery stream.
 
 By default, you can create up to 20 delivery streams per region.
 
@@ -177,7 +177,7 @@ Each argument is described in detail in: L<Paws::Firehose::DeleteDeliveryStream>
 
 Returns: a L<Paws::Firehose::DeleteDeliveryStreamOutput> instance
 
-  Deletes a delivery stream and its data.
+Deletes a delivery stream and its data.
 
 You can delete a delivery stream only if it is in C<ACTIVE> or
 C<DELETING> state, and not in the C<CREATING> state. While the deletion
@@ -198,7 +198,7 @@ Each argument is described in detail in: L<Paws::Firehose::DescribeDeliveryStrea
 
 Returns: a L<Paws::Firehose::DescribeDeliveryStreamOutput> instance
 
-  Describes the specified delivery stream and gets the status. For
+Describes the specified delivery stream and gets the status. For
 example, after your delivery stream is created, call
 DescribeDeliveryStream to see if the delivery stream is C<ACTIVE> and
 therefore ready for data to be sent to it.
@@ -210,7 +210,7 @@ Each argument is described in detail in: L<Paws::Firehose::GetKinesisStream>
 
 Returns: a L<Paws::Firehose::GetKinesisStreamOutput> instance
 
-  
+
 
 
 =head2 ListDeliveryStreams([DeliveryStreamType => Str, ExclusiveStartDeliveryStreamName => Str, Limit => Int])
@@ -219,7 +219,7 @@ Each argument is described in detail in: L<Paws::Firehose::ListDeliveryStreams>
 
 Returns: a L<Paws::Firehose::ListDeliveryStreamsOutput> instance
 
-  Lists your delivery streams.
+Lists your delivery streams.
 
 The number of delivery streams might be too large to return using a
 single call to ListDeliveryStreams. You can limit the number of
@@ -237,7 +237,7 @@ Each argument is described in detail in: L<Paws::Firehose::PutRecord>
 
 Returns: a L<Paws::Firehose::PutRecordOutput> instance
 
-  Writes a single data record into an Amazon Kinesis Firehose delivery
+Writes a single data record into an Amazon Kinesis Firehose delivery
 stream. To write multiple data records into a delivery stream, use
 PutRecordBatch. Applications using these operations are referred to as
 producers.
@@ -282,7 +282,7 @@ Each argument is described in detail in: L<Paws::Firehose::PutRecordBatch>
 
 Returns: a L<Paws::Firehose::PutRecordBatchOutput> instance
 
-  Writes multiple data records into a delivery stream in a single call,
+Writes multiple data records into a delivery stream in a single call,
 which can achieve higher throughput per producer than when writing
 single records. To write single data records into a delivery stream,
 use PutRecord. Applications using these operations are referred to as
@@ -352,7 +352,7 @@ Each argument is described in detail in: L<Paws::Firehose::UpdateDestination>
 
 Returns: a L<Paws::Firehose::UpdateDestinationOutput> instance
 
-  Updates the specified destination of the specified delivery stream.
+Updates the specified destination of the specified delivery stream.
 
 You can use this operation to change the destination type (for example,
 to replace the Amazon S3 destination with Amazon Redshift) or change
@@ -404,9 +404,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

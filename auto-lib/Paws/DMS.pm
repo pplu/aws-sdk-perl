@@ -266,7 +266,7 @@ Each argument is described in detail in: L<Paws::DMS::AddTagsToResource>
 
 Returns: a L<Paws::DMS::AddTagsToResourceResponse> instance
 
-  Adds metadata tags to a DMS resource, including replication instance,
+Adds metadata tags to a DMS resource, including replication instance,
 endpoint, security group, and migration task. These tags can also be
 used with cost allocation reporting to track cost associated with DMS
 resources, or used in a Condition statement in an IAM policy for DMS.
@@ -278,7 +278,7 @@ Each argument is described in detail in: L<Paws::DMS::CreateEndpoint>
 
 Returns: a L<Paws::DMS::CreateEndpointResponse> instance
 
-  Creates an endpoint using the provided settings.
+Creates an endpoint using the provided settings.
 
 
 =head2 CreateEventSubscription(SnsTopicArn => Str, SubscriptionName => Str, [Enabled => Bool, EventCategories => ArrayRef[Str|Undef], SourceIds => ArrayRef[Str|Undef], SourceType => Str, Tags => ArrayRef[L<Paws::DMS::Tag>]])
@@ -287,7 +287,7 @@ Each argument is described in detail in: L<Paws::DMS::CreateEventSubscription>
 
 Returns: a L<Paws::DMS::CreateEventSubscriptionResponse> instance
 
-  Creates an AWS DMS event notification subscription.
+Creates an AWS DMS event notification subscription.
 
 You can specify the type of source (C<SourceType>) you want to be
 notified of, provide a list of AWS DMS source IDs (C<SourceIds>) that
@@ -312,7 +312,7 @@ Each argument is described in detail in: L<Paws::DMS::CreateReplicationInstance>
 
 Returns: a L<Paws::DMS::CreateReplicationInstanceResponse> instance
 
-  Creates the replication instance using the specified parameters.
+Creates the replication instance using the specified parameters.
 
 
 =head2 CreateReplicationSubnetGroup(ReplicationSubnetGroupDescription => Str, ReplicationSubnetGroupIdentifier => Str, SubnetIds => ArrayRef[Str|Undef], [Tags => ArrayRef[L<Paws::DMS::Tag>]])
@@ -321,7 +321,7 @@ Each argument is described in detail in: L<Paws::DMS::CreateReplicationSubnetGro
 
 Returns: a L<Paws::DMS::CreateReplicationSubnetGroupResponse> instance
 
-  Creates a replication subnet group given a list of the subnet IDs in a
+Creates a replication subnet group given a list of the subnet IDs in a
 VPC.
 
 
@@ -331,7 +331,7 @@ Each argument is described in detail in: L<Paws::DMS::CreateReplicationTask>
 
 Returns: a L<Paws::DMS::CreateReplicationTaskResponse> instance
 
-  Creates a replication task using the specified parameters.
+Creates a replication task using the specified parameters.
 
 
 =head2 DeleteCertificate(CertificateArn => Str)
@@ -340,7 +340,7 @@ Each argument is described in detail in: L<Paws::DMS::DeleteCertificate>
 
 Returns: a L<Paws::DMS::DeleteCertificateResponse> instance
 
-  Deletes the specified certificate.
+Deletes the specified certificate.
 
 
 =head2 DeleteEndpoint(EndpointArn => Str)
@@ -349,7 +349,7 @@ Each argument is described in detail in: L<Paws::DMS::DeleteEndpoint>
 
 Returns: a L<Paws::DMS::DeleteEndpointResponse> instance
 
-  Deletes the specified endpoint.
+Deletes the specified endpoint.
 
 All tasks associated with the endpoint must be deleted before you can
 delete the endpoint.
@@ -361,7 +361,7 @@ Each argument is described in detail in: L<Paws::DMS::DeleteEventSubscription>
 
 Returns: a L<Paws::DMS::DeleteEventSubscriptionResponse> instance
 
-  Deletes an AWS DMS event subscription.
+Deletes an AWS DMS event subscription.
 
 
 =head2 DeleteReplicationInstance(ReplicationInstanceArn => Str)
@@ -370,7 +370,7 @@ Each argument is described in detail in: L<Paws::DMS::DeleteReplicationInstance>
 
 Returns: a L<Paws::DMS::DeleteReplicationInstanceResponse> instance
 
-  Deletes the specified replication instance.
+Deletes the specified replication instance.
 
 You must delete any migration tasks that are associated with the
 replication instance before you can delete it.
@@ -382,7 +382,7 @@ Each argument is described in detail in: L<Paws::DMS::DeleteReplicationSubnetGro
 
 Returns: a L<Paws::DMS::DeleteReplicationSubnetGroupResponse> instance
 
-  Deletes a subnet group.
+Deletes a subnet group.
 
 
 =head2 DeleteReplicationTask(ReplicationTaskArn => Str)
@@ -391,7 +391,7 @@ Each argument is described in detail in: L<Paws::DMS::DeleteReplicationTask>
 
 Returns: a L<Paws::DMS::DeleteReplicationTaskResponse> instance
 
-  Deletes the specified replication task.
+Deletes the specified replication task.
 
 
 =head2 DescribeAccountAttributes()
@@ -400,7 +400,7 @@ Each argument is described in detail in: L<Paws::DMS::DescribeAccountAttributes>
 
 Returns: a L<Paws::DMS::DescribeAccountAttributesResponse> instance
 
-  Lists all of the AWS DMS attributes for a customer account. The
+Lists all of the AWS DMS attributes for a customer account. The
 attributes include AWS DMS quotas for the account, such as the number
 of replication instances allowed. The description for a quota includes
 the quota name, current usage toward that quota, and the quota's
@@ -415,7 +415,7 @@ Each argument is described in detail in: L<Paws::DMS::DescribeCertificates>
 
 Returns: a L<Paws::DMS::DescribeCertificatesResponse> instance
 
-  Provides a description of the certificate.
+Provides a description of the certificate.
 
 
 =head2 DescribeConnections([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
@@ -424,7 +424,7 @@ Each argument is described in detail in: L<Paws::DMS::DescribeConnections>
 
 Returns: a L<Paws::DMS::DescribeConnectionsResponse> instance
 
-  Describes the status of the connections that have been made between the
+Describes the status of the connections that have been made between the
 replication instance and an endpoint. Connections are created when you
 test an endpoint.
 
@@ -435,7 +435,7 @@ Each argument is described in detail in: L<Paws::DMS::DescribeEndpoints>
 
 Returns: a L<Paws::DMS::DescribeEndpointsResponse> instance
 
-  Returns information about the endpoints for your account in the current
+Returns information about the endpoints for your account in the current
 region.
 
 
@@ -445,7 +445,7 @@ Each argument is described in detail in: L<Paws::DMS::DescribeEndpointTypes>
 
 Returns: a L<Paws::DMS::DescribeEndpointTypesResponse> instance
 
-  Returns information about the type of endpoints available.
+Returns information about the type of endpoints available.
 
 
 =head2 DescribeEventCategories([Filters => ArrayRef[L<Paws::DMS::Filter>], SourceType => Str])
@@ -454,7 +454,7 @@ Each argument is described in detail in: L<Paws::DMS::DescribeEventCategories>
 
 Returns: a L<Paws::DMS::DescribeEventCategoriesResponse> instance
 
-  Lists categories for all event source types, or, if specified, for a
+Lists categories for all event source types, or, if specified, for a
 specified source type. You can see a list of the event categories and
 source types in Working with Events and Notifications in the AWS
 Database Migration Service User Guide.
@@ -466,7 +466,7 @@ Each argument is described in detail in: L<Paws::DMS::DescribeEvents>
 
 Returns: a L<Paws::DMS::DescribeEventsResponse> instance
 
-  Lists events for a given source identifier and source type. You can
+Lists events for a given source identifier and source type. You can
 also specify a start and end time. For more information on AWS DMS
 events, see Working with Events and Notifications .
 
@@ -477,7 +477,7 @@ Each argument is described in detail in: L<Paws::DMS::DescribeEventSubscriptions
 
 Returns: a L<Paws::DMS::DescribeEventSubscriptionsResponse> instance
 
-  Lists all the event subscriptions for a customer account. The
+Lists all the event subscriptions for a customer account. The
 description of a subscription includes C<SubscriptionName>,
 C<SNSTopicARN>, C<CustomerID>, C<SourceType>, C<SourceID>,
 C<CreationTime>, and C<Status>.
@@ -492,7 +492,7 @@ Each argument is described in detail in: L<Paws::DMS::DescribeOrderableReplicati
 
 Returns: a L<Paws::DMS::DescribeOrderableReplicationInstancesResponse> instance
 
-  Returns information about the replication instance types that can be
+Returns information about the replication instance types that can be
 created in the specified region.
 
 
@@ -502,7 +502,7 @@ Each argument is described in detail in: L<Paws::DMS::DescribeRefreshSchemasStat
 
 Returns: a L<Paws::DMS::DescribeRefreshSchemasStatusResponse> instance
 
-  Returns the status of the RefreshSchemas operation.
+Returns the status of the RefreshSchemas operation.
 
 
 =head2 DescribeReplicationInstances([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
@@ -511,7 +511,7 @@ Each argument is described in detail in: L<Paws::DMS::DescribeReplicationInstanc
 
 Returns: a L<Paws::DMS::DescribeReplicationInstancesResponse> instance
 
-  Returns information about replication instances for your account in the
+Returns information about replication instances for your account in the
 current region.
 
 
@@ -521,7 +521,7 @@ Each argument is described in detail in: L<Paws::DMS::DescribeReplicationSubnetG
 
 Returns: a L<Paws::DMS::DescribeReplicationSubnetGroupsResponse> instance
 
-  Returns information about the replication subnet groups.
+Returns information about the replication subnet groups.
 
 
 =head2 DescribeReplicationTasks([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
@@ -530,7 +530,7 @@ Each argument is described in detail in: L<Paws::DMS::DescribeReplicationTasks>
 
 Returns: a L<Paws::DMS::DescribeReplicationTasksResponse> instance
 
-  Returns information about replication tasks for your account in the
+Returns information about replication tasks for your account in the
 current region.
 
 
@@ -540,7 +540,7 @@ Each argument is described in detail in: L<Paws::DMS::DescribeSchemas>
 
 Returns: a L<Paws::DMS::DescribeSchemasResponse> instance
 
-  Returns information about the schema for the specified endpoint.
+Returns information about the schema for the specified endpoint.
 
 
 =head2 DescribeTableStatistics(ReplicationTaskArn => Str, [Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
@@ -549,7 +549,7 @@ Each argument is described in detail in: L<Paws::DMS::DescribeTableStatistics>
 
 Returns: a L<Paws::DMS::DescribeTableStatisticsResponse> instance
 
-  Returns table statistics on the database migration task, including
+Returns table statistics on the database migration task, including
 table name, rows inserted, rows updated, and rows deleted.
 
 Note that the "last updated" column the DMS console only indicates the
@@ -563,7 +563,7 @@ Each argument is described in detail in: L<Paws::DMS::ImportCertificate>
 
 Returns: a L<Paws::DMS::ImportCertificateResponse> instance
 
-  Uploads the specified certificate.
+Uploads the specified certificate.
 
 
 =head2 ListTagsForResource(ResourceArn => Str)
@@ -572,7 +572,7 @@ Each argument is described in detail in: L<Paws::DMS::ListTagsForResource>
 
 Returns: a L<Paws::DMS::ListTagsForResourceResponse> instance
 
-  Lists all tags for an AWS DMS resource.
+Lists all tags for an AWS DMS resource.
 
 
 =head2 ModifyEndpoint(EndpointArn => Str, [CertificateArn => Str, DatabaseName => Str, DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>, EndpointIdentifier => Str, EndpointType => Str, EngineName => Str, ExtraConnectionAttributes => Str, MongoDbSettings => L<Paws::DMS::MongoDbSettings>, Password => Str, Port => Int, S3Settings => L<Paws::DMS::S3Settings>, ServerName => Str, SslMode => Str, Username => Str])
@@ -581,7 +581,7 @@ Each argument is described in detail in: L<Paws::DMS::ModifyEndpoint>
 
 Returns: a L<Paws::DMS::ModifyEndpointResponse> instance
 
-  Modifies the specified endpoint.
+Modifies the specified endpoint.
 
 
 =head2 ModifyEventSubscription(SubscriptionName => Str, [Enabled => Bool, EventCategories => ArrayRef[Str|Undef], SnsTopicArn => Str, SourceType => Str])
@@ -590,7 +590,7 @@ Each argument is described in detail in: L<Paws::DMS::ModifyEventSubscription>
 
 Returns: a L<Paws::DMS::ModifyEventSubscriptionResponse> instance
 
-  Modifies an existing AWS DMS event notification subscription.
+Modifies an existing AWS DMS event notification subscription.
 
 
 =head2 ModifyReplicationInstance(ReplicationInstanceArn => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, EngineVersion => Str, MultiAZ => Bool, PreferredMaintenanceWindow => Str, ReplicationInstanceClass => Str, ReplicationInstanceIdentifier => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
@@ -599,7 +599,7 @@ Each argument is described in detail in: L<Paws::DMS::ModifyReplicationInstance>
 
 Returns: a L<Paws::DMS::ModifyReplicationInstanceResponse> instance
 
-  Modifies the replication instance to apply new settings. You can change
+Modifies the replication instance to apply new settings. You can change
 one or more parameters by specifying these parameters and the new
 values in the request.
 
@@ -612,7 +612,7 @@ Each argument is described in detail in: L<Paws::DMS::ModifyReplicationSubnetGro
 
 Returns: a L<Paws::DMS::ModifyReplicationSubnetGroupResponse> instance
 
-  Modifies the settings for the specified replication subnet group.
+Modifies the settings for the specified replication subnet group.
 
 
 =head2 ModifyReplicationTask(ReplicationTaskArn => Str, [CdcStartTime => Str, MigrationType => Str, ReplicationTaskIdentifier => Str, ReplicationTaskSettings => Str, TableMappings => Str])
@@ -621,7 +621,7 @@ Each argument is described in detail in: L<Paws::DMS::ModifyReplicationTask>
 
 Returns: a L<Paws::DMS::ModifyReplicationTaskResponse> instance
 
-  Modifies the specified replication task.
+Modifies the specified replication task.
 
 You can't modify the task endpoints. The task must be stopped before
 you can modify it.
@@ -636,7 +636,7 @@ Each argument is described in detail in: L<Paws::DMS::RefreshSchemas>
 
 Returns: a L<Paws::DMS::RefreshSchemasResponse> instance
 
-  Populates the schema for the specified endpoint. This is an
+Populates the schema for the specified endpoint. This is an
 asynchronous operation and can take several minutes. You can check the
 status of this operation by calling the DescribeRefreshSchemasStatus
 operation.
@@ -648,7 +648,7 @@ Each argument is described in detail in: L<Paws::DMS::ReloadTables>
 
 Returns: a L<Paws::DMS::ReloadTablesResponse> instance
 
-  Reloads the target database table with the source data.
+Reloads the target database table with the source data.
 
 
 =head2 RemoveTagsFromResource(ResourceArn => Str, TagKeys => ArrayRef[Str|Undef])
@@ -657,7 +657,7 @@ Each argument is described in detail in: L<Paws::DMS::RemoveTagsFromResource>
 
 Returns: a L<Paws::DMS::RemoveTagsFromResourceResponse> instance
 
-  Removes metadata tags from a DMS resource.
+Removes metadata tags from a DMS resource.
 
 
 =head2 StartReplicationTask(ReplicationTaskArn => Str, StartReplicationTaskType => Str, [CdcStartTime => Str])
@@ -666,7 +666,7 @@ Each argument is described in detail in: L<Paws::DMS::StartReplicationTask>
 
 Returns: a L<Paws::DMS::StartReplicationTaskResponse> instance
 
-  Starts the replication task.
+Starts the replication task.
 
 For more information about AWS DMS tasks, see the AWS DMS user guide at
 Working with Migration Tasks
@@ -678,7 +678,7 @@ Each argument is described in detail in: L<Paws::DMS::StopReplicationTask>
 
 Returns: a L<Paws::DMS::StopReplicationTaskResponse> instance
 
-  Stops the replication task.
+Stops the replication task.
 
 
 =head2 TestConnection(EndpointArn => Str, ReplicationInstanceArn => Str)
@@ -687,7 +687,7 @@ Each argument is described in detail in: L<Paws::DMS::TestConnection>
 
 Returns: a L<Paws::DMS::TestConnectionResponse> instance
 
-  Tests the connection between the replication instance and the endpoint.
+Tests the connection between the replication instance and the endpoint.
 
 
 
@@ -705,9 +705,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

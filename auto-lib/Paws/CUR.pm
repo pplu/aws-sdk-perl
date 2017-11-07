@@ -93,7 +93,7 @@ Each argument is described in detail in: L<Paws::CUR::DeleteReportDefinition>
 
 Returns: a L<Paws::CUR::DeleteReportDefinitionResponse> instance
 
-  Delete a specified report definition
+Delete a specified report definition
 
 
 =head2 DescribeReportDefinitions([MaxResults => Int, NextToken => Str])
@@ -102,7 +102,7 @@ Each argument is described in detail in: L<Paws::CUR::DescribeReportDefinitions>
 
 Returns: a L<Paws::CUR::DescribeReportDefinitionsResponse> instance
 
-  Describe a list of report definitions owned by the account
+Describe a list of report definitions owned by the account
 
 
 =head2 PutReportDefinition(ReportDefinition => L<Paws::CUR::ReportDefinition>)
@@ -111,7 +111,7 @@ Each argument is described in detail in: L<Paws::CUR::PutReportDefinition>
 
 Returns: a L<Paws::CUR::PutReportDefinitionResponse> instance
 
-  Create a new report definition
+Create a new report definition
 
 
 
@@ -141,9 +141,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 
