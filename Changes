@@ -1,3 +1,9 @@
+0.37
+ - Big refactor of all result handling for all services
+ - API update: EC2
+ - API update: ELBv2
+ - API update: OpsWorksCM
+
 0.36 03 Nov 2017
  - Fix Bug: #210: S3 PutObject was not working: the Content-MD5 header was not 
             calculated correctly (glenveegee)

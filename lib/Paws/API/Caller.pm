@@ -13,8 +13,6 @@ package Paws::API::Caller;
     handles => [ 'access_key', 'secret_key', 'session_token' ],
   );
 
-  requires 'new_from_result_struct';
-
   # converts the params the user passed to the call into objects that represent the call
   sub new_with_coercions {
     my ($self, $class, %params) = @_;

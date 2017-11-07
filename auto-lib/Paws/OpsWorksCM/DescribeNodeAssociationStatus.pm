@@ -36,7 +36,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> NodeAssociationStatusToken => Str
 
-
+The token returned in either the AssociateNodeResponse or the
+DisassociateNodeResponse.
 
 
 

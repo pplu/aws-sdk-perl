@@ -41,7 +41,7 @@ This class has no description
 
   The IPv6 CIDR range. You can either specify a CIDR range or a source
 security group, not both. To specify a single IPv6 address, use the
-/128 prefix.
+/128 prefix length.
 
 
 =head2 Description => Str

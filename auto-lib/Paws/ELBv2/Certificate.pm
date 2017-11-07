@@ -1,6 +1,7 @@
 package Paws::ELBv2::Certificate;
   use Moose;
   has CertificateArn => (is => 'ro', isa => 'Str');
+  has IsDefault => (is => 'ro', isa => 'Bool');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ELBv2::Certificate object:
 
-  $service_obj->Method(Att1 => { CertificateArn => $value, ..., CertificateArn => $value  });
+  $service_obj->Method(Att1 => { CertificateArn => $value, ..., IsDefault => $value  });
 
 =head3 Results returned from an API call
 
@@ -31,8 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELBv2::Cert
 
 =head1 DESCRIPTION
 
-Information about an SSL server certificate deployed on a load
-balancer.
+Information about an SSL server certificate.
 
 =head1 ATTRIBUTES
 
@@ -40,6 +40,11 @@ balancer.
 =head2 CertificateArn => Str
 
   The Amazon Resource Name (ARN) of the certificate.
+
+
+=head2 IsDefault => Bool
+
+  Indicates whether the certificate is the default certificate.
 
 
 

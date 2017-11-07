@@ -52,6 +52,11 @@ One or more filters.
 
 =item *
 
+C<amazon-side-asn> - The Autonomous System Number (ASN) for the Amazon
+side of the gateway.
+
+=item *
+
 C<attachment.state> - The current state of the attachment between the
 gateway and the VPC (C<attaching> | C<attached> | C<detaching> |
 C<detached>).
