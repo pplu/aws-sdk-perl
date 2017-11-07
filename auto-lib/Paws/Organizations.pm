@@ -665,6 +665,15 @@ also have the relevant IAM permissions:
 B<Invitation to join> or B<Approve all features request> handshakes:
 only a principal from the member account.
 
+The user who calls the API for an invitation to join must have the
+C<organizations:AcceptHandshake> permission. If you enabled all
+features in the organization, then the user must also have the
+C<iam:CreateServiceLinkedRole> permission so that Organizations can
+create the required service-linked role named
+I<OrgsServiceLinkedRoleName>. For more information, see AWS
+Organizations and Service-Linked Roles in the I<AWS Organizations User
+Guide>.
+
 =item *
 
 B<Enable all features final confirmation> handshake: only a principal
@@ -780,12 +789,26 @@ to check the status of the request later, you need the C<OperationId>
 response element from this operation to provide as a parameter to the
 DescribeCreateAccountStatus operation.
 
-AWS Organizations preconfigures the new member account with a role
-(named C<OrganizationAccountAccessRole> by default) that grants
-administrator permissions to the new account. Principals in the master
-account can assume the role. AWS Organizations clones the company name
-and address information for the new account from the organization's
-master account.
+The user who calls the API for an invitation to join must have the
+C<organizations:CreateAccount> permission. If you enabled all features
+in the organization, then the user must also have the
+C<iam:CreateServiceLinkedRole> permission so that Organizations can
+create the required service-linked role named
+I<OrgsServiceLinkedRoleName>. For more information, see AWS
+Organizations and Service-Linked Roles in the I<AWS Organizations User
+Guide>.
+
+The user in the master account who calls this API must also have the
+C<iam:CreateRole> permission because AWS Organizations preconfigures
+the new member account with a role (named
+C<OrganizationAccountAccessRole>) that grants users in the master
+account administrator permissions in the new member account. Principals
+in the master account can assume the role. AWS Organizations clones the
+company name and address information for the new account from the
+organization's master account.
+
+This operation can be called only from the organization's master
+account.
 
 For more information about creating accounts, see Creating an AWS
 Account in Your Organization in the I<AWS Organizations User Guide>.
@@ -808,9 +831,6 @@ for the account. If you disable this, then only the account root user
 can access billing information. For information about how to disable
 this for an account, see Granting Access to Your Billing Information
 and Tools.
-
-This operation can be called only from the organization's master
-account.
 
 If you get an exception that indicates that you exceeded your account
 limits for the organization or that you can"t add an account because
@@ -1213,6 +1233,9 @@ specify an OU, you get a list of all the accounts in only that OU, and
 not in any child OUs. To get a list of all accounts in the
 organization, use the ListAccounts operation.
 
+This operation can be called only from the organization's master
+account.
+
 
 =head2 ListChildren(ChildType => Str, ParentId => Str, [MaxResults => Int, NextToken => Str])
 
@@ -1223,6 +1246,9 @@ Returns: a L<Paws::Organizations::ListChildrenResponse> instance
   Lists all of the OUs or accounts that are contained in the specified
 parent OU or root. This operation, along with ListParents enables you
 to traverse the tree structure that makes up this root.
+
+This operation can be called only from the organization's master
+account.
 
 
 =head2 ListCreateAccountStatus([MaxResults => Int, NextToken => Str, States => ArrayRef[Str|Undef]])

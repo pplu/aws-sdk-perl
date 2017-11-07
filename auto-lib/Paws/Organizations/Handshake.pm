@@ -55,7 +55,34 @@ deleted.
 =head2 Action => Str
 
   The type of handshake, indicating what action occurs when the recipient
-accepts the handshake.
+accepts the handshake. The following handshake types are supported:
+
+=over
+
+=item *
+
+B<INVITE>: This type of handshake represents a request to join an
+organization. It is always sent from the master account to only
+non-member accounts.
+
+=item *
+
+B<ENABLE_ALL_FEATURES>: This type of handshake represents a request to
+enable all features in an organization. It is always sent from the
+master account to only I<invited> member accounts. Created accounts do
+not receive this because those accounts were created by the
+organization's master account and approval is inferred.
+
+=item *
+
+B<APPROVE_ALL_FEATURES>: This type of handshake is sent from the
+Organizations service when all member accounts have approved the
+C<ENABLE_ALL_FEATURES> invitation. It is sent only to the master
+account and signals the master that it can finalize the process to
+enable all features.
+
+=back
+
 
 
 =head2 Arn => Str
