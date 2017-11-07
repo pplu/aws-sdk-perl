@@ -1,7 +1,8 @@
 
 package Paws::DirectConnect::ConfirmPrivateVirtualInterface;
   use Moose;
-  has VirtualGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualGatewayId' , required => 1);
+  has DirectConnectGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'directConnectGatewayId' );
+  has VirtualGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualGatewayId' );
   has VirtualInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceId' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +35,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> VirtualGatewayId => Str
+=head2 DirectConnectGatewayId => Str
+
+ID of the direct connect gateway that will be attached to the virtual
+interface.
+
+A direct connect gateway can be managed via the AWS Direct Connect
+console or the CreateDirectConnectGateway action.
+
+Default: None
+
+
+
+=head2 VirtualGatewayId => Str
 
 ID of the virtual private gateway that will be attached to the virtual
 interface.

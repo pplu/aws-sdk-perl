@@ -74,6 +74,16 @@ package Paws::DirectConnect;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::CreateConnection', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateDirectConnectGateway {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::CreateDirectConnectGateway', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateDirectConnectGatewayAssociation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::CreateDirectConnectGatewayAssociation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateInterconnect {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::CreateInterconnect', @_);
@@ -104,6 +114,16 @@ package Paws::DirectConnect;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::DeleteConnection', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteDirectConnectGateway {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DeleteDirectConnectGateway', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteDirectConnectGatewayAssociation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DeleteDirectConnectGatewayAssociation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteInterconnect {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::DeleteInterconnect', @_);
@@ -132,6 +152,21 @@ package Paws::DirectConnect;
   sub DescribeConnectionsOnInterconnect {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeConnectionsOnInterconnect', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDirectConnectGatewayAssociations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeDirectConnectGatewayAssociations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDirectConnectGatewayAttachments {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeDirectConnectGatewayAttachments', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDirectConnectGateways {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeDirectConnectGateways', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeHostedConnections {
@@ -202,7 +237,7 @@ package Paws::DirectConnect;
   
 
 
-  sub operations { qw/AllocateConnectionOnInterconnect AllocateHostedConnection AllocatePrivateVirtualInterface AllocatePublicVirtualInterface AssociateConnectionWithLag AssociateHostedConnection AssociateVirtualInterface ConfirmConnection ConfirmPrivateVirtualInterface ConfirmPublicVirtualInterface CreateBGPPeer CreateConnection CreateInterconnect CreateLag CreatePrivateVirtualInterface CreatePublicVirtualInterface DeleteBGPPeer DeleteConnection DeleteInterconnect DeleteLag DeleteVirtualInterface DescribeConnectionLoa DescribeConnections DescribeConnectionsOnInterconnect DescribeHostedConnections DescribeInterconnectLoa DescribeInterconnects DescribeLags DescribeLoa DescribeLocations DescribeTags DescribeVirtualGateways DescribeVirtualInterfaces DisassociateConnectionFromLag TagResource UntagResource UpdateLag / }
+  sub operations { qw/AllocateConnectionOnInterconnect AllocateHostedConnection AllocatePrivateVirtualInterface AllocatePublicVirtualInterface AssociateConnectionWithLag AssociateHostedConnection AssociateVirtualInterface ConfirmConnection ConfirmPrivateVirtualInterface ConfirmPublicVirtualInterface CreateBGPPeer CreateConnection CreateDirectConnectGateway CreateDirectConnectGatewayAssociation CreateInterconnect CreateLag CreatePrivateVirtualInterface CreatePublicVirtualInterface DeleteBGPPeer DeleteConnection DeleteDirectConnectGateway DeleteDirectConnectGatewayAssociation DeleteInterconnect DeleteLag DeleteVirtualInterface DescribeConnectionLoa DescribeConnections DescribeConnectionsOnInterconnect DescribeDirectConnectGatewayAssociations DescribeDirectConnectGatewayAttachments DescribeDirectConnectGateways DescribeHostedConnections DescribeInterconnectLoa DescribeInterconnects DescribeLags DescribeLoa DescribeLocations DescribeTags DescribeVirtualGateways DescribeVirtualInterfaces DisassociateConnectionFromLag TagResource UntagResource UpdateLag / }
 
 1;
 
@@ -373,9 +408,11 @@ Virtual interfaces associated with a hosted connection cannot be
 associated with a LAG; hosted connections must be migrated along with
 their virtual interfaces using AssociateHostedConnection.
 
-Hosted virtual interfaces (an interface for which the owner of the
-connection is not the owner of physical connection) can only be
-reassociated by the owner of the physical connection.
+In order to reassociate a virtual interface to a new connection or LAG,
+the requester must own either the virtual interface itself or the
+connection to which the virtual interface is currently associated.
+Additionally, the requester must own the connection or LAG to which the
+virtual interface will be newly associated.
 
 
 =head2 ConfirmConnection(ConnectionId => Str)
@@ -391,7 +428,7 @@ state, and will remain in this state until the owner calls
 ConfirmConnection to confirm creation of the hosted connection.
 
 
-=head2 ConfirmPrivateVirtualInterface(VirtualGatewayId => Str, VirtualInterfaceId => Str)
+=head2 ConfirmPrivateVirtualInterface(VirtualInterfaceId => Str, [DirectConnectGatewayId => Str, VirtualGatewayId => Str])
 
 Each argument is described in detail in: L<Paws::DirectConnect::ConfirmPrivateVirtualInterface>
 
@@ -402,7 +439,8 @@ customer.
 
 After the virtual interface owner calls this function, the virtual
 interface will be created and attached to the given virtual private
-gateway, and will be available for handling traffic.
+gateway or direct connect gateway, and will be available for handling
+traffic.
 
 
 =head2 ConfirmPublicVirtualInterface(VirtualInterfaceId => Str)
@@ -459,11 +497,41 @@ can establish connections with AWS Direct Connect locations in multiple
 regions, but a connection in one region does not provide connectivity
 to other regions.
 
+To find the locations for your region, use DescribeLocations.
+
 You can automatically add the new connection to a link aggregation
 group (LAG) by specifying a LAG ID in the request. This ensures that
 the new connection is allocated on the same AWS Direct Connect endpoint
 that hosts the specified LAG. If there are no available ports on the
 endpoint, the request fails and no connection will be created.
+
+
+=head2 CreateDirectConnectGateway(DirectConnectGatewayName => Str, [AmazonSideAsn => Int])
+
+Each argument is described in detail in: L<Paws::DirectConnect::CreateDirectConnectGateway>
+
+Returns: a L<Paws::DirectConnect::CreateDirectConnectGatewayResult> instance
+
+  Creates a new direct connect gateway. A direct connect gateway is an
+intermediate object that enables you to connect a set of virtual
+interfaces and virtual private gateways. direct connect gateways are
+global and visible in any AWS region after they are created. The
+virtual interfaces and virtual private gateways that are connected
+through a direct connect gateway can be in different regions. This
+enables you to connect to a VPC in any region, regardless of the region
+in which the virtual interfaces are located, and pass traffic between
+them.
+
+
+=head2 CreateDirectConnectGatewayAssociation(DirectConnectGatewayId => Str, VirtualGatewayId => Str)
+
+Each argument is described in detail in: L<Paws::DirectConnect::CreateDirectConnectGatewayAssociation>
+
+Returns: a L<Paws::DirectConnect::CreateDirectConnectGatewayAssociationResult> instance
+
+  Creates an association between a direct connect gateway and a virtual
+private gateway (VGW). The VGW must be attached to a VPC and must not
+be associated with another direct connect gateway.
 
 
 =head2 CreateInterconnect(Bandwidth => Str, InterconnectName => Str, Location => Str, [LagId => Str])
@@ -588,6 +656,28 @@ any services or charges for cross-connects or network circuits that
 connect you to the AWS Direct Connect location.
 
 
+=head2 DeleteDirectConnectGateway(DirectConnectGatewayId => Str)
+
+Each argument is described in detail in: L<Paws::DirectConnect::DeleteDirectConnectGateway>
+
+Returns: a L<Paws::DirectConnect::DeleteDirectConnectGatewayResult> instance
+
+  Deletes a direct connect gateway. You must first delete all virtual
+interfaces that are attached to the direct connect gateway and
+disassociate all virtual private gateways that are associated with the
+direct connect gateway.
+
+
+=head2 DeleteDirectConnectGatewayAssociation(DirectConnectGatewayId => Str, VirtualGatewayId => Str)
+
+Each argument is described in detail in: L<Paws::DirectConnect::DeleteDirectConnectGatewayAssociation>
+
+Returns: a L<Paws::DirectConnect::DeleteDirectConnectGatewayAssociationResult> instance
+
+  Deletes the association between a direct connect gateway and a virtual
+private gateway.
+
+
 =head2 DeleteInterconnect(InterconnectId => Str)
 
 Each argument is described in detail in: L<Paws::DirectConnect::DeleteInterconnect>
@@ -659,6 +749,52 @@ Returns a list of connections that have been provisioned on the given
 interconnect.
 
 This is intended for use by AWS Direct Connect partners only.
+
+
+=head2 DescribeDirectConnectGatewayAssociations([DirectConnectGatewayId => Str, MaxResults => Int, NextToken => Str, VirtualGatewayId => Str])
+
+Each argument is described in detail in: L<Paws::DirectConnect::DescribeDirectConnectGatewayAssociations>
+
+Returns: a L<Paws::DirectConnect::DescribeDirectConnectGatewayAssociationsResult> instance
+
+  Returns a list of all direct connect gateway and virtual private
+gateway (VGW) associations. Either a direct connect gateway ID or a VGW
+ID must be provided in the request. If a direct connect gateway ID is
+provided, the response returns all VGWs associated with the direct
+connect gateway. If a VGW ID is provided, the response returns all
+direct connect gateways associated with the VGW. If both are provided,
+the response only returns the association that matches both the direct
+connect gateway and the VGW.
+
+
+=head2 DescribeDirectConnectGatewayAttachments([DirectConnectGatewayId => Str, MaxResults => Int, NextToken => Str, VirtualInterfaceId => Str])
+
+Each argument is described in detail in: L<Paws::DirectConnect::DescribeDirectConnectGatewayAttachments>
+
+Returns: a L<Paws::DirectConnect::DescribeDirectConnectGatewayAttachmentsResult> instance
+
+  Returns a list of all direct connect gateway and virtual interface
+(VIF) attachments. Either a direct connect gateway ID or a VIF ID must
+be provided in the request. If a direct connect gateway ID is provided,
+the response returns all VIFs attached to the direct connect gateway.
+If a VIF ID is provided, the response returns all direct connect
+gateways attached to the VIF. If both are provided, the response only
+returns the attachment that matches both the direct connect gateway and
+the VIF.
+
+
+=head2 DescribeDirectConnectGateways([DirectConnectGatewayId => Str, MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::DirectConnect::DescribeDirectConnectGateways>
+
+Returns: a L<Paws::DirectConnect::DescribeDirectConnectGatewaysResult> instance
+
+  Returns a list of direct connect gateways in your account. Deleted
+direct connect gateways are not returned. You can provide a direct
+connect gateway ID in the request to return information about the
+specific direct connect gateway only. Otherwise, if a direct connect
+gateway ID is not provided, information about all of your direct
+connect gateways is returned.
 
 
 =head2 DescribeHostedConnections(ConnectionId => Str)
