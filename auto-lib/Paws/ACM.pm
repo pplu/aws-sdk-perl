@@ -189,13 +189,11 @@ Returns: a L<Paws::ACM::GetCertificateResponse> instance
 
   Retrieves an ACM Certificate and certificate chain for the certificate
 specified by an ARN. The chain is an ordered list of certificates that
-contains the root certificate, intermediate certificates of subordinate
-CAs, and the ACM Certificate. The certificate and certificate chain are
-base64 encoded. If you want to decode the certificate chain to see the
-individual certificate fields, you can use OpenSSL.
-
-Currently, ACM Certificates can be used only with Elastic Load
-Balancing and Amazon CloudFront.
+contains the ACM Certificate, intermediate certificates of subordinate
+CAs, and the root certificate in that order. The certificate and
+certificate chain are base64 encoded. If you want to decode the
+certificate chain to see the individual certificate fields, you can use
+OpenSSL.
 
 
 =head2 ImportCertificate(Certificate => Str, PrivateKey => Str, [CertificateArn => Str, CertificateChain => Str])
@@ -227,6 +225,13 @@ Certificate Manager User Guide>.
 To import a new certificate, omit the C<CertificateArn> field. Include
 this field only when you want to replace a previously imported
 certificate.
+
+When you import a certificate by using the CLI or one of the SDKs, you
+must specify the certificate, chain, and private key parameters as file
+names preceded by C<file://>. For example, you can specify a
+certificate saved in the C<C:\temp> folder as
+C<C:\temp\certificate_to_import.pem>. If you are making an HTTP or
+HTTPS Query request, include these parameters as BLOBs.
 
 This operation returns the Amazon Resource Name (ARN) of the imported
 certificate.
@@ -280,12 +285,20 @@ Returns: a L<Paws::ACM::RequestCertificateResponse> instance
 
   Requests an ACM Certificate for use with other AWS services. To request
 an ACM Certificate, you must specify the fully qualified domain name
-(FQDN) for your site. You can also specify additional FQDNs if users
-can reach your site by using other names. For each domain name you
-specify, email is sent to the domain owner to request approval to issue
-the certificate. After receiving approval from the domain owner, the
-ACM Certificate is issued. For more information, see the AWS
-Certificate Manager User Guide.
+(FQDN) for your site in the C<DomainName> parameter. You can also
+specify additional FQDNs in the C<SubjectAlternativeNames> parameter if
+users can reach your site by using other names.
+
+For each domain name you specify, email is sent to the domain owner to
+request approval to issue the certificate. Email is sent to three
+registered contact addresses in the WHOIS database and to five common
+system administration addresses formed from the C<DomainName> you enter
+or the optional C<ValidationDomain> parameter. For more information,
+see Validate Domain Ownership.
+
+After receiving approval from the domain owner, the ACM Certificate is
+issued. For more information, see the AWS Certificate Manager User
+Guide.
 
 
 =head2 ResendValidationEmail(CertificateArn => Str, Domain => Str, ValidationDomain => Str)
