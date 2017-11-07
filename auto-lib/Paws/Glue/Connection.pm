@@ -51,7 +51,8 @@ Defines a connection to a data source.
 
 =head2 ConnectionType => Str
 
-  The type of the connection.
+  The type of the connection. Currently, only JDBC is supported; SFTP is
+not supported.
 
 
 =head2 CreationTime => Str

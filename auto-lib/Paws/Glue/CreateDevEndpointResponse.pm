@@ -14,6 +14,7 @@ package Paws::Glue::CreateDevEndpointResponse;
   has SubnetId => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
   has YarnEndpointAddress => (is => 'ro', isa => 'Str');
+  has ZeppelinRemoteSparkInterpreterPort => (is => 'ro', isa => 'Int');
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -49,7 +50,7 @@ your DevEndpoint.
 
 =head2 ExtraPythonLibsS3Path => Str
 
-Path to one or more Python libraries in an S3 bucket that will be
+Path(s) to one or more Python libraries in an S3 bucket that will be
 loaded in your DevEndpoint.
 
 
@@ -60,7 +61,8 @@ The reason for a current failure in this DevEndpoint.
 
 =head2 NumberOfNodes => Int
 
-The number of nodes in this DevEndpoint.
+The number of AWS Glue Data Processing Units (DPUs) allocated to this
+DevEndpoint.
 
 
 =head2 RoleArn => Str
@@ -91,6 +93,11 @@ The ID of the VPC used by this DevEndpoint.
 =head2 YarnEndpointAddress => Str
 
 The address of the YARN endpoint used by this DevEndpoint.
+
+
+=head2 ZeppelinRemoteSparkInterpreterPort => Int
+
+The Apache Zeppelin port for the remote Apache Spark interpreter.
 
 
 =head2 _request_id => Str

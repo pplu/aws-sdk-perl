@@ -46,8 +46,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Crawl
 =head1 DESCRIPTION
 
 Specifies a crawler program that examines a data source and uses
-classifiers to try to its schema. If successful, the crawler records
-metatdata concerning the data source in the Data Catalog.
+classifiers to try to determine its schema. If successful, the crawler
+records metatdata concerning the data source in the Data Catalog.
 
 =head1 ATTRIBUTES
 
@@ -96,8 +96,8 @@ error occurred.
 
 =head2 Role => Str
 
-  The ARN of an IAM role used to access customer resources such as data
-in S3.
+  The IAM role (or ARN of an IAM role) used to access customer resources
+such as data in S3.
 
 
 =head2 Schedule => L<Paws::Glue::Schedule>

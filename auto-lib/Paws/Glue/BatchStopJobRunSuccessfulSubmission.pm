@@ -1,14 +1,14 @@
-package Paws::Glue::TableVersion;
+package Paws::Glue::BatchStopJobRunSuccessfulSubmission;
   use Moose;
-  has Table => (is => 'ro', isa => 'Paws::Glue::Table');
-  has VersionId => (is => 'ro', isa => 'Str');
+  has JobName => (is => 'ro', isa => 'Str');
+  has JobRunId => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Glue::TableVersion
+Paws::Glue::BatchStopJobRunSuccessfulSubmission
 
 =head1 USAGE
 
@@ -19,32 +19,32 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Glue::TableVersion object:
+As an example, if Att1 is expected to be a Paws::Glue::BatchStopJobRunSuccessfulSubmission object:
 
-  $service_obj->Method(Att1 => { Table => $value, ..., VersionId => $value  });
+  $service_obj->Method(Att1 => { JobName => $value, ..., JobRunId => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::TableVersion object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::BatchStopJobRunSuccessfulSubmission object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Table
+  $result->Att1->JobName
 
 =head1 DESCRIPTION
 
-Specifies a version of a table.
+Details about the job run which is submitted successfully for stopping.
 
 =head1 ATTRIBUTES
 
 
-=head2 Table => L<Paws::Glue::Table>
+=head2 JobName => Str
 
-  The table in question
+  The name of the job.
 
 
-=head2 VersionId => Str
+=head2 JobRunId => Str
 
-  The ID value that identifies this table version.
+  The job run Id.
 
 
 

@@ -39,10 +39,9 @@ A scheduling object using a C<cron> statement to schedule an event.
 
 =head2 ScheduleExpression => Str
 
-  A C<cron> expression that can be used as a Cloudwatch event to schedule
-something (see CloudWatch Schedule Expression Syntax. For example, to
-run something every day at 12:15 UTC, you would specify: C<cron(15 12 *
-* ? *)>.
+  A C<cron> expression used to specify the schedule (see Time-Based
+Schedules for Jobs and Crawlers. For example, to run something every
+day at 12:15 UTC, you would specify: C<cron(15 12 * * ? *)>.
 
 
 =head2 State => Str

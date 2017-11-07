@@ -71,16 +71,16 @@ Name of the new C<Crawler>.
 
 =head2 B<REQUIRED> Role => Str
 
-The AWS ARN of the IAM role used by the new C<Crawler> to access
-customer resources.
+The IAM role (or ARN of an IAM role) used by the new C<Crawler> to
+access customer resources.
 
 
 
 =head2 Schedule => Str
 
-A cron expression that can be used as a Cloudwatch event (see
-CloudWatch Schedule Expression Syntax. For example, to run every day at
-12:15 UTC, specify: C<cron(15 12 * * ? *)>.
+A C<cron> expression used to specify the schedule (see Time-Based
+Schedules for Jobs and Crawlers. For example, to run something every
+day at 12:15 UTC, you would specify: C<cron(15 12 * * ? *)>.
 
 
 

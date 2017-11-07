@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Parti
 
 =head1 DESCRIPTION
 
-This class has no description
+Contains a list of values defining partitions.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Values => ArrayRef[Str|Undef]
 
-  
+  The list of values.
 
 
 

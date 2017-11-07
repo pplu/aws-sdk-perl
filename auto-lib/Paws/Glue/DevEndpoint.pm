@@ -17,6 +17,7 @@ package Paws::Glue::DevEndpoint;
   has SubnetId => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
   has YarnEndpointAddress => (is => 'ro', isa => 'Str');
+  has ZeppelinRemoteSparkInterpreterPort => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +37,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Glue::DevEndpoint object:
 
-  $service_obj->Method(Att1 => { AvailabilityZone => $value, ..., YarnEndpointAddress => $value  });
+  $service_obj->Method(Att1 => { AvailabilityZone => $value, ..., ZeppelinRemoteSparkInterpreterPort => $value  });
 
 =head3 Results returned from an API call
 
@@ -73,11 +74,19 @@ scripts.
   Path to one or more Java Jars in an S3 bucket that should be loaded in
 your DevEndpoint.
 
+Please note that only pure Java/Scala libraries can currently be used
+on a DevEndpoint.
+
 
 =head2 ExtraPythonLibsS3Path => Str
 
-  Path to one or more Python libraries in an S3 bucket that should be
-loaded in your DevEndpoint.
+  Path(s) to one or more Python libraries in an S3 bucket that should be
+loaded in your DevEndpoint. Multiple values must be complete paths
+separated by a comma.
+
+Please note that only pure Python libraries can currently be used on a
+DevEndpoint. Libraries that rely on C extensions, such as the pandas
+Python data analysis library, are not yet supported.
 
 
 =head2 FailureReason => Str
@@ -97,7 +106,8 @@ loaded in your DevEndpoint.
 
 =head2 NumberOfNodes => Int
 
-  The number of nodes used by this DevEndpoint.
+  The number of AWS Glue Data Processing Units (DPUs) allocated to this
+DevEndpoint.
 
 
 =head2 PublicAddress => Str
@@ -138,6 +148,11 @@ loaded in your DevEndpoint.
 =head2 YarnEndpointAddress => Str
 
   The YARN endpoint address used by this DevEndpoint.
+
+
+=head2 ZeppelinRemoteSparkInterpreterPort => Int
+
+  The Apache Zeppelin port for the remote Apache Spark interpreter.
 
 
 

@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Actio
 
 =head1 DESCRIPTION
 
-This class has no description
+Defines an action to be initiated by a trigger.
 
 =head1 ATTRIBUTES
 
 
 =head2 Arguments => L<Paws::Glue::GenericMap>
 
-  
+  Arguments to be passed to the job.
 
 
 =head2 JobName => Str
 
-  
+  The name of a job to be executed.
 
 
 

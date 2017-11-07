@@ -62,7 +62,10 @@ A structure used to provide information used to updata a trigger.
 
 =head2 Schedule => Str
 
-  A cron expression specifying the schedule.
+  An updated C<cron> expression used to specify the schedule (see
+Time-Based Schedules for Jobs and Crawlers. For example, to run
+something every day at 12:15 UTC, you would specify: C<cron(15 12 * * ?
+*)>.
 
 
 

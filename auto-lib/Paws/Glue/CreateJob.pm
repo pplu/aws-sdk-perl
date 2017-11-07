@@ -81,7 +81,7 @@ allowed for this job.
 
 =head2 LogUri => Str
 
-Location of the logs for this job.
+This field is reserved for future use.
 
 
 

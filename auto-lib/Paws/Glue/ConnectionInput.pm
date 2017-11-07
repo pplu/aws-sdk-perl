@@ -48,7 +48,8 @@ A structure used to specify a connection to create or update.
 
 =head2 ConnectionType => Str
 
-  The type of the connection.
+  The type of the connection. Currently, only JDBC is supported; SFTP is
+not supported.
 
 
 =head2 Description => Str

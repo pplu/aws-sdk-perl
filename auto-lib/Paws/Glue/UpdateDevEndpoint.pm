@@ -4,6 +4,7 @@ package Paws::Glue::UpdateDevEndpoint;
   has CustomLibraries => (is => 'ro', isa => 'Paws::Glue::DevEndpointCustomLibraries');
   has EndpointName => (is => 'ro', isa => 'Str', required => 1);
   has PublicKey => (is => 'ro', isa => 'Str');
+  has UpdateEtlLibraries => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
 
@@ -37,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CustomLibraries => L<Paws::Glue::DevEndpointCustomLibraries>
 
-Custom Python or Java custom libraries to be loaded in the DevEndpoint.
+Custom Python or Java libraries to be loaded in the DevEndpoint.
 
 
 
@@ -50,6 +51,13 @@ The name of the DevEndpoint to be updated.
 =head2 PublicKey => Str
 
 The public key for the DevEndpoint to use.
+
+
+
+=head2 UpdateEtlLibraries => Bool
+
+True if the list of custom libraries to be loaded in the development
+endpoint needs to be updated, or False otherwise.
 
 
 

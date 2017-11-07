@@ -39,6 +39,11 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::BatchGetPartition', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub BatchStopJobRun {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::BatchStopJobRun', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateClassifier {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::CreateClassifier', @_);
@@ -387,7 +392,7 @@ package Paws::Glue;
   
 
 
-  sub operations { qw/BatchCreatePartition BatchDeleteConnection BatchDeletePartition BatchDeleteTable BatchGetPartition CreateClassifier CreateConnection CreateCrawler CreateDatabase CreateDevEndpoint CreateJob CreatePartition CreateScript CreateTable CreateTrigger CreateUserDefinedFunction DeleteClassifier DeleteConnection DeleteCrawler DeleteDatabase DeleteDevEndpoint DeleteJob DeletePartition DeleteTable DeleteTrigger DeleteUserDefinedFunction GetCatalogImportStatus GetClassifier GetClassifiers GetConnection GetConnections GetCrawler GetCrawlerMetrics GetCrawlers GetDatabase GetDatabases GetDataflowGraph GetDevEndpoint GetDevEndpoints GetJob GetJobRun GetJobRuns GetJobs GetMapping GetPartition GetPartitions GetPlan GetTable GetTables GetTableVersions GetTrigger GetTriggers GetUserDefinedFunction GetUserDefinedFunctions ImportCatalogToGlue ResetJobBookmark StartCrawler StartCrawlerSchedule StartJobRun StartTrigger StopCrawler StopCrawlerSchedule StopTrigger UpdateClassifier UpdateConnection UpdateCrawler UpdateCrawlerSchedule UpdateDatabase UpdateDevEndpoint UpdateJob UpdatePartition UpdateTable UpdateTrigger UpdateUserDefinedFunction / }
+  sub operations { qw/BatchCreatePartition BatchDeleteConnection BatchDeletePartition BatchDeleteTable BatchGetPartition BatchStopJobRun CreateClassifier CreateConnection CreateCrawler CreateDatabase CreateDevEndpoint CreateJob CreatePartition CreateScript CreateTable CreateTrigger CreateUserDefinedFunction DeleteClassifier DeleteConnection DeleteCrawler DeleteDatabase DeleteDevEndpoint DeleteJob DeletePartition DeleteTable DeleteTrigger DeleteUserDefinedFunction GetCatalogImportStatus GetClassifier GetClassifiers GetConnection GetConnections GetCrawler GetCrawlerMetrics GetCrawlers GetDatabase GetDatabases GetDataflowGraph GetDevEndpoint GetDevEndpoints GetJob GetJobRun GetJobRuns GetJobs GetMapping GetPartition GetPartitions GetPlan GetTable GetTables GetTableVersions GetTrigger GetTriggers GetUserDefinedFunction GetUserDefinedFunctions ImportCatalogToGlue ResetJobBookmark StartCrawler StartCrawlerSchedule StartJobRun StartTrigger StopCrawler StopCrawlerSchedule StopTrigger UpdateClassifier UpdateConnection UpdateCrawler UpdateCrawlerSchedule UpdateDatabase UpdateDevEndpoint UpdateJob UpdatePartition UpdateTable UpdateTrigger UpdateUserDefinedFunction / }
 
 1;
 
@@ -415,7 +420,9 @@ Paws::Glue - Perl Interface to AWS AWS Glue
 
 =head1 DESCRIPTION
 
-Defines service operations used by the GlueFrontendService
+AWS Glue
+
+Defines the public endpoint for the AWS Glue service.
 
 =head1 METHODS
 
@@ -464,6 +471,15 @@ Returns: a L<Paws::Glue::BatchGetPartitionResponse> instance
   Retrieves partitions in a batch request.
 
 
+=head2 BatchStopJobRun(JobName => Str, JobRunIds => ArrayRef[Str|Undef])
+
+Each argument is described in detail in: L<Paws::Glue::BatchStopJobRun>
+
+Returns: a L<Paws::Glue::BatchStopJobRunResponse> instance
+
+  Stops a batch of job runs for a given job.
+
+
 =head2 CreateClassifier([GrokClassifier => L<Paws::Glue::CreateGrokClassifierRequest>])
 
 Each argument is described in detail in: L<Paws::Glue::CreateClassifier>
@@ -502,7 +518,7 @@ Returns: a L<Paws::Glue::CreateDatabaseResponse> instance
   Creates a new database in a Data Catalog.
 
 
-=head2 CreateDevEndpoint(EndpointName => Str, RoleArn => Str, SecurityGroupIds => ArrayRef[Str|Undef], SubnetId => Str, [ExtraJarsS3Path => Str, ExtraPythonLibsS3Path => Str, NumberOfNodes => Int, PublicKey => Str])
+=head2 CreateDevEndpoint(EndpointName => Str, PublicKey => Str, RoleArn => Str, [ExtraJarsS3Path => Str, ExtraPythonLibsS3Path => Str, NumberOfNodes => Int, SecurityGroupIds => ArrayRef[Str|Undef], SubnetId => Str])
 
 Each argument is described in detail in: L<Paws::Glue::CreateDevEndpoint>
 
@@ -1042,7 +1058,7 @@ Returns: a L<Paws::Glue::UpdateDatabaseResponse> instance
   Updates an existing database definition in a Data Catalog.
 
 
-=head2 UpdateDevEndpoint(EndpointName => Str, [CustomLibraries => L<Paws::Glue::DevEndpointCustomLibraries>, PublicKey => Str])
+=head2 UpdateDevEndpoint(EndpointName => Str, [CustomLibraries => L<Paws::Glue::DevEndpointCustomLibraries>, PublicKey => Str, UpdateEtlLibraries => Bool])
 
 Each argument is described in detail in: L<Paws::Glue::UpdateDevEndpoint>
 

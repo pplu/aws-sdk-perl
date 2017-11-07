@@ -5,10 +5,10 @@ package Paws::Glue::CreateDevEndpoint;
   has ExtraJarsS3Path => (is => 'ro', isa => 'Str');
   has ExtraPythonLibsS3Path => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
-  has PublicKey => (is => 'ro', isa => 'Str');
+  has PublicKey => (is => 'ro', isa => 'Str', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has SubnetId => (is => 'ro', isa => 'Str', required => 1);
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has SubnetId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -55,18 +55,24 @@ your DevEndpoint.
 
 =head2 ExtraPythonLibsS3Path => Str
 
-Path to one or more Python libraries in an S3 bucket that should be
-loaded in your DevEndpoint.
+Path(s) to one or more Python libraries in an S3 bucket that should be
+loaded in your DevEndpoint. Multiple values must be complete paths
+separated by a comma.
+
+Please note that only pure Python libraries can currently be used on a
+DevEndpoint. Libraries that rely on C extensions, such as the pandas
+Python data analysis library, are not yet supported.
 
 
 
 =head2 NumberOfNodes => Int
 
-The number of nodes to use.
+The number of AWS Glue Data Processing Units (DPUs) to allocate to this
+DevEndpoint.
 
 
 
-=head2 PublicKey => Str
+=head2 B<REQUIRED> PublicKey => Str
 
 The public key to use for authentication.
 
@@ -78,14 +84,14 @@ The IAM role for the DevEndpoint.
 
 
 
-=head2 B<REQUIRED> SecurityGroupIds => ArrayRef[Str|Undef]
+=head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
 Security group IDs for the security groups to be used by the new
 DevEndpoint.
 
 
 
-=head2 B<REQUIRED> SubnetId => Str
+=head2 SubnetId => Str
 
 The subnet ID for the new DevEndpoint to use.
 

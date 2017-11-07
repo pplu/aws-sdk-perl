@@ -42,7 +42,10 @@ Name of the crawler whose schedule to update.
 
 =head2 Schedule => Str
 
-Cron expression of the updated schedule.
+The updated C<cron> expression used to specify the schedule (see
+Time-Based Schedules for Jobs and Crawlers. For example, to run
+something every day at 12:15 UTC, you would specify: C<cron(15 12 * * ?
+*)>.
 
 
 
