@@ -50,7 +50,7 @@ the value of C<Limit>, AWS WAF returns a C<NextMarker> value in the
 response that allows you to list another group of C<IPSets>. For the
 second and subsequent C<ListIPSets> requests, specify the value of
 C<NextMarker> from the previous response to get information about
-another batch of C<ByteMatchSets>.
+another batch of C<IPSets>.
 
 
 

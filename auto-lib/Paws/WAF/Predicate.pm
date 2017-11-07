@@ -34,9 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::Predic
 =head1 DESCRIPTION
 
 Specifies the ByteMatchSet, IPSet, SqlInjectionMatchSet, XssMatchSet,
-and SizeConstraintSet objects that you want to add to a C<Rule> and,
-for each object, indicates whether you want to negate the settings, for
-example, requests that do NOT originate from the IP address 192.0.2.44.
+RegexMatchSet, GeoMatchSet, and SizeConstraintSet objects that you want
+to add to a C<Rule> and, for each object, indicates whether you want to
+negate the settings, for example, requests that do NOT originate from
+the IP address 192.0.2.44.
 
 =head1 ATTRIBUTES
 
@@ -52,16 +53,17 @@ corresponding C<Create> or C<List> command.
 
   Set C<Negated> to C<False> if you want AWS WAF to allow, block, or
 count requests based on the settings in the specified ByteMatchSet,
-IPSet, SqlInjectionMatchSet, XssMatchSet, or SizeConstraintSet. For
-example, if an C<IPSet> includes the IP address C<192.0.2.44>, AWS WAF
-will allow or block requests based on that IP address.
+IPSet, SqlInjectionMatchSet, XssMatchSet, RegexMatchSet, GeoMatchSet,
+or SizeConstraintSet. For example, if an C<IPSet> includes the IP
+address C<192.0.2.44>, AWS WAF will allow or block requests based on
+that IP address.
 
 Set C<Negated> to C<True> if you want AWS WAF to allow or block a
 request based on the negation of the settings in the ByteMatchSet,
-IPSet, SqlInjectionMatchSet, XssMatchSet, or SizeConstraintSet. For
-example, if an C<IPSet> includes the IP address C<192.0.2.44>, AWS WAF
-will allow, block, or count requests based on all IP addresses
-I<except> C<192.0.2.44>.
+IPSet, SqlInjectionMatchSet, XssMatchSet, RegexMatchSet, GeoMatchSet,
+or SizeConstraintSet. For example, if an C<IPSet> includes the IP
+address C<192.0.2.44>, AWS WAF will allow, block, or count requests
+based on all IP addresses I<except> C<192.0.2.44>.
 
 
 =head2 B<REQUIRED> Type => Str
