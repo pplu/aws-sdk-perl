@@ -35,24 +35,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> KeyId => Str
 
-A unique identifier for the CMK.
+A unique identifier for the customer master key (CMK).
 
-Use the CMK's unique identifier or its Amazon Resource Name (ARN). For
-example:
+Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+
+For example:
 
 =over
 
 =item *
 
-Unique ID: 1234abcd-12ab-34cd-56ef-1234567890ab
+Key ID: C<1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =item *
 
-ARN:
-arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
+Key ARN:
+C<arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =back
 
+To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 
 
 

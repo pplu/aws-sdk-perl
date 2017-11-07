@@ -6,7 +6,7 @@ package Paws::KMS::CreateGrant;
   has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KeyId => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str');
-  has Operations => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Operations => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has RetiringPrincipal => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -76,22 +76,25 @@ Service Developer Guide>.
 The unique identifier for the customer master key (CMK) that the grant
 applies to.
 
-To specify this value, use the globally unique key ID or the Amazon
-Resource Name (ARN) of the key. Examples:
+Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To
+specify a CMK in a different AWS account, you must use the key ARN.
+
+For example:
 
 =over
 
 =item *
 
-Globally unique key ID: 12345678-1234-1234-1234-123456789012
+Key ID: C<1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =item *
 
 Key ARN:
-arn:aws:kms:us-west-2:123456789012:key/12345678-1234-1234-1234-123456789012
+C<arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =back
 
+To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 
 
 
@@ -114,7 +117,7 @@ this way can be used interchangeably.
 
 
 
-=head2 Operations => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> Operations => ArrayRef[Str|Undef]
 
 A list of operations that the grant permits.
 

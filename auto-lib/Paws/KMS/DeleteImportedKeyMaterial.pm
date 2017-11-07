@@ -38,14 +38,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The identifier of the CMK whose key material to delete. The CMK's
 C<Origin> must be C<EXTERNAL>.
 
-A valid identifier is the unique key ID or the Amazon Resource Name
-(ARN) of the CMK. Examples:
+Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+
+For example:
 
 =over
 
 =item *
 
-Unique key ID: C<1234abcd-12ab-34cd-56ef-1234567890ab>
+Key ID: C<1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =item *
 
@@ -54,6 +55,7 @@ C<arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =back
 
+To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 
 
 

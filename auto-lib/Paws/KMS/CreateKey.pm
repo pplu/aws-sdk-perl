@@ -123,7 +123,7 @@ If you do not specify a policy, AWS KMS attaches a default key policy
 to the CMK. For more information, see Default Key Policy in the I<AWS
 Key Management Service Developer Guide>.
 
-The policy size limit is 32 KiB (32768 bytes).
+The policy size limit is 32 kilobytes (32768 bytes).
 
 
 

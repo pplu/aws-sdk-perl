@@ -35,22 +35,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> KeyId => Str
 
-A unique identifier for the customer master key. This value can be a
-globally unique identifier or the fully specified ARN to a key.
+A unique identifier for the customer master key (CMK).
+
+Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To
+specify a CMK in a different AWS account, you must use the key ARN.
+
+For example:
 
 =over
 
 =item *
 
-Key ARN Example -
-arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
+Key ID: C<1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =item *
 
-Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012
+Key ARN:
+C<arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =back
 
+To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 
 
 

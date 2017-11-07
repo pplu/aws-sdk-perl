@@ -60,16 +60,10 @@ Token that identifies the grant to be retired.
 
 =head2 KeyId => Str
 
-The Amazon Resource Name of the CMK associated with the grant. Example:
+The Amazon Resource Name (ARN) of the CMK associated with the grant.
 
-=over
-
-=item *
-
-arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab
-
-=back
-
+For example:
+C<arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab>
 
 
 

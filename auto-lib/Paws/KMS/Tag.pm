@@ -36,6 +36,10 @@ A key-value pair. A tag consists of a tag key and a tag value. Tag keys
 and tag values are both required, but tag values can be empty (null)
 strings.
 
+For information about the rules that apply to tag keys and tag values,
+see User-Defined Tag Restrictions in the I<AWS Billing and Cost
+Management User Guide>.
+
 =head1 ATTRIBUTES
 
 
