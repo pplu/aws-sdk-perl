@@ -3,6 +3,8 @@
  - Better docu generation (osoriano)
  - Documentation update: Now POD contains links from the botocore documentation
  - New API: Pricing
+ - API update: S3
+ - API update: ApplicationAutoscaling
  - API update: ECS
  - API update: EC2
  - API update: ELBv2
