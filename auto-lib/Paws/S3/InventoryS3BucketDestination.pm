@@ -2,6 +2,7 @@ package Paws::S3::InventoryS3BucketDestination;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str');
   has Bucket => (is => 'ro', isa => 'Str', required => 1);
+  has Encryption => (is => 'ro', isa => 'Paws::S3::InventoryEncryption');
   has Format => (is => 'ro', isa => 'Str', required => 1);
   has Prefix => (is => 'ro', isa => 'Str');
 1;
@@ -48,6 +49,12 @@ This class has no description
 
   The Amazon resource name (ARN) of the bucket where inventory results
 will be published.
+
+
+=head2 Encryption => L<Paws::S3::InventoryEncryption>
+
+  Contains the type of server-side encryption used to encrypt the
+inventory results.
 
 
 =head2 B<REQUIRED> Format => Str

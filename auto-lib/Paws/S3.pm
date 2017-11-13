@@ -129,6 +129,11 @@ package Paws::S3;
     my $call_object = $self->new_with_coercions('Paws::S3::DeleteBucketCors', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteBucketEncryption {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::DeleteBucketEncryption', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteBucketInventoryConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::DeleteBucketInventoryConfiguration', @_);
@@ -197,6 +202,11 @@ package Paws::S3;
   sub GetBucketCors {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::GetBucketCors', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetBucketEncryption {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::GetBucketEncryption', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetBucketInventoryConfiguration {
@@ -362,6 +372,11 @@ package Paws::S3;
   sub PutBucketCors {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::PutBucketCors', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutBucketEncryption {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::PutBucketEncryption', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutBucketInventoryConfiguration {
@@ -592,7 +607,7 @@ package Paws::S3;
   }
 
 
-  sub operations { qw/AbortMultipartUpload CompleteMultipartUpload CopyObject CreateBucket CreateMultipartUpload DeleteBucket DeleteBucketAnalyticsConfiguration DeleteBucketCors DeleteBucketInventoryConfiguration DeleteBucketLifecycle DeleteBucketMetricsConfiguration DeleteBucketPolicy DeleteBucketReplication DeleteBucketTagging DeleteBucketWebsite DeleteObject DeleteObjects DeleteObjectTagging GetBucketAccelerateConfiguration GetBucketAcl GetBucketAnalyticsConfiguration GetBucketCors GetBucketInventoryConfiguration GetBucketLifecycle GetBucketLifecycleConfiguration GetBucketLocation GetBucketLogging GetBucketMetricsConfiguration GetBucketNotification GetBucketNotificationConfiguration GetBucketPolicy GetBucketReplication GetBucketRequestPayment GetBucketTagging GetBucketVersioning GetBucketWebsite GetObject GetObjectAcl GetObjectTagging GetObjectTorrent HeadBucket HeadObject ListBucketAnalyticsConfigurations ListBucketInventoryConfigurations ListBucketMetricsConfigurations ListBuckets ListMultipartUploads ListObjects ListObjectsV2 ListObjectVersions ListParts PutBucketAccelerateConfiguration PutBucketAcl PutBucketAnalyticsConfiguration PutBucketCors PutBucketInventoryConfiguration PutBucketLifecycle PutBucketLifecycleConfiguration PutBucketLogging PutBucketMetricsConfiguration PutBucketNotification PutBucketNotificationConfiguration PutBucketPolicy PutBucketReplication PutBucketRequestPayment PutBucketTagging PutBucketVersioning PutBucketWebsite PutObject PutObjectAcl PutObjectTagging RestoreObject UploadPart UploadPartCopy / }
+  sub operations { qw/AbortMultipartUpload CompleteMultipartUpload CopyObject CreateBucket CreateMultipartUpload DeleteBucket DeleteBucketAnalyticsConfiguration DeleteBucketCors DeleteBucketEncryption DeleteBucketInventoryConfiguration DeleteBucketLifecycle DeleteBucketMetricsConfiguration DeleteBucketPolicy DeleteBucketReplication DeleteBucketTagging DeleteBucketWebsite DeleteObject DeleteObjects DeleteObjectTagging GetBucketAccelerateConfiguration GetBucketAcl GetBucketAnalyticsConfiguration GetBucketCors GetBucketEncryption GetBucketInventoryConfiguration GetBucketLifecycle GetBucketLifecycleConfiguration GetBucketLocation GetBucketLogging GetBucketMetricsConfiguration GetBucketNotification GetBucketNotificationConfiguration GetBucketPolicy GetBucketReplication GetBucketRequestPayment GetBucketTagging GetBucketVersioning GetBucketWebsite GetObject GetObjectAcl GetObjectTagging GetObjectTorrent HeadBucket HeadObject ListBucketAnalyticsConfigurations ListBucketInventoryConfigurations ListBucketMetricsConfigurations ListBuckets ListMultipartUploads ListObjects ListObjectsV2 ListObjectVersions ListParts PutBucketAccelerateConfiguration PutBucketAcl PutBucketAnalyticsConfiguration PutBucketCors PutBucketEncryption PutBucketInventoryConfiguration PutBucketLifecycle PutBucketLifecycleConfiguration PutBucketLogging PutBucketMetricsConfiguration PutBucketNotification PutBucketNotificationConfiguration PutBucketPolicy PutBucketReplication PutBucketRequestPayment PutBucketTagging PutBucketVersioning PutBucketWebsite PutObject PutObjectAcl PutObjectTagging RestoreObject UploadPart UploadPartCopy / }
 
 1;
 
@@ -717,6 +732,15 @@ Each argument is described in detail in: L<Paws::S3::DeleteBucketCors>
 Returns: nothing
 
 Deletes the cors configuration information set for the bucket.
+
+
+=head2 DeleteBucketEncryption(Bucket => Str)
+
+Each argument is described in detail in: L<Paws::S3::DeleteBucketEncryption>
+
+Returns: nothing
+
+Deletes the server-side encryption configuration from the bucket.
 
 
 =head2 DeleteBucketInventoryConfiguration(Bucket => Str, Id => Str)
@@ -849,6 +873,15 @@ Each argument is described in detail in: L<Paws::S3::GetBucketCors>
 Returns: a L<Paws::S3::GetBucketCorsOutput> instance
 
 Returns the cors configuration for the bucket.
+
+
+=head2 GetBucketEncryption(Bucket => Str)
+
+Each argument is described in detail in: L<Paws::S3::GetBucketEncryption>
+
+Returns: a L<Paws::S3::GetBucketEncryptionOutput> instance
+
+Returns the server-side encryption configuration of a bucket.
 
 
 =head2 GetBucketInventoryConfiguration(Bucket => Str, Id => Str)
@@ -1165,6 +1198,16 @@ Returns: nothing
 Sets the cors configuration for a bucket.
 
 
+=head2 PutBucketEncryption(Bucket => Str, ServerSideEncryptionConfiguration => L<Paws::S3::ServerSideEncryptionConfiguration>, [ContentMD5 => Str])
+
+Each argument is described in detail in: L<Paws::S3::PutBucketEncryption>
+
+Returns: nothing
+
+Creates a new server-side encryption configuration (or replaces an
+existing one, if present).
+
+
 =head2 PutBucketInventoryConfiguration(Bucket => Str, Id => Str, InventoryConfiguration => L<Paws::S3::InventoryConfiguration>)
 
 Each argument is described in detail in: L<Paws::S3::PutBucketInventoryConfiguration>
@@ -1233,7 +1276,7 @@ Returns: nothing
 Enables notifications of specified events for a bucket.
 
 
-=head2 PutBucketPolicy(Bucket => Str, Policy => Str, [ContentMD5 => Str])
+=head2 PutBucketPolicy(Bucket => Str, Policy => Str, [ConfirmRemoveSelfBucketAccess => Bool, ContentMD5 => Str])
 
 Each argument is described in detail in: L<Paws::S3::PutBucketPolicy>
 

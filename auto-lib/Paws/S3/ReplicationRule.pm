@@ -3,6 +3,7 @@ package Paws::S3::ReplicationRule;
   has Destination => (is => 'ro', isa => 'Paws::S3::Destination', required => 1);
   has ID => (is => 'ro', isa => 'Str');
   has Prefix => (is => 'ro', isa => 'Str', required => 1);
+  has SourceSelectionCriteria => (is => 'ro', isa => 'Paws::S3::SourceSelectionCriteria');
   has Status => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -34,14 +35,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Replica
 
 =head1 DESCRIPTION
 
-This class has no description
+Container for information about a particular replication rule.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Destination => L<Paws::S3::Destination>
 
-  
+  Container for replication destination information.
 
 
 =head2 ID => Str
@@ -55,6 +56,12 @@ characters.
   Object keyname prefix identifying one or more objects to which the rule
 applies. Maximum prefix length can be up to 1,024 characters.
 Overlapping prefixes are not supported.
+
+
+=head2 SourceSelectionCriteria => L<Paws::S3::SourceSelectionCriteria>
+
+  Container for filters that define which source objects should be
+replicated.
 
 
 =head2 B<REQUIRED> Status => Str
