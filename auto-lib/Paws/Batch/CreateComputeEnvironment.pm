@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> ComputeEnvironmentName => Str
 
 The name for your compute environment. Up to 128 letters (uppercase and
-lowercase), numbers, and underscores are allowed.
+lowercase), numbers, hyphens, and underscores are allowed.
 
 
 

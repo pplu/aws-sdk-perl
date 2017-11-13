@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> JobId => Str
 
-Job IDs to be terminated. Up to 100 jobs can be specified.
+The AWS Batch job ID of the job to terminate.
 
 
 

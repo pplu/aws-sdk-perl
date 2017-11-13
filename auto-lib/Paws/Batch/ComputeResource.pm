@@ -88,7 +88,12 @@ in the I<AWS Batch User Guide>.
 
 =head2 B<REQUIRED> InstanceTypes => ArrayRef[Str|Undef]
 
-  The instances types that may launched.
+  The instances types that may be launched. You can specify instance
+families to launch any instance type within those families (for
+example, C<c4> or C<p3>), or you can specify specific sizes within a
+family (such as C<c4.8xlarge>). You can also choose C<optimal> to pick
+instance types (from the latest C, M, and R instance families) on the
+fly that match the demand of your job queues.
 
 
 =head2 B<REQUIRED> MaxvCpus => Int

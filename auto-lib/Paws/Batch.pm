@@ -152,11 +152,11 @@ Each argument is described in detail in: L<Paws::Batch::CancelJob>
 
 Returns: a L<Paws::Batch::CancelJobResponse> instance
 
-Cancels jobs in an AWS Batch job queue. Jobs that are in the
+Cancels a job in an AWS Batch job queue. Jobs that are in the
 C<SUBMITTED>, C<PENDING>, or C<RUNNABLE> state are cancelled. Jobs that
 have progressed to C<STARTING> or C<RUNNING> are not cancelled (but the
-API operation still succeeds, even if no jobs are cancelled); these
-jobs must be terminated with the TerminateJob operation.
+API operation still succeeds, even if no job is cancelled); these jobs
+must be terminated with the TerminateJob operation.
 
 
 =head2 CreateComputeEnvironment(ComputeEnvironmentName => Str, ServiceRole => Str, Type => Str, [ComputeResources => L<Paws::Batch::ComputeResource>, State => Str])
@@ -325,7 +325,7 @@ Each argument is described in detail in: L<Paws::Batch::TerminateJob>
 
 Returns: a L<Paws::Batch::TerminateJobResponse> instance
 
-Terminates jobs in a job queue. Jobs that are in the C<STARTING> or
+Terminates a job in a job queue. Jobs that are in the C<STARTING> or
 C<RUNNING> state are terminated, which causes them to transition to
 C<FAILED>. Jobs that have not progressed to the C<STARTING> state are
 cancelled.

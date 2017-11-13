@@ -68,6 +68,10 @@ container is running.
 
   The environment variables to pass to a container.
 
+Environment variables must not start with C<AWS_BATCH>; this naming
+convention is reserved for variables that are set by the AWS Batch
+service.
+
 
 =head2 ExitCode => Int
 
@@ -123,7 +127,8 @@ additional details about a running or stopped container.
 =head2 TaskArn => Str
 
   The Amazon Resource Name (ARN) of the Amazon ECS task that is
-associated with the container job.
+associated with the container job. Each container attempt receives a
+task ARN when they reach the C<STARTING> status.
 
 
 =head2 Ulimits => ArrayRef[L<Paws::Batch::Ulimit>]

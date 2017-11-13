@@ -74,6 +74,10 @@ and the C<--env> option to docker run
 We do not recommend using plain text environment variables for
 sensitive information, such as credential data.
 
+Environment variables must not start with C<AWS_BATCH>; this naming
+convention is reserved for variables that are set by the AWS Batch
+service.
+
 
 =head2 B<REQUIRED> Image => Str
 

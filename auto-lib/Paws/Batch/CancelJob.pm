@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> JobId => Str
 
-A list of up to 100 job IDs to cancel.
+The AWS Batch job ID of the job to cancel.
 
 
 
