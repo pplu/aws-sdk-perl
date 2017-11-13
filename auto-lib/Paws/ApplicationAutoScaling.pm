@@ -19,6 +19,11 @@ package Paws::ApplicationAutoScaling;
     my $call_object = $self->new_with_coercions('Paws::ApplicationAutoScaling::DeleteScalingPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteScheduledAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApplicationAutoScaling::DeleteScheduledAction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeregisterScalableTarget {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApplicationAutoScaling::DeregisterScalableTarget', @_);
@@ -39,9 +44,19 @@ package Paws::ApplicationAutoScaling;
     my $call_object = $self->new_with_coercions('Paws::ApplicationAutoScaling::DescribeScalingPolicies', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeScheduledActions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApplicationAutoScaling::DescribeScheduledActions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutScalingPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApplicationAutoScaling::PutScalingPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutScheduledAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApplicationAutoScaling::PutScheduledAction', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RegisterScalableTarget {
@@ -121,7 +136,7 @@ package Paws::ApplicationAutoScaling;
   }
 
 
-  sub operations { qw/DeleteScalingPolicy DeregisterScalableTarget DescribeScalableTargets DescribeScalingActivities DescribeScalingPolicies PutScalingPolicy RegisterScalableTarget / }
+  sub operations { qw/DeleteScalingPolicy DeleteScheduledAction DeregisterScalableTarget DescribeScalableTargets DescribeScalingActivities DescribeScalingPolicies DescribeScheduledActions PutScalingPolicy PutScheduledAction RegisterScalableTarget / }
 
 1;
 
@@ -150,7 +165,7 @@ Paws::ApplicationAutoScaling - Perl Interface to AWS Application Auto Scaling
 =head1 DESCRIPTION
 
 With Application Auto Scaling, you can automatically scale your AWS
-resources. The experience similar to that of Auto Scaling
+resources. The experience is similar to that of Auto Scaling
 (https://aws.amazon.com/autoscaling/). You can use Application Auto
 Scaling to accomplish the following tasks:
 
@@ -234,6 +249,15 @@ To create a scaling policy or update an existing one, see
 PutScalingPolicy.
 
 
+=head2 DeleteScheduledAction(ResourceId => Str, ScheduledActionName => Str, ServiceNamespace => Str, [ScalableDimension => Str])
+
+Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DeleteScheduledAction>
+
+Returns: a L<Paws::ApplicationAutoScaling::DeleteScheduledActionResponse> instance
+
+Deletes the specified Application Auto Scaling scheduled action.
+
+
 =head2 DeregisterScalableTarget(ResourceId => Str, ScalableDimension => Str, ServiceNamespace => Str)
 
 Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DeregisterScalableTarget>
@@ -290,8 +314,7 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::Describ
 
 Returns: a L<Paws::ApplicationAutoScaling::DescribeScalingPoliciesResponse> instance
 
-Provides descriptive information about the scaling policies in the
-specified namespace.
+Describes the scaling policies for the specified service namespace.
 
 You can filter the results using the C<ResourceId>,
 C<ScalableDimension>, and C<PolicyNames> parameters.
@@ -299,6 +322,22 @@ C<ScalableDimension>, and C<PolicyNames> parameters.
 To create a scaling policy or update an existing one, see
 PutScalingPolicy. If you are no longer using a scaling policy, you can
 delete it using DeleteScalingPolicy.
+
+
+=head2 DescribeScheduledActions(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceId => Str, ScalableDimension => Str, ScheduledActionNames => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DescribeScheduledActions>
+
+Returns: a L<Paws::ApplicationAutoScaling::DescribeScheduledActionsResponse> instance
+
+Describes the scheduled actions for the specified service namespace.
+
+You can filter the results using the C<ResourceId>,
+C<ScalableDimension>, and C<ScheduledActionNames> parameters.
+
+To create a scheduled action or update an existing one, see
+PutScheduledAction. If you are no longer using a scheduled action, you
+can delete it using DeleteScheduledAction.
 
 
 =head2 PutScalingPolicy(PolicyName => Str, ResourceId => Str, ScalableDimension => Str, ServiceNamespace => Str, [PolicyType => Str, StepScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration>, TargetTrackingScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::TargetTrackingScalingPolicyConfiguration>])
@@ -323,6 +362,31 @@ by this update request.
 You can view the scaling policies for a service namespace using
 DescribeScalingPolicies. If you are no longer using a scaling policy,
 you can delete it using DeleteScalingPolicy.
+
+
+=head2 PutScheduledAction(ResourceId => Str, ScheduledActionName => Str, ServiceNamespace => Str, [EndTime => Str, ScalableDimension => Str, ScalableTargetAction => L<Paws::ApplicationAutoScaling::ScalableTargetAction>, Schedule => Str, StartTime => Str])
+
+Each argument is described in detail in: L<Paws::ApplicationAutoScaling::PutScheduledAction>
+
+Returns: a L<Paws::ApplicationAutoScaling::PutScheduledActionResponse> instance
+
+Creates or updates a scheduled action for an Application Auto Scaling
+scalable target.
+
+Each scalable target is identified by a service namespace, resource ID,
+and scalable dimension. A scheduled action applies to the scalable
+target identified by those three attributes. You cannot create a
+scheduled action without first registering a scalable target using
+RegisterScalableTarget.
+
+To update an action, specify its name and the parameters that you want
+to change. If you don't specify start and end times, the old values are
+deleted. Any other parameters that you don't specify are not changed by
+this update request.
+
+You can view the scheduled actions using DescribeScheduledActions. If
+you are no longer using a scheduled action, you can delete it using
+DeleteScheduledAction.
 
 
 =head2 RegisterScalableTarget(ResourceId => Str, ScalableDimension => Str, ServiceNamespace => Str, [MaxCapacity => Int, MinCapacity => Int, RoleARN => Str])
