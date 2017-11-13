@@ -46,7 +46,7 @@ Represents a single cache security group and its status.
 
   The status of the cache security group membership. The status changes
 whenever a cache security group is modified, or when the cache security
-groups assigned to a cache cluster are modified.
+groups assigned to a cluster are modified.
 
 
 

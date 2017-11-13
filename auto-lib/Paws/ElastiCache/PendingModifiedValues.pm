@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head1 DESCRIPTION
 
-A group of settings that are applied to the cache cluster in the
-future, or that are currently being applied.
+A group of settings that are applied to the cluster in the future, or
+that are currently being applied.
 
 =head1 ATTRIBUTES
 
@@ -43,24 +43,23 @@ future, or that are currently being applied.
 =head2 CacheNodeIdsToRemove => ArrayRef[Str|Undef]
 
   A list of cache node IDs that are being removed (or will be removed)
-from the cache cluster. A node ID is a numeric identifier (0001, 0002,
-etc.).
+from the cluster. A node ID is a numeric identifier (0001, 0002, etc.).
 
 
 =head2 CacheNodeType => Str
 
-  The cache node type that this cache cluster or replication group is
-scaled to.
+  The cache node type that this cluster or replication group is scaled
+to.
 
 
 =head2 EngineVersion => Str
 
-  The new cache engine version that the cache cluster runs.
+  The new cache engine version that the cluster runs.
 
 
 =head2 NumCacheNodes => Int
 
-  The new number of cache nodes for the cache cluster.
+  The new number of cache nodes for the cluster.
 
 For clusters running Redis, this value must be 1. For clusters running
 Memcached, this value must be between 1 and 20.

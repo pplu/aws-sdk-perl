@@ -1,13 +1,13 @@
-package Paws::ElastiCache::AvailabilityZone;
+package Paws::ElastiCache::ReshardingStatus;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str');
+  has SlotMigration => (is => 'ro', isa => 'Paws::ElastiCache::SlotMigration');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ElastiCache::AvailabilityZone
+Paws::ElastiCache::ReshardingStatus
 
 =head1 USAGE
 
@@ -18,27 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::ElastiCache::AvailabilityZone object:
+As an example, if Att1 is expected to be a Paws::ElastiCache::ReshardingStatus object:
 
-  $service_obj->Method(Att1 => { Name => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { SlotMigration => $value, ..., SlotMigration => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache::AvailabilityZone object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache::ReshardingStatus object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Name
+  $result->Att1->SlotMigration
 
 =head1 DESCRIPTION
 
-Describes an Availability Zone in which the cluster is launched.
+The status of an online resharding operation.
 
 =head1 ATTRIBUTES
 
 
-=head2 Name => Str
+=head2 SlotMigration => L<Paws::ElastiCache::SlotMigration>
 
-  The name of the Availability Zone.
+  Represents the progress of an online resharding operation.
 
 
 

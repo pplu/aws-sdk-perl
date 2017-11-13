@@ -32,8 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head1 DESCRIPTION
 
-Represents a cache cluster's status within a particular cache security
-group.
+Represents a cluster's status within a particular cache security group.
 
 =head1 ATTRIBUTES
 
@@ -47,7 +46,7 @@ group.
 
   The membership status in the cache security group. The status changes
 when a cache security group is modified, or when the cache security
-groups assigned to a cache cluster are modified.
+groups assigned to a cluster are modified.
 
 
 

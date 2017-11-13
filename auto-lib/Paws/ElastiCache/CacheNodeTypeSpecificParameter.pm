@@ -40,8 +40,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 =head1 DESCRIPTION
 
 A parameter that has a different value for each cache node type it is
-applied to. For example, in a Redis cache cluster, a C<cache.m1.large>
-cache node type would have a larger C<maxmemory> value than a
+applied to. For example, in a Redis cluster, a C<cache.m1.large> cache
+node type would have a larger C<maxmemory> value than a
 C<cache.m1.small> type.
 
 =head1 ATTRIBUTES

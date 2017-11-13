@@ -37,8 +37,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head1 DESCRIPTION
 
-Represents an individual cache node within a cache cluster. Each cache
-node runs its own instance of the cluster's protocol-compliant caching
+Represents an individual cache node within a cluster. Each cache node
+runs its own instance of the cluster's protocol-compliant caching
 software - either Memcached or Redis.
 
 The following node types are supported by ElastiCache. Generally
@@ -142,9 +142,6 @@ T2 instances.
 
 =back
 
-Supported node types are available in all regions except as noted in
-the following table.
-
 For a complete listing of node types and specifications, see Amazon
 ElastiCache Product Features and Details
 (http://aws.amazon.com/elasticache/details) and either Cache Node
@@ -192,7 +189,7 @@ identifies every cache node used in a customer's AWS account.
 
   The ID of the primary node to which this read replica node is
 synchronized. If this field is empty, this node is not associated with
-a primary cache cluster.
+a primary cluster.
 
 
 

@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 =head1 DESCRIPTION
 
 Represents a single occurrence of something interesting within the
-system. Some examples of events are creating a cache cluster, adding or
+system. Some examples of events are creating a cluster, adding or
 removing a cache node, or rebooting a node.
 
 =head1 ATTRIBUTES
@@ -54,14 +54,14 @@ removing a cache node, or rebooting a node.
 =head2 SourceIdentifier => Str
 
   The identifier for the source of the event. For example, if the event
-occurred at the cache cluster level, the identifier would be the name
-of the cache cluster.
+occurred at the cluster level, the identifier would be the name of the
+cluster.
 
 
 =head2 SourceType => Str
 
-  Specifies the origin of this event - a cache cluster, a parameter
-group, a security group, etc.
+  Specifies the origin of this event - a cluster, a parameter group, a
+security group, etc.
 
 
 

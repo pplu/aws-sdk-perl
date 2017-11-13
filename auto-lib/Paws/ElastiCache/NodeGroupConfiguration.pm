@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head1 DESCRIPTION
 
-node group (shard) configuration options. Each node group (shard)
+Node group (shard) configuration options. Each node group (shard)
 configuration has the following: C<Slots>, C<PrimaryAvailabilityZone>,
 C<ReplicaAvailabilityZones>, C<ReplicaCount>.
 

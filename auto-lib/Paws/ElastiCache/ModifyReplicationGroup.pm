@@ -124,7 +124,7 @@ A list of cache security group names to authorize for the clusters in
 this replication group. This change is asynchronously applied as soon
 as possible.
 
-This parameter can be used only with replication group containing cache
+This parameter can be used only with replication group containing
 clusters running outside of an Amazon Virtual Private Cloud (Amazon
 VPC).
 
@@ -135,8 +135,8 @@ Must not be C<Default>.
 
 =head2 EngineVersion => Str
 
-The upgraded version of the cache engine to be run on the cache
-clusters in the replication group.
+The upgraded version of the cache engine to be run on the clusters in
+the replication group.
 
 B<Important:> You can upgrade to a newer engine version (see Selecting
 a Cache Engine and Version
@@ -240,10 +240,10 @@ The identifier of the replication group to modify.
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
-Specifies the VPC Security Groups associated with the cache clusters in
-the replication group.
+Specifies the VPC Security Groups associated with the clusters in the
+replication group.
 
-This parameter can be used only with replication group containing cache
+This parameter can be used only with replication group containing
 clusters running in an Amazon Virtual Private Cloud (Amazon VPC).
 
 
@@ -262,7 +262,7 @@ backups are turned off.
 
 =head2 SnapshottingClusterId => Str
 
-The cache cluster ID that is used as the daily snapshot source for the
+The cluster ID that is used as the daily snapshot source for the
 replication group. This parameter cannot be set for Redis (cluster mode
 enabled) replication groups.
 

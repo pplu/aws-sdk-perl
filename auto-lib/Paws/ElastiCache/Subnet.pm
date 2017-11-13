@@ -32,9 +32,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head1 DESCRIPTION
 
-Represents the subnet associated with a cache cluster. This parameter
-refers to subnets defined in Amazon Virtual Private Cloud (Amazon VPC)
-and used with ElastiCache.
+Represents the subnet associated with a cluster. This parameter refers
+to subnets defined in Amazon Virtual Private Cloud (Amazon VPC) and
+used with ElastiCache.
 
 =head1 ATTRIBUTES
 
