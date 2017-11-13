@@ -128,8 +128,7 @@ Example: C<my-cluster1>
 =head2 DBClusterParameterGroupName => Str
 
 The name of the DB cluster parameter group to associate with this DB
-cluster. If this argument is omitted, C<default.aurora5.6> will be
-used.
+cluster. If this argument is omitted, C<default.aurora5.6> is used.
 
 Constraints:
 
@@ -336,7 +335,7 @@ Constraints: Minimum 30-minute window.
 
 A URL that contains a Signature Version 4 signed request for the
 C<CreateDBCluster> action to be called in the source AWS Region where
-the DB cluster will be replicated from. You only need to specify
+the DB cluster is replicated from. You only need to specify
 C<PreSignedUrl> when you are performing cross-region replication from
 an encrypted DB cluster.
 

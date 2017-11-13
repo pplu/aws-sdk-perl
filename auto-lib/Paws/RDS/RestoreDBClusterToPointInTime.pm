@@ -103,8 +103,8 @@ KMS encryption key.
 
 You can restore to a new DB cluster and encrypt the new DB cluster with
 a KMS key that is different than the KMS key used to encrypt the source
-DB cluster. The new DB cluster will be encrypted with the KMS key
-identified by the C<KmsKeyId> parameter.
+DB cluster. The new DB cluster is encrypted with the KMS key identified
+by the C<KmsKeyId> parameter.
 
 If you do not specify a value for the C<KmsKeyId> parameter, then the
 following will occur:

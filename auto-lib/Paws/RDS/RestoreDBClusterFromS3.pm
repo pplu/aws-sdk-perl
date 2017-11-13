@@ -128,7 +128,7 @@ Example: C<my-cluster1>
 
 The name of the DB cluster parameter group to associate with the
 restored DB cluster. If this argument is omitted, C<default.aurora5.6>
-will be used.
+is used.
 
 Constraints:
 

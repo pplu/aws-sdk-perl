@@ -104,9 +104,9 @@ contain the following parameter values:
 
 =item *
 
-C<DestinationRegion> - The AWS Region that the encrypted DB snapshot
-will be copied to. This AWS Region is the same one where the
-C<CopyDBSnapshot> action is called that contains this presigned URL.
+C<DestinationRegion> - The AWS Region that the encrypted DB snapshot is
+copied to. This AWS Region is the same one where the C<CopyDBSnapshot>
+action is called that contains this presigned URL.
 
 For example, if you copy an encrypted DB snapshot from the us-west-2
 region to the us-east-1 region, then you call the C<CopyDBSnapshot>

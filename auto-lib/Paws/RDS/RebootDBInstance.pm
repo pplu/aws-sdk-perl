@@ -54,7 +54,7 @@ Must match the identifier of an existing DBInstance.
 
 =head2 ForceFailover => Bool
 
-When C<true>, the reboot will be conducted through a MultiAZ failover.
+When C<true>, the reboot is conducted through a MultiAZ failover.
 
 Constraint: You cannot specify C<true> if the instance is not
 configured for MultiAZ.

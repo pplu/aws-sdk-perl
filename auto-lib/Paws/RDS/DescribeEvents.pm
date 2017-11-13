@@ -95,8 +95,8 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 SourceIdentifier => Str
 
-The identifier of the event source for which events will be returned.
-If not specified, then all sources are included in the response.
+The identifier of the event source for which events are returned. If
+not specified, then all sources are included in the response.
 
 Constraints:
 

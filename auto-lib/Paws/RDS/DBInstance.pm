@@ -353,12 +353,15 @@ by subelements.
 
 =head2 PerformanceInsightsEnabled => Bool
 
-  
+  True if Performance Insights is enabled for the DB instance; otherwise
+false.
 
 
 =head2 PerformanceInsightsKMSKeyId => Str
 
-  
+  The KMS key identifier for encryption of Performance Insights data. The
+KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or
+the KMS key alias for the KMS encryption key.
 
 
 =head2 PreferredBackupWindow => Str
@@ -408,10 +411,10 @@ B<VPC:>false
 =back
 
 If no DB subnet group has been specified as part of the request and the
-PubliclyAccessible value has not been set, the DB instance will be
-publicly accessible. If a specific DB subnet group has been specified
-as part of the request and the PubliclyAccessible value has not been
-set, the DB instance will be private.
+PubliclyAccessible value has not been set, the DB instance is publicly
+accessible. If a specific DB subnet group has been specified as part of
+the request and the PubliclyAccessible value has not been set, the DB
+instance is private.
 
 
 =head2 ReadReplicaDBClusterIdentifiers => ArrayRef[Str|Undef]
@@ -441,7 +444,7 @@ DB instance with multi-AZ support.
 =head2 StatusInfos => ArrayRef[L<Paws::RDS::DBInstanceStatusInfo>]
 
   The status of a Read Replica. If the instance is not a Read Replica,
-this will be blank.
+this is blank.
 
 
 =head2 StorageEncrypted => Bool

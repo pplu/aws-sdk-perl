@@ -233,8 +233,8 @@ Web and Express editions: Must be an integer from 20 to 1024.
 
 =head2 AutoMinorVersionUpgrade => Bool
 
-Indicates that minor engine upgrades will be applied automatically to
-the DB instance during the maintenance window.
+Indicates that minor engine upgrades are applied automatically to the
+DB instance during the maintenance window.
 
 Default: C<true>
 
@@ -242,8 +242,8 @@ Default: C<true>
 
 =head2 AvailabilityZone => Str
 
-The EC2 Availability Zone that the database instance will be created
-in. For information on regions and Availability Zones, see Regions and
+The EC2 Availability Zone that the database instance is created in. For
+information on regions and Availability Zones, see Regions and
 Availability Zones
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 
@@ -319,15 +319,12 @@ Type: String
 
 =head2 B<REQUIRED> DBInstanceClass => Str
 
-The compute and memory capacity of the DB instance. Note that not all
-instance classes are available in all regions for all DB engines.
-
-Valid Values: C<db.t1.micro | db.m1.small | db.m1.medium | db.m1.large
-| db.m1.xlarge | db.m2.xlarge |db.m2.2xlarge | db.m2.4xlarge |
-db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large
-| db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge |
-db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge |
-db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large>
+The compute and memory capacity of the DB instance, for example,
+C<db.m4.large>. Not all DB instance classes are available in all
+regions, or for all database engines. For the full list of DB instance
+classes, and availability for your engine, see DB Instance Class
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
+in the Amazon RDS User Guide.
 
 
 
@@ -479,7 +476,7 @@ Cannot be a word reserved by the specified database engine
 
 The name of the DB parameter group to associate with this DB instance.
 If this argument is omitted, the default DBParameterGroup for the
-specified engine will be used.
+specified engine is used.
 
 Constraints:
 
@@ -564,7 +561,8 @@ Default: C<false>
 
 =head2 EnablePerformanceInsights => Bool
 
-
+True to enable Performance Insights for the DB instance; otherwise
+false.
 
 
 
@@ -768,6 +766,10 @@ B<MySQL>
 
 =item *
 
+C<5.7.19> (supported in all AWS regions)
+
+=item *
+
 C<5.7.17> (supported in all AWS regions)
 
 =item *
@@ -781,6 +783,10 @@ C<5.7.11> (supported in all AWS regions)
 =back
 
 =over
+
+=item *
+
+C<5.6.37> (supported in all AWS regions)
 
 =item *
 
@@ -805,6 +811,10 @@ eu-west-2)
 
 =item *
 
+C<5.5.57> (supported in all AWS regions)
+
+=item *
+
 C<5.5.54> (supported in all AWS regions)
 
 =item *
@@ -820,6 +830,11 @@ C<5.5.46> (supported in all AWS regions)
 B<Oracle 12c>
 
 =over
+
+=item *
+
+C<12.1.0.2.v9> (supported for EE in all AWS regions, and SE2 in all AWS
+regions except us-gov-west-1)
 
 =item *
 
@@ -866,6 +881,10 @@ regions except us-gov-west-1)
 B<Oracle 11g>
 
 =over
+
+=item *
+
+C<11.2.0.4.v13> (supported for EE, SE1, and SE, in all AWS regions)
 
 =item *
 
@@ -919,19 +938,19 @@ B<PostgreSQL>
 
 =item *
 
-B<Version 9.6.x:> C< 9.6.1 | 9.6.2 | 9.6.3>
+B<Version 9.6.x:> C< 9.6.5 | 9.6.3 | 9.6.2 | 9.6.1>
 
 =item *
 
-B<Version 9.5.x:> C<9.5.6 | 9.5.4 | 9.5.2>
+B<Version 9.5.x:> C< 9.5.9 | 9.5.7 | 9.5.6 | 9.5.4 | 9.5.2>
 
 =item *
 
-B<Version 9.4.x:> C<9.4.11 | 9.4.9 | 9.4.7>
+B<Version 9.4.x:> C< 9.4.14 | 9.4.12 | 9.4.11 | 9.4.9 | 9.4.7>
 
 =item *
 
-B<Version 9.3.x:> C<9.3.16 | 9.3.14 | 9.3.12>
+B<Version 9.3.x:> C< 9.3.19 | 9.3.17 | 9.3.16 | 9.3.14 | 9.3.12>
 
 =back
 
@@ -1189,7 +1208,9 @@ instance
 
 =head2 PerformanceInsightsKMSKeyId => Str
 
-
+The KMS key identifier for encryption of Performance Insights data. The
+KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or
+the KMS key alias for the KMS encryption key.
 
 
 
@@ -1346,10 +1367,10 @@ B<VPC:> false
 =back
 
 If no DB subnet group has been specified as part of the request and the
-PubliclyAccessible value has not been set, the DB instance will be
-publicly accessible. If a specific DB subnet group has been specified
-as part of the request and the PubliclyAccessible value has not been
-set, the DB instance will be private.
+PubliclyAccessible value has not been set, the DB instance is publicly
+accessible. If a specific DB subnet group has been specified as part of
+the request and the PubliclyAccessible value has not been set, the DB
+instance is private.
 
 
 
