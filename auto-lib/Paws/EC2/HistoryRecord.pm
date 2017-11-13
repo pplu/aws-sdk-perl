@@ -51,17 +51,20 @@ This class has no description
 
 =item *
 
-C<error> - Indicates an error with the Spot fleet request.
+C<error> - An error with the Spot fleet request.
 
 =item *
 
-C<fleetRequestChange> - Indicates a change in the status or
-configuration of the Spot fleet request.
+C<fleetRequestChange> - A change in the status or configuration of the
+Spot fleet request.
 
 =item *
 
-C<instanceChange> - Indicates that an instance was launched or
-terminated.
+C<instanceChange> - An instance was launched or terminated.
+
+=item *
+
+C<Information> - An informational event.
 
 =back
 

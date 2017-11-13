@@ -64,8 +64,8 @@ instance termination.
 
 =item *
 
-C<attachment.device> - The device name that is exposed to the instance
-(for example, C</dev/sda1>).
+C<attachment.device> - The device name specified in the block device
+mapping (for example, C</dev/sda1>).
 
 =item *
 

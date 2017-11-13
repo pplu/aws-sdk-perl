@@ -47,7 +47,7 @@ This class has no description
 
   The event.
 
-The following are the C<error> events.
+The following are the C<error> events:
 
 =over
 
@@ -74,7 +74,7 @@ number of Spot instances that you can launch.
 
 =back
 
-The following are the C<fleetRequestChange> events.
+The following are the C<fleetRequestChange> events:
 
 =over
 
@@ -127,7 +127,7 @@ is preparing to launch the target number of Spot instances.
 
 =back
 
-The following are the C<instanceChange> events.
+The following are the C<instanceChange> events:
 
 =over
 
@@ -138,6 +138,24 @@ C<launched> - A bid was fulfilled and a new instance was launched.
 =item *
 
 C<terminated> - An instance was terminated by the user.
+
+=back
+
+The following are the C<Information> events:
+
+=over
+
+=item *
+
+C<launchSpecUnusable> - The bid price of a launch specification is not
+valid because it is below the market price or the market price is above
+the On-Demand price.
+
+=item *
+
+C<fleetProgressHalted> - The bid price of every launch specification is
+not valid. A launch specification might become valid if the market
+price changes.
 
 =back
 

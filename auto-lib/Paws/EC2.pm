@@ -174,6 +174,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateCustomerGateway', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateDefaultSubnet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateDefaultSubnet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDefaultVpc {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateDefaultVpc', @_);
@@ -1502,7 +1507,7 @@ package Paws::EC2;
   }
 
 
-  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCustomerGateway CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions ModifyVpcTenancy MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress / }
+  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions ModifyVpcTenancy MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress / }
 
 1;
 
@@ -2136,6 +2141,20 @@ customer gateway. The subsequent requests do not create new customer
 gateway resources.
 
 
+=head2 CreateDefaultSubnet(AvailabilityZone => Str, [DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::CreateDefaultSubnet>
+
+Returns: a L<Paws::EC2::CreateDefaultSubnetResult> instance
+
+Creates a default subnet with a size C</20> IPv4 CIDR block in the
+specified Availability Zone in your default VPC. You can have only one
+default subnet per Availability Zone. For more information, see
+Creating a Default Subnet
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html#create-default-subnet)
+in the I<Amazon Virtual Private Cloud User Guide>.
+
+
 =head2 CreateDefaultVpc([DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::CreateDefaultVpc>
@@ -2751,7 +2770,7 @@ more information, see Dedicated Instances
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
-=head2 CreateVpcEndpoint(ServiceName => Str, VpcId => Str, [ClientToken => Str, DryRun => Bool, PolicyDocument => Str, RouteTableIds => ArrayRef[Str|Undef]])
+=head2 CreateVpcEndpoint(ServiceName => Str, VpcId => Str, [ClientToken => Str, DryRun => Bool, PolicyDocument => Str, PrivateDnsEnabled => Bool, RouteTableIds => ArrayRef[Str|Undef], SecurityGroupIds => ArrayRef[Str|Undef], SubnetIds => ArrayRef[Str|Undef], VpcEndpointType => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CreateVpcEndpoint>
 
@@ -2759,12 +2778,20 @@ Returns: a L<Paws::EC2::CreateVpcEndpointResult> instance
 
 Creates a VPC endpoint for a specified AWS service. An endpoint enables
 you to create a private connection between your VPC and another AWS
-service in your account. You can specify an endpoint policy to attach
-to the endpoint that will control access to the service from your VPC.
-You can also specify the VPC route tables that use the endpoint.
+service in your account. You can create a gateway endpoint or an
+interface endpoint.
 
-Use DescribeVpcEndpointServices to get a list of supported AWS
-services.
+A gateway endpoint serves as a target for a route in your route table
+for traffic destined for the AWS service. You can specify the VPC route
+tables that use the endpoint, and you can optionally specify an
+endpoint policy to attach to the endpoint that will control access to
+the service from your VPC.
+
+An interface endpoint is a network interface in your subnet with a
+private IP address that serves as an entry point for traffic destined
+to the AWS service. You can specify the subnets in which to create an
+endpoint, and the security groups to associate with the network
+interface.
 
 
 =head2 CreateVpcPeeringConnection([DryRun => Bool, PeerOwnerId => Str, PeerVpcId => Str, VpcId => Str])
@@ -3114,9 +3141,10 @@ Each argument is described in detail in: L<Paws::EC2::DeleteVpcEndpoints>
 
 Returns: a L<Paws::EC2::DeleteVpcEndpointsResult> instance
 
-Deletes one or more specified VPC endpoints. Deleting the endpoint also
-deletes the endpoint routes in the route tables that were associated
-with the endpoint.
+Deletes one or more specified VPC endpoints. Deleting a gateway
+endpoint also deletes the endpoint routes in the route tables that were
+associated with the endpoint. Deleting an interface endpoint deletes
+the endpoint network interfaces.
 
 
 =head2 DeleteVpcPeeringConnection(VpcPeeringConnectionId => Str, [DryRun => Bool])
@@ -3353,7 +3381,7 @@ Returns: a L<Paws::EC2::DescribeElasticGpusResult> instance
 
 Describes the Elastic GPUs associated with your instances. For more
 information about Elastic GPUs, see Amazon EC2 Elastic GPUs
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-gpus.html).
+(http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-gpus.html).
 
 
 =head2 DescribeExportTasks([ExportTaskIds => ArrayRef[Str|Undef]])
@@ -4264,7 +4292,7 @@ Returns: a L<Paws::EC2::DescribeVpcEndpointsResult> instance
 Describes one or more of your VPC endpoints.
 
 
-=head2 DescribeVpcEndpointServices([DryRun => Bool, MaxResults => Int, NextToken => Str])
+=head2 DescribeVpcEndpointServices([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, ServiceNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVpcEndpointServices>
 
@@ -5032,15 +5060,17 @@ Returns: nothing
 Modifies the specified attribute of the specified VPC.
 
 
-=head2 ModifyVpcEndpoint(VpcEndpointId => Str, [AddRouteTableIds => ArrayRef[Str|Undef], DryRun => Bool, PolicyDocument => Str, RemoveRouteTableIds => ArrayRef[Str|Undef], ResetPolicy => Bool])
+=head2 ModifyVpcEndpoint(VpcEndpointId => Str, [AddRouteTableIds => ArrayRef[Str|Undef], AddSecurityGroupIds => ArrayRef[Str|Undef], AddSubnetIds => ArrayRef[Str|Undef], DryRun => Bool, PolicyDocument => Str, PrivateDnsEnabled => Bool, RemoveRouteTableIds => ArrayRef[Str|Undef], RemoveSecurityGroupIds => ArrayRef[Str|Undef], RemoveSubnetIds => ArrayRef[Str|Undef], ResetPolicy => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::ModifyVpcEndpoint>
 
 Returns: a L<Paws::EC2::ModifyVpcEndpointResult> instance
 
-Modifies attributes of a specified VPC endpoint. You can modify the
-policy associated with the endpoint, and you can add and remove route
-tables associated with the endpoint.
+Modifies attributes of a specified VPC endpoint. The attributes that
+you can modify depend on the type of VPC endpoint (interface or
+gateway). For more information, see VPC Endpoints
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 ModifyVpcPeeringConnectionOptions(VpcPeeringConnectionId => Str, [AccepterPeeringConnectionOptions => L<Paws::EC2::PeeringConnectionOptionsRequest>, DryRun => Bool, RequesterPeeringConnectionOptions => L<Paws::EC2::PeeringConnectionOptionsRequest>])

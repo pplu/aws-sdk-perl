@@ -2,9 +2,14 @@
 package Paws::EC2::ModifyVpcEndpoint;
   use Moose;
   has AddRouteTableIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'AddRouteTableId' );
+  has AddSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'AddSecurityGroupId' );
+  has AddSubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'AddSubnetId' );
   has DryRun => (is => 'ro', isa => 'Bool');
   has PolicyDocument => (is => 'ro', isa => 'Str');
+  has PrivateDnsEnabled => (is => 'ro', isa => 'Bool');
   has RemoveRouteTableIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RemoveRouteTableId' );
+  has RemoveSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RemoveSecurityGroupId' );
+  has RemoveSubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RemoveSubnetId' );
   has ResetPolicy => (is => 'ro', isa => 'Bool');
   has VpcEndpointId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -40,7 +45,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AddRouteTableIds => ArrayRef[Str|Undef]
 
-One or more route tables IDs to associate with the endpoint.
+(Gateway endpoint) One or more route tables IDs to associate with the
+endpoint.
+
+
+
+=head2 AddSecurityGroupIds => ArrayRef[Str|Undef]
+
+(Interface endpoint) One or more security group IDs to associate with
+the network interface.
+
+
+
+=head2 AddSubnetIds => ArrayRef[Str|Undef]
+
+(Interface endpoint) One or more subnet IDs in which to serve the
+endpoint.
 
 
 
@@ -55,21 +75,43 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 PolicyDocument => Str
 
-A policy document to attach to the endpoint. The policy must be in
-valid JSON format.
+(Gateway endpoint) A policy document to attach to the endpoint. The
+policy must be in valid JSON format.
+
+
+
+=head2 PrivateDnsEnabled => Bool
+
+(Interface endpoint) Indicate whether a private hosted zone is
+associated with the VPC.
 
 
 
 =head2 RemoveRouteTableIds => ArrayRef[Str|Undef]
 
-One or more route table IDs to disassociate from the endpoint.
+(Gateway endpoint) One or more route table IDs to disassociate from the
+endpoint.
+
+
+
+=head2 RemoveSecurityGroupIds => ArrayRef[Str|Undef]
+
+(Interface endpoint) One or more security group IDs to disassociate
+from the network interface.
+
+
+
+=head2 RemoveSubnetIds => ArrayRef[Str|Undef]
+
+(Interface endpoint) One or more subnets IDs in which to remove the
+endpoint.
 
 
 
 =head2 ResetPolicy => Bool
 
-Specify C<true> to reset the policy document to the default policy. The
-default policy allows access to the service.
+(Gateway endpoint) Specify C<true> to reset the policy document to the
+default policy. The default policy allows full access to the service.
 
 
 

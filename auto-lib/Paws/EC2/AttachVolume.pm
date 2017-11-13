@@ -38,8 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Device => Str
 
-The device name to expose to the instance (for example, C</dev/sdh> or
-C<xvdh>).
+The device name (for example, C</dev/sdh> or C<xvdh>).
 
 
 

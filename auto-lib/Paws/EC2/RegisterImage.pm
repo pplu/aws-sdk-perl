@@ -123,8 +123,7 @@ The ID of the RAM disk.
 
 =head2 RootDeviceName => Str
 
-The name of the root device (for example, C</dev/sda1>, or
-C</dev/xvda>).
+The device name of the root device volume (for example, C</dev/sda1>).
 
 
 

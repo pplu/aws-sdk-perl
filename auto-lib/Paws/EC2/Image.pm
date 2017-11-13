@@ -151,8 +151,7 @@ machine images.
 
 =head2 RootDeviceName => Str
 
-  The device name of the root device (for example, C</dev/sda1> or
-C</dev/xvda>).
+  The device name of the root device volume (for example, C</dev/sda1>).
 
 
 =head2 RootDeviceType => Str

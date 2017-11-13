@@ -7,6 +7,7 @@ package Paws::EC2::SpotFleetRequestConfigData;
   has IamFleetRole => (is => 'ro', isa => 'Str', request_name => 'iamFleetRole', traits => ['NameInRequest'], required => 1);
   has InstanceInterruptionBehavior => (is => 'ro', isa => 'Str', request_name => 'instanceInterruptionBehavior', traits => ['NameInRequest']);
   has LaunchSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SpotFleetLaunchSpecification]', request_name => 'launchSpecifications', traits => ['NameInRequest'], required => 1);
+  has LoadBalancersConfig => (is => 'ro', isa => 'Paws::EC2::LoadBalancersConfig', request_name => 'loadBalancersConfig', traits => ['NameInRequest']);
   has ReplaceUnhealthyInstances => (is => 'ro', isa => 'Bool', request_name => 'replaceUnhealthyInstances', traits => ['NameInRequest']);
   has SpotPrice => (is => 'ro', isa => 'Str', request_name => 'spotPrice', traits => ['NameInRequest'], required => 1);
   has TargetCapacity => (is => 'ro', isa => 'Int', request_name => 'targetCapacity', traits => ['NameInRequest'], required => 1);
@@ -93,6 +94,17 @@ interrupted.
 =head2 B<REQUIRED> LaunchSpecifications => ArrayRef[L<Paws::EC2::SpotFleetLaunchSpecification>]
 
   Information about the launch specifications for the Spot fleet request.
+
+
+=head2 LoadBalancersConfig => L<Paws::EC2::LoadBalancersConfig>
+
+  One or more Classic Load Balancers and target groups to attach to the
+Spot fleet request. Spot fleet registers the running Spot instances
+with the specified Classic Load Balancers and target groups.
+
+With Network Load Balancers, Spot fleet cannot register instances that
+have the following instance types: C1, CC1, CC2, CG1, CG2, CR1, CS1,
+G1, G2, HI1, HS1, M1, M2, M3, and T1.
 
 
 =head2 ReplaceUnhealthyInstances => Bool

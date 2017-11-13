@@ -78,29 +78,30 @@ C<launch-group> - The Spot instance launch group.
 =item *
 
 C<launch.block-device-mapping.delete-on-termination> - Indicates
-whether the Amazon EBS volume is deleted on instance termination.
+whether the EBS volume is deleted on instance termination.
 
 =item *
 
 C<launch.block-device-mapping.device-name> - The device name for the
-Amazon EBS volume (for example, C</dev/sdh>).
+volume in the block device mapping (for example, C</dev/sdh> or
+C<xvdh>).
 
 =item *
 
-C<launch.block-device-mapping.snapshot-id> - The ID of the snapshot
-used for the Amazon EBS volume.
+C<launch.block-device-mapping.snapshot-id> - The ID of the snapshot for
+the EBS volume.
 
 =item *
 
-C<launch.block-device-mapping.volume-size> - The size of the Amazon EBS
+C<launch.block-device-mapping.volume-size> - The size of the EBS
 volume, in GiB.
 
 =item *
 
-C<launch.block-device-mapping.volume-type> - The type of the Amazon EBS
-volume: C<gp2> for General Purpose SSD, C<io1> for Provisioned IOPS
-SSD, C<st1> for Throughput Optimized HDD, C<sc1>for Cold HDD, or
-C<standard> for Magnetic.
+C<launch.block-device-mapping.volume-type> - The type of EBS volume:
+C<gp2> for General Purpose SSD, C<io1> for Provisioned IOPS SSD, C<st1>
+for Throughput Optimized HDD, C<sc1>for Cold HDD, or C<standard> for
+Magnetic.
 
 =item *
 

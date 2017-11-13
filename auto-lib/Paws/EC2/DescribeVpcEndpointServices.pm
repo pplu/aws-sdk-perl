@@ -2,8 +2,10 @@
 package Paws::EC2::DescribeVpcEndpointServices;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has ServiceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ServiceName' );
 
   use MooseX::ClassAttribute;
 
@@ -44,6 +46,21 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
+=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
+
+One or more filters.
+
+=over
+
+=item *
+
+C<service-name>: The name of the service.
+
+=back
+
+
+
+
 =head2 MaxResults => Int
 
 The maximum number of items to return for this request. The request
@@ -59,6 +76,12 @@ items.
 
 The token for the next set of items to return. (You received this token
 from a prior call.)
+
+
+
+=head2 ServiceNames => ArrayRef[Str|Undef]
+
+One or more service names.
 
 
 
