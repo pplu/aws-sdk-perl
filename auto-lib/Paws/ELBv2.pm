@@ -404,12 +404,14 @@ Returns: a L<Paws::ELBv2::CreateListenerOutput> instance
 Creates a listener for the specified Application Load Balancer or
 Network Load Balancer.
 
-You can create up to 10 listeners per load balancer.
-
 To update a listener, use ModifyListener. When you are finished with a
 listener, you can delete it using DeleteListener. If you are finished
 with both the listener and the load balancer, you can delete them both
 using DeleteLoadBalancer.
+
+This operation is idempotent, which means that it completes at most one
+time. If you attempt to create multiple listeners with the same
+settings, each call succeeds.
 
 For more information, see Listeners for Your Application Load Balancers
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html)
@@ -436,14 +438,16 @@ describe your current load balancers, see DescribeLoadBalancers. When
 you are finished with a load balancer, you can delete it using
 DeleteLoadBalancer.
 
-You can create up to 20 load balancers per region per account. You can
-request an increase for the number of load balancers for your account.
-For more information, see Limits for Your Application Load Balancer
+For limit information, see Limits for Your Application Load Balancer
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html)
 in the I<Application Load Balancers Guide> and Limits for Your Network
 Load Balancer
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html)
 in the I<Network Load Balancers Guide>.
+
+This operation is idempotent, which means that it completes at most one
+time. If you attempt to create multiple load balancers with the same
+settings, each call succeeds.
 
 For more information, see Application Load Balancers
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html)
@@ -490,6 +494,10 @@ To route traffic to the targets in a target group, specify the target
 group in an action using CreateListener or CreateRule.
 
 To delete a target group, use DeleteTargetGroup.
+
+This operation is idempotent, which means that it completes at most one
+time. If you attempt to create multiple target groups with the same
+settings, each call succeeds.
 
 For more information, see Target Groups for Your Application Load
 Balancers
