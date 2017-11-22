@@ -2,6 +2,7 @@
 package Paws::Rekognition::SearchFacesByImageResponse;
   use Moose;
   has FaceMatches => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::FaceMatch]');
+  has FaceModelVersion => (is => 'ro', isa => 'Str');
   has SearchedFaceBoundingBox => (is => 'ro', isa => 'Paws::Rekognition::BoundingBox');
   has SearchedFaceConfidence => (is => 'ro', isa => 'Num');
 
@@ -20,6 +21,12 @@ Paws::Rekognition::SearchFacesByImageResponse
 
 An array of faces that match the input face, along with the confidence
 in the match.
+
+
+=head2 FaceModelVersion => Str
+
+Version number of the face detection model associated with the input
+collection (C<CollectionId>).
 
 
 =head2 SearchedFaceBoundingBox => L<Paws::Rekognition::BoundingBox>

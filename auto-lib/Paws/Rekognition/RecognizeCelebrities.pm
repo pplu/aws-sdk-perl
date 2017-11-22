@@ -35,7 +35,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Image => L<Paws::Rekognition::Image>
 
-The input image to use for celebrity recognition.
+The input image as base64-encoded bytes or an S3 object. If you use the
+AWS CLI to call Amazon Rekognition operations, passing base64-encoded
+image bytes is not supported.
 
 
 

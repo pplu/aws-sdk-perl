@@ -67,7 +67,9 @@ ID you want to assign to all the faces detected in the image.
 
 =head2 B<REQUIRED> Image => L<Paws::Rekognition::Image>
 
-The input image as bytes or an S3 object.
+The input image as base64-encoded bytes or an S3 object. If you use the
+AWS CLI to call Amazon Rekognition operations, passing base64-encoded
+image bytes is not supported.
 
 
 

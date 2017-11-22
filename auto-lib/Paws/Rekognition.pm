@@ -49,6 +49,11 @@ package Paws::Rekognition;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::DetectModerationLabels', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DetectText {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Rekognition::DetectText', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetCelebrityInfo {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::GetCelebrityInfo', @_);
@@ -133,7 +138,7 @@ package Paws::Rekognition;
   }
 
 
-  sub operations { qw/CompareFaces CreateCollection DeleteCollection DeleteFaces DetectFaces DetectLabels DetectModerationLabels GetCelebrityInfo IndexFaces ListCollections ListFaces RecognizeCelebrities SearchFaces SearchFacesByImage / }
+  sub operations { qw/CompareFaces CreateCollection DeleteCollection DeleteFaces DetectFaces DetectLabels DetectModerationLabels DetectText GetCelebrityInfo IndexFaces ListCollections ListFaces RecognizeCelebrities SearchFaces SearchFacesByImage / }
 
 1;
 
@@ -171,12 +176,18 @@ Each argument is described in detail in: L<Paws::Rekognition::CompareFaces>
 
 Returns: a L<Paws::Rekognition::CompareFacesResponse> instance
 
-Compares a face in the I<source> input image with each face detected in
-the I<target> input image.
+Compares a face in the I<source> input image with each of the 100
+largest faces detected in the I<target> input image.
 
 If the source image contains multiple faces, the service detects the
 largest face and compares it with each face detected in the target
 image.
+
+You pass the input and target images either as base64-encoded image
+bytes or as a references to images in an Amazon S3 bucket. If you use
+the Amazon CLI to call Amazon Rekognition operations, passing image
+bytes is not supported. The image must be either a PNG or JPEG
+formatted file.
 
 In response, the operation returns an array of face matches ordered by
 similarity score in descending order. For each face match, the response
@@ -199,6 +210,9 @@ box of the face and confidence value.
 If the image doesn't contain Exif metadata, C<CompareFaces> returns
 orientation information for the source and target images. Use these
 values to display the images with the correct image orientation.
+
+If no faces are detected in the source or target images,
+C<CompareFaces> returns an C<InvalidParameterException> error.
 
 This is a stateless API operation. That is, data returned by this
 operation doesn't persist.
@@ -263,17 +277,23 @@ Each argument is described in detail in: L<Paws::Rekognition::DetectFaces>
 
 Returns: a L<Paws::Rekognition::DetectFacesResponse> instance
 
-Detects faces within an image (JPEG or PNG) that is provided as input.
+Detects faces within an image that is provided as input.
 
-For each face detected, the operation returns face details including a
-bounding box of the face, a confidence value (that the bounding box
-contains a face), and a fixed set of attributes such as facial
-landmarks (for example, coordinates of eye and mouth), gender, presence
-of beard, sunglasses, etc.
+C<DetectFaces> detects the 100 largest faces in the image. For each
+face detected, the operation returns face details including a bounding
+box of the face, a confidence value (that the bounding box contains a
+face), and a fixed set of attributes such as facial landmarks (for
+example, coordinates of eye and mouth), gender, presence of beard,
+sunglasses, etc.
 
 The face-detection algorithm is most effective on frontal faces. For
 non-frontal or obscured faces, the algorithm may not detect the faces
 or might detect faces with lower confidence.
+
+You pass the input image either as base64-encoded image bytes or as a
+reference to an image in an Amazon S3 bucket. If you use the Amazon CLI
+to call Amazon Rekognition operations, passing image bytes is not
+supported. The image must be either a PNG or JPEG formatted file.
 
 This is a stateless API operation. That is, the operation does not
 persist any data.
@@ -295,6 +315,11 @@ provided as input. This includes objects like flower, tree, and table;
 events like wedding, graduation, and birthday party; and concepts like
 landscape, evening, and nature. For an example, see
 get-started-exercise-detect-labels.
+
+You pass the input image as base64-encoded image bytes or as a
+reference to an image in an Amazon S3 bucket. If you use the Amazon CLI
+to call Amazon Rekognition operations, passing image bytes is not
+supported. The image must be either a PNG or JPEG formatted file.
 
 For each object, scene, and concept the API returns one or more labels.
 Each label provides the object name, and the level of confidence that
@@ -323,12 +348,11 @@ C<{Name: tulip,Confidence: 99.0562}>
 In this example, the detection algorithm more precisely identifies the
 flower as a tulip.
 
-You can provide the input image as an S3 object or as base64-encoded
-bytes. In response, the API returns an array of labels. In addition,
-the response also includes the orientation correction. Optionally, you
-can specify C<MinConfidence> to control the confidence threshold for
-the labels returned. The default is 50%. You can also add the
-C<MaxLabels> parameter to limit the number of labels returned.
+In response, the API returns an array of labels. In addition, the
+response also includes the orientation correction. Optionally, you can
+specify C<MinConfidence> to control the confidence threshold for the
+labels returned. The default is 50%. You can also add the C<MaxLabels>
+parameter to limit the number of labels returned.
 
 If the object detected is a person, the operation doesn't provide the
 same facial details that the DetectFaces operation provides.
@@ -355,6 +379,53 @@ content.
 To filter images, use the labels returned by C<DetectModerationLabels>
 to determine which types of content are appropriate. For information
 about moderation labels, see image-moderation.
+
+You pass the input image either as base64-encoded image bytes or as a
+reference to an image in an Amazon S3 bucket. If you use the Amazon CLI
+to call Amazon Rekognition operations, passing image bytes is not
+supported. The image must be either a PNG or JPEG formatted file.
+
+
+=head2 DetectText(Image => L<Paws::Rekognition::Image>)
+
+Each argument is described in detail in: L<Paws::Rekognition::DetectText>
+
+Returns: a L<Paws::Rekognition::DetectTextResponse> instance
+
+Detects text in the input image and converts it into machine-readable
+text.
+
+Pass the input image as base64-encoded image bytes or as a reference to
+an image in an Amazon S3 bucket. If you use the AWS CLI to call Amazon
+Rekognition operations, you must pass it as a reference to an image in
+an Amazon S3 bucket. For the AWS CLI, passing image bytes is not
+supported. The image must be either a .png or .jpeg formatted file.
+
+The C<DetectText> operation returns text in an array of elements,
+C<TextDetections>. Each C<TextDetection> element provides information
+about a single word or line of text that was detected in the image.
+
+A word is one or more ISO basic latin script characters that are not
+separated by spaces. C<DetectText> can detect up to 50 words in an
+image.
+
+A line is a string of equally spaced words. A line isn't necessarily a
+complete sentence. For example, a driver's license number is detected
+as a line. A line ends when there is no aligned text after it. Also, a
+line ends when there is a large gap between words, relative to the
+length of the words. This means, depending on the gap between words,
+Amazon Rekognition may detect multiple lines in text aligned in the
+same direction. Periods don't represent the end of a line. If a
+sentence spans multiple lines, the C<DetectText> operation returns
+multiple lines.
+
+To determine whether a C<TextDetection> element is a line of text or a
+word, use the C<TextDetection> object C<Type> field.
+
+To be detected, text must be within +/- 30 degrees orientation of the
+horizontal axis.
+
+For more information, see text-detection.
 
 
 =head2 GetCelebrityInfo(Id => Str)
@@ -389,7 +460,14 @@ vector, and stores it in the back-end database. Amazon Rekognition uses
 feature vectors when performing face match and search operations using
 the and operations.
 
-If you provide the optional C<externalImageID> for the input image you
+If you are using version 1.0 of the face detection model, C<IndexFaces>
+indexes the 15 largest faces in the input image. Later versions of the
+face detection model index the 100 largest faces in the input image. To
+determine which version of the model you are using, check the the value
+of C<FaceModelVersion> in the response from C<IndexFaces>. For more
+information, see face-detection-model.
+
+If you provide the optional C<ExternalImageID> for the input image you
 provided, Amazon Rekognition associates this ID with all faces that it
 detects. When you call the operation, the response returns the external
 ID. You can use this external image ID to create a client-side index to
@@ -407,6 +485,11 @@ as facial landmarks (for example, location of eye and mount) and other
 facial attributes such gender. If you provide the same image, specify
 the same collection, and use the same external ID in the C<IndexFaces>
 operation, Amazon Rekognition doesn't save duplicate face metadata.
+
+The input image is passed either as base64-encoded image bytes or as a
+reference to an image in an Amazon S3 bucket. If you use the Amazon CLI
+to call Amazon Rekognition operations, passing image bytes is not
+supported. The image must be either a PNG or JPEG formatted file.
 
 For an example, see example2.
 
@@ -451,21 +534,20 @@ Each argument is described in detail in: L<Paws::Rekognition::RecognizeCelebriti
 
 Returns: a L<Paws::Rekognition::RecognizeCelebritiesResponse> instance
 
-Returns an array of celebrities recognized in the input image. The
-image is passed either as base64-encoded image bytes or as a reference
-to an image in an Amazon S3 bucket. The image must be either a PNG or
-JPEG formatted file. For more information, see celebrity-recognition.
+Returns an array of celebrities recognized in the input image. For more
+information, see celebrity-recognition.
 
-C<RecognizeCelebrities> returns the 15 largest faces in the image. It
-lists recognized celebrities in the C<CelebrityFaces> list and
-unrecognized faces in the C<UnrecognizedFaces> list. The operation
-doesn't return celebrities whose face sizes are smaller than the
-largest 15 faces in the image.
+C<RecognizeCelebrities> returns the 100 largest faces in the image. It
+lists recognized celebrities in the C<CelebrityFaces> array and
+unrecognized faces in the C<UnrecognizedFaces> array.
+C<RecognizeCelebrities> doesn't return celebrities whose faces are not
+amongst the largest 100 faces in the image.
 
-For each celebrity recognized, the API returns a C<Celebrity> object.
-The C<Celebrity> object contains the celebrity name, ID, URL links to
-additional information, match confidence, and a C<ComparedFace> object
-that you can use to locate the celebrity's face on the image.
+For each celebrity recognized, the C<RecognizeCelebrities> returns a
+C<Celebrity> object. The C<Celebrity> object contains the celebrity
+name, ID, URL links to additional information, match confidence, and a
+C<ComparedFace> object that you can use to locate the celebrity's face
+on the image.
 
 Rekognition does not retain information about which images a celebrity
 has been recognized in. Your application must store this information
@@ -473,6 +555,11 @@ and use the C<Celebrity> ID property as a unique identifier for the
 celebrity. If you don't store the celebrity name or additional
 information URLs returned by C<RecognizeCelebrities>, you will need the
 ID to identify the celebrity in a call to the operation.
+
+You pass the imput image either as base64-encoded image bytes or as a
+reference to an image in an Amazon S3 bucket. If you use the Amazon CLI
+to call Amazon Rekognition operations, passing image bytes is not
+supported. The image must be either a PNG or JPEG formatted file.
 
 For an example, see recognize-celebrities-tutorial.
 
@@ -526,6 +613,11 @@ the operation.
 You can also call the C<DetectFaces> operation and use the bounding
 boxes in the response to make face crops, which then you can pass in to
 the C<SearchFacesByImage> operation.
+
+You pass the input image either as base64-encoded image bytes or as a
+reference to an image in an Amazon S3 bucket. If you use the Amazon CLI
+to call Amazon Rekognition operations, passing image bytes is not
+supported. The image must be either a PNG or JPEG formatted file.
 
 The response returns an array of faces that match, ordered by
 similarity score with the highest similarity first. More specifically,
