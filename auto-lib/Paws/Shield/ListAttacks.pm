@@ -39,7 +39,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EndTime => L<Paws::Shield::TimeRange>
 
-The end of the time period for the attacks.
+The end of the time period for the attacks. This is a C<timestamp>
+type. The sample request above indicates a C<number> type because the
+default used by WAF is Unix time in seconds. However any valid
+timestamp format
+(http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types)
+is allowed.
 
 
 
@@ -67,7 +72,12 @@ included.
 
 =head2 StartTime => L<Paws::Shield::TimeRange>
 
-The time period for the attacks.
+The start of the time period for the attacks. This is a C<timestamp>
+type. The sample request above indicates a C<number> type because the
+default used by WAF is Unix time in seconds. However any valid
+timestamp format
+(http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types)
+is allowed.
 
 
 
