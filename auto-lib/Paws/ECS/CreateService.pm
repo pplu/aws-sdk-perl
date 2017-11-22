@@ -6,6 +6,7 @@ package Paws::ECS::CreateService;
   has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', traits => ['NameInRequest'], request_name => 'deploymentConfiguration' );
   has DesiredCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'desiredCount' , required => 1);
   has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::LoadBalancer]', traits => ['NameInRequest'], request_name => 'loadBalancers' );
+  has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', traits => ['NameInRequest'], request_name => 'networkConfiguration' );
   has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementConstraint]', traits => ['NameInRequest'], request_name => 'placementConstraints' );
   has PlacementStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementStrategy]', traits => ['NameInRequest'], request_name => 'placementStrategy' );
   has Role => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'role' );
@@ -94,6 +95,17 @@ registered as a target in the target group specified here.
 
 
 
+=head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
+
+The network configuration for the service. This parameter is required
+for task definitions that use the C<awsvpc> network mode to receive
+their own Elastic Network Interface, and it is not supported for other
+network modes. For more information, see Task Networking
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguidetask-networking.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
+
+
+
 =head2 PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>]
 
 An array of placement constraint objects to use for tasks in your
@@ -114,9 +126,19 @@ can specify a maximum of 5 strategy rules per service.
 
 The name or full Amazon Resource Name (ARN) of the IAM role that allows
 Amazon ECS to make calls to your load balancer on your behalf. This
-parameter is required if you are using a load balancer with your
-service. If you specify the C<role> parameter, you must also specify a
+parameter is only permitted if you are using a load balancer with your
+service and your task definition does not use the C<awsvpc> network
+mode. If you specify the C<role> parameter, you must also specify a
 load balancer object with the C<loadBalancers> parameter.
+
+If your account has already created the Amazon ECS service-linked role,
+that role is used by default for your service unless you specify a role
+here. The service-linked role is required if your task definition uses
+the C<awsvpc> network mode, in which case you should not specify a role
+here. For more information, see Using Service-Linked Roles for Amazon
+ECS
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguideusing-service-linked-roles.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 If your specified role has a path other than C</>, then you must either
 specify the full role ARN (this is recommended) or prefix the role name

@@ -3,6 +3,7 @@ package Paws::ECS::Deployment;
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has DesiredCount => (is => 'ro', isa => 'Int', request_name => 'desiredCount', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+  has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', request_name => 'networkConfiguration', traits => ['NameInRequest']);
   has PendingCount => (is => 'ro', isa => 'Int', request_name => 'pendingCount', traits => ['NameInRequest']);
   has RunningCount => (is => 'ro', isa => 'Int', request_name => 'runningCount', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
@@ -57,6 +58,13 @@ service to deploy or maintain.
 =head2 Id => Str
 
   The ID of the deployment.
+
+
+=head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
+
+  The VPC subnet and security group configuration for tasks that receive
+their own Elastic Network Interface by using the C<awsvpc> networking
+mode.
 
 
 =head2 PendingCount => Int

@@ -4,6 +4,7 @@ package Paws::ECS::RunTask;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has Count => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'count' );
   has Group => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'group' );
+  has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', traits => ['NameInRequest'], request_name => 'networkConfiguration' );
   has Overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride', traits => ['NameInRequest'], request_name => 'overrides' );
   has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementConstraint]', traits => ['NameInRequest'], request_name => 'placementConstraints' );
   has PlacementStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementStrategy]', traits => ['NameInRequest'], request_name => 'placementStrategy' );
@@ -60,6 +61,17 @@ cluster. You can specify up to 10 tasks per call.
 The name of the task group to associate with the task. The default
 value is the family name of the task definition (for example,
 family:my-family-name).
+
+
+
+=head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
+
+The network configuration for the task. This parameter is required for
+task definitions that use the C<awsvpc> network mode to receive their
+own Elastic Network Interface, and it is not supported for other
+network modes. For more information, see Task Networking
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguidetask-networking.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 
 

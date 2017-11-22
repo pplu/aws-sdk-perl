@@ -57,24 +57,36 @@ and lowercase), numbers, hyphens, and underscores are allowed.
 =head2 NetworkMode => Str
 
 The Docker networking mode to use for the containers in the task. The
-valid values are C<none>, C<bridge>, and C<host>.
-
-The default Docker network mode is C<bridge>. If the network mode is
-set to C<none>, you cannot specify port mappings in your container
+valid values are C<none>, C<bridge>, C<awsvpc>, and C<host>. The
+default Docker network mode is C<bridge>. If the network mode is set to
+C<none>, you cannot specify port mappings in your container
 definitions, and the task's containers do not have external
-connectivity. The C<host> network mode offers the highest networking
-performance for containers because they use the host network stack
-instead of the virtualized network stack provided by the C<bridge>
-mode; however, exposed container ports are mapped directly to the
-corresponding host port, so you cannot take advantage of dynamic host
-port mappings or run multiple instantiations of the same task on a
-single container instance if port mappings are used.
+connectivity. The C<host> and C<awsvpc> network modes offer the highest
+networking performance for containers because they use the EC2 network
+stack instead of the virtualized network stack provided by the
+C<bridge> mode.
+
+With the C<host> and C<awsvpc> network modes, exposed container ports
+are mapped directly to the corresponding host port (for the C<host>
+network mode) or the attached ENI port (for the C<awsvpc> network
+mode), so you cannot take advantage of dynamic host port mappings.
+
+If the network mode is C<awsvpc>, the task is allocated an Elastic
+Network Interface, and you must specify a NetworkConfiguration when you
+create a service or run a task with the task definition. For more
+information, see Task Networking
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguidetask-networking.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
+
+If the network mode is C<host>, you can not run multiple instantiations
+of the same task on a single container instance when port mappings are
+used.
 
 For more information, see Network settings
 (https://docs.docker.com/engine/reference/run/#network-settings) in the
 I<Docker run reference>.
 
-Valid values are: C<"bridge">, C<"host">, C<"none">
+Valid values are: C<"bridge">, C<"host">, C<"awsvpc">, C<"none">
 
 =head2 PlacementConstraints => ArrayRef[L<Paws::ECS::TaskDefinitionPlacementConstraint>]
 

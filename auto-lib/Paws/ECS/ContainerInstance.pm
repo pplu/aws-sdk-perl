@@ -2,6 +2,7 @@ package Paws::ECS::ContainerInstance;
   use Moose;
   has AgentConnected => (is => 'ro', isa => 'Bool', request_name => 'agentConnected', traits => ['NameInRequest']);
   has AgentUpdateStatus => (is => 'ro', isa => 'Str', request_name => 'agentUpdateStatus', traits => ['NameInRequest']);
+  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attachment]', request_name => 'attachments', traits => ['NameInRequest']);
   has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]', request_name => 'attributes', traits => ['NameInRequest']);
   has ContainerInstanceArn => (is => 'ro', isa => 'Str', request_name => 'containerInstanceArn', traits => ['NameInRequest']);
   has Ec2InstanceId => (is => 'ro', isa => 'Str', request_name => 'ec2InstanceId', traits => ['NameInRequest']);
@@ -61,6 +62,11 @@ accept placement requests.
 
   The status of the most recent agent update. If an update has never been
 requested, this value is C<NULL>.
+
+
+=head2 Attachments => ArrayRef[L<Paws::ECS::Attachment>]
+
+  The Elastic Network Interfaces associated with the container instance.
 
 
 =head2 Attributes => ArrayRef[L<Paws::ECS::Attribute>]

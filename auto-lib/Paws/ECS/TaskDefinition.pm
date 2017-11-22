@@ -63,13 +63,15 @@ in the I<Amazon EC2 Container Service Developer Guide>.
 =head2 NetworkMode => Str
 
   The Docker networking mode to use for the containers in the task. The
-valid values are C<none>, C<bridge>, and C<host>.
+valid values are C<none>, C<bridge>, C<awsvpc>, and C<host>.
 
 If the network mode is C<none>, the containers do not have external
-connectivity. The default Docker network mode is C<bridge>. The C<host>
-network mode offers the highest networking performance for containers
-because it uses the host network stack instead of the virtualized
-network stack provided by the C<bridge> mode.
+connectivity. The default Docker network mode is C<bridge>. If the
+network mode is C<awsvpc>, the task is allocated an Elastic Network
+Interface. The C<host> and C<awsvpc> network modes offer the highest
+networking performance for containers because they use the EC2 network
+stack instead of the virtualized network stack provided by the
+C<bridge> mode.
 
 For more information, see Network settings
 (https://docs.docker.com/engine/reference/run/#network-settings) in the

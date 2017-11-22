@@ -7,6 +7,7 @@ package Paws::ECS::Service;
   has DesiredCount => (is => 'ro', isa => 'Int', request_name => 'desiredCount', traits => ['NameInRequest']);
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceEvent]', request_name => 'events', traits => ['NameInRequest']);
   has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::LoadBalancer]', request_name => 'loadBalancers', traits => ['NameInRequest']);
+  has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', request_name => 'networkConfiguration', traits => ['NameInRequest']);
   has PendingCount => (is => 'ro', isa => 'Int', request_name => 'pendingCount', traits => ['NameInRequest']);
   has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementConstraint]', request_name => 'placementConstraints', traits => ['NameInRequest']);
   has PlacementStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementStrategy]', request_name => 'placementStrategy', traits => ['NameInRequest']);
@@ -90,6 +91,13 @@ events are displayed.
   A list of Elastic Load Balancing load balancer objects, containing the
 load balancer name, the container name (as it appears in a container
 definition), and the container port to access from the load balancer.
+
+
+=head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
+
+  The VPC subnet and security group configuration for tasks that receive
+their own Elastic Network Interface by using the C<awsvpc> networking
+mode.
 
 
 =head2 PendingCount => Int

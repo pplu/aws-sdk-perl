@@ -5,6 +5,7 @@ package Paws::ECS::Container;
   has LastStatus => (is => 'ro', isa => 'Str', request_name => 'lastStatus', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has NetworkBindings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::NetworkBinding]', request_name => 'networkBindings', traits => ['NameInRequest']);
+  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::ECS::NetworkInterface]', request_name => 'networkInterfaces', traits => ['NameInRequest']);
   has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
   has TaskArn => (is => 'ro', isa => 'Str', request_name => 'taskArn', traits => ['NameInRequest']);
 1;
@@ -65,6 +66,11 @@ A Docker container that is part of a task.
 =head2 NetworkBindings => ArrayRef[L<Paws::ECS::NetworkBinding>]
 
   The network bindings associated with the container.
+
+
+=head2 NetworkInterfaces => ArrayRef[L<Paws::ECS::NetworkInterface>]
+
+  The network interfaces associated with the container.
 
 
 =head2 Reason => Str

@@ -4,6 +4,7 @@ package Paws::ECS::UpdateService;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', traits => ['NameInRequest'], request_name => 'deploymentConfiguration' );
   has DesiredCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'desiredCount' );
+  has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', traits => ['NameInRequest'], request_name => 'networkConfiguration' );
   has Service => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'service' , required => 1);
   has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' );
 
@@ -56,6 +57,23 @@ the deployment and the ordering of stopping and starting tasks.
 
 The number of instantiations of the task to place and keep running in
 your service.
+
+
+
+=head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
+
+The network configuration for the service. This parameter is required
+for task definitions that use the C<awsvpc> network mode to receive
+their own Elastic Network Interface, and it is not supported for other
+network modes. For more information, see Task Networking
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguidetask-networking.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
+
+Updating a service to add a subnet to a list of existing subnets does
+not trigger a service deployment. For example, if your network
+configuration change is to keep the existing subnets and simply add
+another subnet to the network configuration, this does not trigger a
+new service deployment.
 
 
 

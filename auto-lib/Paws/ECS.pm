@@ -366,8 +366,17 @@ C<default> cluster when you launch your first container instance.
 However, you can create your own cluster with a unique name with the
 C<CreateCluster> action.
 
+When you call the CreateCluster API operation, Amazon ECS attempts to
+create the service-linked role for your account so that required
+resources in other AWS services can be managed on your behalf. However,
+if the IAM user that makes the call does not have permissions to create
+the service-linked role, it is not created. For more information, see
+Using Service-Linked Roles for Amazon ECS
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguideusing-service-linked-roles.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
-=head2 CreateService(DesiredCount => Int, ServiceName => Str, TaskDefinition => Str, [ClientToken => Str, Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>], PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>], PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>], Role => Str])
+
+=head2 CreateService(DesiredCount => Int, ServiceName => Str, TaskDefinition => Str, [ClientToken => Str, Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>], NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>, PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>], PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>], Role => Str])
 
 Each argument is described in detail in: L<Paws::ECS::CreateService>
 
@@ -763,7 +772,7 @@ network modes correspond to those described in Network settings
 the Docker run reference.
 
 
-=head2 RunTask(TaskDefinition => Str, [Cluster => Str, Count => Int, Group => Str, Overrides => L<Paws::ECS::TaskOverride>, PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>], PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>], StartedBy => Str])
+=head2 RunTask(TaskDefinition => Str, [Cluster => Str, Count => Int, Group => Str, NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>, Overrides => L<Paws::ECS::TaskOverride>, PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>], PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>], StartedBy => Str])
 
 Each argument is described in detail in: L<Paws::ECS::RunTask>
 
@@ -781,7 +790,7 @@ Alternatively, you can use StartTask to use your own scheduler or place
 tasks manually on specific container instances.
 
 
-=head2 StartTask(ContainerInstances => ArrayRef[Str|Undef], TaskDefinition => Str, [Cluster => Str, Group => Str, Overrides => L<Paws::ECS::TaskOverride>, StartedBy => Str])
+=head2 StartTask(ContainerInstances => ArrayRef[Str|Undef], TaskDefinition => Str, [Cluster => Str, Group => Str, NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>, Overrides => L<Paws::ECS::TaskOverride>, StartedBy => Str])
 
 Each argument is described in detail in: L<Paws::ECS::StartTask>
 
@@ -830,7 +839,7 @@ it is not intended for use outside of the agent.
 Sent to acknowledge that a container changed states.
 
 
-=head2 SubmitTaskStateChange([Cluster => Str, Reason => Str, Status => Str, Task => Str])
+=head2 SubmitTaskStateChange([Attachments => ArrayRef[L<Paws::ECS::AttachmentStateChange>], Cluster => Str, Containers => ArrayRef[L<Paws::ECS::ContainerStateChange>], Reason => Str, Status => Str, Task => Str])
 
 Each argument is described in detail in: L<Paws::ECS::SubmitTaskStateChange>
 
@@ -927,14 +936,14 @@ When you set a container instance to C<ACTIVE>, the Amazon ECS
 scheduler can begin scheduling tasks on the instance again.
 
 
-=head2 UpdateService(Service => Str, [Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, DesiredCount => Int, TaskDefinition => Str])
+=head2 UpdateService(Service => Str, [Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, DesiredCount => Int, NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>, TaskDefinition => Str])
 
 Each argument is described in detail in: L<Paws::ECS::UpdateService>
 
 Returns: a L<Paws::ECS::UpdateServiceResponse> instance
 
-Modifies the desired count, deployment configuration, or task
-definition used in a service.
+Modifies the desired count, deployment configuration, network
+configuration, or task definition used in a service.
 
 You can add to or subtract from the number of instantiations of a task
 definition in a service by specifying the cluster that the service is

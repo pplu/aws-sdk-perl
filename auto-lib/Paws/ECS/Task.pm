@@ -1,5 +1,6 @@
 package Paws::ECS::Task;
   use Moose;
+  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attachment]', request_name => 'attachments', traits => ['NameInRequest']);
   has ClusterArn => (is => 'ro', isa => 'Str', request_name => 'clusterArn', traits => ['NameInRequest']);
   has ContainerInstanceArn => (is => 'ro', isa => 'Str', request_name => 'containerInstanceArn', traits => ['NameInRequest']);
   has Containers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Container]', request_name => 'containers', traits => ['NameInRequest']);
@@ -34,20 +35,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::Task object:
 
-  $service_obj->Method(Att1 => { ClusterArn => $value, ..., Version => $value  });
+  $service_obj->Method(Att1 => { Attachments => $value, ..., Version => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Task object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ClusterArn
+  $result->Att1->Attachments
 
 =head1 DESCRIPTION
 
 Details on a task in a cluster.
 
 =head1 ATTRIBUTES
+
+
+=head2 Attachments => ArrayRef[L<Paws::ECS::Attachment>]
+
+  The Elastic Network Adapter associated with the task if the task uses
+the C<awsvpc> network mode.
 
 
 =head2 ClusterArn => Str
