@@ -47,7 +47,7 @@ Must be the name of an existing DB parameter group
 
 =item *
 
-You cannot delete a default DB parameter group
+You can't delete a default DB parameter group
 
 =item *
 

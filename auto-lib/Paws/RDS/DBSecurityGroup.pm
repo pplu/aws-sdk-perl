@@ -37,28 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBSecu
 
 =head1 DESCRIPTION
 
-Contains the result of a successful invocation of the following
-actions:
-
-=over
-
-=item *
-
-DescribeDBSecurityGroups
-
-=item *
-
-AuthorizeDBSecurityGroupIngress
-
-=item *
-
-CreateDBSecurityGroup
-
-=item *
-
-RevokeDBSecurityGroupIngress
-
-=back
+Contains the details for an Amazon RDS DB security group.
 
 This data type is used as a response element in the
 DescribeDBSecurityGroups action.

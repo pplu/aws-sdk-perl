@@ -82,9 +82,8 @@ Example: C<mySubnetgroup>
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-A Boolean value that is true to enable mapping of AWS Identity and
-Access Management (IAM) accounts to database accounts, and otherwise
-false.
+True to enable mapping of AWS Identity and Access Management (IAM)
+accounts to database accounts, and otherwise false.
 
 Default: C<false>
 
@@ -92,8 +91,8 @@ Default: C<false>
 
 =head2 KmsKeyId => Str
 
-The KMS key identifier to use when restoring an encrypted DB cluster
-from an encrypted DB cluster.
+The AWS KMS key identifier to use when restoring an encrypted DB
+cluster from an encrypted DB cluster.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
 encryption key. If you are restoring a DB cluster with the same AWS
@@ -198,7 +197,7 @@ source DB cluster.
 
 =back
 
-Constraints: You cannot specify C<copy-on-write> if the engine version
+Constraints: You can't specify C<copy-on-write> if the engine version
 of the source DB cluster is earlier than 1.11.
 
 If you don't specify a C<RestoreType> value, then the new DB cluster is

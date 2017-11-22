@@ -49,9 +49,8 @@ option group.
 The name of the option group to be modified.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
-TDE, cannot be removed from an option group, and that option group
-cannot be removed from a DB instance once it is associated with a DB
-instance
+TDE, can't be removed from an option group, and that option group can't
+be removed from a DB instance once it is associated with a DB instance
 
 
 

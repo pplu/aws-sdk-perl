@@ -247,15 +247,15 @@ instance.
 =head2 CopyTagsToSnapshot => Bool
 
 True to copy all tags from the DB instance to snapshots of the DB
-instance; otherwise false. The default is false.
+instance, and otherwise false. The default is false.
 
 
 
 =head2 DBInstanceClass => Str
 
 The new compute and memory capacity of the DB instance, for example,
-C<db.m4.large>. Not all DB instance classes are available in all
-regions, or for all database engines. For the full list of DB instance
+C<db.m4.large>. Not all DB instance classes are available in all AWS
+Regions, or for all database engines. For the full list of DB instance
 classes, and availability for your engine, see DB Instance Class
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
 in the Amazon RDS User Guide.
@@ -410,7 +410,7 @@ Service.
 =head2 EnableIAMDatabaseAuthentication => Bool
 
 True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts; otherwise false.
+accounts to database accounts, and otherwise false.
 
 You can enable IAM database authentication for the following database
 engines
@@ -440,7 +440,7 @@ Default: C<false>
 
 =head2 EnablePerformanceInsights => Bool
 
-True to enable Performance Insights for the DB instance; otherwise
+True to enable Performance Insights for the DB instance, and otherwise
 false.
 
 
@@ -512,8 +512,8 @@ C<general-public-license>
 
 =head2 MasterUserPassword => Str
 
-The new password for the master user. Can be any printable ASCII
-character except "/", """, or "@".
+The new password for the master user. The password can include any
+printable ASCII character except "/", """, or "@".
 
 Changing this parameter does not result in an outage and the change is
 asynchronously applied as soon as possible. Between the time of the
@@ -571,7 +571,7 @@ Valid Values: C<0, 1, 5, 10, 15, 30, 60>
 =head2 MonitoringRoleArn => Str
 
 The ARN for the IAM role that permits RDS to send enhanced monitoring
-metrics to CloudWatch Logs. For example,
+metrics to Amazon CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
 a monitoring role, go to To create an IAM role for Amazon RDS Enhanced
 Monitoring
@@ -635,17 +635,16 @@ period during which new connections are rejected but existing
 connections are not interrupted.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
-TDE, cannot be removed from an option group, and that option group
-cannot be removed from a DB instance once it is associated with a DB
-instance
+TDE, can't be removed from an option group, and that option group can't
+be removed from a DB instance once it is associated with a DB instance
 
 
 
 =head2 PerformanceInsightsKMSKeyId => Str
 
-The KMS key identifier for encryption of Performance Insights data. The
-KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or
-the KMS key alias for the KMS encryption key.
+The AWS KMS key identifier for encryption of Performance Insights data.
+The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier,
+or the KMS key alias for the KMS encryption key.
 
 
 
@@ -672,7 +671,7 @@ Must be in the format hh24:mi-hh24:mi
 
 =item *
 
-Times should be in Universal Time Coordinated (UTC)
+Must be in Universal Time Coordinated (UTC)
 
 =item *
 
@@ -751,21 +750,21 @@ Valid values: C<standard | gp2 | io1>
 If you specify C<io1>, you must also include a value for the C<Iops>
 parameter.
 
-Default: C<io1> if the C<Iops> parameter is specified; otherwise
+Default: C<io1> if the C<Iops> parameter is specified, otherwise
 C<standard>
 
 
 
 =head2 TdeCredentialArn => Str
 
-The ARN from the Key Store with which to associate the instance for TDE
+The ARN from the key store with which to associate the instance for TDE
 encryption.
 
 
 
 =head2 TdeCredentialPassword => Str
 
-The password for the given ARN from the Key Store in order to access
+The password for the given ARN from the key store in order to access
 the device.
 
 

@@ -43,7 +43,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 DBInstanceIdentifier => Str
 
 The ID of the DB instance to retrieve the list of DB snapshots for.
-This parameter cannot be used in conjunction with
+This parameter can't be used in conjunction with
 C<DBSnapshotIdentifier>. This parameter is not case-sensitive.
 
 Constraints:
@@ -61,7 +61,7 @@ If supplied, must match the identifier of an existing DBInstance.
 
 =head2 DBSnapshotIdentifier => Str
 
-A specific DB snapshot identifier to describe. This parameter cannot be
+A specific DB snapshot identifier to describe. This parameter can't be
 used in conjunction with C<DBInstanceIdentifier>. This value is stored
 as a lowercase string.
 
@@ -91,9 +91,9 @@ This parameter is not currently supported.
 
 =head2 IncludePublic => Bool
 
-Set this value to C<true> to include manual DB snapshots that are
-public and can be copied or restored by any AWS account, otherwise set
-this value to C<false>. The default is C<false>.
+True to include manual DB snapshots that are public and can be copied
+or restored by any AWS account, and otherwise false. The default is
+false.
 
 You can share a manual DB snapshot as public by using the
 ModifyDBSnapshotAttribute API.
@@ -102,10 +102,9 @@ ModifyDBSnapshotAttribute API.
 
 =head2 IncludeShared => Bool
 
-Set this value to C<true> to include shared manual DB snapshots from
-other AWS accounts that this AWS account has been given permission to
-copy or restore, otherwise set this value to C<false>. The default is
-C<false>.
+True to include shared manual DB snapshots from other AWS accounts that
+this AWS account has been given permission to copy or restore, and
+otherwise false. The default is C<false>.
 
 You can give an AWS account permission to restore a manual DB snapshot
 from another AWS account by using the ModifyDBSnapshotAttribute API

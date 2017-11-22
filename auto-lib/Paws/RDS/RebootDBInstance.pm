@@ -56,8 +56,8 @@ Must match the identifier of an existing DBInstance.
 
 When C<true>, the reboot is conducted through a MultiAZ failover.
 
-Constraint: You cannot specify C<true> if the instance is not
-configured for MultiAZ.
+Constraint: You can't specify C<true> if the instance is not configured
+for MultiAZ.
 
 
 

@@ -461,6 +461,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::RestoreDBInstanceFromDBSnapshot', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RestoreDBInstanceFromS3 {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::RestoreDBInstanceFromS3', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RestoreDBInstanceToPointInTime {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::RestoreDBInstanceToPointInTime', @_);
@@ -898,7 +903,7 @@ package Paws::RDS;
   }
 
 
-  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartDBInstance StopDBInstance / }
+  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartDBInstance StopDBInstance / }
 
 1;
 
@@ -941,7 +946,7 @@ server. These capabilities mean that the code, applications, and tools
 you already use today with your existing databases work with Amazon RDS
 without modification. Amazon RDS automatically backs up your database
 and maintains the database software that powers your DB instance.
-Amazon RDS is flexible: you can scale your database instance's compute
+Amazon RDS is flexible: you can scale your DB instance's compute
 resources and storage capacity to meet your application's demand. As
 with all Amazon Web Services, there are no up-front investments, and
 you pay only for the resources you use.
@@ -1066,8 +1071,8 @@ for this API are one of CIDR range, EC2SecurityGroupId for VPC, or
 (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or
 EC2SecurityGroupId for non-VPC).
 
-You cannot authorize ingress from an EC2 security group in one AWS
-Region to an Amazon RDS DB instance in another. You cannot authorize
+You can't authorize ingress from an EC2 security group in one AWS
+Region to an Amazon RDS DB instance in another. You can't authorize
 ingress from a VPC security group in one VPC to an Amazon RDS DB
 instance in another.
 
@@ -1107,9 +1112,9 @@ following values:
 
 =item *
 
-C<KmsKeyId> - The AWS Key Management System (KMS) key identifier for
-the key to use to encrypt the copy of the DB cluster snapshot in the
-destination AWS Region.
+C<KmsKeyId> - The AWS Key Management System (AWS KMS) key identifier
+for the key to use to encrypt the copy of the DB cluster snapshot in
+the destination AWS Region.
 
 =item *
 
@@ -1143,7 +1148,7 @@ C<SourceDBClusterSnapshotIdentifier> - The DB cluster snapshot
 identifier for the encrypted DB cluster snapshot to be copied. This
 identifier must be in the Amazon Resource Name (ARN) format for the
 source AWS Region. For example, if you are copying an encrypted DB
-cluster snapshot from the us-west-2 region, then your
+cluster snapshot from the us-west-2 AWS Region, then your
 C<SourceDBClusterSnapshotIdentifier> looks like the following example:
 C<arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115>.
 
@@ -1208,7 +1213,7 @@ You can copy a snapshot from one AWS Region to another. In that case,
 the AWS Region where you call the C<CopyDBSnapshot> action is the
 destination AWS Region for the DB snapshot copy.
 
-You cannot copy an encrypted, shared DB snapshot from one AWS Region to
+You can't copy an encrypted, shared DB snapshot from one AWS Region to
 another.
 
 For more information about copying snapshots, see Copying a DB Snapshot
@@ -1438,7 +1443,7 @@ Returns: a L<Paws::RDS::DeleteDBClusterResult> instance
 
 The DeleteDBCluster action deletes a previously provisioned DB cluster.
 When you delete a DB cluster, all automated backups for that DB cluster
-are deleted and cannot be recovered. Manual DB cluster snapshots of the
+are deleted and can't be recovered. Manual DB cluster snapshots of the
 specified DB cluster are not deleted.
 
 For more information on Amazon Aurora, see Aurora on Amazon RDS
@@ -1453,8 +1458,7 @@ Each argument is described in detail in: L<Paws::RDS::DeleteDBClusterParameterGr
 Returns: nothing
 
 Deletes a specified DB cluster parameter group. The DB cluster
-parameter group to be deleted cannot be associated with any DB
-clusters.
+parameter group to be deleted can't be associated with any DB clusters.
 
 For more information on Amazon Aurora, see Aurora on Amazon RDS
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
@@ -1486,13 +1490,13 @@ Returns: a L<Paws::RDS::DeleteDBInstanceResult> instance
 
 The DeleteDBInstance action deletes a previously provisioned DB
 instance. When you delete a DB instance, all automated backups for that
-instance are deleted and cannot be recovered. Manual DB snapshots of
-the DB instance to be deleted by C<DeleteDBInstance> are not deleted.
+instance are deleted and can't be recovered. Manual DB snapshots of the
+DB instance to be deleted by C<DeleteDBInstance> are not deleted.
 
 If you request a final DB snapshot the status of the Amazon RDS DB
 instance is C<deleting> until the DB snapshot is created. The API
 action C<DescribeDBInstance> is used to monitor the status of this
-operation. The action cannot be canceled or reverted once submitted.
+operation. The action can't be canceled or reverted once submitted.
 
 Note that when a DB instance is in a failure state and has a status of
 C<failed>, C<incompatible-restore>, or C<incompatible-network>, you can
@@ -1500,7 +1504,7 @@ only delete it when the C<SkipFinalSnapshot> parameter is set to
 C<true>.
 
 If the specified DB instance is part of an Amazon Aurora DB cluster,
-you cannot delete the DB instance if both of the following conditions
+you can't delete the DB instance if both of the following conditions
 are true:
 
 =over
@@ -1529,7 +1533,7 @@ Each argument is described in detail in: L<Paws::RDS::DeleteDBParameterGroup>
 Returns: nothing
 
 Deletes a specified DBParameterGroup. The DBParameterGroup to be
-deleted cannot be associated with any DB instances.
+deleted can't be associated with any DB instances.
 
 
 =head2 DeleteDBSecurityGroup(DBSecurityGroupName => Str)
@@ -1921,7 +1925,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeSourceRegions>
 
 Returns: a L<Paws::RDS::SourceRegionMessage> instance
 
-Returns a list of the source AWS regions where the current AWS Region
+Returns a list of the source AWS Regions where the current AWS Region
 can create a Read Replica or copy a DB snapshot from. This API action
 supports pagination.
 
@@ -2154,7 +2158,7 @@ Each argument is described in detail in: L<Paws::RDS::ModifyEventSubscription>
 Returns: a L<Paws::RDS::ModifyEventSubscriptionResult> instance
 
 Modifies an existing RDS event notification subscription. Note that you
-cannot modify the source identifiers using this call; to change source
+can't modify the source identifiers using this call; to change source
 identifiers for a subscription, use the
 AddSourceIdentifierToSubscription and
 RemoveSourceIdentifierFromSubscription calls.
@@ -2395,6 +2399,21 @@ snapshot.
 
 If you are restoring from a shared manual DB snapshot, the
 C<DBSnapshotIdentifier> must be the ARN of the shared DB snapshot.
+
+
+=head2 RestoreDBInstanceFromS3(DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, S3BucketName => Str, S3IngestionRoleArn => Str, SourceEngine => Str, SourceEngineVersion => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CopyTagsToSnapshot => Bool, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str|Undef], DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, EnablePerformanceInsights => Bool, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MasterUsername => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, OptionGroupName => Str, PerformanceInsightsKMSKeyId => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, S3Prefix => Str, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceFromS3>
+
+Returns: a L<Paws::RDS::RestoreDBInstanceFromS3Result> instance
+
+Amazon Relational Database Service (Amazon RDS) supports importing
+MySQL databases by using backup files. You can create a backup of your
+on-premises database, store it on Amazon Simple Storage Service (Amazon
+S3), and then restore the backup file onto a new Amazon RDS DB instance
+running MySQL. For more information, see Importing Data into an Amazon
+RDS MySQL DB Instance
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html).
 
 
 =head2 RestoreDBInstanceToPointInTime(SourceDBInstanceIdentifier => Str, TargetDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EnableIAMDatabaseAuthentication => Bool, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, RestoreTime => Str, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, UseLatestRestorableTime => Bool])

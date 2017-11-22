@@ -46,7 +46,7 @@ Valid values: C<system-update>, C<db-upgrade>
 =head2 B<REQUIRED> OptInType => Str
 
 A value that specifies the type of opt-in request, or undoes an opt-in
-request. An opt-in request of type C<immediate> cannot be undone.
+request. An opt-in request of type C<immediate> can't be undone.
 
 Valid values:
 

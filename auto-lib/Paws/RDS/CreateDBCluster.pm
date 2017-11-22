@@ -57,8 +57,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
 
 A list of EC2 Availability Zones that instances in the DB cluster can
-be created in. For information on regions and Availability Zones, see
-Regions and Availability Zones
+be created in. For information on AWS Regions and Availability Zones,
+see Regions and Availability Zones
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 
 
@@ -157,9 +157,8 @@ Example: C<mySubnetgroup>
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-A Boolean value that is true to enable mapping of AWS Identity and
-Access Management (IAM) accounts to database accounts, and otherwise
-false.
+True to enable mapping of AWS Identity and Access Management (IAM)
+accounts to database accounts, and otherwise false.
 
 Default: C<false>
 
@@ -169,7 +168,7 @@ Default: C<false>
 
 The name of the database engine to be used for this DB cluster.
 
-Valid Values: C<aurora>
+Valid Values: C<aurora>, C<aurora-postgresql>
 
 
 
@@ -185,7 +184,7 @@ Example: C<5.6.10a>
 
 =head2 KmsKeyId => Str
 
-The KMS key identifier for an encrypted DB cluster.
+The AWS KMS key identifier for an encrypted DB cluster.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
 encryption key. If you are creating a DB cluster with the same AWS
@@ -260,8 +259,8 @@ Constraints: Must contain from 8 to 41 characters.
 A value that indicates that the DB cluster should be associated with
 the specified option group.
 
-Permanent options cannot be removed from an option group. The option
-group cannot be removed from a DB cluster once it is associated with a
+Permanent options can't be removed from an option group. The option
+group can't be removed from a DB cluster once it is associated with a
 DB cluster.
 
 
@@ -281,9 +280,9 @@ The daily time range during which automated backups are created if
 automated backups are enabled using the C<BackupRetentionPeriod>
 parameter.
 
-Default: A 30-minute window selected at random from an 8-hour block of
-time per AWS Region. To see the time blocks available, see Adjusting
-the Preferred Maintenance Window
+The default is a 30-minute window selected at random from an 8-hour
+block of time for each AWS Region. To see the time blocks available,
+see Adjusting the Preferred Maintenance Window
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
 in the I<Amazon RDS User Guide.>
 
@@ -297,7 +296,7 @@ Must be in the format C<hh24:mi-hh24:mi>.
 
 =item *
 
-Times should be in Universal Coordinated Time (UTC).
+Must be in Universal Coordinated Time (UTC).
 
 =item *
 
@@ -319,13 +318,14 @@ Universal Coordinated Time (UTC).
 
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
-Default: A 30-minute window selected at random from an 8-hour block of
-time per AWS Region, occurring on a random day of the week. To see the
-time blocks available, see Adjusting the Preferred Maintenance Window
+The default is a 30-minute window selected at random from an 8-hour
+block of time for each AWS Region, occurring on a random day of the
+week. To see the time blocks available, see Adjusting the Preferred
+Maintenance Window
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
 in the I<Amazon RDS User Guide.>
 
-Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
+Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 
 Constraints: Minimum 30-minute window.
 
@@ -349,11 +349,11 @@ The pre-signed URL request must contain the following parameter values:
 
 =item *
 
-C<KmsKeyId> - The KMS key identifier for the key to use to encrypt the
-copy of the DB cluster in the destination AWS Region. This should refer
-to the same KMS key for both the C<CreateDBCluster> action that is
-called in the destination AWS Region, and the action contained in the
-pre-signed URL.
+C<KmsKeyId> - The AWS KMS key identifier for the key to use to encrypt
+the copy of the DB cluster in the destination AWS Region. This should
+refer to the same KMS key for both the C<CreateDBCluster> action that
+is called in the destination AWS Region, and the action contained in
+the pre-signed URL.
 
 =item *
 
@@ -366,7 +366,7 @@ C<ReplicationSourceIdentifier> - The DB cluster identifier for the
 encrypted DB cluster to be copied. This identifier must be in the
 Amazon Resource Name (ARN) format for the source AWS Region. For
 example, if you are copying an encrypted DB cluster from the us-west-2
-region, then your C<ReplicationSourceIdentifier> would look like
+AWS Region, then your C<ReplicationSourceIdentifier> would look like
 Example: C<arn:aws:rds:us-west-2:123456789012:cluster:aurora-cluster1>.
 
 =back

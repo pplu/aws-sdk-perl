@@ -40,7 +40,7 @@ the DescribeOptionGroupOptions action.
 
 =head2 IsDefault => Bool
 
-  True if the version is the default version of the option; otherwise,
+  True if the version is the default version of the option, and otherwise
 false.
 
 

@@ -70,7 +70,7 @@ and subscribe to it.
 The list of identifiers of the event sources for which events are
 returned. If not specified, then all sources are included in the
 response. An identifier must begin with a letter and must contain only
-ASCII letters, digits, and hyphens; it cannot end with a hyphen or
+ASCII letters, digits, and hyphens; it can't end with a hyphen or
 contain two consecutive hyphens.
 
 Constraints:

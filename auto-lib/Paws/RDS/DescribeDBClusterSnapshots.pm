@@ -43,7 +43,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 DBClusterIdentifier => Str
 
 The ID of the DB cluster to retrieve the list of DB cluster snapshots
-for. This parameter cannot be used in conjunction with the
+for. This parameter can't be used in conjunction with the
 C<DBClusterSnapshotIdentifier> parameter. This parameter is not
 case-sensitive.
 
@@ -63,8 +63,8 @@ If supplied, must match the identifier of an existing DBCluster.
 =head2 DBClusterSnapshotIdentifier => Str
 
 A specific DB cluster snapshot identifier to describe. This parameter
-cannot be used in conjunction with the C<DBClusterIdentifier>
-parameter. This value is stored as a lowercase string.
+can't be used in conjunction with the C<DBClusterIdentifier> parameter.
+This value is stored as a lowercase string.
 
 Constraints:
 
@@ -93,10 +93,9 @@ This parameter is not currently supported.
 
 =head2 IncludePublic => Bool
 
-Set this value to C<true> to include manual DB cluster snapshots that
-are public and can be copied or restored by any AWS account, otherwise
-set this value to C<false>. The default is C<false>. The default is
-false.
+True to include manual DB cluster snapshots that are public and can be
+copied or restored by any AWS account, and otherwise false. The default
+is C<false>. The default is false.
 
 You can share a manual DB cluster snapshot as public by using the
 ModifyDBClusterSnapshotAttribute API action.
@@ -105,10 +104,9 @@ ModifyDBClusterSnapshotAttribute API action.
 
 =head2 IncludeShared => Bool
 
-Set this value to C<true> to include shared manual DB cluster snapshots
-from other AWS accounts that this AWS account has been given permission
-to copy or restore, otherwise set this value to C<false>. The default
-is C<false>.
+True to include shared manual DB cluster snapshots from other AWS
+accounts that this AWS account has been given permission to copy or
+restore, and otherwise false. The default is C<false>.
 
 You can give an AWS account permission to restore a manual DB cluster
 snapshot from another AWS account by the
