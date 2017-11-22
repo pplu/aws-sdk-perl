@@ -1,5 +1,5 @@
 
-package Paws::CloudFormation::CreateStackInstances;
+package Paws::CloudFormation::UpdateStackInstances;
   use Moose;
   has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has OperationId => (is => 'ro', isa => 'Str');
@@ -10,28 +10,28 @@ package Paws::CloudFormation::CreateStackInstances;
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStackInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::CreateStackInstancesOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateStackInstancesResult');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateStackInstances');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::UpdateStackInstancesOutput');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateStackInstancesResult');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CloudFormation::CreateStackInstances - Arguments for method CreateStackInstances on L<Paws::CloudFormation>
+Paws::CloudFormation::UpdateStackInstances - Arguments for method UpdateStackInstances on L<Paws::CloudFormation>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateStackInstances on the 
+This class represents the parameters used for calling the method UpdateStackInstances on the 
 AWS CloudFormation service. Use the attributes of this class
-as arguments to method CreateStackInstances.
+as arguments to method UpdateStackInstances.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateStackInstances.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateStackInstances.
 
 As an example:
 
-  $service_obj->CreateStackInstances(Att1 => $value1, Att2 => $value2, ...);
+  $service_obj->UpdateStackInstances(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
@@ -40,8 +40,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Accounts => ArrayRef[Str|Undef]
 
-The names of one or more AWS accounts that you want to create stack
-instances in the specified region(s) for.
+The names of one or more AWS accounts for which you want to update
+parameter values for stack instances. The overridden parameter values
+will be applied to all stack instances in the specified accounts and
+regions.
 
 
 
@@ -58,9 +60,6 @@ received them.
 If you don't specify an operation ID, the SDK generates one
 automatically.
 
-Repeating this stack set operation with a new operation ID retries all
-stack instances whose status is C<OUTDATED>.
-
 
 
 =head2 OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>
@@ -72,13 +71,13 @@ operation.
 
 =head2 ParameterOverrides => ArrayRef[L<Paws::CloudFormation::Parameter>]
 
-A list of stack set parameters whose values you want to override in the
-selected stack instances.
+A list of input parameters whose values you want to update for the
+specified stack instances.
 
 Any overridden parameter values will be applied to all stack instances
 in the specified accounts and regions. When specifying parameters and
 their values, be aware of how AWS CloudFormation sets parameter values
-during stack instance operations:
+during stack instance update operations:
 
 =over
 
@@ -121,30 +120,37 @@ During stack set updates, any parameter values overridden for a stack
 instance are not updated, but retain their overridden value.
 
 You can only override the parameter I<values> that are specified in the
-stack set; to add or delete a parameter itself, use UpdateStackSet
+stack set; to add or delete a parameter itself, use C<UpdateStackSet>
+to update the stack set template. If you add a parameter to a template,
+before you can override the parameter value specified in the stack set
+you must first use UpdateStackSet
 (http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
-to update the stack set template.
+to update all stack instances with the updated template and parameter
+value specified in the stack set. Once a stack instance has been
+updated with the new parameter, you can then override the parameter
+value using C<UpdateStackInstances>.
 
 
 
 =head2 B<REQUIRED> Regions => ArrayRef[Str|Undef]
 
-The names of one or more regions where you want to create stack
-instances using the specified AWS account(s).
+The names of one or more regions in which you want to update parameter
+values for stack instances. The overridden parameter values will be
+applied to all stack instances in the specified accounts and regions.
 
 
 
 =head2 B<REQUIRED> StackSetName => Str
 
-The name or unique ID of the stack set that you want to create stack
-instances from.
+The name or unique ID of the stack set associated with the stack
+instances.
 
 
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method CreateStackInstances in L<Paws::CloudFormation>
+This class forms part of L<Paws>, documenting arguments for method UpdateStackInstances in L<Paws::CloudFormation>
 
 =head1 BUGS and CONTRIBUTIONS
 

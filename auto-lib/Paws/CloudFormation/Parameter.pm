@@ -2,6 +2,7 @@ package Paws::CloudFormation::Parameter;
   use Moose;
   has ParameterKey => (is => 'ro', isa => 'Str');
   has ParameterValue => (is => 'ro', isa => 'Str');
+  has ResolvedValue => (is => 'ro', isa => 'Str');
   has UsePreviousValue => (is => 'ro', isa => 'Bool');
 1;
 
@@ -47,7 +48,15 @@ value that is specified in your template.
 
 =head2 ParameterValue => Str
 
-  The value associated with the parameter.
+  The input value associated with the parameter.
+
+
+=head2 ResolvedValue => Str
+
+  Read-only. The value that corresponds to a Systems Manager parameter
+key. This field is returned only for C<SSM> parameter types
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#aws-ssm-parameter-types)
+in the template.
 
 
 =head2 UsePreviousValue => Bool

@@ -198,6 +198,11 @@ package Paws::CloudFormation;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::UpdateStack', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateStackInstances {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::UpdateStackInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateStackSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::UpdateStackSet', @_);
@@ -354,7 +359,7 @@ package Paws::CloudFormation;
   }
 
 
-  sub operations { qw/CancelUpdateStack ContinueUpdateRollback CreateChangeSet CreateStack CreateStackInstances CreateStackSet DeleteChangeSet DeleteStack DeleteStackInstances DeleteStackSet DescribeAccountLimits DescribeChangeSet DescribeStackEvents DescribeStackInstance DescribeStackResource DescribeStackResources DescribeStacks DescribeStackSet DescribeStackSetOperation EstimateTemplateCost ExecuteChangeSet GetStackPolicy GetTemplate GetTemplateSummary ListChangeSets ListExports ListImports ListStackInstances ListStackResources ListStacks ListStackSetOperationResults ListStackSetOperations ListStackSets SetStackPolicy SignalResource StopStackSetOperation UpdateStack UpdateStackSet UpdateTerminationProtection ValidateTemplate / }
+  sub operations { qw/CancelUpdateStack ContinueUpdateRollback CreateChangeSet CreateStack CreateStackInstances CreateStackSet DeleteChangeSet DeleteStack DeleteStackInstances DeleteStackSet DescribeAccountLimits DescribeChangeSet DescribeStackEvents DescribeStackInstance DescribeStackResource DescribeStackResources DescribeStacks DescribeStackSet DescribeStackSetOperation EstimateTemplateCost ExecuteChangeSet GetStackPolicy GetTemplate GetTemplateSummary ListChangeSets ListExports ListImports ListStackInstances ListStackResources ListStacks ListStackSetOperationResults ListStackSetOperations ListStackSets SetStackPolicy SignalResource StopStackSetOperation UpdateStack UpdateStackInstances UpdateStackSet UpdateTerminationProtection ValidateTemplate / }
 
 1;
 
@@ -485,7 +490,7 @@ successfully, the stack creation starts. You can check the status of
 the stack via the DescribeStacks API.
 
 
-=head2 CreateStackInstances(Accounts => ArrayRef[Str|Undef], Regions => ArrayRef[Str|Undef], StackSetName => Str, [OperationId => Str, OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>])
+=head2 CreateStackInstances(Accounts => ArrayRef[Str|Undef], Regions => ArrayRef[Str|Undef], StackSetName => Str, [OperationId => Str, OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>, ParameterOverrides => ArrayRef[L<Paws::CloudFormation::Parameter>]])
 
 Each argument is described in detail in: L<Paws::CloudFormation::CreateStackInstances>
 
@@ -910,6 +915,37 @@ GetTemplate action.
 For more information about creating an update template, updating a
 stack, and monitoring the progress of the update, see Updating a Stack
 (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html).
+
+
+=head2 UpdateStackInstances(Accounts => ArrayRef[Str|Undef], Regions => ArrayRef[Str|Undef], StackSetName => Str, [OperationId => Str, OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>, ParameterOverrides => ArrayRef[L<Paws::CloudFormation::Parameter>]])
+
+Each argument is described in detail in: L<Paws::CloudFormation::UpdateStackInstances>
+
+Returns: a L<Paws::CloudFormation::UpdateStackInstancesOutput> instance
+
+Updates the parameter values for stack instances for the specified
+accounts, within the specified regions. A stack instance refers to a
+stack in a specific account and region.
+
+You can only update stack instances in regions and accounts where they
+already exist; to create additional stack instances, use
+CreateStackInstances
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html).
+
+During stack set updates, any parameters overridden for a stack
+instance are not updated, but retain their overridden value.
+
+You can only update the parameter I<values> that are specified in the
+stack set; to add or delete a parameter itself, use UpdateStackSet
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
+to update the stack set template. If you add a parameter to a template,
+before you can override the parameter value specified in the stack set
+you must first use UpdateStackSet
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
+to update all stack instances with the updated template and parameter
+value specified in the stack set. Once a stack instance has been
+updated with the new parameter, you can then override the parameter
+value using C<UpdateStackInstances>.
 
 
 =head2 UpdateStackSet(StackSetName => Str, [Capabilities => ArrayRef[Str|Undef], Description => Str, OperationId => Str, OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>, Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
