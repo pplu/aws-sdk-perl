@@ -35,8 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::Sh
 
 =head1 DESCRIPTION
 
-A uniquely identified group of data records in an Amazon Kinesis
-stream.
+A uniquely identified group of data records in a Kinesis stream.
 
 =head1 ATTRIBUTES
 
