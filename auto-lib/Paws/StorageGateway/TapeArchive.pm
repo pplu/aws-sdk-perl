@@ -87,7 +87,7 @@ The virtual tape is retrieved from the virtual tape shelf (VTS).
 
 =head2 TapeUsedInBytes => Int
 
-  The size, in bytes, of data written to the virtual tape.
+  The size, in bytes, of data stored on the virtual tape.
 
 This value is not available for tapes created prior to May 13, 2015.
 

@@ -6,6 +6,7 @@ package Paws::StorageGateway::NFSFileShareInfo;
   has FileShareId => (is => 'ro', isa => 'Str');
   has FileShareStatus => (is => 'ro', isa => 'Str');
   has GatewayARN => (is => 'ro', isa => 'Str');
+  has GuessMIMETypeEnabled => (is => 'ro', isa => 'Bool');
   has KMSEncrypted => (is => 'ro', isa => 'Bool');
   has KMSKey => (is => 'ro', isa => 'Str');
   has LocationARN => (is => 'ro', isa => 'Str');
@@ -82,6 +83,12 @@ Optional.
 =head2 GatewayARN => Str
 
   
+
+
+=head2 GuessMIMETypeEnabled => Bool
+
+  Enables guessing of the MIME type for uploaded objects based on file
+extensions: "true" to enable MIME type guessing, and otherwise "false".
 
 
 =head2 KMSEncrypted => Bool

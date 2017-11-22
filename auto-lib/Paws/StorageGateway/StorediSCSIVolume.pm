@@ -11,6 +11,7 @@ package Paws::StorageGateway::StorediSCSIVolume;
   has VolumeSizeInBytes => (is => 'ro', isa => 'Int');
   has VolumeStatus => (is => 'ro', isa => 'Str');
   has VolumeType => (is => 'ro', isa => 'Str');
+  has VolumeUsedInBytes => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +31,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::StorageGateway::StorediSCSIVolume object:
 
-  $service_obj->Method(Att1 => { CreatedDate => $value, ..., VolumeType => $value  });
+  $service_obj->Method(Att1 => { CreatedDate => $value, ..., VolumeUsedInBytes => $value  });
 
 =head3 Results returned from an API call
 
@@ -112,6 +113,14 @@ volume.
 
   One of the VolumeType enumeration values describing the type of the
 volume.
+
+
+=head2 VolumeUsedInBytes => Int
+
+  The size of the data stored on the volume in bytes.
+
+This value is not available for volumes created prior to May 13, 2015,
+until you store data on the volume.
 
 
 
