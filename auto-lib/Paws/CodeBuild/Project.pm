@@ -2,6 +2,8 @@ package Paws::CodeBuild::Project;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has Artifacts => (is => 'ro', isa => 'Paws::CodeBuild::ProjectArtifacts', request_name => 'artifacts', traits => ['NameInRequest']);
+  has Badge => (is => 'ro', isa => 'Paws::CodeBuild::ProjectBadge', request_name => 'badge', traits => ['NameInRequest']);
+  has Cache => (is => 'ro', isa => 'Paws::CodeBuild::ProjectCache', request_name => 'cache', traits => ['NameInRequest']);
   has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has EncryptionKey => (is => 'ro', isa => 'Str', request_name => 'encryptionKey', traits => ['NameInRequest']);
@@ -12,6 +14,7 @@ package Paws::CodeBuild::Project;
   has Source => (is => 'ro', isa => 'Paws::CodeBuild::ProjectSource', request_name => 'source', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has TimeoutInMinutes => (is => 'ro', isa => 'Int', request_name => 'timeoutInMinutes', traits => ['NameInRequest']);
+  has VpcConfig => (is => 'ro', isa => 'Paws::CodeBuild::VpcConfig', request_name => 'vpcConfig', traits => ['NameInRequest']);
   has Webhook => (is => 'ro', isa => 'Paws::CodeBuild::Webhook', request_name => 'webhook', traits => ['NameInRequest']);
 1;
 
@@ -56,6 +59,16 @@ Information about a build project.
 =head2 Artifacts => L<Paws::CodeBuild::ProjectArtifacts>
 
   Information about the build output artifacts for the build project.
+
+
+=head2 Badge => L<Paws::CodeBuild::ProjectBadge>
+
+  Information about the build badge for the build project.
+
+
+=head2 Cache => L<Paws::CodeBuild::ProjectCache>
+
+  Information about the cache for the build project.
 
 
 =head2 Created => Str
@@ -118,6 +131,15 @@ CodeBuild build project tags.
   How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to
 wait before timing out any related build that did not get marked as
 completed. The default is 60 minutes.
+
+
+=head2 VpcConfig => L<Paws::CodeBuild::VpcConfig>
+
+  If your AWS CodeBuild project accesses resources in an Amazon VPC, you
+provide this parameter that identifies the VPC ID and the list of
+security group IDs and subnet IDs. The security groups and subnets must
+belong to the same VPC. You must provide at least one security group
+and one subnet ID.
 
 
 =head2 Webhook => L<Paws::CodeBuild::Webhook>

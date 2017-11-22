@@ -49,6 +49,11 @@ package Paws::CodeBuild;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::DeleteWebhook', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub InvalidateProjectCache {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::InvalidateProjectCache', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListBuilds {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::ListBuilds', @_);
@@ -156,7 +161,7 @@ package Paws::CodeBuild;
   }
 
 
-  sub operations { qw/BatchDeleteBuilds BatchGetBuilds BatchGetProjects CreateProject CreateWebhook DeleteProject DeleteWebhook ListBuilds ListBuildsForProject ListCuratedEnvironmentImages ListProjects StartBuild StopBuild UpdateProject / }
+  sub operations { qw/BatchDeleteBuilds BatchGetBuilds BatchGetProjects CreateProject CreateWebhook DeleteProject DeleteWebhook InvalidateProjectCache ListBuilds ListBuildsForProject ListCuratedEnvironmentImages ListProjects StartBuild StopBuild UpdateProject / }
 
 1;
 
@@ -307,7 +312,7 @@ Returns: a L<Paws::CodeBuild::BatchGetProjectsOutput> instance
 Gets information about build projects.
 
 
-=head2 CreateProject(Artifacts => L<Paws::CodeBuild::ProjectArtifacts>, Environment => L<Paws::CodeBuild::ProjectEnvironment>, Name => Str, Source => L<Paws::CodeBuild::ProjectSource>, [Description => Str, EncryptionKey => Str, ServiceRole => Str, Tags => ArrayRef[L<Paws::CodeBuild::Tag>], TimeoutInMinutes => Int])
+=head2 CreateProject(Artifacts => L<Paws::CodeBuild::ProjectArtifacts>, Environment => L<Paws::CodeBuild::ProjectEnvironment>, Name => Str, Source => L<Paws::CodeBuild::ProjectSource>, [BadgeEnabled => Bool, Cache => L<Paws::CodeBuild::ProjectCache>, Description => Str, EncryptionKey => Str, ServiceRole => Str, Tags => ArrayRef[L<Paws::CodeBuild::Tag>], TimeoutInMinutes => Int, VpcConfig => L<Paws::CodeBuild::VpcConfig>])
 
 Each argument is described in detail in: L<Paws::CodeBuild::CreateProject>
 
@@ -358,6 +363,15 @@ For an existing AWS CodeBuild build project that has its source code
 stored in a GitHub repository, stops AWS CodeBuild from automatically
 rebuilding the source code every time a code change is pushed to the
 repository.
+
+
+=head2 InvalidateProjectCache(ProjectName => Str)
+
+Each argument is described in detail in: L<Paws::CodeBuild::InvalidateProjectCache>
+
+Returns: a L<Paws::CodeBuild::InvalidateProjectCacheOutput> instance
+
+Resets the cache for a project.
 
 
 =head2 ListBuilds([NextToken => Str, SortOrder => Str])
@@ -417,7 +431,7 @@ Returns: a L<Paws::CodeBuild::StopBuildOutput> instance
 Attempts to stop running a build.
 
 
-=head2 UpdateProject(Name => Str, [Artifacts => L<Paws::CodeBuild::ProjectArtifacts>, Description => Str, EncryptionKey => Str, Environment => L<Paws::CodeBuild::ProjectEnvironment>, ServiceRole => Str, Source => L<Paws::CodeBuild::ProjectSource>, Tags => ArrayRef[L<Paws::CodeBuild::Tag>], TimeoutInMinutes => Int])
+=head2 UpdateProject(Name => Str, [Artifacts => L<Paws::CodeBuild::ProjectArtifacts>, BadgeEnabled => Bool, Cache => L<Paws::CodeBuild::ProjectCache>, Description => Str, EncryptionKey => Str, Environment => L<Paws::CodeBuild::ProjectEnvironment>, ServiceRole => Str, Source => L<Paws::CodeBuild::ProjectSource>, Tags => ArrayRef[L<Paws::CodeBuild::Tag>], TimeoutInMinutes => Int, VpcConfig => L<Paws::CodeBuild::VpcConfig>])
 
 Each argument is described in detail in: L<Paws::CodeBuild::UpdateProject>
 
