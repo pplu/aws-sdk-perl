@@ -104,6 +104,11 @@ package Paws::Organizations;
     my $call_object = $self->new_with_coercions('Paws::Organizations::DetachPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisableAWSServiceAccess {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Organizations::DisableAWSServiceAccess', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisablePolicyType {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Organizations::DisablePolicyType', @_);
@@ -112,6 +117,11 @@ package Paws::Organizations;
   sub EnableAllFeatures {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Organizations::EnableAllFeatures', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub EnableAWSServiceAccess {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Organizations::EnableAWSServiceAccess', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub EnablePolicyType {
@@ -137,6 +147,11 @@ package Paws::Organizations;
   sub ListAccountsForParent {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Organizations::ListAccountsForParent', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAWSServiceAccessForOrganization {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Organizations::ListAWSServiceAccessForOrganization', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListChildren {
@@ -488,7 +503,7 @@ package Paws::Organizations;
   }
 
 
-  sub operations { qw/AcceptHandshake AttachPolicy CancelHandshake CreateAccount CreateOrganization CreateOrganizationalUnit CreatePolicy DeclineHandshake DeleteOrganization DeleteOrganizationalUnit DeletePolicy DescribeAccount DescribeCreateAccountStatus DescribeHandshake DescribeOrganization DescribeOrganizationalUnit DescribePolicy DetachPolicy DisablePolicyType EnableAllFeatures EnablePolicyType InviteAccountToOrganization LeaveOrganization ListAccounts ListAccountsForParent ListChildren ListCreateAccountStatus ListHandshakesForAccount ListHandshakesForOrganization ListOrganizationalUnitsForParent ListParents ListPolicies ListPoliciesForTarget ListRoots ListTargetsForPolicy MoveAccount RemoveAccountFromOrganization UpdateOrganizationalUnit UpdatePolicy / }
+  sub operations { qw/AcceptHandshake AttachPolicy CancelHandshake CreateAccount CreateOrganization CreateOrganizationalUnit CreatePolicy DeclineHandshake DeleteOrganization DeleteOrganizationalUnit DeletePolicy DescribeAccount DescribeCreateAccountStatus DescribeHandshake DescribeOrganization DescribeOrganizationalUnit DescribePolicy DetachPolicy DisableAWSServiceAccess DisablePolicyType EnableAllFeatures EnableAWSServiceAccess EnablePolicyType InviteAccountToOrganization LeaveOrganization ListAccounts ListAccountsForParent ListAWSServiceAccessForOrganization ListChildren ListCreateAccountStatus ListHandshakesForAccount ListHandshakesForOrganization ListOrganizationalUnitsForParent ListParents ListPolicies ListPoliciesForTarget ListRoots ListTargetsForPolicy MoveAccount RemoveAccountFromOrganization UpdateOrganizationalUnit UpdatePolicy / }
 
 1;
 
@@ -586,11 +601,9 @@ B<Support and Feedback for AWS Organizations>
 We welcome your feedback. Send your comments to
 feedback-awsorganizations@amazon.com
 (mailto:feedback-awsorganizations@amazon.com) or post your feedback and
-questions in our private AWS Organizations support forum
-(http://forums.aws.amazon.com/forum.jspa?forumID=219). If you don't
-have access to the forum, send a request for access to the email
-address, along with your forum user ID. For more information about the
-AWS support forums, see Forums Help
+questions in the AWS Organizations support forum
+(http://forums.aws.amazon.com/forum.jspa?forumID=219). For more
+information about the AWS support forums, see Forums Help
 (http://forums.aws.amazon.com/help.jspa).
 
 B<Endpoint to Call When Using the CLI or the AWS API>
@@ -817,11 +830,11 @@ in the I<AWS Organizations User Guide>.
 The user in the master account who calls this API must also have the
 C<iam:CreateRole> permission because AWS Organizations preconfigures
 the new member account with a role (named
-C<OrganizationAccountAccessRole>) that grants users in the master
-account administrator permissions in the new member account. Principals
-in the master account can assume the role. AWS Organizations clones the
-company name and address information for the new account from the
-organization's master account.
+C<OrganizationAccountAccessRole> by default) that grants users in the
+master account administrator permissions in the new member account.
+Principals in the master account can assume the role. AWS Organizations
+clones the company name and address information for the new account
+from the organization's master account.
 
 This operation can be called only from the organization's master
 account.
@@ -851,6 +864,9 @@ can access billing information. For information about how to disable
 this for an account, see Granting Access to Your Billing Information
 and Tools
 (http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html).
+
+This operation can be called only from the organization's master
+account.
 
 If you get an exception that indicates that you exceeded your account
 limits for the organization or that you can"t add an account because
@@ -1083,6 +1099,47 @@ This operation can be called only from the organization's master
 account.
 
 
+=head2 DisableAWSServiceAccess(ServicePrincipal => Str)
+
+Each argument is described in detail in: L<Paws::Organizations::DisableAWSServiceAccess>
+
+Returns: nothing
+
+Disables the integration of an AWS service (the service that is
+specified by C<ServicePrincipal>) with AWS Organizations. When you
+disable integration, the specified service no longer can create a
+service-linked role
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html)
+in I<new> accounts in your organization. This means the service can't
+perform operations on your behalf on any new accounts in your
+organization. The service can still perform operations in older
+accounts until the service completes its clean-up from AWS
+Organizations.
+
+We recommend that you disable integration between AWS Organizations and
+the specified AWS service by using the console or commands that are
+provided by the specified service. Doing so ensures that the other
+service is aware that it can clean up any resources that are required
+only for the integration. How the service cleans up its resources in
+the organization's accounts depends on that service. For more
+information, see the documentation for the other AWS service.
+
+After you perform the C<DisableAWSServiceAccess> operation, the
+specified service can no longer perform operations in your
+organization's accounts unless the operations are explicitly permitted
+by the IAM policies that are attached to your roles.
+
+For more information about integrating other services with AWS
+Organizations, including the list of services that work with
+Organizations, see Integrating AWS Organizations with Other AWS
+Services
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
+in the I<AWS Organizations User Guide>.
+
+This operation can be called only from the organization's master
+account.
+
+
 =head2 DisablePolicyType(PolicyType => Str, RootId => Str)
 
 Each argument is described in detail in: L<Paws::Organizations::DisablePolicyType>
@@ -1138,6 +1195,40 @@ administrators are aware of this.
 
 This operation can be called only from the organization's master
 account.
+
+
+=head2 EnableAWSServiceAccess(ServicePrincipal => Str)
+
+Each argument is described in detail in: L<Paws::Organizations::EnableAWSServiceAccess>
+
+Returns: nothing
+
+Enables the integration of an AWS service (the service that is
+specified by C<ServicePrincipal>) with AWS Organizations. When you
+enable integration, you allow the specified service to create a
+service-linked role
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html)
+in all the accounts in your organization. This allows the service to
+perform operations on your behalf in your organization and its
+accounts.
+
+We recommend that you enable integration between AWS Organizations and
+the specified AWS service by using the console or commands that are
+provided by the specified service. Doing so ensures that the service is
+aware that it can create the resources that are required for the
+integration. How the service creates those resources in the
+organization's accounts depends on that service. For more information,
+see the documentation for the other AWS service.
+
+For more information about enabling services to integrate with AWS
+Organizations, see Integrating AWS Organizations with Other AWS
+Services
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
+in the I<AWS Organizations User Guide>.
+
+This operation can be called only from the organization's master
+account and only if the organization has enabled all features
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html).
 
 
 =head2 EnablePolicyType(PolicyType => Str, RootId => Str)
@@ -1262,6 +1353,28 @@ root, you get a list of all the accounts that are not in any OU. If you
 specify an OU, you get a list of all the accounts in only that OU, and
 not in any child OUs. To get a list of all accounts in the
 organization, use the ListAccounts operation.
+
+This operation can be called only from the organization's master
+account.
+
+
+=head2 ListAWSServiceAccessForOrganization([MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::Organizations::ListAWSServiceAccessForOrganization>
+
+Returns: a L<Paws::Organizations::ListAWSServiceAccessForOrganizationResponse> instance
+
+Returns a list of the AWS services that you enabled to integrate with
+your organization. After a service on this list creates the resources
+that it requires for the integration, it can perform operations on your
+organization and its accounts.
+
+For more information about integrating other services with AWS
+Organizations, including the list of services that currently work with
+Organizations, see Integrating AWS Organizations with Other AWS
+Services
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
+in the I<AWS Organizations User Guide>.
 
 This operation can be called only from the organization's master
 account.
