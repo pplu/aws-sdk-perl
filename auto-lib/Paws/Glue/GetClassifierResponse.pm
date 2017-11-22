@@ -16,7 +16,7 @@ Paws::Glue::GetClassifierResponse
 
 =head2 Classifier => L<Paws::Glue::Classifier>
 
-The requested C<Classifier>.
+The requested classifier.
 
 
 =head2 _request_id => Str

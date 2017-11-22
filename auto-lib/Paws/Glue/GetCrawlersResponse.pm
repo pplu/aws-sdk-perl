@@ -17,7 +17,7 @@ Paws::Glue::GetCrawlersResponse
 
 =head2 Crawlers => ArrayRef[L<Paws::Glue::Crawler>]
 
-A list of C<Crawler> metadata.
+A list of crawler metadata.
 
 
 =head2 NextToken => Str

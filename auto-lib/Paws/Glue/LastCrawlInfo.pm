@@ -43,7 +43,7 @@ Status and error information about the most recent crawl.
 
 =head2 ErrorMessage => Str
 
-  Error information about the last crawl, if an error occurred.
+  If an error occurred, the error information about the last crawl.
 
 
 =head2 LogGroup => Str

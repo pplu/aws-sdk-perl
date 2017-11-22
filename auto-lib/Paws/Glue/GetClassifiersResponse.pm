@@ -17,7 +17,7 @@ Paws::Glue::GetClassifiersResponse
 
 =head2 Classifiers => ArrayRef[L<Paws::Glue::Classifier>]
 
-The requested list of C<Classifier> objects.
+The requested list of classifier objects.
 
 
 =head2 NextToken => Str

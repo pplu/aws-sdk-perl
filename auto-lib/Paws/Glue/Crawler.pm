@@ -1,6 +1,7 @@
 package Paws::Glue::Crawler;
   use Moose;
   has Classifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Configuration => (is => 'ro', isa => 'Str');
   has CrawlElapsedTime => (is => 'ro', isa => 'Int');
   has CreationTime => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
@@ -47,35 +48,48 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Crawl
 
 Specifies a crawler program that examines a data source and uses
 classifiers to try to determine its schema. If successful, the crawler
-records metatdata concerning the data source in the Data Catalog.
+records metadata concerning the data source in the AWS Glue Data
+Catalog.
 
 =head1 ATTRIBUTES
 
 
 =head2 Classifiers => ArrayRef[Str|Undef]
 
-  A list of custom C<Classifier>s associated with this Crawler.
+  A list of custom classifiers associated with the crawler.
+
+
+=head2 Configuration => Str
+
+  Crawler configuration information. This versioned JSON string allows
+users to specify aspects of a Crawler's behavior.
+
+You can use this field to force partitions to inherit metadata such as
+classification, input format, output format, serde information, and
+schema from their parent table, rather than detect this information
+separately for each partition. Use the following JSON string to specify
+that behavior:
 
 
 =head2 CrawlElapsedTime => Int
 
-  If this Crawler is running, contains the total time elapsed since the
+  If the crawler is running, contains the total time elapsed since the
 last crawl began.
 
 
 =head2 CreationTime => Str
 
-  The time when the Crawler was created.
+  The time when the crawler was created.
 
 
 =head2 DatabaseName => Str
 
-  The C<Database> where this Crawler's output should be stored.
+  The database where metadata is written by this crawler.
 
 
 =head2 Description => Str
 
-  A description of this Crawler and where it should be used.
+  A description of the crawler.
 
 
 =head2 LastCrawl => L<Paws::Glue::LastCrawlInfo>
@@ -86,39 +100,38 @@ error occurred.
 
 =head2 LastUpdated => Str
 
-  The time the Crawler was last updated.
+  The time the crawler was last updated.
 
 
 =head2 Name => Str
 
-  The C<Crawler> name.
+  The crawler name.
 
 
 =head2 Role => Str
 
-  The IAM role (or ARN of an IAM role) used to access customer resources
-such as data in S3.
+  The IAM role (or ARN of an IAM role) used to access customer resources,
+such as data in Amazon S3.
 
 
 =head2 Schedule => L<Paws::Glue::Schedule>
 
-  A C<Schedule> object that specifies the schedule on which this Crawler
-is to be run.
+  For scheduled crawlers, the schedule when the crawler runs.
 
 
 =head2 SchemaChangePolicy => L<Paws::Glue::SchemaChangePolicy>
 
-  Sets policy for the crawler's update and delete behavior.
+  Sets the behavior when the crawler finds a changed or deleted object.
 
 
 =head2 State => Str
 
-  Indicates whether this Crawler is running, or whether a run is pending.
+  Indicates whether the crawler is running, or whether a run is pending.
 
 
 =head2 TablePrefix => Str
 
-  The table prefix used for catalog tables created.
+  The prefix added to the names of tables that are created.
 
 
 =head2 Targets => L<Paws::Glue::CrawlerTargets>
@@ -128,7 +141,7 @@ is to be run.
 
 =head2 Version => Int
 
-  The version of the Crawler.
+  The version of the crawler.
 
 
 

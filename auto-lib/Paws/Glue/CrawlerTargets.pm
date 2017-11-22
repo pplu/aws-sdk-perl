@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Crawl
 
 =head1 DESCRIPTION
 
-Specifies crawler targets.
+Specifies data stores to crawl.
 
 =head1 ATTRIBUTES
 
@@ -44,7 +44,7 @@ Specifies crawler targets.
 
 =head2 S3Targets => ArrayRef[L<Paws::Glue::S3Target>]
 
-  Specifies targets in AWS S3.
+  Specifies Amazon S3 targets.
 
 
 

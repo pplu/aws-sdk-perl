@@ -2,6 +2,7 @@
 package Paws::Glue::CreateCrawler;
   use Moose;
   has Classifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Configuration => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -43,36 +44,48 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Classifiers => ArrayRef[Str|Undef]
 
-A list of custom C<Classifier> names that the user has registered. By
-default, all AWS classifiers are included in a crawl, but these custom
+A list of custom classifiers that the user has registered. By default,
+all AWS classifiers are included in a crawl, but these custom
 classifiers always override the default classifiers for a given
 classification.
 
 
 
+=head2 Configuration => Str
+
+Crawler configuration information. This versioned JSON string allows
+users to specify aspects of a Crawler's behavior.
+
+You can use this field to force partitions to inherit metadata such as
+classification, input format, output format, serde information, and
+schema from their parent table, rather than detect this information
+separately for each partition.
+
+
+
 =head2 B<REQUIRED> DatabaseName => Str
 
-The Glue C<Database> where results will be stored, such as:
+The AWS Glue database where results are written, such as:
 C<arn:aws:daylight:us-east-1::database/sometable/*>.
 
 
 
 =head2 Description => Str
 
-A description of the new C<Crawler>.
+A description of the new crawler.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-Name of the new C<Crawler>.
+Name of the new crawler.
 
 
 
 =head2 B<REQUIRED> Role => Str
 
-The IAM role (or ARN of an IAM role) used by the new C<Crawler> to
-access customer resources.
+The IAM role (or ARN of an IAM role) used by the new crawler to access
+customer resources.
 
 
 
@@ -94,7 +107,7 @@ Policy for the crawler's update and deletion behavior.
 
 =head2 TablePrefix => Str
 
-The table prefix used for catalog tables created.
+The table prefix used for catalog tables that are created.
 
 
 

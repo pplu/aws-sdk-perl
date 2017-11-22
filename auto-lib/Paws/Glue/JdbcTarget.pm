@@ -33,19 +33,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::JdbcT
 
 =head1 DESCRIPTION
 
-Specifies a JDBC target for a crawl.
+Specifies a JDBC data store to crawl.
 
 =head1 ATTRIBUTES
 
 
 =head2 ConnectionName => Str
 
-  The name of the connection to use for the JDBC target.
+  The name of the connection to use to connect to the JDBC target.
 
 
 =head2 Exclusions => ArrayRef[Str|Undef]
 
-  A list of items to exclude from the crawl.
+  A list of glob patterns used to exclude from the crawl. For more
+information, see Catalog Tables with a Crawler
+(http://docs.aws.amazon.com/glue/latest/dg/add-crawler.html).
 
 
 =head2 Path => Str

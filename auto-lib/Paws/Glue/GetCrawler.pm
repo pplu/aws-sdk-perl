@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Name => Str
 
-Name of the C<Crawler> to retrieve metadata for.
+Name of the crawler to retrieve metadata for.
 
 
 

@@ -16,7 +16,7 @@ Paws::Glue::GetCrawlerResponse
 
 =head2 Crawler => L<Paws::Glue::Crawler>
 
-The metadata for the specified C<Crawler>.
+The metadata for the specified crawler.
 
 
 =head2 _request_id => Str
