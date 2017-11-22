@@ -12,6 +12,7 @@ package Paws::ApiGateway::PutIntegration;
   has RequestTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'requestTemplates');
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId', required => 1);
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has TimeoutInMillis => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'timeoutInMillis');
   has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type', required => 1);
   has Uri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uri');
 
@@ -167,6 +168,13 @@ Specifies a put integration request's resource ID.
 =head2 B<REQUIRED> RestApiId => Str
 
 The string identifier of the associated RestApi.
+
+
+
+=head2 TimeoutInMillis => Int
+
+Custom timeout between 50 and 29,000 milliseconds. The default value is
+29,000 milliseconds or 29 seconds.
 
 
 

@@ -2,6 +2,7 @@
 package Paws::ApiGateway::GetDocumentationParts;
   use Moose;
   has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
+  has LocationStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'locationStatus');
   has NameQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nameQuery');
   has Path => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'path');
   has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position');
@@ -44,6 +45,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The maximum number of returned results per page.
 
 
+
+=head2 LocationStatus => Str
+
+The status of the API documentation parts to retrieve. Valid values are
+C<DOCUMENTED> for retrieving DocumentationPart resources with content
+and C<UNDOCUMENTED> for DocumentationPart resources without content.
+
+Valid values are: C<"DOCUMENTED">, C<"UNDOCUMENTED">
 
 =head2 NameQuery => Str
 

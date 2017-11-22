@@ -1,6 +1,7 @@
 
 package Paws::ApiGateway::Stage;
   use Moose;
+  has AccessLogSettings => (is => 'ro', isa => 'Paws::ApiGateway::AccessLogSettings', traits => ['NameInRequest'], request_name => 'accessLogSettings');
   has CacheClusterEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'cacheClusterEnabled');
   has CacheClusterSize => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cacheClusterSize');
   has CacheClusterStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cacheClusterStatus');
@@ -24,6 +25,11 @@ package Paws::ApiGateway::Stage;
 Paws::ApiGateway::Stage
 
 =head1 ATTRIBUTES
+
+
+=head2 AccessLogSettings => L<Paws::ApiGateway::AccessLogSettings>
+
+The access log settings in this stage.
 
 
 =head2 CacheClusterEnabled => Bool

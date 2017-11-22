@@ -5,11 +5,13 @@ package Paws::ApiGateway::DomainName;
   has CertificateName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateName');
   has CertificateUploadDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateUploadDate');
   has DistributionDomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'distributionDomainName');
+  has DistributionHostedZoneId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'distributionHostedZoneId');
   has DomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainName');
   has EndpointConfiguration => (is => 'ro', isa => 'Paws::ApiGateway::EndpointConfiguration', traits => ['NameInRequest'], request_name => 'endpointConfiguration');
   has RegionalCertificateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalCertificateArn');
   has RegionalCertificateName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalCertificateName');
   has RegionalDomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalDomainName');
+  has RegionalHostedZoneId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalHostedZoneId');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -52,6 +54,17 @@ distributions, see the Amazon CloudFront documentation
 (http://aws.amazon.com/documentation/cloudfront/).
 
 
+=head2 DistributionHostedZoneId => Str
+
+The region-agnostic Amazon Route 53 Hosted Zone ID of the
+edge-optimized endpoint. The valid value is C<Z2FDTNDATAQYW2> for all
+the regions. For more information, see Set up a Regional Custom Domain
+Name
+(https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-regional-api-custom-domain-create.html)
+and AWS Regions and Endpoints for API Gateway
+(http://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region).
+
+
 =head2 DomainName => Str
 
 The name of the DomainName resource.
@@ -83,6 +96,16 @@ domain name. You set up this association by adding a DNS record that
 points the custom domain name to this regional domain name. The
 regional domain name is returned by Amazon API Gateway when you create
 a regional endpoint.
+
+
+=head2 RegionalHostedZoneId => Str
+
+The region-specific Amazon Route 53 Hosted Zone ID of the regional
+endpoint. For more information, see Set up a Regional Custom Domain
+Name
+(https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-regional-api-custom-domain-create.html)
+and AWS Regions and Endpoints for API Gateway
+(http://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region).
 
 
 =head2 _request_id => Str

@@ -10,6 +10,7 @@ package Paws::ApiGateway::Integration;
   has PassthroughBehavior => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'passthroughBehavior');
   has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'requestParameters');
   has RequestTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'requestTemplates');
+  has TimeoutInMillis => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'timeoutInMillis');
   has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type');
   has Uri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uri');
 
@@ -149,6 +150,12 @@ Represents a map of Velocity templates that are applied on the request
 payload based on the value of the Content-Type header sent by the
 client. The content type value is the key in this map, and the template
 (as a String) is the value.
+
+
+=head2 TimeoutInMillis => Int
+
+Custom timeout between 50 and 29,000 milliseconds. The default value is
+29,000 milliseconds or 29 seconds.
 
 
 =head2 Type => Str

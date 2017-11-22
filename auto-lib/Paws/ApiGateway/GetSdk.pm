@@ -58,7 +58,8 @@ The string identifier of the associated RestApi.
 =head2 B<REQUIRED> SdkType => Str
 
 The language for the generated SDK. Currently C<java>, C<javascript>,
-C<android>, C<objectivec> and C<swift> (for iOS) are supported.
+C<android>, C<objectivec> (for iOS), C<swift> (for iOS), and C<ruby>
+are supported.
 
 
 

@@ -1330,7 +1330,7 @@ Returns: a L<Paws::ApiGateway::DocumentationPart> instance
 
 
 
-=head2 GetDocumentationParts(RestApiId => Str, [Limit => Int, NameQuery => Str, Path => Str, Position => Str, Type => Str])
+=head2 GetDocumentationParts(RestApiId => Str, [Limit => Int, LocationStatus => Str, NameQuery => Str, Path => Str, Position => Str, Type => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::GetDocumentationParts>
 
@@ -1413,7 +1413,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetIntegration>
 
 Returns: a L<Paws::ApiGateway::Integration> instance
 
-Represents a get integration.
+Get the integration settings.
 
 
 =head2 GetIntegrationResponse(HttpMethod => Str, ResourceId => Str, RestApiId => Str, StatusCode => Str)
@@ -1654,7 +1654,7 @@ Creates a customization of a GatewayResponse of a specified response
 type and status code on the given RestApi.
 
 
-=head2 PutIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str, Type => Str, [CacheKeyParameters => ArrayRef[Str|Undef], CacheNamespace => Str, ContentHandling => Str, Credentials => Str, IntegrationHttpMethod => Str, PassthroughBehavior => Str, RequestParameters => L<Paws::ApiGateway::MapOfStringToString>, RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>, Uri => Str])
+=head2 PutIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str, Type => Str, [CacheKeyParameters => ArrayRef[Str|Undef], CacheNamespace => Str, ContentHandling => Str, Credentials => Str, IntegrationHttpMethod => Str, PassthroughBehavior => Str, RequestParameters => L<Paws::ApiGateway::MapOfStringToString>, RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>, TimeoutInMillis => Int, Uri => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::PutIntegration>
 
