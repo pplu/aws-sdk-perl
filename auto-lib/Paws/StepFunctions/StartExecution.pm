@@ -55,6 +55,31 @@ Related to State Machine Executions
 (http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions)
 in the I<AWS Step Functions Developer Guide>.
 
+An execution can't use the name of another execution for 90 days.
+
+When you make multiple C<StartExecution> calls with the same name, the
+new execution doesn't run and the following rules apply:
+
+=over
+
+=item *
+
+When the original execution is open and the execution input from the
+new call is I<different>, the C<ExecutionAlreadyExists> message is
+returned.
+
+=item *
+
+When the original execution is open and the execution input from the
+new call is I<identical>, the C<Success> message is returned.
+
+=item *
+
+When the original execution is closed, the C<ExecutionAlreadyExists>
+message is returned regardless of input.
+
+=back
+
 A name must I<not> contain:
 
 =over

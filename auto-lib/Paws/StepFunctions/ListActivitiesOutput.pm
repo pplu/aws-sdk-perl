@@ -22,9 +22,10 @@ The list of activities.
 
 =head2 NextToken => Str
 
-If a C<nextToken> is returned, there are more results available. To
-retrieve the next page of results, make the call again using the
-returned token in C<nextToken>. Keep all other arguments unchanged.
+If a C<nextToken> is returned by a previous call, there are more
+results available. To retrieve the next page of results, make the call
+again using the returned token in C<nextToken>. Keep all other
+arguments unchanged.
 
 The configured C<maxResults> determines how many results can be
 returned in a single call.

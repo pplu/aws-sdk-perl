@@ -16,7 +16,7 @@ Paws::StepFunctions::StopExecutionOutput
 
 =head2 B<REQUIRED> StopDate => Str
 
-The date the execution was stopped.
+The date the execution is stopped.
 
 
 =head2 _request_id => Str

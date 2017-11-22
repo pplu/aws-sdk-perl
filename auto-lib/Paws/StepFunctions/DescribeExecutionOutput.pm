@@ -67,10 +67,13 @@ control characters (C<U+0000-001F>, C<U+007F-009F>)
 
 The JSON output data of the execution.
 
+This field is set only if the execution succeeds. If the execution
+fails, this field is null.
+
 
 =head2 B<REQUIRED> StartDate => Str
 
-The date the execution was started.
+The date the execution is started.
 
 
 =head2 B<REQUIRED> StateMachineArn => Str

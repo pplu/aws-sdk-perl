@@ -49,6 +49,11 @@ package Paws::StepFunctions;
     my $call_object = $self->new_with_coercions('Paws::StepFunctions::DescribeStateMachine', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeStateMachineForExecution {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StepFunctions::DescribeStateMachineForExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetActivityTask {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StepFunctions::GetActivityTask', @_);
@@ -97,6 +102,11 @@ package Paws::StepFunctions;
   sub StopExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StepFunctions::StopExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateStateMachine {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StepFunctions::UpdateStateMachine', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -194,7 +204,7 @@ package Paws::StepFunctions;
   }
 
 
-  sub operations { qw/CreateActivity CreateStateMachine DeleteActivity DeleteStateMachine DescribeActivity DescribeExecution DescribeStateMachine GetActivityTask GetExecutionHistory ListActivities ListExecutions ListStateMachines SendTaskFailure SendTaskHeartbeat SendTaskSuccess StartExecution StopExecution / }
+  sub operations { qw/CreateActivity CreateStateMachine DeleteActivity DeleteStateMachine DescribeActivity DescribeExecution DescribeStateMachine DescribeStateMachineForExecution GetActivityTask GetExecutionHistory ListActivities ListExecutions ListStateMachines SendTaskFailure SendTaskHeartbeat SendTaskSuccess StartExecution StopExecution UpdateStateMachine / }
 
 1;
 
@@ -233,9 +243,9 @@ allowing you to scale and change applications quickly. Step Functions
 provides a console that helps visualize the components of your
 application as a series of steps. Step Functions automatically triggers
 and tracks each step, and retries steps when there are errors, so your
-application executes in order and as expected, every time. Step
-Functions logs the state of each step, so you can diagnose and debug
-problems quickly.
+application executes predictably and in the right order every time.
+Step Functions logs the state of each step, so you can quickly diagnose
+and debug any issues.
 
 Step Functions manages operations and underlying infrastructure to
 ensure your application is available at any scale. You can run tasks on
@@ -253,13 +263,13 @@ Each argument is described in detail in: L<Paws::StepFunctions::CreateActivity>
 
 Returns: a L<Paws::StepFunctions::CreateActivityOutput> instance
 
-Creates an activity. An Activity is a task which you write, in any
-language and hosted on any machine which has access to AWS Step
-Functions. Activities must poll Step Functions using the
-C<GetActivityTask> and respond using C<SendTask*> API calls. This
-function lets Step Functions know the existence of your activity and
-returns an identifier for use in a state machine and when polling from
-the activity.
+Creates an activity. An activity is a task which you write in any
+programming language and host on any machine which has access to AWS
+Step Functions. Activities must poll Step Functions using the
+C<GetActivityTask> API action and respond using C<SendTask*> API
+actions. This function lets Step Functions know the existence of your
+activity and returns an identifier for use in a state machine and when
+polling from the activity.
 
 
 =head2 CreateStateMachine(Definition => Str, Name => Str, RoleArn => Str)
@@ -269,8 +279,8 @@ Each argument is described in detail in: L<Paws::StepFunctions::CreateStateMachi
 Returns: a L<Paws::StepFunctions::CreateStateMachineOutput> instance
 
 Creates a state machine. A state machine consists of a collection of
-states that can do work (C<Task> states), determine which states to
-transition to next (C<Choice> states), stop an execution with an error
+states that can do work (C<Task> states), determine to which states to
+transition next (C<Choice> states), stop an execution with an error
 (C<Fail> states), and so on. State machines are specified using a
 JSON-based, structured language.
 
@@ -290,11 +300,13 @@ Each argument is described in detail in: L<Paws::StepFunctions::DeleteStateMachi
 
 Returns: a L<Paws::StepFunctions::DeleteStateMachineOutput> instance
 
-Deletes a state machine. This is an asynchronous operation-- it sets
-the state machine's status to "DELETING" and begins the delete process.
-Each state machine execution will be deleted the next time it makes a
-state transition. After all executions have completed or been deleted,
-the state machine itself will be deleted.
+Deletes a state machine. This is an asynchronous operation: It sets the
+state machine's status to C<DELETING> and begins the deletion process.
+Each state machine execution is deleted the next time it makes a state
+transition.
+
+The state machine itself is deleted after all executions are completed
+or deleted.
 
 
 =head2 DescribeActivity(ActivityArn => Str)
@@ -324,6 +336,15 @@ Returns: a L<Paws::StepFunctions::DescribeStateMachineOutput> instance
 Describes a state machine.
 
 
+=head2 DescribeStateMachineForExecution(ExecutionArn => Str)
+
+Each argument is described in detail in: L<Paws::StepFunctions::DescribeStateMachineForExecution>
+
+Returns: a L<Paws::StepFunctions::DescribeStateMachineForExecutionOutput> instance
+
+Describes the state machine associated with a specific execution.
+
+
 =head2 GetActivityTask(ActivityArn => Str, [WorkerName => Str])
 
 Each argument is described in detail in: L<Paws::StepFunctions::GetActivityTask>
@@ -336,8 +357,7 @@ initiates a long poll, where the service holds the HTTP connection open
 and responds as soon as a task becomes available (i.e. an execution of
 a task of this type is needed.) The maximum time the service holds on
 to the request before responding is 60 seconds. If no task is available
-within 60 seconds, the poll will return a C<taskToken> with a null
-string.
+within 60 seconds, the poll returns a C<taskToken> with a null string.
 
 Workers should set their client side socket timeout to at least 65
 seconds (5 seconds higher than the maximum time the service may hold
@@ -353,9 +373,12 @@ Returns: a L<Paws::StepFunctions::GetExecutionHistoryOutput> instance
 Returns the history of the specified execution as a list of events. By
 default, the results are returned in ascending order of the
 C<timeStamp> of the events. Use the C<reverseOrder> parameter to get
-the latest events first. The results may be split into multiple pages.
-To retrieve subsequent pages, make the call again using the
-C<nextToken> returned by the previous call.
+the latest events first.
+
+If a C<nextToken> is returned by a previous call, there are more
+results available. To retrieve the next page of results, make the call
+again using the returned token in C<nextToken>. Keep all other
+arguments unchanged.
 
 
 =head2 ListActivities([MaxResults => Int, NextToken => Str])
@@ -364,9 +387,12 @@ Each argument is described in detail in: L<Paws::StepFunctions::ListActivities>
 
 Returns: a L<Paws::StepFunctions::ListActivitiesOutput> instance
 
-Lists the existing activities. The results may be split into multiple
-pages. To retrieve subsequent pages, make the call again using the
-C<nextToken> returned by the previous call.
+Lists the existing activities.
+
+If a C<nextToken> is returned by a previous call, there are more
+results available. To retrieve the next page of results, make the call
+again using the returned token in C<nextToken>. Keep all other
+arguments unchanged.
 
 
 =head2 ListExecutions(StateMachineArn => Str, [MaxResults => Int, NextToken => Str, StatusFilter => Str])
@@ -376,9 +402,12 @@ Each argument is described in detail in: L<Paws::StepFunctions::ListExecutions>
 Returns: a L<Paws::StepFunctions::ListExecutionsOutput> instance
 
 Lists the executions of a state machine that meet the filtering
-criteria. The results may be split into multiple pages. To retrieve
-subsequent pages, make the call again using the C<nextToken> returned
-by the previous call.
+criteria.
+
+If a C<nextToken> is returned by a previous call, there are more
+results available. To retrieve the next page of results, make the call
+again using the returned token in C<nextToken>. Keep all other
+arguments unchanged.
 
 
 =head2 ListStateMachines([MaxResults => Int, NextToken => Str])
@@ -387,9 +416,12 @@ Each argument is described in detail in: L<Paws::StepFunctions::ListStateMachine
 
 Returns: a L<Paws::StepFunctions::ListStateMachinesOutput> instance
 
-Lists the existing state machines. The results may be split into
-multiple pages. To retrieve subsequent pages, make the call again using
-the C<nextToken> returned by the previous call.
+Lists the existing state machines.
+
+If a C<nextToken> is returned by a previous call, there are more
+results available. To retrieve the next page of results, make the call
+again using the returned token in C<nextToken>. Keep all other
+arguments unchanged.
 
 
 =head2 SendTaskFailure(TaskToken => Str, [Cause => Str, Error => Str])
@@ -413,8 +445,8 @@ the specified C<taskToken> is still making progress. This action resets
 the C<Heartbeat> clock. The C<Heartbeat> threshold is specified in the
 state machine's Amazon States Language definition. This action does not
 in itself create an event in the execution history. However, if the
-task times out, the execution history will contain an
-C<ActivityTimedOut> event.
+task times out, the execution history contains an C<ActivityTimedOut>
+event.
 
 The C<Timeout> of a task, defined in the state machine's Amazon States
 Language definition, is its maximum allowed duration, regardless of the
@@ -450,6 +482,24 @@ Each argument is described in detail in: L<Paws::StepFunctions::StopExecution>
 Returns: a L<Paws::StepFunctions::StopExecutionOutput> instance
 
 Stops an execution.
+
+
+=head2 UpdateStateMachine(StateMachineArn => Str, [Definition => Str, RoleArn => Str])
+
+Each argument is described in detail in: L<Paws::StepFunctions::UpdateStateMachine>
+
+Returns: a L<Paws::StepFunctions::UpdateStateMachineOutput> instance
+
+Updates an existing state machine by modifying its C<definition> and/or
+C<roleArn>. Running executions will continue to use the previous
+C<definition> and C<roleArn>.
+
+All C<StartExecution> calls within a few seconds will use the updated
+C<definition> and C<roleArn>. Executions started immediately after
+calling C<UpdateStateMachine> may use the previous state machine
+C<definition> and C<roleArn>. You must include at least one of
+C<definition> or C<roleArn> or you will receive a
+C<MissingRequiredParameter> error.
 
 
 

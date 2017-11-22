@@ -44,8 +44,8 @@ The Amazon Resource Name (ARN) of the activity to retrieve tasks from
 =head2 WorkerName => Str
 
 You can provide an arbitrary name in order to identify the worker that
-the task is assigned to. This name will be used when it is logged in
-the execution history.
+the task is assigned to. This name is used when it is logged in the
+execution history.
 
 
 
