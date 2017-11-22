@@ -3,6 +3,7 @@ package Paws::Route53::HostedZone;
   has CallerReference => (is => 'ro', isa => 'Str', required => 1);
   has Config => (is => 'ro', isa => 'Paws::Route53::HostedZoneConfig');
   has Id => (is => 'ro', isa => 'Str', required => 1);
+  has LinkedService => (is => 'ro', isa => 'Paws::Route53::LinkedService');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has ResourceRecordSetCount => (is => 'ro', isa => 'Int');
 1;
@@ -58,6 +59,13 @@ appear in the response.
 
   The ID that Amazon Route 53 assigned to the hosted zone when you
 created it.
+
+
+=head2 LinkedService => L<Paws::Route53::LinkedService>
+
+  If the hosted zone was created by another service, the service that
+created the hosted zone. When a hosted zone is created by another
+service, you can't edit or delete it using Amazon Route 53.
 
 
 =head2 B<REQUIRED> Name => Str

@@ -396,9 +396,9 @@ endpoint from.
 
 =head2 ResetElements => ArrayRef[Str|Undef]
 
-A complex type that contains one C<ResetElement> element for each
-element that you want to reset to the default value. Valid values for
-C<ResetElement> include the following:
+A complex type that contains one C<ResettableElementName> element for
+each element that you want to reset to the default value. Valid values
+for C<ResettableElementName> include the following:
 
 =over
 
