@@ -62,7 +62,7 @@ Describes the metadata of the user.
 
 =head2 Username => Str
 
-  The username of the user.
+  The name of the user.
 
 
 

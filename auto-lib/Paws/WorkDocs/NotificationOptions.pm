@@ -1,14 +1,14 @@
-package Paws::WorkDocs::Participants;
+package Paws::WorkDocs::NotificationOptions;
   use Moose;
-  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::WorkDocs::GroupMetadata]');
-  has Users => (is => 'ro', isa => 'ArrayRef[Paws::WorkDocs::UserMetadata]');
+  has EmailMessage => (is => 'ro', isa => 'Str');
+  has SendEmail => (is => 'ro', isa => 'Bool');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::WorkDocs::Participants
+Paws::WorkDocs::NotificationOptions
 
 =head1 USAGE
 
@@ -19,32 +19,33 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::WorkDocs::Participants object:
+As an example, if Att1 is expected to be a Paws::WorkDocs::NotificationOptions object:
 
-  $service_obj->Method(Att1 => { Groups => $value, ..., Users => $value  });
+  $service_obj->Method(Att1 => { EmailMessage => $value, ..., SendEmail => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::WorkDocs::Participants object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::WorkDocs::NotificationOptions object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Groups
+  $result->Att1->EmailMessage
 
 =head1 DESCRIPTION
 
-Describes the users or user groups.
+Set of options which defines notification preferences of given action.
 
 =head1 ATTRIBUTES
 
 
-=head2 Groups => ArrayRef[L<Paws::WorkDocs::GroupMetadata>]
+=head2 EmailMessage => Str
 
-  The list of user groups.
+  Text value to be included in the email body.
 
 
-=head2 Users => ArrayRef[L<Paws::WorkDocs::UserMetadata>]
+=head2 SendEmail => Bool
 
-  The list of users.
+  Boolean value to indicate an email notification should be sent to the
+receipients.
 
 
 

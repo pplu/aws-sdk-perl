@@ -47,7 +47,7 @@ Describes the metadata of a comment.
 
 =head2 CommentStatus => Str
 
-  
+  The status of the comment.
 
 
 =head2 Contributor => L<Paws::WorkDocs::User>
@@ -57,7 +57,7 @@ Describes the metadata of a comment.
 
 =head2 CreatedTimestamp => Str
 
-  
+  The timestamp that the comment was created.
 
 
 =head2 RecipientId => Str

@@ -36,7 +36,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AuthenticationToken => Str
 
-Amazon WorkDocs authentication token.
+Amazon WorkDocs authentication token. Do not set this field when using
+administrative API actions, as in accessing the API using AWS
+credentials.
 
 
 

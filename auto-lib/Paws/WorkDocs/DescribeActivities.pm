@@ -42,15 +42,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AuthenticationToken => Str
 
-Amazon WorkDocs authentication token. This field should not be set when
-using administrative API actions, as in accessing the API using AWS
+Amazon WorkDocs authentication token. Do not set this field when using
+administrative API actions, as in accessing the API using AWS
 credentials.
 
 
 
 =head2 EndTime => Str
 
-The timestamp that determines the end time of the activities; the
+The timestamp that determines the end time of the activities. The
 response includes the activities performed before the specified
 timestamp.
 
@@ -64,8 +64,7 @@ The maximum number of items to return.
 
 =head2 Marker => Str
 
-The marker for the next set of results. (You received this marker from
-a previous call.)
+The marker for the next set of results.
 
 
 
@@ -78,7 +77,7 @@ administrative API (SigV4) requests.
 
 =head2 StartTime => Str
 
-The timestamp that determines the starting time of the activities; the
+The timestamp that determines the starting time of the activities. The
 response includes the activities performed after the specified
 timestamp.
 

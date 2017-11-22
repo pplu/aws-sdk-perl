@@ -53,7 +53,7 @@ The ID of the organization.
 =head2 B<REQUIRED> Protocol => Str
 
 The protocol to use. The supported value is https, which delivers
-JSON-encoded messasges using HTTPS POST.
+JSON-encoded messages using HTTPS POST.
 
 Valid values are: C<"HTTPS">
 

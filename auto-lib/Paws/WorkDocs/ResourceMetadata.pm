@@ -54,7 +54,7 @@ Describes the metadata of a resource.
 
 =head2 OriginalName => Str
 
-  The original name of the resource prior to a rename operation.
+  The original name of the resource before a rename operation.
 
 
 =head2 Owner => L<Paws::WorkDocs::UserMetadata>

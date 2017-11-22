@@ -123,6 +123,11 @@ package Paws::WorkDocs;
     my $call_object = $self->new_with_coercions('Paws::WorkDocs::DescribeFolderContents', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkDocs::DescribeGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeNotificationSubscriptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkDocs::DescribeNotificationSubscriptions', @_);
@@ -283,7 +288,7 @@ package Paws::WorkDocs;
   }
 
 
-  sub operations { qw/AbortDocumentVersionUpload ActivateUser AddResourcePermissions CreateComment CreateCustomMetadata CreateFolder CreateLabels CreateNotificationSubscription CreateUser DeactivateUser DeleteComment DeleteCustomMetadata DeleteDocument DeleteFolder DeleteFolderContents DeleteLabels DeleteNotificationSubscription DeleteUser DescribeActivities DescribeComments DescribeDocumentVersions DescribeFolderContents DescribeNotificationSubscriptions DescribeResourcePermissions DescribeRootFolders DescribeUsers GetCurrentUser GetDocument GetDocumentPath GetDocumentVersion GetFolder GetFolderPath InitiateDocumentVersionUpload RemoveAllResourcePermissions RemoveResourcePermission UpdateDocument UpdateDocumentVersion UpdateFolder UpdateUser / }
+  sub operations { qw/AbortDocumentVersionUpload ActivateUser AddResourcePermissions CreateComment CreateCustomMetadata CreateFolder CreateLabels CreateNotificationSubscription CreateUser DeactivateUser DeleteComment DeleteCustomMetadata DeleteDocument DeleteFolder DeleteFolderContents DeleteLabels DeleteNotificationSubscription DeleteUser DescribeActivities DescribeComments DescribeDocumentVersions DescribeFolderContents DescribeGroups DescribeNotificationSubscriptions DescribeResourcePermissions DescribeRootFolders DescribeUsers GetCurrentUser GetDocument GetDocumentPath GetDocumentVersion GetFolder GetFolderPath InitiateDocumentVersionUpload RemoveAllResourcePermissions RemoveResourcePermission UpdateDocument UpdateDocumentVersion UpdateFolder UpdateUser / }
 
 1;
 
@@ -318,7 +323,7 @@ The WorkDocs API is designed for the following use cases:
 =item *
 
 File Migration: File migration applications are supported for users who
-want to migrate their files from an on-premise or off-premise file
+want to migrate their files from an on-premises or off-premises file
 system or service. Users can insert files into a user directory
 structure, as well as allow for basic metadata changes, such as
 modifications to the permissions of files.
@@ -326,34 +331,34 @@ modifications to the permissions of files.
 =item *
 
 Security: Support security applications are supported for users who
-have additional security needs, such as anti-virus or data loss
-prevention. The APIs, in conjunction with Amazon CloudTrail, allow
-these applications to detect when changes occur in Amazon WorkDocs, so
-the application can take the necessary actions and replace the target
-file. The application can also choose to email the user if the target
-file violates the policy.
+have additional security needs, such as antivirus or data loss
+prevention. The API actions, along with AWS CloudTrail, allow these
+applications to detect when changes occur in Amazon WorkDocs. Then, the
+application can take the necessary actions and replace the target file.
+If the target file violates the policy, the application can also choose
+to email the user.
 
 =item *
 
 eDiscovery/Analytics: General administrative applications are
 supported, such as eDiscovery and analytics. These applications can
-choose to mimic and/or record the actions in an Amazon WorkDocs site,
-in conjunction with Amazon CloudTrails, to replicate data for
-eDiscovery, backup, or analytical applications.
+choose to mimic or record the actions in an Amazon WorkDocs site, along
+with AWS CloudTrail, to replicate data for eDiscovery, backup, or
+analytical applications.
 
 =back
 
-All Amazon WorkDocs APIs are Amazon authenticated, certificate-signed
-APIs. They not only require the use of the AWS SDK, but also allow for
-the exclusive use of IAM users and roles to help facilitate access,
-trust, and permission policies. By creating a role and allowing an IAM
-user to access the Amazon WorkDocs site, the IAM user gains full
-administrative visibility into the entire Amazon WorkDocs site (or as
-set in the IAM policy). This includes, but is not limited to, the
-ability to modify file permissions and upload any file to any user.
-This allows developers to perform the three use cases above, as well as
-give users the ability to grant access on a selective basis using the
-IAM model.
+All Amazon WorkDocs API actions are Amazon authenticated and
+certificate-signed. They not only require the use of the AWS SDK, but
+also allow for the exclusive use of IAM users and roles to help
+facilitate access, trust, and permission policies. By creating a role
+and allowing an IAM user to access the Amazon WorkDocs site, the IAM
+user gains full administrative visibility into the entire Amazon
+WorkDocs site (or as set in the IAM policy). This includes, but is not
+limited to, the ability to modify file permissions and upload any file
+to any user. This allows developers to perform the three use cases
+above, as well as give users the ability to grant access on a selective
+basis using the IAM model.
 
 =head1 METHODS
 
@@ -379,7 +384,7 @@ Activates the specified user. Only active users can access Amazon
 WorkDocs.
 
 
-=head2 AddResourcePermissions(Principals => ArrayRef[L<Paws::WorkDocs::SharePrincipal>], ResourceId => Str, [AuthenticationToken => Str])
+=head2 AddResourcePermissions(Principals => ArrayRef[L<Paws::WorkDocs::SharePrincipal>], ResourceId => Str, [AuthenticationToken => Str, NotificationOptions => L<Paws::WorkDocs::NotificationOptions>])
 
 Each argument is described in detail in: L<Paws::WorkDocs::AddResourcePermissions>
 
@@ -578,6 +583,15 @@ a marker that you can use to request the next set of results. You can
 also request initialized documents.
 
 
+=head2 DescribeGroups(SearchQuery => Str, [AuthenticationToken => Str, Limit => Int, Marker => Str, OrganizationId => Str])
+
+Each argument is described in detail in: L<Paws::WorkDocs::DescribeGroups>
+
+Returns: a L<Paws::WorkDocs::DescribeGroupsResponse> instance
+
+Describes the groups specified by query.
+
+
 =head2 DescribeNotificationSubscriptions(OrganizationId => Str, [Limit => Int, Marker => Str])
 
 Each argument is described in detail in: L<Paws::WorkDocs::DescribeNotificationSubscriptions>
@@ -587,7 +601,7 @@ Returns: a L<Paws::WorkDocs::DescribeNotificationSubscriptionsResponse> instance
 Lists the specified notification subscriptions.
 
 
-=head2 DescribeResourcePermissions(ResourceId => Str, [AuthenticationToken => Str, Limit => Int, Marker => Str])
+=head2 DescribeResourcePermissions(ResourceId => Str, [AuthenticationToken => Str, Limit => Int, Marker => Str, PrincipalId => Str])
 
 Each argument is described in detail in: L<Paws::WorkDocs::DescribeResourcePermissions>
 
@@ -603,9 +617,9 @@ Each argument is described in detail in: L<Paws::WorkDocs::DescribeRootFolders>
 Returns: a L<Paws::WorkDocs::DescribeRootFoldersResponse> instance
 
 Describes the current user's special folders; the C<RootFolder> and the
-C<RecyleBin>. C<RootFolder> is the root of user's files and folders and
-C<RecyleBin> is the root of recycled items. This is not a valid action
-for SigV4 (administrative API) clients.
+C<RecycleBin>. C<RootFolder> is the root of user's files and folders
+and C<RecycleBin> is the root of recycled items. This is not a valid
+action for SigV4 (administrative API) clients.
 
 
 =head2 DescribeUsers([AuthenticationToken => Str, Fields => Str, Include => Str, Limit => Int, Marker => Str, Order => Str, OrganizationId => Str, Query => Str, Sort => Str, UserIds => Str])
@@ -759,7 +773,7 @@ Updates the specified attributes of the specified folder. The user must
 have access to both the folder and its parent folder, if applicable.
 
 
-=head2 UpdateUser(UserId => Str, [AuthenticationToken => Str, GivenName => Str, Locale => Str, StorageRule => L<Paws::WorkDocs::StorageRuleType>, Surname => Str, TimeZoneId => Str, Type => Str])
+=head2 UpdateUser(UserId => Str, [AuthenticationToken => Str, GivenName => Str, GrantPoweruserPrivileges => Str, Locale => Str, StorageRule => L<Paws::WorkDocs::StorageRuleType>, Surname => Str, TimeZoneId => Str, Type => Str])
 
 Each argument is described in detail in: L<Paws::WorkDocs::UpdateUser>
 
