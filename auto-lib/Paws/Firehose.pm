@@ -29,11 +29,6 @@ package Paws::Firehose;
     my $call_object = $self->new_with_coercions('Paws::Firehose::DescribeDeliveryStream', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetKinesisStream {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Firehose::GetKinesisStream', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub ListDeliveryStreams {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Firehose::ListDeliveryStreams', @_);
@@ -57,7 +52,7 @@ package Paws::Firehose;
   
 
 
-  sub operations { qw/CreateDeliveryStream DeleteDeliveryStream DescribeDeliveryStream GetKinesisStream ListDeliveryStreams PutRecord PutRecordBatch UpdateDestination / }
+  sub operations { qw/CreateDeliveryStream DeleteDeliveryStream DescribeDeliveryStream ListDeliveryStreams PutRecord PutRecordBatch UpdateDestination / }
 
 1;
 
@@ -94,7 +89,7 @@ Amazon Redshift.
 
 =head1 METHODS
 
-=head2 CreateDeliveryStream(DeliveryStreamName => Str, [DeliveryStreamType => Str, ElasticsearchDestinationConfiguration => L<Paws::Firehose::ElasticsearchDestinationConfiguration>, ExtendedS3DestinationConfiguration => L<Paws::Firehose::ExtendedS3DestinationConfiguration>, KinesisStreamSourceConfiguration => L<Paws::Firehose::KinesisStreamSourceConfiguration>, RedshiftDestinationConfiguration => L<Paws::Firehose::RedshiftDestinationConfiguration>, S3DestinationConfiguration => L<Paws::Firehose::S3DestinationConfiguration>])
+=head2 CreateDeliveryStream(DeliveryStreamName => Str, [DeliveryStreamType => Str, ElasticsearchDestinationConfiguration => L<Paws::Firehose::ElasticsearchDestinationConfiguration>, ExtendedS3DestinationConfiguration => L<Paws::Firehose::ExtendedS3DestinationConfiguration>, KinesisStreamSourceConfiguration => L<Paws::Firehose::KinesisStreamSourceConfiguration>, RedshiftDestinationConfiguration => L<Paws::Firehose::RedshiftDestinationConfiguration>, S3DestinationConfiguration => L<Paws::Firehose::S3DestinationConfiguration>, SplunkDestinationConfiguration => L<Paws::Firehose::SplunkDestinationConfiguration>])
 
 Each argument is described in detail in: L<Paws::Firehose::CreateDeliveryStream>
 
@@ -204,15 +199,6 @@ Describes the specified delivery stream and gets the status. For
 example, after your delivery stream is created, call
 DescribeDeliveryStream to see if the delivery stream is C<ACTIVE> and
 therefore ready for data to be sent to it.
-
-
-=head2 GetKinesisStream(DeliveryStreamARN => Str)
-
-Each argument is described in detail in: L<Paws::Firehose::GetKinesisStream>
-
-Returns: a L<Paws::Firehose::GetKinesisStreamOutput> instance
-
-
 
 
 =head2 ListDeliveryStreams([DeliveryStreamType => Str, ExclusiveStartDeliveryStreamName => Str, Limit => Int])
@@ -350,7 +336,7 @@ records to the destination. If the destination is unreachable for more
 than 24 hours, the data is no longer available.
 
 
-=head2 UpdateDestination(CurrentDeliveryStreamVersionId => Str, DeliveryStreamName => Str, DestinationId => Str, [ElasticsearchDestinationUpdate => L<Paws::Firehose::ElasticsearchDestinationUpdate>, ExtendedS3DestinationUpdate => L<Paws::Firehose::ExtendedS3DestinationUpdate>, RedshiftDestinationUpdate => L<Paws::Firehose::RedshiftDestinationUpdate>, S3DestinationUpdate => L<Paws::Firehose::S3DestinationUpdate>])
+=head2 UpdateDestination(CurrentDeliveryStreamVersionId => Str, DeliveryStreamName => Str, DestinationId => Str, [ElasticsearchDestinationUpdate => L<Paws::Firehose::ElasticsearchDestinationUpdate>, ExtendedS3DestinationUpdate => L<Paws::Firehose::ExtendedS3DestinationUpdate>, RedshiftDestinationUpdate => L<Paws::Firehose::RedshiftDestinationUpdate>, S3DestinationUpdate => L<Paws::Firehose::S3DestinationUpdate>, SplunkDestinationUpdate => L<Paws::Firehose::SplunkDestinationUpdate>])
 
 Each argument is described in detail in: L<Paws::Firehose::UpdateDestination>
 

@@ -66,7 +66,8 @@ The name of the delivery stream to start the list with.
 
 =head2 Limit => Int
 
-The maximum number of delivery streams to list.
+The maximum number of delivery streams to list. The default value is
+10.
 
 
 
