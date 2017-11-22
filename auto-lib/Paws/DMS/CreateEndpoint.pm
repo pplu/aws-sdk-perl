@@ -50,7 +50,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CertificateArn => Str
 
-The Amazon Resource Number (ARN) for the certificate.
+The Amazon Resource Name (ARN) for the certificate.
 
 
 
