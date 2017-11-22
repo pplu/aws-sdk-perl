@@ -1,6 +1,7 @@
 
 package Paws::Lightsail::CreateInstancesFromSnapshot;
   use Moose;
+  has AttachedDiskMapping => (is => 'ro', isa => 'Paws::Lightsail::AttachedDiskMap', traits => ['NameInRequest'], request_name => 'attachedDiskMapping' );
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' , required => 1);
   has BundleId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bundleId' , required => 1);
   has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceNames' , required => 1);
@@ -38,10 +39,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AttachedDiskMapping => L<Paws::Lightsail::AttachedDiskMap>
+
+An object containing information about one or more disk mappings.
+
+
+
 =head2 B<REQUIRED> AvailabilityZone => Str
 
 The Availability Zone where you want to create your instances. Use the
-following formatting: C<us-east-1a> (case sensitive). You can get a
+following formatting: C<us-east-2a> (case sensitive). You can get a
 list of availability zones by using the get regions
 (http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html)
 operation. Be sure to add the C<include availability zones> parameter

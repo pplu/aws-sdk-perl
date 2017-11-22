@@ -1,13 +1,15 @@
-package Paws::Lightsail::StaticIp;
+package Paws::Lightsail::DiskSnapshot;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has AttachedTo => (is => 'ro', isa => 'Str', request_name => 'attachedTo', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has IpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest']);
-  has IsAttached => (is => 'ro', isa => 'Bool', request_name => 'isAttached', traits => ['NameInRequest']);
+  has FromDiskArn => (is => 'ro', isa => 'Str', request_name => 'fromDiskArn', traits => ['NameInRequest']);
+  has FromDiskName => (is => 'ro', isa => 'Str', request_name => 'fromDiskName', traits => ['NameInRequest']);
   has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', request_name => 'location', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest']);
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
+  has SizeInGb => (is => 'ro', isa => 'Int', request_name => 'sizeInGb', traits => ['NameInRequest']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has SupportCode => (is => 'ro', isa => 'Str', request_name => 'supportCode', traits => ['NameInRequest']);
 1;
 
@@ -15,7 +17,7 @@ package Paws::Lightsail::StaticIp;
 
 =head1 NAME
 
-Paws::Lightsail::StaticIp
+Paws::Lightsail::DiskSnapshot
 
 =head1 USAGE
 
@@ -26,64 +28,75 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Lightsail::StaticIp object:
+As an example, if Att1 is expected to be a Paws::Lightsail::DiskSnapshot object:
 
   $service_obj->Method(Att1 => { Arn => $value, ..., SupportCode => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Lightsail::StaticIp object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Lightsail::DiskSnapshot object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Arn
 
 =head1 DESCRIPTION
 
-Describes the static IP.
+Describes a block storage disk snapshot.
 
 =head1 ATTRIBUTES
 
 
 =head2 Arn => Str
 
-  The Amazon Resource Name (ARN) of the static IP (e.g.,
-C<arn:aws:lightsail:us-east-2:123456789101:StaticIp/9cbb4a9e-f8e3-4dfe-b57e-12345EXAMPLE>).
-
-
-=head2 AttachedTo => Str
-
-  The instance where the static IP is attached (e.g.,
-C<Amazon_Linux-1GB-Ohio-1>).
+  The Amazon Resource Name (ARN) of the disk snapshot.
 
 
 =head2 CreatedAt => Str
 
-  The timestamp when the static IP was created (e.g., C<1479735304.222>).
+  The date when the disk snapshot was created.
 
 
-=head2 IpAddress => Str
+=head2 FromDiskArn => Str
 
-  The static IP address.
+  The Amazon Resource Name (ARN) of the source disk from which you are
+creating the disk snapshot.
 
 
-=head2 IsAttached => Bool
+=head2 FromDiskName => Str
 
-  A Boolean value indicating whether the static IP is attached.
+  The unique name of the source disk from which you are creating the disk
+snapshot.
 
 
 =head2 Location => L<Paws::Lightsail::ResourceLocation>
 
-  The region and Availability Zone where the static IP was created.
+  The AWS Region and Availability Zone where the disk snapshot was
+created.
 
 
 =head2 Name => Str
 
-  The name of the static IP (e.g., C<StaticIP-Ohio-EXAMPLE>).
+  The name of the disk snapshot (e.g., C<my-disk-snapshot>).
+
+
+=head2 Progress => Str
+
+  The progress of the disk snapshot operation.
 
 
 =head2 ResourceType => Str
 
-  The resource type (usually C<StaticIp>).
+  The Lightsail resource type (e.g., C<DiskSnapshot>).
+
+
+=head2 SizeInGb => Int
+
+  The size of the disk in GB.
+
+
+=head2 State => Str
+
+  The status of the disk snapshot operation.
 
 
 =head2 SupportCode => Str

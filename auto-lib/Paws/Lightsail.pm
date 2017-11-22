@@ -19,6 +19,11 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::AllocateStaticIp', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AttachDisk {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::AttachDisk', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AttachStaticIp {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::AttachStaticIp', @_);
@@ -27,6 +32,21 @@ package Paws::Lightsail;
   sub CloseInstancePublicPorts {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::CloseInstancePublicPorts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateDisk {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::CreateDisk', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateDiskFromSnapshot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::CreateDiskFromSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateDiskSnapshot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::CreateDiskSnapshot', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateDomain {
@@ -59,6 +79,16 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::CreateKeyPair', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteDisk {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteDisk', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteDiskSnapshot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteDiskSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDomain {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteDomain', @_);
@@ -84,6 +114,11 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteKeyPair', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DetachDisk {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::DetachDisk', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DetachStaticIp {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::DetachStaticIp', @_);
@@ -107,6 +142,26 @@ package Paws::Lightsail;
   sub GetBundles {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::GetBundles', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetDisk {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetDisk', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetDisks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetDisks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetDiskSnapshot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetDiskSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetDiskSnapshots {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetDiskSnapshots', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetDomain {
@@ -464,7 +519,7 @@ package Paws::Lightsail;
   }
 
 
-  sub operations { qw/AllocateStaticIp AttachStaticIp CloseInstancePublicPorts CreateDomain CreateDomainEntry CreateInstances CreateInstancesFromSnapshot CreateInstanceSnapshot CreateKeyPair DeleteDomain DeleteDomainEntry DeleteInstance DeleteInstanceSnapshot DeleteKeyPair DetachStaticIp DownloadDefaultKeyPair GetActiveNames GetBlueprints GetBundles GetDomain GetDomains GetInstance GetInstanceAccessDetails GetInstanceMetricData GetInstancePortStates GetInstances GetInstanceSnapshot GetInstanceSnapshots GetInstanceState GetKeyPair GetKeyPairs GetOperation GetOperations GetOperationsForResource GetRegions GetStaticIp GetStaticIps ImportKeyPair IsVpcPeered OpenInstancePublicPorts PeerVpc PutInstancePublicPorts RebootInstance ReleaseStaticIp StartInstance StopInstance UnpeerVpc UpdateDomainEntry / }
+  sub operations { qw/AllocateStaticIp AttachDisk AttachStaticIp CloseInstancePublicPorts CreateDisk CreateDiskFromSnapshot CreateDiskSnapshot CreateDomain CreateDomainEntry CreateInstances CreateInstancesFromSnapshot CreateInstanceSnapshot CreateKeyPair DeleteDisk DeleteDiskSnapshot DeleteDomain DeleteDomainEntry DeleteInstance DeleteInstanceSnapshot DeleteKeyPair DetachDisk DetachStaticIp DownloadDefaultKeyPair GetActiveNames GetBlueprints GetBundles GetDisk GetDisks GetDiskSnapshot GetDiskSnapshots GetDomain GetDomains GetInstance GetInstanceAccessDetails GetInstanceMetricData GetInstancePortStates GetInstances GetInstanceSnapshot GetInstanceSnapshots GetInstanceState GetKeyPair GetKeyPairs GetOperation GetOperations GetOperationsForResource GetRegions GetStaticIp GetStaticIps ImportKeyPair IsVpcPeered OpenInstancePublicPorts PeerVpc PutInstancePublicPorts RebootInstance ReleaseStaticIp StartInstance StopInstance UnpeerVpc UpdateDomainEntry / }
 
 1;
 
@@ -519,6 +574,16 @@ Returns: a L<Paws::Lightsail::AllocateStaticIpResult> instance
 Allocates a static IP address.
 
 
+=head2 AttachDisk(DiskName => Str, DiskPath => Str, InstanceName => Str)
+
+Each argument is described in detail in: L<Paws::Lightsail::AttachDisk>
+
+Returns: a L<Paws::Lightsail::AttachDiskResult> instance
+
+Attaches a block storage disk to a running or stopped Lightsail
+instance and exposes it to the instance with the specified disk name.
+
+
 =head2 AttachStaticIp(InstanceName => Str, StaticIpName => Str)
 
 Each argument is described in detail in: L<Paws::Lightsail::AttachStaticIp>
@@ -535,6 +600,55 @@ Each argument is described in detail in: L<Paws::Lightsail::CloseInstancePublicP
 Returns: a L<Paws::Lightsail::CloseInstancePublicPortsResult> instance
 
 Closes the public ports on a specific Amazon Lightsail instance.
+
+
+=head2 CreateDisk(AvailabilityZone => Str, DiskName => Str, SizeInGb => Int)
+
+Each argument is described in detail in: L<Paws::Lightsail::CreateDisk>
+
+Returns: a L<Paws::Lightsail::CreateDiskResult> instance
+
+Creates a block storage disk that can be attached to a Lightsail
+instance in the same Availability Zone (e.g., C<us-east-2a>). The disk
+is created in the regional endpoint that you send the HTTP request to.
+For more information, see Regions and Availability Zones in Lightsail
+(https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail).
+
+
+=head2 CreateDiskFromSnapshot(AvailabilityZone => Str, DiskName => Str, DiskSnapshotName => Str, SizeInGb => Int)
+
+Each argument is described in detail in: L<Paws::Lightsail::CreateDiskFromSnapshot>
+
+Returns: a L<Paws::Lightsail::CreateDiskFromSnapshotResult> instance
+
+Creates a block storage disk from a disk snapshot that can be attached
+to a Lightsail instance in the same Availability Zone (e.g.,
+C<us-east-2a>). The disk is created in the regional endpoint that you
+send the HTTP request to. For more information, see Regions and
+Availability Zones in Lightsail
+(https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail).
+
+
+=head2 CreateDiskSnapshot(DiskName => Str, DiskSnapshotName => Str)
+
+Each argument is described in detail in: L<Paws::Lightsail::CreateDiskSnapshot>
+
+Returns: a L<Paws::Lightsail::CreateDiskSnapshotResult> instance
+
+Creates a snapshot of a block storage disk. You can use snapshots for
+backups, to make copies of disks, and to save data before shutting down
+a Lightsail instance.
+
+You can take a snapshot of an attached disk that is in use; however,
+snapshots only capture data that has been written to your disk at the
+time the snapshot command is issued. This may exclude any data that has
+been cached by any applications or the operating system. If you can
+pause any file systems on the disk long enough to take a snapshot, your
+snapshot should be complete. Nevertheless, if you cannot pause all file
+writes to the disk, you should unmount the disk from within the
+Lightsail instance, issue the create disk snapshot command, and then
+remount the disk to ensure a consistent and complete snapshot. You may
+remount and use your disk while the snapshot status is pending.
 
 
 =head2 CreateDomain(DomainName => Str)
@@ -566,7 +680,7 @@ Creates one or more Amazon Lightsail virtual private servers, or
 I<instances>.
 
 
-=head2 CreateInstancesFromSnapshot(AvailabilityZone => Str, BundleId => Str, InstanceNames => ArrayRef[Str|Undef], InstanceSnapshotName => Str, [KeyPairName => Str, UserData => Str])
+=head2 CreateInstancesFromSnapshot(AvailabilityZone => Str, BundleId => Str, InstanceNames => ArrayRef[Str|Undef], InstanceSnapshotName => Str, [AttachedDiskMapping => L<Paws::Lightsail::AttachedDiskMap>, KeyPairName => Str, UserData => Str])
 
 Each argument is described in detail in: L<Paws::Lightsail::CreateInstancesFromSnapshot>
 
@@ -594,6 +708,35 @@ Each argument is described in detail in: L<Paws::Lightsail::CreateKeyPair>
 Returns: a L<Paws::Lightsail::CreateKeyPairResult> instance
 
 Creates sn SSH key pair.
+
+
+=head2 DeleteDisk(DiskName => Str)
+
+Each argument is described in detail in: L<Paws::Lightsail::DeleteDisk>
+
+Returns: a L<Paws::Lightsail::DeleteDiskResult> instance
+
+Deletes the specified block storage disk. The disk must be in the
+C<available> state (not attached to a Lightsail instance).
+
+The disk may remain in the C<deleting> state for several minutes.
+
+
+=head2 DeleteDiskSnapshot(DiskSnapshotName => Str)
+
+Each argument is described in detail in: L<Paws::Lightsail::DeleteDiskSnapshot>
+
+Returns: a L<Paws::Lightsail::DeleteDiskSnapshotResult> instance
+
+Deletes the specified disk snapshot.
+
+When you make periodic snapshots of a disk, the snapshots are
+incremental, and only the blocks on the device that have changed since
+your last snapshot are saved in the new snapshot. When you delete a
+snapshot, only the data not needed for any other snapshot is removed.
+So regardless of which prior snapshots have been deleted, all active
+snapshots will have access to all the information needed to restore the
+disk.
 
 
 =head2 DeleteDomain(DomainName => Str)
@@ -641,6 +784,17 @@ Each argument is described in detail in: L<Paws::Lightsail::DeleteKeyPair>
 Returns: a L<Paws::Lightsail::DeleteKeyPairResult> instance
 
 Deletes a specific SSH key pair.
+
+
+=head2 DetachDisk(DiskName => Str)
+
+Each argument is described in detail in: L<Paws::Lightsail::DetachDisk>
+
+Returns: a L<Paws::Lightsail::DetachDiskResult> instance
+
+Detaches a stopped block storage disk from a Lightsail instance. Make
+sure to unmount any file systems on the device within your operating
+system before stopping the instance and detaching the disk.
 
 
 =head2 DetachStaticIp(StaticIpName => Str)
@@ -692,6 +846,52 @@ Returns: a L<Paws::Lightsail::GetBundlesResult> instance
 
 Returns the list of bundles that are available for purchase. A bundle
 describes the specs for your virtual private server (or I<instance>).
+
+
+=head2 GetDisk(DiskName => Str)
+
+Each argument is described in detail in: L<Paws::Lightsail::GetDisk>
+
+Returns: a L<Paws::Lightsail::GetDiskResult> instance
+
+Returns information about a specific block storage disk.
+
+
+=head2 GetDisks([PageToken => Str])
+
+Each argument is described in detail in: L<Paws::Lightsail::GetDisks>
+
+Returns: a L<Paws::Lightsail::GetDisksResult> instance
+
+Returns information about all block storage disks in your AWS account
+and region.
+
+If you are describing a long list of disks, you can paginate the output
+to make the list more manageable. You can use the pageToken and
+nextPageToken values to retrieve the next items in the list.
+
+
+=head2 GetDiskSnapshot(DiskSnapshotName => Str)
+
+Each argument is described in detail in: L<Paws::Lightsail::GetDiskSnapshot>
+
+Returns: a L<Paws::Lightsail::GetDiskSnapshotResult> instance
+
+Returns information about a specific block storage disk snapshot.
+
+
+=head2 GetDiskSnapshots([PageToken => Str])
+
+Each argument is described in detail in: L<Paws::Lightsail::GetDiskSnapshots>
+
+Returns: a L<Paws::Lightsail::GetDiskSnapshotsResult> instance
+
+Returns information about all block storage disk snapshots in your AWS
+account and region.
+
+If you are describing a long list of disk snapshots, you can paginate
+the output to make the list more manageable. You can use the pageToken
+and nextPageToken values to retrieve the next items in the list.
 
 
 =head2 GetDomain(DomainName => Str)
@@ -951,7 +1151,7 @@ Starts a specific Amazon Lightsail instance from a stopped state. To
 restart an instance, use the reboot instance operation.
 
 
-=head2 StopInstance(InstanceName => Str)
+=head2 StopInstance(InstanceName => Str, [Force => Bool])
 
 Each argument is described in detail in: L<Paws::Lightsail::StopInstance>
 

@@ -42,7 +42,7 @@ Describes the AWS Region.
 
 =head2 AvailabilityZones => ArrayRef[L<Paws::Lightsail::AvailabilityZone>]
 
-  The Availability Zones. Follows the format C<us-east-1a>
+  The Availability Zones. Follows the format C<us-east-2a>
 (case-sensitive).
 
 
@@ -59,12 +59,12 @@ to serve users in the eastern United States and eastern Canada>).
 
 =head2 DisplayName => Str
 
-  The display name (e.g., C<Virginia>).
+  The display name (e.g., C<Ohio>).
 
 
 =head2 Name => Str
 
-  The region name (e.g., C<us-east-1>).
+  The region name (e.g., C<us-east-2>).
 
 
 

@@ -39,7 +39,7 @@ Describes the resource location.
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone. Follows the format C<us-east-1a>
+  The Availability Zone. Follows the format C<us-east-2a>
 (case-sensitive).
 
 

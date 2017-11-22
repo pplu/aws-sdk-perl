@@ -13,6 +13,7 @@ package Paws::Lightsail::Disk;
   has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest']);
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
   has SizeInGb => (is => 'ro', isa => 'Int', request_name => 'sizeInGb', traits => ['NameInRequest']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has SupportCode => (is => 'ro', isa => 'Str', request_name => 'supportCode', traits => ['NameInRequest']);
 1;
 
@@ -44,7 +45,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lightsail::
 
 =head1 DESCRIPTION
 
-Describes the hard disk (an SSD).
+Describes a system disk or an block storage disk.
 
 =head1 ATTRIBUTES
 
@@ -61,7 +62,11 @@ Describes the hard disk (an SSD).
 
 =head2 AttachmentState => Str
 
-  The attachment state of the disk.
+  (Deprecated) The attachment state of the disk.
+
+In releases prior to November 9, 2017, this parameter returned
+C<attached> for system disks in the API response. It is now deprecated,
+but still included in the response. Use C<isAttached> instead.
 
 
 =head2 CreatedAt => Str
@@ -71,7 +76,10 @@ Describes the hard disk (an SSD).
 
 =head2 GbInUse => Int
 
-  The number of GB in use by the disk.
+  (Deprecated) The number of GB in use by the disk.
+
+In releases prior to November 9, 2017, this parameter was not included
+in the API response. It is now deprecated.
 
 
 =head2 Iops => Int
@@ -92,12 +100,12 @@ operating system loaded on it).
 
 =head2 Location => L<Paws::Lightsail::ResourceLocation>
 
-  The region and Availability Zone where the disk is located.
+  The AWS Region and Availability Zone where the disk is located.
 
 
 =head2 Name => Str
 
-  The name of the disk.
+  The unique name of the disk.
 
 
 =head2 Path => Str
@@ -107,12 +115,17 @@ operating system loaded on it).
 
 =head2 ResourceType => Str
 
-  The resource type of the disk.
+  The Lightsail resource type (e.g., C<Disk>).
 
 
 =head2 SizeInGb => Int
 
   The size of the disk in GB.
+
+
+=head2 State => Str
+
+  Describes the status of the disk.
 
 
 =head2 SupportCode => Str

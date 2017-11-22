@@ -42,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> AvailabilityZone => Str
 
 The Availability Zone in which to create your instance. Use the
-following format: C<us-east-1a> (case sensitive). You can get a list of
+following format: C<us-east-2a> (case sensitive). You can get a list of
 availability zones by using the get regions
 (http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html)
 operation. Be sure to add the C<include availability zones> parameter
