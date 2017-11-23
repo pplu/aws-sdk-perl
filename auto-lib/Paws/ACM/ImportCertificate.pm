@@ -38,26 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Certificate => Str
 
-The certificate to import. It must meet the following requirements:
-
-=over
-
-=item *
-
-Must be PEM-encoded.
-
-=item *
-
-Must contain a 1024-bit or 2048-bit RSA public key.
-
-=item *
-
-Must be valid at the time of import. You cannot import a certificate
-before its validity period begins (the certificate's C<NotBefore> date)
-or after it expires (the certificate's C<NotAfter> date).
-
-=back
-
+The certificate to import.
 
 
 
@@ -72,28 +53,13 @@ omit this field.
 
 =head2 CertificateChain => Str
 
-The certificate chain. It must be PEM-encoded.
+The PEM encoded certificate chain.
 
 
 
 =head2 B<REQUIRED> PrivateKey => Str
 
-The private key that matches the public key in the certificate. It must
-meet the following requirements:
-
-=over
-
-=item *
-
-Must be PEM-encoded.
-
-=item *
-
-Must be unencrypted. You cannot import a private key that is protected
-by a password or passphrase.
-
-=back
-
+The private key that matches the public key in the certificate.
 
 
 

@@ -163,11 +163,11 @@ Each argument is described in detail in: L<Paws::ACM::DeleteCertificate>
 
 Returns: nothing
 
-Deletes an ACM Certificate and its associated private key. If this
-action succeeds, the certificate no longer appears in the list of ACM
-Certificates that can be displayed by calling the ListCertificates
-action or be retrieved by calling the GetCertificate action. The
-certificate will not be available for use by other AWS services.
+Deletes a certificate and its associated private key. If this action
+succeeds, the certificate no longer appears in the list that can be
+displayed by calling the ListCertificates action or be retrieved by
+calling the GetCertificate action. The certificate will not be
+available for use by AWS services integrated with ACM.
 
 You cannot delete an ACM Certificate that is being used by another AWS
 service. To delete a certificate that is in use, the certificate
@@ -189,13 +189,12 @@ Each argument is described in detail in: L<Paws::ACM::GetCertificate>
 
 Returns: a L<Paws::ACM::GetCertificateResponse> instance
 
-Retrieves an ACM Certificate and certificate chain for the certificate
-specified by an ARN. The chain is an ordered list of certificates that
-contains the ACM Certificate, intermediate certificates of subordinate
-CAs, and the root certificate in that order. The certificate and
-certificate chain are base64 encoded. If you want to decode the
-certificate chain to see the individual certificate fields, you can use
-OpenSSL.
+Retrieves a certificate specified by an ARN and its certificate chain .
+The chain is an ordered list of certificates that contains the end
+entity ertificate, intermediate certificates of subordinate CAs, and
+the root certificate in that order. The certificate and certificate
+chain are base64 encoded. If you want to decode the certificate to see
+the individual fields, you can use OpenSSL.
 
 
 =head2 ImportCertificate(Certificate => Str, PrivateKey => Str, [CertificateArn => Str, CertificateChain => Str])
@@ -204,8 +203,9 @@ Each argument is described in detail in: L<Paws::ACM::ImportCertificate>
 
 Returns: a L<Paws::ACM::ImportCertificateResponse> instance
 
-Imports an SSL/TLS certificate into AWS Certificate Manager (ACM) to
-use with ACM's integrated AWS services
+Imports a certificate into AWS Certificate Manager (ACM) to use with
+services that are integrated with ACM. For more information, see
+Integrated Services
 (http://docs.aws.amazon.com/acm/latest/userguide/acm-services.html).
 
 ACM does not provide managed renewal
@@ -218,42 +218,82 @@ provides, see Importing Certificates
 (http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html)
 in the I<AWS Certificate Manager User Guide>.
 
-To import a certificate, you must provide the certificate and the
-matching private key. When the certificate is not self-signed, you must
-also provide a certificate chain. You can omit the certificate chain
-when importing a self-signed certificate.
+In general, you can import almost any valid certificate. However,
+services integrated with ACM allow only certificate types they support
+to be associated with their resources. The following guidelines are
+also important:
+
+=over
+
+=item *
+
+You must enter the private key that matches the certificate you are
+importing.
+
+=item *
+
+The private key must be unencrypted. You cannot import a private key
+that is protected by a password or a passphrase.
+
+=item *
+
+If the certificate you are importing is not self-signed, you must enter
+its certificate chain.
+
+=item *
+
+If a certificate chain is included, the issuer must be the subject of
+one of the certificates in the chain.
+
+=item *
 
 The certificate, private key, and certificate chain must be
-PEM-encoded. For more information about converting these items to PEM
-format, see Importing Certificates Troubleshooting
-(http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html#import-certificate-troubleshooting)
-in the I<AWS Certificate Manager User Guide>.
+PEM-encoded.
+
+=item *
+
+The current time must be between the C<Not Before> and C<Not After>
+certificate fields.
+
+=item *
+
+The C<Issuer> field must not be empty.
+
+=item *
+
+The OCSP authority URL must not exceed 1000 characters.
+
+=item *
 
 To import a new certificate, omit the C<CertificateArn> field. Include
 this field only when you want to replace a previously imported
 certificate.
 
+=item *
+
 When you import a certificate by using the CLI or one of the SDKs, you
-must specify the certificate, chain, and private key parameters as file
-names preceded by C<file://>. For example, you can specify a
-certificate saved in the C<C:\temp> folder as
+must specify the certificate, certificate chain, and private key
+parameters as file names preceded by C<file://>. For example, you can
+specify a certificate saved in the C<C:\temp> folder as
 C<C:\temp\certificate_to_import.pem>. If you are making an HTTP or
 HTTPS Query request, include these parameters as BLOBs.
+
+=back
 
 This operation returns the Amazon Resource Name (ARN)
 (http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 of the imported certificate.
 
 
-=head2 ListCertificates([CertificateStatuses => ArrayRef[Str|Undef], MaxItems => Int, NextToken => Str])
+=head2 ListCertificates([CertificateStatuses => ArrayRef[Str|Undef], Includes => L<Paws::ACM::Filters>, MaxItems => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::ACM::ListCertificates>
 
 Returns: a L<Paws::ACM::ListCertificatesResponse> instance
 
-Retrieves a list of ACM Certificates and the domain name for each. You
-can optionally filter the list to return only the certificates that
-match the specified status.
+Retrieves a list of certificate ARNs and domain names. You can request
+that only certificates that match a specific status be listed. You can
+also filter by specific attributes of the certificate.
 
 
 =head2 ListTagsForCertificate(CertificateArn => Str)
@@ -285,7 +325,7 @@ view all of the tags that have been applied to a specific ACM
 Certificate, use the ListTagsForCertificate action.
 
 
-=head2 RequestCertificate(DomainName => Str, [DomainValidationOptions => ArrayRef[L<Paws::ACM::DomainValidationOption>], IdempotencyToken => Str, SubjectAlternativeNames => ArrayRef[Str|Undef]])
+=head2 RequestCertificate(DomainName => Str, [DomainValidationOptions => ArrayRef[L<Paws::ACM::DomainValidationOption>], IdempotencyToken => Str, SubjectAlternativeNames => ArrayRef[Str|Undef], ValidationMethod => Str])
 
 Each argument is described in detail in: L<Paws::ACM::RequestCertificate>
 
@@ -337,9 +377,9 @@ Configure Email for your Domain
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllCertificates(sub { },[CertificateStatuses => ArrayRef[Str|Undef], MaxItems => Int, NextToken => Str])
+=head2 ListAllCertificates(sub { },[CertificateStatuses => ArrayRef[Str|Undef], Includes => L<Paws::ACM::Filters>, MaxItems => Int, NextToken => Str])
 
-=head2 ListAllCertificates([CertificateStatuses => ArrayRef[Str|Undef], MaxItems => Int, NextToken => Str])
+=head2 ListAllCertificates([CertificateStatuses => ArrayRef[Str|Undef], Includes => L<Paws::ACM::Filters>, MaxItems => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

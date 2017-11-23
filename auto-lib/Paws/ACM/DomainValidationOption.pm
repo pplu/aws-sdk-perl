@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ACM::Domain
 =head1 DESCRIPTION
 
 Contains information about the domain names that you want ACM to use to
-send you emails to validate your ownership of the domain.
+send you emails that enable you to validate domain ownership.
 
 =head1 ATTRIBUTES
 

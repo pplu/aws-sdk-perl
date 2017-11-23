@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> CertificateArn => Str
 
 String that contains the ARN of the ACM Certificate for which you want
-to list the tags. This has the following form:
+to list the tags. This must have the following form:
 
 C<arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012>
 

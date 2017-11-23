@@ -1,8 +1,10 @@
 package Paws::ACM::DomainValidation;
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
+  has ResourceRecord => (is => 'ro', isa => 'Paws::ACM::ResourceRecord');
   has ValidationDomain => (is => 'ro', isa => 'Str');
   has ValidationEmails => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ValidationMethod => (is => 'ro', isa => 'Str');
   has ValidationStatus => (is => 'ro', isa => 'Str');
 1;
 
@@ -46,6 +48,14 @@ certificate.
 C<www.example.com> or C<example.com>.
 
 
+=head2 ResourceRecord => L<Paws::ACM::ResourceRecord>
+
+  Contains the CNAME record that you add to your DNS database for domain
+validation. For more information, see Use DNS to Validate Domain
+Ownership
+(http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html).
+
+
 =head2 ValidationDomain => Str
 
   The domain name that ACM used to send domain validation emails.
@@ -57,9 +67,32 @@ C<www.example.com> or C<example.com>.
 emails.
 
 
+=head2 ValidationMethod => Str
+
+  Specifies the domain validation method.
+
+
 =head2 ValidationStatus => Str
 
-  The validation status of the domain name.
+  The validation status of the domain name. This can be one of the
+following values:
+
+=over
+
+=item *
+
+C<PENDING_VALIDATION>
+
+=item *
+
+C<SUCCESS>
+
+=item *
+
+C<FAILED>
+
+=back
+
 
 
 
