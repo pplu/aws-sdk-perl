@@ -292,6 +292,8 @@ L<Paws::CognitoSync>
 
 L<Paws::Config>
 
+L<Paws::CostExplorer>
+
 L<Paws::CUR>
 
 L<Paws::DataPipeline>

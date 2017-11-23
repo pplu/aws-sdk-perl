@@ -11,6 +11,7 @@ package Paws::API::ServiceToClass;
     appstream => 'AppStream',
     batch => 'Batch',
     budgets => 'Budgets',
+    ce => 'CostExplorer',
     clouddirectory => 'CloudDirectory',
     cloudformation => 'CloudFormation',
     cloudfront => 'CloudFront',
