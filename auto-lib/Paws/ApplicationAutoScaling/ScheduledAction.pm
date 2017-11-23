@@ -96,6 +96,11 @@ DynamoDB global secondary index - The resource type is C<index> and the
 unique identifier is the resource ID. Example:
 C<table/my-table/index/my-table-index>.
 
+=item *
+
+Aurora DB cluster - The resource type is C<cluster> and the unique
+identifier is the cluster name. Example: C<cluster:my-db-cluster>.
+
 =back
 
 
@@ -145,6 +150,11 @@ a DynamoDB global secondary index.
 
 C<dynamodb:index:WriteCapacityUnits> - The provisioned write capacity
 for a DynamoDB global secondary index.
+
+=item *
+
+C<rds:cluster:ReadReplicaCount> - The count of Aurora Replicas in an
+Aurora DB cluster. Available for Aurora MySQL-compatible edition.
 
 =back
 

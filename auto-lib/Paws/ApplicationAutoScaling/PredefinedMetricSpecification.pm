@@ -39,12 +39,35 @@ Configures a predefined metric for a target tracking policy.
 
 =head2 B<REQUIRED> PredefinedMetricType => Str
 
-  The metric type.
+  The metric type. The C<ALBRequestCountPerTarget> metric type applies
+only to Spot fleet requests.
 
 
 =head2 ResourceLabel => Str
 
-  Reserved for future use.
+  Identifies the resource associated with the metric type. You can't
+specify a resource label unless the metric type is
+C<ALBRequestCountPerTarget> and there is a target group attached to the
+Spot fleet request.
+
+The format is
+app/E<lt>load-balancer-nameE<gt>/E<lt>load-balancer-idE<gt>/targetgroup/E<lt>target-group-nameE<gt>/E<lt>target-group-idE<gt>,
+where:
+
+=over
+
+=item *
+
+app/E<lt>load-balancer-nameE<gt>/E<lt>load-balancer-idE<gt> is the
+final portion of the load balancer ARN
+
+=item *
+
+targetgroup/E<lt>target-group-nameE<gt>/E<lt>target-group-idE<gt> is
+the final portion of the target group ARN.
+
+=back
+
 
 
 

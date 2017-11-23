@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 MaxResults => Int
 
-The maximum number of scalable target results. This value can be
+The maximum number of scheduled action results. This value can be
 between 1 and 50. The default value is 50.
 
 If this parameter is used, the operation returns up to C<MaxResults>
@@ -99,6 +99,11 @@ DynamoDB global secondary index - The resource type is C<index> and the
 unique identifier is the resource ID. Example:
 C<table/my-table/index/my-table-index>.
 
+=item *
+
+Aurora DB cluster - The resource type is C<cluster> and the unique
+identifier is the cluster name. Example: C<cluster:my-db-cluster>.
+
 =back
 
 
@@ -151,10 +156,15 @@ a DynamoDB global secondary index.
 C<dynamodb:index:WriteCapacityUnits> - The provisioned write capacity
 for a DynamoDB global secondary index.
 
+=item *
+
+C<rds:cluster:ReadReplicaCount> - The count of Aurora Replicas in an
+Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+
 =back
 
 
-Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">
+Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">, C<"rds:cluster:ReadReplicaCount">
 
 =head2 ScheduledActionNames => ArrayRef[Str|Undef]
 
@@ -169,7 +179,7 @@ Namespaces
 (http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 in the I<Amazon Web Services General Reference>.
 
-Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">
+Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">
 
 
 =head1 SEE ALSO
