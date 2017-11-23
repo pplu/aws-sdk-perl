@@ -4,7 +4,7 @@ package Paws::SSM::DocumentIdentifier;
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Owner => (is => 'ro', isa => 'Str');
-  has PlatformTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'PlatformType', traits => ['NameInRequest']);
+  has PlatformTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SchemaVersion => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
 1;

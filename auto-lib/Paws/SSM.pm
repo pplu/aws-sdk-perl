@@ -846,7 +846,7 @@ Creates a resource data sync configuration to a single bucket in Amazon
 S3. This is an asynchronous operation that returns immediately. After a
 successful initial sync is completed, the system continuously syncs
 data to the Amazon S3 bucket. To check the status of the sync, use the
-ListResourceDataSync operation.
+ListResourceDataSync.
 
 By default, data is not encrypted in Amazon S3. We strongly recommend
 that you enable encryption in Amazon S3 to ensure secure data storage.
@@ -1006,8 +1006,12 @@ Each argument is described in detail in: L<Paws::SSM::DescribeAssociation>
 
 Returns: a L<Paws::SSM::DescribeAssociationResult> instance
 
-Describes the associations for the specified Systems Manager document
-or instance.
+Describes the association for the specified target or instance. If you
+created the association by using the C<Targets> parameter, then you
+must retrieve the association by using the association ID. If you
+created the association by specifying an instance ID and a Systems
+Manager document, then you retrieve the association by specifying the
+document name and the instance ID.
 
 
 =head2 DescribeAutomationExecutions([Filters => ArrayRef[L<Paws::SSM::AutomationExecutionFilter>], MaxResults => Int, NextToken => Str])
@@ -1275,7 +1279,7 @@ Returns: a L<Paws::SSM::GetDocumentResult> instance
 Gets the contents of the specified Systems Manager document.
 
 
-=head2 GetInventory([Filters => ArrayRef[L<Paws::SSM::InventoryFilter>], MaxResults => Int, NextToken => Str, ResultAttributes => ArrayRef[L<Paws::SSM::ResultAttribute>]])
+=head2 GetInventory([Aggregators => ArrayRef[L<Paws::SSM::InventoryAggregator>], Filters => ArrayRef[L<Paws::SSM::InventoryFilter>], MaxResults => Int, NextToken => Str, ResultAttributes => ArrayRef[L<Paws::SSM::ResultAttribute>]])
 
 Each argument is described in detail in: L<Paws::SSM::GetInventory>
 
@@ -1284,7 +1288,7 @@ Returns: a L<Paws::SSM::GetInventoryResult> instance
 Query inventory information.
 
 
-=head2 GetInventorySchema([MaxResults => Int, NextToken => Str, SubType => Bool, TypeName => Str])
+=head2 GetInventorySchema([Aggregator => Bool, MaxResults => Int, NextToken => Str, SubType => Bool, TypeName => Str])
 
 Each argument is described in detail in: L<Paws::SSM::GetInventorySchema>
 

@@ -2,7 +2,7 @@ package Paws::SSM::ComplianceStringFilter;
   use Moose;
   has Key => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'FilterValue', traits => ['NameInRequest']);
+  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
