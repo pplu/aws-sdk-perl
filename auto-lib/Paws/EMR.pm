@@ -410,7 +410,7 @@ can bypass the 256-step limitation in various ways, including using SSH
 to connect to the master node and submitting queries directly to the
 software running on the master node, such as Hive and Hadoop. For more
 information on how to do this, see Add More than 256 Steps to a Cluster
-(http://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/AddMoreThan256Steps.html)
+(http://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html)
 in the I<Amazon EMR Management Guide>.
 
 A step specifies the location of a JAR file stored either on the master
@@ -436,9 +436,9 @@ Returns: a L<Paws::EMR::AddTagsOutput> instance
 
 Adds tags to an Amazon EMR resource. Tags make it easier to associate
 clusters in various ways, such as grouping clusters to track your
-Amazon EMR resource allocation costs. For more information, see Tagging
-Amazon EMR Resources
-(http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html).
+Amazon EMR resource allocation costs. For more information, see Tag
+Clusters
+(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
 
 
 =head2 CancelSteps([ClusterId => Str, StepIds => ArrayRef[Str|Undef]])
@@ -679,14 +679,14 @@ Returns: a L<Paws::EMR::RemoveTagsOutput> instance
 Removes tags from an Amazon EMR resource. Tags make it easier to
 associate clusters in various ways, such as grouping clusters to track
 your Amazon EMR resource allocation costs. For more information, see
-Tagging Amazon EMR Resources
-(http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html).
+Tag Clusters
+(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
 
 The following example removes the stack tag with value Prod from a
 cluster:
 
 
-=head2 RunJobFlow(Instances => L<Paws::EMR::JobFlowInstancesConfig>, Name => Str, [AdditionalInfo => Str, AmiVersion => Str, Applications => ArrayRef[L<Paws::EMR::Application>], AutoScalingRole => Str, BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionConfig>], Configurations => ArrayRef[L<Paws::EMR::Configuration>], CustomAmiId => Str, EbsRootVolumeSize => Int, JobFlowRole => Str, LogUri => Str, NewSupportedProducts => ArrayRef[L<Paws::EMR::SupportedProductConfig>], ReleaseLabel => Str, RepoUpgradeOnBoot => Str, ScaleDownBehavior => Str, SecurityConfiguration => Str, ServiceRole => Str, Steps => ArrayRef[L<Paws::EMR::StepConfig>], SupportedProducts => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::EMR::Tag>], VisibleToAllUsers => Bool])
+=head2 RunJobFlow(Instances => L<Paws::EMR::JobFlowInstancesConfig>, Name => Str, [AdditionalInfo => Str, AmiVersion => Str, Applications => ArrayRef[L<Paws::EMR::Application>], AutoScalingRole => Str, BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionConfig>], Configurations => ArrayRef[L<Paws::EMR::Configuration>], CustomAmiId => Str, EbsRootVolumeSize => Int, JobFlowRole => Str, KerberosAttributes => L<Paws::EMR::KerberosAttributes>, LogUri => Str, NewSupportedProducts => ArrayRef[L<Paws::EMR::SupportedProductConfig>], ReleaseLabel => Str, RepoUpgradeOnBoot => Str, ScaleDownBehavior => Str, SecurityConfiguration => Str, ServiceRole => Str, Steps => ArrayRef[L<Paws::EMR::StepConfig>], SupportedProducts => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::EMR::Tag>], VisibleToAllUsers => Bool])
 
 Each argument is described in detail in: L<Paws::EMR::RunJobFlow>
 
@@ -714,7 +714,7 @@ SSH shell to connect to the master node and submitting queries directly
 to the software running on the master node, such as Hive and Hadoop.
 For more information on how to do this, see Add More than 256 Steps to
 a Cluster
-(http://docs.aws.amazon.com/ElasticMapReduce/latest/Management/Guide/AddMoreThan256Steps.html)
+(http://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html)
 in the I<Amazon EMR Management Guide>.
 
 For long running clusters, we recommend that you periodically store

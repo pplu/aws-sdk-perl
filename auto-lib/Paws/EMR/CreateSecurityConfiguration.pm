@@ -42,7 +42,11 @@ The name of the security configuration.
 
 =head2 B<REQUIRED> SecurityConfiguration => Str
 
-The security configuration details in JSON format.
+The security configuration details in JSON format. For JSON parameters
+and examples, see Use Security Configurations to Set Up Cluster
+Security
+(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-security-configurations.html)
+in the I<Amazon EMR Management Guide>.
 
 
 
