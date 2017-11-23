@@ -44,6 +44,98 @@ package Paws::XRay;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub BatchGetAllTraces {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->BatchGetTraces(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->BatchGetTraces(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Traces }, @{ $next_result->Traces };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Traces') foreach (@{ $result->Traces });
+        $result = $self->BatchGetTraces(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Traces') foreach (@{ $result->Traces });
+    }
+
+    return undef
+  }
+  sub GetAllServiceGraph {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetServiceGraph(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetServiceGraph(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Services }, @{ $next_result->Services };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Services') foreach (@{ $result->Services });
+        $result = $self->GetServiceGraph(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Services') foreach (@{ $result->Services });
+    }
+
+    return undef
+  }
+  sub GetAllTraceGraph {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetTraceGraph(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetTraceGraph(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Services }, @{ $next_result->Services };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Services') foreach (@{ $result->Services });
+        $result = $self->GetTraceGraph(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Services') foreach (@{ $result->Services });
+    }
+
+    return undef
+  }
+  sub GetAllTraceSummaries {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetTraceSummaries(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetTraceSummaries(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TraceSummaries }, @{ $next_result->TraceSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TraceSummaries') foreach (@{ $result->TraceSummaries });
+        $result = $self->GetTraceSummaries(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TraceSummaries') foreach (@{ $result->TraceSummaries });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/BatchGetTraces GetServiceGraph GetTraceGraph GetTraceSummaries PutTelemetryRecords PutTraceSegments / }
@@ -238,6 +330,54 @@ digits.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 BatchGetAllTraces(sub { },TraceIds => ArrayRef[Str|Undef], [NextToken => Str])
+
+=head2 BatchGetAllTraces(TraceIds => ArrayRef[Str|Undef], [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Traces, passing the object as the first parameter, and the string 'Traces' as the second parameter 
+
+If not, it will return a a L<Paws::XRay::BatchGetTracesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllServiceGraph(sub { },EndTime => Str, StartTime => Str, [NextToken => Str])
+
+=head2 GetAllServiceGraph(EndTime => Str, StartTime => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Services, passing the object as the first parameter, and the string 'Services' as the second parameter 
+
+If not, it will return a a L<Paws::XRay::GetServiceGraphResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllTraceGraph(sub { },TraceIds => ArrayRef[Str|Undef], [NextToken => Str])
+
+=head2 GetAllTraceGraph(TraceIds => ArrayRef[Str|Undef], [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Services, passing the object as the first parameter, and the string 'Services' as the second parameter 
+
+If not, it will return a a L<Paws::XRay::GetTraceGraphResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllTraceSummaries(sub { },EndTime => Str, StartTime => Str, [FilterExpression => Str, NextToken => Str, Sampling => Bool])
+
+=head2 GetAllTraceSummaries(EndTime => Str, StartTime => Str, [FilterExpression => Str, NextToken => Str, Sampling => Bool])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TraceSummaries, passing the object as the first parameter, and the string 'TraceSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::XRay::GetTraceSummariesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

@@ -5,7 +5,7 @@ package Paws::XRay::TelemetryRecord;
   has SegmentsRejectedCount => (is => 'ro', isa => 'Int');
   has SegmentsSentCount => (is => 'ro', isa => 'Int');
   has SegmentsSpilloverCount => (is => 'ro', isa => 'Int');
-  has Timestamp => (is => 'ro', isa => 'Str');
+  has Timestamp => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +66,7 @@ This class has no description
   
 
 
-=head2 Timestamp => Str
+=head2 B<REQUIRED> Timestamp => Str
 
   
 
