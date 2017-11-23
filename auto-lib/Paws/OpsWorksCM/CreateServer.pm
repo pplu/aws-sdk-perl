@@ -58,16 +58,16 @@ Valid values are C<true> or C<false>. The default value is C<true>.
 
 =head2 BackupId => Str
 
-If you specify this field, AWS OpsWorks for Chef Automate creates the
-server by using the backup represented by BackupId.
+If you specify this field, AWS OpsWorks CM creates the server by using
+the backup represented by BackupId.
 
 
 
 =head2 BackupRetentionCount => Int
 
 The number of automated backups that you want to keep. Whenever a new
-backup is created, AWS OpsWorks for Chef Automate deletes the oldest
-backups if this number is exceeded. The default value is C<1>.
+backup is created, AWS OpsWorks CM deletes the oldest backups if this
+number is exceeded. The default value is C<1>.
 
 
 
@@ -81,7 +81,7 @@ C<false>. The default value is C<true>.
 =head2 Engine => Str
 
 The configuration management engine to use. Valid values include
-C<Chef>.
+C<Chef> and C<Puppet>.
 
 
 
@@ -89,16 +89,16 @@ C<Chef>.
 
 Optional engine attributes on a specified server.
 
-B<Attributes accepted in a createServer request:>
+B<Attributes accepted in a Chef createServer request:>
 
 =over
 
 =item *
 
 C<CHEF_PIVOTAL_KEY>: A base64-encoded RSA private key that is not
-stored by AWS OpsWorks for Chef. This private key is required to access
-the Chef API. When no CHEF_PIVOTAL_KEY is set, one is generated and
-returned in the response.
+stored by AWS OpsWorks for Chef Automate. This private key is required
+to access the Chef API. When no CHEF_PIVOTAL_KEY is set, one is
+generated and returned in the response.
 
 =item *
 
@@ -112,19 +112,32 @@ is set, one is generated and returned in the response.
 
 =back
 
+B<Attributes accepted in a Puppet createServer request:>
+
+=over
+
+=item *
+
+C<PUPPET_ADMIN_PASSWORD>: To work with the Puppet Enterprise console, a
+password must use ASCII characters.
+
+=back
+
 
 
 
 =head2 EngineModel => Str
 
-The engine model, or option. Valid values include C<Single>.
+The engine model of the server. Valid values in this release include
+C<Monolithic> for Puppet and C<Single> for Chef.
 
 
 
 =head2 EngineVersion => Str
 
-The major release version of the engine that you want to use. Values
-depend on the engine that you choose.
+The major release version of the engine that you want to use. For a
+Chef server, the valid value for EngineVersion is currently C<12>. For
+a Puppet server, the valid value is C<2017>.
 
 
 
@@ -142,9 +155,9 @@ profile you need.
 
 =head2 B<REQUIRED> InstanceType => Str
 
-The Amazon EC2 instance type to use. Valid values must be specified in
-the following format: C<^([cm][34]|t2).*> For example, C<m4.large>.
-Valid values are C<t2.medium>, C<m4.large>, or C<m4.2xlarge>.
+The Amazon EC2 instance type to use. For example, C<m4.large>.
+Recommended instance types include C<t2.medium> and greater, C<m4.*>,
+or C<c4.xlarge> and greater.
 
 
 
@@ -158,10 +171,10 @@ instances by using SSH.
 
 =head2 PreferredBackupWindow => Str
 
-The start time for a one-hour period during which AWS OpsWorks for Chef
-Automate backs up application-level data on your server if automated
-backups are enabled. Valid values must be specified in one of the
-following formats:
+The start time for a one-hour period during which AWS OpsWorks CM backs
+up application-level data on your server if automated backups are
+enabled. Valid values must be specified in one of the following
+formats:
 
 =over
 
@@ -188,10 +201,10 @@ at 08:00 UTC. (8:00 a.m.)
 =head2 PreferredMaintenanceWindow => Str
 
 The start time for a one-hour period each week during which AWS
-OpsWorks for Chef Automate performs maintenance on the instance. Valid
-values must be specified in the following format: C<DDD:HH:MM>. The
-specified time is in coordinated universal time (UTC). The default
-value is a random one-hour period on Tuesday, Wednesday, or Friday. See
+OpsWorks CM performs maintenance on the instance. Valid values must be
+specified in the following format: C<DDD:HH:MM>. The specified time is
+in coordinated universal time (UTC). The default value is a random
+one-hour period on Tuesday, Wednesday, or Friday. See
 C<TimeWindowDefinition> for more information.
 
 B<Example:> C<Mon:08:00>, which represents a start time of every Monday
@@ -205,9 +218,9 @@ A list of security group IDs to attach to the Amazon EC2 instance. If
 you add this parameter, the specified security groups must be within
 the VPC that is specified by C<SubnetIds>.
 
-If you do not specify this parameter, AWS OpsWorks for Chef Automate
-creates one new security group that uses TCP ports 22 and 443, open to
-0.0.0.0/0 (everyone).
+If you do not specify this parameter, AWS OpsWorks CM creates one new
+security group that uses TCP ports 22 and 443, open to 0.0.0.0/0
+(everyone).
 
 
 
@@ -222,14 +235,14 @@ then letters, numbers, or hyphens (-) are allowed, up to a maximum of
 
 =head2 B<REQUIRED> ServiceRoleArn => Str
 
-The service role that the AWS OpsWorks for Chef Automate service
-backend uses to work with your account. Although the AWS OpsWorks
-management console typically creates the service role for you, if you
-are using the AWS CLI or API commands, run the
-service-role-creation.yaml AWS CloudFormation template, located at
+The service role that the AWS OpsWorks CM service backend uses to work
+with your account. Although the AWS OpsWorks management console
+typically creates the service role for you, if you are using the AWS
+CLI or API commands, run the service-role-creation.yaml AWS
+CloudFormation template, located at
 https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-roles.yaml.
 This template creates a CloudFormation stack that includes the service
-role that you need.
+role and instance profile that you need.
 
 
 
