@@ -56,8 +56,7 @@ cluster, the default cluster is assumed.
 
 =head2 ContainerInstanceArn => Str
 
-The Amazon Resource Name (ARN) of the container instance (if it was
-previously registered).
+The ARN of the container instance (if it was previously registered).
 
 
 

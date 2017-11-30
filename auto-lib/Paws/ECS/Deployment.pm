@@ -3,8 +3,10 @@ package Paws::ECS::Deployment;
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has DesiredCount => (is => 'ro', isa => 'Int', request_name => 'desiredCount', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+  has LaunchType => (is => 'ro', isa => 'Str', request_name => 'launchType', traits => ['NameInRequest']);
   has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', request_name => 'networkConfiguration', traits => ['NameInRequest']);
   has PendingCount => (is => 'ro', isa => 'Int', request_name => 'pendingCount', traits => ['NameInRequest']);
+  has PlatformVersion => (is => 'ro', isa => 'Str', request_name => 'platformVersion', traits => ['NameInRequest']);
   has RunningCount => (is => 'ro', isa => 'Int', request_name => 'runningCount', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has TaskDefinition => (is => 'ro', isa => 'Str', request_name => 'taskDefinition', traits => ['NameInRequest']);
@@ -46,7 +48,7 @@ The details of an Amazon ECS service deployment.
 
 =head2 CreatedAt => Str
 
-  The Unix timestamp for when the service was created.
+  The Unix time stamp for when the service was created.
 
 
 =head2 DesiredCount => Int
@@ -60,6 +62,11 @@ service to deploy or maintain.
   The ID of the deployment.
 
 
+=head2 LaunchType => Str
+
+  The launch type on which your service is running.
+
+
 =head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
 
   The VPC subnet and security group configuration for tasks that receive
@@ -71,6 +78,11 @@ mode.
 
   The number of tasks in the deployment that are in the C<PENDING>
 status.
+
+
+=head2 PlatformVersion => Str
+
+  The platform version on which your service is running.
 
 
 =head2 RunningCount => Int
@@ -95,7 +107,7 @@ use.
 
 =head2 UpdatedAt => Str
 
-  The Unix timestamp for when the service was last updated.
+  The Unix time stamp for when the service was last updated.
 
 
 

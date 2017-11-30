@@ -78,12 +78,18 @@ see https://docs.docker.com/engine/reference/builder/#cmd
 
 =head2 Cpu => Int
 
-  The number of C<cpu> units reserved for the container. A container
-instance has 1,024 C<cpu> units for every CPU core. This parameter
-specifies the minimum amount of CPU to reserve for a container, and
-containers share unallocated CPU units with other containers on the
-instance with the same ratio as their allocated amount. This parameter
-maps to C<CpuShares> in the Create a container
+  The number of C<cpu> units reserved for the container. If your
+containers will be part of a task using the Fargate launch type, this
+field is optional and the only requirement is that the total amount of
+CPU reserved for all containers within a task be lower than the task
+C<cpu> value.
+
+For containers that will be part of a task using the EC2 launch type, a
+container instance has 1,024 C<cpu> units for every CPU core. This
+parameter specifies the minimum amount of CPU to reserve for a
+container, and containers share unallocated CPU units with other
+containers on the instance with the same ratio as their allocated
+amount. This parameter maps to C<CpuShares> in the Create a container
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
 section of the Docker Remote API
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
@@ -176,15 +182,17 @@ and the C<--label> option to docker run
 (https://docs.docker.com/engine/reference/run/). This parameter
 requires version 1.18 of the Docker Remote API or greater on your
 container instance. To check the Docker Remote API version on your
-container instance, log into your container instance and run the
+container instance, log in to your container instance and run the
 following command: C<sudo docker version | grep "Server API version">
 
 
 =head2 DockerSecurityOptions => ArrayRef[Str|Undef]
 
   A list of strings to provide custom labels for SELinux and AppArmor
-multi-level security systems. This parameter maps to C<SecurityOpt> in
-the Create a container
+multi-level security systems. This field is not valid for containers in
+tasks using the Fargate launch type.
+
+This parameter maps to C<SecurityOpt> in the Create a container
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
 section of the Docker Remote API
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
@@ -197,7 +205,7 @@ C<ECS_APPARMOR_CAPABLE=true> environment variables before containers
 placed on that instance can use these security options. For more
 information, see Amazon ECS Container Agent Configuration
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html)
-in the I<Amazon EC2 Container Service Developer Guide>.
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 EntryPoint => ArrayRef[Str|Undef]
@@ -228,8 +236,8 @@ section of the Docker Remote API
 and the C<--env> option to docker run
 (https://docs.docker.com/engine/reference/run/).
 
-We do not recommend using plain text environment variables for
-sensitive information, such as credential data.
+We do not recommend using plaintext environment variables for sensitive
+information, such as credential data.
 
 
 =head2 Essential => Bool
@@ -247,14 +255,15 @@ containers that are used for a common purpose into components, and
 separate the different components into multiple task definitions. For
 more information, see Application Architecture
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html)
-in the I<Amazon EC2 Container Service Developer Guide>.
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 ExtraHosts => ArrayRef[L<Paws::ECS::HostEntry>]
 
   A list of hostnames and IP address mappings to append to the
-C</etc/hosts> file on the container. This parameter maps to
-C<ExtraHosts> in the Create a container
+C</etc/hosts> file on the container. If using the Fargate launch type,
+this may be used to list non-Fargate hosts you want the container to
+talk to. This parameter maps to C<ExtraHosts> in the Create a container
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
 section of the Docker Remote API
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
@@ -324,8 +333,9 @@ name (for example, C<quay.io/assemblyline/ubuntu>).
   The C<link> parameter allows containers to communicate with each other
 without the need for port mappings, using the C<name> parameter and
 optionally, an C<alias> for the link. This construct is analogous to
-C<name:alias> in Docker links. Up to 255 letters (uppercase and
-lowercase), numbers, hyphens, and underscores are allowed for each
+C<name:alias> in Docker links. This field is not valid for containers
+in tasks using the Fargate launch type. Up to 255 letters (uppercase
+and lowercase), numbers, hyphens, and underscores are allowed for each
 C<name> and C<alias>. For more information on linking Docker
 containers, see
 https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/
@@ -346,13 +356,18 @@ using security groups and VPC settings.
 =head2 LinuxParameters => L<Paws::ECS::LinuxParameters>
 
   Linux-specific modifications that are applied to the container, such as
-Linux KernelCapabilities.
+Linux KernelCapabilities. This field is not valid for containers in
+tasks using the Fargate launch type.
 
 
 =head2 LogConfiguration => L<Paws::ECS::LogConfiguration>
 
-  The log configuration specification for the container. This parameter
-maps to C<LogConfig> in the Create a container
+  The log configuration specification for the container.
+
+If using the Fargate launch type, the only supported value is
+C<awslogs>.
+
+This parameter maps to C<LogConfig> in the Create a container
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
 section of the Docker Remote API
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
@@ -376,7 +391,7 @@ Amazon ECS container agent.
 
 This parameter requires version 1.18 of the Docker Remote API or
 greater on your container instance. To check the Docker Remote API
-version on your container instance, log into your container instance
+version on your container instance, log in to your container instance
 and run the following command: C<sudo docker version | grep "Server API
 version">
 
@@ -386,7 +401,7 @@ C<ECS_AVAILABLE_LOGGING_DRIVERS> environment variable before containers
 placed on that instance can use these log configuration options. For
 more information, see Amazon ECS Container Agent Configuration
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html)
-in the I<Amazon EC2 Container Service Developer Guide>.
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 Memory => Int
@@ -400,7 +415,13 @@ section of the Docker Remote API
 and the C<--memory> option to docker run
 (https://docs.docker.com/engine/reference/run/).
 
-You must specify a non-zero integer for one or both of C<memory> or
+If your containers will be part of a task using the Fargate launch
+type, this field is optional and the only requirement is that the total
+amount of memory reserved for all containers within a task be lower
+than the task C<memory> value.
+
+For containers that will be part of a task using the EC2 launch type,
+you must specify a non-zero integer for one or both of C<memory> or
 C<memoryReservation> in container definitions. If you specify both,
 C<memory> must be greater than C<memoryReservation>. If you specify
 C<memoryReservation>, then that value is subtracted from the available
@@ -445,8 +466,12 @@ when needed.
 
 =head2 MountPoints => ArrayRef[L<Paws::ECS::MountPoint>]
 
-  The mount points for data volumes in your container. This parameter
-maps to C<Volumes> in the Create a container
+  The mount points for data volumes in your container.
+
+If using the Fargate launch type, the C<sourceVolume> parameter is not
+supported.
+
+This parameter maps to C<Volumes> in the Create a container
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
 section of the Docker Remote API
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
@@ -473,22 +498,27 @@ and the C<--name> option to docker run
 
   The list of port mappings for the container. Port mappings allow
 containers to access ports on the host container instance to send or
-receive traffic. This parameter maps to C<PortBindings> in the Create a
-container
+receive traffic.
+
+If using containers in a task with the Fargate, exposed ports should be
+specified using C<containerPort>. The C<hostPort> can be left blank or
+it must be the same value as the C<containerPort>.
+
+This parameter maps to C<PortBindings> in the Create a container
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
 section of the Docker Remote API
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
 and the C<--publish> option to docker run
 (https://docs.docker.com/engine/reference/run/). If the network mode of
-a task definition is set to C<none>, then you cannot specify port
+a task definition is set to C<none>, then you can't specify port
 mappings. If the network mode of a task definition is set to C<host>,
 then host ports must either be undefined or they must match the
 container port in the port mapping.
 
 After a task reaches the C<RUNNING> status, manual and automatic host
 and container port assignments are visible in the B<Network Bindings>
-section of a container description of a selected task in the Amazon ECS
-console, or the C<networkBindings> section DescribeTasks responses.
+section of a container description for a selected task in the Amazon
+ECS console, or the C<networkBindings> section DescribeTasks responses.
 
 
 =head2 Privileged => Bool
@@ -525,9 +555,9 @@ and the C<--ulimit> option to docker run
 (https://docs.docker.com/engine/reference/run/). Valid naming values
 are displayed in the Ulimit data type. This parameter requires version
 1.18 of the Docker Remote API or greater on your container instance. To
-check the Docker Remote API version on your container instance, log
-into your container instance and run the following command: C<sudo
-docker version | grep "Server API version">
+check the Docker Remote API version on your container instance, log in
+to your container instance and run the following command: C<sudo docker
+version | grep "Server API version">
 
 
 =head2 User => Str

@@ -45,11 +45,11 @@ cluster, the default cluster is assumed.
 
 =head2 B<REQUIRED> ContainerInstance => Str
 
-The container instance ID or full Amazon Resource Name (ARN) of the
-container instance to deregister. The ARN contains the C<arn:aws:ecs>
-namespace, followed by the region of the container instance, the AWS
-account ID of the container instance owner, the C<container-instance>
-namespace, and then the container instance ID. For example,
+The container instance ID or full ARN of the container instance to
+deregister. The ARN contains the C<arn:aws:ecs> namespace, followed by
+the region of the container instance, the AWS account ID of the
+container instance owner, the C<container-instance> namespace, and then
+the container instance ID. For example,
 C<arn:aws:ecs:I<region>:I<aws_account_id>:container-instance/I<container_instance_ID>
 >.
 
@@ -68,8 +68,8 @@ on a different container instance if possible.
 
 Any containers in orphaned service tasks that are registered with a
 Classic Load Balancer or an Application Load Balancer target group are
-deregistered, and they will begin connection draining according to the
-settings on the load balancer or target group.
+deregistered. They begin connection draining according to the settings
+on the load balancer or target group.
 
 
 

@@ -2,6 +2,7 @@
 package Paws::ECS::ListServices;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has LaunchType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'launchType' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
@@ -43,6 +44,12 @@ default cluster is assumed.
 
 
 
+=head2 LaunchType => Str
+
+The launch type for services you want to list.
+
+Valid values are: C<"EC2">, C<"FARGATE">
+
 =head2 MaxResults => Int
 
 The maximum number of service results returned by C<ListServices> in
@@ -61,8 +68,7 @@ results and a C<nextToken> value if applicable.
 The C<nextToken> value returned from a previous paginated
 C<ListServices> request where C<maxResults> was used and the results
 exceeded the value of that parameter. Pagination continues from the end
-of the previous results that returned the C<nextToken> value. This
-value is C<null> when there are no more results to return.
+of the previous results that returned the C<nextToken> value.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic

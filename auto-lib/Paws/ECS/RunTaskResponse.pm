@@ -22,7 +22,7 @@ Any failures associated with the call.
 
 =head2 Tasks => ArrayRef[L<Paws::ECS::Task>]
 
-A full description of the tasks that were run. Each task that was
+A full description of the tasks that were run. The tasks that were
 successfully placed on your cluster are described here.
 
 

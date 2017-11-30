@@ -4,6 +4,9 @@ package Paws::ECS::SubmitTaskStateChange;
   has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::AttachmentStateChange]', traits => ['NameInRequest'], request_name => 'attachments' );
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has Containers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerStateChange]', traits => ['NameInRequest'], request_name => 'containers' );
+  has ExecutionStoppedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionStoppedAt' );
+  has PullStartedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pullStartedAt' );
+  has PullStoppedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pullStoppedAt' );
   has Reason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reason' );
   has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
   has Task => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'task' );
@@ -57,6 +60,24 @@ Any containers associated with the state change request.
 
 
 
+=head2 ExecutionStoppedAt => Str
+
+The Unix timestamp for when the task execution stopped.
+
+
+
+=head2 PullStartedAt => Str
+
+The Unix time stamp for when the container image pull began.
+
+
+
+=head2 PullStoppedAt => Str
+
+The Unix time stamp for when the container image pull completed.
+
+
+
 =head2 Reason => Str
 
 The reason for the state change request.
@@ -71,8 +92,7 @@ The status of the state change request.
 
 =head2 Task => Str
 
-The task ID or full Amazon Resource Name (ARN) of the task in the state
-change request.
+The task ID or full ARN of the task in the state change request.
 
 
 

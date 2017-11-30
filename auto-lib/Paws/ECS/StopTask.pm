@@ -47,7 +47,7 @@ cluster is assumed.
 
 An optional message specified when a task is stopped. For example, if
 you are using a custom scheduler, you can use this parameter to specify
-the reason for stopping the task here, and the message will appear in
+the reason for stopping the task here, and the message appears in
 subsequent DescribeTasks API operations on this task. Up to 255
 characters are allowed in this message.
 
@@ -55,8 +55,7 @@ characters are allowed in this message.
 
 =head2 B<REQUIRED> Task => Str
 
-The task ID or full Amazon Resource Name (ARN) entry of the task to
-stop.
+The task ID or full ARN entry of the task to stop.
 
 
 

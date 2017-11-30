@@ -52,10 +52,10 @@ registered with a cluster.
 
 =head2 AgentConnected => Bool
 
-  This parameter returns C<true> if the agent is actually connected to
-Amazon ECS. Registered instances with an agent that may be unhealthy or
-stopped return C<false>, and instances without a connected agent cannot
-accept placement requests.
+  This parameter returns C<true> if the agent is connected to Amazon ECS.
+Registered instances with an agent that may be unhealthy or stopped
+return C<false>. Instances without a connected agent can't accept
+placement requests.
 
 
 =head2 AgentUpdateStatus => Str
@@ -100,7 +100,7 @@ C<PENDING> status.
 
 =head2 RegisteredAt => Str
 
-  The Unix timestamp for when the container instance was registered.
+  The Unix time stamp for when the container instance was registered.
 
 
 =head2 RegisteredResources => ArrayRef[L<Paws::ECS::Resource>]
@@ -137,7 +137,7 @@ placed on the container instance and any service tasks running on the
 container instance are removed if possible. For more information, see
 Container Instance Draining
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html)
-in the I<Amazon EC2 Container Service Developer Guide>.
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 Version => Int
@@ -145,9 +145,9 @@ in the I<Amazon EC2 Container Service Developer Guide>.
   The version counter for the container instance. Every time a container
 instance experiences a change that triggers a CloudWatch event, the
 version counter is incremented. If you are replicating your Amazon ECS
-container instance state with CloudWatch events, you can compare the
+container instance state with CloudWatch Events, you can compare the
 version of a container instance reported by the Amazon ECS APIs with
-the version reported in CloudWatch events for the container instance
+the version reported in CloudWatch Events for the container instance
 (inside the C<detail> object) to verify that the version in your event
 stream is current.
 

@@ -1,6 +1,7 @@
 package Paws::ECS::TaskOverride;
   use Moose;
   has ContainerOverrides => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerOverride]', request_name => 'containerOverrides', traits => ['NameInRequest']);
+  has ExecutionRoleArn => (is => 'ro', isa => 'Str', request_name => 'executionRoleArn', traits => ['NameInRequest']);
   has TaskRoleArn => (is => 'ro', isa => 'Str', request_name => 'taskRoleArn', traits => ['NameInRequest']);
 1;
 
@@ -40,6 +41,12 @@ The overrides associated with a task.
 =head2 ContainerOverrides => ArrayRef[L<Paws::ECS::ContainerOverride>]
 
   One or more container overrides sent to a task.
+
+
+=head2 ExecutionRoleArn => Str
+
+  The Amazon Resource Name (ARN) of the task execution role that the
+Amazon ECS container agent and the Docker daemon can assume.
 
 
 =head2 TaskRoleArn => Str

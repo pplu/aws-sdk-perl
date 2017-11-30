@@ -4,10 +4,12 @@ package Paws::ECS::RunTask;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has Count => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'count' );
   has Group => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'group' );
+  has LaunchType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'launchType' );
   has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', traits => ['NameInRequest'], request_name => 'networkConfiguration' );
   has Overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride', traits => ['NameInRequest'], request_name => 'overrides' );
   has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementConstraint]', traits => ['NameInRequest'], request_name => 'placementConstraints' );
   has PlacementStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementStrategy]', traits => ['NameInRequest'], request_name => 'placementStrategy' );
+  has PlatformVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'platformVersion' );
   has StartedBy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startedBy' );
   has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
 
@@ -64,14 +66,20 @@ family:my-family-name).
 
 
 
+=head2 LaunchType => Str
+
+The launch type on which to run your task.
+
+Valid values are: C<"EC2">, C<"FARGATE">
+
 =head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
 
 The network configuration for the task. This parameter is required for
 task definitions that use the C<awsvpc> network mode to receive their
 own Elastic Network Interface, and it is not supported for other
 network modes. For more information, see Task Networking
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguidetask-networking.html)
-in the I<Amazon EC2 Container Service Developer Guide>.
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 
@@ -101,7 +109,14 @@ task definition and those specified at run time).
 =head2 PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>]
 
 The placement strategy objects to use for the task. You can specify a
-maximum of 5 strategy rules per task.
+maximum of five strategy rules per task.
+
+
+
+=head2 PlatformVersion => Str
+
+The platform version on which to run your task. If one is not
+specified, the latest version is used by default.
 
 
 
@@ -122,9 +137,9 @@ parameter contains the deployment ID of the service that starts it.
 
 =head2 B<REQUIRED> TaskDefinition => Str
 
-The C<family> and C<revision> (C<family:revision>) or full Amazon
-Resource Name (ARN) of the task definition to run. If a C<revision> is
-not specified, the latest C<ACTIVE> revision is used.
+The C<family> and C<revision> (C<family:revision>) or full ARN of the
+task definition to run. If a C<revision> is not specified, the latest
+C<ACTIVE> revision is used.
 
 
 

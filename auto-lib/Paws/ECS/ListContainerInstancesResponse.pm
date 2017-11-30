@@ -17,9 +17,8 @@ Paws::ECS::ListContainerInstancesResponse
 
 =head2 ContainerInstanceArns => ArrayRef[Str|Undef]
 
-The list of container instances with full Amazon Resource Name (ARN)
-entries for each container instance associated with the specified
-cluster.
+The list of container instances with full ARN entries for each
+container instance associated with the specified cluster.
 
 
 =head2 NextToken => Str

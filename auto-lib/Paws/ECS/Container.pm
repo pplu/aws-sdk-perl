@@ -81,7 +81,7 @@ additional details about a running or stopped container.
 
 =head2 TaskArn => Str
 
-  The Amazon Resource Name (ARN) of the task.
+  The ARN of the task.
 
 
 

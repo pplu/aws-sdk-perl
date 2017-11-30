@@ -4,7 +4,9 @@ package Paws::ECS::UpdateService;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', traits => ['NameInRequest'], request_name => 'deploymentConfiguration' );
   has DesiredCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'desiredCount' );
+  has ForceNewDeployment => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'forceNewDeployment' );
   has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', traits => ['NameInRequest'], request_name => 'networkConfiguration' );
+  has PlatformVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'platformVersion' );
   has Service => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'service' , required => 1);
   has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' );
 
@@ -60,20 +62,32 @@ your service.
 
 
 
+=head2 ForceNewDeployment => Bool
+
+Whether or not to force a new deployment of the service.
+
+
+
 =head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
 
 The network configuration for the service. This parameter is required
 for task definitions that use the C<awsvpc> network mode to receive
 their own Elastic Network Interface, and it is not supported for other
 network modes. For more information, see Task Networking
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguidetask-networking.html)
-in the I<Amazon EC2 Container Service Developer Guide>.
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 Updating a service to add a subnet to a list of existing subnets does
 not trigger a service deployment. For example, if your network
 configuration change is to keep the existing subnets and simply add
 another subnet to the network configuration, this does not trigger a
 new service deployment.
+
+
+
+=head2 PlatformVersion => Str
+
+The platform version you want to update your service to run.
 
 
 
@@ -85,12 +99,12 @@ The name of the service to update.
 
 =head2 TaskDefinition => Str
 
-The C<family> and C<revision> (C<family:revision>) or full Amazon
-Resource Name (ARN) of the task definition to run in your service. If a
-C<revision> is not specified, the latest C<ACTIVE> revision is used. If
-you modify the task definition with C<UpdateService>, Amazon ECS spawns
-a task with the new version of the task definition and then stops an
-old task after the new version is running.
+The C<family> and C<revision> (C<family:revision>) or full ARN of the
+task definition to run in your service. If a C<revision> is not
+specified, the latest C<ACTIVE> revision is used. If you modify the
+task definition with C<UpdateService>, Amazon ECS spawns a task with
+the new version of the task definition and then stops an old task after
+the new version is running.
 
 
 

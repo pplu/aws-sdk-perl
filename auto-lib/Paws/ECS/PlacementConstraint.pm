@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Placem
 An object representing a constraint on task placement. For more
 information, see Task Placement Constraints
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html)
-in the I<Amazon EC2 Container Service Developer Guide>.
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 =head1 ATTRIBUTES
 
@@ -46,15 +46,15 @@ in the I<Amazon EC2 Container Service Developer Guide>.
 you cannot specify an expression if the constraint type is
 C<distinctInstance>. For more information, see Cluster Query Language
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html)
-in the I<Amazon EC2 Container Service Developer Guide>.
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 Type => Str
 
   The type of constraint. Use C<distinctInstance> to ensure that each
 task in a particular group is running on a different container
-instance. Use C<memberOf> to restrict selection to a group of valid
-candidates. Note that C<distinctInstance> is not supported in task
+instance. Use C<memberOf> to restrict the selection to a group of valid
+candidates. The value C<distinctInstance> is not supported in task
 definitions.
 
 

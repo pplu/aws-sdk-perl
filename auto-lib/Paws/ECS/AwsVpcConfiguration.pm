@@ -1,5 +1,6 @@
 package Paws::ECS::AwsVpcConfiguration;
   use Moose;
+  has AssignPublicIp => (is => 'ro', isa => 'Str', request_name => 'assignPublicIp', traits => ['NameInRequest']);
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroups', traits => ['NameInRequest']);
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnets', traits => ['NameInRequest'], required => 1);
 1;
@@ -21,21 +22,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::AwsVpcConfiguration object:
 
-  $service_obj->Method(Att1 => { SecurityGroups => $value, ..., Subnets => $value  });
+  $service_obj->Method(Att1 => { AssignPublicIp => $value, ..., Subnets => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::AwsVpcConfiguration object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->SecurityGroups
+  $result->Att1->AssignPublicIp
 
 =head1 DESCRIPTION
 
-An object representing the subnets and security groups for a task or
-service.
+An object representing the networking details for a task or service.
 
 =head1 ATTRIBUTES
+
+
+=head2 AssignPublicIp => Str
+
+  Specifies whether or not the task's elastic network interface receives
+a public IP address.
 
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
