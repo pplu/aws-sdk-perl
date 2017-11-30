@@ -54,6 +54,11 @@ package Paws::WAFRegional;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::CreateRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateRuleGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::CreateRuleGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateSizeConstraintSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::CreateSizeConstraintSet', @_);
@@ -107,6 +112,11 @@ package Paws::WAFRegional;
   sub DeleteRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::DeleteRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteRuleGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::DeleteRuleGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteSizeConstraintSet {
@@ -184,6 +194,11 @@ package Paws::WAFRegional;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::GetRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetRuleGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::GetRuleGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetSampledRequests {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::GetSampledRequests', @_);
@@ -212,6 +227,11 @@ package Paws::WAFRegional;
   sub GetXssMatchSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::GetXssMatchSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListActivatedRulesInRuleGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::ListActivatedRulesInRuleGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListByteMatchSets {
@@ -249,6 +269,11 @@ package Paws::WAFRegional;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::ListResourcesForWebACL', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListRuleGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::ListRuleGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListRules {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::ListRules', @_);
@@ -262,6 +287,11 @@ package Paws::WAFRegional;
   sub ListSqlInjectionMatchSets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::ListSqlInjectionMatchSets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListSubscribedRuleGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::ListSubscribedRuleGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListWebACLs {
@@ -309,6 +339,11 @@ package Paws::WAFRegional;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::UpdateRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateRuleGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::UpdateRuleGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateSizeConstraintSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::UpdateSizeConstraintSet', @_);
@@ -332,7 +367,7 @@ package Paws::WAFRegional;
   
 
 
-  sub operations { qw/AssociateWebACL CreateByteMatchSet CreateGeoMatchSet CreateIPSet CreateRateBasedRule CreateRegexMatchSet CreateRegexPatternSet CreateRule CreateSizeConstraintSet CreateSqlInjectionMatchSet CreateWebACL CreateXssMatchSet DeleteByteMatchSet DeleteGeoMatchSet DeleteIPSet DeleteRateBasedRule DeleteRegexMatchSet DeleteRegexPatternSet DeleteRule DeleteSizeConstraintSet DeleteSqlInjectionMatchSet DeleteWebACL DeleteXssMatchSet DisassociateWebACL GetByteMatchSet GetChangeToken GetChangeTokenStatus GetGeoMatchSet GetIPSet GetRateBasedRule GetRateBasedRuleManagedKeys GetRegexMatchSet GetRegexPatternSet GetRule GetSampledRequests GetSizeConstraintSet GetSqlInjectionMatchSet GetWebACL GetWebACLForResource GetXssMatchSet ListByteMatchSets ListGeoMatchSets ListIPSets ListRateBasedRules ListRegexMatchSets ListRegexPatternSets ListResourcesForWebACL ListRules ListSizeConstraintSets ListSqlInjectionMatchSets ListWebACLs ListXssMatchSets UpdateByteMatchSet UpdateGeoMatchSet UpdateIPSet UpdateRateBasedRule UpdateRegexMatchSet UpdateRegexPatternSet UpdateRule UpdateSizeConstraintSet UpdateSqlInjectionMatchSet UpdateWebACL UpdateXssMatchSet / }
+  sub operations { qw/AssociateWebACL CreateByteMatchSet CreateGeoMatchSet CreateIPSet CreateRateBasedRule CreateRegexMatchSet CreateRegexPatternSet CreateRule CreateRuleGroup CreateSizeConstraintSet CreateSqlInjectionMatchSet CreateWebACL CreateXssMatchSet DeleteByteMatchSet DeleteGeoMatchSet DeleteIPSet DeleteRateBasedRule DeleteRegexMatchSet DeleteRegexPatternSet DeleteRule DeleteRuleGroup DeleteSizeConstraintSet DeleteSqlInjectionMatchSet DeleteWebACL DeleteXssMatchSet DisassociateWebACL GetByteMatchSet GetChangeToken GetChangeTokenStatus GetGeoMatchSet GetIPSet GetRateBasedRule GetRateBasedRuleManagedKeys GetRegexMatchSet GetRegexPatternSet GetRule GetRuleGroup GetSampledRequests GetSizeConstraintSet GetSqlInjectionMatchSet GetWebACL GetWebACLForResource GetXssMatchSet ListActivatedRulesInRuleGroup ListByteMatchSets ListGeoMatchSets ListIPSets ListRateBasedRules ListRegexMatchSets ListRegexPatternSets ListResourcesForWebACL ListRuleGroups ListRules ListSizeConstraintSets ListSqlInjectionMatchSets ListSubscribedRuleGroups ListWebACLs ListXssMatchSets UpdateByteMatchSet UpdateGeoMatchSet UpdateIPSet UpdateRateBasedRule UpdateRegexMatchSet UpdateRegexPatternSet UpdateRule UpdateRuleGroup UpdateSizeConstraintSet UpdateSqlInjectionMatchSet UpdateWebACL UpdateXssMatchSet / }
 
 1;
 
@@ -783,6 +818,40 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
+=head2 CreateRuleGroup(ChangeToken => Str, MetricName => Str, Name => Str)
+
+Each argument is described in detail in: L<Paws::WAFRegional::CreateRuleGroup>
+
+Returns: a L<Paws::WAFRegional::CreateRuleGroupResponse> instance
+
+Creates a C<RuleGroup>. A rule group is a collection of predefined
+rules that you add to a web ACL. You use UpdateRuleGroup to add rules
+to the rule group.
+
+Rule groups are subject to the following limits:
+
+=over
+
+=item *
+
+Three rule groups per account. You can request an increase to this
+limit by contacting customer support.
+
+=item *
+
+One rule group per web ACL.
+
+=item *
+
+Ten rules per rule group.
+
+=back
+
+For more information about how to use the AWS WAF API to allow or block
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
+
+
 =head2 CreateSizeConstraintSet(ChangeToken => Str, Name => Str)
 
 Each argument is described in detail in: L<Paws::WAFRegional::CreateSizeConstraintSet>
@@ -1192,6 +1261,42 @@ Submit a C<DeleteRule> request.
 
 
 
+=head2 DeleteRuleGroup(ChangeToken => Str, RuleGroupId => Str)
+
+Each argument is described in detail in: L<Paws::WAFRegional::DeleteRuleGroup>
+
+Returns: a L<Paws::WAFRegional::DeleteRuleGroupResponse> instance
+
+Permanently deletes a RuleGroup. You can't delete a C<RuleGroup> if
+it's still used in any C<WebACL> objects or if it still includes any
+rules.
+
+If you just want to remove a C<RuleGroup> from a C<WebACL>, use
+UpdateWebACL.
+
+To permanently delete a C<RuleGroup> from AWS WAF, perform the
+following steps:
+
+=over
+
+=item 1.
+
+Update the C<RuleGroup> to remove rules, if any. For more information,
+see UpdateRuleGroup.
+
+=item 2.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<DeleteRuleGroup> request.
+
+=item 3.
+
+Submit a C<DeleteRuleGroup> request.
+
+=back
+
+
+
 =head2 DeleteSizeConstraintSet(ChangeToken => Str, SizeConstraintSetId => Str)
 
 Each argument is described in detail in: L<Paws::WAFRegional::DeleteSizeConstraintSet>
@@ -1471,6 +1576,18 @@ Returns the Rule that is specified by the C<RuleId> that you included
 in the C<GetRule> request.
 
 
+=head2 GetRuleGroup(RuleGroupId => Str)
+
+Each argument is described in detail in: L<Paws::WAFRegional::GetRuleGroup>
+
+Returns: a L<Paws::WAFRegional::GetRuleGroupResponse> instance
+
+Returns the RuleGroup that is specified by the C<RuleGroupId> that you
+included in the C<GetRuleGroup> request.
+
+To view the rules in a rule group, use ListActivatedRulesInRuleGroup.
+
+
 =head2 GetSampledRequests(MaxItems => Int, RuleId => Str, TimeWindow => L<Paws::WAFRegional::TimeWindow>, WebAclId => Str)
 
 Each argument is described in detail in: L<Paws::WAFRegional::GetSampledRequests>
@@ -1537,6 +1654,15 @@ Returns: a L<Paws::WAFRegional::GetXssMatchSetResponse> instance
 Returns the XssMatchSet that is specified by C<XssMatchSetId>.
 
 
+=head2 ListActivatedRulesInRuleGroup([Limit => Int, NextMarker => Str, RuleGroupId => Str])
+
+Each argument is described in detail in: L<Paws::WAFRegional::ListActivatedRulesInRuleGroup>
+
+Returns: a L<Paws::WAFRegional::ListActivatedRulesInRuleGroupResponse> instance
+
+Returns an array of ActivatedRule objects.
+
+
 =head2 ListByteMatchSets([Limit => Int, NextMarker => Str])
 
 Each argument is described in detail in: L<Paws::WAFRegional::ListByteMatchSets>
@@ -1600,6 +1726,15 @@ Returns: a L<Paws::WAFRegional::ListResourcesForWebACLResponse> instance
 Returns an array of resources associated with the specified web ACL.
 
 
+=head2 ListRuleGroups([Limit => Int, NextMarker => Str])
+
+Each argument is described in detail in: L<Paws::WAFRegional::ListRuleGroups>
+
+Returns: a L<Paws::WAFRegional::ListRuleGroupsResponse> instance
+
+Returns an array of RuleGroup objects.
+
+
 =head2 ListRules([Limit => Int, NextMarker => Str])
 
 Each argument is described in detail in: L<Paws::WAFRegional::ListRules>
@@ -1625,6 +1760,15 @@ Each argument is described in detail in: L<Paws::WAFRegional::ListSqlInjectionMa
 Returns: a L<Paws::WAFRegional::ListSqlInjectionMatchSetsResponse> instance
 
 Returns an array of SqlInjectionMatchSet objects.
+
+
+=head2 ListSubscribedRuleGroups([Limit => Int, NextMarker => Str])
+
+Each argument is described in detail in: L<Paws::WAFRegional::ListSubscribedRuleGroups>
+
+Returns: a L<Paws::WAFRegional::ListSubscribedRuleGroupsResponse> instance
+
+Returns an array of RuleGroup objects that you are subscribed to.
 
 
 =head2 ListWebACLs([Limit => Int, NextMarker => Str])
@@ -1939,7 +2083,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::UpdateRegexMatchSe
 
 Returns: a L<Paws::WAFRegional::UpdateRegexMatchSetResponse> instance
 
-Inserts or deletes RegexMatchSetUpdate objects (filters) in a
+Inserts or deletes RegexMatchTuple objects (filters) in a
 RegexMatchSet. For each C<RegexMatchSetUpdate> object, you specify the
 following values:
 
@@ -1953,8 +2097,8 @@ and add a new one.
 
 =item *
 
-The part of a web request that you want AWS WAF to inspect, such as a
-query string or the value of the C<User-Agent> header.
+The part of a web request that you want AWS WAF to inspectupdate, such
+as a query string or the value of the C<User-Agent> header.
 
 =item *
 
@@ -2008,21 +2152,19 @@ Each argument is described in detail in: L<Paws::WAFRegional::UpdateRegexPattern
 
 Returns: a L<Paws::WAFRegional::UpdateRegexPatternSetResponse> instance
 
-Inserts or deletes RegexMatchSetUpdate objects (filters) in a
-RegexPatternSet. For each C<RegexPatternSet> object, you specify the
-following values:
+Inserts or deletes C<RegexPatternString> objects in a RegexPatternSet.
+For each C<RegexPatternString> object, you specify the following
+values:
 
 =over
 
 =item *
 
-Whether to insert or delete the object from the array. If you want to
-change a C<RegexPatternSet> object, you delete the existing object and
-add a new one.
+Whether to insert or delete the C<RegexPatternString>.
 
 =item *
 
-The regular expression pattern that you want AWS WAF to look for. For
+The regular expression pattern that you want to insert or delete. For
 more information, see RegexPatternSet.
 
 =back
@@ -2140,6 +2282,52 @@ CreateWebACL.
 
 If you want to replace one C<ByteMatchSet> or C<IPSet> with another,
 you delete the existing one and add the new one.
+
+For more information about how to use the AWS WAF API to allow or block
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
+
+
+=head2 UpdateRuleGroup(ChangeToken => Str, RuleGroupId => Str, Updates => ArrayRef[L<Paws::WAFRegional::RuleGroupUpdate>])
+
+Each argument is described in detail in: L<Paws::WAFRegional::UpdateRuleGroup>
+
+Returns: a L<Paws::WAFRegional::UpdateRuleGroupResponse> instance
+
+Inserts or deletes ActivatedRule objects in a C<RuleGroup>.
+
+You can only insert C<REGULAR> rules into a rule group.
+
+You can have a maximum of ten rules per rule group.
+
+To create and configure a C<RuleGroup>, perform the following steps:
+
+=over
+
+=item 1.
+
+Create and update the C<Rules> that you want to include in the
+C<RuleGroup>. See CreateRule.
+
+=item 2.
+
+Use C<GetChangeToken> to get the change token that you provide in the
+C<ChangeToken> parameter of an UpdateRuleGroup request.
+
+=item 3.
+
+Submit an C<UpdateRuleGroup> request to add C<Rules> to the
+C<RuleGroup>.
+
+=item 4.
+
+Create and update a C<WebACL> that contains the C<RuleGroup>. See
+CreateWebACL.
+
+=back
+
+If you want to replace one C<Rule> with another, you delete the
+existing one and add the new one.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
