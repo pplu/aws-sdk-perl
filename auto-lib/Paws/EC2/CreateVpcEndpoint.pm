@@ -96,29 +96,29 @@ Default: C<true>
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
 (Interface endpoint) The ID of one or more security groups to associate
-with the network interface.
+with the endpoint network interface.
 
 
 
 =head2 B<REQUIRED> ServiceName => Str
 
-The AWS service name, in the form C<com.amazonaws.I<region>.I<service>
->. To get a list of available services, use the
+The service name. To get a list of available services, use the
 DescribeVpcEndpointServices request.
 
 
 
 =head2 SubnetIds => ArrayRef[Str|Undef]
 
-(Interface endpoint) The ID of one or more subnets in which to create a
-network interface for the endpoint.
+(Interface endpoint) The ID of one or more subnets in which to create
+an endpoint network interface.
 
 
 
 =head2 VpcEndpointType => Str
 
-The type of endpoint. If not specified, the default is a gateway
-endpoint.
+The type of endpoint.
+
+Default: Gateway
 
 Valid values are: C<"Interface">, C<"Gateway">
 

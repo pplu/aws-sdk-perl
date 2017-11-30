@@ -61,7 +61,8 @@ C<state> - The state of the placement group (C<pending> | C<available>
 
 =item *
 
-C<strategy> - The strategy of the placement group (C<cluster>).
+C<strategy> - The strategy of the placement group (C<cluster> |
+C<spread>).
 
 =back
 

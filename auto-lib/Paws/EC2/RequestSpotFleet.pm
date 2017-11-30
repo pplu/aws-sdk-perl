@@ -45,7 +45,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> SpotFleetRequestConfig => L<Paws::EC2::SpotFleetRequestConfigData>
 
-The configuration for the Spot fleet request.
+The configuration for the Spot Fleet request.
 
 
 

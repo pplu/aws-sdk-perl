@@ -17,7 +17,7 @@ Paws::EC2::CancelSpotInstanceRequestsResult
 
 =head2 CancelledSpotInstanceRequests => ArrayRef[L<Paws::EC2::CancelledSpotInstanceRequest>]
 
-One or more Spot instance requests.
+One or more Spot Instance requests.
 
 
 =head2 _request_id => Str

@@ -88,7 +88,7 @@ endpoint.
 
 =head2 ServiceName => Str
 
-  The name of the AWS service to which the endpoint is associated.
+  The name of the service to which the endpoint is associated.
 
 
 =head2 State => Str

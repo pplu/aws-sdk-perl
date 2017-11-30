@@ -45,7 +45,8 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 VpcPeeringConnectionId => Str
 
-The ID of the VPC peering connection.
+The ID of the VPC peering connection. You must specify this parameter
+in the request.
 
 
 

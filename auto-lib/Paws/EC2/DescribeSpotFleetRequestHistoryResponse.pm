@@ -21,7 +21,7 @@ Paws::EC2::DescribeSpotFleetRequestHistoryResponse
 
 =head2 B<REQUIRED> HistoryRecords => ArrayRef[L<Paws::EC2::HistoryRecord>]
 
-Information about the events in the history of the Spot fleet request.
+Information about the events in the history of the Spot Fleet request.
 
 
 =head2 B<REQUIRED> LastEvaluatedTime => Str
@@ -42,7 +42,7 @@ C<null> when there are no more results to return.
 
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 
-The ID of the Spot fleet request.
+The ID of the Spot Fleet request.
 
 
 =head2 B<REQUIRED> StartTime => Str

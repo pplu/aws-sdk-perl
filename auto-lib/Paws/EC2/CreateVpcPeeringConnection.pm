@@ -3,6 +3,7 @@ package Paws::EC2::CreateVpcPeeringConnection;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has PeerOwnerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'peerOwnerId' );
+  has PeerRegion => (is => 'ro', isa => 'Str');
   has PeerVpcId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'peerVpcId' );
   has VpcId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpcId' );
 
@@ -47,22 +48,32 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 PeerOwnerId => Str
 
-The AWS account ID of the owner of the peer VPC.
+The AWS account ID of the owner of the accepter VPC.
 
 Default: Your AWS account ID
+
+
+
+=head2 PeerRegion => Str
+
+The region code for the accepter VPC, if the accepter VPC is located in
+a region other than the region in which you make the request.
+
+Default: The region in which you make the request.
 
 
 
 =head2 PeerVpcId => Str
 
 The ID of the VPC with which you are creating the VPC peering
-connection.
+connection. You must specify this parameter in the request.
 
 
 
 =head2 VpcId => Str
 
-The ID of the requester VPC.
+The ID of the requester VPC. You must specify this parameter in the
+request.
 
 
 

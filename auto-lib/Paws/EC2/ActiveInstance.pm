@@ -59,7 +59,7 @@ C<healthy>.
 
 =head2 SpotInstanceRequestId => Str
 
-  The ID of the Spot instance request.
+  The ID of the Spot Instance request.
 
 
 

@@ -51,12 +51,12 @@ This class has no description
 
 =item *
 
-C<error> - An error with the Spot fleet request.
+C<error> - An error with the Spot Fleet request.
 
 =item *
 
 C<fleetRequestChange> - A change in the status or configuration of the
-Spot fleet request.
+Spot Fleet request.
 
 =item *
 

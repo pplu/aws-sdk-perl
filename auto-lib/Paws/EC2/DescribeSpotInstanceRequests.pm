@@ -56,7 +56,7 @@ C<availability-zone-group> - The Availability Zone group.
 
 =item *
 
-C<create-time> - The time stamp when the Spot instance request was
+C<create-time> - The time stamp when the Spot Instance request was
 created.
 
 =item *
@@ -73,7 +73,7 @@ C<instance-id> - The ID of the instance that fulfilled the request.
 
 =item *
 
-C<launch-group> - The Spot instance launch group.
+C<launch-group> - The Spot Instance launch group.
 
 =item *
 
@@ -128,7 +128,7 @@ with.
 =item *
 
 C<launch.monitoring-enabled> - Whether detailed monitoring is enabled
-for the Spot instance.
+for the Spot Instance.
 
 =item *
 
@@ -136,8 +136,8 @@ C<launch.ramdisk-id> - The RAM disk ID.
 
 =item *
 
-C<launched-availability-zone> - The Availability Zone in which the bid
-is launched.
+C<launched-availability-zone> - The Availability Zone in which the
+request is launched.
 
 =item *
 
@@ -185,31 +185,31 @@ instance (C<Linux/UNIX> | C<Windows>).
 
 =item *
 
-C<spot-instance-request-id> - The Spot instance request ID.
+C<spot-instance-request-id> - The Spot Instance request ID.
 
 =item *
 
-C<spot-price> - The maximum hourly price for any Spot instance launched
+C<spot-price> - The maximum hourly price for any Spot Instance launched
 to fulfill the request.
 
 =item *
 
-C<state> - The state of the Spot instance request (C<open> | C<active>
-| C<closed> | C<cancelled> | C<failed>). Spot bid status information
-can help you track your Amazon EC2 Spot instance requests. For more
-information, see Spot Bid Status
+C<state> - The state of the Spot Instance request (C<open> | C<active>
+| C<closed> | C<cancelled> | C<failed>). Spot request status
+information can help you track your Amazon EC2 Spot Instance requests.
+For more information, see Spot Request Status
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html)
 in the Amazon Elastic Compute Cloud User Guide.
 
 =item *
 
 C<status-code> - The short code describing the most recent evaluation
-of your Spot instance request.
+of your Spot Instance request.
 
 =item *
 
 C<status-message> - The message explaining the status of the Spot
-instance request.
+Instance request.
 
 =item *
 
@@ -236,7 +236,7 @@ is independent of the C<tag-key> filter.
 
 =item *
 
-C<type> - The type of Spot instance request (C<one-time> |
+C<type> - The type of Spot Instance request (C<one-time> |
 C<persistent>).
 
 =item *
@@ -254,7 +254,7 @@ C<valid-until> - The end date of the request.
 
 =head2 SpotInstanceRequestIds => ArrayRef[Str|Undef]
 
-One or more Spot instance request IDs.
+One or more Spot Instance request IDs.
 
 
 

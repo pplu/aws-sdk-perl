@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Bucket => Str
 
-The Amazon S3 bucket in which to store the Spot instance data feed.
+The Amazon S3 bucket in which to store the Spot Instance data feed.
 
 
 

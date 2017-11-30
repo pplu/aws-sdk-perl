@@ -6,10 +6,11 @@ package Paws::EC2::SpotFleetRequestConfigData;
   has FulfilledCapacity => (is => 'ro', isa => 'Num', request_name => 'fulfilledCapacity', traits => ['NameInRequest']);
   has IamFleetRole => (is => 'ro', isa => 'Str', request_name => 'iamFleetRole', traits => ['NameInRequest'], required => 1);
   has InstanceInterruptionBehavior => (is => 'ro', isa => 'Str', request_name => 'instanceInterruptionBehavior', traits => ['NameInRequest']);
-  has LaunchSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SpotFleetLaunchSpecification]', request_name => 'launchSpecifications', traits => ['NameInRequest'], required => 1);
+  has LaunchSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SpotFleetLaunchSpecification]', request_name => 'launchSpecifications', traits => ['NameInRequest']);
+  has LaunchTemplateConfigs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateConfig]', request_name => 'launchTemplateConfigs', traits => ['NameInRequest']);
   has LoadBalancersConfig => (is => 'ro', isa => 'Paws::EC2::LoadBalancersConfig', request_name => 'loadBalancersConfig', traits => ['NameInRequest']);
   has ReplaceUnhealthyInstances => (is => 'ro', isa => 'Bool', request_name => 'replaceUnhealthyInstances', traits => ['NameInRequest']);
-  has SpotPrice => (is => 'ro', isa => 'Str', request_name => 'spotPrice', traits => ['NameInRequest'], required => 1);
+  has SpotPrice => (is => 'ro', isa => 'Str', request_name => 'spotPrice', traits => ['NameInRequest']);
   has TargetCapacity => (is => 'ro', isa => 'Int', request_name => 'targetCapacity', traits => ['NameInRequest'], required => 1);
   has TerminateInstancesWithExpiration => (is => 'ro', isa => 'Bool', request_name => 'terminateInstancesWithExpiration', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
@@ -53,7 +54,7 @@ This class has no description
 =head2 AllocationStrategy => Str
 
   Indicates how to allocate the target capacity across the Spot pools
-specified by the Spot fleet request. The default is C<lowestPrice>.
+specified by the Spot Fleet request. The default is C<lowestPrice>.
 
 
 =head2 ClientToken => Str
@@ -66,9 +67,9 @@ information, see Ensuring Idempotency
 
 =head2 ExcessCapacityTerminationPolicy => Str
 
-  Indicates whether running Spot instances should be terminated if the
-target capacity of the Spot fleet request is decreased below the
-current size of the Spot fleet.
+  Indicates whether running Spot Instances should be terminated if the
+target capacity of the Spot Fleet request is decreased below the
+current size of the Spot Fleet.
 
 
 =head2 FulfilledCapacity => Num
@@ -79,42 +80,48 @@ target capacity.
 
 =head2 B<REQUIRED> IamFleetRole => Str
 
-  Grants the Spot fleet permission to terminate Spot instances on your
-behalf when you cancel its Spot fleet request using
-CancelSpotFleetRequests or when the Spot fleet request expires, if you
+  Grants the Spot Fleet permission to terminate Spot Instances on your
+behalf when you cancel its Spot Fleet request using
+CancelSpotFleetRequests or when the Spot Fleet request expires, if you
 set C<terminateInstancesWithExpiration>.
 
 
 =head2 InstanceInterruptionBehavior => Str
 
-  Indicates whether a Spot instance stops or terminates when it is
-interrupted.
+  The behavior when a Spot Instance is interrupted. The default is
+C<terminate>.
 
 
-=head2 B<REQUIRED> LaunchSpecifications => ArrayRef[L<Paws::EC2::SpotFleetLaunchSpecification>]
+=head2 LaunchSpecifications => ArrayRef[L<Paws::EC2::SpotFleetLaunchSpecification>]
 
-  Information about the launch specifications for the Spot fleet request.
+  The launch specifications for the Spot Fleet request.
+
+
+=head2 LaunchTemplateConfigs => ArrayRef[L<Paws::EC2::LaunchTemplateConfig>]
+
+  The launch template and overrides.
 
 
 =head2 LoadBalancersConfig => L<Paws::EC2::LoadBalancersConfig>
 
   One or more Classic Load Balancers and target groups to attach to the
-Spot fleet request. Spot fleet registers the running Spot instances
+Spot Fleet request. Spot Fleet registers the running Spot Instances
 with the specified Classic Load Balancers and target groups.
 
-With Network Load Balancers, Spot fleet cannot register instances that
+With Network Load Balancers, Spot Fleet cannot register instances that
 have the following instance types: C1, CC1, CC2, CG1, CG2, CR1, CS1,
 G1, G2, HI1, HS1, M1, M2, M3, and T1.
 
 
 =head2 ReplaceUnhealthyInstances => Bool
 
-  Indicates whether Spot fleet should replace unhealthy instances.
+  Indicates whether Spot Fleet should replace unhealthy instances.
 
 
-=head2 B<REQUIRED> SpotPrice => Str
+=head2 SpotPrice => Str
 
-  The bid price per unit hour.
+  The maximum price per unit hour that you are willing to pay for a Spot
+Instance. The default is the On-Demand price.
 
 
 =head2 B<REQUIRED> TargetCapacity => Int
@@ -122,12 +129,14 @@ G1, G2, HI1, HS1, M1, M2, M3, and T1.
   The number of units to request. You can choose to set the target
 capacity in terms of instances or a performance characteristic that is
 important to your application workload, such as vCPUs, memory, or I/O.
+If the request type is C<maintain>, you can specify a target capacity
+of 0 and add capacity later.
 
 
 =head2 TerminateInstancesWithExpiration => Bool
 
-  Indicates whether running Spot instances should be terminated when the
-Spot fleet request expires.
+  Indicates whether running Spot Instances should be terminated when the
+Spot Fleet request expires.
 
 
 =head2 Type => Str
@@ -135,10 +144,10 @@ Spot fleet request expires.
   The type of request. Indicates whether the fleet will only C<request>
 the target capacity or also attempt to C<maintain> it. When you
 C<request> a certain target capacity, the fleet will only place the
-required bids. It will not attempt to replenish Spot instances if
-capacity is diminished, nor will it submit bids in alternative Spot
+required requests. It will not attempt to replenish Spot Instances if
+capacity is diminished, nor will it submit requests in alternative Spot
 pools if capacity is not available. When you want to C<maintain> a
-certain target capacity, fleet will place the required bids to meet
+certain target capacity, fleet will place the required requests to meet
 this target capacity. It will also automatically replenish any
 interrupted instances. Default: C<maintain>.
 
@@ -154,7 +163,8 @@ fulfilling the request immediately.
 
   The end date and time of the request, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). At this point, no new Spot
-instance requests are placed or enabled to fulfill the request.
+Instance requests are placed or able to fulfill the request. The
+default end date is 7 days from the current date.
 
 
 

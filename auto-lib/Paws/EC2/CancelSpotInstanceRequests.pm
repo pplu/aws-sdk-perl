@@ -45,7 +45,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> SpotInstanceRequestIds => ArrayRef[Str|Undef]
 
-One or more Spot instance request IDs.
+One or more Spot Instance request IDs.
 
 
 

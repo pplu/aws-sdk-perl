@@ -40,7 +40,7 @@ This class has no description
 
 =head2 Code => Str
 
-  The status code. For a list of status codes, see Spot Bid Status Codes
+  The status code. For a list of status codes, see Spot Status Codes
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html#spot-instance-bid-status-understand)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 

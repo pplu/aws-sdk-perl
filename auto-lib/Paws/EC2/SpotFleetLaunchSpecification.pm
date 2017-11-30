@@ -90,8 +90,7 @@ Default: C<false>
 
 =head2 InstanceType => Str
 
-  The instance type. Note that T2 and HS1 instance types are not
-supported.
+  The instance type.
 
 
 =head2 KernelId => Str
@@ -136,10 +135,10 @@ groups.
 
 =head2 SpotPrice => Str
 
-  The bid price per unit hour for the specified instance type. If this
-value is not specified, the default is the Spot bid price specified for
-the fleet. To determine the bid price per unit hour, divide the Spot
-bid price by the value of C<WeightedCapacity>.
+  The maximum price per unit hour that you are willing to pay for a Spot
+Instance. If this value is not specified, the default is the Spot price
+specified for the fleet. To determine the Spot price per unit hour,
+divide the Spot price by the value of C<WeightedCapacity>.
 
 
 =head2 SubnetId => Str

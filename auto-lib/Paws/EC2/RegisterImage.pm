@@ -142,7 +142,7 @@ a PV AMI can make instances launched from the AMI unreachable.
 
 =head2 VirtualizationType => Str
 
-The type of virtualization.
+The type of virtualization (C<hvm> | C<paravirtual>).
 
 Default: C<paravirtual>
 
