@@ -53,7 +53,7 @@ This is the same as the partition key value of the item.
 
 =item *
 
-C<SizeEstimateRange> - An estimate of item collection size, expressed
+C<SizeEstimateRangeGB> - An estimate of item collection size, expressed
 in GB. This is a two-element array containing a lower bound and an
 upper bound for the estimate. The estimate includes the size of all the
 items in the table, plus the size of all attributes projected into all

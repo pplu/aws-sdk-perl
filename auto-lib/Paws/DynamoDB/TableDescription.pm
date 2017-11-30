@@ -9,8 +9,10 @@ package Paws::DynamoDB::TableDescription;
   has LatestStreamLabel => (is => 'ro', isa => 'Str');
   has LocalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::LocalSecondaryIndexDescription]');
   has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughputDescription');
+  has RestoreSummary => (is => 'ro', isa => 'Paws::DynamoDB::RestoreSummary');
   has StreamSpecification => (is => 'ro', isa => 'Paws::DynamoDB::StreamSpecification');
   has TableArn => (is => 'ro', isa => 'Str');
+  has TableId => (is => 'ro', isa => 'Str');
   has TableName => (is => 'ro', isa => 'Str');
   has TableSizeBytes => (is => 'ro', isa => 'Int');
   has TableStatus => (is => 'ro', isa => 'Str');
@@ -365,6 +367,11 @@ and write capacity units, along with data about increases and
 decreases.
 
 
+=head2 RestoreSummary => L<Paws::DynamoDB::RestoreSummary>
+
+  Contains details for the restore.
+
+
 =head2 StreamSpecification => L<Paws::DynamoDB::StreamSpecification>
 
   The current DynamoDB Streams configuration for the table.
@@ -373,6 +380,11 @@ decreases.
 =head2 TableArn => Str
 
   The Amazon Resource Name (ARN) that uniquely identifies the table.
+
+
+=head2 TableId => Str
+
+  Unique identifier for the table for which the backup was created.
 
 
 =head2 TableName => Str
