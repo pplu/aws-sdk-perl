@@ -2,8 +2,10 @@
 package Paws::SSM::CreateDocument;
   use Moose;
   has Content => (is => 'ro', isa => 'Str', required => 1);
+  has DocumentFormat => (is => 'ro', isa => 'Str');
   has DocumentType => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has TargetType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -37,9 +39,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Content => Str
 
-A valid JSON string.
+A valid JSON or YAML string.
 
 
+
+=head2 DocumentFormat => Str
+
+Specify the document format for the request. The document format can be
+either JSON or YAML. JSON is the default format.
+
+Valid values are: C<"YAML">, C<"JSON">
 
 =head2 DocumentType => Str
 
@@ -51,6 +60,19 @@ Valid values are: C<"Command">, C<"Policy">, C<"Automation">
 =head2 B<REQUIRED> Name => Str
 
 A name for the Systems Manager document.
+
+
+
+=head2 TargetType => Str
+
+Specify a target type to define the kinds of resources the document can
+run on. For example, to run a document on EC2 instances, specify the
+following value: /AWS::EC2::Instance. If you specify a value of '/' the
+document can run on all types of resources. If you don't specify a
+value, the document can't run on any resources. For a list of valid
+resource types, see AWS Resource Types Reference
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
+in the I<AWS CloudFormation User Guide>.
 
 
 

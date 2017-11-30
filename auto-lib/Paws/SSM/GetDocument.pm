@@ -1,6 +1,7 @@
 
 package Paws::SSM::GetDocument;
   use Moose;
+  has DocumentFormat => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
 
@@ -33,6 +34,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
+=head2 DocumentFormat => Str
+
+Returns the document in the specified format. The document format can
+be either JSON or YAML. JSON is the default format.
+
+Valid values are: C<"YAML">, C<"JSON">
 
 =head2 DocumentVersion => Str
 

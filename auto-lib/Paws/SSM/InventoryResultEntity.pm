@@ -39,7 +39,7 @@ Inventory query results.
 
 =head2 Data => L<Paws::SSM::InventoryResultItemMap>
 
-  The data section in the inventory result entity json.
+  The data section in the inventory result entity JSON.
 
 
 =head2 Id => Str

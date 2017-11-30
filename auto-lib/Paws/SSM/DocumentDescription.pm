@@ -3,6 +3,7 @@ package Paws::SSM::DocumentDescription;
   has CreatedDate => (is => 'ro', isa => 'Str');
   has DefaultVersion => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has DocumentFormat => (is => 'ro', isa => 'Str');
   has DocumentType => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has Hash => (is => 'ro', isa => 'Str');
@@ -16,6 +17,7 @@ package Paws::SSM::DocumentDescription;
   has Sha1 => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
+  has TargetType => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -35,7 +37,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::DocumentDescription object:
 
-  $service_obj->Method(Att1 => { CreatedDate => $value, ..., Tags => $value  });
+  $service_obj->Method(Att1 => { CreatedDate => $value, ..., TargetType => $value  });
 
 =head3 Results returned from an API call
 
@@ -64,6 +66,11 @@ Describes a Systems Manager document.
 =head2 Description => Str
 
   A description of the document.
+
+
+=head2 DocumentFormat => Str
+
+  The document format, either JSON or YAML.
 
 
 =head2 DocumentType => Str
@@ -134,6 +141,15 @@ Sha1 hashes have been deprecated.
 =head2 Tags => ArrayRef[L<Paws::SSM::Tag>]
 
   The tags, or metadata, that have been applied to the document.
+
+
+=head2 TargetType => Str
+
+  The target type which defines the kinds of resources the document can
+run on. For example, /AWS::EC2::Instance. For a list of valid resource
+types, see AWS Resource Types Reference
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
+in the I<AWS CloudFormation User Guide>.
 
 
 

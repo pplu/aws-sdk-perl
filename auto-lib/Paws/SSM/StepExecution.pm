@@ -6,11 +6,16 @@ package Paws::SSM::StepExecution;
   has FailureDetails => (is => 'ro', isa => 'Paws::SSM::FailureDetails');
   has FailureMessage => (is => 'ro', isa => 'Str');
   has Inputs => (is => 'ro', isa => 'Paws::SSM::NormalStringMap');
+  has MaxAttempts => (is => 'ro', isa => 'Int');
+  has OnFailure => (is => 'ro', isa => 'Str');
   has Outputs => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
+  has OverriddenParameters => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
   has Response => (is => 'ro', isa => 'Str');
   has ResponseCode => (is => 'ro', isa => 'Str');
+  has StepExecutionId => (is => 'ro', isa => 'Str');
   has StepName => (is => 'ro', isa => 'Str');
   has StepStatus => (is => 'ro', isa => 'Str');
+  has TimeoutSeconds => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +35,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::StepExecution object:
 
-  $service_obj->Method(Att1 => { Action => $value, ..., StepStatus => $value  });
+  $service_obj->Method(Att1 => { Action => $value, ..., TimeoutSeconds => $value  });
 
 =head3 Results returned from an API call
 
@@ -80,9 +85,25 @@ If the step is in Pending status, this field is not populated.
   Fully-resolved values passed into the step before execution.
 
 
+=head2 MaxAttempts => Int
+
+  The maximum number of tries to run the action of the step. The default
+value is 1.
+
+
+=head2 OnFailure => Str
+
+  The action to take if the step fails. The default value is Abort.
+
+
 =head2 Outputs => L<Paws::SSM::AutomationParameterMap>
 
   Returned values from the execution of the step.
+
+
+=head2 OverriddenParameters => L<Paws::SSM::AutomationParameterMap>
+
+  A user-specified list of parameters to override when executing a step.
 
 
 =head2 Response => Str
@@ -95,6 +116,11 @@ If the step is in Pending status, this field is not populated.
   The response code returned by the execution of the step.
 
 
+=head2 StepExecutionId => Str
+
+  The unique ID of a step execution.
+
+
 =head2 StepName => Str
 
   The name of this execution step.
@@ -104,6 +130,11 @@ If the step is in Pending status, this field is not populated.
 
   The execution status for this step. Valid values include: Pending,
 InProgress, Success, Cancelled, Failed, and TimedOut.
+
+
+=head2 TimeoutSeconds => Int
+
+  The timeout seconds of the step.
 
 
 

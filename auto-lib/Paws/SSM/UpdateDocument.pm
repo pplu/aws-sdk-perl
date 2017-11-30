@@ -2,8 +2,10 @@
 package Paws::SSM::UpdateDocument;
   use Moose;
   has Content => (is => 'ro', isa => 'Str', required => 1);
+  has DocumentFormat => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has TargetType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -41,6 +43,13 @@ The content in a document that you want to update.
 
 
 
+=head2 DocumentFormat => Str
+
+Specify the document format for the new document version. Systems
+Manager supports JSON and YAML documents. JSON is the default format.
+
+Valid values are: C<"YAML">, C<"JSON">
+
 =head2 DocumentVersion => Str
 
 The version of the document that you want to update.
@@ -50,6 +59,12 @@ The version of the document that you want to update.
 =head2 B<REQUIRED> Name => Str
 
 The name of the document that you want to update.
+
+
+
+=head2 TargetType => Str
+
+Specify a new target type for the document.
 
 
 
