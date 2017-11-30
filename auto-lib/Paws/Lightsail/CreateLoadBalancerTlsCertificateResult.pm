@@ -1,5 +1,5 @@
 
-package Paws::Lightsail::AttachDiskResult;
+package Paws::Lightsail::CreateLoadBalancerTlsCertificateResult;
   use Moose;
   has Operations => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Operation]', traits => ['NameInRequest'], request_name => 'operations' );
 
@@ -9,14 +9,14 @@ package Paws::Lightsail::AttachDiskResult;
 
 =head1 NAME
 
-Paws::Lightsail::AttachDiskResult
+Paws::Lightsail::CreateLoadBalancerTlsCertificateResult
 
 =head1 ATTRIBUTES
 
 
 =head2 Operations => ArrayRef[L<Paws::Lightsail::Operation>]
 
-An object describing the API operations.
+An object containing information about the API operations.
 
 
 =head2 _request_id => Str

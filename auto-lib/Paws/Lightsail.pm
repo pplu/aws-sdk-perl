@@ -24,6 +24,16 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::AttachDisk', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AttachInstancesToLoadBalancer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::AttachInstancesToLoadBalancer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AttachLoadBalancerTlsCertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::AttachLoadBalancerTlsCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AttachStaticIp {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::AttachStaticIp', @_);
@@ -79,6 +89,16 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::CreateKeyPair', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateLoadBalancer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::CreateLoadBalancer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateLoadBalancerTlsCertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::CreateLoadBalancerTlsCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDisk {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteDisk', @_);
@@ -114,9 +134,24 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteKeyPair', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteLoadBalancer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteLoadBalancer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteLoadBalancerTlsCertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteLoadBalancerTlsCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DetachDisk {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::DetachDisk', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DetachInstancesFromLoadBalancer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::DetachInstancesFromLoadBalancer', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DetachStaticIp {
@@ -224,6 +259,26 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::GetKeyPairs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetLoadBalancer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetLoadBalancer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetLoadBalancerMetricData {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetLoadBalancerMetricData', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetLoadBalancers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetLoadBalancers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetLoadBalancerTlsCertificates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetLoadBalancerTlsCertificates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetOperation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::GetOperation', @_);
@@ -307,6 +362,11 @@ package Paws::Lightsail;
   sub UpdateDomainEntry {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::UpdateDomainEntry', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateLoadBalancerAttribute {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::UpdateLoadBalancerAttribute', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -519,7 +579,7 @@ package Paws::Lightsail;
   }
 
 
-  sub operations { qw/AllocateStaticIp AttachDisk AttachStaticIp CloseInstancePublicPorts CreateDisk CreateDiskFromSnapshot CreateDiskSnapshot CreateDomain CreateDomainEntry CreateInstances CreateInstancesFromSnapshot CreateInstanceSnapshot CreateKeyPair DeleteDisk DeleteDiskSnapshot DeleteDomain DeleteDomainEntry DeleteInstance DeleteInstanceSnapshot DeleteKeyPair DetachDisk DetachStaticIp DownloadDefaultKeyPair GetActiveNames GetBlueprints GetBundles GetDisk GetDisks GetDiskSnapshot GetDiskSnapshots GetDomain GetDomains GetInstance GetInstanceAccessDetails GetInstanceMetricData GetInstancePortStates GetInstances GetInstanceSnapshot GetInstanceSnapshots GetInstanceState GetKeyPair GetKeyPairs GetOperation GetOperations GetOperationsForResource GetRegions GetStaticIp GetStaticIps ImportKeyPair IsVpcPeered OpenInstancePublicPorts PeerVpc PutInstancePublicPorts RebootInstance ReleaseStaticIp StartInstance StopInstance UnpeerVpc UpdateDomainEntry / }
+  sub operations { qw/AllocateStaticIp AttachDisk AttachInstancesToLoadBalancer AttachLoadBalancerTlsCertificate AttachStaticIp CloseInstancePublicPorts CreateDisk CreateDiskFromSnapshot CreateDiskSnapshot CreateDomain CreateDomainEntry CreateInstances CreateInstancesFromSnapshot CreateInstanceSnapshot CreateKeyPair CreateLoadBalancer CreateLoadBalancerTlsCertificate DeleteDisk DeleteDiskSnapshot DeleteDomain DeleteDomainEntry DeleteInstance DeleteInstanceSnapshot DeleteKeyPair DeleteLoadBalancer DeleteLoadBalancerTlsCertificate DetachDisk DetachInstancesFromLoadBalancer DetachStaticIp DownloadDefaultKeyPair GetActiveNames GetBlueprints GetBundles GetDisk GetDisks GetDiskSnapshot GetDiskSnapshots GetDomain GetDomains GetInstance GetInstanceAccessDetails GetInstanceMetricData GetInstancePortStates GetInstances GetInstanceSnapshot GetInstanceSnapshots GetInstanceState GetKeyPair GetKeyPairs GetLoadBalancer GetLoadBalancerMetricData GetLoadBalancers GetLoadBalancerTlsCertificates GetOperation GetOperations GetOperationsForResource GetRegions GetStaticIp GetStaticIps ImportKeyPair IsVpcPeered OpenInstancePublicPorts PeerVpc PutInstancePublicPorts RebootInstance ReleaseStaticIp StartInstance StopInstance UnpeerVpc UpdateDomainEntry UpdateLoadBalancerAttribute / }
 
 1;
 
@@ -582,6 +642,28 @@ Returns: a L<Paws::Lightsail::AttachDiskResult> instance
 
 Attaches a block storage disk to a running or stopped Lightsail
 instance and exposes it to the instance with the specified disk name.
+
+
+=head2 AttachInstancesToLoadBalancer(InstanceNames => ArrayRef[Str|Undef], LoadBalancerName => Str)
+
+Each argument is described in detail in: L<Paws::Lightsail::AttachInstancesToLoadBalancer>
+
+Returns: a L<Paws::Lightsail::AttachInstancesToLoadBalancerResult> instance
+
+Attaches one or more Lightsail instances to a load balancer.
+
+
+=head2 AttachLoadBalancerTlsCertificate(CertificateName => Str, LoadBalancerName => Str)
+
+Each argument is described in detail in: L<Paws::Lightsail::AttachLoadBalancerTlsCertificate>
+
+Returns: a L<Paws::Lightsail::AttachLoadBalancerTlsCertificateResult> instance
+
+Attaches a Transport Layer Security (TLS) certificate to your load
+balancer.
+
+TLS is just an updated, more secure version of Secure Socket Layer
+(SSL).
 
 
 =head2 AttachStaticIp(InstanceName => Str, StaticIpName => Str)
@@ -710,6 +792,31 @@ Returns: a L<Paws::Lightsail::CreateKeyPairResult> instance
 Creates sn SSH key pair.
 
 
+=head2 CreateLoadBalancer(InstancePort => Int, LoadBalancerName => Str, [CertificateAlternativeNames => ArrayRef[Str|Undef], CertificateDomainName => Str, CertificateName => Str, HealthCheckPath => Str])
+
+Each argument is described in detail in: L<Paws::Lightsail::CreateLoadBalancer>
+
+Returns: a L<Paws::Lightsail::CreateLoadBalancerResult> instance
+
+Creates a Lightsail load balancer.
+
+When you create a load balancer, you can specify certificates and port
+settings. You can create up to 5 load balancers per AWS Region in your
+account.
+
+
+=head2 CreateLoadBalancerTlsCertificate(CertificateDomainName => Str, CertificateName => Str, LoadBalancerName => Str, [CertificateAlternativeNames => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::Lightsail::CreateLoadBalancerTlsCertificate>
+
+Returns: a L<Paws::Lightsail::CreateLoadBalancerTlsCertificateResult> instance
+
+Creates a Lightsail load balancer TLS certificate.
+
+TLS is just an updated, more secure version of Secure Socket Layer
+(SSL).
+
+
 =head2 DeleteDisk(DiskName => Str)
 
 Each argument is described in detail in: L<Paws::Lightsail::DeleteDisk>
@@ -786,6 +893,25 @@ Returns: a L<Paws::Lightsail::DeleteKeyPairResult> instance
 Deletes a specific SSH key pair.
 
 
+=head2 DeleteLoadBalancer(LoadBalancerName => Str)
+
+Each argument is described in detail in: L<Paws::Lightsail::DeleteLoadBalancer>
+
+Returns: a L<Paws::Lightsail::DeleteLoadBalancerResult> instance
+
+Deletes a Lightsail load balancer.
+
+
+=head2 DeleteLoadBalancerTlsCertificate(CertificateName => Str, LoadBalancerName => Str, [Force => Bool])
+
+Each argument is described in detail in: L<Paws::Lightsail::DeleteLoadBalancerTlsCertificate>
+
+Returns: a L<Paws::Lightsail::DeleteLoadBalancerTlsCertificateResult> instance
+
+Deletes a TLS/SSL certificate associated with a Lightsail load
+balancer.
+
+
 =head2 DetachDisk(DiskName => Str)
 
 Each argument is described in detail in: L<Paws::Lightsail::DetachDisk>
@@ -795,6 +921,15 @@ Returns: a L<Paws::Lightsail::DetachDiskResult> instance
 Detaches a stopped block storage disk from a Lightsail instance. Make
 sure to unmount any file systems on the device within your operating
 system before stopping the instance and detaching the disk.
+
+
+=head2 DetachInstancesFromLoadBalancer(InstanceNames => ArrayRef[Str|Undef], LoadBalancerName => Str)
+
+Each argument is described in detail in: L<Paws::Lightsail::DetachInstancesFromLoadBalancer>
+
+Returns: a L<Paws::Lightsail::DetachInstancesFromLoadBalancerResult> instance
+
+Detaches the specified instances from a Lightsail load balancer.
 
 
 =head2 DetachStaticIp(StaticIpName => Str)
@@ -1008,6 +1143,51 @@ Returns: a L<Paws::Lightsail::GetKeyPairsResult> instance
 Returns information about all key pairs in the user's account.
 
 
+=head2 GetLoadBalancer(LoadBalancerName => Str)
+
+Each argument is described in detail in: L<Paws::Lightsail::GetLoadBalancer>
+
+Returns: a L<Paws::Lightsail::GetLoadBalancerResult> instance
+
+Returns information about the specified Lightsail load balancer.
+
+
+=head2 GetLoadBalancerMetricData(EndTime => Str, LoadBalancerName => Str, MetricName => Str, Period => Int, StartTime => Str, Statistics => ArrayRef[Str|Undef], Unit => Str)
+
+Each argument is described in detail in: L<Paws::Lightsail::GetLoadBalancerMetricData>
+
+Returns: a L<Paws::Lightsail::GetLoadBalancerMetricDataResult> instance
+
+Returns information about health metrics for your Lightsail load
+balancer.
+
+
+=head2 GetLoadBalancers([PageToken => Str])
+
+Each argument is described in detail in: L<Paws::Lightsail::GetLoadBalancers>
+
+Returns: a L<Paws::Lightsail::GetLoadBalancersResult> instance
+
+Returns information about all load balancers in an account.
+
+If you are describing a long list of load balancers, you can paginate
+the output to make the list more manageable. You can use the pageToken
+and nextPageToken values to retrieve the next items in the list.
+
+
+=head2 GetLoadBalancerTlsCertificates(LoadBalancerName => Str)
+
+Each argument is described in detail in: L<Paws::Lightsail::GetLoadBalancerTlsCertificates>
+
+Returns: a L<Paws::Lightsail::GetLoadBalancerTlsCertificatesResult> instance
+
+Returns information about the TLS certificates that are associated with
+the specified Lightsail load balancer.
+
+TLS is just an updated, more secure version of Secure Socket Layer
+(SSL).
+
+
 =head2 GetOperation(OperationId => Str)
 
 Each argument is described in detail in: L<Paws::Lightsail::GetOperation>
@@ -1176,6 +1356,15 @@ Each argument is described in detail in: L<Paws::Lightsail::UpdateDomainEntry>
 Returns: a L<Paws::Lightsail::UpdateDomainEntryResult> instance
 
 Updates a domain recordset after it is created.
+
+
+=head2 UpdateLoadBalancerAttribute(AttributeName => Str, AttributeValue => Str, LoadBalancerName => Str)
+
+Each argument is described in detail in: L<Paws::Lightsail::UpdateLoadBalancerAttribute>
+
+Returns: a L<Paws::Lightsail::UpdateLoadBalancerAttributeResult> instance
+
+Updates the specified attribute for a load balancer.
 
 
 

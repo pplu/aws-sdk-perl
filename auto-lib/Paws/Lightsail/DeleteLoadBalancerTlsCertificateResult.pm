@@ -1,5 +1,5 @@
 
-package Paws::Lightsail::AttachDiskResult;
+package Paws::Lightsail::DeleteLoadBalancerTlsCertificateResult;
   use Moose;
   has Operations => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Operation]', traits => ['NameInRequest'], request_name => 'operations' );
 
@@ -9,7 +9,7 @@ package Paws::Lightsail::AttachDiskResult;
 
 =head1 NAME
 
-Paws::Lightsail::AttachDiskResult
+Paws::Lightsail::DeleteLoadBalancerTlsCertificateResult
 
 =head1 ATTRIBUTES
 

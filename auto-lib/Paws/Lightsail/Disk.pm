@@ -64,7 +64,7 @@ Describes a system disk or an block storage disk.
 
   (Deprecated) The attachment state of the disk.
 
-In releases prior to November 9, 2017, this parameter returned
+In releases prior to November 14, 2017, this parameter returned
 C<attached> for system disks in the API response. It is now deprecated,
 but still included in the response. Use C<isAttached> instead.
 
@@ -78,7 +78,7 @@ but still included in the response. Use C<isAttached> instead.
 
   (Deprecated) The number of GB in use by the disk.
 
-In releases prior to November 9, 2017, this parameter was not included
+In releases prior to November 14, 2017, this parameter was not included
 in the API response. It is now deprecated.
 
 

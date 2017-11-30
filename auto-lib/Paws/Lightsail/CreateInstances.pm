@@ -91,8 +91,7 @@ The name of your key pair.
 =head2 UserData => Str
 
 A launch script you can create that configures a server with additional
-user data. For example, you might want to run C<apt-get E<ndash>y
-update>.
+user data. For example, you might want to run C<apt-get -y update>.
 
 Depending on the machine image you choose, the command to get software
 on your instance varies. Amazon Linux and CentOS use C<yum>, Debian and
