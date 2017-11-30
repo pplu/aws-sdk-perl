@@ -7,6 +7,7 @@ package Paws::Greengrass::CreateGroupVersion;
   has FunctionDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId', required => 1);
   has LoggerDefinitionVersionArn => (is => 'ro', isa => 'Str');
+  has ResourceDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has SubscriptionDefinitionVersionArn => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -72,7 +73,13 @@ The unique Id of the AWS Greengrass Group
 
 =head2 LoggerDefinitionVersionArn => Str
 
-Logger definitionv ersion arn for this group.
+Logger definition version arn for this group.
+
+
+
+=head2 ResourceDefinitionVersionArn => Str
+
+Resource definition version arn for this group.
 
 
 

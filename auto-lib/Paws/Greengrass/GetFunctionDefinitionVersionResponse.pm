@@ -31,7 +31,7 @@ Timestamp when the funtion definition version was created.
 
 =head2 Definition => L<Paws::Greengrass::FunctionDefinitionVersion>
 
-Information on the definition.
+Information on the definition
 
 
 =head2 Id => Str

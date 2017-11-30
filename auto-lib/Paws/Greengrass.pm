@@ -83,6 +83,21 @@ package Paws::Greengrass;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::CreateLoggerDefinitionVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateResourceDefinition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::CreateResourceDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateResourceDefinitionVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::CreateResourceDefinitionVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateSoftwareUpdateJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::CreateSoftwareUpdateJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateSubscriptionDefinition {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::CreateSubscriptionDefinition', @_);
@@ -116,6 +131,11 @@ package Paws::Greengrass;
   sub DeleteLoggerDefinition {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::DeleteLoggerDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteResourceDefinition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::DeleteResourceDefinition', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteSubscriptionDefinition {
@@ -208,6 +228,16 @@ package Paws::Greengrass;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::GetLoggerDefinitionVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetResourceDefinition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::GetResourceDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetResourceDefinitionVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::GetResourceDefinitionVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetServiceRoleForAccount {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::GetServiceRoleForAccount', @_);
@@ -283,6 +313,16 @@ package Paws::Greengrass;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::ListLoggerDefinitionVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListResourceDefinitions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::ListResourceDefinitions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListResourceDefinitionVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::ListResourceDefinitionVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListSubscriptionDefinitions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::ListSubscriptionDefinitions', @_);
@@ -333,6 +373,11 @@ package Paws::Greengrass;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::UpdateLoggerDefinition', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateResourceDefinition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::UpdateResourceDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateSubscriptionDefinition {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::UpdateSubscriptionDefinition', @_);
@@ -341,7 +386,7 @@ package Paws::Greengrass;
   
 
 
-  sub operations { qw/AssociateRoleToGroup AssociateServiceRoleToAccount CreateCoreDefinition CreateCoreDefinitionVersion CreateDeployment CreateDeviceDefinition CreateDeviceDefinitionVersion CreateFunctionDefinition CreateFunctionDefinitionVersion CreateGroup CreateGroupCertificateAuthority CreateGroupVersion CreateLoggerDefinition CreateLoggerDefinitionVersion CreateSubscriptionDefinition CreateSubscriptionDefinitionVersion DeleteCoreDefinition DeleteDeviceDefinition DeleteFunctionDefinition DeleteGroup DeleteLoggerDefinition DeleteSubscriptionDefinition DisassociateRoleFromGroup DisassociateServiceRoleFromAccount GetAssociatedRole GetConnectivityInfo GetCoreDefinition GetCoreDefinitionVersion GetDeploymentStatus GetDeviceDefinition GetDeviceDefinitionVersion GetFunctionDefinition GetFunctionDefinitionVersion GetGroup GetGroupCertificateAuthority GetGroupCertificateConfiguration GetGroupVersion GetLoggerDefinition GetLoggerDefinitionVersion GetServiceRoleForAccount GetSubscriptionDefinition GetSubscriptionDefinitionVersion ListCoreDefinitions ListCoreDefinitionVersions ListDeployments ListDeviceDefinitions ListDeviceDefinitionVersions ListFunctionDefinitions ListFunctionDefinitionVersions ListGroupCertificateAuthorities ListGroups ListGroupVersions ListLoggerDefinitions ListLoggerDefinitionVersions ListSubscriptionDefinitions ListSubscriptionDefinitionVersions ResetDeployments UpdateConnectivityInfo UpdateCoreDefinition UpdateDeviceDefinition UpdateFunctionDefinition UpdateGroup UpdateGroupCertificateConfiguration UpdateLoggerDefinition UpdateSubscriptionDefinition / }
+  sub operations { qw/AssociateRoleToGroup AssociateServiceRoleToAccount CreateCoreDefinition CreateCoreDefinitionVersion CreateDeployment CreateDeviceDefinition CreateDeviceDefinitionVersion CreateFunctionDefinition CreateFunctionDefinitionVersion CreateGroup CreateGroupCertificateAuthority CreateGroupVersion CreateLoggerDefinition CreateLoggerDefinitionVersion CreateResourceDefinition CreateResourceDefinitionVersion CreateSoftwareUpdateJob CreateSubscriptionDefinition CreateSubscriptionDefinitionVersion DeleteCoreDefinition DeleteDeviceDefinition DeleteFunctionDefinition DeleteGroup DeleteLoggerDefinition DeleteResourceDefinition DeleteSubscriptionDefinition DisassociateRoleFromGroup DisassociateServiceRoleFromAccount GetAssociatedRole GetConnectivityInfo GetCoreDefinition GetCoreDefinitionVersion GetDeploymentStatus GetDeviceDefinition GetDeviceDefinitionVersion GetFunctionDefinition GetFunctionDefinitionVersion GetGroup GetGroupCertificateAuthority GetGroupCertificateConfiguration GetGroupVersion GetLoggerDefinition GetLoggerDefinitionVersion GetResourceDefinition GetResourceDefinitionVersion GetServiceRoleForAccount GetSubscriptionDefinition GetSubscriptionDefinitionVersion ListCoreDefinitions ListCoreDefinitionVersions ListDeployments ListDeviceDefinitions ListDeviceDefinitionVersions ListFunctionDefinitions ListFunctionDefinitionVersions ListGroupCertificateAuthorities ListGroups ListGroupVersions ListLoggerDefinitions ListLoggerDefinitionVersions ListResourceDefinitions ListResourceDefinitionVersions ListSubscriptionDefinitions ListSubscriptionDefinitionVersions ResetDeployments UpdateConnectivityInfo UpdateCoreDefinition UpdateDeviceDefinition UpdateFunctionDefinition UpdateGroup UpdateGroupCertificateConfiguration UpdateLoggerDefinition UpdateResourceDefinition UpdateSubscriptionDefinition / }
 
 1;
 
@@ -497,7 +542,7 @@ Creates a CA for the group. If a CA already exists, it will rotate the
 existing CA.
 
 
-=head2 CreateGroupVersion(GroupId => Str, [AmznClientToken => Str, CoreDefinitionVersionArn => Str, DeviceDefinitionVersionArn => Str, FunctionDefinitionVersionArn => Str, LoggerDefinitionVersionArn => Str, SubscriptionDefinitionVersionArn => Str])
+=head2 CreateGroupVersion(GroupId => Str, [AmznClientToken => Str, CoreDefinitionVersionArn => Str, DeviceDefinitionVersionArn => Str, FunctionDefinitionVersionArn => Str, LoggerDefinitionVersionArn => Str, ResourceDefinitionVersionArn => Str, SubscriptionDefinitionVersionArn => Str])
 
 Each argument is described in detail in: L<Paws::Greengrass::CreateGroupVersion>
 
@@ -524,6 +569,38 @@ Each argument is described in detail in: L<Paws::Greengrass::CreateLoggerDefinit
 Returns: a L<Paws::Greengrass::CreateLoggerDefinitionVersionResponse> instance
 
 Creates a version of a logger definition that has already been defined.
+
+
+=head2 CreateResourceDefinition([AmznClientToken => Str, InitialVersion => L<Paws::Greengrass::ResourceDefinitionVersion>, Name => Str])
+
+Each argument is described in detail in: L<Paws::Greengrass::CreateResourceDefinition>
+
+Returns: a L<Paws::Greengrass::CreateResourceDefinitionResponse> instance
+
+Creates a resource definition which contains a list of resources to be
+used in a group. You can create an initial version of the definition by
+providing a list of resources now, or use
+``CreateResourceDefinitionVersion`` later.
+
+
+=head2 CreateResourceDefinitionVersion(ResourceDefinitionId => Str, [AmznClientToken => Str, Resources => ArrayRef[L<Paws::Greengrass::Resource>]])
+
+Each argument is described in detail in: L<Paws::Greengrass::CreateResourceDefinitionVersion>
+
+Returns: a L<Paws::Greengrass::CreateResourceDefinitionVersionResponse> instance
+
+Create a version of a resource definition that has already been
+defined.
+
+
+=head2 CreateSoftwareUpdateJob([AmznClientToken => Str, S3UrlSignerRole => Str, SoftwareToUpdate => Str, UpdateAgentLogLevel => Str, UpdateTargets => ArrayRef[Str|Undef], UpdateTargetsArchitecture => Str, UpdateTargetsOperatingSystem => Str])
+
+Each argument is described in detail in: L<Paws::Greengrass::CreateSoftwareUpdateJob>
+
+Returns: a L<Paws::Greengrass::CreateSoftwareUpdateJobResponse> instance
+
+Creates an Iot Job that will trigger your Greengrass Cores to update
+the software they are running.
 
 
 =head2 CreateSubscriptionDefinition([AmznClientToken => Str, InitialVersion => L<Paws::Greengrass::SubscriptionDefinitionVersion>, Name => Str])
@@ -594,6 +671,15 @@ Returns: a L<Paws::Greengrass::DeleteLoggerDefinitionResponse> instance
 
 Deletes a logger definition. The logger definition must not have been
 used in a deployment.
+
+
+=head2 DeleteResourceDefinition(ResourceDefinitionId => Str)
+
+Each argument is described in detail in: L<Paws::Greengrass::DeleteResourceDefinition>
+
+Returns: a L<Paws::Greengrass::DeleteResourceDefinitionResponse> instance
+
+Deletes a resource definition.
 
 
 =head2 DeleteSubscriptionDefinition(SubscriptionDefinitionId => Str)
@@ -764,6 +850,26 @@ Returns: a L<Paws::Greengrass::GetLoggerDefinitionVersionResponse> instance
 Retrieves information about a logger definition version.
 
 
+=head2 GetResourceDefinition(ResourceDefinitionId => Str)
+
+Each argument is described in detail in: L<Paws::Greengrass::GetResourceDefinition>
+
+Returns: a L<Paws::Greengrass::GetResourceDefinitionResponse> instance
+
+Retrieves information about a resource definition, such as its creation
+time and latest version.
+
+
+=head2 GetResourceDefinitionVersion(ResourceDefinitionId => Str, ResourceDefinitionVersionId => Str)
+
+Each argument is described in detail in: L<Paws::Greengrass::GetResourceDefinitionVersion>
+
+Returns: a L<Paws::Greengrass::GetResourceDefinitionVersionResponse> instance
+
+Retrieves information about a resource definition version, such as
+which resources are included in the version.
+
+
 =head2 GetServiceRoleForAccount()
 
 Each argument is described in detail in: L<Paws::Greengrass::GetServiceRoleForAccount>
@@ -899,6 +1005,24 @@ Returns: a L<Paws::Greengrass::ListLoggerDefinitionVersionsResponse> instance
 Lists the versions of a logger definition.
 
 
+=head2 ListResourceDefinitions([MaxResults => Str, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::Greengrass::ListResourceDefinitions>
+
+Returns: a L<Paws::Greengrass::ListResourceDefinitionsResponse> instance
+
+Retrieves a list of resource definitions.
+
+
+=head2 ListResourceDefinitionVersions(ResourceDefinitionId => Str, [MaxResults => Str, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::Greengrass::ListResourceDefinitionVersions>
+
+Returns: a L<Paws::Greengrass::ListResourceDefinitionVersionsResponse> instance
+
+Lists the versions of a resource definition.
+
+
 =head2 ListSubscriptionDefinitions([MaxResults => Str, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Greengrass::ListSubscriptionDefinitions>
@@ -989,6 +1113,15 @@ Each argument is described in detail in: L<Paws::Greengrass::UpdateLoggerDefinit
 Returns: a L<Paws::Greengrass::UpdateLoggerDefinitionResponse> instance
 
 Updates a logger definition.
+
+
+=head2 UpdateResourceDefinition(ResourceDefinitionId => Str, [Name => Str])
+
+Each argument is described in detail in: L<Paws::Greengrass::UpdateResourceDefinition>
+
+Returns: a L<Paws::Greengrass::UpdateResourceDefinitionResponse> instance
+
+Updates a resource definition.
 
 
 =head2 UpdateSubscriptionDefinition(SubscriptionDefinitionId => Str, [Name => Str])
