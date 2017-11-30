@@ -25,7 +25,7 @@ collection (C<CollectionId>).
 =head2 FaceRecords => ArrayRef[L<Paws::Rekognition::FaceRecord>]
 
 An array of faces detected and added to the collection. For more
-information, see howitworks-index-faces.
+information, see collections-index-faces.
 
 
 =head2 OrientationCorrection => Str
