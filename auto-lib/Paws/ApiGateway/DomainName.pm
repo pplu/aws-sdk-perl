@@ -94,8 +94,8 @@ regional domain name.
 The domain name associated with the regional endpoint for this custom
 domain name. You set up this association by adding a DNS record that
 points the custom domain name to this regional domain name. The
-regional domain name is returned by Amazon API Gateway when you create
-a regional endpoint.
+regional domain name is returned by API Gateway when you create a
+regional endpoint.
 
 
 =head2 RegionalHostedZoneId => Str

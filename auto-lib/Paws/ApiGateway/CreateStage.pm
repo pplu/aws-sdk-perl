@@ -3,6 +3,7 @@ package Paws::ApiGateway::CreateStage;
   use Moose;
   has CacheClusterEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'cacheClusterEnabled');
   has CacheClusterSize => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cacheClusterSize');
+  has CanarySettings => (is => 'ro', isa => 'Paws::ApiGateway::CanarySettings', traits => ['NameInRequest'], request_name => 'canarySettings');
   has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId', required => 1);
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has DocumentationVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'documentationVersion');
@@ -53,9 +54,16 @@ The stage's cache cluster size.
 
 Valid values are: C<"0.5">, C<"1.6">, C<"6.1">, C<"13.5">, C<"28.4">, C<"58.2">, C<"118">, C<"237">
 
+=head2 CanarySettings => L<Paws::ApiGateway::CanarySettings>
+
+The canary deployment settings of this stage.
+
+
+
 =head2 B<REQUIRED> DeploymentId => Str
 
-The identifier of the Deployment resource for the Stage resource.
+[Required] The identifier of the Deployment resource for the Stage
+resource.
 
 
 
@@ -79,7 +87,7 @@ The string identifier of the associated RestApi.
 
 =head2 B<REQUIRED> StageName => Str
 
-The name for the Stage resource.
+[Required] The name for the Stage resource.
 
 
 

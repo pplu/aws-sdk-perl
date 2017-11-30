@@ -3,6 +3,8 @@ package Paws::ApiGateway::PutIntegration;
   use Moose;
   has CacheKeyParameters => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'cacheKeyParameters');
   has CacheNamespace => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cacheNamespace');
+  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId');
+  has ConnectionType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionType');
   has ContentHandling => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contentHandling');
   has Credentials => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'credentials');
   has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod', required => 1);
@@ -58,6 +60,24 @@ Specifies a put integration input's cache key parameters.
 Specifies a put integration input's cache namespace.
 
 
+
+=head2 ConnectionId => Str
+
+The (C<id>
+(http://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id))
+of the VpcLink used for the integration when C<connectionType=VPC_LINK>
+and undefined, otherwise.
+
+
+
+=head2 ConnectionType => Str
+
+The type of the network connection to the integration endpoint. The
+valid value is C<INTERNET> for connections through the public routable
+internet or C<VPC_LINK> for private connections between API Gateway and
+an network load balancer in a VPC. The default value is C<INTERNET>.
+
+Valid values are: C<"INTERNET">, C<"VPC_LINK">
 
 =head2 ContentHandling => Str
 
@@ -186,18 +206,43 @@ Valid values are: C<"HTTP">, C<"AWS">, C<"MOCK">, C<"HTTP_PROXY">, C<"AWS_PROXY"
 
 =head2 Uri => Str
 
-Specifies the integration's Uniform Resource Identifier (URI). For HTTP
-integrations, the URI must be a fully formed, encoded HTTP(S) URL
-according to the RFC-3986 specification
-(https://en.wikipedia.org/wiki/Uniform_Resource_Identifier). For AWS
-integrations, the URI should be of the form
-C<arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}>.
-C<Region>, C<subdomain> and C<service> are used to determine the right
-endpoint. For AWS services that use the C<Action=> query string
-parameter, C<service_api> should be a valid action for the desired
-service. For RESTful AWS service APIs, C<path> is used to indicate that
-the remaining substring in the URI should be treated as the path to the
-resource, including the initial C</>.
+Specifies Uniform Resource Identifier (URI) of the integration
+endpoint.
+
+=over
+
+=item *
+
+For C<HTTP> or C<HTTP_PROXY> integrations, the URI must be a fully
+formed, encoded HTTP(S) URL according to the RFC-3986 specification
+(https://en.wikipedia.org/wiki/Uniform_Resource_Identifier), for either
+standard integration, where C<connectionType> is not C<VPC_LINK>, or
+private integration, where C<connectionType> is C<VPC_LINK>. For a
+private HTTP integration, the URI is not used for routing.
+
+=item *
+
+For C<AWS> or C<AWS_PROXY> integrations, the URI is of the form
+C<arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}>.
+Here, C<{Region}> is the API Gateway region (e.g., C<us-east-1>);
+C<{service}> is the name of the integrated AWS service (e.g., C<s3>);
+and C<{subdomain}> is a designated subdomain supported by certain AWS
+service for fast host-name lookup. C<action> can be used for an AWS
+service action-based API, using an
+C<Action={name}&{p1}={v1}&p2={v2}...> query string. The ensuing
+C<{service_api}> refers to a supported action C<{name}> plus any
+required input parameters. Alternatively, C<path> can be used for an
+AWS service path-based API. The ensuing C<service_api> refers to the
+path to an AWS service resource, including the region of the integrated
+AWS service, if applicable. For example, for integration with the S3
+API of C<GetObject
+(http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html)>,
+the C<uri> can be either
+C<arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}>
+or C<arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}>
+
+=back
+
 
 
 

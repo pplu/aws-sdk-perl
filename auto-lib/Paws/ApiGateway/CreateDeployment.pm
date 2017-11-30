@@ -3,6 +3,7 @@ package Paws::ApiGateway::CreateDeployment;
   use Moose;
   has CacheClusterEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'cacheClusterEnabled');
   has CacheClusterSize => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cacheClusterSize');
+  has CanarySettings => (is => 'ro', isa => 'Paws::ApiGateway::DeploymentCanarySettings', traits => ['NameInRequest'], request_name => 'canarySettings');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
   has StageDescription => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageDescription');
@@ -52,6 +53,13 @@ Specifies the cache cluster size for the Stage resource specified in
 the input, if a cache cluster is enabled.
 
 Valid values are: C<"0.5">, C<"1.6">, C<"6.1">, C<"13.5">, C<"28.4">, C<"58.2">, C<"118">, C<"237">
+
+=head2 CanarySettings => L<Paws::ApiGateway::DeploymentCanarySettings>
+
+The input configuration for the canary deployment when the deployment
+is a canary release deployment.
+
+
 
 =head2 Description => Str
 

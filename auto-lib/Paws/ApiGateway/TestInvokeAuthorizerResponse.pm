@@ -47,7 +47,7 @@ The execution latency of the test authorizer request.
 
 =head2 Log => Str
 
-The Amazon API Gateway execution log for the test authorizer request.
+The API Gateway execution log for the test authorizer request.
 
 
 =head2 Policy => Str
