@@ -63,7 +63,7 @@ and C<PercentChangeInCapacity>.
 
 =head2 AutoScalingGroupName => Str
 
-  The name of the Auto Scaling group associated with this scaling policy.
+  The name of the Auto Scaling group.
 
 
 =head2 Cooldown => Int

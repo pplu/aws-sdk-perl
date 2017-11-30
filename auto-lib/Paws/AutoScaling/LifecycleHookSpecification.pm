@@ -3,7 +3,7 @@ package Paws::AutoScaling::LifecycleHookSpecification;
   has DefaultResult => (is => 'ro', isa => 'Str');
   has HeartbeatTimeout => (is => 'ro', isa => 'Int');
   has LifecycleHookName => (is => 'ro', isa => 'Str', required => 1);
-  has LifecycleTransition => (is => 'ro', isa => 'Str');
+  has LifecycleTransition => (is => 'ro', isa => 'Str', required => 1);
   has NotificationMetadata => (is => 'ro', isa => 'Str');
   has NotificationTargetARN => (is => 'ro', isa => 'Str');
   has RoleARN => (is => 'ro', isa => 'Str');
@@ -52,8 +52,7 @@ in the I<Auto Scaling User Guide>.
 
   Defines the action the Auto Scaling group should take when the
 lifecycle hook timeout elapses or if an unexpected failure occurs. The
-valid values are C<CONTINUE> and C<ABANDON>. The default value is
-C<CONTINUE>.
+valid values are C<CONTINUE> and C<ABANDON>.
 
 
 =head2 HeartbeatTimeout => Int
@@ -69,7 +68,7 @@ calling RecordLifecycleActionHeartbeat.
   The name of the lifecycle hook.
 
 
-=head2 LifecycleTransition => Str
+=head2 B<REQUIRED> LifecycleTransition => Str
 
   The state of the EC2 instance to which you want to attach the lifecycle
 hook. For a list of lifecycle hook types, see

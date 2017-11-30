@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AutoScalingGroupName => Str
 
-The name of the group.
+The name of the Auto Scaling group.
 
 
 
@@ -59,11 +59,10 @@ from a previous call.)
 
 =head2 PolicyNames => ArrayRef[Str|Undef]
 
-One or more policy names or policy ARNs to be described. If you omit
-this parameter, all policy names are described. If an group name is
-provided, the results are limited to that group. This list is limited
-to 50 items. If you specify an unknown policy name, it is ignored with
-no error.
+The names of one or more policies. If you omit this parameter, all
+policies are described. If an group name is provided, the results are
+limited to that group. This list is limited to 50 items. If you specify
+an unknown policy name, it is ignored with no error.
 
 
 

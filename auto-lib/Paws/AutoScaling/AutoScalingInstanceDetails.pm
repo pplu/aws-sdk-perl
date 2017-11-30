@@ -4,7 +4,8 @@ package Paws::AutoScaling::AutoScalingInstanceDetails;
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
   has HealthStatus => (is => 'ro', isa => 'Str', required => 1);
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
-  has LaunchConfigurationName => (is => 'ro', isa => 'Str', required => 1);
+  has LaunchConfigurationName => (is => 'ro', isa => 'Str');
+  has LaunchTemplate => (is => 'ro', isa => 'Paws::AutoScaling::LaunchTemplateSpecification');
   has LifecycleState => (is => 'ro', isa => 'Str', required => 1);
   has ProtectedFromScaleIn => (is => 'ro', isa => 'Bool', required => 1);
 1;
@@ -44,7 +45,7 @@ Describes an EC2 instance associated with an Auto Scaling group.
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  The name of the Auto Scaling group associated with the instance.
+  The name of the Auto Scaling group for the instance.
 
 
 =head2 B<REQUIRED> AvailabilityZone => Str
@@ -65,10 +66,15 @@ replace it.
   The ID of the instance.
 
 
-=head2 B<REQUIRED> LaunchConfigurationName => Str
+=head2 LaunchConfigurationName => Str
 
   The launch configuration used to launch the instance. This value is not
 available if you attached the instance to the Auto Scaling group.
+
+
+=head2 LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>
+
+  The launch template for the instance.
 
 
 =head2 B<REQUIRED> LifecycleState => Str

@@ -8,6 +8,7 @@ package Paws::AutoScaling::UpdateAutoScalingGroup;
   has HealthCheckGracePeriod => (is => 'ro', isa => 'Int');
   has HealthCheckType => (is => 'ro', isa => 'Str');
   has LaunchConfigurationName => (is => 'ro', isa => 'Str');
+  has LaunchTemplate => (is => 'ro', isa => 'Paws::AutoScaling::LaunchTemplateSpecification');
   has MaxSize => (is => 'ro', isa => 'Int');
   has MinSize => (is => 'ro', isa => 'Int');
   has NewInstancesProtectedFromScaleIn => (is => 'ro', isa => 'Bool');
@@ -97,7 +98,15 @@ and C<ELB>.
 
 =head2 LaunchConfigurationName => Str
 
-The name of the launch configuration.
+The name of the launch configuration. You must specify either a launch
+configuration or a launch template.
+
+
+
+=head2 LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>
+
+The launch template to use to specify the updates. You must specify a
+launch configuration or a launch template.
 
 
 

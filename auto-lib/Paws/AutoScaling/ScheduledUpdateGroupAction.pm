@@ -47,7 +47,7 @@ Describes a scheduled update to an Auto Scaling group.
 
 =head2 AutoScalingGroupName => Str
 
-  The name of the group.
+  The name of the Auto Scaling group.
 
 
 =head2 DesiredCapacity => Int

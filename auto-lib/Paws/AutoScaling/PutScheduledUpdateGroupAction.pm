@@ -43,7 +43,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-The name or Amazon Resource Name (ARN) of the Auto Scaling group.
+The name of the Auto Scaling group.
 
 
 

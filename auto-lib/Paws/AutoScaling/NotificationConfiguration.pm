@@ -40,7 +40,7 @@ Describes a notification.
 
 =head2 AutoScalingGroupName => Str
 
-  The name of the group.
+  The name of the Auto Scaling group.
 
 
 =head2 NotificationType => Str

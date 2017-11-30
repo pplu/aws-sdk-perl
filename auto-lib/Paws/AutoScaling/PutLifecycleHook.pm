@@ -42,8 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-The name of the Auto Scaling group to which you want to assign the
-lifecycle hook.
+The name of the Auto Scaling group.
 
 
 

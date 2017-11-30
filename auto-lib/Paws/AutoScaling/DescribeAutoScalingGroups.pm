@@ -37,8 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AutoScalingGroupNames => ArrayRef[Str|Undef]
 
-The group names. If you omit this parameter, all Auto Scaling groups
-are described.
+The names of the Auto Scaling groups. If you omit this parameter, all
+Auto Scaling groups are described.
 
 
 

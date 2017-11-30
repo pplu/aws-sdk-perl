@@ -4,6 +4,7 @@ package Paws::AutoScaling::Instance;
   has HealthStatus => (is => 'ro', isa => 'Str', required => 1);
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has LaunchConfigurationName => (is => 'ro', isa => 'Str');
+  has LaunchTemplate => (is => 'ro', isa => 'Paws::AutoScaling::LaunchTemplateSpecification');
   has LifecycleState => (is => 'ro', isa => 'Str', required => 1);
   has ProtectedFromScaleIn => (is => 'ro', isa => 'Bool', required => 1);
 1;
@@ -62,6 +63,11 @@ replace it.
 =head2 LaunchConfigurationName => Str
 
   The launch configuration associated with the instance.
+
+
+=head2 LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>
+
+  The launch template for the instance.
 
 
 =head2 B<REQUIRED> LifecycleState => Str
