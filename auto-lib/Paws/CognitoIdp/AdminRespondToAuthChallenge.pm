@@ -1,9 +1,11 @@
 
 package Paws::CognitoIdp::AdminRespondToAuthChallenge;
   use Moose;
+  has AnalyticsMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::AnalyticsMetadataType');
   has ChallengeName => (is => 'ro', isa => 'Str', required => 1);
   has ChallengeResponses => (is => 'ro', isa => 'Paws::CognitoIdp::ChallengeResponsesType');
   has ClientId => (is => 'ro', isa => 'Str', required => 1);
+  has ContextData => (is => 'ro', isa => 'Paws::CognitoIdp::ContextDataType');
   has Session => (is => 'ro', isa => 'Str');
   has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -37,11 +39,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>
+
+The analytics metadata for collecting Amazon Pinpoint metrics for
+C<AdminRespondToAuthChallenge> calls.
+
+
+
 =head2 B<REQUIRED> ChallengeName => Str
 
-The challenge name. For more information, see AdminInitiateAuth.
+The challenge name. For more information, see .
 
-Valid values are: C<"SMS_MFA">, C<"PASSWORD_VERIFIER">, C<"CUSTOM_CHALLENGE">, C<"DEVICE_SRP_AUTH">, C<"DEVICE_PASSWORD_VERIFIER">, C<"ADMIN_NO_SRP_AUTH">, C<"NEW_PASSWORD_REQUIRED">
+Valid values are: C<"SMS_MFA">, C<"SOFTWARE_TOKEN_MFA">, C<"SELECT_MFA_TYPE">, C<"MFA_SETUP">, C<"PASSWORD_VERIFIER">, C<"CUSTOM_CHALLENGE">, C<"DEVICE_SRP_AUTH">, C<"DEVICE_PASSWORD_VERIFIER">, C<"ADMIN_NO_SRP_AUTH">, C<"NEW_PASSWORD_REQUIRED">
 
 =head2 ChallengeResponses => L<Paws::CognitoIdp::ChallengeResponsesType>
 
@@ -85,6 +94,14 @@ specified an alias in your call to C<AdminInitiateAuth>.
 =head2 B<REQUIRED> ClientId => Str
 
 The app client ID.
+
+
+
+=head2 ContextData => L<Paws::CognitoIdp::ContextDataType>
+
+Contextual data such as the user's device fingerprint, IP address, or
+location used for evaluating the risk of an unexpected event by Amazon
+Cognito advanced security.
 
 
 

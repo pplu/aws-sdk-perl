@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIdp:
 
 =head1 DESCRIPTION
 
-The type of policy in a user pool.
+The policy associated with a user pool.
 
 =head1 ATTRIBUTES
 
 
 =head2 PasswordPolicy => L<Paws::CognitoIdp::PasswordPolicyType>
 
-  A container for information about the user pool password policy.
+  The password policy.
 
 
 

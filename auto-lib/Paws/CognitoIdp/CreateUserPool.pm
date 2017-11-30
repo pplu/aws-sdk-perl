@@ -17,6 +17,7 @@ package Paws::CognitoIdp::CreateUserPool;
   has SmsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SmsConfigurationType');
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
   has UsernameAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has UserPoolAddOns => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolAddOnsType');
   has UserPoolTags => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolTagsType');
   has VerificationMessageTemplate => (is => 'ro', isa => 'Paws::CognitoIdp::VerificationMessageTemplateType');
 
@@ -147,6 +148,13 @@ A string representing the SMS verification message.
 
 Specifies whether email addresses or phone numbers can be specified as
 usernames when a user signs up.
+
+
+
+=head2 UserPoolAddOns => L<Paws::CognitoIdp::UserPoolAddOnsType>
+
+Used to enable advanced security risk detection. Set the key
+C<AdvancedSecurityMode> to the value "AUDIT".
 
 
 

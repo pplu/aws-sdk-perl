@@ -13,6 +13,7 @@ package Paws::CognitoIdp::UpdateUserPool;
   has SmsAuthenticationMessage => (is => 'ro', isa => 'Str');
   has SmsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SmsConfigurationType');
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
+  has UserPoolAddOns => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolAddOnsType');
   has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
   has UserPoolTags => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolTagsType');
   has VerificationMessageTemplate => (is => 'ro', isa => 'Paws::CognitoIdp::VerificationMessageTemplateType');
@@ -138,6 +139,13 @@ SMS configuration.
 =head2 SmsVerificationMessage => Str
 
 A container with information about the SMS verification message.
+
+
+
+=head2 UserPoolAddOns => L<Paws::CognitoIdp::UserPoolAddOnsType>
+
+Used to enable advanced security risk detection. Set the key
+C<AdvancedSecurityMode> to the value "AUDIT".
 
 
 

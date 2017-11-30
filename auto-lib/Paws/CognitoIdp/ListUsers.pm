@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 An array of strings, where each string is the name of a user attribute
 to be returned for each user in the search results. If the array is
-empty, all attributes are returned.
+null, all attributes are returned.
 
 
 
@@ -115,6 +115,10 @@ C<cognito:user_status> (called B<Enabled> in the Console)
 =item *
 
 C<status> (case-insensitive)
+
+=item *
+
+C<sub>
 
 =back
 

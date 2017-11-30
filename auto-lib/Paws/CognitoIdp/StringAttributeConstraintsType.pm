@@ -32,20 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIdp:
 
 =head1 DESCRIPTION
 
-The type of constraints associated with an attribute of the string
-type.
+The constraints associated with a string attribute.
 
 =head1 ATTRIBUTES
 
 
 =head2 MaxLength => Str
 
-  The maximum length of an attribute value of the string type.
+  The maximum length.
 
 
 =head2 MinLength => Str
 
-  The minimum length of an attribute value of the string type.
+  The minimum length.
 
 
 

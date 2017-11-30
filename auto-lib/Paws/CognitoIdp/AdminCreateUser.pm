@@ -100,10 +100,10 @@ C<MessageAction> parameter.
 An array of name-value pairs that contain user attributes and attribute
 values to be set for the user to be created. You can create a user
 without specifying any attributes other than C<Username>. However, any
-attributes that you specify as required (in CreateUserPool or in the
-B<Attributes> tab of the console) must be supplied either by you (in
-your call to C<AdminCreateUser>) or by the user (when he or she signs
-up in response to your welcome message).
+attributes that you specify as required (in or in the B<Attributes> tab
+of the console) must be supplied either by you (in your call to
+C<AdminCreateUser>) or by the user (when he or she signs up in response
+to your welcome message).
 
 For custom attributes, you must prepend the C<custom:> prefix to the
 attribute name.
@@ -115,8 +115,7 @@ for managing your user pools.
 
 In your call to C<AdminCreateUser>, you can set the C<email_verified>
 attribute to C<True>, and you can set the C<phone_number_verified>
-attribute to C<True>. (You can also do this by calling
-AdminUpdateUserAttributes.)
+attribute to C<True>. (You can also do this by calling .)
 
 =over
 

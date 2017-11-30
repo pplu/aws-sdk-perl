@@ -1,10 +1,12 @@
 
 package Paws::CognitoIdp::ConfirmForgotPassword;
   use Moose;
+  has AnalyticsMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::AnalyticsMetadataType');
   has ClientId => (is => 'ro', isa => 'Str', required => 1);
   has ConfirmationCode => (is => 'ro', isa => 'Str', required => 1);
   has Password => (is => 'ro', isa => 'Str', required => 1);
   has SecretHash => (is => 'ro', isa => 'Str');
+  has UserContextData => (is => 'ro', isa => 'Paws::CognitoIdp::UserContextDataType');
   has Username => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -37,6 +39,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>
+
+The Amazon Pinpoint analytics metadata for collecting metrics for
+C<ConfirmForgotPassword> calls.
+
+
+
 =head2 B<REQUIRED> ClientId => Str
 
 The app client ID of the app associated with the user pool.
@@ -46,7 +55,7 @@ The app client ID of the app associated with the user pool.
 =head2 B<REQUIRED> ConfirmationCode => Str
 
 The confirmation code sent by a user's request to retrieve a forgotten
-password. For more information, see ForgotPassword
+password. For more information, see
 
 
 
@@ -61,6 +70,14 @@ The password sent by a user's request to retrieve a forgotten password.
 A keyed-hash message authentication code (HMAC) calculated using the
 secret key of a user pool client and username plus the client ID in the
 message.
+
+
+
+=head2 UserContextData => L<Paws::CognitoIdp::UserContextDataType>
+
+Contextual data such as the user's device fingerprint, IP address, or
+location used for evaluating the risk of an unexpected event by Amazon
+Cognito advanced security.
 
 
 

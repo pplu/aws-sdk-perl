@@ -3,6 +3,7 @@ package Paws::CognitoIdp::UserPoolClientType;
   has AllowedOAuthFlows => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has AllowedOAuthFlowsUserPoolClient => (is => 'ro', isa => 'Bool');
   has AllowedOAuthScopes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AnalyticsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::AnalyticsConfigurationType');
   has CallbackURLs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ClientId => (is => 'ro', isa => 'Str');
   has ClientName => (is => 'ro', isa => 'Str');
@@ -72,6 +73,11 @@ interacting with Cognito user pools.
 
   A list of allowed C<OAuth> scopes. Currently supported values are
 C<"phone">, C<"email">, C<"openid">, and C<"Cognito">.
+
+
+=head2 AnalyticsConfiguration => L<Paws::CognitoIdp::AnalyticsConfigurationType>
+
+  The Amazon Pinpoint analytics configuration for the user pool client.
 
 
 =head2 CallbackURLs => ArrayRef[Str|Undef]

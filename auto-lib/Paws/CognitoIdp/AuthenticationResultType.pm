@@ -36,14 +36,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIdp:
 
 =head1 DESCRIPTION
 
-The result type of the authentication result.
+The authentication result.
 
 =head1 ATTRIBUTES
 
 
 =head2 AccessToken => Str
 
-  The access token of the authentication result.
+  The access token.
 
 
 =head2 ExpiresIn => Int
@@ -53,7 +53,7 @@ The result type of the authentication result.
 
 =head2 IdToken => Str
 
-  The ID token of the authentication result.
+  The ID token.
 
 
 =head2 NewDeviceMetadata => L<Paws::CognitoIdp::NewDeviceMetadataType>
@@ -63,12 +63,12 @@ The result type of the authentication result.
 
 =head2 RefreshToken => Str
 
-  The refresh token of the authentication result.
+  The refresh token.
 
 
 =head2 TokenType => Str
 
-  The token type of the authentication result.
+  The token type.
 
 
 
