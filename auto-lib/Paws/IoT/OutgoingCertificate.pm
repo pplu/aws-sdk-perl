@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Outgoi
 
 =head1 DESCRIPTION
 
-A certificate that has been transfered but not yet accepted.
+A certificate that has been transferred but not yet accepted.
 
 =head1 ATTRIBUTES
 

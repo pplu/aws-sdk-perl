@@ -46,7 +46,7 @@ stream.
 
 =head2 B<REQUIRED> RoleArn => Str
 
-  The IAM role that grants access to the Amazon Kinesis Firehost stream.
+  The IAM role that grants access to the Amazon Kinesis Firehose stream.
 
 
 =head2 Separator => Str

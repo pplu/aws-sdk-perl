@@ -3,6 +3,7 @@ package Paws::IoT::RegisterCACertificate;
   use Moose;
   has AllowAutoRegistration => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'allowAutoRegistration');
   has CaCertificate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'caCertificate', required => 1);
+  has RegistrationConfig => (is => 'ro', isa => 'Paws::IoT::RegistrationConfig', traits => ['NameInRequest'], request_name => 'registrationConfig');
   has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive');
   has VerificationCertificate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'verificationCertificate', required => 1);
 
@@ -47,6 +48,12 @@ certificates.
 =head2 B<REQUIRED> CaCertificate => Str
 
 The CA certificate.
+
+
+
+=head2 RegistrationConfig => L<Paws::IoT::RegistrationConfig>
+
+Information about the registration configuration.
 
 
 
