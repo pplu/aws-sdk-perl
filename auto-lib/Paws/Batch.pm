@@ -172,8 +172,8 @@ In a managed compute environment, AWS Batch manages the compute
 resources within the environment, based on the compute resources that
 you specify. Instances launched into a managed compute environment use
 a recent, approved version of the Amazon ECS-optimized AMI. You can
-choose to use Amazon EC2 On-Demand instances in your managed compute
-environment, or you can use Amazon EC2 Spot instances that only launch
+choose to use Amazon EC2 On-Demand Instances in your managed compute
+environment, or you can use Amazon EC2 Spot Instances that only launch
 when the Spot bid price is below a specified percentage of the
 On-Demand price.
 
@@ -183,14 +183,14 @@ such as using a custom AMI, but you must ensure that your AMI meets the
 Amazon ECS container instance AMI specification. For more information,
 see Container Instance AMIs
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container_instance_AMIs.html)
-in the I<Amazon EC2 Container Service Developer Guide>. After you have
-created your unmanaged compute environment, you can use the
+in the I<Amazon Elastic Container Service Developer Guide>. After you
+have created your unmanaged compute environment, you can use the
 DescribeComputeEnvironments operation to find the Amazon ECS cluster
 that is associated with it and then manually launch your container
 instances into that Amazon ECS cluster. For more information, see
 Launching an Amazon ECS Container Instance
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html)
-in the I<Amazon EC2 Container Service Developer Guide>.
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 CreateJobQueue(ComputeEnvironmentOrder => ArrayRef[L<Paws::Batch::ComputeEnvironmentOrder>], JobQueueName => Str, Priority => Int, [State => Str])
@@ -289,7 +289,7 @@ Returns: a L<Paws::Batch::DescribeJobsResponse> instance
 Describes a list of AWS Batch jobs.
 
 
-=head2 ListJobs(JobQueue => Str, [JobStatus => Str, MaxResults => Int, NextToken => Str])
+=head2 ListJobs([ArrayJobId => Str, JobQueue => Str, JobStatus => Str, MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Batch::ListJobs>
 
@@ -309,7 +309,7 @@ Returns: a L<Paws::Batch::RegisterJobDefinitionResponse> instance
 Registers an AWS Batch job definition.
 
 
-=head2 SubmitJob(JobDefinition => Str, JobName => Str, JobQueue => Str, [ContainerOverrides => L<Paws::Batch::ContainerOverrides>, DependsOn => ArrayRef[L<Paws::Batch::JobDependency>], Parameters => L<Paws::Batch::ParametersMap>, RetryStrategy => L<Paws::Batch::RetryStrategy>])
+=head2 SubmitJob(JobDefinition => Str, JobName => Str, JobQueue => Str, [ArrayProperties => L<Paws::Batch::ArrayProperties>, ContainerOverrides => L<Paws::Batch::ContainerOverrides>, DependsOn => ArrayRef[L<Paws::Batch::JobDependency>], Parameters => L<Paws::Batch::ParametersMap>, RetryStrategy => L<Paws::Batch::RetryStrategy>])
 
 Each argument is described in detail in: L<Paws::Batch::SubmitJob>
 

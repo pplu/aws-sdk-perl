@@ -46,8 +46,8 @@ An object representing a job attempt.
 
 =head2 StartedAt => Int
 
-  The Unix timestamp for when the attempt was started (when the task
-transitioned from the C<PENDING> state to the C<RUNNING> state).
+  The Unix time stamp for when the attempt was started (when the attempt
+transitioned from the C<STARTING> state to the C<RUNNING> state).
 
 
 =head2 StatusReason => Str
@@ -58,8 +58,9 @@ current status of the job attempt.
 
 =head2 StoppedAt => Int
 
-  The Unix timestamp for when the attempt was stopped (when the task
-transitioned from the C<RUNNING> state to the C<STOPPED> state).
+  The Unix time stamp for when the attempt was stopped (when the attempt
+transitioned from the C<RUNNING> state to a terminal state, such as
+C<SUCCEEDED> or C<FAILED>).
 
 
 

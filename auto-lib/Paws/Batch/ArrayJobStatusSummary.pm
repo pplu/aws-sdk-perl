@@ -1,13 +1,15 @@
-package Paws::Batch::RetryStrategy;
+package Paws::Batch::ArrayJobStatusSummary;
   use Moose;
-  has Attempts => (is => 'ro', isa => 'Int', request_name => 'attempts', traits => ['NameInRequest']);
+  with 'Paws::API::StrToNativeMapParser';
+
+  has Map => (is => 'ro', isa => 'HashRef[Int]');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Batch::RetryStrategy
+Paws::Batch::ArrayJobStatusSummary
 
 =head1 USAGE
 
@@ -18,32 +20,26 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Batch::RetryStrategy object:
+As an example, if Att1 is expected to be a Paws::Batch::ArrayJobStatusSummary object:
 
-  $service_obj->Method(Att1 => { Attempts => $value, ..., Attempts => $value  });
+  $service_obj->Method(Att1 => { key1 => $value, ..., keyN => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Batch::RetryStrategy object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Batch::ArrayJobStatusSummary object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Attempts
+  $result->Att1->Map->{ key1 }
 
 =head1 DESCRIPTION
 
-The retry strategy associated with a job.
+This class has no description
 
 =head1 ATTRIBUTES
 
+=head2 Map => Int
 
-=head2 Attempts => Int
-
-  The number of times to move a job to the C<RUNNABLE> status. You may
-specify between 1 and 10 attempts. If the value of C<attempts> is
-greater than one, the job is retried if it fails until it has moved to
-C<RUNNABLE> that many times.
-
-
+Use the Map method to retrieve a HashRef to the map
 
 =head1 SEE ALSO
 

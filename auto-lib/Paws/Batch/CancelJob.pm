@@ -43,7 +43,7 @@ The AWS Batch job ID of the job to cancel.
 
 =head2 B<REQUIRED> Reason => Str
 
-A message to attach to the job that explains the reason for cancelling
+A message to attach to the job that explains the reason for canceling
 it. This message is returned by future DescribeJobs operations on the
 job. This message is also recorded in the AWS Batch activity logs.
 

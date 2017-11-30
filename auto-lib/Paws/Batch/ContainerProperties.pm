@@ -71,8 +71,8 @@ section of the Docker Remote API
 and the C<--env> option to docker run
 (https://docs.docker.com/engine/reference/run/).
 
-We do not recommend using plain text environment variables for
-sensitive information, such as credential data.
+We do not recommend using plaintext environment variables for sensitive
+information, such as credential data.
 
 Environment variables must not start with C<AWS_BATCH>; this naming
 convention is reserved for variables that are set by the AWS Batch
@@ -205,7 +205,7 @@ section of the Docker Remote API
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/)
 and the C<--cpu-shares> option to docker run
 (https://docs.docker.com/engine/reference/run/). Each vCPU is
-equivalent to 1,024 CPU shares. You must specify at least 1 vCPU.
+equivalent to 1,024 CPU shares. You must specify at least one vCPU.
 
 
 =head2 Volumes => ArrayRef[L<Paws::Batch::Volume>]

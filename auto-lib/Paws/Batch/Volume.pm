@@ -42,8 +42,8 @@ A data volume used in a job's container properties.
   The contents of the C<host> parameter determine whether your data
 volume persists on the host container instance and where it is stored.
 If the host parameter is empty, then the Docker daemon assigns a host
-path for your data volume, but the data is not guaranteed to persist
-after the containers associated with it stop running.
+path for your data volume. However, the data is not guaranteed to
+persist after the containers associated with it stop running.
 
 
 =head2 Name => Str

@@ -1,7 +1,8 @@
 
 package Paws::Batch::ListJobs;
   use Moose;
-  has JobQueue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueue', required => 1);
+  has ArrayJobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arrayJobId');
+  has JobQueue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueue');
   has JobStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobStatus');
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
@@ -37,7 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> JobQueue => Str
+=head2 ArrayJobId => Str
+
+The job ID for an array job. Specifying an array job ID with this
+parameter lists all child jobs from within the specified array.
+
+
+
+=head2 JobQueue => Str
 
 The name or full Amazon Resource Name (ARN) of the job queue with which
 to list jobs.
