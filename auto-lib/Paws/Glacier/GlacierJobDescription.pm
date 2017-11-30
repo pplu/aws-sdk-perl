@@ -12,7 +12,10 @@ package Paws::Glacier::GlacierJobDescription;
   has InventorySizeInBytes => (is => 'ro', isa => 'Int');
   has JobDescription => (is => 'ro', isa => 'Str');
   has JobId => (is => 'ro', isa => 'Str');
+  has JobOutputPath => (is => 'ro', isa => 'Str');
+  has OutputLocation => (is => 'ro', isa => 'Paws::Glacier::OutputLocation');
   has RetrievalByteRange => (is => 'ro', isa => 'Str');
+  has SelectParameters => (is => 'ro', isa => 'Paws::Glacier::SelectParameters');
   has SHA256TreeHash => (is => 'ro', isa => 'Str');
   has SNSTopic => (is => 'ro', isa => 'Str');
   has StatusCode => (is => 'ro', isa => 'Str');
@@ -34,43 +37,46 @@ Paws::Glacier::GlacierJobDescription
 
 =head2 Action => Str
 
-The job type. It is either ArchiveRetrieval or InventoryRetrieval.
+The job type. This value is either C<ArchiveRetrieval>,
+C<InventoryRetrieval>, or C<Select>.
 
-Valid values are: C<"ArchiveRetrieval">, C<"InventoryRetrieval">
+Valid values are: C<"ArchiveRetrieval">, C<"InventoryRetrieval">, C<"Select">
 =head2 ArchiveId => Str
 
-For an ArchiveRetrieval job, this is the archive ID requested for
-download. Otherwise, this field is null.
+The archive ID requested for a select job or archive retrieval.
+Otherwise, this field is null.
 
 
 =head2 ArchiveSHA256TreeHash => Str
 
 The SHA256 tree hash of the entire archive for an archive retrieval.
-For inventory retrieval jobs, this field is null.
+For inventory retrieval or select jobs, this field is null.
 
 
 =head2 ArchiveSizeInBytes => Int
 
-For an ArchiveRetrieval job, this is the size in bytes of the archive
-being requested for download. For the InventoryRetrieval job, the value
-is null.
+For an archive retrieval job, this value is the size in bytes of the
+archive being requested for download. For an inventory retrieval or
+select job, this value is null.
 
 
 =head2 Completed => Bool
 
-The job status. When a job is completed, you get the job's output.
+The job status. When a job is completed, you get the job's output using
+Get Job Output (GET output).
 
 
 =head2 CompletionDate => Str
 
-The UTC time that the archive retrieval request completed. While the
-job is in progress, the value will be null.
+The UTC time that the job request completed. While the job is in
+progress, the value is null.
 
 
 =head2 CreationDate => Str
 
-The UTC date when the job was created. A string representation of ISO
-8601 date format, for example, "2012-03-20T17:03:43.221Z".
+The UTC date when the job was created. This value is a string
+representation of ISO 8601 date format, for example
+C<"2012-03-20T17:03:43.221Z">.
 
 
 =head2 InventoryRetrievalParameters => L<Paws::Glacier::InventoryRetrievalJobDescription>
@@ -80,14 +86,14 @@ Parameters used for range inventory retrieval.
 
 =head2 InventorySizeInBytes => Int
 
-For an InventoryRetrieval job, this is the size in bytes of the
-inventory requested for download. For the ArchiveRetrieval job, the
-value is null.
+For an inventory retrieval job, this value is the size in bytes of the
+inventory requested for download. For an archive retrieval or select
+job, this value is null.
 
 
 =head2 JobDescription => Str
 
-The job description you provided when you initiated the job.
+The job description provided when initiating the job.
 
 
 =head2 JobId => Str
@@ -95,35 +101,51 @@ The job description you provided when you initiated the job.
 An opaque string that identifies an Amazon Glacier job.
 
 
+=head2 JobOutputPath => Str
+
+Contains the job output location.
+
+
+=head2 OutputLocation => L<Paws::Glacier::OutputLocation>
+
+Contains the location where the data from the select job is stored.
+
+
 =head2 RetrievalByteRange => Str
 
 The retrieved byte range for archive retrieval jobs in the form
-"I<StartByteValue>-I<EndByteValue>" If no range was specified in the
-archive retrieval, then the whole archive is retrieved and
+I<StartByteValue>-I<EndByteValue>. If no range was specified in the
+archive retrieval, then the whole archive is retrieved. In this case,
 I<StartByteValue> equals 0 and I<EndByteValue> equals the size of the
-archive minus 1. For inventory retrieval jobs this field is null.
+archive minus 1. For inventory retrieval or select jobs, this field is
+null.
+
+
+=head2 SelectParameters => L<Paws::Glacier::SelectParameters>
+
+Contains the parameters that define a select job.
 
 
 =head2 SHA256TreeHash => Str
 
-For an ArchiveRetrieval job, it is the checksum of the archive.
-Otherwise, the value is null.
+For an archive retrieval job, this value is the checksum of the
+archive. Otherwise, this value is null.
 
 The SHA256 tree hash value for the requested range of an archive. If
-the Initiate a Job request for an archive specified a tree-hash aligned
+the B<InitiateJob> request for an archive specified a tree-hash aligned
 range, then this field returns a value.
 
-For the specific case when the whole archive is retrieved, this value
-is the same as the ArchiveSHA256TreeHash value.
+If the whole archive is retrieved, this value is the same as the
+ArchiveSHA256TreeHash value.
 
-This field is null in the following situations:
+This field is null for the following:
 
 =over
 
 =item *
 
 Archive retrieval jobs that specify a range that is not tree-hash
-aligned.
+aligned
 
 =back
 
@@ -131,8 +153,8 @@ aligned.
 
 =item *
 
-Archival jobs that specify a range that is equal to the whole archive
-and the job status is InProgress.
+Archival jobs that specify a range that is equal to the whole archive,
+when the job status is C<InProgress>
 
 =back
 
@@ -140,7 +162,11 @@ and the job status is InProgress.
 
 =item *
 
-Inventory jobs.
+Inventory jobs
+
+=item *
+
+Select jobs
 
 =back
 
@@ -148,14 +174,13 @@ Inventory jobs.
 
 =head2 SNSTopic => Str
 
-An Amazon Simple Notification Service (Amazon SNS) topic that receives
-notification.
+An Amazon SNS topic that receives notification.
 
 
 =head2 StatusCode => Str
 
-The status code can be InProgress, Succeeded, or Failed, and indicates
-the status of the job.
+The status code can be C<InProgress>, C<Succeeded>, or C<Failed>, and
+indicates the status of the job.
 
 Valid values are: C<"InProgress">, C<"Succeeded">, C<"Failed">
 =head2 StatusMessage => Str
@@ -171,7 +196,7 @@ C<Expedited>, C<Standard>, or C<Bulk>. C<Standard> is the default.
 
 =head2 VaultARN => Str
 
-The Amazon Resource Name (ARN) of the vault from which the archive
+The Amazon Resource Name (ARN) of the vault from which an archive
 retrieval was requested.
 
 
