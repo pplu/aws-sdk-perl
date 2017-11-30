@@ -46,7 +46,7 @@ This boolean parameter can be used to test your request to AWS Lambda
 to update the Lambda function and publish a version as an atomic
 operation. It will do all necessary computation and validation of your
 code but will not upload it or a publish a version. Each time this
-operation is invoked, the C<CodeSha256> hash value the provided code
+operation is invoked, the C<CodeSha256> hash value of the provided code
 will also be computed and returned in the response.
 
 

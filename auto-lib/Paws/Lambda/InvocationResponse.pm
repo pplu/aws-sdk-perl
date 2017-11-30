@@ -1,6 +1,7 @@
 
 package Paws::Lambda::InvocationResponse;
   use Moose;
+  has ExecutedVersion => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Executed-Version');
   has FunctionError => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Function-Error');
   has LogResult => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Log-Result');
   has Payload => (is => 'ro', isa => 'Str');
@@ -17,6 +18,12 @@ package Paws::Lambda::InvocationResponse;
 Paws::Lambda::InvocationResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 ExecutedVersion => Str
+
+The function version that has been executed. This value is returned
+only if the invocation type is C<RequestResponse>.
 
 
 =head2 FunctionError => Str

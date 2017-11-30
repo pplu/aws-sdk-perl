@@ -44,7 +44,7 @@ Optional string. If not specified, only the unqualified functions ARNs
 
 Valid value:
 
-C<ALL> _ Will return all versions, including C<$LATEST> which will have
+C<ALL>: Will return all versions, including C<$LATEST> which will have
 fully qualified ARNs (Amazon Resource Names).
 
 Valid values are: C<"ALL">
@@ -68,7 +68,7 @@ The region from which the functions are replicated. For example, if you
 specify C<us-east-1>, only functions replicated from that region will
 be returned.
 
-C<ALL> _ Will return all functions from any region. If specified, you
+C<ALL>: Will return all functions from any region. If specified, you
 also must specify a valid FunctionVersion parameter.
 
 

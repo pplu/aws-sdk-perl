@@ -142,12 +142,10 @@ Node.js runtime v4.3, set the value to "nodejs4.3".
 
 Node v0.10.42 is currently marked as deprecated. You must migrate
 existing functions to the newer Node.js runtime versions available on
-AWS Lambda (nodejs4.3 or nodejs6.10) as soon as possible. You can
-request a one-time extension until June 30, 2017 by going to the Lambda
-console and following the instructions provided. Failure to do so will
-result in an invalid parmaeter error being returned. Note that you will
-have to follow this procedure for each region that contains functions
-written in the Node v0.10.42 runtime.
+AWS Lambda (nodejs4.3 or nodejs6.10) as soon as possible. Failure to do
+so will result in an invalid parmaeter error being returned. Note that
+you will have to follow this procedure for each region that contains
+functions written in the Node v0.10.42 runtime.
 
 Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"dotnetcore1.0">, C<"nodejs4.3-edge">
 

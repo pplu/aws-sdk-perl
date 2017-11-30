@@ -5,6 +5,7 @@ package Paws::Lambda::UpdateAlias;
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
   has FunctionVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Name', required => 1);
+  has RoutingConfig => (is => 'ro', isa => 'Paws::Lambda::AliasRoutingConfiguration');
 
   use MooseX::ClassAttribute;
 
@@ -61,6 +62,14 @@ which the alias points.
 =head2 B<REQUIRED> Name => Str
 
 The alias name.
+
+
+
+=head2 RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>
+
+Specifies an additional version your alias can point to, allowing you
+to dictate what percentage of traffic will invoke each version. For
+more information, see lambda-traffic-shifting-using-aliases.
 
 
 

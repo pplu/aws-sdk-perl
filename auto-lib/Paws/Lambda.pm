@@ -48,6 +48,11 @@ package Paws::Lambda;
     my $call_object = $self->new_with_coercions('Paws::Lambda::DeleteFunction', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteFunctionConcurrency {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::DeleteFunctionConcurrency', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetAccountSettings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::GetAccountSettings', @_);
@@ -116,6 +121,11 @@ package Paws::Lambda;
   sub PublishVersion {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::PublishVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutFunctionConcurrency {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::PutFunctionConcurrency', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemovePermission {
@@ -202,7 +212,7 @@ package Paws::Lambda;
   }
 
 
-  sub operations { qw/AddPermission CreateAlias CreateEventSourceMapping CreateFunction DeleteAlias DeleteEventSourceMapping DeleteFunction GetAccountSettings GetAlias GetEventSourceMapping GetFunction GetFunctionConfiguration GetPolicy Invoke InvokeAsync ListAliases ListEventSourceMappings ListFunctions ListTags ListVersionsByFunction PublishVersion RemovePermission TagResource UntagResource UpdateAlias UpdateEventSourceMapping UpdateFunctionCode UpdateFunctionConfiguration / }
+  sub operations { qw/AddPermission CreateAlias CreateEventSourceMapping CreateFunction DeleteAlias DeleteEventSourceMapping DeleteFunction DeleteFunctionConcurrency GetAccountSettings GetAlias GetEventSourceMapping GetFunction GetFunctionConfiguration GetPolicy Invoke InvokeAsync ListAliases ListEventSourceMappings ListFunctions ListTags ListVersionsByFunction PublishVersion PutFunctionConcurrency RemovePermission TagResource UntagResource UpdateAlias UpdateEventSourceMapping UpdateFunctionCode UpdateFunctionConfiguration / }
 
 1;
 
@@ -271,7 +281,7 @@ This operation requires permission for the C<lambda:AddPermission>
 action.
 
 
-=head2 CreateAlias(FunctionName => Str, FunctionVersion => Str, Name => Str, [Description => Str])
+=head2 CreateAlias(FunctionName => Str, FunctionVersion => Str, Name => Str, [Description => Str, RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>])
 
 Each argument is described in detail in: L<Paws::Lambda::CreateAlias>
 
@@ -391,6 +401,15 @@ deleted. You will need to delete the event source mappings explicitly.
 
 This operation requires permission for the C<lambda:DeleteFunction>
 action.
+
+
+=head2 DeleteFunctionConcurrency(FunctionName => Str)
+
+Each argument is described in detail in: L<Paws::Lambda::DeleteFunctionConcurrency>
+
+Returns: nothing
+
+Removes concurrent execution limits from this function.
 
 
 =head2 GetAccountSettings()
@@ -634,6 +653,20 @@ Versioning and Aliases
 (http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
 
 
+=head2 PutFunctionConcurrency(FunctionName => Str, ReservedConcurrentExecutions => Int)
+
+Each argument is described in detail in: L<Paws::Lambda::PutFunctionConcurrency>
+
+Returns: a L<Paws::Lambda::Concurrency> instance
+
+Sets a limit on the number of concurrent executions available to this
+function. It is a subset of your account's total concurrent execution
+limit per region. Note that Lambda automatically reserves a buffer of
+100 concurrent executions for functions without any reserved
+concurrency limit. This means if your account limit is 1000, you have a
+total of 900 available to allocate to individual functions.
+
+
 =head2 RemovePermission(FunctionName => Str, StatementId => Str, [Qualifier => Str])
 
 Each argument is described in detail in: L<Paws::Lambda::RemovePermission>
@@ -679,7 +712,7 @@ Removes tags from a Lambda function. Requires the function ARN (Amazon
 Resource Name).
 
 
-=head2 UpdateAlias(FunctionName => Str, Name => Str, [Description => Str, FunctionVersion => Str])
+=head2 UpdateAlias(FunctionName => Str, Name => Str, [Description => Str, FunctionVersion => Str, RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>])
 
 Each argument is described in detail in: L<Paws::Lambda::UpdateAlias>
 
