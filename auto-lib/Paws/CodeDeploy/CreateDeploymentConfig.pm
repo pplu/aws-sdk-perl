@@ -1,8 +1,10 @@
 
 package Paws::CodeDeploy::CreateDeploymentConfig;
   use Moose;
+  has ComputePlatform => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'computePlatform' );
   has DeploymentConfigName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentConfigName' , required => 1);
   has MinimumHealthyHosts => (is => 'ro', isa => 'Paws::CodeDeploy::MinimumHealthyHosts', traits => ['NameInRequest'], request_name => 'minimumHealthyHosts' , required => 1);
+  has TrafficRoutingConfig => (is => 'ro', isa => 'Paws::CodeDeploy::TrafficRoutingConfig', traits => ['NameInRequest'], request_name => 'trafficRoutingConfig' );
 
   use MooseX::ClassAttribute;
 
@@ -33,6 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
+=head2 ComputePlatform => Str
+
+The destination platform type for the deployment (C<Lambda> or
+C<Server>E<gt>).
+
+Valid values are: C<"Server">, C<"Lambda">
 
 =head2 B<REQUIRED> DeploymentConfigName => Str
 
@@ -69,6 +78,12 @@ The value parameter takes an integer.
 
 For example, to set a minimum of 95% healthy instance, specify a type
 of FLEET_PERCENT and a value of 95.
+
+
+
+=head2 TrafficRoutingConfig => L<Paws::CodeDeploy::TrafficRoutingConfig>
+
+The configuration specifying how the deployment traffic will be routed.
 
 
 

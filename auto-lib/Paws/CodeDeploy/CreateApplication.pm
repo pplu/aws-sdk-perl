@@ -2,6 +2,7 @@
 package Paws::CodeDeploy::CreateApplication;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
+  has ComputePlatform => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'computePlatform' );
 
   use MooseX::ClassAttribute;
 
@@ -39,6 +40,13 @@ The name of the application. This name must be unique with the
 applicable IAM user or AWS account.
 
 
+
+=head2 ComputePlatform => Str
+
+The destination platform type for the deployment C<Lambda> or
+C<Server>).
+
+Valid values are: C<"Server">, C<"Lambda">
 
 
 =head1 SEE ALSO
