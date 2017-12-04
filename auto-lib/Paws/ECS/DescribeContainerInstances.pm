@@ -44,8 +44,7 @@ cluster, the default cluster is assumed.
 
 =head2 B<REQUIRED> ContainerInstances => ArrayRef[Str|Undef]
 
-A list of container instance IDs or full Amazon Resource Name (ARN)
-entries.
+A list of container instance IDs or full ARN entries.
 
 
 

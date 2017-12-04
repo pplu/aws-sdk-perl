@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Code => Str
 
-  The reason code for the Spot instance state change.
+  The reason code for the Spot Instance state change.
 
 
 =head2 Message => Str
 
-  The message for the Spot instance state change.
+  The message for the Spot Instance state change.
 
 
 

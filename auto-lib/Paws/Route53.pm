@@ -134,6 +134,11 @@ package Paws::Route53;
     my $call_object = $self->new_with_coercions('Paws::Route53::DisassociateVPCFromHostedZone', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAccountLimit {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::GetAccountLimit', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetChange {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53::GetChange', @_);
@@ -179,6 +184,11 @@ package Paws::Route53;
     my $call_object = $self->new_with_coercions('Paws::Route53::GetHostedZoneCount', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetHostedZoneLimit {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::GetHostedZoneLimit', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetQueryLoggingConfig {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53::GetQueryLoggingConfig', @_);
@@ -187,6 +197,11 @@ package Paws::Route53;
   sub GetReusableDelegationSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53::GetReusableDelegationSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetReusableDelegationSetLimit {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::GetReusableDelegationSetLimit', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetTrafficPolicy {
@@ -376,7 +391,7 @@ package Paws::Route53;
   }
 
 
-  sub operations { qw/AssociateVPCWithHostedZone ChangeResourceRecordSets ChangeTagsForResource CreateHealthCheck CreateHostedZone CreateQueryLoggingConfig CreateReusableDelegationSet CreateTrafficPolicy CreateTrafficPolicyInstance CreateTrafficPolicyVersion CreateVPCAssociationAuthorization DeleteHealthCheck DeleteHostedZone DeleteQueryLoggingConfig DeleteReusableDelegationSet DeleteTrafficPolicy DeleteTrafficPolicyInstance DeleteVPCAssociationAuthorization DisassociateVPCFromHostedZone GetChange GetCheckerIpRanges GetGeoLocation GetHealthCheck GetHealthCheckCount GetHealthCheckLastFailureReason GetHealthCheckStatus GetHostedZone GetHostedZoneCount GetQueryLoggingConfig GetReusableDelegationSet GetTrafficPolicy GetTrafficPolicyInstance GetTrafficPolicyInstanceCount ListGeoLocations ListHealthChecks ListHostedZones ListHostedZonesByName ListQueryLoggingConfigs ListResourceRecordSets ListReusableDelegationSets ListTagsForResource ListTagsForResources ListTrafficPolicies ListTrafficPolicyInstances ListTrafficPolicyInstancesByHostedZone ListTrafficPolicyInstancesByPolicy ListTrafficPolicyVersions ListVPCAssociationAuthorizations TestDNSAnswer UpdateHealthCheck UpdateHostedZoneComment UpdateTrafficPolicyComment UpdateTrafficPolicyInstance / }
+  sub operations { qw/AssociateVPCWithHostedZone ChangeResourceRecordSets ChangeTagsForResource CreateHealthCheck CreateHostedZone CreateQueryLoggingConfig CreateReusableDelegationSet CreateTrafficPolicy CreateTrafficPolicyInstance CreateTrafficPolicyVersion CreateVPCAssociationAuthorization DeleteHealthCheck DeleteHostedZone DeleteQueryLoggingConfig DeleteReusableDelegationSet DeleteTrafficPolicy DeleteTrafficPolicyInstance DeleteVPCAssociationAuthorization DisassociateVPCFromHostedZone GetAccountLimit GetChange GetCheckerIpRanges GetGeoLocation GetHealthCheck GetHealthCheckCount GetHealthCheckLastFailureReason GetHealthCheckStatus GetHostedZone GetHostedZoneCount GetHostedZoneLimit GetQueryLoggingConfig GetReusableDelegationSet GetReusableDelegationSetLimit GetTrafficPolicy GetTrafficPolicyInstance GetTrafficPolicyInstanceCount ListGeoLocations ListHealthChecks ListHostedZones ListHostedZonesByName ListQueryLoggingConfigs ListResourceRecordSets ListReusableDelegationSets ListTagsForResource ListTagsForResources ListTrafficPolicies ListTrafficPolicyInstances ListTrafficPolicyInstancesByHostedZone ListTrafficPolicyInstancesByPolicy ListTrafficPolicyVersions ListVPCAssociationAuthorizations TestDNSAnswer UpdateHealthCheck UpdateHostedZoneComment UpdateTrafficPolicyComment UpdateTrafficPolicyInstance / }
 
 1;
 
@@ -751,9 +766,9 @@ log groups that you create for query logging.
 =item 2.
 
 Create a CloudWatch Logs resource policy, and give it the permissions
-that Amazon Route 53 needs to create log streams and to to send query
-logs to log streams. For the value of C<Resource>, specify the ARN for
-the log group that you created in the previous step. To use the same
+that Amazon Route 53 needs to create log streams and to send query logs
+to log streams. For the value of C<Resource>, specify the ARN for the
+log group that you created in the previous step. To use the same
 resource policy for all the CloudWatch Logs log groups that you created
 for query logging configurations, replace the hosted zone name with
 C<*>, for example:
@@ -1073,6 +1088,22 @@ VPC is associated with the hosted zone. You also can't convert a
 private hosted zone into a public hosted zone.
 
 
+=head2 GetAccountLimit(Type => Str)
+
+Each argument is described in detail in: L<Paws::Route53::GetAccountLimit>
+
+Returns: a L<Paws::Route53::GetAccountLimitResponse> instance
+
+Gets the specified limit for the current account, for example, the
+maximum number of health checks that you can create using the account.
+
+For the default limit, see Limits
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
+in the I<Amazon Route 53 Developer Guide>. To request a higher limit,
+open a case
+(https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53).
+
+
 =head2 GetChange(Id => Str)
 
 Each argument is described in detail in: L<Paws::Route53::GetChange>
@@ -1197,6 +1228,22 @@ Retrieves the number of hosted zones that are associated with the
 current AWS account.
 
 
+=head2 GetHostedZoneLimit(HostedZoneId => Str, Type => Str)
+
+Each argument is described in detail in: L<Paws::Route53::GetHostedZoneLimit>
+
+Returns: a L<Paws::Route53::GetHostedZoneLimitResponse> instance
+
+Gets the specified limit for a specified hosted zone, for example, the
+maximum number of records that you can create in the hosted zone.
+
+For the default limit, see Limits
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
+in the I<Amazon Route 53 Developer Guide>. To request a higher limit,
+open a case
+(https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53).
+
+
 =head2 GetQueryLoggingConfig(Id => Str)
 
 Each argument is described in detail in: L<Paws::Route53::GetQueryLoggingConfig>
@@ -1219,6 +1266,22 @@ Returns: a L<Paws::Route53::GetReusableDelegationSetResponse> instance
 Retrieves information about a specified reusable delegation set,
 including the four name servers that are assigned to the delegation
 set.
+
+
+=head2 GetReusableDelegationSetLimit(DelegationSetId => Str, Type => Str)
+
+Each argument is described in detail in: L<Paws::Route53::GetReusableDelegationSetLimit>
+
+Returns: a L<Paws::Route53::GetReusableDelegationSetLimitResponse> instance
+
+Gets the maximum number of hosted zones that you can associate with the
+specified reusable delegation set.
+
+For the default limit, see Limits
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
+in the I<Amazon Route 53 Developer Guide>. To request a higher limit,
+open a case
+(https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53).
 
 
 =head2 GetTrafficPolicy(Id => Str, Version => Int)

@@ -44,7 +44,7 @@ Describes an Availability Zone.
 
 =head2 ZoneName => Str
 
-  The name of the Availability Zone. The format is C<us-east-1a>
+  The name of the Availability Zone. The format is C<us-east-2a>
 (case-sensitive).
 
 

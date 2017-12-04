@@ -66,7 +66,7 @@ retirement.
 =item *
 
 C<Server.SpotInstanceTermination>: A Spot Instance was terminated due
-to an increase in the market price.
+to an increase in the Spot price.
 
 =item *
 

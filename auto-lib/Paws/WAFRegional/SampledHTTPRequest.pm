@@ -2,6 +2,7 @@ package Paws::WAFRegional::SampledHTTPRequest;
   use Moose;
   has Action => (is => 'ro', isa => 'Str');
   has Request => (is => 'ro', isa => 'Paws::WAFRegional::HTTPRequest', required => 1);
+  has RuleWithinRuleGroup => (is => 'ro', isa => 'Str');
   has Timestamp => (is => 'ro', isa => 'Str');
   has Weight => (is => 'ro', isa => 'Int', required => 1);
 1;
@@ -52,6 +53,14 @@ C<BLOCK>, or C<COUNT>.
 =head2 B<REQUIRED> Request => L<Paws::WAFRegional::HTTPRequest>
 
   A complex type that contains detailed information about the request.
+
+
+=head2 RuleWithinRuleGroup => Str
+
+  This value is returned if the C<GetSampledRequests> request specifies
+the ID of a C<RuleGroup> rather than the ID of an individual rule.
+C<RuleWithinRuleGroup> is the rule within the specified C<RuleGroup>
+that matched the request listed in the response.
 
 
 =head2 Timestamp => Str

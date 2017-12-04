@@ -2,13 +2,24 @@ package Paws::SSM::AutomationExecutionMetadata;
   use Moose;
   has AutomationExecutionId => (is => 'ro', isa => 'Str');
   has AutomationExecutionStatus => (is => 'ro', isa => 'Str');
+  has CurrentAction => (is => 'ro', isa => 'Str');
+  has CurrentStepName => (is => 'ro', isa => 'Str');
   has DocumentName => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has ExecutedBy => (is => 'ro', isa => 'Str');
   has ExecutionEndTime => (is => 'ro', isa => 'Str');
   has ExecutionStartTime => (is => 'ro', isa => 'Str');
+  has FailureMessage => (is => 'ro', isa => 'Str');
   has LogFile => (is => 'ro', isa => 'Str');
+  has MaxConcurrency => (is => 'ro', isa => 'Str');
+  has MaxErrors => (is => 'ro', isa => 'Str');
+  has Mode => (is => 'ro', isa => 'Str');
   has Outputs => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
+  has ParentAutomationExecutionId => (is => 'ro', isa => 'Str');
+  has ResolvedTargets => (is => 'ro', isa => 'Paws::SSM::ResolvedTargets');
+  has Target => (is => 'ro', isa => 'Str');
+  has TargetParameterName => (is => 'ro', isa => 'Str');
+  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +39,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::AutomationExecutionMetadata object:
 
-  $service_obj->Method(Att1 => { AutomationExecutionId => $value, ..., Outputs => $value  });
+  $service_obj->Method(Att1 => { AutomationExecutionId => $value, ..., Targets => $value  });
 
 =head3 Results returned from an API call
 
@@ -53,6 +64,16 @@ Details about a specific Automation execution.
 
   The status of the execution. Valid values include: Running, Succeeded,
 Failed, Timed out, or Cancelled.
+
+
+=head2 CurrentAction => Str
+
+  The action of the currently executing step.
+
+
+=head2 CurrentStepName => Str
+
+  The name of the currently executing step.
 
 
 =head2 DocumentName => Str
@@ -81,14 +102,60 @@ is still in progress.
   The time the execution started.E<gt>
 
 
+=head2 FailureMessage => Str
+
+  The list of execution outputs as defined in the Automation document.
+
+
 =head2 LogFile => Str
 
   An Amazon S3 bucket where execution information is stored.
 
 
+=head2 MaxConcurrency => Str
+
+  The MaxConcurrency value specified by the user when starting the
+Automation.
+
+
+=head2 MaxErrors => Str
+
+  The MaxErrors value specified by the user when starting the Automation.
+
+
+=head2 Mode => Str
+
+  The Automation execution mode.
+
+
 =head2 Outputs => L<Paws::SSM::AutomationParameterMap>
 
   The list of execution outputs as defined in the Automation document.
+
+
+=head2 ParentAutomationExecutionId => Str
+
+  The ExecutionId of the parent Automation.
+
+
+=head2 ResolvedTargets => L<Paws::SSM::ResolvedTargets>
+
+  A list of targets that resolved during the execution.
+
+
+=head2 Target => Str
+
+  The list of execution outputs as defined in the Automation document.
+
+
+=head2 TargetParameterName => Str
+
+  The list of execution outputs as defined in the Automation document.
+
+
+=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
+
+  The targets defined by the user when starting the Automation.
 
 
 

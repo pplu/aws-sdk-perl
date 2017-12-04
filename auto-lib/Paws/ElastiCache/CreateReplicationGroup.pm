@@ -266,9 +266,6 @@ T2 instances.
 
 =back
 
-Supported node types are available in all regions except as noted in
-the following table.
-
 For a complete listing of node types and specifications, see Amazon
 ElastiCache Product Features and Details
 (http://aws.amazon.com/elasticache/details) and either Cache Node
@@ -327,24 +324,24 @@ information, see Subnets and Subnet Groups
 
 =head2 Engine => Str
 
-The name of the cache engine to be used for the cache clusters in this
+The name of the cache engine to be used for the clusters in this
 replication group.
 
 
 
 =head2 EngineVersion => Str
 
-The version number of the cache engine to be used for the cache
-clusters in this replication group. To view the supported cache engine
-versions, use the C<DescribeCacheEngineVersions> operation.
+The version number of the cache engine to be used for the clusters in
+this replication group. To view the supported cache engine versions,
+use the C<DescribeCacheEngineVersions> operation.
 
 B<Important:> You can upgrade to a newer engine version (see Selecting
 a Cache Engine and Version
 (http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement))
 in the I<ElastiCache User Guide>, but you cannot downgrade to an
 earlier engine version. If you want to use an earlier engine version,
-you must delete the existing cache cluster or replication group and
-create it anew with the earlier engine version.
+you must delete the existing cluster or replication group and create it
+anew with the earlier engine version.
 
 
 
@@ -366,7 +363,7 @@ parameter.
 The Amazon Resource Name (ARN) of the Amazon Simple Notification
 Service (SNS) topic to which notifications are sent.
 
-The Amazon SNS topic owner must be the same as the cache cluster owner.
+The Amazon SNS topic owner must be the same as the cluster owner.
 
 
 
@@ -406,7 +403,7 @@ connections.
 
 =head2 PreferredCacheClusterAZs => ArrayRef[Str|Undef]
 
-A list of EC2 Availability Zones in which the replication group's cache
+A list of EC2 Availability Zones in which the replication group's
 clusters are created. The order of the Availability Zones in the list
 is the order in which clusters are allocated. The primary cluster is
 created in the first AZ in the list.
@@ -415,7 +412,7 @@ This parameter is not used if there is more than one node group
 (shard). You should use C<NodeGroupConfiguration> instead.
 
 If you are creating your replication group in an Amazon VPC
-(recommended), you can only locate cache clusters in Availability Zones
+(recommended), you can only locate clusters in Availability Zones
 associated with the subnets in the selected subnet group.
 
 The number of Availability Zones listed must equal the value of
@@ -427,8 +424,8 @@ Default: system chosen Availability Zones.
 
 =head2 PreferredMaintenanceWindow => Str
 
-Specifies the weekly time range during which maintenance on the cache
-cluster is performed. It is specified as a range in the format
+Specifies the weekly time range during which maintenance on the cluster
+is performed. It is specified as a range in the format
 ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
 is a 60 minute period. Valid values for C<ddd> are:
 
@@ -477,9 +474,9 @@ Example: C<sun:23:00-mon:01:30>
 
 =head2 PrimaryClusterId => Str
 
-The identifier of the cache cluster that serves as the primary for this
-replication group. This cache cluster must already exist and have a
-status of C<available>.
+The identifier of the cluster that serves as the primary for this
+replication group. This cluster must already exist and have a status of
+C<available>.
 
 This parameter is not required if C<NumCacheClusters>,
 C<NumNodeGroups>, or C<ReplicasPerNodeGroup> is specified.
@@ -565,8 +562,7 @@ before deleting them. For example, if you set C<SnapshotRetentionLimit>
 to 5, a snapshot that was taken today is retained for 5 days before
 being deleted.
 
-Default: 0 (i.e., automatic backups are disabled for this cache
-cluster).
+Default: 0 (i.e., automatic backups are disabled for this cluster).
 
 
 
@@ -585,7 +581,8 @@ an appropriate time range.
 =head2 Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
 
 A list of cost allocation tags to be added to this resource. A tag is a
-key-value pair.
+key-value pair. A tag key does not have to be accompanied by a tag
+value.
 
 
 

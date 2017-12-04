@@ -52,16 +52,17 @@ One or more filters.
 
 =item *
 
-C<accepter-vpc-info.cidr-block> - The IPv4 CIDR block of the peer VPC.
+C<accepter-vpc-info.cidr-block> - The IPv4 CIDR block of the accepter
+VPC.
 
 =item *
 
 C<accepter-vpc-info.owner-id> - The AWS account ID of the owner of the
-peer VPC.
+accepter VPC.
 
 =item *
 
-C<accepter-vpc-info.vpc-id> - The ID of the peer VPC.
+C<accepter-vpc-info.vpc-id> - The ID of the accepter VPC.
 
 =item *
 
@@ -86,7 +87,7 @@ C<requester-vpc-info.vpc-id> - The ID of the requester VPC.
 
 C<status-code> - The status of the VPC peering connection
 (C<pending-acceptance> | C<failed> | C<expired> | C<provisioning> |
-C<active> | C<deleted> | C<rejected>).
+C<active> | C<deleting> | C<deleted> | C<rejected>).
 
 =item *
 

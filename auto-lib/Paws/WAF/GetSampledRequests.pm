@@ -48,14 +48,15 @@ them.
 
 =head2 B<REQUIRED> RuleId => Str
 
-C<RuleId> is one of two values:
+C<RuleId> is one of three values:
 
 =over
 
 =item *
 
-The C<RuleId> of the C<Rule> for which you want C<GetSampledRequests>
-to return a sample of requests.
+The C<RuleId> of the C<Rule> or the C<RuleGroupId> of the C<RuleGroup>
+for which you want C<GetSampledRequests> to return a sample of
+requests.
 
 =item *
 

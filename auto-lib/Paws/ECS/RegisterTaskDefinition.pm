@@ -2,9 +2,13 @@
 package Paws::ECS::RegisterTaskDefinition;
   use Moose;
   has ContainerDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerDefinition]', traits => ['NameInRequest'], request_name => 'containerDefinitions' , required => 1);
+  has Cpu => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cpu' );
+  has ExecutionRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionRoleArn' );
   has Family => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'family' , required => 1);
+  has Memory => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'memory' );
   has NetworkMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkMode' );
   has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::TaskDefinitionPlacementConstraint]', traits => ['NameInRequest'], request_name => 'placementConstraints' );
+  has RequiresCompatibilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'requiresCompatibilities' );
   has TaskRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskRoleArn' );
   has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Volume]', traits => ['NameInRequest'], request_name => 'volumes' );
 
@@ -45,6 +49,51 @@ different containers that make up your task.
 
 
 
+=head2 Cpu => Str
+
+The number of C<cpu> units used by the task. If using the EC2 launch
+type, this field is optional and any value can be used. If you are
+using the Fargate launch type, this field is required and you must use
+one of the following values, which determines your range of valid
+values for the C<memory> parameter:
+
+=over
+
+=item *
+
+256 (.25 vCPU) - Available C<memory> values: 512MB, 1GB, 2GB
+
+=item *
+
+512 (.5 vCPU) - Available C<memory> values: 1GB, 2GB, 3GB, 4GB
+
+=item *
+
+1024 (1 vCPU) - Available C<memory> values: 2GB, 3GB, 4GB, 5GB, 6GB,
+7GB, 8GB
+
+=item *
+
+2048 (2 vCPU) - Available C<memory> values: Between 4GB and 16GB in 1GB
+increments
+
+=item *
+
+4096 (4 vCPU) - Available C<memory> values: Between 8GB and 30GB in 1GB
+increments
+
+=back
+
+
+
+
+=head2 ExecutionRoleArn => Str
+
+The Amazon Resource Name (ARN) of the task execution role that the
+Amazon ECS container agent and the Docker daemon can assume.
+
+
+
 =head2 B<REQUIRED> Family => Str
 
 You must specify a C<family> for a task definition, which allows you to
@@ -54,33 +103,93 @@ and lowercase), numbers, hyphens, and underscores are allowed.
 
 
 
+=head2 Memory => Str
+
+The amount (in MiB) of memory used by the task. If using the EC2 launch
+type, this field is optional and any value can be used. If you are
+using the Fargate launch type, this field is required and you must use
+one of the following values, which determines your range of valid
+values for the C<cpu> parameter:
+
+=over
+
+=item *
+
+512MB, 1GB, 2GB - Available C<cpu> values: 256 (.25 vCPU)
+
+=item *
+
+1GB, 2GB, 3GB, 4GB - Available C<cpu> values: 512 (.5 vCPU)
+
+=item *
+
+2GB, 3GB, 4GB, 5GB, 6GB, 7GB, 8GB - Available C<cpu> values: 1024 (1
+vCPU)
+
+=item *
+
+Between 4GB and 16GB in 1GB increments - Available C<cpu> values: 2048
+(2 vCPU)
+
+=item *
+
+Between 8GB and 30GB in 1GB increments - Available C<cpu> values: 4096
+(4 vCPU)
+
+=back
+
+
+
+
 =head2 NetworkMode => Str
 
 The Docker networking mode to use for the containers in the task. The
-valid values are C<none>, C<bridge>, and C<host>.
-
-The default Docker network mode is C<bridge>. If the network mode is
-set to C<none>, you cannot specify port mappings in your container
-definitions, and the task's containers do not have external
-connectivity. The C<host> network mode offers the highest networking
-performance for containers because they use the host network stack
+valid values are C<none>, C<bridge>, C<awsvpc>, and C<host>. The
+default Docker network mode is C<bridge>. If using the Fargate launch
+type, the C<awsvpc> network mode is required. If using the EC2 launch
+type, any network mode can be used. If the network mode is set to
+C<none>, you can't specify port mappings in your container definitions,
+and the task's containers do not have external connectivity. The
+C<host> and C<awsvpc> network modes offer the highest networking
+performance for containers because they use the EC2 network stack
 instead of the virtualized network stack provided by the C<bridge>
-mode; however, exposed container ports are mapped directly to the
-corresponding host port, so you cannot take advantage of dynamic host
-port mappings or run multiple instantiations of the same task on a
-single container instance if port mappings are used.
+mode.
+
+With the C<host> and C<awsvpc> network modes, exposed container ports
+are mapped directly to the corresponding host port (for the C<host>
+network mode) or the attached elastic network interface port (for the
+C<awsvpc> network mode), so you cannot take advantage of dynamic host
+port mappings.
+
+If the network mode is C<awsvpc>, the task is allocated an Elastic
+Network Interface, and you must specify a NetworkConfiguration when you
+create a service or run a task with the task definition. For more
+information, see Task Networking
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
+If the network mode is C<host>, you can't run multiple instantiations
+of the same task on a single container instance when port mappings are
+used.
 
 For more information, see Network settings
 (https://docs.docker.com/engine/reference/run/#network-settings) in the
 I<Docker run reference>.
 
-Valid values are: C<"bridge">, C<"host">, C<"none">
+Valid values are: C<"bridge">, C<"host">, C<"awsvpc">, C<"none">
 
 =head2 PlacementConstraints => ArrayRef[L<Paws::ECS::TaskDefinitionPlacementConstraint>]
 
 An array of placement constraint objects to use for the task. You can
 specify a maximum of 10 constraints per task (this limit includes
 constraints in the task definition and those specified at run time).
+
+
+
+=head2 RequiresCompatibilities => ArrayRef[Str|Undef]
+
+The launch type required by the task. If no value is specified, it
+defaults to C<EC2>.
 
 
 
@@ -91,7 +200,7 @@ containers in this task can assume. All containers in this task are
 granted the permissions that are specified in this role. For more
 information, see IAM Roles for Tasks
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html)
-in the I<Amazon EC2 Container Service Developer Guide>.
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 

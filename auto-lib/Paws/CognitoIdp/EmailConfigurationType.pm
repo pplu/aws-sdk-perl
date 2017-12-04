@@ -39,7 +39,7 @@ The email configuration type.
 
 =head2 ReplyToEmailAddress => Str
 
-  The REPLY-TO email address.
+  The destination to which the receiver of the email should reply to.
 
 
 =head2 SourceArn => Str

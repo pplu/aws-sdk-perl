@@ -1,6 +1,7 @@
 
 package Paws::Rekognition::ListFacesResponse;
   use Moose;
+  has FaceModelVersion => (is => 'ro', isa => 'Str');
   has Faces => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Face]');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -13,6 +14,12 @@ package Paws::Rekognition::ListFacesResponse;
 Paws::Rekognition::ListFacesResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 FaceModelVersion => Str
+
+Version number of the face detection model associated with the input
+collection (C<CollectionId>).
 
 
 =head2 Faces => ArrayRef[L<Paws::Rekognition::Face>]

@@ -1,10 +1,12 @@
 
 package Paws::CognitoIdp::RespondToAuthChallenge;
   use Moose;
+  has AnalyticsMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::AnalyticsMetadataType');
   has ChallengeName => (is => 'ro', isa => 'Str', required => 1);
   has ChallengeResponses => (is => 'ro', isa => 'Paws::CognitoIdp::ChallengeResponsesType');
   has ClientId => (is => 'ro', isa => 'Str', required => 1);
   has Session => (is => 'ro', isa => 'Str');
+  has UserContextData => (is => 'ro', isa => 'Paws::CognitoIdp::UserContextDataType');
 
   use MooseX::ClassAttribute;
 
@@ -36,13 +38,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>
+
+The Amazon Pinpoint analytics metadata for collecting metrics for
+C<RespondToAuthChallenge> calls.
+
+
+
 =head2 B<REQUIRED> ChallengeName => Str
 
-The challenge name. For more information, see InitiateAuth.
+The challenge name. For more information, see .
 
 C<ADMIN_NO_SRP_AUTH> is not a valid value.
 
-Valid values are: C<"SMS_MFA">, C<"PASSWORD_VERIFIER">, C<"CUSTOM_CHALLENGE">, C<"DEVICE_SRP_AUTH">, C<"DEVICE_PASSWORD_VERIFIER">, C<"ADMIN_NO_SRP_AUTH">, C<"NEW_PASSWORD_REQUIRED">
+Valid values are: C<"SMS_MFA">, C<"SOFTWARE_TOKEN_MFA">, C<"SELECT_MFA_TYPE">, C<"MFA_SETUP">, C<"PASSWORD_VERIFIER">, C<"CUSTOM_CHALLENGE">, C<"DEVICE_SRP_AUTH">, C<"DEVICE_PASSWORD_VERIFIER">, C<"ADMIN_NO_SRP_AUTH">, C<"NEW_PASSWORD_REQUIRED">
 
 =head2 ChallengeResponses => L<Paws::CognitoIdp::ChallengeResponsesType>
 
@@ -87,6 +96,14 @@ API call determines that the caller needs to go through another
 challenge, they return a session with other challenge parameters. This
 session should be passed as it is to the next C<RespondToAuthChallenge>
 API call.
+
+
+
+=head2 UserContextData => L<Paws::CognitoIdp::UserContextDataType>
+
+Contextual data such as the user's device fingerprint, IP address, or
+location used for evaluating the risk of an unexpected event by Amazon
+Cognito advanced security.
 
 
 

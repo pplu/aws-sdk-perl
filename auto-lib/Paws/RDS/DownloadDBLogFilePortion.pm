@@ -71,8 +71,8 @@ the marker until the end of the file or up to NumberOfLines.
 =head2 NumberOfLines => Int
 
 The number of lines to download. If the number of lines specified
-results in a file over 1 MB in size, the file will be truncated at 1 MB
-in size.
+results in a file over 1 MB in size, the file is truncated at 1 MB in
+size.
 
 If the NumberOfLines parameter is specified, then the block of lines
 returned can be from the beginning or the end of the log file,

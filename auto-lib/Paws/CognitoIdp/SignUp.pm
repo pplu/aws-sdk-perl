@@ -1,10 +1,12 @@
 
 package Paws::CognitoIdp::SignUp;
   use Moose;
+  has AnalyticsMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::AnalyticsMetadataType');
   has ClientId => (is => 'ro', isa => 'Str', required => 1);
   has Password => (is => 'ro', isa => 'Str', required => 1);
   has SecretHash => (is => 'ro', isa => 'Str');
   has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::AttributeType]');
+  has UserContextData => (is => 'ro', isa => 'Paws::CognitoIdp::UserContextDataType');
   has Username => (is => 'ro', isa => 'Str', required => 1);
   has ValidationData => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::AttributeType]');
 
@@ -38,6 +40,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>
+
+The Amazon Pinpoint analytics metadata for collecting metrics for
+C<SignUp> calls.
+
+
+
 =head2 B<REQUIRED> ClientId => Str
 
 The ID of the client associated with the user pool.
@@ -64,6 +73,14 @@ An array of name-value pairs representing user attributes.
 
 For custom attributes, you must prepend the C<custom:> prefix to the
 attribute name.
+
+
+
+=head2 UserContextData => L<Paws::CognitoIdp::UserContextDataType>
+
+Contextual data such as the user's device fingerprint, IP address, or
+location used for evaluating the risk of an unexpected event by Amazon
+Cognito advanced security.
 
 
 

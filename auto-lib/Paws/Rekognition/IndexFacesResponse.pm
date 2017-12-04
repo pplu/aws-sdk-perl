@@ -1,6 +1,7 @@
 
 package Paws::Rekognition::IndexFacesResponse;
   use Moose;
+  has FaceModelVersion => (is => 'ro', isa => 'Str');
   has FaceRecords => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::FaceRecord]');
   has OrientationCorrection => (is => 'ro', isa => 'Str');
 
@@ -15,10 +16,16 @@ Paws::Rekognition::IndexFacesResponse
 =head1 ATTRIBUTES
 
 
+=head2 FaceModelVersion => Str
+
+Version number of the face detection model associated with the input
+collection (C<CollectionId>).
+
+
 =head2 FaceRecords => ArrayRef[L<Paws::Rekognition::FaceRecord>]
 
 An array of faces detected and added to the collection. For more
-information, see howitworks-index-faces.
+information, see collections-index-faces.
 
 
 =head2 OrientationCorrection => Str

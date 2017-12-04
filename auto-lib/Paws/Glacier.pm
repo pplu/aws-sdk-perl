@@ -703,8 +703,8 @@ perform specific actions. For more information, see Access Control
 Using AWS Identity and Access Management (IAM)
 (http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
 
-For information about the underlying REST API, see Working with
-Archives in Amazon Glacier
+For more information about using this operation, see the documentation
+for the underlying REST API Describe Job
 (http://docs.aws.amazon.com/amazonglacier/latest/dev/api-describe-job-get.html)
 in the I<Amazon Glacier Developer Guide>.
 
@@ -909,185 +909,11 @@ Each argument is described in detail in: L<Paws::Glacier::InitiateJob>
 
 Returns: a L<Paws::Glacier::InitiateJobOutput> instance
 
-This operation initiates a job of the specified type. In this release,
-you can initiate a job to retrieve either an archive or a vault
-inventory (a list of archives in a vault).
-
-Retrieving data from Amazon Glacier is a two-step process:
-
-=over
-
-=item 1.
-
-Initiate a retrieval job.
-
-A data retrieval policy can cause your initiate retrieval job request
-to fail with a PolicyEnforcedException exception. For more information
-about data retrieval policies, see Amazon Glacier Data Retrieval
-Policies
-(http://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html).
-For more information about the PolicyEnforcedException exception, see
-Error Responses
-(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-error-responses.html).
-
-=item 2.
-
-After the job completes, download the bytes.
-
-=back
-
-The retrieval request is executed asynchronously. When you initiate a
-retrieval job, Amazon Glacier creates a job and returns a job ID in the
-response. When Amazon Glacier completes the job, you can get the job
-output (archive or inventory data). For information about getting job
-output, see GetJobOutput operation.
-
-The job must complete before you can get its output. To determine when
-a job is complete, you have the following options:
-
-=over
-
-=item *
-
-B<Use Amazon SNS Notification> You can specify an Amazon Simple
-Notification Service (Amazon SNS) topic to which Amazon Glacier can
-post a notification after the job is completed. You can specify an SNS
-topic per job request. The notification is sent only after Amazon
-Glacier completes the job. In addition to specifying an SNS topic per
-job request, you can configure vault notifications for a vault so that
-job notifications are always sent. For more information, see
-SetVaultNotifications.
-
-=item *
-
-B<Get job details> You can make a DescribeJob request to obtain job
-status information while a job is in progress. However, it is more
-efficient to use an Amazon SNS notification to determine when a job is
-complete.
-
-=back
-
-The information you get via notification is same that you get by
-calling DescribeJob.
-
-If for a specific event, you add both the notification configuration on
-the vault and also specify an SNS topic in your initiate job request,
-Amazon Glacier sends both notifications. For more information, see
-SetVaultNotifications.
-
-An AWS account has full permission to perform all operations (actions).
-However, AWS Identity and Access Management (IAM) users don't have any
-permissions by default. You must grant them explicit permission to
-perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM)
-(http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
-
-B<About the Vault Inventory>
-
-Amazon Glacier prepares an inventory for each vault periodically, every
-24 hours. When you initiate a job for a vault inventory, Amazon Glacier
-returns the last inventory for the vault. The inventory data you get
-might be up to a day or two days old. Also, the initiate inventory job
-might take some time to complete before you can download the vault
-inventory. So you do not want to retrieve a vault inventory for each
-vault operation. However, in some scenarios, you might find the vault
-inventory useful. For example, when you upload an archive, you can
-provide an archive description but not an archive name. Amazon Glacier
-provides you a unique archive ID, an opaque string of characters. So,
-you might maintain your own database that maps archive names to their
-corresponding Amazon Glacier assigned archive IDs. You might find the
-vault inventory useful in the event you need to reconcile information
-in your database with the actual vault inventory.
-
-B<Range Inventory Retrieval>
-
-You can limit the number of inventory items retrieved by filtering on
-the archive creation date or by setting a limit.
-
-I<Filtering by Archive Creation Date>
-
-You can retrieve inventory items for archives created between
-C<StartDate> and C<EndDate> by specifying values for these parameters
-in the B<InitiateJob> request. Archives created on or after the
-C<StartDate> and before the C<EndDate> will be returned. If you only
-provide the C<StartDate> without the C<EndDate>, you will retrieve the
-inventory for all archives created on or after the C<StartDate>. If you
-only provide the C<EndDate> without the C<StartDate>, you will get back
-the inventory for all archives created before the C<EndDate>.
-
-I<Limiting Inventory Items per Retrieval>
-
-You can limit the number of inventory items returned by setting the
-C<Limit> parameter in the B<InitiateJob> request. The inventory job
-output will contain inventory items up to the specified C<Limit>. If
-there are more inventory items available, the result is paginated.
-After a job is complete you can use the DescribeJob operation to get a
-marker that you use in a subsequent B<InitiateJob> request. The marker
-will indicate the starting point to retrieve the next set of inventory
-items. You can page through your entire inventory by repeatedly making
-B<InitiateJob> requests with the marker from the previous
-B<DescribeJob> output, until you get a marker from B<DescribeJob> that
-returns null, indicating that there are no more inventory items
-available.
-
-You can use the C<Limit> parameter together with the date range
-parameters.
-
-B<About Ranged Archive Retrieval>
-
-You can initiate an archive retrieval for the whole archive or a range
-of the archive. In the case of ranged archive retrieval, you specify a
-byte range to return or the whole archive. The range specified must be
-megabyte (MB) aligned, that is the range start value must be divisible
-by 1 MB and range end value plus 1 must be divisible by 1 MB or equal
-the end of the archive. If the ranged archive retrieval is not megabyte
-aligned, this operation returns a 400 response. Furthermore, to ensure
-you get checksum values for data you download using Get Job Output API,
-the range must be tree hash aligned.
-
-An AWS account has full permission to perform all operations (actions).
-However, AWS Identity and Access Management (IAM) users don't have any
-permissions by default. You must grant them explicit permission to
-perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM)
-(http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
-
-For conceptual information and the underlying REST API, see Initiate a
-Job
-(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html)
-and Downloading a Vault Inventory
-(http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html)
-
-B<Expedited and Bulk Archive Retrievals>
-
-When retrieving an archive, you can specify one of the following
-options in the C<Tier> field of the request body:
-
-=over
-
-=item *
-
-B<Standard> The default type of retrieval, which allows access to any
-of your archives within several hours. Standard retrievals typically
-complete within 3E<ndash>5 hours.
-
-=item *
-
-B<Bulk> Amazon GlacierE<rsquo>s lowest-cost retrieval option, which
-enables you to retrieve large amounts of data inexpensively in a day.
-Bulk retrieval requests typically complete within 5E<ndash>12 hours.
-
-=item *
-
-B<Expedited> Amazon GlacierE<rsquo>s option for the fastest retrievals.
-Archives requested using the expedited retrievals typically become
-accessible within 1E<ndash>5 minutes.
-
-=back
-
-For more information about expedited and bulk retrievals, see
-Retrieving Amazon Glacier Archives
-(http://docs.aws.amazon.com/amazonglacier/latest/dev/downloading-an-archive-two-steps.html).
+This operation initiates a job of the specified type, which can be a
+select, an archival retrieval, or a vault retrieval. For more
+information about using this operation, see the documentation for the
+underlying REST API Initiate a Job
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html).
 
 
 =head2 InitiateMultipartUpload(AccountId => Str, VaultName => Str, [ArchiveDescription => Str, PartSize => Str])
@@ -1197,7 +1023,8 @@ Each argument is described in detail in: L<Paws::Glacier::ListJobs>
 Returns: a L<Paws::Glacier::ListJobsOutput> instance
 
 This operation lists jobs for a vault, including jobs that are
-in-progress and jobs that have recently finished.
+in-progress and jobs that have recently finished. The List Job
+operation returns a list of these jobs sorted by job initiation time.
 
 Amazon Glacier retains recently completed jobs for a period before
 deleting them; however, it eventually removes completed jobs. The
@@ -1209,13 +1036,6 @@ archive retrieval job to download an archive. After the job completes,
 you start to download the archive but encounter a network error. In
 this scenario, you can retry and download the archive while the job
 exists.
-
-To retrieve an archive or retrieve a vault inventory from Amazon
-Glacier, you first initiate a job, and after the job completes, you
-download the data. For an archive retrieval, the output is the archive
-data. For an inventory retrieval, it is the inventory list. The List
-Job operation returns a list of these jobs sorted by job initiation
-time.
 
 The List Jobs operation supports pagination. You should always check
 the response C<Marker> field. If there are no more jobs to list, the
@@ -1239,7 +1059,8 @@ Using the C<completed> parameter, you can specify to return only jobs
 that were completed (C<true>) or jobs that were not completed
 (C<false>).
 
-For the underlying REST API, see List Jobs
+For more information about using this operation, see the documentation
+for the underlying REST API List Jobs
 (http://docs.aws.amazon.com/amazonglacier/latest/dev/api-jobs-get.html).
 
 
@@ -1329,8 +1150,8 @@ Each argument is described in detail in: L<Paws::Glacier::ListProvisionedCapacit
 
 Returns: a L<Paws::Glacier::ListProvisionedCapacityOutput> instance
 
-This operation lists the provisioned capacity for the specified AWS
-account.
+This operation lists the provisioned capacity units for the specified
+AWS account.
 
 
 =head2 ListTagsForVault(AccountId => Str, VaultName => Str)

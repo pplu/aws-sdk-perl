@@ -4,7 +4,12 @@ package Paws::SSM::StartAutomationExecution;
   has ClientToken => (is => 'ro', isa => 'Str');
   has DocumentName => (is => 'ro', isa => 'Str', required => 1);
   has DocumentVersion => (is => 'ro', isa => 'Str');
+  has MaxConcurrency => (is => 'ro', isa => 'Str');
+  has MaxErrors => (is => 'ro', isa => 'Str');
+  has Mode => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
+  has TargetParameterName => (is => 'ro', isa => 'Str');
+  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
 
   use MooseX::ClassAttribute;
 
@@ -55,10 +60,60 @@ The version of the Automation document to use for this execution.
 
 
 
+=head2 MaxConcurrency => Str
+
+The maximum number of targets allowed to run this task in parallel. You
+can specify a number, such as 10, or a percentage, such as 10%. The
+default value is 10.
+
+
+
+=head2 MaxErrors => Str
+
+The number of errors that are allowed before the system stops running
+the automation on additional targets. You can specify either an
+absolute number of errors, for example 10, or a percentage of the
+target set, for example 10%. If you specify 3, for example, the system
+stops running the automation when the fourth error is received. If you
+specify 0, then the system stops running the automation on additional
+targets after the first error result is returned. If you run an
+automation on 50 resources and set max-errors to 10%, then the system
+stops running the automation on additional targets when the sixth error
+is received.
+
+Executions that are already running an automation when max-errors is
+reached are allowed to complete, but some of these executions may fail
+as well. If you need to ensure that there won't be more than max-errors
+failed executions, set max-concurrency to 1 so the executions proceed
+one at a time.
+
+
+
+=head2 Mode => Str
+
+The execution mode of the automation. Valid modes include the
+following: Auto and Interactive. The default mode is Auto.
+
+Valid values are: C<"Auto">, C<"Interactive">
+
 =head2 Parameters => L<Paws::SSM::AutomationParameterMap>
 
 A key-value map of execution parameters, which match the declared
 parameters in the Automation document.
+
+
+
+=head2 TargetParameterName => Str
+
+The name of the parameter used as the target resource for the
+rate-controlled execution. Required if you specify Targets.
+
+
+
+=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
+
+A key-value mapping to target resources. Required if you specify
+TargetParameterName.
 
 
 

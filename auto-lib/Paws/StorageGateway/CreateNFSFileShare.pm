@@ -5,6 +5,7 @@ package Paws::StorageGateway::CreateNFSFileShare;
   has ClientToken => (is => 'ro', isa => 'Str', required => 1);
   has DefaultStorageClass => (is => 'ro', isa => 'Str');
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
+  has GuessMIMETypeEnabled => (is => 'ro', isa => 'Bool');
   has KMSEncrypted => (is => 'ro', isa => 'Bool');
   has KMSKey => (is => 'ro', isa => 'Str');
   has LocationARN => (is => 'ro', isa => 'Str', required => 1);
@@ -70,6 +71,13 @@ Optional.
 
 The Amazon Resource Name (ARN) of the file gateway on which you want to
 create a file share.
+
+
+
+=head2 GuessMIMETypeEnabled => Bool
+
+Enables guessing of the MIME type for uploaded objects based on file
+extensions: "true" to enable MIME type guessing, and otherwise "false".
 
 
 

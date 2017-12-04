@@ -1,6 +1,6 @@
 package Paws::DMS::EventCategoryGroup;
   use Moose;
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'EventCategory', traits => ['NameInRequest']);
+  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SourceType => (is => 'ro', isa => 'Str');
 1;
 

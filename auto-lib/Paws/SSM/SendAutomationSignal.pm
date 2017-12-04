@@ -54,7 +54,7 @@ signal used in the request.
 The type of signal. Valid signal types include the following: Approve
 and Reject
 
-Valid values are: C<"Approve">, C<"Reject">
+Valid values are: C<"Approve">, C<"Reject">, C<"StartStep">, C<"StopStep">, C<"Resume">
 
 
 =head1 SEE ALSO

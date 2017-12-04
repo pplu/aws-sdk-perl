@@ -72,7 +72,7 @@ in an Application Load Balancer target group
 =back
 
 For predefined metric types C<ASGAverageCPUUtilization>,
-C<ASGAverageNetworkIn> and C<ASGAverageNetworkOut>, the parameter must
+C<ASGAverageNetworkIn>, and C<ASGAverageNetworkOut>, the parameter must
 not be specified as the resource associated with the metric type is the
 Auto Scaling group. For predefined metric type
 C<ALBRequestCountPerTarget>, the parameter must be specified in the

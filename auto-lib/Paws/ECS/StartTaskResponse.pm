@@ -23,7 +23,7 @@ Any failures associated with the call.
 =head2 Tasks => ArrayRef[L<Paws::ECS::Task>]
 
 A full description of the tasks that were started. Each task that was
-successfully placed on your container instances are described here.
+successfully placed on your container instances is described.
 
 
 =head2 _request_id => Str

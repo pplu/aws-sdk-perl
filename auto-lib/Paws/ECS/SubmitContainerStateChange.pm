@@ -41,8 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Cluster => Str
 
-The short name or full Amazon Resource Name (ARN) of the cluster that
-hosts the container.
+The short name or full ARN of the cluster that hosts the container.
 
 
 

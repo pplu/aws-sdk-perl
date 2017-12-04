@@ -39,12 +39,16 @@ The time range.
 
 =head2 FromInclusive => Str
 
-  The start time, in the format 2016-12-16T13:50Z.
+  The start time, in Unix time in seconds. For more information see
+timestamp
+(http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types).
 
 
 =head2 ToExclusive => Str
 
-  The end time, in the format 2016-12-16T15:50Z.
+  The end time, in Unix time in seconds. For more information see
+timestamp
+(http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types).
 
 
 

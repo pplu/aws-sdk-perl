@@ -56,20 +56,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBSnap
 
 =head1 DESCRIPTION
 
-Contains the result of a successful invocation of the following
-actions:
-
-=over
-
-=item *
-
-CreateDBSnapshot
-
-=item *
-
-DeleteDBSnapshot
-
-=back
+Contains the details of an Amazon RDS DB snapshot.
 
 This data type is used as a response element in the DescribeDBSnapshots
 action.
@@ -122,7 +109,7 @@ snapshot was created from.
 =head2 IAMDatabaseAuthenticationEnabled => Bool
 
   True if mapping of AWS Identity and Access Management (IAM) accounts to
-database accounts is enabled; otherwise false.
+database accounts is enabled, and otherwise false.
 
 
 =head2 InstanceCreateTime => Str
@@ -139,8 +126,8 @@ DB instance at the time of the snapshot.
 
 =head2 KmsKeyId => Str
 
-  If C<Encrypted> is true, the KMS key identifier for the encrypted DB
-snapshot.
+  If C<Encrypted> is true, the AWS KMS key identifier for the encrypted
+DB snapshot.
 
 
 =head2 LicenseModel => Str

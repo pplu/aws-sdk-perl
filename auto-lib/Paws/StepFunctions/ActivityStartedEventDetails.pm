@@ -38,7 +38,7 @@ Contains details about the start of an activity during an execution.
 
 =head2 WorkerName => Str
 
-  The name of the worker that the task was assigned to. These names are
+  The name of the worker that the task is assigned to. These names are
 provided by the workers when calling GetActivityTask.
 
 

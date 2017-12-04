@@ -98,9 +98,8 @@ Example: C<mySubnetgroup>
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-A Boolean value that is true to enable mapping of AWS Identity and
-Access Management (IAM) accounts to database accounts, and otherwise
-false.
+True to enable mapping of AWS Identity and Access Management (IAM)
+accounts to database accounts, and otherwise false.
 
 Default: C<false>
 
@@ -124,8 +123,8 @@ The version of the database engine to use for the new DB cluster.
 
 =head2 KmsKeyId => Str
 
-The KMS key identifier to use when restoring an encrypted DB cluster
-from a DB snapshot or DB cluster snapshot.
+The AWS KMS key identifier to use when restoring an encrypted DB
+cluster from a DB snapshot or DB cluster snapshot.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
 encryption key. If you are restoring a DB cluster with the same AWS

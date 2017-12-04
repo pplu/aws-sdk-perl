@@ -11,6 +11,7 @@ package Paws::EMR::RunJobFlow;
   has EbsRootVolumeSize => (is => 'ro', isa => 'Int');
   has Instances => (is => 'ro', isa => 'Paws::EMR::JobFlowInstancesConfig', required => 1);
   has JobFlowRole => (is => 'ro', isa => 'Str');
+  has KerberosAttributes => (is => 'ro', isa => 'Paws::EMR::KerberosAttributes');
   has LogUri => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has NewSupportedProducts => (is => 'ro', isa => 'ArrayRef[Paws::EMR::SupportedProductConfig]');
@@ -156,6 +157,16 @@ must have already created it using the CLI or console.
 
 
 
+=head2 KerberosAttributes => L<Paws::EMR::KerberosAttributes>
+
+Attributes for Kerberos configuration when Kerberos authentication is
+enabled using a security configuration. For more information see Use
+Kerberos Authentication
+(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html)
+in the I<EMR Management Guide>.
+
+
+
 =head2 LogUri => Str
 
 The location in Amazon S3 to write the log files of the job flow. If a
@@ -179,7 +190,7 @@ job flow that accepts a user argument list. EMR accepts and forwards
 the argument list to the corresponding installation script as bootstrap
 action arguments. For more information, see "Launch a Job Flow on the
 MapR Distribution for Hadoop" in the Amazon EMR Developer Guide
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf).
+(http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf).
 Supported values are:
 
 =over
@@ -286,8 +297,8 @@ For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
 later, use Applications.
 
 A list of strings that indicates third-party software to use. For more
-information, see Use Third Party Applications with Amazon EMR
-(http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-supported-products.html).
+information, see the Amazon EMR Developer Guide
+(http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf).
 Currently supported values are:
 
 =over

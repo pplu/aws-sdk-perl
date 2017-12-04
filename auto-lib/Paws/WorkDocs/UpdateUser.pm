@@ -3,6 +3,7 @@ package Paws::WorkDocs::UpdateUser;
   use Moose;
   has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
   has GivenName => (is => 'ro', isa => 'Str');
+  has GrantPoweruserPrivileges => (is => 'ro', isa => 'Str');
   has Locale => (is => 'ro', isa => 'Str');
   has StorageRule => (is => 'ro', isa => 'Paws::WorkDocs::StorageRuleType');
   has Surname => (is => 'ro', isa => 'Str');
@@ -43,8 +44,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AuthenticationToken => Str
 
-Amazon WorkDocs authentication token. This field should not be set when
-using administrative API actions, as in accessing the API using AWS
+Amazon WorkDocs authentication token. Do not set this field when using
+administrative API actions, as in accessing the API using AWS
 credentials.
 
 
@@ -54,6 +55,13 @@ credentials.
 The given name of the user.
 
 
+
+=head2 GrantPoweruserPrivileges => Str
+
+Boolean value to determine whether the user is granted Poweruser
+privileges.
+
+Valid values are: C<"TRUE">, C<"FALSE">
 
 =head2 Locale => Str
 
@@ -83,7 +91,7 @@ The time zone ID of the user.
 
 The type of the user.
 
-Valid values are: C<"USER">, C<"ADMIN">
+Valid values are: C<"USER">, C<"ADMIN">, C<"POWERUSER">, C<"MINIMALUSER">, C<"WORKSPACESUSER">
 
 =head2 B<REQUIRED> UserId => Str
 

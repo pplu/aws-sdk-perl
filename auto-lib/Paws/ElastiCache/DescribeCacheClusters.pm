@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 CacheClusterId => Str
 
 The user-supplied cluster identifier. If this parameter is specified,
-only information about that specific cache cluster is returned. This
+only information about that specific cluster is returned. This
 parameter isn't case sensitive.
 
 

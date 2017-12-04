@@ -35,9 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Tag ob
 A key/value pair containing user-defined metadata that you can
 associate with an Amazon EMR resource. Tags make it easier to associate
 clusters in various ways, such as grouping clusters to track your
-Amazon EMR resource allocation costs. For more information, see Tagging
-Amazon EMR Resources
-(http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html).
+Amazon EMR resource allocation costs. For more information, see Tag
+Clusters
+(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
 
 =head1 ATTRIBUTES
 
@@ -45,15 +45,15 @@ Amazon EMR Resources
 =head2 Key => Str
 
   A user-defined key, which is the minimum required information for a
-valid tag. For more information, see Tagging Amazon EMR Resources
-(http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html).
+valid tag. For more information, see Tag
+(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
 
 
 =head2 Value => Str
 
   A user-defined value, which is optional in a tag. For more information,
-see Tagging Amazon EMR Resources
-(http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html).
+see Tag Clusters
+(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
 
 
 

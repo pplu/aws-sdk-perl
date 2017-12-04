@@ -9,6 +9,7 @@ package Paws::EMR::Cluster;
   has Ec2InstanceAttributes => (is => 'ro', isa => 'Paws::EMR::Ec2InstanceAttributes');
   has Id => (is => 'ro', isa => 'Str');
   has InstanceCollectionType => (is => 'ro', isa => 'Str');
+  has KerberosAttributes => (is => 'ro', isa => 'Paws::EMR::KerberosAttributes');
   has LogUri => (is => 'ro', isa => 'Str');
   has MasterPublicDnsName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
@@ -119,6 +120,15 @@ C<INSTANCE_GROUP> indicates a uniform instance group configuration. A
 value of C<INSTANCE_FLEET> indicates an instance fleets configuration.
 
 
+=head2 KerberosAttributes => L<Paws::EMR::KerberosAttributes>
+
+  Attributes for Kerberos configuration when Kerberos authentication is
+enabled using a security configuration. For more information see Use
+Kerberos Authentication
+(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html)
+in the I<EMR Management Guide>.
+
+
 =head2 LogUri => Str
 
   The path to the Amazon S3 location where logs for this cluster are
@@ -127,7 +137,9 @@ stored.
 
 =head2 MasterPublicDnsName => Str
 
-  The public DNS name of the master EC2 instance.
+  The DNS name of the master node. If the cluster is on a private subnet,
+this is the private DNS name. On a public subnet, this is the public
+DNS name.
 
 
 =head2 Name => Str

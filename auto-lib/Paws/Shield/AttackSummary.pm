@@ -52,7 +52,9 @@ Summarizes all DDoS attacks for a specified time period.
 
 =head2 EndTime => Str
 
-  The end time of the attack, in the format 2016-12-16T13:50Z.
+  The end time of the attack, in Unix time in seconds. For more
+information see timestamp
+(http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types).
 
 
 =head2 ResourceArn => Str
@@ -62,7 +64,9 @@ Summarizes all DDoS attacks for a specified time period.
 
 =head2 StartTime => Str
 
-  The start time of the attack, in the format 2016-12-16T13:50Z.
+  The start time of the attack, in Unix time in seconds. For more
+information see timestamp
+(http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types).
 
 
 

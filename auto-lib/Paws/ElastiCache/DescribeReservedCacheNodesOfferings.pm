@@ -145,9 +145,6 @@ T2 instances.
 
 =back
 
-Supported node types are available in all regions except as noted in
-the following table.
-
 For a complete listing of node types and specifications, see Amazon
 ElastiCache Product Features and Details
 (http://aws.amazon.com/elasticache/details) and either Cache Node

@@ -80,7 +80,7 @@ C<1479816991.349>).
 
 =head2 OperationDetails => Str
 
-  Details about the operation (e.g., C<Debian-1GB-Virginia-1>).
+  Details about the operation (e.g., C<Debian-1GB-Ohio-1>).
 
 
 =head2 OperationType => Str

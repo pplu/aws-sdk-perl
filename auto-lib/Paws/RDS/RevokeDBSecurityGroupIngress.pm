@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The IP range to revoke access from. Must be a valid CIDR range. If
 C<CIDRIP> is specified, C<EC2SecurityGroupName>, C<EC2SecurityGroupId>
-and C<EC2SecurityGroupOwnerId> cannot be provided.
+and C<EC2SecurityGroupOwnerId> can't be provided.
 
 
 

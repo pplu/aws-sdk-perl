@@ -45,6 +45,9 @@ If the host parameter is empty, then the Docker daemon assigns a host
 path for your data volume, but the data is not guaranteed to persist
 after the containers associated with it stop running.
 
+If you are using the Fargate launch type, the C<host> parameter is not
+supported.
+
 
 =head2 Name => Str
 

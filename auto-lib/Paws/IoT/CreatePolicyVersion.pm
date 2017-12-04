@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> PolicyDocument => Str
 
 The JSON document that describes the policy. Minimum length of 1.
-Maximum length of 2048, excluding whitespaces
+Maximum length of 2048, excluding whitespace.
 
 
 

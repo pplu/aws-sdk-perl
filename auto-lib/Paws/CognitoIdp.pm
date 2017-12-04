@@ -94,6 +94,11 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminListGroupsForUser', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AdminListUserAuthEvents {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminListUserAuthEvents', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AdminRemoveUserFromGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminRemoveUserFromGroup', @_);
@@ -109,9 +114,19 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminRespondToAuthChallenge', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AdminSetUserMFAPreference {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminSetUserMFAPreference', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AdminSetUserSettings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminSetUserSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AdminUpdateAuthEventFeedback {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminUpdateAuthEventFeedback', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub AdminUpdateDeviceStatus {
@@ -127,6 +142,11 @@ package Paws::CognitoIdp;
   sub AdminUserGlobalSignOut {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminUserGlobalSignOut', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AssociateSoftwareToken {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AssociateSoftwareToken', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ChangePassword {
@@ -234,6 +254,11 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::DescribeResourceServer', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeRiskConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::DescribeRiskConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeUserImportJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::DescribeUserImportJob', @_);
@@ -297,6 +322,11 @@ package Paws::CognitoIdp;
   sub GetUserAttributeVerificationCode {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::GetUserAttributeVerificationCode', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetUserPoolMfaConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::GetUserPoolMfaConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GlobalSignOut {
@@ -364,9 +394,24 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::RespondToAuthChallenge', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SetRiskConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::SetRiskConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SetUICustomization {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::SetUICustomization', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SetUserMFAPreference {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::SetUserMFAPreference', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SetUserPoolMfaConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::SetUserPoolMfaConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SetUserSettings {
@@ -387,6 +432,11 @@ package Paws::CognitoIdp;
   sub StopUserImportJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::StopUserImportJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateAuthEventFeedback {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::UpdateAuthEventFeedback', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateDeviceStatus {
@@ -424,6 +474,11 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::UpdateUserPoolClient', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub VerifySoftwareToken {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::VerifySoftwareToken', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub VerifyUserAttribute {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::VerifyUserAttribute', @_);
@@ -432,7 +487,7 @@ package Paws::CognitoIdp;
   
 
 
-  sub operations { qw/AddCustomAttributes AdminAddUserToGroup AdminConfirmSignUp AdminCreateUser AdminDeleteUser AdminDeleteUserAttributes AdminDisableProviderForUser AdminDisableUser AdminEnableUser AdminForgetDevice AdminGetDevice AdminGetUser AdminInitiateAuth AdminLinkProviderForUser AdminListDevices AdminListGroupsForUser AdminRemoveUserFromGroup AdminResetUserPassword AdminRespondToAuthChallenge AdminSetUserSettings AdminUpdateDeviceStatus AdminUpdateUserAttributes AdminUserGlobalSignOut ChangePassword ConfirmDevice ConfirmForgotPassword ConfirmSignUp CreateGroup CreateIdentityProvider CreateResourceServer CreateUserImportJob CreateUserPool CreateUserPoolClient CreateUserPoolDomain DeleteGroup DeleteIdentityProvider DeleteResourceServer DeleteUser DeleteUserAttributes DeleteUserPool DeleteUserPoolClient DeleteUserPoolDomain DescribeIdentityProvider DescribeResourceServer DescribeUserImportJob DescribeUserPool DescribeUserPoolClient DescribeUserPoolDomain ForgetDevice ForgotPassword GetCSVHeader GetDevice GetGroup GetIdentityProviderByIdentifier GetUICustomization GetUser GetUserAttributeVerificationCode GlobalSignOut InitiateAuth ListDevices ListGroups ListIdentityProviders ListResourceServers ListUserImportJobs ListUserPoolClients ListUserPools ListUsers ListUsersInGroup ResendConfirmationCode RespondToAuthChallenge SetUICustomization SetUserSettings SignUp StartUserImportJob StopUserImportJob UpdateDeviceStatus UpdateGroup UpdateIdentityProvider UpdateResourceServer UpdateUserAttributes UpdateUserPool UpdateUserPoolClient VerifyUserAttribute / }
+  sub operations { qw/AddCustomAttributes AdminAddUserToGroup AdminConfirmSignUp AdminCreateUser AdminDeleteUser AdminDeleteUserAttributes AdminDisableProviderForUser AdminDisableUser AdminEnableUser AdminForgetDevice AdminGetDevice AdminGetUser AdminInitiateAuth AdminLinkProviderForUser AdminListDevices AdminListGroupsForUser AdminListUserAuthEvents AdminRemoveUserFromGroup AdminResetUserPassword AdminRespondToAuthChallenge AdminSetUserMFAPreference AdminSetUserSettings AdminUpdateAuthEventFeedback AdminUpdateDeviceStatus AdminUpdateUserAttributes AdminUserGlobalSignOut AssociateSoftwareToken ChangePassword ConfirmDevice ConfirmForgotPassword ConfirmSignUp CreateGroup CreateIdentityProvider CreateResourceServer CreateUserImportJob CreateUserPool CreateUserPoolClient CreateUserPoolDomain DeleteGroup DeleteIdentityProvider DeleteResourceServer DeleteUser DeleteUserAttributes DeleteUserPool DeleteUserPoolClient DeleteUserPoolDomain DescribeIdentityProvider DescribeResourceServer DescribeRiskConfiguration DescribeUserImportJob DescribeUserPool DescribeUserPoolClient DescribeUserPoolDomain ForgetDevice ForgotPassword GetCSVHeader GetDevice GetGroup GetIdentityProviderByIdentifier GetUICustomization GetUser GetUserAttributeVerificationCode GetUserPoolMfaConfig GlobalSignOut InitiateAuth ListDevices ListGroups ListIdentityProviders ListResourceServers ListUserImportJobs ListUserPoolClients ListUserPools ListUsers ListUsersInGroup ResendConfirmationCode RespondToAuthChallenge SetRiskConfiguration SetUICustomization SetUserMFAPreference SetUserPoolMfaConfig SetUserSettings SignUp StartUserImportJob StopUserImportJob UpdateAuthEventFeedback UpdateDeviceStatus UpdateGroup UpdateIdentityProvider UpdateResourceServer UpdateUserAttributes UpdateUserPool UpdateUserPoolClient VerifySoftwareToken VerifyUserAttribute / }
 
 1;
 
@@ -509,13 +564,23 @@ Each argument is described in detail in: L<Paws::CognitoIdp::AdminCreateUser>
 
 Returns: a L<Paws::CognitoIdp::AdminCreateUserResponse> instance
 
-Creates a new user in the specified user pool and sends a welcome
-message via email or phone (SMS). This message is based on a template
-that you configured in your call to CreateUserPool or UpdateUserPool.
-This template includes your custom sign-up instructions and
+Creates a new user in the specified user pool.
+
+If C<MessageAction> is not set, the default is to send a welcome
+message via email or phone (SMS).
+
+This message is based on a template that you configured in your call to
+or . This template includes your custom sign-up instructions and
 placeholders for user name and temporary password.
 
-Requires developer credentials.
+Alternatively, you can call AdminCreateUser with
+E<ldquo>SUPPRESSE<rdquo> for the C<MessageAction> parameter, and Amazon
+Cognito will not send any email.
+
+In either case, the user will be in the C<FORCE_CHANGE_PASSWORD> state
+until they sign in and change their password.
+
+AdminCreateUser requires developer credentials.
 
 
 =head2 AdminDeleteUser(Username => Str, UserPoolId => Str)
@@ -554,7 +619,7 @@ their password to sign-in. If the user to disable is a linked external
 IdP user, any link between that user and an existing user is removed.
 The next time the external user (no longer attached to the previously
 linked C<DestinationUser>) signs in, they must create a new user
-account. See AdminLinkProviderForUser.
+account. See .
 
 This action is enabled only for admin access and requires developer
 credentials.
@@ -576,11 +641,11 @@ For de-linking a SAML identity, there are two scenarios. If the linked
 identity has not yet been used to sign-in, the C<ProviderAttributeName>
 and C<ProviderAttributeValue> must be the same values that were used
 for the C<SourceUser> when the identities were originally linked in the
-AdminLinkProviderForUser call. (If the linking was done with
-C<ProviderAttributeName> set to C<Cognito_Subject>, the same applies
-here). However, if the user has already signed in, the
-C<ProviderAttributeName> must be C<Cognito_Subject> and
-C<ProviderAttributeValue> must be the subject of the SAML assertion.
+call. (If the linking was done with C<ProviderAttributeName> set to
+C<Cognito_Subject>, the same applies here). However, if the user has
+already signed in, the C<ProviderAttributeName> must be
+C<Cognito_Subject> and C<ProviderAttributeValue> must be the subject of
+the SAML assertion.
 
 
 =head2 AdminDisableUser(Username => Str, UserPoolId => Str)
@@ -639,7 +704,7 @@ administrator. Works on any user.
 Requires developer credentials.
 
 
-=head2 AdminInitiateAuth(AuthFlow => Str, ClientId => Str, UserPoolId => Str, [AuthParameters => L<Paws::CognitoIdp::AuthParametersType>, ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>])
+=head2 AdminInitiateAuth(AuthFlow => Str, ClientId => Str, UserPoolId => Str, [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>, AuthParameters => L<Paws::CognitoIdp::AuthParametersType>, ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>, ContextData => L<Paws::CognitoIdp::ContextDataType>])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminInitiateAuth>
 
@@ -674,7 +739,7 @@ sign in as an existing user in the user pool, it is critical that it
 only be used with external identity providers and provider attributes
 that have been trusted by the application owner.
 
-See also AdminDisableProviderForUser.
+See also .
 
 This action is enabled only for admin access and requires developer
 credentials.
@@ -700,6 +765,16 @@ Returns: a L<Paws::CognitoIdp::AdminListGroupsForUserResponse> instance
 Lists the groups that the user belongs to.
 
 Requires developer credentials.
+
+
+=head2 AdminListUserAuthEvents(Username => Str, UserPoolId => Str, [MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::AdminListUserAuthEvents>
+
+Returns: a L<Paws::CognitoIdp::AdminListUserAuthEventsResponse> instance
+
+Lists a history of user activity and any risks detected as part of
+Amazon Cognito advanced security.
 
 
 =head2 AdminRemoveUserFromGroup(GroupName => Str, Username => Str, UserPoolId => Str)
@@ -735,7 +810,7 @@ message to the end user with the code to change their password.
 Requires developer credentials.
 
 
-=head2 AdminRespondToAuthChallenge(ChallengeName => Str, ClientId => Str, UserPoolId => Str, [ChallengeResponses => L<Paws::CognitoIdp::ChallengeResponsesType>, Session => Str])
+=head2 AdminRespondToAuthChallenge(ChallengeName => Str, ClientId => Str, UserPoolId => Str, [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>, ChallengeResponses => L<Paws::CognitoIdp::ChallengeResponsesType>, ContextData => L<Paws::CognitoIdp::ContextDataType>, Session => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminRespondToAuthChallenge>
 
@@ -744,6 +819,15 @@ Returns: a L<Paws::CognitoIdp::AdminRespondToAuthChallengeResponse> instance
 Responds to an authentication challenge, as an administrator.
 
 Requires developer credentials.
+
+
+=head2 AdminSetUserMFAPreference(Username => Str, UserPoolId => Str, [SMSMfaSettings => L<Paws::CognitoIdp::SMSMfaSettingsType>, SoftwareTokenMfaSettings => L<Paws::CognitoIdp::SoftwareTokenMfaSettingsType>])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::AdminSetUserMFAPreference>
+
+Returns: a L<Paws::CognitoIdp::AdminSetUserMFAPreferenceResponse> instance
+
+Sets the user's multi-factor authentication (MFA) preference.
 
 
 =head2 AdminSetUserSettings(MFAOptions => ArrayRef[L<Paws::CognitoIdp::MFAOptionType>], Username => Str, UserPoolId => Str)
@@ -756,6 +840,17 @@ Sets all the user settings for a specified user name. Works on any
 user.
 
 Requires developer credentials.
+
+
+=head2 AdminUpdateAuthEventFeedback(EventId => Str, FeedbackValue => Str, Username => Str, UserPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoIdp::AdminUpdateAuthEventFeedback>
+
+Returns: a L<Paws::CognitoIdp::AdminUpdateAuthEventFeedbackResponse> instance
+
+Provides feedback for an authentication event as to whether it was from
+a valid user. This feedback is used for improving the risk evaluation
+decision for the user pool as part of Amazon Cognito advanced security.
 
 
 =head2 AdminUpdateDeviceStatus(DeviceKey => Str, Username => Str, UserPoolId => Str, [DeviceRememberedStatus => Str])
@@ -798,6 +893,16 @@ Signs out users from all devices, as an administrator.
 Requires developer credentials.
 
 
+=head2 AssociateSoftwareToken([AccessToken => Str, Session => Str])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::AssociateSoftwareToken>
+
+Returns: a L<Paws::CognitoIdp::AssociateSoftwareTokenResponse> instance
+
+Returns a unique generated shared secret key code for the user account.
+The request takes an access token or a session string, but not both.
+
+
 =head2 ChangePassword(AccessToken => Str, PreviousPassword => Str, ProposedPassword => Str)
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ChangePassword>
@@ -817,7 +922,7 @@ Confirms tracking of the device. This API call is the call that begins
 device tracking.
 
 
-=head2 ConfirmForgotPassword(ClientId => Str, ConfirmationCode => Str, Password => Str, Username => Str, [SecretHash => Str])
+=head2 ConfirmForgotPassword(ClientId => Str, ConfirmationCode => Str, Password => Str, Username => Str, [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>, SecretHash => Str, UserContextData => L<Paws::CognitoIdp::UserContextDataType>])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ConfirmForgotPassword>
 
@@ -827,7 +932,7 @@ Allows a user to enter a confirmation code to reset a forgotten
 password.
 
 
-=head2 ConfirmSignUp(ClientId => Str, ConfirmationCode => Str, Username => Str, [ForceAliasCreation => Bool, SecretHash => Str])
+=head2 ConfirmSignUp(ClientId => Str, ConfirmationCode => Str, Username => Str, [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>, ForceAliasCreation => Bool, SecretHash => Str, UserContextData => L<Paws::CognitoIdp::UserContextDataType>])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ConfirmSignUp>
 
@@ -875,7 +980,7 @@ Returns: a L<Paws::CognitoIdp::CreateUserImportJobResponse> instance
 Creates the user import job.
 
 
-=head2 CreateUserPool(PoolName => Str, [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>, AliasAttributes => ArrayRef[Str|Undef], AutoVerifiedAttributes => ArrayRef[Str|Undef], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, Schema => ArrayRef[L<Paws::CognitoIdp::SchemaAttributeType>], SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str, UsernameAttributes => ArrayRef[Str|Undef], UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>, VerificationMessageTemplate => L<Paws::CognitoIdp::VerificationMessageTemplateType>])
+=head2 CreateUserPool(PoolName => Str, [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>, AliasAttributes => ArrayRef[Str|Undef], AutoVerifiedAttributes => ArrayRef[Str|Undef], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, Schema => ArrayRef[L<Paws::CognitoIdp::SchemaAttributeType>], SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str, UsernameAttributes => ArrayRef[Str|Undef], UserPoolAddOns => L<Paws::CognitoIdp::UserPoolAddOnsType>, UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>, VerificationMessageTemplate => L<Paws::CognitoIdp::VerificationMessageTemplateType>])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::CreateUserPool>
 
@@ -885,7 +990,7 @@ Creates a new Amazon Cognito user pool and sets the password policy for
 the pool.
 
 
-=head2 CreateUserPoolClient(ClientName => Str, UserPoolId => Str, [AllowedOAuthFlows => ArrayRef[Str|Undef], AllowedOAuthFlowsUserPoolClient => Bool, AllowedOAuthScopes => ArrayRef[Str|Undef], CallbackURLs => ArrayRef[Str|Undef], DefaultRedirectURI => Str, ExplicitAuthFlows => ArrayRef[Str|Undef], GenerateSecret => Bool, LogoutURLs => ArrayRef[Str|Undef], ReadAttributes => ArrayRef[Str|Undef], RefreshTokenValidity => Int, SupportedIdentityProviders => ArrayRef[Str|Undef], WriteAttributes => ArrayRef[Str|Undef]])
+=head2 CreateUserPoolClient(ClientName => Str, UserPoolId => Str, [AllowedOAuthFlows => ArrayRef[Str|Undef], AllowedOAuthFlowsUserPoolClient => Bool, AllowedOAuthScopes => ArrayRef[Str|Undef], AnalyticsConfiguration => L<Paws::CognitoIdp::AnalyticsConfigurationType>, CallbackURLs => ArrayRef[Str|Undef], DefaultRedirectURI => Str, ExplicitAuthFlows => ArrayRef[Str|Undef], GenerateSecret => Bool, LogoutURLs => ArrayRef[Str|Undef], ReadAttributes => ArrayRef[Str|Undef], RefreshTokenValidity => Int, SupportedIdentityProviders => ArrayRef[Str|Undef], WriteAttributes => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::CreateUserPoolClient>
 
@@ -995,6 +1100,15 @@ Returns: a L<Paws::CognitoIdp::DescribeResourceServerResponse> instance
 Describes a resource server.
 
 
+=head2 DescribeRiskConfiguration(UserPoolId => Str, [ClientId => Str])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::DescribeRiskConfiguration>
+
+Returns: a L<Paws::CognitoIdp::DescribeRiskConfigurationResponse> instance
+
+Describes the risk configuration.
+
+
 =head2 DescribeUserImportJob(JobId => Str, UserPoolId => Str)
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DescribeUserImportJob>
@@ -1042,7 +1156,7 @@ Returns: nothing
 Forgets the specified device.
 
 
-=head2 ForgotPassword(ClientId => Str, Username => Str, [SecretHash => Str])
+=head2 ForgotPassword(ClientId => Str, Username => Str, [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>, SecretHash => Str, UserContextData => L<Paws::CognitoIdp::UserContextDataType>])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ForgotPassword>
 
@@ -1055,8 +1169,7 @@ verified phone number exists for the user, the confirmation code is
 sent to the phone number. Otherwise, if a verified email exists, the
 confirmation code is sent to the email. If neither a verified phone
 number nor a verified email exists, C<InvalidParameterException> is
-thrown. To use the confirmation code for resetting the password, call
-ConfirmForgotPassword.
+thrown. To use the confirmation code for resetting the password, call .
 
 
 =head2 GetCSVHeader(UserPoolId => Str)
@@ -1130,6 +1243,15 @@ Gets the user attribute verification code for the specified attribute
 name.
 
 
+=head2 GetUserPoolMfaConfig(UserPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoIdp::GetUserPoolMfaConfig>
+
+Returns: a L<Paws::CognitoIdp::GetUserPoolMfaConfigResponse> instance
+
+Gets the user pool multi-factor authentication (MFA) configuration.
+
+
 =head2 GlobalSignOut(AccessToken => Str)
 
 Each argument is described in detail in: L<Paws::CognitoIdp::GlobalSignOut>
@@ -1139,7 +1261,7 @@ Returns: a L<Paws::CognitoIdp::GlobalSignOutResponse> instance
 Signs out users from all devices.
 
 
-=head2 InitiateAuth(AuthFlow => Str, ClientId => Str, [AuthParameters => L<Paws::CognitoIdp::AuthParametersType>, ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>])
+=head2 InitiateAuth(AuthFlow => Str, ClientId => Str, [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>, AuthParameters => L<Paws::CognitoIdp::AuthParametersType>, ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>, UserContextData => L<Paws::CognitoIdp::UserContextDataType>])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::InitiateAuth>
 
@@ -1233,7 +1355,7 @@ Lists the users in the specified group.
 Requires developer credentials.
 
 
-=head2 ResendConfirmationCode(ClientId => Str, Username => Str, [SecretHash => Str])
+=head2 ResendConfirmationCode(ClientId => Str, Username => Str, [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>, SecretHash => Str, UserContextData => L<Paws::CognitoIdp::UserContextDataType>])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ResendConfirmationCode>
 
@@ -1243,13 +1365,29 @@ Resends the confirmation (for confirmation of registration) to a
 specific user in the user pool.
 
 
-=head2 RespondToAuthChallenge(ChallengeName => Str, ClientId => Str, [ChallengeResponses => L<Paws::CognitoIdp::ChallengeResponsesType>, Session => Str])
+=head2 RespondToAuthChallenge(ChallengeName => Str, ClientId => Str, [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>, ChallengeResponses => L<Paws::CognitoIdp::ChallengeResponsesType>, Session => Str, UserContextData => L<Paws::CognitoIdp::UserContextDataType>])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::RespondToAuthChallenge>
 
 Returns: a L<Paws::CognitoIdp::RespondToAuthChallengeResponse> instance
 
 Responds to the authentication challenge.
+
+
+=head2 SetRiskConfiguration(UserPoolId => Str, [AccountTakeoverRiskConfiguration => L<Paws::CognitoIdp::AccountTakeoverRiskConfigurationType>, ClientId => Str, CompromisedCredentialsRiskConfiguration => L<Paws::CognitoIdp::CompromisedCredentialsRiskConfigurationType>, RiskExceptionConfiguration => L<Paws::CognitoIdp::RiskExceptionConfigurationType>])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::SetRiskConfiguration>
+
+Returns: a L<Paws::CognitoIdp::SetRiskConfigurationResponse> instance
+
+Configures actions on detected risks. To delete the risk configuration
+for C<UserPoolId> or C<ClientId>, pass null values for all four
+configuration types.
+
+To enable Amazon Cognito advanced security features, update the user
+pool to include the C<UserPoolAddOns> keyC<AdvancedSecurityMode>.
+
+See .
 
 
 =head2 SetUICustomization(UserPoolId => Str, [ClientId => Str, CSS => Str, ImageFile => Str])
@@ -1273,6 +1411,24 @@ Otherwise, there is no place to host the app's pages, and the service
 will throw an error.
 
 
+=head2 SetUserMFAPreference(AccessToken => Str, [SMSMfaSettings => L<Paws::CognitoIdp::SMSMfaSettingsType>, SoftwareTokenMfaSettings => L<Paws::CognitoIdp::SoftwareTokenMfaSettingsType>])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::SetUserMFAPreference>
+
+Returns: a L<Paws::CognitoIdp::SetUserMFAPreferenceResponse> instance
+
+Set the user's multi-factor authentication (MFA) method preference.
+
+
+=head2 SetUserPoolMfaConfig(UserPoolId => Str, [MfaConfiguration => Str, SmsMfaConfiguration => L<Paws::CognitoIdp::SmsMfaConfigType>, SoftwareTokenMfaConfiguration => L<Paws::CognitoIdp::SoftwareTokenMfaConfigType>])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::SetUserPoolMfaConfig>
+
+Returns: a L<Paws::CognitoIdp::SetUserPoolMfaConfigResponse> instance
+
+Set the user pool MFA configuration.
+
+
 =head2 SetUserSettings(AccessToken => Str, MFAOptions => ArrayRef[L<Paws::CognitoIdp::MFAOptionType>])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::SetUserSettings>
@@ -1285,7 +1441,7 @@ code delivery as null. If null list is passed, all MFA options are
 removed.
 
 
-=head2 SignUp(ClientId => Str, Password => Str, Username => Str, [SecretHash => Str, UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>], ValidationData => ArrayRef[L<Paws::CognitoIdp::AttributeType>]])
+=head2 SignUp(ClientId => Str, Password => Str, Username => Str, [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>, SecretHash => Str, UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>], UserContextData => L<Paws::CognitoIdp::UserContextDataType>, ValidationData => ArrayRef[L<Paws::CognitoIdp::AttributeType>]])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::SignUp>
 
@@ -1311,6 +1467,18 @@ Each argument is described in detail in: L<Paws::CognitoIdp::StopUserImportJob>
 Returns: a L<Paws::CognitoIdp::StopUserImportJobResponse> instance
 
 Stops the user import job.
+
+
+=head2 UpdateAuthEventFeedback(EventId => Str, FeedbackToken => Str, FeedbackValue => Str, Username => Str, UserPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoIdp::UpdateAuthEventFeedback>
+
+Returns: a L<Paws::CognitoIdp::UpdateAuthEventFeedbackResponse> instance
+
+Provides the feedback for an authentication event whether it was from a
+valid user or not. This feedback is used for improving the risk
+evaluation decision for the user pool as part of Amazon Cognito
+advanced security.
 
 
 =head2 UpdateDeviceStatus(AccessToken => Str, DeviceKey => Str, [DeviceRememberedStatus => Str])
@@ -1361,7 +1529,7 @@ Returns: a L<Paws::CognitoIdp::UpdateUserAttributesResponse> instance
 Allows a user to update a specific attribute (one at a time).
 
 
-=head2 UpdateUserPool(UserPoolId => Str, [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>, AutoVerifiedAttributes => ArrayRef[Str|Undef], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str, UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>, VerificationMessageTemplate => L<Paws::CognitoIdp::VerificationMessageTemplateType>])
+=head2 UpdateUserPool(UserPoolId => Str, [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>, AutoVerifiedAttributes => ArrayRef[Str|Undef], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str, UserPoolAddOns => L<Paws::CognitoIdp::UserPoolAddOnsType>, UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>, VerificationMessageTemplate => L<Paws::CognitoIdp::VerificationMessageTemplateType>])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserPool>
 
@@ -1370,7 +1538,7 @@ Returns: a L<Paws::CognitoIdp::UpdateUserPoolResponse> instance
 Updates the specified user pool with the specified attributes.
 
 
-=head2 UpdateUserPoolClient(ClientId => Str, UserPoolId => Str, [AllowedOAuthFlows => ArrayRef[Str|Undef], AllowedOAuthFlowsUserPoolClient => Bool, AllowedOAuthScopes => ArrayRef[Str|Undef], CallbackURLs => ArrayRef[Str|Undef], ClientName => Str, DefaultRedirectURI => Str, ExplicitAuthFlows => ArrayRef[Str|Undef], LogoutURLs => ArrayRef[Str|Undef], ReadAttributes => ArrayRef[Str|Undef], RefreshTokenValidity => Int, SupportedIdentityProviders => ArrayRef[Str|Undef], WriteAttributes => ArrayRef[Str|Undef]])
+=head2 UpdateUserPoolClient(ClientId => Str, UserPoolId => Str, [AllowedOAuthFlows => ArrayRef[Str|Undef], AllowedOAuthFlowsUserPoolClient => Bool, AllowedOAuthScopes => ArrayRef[Str|Undef], AnalyticsConfiguration => L<Paws::CognitoIdp::AnalyticsConfigurationType>, CallbackURLs => ArrayRef[Str|Undef], ClientName => Str, DefaultRedirectURI => Str, ExplicitAuthFlows => ArrayRef[Str|Undef], LogoutURLs => ArrayRef[Str|Undef], ReadAttributes => ArrayRef[Str|Undef], RefreshTokenValidity => Int, SupportedIdentityProviders => ArrayRef[Str|Undef], WriteAttributes => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserPoolClient>
 
@@ -1378,6 +1546,16 @@ Returns: a L<Paws::CognitoIdp::UpdateUserPoolClientResponse> instance
 
 Allows the developer to update the specified user pool client and
 password policy.
+
+
+=head2 VerifySoftwareToken(UserCode => Str, [AccessToken => Str, FriendlyDeviceName => Str, Session => Str])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::VerifySoftwareToken>
+
+Returns: a L<Paws::CognitoIdp::VerifySoftwareTokenResponse> instance
+
+Use this API to register a user's entered TOTP code and mark the user's
+software token MFA status as "verified" if successful,
 
 
 =head2 VerifyUserAttribute(AccessToken => Str, AttributeName => Str, Code => Str)

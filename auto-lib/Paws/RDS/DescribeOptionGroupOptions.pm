@@ -39,8 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> EngineName => Str
 
-A required parameter. Options available for the given engine name will
-be described.
+A required parameter. Options available for the given engine name are
+described.
 
 
 

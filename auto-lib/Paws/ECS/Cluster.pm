@@ -6,6 +6,7 @@ package Paws::ECS::Cluster;
   has PendingTasksCount => (is => 'ro', isa => 'Int', request_name => 'pendingTasksCount', traits => ['NameInRequest']);
   has RegisteredContainerInstancesCount => (is => 'ro', isa => 'Int', request_name => 'registeredContainerInstancesCount', traits => ['NameInRequest']);
   has RunningTasksCount => (is => 'ro', isa => 'Int', request_name => 'runningTasksCount', traits => ['NameInRequest']);
+  has Statistics => (is => 'ro', isa => 'ArrayRef[Paws::ECS::KeyValuePair]', request_name => 'statistics', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
 1;
 
@@ -79,6 +80,49 @@ C<arn:aws:ecs:I<region>:I<012345678910>:cluster/I<test> >..
 =head2 RunningTasksCount => Int
 
   The number of tasks in the cluster that are in the C<RUNNING> state.
+
+
+=head2 Statistics => ArrayRef[L<Paws::ECS::KeyValuePair>]
+
+  Additional information about your clusters that are separated by launch
+type, including:
+
+=over
+
+=item *
+
+runningEC2TasksCount
+
+=item *
+
+RunningFargateTasksCount
+
+=item *
+
+pendingEC2TasksCount
+
+=item *
+
+pendingFargateTasksCount
+
+=item *
+
+activeEC2ServiceCount
+
+=item *
+
+activeFargateServiceCount
+
+=item *
+
+drainingEC2ServiceCount
+
+=item *
+
+drainingFargateServiceCount
+
+=back
+
 
 
 =head2 Status => Str

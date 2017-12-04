@@ -17,7 +17,7 @@ Paws::EC2::CreateSpotDatafeedSubscriptionResult
 
 =head2 SpotDatafeedSubscription => L<Paws::EC2::SpotDatafeedSubscription>
 
-The Spot instance data feed subscription.
+The Spot Instance data feed subscription.
 
 
 =head2 _request_id => Str

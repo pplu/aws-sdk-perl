@@ -51,7 +51,7 @@ characters in length.
 
 =head2 Qualifier => Str
 
-Using this optional parameter to specify a function version or an alias
+Use this optional parameter to specify a function version or an alias
 name. If you specify function version, the API uses qualified function
 ARN for the request and returns information about the specific Lambda
 function version. If you specify an alias name, the API uses the alias

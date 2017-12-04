@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The name of the option group to be deleted.
 
-You cannot delete default option groups.
+You can't delete default option groups.
 
 
 

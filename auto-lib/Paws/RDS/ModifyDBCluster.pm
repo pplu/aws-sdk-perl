@@ -110,9 +110,8 @@ The name of the DB cluster parameter group to use for the DB cluster.
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-A Boolean value that is true to enable mapping of AWS Identity and
-Access Management (IAM) accounts to database accounts, and otherwise
-false.
+True to enable mapping of AWS Identity and Access Management (IAM)
+accounts to database accounts, and otherwise false.
 
 Default: C<false>
 
@@ -165,8 +164,8 @@ results in an option group that enables OEM, this change can cause a
 brief (sub-second) period during which new connections are rejected but
 existing connections are not interrupted.
 
-Permanent options cannot be removed from an option group. The option
-group cannot be removed from a DB cluster once it is associated with a
+Permanent options can't be removed from an option group. The option
+group can't be removed from a DB cluster once it is associated with a
 DB cluster.
 
 
@@ -187,9 +186,9 @@ The daily time range during which automated backups are created if
 automated backups are enabled, using the C<BackupRetentionPeriod>
 parameter.
 
-Default: A 30-minute window selected at random from an 8-hour block of
-time per AWS Region. To see the time blocks available, see Adjusting
-the Preferred Maintenance Window
+The default is a 30-minute window selected at random from an 8-hour
+block of time for each AWS Region. To see the time blocks available,
+see Adjusting the Preferred Maintenance Window
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
 in the I<Amazon RDS User Guide.>
 
@@ -203,7 +202,7 @@ Must be in the format C<hh24:mi-hh24:mi>.
 
 =item *
 
-Times should be in Universal Coordinated Time (UTC).
+Must be in Universal Coordinated Time (UTC).
 
 =item *
 
@@ -225,13 +224,14 @@ Universal Coordinated Time (UTC).
 
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
-Default: A 30-minute window selected at random from an 8-hour block of
-time per AWS Region, occurring on a random day of the week. To see the
-time blocks available, see Adjusting the Preferred Maintenance Window
+The default is a 30-minute window selected at random from an 8-hour
+block of time for each AWS Region, occurring on a random day of the
+week. To see the time blocks available, see Adjusting the Preferred
+Maintenance Window
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
 in the I<Amazon RDS User Guide.>
 
-Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
+Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 
 Constraints: Minimum 30-minute window.
 

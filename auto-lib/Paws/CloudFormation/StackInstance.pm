@@ -1,6 +1,7 @@
 package Paws::CloudFormation::StackInstance;
   use Moose;
   has Account => (is => 'ro', isa => 'Str');
+  has ParameterOverrides => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
   has Region => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
   has StackSetId => (is => 'ro', isa => 'Str');
@@ -51,6 +52,12 @@ the stack status.
 =head2 Account => Str
 
   The name of the AWS account that the stack instance is associated with.
+
+
+=head2 ParameterOverrides => ArrayRef[L<Paws::CloudFormation::Parameter>]
+
+  A list of parameters from the stack set template whose values have been
+overridden in this stack instance.
 
 
 =head2 Region => Str

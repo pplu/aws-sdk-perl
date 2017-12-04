@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIdp:
 
 =head1 DESCRIPTION
 
-The type of configuration for the user pool's device tracking.
+The configuration for the user pool's device tracking.
 
 =head1 ATTRIBUTES
 

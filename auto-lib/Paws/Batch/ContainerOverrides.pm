@@ -52,6 +52,10 @@ environment variables, which are added to the container at launch, or
 you can override the existing environment variables from the Docker
 image or the job definition.
 
+Environment variables must not start with C<AWS_BATCH>; this naming
+convention is reserved for variables that are set by the AWS Batch
+service.
+
 
 =head2 Memory => Int
 

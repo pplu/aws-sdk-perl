@@ -17,7 +17,9 @@ Paws::OpsWorksCM::DescribeNodeAssociationStatusResponse
 
 =head2 EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]
 
-Attributes specific to the node association.
+Attributes specific to the node association. In Puppet, the attibute
+PUPPET_NODE_CERT contains the signed certificate (the result of the
+CSR).
 
 
 =head2 NodeAssociationStatus => Str

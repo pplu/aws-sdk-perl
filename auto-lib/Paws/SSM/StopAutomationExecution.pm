@@ -2,6 +2,7 @@
 package Paws::SSM::StopAutomationExecution;
   use Moose;
   has AutomationExecutionId => (is => 'ro', isa => 'Str', required => 1);
+  has Type => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -38,6 +39,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The execution ID of the Automation to stop.
 
 
+
+=head2 Type => Str
+
+The stop request type. Valid types include the following: Cancel and
+Complete. The default type is Cancel.
+
+Valid values are: C<"Complete">, C<"Cancel">
 
 
 =head1 SEE ALSO

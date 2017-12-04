@@ -8,6 +8,7 @@ package Paws::Firehose::CreateDeliveryStream;
   has KinesisStreamSourceConfiguration => (is => 'ro', isa => 'Paws::Firehose::KinesisStreamSourceConfiguration');
   has RedshiftDestinationConfiguration => (is => 'ro', isa => 'Paws::Firehose::RedshiftDestinationConfiguration');
   has S3DestinationConfiguration => (is => 'ro', isa => 'Paws::Firehose::S3DestinationConfiguration');
+  has SplunkDestinationConfiguration => (is => 'ro', isa => 'Paws::Firehose::SplunkDestinationConfiguration');
 
   use MooseX::ClassAttribute;
 
@@ -101,6 +102,12 @@ destination.
 
 [Deprecated] The destination in Amazon S3. You can specify only one
 destination.
+
+
+
+=head2 SplunkDestinationConfiguration => L<Paws::Firehose::SplunkDestinationConfiguration>
+
+The destination in Splunk. You can specify only one destination.
 
 
 

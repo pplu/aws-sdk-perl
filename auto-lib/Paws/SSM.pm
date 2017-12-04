@@ -134,6 +134,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeAutomationExecutions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAutomationStepExecutions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeAutomationStepExecutions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeAvailablePatches {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeAvailablePatches', @_);
@@ -658,7 +663,7 @@ package Paws::SSM;
   }
 
 
-  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAutomationExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState GetAutomationExecution GetCommandInvocation GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource SendAutomationSignal SendCommand StartAutomationExecution StopAutomationExecution UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdatePatchBaseline / }
+  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState GetAutomationExecution GetCommandInvocation GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource SendAutomationSignal SendCommand StartAutomationExecution StopAutomationExecution UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdatePatchBaseline / }
 
 1;
 
@@ -686,21 +691,19 @@ Paws::SSM - Perl Interface to AWS Amazon Simple Systems Manager (SSM)
 
 =head1 DESCRIPTION
 
-Amazon EC2 Systems Manager
+AWS Systems Manager
 
-Amazon EC2 Systems Manager is a collection of capabilities that helps
-you automate management tasks such as collecting system inventory,
-applying operating system (OS) patches, automating the creation of
-Amazon Machine Images (AMIs), and configuring operating systems (OSs)
-and applications at scale. Systems Manager lets you remotely and
-securely manage the configuration of your managed instances. A
-I<managed instance> is any Amazon EC2 instance or on-premises machine
-in your hybrid environment that has been configured for Systems
-Manager.
+AWS Systems Manager is a collection of capabilities that helps you
+automate management tasks such as collecting system inventory, applying
+operating system (OS) patches, automating the creation of Amazon
+Machine Images (AMIs), and configuring operating systems (OSs) and
+applications at scale. Systems Manager lets you remotely and securely
+manage the configuration of your managed instances. A I<managed
+instance> is any Amazon EC2 instance or on-premises machine in your
+hybrid environment that has been configured for Systems Manager.
 
-This reference is intended to be used with the Amazon EC2 Systems
-Manager User Guide
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/).
+This reference is intended to be used with the AWS Systems Manager User
+Guide (http://docs.aws.amazon.com/systems-manager/latest/userguide/).
 
 To get started, verify prerequisites and configure managed instances.
 For more information, see Systems Manager Prerequisites
@@ -806,7 +809,7 @@ associated document, the system throws the AssociationAlreadyExists
 exception.
 
 
-=head2 CreateDocument(Content => Str, Name => Str, [DocumentType => Str])
+=head2 CreateDocument(Content => Str, Name => Str, [DocumentFormat => Str, DocumentType => Str, TargetType => Str])
 
 Each argument is described in detail in: L<Paws::SSM::CreateDocument>
 
@@ -846,7 +849,7 @@ Creates a resource data sync configuration to a single bucket in Amazon
 S3. This is an asynchronous operation that returns immediately. After a
 successful initial sync is completed, the system continuously syncs
 data to the Amazon S3 bucket. To check the status of the sync, use the
-ListResourceDataSync operation.
+ListResourceDataSync.
 
 By default, data is not encrypted in Amazon S3. We strongly recommend
 that you enable encryption in Amazon S3 to ensure secure data storage.
@@ -1006,8 +1009,12 @@ Each argument is described in detail in: L<Paws::SSM::DescribeAssociation>
 
 Returns: a L<Paws::SSM::DescribeAssociationResult> instance
 
-Describes the associations for the specified Systems Manager document
-or instance.
+Describes the association for the specified target or instance. If you
+created the association by using the C<Targets> parameter, then you
+must retrieve the association by using the association ID. If you
+created the association by specifying an instance ID and a Systems
+Manager document, then you retrieve the association by specifying the
+document name and the instance ID.
 
 
 =head2 DescribeAutomationExecutions([Filters => ArrayRef[L<Paws::SSM::AutomationExecutionFilter>], MaxResults => Int, NextToken => Str])
@@ -1017,6 +1024,16 @@ Each argument is described in detail in: L<Paws::SSM::DescribeAutomationExecutio
 Returns: a L<Paws::SSM::DescribeAutomationExecutionsResult> instance
 
 Provides details about all active and terminated Automation executions.
+
+
+=head2 DescribeAutomationStepExecutions(AutomationExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::StepExecutionFilter>], MaxResults => Int, NextToken => Str, ReverseOrder => Bool])
+
+Each argument is described in detail in: L<Paws::SSM::DescribeAutomationStepExecutions>
+
+Returns: a L<Paws::SSM::DescribeAutomationStepExecutionsResult> instance
+
+Information about all active and terminated step executions in an
+Automation workflow.
 
 
 =head2 DescribeAvailablePatches([Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
@@ -1266,7 +1283,7 @@ uses. This API is primarily used by the AWS-RunPatchBaseline Systems
 Manager document.
 
 
-=head2 GetDocument(Name => Str, [DocumentVersion => Str])
+=head2 GetDocument(Name => Str, [DocumentFormat => Str, DocumentVersion => Str])
 
 Each argument is described in detail in: L<Paws::SSM::GetDocument>
 
@@ -1275,7 +1292,7 @@ Returns: a L<Paws::SSM::GetDocumentResult> instance
 Gets the contents of the specified Systems Manager document.
 
 
-=head2 GetInventory([Filters => ArrayRef[L<Paws::SSM::InventoryFilter>], MaxResults => Int, NextToken => Str, ResultAttributes => ArrayRef[L<Paws::SSM::ResultAttribute>]])
+=head2 GetInventory([Aggregators => ArrayRef[L<Paws::SSM::InventoryAggregator>], Filters => ArrayRef[L<Paws::SSM::InventoryFilter>], MaxResults => Int, NextToken => Str, ResultAttributes => ArrayRef[L<Paws::SSM::ResultAttribute>]])
 
 Each argument is described in detail in: L<Paws::SSM::GetInventory>
 
@@ -1284,7 +1301,7 @@ Returns: a L<Paws::SSM::GetInventoryResult> instance
 Query inventory information.
 
 
-=head2 GetInventorySchema([MaxResults => Int, NextToken => Str, SubType => Bool, TypeName => Str])
+=head2 GetInventorySchema([Aggregator => Bool, MaxResults => Int, NextToken => Str, SubType => Bool, TypeName => Str])
 
 Each argument is described in detail in: L<Paws::SSM::GetInventorySchema>
 
@@ -1652,7 +1669,7 @@ Returns: a L<Paws::SSM::SendCommandResult> instance
 Executes commands on one or more managed instances.
 
 
-=head2 StartAutomationExecution(DocumentName => Str, [ClientToken => Str, DocumentVersion => Str, Parameters => L<Paws::SSM::AutomationParameterMap>])
+=head2 StartAutomationExecution(DocumentName => Str, [ClientToken => Str, DocumentVersion => Str, MaxConcurrency => Str, MaxErrors => Str, Mode => Str, Parameters => L<Paws::SSM::AutomationParameterMap>, TargetParameterName => Str, Targets => ArrayRef[L<Paws::SSM::Target>]])
 
 Each argument is described in detail in: L<Paws::SSM::StartAutomationExecution>
 
@@ -1661,7 +1678,7 @@ Returns: a L<Paws::SSM::StartAutomationExecutionResult> instance
 Initiates execution of an Automation document.
 
 
-=head2 StopAutomationExecution(AutomationExecutionId => Str)
+=head2 StopAutomationExecution(AutomationExecutionId => Str, [Type => Str])
 
 Each argument is described in detail in: L<Paws::SSM::StopAutomationExecution>
 
@@ -1691,7 +1708,7 @@ Updates the status of the Systems Manager document associated with the
 specified instance.
 
 
-=head2 UpdateDocument(Content => Str, Name => Str, [DocumentVersion => Str])
+=head2 UpdateDocument(Content => Str, Name => Str, [DocumentFormat => Str, DocumentVersion => Str, TargetType => Str])
 
 Each argument is described in detail in: L<Paws::SSM::UpdateDocument>
 

@@ -123,6 +123,11 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::DescribeReceiptRuleSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAccountSendingEnabled {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::GetAccountSendingEnabled', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetIdentityDkimAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::GetIdentityDkimAttributes', @_);
@@ -273,9 +278,24 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::TestRenderTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateAccountSendingEnabled {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::UpdateAccountSendingEnabled', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateConfigurationSetEventDestination {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::UpdateConfigurationSetEventDestination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateConfigurationSetReputationMetricsEnabled {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::UpdateConfigurationSetReputationMetricsEnabled', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateConfigurationSetSendingEnabled {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::UpdateConfigurationSetSendingEnabled', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateConfigurationSetTrackingOptions {
@@ -339,7 +359,7 @@ package Paws::SES;
   }
 
 
-  sub operations { qw/CloneReceiptRuleSet CreateConfigurationSet CreateConfigurationSetEventDestination CreateConfigurationSetTrackingOptions CreateReceiptFilter CreateReceiptRule CreateReceiptRuleSet CreateTemplate DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteConfigurationSetTrackingOptions DeleteIdentity DeleteIdentityPolicy DeleteReceiptFilter DeleteReceiptRule DeleteReceiptRuleSet DeleteTemplate DeleteVerifiedEmailAddress DescribeActiveReceiptRuleSet DescribeConfigurationSet DescribeReceiptRule DescribeReceiptRuleSet GetIdentityDkimAttributes GetIdentityMailFromDomainAttributes GetIdentityNotificationAttributes GetIdentityPolicies GetIdentityVerificationAttributes GetSendQuota GetSendStatistics GetTemplate ListConfigurationSets ListIdentities ListIdentityPolicies ListReceiptFilters ListReceiptRuleSets ListTemplates ListVerifiedEmailAddresses PutIdentityPolicy ReorderReceiptRuleSet SendBounce SendBulkTemplatedEmail SendEmail SendRawEmail SendTemplatedEmail SetActiveReceiptRuleSet SetIdentityDkimEnabled SetIdentityFeedbackForwardingEnabled SetIdentityHeadersInNotificationsEnabled SetIdentityMailFromDomain SetIdentityNotificationTopic SetReceiptRulePosition TestRenderTemplate UpdateConfigurationSetEventDestination UpdateConfigurationSetTrackingOptions UpdateReceiptRule UpdateTemplate VerifyDomainDkim VerifyDomainIdentity VerifyEmailAddress VerifyEmailIdentity / }
+  sub operations { qw/CloneReceiptRuleSet CreateConfigurationSet CreateConfigurationSetEventDestination CreateConfigurationSetTrackingOptions CreateReceiptFilter CreateReceiptRule CreateReceiptRuleSet CreateTemplate DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteConfigurationSetTrackingOptions DeleteIdentity DeleteIdentityPolicy DeleteReceiptFilter DeleteReceiptRule DeleteReceiptRuleSet DeleteTemplate DeleteVerifiedEmailAddress DescribeActiveReceiptRuleSet DescribeConfigurationSet DescribeReceiptRule DescribeReceiptRuleSet GetAccountSendingEnabled GetIdentityDkimAttributes GetIdentityMailFromDomainAttributes GetIdentityNotificationAttributes GetIdentityPolicies GetIdentityVerificationAttributes GetSendQuota GetSendStatistics GetTemplate ListConfigurationSets ListIdentities ListIdentityPolicies ListReceiptFilters ListReceiptRuleSets ListTemplates ListVerifiedEmailAddresses PutIdentityPolicy ReorderReceiptRuleSet SendBounce SendBulkTemplatedEmail SendEmail SendRawEmail SendTemplatedEmail SetActiveReceiptRuleSet SetIdentityDkimEnabled SetIdentityFeedbackForwardingEnabled SetIdentityHeadersInNotificationsEnabled SetIdentityMailFromDomain SetIdentityNotificationTopic SetReceiptRulePosition TestRenderTemplate UpdateAccountSendingEnabled UpdateConfigurationSetEventDestination UpdateConfigurationSetReputationMetricsEnabled UpdateConfigurationSetSendingEnabled UpdateConfigurationSetTrackingOptions UpdateReceiptRule UpdateTemplate VerifyDomainDkim VerifyDomainIdentity VerifyEmailAddress VerifyEmailIdentity / }
 
 1;
 
@@ -724,6 +744,17 @@ Returns the details of the specified receipt rule set.
 For information about managing receipt rule sets, see the Amazon SES
 Developer Guide
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
+
+You can execute this operation no more than once per second.
+
+
+=head2 GetAccountSendingEnabled( => )
+
+Each argument is described in detail in: L<Paws::SES::GetAccountSendingEnabled>
+
+Returns: a L<Paws::SES::GetAccountSendingEnabledResponse> instance
+
+Returns the email sending status of the Amazon SES account.
 
 You can execute this operation no more than once per second.
 
@@ -1504,6 +1535,21 @@ template and a set of replacement data.
 You can execute this operation no more than once per second.
 
 
+=head2 UpdateAccountSendingEnabled([Enabled => Bool])
+
+Each argument is described in detail in: L<Paws::SES::UpdateAccountSendingEnabled>
+
+Returns: nothing
+
+Enables or disables email sending across your entire Amazon SES
+account. You can use this operation in conjunction with Amazon
+CloudWatch alarms to temporarily pause email sending across your Amazon
+SES account when reputation metrics (such as your bounce on complaint
+rate) reach certain thresholds.
+
+You can execute this operation no more than once per second.
+
+
 =head2 UpdateConfigurationSetEventDestination(ConfigurationSetName => Str, EventDestination => L<Paws::SES::EventDestination>)
 
 Each argument is described in detail in: L<Paws::SES::UpdateConfigurationSetEventDestination>
@@ -1523,6 +1569,36 @@ When you create or update an event destination, you must provide one,
 and only one, destination. The destination can be Amazon CloudWatch,
 Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon
 SNS).
+
+You can execute this operation no more than once per second.
+
+
+=head2 UpdateConfigurationSetReputationMetricsEnabled(ConfigurationSetName => Str, Enabled => Bool)
+
+Each argument is described in detail in: L<Paws::SES::UpdateConfigurationSetReputationMetricsEnabled>
+
+Returns: nothing
+
+Enables or disables the publishing of reputation metrics for emails
+sent using a specific configuration set. Reputation metrics include
+bounce and complaint rates. These metrics are published to Amazon
+CloudWatch. By using Amazon CloudWatch, you can create alarms when
+bounce or complaint rates exceed a certain threshold.
+
+You can execute this operation no more than once per second.
+
+
+=head2 UpdateConfigurationSetSendingEnabled(ConfigurationSetName => Str, Enabled => Bool)
+
+Each argument is described in detail in: L<Paws::SES::UpdateConfigurationSetSendingEnabled>
+
+Returns: nothing
+
+Enables or disables email sending for messages sent using a specific
+configuration set. You can use this operation in conjunction with
+Amazon CloudWatch alarms to temporarily pause email sending for a
+configuration set when the reputation metrics for that configuration
+set (such as your bounce on complaint rate) reach certain thresholds.
 
 You can execute this operation no more than once per second.
 

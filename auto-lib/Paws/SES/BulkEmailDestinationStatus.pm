@@ -106,6 +106,17 @@ to an IP pool that does not exist.
 
 =item *
 
+C<AccountSendingPaused>: Email sending for the Amazon SES account was
+disabled using the UpdateAccountSendingEnabled operation.
+
+=item *
+
+C<ConfigurationSetSendingPaused>: Email sending for this configuration
+set was disabled using the UpdateConfigurationSetSendingEnabled
+operation.
+
+=item *
+
 C<InvalidParameterValue>: One or more of the parameters you specified
 when calling this operation was invalid. See the error message for
 additional information.

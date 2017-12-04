@@ -86,7 +86,7 @@ in the I<Amazon Kinesis Streams Developer Guide>.
 
 =head2 B<REQUIRED> StreamName => Str
 
-The name of the Amazon Kinesis stream for which to disable enhanced
+The name of the Kinesis stream for which to disable enhanced
 monitoring.
 
 

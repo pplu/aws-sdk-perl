@@ -1,6 +1,7 @@
 
 package Paws::Lightsail::StopInstance;
   use Moose;
+  has Force => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'force' );
   has InstanceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceName' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -31,6 +32,17 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 Force => Bool
+
+When set to C<True>, forces a Lightsail instance that is stuck in a
+C<stopping> state to stop.
+
+Only use the C<force> parameter if your instance is stuck in the
+C<stopping> state. In any other state, your instance should stop
+normally without adding this parameter to your API request.
+
 
 
 =head2 B<REQUIRED> InstanceName => Str

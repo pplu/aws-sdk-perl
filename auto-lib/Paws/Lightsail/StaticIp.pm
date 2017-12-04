@@ -47,13 +47,13 @@ Describes the static IP.
 =head2 Arn => Str
 
   The Amazon Resource Name (ARN) of the static IP (e.g.,
-C<arn:aws:lightsail:us-east-1:123456789101:StaticIp/9cbb4a9e-f8e3-4dfe-b57e-12345EXAMPLE>).
+C<arn:aws:lightsail:us-east-2:123456789101:StaticIp/9cbb4a9e-f8e3-4dfe-b57e-12345EXAMPLE>).
 
 
 =head2 AttachedTo => Str
 
   The instance where the static IP is attached (e.g.,
-C<Amazon_Linux-1GB-Virginia-1>).
+C<Amazon_Linux-1GB-Ohio-1>).
 
 
 =head2 CreatedAt => Str
@@ -78,7 +78,7 @@ C<Amazon_Linux-1GB-Virginia-1>).
 
 =head2 Name => Str
 
-  The name of the static IP (e.g., C<StaticIP-Virginia-EXAMPLE>).
+  The name of the static IP (e.g., C<StaticIP-Ohio-EXAMPLE>).
 
 
 =head2 ResourceType => Str

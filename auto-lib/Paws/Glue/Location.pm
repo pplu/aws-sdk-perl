@@ -44,7 +44,7 @@ The location of resources.
 
 =head2 S3 => ArrayRef[L<Paws::Glue::CodeGenNodeArg>]
 
-  An AWS S3 location.
+  An Amazon S3 location.
 
 
 

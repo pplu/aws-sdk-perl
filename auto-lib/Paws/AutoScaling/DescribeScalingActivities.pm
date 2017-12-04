@@ -48,7 +48,7 @@ unknown activities are requested, they are ignored with no error.
 
 =head2 AutoScalingGroupName => Str
 
-The name of the group.
+The name of the Auto Scaling group.
 
 
 

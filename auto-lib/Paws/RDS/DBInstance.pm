@@ -81,32 +81,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBInst
 
 =head1 DESCRIPTION
 
-Contains the result of a successful invocation of the following
-actions:
-
-=over
-
-=item *
-
-CreateDBInstance
-
-=item *
-
-DeleteDBInstance
-
-=item *
-
-ModifyDBInstance
-
-=item *
-
-StopDBInstance
-
-=item *
-
-StartDBInstance
-
-=back
+Contains the details of an Amazon RDS DB instance.
 
 This data type is used as a response element in the DescribeDBInstances
 action.
@@ -190,9 +165,9 @@ cluster port.
 
 =head2 DbiResourceId => Str
 
-  The region-unique, immutable identifier for the DB instance. This
-identifier is found in AWS CloudTrail log entries whenever the KMS key
-for the DB instance is accessed.
+  The AWS Region-unique, immutable identifier for the DB instance. This
+identifier is found in AWS CloudTrail log entries whenever the AWS KMS
+key for the DB instance is accessed.
 
 
 =head2 DBName => Str
@@ -266,7 +241,7 @@ that receives the Enhanced Monitoring metrics data for the DB instance.
 =head2 IAMDatabaseAuthenticationEnabled => Bool
 
   True if mapping of AWS Identity and Access Management (IAM) accounts to
-database accounts is enabled; otherwise false.
+database accounts is enabled, and otherwise false.
 
 IAM database authentication can be enabled for the following database
 engines
@@ -302,7 +277,7 @@ see DBCluster Type.
 
 =head2 KmsKeyId => Str
 
-  If C<StorageEncrypted> is true, the KMS key identifier for the
+  If C<StorageEncrypted> is true, the AWS KMS key identifier for the
 encrypted DB instance.
 
 
@@ -331,7 +306,7 @@ metrics are collected for the DB instance.
 =head2 MonitoringRoleArn => Str
 
   The ARN for the IAM role that permits RDS to send Enhanced Monitoring
-metrics to CloudWatch Logs.
+metrics to Amazon CloudWatch Logs.
 
 
 =head2 MultiAZ => Bool
@@ -353,12 +328,15 @@ by subelements.
 
 =head2 PerformanceInsightsEnabled => Bool
 
-  
+  True if Performance Insights is enabled for the DB instance, and
+otherwise false.
 
 
 =head2 PerformanceInsightsKMSKeyId => Str
 
-  
+  The AWS KMS key identifier for encryption of Performance Insights data.
+The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier,
+or the KMS key alias for the KMS encryption key.
 
 
 =head2 PreferredBackupWindow => Str
@@ -408,10 +386,10 @@ B<VPC:>false
 =back
 
 If no DB subnet group has been specified as part of the request and the
-PubliclyAccessible value has not been set, the DB instance will be
-publicly accessible. If a specific DB subnet group has been specified
-as part of the request and the PubliclyAccessible value has not been
-set, the DB instance will be private.
+PubliclyAccessible value has not been set, the DB instance is publicly
+accessible. If a specific DB subnet group has been specified as part of
+the request and the PubliclyAccessible value has not been set, the DB
+instance is private.
 
 
 =head2 ReadReplicaDBClusterIdentifiers => ArrayRef[Str|Undef]
@@ -441,7 +419,7 @@ DB instance with multi-AZ support.
 =head2 StatusInfos => ArrayRef[L<Paws::RDS::DBInstanceStatusInfo>]
 
   The status of a Read Replica. If the instance is not a Read Replica,
-this will be blank.
+this is blank.
 
 
 =head2 StorageEncrypted => Bool

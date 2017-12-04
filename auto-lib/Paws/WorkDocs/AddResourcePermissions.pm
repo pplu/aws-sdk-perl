@@ -2,6 +2,7 @@
 package Paws::WorkDocs::AddResourcePermissions;
   use Moose;
   has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
+  has NotificationOptions => (is => 'ro', isa => 'Paws::WorkDocs::NotificationOptions');
   has Principals => (is => 'ro', isa => 'ArrayRef[Paws::WorkDocs::SharePrincipal]', required => 1);
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceId', required => 1);
 
@@ -38,9 +39,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AuthenticationToken => Str
 
-Amazon WorkDocs authentication token. This field should not be set when
-using administrative API actions, as in accessing the API using AWS
+Amazon WorkDocs authentication token. Do not set this field when using
+administrative API actions, as in accessing the API using AWS
 credentials.
+
+
+
+=head2 NotificationOptions => L<Paws::WorkDocs::NotificationOptions>
+
+The notification options.
 
 
 

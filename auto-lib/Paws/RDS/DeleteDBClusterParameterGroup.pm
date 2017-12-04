@@ -47,7 +47,7 @@ Must be the name of an existing DB cluster parameter group.
 
 =item *
 
-You cannot delete a default DB cluster parameter group.
+You can't delete a default DB cluster parameter group.
 
 =item *
 

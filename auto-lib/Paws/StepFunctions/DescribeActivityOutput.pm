@@ -23,7 +23,7 @@ The Amazon Resource Name (ARN) that identifies the activity.
 
 =head2 B<REQUIRED> CreationDate => Str
 
-The date the activity was created.
+The date the activity is created.
 
 
 =head2 B<REQUIRED> Name => Str

@@ -46,13 +46,13 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> SpotFleetRequestIds => ArrayRef[Str|Undef]
 
-The IDs of the Spot fleet requests.
+The IDs of the Spot Fleet requests.
 
 
 
 =head2 B<REQUIRED> TerminateInstances => Bool
 
-Indicates whether to terminate instances for a Spot fleet request if it
+Indicates whether to terminate instances for a Spot Fleet request if it
 is canceled successfully.
 
 

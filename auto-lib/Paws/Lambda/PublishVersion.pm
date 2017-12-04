@@ -40,8 +40,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The SHA256 hash of the deployment package you want to publish. This
 provides validation on the code you are publishing. If you provide this
-parameter value must match the SHA256 of the $LATEST version for the
-publication to succeed.
+parameter, the value must match the SHA256 of the $LATEST version for
+the publication to succeed. You can use the B<DryRun> parameter of
+UpdateFunctionCode to verify the hash value that will be returned
+before publishing your new version.
 
 
 

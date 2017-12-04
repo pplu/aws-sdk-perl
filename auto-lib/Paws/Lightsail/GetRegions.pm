@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 A Boolean value indicating whether to also include Availability Zones
 in your get regions request. Availability Zones are indicated with a
-letter: e.g., C<us-east-1a>.
+letter: e.g., C<us-east-2a>.
 
 
 

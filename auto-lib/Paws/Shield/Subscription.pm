@@ -39,7 +39,9 @@ Information about the AWS Shield Advanced subscription for an account.
 
 =head2 StartTime => Str
 
-  The start time of the subscription, in the format "2016-12-16T13:50Z".
+  The start time of the subscription, in Unix time in seconds. For more
+information see timestamp
+(http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types).
 
 
 =head2 TimeCommitmentInSeconds => Int

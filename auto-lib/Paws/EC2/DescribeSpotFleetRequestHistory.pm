@@ -70,7 +70,7 @@ The token for the next set of results.
 
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 
-The ID of the Spot fleet request.
+The ID of the Spot Fleet request.
 
 
 

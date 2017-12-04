@@ -37,9 +37,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]
 
-Engine attributes used for disassociating the node.
+Engine attributes that are used for disassociating the node. No
+attributes are required for Puppet.
 
-B<Attributes accepted in a DisassociateNode request:>
+B<Attributes required in a DisassociateNode request for Chef>
 
 =over
 
@@ -56,7 +57,7 @@ exist.
 
 =head2 B<REQUIRED> NodeName => Str
 
-The name of the Chef client node.
+The name of the client node.
 
 
 

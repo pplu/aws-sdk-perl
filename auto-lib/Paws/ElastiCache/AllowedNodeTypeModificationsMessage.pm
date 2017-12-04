@@ -18,7 +18,7 @@ Paws::ElastiCache::AllowedNodeTypeModificationsMessage
 =head2 ScaleUpModifications => ArrayRef[Str|Undef]
 
 A string list, each element of which specifies a cache node type which
-you can use to scale your cache cluster or replication group.
+you can use to scale your cluster or replication group.
 
 When scaling up a Redis cluster or replication group using
 C<ModifyCacheCluster> or C<ModifyReplicationGroup>, use a value from

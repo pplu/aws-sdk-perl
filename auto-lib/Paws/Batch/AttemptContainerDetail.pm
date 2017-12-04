@@ -70,7 +70,8 @@ additional details about a running or stopped container.
 =head2 TaskArn => Str
 
   The Amazon Resource Name (ARN) of the Amazon ECS task that is
-associated with the job attempt.
+associated with the job attempt. Each container attempt receives a task
+ARN when they reach the C<STARTING> status.
 
 
 

@@ -56,7 +56,7 @@ Describes an instance (a virtual private server).
 =head2 Arn => Str
 
   The Amazon Resource Name (ARN) of the instance (e.g.,
-C<arn:aws:lightsail:us-east-1:123456789101:Instance/244ad76f-8aad-4741-809f-12345EXAMPLE>).
+C<arn:aws:lightsail:us-east-2:123456789101:Instance/244ad76f-8aad-4741-809f-12345EXAMPLE>).
 
 
 =head2 BlueprintId => Str
@@ -102,8 +102,7 @@ assigned to it.
 
 =head2 Name => Str
 
-  The name the user gave the instance (e.g.,
-C<Amazon_Linux-1GB-Virginia-1>).
+  The name the user gave the instance (e.g., C<Amazon_Linux-1GB-Ohio-1>).
 
 
 =head2 Networking => L<Paws::Lightsail::InstanceNetworking>

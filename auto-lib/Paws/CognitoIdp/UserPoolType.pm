@@ -23,6 +23,7 @@ package Paws::CognitoIdp::UserPoolType;
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has UsernameAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has UserPoolAddOns => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolAddOnsType');
   has UserPoolTags => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolTagsType');
   has VerificationMessageTemplate => (is => 'ro', isa => 'Paws::CognitoIdp::VerificationMessageTemplateType');
 1;
@@ -55,7 +56,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIdp:
 
 =head1 DESCRIPTION
 
-A container for information about the user pool type.
+A container for information about the user pool.
 
 =head1 ATTRIBUTES
 
@@ -118,7 +119,7 @@ users.
 
 =head2 LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>
 
-  A container for the AWS Lambda triggers associated with a user pool.
+  The AWS Lambda triggers associated with tue user pool.
 
 
 =head2 LastModifiedDate => Str
@@ -158,7 +159,7 @@ token.
 
 =head2 Policies => L<Paws::CognitoIdp::UserPoolPolicyType>
 
-  A container for the policies associated with a user pool.
+  The policies associated with the user pool.
 
 
 =head2 SchemaAttributes => ArrayRef[L<Paws::CognitoIdp::SchemaAttributeType>]
@@ -196,6 +197,11 @@ users.
 
   Specifies whether email addresses or phone numbers can be specified as
 usernames when a user signs up.
+
+
+=head2 UserPoolAddOns => L<Paws::CognitoIdp::UserPoolAddOnsType>
+
+  The user pool add-ons.
 
 
 =head2 UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>

@@ -48,7 +48,8 @@ variable. For an example of a C<ClientContext> JSON, see PutEvents
 (http://docs.aws.amazon.com/mobileanalytics/latest/ug/PutEvents.html)
 in the I<Amazon Mobile Analytics API Reference and User Guide>.
 
-The ClientContext JSON must be base64-encoded.
+The ClientContext JSON must be base64-encoded and has a maximum size of
+3583 bytes.
 
 
 

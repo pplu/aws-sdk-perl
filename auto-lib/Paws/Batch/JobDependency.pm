@@ -1,6 +1,7 @@
 package Paws::Batch::JobDependency;
   use Moose;
   has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Batch::JobDependency object:
 
-  $service_obj->Method(Att1 => { JobId => $value, ..., JobId => $value  });
+  $service_obj->Method(Att1 => { JobId => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,6 +40,11 @@ An object representing an AWS Batch job dependency.
 =head2 JobId => Str
 
   The job ID of the AWS Batch job associated with this dependency.
+
+
+=head2 Type => Str
+
+  The type of the job dependency.
 
 
 

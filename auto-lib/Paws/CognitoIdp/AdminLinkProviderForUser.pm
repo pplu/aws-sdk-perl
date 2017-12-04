@@ -44,9 +44,14 @@ Facebook user). If the user doesn't exist, an exception is thrown. This
 is the user that is returned when the new user (with the linked
 identity provider attribute) signs in.
 
-The C<ProviderAttributeValue> for the C<DestinationUser> must match the
-username for the user in the user pool. The C<ProviderAttributeName>
-will always be ignored.
+For a native username + password user, the C<ProviderAttributeValue>
+for the C<DestinationUser> should be the username in the user pool. For
+a federated user, it should be the provider-specific C<user_id>.
+
+The C<ProviderAttributeName> of the C<DestinationUser> is ignored.
+
+The C<ProviderName> should be set to C<Cognito> for users in Cognito
+user pools.
 
 
 

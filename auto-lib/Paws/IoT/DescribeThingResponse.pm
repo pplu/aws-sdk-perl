@@ -3,6 +3,8 @@ package Paws::IoT::DescribeThingResponse;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::IoT::Attributes', traits => ['NameInRequest'], request_name => 'attributes');
   has DefaultClientId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultClientId');
+  has ThingArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingArn');
+  has ThingId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingId');
   has ThingName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingName');
   has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingTypeName');
   has Version => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'version');
@@ -27,6 +29,16 @@ The thing attributes.
 =head2 DefaultClientId => Str
 
 The default client ID.
+
+
+=head2 ThingArn => Str
+
+The ARN of the thing to describe.
+
+
+=head2 ThingId => Str
+
+The ID of the thing to describe.
 
 
 =head2 ThingName => Str

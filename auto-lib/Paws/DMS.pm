@@ -134,6 +134,11 @@ package Paws::DMS;
     my $call_object = $self->new_with_coercions('Paws::DMS::DescribeReplicationSubnetGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeReplicationTaskAssessmentResults {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::DescribeReplicationTaskAssessmentResults', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeReplicationTasks {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::DescribeReplicationTasks', @_);
@@ -204,6 +209,11 @@ package Paws::DMS;
     my $call_object = $self->new_with_coercions('Paws::DMS::StartReplicationTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartReplicationTaskAssessment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::StartReplicationTaskAssessment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StopReplicationTask {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::StopReplicationTask', @_);
@@ -217,7 +227,7 @@ package Paws::DMS;
   
 
 
-  sub operations { qw/AddTagsToResource CreateEndpoint CreateEventSubscription CreateReplicationInstance CreateReplicationSubnetGroup CreateReplicationTask DeleteCertificate DeleteEndpoint DeleteEventSubscription DeleteReplicationInstance DeleteReplicationSubnetGroup DeleteReplicationTask DescribeAccountAttributes DescribeCertificates DescribeConnections DescribeEndpoints DescribeEndpointTypes DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOrderableReplicationInstances DescribeRefreshSchemasStatus DescribeReplicationInstances DescribeReplicationSubnetGroups DescribeReplicationTasks DescribeSchemas DescribeTableStatistics ImportCertificate ListTagsForResource ModifyEndpoint ModifyEventSubscription ModifyReplicationInstance ModifyReplicationSubnetGroup ModifyReplicationTask RefreshSchemas ReloadTables RemoveTagsFromResource StartReplicationTask StopReplicationTask TestConnection / }
+  sub operations { qw/AddTagsToResource CreateEndpoint CreateEventSubscription CreateReplicationInstance CreateReplicationSubnetGroup CreateReplicationTask DeleteCertificate DeleteEndpoint DeleteEventSubscription DeleteReplicationInstance DeleteReplicationSubnetGroup DeleteReplicationTask DescribeAccountAttributes DescribeCertificates DescribeConnections DescribeEndpoints DescribeEndpointTypes DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOrderableReplicationInstances DescribeRefreshSchemasStatus DescribeReplicationInstances DescribeReplicationSubnetGroups DescribeReplicationTaskAssessmentResults DescribeReplicationTasks DescribeSchemas DescribeTableStatistics ImportCertificate ListTagsForResource ModifyEndpoint ModifyEventSubscription ModifyReplicationInstance ModifyReplicationSubnetGroup ModifyReplicationTask RefreshSchemas ReloadTables RemoveTagsFromResource StartReplicationTask StartReplicationTaskAssessment StopReplicationTask TestConnection / }
 
 1;
 
@@ -529,6 +539,16 @@ Returns: a L<Paws::DMS::DescribeReplicationSubnetGroupsResponse> instance
 Returns information about the replication subnet groups.
 
 
+=head2 DescribeReplicationTaskAssessmentResults([Marker => Str, MaxRecords => Int, ReplicationTaskArn => Str])
+
+Each argument is described in detail in: L<Paws::DMS::DescribeReplicationTaskAssessmentResults>
+
+Returns: a L<Paws::DMS::DescribeReplicationTaskAssessmentResultsResponse> instance
+
+Returns the task assessment results from Amazon S3. This action always
+returns the latest results.
+
+
 =head2 DescribeReplicationTasks([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::DMS::DescribeReplicationTasks>
@@ -677,6 +697,16 @@ Starts the replication task.
 For more information about AWS DMS tasks, see the AWS DMS user guide at
 Working with Migration Tasks
 (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html)
+
+
+=head2 StartReplicationTaskAssessment(ReplicationTaskArn => Str)
+
+Each argument is described in detail in: L<Paws::DMS::StartReplicationTaskAssessment>
+
+Returns: a L<Paws::DMS::StartReplicationTaskAssessmentResponse> instance
+
+Starts the replication task assessment for unsupported data types in
+the source database.
 
 
 =head2 StopReplicationTask(ReplicationTaskArn => Str)

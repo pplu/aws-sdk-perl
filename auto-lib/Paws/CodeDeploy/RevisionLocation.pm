@@ -3,6 +3,7 @@ package Paws::CodeDeploy::RevisionLocation;
   has GitHubLocation => (is => 'ro', isa => 'Paws::CodeDeploy::GitHubLocation', request_name => 'gitHubLocation', traits => ['NameInRequest']);
   has RevisionType => (is => 'ro', isa => 'Str', request_name => 'revisionType', traits => ['NameInRequest']);
   has S3Location => (is => 'ro', isa => 'Paws::CodeDeploy::S3Location', request_name => 's3Location', traits => ['NameInRequest']);
+  has String => (is => 'ro', isa => 'Paws::CodeDeploy::RawString', request_name => 'string', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeDeploy::RevisionLocation object:
 
-  $service_obj->Method(Att1 => { GitHubLocation => $value, ..., S3Location => $value  });
+  $service_obj->Method(Att1 => { GitHubLocation => $value, ..., String => $value  });
 
 =head3 Results returned from an API call
 
@@ -56,7 +57,13 @@ S3: An application revision stored in Amazon S3.
 
 =item *
 
-GitHub: An application revision stored in GitHub.
+GitHub: An application revision stored in GitHub (EC2/On-premises
+deployments only)
+
+=item *
+
+String: A YAML-formatted or JSON-formatted string (AWS Lambda
+deployments only)
 
 =back
 
@@ -64,8 +71,13 @@ GitHub: An application revision stored in GitHub.
 
 =head2 S3Location => L<Paws::CodeDeploy::S3Location>
 
-  Information about the location of application artifacts stored in
-Amazon S3.
+  Information about the location of a revision stored in Amazon S3.
+
+
+=head2 String => L<Paws::CodeDeploy::RawString>
+
+  Information about the location of an AWS Lambda deployment revision
+stored as a RawString.
 
 
 

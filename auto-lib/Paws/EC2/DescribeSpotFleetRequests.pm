@@ -62,7 +62,7 @@ The token for the next set of results.
 
 =head2 SpotFleetRequestIds => ArrayRef[Str|Undef]
 
-The IDs of the Spot fleet requests.
+The IDs of the Spot Fleet requests.
 
 
 

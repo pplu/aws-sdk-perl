@@ -40,8 +40,9 @@ limit the scope of Automation execution information returned.
 
 =head2 B<REQUIRED> Key => Str
 
-  The aspect of the Automation execution information that should be
-limited.
+  One or more keys to limit the results. Valid filter keys include the
+following: DocumentNamePrefix, ExecutionStatus, ExecutionId,
+ParentExecutionId, CurrentAction, StartTimeBefore, StartTimeAfter.
 
 
 =head2 B<REQUIRED> Values => ArrayRef[Str|Undef]

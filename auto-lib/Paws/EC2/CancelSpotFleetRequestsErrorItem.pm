@@ -44,7 +44,7 @@ This class has no description
 
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 
-  The ID of the Spot fleet request.
+  The ID of the Spot Fleet request.
 
 
 

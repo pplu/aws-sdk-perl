@@ -3,6 +3,7 @@ package Paws::SES::DescribeConfigurationSetResponse;
   use Moose;
   has ConfigurationSet => (is => 'ro', isa => 'Paws::SES::ConfigurationSet');
   has EventDestinations => (is => 'ro', isa => 'ArrayRef[Paws::SES::EventDestination]');
+  has ReputationOptions => (is => 'ro', isa => 'Paws::SES::ReputationOptions');
   has TrackingOptions => (is => 'ro', isa => 'Paws::SES::TrackingOptions');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -26,6 +27,12 @@ configuration set.
 =head2 EventDestinations => ArrayRef[L<Paws::SES::EventDestination>]
 
 A list of event destinations associated with the configuration set.
+
+
+=head2 ReputationOptions => L<Paws::SES::ReputationOptions>
+
+An object that represents the reputation settings for the configuration
+set.
 
 
 =head2 TrackingOptions => L<Paws::SES::TrackingOptions>

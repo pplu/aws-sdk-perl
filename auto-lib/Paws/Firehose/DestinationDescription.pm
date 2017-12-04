@@ -5,6 +5,7 @@ package Paws::Firehose::DestinationDescription;
   has ExtendedS3DestinationDescription => (is => 'ro', isa => 'Paws::Firehose::ExtendedS3DestinationDescription');
   has RedshiftDestinationDescription => (is => 'ro', isa => 'Paws::Firehose::RedshiftDestinationDescription');
   has S3DestinationDescription => (is => 'ro', isa => 'Paws::Firehose::S3DestinationDescription');
+  has SplunkDestinationDescription => (is => 'ro', isa => 'Paws::Firehose::SplunkDestinationDescription');
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Firehose::DestinationDescription object:
 
-  $service_obj->Method(Att1 => { DestinationId => $value, ..., S3DestinationDescription => $value  });
+  $service_obj->Method(Att1 => { DestinationId => $value, ..., SplunkDestinationDescription => $value  });
 
 =head3 Results returned from an API call
 
@@ -63,6 +64,11 @@ Describes the destination for a delivery stream.
 =head2 S3DestinationDescription => L<Paws::Firehose::S3DestinationDescription>
 
   [Deprecated] The destination in Amazon S3.
+
+
+=head2 SplunkDestinationDescription => L<Paws::Firehose::SplunkDestinationDescription>
+
+  The destination in Splunk.
 
 
 

@@ -46,7 +46,8 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> GroupName => Str
 
-A name for the placement group.
+A name for the placement group. Must be unique within the scope of your
+account for the region.
 
 Constraints: Up to 255 ASCII characters
 
@@ -56,7 +57,7 @@ Constraints: Up to 255 ASCII characters
 
 The placement strategy.
 
-Valid values are: C<"cluster">
+Valid values are: C<"cluster">, C<"spread">
 
 
 =head1 SEE ALSO

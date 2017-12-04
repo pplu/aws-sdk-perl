@@ -2,6 +2,7 @@
 package Paws::Rekognition::CreateCollectionResponse;
   use Moose;
   has CollectionArn => (is => 'ro', isa => 'Str');
+  has FaceModelVersion => (is => 'ro', isa => 'Str');
   has StatusCode => (is => 'ro', isa => 'Int');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -19,6 +20,12 @@ Paws::Rekognition::CreateCollectionResponse
 
 Amazon Resource Name (ARN) of the collection. You can use this to
 manage permissions on your resources.
+
+
+=head2 FaceModelVersion => Str
+
+Version number of the face detection model associated with the
+collection you are creating.
 
 
 =head2 StatusCode => Int

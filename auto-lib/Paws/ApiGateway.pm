@@ -83,6 +83,11 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::CreateUsagePlanKey', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateVpcLink {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::CreateVpcLink', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteApiKey {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteApiKey', @_);
@@ -181,6 +186,11 @@ package Paws::ApiGateway;
   sub DeleteUsagePlanKey {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteUsagePlanKey', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteVpcLink {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteVpcLink', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub FlushStageAuthorizersCache {
@@ -413,6 +423,16 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetUsagePlans', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetVpcLink {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetVpcLink', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetVpcLinks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetVpcLinks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ImportApiKeys {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::ImportApiKeys', @_);
@@ -571,6 +591,11 @@ package Paws::ApiGateway;
   sub UpdateUsagePlan {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::UpdateUsagePlan', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateVpcLink {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::UpdateVpcLink', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -827,9 +852,32 @@ package Paws::ApiGateway;
 
     return undef
   }
+  sub GetAllVpcLinks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetVpcLinks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->position) {
+        $next_result = $self->GetVpcLinks(@_, position => $next_result->position);
+        push @{ $result->items }, @{ $next_result->items };
+      }
+      return $result;
+    } else {
+      while ($result->position) {
+        $callback->($_ => 'items') foreach (@{ $result->items });
+        $result = $self->GetVpcLinks(@_, position => $result->position);
+      }
+      $callback->($_ => 'items') foreach (@{ $result->items });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/CreateApiKey CreateAuthorizer CreateBasePathMapping CreateDeployment CreateDocumentationPart CreateDocumentationVersion CreateDomainName CreateModel CreateRequestValidator CreateResource CreateRestApi CreateStage CreateUsagePlan CreateUsagePlanKey DeleteApiKey DeleteAuthorizer DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDocumentationPart DeleteDocumentationVersion DeleteDomainName DeleteGatewayResponse DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteRequestValidator DeleteResource DeleteRestApi DeleteStage DeleteUsagePlan DeleteUsagePlanKey FlushStageAuthorizersCache FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetAuthorizer GetAuthorizers GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDocumentationPart GetDocumentationParts GetDocumentationVersion GetDocumentationVersions GetDomainName GetDomainNames GetExport GetGatewayResponse GetGatewayResponses GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetRequestValidator GetRequestValidators GetResource GetResources GetRestApi GetRestApis GetSdk GetSdkType GetSdkTypes GetStage GetStages GetUsage GetUsagePlan GetUsagePlanKey GetUsagePlanKeys GetUsagePlans ImportApiKeys ImportDocumentationParts ImportRestApi PutGatewayResponse PutIntegration PutIntegrationResponse PutMethod PutMethodResponse PutRestApi TestInvokeAuthorizer TestInvokeMethod UpdateAccount UpdateApiKey UpdateAuthorizer UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDocumentationPart UpdateDocumentationVersion UpdateDomainName UpdateGatewayResponse UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateRequestValidator UpdateResource UpdateRestApi UpdateStage UpdateUsage UpdateUsagePlan / }
+  sub operations { qw/CreateApiKey CreateAuthorizer CreateBasePathMapping CreateDeployment CreateDocumentationPart CreateDocumentationVersion CreateDomainName CreateModel CreateRequestValidator CreateResource CreateRestApi CreateStage CreateUsagePlan CreateUsagePlanKey CreateVpcLink DeleteApiKey DeleteAuthorizer DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDocumentationPart DeleteDocumentationVersion DeleteDomainName DeleteGatewayResponse DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteRequestValidator DeleteResource DeleteRestApi DeleteStage DeleteUsagePlan DeleteUsagePlanKey DeleteVpcLink FlushStageAuthorizersCache FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetAuthorizer GetAuthorizers GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDocumentationPart GetDocumentationParts GetDocumentationVersion GetDocumentationVersions GetDomainName GetDomainNames GetExport GetGatewayResponse GetGatewayResponses GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetRequestValidator GetRequestValidators GetResource GetResources GetRestApi GetRestApis GetSdk GetSdkType GetSdkTypes GetStage GetStages GetUsage GetUsagePlan GetUsagePlanKey GetUsagePlanKeys GetUsagePlans GetVpcLink GetVpcLinks ImportApiKeys ImportDocumentationParts ImportRestApi PutGatewayResponse PutIntegration PutIntegrationResponse PutMethod PutMethodResponse PutRestApi TestInvokeAuthorizer TestInvokeMethod UpdateAccount UpdateApiKey UpdateAuthorizer UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDocumentationPart UpdateDocumentationVersion UpdateDomainName UpdateGatewayResponse UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateRequestValidator UpdateResource UpdateRestApi UpdateStage UpdateUsage UpdateUsagePlan UpdateVpcLink / }
 
 1;
 
@@ -860,10 +908,10 @@ Paws::ApiGateway - Perl Interface to AWS Amazon API Gateway
 Amazon API Gateway
 
 Amazon API Gateway helps developers deliver robust, secure, and
-scalable mobile and web application back ends. Amazon API Gateway
-allows developers to securely connect mobile and web applications to
-APIs that run on AWS Lambda, Amazon EC2, or other publicly addressable
-web services that are hosted outside of AWS.
+scalable mobile and web application back ends. API Gateway allows
+developers to securely connect mobile and web applications to APIs that
+run on AWS Lambda, Amazon EC2, or other publicly addressable web
+services that are hosted outside of AWS.
 
 =head1 METHODS
 
@@ -900,7 +948,7 @@ Returns: a L<Paws::ApiGateway::BasePathMapping> instance
 Creates a new BasePathMapping resource.
 
 
-=head2 CreateDeployment(RestApiId => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, Description => Str, StageDescription => Str, StageName => Str, Variables => L<Paws::ApiGateway::MapOfStringToString>])
+=head2 CreateDeployment(RestApiId => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, CanarySettings => L<Paws::ApiGateway::DeploymentCanarySettings>, Description => Str, StageDescription => Str, StageName => Str, Variables => L<Paws::ApiGateway::MapOfStringToString>])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateDeployment>
 
@@ -973,7 +1021,7 @@ Returns: a L<Paws::ApiGateway::RestApi> instance
 Creates a new RestApi resource.
 
 
-=head2 CreateStage(DeploymentId => Str, RestApiId => Str, StageName => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, Description => Str, DocumentationVersion => Str, Variables => L<Paws::ApiGateway::MapOfStringToString>])
+=head2 CreateStage(DeploymentId => Str, RestApiId => Str, StageName => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, CanarySettings => L<Paws::ApiGateway::CanarySettings>, Description => Str, DocumentationVersion => Str, Variables => L<Paws::ApiGateway::MapOfStringToString>])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateStage>
 
@@ -1001,6 +1049,18 @@ Returns: a L<Paws::ApiGateway::UsagePlanKey> instance
 
 Creates a usage plan key for adding an existing API key to a usage
 plan.
+
+
+=head2 CreateVpcLink(Name => Str, TargetArns => ArrayRef[Str|Undef], [Description => Str])
+
+Each argument is described in detail in: L<Paws::ApiGateway::CreateVpcLink>
+
+Returns: a L<Paws::ApiGateway::VpcLink> instance
+
+Creates a VPC link, under the caller's account in a selected region, in
+an asynchronous operation that typically takes 2-4 minutes to complete
+and become operational. The caller must have permissions to create and
+update VPC Endpoint services.
 
 
 =head2 DeleteApiKey(ApiKey => Str)
@@ -1189,6 +1249,15 @@ Deletes a usage plan key and remove the underlying API key from the
 associated usage plan.
 
 
+=head2 DeleteVpcLink(VpcLinkId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::DeleteVpcLink>
+
+Returns: nothing
+
+Deletes an existing VpcLink of a specified identifier.
+
+
 =head2 FlushStageAuthorizersCache(RestApiId => Str, StageName => Str)
 
 Each argument is described in detail in: L<Paws::ApiGateway::FlushStageAuthorizersCache>
@@ -1330,7 +1399,7 @@ Returns: a L<Paws::ApiGateway::DocumentationPart> instance
 
 
 
-=head2 GetDocumentationParts(RestApiId => Str, [Limit => Int, NameQuery => Str, Path => Str, Position => Str, Type => Str])
+=head2 GetDocumentationParts(RestApiId => Str, [Limit => Int, LocationStatus => Str, NameQuery => Str, Path => Str, Position => Str, Type => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::GetDocumentationParts>
 
@@ -1403,8 +1472,8 @@ Returns: a L<Paws::ApiGateway::GatewayResponses> instance
 
 Gets the GatewayResponses collection on the given RestApi. If an API
 developer has not added any definitions for gateway responses, the
-result will be the Amazon API Gateway-generated default
-GatewayResponses collection for the supported response types.
+result will be the API Gateway-generated default GatewayResponses
+collection for the supported response types.
 
 
 =head2 GetIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str)
@@ -1413,7 +1482,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetIntegration>
 
 Returns: a L<Paws::ApiGateway::Integration> instance
 
-Represents a get integration.
+Get the integration settings.
 
 
 =head2 GetIntegrationResponse(HttpMethod => Str, ResourceId => Str, RestApiId => Str, StatusCode => Str)
@@ -1616,6 +1685,25 @@ Returns: a L<Paws::ApiGateway::UsagePlans> instance
 Gets all the usage plans of the caller's account.
 
 
+=head2 GetVpcLink(VpcLinkId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetVpcLink>
+
+Returns: a L<Paws::ApiGateway::VpcLink> instance
+
+Gets a specified VPC link under the caller's account in a region.
+
+
+=head2 GetVpcLinks([Limit => Int, Position => Str])
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetVpcLinks>
+
+Returns: a L<Paws::ApiGateway::VpcLinks> instance
+
+Gets the VpcLinks collection under the caller's account in a selected
+region.
+
+
 =head2 ImportApiKeys(Body => Str, Format => Str, [FailOnWarnings => Bool])
 
 Each argument is described in detail in: L<Paws::ApiGateway::ImportApiKeys>
@@ -1640,8 +1728,8 @@ Each argument is described in detail in: L<Paws::ApiGateway::ImportRestApi>
 
 Returns: a L<Paws::ApiGateway::RestApi> instance
 
-A feature of the Amazon API Gateway control service for creating a new
-API from an external API definition file.
+A feature of the API Gateway control service for creating a new API
+from an external API definition file.
 
 
 =head2 PutGatewayResponse(ResponseType => Str, RestApiId => Str, [ResponseParameters => L<Paws::ApiGateway::MapOfStringToString>, ResponseTemplates => L<Paws::ApiGateway::MapOfStringToString>, StatusCode => Str])
@@ -1654,7 +1742,7 @@ Creates a customization of a GatewayResponse of a specified response
 type and status code on the given RestApi.
 
 
-=head2 PutIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str, Type => Str, [CacheKeyParameters => ArrayRef[Str|Undef], CacheNamespace => Str, ContentHandling => Str, Credentials => Str, IntegrationHttpMethod => Str, PassthroughBehavior => Str, RequestParameters => L<Paws::ApiGateway::MapOfStringToString>, RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>, Uri => Str])
+=head2 PutIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str, Type => Str, [CacheKeyParameters => ArrayRef[Str|Undef], CacheNamespace => Str, ConnectionId => Str, ConnectionType => Str, ContentHandling => Str, Credentials => Str, IntegrationHttpMethod => Str, PassthroughBehavior => Str, RequestParameters => L<Paws::ApiGateway::MapOfStringToString>, RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>, TimeoutInMillis => Int, Uri => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::PutIntegration>
 
@@ -1696,10 +1784,10 @@ Each argument is described in detail in: L<Paws::ApiGateway::PutRestApi>
 
 Returns: a L<Paws::ApiGateway::RestApi> instance
 
-A feature of the Amazon API Gateway control service for updating an
-existing API with an input of external API definitions. The update can
-take the form of merging the supplied definition into the existing API
-or overwriting the existing API.
+A feature of the API Gateway control service for updating an existing
+API with an input of external API definitions. The update can take the
+form of merging the supplied definition into the existing API or
+overwriting the existing API.
 
 
 =head2 TestInvokeAuthorizer(AuthorizerId => Str, RestApiId => Str, [AdditionalContext => L<Paws::ApiGateway::MapOfStringToString>, Body => Str, Headers => L<Paws::ApiGateway::MapOfHeaderValues>, PathWithQueryString => Str, StageVariables => L<Paws::ApiGateway::MapOfStringToString>])
@@ -1919,6 +2007,15 @@ Returns: a L<Paws::ApiGateway::UsagePlan> instance
 Updates a usage plan of a given plan Id.
 
 
+=head2 UpdateVpcLink(VpcLinkId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
+
+Each argument is described in detail in: L<Paws::ApiGateway::UpdateVpcLink>
+
+Returns: a L<Paws::ApiGateway::VpcLink> instance
+
+Updates an existing VpcLink of a specified identifier.
+
+
 
 
 =head1 PAGINATORS
@@ -2055,6 +2152,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - items, passing the object as the first parameter, and the string 'items' as the second parameter 
 
 If not, it will return a a L<Paws::ApiGateway::UsagePlans> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllVpcLinks(sub { },[Limit => Int, Position => Str])
+
+=head2 GetAllVpcLinks([Limit => Int, Position => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - items, passing the object as the first parameter, and the string 'items' as the second parameter 
+
+If not, it will return a a L<Paws::ApiGateway::VpcLinks> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

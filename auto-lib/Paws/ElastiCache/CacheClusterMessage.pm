@@ -18,8 +18,8 @@ Paws::ElastiCache::CacheClusterMessage
 
 =head2 CacheClusters => ArrayRef[L<Paws::ElastiCache::CacheCluster>]
 
-A list of cache clusters. Each item in the list contains detailed
-information about one cache cluster.
+A list of clusters. Each item in the list contains detailed information
+about one cluster.
 
 
 =head2 Marker => Str

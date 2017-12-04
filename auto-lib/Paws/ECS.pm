@@ -338,20 +338,26 @@ Paws::ECS - Perl Interface to AWS Amazon EC2 Container Service
 
 =head1 DESCRIPTION
 
-Amazon EC2 Container Service (Amazon ECS) is a highly scalable, fast,
-container management service that makes it easy to run, stop, and
-manage Docker containers on a cluster of EC2 instances. Amazon ECS lets
-you launch and stop container-enabled applications with simple API
-calls, allows you to get the state of your cluster from a centralized
-service, and gives you access to many familiar Amazon EC2 features like
-security groups, Amazon EBS volumes, and IAM roles.
+Amazon Elastic Container Service (Amazon ECS) is a highly scalable,
+fast, container management service that makes it easy to run, stop, and
+manage Docker containers on a cluster. You can host your cluster on a
+serverless infrastructure that is managed by Amazon ECS by launching
+your services or tasks using the Fargate launch type. For more control,
+you can host your tasks on a cluster of Amazon Elastic Compute Cloud
+(Amazon EC2) instances that you manage by using the EC2 launch type.
+For more information about launch types, see Amazon ECS Launch Types
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguidelaunch_types.html).
+
+Amazon ECS lets you launch and stop container-based applications with
+simple API calls, allows you to get the state of your cluster from a
+centralized service, and gives you access to many familiar Amazon EC2
+features.
 
 You can use Amazon ECS to schedule the placement of containers across
 your cluster based on your resource needs, isolation policies, and
-availability requirements. Amazon EC2 Container Service eliminates the
-need for you to operate your own cluster management and configuration
-management systems or worry about scaling your management
-infrastructure.
+availability requirements. Amazon ECS eliminates the need for you to
+operate your own cluster management and configuration management
+systems or worry about scaling your management infrastructure.
 
 =head1 METHODS
 
@@ -366,8 +372,17 @@ C<default> cluster when you launch your first container instance.
 However, you can create your own cluster with a unique name with the
 C<CreateCluster> action.
 
+When you call the CreateCluster API operation, Amazon ECS attempts to
+create the service-linked role for your account so that required
+resources in other AWS services can be managed on your behalf. However,
+if the IAM user that makes the call does not have permissions to create
+the service-linked role, it is not created. For more information, see
+Using Service-Linked Roles for Amazon ECS
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
-=head2 CreateService(DesiredCount => Int, ServiceName => Str, TaskDefinition => Str, [ClientToken => Str, Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>], PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>], PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>], Role => Str])
+
+=head2 CreateService(DesiredCount => Int, ServiceName => Str, TaskDefinition => Str, [ClientToken => Str, Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, LaunchType => Str, LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>], NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>, PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>], PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>], PlatformVersion => Str, Role => Str])
 
 Each argument is described in detail in: L<Paws::ECS::CreateService>
 
@@ -383,13 +398,14 @@ you can optionally run your service behind a load balancer. The load
 balancer distributes traffic across the tasks that are associated with
 the service. For more information, see Service Load Balancing
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
-in the I<Amazon EC2 Container Service Developer Guide>.
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 You can optionally specify a deployment configuration for your service.
-During a deployment (which is triggered by changing the task definition
-or the desired count of a service with an UpdateService operation), the
-service scheduler uses the C<minimumHealthyPercent> and
-C<maximumPercent> parameters to determine the deployment strategy.
+During a deployment, the service scheduler uses the
+C<minimumHealthyPercent> and C<maximumPercent> parameters to determine
+the deployment strategy. The deployment is triggered by changing the
+task definition or the desired count of a service with an UpdateService
+operation.
 
 The C<minimumHealthyPercent> represents a lower limit on the number of
 your service's tasks that must remain in the C<RUNNING> state during a
@@ -495,9 +511,9 @@ C<DRAINING>, and the service is no longer visible in the console or in
 ListServices API operations. After the tasks have stopped, then the
 service status moves from C<DRAINING> to C<INACTIVE>. Services in the
 C<DRAINING> or C<INACTIVE> status can still be viewed with
-DescribeServices API operations; however, in the future, C<INACTIVE>
+DescribeServices API operations. However, in the future, C<INACTIVE>
 services may be cleaned up and purged from Amazon ECS record keeping,
-and DescribeServices API operations on those services will return a
+and DescribeServices API operations on those services return a
 C<ServiceNotFoundException> error.
 
 
@@ -512,8 +528,8 @@ cluster. This instance is no longer available to run tasks.
 
 If you intend to use the container instance for some other purpose
 after deregistration, you should stop all of the tasks running on the
-container instance before deregistration to avoid any orphaned tasks
-from consuming resources.
+container instance before deregistration. That prevents any orphaned
+tasks from consuming resources.
 
 Deregistering a container instance removes the instance from a cluster,
 but it does not terminate the EC2 instance; if you are finished using
@@ -542,16 +558,16 @@ service's desired count.
 You cannot use an C<INACTIVE> task definition to run new tasks or
 create new services, and you cannot update an existing service to
 reference an C<INACTIVE> task definition (although there may be up to a
-10 minute window following deregistration where these restrictions have
+10-minute window following deregistration where these restrictions have
 not yet taken effect).
 
 At this time, C<INACTIVE> task definitions remain discoverable in your
 account indefinitely; however, this behavior is subject to change in
 the future, so you should not rely on C<INACTIVE> task definitions
-persisting beyond the life cycle of any associated tasks and services.
+persisting beyond the lifecycle of any associated tasks and services.
 
 
-=head2 DescribeClusters([Clusters => ArrayRef[Str|Undef]])
+=head2 DescribeClusters([Clusters => ArrayRef[Str|Undef], Include => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ECS::DescribeClusters>
 
@@ -566,7 +582,7 @@ Each argument is described in detail in: L<Paws::ECS::DescribeContainerInstances
 
 Returns: a L<Paws::ECS::DescribeContainerInstancesResponse> instance
 
-Describes Amazon EC2 Container Service container instances. Returns
+Describes Amazon Elastic Container Service container instances. Returns
 metadata about registered and remaining resources on each container
 instance requested.
 
@@ -610,11 +626,10 @@ Each argument is described in detail in: L<Paws::ECS::DiscoverPollEndpoint>
 
 Returns: a L<Paws::ECS::DiscoverPollEndpointResponse> instance
 
-This action is only used by the Amazon EC2 Container Service agent, and
-it is not intended for use outside of the agent.
+This action is only used by the Amazon ECS agent, and it is not
+intended for use outside of the agent.
 
-Returns an endpoint for the Amazon EC2 Container Service agent to poll
-for updates.
+Returns an endpoint for the Amazon ECS agent to poll for updates.
 
 
 =head2 ListAttributes(TargetType => Str, [AttributeName => Str, AttributeValue => Str, Cluster => Str, MaxResults => Int, NextToken => Str])
@@ -653,10 +668,10 @@ filter the results of a C<ListContainerInstances> operation with
 cluster query language statements inside the C<filter> parameter. For
 more information, see Cluster Query Language
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html)
-in the I<Amazon EC2 Container Service Developer Guide>.
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 ListServices([Cluster => Str, MaxResults => Int, NextToken => Str])
+=head2 ListServices([Cluster => Str, LaunchType => Str, MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::ECS::ListServices>
 
@@ -692,7 +707,7 @@ You can filter the results by family name with the C<familyPrefix>
 parameter or by status with the C<status> parameter.
 
 
-=head2 ListTasks([Cluster => Str, ContainerInstance => Str, DesiredStatus => Str, Family => Str, MaxResults => Int, NextToken => Str, ServiceName => Str, StartedBy => Str])
+=head2 ListTasks([Cluster => Str, ContainerInstance => Str, DesiredStatus => Str, Family => Str, LaunchType => Str, MaxResults => Int, NextToken => Str, ServiceName => Str, StartedBy => Str])
 
 Each argument is described in detail in: L<Paws::ECS::ListTasks>
 
@@ -703,7 +718,7 @@ results by family name, by a particular container instance, or by the
 desired status of the task with the C<family>, C<containerInstance>,
 and C<desiredStatus> parameters.
 
-Recently-stopped tasks might appear in the returned results. Currently,
+Recently stopped tasks might appear in the returned results. Currently,
 stopped tasks appear in the returned results for at least one hour.
 
 
@@ -718,7 +733,7 @@ attribute does not exist, it is created. If the attribute exists, its
 value is replaced with the specified value. To delete an attribute, use
 DeleteAttributes. For more information, see Attributes
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes)
-in the I<Amazon EC2 Container Service Developer Guide>.
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 RegisterContainerInstance([Attributes => ArrayRef[L<Paws::ECS::Attribute>], Cluster => Str, ContainerInstanceArn => Str, InstanceIdentityDocument => Str, InstanceIdentityDocumentSignature => Str, TotalResources => ArrayRef[L<Paws::ECS::Resource>], VersionInfo => L<Paws::ECS::VersionInfo>])
@@ -727,14 +742,14 @@ Each argument is described in detail in: L<Paws::ECS::RegisterContainerInstance>
 
 Returns: a L<Paws::ECS::RegisterContainerInstanceResponse> instance
 
-This action is only used by the Amazon EC2 Container Service agent, and
-it is not intended for use outside of the agent.
+This action is only used by the Amazon ECS agent, and it is not
+intended for use outside of the agent.
 
 Registers an EC2 instance into the specified cluster. This instance
 becomes available to place containers on.
 
 
-=head2 RegisterTaskDefinition(ContainerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>], Family => Str, [NetworkMode => Str, PlacementConstraints => ArrayRef[L<Paws::ECS::TaskDefinitionPlacementConstraint>], TaskRoleArn => Str, Volumes => ArrayRef[L<Paws::ECS::Volume>]])
+=head2 RegisterTaskDefinition(ContainerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>], Family => Str, [Cpu => Str, ExecutionRoleArn => Str, Memory => Str, NetworkMode => Str, PlacementConstraints => ArrayRef[L<Paws::ECS::TaskDefinitionPlacementConstraint>], RequiresCompatibilities => ArrayRef[Str|Undef], TaskRoleArn => Str, Volumes => ArrayRef[L<Paws::ECS::Volume>]])
 
 Each argument is described in detail in: L<Paws::ECS::RegisterTaskDefinition>
 
@@ -746,7 +761,7 @@ containers with the C<volumes> parameter. For more information about
 task definition parameters and defaults, see Amazon ECS Task
 Definitions
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html)
-in the I<Amazon EC2 Container Service Developer Guide>.
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 You can specify an IAM role for your task with the C<taskRoleArn>
 parameter. When you specify an IAM role for a task, its containers can
@@ -754,16 +769,21 @@ then use the latest versions of the AWS CLI or SDKs to make API
 requests to the AWS services that are specified in the IAM policy
 associated with the role. For more information, see IAM Roles for Tasks
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html)
-in the I<Amazon EC2 Container Service Developer Guide>.
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 You can specify a Docker networking mode for the containers in your
 task definition with the C<networkMode> parameter. The available
 network modes correspond to those described in Network settings
 (https://docs.docker.com/engine/reference/run/#/network-settings) in
-the Docker run reference.
+the Docker run reference. If you specify the C<awsvpc> network mode,
+the task is allocated an Elastic Network Interface, and you must
+specify a NetworkConfiguration when you create a service or run a task
+with the task definition. For more information, see Task Networking
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 RunTask(TaskDefinition => Str, [Cluster => Str, Count => Int, Group => Str, Overrides => L<Paws::ECS::TaskOverride>, PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>], PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>], StartedBy => Str])
+=head2 RunTask(TaskDefinition => Str, [Cluster => Str, Count => Int, Group => Str, LaunchType => Str, NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>, Overrides => L<Paws::ECS::TaskOverride>, PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>], PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>], PlatformVersion => Str, StartedBy => Str])
 
 Each argument is described in detail in: L<Paws::ECS::RunTask>
 
@@ -775,13 +795,13 @@ You can allow Amazon ECS to place tasks for you, or you can customize
 how Amazon ECS places tasks using placement constraints and placement
 strategies. For more information, see Scheduling Tasks
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html)
-in the I<Amazon EC2 Container Service Developer Guide>.
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 Alternatively, you can use StartTask to use your own scheduler or place
 tasks manually on specific container instances.
 
 
-=head2 StartTask(ContainerInstances => ArrayRef[Str|Undef], TaskDefinition => Str, [Cluster => Str, Group => Str, Overrides => L<Paws::ECS::TaskOverride>, StartedBy => Str])
+=head2 StartTask(ContainerInstances => ArrayRef[Str|Undef], TaskDefinition => Str, [Cluster => Str, Group => Str, NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>, Overrides => L<Paws::ECS::TaskOverride>, StartedBy => Str])
 
 Each argument is described in detail in: L<Paws::ECS::StartTask>
 
@@ -793,7 +813,7 @@ container instance or instances.
 Alternatively, you can use RunTask to place tasks for you. For more
 information, see Scheduling Tasks
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html)
-in the I<Amazon EC2 Container Service Developer Guide>.
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 StopTask(Task => Str, [Cluster => Str, Reason => Str])
@@ -815,7 +835,7 @@ The default 30-second timeout can be configured on the Amazon ECS
 container agent with the C<ECS_CONTAINER_STOP_TIMEOUT> variable. For
 more information, see Amazon ECS Container Agent Configuration
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html)
-in the I<Amazon EC2 Container Service Developer Guide>.
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 SubmitContainerStateChange([Cluster => Str, ContainerName => Str, ExitCode => Int, NetworkBindings => ArrayRef[L<Paws::ECS::NetworkBinding>], Reason => Str, Status => Str, Task => Str])
@@ -824,20 +844,20 @@ Each argument is described in detail in: L<Paws::ECS::SubmitContainerStateChange
 
 Returns: a L<Paws::ECS::SubmitContainerStateChangeResponse> instance
 
-This action is only used by the Amazon EC2 Container Service agent, and
-it is not intended for use outside of the agent.
+This action is only used by the Amazon ECS agent, and it is not
+intended for use outside of the agent.
 
 Sent to acknowledge that a container changed states.
 
 
-=head2 SubmitTaskStateChange([Cluster => Str, Reason => Str, Status => Str, Task => Str])
+=head2 SubmitTaskStateChange([Attachments => ArrayRef[L<Paws::ECS::AttachmentStateChange>], Cluster => Str, Containers => ArrayRef[L<Paws::ECS::ContainerStateChange>], ExecutionStoppedAt => Str, PullStartedAt => Str, PullStoppedAt => Str, Reason => Str, Status => Str, Task => Str])
 
 Each argument is described in detail in: L<Paws::ECS::SubmitTaskStateChange>
 
 Returns: a L<Paws::ECS::SubmitTaskStateChangeResponse> instance
 
-This action is only used by the Amazon EC2 Container Service agent, and
-it is not intended for use outside of the agent.
+This action is only used by the Amazon ECS agent, and it is not
+intended for use outside of the agent.
 
 Sent to acknowledge that a task changed states.
 
@@ -860,7 +880,7 @@ Linux with the C<ecs-init> service installed and running. For help
 updating the Amazon ECS container agent on other operating systems, see
 Manually Updating the Amazon ECS Container Agent
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent)
-in the I<Amazon EC2 Container Service Developer Guide>.
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 UpdateContainerInstancesState(ContainerInstances => ArrayRef[Str|Undef], Status => Str, [Cluster => Str])
@@ -884,10 +904,10 @@ container instance that are in the C<PENDING> state are stopped
 immediately.
 
 Service tasks on the container instance that are in the C<RUNNING>
-state are stopped and replaced according the service's deployment
+state are stopped and replaced according to the service's deployment
 configuration parameters, C<minimumHealthyPercent> and
-C<maximumPercent>. Note that you can change the deployment
-configuration of your service using UpdateService.
+C<maximumPercent>. You can change the deployment configuration of your
+service using UpdateService.
 
 =over
 
@@ -927,14 +947,14 @@ When you set a container instance to C<ACTIVE>, the Amazon ECS
 scheduler can begin scheduling tasks on the instance again.
 
 
-=head2 UpdateService(Service => Str, [Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, DesiredCount => Int, TaskDefinition => Str])
+=head2 UpdateService(Service => Str, [Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, DesiredCount => Int, ForceNewDeployment => Bool, NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>, PlatformVersion => Str, TaskDefinition => Str])
 
 Each argument is described in detail in: L<Paws::ECS::UpdateService>
 
 Returns: a L<Paws::ECS::UpdateServiceResponse> instance
 
-Modifies the desired count, deployment configuration, or task
-definition used in a service.
+Modifies the desired count, deployment configuration, network
+configuration, or task definition used in a service.
 
 You can add to or subtract from the number of instantiations of a task
 definition in a service by specifying the cluster that the service is
@@ -1072,9 +1092,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ECS::ListContainerInstancesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllServices(sub { },[Cluster => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAllServices(sub { },[Cluster => Str, LaunchType => Str, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllServices([Cluster => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAllServices([Cluster => Str, LaunchType => Str, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1108,9 +1128,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ECS::ListTaskDefinitionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllTasks(sub { },[Cluster => Str, ContainerInstance => Str, DesiredStatus => Str, Family => Str, MaxResults => Int, NextToken => Str, ServiceName => Str, StartedBy => Str])
+=head2 ListAllTasks(sub { },[Cluster => Str, ContainerInstance => Str, DesiredStatus => Str, Family => Str, LaunchType => Str, MaxResults => Int, NextToken => Str, ServiceName => Str, StartedBy => Str])
 
-=head2 ListAllTasks([Cluster => Str, ContainerInstance => Str, DesiredStatus => Str, Family => Str, MaxResults => Int, NextToken => Str, ServiceName => Str, StartedBy => Str])
+=head2 ListAllTasks([Cluster => Str, ContainerInstance => Str, DesiredStatus => Str, Family => Str, LaunchType => Str, MaxResults => Int, NextToken => Str, ServiceName => Str, StartedBy => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

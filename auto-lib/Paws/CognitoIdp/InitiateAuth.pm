@@ -1,10 +1,12 @@
 
 package Paws::CognitoIdp::InitiateAuth;
   use Moose;
+  has AnalyticsMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::AnalyticsMetadataType');
   has AuthFlow => (is => 'ro', isa => 'Str', required => 1);
   has AuthParameters => (is => 'ro', isa => 'Paws::CognitoIdp::AuthParametersType');
   has ClientId => (is => 'ro', isa => 'Str', required => 1);
   has ClientMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::ClientMetadataType');
+  has UserContextData => (is => 'ro', isa => 'Paws::CognitoIdp::UserContextDataType');
 
   use MooseX::ClassAttribute;
 
@@ -34,6 +36,13 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>
+
+The Amazon Pinpoint analytics metadata for collecting metrics for
+C<InitiateAuth> calls.
+
 
 
 =head2 B<REQUIRED> AuthFlow => Str
@@ -121,6 +130,14 @@ The app client ID.
 This is a random key-value pair map which can contain any key and will
 be passed to your PreAuthentication Lambda trigger as-is. It can be
 used to implement additional validations around authentication.
+
+
+
+=head2 UserContextData => L<Paws::CognitoIdp::UserContextDataType>
+
+Contextual data such as the user's device fingerprint, IP address, or
+location used for evaluating the risk of an unexpected event by Amazon
+Cognito advanced security.
 
 
 

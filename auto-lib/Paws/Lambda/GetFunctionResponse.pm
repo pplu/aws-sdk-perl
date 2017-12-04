@@ -2,6 +2,7 @@
 package Paws::Lambda::GetFunctionResponse;
   use Moose;
   has Code => (is => 'ro', isa => 'Paws::Lambda::FunctionCodeLocation');
+  has Concurrency => (is => 'ro', isa => 'Paws::Lambda::Concurrency');
   has Configuration => (is => 'ro', isa => 'Paws::Lambda::FunctionConfiguration');
   has Tags => (is => 'ro', isa => 'Paws::Lambda::Tags');
 
@@ -20,6 +21,11 @@ Paws::Lambda::GetFunctionResponse
 =head2 Code => L<Paws::Lambda::FunctionCodeLocation>
 
 
+
+
+=head2 Concurrency => L<Paws::Lambda::Concurrency>
+
+The concurrent execution limit set for this function.
 
 
 =head2 Configuration => L<Paws::Lambda::FunctionConfiguration>

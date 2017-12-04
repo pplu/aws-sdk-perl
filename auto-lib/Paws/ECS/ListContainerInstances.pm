@@ -51,7 +51,7 @@ You can filter the results of a C<ListContainerInstances> operation
 with cluster query language statements. For more information, see
 Cluster Query Language
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html)
-in the I<Amazon EC2 Container Service Developer Guide>.
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 
@@ -75,7 +75,6 @@ The C<nextToken> value returned from a previous paginated
 C<ListContainerInstances> request where C<maxResults> was used and the
 results exceeded the value of that parameter. Pagination continues from
 the end of the previous results that returned the C<nextToken> value.
-This value is C<null> when there are no more results to return.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic

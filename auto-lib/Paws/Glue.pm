@@ -480,13 +480,14 @@ Returns: a L<Paws::Glue::BatchStopJobRunResponse> instance
 Stops a batch of job runs for a given job.
 
 
-=head2 CreateClassifier([GrokClassifier => L<Paws::Glue::CreateGrokClassifierRequest>])
+=head2 CreateClassifier([GrokClassifier => L<Paws::Glue::CreateGrokClassifierRequest>, XMLClassifier => L<Paws::Glue::CreateXMLClassifierRequest>])
 
 Each argument is described in detail in: L<Paws::Glue::CreateClassifier>
 
 Returns: a L<Paws::Glue::CreateClassifierResponse> instance
 
-Creates a C<Classifier> in the user's account.
+Creates a classifier in the user's account. This may be either a
+C<GrokClassifier> or an C<XMLClassifier>.
 
 
 =head2 CreateConnection(ConnectionInput => L<Paws::Glue::ConnectionInput>, [CatalogId => Str])
@@ -498,14 +499,14 @@ Returns: a L<Paws::Glue::CreateConnectionResponse> instance
 Creates a connection definition in the Data Catalog.
 
 
-=head2 CreateCrawler(DatabaseName => Str, Name => Str, Role => Str, Targets => L<Paws::Glue::CrawlerTargets>, [Classifiers => ArrayRef[Str|Undef], Description => Str, Schedule => Str, SchemaChangePolicy => L<Paws::Glue::SchemaChangePolicy>, TablePrefix => Str])
+=head2 CreateCrawler(DatabaseName => Str, Name => Str, Role => Str, Targets => L<Paws::Glue::CrawlerTargets>, [Classifiers => ArrayRef[Str|Undef], Configuration => Str, Description => Str, Schedule => Str, SchemaChangePolicy => L<Paws::Glue::SchemaChangePolicy>, TablePrefix => Str])
 
 Each argument is described in detail in: L<Paws::Glue::CreateCrawler>
 
 Returns: a L<Paws::Glue::CreateCrawlerResponse> instance
 
-Creates a new C<Crawler> with specified targets, role, configuration,
-and optional schedule. At least one crawl target must be specified, in
+Creates a new crawler with specified targets, role, configuration, and
+optional schedule. At least one crawl target must be specified, in
 either the I<s3Targets> or the I<jdbcTargets> field.
 
 
@@ -587,7 +588,7 @@ Each argument is described in detail in: L<Paws::Glue::DeleteClassifier>
 
 Returns: a L<Paws::Glue::DeleteClassifierResponse> instance
 
-Removes a C<Classifier> from the metadata store.
+Removes a classifier from the Data Catalog.
 
 
 =head2 DeleteConnection(ConnectionName => Str, [CatalogId => Str])
@@ -605,8 +606,8 @@ Each argument is described in detail in: L<Paws::Glue::DeleteCrawler>
 
 Returns: a L<Paws::Glue::DeleteCrawlerResponse> instance
 
-Removes a specified C<Crawler> from the metadata store, unless the
-C<Crawler> state is C<RUNNING>.
+Removes a specified crawler from the Data Catalog, unless the crawler
+state is C<RUNNING>.
 
 
 =head2 DeleteDatabase(Name => Str, [CatalogId => Str])
@@ -687,7 +688,7 @@ Each argument is described in detail in: L<Paws::Glue::GetClassifier>
 
 Returns: a L<Paws::Glue::GetClassifierResponse> instance
 
-Retrieve a C<Classifier> by name.
+Retrieve a classifier by name.
 
 
 =head2 GetClassifiers([MaxResults => Int, NextToken => Str])
@@ -696,7 +697,7 @@ Each argument is described in detail in: L<Paws::Glue::GetClassifiers>
 
 Returns: a L<Paws::Glue::GetClassifiersResponse> instance
 
-Lists all Classifier objects in the metadata store.
+Lists all classifier objects in the Data Catalog.
 
 
 =head2 GetConnection(Name => Str, [CatalogId => Str])
@@ -723,7 +724,7 @@ Each argument is described in detail in: L<Paws::Glue::GetCrawler>
 
 Returns: a L<Paws::Glue::GetCrawlerResponse> instance
 
-Retrieves metadata for a specified C<Crawler>.
+Retrieves metadata for a specified crawler.
 
 
 =head2 GetCrawlerMetrics([CrawlerNameList => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
@@ -741,7 +742,7 @@ Each argument is described in detail in: L<Paws::Glue::GetCrawlers>
 
 Returns: a L<Paws::Glue::GetCrawlersResponse> instance
 
-Retrieves metadata for all C<Crawlers> defined in the customer account.
+Retrieves metadata for all crawlers defined in the customer account.
 
 
 =head2 GetDatabase(Name => Str, [CatalogId => Str])
@@ -951,8 +952,8 @@ Each argument is described in detail in: L<Paws::Glue::StartCrawler>
 
 Returns: a L<Paws::Glue::StartCrawlerResponse> instance
 
-Starts a crawl using the specified C<Crawler>, regardless of what is
-scheduled. If the C<Crawler> is already running, does nothing.
+Starts a crawl using the specified crawler, regardless of what is
+scheduled. If the crawler is already running, does nothing.
 
 
 =head2 StartCrawlerSchedule(CrawlerName => Str)
@@ -990,7 +991,7 @@ Each argument is described in detail in: L<Paws::Glue::StopCrawler>
 
 Returns: a L<Paws::Glue::StopCrawlerResponse> instance
 
-If the specified C<Crawler> is running, stops the crawl.
+If the specified crawler is running, stops the crawl.
 
 
 =head2 StopCrawlerSchedule(CrawlerName => Str)
@@ -1012,13 +1013,14 @@ Returns: a L<Paws::Glue::StopTriggerResponse> instance
 Stops a specified trigger.
 
 
-=head2 UpdateClassifier([GrokClassifier => L<Paws::Glue::UpdateGrokClassifierRequest>])
+=head2 UpdateClassifier([GrokClassifier => L<Paws::Glue::UpdateGrokClassifierRequest>, XMLClassifier => L<Paws::Glue::UpdateXMLClassifierRequest>])
 
 Each argument is described in detail in: L<Paws::Glue::UpdateClassifier>
 
 Returns: a L<Paws::Glue::UpdateClassifierResponse> instance
 
-Modifies an existing C<Classifier>.
+Modifies an existing classifier (either a C<GrokClassifier> or an
+C<XMLClassifier>).
 
 
 =head2 UpdateConnection(ConnectionInput => L<Paws::Glue::ConnectionInput>, Name => Str, [CatalogId => Str])
@@ -1030,14 +1032,14 @@ Returns: a L<Paws::Glue::UpdateConnectionResponse> instance
 Updates a connection definition in the Data Catalog.
 
 
-=head2 UpdateCrawler(Name => Str, [Classifiers => ArrayRef[Str|Undef], DatabaseName => Str, Description => Str, Role => Str, Schedule => Str, SchemaChangePolicy => L<Paws::Glue::SchemaChangePolicy>, TablePrefix => Str, Targets => L<Paws::Glue::CrawlerTargets>])
+=head2 UpdateCrawler(Name => Str, [Classifiers => ArrayRef[Str|Undef], Configuration => Str, DatabaseName => Str, Description => Str, Role => Str, Schedule => Str, SchemaChangePolicy => L<Paws::Glue::SchemaChangePolicy>, TablePrefix => Str, Targets => L<Paws::Glue::CrawlerTargets>])
 
 Each argument is described in detail in: L<Paws::Glue::UpdateCrawler>
 
 Returns: a L<Paws::Glue::UpdateCrawlerResponse> instance
 
-Updates a C<Crawler>. If a C<Crawler> is running, you must stop it
-using C<StopCrawler> before updating it.
+Updates a crawler. If a crawler is running, you must stop it using
+C<StopCrawler> before updating it.
 
 
 =head2 UpdateCrawlerSchedule(CrawlerName => Str, [Schedule => Str])
@@ -1046,7 +1048,7 @@ Each argument is described in detail in: L<Paws::Glue::UpdateCrawlerSchedule>
 
 Returns: a L<Paws::Glue::UpdateCrawlerScheduleResponse> instance
 
-Updates the schedule of a crawler using a Cron expression.
+Updates the schedule of a crawler using a C<cron> expression.
 
 
 =head2 UpdateDatabase(DatabaseInput => L<Paws::Glue::DatabaseInput>, Name => Str, [CatalogId => Str])

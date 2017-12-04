@@ -42,8 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 CacheClusterId => Str
 
 A user-supplied cluster identifier. If this parameter is specified,
-only snapshots associated with that specific cache cluster are
-described.
+only snapshots associated with that specific cluster are described.
 
 
 

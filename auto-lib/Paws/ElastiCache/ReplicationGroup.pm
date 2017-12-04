@@ -113,25 +113,27 @@ Valid values: C<true> | C<false>
 
 =head2 ConfigurationEndpoint => L<Paws::ElastiCache::Endpoint>
 
-  The configuration endpoint for this replicaiton group. Use the
+  The configuration endpoint for this replication group. Use the
 configuration endpoint to connect to this replication group.
 
 
 =head2 Description => Str
 
-  The description of the replication group.
+  The user supplied description of the replication group.
 
 
 =head2 MemberClusters => ArrayRef[Str|Undef]
 
-  The names of all the cache clusters that are part of this replication
+  The identifiers of all the nodes that are part of this replication
 group.
 
 
 =head2 NodeGroups => ArrayRef[L<Paws::ElastiCache::NodeGroup>]
 
-  A single element list with information about the nodes in the
-replication group.
+  A list of node groups in this replication group. For Redis (cluster
+mode disabled) replication groups, this is a single-element list. For
+Redis (cluster mode enabled) replication groups, the list contains an
+entry for each node group (shard).
 
 
 =head2 PendingModifiedValues => L<Paws::ElastiCache::ReplicationGroupPendingModifiedValues>
@@ -147,8 +149,8 @@ immediately or during the next maintenance window.
 
 =head2 SnapshotRetentionLimit => Int
 
-  The number of days for which ElastiCache retains automatic cache
-cluster snapshots before deleting them. For example, if you set
+  The number of days for which ElastiCache retains automatic cluster
+snapshots before deleting them. For example, if you set
 C<SnapshotRetentionLimit> to 5, a snapshot that was taken today is
 retained for 5 days before being deleted.
 
@@ -158,7 +160,7 @@ are turned off.
 
 =head2 SnapshottingClusterId => Str
 
-  The cache cluster ID that is used as the daily snapshot source for the
+  The cluster ID that is used as the daily snapshot source for the
 replication group.
 
 

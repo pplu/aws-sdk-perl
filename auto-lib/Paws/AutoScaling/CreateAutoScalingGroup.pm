@@ -9,6 +9,7 @@ package Paws::AutoScaling::CreateAutoScalingGroup;
   has HealthCheckType => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has LaunchConfigurationName => (is => 'ro', isa => 'Str');
+  has LaunchTemplate => (is => 'ro', isa => 'Paws::AutoScaling::LaunchTemplateSpecification');
   has LifecycleHookSpecificationList => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::LifecycleHookSpecification]');
   has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaxSize => (is => 'ro', isa => 'Int', required => 1);
@@ -52,8 +53,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-The name of the group. This name must be unique within the scope of
-your AWS account.
+The name of the Auto Scaling group. This name must be unique within the
+scope of your AWS account.
 
 
 
@@ -116,8 +117,8 @@ in the I<Auto Scaling User Guide>.
 =head2 InstanceId => Str
 
 The ID of the instance used to create a launch configuration for the
-group. Alternatively, specify a launch configuration instead of an EC2
-instance.
+group. You must specify one of the following: an EC2 instance, a launch
+configuration, or a launch template.
 
 When you specify an ID of an instance, Auto Scaling creates a new
 launch configuration and associates it with the group. This launch
@@ -133,8 +134,17 @@ in the I<Auto Scaling User Guide>.
 
 =head2 LaunchConfigurationName => Str
 
-The name of the launch configuration. Alternatively, specify an EC2
-instance instead of a launch configuration.
+The name of the launch configuration. You must specify one of the
+following: a launch configuration, a launch template, or an EC2
+instance.
+
+
+
+=head2 LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>
+
+The launch template to use to launch instances. You must specify one of
+the following: a launch template, a launch configuration, or an EC2
+instance.
 
 
 

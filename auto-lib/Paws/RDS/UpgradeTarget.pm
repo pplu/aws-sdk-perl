@@ -43,8 +43,8 @@ to.
 
 =head2 AutoUpgrade => Bool
 
-  A value that indicates whether the target version will be applied to
-any source DB instances that have AutoMinorVersionUpgrade set to true.
+  A value that indicates whether the target version is applied to any
+source DB instances that have AutoMinorVersionUpgrade set to true.
 
 
 =head2 Description => Str
@@ -65,8 +65,8 @@ to.
 
 =head2 IsMajorVersionUpgrade => Bool
 
-  A value that indicates whether a database engine will be upgraded to a
-major version.
+  A value that indicates whether a database engine is upgraded to a major
+version.
 
 
 

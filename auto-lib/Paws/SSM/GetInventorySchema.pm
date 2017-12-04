@@ -1,6 +1,7 @@
 
 package Paws::SSM::GetInventorySchema;
   use Moose;
+  has Aggregator => (is => 'ro', isa => 'Bool');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has SubType => (is => 'ro', isa => 'Bool');
@@ -34,6 +35,15 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 Aggregator => Bool
+
+Returns inventory schemas that support aggregation. For example, this
+call returns the C<AWS:InstanceInformation> type, because it supports
+aggregation based on the C<PlatformName>, C<PlatformType>, and
+C<PlatformVersion> attributes.
+
 
 
 =head2 MaxResults => Int

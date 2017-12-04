@@ -31,7 +31,7 @@ C<null> when there are no more results to return.
 
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 
-The ID of the Spot fleet request.
+The ID of the Spot Fleet request.
 
 
 =head2 _request_id => Str

@@ -4,6 +4,7 @@ package Paws::WorkDocs::DescribeResourcePermissions;
   has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
   has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
   has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
+  has PrincipalId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'principalId');
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceId', required => 1);
 
   use MooseX::ClassAttribute;
@@ -39,8 +40,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AuthenticationToken => Str
 
-Amazon WorkDocs authentication token. This field should not be set when
-using administrative API actions, as in accessing the API using AWS
+Amazon WorkDocs authentication token. Do not set this field when using
+administrative API actions, as in accessing the API using AWS
 credentials.
 
 
@@ -55,6 +56,12 @@ The maximum number of items to return with this call.
 
 The marker for the next set of results. (You received this marker from
 a previous call)
+
+
+
+=head2 PrincipalId => Str
+
+The ID of the principal to filter permissions by.
 
 
 

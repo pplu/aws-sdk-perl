@@ -62,8 +62,8 @@ as the key and a Model name as the value.
 =head2 ResponseParameters => L<Paws::ApiGateway::MapOfStringToBoolean>
 
 A key-value map specifying required or optional response parameters
-that Amazon API Gateway can send back to the caller. A key defines a
-method response header name and the associated value is a Boolean flag
+that API Gateway can send back to the caller. A key defines a method
+response header name and the associated value is a Boolean flag
 indicating whether the method response parameter is required or not.
 The method response header names must match the pattern of
 C<method.response.header.{name}>, where C<name> is a valid and unique

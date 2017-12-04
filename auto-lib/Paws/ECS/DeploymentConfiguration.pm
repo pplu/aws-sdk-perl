@@ -51,8 +51,8 @@ C<maximumPercent>/100, rounded down to the nearest integer value.
 
   The lower limit (as a percentage of the service's C<desiredCount>) of
 the number of running tasks that must remain in the C<RUNNING> state in
-a service during a deployment. The minimum healthy tasks during a
-deployment is the C<desiredCount> multiplied by
+a service during a deployment. The minimum number of healthy tasks
+during a deployment is the C<desiredCount> multiplied by
 C<minimumHealthyPercent>/100, rounded up to the nearest integer value.
 
 

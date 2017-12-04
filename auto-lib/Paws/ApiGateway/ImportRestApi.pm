@@ -54,11 +54,30 @@ value is C<false>.
 
 =head2 Parameters => L<Paws::ApiGateway::MapOfStringToString>
 
-Custom header parameters as part of the request. For example, to
-exclude DocumentationParts from an imported API, set
-C<ignore=documentation> as a C<parameters> value, as in the AWS CLI
-command of C<aws apigateway import-rest-api --parameters
-ignore=documentation --body 'file:///path/to/imported-api-body.json>.
+A key-value map of context-specific query string parameters specifying
+the behavior of different API importing operations. The following shows
+operation-specific parameters and their supported values.
+
+To exclude DocumentationParts from the import, set C<parameters> as
+C<ignore=documentation>.
+
+To configure the endpoint type, set C<parameters> as
+C<endpointConfigurationTypes=EDGE>
+orC<endpointConfigurationTypes=REGIONAL>. The default endpoint type is
+C<EDGE>.
+
+To handle imported C<basePath>, set C<parameters> as
+C<basePath=ignore>, C<basePath=prepend> or C<basePath=split>.
+
+For example, the AWS CLI command to exclude documentation from the
+imported API is:
+
+ aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json
+
+The AWS CLI command to set the regional endpoint on the imported API
+is:
+
+ aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json
 
 
 

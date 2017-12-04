@@ -61,8 +61,48 @@ C<description> - The description of the security group.
 
 =item *
 
+C<egress.ip-permission.cidr> - An IPv4 CIDR block for an outbound
+security group rule.
+
+=item *
+
+C<egress.ip-permission.from-port> - For an outbound rule, the start of
+port range for the TCP and UDP protocols, or an ICMP type number.
+
+=item *
+
+C<egress.ip-permission.group-id> - The ID of a security group that has
+been referenced in an outbound security group rule.
+
+=item *
+
+C<egress.ip-permission.group-name> - The name of a security group that
+has been referenced in an outbound security group rule.
+
+=item *
+
+C<egress.ip-permission.ipv6-cidr> - An IPv6 CIDR block for an outbound
+security group rule.
+
+=item *
+
 C<egress.ip-permission.prefix-list-id> - The ID (prefix) of the AWS
-service to which the security group allows access.
+service to which a security group rule allows outbound access.
+
+=item *
+
+C<egress.ip-permission.protocol> - The IP protocol for an outbound
+security group rule (C<tcp> | C<udp> | C<icmp> or a protocol number).
+
+=item *
+
+C<egress.ip-permission.to-port> - For an outbound rule, the end of port
+range for the TCP and UDP protocols, or an ICMP code.
+
+=item *
+
+C<egress.ip-permission.user-id> - The ID of an AWS account that has
+been referenced in an outbound security group rule.
 
 =item *
 
@@ -74,43 +114,48 @@ C<group-name> - The name of the security group.
 
 =item *
 
-C<ip-permission.cidr> - An IPv4 CIDR range that has been granted
-permission in a security group rule.
+C<ip-permission.cidr> - An IPv4 CIDR block for an inbound security
+group rule.
 
 =item *
 
-C<ip-permission.from-port> - The start of port range for the TCP and
-UDP protocols, or an ICMP type number.
+C<ip-permission.from-port> - For an inbound rule, the start of port
+range for the TCP and UDP protocols, or an ICMP type number.
 
 =item *
 
 C<ip-permission.group-id> - The ID of a security group that has been
-granted permission.
+referenced in an inbound security group rule.
 
 =item *
 
 C<ip-permission.group-name> - The name of a security group that has
-been granted permission.
+been referenced in an inbound security group rule.
 
 =item *
 
-C<ip-permission.ipv6-cidr> - An IPv6 CIDR range that has been granted
-permission in a security group rule.
+C<ip-permission.ipv6-cidr> - An IPv6 CIDR block for an inbound security
+group rule.
 
 =item *
 
-C<ip-permission.protocol> - The IP protocol for the permission (C<tcp>
-| C<udp> | C<icmp> or a protocol number).
+C<ip-permission.prefix-list-id> - The ID (prefix) of the AWS service
+from which a security group rule allows inbound access.
 
 =item *
 
-C<ip-permission.to-port> - The end of port range for the TCP and UDP
-protocols, or an ICMP code.
+C<ip-permission.protocol> - The IP protocol for an inbound security
+group rule (C<tcp> | C<udp> | C<icmp> or a protocol number).
+
+=item *
+
+C<ip-permission.to-port> - For an inbound rule, the end of port range
+for the TCP and UDP protocols, or an ICMP code.
 
 =item *
 
 C<ip-permission.user-id> - The ID of an AWS account that has been
-granted permission.
+referenced in an inbound security group rule.
 
 =item *
 

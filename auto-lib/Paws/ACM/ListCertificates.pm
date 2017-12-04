@@ -2,6 +2,7 @@
 package Paws::ACM::ListCertificates;
   use Moose;
   has CertificateStatuses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Includes => (is => 'ro', isa => 'Paws::ACM::Filters');
   has MaxItems => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -37,7 +38,31 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CertificateStatuses => ArrayRef[Str|Undef]
 
-The status or statuses on which to filter the list of ACM Certificates.
+Filter the certificate list by status value.
+
+
+
+=head2 Includes => L<Paws::ACM::Filters>
+
+Filter the certificate list by one or more of the following values. For
+more information, see the Filters structure.
+
+=over
+
+=item *
+
+extendedKeyUsage
+
+=item *
+
+keyUsage
+
+=item *
+
+keyTypes
+
+=back
+
 
 
 

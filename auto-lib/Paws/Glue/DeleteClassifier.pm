@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Name => Str
 
-Name of the C<Classifier> to remove.
+Name of the classifier to remove.
 
 
 

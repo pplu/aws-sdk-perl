@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkDocs::P
 
 =head1 DESCRIPTION
 
-Describes the users and/or user groups.
+Describes the users or user groups.
 
 =head1 ATTRIBUTES
 

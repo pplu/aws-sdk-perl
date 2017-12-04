@@ -2,6 +2,7 @@
 package Paws::Rekognition::ListCollectionsResponse;
   use Moose;
   has CollectionIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has FaceModelVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NextToken => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -18,6 +19,14 @@ Paws::Rekognition::ListCollectionsResponse
 =head2 CollectionIds => ArrayRef[Str|Undef]
 
 An array of collection IDs.
+
+
+=head2 FaceModelVersions => ArrayRef[Str|Undef]
+
+Version numbers of the face detection models associated with the
+collections in the array C<CollectionIds>. For example, the value of
+C<FaceModelVersions[2]> is the version number for the face detection
+model used by the collection in C<CollectionId[2]>.
 
 
 =head2 NextToken => Str

@@ -54,8 +54,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head1 DESCRIPTION
 
-Represents a copy of an entire Redis cache cluster as of the time when
-the snapshot was taken.
+Represents a copy of an entire Redis cluster as of the time when the
+snapshot was taken.
 
 =head1 ATTRIBUTES
 
@@ -93,18 +93,18 @@ Redis (cluster mode enabled): T1 node types.
 
 =head2 CacheClusterCreateTime => Str
 
-  The date and time when the source cache cluster was created.
+  The date and time when the source cluster was created.
 
 
 =head2 CacheClusterId => Str
 
-  The user-supplied identifier of the source cache cluster.
+  The user-supplied identifier of the source cluster.
 
 
 =head2 CacheNodeType => Str
 
   The name of the compute and memory capacity node type for the source
-cache cluster.
+cluster.
 
 The following node types are supported by ElastiCache. Generally
 speaking, the current generation types provide more memory and
@@ -207,9 +207,6 @@ T2 instances.
 
 =back
 
-Supported node types are available in all regions except as noted in
-the following table.
-
 For a complete listing of node types and specifications, see Amazon
 ElastiCache Product Features and Details
 (http://aws.amazon.com/elasticache/details) and either Cache Node
@@ -221,36 +218,34 @@ or Cache Node Type-Specific Parameters for Redis
 
 =head2 CacheParameterGroupName => Str
 
-  The cache parameter group that is associated with the source cache
-cluster.
+  The cache parameter group that is associated with the source cluster.
 
 
 =head2 CacheSubnetGroupName => Str
 
-  The name of the cache subnet group associated with the source cache
-cluster.
+  The name of the cache subnet group associated with the source cluster.
 
 
 =head2 Engine => Str
 
   The name of the cache engine (C<memcached> or C<redis>) used by the
-source cache cluster.
+source cluster.
 
 
 =head2 EngineVersion => Str
 
   The version of the cache engine version that is used by the source
-cache cluster.
+cluster.
 
 
 =head2 NodeSnapshots => ArrayRef[L<Paws::ElastiCache::NodeSnapshot>]
 
-  A list of the cache nodes in the source cache cluster.
+  A list of the cache nodes in the source cluster.
 
 
 =head2 NumCacheNodes => Int
 
-  The number of cache nodes in the source cache cluster.
+  The number of cache nodes in the source cluster.
 
 For clusters running Redis, this value must be 1. For clusters running
 Memcached, this value must be between 1 and 20.
@@ -265,12 +260,12 @@ in the restored replication group must be the same.
 
 =head2 Port => Int
 
-  The port number used by each cache nodes in the source cache cluster.
+  The port number used by each cache nodes in the source cluster.
 
 
 =head2 PreferredAvailabilityZone => Str
 
-  The name of the Availability Zone in which the source cache cluster is
+  The name of the Availability Zone in which the source cluster is
 located.
 
 
@@ -341,8 +336,8 @@ name.
 retains the snapshot before deleting it.
 
 For manual snapshots, this field reflects the C<SnapshotRetentionLimit>
-for the source cache cluster when the snapshot was created. This field
-is otherwise ignored: Manual snapshots do not expire, and can only be
+for the source cluster when the snapshot was created. This field is
+otherwise ignored: Manual snapshots do not expire, and can only be
 deleted using the C<DeleteSnapshot> operation.
 
 B<Important> If the value of SnapshotRetentionLimit is set to zero (0),
@@ -364,19 +359,19 @@ C<restoring> | C<copying> | C<deleting>.
 =head2 SnapshotWindow => Str
 
   The daily time range during which ElastiCache takes daily snapshots of
-the source cache cluster.
+the source cluster.
 
 
 =head2 TopicArn => Str
 
-  The Amazon Resource Name (ARN) for the topic used by the source cache
-cluster for publishing notifications.
+  The Amazon Resource Name (ARN) for the topic used by the source cluster
+for publishing notifications.
 
 
 =head2 VpcId => Str
 
   The Amazon Virtual Private Cloud identifier (VPC ID) of the cache
-subnet group for the source cache cluster.
+subnet group for the source cluster.
 
 
 

@@ -23,7 +23,7 @@ C<null> if there are no more results to return.
 
 =head2 ScalingPolicies => ArrayRef[L<Paws::ApplicationAutoScaling::ScalingPolicy>]
 
-A list of scaling policy objects.
+Information about the scaling policies.
 
 
 =head2 _request_id => Str

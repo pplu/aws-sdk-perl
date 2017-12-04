@@ -2,6 +2,7 @@ package Paws::ElastiCache::ReplicationGroupPendingModifiedValues;
   use Moose;
   has AutomaticFailoverStatus => (is => 'ro', isa => 'Str');
   has PrimaryClusterId => (is => 'ro', isa => 'Str');
+  has Resharding => (is => 'ro', isa => 'Paws::ElastiCache::ReshardingStatus');
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ElastiCache::ReplicationGroupPendingModifiedValues object:
 
-  $service_obj->Method(Att1 => { AutomaticFailoverStatus => $value, ..., PrimaryClusterId => $value  });
+  $service_obj->Method(Att1 => { AutomaticFailoverStatus => $value, ..., Resharding => $value  });
 
 =head3 Results returned from an API call
 
@@ -69,6 +70,11 @@ Redis (cluster mode enabled): T1 node types.
   The primary cluster ID that is applied immediately (if
 C<--apply-immediately> was specified), or during the next maintenance
 window.
+
+
+=head2 Resharding => L<Paws::ElastiCache::ReshardingStatus>
+
+  The status of an online resharding operation.
 
 
 

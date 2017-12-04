@@ -39,13 +39,13 @@ A key-value pair object.
 
 =head2 Name => Str
 
-  The name of the key value pair. For environment variables, this is the
+  The name of the key-value pair. For environment variables, this is the
 name of the environment variable.
 
 
 =head2 Value => Str
 
-  The value of the key value pair. For environment variables, this is the
+  The value of the key-value pair. For environment variables, this is the
 value of the environment variable.
 
 

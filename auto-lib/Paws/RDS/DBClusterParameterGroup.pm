@@ -34,11 +34,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBClus
 
 =head1 DESCRIPTION
 
-Contains the result of a successful invocation of the
-CreateDBClusterParameterGroup or CopyDBClusterParameterGroup action.
+Contains the details of an Amazon RDS DB cluster parameter group.
 
-This data type is used as a request parameter in the
-DeleteDBClusterParameterGroup action, and as a response element in the
+This data type is used as a response element in the
 DescribeDBClusterParameterGroups action.
 
 =head1 ATTRIBUTES

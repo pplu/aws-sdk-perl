@@ -3,9 +3,11 @@ package Paws::CognitoIdp::AdminGetUserResponse;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool');
   has MFAOptions => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::MFAOptionType]');
+  has PreferredMfaSetting => (is => 'ro', isa => 'Str');
   has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::AttributeType]');
   has UserCreateDate => (is => 'ro', isa => 'Str');
   has UserLastModifiedDate => (is => 'ro', isa => 'Str');
+  has UserMFASettingList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Username => (is => 'ro', isa => 'Str', required => 1);
   has UserStatus => (is => 'ro', isa => 'Str');
 
@@ -30,6 +32,11 @@ Indicates that the status is enabled.
 Specifies the options for MFA (e.g., email or phone number).
 
 
+=head2 PreferredMfaSetting => Str
+
+
+
+
 =head2 UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]
 
 An array of name-value pairs representing user attributes.
@@ -43,6 +50,11 @@ The date the user was created.
 =head2 UserLastModifiedDate => Str
 
 The date the user was last modified.
+
+
+=head2 UserMFASettingList => ArrayRef[Str|Undef]
+
+
 
 
 =head2 B<REQUIRED> Username => Str

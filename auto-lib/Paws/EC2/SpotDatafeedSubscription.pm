@@ -42,12 +42,12 @@ This class has no description
 
 =head2 Bucket => Str
 
-  The Amazon S3 bucket where the Spot instance data feed is located.
+  The Amazon S3 bucket where the Spot Instance data feed is located.
 
 
 =head2 Fault => L<Paws::EC2::SpotInstanceStateFault>
 
-  The fault codes for the Spot instance request, if any.
+  The fault codes for the Spot Instance request, if any.
 
 
 =head2 OwnerId => Str
@@ -62,7 +62,7 @@ This class has no description
 
 =head2 State => Str
 
-  The state of the Spot instance data feed subscription.
+  The state of the Spot Instance data feed subscription.
 
 
 

@@ -25,8 +25,8 @@ is C<null> when there are no more results to return.
 
 =head2 ServiceArns => ArrayRef[Str|Undef]
 
-The list of full Amazon Resource Name (ARN) entries for each service
-associated with the specified cluster.
+The list of full ARN entries for each service associated with the
+specified cluster.
 
 
 =head2 _request_id => Str

@@ -54,7 +54,7 @@ One or more filters.
 
 =item *
 
-C<service-name>: The name of the AWS service.
+C<service-name>: The name of the service.
 
 =item *
 

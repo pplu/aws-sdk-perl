@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIdp:
 
 =head1 DESCRIPTION
 
-The type of configuration for creating a new user profile.
+The configuration for creating a new user profile.
 
 =head1 ATTRIBUTES
 
@@ -47,6 +47,9 @@ profiles. Set to C<False> if users can sign themselves up via an app.
 =head2 InviteMessageTemplate => L<Paws::CognitoIdp::MessageTemplateType>
 
   The message template to be used for the welcome message to new users.
+
+See also Customizing User Invitation Messages
+(http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-user-invitation-message-customization).
 
 
 =head2 UnusedAccountValidityDays => Int

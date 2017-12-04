@@ -39,12 +39,12 @@ Crawler policy for update and deletion behavior.
 
 =head2 DeleteBehavior => Str
 
-  The deletion behavior.
+  The deletion behavior when the crawler finds a deleted object.
 
 
 =head2 UpdateBehavior => Str
 
-  The update behavior.
+  The update behavior when the crawler finds a changed schema.
 
 
 

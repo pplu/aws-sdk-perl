@@ -49,6 +49,11 @@ package Paws::Shield;
     my $call_object = $self->new_with_coercions('Paws::Shield::DescribeSubscription', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetSubscriptionState {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Shield::GetSubscriptionState', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListAttacks {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Shield::ListAttacks', @_);
@@ -62,7 +67,7 @@ package Paws::Shield;
   
 
 
-  sub operations { qw/CreateProtection CreateSubscription DeleteProtection DeleteSubscription DescribeAttack DescribeProtection DescribeSubscription ListAttacks ListProtections / }
+  sub operations { qw/CreateProtection CreateSubscription DeleteProtection DeleteSubscription DescribeAttack DescribeProtection DescribeSubscription GetSubscriptionState ListAttacks ListProtections / }
 
 1;
 
@@ -110,7 +115,7 @@ Returns: a L<Paws::Shield::CreateProtectionResponse> instance
 
 Enables AWS Shield Advanced for a specific AWS resource. The resource
 can be an Amazon CloudFront distribution, Elastic Load Balancing load
-balancer, or an Amazon Route 53 hosted zone.
+balancer, Elastic IP Address, or an Amazon Route 53 hosted zone.
 
 
 =head2 CreateSubscription()
@@ -137,7 +142,9 @@ Each argument is described in detail in: L<Paws::Shield::DeleteSubscription>
 
 Returns: a L<Paws::Shield::DeleteSubscriptionResponse> instance
 
-Removes AWS Shield Advanced from an account.
+Removes AWS Shield Advanced from an account. AWS Shield Advanced
+requires a 1-year subscription commitment. You cannot delete a
+subscription prior to the completion of that commitment.
 
 
 =head2 DescribeAttack(AttackId => Str)
@@ -166,6 +173,15 @@ Returns: a L<Paws::Shield::DescribeSubscriptionResponse> instance
 
 Provides details about the AWS Shield Advanced subscription for an
 account.
+
+
+=head2 GetSubscriptionState()
+
+Each argument is described in detail in: L<Paws::Shield::GetSubscriptionState>
+
+Returns: a L<Paws::Shield::GetSubscriptionStateResponse> instance
+
+Returns the C<SubscriptionState>, either C<Active> or C<Inactive>.
 
 
 =head2 ListAttacks([EndTime => L<Paws::Shield::TimeRange>, MaxResults => Int, NextToken => Str, ResourceArns => ArrayRef[Str|Undef], StartTime => L<Paws::Shield::TimeRange>])

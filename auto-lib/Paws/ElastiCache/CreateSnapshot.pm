@@ -37,8 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CacheClusterId => Str
 
-The identifier of an existing cache cluster. The snapshot is created
-from this cache cluster.
+The identifier of an existing cluster. The snapshot is created from
+this cluster.
 
 
 

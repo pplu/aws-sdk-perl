@@ -50,8 +50,7 @@ instance.
 
 =head2 ContainerPort => Int
 
-  The port number on the container that is be used with the network
-binding.
+  The port number on the container that is used with the network binding.
 
 
 =head2 HostPort => Int

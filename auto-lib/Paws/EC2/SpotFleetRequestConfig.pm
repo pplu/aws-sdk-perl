@@ -42,12 +42,12 @@ This class has no description
 
 =head2 ActivityStatus => Str
 
-  The progress of the Spot fleet request. If there is an error, the
-status is C<error>. After all bids are placed, the status is
+  The progress of the Spot Fleet request. If there is an error, the
+status is C<error>. After all requests are placed, the status is
 C<pending_fulfillment>. If the size of the fleet is equal to or greater
 than its target capacity, the status is C<fulfilled>. If the size of
 the fleet is decreased, the status is C<pending_termination> while Spot
-instances are terminating.
+Instances are terminating.
 
 
 =head2 B<REQUIRED> CreateTime => Str
@@ -57,17 +57,17 @@ instances are terminating.
 
 =head2 B<REQUIRED> SpotFleetRequestConfig => L<Paws::EC2::SpotFleetRequestConfigData>
 
-  Information about the configuration of the Spot fleet request.
+  The configuration of the Spot Fleet request.
 
 
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 
-  The ID of the Spot fleet request.
+  The ID of the Spot Fleet request.
 
 
 =head2 B<REQUIRED> SpotFleetRequestState => Str
 
-  The state of the Spot fleet request.
+  The state of the Spot Fleet request.
 
 
 

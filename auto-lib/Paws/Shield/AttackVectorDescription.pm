@@ -38,7 +38,72 @@ Describes the attack.
 
 =head2 B<REQUIRED> VectorType => Str
 
-  The attack type, for example, SNMP reflection or SYN flood.
+  The attack type. Valid values:
+
+=over
+
+=item *
+
+UDP_TRAFFIC
+
+=item *
+
+UDP_FRAGMENT
+
+=item *
+
+GENERIC_UDP_REFLECTION
+
+=item *
+
+DNS_REFLECTION
+
+=item *
+
+NTP_REFLECTION
+
+=item *
+
+CHARGEN_REFLECTION
+
+=item *
+
+SSDP_REFLECTION
+
+=item *
+
+PORT_MAPPER
+
+=item *
+
+RIP_REFLECTION
+
+=item *
+
+SNMP_REFLECTION
+
+=item *
+
+MSSQL_REFLECTION
+
+=item *
+
+NET_BIOS_REFLECTION
+
+=item *
+
+SYN_FLOOD
+
+=item *
+
+ACK_FLOOD
+
+=item *
+
+REQUEST_FLOOD
+
+=back
+
 
 
 

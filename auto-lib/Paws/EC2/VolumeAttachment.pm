@@ -44,7 +44,7 @@ The ID of the instance.
 
 The attachment state of the volume.
 
-Valid values are: C<"attaching">, C<"attached">, C<"detaching">, C<"detached">
+Valid values are: C<"attaching">, C<"attached">, C<"detaching">, C<"detached">, C<"busy">
 =head2 VolumeId => Str
 
 The ID of the volume.

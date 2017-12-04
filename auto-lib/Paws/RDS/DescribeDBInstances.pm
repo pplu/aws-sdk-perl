@@ -67,7 +67,7 @@ Supported filters:
 
 C<db-cluster-id> - Accepts DB cluster identifiers and DB cluster Amazon
 Resource Names (ARNs). The results list will only include information
-about the DB instances associated with the DB Clusters identified by
+about the DB instances associated with the DB clusters identified by
 these ARNs.
 
 =item *

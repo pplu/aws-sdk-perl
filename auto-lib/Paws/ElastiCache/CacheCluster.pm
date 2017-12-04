@@ -55,7 +55,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head1 DESCRIPTION
 
-Contains all of the attributes of a specific cache cluster.
+Contains all of the attributes of a specific cluster.
 
 =head1 ATTRIBUTES
 
@@ -86,32 +86,31 @@ Default: C<false>
 
 =head2 CacheClusterCreateTime => Str
 
-  The date and time when the cache cluster was created.
+  The date and time when the cluster was created.
 
 
 =head2 CacheClusterId => Str
 
-  The user-supplied identifier of the cache cluster. This identifier is a
-unique key that identifies a cache cluster.
+  The user-supplied identifier of the cluster. This identifier is a
+unique key that identifies a cluster.
 
 
 =head2 CacheClusterStatus => Str
 
-  The current state of this cache cluster, one of the following values:
+  The current state of this cluster, one of the following values:
 C<available>, C<creating>, C<deleted>, C<deleting>,
-C<incompatible-network>, C<modifying>, C<rebooting cache cluster
-nodes>, C<restore-failed>, or C<snapshotting>.
+C<incompatible-network>, C<modifying>, C<rebooting cluster nodes>,
+C<restore-failed>, or C<snapshotting>.
 
 
 =head2 CacheNodes => ArrayRef[L<Paws::ElastiCache::CacheNode>]
 
-  A list of cache nodes that are members of the cache cluster.
+  A list of cache nodes that are members of the cluster.
 
 
 =head2 CacheNodeType => Str
 
-  The name of the compute and memory capacity node type for the cache
-cluster.
+  The name of the compute and memory capacity node type for the cluster.
 
 The following node types are supported by ElastiCache. Generally
 speaking, the current generation types provide more memory and
@@ -214,9 +213,6 @@ T2 instances.
 
 =back
 
-Supported node types are available in all regions except as noted in
-the following table.
-
 For a complete listing of node types and specifications, see Amazon
 ElastiCache Product Features and Details
 (http://aws.amazon.com/elasticache/details) and either Cache Node
@@ -239,7 +235,7 @@ sub-elements.
 
 =head2 CacheSubnetGroupName => Str
 
-  The name of the cache subnet group associated with the cache cluster.
+  The name of the cache subnet group associated with the cluster.
 
 
 =head2 ClientDownloadLandingPage => Str
@@ -261,12 +257,12 @@ Example: C<mem-3.9dvc4r.cfg.usw2.cache.amazonaws.com:11211>
 =head2 Engine => Str
 
   The name of the cache engine (C<memcached> or C<redis>) to be used for
-this cache cluster.
+this cluster.
 
 
 =head2 EngineVersion => Str
 
-  The version of the cache engine that is used in this cache cluster.
+  The version of the cache engine that is used in this cluster.
 
 
 =head2 NotificationConfiguration => L<Paws::ElastiCache::NotificationConfiguration>
@@ -278,7 +274,7 @@ Simple Notification Service (SNS).
 
 =head2 NumCacheNodes => Int
 
-  The number of cache nodes in the cache cluster.
+  The number of cache nodes in the cluster.
 
 For clusters running Redis, this value must be 1. For clusters running
 Memcached, this value must be between 1 and 20.
@@ -291,8 +287,8 @@ Memcached, this value must be between 1 and 20.
 
 =head2 PreferredAvailabilityZone => Str
 
-  The name of the Availability Zone in which the cache cluster is located
-or "Multiple" if the cache nodes are located in different Availability
+  The name of the Availability Zone in which the cluster is located or
+"Multiple" if the cache nodes are located in different Availability
 Zones.
 
 
@@ -342,20 +338,19 @@ Example: C<sun:23:00-mon:01:30>
 
 =head2 ReplicationGroupId => Str
 
-  The replication group to which this cache cluster belongs. If this
-field is empty, the cache cluster is not associated with any
-replication group.
+  The replication group to which this cluster belongs. If this field is
+empty, the cluster is not associated with any replication group.
 
 
 =head2 SecurityGroups => ArrayRef[L<Paws::ElastiCache::SecurityGroupMembership>]
 
-  A list of VPC Security Groups associated with the cache cluster.
+  A list of VPC Security Groups associated with the cluster.
 
 
 =head2 SnapshotRetentionLimit => Int
 
-  The number of days for which ElastiCache retains automatic cache
-cluster snapshots before deleting them. For example, if you set
+  The number of days for which ElastiCache retains automatic cluster
+snapshots before deleting them. For example, if you set
 C<SnapshotRetentionLimit> to 5, a snapshot that was taken today is
 retained for 5 days before being deleted.
 
@@ -366,7 +361,7 @@ turned off.
 =head2 SnapshotWindow => Str
 
   The daily time range (in UTC) during which ElastiCache begins taking a
-daily snapshot of your cache cluster.
+daily snapshot of your cluster.
 
 Example: C<05:00-09:00>
 

@@ -4,6 +4,8 @@ package Paws::IoT::UpdateCACertificate;
   has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId', required => 1);
   has NewAutoRegistrationStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'newAutoRegistrationStatus');
   has NewStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'newStatus');
+  has RegistrationConfig => (is => 'ro', isa => 'Paws::IoT::RegistrationConfig', traits => ['NameInRequest'], request_name => 'registrationConfig');
+  has RemoveAutoRegistration => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'removeAutoRegistration');
 
   use MooseX::ClassAttribute;
 
@@ -57,6 +59,18 @@ B<Note:> The status value REGISTER_INACTIVE is deprecated and should
 not be used.
 
 Valid values are: C<"ACTIVE">, C<"INACTIVE">
+
+=head2 RegistrationConfig => L<Paws::IoT::RegistrationConfig>
+
+Information about the registration configuration.
+
+
+
+=head2 RemoveAutoRegistration => Bool
+
+If true, remove auto registration.
+
+
 
 
 =head1 SEE ALSO

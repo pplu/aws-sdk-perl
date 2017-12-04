@@ -36,16 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CacheClusterId => Str
 
-The cache cluster identifier. This parameter is stored as a lowercase
-string.
+The cluster identifier. This parameter is stored as a lowercase string.
 
 
 
 =head2 B<REQUIRED> CacheNodeIdsToReboot => ArrayRef[Str|Undef]
 
 A list of cache node IDs to reboot. A node ID is a numeric identifier
-(0001, 0002, etc.). To reboot an entire cache cluster, specify all of
-the cache node IDs.
+(0001, 0002, etc.). To reboot an entire cluster, specify all of the
+cache node IDs.
 
 
 

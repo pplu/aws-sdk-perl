@@ -65,36 +65,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBClus
 
 =head1 DESCRIPTION
 
-Contains the result of a successful invocation of the following
-actions:
-
-=over
-
-=item *
-
-CreateDBCluster
-
-=item *
-
-DeleteDBCluster
-
-=item *
-
-FailoverDBCluster
-
-=item *
-
-ModifyDBCluster
-
-=item *
-
-RestoreDBClusterFromSnapshot
-
-=item *
-
-RestoreDBClusterToPointInTime
-
-=back
+Contains the details of an Amazon RDS DB cluster.
 
 This data type is used as a response element in the DescribeDBClusters
 action.
@@ -183,9 +154,9 @@ cluster.
 
 =head2 DbClusterResourceId => Str
 
-  The region-unique, immutable identifier for the DB cluster. This
-identifier is found in AWS CloudTrail log entries whenever the KMS key
-for the DB cluster is accessed.
+  The AWS Region-unique, immutable identifier for the DB cluster. This
+identifier is found in AWS CloudTrail log entries whenever the AWS KMS
+key for the DB cluster is accessed.
 
 
 =head2 DBSubnetGroup => Str
@@ -227,12 +198,12 @@ zone.
 =head2 IAMDatabaseAuthenticationEnabled => Bool
 
   True if mapping of AWS Identity and Access Management (IAM) accounts to
-database accounts is enabled; otherwise false.
+database accounts is enabled, and otherwise false.
 
 
 =head2 KmsKeyId => Str
 
-  If C<StorageEncrypted> is true, the KMS key identifier for the
+  If C<StorageEncrypted> is true, the AWS KMS key identifier for the
 encrypted DB cluster.
 
 
@@ -286,9 +257,9 @@ Aurora Replicas in the DB cluster. This functionality can help balance
 your read workload across multiple Aurora Replicas in your DB cluster.
 
 If a failover occurs, and the Aurora Replica that you are connected to
-is promoted to be the primary instance, your connection will be
-dropped. To continue sending your read workload to other Aurora
-Replicas in the cluster, you can then reconnect to the reader endpoint.
+is promoted to be the primary instance, your connection is dropped. To
+continue sending your read workload to other Aurora Replicas in the
+cluster, you can then reconnect to the reader endpoint.
 
 
 =head2 ReadReplicaIdentifiers => ArrayRef[Str|Undef]

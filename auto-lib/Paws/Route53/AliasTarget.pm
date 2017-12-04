@@ -324,41 +324,42 @@ the value of the B<Hosted zone> field on the B<Description> tab.
 =item *
 
 B<Elastic Load Balancing API>: Use C<DescribeLoadBalancers> to get the
-value of C<CanonicalHostedZoneNameId>. For more information, see the
-applicable guide:
+applicable value. For more information, see the applicable guide:
 
 =over
 
 =item *
 
-Classic Load Balancers: DescribeLoadBalancers
+Classic Load Balancers: Use DescribeLoadBalancers
 (http://docs.aws.amazon.com/elasticloadbalancing/2012-06-01/APIReference/API_DescribeLoadBalancers.html)
+to get the value of C<CanonicalHostedZoneNameId>.
 
 =item *
 
-Application and Network Load Balancers: DescribeLoadBalancers
+Application and Network Load Balancers: Use DescribeLoadBalancers
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_DescribeLoadBalancers.html)
+to get the value of C<CanonicalHostedZoneId>.
 
 =back
 
 =item *
 
-B<AWS CLI>: Use C<describe-load-balancers> to get the value of
-C<CanonicalHostedZoneNameID> (for Classic Load Balancers) or
-C<CanonicalHostedZoneNameID> (for Application and Network Load
-Balancers). For more information, see the applicable guide:
+B<AWS CLI>: Use C<describe-load-balancers> to get the applicable value.
+For more information, see the applicable guide:
 
 =over
 
 =item *
 
-Classic Load Balancers: describe-load-balancers
+Classic Load Balancers: Use describe-load-balancers
 (http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html)
+to get the value of C<CanonicalHostedZoneNameId>.
 
 =item *
 
-Application and Network Load Balancers: describe-load-balancers
+Application and Network Load Balancers: Use describe-load-balancers
 (http://docs.aws.amazon.com/cli/latest/reference/elbv2/describe-load-balancers.html)
+to get the value of C<CanonicalHostedZoneId>.
 
 =back
 

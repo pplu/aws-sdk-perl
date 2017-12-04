@@ -41,8 +41,7 @@ This class has no description
 
 =head2 DeviceName => Str
 
-  The device name exposed to the instance (for example, C</dev/sdh> or
-C<xvdh>).
+  The device name (for example, C</dev/sdh> or C<xvdh>).
 
 
 =head2 Ebs => L<Paws::EC2::ScheduledInstancesEbs>
@@ -61,10 +60,9 @@ the AMI.
 
   The virtual device name (C<ephemeral>N). Instance store volumes are
 numbered starting from 0. An instance type with two available instance
-store volumes can specify mappings for C<ephemeral0> and
-C<ephemeral1>.The number of available instance store volumes depends on
-the instance type. After you connect to the instance, you must mount
-the volume.
+store volumes can specify mappings for C<ephemeral0> and C<ephemeral1>.
+The number of available instance store volumes depends on the instance
+type. After you connect to the instance, you must mount the volume.
 
 Constraints: For M3 instances, you must specify instance store volumes
 in the block device mapping for the instance. When you launch an M3

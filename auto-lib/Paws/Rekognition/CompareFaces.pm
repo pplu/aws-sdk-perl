@@ -44,13 +44,17 @@ meet to be included in the C<FaceMatches> array.
 
 =head2 B<REQUIRED> SourceImage => L<Paws::Rekognition::Image>
 
-The source image, either as bytes or as an S3 object.
+The input image as base64-encoded bytes or an S3 object. If you use the
+AWS CLI to call Amazon Rekognition operations, passing base64-encoded
+image bytes is not supported.
 
 
 
 =head2 B<REQUIRED> TargetImage => L<Paws::Rekognition::Image>
 
-The target image, either as bytes or as an S3 object.
+The target image as base64-encoded bytes or an S3 object. If you use
+the AWS CLI to call Amazon Rekognition operations, passing
+base64-encoded image bytes is not supported.
 
 
 

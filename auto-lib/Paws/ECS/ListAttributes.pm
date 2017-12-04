@@ -77,8 +77,7 @@ results and a C<nextToken> value if applicable.
 The C<nextToken> value returned from a previous paginated
 C<ListAttributes> request where C<maxResults> was used and the results
 exceeded the value of that parameter. Pagination continues from the end
-of the previous results that returned the C<nextToken> value. This
-value is C<null> when there are no more results to return.
+of the previous results that returned the C<nextToken> value.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic

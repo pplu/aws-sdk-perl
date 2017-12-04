@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head1 DESCRIPTION
 
-Describes an Availability Zone in which the cache cluster is launched.
+Describes an Availability Zone in which the cluster is launched.
 
 =head1 ATTRIBUTES
 

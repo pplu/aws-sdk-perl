@@ -19,6 +19,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::AcceptReservedInstancesExchangeQuote', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AcceptVpcEndpointConnections {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::AcceptVpcEndpointConnections', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AcceptVpcPeeringConnection {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::AcceptVpcPeeringConnection', @_);
@@ -174,6 +179,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateCustomerGateway', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateDefaultSubnet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateDefaultSubnet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDefaultVpc {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateDefaultVpc', @_);
@@ -217,6 +227,16 @@ package Paws::EC2;
   sub CreateKeyPair {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateKeyPair', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateLaunchTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateLaunchTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateLaunchTemplateVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateLaunchTemplateVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateNatGateway {
@@ -304,6 +324,16 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateVpcEndpoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateVpcEndpointConnectionNotification {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateVpcEndpointConnectionNotification', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateVpcEndpointServiceConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateVpcEndpointServiceConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateVpcPeeringConnection {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateVpcPeeringConnection', @_);
@@ -357,6 +387,16 @@ package Paws::EC2;
   sub DeleteKeyPair {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteKeyPair', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteLaunchTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteLaunchTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteLaunchTemplateVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteLaunchTemplateVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteNatGateway {
@@ -434,9 +474,19 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteVpc', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteVpcEndpointConnectionNotifications {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteVpcEndpointConnectionNotifications', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteVpcEndpoints {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteVpcEndpoints', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteVpcEndpointServiceConfigurations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteVpcEndpointServiceConfigurations', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteVpcPeeringConnection {
@@ -589,6 +639,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeInstanceAttribute', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeInstanceCreditSpecifications {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeInstanceCreditSpecifications', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeInstances', @_);
@@ -607,6 +662,16 @@ package Paws::EC2;
   sub DescribeKeyPairs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeKeyPairs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeLaunchTemplates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeLaunchTemplates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeLaunchTemplateVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeLaunchTemplateVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeMovingAddresses {
@@ -789,9 +854,29 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVpcClassicLinkDnsSupport', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeVpcEndpointConnectionNotifications {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVpcEndpointConnectionNotifications', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeVpcEndpointConnections {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVpcEndpointConnections', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeVpcEndpoints {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVpcEndpoints', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeVpcEndpointServiceConfigurations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVpcEndpointServiceConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeVpcEndpointServicePermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVpcEndpointServicePermissions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeVpcEndpointServices {
@@ -919,6 +1004,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::GetHostReservationPurchasePreview', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetLaunchTemplateData {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::GetLaunchTemplateData', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetPasswordData {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::GetPasswordData', @_);
@@ -984,9 +1074,19 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyInstanceAttribute', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyInstanceCreditSpecification {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyInstanceCreditSpecification', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyInstancePlacement {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyInstancePlacement', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyLaunchTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyLaunchTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyNetworkInterfaceAttribute {
@@ -1034,6 +1134,21 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVpcEndpoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyVpcEndpointConnectionNotification {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVpcEndpointConnectionNotification', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyVpcEndpointServiceConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVpcEndpointServiceConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyVpcEndpointServicePermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVpcEndpointServicePermissions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyVpcPeeringConnectionOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVpcPeeringConnectionOptions', @_);
@@ -1077,6 +1192,11 @@ package Paws::EC2;
   sub RegisterImage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::RegisterImage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RejectVpcEndpointConnections {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::RejectVpcEndpointConnections', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RejectVpcPeeringConnection {
@@ -1502,7 +1622,7 @@ package Paws::EC2;
   }
 
 
-  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCustomerGateway CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions ModifyVpcTenancy MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress / }
+  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcEndpointConnections AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCreditSpecification ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress / }
 
 1;
 
@@ -1549,6 +1669,16 @@ Accepts the Convertible Reserved Instance exchange quote described in
 the GetReservedInstancesExchangeQuote call.
 
 
+=head2 AcceptVpcEndpointConnections(ServiceId => Str, VpcEndpointIds => ArrayRef[Str|Undef], [DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::AcceptVpcEndpointConnections>
+
+Returns: a L<Paws::EC2::AcceptVpcEndpointConnectionsResult> instance
+
+Accepts one or more interface VPC endpoint connection requests to your
+VPC endpoint service.
+
+
 =head2 AcceptVpcPeeringConnection([DryRun => Bool, VpcPeeringConnectionId => Str])
 
 Each argument is described in detail in: L<Paws::EC2::AcceptVpcPeeringConnection>
@@ -1559,6 +1689,9 @@ Accept a VPC peering connection request. To accept a request, the VPC
 peering connection must be in the C<pending-acceptance> state, and you
 must be the owner of the peer VPC. Use DescribeVpcPeeringConnections to
 view your outstanding VPC peering connection requests.
+
+For an inter-region VPC peering connection request, you must accept the
+VPC peering connection in the region of the accepter VPC.
 
 
 =head2 AllocateAddress([Address => Str, Domain => Str, DryRun => Bool])
@@ -2002,13 +2135,13 @@ Each argument is described in detail in: L<Paws::EC2::CancelSpotFleetRequests>
 
 Returns: a L<Paws::EC2::CancelSpotFleetRequestsResponse> instance
 
-Cancels the specified Spot fleet requests.
+Cancels the specified Spot Fleet requests.
 
-After you cancel a Spot fleet request, the Spot fleet launches no new
-Spot instances. You must specify whether the Spot fleet should also
-terminate its Spot instances. If you terminate the instances, the Spot
-fleet request enters the C<cancelled_terminating> state. Otherwise, the
-Spot fleet request enters the C<cancelled_running> state and the
+After you cancel a Spot Fleet request, the Spot Fleet launches no new
+Spot Instances. You must specify whether the Spot Fleet should also
+terminate its Spot Instances. If you terminate the instances, the Spot
+Fleet request enters the C<cancelled_terminating> state. Otherwise, the
+Spot Fleet request enters the C<cancelled_running> state and the
 instances continue to run until they are interrupted or you terminate
 them manually.
 
@@ -2019,17 +2152,15 @@ Each argument is described in detail in: L<Paws::EC2::CancelSpotInstanceRequests
 
 Returns: a L<Paws::EC2::CancelSpotInstanceRequestsResult> instance
 
-Cancels one or more Spot instance requests. Spot instances are
-instances that Amazon EC2 starts on your behalf when the bid price that
-you specify exceeds the current Spot price. Amazon EC2 periodically
-sets the Spot price based on available Spot instance capacity and
-current Spot instance requests. For more information, see Spot Instance
-Requests
+Cancels one or more Spot Instance requests. Spot Instances are
+instances that Amazon EC2 starts on your behalf when the maximum price
+that you specify exceeds the current Spot price. For more information,
+see Spot Instance Requests
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
-Canceling a Spot instance request does not terminate running Spot
-instances associated with the request.
+Canceling a Spot Instance request does not terminate running Spot
+Instances associated with the request.
 
 
 =head2 ConfirmProductInstance(InstanceId => Str, ProductCode => Str, [DryRun => Bool])
@@ -2134,6 +2265,20 @@ request more than one time, the first request creates the customer
 gateway, and subsequent requests return information about the existing
 customer gateway. The subsequent requests do not create new customer
 gateway resources.
+
+
+=head2 CreateDefaultSubnet(AvailabilityZone => Str, [DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::CreateDefaultSubnet>
+
+Returns: a L<Paws::EC2::CreateDefaultSubnetResult> instance
+
+Creates a default subnet with a size C</20> IPv4 CIDR block in the
+specified Availability Zone in your default VPC. You can have only one
+default subnet per Availability Zone. For more information, see
+Creating a Default Subnet
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html#create-default-subnet)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 CreateDefaultVpc([DryRun => Bool])
@@ -2333,19 +2478,45 @@ Returns: a L<Paws::EC2::KeyPair> instance
 
 Creates a 2048-bit RSA key pair with the specified name. Amazon EC2
 stores the public key and displays the private key for you to save to a
-file. The private key is returned as an unencrypted PEM encoded PKCS#8
+file. The private key is returned as an unencrypted PEM encoded PKCS#1
 private key. If a key with the specified name already exists, Amazon
 EC2 returns an error.
 
 You can have up to five thousand key pairs per region.
 
 The key pair returned to you is available only in the region in which
-you create it. To create a key pair that is available in all regions,
-use ImportKeyPair.
+you create it. If you prefer, you can create your own key pair using a
+third-party tool and upload it to any region using ImportKeyPair.
 
-For more information about key pairs, see Key Pairs
+For more information, see Key Pairs
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 CreateLaunchTemplate(LaunchTemplateData => L<Paws::EC2::RequestLaunchTemplateData>, LaunchTemplateName => Str, [ClientToken => Str, DryRun => Bool, VersionDescription => Str])
+
+Each argument is described in detail in: L<Paws::EC2::CreateLaunchTemplate>
+
+Returns: a L<Paws::EC2::CreateLaunchTemplateResult> instance
+
+Creates a launch template. A launch template contains the parameters to
+launch an instance. When you launch an instance using RunInstances, you
+can specify a launch template instead of providing the launch
+parameters in the request.
+
+
+=head2 CreateLaunchTemplateVersion(LaunchTemplateData => L<Paws::EC2::RequestLaunchTemplateData>, [ClientToken => Str, DryRun => Bool, LaunchTemplateId => Str, LaunchTemplateName => Str, SourceVersion => Str, VersionDescription => Str])
+
+Each argument is described in detail in: L<Paws::EC2::CreateLaunchTemplateVersion>
+
+Returns: a L<Paws::EC2::CreateLaunchTemplateVersionResult> instance
+
+Creates a new version for a launch template. You can specify an
+existing version of launch template from which to base the new version.
+
+Launch template versions are numbered in the order in which they are
+created. You cannot specify, change, or replace the numbering of launch
+template versions.
 
 
 =head2 CreateNatGateway(AllocationId => Str, SubnetId => Str, [ClientToken => Str])
@@ -2438,12 +2609,17 @@ Each argument is described in detail in: L<Paws::EC2::CreatePlacementGroup>
 
 Returns: nothing
 
-Creates a placement group that you launch cluster instances into. Give
-the group a name that's unique within the scope of your account.
+Creates a placement group in which to launch instances. The strategy of
+the placement group determines how the instances are organized within
+the group.
 
-For more information about placement groups and cluster instances, see
-Cluster Instances
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html)
+A C<cluster> placement group is a logical grouping of instances within
+a single Availability Zone that benefit from low network latency, high
+network throughput. A C<spread> placement group places instances on
+distinct hardware.
+
+For more information, see Placement Groups
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -2621,8 +2797,8 @@ Each argument is described in detail in: L<Paws::EC2::CreateSpotDatafeedSubscrip
 
 Returns: a L<Paws::EC2::CreateSpotDatafeedSubscriptionResult> instance
 
-Creates a data feed for Spot instances, enabling you to view Spot
-instance usage logs. You can create one data feed per AWS account. For
+Creates a data feed for Spot Instances, enabling you to view Spot
+Instance usage logs. You can create one data feed per AWS account. For
 more information, see Spot Instance Data Feed
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
@@ -2751,39 +2927,84 @@ more information, see Dedicated Instances
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
-=head2 CreateVpcEndpoint(ServiceName => Str, VpcId => Str, [ClientToken => Str, DryRun => Bool, PolicyDocument => Str, RouteTableIds => ArrayRef[Str|Undef]])
+=head2 CreateVpcEndpoint(ServiceName => Str, VpcId => Str, [ClientToken => Str, DryRun => Bool, PolicyDocument => Str, PrivateDnsEnabled => Bool, RouteTableIds => ArrayRef[Str|Undef], SecurityGroupIds => ArrayRef[Str|Undef], SubnetIds => ArrayRef[Str|Undef], VpcEndpointType => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CreateVpcEndpoint>
 
 Returns: a L<Paws::EC2::CreateVpcEndpointResult> instance
 
-Creates a VPC endpoint for a specified AWS service. An endpoint enables
-you to create a private connection between your VPC and another AWS
-service in your account. You can specify an endpoint policy to attach
-to the endpoint that will control access to the service from your VPC.
-You can also specify the VPC route tables that use the endpoint.
+Creates a VPC endpoint for a specified service. An endpoint enables you
+to create a private connection between your VPC and the service. The
+service may be provided by AWS, an AWS Marketplace partner, or another
+AWS account. For more information, see VPC Endpoints
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
-Use DescribeVpcEndpointServices to get a list of supported AWS
-services.
+A C<gateway> endpoint serves as a target for a route in your route
+table for traffic destined for the AWS service. You can specify an
+endpoint policy to attach to the endpoint that will control access to
+the service from your VPC. You can also specify the VPC route tables
+that use the endpoint.
+
+An C<interface> endpoint is a network interface in your subnet that
+serves as an endpoint for communicating with the specified service. You
+can specify the subnets in which to create an endpoint, and the
+security groups to associate with the endpoint network interface.
+
+Use DescribeVpcEndpointServices to get a list of supported services.
 
 
-=head2 CreateVpcPeeringConnection([DryRun => Bool, PeerOwnerId => Str, PeerVpcId => Str, VpcId => Str])
+=head2 CreateVpcEndpointConnectionNotification(ConnectionEvents => ArrayRef[Str|Undef], ConnectionNotificationArn => Str, [ClientToken => Str, DryRun => Bool, ServiceId => Str, VpcEndpointId => Str])
+
+Each argument is described in detail in: L<Paws::EC2::CreateVpcEndpointConnectionNotification>
+
+Returns: a L<Paws::EC2::CreateVpcEndpointConnectionNotificationResult> instance
+
+Creates a connection notification for a specified VPC endpoint or VPC
+endpoint service. A connection notification notifies you of specific
+endpoint events. You must create an SNS topic to receive notifications.
+For more information, see Create a Topic
+(http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html) in the
+I<Amazon Simple Notification Service Developer Guide>.
+
+You can create a connection notification for interface endpoints only.
+
+
+=head2 CreateVpcEndpointServiceConfiguration(NetworkLoadBalancerArns => ArrayRef[Str|Undef], [AcceptanceRequired => Bool, ClientToken => Str, DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::CreateVpcEndpointServiceConfiguration>
+
+Returns: a L<Paws::EC2::CreateVpcEndpointServiceConfigurationResult> instance
+
+Creates a VPC endpoint service configuration to which service consumers
+(AWS accounts, IAM users, and IAM roles) can connect. Service consumers
+can create an interface VPC endpoint to connect to your service.
+
+To create an endpoint service configuration, you must first create a
+Network Load Balancer for your service. For more information, see VPC
+Endpoint Services
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/endpoint-service.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
+
+
+=head2 CreateVpcPeeringConnection([DryRun => Bool, PeerOwnerId => Str, PeerRegion => Str, PeerVpcId => Str, VpcId => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CreateVpcPeeringConnection>
 
 Returns: a L<Paws::EC2::CreateVpcPeeringConnectionResult> instance
 
 Requests a VPC peering connection between two VPCs: a requester VPC
-that you own and a peer VPC with which to create the connection. The
-peer VPC can belong to another AWS account. The requester VPC and peer
+that you own and an accepter VPC with which to create the connection.
+The accepter VPC can belong to another AWS account and can be in a
+different region to the requester VPC. The requester VPC and accepter
 VPC cannot have overlapping CIDR blocks.
 
-The owner of the peer VPC must accept the peering request to activate
-the peering connection. The VPC peering connection request expires
-after 7 days, after which it cannot be accepted or rejected.
+The owner of the accepter VPC must accept the peering request to
+activate the peering connection. The VPC peering connection request
+expires after 7 days, after which it cannot be accepted or rejected.
 
-If you try to create a VPC peering connection between VPCs that have
-overlapping CIDR blocks, the VPC peering connection status goes to
+If you create a VPC peering connection request between VPCs with
+overlapping CIDR blocks, the VPC peering connection has a status of
 C<failed>.
 
 
@@ -2918,6 +3139,29 @@ Deletes the specified key pair, by removing the public key from Amazon
 EC2.
 
 
+=head2 DeleteLaunchTemplate([DryRun => Bool, LaunchTemplateId => Str, LaunchTemplateName => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DeleteLaunchTemplate>
+
+Returns: a L<Paws::EC2::DeleteLaunchTemplateResult> instance
+
+Deletes a launch template. Deleting a launch template deletes all of
+its versions.
+
+
+=head2 DeleteLaunchTemplateVersions(Versions => ArrayRef[Str|Undef], [DryRun => Bool, LaunchTemplateId => Str, LaunchTemplateName => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DeleteLaunchTemplateVersions>
+
+Returns: a L<Paws::EC2::DeleteLaunchTemplateVersionsResult> instance
+
+Deletes one or more versions of a launch template. You cannot delete
+the default version of a launch template; you must first assign a
+different version as the default. If the default version is the only
+version for the launch template, you must delete the entire launch
+template using DeleteLaunchTemplate.
+
+
 =head2 DeleteNatGateway(NatGatewayId => Str)
 
 Each argument is described in detail in: L<Paws::EC2::DeleteNatGateway>
@@ -2980,9 +3224,8 @@ Returns: nothing
 
 Deletes the specified placement group. You must terminate all instances
 in the placement group before you can delete the placement group. For
-more information about placement groups and cluster instances, see
-Cluster Instances
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html)
+more information, see Placement Groups
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -3051,7 +3294,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteSpotDatafeedSubscrip
 
 Returns: nothing
 
-Deletes the data feed for Spot instances.
+Deletes the data feed for Spot Instances.
 
 
 =head2 DeleteSubnet(SubnetId => Str, [DryRun => Bool])
@@ -3108,15 +3351,37 @@ one), delete all route tables associated with the VPC (except the
 default one), and so on.
 
 
+=head2 DeleteVpcEndpointConnectionNotifications(ConnectionNotificationIds => ArrayRef[Str|Undef], [DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::DeleteVpcEndpointConnectionNotifications>
+
+Returns: a L<Paws::EC2::DeleteVpcEndpointConnectionNotificationsResult> instance
+
+Deletes one or more VPC endpoint connection notifications.
+
+
 =head2 DeleteVpcEndpoints(VpcEndpointIds => ArrayRef[Str|Undef], [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::DeleteVpcEndpoints>
 
 Returns: a L<Paws::EC2::DeleteVpcEndpointsResult> instance
 
-Deletes one or more specified VPC endpoints. Deleting the endpoint also
-deletes the endpoint routes in the route tables that were associated
-with the endpoint.
+Deletes one or more specified VPC endpoints. Deleting a gateway
+endpoint also deletes the endpoint routes in the route tables that were
+associated with the endpoint. Deleting an interface endpoint deletes
+the endpoint network interfaces.
+
+
+=head2 DeleteVpcEndpointServiceConfigurations(ServiceIds => ArrayRef[Str|Undef], [DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::DeleteVpcEndpointServiceConfigurations>
+
+Returns: a L<Paws::EC2::DeleteVpcEndpointServiceConfigurationsResult> instance
+
+Deletes one or more VPC endpoint service configurations in your
+account. Before you delete the endpoint service configuration, you must
+reject any C<Available> or C<PendingAcceptance> interface endpoint
+connections that are attached to the service.
 
 
 =head2 DeleteVpcPeeringConnection(VpcPeeringConnectionId => Str, [DryRun => Bool])
@@ -3126,9 +3391,9 @@ Each argument is described in detail in: L<Paws::EC2::DeleteVpcPeeringConnection
 Returns: a L<Paws::EC2::DeleteVpcPeeringConnectionResult> instance
 
 Deletes a VPC peering connection. Either the owner of the requester VPC
-or the owner of the peer VPC can delete the VPC peering connection if
-it's in the C<active> state. The owner of the requester VPC can delete
-a VPC peering connection in the C<pending-acceptance> state.
+or the owner of the accepter VPC can delete the VPC peering connection
+if it's in the C<active> state. The owner of the requester VPC can
+delete a VPC peering connection in the C<pending-acceptance> state.
 
 
 =head2 DeleteVpnConnection(VpnConnectionId => Str, [DryRun => Bool])
@@ -3353,7 +3618,7 @@ Returns: a L<Paws::EC2::DescribeElasticGpusResult> instance
 
 Describes the Elastic GPUs associated with your instances. For more
 information about Elastic GPUs, see Amazon EC2 Elastic GPUs
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-gpus.html).
+(http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-gpus.html).
 
 
 =head2 DescribeExportTasks([ExportTaskIds => ArrayRef[Str|Undef]])
@@ -3553,6 +3818,35 @@ C<rootDeviceName> | C<blockDeviceMapping> | C<productCodes> |
 C<sourceDestCheck> | C<groupSet> | C<ebsOptimized> | C<sriovNetSupport>
 
 
+=head2 DescribeInstanceCreditSpecifications([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeInstanceCreditSpecifications>
+
+Returns: a L<Paws::EC2::DescribeInstanceCreditSpecificationsResult> instance
+
+Describes the credit option for CPU usage of one or more of your T2
+instances. The credit options are C<standard> and C<unlimited>.
+
+If you do not specify an instance ID, Amazon EC2 returns only the T2
+instances with the C<unlimited> credit option. If you specify one or
+more instance IDs, Amazon EC2 returns the credit option (C<standard> or
+C<unlimited>) of those instances. If you specify an instance ID that is
+not valid, such as an instance that is not a T2 instance, an error is
+returned.
+
+Recently terminated instances might appear in the returned results.
+This interval is usually less than one hour.
+
+If an Availability Zone is experiencing a service disruption and you
+specify instance IDs in the affected zone, or do not specify any
+instance IDs at all, the call fails. If you specify only instance IDs
+in an unaffected zone, the call works normally.
+
+For more information, see T2 Instances
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/t2-instances.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
 =head2 DescribeInstances([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeInstances>
@@ -3645,6 +3939,25 @@ For more information about key pairs, see Key Pairs
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
+=head2 DescribeLaunchTemplates([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LaunchTemplateIds => ArrayRef[Str|Undef], LaunchTemplateNames => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeLaunchTemplates>
+
+Returns: a L<Paws::EC2::DescribeLaunchTemplatesResult> instance
+
+Describes one or more launch templates.
+
+
+=head2 DescribeLaunchTemplateVersions([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LaunchTemplateId => Str, LaunchTemplateName => Str, MaxResults => Int, MaxVersion => Str, MinVersion => Str, NextToken => Str, Versions => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeLaunchTemplateVersions>
+
+Returns: a L<Paws::EC2::DescribeLaunchTemplateVersionsResult> instance
+
+Describes one or more versions of a specified launch template. You can
+describe all versions, individual versions, or a range of versions.
+
+
 =head2 DescribeMovingAddresses([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, PublicIps => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeMovingAddresses>
@@ -3713,9 +4026,9 @@ Each argument is described in detail in: L<Paws::EC2::DescribePlacementGroups>
 
 Returns: a L<Paws::EC2::DescribePlacementGroupsResult> instance
 
-Describes one or more of your placement groups. For more information
-about placement groups and cluster instances, see Cluster Instances
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html)
+Describes one or more of your placement groups. For more information,
+see Placement Groups
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -3729,7 +4042,7 @@ Describes available AWS services in a prefix list format, which
 includes the prefix list name and prefix list ID of the service and the
 IP address range for the service. A prefix list ID is required for
 creating an outbound security group rule that allows traffic from a VPC
-to access an AWS service through a VPC endpoint.
+to access an AWS service through a gateway VPC endpoint.
 
 
 =head2 DescribeRegions([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], RegionNames => ArrayRef[Str|Undef]])
@@ -3990,7 +4303,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSpotDatafeedSubscr
 
 Returns: a L<Paws::EC2::DescribeSpotDatafeedSubscriptionResult> instance
 
-Describes the data feed for Spot instances. For more information, see
+Describes the data feed for Spot Instances. For more information, see
 Spot Instance Data Feed
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
@@ -4002,7 +4315,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSpotFleetInstances
 
 Returns: a L<Paws::EC2::DescribeSpotFleetInstancesResponse> instance
 
-Describes the running instances for the specified Spot fleet.
+Describes the running instances for the specified Spot Fleet.
 
 
 =head2 DescribeSpotFleetRequestHistory(SpotFleetRequestId => Str, StartTime => Str, [DryRun => Bool, EventType => Str, MaxResults => Int, NextToken => Str])
@@ -4011,10 +4324,10 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSpotFleetRequestHi
 
 Returns: a L<Paws::EC2::DescribeSpotFleetRequestHistoryResponse> instance
 
-Describes the events for the specified Spot fleet request during the
+Describes the events for the specified Spot Fleet request during the
 specified time.
 
-Spot fleet events are delayed by up to 30 seconds before they can be
+Spot Fleet events are delayed by up to 30 seconds before they can be
 described. This ensures that you can query by the last evaluated time
 and not miss a recorded event.
 
@@ -4025,9 +4338,9 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSpotFleetRequests>
 
 Returns: a L<Paws::EC2::DescribeSpotFleetRequestsResponse> instance
 
-Describes your Spot fleet requests.
+Describes your Spot Fleet requests.
 
-Spot fleet requests are deleted 48 hours after they are canceled and
+Spot Fleet requests are deleted 48 hours after they are canceled and
 their instances are terminated.
 
 
@@ -4037,23 +4350,21 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSpotInstanceReques
 
 Returns: a L<Paws::EC2::DescribeSpotInstanceRequestsResult> instance
 
-Describes the Spot instance requests that belong to your account. Spot
-instances are instances that Amazon EC2 launches when the bid price
-that you specify exceeds the current Spot price. Amazon EC2
-periodically sets the Spot price based on available Spot instance
-capacity and current Spot instance requests. For more information, see
-Spot Instance Requests
+Describes the Spot Instance requests that belong to your account. Spot
+Instances are instances that Amazon EC2 launches when the Spot price
+that you specify exceeds the current Spot price. For more information,
+see Spot Instance Requests
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 You can use C<DescribeSpotInstanceRequests> to find a running Spot
-instance by examining the response. If the status of the Spot instance
+Instance by examining the response. If the status of the Spot Instance
 is C<fulfilled>, the instance ID appears in the response and contains
 the identifier of the instance. Alternatively, you can use
 DescribeInstances with a filter to look for instances where the
 instance lifecycle is C<spot>.
 
-Spot instance requests are deleted 4 hours after they are canceled and
+Spot Instance requests are deleted 4 hours after they are canceled and
 their instances are terminated.
 
 
@@ -4255,6 +4566,26 @@ EC2-Classic instance. For more information, see ClassicLink
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
+=head2 DescribeVpcEndpointConnectionNotifications([ConnectionNotificationId => Str, DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeVpcEndpointConnectionNotifications>
+
+Returns: a L<Paws::EC2::DescribeVpcEndpointConnectionNotificationsResult> instance
+
+Describes the connection notifications for VPC endpoints and VPC
+endpoint services.
+
+
+=head2 DescribeVpcEndpointConnections([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeVpcEndpointConnections>
+
+Returns: a L<Paws::EC2::DescribeVpcEndpointConnectionsResult> instance
+
+Describes the VPC endpoint connections to your VPC endpoint services,
+including any endpoints that are pending your acceptance.
+
+
 =head2 DescribeVpcEndpoints([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VpcEndpointIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVpcEndpoints>
@@ -4264,14 +4595,33 @@ Returns: a L<Paws::EC2::DescribeVpcEndpointsResult> instance
 Describes one or more of your VPC endpoints.
 
 
-=head2 DescribeVpcEndpointServices([DryRun => Bool, MaxResults => Int, NextToken => Str])
+=head2 DescribeVpcEndpointServiceConfigurations([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, ServiceIds => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeVpcEndpointServiceConfigurations>
+
+Returns: a L<Paws::EC2::DescribeVpcEndpointServiceConfigurationsResult> instance
+
+Describes the VPC endpoint service configurations in your account (your
+services).
+
+
+=head2 DescribeVpcEndpointServicePermissions(ServiceId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeVpcEndpointServicePermissions>
+
+Returns: a L<Paws::EC2::DescribeVpcEndpointServicePermissionsResult> instance
+
+Describes the principals (service consumers) that are permitted to
+discover your VPC endpoint service.
+
+
+=head2 DescribeVpcEndpointServices([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, ServiceNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVpcEndpointServices>
 
 Returns: a L<Paws::EC2::DescribeVpcEndpointServicesResult> instance
 
-Describes all supported AWS services that can be specified when
-creating a VPC endpoint.
+Describes available services to which you can create a VPC endpoint.
 
 
 =head2 DescribeVpcPeeringConnections([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], VpcPeeringConnectionIds => ArrayRef[Str|Undef]])
@@ -4607,6 +4957,16 @@ This is a preview of the PurchaseHostReservation action and does not
 result in the offering being purchased.
 
 
+=head2 GetLaunchTemplateData(InstanceId => Str, [DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::GetLaunchTemplateData>
+
+Returns: a L<Paws::EC2::GetLaunchTemplateDataResult> instance
+
+Retrieves the configuration data of the specified instance. You can use
+this data to create a launch template.
+
+
 =head2 GetPasswordData(InstanceId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::GetPasswordData>
@@ -4836,6 +5196,20 @@ information, see Modifying Attributes of a Stopped Instance
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
+=head2 ModifyInstanceCreditSpecification(InstanceCreditSpecifications => ArrayRef[L<Paws::EC2::InstanceCreditSpecificationRequest>], [ClientToken => Str, DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::ModifyInstanceCreditSpecification>
+
+Returns: a L<Paws::EC2::ModifyInstanceCreditSpecificationResult> instance
+
+Modifies the credit option for CPU usage on a running or stopped T2
+instance. The credit options are C<standard> and C<unlimited>.
+
+For more information, see T2 Instances
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/t2-instances.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
 =head2 ModifyInstancePlacement(InstanceId => Str, [Affinity => Str, HostId => Str, Tenancy => Str])
 
 Each argument is described in detail in: L<Paws::EC2::ModifyInstancePlacement>
@@ -4862,6 +5236,18 @@ Affinity, hostID, and tenancy are not required parameters, but at least
 one of them must be specified in the request. Affinity and tenancy can
 be modified in the same request, but tenancy can only be modified on
 instances that are stopped.
+
+
+=head2 ModifyLaunchTemplate([ClientToken => Str, DefaultVersion => Str, DryRun => Bool, LaunchTemplateId => Str, LaunchTemplateName => Str])
+
+Each argument is described in detail in: L<Paws::EC2::ModifyLaunchTemplate>
+
+Returns: a L<Paws::EC2::ModifyLaunchTemplateResult> instance
+
+Modifies a launch template. You can specify which version of the launch
+template to set as the default version. When launching an instance, the
+default version applies when a launch template version is not
+specified.
 
 
 =head2 ModifyNetworkInterfaceAttribute(NetworkInterfaceId => Str, [Attachment => L<Paws::EC2::NetworkInterfaceAttachmentChanges>, Description => L<Paws::EC2::AttributeValue>, DryRun => Bool, Groups => ArrayRef[Str|Undef], SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>])
@@ -4918,29 +5304,32 @@ Each argument is described in detail in: L<Paws::EC2::ModifySpotFleetRequest>
 
 Returns: a L<Paws::EC2::ModifySpotFleetRequestResponse> instance
 
-Modifies the specified Spot fleet request.
+Modifies the specified Spot Fleet request.
 
-While the Spot fleet request is being modified, it is in the
+While the Spot Fleet request is being modified, it is in the
 C<modifying> state.
 
-To scale up your Spot fleet, increase its target capacity. The Spot
-fleet launches the additional Spot instances according to the
-allocation strategy for the Spot fleet request. If the allocation
-strategy is C<lowestPrice>, the Spot fleet launches instances using the
+To scale up your Spot Fleet, increase its target capacity. The Spot
+Fleet launches the additional Spot Instances according to the
+allocation strategy for the Spot Fleet request. If the allocation
+strategy is C<lowestPrice>, the Spot Fleet launches instances using the
 Spot pool with the lowest price. If the allocation strategy is
-C<diversified>, the Spot fleet distributes the instances across the
+C<diversified>, the Spot Fleet distributes the instances across the
 Spot pools.
 
-To scale down your Spot fleet, decrease its target capacity. First, the
-Spot fleet cancels any open bids that exceed the new target capacity.
-You can request that the Spot fleet terminate Spot instances until the
-size of the fleet no longer exceeds the new target capacity. If the
-allocation strategy is C<lowestPrice>, the Spot fleet terminates the
-instances with the highest price per unit. If the allocation strategy
-is C<diversified>, the Spot fleet terminates instances across the Spot
-pools. Alternatively, you can request that the Spot fleet keep the
-fleet at its current size, but not replace any Spot instances that are
-interrupted or that you terminate manually.
+To scale down your Spot Fleet, decrease its target capacity. First, the
+Spot Fleet cancels any open requests that exceed the new target
+capacity. You can request that the Spot Fleet terminate Spot Instances
+until the size of the fleet no longer exceeds the new target capacity.
+If the allocation strategy is C<lowestPrice>, the Spot Fleet terminates
+the instances with the highest price per unit. If the allocation
+strategy is C<diversified>, the Spot Fleet terminates instances across
+the Spot pools. Alternatively, you can request that the Spot Fleet keep
+the fleet at its current size, but not replace any Spot Instances that
+are interrupted or that you terminate manually.
+
+If you are finished with your Spot Fleet for now, but will use it again
+later, you can set the target capacity to 0.
 
 
 =head2 ModifySubnetAttribute(SubnetId => Str, [AssignIpv6AddressOnCreation => L<Paws::EC2::AttributeBooleanValue>, MapPublicIpOnLaunch => L<Paws::EC2::AttributeBooleanValue>])
@@ -5032,15 +5421,51 @@ Returns: nothing
 Modifies the specified attribute of the specified VPC.
 
 
-=head2 ModifyVpcEndpoint(VpcEndpointId => Str, [AddRouteTableIds => ArrayRef[Str|Undef], DryRun => Bool, PolicyDocument => Str, RemoveRouteTableIds => ArrayRef[Str|Undef], ResetPolicy => Bool])
+=head2 ModifyVpcEndpoint(VpcEndpointId => Str, [AddRouteTableIds => ArrayRef[Str|Undef], AddSecurityGroupIds => ArrayRef[Str|Undef], AddSubnetIds => ArrayRef[Str|Undef], DryRun => Bool, PolicyDocument => Str, PrivateDnsEnabled => Bool, RemoveRouteTableIds => ArrayRef[Str|Undef], RemoveSecurityGroupIds => ArrayRef[Str|Undef], RemoveSubnetIds => ArrayRef[Str|Undef], ResetPolicy => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::ModifyVpcEndpoint>
 
 Returns: a L<Paws::EC2::ModifyVpcEndpointResult> instance
 
-Modifies attributes of a specified VPC endpoint. You can modify the
-policy associated with the endpoint, and you can add and remove route
-tables associated with the endpoint.
+Modifies attributes of a specified VPC endpoint. The attributes that
+you can modify depend on the type of VPC endpoint (interface or
+gateway). For more information, see VPC Endpoints
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
+
+
+=head2 ModifyVpcEndpointConnectionNotification(ConnectionNotificationId => Str, [ConnectionEvents => ArrayRef[Str|Undef], ConnectionNotificationArn => Str, DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::ModifyVpcEndpointConnectionNotification>
+
+Returns: a L<Paws::EC2::ModifyVpcEndpointConnectionNotificationResult> instance
+
+Modifies a connection notification for VPC endpoint or VPC endpoint
+service. You can change the SNS topic for the notification, or the
+events for which to be notified.
+
+
+=head2 ModifyVpcEndpointServiceConfiguration(ServiceId => Str, [AcceptanceRequired => Bool, AddNetworkLoadBalancerArns => ArrayRef[Str|Undef], DryRun => Bool, RemoveNetworkLoadBalancerArns => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::EC2::ModifyVpcEndpointServiceConfiguration>
+
+Returns: a L<Paws::EC2::ModifyVpcEndpointServiceConfigurationResult> instance
+
+Modifies the attributes of your VPC endpoint service configuration. You
+can change the Network Load Balancers for your service, and you can
+specify whether acceptance is required for requests to connect to your
+endpoint service through an interface VPC endpoint.
+
+
+=head2 ModifyVpcEndpointServicePermissions(ServiceId => Str, [AddAllowedPrincipals => ArrayRef[Str|Undef], DryRun => Bool, RemoveAllowedPrincipals => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::EC2::ModifyVpcEndpointServicePermissions>
+
+Returns: a L<Paws::EC2::ModifyVpcEndpointServicePermissionsResult> instance
+
+Modifies the permissions for your VPC endpoint service. You can add or
+remove permissions for service consumers (IAM users, IAM roles, and AWS
+accounts) to discover your endpoint service.
 
 
 =head2 ModifyVpcPeeringConnectionOptions(VpcPeeringConnectionId => Str, [AccepterPeeringConnectionOptions => L<Paws::EC2::PeeringConnectionOptionsRequest>, DryRun => Bool, RequesterPeeringConnectionOptions => L<Paws::EC2::PeeringConnectionOptionsRequest>])
@@ -5246,6 +5671,16 @@ registration. If you make changes to an image, deregister the previous
 image and register the new image.
 
 
+=head2 RejectVpcEndpointConnections(ServiceId => Str, VpcEndpointIds => ArrayRef[Str|Undef], [DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::RejectVpcEndpointConnections>
+
+Returns: a L<Paws::EC2::RejectVpcEndpointConnectionsResult> instance
+
+Rejects one or more VPC endpoint connection requests to your VPC
+endpoint service.
+
+
 =head2 RejectVpcPeeringConnection(VpcPeeringConnectionId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::RejectVpcPeeringConnection>
@@ -5405,39 +5840,41 @@ Each argument is described in detail in: L<Paws::EC2::RequestSpotFleet>
 
 Returns: a L<Paws::EC2::RequestSpotFleetResponse> instance
 
-Creates a Spot fleet request.
+Creates a Spot Fleet request.
 
 You can submit a single request that includes multiple launch
 specifications that vary by instance type, AMI, Availability Zone, or
 subnet.
 
-By default, the Spot fleet requests Spot instances in the Spot pool
+By default, the Spot Fleet requests Spot Instances in the Spot pool
 where the price per unit is the lowest. Each launch specification can
 include its own instance weighting that reflects the value of the
 instance type to your application workload.
 
-Alternatively, you can specify that the Spot fleet distribute the
+Alternatively, you can specify that the Spot Fleet distribute the
 target capacity across the Spot pools included in its launch
-specifications. By ensuring that the Spot instances in your Spot fleet
+specifications. By ensuring that the Spot Instances in your Spot Fleet
 are in different Spot pools, you can improve the availability of your
 fleet.
+
+You can specify tags for the Spot Instances. You cannot tag other
+resource types in a Spot Fleet request; only the C<instance> resource
+type is supported.
 
 For more information, see Spot Fleet Requests
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
-=head2 RequestSpotInstances(SpotPrice => Str, [AvailabilityZoneGroup => Str, BlockDurationMinutes => Int, ClientToken => Str, DryRun => Bool, InstanceCount => Int, InstanceInterruptionBehavior => Str, LaunchGroup => Str, LaunchSpecification => L<Paws::EC2::RequestSpotLaunchSpecification>, Type => Str, ValidFrom => Str, ValidUntil => Str])
+=head2 RequestSpotInstances([AvailabilityZoneGroup => Str, BlockDurationMinutes => Int, ClientToken => Str, DryRun => Bool, InstanceCount => Int, InstanceInterruptionBehavior => Str, LaunchGroup => Str, LaunchSpecification => L<Paws::EC2::RequestSpotLaunchSpecification>, SpotPrice => Str, Type => Str, ValidFrom => Str, ValidUntil => Str])
 
 Each argument is described in detail in: L<Paws::EC2::RequestSpotInstances>
 
 Returns: a L<Paws::EC2::RequestSpotInstancesResult> instance
 
-Creates a Spot instance request. Spot instances are instances that
-Amazon EC2 launches when the bid price that you specify exceeds the
-current Spot price. Amazon EC2 periodically sets the Spot price based
-on available Spot Instance capacity and current Spot instance requests.
-For more information, see Spot Instance Requests
+Creates a Spot Instance request. Spot Instances are instances that
+Amazon EC2 launches when the maximum price that you specify exceeds the
+current Spot price. For more information, see Spot Instance Requests
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -5566,7 +6003,7 @@ Rule changes are propagated to instances within the security group as
 quickly as possible. However, a small delay might occur.
 
 
-=head2 RunInstances(ImageId => Str, MaxCount => Int, MinCount => Int, [AdditionalInfo => Str, BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>], ClientToken => Str, DisableApiTermination => Bool, DryRun => Bool, EbsOptimized => Bool, ElasticGpuSpecification => ArrayRef[L<Paws::EC2::ElasticGpuSpecification>], IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>, InstanceInitiatedShutdownBehavior => Str, InstanceType => Str, Ipv6AddressCount => Int, Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6Address>], KernelId => Str, KeyName => Str, Monitoring => L<Paws::EC2::RunInstancesMonitoringEnabled>, NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterfaceSpecification>], Placement => L<Paws::EC2::Placement>, PrivateIpAddress => Str, RamdiskId => Str, SecurityGroupIds => ArrayRef[Str|Undef], SecurityGroups => ArrayRef[Str|Undef], SubnetId => Str, TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>], UserData => Str])
+=head2 RunInstances(MaxCount => Int, MinCount => Int, [AdditionalInfo => Str, BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>], ClientToken => Str, CreditSpecification => L<Paws::EC2::CreditSpecificationRequest>, DisableApiTermination => Bool, DryRun => Bool, EbsOptimized => Bool, ElasticGpuSpecification => ArrayRef[L<Paws::EC2::ElasticGpuSpecification>], IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>, ImageId => Str, InstanceInitiatedShutdownBehavior => Str, InstanceMarketOptions => L<Paws::EC2::InstanceMarketOptionsRequest>, InstanceType => Str, Ipv6AddressCount => Int, Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6Address>], KernelId => Str, KeyName => Str, LaunchTemplate => L<Paws::EC2::LaunchTemplateSpecification>, Monitoring => L<Paws::EC2::RunInstancesMonitoringEnabled>, NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterfaceSpecification>], Placement => L<Paws::EC2::Placement>, PrivateIpAddress => Str, RamdiskId => Str, SecurityGroupIds => ArrayRef[Str|Undef], SecurityGroups => ArrayRef[Str|Undef], SubnetId => Str, TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>], UserData => Str])
 
 Each argument is described in detail in: L<Paws::EC2::RunInstances>
 
@@ -5622,6 +6059,12 @@ If any of the AMIs have a product code attached for which the user has
 not subscribed, the request fails.
 
 =back
+
+You can create a launch template
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html),
+which is a resource that contains the parameters to launch an instance.
+When you launch an instance using RunInstances, you can specify the
+launch template instead of specifying the launch parameters.
 
 To ensure faster instance launches, break up large requests into
 smaller batches. For example, create five separate launch requests for

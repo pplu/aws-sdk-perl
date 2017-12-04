@@ -4,12 +4,14 @@ package Paws::ACM::CertificateDetail;
   has CreatedAt => (is => 'ro', isa => 'Str');
   has DomainName => (is => 'ro', isa => 'Str');
   has DomainValidationOptions => (is => 'ro', isa => 'ArrayRef[Paws::ACM::DomainValidation]');
+  has ExtendedKeyUsages => (is => 'ro', isa => 'ArrayRef[Paws::ACM::ExtendedKeyUsage]');
   has FailureReason => (is => 'ro', isa => 'Str');
   has ImportedAt => (is => 'ro', isa => 'Str');
   has InUseBy => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has IssuedAt => (is => 'ro', isa => 'Str');
   has Issuer => (is => 'ro', isa => 'Str');
   has KeyAlgorithm => (is => 'ro', isa => 'Str');
+  has KeyUsages => (is => 'ro', isa => 'ArrayRef[Paws::ACM::KeyUsage]');
   has NotAfter => (is => 'ro', isa => 'Str');
   has NotBefore => (is => 'ro', isa => 'Str');
   has RenewalSummary => (is => 'ro', isa => 'Paws::ACM::RenewalSummary');
@@ -84,6 +86,13 @@ that occurs as a result of the RequestCertificate request. This field
 exists only when the certificate type is C<AMAZON_ISSUED>.
 
 
+=head2 ExtendedKeyUsages => ArrayRef[L<Paws::ACM::ExtendedKeyUsage>]
+
+  Contains a list of Extended Key Usage X.509 v3 extension objects. Each
+object specifies a purpose for which the certificate public key can be
+used and consists of a name and an object identifier (OID).
+
+
 =head2 FailureReason => Str
 
   The reason the certificate request failed. This value exists only when
@@ -119,8 +128,15 @@ certificate.
 
 =head2 KeyAlgorithm => Str
 
-  The algorithm that was used to generate the key pair (the public and
-private key).
+  The algorithm that was used to generate the public-private key pair.
+
+
+=head2 KeyUsages => ArrayRef[L<Paws::ACM::KeyUsage>]
+
+  A list of Key Usage X.509 v3 extension objects. Each object is a string
+value that identifies the purpose of the public key contained in the
+certificate. Possible extension values include DIGITAL_SIGNATURE,
+KEY_ENCHIPHERMENT, NON_REPUDIATION, and more.
 
 
 =head2 NotAfter => Str

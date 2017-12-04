@@ -32,19 +32,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::S3Tar
 
 =head1 DESCRIPTION
 
-Specifies a crawler target in AWS S3.
+Specifies a data store in Amazon S3.
 
 =head1 ATTRIBUTES
 
 
 =head2 Exclusions => ArrayRef[Str|Undef]
 
-  A list of S3 objects to exclude from the crawl.
+  A list of glob patterns used to exclude from the crawl. For more
+information, see Catalog Tables with a Crawler
+(http://docs.aws.amazon.com/glue/latest/dg/add-crawler.html).
 
 
 =head2 Path => Str
 
-  The path to the S3 target.
+  The path to the Amazon S3 target.
 
 
 

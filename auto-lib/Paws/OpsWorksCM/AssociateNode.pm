@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Engine attributes used for associating the node.
 
-B<Attributes accepted in a AssociateNode request:>
+B<Attributes accepted in a AssociateNode request for Chef>
 
 =over
 
@@ -56,12 +56,23 @@ required for the C<chef-client> agent to access the Chef API.
 
 =back
 
+B<Attributes accepted in a AssociateNode request for Puppet>
+
+=over
+
+=item *
+
+C<PUPPET_NODE_CSR>: A PEM-formatted certificate-signing request (CSR)
+that is created by the node.
+
+=back
+
 
 
 
 =head2 B<REQUIRED> NodeName => Str
 
-The name of the Chef client node.
+The name of the node.
 
 
 

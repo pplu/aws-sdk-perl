@@ -244,6 +244,11 @@ package Paws::StorageGateway;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::ListVolumes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub NotifyWhenUploaded {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::NotifyWhenUploaded', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RefreshCache {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::RefreshCache', @_);
@@ -465,7 +470,7 @@ package Paws::StorageGateway;
   }
 
 
-  sub operations { qw/ActivateGateway AddCache AddTagsToResource AddUploadBuffer AddWorkingStorage CancelArchival CancelRetrieval CreateCachediSCSIVolume CreateNFSFileShare CreateSnapshot CreateSnapshotFromVolumeRecoveryPoint CreateStorediSCSIVolume CreateTapes CreateTapeWithBarcode DeleteBandwidthRateLimit DeleteChapCredentials DeleteFileShare DeleteGateway DeleteSnapshotSchedule DeleteTape DeleteTapeArchive DeleteVolume DescribeBandwidthRateLimit DescribeCache DescribeCachediSCSIVolumes DescribeChapCredentials DescribeGatewayInformation DescribeMaintenanceStartTime DescribeNFSFileShares DescribeSnapshotSchedule DescribeStorediSCSIVolumes DescribeTapeArchives DescribeTapeRecoveryPoints DescribeTapes DescribeUploadBuffer DescribeVTLDevices DescribeWorkingStorage DisableGateway ListFileShares ListGateways ListLocalDisks ListTagsForResource ListTapes ListVolumeInitiators ListVolumeRecoveryPoints ListVolumes RefreshCache RemoveTagsFromResource ResetCache RetrieveTapeArchive RetrieveTapeRecoveryPoint SetLocalConsolePassword ShutdownGateway StartGateway UpdateBandwidthRateLimit UpdateChapCredentials UpdateGatewayInformation UpdateGatewaySoftwareNow UpdateMaintenanceStartTime UpdateNFSFileShare UpdateSnapshotSchedule UpdateVTLDeviceType / }
+  sub operations { qw/ActivateGateway AddCache AddTagsToResource AddUploadBuffer AddWorkingStorage CancelArchival CancelRetrieval CreateCachediSCSIVolume CreateNFSFileShare CreateSnapshot CreateSnapshotFromVolumeRecoveryPoint CreateStorediSCSIVolume CreateTapes CreateTapeWithBarcode DeleteBandwidthRateLimit DeleteChapCredentials DeleteFileShare DeleteGateway DeleteSnapshotSchedule DeleteTape DeleteTapeArchive DeleteVolume DescribeBandwidthRateLimit DescribeCache DescribeCachediSCSIVolumes DescribeChapCredentials DescribeGatewayInformation DescribeMaintenanceStartTime DescribeNFSFileShares DescribeSnapshotSchedule DescribeStorediSCSIVolumes DescribeTapeArchives DescribeTapeRecoveryPoints DescribeTapes DescribeUploadBuffer DescribeVTLDevices DescribeWorkingStorage DisableGateway ListFileShares ListGateways ListLocalDisks ListTagsForResource ListTapes ListVolumeInitiators ListVolumeRecoveryPoints ListVolumes NotifyWhenUploaded RefreshCache RemoveTagsFromResource ResetCache RetrieveTapeArchive RetrieveTapeRecoveryPoint SetLocalConsolePassword ShutdownGateway StartGateway UpdateBandwidthRateLimit UpdateChapCredentials UpdateGatewayInformation UpdateGatewaySoftwareNow UpdateMaintenanceStartTime UpdateNFSFileShare UpdateSnapshotSchedule UpdateVTLDeviceType / }
 
 1;
 
@@ -601,7 +606,7 @@ Returns: a L<Paws::StorageGateway::AddCacheOutput> instance
 
 Configures one or more gateway local disks as cache for a gateway. This
 operation is only supported in the cached volume, tape and file gateway
-architectures (see Storage Gateway Concepts
+type (see Storage Gateway Concepts
 (http://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html)).
 
 In the request, you specify the gateway Amazon Resource Name (ARN) to
@@ -659,7 +664,7 @@ Returns: a L<Paws::StorageGateway::AddUploadBufferOutput> instance
 
 Configures one or more gateway local disks as upload buffer for a
 specified gateway. This operation is supported for the stored volume,
-cached volume and tape gateway architectures.
+cached volume and tape gateway types.
 
 In the request, you specify the gateway Amazon Resource Name (ARN) to
 which you want to add upload buffer, and one or more disk IDs that you
@@ -674,7 +679,7 @@ Returns: a L<Paws::StorageGateway::AddWorkingStorageOutput> instance
 
 Configures one or more gateway local disks as working storage for a
 gateway. This operation is only supported in the stored volume gateway
-architecture. This operation is deprecated in cached volume API version
+type. This operation is deprecated in cached volume API version
 20120630. Use AddUploadBuffer instead.
 
 Working storage is also referred to as upload buffer. You can also use
@@ -694,7 +699,7 @@ Returns: a L<Paws::StorageGateway::CancelArchivalOutput> instance
 
 Cancels archiving of a virtual tape to the virtual tape shelf (VTS)
 after the archiving process is initiated. This operation is only
-supported in the tape gateway architecture.
+supported in the tape gateway type.
 
 
 =head2 CancelRetrieval(GatewayARN => Str, TapeARN => Str)
@@ -705,7 +710,8 @@ Returns: a L<Paws::StorageGateway::CancelRetrievalOutput> instance
 
 Cancels retrieval of a virtual tape from the virtual tape shelf (VTS)
 to a gateway after the retrieval process is initiated. The virtual tape
-is returned to the VTS.
+is returned to the VTS. This operation is only supported in the tape
+gateway type.
 
 
 =head2 CreateCachediSCSIVolume(ClientToken => Str, GatewayARN => Str, NetworkInterfaceId => Str, TargetName => Str, VolumeSizeInBytes => Int, [SnapshotId => Str, SourceVolumeARN => Str])
@@ -715,7 +721,7 @@ Each argument is described in detail in: L<Paws::StorageGateway::CreateCachediSC
 Returns: a L<Paws::StorageGateway::CreateCachediSCSIVolumeOutput> instance
 
 Creates a cached volume on a specified cached volume gateway. This
-operation is only supported in the cached volume gateway architecture.
+operation is only supported in the cached volume gateway type.
 
 Cache storage must be allocated to the gateway before you can create a
 cached volume. Use the AddCache operation to add cache storage to a
@@ -735,7 +741,7 @@ C<VolumeSizeInBytes> value must be equal to or larger than the size of
 the copied volume, in bytes.
 
 
-=head2 CreateNFSFileShare(ClientToken => Str, GatewayARN => Str, LocationARN => Str, Role => Str, [ClientList => ArrayRef[Str|Undef], DefaultStorageClass => Str, KMSEncrypted => Bool, KMSKey => Str, NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>, ReadOnly => Bool, Squash => Str])
+=head2 CreateNFSFileShare(ClientToken => Str, GatewayARN => Str, LocationARN => Str, Role => Str, [ClientList => ArrayRef[Str|Undef], DefaultStorageClass => Str, GuessMIMETypeEnabled => Bool, KMSEncrypted => Bool, KMSKey => Str, NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>, ReadOnly => Bool, Squash => Str])
 
 Each argument is described in detail in: L<Paws::StorageGateway::CreateNFSFileShare>
 
@@ -745,7 +751,7 @@ Creates a file share on an existing file gateway. In Storage Gateway, a
 file share is a file system mount point backed by Amazon S3 cloud
 storage. Storage Gateway exposes file shares using a Network File
 System (NFS) interface. This operation is only supported in the file
-gateway architecture.
+gateway type.
 
 File gateway requires AWS Security Token Service (AWS STS) to be
 activated to enable you create a file share. Make sure AWS STS is
@@ -782,7 +788,7 @@ volume, the snapshot and description appears in the AWS Storage Gateway
 Console. In response, AWS Storage Gateway returns you a snapshot ID.
 You can use this snapshot ID to check the snapshot progress or later
 use it when you want to create a volume from a snapshot. This operation
-is only supported in stored and cached volume gateway architecture.
+is only supported in stored and cached volume gateway type.
 
 To list or delete a snapshot, you must use the Amazon EC2 API. For more
 information, see DescribeSnapshots or DeleteSnapshot in the EC2 API
@@ -802,7 +808,7 @@ Each argument is described in detail in: L<Paws::StorageGateway::CreateSnapshotF
 Returns: a L<Paws::StorageGateway::CreateSnapshotFromVolumeRecoveryPointOutput> instance
 
 Initiates a snapshot of a gateway from a volume recovery point. This
-operation is only supported in the cached volume gateway architecture.
+operation is only supported in the cached volume gateway type.
 
 A volume recovery point is a point in time at which all data of the
 volume is consistent and from which you can create a snapshot. To get a
@@ -829,7 +835,7 @@ Each argument is described in detail in: L<Paws::StorageGateway::CreateStorediSC
 Returns: a L<Paws::StorageGateway::CreateStorediSCSIVolumeOutput> instance
 
 Creates a volume on a specified gateway. This operation is only
-supported in the stored volume gateway architecture.
+supported in the stored volume gateway type.
 
 The size of the volume to create is inferred from the disk size. You
 can choose to preserve existing data on the disk, create volume from an
@@ -851,7 +857,7 @@ Returns: a L<Paws::StorageGateway::CreateTapesOutput> instance
 
 Creates one or more virtual tapes. You write data to the virtual tapes
 and then archive the tapes. This operation is only supported in the
-tape gateway architecture.
+tape gateway type.
 
 Cache storage must be allocated to the gateway before you can create
 virtual tapes. Use the AddCache operation to add cache storage to a
@@ -868,7 +874,7 @@ Creates a virtual tape by using your own barcode. You write data to the
 virtual tape and then archive the tape. A barcode is unique and can not
 be reused if it has already been used on a tape . This applies to
 barcodes used on deleted tapes. This operation is only supported in the
-tape gateway. architecture.
+tape gateway type.
 
 Cache storage must be allocated to the gateway before you can create a
 virtual tape. Use the AddCache operation to add cache storage to a
@@ -905,7 +911,7 @@ Each argument is described in detail in: L<Paws::StorageGateway::DeleteFileShare
 Returns: a L<Paws::StorageGateway::DeleteFileShareOutput> instance
 
 Deletes a file share from a file gateway. This operation is only
-supported in the file gateway architecture.
+supported in the file gateway type.
 
 
 =head2 DeleteGateway(GatewayARN => Str)
@@ -947,7 +953,8 @@ basis. This API action enables you to delete a snapshot schedule for a
 volume. For more information, see Working with Snapshots
 (http://docs.aws.amazon.com/storagegateway/latest/userguide/WorkingWithSnapshots.html).
 In the C<DeleteSnapshotSchedule> request, you identify the volume by
-providing its Amazon Resource Name (ARN).
+providing its Amazon Resource Name (ARN). This operation is only
+supported in stored and cached volume gateway types.
 
 To list or delete a snapshot, you must use the Amazon EC2 API. in
 I<Amazon Elastic Compute Cloud API Reference>.
@@ -960,7 +967,7 @@ Each argument is described in detail in: L<Paws::StorageGateway::DeleteTape>
 Returns: a L<Paws::StorageGateway::DeleteTapeOutput> instance
 
 Deletes the specified virtual tape. This operation is only supported in
-the tape gateway architecture.
+the tape gateway type.
 
 
 =head2 DeleteTapeArchive(TapeARN => Str)
@@ -970,7 +977,7 @@ Each argument is described in detail in: L<Paws::StorageGateway::DeleteTapeArchi
 Returns: a L<Paws::StorageGateway::DeleteTapeArchiveOutput> instance
 
 Deletes the specified virtual tape from the virtual tape shelf (VTS).
-This operation is only supported in the tape gateway architecture.
+This operation is only supported in the tape gateway type.
 
 
 =head2 DeleteVolume(VolumeARN => Str)
@@ -982,9 +989,9 @@ Returns: a L<Paws::StorageGateway::DeleteVolumeOutput> instance
 Deletes the specified storage volume that you previously created using
 the CreateCachediSCSIVolume or CreateStorediSCSIVolume API. This
 operation is only supported in the cached volume and stored volume
-architectures. For stored volume gateways, the local disk that was
-configured as the storage volume is not deleted. You can reuse the
-local disk to create another storage volume.
+types. For stored volume gateways, the local disk that was configured
+as the storage volume is not deleted. You can reuse the local disk to
+create another storage volume.
 
 Before you delete a volume, make sure there are no iSCSI connections to
 the volume you are deleting. You should also make sure there is no
@@ -1023,8 +1030,7 @@ Each argument is described in detail in: L<Paws::StorageGateway::DescribeCache>
 Returns: a L<Paws::StorageGateway::DescribeCacheOutput> instance
 
 Returns information about the cache of a gateway. This operation is
-only supported in the cached volume,tape and file gateway
-architectures.
+only supported in the cached volume, tape and file gateway types.
 
 The response includes disk IDs that are configured as cache, and it
 includes the amount of cache allocated and used.
@@ -1037,8 +1043,7 @@ Each argument is described in detail in: L<Paws::StorageGateway::DescribeCachedi
 Returns: a L<Paws::StorageGateway::DescribeCachediSCSIVolumesOutput> instance
 
 Returns a description of the gateway volumes specified in the request.
-This operation is only supported in the cached volume gateway
-architecture.
+This operation is only supported in the cached volume gateway types.
 
 The list of gateway volumes in the request must be from one gateway. In
 the response Amazon Storage Gateway returns volume information sorted
@@ -1086,7 +1091,7 @@ Each argument is described in detail in: L<Paws::StorageGateway::DescribeNFSFile
 Returns: a L<Paws::StorageGateway::DescribeNFSFileSharesOutput> instance
 
 Gets a description for one or more file shares from a file gateway.
-This operation is only supported in file gateways.
+This operation is only supported in the file gateway type.
 
 
 =head2 DescribeSnapshotSchedule(VolumeARN => Str)
@@ -1098,7 +1103,7 @@ Returns: a L<Paws::StorageGateway::DescribeSnapshotScheduleOutput> instance
 Describes the snapshot schedule for the specified gateway volume. The
 snapshot schedule information includes intervals at which snapshots are
 automatically initiated on the volume. This operation is only supported
-in the cached volume and stored volume architectures.
+in the cached volume and stored volume types.
 
 
 =head2 DescribeStorediSCSIVolumes(VolumeARNs => ArrayRef[Str|Undef])
@@ -1111,7 +1116,7 @@ Returns the description of the gateway volumes specified in the
 request. The list of gateway volumes in the request must be from one
 gateway. In the response Amazon Storage Gateway returns volume
 information sorted by volume ARNs. This operation is only supported in
-stored volume gateway architecture.
+stored volume gateway type.
 
 
 =head2 DescribeTapeArchives([Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])
@@ -1121,8 +1126,7 @@ Each argument is described in detail in: L<Paws::StorageGateway::DescribeTapeArc
 Returns: a L<Paws::StorageGateway::DescribeTapeArchivesOutput> instance
 
 Returns a description of specified virtual tapes in the virtual tape
-shelf (VTS). This operation is only supported in the tape gateway
-architecture.
+shelf (VTS). This operation is only supported in the tape gateway type.
 
 If a specific C<TapeARN> is not specified, AWS Storage Gateway returns
 a description of all virtual tapes found in the VTS associated with
@@ -1141,8 +1145,7 @@ the specified tape gateway.
 A recovery point is a point-in-time view of a virtual tape at which all
 the data on the virtual tape is consistent. If your gateway crashes,
 virtual tapes that have recovery points can be recovered to a new
-gateway. This operation is only supported in the tape gateway
-architecture.
+gateway. This operation is only supported in the tape gateway type.
 
 
 =head2 DescribeTapes(GatewayARN => Str, [Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])
@@ -1154,7 +1157,7 @@ Returns: a L<Paws::StorageGateway::DescribeTapesOutput> instance
 Returns a description of the specified Amazon Resource Name (ARN) of
 virtual tapes. If a C<TapeARN> is not specified, returns a description
 of all virtual tapes associated with the specified gateway. This
-operation is only supported in the tape gateway architecture.
+operation is only supported in the tape gateway type.
 
 
 =head2 DescribeUploadBuffer(GatewayARN => Str)
@@ -1165,7 +1168,7 @@ Returns: a L<Paws::StorageGateway::DescribeUploadBufferOutput> instance
 
 Returns information about the upload buffer of a gateway. This
 operation is supported for the stored volume, cached volume and tape
-gateway architectures.
+gateway types.
 
 The response includes disk IDs that are configured as upload buffer
 space, and it includes the amount of upload buffer space allocated and
@@ -1182,7 +1185,7 @@ Returns a description of virtual tape library (VTL) devices for the
 specified tape gateway. In the response, AWS Storage Gateway returns
 VTL device information.
 
-This operation is only supported in the tape gateway architecture.
+This operation is only supported in the tape gateway type.
 
 
 =head2 DescribeWorkingStorage(GatewayARN => Str)
@@ -1192,9 +1195,9 @@ Each argument is described in detail in: L<Paws::StorageGateway::DescribeWorking
 Returns: a L<Paws::StorageGateway::DescribeWorkingStorageOutput> instance
 
 Returns information about the working storage of a gateway. This
-operation is only supported in the stored volumes gateway architecture.
-This operation is deprecated in cached volumes API version (20120630).
-Use DescribeUploadBuffer instead.
+operation is only supported in the stored volumes gateway type. This
+operation is deprecated in cached volumes API version (20120630). Use
+DescribeUploadBuffer instead.
 
 Working storage is also referred to as upload buffer. You can also use
 the DescribeUploadBuffer operation to add upload buffer to a stored
@@ -1215,8 +1218,7 @@ example, if your gateway VM is damaged, you can disable the gateway so
 you can recover virtual tapes.
 
 Use this operation for a tape gateway that is not reachable or not
-functioning. This operation is only supported in the tape gateway
-architectures.
+functioning. This operation is only supported in the tape gateway type.
 
 Once a gateway is disabled it cannot be enabled.
 
@@ -1229,7 +1231,7 @@ Returns: a L<Paws::StorageGateway::ListFileSharesOutput> instance
 
 Gets a list of the file shares for a specific file gateway, or the list
 of file shares that belong to the calling user account. This operation
-is only supported in the file gateway architecture.
+is only supported in the file gateway type.
 
 
 =head2 ListGateways([Limit => Int, Marker => Str])
@@ -1279,7 +1281,7 @@ Returns: a L<Paws::StorageGateway::ListTagsForResourceOutput> instance
 
 Lists the tags that have been added to the specified resource. This
 operation is only supported in the cached volume, stored volume and
-tape gateway architecture.
+tape gateway type.
 
 
 =head2 ListTapes([Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])
@@ -1299,7 +1301,7 @@ parameter in the body to limit the number of tapes in the response. If
 the number of tapes returned in the response is truncated, the response
 includes a C<Marker> element that you can use in your subsequent
 request to retrieve the next set of tapes. This operation is only
-supported in the tape gateway architecture.
+supported in the tape gateway type.
 
 
 =head2 ListVolumeInitiators(VolumeARN => Str)
@@ -1311,7 +1313,7 @@ Returns: a L<Paws::StorageGateway::ListVolumeInitiatorsOutput> instance
 Lists iSCSI initiators that are connected to a volume. You can use this
 operation to determine whether a volume is being used or not. This
 operation is only supported in the cached volume and stored volume
-gateway architecture.
+gateway types.
 
 
 =head2 ListVolumeRecoveryPoints(GatewayARN => Str)
@@ -1321,7 +1323,7 @@ Each argument is described in detail in: L<Paws::StorageGateway::ListVolumeRecov
 Returns: a L<Paws::StorageGateway::ListVolumeRecoveryPointsOutput> instance
 
 Lists the recovery points for a specified gateway. This operation is
-only supported in the cached volume gateway architecture.
+only supported in the cached volume gateway type.
 
 Each cache volume has one recovery point. A volume recovery point is a
 point in time at which all data of the volume is consistent and from
@@ -1347,8 +1349,27 @@ field in the body to limit the number of volumes in the response. If
 the number of volumes returned in the response is truncated, the
 response includes a Marker field. You can use this Marker value in your
 subsequent request to retrieve the next set of volumes. This operation
-is only supported in the cached volume and stored volume gateway
-architectures.
+is only supported in the cached volume and stored volume gateway types.
+
+
+=head2 NotifyWhenUploaded(FileShareARN => Str)
+
+Each argument is described in detail in: L<Paws::StorageGateway::NotifyWhenUploaded>
+
+Returns: a L<Paws::StorageGateway::NotifyWhenUploadedOutput> instance
+
+Sends you notification when all file data written to the NFS file share
+has been uploaded to Amazon S3.
+
+AWS Storage Gateway can send a notification through Amazon CloudWatch
+Events when all files written to your file share up to that point in
+time have been uploaded to Amazon S3. These files include files written
+to the NFS file share up to the time that you make a request for
+notification. When the upload is done, Storage Gateway sends you
+notification through an Amazon CloudWatch event. You can configure
+CloudWatch Events to sent the notification through event targets such
+as email, SNS or a Lambda function. text or Lambda functions. This
+operation is only supported in the file gateway type.
 
 
 =head2 RefreshCache(FileShareARN => Str)
@@ -1360,7 +1381,7 @@ Returns: a L<Paws::StorageGateway::RefreshCacheOutput> instance
 Refreshes the cache for the specified file share. This operation finds
 objects in the Amazon S3 bucket that were added, removed or replaced
 since the gateway last listed the bucket's contents and cached the
-results.
+results. This operation is only supported in the file gateway type.
 
 
 =head2 RemoveTagsFromResource(ResourceARN => Str, TagKeys => ArrayRef[Str|Undef])
@@ -1371,7 +1392,7 @@ Returns: a L<Paws::StorageGateway::RemoveTagsFromResourceOutput> instance
 
 Removes one or more tags from the specified resource. This operation is
 only supported in the cached volume, stored volume and tape gateway
-architectures.
+types.
 
 
 =head2 ResetCache(GatewayARN => Str)
@@ -1387,7 +1408,7 @@ on virtual tapes in the gateway. For example, an error can occur when a
 disk is corrupted or removed from the gateway. When a cache is reset,
 the gateway loses its cache storage. At this point you can reconfigure
 the disks as cache disks. This operation is only supported in the
-cached volume,tape and file gateway architectures.
+cached volume, tape and file gateway types.
 
 If the cache disk you are resetting contains data that has not been
 uploaded to Amazon S3 yet, that data can be lost. After you reset cache
@@ -1406,13 +1427,12 @@ Retrieves an archived virtual tape from the virtual tape shelf (VTS) to
 a tape gateway. Virtual tapes archived in the VTS are not associated
 with any gateway. However after a tape is retrieved, it is associated
 with a gateway, even though it is also listed in the VTS, that is,
-archive. This operation is only supported in the tape gateway
-architecture.
+archive. This operation is only supported in the tape gateway type.
 
 Once a tape is successfully retrieved to a gateway, it cannot be
 retrieved again to another gateway. You must archive the tape again
 before you can retrieve it to another gateway. This operation is only
-supported in the tape gateway architecture.
+supported in the tape gateway type.
 
 
 =head2 RetrieveTapeRecoveryPoint(GatewayARN => Str, TapeARN => Str)
@@ -1422,7 +1442,7 @@ Each argument is described in detail in: L<Paws::StorageGateway::RetrieveTapeRec
 Returns: a L<Paws::StorageGateway::RetrieveTapeRecoveryPointOutput> instance
 
 Retrieves the recovery point for the specified virtual tape. This
-operation is only supported in the tape gateway architecture.
+operation is only supported in the tape gateway type.
 
 A recovery point is a point in time view of a virtual tape at which all
 the data on the tape is consistent. If your gateway crashes, virtual
@@ -1583,14 +1603,14 @@ including day and time of the week. The maintenance time is the time in
 your gateway's time zone.
 
 
-=head2 UpdateNFSFileShare(FileShareARN => Str, [ClientList => ArrayRef[Str|Undef], DefaultStorageClass => Str, KMSEncrypted => Bool, KMSKey => Str, NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>, ReadOnly => Bool, Squash => Str])
+=head2 UpdateNFSFileShare(FileShareARN => Str, [ClientList => ArrayRef[Str|Undef], DefaultStorageClass => Str, GuessMIMETypeEnabled => Bool, KMSEncrypted => Bool, KMSKey => Str, NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>, ReadOnly => Bool, Squash => Str])
 
 Each argument is described in detail in: L<Paws::StorageGateway::UpdateNFSFileShare>
 
 Returns: a L<Paws::StorageGateway::UpdateNFSFileShareOutput> instance
 
 Updates a file share. This operation is only supported in the file
-gateway architecture.
+gateway type.
 
 To leave a file share field unchanged, set the corresponding input
 field to null.
@@ -1633,7 +1653,7 @@ Returns: a L<Paws::StorageGateway::UpdateSnapshotScheduleOutput> instance
 
 Updates a snapshot schedule configured for a gateway volume. This
 operation is only supported in the cached volume and stored volume
-gateway architectures.
+gateway types.
 
 The default snapshot schedule for volume is once every 24 hours,
 starting at the creation time of the volume. You can use this API to
@@ -1655,7 +1675,7 @@ Updates the type of medium changer in a tape gateway. When you activate
 a tape gateway, you select a medium changer type for the tape gateway.
 This operation enables you to select a different type of medium changer
 after a tape gateway is activated. This operation is only supported in
-the tape gateway architecture.
+the tape gateway type.
 
 
 

@@ -135,13 +135,13 @@ migration depends on several factors such as database load, storage
 size, storage type (standard or Provisioned IOPS), amount of IOPS
 provisioned (if any), and the number of prior scale storage operations.
 Typical migration times are under 24 hours, but the process can take up
-to several days in some cases. During the migration, the DB instance
-will be available for use, but might experience performance
-degradation. While the migration takes place, nightly backups for the
-instance will be suspended. No other Amazon RDS operations can take
-place for the instance, including modifying the instance, rebooting the
-instance, deleting the instance, creating a Read Replica for the
-instance, and creating a DB snapshot of the instance.
+to several days in some cases. During the migration, the DB instance is
+available for use, but might experience performance degradation. While
+the migration takes place, nightly backups for the instance are
+suspended. No other Amazon RDS operations can take place for the
+instance, including modifying the instance, rebooting the instance,
+deleting the instance, creating a Read Replica for the instance, and
+creating a DB snapshot of the instance.
 
 
 
@@ -166,14 +166,13 @@ instance.
 
 If this parameter is set to C<false>, changes to the DB instance are
 applied during the next maintenance window. Some parameter changes can
-cause an outage and will be applied on the next call to
-RebootDBInstance, or the next failure reboot. Review the table of
-parameters in Modifying a DB Instance and Using the Apply Immediately
-Parameter
+cause an outage and are applied on the next call to RebootDBInstance,
+or the next failure reboot. Review the table of parameters in Modifying
+a DB Instance and Using the Apply Immediately Parameter
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html)
 to see the impact that setting C<ApplyImmediately> to C<true> or
 C<false> has for each modified parameter and to determine when the
-changes will be applied.
+changes are applied.
 
 Default: C<false>
 
@@ -181,13 +180,13 @@ Default: C<false>
 
 =head2 AutoMinorVersionUpgrade => Bool
 
-Indicates that minor version upgrades will be applied automatically to
-the DB instance during the maintenance window. Changing this parameter
-does not result in an outage except in the following case and the
-change is asynchronously applied as soon as possible. An outage will
-result if this parameter is set to C<true> during the maintenance
-window, and a newer minor version is available, and RDS has enabled
-auto patching for that engine version.
+Indicates that minor version upgrades are applied automatically to the
+DB instance during the maintenance window. Changing this parameter does
+not result in an outage except in the following case and the change is
+asynchronously applied as soon as possible. An outage will result if
+this parameter is set to C<true> during the maintenance window, and a
+newer minor version is available, and RDS has enabled auto patching for
+that engine version.
 
 
 
@@ -248,29 +247,24 @@ instance.
 =head2 CopyTagsToSnapshot => Bool
 
 True to copy all tags from the DB instance to snapshots of the DB
-instance; otherwise false. The default is false.
+instance, and otherwise false. The default is false.
 
 
 
 =head2 DBInstanceClass => Str
 
-The new compute and memory capacity of the DB instance. To determine
-the instance classes that are available for a particular DB engine, use
-the DescribeOrderableDBInstanceOptions action. Note that not all
-instance classes are available in all regions for all DB engines.
+The new compute and memory capacity of the DB instance, for example,
+C<db.m4.large>. Not all DB instance classes are available in all AWS
+Regions, or for all database engines. For the full list of DB instance
+classes, and availability for your engine, see DB Instance Class
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
+in the Amazon RDS User Guide.
 
-Passing a value for this setting causes an outage during the change and
-is applied during the next maintenance window, unless
-C<ApplyImmediately> is specified as C<true> for this request.
+If you modify the DB instance class, an outage occurs during the
+change. The change is applied during the next maintenance window,
+unless C<ApplyImmediately> is specified as C<true> for this request.
 
 Default: Uses existing setting
-
-Valid Values: C<db.t1.micro | db.m1.small | db.m1.medium | db.m1.large
-| db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge |
-db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large
-| db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge |
-db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge |
-db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large>
 
 
 
@@ -416,7 +410,7 @@ Service.
 =head2 EnableIAMDatabaseAuthentication => Bool
 
 True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts; otherwise false.
+accounts to database accounts, and otherwise false.
 
 You can enable IAM database authentication for the following database
 engines
@@ -446,7 +440,8 @@ Default: C<false>
 
 =head2 EnablePerformanceInsights => Bool
 
-
+True to enable Performance Insights for the DB instance, and otherwise
+false.
 
 
 
@@ -496,13 +491,13 @@ migration depends on several factors such as database load, storage
 size, storage type (standard or Provisioned IOPS), amount of IOPS
 provisioned (if any), and the number of prior scale storage operations.
 Typical migration times are under 24 hours, but the process can take up
-to several days in some cases. During the migration, the DB instance
-will be available for use, but might experience performance
-degradation. While the migration takes place, nightly backups for the
-instance will be suspended. No other Amazon RDS operations can take
-place for the instance, including modifying the instance, rebooting the
-instance, deleting the instance, creating a Read Replica for the
-instance, and creating a DB snapshot of the instance.
+to several days in some cases. During the migration, the DB instance is
+available for use, but might experience performance degradation. While
+the migration takes place, nightly backups for the instance are
+suspended. No other Amazon RDS operations can take place for the
+instance, including modifying the instance, rebooting the instance,
+deleting the instance, creating a Read Replica for the instance, and
+creating a DB snapshot of the instance.
 
 
 
@@ -517,8 +512,8 @@ C<general-public-license>
 
 =head2 MasterUserPassword => Str
 
-The new password for the master user. Can be any printable ASCII
-character except "/", """, or "@".
+The new password for the master user. The password can include any
+printable ASCII character except "/", """, or "@".
 
 Changing this parameter does not result in an outage and the change is
 asynchronously applied as soon as possible. Between the time of the
@@ -576,7 +571,7 @@ Valid Values: C<0, 1, 5, 10, 15, 30, 60>
 =head2 MonitoringRoleArn => Str
 
 The ARN for the IAM role that permits RDS to send enhanced monitoring
-metrics to CloudWatch Logs. For example,
+metrics to Amazon CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
 a monitoring role, go to To create an IAM role for Amazon RDS Enhanced
 Monitoring
@@ -640,15 +635,16 @@ period during which new connections are rejected but existing
 connections are not interrupted.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
-TDE, cannot be removed from an option group, and that option group
-cannot be removed from a DB instance once it is associated with a DB
-instance
+TDE, can't be removed from an option group, and that option group can't
+be removed from a DB instance once it is associated with a DB instance
 
 
 
 =head2 PerformanceInsightsKMSKeyId => Str
 
-
+The AWS KMS key identifier for encryption of Performance Insights data.
+The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier,
+or the KMS key alias for the KMS encryption key.
 
 
 
@@ -675,7 +671,7 @@ Must be in the format hh24:mi-hh24:mi
 
 =item *
 
-Times should be in Universal Time Coordinated (UTC)
+Must be in Universal Time Coordinated (UTC)
 
 =item *
 
@@ -754,21 +750,21 @@ Valid values: C<standard | gp2 | io1>
 If you specify C<io1>, you must also include a value for the C<Iops>
 parameter.
 
-Default: C<io1> if the C<Iops> parameter is specified; otherwise
+Default: C<io1> if the C<Iops> parameter is specified, otherwise
 C<standard>
 
 
 
 =head2 TdeCredentialArn => Str
 
-The ARN from the Key Store with which to associate the instance for TDE
+The ARN from the key store with which to associate the instance for TDE
 encryption.
 
 
 
 =head2 TdeCredentialPassword => Str
 
-The password for the given ARN from the Key Store in order to access
+The password for the given ARN from the key store in order to access
 the device.
 
 

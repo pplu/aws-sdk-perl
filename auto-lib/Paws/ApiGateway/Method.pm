@@ -116,7 +116,7 @@ content types (as the mapping key).
 =head2 RequestParameters => L<Paws::ApiGateway::MapOfStringToBoolean>
 
 A key-value map defining required or optional method request parameters
-that can be accepted by Amazon API Gateway. A key is a method request
+that can be accepted by API Gateway. A key is a method request
 parameter name matching the pattern of
 C<method.request.{location}.{name}>, where C<location> is
 C<querystring>, C<path>, or C<header> and C<name> is a valid and unique

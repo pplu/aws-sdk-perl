@@ -60,22 +60,23 @@ Metrics for a specified crawler.
 
 =head2 StillEstimating => Bool
 
-  True if the crawler is estimating its
+  True if the crawler is still estimating how long it will take to
+complete this run.
 
 
 =head2 TablesCreated => Int
 
-  A list of the tables created by this crawler.
+  The number of tables created by this crawler.
 
 
 =head2 TablesDeleted => Int
 
-  A list of the tables deleted by this crawler.
+  The number of tables deleted by this crawler.
 
 
 =head2 TablesUpdated => Int
 
-  A list of the tables created by this crawler.
+  The number of tables updated by this crawler.
 
 
 =head2 TimeLeftSeconds => Num

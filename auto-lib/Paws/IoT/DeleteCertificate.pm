@@ -2,6 +2,7 @@
 package Paws::IoT::DeleteCertificate;
   use Moose;
   has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId', required => 1);
+  has ForceDelete => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'forceDelete');
 
   use MooseX::ClassAttribute;
 
@@ -37,6 +38,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> CertificateId => Str
 
 The ID of the certificate.
+
+
+
+=head2 ForceDelete => Bool
+
+Forces a certificate request to be deleted.
 
 
 

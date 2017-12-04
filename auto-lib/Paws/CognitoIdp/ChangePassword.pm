@@ -37,19 +37,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AccessToken => Str
 
-The access token in the change password request.
+The access token.
 
 
 
 =head2 B<REQUIRED> PreviousPassword => Str
 
-The old password in the change password request.
+The old password.
 
 
 
 =head2 B<REQUIRED> ProposedPassword => Str
 
-The new password in the change password request.
+The new password.
 
 
 

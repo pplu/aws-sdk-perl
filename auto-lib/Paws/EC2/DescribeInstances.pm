@@ -77,8 +77,8 @@ indicates whether the EBS volume is deleted on instance termination.
 
 =item *
 
-C<block-device-mapping.device-name> - The device name for the EBS
-volume (for example, C</dev/sdh> or C<xvdh>).
+C<block-device-mapping.device-name> - The device name specified in the
+block device mapping (for example, C</dev/sdh> or C<xvdh>).
 
 =item *
 
@@ -404,13 +404,13 @@ launch request, you also get one reservation ID.
 
 =item *
 
-C<root-device-name> - The name of the root device for the instance (for
-example, C</dev/sda1> or C</dev/xvda>).
+C<root-device-name> - The device name of the root device volume (for
+example, C</dev/sda1>).
 
 =item *
 
-C<root-device-type> - The type of root device that the instance uses
-(C<ebs> | C<instance-store>).
+C<root-device-type> - The type of the root device volume (C<ebs> |
+C<instance-store>).
 
 =item *
 

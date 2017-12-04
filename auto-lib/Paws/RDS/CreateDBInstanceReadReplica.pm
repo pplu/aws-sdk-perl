@@ -54,8 +54,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AutoMinorVersionUpgrade => Bool
 
-Indicates that minor engine upgrades will be applied automatically to
-the Read Replica during the maintenance window.
+Indicates that minor engine upgrades are applied automatically to the
+Read Replica during the maintenance window.
 
 Default: Inherits from the source DB instance
 
@@ -63,8 +63,7 @@ Default: Inherits from the source DB instance
 
 =head2 AvailabilityZone => Str
 
-The Amazon EC2 Availability Zone that the Read Replica will be created
-in.
+The Amazon EC2 Availability Zone that the Read Replica is created in.
 
 Default: A random, system-chosen Availability Zone in the endpoint's
 AWS Region.
@@ -76,21 +75,18 @@ Example: C<us-east-1d>
 =head2 CopyTagsToSnapshot => Bool
 
 True to copy all tags from the Read Replica to snapshots of the Read
-Replica; otherwise false. The default is false.
+Replica, and otherwise false. The default is false.
 
 
 
 =head2 DBInstanceClass => Str
 
-The compute and memory capacity of the Read Replica. Note that not all
-instance classes are available in all regions for all DB engines.
-
-Valid Values: C<db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge
-| db.m2.xlarge |db.m2.2xlarge | db.m2.4xlarge | db.m3.medium |
-db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge
-| db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large |
-db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge |
-db.t2.micro | db.t2.small | db.t2.medium | db.t2.large>
+The compute and memory capacity of the Read Replica, for example,
+C<db.m4.large>. Not all DB instance classes are available in all AWS
+Regions, or for all database engines. For the full list of DB instance
+classes, and availability for your engine, see DB Instance Class
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
+in the Amazon RDS User Guide.
 
 Default: Inherits from the source DB instance.
 
@@ -106,10 +102,9 @@ lowercase string.
 
 =head2 DBSubnetGroupName => Str
 
-Specifies a DB subnet group for the DB instance. The new DB instance
-will be created in the VPC associated with the DB subnet group. If no
-DB subnet group is specified, then the new DB instance is not created
-in a VPC.
+Specifies a DB subnet group for the DB instance. The new DB instance is
+created in the VPC associated with the DB subnet group. If no DB subnet
+group is specified, then the new DB instance is not created in a VPC.
 
 Constraints:
 
@@ -138,12 +133,12 @@ source DB instance must either:E<gt>
 
 =item *
 
-Specify DB subnet groups from the same VPC. All these Read Replicas
-will be created in the same VPC.
+Specify DB subnet groups from the same VPC. All these Read Replicas are
+created in the same VPC.
 
 =item *
 
-Not specify a DB subnet group. All these Read Replicas will be created
+Not specify a DB subnet group. All these Read Replicas are created
 outside of any VPC.
 
 =back
@@ -157,7 +152,7 @@ Example: C<mySubnetgroup>
 =head2 EnableIAMDatabaseAuthentication => Bool
 
 True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts; otherwise false.
+accounts to database accounts, and otherwise false.
 
 You can enable IAM database authentication for the following database
 engines
@@ -184,7 +179,8 @@ Default: C<false>
 
 =head2 EnablePerformanceInsights => Bool
 
-
+True to enable Performance Insights for the read replica, and otherwise
+false.
 
 
 
@@ -212,7 +208,7 @@ source DB instance.
 If you create an encrypted Read Replica in a different AWS Region, then
 you must specify a KMS key for the destination AWS Region. KMS
 encryption keys are specific to the AWS Region that they are created
-in, and you cannot use encryption keys from one AWS Region in another
+in, and you can't use encryption keys from one AWS Region in another
 AWS Region.
 
 
@@ -233,7 +229,7 @@ Valid Values: C<0, 1, 5, 10, 15, 30, 60>
 =head2 MonitoringRoleArn => Str
 
 The ARN for the IAM role that permits RDS to send enhanced monitoring
-metrics to CloudWatch Logs. For example,
+metrics to Amazon CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
 a monitoring role, go to To create an IAM role for Amazon RDS Enhanced
 Monitoring
@@ -246,14 +242,16 @@ supply a C<MonitoringRoleArn> value.
 
 =head2 OptionGroupName => Str
 
-The option group the DB instance will be associated with. If omitted,
-the default option group for the engine specified will be used.
+The option group the DB instance is associated with. If omitted, the
+default option group for the engine specified is used.
 
 
 
 =head2 PerformanceInsightsKMSKeyId => Str
 
-
+The AWS KMS key identifier for encryption of Performance Insights data.
+The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier,
+or the KMS key alias for the KMS encryption key.
 
 
 
@@ -275,9 +273,9 @@ contains the source DB instance.
 
 You must specify this parameter when you create an encrypted Read
 Replica from another AWS Region by using the Amazon RDS API. You can
-specify the source region option instead of this parameter when you
-create an encrypted Read Replica from another AWS Region by using the
-AWS CLI.
+specify the C<--source-region> option instead of this parameter when
+you create an encrypted Read Replica from another AWS Region by using
+the AWS CLI.
 
 The presigned URL must be a valid request for the
 C<CreateDBInstanceReadReplica> API action that can be executed in the
@@ -289,25 +287,25 @@ presigned URL request must contain the following parameter values:
 =item *
 
 C<DestinationRegion> - The AWS Region that the encrypted Read Replica
-will be created in. This AWS Region is the same one where the
+is created in. This AWS Region is the same one where the
 C<CreateDBInstanceReadReplica> action is called that contains this
 presigned URL.
 
 For example, if you create an encrypted DB instance in the us-west-1
-region, from a source DB instance in the us-east-2 region, then you
-call the C<CreateDBInstanceReadReplica> action in the us-east-1 region
-and provide a presigned URL that contains a call to the
-C<CreateDBInstanceReadReplica> action in the us-west-2 region. For this
-example, the C<DestinationRegion> in the presigned URL must be set to
-the us-east-1 region.
+AWS Region, from a source DB instance in the us-east-2 AWS Region, then
+you call the C<CreateDBInstanceReadReplica> action in the us-east-1 AWS
+Region and provide a presigned URL that contains a call to the
+C<CreateDBInstanceReadReplica> action in the us-west-2 AWS Region. For
+this example, the C<DestinationRegion> in the presigned URL must be set
+to the us-east-1 AWS Region.
 
 =item *
 
-C<KmsKeyId> - The KMS key identifier for the key to use to encrypt the
-Read Replica in the destination AWS Region. This is the same identifier
-for both the C<CreateDBInstanceReadReplica> action that is called in
-the destination AWS Region, and the action contained in the presigned
-URL.
+C<KmsKeyId> - The AWS KMS key identifier for the key to use to encrypt
+the Read Replica in the destination AWS Region. This is the same
+identifier for both the C<CreateDBInstanceReadReplica> action that is
+called in the destination AWS Region, and the action contained in the
+presigned URL.
 
 =item *
 
@@ -315,7 +313,7 @@ C<SourceDBInstanceIdentifier> - The DB instance identifier for the
 encrypted DB instance to be replicated. This identifier must be in the
 Amazon Resource Name (ARN) format for the source AWS Region. For
 example, if you are creating an encrypted Read Replica from a DB
-instance in the us-west-2 region, then your
+instance in the us-west-2 AWS Region, then your
 C<SourceDBInstanceIdentifier> looks like the following example:
 C<arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-20161115>.
 
@@ -355,10 +353,10 @@ B<VPC:>false
 =back
 
 If no DB subnet group has been specified as part of the request and the
-PubliclyAccessible value has not been set, the DB instance will be
-publicly accessible. If a specific DB subnet group has been specified
-as part of the request and the PubliclyAccessible value has not been
-set, the DB instance will be private.
+PubliclyAccessible value has not been set, the DB instance is publicly
+accessible. If a specific DB subnet group has been specified as part of
+the request and the PubliclyAccessible value has not been set, the DB
+instance is private.
 
 
 
@@ -384,8 +382,8 @@ source is running MySQL 5.6.
 =item *
 
 Can specify a DB instance that is a PostgreSQL DB instance only if the
-source is running PostgreSQL 9.3.5 or later (9.4.7 and higher for cross
-region replication).
+source is running PostgreSQL 9.3.5 or later (9.4.7 and higher for
+cross-region replication).
 
 =item *
 
@@ -418,7 +416,7 @@ Valid values: C<standard | gp2 | io1>
 If you specify C<io1>, you must also include a value for the C<Iops>
 parameter.
 
-Default: C<io1> if the C<Iops> parameter is specified; otherwise
+Default: C<io1> if the C<Iops> parameter is specified, otherwise
 C<standard>
 
 

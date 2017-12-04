@@ -26,9 +26,9 @@ Paws::ApiGateway::Authorizer
 
 =head2 AuthorizerCredentials => Str
 
-Specifies the required credentials as an IAM role for Amazon API
-Gateway to invoke the authorizer. To specify an IAM role for Amazon API
-Gateway to assume, use the role's Amazon Resource Name (ARN). To use
+Specifies the required credentials as an IAM role for API Gateway to
+invoke the authorizer. To specify an IAM role for API Gateway to
+assume, use the role's Amazon Resource Name (ARN). To use
 resource-based permissions on the Lambda function, specify null.
 
 
@@ -104,12 +104,12 @@ used.
 =head2 IdentityValidationExpression => Str
 
 A validation expression for the incoming identity token. For C<TOKEN>
-authorizers, this value is a regular expression. Amazon API Gateway
-will match the incoming token from the client against the specified
-regular expression. It will invoke the authorizer's Lambda function
-there is a match. Otherwise, it will return a 401 Unauthorized response
-without calling the Lambda function. The validation expression does not
-apply to the C<REQUEST> authorizer.
+authorizers, this value is a regular expression. API Gateway will match
+the incoming token from the client against the specified regular
+expression. It will invoke the authorizer's Lambda function there is a
+match. Otherwise, it will return a 401 Unauthorized response without
+calling the Lambda function. The validation expression does not apply
+to the C<REQUEST> authorizer.
 
 
 =head2 Name => Str

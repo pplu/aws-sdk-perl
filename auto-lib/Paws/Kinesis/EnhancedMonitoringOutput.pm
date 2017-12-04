@@ -30,7 +30,7 @@ state after the operation.
 
 =head2 StreamName => Str
 
-The name of the Amazon Kinesis stream.
+The name of the Kinesis stream.
 
 
 =head2 _request_id => Str

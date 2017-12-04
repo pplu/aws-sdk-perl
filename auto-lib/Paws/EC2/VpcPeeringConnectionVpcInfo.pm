@@ -5,6 +5,7 @@ package Paws::EC2::VpcPeeringConnectionVpcInfo;
   has Ipv6CidrBlockSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Ipv6CidrBlock]', request_name => 'ipv6CidrBlockSet', traits => ['NameInRequest']);
   has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has PeeringOptions => (is => 'ro', isa => 'Paws::EC2::VpcPeeringConnectionOptionsDescription', request_name => 'peeringOptions', traits => ['NameInRequest']);
+  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
 1;
 
@@ -65,6 +66,11 @@ This class has no description
 
   Information about the VPC peering connection options for the accepter
 or requester VPC.
+
+
+=head2 Region => Str
+
+  The region in which the VPC is located.
 
 
 =head2 VpcId => Str

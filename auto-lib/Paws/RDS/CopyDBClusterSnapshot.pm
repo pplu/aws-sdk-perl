@@ -41,15 +41,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 CopyTags => Bool
 
 True to copy all tags from the source DB cluster snapshot to the target
-DB cluster snapshot; otherwise false. The default is false.
+DB cluster snapshot, and otherwise false. The default is false.
 
 
 
 =head2 KmsKeyId => Str
 
-The AWS KMS key ID for an encrypted DB cluster snapshot. The KMS key ID
-is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key
-alias for the KMS encryption key.
+The AWS AWS KMS key ID for an encrypted DB cluster snapshot. The KMS
+key ID is the Amazon Resource Name (ARN), KMS key identifier, or the
+KMS key alias for the KMS encryption key.
 
 If you copy an unencrypted DB cluster snapshot and specify a value for
 the C<KmsKeyId> parameter, Amazon RDS encrypts the target DB cluster
@@ -68,7 +68,7 @@ To copy an encrypted DB cluster snapshot to another AWS Region, you
 must set C<KmsKeyId> to the KMS key ID you want to use to encrypt the
 copy of the DB cluster snapshot in the destination AWS Region. KMS
 encryption keys are specific to the AWS Region that they are created
-in, and you cannot use encryption keys from one AWS Region in another
+in, and you can't use encryption keys from one AWS Region in another
 AWS Region.
 
 
@@ -91,11 +91,11 @@ values:
 
 =item *
 
-C<KmsKeyId> - The KMS key identifier for the key to use to encrypt the
-copy of the DB cluster snapshot in the destination AWS Region. This is
-the same identifier for both the C<CopyDBClusterSnapshot> action that
-is called in the destination AWS Region, and the action contained in
-the pre-signed URL.
+C<KmsKeyId> - The AWS KMS key identifier for the key to use to encrypt
+the copy of the DB cluster snapshot in the destination AWS Region. This
+is the same identifier for both the C<CopyDBClusterSnapshot> action
+that is called in the destination AWS Region, and the action contained
+in the pre-signed URL.
 
 =item *
 
@@ -108,7 +108,7 @@ C<SourceDBClusterSnapshotIdentifier> - The DB cluster snapshot
 identifier for the encrypted DB cluster snapshot to be copied. This
 identifier must be in the Amazon Resource Name (ARN) format for the
 source AWS Region. For example, if you are copying an encrypted DB
-cluster snapshot from the us-west-2 region, then your
+cluster snapshot from the us-west-2 AWS Region, then your
 C<SourceDBClusterSnapshotIdentifier> looks like the following example:
 C<arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115>.
 
@@ -128,7 +128,7 @@ and Signature Version 4 Signing Process
 The identifier of the DB cluster snapshot to copy. This parameter is
 not case-sensitive.
 
-You cannot copy an encrypted, shared DB cluster snapshot from one AWS
+You can't copy an encrypted, shared DB cluster snapshot from one AWS
 Region to another.
 
 Constraints:

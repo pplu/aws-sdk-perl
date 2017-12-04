@@ -33,9 +33,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::TaskDe
 =head1 DESCRIPTION
 
 An object representing a constraint on task placement in the task
-definition. For more information, see Task Placement Constraints
+definition.
+
+If you are using the Fargate launch type, task placement contraints are
+not supported.
+
+For more information, see Task Placement Constraints
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html)
-in the I<Amazon EC2 Container Service Developer Guide>.
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 =head1 ATTRIBUTES
 
@@ -45,7 +50,7 @@ in the I<Amazon EC2 Container Service Developer Guide>.
   A cluster query language expression to apply to the constraint. For
 more information, see Cluster Query Language
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html)
-in the I<Amazon EC2 Container Service Developer Guide>.
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 Type => Str

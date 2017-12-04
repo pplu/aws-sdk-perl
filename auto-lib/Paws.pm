@@ -236,11 +236,15 @@ kept stable, and changes to it should be notified via ChangeLog
 
 L<Paws::ACM>
 
+L<Paws::AlexaForBusiness>
+
 L<Paws::ApiGateway>
 
 L<Paws::ApplicationAutoScaling>
 
 L<Paws::AppStream>
+
+L<Paws::AppSync>
 
 L<Paws::Athena>
 
@@ -249,6 +253,8 @@ L<Paws::AutoScaling>
 L<Paws::Batch>
 
 L<Paws::Budgets>
+
+L<Paws::Cloud9>
 
 L<Paws::CloudDirectory>
 
@@ -290,7 +296,11 @@ L<Paws::CognitoIdp>
 
 L<Paws::CognitoSync>
 
+L<Paws::Comprehend>
+
 L<Paws::Config>
+
+L<Paws::CostExplorer>
 
 L<Paws::CUR>
 
@@ -350,6 +360,8 @@ L<Paws::Glue>
 
 L<Paws::Greengrass>
 
+L<Paws::GuardDuty>
+
 L<Paws::Health>
 
 L<Paws::IAM>
@@ -362,9 +374,17 @@ L<Paws::IoT>
 
 L<Paws::IoTData>
 
+L<Paws::IoTJobsData>
+
 L<Paws::Kinesis>
 
 L<Paws::KinesisAnalytics>
+
+L<Paws::KinesisVideo>
+
+L<Paws::KinesisVideoArchivedMedia>
+
+L<Paws::KinesisVideoMedia>
 
 L<Paws::KMS>
 
@@ -384,9 +404,21 @@ L<Paws::MarketplaceEntitlement>
 
 L<Paws::MarketplaceMetering>
 
+L<Paws::MediaConvert>
+
+L<Paws::MediaLive>
+
+L<Paws::MediaPackage>
+
+L<Paws::MediaStore>
+
+L<Paws::MediaStoreData>
+
 L<Paws::MigrationHub>
 
 L<Paws::MobileHub>
+
+L<Paws::MQ>
 
 L<Paws::MTurk>
 
@@ -408,6 +440,8 @@ L<Paws::RedShift>
 
 L<Paws::Rekognition>
 
+L<Paws::ResourceGroups>
+
 L<Paws::ResourceTagging>
 
 L<Paws::Route53>
@@ -416,7 +450,13 @@ L<Paws::Route53Domains>
 
 L<Paws::S3>
 
+L<Paws::SageMaker>
+
+L<Paws::SageMakerRuntime>
+
 L<Paws::SDB>
+
+L<Paws::ServerlessRepo>
 
 L<Paws::ServiceCatalog>
 
@@ -449,6 +489,8 @@ L<Paws::StorageGateway>
 L<Paws::STS>
 
 L<Paws::Support>
+
+L<Paws::Translate>
 
 L<Paws::WAF>
 

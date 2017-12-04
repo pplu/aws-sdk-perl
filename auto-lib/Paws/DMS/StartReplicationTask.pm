@@ -43,7 +43,7 @@ The start time for the Change Data Capture (CDC) operation.
 
 =head2 B<REQUIRED> ReplicationTaskArn => Str
 
-The Amazon Resource Number (ARN) of the replication task to be started.
+The Amazon Resource Name (ARN) of the replication task to be started.
 
 
 

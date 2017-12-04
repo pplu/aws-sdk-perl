@@ -60,7 +60,7 @@ in the I<Auto Scaling User Guide>.
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-The name or ARN of the group.
+The name of the Auto Scaling group.
 
 
 

@@ -73,7 +73,7 @@ Guarantees strictly increasing sequence numbers, for puts from the same
 client and to the same partition key. Usage: set the
 C<SequenceNumberForOrdering> of record I<n> to the sequence number of
 record I<n-1> (as returned in the result when putting record I<n-1>).
-If this parameter is not set, records will be coarsely ordered based on
+If this parameter is not set, records are coarsely ordered based on
 arrival time.
 
 

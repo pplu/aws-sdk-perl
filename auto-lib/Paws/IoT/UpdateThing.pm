@@ -60,7 +60,8 @@ rejected with a C<VersionConflictException>.
 
 =head2 RemoveThingType => Bool
 
-Remove a thing type association. If B<true>, the assocation is removed.
+Remove a thing type association. If B<true>, the association is
+removed.
 
 
 

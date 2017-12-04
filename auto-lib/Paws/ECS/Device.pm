@@ -51,8 +51,8 @@ An object representing a container instance host device.
 =head2 Permissions => ArrayRef[Str|Undef]
 
   The explicit permissions to provide to the container for the device. By
-default, the container will be able to C<read>, C<write>, and C<mknod>
-the device.
+default, the container has permissions for C<read>, C<write>, and
+C<mknod> for the device.
 
 
 

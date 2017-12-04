@@ -2,7 +2,9 @@
 package Paws::CognitoIdp::GetUserResponse;
   use Moose;
   has MFAOptions => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::MFAOptionType]');
+  has PreferredMfaSetting => (is => 'ro', isa => 'Str');
   has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::AttributeType]', required => 1);
+  has UserMFASettingList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Username => (is => 'ro', isa => 'Str', required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -21,12 +23,22 @@ Paws::CognitoIdp::GetUserResponse
 Specifies the options for MFA (e.g., email or phone number).
 
 
+=head2 PreferredMfaSetting => Str
+
+
+
+
 =head2 B<REQUIRED> UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]
 
 An array of name-value pairs representing user attributes.
 
 For custom attributes, you must prepend the C<custom:> prefix to the
 attribute name.
+
+
+=head2 UserMFASettingList => ArrayRef[Str|Undef]
+
+
 
 
 =head2 B<REQUIRED> Username => Str

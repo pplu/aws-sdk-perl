@@ -34,20 +34,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Updat
 
 =head1 DESCRIPTION
 
-Specifies a Grok classifier to update when passed to UpdateClassifier.
+Specifies a grok classifier to update when passed to
+C<UpdateClassifier>.
 
 =head1 ATTRIBUTES
 
 
 =head2 Classification => Str
 
-  The type of result that the classifier matches, such as Twitter Json,
-Omniture logs, Cloudwatch logs, and so forth.
+  An identifier of the data format that the classifier matches, such as
+Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
 
 
 =head2 CustomPatterns => Str
 
-  Custom grok patterns used by this classifier.
+  Optional custom grok patterns used by this classifier.
 
 
 =head2 GrokPattern => Str

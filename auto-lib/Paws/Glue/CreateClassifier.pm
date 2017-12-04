@@ -2,6 +2,7 @@
 package Paws::Glue::CreateClassifier;
   use Moose;
   has GrokClassifier => (is => 'ro', isa => 'Paws::Glue::CreateGrokClassifierRequest');
+  has XMLClassifier => (is => 'ro', isa => 'Paws::Glue::CreateXMLClassifierRequest');
 
   use MooseX::ClassAttribute;
 
@@ -35,7 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 GrokClassifier => L<Paws::Glue::CreateGrokClassifierRequest>
 
-A grok classifier to create.
+A C<GrokClassifier> object specifying the classifier to create.
+
+
+
+=head2 XMLClassifier => L<Paws::Glue::CreateXMLClassifierRequest>
+
+An C<XMLClassifier> object specifying the classifier to create.
 
 
 

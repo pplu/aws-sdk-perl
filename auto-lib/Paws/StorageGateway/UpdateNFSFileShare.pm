@@ -4,6 +4,7 @@ package Paws::StorageGateway::UpdateNFSFileShare;
   has ClientList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DefaultStorageClass => (is => 'ro', isa => 'Str');
   has FileShareARN => (is => 'ro', isa => 'Str', required => 1);
+  has GuessMIMETypeEnabled => (is => 'ro', isa => 'Bool');
   has KMSEncrypted => (is => 'ro', isa => 'Bool');
   has KMSKey => (is => 'ro', isa => 'Str');
   has NFSFileShareDefaults => (is => 'ro', isa => 'Paws::StorageGateway::NFSFileShareDefaults');
@@ -59,6 +60,13 @@ Optional.
 =head2 B<REQUIRED> FileShareARN => Str
 
 The Amazon Resource Name (ARN) of the file share to be updated.
+
+
+
+=head2 GuessMIMETypeEnabled => Bool
+
+Enables guessing of the MIME type for uploaded objects based on file
+extensions: "true" to enable MIME type guessing, and otherwise "false".
 
 
 

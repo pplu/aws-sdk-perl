@@ -99,8 +99,8 @@ The database name for the restored DB cluster.
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-The name of the DB cluster to create from the source data in the S3
-bucket. This parameter is isn't case-sensitive.
+The name of the DB cluster to create from the source data in the Amazon
+S3 bucket. This parameter is isn't case-sensitive.
 
 Constraints:
 
@@ -128,7 +128,7 @@ Example: C<my-cluster1>
 
 The name of the DB cluster parameter group to associate with the
 restored DB cluster. If this argument is omitted, C<default.aurora5.6>
-will be used.
+is used.
 
 Constraints:
 
@@ -157,9 +157,8 @@ Example: C<mySubnetgroup>
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-A Boolean value that is true to enable mapping of AWS Identity and
-Access Management (IAM) accounts to database accounts, and otherwise
-false.
+True to enable mapping of AWS Identity and Access Management (IAM)
+accounts to database accounts, and otherwise false.
 
 Default: C<false>
 
@@ -169,7 +168,7 @@ Default: C<false>
 
 The name of the database engine to be used for the restored DB cluster.
 
-Valid Values: C<aurora>
+Valid Values: C<aurora>, C<aurora-postgresql>
 
 
 
@@ -185,7 +184,7 @@ Example: C<5.6.10a>
 
 =head2 KmsKeyId => Str
 
-The KMS key identifier for an encrypted DB cluster.
+The AWS KMS key identifier for an encrypted DB cluster.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
 encryption key. If you are creating a DB cluster with the same AWS
@@ -240,8 +239,8 @@ Constraints: Must contain from 8 to 41 characters.
 A value that indicates that the restored DB cluster should be
 associated with the specified option group.
 
-Permanent options cannot be removed from an option group. An option
-group cannot be removed from a DB cluster once it is associated with a
+Permanent options can't be removed from an option group. An option
+group can't be removed from a DB cluster once it is associated with a
 DB cluster.
 
 
@@ -261,9 +260,9 @@ The daily time range during which automated backups are created if
 automated backups are enabled using the C<BackupRetentionPeriod>
 parameter.
 
-Default: A 30-minute window selected at random from an 8-hour block of
-time per AWS Region. To see the time blocks available, see Adjusting
-the Preferred Maintenance Window
+The default is a 30-minute window selected at random from an 8-hour
+block of time for each AWS Region. To see the time blocks available,
+see Adjusting the Preferred Maintenance Window
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
 in the I<Amazon RDS User Guide.>
 
@@ -277,7 +276,7 @@ Must be in the format C<hh24:mi-hh24:mi>.
 
 =item *
 
-Times should be in Universal Coordinated Time (UTC).
+Must be in Universal Coordinated Time (UTC).
 
 =item *
 
@@ -299,13 +298,14 @@ Universal Coordinated Time (UTC).
 
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
-Default: A 30-minute window selected at random from an 8-hour block of
-time per AWS Region, occurring on a random day of the week. To see the
-time blocks available, see Adjusting the Preferred Maintenance Window
+The default is a 30-minute window selected at random from an 8-hour
+block of time for each AWS Region, occurring on a random day of the
+week. To see the time blocks available, see Adjusting the Preferred
+Maintenance Window
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
 in the I<Amazon RDS User Guide.>
 
-Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
+Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 
 Constraints: Minimum 30-minute window.
 

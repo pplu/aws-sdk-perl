@@ -4,6 +4,7 @@ package Paws::Lambda::AccountLimit;
   has CodeSizeZipped => (is => 'ro', isa => 'Int');
   has ConcurrentExecutions => (is => 'ro', isa => 'Int');
   has TotalCodeSize => (is => 'ro', isa => 'Int');
+  has UnreservedConcurrentExecutions => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Lambda::AccountLimit object:
 
-  $service_obj->Method(Att1 => { CodeSizeUnzipped => $value, ..., TotalCodeSize => $value  });
+  $service_obj->Method(Att1 => { CodeSizeUnzipped => $value, ..., UnreservedConcurrentExecutions => $value  });
 
 =head3 Results returned from an API call
 
@@ -60,13 +61,19 @@ for uploading larger files. Default limit is 50 MB.
 information or to request a limit increase for concurrent executions,
 see Lambda Function Concurrent Executions
 (http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html).
-The default limit is 100.
+The default limit is 1000.
 
 
 =head2 TotalCodeSize => Int
 
   Maximum size, in bytes, of a code package you can upload per region.
 The default size is 75 GB.
+
+
+=head2 UnreservedConcurrentExecutions => Int
+
+  The number of concurrent executions available to functions that do not
+have concurrency limits set.
 
 
 

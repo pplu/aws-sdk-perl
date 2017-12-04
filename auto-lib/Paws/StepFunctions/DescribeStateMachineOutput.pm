@@ -21,7 +21,7 @@ Paws::StepFunctions::DescribeStateMachineOutput
 
 =head2 B<REQUIRED> CreationDate => Str
 
-The date the state machine was created.
+The date the state machine is created.
 
 
 =head2 B<REQUIRED> Definition => Str

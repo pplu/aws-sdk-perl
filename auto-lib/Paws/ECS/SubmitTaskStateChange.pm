@@ -1,7 +1,12 @@
 
 package Paws::ECS::SubmitTaskStateChange;
   use Moose;
+  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::AttachmentStateChange]', traits => ['NameInRequest'], request_name => 'attachments' );
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has Containers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerStateChange]', traits => ['NameInRequest'], request_name => 'containers' );
+  has ExecutionStoppedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionStoppedAt' );
+  has PullStartedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pullStartedAt' );
+  has PullStoppedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pullStoppedAt' );
   has Reason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reason' );
   has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
   has Task => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'task' );
@@ -36,10 +41,40 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 Attachments => ArrayRef[L<Paws::ECS::AttachmentStateChange>]
+
+Any attachments associated with the state change request.
+
+
+
 =head2 Cluster => Str
 
 The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the task.
+
+
+
+=head2 Containers => ArrayRef[L<Paws::ECS::ContainerStateChange>]
+
+Any containers associated with the state change request.
+
+
+
+=head2 ExecutionStoppedAt => Str
+
+The Unix timestamp for when the task execution stopped.
+
+
+
+=head2 PullStartedAt => Str
+
+The Unix time stamp for when the container image pull began.
+
+
+
+=head2 PullStoppedAt => Str
+
+The Unix time stamp for when the container image pull completed.
 
 
 
@@ -57,8 +92,7 @@ The status of the state change request.
 
 =head2 Task => Str
 
-The task ID or full Amazon Resource Name (ARN) of the task in the state
-change request.
+The task ID or full ARN of the task in the state change request.
 
 
 

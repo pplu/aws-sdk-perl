@@ -1,6 +1,7 @@
 package Paws::IoT::ThingAttribute;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::IoT::Attributes', request_name => 'attributes', traits => ['NameInRequest']);
+  has ThingArn => (is => 'ro', isa => 'Str', request_name => 'thingArn', traits => ['NameInRequest']);
   has ThingName => (is => 'ro', isa => 'Str', request_name => 'thingName', traits => ['NameInRequest']);
   has ThingTypeName => (is => 'ro', isa => 'Str', request_name => 'thingTypeName', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest']);
@@ -43,6 +44,11 @@ a list of thing attributes.
 =head2 Attributes => L<Paws::IoT::Attributes>
 
   A list of thing attributes which are name-value pairs.
+
+
+=head2 ThingArn => Str
+
+  The thing ARN.
 
 
 =head2 ThingName => Str

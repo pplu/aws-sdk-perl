@@ -1,7 +1,7 @@
 package Paws::SSM::InstanceInformationStringFilter;
   use Moose;
   has Key => (is => 'ro', isa => 'Str', required => 1);
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'InstanceInformationFilterValue', traits => ['NameInRequest'], required => 1);
+  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 1;
 
 ### main pod documentation begin ###

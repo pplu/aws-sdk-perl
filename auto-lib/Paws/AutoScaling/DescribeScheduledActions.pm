@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AutoScalingGroupName => Str
 
-The name of the group.
+The name of the Auto Scaling group.
 
 
 

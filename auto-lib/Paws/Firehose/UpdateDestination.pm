@@ -8,6 +8,7 @@ package Paws::Firehose::UpdateDestination;
   has ExtendedS3DestinationUpdate => (is => 'ro', isa => 'Paws::Firehose::ExtendedS3DestinationUpdate');
   has RedshiftDestinationUpdate => (is => 'ro', isa => 'Paws::Firehose::RedshiftDestinationUpdate');
   has S3DestinationUpdate => (is => 'ro', isa => 'Paws::Firehose::S3DestinationUpdate');
+  has SplunkDestinationUpdate => (is => 'ro', isa => 'Paws::Firehose::SplunkDestinationUpdate');
 
   use MooseX::ClassAttribute;
 
@@ -84,6 +85,12 @@ Describes an update for a destination in Amazon Redshift.
 =head2 S3DestinationUpdate => L<Paws::Firehose::S3DestinationUpdate>
 
 [Deprecated] Describes an update for a destination in Amazon S3.
+
+
+
+=head2 SplunkDestinationUpdate => L<Paws::Firehose::SplunkDestinationUpdate>
+
+Describes an update for a destination in Splunk.
 
 
 

@@ -107,6 +107,8 @@ package Paws::API::Builder {
     return 'SimulateAllCustomPolicies' if ($name eq 'SimulateCustomPolicy');
     return 'SimulateAllPrincipalPolicies' if ($name eq 'SimulatePrincipalPolicy');
     return 'LookupAllEvents' if ($name eq 'LookupEvents');
+    return 'BatchGetAllTraces' if ($name eq 'BatchGetTraces');
+
     die "Please help me generate a good name for the paginator $name";
   }
 

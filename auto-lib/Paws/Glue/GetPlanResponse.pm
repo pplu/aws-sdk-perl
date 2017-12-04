@@ -16,7 +16,7 @@ Paws::Glue::GetPlanResponse
 
 =head2 PythonScript => Str
 
-A python script to perform the mapping.
+A Python script to perform the mapping.
 
 
 =head2 _request_id => Str

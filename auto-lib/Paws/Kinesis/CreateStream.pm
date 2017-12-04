@@ -49,8 +49,8 @@ DefaultShardLimit;
 A name to identify the stream. The stream name is scoped to the AWS
 account used by the application that creates the stream. It is also
 scoped by region. That is, two streams in two different AWS accounts
-can have the same name, and two streams in the same AWS account but in
-two different regions can have the same name.
+can have the same name. Two streams in the same AWS account but in two
+different regions can also have the same name.
 
 
 

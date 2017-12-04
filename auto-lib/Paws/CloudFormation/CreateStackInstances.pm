@@ -4,6 +4,7 @@ package Paws::CloudFormation::CreateStackInstances;
   has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has OperationId => (is => 'ro', isa => 'Str');
   has OperationPreferences => (is => 'ro', isa => 'Paws::CloudFormation::StackSetOperationPreferences');
+  has ParameterOverrides => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
   has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has StackSetName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -66,6 +67,63 @@ stack instances whose status is C<OUTDATED>.
 
 Preferences for how AWS CloudFormation performs this stack set
 operation.
+
+
+
+=head2 ParameterOverrides => ArrayRef[L<Paws::CloudFormation::Parameter>]
+
+A list of stack set parameters whose values you want to override in the
+selected stack instances.
+
+Any overridden parameter values will be applied to all stack instances
+in the specified accounts and regions. When specifying parameters and
+their values, be aware of how AWS CloudFormation sets parameter values
+during stack instance operations:
+
+=over
+
+=item *
+
+To override the current value for a parameter, include the parameter
+and specify its value.
+
+=item *
+
+To leave a parameter set to its present value, you can do one of the
+following:
+
+=over
+
+=item *
+
+Do not include the parameter in the list.
+
+=item *
+
+Include the parameter and specify C<UsePreviousValue> as C<true>. (You
+cannot specify both a value and set C<UsePreviousValue> to C<true>.)
+
+=back
+
+=item *
+
+To set all overridden parameter back to the values specified in the
+stack set, specify a parameter list but do not include any parameters.
+
+=item *
+
+To leave all parameters set to their present values, do not specify
+this property at all.
+
+=back
+
+During stack set updates, any parameter values overridden for a stack
+instance are not updated, but retain their overridden value.
+
+You can only override the parameter I<values> that are specified in the
+stack set; to add or delete a parameter itself, use UpdateStackSet
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
+to update the stack set template.
 
 
 

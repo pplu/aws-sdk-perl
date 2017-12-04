@@ -47,7 +47,7 @@ of the API.
 =head2 Id => Str
 
 The API's identifier. This identifier is unique across all of your APIs
-in Amazon API Gateway.
+in API Gateway.
 
 
 =head2 Name => Str

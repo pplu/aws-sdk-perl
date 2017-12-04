@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ReplicationTaskArn => Str
 
-The Amazon Resource Number(ARN) of the replication task to be stopped.
+The Amazon Resource Name(ARN) of the replication task to be stopped.
 
 
 

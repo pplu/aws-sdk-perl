@@ -97,7 +97,9 @@ all steps.
 
 =head2 MasterPublicDnsName => Str
 
-  The DNS name of the master node.
+  The DNS name of the master node. If the cluster is on a private subnet,
+this is the private DNS name. On a public subnet, this is the public
+DNS name.
 
 
 =head2 NormalizedInstanceHours => Int

@@ -44,7 +44,7 @@ Describes the storage for a user.
 
 =head2 StorageUtilizedInBytes => Int
 
-  The amount of storage utilized, in bytes.
+  The amount of storage used, in bytes.
 
 
 

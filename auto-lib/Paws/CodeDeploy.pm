@@ -169,6 +169,11 @@ package Paws::CodeDeploy;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::ListOnPremisesInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutLifecycleEventHookExecutionStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::PutLifecycleEventHookExecutionStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RegisterApplicationRevision {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::RegisterApplicationRevision', @_);
@@ -345,7 +350,7 @@ package Paws::CodeDeploy;
   }
 
 
-  sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplicationRevisions BatchGetApplications BatchGetDeploymentGroups BatchGetDeploymentInstances BatchGetDeployments BatchGetOnPremisesInstances ContinueDeployment CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListGitHubAccountTokenNames ListOnPremisesInstances RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances SkipWaitTimeForInstanceTermination StopDeployment UpdateApplication UpdateDeploymentGroup / }
+  sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplicationRevisions BatchGetApplications BatchGetDeploymentGroups BatchGetDeploymentInstances BatchGetDeployments BatchGetOnPremisesInstances ContinueDeployment CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListGitHubAccountTokenNames ListOnPremisesInstances PutLifecycleEventHookExecutionStatus RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances SkipWaitTimeForInstanceTermination StopDeployment UpdateApplication UpdateDeploymentGroup / }
 
 1;
 
@@ -376,15 +381,15 @@ Paws::CodeDeploy - Perl Interface to AWS AWS CodeDeploy
 AWS CodeDeploy
 
 AWS CodeDeploy is a deployment service that automates application
-deployments to Amazon EC2 instances or on-premises instances running in
-your own facility.
+deployments to Amazon EC2 instances, on-premises instances running in
+your own facility, or serverless AWS Lambda functions.
 
 You can deploy a nearly unlimited variety of application content, such
-as code, web and configuration files, executables, packages, scripts,
-multimedia files, and so on. AWS CodeDeploy can deploy application
-content stored in Amazon S3 buckets, GitHub repositories, or Bitbucket
-repositories. You do not need to make changes to your existing code
-before you can use AWS CodeDeploy.
+as an updated Lambda function, code, web and configuration files,
+executables, packages, scripts, multimedia files, and so on. AWS
+CodeDeploy can deploy application content stored in Amazon S3 buckets,
+GitHub repositories, or Bitbucket repositories. You do not need to make
+changes to your existing code before you can use AWS CodeDeploy.
 
 AWS CodeDeploy makes it easier for you to rapidly release new features,
 helps you avoid downtime during application deployment, and handles the
@@ -407,9 +412,10 @@ configuration, and deployment group are referenced during a deployment.
 
 =item *
 
-B<Deployment group>: A set of individual instances. A deployment group
-contains individually tagged instances, Amazon EC2 instances in Auto
-Scaling groups, or both.
+B<Deployment group>: A set of individual instances or CodeDeploy Lambda
+applications. A Lambda deployment group contains a group of
+applications. An EC2/On-premises deployment group contains individually
+tagged instances, Amazon EC2 instances in Auto Scaling groups, or both.
 
 =item *
 
@@ -420,11 +426,15 @@ deployment.
 =item *
 
 B<Deployment>: The process, and the components involved in the process,
-of installing content on one or more instances.
+of updating a Lambda function or of installing content on one or more
+instances.
 
 =item *
 
-B<Application revisions>: An archive file containing source
+B<Application revisions>: For an AWS Lambda deployment this is an
+AppSpec file that specifies the Lambda function to update and one or
+more functions to validate deployment lifecycle events. For an
+EC2/On-premises deployment, this is an archive file containing source
 contentE<mdash>source code, web pages, executable files, and deployment
 scriptsE<mdash>along with an application specification file (AppSpec
 file). Revisions are stored in Amazon S3 buckets or GitHub
@@ -435,8 +445,9 @@ revision is uniquely identified by its commit ID.
 =back
 
 This guide also contains information to help you get details about the
-instances in your deployments and to make on-premises instances
-available for AWS CodeDeploy deployments.
+instances in your deployments, to make on-premises instances available
+for AWS CodeDeploy deployments, and to get details about a Lambda
+function deployment.
 
 B<AWS CodeDeploy Information Resources>
 
@@ -485,7 +496,7 @@ Returns: a L<Paws::CodeDeploy::BatchGetApplicationRevisionsOutput> instance
 Gets information about one or more application revisions.
 
 
-=head2 BatchGetApplications([ApplicationNames => ArrayRef[Str|Undef]])
+=head2 BatchGetApplications(ApplicationNames => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetApplications>
 
@@ -513,7 +524,7 @@ Gets information about one or more instance that are part of a
 deployment group.
 
 
-=head2 BatchGetDeployments([DeploymentIds => ArrayRef[Str|Undef]])
+=head2 BatchGetDeployments(DeploymentIds => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetDeployments>
 
@@ -522,7 +533,7 @@ Returns: a L<Paws::CodeDeploy::BatchGetDeploymentsOutput> instance
 Gets information about one or more deployments.
 
 
-=head2 BatchGetOnPremisesInstances([InstanceNames => ArrayRef[Str|Undef]])
+=head2 BatchGetOnPremisesInstances(InstanceNames => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetOnPremisesInstances>
 
@@ -545,7 +556,7 @@ in the replacement environment with the load balancer, can start as
 soon as all instances have a status of Ready.)
 
 
-=head2 CreateApplication(ApplicationName => Str)
+=head2 CreateApplication(ApplicationName => Str, [ComputePlatform => Str])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::CreateApplication>
 
@@ -563,7 +574,7 @@ Returns: a L<Paws::CodeDeploy::CreateDeploymentOutput> instance
 Deploys an application revision through the specified deployment group.
 
 
-=head2 CreateDeploymentConfig(DeploymentConfigName => Str, MinimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>)
+=head2 CreateDeploymentConfig(DeploymentConfigName => Str, MinimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>, [ComputePlatform => Str, TrafficRoutingConfig => L<Paws::CodeDeploy::TrafficRoutingConfig>])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeploymentConfig>
 
@@ -764,6 +775,17 @@ Unless otherwise specified, both registered and deregistered
 on-premises instance names will be listed. To list only registered or
 deregistered on-premises instance names, use the registration status
 parameter.
+
+
+=head2 PutLifecycleEventHookExecutionStatus([DeploymentId => Str, LifecycleEventHookExecutionId => Str, Status => Str])
+
+Each argument is described in detail in: L<Paws::CodeDeploy::PutLifecycleEventHookExecutionStatus>
+
+Returns: a L<Paws::CodeDeploy::PutLifecycleEventHookExecutionStatusOutput> instance
+
+Sets the result of a Lambda validation function. The function validates
+one or both lifecycle events (C<BeforeAllowTraffic> and
+C<AfterAllowTraffic>) and returns C<Succeeded> or C<Failed>.
 
 
 =head2 RegisterApplicationRevision(ApplicationName => Str, Revision => L<Paws::CodeDeploy::RevisionLocation>, [Description => Str])

@@ -4,6 +4,7 @@ package Paws::ECS::StartTask;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has ContainerInstances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'containerInstances' , required => 1);
   has Group => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'group' );
+  has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', traits => ['NameInRequest'], request_name => 'networkConfiguration' );
   has Overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride', traits => ['NameInRequest'], request_name => 'overrides' );
   has StartedBy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startedBy' );
   has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
@@ -48,9 +49,9 @@ cluster is assumed.
 
 =head2 B<REQUIRED> ContainerInstances => ArrayRef[Str|Undef]
 
-The container instance IDs or full Amazon Resource Name (ARN) entries
-for the container instances on which you would like to place your task.
-You can specify up to 10 container instances.
+The container instance IDs or full ARN entries for the container
+instances on which you would like to place your task. You can specify
+up to 10 container instances.
 
 
 
@@ -59,6 +60,14 @@ You can specify up to 10 container instances.
 The name of the task group to associate with the task. The default
 value is the family name of the task definition (for example,
 family:my-family-name).
+
+
+
+=head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
+
+The VPC subnet and security group configuration for tasks that receive
+their own Elastic Network Interface by using the C<awsvpc> networking
+mode.
 
 
 
@@ -94,9 +103,9 @@ parameter contains the deployment ID of the service that starts it.
 
 =head2 B<REQUIRED> TaskDefinition => Str
 
-The C<family> and C<revision> (C<family:revision>) or full Amazon
-Resource Name (ARN) of the task definition to start. If a C<revision>
-is not specified, the latest C<ACTIVE> revision is used.
+The C<family> and C<revision> (C<family:revision>) or full ARN of the
+task definition to start. If a C<revision> is not specified, the latest
+C<ACTIVE> revision is used.
 
 
 

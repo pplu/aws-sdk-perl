@@ -2,6 +2,7 @@
 package Paws::ECS::DescribeClusters;
   use Moose;
   has Clusters => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'clusters' );
+  has Include => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'include' );
 
   use MooseX::ClassAttribute;
 
@@ -38,6 +39,50 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 A list of up to 100 cluster names or full cluster Amazon Resource Name
 (ARN) entries. If you do not specify a cluster, the default cluster is
 assumed.
+
+
+
+=head2 Include => ArrayRef[Str|Undef]
+
+Additional information about your clusters to be separated by launch
+type, including:
+
+=over
+
+=item *
+
+runningEC2TasksCount
+
+=item *
+
+RunningFargateTasksCount
+
+=item *
+
+pendingEC2TasksCount
+
+=item *
+
+pendingFargateTasksCount
+
+=item *
+
+activeEC2ServiceCount
+
+=item *
+
+activeFargateServiceCount
+
+=item *
+
+drainingEC2ServiceCount
+
+=item *
+
+drainingFargateServiceCount
+
+=back
+
 
 
 
