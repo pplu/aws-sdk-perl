@@ -32,20 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-Contains the parameters for a storage connector.
+Describes a storage connector.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ConnectorType => Str
 
-  The type of storage connector. The possible values include:
-HOMEFOLDERS.
+  The type of storage connector.
 
 
 =head2 ResourceIdentifier => Str
 
-  The ARN associated with the storage connector.
+  The ARN of the storage connector.
 
 
 
@@ -55,9 +54,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::AppStream
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

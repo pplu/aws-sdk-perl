@@ -61,9 +61,9 @@ Detailed information about a ProvisionedProduct object.
 
 =head2 IdempotencyToken => Str
 
-  A token to disambiguate duplicate requests. You can create multiple
-resources using the same input in multiple requests, provided that you
-also specify a different idempotency token for each request.
+  A token to disambiguate duplicate requests. You can use the same input
+in multiple requests, provided that you also specify a different
+idempotency token for each request.
 
 
 =head2 LastRecordId => Str
@@ -80,6 +80,23 @@ ProvisionedProduct object.
 =head2 Status => Str
 
   The current status of the ProvisionedProduct.
+
+C<AVAILABLE> - Stable state, ready to perform any operation. The most
+recent action request succeeded and completed.
+
+C<UNDER_CHANGE> - Transitive state, operations performed may or may not
+have valid results. Wait for an C<AVAILABLE> status before performing
+operations.
+
+C<TAINTED> - Stable state, ready to perform any operation. The stack
+has completed the requested operation but is not exactly what was
+requested. For example, a request to update to a new version failed and
+the stack rolled back to the current version.
+
+C<ERROR> - Something unexpected happened such that the provisioned
+product exists but the stack is not running. For example,
+CloudFormation received an invalid parameter value and could not launch
+the stack.
 
 
 =head2 StatusMessage => Str
@@ -99,9 +116,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ServiceCa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

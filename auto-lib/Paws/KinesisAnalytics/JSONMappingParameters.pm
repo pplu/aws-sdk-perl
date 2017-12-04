@@ -41,11 +41,6 @@ on the streaming source.
 
   Path to the top-level parent that contains the records.
 
-For example, consider the following JSON record:
-
-In the C<RecordRowPath>, C<"$"> refers to the root and path
-C<"$.vehicle.Model"> refers to the specific C<"Model"> key in the JSON.
-
 
 
 =head1 SEE ALSO
@@ -54,9 +49,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::KinesisAn
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

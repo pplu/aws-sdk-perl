@@ -17,7 +17,7 @@ Paws::CloudDirectory::DeleteSchemaResponse
 
 =head2 SchemaArn => Str
 
-Input ARN that is returned as part of the response. For more
+The input ARN that is returned as part of the response. For more
 information, see arns.
 
 

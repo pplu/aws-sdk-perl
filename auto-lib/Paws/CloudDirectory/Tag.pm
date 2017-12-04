@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-Tag structure which contains tag key and value.
+The tag structure that contains a tag key and value.
 
 =head1 ATTRIBUTES
 
 
 =head2 Key => Str
 
-  Key associated with the tag.
+  The key that is associated with the tag.
 
 
 =head2 Value => Str
 
-  Value associated with the tag.
+  The value that is associated with the tag.
 
 
 
@@ -54,9 +54,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudDire
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

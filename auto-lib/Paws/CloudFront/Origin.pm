@@ -41,8 +41,9 @@ A complex type that describes the Amazon S3 bucket or the HTTP server
 must create at least one origin.
 
 For the current limit on the number of origins that you can create for
-a distribution, see Amazon CloudFront Limits in the I<AWS General
-Reference>.
+a distribution, see Amazon CloudFront Limits
+(http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront)
+in the I<AWS General Reference>.
 
 =head1 ATTRIBUTES
 
@@ -72,8 +73,8 @@ Constraints for Amazon S3 origins:
 
 =item *
 
-If you configured Amazon S3 Transfer Acceleration for your bucket, do
-not specify the C<s3-accelerate> endpoint for C<DomainName>.
+If you configured Amazon S3 Transfer Acceleration for your bucket,
+don't specify the C<s3-accelerate> endpoint for C<DomainName>.
 
 =item *
 
@@ -122,6 +123,7 @@ which you want the cache behavior to route requests by specifying the
 value of the C<Id> element for that origin. When a request matches the
 path pattern for that cache behavior, CloudFront routes the request to
 the specified origin. For more information, see Cache Behavior Settings
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior)
 in the I<Amazon CloudFront Developer Guide>.
 
 
@@ -175,9 +177,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudFron
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

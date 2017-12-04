@@ -18,7 +18,8 @@ Paws::ServiceCatalog::CreateProvisioningArtifactOutput
 
 =head2 Info => L<Paws::ServiceCatalog::ProvisioningArtifactInfo>
 
-Additional information about the provisioning artifact create request.
+Additional information about the creation request for the provisioning
+artifact.
 
 
 =head2 ProvisioningArtifactDetail => L<Paws::ServiceCatalog::ProvisioningArtifactDetail>

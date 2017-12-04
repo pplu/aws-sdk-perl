@@ -1,5 +1,6 @@
 package Paws::EC2::VpnGateway;
   use Moose;
+  has AmazonSideAsn => (is => 'ro', isa => 'Int', request_name => 'amazonSideAsn', traits => ['NameInRequest']);
   has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
@@ -25,20 +26,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::VpnGateway object:
 
-  $service_obj->Method(Att1 => { AvailabilityZone => $value, ..., VpnGatewayId => $value  });
+  $service_obj->Method(Att1 => { AmazonSideAsn => $value, ..., VpnGatewayId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::VpnGateway object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AvailabilityZone
+  $result->Att1->AmazonSideAsn
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 AmazonSideAsn => Int
+
+  The private Autonomous System Number (ASN) for the Amazon side of a BGP
+session.
 
 
 =head2 AvailabilityZone => Str
@@ -79,8 +86,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

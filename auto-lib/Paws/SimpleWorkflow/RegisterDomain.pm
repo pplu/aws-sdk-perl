@@ -16,7 +16,7 @@ package Paws::SimpleWorkflow::RegisterDomain;
 
 =head1 NAME
 
-Paws::SimpleWorkflow::RegisterDomain - Arguments for method RegisterDomain on Paws::SimpleWorkflow
+Paws::SimpleWorkflow::RegisterDomain - Arguments for method RegisterDomain on L<Paws::SimpleWorkflow>
 
 =head1 DESCRIPTION
 
@@ -48,8 +48,8 @@ that the domain is registered in.
 
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
-control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
-contain the literal string quotarnquot.
+control characters (C<\u0000-\u001f> | C<\u007f-\u009f>). Also, it must
+not contain the literal string C<arn>.
 
 
 
@@ -57,16 +57,18 @@ contain the literal string quotarnquot.
 
 The duration (in days) that records and histories of workflow
 executions on the domain should be kept by the service. After the
-retention period, the workflow execution is not available in the
-results of visibility calls.
+retention period, the workflow execution isn't available in the results
+of visibility calls.
 
 If you pass the value C<NONE> or C<0> (zero), then the workflow
-execution history will not be retained. As soon as the workflow
-execution completes, the execution record and its history are deleted.
+execution history isn't retained. As soon as the workflow execution
+completes, the execution record and its history are deleted.
 
 The maximum workflow execution retention period is 90 days. For more
 information about Amazon SWF service limits, see: Amazon SWF Service
-Limits in the I<Amazon SWF Developer Guide>.
+Limits
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-limits.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 
@@ -77,9 +79,9 @@ This class forms part of L<Paws>, documenting arguments for method RegisterDomai
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

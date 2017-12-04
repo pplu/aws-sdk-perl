@@ -76,8 +76,14 @@ compute environment.
 
 =head2 B<REQUIRED> InstanceRole => Str
 
-  The Amazon ECS instance role applied to Amazon EC2 instances in a
-compute environment.
+  The Amazon ECS instance profile applied to Amazon EC2 instances in a
+compute environment. You can specify the short name or full Amazon
+Resource Name (ARN) of an instance profile. For example,
+C<ecsInstanceRole> or
+C<arn:aws:iam::E<lt>aws_account_idE<gt>:instance-profile/ecsInstanceRole>.
+For more information, see Amazon ECS Instance Role
+(http://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html)
+in the I<AWS Batch User Guide>.
 
 
 =head2 B<REQUIRED> InstanceTypes => ArrayRef[Str|Undef]
@@ -130,9 +136,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Batch>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

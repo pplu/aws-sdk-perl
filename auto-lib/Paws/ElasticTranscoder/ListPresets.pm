@@ -1,8 +1,8 @@
 
 package Paws::ElasticTranscoder::ListPresets;
   use Moose;
-  has Ascending => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Ascending' );
-  has PageToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'PageToken' );
+  has Ascending => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Ascending');
+  has PageToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'PageToken');
 
   use MooseX::ClassAttribute;
 
@@ -10,14 +10,13 @@ package Paws::ElasticTranscoder::ListPresets;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2012-09-25/presets');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::ListPresetsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ElasticTranscoder::ListPresets - Arguments for method ListPresets on Paws::ElasticTranscoder
+Paws::ElasticTranscoder::ListPresets - Arguments for method ListPresets on L<Paws::ElasticTranscoder>
 
 =head1 DESCRIPTION
 
@@ -59,9 +58,9 @@ This class forms part of L<Paws>, documenting arguments for method ListPresets i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -53,12 +53,15 @@ Describes an action that captures a CloudWatch metric.
 
 =head2 MetricTimestamp => Str
 
-  An optional Unix timestamp.
+  An optional Unix timestamp
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp).
 
 
 =head2 B<REQUIRED> MetricUnit => Str
 
-  The metric unit supported by CloudWatch.
+  The metric unit
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit)
+supported by CloudWatch.
 
 
 =head2 B<REQUIRED> MetricValue => Str
@@ -78,9 +81,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::IoT>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

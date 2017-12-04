@@ -11,9 +11,14 @@ package Paws::CloudWatchLogs;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub AssociateKmsKey {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::AssociateKmsKey', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CancelExportTask {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::CancelExportTask', @_);
@@ -54,6 +59,11 @@ package Paws::CloudWatchLogs;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DeleteMetricFilter', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteResourcePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DeleteResourcePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteRetentionPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DeleteRetentionPolicy', @_);
@@ -89,9 +99,19 @@ package Paws::CloudWatchLogs;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DescribeMetricFilters', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeResourcePolicies {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DescribeResourcePolicies', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeSubscriptionFilters {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DescribeSubscriptionFilters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DisassociateKmsKey {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DisassociateKmsKey', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub FilterLogEvents {
@@ -129,6 +149,11 @@ package Paws::CloudWatchLogs;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::PutMetricFilter', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutResourcePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::PutResourcePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutRetentionPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::PutRetentionPolicy', @_);
@@ -160,18 +185,20 @@ package Paws::CloudWatchLogs;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDestinations(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeDestinations(@_, nextToken => $result->nextToken);
-        push @{ $result->destinations }, @{ $result->destinations };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeDestinations(@_, nextToken => $next_result->nextToken);
+        push @{ $result->destinations }, @{ $next_result->destinations };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeDestinations(@_, nextToken => $result->nextToken);
         $callback->($_ => 'destinations') foreach (@{ $result->destinations });
+        $result = $self->DescribeDestinations(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'destinations') foreach (@{ $result->destinations });
     }
 
     return undef
@@ -181,18 +208,20 @@ package Paws::CloudWatchLogs;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeLogGroups(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeLogGroups(@_, nextToken => $result->nextToken);
-        push @{ $result->logGroups }, @{ $result->logGroups };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeLogGroups(@_, nextToken => $next_result->nextToken);
+        push @{ $result->logGroups }, @{ $next_result->logGroups };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeLogGroups(@_, nextToken => $result->nextToken);
         $callback->($_ => 'logGroups') foreach (@{ $result->logGroups });
+        $result = $self->DescribeLogGroups(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'logGroups') foreach (@{ $result->logGroups });
     }
 
     return undef
@@ -202,18 +231,20 @@ package Paws::CloudWatchLogs;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeLogStreams(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeLogStreams(@_, nextToken => $result->nextToken);
-        push @{ $result->logStreams }, @{ $result->logStreams };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeLogStreams(@_, nextToken => $next_result->nextToken);
+        push @{ $result->logStreams }, @{ $next_result->logStreams };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeLogStreams(@_, nextToken => $result->nextToken);
         $callback->($_ => 'logStreams') foreach (@{ $result->logStreams });
+        $result = $self->DescribeLogStreams(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'logStreams') foreach (@{ $result->logStreams });
     }
 
     return undef
@@ -223,18 +254,20 @@ package Paws::CloudWatchLogs;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeMetricFilters(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeMetricFilters(@_, nextToken => $result->nextToken);
-        push @{ $result->metricFilters }, @{ $result->metricFilters };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeMetricFilters(@_, nextToken => $next_result->nextToken);
+        push @{ $result->metricFilters }, @{ $next_result->metricFilters };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeMetricFilters(@_, nextToken => $result->nextToken);
         $callback->($_ => 'metricFilters') foreach (@{ $result->metricFilters });
+        $result = $self->DescribeMetricFilters(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'metricFilters') foreach (@{ $result->metricFilters });
     }
 
     return undef
@@ -244,18 +277,20 @@ package Paws::CloudWatchLogs;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeSubscriptionFilters(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeSubscriptionFilters(@_, nextToken => $result->nextToken);
-        push @{ $result->subscriptionFilters }, @{ $result->subscriptionFilters };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeSubscriptionFilters(@_, nextToken => $next_result->nextToken);
+        push @{ $result->subscriptionFilters }, @{ $next_result->subscriptionFilters };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeSubscriptionFilters(@_, nextToken => $result->nextToken);
         $callback->($_ => 'subscriptionFilters') foreach (@{ $result->subscriptionFilters });
+        $result = $self->DescribeSubscriptionFilters(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'subscriptionFilters') foreach (@{ $result->subscriptionFilters });
     }
 
     return undef
@@ -265,27 +300,30 @@ package Paws::CloudWatchLogs;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->FilterLogEvents(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->FilterLogEvents(@_, nextToken => $result->nextToken);
-        push @{ $result->events }, @{ $result->events };
-        push @{ $result->searchedLogStreams }, @{ $result->searchedLogStreams };
+      while ($next_result->nextToken) {
+        $next_result = $self->FilterLogEvents(@_, nextToken => $next_result->nextToken);
+        push @{ $result->events }, @{ $next_result->events };
+        push @{ $result->searchedLogStreams }, @{ $next_result->searchedLogStreams };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->FilterLogEvents(@_, nextToken => $result->nextToken);
         $callback->($_ => 'events') foreach (@{ $result->events });
         $callback->($_ => 'searchedLogStreams') foreach (@{ $result->searchedLogStreams });
+        $result = $self->FilterLogEvents(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'events') foreach (@{ $result->events });
+      $callback->($_ => 'searchedLogStreams') foreach (@{ $result->searchedLogStreams });
     }
 
     return undef
   }
 
 
-  sub operations { qw/CancelExportTask CreateExportTask CreateLogGroup CreateLogStream DeleteDestination DeleteLogGroup DeleteLogStream DeleteMetricFilter DeleteRetentionPolicy DeleteSubscriptionFilter DescribeDestinations DescribeExportTasks DescribeLogGroups DescribeLogStreams DescribeMetricFilters DescribeSubscriptionFilters FilterLogEvents GetLogEvents ListTagsLogGroup PutDestination PutDestinationPolicy PutLogEvents PutMetricFilter PutRetentionPolicy PutSubscriptionFilter TagLogGroup TestMetricFilter UntagLogGroup / }
+  sub operations { qw/AssociateKmsKey CancelExportTask CreateExportTask CreateLogGroup CreateLogStream DeleteDestination DeleteLogGroup DeleteLogStream DeleteMetricFilter DeleteResourcePolicy DeleteRetentionPolicy DeleteSubscriptionFilter DescribeDestinations DescribeExportTasks DescribeLogGroups DescribeLogStreams DescribeMetricFilters DescribeResourcePolicies DescribeSubscriptionFilters DisassociateKmsKey FilterLogEvents GetLogEvents ListTagsLogGroup PutDestination PutDestinationPolicy PutLogEvents PutMetricFilter PutResourcePolicy PutRetentionPolicy PutSubscriptionFilter TagLogGroup TestMetricFilter UntagLogGroup / }
 
 1;
 
@@ -314,10 +352,10 @@ Paws::CloudWatchLogs - Perl Interface to AWS Amazon CloudWatch Logs
 =head1 DESCRIPTION
 
 You can use Amazon CloudWatch Logs to monitor, store, and access your
-log files from EC2 instances, Amazon CloudTrail, or other sources. You
-can then retrieve the associated log data from CloudWatch Logs using
-the Amazon CloudWatch console, the CloudWatch Logs commands in the AWS
-CLI, the CloudWatch Logs API, or the CloudWatch Logs SDK.
+log files from Amazon EC2 instances, AWS CloudTrail, or other sources.
+You can then retrieve the associated log data from CloudWatch Logs
+using the CloudWatch console, CloudWatch Logs commands in the AWS CLI,
+CloudWatch Logs API, or CloudWatch Logs SDK.
 
 You can use CloudWatch Logs to:
 
@@ -325,29 +363,29 @@ You can use CloudWatch Logs to:
 
 =item *
 
-B<Monitor Logs from Amazon EC2 Instances in Real-time>: You can use
-CloudWatch Logs to monitor applications and systems using log data. For
-example, CloudWatch Logs can track the number of errors that occur in
-your application logs and send you a notification whenever the rate of
-errors exceeds a threshold you specify. CloudWatch Logs uses your log
-data for monitoring; so, no code changes are required. For example, you
-can monitor application logs for specific literal terms (such as
+B<Monitor logs from EC2 instances in real-time>: You can use CloudWatch
+Logs to monitor applications and systems using log data. For example,
+CloudWatch Logs can track the number of errors that occur in your
+application logs and send you a notification whenever the rate of
+errors exceeds a threshold that you specify. CloudWatch Logs uses your
+log data for monitoring; so, no code changes are required. For example,
+you can monitor application logs for specific literal terms (such as
 "NullReferenceException") or count the number of occurrences of a
 literal term at a particular position in log data (such as "404" status
 codes in an Apache access log). When the term you are searching for is
-found, CloudWatch Logs reports the data to a Amazon CloudWatch metric
-that you specify.
+found, CloudWatch Logs reports the data to a CloudWatch metric that you
+specify.
 
 =item *
 
-B<Monitor Amazon CloudTrail Logged Events>: You can create alarms in
-Amazon CloudWatch and receive notifications of particular API activity
-as captured by CloudTrail and use the notification to perform
+B<Monitor AWS CloudTrail logged events>: You can create alarms in
+CloudWatch and receive notifications of particular API activity as
+captured by CloudTrail and use the notification to perform
 troubleshooting.
 
 =item *
 
-B<Archive Log Data>: You can use CloudWatch Logs to store your log data
+B<Archive log data>: You can use CloudWatch Logs to store your log data
 in highly durable storage. You can change the log retention setting so
 that any log events older than this setting are automatically deleted.
 The CloudWatch Logs agent makes it easy to quickly send both rotated
@@ -359,13 +397,38 @@ can then access the raw log data when you need it.
 
 =head1 METHODS
 
+=head2 AssociateKmsKey(KmsKeyId => Str, LogGroupName => Str)
+
+Each argument is described in detail in: L<Paws::CloudWatchLogs::AssociateKmsKey>
+
+Returns: nothing
+
+Associates the specified AWS Key Management Service (AWS KMS) customer
+master key (CMK) with the specified log group.
+
+Associating an AWS KMS CMK with a log group overrides any existing
+associations between the log group and a CMK. After a CMK is associated
+with a log group, all newly ingested data for the log group is
+encrypted using the CMK. This association is stored as long as the data
+encrypted with the CMK is still within Amazon CloudWatch Logs. This
+enables Amazon CloudWatch Logs to decrypt this data whenever it is
+requested.
+
+Note that it can take up to 5 minutes for this operation to take
+effect.
+
+If you attempt to associate a CMK with a log group but the CMK does not
+exist or the CMK is disabled, you will receive an
+C<InvalidParameterException> error.
+
+
 =head2 CancelExportTask(TaskId => Str)
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::CancelExportTask>
 
 Returns: nothing
 
-  Cancels the specified export task.
+Cancels the specified export task.
 
 The task must be in the C<PENDING> or C<RUNNING> state.
 
@@ -376,7 +439,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::CreateExportTas
 
 Returns: a L<Paws::CloudWatchLogs::CreateExportTaskResponse> instance
 
-  Creates an export task, which allows you to efficiently export data
+Creates an export task, which allows you to efficiently export data
 from a log group to an Amazon S3 bucket.
 
 This is an asynchronous call. If all the required information is
@@ -388,17 +451,17 @@ time. To cancel an export task, use CancelExportTask.
 
 You can export logs from multiple log groups or multiple time ranges to
 the same S3 bucket. To separate out log data for each export task, you
-can specify a prefix that will be used as the Amazon S3 key prefix for
-all exported objects.
+can specify a prefix to be used as the Amazon S3 key prefix for all
+exported objects.
 
 
-=head2 CreateLogGroup(LogGroupName => Str, [Tags => L<Paws::CloudWatchLogs::Tags>])
+=head2 CreateLogGroup(LogGroupName => Str, [KmsKeyId => Str, Tags => L<Paws::CloudWatchLogs::Tags>])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::CreateLogGroup>
 
 Returns: nothing
 
-  Creates a log group with the specified name.
+Creates a log group with the specified name.
 
 You can create up to 5000 log groups per account.
 
@@ -421,6 +484,15 @@ Log group names consist of the following characters: a-z, A-Z, 0-9, '_'
 
 =back
 
+If you associate a AWS Key Management Service (AWS KMS) customer master
+key (CMK) with the log group, ingested data is encrypted using the CMK.
+This association is stored as long as the data encrypted with the CMK
+is still within Amazon CloudWatch Logs. This enables Amazon CloudWatch
+Logs to decrypt this data whenever it is requested.
+
+If you attempt to associate a CMK with the log group but the CMK does
+not exist or the CMK is disabled, you will receive an
+C<InvalidParameterException> error.
 
 
 =head2 CreateLogStream(LogGroupName => Str, LogStreamName => Str)
@@ -429,7 +501,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::CreateLogStream
 
 Returns: nothing
 
-  Creates a log stream for the specified log group.
+Creates a log stream for the specified log group.
 
 There is no limit on the number of log streams that you can create for
 a log group.
@@ -460,7 +532,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteDestinati
 
 Returns: nothing
 
-  Deletes the specified destination, and eventually disables all the
+Deletes the specified destination, and eventually disables all the
 subscription filters that publish to it. This operation does not delete
 the physical resource encapsulated by the destination.
 
@@ -471,7 +543,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteLogGroup>
 
 Returns: nothing
 
-  Deletes the specified log group and permanently deletes all the
+Deletes the specified log group and permanently deletes all the
 archived log events associated with the log group.
 
 
@@ -481,7 +553,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteLogStream
 
 Returns: nothing
 
-  Deletes the specified log stream and permanently deletes all the
+Deletes the specified log stream and permanently deletes all the
 archived log events associated with the log stream.
 
 
@@ -491,7 +563,17 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteMetricFil
 
 Returns: nothing
 
-  Deletes the specified metric filter.
+Deletes the specified metric filter.
+
+
+=head2 DeleteResourcePolicy([PolicyName => Str])
+
+Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteResourcePolicy>
+
+Returns: nothing
+
+Deletes a resource policy from this account. This revokes the access of
+the identities in that policy to put log events to this account.
 
 
 =head2 DeleteRetentionPolicy(LogGroupName => Str)
@@ -500,7 +582,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteRetention
 
 Returns: nothing
 
-  Deletes the specified retention policy.
+Deletes the specified retention policy.
 
 Log events do not expire if they belong to log groups without a
 retention policy.
@@ -512,7 +594,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteSubscript
 
 Returns: nothing
 
-  Deletes the specified subscription filter.
+Deletes the specified subscription filter.
 
 
 =head2 DescribeDestinations([DestinationNamePrefix => Str, Limit => Int, NextToken => Str])
@@ -521,7 +603,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeDestina
 
 Returns: a L<Paws::CloudWatchLogs::DescribeDestinationsResponse> instance
 
-  Lists all your destinations. The results are ASCII-sorted by
+Lists all your destinations. The results are ASCII-sorted by
 destination name.
 
 
@@ -531,7 +613,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeExportT
 
 Returns: a L<Paws::CloudWatchLogs::DescribeExportTasksResponse> instance
 
-  Lists the specified export tasks. You can list all your export tasks or
+Lists the specified export tasks. You can list all your export tasks or
 filter the results based on task ID or task status.
 
 
@@ -541,7 +623,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeLogGrou
 
 Returns: a L<Paws::CloudWatchLogs::DescribeLogGroupsResponse> instance
 
-  Lists the specified log groups. You can list all your log groups or
+Lists the specified log groups. You can list all your log groups or
 filter the results by prefix. The results are ASCII-sorted by log group
 name.
 
@@ -552,7 +634,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeLogStre
 
 Returns: a L<Paws::CloudWatchLogs::DescribeLogStreamsResponse> instance
 
-  Lists the log streams for the specified log group. You can list all the
+Lists the log streams for the specified log group. You can list all the
 log streams or filter the results by prefix. You can also control how
 the results are ordered.
 
@@ -566,9 +648,18 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeMetricF
 
 Returns: a L<Paws::CloudWatchLogs::DescribeMetricFiltersResponse> instance
 
-  Lists the specified metric filters. You can list all the metric filters
-or filter the results by log name, prefix, metric name, and metric
+Lists the specified metric filters. You can list all the metric filters
+or filter the results by log name, prefix, metric name, or metric
 namespace. The results are ASCII-sorted by filter name.
+
+
+=head2 DescribeResourcePolicies([Limit => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeResourcePolicies>
+
+Returns: a L<Paws::CloudWatchLogs::DescribeResourcePoliciesResponse> instance
+
+Lists the resource policies in this account.
 
 
 =head2 DescribeSubscriptionFilters(LogGroupName => Str, [FilterNamePrefix => Str, Limit => Int, NextToken => Str])
@@ -577,9 +668,28 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeSubscri
 
 Returns: a L<Paws::CloudWatchLogs::DescribeSubscriptionFiltersResponse> instance
 
-  Lists the subscription filters for the specified log group. You can
+Lists the subscription filters for the specified log group. You can
 list all the subscription filters or filter the results by prefix. The
 results are ASCII-sorted by filter name.
+
+
+=head2 DisassociateKmsKey(LogGroupName => Str)
+
+Each argument is described in detail in: L<Paws::CloudWatchLogs::DisassociateKmsKey>
+
+Returns: nothing
+
+Disassociates the associated AWS Key Management Service (AWS KMS)
+customer master key (CMK) from the specified log group.
+
+After the AWS KMS CMK is disassociated from the log group, AWS
+CloudWatch Logs stops encrypting newly ingested data for the log group.
+All previously ingested data remains encrypted, and AWS CloudWatch Logs
+requires permissions for the CMK whenever the encrypted data is
+requested.
+
+Note that it can take up to 5 minutes for this operation to take
+effect.
 
 
 =head2 FilterLogEvents(LogGroupName => Str, [EndTime => Int, FilterPattern => Str, Interleaved => Bool, Limit => Int, LogStreamNames => ArrayRef[Str|Undef], NextToken => Str, StartTime => Int])
@@ -588,12 +698,12 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::FilterLogEvents
 
 Returns: a L<Paws::CloudWatchLogs::FilterLogEventsResponse> instance
 
-  Lists log events from the specified log group. You can list all the log
+Lists log events from the specified log group. You can list all the log
 events or filter the results using a filter pattern, a time range, and
 the name of the log stream.
 
-By default, this operation returns as many log events as can fit in 1MB
-(up to 10,000 log events), or all the events found within the time
+By default, this operation returns as many log events as can fit in 1
+MB (up to 10,000 log events), or all the events found within the time
 range that you specify. If the results include a token, then there are
 more log events available, and you can get additional results by
 specifying the token in a subsequent call.
@@ -605,13 +715,12 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::GetLogEvents>
 
 Returns: a L<Paws::CloudWatchLogs::GetLogEventsResponse> instance
 
-  Lists log events from the specified log stream. You can list all the
+Lists log events from the specified log stream. You can list all the
 log events or filter using a time range.
 
 By default, this operation returns as many log events as can fit in a
-response size of 1MB (up to 10,000 log events). If the results include
-tokens, there are more log events available. You can get additional log
-events by specifying one of the tokens in a subsequent call.
+response size of 1MB (up to 10,000 log events). You can get additional
+log events by specifying one of the tokens in a subsequent call.
 
 
 =head2 ListTagsLogGroup(LogGroupName => Str)
@@ -620,9 +729,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::ListTagsLogGrou
 
 Returns: a L<Paws::CloudWatchLogs::ListTagsLogGroupResponse> instance
 
-  Lists the tags for the specified log group.
-
-To add tags, use TagLogGroup. To remove tags, use UntagLogGroup.
+Lists the tags for the specified log group.
 
 
 =head2 PutDestination(DestinationName => Str, RoleArn => Str, TargetArn => Str)
@@ -631,17 +738,18 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::PutDestination>
 
 Returns: a L<Paws::CloudWatchLogs::PutDestinationResponse> instance
 
-  Creates or updates a destination. A destination encapsulates a physical
-resource (such as a Kinesis stream) and enables you to subscribe to a
-real-time stream of log events of a different account, ingested using
-PutLogEvents. Currently, the only supported physical resource is a
-Amazon Kinesis stream belonging to the same account as the destination.
+Creates or updates a destination. A destination encapsulates a physical
+resource (such as an Amazon Kinesis stream) and enables you to
+subscribe to a real-time stream of log events for a different account,
+ingested using PutLogEvents. Currently, the only supported physical
+resource is a Kinesis stream belonging to the same account as the
+destination.
 
-A destination controls what is written to its Amazon Kinesis stream
-through an access policy. By default, C<PutDestination> does not set
-any access policy with the destination, which means a cross-account
-user cannot call PutSubscriptionFilter against this destination. To
-enable this, the destination owner must call PutDestinationPolicy after
+Through an access policy, a destination controls what is written to its
+Kinesis stream. By default, C<PutDestination> does not set any access
+policy with the destination, which means a cross-account user cannot
+call PutSubscriptionFilter against this destination. To enable this,
+the destination owner must call PutDestinationPolicy after
 C<PutDestination>.
 
 
@@ -651,10 +759,11 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::PutDestinationP
 
 Returns: nothing
 
-  Creates or updates an access policy associated with an existing
-destination. An access policy is an IAM policy document that is used to
-authorize claims to register a subscription filter against a given
-destination.
+Creates or updates an access policy associated with an existing
+destination. An access policy is an IAM policy document
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/policies_overview.html)
+that is used to authorize claims to register a subscription filter
+against a given destination.
 
 
 =head2 PutLogEvents(LogEvents => ArrayRef[L<Paws::CloudWatchLogs::InputLogEvent>], LogGroupName => Str, LogStreamName => Str, [SequenceToken => Str])
@@ -663,12 +772,14 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::PutLogEvents>
 
 Returns: a L<Paws::CloudWatchLogs::PutLogEventsResponse> instance
 
-  Uploads a batch of log events to the specified log stream.
+Uploads a batch of log events to the specified log stream.
 
 You must include the sequence token obtained from the response of the
 previous call. An upload in a newly created log stream does not require
 a sequence token. You can also get the sequence token using
-DescribeLogStreams.
+DescribeLogStreams. If you call C<PutLogEvents> twice within a narrow
+time period using the same value for C<sequenceToken>, both calls may
+be successful, or one may be rejected.
 
 The batch of events must satisfy the following constraints:
 
@@ -693,8 +804,8 @@ retention period of the log group.
 =item *
 
 The log events in the batch must be in chronological ordered by their
-timestamp (the time the event occurred, expressed as the number of
-milliseconds since Jan 1, 1970 00:00:00 UTC).
+time stamp (the time the event occurred, expressed as the number of
+milliseconds after Jan 1, 1970 00:00:00 UTC).
 
 =item *
 
@@ -715,12 +826,23 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::PutMetricFilter
 
 Returns: nothing
 
-  Creates or updates a metric filter and associates it with the specified
+Creates or updates a metric filter and associates it with the specified
 log group. Metric filters allow you to configure rules to extract
 metric data from log events ingested through PutLogEvents.
 
 The maximum number of metric filters that can be associated with a log
 group is 100.
+
+
+=head2 PutResourcePolicy([PolicyDocument => Str, PolicyName => Str])
+
+Each argument is described in detail in: L<Paws::CloudWatchLogs::PutResourcePolicy>
+
+Returns: a L<Paws::CloudWatchLogs::PutResourcePolicyResponse> instance
+
+Creates or updates a resource policy allowing other AWS services to put
+log events to this account, such as Amazon Route 53. An account can
+have up to 50 resource policies per region.
 
 
 =head2 PutRetentionPolicy(LogGroupName => Str, RetentionInDays => Int)
@@ -729,8 +851,8 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::PutRetentionPol
 
 Returns: nothing
 
-  Sets the retention of the specified log group. A retention policy
-allows you to configure the number of days you want to retain log
+Sets the retention of the specified log group. A retention policy
+allows you to configure the number of days for which to retain log
 events in the specified log group.
 
 
@@ -740,7 +862,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::PutSubscription
 
 Returns: nothing
 
-  Creates or updates a subscription filter and associates it with the
+Creates or updates a subscription filter and associates it with the
 specified log group. Subscription filters allow you to subscribe to a
 real-time stream of log events ingested through PutLogEvents and have
 them delivered to a specific destination. Currently, the supported
@@ -760,8 +882,8 @@ cross-account delivery.
 
 =item *
 
-An Amazon Kinesis Firehose stream that belongs to the same account as
-the subscription filter, for same-account delivery.
+An Amazon Kinesis Firehose delivery stream that belongs to the same
+account as the subscription filter, for same-account delivery.
 
 =item *
 
@@ -772,7 +894,7 @@ subscription filter, for same-account delivery.
 
 There can only be one subscription filter associated with a log group.
 If you are updating an existing filter, you must specify the correct
-name in C<filterName>. Otherwise, the call will fail because you cannot
+name in C<filterName>. Otherwise, the call fails because you cannot
 associate a second filter with a log group.
 
 
@@ -782,13 +904,15 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::TagLogGroup>
 
 Returns: nothing
 
-  Adds or updates the specified tags for the specified log group.
+Adds or updates the specified tags for the specified log group.
 
 To list the tags for a log group, use ListTagsLogGroup. To remove tags,
 use UntagLogGroup.
 
 For more information about tags, see Tag Log Groups in Amazon
-CloudWatch Logs in the I<Amazon CloudWatch Logs User Guide>.
+CloudWatch Logs
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/log-group-tagging.html)
+in the I<Amazon CloudWatch Logs User Guide>.
 
 
 =head2 TestMetricFilter(FilterPattern => Str, LogEventMessages => ArrayRef[Str|Undef])
@@ -797,7 +921,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::TestMetricFilte
 
 Returns: a L<Paws::CloudWatchLogs::TestMetricFilterResponse> instance
 
-  Tests the filter pattern of a metric filter against a sample of log
+Tests the filter pattern of a metric filter against a sample of log
 event messages. You can use this operation to validate the correctness
 of a metric filter pattern.
 
@@ -808,7 +932,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::UntagLogGroup>
 
 Returns: nothing
 
-  Removes the specified tags from the specified log group.
+Removes the specified tags from the specified log group.
 
 To list the tags for a log group, use ListTagsLogGroup. To add tags,
 use UntagLogGroup.
@@ -903,9 +1027,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

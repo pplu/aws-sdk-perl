@@ -11,6 +11,7 @@ package Paws::Lambda::FunctionConfiguration;
   has Handler => (is => 'ro', isa => 'Str');
   has KMSKeyArn => (is => 'ro', isa => 'Str');
   has LastModified => (is => 'ro', isa => 'Str');
+  has MasterArn => (is => 'ro', isa => 'Str');
   has MemorySize => (is => 'ro', isa => 'Int');
   has Role => (is => 'ro', isa => 'Str');
   has Runtime => (is => 'ro', isa => 'Str');
@@ -84,7 +85,16 @@ AWS Lambda default service key.
 
 =head2 LastModified => Str
 
-The time stamp of the last time you updated the function.
+The time stamp of the last time you updated the function. The time
+stamp is conveyed as a string complying with ISO-8601 in this way
+YYYY-MM-DDThh:mm:ssTZD (e.g., 1997-07-16T19:20:30+01:00). For more
+information, see Date and Time Formats
+(https://www.w3.org/TR/NOTE-datetime).
+
+
+=head2 MasterArn => Str
+
+Returns the ARN (Amazon Resource Name) of the master function.
 
 
 =head2 MemorySize => Int

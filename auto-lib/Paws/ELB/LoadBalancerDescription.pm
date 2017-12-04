@@ -65,8 +65,9 @@ Information about a load balancer.
 
   The DNS name of the load balancer.
 
-For more information, see Configure a Custom Domain Name in the
-I<Classic Load Balancer Guide>.
+For more information, see Configure a Custom Domain Name
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/using-domain-names-with-elb.html)
+in the I<Classic Load Balancer Guide>.
 
 
 =head2 CanonicalHostedZoneNameID => Str
@@ -151,9 +152,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ELB>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -42,8 +42,8 @@ An object representing a repository.
 
 =head2 CreatedAt => Str
 
-  The date and time, in JavaScript date/time format, when the repository
-was created.
+  The date and time, in JavaScript date format, when the repository was
+created.
 
 
 =head2 RegistryId => Str
@@ -56,8 +56,8 @@ repository.
 
   The Amazon Resource Name (ARN) that identifies the repository. The ARN
 contains the C<arn:aws:ecr> namespace, followed by the region of the
-repository, the AWS account ID of the repository owner, the repository
-namespace, and then the repository name. For example,
+repository, AWS account ID of the repository owner, repository
+namespace, and repository name. For example,
 C<arn:aws:ecr:region:012345678910:repository/test>.
 
 
@@ -68,7 +68,7 @@ C<arn:aws:ecr:region:012345678910:repository/test>.
 
 =head2 RepositoryUri => Str
 
-  The URI for the repository. You can use this URI for Docker C<push> and
+  The URI for the repository. You can use this URI for Docker C<push> or
 C<pull> operations.
 
 
@@ -79,9 +79,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ECR>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

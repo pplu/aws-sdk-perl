@@ -52,7 +52,8 @@ this AWS account.
 fleet instance type determines the computing resources of each instance
 in the fleet, including CPU, memory, storage, and networking capacity.
 Amazon GameLift supports the following EC2 instance types. See Amazon
-EC2 Instance Types for detailed descriptions.
+EC2 Instance Types (http://aws.amazon.com/ec2/instance-types/) for
+detailed descriptions.
 
 
 =head2 InstanceLimit => Int
@@ -67,9 +68,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::GameLift>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

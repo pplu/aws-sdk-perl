@@ -106,7 +106,8 @@ significance of this value.
 =head2 Type => Str
 
   The product type. Contact the product administrator for the
-significance of this value.
+significance of this value. If this value is C<MARKETPLACE>, the
+product was created by AWS Marketplace.
 
 
 
@@ -116,9 +117,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ServiceCa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

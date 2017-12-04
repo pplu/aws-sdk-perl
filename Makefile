@@ -1,5 +1,5 @@
 test:
-	prove -I lib -I auto-lib -I t/lib t/
+	carton exec -- prove -v -I lib -I auto-lib t/
 
 cover:
 	cover -delete

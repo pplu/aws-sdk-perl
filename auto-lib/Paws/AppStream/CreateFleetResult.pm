@@ -16,7 +16,7 @@ Paws::AppStream::CreateFleetResult
 
 =head2 Fleet => L<Paws::AppStream::Fleet>
 
-The details for the created fleet.
+Information about the fleet.
 
 
 =head2 _request_id => Str

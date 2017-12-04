@@ -53,8 +53,9 @@ configuration snapshot. For more information, see
 ConfigSnapshotDeliveryProperties.
 
 For more information about developing and using AWS Config rules, see
-Evaluating AWS Resource Configurations with AWS Config in the I<AWS
-Config Developer Guide>.
+Evaluating AWS Resource Configurations with AWS Config
+(http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html)
+in the I<AWS Config Developer Guide>.
 
 =head1 ATTRIBUTES
 
@@ -154,9 +155,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Config>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

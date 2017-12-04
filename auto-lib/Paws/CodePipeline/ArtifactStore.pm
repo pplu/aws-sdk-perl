@@ -33,10 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head1 DESCRIPTION
 
-The Amazon S3 location where artifacts are stored for the pipeline. If
-this Amazon S3 bucket is created manually, it must meet the
-requirements for AWS CodePipeline. For more information, see the
-Concepts.
+The Amazon S3 bucket where artifacts are stored for the pipeline.
 
 =head1 ATTRIBUTES
 
@@ -50,8 +47,11 @@ the default key for Amazon S3 is used.
 
 =head2 B<REQUIRED> Location => Str
 
-  The location for storing the artifacts for a pipeline, such as an S3
-bucket or folder.
+  The Amazon S3 bucket used for storing the artifacts for a pipeline. You
+can specify the name of an S3 bucket but not a folder within the
+bucket. A folder to contain the pipeline artifacts is created for you
+based on the name of the pipeline. You can use any Amazon S3 bucket in
+the same AWS Region as the pipeline to store your pipeline artifacts.
 
 
 =head2 B<REQUIRED> Type => Str
@@ -66,9 +66,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodePipel
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

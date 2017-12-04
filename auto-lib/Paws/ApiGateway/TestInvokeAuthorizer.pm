@@ -1,13 +1,13 @@
 
 package Paws::ApiGateway::TestInvokeAuthorizer;
   use Moose;
-  has AdditionalContext => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
-  has AuthorizerId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'authorizerId' , required => 1);
-  has Body => (is => 'ro', isa => 'Str');
-  has Headers => (is => 'ro', isa => 'Paws::ApiGateway::MapOfHeaderValues');
-  has PathWithQueryString => (is => 'ro', isa => 'Str');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
-  has StageVariables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
+  has AdditionalContext => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'additionalContext');
+  has AuthorizerId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'authorizerId', required => 1);
+  has Body => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'body');
+  has Headers => (is => 'ro', isa => 'Paws::ApiGateway::MapOfHeaderValues', traits => ['NameInRequest'], request_name => 'headers');
+  has PathWithQueryString => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pathWithQueryString');
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has StageVariables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'stageVariables');
 
   use MooseX::ClassAttribute;
 
@@ -15,14 +15,13 @@ package Paws::ApiGateway::TestInvokeAuthorizer;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/authorizers/{authorizer_id}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::TestInvokeAuthorizerResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::TestInvokeAuthorizer - Arguments for method TestInvokeAuthorizer on Paws::ApiGateway
+Paws::ApiGateway::TestInvokeAuthorizer - Arguments for method TestInvokeAuthorizer on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -78,7 +77,7 @@ string parameters.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-Specifies a test invoke authorizer request's RestApi identifier.
+The string identifier of the associated RestApi.
 
 
 
@@ -96,9 +95,9 @@ This class forms part of L<Paws>, documenting arguments for method TestInvokeAut
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -43,7 +43,7 @@ A user pool description.
 
 =head2 CreationDate => Str
 
-  The creation date in a user pool description.
+  The date the user pool description was created.
 
 
 =head2 Id => Str
@@ -58,7 +58,7 @@ A user pool description.
 
 =head2 LastModifiedDate => Str
 
-  The last modified date in a user pool description.
+  The date the user pool description was last modified.
 
 
 =head2 Name => Str
@@ -78,9 +78,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CognitoId
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

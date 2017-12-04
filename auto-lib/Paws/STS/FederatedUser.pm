@@ -42,7 +42,9 @@ credentials.
 
   The ARN that specifies the federated user that is associated with the
 credentials. For more information about ARNs and how to use them in
-policies, see IAM Identifiers in I<Using IAM>.
+policies, see IAM Identifiers
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
+in I<Using IAM>.
 
 
 =head2 B<REQUIRED> FederatedUserId => Str
@@ -58,9 +60,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::STS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

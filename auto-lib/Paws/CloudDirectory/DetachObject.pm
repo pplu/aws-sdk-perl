@@ -1,7 +1,7 @@
 
 package Paws::CloudDirectory::DetachObject;
   use Moose;
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
   has LinkName => (is => 'ro', isa => 'Str', required => 1);
   has ParentReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
 
@@ -11,14 +11,13 @@ package Paws::CloudDirectory::DetachObject;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/object/detach');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::DetachObjectResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CloudDirectory::DetachObject - Arguments for method DetachObject on Paws::CloudDirectory
+Paws::CloudDirectory::DetachObject - Arguments for method DetachObject on L<Paws::CloudDirectory>
 
 =head1 DESCRIPTION
 
@@ -39,21 +38,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-ARN associated with the Directory where objects reside. For more
-information, see arns.
+The Amazon Resource Name (ARN) that is associated with the Directory
+where objects reside. For more information, see arns.
 
 
 
 =head2 B<REQUIRED> LinkName => Str
 
-Link name associated with the object that needs to be detached.
+The link name associated with the object that needs to be detached.
 
 
 
 =head2 B<REQUIRED> ParentReference => L<Paws::CloudDirectory::ObjectReference>
 
-Parent reference from which the object with the specified link name is
-detached.
+The parent reference from which the object with the specified link name
+is detached.
 
 
 
@@ -64,9 +63,9 @@ This class forms part of L<Paws>, documenting arguments for method DetachObject 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

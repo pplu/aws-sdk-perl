@@ -18,7 +18,8 @@ Paws::KMS::GenerateDataKeyResponse
 
 =head2 CiphertextBlob => Str
 
-The encrypted data encryption key.
+The encrypted data encryption key. When you use the HTTP API or the AWS
+CLI, the value is Base64-encoded. Otherwise, it is not encoded.
 
 
 =head2 KeyId => Str
@@ -29,8 +30,10 @@ generated and encrypted.
 
 =head2 Plaintext => Str
 
-The data encryption key. Use this data key for local encryption and
-decryption, then remove it from memory as soon as possible.
+The data encryption key. When you use the HTTP API or the AWS CLI, the
+value is Base64-encoded. Otherwise, it is not encoded. Use this data
+key for local encryption and decryption, then remove it from memory as
+soon as possible.
 
 
 =head2 _request_id => Str

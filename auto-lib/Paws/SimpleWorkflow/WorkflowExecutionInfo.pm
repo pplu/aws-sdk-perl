@@ -56,19 +56,31 @@ was closed:
 
 =over
 
-=item * C<COMPLETED>: the execution was successfully completed.
+=item *
 
-=item * C<CANCELED>: the execution was canceled.Cancellation allows the
+C<COMPLETED> E<ndash> the execution was successfully completed.
+
+=item *
+
+C<CANCELED> E<ndash> the execution was canceled.Cancellation allows the
 implementation to gracefully clean up before the execution is closed.
 
-=item * C<TERMINATED>: the execution was force terminated.
+=item *
 
-=item * C<FAILED>: the execution failed to complete.
+C<TERMINATED> E<ndash> the execution was force terminated.
 
-=item * C<TIMED_OUT>: the execution did not complete in the alloted
+=item *
+
+C<FAILED> E<ndash> the execution failed to complete.
+
+=item *
+
+C<TIMED_OUT> E<ndash> the execution did not complete in the alloted
 time and was automatically timed out.
 
-=item * C<CONTINUED_AS_NEW>: the execution is logically continued. This
+=item *
+
+C<CONTINUED_AS_NEW> E<ndash> the execution is logically continued. This
 means the current execution was completed and a new execution was
 started to carry on the workflow.
 
@@ -122,9 +134,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SimpleWor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

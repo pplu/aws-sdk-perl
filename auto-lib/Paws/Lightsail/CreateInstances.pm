@@ -20,7 +20,7 @@ package Paws::Lightsail::CreateInstances;
 
 =head1 NAME
 
-Paws::Lightsail::CreateInstances - Arguments for method CreateInstances on Paws::Lightsail
+Paws::Lightsail::CreateInstances - Arguments for method CreateInstances on L<Paws::Lightsail>
 
 =head1 DESCRIPTION
 
@@ -43,8 +43,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The Availability Zone in which to create your instance. Use the
 following format: C<us-east-1a> (case sensitive). You can get a list of
-availability zones by using the get regions operation. Be sure to add
-the C<include availability zones> parameter to your request.
+availability zones by using the get regions
+(http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html)
+operation. Be sure to add the C<include availability zones> parameter
+to your request.
 
 
 
@@ -65,7 +67,10 @@ The bundle of specification information for your virtual private server
 
 =head2 CustomImageName => Str
 
-The name for your custom image.
+(Deprecated) The name for your custom image.
+
+In releases prior to June 12, 2017, this parameter was ignored by the
+API. It is now deprecated.
 
 
 
@@ -92,7 +97,8 @@ update>.
 Depending on the machine image you choose, the command to get software
 on your instance varies. Amazon Linux and CentOS use C<yum>, Debian and
 Ubuntu use C<apt-get>, and FreeBSD uses C<pkg>. For a complete list,
-see the Dev Guide.
+see the Dev Guide
+(https://lightsail.aws.amazon.com/ls/docs/getting-started/article/compare-options-choose-lightsail-instance-image).
 
 
 
@@ -103,9 +109,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateInstanc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

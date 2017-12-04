@@ -1,6 +1,7 @@
 package Paws::SSM::InstanceAssociation;
   use Moose;
   has AssociationId => (is => 'ro', isa => 'Str');
+  has AssociationVersion => (is => 'ro', isa => 'Str');
   has Content => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
 1;
@@ -43,6 +44,11 @@ One or more association documents on the instance.
   The association ID.
 
 
+=head2 AssociationVersion => Str
+
+  Version information for the association on the instance.
+
+
 =head2 Content => Str
 
   The content of the association document for the instance(s).
@@ -60,9 +66,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

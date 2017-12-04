@@ -2,6 +2,7 @@ package Paws::CodeCommit::Commit;
   use Moose;
   has AdditionalData => (is => 'ro', isa => 'Str', request_name => 'additionalData', traits => ['NameInRequest']);
   has Author => (is => 'ro', isa => 'Paws::CodeCommit::UserInfo', request_name => 'author', traits => ['NameInRequest']);
+  has CommitId => (is => 'ro', isa => 'Str', request_name => 'commitId', traits => ['NameInRequest']);
   has Committer => (is => 'ro', isa => 'Paws::CodeCommit::UserInfo', request_name => 'committer', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has Parents => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'parents', traits => ['NameInRequest']);
@@ -53,6 +54,11 @@ includes the date in timestamp format with GMT offset, the name of the
 author, and the email address for the author, as configured in Git.
 
 
+=head2 CommitId => Str
+
+  The full SHA of the specified commit.
+
+
 =head2 Committer => L<Paws::CodeCommit::UserInfo>
 
   Information about the person who committed the specified commit, also
@@ -61,8 +67,9 @@ format with GMT offset, the name of the committer, and the email
 address for the committer, as configured in Git.
 
 For more information about the difference between an author and a
-committer in Git, see Viewing the Commit History in Pro Git by Scott
-Chacon and Ben Straub.
+committer in Git, see Viewing the Commit History
+(http://git-scm.com/book/ch2-3.html) in Pro Git by Scott Chacon and Ben
+Straub.
 
 
 =head2 Message => Str
@@ -87,9 +94,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodeCommi
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

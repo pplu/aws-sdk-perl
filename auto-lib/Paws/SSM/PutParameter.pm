@@ -1,6 +1,7 @@
 
 package Paws::SSM::PutParameter;
   use Moose;
+  has AllowedPattern => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has KeyId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -19,7 +20,7 @@ package Paws::SSM::PutParameter;
 
 =head1 NAME
 
-Paws::SSM::PutParameter - Arguments for method PutParameter on Paws::SSM
+Paws::SSM::PutParameter - Arguments for method PutParameter on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -38,6 +39,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AllowedPattern => Str
+
+A regular expression used to validate the parameter value. For example,
+for String types with values restricted to numbers, you can specify the
+following: AllowedPattern=^\d+$
+
+
+
 =head2 Description => Str
 
 Information about the parameter that you want to add to the system
@@ -46,7 +55,9 @@ Information about the parameter that you want to add to the system
 
 =head2 KeyId => Str
 
-The parameter key ID that you want to add to the system.
+The KMS Key ID that you want to use to encrypt a parameter when you
+choose the SecureString data type. If you don't specify a key ID, the
+system uses the default key associated with your AWS account.
 
 
 
@@ -82,9 +93,9 @@ This class forms part of L<Paws>, documenting arguments for method PutParameter 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

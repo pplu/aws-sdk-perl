@@ -50,12 +50,13 @@ CriticalUpdates).
 
 =head2 B<REQUIRED> InstalledTime => Str
 
-  The date/time the patch was installed on the instance.
+  The date/time the patch was installed on the instance. Note that not
+all operating systems provide this level of information.
 
 
 =head2 B<REQUIRED> KBId => Str
 
-  The Microsoft Knowledge Base ID of the patch.
+  The operating system-specific ID of the patch.
 
 
 =head2 B<REQUIRED> Severity => Str
@@ -81,9 +82,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -3,7 +3,7 @@ package Paws::CloudDirectory::ListFacetNames;
   use Moose;
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
-  has SchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has SchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -11,14 +11,13 @@ package Paws::CloudDirectory::ListFacetNames;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/facet/list');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::ListFacetNamesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CloudDirectory::ListFacetNames - Arguments for method ListFacetNames on Paws::CloudDirectory
+Paws::CloudDirectory::ListFacetNames - Arguments for method ListFacetNames on L<Paws::CloudDirectory>
 
 =head1 DESCRIPTION
 
@@ -39,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 MaxResults => Int
 
-The maximum number of results to retrieve
+The maximum number of results to retrieve.
 
 
 
@@ -51,7 +50,7 @@ The pagination token.
 
 =head2 B<REQUIRED> SchemaArn => Str
 
-The ARN to retrieve facet names from.
+The Amazon Resource Name (ARN) to retrieve facet names from.
 
 
 
@@ -62,9 +61,9 @@ This class forms part of L<Paws>, documenting arguments for method ListFacetName
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

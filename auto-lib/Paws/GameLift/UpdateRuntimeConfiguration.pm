@@ -15,7 +15,7 @@ package Paws::GameLift::UpdateRuntimeConfiguration;
 
 =head1 NAME
 
-Paws::GameLift::UpdateRuntimeConfiguration - Arguments for method UpdateRuntimeConfiguration on Paws::GameLift
+Paws::GameLift::UpdateRuntimeConfiguration - Arguments for method UpdateRuntimeConfiguration on L<Paws::GameLift>
 
 =head1 DESCRIPTION
 
@@ -36,18 +36,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FleetId => Str
 
-Unique identifier for a fleet to update runtime configuration for.
+Unique identifier for a fleet to update run-time configuration for.
 
 
 
 =head2 B<REQUIRED> RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>
 
 Instructions for launching server processes on each instance in the
-fleet. The runtime configuration for a fleet has a collection of server
-process configurations, one for each type of server process to run on
-an instance. A server process configuration specifies the location of
-the server executable, launch parameters, and the number of concurrent
-processes with that configuration to maintain on each instance.
+fleet. The run-time configuration for a fleet has a collection of
+server process configurations, one for each type of server process to
+run on an instance. A server process configuration specifies the
+location of the server executable, launch parameters, and the number of
+concurrent processes with that configuration to maintain on each
+instance.
 
 
 
@@ -58,9 +59,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateRuntime
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

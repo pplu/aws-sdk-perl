@@ -15,7 +15,7 @@ package Paws::ElastiCache::TestFailover;
 
 =head1 NAME
 
-Paws::ElastiCache::TestFailover - Arguments for method TestFailover on Paws::ElastiCache
+Paws::ElastiCache::TestFailover - Arguments for method TestFailover on L<Paws::ElastiCache>
 
 =head1 DESCRIPTION
 
@@ -57,9 +57,9 @@ This class forms part of L<Paws>, documenting arguments for method TestFailover 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

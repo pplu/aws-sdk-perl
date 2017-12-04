@@ -77,7 +77,8 @@ or a version number for a fixed agent version.
 
   A C<ChefConfiguration> object that specifies whether to enable
 Berkshelf and the Berkshelf version. For more information, see Create a
-New Stack.
+New Stack
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
 
 
 =head2 ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>
@@ -106,20 +107,23 @@ following format:
 C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 
 For more information on custom JSON, see Use Custom JSON to Modify the
-Stack Configuration Attributes.
+Stack Configuration Attributes
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
 
 
 =head2 DefaultAvailabilityZone => Str
 
   The stack's default Availability Zone. For more information, see
-Regions and Endpoints.
+Regions and Endpoints
+(http://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 
 =head2 DefaultInstanceProfileArn => Str
 
   The ARN of an IAM profile that is the default profile for all of the
 stack's EC2 instances. For more information about IAM ARNs, see Using
-Identifiers.
+Identifiers
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 
 
 =head2 DefaultOs => Str
@@ -131,7 +135,8 @@ Identifiers.
 
   The default root device type. This value is used by default for all
 instances in the stack, but you can override it when you create an
-instance. For more information, see Storage for the Root Device.
+instance. For more information, see Storage for the Root Device
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
 
 
 =head2 DefaultSshKeyName => Str
@@ -159,7 +164,8 @@ VPC.
 =head2 Region => Str
 
   The stack AWS region, such as "ap-northeast-2". For more information
-about AWS regions, see Regions and Endpoints.
+about AWS regions, see Regions and Endpoints
+(http://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 
 =head2 ServiceRoleArn => Str
@@ -195,9 +201,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::OpsWorks>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

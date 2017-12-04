@@ -64,8 +64,9 @@ configuration snapshots and configuration history files.
 
 If you specify a bucket that belongs to another AWS account, that
 bucket must have policies that grant access permissions to AWS Config.
-For more information, see Permissions for the Amazon S3 Bucket in the
-AWS Config Developer Guide.
+For more information, see Permissions for the Amazon S3 Bucket
+(http://docs.aws.amazon.com/config/latest/developerguide/s3-bucket-policy.html)
+in the AWS Config Developer Guide.
 
 
 =head2 S3KeyPrefix => Str
@@ -80,8 +81,9 @@ Config sends notifications about configuration changes.
 
 If you choose a topic from another account, the topic must have
 policies that grant access permissions to AWS Config. For more
-information, see Permissions for the Amazon SNS Topic in the AWS Config
-Developer Guide.
+information, see Permissions for the Amazon SNS Topic
+(http://docs.aws.amazon.com/config/latest/developerguide/sns-topic-policy.html)
+in the AWS Config Developer Guide.
 
 
 
@@ -91,9 +93,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Config>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

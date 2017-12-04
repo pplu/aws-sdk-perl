@@ -16,7 +16,7 @@ package Paws::SNS::CreatePlatformApplication;
 
 =head1 NAME
 
-Paws::SNS::CreatePlatformApplication - Arguments for method CreatePlatformApplication on Paws::SNS
+Paws::SNS::CreatePlatformApplication - Arguments for method CreatePlatformApplication on L<Paws::SNS>
 
 =head1 DESCRIPTION
 
@@ -38,6 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> Attributes => L<Paws::SNS::MapStringToString>
 
 For a list of attributes, see SetPlatformApplicationAttributes
+(http://docs.aws.amazon.com/sns/latest/api/API_SetPlatformApplicationAttributes.html)
 
 
 
@@ -64,9 +65,9 @@ This class forms part of L<Paws>, documenting arguments for method CreatePlatfor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

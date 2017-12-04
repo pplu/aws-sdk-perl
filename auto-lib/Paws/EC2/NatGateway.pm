@@ -9,6 +9,7 @@ package Paws::EC2::NatGateway;
   has ProvisionedBandwidth => (is => 'ro', isa => 'Paws::EC2::ProvisionedBandwidth', request_name => 'provisionedBandwidth', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
 1;
 
@@ -120,7 +121,10 @@ with the NAT gateway.
 =head2 ProvisionedBandwidth => L<Paws::EC2::ProvisionedBandwidth>
 
   Reserved. If you need to sustain traffic greater than the documented
-limits, contact us through the Support Center.
+limits
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html),
+contact us through the Support Center
+(https://console.aws.amazon.com/support/home?).
 
 
 =head2 State => Str
@@ -164,6 +168,11 @@ processing traffic.
   The ID of the subnet in which the NAT gateway is located.
 
 
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+  The tags for the NAT gateway.
+
+
 =head2 VpcId => Str
 
   The ID of the VPC in which the NAT gateway is located.
@@ -176,8 +185,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

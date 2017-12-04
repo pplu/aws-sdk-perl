@@ -24,7 +24,7 @@ package Paws::ServiceCatalog::UpdateProduct;
 
 =head1 NAME
 
-Paws::ServiceCatalog::UpdateProduct - Arguments for method UpdateProduct on Paws::ServiceCatalog
+Paws::ServiceCatalog::UpdateProduct - Arguments for method UpdateProduct on L<Paws::ServiceCatalog>
 
 =head1 DESCRIPTION
 
@@ -45,16 +45,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AcceptLanguage => Str
 
-The language code to use for this operation. Supported language codes
-are as follows:
+The language code.
 
-"en" (English)
+=over
 
-"jp" (Japanese)
+=item *
 
-"zh" (Chinese)
+C<en> - English (default)
 
-If no code is specified, "en" is used as the default.
+=item *
+
+C<jp> - Japanese
+
+=item *
+
+C<zh> - Chinese
+
+=back
+
 
 
 
@@ -126,9 +134,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateProduct
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

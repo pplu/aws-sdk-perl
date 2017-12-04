@@ -43,7 +43,7 @@ orientation is corrected.
 If the source image is in .jpeg format, it might contain exchangeable
 image (Exif) metadata that includes the image's orientation. If the
 Exif metadata for the source image populates the orientation field, the
-value of C<OrientationCorrection> is nil and the C<SourceImageFace>
+value of C<OrientationCorrection> is null and the C<SourceImageFace>
 bounding box coordinates represent the location of the face after Exif
 metadata is used to correct the orientation. Images in .png format
 don't contain Exif metadata.
@@ -60,7 +60,7 @@ locations before the image orientation is corrected.
 If the target image is in .jpg format, it might contain Exif metadata
 that includes the orientation of the image. If the Exif metadata for
 the target image populates the orientation field, the value of
-C<OrientationCorrection> is nil and the bounding box coordinates in
+C<OrientationCorrection> is null and the bounding box coordinates in
 C<FaceMatches> and C<UnmatchedFaces> represent the location of the face
 after Exif metadata is used to correct the orientation. Images in .png
 format don't contain Exif metadata.

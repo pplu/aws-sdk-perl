@@ -18,7 +18,7 @@ package Paws::RDS::ModifyEventSubscription;
 
 =head1 NAME
 
-Paws::RDS::ModifyEventSubscription - Arguments for method ModifyEventSubscription on Paws::RDS
+Paws::RDS::ModifyEventSubscription - Arguments for method ModifyEventSubscription on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -47,7 +47,9 @@ A Boolean value; set to B<true> to activate the subscription.
 
 A list of event categories for a SourceType that you want to subscribe
 to. You can see a list of the categories for a given SourceType in the
-Events topic in the Amazon RDS User Guide or by using the
+Events
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html)
+topic in the Amazon RDS User Guide or by using the
 B<DescribeEventCategories> action.
 
 
@@ -85,9 +87,9 @@ This class forms part of L<Paws>, documenting arguments for method ModifyEventSu
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

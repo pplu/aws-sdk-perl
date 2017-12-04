@@ -106,7 +106,11 @@ operand.
 
 =head2 EvaluateLowSampleCountPercentile => Str
 
-  
+  Used only for alarms based on percentiles. If C<ignore>, the alarm
+state does not change during periods with too few data points to be
+statistically significant. If C<evaluate> or this parameter is not
+used, the alarm is always evaluated and possibly changes state no
+matter how many data points are available.
 
 
 =head2 EvaluationPeriods => Int
@@ -183,7 +187,8 @@ percentile. For percentile statistics, use C<ExtendedStatistic>.
 
 =head2 TreatMissingData => Str
 
-  
+  Sets how this alarm is to handle missing data points. If this parameter
+is omitted, the default behavior of C<missing> is used.
 
 
 =head2 Unit => Str
@@ -198,9 +203,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudWatc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

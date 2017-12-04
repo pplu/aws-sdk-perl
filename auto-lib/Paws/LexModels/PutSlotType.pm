@@ -1,10 +1,11 @@
 
 package Paws::LexModels::PutSlotType;
   use Moose;
-  has Checksum => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has EnumerationValues => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::EnumerationValue]');
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name' , required => 1);
+  has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has EnumerationValues => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::EnumerationValue]', traits => ['NameInRequest'], request_name => 'enumerationValues');
+  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
+  has ValueSelectionStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'valueSelectionStrategy');
 
   use MooseX::ClassAttribute;
 
@@ -12,14 +13,13 @@ package Paws::LexModels::PutSlotType;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/slottypes/{name}/versions/$LATEST');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexModels::PutSlotTypeResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::LexModels::PutSlotType - Arguments for method PutSlotType on Paws::LexModels
+Paws::LexModels::PutSlotType - Arguments for method PutSlotType on L<Paws::LexModels>
 
 =head1 DESCRIPTION
 
@@ -62,7 +62,17 @@ A description of the slot type.
 =head2 EnumerationValues => ArrayRef[L<Paws::LexModels::EnumerationValue>]
 
 A list of C<EnumerationValue> objects that defines the values that the
-slot type can take.
+slot type can take. Each value can have a list of C<synonyms>, which
+are additional values that help train the machine learning model about
+the values that it resolves for a slot.
+
+When Amazon Lex resolves a slot value, it generates a resolution list
+that contains up to five possible values for the slot. If you are using
+a Lambda function, this resolution list is passed to the function. If
+you are not using a Lambda function you can choose to return the value
+that the user entered or the first value in the resolution list as the
+slot value. The C<valueSelectionStrategy> field indicates the option to
+use.
 
 
 
@@ -75,10 +85,36 @@ name with "AMAZON." removed. For example, because there is a built-in
 slot type called C<AMAZON.DATE>, you can't create a custom slot type
 called C<DATE>.
 
-For a list of built-in slot types, see Slot Type Reference in the
-I<Alexa Skills Kit>.
+For a list of built-in slot types, see Slot Type Reference
+(https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference)
+in the I<Alexa Skills Kit>.
 
 
+
+=head2 ValueSelectionStrategy => Str
+
+Determines the slot resolution strategy that Amazon Lex uses to return
+slot type values. The field can be set to one of the following values:
+
+=over
+
+=item *
+
+C<ORIGINAL_VALUE> - Returns the value entered by the user, if the user
+value is similar to the slot value.
+
+=item *
+
+C<TOP_RESOLUTION> - If there is a resolution list for the slot, return
+the first value in the resolution list as the slot type value. If there
+is no resolution list, null is returned.
+
+=back
+
+If you don't specify the C<valueSelectionStrategy>, the default is
+C<ORIGINAL_VALUE>.
+
+Valid values are: C<"ORIGINAL_VALUE">, C<"TOP_RESOLUTION">
 
 
 =head1 SEE ALSO
@@ -87,9 +123,9 @@ This class forms part of L<Paws>, documenting arguments for method PutSlotType i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

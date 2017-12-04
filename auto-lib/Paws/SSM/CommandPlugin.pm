@@ -96,7 +96,9 @@ awsrunShellScript is the name of the plugin.
 
 =head2 OutputS3Region => Str
 
-  The name of the region where the output is stored in Amazon S3.
+  (Deprecated) You can no longer specify this parameter. The system
+ignores it. Instead, Systems Manager automatically determines the
+Amazon S3 bucket region.
 
 
 =head2 ResponseCode => Int
@@ -140,7 +142,9 @@ plugins.
 information than Status because it includes states resulting from error
 and concurrency control parameters. StatusDetails can show different
 results than Status. For more information about these statuses, see Run
-Command Status. StatusDetails can be one of the following values:
+Command Status
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html).
+StatusDetails can be one of the following values:
 
 =over
 
@@ -211,9 +215,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

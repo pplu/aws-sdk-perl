@@ -1,6 +1,7 @@
 package Paws::CloudFormation::Output;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
+  has ExportName => (is => 'ro', isa => 'Str');
   has OutputKey => (is => 'ro', isa => 'Str');
   has OutputValue => (is => 'ro', isa => 'Str');
 1;
@@ -43,6 +44,11 @@ The Output data type.
   User defined description associated with the output.
 
 
+=head2 ExportName => Str
+
+  The name of the export associated with the output.
+
+
 =head2 OutputKey => Str
 
   The key associated with the output.
@@ -60,9 +66,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudForm
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -51,7 +51,8 @@ checkers to use to determine whether this health check is healthy.
 Amazon Route 53 health checkers to use to determine whether this health
 check is healthy.
 
-For the current list of CloudWatch regions, see Amazon CloudWatch in
+For the current list of CloudWatch regions, see Amazon CloudWatch
+(http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region) in
 the I<AWS Regions and Endpoints> chapter of the I<Amazon Web Services
 General Reference>.
 
@@ -63,9 +64,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Route53>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

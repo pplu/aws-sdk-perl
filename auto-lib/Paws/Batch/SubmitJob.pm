@@ -1,13 +1,13 @@
 
 package Paws::Batch::SubmitJob;
   use Moose;
-  has ContainerOverrides => (is => 'ro', isa => 'Paws::Batch::ContainerOverrides');
-  has DependsOn => (is => 'ro', isa => 'ArrayRef[Paws::Batch::JobDependency]');
-  has JobDefinition => (is => 'ro', isa => 'Str', required => 1);
-  has JobName => (is => 'ro', isa => 'Str', required => 1);
-  has JobQueue => (is => 'ro', isa => 'Str', required => 1);
-  has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap');
-  has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy');
+  has ContainerOverrides => (is => 'ro', isa => 'Paws::Batch::ContainerOverrides', traits => ['NameInRequest'], request_name => 'containerOverrides');
+  has DependsOn => (is => 'ro', isa => 'ArrayRef[Paws::Batch::JobDependency]', traits => ['NameInRequest'], request_name => 'dependsOn');
+  has JobDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobDefinition', required => 1);
+  has JobName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobName', required => 1);
+  has JobQueue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueue', required => 1);
+  has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', traits => ['NameInRequest'], request_name => 'parameters');
+  has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', traits => ['NameInRequest'], request_name => 'retryStrategy');
 
   use MooseX::ClassAttribute;
 
@@ -15,14 +15,13 @@ package Paws::Batch::SubmitJob;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/submitjob');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Batch::SubmitJobResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Batch::SubmitJob - Arguments for method SubmitJob on Paws::Batch
+Paws::Batch::SubmitJob - Arguments for method SubmitJob on L<Paws::Batch>
 
 =head1 DESCRIPTION
 
@@ -56,7 +55,7 @@ add new environment variables to it with an C<environment> override.
 =head2 DependsOn => ArrayRef[L<Paws::Batch::JobDependency>]
 
 A list of job IDs on which this job depends. A job can depend upon a
-maximum of 100 jobs.
+maximum of 20 jobs.
 
 
 
@@ -70,9 +69,9 @@ definition.
 
 =head2 B<REQUIRED> JobName => Str
 
-The name of the job. A name must be 1 to 128 characters in length.
-
-Pattern: ^[a-zA-Z0-9_]+$
+The name of the job. The first character must be alphanumeric, and up
+to 128 letters (uppercase and lowercase), numbers, hyphens, and
+underscores are allowed.
 
 
 
@@ -108,9 +107,9 @@ This class forms part of L<Paws>, documenting arguments for method SubmitJob in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

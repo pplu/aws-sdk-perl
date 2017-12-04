@@ -1,8 +1,9 @@
 
 package Paws::WorkDocs::AddResourcePermissions;
   use Moose;
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
   has Principals => (is => 'ro', isa => 'ArrayRef[Paws::WorkDocs::SharePrincipal]', required => 1);
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceId' , required => 1);
+  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceId', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -10,14 +11,13 @@ package Paws::WorkDocs::AddResourcePermissions;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/resources/{ResourceId}/permissions');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::AddResourcePermissionsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::WorkDocs::AddResourcePermissions - Arguments for method AddResourcePermissions on Paws::WorkDocs
+Paws::WorkDocs::AddResourcePermissions - Arguments for method AddResourcePermissions on L<Paws::WorkDocs>
 
 =head1 DESCRIPTION
 
@@ -34,6 +34,14 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 AuthenticationToken => Str
+
+Amazon WorkDocs authentication token. This field should not be set when
+using administrative API actions, as in accessing the API using AWS
+credentials.
+
 
 
 =head2 B<REQUIRED> Principals => ArrayRef[L<Paws::WorkDocs::SharePrincipal>]
@@ -55,9 +63,9 @@ This class forms part of L<Paws>, documenting arguments for method AddResourcePe
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

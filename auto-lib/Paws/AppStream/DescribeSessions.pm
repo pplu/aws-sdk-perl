@@ -19,7 +19,7 @@ package Paws::AppStream::DescribeSessions;
 
 =head1 NAME
 
-Paws::AppStream::DescribeSessions - Arguments for method DescribeSessions on Paws::AppStream
+Paws::AppStream::DescribeSessions - Arguments for method DescribeSessions on L<Paws::AppStream>
 
 =head1 DESCRIPTION
 
@@ -40,23 +40,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AuthenticationType => Str
 
-The authentication method of the user. It can be C<API> for a user
-authenticated using a streaming URL, or C<SAML> for a SAML federated
-user. If an authentication type is not provided, the operation defaults
-to users authenticated using a streaming URL.
+The authentication method. Specify C<API> for a user authenticated
+using a streaming URL or C<SAML> for a SAML federated user. The default
+is to authenticate users using a streaming URL.
 
-Valid values are: C<"API">, C<"SAML">
+Valid values are: C<"API">, C<"SAML">, C<"USERPOOL">
 
 =head2 B<REQUIRED> FleetName => Str
 
-The name of the fleet for which to list sessions.
+The name of the fleet.
 
 
 
 =head2 Limit => Int
 
 The size of each page of results. The default value is 20 and the
-maximum supported value is 50.
+maximum value is 50.
 
 
 
@@ -69,14 +68,13 @@ this operation. If this value is null, it retrieves the first page.
 
 =head2 B<REQUIRED> StackName => Str
 
-The name of the stack for which to list sessions.
+The name of the stack.
 
 
 
 =head2 UserId => Str
 
-The user for whom to list sessions. Use null to describe all the
-sessions for the stack and fleet.
+The user ID.
 
 
 
@@ -87,9 +85,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeSessi
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

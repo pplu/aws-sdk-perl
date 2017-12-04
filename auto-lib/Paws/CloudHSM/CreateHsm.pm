@@ -21,7 +21,7 @@ package Paws::CloudHSM::CreateHsm;
 
 =head1 NAME
 
-Paws::CloudHSM::CreateHsm - Arguments for method CreateHsm on Paws::CloudHSM
+Paws::CloudHSM::CreateHsm - Arguments for method CreateHsm on L<Paws::CloudHSM>
 
 =head1 DESCRIPTION
 
@@ -58,7 +58,7 @@ chosen from the CIDR range of the subnet.
 
 =head2 ExternalId => Str
 
-The external ID from B<IamRoleArn>, if present.
+The external ID from C<IamRoleArn>, if present.
 
 
 
@@ -101,9 +101,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateHsm in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

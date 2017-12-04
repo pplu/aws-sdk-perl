@@ -27,7 +27,8 @@ C<Handled> or C<Unhandled>. C<Handled> errors are errors that are
 reported by the function while the C<Unhandled> errors are those
 detected and reported by AWS Lambda. Unhandled errors include out of
 memory errors and function timeouts. For information about how to
-report an C<Handled> error, see Programming Model.
+report an C<Handled> error, see Programming Model
+(http://docs.aws.amazon.com/lambda/latest/dg/programming-model.html).
 
 
 =head2 LogResult => Str
@@ -52,9 +53,9 @@ the message.
 =head2 StatusCode => Int
 
 The HTTP status code will be in the 200 range for successful request.
-For the C<RequestResonse> invocation type this status code will be 200.
-For the C<Event> invocation type this status code will be 202. For the
-C<DryRun> invocation type the status code will be 204.
+For the C<RequestResponse> invocation type this status code will be
+200. For the C<Event> invocation type this status code will be 202. For
+the C<DryRun> invocation type the status code will be 204.
 
 
 =head2 _request_id => Str

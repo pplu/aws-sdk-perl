@@ -1,10 +1,10 @@
 
 package Paws::LexModels::GetBuiltinSlotTypes;
   use Moose;
-  has Locale => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'locale' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken' );
-  has SignatureContains => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'signatureContains' );
+  has Locale => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'locale');
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  has SignatureContains => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'signatureContains');
 
   use MooseX::ClassAttribute;
 
@@ -12,14 +12,13 @@ package Paws::LexModels::GetBuiltinSlotTypes;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/builtins/slottypes/');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexModels::GetBuiltinSlotTypesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::LexModels::GetBuiltinSlotTypes - Arguments for method GetBuiltinSlotTypes on Paws::LexModels
+Paws::LexModels::GetBuiltinSlotTypes - Arguments for method GetBuiltinSlotTypes on L<Paws::LexModels>
 
 =head1 DESCRIPTION
 
@@ -75,9 +74,9 @@ This class forms part of L<Paws>, documenting arguments for method GetBuiltinSlo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -34,7 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-Provisioning artifact properties.
+Provisioning artifact properties. For example request JSON, see
+CreateProvisioningArtifact.
 
 =head1 ATTRIBUTES
 
@@ -46,7 +47,10 @@ Provisioning artifact properties.
 
 =head2 B<REQUIRED> Info => L<Paws::ServiceCatalog::ProvisioningArtifactInfo>
 
-  Additional information about the provisioning artifact properties.
+  Additional information about the provisioning artifact properties. When
+using this element in a request, you must specify
+C<LoadTemplateFromURL>. For more information, see
+CreateProvisioningArtifact.
 
 
 =head2 Name => Str
@@ -56,7 +60,13 @@ Provisioning artifact properties.
 
 =head2 Type => Str
 
-  The type of the provisioning artifact properties.
+  The type of the provisioning artifact properties. The following
+provisioning artifact property types are used by AWS Marketplace
+products:
+
+C<MARKETPLACE_AMI> - AMI products.
+
+C<MARKETPLACE_CAR> - CAR (Cluster and AWS Resources) products.
 
 
 
@@ -66,9 +76,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ServiceCa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

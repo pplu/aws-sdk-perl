@@ -15,7 +15,7 @@ package Paws::IAM::DeleteAccessKey;
 
 =head1 NAME
 
-Paws::IAM::DeleteAccessKey - Arguments for method DeleteAccessKey on Paws::IAM
+Paws::IAM::DeleteAccessKey - Arguments for method DeleteAccessKey on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -39,8 +39,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The access key ID for the access key ID and secret access key you want
 to delete.
 
-This parameter allows (per its regex pattern) a string of characters
-that can consist of any upper or lowercased letter or digit.
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters that can
+consist of any upper or lowercased letter or digit.
 
 
 
@@ -48,9 +49,10 @@ that can consist of any upper or lowercased letter or digit.
 
 The name of the user whose access key pair you want to delete.
 
-This parameter allows (per its regex pattern) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+upper and lowercase alphanumeric characters with no spaces. You can
+also include any of the following characters: =,.@-
 
 
 
@@ -61,9 +63,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteAccessK
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

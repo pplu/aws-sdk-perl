@@ -1,8 +1,8 @@
 
 package Paws::ApiGateway::GetModelTemplate;
   use Moose;
-  has ModelName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'modelName' , required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
+  has ModelName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'modelName', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -10,14 +10,13 @@ package Paws::ApiGateway::GetModelTemplate;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/models/{model_name}/default_template');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Template');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::GetModelTemplate - Arguments for method GetModelTemplate on Paws::ApiGateway
+Paws::ApiGateway::GetModelTemplate - Arguments for method GetModelTemplate on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -44,7 +43,7 @@ The name of the model for which to generate a template.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The ID of the RestApi under which the model exists.
+The string identifier of the associated RestApi.
 
 
 
@@ -55,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method GetModelTempl
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

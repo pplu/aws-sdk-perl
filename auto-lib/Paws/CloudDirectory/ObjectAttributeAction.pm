@@ -39,7 +39,7 @@ The action to take on the object attribute.
 
 =head2 ObjectAttributeActionType => Str
 
-  Type can be either Update or Delete.
+  A type that can be either C<Update> or C<Delete>.
 
 
 =head2 ObjectAttributeUpdateValue => L<Paws::CloudDirectory::TypedAttributeValue>
@@ -54,9 +54,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudDire
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

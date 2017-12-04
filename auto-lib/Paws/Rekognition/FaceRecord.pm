@@ -41,12 +41,14 @@ the database.
 
 =head2 Face => L<Paws::Rekognition::Face>
 
-  
+  Describes the face properties such as the bounding box, face ID, image
+ID of the input image, and external image ID that you assigned.
 
 
 =head2 FaceDetail => L<Paws::Rekognition::FaceDetail>
 
-  
+  Structure containing attributes of the face that the algorithm
+detected.
 
 
 
@@ -56,9 +58,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Rekogniti
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

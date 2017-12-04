@@ -43,7 +43,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::C
 
 Describes the Amazon CloudWatch logs configuration for a layer. For
 detailed information about members of this data type, see the
-CloudWatch Logs Agent Reference.
+CloudWatch Logs Agent Reference
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html).
 
 =head1 ATTRIBUTES
 
@@ -71,7 +72,8 @@ value is 5000ms and default value is 5000ms.
 =head2 DatetimeFormat => Str
 
   Specifies how the time stamp is extracted from logs. For more
-information, see the CloudWatch Logs Agent Reference.
+information, see the CloudWatch Logs Agent Reference
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html).
 
 
 =head2 Encoding => Str
@@ -141,9 +143,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::OpsWorks>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

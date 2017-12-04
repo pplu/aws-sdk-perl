@@ -1,5 +1,6 @@
 package Paws::Pinpoint::SegmentImportResource;
   use Moose;
+  has ChannelCounts => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__integer');
   has ExternalId => (is => 'ro', isa => 'Str');
   has Format => (is => 'ro', isa => 'Str');
   has RoleArn => (is => 'ro', isa => 'Str');
@@ -24,20 +25,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::SegmentImportResource object:
 
-  $service_obj->Method(Att1 => { ExternalId => $value, ..., Size => $value  });
+  $service_obj->Method(Att1 => { ChannelCounts => $value, ..., Size => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::SegmentImportResource object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ExternalId
+  $result->Att1->ChannelCounts
 
 =head1 DESCRIPTION
 
 Segment import definition.
 
 =head1 ATTRIBUTES
+
+
+=head2 ChannelCounts => L<Paws::Pinpoint::MapOf__integer>
+
+  Channel type counts
 
 
 =head2 ExternalId => Str
@@ -77,9 +83,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

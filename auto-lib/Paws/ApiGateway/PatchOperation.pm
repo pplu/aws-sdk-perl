@@ -57,7 +57,8 @@ operation on a resource will return an error message.
 
 =head2 Path => Str
 
-  The C<op> operation's target, as identified by a JSON Pointer value
+  The C<op> operation's target, as identified by a JSON Pointer
+(https://tools.ietf.org/html/draft-ietf-appsawg-json-pointer-08) value
 that references a location within the targeted resource. For example,
 if the target resource has an updateable property of
 C<{"name":"value"}>, the path for this property is C</name>. If the
@@ -74,7 +75,8 @@ associated with it.
   The new target value of the update operation. When using AWS CLI to
 update a property of a JSON value, enclose the JSON object with a pair
 of single quotes in a Linux shell, e.g., '{"a": ...}'. In a Windows
-shell, see Using JSON for Parameters.
+shell, see Using JSON for Parameters
+(http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json).
 
 
 
@@ -84,9 +86,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ApiGatewa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

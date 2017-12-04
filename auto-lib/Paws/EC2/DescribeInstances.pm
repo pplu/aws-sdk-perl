@@ -18,7 +18,7 @@ package Paws::EC2::DescribeInstances;
 
 =head1 NAME
 
-Paws::EC2::DescribeInstances - Arguments for method DescribeInstances on Paws::EC2
+Paws::EC2::DescribeInstances - Arguments for method DescribeInstances on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -329,10 +329,10 @@ C<network-interface.status> - The status of the network interface
 =item *
 
 C<network-interface.source-dest-check> - Whether the network interface
-performs source/destination checking. A value of C<true> means checking
-is enabled, and C<false> means checking is disabled. The value must be
-C<false> for the network interface to perform network address
-translation (NAT) in your VPC.
+performs source/destination checking. A value of C<true> means that
+checking is enabled, and C<false> means that checking is disabled. The
+value must be C<false> for the network interface to perform network
+address translation (NAT) in your VPC.
 
 =item *
 
@@ -399,8 +399,8 @@ ID is created any time you launch an instance. A reservation ID has a
 one-to-one relationship with an instance launch request, but can be
 associated with more than one instance if you launch multiple instances
 using the same launch request. For example, if you launch one instance,
-you'll get one reservation ID. If you launch ten instances using the
-same launch request, you'll also get one reservation ID.
+you get one reservation ID. If you launch ten instances using the same
+launch request, you also get one reservation ID.
 
 =item *
 
@@ -416,13 +416,13 @@ C<root-device-type> - The type of root device that the instance uses
 
 C<source-dest-check> - Indicates whether the instance performs
 source/destination checking. A value of C<true> means that checking is
-enabled, and C<false> means checking is disabled. The value must be
-C<false> for the instance to perform network address translation (NAT)
-in your VPC.
+enabled, and C<false> means that checking is disabled. The value must
+be C<false> for the instance to perform network address translation
+(NAT) in your VPC.
 
 =item *
 
-C<spot-instance-request-id> - The ID of the Spot instance request.
+C<spot-instance-request-id> - The ID of the Spot Instance request.
 
 =item *
 
@@ -450,8 +450,8 @@ C<tag-key> - The key of a tag assigned to the resource. This filter is
 independent of the C<tag-value> filter. For example, if you use both
 the filter "tag-key=Purpose" and the filter "tag-value=X", you get any
 resources assigned both the tag key Purpose (regardless of what the
-tag's value is), and the tag value X (regardless of what the tag's key
-is). If you want to list only resources where Purpose is X, see the
+tag's value is), and the tag value X (regardless of the tag's key). If
+you want to list only resources where Purpose is X, see the
 C<tag>:I<key>=I<value> filter.
 
 =item *
@@ -509,9 +509,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeInsta
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -22,7 +22,7 @@ package Paws::EC2::CreateVolume;
 
 =head1 NAME
 
-Paws::EC2::CreateVolume - Arguments for method CreateVolume on Paws::EC2
+Paws::EC2::CreateVolume - Arguments for method CreateVolume on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -66,8 +66,9 @@ encryption. Volumes that are created from encrypted snapshots are
 automatically encrypted. There is no way to create an encrypted volume
 from an unencrypted snapshot or vice versa. If your AMI uses encrypted
 volumes, you can only launch it on supported instance types. For more
-information, see Amazon EBS Encryption in the I<Amazon Elastic Compute
-Cloud User Guide>.
+information, see Amazon EBS Encryption
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -138,9 +139,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateVolume 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

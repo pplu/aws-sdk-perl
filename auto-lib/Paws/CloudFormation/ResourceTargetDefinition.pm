@@ -58,7 +58,9 @@ For all other attributes, the value is null.
 to this property causes the resource to be recreated. The value can be
 C<Never>, C<Always>, or C<Conditionally>. To determine the conditions
 for a C<Conditionally> recreation, see the update behavior for that
-property in the AWS CloudFormation User Guide.
+property
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
+in the AWS CloudFormation User Guide.
 
 
 
@@ -68,9 +70,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudForm
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

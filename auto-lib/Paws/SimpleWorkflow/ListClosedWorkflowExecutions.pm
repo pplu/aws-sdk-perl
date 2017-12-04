@@ -23,7 +23,7 @@ package Paws::SimpleWorkflow::ListClosedWorkflowExecutions;
 
 =head1 NAME
 
-Paws::SimpleWorkflow::ListClosedWorkflowExecutions - Arguments for method ListClosedWorkflowExecutions on Paws::SimpleWorkflow
+Paws::SimpleWorkflow::ListClosedWorkflowExecutions - Arguments for method ListClosedWorkflowExecutions on L<Paws::SimpleWorkflow>
 
 =head1 DESCRIPTION
 
@@ -85,7 +85,7 @@ these in a request.
 
 =head2 MaximumPageSize => Int
 
-The maximum number of results that will be returned per call.
+The maximum number of results that are returned per call.
 C<nextPageToken> can be used to obtain futher pages of results. The
 default is 1000, which is the maximum allowed page size. You can,
 however, specify a page size I<smaller> than the maximum.
@@ -155,9 +155,9 @@ This class forms part of L<Paws>, documenting arguments for method ListClosedWor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -57,7 +57,7 @@ If the results were truncated, the type of the next record in the list.
 
 This element is present only if C<IsTruncated> is true.
 
-Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">
+Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">, C<"CAA">
 
 =head2 B<REQUIRED> ResourceRecordSets => ArrayRef[L<Paws::Route53::ResourceRecordSet>]
 

@@ -39,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head1 DESCRIPTION
 
-Provides details of the C<ContinueAsNewWorkflowExecution> decision.
+Provides the details of the C<ContinueAsNewWorkflowExecution> decision.
 
 B<Access Control>
 
@@ -48,35 +48,48 @@ SWF resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * Constrain the following parameters by using a C<Condition>
-element with the appropriate keys.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+Constrain the following parameters by using a C<Condition> element with
+the appropriate keys.
 
 =over
 
-=item * C<tag>: I<Optional.>. A tag used to identify the workflow
-execution
+=item *
 
-=item * C<taskList>: String constraint. The key is
+C<tag> E<ndash> A tag used to identify the workflow execution
+
+=item *
+
+C<taskList> E<ndash> String constraint. The key is
 C<swf:taskList.name>.
 
-=item * C<workflowType.version>: String constraint. The key is
+=item *
+
+C<workflowType.version> E<ndash> String constraint. The key is
 C<swf:workflowType.version>.
 
 =back
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 =head1 ATTRIBUTES
 
@@ -93,22 +106,28 @@ The supported child policies are:
 
 =over
 
-=item * B<TERMINATE:> the child executions will be terminated.
+=item *
 
-=item * B<REQUEST_CANCEL:> a request to cancel will be attempted for
-each child execution by recording a C<WorkflowExecutionCancelRequested>
+C<TERMINATE> E<ndash> The child executions are terminated.
+
+=item *
+
+C<REQUEST_CANCEL> E<ndash> A request to cancel is attempted for each
+child execution by recording a C<WorkflowExecutionCancelRequested>
 event in its history. It is up to the decider to take appropriate
 actions when it receives an execution history with this event.
 
-=item * B<ABANDON:> no action will be taken. The child executions will
-continue to run.
+=item *
+
+C<ABANDON> E<ndash> No action is taken. The child executions continue
+to run.
 
 =back
 
 A child policy for this workflow execution must be specified either as
 a default for the workflow type or through this parameter. If neither
 this parameter is set nor a default child policy was specified at
-registration time then a fault will be returned.
+registration time then a fault is returned.
 
 
 =head2 ExecutionStartToCloseTimeout => Str
@@ -117,14 +136,14 @@ registration time then a fault will be returned.
 overrides the C<defaultExecutionStartToCloseTimeout> specified when
 registering the workflow type.
 
-The duration is specified in seconds; an integer greater than or equal
-to 0. The value "NONE" can be used to specify unlimited duration.
+The duration is specified in seconds, an integer greater than or equal
+to C<0>. You can use C<NONE> to specify unlimited duration.
 
 An execution start-to-close timeout for this workflow execution must be
 specified either as a default for the workflow type or through this
 field. If neither this field is set nor a default execution
 start-to-close timeout was specified at registration time then a fault
-will be returned.
+is returned.
 
 
 =head2 Input => Str
@@ -134,12 +153,7 @@ will be returned.
 
 =head2 LambdaRole => Str
 
-  The ARN of an IAM role that authorizes Amazon SWF to invoke AWS Lambda
-functions.
-
-In order for this workflow execution to invoke AWS Lambda functions, an
-appropriate IAM role must be specified either as a default for the
-workflow type or through this field.
+  The IAM role to attach to the new (continued) execution.
 
 
 =head2 TagList => ArrayRef[Str|Undef]
@@ -152,20 +166,23 @@ ListClosedWorkflowExecutions and specifying a TagFilter.
 
 =head2 TaskList => L<Paws::SimpleWorkflow::TaskList>
 
-  
+  The task list to use for the decisions of the new (continued) workflow
+execution.
 
 
 =head2 TaskPriority => Str
 
-  I<Optional.> The task priority that, if set, specifies the priority for
-the decision tasks for this workflow execution. This overrides the
+  The task priority that, if set, specifies the priority for the decision
+tasks for this workflow execution. This overrides the
 defaultTaskPriority specified when registering the workflow type. Valid
 values are integers that range from Java's C<Integer.MIN_VALUE>
 (-2147483648) to C<Integer.MAX_VALUE> (2147483647). Higher numbers
 indicate higher priority.
 
 For more information about setting task priority, see Setting Task
-Priority in the I<Amazon Simple Workflow Developer Guide>.
+Priority
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 TaskStartToCloseTimeout => Str
@@ -175,19 +192,19 @@ execution. This parameter overrides the
 C<defaultTaskStartToCloseTimout> specified when registering the
 workflow type using RegisterWorkflowType.
 
-The duration is specified in seconds; an integer greater than or equal
-to 0. The value "NONE" can be used to specify unlimited duration.
+The duration is specified in seconds, an integer greater than or equal
+to C<0>. You can use C<NONE> to specify unlimited duration.
 
 A task start-to-close timeout for the new workflow execution must be
 specified either as a default for the workflow type or through this
 parameter. If neither this parameter is set nor a default task
 start-to-close timeout was specified at registration time then a fault
-will be returned.
+is returned.
 
 
 =head2 WorkflowTypeVersion => Str
 
-  
+  The version of the workflow to start.
 
 
 
@@ -197,9 +214,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SimpleWor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -43,8 +43,9 @@ partition key.
 =head2 B<REQUIRED> PartitionKeyPath => Str
 
   The JSON path to be extracted from the event and used as the partition
-key. For more information, see Amazon Kinesis Streams Key Concepts in
-the I<Amazon Kinesis Streams Developer Guide>.
+key. For more information, see Amazon Kinesis Streams Key Concepts
+(http://docs.aws.amazon.com/streams/latest/dev/key-concepts.html#partition-key)
+in the I<Amazon Kinesis Streams Developer Guide>.
 
 
 
@@ -54,9 +55,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudWatc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

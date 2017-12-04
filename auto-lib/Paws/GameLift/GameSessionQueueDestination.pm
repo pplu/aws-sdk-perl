@@ -35,6 +35,29 @@ Fleet designated in a game session queue. Requests for new game
 sessions in the queue are fulfilled by starting a new game session on
 any destination configured for a queue.
 
+Queue-related operations include:
+
+=over
+
+=item *
+
+CreateGameSessionQueue
+
+=item *
+
+DescribeGameSessionQueues
+
+=item *
+
+UpdateGameSessionQueue
+
+=item *
+
+DeleteGameSessionQueue
+
+=back
+
+
 =head1 ATTRIBUTES
 
 
@@ -52,9 +75,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::GameLift>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

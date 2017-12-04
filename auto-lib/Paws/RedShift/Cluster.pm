@@ -250,7 +250,9 @@ encrypted at rest.
   An option that specifies whether to create the cluster with enhanced
 VPC routing enabled. To create a cluster that uses enhanced VPC
 routing, the cluster must be in a VPC. For more information, see
-Enhanced VPC Routing in the Amazon Redshift Cluster Management Guide.
+Enhanced VPC Routing
+(http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)
+in the Amazon Redshift Cluster Management Guide.
 
 If this option is C<true>, enhanced VPC routing is enabled.
 
@@ -349,9 +351,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::RedShift>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

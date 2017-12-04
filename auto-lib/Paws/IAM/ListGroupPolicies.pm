@@ -16,7 +16,7 @@ package Paws::IAM::ListGroupPolicies;
 
 =head1 NAME
 
-Paws::IAM::ListGroupPolicies - Arguments for method ListGroupPolicies on Paws::IAM
+Paws::IAM::ListGroupPolicies - Arguments for method ListGroupPolicies on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -39,9 +39,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The name of the group to list policies for.
 
-This parameter allows (per its regex pattern) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+upper and lowercase alphanumeric characters with no spaces. You can
+also include any of the following characters: =,.@-
 
 
 
@@ -76,9 +77,9 @@ This class forms part of L<Paws>, documenting arguments for method ListGroupPoli
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -1,0 +1,38 @@
+---
+tests:
+  - expected: LS1
+    op: eq
+    path: Events.0.LogStreamName
+  - expected: 33385152327303152322044466339423163414024773273604980736
+    op: eq
+    path: Events.1.EventId
+  - expected: Log Line 2
+    op: eq
+    path: Events.0.Message
+  - expected: LS1
+    op: eq
+    path: SearchedLogStreams.0.LogStreamName
+  - expected: 1497041973192
+    op: eq
+    path: Events.0.IngestionTime
+  - expected: 1
+    op: eq
+    path: SearchedLogStreams.0.SearchedCompletely
+  - expected: LS1
+    op: eq
+    path: Events.1.LogStreamName
+  - expected: 1497042007477
+    op: eq
+    path: Events.1.IngestionTime
+  - expected: 1497041972000
+    op: eq
+    path: Events.0.Timestamp
+  - expected: 1497042006000
+    op: eq
+    path: Events.1.Timestamp
+  - expected: 33385151569077815572003279485760634013109489184634503169
+    op: eq
+    path: Events.0.EventId
+  - expected: Log Line 2
+    op: eq
+    path: Events.1.Message

@@ -3,6 +3,8 @@ package Paws::CloudFront::ListTagsForResourceResult;
   use Moose;
   has Tags => (is => 'ro', isa => 'Paws::CloudFront::Tags', required => 1);
 
+  use MooseX::ClassAttribute;
+  class_has _payload => (is => 'ro', default => 'Tags');
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

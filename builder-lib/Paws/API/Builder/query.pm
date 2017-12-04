@@ -9,7 +9,6 @@ package Paws::API::Builder::query {
   extends 'Paws::API::Builder';
 
   has wrapped_responses => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{ result_wrapped } });
-  has response_role  => (is => 'ro', lazy => 1, default => sub { 'Paws::Net::XMLResponse' });
 
   has callargs_class_template => (is => 'ro', isa => 'Str', default => q#
 [%- operation = c.operation(op_name) %]
@@ -88,7 +87,7 @@ package [% c.api %];
   [%- END %]
   ] });
 
-  with 'Paws::API::Caller', '[% c.endpoint_role %]', '[% c.signature_role %]', '[% c.parameter_role %]', '[% c.response_role %]';
+  with 'Paws::API::Caller', '[% c.endpoint_role %]', '[% c.signature_role %]', '[% c.parameter_role %]';
 
   [%- c.service_endpoint_rules %]
   [% FOR op IN c.api_struct.operations.keys.sort %]

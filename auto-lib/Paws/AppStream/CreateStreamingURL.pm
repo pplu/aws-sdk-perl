@@ -19,7 +19,7 @@ package Paws::AppStream::CreateStreamingURL;
 
 =head1 NAME
 
-Paws::AppStream::CreateStreamingURL - Arguments for method CreateStreamingURL on Paws::AppStream
+Paws::AppStream::CreateStreamingURL - Arguments for method CreateStreamingURL on L<Paws::AppStream>
 
 =head1 DESCRIPTION
 
@@ -47,32 +47,32 @@ starts.
 
 =head2 B<REQUIRED> FleetName => Str
 
-The fleet for which the URL is generated.
+The name of the fleet.
 
 
 
 =head2 SessionContext => Str
 
-The sessionContext of the streaming URL.
+The session context of the streaming URL.
 
 
 
 =head2 B<REQUIRED> StackName => Str
 
-The stack for which the URL is generated.
+The name of the stack.
 
 
 
 =head2 B<REQUIRED> UserId => Str
 
-A unique user ID for whom the URL is generated.
+The ID of the user.
 
 
 
 =head2 Validity => Int
 
-The duration up to which the URL returned by this action is valid. The
-input can be any numeric value in seconds between 1 and 604800 seconds.
+The time that the streaming URL will be valid, in seconds. Specify a
+value between 1 and 604800 seconds.
 
 
 
@@ -83,9 +83,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateStreami
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

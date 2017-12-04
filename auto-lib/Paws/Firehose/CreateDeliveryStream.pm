@@ -2,8 +2,10 @@
 package Paws::Firehose::CreateDeliveryStream;
   use Moose;
   has DeliveryStreamName => (is => 'ro', isa => 'Str', required => 1);
+  has DeliveryStreamType => (is => 'ro', isa => 'Str');
   has ElasticsearchDestinationConfiguration => (is => 'ro', isa => 'Paws::Firehose::ElasticsearchDestinationConfiguration');
   has ExtendedS3DestinationConfiguration => (is => 'ro', isa => 'Paws::Firehose::ExtendedS3DestinationConfiguration');
+  has KinesisStreamSourceConfiguration => (is => 'ro', isa => 'Paws::Firehose::KinesisStreamSourceConfiguration');
   has RedshiftDestinationConfiguration => (is => 'ro', isa => 'Paws::Firehose::RedshiftDestinationConfiguration');
   has S3DestinationConfiguration => (is => 'ro', isa => 'Paws::Firehose::S3DestinationConfiguration');
 
@@ -18,7 +20,7 @@ package Paws::Firehose::CreateDeliveryStream;
 
 =head1 NAME
 
-Paws::Firehose::CreateDeliveryStream - Arguments for method CreateDeliveryStream on Paws::Firehose
+Paws::Firehose::CreateDeliveryStream - Arguments for method CreateDeliveryStream on L<Paws::Firehose>
 
 =head1 DESCRIPTION
 
@@ -40,10 +42,33 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> DeliveryStreamName => Str
 
 The name of the delivery stream. This name must be unique per AWS
-account in the same region. You can have multiple delivery streams with
-the same name if they are in different accounts or different regions.
+account in the same region. If the delivery streams are in different
+accounts or different regions, you can have multiple delivery streams
+with the same name.
 
 
+
+=head2 DeliveryStreamType => Str
+
+The delivery stream type. This parameter can be one of the following
+values:
+
+=over
+
+=item *
+
+C<DirectPut>: Provider applications access the delivery stream
+directly.
+
+=item *
+
+C<KinesisStreamAsSource>: The delivery stream uses a Kinesis stream as
+a source.
+
+=back
+
+
+Valid values are: C<"DirectPut">, C<"KinesisStreamAsSource">
 
 =head2 ElasticsearchDestinationConfiguration => L<Paws::Firehose::ElasticsearchDestinationConfiguration>
 
@@ -54,6 +79,14 @@ The destination in Amazon ES. You can specify only one destination.
 =head2 ExtendedS3DestinationConfiguration => L<Paws::Firehose::ExtendedS3DestinationConfiguration>
 
 The destination in Amazon S3. You can specify only one destination.
+
+
+
+=head2 KinesisStreamSourceConfiguration => L<Paws::Firehose::KinesisStreamSourceConfiguration>
+
+When a Kinesis stream is used as the source for the delivery stream, a
+KinesisStreamSourceConfiguration containing the Kinesis stream ARN and
+the role ARN for the source stream.
 
 
 
@@ -78,9 +111,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateDeliver
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

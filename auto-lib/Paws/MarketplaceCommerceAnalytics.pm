@@ -11,7 +11,7 @@ package Paws::MarketplaceCommerceAnalytics;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub GenerateDataSet {
@@ -65,7 +65,7 @@ Each argument is described in detail in: L<Paws::MarketplaceCommerceAnalytics::G
 
 Returns: a L<Paws::MarketplaceCommerceAnalytics::GenerateDataSetResult> instance
 
-  Given a data set type and data set publication date, asynchronously
+Given a data set type and data set publication date, asynchronously
 publishes the requested data set to the specified S3 bucket and
 notifies the specified SNS topic once the data is available. Returns a
 unique request identifier that can be used to correlate requests with
@@ -85,7 +85,7 @@ Each argument is described in detail in: L<Paws::MarketplaceCommerceAnalytics::S
 
 Returns: a L<Paws::MarketplaceCommerceAnalytics::StartSupportDataExportResult> instance
 
-  Given a data set type and a from date, asynchronously publishes the
+Given a data set type and a from date, asynchronously publishes the
 requested customer support data to the specified S3 bucket and notifies
 the specified SNS topic once the data is available. Returns a unique
 request identifier that can be used to correlate requests with
@@ -114,9 +114,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

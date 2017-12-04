@@ -51,7 +51,7 @@ Describes an instance's RAID array.
 =head2 AvailabilityZone => Str
 
   The array's Availability Zone. For more information, see Regions and
-Endpoints.
+Endpoints (http://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 
 =head2 CreatedAt => Str
@@ -96,7 +96,7 @@ Endpoints.
 
 =head2 RaidLevel => Int
 
-  The RAID level.
+  The RAID level (http://en.wikipedia.org/wiki/Standard_RAID_levels).
 
 
 =head2 Size => Int
@@ -121,9 +121,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::OpsWorks>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

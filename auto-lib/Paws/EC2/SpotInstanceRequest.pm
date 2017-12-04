@@ -6,6 +6,7 @@ package Paws::EC2::SpotInstanceRequest;
   has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
   has Fault => (is => 'ro', isa => 'Paws::EC2::SpotInstanceStateFault', request_name => 'fault', traits => ['NameInRequest']);
   has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
+  has InstanceInterruptionBehavior => (is => 'ro', isa => 'Str', request_name => 'instanceInterruptionBehavior', traits => ['NameInRequest']);
   has LaunchedAvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'launchedAvailabilityZone', traits => ['NameInRequest']);
   has LaunchGroup => (is => 'ro', isa => 'Str', request_name => 'launchGroup', traits => ['NameInRequest']);
   has LaunchSpecification => (is => 'ro', isa => 'Paws::EC2::LaunchSpecification', request_name => 'launchSpecification', traits => ['NameInRequest']);
@@ -89,6 +90,12 @@ format (for example, I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
 instance request.
 
 
+=head2 InstanceInterruptionBehavior => Str
+
+  Indicates whether a Spot instance stops or terminates when it is
+interrupted.
+
+
 =head2 LaunchedAvailabilityZone => Str
 
   The Availability Zone in which the bid is launched.
@@ -125,7 +132,9 @@ fulfill the request.
 
   The state of the Spot instance request. Spot bid status information can
 help you track your Spot instance requests. For more information, see
-Spot Bid Status in the I<Amazon Elastic Compute Cloud User Guide>.
+Spot Bid Status
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 Status => L<Paws::EC2::SpotInstanceStatus>
@@ -167,8 +176,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

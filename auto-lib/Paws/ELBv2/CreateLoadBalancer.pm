@@ -5,8 +5,10 @@ package Paws::ELBv2::CreateLoadBalancer;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Scheme => (is => 'ro', isa => 'Str');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has SubnetMappings => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::SubnetMapping]');
+  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Tag]');
+  has Type => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -19,7 +21,7 @@ package Paws::ELBv2::CreateLoadBalancer;
 
 =head1 NAME
 
-Paws::ELBv2::CreateLoadBalancer - Arguments for method CreateLoadBalancer on Paws::ELBv2
+Paws::ELBv2::CreateLoadBalancer - Arguments for method CreateLoadBalancer on L<Paws::ELBv2>
 
 =head1 DESCRIPTION
 
@@ -40,10 +42,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 IpAddressType => Str
 
-The type of IP addresses used by the subnets for your load balancer.
-The possible values are C<ipv4> (for IPv4 addresses) and C<dualstack>
-(for IPv4 and IPv6 addresses). Internal load balancers must use
-C<ipv4>.
+[Application Load Balancers] The type of IP addresses used by the
+subnets for your load balancer. The possible values are C<ipv4> (for
+IPv4 addresses) and C<dualstack> (for IPv4 and IPv6 addresses).
+Internal load balancers must use C<ipv4>.
 
 Valid values are: C<"ipv4">, C<"dualstack">
 
@@ -76,15 +78,33 @@ Valid values are: C<"internet-facing">, C<"internal">
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
-The IDs of the security groups to assign to the load balancer.
+[Application Load Balancers] The IDs of the security groups to assign
+to the load balancer.
 
 
 
-=head2 B<REQUIRED> Subnets => ArrayRef[Str|Undef]
+=head2 SubnetMappings => ArrayRef[L<Paws::ELBv2::SubnetMapping>]
 
 The IDs of the subnets to attach to the load balancer. You can specify
-only one subnet per Availability Zone. You must specify subnets from at
-least two Availability Zones.
+only one subnet per Availability Zone. You must specify either subnets
+or subnet mappings.
+
+[Network Load Balancers] You can specify one Elastic IP address per
+subnet.
+
+[Application Load Balancers] You cannot specify Elastic IP addresses
+for your subnets.
+
+
+
+=head2 Subnets => ArrayRef[Str|Undef]
+
+The IDs of the subnets to attach to the load balancer. You can specify
+only one subnet per Availability Zone. You must specify either subnets
+or subnet mappings.
+
+[Application Load Balancers] You must specify subnets from at least two
+Availability Zones.
 
 
 
@@ -94,6 +114,12 @@ One or more tags to assign to the load balancer.
 
 
 
+=head2 Type => Str
+
+The type of load balancer to create. The default is C<application>.
+
+Valid values are: C<"application">, C<"network">
+
 
 =head1 SEE ALSO
 
@@ -101,9 +127,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateLoadBal
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

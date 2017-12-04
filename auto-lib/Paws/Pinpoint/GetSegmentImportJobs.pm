@@ -1,10 +1,10 @@
 
 package Paws::Pinpoint::GetSegmentImportJobs;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id' , required => 1);
-  has PageSize => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'page-size' );
-  has SegmentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'segment-id' , required => 1);
-  has Token => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'token' );
+  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
+  has PageSize => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'page-size');
+  has SegmentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'segment-id', required => 1);
+  has Token => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'token');
 
   use MooseX::ClassAttribute;
 
@@ -12,14 +12,13 @@ package Paws::Pinpoint::GetSegmentImportJobs;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/segments/{segment-id}/jobs/import');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::GetSegmentImportJobsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Pinpoint::GetSegmentImportJobs - Arguments for method GetSegmentImportJobs on Paws::Pinpoint
+Paws::Pinpoint::GetSegmentImportJobs - Arguments for method GetSegmentImportJobs on L<Paws::Pinpoint>
 
 =head1 DESCRIPTION
 
@@ -46,7 +45,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 PageSize => Str
 
-
+The number of entries you want on each page in the response.
 
 
 
@@ -58,7 +57,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Token => Str
 
-
+The NextToken string returned on a previous page that you use to get
+the next page of results in a paginated response.
 
 
 
@@ -69,9 +69,9 @@ This class forms part of L<Paws>, documenting arguments for method GetSegmentImp
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

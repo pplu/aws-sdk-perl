@@ -102,6 +102,17 @@ C<instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0>.
 AppStream 2.0 fleet - The resource type is C<fleet> and the unique
 identifier is the fleet name. Example: C<fleet/sample-fleet>.
 
+=item *
+
+DynamoDB table - The resource type is C<table> and the unique
+identifier is the resource ID. Example: C<table/my-table>.
+
+=item *
+
+DynamoDB global secondary index - The resource type is C<index> and the
+unique identifier is the resource ID. Example:
+C<table/my-table/index/my-table-index>.
+
 =back
 
 
@@ -132,6 +143,26 @@ an EMR Instance Group.
 C<appstream:fleet:DesiredCapacity> - The desired capacity of an
 AppStream 2.0 fleet.
 
+=item *
+
+C<dynamodb:table:ReadCapacityUnits> - The provisioned read capacity for
+a DynamoDB table.
+
+=item *
+
+C<dynamodb:table:WriteCapacityUnits> - The provisioned write capacity
+for a DynamoDB table.
+
+=item *
+
+C<dynamodb:index:ReadCapacityUnits> - The provisioned read capacity for
+a DynamoDB global secondary index.
+
+=item *
+
+C<dynamodb:index:WriteCapacityUnits> - The provisioned write capacity
+for a DynamoDB global secondary index.
+
 =back
 
 
@@ -139,7 +170,9 @@ AppStream 2.0 fleet.
 =head2 B<REQUIRED> ServiceNamespace => Str
 
   The namespace of the AWS service. For more information, see AWS Service
-Namespaces in the I<Amazon Web Services General Reference>.
+Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+in the I<Amazon Web Services General Reference>.
 
 
 =head2 B<REQUIRED> StartTime => Str
@@ -164,9 +197,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Applicati
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

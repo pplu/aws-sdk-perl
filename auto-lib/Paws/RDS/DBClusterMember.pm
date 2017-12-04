@@ -61,7 +61,8 @@ the DB cluster and C<false> otherwise.
   A value that specifies the order in which an Aurora Replica is promoted
 to the primary instance after a failure of the existing primary
 instance. For more information, see Fault Tolerance for an Aurora DB
-Cluster.
+Cluster
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance).
 
 
 
@@ -71,9 +72,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

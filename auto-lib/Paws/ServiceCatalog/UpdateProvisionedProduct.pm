@@ -21,7 +21,7 @@ package Paws::ServiceCatalog::UpdateProvisionedProduct;
 
 =head1 NAME
 
-Paws::ServiceCatalog::UpdateProvisionedProduct - Arguments for method UpdateProvisionedProduct on Paws::ServiceCatalog
+Paws::ServiceCatalog::UpdateProvisionedProduct - Arguments for method UpdateProvisionedProduct on L<Paws::ServiceCatalog>
 
 =head1 DESCRIPTION
 
@@ -42,16 +42,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AcceptLanguage => Str
 
-The language code to use for this operation. Supported language codes
-are as follows:
+The language code.
 
-"en" (English)
+=over
 
-"jp" (Japanese)
+=item *
 
-"zh" (Chinese)
+C<en> - English (default)
 
-If no code is specified, "en" is used as the default.
+=item *
+
+C<jp> - Japanese
+
+=item *
+
+C<zh> - Chinese
+
+=back
+
 
 
 
@@ -71,23 +79,23 @@ The identifier of the ProvisionedProduct object.
 
 =head2 ProvisionedProductId => Str
 
-The identifier of the ProvisionedProduct object to update. You must
-specify either C<ProvisionedProductName> or C<ProvisionedProductId>,
-but not both.
-
-
-
-=head2 ProvisionedProductName => Str
-
-The updated name of the ProvisionedProduct object . You must specify
+The identifier of the ProvisionedProduct object to update. Specify
 either C<ProvisionedProductName> or C<ProvisionedProductId>, but not
 both.
 
 
 
+=head2 ProvisionedProductName => Str
+
+The updated name of the ProvisionedProduct object. Specify either
+C<ProvisionedProductName> or C<ProvisionedProductId>, but not both.
+
+
+
 =head2 ProvisioningArtifactId => Str
 
-The provisioning artifact identifier for this product.
+The provisioning artifact identifier for this product. This is
+sometimes referred to as the product version.
 
 
 
@@ -112,9 +120,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateProvisi
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

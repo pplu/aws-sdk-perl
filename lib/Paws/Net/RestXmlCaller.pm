@@ -6,14 +6,19 @@ package Paws::Net::RestXmlCaller;
   use URI::Escape;
   use Moose::Util;
 
+  use Paws::Net::RestXMLResponse;
+
+  has response_to_object => (
+    is => 'ro',
+    default => sub {
+      Paws::Net::RestXMLResponse->new;
+    }
+  );
+
+
   sub array_flatten_string {
     my $self = shift;
     return ($self->flattened_arrays)?'%s.%d':'%s.member.%d';
-  }
-
-  sub _is_internal_type {
-    my ($self, $att_type) = @_;
-    return ($att_type eq 'Str' or $att_type eq 'Str|Undef' or $att_type eq 'Int' or $att_type eq 'Bool' or $att_type eq 'Num');
   }
 
   # converts the objects that represent the call into parameters that the API can understand
@@ -61,22 +66,28 @@ package Paws::Net::RestXmlCaller;
     my ($self, $call) = @_;
     my $uri_template = $call->meta->name->_api_uri; # in auto-lib/<service>/<method>.pm
 
-    my @attribs = $uri_template =~ /{(.+?)}/g;
+    my @uri_attribs = $uri_template =~ /{(.+?)}/g;
     my $vars = {};
 
-    foreach my $attrib (@attribs)
-    {
+    my %uri_attrib_is_greedy;
+    foreach my $attrib ( @uri_attribs ) {
       my ($att_name, $greedy) = $attrib =~ /(\w+)(\+?)/;
-      my $attribute = $call->meta->get_attribute($att_name);
+      $uri_attrib_is_greedy{$att_name} = $greedy;
+    }
+
+    foreach my $attribute ($call->meta->get_all_attributes)
+    {
       if ($attribute->does('Paws::API::Attribute::Trait::ParamInURI')) {
-          if ($greedy) {
-              $vars->{ $att_name } =  uri_escape_utf8($call->$att_name, q[^A-Za-z0-9\-\._~/]);
-              $uri_template =~ s{$att_name\+}{$greedy$att_name}g;
-          } else {
-              $vars->{ $att_name } = $call->$att_name;
-          }
+        my $att_name = $attribute->name;
+        if ($uri_attrib_is_greedy{$att_name}) {
+            $vars->{ $attribute->uri_name } =  uri_escape_utf8($call->$att_name, q[^A-Za-z0-9\-\._~/]);
+            $uri_template =~ s{$att_name\+}{\+$att_name}g;
+        } else {
+            $vars->{ $attribute->uri_name } = $call->$att_name;
+        }
       }
     }
+
     my $t = URI::Template->new( $uri_template );
     my $uri = $t->process($vars);
     return $uri;
@@ -85,11 +96,28 @@ package Paws::Net::RestXmlCaller;
   sub _to_header_params {
     my ($self, $request, $call) = @_;
     foreach my $attribute ($call->meta->get_all_attributes) {
+      if ($attribute->does('Paws::API::Attribute::Trait::AutoInHeader')) {
+        if ( $attribute->auto eq 'MD5' ) {
+          require MIME::Base64;
+          require Digest::MD5;
+          my $value;
+          if ( $attribute->has_value($call) ) {
+             $value = $attribute->get_value($call);
+          }
+          else {
+            $value = MIME::Base64::encode_base64( Digest::MD5::md5( $request->content ) );
+            chomp $value;
+          }
+          $request->headers->header( $attribute->header_name => $value );
+        }
+        next;
+      }
       next unless $attribute->has_value($call);
       if ($attribute->does('Paws::API::Attribute::Trait::ParamInHeader')) {
-        $request->headers->header( $attribute->header_name => $attribute->get_value($call) );
+        my $value = $attribute->get_value($call);
+        $request->headers->header( $attribute->header_name => $value );
       }
-      elsif ($attribute->does('Paws::API::Attribute::Trait::ParamInHeaders')) { 
+      elsif ($attribute->does('Paws::API::Attribute::Trait::ParamInHeaders')) {
         my $map = $attribute->get_value($call)->Map;
         my $prefix = $attribute->header_prefix;
         for my $header (keys %{$map}) { 
@@ -158,9 +186,14 @@ package Paws::Net::RestXmlCaller;
           not $attribute->does('Paws::API::Attribute::Trait::ParamInBody') and 
           not $attribute->type_constraint eq 'Paws::S3::Metadata'
          ) {
-        
-        my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $attribute->name;
-        $xml .= sprintf '<%s>%s</%s>', $location, $self->_to_xml($attribute->get_value($call)), $location;
+        my $attribute_value = $attribute->get_value($call);
+        if ( ref $attribute_value ) {
+          my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $attribute->name;
+          $xml .= sprintf '<%s>%s</%s>', $location, $self->_to_xml($attribute_value), $location;
+        }
+        else {
+           $xml .= $attribute_value;
+        }
       }
     }
 
@@ -204,14 +237,14 @@ package Paws::Net::RestXmlCaller;
       $request->content($xml_body);
     }
 
-    $self->_to_header_params($request, $call);
-
     if ($call->can('_stream_param')) {
       my $param_name = $call->_stream_param;
       $request->content($call->$param_name);
       $request->headers->header( 'content-length' => $request->content_length );
       #$request->headers->header( 'content-type'   => $self->content_type );
     }
+
+    $self->_to_header_params($request, $call);
 
     $self->sign($request);
 

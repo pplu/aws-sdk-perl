@@ -31,7 +31,7 @@ package Paws::ElastiCache::ModifyReplicationGroup;
 
 =head1 NAME
 
-Paws::ElastiCache::ModifyReplicationGroup - Arguments for method ModifyReplicationGroup on Paws::ElastiCache
+Paws::ElastiCache::ModifyReplicationGroup - Arguments for method ModifyReplicationGroup on L<Paws::ElastiCache>
 
 =head1 DESCRIPTION
 
@@ -74,7 +74,8 @@ read/write primary if the existing primary encounters a failure.
 
 Valid values: C<true> | C<false>
 
-ElastiCache Multi-AZ replication groups are not supported on:
+Amazon ElastiCache for Redis does not support Multi-AZ with automatic
+failover on:
 
 =over
 
@@ -84,7 +85,9 @@ Redis versions earlier than 2.8.6.
 
 =item *
 
-Redis (cluster mode disabled):T1 and T2 cache node types.
+Redis (cluster mode disabled): T1 and T2 cache node types.
+
+=item *
 
 Redis (cluster mode enabled): T1 node types.
 
@@ -136,10 +139,11 @@ The upgraded version of the cache engine to be run on the cache
 clusters in the replication group.
 
 B<Important:> You can upgrade to a newer engine version (see Selecting
-a Cache Engine and Version), but you cannot downgrade to an earlier
-engine version. If you want to use an earlier engine version, you must
-delete the existing replication group and create it anew with the
-earlier engine version.
+a Cache Engine and Version
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement)),
+but you cannot downgrade to an earlier engine version. If you want to
+use an earlier engine version, you must delete the existing replication
+group and create it anew with the earlier engine version.
 
 
 
@@ -284,9 +288,9 @@ This class forms part of L<Paws>, documenting arguments for method ModifyReplica
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

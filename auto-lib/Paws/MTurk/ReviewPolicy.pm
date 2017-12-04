@@ -1,7 +1,7 @@
 package Paws::MTurk::ReviewPolicy;
   use Moose;
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::MTurk::PolicyParameter]');
-  has PolicyName => (is => 'ro', isa => 'Str');
+  has PolicyName => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +43,7 @@ you specify when you create a HIT.
   Name of the parameter from the Review policy.
 
 
-=head2 PolicyName => Str
+=head2 B<REQUIRED> PolicyName => Str
 
   Name of a Review Policy: SimplePlurality/2011-09-01 or
 ScoreMyKnownAnswers/2011-09-01
@@ -56,9 +56,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::MTurk>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

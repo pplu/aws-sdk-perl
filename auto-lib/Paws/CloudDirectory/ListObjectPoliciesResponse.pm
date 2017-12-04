@@ -18,7 +18,7 @@ Paws::CloudDirectory::ListObjectPoliciesResponse
 
 =head2 AttachedPolicyIds => ArrayRef[Str|Undef]
 
-List of policy C<ObjectIdentifiers>, that are attached to the object.
+A list of policy C<ObjectIdentifiers>, that are attached to the object.
 
 
 =head2 NextToken => Str

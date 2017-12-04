@@ -15,7 +15,7 @@ package Paws::OpsWorksCM::DescribeNodeAssociationStatus;
 
 =head1 NAME
 
-Paws::OpsWorksCM::DescribeNodeAssociationStatus - Arguments for method DescribeNodeAssociationStatus on Paws::OpsWorksCM
+Paws::OpsWorksCM::DescribeNodeAssociationStatus - Arguments for method DescribeNodeAssociationStatus on L<Paws::OpsWorksCM>
 
 =head1 DESCRIPTION
 
@@ -36,7 +36,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> NodeAssociationStatusToken => Str
 
-
+The token returned in either the AssociateNodeResponse or the
+DisassociateNodeResponse.
 
 
 
@@ -53,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeNodeA
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

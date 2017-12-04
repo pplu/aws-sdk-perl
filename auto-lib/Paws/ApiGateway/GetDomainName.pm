@@ -1,7 +1,7 @@
 
 package Paws::ApiGateway::GetDomainName;
   use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domainName' , required => 1);
+  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domainName', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -9,14 +9,13 @@ package Paws::ApiGateway::GetDomainName;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/domainnames/{domain_name}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::DomainName');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::GetDomainName - Arguments for method GetDomainName on Paws::ApiGateway
+Paws::ApiGateway::GetDomainName - Arguments for method GetDomainName on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -48,9 +47,9 @@ This class forms part of L<Paws>, documenting arguments for method GetDomainName
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

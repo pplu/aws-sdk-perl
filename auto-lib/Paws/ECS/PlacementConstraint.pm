@@ -33,8 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Placem
 =head1 DESCRIPTION
 
 An object representing a constraint on task placement. For more
-information, see Task Placement Constraints in the I<Amazon EC2
-Container Service Developer Guide>.
+information, see Task Placement Constraints
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 =head1 ATTRIBUTES
 
@@ -44,6 +45,7 @@ Container Service Developer Guide>.
   A cluster query language expression to apply to the constraint. Note
 you cannot specify an expression if the constraint type is
 C<distinctInstance>. For more information, see Cluster Query Language
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html)
 in the I<Amazon EC2 Container Service Developer Guide>.
 
 
@@ -63,9 +65,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ECS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -1,9 +1,9 @@
 
 package Paws::LexModels::GetSlotTypes;
   use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults' );
-  has NameContains => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nameContains' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken' );
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
+  has NameContains => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nameContains');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
 
   use MooseX::ClassAttribute;
 
@@ -11,14 +11,13 @@ package Paws::LexModels::GetSlotTypes;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/slottypes/');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexModels::GetSlotTypesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::LexModels::GetSlotTypes - Arguments for method GetSlotTypes on Paws::LexModels
+Paws::LexModels::GetSlotTypes - Arguments for method GetSlotTypes on L<Paws::LexModels>
 
 =head1 DESCRIPTION
 
@@ -68,9 +67,9 @@ This class forms part of L<Paws>, documenting arguments for method GetSlotTypes 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

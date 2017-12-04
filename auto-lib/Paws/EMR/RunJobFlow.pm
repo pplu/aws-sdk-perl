@@ -7,12 +7,15 @@ package Paws::EMR::RunJobFlow;
   has AutoScalingRole => (is => 'ro', isa => 'Str');
   has BootstrapActions => (is => 'ro', isa => 'ArrayRef[Paws::EMR::BootstrapActionConfig]');
   has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
+  has CustomAmiId => (is => 'ro', isa => 'Str');
+  has EbsRootVolumeSize => (is => 'ro', isa => 'Int');
   has Instances => (is => 'ro', isa => 'Paws::EMR::JobFlowInstancesConfig', required => 1);
   has JobFlowRole => (is => 'ro', isa => 'Str');
   has LogUri => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has NewSupportedProducts => (is => 'ro', isa => 'ArrayRef[Paws::EMR::SupportedProductConfig]');
   has ReleaseLabel => (is => 'ro', isa => 'Str');
+  has RepoUpgradeOnBoot => (is => 'ro', isa => 'Str');
   has ScaleDownBehavior => (is => 'ro', isa => 'Str');
   has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has ServiceRole => (is => 'ro', isa => 'Str');
@@ -32,7 +35,7 @@ package Paws::EMR::RunJobFlow;
 
 =head1 NAME
 
-Paws::EMR::RunJobFlow - Arguments for method RunJobFlow on Paws::EMR
+Paws::EMR::RunJobFlow - Arguments for method RunJobFlow on L<Paws::EMR>
 
 =head1 DESCRIPTION
 
@@ -59,28 +62,17 @@ A JSON string for selecting additional features.
 
 =head2 AmiVersion => Str
 
-For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
-greater, use ReleaseLabel.
-
-The version of the Amazon Machine Image (AMI) to use when launching
-Amazon EC2 instances in the job flow. The following values are valid:
-
-=over
-
-=item *
-
-The version number of the AMI to use, for example, "2.0."
-
-=back
+For Amazon EMR AMI versions 3.x and 2.x. For Amazon EMR releases 4.0
+and later, the Linux AMI is determined by the C<ReleaseLabel> specified
+or by C<CustomAmiID>. The version of the Amazon Machine Image (AMI) to
+use when launching Amazon EC2 instances in the job flow. For details
+about the AMI versions currently supported in EMR version 3.x and 2.x,
+see AMI Versions Supported in EMR in the I<Amazon EMR Developer Guide>.
 
 If the AMI supports multiple versions of Hadoop (for example, AMI 1.0
-supports both Hadoop 0.18 and 0.20) you can use the
+supports both Hadoop 0.18 and 0.20), you can use the
 JobFlowInstancesConfig C<HadoopVersion> parameter to modify the version
 of Hadoop from the defaults shown above.
-
-For details about the AMI versions currently supported by Amazon
-Elastic MapReduce, see AMI Versions Supported in Elastic MapReduce in
-the I<Amazon Elastic MapReduce Developer Guide.>
 
 Previously, the EMR AMI version API parameter options allowed you to
 use latest for the latest AMI version rather than specify a numerical
@@ -92,10 +84,9 @@ specify an EMR release label release (EMR 4.x or later).
 
 =head2 Applications => ArrayRef[L<Paws::EMR::Application>]
 
-Amazon EMR releases 4.x or later.
-
-A list of applications for the cluster. Valid values are: "Hadoop",
-"Hive", "Mahout", "Pig", and "Spark." They are case insensitive.
+For Amazon EMR releases 4.0 and later. A list of applications for the
+cluster. Valid values are: "Hadoop", "Hive", "Mahout", "Pig", and
+"Spark." They are case insensitive.
 
 
 
@@ -117,10 +108,36 @@ nodes.
 
 =head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
 
-Amazon EMR releases 4.x or later.
+For Amazon EMR releases 4.0 and later. The list of configurations
+supplied for the EMR cluster you are creating.
 
-The list of configurations supplied for the EMR cluster you are
-creating.
+
+
+=head2 CustomAmiId => Str
+
+Available only in Amazon EMR version 5.7.0 and later. The ID of a
+custom Amazon EBS-backed Linux AMI. If specified, Amazon EMR uses this
+AMI when it launches cluster EC2 instances. For more information about
+custom AMIs in Amazon EMR, see Using a Custom AMI
+(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html)
+in the I<Amazon EMR Management Guide>. If omitted, the cluster uses the
+base Linux AMI for the C<ReleaseLabel> specified. For Amazon EMR
+versions 2.x and 3.x, use C<AmiVersion> instead.
+
+For information about creating a custom AMI, see Creating an Amazon
+EBS-Backed Linux AMI
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html)
+in the I<Amazon Elastic Compute Cloud User Guide for Linux Instances>.
+For information about finding an AMI ID, see Finding a Linux AMI
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html).
+
+
+
+=head2 EbsRootVolumeSize => Int
+
+The size, in GiB, of the EBS root device volume of the Linux AMI that
+is used for each EC2 instance. Available in Amazon EMR version 4.x and
+later.
 
 
 
@@ -155,13 +172,14 @@ The name of the job flow.
 =head2 NewSupportedProducts => ArrayRef[L<Paws::EMR::SupportedProductConfig>]
 
 For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
-greater, use Applications.
+later, use Applications.
 
 A list of strings that indicates third-party software to use with the
 job flow that accepts a user argument list. EMR accepts and forwards
 the argument list to the corresponding installation script as bootstrap
 action arguments. For more information, see "Launch a Job Flow on the
-MapR Distribution for Hadoop" in the Amazon EMR Developer Guide.
+MapR Distribution for Hadoop" in the Amazon EMR Developer Guide
+(http://docs.aws.amazon.com/http:/docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf).
 Supported values are:
 
 =over
@@ -208,12 +226,21 @@ installed.
 
 =head2 ReleaseLabel => Str
 
-Amazon EMR releases 4.x or later.
-
 The release label for the Amazon EMR release. For Amazon EMR 3.x and
-2.x AMIs, use amiVersion instead instead of ReleaseLabel.
+2.x AMIs, use C<AmiVersion> instead.
 
 
+
+=head2 RepoUpgradeOnBoot => Str
+
+Applies only when C<CustomAmiID> is used. Specifies which updates from
+the Amazon Linux AMI package repositories to apply automatically when
+the instance boots using the AMI. If omitted, the default is
+C<SECURITY>, which indicates that only security updates are applied. If
+C<NONE> is specified, no updates are applied, and all updates must be
+applied manually.
+
+Valid values are: C<"SECURITY">, C<"NONE">
 
 =head2 ScaleDownBehavior => Str
 
@@ -256,10 +283,11 @@ A list of steps to run.
 =head2 SupportedProducts => ArrayRef[Str|Undef]
 
 For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
-greater, use Applications.
+later, use Applications.
 
 A list of strings that indicates third-party software to use. For more
-information, see Use Third Party Applications with Amazon EMR.
+information, see Use Third Party Applications with Amazon EMR
+(http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-supported-products.html).
 Currently supported values are:
 
 =over
@@ -301,9 +329,9 @@ This class forms part of L<Paws>, documenting arguments for method RunJobFlow in
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

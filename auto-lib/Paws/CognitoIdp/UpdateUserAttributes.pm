@@ -1,7 +1,7 @@
 
 package Paws::CognitoIdp::UpdateUserAttributes;
   use Moose;
-  has AccessToken => (is => 'ro', isa => 'Str');
+  has AccessToken => (is => 'ro', isa => 'Str', required => 1);
   has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::AttributeType]', required => 1);
 
   use MooseX::ClassAttribute;
@@ -15,7 +15,7 @@ package Paws::CognitoIdp::UpdateUserAttributes;
 
 =head1 NAME
 
-Paws::CognitoIdp::UpdateUserAttributes - Arguments for method UpdateUserAttributes on Paws::CognitoIdp
+Paws::CognitoIdp::UpdateUserAttributes - Arguments for method UpdateUserAttributes on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AccessToken => Str
+=head2 B<REQUIRED> AccessToken => Str
 
 The access token for the request to update user attributes.
 
@@ -43,6 +43,9 @@ The access token for the request to update user attributes.
 =head2 B<REQUIRED> UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]
 
 An array of name-value pairs representing user attributes.
+
+For custom attributes, you must prepend the C<custom:> prefix to the
+attribute name.
 
 
 
@@ -53,9 +56,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateUserAtt
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

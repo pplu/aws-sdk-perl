@@ -1,6 +1,7 @@
 package Paws::SSM::PatchStatus;
   use Moose;
   has ApprovalDate => (is => 'ro', isa => 'Str');
+  has ComplianceLevel => (is => 'ro', isa => 'Str');
   has DeploymentStatus => (is => 'ro', isa => 'Str');
 1;
 
@@ -43,6 +44,11 @@ Information about the approval status of a patch.
 PENDING_APPROVAL).
 
 
+=head2 ComplianceLevel => Str
+
+  The compliance severity level for a patch.
+
+
 =head2 DeploymentStatus => Str
 
   The approval status of a patch (APPROVED, PENDING_APPROVAL,
@@ -56,9 +62,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

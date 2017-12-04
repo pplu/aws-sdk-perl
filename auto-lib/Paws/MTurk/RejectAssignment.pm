@@ -2,7 +2,7 @@
 package Paws::MTurk::RejectAssignment;
   use Moose;
   has AssignmentId => (is => 'ro', isa => 'Str', required => 1);
-  has RequesterFeedback => (is => 'ro', isa => 'Str');
+  has RequesterFeedback => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -15,7 +15,7 @@ package Paws::MTurk::RejectAssignment;
 
 =head1 NAME
 
-Paws::MTurk::RejectAssignment - Arguments for method RejectAssignment on Paws::MTurk
+Paws::MTurk::RejectAssignment - Arguments for method RejectAssignment on L<Paws::MTurk>
 
 =head1 DESCRIPTION
 
@@ -41,7 +41,7 @@ created by the Requester.
 
 
 
-=head2 RequesterFeedback => Str
+=head2 B<REQUIRED> RequesterFeedback => Str
 
 A message for the Worker, which the Worker can see in the Status
 section of the web site.
@@ -55,9 +55,9 @@ This class forms part of L<Paws>, documenting arguments for method RejectAssignm
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

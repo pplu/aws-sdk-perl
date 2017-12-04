@@ -17,7 +17,7 @@ package Paws::SNS::CreatePlatformEndpoint;
 
 =head1 NAME
 
-Paws::SNS::CreatePlatformEndpoint - Arguments for method CreatePlatformEndpoint on Paws::SNS
+Paws::SNS::CreatePlatformEndpoint - Arguments for method CreatePlatformEndpoint on L<Paws::SNS>
 
 =head1 DESCRIPTION
 
@@ -38,7 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Attributes => L<Paws::SNS::MapStringToString>
 
-For a list of attributes, see SetEndpointAttributes.
+For a list of attributes, see SetEndpointAttributes
+(http://docs.aws.amazon.com/sns/latest/api/API_SetEndpointAttributes.html).
 
 
 
@@ -74,9 +75,9 @@ This class forms part of L<Paws>, documenting arguments for method CreatePlatfor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

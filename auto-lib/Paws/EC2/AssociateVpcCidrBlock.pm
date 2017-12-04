@@ -2,6 +2,7 @@
 package Paws::EC2::AssociateVpcCidrBlock;
   use Moose;
   has AmazonProvidedIpv6CidrBlock => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'amazonProvidedIpv6CidrBlock' );
+  has CidrBlock => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpcId' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -15,7 +16,7 @@ package Paws::EC2::AssociateVpcCidrBlock;
 
 =head1 NAME
 
-Paws::EC2::AssociateVpcCidrBlock - Arguments for method AssociateVpcCidrBlock on Paws::EC2
+Paws::EC2::AssociateVpcCidrBlock - Arguments for method AssociateVpcCidrBlock on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -42,6 +43,12 @@ size of the CIDR block.
 
 
 
+=head2 CidrBlock => Str
+
+An IPv4 CIDR block to associate with the VPC.
+
+
+
 =head2 B<REQUIRED> VpcId => Str
 
 The ID of the VPC.
@@ -55,9 +62,9 @@ This class forms part of L<Paws>, documenting arguments for method AssociateVpcC
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

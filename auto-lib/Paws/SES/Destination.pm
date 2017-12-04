@@ -40,7 +40,7 @@ By default, the string must be 7-bit ASCII. If the text must contain
 any other characters, then you must use MIME encoded-word syntax (RFC
 2047) instead of a literal string. MIME encoded-word syntax uses the
 following form: C<=?charset?encoding?encoded-text?=>. For more
-information, see RFC 2047.
+information, see RFC 2047 (https://tools.ietf.org/html/rfc2047).
 
 =head1 ATTRIBUTES
 
@@ -67,9 +67,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SES>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

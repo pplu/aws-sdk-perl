@@ -22,7 +22,7 @@ package Paws::CloudWatch::GetMetricStatistics;
 
 =head1 NAME
 
-Paws::CloudWatch::GetMetricStatistics - Arguments for method GetMetricStatistics on Paws::CloudWatch
+Paws::CloudWatch::GetMetricStatistics - Arguments for method GetMetricStatistics on L<Paws::CloudWatch>
 
 =head1 DESCRIPTION
 
@@ -45,13 +45,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The dimensions. If the metric contains multiple dimensions, you must
 include a value for each dimension. CloudWatch treats each unique
-combination of dimensions as a separate metric. You can't retrieve
-statistics using combinations of dimensions that were not specially
-published. You must specify the same dimensions that were used when the
-metrics were created. For an example, see Dimension Combinations in the
-I<Amazon CloudWatch User Guide>. For more information on specifying
-dimensions, see Publishing Metrics in the I<Amazon CloudWatch User
-Guide>.
+combination of dimensions as a separate metric. If a specific
+combination of dimensions was not published, you can't retrieve
+statistics for it. You must specify the same dimensions that were used
+when the metrics were created. For an example, see Dimension
+Combinations
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations)
+in the I<Amazon CloudWatch User Guide>. For more information about
+specifying dimensions, see Publishing Metrics
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html)
+in the I<Amazon CloudWatch User Guide>.
 
 
 
@@ -59,15 +62,17 @@ Guide>.
 
 The time stamp that determines the last data point to return.
 
-The value specified is exclusive; results will include data points up
-to the specified time stamp. The time stamp must be in ISO 8601 UTC
-format (for example, 2016-10-10T23:00:00Z).
+The value specified is exclusive; results include data points up to the
+specified time stamp. The time stamp must be in ISO 8601 UTC format
+(for example, 2016-10-10T23:00:00Z).
 
 
 
 =head2 ExtendedStatistics => ArrayRef[Str|Undef]
 
-The percentile statistics. Specify values between p0.0 and p100.
+The percentile statistics. Specify values between p0.0 and p100. When
+calling C<GetMetricStatistics>, you must specify either C<Statistics>
+or C<ExtendedStatistics>, but not both.
 
 
 
@@ -85,15 +90,24 @@ The namespace of the metric, with or without spaces.
 
 =head2 B<REQUIRED> Period => Int
 
-The granularity, in seconds, of the returned data points. A period can
-be as short as one minute (60 seconds) and must be a multiple of 60.
-The default value is 60.
+The granularity, in seconds, of the returned data points. For metrics
+with regular resolution, a period can be as short as one minute (60
+seconds) and must be a multiple of 60. For high-resolution metrics that
+are collected at intervals of less than one minute, the period can be
+1, 5, 10, 30, 60, or any multiple of 60. High-resolution metrics are
+those metrics stored by a C<PutMetricData> call that includes a
+C<StorageResolution> of 1 second.
 
 If the C<StartTime> parameter specifies a time stamp that is greater
-than 15 days ago, you must specify the period as follows or no data
+than 3 hours ago, you must specify the period as follows or no data
 points in that time range is returned:
 
 =over
+
+=item *
+
+Start time between 3 hours and 15 days ago - Use a multiple of 60
+seconds (1 minute).
 
 =item *
 
@@ -112,9 +126,9 @@ hour).
 
 =head2 B<REQUIRED> StartTime => Str
 
-The time stamp that determines the first data point to return. Note
-that start times are evaluated relative to the time that CloudWatch
-receives the request.
+The time stamp that determines the first data point to return. Start
+times are evaluated relative to the time that CloudWatch receives the
+request.
 
 The value specified is inclusive; results include data points with the
 specified time stamp. The time stamp must be in ISO 8601 UTC format
@@ -142,13 +156,23 @@ clock interval. For example, 12:32:34 is rounded down to 12:00:00.
 
 =back
 
+If you set C<Period> to 5, 10, or 30, the start time of your request is
+rounded down to the nearest time that corresponds to even 5-, 10-, or
+30-second divisions of a minute. For example, if you make a query at
+(HH:mm:ss) 01:05:23 for the previous 10-second period, the start time
+of your request is rounded down and you receive data from 01:05:10 to
+01:05:20. If you make a query at 15:07:17 for the previous 5 minutes of
+data, using a period of 5 seconds, you receive data timestamped between
+15:02:15 and 15:07:15.
 
 
 
 =head2 Statistics => ArrayRef[Str|Undef]
 
 The metric statistics, other than percentile. For percentile
-statistics, use C<ExtendedStatistic>.
+statistics, use C<ExtendedStatistics>. When calling
+C<GetMetricStatistics>, you must specify either C<Statistics> or
+C<ExtendedStatistics>, but not both.
 
 
 
@@ -167,9 +191,9 @@ This class forms part of L<Paws>, documenting arguments for method GetMetricStat
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

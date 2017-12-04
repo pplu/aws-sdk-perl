@@ -1,8 +1,8 @@
 
 package Paws::ApiGateway::UpdateRestApi;
   use Moose;
-  has PatchOperations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::PatchOperation]');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
+  has PatchOperations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::PatchOperation]', traits => ['NameInRequest'], request_name => 'patchOperations');
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -10,14 +10,13 @@ package Paws::ApiGateway::UpdateRestApi;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::RestApi');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::UpdateRestApi - Arguments for method UpdateRestApi on Paws::ApiGateway
+Paws::ApiGateway::UpdateRestApi - Arguments for method UpdateRestApi on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -45,7 +44,7 @@ in the order specified in this list.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The ID of the RestApi you want to update.
+The string identifier of the associated RestApi.
 
 
 
@@ -56,9 +55,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateRestApi
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

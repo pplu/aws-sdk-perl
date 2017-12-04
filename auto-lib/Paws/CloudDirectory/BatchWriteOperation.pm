@@ -2,9 +2,16 @@ package Paws::CloudDirectory::BatchWriteOperation;
   use Moose;
   has AddFacetToObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchAddFacetToObject');
   has AttachObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchAttachObject');
+  has AttachPolicy => (is => 'ro', isa => 'Paws::CloudDirectory::BatchAttachPolicy');
+  has AttachToIndex => (is => 'ro', isa => 'Paws::CloudDirectory::BatchAttachToIndex');
+  has AttachTypedLink => (is => 'ro', isa => 'Paws::CloudDirectory::BatchAttachTypedLink');
+  has CreateIndex => (is => 'ro', isa => 'Paws::CloudDirectory::BatchCreateIndex');
   has CreateObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchCreateObject');
   has DeleteObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDeleteObject');
+  has DetachFromIndex => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachFromIndex');
   has DetachObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachObject');
+  has DetachPolicy => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachPolicy');
+  has DetachTypedLink => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachTypedLink');
   has RemoveFacetFromObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchRemoveFacetFromObject');
   has UpdateObjectAttributes => (is => 'ro', isa => 'Paws::CloudDirectory::BatchUpdateObjectAttributes');
 1;
@@ -44,12 +51,37 @@ Represents the output of a C<BatchWrite> operation.
 
 =head2 AddFacetToObject => L<Paws::CloudDirectory::BatchAddFacetToObject>
 
-  Batch operation adding a facet to an object.
+  A batch operation that adds a facet to an object.
 
 
 =head2 AttachObject => L<Paws::CloudDirectory::BatchAttachObject>
 
   Attaches an object to a Directory.
+
+
+=head2 AttachPolicy => L<Paws::CloudDirectory::BatchAttachPolicy>
+
+  Attaches a policy object to a regular object. An object can have a
+limited number of attached policies.
+
+
+=head2 AttachToIndex => L<Paws::CloudDirectory::BatchAttachToIndex>
+
+  Attaches the specified object to the specified index.
+
+
+=head2 AttachTypedLink => L<Paws::CloudDirectory::BatchAttachTypedLink>
+
+  Attaches a typed link to a specified source and target object. For more
+information, see Typed link
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+
+
+=head2 CreateIndex => L<Paws::CloudDirectory::BatchCreateIndex>
+
+  Creates an index object. See Indexing
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_indexing.html)
+for more information.
 
 
 =head2 CreateObject => L<Paws::CloudDirectory::BatchCreateObject>
@@ -62,19 +94,36 @@ Represents the output of a C<BatchWrite> operation.
   Deletes an object in a Directory.
 
 
+=head2 DetachFromIndex => L<Paws::CloudDirectory::BatchDetachFromIndex>
+
+  Detaches the specified object from the specified index.
+
+
 =head2 DetachObject => L<Paws::CloudDirectory::BatchDetachObject>
 
   Detaches an object from a Directory.
 
 
+=head2 DetachPolicy => L<Paws::CloudDirectory::BatchDetachPolicy>
+
+  Detaches a policy from a Directory.
+
+
+=head2 DetachTypedLink => L<Paws::CloudDirectory::BatchDetachTypedLink>
+
+  Detaches a typed link from a specified source and target object. For
+more information, see Typed link
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+
+
 =head2 RemoveFacetFromObject => L<Paws::CloudDirectory::BatchRemoveFacetFromObject>
 
-  Batch operation removing a facet from an object.
+  A batch operation that removes a facet from an object.
 
 
 =head2 UpdateObjectAttributes => L<Paws::CloudDirectory::BatchUpdateObjectAttributes>
 
-  Update a given object's attributes.
+  Updates a given object's attributes.
 
 
 
@@ -84,9 +133,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudDire
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

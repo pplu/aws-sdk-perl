@@ -11,7 +11,7 @@ package Paws::EMR;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   has '+region_rules' => (default => sub {
     my $regioninfo;
@@ -203,18 +203,20 @@ package Paws::EMR;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListBootstrapActions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->ListBootstrapActions(@_, Marker => $result->Marker);
-        push @{ $result->BootstrapActions }, @{ $result->BootstrapActions };
+      while ($next_result->Marker) {
+        $next_result = $self->ListBootstrapActions(@_, Marker => $next_result->Marker);
+        push @{ $result->BootstrapActions }, @{ $next_result->BootstrapActions };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->ListBootstrapActions(@_, Marker => $result->Marker);
         $callback->($_ => 'BootstrapActions') foreach (@{ $result->BootstrapActions });
+        $result = $self->ListBootstrapActions(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'BootstrapActions') foreach (@{ $result->BootstrapActions });
     }
 
     return undef
@@ -224,18 +226,20 @@ package Paws::EMR;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListClusters(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->ListClusters(@_, Marker => $result->Marker);
-        push @{ $result->Clusters }, @{ $result->Clusters };
+      while ($next_result->Marker) {
+        $next_result = $self->ListClusters(@_, Marker => $next_result->Marker);
+        push @{ $result->Clusters }, @{ $next_result->Clusters };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->ListClusters(@_, Marker => $result->Marker);
         $callback->($_ => 'Clusters') foreach (@{ $result->Clusters });
+        $result = $self->ListClusters(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'Clusters') foreach (@{ $result->Clusters });
     }
 
     return undef
@@ -245,18 +249,20 @@ package Paws::EMR;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListInstanceFleets(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->ListInstanceFleets(@_, Marker => $result->Marker);
-        push @{ $result->InstanceFleets }, @{ $result->InstanceFleets };
+      while ($next_result->Marker) {
+        $next_result = $self->ListInstanceFleets(@_, Marker => $next_result->Marker);
+        push @{ $result->InstanceFleets }, @{ $next_result->InstanceFleets };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->ListInstanceFleets(@_, Marker => $result->Marker);
         $callback->($_ => 'InstanceFleets') foreach (@{ $result->InstanceFleets });
+        $result = $self->ListInstanceFleets(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'InstanceFleets') foreach (@{ $result->InstanceFleets });
     }
 
     return undef
@@ -266,18 +272,20 @@ package Paws::EMR;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListInstanceGroups(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->ListInstanceGroups(@_, Marker => $result->Marker);
-        push @{ $result->InstanceGroups }, @{ $result->InstanceGroups };
+      while ($next_result->Marker) {
+        $next_result = $self->ListInstanceGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->InstanceGroups }, @{ $next_result->InstanceGroups };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->ListInstanceGroups(@_, Marker => $result->Marker);
         $callback->($_ => 'InstanceGroups') foreach (@{ $result->InstanceGroups });
+        $result = $self->ListInstanceGroups(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'InstanceGroups') foreach (@{ $result->InstanceGroups });
     }
 
     return undef
@@ -287,18 +295,20 @@ package Paws::EMR;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListInstances(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->ListInstances(@_, Marker => $result->Marker);
-        push @{ $result->Instances }, @{ $result->Instances };
+      while ($next_result->Marker) {
+        $next_result = $self->ListInstances(@_, Marker => $next_result->Marker);
+        push @{ $result->Instances }, @{ $next_result->Instances };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->ListInstances(@_, Marker => $result->Marker);
         $callback->($_ => 'Instances') foreach (@{ $result->Instances });
+        $result = $self->ListInstances(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'Instances') foreach (@{ $result->Instances });
     }
 
     return undef
@@ -308,18 +318,20 @@ package Paws::EMR;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListSteps(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->ListSteps(@_, Marker => $result->Marker);
-        push @{ $result->Steps }, @{ $result->Steps };
+      while ($next_result->Marker) {
+        $next_result = $self->ListSteps(@_, Marker => $next_result->Marker);
+        push @{ $result->Steps }, @{ $next_result->Steps };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->ListSteps(@_, Marker => $result->Marker);
         $callback->($_ => 'Steps') foreach (@{ $result->Steps });
+        $result = $self->ListSteps(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'Steps') foreach (@{ $result->Steps });
     }
 
     return undef
@@ -368,7 +380,7 @@ Each argument is described in detail in: L<Paws::EMR::AddInstanceFleet>
 
 Returns: a L<Paws::EMR::AddInstanceFleetOutput> instance
 
-  Adds an instance fleet to a running cluster.
+Adds an instance fleet to a running cluster.
 
 The instance fleet configuration is available only in Amazon EMR
 versions 4.8.0 and later, excluding 5.0.x.
@@ -380,7 +392,7 @@ Each argument is described in detail in: L<Paws::EMR::AddInstanceGroups>
 
 Returns: a L<Paws::EMR::AddInstanceGroupsOutput> instance
 
-  Adds one or more instance groups to a running cluster.
+Adds one or more instance groups to a running cluster.
 
 
 =head2 AddJobFlowSteps(JobFlowId => Str, Steps => ArrayRef[L<Paws::EMR::StepConfig>])
@@ -389,7 +401,7 @@ Each argument is described in detail in: L<Paws::EMR::AddJobFlowSteps>
 
 Returns: a L<Paws::EMR::AddJobFlowStepsOutput> instance
 
-  AddJobFlowSteps adds new steps to a running cluster. A maximum of 256
+AddJobFlowSteps adds new steps to a running cluster. A maximum of 256
 steps are allowed in each job flow.
 
 If your cluster is long-running (such as a Hive data warehouse) or
@@ -398,6 +410,7 @@ can bypass the 256-step limitation in various ways, including using SSH
 to connect to the master node and submitting queries directly to the
 software running on the master node, such as Hive and Hadoop. For more
 information on how to do this, see Add More than 256 Steps to a Cluster
+(http://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/AddMoreThan256Steps.html)
 in the I<Amazon EMR Management Guide>.
 
 A step specifies the location of a JAR file stored either on the master
@@ -421,10 +434,11 @@ Each argument is described in detail in: L<Paws::EMR::AddTags>
 
 Returns: a L<Paws::EMR::AddTagsOutput> instance
 
-  Adds tags to an Amazon EMR resource. Tags make it easier to associate
+Adds tags to an Amazon EMR resource. Tags make it easier to associate
 clusters in various ways, such as grouping clusters to track your
 Amazon EMR resource allocation costs. For more information, see Tagging
-Amazon EMR Resources.
+Amazon EMR Resources
+(http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html).
 
 
 =head2 CancelSteps([ClusterId => Str, StepIds => ArrayRef[Str|Undef]])
@@ -433,7 +447,7 @@ Each argument is described in detail in: L<Paws::EMR::CancelSteps>
 
 Returns: a L<Paws::EMR::CancelStepsOutput> instance
 
-  Cancels a pending step or steps in a running cluster. Available only in
+Cancels a pending step or steps in a running cluster. Available only in
 Amazon EMR versions 4.8.0 and later, excluding version 5.0.0. A maximum
 of 256 steps are allowed in each CancelSteps request. CancelSteps is
 idempotent but asynchronous; it does not guarantee a step will be
@@ -447,7 +461,7 @@ Each argument is described in detail in: L<Paws::EMR::CreateSecurityConfiguratio
 
 Returns: a L<Paws::EMR::CreateSecurityConfigurationOutput> instance
 
-  Creates a security configuration, which is stored in the service and
+Creates a security configuration, which is stored in the service and
 can be specified when a cluster is created.
 
 
@@ -457,7 +471,7 @@ Each argument is described in detail in: L<Paws::EMR::DeleteSecurityConfiguratio
 
 Returns: a L<Paws::EMR::DeleteSecurityConfigurationOutput> instance
 
-  Deletes a security configuration.
+Deletes a security configuration.
 
 
 =head2 DescribeCluster(ClusterId => Str)
@@ -466,7 +480,7 @@ Each argument is described in detail in: L<Paws::EMR::DescribeCluster>
 
 Returns: a L<Paws::EMR::DescribeClusterOutput> instance
 
-  Provides cluster-level details including status, hardware and software
+Provides cluster-level details including status, hardware and software
 configuration, VPC settings, and so on. For information about the
 cluster steps, see ListSteps.
 
@@ -477,7 +491,7 @@ Each argument is described in detail in: L<Paws::EMR::DescribeJobFlows>
 
 Returns: a L<Paws::EMR::DescribeJobFlowsOutput> instance
 
-  This API is deprecated and will eventually be removed. We recommend you
+This API is deprecated and will eventually be removed. We recommend you
 use ListClusters, DescribeCluster, ListSteps, ListInstanceGroups and
 ListBootstrapActions instead.
 
@@ -513,7 +527,7 @@ Each argument is described in detail in: L<Paws::EMR::DescribeSecurityConfigurat
 
 Returns: a L<Paws::EMR::DescribeSecurityConfigurationOutput> instance
 
-  Provides the details of a security configuration by returning the
+Provides the details of a security configuration by returning the
 configuration JSON.
 
 
@@ -523,7 +537,7 @@ Each argument is described in detail in: L<Paws::EMR::DescribeStep>
 
 Returns: a L<Paws::EMR::DescribeStepOutput> instance
 
-  Provides more detail about the cluster step.
+Provides more detail about the cluster step.
 
 
 =head2 ListBootstrapActions(ClusterId => Str, [Marker => Str])
@@ -532,7 +546,7 @@ Each argument is described in detail in: L<Paws::EMR::ListBootstrapActions>
 
 Returns: a L<Paws::EMR::ListBootstrapActionsOutput> instance
 
-  Provides information about the bootstrap actions associated with a
+Provides information about the bootstrap actions associated with a
 cluster.
 
 
@@ -542,7 +556,7 @@ Each argument is described in detail in: L<Paws::EMR::ListClusters>
 
 Returns: a L<Paws::EMR::ListClustersOutput> instance
 
-  Provides the status of all clusters visible to this AWS account. Allows
+Provides the status of all clusters visible to this AWS account. Allows
 you to filter the list of clusters based on certain criteria; for
 example, filtering by cluster creation date and time or by status. This
 call returns a maximum of 50 clusters per call, but returns a marker to
@@ -556,7 +570,7 @@ Each argument is described in detail in: L<Paws::EMR::ListInstanceFleets>
 
 Returns: a L<Paws::EMR::ListInstanceFleetsOutput> instance
 
-  Lists all available details about the instance fleets in a cluster.
+Lists all available details about the instance fleets in a cluster.
 
 The instance fleet configuration is available only in Amazon EMR
 versions 4.8.0 and later, excluding 5.0.x versions.
@@ -568,7 +582,7 @@ Each argument is described in detail in: L<Paws::EMR::ListInstanceGroups>
 
 Returns: a L<Paws::EMR::ListInstanceGroupsOutput> instance
 
-  Provides all available details about the instance groups in a cluster.
+Provides all available details about the instance groups in a cluster.
 
 
 =head2 ListInstances(ClusterId => Str, [InstanceFleetId => Str, InstanceFleetType => Str, InstanceGroupId => Str, InstanceGroupTypes => ArrayRef[Str|Undef], InstanceStates => ArrayRef[Str|Undef], Marker => Str])
@@ -577,11 +591,10 @@ Each argument is described in detail in: L<Paws::EMR::ListInstances>
 
 Returns: a L<Paws::EMR::ListInstancesOutput> instance
 
-  Provides information about the cluster instances that Amazon EMR
-provisions on behalf of a user when it creates the cluster. For
-example, this operation indicates when the EC2 instances reach the
-Ready state, when instances become available to Amazon EMR to use for
-jobs, and the IP addresses for cluster instances, etc.
+Provides information for all active EC2 instances and EC2 instances
+terminated in the last 30 days, up to a maximum of 2,000. EC2 instances
+in any of the following states are considered active:
+AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
 
 
 =head2 ListSecurityConfigurations([Marker => Str])
@@ -590,7 +603,7 @@ Each argument is described in detail in: L<Paws::EMR::ListSecurityConfigurations
 
 Returns: a L<Paws::EMR::ListSecurityConfigurationsOutput> instance
 
-  Lists all the security configurations visible to this account,
+Lists all the security configurations visible to this account,
 providing their creation dates and times, and their names. This call
 returns a maximum of 50 clusters per call, but returns a marker to
 track the paging of the cluster list across multiple
@@ -603,7 +616,7 @@ Each argument is described in detail in: L<Paws::EMR::ListSteps>
 
 Returns: a L<Paws::EMR::ListStepsOutput> instance
 
-  Provides a list of steps for the cluster in reverse order unless you
+Provides a list of steps for the cluster in reverse order unless you
 specify stepIds with the request.
 
 
@@ -613,7 +626,7 @@ Each argument is described in detail in: L<Paws::EMR::ModifyInstanceFleet>
 
 Returns: nothing
 
-  Modifies the target On-Demand and target Spot capacities for the
+Modifies the target On-Demand and target Spot capacities for the
 instance fleet with the specified InstanceFleetID within the cluster
 specified using ClusterID. The call either succeeds or fails
 atomically.
@@ -628,7 +641,7 @@ Each argument is described in detail in: L<Paws::EMR::ModifyInstanceGroups>
 
 Returns: nothing
 
-  ModifyInstanceGroups modifies the number of nodes and configuration
+ModifyInstanceGroups modifies the number of nodes and configuration
 settings of an instance group. The input parameters include the new
 target instance count for the group and the instance group ID. The call
 will either succeed or fail atomically.
@@ -640,7 +653,7 @@ Each argument is described in detail in: L<Paws::EMR::PutAutoScalingPolicy>
 
 Returns: a L<Paws::EMR::PutAutoScalingPolicyOutput> instance
 
-  Creates or updates an automatic scaling policy for a core instance
+Creates or updates an automatic scaling policy for a core instance
 group or task instance group in an Amazon EMR cluster. The automatic
 scaling policy defines how an instance group dynamically adds and
 terminates EC2 instances in response to the value of a CloudWatch
@@ -653,7 +666,7 @@ Each argument is described in detail in: L<Paws::EMR::RemoveAutoScalingPolicy>
 
 Returns: a L<Paws::EMR::RemoveAutoScalingPolicyOutput> instance
 
-  Removes an automatic scaling policy from a specified instance group
+Removes an automatic scaling policy from a specified instance group
 within an EMR cluster.
 
 
@@ -663,22 +676,23 @@ Each argument is described in detail in: L<Paws::EMR::RemoveTags>
 
 Returns: a L<Paws::EMR::RemoveTagsOutput> instance
 
-  Removes tags from an Amazon EMR resource. Tags make it easier to
+Removes tags from an Amazon EMR resource. Tags make it easier to
 associate clusters in various ways, such as grouping clusters to track
 your Amazon EMR resource allocation costs. For more information, see
-Tagging Amazon EMR Resources.
+Tagging Amazon EMR Resources
+(http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html).
 
 The following example removes the stack tag with value Prod from a
 cluster:
 
 
-=head2 RunJobFlow(Instances => L<Paws::EMR::JobFlowInstancesConfig>, Name => Str, [AdditionalInfo => Str, AmiVersion => Str, Applications => ArrayRef[L<Paws::EMR::Application>], AutoScalingRole => Str, BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionConfig>], Configurations => ArrayRef[L<Paws::EMR::Configuration>], JobFlowRole => Str, LogUri => Str, NewSupportedProducts => ArrayRef[L<Paws::EMR::SupportedProductConfig>], ReleaseLabel => Str, ScaleDownBehavior => Str, SecurityConfiguration => Str, ServiceRole => Str, Steps => ArrayRef[L<Paws::EMR::StepConfig>], SupportedProducts => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::EMR::Tag>], VisibleToAllUsers => Bool])
+=head2 RunJobFlow(Instances => L<Paws::EMR::JobFlowInstancesConfig>, Name => Str, [AdditionalInfo => Str, AmiVersion => Str, Applications => ArrayRef[L<Paws::EMR::Application>], AutoScalingRole => Str, BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionConfig>], Configurations => ArrayRef[L<Paws::EMR::Configuration>], CustomAmiId => Str, EbsRootVolumeSize => Int, JobFlowRole => Str, LogUri => Str, NewSupportedProducts => ArrayRef[L<Paws::EMR::SupportedProductConfig>], ReleaseLabel => Str, RepoUpgradeOnBoot => Str, ScaleDownBehavior => Str, SecurityConfiguration => Str, ServiceRole => Str, Steps => ArrayRef[L<Paws::EMR::StepConfig>], SupportedProducts => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::EMR::Tag>], VisibleToAllUsers => Bool])
 
 Each argument is described in detail in: L<Paws::EMR::RunJobFlow>
 
 Returns: a L<Paws::EMR::RunJobFlowOutput> instance
 
-  RunJobFlow creates and starts running a new cluster (job flow). The
+RunJobFlow creates and starts running a new cluster (job flow). The
 cluster runs the steps specified. After the steps complete, the cluster
 stops and the HDFS partition is lost. To prevent loss of data,
 configure the last step of the job flow to store results in Amazon S3.
@@ -699,7 +713,9 @@ can bypass the 256-step limitation in various ways, including using the
 SSH shell to connect to the master node and submitting queries directly
 to the software running on the master node, such as Hive and Hadoop.
 For more information on how to do this, see Add More than 256 Steps to
-a Cluster in the I<Amazon EMR Management Guide>.
+a Cluster
+(http://docs.aws.amazon.com/ElasticMapReduce/latest/Management/Guide/AddMoreThan256Steps.html)
+in the I<Amazon EMR Management Guide>.
 
 For long running clusters, we recommend that you periodically store
 your results.
@@ -716,7 +732,7 @@ Each argument is described in detail in: L<Paws::EMR::SetTerminationProtection>
 
 Returns: nothing
 
-  SetTerminationProtection locks a cluster (job flow) so the EC2
+SetTerminationProtection locks a cluster (job flow) so the EC2
 instances in the cluster cannot be terminated by user intervention, an
 API call, or in the event of a job-flow error. The cluster still
 terminates upon successful completion of the job flow. Calling
@@ -734,8 +750,9 @@ C<SetTerminationProtection> to C<true>, you must first unlock the job
 flow by a subsequent call to C<SetTerminationProtection> in which you
 set the value to C<false>.
 
-For more information, seeManaging Cluster Termination in the I<Amazon
-EMR Management Guide>.
+For more information, seeManaging Cluster Termination
+(http://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html)
+in the I<Amazon EMR Management Guide>.
 
 
 =head2 SetVisibleToAllUsers(JobFlowIds => ArrayRef[Str|Undef], VisibleToAllUsers => Bool)
@@ -744,7 +761,7 @@ Each argument is described in detail in: L<Paws::EMR::SetVisibleToAllUsers>
 
 Returns: nothing
 
-  Sets whether all AWS Identity and Access Management (IAM) users under
+Sets whether all AWS Identity and Access Management (IAM) users under
 your account can access the specified clusters (job flows). This action
 works on running clusters. You can also set the visibility of a cluster
 when you launch it using the C<VisibleToAllUsers> parameter of
@@ -759,7 +776,7 @@ Each argument is described in detail in: L<Paws::EMR::TerminateJobFlows>
 
 Returns: nothing
 
-  TerminateJobFlows shuts a list of clusters (job flows) down. When a job
+TerminateJobFlows shuts a list of clusters (job flows) down. When a job
 flow is shut down, any step not yet completed is canceled and the EC2
 instances on which the cluster is running are stopped. Any log files
 not already saved are uploaded to Amazon S3 if a LogUri was specified
@@ -859,9 +876,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -40,8 +40,9 @@ If you want to require signed URLs in requests for objects in the
 target origin that match the C<PathPattern> for this cache behavior,
 specify C<true> for C<Enabled>, and specify the applicable values for
 C<Quantity> and C<Items>. For more information, see Serving Private
-Content through CloudFront in the I<Amazon Amazon CloudFront Developer
-Guide>.
+Content through CloudFront
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
+in the I<Amazon Amazon CloudFront Developer Guide>.
 
 If you don't want to require signed URLs in requests for objects that
 match C<PathPattern>, specify C<false> for C<Enabled> and C<0> for
@@ -82,9 +83,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudFron
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -18,7 +18,7 @@ package Paws::EC2::CreateVpnConnection;
 
 =head1 NAME
 
-Paws::EC2::CreateVpnConnection - Arguments for method CreateVpnConnection on Paws::EC2
+Paws::EC2::CreateVpnConnection - Arguments for method CreateVpnConnection on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -54,11 +54,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Options => L<Paws::EC2::VpnConnectionOptionsSpecification>
 
-Indicates whether the VPN connection requires static routes. If you are
-creating a VPN connection for a device that does not support BGP, you
-must specify C<true>.
-
-Default: C<false>
+The options for the VPN connection.
 
 
 
@@ -81,9 +77,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateVpnConn
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

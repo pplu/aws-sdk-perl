@@ -22,7 +22,7 @@ package Paws::EC2::CreateNetworkInterface;
 
 =head1 NAME
 
-Paws::EC2::CreateNetworkInterface - Arguments for method CreateNetworkInterface on Paws::EC2
+Paws::EC2::CreateNetworkInterface - Arguments for method CreateNetworkInterface on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -106,7 +106,9 @@ IP address using C<privateIpAddresses>.
 
 The number of IP addresses you can assign to a network interface varies
 by instance type. For more information, see IP Addresses Per ENI Per
-Instance Type in the I<Amazon Virtual Private Cloud User Guide>.
+Instance Type
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 
@@ -123,9 +125,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateNetwork
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -1,9 +1,9 @@
 
 package Paws::LexModels::GetBotVersions;
   use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults' );
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name' , required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken' );
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
+  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
 
   use MooseX::ClassAttribute;
 
@@ -11,14 +11,13 @@ package Paws::LexModels::GetBotVersions;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/bots/{name}/versions/');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexModels::GetBotVersionsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::LexModels::GetBotVersions - Arguments for method GetBotVersions on Paws::LexModels
+Paws::LexModels::GetBotVersions - Arguments for method GetBotVersions on L<Paws::LexModels>
 
 =head1 DESCRIPTION
 
@@ -66,9 +65,9 @@ This class forms part of L<Paws>, documenting arguments for method GetBotVersion
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -34,15 +34,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head1 DESCRIPTION
 
-Provides details of the C<TimerStarted> event.
+Provides the details of the C<TimerStarted> event.
 
 =head1 ATTRIBUTES
 
 
 =head2 Control => Str
 
-  I<Optional.> Data attached to the event that can be used by the decider
-in subsequent workflow tasks.
+  Data attached to the event that can be used by the decider in
+subsequent workflow tasks.
 
 
 =head2 B<REQUIRED> DecisionTaskCompletedEventId => Int
@@ -55,10 +55,10 @@ by tracing back the chain of events leading up to this event.
 
 =head2 B<REQUIRED> StartToFireTimeout => Str
 
-  The duration of time after which the timer will fire.
+  The duration of time after which the timer fires.
 
-The duration is specified in seconds; an integer greater than or equal
-to 0.
+The duration is specified in seconds, an integer greater than or equal
+to C<0>.
 
 
 =head2 B<REQUIRED> TimerId => Str
@@ -73,9 +73,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SimpleWor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -14,7 +14,7 @@ package Paws::SNS::OptInPhoneNumber;
 
 =head1 NAME
 
-Paws::SNS::OptInPhoneNumber - Arguments for method OptInPhoneNumber on Paws::SNS
+Paws::SNS::OptInPhoneNumber - Arguments for method OptInPhoneNumber on L<Paws::SNS>
 
 =head1 DESCRIPTION
 
@@ -46,9 +46,9 @@ This class forms part of L<Paws>, documenting arguments for method OptInPhoneNum
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

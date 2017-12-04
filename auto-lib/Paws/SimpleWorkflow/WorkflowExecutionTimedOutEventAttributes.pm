@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head1 DESCRIPTION
 
-Provides details of the C<WorkflowExecutionTimedOut> event.
+Provides the details of the C<WorkflowExecutionTimedOut> event.
 
 =head1 ATTRIBUTES
 
@@ -46,15 +46,21 @@ The supported child policies are:
 
 =over
 
-=item * B<TERMINATE:> the child executions will be terminated.
+=item *
 
-=item * B<REQUEST_CANCEL:> a request to cancel will be attempted for
-each child execution by recording a C<WorkflowExecutionCancelRequested>
+C<TERMINATE> E<ndash> The child executions are terminated.
+
+=item *
+
+C<REQUEST_CANCEL> E<ndash> A request to cancel is attempted for each
+child execution by recording a C<WorkflowExecutionCancelRequested>
 event in its history. It is up to the decider to take appropriate
 actions when it receives an execution history with this event.
 
-=item * B<ABANDON:> no action will be taken. The child executions will
-continue to run.
+=item *
+
+C<ABANDON> E<ndash> No action is taken. The child executions continue
+to run.
 
 =back
 
@@ -72,9 +78,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SimpleWor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

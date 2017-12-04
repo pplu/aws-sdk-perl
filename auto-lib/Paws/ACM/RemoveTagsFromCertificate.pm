@@ -15,7 +15,7 @@ package Paws::ACM::RemoveTagsFromCertificate;
 
 =head1 NAME
 
-Paws::ACM::RemoveTagsFromCertificate - Arguments for method RemoveTagsFromCertificate on Paws::ACM
+Paws::ACM::RemoveTagsFromCertificate - Arguments for method RemoveTagsFromCertificate on L<Paws::ACM>
 
 =head1 DESCRIPTION
 
@@ -42,7 +42,8 @@ tags that you want to remove. This must be of the form:
 C<arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012>
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces.
+AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
 
@@ -59,9 +60,9 @@ This class forms part of L<Paws>, documenting arguments for method RemoveTagsFro
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

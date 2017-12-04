@@ -56,7 +56,8 @@ technique to measure performance.
 =back
 
 For more information about performance metrics, please see the Amazon
-Machine Learning Developer Guide.
+Machine Learning Developer Guide
+(http://docs.aws.amazon.com/machine-learning/latest/dg).
 
 =head1 ATTRIBUTES
 
@@ -73,9 +74,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::MachineLe
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

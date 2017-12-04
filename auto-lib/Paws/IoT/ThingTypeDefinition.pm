@@ -41,7 +41,9 @@ description.
 
 =head2 ThingTypeMetadata => L<Paws::IoT::ThingTypeMetadata>
 
-  
+  The ThingTypeMetadata contains additional information about the thing
+type including: creation date and time, a value indicating whether the
+thing type is deprecated, and a date and time when it was deprecated.
 
 
 =head2 ThingTypeName => Str
@@ -61,9 +63,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::IoT>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

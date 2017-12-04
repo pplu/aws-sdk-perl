@@ -16,7 +16,7 @@ package Paws::CloudWatchLogs::PutDestination;
 
 =head1 NAME
 
-Paws::CloudWatchLogs::PutDestination - Arguments for method PutDestination on Paws::CloudWatchLogs
+Paws::CloudWatchLogs::PutDestination - Arguments for method PutDestination on L<Paws::CloudWatchLogs>
 
 =head1 DESCRIPTION
 
@@ -44,13 +44,14 @@ A name for the destination.
 =head2 B<REQUIRED> RoleArn => Str
 
 The ARN of an IAM role that grants CloudWatch Logs permissions to call
-Amazon Kinesis PutRecord on the destination stream.
+the Amazon Kinesis PutRecord operation on the destination stream.
 
 
 
 =head2 B<REQUIRED> TargetArn => Str
 
-The ARN of an Amazon Kinesis stream to deliver matching log events to.
+The ARN of an Amazon Kinesis stream to which to deliver matching log
+events.
 
 
 
@@ -61,9 +62,9 @@ This class forms part of L<Paws>, documenting arguments for method PutDestinatio
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -1,8 +1,8 @@
 
 package Paws::Glacier::DescribeVault;
   use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
-  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
+  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
+  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -10,14 +10,13 @@ package Paws::Glacier::DescribeVault;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::DescribeVaultOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Glacier::DescribeVault - Arguments for method DescribeVault on Paws::Glacier
+Paws::Glacier::DescribeVault - Arguments for method DescribeVault on L<Paws::Glacier>
 
 =head1 DESCRIPTION
 
@@ -59,9 +58,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeVault
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

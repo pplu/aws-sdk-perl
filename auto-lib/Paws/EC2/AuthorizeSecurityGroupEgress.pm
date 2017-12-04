@@ -22,7 +22,7 @@ package Paws::EC2::AuthorizeSecurityGroupEgress;
 
 =head1 NAME
 
-Paws::EC2::AuthorizeSecurityGroupEgress - Arguments for method AuthorizeSecurityGroupEgress on Paws::EC2
+Paws::EC2::AuthorizeSecurityGroupEgress - Arguments for method AuthorizeSecurityGroupEgress on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -43,8 +43,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CidrIp => Str
 
-The CIDR IPv4 address range. We recommend that you specify the CIDR
-range in a set of IP permissions instead.
+Not supported. Use a set of IP permissions to specify the CIDR.
 
 
 
@@ -59,9 +58,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 FromPort => Int
 
-The start of port range for the TCP and UDP protocols, or an ICMP type
-number. We recommend that you specify the port range in a set of IP
-permissions instead.
+Not supported. Use a set of IP permissions to specify the port.
 
 
 
@@ -73,39 +70,36 @@ The ID of the security group.
 
 =head2 IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]
 
-A set of IP permissions. You can't specify a destination security group
-and a CIDR IP address range.
+One or more sets of IP permissions. You can't specify a destination
+security group and a CIDR IP address range in the same set of
+permissions.
 
 
 
 =head2 IpProtocol => Str
 
-The IP protocol name or number. We recommend that you specify the
-protocol in a set of IP permissions instead.
+Not supported. Use a set of IP permissions to specify the protocol name
+or number.
 
 
 
 =head2 SourceSecurityGroupName => Str
 
-The name of a destination security group. To authorize outbound access
-to a destination security group, we recommend that you use a set of IP
-permissions instead.
+Not supported. Use a set of IP permissions to specify a destination
+security group.
 
 
 
 =head2 SourceSecurityGroupOwnerId => Str
 
-The AWS account number for a destination security group. To authorize
-outbound access to a destination security group, we recommend that you
-use a set of IP permissions instead.
+Not supported. Use a set of IP permissions to specify a destination
+security group.
 
 
 
 =head2 ToPort => Int
 
-The end of port range for the TCP and UDP protocols, or an ICMP type
-number. We recommend that you specify the port range in a set of IP
-permissions instead.
+Not supported. Use a set of IP permissions to specify the port.
 
 
 
@@ -116,9 +110,9 @@ This class forms part of L<Paws>, documenting arguments for method AuthorizeSecu
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

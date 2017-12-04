@@ -1,7 +1,7 @@
 package Paws::Organizations::HandshakeParty;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
+  has Id => (is => 'ro', isa => 'Str', required => 1);
+  has Type => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -37,15 +37,16 @@ Identifies a participant in a handshake.
 =head1 ATTRIBUTES
 
 
-=head2 Id => Str
+=head2 B<REQUIRED> Id => Str
 
   The unique identifier (ID) for the party.
 
-The regex pattern for handshake ID string requires "h-" followed by
-from 8 to 32 lower-case letters or digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for handshake ID
+string requires "h-" followed by from 8 to 32 lower-case letters or
+digits.
 
 
-=head2 Type => Str
+=head2 B<REQUIRED> Type => Str
 
   The type of party.
 
@@ -57,9 +58,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Organizat
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

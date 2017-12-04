@@ -18,7 +18,7 @@ package Paws::DS::CreateComputer;
 
 =head1 NAME
 
-Paws::DS::CreateComputer - Arguments for method CreateComputer on Paws::DS
+Paws::DS::CreateComputer - Arguments for method CreateComputer on L<Paws::DS>
 
 =head1 DESCRIPTION
 
@@ -79,9 +79,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateCompute
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

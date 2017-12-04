@@ -17,7 +17,7 @@ package Paws::GameLift::UpdateGameSessionQueue;
 
 =head1 NAME
 
-Paws::GameLift::UpdateGameSessionQueue - Arguments for method UpdateGameSessionQueue on Paws::GameLift
+Paws::GameLift::UpdateGameSessionQueue - Arguments for method UpdateGameSessionQueue on L<Paws::GameLift>
 
 =head1 DESCRIPTION
 
@@ -47,8 +47,8 @@ When updating this list, provide a complete list of destinations.
 
 =head2 B<REQUIRED> Name => Str
 
-Descriptive label that is associated with queue. Queue names must be
-unique within each region.
+Descriptive label that is associated with game session queue. Queue
+names must be unique within each region.
 
 
 
@@ -71,7 +71,7 @@ of policies.
 
 Maximum time, in seconds, that a new game session placement request
 remains in the queue. When a request exceeds this time, the game
-session placement changes to a TIMED_OUT status.
+session placement changes to a C<TIMED_OUT> status.
 
 
 
@@ -82,9 +82,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateGameSes
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

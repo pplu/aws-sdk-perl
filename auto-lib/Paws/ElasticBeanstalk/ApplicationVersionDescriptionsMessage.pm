@@ -24,8 +24,8 @@ creation.
 
 =head2 NextToken => Str
 
-For a paginated request, the token that you can pass in a subsequent
-request to get the next page.
+In a paginated request, the token that you can pass in a subsequent
+request to get the next response page.
 
 
 =head2 _request_id => Str

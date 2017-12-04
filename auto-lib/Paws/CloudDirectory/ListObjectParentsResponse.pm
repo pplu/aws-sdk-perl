@@ -23,8 +23,8 @@ The pagination token.
 
 =head2 Parents => L<Paws::CloudDirectory::ObjectIdentifierToLinkNameMap>
 
-Parent structure, which is a map with key as the C<ObjectIdentifier>
-and LinkName as the value.
+The parent structure, which is a map with key as the
+C<ObjectIdentifier> and LinkName as the value.
 
 
 =head2 _request_id => Str

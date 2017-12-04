@@ -1,6 +1,7 @@
 package Paws::Pinpoint::SegmentDemographics;
   use Moose;
   has AppVersion => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
+  has Channel => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
   has DeviceType => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
   has Make => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
   has Model => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
@@ -45,6 +46,11 @@ Segment demographic dimensions
   The app version criteria for the segment.
 
 
+=head2 Channel => L<Paws::Pinpoint::SetDimension>
+
+  The channel criteria for the segment.
+
+
 =head2 DeviceType => L<Paws::Pinpoint::SetDimension>
 
   The device type criteria for the segment.
@@ -72,9 +78,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

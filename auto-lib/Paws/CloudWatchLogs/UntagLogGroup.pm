@@ -15,7 +15,7 @@ package Paws::CloudWatchLogs::UntagLogGroup;
 
 =head1 NAME
 
-Paws::CloudWatchLogs::UntagLogGroup - Arguments for method UntagLogGroup on Paws::CloudWatchLogs
+Paws::CloudWatchLogs::UntagLogGroup - Arguments for method UntagLogGroup on L<Paws::CloudWatchLogs>
 
 =head1 DESCRIPTION
 
@@ -53,9 +53,9 @@ This class forms part of L<Paws>, documenting arguments for method UntagLogGroup
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

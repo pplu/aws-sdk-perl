@@ -15,7 +15,7 @@ package Paws::MarketplaceMetering::BatchMeterUsage;
 
 =head1 NAME
 
-Paws::MarketplaceMetering::BatchMeterUsage - Arguments for method BatchMeterUsage on Paws::MarketplaceMetering
+Paws::MarketplaceMetering::BatchMeterUsage - Arguments for method BatchMeterUsage on L<Paws::MarketplaceMetering>
 
 =head1 DESCRIPTION
 
@@ -56,9 +56,9 @@ This class forms part of L<Paws>, documenting arguments for method BatchMeterUsa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

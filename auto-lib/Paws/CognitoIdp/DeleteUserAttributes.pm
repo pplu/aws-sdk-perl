@@ -1,7 +1,7 @@
 
 package Paws::CognitoIdp::DeleteUserAttributes;
   use Moose;
-  has AccessToken => (is => 'ro', isa => 'Str');
+  has AccessToken => (is => 'ro', isa => 'Str', required => 1);
   has UserAttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
@@ -15,7 +15,7 @@ package Paws::CognitoIdp::DeleteUserAttributes;
 
 =head1 NAME
 
-Paws::CognitoIdp::DeleteUserAttributes - Arguments for method DeleteUserAttributes on Paws::CognitoIdp
+Paws::CognitoIdp::DeleteUserAttributes - Arguments for method DeleteUserAttributes on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AccessToken => Str
+=head2 B<REQUIRED> AccessToken => Str
 
 The access token used in the request to delete user attributes.
 
@@ -45,6 +45,9 @@ The access token used in the request to delete user attributes.
 An array of strings representing the user attribute names you wish to
 delete.
 
+For custom attributes, you must prepend the C<custom:> prefix to the
+attribute name.
+
 
 
 
@@ -54,9 +57,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteUserAtt
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

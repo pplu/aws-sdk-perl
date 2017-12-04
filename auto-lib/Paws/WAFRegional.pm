@@ -11,7 +11,7 @@ package Paws::WAFRegional;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub AssociateWebACL {
@@ -24,9 +24,29 @@ package Paws::WAFRegional;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::CreateByteMatchSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateGeoMatchSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::CreateGeoMatchSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateIPSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::CreateIPSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateRateBasedRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::CreateRateBasedRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateRegexMatchSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::CreateRegexMatchSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateRegexPatternSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::CreateRegexPatternSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateRule {
@@ -59,9 +79,29 @@ package Paws::WAFRegional;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::DeleteByteMatchSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteGeoMatchSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::DeleteGeoMatchSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteIPSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::DeleteIPSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteRateBasedRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::DeleteRateBasedRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteRegexMatchSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::DeleteRegexMatchSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteRegexPatternSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::DeleteRegexPatternSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteRule {
@@ -109,9 +149,34 @@ package Paws::WAFRegional;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::GetChangeTokenStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetGeoMatchSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::GetGeoMatchSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetIPSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::GetIPSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRateBasedRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::GetRateBasedRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRateBasedRuleManagedKeys {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::GetRateBasedRuleManagedKeys', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRegexMatchSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::GetRegexMatchSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRegexPatternSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::GetRegexPatternSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetRule {
@@ -154,9 +219,29 @@ package Paws::WAFRegional;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::ListByteMatchSets', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListGeoMatchSets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::ListGeoMatchSets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListIPSets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::ListIPSets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListRateBasedRules {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::ListRateBasedRules', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListRegexMatchSets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::ListRegexMatchSets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListRegexPatternSets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::ListRegexPatternSets', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListResourcesForWebACL {
@@ -194,9 +279,29 @@ package Paws::WAFRegional;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::UpdateByteMatchSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateGeoMatchSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::UpdateGeoMatchSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateIPSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::UpdateIPSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateRateBasedRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::UpdateRateBasedRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateRegexMatchSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::UpdateRegexMatchSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateRegexPatternSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::UpdateRegexPatternSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateRule {
@@ -227,7 +332,7 @@ package Paws::WAFRegional;
   
 
 
-  sub operations { qw/AssociateWebACL CreateByteMatchSet CreateIPSet CreateRule CreateSizeConstraintSet CreateSqlInjectionMatchSet CreateWebACL CreateXssMatchSet DeleteByteMatchSet DeleteIPSet DeleteRule DeleteSizeConstraintSet DeleteSqlInjectionMatchSet DeleteWebACL DeleteXssMatchSet DisassociateWebACL GetByteMatchSet GetChangeToken GetChangeTokenStatus GetIPSet GetRule GetSampledRequests GetSizeConstraintSet GetSqlInjectionMatchSet GetWebACL GetWebACLForResource GetXssMatchSet ListByteMatchSets ListIPSets ListResourcesForWebACL ListRules ListSizeConstraintSets ListSqlInjectionMatchSets ListWebACLs ListXssMatchSets UpdateByteMatchSet UpdateIPSet UpdateRule UpdateSizeConstraintSet UpdateSqlInjectionMatchSet UpdateWebACL UpdateXssMatchSet / }
+  sub operations { qw/AssociateWebACL CreateByteMatchSet CreateGeoMatchSet CreateIPSet CreateRateBasedRule CreateRegexMatchSet CreateRegexPatternSet CreateRule CreateSizeConstraintSet CreateSqlInjectionMatchSet CreateWebACL CreateXssMatchSet DeleteByteMatchSet DeleteGeoMatchSet DeleteIPSet DeleteRateBasedRule DeleteRegexMatchSet DeleteRegexPatternSet DeleteRule DeleteSizeConstraintSet DeleteSqlInjectionMatchSet DeleteWebACL DeleteXssMatchSet DisassociateWebACL GetByteMatchSet GetChangeToken GetChangeTokenStatus GetGeoMatchSet GetIPSet GetRateBasedRule GetRateBasedRuleManagedKeys GetRegexMatchSet GetRegexPatternSet GetRule GetSampledRequests GetSizeConstraintSet GetSqlInjectionMatchSet GetWebACL GetWebACLForResource GetXssMatchSet ListByteMatchSets ListGeoMatchSets ListIPSets ListRateBasedRules ListRegexMatchSets ListRegexPatternSets ListResourcesForWebACL ListRules ListSizeConstraintSets ListSqlInjectionMatchSets ListWebACLs ListXssMatchSets UpdateByteMatchSet UpdateGeoMatchSet UpdateIPSet UpdateRateBasedRule UpdateRegexMatchSet UpdateRegexPatternSet UpdateRule UpdateSizeConstraintSet UpdateSqlInjectionMatchSet UpdateWebACL UpdateXssMatchSet / }
 
 1;
 
@@ -260,10 +365,13 @@ Elastic Load Balancing (ELB) Application Load Balancers. The AWS WAF
 actions and data types listed in the reference are available for
 protecting Application Load Balancers. You can use these actions and
 data types by means of the endpoints listed in AWS Regions and
-Endpoints. This guide is for developers who need detailed information
-about the AWS WAF API actions, data types, and errors. For detailed
-information about AWS WAF features and an overview of how to use the
-AWS WAF API, see the AWS WAF Developer Guide.
+Endpoints
+(http://docs.aws.amazon.com/general/latest/gr/rande.html#waf_region).
+This guide is for developers who need detailed information about the
+AWS WAF API actions, data types, and errors. For detailed information
+about AWS WAF features and an overview of how to use the AWS WAF API,
+see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 =head1 METHODS
 
@@ -273,7 +381,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::AssociateWebACL>
 
 Returns: a L<Paws::WAFRegional::AssociateWebACLResponse> instance
 
-  Associates a web ACL with a resource.
+Associates a web ACL with a resource.
 
 
 =head2 CreateByteMatchSet(ChangeToken => Str, Name => Str)
@@ -282,7 +390,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::CreateByteMatchSet
 
 Returns: a L<Paws::WAFRegional::CreateByteMatchSetResponse> instance
 
-  Creates a C<ByteMatchSet>. You then use UpdateByteMatchSet to identify
+Creates a C<ByteMatchSet>. You then use UpdateByteMatchSet to identify
 the part of a web request that you want AWS WAF to inspect, such as the
 values of the C<User-Agent> header or the query string. For example,
 you can create a C<ByteMatchSet> that matches any requests with
@@ -316,7 +424,51 @@ and the value that you want AWS WAF to watch for.
 =back
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
+
+
+=head2 CreateGeoMatchSet(ChangeToken => Str, Name => Str)
+
+Each argument is described in detail in: L<Paws::WAFRegional::CreateGeoMatchSet>
+
+Returns: a L<Paws::WAFRegional::CreateGeoMatchSetResponse> instance
+
+Creates an GeoMatchSet, which you use to specify which web requests you
+want to allow or block based on the country that the requests originate
+from. For example, if you're receiving a lot of requests from one or
+more countries and you want to block the requests, you can create an
+C<GeoMatchSet> that contains those countries and then configure AWS WAF
+to block the requests.
+
+To create and configure a C<GeoMatchSet>, perform the following steps:
+
+=over
+
+=item 1.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<CreateGeoMatchSet> request.
+
+=item 2.
+
+Submit a C<CreateGeoMatchSet> request.
+
+=item 3.
+
+Use C<GetChangeToken> to get the change token that you provide in the
+C<ChangeToken> parameter of an UpdateGeoMatchSet request.
+
+=item 4.
+
+Submit an C<UpdateGeoMatchSetSet> request to specify the countries that
+you want AWS WAF to watch for.
+
+=back
+
+For more information about how to use the AWS WAF API to allow or block
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateIPSet(ChangeToken => Str, Name => Str)
@@ -325,7 +477,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::CreateIPSet>
 
 Returns: a L<Paws::WAFRegional::CreateIPSetResponse> instance
 
-  Creates an IPSet, which you use to specify which web requests you want
+Creates an IPSet, which you use to specify which web requests you want
 to allow or block based on the IP addresses that the requests originate
 from. For example, if you're receiving a lot of requests from one or
 more individual IP addresses or one or more ranges of IP addresses and
@@ -359,7 +511,206 @@ want AWS WAF to watch for.
 =back
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
+
+
+=head2 CreateRateBasedRule(ChangeToken => Str, MetricName => Str, Name => Str, RateKey => Str, RateLimit => Int)
+
+Each argument is described in detail in: L<Paws::WAFRegional::CreateRateBasedRule>
+
+Returns: a L<Paws::WAFRegional::CreateRateBasedRuleResponse> instance
+
+Creates a RateBasedRule. The C<RateBasedRule> contains a C<RateLimit>,
+which specifies the maximum number of requests that AWS WAF allows from
+a specified IP address in a five-minute period. The C<RateBasedRule>
+also contains the C<IPSet> objects, C<ByteMatchSet> objects, and other
+predicates that identify the requests that you want to count or block
+if these requests exceed the C<RateLimit>.
+
+If you add more than one predicate to a C<RateBasedRule>, a request not
+only must exceed the C<RateLimit>, but it also must match all the
+specifications to be counted or blocked. For example, suppose you add
+the following to a C<RateBasedRule>:
+
+=over
+
+=item *
+
+An C<IPSet> that matches the IP address C<192.0.2.44/32>
+
+=item *
+
+A C<ByteMatchSet> that matches C<BadBot> in the C<User-Agent> header
+
+=back
+
+Further, you specify a C<RateLimit> of 15,000.
+
+You then add the C<RateBasedRule> to a C<WebACL> and specify that you
+want to block requests that meet the conditions in the rule. For a
+request to be blocked, it must come from the IP address 192.0.2.44
+I<and> the C<User-Agent> header in the request must contain the value
+C<BadBot>. Further, requests that match these two conditions must be
+received at a rate of more than 15,000 requests every five minutes. If
+both conditions are met and the rate is exceeded, AWS WAF blocks the
+requests. If the rate drops below 15,000 for a five-minute period, AWS
+WAF no longer blocks the requests.
+
+As a second example, suppose you want to limit requests to a particular
+page on your site. To do this, you could add the following to a
+C<RateBasedRule>:
+
+=over
+
+=item *
+
+A C<ByteMatchSet> with C<FieldToMatch> of C<URI>
+
+=item *
+
+A C<PositionalConstraint> of C<STARTS_WITH>
+
+=item *
+
+A C<TargetString> of C<login>
+
+=back
+
+Further, you specify a C<RateLimit> of 15,000.
+
+By adding this C<RateBasedRule> to a C<WebACL>, you could limit
+requests to your login page without affecting the rest of your site.
+
+To create and configure a C<RateBasedRule>, perform the following
+steps:
+
+=over
+
+=item 1.
+
+Create and update the predicates that you want to include in the rule.
+For more information, see CreateByteMatchSet, CreateIPSet, and
+CreateSqlInjectionMatchSet.
+
+=item 2.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<CreateRule> request.
+
+=item 3.
+
+Submit a C<CreateRateBasedRule> request.
+
+=item 4.
+
+Use C<GetChangeToken> to get the change token that you provide in the
+C<ChangeToken> parameter of an UpdateRule request.
+
+=item 5.
+
+Submit an C<UpdateRateBasedRule> request to specify the predicates that
+you want to include in the rule.
+
+=item 6.
+
+Create and update a C<WebACL> that contains the C<RateBasedRule>. For
+more information, see CreateWebACL.
+
+=back
+
+For more information about how to use the AWS WAF API to allow or block
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
+
+
+=head2 CreateRegexMatchSet(ChangeToken => Str, Name => Str)
+
+Each argument is described in detail in: L<Paws::WAFRegional::CreateRegexMatchSet>
+
+Returns: a L<Paws::WAFRegional::CreateRegexMatchSetResponse> instance
+
+Creates a RegexMatchSet. You then use UpdateRegexMatchSet to identify
+the part of a web request that you want AWS WAF to inspect, such as the
+values of the C<User-Agent> header or the query string. For example,
+you can create a C<RegexMatchSet> that contains a C<RegexMatchTuple>
+that looks for any requests with C<User-Agent> headers that match a
+C<RegexPatternSet> with pattern C<B[a@]dB[o0]t>. You can then configure
+AWS WAF to reject those requests.
+
+To create and configure a C<RegexMatchSet>, perform the following
+steps:
+
+=over
+
+=item 1.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<CreateRegexMatchSet> request.
+
+=item 2.
+
+Submit a C<CreateRegexMatchSet> request.
+
+=item 3.
+
+Use C<GetChangeToken> to get the change token that you provide in the
+C<ChangeToken> parameter of an C<UpdateRegexMatchSet> request.
+
+=item 4.
+
+Submit an UpdateRegexMatchSet request to specify the part of the
+request that you want AWS WAF to inspect (for example, the header or
+the URI) and the value, using a C<RegexPatternSet>, that you want AWS
+WAF to watch for.
+
+=back
+
+For more information about how to use the AWS WAF API to allow or block
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
+
+
+=head2 CreateRegexPatternSet(ChangeToken => Str, Name => Str)
+
+Each argument is described in detail in: L<Paws::WAFRegional::CreateRegexPatternSet>
+
+Returns: a L<Paws::WAFRegional::CreateRegexPatternSetResponse> instance
+
+Creates a C<RegexPatternSet>. You then use UpdateRegexPatternSet to
+specify the regular expression (regex) pattern that you want AWS WAF to
+search for, such as C<B[a@]dB[o0]t>. You can then configure AWS WAF to
+reject those requests.
+
+To create and configure a C<RegexPatternSet>, perform the following
+steps:
+
+=over
+
+=item 1.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<CreateRegexPatternSet> request.
+
+=item 2.
+
+Submit a C<CreateRegexPatternSet> request.
+
+=item 3.
+
+Use C<GetChangeToken> to get the change token that you provide in the
+C<ChangeToken> parameter of an C<UpdateRegexPatternSet> request.
+
+=item 4.
+
+Submit an UpdateRegexPatternSet request to specify the string that you
+want AWS WAF to watch for.
+
+=back
+
+For more information about how to use the AWS WAF API to allow or block
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateRule(ChangeToken => Str, MetricName => Str, Name => Str)
@@ -368,7 +719,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::CreateRule>
 
 Returns: a L<Paws::WAFRegional::CreateRuleResponse> instance
 
-  Creates a C<Rule>, which contains the C<IPSet> objects, C<ByteMatchSet>
+Creates a C<Rule>, which contains the C<IPSet> objects, C<ByteMatchSet>
 objects, and other predicates that identify the requests that you want
 to block. If you add more than one predicate to a C<Rule>, a request
 must match all of the specifications to be allowed or blocked. For
@@ -428,7 +779,8 @@ information, see CreateWebACL.
 =back
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateSizeConstraintSet(ChangeToken => Str, Name => Str)
@@ -437,7 +789,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::CreateSizeConstrai
 
 Returns: a L<Paws::WAFRegional::CreateSizeConstraintSetResponse> instance
 
-  Creates a C<SizeConstraintSet>. You then use UpdateSizeConstraintSet to
+Creates a C<SizeConstraintSet>. You then use UpdateSizeConstraintSet to
 identify the part of a web request that you want AWS WAF to check for
 length, such as the length of the C<User-Agent> header or the length of
 the query string. For example, you can create a C<SizeConstraintSet>
@@ -472,7 +824,8 @@ the URI) and the value that you want AWS WAF to watch for.
 =back
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateSqlInjectionMatchSet(ChangeToken => Str, Name => Str)
@@ -481,7 +834,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::CreateSqlInjection
 
 Returns: a L<Paws::WAFRegional::CreateSqlInjectionMatchSetResponse> instance
 
-  Creates a SqlInjectionMatchSet, which you use to allow, block, or count
+Creates a SqlInjectionMatchSet, which you use to allow, block, or count
 requests that contain snippets of SQL code in a specified part of web
 requests. AWS WAF searches for character sequences that are likely to
 be malicious strings.
@@ -514,7 +867,8 @@ code.
 =back
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateWebACL(ChangeToken => Str, DefaultAction => L<Paws::WAFRegional::WafAction>, MetricName => Str, Name => Str)
@@ -523,7 +877,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::CreateWebACL>
 
 Returns: a L<Paws::WAFRegional::CreateWebACLResponse> instance
 
-  Creates a C<WebACL>, which contains the C<Rules> that identify the
+Creates a C<WebACL>, which contains the C<Rules> that identify the
 CloudFront web requests that you want to allow, block, or count. AWS
 WAF evaluates C<Rules> in order based on the value of C<Priority> for
 each C<Rule>.
@@ -571,7 +925,8 @@ associate the C<WebACL> with a CloudFront distribution.
 =back
 
 For more information about how to use the AWS WAF API, see the AWS WAF
-Developer Guide.
+Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateXssMatchSet(ChangeToken => Str, Name => Str)
@@ -580,7 +935,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::CreateXssMatchSet>
 
 Returns: a L<Paws::WAFRegional::CreateXssMatchSetResponse> instance
 
-  Creates an XssMatchSet, which you use to allow, block, or count
+Creates an XssMatchSet, which you use to allow, block, or count
 requests that contain cross-site scripting attacks in the specified
 part of web requests. AWS WAF searches for character sequences that are
 likely to be malicious strings.
@@ -612,7 +967,8 @@ scripting attacks.
 =back
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 DeleteByteMatchSet(ByteMatchSetId => Str, ChangeToken => Str)
@@ -621,7 +977,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::DeleteByteMatchSet
 
 Returns: a L<Paws::WAFRegional::DeleteByteMatchSetResponse> instance
 
-  Permanently deletes a ByteMatchSet. You can't delete a C<ByteMatchSet>
+Permanently deletes a ByteMatchSet. You can't delete a C<ByteMatchSet>
 if it's still used in any C<Rules> or if it still includes any
 ByteMatchTuple objects (any filters).
 
@@ -650,13 +1006,48 @@ Submit a C<DeleteByteMatchSet> request.
 
 
 
+=head2 DeleteGeoMatchSet(ChangeToken => Str, GeoMatchSetId => Str)
+
+Each argument is described in detail in: L<Paws::WAFRegional::DeleteGeoMatchSet>
+
+Returns: a L<Paws::WAFRegional::DeleteGeoMatchSetResponse> instance
+
+Permanently deletes a GeoMatchSet. You can't delete a C<GeoMatchSet> if
+it's still used in any C<Rules> or if it still includes any countries.
+
+If you just want to remove a C<GeoMatchSet> from a C<Rule>, use
+UpdateRule.
+
+To permanently delete a C<GeoMatchSet> from AWS WAF, perform the
+following steps:
+
+=over
+
+=item 1.
+
+Update the C<GeoMatchSet> to remove any countries. For more
+information, see UpdateGeoMatchSet.
+
+=item 2.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<DeleteGeoMatchSet> request.
+
+=item 3.
+
+Submit a C<DeleteGeoMatchSet> request.
+
+=back
+
+
+
 =head2 DeleteIPSet(ChangeToken => Str, IPSetId => Str)
 
 Each argument is described in detail in: L<Paws::WAFRegional::DeleteIPSet>
 
 Returns: a L<Paws::WAFRegional::DeleteIPSetResponse> instance
 
-  Permanently deletes an IPSet. You can't delete an C<IPSet> if it's
+Permanently deletes an IPSet. You can't delete an C<IPSet> if it's
 still used in any C<Rules> or if it still includes any IP addresses.
 
 If you just want to remove an C<IPSet> from a C<Rule>, use UpdateRule.
@@ -684,13 +1075,94 @@ Submit a C<DeleteIPSet> request.
 
 
 
+=head2 DeleteRateBasedRule(ChangeToken => Str, RuleId => Str)
+
+Each argument is described in detail in: L<Paws::WAFRegional::DeleteRateBasedRule>
+
+Returns: a L<Paws::WAFRegional::DeleteRateBasedRuleResponse> instance
+
+Permanently deletes a RateBasedRule. You can't delete a rule if it's
+still used in any C<WebACL> objects or if it still includes any
+predicates, such as C<ByteMatchSet> objects.
+
+If you just want to remove a rule from a C<WebACL>, use UpdateWebACL.
+
+To permanently delete a C<RateBasedRule> from AWS WAF, perform the
+following steps:
+
+=over
+
+=item 1.
+
+Update the C<RateBasedRule> to remove predicates, if any. For more
+information, see UpdateRateBasedRule.
+
+=item 2.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<DeleteRateBasedRule> request.
+
+=item 3.
+
+Submit a C<DeleteRateBasedRule> request.
+
+=back
+
+
+
+=head2 DeleteRegexMatchSet(ChangeToken => Str, RegexMatchSetId => Str)
+
+Each argument is described in detail in: L<Paws::WAFRegional::DeleteRegexMatchSet>
+
+Returns: a L<Paws::WAFRegional::DeleteRegexMatchSetResponse> instance
+
+Permanently deletes a RegexMatchSet. You can't delete a
+C<RegexMatchSet> if it's still used in any C<Rules> or if it still
+includes any C<RegexMatchTuples> objects (any filters).
+
+If you just want to remove a C<RegexMatchSet> from a C<Rule>, use
+UpdateRule.
+
+To permanently delete a C<RegexMatchSet>, perform the following steps:
+
+=over
+
+=item 1.
+
+Update the C<RegexMatchSet> to remove filters, if any. For more
+information, see UpdateRegexMatchSet.
+
+=item 2.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<DeleteRegexMatchSet> request.
+
+=item 3.
+
+Submit a C<DeleteRegexMatchSet> request.
+
+=back
+
+
+
+=head2 DeleteRegexPatternSet(ChangeToken => Str, RegexPatternSetId => Str)
+
+Each argument is described in detail in: L<Paws::WAFRegional::DeleteRegexPatternSet>
+
+Returns: a L<Paws::WAFRegional::DeleteRegexPatternSetResponse> instance
+
+Permanently deletes a RegexPatternSet. You can't delete a
+C<RegexPatternSet> if it's still used in any C<RegexMatchSet> or if the
+C<RegexPatternSet> is not empty.
+
+
 =head2 DeleteRule(ChangeToken => Str, RuleId => Str)
 
 Each argument is described in detail in: L<Paws::WAFRegional::DeleteRule>
 
 Returns: a L<Paws::WAFRegional::DeleteRuleResponse> instance
 
-  Permanently deletes a Rule. You can't delete a C<Rule> if it's still
+Permanently deletes a Rule. You can't delete a C<Rule> if it's still
 used in any C<WebACL> objects or if it still includes any predicates,
 such as C<ByteMatchSet> objects.
 
@@ -726,7 +1198,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::DeleteSizeConstrai
 
 Returns: a L<Paws::WAFRegional::DeleteSizeConstraintSetResponse> instance
 
-  Permanently deletes a SizeConstraintSet. You can't delete a
+Permanently deletes a SizeConstraintSet. You can't delete a
 C<SizeConstraintSet> if it's still used in any C<Rules> or if it still
 includes any SizeConstraint objects (any filters).
 
@@ -762,7 +1234,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::DeleteSqlInjection
 
 Returns: a L<Paws::WAFRegional::DeleteSqlInjectionMatchSetResponse> instance
 
-  Permanently deletes a SqlInjectionMatchSet. You can't delete a
+Permanently deletes a SqlInjectionMatchSet. You can't delete a
 C<SqlInjectionMatchSet> if it's still used in any C<Rules> or if it
 still contains any SqlInjectionMatchTuple objects.
 
@@ -798,7 +1270,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::DeleteWebACL>
 
 Returns: a L<Paws::WAFRegional::DeleteWebACLResponse> instance
 
-  Permanently deletes a WebACL. You can't delete a C<WebACL> if it still
+Permanently deletes a WebACL. You can't delete a C<WebACL> if it still
 contains any C<Rules>.
 
 To delete a C<WebACL>, perform the following steps:
@@ -829,7 +1301,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::DeleteXssMatchSet>
 
 Returns: a L<Paws::WAFRegional::DeleteXssMatchSetResponse> instance
 
-  Permanently deletes an XssMatchSet. You can't delete an C<XssMatchSet>
+Permanently deletes an XssMatchSet. You can't delete an C<XssMatchSet>
 if it's still used in any C<Rules> or if it still contains any
 XssMatchTuple objects.
 
@@ -865,7 +1337,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::DisassociateWebACL
 
 Returns: a L<Paws::WAFRegional::DisassociateWebACLResponse> instance
 
-  Removes a web ACL from the specified resource.
+Removes a web ACL from the specified resource.
 
 
 =head2 GetByteMatchSet(ByteMatchSetId => Str)
@@ -874,7 +1346,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::GetByteMatchSet>
 
 Returns: a L<Paws::WAFRegional::GetByteMatchSetResponse> instance
 
-  Returns the ByteMatchSet specified by C<ByteMatchSetId>.
+Returns the ByteMatchSet specified by C<ByteMatchSetId>.
 
 
 =head2 GetChangeToken()
@@ -883,7 +1355,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::GetChangeToken>
 
 Returns: a L<Paws::WAFRegional::GetChangeTokenResponse> instance
 
-  When you want to create, update, or delete AWS WAF objects, get a
+When you want to create, update, or delete AWS WAF objects, get a
 change token and include the change token in the create, update, or
 delete request. Change tokens ensure that your application doesn't
 submit conflicting requests to AWS WAF.
@@ -906,7 +1378,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::GetChangeTokenStat
 
 Returns: a L<Paws::WAFRegional::GetChangeTokenStatusResponse> instance
 
-  Returns the status of a C<ChangeToken> that you got by calling
+Returns the status of a C<ChangeToken> that you got by calling
 GetChangeToken. C<ChangeTokenStatus> is one of the following values:
 
 =over
@@ -930,13 +1402,63 @@ C<IN_SYNC>: Propagation is complete.
 
 
 
+=head2 GetGeoMatchSet(GeoMatchSetId => Str)
+
+Each argument is described in detail in: L<Paws::WAFRegional::GetGeoMatchSet>
+
+Returns: a L<Paws::WAFRegional::GetGeoMatchSetResponse> instance
+
+Returns the GeoMatchSet that is specified by C<GeoMatchSetId>.
+
+
 =head2 GetIPSet(IPSetId => Str)
 
 Each argument is described in detail in: L<Paws::WAFRegional::GetIPSet>
 
 Returns: a L<Paws::WAFRegional::GetIPSetResponse> instance
 
-  Returns the IPSet that is specified by C<IPSetId>.
+Returns the IPSet that is specified by C<IPSetId>.
+
+
+=head2 GetRateBasedRule(RuleId => Str)
+
+Each argument is described in detail in: L<Paws::WAFRegional::GetRateBasedRule>
+
+Returns: a L<Paws::WAFRegional::GetRateBasedRuleResponse> instance
+
+Returns the RateBasedRule that is specified by the C<RuleId> that you
+included in the C<GetRateBasedRule> request.
+
+
+=head2 GetRateBasedRuleManagedKeys(RuleId => Str, [NextMarker => Str])
+
+Each argument is described in detail in: L<Paws::WAFRegional::GetRateBasedRuleManagedKeys>
+
+Returns: a L<Paws::WAFRegional::GetRateBasedRuleManagedKeysResponse> instance
+
+Returns an array of IP addresses currently being blocked by the
+RateBasedRule that is specified by the C<RuleId>. The maximum number of
+managed keys that will be blocked is 10,000. If more than 10,000
+addresses exceed the rate limit, the 10,000 addresses with the highest
+rates will be blocked.
+
+
+=head2 GetRegexMatchSet(RegexMatchSetId => Str)
+
+Each argument is described in detail in: L<Paws::WAFRegional::GetRegexMatchSet>
+
+Returns: a L<Paws::WAFRegional::GetRegexMatchSetResponse> instance
+
+Returns the RegexMatchSet specified by C<RegexMatchSetId>.
+
+
+=head2 GetRegexPatternSet(RegexPatternSetId => Str)
+
+Each argument is described in detail in: L<Paws::WAFRegional::GetRegexPatternSet>
+
+Returns: a L<Paws::WAFRegional::GetRegexPatternSetResponse> instance
+
+Returns the RegexPatternSet specified by C<RegexPatternSetId>.
 
 
 =head2 GetRule(RuleId => Str)
@@ -945,7 +1467,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::GetRule>
 
 Returns: a L<Paws::WAFRegional::GetRuleResponse> instance
 
-  Returns the Rule that is specified by the C<RuleId> that you included
+Returns the Rule that is specified by the C<RuleId> that you included
 in the C<GetRule> request.
 
 
@@ -955,7 +1477,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::GetSampledRequests
 
 Returns: a L<Paws::WAFRegional::GetSampledRequestsResponse> instance
 
-  Gets detailed information about a specified number of requests--a
+Gets detailed information about a specified number of requests--a
 sample--that AWS WAF randomly selects from among the first 5,000
 requests that your AWS resource received during a time range that you
 choose. You can specify a sample size of up to 500 requests, and you
@@ -975,7 +1497,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::GetSizeConstraintS
 
 Returns: a L<Paws::WAFRegional::GetSizeConstraintSetResponse> instance
 
-  Returns the SizeConstraintSet specified by C<SizeConstraintSetId>.
+Returns the SizeConstraintSet specified by C<SizeConstraintSetId>.
 
 
 =head2 GetSqlInjectionMatchSet(SqlInjectionMatchSetId => Str)
@@ -984,7 +1506,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::GetSqlInjectionMat
 
 Returns: a L<Paws::WAFRegional::GetSqlInjectionMatchSetResponse> instance
 
-  Returns the SqlInjectionMatchSet that is specified by
+Returns the SqlInjectionMatchSet that is specified by
 C<SqlInjectionMatchSetId>.
 
 
@@ -994,7 +1516,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::GetWebACL>
 
 Returns: a L<Paws::WAFRegional::GetWebACLResponse> instance
 
-  Returns the WebACL that is specified by C<WebACLId>.
+Returns the WebACL that is specified by C<WebACLId>.
 
 
 =head2 GetWebACLForResource(ResourceArn => Str)
@@ -1003,7 +1525,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::GetWebACLForResour
 
 Returns: a L<Paws::WAFRegional::GetWebACLForResourceResponse> instance
 
-  Returns the web ACL for the specified resource.
+Returns the web ACL for the specified resource.
 
 
 =head2 GetXssMatchSet(XssMatchSetId => Str)
@@ -1012,7 +1534,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::GetXssMatchSet>
 
 Returns: a L<Paws::WAFRegional::GetXssMatchSetResponse> instance
 
-  Returns the XssMatchSet that is specified by C<XssMatchSetId>.
+Returns the XssMatchSet that is specified by C<XssMatchSetId>.
 
 
 =head2 ListByteMatchSets([Limit => Int, NextMarker => Str])
@@ -1021,7 +1543,16 @@ Each argument is described in detail in: L<Paws::WAFRegional::ListByteMatchSets>
 
 Returns: a L<Paws::WAFRegional::ListByteMatchSetsResponse> instance
 
-  Returns an array of ByteMatchSetSummary objects.
+Returns an array of ByteMatchSetSummary objects.
+
+
+=head2 ListGeoMatchSets([Limit => Int, NextMarker => Str])
+
+Each argument is described in detail in: L<Paws::WAFRegional::ListGeoMatchSets>
+
+Returns: a L<Paws::WAFRegional::ListGeoMatchSetsResponse> instance
+
+Returns an array of GeoMatchSetSummary objects in the response.
 
 
 =head2 ListIPSets([Limit => Int, NextMarker => Str])
@@ -1030,7 +1561,34 @@ Each argument is described in detail in: L<Paws::WAFRegional::ListIPSets>
 
 Returns: a L<Paws::WAFRegional::ListIPSetsResponse> instance
 
-  Returns an array of IPSetSummary objects in the response.
+Returns an array of IPSetSummary objects in the response.
+
+
+=head2 ListRateBasedRules([Limit => Int, NextMarker => Str])
+
+Each argument is described in detail in: L<Paws::WAFRegional::ListRateBasedRules>
+
+Returns: a L<Paws::WAFRegional::ListRateBasedRulesResponse> instance
+
+Returns an array of RuleSummary objects.
+
+
+=head2 ListRegexMatchSets([Limit => Int, NextMarker => Str])
+
+Each argument is described in detail in: L<Paws::WAFRegional::ListRegexMatchSets>
+
+Returns: a L<Paws::WAFRegional::ListRegexMatchSetsResponse> instance
+
+Returns an array of RegexMatchSetSummary objects.
+
+
+=head2 ListRegexPatternSets([Limit => Int, NextMarker => Str])
+
+Each argument is described in detail in: L<Paws::WAFRegional::ListRegexPatternSets>
+
+Returns: a L<Paws::WAFRegional::ListRegexPatternSetsResponse> instance
+
+Returns an array of RegexPatternSetSummary objects.
 
 
 =head2 ListResourcesForWebACL(WebACLId => Str)
@@ -1039,7 +1597,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::ListResourcesForWe
 
 Returns: a L<Paws::WAFRegional::ListResourcesForWebACLResponse> instance
 
-  Returns an array of resources associated with the specified web ACL.
+Returns an array of resources associated with the specified web ACL.
 
 
 =head2 ListRules([Limit => Int, NextMarker => Str])
@@ -1048,7 +1606,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::ListRules>
 
 Returns: a L<Paws::WAFRegional::ListRulesResponse> instance
 
-  Returns an array of RuleSummary objects.
+Returns an array of RuleSummary objects.
 
 
 =head2 ListSizeConstraintSets([Limit => Int, NextMarker => Str])
@@ -1057,7 +1615,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::ListSizeConstraint
 
 Returns: a L<Paws::WAFRegional::ListSizeConstraintSetsResponse> instance
 
-  Returns an array of SizeConstraintSetSummary objects.
+Returns an array of SizeConstraintSetSummary objects.
 
 
 =head2 ListSqlInjectionMatchSets([Limit => Int, NextMarker => Str])
@@ -1066,7 +1624,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::ListSqlInjectionMa
 
 Returns: a L<Paws::WAFRegional::ListSqlInjectionMatchSetsResponse> instance
 
-  Returns an array of SqlInjectionMatchSet objects.
+Returns an array of SqlInjectionMatchSet objects.
 
 
 =head2 ListWebACLs([Limit => Int, NextMarker => Str])
@@ -1075,7 +1633,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::ListWebACLs>
 
 Returns: a L<Paws::WAFRegional::ListWebACLsResponse> instance
 
-  Returns an array of WebACLSummary objects in the response.
+Returns an array of WebACLSummary objects in the response.
 
 
 =head2 ListXssMatchSets([Limit => Int, NextMarker => Str])
@@ -1084,7 +1642,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::ListXssMatchSets>
 
 Returns: a L<Paws::WAFRegional::ListXssMatchSetsResponse> instance
 
-  Returns an array of XssMatchSet objects.
+Returns an array of XssMatchSet objects.
 
 
 =head2 UpdateByteMatchSet(ByteMatchSetId => Str, ChangeToken => Str, Updates => ArrayRef[L<Paws::WAFRegional::ByteMatchSetUpdate>])
@@ -1093,7 +1651,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::UpdateByteMatchSet
 
 Returns: a L<Paws::WAFRegional::UpdateByteMatchSetResponse> instance
 
-  Inserts or deletes ByteMatchTuple objects (filters) in a ByteMatchSet.
+Inserts or deletes ByteMatchTuple objects (filters) in a ByteMatchSet.
 For each C<ByteMatchTuple> object, you specify the following values:
 
 =over
@@ -1153,7 +1711,66 @@ the URI) and the value that you want AWS WAF to watch for.
 =back
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
+
+
+=head2 UpdateGeoMatchSet(ChangeToken => Str, GeoMatchSetId => Str, Updates => ArrayRef[L<Paws::WAFRegional::GeoMatchSetUpdate>])
+
+Each argument is described in detail in: L<Paws::WAFRegional::UpdateGeoMatchSet>
+
+Returns: a L<Paws::WAFRegional::UpdateGeoMatchSetResponse> instance
+
+Inserts or deletes GeoMatchConstraint objects in an C<GeoMatchSet>. For
+each C<GeoMatchConstraint> object, you specify the following values:
+
+=over
+
+=item *
+
+Whether to insert or delete the object from the array. If you want to
+change an C<GeoMatchConstraint> object, you delete the existing object
+and add a new one.
+
+=item *
+
+The C<Type>. The only valid value for C<Type> is C<Country>.
+
+=item *
+
+The C<Value>, which is a two character code for the country to add to
+the C<GeoMatchConstraint> object. Valid codes are listed in
+GeoMatchConstraint$Value.
+
+=back
+
+To create and configure an C<GeoMatchSet>, perform the following steps:
+
+=over
+
+=item 1.
+
+Submit a CreateGeoMatchSet request.
+
+=item 2.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of an UpdateGeoMatchSet request.
+
+=item 3.
+
+Submit an C<UpdateGeoMatchSet> request to specify the country that you
+want AWS WAF to watch for.
+
+=back
+
+When you update an C<GeoMatchSet>, you specify the country that you
+want to add and/or the country that you want to delete. If you want to
+change a country, you delete the existing country and add the new one.
+
+For more information about how to use the AWS WAF API to allow or block
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateIPSet(ChangeToken => Str, IPSetId => Str, Updates => ArrayRef[L<Paws::WAFRegional::IPSetUpdate>])
@@ -1162,7 +1779,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::UpdateIPSet>
 
 Returns: a L<Paws::WAFRegional::UpdateIPSetResponse> instance
 
-  Inserts or deletes IPSetDescriptor objects in an C<IPSet>. For each
+Inserts or deletes IPSetDescriptor objects in an C<IPSet>. For each
 C<IPSetDescriptor> object, you specify the following values:
 
 =over
@@ -1187,7 +1804,8 @@ C<192.0.2.44/32> (for the individual IP address C<192.0.2.44>).
 
 AWS WAF supports /8, /16, /24, and /32 IP address ranges for IPv4, and
 /24, /32, /48, /56, /64 and /128 for IPv6. For more information about
-CIDR notation, see the Wikipedia entry Classless Inter-Domain Routing.
+CIDR notation, see the Wikipedia entry Classless Inter-Domain Routing
+(https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 IPv6 addresses can be represented using any of the following formats:
 
@@ -1244,7 +1862,219 @@ change an IP address, you delete the existing IP address and add the
 new one.
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
+
+
+=head2 UpdateRateBasedRule(ChangeToken => Str, RateLimit => Int, RuleId => Str, Updates => ArrayRef[L<Paws::WAFRegional::RuleUpdate>])
+
+Each argument is described in detail in: L<Paws::WAFRegional::UpdateRateBasedRule>
+
+Returns: a L<Paws::WAFRegional::UpdateRateBasedRuleResponse> instance
+
+Inserts or deletes Predicate objects in a rule and updates the
+C<RateLimit> in the rule.
+
+Each C<Predicate> object identifies a predicate, such as a ByteMatchSet
+or an IPSet, that specifies the web requests that you want to block or
+count. The C<RateLimit> specifies the number of requests every five
+minutes that triggers the rule.
+
+If you add more than one predicate to a C<RateBasedRule>, a request
+must match all the predicates and exceed the C<RateLimit> to be counted
+or blocked. For example, suppose you add the following to a
+C<RateBasedRule>:
+
+=over
+
+=item *
+
+An C<IPSet> that matches the IP address C<192.0.2.44/32>
+
+=item *
+
+A C<ByteMatchSet> that matches C<BadBot> in the C<User-Agent> header
+
+=back
+
+Further, you specify a C<RateLimit> of 15,000.
+
+You then add the C<RateBasedRule> to a C<WebACL> and specify that you
+want to block requests that satisfy the rule. For a request to be
+blocked, it must come from the IP address 192.0.2.44 I<and> the
+C<User-Agent> header in the request must contain the value C<BadBot>.
+Further, requests that match these two conditions much be received at a
+rate of more than 15,000 every five minutes. If the rate drops below
+this limit, AWS WAF no longer blocks the requests.
+
+As a second example, suppose you want to limit requests to a particular
+page on your site. To do this, you could add the following to a
+C<RateBasedRule>:
+
+=over
+
+=item *
+
+A C<ByteMatchSet> with C<FieldToMatch> of C<URI>
+
+=item *
+
+A C<PositionalConstraint> of C<STARTS_WITH>
+
+=item *
+
+A C<TargetString> of C<login>
+
+=back
+
+Further, you specify a C<RateLimit> of 15,000.
+
+By adding this C<RateBasedRule> to a C<WebACL>, you could limit
+requests to your login page without affecting the rest of your site.
+
+
+=head2 UpdateRegexMatchSet(ChangeToken => Str, RegexMatchSetId => Str, Updates => ArrayRef[L<Paws::WAFRegional::RegexMatchSetUpdate>])
+
+Each argument is described in detail in: L<Paws::WAFRegional::UpdateRegexMatchSet>
+
+Returns: a L<Paws::WAFRegional::UpdateRegexMatchSetResponse> instance
+
+Inserts or deletes RegexMatchSetUpdate objects (filters) in a
+RegexMatchSet. For each C<RegexMatchSetUpdate> object, you specify the
+following values:
+
+=over
+
+=item *
+
+Whether to insert or delete the object from the array. If you want to
+change a C<RegexMatchSetUpdate> object, you delete the existing object
+and add a new one.
+
+=item *
+
+The part of a web request that you want AWS WAF to inspect, such as a
+query string or the value of the C<User-Agent> header.
+
+=item *
+
+The identifier of the pattern (a regular expression) that you want AWS
+WAF to look for. For more information, see RegexPatternSet.
+
+=item *
+
+Whether to perform any conversions on the request, such as converting
+it to lowercase, before inspecting it for the specified string.
+
+=back
+
+For example, you can create a C<RegexPatternSet> that matches any
+requests with C<User-Agent> headers that contain the string
+C<B[a@]dB[o0]t>. You can then configure AWS WAF to reject those
+requests.
+
+To create and configure a C<RegexMatchSet>, perform the following
+steps:
+
+=over
+
+=item 1.
+
+Create a C<RegexMatchSet.> For more information, see
+CreateRegexMatchSet.
+
+=item 2.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of an C<UpdateRegexMatchSet> request.
+
+=item 3.
+
+Submit an C<UpdateRegexMatchSet> request to specify the part of the
+request that you want AWS WAF to inspect (for example, the header or
+the URI) and the identifier of the C<RegexPatternSet> that contain the
+regular expression patters you want AWS WAF to watch for.
+
+=back
+
+For more information about how to use the AWS WAF API to allow or block
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
+
+
+=head2 UpdateRegexPatternSet(ChangeToken => Str, RegexPatternSetId => Str, Updates => ArrayRef[L<Paws::WAFRegional::RegexPatternSetUpdate>])
+
+Each argument is described in detail in: L<Paws::WAFRegional::UpdateRegexPatternSet>
+
+Returns: a L<Paws::WAFRegional::UpdateRegexPatternSetResponse> instance
+
+Inserts or deletes RegexMatchSetUpdate objects (filters) in a
+RegexPatternSet. For each C<RegexPatternSet> object, you specify the
+following values:
+
+=over
+
+=item *
+
+Whether to insert or delete the object from the array. If you want to
+change a C<RegexPatternSet> object, you delete the existing object and
+add a new one.
+
+=item *
+
+The regular expression pattern that you want AWS WAF to look for. For
+more information, see RegexPatternSet.
+
+=back
+
+For example, you can create a C<RegexPatternString> such as
+C<B[a@]dB[o0]t>. AWS WAF will match this C<RegexPatternString> to:
+
+=over
+
+=item *
+
+BadBot
+
+=item *
+
+BadB0t
+
+=item *
+
+B@dBot
+
+=item *
+
+B@dB0t
+
+=back
+
+To create and configure a C<RegexPatternSet>, perform the following
+steps:
+
+=over
+
+=item 1.
+
+Create a C<RegexPatternSet.> For more information, see
+CreateRegexPatternSet.
+
+=item 2.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of an C<UpdateRegexPatternSet> request.
+
+=item 3.
+
+Submit an C<UpdateRegexPatternSet> request to specify the regular
+expression pattern that you want AWS WAF to watch for.
+
+=back
+
+For more information about how to use the AWS WAF API to allow or block
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateRule(ChangeToken => Str, RuleId => Str, Updates => ArrayRef[L<Paws::WAFRegional::RuleUpdate>])
@@ -1253,7 +2083,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::UpdateRule>
 
 Returns: a L<Paws::WAFRegional::UpdateRuleResponse> instance
 
-  Inserts or deletes Predicate objects in a C<Rule>. Each C<Predicate>
+Inserts or deletes Predicate objects in a C<Rule>. Each C<Predicate>
 object identifies a predicate, such as a ByteMatchSet or an IPSet, that
 specifies the web requests that you want to allow, block, or count. If
 you add more than one predicate to a C<Rule>, a request must match all
@@ -1312,7 +2142,8 @@ If you want to replace one C<ByteMatchSet> or C<IPSet> with another,
 you delete the existing one and add the new one.
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateSizeConstraintSet(ChangeToken => Str, SizeConstraintSetId => Str, Updates => ArrayRef[L<Paws::WAFRegional::SizeConstraintSetUpdate>])
@@ -1321,7 +2152,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::UpdateSizeConstrai
 
 Returns: a L<Paws::WAFRegional::UpdateSizeConstraintSetResponse> instance
 
-  Inserts or deletes SizeConstraint objects (filters) in a
+Inserts or deletes SizeConstraint objects (filters) in a
 SizeConstraintSet. For each C<SizeConstraint> object, you specify the
 following values:
 
@@ -1389,7 +2220,8 @@ the URI) and the value that you want AWS WAF to watch for.
 =back
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateSqlInjectionMatchSet(ChangeToken => Str, SqlInjectionMatchSetId => Str, Updates => ArrayRef[L<Paws::WAFRegional::SqlInjectionMatchSetUpdate>])
@@ -1398,7 +2230,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::UpdateSqlInjection
 
 Returns: a L<Paws::WAFRegional::UpdateSqlInjectionMatchSetResponse> instance
 
-  Inserts or deletes SqlInjectionMatchTuple objects (filters) in a
+Inserts or deletes SqlInjectionMatchTuple objects (filters) in a
 SqlInjectionMatchSet. For each C<SqlInjectionMatchTuple> object, you
 specify the following values:
 
@@ -1453,7 +2285,8 @@ web requests that you want AWS WAF to inspect for snippets of SQL code.
 =back
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateWebACL(ChangeToken => Str, WebACLId => Str, [DefaultAction => L<Paws::WAFRegional::WafAction>, Updates => ArrayRef[L<Paws::WAFRegional::WebACLUpdate>]])
@@ -1462,7 +2295,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::UpdateWebACL>
 
 Returns: a L<Paws::WAFRegional::UpdateWebACLResponse> instance
 
-  Inserts or deletes ActivatedRule objects in a C<WebACL>. Each C<Rule>
+Inserts or deletes ActivatedRule objects in a C<WebACL>. Each C<Rule>
 identifies web requests that you want to allow, block, or count. When
 you update a C<WebACL>, you specify the following values:
 
@@ -1532,8 +2365,14 @@ associate the C<WebACL> with a CloudFront distribution.
 
 =back
 
+Be aware that if you try to add a RATE_BASED rule to a web ACL without
+setting the rule type when first creating the rule, the UpdateWebACL
+request will fail because the request tries to add a REGULAR rule (the
+default rule type) with the specified ID, which does not exist.
+
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateXssMatchSet(ChangeToken => Str, Updates => ArrayRef[L<Paws::WAFRegional::XssMatchSetUpdate>], XssMatchSetId => Str)
@@ -1542,7 +2381,7 @@ Each argument is described in detail in: L<Paws::WAFRegional::UpdateXssMatchSet>
 
 Returns: a L<Paws::WAFRegional::UpdateXssMatchSetResponse> instance
 
-  Inserts or deletes XssMatchTuple objects (filters) in an XssMatchSet.
+Inserts or deletes XssMatchTuple objects (filters) in an XssMatchSet.
 For each C<XssMatchTuple> object, you specify the following values:
 
 =over
@@ -1596,7 +2435,8 @@ attacks.
 =back
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 
@@ -1614,9 +2454,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

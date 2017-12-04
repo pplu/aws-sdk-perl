@@ -1,6 +1,7 @@
 package Paws::SSM::PatchRule;
   use Moose;
   has ApproveAfterDays => (is => 'ro', isa => 'Int', required => 1);
+  has ComplianceLevel => (is => 'ro', isa => 'Str');
   has PatchFilterGroup => (is => 'ro', isa => 'Paws::SSM::PatchFilterGroup', required => 1);
 1;
 
@@ -43,6 +44,13 @@ Defines an approval rule for a patch baseline.
 rule the patch is marked as approved in the patch baseline.
 
 
+=head2 ComplianceLevel => Str
+
+  A compliance severity level for all approved patches in a patch
+baseline. Valid compliance severity levels include the following:
+Unspecified, Critical, High, Medium, Low, and Informational.
+
+
 =head2 B<REQUIRED> PatchFilterGroup => L<Paws::SSM::PatchFilterGroup>
 
   The patch filter group that defines the criteria for the rule.
@@ -55,9 +63,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

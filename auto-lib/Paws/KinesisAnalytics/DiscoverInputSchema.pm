@@ -1,9 +1,11 @@
 
 package Paws::KinesisAnalytics::DiscoverInputSchema;
   use Moose;
-  has InputStartingPositionConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputStartingPositionConfiguration', required => 1);
-  has ResourceARN => (is => 'ro', isa => 'Str', required => 1);
-  has RoleARN => (is => 'ro', isa => 'Str', required => 1);
+  has InputProcessingConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputProcessingConfiguration');
+  has InputStartingPositionConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputStartingPositionConfiguration');
+  has ResourceARN => (is => 'ro', isa => 'Str');
+  has RoleARN => (is => 'ro', isa => 'Str');
+  has S3Configuration => (is => 'ro', isa => 'Paws::KinesisAnalytics::S3Configuration');
 
   use MooseX::ClassAttribute;
 
@@ -16,7 +18,7 @@ package Paws::KinesisAnalytics::DiscoverInputSchema;
 
 =head1 NAME
 
-Paws::KinesisAnalytics::DiscoverInputSchema - Arguments for method DiscoverInputSchema on Paws::KinesisAnalytics
+Paws::KinesisAnalytics::DiscoverInputSchema - Arguments for method DiscoverInputSchema on L<Paws::KinesisAnalytics>
 
 =head1 DESCRIPTION
 
@@ -35,23 +37,36 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> InputStartingPositionConfiguration => L<Paws::KinesisAnalytics::InputStartingPositionConfiguration>
+=head2 InputProcessingConfiguration => L<Paws::KinesisAnalytics::InputProcessingConfiguration>
+
+The InputProcessingConfiguration to use to preprocess the records
+before discovering the schema of the records.
+
+
+
+=head2 InputStartingPositionConfiguration => L<Paws::KinesisAnalytics::InputStartingPositionConfiguration>
 
 Point at which you want Amazon Kinesis Analytics to start reading
 records from the specified streaming source discovery purposes.
 
 
 
-=head2 B<REQUIRED> ResourceARN => Str
+=head2 ResourceARN => Str
 
 Amazon Resource Name (ARN) of the streaming source.
 
 
 
-=head2 B<REQUIRED> RoleARN => Str
+=head2 RoleARN => Str
 
 ARN of the IAM role that Amazon Kinesis Analytics can assume to access
 the stream on your behalf.
+
+
+
+=head2 S3Configuration => L<Paws::KinesisAnalytics::S3Configuration>
+
+
 
 
 
@@ -62,9 +77,9 @@ This class forms part of L<Paws>, documenting arguments for method DiscoverInput
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

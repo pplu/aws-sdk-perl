@@ -63,8 +63,9 @@ To replace the origin access identity, update the distribution
 configuration and specify the new origin access identity.
 
 For more information, see Using an Origin Access Identity to Restrict
-Access to Your Amazon S3 Content in the I<Amazon Amazon CloudFront
-Developer Guide>.
+Access to Your Amazon S3 Content
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html)
+in the I<Amazon Amazon CloudFront Developer Guide>.
 
 
 
@@ -74,9 +75,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudFron
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -16,7 +16,7 @@ package Paws::SSM::DescribeAutomationExecutions;
 
 =head1 NAME
 
-Paws::SSM::DescribeAutomationExecutions - Arguments for method DescribeAutomationExecutions on Paws::SSM
+Paws::SSM::DescribeAutomationExecutions - Arguments for method DescribeAutomationExecutions on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -63,9 +63,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeAutom
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

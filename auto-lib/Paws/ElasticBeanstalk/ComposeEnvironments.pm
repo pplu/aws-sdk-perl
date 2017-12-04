@@ -16,7 +16,7 @@ package Paws::ElasticBeanstalk::ComposeEnvironments;
 
 =head1 NAME
 
-Paws::ElasticBeanstalk::ComposeEnvironments - Arguments for method ComposeEnvironments on Paws::ElasticBeanstalk
+Paws::ElasticBeanstalk::ComposeEnvironments - Arguments for method ComposeEnvironments on L<Paws::ElasticBeanstalk>
 
 =head1 DESCRIPTION
 
@@ -47,7 +47,9 @@ belong.
 The name of the group to which the target environments belong. Specify
 a group name only if the environment name defined in each target
 environment's manifest ends with a + (plus) character. See Environment
-Manifest (env.yaml) for details.
+Manifest (env.yaml)
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
+for details.
 
 
 
@@ -68,9 +70,9 @@ This class forms part of L<Paws>, documenting arguments for method ComposeEnviro
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

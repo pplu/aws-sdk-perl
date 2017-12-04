@@ -14,7 +14,7 @@ package Paws::SSM::GetPatchBaseline;
 
 =head1 NAME
 
-Paws::SSM::GetPatchBaseline - Arguments for method GetPatchBaseline on Paws::SSM
+Paws::SSM::GetPatchBaseline - Arguments for method GetPatchBaseline on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -46,9 +46,9 @@ This class forms part of L<Paws>, documenting arguments for method GetPatchBasel
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

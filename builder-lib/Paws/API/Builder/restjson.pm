@@ -9,7 +9,6 @@ package Paws::API::Builder::restjson {
   extends 'Paws::API::Builder';
 
   has wrapped_responses => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{ result_wrapped } });
-  has response_role  => (is => 'ro', lazy => 1, default => sub { 'Paws::Net::RestJsonResponse' });
   has parameter_role => (is => 'ro', lazy => 1, default => sub { return "Paws::Net::RestJsonCaller" });
 
   has '+map_enum_template' => (default => q#
@@ -59,10 +58,12 @@ package [% c.api %]::[% operation.name %];
 [% FOREACH param_name IN shape.members.keys.sort -%]
   [%- member = c.shape(shape.members.$param_name.shape) -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
-  [%- IF (shape.members.$param_name.location == 'header') %], traits => ['ParamInHeader'], header_name => '[% shape.members.$param_name.locationName %]' [% END %]
-  [%- IF (shape.members.$param_name.location == 'querystring') %], traits => ['ParamInQuery'], query_name => '[% shape.members.$param_name.locationName %]' [% END %]
-  [%- IF (shape.members.$param_name.location == 'uri') %], traits => ['ParamInURI'], uri_name => '[% shape.members.$param_name.locationName %]' [% END %]
-  [%- IF (shape.members.$param_name.streaming == 1) %], traits => ['ParamInBody'][% END %]
+  [%- IF (shape.members.$param_name.location == 'header') %], traits => ['ParamInHeader'], header_name => '[% shape.members.$param_name.locationName %]'
+  [%- ELSIF (shape.members.$param_name.location == 'querystring') %], traits => ['ParamInQuery'], query_name => '[% shape.members.$param_name.locationName %]'
+  [%- ELSIF (shape.members.$param_name.location == 'uri') %], traits => ['ParamInURI'], uri_name => '[% shape.members.$param_name.locationName %]'
+  [%- ELSIF (shape.members.$param_name.streaming == 1) %], traits => ['ParamInBody']
+  [%- ELSIF (shape.members.$param_name.locationName) %], traits => ['NameInRequest'], request_name => '[% shape.members.$param_name.locationName %]'
+  [%- END %]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
   use MooseX::ClassAttribute;
@@ -75,7 +76,6 @@ package [% c.api %]::[% operation.name %];
     [%- IF (operation.output.keys.size) -%]
       [%- c.api %]::[% c.shapename_for_operation_output(op_name) -%]
     [%- ELSE -%]Paws::API::Response[% END -%]');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 [% c.callclass_documentation_template | eval %]
 #);
@@ -136,7 +136,7 @@ package [% c.api %];
   [%- END %]
   ] });
 
-  with 'Paws::API::Caller', '[% c.endpoint_role %]', '[% c.signature_role %]', '[% c.parameter_role %]', '[% c.response_role %]';
+  with 'Paws::API::Caller', '[% c.endpoint_role %]', '[% c.signature_role %]', '[% c.parameter_role %]';
 
   [%- c.service_endpoint_rules %]
   [% FOR op IN c.api_struct.operations.keys.sort %]

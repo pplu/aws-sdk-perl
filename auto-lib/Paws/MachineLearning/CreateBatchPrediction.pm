@@ -18,7 +18,7 @@ package Paws::MachineLearning::CreateBatchPrediction;
 
 =head1 NAME
 
-Paws::MachineLearning::CreateBatchPrediction - Arguments for method CreateBatchPrediction on Paws::MachineLearning
+Paws::MachineLearning::CreateBatchPrediction - Arguments for method CreateBatchPrediction on L<Paws::MachineLearning>
 
 =head1 DESCRIPTION
 
@@ -73,7 +73,8 @@ field: ':', '//', '/./', '/../'.
 
 Amazon ML needs permissions to store and retrieve the logs on your
 behalf. For information about how to set permissions, see the Amazon
-Machine Learning Developer Guide.
+Machine Learning Developer Guide
+(http://docs.aws.amazon.com/machine-learning/latest/dg).
 
 
 
@@ -84,9 +85,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateBatchPr
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

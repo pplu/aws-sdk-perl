@@ -16,7 +16,7 @@ package Paws::SES::CreateReceiptRule;
 
 =head1 NAME
 
-Paws::SES::CreateReceiptRule - Arguments for method CreateReceiptRule on Paws::SES
+Paws::SES::CreateReceiptRule - Arguments for method CreateReceiptRule on L<Paws::SES>
 
 =head1 DESCRIPTION
 
@@ -52,7 +52,7 @@ recipients, domains, enabled status, scan status, and TLS policy.
 
 =head2 B<REQUIRED> RuleSetName => Str
 
-The name of the rule set to which to add the rule.
+The name of the rule set that the receipt rule will be added to.
 
 
 
@@ -63,9 +63,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateReceipt
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

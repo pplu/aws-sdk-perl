@@ -3,6 +3,7 @@ package Paws::ServiceCatalog::DescribeProvisioningParametersOutput;
   use Moose;
   has ConstraintSummaries => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ConstraintSummary]');
   has ProvisioningArtifactParameters => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ProvisioningArtifactParameter]');
+  has TagOptions => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::TagOptionSummary]');
   has UsageInstructions => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::UsageInstruction]');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -27,6 +28,12 @@ product.
 The list of parameters used to successfully provision the product. Each
 parameter includes a list of allowable values and additional metadata
 about each parameter.
+
+
+=head2 TagOptions => ArrayRef[L<Paws::ServiceCatalog::TagOptionSummary>]
+
+List of TagOptions associated with the provisioned provisioning
+parameters.
 
 
 =head2 UsageInstructions => ArrayRef[L<Paws::ServiceCatalog::UsageInstruction>]

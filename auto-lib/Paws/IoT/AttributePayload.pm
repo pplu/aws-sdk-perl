@@ -42,7 +42,7 @@ The attribute payload.
   A JSON string containing up to three key-value pair in JSON format. For
 example:
 
-C<{\"attributes\":{\"string1\":\"string2\"}})>
+C<{\"attributes\":{\"string1\":\"string2\"}}>
 
 
 =head2 Merge => Bool
@@ -64,9 +64,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::IoT>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

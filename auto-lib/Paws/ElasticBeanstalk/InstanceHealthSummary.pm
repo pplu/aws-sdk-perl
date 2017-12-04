@@ -39,7 +39,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 =head1 DESCRIPTION
 
 Represents summary information about the health of an instance. For
-more information, see Health Colors and Statuses.
+more information, see Health Colors and Statuses
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html).
 
 =head1 ATTRIBUTES
 
@@ -98,9 +99,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ElasticBe
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

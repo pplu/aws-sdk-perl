@@ -3,6 +3,7 @@ package Paws::WorkDocs::DocumentMetadata;
   has CreatedTimestamp => (is => 'ro', isa => 'Str');
   has CreatorId => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
+  has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has LatestVersionMetadata => (is => 'ro', isa => 'Paws::WorkDocs::DocumentVersionMetadata');
   has ModifiedTimestamp => (is => 'ro', isa => 'Str');
   has ParentFolderId => (is => 'ro', isa => 'Str');
@@ -57,6 +58,11 @@ Describes the document.
   The ID of the document.
 
 
+=head2 Labels => ArrayRef[Str|Undef]
+
+  List of labels on the document.
+
+
 =head2 LatestVersionMetadata => L<Paws::WorkDocs::DocumentVersionMetadata>
 
   The latest version of the document.
@@ -84,9 +90,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::WorkDocs>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

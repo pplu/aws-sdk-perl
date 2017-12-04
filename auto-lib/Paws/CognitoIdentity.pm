@@ -11,7 +11,7 @@ package Paws::CognitoIdentity;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub CreateIdentityPool {
@@ -165,12 +165,14 @@ GetOpenIdToken, which returns the OpenID token necessary to call STS
 and retrieve AWS credentials. This call expects the same C<Logins> map
 as the C<GetId> call, as well as the C<IdentityID> originally returned
 by C<GetId>. The token returned by C<GetOpenIdToken> can be passed to
-the STS operation AssumeRoleWithWebIdentity to retrieve AWS
-credentials.
+the STS operation AssumeRoleWithWebIdentity
+(http://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithWebIdentity.html)
+to retrieve AWS credentials.
 
 If you want to use Amazon Cognito in an Android, iOS, or Unity
 application, you will probably want to make API calls via the AWS
-Mobile SDK. To learn more, see the AWS Mobile SDK Developer Guide.
+Mobile SDK. To learn more, see the AWS Mobile SDK Developer Guide
+(http://docs.aws.amazon.com/mobile/index.html).
 
 =head1 METHODS
 
@@ -180,7 +182,7 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::CreateIdentity
 
 Returns: a L<Paws::CognitoIdentity::IdentityPool> instance
 
-  Creates a new identity pool. The identity pool is a store of user
+Creates a new identity pool. The identity pool is a store of user
 identity information that is specific to your AWS account. The limit on
 identity pools is 60 per account. The keys for
 C<SupportedLoginProviders> are as follows:
@@ -218,7 +220,7 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::DeleteIdentiti
 
 Returns: a L<Paws::CognitoIdentity::DeleteIdentitiesResponse> instance
 
-  Deletes identities from an identity pool. You can specify a list of
+Deletes identities from an identity pool. You can specify a list of
 1-60 identities that you want to delete.
 
 You must use AWS Developer credentials to call this API.
@@ -230,7 +232,7 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::DeleteIdentity
 
 Returns: nothing
 
-  Deletes a user pool. Once a pool is deleted, users will not be able to
+Deletes a user pool. Once a pool is deleted, users will not be able to
 authenticate with the pool.
 
 You must use AWS Developer credentials to call this API.
@@ -242,7 +244,7 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::DescribeIdenti
 
 Returns: a L<Paws::CognitoIdentity::IdentityDescription> instance
 
-  Returns metadata related to the given identity, including when the
+Returns metadata related to the given identity, including when the
 identity was created and any associated linked logins.
 
 You must use AWS Developer credentials to call this API.
@@ -254,7 +256,7 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::DescribeIdenti
 
 Returns: a L<Paws::CognitoIdentity::IdentityPool> instance
 
-  Gets details about a particular identity pool, including the pool name,
+Gets details about a particular identity pool, including the pool name,
 ID description, creation date, and current number of users.
 
 You must use AWS Developer credentials to call this API.
@@ -266,7 +268,7 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::GetCredentials
 
 Returns: a L<Paws::CognitoIdentity::GetCredentialsForIdentityResponse> instance
 
-  Returns credentials for the provided identity ID. Any provided logins
+Returns credentials for the provided identity ID. Any provided logins
 will be validated against supported login providers. If the token is
 for cognito-identity.amazonaws.com, it will be passed through to AWS
 Security Token Service with the appropriate role for the token.
@@ -280,7 +282,7 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::GetId>
 
 Returns: a L<Paws::CognitoIdentity::GetIdResponse> instance
 
-  Generates (or retrieves) a Cognito ID. Supplying multiple logins will
+Generates (or retrieves) a Cognito ID. Supplying multiple logins will
 create an implicit linked account.
 
 This is a public API. You do not need any credentials to call this API.
@@ -292,7 +294,7 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::GetIdentityPoo
 
 Returns: a L<Paws::CognitoIdentity::GetIdentityPoolRolesResponse> instance
 
-  Gets the roles for an identity pool.
+Gets the roles for an identity pool.
 
 You must use AWS Developer credentials to call this API.
 
@@ -303,7 +305,7 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::GetOpenIdToken
 
 Returns: a L<Paws::CognitoIdentity::GetOpenIdTokenResponse> instance
 
-  Gets an OpenID token, using a known Cognito ID. This known Cognito ID
+Gets an OpenID token, using a known Cognito ID. This known Cognito ID
 is returned by GetId. You can optionally add additional logins for the
 identity. Supplying multiple logins creates an implicit link.
 
@@ -318,7 +320,7 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::GetOpenIdToken
 
 Returns: a L<Paws::CognitoIdentity::GetOpenIdTokenForDeveloperIdentityResponse> instance
 
-  Registers (or retrieves) a Cognito C<IdentityId> and an OpenID Connect
+Registers (or retrieves) a Cognito C<IdentityId> and an OpenID Connect
 token for a user authenticated by your backend authentication process.
 Supplying multiple logins will create an implicit linked account. You
 can only specify one developer provider as part of the C<Logins> map,
@@ -343,7 +345,7 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::ListIdentities
 
 Returns: a L<Paws::CognitoIdentity::ListIdentitiesResponse> instance
 
-  Lists the identities in a pool.
+Lists the identities in a pool.
 
 You must use AWS Developer credentials to call this API.
 
@@ -354,7 +356,7 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::ListIdentityPo
 
 Returns: a L<Paws::CognitoIdentity::ListIdentityPoolsResponse> instance
 
-  Lists all of the Cognito identity pools registered for your account.
+Lists all of the Cognito identity pools registered for your account.
 
 You must use AWS Developer credentials to call this API.
 
@@ -365,7 +367,7 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::LookupDevelope
 
 Returns: a L<Paws::CognitoIdentity::LookupDeveloperIdentityResponse> instance
 
-  Retrieves the C<IdentityID> associated with a
+Retrieves the C<IdentityID> associated with a
 C<DeveloperUserIdentifier> or the list of C<DeveloperUserIdentifier>s
 associated with an C<IdentityId> for an existing identity. Either
 C<IdentityID> or C<DeveloperUserIdentifier> must not be null. If you
@@ -385,7 +387,7 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::MergeDeveloper
 
 Returns: a L<Paws::CognitoIdentity::MergeDeveloperIdentitiesResponse> instance
 
-  Merges two users having different C<IdentityId>s, existing in the same
+Merges two users having different C<IdentityId>s, existing in the same
 identity pool, and identified by the same developer provider. You can
 use this action to request that discrete users be merged and identified
 as a single user in the Cognito environment. Cognito associates the
@@ -404,7 +406,7 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::SetIdentityPoo
 
 Returns: nothing
 
-  Sets the roles for an identity pool. These roles are used when making
+Sets the roles for an identity pool. These roles are used when making
 calls to GetCredentialsForIdentity action.
 
 You must use AWS Developer credentials to call this API.
@@ -416,7 +418,7 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::UnlinkDevelope
 
 Returns: nothing
 
-  Unlinks a C<DeveloperUserIdentifier> from an existing identity.
+Unlinks a C<DeveloperUserIdentifier> from an existing identity.
 Unlinked developer users will be considered new identities next time
 they are seen. If, for a given Cognito identity, you remove all
 federated identities as well as the developer user identifier, the
@@ -431,7 +433,7 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::UnlinkIdentity
 
 Returns: nothing
 
-  Unlinks a federated identity from an existing account. Unlinked logins
+Unlinks a federated identity from an existing account. Unlinked logins
 will be considered new identities next time they are seen. Removing the
 last linked login will make this identity inaccessible.
 
@@ -444,7 +446,7 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::UpdateIdentity
 
 Returns: a L<Paws::CognitoIdentity::IdentityPool> instance
 
-  Updates a user pool.
+Updates a user pool.
 
 You must use AWS Developer credentials to call this API.
 
@@ -464,9 +466,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

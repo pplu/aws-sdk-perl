@@ -2,7 +2,7 @@
 package Paws::Lambda::CreateAlias;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
-  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
+  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
   has FunctionVersion => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
 
@@ -12,14 +12,13 @@ package Paws::Lambda::CreateAlias;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/aliases');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::AliasConfiguration');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Lambda::CreateAlias - Arguments for method CreateAlias on Paws::Lambda
+Paws::Lambda::CreateAlias - Arguments for method CreateAlias on L<Paws::Lambda>
 
 =head1 DESCRIPTION
 
@@ -71,9 +70,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateAlias i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

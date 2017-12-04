@@ -1,13 +1,13 @@
 
 package Paws::ApiGateway::CreateApiKey;
   use Moose;
-  has CustomerId => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has GenerateDistinctId => (is => 'ro', isa => 'Bool');
-  has Name => (is => 'ro', isa => 'Str');
-  has StageKeys => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::StageKey]');
-  has Value => (is => 'ro', isa => 'Str');
+  has CustomerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'customerId');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has Enabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enabled');
+  has GenerateDistinctId => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'generateDistinctId');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has StageKeys => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::StageKey]', traits => ['NameInRequest'], request_name => 'stageKeys');
+  has Value => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'value');
 
   use MooseX::ClassAttribute;
 
@@ -15,14 +15,13 @@ package Paws::ApiGateway::CreateApiKey;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/apikeys');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::ApiKey');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::CreateApiKey - Arguments for method CreateApiKey on Paws::ApiGateway
+Paws::ApiGateway::CreateApiKey - Arguments for method CreateApiKey on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -93,9 +92,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateApiKey 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

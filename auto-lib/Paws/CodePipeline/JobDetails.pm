@@ -45,7 +45,8 @@ Represents information about the details of a job.
 
 =head2 Data => L<Paws::CodePipeline::JobData>
 
-  
+  Represents additional information about a job required for a job worker
+to complete the job.
 
 
 =head2 Id => Str
@@ -60,9 +61,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodePipel
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

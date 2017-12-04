@@ -18,7 +18,7 @@ package Paws::CognitoIdp::ConfirmForgotPassword;
 
 =head1 NAME
 
-Paws::CognitoIdp::ConfirmForgotPassword - Arguments for method ConfirmForgotPassword on Paws::CognitoIdp
+Paws::CognitoIdp::ConfirmForgotPassword - Arguments for method ConfirmForgotPassword on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -39,21 +39,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClientId => Str
 
-The ID of the client associated with the user pool.
+The app client ID of the app associated with the user pool.
 
 
 
 =head2 B<REQUIRED> ConfirmationCode => Str
 
 The confirmation code sent by a user's request to retrieve a forgotten
-password.
+password. For more information, see ForgotPassword
 
 
 
 =head2 B<REQUIRED> Password => Str
 
-The password sent by sent by a user's request to retrieve a forgotten
-password.
+The password sent by a user's request to retrieve a forgotten password.
 
 
 
@@ -79,9 +78,9 @@ This class forms part of L<Paws>, documenting arguments for method ConfirmForgot
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

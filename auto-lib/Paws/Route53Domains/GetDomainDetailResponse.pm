@@ -142,9 +142,9 @@ registrar, renewing the registration for a domain name, and so on. All
 registrars use this same set of status codes.
 
 For a current list of domain name status codes and an explanation of
-what each code means, go to the ICANN website and search for C<epp
-status codes>. (Search on the ICANN website; web searches sometimes
-return an old version of the document.)
+what each code means, go to the ICANN website (https://www.icann.org/)
+and search for C<epp status codes>. (Search on the ICANN website; web
+searches sometimes return an old version of the document.)
 
 
 =head2 B<REQUIRED> TechContact => L<Paws::Route53Domains::ContactDetail>

@@ -19,7 +19,7 @@ package Paws::RedShift::GetClusterCredentials;
 
 =head1 NAME
 
-Paws::RedShift::GetClusterCredentials - Arguments for method GetClusterCredentials on Paws::RedShift
+Paws::RedShift::GetClusterCredentials - Arguments for method GetClusterCredentials on L<Paws::RedShift>
 
 =head1 DESCRIPTION
 
@@ -40,8 +40,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AutoCreate => Bool
 
-Create a database user with the name specified for C<DbUser> if one
-does not exist.
+Create a database user with the name specified for the user named in
+C<DbUser> if one does not exist.
 
 
 
@@ -55,16 +55,48 @@ sensitive.
 
 =head2 DbGroups => ArrayRef[Str|Undef]
 
-A list of the names of existing database groups that C<DbUser> will
-join for the current session. If not specified, the new user is added
+A list of the names of existing database groups that the user named in
+C<DbUser> will join for the current session, in addition to any group
+memberships for an existing user. If not specified, a new user is added
 only to PUBLIC.
+
+Database group name constraints
+
+=over
+
+=item *
+
+Must be 1 to 64 alphanumeric characters or hyphens
+
+=item *
+
+Must contain only lowercase letters, numbers, underscore, plus sign,
+period (dot), at symbol (@), or hyphen.
+
+=item *
+
+First character must be a letter.
+
+=item *
+
+Must not contain a colon ( : ) or slash ( / ).
+
+=item *
+
+Cannot be a reserved word. A list of reserved words can be found in
+Reserved Words
+(http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html) in
+the Amazon Redshift Database Developer Guide.
+
+=back
+
 
 
 
 =head2 DbName => Str
 
 The name of a database that C<DbUser> is authorized to log on to. If
-C<DbName> is not specified, C<DbUser> can log in to any existing
+C<DbName> is not specified, C<DbUser> can log on to any existing
 database.
 
 Constraints:
@@ -77,12 +109,23 @@ Must be 1 to 64 alphanumeric characters or hyphens
 
 =item *
 
-Must contain only lowercase letters.
+Must contain only lowercase letters, numbers, underscore, plus sign,
+period (dot), at symbol (@), or hyphen.
+
+=item *
+
+First character must be a letter.
+
+=item *
+
+Must not contain a colon ( : ) or slash ( / ).
 
 =item *
 
 Cannot be a reserved word. A list of reserved words can be found in
-Reserved Words in the Amazon Redshift Database Developer Guide.
+Reserved Words
+(http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html) in
+the Amazon Redshift Database Developer Guide.
 
 =back
 
@@ -100,8 +143,9 @@ matching the value for C<DbUser> doesn't exist and C<Autocreate> is
 C<False>, then the command succeeds but the connection attempt will
 fail because the user doesn't exist in the database.
 
-For more information, see CREATE USER in the Amazon Redshift Database
-Developer Guide.
+For more information, see CREATE USER
+(http://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html) in
+the Amazon Redshift Database Developer Guide.
 
 Constraints:
 
@@ -109,11 +153,12 @@ Constraints:
 
 =item *
 
-Must be 1 to 128 alphanumeric characters or hyphens
+Must be 1 to 64 alphanumeric characters or hyphens
 
 =item *
 
-Must contain only lowercase letters.
+Must contain only lowercase letters, numbers, underscore, plus sign,
+period (dot), at symbol (@), or hyphen.
 
 =item *
 
@@ -126,7 +171,9 @@ Must not contain a colon ( : ) or slash ( / ).
 =item *
 
 Cannot be a reserved word. A list of reserved words can be found in
-Reserved Words in the Amazon Redshift Database Developer Guide.
+Reserved Words
+(http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html) in
+the Amazon Redshift Database Developer Guide.
 
 =back
 
@@ -150,9 +197,9 @@ This class forms part of L<Paws>, documenting arguments for method GetClusterCre
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

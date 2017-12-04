@@ -25,7 +25,7 @@ package Paws::RDS::ModifyDBCluster;
 
 =head1 NAME
 
-Paws::RDS::ModifyDBCluster - Arguments for method ModifyDBCluster on Paws::RDS
+Paws::RDS::ModifyDBCluster - Arguments for method ModifyDBCluster on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -95,19 +95,7 @@ Constraints:
 
 =item *
 
-Must be the identifier for an existing DB cluster.
-
-=item *
-
-Must contain from 1 to 63 alphanumeric characters or hyphens.
-
-=item *
-
-First character must be a letter.
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens.
+Must match the identifier of an existing DBCluster.
 
 =back
 
@@ -150,11 +138,11 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens
+Must contain from 1 to 63 letters, numbers, or hyphens
 
 =item *
 
-First character must be a letter
+The first character must be a letter
 
 =item *
 
@@ -200,8 +188,10 @@ automated backups are enabled, using the C<BackupRetentionPeriod>
 parameter.
 
 Default: A 30-minute window selected at random from an 8-hour block of
-time per region. To see the time blocks available, see Adjusting the
-Preferred Maintenance Window in the I<Amazon RDS User Guide.>
+time per AWS Region. To see the time blocks available, see Adjusting
+the Preferred Maintenance Window
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
+in the I<Amazon RDS User Guide.>
 
 Constraints:
 
@@ -236,9 +226,10 @@ Universal Coordinated Time (UTC).
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
 Default: A 30-minute window selected at random from an 8-hour block of
-time per region, occurring on a random day of the week. To see the time
-blocks available, see Adjusting the Preferred Maintenance Window in the
-I<Amazon RDS User Guide.>
+time per AWS Region, occurring on a random day of the week. To see the
+time blocks available, see Adjusting the Preferred Maintenance Window
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
+in the I<Amazon RDS User Guide.>
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 
@@ -259,9 +250,9 @@ This class forms part of L<Paws>, documenting arguments for method ModifyDBClust
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

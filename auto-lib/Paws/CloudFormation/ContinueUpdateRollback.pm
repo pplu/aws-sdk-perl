@@ -17,7 +17,7 @@ package Paws::CloudFormation::ContinueUpdateRollback;
 
 =head1 NAME
 
-Paws::CloudFormation::ContinueUpdateRollback - Arguments for method ContinueUpdateRollback on Paws::CloudFormation
+Paws::CloudFormation::ContinueUpdateRollback - Arguments for method ContinueUpdateRollback on L<Paws::CloudFormation>
 
 =head1 DESCRIPTION
 
@@ -53,30 +53,39 @@ skips during the continue update rollback operation. You can specify
 only resources that are in the C<UPDATE_FAILED> state because a
 rollback failed. You can't specify resources that are in the
 C<UPDATE_FAILED> state for other reasons, for example, because an
-update was canceled. To check why a resource update failed, use the
+update was cancelled. To check why a resource update failed, use the
 DescribeStackResources action, and view the resource status reason.
 
 Specify this property to skip rolling back resources that AWS
 CloudFormation can't successfully roll back. We recommend that you
-troubleshoot resources before skipping them. AWS CloudFormation sets
-the status of the specified resources to C<UPDATE_COMPLETE> and
-continues to roll back the stack. After the rollback is complete, the
-state of the skipped resources will be inconsistent with the state of
-the resources in the stack template. Before performing another stack
-update, you must update the stack or resources to be consistent with
-each other. If you don't, subsequent stack updates might fail, and the
-stack will become unrecoverable.
+troubleshoot
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed)
+resources before skipping them. AWS CloudFormation sets the status of
+the specified resources to C<UPDATE_COMPLETE> and continues to roll
+back the stack. After the rollback is complete, the state of the
+skipped resources will be inconsistent with the state of the resources
+in the stack template. Before performing another stack update, you must
+update the stack or resources to be consistent with each other. If you
+don't, subsequent stack updates might fail, and the stack will become
+unrecoverable.
 
 Specify the minimum number of resources required to successfully roll
 back your stack. For example, a failed resource update might cause
 dependent resources to fail. In this case, it might not be necessary to
 skip the dependent resources.
 
-To specify resources in a nested stack, use the following format:
-C<NestedStackName.ResourceLogicalID>. If the C<ResourceLogicalID> is a
-stack resource (C<Type: AWS::CloudFormation::Stack>), it must be in one
-of the following states: C<DELETE_IN_PROGRESS>, C<DELETE_COMPLETE>, or
-C<DELETE_FAILED>.
+To skip resources that are part of nested stacks, use the following
+format: C<NestedStackName.ResourceLogicalID>. If you want to specify
+the logical ID of a stack resource (C<Type:
+AWS::CloudFormation::Stack>) in the C<ResourcesToSkip> list, then its
+corresponding embedded stack must be in one of the following states:
+C<DELETE_IN_PROGRESS>, C<DELETE_COMPLETE>, or C<DELETE_FAILED>.
+
+Don't confuse a child stack's name with its corresponding logical ID
+defined in the parent stack. For an example of a continue update
+rollback operation with nested stacks, see Using ResourcesToSkip to
+recover a nested stacks hierarchy
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-continueupdaterollback.html#nested-stacks).
 
 
 
@@ -117,9 +126,9 @@ This class forms part of L<Paws>, documenting arguments for method ContinueUpdat
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

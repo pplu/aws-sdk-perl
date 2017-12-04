@@ -11,7 +11,7 @@ package Paws::Config;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub DeleteConfigRule {
@@ -99,6 +99,11 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::GetComplianceSummaryByResourceType', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetDiscoveredResourceCounts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::GetDiscoveredResourceCounts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetResourceConfigHistory {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::GetResourceConfigHistory', @_);
@@ -150,18 +155,20 @@ package Paws::Config;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeComplianceByConfigRule(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeComplianceByConfigRule(@_, NextToken => $result->NextToken);
-        push @{ $result->ComplianceByConfigRules }, @{ $result->ComplianceByConfigRules };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeComplianceByConfigRule(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ComplianceByConfigRules }, @{ $next_result->ComplianceByConfigRules };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeComplianceByConfigRule(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ComplianceByConfigRules') foreach (@{ $result->ComplianceByConfigRules });
+        $result = $self->DescribeComplianceByConfigRule(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ComplianceByConfigRules') foreach (@{ $result->ComplianceByConfigRules });
     }
 
     return undef
@@ -171,18 +178,20 @@ package Paws::Config;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeComplianceByResource(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeComplianceByResource(@_, NextToken => $result->NextToken);
-        push @{ $result->ComplianceByResources }, @{ $result->ComplianceByResources };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeComplianceByResource(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ComplianceByResources }, @{ $next_result->ComplianceByResources };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeComplianceByResource(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ComplianceByResources') foreach (@{ $result->ComplianceByResources });
+        $result = $self->DescribeComplianceByResource(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ComplianceByResources') foreach (@{ $result->ComplianceByResources });
     }
 
     return undef
@@ -192,18 +201,20 @@ package Paws::Config;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeConfigRules(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeConfigRules(@_, NextToken => $result->NextToken);
-        push @{ $result->ConfigRules }, @{ $result->ConfigRules };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeConfigRules(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ConfigRules }, @{ $next_result->ConfigRules };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeConfigRules(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ConfigRules') foreach (@{ $result->ConfigRules });
+        $result = $self->DescribeConfigRules(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ConfigRules') foreach (@{ $result->ConfigRules });
     }
 
     return undef
@@ -213,18 +224,20 @@ package Paws::Config;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetComplianceDetailsByConfigRule(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->GetComplianceDetailsByConfigRule(@_, NextToken => $result->NextToken);
-        push @{ $result->EvaluationResults }, @{ $result->EvaluationResults };
+      while ($next_result->NextToken) {
+        $next_result = $self->GetComplianceDetailsByConfigRule(@_, NextToken => $next_result->NextToken);
+        push @{ $result->EvaluationResults }, @{ $next_result->EvaluationResults };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->GetComplianceDetailsByConfigRule(@_, NextToken => $result->NextToken);
         $callback->($_ => 'EvaluationResults') foreach (@{ $result->EvaluationResults });
+        $result = $self->GetComplianceDetailsByConfigRule(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'EvaluationResults') foreach (@{ $result->EvaluationResults });
     }
 
     return undef
@@ -234,18 +247,20 @@ package Paws::Config;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetComplianceDetailsByResource(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->GetComplianceDetailsByResource(@_, NextToken => $result->NextToken);
-        push @{ $result->EvaluationResults }, @{ $result->EvaluationResults };
+      while ($next_result->NextToken) {
+        $next_result = $self->GetComplianceDetailsByResource(@_, NextToken => $next_result->NextToken);
+        push @{ $result->EvaluationResults }, @{ $next_result->EvaluationResults };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->GetComplianceDetailsByResource(@_, NextToken => $result->NextToken);
         $callback->($_ => 'EvaluationResults') foreach (@{ $result->EvaluationResults });
+        $result = $self->GetComplianceDetailsByResource(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'EvaluationResults') foreach (@{ $result->EvaluationResults });
     }
 
     return undef
@@ -255,18 +270,20 @@ package Paws::Config;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetResourceConfigHistory(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->GetResourceConfigHistory(@_, nextToken => $result->nextToken);
-        push @{ $result->configurationItems }, @{ $result->configurationItems };
+      while ($next_result->nextToken) {
+        $next_result = $self->GetResourceConfigHistory(@_, nextToken => $next_result->nextToken);
+        push @{ $result->configurationItems }, @{ $next_result->configurationItems };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->GetResourceConfigHistory(@_, nextToken => $result->nextToken);
         $callback->($_ => 'configurationItems') foreach (@{ $result->configurationItems });
+        $result = $self->GetResourceConfigHistory(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'configurationItems') foreach (@{ $result->configurationItems });
     }
 
     return undef
@@ -276,25 +293,27 @@ package Paws::Config;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDiscoveredResources(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListDiscoveredResources(@_, nextToken => $result->nextToken);
-        push @{ $result->resourceIdentifiers }, @{ $result->resourceIdentifiers };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDiscoveredResources(@_, nextToken => $next_result->nextToken);
+        push @{ $result->resourceIdentifiers }, @{ $next_result->resourceIdentifiers };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListDiscoveredResources(@_, nextToken => $result->nextToken);
         $callback->($_ => 'resourceIdentifiers') foreach (@{ $result->resourceIdentifiers });
+        $result = $self->ListDiscoveredResources(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'resourceIdentifiers') foreach (@{ $result->resourceIdentifiers });
     }
 
     return undef
   }
 
 
-  sub operations { qw/DeleteConfigRule DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeliverConfigSnapshot DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetResourceConfigHistory ListDiscoveredResources PutConfigRule PutConfigurationRecorder PutDeliveryChannel PutEvaluations StartConfigRulesEvaluation StartConfigurationRecorder StopConfigurationRecorder / }
+  sub operations { qw/DeleteConfigRule DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeliverConfigSnapshot DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetDiscoveredResourceCounts GetResourceConfigHistory ListDiscoveredResources PutConfigRule PutConfigurationRecorder PutDeliveryChannel PutEvaluations StartConfigRulesEvaluation StartConfigurationRecorder StopConfigurationRecorder / }
 
 1;
 
@@ -331,7 +350,8 @@ resource and also to get information about the relationship between the
 resources. An AWS resource can be an Amazon Compute Cloud (Amazon EC2)
 instance, an Elastic Block Store (EBS) volume, an Elastic network
 Interface (ENI), or a security group. For a complete list of resources
-currently supported by AWS Config, see Supported AWS Resources.
+currently supported by AWS Config, see Supported AWS Resources
+(http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources).
 
 You can access and manage AWS Config through the AWS Management
 Console, the AWS Command Line Interface (AWS CLI), the AWS Config API,
@@ -342,11 +362,14 @@ the AWS CLI commands that you can use to manage AWS Config.
 
 The AWS Config API uses the Signature Version 4 protocol for signing
 requests. For more information about how to sign a request with this
-protocol, see Signature Version 4 Signing Process.
+protocol, see Signature Version 4 Signing Process
+(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 For detailed information about AWS Config features and their associated
 actions or commands, as well as how to work with AWS Management
-Console, see What Is AWS Config? in the I<AWS Config Developer Guide>.
+Console, see What Is AWS Config?
+(http://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html)
+in the I<AWS Config Developer Guide>.
 
 =head1 METHODS
 
@@ -356,7 +379,7 @@ Each argument is described in detail in: L<Paws::Config::DeleteConfigRule>
 
 Returns: nothing
 
-  Deletes the specified AWS Config rule and all of its evaluation
+Deletes the specified AWS Config rule and all of its evaluation
 results.
 
 AWS Config sets the state of a rule to C<DELETING> until the deletion
@@ -374,7 +397,7 @@ Each argument is described in detail in: L<Paws::Config::DeleteConfigurationReco
 
 Returns: nothing
 
-  Deletes the configuration recorder.
+Deletes the configuration recorder.
 
 After the configuration recorder is deleted, AWS Config will not record
 resource configuration changes until you create a new configuration
@@ -393,7 +416,7 @@ Each argument is described in detail in: L<Paws::Config::DeleteDeliveryChannel>
 
 Returns: nothing
 
-  Deletes the delivery channel.
+Deletes the delivery channel.
 
 Before you can delete the delivery channel, you must stop the
 configuration recorder by using the StopConfigurationRecorder action.
@@ -405,7 +428,7 @@ Each argument is described in detail in: L<Paws::Config::DeleteEvaluationResults
 
 Returns: a L<Paws::Config::DeleteEvaluationResultsResponse> instance
 
-  Deletes the evaluation results for the specified Config rule. You can
+Deletes the evaluation results for the specified Config rule. You can
 specify one Config rule per request. After you delete the evaluation
 results, you can call the StartConfigRulesEvaluation API to start
 evaluating your AWS resources against the rule.
@@ -417,7 +440,7 @@ Each argument is described in detail in: L<Paws::Config::DeliverConfigSnapshot>
 
 Returns: a L<Paws::Config::DeliverConfigSnapshotResponse> instance
 
-  Schedules delivery of a configuration snapshot to the Amazon S3 bucket
+Schedules delivery of a configuration snapshot to the Amazon S3 bucket
 in the specified delivery channel. After the delivery has started, AWS
 Config sends following notifications using an Amazon SNS topic that you
 have specified.
@@ -447,7 +470,7 @@ Each argument is described in detail in: L<Paws::Config::DescribeComplianceByCon
 
 Returns: a L<Paws::Config::DescribeComplianceByConfigRuleResponse> instance
 
-  Indicates whether the specified AWS Config rules are compliant. If a
+Indicates whether the specified AWS Config rules are compliant. If a
 rule is noncompliant, this action returns the number of AWS resources
 that do not comply with the rule.
 
@@ -491,7 +514,7 @@ Each argument is described in detail in: L<Paws::Config::DescribeComplianceByRes
 
 Returns: a L<Paws::Config::DescribeComplianceByResourceResponse> instance
 
-  Indicates whether the specified AWS resources are compliant. If a
+Indicates whether the specified AWS resources are compliant. If a
 resource is noncompliant, this action returns the number of AWS Config
 rules that the resource does not comply with.
 
@@ -536,7 +559,7 @@ Each argument is described in detail in: L<Paws::Config::DescribeConfigRuleEvalu
 
 Returns: a L<Paws::Config::DescribeConfigRuleEvaluationStatusResponse> instance
 
-  Returns status information for each of your AWS managed Config rules.
+Returns status information for each of your AWS managed Config rules.
 The status includes information such as the last time AWS Config
 invoked the rule, the last time AWS Config failed to invoke the rule,
 and the related error for the last failure.
@@ -548,7 +571,7 @@ Each argument is described in detail in: L<Paws::Config::DescribeConfigRules>
 
 Returns: a L<Paws::Config::DescribeConfigRulesResponse> instance
 
-  Returns details about your AWS Config rules.
+Returns details about your AWS Config rules.
 
 
 =head2 DescribeConfigurationRecorders([ConfigurationRecorderNames => ArrayRef[Str|Undef]])
@@ -557,7 +580,7 @@ Each argument is described in detail in: L<Paws::Config::DescribeConfigurationRe
 
 Returns: a L<Paws::Config::DescribeConfigurationRecordersResponse> instance
 
-  Returns the details for the specified configuration recorders. If the
+Returns the details for the specified configuration recorders. If the
 configuration recorder is not specified, this action returns the
 details for all configuration recorders associated with the account.
 
@@ -571,7 +594,7 @@ Each argument is described in detail in: L<Paws::Config::DescribeConfigurationRe
 
 Returns: a L<Paws::Config::DescribeConfigurationRecorderStatusResponse> instance
 
-  Returns the current status of the specified configuration recorder. If
+Returns the current status of the specified configuration recorder. If
 a configuration recorder is not specified, this action returns the
 status of all configuration recorder associated with the account.
 
@@ -585,7 +608,7 @@ Each argument is described in detail in: L<Paws::Config::DescribeDeliveryChannel
 
 Returns: a L<Paws::Config::DescribeDeliveryChannelsResponse> instance
 
-  Returns details about the specified delivery channel. If a delivery
+Returns details about the specified delivery channel. If a delivery
 channel is not specified, this action returns the details of all
 delivery channels associated with the account.
 
@@ -599,7 +622,7 @@ Each argument is described in detail in: L<Paws::Config::DescribeDeliveryChannel
 
 Returns: a L<Paws::Config::DescribeDeliveryChannelStatusResponse> instance
 
-  Returns the current status of the specified delivery channel. If a
+Returns the current status of the specified delivery channel. If a
 delivery channel is not specified, this action returns the current
 status of all delivery channels associated with the account.
 
@@ -613,7 +636,7 @@ Each argument is described in detail in: L<Paws::Config::GetComplianceDetailsByC
 
 Returns: a L<Paws::Config::GetComplianceDetailsByConfigRuleResponse> instance
 
-  Returns the evaluation results for the specified AWS Config rule. The
+Returns the evaluation results for the specified AWS Config rule. The
 results indicate which AWS resources were evaluated by the rule, when
 each resource was last evaluated, and whether each resource complies
 with the rule.
@@ -625,7 +648,7 @@ Each argument is described in detail in: L<Paws::Config::GetComplianceDetailsByR
 
 Returns: a L<Paws::Config::GetComplianceDetailsByResourceResponse> instance
 
-  Returns the evaluation results for the specified AWS resource. The
+Returns the evaluation results for the specified AWS resource. The
 results indicate which AWS Config rules were used to evaluate the
 resource, when each rule was last used, and whether the resource
 complies with each rule.
@@ -637,7 +660,7 @@ Each argument is described in detail in: L<Paws::Config::GetComplianceSummaryByC
 
 Returns: a L<Paws::Config::GetComplianceSummaryByConfigRuleResponse> instance
 
-  Returns the number of AWS Config rules that are compliant and
+Returns the number of AWS Config rules that are compliant and
 noncompliant, up to a maximum of 25 for each.
 
 
@@ -647,10 +670,83 @@ Each argument is described in detail in: L<Paws::Config::GetComplianceSummaryByR
 
 Returns: a L<Paws::Config::GetComplianceSummaryByResourceTypeResponse> instance
 
-  Returns the number of resources that are compliant and the number that
+Returns the number of resources that are compliant and the number that
 are noncompliant. You can specify one or more resource types to get
 these numbers for each resource type. The maximum number returned is
 100.
+
+
+=head2 GetDiscoveredResourceCounts([Limit => Int, NextToken => Str, ResourceTypes => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::Config::GetDiscoveredResourceCounts>
+
+Returns: a L<Paws::Config::GetDiscoveredResourceCountsResponse> instance
+
+Returns the resource types, the number of each resource type, and the
+total number of resources that AWS Config is recording in this region
+for your AWS account.
+
+B<Example>
+
+=over
+
+=item 1.
+
+AWS Config is recording three resource types in the US East (Ohio)
+Region for your account: 25 EC2 instances, 20 IAM users, and 15 S3
+buckets.
+
+=item 2.
+
+You make a call to the C<GetDiscoveredResourceCounts> action and
+specify that you want all resource types.
+
+=item 3.
+
+AWS Config returns the following:
+
+=over
+
+=item *
+
+The resource types (EC2 instances, IAM users, and S3 buckets)
+
+=item *
+
+The number of each resource type (25, 20, and 15)
+
+=item *
+
+The total number of all resources (60)
+
+=back
+
+=back
+
+The response is paginated. By default, AWS Config lists 100
+ResourceCount objects on each page. You can customize this number with
+the C<limit> parameter. The response includes a C<nextToken> string. To
+get the next page of results, run the request again and specify the
+string for the C<nextToken> parameter.
+
+If you make a call to the GetDiscoveredResourceCounts action, you may
+not immediately receive resource counts in the following situations:
+
+=over
+
+=item *
+
+You are a new AWS Config customer
+
+=item *
+
+You just enabled resource recording
+
+=back
+
+It may take a few minutes for AWS Config to record and count your
+resources. Wait a few minutes and then retry the
+GetDiscoveredResourceCounts action.
 
 
 =head2 GetResourceConfigHistory(ResourceId => Str, ResourceType => Str, [ChronologicalOrder => Str, EarlierTime => Str, LaterTime => Str, Limit => Int, NextToken => Str])
@@ -659,15 +755,15 @@ Each argument is described in detail in: L<Paws::Config::GetResourceConfigHistor
 
 Returns: a L<Paws::Config::GetResourceConfigHistoryResponse> instance
 
-  Returns a list of configuration items for the specified resource. The
+Returns a list of configuration items for the specified resource. The
 list contains details about each state of the resource during the
 specified time interval.
 
-The response is paginated, and by default, AWS Config returns a limit
-of 10 configuration items per page. You can customize this number with
-the C<limit> parameter. The response includes a C<nextToken> string,
-and to get the next page of results, run the request again and enter
-this string for the C<nextToken> parameter.
+The response is paginated. By default, AWS Config returns a limit of 10
+configuration items per page. You can customize this number with the
+C<limit> parameter. The response includes a C<nextToken> string. To get
+the next page of results, run the request again and specify the string
+for the C<nextToken> parameter.
 
 Each call to the API is limited to span a duration of seven days. It is
 likely that the number of records returned is smaller than the
@@ -681,7 +777,7 @@ Each argument is described in detail in: L<Paws::Config::ListDiscoveredResources
 
 Returns: a L<Paws::Config::ListDiscoveredResourcesResponse> instance
 
-  Accepts a resource type and returns a list of resource identifiers for
+Accepts a resource type and returns a list of resource identifiers for
 the resources of that type. A resource identifier includes the resource
 type, ID, and (if available) the custom resource name. The results
 consist of resources that AWS Config has discovered, including those
@@ -692,11 +788,11 @@ name.
 You can specify either resource IDs or a resource name but not both in
 the same request.
 
-The response is paginated, and by default AWS Config lists 100 resource
+The response is paginated. By default, AWS Config lists 100 resource
 identifiers on each page. You can customize this number with the
-C<limit> parameter. The response includes a C<nextToken> string, and to
-get the next page of results, run the request again and enter this
-string for the C<nextToken> parameter.
+C<limit> parameter. The response includes a C<nextToken> string. To get
+the next page of results, run the request again and specify the string
+for the C<nextToken> parameter.
 
 
 =head2 PutConfigRule(ConfigRule => L<Paws::Config::ConfigRule>)
@@ -705,7 +801,7 @@ Each argument is described in detail in: L<Paws::Config::PutConfigRule>
 
 Returns: nothing
 
-  Adds or updates an AWS Config rule for evaluating whether your AWS
+Adds or updates an AWS Config rule for evaluating whether your AWS
 resources comply with your desired configurations.
 
 You can use this action for custom Config rules and AWS managed Config
@@ -723,7 +819,8 @@ object.
 
 If you are adding an AWS managed Config rule, specify the rule's
 identifier for the C<SourceIdentifier> key. To reference AWS managed
-Config rule identifiers, see About AWS Managed Config Rules.
+Config rule identifiers, see About AWS Managed Config Rules
+(http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html).
 
 For any new rule that you add, specify the C<ConfigRuleName> in the
 C<ConfigRule> object. Do not specify the C<ConfigRuleArn> or the
@@ -737,11 +834,14 @@ the C<ConfigRule> data type that you use in this request.
 The maximum number of rules that AWS Config supports is 50.
 
 For more information about requesting a rule limit increase, see AWS
-Config Limits in the I<AWS General Reference Guide>.
+Config Limits
+(http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config)
+in the I<AWS General Reference Guide>.
 
 For more information about developing and using AWS Config rules, see
-Evaluating AWS Resource Configurations with AWS Config in the I<AWS
-Config Developer Guide>.
+Evaluating AWS Resource Configurations with AWS Config
+(http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html)
+in the I<AWS Config Developer Guide>.
 
 
 =head2 PutConfigurationRecorder(ConfigurationRecorder => L<Paws::Config::ConfigurationRecorder>)
@@ -750,7 +850,7 @@ Each argument is described in detail in: L<Paws::Config::PutConfigurationRecorde
 
 Returns: nothing
 
-  Creates a new configuration recorder to record the selected resource
+Creates a new configuration recorder to record the selected resource
 configurations.
 
 You can use this action to change the role C<roleARN> and/or the
@@ -771,7 +871,7 @@ Each argument is described in detail in: L<Paws::Config::PutDeliveryChannel>
 
 Returns: nothing
 
-  Creates a delivery channel object to deliver configuration information
+Creates a delivery channel object to deliver configuration information
 to an Amazon S3 bucket and Amazon SNS topic.
 
 Before you can create a delivery channel, you must create a
@@ -793,7 +893,7 @@ Each argument is described in detail in: L<Paws::Config::PutEvaluations>
 
 Returns: a L<Paws::Config::PutEvaluationsResponse> instance
 
-  Used by an AWS Lambda function to deliver evaluation results to AWS
+Used by an AWS Lambda function to deliver evaluation results to AWS
 Config. This action is required in every AWS Lambda function that is
 invoked by an AWS Config rule.
 
@@ -804,7 +904,7 @@ Each argument is described in detail in: L<Paws::Config::StartConfigRulesEvaluat
 
 Returns: a L<Paws::Config::StartConfigRulesEvaluationResponse> instance
 
-  Runs an on-demand evaluation for the specified Config rules against the
+Runs an on-demand evaluation for the specified Config rules against the
 last known configuration state of the resources. Use
 C<StartConfigRulesEvaluation> when you want to test a rule that you
 updated is working as expected. C<StartConfigRulesEvaluation> does not
@@ -861,7 +961,7 @@ Each argument is described in detail in: L<Paws::Config::StartConfigurationRecor
 
 Returns: nothing
 
-  Starts recording configurations of the AWS resources you have selected
+Starts recording configurations of the AWS resources you have selected
 to record in your AWS account.
 
 You must have created at least one delivery channel to successfully
@@ -874,7 +974,7 @@ Each argument is described in detail in: L<Paws::Config::StopConfigurationRecord
 
 Returns: nothing
 
-  Stops recording configurations of the AWS resources you have selected
+Stops recording configurations of the AWS resources you have selected
 to record in your AWS account.
 
 
@@ -977,9 +1077,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

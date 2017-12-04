@@ -18,8 +18,7 @@ Paws::ApiGateway::DocumentationParts
 
 =head2 Items => ArrayRef[L<Paws::ApiGateway::DocumentationPart>]
 
-The current page of DocumentationPart resources in the
-DocumentationParts collection.
+The current page of elements from this collection.
 
 
 =head2 Position => Str

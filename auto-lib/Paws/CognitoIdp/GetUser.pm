@@ -1,7 +1,7 @@
 
 package Paws::CognitoIdp::GetUser;
   use Moose;
-  has AccessToken => (is => 'ro', isa => 'Str');
+  has AccessToken => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -14,7 +14,7 @@ package Paws::CognitoIdp::GetUser;
 
 =head1 NAME
 
-Paws::CognitoIdp::GetUser - Arguments for method GetUser on Paws::CognitoIdp
+Paws::CognitoIdp::GetUser - Arguments for method GetUser on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AccessToken => Str
+=head2 B<REQUIRED> AccessToken => Str
 
 The access token returned by the server response to get information
 about the user.
@@ -47,9 +47,9 @@ This class forms part of L<Paws>, documenting arguments for method GetUser in L<
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

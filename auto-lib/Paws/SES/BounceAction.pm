@@ -40,7 +40,8 @@ by returning a bounce response to the sender and, optionally, publishes
 a notification to Amazon Simple Notification Service (Amazon SNS).
 
 For information about sending a bounce message in response to a
-received email, see the Amazon SES Developer Guide.
+received email, see the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-bounce.html).
 
 =head1 ATTRIBUTES
 
@@ -58,12 +59,14 @@ address from which the bounce message will be sent.
 
 =head2 B<REQUIRED> SmtpReplyCode => Str
 
-  The SMTP reply code, as defined by RFC 5321.
+  The SMTP reply code, as defined by RFC 5321
+(https://tools.ietf.org/html/rfc5321).
 
 
 =head2 StatusCode => Str
 
-  The SMTP enhanced status code, as defined by RFC 3463.
+  The SMTP enhanced status code, as defined by RFC 3463
+(https://tools.ietf.org/html/rfc3463).
 
 
 =head2 TopicArn => Str
@@ -71,7 +74,8 @@ address from which the bounce message will be sent.
   The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when
 the bounce action is taken. An example of an Amazon SNS topic ARN is
 C<arn:aws:sns:us-west-2:123456789012:MyTopic>. For more information
-about Amazon SNS topics, see the Amazon SNS Developer Guide.
+about Amazon SNS topics, see the Amazon SNS Developer Guide
+(http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html).
 
 
 
@@ -81,9 +85,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SES>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

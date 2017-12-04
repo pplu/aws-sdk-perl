@@ -15,7 +15,7 @@ package Paws::CloudWatchEvents::TestEventPattern;
 
 =head1 NAME
 
-Paws::CloudWatchEvents::TestEventPattern - Arguments for method TestEventPattern on Paws::CloudWatchEvents
+Paws::CloudWatchEvents::TestEventPattern - Arguments for method TestEventPattern on L<Paws::CloudWatchEvents>
 
 =head1 DESCRIPTION
 
@@ -43,6 +43,7 @@ The event, in JSON format, to test against the event pattern.
 =head2 B<REQUIRED> EventPattern => Str
 
 The event pattern. For more information, see Events and Event Patterns
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html)
 in the I<Amazon CloudWatch Events User Guide>.
 
 
@@ -54,9 +55,9 @@ This class forms part of L<Paws>, documenting arguments for method TestEventPatt
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

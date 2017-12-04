@@ -1,0 +1,767 @@
+---
+tests:
+  - expected: 15
+    op: eq
+    path: Contents.15.Size
+  - expected: '"c1ae625faedfcca08dcdc29688e5b516"'
+    op: eq
+    path: Contents.37.ETag
+  - expected: '"f6085db2cae84f76f3ea50d869cd34f4"'
+    op: eq
+    path: Contents.6.ETag
+  - expected: 15
+    op: eq
+    path: Contents.14.Size
+  - expected: 40
+    op: eq
+    path: Contents.35.Key
+  - expected: 43
+    op: eq
+    path: Contents.38.Key
+  - expected: 15
+    op: eq
+    path: Contents.13.Size
+  - expected: 48
+    op: eq
+    path: Contents.43.Key
+  - expected: STANDARD
+    op: eq
+    path: Contents.5.StorageClass
+  - expected: STANDARD
+    op: eq
+    path: Contents.20.StorageClass
+  - expected: 2017-06-12T07:38:32.000Z
+    op: eq
+    path: Contents.49.LastModified
+  - expected: 22
+    op: eq
+    path: Contents.15.Key
+  - expected: '"f968b52c00da4fe4099520ad88ac36d6"'
+    op: eq
+    path: Contents.46.ETag
+  - expected: STANDARD
+    op: eq
+    path: Contents.17.StorageClass
+  - expected: 2017-06-12T07:38:30.000Z
+    op: eq
+    path: Contents.35.LastModified
+  - expected: '"4ca0cbf3b9a0613495bfe31483449278"'
+    op: eq
+    path: Contents.20.ETag
+  - expected: 15
+    op: eq
+    path: Contents.5.Size
+  - expected: STANDARD
+    op: eq
+    path: Contents.40.StorageClass
+  - expected: 50
+    op: eq
+    path: Contents.46.Key
+  - expected: 25
+    op: eq
+    path: Contents.18.Key
+  - expected: STANDARD
+    op: eq
+    path: Contents.49.StorageClass
+  - expected: 2017-06-12T07:38:25.000Z
+    op: eq
+    path: Contents.5.LastModified
+  - expected: 15
+    op: eq
+    path: Contents.1.Size
+  - expected: STANDARD
+    op: eq
+    path: Contents.10.StorageClass
+  - expected: 52
+    op: eq
+    path: Contents.48.Key
+  - expected: '"508b653e6c5b2c57402d99b1c4b2fe24"'
+    op: eq
+    path: Contents.40.ETag
+  - expected: STANDARD
+    op: eq
+    path: Contents.8.StorageClass
+  - expected: 15
+    op: eq
+    path: Contents.19.Size
+  - expected: 29
+    op: eq
+    path: Contents.22.Key
+  - expected: 12
+    op: eq
+    path: Contents.4.Key
+  - expected: STANDARD
+    op: eq
+    path: Contents.19.StorageClass
+  - expected: STANDARD
+    op: eq
+    path: Contents.47.StorageClass
+  - expected: 38
+    op: eq
+    path: Contents.32.Key
+  - expected: 15
+    op: eq
+    path: Contents.10.Size
+  - expected: 11
+    op: eq
+    path: Contents.3.Key
+  - expected: 15
+    op: eq
+    path: Contents.37.Size
+  - expected: 15
+    op: eq
+    path: Contents.7.Size
+  - expected: '"024ed87c0666333ab9b59e8db05e02f3"'
+    op: eq
+    path: Contents.28.ETag
+  - expected: '"c784b366661592fc3d8f3d7b5d0a1c79"'
+    op: eq
+    path: Contents.5.ETag
+  - expected: 2017-06-12T07:38:28.000Z
+    op: eq
+    path: Contents.25.LastModified
+  - expected: STANDARD
+    op: eq
+    path: Contents.2.StorageClass
+  - expected: 14
+    op: eq
+    path: Contents.34.Size
+  - expected: 2017-06-12T07:38:31.000Z
+    op: eq
+    path: Contents.41.LastModified
+  - expected: 15
+    op: eq
+    path: Contents.46.Size
+  - expected: 1LCcN9AbPPSREzIG0Hz2azDrkd1rCm5ohZtdFHrYKa4aZgOoWlMxE5g==
+    op: eq
+    path: NextContinuationToken
+  - expected: 44
+    op: eq
+    path: Contents.39.Key
+  - expected: '"94c66f24b86c185e0b58f08aef732cab"'
+    op: eq
+    path: Contents.4.ETag
+  - expected: 23
+    op: eq
+    path: Contents.16.Key
+  - expected: 2017-06-12T07:38:29.000Z
+    op: eq
+    path: Contents.31.LastModified
+  - expected: '"1bfe85226f3b889ba1805abe78cd3981"'
+    op: eq
+    path: Contents.41.ETag
+  - expected: 2017-06-12T07:38:27.000Z
+    op: eq
+    path: Contents.17.LastModified
+  - expected: '"73035d9ca84c3d46596b90785fb18889"'
+    op: eq
+    path: Contents.39.ETag
+  - expected: 15
+    op: eq
+    path: Contents.43.Size
+  - expected: 15
+    op: eq
+    path: Contents.28.Size
+  - expected: STANDARD
+    op: eq
+    path: Contents.44.StorageClass
+  - expected: '"b5091bfd4c35220c518a94088066d4d5"'
+    op: eq
+    path: Contents.43.ETag
+  - expected: '"424d258ff92fdffc20a6cdba6012e7b5"'
+    op: eq
+    path: Contents.45.ETag
+  - expected: STANDARD
+    op: eq
+    path: Contents.18.StorageClass
+  - expected: STANDARD
+    op: eq
+    path: Contents.42.StorageClass
+  - expected: STANDARD
+    op: eq
+    path: Contents.11.StorageClass
+  - expected: '"2ab3f27f6b4bd5ee08e36d20026ecb21"'
+    op: eq
+    path: Contents.31.ETag
+  - expected: '"9cf71b51ebdfd4627b5a8c08341252cb"'
+    op: eq
+    path: Contents.26.ETag
+  - expected: 2017-06-12T07:38:27.000Z
+    op: eq
+    path: Contents.14.LastModified
+  - expected: STANDARD
+    op: eq
+    path: Contents.39.StorageClass
+  - expected: '"1272985afbd14e87b06468a825c65c44"'
+    op: eq
+    path: Contents.42.ETag
+  - expected: '"c066901534b9a21e104fde0ab4c40a58"'
+    op: eq
+    path: Contents.10.ETag
+  - expected: 15
+    op: eq
+    path: Contents.42.Size
+  - expected: 15
+    op: eq
+    path: Contents.8.Size
+  - expected: STANDARD
+    op: eq
+    path: Contents.9.StorageClass
+  - expected: 15
+    op: eq
+    path: Contents.47.Size
+  - expected: 2017-06-12T07:38:29.000Z
+    op: eq
+    path: Contents.27.LastModified
+  - expected: STANDARD
+    op: eq
+    path: Contents.15.StorageClass
+  - expected: 15
+    op: eq
+    path: Contents.32.Size
+  - expected: STANDARD
+    op: eq
+    path: Contents.37.StorageClass
+  - expected: 2017-06-12T07:38:28.000Z
+    op: eq
+    path: Contents.20.LastModified
+  - expected: STANDARD
+    op: eq
+    path: Contents.14.StorageClass
+  - expected: 2017-06-12T07:38:27.000Z
+    op: eq
+    path: Contents.16.LastModified
+  - expected: 49
+    op: eq
+    path: Contents.44.Key
+  - expected: 30
+    op: eq
+    path: Contents.24.Key
+  - expected: 2017-06-12T07:38:26.000Z
+    op: eq
+    path: Contents.6.LastModified
+  - expected: '"f78a21c6a9d5ed20fff3f042647586f4"'
+    op: eq
+    path: Contents.32.ETag
+  - expected: 37
+    op: eq
+    path: Contents.31.Key
+  - expected: 2017-06-12T07:38:30.000Z
+    op: eq
+    path: Contents.38.LastModified
+  - expected: 15
+    op: eq
+    path: Contents.6.Size
+  - expected: 1
+    op: eq
+    path: IsTruncated
+  - expected: '"75909c1267cfe055fc83bf9d54139e1d"'
+    op: eq
+    path: Contents.12.ETag
+  - expected: 42
+    op: eq
+    path: Contents.37.Key
+  - expected: '"544b45b6700684faab137bb99009ea38"'
+    op: eq
+    path: Contents.48.ETag
+  - expected: 2017-06-12T07:38:28.000Z
+    op: eq
+    path: Contents.24.LastModified
+  - expected: 15
+    op: eq
+    path: Contents.7.Key
+  - expected: 39
+    op: eq
+    path: Contents.33.Key
+  - expected: 15
+    op: eq
+    path: Contents.9.Size
+  - expected: STANDARD
+    op: eq
+    path: Contents.43.StorageClass
+  - expected: 2017-06-12T07:38:40.000Z
+    op: eq
+    path: Contents.2.LastModified
+  - expected: 14
+    op: eq
+    path: Contents.6.Key
+  - expected: 1
+    op: eq
+    path: Contents.0.Key
+  - expected: 19
+    op: eq
+    path: Contents.11.Key
+  - expected: STANDARD
+    op: eq
+    path: Contents.13.StorageClass
+  - expected: '"22782905da113f9fb6564704fb390811"'
+    op: eq
+    path: Contents.47.ETag
+  - expected: 2017-06-12T07:38:28.000Z
+    op: eq
+    path: Contents.22.LastModified
+  - expected: 15
+    op: eq
+    path: Contents.4.Size
+  - expected: STANDARD
+    op: eq
+    path: Contents.41.StorageClass
+  - expected: '"af9e2a6edcccbf350784fab786bba1e5"'
+    op: eq
+    path: Contents.24.ETag
+  - expected: 2017-06-12T07:38:26.000Z
+    op: eq
+    path: Contents.11.LastModified
+  - expected: STANDARD
+    op: eq
+    path: Contents.48.StorageClass
+  - expected: 14
+    op: eq
+    path: Contents.23.Size
+  - expected: '"980f09181e4708352d130789308565a4"'
+    op: eq
+    path: Contents.36.ETag
+  - expected: 46
+    op: eq
+    path: Contents.41.Key
+  - expected: STANDARD
+    op: eq
+    path: Contents.29.StorageClass
+  - expected: 2017-06-12T07:38:29.000Z
+    op: eq
+    path: Contents.30.LastModified
+  - expected: 51
+    op: eq
+    path: Contents.47.Key
+  - expected: 15
+    op: eq
+    path: Contents.29.Size
+  - expected: 2017-06-12T07:38:32.000Z
+    op: eq
+    path: Contents.48.LastModified
+  - expected: 2017-06-12T07:38:25.000Z
+    op: eq
+    path: Contents.4.LastModified
+  - expected: 2017-06-12T07:38:29.000Z
+    op: eq
+    path: Contents.28.LastModified
+  - expected: 15
+    op: eq
+    path: Contents.20.Size
+  - expected: '"2c340b15b87952fe0b5af02ad57e9bcc"'
+    op: eq
+    path: Contents.33.ETag
+  - expected: 35
+    op: eq
+    path: Contents.29.Key
+  - expected: 16
+    op: eq
+    path: Contents.8.Key
+  - expected: 15
+    op: eq
+    path: Contents.41.Size
+  - expected: STANDARD
+    op: eq
+    path: Contents.28.StorageClass
+  - expected: '"2adba9c35f7c1443155d42976cea6824"'
+    op: eq
+    path: Contents.25.ETag
+  - expected: 100
+    op: eq
+    path: Contents.2.Key
+  - expected: '"cff390c8956e440ee1b2bfcce1692344"'
+    op: eq
+    path: Contents.21.ETag
+  - expected: 2017-06-12T07:38:29.000Z
+    op: eq
+    path: Contents.26.LastModified
+  - expected: 15
+    op: eq
+    path: Contents.3.Size
+  - expected: 15
+    op: eq
+    path: Contents.39.Size
+  - expected: '"05fdada8fd7febf8281bd9c356ff703e"'
+    op: eq
+    path: Contents.17.ETag
+  - expected: 3
+    op: eq
+    path: Contents.23.Key
+  - expected: '"4bc3a6afe0f5b61cef3e56e9d757d87f"'
+    op: eq
+    path: Contents.16.ETag
+  - expected: '"1d2d65a63389aa7bd3aff3bfa1351169"'
+    op: eq
+    path: Contents.0.ETag
+  - expected: 16
+    op: eq
+    path: Contents.2.Size
+  - expected: '"0f092559feda0a17275acac5efee6683"'
+    op: eq
+    path: Contents.35.ETag
+  - expected: STANDARD
+    op: eq
+    path: Contents.4.StorageClass
+  - expected: '"cc4c78557a9222d2d607dbf5f567f304"'
+    op: eq
+    path: Contents.3.ETag
+  - expected: 2017-06-12T07:38:27.000Z
+    op: eq
+    path: Contents.13.LastModified
+  - expected: 14
+    op: eq
+    path: Contents.45.Size
+  - expected: '"314e46d00ee99c717ad902a90b5a39cd"'
+    op: eq
+    path: Contents.8.ETag
+  - expected: 15
+    op: eq
+    path: Contents.33.Size
+  - expected: 13
+    op: eq
+    path: Contents.5.Key
+  - expected: 31
+    op: eq
+    path: Contents.25.Key
+  - expected: 15
+    op: eq
+    path: Contents.17.Size
+  - expected: 15
+    op: eq
+    path: Contents.16.Size
+  - expected: 2017-06-12T07:38:24.000Z
+    op: eq
+    path: Contents.45.LastModified
+  - expected: 2017-06-12T07:38:30.000Z
+    op: eq
+    path: Contents.39.LastModified
+  - expected: 15
+    op: eq
+    path: Contents.40.Size
+  - expected: 50
+    op: eq
+    path: KeyCount
+  - expected: '"bff1a71e10971f466447c7f69fedf8e9"'
+    op: eq
+    path: Contents.29.ETag
+  - expected: '"3aa0b70277e7e34d7851276e59d7ab42"'
+    op: eq
+    path: Contents.19.ETag
+  - expected: 15
+    op: eq
+    path: Contents.22.Size
+  - expected: STANDARD
+    op: eq
+    path: Contents.24.StorageClass
+  - expected: STANDARD
+    op: eq
+    path: Contents.25.StorageClass
+  - expected: STANDARD
+    op: eq
+    path: Contents.26.StorageClass
+  - expected: 2017-06-12T07:38:27.000Z
+    op: eq
+    path: Contents.15.LastModified
+  - expected: 15
+    op: eq
+    path: Contents.21.Size
+  - expected: 2017-06-12T07:38:31.000Z
+    op: eq
+    path: Contents.42.LastModified
+  - expected: 15
+    op: eq
+    path: Contents.48.Size
+  - expected: STANDARD
+    op: eq
+    path: Contents.45.StorageClass
+  - expected: 41
+    op: eq
+    path: Contents.36.Key
+  - expected: '"bb7c397caeed759369b26a72a8d26801"'
+    op: eq
+    path: Contents.7.ETag
+  - expected: 2017-06-12T07:38:27.000Z
+    op: eq
+    path: Contents.18.LastModified
+  - expected: 2017-06-12T07:38:30.000Z
+    op: eq
+    path: Contents.40.LastModified
+  - expected: 2017-06-12T07:38:31.000Z
+    op: eq
+    path: Contents.43.LastModified
+  - expected: 2017-06-12T07:38:30.000Z
+    op: eq
+    path: Contents.37.LastModified
+  - expected: 50
+    op: eq
+    path: MaxKeys
+  - expected: '"4de6c77b259f547724381411a5ee5f6f"'
+    op: eq
+    path: Contents.22.ETag
+  - expected: 2
+    op: eq
+    path: Contents.12.Key
+  - expected: 2017-06-12T07:38:25.000Z
+    op: eq
+    path: Contents.3.LastModified
+  - expected: '"db86dde627a3691cef1415b706420594"'
+    op: eq
+    path: Contents.13.ETag
+  - expected: 32
+    op: eq
+    path: Contents.26.Key
+  - expected: STANDARD
+    op: eq
+    path: Contents.22.StorageClass
+  - expected: 5
+    op: eq
+    path: Contents.45.Key
+  - expected: STANDARD
+    op: eq
+    path: Contents.6.StorageClass
+  - expected: STANDARD
+    op: eq
+    path: Contents.16.StorageClass
+  - expected: 2017-06-12T07:38:24.000Z
+    op: eq
+    path: Contents.0.LastModified
+  - expected: 15
+    op: eq
+    path: Contents.18.Size
+  - expected: 2017-06-12T07:38:24.000Z
+    op: eq
+    path: Contents.12.LastModified
+  - expected: 15
+    op: eq
+    path: Contents.38.Size
+  - expected: 2017-06-12T07:38:26.000Z
+    op: eq
+    path: Contents.9.LastModified
+  - expected: '"acd60514eb3a01c93372cb8ff1c6a76d"'
+    op: eq
+    path: Contents.44.ETag
+  - expected: STANDARD
+    op: eq
+    path: Contents.32.StorageClass
+  - expected: 2017-06-12T07:38:31.000Z
+    op: eq
+    path: Contents.44.LastModified
+  - expected: 18
+    op: eq
+    path: Contents.10.Key
+  - expected: '"12d0e58642e911cf0ebdae0117e0059c"'
+    op: eq
+    path: Contents.11.ETag
+  - expected: 15
+    op: eq
+    path: Contents.11.Size
+  - expected: 26
+    op: eq
+    path: Contents.19.Key
+  - expected: 15
+    op: eq
+    path: Contents.31.Size
+  - expected: 4
+    op: eq
+    path: Contents.34.Key
+  - expected: 2017-06-12T07:38:30.000Z
+    op: eq
+    path: Contents.33.LastModified
+  - expected: 36
+    op: eq
+    path: Contents.30.Key
+  - expected: 53
+    op: eq
+    path: Contents.49.Key
+  - expected: 14
+    op: eq
+    path: Contents.12.Size
+  - expected: STANDARD
+    op: eq
+    path: Contents.1.StorageClass
+  - expected: 2017-06-12T07:38:28.000Z
+    op: eq
+    path: Contents.19.LastModified
+  - expected: 15
+    op: eq
+    path: Contents.35.Size
+  - expected: 21
+    op: eq
+    path: Contents.14.Key
+  - expected: STANDARD
+    op: eq
+    path: Contents.21.StorageClass
+  - expected: 15
+    op: eq
+    path: Contents.27.Size
+  - expected: 15
+    op: eq
+    path: Contents.49.Size
+  - expected: 17
+    op: eq
+    path: Contents.9.Key
+  - expected: 2017-06-12T07:38:31.000Z
+    op: eq
+    path: Contents.47.LastModified
+  - expected: 2017-06-12T07:38:29.000Z
+    op: eq
+    path: Contents.29.LastModified
+  - expected: 34
+    op: eq
+    path: Contents.28.Key
+  - expected: STANDARD
+    op: eq
+    path: Contents.7.StorageClass
+  - expected: 2017-06-12T07:38:30.000Z
+    op: eq
+    path: Contents.36.LastModified
+  - expected: STANDARD
+    op: eq
+    path: Contents.0.StorageClass
+  - expected: 2017-06-12T07:38:29.000Z
+    op: eq
+    path: Contents.32.LastModified
+  - expected: 14
+    op: eq
+    path: Contents.0.Size
+  - expected: 2017-06-12T07:38:24.000Z
+    op: eq
+    path: Contents.23.LastModified
+  - expected: paws-test-paginators-2
+    op: eq
+    path: Name
+  - expected: STANDARD
+    op: eq
+    path: Contents.33.StorageClass
+  - expected: '"455d8b9a675500f5c0816f9848edfa7d"'
+    op: eq
+    path: Contents.38.ETag
+  - expected: 28
+    op: eq
+    path: Contents.21.Key
+  - expected: 2017-06-12T07:38:28.000Z
+    op: eq
+    path: Contents.21.LastModified
+  - expected: STANDARD
+    op: eq
+    path: Contents.30.StorageClass
+  - expected: 20
+    op: eq
+    path: Contents.13.Key
+  - expected: 15
+    op: eq
+    path: Contents.25.Size
+  - expected: '"05c5ad47ab074afc04707e0ca6415037"'
+    op: eq
+    path: Contents.15.ETag
+  - expected: '"21624d75c9929d65f379f683cf14195b"'
+    op: eq
+    path: Contents.1.ETag
+  - expected: STANDARD
+    op: eq
+    path: Contents.12.StorageClass
+  - expected: STANDARD
+    op: eq
+    path: Contents.31.StorageClass
+  - expected: STANDARD
+    op: eq
+    path: Contents.27.StorageClass
+  - expected: '"39de54a1b50cc48942a5c6b2fef58193"'
+    op: eq
+    path: Contents.30.ETag
+  - expected: STANDARD
+    op: eq
+    path: Contents.3.StorageClass
+  - expected: 15
+    op: eq
+    path: Contents.26.Size
+  - expected: '"9709410400cb1bb116e7b7e9a58ef400"'
+    op: eq
+    path: Contents.2.ETag
+  - expected: 2017-06-12T07:38:26.000Z
+    op: eq
+    path: Contents.7.LastModified
+  - expected: 15
+    op: eq
+    path: Contents.30.Size
+  - expected: 2017-06-12T07:38:26.000Z
+    op: eq
+    path: Contents.8.LastModified
+  - expected: '"17fdbdb43c7d7e4769db9c9aa359b2ea"'
+    op: eq
+    path: Contents.23.ETag
+  - expected: '"cab28e9ed8f3a1081b5be4e67899440c"'
+    op: eq
+    path: Contents.9.ETag
+  - expected: 2017-06-12T07:38:26.000Z
+    op: eq
+    path: Contents.10.LastModified
+  - expected: STANDARD
+    op: eq
+    path: Contents.35.StorageClass
+  - expected: 24
+    op: eq
+    path: Contents.17.Key
+  - expected: '"682ac73d30c16b70eb5a7546bcb0ae98"'
+    op: eq
+    path: Contents.34.ETag
+  - expected: '"3cee9f70021a8b6e0672f75079305057"'
+    op: eq
+    path: Contents.18.ETag
+  - expected: STANDARD
+    op: eq
+    path: Contents.34.StorageClass
+  - expected: 45
+    op: eq
+    path: Contents.40.Key
+  - expected: '"c54af800812de5dc529623dac31463fe"'
+    op: eq
+    path: Contents.27.ETag
+  - expected: 33
+    op: eq
+    path: Contents.27.Key
+  - expected: STANDARD
+    op: eq
+    path: Contents.23.StorageClass
+  - expected: 15
+    op: eq
+    path: Contents.44.Size
+  - expected: 2017-06-12T07:38:25.000Z
+    op: eq
+    path: Contents.1.LastModified
+  - expected: STANDARD
+    op: eq
+    path: Contents.46.StorageClass
+  - expected: 47
+    op: eq
+    path: Contents.42.Key
+  - expected: STANDARD
+    op: eq
+    path: Contents.38.StorageClass
+  - expected: '"6010d0838a8c9513b64eefde986484a8"'
+    op: eq
+    path: Contents.49.ETag
+  - expected: 2017-06-12T07:38:31.000Z
+    op: eq
+    path: Contents.46.LastModified
+  - expected: 27
+    op: eq
+    path: Contents.20.Key
+  - expected: 2017-06-12T07:38:24.000Z
+    op: eq
+    path: Contents.34.LastModified
+  - expected: 15
+    op: eq
+    path: Contents.36.Size
+  - expected: 10
+    op: eq
+    path: Contents.1.Key
+  - expected: STANDARD
+    op: eq
+    path: Contents.36.StorageClass
+  - expected: 15
+    op: eq
+    path: Contents.24.Size
+  - expected: '"8522592cf775012a4c0c25819536ffec"'
+    op: eq
+    path: Contents.14.ETag

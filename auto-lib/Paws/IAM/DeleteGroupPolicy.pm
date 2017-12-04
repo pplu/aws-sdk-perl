@@ -15,7 +15,7 @@ package Paws::IAM::DeleteGroupPolicy;
 
 =head1 NAME
 
-Paws::IAM::DeleteGroupPolicy - Arguments for method DeleteGroupPolicy on Paws::IAM
+Paws::IAM::DeleteGroupPolicy - Arguments for method DeleteGroupPolicy on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -39,9 +39,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The name (friendly name, not ARN) identifying the group that the policy
 is embedded in.
 
-This parameter allows (per its regex pattern) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+upper and lowercase alphanumeric characters with no spaces. You can
+also include any of the following characters: =,.@-
 
 
 
@@ -49,9 +50,10 @@ spaces. You can also include any of the following characters: =,.@-
 
 The name identifying the policy document to delete.
 
-This parameter allows (per its regex pattern) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+upper and lowercase alphanumeric characters with no spaces. You can
+also include any of the following characters: =,.@-+
 
 
 
@@ -62,9 +64,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteGroupPo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

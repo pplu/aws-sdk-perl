@@ -1,7 +1,7 @@
 
 package Paws::CognitoIdp::VerifyUserAttribute;
   use Moose;
-  has AccessToken => (is => 'ro', isa => 'Str');
+  has AccessToken => (is => 'ro', isa => 'Str', required => 1);
   has AttributeName => (is => 'ro', isa => 'Str', required => 1);
   has Code => (is => 'ro', isa => 'Str', required => 1);
 
@@ -16,7 +16,7 @@ package Paws::CognitoIdp::VerifyUserAttribute;
 
 =head1 NAME
 
-Paws::CognitoIdp::VerifyUserAttribute - Arguments for method VerifyUserAttribute on Paws::CognitoIdp
+Paws::CognitoIdp::VerifyUserAttribute - Arguments for method VerifyUserAttribute on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AccessToken => Str
+=head2 B<REQUIRED> AccessToken => Str
 
 Represents the access token of the request to verify user attributes.
 
@@ -60,9 +60,9 @@ This class forms part of L<Paws>, documenting arguments for method VerifyUserAtt
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

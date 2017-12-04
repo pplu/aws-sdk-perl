@@ -16,7 +16,7 @@ package Paws::KMS::Decrypt;
 
 =head1 NAME
 
-Paws::KMS::Decrypt - Arguments for method Decrypt on Paws::KMS
+Paws::KMS::Decrypt - Arguments for method Decrypt on L<Paws::KMS>
 
 =head1 DESCRIPTION
 
@@ -45,7 +45,8 @@ Ciphertext to be decrypted. The blob includes metadata.
 
 The encryption context. If this was specified in the Encrypt function,
 it must be specified here or the decryption operation will fail. For
-more information, see Encryption Context.
+more information, see Encryption Context
+(http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html).
 
 
 
@@ -53,8 +54,9 @@ more information, see Encryption Context.
 
 A list of grant tokens.
 
-For more information, see Grant Tokens in the I<AWS Key Management
-Service Developer Guide>.
+For more information, see Grant Tokens
+(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 
@@ -65,9 +67,9 @@ This class forms part of L<Paws>, documenting arguments for method Decrypt in L<
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

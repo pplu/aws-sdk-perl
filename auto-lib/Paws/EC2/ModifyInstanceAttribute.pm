@@ -29,7 +29,7 @@ package Paws::EC2::ModifyInstanceAttribute;
 
 =head1 NAME
 
-Paws::EC2::ModifyInstanceAttribute - Arguments for method ModifyInstanceAttribute on Paws::EC2
+Paws::EC2::ModifyInstanceAttribute - Arguments for method ModifyInstanceAttribute on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -63,8 +63,9 @@ volume is deleted when the instance is terminated.
 
 To add instance store volumes to an Amazon EBS-backed instance, you
 must add them when you launch the instance. For more information, see
-Updating the Block Device Mapping when Launching an Instance in the
-I<Amazon Elastic Compute Cloud User Guide>.
+Updating the Block Device Mapping when Launching an Instance
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html#Using_OverridingAMIBDM)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -72,7 +73,7 @@ I<Amazon Elastic Compute Cloud User Guide>.
 
 If the value is C<true>, you can't terminate the instance using the
 Amazon EC2 console, CLI, or API; otherwise, you can. You cannot use
-this paramater for Spot Instances.
+this parameter for Spot Instances.
 
 
 
@@ -87,7 +88,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 EbsOptimized => L<Paws::EC2::AttributeBooleanValue>
 
-Specifies whether the instance is optimized for EBS I/O. This
+Specifies whether the instance is optimized for Amazon EBS I/O. This
 optimization provides dedicated throughput to Amazon EBS and an
 optimized configuration stack to provide optimal EBS I/O performance.
 This optimization isn't available with all instance types. Additional
@@ -130,8 +131,10 @@ system shutdown).
 =head2 InstanceType => L<Paws::EC2::AttributeValue>
 
 Changes the instance type to the specified value. For more information,
-see Instance Types. If the instance type is not valid, the error
-returned is C<InvalidInstanceAttributeValue>.
+see Instance Types
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
+If the instance type is not valid, the error returned is
+C<InvalidInstanceAttributeValue>.
 
 
 
@@ -139,7 +142,8 @@ returned is C<InvalidInstanceAttributeValue>.
 
 Changes the instance's kernel to the specified value. We recommend that
 you use PV-GRUB instead of kernels and RAM disks. For more information,
-see PV-GRUB.
+see PV-GRUB
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html).
 
 
 
@@ -147,16 +151,17 @@ see PV-GRUB.
 
 Changes the instance's RAM disk to the specified value. We recommend
 that you use PV-GRUB instead of kernels and RAM disks. For more
-information, see PV-GRUB.
+information, see PV-GRUB
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html).
 
 
 
 =head2 SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>
 
 Specifies whether source/destination checking is enabled. A value of
-C<true> means that checking is enabled, and C<false> means checking is
-disabled. This value must be C<false> for a NAT instance to perform
-NAT.
+C<true> means that checking is enabled, and C<false> means that
+checking is disabled. This value must be C<false> for a NAT instance to
+perform NAT.
 
 
 
@@ -176,9 +181,9 @@ with a PV instance can make it unreachable.
 =head2 UserData => L<Paws::EC2::BlobAttributeValue>
 
 Changes the instance's user data to the specified value. If you are
-using an AWS SDK or command line tool, Base64-encoding is performed for
+using an AWS SDK or command line tool, base64-encoding is performed for
 you, and you can load the text from a file. Otherwise, you must provide
-Base64-encoded text.
+base64-encoded text.
 
 
 
@@ -197,9 +202,9 @@ This class forms part of L<Paws>, documenting arguments for method ModifyInstanc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

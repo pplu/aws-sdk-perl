@@ -23,9 +23,10 @@ The name of the bot for which utterance information was returned.
 
 =head2 Utterances => ArrayRef[L<Paws::LexModels::UtteranceList>]
 
-An array of objects, each containing a list of objects describing the
-utterances that were processed by your bot. The response contains a
-maximum of 100 C<UtteranceData> objects for each version.
+An array of UtteranceList objects, each containing a list of
+UtteranceData objects describing the utterances that were processed by
+your bot. The response contains a maximum of 100 C<UtteranceData>
+objects for each version.
 
 
 =head2 _request_id => Str

@@ -36,14 +36,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 =head1 DESCRIPTION
 
 Provides face metadata for target image faces that are analysed by
-C<CompareFaces>.
+C<CompareFaces> and C<RecognizeCelebrities>.
 
 =head1 ATTRIBUTES
 
 
 =head2 BoundingBox => L<Paws::Rekognition::BoundingBox>
 
-  
+  Bounding box of the face.
 
 
 =head2 Confidence => Num
@@ -74,9 +74,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Rekogniti
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

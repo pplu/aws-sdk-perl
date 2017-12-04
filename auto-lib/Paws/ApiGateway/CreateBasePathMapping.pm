@@ -1,10 +1,10 @@
 
 package Paws::ApiGateway::CreateBasePathMapping;
   use Moose;
-  has BasePath => (is => 'ro', isa => 'Str');
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domainName' , required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', required => 1);
-  has Stage => (is => 'ro', isa => 'Str');
+  has BasePath => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'basePath');
+  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domainName', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'restApiId', required => 1);
+  has Stage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stage');
 
   use MooseX::ClassAttribute;
 
@@ -12,14 +12,13 @@ package Paws::ApiGateway::CreateBasePathMapping;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/domainnames/{domain_name}/basepathmappings');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::BasePathMapping');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::CreateBasePathMapping - Arguments for method CreateBasePathMapping on Paws::ApiGateway
+Paws::ApiGateway::CreateBasePathMapping - Arguments for method CreateBasePathMapping on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -55,7 +54,7 @@ The domain name of the BasePathMapping resource to create.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The name of the API that you want to apply this mapping to.
+The string identifier of the associated RestApi.
 
 
 
@@ -74,9 +73,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateBasePat
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

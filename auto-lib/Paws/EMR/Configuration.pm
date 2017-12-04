@@ -41,7 +41,8 @@ and software bundled with Amazon EMR. A configuration consists of a
 classification, properties, and optional nested configurations. A
 classification refers to an application-specific configuration file.
 Properties are the settings you want to change in that file. For more
-information, see Configuring Applications.
+information, see Configuring Applications
+(http://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-configure-apps.html).
 
 =head1 ATTRIBUTES
 
@@ -69,9 +70,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EMR>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

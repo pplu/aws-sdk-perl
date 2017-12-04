@@ -45,7 +45,8 @@ CPU utilization and load average metrics for an Amazon EC2 instance.
 =head2 LoadAverage => ArrayRef[Num]
 
   Load average in the last 1-minute, 5-minute, and 15-minute periods. For
-more information, see Operating System Metrics.
+more information, see Operating System Metrics
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-metrics.html#health-enhanced-metrics-os).
 
 
 
@@ -55,9 +56,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ElasticBe
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

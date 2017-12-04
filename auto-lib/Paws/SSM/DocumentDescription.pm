@@ -15,6 +15,7 @@ package Paws::SSM::DocumentDescription;
   has SchemaVersion => (is => 'ro', isa => 'Str');
   has Sha1 => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
 1;
 
 ### main pod documentation begin ###
@@ -34,7 +35,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::DocumentDescription object:
 
-  $service_obj->Method(Att1 => { CreatedDate => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { CreatedDate => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -45,7 +46,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Docume
 
 =head1 DESCRIPTION
 
-Describes an SSM document.
+Describes a Systems Manager document.
 
 =head1 ATTRIBUTES
 
@@ -97,12 +98,12 @@ Sha1 hashes have been deprecated.
 
 =head2 Name => Str
 
-  The name of the SSM document.
+  The name of the Systems Manager document.
 
 
 =head2 Owner => Str
 
-  The AWS user account of the person who created the document.
+  The AWS user account that created the document.
 
 
 =head2 Parameters => ArrayRef[L<Paws::SSM::DocumentParameter>]
@@ -112,7 +113,7 @@ Sha1 hashes have been deprecated.
 
 =head2 PlatformTypes => ArrayRef[Str|Undef]
 
-  The list of OS platforms compatible with this SSM document.
+  The list of OS platforms compatible with this Systems Manager document.
 
 
 =head2 SchemaVersion => Str
@@ -122,13 +123,17 @@ Sha1 hashes have been deprecated.
 
 =head2 Sha1 => Str
 
-  The SHA1 hash of the document, which you can use for verification
-purposes.
+  The SHA1 hash of the document, which you can use for verification.
 
 
 =head2 Status => Str
 
-  The status of the SSM document.
+  The status of the Systems Manager document.
+
+
+=head2 Tags => ArrayRef[L<Paws::SSM::Tag>]
+
+  The tags, or metadata, that have been applied to the document.
 
 
 
@@ -138,9 +143,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

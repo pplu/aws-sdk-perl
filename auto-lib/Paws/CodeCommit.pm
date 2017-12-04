@@ -11,7 +11,7 @@ package Paws::CodeCommit;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub BatchGetRepositories {
@@ -27,6 +27,11 @@ package Paws::CodeCommit;
   sub CreateRepository {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::CreateRepository', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteBranch {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::DeleteBranch', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteRepository {
@@ -105,18 +110,20 @@ package Paws::CodeCommit;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListBranches(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListBranches(@_, nextToken => $result->nextToken);
-        push @{ $result->branches }, @{ $result->branches };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListBranches(@_, nextToken => $next_result->nextToken);
+        push @{ $result->branches }, @{ $next_result->branches };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListBranches(@_, nextToken => $result->nextToken);
         $callback->($_ => 'branches') foreach (@{ $result->branches });
+        $result = $self->ListBranches(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'branches') foreach (@{ $result->branches });
     }
 
     return undef
@@ -126,25 +133,27 @@ package Paws::CodeCommit;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListRepositories(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListRepositories(@_, nextToken => $result->nextToken);
-        push @{ $result->repositories }, @{ $result->repositories };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListRepositories(@_, nextToken => $next_result->nextToken);
+        push @{ $result->repositories }, @{ $next_result->repositories };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListRepositories(@_, nextToken => $result->nextToken);
         $callback->($_ => 'repositories') foreach (@{ $result->repositories });
+        $result = $self->ListRepositories(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'repositories') foreach (@{ $result->repositories });
     }
 
     return undef
   }
 
 
-  sub operations { qw/BatchGetRepositories CreateBranch CreateRepository DeleteRepository GetBlob GetBranch GetCommit GetDifferences GetRepository GetRepositoryTriggers ListBranches ListRepositories PutRepositoryTriggers TestRepositoryTriggers UpdateDefaultBranch UpdateRepositoryDescription UpdateRepositoryName / }
+  sub operations { qw/BatchGetRepositories CreateBranch CreateRepository DeleteBranch DeleteRepository GetBlob GetBranch GetCommit GetDifferences GetRepository GetRepositoryTriggers ListBranches ListRepositories PutRepositoryTriggers TestRepositoryTriggers UpdateDefaultBranch UpdateRepositoryDescription UpdateRepositoryName / }
 
 1;
 
@@ -230,6 +239,11 @@ CreateBranch, which creates a new branch in a specified repository
 
 =item *
 
+DeleteBranch, which deletes the specified branch in a repository unless
+it is the default branch
+
+=item *
+
 GetBranch, which returns information about a specified branch
 
 =item *
@@ -287,7 +301,8 @@ trigger by sending data to the trigger target
 =back
 
 For information about how to use AWS CodeCommit, see the AWS CodeCommit
-User Guide.
+User Guide
+(http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html).
 
 =head1 METHODS
 
@@ -297,7 +312,7 @@ Each argument is described in detail in: L<Paws::CodeCommit::BatchGetRepositorie
 
 Returns: a L<Paws::CodeCommit::BatchGetRepositoriesOutput> instance
 
-  Returns information about one or more repositories.
+Returns information about one or more repositories.
 
 The description field for a repository accepts all HTML characters and
 all valid Unicode characters. Applications that do not HTML-encode the
@@ -313,7 +328,7 @@ Each argument is described in detail in: L<Paws::CodeCommit::CreateBranch>
 
 Returns: nothing
 
-  Creates a new branch in a repository and points the branch to a commit.
+Creates a new branch in a repository and points the branch to a commit.
 
 Calling the create branch operation does not set a repository's default
 branch. To do this, call the update default branch operation.
@@ -325,7 +340,17 @@ Each argument is described in detail in: L<Paws::CodeCommit::CreateRepository>
 
 Returns: a L<Paws::CodeCommit::CreateRepositoryOutput> instance
 
-  Creates a new, empty repository.
+Creates a new, empty repository.
+
+
+=head2 DeleteBranch(BranchName => Str, RepositoryName => Str)
+
+Each argument is described in detail in: L<Paws::CodeCommit::DeleteBranch>
+
+Returns: a L<Paws::CodeCommit::DeleteBranchOutput> instance
+
+Deletes a branch from a repository, unless that branch is the default
+branch for the repository.
 
 
 =head2 DeleteRepository(RepositoryName => Str)
@@ -334,7 +359,7 @@ Each argument is described in detail in: L<Paws::CodeCommit::DeleteRepository>
 
 Returns: a L<Paws::CodeCommit::DeleteRepositoryOutput> instance
 
-  Deletes a repository. If a specified repository was already deleted, a
+Deletes a repository. If a specified repository was already deleted, a
 null repository ID will be returned.
 
 Deleting a repository also deletes all associated objects and metadata.
@@ -348,7 +373,7 @@ Each argument is described in detail in: L<Paws::CodeCommit::GetBlob>
 
 Returns: a L<Paws::CodeCommit::GetBlobOutput> instance
 
-  Returns the base-64 encoded content of an individual blob within a
+Returns the base-64 encoded content of an individual blob within a
 repository.
 
 
@@ -358,7 +383,7 @@ Each argument is described in detail in: L<Paws::CodeCommit::GetBranch>
 
 Returns: a L<Paws::CodeCommit::GetBranchOutput> instance
 
-  Returns information about a repository branch, including its name and
+Returns information about a repository branch, including its name and
 the last commit ID.
 
 
@@ -368,7 +393,7 @@ Each argument is described in detail in: L<Paws::CodeCommit::GetCommit>
 
 Returns: a L<Paws::CodeCommit::GetCommitOutput> instance
 
-  Returns information about a commit, including commit message and
+Returns information about a commit, including commit message and
 committer information.
 
 
@@ -378,7 +403,7 @@ Each argument is described in detail in: L<Paws::CodeCommit::GetDifferences>
 
 Returns: a L<Paws::CodeCommit::GetDifferencesOutput> instance
 
-  Returns information about the differences in a valid commit specifier
+Returns information about the differences in a valid commit specifier
 (such as a branch, tag, HEAD, commit ID or other fully qualified
 reference). Results can be limited to a specified path.
 
@@ -389,7 +414,7 @@ Each argument is described in detail in: L<Paws::CodeCommit::GetRepository>
 
 Returns: a L<Paws::CodeCommit::GetRepositoryOutput> instance
 
-  Returns information about a repository.
+Returns information about a repository.
 
 The description field for a repository accepts all HTML characters and
 all valid Unicode characters. Applications that do not HTML-encode the
@@ -405,7 +430,7 @@ Each argument is described in detail in: L<Paws::CodeCommit::GetRepositoryTrigge
 
 Returns: a L<Paws::CodeCommit::GetRepositoryTriggersOutput> instance
 
-  Gets information about triggers configured for a repository.
+Gets information about triggers configured for a repository.
 
 
 =head2 ListBranches(RepositoryName => Str, [NextToken => Str])
@@ -414,7 +439,7 @@ Each argument is described in detail in: L<Paws::CodeCommit::ListBranches>
 
 Returns: a L<Paws::CodeCommit::ListBranchesOutput> instance
 
-  Gets information about one or more branches in a repository.
+Gets information about one or more branches in a repository.
 
 
 =head2 ListRepositories([NextToken => Str, Order => Str, SortBy => Str])
@@ -423,7 +448,7 @@ Each argument is described in detail in: L<Paws::CodeCommit::ListRepositories>
 
 Returns: a L<Paws::CodeCommit::ListRepositoriesOutput> instance
 
-  Gets information about one or more repositories.
+Gets information about one or more repositories.
 
 
 =head2 PutRepositoryTriggers(RepositoryName => Str, Triggers => ArrayRef[L<Paws::CodeCommit::RepositoryTrigger>])
@@ -432,7 +457,7 @@ Each argument is described in detail in: L<Paws::CodeCommit::PutRepositoryTrigge
 
 Returns: a L<Paws::CodeCommit::PutRepositoryTriggersOutput> instance
 
-  Replaces all triggers for a repository. This can be used to create or
+Replaces all triggers for a repository. This can be used to create or
 delete triggers.
 
 
@@ -442,7 +467,7 @@ Each argument is described in detail in: L<Paws::CodeCommit::TestRepositoryTrigg
 
 Returns: a L<Paws::CodeCommit::TestRepositoryTriggersOutput> instance
 
-  Tests the functionality of repository triggers by sending information
+Tests the functionality of repository triggers by sending information
 to the trigger target. If real data is available in the repository, the
 test will send data from the last commit. If no data is available,
 sample data will be generated.
@@ -454,7 +479,7 @@ Each argument is described in detail in: L<Paws::CodeCommit::UpdateDefaultBranch
 
 Returns: nothing
 
-  Sets or changes the default branch name for the specified repository.
+Sets or changes the default branch name for the specified repository.
 
 If you use this operation to change the default branch name to the
 current default branch name, a success message is returned even though
@@ -467,7 +492,7 @@ Each argument is described in detail in: L<Paws::CodeCommit::UpdateRepositoryDes
 
 Returns: nothing
 
-  Sets or changes the comment or description for a repository.
+Sets or changes the comment or description for a repository.
 
 The description field for a repository accepts all HTML characters and
 all valid Unicode characters. Applications that do not HTML-encode the
@@ -483,12 +508,13 @@ Each argument is described in detail in: L<Paws::CodeCommit::UpdateRepositoryNam
 
 Returns: nothing
 
-  Renames a repository. The repository name must be unique across the
+Renames a repository. The repository name must be unique across the
 calling AWS account. In addition, repository names are limited to 100
 alphanumeric, dash, and underscore characters, and cannot include
 certain characters. The suffix ".git" is prohibited. For a full
-description of the limits on repository names, see Limits in the AWS
-CodeCommit User Guide.
+description of the limits on repository names, see Limits
+(http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html) in
+the AWS CodeCommit User Guide.
 
 
 
@@ -530,9 +556,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

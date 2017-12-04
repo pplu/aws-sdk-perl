@@ -46,13 +46,15 @@ This class has no description
 
   The start of port range for the TCP and UDP protocols, or an
 ICMP/ICMPv6 type number. A value of C<-1> indicates all ICMP/ICMPv6
-types.
+types. If you specify all ICMP/ICMPv6 types, you must specify all
+codes.
 
 
 =head2 IpProtocol => Str
 
   The IP protocol name (C<tcp>, C<udp>, C<icmp>) or number (see Protocol
-Numbers).
+Numbers
+(http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)).
 
 [EC2-VPC only] Use C<-1> to specify all protocols. When authorizing
 security group rules, specifying C<-1> or a protocol number other than
@@ -86,7 +88,8 @@ associated with the security group.
 
   The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6
 code. A value of C<-1> indicates all ICMP/ICMPv6 codes for the
-specified ICMP type.
+specified ICMP type. If you specify all ICMP/ICMPv6 types, you must
+specify all codes.
 
 
 =head2 UserIdGroupPairs => ArrayRef[L<Paws::EC2::UserIdGroupPair>]
@@ -101,8 +104,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

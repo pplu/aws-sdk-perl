@@ -6,6 +6,8 @@ package Paws::ElasticBeanstalk::DescribeEnvironments;
   has EnvironmentNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has IncludedDeletedBackTo => (is => 'ro', isa => 'Str');
   has IncludeDeleted => (is => 'ro', isa => 'Bool');
+  has MaxRecords => (is => 'ro', isa => 'Int');
+  has NextToken => (is => 'ro', isa => 'Str');
   has VersionLabel => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -19,7 +21,7 @@ package Paws::ElasticBeanstalk::DescribeEnvironments;
 
 =head1 NAME
 
-Paws::ElasticBeanstalk::DescribeEnvironments - Arguments for method DescribeEnvironments on Paws::ElasticBeanstalk
+Paws::ElasticBeanstalk::DescribeEnvironments - Arguments for method DescribeEnvironments on L<Paws::ElasticBeanstalk>
 
 =head1 DESCRIPTION
 
@@ -77,6 +79,26 @@ C<false>: Do not include deleted environments.
 
 
 
+=head2 MaxRecords => Int
+
+For a paginated request. Specify a maximum number of environments to
+include in each response.
+
+If no C<MaxRecords> is specified, all available environments are
+retrieved in a single response.
+
+
+
+=head2 NextToken => Str
+
+For a paginated request. Specify a token from a previous response page
+to retrieve the next response page. All other parameter values must be
+identical to the ones specified in the initial request.
+
+If no C<NextToken> is specified, the first page is retrieved.
+
+
+
 =head2 VersionLabel => Str
 
 If specified, AWS Elastic Beanstalk restricts the returned descriptions
@@ -92,9 +114,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeEnvir
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

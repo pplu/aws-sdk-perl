@@ -43,31 +43,46 @@ This class has no description
 =head2 Provisioned => Str
 
   Reserved. If you need to sustain traffic greater than the documented
-limits, contact us through the Support Center.
+limits
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html),
+contact us through the Support Center
+(https://console.aws.amazon.com/support/home?).
 
 
 =head2 ProvisionTime => Str
 
   Reserved. If you need to sustain traffic greater than the documented
-limits, contact us through the Support Center.
+limits
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html),
+contact us through the Support Center
+(https://console.aws.amazon.com/support/home?).
 
 
 =head2 Requested => Str
 
   Reserved. If you need to sustain traffic greater than the documented
-limits, contact us through the Support Center.
+limits
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html),
+contact us through the Support Center
+(https://console.aws.amazon.com/support/home?).
 
 
 =head2 RequestTime => Str
 
   Reserved. If you need to sustain traffic greater than the documented
-limits, contact us through the Support Center.
+limits
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html),
+contact us through the Support Center
+(https://console.aws.amazon.com/support/home?).
 
 
 =head2 Status => Str
 
   Reserved. If you need to sustain traffic greater than the documented
-limits, contact us through the Support Center.
+limits
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html),
+contact us through the Support Center
+(https://console.aws.amazon.com/support/home?).
 
 
 
@@ -77,8 +92,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

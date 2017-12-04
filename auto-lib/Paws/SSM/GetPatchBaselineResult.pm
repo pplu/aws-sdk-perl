@@ -3,12 +3,14 @@ package Paws::SSM::GetPatchBaselineResult;
   use Moose;
   has ApprovalRules => (is => 'ro', isa => 'Paws::SSM::PatchRuleGroup');
   has ApprovedPatches => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ApprovedPatchesComplianceLevel => (is => 'ro', isa => 'Str');
   has BaselineId => (is => 'ro', isa => 'Str');
   has CreatedDate => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has GlobalFilters => (is => 'ro', isa => 'Paws::SSM::PatchFilterGroup');
   has ModifiedDate => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has OperatingSystem => (is => 'ro', isa => 'Str');
   has PatchGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RejectedPatches => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
@@ -33,6 +35,12 @@ A set of rules used to include patches in the baseline.
 A list of explicitly approved patches for the baseline.
 
 
+=head2 ApprovedPatchesComplianceLevel => Str
+
+Returns the specified compliance severity level for approved patches in
+the patch baseline.
+
+Valid values are: C<"CRITICAL">, C<"HIGH">, C<"MEDIUM">, C<"LOW">, C<"INFORMATIONAL">, C<"UNSPECIFIED">
 =head2 BaselineId => Str
 
 The ID of the retrieved patch baseline.
@@ -63,6 +71,11 @@ The date the patch baseline was last modified.
 The name of the patch baseline.
 
 
+=head2 OperatingSystem => Str
+
+Returns the operating system specified for the patch baseline.
+
+Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">
 =head2 PatchGroups => ArrayRef[Str|Undef]
 
 Patch groups included in the patch baseline.

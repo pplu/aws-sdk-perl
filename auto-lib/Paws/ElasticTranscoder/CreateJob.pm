@@ -16,14 +16,13 @@ package Paws::ElasticTranscoder::CreateJob;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2012-09-25/jobs');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::CreateJobResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ElasticTranscoder::CreateJob - Arguments for method CreateJob on Paws::ElasticTranscoder
+Paws::ElasticTranscoder::CreateJob - Arguments for method CreateJob on L<Paws::ElasticTranscoder>
 
 =head1 DESCRIPTION
 
@@ -118,9 +117,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateJob in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

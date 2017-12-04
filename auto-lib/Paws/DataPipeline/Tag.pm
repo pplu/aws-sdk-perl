@@ -35,7 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 Tags are key/value pairs defined by a user and associated with a
 pipeline to control access. AWS Data Pipeline allows you to associate
 ten tags per pipeline. For more information, see Controlling User
-Access to Pipelines in the I<AWS Data Pipeline Developer Guide>.
+Access to Pipelines
+(http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html)
+in the I<AWS Data Pipeline Developer Guide>.
 
 =head1 ATTRIBUTES
 
@@ -43,15 +45,17 @@ Access to Pipelines in the I<AWS Data Pipeline Developer Guide>.
 =head2 B<REQUIRED> Key => Str
 
   The key name of a tag defined by a user. For more information, see
-Controlling User Access to Pipelines in the I<AWS Data Pipeline
-Developer Guide>.
+Controlling User Access to Pipelines
+(http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html)
+in the I<AWS Data Pipeline Developer Guide>.
 
 
 =head2 B<REQUIRED> Value => Str
 
   The optional value portion of a tag defined by a user. For more
-information, see Controlling User Access to Pipelines in the I<AWS Data
-Pipeline Developer Guide>.
+information, see Controlling User Access to Pipelines
+(http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html)
+in the I<AWS Data Pipeline Developer Guide>.
 
 
 
@@ -61,9 +65,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::DataPipel
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

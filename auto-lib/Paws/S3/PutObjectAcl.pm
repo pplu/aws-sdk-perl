@@ -4,7 +4,7 @@ package Paws::S3::PutObjectAcl;
   has AccessControlPolicy => (is => 'ro', isa => 'Paws::S3::AccessControlPolicy');
   has ACL => (is => 'ro', isa => 'Str', header_name => 'x-amz-acl', traits => ['ParamInHeader']);
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', traits => ['ParamInHeader']);
+  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has GrantFullControl => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-full-control', traits => ['ParamInHeader']);
   has GrantRead => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-read', traits => ['ParamInHeader']);
   has GrantReadACP => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-read-acp', traits => ['ParamInHeader']);
@@ -28,7 +28,7 @@ package Paws::S3::PutObjectAcl;
 
 =head1 NAME
 
-Paws::S3::PutObjectAcl - Arguments for method PutObjectAcl on Paws::S3
+Paws::S3::PutObjectAcl - Arguments for method PutObjectAcl on L<Paws::S3>
 
 =head1 DESCRIPTION
 
@@ -128,9 +128,9 @@ This class forms part of L<Paws>, documenting arguments for method PutObjectAcl 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

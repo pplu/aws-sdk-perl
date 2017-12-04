@@ -17,7 +17,7 @@ package Paws::GameLift::DescribeScalingPolicies;
 
 =head1 NAME
 
-Paws::GameLift::DescribeScalingPolicies - Arguments for method DescribeScalingPolicies on Paws::GameLift
+Paws::GameLift::DescribeScalingPolicies - Arguments for method DescribeScalingPolicies on L<Paws::GameLift>
 
 =head1 DESCRIPTION
 
@@ -53,7 +53,7 @@ C<NextToken> to get results as a set of sequential pages.
 
 Token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this action. To
-specify the start of the result set, do not specify a value.
+start at the beginning of the result set, do not specify a value.
 
 
 
@@ -66,34 +66,34 @@ force when in an C<ACTIVE> status.
 
 =item *
 
-B<ACTIVE> E<ndash> The scaling policy is currently in force.
+B<ACTIVE> -- The scaling policy is currently in force.
 
 =item *
 
-B<UPDATEREQUESTED> E<ndash> A request to update the scaling policy has
-been received.
+B<UPDATEREQUESTED> -- A request to update the scaling policy has been
+received.
 
 =item *
 
-B<UPDATING> E<ndash> A change is being made to the scaling policy.
+B<UPDATING> -- A change is being made to the scaling policy.
 
 =item *
 
-B<DELETEREQUESTED> E<ndash> A request to delete the scaling policy has
-been received.
+B<DELETEREQUESTED> -- A request to delete the scaling policy has been
+received.
 
 =item *
 
-B<DELETING> E<ndash> The scaling policy is being deleted.
+B<DELETING> -- The scaling policy is being deleted.
 
 =item *
 
-B<DELETED> E<ndash> The scaling policy has been deleted.
+B<DELETED> -- The scaling policy has been deleted.
 
 =item *
 
-B<ERROR> E<ndash> An error occurred in creating the policy. It should
-be removed and recreated.
+B<ERROR> -- An error occurred in creating the policy. It should be
+removed and recreated.
 
 =back
 
@@ -107,9 +107,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeScali
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

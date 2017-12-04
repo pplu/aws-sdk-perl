@@ -9,6 +9,7 @@ package Paws::SSM::MaintenanceWindowExecutionTaskInvocationIdentity;
   has Status => (is => 'ro', isa => 'Str');
   has StatusDetails => (is => 'ro', isa => 'Str');
   has TaskExecutionId => (is => 'ro', isa => 'Str');
+  has TaskType => (is => 'ro', isa => 'Str');
   has WindowExecutionId => (is => 'ro', isa => 'Str');
   has WindowTargetId => (is => 'ro', isa => 'Str');
 1;
@@ -100,6 +101,11 @@ available for certain Status values.
 execution.
 
 
+=head2 TaskType => Str
+
+  The task type.
+
+
 =head2 WindowExecutionId => Str
 
   The ID of the Maintenance Window execution that ran the task.
@@ -118,9 +124,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

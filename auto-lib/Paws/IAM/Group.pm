@@ -63,19 +63,23 @@ ListGroups
 
   The Amazon Resource Name (ARN) specifying the group. For more
 information about ARNs and how to use them in policies, see IAM
-Identifiers in the I<Using IAM> guide.
+Identifiers
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+in the I<Using IAM> guide.
 
 
 =head2 B<REQUIRED> CreateDate => Str
 
-  The date and time, in ISO 8601 date-time format, when the group was
-created.
+  The date and time, in ISO 8601 date-time format
+(http://www.iso.org/iso/iso8601), when the group was created.
 
 
 =head2 B<REQUIRED> GroupId => Str
 
   The stable and unique string identifying the group. For more
-information about IDs, see IAM Identifiers in the I<Using IAM> guide.
+information about IDs, see IAM Identifiers
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+in the I<Using IAM> guide.
 
 
 =head2 B<REQUIRED> GroupName => Str
@@ -86,7 +90,9 @@ information about IDs, see IAM Identifiers in the I<Using IAM> guide.
 =head2 B<REQUIRED> Path => Str
 
   The path to the group. For more information about paths, see IAM
-Identifiers in the I<Using IAM> guide.
+Identifiers
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+in the I<Using IAM> guide.
 
 
 
@@ -96,9 +102,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

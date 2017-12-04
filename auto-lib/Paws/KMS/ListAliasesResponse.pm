@@ -18,7 +18,7 @@ Paws::KMS::ListAliasesResponse
 
 =head2 Aliases => ArrayRef[L<Paws::KMS::AliasListEntry>]
 
-A list of key aliases in the user's account.
+A list of aliases.
 
 
 =head2 NextMarker => Str
@@ -30,9 +30,9 @@ value to use for the C<Marker> parameter in a subsequent request.
 =head2 Truncated => Bool
 
 A flag that indicates whether there are more items in the list. When
-this value is true, the list in this response is truncated. To retrieve
-more items, pass the value of the C<NextMarker> element in this
-response to the C<Marker> parameter in a subsequent request.
+this value is true, the list in this response is truncated. To get more
+items, pass the value of the C<NextMarker> element in this response to
+the C<Marker> parameter in a subsequent request.
 
 
 =head2 _request_id => Str

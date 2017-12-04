@@ -1,10 +1,10 @@
 
 package Paws::EFS::DescribeFileSystems;
   use Moose;
-  has CreationToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'CreationToken' );
-  has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'FileSystemId' );
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker' );
-  has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxItems' );
+  has CreationToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'CreationToken');
+  has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'FileSystemId');
+  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker');
+  has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxItems');
 
   use MooseX::ClassAttribute;
 
@@ -12,14 +12,13 @@ package Paws::EFS::DescribeFileSystems;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-02-01/file-systems');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EFS::DescribeFileSystemsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::EFS::DescribeFileSystems - Arguments for method DescribeFileSystems on Paws::EFS
+Paws::EFS::DescribeFileSystems - Arguments for method DescribeFileSystems on L<Paws::EFS>
 
 =head1 DESCRIPTION
 
@@ -78,9 +77,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeFileS
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

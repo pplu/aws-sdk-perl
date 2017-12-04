@@ -182,13 +182,14 @@ Time (UTC).
 
 =head2 SourceDBSnapshotIdentifier => Str
 
-  The DB snapshot Arn that the DB snapshot was copied from. It only has
-value in case of cross customer or cross region copy.
+  The DB snapshot Amazon Resource Name (ARN) that the DB snapshot was
+copied from. It only has value in case of cross-customer or
+cross-region copy.
 
 
 =head2 SourceRegion => Str
 
-  The region that the DB snapshot was created in or copied from.
+  The AWS Region that the DB snapshot was created in or copied from.
 
 
 =head2 Status => Str
@@ -227,9 +228,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -40,7 +40,7 @@ Represents the output of an AttachObject operation.
 
 =head2 B<REQUIRED> ChildReference => L<Paws::CloudDirectory::ObjectReference>
 
-  Child object reference to be attached to the object.
+  The child object reference that is to be attached to the object.
 
 
 =head2 B<REQUIRED> LinkName => Str
@@ -50,7 +50,7 @@ Represents the output of an AttachObject operation.
 
 =head2 B<REQUIRED> ParentReference => L<Paws::CloudDirectory::ObjectReference>
 
-  Parent object reference.
+  The parent object reference.
 
 
 
@@ -60,9 +60,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudDire
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

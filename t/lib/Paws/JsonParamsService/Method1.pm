@@ -4,6 +4,7 @@ package Paws::JsonParamsService::Method1;
   use Moose;
 
   has response => (isa => 'Str', is => 'ro', required => 1);
+  has status => (isa => 'Int', is => 'ro', default => 200);
 
   use MooseX::ClassAttribute;
 

@@ -1,10 +1,10 @@
 
 package Paws::ApiGateway::CreateRequestValidator;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
-  has ValidateRequestBody => (is => 'ro', isa => 'Bool');
-  has ValidateRequestParameters => (is => 'ro', isa => 'Bool');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has ValidateRequestBody => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'validateRequestBody');
+  has ValidateRequestParameters => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'validateRequestParameters');
 
   use MooseX::ClassAttribute;
 
@@ -12,14 +12,13 @@ package Paws::ApiGateway::CreateRequestValidator;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/requestvalidators');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::RequestValidator');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::CreateRequestValidator - Arguments for method CreateRequestValidator on Paws::ApiGateway
+Paws::ApiGateway::CreateRequestValidator - Arguments for method CreateRequestValidator on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -46,8 +45,7 @@ The name of the to-be-created RequestValidator.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-[Required] The identifier of the RestApi for which the RequestValidator
-is created.
+The string identifier of the associated RestApi.
 
 
 
@@ -73,9 +71,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateRequest
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

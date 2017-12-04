@@ -18,8 +18,7 @@ Paws::ApiGateway::DomainNames
 
 =head2 Items => ArrayRef[L<Paws::ApiGateway::DomainName>]
 
-The current page of any DomainName resources in the collection of
-DomainName resources.
+The current page of elements from this collection.
 
 
 =head2 Position => Str

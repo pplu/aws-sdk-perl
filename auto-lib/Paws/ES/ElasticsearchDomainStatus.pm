@@ -11,8 +11,11 @@ package Paws::ES::ElasticsearchDomainStatus;
   has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfig', required => 1);
   has ElasticsearchVersion => (is => 'ro', isa => 'Str');
   has Endpoint => (is => 'ro', isa => 'Str');
+  has Endpoints => (is => 'ro', isa => 'Paws::ES::EndpointsMap');
+  has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptions');
   has Processing => (is => 'ro', isa => 'Bool');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptions');
+  has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCDerivedInfo');
 1;
 
 ### main pod documentation begin ###
@@ -32,7 +35,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ES::ElasticsearchDomainStatus object:
 
-  $service_obj->Method(Att1 => { AccessPolicies => $value, ..., SnapshotOptions => $value  });
+  $service_obj->Method(Att1 => { AccessPolicies => $value, ..., VPCOptions => $value  });
 
 =head3 Results returned from an API call
 
@@ -61,8 +64,9 @@ The current status of an Elasticsearch domain.
 =head2 B<REQUIRED> ARN => Str
 
   The Amazon resource name (ARN) of an Elasticsearch domain. See
-Identifiers for IAM Entities in I<Using AWS Identity and Access
-Management> for more information.
+Identifiers for IAM Entities
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html)
+in I<Using AWS Identity and Access Management> for more information.
 
 
 =head2 Created => Bool
@@ -95,7 +99,9 @@ with a letter or number and can contain the following characters: a-z
 =head2 EBSOptions => L<Paws::ES::EBSOptions>
 
   The C<EBSOptions> for the specified domain. See Configuring EBS-based
-Storage for more information.
+Storage
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs)
+for more information.
 
 
 =head2 B<REQUIRED> ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>
@@ -114,6 +120,18 @@ Storage for more information.
 search requests.
 
 
+=head2 Endpoints => L<Paws::ES::EndpointsMap>
+
+  Map containing the Elasticsearch domain endpoints used to submit index
+and search requests. Example C<key, value>:
+C<'vpc','vpc-endpoint-h2dsd34efgyghrtguk5gt6j2foh4.us-east-1.es.amazonaws.com'>.
+
+
+=head2 LogPublishingOptions => L<Paws::ES::LogPublishingOptions>
+
+  Log publishing options for the given domain.
+
+
 =head2 Processing => Bool
 
   The status of the Elasticsearch domain configuration. C<True> if Amazon
@@ -126,6 +144,13 @@ the configuration is active.
   Specifies the status of the C<SnapshotOptions>
 
 
+=head2 VPCOptions => L<Paws::ES::VPCDerivedInfo>
+
+  The C<VPCOptions> for the specified domain. For more information, see
+VPC Endpoints for Amazon Elasticsearch Service Domains
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html).
+
+
 
 =head1 SEE ALSO
 
@@ -133,9 +158,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ES>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

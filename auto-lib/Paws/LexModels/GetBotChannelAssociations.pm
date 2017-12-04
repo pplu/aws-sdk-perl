@@ -1,11 +1,11 @@
 
 package Paws::LexModels::GetBotChannelAssociations;
   use Moose;
-  has BotAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botAlias' , required => 1);
-  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName' , required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults' );
-  has NameContains => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nameContains' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken' );
+  has BotAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botAlias', required => 1);
+  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName', required => 1);
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
+  has NameContains => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nameContains');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
 
   use MooseX::ClassAttribute;
 
@@ -13,14 +13,13 @@ package Paws::LexModels::GetBotChannelAssociations;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/bots/{botName}/aliases/{aliasName}/channels/');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexModels::GetBotChannelAssociationsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::LexModels::GetBotChannelAssociations - Arguments for method GetBotChannelAssociations on Paws::LexModels
+Paws::LexModels::GetBotChannelAssociations - Arguments for method GetBotChannelAssociations on L<Paws::LexModels>
 
 =head1 DESCRIPTION
 
@@ -63,7 +62,8 @@ default is 50.
 
 Substring to match in channel association names. An association will be
 returned if any part of its name matches the substring. For example,
-"xyz" matches both "xyzabc" and "abcxyz."
+"xyz" matches both "xyzabc" and "abcxyz." To return all bot channel
+associations, use a hyphen ("-") as the C<nameContains> parameter.
 
 
 
@@ -83,9 +83,9 @@ This class forms part of L<Paws>, documenting arguments for method GetBotChannel
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -103,7 +103,8 @@ user input provided as part of the SendCommand API.
 at the same time. You can specify a number of instances, such as 10, or
 a percentage of instances, such as 10%. The default value is 50. For
 more information about how to use MaxConcurrency, see Executing a
-Command Using Systems Manager Run Command.
+Command Using Systems Manager Run Command
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html).
 
 
 =head2 MaxErrors => Str
@@ -112,7 +113,8 @@ Command Using Systems Manager Run Command.
 the command to additional targets. You can specify a number of errors,
 such as 10, or a percentage or errors, such as 10%. The default value
 is 50. For more information about how to use MaxErrors, see Executing a
-Command Using Systems Manager Run Command.
+Command Using Systems Manager Run Command
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html).
 
 
 =head2 NotificationConfig => L<Paws::SSM::NotificationConfig>
@@ -135,9 +137,9 @@ the command.
 
 =head2 OutputS3Region => Str
 
-  The region where the Amazon Simple Storage Service (Amazon S3) output
-bucket is located. The default value is the region where Run Command is
-being called.
+  (Deprecated) You can no longer specify this parameter. The system
+ignores it. Instead, Systems Manager automatically determines the
+Amazon S3 bucket region.
 
 
 =head2 Parameters => L<Paws::SSM::Parameters>
@@ -168,7 +170,9 @@ sending notifications about command status changes.
 information than Status because it includes states resulting from error
 and concurrency control parameters. StatusDetails can show different
 results than Status. For more information about these statuses, see Run
-Command Status. StatusDetails can be one of the following values:
+Command Status
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html).
+StatusDetails can be one of the following values:
 
 =over
 
@@ -241,9 +245,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -17,7 +17,7 @@ package Paws::RedShift::EnableSnapshotCopy;
 
 =head1 NAME
 
-Paws::RedShift::EnableSnapshotCopy - Arguments for method EnableSnapshotCopy on Paws::RedShift
+Paws::RedShift::EnableSnapshotCopy - Arguments for method EnableSnapshotCopy on L<Paws::RedShift>
 
 =head1 DESCRIPTION
 
@@ -50,7 +50,9 @@ not already have cross-region snapshot copy enabled.
 The destination region that you want to copy snapshots to.
 
 Constraints: Must be the name of a valid region. For more information,
-see Regions and Endpoints in the Amazon Web Services General Reference.
+see Regions and Endpoints
+(http://docs.aws.amazon.com/general/latest/gr/rande.html#redshift_region)
+in the Amazon Web Services General Reference.
 
 
 
@@ -79,9 +81,9 @@ This class forms part of L<Paws>, documenting arguments for method EnableSnapsho
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

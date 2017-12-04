@@ -3,7 +3,7 @@ package Paws::S3::PutBucketLogging;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has BucketLoggingStatus => (is => 'ro', isa => 'Paws::S3::BucketLoggingStatus', required => 1);
-  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', traits => ['ParamInHeader']);
+  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
 
   use MooseX::ClassAttribute;
 
@@ -19,7 +19,7 @@ package Paws::S3::PutBucketLogging;
 
 =head1 NAME
 
-Paws::S3::PutBucketLogging - Arguments for method PutBucketLogging on Paws::S3
+Paws::S3::PutBucketLogging - Arguments for method PutBucketLogging on L<Paws::S3>
 
 =head1 DESCRIPTION
 
@@ -63,9 +63,9 @@ This class forms part of L<Paws>, documenting arguments for method PutBucketLogg
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

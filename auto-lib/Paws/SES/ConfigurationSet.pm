@@ -33,27 +33,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Config
 
 The name of the configuration set.
 
-Configuration sets enable you to publish email sending events. For
-information about using configuration sets, see the Amazon SES
-Developer Guide.
+Configuration sets let you create groups of rules that you can apply to
+the emails you send using Amazon SES. For more information about using
+configuration sets, see Using Amazon SES Configuration Sets
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/using-configuration-sets.html)
+in the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/).
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the configuration set. The name must:
+  The name of the configuration set. The name must meet the following
+requirements:
 
 =over
 
 =item *
 
-Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_),
-or dashes (-).
+Contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or
+dashes (-).
 
 =item *
 
-Contain less than 64 characters.
+Contain 64 characters or fewer.
 
 =back
 
@@ -66,9 +70,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SES>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

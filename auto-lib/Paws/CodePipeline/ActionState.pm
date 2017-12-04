@@ -47,7 +47,7 @@ Represents information about the state of an action.
 
 =head2 CurrentRevision => L<Paws::CodePipeline::ActionRevision>
 
-  
+  Represents information about the version (or revision) of an action.
 
 
 =head2 EntityUrl => Str
@@ -58,7 +58,7 @@ a deployment group details page.
 
 =head2 LatestExecution => L<Paws::CodePipeline::ActionExecution>
 
-  
+  Represents information about the run of an action.
 
 
 =head2 RevisionUrl => Str
@@ -74,9 +74,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodePipel
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

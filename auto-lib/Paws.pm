@@ -57,7 +57,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.33';
+our $VERSION = '0.36';
 
 use Moose;
 use MooseX::ClassAttribute;
@@ -258,6 +258,8 @@ L<Paws::CloudFront>
 
 L<Paws::CloudHSM>
 
+L<Paws::CloudHSMv2>
+
 L<Paws::CloudSearch>
 
 L<Paws::CloudSearchDomain>
@@ -294,6 +296,8 @@ L<Paws::CUR>
 
 L<Paws::DataPipeline>
 
+L<Paws::DAX>
+
 L<Paws::DeviceFarm>
 
 L<Paws::DirectConnect>
@@ -313,6 +317,8 @@ L<Paws::EC2>
 L<Paws::ECR>
 
 L<Paws::ECS>
+
+L<Paws::EFS>
 
 L<Paws::EFS>
 
@@ -339,6 +345,10 @@ L<Paws::Firehose>
 L<Paws::GameLift>
 
 L<Paws::Glacier>
+
+L<Paws::Glue>
+
+L<Paws::Greengrass>
 
 L<Paws::Health>
 
@@ -374,6 +384,10 @@ L<Paws::MarketplaceEntitlement>
 
 L<Paws::MarketplaceMetering>
 
+L<Paws::MigrationHub>
+
+L<Paws::MobileHub>
+
 L<Paws::MTurk>
 
 L<Paws::OpsWorks>
@@ -385,6 +399,8 @@ L<Paws::Organizations>
 L<Paws::Pinpoint>
 
 L<Paws::Polly>
+
+L<Paws::Pricing>
 
 L<Paws::RDS>
 
@@ -403,6 +419,8 @@ L<Paws::S3>
 L<Paws::SDB>
 
 L<Paws::ServiceCatalog>
+
+L<Paws::SES>
 
 L<Paws::SES>
 
@@ -572,8 +590,30 @@ constructor called (without parameters). Also, the resulting instance or the alr
 
 =head3 region
 
-A string representing the region that service objects will be instantiated with. Default value is undefined, meaning that you will have to specify
-the desired region every time you call the B<service> method.
+A string representing the region that service objects will be instantiated with. Most services need a region specified, meaning that you will have to specify the desired region every time you call the B<service> method.
+
+  my $cfn = Paws->service('CloudFormation', region => 'eu-west-1');
+
+Some services (like IAM) are global, so they don't need their region specified:
+
+  my $iam = Paws->service('IAM');
+
+A special service is STS, which by default has a global endpoint, but you can also specify regional endpoints
+
+  my $global_sts = Paws->service('STS');
+  my $regional_sts = Paws->service('STS', region => 'eu-west-1');
+
+=head3 endpoint
+
+Paws needs to send HTTP requests to different URLS (endpoints) depending on the service and the region. URLs are normally automatically derived by specifying the region, but for special cases, like pointing to "fake-sqs" or "fake-s3" services, you can:
+
+  Paws->service('SQS', endpoint => 'http://localhost:3000', region => 'eu-west-1');
+
+Some services, like the MachineLearning predictor API want you to specify a custom endpoint:
+
+  my $model = $ml->GetMLModel(MLModelId => $model_id);
+  my $predictor = Paws->service('ML', endpoint => $model->EndpointInfo->EndpointUrl, region => 'eu-west-1');
+  $predictor->...
 
 =head1 Pluggability
 
@@ -644,9 +684,9 @@ L<https://github.com/pplu/aws-sdk-perl>
 
 =head1 BUGS and SOURCE
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =head1 COPYRIGHT and LICENSE
 
@@ -696,13 +736,14 @@ CloudFront and Route53, help with number stringification
 
 stevecaldwell77 for contributing support for temporary credentials in S3
 
-Gimpson for contributing documentation fixes
+Ryan Olson (BeerBikesBBQ) for contributing documentation fixes
 
 Roger Pettett for testing and contributing fixes for tests on MacOSX
 
 Henri Yandell for help with licensing issues
 
-Oriol Soriano (@ureesoriano) for contribution to API builders
+Oriol Soriano (@ureesoriano) for contributions to API builders and better
+documentation generation
 
 H. Daniel Cesario (@maneta) for devel setup instructions on RH and MacOSX
 
@@ -731,6 +772,13 @@ Arthur Axel fREW Schmidt for speeding up credential refreshing
 PopeFelix for solving issues around S3 and MojoAsyncCaller
 
 meis for contributing Paws::Credential::Explicit
+
+sven-schubert for contributing fixes to RestXML services,
+working on fixing S3 to work correctly. 
+
+SeptamusNonovant for fixing paginators in non-callback mode
+
+gadgetjunkie for contributing the ECS credential provider
 
 
 =cut

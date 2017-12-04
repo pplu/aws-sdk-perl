@@ -2,6 +2,7 @@
 package Paws::Discovery::DescribeExportTasks;
   use Moose;
   has ExportIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'exportIds' );
+  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::ExportFilter]', traits => ['NameInRequest'], request_name => 'filters' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
@@ -16,7 +17,7 @@ package Paws::Discovery::DescribeExportTasks;
 
 =head1 NAME
 
-Paws::Discovery::DescribeExportTasks - Arguments for method DescribeExportTasks on Paws::Discovery
+Paws::Discovery::DescribeExportTasks - Arguments for method DescribeExportTasks on L<Paws::Discovery>
 
 =head1 DESCRIPTION
 
@@ -39,6 +40,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 One or more unique identifiers used to query the status of an export
 request.
+
+
+
+=head2 Filters => ArrayRef[L<Paws::Discovery::ExportFilter>]
+
+One or more filters.
+
+=over
+
+=item *
+
+C<AgentId> - ID of the agent whose collected data will be exported
+
+=back
+
 
 
 
@@ -68,9 +84,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeExpor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

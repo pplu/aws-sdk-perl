@@ -17,7 +17,7 @@ package Paws::OpsWorks::CreateUserProfile;
 
 =head1 NAME
 
-Paws::OpsWorks::CreateUserProfile - Arguments for method CreateUserProfile on Paws::OpsWorks
+Paws::OpsWorks::CreateUserProfile - Arguments for method CreateUserProfile on L<Paws::OpsWorks>
 
 =head1 DESCRIPTION
 
@@ -40,7 +40,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Whether users can specify their own SSH public key through the My
 Settings page. For more information, see Setting an IAM User's Public
-SSH Key.
+SSH Key
+(http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html).
 
 
 
@@ -73,9 +74,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateUserPro
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -1,9 +1,9 @@
 
 package Paws::IoT::CreatePolicyVersion;
   use Moose;
-  has PolicyDocument => (is => 'ro', isa => 'Str', required => 1);
-  has PolicyName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyName' , required => 1);
-  has SetAsDefault => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsDefault' );
+  has PolicyDocument => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyDocument', required => 1);
+  has PolicyName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyName', required => 1);
+  has SetAsDefault => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsDefault');
 
   use MooseX::ClassAttribute;
 
@@ -11,14 +11,13 @@ package Paws::IoT::CreatePolicyVersion;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/policies/{policyName}/version');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreatePolicyVersionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::IoT::CreatePolicyVersion - Arguments for method CreatePolicyVersion on Paws::IoT
+Paws::IoT::CreatePolicyVersion - Arguments for method CreatePolicyVersion on L<Paws::IoT>
 
 =head1 DESCRIPTION
 
@@ -66,9 +65,9 @@ This class forms part of L<Paws>, documenting arguments for method CreatePolicyV
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

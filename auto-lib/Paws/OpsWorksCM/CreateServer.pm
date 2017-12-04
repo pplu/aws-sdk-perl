@@ -30,7 +30,7 @@ package Paws::OpsWorksCM::CreateServer;
 
 =head1 NAME
 
-Paws::OpsWorksCM::CreateServer - Arguments for method CreateServer on Paws::OpsWorksCM
+Paws::OpsWorksCM::CreateServer - Arguments for method CreateServer on L<Paws::OpsWorksCM>
 
 =head1 DESCRIPTION
 
@@ -227,7 +227,7 @@ backend uses to work with your account. Although the AWS OpsWorks
 management console typically creates the service role for you, if you
 are using the AWS CLI or API commands, run the
 service-role-creation.yaml AWS CloudFormation template, located at
-https://s3.amazonaws.com/opsworks-stuff/latest/service-role-creation.yaml.
+https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-roles.yaml.
 This template creates a CloudFormation stack that includes the service
 role that you need.
 
@@ -246,7 +246,8 @@ selected by Amazon EC2. If you specify subnet IDs, the VPC must have
 "Auto Assign Public IP" enabled.
 
 For more information about supported Amazon EC2 platforms, see
-Supported Platforms.
+Supported Platforms
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
 
 
 
@@ -257,9 +258,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateServer 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

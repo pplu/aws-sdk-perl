@@ -4,7 +4,7 @@ package Paws::CloudDirectory::CreateFacet;
   has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::FacetAttribute]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has ObjectType => (is => 'ro', isa => 'Str', required => 1);
-  has SchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has SchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -12,14 +12,13 @@ package Paws::CloudDirectory::CreateFacet;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/facet/create');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::CreateFacetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CloudDirectory::CreateFacet - Arguments for method CreateFacet on Paws::CloudDirectory
+Paws::CloudDirectory::CreateFacet - Arguments for method CreateFacet on L<Paws::CloudDirectory>
 
 =head1 DESCRIPTION
 
@@ -40,20 +39,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Attributes => ArrayRef[L<Paws::CloudDirectory::FacetAttribute>]
 
-Attributes associated with the Facet.e
+The attributes that are associated with the Facet.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-Name of the Facet, which is unique for a given schema.
+The name of the Facet, which is unique for a given schema.
 
 
 
 =head2 B<REQUIRED> ObjectType => Str
 
 Specifies whether a given object created from this facet is of type
-Node, Leaf Node, Policy or Index.
+node, leaf node, policy or index.
 
 =over
 
@@ -67,7 +66,7 @@ Node: Can have multiple children but one parent.
 
 =item *
 
-Leaf Node: Cannot have children but can have multiple parents.
+Leaf node: Cannot have children but can have multiple parents.
 
 =back
 
@@ -76,7 +75,8 @@ Leaf Node: Cannot have children but can have multiple parents.
 =item *
 
 Policy: Allows you to store a policy document and policy type. For more
-information, see Policies.
+information, see Policies
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies).
 
 =back
 
@@ -93,7 +93,7 @@ Valid values are: C<"NODE">, C<"LEAF_NODE">, C<"POLICY">, C<"INDEX">
 
 =head2 B<REQUIRED> SchemaArn => Str
 
-Schema ARN in which the new Facet will be created. For more
+The schema ARN in which the new Facet will be created. For more
 information, see arns.
 
 
@@ -105,9 +105,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateFacet i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

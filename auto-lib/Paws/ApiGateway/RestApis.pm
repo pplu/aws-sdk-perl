@@ -18,7 +18,7 @@ Paws::ApiGateway::RestApis
 
 =head2 Items => ArrayRef[L<Paws::ApiGateway::RestApi>]
 
-An array of links to the current page of RestApi resources.
+The current page of elements from this collection.
 
 
 =head2 Position => Str

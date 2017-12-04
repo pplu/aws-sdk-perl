@@ -11,7 +11,7 @@ package Paws::Budgets;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub CreateBudget {
@@ -120,7 +120,7 @@ Each argument is described in detail in: L<Paws::Budgets::CreateBudget>
 
 Returns: a L<Paws::Budgets::CreateBudgetResponse> instance
 
-  Create a new budget
+Create a new budget
 
 
 =head2 CreateNotification(AccountId => Str, BudgetName => Str, Notification => L<Paws::Budgets::Notification>, Subscribers => ArrayRef[L<Paws::Budgets::Subscriber>])
@@ -129,7 +129,7 @@ Each argument is described in detail in: L<Paws::Budgets::CreateNotification>
 
 Returns: a L<Paws::Budgets::CreateNotificationResponse> instance
 
-  Create a new Notification with subscribers for a budget
+Create a new Notification with subscribers for a budget
 
 
 =head2 CreateSubscriber(AccountId => Str, BudgetName => Str, Notification => L<Paws::Budgets::Notification>, Subscriber => L<Paws::Budgets::Subscriber>)
@@ -138,7 +138,7 @@ Each argument is described in detail in: L<Paws::Budgets::CreateSubscriber>
 
 Returns: a L<Paws::Budgets::CreateSubscriberResponse> instance
 
-  Create a new Subscriber for a notification
+Create a new Subscriber for a notification
 
 
 =head2 DeleteBudget(AccountId => Str, BudgetName => Str)
@@ -147,7 +147,7 @@ Each argument is described in detail in: L<Paws::Budgets::DeleteBudget>
 
 Returns: a L<Paws::Budgets::DeleteBudgetResponse> instance
 
-  Delete a budget and related notifications
+Delete a budget and related notifications
 
 
 =head2 DeleteNotification(AccountId => Str, BudgetName => Str, Notification => L<Paws::Budgets::Notification>)
@@ -156,7 +156,7 @@ Each argument is described in detail in: L<Paws::Budgets::DeleteNotification>
 
 Returns: a L<Paws::Budgets::DeleteNotificationResponse> instance
 
-  Delete a notification and related subscribers
+Delete a notification and related subscribers
 
 
 =head2 DeleteSubscriber(AccountId => Str, BudgetName => Str, Notification => L<Paws::Budgets::Notification>, Subscriber => L<Paws::Budgets::Subscriber>)
@@ -165,7 +165,7 @@ Each argument is described in detail in: L<Paws::Budgets::DeleteSubscriber>
 
 Returns: a L<Paws::Budgets::DeleteSubscriberResponse> instance
 
-  Delete a Subscriber for a notification
+Delete a Subscriber for a notification
 
 
 =head2 DescribeBudget(AccountId => Str, BudgetName => Str)
@@ -174,7 +174,7 @@ Each argument is described in detail in: L<Paws::Budgets::DescribeBudget>
 
 Returns: a L<Paws::Budgets::DescribeBudgetResponse> instance
 
-  Get a single budget
+Get a single budget
 
 
 =head2 DescribeBudgets(AccountId => Str, [MaxResults => Int, NextToken => Str])
@@ -183,7 +183,7 @@ Each argument is described in detail in: L<Paws::Budgets::DescribeBudgets>
 
 Returns: a L<Paws::Budgets::DescribeBudgetsResponse> instance
 
-  Get all budgets for an account
+Get all budgets for an account
 
 
 =head2 DescribeNotificationsForBudget(AccountId => Str, BudgetName => Str, [MaxResults => Int, NextToken => Str])
@@ -192,7 +192,7 @@ Each argument is described in detail in: L<Paws::Budgets::DescribeNotificationsF
 
 Returns: a L<Paws::Budgets::DescribeNotificationsForBudgetResponse> instance
 
-  Get notifications of a budget
+Get notifications of a budget
 
 
 =head2 DescribeSubscribersForNotification(AccountId => Str, BudgetName => Str, Notification => L<Paws::Budgets::Notification>, [MaxResults => Int, NextToken => Str])
@@ -201,7 +201,7 @@ Each argument is described in detail in: L<Paws::Budgets::DescribeSubscribersFor
 
 Returns: a L<Paws::Budgets::DescribeSubscribersForNotificationResponse> instance
 
-  Get subscribers of a notification
+Get subscribers of a notification
 
 
 =head2 UpdateBudget(AccountId => Str, NewBudget => L<Paws::Budgets::Budget>)
@@ -210,7 +210,7 @@ Each argument is described in detail in: L<Paws::Budgets::UpdateBudget>
 
 Returns: a L<Paws::Budgets::UpdateBudgetResponse> instance
 
-  Update the information of a budget already created
+Update the information of a budget already created
 
 
 =head2 UpdateNotification(AccountId => Str, BudgetName => Str, NewNotification => L<Paws::Budgets::Notification>, OldNotification => L<Paws::Budgets::Notification>)
@@ -219,7 +219,7 @@ Each argument is described in detail in: L<Paws::Budgets::UpdateNotification>
 
 Returns: a L<Paws::Budgets::UpdateNotificationResponse> instance
 
-  Update the information about a notification already created
+Update the information about a notification already created
 
 
 =head2 UpdateSubscriber(AccountId => Str, BudgetName => Str, NewSubscriber => L<Paws::Budgets::Subscriber>, Notification => L<Paws::Budgets::Notification>, OldSubscriber => L<Paws::Budgets::Subscriber>)
@@ -228,7 +228,7 @@ Each argument is described in detail in: L<Paws::Budgets::UpdateSubscriber>
 
 Returns: a L<Paws::Budgets::UpdateSubscriberResponse> instance
 
-  Update a subscriber
+Update a subscriber
 
 
 
@@ -246,9 +246,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

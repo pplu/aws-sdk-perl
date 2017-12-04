@@ -14,7 +14,7 @@ package Paws::Organizations::DescribeAccount;
 
 =head1 NAME
 
-Paws::Organizations::DescribeAccount - Arguments for method DescribeAccount on Paws::Organizations
+Paws::Organizations::DescribeAccount - Arguments for method DescribeAccount on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
@@ -39,7 +39,8 @@ The unique identifier (ID) of the AWS account that you want information
 about. You can get the ID from the ListAccounts or
 ListAccountsForParent operations.
 
-The regex pattern for an account ID string requires exactly 12 digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for an account ID
+string requires exactly 12 digits.
 
 
 
@@ -50,9 +51,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeAccou
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

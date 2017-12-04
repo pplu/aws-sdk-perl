@@ -50,8 +50,9 @@ Information for one billing record.
   The name of the domain that the billing record applies to. If the
 domain name contains characters other than a-z, 0-9, and - (hyphen),
 such as an internationalized domain name, then this value is in
-Punycode. For more information, see DNS Domain Name Format in the
-I<Amazon Route 53 Developer Guidezzz>.
+Punycode. For more information, see DNS Domain Name Format
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html)
+in the I<Amazon Route 53 Developer Guidezzz>.
 
 
 =head2 InvoiceId => Str
@@ -78,9 +79,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Route53Do
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

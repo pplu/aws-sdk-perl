@@ -1,8 +1,8 @@
 
 package Paws::Pinpoint::UpdateCampaign;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id' , required => 1);
-  has CampaignId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'campaign-id' , required => 1);
+  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
+  has CampaignId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'campaign-id', required => 1);
   has WriteCampaignRequest => (is => 'ro', isa => 'Paws::Pinpoint::WriteCampaignRequest', required => 1);
 
   use MooseX::ClassAttribute;
@@ -11,14 +11,13 @@ package Paws::Pinpoint::UpdateCampaign;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/campaigns/{campaign-id}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::UpdateCampaignResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Pinpoint::UpdateCampaign - Arguments for method UpdateCampaign on Paws::Pinpoint
+Paws::Pinpoint::UpdateCampaign - Arguments for method UpdateCampaign on L<Paws::Pinpoint>
 
 =head1 DESCRIPTION
 
@@ -62,9 +61,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateCampaig
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

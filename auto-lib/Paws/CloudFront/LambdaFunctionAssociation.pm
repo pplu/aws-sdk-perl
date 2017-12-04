@@ -40,25 +40,40 @@ A complex type that contains a Lambda function association.
 =head2 EventType => Str
 
   Specifies the event type that triggers a Lambda function invocation.
-Valid values are:
+You can specify the following values:
 
 =over
 
 =item *
 
-C<viewer-request>
+C<viewer-request>: The function executes when CloudFront receives a
+request from a viewer and before it checks to see whether the requested
+object is in the edge cache.
 
 =item *
 
-C<origin-request>
+C<origin-request>: The function executes only when CloudFront forwards
+a request to your origin. When the requested object is in the edge
+cache, the function doesn't execute.
 
 =item *
 
-C<viewer-response>
+C<origin-response>: The function executes after CloudFront receives a
+response from the origin and before it caches the object in the
+response. When the requested object is in the edge cache, the function
+doesn't execute.
+
+If the origin returns an HTTP status code other than HTTP 200 (OK), the
+function doesn't execute.
 
 =item *
 
-C<origin-response>
+C<viewer-response>: The function executes before CloudFront returns the
+requested object to the viewer. The function executes regardless of
+whether the object was already in the edge cache.
+
+If the origin returns an HTTP status code other than HTTP 200 (OK), the
+function doesn't execute.
 
 =back
 
@@ -66,7 +81,8 @@ C<origin-response>
 
 =head2 LambdaFunctionARN => Str
 
-  The ARN of the Lambda function.
+  The ARN of the Lambda function. You must specify the ARN of a function
+version; you can't specify a Lambda alias or $LATEST.
 
 
 
@@ -76,9 +92,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudFron
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

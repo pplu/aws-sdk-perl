@@ -39,8 +39,8 @@ tag.
 
 =head2 B<REQUIRED> Tag => Str
 
-  B<Required.> Specifies the tag that must be associated with the
-execution for it to meet the filter criteria.
+  Specifies the tag that must be associated with the execution for it to
+meet the filter criteria.
 
 
 
@@ -50,9 +50,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SimpleWor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

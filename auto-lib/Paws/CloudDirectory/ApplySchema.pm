@@ -1,7 +1,7 @@
 
 package Paws::CloudDirectory::ApplySchema;
   use Moose;
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
   has PublishedSchemaArn => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -10,14 +10,13 @@ package Paws::CloudDirectory::ApplySchema;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/schema/apply');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::ApplySchemaResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CloudDirectory::ApplySchema - Arguments for method ApplySchema on Paws::CloudDirectory
+Paws::CloudDirectory::ApplySchema - Arguments for method ApplySchema on L<Paws::CloudDirectory>
 
 =head1 DESCRIPTION
 
@@ -38,15 +37,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-ARN associated with the Directory into which the schema is copied. For
-more information, see arns.
+The Amazon Resource Name (ARN) that is associated with the Directory
+into which the schema is copied. For more information, see arns.
 
 
 
 =head2 B<REQUIRED> PublishedSchemaArn => Str
 
-Published schema ARN that needs to be copied. For more information, see
-arns.
+Published schema Amazon Resource Name (ARN) that needs to be copied.
+For more information, see arns.
 
 
 
@@ -57,9 +56,9 @@ This class forms part of L<Paws>, documenting arguments for method ApplySchema i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

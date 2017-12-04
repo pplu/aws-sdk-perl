@@ -32,20 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-Batch Read Exception structure, which contains exception type and
-message.
+The batch read exception structure, which contains the exception type
+and message.
 
 =head1 ATTRIBUTES
 
 
 =head2 Message => Str
 
-  Exception message associated with the failure.
+  An exception message that is associated with the failure.
 
 
 =head2 Type => Str
 
-  Type of exception, such as C<InvalidArnException>.
+  A type of exception, such as C<InvalidArnException>.
 
 
 
@@ -55,9 +55,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudDire
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

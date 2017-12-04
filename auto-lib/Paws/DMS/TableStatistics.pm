@@ -2,6 +2,8 @@ package Paws::DMS::TableStatistics;
   use Moose;
   has Ddls => (is => 'ro', isa => 'Int');
   has Deletes => (is => 'ro', isa => 'Int');
+  has FullLoadCondtnlChkFailedRows => (is => 'ro', isa => 'Int');
+  has FullLoadErrorRows => (is => 'ro', isa => 'Int');
   has FullLoadRows => (is => 'ro', isa => 'Int');
   has Inserts => (is => 'ro', isa => 'Int');
   has LastUpdateTime => (is => 'ro', isa => 'Str');
@@ -55,6 +57,18 @@ structure of your tables.
   The number of delete actions performed on a table.
 
 
+=head2 FullLoadCondtnlChkFailedRows => Int
+
+  The number of rows that failed conditional checks during the Full Load
+operation (valid only for DynamoDB as a target migrations).
+
+
+=head2 FullLoadErrorRows => Int
+
+  The number of rows that failed to load during the Full Load operation
+(valid only for DynamoDB as a target migrations).
+
+
 =head2 FullLoadRows => Int
 
   The number of rows added during the Full Load operation.
@@ -82,7 +96,11 @@ structure of your tables.
 
 =head2 TableState => Str
 
-  The state of the table.
+  The state of the tables described.
+
+Valid states: Table does not exist | Before load | Full load | Table
+completed | Table cancelled | Table error | Table all | Table updates |
+Table is being reloaded
 
 
 =head2 Updates => Int
@@ -97,9 +115,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::DMS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

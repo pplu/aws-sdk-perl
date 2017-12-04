@@ -16,7 +16,7 @@ package Paws::SES::SetIdentityMailFromDomain;
 
 =head1 NAME
 
-Paws::SES::SetIdentityMailFromDomain - Arguments for method SetIdentityMailFromDomain on Paws::SES
+Paws::SES::SetIdentityMailFromDomain - Arguments for method SetIdentityMailFromDomain on L<Paws::SES>
 
 =head1 DESCRIPTION
 
@@ -63,9 +63,10 @@ The custom MAIL FROM domain that you want the verified identity to use.
 The MAIL FROM domain must 1) be a subdomain of the verified identity,
 2) not be used in a "From" address if the MAIL FROM domain is the
 destination of email feedback forwarding (for more information, see the
-Amazon SES Developer Guide), and 3) not be used to receive emails. A
-value of C<null> disables the custom MAIL FROM setting for the
-identity.
+Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html)),
+and 3) not be used to receive emails. A value of C<null> disables the
+custom MAIL FROM setting for the identity.
 
 
 
@@ -76,9 +77,9 @@ This class forms part of L<Paws>, documenting arguments for method SetIdentityMa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -1,10 +1,10 @@
 
 package Paws::CognitoSync::UnsubscribeFromDataset;
   use Moose;
-  has DatasetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DatasetName' , required => 1);
-  has DeviceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DeviceId' , required => 1);
-  has IdentityId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityId' , required => 1);
-  has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId' , required => 1);
+  has DatasetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DatasetName', required => 1);
+  has DeviceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DeviceId', required => 1);
+  has IdentityId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityId', required => 1);
+  has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -12,14 +12,13 @@ package Paws::CognitoSync::UnsubscribeFromDataset;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/subscriptions/{DeviceId}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::UnsubscribeFromDatasetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CognitoSync::UnsubscribeFromDataset - Arguments for method UnsubscribeFromDataset on Paws::CognitoSync
+Paws::CognitoSync::UnsubscribeFromDataset - Arguments for method UnsubscribeFromDataset on L<Paws::CognitoSync>
 
 =head1 DESCRIPTION
 
@@ -71,9 +70,9 @@ This class forms part of L<Paws>, documenting arguments for method UnsubscribeFr
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

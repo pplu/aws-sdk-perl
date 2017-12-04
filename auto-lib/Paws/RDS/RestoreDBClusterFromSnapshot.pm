@@ -26,7 +26,7 @@ package Paws::RDS::RestoreDBClusterFromSnapshot;
 
 =head1 NAME
 
-Paws::RDS::RestoreDBClusterFromSnapshot - Arguments for method RestoreDBClusterFromSnapshot on Paws::RDS
+Paws::RDS::RestoreDBClusterFromSnapshot - Arguments for method RestoreDBClusterFromSnapshot on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -60,8 +60,8 @@ The database name for the restored DB cluster.
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-The name of the DB cluster to create from the DB cluster snapshot. This
-parameter isn't case-sensitive.
+The name of the DB cluster to create from the DB snapshot or DB cluster
+snapshot. This parameter isn't case-sensitive.
 
 Constraints:
 
@@ -69,7 +69,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 255 alphanumeric characters or hyphens
+Must contain from 1 to 255 letters, numbers, or hyphens
 
 =item *
 
@@ -89,8 +89,8 @@ Example: C<my-snapshot-id>
 
 The name of the DB subnet group to use for the new DB cluster.
 
-Constraints: Must contain no more than 255 alphanumeric characters,
-periods, underscores, spaces, or hyphens. Must not be default.
+Constraints: If supplied, must match the name of an existing
+DBSubnetGroup.
 
 Example: C<mySubnetgroup>
 
@@ -125,7 +125,7 @@ The version of the database engine to use for the new DB cluster.
 =head2 KmsKeyId => Str
 
 The KMS key identifier to use when restoring an encrypted DB cluster
-from a DB cluster snapshot.
+from a DB snapshot or DB cluster snapshot.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
 encryption key. If you are restoring a DB cluster with the same AWS
@@ -140,14 +140,14 @@ following will occur:
 
 =item *
 
-If the DB cluster snapshot is encrypted, then the restored DB cluster
-is encrypted using the KMS key that was used to encrypt the DB cluster
-snapshot.
+If the DB snapshot or DB cluster snapshot in C<SnapshotIdentifier> is
+encrypted, then the restored DB cluster is encrypted using the KMS key
+that was used to encrypt the DB snapshot or DB cluster snapshot.
 
 =item *
 
-If the DB cluster snapshot is not encrypted, then the restored DB
-cluster is encrypted using the specified encryption key.
+If the DB snapshot or DB cluster snapshot in C<SnapshotIdentifier> is
+not encrypted, then the restored DB cluster is not encrypted.
 
 =back
 
@@ -172,7 +172,12 @@ Default: The same port as the original DB cluster.
 
 =head2 B<REQUIRED> SnapshotIdentifier => Str
 
-The identifier for the DB cluster snapshot to restore from.
+The identifier for the DB snapshot or DB cluster snapshot to restore
+from.
+
+You can use either the name or the Amazon Resource Name (ARN) to
+specify a DB cluster snapshot. However, you can use only the ARN to
+specify a DB snapshot.
 
 Constraints:
 
@@ -180,15 +185,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens
-
-=item *
-
-First character must be a letter
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens
+Must match the identifier of an existing Snapshot.
 
 =back
 
@@ -214,9 +211,9 @@ This class forms part of L<Paws>, documenting arguments for method RestoreDBClus
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

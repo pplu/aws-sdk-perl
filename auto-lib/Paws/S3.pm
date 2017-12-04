@@ -13,7 +13,7 @@ package Paws::S3;
        sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'RequestTimeout' },
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::S3Signature', 'Paws::Net::RestXmlCaller', 'Paws::Net::RestXMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::S3Signature', 'Paws::Net::RestXmlCaller';
 
   has '+region_rules' => (default => sub {
     my $regioninfo;
@@ -465,20 +465,23 @@ package Paws::S3;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListMultipartUploads(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListMultipartUploads(@_, KeyMarker => $result->NextKeyMarker, UploadIdMarker => $result->NextUploadIdMarker);
-        push @{ $result->Uploads }, @{ $result->Uploads };
-        push @{ $result->CommonPrefixes }, @{ $result->CommonPrefixes };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListMultipartUploads(@_, KeyMarker => $next_result->NextKeyMarker, UploadIdMarker => $next_result->NextUploadIdMarker);
+        push @{ $result->Uploads }, @{ $next_result->Uploads };
+        push @{ $result->CommonPrefixes }, @{ $next_result->CommonPrefixes };
       }
       return $result;
     } else {
       while ($result->IsTruncated) {
-        $result = $self->ListMultipartUploads(@_, KeyMarker => $result->NextKeyMarker, UploadIdMarker => $result->NextUploadIdMarker);
         $callback->($_ => 'Uploads') foreach (@{ $result->Uploads });
         $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
+        $result = $self->ListMultipartUploads(@_, KeyMarker => $result->NextKeyMarker, UploadIdMarker => $result->NextUploadIdMarker);
       }
+      $callback->($_ => 'Uploads') foreach (@{ $result->Uploads });
+      $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
     }
 
     return undef
@@ -488,20 +491,23 @@ package Paws::S3;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListObjects(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListObjects(@_, Marker => $result->NextMarker || ( (defined $result->Contents->[-1]) ? $result->Contents->[-1]->Key : undef ));
-        push @{ $result->Contents }, @{ $result->Contents };
-        push @{ $result->CommonPrefixes }, @{ $result->CommonPrefixes };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListObjects(@_, Marker => $result->NextMarker || ( (defined $result->Contents->[-1]) ? $result->Contents->[-1]->Key : undef ));
+        push @{ $result->Contents }, @{ $next_result->Contents };
+        push @{ $result->CommonPrefixes }, @{ $next_result->CommonPrefixes };
       }
       return $result;
     } else {
       while ($result->IsTruncated) {
-        $result = $self->ListObjects(@_, Marker => $result->NextMarker || ( (defined $result->Contents->[-1]) ? $result->Contents->[-1]->Key : undef ));
         $callback->($_ => 'Contents') foreach (@{ $result->Contents });
         $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
+        $result = $self->ListObjects(@_, Marker => $result->NextMarker || ( (defined $result->Contents->[-1]) ? $result->Contents->[-1]->Key : undef ));
       }
+      $callback->($_ => 'Contents') foreach (@{ $result->Contents });
+      $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
     }
 
     return undef
@@ -511,20 +517,23 @@ package Paws::S3;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListObjectsV2(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListObjectsV2(@_, ContinuationToken => $result->NextContinuationToken);
-        push @{ $result->Contents }, @{ $result->Contents };
-        push @{ $result->CommonPrefixes }, @{ $result->CommonPrefixes };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListObjectsV2(@_, ContinuationToken => $next_result->NextContinuationToken);
+        push @{ $result->Contents }, @{ $next_result->Contents };
+        push @{ $result->CommonPrefixes }, @{ $next_result->CommonPrefixes };
       }
       return $result;
     } else {
       while ($result->IsTruncated) {
-        $result = $self->ListObjectsV2(@_, ContinuationToken => $result->NextContinuationToken);
         $callback->($_ => 'Contents') foreach (@{ $result->Contents });
         $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
+        $result = $self->ListObjectsV2(@_, ContinuationToken => $result->NextContinuationToken);
       }
+      $callback->($_ => 'Contents') foreach (@{ $result->Contents });
+      $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
     }
 
     return undef
@@ -534,22 +543,26 @@ package Paws::S3;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListObjectVersions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListObjectVersions(@_, KeyMarker => $result->NextKeyMarker, VersionIdMarker => $result->NextVersionIdMarker);
-        push @{ $result->Versions }, @{ $result->Versions };
-        push @{ $result->DeleteMarkers }, @{ $result->DeleteMarkers };
-        push @{ $result->CommonPrefixes }, @{ $result->CommonPrefixes };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListObjectVersions(@_, KeyMarker => $next_result->NextKeyMarker, VersionIdMarker => $next_result->NextVersionIdMarker);
+        push @{ $result->Versions }, @{ $next_result->Versions };
+        push @{ $result->DeleteMarkers }, @{ $next_result->DeleteMarkers };
+        push @{ $result->CommonPrefixes }, @{ $next_result->CommonPrefixes };
       }
       return $result;
     } else {
       while ($result->IsTruncated) {
-        $result = $self->ListObjectVersions(@_, KeyMarker => $result->NextKeyMarker, VersionIdMarker => $result->NextVersionIdMarker);
         $callback->($_ => 'Versions') foreach (@{ $result->Versions });
         $callback->($_ => 'DeleteMarkers') foreach (@{ $result->DeleteMarkers });
         $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
+        $result = $self->ListObjectVersions(@_, KeyMarker => $result->NextKeyMarker, VersionIdMarker => $result->NextVersionIdMarker);
       }
+      $callback->($_ => 'Versions') foreach (@{ $result->Versions });
+      $callback->($_ => 'DeleteMarkers') foreach (@{ $result->DeleteMarkers });
+      $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
     }
 
     return undef
@@ -559,18 +572,20 @@ package Paws::S3;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListParts(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);
-        push @{ $result->Parts }, @{ $result->Parts };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListParts(@_, PartNumberMarker => $next_result->NextPartNumberMarker);
+        push @{ $result->Parts }, @{ $next_result->Parts };
       }
       return $result;
     } else {
       while ($result->IsTruncated) {
-        $result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);
         $callback->($_ => 'Parts') foreach (@{ $result->Parts });
+        $result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);
       }
+      $callback->($_ => 'Parts') foreach (@{ $result->Parts });
     }
 
     return undef
@@ -625,7 +640,7 @@ Each argument is described in detail in: L<Paws::S3::AbortMultipartUpload>
 
 Returns: a L<Paws::S3::AbortMultipartUploadOutput> instance
 
-  Aborts a multipart upload.
+Aborts a multipart upload.
 
 To verify that all parts have been removed, so you don't get charged
 for the part storage, you should call the List Parts operation and
@@ -638,7 +653,7 @@ Each argument is described in detail in: L<Paws::S3::CompleteMultipartUpload>
 
 Returns: a L<Paws::S3::CompleteMultipartUploadOutput> instance
 
-  Completes a multipart upload by assembling previously uploaded parts.
+Completes a multipart upload by assembling previously uploaded parts.
 
 
 =head2 CopyObject(Bucket => Str, CopySource => Str, Key => Str, [ACL => Str, CacheControl => Str, ContentDisposition => Str, ContentEncoding => Str, ContentLanguage => Str, ContentType => Str, CopySourceIfMatch => Str, CopySourceIfModifiedSince => Str, CopySourceIfNoneMatch => Str, CopySourceIfUnmodifiedSince => Str, CopySourceSSECustomerAlgorithm => Str, CopySourceSSECustomerKey => Str, CopySourceSSECustomerKeyMD5 => Str, Expires => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWriteACP => Str, Metadata => L<Paws::S3::Metadata>, MetadataDirective => Str, RequestPayer => Str, ServerSideEncryption => Str, SSECustomerAlgorithm => Str, SSECustomerKey => Str, SSECustomerKeyMD5 => Str, SSEKMSKeyId => Str, StorageClass => Str, Tagging => Str, TaggingDirective => Str, WebsiteRedirectLocation => Str])
@@ -647,7 +662,7 @@ Each argument is described in detail in: L<Paws::S3::CopyObject>
 
 Returns: a L<Paws::S3::CopyObjectOutput> instance
 
-  Creates a copy of an object that is already stored in Amazon S3.
+Creates a copy of an object that is already stored in Amazon S3.
 
 
 =head2 CreateBucket(Bucket => Str, [ACL => Str, CreateBucketConfiguration => L<Paws::S3::CreateBucketConfiguration>, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWrite => Str, GrantWriteACP => Str])
@@ -656,16 +671,16 @@ Each argument is described in detail in: L<Paws::S3::CreateBucket>
 
 Returns: a L<Paws::S3::CreateBucketOutput> instance
 
-  Creates a new bucket.
+Creates a new bucket.
 
 
-=head2 CreateMultipartUpload(Bucket => Str, Key => Str, [ACL => Str, CacheControl => Str, ContentDisposition => Str, ContentEncoding => Str, ContentLanguage => Str, ContentType => Str, Expires => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWriteACP => Str, Metadata => L<Paws::S3::Metadata>, RequestPayer => Str, ServerSideEncryption => Str, SSECustomerAlgorithm => Str, SSECustomerKey => Str, SSECustomerKeyMD5 => Str, SSEKMSKeyId => Str, StorageClass => Str, WebsiteRedirectLocation => Str])
+=head2 CreateMultipartUpload(Bucket => Str, Key => Str, [ACL => Str, CacheControl => Str, ContentDisposition => Str, ContentEncoding => Str, ContentLanguage => Str, ContentType => Str, Expires => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWriteACP => Str, Metadata => L<Paws::S3::Metadata>, RequestPayer => Str, ServerSideEncryption => Str, SSECustomerAlgorithm => Str, SSECustomerKey => Str, SSECustomerKeyMD5 => Str, SSEKMSKeyId => Str, StorageClass => Str, Tagging => Str, WebsiteRedirectLocation => Str])
 
 Each argument is described in detail in: L<Paws::S3::CreateMultipartUpload>
 
 Returns: a L<Paws::S3::CreateMultipartUploadOutput> instance
 
-  Initiates a multipart upload and returns an upload ID.
+Initiates a multipart upload and returns an upload ID.
 
 B<Note:> After you initiate multipart upload and upload one or more
 parts, you must either complete or abort multipart upload in order to
@@ -680,7 +695,7 @@ Each argument is described in detail in: L<Paws::S3::DeleteBucket>
 
 Returns: nothing
 
-  Deletes the bucket. All objects (including all object versions and
+Deletes the bucket. All objects (including all object versions and
 Delete Markers) in the bucket must be deleted before the bucket itself
 can be deleted.
 
@@ -691,7 +706,7 @@ Each argument is described in detail in: L<Paws::S3::DeleteBucketAnalyticsConfig
 
 Returns: nothing
 
-  Deletes an analytics configuration for the bucket (specified by the
+Deletes an analytics configuration for the bucket (specified by the
 analytics configuration ID).
 
 
@@ -701,7 +716,7 @@ Each argument is described in detail in: L<Paws::S3::DeleteBucketCors>
 
 Returns: nothing
 
-  Deletes the cors configuration information set for the bucket.
+Deletes the cors configuration information set for the bucket.
 
 
 =head2 DeleteBucketInventoryConfiguration(Bucket => Str, Id => Str)
@@ -710,7 +725,7 @@ Each argument is described in detail in: L<Paws::S3::DeleteBucketInventoryConfig
 
 Returns: nothing
 
-  Deletes an inventory configuration (identified by the inventory ID)
+Deletes an inventory configuration (identified by the inventory ID)
 from the bucket.
 
 
@@ -720,7 +735,7 @@ Each argument is described in detail in: L<Paws::S3::DeleteBucketLifecycle>
 
 Returns: nothing
 
-  Deletes the lifecycle configuration from the bucket.
+Deletes the lifecycle configuration from the bucket.
 
 
 =head2 DeleteBucketMetricsConfiguration(Bucket => Str, Id => Str)
@@ -729,7 +744,7 @@ Each argument is described in detail in: L<Paws::S3::DeleteBucketMetricsConfigur
 
 Returns: nothing
 
-  Deletes a metrics configuration (specified by the metrics configuration
+Deletes a metrics configuration (specified by the metrics configuration
 ID) from the bucket.
 
 
@@ -739,7 +754,7 @@ Each argument is described in detail in: L<Paws::S3::DeleteBucketPolicy>
 
 Returns: nothing
 
-  Deletes the policy from the bucket.
+Deletes the policy from the bucket.
 
 
 =head2 DeleteBucketReplication(Bucket => Str)
@@ -748,7 +763,7 @@ Each argument is described in detail in: L<Paws::S3::DeleteBucketReplication>
 
 Returns: nothing
 
-  Deletes the replication configuration from the bucket.
+Deletes the replication configuration from the bucket.
 
 
 =head2 DeleteBucketTagging(Bucket => Str)
@@ -757,7 +772,7 @@ Each argument is described in detail in: L<Paws::S3::DeleteBucketTagging>
 
 Returns: nothing
 
-  Deletes the tags from the bucket.
+Deletes the tags from the bucket.
 
 
 =head2 DeleteBucketWebsite(Bucket => Str)
@@ -766,7 +781,7 @@ Each argument is described in detail in: L<Paws::S3::DeleteBucketWebsite>
 
 Returns: nothing
 
-  This operation removes the website configuration from the bucket.
+This operation removes the website configuration from the bucket.
 
 
 =head2 DeleteObject(Bucket => Str, Key => Str, [MFA => Str, RequestPayer => Str, VersionId => Str])
@@ -775,7 +790,7 @@ Each argument is described in detail in: L<Paws::S3::DeleteObject>
 
 Returns: a L<Paws::S3::DeleteObjectOutput> instance
 
-  Removes the null version (if there is one) of an object and inserts a
+Removes the null version (if there is one) of an object and inserts a
 delete marker, which becomes the latest version of the object. If there
 isn't a null version, Amazon S3 does not remove any objects.
 
@@ -786,7 +801,7 @@ Each argument is described in detail in: L<Paws::S3::DeleteObjects>
 
 Returns: a L<Paws::S3::DeleteObjectsOutput> instance
 
-  This operation enables you to delete multiple objects from a bucket
+This operation enables you to delete multiple objects from a bucket
 using a single HTTP request. You may specify up to 1000 keys.
 
 
@@ -796,7 +811,7 @@ Each argument is described in detail in: L<Paws::S3::DeleteObjectTagging>
 
 Returns: a L<Paws::S3::DeleteObjectTaggingOutput> instance
 
-  Removes the tag-set from an existing object.
+Removes the tag-set from an existing object.
 
 
 =head2 GetBucketAccelerateConfiguration(Bucket => Str)
@@ -805,7 +820,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketAccelerateConfigur
 
 Returns: a L<Paws::S3::GetBucketAccelerateConfigurationOutput> instance
 
-  Returns the accelerate configuration of a bucket.
+Returns the accelerate configuration of a bucket.
 
 
 =head2 GetBucketAcl(Bucket => Str)
@@ -814,7 +829,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketAcl>
 
 Returns: a L<Paws::S3::GetBucketAclOutput> instance
 
-  Gets the access control policy for the bucket.
+Gets the access control policy for the bucket.
 
 
 =head2 GetBucketAnalyticsConfiguration(Bucket => Str, Id => Str)
@@ -823,7 +838,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketAnalyticsConfigura
 
 Returns: a L<Paws::S3::GetBucketAnalyticsConfigurationOutput> instance
 
-  Gets an analytics configuration for the bucket (specified by the
+Gets an analytics configuration for the bucket (specified by the
 analytics configuration ID).
 
 
@@ -833,7 +848,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketCors>
 
 Returns: a L<Paws::S3::GetBucketCorsOutput> instance
 
-  Returns the cors configuration for the bucket.
+Returns the cors configuration for the bucket.
 
 
 =head2 GetBucketInventoryConfiguration(Bucket => Str, Id => Str)
@@ -842,7 +857,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketInventoryConfigura
 
 Returns: a L<Paws::S3::GetBucketInventoryConfigurationOutput> instance
 
-  Returns an inventory configuration (identified by the inventory ID)
+Returns an inventory configuration (identified by the inventory ID)
 from the bucket.
 
 
@@ -852,7 +867,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketLifecycle>
 
 Returns: a L<Paws::S3::GetBucketLifecycleOutput> instance
 
-  Deprecated, see the GetBucketLifecycleConfiguration operation.
+Deprecated, see the GetBucketLifecycleConfiguration operation.
 
 
 =head2 GetBucketLifecycleConfiguration(Bucket => Str)
@@ -861,7 +876,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketLifecycleConfigura
 
 Returns: a L<Paws::S3::GetBucketLifecycleConfigurationOutput> instance
 
-  Returns the lifecycle configuration information set on the bucket.
+Returns the lifecycle configuration information set on the bucket.
 
 
 =head2 GetBucketLocation(Bucket => Str)
@@ -870,7 +885,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketLocation>
 
 Returns: a L<Paws::S3::GetBucketLocationOutput> instance
 
-  Returns the region the bucket resides in.
+Returns the region the bucket resides in.
 
 
 =head2 GetBucketLogging(Bucket => Str)
@@ -879,7 +894,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketLogging>
 
 Returns: a L<Paws::S3::GetBucketLoggingOutput> instance
 
-  Returns the logging status of a bucket and the permissions users have
+Returns the logging status of a bucket and the permissions users have
 to view and modify that status. To use GET, you must be the bucket
 owner.
 
@@ -890,7 +905,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketMetricsConfigurati
 
 Returns: a L<Paws::S3::GetBucketMetricsConfigurationOutput> instance
 
-  Gets a metrics configuration (specified by the metrics configuration
+Gets a metrics configuration (specified by the metrics configuration
 ID) from the bucket.
 
 
@@ -900,7 +915,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketNotification>
 
 Returns: a L<Paws::S3::NotificationConfigurationDeprecated> instance
 
-  Deprecated, see the GetBucketNotificationConfiguration operation.
+Deprecated, see the GetBucketNotificationConfiguration operation.
 
 
 =head2 GetBucketNotificationConfiguration(Bucket => Str)
@@ -909,7 +924,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketNotificationConfig
 
 Returns: a L<Paws::S3::NotificationConfiguration> instance
 
-  Returns the notification configuration of a bucket.
+Returns the notification configuration of a bucket.
 
 
 =head2 GetBucketPolicy(Bucket => Str)
@@ -918,7 +933,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketPolicy>
 
 Returns: a L<Paws::S3::GetBucketPolicyOutput> instance
 
-  Returns the policy of a specified bucket.
+Returns the policy of a specified bucket.
 
 
 =head2 GetBucketReplication(Bucket => Str)
@@ -927,7 +942,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketReplication>
 
 Returns: a L<Paws::S3::GetBucketReplicationOutput> instance
 
-  Returns the replication configuration of a bucket.
+Returns the replication configuration of a bucket.
 
 
 =head2 GetBucketRequestPayment(Bucket => Str)
@@ -936,7 +951,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketRequestPayment>
 
 Returns: a L<Paws::S3::GetBucketRequestPaymentOutput> instance
 
-  Returns the request payment configuration of a bucket.
+Returns the request payment configuration of a bucket.
 
 
 =head2 GetBucketTagging(Bucket => Str)
@@ -945,7 +960,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketTagging>
 
 Returns: a L<Paws::S3::GetBucketTaggingOutput> instance
 
-  Returns the tag set associated with the bucket.
+Returns the tag set associated with the bucket.
 
 
 =head2 GetBucketVersioning(Bucket => Str)
@@ -954,7 +969,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketVersioning>
 
 Returns: a L<Paws::S3::GetBucketVersioningOutput> instance
 
-  Returns the versioning state of a bucket.
+Returns the versioning state of a bucket.
 
 
 =head2 GetBucketWebsite(Bucket => Str)
@@ -963,7 +978,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketWebsite>
 
 Returns: a L<Paws::S3::GetBucketWebsiteOutput> instance
 
-  Returns the website configuration for a bucket.
+Returns the website configuration for a bucket.
 
 
 =head2 GetObject(Bucket => Str, Key => Str, [IfMatch => Str, IfModifiedSince => Str, IfNoneMatch => Str, IfUnmodifiedSince => Str, PartNumber => Int, Range => Str, RequestPayer => Str, ResponseCacheControl => Str, ResponseContentDisposition => Str, ResponseContentEncoding => Str, ResponseContentLanguage => Str, ResponseContentType => Str, ResponseExpires => Str, SSECustomerAlgorithm => Str, SSECustomerKey => Str, SSECustomerKeyMD5 => Str, VersionId => Str])
@@ -972,7 +987,7 @@ Each argument is described in detail in: L<Paws::S3::GetObject>
 
 Returns: a L<Paws::S3::GetObjectOutput> instance
 
-  Retrieves objects from Amazon S3.
+Retrieves objects from Amazon S3.
 
 
 =head2 GetObjectAcl(Bucket => Str, Key => Str, [RequestPayer => Str, VersionId => Str])
@@ -981,7 +996,7 @@ Each argument is described in detail in: L<Paws::S3::GetObjectAcl>
 
 Returns: a L<Paws::S3::GetObjectAclOutput> instance
 
-  Returns the access control list (ACL) of an object.
+Returns the access control list (ACL) of an object.
 
 
 =head2 GetObjectTagging(Bucket => Str, Key => Str, [VersionId => Str])
@@ -990,7 +1005,7 @@ Each argument is described in detail in: L<Paws::S3::GetObjectTagging>
 
 Returns: a L<Paws::S3::GetObjectTaggingOutput> instance
 
-  Returns the tag-set of an object.
+Returns the tag-set of an object.
 
 
 =head2 GetObjectTorrent(Bucket => Str, Key => Str, [RequestPayer => Str])
@@ -999,7 +1014,7 @@ Each argument is described in detail in: L<Paws::S3::GetObjectTorrent>
 
 Returns: a L<Paws::S3::GetObjectTorrentOutput> instance
 
-  Return torrent files from a bucket.
+Return torrent files from a bucket.
 
 
 =head2 HeadBucket(Bucket => Str)
@@ -1008,7 +1023,7 @@ Each argument is described in detail in: L<Paws::S3::HeadBucket>
 
 Returns: nothing
 
-  This operation is useful to determine if a bucket exists and you have
+This operation is useful to determine if a bucket exists and you have
 permission to access it.
 
 
@@ -1018,7 +1033,7 @@ Each argument is described in detail in: L<Paws::S3::HeadObject>
 
 Returns: a L<Paws::S3::HeadObjectOutput> instance
 
-  The HEAD operation retrieves metadata from an object without returning
+The HEAD operation retrieves metadata from an object without returning
 the object itself. This operation is useful if you're only interested
 in an object's metadata. To use HEAD, you must have READ access to the
 object.
@@ -1030,7 +1045,7 @@ Each argument is described in detail in: L<Paws::S3::ListBucketAnalyticsConfigur
 
 Returns: a L<Paws::S3::ListBucketAnalyticsConfigurationsOutput> instance
 
-  Lists the analytics configurations for the bucket.
+Lists the analytics configurations for the bucket.
 
 
 =head2 ListBucketInventoryConfigurations(Bucket => Str, [ContinuationToken => Str])
@@ -1039,7 +1054,7 @@ Each argument is described in detail in: L<Paws::S3::ListBucketInventoryConfigur
 
 Returns: a L<Paws::S3::ListBucketInventoryConfigurationsOutput> instance
 
-  Returns a list of inventory configurations for the bucket.
+Returns a list of inventory configurations for the bucket.
 
 
 =head2 ListBucketMetricsConfigurations(Bucket => Str, [ContinuationToken => Str])
@@ -1048,7 +1063,7 @@ Each argument is described in detail in: L<Paws::S3::ListBucketMetricsConfigurat
 
 Returns: a L<Paws::S3::ListBucketMetricsConfigurationsOutput> instance
 
-  Lists the metrics configurations for the bucket.
+Lists the metrics configurations for the bucket.
 
 
 =head2 ListBuckets( => )
@@ -1057,7 +1072,7 @@ Each argument is described in detail in: L<Paws::S3::ListBuckets>
 
 Returns: a L<Paws::S3::ListBucketsOutput> instance
 
-  Returns a list of all buckets owned by the authenticated sender of the
+Returns a list of all buckets owned by the authenticated sender of the
 request.
 
 
@@ -1067,7 +1082,7 @@ Each argument is described in detail in: L<Paws::S3::ListMultipartUploads>
 
 Returns: a L<Paws::S3::ListMultipartUploadsOutput> instance
 
-  This operation lists in-progress multipart uploads.
+This operation lists in-progress multipart uploads.
 
 
 =head2 ListObjects(Bucket => Str, [Delimiter => Str, EncodingType => Str, Marker => Str, MaxKeys => Int, Prefix => Str, RequestPayer => Str])
@@ -1076,7 +1091,7 @@ Each argument is described in detail in: L<Paws::S3::ListObjects>
 
 Returns: a L<Paws::S3::ListObjectsOutput> instance
 
-  Returns some or all (up to 1000) of the objects in a bucket. You can
+Returns some or all (up to 1000) of the objects in a bucket. You can
 use the request parameters as selection criteria to return a subset of
 the objects in a bucket.
 
@@ -1087,7 +1102,7 @@ Each argument is described in detail in: L<Paws::S3::ListObjectsV2>
 
 Returns: a L<Paws::S3::ListObjectsV2Output> instance
 
-  Returns some or all (up to 1000) of the objects in a bucket. You can
+Returns some or all (up to 1000) of the objects in a bucket. You can
 use the request parameters as selection criteria to return a subset of
 the objects in a bucket. Note: ListObjectsV2 is the revised List
 Objects API and we recommend you use this revised API for new
@@ -1100,7 +1115,7 @@ Each argument is described in detail in: L<Paws::S3::ListObjectVersions>
 
 Returns: a L<Paws::S3::ListObjectVersionsOutput> instance
 
-  Returns metadata about all of the versions of objects in a bucket.
+Returns metadata about all of the versions of objects in a bucket.
 
 
 =head2 ListParts(Bucket => Str, Key => Str, UploadId => Str, [MaxParts => Int, PartNumberMarker => Int, RequestPayer => Str])
@@ -1109,7 +1124,7 @@ Each argument is described in detail in: L<Paws::S3::ListParts>
 
 Returns: a L<Paws::S3::ListPartsOutput> instance
 
-  Lists the parts that have been uploaded for a specific multipart
+Lists the parts that have been uploaded for a specific multipart
 upload.
 
 
@@ -1119,7 +1134,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketAccelerateConfigur
 
 Returns: nothing
 
-  Sets the accelerate configuration of an existing bucket.
+Sets the accelerate configuration of an existing bucket.
 
 
 =head2 PutBucketAcl(Bucket => Str, [AccessControlPolicy => L<Paws::S3::AccessControlPolicy>, ACL => Str, ContentMD5 => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWrite => Str, GrantWriteACP => Str])
@@ -1128,7 +1143,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketAcl>
 
 Returns: nothing
 
-  Sets the permissions on a bucket using access control lists (ACL).
+Sets the permissions on a bucket using access control lists (ACL).
 
 
 =head2 PutBucketAnalyticsConfiguration(AnalyticsConfiguration => L<Paws::S3::AnalyticsConfiguration>, Bucket => Str, Id => Str)
@@ -1137,7 +1152,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketAnalyticsConfigura
 
 Returns: nothing
 
-  Sets an analytics configuration for the bucket (specified by the
+Sets an analytics configuration for the bucket (specified by the
 analytics configuration ID).
 
 
@@ -1147,7 +1162,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketCors>
 
 Returns: nothing
 
-  Sets the cors configuration for a bucket.
+Sets the cors configuration for a bucket.
 
 
 =head2 PutBucketInventoryConfiguration(Bucket => Str, Id => Str, InventoryConfiguration => L<Paws::S3::InventoryConfiguration>)
@@ -1156,7 +1171,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketInventoryConfigura
 
 Returns: nothing
 
-  Adds an inventory configuration (identified by the inventory ID) from
+Adds an inventory configuration (identified by the inventory ID) from
 the bucket.
 
 
@@ -1166,7 +1181,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketLifecycle>
 
 Returns: nothing
 
-  Deprecated, see the PutBucketLifecycleConfiguration operation.
+Deprecated, see the PutBucketLifecycleConfiguration operation.
 
 
 =head2 PutBucketLifecycleConfiguration(Bucket => Str, [LifecycleConfiguration => L<Paws::S3::BucketLifecycleConfiguration>])
@@ -1175,7 +1190,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketLifecycleConfigura
 
 Returns: nothing
 
-  Sets lifecycle configuration for your bucket. If a lifecycle
+Sets lifecycle configuration for your bucket. If a lifecycle
 configuration exists, it replaces it.
 
 
@@ -1185,7 +1200,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketLogging>
 
 Returns: nothing
 
-  Set the logging parameters for a bucket and to specify permissions for
+Set the logging parameters for a bucket and to specify permissions for
 who can view and modify the logging parameters. To set the logging
 status of a bucket, you must be the bucket owner.
 
@@ -1196,7 +1211,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketMetricsConfigurati
 
 Returns: nothing
 
-  Sets a metrics configuration (specified by the metrics configuration
+Sets a metrics configuration (specified by the metrics configuration
 ID) for the bucket.
 
 
@@ -1206,7 +1221,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketNotification>
 
 Returns: nothing
 
-  Deprecated, see the PutBucketNotificationConfiguraiton operation.
+Deprecated, see the PutBucketNotificationConfiguraiton operation.
 
 
 =head2 PutBucketNotificationConfiguration(Bucket => Str, NotificationConfiguration => L<Paws::S3::NotificationConfiguration>)
@@ -1215,7 +1230,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketNotificationConfig
 
 Returns: nothing
 
-  Enables notifications of specified events for a bucket.
+Enables notifications of specified events for a bucket.
 
 
 =head2 PutBucketPolicy(Bucket => Str, Policy => Str, [ContentMD5 => Str])
@@ -1224,7 +1239,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketPolicy>
 
 Returns: nothing
 
-  Replaces a policy on a bucket. If the bucket already has a policy, the
+Replaces a policy on a bucket. If the bucket already has a policy, the
 one in this request completely replaces it.
 
 
@@ -1234,7 +1249,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketReplication>
 
 Returns: nothing
 
-  Creates a new replication configuration (or replaces an existing one,
+Creates a new replication configuration (or replaces an existing one,
 if present).
 
 
@@ -1244,7 +1259,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketRequestPayment>
 
 Returns: nothing
 
-  Sets the request payment configuration for a bucket. By default, the
+Sets the request payment configuration for a bucket. By default, the
 bucket owner pays for downloads from the bucket. This configuration
 parameter enables the bucket owner (only) to specify that the person
 requesting the download will be charged for the download. Documentation
@@ -1258,7 +1273,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketTagging>
 
 Returns: nothing
 
-  Sets the tags for a bucket.
+Sets the tags for a bucket.
 
 
 =head2 PutBucketVersioning(Bucket => Str, VersioningConfiguration => L<Paws::S3::VersioningConfiguration>, [ContentMD5 => Str, MFA => Str])
@@ -1267,7 +1282,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketVersioning>
 
 Returns: nothing
 
-  Sets the versioning state of an existing bucket. To set the versioning
+Sets the versioning state of an existing bucket. To set the versioning
 state, you must be the bucket owner.
 
 
@@ -1277,7 +1292,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketWebsite>
 
 Returns: nothing
 
-  Set the website configuration for a bucket.
+Set the website configuration for a bucket.
 
 
 =head2 PutObject(Bucket => Str, Key => Str, [ACL => Str, Body => Str, CacheControl => Str, ContentDisposition => Str, ContentEncoding => Str, ContentLanguage => Str, ContentLength => Int, ContentMD5 => Str, ContentType => Str, Expires => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWriteACP => Str, Metadata => L<Paws::S3::Metadata>, RequestPayer => Str, ServerSideEncryption => Str, SSECustomerAlgorithm => Str, SSECustomerKey => Str, SSECustomerKeyMD5 => Str, SSEKMSKeyId => Str, StorageClass => Str, Tagging => Str, WebsiteRedirectLocation => Str])
@@ -1286,7 +1301,7 @@ Each argument is described in detail in: L<Paws::S3::PutObject>
 
 Returns: a L<Paws::S3::PutObjectOutput> instance
 
-  Adds an object to a bucket.
+Adds an object to a bucket.
 
 
 =head2 PutObjectAcl(Bucket => Str, Key => Str, [AccessControlPolicy => L<Paws::S3::AccessControlPolicy>, ACL => Str, ContentMD5 => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWrite => Str, GrantWriteACP => Str, RequestPayer => Str, VersionId => Str])
@@ -1295,7 +1310,7 @@ Each argument is described in detail in: L<Paws::S3::PutObjectAcl>
 
 Returns: a L<Paws::S3::PutObjectAclOutput> instance
 
-  uses the acl subresource to set the access control list (ACL)
+uses the acl subresource to set the access control list (ACL)
 permissions for an object that already exists in a bucket
 
 
@@ -1305,7 +1320,7 @@ Each argument is described in detail in: L<Paws::S3::PutObjectTagging>
 
 Returns: a L<Paws::S3::PutObjectTaggingOutput> instance
 
-  Sets the supplied tag-set to an object that already exists in a bucket
+Sets the supplied tag-set to an object that already exists in a bucket
 
 
 =head2 RestoreObject(Bucket => Str, Key => Str, [RequestPayer => Str, RestoreRequest => L<Paws::S3::RestoreRequest>, VersionId => Str])
@@ -1314,7 +1329,7 @@ Each argument is described in detail in: L<Paws::S3::RestoreObject>
 
 Returns: a L<Paws::S3::RestoreObjectOutput> instance
 
-  Restores an archived copy of an object back into Amazon S3
+Restores an archived copy of an object back into Amazon S3
 
 
 =head2 UploadPart(Bucket => Str, Key => Str, PartNumber => Int, UploadId => Str, [Body => Str, ContentLength => Int, ContentMD5 => Str, RequestPayer => Str, SSECustomerAlgorithm => Str, SSECustomerKey => Str, SSECustomerKeyMD5 => Str])
@@ -1323,7 +1338,7 @@ Each argument is described in detail in: L<Paws::S3::UploadPart>
 
 Returns: a L<Paws::S3::UploadPartOutput> instance
 
-  Uploads a part in a multipart upload.
+Uploads a part in a multipart upload.
 
 B<Note:> After you initiate multipart upload and upload one or more
 parts, you must either complete or abort multipart upload in order to
@@ -1338,7 +1353,7 @@ Each argument is described in detail in: L<Paws::S3::UploadPartCopy>
 
 Returns: a L<Paws::S3::UploadPartCopyOutput> instance
 
-  Uploads a part by copying data from an existing object as data source.
+Uploads a part by copying data from an existing object as data source.
 
 
 
@@ -1426,9 +1441,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

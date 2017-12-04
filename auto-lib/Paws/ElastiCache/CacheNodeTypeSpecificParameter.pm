@@ -63,7 +63,8 @@ parameter.
   Indicates whether a change to the parameter is applied immediately or
 requires a reboot for the change to be applied. You can force a reboot
 or wait until the next maintenance window's reboot. For more
-information, see Rebooting a Cluster.
+information, see Rebooting a Cluster
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Clusters.Rebooting.html).
 
 
 =head2 DataType => Str
@@ -105,9 +106,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ElastiCac
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

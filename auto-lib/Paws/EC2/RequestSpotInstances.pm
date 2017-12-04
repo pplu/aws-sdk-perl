@@ -6,6 +6,7 @@ package Paws::EC2::RequestSpotInstances;
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has InstanceCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'instanceCount' );
+  has InstanceInterruptionBehavior => (is => 'ro', isa => 'Str');
   has LaunchGroup => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'launchGroup' );
   has LaunchSpecification => (is => 'ro', isa => 'Paws::EC2::RequestSpotLaunchSpecification');
   has SpotPrice => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'spotPrice' , required => 1);
@@ -24,7 +25,7 @@ package Paws::EC2::RequestSpotInstances;
 
 =head1 NAME
 
-Paws::EC2::RequestSpotInstances - Arguments for method RequestSpotInstances on Paws::EC2
+Paws::EC2::RequestSpotInstances - Arguments for method RequestSpotInstances on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -89,7 +90,9 @@ group if you specify a duration.
 
 Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see How to Ensure
-Idempotency in the I<Amazon Elastic Compute Cloud User Guide>.
+Idempotency
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -110,6 +113,13 @@ Default: 1
 
 
 
+=head2 InstanceInterruptionBehavior => Str
+
+Indicates whether a Spot instance stops or terminates when it is
+interrupted.
+
+Valid values are: C<"stop">, C<"terminate">
+
 =head2 LaunchGroup => Str
 
 The instance launch group. Launch groups are Spot instances that launch
@@ -121,7 +131,7 @@ Default: Instances are launched and terminated individually
 
 =head2 LaunchSpecification => L<Paws::EC2::RequestSpotLaunchSpecification>
 
-
+The launch specification.
 
 
 
@@ -170,9 +180,9 @@ This class forms part of L<Paws>, documenting arguments for method RequestSpotIn
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

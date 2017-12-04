@@ -14,7 +14,7 @@ package Paws::Organizations::DescribeCreateAccountStatus;
 
 =head1 NAME
 
-Paws::Organizations::DescribeCreateAccountStatus - Arguments for method DescribeCreateAccountStatus on Paws::Organizations
+Paws::Organizations::DescribeCreateAccountStatus - Arguments for method DescribeCreateAccountStatus on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
@@ -39,8 +39,9 @@ Specifies the C<operationId> that uniquely identifies the request. You
 can get the ID from the response to an earlier CreateAccount request,
 or from the ListCreateAccountStatus operation.
 
-The regex pattern for an create account request ID string requires
-"car-" followed by from 8 to 32 lower-case letters or digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for an create
+account request ID string requires "car-" followed by from 8 to 32
+lower-case letters or digits.
 
 
 
@@ -51,9 +52,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeCreat
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

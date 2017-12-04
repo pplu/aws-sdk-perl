@@ -19,7 +19,7 @@ package Paws::GameLift::UpdateFleetAttributes;
 
 =head1 NAME
 
-Paws::GameLift::UpdateFleetAttributes - Arguments for method UpdateFleetAttributes on Paws::GameLift
+Paws::GameLift::UpdateFleetAttributes - Arguments for method UpdateFleetAttributes on L<Paws::GameLift>
 
 =head1 DESCRIPTION
 
@@ -52,11 +52,11 @@ Unique identifier for a fleet to update attribute metadata for.
 
 =head2 MetricGroups => ArrayRef[Str|Undef]
 
-Names of metric groups to include this fleet with. A fleet metric group
-is used in Amazon CloudWatch to aggregate metrics from multiple fleets.
-Use an existing metric group name to add this fleet to the group, or
-use a new name to create a new metric group. Currently, a fleet can
-only be included in one metric group at a time.
+Names of metric groups to include this fleet in. Amazon CloudWatch uses
+a fleet metric group is to aggregate metrics from multiple fleets. Use
+an existing metric group name to add this fleet to the group. Or use a
+new name to create a new metric group. A fleet can only be included in
+one metric group at a time.
 
 
 
@@ -77,13 +77,13 @@ protection for individual instances using UpdateGameSession.
 
 =item *
 
-B<NoProtection> E<ndash> The game session can be terminated during a
+B<NoProtection> -- The game session can be terminated during a
 scale-down event.
 
 =item *
 
-B<FullProtection> E<ndash> If the game session is in an C<ACTIVE>
-status, it cannot be terminated during a scale-down event.
+B<FullProtection> -- If the game session is in an C<ACTIVE> status, it
+cannot be terminated during a scale-down event.
 
 =back
 
@@ -104,9 +104,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateFleetAt
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

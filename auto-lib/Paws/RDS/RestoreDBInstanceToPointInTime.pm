@@ -37,7 +37,7 @@ package Paws::RDS::RestoreDBInstanceToPointInTime;
 
 =head1 NAME
 
-Paws::RDS::RestoreDBInstanceToPointInTime - Arguments for method RestoreDBInstanceToPointInTime on Paws::RDS
+Paws::RDS::RestoreDBInstanceToPointInTime - Arguments for method RestoreDBInstanceToPointInTime on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -111,8 +111,8 @@ This parameter is not used for the MySQL or MariaDB engines.
 
 The DB subnet group name to use for the new instance.
 
-Constraints: Must contain no more than 255 alphanumeric characters,
-periods, underscores, spaces, or hyphens. Must not be default.
+Constraints: If supplied, must match the name of an existing
+DBSubnetGroup.
 
 Example: C<mySubnetgroup>
 
@@ -167,9 +167,60 @@ Default: The same as source
 
 Constraint: Must be compatible with the engine of the source
 
-Valid Values: C<MySQL> | C<mariadb> | C<oracle-se1> | C<oracle-se> |
-C<oracle-ee> | C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> |
-C<sqlserver-web> | C<postgres> | C<aurora>
+Valid Values:
+
+=over
+
+=item *
+
+C<aurora>
+
+=item *
+
+C<mariadb>
+
+=item *
+
+C<mysql>
+
+=item *
+
+C<oracle-ee>
+
+=item *
+
+C<oracle-se2>
+
+=item *
+
+C<oracle-se1>
+
+=item *
+
+C<oracle-se>
+
+=item *
+
+C<postgres>
+
+=item *
+
+C<sqlserver-ee>
+
+=item *
+
+C<sqlserver-se>
+
+=item *
+
+C<sqlserver-ex>
+
+=item *
+
+C<sqlserver-web>
+
+=back
+
 
 
 
@@ -295,19 +346,7 @@ Constraints:
 
 =item *
 
-Must be the identifier of an existing database instance
-
-=item *
-
-Must contain from 1 to 63 alphanumeric characters or hyphens
-
-=item *
-
-First character must be a letter
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens
+Must match the identifier of an existing DBInstance.
 
 =back
 
@@ -344,7 +383,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens
+Must contain from 1 to 63 letters, numbers, or hyphens
 
 =item *
 
@@ -391,9 +430,9 @@ This class forms part of L<Paws>, documenting arguments for method RestoreDBInst
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

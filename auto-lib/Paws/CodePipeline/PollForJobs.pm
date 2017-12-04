@@ -16,7 +16,7 @@ package Paws::CodePipeline::PollForJobs;
 
 =head1 NAME
 
-Paws::CodePipeline::PollForJobs - Arguments for method PollForJobs on Paws::CodePipeline
+Paws::CodePipeline::PollForJobs - Arguments for method PollForJobs on L<Paws::CodePipeline>
 
 =head1 DESCRIPTION
 
@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ActionTypeId => L<Paws::CodePipeline::ActionTypeId>
 
-
+Represents information about an action type.
 
 
 
@@ -64,9 +64,9 @@ This class forms part of L<Paws>, documenting arguments for method PollForJobs i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -15,7 +15,7 @@ package Paws::ECR::GetRepositoryPolicy;
 
 =head1 NAME
 
-Paws::ECR::GetRepositoryPolicy - Arguments for method GetRepositoryPolicy on Paws::ECR
+Paws::ECR::GetRepositoryPolicy - Arguments for method GetRepositoryPolicy on L<Paws::ECR>
 
 =head1 DESCRIPTION
 
@@ -44,7 +44,7 @@ assumed.
 
 =head2 B<REQUIRED> RepositoryName => Str
 
-The name of the repository whose policy you want to retrieve.
+The name of the repository with the policy to retrieve.
 
 
 
@@ -55,9 +55,9 @@ This class forms part of L<Paws>, documenting arguments for method GetRepository
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -14,7 +14,7 @@ package Paws::IAM::GetContextKeysForCustomPolicy;
 
 =head1 NAME
 
-Paws::IAM::GetContextKeysForCustomPolicy - Arguments for method GetContextKeysForCustomPolicy on Paws::IAM
+Paws::IAM::GetContextKeysForCustomPolicy - Arguments for method GetContextKeysForCustomPolicy on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -39,13 +39,13 @@ A list of policies for which you want the list of context keys
 referenced in those policies. Each document is specified as a string
 containing the complete, valid JSON text of an IAM policy.
 
-The regex pattern used to validate this parameter is a string of
-characters consisting of any printable ASCII character ranging from the
-space character (\u0020) through end of the ASCII character range as
-well as the printable characters in the Basic Latin and Latin-1
-Supplement character set (through \u00FF). It also includes the special
-characters tab (\u0009), line feed (\u000A), and carriage return
-(\u000D).
+The regex pattern (http://wikipedia.org/wiki/regex) used to validate
+this parameter is a string of characters consisting of any printable
+ASCII character ranging from the space character (\u0020) through end
+of the ASCII character range as well as the printable characters in the
+Basic Latin and Latin-1 Supplement character set (through \u00FF). It
+also includes the special characters tab (\u0009), line feed (\u000A),
+and carriage return (\u000D).
 
 
 
@@ -56,9 +56,9 @@ This class forms part of L<Paws>, documenting arguments for method GetContextKey
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

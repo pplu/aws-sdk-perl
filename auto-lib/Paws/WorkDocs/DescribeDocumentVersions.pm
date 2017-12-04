@@ -1,11 +1,12 @@
 
 package Paws::WorkDocs::DescribeDocumentVersions;
   use Moose;
-  has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId' , required => 1);
-  has Fields => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'fields' );
-  has Include => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'include' );
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit' );
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
+  has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId', required => 1);
+  has Fields => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'fields');
+  has Include => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'include');
+  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
+  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
 
   use MooseX::ClassAttribute;
 
@@ -13,14 +14,13 @@ package Paws::WorkDocs::DescribeDocumentVersions;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/documents/{DocumentId}/versions');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::DescribeDocumentVersionsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::WorkDocs::DescribeDocumentVersions - Arguments for method DescribeDocumentVersions on Paws::WorkDocs
+Paws::WorkDocs::DescribeDocumentVersions - Arguments for method DescribeDocumentVersions on L<Paws::WorkDocs>
 
 =head1 DESCRIPTION
 
@@ -37,6 +37,14 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 AuthenticationToken => Str
+
+Amazon WorkDocs authentication token. This field should not be set when
+using administrative API actions, as in accessing the API using AWS
+credentials.
+
 
 
 =head2 B<REQUIRED> DocumentId => Str
@@ -79,9 +87,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeDocum
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

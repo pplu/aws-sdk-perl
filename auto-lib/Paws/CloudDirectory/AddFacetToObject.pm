@@ -1,7 +1,7 @@
 
 package Paws::CloudDirectory::AddFacetToObject;
   use Moose;
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
   has ObjectAttributeList => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeKeyAndValue]');
   has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
   has SchemaFacet => (is => 'ro', isa => 'Paws::CloudDirectory::SchemaFacet', required => 1);
@@ -12,14 +12,13 @@ package Paws::CloudDirectory::AddFacetToObject;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/object/facets');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::AddFacetToObjectResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CloudDirectory::AddFacetToObject - Arguments for method AddFacetToObject on Paws::CloudDirectory
+Paws::CloudDirectory::AddFacetToObject - Arguments for method AddFacetToObject on L<Paws::CloudDirectory>
 
 =head1 DESCRIPTION
 
@@ -40,14 +39,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-ARN associated with the Directory where the object resides. For more
-information, see arns.
+The Amazon Resource Name (ARN) that is associated with the Directory
+where the object resides. For more information, see arns.
 
 
 
 =head2 ObjectAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>]
 
-Attributes on the facet you are adding to the object.
+Attributes on the facet that you are adding to the object.
 
 
 
@@ -70,9 +69,9 @@ This class forms part of L<Paws>, documenting arguments for method AddFacetToObj
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

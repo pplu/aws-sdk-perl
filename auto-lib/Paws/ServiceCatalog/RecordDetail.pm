@@ -80,7 +80,8 @@ The full details of a specific ProvisionedProduct object.
 
 =head2 ProvisioningArtifactId => Str
 
-  The provisioning artifact identifier for this product.
+  The provisioning artifact identifier for this product. This is
+sometimes referred to as the product version.
 
 
 =head2 RecordErrors => ArrayRef[L<Paws::ServiceCatalog::RecordError>]
@@ -107,6 +108,19 @@ The full details of a specific ProvisionedProduct object.
 
   The status of the ProvisionedProduct object.
 
+C<CREATED> - Request created but the operation has not yet started.
+
+C<IN_PROGRESS> - The requested operation is in-progress.
+
+C<IN_PROGRESS_IN_ERROR> - The provisioned product is under change but
+the requested operation failed and some remediation is occurring. For
+example, a rollback.
+
+C<SUCCEEDED> - The requested operation has successfully completed.
+
+C<FAILED> - The requested operation has completed but has failed.
+Investigate using the error messages returned.
+
 
 =head2 UpdatedTime => Str
 
@@ -121,9 +135,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ServiceCa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

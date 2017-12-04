@@ -15,7 +15,7 @@ package Paws::WAF::ListIPSets;
 
 =head1 NAME
 
-Paws::WAF::ListIPSets - Arguments for method ListIPSets on Paws::WAF
+Paws::WAF::ListIPSets - Arguments for method ListIPSets on L<Paws::WAF>
 
 =head1 DESCRIPTION
 
@@ -50,7 +50,7 @@ the value of C<Limit>, AWS WAF returns a C<NextMarker> value in the
 response that allows you to list another group of C<IPSets>. For the
 second and subsequent C<ListIPSets> requests, specify the value of
 C<NextMarker> from the previous response to get information about
-another batch of C<ByteMatchSets>.
+another batch of C<IPSets>.
 
 
 
@@ -61,9 +61,9 @@ This class forms part of L<Paws>, documenting arguments for method ListIPSets in
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -11,7 +11,7 @@ package Paws::CUR;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub DeleteReportDefinition {
@@ -35,18 +35,20 @@ package Paws::CUR;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeReportDefinitions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeReportDefinitions(@_, NextToken => $result->NextToken);
-        push @{ $result->ReportDefinitions }, @{ $result->ReportDefinitions };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeReportDefinitions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ReportDefinitions }, @{ $next_result->ReportDefinitions };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeReportDefinitions(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ReportDefinitions') foreach (@{ $result->ReportDefinitions });
+        $result = $self->DescribeReportDefinitions(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ReportDefinitions') foreach (@{ $result->ReportDefinitions });
     }
 
     return undef
@@ -91,7 +93,7 @@ Each argument is described in detail in: L<Paws::CUR::DeleteReportDefinition>
 
 Returns: a L<Paws::CUR::DeleteReportDefinitionResponse> instance
 
-  Delete a specified report definition
+Delete a specified report definition
 
 
 =head2 DescribeReportDefinitions([MaxResults => Int, NextToken => Str])
@@ -100,7 +102,7 @@ Each argument is described in detail in: L<Paws::CUR::DescribeReportDefinitions>
 
 Returns: a L<Paws::CUR::DescribeReportDefinitionsResponse> instance
 
-  Describe a list of report definitions owned by the account
+Describe a list of report definitions owned by the account
 
 
 =head2 PutReportDefinition(ReportDefinition => L<Paws::CUR::ReportDefinition>)
@@ -109,7 +111,7 @@ Each argument is described in detail in: L<Paws::CUR::PutReportDefinition>
 
 Returns: a L<Paws::CUR::PutReportDefinitionResponse> instance
 
-  Create a new report definition
+Create a new report definition
 
 
 
@@ -139,9 +141,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

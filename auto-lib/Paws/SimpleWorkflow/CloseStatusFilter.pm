@@ -39,8 +39,8 @@ their close status.
 
 =head2 B<REQUIRED> Status => Str
 
-  B<Required.> The close status that must match the close status of an
-execution for it to meet the criteria of this filter.
+  The close status that must match the close status of an execution for
+it to meet the criteria of this filter.
 
 
 
@@ -50,9 +50,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SimpleWor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

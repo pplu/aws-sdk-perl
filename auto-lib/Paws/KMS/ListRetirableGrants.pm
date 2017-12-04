@@ -16,7 +16,7 @@ package Paws::KMS::ListRetirableGrants;
 
 =head1 NAME
 
-Paws::KMS::ListRetirableGrants - Arguments for method ListRetirableGrants on Paws::KMS
+Paws::KMS::ListRetirableGrants - Arguments for method ListRetirableGrants on L<Paws::KMS>
 
 =head1 DESCRIPTION
 
@@ -59,11 +59,14 @@ truncated response you just received.
 The retiring principal for which to list grants.
 
 To specify the retiring principal, use the Amazon Resource Name (ARN)
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 of an AWS principal. Valid AWS principals include AWS accounts (root),
 IAM users, federated users, and assumed role users. For examples of the
 ARN syntax for specifying a principal, see AWS Identity and Access
-Management (IAM) in the Example ARNs section of the I<Amazon Web
-Services General Reference>.
+Management (IAM)
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam)
+in the Example ARNs section of the I<Amazon Web Services General
+Reference>.
 
 
 
@@ -74,9 +77,9 @@ This class forms part of L<Paws>, documenting arguments for method ListRetirable
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

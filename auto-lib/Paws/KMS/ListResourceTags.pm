@@ -16,7 +16,7 @@ package Paws::KMS::ListResourceTags;
 
 =head1 NAME
 
-Paws::KMS::ListResourceTags - Arguments for method ListResourceTags on Paws::KMS
+Paws::KMS::ListResourceTags - Arguments for method ListResourceTags on L<Paws::KMS>
 
 =head1 DESCRIPTION
 
@@ -37,15 +37,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> KeyId => Str
 
-A unique identifier for the CMK whose tags you are listing. You can use
-the unique key ID or the Amazon Resource Name (ARN) of the CMK.
-Examples:
+A unique identifier for the customer master key (CMK).
+
+Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+
+For example:
 
 =over
 
 =item *
 
-Unique key ID: C<1234abcd-12ab-34cd-56ef-1234567890ab>
+Key ID: C<1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =item *
 
@@ -54,6 +56,7 @@ C<arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =back
 
+To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 
 
 
@@ -86,9 +89,9 @@ This class forms part of L<Paws>, documenting arguments for method ListResourceT
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -19,7 +19,7 @@ package Paws::RDS::CopyDBClusterSnapshot;
 
 =head1 NAME
 
-Paws::RDS::CopyDBClusterSnapshot - Arguments for method CopyDBClusterSnapshot on Paws::RDS
+Paws::RDS::CopyDBClusterSnapshot - Arguments for method CopyDBClusterSnapshot on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -64,40 +64,42 @@ the source DB cluster snapshot.
 If you copy an encrypted DB cluster snapshot that is shared from
 another AWS account, then you must specify a value for C<KmsKeyId>.
 
-To copy an encrypted DB cluster snapshot to another region, you must
-set C<KmsKeyId> to the KMS key ID you want to use to encrypt the copy
-of the DB cluster snapshot in the destination region. KMS encryption
-keys are specific to the region that they are created in, and you
-cannot use encryption keys from one region in another region.
+To copy an encrypted DB cluster snapshot to another AWS Region, you
+must set C<KmsKeyId> to the KMS key ID you want to use to encrypt the
+copy of the DB cluster snapshot in the destination AWS Region. KMS
+encryption keys are specific to the AWS Region that they are created
+in, and you cannot use encryption keys from one AWS Region in another
+AWS Region.
 
 
 
 =head2 PreSignedUrl => Str
 
 The URL that contains a Signature Version 4 signed request for the
-C<CopyDBClusterSnapshot> API action in the AWS region that contains the
+C<CopyDBClusterSnapshot> API action in the AWS Region that contains the
 source DB cluster snapshot to copy. The C<PreSignedUrl> parameter must
 be used when copying an encrypted DB cluster snapshot from another AWS
-region.
+Region.
 
 The pre-signed URL must be a valid request for the
 C<CopyDBSClusterSnapshot> API action that can be executed in the source
-region that contains the encrypted DB cluster snapshot to be copied.
-The pre-signed URL request must contain the following parameter values:
+AWS Region that contains the encrypted DB cluster snapshot to be
+copied. The pre-signed URL request must contain the following parameter
+values:
 
 =over
 
 =item *
 
 C<KmsKeyId> - The KMS key identifier for the key to use to encrypt the
-copy of the DB cluster snapshot in the destination region. This is the
-same identifier for both the C<CopyDBClusterSnapshot> action that is
-called in the destination region, and the action contained in the
-pre-signed URL.
+copy of the DB cluster snapshot in the destination AWS Region. This is
+the same identifier for both the C<CopyDBClusterSnapshot> action that
+is called in the destination AWS Region, and the action contained in
+the pre-signed URL.
 
 =item *
 
-C<DestinationRegion> - The name of the region that the DB cluster
+C<DestinationRegion> - The name of the AWS Region that the DB cluster
 snapshot will be created in.
 
 =item *
@@ -105,8 +107,8 @@ snapshot will be created in.
 C<SourceDBClusterSnapshotIdentifier> - The DB cluster snapshot
 identifier for the encrypted DB cluster snapshot to be copied. This
 identifier must be in the Amazon Resource Name (ARN) format for the
-source region. For example, if you are copying an encrypted DB cluster
-snapshot from the us-west-2 region, then your
+source AWS Region. For example, if you are copying an encrypted DB
+cluster snapshot from the us-west-2 region, then your
 C<SourceDBClusterSnapshotIdentifier> looks like the following example:
 C<arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115>.
 
@@ -114,7 +116,10 @@ C<arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-2
 
 To learn how to generate a Signature Version 4 signed request, see
 Authenticating Requests: Using Query Parameters (AWS Signature Version
-4) and Signature Version 4 Signing Process.
+4)
+(http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
+and Signature Version 4 Signing Process
+(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 
 
@@ -124,7 +129,7 @@ The identifier of the DB cluster snapshot to copy. This parameter is
 not case-sensitive.
 
 You cannot copy an encrypted, shared DB cluster snapshot from one AWS
-region to another.
+Region to another.
 
 Constraints:
 
@@ -132,30 +137,19 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens.
-
-=item *
-
-First character must be a letter.
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens.
-
-=item *
-
 Must specify a valid system snapshot in the "available" state.
 
 =item *
 
-If the source snapshot is in the same region as the copy, specify a
+If the source snapshot is in the same AWS Region as the copy, specify a
 valid DB snapshot identifier.
 
 =item *
 
-If the source snapshot is in a different region than the copy, specify
-a valid DB cluster snapshot ARN. For more information, go to Copying a
-DB Snapshot or DB Cluster Snapshot.
+If the source snapshot is in a different AWS Region than the copy,
+specify a valid DB cluster snapshot ARN. For more information, go to
+Copying a DB Snapshot or DB Cluster Snapshot
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html).
 
 =back
 
@@ -180,7 +174,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens.
+Must contain from 1 to 63 letters, numbers, or hyphens.
 
 =item *
 
@@ -203,9 +197,9 @@ This class forms part of L<Paws>, documenting arguments for method CopyDBCluster
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -2,6 +2,7 @@
 package Paws::CloudFormation::GetTemplateSummary;
   use Moose;
   has StackName => (is => 'ro', isa => 'Str');
+  has StackSetName => (is => 'ro', isa => 'Str');
   has TemplateBody => (is => 'ro', isa => 'Str');
   has TemplateURL => (is => 'ro', isa => 'Str');
 
@@ -16,7 +17,7 @@ package Paws::CloudFormation::GetTemplateSummary;
 
 =head1 NAME
 
-Paws::CloudFormation::GetTemplateSummary - Arguments for method GetTemplateSummary on Paws::CloudFormation
+Paws::CloudFormation::GetTemplateSummary - Arguments for method GetTemplateSummary on L<Paws::CloudFormation>
 
 =head1 DESCRIPTION
 
@@ -43,7 +44,17 @@ the stack's name or its unique stack ID. For deleted stack, you must
 specify the unique stack ID.
 
 Conditional: You must specify only one of the following parameters:
-C<StackName>, C<TemplateBody>, or C<TemplateURL>.
+C<StackName>, C<StackSetName>, C<TemplateBody>, or C<TemplateURL>.
+
+
+
+=head2 StackSetName => Str
+
+The name or unique ID of the stack set from which the stack was
+created.
+
+Conditional: You must specify only one of the following parameters:
+C<StackName>, C<StackSetName>, C<TemplateBody>, or C<TemplateURL>.
 
 
 
@@ -51,10 +62,12 @@ C<StackName>, C<TemplateBody>, or C<TemplateURL>.
 
 Structure containing the template body with a minimum length of 1 byte
 and a maximum length of 51,200 bytes. For more information about
-templates, see Template Anatomy in the AWS CloudFormation User Guide.
+templates, see Template Anatomy
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+in the AWS CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:
-C<StackName>, C<TemplateBody>, or C<TemplateURL>.
+C<StackName>, C<StackSetName>, C<TemplateBody>, or C<TemplateURL>.
 
 
 
@@ -62,11 +75,12 @@ C<StackName>, C<TemplateBody>, or C<TemplateURL>.
 
 Location of file containing the template body. The URL must point to a
 template (max size: 460,800 bytes) that is located in an Amazon S3
-bucket. For more information about templates, see Template Anatomy in
-the AWS CloudFormation User Guide.
+bucket. For more information about templates, see Template Anatomy
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+in the AWS CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:
-C<StackName>, C<TemplateBody>, or C<TemplateURL>.
+C<StackName>, C<StackSetName>, C<TemplateBody>, or C<TemplateURL>.
 
 
 
@@ -77,9 +91,9 @@ This class forms part of L<Paws>, documenting arguments for method GetTemplateSu
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

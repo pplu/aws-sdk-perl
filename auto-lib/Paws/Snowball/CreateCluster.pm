@@ -23,7 +23,7 @@ package Paws::Snowball::CreateCluster;
 
 =head1 NAME
 
-Paws::Snowball::CreateCluster - Arguments for method CreateCluster on Paws::Snowball
+Paws::Snowball::CreateCluster - Arguments for method CreateCluster on L<Paws::Snowball>
 
 =head1 DESCRIPTION
 
@@ -72,8 +72,9 @@ Valid values are: C<"IMPORT">, C<"EXPORT">, C<"LOCAL_USE">
 =head2 KmsKeyARN => Str
 
 The C<KmsKeyARN> value that you want to associate with this cluster.
-C<KmsKeyARN> values are created by using the CreateKey API action in
-AWS Key Management Service (AWS KMS).
+C<KmsKeyARN> values are created by using the CreateKey
+(http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html)
+API action in AWS Key Management Service (AWS KMS).
 
 
 
@@ -95,8 +96,9 @@ Python language.
 =head2 B<REQUIRED> RoleARN => Str
 
 The C<RoleARN> that you want to associate with this cluster. C<RoleArn>
-values are created by using the CreateRole API action in AWS Identity
-and Access Management (IAM).
+values are created by using the CreateRole
+(http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
+API action in AWS Identity and Access Management (IAM).
 
 
 
@@ -148,9 +150,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateCluster
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

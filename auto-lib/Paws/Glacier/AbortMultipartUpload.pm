@@ -1,9 +1,9 @@
 
 package Paws::Glacier::AbortMultipartUpload;
   use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
-  has UploadId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'uploadId' , required => 1);
-  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
+  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
+  has UploadId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'uploadId', required => 1);
+  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -11,14 +11,13 @@ package Paws::Glacier::AbortMultipartUpload;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Glacier::AbortMultipartUpload - Arguments for method AbortMultipartUpload on Paws::Glacier
+Paws::Glacier::AbortMultipartUpload - Arguments for method AbortMultipartUpload on L<Paws::Glacier>
 
 =head1 DESCRIPTION
 
@@ -66,9 +65,9 @@ This class forms part of L<Paws>, documenting arguments for method AbortMultipar
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -1,7 +1,7 @@
 
 package Paws::MTurk::UpdateExpirationForHIT;
   use Moose;
-  has ExpireAt => (is => 'ro', isa => 'Str');
+  has ExpireAt => (is => 'ro', isa => 'Str', required => 1);
   has HITId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -15,7 +15,7 @@ package Paws::MTurk::UpdateExpirationForHIT;
 
 =head1 NAME
 
-Paws::MTurk::UpdateExpirationForHIT - Arguments for method UpdateExpirationForHIT on Paws::MTurk
+Paws::MTurk::UpdateExpirationForHIT - Arguments for method UpdateExpirationForHIT on L<Paws::MTurk>
 
 =head1 DESCRIPTION
 
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ExpireAt => Str
+=head2 B<REQUIRED> ExpireAt => Str
 
 The date and time at which you want the HIT to expire
 
@@ -53,9 +53,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateExpirat
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

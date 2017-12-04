@@ -119,11 +119,31 @@ pending
 
 =item *
 
+C<configure>
+
+=item *
+
 C<deploy>
 
 =item *
 
+C<execute_recipes>
+
+=item *
+
+C<install_dependencies>
+
+=item *
+
+C<restart>
+
+=item *
+
 C<rollback>
+
+=item *
+
+C<setup>
 
 =item *
 
@@ -135,19 +155,7 @@ C<stop>
 
 =item *
 
-C<restart>
-
-=item *
-
 C<undeploy>
-
-=item *
-
-C<update_dependencies>
-
-=item *
-
-C<install_dependencies>
 
 =item *
 
@@ -155,7 +163,7 @@ C<update_custom_cookbooks>
 
 =item *
 
-C<execute_recipes>
+C<update_dependencies>
 
 =back
 
@@ -168,9 +176,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::OpsWorks>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

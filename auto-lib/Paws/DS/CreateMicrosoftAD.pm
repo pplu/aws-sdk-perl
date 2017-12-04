@@ -18,7 +18,7 @@ package Paws::DS::CreateMicrosoftAD;
 
 =head1 NAME
 
-Paws::DS::CreateMicrosoftAD - Arguments for method CreateMicrosoftAD on Paws::DS
+Paws::DS::CreateMicrosoftAD - Arguments for method CreateMicrosoftAD on L<Paws::DS>
 
 =head1 DESCRIPTION
 
@@ -69,7 +69,8 @@ directory DNS C<corp.example.com>.
 
 =head2 B<REQUIRED> VpcSettings => L<Paws::DS::DirectoryVpcSettings>
 
-
+Contains VPC information for the CreateDirectory or CreateMicrosoftAD
+operation.
 
 
 
@@ -80,9 +81,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateMicroso
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

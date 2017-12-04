@@ -1,7 +1,7 @@
 
 package Paws::CloudDirectory::BatchWrite;
   use Moose;
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
   has Operations => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::BatchWriteOperation]', required => 1);
 
   use MooseX::ClassAttribute;
@@ -10,14 +10,13 @@ package Paws::CloudDirectory::BatchWrite;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/batchwrite');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::BatchWriteResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CloudDirectory::BatchWrite - Arguments for method BatchWrite on Paws::CloudDirectory
+Paws::CloudDirectory::BatchWrite - Arguments for method BatchWrite on L<Paws::CloudDirectory>
 
 =head1 DESCRIPTION
 
@@ -38,13 +37,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-ARN associated with the Directory. For more information, see arns.
+The Amazon Resource Name (ARN) that is associated with the Directory.
+For more information, see arns.
 
 
 
 =head2 B<REQUIRED> Operations => ArrayRef[L<Paws::CloudDirectory::BatchWriteOperation>]
 
-List of operations that are part of the batch.
+A list of operations that are part of the batch.
 
 
 
@@ -55,9 +55,9 @@ This class forms part of L<Paws>, documenting arguments for method BatchWrite in
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -20,7 +20,7 @@ package Paws::EC2::ReportInstanceStatus;
 
 =head1 NAME
 
-Paws::EC2::ReportInstanceStatus - Arguments for method ReportInstanceStatus on Paws::EC2
+Paws::EC2::ReportInstanceStatus - Arguments for method ReportInstanceStatus on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -68,7 +68,7 @@ One or more instances.
 
 =head2 B<REQUIRED> ReasonCodes => ArrayRef[Str|Undef]
 
-One or more reason codes that describes the health state of your
+One or more reason codes that describe the health state of your
 instance.
 
 =over
@@ -93,17 +93,17 @@ C<password-not-available>: A password is not available for my instance.
 =item *
 
 C<performance-network>: My instance is experiencing performance
-problems which I believe are network related.
+problems that I believe are network related.
 
 =item *
 
 C<performance-instance-store>: My instance is experiencing performance
-problems which I believe are related to the instance stores.
+problems that I believe are related to the instance stores.
 
 =item *
 
 C<performance-ebs-volume>: My instance is experiencing performance
-problems which I believe are related to an EBS volume.
+problems that I believe are related to an EBS volume.
 
 =item *
 
@@ -137,9 +137,9 @@ This class forms part of L<Paws>, documenting arguments for method ReportInstanc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

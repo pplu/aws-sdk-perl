@@ -15,7 +15,7 @@ package Paws::Rekognition::DetectFaces;
 
 =head1 NAME
 
-Paws::Rekognition::DetectFaces - Arguments for method DetectFaces on Paws::Rekognition
+Paws::Rekognition::DetectFaces - Arguments for method DetectFaces on L<Paws::Rekognition>
 
 =head1 DESCRIPTION
 
@@ -64,9 +64,9 @@ This class forms part of L<Paws>, documenting arguments for method DetectFaces i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

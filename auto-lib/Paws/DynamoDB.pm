@@ -9,11 +9,11 @@ package Paws::DynamoDB;
     { base => '0.05', type => 'exponential', growth_factor => 2 }
   });
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
-       sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'ProvisionedThroughputExceededException' },
        sub { $_[0]->code eq 'Crc32Error' },
+       sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'ProvisionedThroughputExceededException' },
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   has '+region_rules' => (default => sub {
     my $regioninfo;
@@ -141,18 +141,20 @@ package Paws::DynamoDB;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListTables(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->ExclusiveStartTableName) {
-        $result = $self->ListTables(@_, ExclusiveStartTableName => $result->LastEvaluatedTableName);
-        push @{ $result->TableNames }, @{ $result->TableNames };
+      while ($next_result->LastEvaluatedTableName) {
+        $next_result = $self->ListTables(@_, ExclusiveStartTableName => $next_result->LastEvaluatedTableName);
+        push @{ $result->TableNames }, @{ $next_result->TableNames };
       }
       return $result;
     } else {
-      while ($result->ExclusiveStartTableName) {
-        $result = $self->ListTables(@_, ExclusiveStartTableName => $result->LastEvaluatedTableName);
+      while ($result->LastEvaluatedTableName) {
         $callback->($_ => 'TableNames') foreach (@{ $result->TableNames });
+        $result = $self->ListTables(@_, ExclusiveStartTableName => $result->LastEvaluatedTableName);
       }
+      $callback->($_ => 'TableNames') foreach (@{ $result->TableNames });
     }
 
     return undef
@@ -162,22 +164,26 @@ package Paws::DynamoDB;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->Query(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->ExclusiveStartKey) {
-        $result = $self->Query(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
-        push @{ $result->Items }, @{ $result->Items };
-        push @{ $result->Count }, @{ $result->Count };
-        push @{ $result->ScannedCount }, @{ $result->ScannedCount };
+      while ($next_result->LastEvaluatedKey) {
+        $next_result = $self->Query(@_, ExclusiveStartKey => $next_result->LastEvaluatedKey);
+        push @{ $result->Items }, @{ $next_result->Items };
+        push @{ $result->Count }, @{ $next_result->Count };
+        push @{ $result->ScannedCount }, @{ $next_result->ScannedCount };
       }
       return $result;
     } else {
-      while ($result->ExclusiveStartKey) {
-        $result = $self->Query(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
+      while ($result->LastEvaluatedKey) {
         $callback->($_ => 'Items') foreach (@{ $result->Items });
         $callback->($_ => 'Count') foreach (@{ $result->Count });
         $callback->($_ => 'ScannedCount') foreach (@{ $result->ScannedCount });
+        $result = $self->Query(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
       }
+      $callback->($_ => 'Items') foreach (@{ $result->Items });
+      $callback->($_ => 'Count') foreach (@{ $result->Count });
+      $callback->($_ => 'ScannedCount') foreach (@{ $result->ScannedCount });
     }
 
     return undef
@@ -187,22 +193,26 @@ package Paws::DynamoDB;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->Scan(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->ExclusiveStartKey) {
-        $result = $self->Scan(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
-        push @{ $result->Items }, @{ $result->Items };
-        push @{ $result->Count }, @{ $result->Count };
-        push @{ $result->ScannedCount }, @{ $result->ScannedCount };
+      while ($next_result->LastEvaluatedKey) {
+        $next_result = $self->Scan(@_, ExclusiveStartKey => $next_result->LastEvaluatedKey);
+        push @{ $result->Items }, @{ $next_result->Items };
+        push @{ $result->Count }, @{ $next_result->Count };
+        push @{ $result->ScannedCount }, @{ $next_result->ScannedCount };
       }
       return $result;
     } else {
-      while ($result->ExclusiveStartKey) {
-        $result = $self->Scan(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
+      while ($result->LastEvaluatedKey) {
         $callback->($_ => 'Items') foreach (@{ $result->Items });
         $callback->($_ => 'Count') foreach (@{ $result->Count });
         $callback->($_ => 'ScannedCount') foreach (@{ $result->ScannedCount });
+        $result = $self->Scan(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
       }
+      $callback->($_ => 'Items') foreach (@{ $result->Items });
+      $callback->($_ => 'Count') foreach (@{ $result->Count });
+      $callback->($_ => 'ScannedCount') foreach (@{ $result->ScannedCount });
     }
 
     return undef
@@ -267,7 +277,7 @@ Each argument is described in detail in: L<Paws::DynamoDB::BatchGetItem>
 
 Returns: a L<Paws::DynamoDB::BatchGetItemOutput> instance
 
-  The C<BatchGetItem> operation returns the attributes of one or more
+The C<BatchGetItem> operation returns the attributes of one or more
 items from one or more tables. You identify requested items by primary
 key.
 
@@ -306,8 +316,9 @@ to throttling on the individual tables. If you delay the batch
 operation using exponential backoff, the individual requests in the
 batch are much more likely to succeed.
 
-For more information, see Batch Operations and Error Handling in the
-I<Amazon DynamoDB Developer Guide>.
+For more information, see Batch Operations and Error Handling
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations)
+in the I<Amazon DynamoDB Developer Guide>.
 
 By default, C<BatchGetItem> performs eventually consistent reads on
 every table in the request. If you want strongly consistent reads
@@ -325,7 +336,9 @@ the C<ProjectionExpression> parameter.
 If a requested item does not exist, it is not returned in the result.
 Requests for nonexistent items consume the minimum read capacity units
 according to the type of read. For more information, see Capacity Units
-Calculations in the I<Amazon DynamoDB Developer Guide>.
+Calculations
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 =head2 BatchWriteItem(RequestItems => L<Paws::DynamoDB::BatchWriteItemRequestMap>, [ReturnConsumedCapacity => Str, ReturnItemCollectionMetrics => Str])
@@ -334,7 +347,7 @@ Each argument is described in detail in: L<Paws::DynamoDB::BatchWriteItem>
 
 Returns: a L<Paws::DynamoDB::BatchWriteItemOutput> instance
 
-  The C<BatchWriteItem> operation puts or deletes multiple items in one
+The C<BatchWriteItem> operation puts or deletes multiple items in one
 or more tables. A single call to C<BatchWriteItem> can write up to 16
 MB of data, which can comprise as many as 25 put or delete requests.
 Individual items to be written can be as large as 400 KB.
@@ -366,8 +379,9 @@ to throttling on the individual tables. If you delay the batch
 operation using exponential backoff, the individual requests in the
 batch are much more likely to succeed.
 
-For more information, see Batch Operations and Error Handling in the
-I<Amazon DynamoDB Developer Guide>.
+For more information, see Batch Operations and Error Handling
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations)
+in the I<Amazon DynamoDB Developer Guide>.
 
 With C<BatchWriteItem>, you can efficiently write or delete large
 amounts of data, such as from Amazon Elastic MapReduce (EMR), or copy
@@ -435,7 +449,7 @@ Each argument is described in detail in: L<Paws::DynamoDB::CreateTable>
 
 Returns: a L<Paws::DynamoDB::CreateTableOutput> instance
 
-  The C<CreateTable> operation adds a new table to your account. In an
+The C<CreateTable> operation adds a new table to your account. In an
 AWS account, table names must be unique within each region. That is,
 you can have two tables with same name if you create the tables in
 different regions.
@@ -461,7 +475,7 @@ Each argument is described in detail in: L<Paws::DynamoDB::DeleteItem>
 
 Returns: a L<Paws::DynamoDB::DeleteItemOutput> instance
 
-  Deletes a single item in a table by primary key. You can perform a
+Deletes a single item in a table by primary key. You can perform a
 conditional delete operation that deletes the item if it exists, or if
 it has an expected attribute value.
 
@@ -484,7 +498,7 @@ Each argument is described in detail in: L<Paws::DynamoDB::DeleteTable>
 
 Returns: a L<Paws::DynamoDB::DeleteTableOutput> instance
 
-  The C<DeleteTable> operation deletes a table and all of its items.
+The C<DeleteTable> operation deletes a table and all of its items.
 After a C<DeleteTable> request, the specified table is in the
 C<DELETING> state until DynamoDB completes the deletion. If the table
 is in the C<ACTIVE> state, you can delete it. If a table is in
@@ -512,7 +526,7 @@ Each argument is described in detail in: L<Paws::DynamoDB::DescribeLimits>
 
 Returns: a L<Paws::DynamoDB::DescribeLimitsOutput> instance
 
-  Returns the current provisioned-capacity limits for your AWS account in
+Returns the current provisioned-capacity limits for your AWS account in
 a region, both for the region as a whole and for any one DynamoDB table
 that you create there.
 
@@ -520,14 +534,16 @@ When you establish an AWS account, the account has initial limits on
 the maximum read capacity units and write capacity units that you can
 provision across all of your DynamoDB tables in a given region. Also,
 there are per-table limits that apply when you create a table there.
-For more information, see Limits page in the I<Amazon DynamoDB
-Developer Guide>.
+For more information, see Limits
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+page in the I<Amazon DynamoDB Developer Guide>.
 
 Although you can increase these limits by filing a case at AWS Support
-Center, obtaining the increase is not instantaneous. The
-C<DescribeLimits> action lets you write code to compare the capacity
-you are currently using to those limits imposed by your account so that
-you have enough time to apply for an increase before you hit a limit.
+Center (https://console.aws.amazon.com/support/home#/), obtaining the
+increase is not instantaneous. The C<DescribeLimits> action lets you
+write code to compare the capacity you are currently using to those
+limits imposed by your account so that you have enough time to apply
+for an increase before you hit a limit.
 
 For example, you could use one of the AWS SDKs to do the following:
 
@@ -604,7 +620,7 @@ Each argument is described in detail in: L<Paws::DynamoDB::DescribeTable>
 
 Returns: a L<Paws::DynamoDB::DescribeTableOutput> instance
 
-  Returns information about the table, including the current status of
+Returns information about the table, including the current status of
 the table, when it was created, the primary key schema, and any indexes
 on the table.
 
@@ -622,7 +638,7 @@ Each argument is described in detail in: L<Paws::DynamoDB::DescribeTimeToLive>
 
 Returns: a L<Paws::DynamoDB::DescribeTimeToLiveOutput> instance
 
-  Gives a description of the Time to Live (TTL) status on the specified
+Gives a description of the Time to Live (TTL) status on the specified
 table.
 
 
@@ -632,7 +648,7 @@ Each argument is described in detail in: L<Paws::DynamoDB::GetItem>
 
 Returns: a L<Paws::DynamoDB::GetItemOutput> instance
 
-  The C<GetItem> operation returns a set of attributes for the item with
+The C<GetItem> operation returns a set of attributes for the item with
 the given primary key. If there is no matching item, C<GetItem> does
 not return any data and there will be no C<Item> element in the
 response.
@@ -650,7 +666,7 @@ Each argument is described in detail in: L<Paws::DynamoDB::ListTables>
 
 Returns: a L<Paws::DynamoDB::ListTablesOutput> instance
 
-  Returns an array of table names associated with the current account and
+Returns an array of table names associated with the current account and
 endpoint. The output from C<ListTables> is paginated, with each page
 returning a maximum of 100 table names.
 
@@ -661,10 +677,11 @@ Each argument is described in detail in: L<Paws::DynamoDB::ListTagsOfResource>
 
 Returns: a L<Paws::DynamoDB::ListTagsOfResourceOutput> instance
 
-  List all tags on an Amazon DynamoDB resource. You can call
+List all tags on an Amazon DynamoDB resource. You can call
 ListTagsOfResource up to 10 times per second, per account.
 
 For an overview on tagging DynamoDB resources, see Tagging for DynamoDB
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -674,16 +691,67 @@ Each argument is described in detail in: L<Paws::DynamoDB::PutItem>
 
 Returns: a L<Paws::DynamoDB::PutItemOutput> instance
 
-  Creates a new item, or replaces an old item with a new item. If an item
+Creates a new item, or replaces an old item with a new item. If an item
 that has the same primary key as the new item already exists in the
 specified table, the new item completely replaces the existing item.
 You can perform a conditional put operation (add a new item if one with
 the specified primary key doesn't exist), or replace an existing item
-if it has certain attribute values.
+if it has certain attribute values. You can return the item's attribute
+values in the same operation, using the C<ReturnValues> parameter.
 
-In addition to putting an item, you can also return the item's
-attribute values in the same operation, using the C<ReturnValues>
-parameter.
+This topic provides general information about the C<PutItem> API.
+
+For information on how to call the C<PutItem> API using the AWS SDK in
+specific languages, see the following:
+
+=over
+
+=item *
+
+PutItem in the AWS Command Line Interface
+(http://docs.aws.amazon.com/goto/aws-cli/dynamodb-2012-08-10/PutItem)
+
+=item *
+
+PutItem in the AWS SDK for .NET
+(http://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/PutItem)
+
+=item *
+
+PutItem in the AWS SDK for C++
+(http://docs.aws.amazon.com/goto/SdkForCpp/dynamodb-2012-08-10/PutItem)
+
+=item *
+
+PutItem in the AWS SDK for Go
+(http://docs.aws.amazon.com/goto/SdkForGoV1/dynamodb-2012-08-10/PutItem)
+
+=item *
+
+PutItem in the AWS SDK for Java
+(http://docs.aws.amazon.com/goto/SdkForJava/dynamodb-2012-08-10/PutItem)
+
+=item *
+
+PutItem in the AWS SDK for JavaScript
+(http://docs.aws.amazon.com/goto/AWSJavaScriptSDK/dynamodb-2012-08-10/PutItem)
+
+=item *
+
+PutItem in the AWS SDK for PHP V3
+(http://docs.aws.amazon.com/goto/SdkForPHPV3/dynamodb-2012-08-10/PutItem)
+
+=item *
+
+PutItem in the AWS SDK for Python
+(http://docs.aws.amazon.com/goto/boto3/dynamodb-2012-08-10/PutItem)
+
+=item *
+
+PutItem in the AWS SDK for Ruby V2
+(http://docs.aws.amazon.com/goto/SdkForRubyV2/dynamodb-2012-08-10/PutItem)
+
+=back
 
 When you add an item, the primary key attribute(s) are the only
 required attributes. Attribute values cannot be null. String and Binary
@@ -698,8 +766,9 @@ for the table. Since every record must contain that attribute, the
 C<attribute_not_exists> function will only succeed if no matching item
 exists.
 
-For more information about C<PutItem>, see Working with Items in the
-I<Amazon DynamoDB Developer Guide>.
+For more information about C<PutItem>, see Working with Items
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 =head2 Query(TableName => Str, [AttributesToGet => ArrayRef[Str|Undef], ConditionalOperator => Str, ConsistentRead => Bool, ExclusiveStartKey => L<Paws::DynamoDB::Key>, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>, FilterExpression => Str, IndexName => Str, KeyConditionExpression => Str, KeyConditions => L<Paws::DynamoDB::KeyConditions>, Limit => Int, ProjectionExpression => Str, QueryFilter => L<Paws::DynamoDB::FilterConditionMap>, ReturnConsumedCapacity => Str, ScanIndexForward => Bool, Select => Str])
@@ -708,28 +777,55 @@ Each argument is described in detail in: L<Paws::DynamoDB::Query>
 
 Returns: a L<Paws::DynamoDB::QueryOutput> instance
 
-  A C<Query> operation uses the primary key of a table or a secondary
-index to directly access items from that table or index.
+The C<Query> operation finds items based on primary key values. You can
+query any table or secondary index that has a composite primary key (a
+partition key and a sort key).
 
 Use the C<KeyConditionExpression> parameter to provide a specific value
 for the partition key. The C<Query> operation will return all of the
 items from the table or index with that partition key value. You can
 optionally narrow the scope of the C<Query> operation by specifying a
 sort key value and a comparison operator in C<KeyConditionExpression>.
-You can use the C<ScanIndexForward> parameter to get results in forward
-or reverse order, by sort key.
+To further refine the C<Query> results, you can optionally provide a
+C<FilterExpression>. A C<FilterExpression> determines which items
+within the results should be returned to you. All of the other results
+are discarded.
 
-Queries that do not return results consume the minimum number of read
-capacity units for that type of read operation.
+A C<Query> operation always returns a result set. If no matching items
+are found, the result set will be empty. Queries that do not return
+results consume the minimum number of read capacity units for that type
+of read operation.
 
-If the total number of items meeting the query criteria exceeds the
-result set size limit of 1 MB, the query stops and results are returned
-to the user with the C<LastEvaluatedKey> element to continue the query
-in a subsequent operation. Unlike a C<Scan> operation, a C<Query>
-operation never returns both an empty result set and a
-C<LastEvaluatedKey> value. C<LastEvaluatedKey> is only provided if you
-have used the C<Limit> parameter, or if the result set exceeds 1 MB
-(prior to applying a filter).
+DynamoDB calculates the number of read capacity units consumed based on
+item size, not on the amount of data that is returned to an
+application. The number of capacity units consumed will be the same
+whether you request all of the attributes (the default behavior) or
+just some of them (using a projection expression). The number will also
+be the same whether or not you use a C<FilterExpression>.
+
+C<Query> results are always sorted by the sort key value. If the data
+type of the sort key is Number, the results are returned in numeric
+order; otherwise, the results are returned in order of UTF-8 bytes. By
+default, the sort order is ascending. To reverse the order, set the
+C<ScanIndexForward> parameter to false.
+
+A single C<Query> operation will read up to the maximum number of items
+set (if using the C<Limit> parameter) or a maximum of 1 MB of data and
+then apply any filtering to the results using C<FilterExpression>. If
+C<LastEvaluatedKey> is present in the response, you will need to
+paginate the result set. For more information, see Paginating the
+Results
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.Pagination)
+in the I<Amazon DynamoDB Developer Guide>.
+
+C<FilterExpression> is applied after a C<Query> finishes, but before
+the results are returned. A C<FilterExpression> cannot contain
+partition key or sort key attributes. You need to specify those
+attributes in the C<KeyConditionExpression>.
+
+A C<Query> operation can return an empty result set and a
+C<LastEvaluatedKey> if all the items read for the page of results are
+filtered out.
 
 You can query a table, a local secondary index, or a global secondary
 index. For a query on a table or on a local secondary index, you can
@@ -745,7 +841,7 @@ Each argument is described in detail in: L<Paws::DynamoDB::Scan>
 
 Returns: a L<Paws::DynamoDB::ScanOutput> instance
 
-  The C<Scan> operation returns one or more items and item attributes by
+The C<Scan> operation returns one or more items and item attributes by
 accessing every item in a table or a secondary index. To have DynamoDB
 return fewer items, you can provide a C<FilterExpression> operation.
 
@@ -755,17 +851,27 @@ C<LastEvaluatedKey> value to continue the scan in a subsequent
 operation. The results also include the number of items exceeding the
 limit. A scan can result in no table data meeting the filter criteria.
 
-By default, C<Scan> operations proceed sequentially; however, for
-faster performance on a large table or secondary index, applications
-can request a parallel C<Scan> operation by providing the C<Segment>
-and C<TotalSegments> parameters. For more information, see Parallel
-Scan in the I<Amazon DynamoDB Developer Guide>.
+A single C<Scan> operation will read up to the maximum number of items
+set (if using the C<Limit> parameter) or a maximum of 1 MB of data and
+then apply any filtering to the results using C<FilterExpression>. If
+C<LastEvaluatedKey> is present in the response, you will need to
+paginate the result set. For more information, see Paginating the
+Results
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination)
+in the I<Amazon DynamoDB Developer Guide>.
 
-By default, C<Scan> uses eventually consistent reads when accessing the
-data in a table; therefore, the result set might not include the
-changes to data in the table immediately before the operation began. If
-you need a consistent copy of the data, as of the time that the Scan
-begins, you can set the C<ConsistentRead> parameter to C<true>.
+C<Scan> operations proceed sequentially; however, for faster
+performance on a large table or secondary index, applications can
+request a parallel C<Scan> operation by providing the C<Segment> and
+C<TotalSegments> parameters. For more information, see Parallel Scan
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.ParallelScan)
+in the I<Amazon DynamoDB Developer Guide>.
+
+C<Scan> uses eventually consistent reads when accessing the data in a
+table; therefore, the result set might not include the changes to data
+in the table immediately before the operation began. If you need a
+consistent copy of the data, as of the time that the C<Scan> begins,
+you can set the C<ConsistentRead> parameter to C<true>.
 
 
 =head2 TagResource(ResourceArn => Str, Tags => ArrayRef[L<Paws::DynamoDB::Tag>])
@@ -774,12 +880,13 @@ Each argument is described in detail in: L<Paws::DynamoDB::TagResource>
 
 Returns: nothing
 
-  Associate a set of tags with an Amazon DynamoDB resource. You can then
+Associate a set of tags with an Amazon DynamoDB resource. You can then
 activate these user-defined tags so that they appear on the Billing and
 Cost Management console for cost allocation tracking. You can call
 TagResource up to 5 times per second, per account.
 
 For an overview on tagging DynamoDB resources, see Tagging for DynamoDB
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -789,10 +896,11 @@ Each argument is described in detail in: L<Paws::DynamoDB::UntagResource>
 
 Returns: nothing
 
-  Removes the association of tags from an Amazon DynamoDB resource. You
+Removes the association of tags from an Amazon DynamoDB resource. You
 can call UntagResource up to 5 times per second, per account.
 
 For an overview on tagging DynamoDB resources, see Tagging for DynamoDB
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -802,7 +910,7 @@ Each argument is described in detail in: L<Paws::DynamoDB::UpdateItem>
 
 Returns: a L<Paws::DynamoDB::UpdateItemOutput> instance
 
-  Edits an existing item's attributes, or adds a new item to the table if
+Edits an existing item's attributes, or adds a new item to the table if
 it does not already exist. You can put, delete, or add attribute
 values. You can also perform a conditional update on an existing item
 (insert a new attribute name-value pair if it doesn't exist, or replace
@@ -819,7 +927,7 @@ Each argument is described in detail in: L<Paws::DynamoDB::UpdateTable>
 
 Returns: a L<Paws::DynamoDB::UpdateTableOutput> instance
 
-  Modifies the provisioned throughput settings, global secondary indexes,
+Modifies the provisioned throughput settings, global secondary indexes,
 or DynamoDB Streams settings for a given table.
 
 You can only perform one of the following operations at once:
@@ -858,12 +966,12 @@ Each argument is described in detail in: L<Paws::DynamoDB::UpdateTimeToLive>
 
 Returns: a L<Paws::DynamoDB::UpdateTimeToLiveOutput> instance
 
-  Specify the lifetime of individual table items. The database
-automatically removes the item at the expiration of the item. The
-UpdateTimeToLive method will enable or disable TTL for the specified
-table. A successful C<UpdateTimeToLive> call returns the current
-C<TimeToLiveSpecification>; it may take up to one hour for the change
-to fully process.
+The UpdateTimeToLive method will enable or disable TTL for the
+specified table. A successful C<UpdateTimeToLive> call returns the
+current C<TimeToLiveSpecification>; it may take up to one hour for the
+change to fully process. Any additional C<UpdateTimeToLive> calls for
+the same table during this one hour duration result in a
+C<ValidationException>.
 
 TTL compares the current time in epoch time format to the time stored
 in the TTL attribute of an item. If the epoch time value stored in the
@@ -885,8 +993,9 @@ As items are deleted, they are removed from any Local Secondary Index
 and Global Secondary Index immediately in the same eventually
 consistent way as a standard delete operation.
 
-For more information, see Time To Live in the Amazon DynamoDB Developer
-Guide.
+For more information, see Time To Live
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html)
+in the Amazon DynamoDB Developer Guide.
 
 
 
@@ -948,9 +1057,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -1,9 +1,9 @@
 
 package Paws::IoT::ListCertificates;
   use Moose;
-  has AscendingOrder => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'ascendingOrder' );
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
-  has PageSize => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'pageSize' );
+  has AscendingOrder => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'ascendingOrder');
+  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
+  has PageSize => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'pageSize');
 
   use MooseX::ClassAttribute;
 
@@ -11,14 +11,13 @@ package Paws::IoT::ListCertificates;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/certificates');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListCertificatesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::IoT::ListCertificates - Arguments for method ListCertificates on Paws::IoT
+Paws::IoT::ListCertificates - Arguments for method ListCertificates on L<Paws::IoT>
 
 =head1 DESCRIPTION
 
@@ -63,9 +62,9 @@ This class forms part of L<Paws>, documenting arguments for method ListCertifica
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

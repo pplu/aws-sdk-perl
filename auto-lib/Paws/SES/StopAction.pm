@@ -37,15 +37,15 @@ of the receipt rule set and, optionally, publishes a notification to
 Amazon Simple Notification Service (Amazon SNS).
 
 For information about setting a stop action in a receipt rule, see the
-Amazon SES Developer Guide.
+Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-stop.html).
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Scope => Str
 
-  The scope to which the Stop action applies. That is, what is being
-stopped.
+  The name of the RuleSet that is being stopped.
 
 
 =head2 TopicArn => Str
@@ -53,7 +53,8 @@ stopped.
   The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when
 the stop action is taken. An example of an Amazon SNS topic ARN is
 C<arn:aws:sns:us-west-2:123456789012:MyTopic>. For more information
-about Amazon SNS topics, see the Amazon SNS Developer Guide.
+about Amazon SNS topics, see the Amazon SNS Developer Guide
+(http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html).
 
 
 
@@ -63,9 +64,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SES>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

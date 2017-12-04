@@ -51,7 +51,9 @@ request.
 
 =head2 OutputS3Region => Str
 
-  The Amazon S3 region where the association information is stored.
+  (Deprecated) You can no longer specify this parameter. The system
+ignores it. Instead, Systems Manager automatically determines the
+Amazon S3 bucket region.
 
 
 
@@ -61,9 +63,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

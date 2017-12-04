@@ -14,7 +14,7 @@ package Paws::CloudHSM::ListHapgs;
 
 =head1 NAME
 
-Paws::CloudHSM::ListHapgs - Arguments for method ListHapgs on Paws::CloudHSM
+Paws::CloudHSM::ListHapgs - Arguments for method ListHapgs on L<Paws::CloudHSM>
 
 =head1 DESCRIPTION
 
@@ -35,8 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NextToken => Str
 
-The I<NextToken> value from a previous call to ListHapgs. Pass null if
-this is the first call.
+The C<NextToken> value from a previous call to C<ListHapgs>. Pass null
+if this is the first call.
 
 
 
@@ -47,9 +47,9 @@ This class forms part of L<Paws>, documenting arguments for method ListHapgs in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

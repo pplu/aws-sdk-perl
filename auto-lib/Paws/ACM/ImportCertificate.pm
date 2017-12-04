@@ -17,7 +17,7 @@ package Paws::ACM::ImportCertificate;
 
 =head1 NAME
 
-Paws::ACM::ImportCertificate - Arguments for method ImportCertificate on Paws::ACM
+Paws::ACM::ImportCertificate - Arguments for method ImportCertificate on L<Paws::ACM>
 
 =head1 DESCRIPTION
 
@@ -63,8 +63,10 @@ or after it expires (the certificate's C<NotAfter> date).
 
 =head2 CertificateArn => Str
 
-The Amazon Resource Name (ARN) of an imported certificate to replace.
-To import a new certificate, omit this field.
+The Amazon Resource Name (ARN)
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+of an imported certificate to replace. To import a new certificate,
+omit this field.
 
 
 
@@ -102,9 +104,9 @@ This class forms part of L<Paws>, documenting arguments for method ImportCertifi
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

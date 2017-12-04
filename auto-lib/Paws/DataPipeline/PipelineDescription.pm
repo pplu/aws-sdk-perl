@@ -66,7 +66,9 @@ a string of the form C<df-297EG78HU43EEXAMPLE>.
 
   A list of tags to associated with a pipeline. Tags let you control
 access to pipelines. For more information, see Controlling User Access
-to Pipelines in the I<AWS Data Pipeline Developer Guide>.
+to Pipelines
+(http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html)
+in the I<AWS Data Pipeline Developer Guide>.
 
 
 
@@ -76,9 +78,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::DataPipel
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

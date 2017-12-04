@@ -38,8 +38,9 @@ encrypt copied snapshots with the specified customer master key (CMK)
 from AWS KMS in the destination region.
 
 For more information about managing snapshot copy grants, go to Amazon
-Redshift Database Encryption in the I<Amazon Redshift Cluster
-Management Guide>.
+Redshift Database Encryption
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 =head1 ATTRIBUTES
 
@@ -67,9 +68,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::RedShift>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

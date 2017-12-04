@@ -11,7 +11,7 @@ package Paws::ResourceTagging;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub GetResources {
@@ -45,18 +45,20 @@ package Paws::ResourceTagging;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetResources(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->PaginationToken) {
-        $result = $self->GetResources(@_, PaginationToken => $result->PaginationToken);
-        push @{ $result->ResourceTagMappingList }, @{ $result->ResourceTagMappingList };
+      while ($next_result->PaginationToken) {
+        $next_result = $self->GetResources(@_, PaginationToken => $next_result->PaginationToken);
+        push @{ $result->ResourceTagMappingList }, @{ $next_result->ResourceTagMappingList };
       }
       return $result;
     } else {
       while ($result->PaginationToken) {
-        $result = $self->GetResources(@_, PaginationToken => $result->PaginationToken);
         $callback->($_ => 'ResourceTagMappingList') foreach (@{ $result->ResourceTagMappingList });
+        $result = $self->GetResources(@_, PaginationToken => $result->PaginationToken);
       }
+      $callback->($_ => 'ResourceTagMappingList') foreach (@{ $result->ResourceTagMappingList });
     }
 
     return undef
@@ -66,18 +68,20 @@ package Paws::ResourceTagging;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetTagKeys(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->PaginationToken) {
-        $result = $self->GetTagKeys(@_, PaginationToken => $result->PaginationToken);
-        push @{ $result->TagKeys }, @{ $result->TagKeys };
+      while ($next_result->PaginationToken) {
+        $next_result = $self->GetTagKeys(@_, PaginationToken => $next_result->PaginationToken);
+        push @{ $result->TagKeys }, @{ $next_result->TagKeys };
       }
       return $result;
     } else {
       while ($result->PaginationToken) {
-        $result = $self->GetTagKeys(@_, PaginationToken => $result->PaginationToken);
         $callback->($_ => 'TagKeys') foreach (@{ $result->TagKeys });
+        $result = $self->GetTagKeys(@_, PaginationToken => $result->PaginationToken);
       }
+      $callback->($_ => 'TagKeys') foreach (@{ $result->TagKeys });
     }
 
     return undef
@@ -87,18 +91,20 @@ package Paws::ResourceTagging;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetTagValues(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->PaginationToken) {
-        $result = $self->GetTagValues(@_, PaginationToken => $result->PaginationToken);
-        push @{ $result->TagValues }, @{ $result->TagValues };
+      while ($next_result->PaginationToken) {
+        $next_result = $self->GetTagValues(@_, PaginationToken => $next_result->PaginationToken);
+        push @{ $result->TagValues }, @{ $next_result->TagValues };
       }
       return $result;
     } else {
       while ($result->PaginationToken) {
-        $result = $self->GetTagValues(@_, PaginationToken => $result->PaginationToken);
         $callback->($_ => 'TagValues') foreach (@{ $result->TagValues });
+        $result = $self->GetTagValues(@_, PaginationToken => $result->PaginationToken);
       }
+      $callback->($_ => 'TagValues') foreach (@{ $result->TagValues });
     }
 
     return undef
@@ -146,10 +152,15 @@ for the other.
 
 Tagging can help you organize your resources and enables you to
 simplify resource management, access management and cost allocation.
-For more information about tagging, see Working with Tag Editor and
-Working with Resource Groups. For more information about permissions
-you need to use the resource groups tagging APIs, see Obtaining
-Permissions for Resource Groups and Obtaining Permissions for Tagging .
+For more information about tagging, see Working with Tag Editor
+(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/tag-editor.html)
+and Working with Resource Groups
+(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/resource-groups.html).
+For more information about permissions you need to use the resource
+groups tagging APIs, see Obtaining Permissions for Resource Groups
+(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-resource-groups.html)
+and Obtaining Permissions for Tagging
+(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html).
 
 You can use the resource groups tagging APIs to complete the following
 tasks:
@@ -178,15 +189,17 @@ for the AWS account
 =back
 
 Not all resources can have tags. For a lists of resources that you can
-tag, see Supported Resources in the I<AWS Resource Groups and Tag
-Editor User Guide>.
+tag, see Supported Resources
+(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/supported-resources.html)
+in the I<AWS Resource Groups and Tag Editor User Guide>.
 
 To make full use of the resource groups tagging APIs, you might need
 additional IAM permissions, including permission to access the
 resources of individual services as well as permission to view and
 apply tags to those resources. For more information, see Obtaining
-Permissions for Tagging in the I<AWS Resource Groups and Tag Editor
-User Guide>.
+Permissions for Tagging
+(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html)
+in the I<AWS Resource Groups and Tag Editor User Guide>.
 
 =head1 METHODS
 
@@ -196,7 +209,7 @@ Each argument is described in detail in: L<Paws::ResourceTagging::GetResources>
 
 Returns: a L<Paws::ResourceTagging::GetResourcesOutput> instance
 
-  Returns all the tagged resources that are associated with the specified
+Returns all the tagged resources that are associated with the specified
 tags (keys and values) located in the specified region for the AWS
 account. The tags and the resource types that you specify in the
 request are known as I<filters>. The response includes all tags that
@@ -210,7 +223,7 @@ Each argument is described in detail in: L<Paws::ResourceTagging::GetTagKeys>
 
 Returns: a L<Paws::ResourceTagging::GetTagKeysOutput> instance
 
-  Returns all tag keys in the specified region for the AWS account.
+Returns all tag keys in the specified region for the AWS account.
 
 
 =head2 GetTagValues(Key => Str, [PaginationToken => Str])
@@ -219,7 +232,7 @@ Each argument is described in detail in: L<Paws::ResourceTagging::GetTagValues>
 
 Returns: a L<Paws::ResourceTagging::GetTagValuesOutput> instance
 
-  Returns all tag values for the specified key in the specified region
+Returns all tag values for the specified key in the specified region
 for the AWS account.
 
 
@@ -229,7 +242,7 @@ Each argument is described in detail in: L<Paws::ResourceTagging::TagResources>
 
 Returns: a L<Paws::ResourceTagging::TagResourcesOutput> instance
 
-  Applies one or more tags to the specified resources. Note the
+Applies one or more tags to the specified resources. Note the
 following:
 
 =over
@@ -237,13 +250,16 @@ following:
 =item *
 
 Not all resources can have tags. For a list of resources that support
-tagging, see Supported Resources in the I<AWS Resource Groups and Tag
-Editor User Guide>.
+tagging, see Supported Resources
+(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/supported-resources.html)
+in the I<AWS Resource Groups and Tag Editor User Guide>.
 
 =item *
 
 Each resource can have up to 50 tags. For other limits, see Tag
-Restrictions in the I<Amazon EC2 User Guide for Linux Instances>.
+Restrictions
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-restrictions)
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 =item *
 
@@ -254,8 +270,9 @@ the AWS account.
 
 To add tags to a resource, you need the necessary permissions for the
 service that the resource belongs to as well as permissions for adding
-tags. For more information, see Obtaining Permissions for Tagging in
-the I<AWS Resource Groups and Tag Editor User Guide>.
+tags. For more information, see Obtaining Permissions for Tagging
+(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html)
+in the I<AWS Resource Groups and Tag Editor User Guide>.
 
 =back
 
@@ -267,7 +284,7 @@ Each argument is described in detail in: L<Paws::ResourceTagging::UntagResources
 
 Returns: a L<Paws::ResourceTagging::UntagResourcesOutput> instance
 
-  Removes the specified tags from the specified resources. When you
+Removes the specified tags from the specified resources. When you
 specify a tag key, the action removes both that key and its associated
 value. The operation succeeds even if you attempt to remove tags from a
 resource that were already removed. Note the following:
@@ -279,7 +296,9 @@ resource that were already removed. Note the following:
 To remove tags from a resource, you need the necessary permissions for
 the service that the resource belongs to as well as permissions for
 removing tags. For more information, see Obtaining Permissions for
-Tagging in the I<AWS Resource Groups and Tag Editor User Guide>.
+Tagging
+(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html)
+in the I<AWS Resource Groups and Tag Editor User Guide>.
 
 =item *
 
@@ -341,9 +360,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

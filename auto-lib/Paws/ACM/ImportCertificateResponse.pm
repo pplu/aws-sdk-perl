@@ -16,7 +16,9 @@ Paws::ACM::ImportCertificateResponse
 
 =head2 CertificateArn => Str
 
-The Amazon Resource Name (ARN) of the imported certificate.
+The Amazon Resource Name (ARN)
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+of the imported certificate.
 
 
 =head2 _request_id => Str

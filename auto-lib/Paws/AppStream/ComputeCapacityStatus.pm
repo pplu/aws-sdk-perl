@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-The capacity information for the fleet.
+Describes the capacity status for a fleet.
 
 =head1 ATTRIBUTES
 
@@ -52,7 +52,7 @@ sessions.
 
 =head2 InUse => Int
 
-  The number of instances that are being used for streaming.
+  The number of instances in use for streaming.
 
 
 =head2 Running => Int
@@ -67,9 +67,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::AppStream
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

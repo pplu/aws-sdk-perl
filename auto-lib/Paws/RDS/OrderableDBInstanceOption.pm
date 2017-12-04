@@ -11,6 +11,7 @@ package Paws::RDS::OrderableDBInstanceOption;
   has SupportsEnhancedMonitoring => (is => 'ro', isa => 'Bool');
   has SupportsIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has SupportsIops => (is => 'ro', isa => 'Bool');
+  has SupportsPerformanceInsights => (is => 'ro', isa => 'Bool');
   has SupportsStorageEncryption => (is => 'ro', isa => 'Bool');
   has Vpc => (is => 'ro', isa => 'Bool');
 1;
@@ -108,6 +109,11 @@ authentication.
   Indicates whether this orderable DB instance supports provisioned IOPS.
 
 
+=head2 SupportsPerformanceInsights => Bool
+
+  
+
+
 =head2 SupportsStorageEncryption => Bool
 
   Indicates whether this orderable DB instance supports encrypted
@@ -126,9 +132,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

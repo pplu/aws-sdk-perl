@@ -2,7 +2,7 @@
 package Paws::CodeDeploy::CreateDeploymentConfig;
   use Moose;
   has DeploymentConfigName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentConfigName' , required => 1);
-  has MinimumHealthyHosts => (is => 'ro', isa => 'Paws::CodeDeploy::MinimumHealthyHosts', traits => ['NameInRequest'], request_name => 'minimumHealthyHosts' );
+  has MinimumHealthyHosts => (is => 'ro', isa => 'Paws::CodeDeploy::MinimumHealthyHosts', traits => ['NameInRequest'], request_name => 'minimumHealthyHosts' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -15,7 +15,7 @@ package Paws::CodeDeploy::CreateDeploymentConfig;
 
 =head1 NAME
 
-Paws::CodeDeploy::CreateDeploymentConfig - Arguments for method CreateDeploymentConfig on Paws::CodeDeploy
+Paws::CodeDeploy::CreateDeploymentConfig - Arguments for method CreateDeploymentConfig on L<Paws::CodeDeploy>
 
 =head1 DESCRIPTION
 
@@ -40,7 +40,7 @@ The name of the deployment configuration to create.
 
 
 
-=head2 MinimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>
+=head2 B<REQUIRED> MinimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>
 
 The minimum number of healthy instances that should be available at any
 time during the deployment. There are two parameters expected in the
@@ -79,9 +79,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateDeploym
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

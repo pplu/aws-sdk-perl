@@ -48,22 +48,26 @@ organization.
   The Amazon Resource Name (ARN) of the account.
 
 For more information about ARNs in Organizations, see ARN Formats
-Supported by Organizations in the I<AWS Organizations User Guide>.
+Supported by Organizations
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns)
+in the I<AWS Organizations User Guide>.
 
 
 =head2 Email => Str
 
   The email address associated with the AWS account.
 
-The regex pattern for this parameter is a string of characters that
-represents a standard Internet email address.
+The regex pattern (http://wikipedia.org/wiki/regex) for this parameter
+is a string of characters that represents a standard Internet email
+address.
 
 
 =head2 Id => Str
 
   The unique identifier (ID) of the account.
 
-The regex pattern for an account ID string requires exactly 12 digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for an account ID
+string requires exactly 12 digits.
 
 
 =head2 JoinedMethod => Str
@@ -80,8 +84,9 @@ The regex pattern for an account ID string requires exactly 12 digits.
 
   The friendly name of the account.
 
-The regex pattern that is used to validate this parameter is a string
-of any of the characters in the ASCII character range.
+The regex pattern (http://wikipedia.org/wiki/regex) that is used to
+validate this parameter is a string of any of the characters in the
+ASCII character range.
 
 
 =head2 Status => Str
@@ -96,9 +101,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Organizat
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

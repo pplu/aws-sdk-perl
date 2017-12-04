@@ -45,8 +45,8 @@ source.
 
 =item *
 
-C<LATEST> - Start reading just after the most recent record in the
-stream.
+C<NOW> - Start reading just after the most recent record in the stream,
+start at the request timestamp that the customer issued.
 
 =item *
 
@@ -70,9 +70,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::KinesisAn
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -4,6 +4,8 @@ package Paws::CloudFront::GetStreamingDistributionConfigResult;
   has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
   has StreamingDistributionConfig => (is => 'ro', isa => 'Paws::CloudFront::StreamingDistributionConfig');
 
+  use MooseX::ClassAttribute;
+  class_has _payload => (is => 'ro', default => 'StreamingDistributionConfig');
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

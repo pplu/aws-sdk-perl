@@ -38,6 +38,109 @@ EC2 instances. By default, new fleets have a capacity of one instance,
 but can be updated as needed. The maximum number of instances for a
 fleet is determined by the fleet's instance type.
 
+Fleet-related operations include:
+
+=over
+
+=item *
+
+CreateFleet
+
+=item *
+
+ListFleets
+
+=item *
+
+Describe fleets:
+
+=over
+
+=item *
+
+DescribeFleetAttributes
+
+=item *
+
+DescribeFleetPortSettings
+
+=item *
+
+DescribeFleetUtilization
+
+=item *
+
+DescribeRuntimeConfiguration
+
+=item *
+
+DescribeFleetEvents
+
+=back
+
+=item *
+
+Update fleets:
+
+=over
+
+=item *
+
+UpdateFleetAttributes
+
+=item *
+
+UpdateFleetCapacity
+
+=item *
+
+UpdateFleetPortSettings
+
+=item *
+
+UpdateRuntimeConfiguration
+
+=back
+
+=item *
+
+Manage fleet capacity:
+
+=over
+
+=item *
+
+DescribeFleetCapacity
+
+=item *
+
+UpdateFleetCapacity
+
+=item *
+
+PutScalingPolicy (automatic scaling)
+
+=item *
+
+DescribeScalingPolicies (automatic scaling)
+
+=item *
+
+DeleteScalingPolicy (automatic scaling)
+
+=item *
+
+DescribeEC2InstanceLimits
+
+=back
+
+=item *
+
+DeleteFleet
+
+=back
+
+
 =head1 ATTRIBUTES
 
 
@@ -57,7 +160,8 @@ fleet is determined by the fleet's instance type.
 fleet instance type determines the computing resources of each instance
 in the fleet, including CPU, memory, storage, and networking capacity.
 Amazon GameLift supports the following EC2 instance types. See Amazon
-EC2 Instance Types for detailed descriptions.
+EC2 Instance Types (http://aws.amazon.com/ec2/instance-types/) for
+detailed descriptions.
 
 
 
@@ -67,9 +171,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::GameLift>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

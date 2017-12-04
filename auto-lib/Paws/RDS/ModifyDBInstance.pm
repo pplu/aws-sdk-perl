@@ -17,6 +17,7 @@ package Paws::RDS::ModifyDBInstance;
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
+  has EnablePerformanceInsights => (is => 'ro', isa => 'Bool');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has LicenseModel => (is => 'ro', isa => 'Str');
@@ -26,6 +27,7 @@ package Paws::RDS::ModifyDBInstance;
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has NewDBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
+  has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PromotionTier => (is => 'ro', isa => 'Int');
@@ -46,7 +48,7 @@ package Paws::RDS::ModifyDBInstance;
 
 =head1 NAME
 
-Paws::RDS::ModifyDBInstance - Arguments for method ModifyDBInstance on Paws::RDS
+Paws::RDS::ModifyDBInstance - Arguments for method ModifyDBInstance on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -167,8 +169,10 @@ applied during the next maintenance window. Some parameter changes can
 cause an outage and will be applied on the next call to
 RebootDBInstance, or the next failure reboot. Review the table of
 parameters in Modifying a DB Instance and Using the Apply Immediately
-Parameter to see the impact that setting C<ApplyImmediately> to C<true>
-or C<false> has for each modified parameter and to determine when the
+Parameter
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html)
+to see the impact that setting C<ApplyImmediately> to C<true> or
+C<false> has for each modified parameter and to determine when the
 changes will be applied.
 
 Default: C<false>
@@ -199,6 +203,11 @@ applied during the next maintenance window unless the
 C<ApplyImmediately> parameter is set to C<true> for this request. If
 you change the parameter from one non-zero value to another non-zero
 value, the change is asynchronously applied as soon as possible.
+
+B<Amazon Aurora>
+
+Not applicable. The retention period for automated backups is managed
+by the DB cluster. For more information, see ModifyDBCluster.
 
 Default: Uses existing setting
 
@@ -275,19 +284,7 @@ Constraints:
 
 =item *
 
-Must be the identifier for an existing DB instance
-
-=item *
-
-Must contain from 1 to 63 alphanumeric characters or hyphens
-
-=item *
-
-First character must be a letter
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens
+Must match the identifier of an existing DBInstance.
 
 =back
 
@@ -374,15 +371,7 @@ Constraints:
 
 =item *
 
-Must be 1 to 255 alphanumeric characters
-
-=item *
-
-First character must be a letter
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens
+If supplied, must match existing DBSecurityGroups.
 
 =back
 
@@ -394,14 +383,15 @@ Cannot end with a hyphen or contain two consecutive hyphens
 The new DB subnet group for the DB instance. You can use this parameter
 to move your DB instance to a different VPC. If your DB instance is not
 in a VPC, you can also use this parameter to move your DB instance into
-a VPC. For more information, see Updating the VPC for a DB Instance.
+a VPC. For more information, see Updating the VPC for a DB Instance
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC).
 
 Changing the subnet group causes an outage during the change. The
 change is applied during the next maintenance window, unless you
 specify C<true> for the C<ApplyImmediately> parameter.
 
-Constraints: Must contain no more than 255 alphanumeric characters,
-periods, underscores, spaces, or hyphens.
+Constraints: If supplied, must match the name of an existing
+DBSubnetGroup.
 
 Example: C<mySubnetGroup>
 
@@ -431,6 +421,13 @@ accounts to database accounts; otherwise false.
 You can enable IAM database authentication for the following database
 engines
 
+B<Amazon Aurora>
+
+Not applicable. Mapping AWS IAM accounts to database accounts is
+managed by the DB cluster. For more information, see ModifyDBCluster.
+
+B<MySQL>
+
 =over
 
 =item *
@@ -447,6 +444,12 @@ Default: C<false>
 
 
 
+=head2 EnablePerformanceInsights => Bool
+
+
+
+
+
 =head2 EngineVersion => Str
 
 The version number of the database engine to upgrade to. Changing this
@@ -454,7 +457,7 @@ parameter results in an outage and the change is applied during the
 next maintenance window unless the C<ApplyImmediately> parameter is set
 to C<true> for this request.
 
-For major version upgrades, if a non-default DB parameter group is
+For major version upgrades, if a nondefault DB parameter group is
 currently in use, a new DB parameter group in the DB parameter group
 family for the new engine version must be specified. The new DB
 parameter group can be the default for that DB parameter group family.
@@ -514,8 +517,8 @@ C<general-public-license>
 
 =head2 MasterUserPassword => Str
 
-The new password for the DB instance master user. Can be any printable
-ASCII character except "/", """, or "@".
+The new password for the master user. Can be any printable ASCII
+character except "/", """, or "@".
 
 Changing this parameter does not result in an outage and the change is
 asynchronously applied as soon as possible. Between the time of the
@@ -523,11 +526,32 @@ request and the completion of the request, the C<MasterUserPassword>
 element exists in the C<PendingModifiedValues> element of the operation
 response.
 
+B<Amazon Aurora>
+
+Not applicable. The password for the master user is managed by the DB
+cluster. For more information, see ModifyDBCluster.
+
 Default: Uses existing setting
 
-Constraints: Must be 8 to 41 alphanumeric characters (MySQL, MariaDB,
-and Amazon Aurora), 8 to 30 alphanumeric characters (Oracle), or 8 to
-128 alphanumeric characters (SQL Server).
+B<MariaDB>
+
+Constraints: Must contain from 8 to 41 characters.
+
+B<Microsoft SQL Server>
+
+Constraints: Must contain from 8 to 128 characters.
+
+B<MySQL>
+
+Constraints: Must contain from 8 to 41 characters.
+
+B<Oracle>
+
+Constraints: Must contain from 8 to 30 characters.
+
+B<PostgreSQL>
+
+Constraints: Must contain from 8 to 128 characters.
 
 Amazon RDS API actions never return the password, so this action
 provides a way to regain access to a primary instance user if the
@@ -555,7 +579,8 @@ The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
 a monitoring role, go to To create an IAM role for Amazon RDS Enhanced
-Monitoring.
+Monitoring
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole).
 
 If C<MonitoringInterval> is set to a value other than 0, then you must
 supply a C<MonitoringRoleArn> value.
@@ -587,18 +612,19 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens
+Must contain from 1 to 63 letters, numbers, or hyphens.
 
 =item *
 
-First character must be a letter
+The first character must be a letter.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Cannot end with a hyphen or contain two consecutive hyphens.
 
 =back
 
+Example: C<mydbinstance>
 
 
 
@@ -620,6 +646,12 @@ instance
 
 
 
+=head2 PerformanceInsightsKMSKeyId => Str
+
+
+
+
+
 =head2 PreferredBackupWindow => Str
 
 The daily time range during which automated backups are created if
@@ -627,6 +659,11 @@ automated backups are enabled, as determined by the
 C<BackupRetentionPeriod> parameter. Changing this parameter does not
 result in an outage and the change is asynchronously applied as soon as
 possible.
+
+B<Amazon Aurora>
+
+Not applicable. The daily time range for creating automated backups is
+managed by the DB cluster. For more information, see ModifyDBCluster.
 
 Constraints:
 
@@ -680,7 +717,8 @@ Constraints: Must be at least 30 minutes
 A value that specifies the order in which an Aurora Replica is promoted
 to the primary instance after a failure of the existing primary
 instance. For more information, see Fault Tolerance for an Aurora DB
-Cluster.
+Cluster
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance).
 
 Default: 1
 
@@ -740,21 +778,18 @@ the device.
 A list of EC2 VPC security groups to authorize on this DB instance.
 This change is asynchronously applied as soon as possible.
 
+B<Amazon Aurora>
+
+Not applicable. The associated list of EC2 VPC security groups is
+managed by the DB cluster. For more information, see ModifyDBCluster.
+
 Constraints:
 
 =over
 
 =item *
 
-Must be 1 to 255 alphanumeric characters
-
-=item *
-
-First character must be a letter
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens
+If supplied, must match existing VpcSecurityGroupIds.
 
 =back
 
@@ -768,9 +803,9 @@ This class forms part of L<Paws>, documenting arguments for method ModifyDBInsta
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

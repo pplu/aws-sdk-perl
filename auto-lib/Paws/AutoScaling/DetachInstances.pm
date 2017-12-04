@@ -16,7 +16,7 @@ package Paws::AutoScaling::DetachInstances;
 
 =head1 NAME
 
-Paws::AutoScaling::DetachInstances - Arguments for method DetachInstances on Paws::AutoScaling
+Paws::AutoScaling::DetachInstances - Arguments for method DetachInstances on L<Paws::AutoScaling>
 
 =head1 DESCRIPTION
 
@@ -61,9 +61,9 @@ This class forms part of L<Paws>, documenting arguments for method DetachInstanc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

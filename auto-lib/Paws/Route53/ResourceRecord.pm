@@ -45,7 +45,9 @@ C<ResourceRecord>.
 the case of a C<DELETE> action, if the current value does not match the
 actual value, an error is returned. For descriptions about how to
 format C<Value> for different record types, see Supported DNS Resource
-Record Types in the I<Amazon Route 53 Developer Guide>.
+Record Types
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/ResourceRecordTypes.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 You can specify more than one value for all record types except
 C<CNAME> and C<SOA>.
@@ -60,9 +62,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Route53>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

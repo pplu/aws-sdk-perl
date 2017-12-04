@@ -5,7 +5,8 @@ package Paws::DirectConnect::NewPrivateVirtualInterface;
   has Asn => (is => 'ro', isa => 'Int', request_name => 'asn', traits => ['NameInRequest'], required => 1);
   has AuthKey => (is => 'ro', isa => 'Str', request_name => 'authKey', traits => ['NameInRequest']);
   has CustomerAddress => (is => 'ro', isa => 'Str', request_name => 'customerAddress', traits => ['NameInRequest']);
-  has VirtualGatewayId => (is => 'ro', isa => 'Str', request_name => 'virtualGatewayId', traits => ['NameInRequest'], required => 1);
+  has DirectConnectGatewayId => (is => 'ro', isa => 'Str', request_name => 'directConnectGatewayId', traits => ['NameInRequest']);
+  has VirtualGatewayId => (is => 'ro', isa => 'Str', request_name => 'virtualGatewayId', traits => ['NameInRequest']);
   has VirtualInterfaceName => (is => 'ro', isa => 'Str', request_name => 'virtualInterfaceName', traits => ['NameInRequest'], required => 1);
   has Vlan => (is => 'ro', isa => 'Int', request_name => 'vlan', traits => ['NameInRequest'], required => 1);
 1;
@@ -69,7 +70,12 @@ interface.
   
 
 
-=head2 B<REQUIRED> VirtualGatewayId => Str
+=head2 DirectConnectGatewayId => Str
+
+  
+
+
+=head2 VirtualGatewayId => Str
 
   
 
@@ -91,9 +97,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::DirectCon
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

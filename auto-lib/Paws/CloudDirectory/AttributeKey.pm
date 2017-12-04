@@ -40,7 +40,7 @@ A unique identifier for an attribute.
 
 =head2 B<REQUIRED> FacetName => Str
 
-  The name of the facet the attribute exists within.
+  The name of the facet that the attribute exists within.
 
 
 =head2 B<REQUIRED> Name => Str
@@ -50,7 +50,8 @@ A unique identifier for an attribute.
 
 =head2 B<REQUIRED> SchemaArn => Str
 
-  The ARN of the schema that contains the facet and attribute.
+  The Amazon Resource Name (ARN) of the schema that contains the facet
+and attribute.
 
 
 
@@ -60,9 +61,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudDire
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

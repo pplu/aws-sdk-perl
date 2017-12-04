@@ -3,11 +3,14 @@ package Paws::WorkDocs::FolderMetadata;
   has CreatedTimestamp => (is => 'ro', isa => 'Str');
   has CreatorId => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
+  has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has LatestVersionSize => (is => 'ro', isa => 'Int');
   has ModifiedTimestamp => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has ParentFolderId => (is => 'ro', isa => 'Str');
   has ResourceState => (is => 'ro', isa => 'Str');
   has Signature => (is => 'ro', isa => 'Str');
+  has Size => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::WorkDocs::FolderMetadata object:
 
-  $service_obj->Method(Att1 => { CreatedTimestamp => $value, ..., Signature => $value  });
+  $service_obj->Method(Att1 => { CreatedTimestamp => $value, ..., Size => $value  });
 
 =head3 Results returned from an API call
 
@@ -58,6 +61,16 @@ Describes a folder.
   The ID of the folder.
 
 
+=head2 Labels => ArrayRef[Str|Undef]
+
+  List of labels on the folder.
+
+
+=head2 LatestVersionSize => Int
+
+  The size of the latest version of the folder metadata.
+
+
 =head2 ModifiedTimestamp => Str
 
   The time when the folder was updated.
@@ -84,6 +97,11 @@ Describes a folder.
 folder.
 
 
+=head2 Size => Int
+
+  The size of the folder metadata.
+
+
 
 =head1 SEE ALSO
 
@@ -91,9 +109,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::WorkDocs>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

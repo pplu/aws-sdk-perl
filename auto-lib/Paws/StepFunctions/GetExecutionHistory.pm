@@ -17,7 +17,7 @@ package Paws::StepFunctions::GetExecutionHistory;
 
 =head1 NAME
 
-Paws::StepFunctions::GetExecutionHistory - Arguments for method GetExecutionHistory on Paws::StepFunctions
+Paws::StepFunctions::GetExecutionHistory - Arguments for method GetExecutionHistory on L<Paws::StepFunctions>
 
 =head1 DESCRIPTION
 
@@ -46,7 +46,8 @@ The Amazon Resource Name (ARN) of the execution.
 
 The maximum number of results that will be returned per call.
 C<nextToken> can be used to obtain further pages of results. The
-default is 100 and the maximum allowed page size is 1000.
+default is 100 and the maximum allowed page size is 100. A value of 0
+means to use the default.
 
 This is an upper limit only; the actual number of results returned per
 call may be fewer than the specified maximum.
@@ -78,9 +79,9 @@ This class forms part of L<Paws>, documenting arguments for method GetExecutionH
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

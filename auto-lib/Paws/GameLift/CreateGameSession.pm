@@ -5,6 +5,7 @@ package Paws::GameLift::CreateGameSession;
   has CreatorId => (is => 'ro', isa => 'Str');
   has FleetId => (is => 'ro', isa => 'Str');
   has GameProperties => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameProperty]');
+  has GameSessionData => (is => 'ro', isa => 'Str');
   has GameSessionId => (is => 'ro', isa => 'Str');
   has IdempotencyToken => (is => 'ro', isa => 'Str');
   has MaximumPlayerSessionCount => (is => 'ro', isa => 'Int', required => 1);
@@ -21,7 +22,7 @@ package Paws::GameLift::CreateGameSession;
 
 =head1 NAME
 
-Paws::GameLift::CreateGameSession - Arguments for method CreateGameSession on Paws::GameLift
+Paws::GameLift::CreateGameSession - Arguments for method CreateGameSession on L<Paws::GameLift>
 
 =head1 DESCRIPTION
 
@@ -66,8 +67,21 @@ must reference either a fleet ID or alias ID, but not both.
 
 =head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
 
-Set of developer-defined properties for a game session. These
-properties are passed to the server process hosting the game session.
+Set of developer-defined properties for a game session, formatted as a
+set of type:value pairs. These properties are included in the
+GameSession object, which is passed to the game server with a request
+to start a new game session (see Start a Game Session
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+
+
+
+=head2 GameSessionData => Str
+
+Set of developer-defined game session properties, formatted as a single
+string value. This data is included in the GameSession object, which is
+passed to the game server with a request to start a new game session
+(see Start a Game Session
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 
 
 
@@ -76,8 +90,8 @@ properties are passed to the server process hosting the game session.
 I<This parameter is no longer preferred. Please use C<IdempotencyToken>
 instead.> Custom string that uniquely identifies a request for a new
 game session. Maximum token length is 48 characters. If provided, this
-string is included in the new game session's ID. (A game session ID has
-the following format:
+string is included in the new game session's ID. (A game session ARN
+has the following format:
 C<arn:aws:gamelift:E<lt>regionE<gt>::gamesession/E<lt>fleet
 IDE<gt>/E<lt>custom ID string or idempotency tokenE<gt>>.)
 
@@ -87,10 +101,12 @@ IDE<gt>/E<lt>custom ID string or idempotency tokenE<gt>>.)
 
 Custom string that uniquely identifies a request for a new game
 session. Maximum token length is 48 characters. If provided, this
-string is included in the new game session's ID. (A game session ID has
-the following format:
+string is included in the new game session's ID. (A game session ARN
+has the following format:
 C<arn:aws:gamelift:E<lt>regionE<gt>::gamesession/E<lt>fleet
-IDE<gt>/E<lt>custom ID string or idempotency tokenE<gt>>.)
+IDE<gt>/E<lt>custom ID string or idempotency tokenE<gt>>.) Idempotency
+tokens remain in use for 30 days after a game session has ended; game
+session objects are retained for this time period and then deleted.
 
 
 
@@ -115,9 +131,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateGameSes
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

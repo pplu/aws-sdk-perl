@@ -32,14 +32,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::XRay::Segme
 
 =head1 DESCRIPTION
 
-Information about a segment
+A segment from a trace that has been ingested by the X-Ray service. The
+segment can be compiled from documents uploaded with PutTraceSegments,
+or an C<inferred> segment for a downstream service, generated from a
+subsegment sent by the service that called it.
 
 =head1 ATTRIBUTES
 
 
 =head2 Document => Str
 
-  The segment document.
+  The segment document
 
 
 =head2 Id => Str
@@ -54,9 +57,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::XRay>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

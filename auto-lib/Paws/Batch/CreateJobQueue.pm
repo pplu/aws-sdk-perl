@@ -1,10 +1,10 @@
 
 package Paws::Batch::CreateJobQueue;
   use Moose;
-  has ComputeEnvironmentOrder => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ComputeEnvironmentOrder]', required => 1);
-  has JobQueueName => (is => 'ro', isa => 'Str', required => 1);
-  has Priority => (is => 'ro', isa => 'Int', required => 1);
-  has State => (is => 'ro', isa => 'Str');
+  has ComputeEnvironmentOrder => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ComputeEnvironmentOrder]', traits => ['NameInRequest'], request_name => 'computeEnvironmentOrder', required => 1);
+  has JobQueueName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueueName', required => 1);
+  has Priority => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'priority', required => 1);
+  has State => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'state');
 
   use MooseX::ClassAttribute;
 
@@ -12,14 +12,13 @@ package Paws::Batch::CreateJobQueue;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/createjobqueue');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Batch::CreateJobQueueResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Batch::CreateJobQueue - Arguments for method CreateJobQueue on Paws::Batch
+Paws::Batch::CreateJobQueue - Arguments for method CreateJobQueue on L<Paws::Batch>
 
 =head1 DESCRIPTION
 
@@ -58,11 +57,11 @@ The name of the job queue.
 =head2 B<REQUIRED> Priority => Int
 
 The priority of the job queue. Job queues with a higher priority (or a
-lower integer value for the C<priority> parameter) are evaluated first
+higher integer value for the C<priority> parameter) are evaluated first
 when associated with same compute environment. Priority is determined
-in ascending order, for example, a job queue with a priority value of
-C<1> is given scheduling preference over a job queue with a priority
-value of C<10>.
+in descending order, for example, a job queue with a priority value of
+C<10> is given scheduling preference over a job queue with a priority
+value of C<1>.
 
 
 
@@ -80,9 +79,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateJobQueu
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

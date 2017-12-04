@@ -1,7 +1,7 @@
 
 package Paws::CloudDirectory::CreateObject;
   use Moose;
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
   has LinkName => (is => 'ro', isa => 'Str');
   has ObjectAttributeList => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeKeyAndValue]');
   has ParentReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference');
@@ -13,14 +13,13 @@ package Paws::CloudDirectory::CreateObject;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/object');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::CreateObjectResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CloudDirectory::CreateObject - Arguments for method CreateObject on Paws::CloudDirectory
+Paws::CloudDirectory::CreateObject - Arguments for method CreateObject on L<Paws::CloudDirectory>
 
 =head1 DESCRIPTION
 
@@ -41,8 +40,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-ARN associated with the Directory in which the object will be created.
-For more information, see arns.
+The Amazon Resource Name (ARN) that is associated with the Directory in
+which the object will be created. For more information, see arns.
 
 
 
@@ -54,8 +53,8 @@ The name of link that is used to attach this object to a parent.
 
 =head2 ObjectAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>]
 
-Attribute map whose attribute ARN contains the key and attribute value
-as the map value.
+The attribute map whose attribute ARN contains the key and attribute
+value as the map value.
 
 
 
@@ -68,8 +67,8 @@ attached.
 
 =head2 B<REQUIRED> SchemaFacets => ArrayRef[L<Paws::CloudDirectory::SchemaFacet>]
 
-List of facet ARNs to be associated with the object. For more
-information, see arns.
+A list of schema facets to be associated with the object that contains
+C<SchemaArn> and facet name. For more information, see arns.
 
 
 
@@ -80,9 +79,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateObject 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

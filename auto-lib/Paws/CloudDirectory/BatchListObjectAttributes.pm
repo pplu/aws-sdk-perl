@@ -34,21 +34,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-Represents the output of a C<ListObjectAttributes> operation.
+Represents the output of a ListObjectAttributes operation.
 
 =head1 ATTRIBUTES
 
 
 =head2 FacetFilter => L<Paws::CloudDirectory::SchemaFacet>
 
-  Used to filter the list of object attributes associated with a certain
-facet.
+  Used to filter the list of object attributes that are associated with a
+certain facet.
 
 
 =head2 MaxResults => Int
 
-  Maximum number of items to be retrieved in a single call. This is an
-approximate number.
+  The maximum number of items to be retrieved in a single call. This is
+an approximate number.
 
 
 =head2 NextToken => Str
@@ -68,9 +68,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudDire
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

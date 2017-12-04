@@ -31,7 +31,7 @@ package Paws::CloudWatch::PutMetricAlarm;
 
 =head1 NAME
 
-Paws::CloudWatch::PutMetricAlarm - Arguments for method PutMetricAlarm on Paws::CloudWatch
+Paws::CloudWatch::PutMetricAlarm - Arguments for method PutMetricAlarm on L<Paws::CloudWatch>
 
 =head1 DESCRIPTION
 
@@ -106,12 +106,13 @@ The dimensions for the metric associated with the alarm.
 =head2 EvaluateLowSampleCountPercentile => Str
 
 Used only for alarms based on percentiles. If you specify C<ignore>,
-the alarm state will not change during periods with too few data points
+the alarm state does not change during periods with too few data points
 to be statistically significant. If you specify C<evaluate> or omit
-this parameter, the alarm will always be evaluated and possibly change
+this parameter, the alarm is always evaluated and possibly changes
 state no matter how many data points are available. For more
 information, see Percentile-Based CloudWatch Alarms and Low Data
-Samples.
+Samples
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples).
 
 Valid Values: C<evaluate | ignore>
 
@@ -120,7 +121,9 @@ Valid Values: C<evaluate | ignore>
 =head2 B<REQUIRED> EvaluationPeriods => Int
 
 The number of periods over which data is compared to the specified
-threshold.
+threshold. An alarm's total current evaluation period can be no longer
+than one day, so this number multiplied by C<Period> cannot be more
+than 86,400 seconds.
 
 
 
@@ -184,6 +187,23 @@ arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Re
 =head2 B<REQUIRED> Period => Int
 
 The period, in seconds, over which the specified statistic is applied.
+Valid values are 10, 30, and any multiple of 60.
+
+Be sure to specify 10 or 30 only for metrics that are stored by a
+C<PutMetricData> call with a C<StorageResolution> of 1. If you specify
+a Period of 10 or 30 for a metric that does not have sub-minute
+resolution, the alarm still attempts to gather data at the period rate
+that you specify. In this case, it does not receive data for the
+attempts that do not correspond to a one-minute data resolution, and
+the alarm may often lapse into INSUFFICENT_DATA status. Specifying 10
+or 30 also sets this alarm as a high-resolution alarm, which has a
+higher charge than other alarms. For more information about pricing,
+see Amazon CloudWatch Pricing
+(https://aws.amazon.com/cloudwatch/pricing/).
+
+An alarm's total current evaluation period can be no longer than one
+day, so C<Period> multiplied by C<EvaluationPeriods> cannot be more
+than 86,400 seconds.
 
 
 
@@ -205,7 +225,8 @@ The value against which the specified statistic is compared.
 Sets how this alarm is to handle missing data points. If
 C<TreatMissingData> is omitted, the default behavior of C<missing> is
 used. For more information, see Configuring How CloudWatch Alarms
-Treats Missing Data.
+Treats Missing Data
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data).
 
 Valid Values: C<breaching | notBreaching | ignore | missing>
 
@@ -221,7 +242,7 @@ provide conceptual meaning to your data. Metric data points that
 specify a unit of measure, such as Percent, are aggregated separately.
 
 If you specify a unit, you must use a unit that is appropriate for the
-metric. Otherwise, the Amazon CloudWatch alarm can get stuck in the
+metric. Otherwise, the CloudWatch alarm can get stuck in the
 C<INSUFFICIENT DATA> state.
 
 Valid values are: C<"Seconds">, C<"Microseconds">, C<"Milliseconds">, C<"Bytes">, C<"Kilobytes">, C<"Megabytes">, C<"Gigabytes">, C<"Terabytes">, C<"Bits">, C<"Kilobits">, C<"Megabits">, C<"Gigabits">, C<"Terabits">, C<"Percent">, C<"Count">, C<"Bytes/Second">, C<"Kilobytes/Second">, C<"Megabytes/Second">, C<"Gigabytes/Second">, C<"Terabytes/Second">, C<"Bits/Second">, C<"Kilobits/Second">, C<"Megabits/Second">, C<"Gigabits/Second">, C<"Terabits/Second">, C<"Count/Second">, C<"None">
@@ -233,9 +254,9 @@ This class forms part of L<Paws>, documenting arguments for method PutMetricAlar
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

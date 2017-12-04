@@ -16,7 +16,7 @@ package Paws::StorageGateway::CreateTapeWithBarcode;
 
 =head1 NAME
 
-Paws::StorageGateway::CreateTapeWithBarcode - Arguments for method CreateTapeWithBarcode on Paws::StorageGateway
+Paws::StorageGateway::CreateTapeWithBarcode - Arguments for method CreateTapeWithBarcode on L<Paws::StorageGateway>
 
 =head1 DESCRIPTION
 
@@ -47,6 +47,9 @@ return a list of gateways for your account and region.
 
 The barcode that you want to assign to the tape.
 
+Barcodes cannot be reused. This includes barcodes used for tapes that
+have been deleted.
+
 
 
 =head2 B<REQUIRED> TapeSizeInBytes => Int
@@ -64,9 +67,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateTapeWit
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

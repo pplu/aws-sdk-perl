@@ -23,7 +23,7 @@ package Paws::ECS::CreateService;
 
 =head1 NAME
 
-Paws::ECS::CreateService - Arguments for method CreateService on Paws::ECS
+Paws::ECS::CreateService - Arguments for method CreateService on L<Paws::ECS>
 
 =head1 DESCRIPTION
 
@@ -79,16 +79,15 @@ group per service. After you create a service, the load balancer name
 or target group ARN, container name, and container port specified in
 the service definition are immutable.
 
-For Elastic Load Balancing Classic load balancers, this object must
-contain the load balancer name, the container name (as it appears in a
-container definition), and the container port to access from the load
-balancer. When a task from this service is placed on a container
-instance, the container instance is registered with the load balancer
-specified here.
+For Classic Load Balancers, this object must contain the load balancer
+name, the container name (as it appears in a container definition), and
+the container port to access from the load balancer. When a task from
+this service is placed on a container instance, the container instance
+is registered with the load balancer specified here.
 
-For Elastic Load Balancing Application load balancers, this object must
-contain the load balancer target group ARN, the container name (as it
-appears in a container definition), and the container port to access
+For Application Load Balancers and Network Load Balancers, this object
+must contain the load balancer target group ARN, the container name (as
+it appears in a container definition), and the container port to access
 from the load balancer. When a task from this service is placed on a
 container instance, the container instance and port combination is
 registered as a target in the target group specified here.
@@ -123,8 +122,9 @@ If your specified role has a path other than C</>, then you must either
 specify the full role ARN (this is recommended) or prefix the role name
 with the path. For example, if a role with the name C<bar> has a path
 of C</foo/> then you would specify C</foo/bar> as the role name. For
-more information, see Friendly Names and Paths in the I<IAM User
-Guide>.
+more information, see Friendly Names and Paths
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names)
+in the I<IAM User Guide>.
 
 
 
@@ -152,9 +152,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateService
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

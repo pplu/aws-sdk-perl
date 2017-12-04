@@ -6,6 +6,7 @@ package Paws::Batch::ContainerDetail;
   has ExitCode => (is => 'ro', isa => 'Int', request_name => 'exitCode', traits => ['NameInRequest']);
   has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
   has JobRoleArn => (is => 'ro', isa => 'Str', request_name => 'jobRoleArn', traits => ['NameInRequest']);
+  has LogStreamName => (is => 'ro', isa => 'Str', request_name => 'logStreamName', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
   has MountPoints => (is => 'ro', isa => 'ArrayRef[Paws::Batch::MountPoint]', request_name => 'mountPoints', traits => ['NameInRequest']);
   has Privileged => (is => 'ro', isa => 'Bool', request_name => 'privileged', traits => ['NameInRequest']);
@@ -83,6 +84,14 @@ container is running.
   The Amazon Resource Name (ARN) associated with the job upon execution.
 
 
+=head2 LogStreamName => Str
+
+  The name of the CloudWatch Logs log stream associated with the
+container. The log group for AWS Batch jobs is C</aws/batch/job>. Each
+container attempt receives a log stream name when they reach the
+C<RUNNING> status.
+
+
 =head2 Memory => Int
 
   The number of MiB of memory reserved for the job.
@@ -144,9 +153,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Batch>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

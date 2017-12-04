@@ -17,7 +17,7 @@ package Paws::ElasticBeanstalk::DescribeApplicationVersions;
 
 =head1 NAME
 
-Paws::ElasticBeanstalk::DescribeApplicationVersions - Arguments for method DescribeApplicationVersions on Paws::ElasticBeanstalk
+Paws::ElasticBeanstalk::DescribeApplicationVersions - Arguments for method DescribeApplicationVersions on L<Paws::ElasticBeanstalk>
 
 =head1 DESCRIPTION
 
@@ -45,14 +45,21 @@ application.
 
 =head2 MaxRecords => Int
 
-Specify a maximum number of application versions to paginate in the
-request.
+For a paginated request. Specify a maximum number of application
+versions to include in each response.
+
+If no C<MaxRecords> is specified, all available application versions
+are retrieved in a single response.
 
 
 
 =head2 NextToken => Str
 
-Specify a next token to retrieve the next page in a paginated request.
+For a paginated request. Specify a token from a previous response page
+to retrieve the next response page. All other parameter values must be
+identical to the ones specified in the initial request.
+
+If no C<NextToken> is specified, the first page is retrieved.
 
 
 
@@ -69,9 +76,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeAppli
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

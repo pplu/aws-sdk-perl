@@ -22,7 +22,7 @@ package Paws::Snowball::UpdateJob;
 
 =head1 NAME
 
-Paws::Snowball::UpdateJob - Arguments for method UpdateJob on Paws::Snowball
+Paws::Snowball::UpdateJob - Arguments for method UpdateJob on L<Paws::Snowball>
 
 =head1 DESCRIPTION
 
@@ -84,8 +84,9 @@ ranges).
 =head2 RoleARN => Str
 
 The new role Amazon Resource Name (ARN) that you want to associate with
-this job. To create a role ARN, use the CreateRoleAWS Identity and
-Access Management (IAM) API action.
+this job. To create a role ARN, use the CreateRole
+(http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)AWS
+Identity and Access Management (IAM) API action.
 
 
 
@@ -109,9 +110,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateJob in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

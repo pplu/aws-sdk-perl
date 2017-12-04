@@ -35,6 +35,8 @@ package Paws::RDS::DBInstance;
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has OptionGroupMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionGroupMembership]', request_name => 'OptionGroupMembership', traits => ['NameInRequest']);
   has PendingModifiedValues => (is => 'ro', isa => 'Paws::RDS::PendingModifiedValues');
+  has PerformanceInsightsEnabled => (is => 'ro', isa => 'Bool');
+  has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PromotionTier => (is => 'ro', isa => 'Int');
@@ -95,6 +97,14 @@ DeleteDBInstance
 =item *
 
 ModifyDBInstance
+
+=item *
+
+StopDBInstance
+
+=item *
+
+StartDBInstance
 
 =back
 
@@ -341,6 +351,16 @@ only included when changes are pending. Specific changes are identified
 by subelements.
 
 
+=head2 PerformanceInsightsEnabled => Bool
+
+  
+
+
+=head2 PerformanceInsightsKMSKeyId => Str
+
+  
+
+
 =head2 PreferredBackupWindow => Str
 
   Specifies the daily time range during which automated backups are
@@ -359,7 +379,8 @@ occur, in Universal Coordinated Time (UTC).
   A value that specifies the order in which an Aurora Replica is promoted
 to the primary instance after a failure of the existing primary
 instance. For more information, see Fault Tolerance for an Aurora DB
-Cluster.
+Cluster
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance).
 
 
 =head2 PubliclyAccessible => Bool
@@ -459,9 +480,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

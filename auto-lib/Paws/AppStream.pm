@@ -11,7 +11,7 @@ package Paws::AppStream;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub AssociateFleet {
@@ -19,9 +19,24 @@ package Paws::AppStream;
     my $call_object = $self->new_with_coercions('Paws::AppStream::AssociateFleet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateDirectoryConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::CreateDirectoryConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateFleet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppStream::CreateFleet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateImageBuilder {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::CreateImageBuilder', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateImageBuilderStreamingURL {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::CreateImageBuilderStreamingURL', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateStack {
@@ -34,9 +49,24 @@ package Paws::AppStream;
     my $call_object = $self->new_with_coercions('Paws::AppStream::CreateStreamingURL', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteDirectoryConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::DeleteDirectoryConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteFleet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppStream::DeleteFleet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteImage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::DeleteImage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteImageBuilder {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::DeleteImageBuilder', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteStack {
@@ -44,9 +74,19 @@ package Paws::AppStream;
     my $call_object = $self->new_with_coercions('Paws::AppStream::DeleteStack', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeDirectoryConfigs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::DescribeDirectoryConfigs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeFleets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppStream::DescribeFleets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeImageBuilders {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::DescribeImageBuilders', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeImages {
@@ -89,9 +129,24 @@ package Paws::AppStream;
     my $call_object = $self->new_with_coercions('Paws::AppStream::StartFleet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartImageBuilder {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::StartImageBuilder', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StopFleet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppStream::StopFleet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopImageBuilder {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::StopImageBuilder', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateDirectoryConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::UpdateDirectoryConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateFleet {
@@ -107,7 +162,7 @@ package Paws::AppStream;
   
 
 
-  sub operations { qw/AssociateFleet CreateFleet CreateStack CreateStreamingURL DeleteFleet DeleteStack DescribeFleets DescribeImages DescribeSessions DescribeStacks DisassociateFleet ExpireSession ListAssociatedFleets ListAssociatedStacks StartFleet StopFleet UpdateFleet UpdateStack / }
+  sub operations { qw/AssociateFleet CreateDirectoryConfig CreateFleet CreateImageBuilder CreateImageBuilderStreamingURL CreateStack CreateStreamingURL DeleteDirectoryConfig DeleteFleet DeleteImage DeleteImageBuilder DeleteStack DescribeDirectoryConfigs DescribeFleets DescribeImageBuilders DescribeImages DescribeSessions DescribeStacks DisassociateFleet ExpireSession ListAssociatedFleets ListAssociatedStacks StartFleet StartImageBuilder StopFleet StopImageBuilder UpdateDirectoryConfig UpdateFleet UpdateStack / }
 
 1;
 
@@ -137,7 +192,8 @@ Paws::AppStream - Perl Interface to AWS Amazon AppStream
 
 Amazon AppStream 2.0
 
-API documentation for Amazon AppStream 2.0.
+You can use Amazon AppStream 2.0 to stream desktop applications to any
+device running a web browser, without rewriting them.
 
 =head1 METHODS
 
@@ -147,16 +203,43 @@ Each argument is described in detail in: L<Paws::AppStream::AssociateFleet>
 
 Returns: a L<Paws::AppStream::AssociateFleetResult> instance
 
-  Associate a fleet to a stack.
+Associates the specified fleet with the specified stack.
 
 
-=head2 CreateFleet(ComputeCapacity => L<Paws::AppStream::ComputeCapacity>, ImageName => Str, InstanceType => Str, Name => Str, [Description => Str, DisconnectTimeoutInSeconds => Int, DisplayName => Str, EnableDefaultInternetAccess => Bool, MaxUserDurationInSeconds => Int, VpcConfig => L<Paws::AppStream::VpcConfig>])
+=head2 CreateDirectoryConfig(DirectoryName => Str, OrganizationalUnitDistinguishedNames => ArrayRef[Str|Undef], ServiceAccountCredentials => L<Paws::AppStream::ServiceAccountCredentials>)
+
+Each argument is described in detail in: L<Paws::AppStream::CreateDirectoryConfig>
+
+Returns: a L<Paws::AppStream::CreateDirectoryConfigResult> instance
+
+Creates a directory configuration.
+
+
+=head2 CreateFleet(ComputeCapacity => L<Paws::AppStream::ComputeCapacity>, ImageName => Str, InstanceType => Str, Name => Str, [Description => Str, DisconnectTimeoutInSeconds => Int, DisplayName => Str, DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>, EnableDefaultInternetAccess => Bool, FleetType => Str, MaxUserDurationInSeconds => Int, VpcConfig => L<Paws::AppStream::VpcConfig>])
 
 Each argument is described in detail in: L<Paws::AppStream::CreateFleet>
 
 Returns: a L<Paws::AppStream::CreateFleetResult> instance
 
-  Creates a new fleet.
+Creates a fleet.
+
+
+=head2 CreateImageBuilder(ImageName => Str, InstanceType => Str, Name => Str, [Description => Str, DisplayName => Str, DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>, EnableDefaultInternetAccess => Bool, VpcConfig => L<Paws::AppStream::VpcConfig>])
+
+Each argument is described in detail in: L<Paws::AppStream::CreateImageBuilder>
+
+Returns: a L<Paws::AppStream::CreateImageBuilderResult> instance
+
+
+
+
+=head2 CreateImageBuilderStreamingURL(Name => Str, [Validity => Int])
+
+Each argument is described in detail in: L<Paws::AppStream::CreateImageBuilderStreamingURL>
+
+Returns: a L<Paws::AppStream::CreateImageBuilderStreamingURLResult> instance
+
+
 
 
 =head2 CreateStack(Name => Str, [Description => Str, DisplayName => Str, StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]])
@@ -165,7 +248,7 @@ Each argument is described in detail in: L<Paws::AppStream::CreateStack>
 
 Returns: a L<Paws::AppStream::CreateStackResult> instance
 
-  Create a new stack.
+Creates a stack.
 
 
 =head2 CreateStreamingURL(FleetName => Str, StackName => Str, UserId => Str, [ApplicationId => Str, SessionContext => Str, Validity => Int])
@@ -174,9 +257,19 @@ Each argument is described in detail in: L<Paws::AppStream::CreateStreamingURL>
 
 Returns: a L<Paws::AppStream::CreateStreamingURLResult> instance
 
-  Creates a URL to start an AppStream 2.0 streaming session for a user.
-By default, the URL is valid only for 1 minute from the time that it is
-generated.
+Creates a URL to start a streaming session for the specified user.
+
+By default, the URL is valid only for one minute from the time that it
+is generated.
+
+
+=head2 DeleteDirectoryConfig(DirectoryName => Str)
+
+Each argument is described in detail in: L<Paws::AppStream::DeleteDirectoryConfig>
+
+Returns: a L<Paws::AppStream::DeleteDirectoryConfigResult> instance
+
+Deletes the specified directory configuration.
 
 
 =head2 DeleteFleet(Name => Str)
@@ -185,7 +278,25 @@ Each argument is described in detail in: L<Paws::AppStream::DeleteFleet>
 
 Returns: a L<Paws::AppStream::DeleteFleetResult> instance
 
-  Deletes a fleet.
+Deletes the specified fleet.
+
+
+=head2 DeleteImage(Name => Str)
+
+Each argument is described in detail in: L<Paws::AppStream::DeleteImage>
+
+Returns: a L<Paws::AppStream::DeleteImageResult> instance
+
+
+
+
+=head2 DeleteImageBuilder(Name => Str)
+
+Each argument is described in detail in: L<Paws::AppStream::DeleteImageBuilder>
+
+Returns: a L<Paws::AppStream::DeleteImageBuilderResult> instance
+
+
 
 
 =head2 DeleteStack(Name => Str)
@@ -194,9 +305,18 @@ Each argument is described in detail in: L<Paws::AppStream::DeleteStack>
 
 Returns: a L<Paws::AppStream::DeleteStackResult> instance
 
-  Deletes the stack. After this operation completes, the environment can
-no longer be activated, and any reservations made for the stack are
-released.
+Deletes the specified stack. After this operation completes, the
+environment can no longer be activated and any reservations made for
+the stack are released.
+
+
+=head2 DescribeDirectoryConfigs([DirectoryNames => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::AppStream::DescribeDirectoryConfigs>
+
+Returns: a L<Paws::AppStream::DescribeDirectoryConfigsResult> instance
+
+Describes the specified directory configurations.
 
 
 =head2 DescribeFleets([Names => ArrayRef[Str|Undef], NextToken => Str])
@@ -205,8 +325,16 @@ Each argument is described in detail in: L<Paws::AppStream::DescribeFleets>
 
 Returns: a L<Paws::AppStream::DescribeFleetsResult> instance
 
-  If fleet names are provided, this operation describes the specified
-fleets; otherwise, all the fleets in the account are described.
+Describes the specified fleets or all fleets in the account.
+
+
+=head2 DescribeImageBuilders([MaxResults => Int, Names => ArrayRef[Str|Undef], NextToken => Str])
+
+Each argument is described in detail in: L<Paws::AppStream::DescribeImageBuilders>
+
+Returns: a L<Paws::AppStream::DescribeImageBuildersResult> instance
+
+
 
 
 =head2 DescribeImages([Names => ArrayRef[Str|Undef]])
@@ -215,9 +343,7 @@ Each argument is described in detail in: L<Paws::AppStream::DescribeImages>
 
 Returns: a L<Paws::AppStream::DescribeImagesResult> instance
 
-  Describes the images. If a list of names is not provided, all images in
-your account are returned. This operation does not return a paginated
-result.
+Describes the specified images or all images in the account.
 
 
 =head2 DescribeSessions(FleetName => Str, StackName => Str, [AuthenticationType => Str, Limit => Int, NextToken => Str, UserId => Str])
@@ -226,12 +352,10 @@ Each argument is described in detail in: L<Paws::AppStream::DescribeSessions>
 
 Returns: a L<Paws::AppStream::DescribeSessionsResult> instance
 
-  Describes the streaming sessions for a stack and a fleet. If a user ID
-is provided, this operation returns streaming sessions for only that
-user. Pass this value for the C<nextToken> parameter in a subsequent
-call to this operation to retrieve the next set of items. If an
-authentication type is not provided, the operation defaults to users
-authenticated using a streaming URL.
+Describes the streaming sessions for the specified stack and fleet. If
+a user ID is provided, only the streaming sessions for only that user
+are returned. If an authentication type is not provided, the default is
+to authenticate users using a streaming URL.
 
 
 =head2 DescribeStacks([Names => ArrayRef[Str|Undef], NextToken => Str])
@@ -240,10 +364,7 @@ Each argument is described in detail in: L<Paws::AppStream::DescribeStacks>
 
 Returns: a L<Paws::AppStream::DescribeStacksResult> instance
 
-  If stack names are not provided, this operation describes the specified
-stacks; otherwise, all stacks in the account are described. Pass the
-C<nextToken> value in a subsequent call to this operation to retrieve
-the next set of items.
+Describes the specified stacks or all stacks in the account.
 
 
 =head2 DisassociateFleet(FleetName => Str, StackName => Str)
@@ -252,7 +373,7 @@ Each argument is described in detail in: L<Paws::AppStream::DisassociateFleet>
 
 Returns: a L<Paws::AppStream::DisassociateFleetResult> instance
 
-  Disassociates a fleet from a stack.
+Disassociates the specified fleet from the specified stack.
 
 
 =head2 ExpireSession(SessionId => Str)
@@ -261,7 +382,7 @@ Each argument is described in detail in: L<Paws::AppStream::ExpireSession>
 
 Returns: a L<Paws::AppStream::ExpireSessionResult> instance
 
-  This operation immediately stops a streaming session.
+Stops the specified streaming session.
 
 
 =head2 ListAssociatedFleets(StackName => Str, [NextToken => Str])
@@ -270,7 +391,7 @@ Each argument is described in detail in: L<Paws::AppStream::ListAssociatedFleets
 
 Returns: a L<Paws::AppStream::ListAssociatedFleetsResult> instance
 
-  Lists all fleets associated with the stack.
+Lists the fleets associated with the specified stack.
 
 
 =head2 ListAssociatedStacks(FleetName => Str, [NextToken => Str])
@@ -279,7 +400,7 @@ Each argument is described in detail in: L<Paws::AppStream::ListAssociatedStacks
 
 Returns: a L<Paws::AppStream::ListAssociatedStacksResult> instance
 
-  Lists all stacks to which the specified fleet is associated.
+Lists the stacks associated with the specified fleet.
 
 
 =head2 StartFleet(Name => Str)
@@ -288,7 +409,16 @@ Each argument is described in detail in: L<Paws::AppStream::StartFleet>
 
 Returns: a L<Paws::AppStream::StartFleetResult> instance
 
-  Starts a fleet.
+Starts the specified fleet.
+
+
+=head2 StartImageBuilder(Name => Str)
+
+Each argument is described in detail in: L<Paws::AppStream::StartImageBuilder>
+
+Returns: a L<Paws::AppStream::StartImageBuilderResult> instance
+
+
 
 
 =head2 StopFleet(Name => Str)
@@ -297,19 +427,39 @@ Each argument is described in detail in: L<Paws::AppStream::StopFleet>
 
 Returns: a L<Paws::AppStream::StopFleetResult> instance
 
-  Stops a fleet.
+Stops the specified fleet.
 
 
-=head2 UpdateFleet(Name => Str, [ComputeCapacity => L<Paws::AppStream::ComputeCapacity>, DeleteVpcConfig => Bool, Description => Str, DisconnectTimeoutInSeconds => Int, DisplayName => Str, EnableDefaultInternetAccess => Bool, ImageName => Str, InstanceType => Str, MaxUserDurationInSeconds => Int, VpcConfig => L<Paws::AppStream::VpcConfig>])
+=head2 StopImageBuilder(Name => Str)
+
+Each argument is described in detail in: L<Paws::AppStream::StopImageBuilder>
+
+Returns: a L<Paws::AppStream::StopImageBuilderResult> instance
+
+
+
+
+=head2 UpdateDirectoryConfig(DirectoryName => Str, [OrganizationalUnitDistinguishedNames => ArrayRef[Str|Undef], ServiceAccountCredentials => L<Paws::AppStream::ServiceAccountCredentials>])
+
+Each argument is described in detail in: L<Paws::AppStream::UpdateDirectoryConfig>
+
+Returns: a L<Paws::AppStream::UpdateDirectoryConfigResult> instance
+
+Updates the specified directory configuration.
+
+
+=head2 UpdateFleet(Name => Str, [AttributesToDelete => ArrayRef[Str|Undef], ComputeCapacity => L<Paws::AppStream::ComputeCapacity>, DeleteVpcConfig => Bool, Description => Str, DisconnectTimeoutInSeconds => Int, DisplayName => Str, DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>, EnableDefaultInternetAccess => Bool, ImageName => Str, InstanceType => Str, MaxUserDurationInSeconds => Int, VpcConfig => L<Paws::AppStream::VpcConfig>])
 
 Each argument is described in detail in: L<Paws::AppStream::UpdateFleet>
 
 Returns: a L<Paws::AppStream::UpdateFleetResult> instance
 
-  Updates an existing fleet. All the attributes except the fleet name can
-be updated in the B<STOPPED> state. When a fleet is in the B<RUNNING>
-state, only C<DisplayName> and C<ComputeCapacity> can be updated. A
-fleet cannot be updated in a status of B<STARTING> or B<STOPPING>.
+Updates the specified fleet.
+
+If the fleet is in the C<STOPPED> state, you can update any attribute
+except the fleet name. If the fleet is in the C<RUNNING> state, you can
+update the C<DisplayName> and C<ComputeCapacity> attributes. If the
+fleet is in the C<STARTING> or C<STOPPING> state, you can't update it.
 
 
 =head2 UpdateStack(Name => Str, [DeleteStorageConnectors => Bool, Description => Str, DisplayName => Str, StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]])
@@ -318,7 +468,7 @@ Each argument is described in detail in: L<Paws::AppStream::UpdateStack>
 
 Returns: a L<Paws::AppStream::UpdateStackResult> instance
 
-  Updates the specified fields in the stack with the specified name.
+Updates the specified stack.
 
 
 
@@ -336,9 +486,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

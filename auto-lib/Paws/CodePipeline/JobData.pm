@@ -46,17 +46,21 @@ to complete the job.
 
 =head2 ActionConfiguration => L<Paws::CodePipeline::ActionConfiguration>
 
-  
+  Represents information about an action configuration.
 
 
 =head2 ActionTypeId => L<Paws::CodePipeline::ActionTypeId>
 
-  
+  Represents information about an action type.
 
 
 =head2 ArtifactCredentials => L<Paws::CodePipeline::AWSSessionCredentials>
 
-  
+  Represents an AWS session credentials object. These credentials are
+temporary credentials that are issued by AWS Secure Token Service
+(STS). They can be used to access input and output artifacts in the
+Amazon S3 bucket used to store artifact for the pipeline in AWS
+CodePipeline.
 
 
 =head2 ContinuationToken => Str
@@ -67,7 +71,8 @@ a job requires in order to continue the job asynchronously.
 
 =head2 EncryptionKey => L<Paws::CodePipeline::EncryptionKey>
 
-  
+  Represents information about the key used to encrypt data in the
+artifact store, such as an AWS Key Management Service (AWS KMS) key.
 
 
 =head2 InputArtifacts => ArrayRef[L<Paws::CodePipeline::Artifact>]
@@ -82,7 +87,7 @@ a job requires in order to continue the job asynchronously.
 
 =head2 PipelineContext => L<Paws::CodePipeline::PipelineContext>
 
-  
+  Represents information about a pipeline to a job worker.
 
 
 
@@ -92,9 +97,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodePipel
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -17,7 +17,7 @@ package Paws::WAF::UpdateWebACL;
 
 =head1 NAME
 
-Paws::WAF::UpdateWebACL - Arguments for method UpdateWebACL on Paws::WAF
+Paws::WAF::UpdateWebACL - Arguments for method UpdateWebACL on L<Paws::WAF>
 
 =head1 DESCRIPTION
 
@@ -66,7 +66,7 @@ WebACLUpdate: Contains C<Action> and C<ActivatedRule>
 
 =item *
 
-ActivatedRule: Contains C<Action>, C<Priority>, and C<RuleId>
+ActivatedRule: Contains C<Action>, C<Priority>, C<RuleId>, and C<Type>
 
 =item *
 
@@ -91,9 +91,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateWebACL 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

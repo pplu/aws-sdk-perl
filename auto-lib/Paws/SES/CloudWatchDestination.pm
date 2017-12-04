@@ -37,7 +37,8 @@ destination to which email sending events are published.
 Event destinations, such as Amazon CloudWatch, are associated with
 configuration sets, which enable you to publish email sending events.
 For information about using configuration sets, see the Amazon SES
-Developer Guide.
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
 
 =head1 ATTRIBUTES
 
@@ -55,9 +56,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SES>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

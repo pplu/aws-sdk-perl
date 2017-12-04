@@ -1,0 +1,12 @@
+---
+exception: 1
+tests:
+  - expected: ResourceNotFoundException
+    op: eq
+    path: code
+  - expected: 400
+    op: eq
+    path: http_status
+  - expected: 000000000000000000000000000000000000
+    op: eq
+    path: request_id

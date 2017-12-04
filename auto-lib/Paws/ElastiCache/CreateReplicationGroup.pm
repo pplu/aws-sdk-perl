@@ -1,6 +1,7 @@
 
 package Paws::ElastiCache::CreateReplicationGroup;
   use Moose;
+  has AtRestEncryptionEnabled => (is => 'ro', isa => 'Bool');
   has AuthToken => (is => 'ro', isa => 'Str');
   has AutomaticFailoverEnabled => (is => 'ro', isa => 'Bool');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
@@ -27,6 +28,7 @@ package Paws::ElastiCache::CreateReplicationGroup;
   has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
   has SnapshotWindow => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Tag]');
+  has TransitEncryptionEnabled => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
 
@@ -39,7 +41,7 @@ package Paws::ElastiCache::CreateReplicationGroup;
 
 =head1 NAME
 
-Paws::ElastiCache::CreateReplicationGroup - Arguments for method CreateReplicationGroup on Paws::ElastiCache
+Paws::ElastiCache::CreateReplicationGroup - Arguments for method CreateReplicationGroup on L<Paws::ElastiCache>
 
 =head1 DESCRIPTION
 
@@ -58,10 +60,41 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AtRestEncryptionEnabled => Bool
+
+A flag that enables encryption at rest when set to C<true>.
+
+You cannot modify the value of C<AtRestEncryptionEnabled> after the
+replication group is created. To enable encryption at rest on a
+replication group you must set C<AtRestEncryptionEnabled> to C<true>
+when you create the replication group.
+
+This parameter is valid only if the C<Engine> parameter is C<redis> and
+the cluster is being created in an Amazon VPC.
+
+Default: C<false>
+
+
+
 =head2 AuthToken => Str
 
 B<Reserved parameter.> The password used to access a password protected
 server.
+
+This parameter is valid only if:
+
+=over
+
+=item *
+
+The parameter C<TransitEncryptionEnabled> was set to C<true> when the
+cluster was created.
+
+=item *
+
+The line C<requirepass> was added to the database configuration file.
+
+=back
 
 Password constraints:
 
@@ -78,11 +111,12 @@ length.
 
 =item *
 
-Cannot contain any of the following characters: '/', '"', or "@".
+Cannot contain any of the following characters: '/', '"', or '@'.
 
 =back
 
-For more information, see AUTH password at Redis.
+For more information, see AUTH password (http://redis.io/commands/AUTH)
+at http://redis.io/commands/AUTH.
 
 
 
@@ -99,7 +133,8 @@ enabled) replication groups.
 
 Default: false
 
-ElastiCache Multi-AZ replication groups is not supported on:
+Amazon ElastiCache for Redis does not support Multi-AZ with automatic
+failover on:
 
 =over
 
@@ -109,9 +144,11 @@ Redis versions earlier than 2.8.6.
 
 =item *
 
-Redis (cluster mode disabled): T1 and T2 node types.
+Redis (cluster mode disabled): T1 and T2 cache node types.
 
-Redis (cluster mode enabled): T2 node types.
+=item *
+
+Redis (cluster mode enabled): T1 node types.
 
 =back
 
@@ -128,7 +165,10 @@ This parameter is currently disabled.
 
 The compute and memory capacity of the nodes in the node group (shard).
 
-Valid node types are as follows:
+The following node types are supported by ElastiCache. Generally
+speaking, the current generation types provide more memory and
+computational power at lower cost when compared to their equivalent
+previous generation counterparts.
 
 =over
 
@@ -140,22 +180,41 @@ General purpose:
 
 =item *
 
-Current generation: C<cache.t2.micro>, C<cache.t2.small>,
-C<cache.t2.medium>, C<cache.m3.medium>, C<cache.m3.large>,
-C<cache.m3.xlarge>, C<cache.m3.2xlarge>, C<cache.m4.large>,
-C<cache.m4.xlarge>, C<cache.m4.2xlarge>, C<cache.m4.4xlarge>,
-C<cache.m4.10xlarge>
+Current generation:
+
+B<T2 node types:> C<cache.t2.micro>, C<cache.t2.small>,
+C<cache.t2.medium>
+
+B<M3 node types:> C<cache.m3.medium>, C<cache.m3.large>,
+C<cache.m3.xlarge>, C<cache.m3.2xlarge>
+
+B<M4 node types:> C<cache.m4.large>, C<cache.m4.xlarge>,
+C<cache.m4.2xlarge>, C<cache.m4.4xlarge>, C<cache.m4.10xlarge>
 
 =item *
 
-Previous generation: C<cache.t1.micro>, C<cache.m1.small>,
-C<cache.m1.medium>, C<cache.m1.large>, C<cache.m1.xlarge>
+Previous generation: (not recommended)
+
+B<T1 node types:> C<cache.t1.micro>
+
+B<M1 node types:> C<cache.m1.small>, C<cache.m1.medium>,
+C<cache.m1.large>, C<cache.m1.xlarge>
 
 =back
 
 =item *
 
-Compute optimized: C<cache.c1.xlarge>
+Compute optimized:
+
+=over
+
+=item *
+
+Previous generation: (not recommended)
+
+B<C1 node types:> C<cache.c1.xlarge>
+
+=back
 
 =item *
 
@@ -165,12 +224,16 @@ Memory optimized:
 
 =item *
 
-Current generation: C<cache.r3.large>, C<cache.r3.xlarge>,
+Current generation:
+
+B<R3 node types:> C<cache.r3.large>, C<cache.r3.xlarge>,
 C<cache.r3.2xlarge>, C<cache.r3.4xlarge>, C<cache.r3.8xlarge>
 
 =item *
 
-Previous generation: C<cache.m2.xlarge>, C<cache.m2.2xlarge>,
+Previous generation: (not recommended)
+
+B<M2 node types:> C<cache.m2.xlarge>, C<cache.m2.2xlarge>,
 C<cache.m2.4xlarge>
 
 =back
@@ -188,9 +251,13 @@ VPC).
 
 =item *
 
-Redis backup/restore is not supported for Redis (cluster mode disabled)
-T1 and T2 instances. Backup/restore is supported on Redis (cluster mode
-enabled) T2 instances.
+Redis (cluster mode disabled): Redis backup/restore is not supported on
+T1 and T2 instances.
+
+=item *
+
+Redis (cluster mode enabled): Backup/restore is not supported on T1
+instances.
 
 =item *
 
@@ -199,10 +266,16 @@ T2 instances.
 
 =back
 
+Supported node types are available in all regions except as noted in
+the following table.
+
 For a complete listing of node types and specifications, see Amazon
-ElastiCache Product Features and Details and either Cache Node
-Type-Specific Parameters for Memcached or Cache Node Type-Specific
-Parameters for Redis.
+ElastiCache Product Features and Details
+(http://aws.amazon.com/elasticache/details) and either Cache Node
+Type-Specific Parameters for Memcached
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific)
+or Cache Node Type-Specific Parameters for Redis
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific).
 
 
 
@@ -247,7 +320,8 @@ group.
 
 If you're going to launch your cluster in an Amazon VPC, you need to
 create a subnet group before you start creating a cluster. For more
-information, see Subnets and Subnet Groups.
+information, see Subnets and Subnet Groups
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SubnetGroups.html).
 
 
 
@@ -265,10 +339,12 @@ clusters in this replication group. To view the supported cache engine
 versions, use the C<DescribeCacheEngineVersions> operation.
 
 B<Important:> You can upgrade to a newer engine version (see Selecting
-a Cache Engine and Version) in the I<ElastiCache User Guide>, but you
-cannot downgrade to an earlier engine version. If you want to use an
-earlier engine version, you must delete the existing cache cluster or
-replication group and create it anew with the earlier engine version.
+a Cache Engine and Version
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement))
+in the I<ElastiCache User Guide>, but you cannot downgrade to an
+earlier engine version. If you want to use an earlier engine version,
+you must delete the existing cache cluster or replication group and
+create it anew with the earlier engine version.
 
 
 
@@ -470,8 +546,6 @@ I<NumNodeGroups> or the number of node groups configured by
 I<NodeGroupConfiguration> regardless of the number of ARNs specified
 here.
 
-This parameter is only valid if the C<Engine> parameter is C<redis>.
-
 Example of an Amazon S3 ARN: C<arn:aws:s3:::my_bucket/snapshot1.rdb>
 
 
@@ -482,8 +556,6 @@ The name of a snapshot from which to restore data into the new
 replication group. The snapshot status changes to C<restoring> while
 the new replication group is being created.
 
-This parameter is only valid if the C<Engine> parameter is C<redis>.
-
 
 
 =head2 SnapshotRetentionLimit => Int
@@ -492,8 +564,6 @@ The number of days for which ElastiCache retains automatic snapshots
 before deleting them. For example, if you set C<SnapshotRetentionLimit>
 to 5, a snapshot that was taken today is retained for 5 days before
 being deleted.
-
-This parameter is only valid if the C<Engine> parameter is C<redis>.
 
 Default: 0 (i.e., automatic backups are disabled for this cache
 cluster).
@@ -510,14 +580,32 @@ Example: C<05:00-09:00>
 If you do not specify this parameter, ElastiCache automatically chooses
 an appropriate time range.
 
-This parameter is only valid if the C<Engine> parameter is C<redis>.
-
 
 
 =head2 Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
 
 A list of cost allocation tags to be added to this resource. A tag is a
-key-value pair. A tag key must be accompanied by a tag value.
+key-value pair.
+
+
+
+=head2 TransitEncryptionEnabled => Bool
+
+A flag that enables in-transit encryption when set to C<true>.
+
+You cannot modify the value of C<TransitEncryptionEnabled> after the
+cluster is created. To enable in-transit encryption on a cluster you
+must set C<TransitEncryptionEnabled> to C<true> when you create a
+cluster.
+
+This parameter is valid only if the C<Engine> parameter is C<redis>,
+the C<EngineVersion> parameter is C<3.2.4> or later, and the cluster is
+being created in an Amazon VPC.
+
+If you enable in-transit encryption, you must also specify a value for
+C<CacheSubnetGroup>.
+
+Default: C<false>
 
 
 
@@ -528,9 +616,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateReplica
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

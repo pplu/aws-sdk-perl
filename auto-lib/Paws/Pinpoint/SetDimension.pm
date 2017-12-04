@@ -39,9 +39,9 @@ Dimension specification of a segment.
 
 =head2 DimensionType => Str
 
-  The type of dimension: INCLUSIVE E<ndash> Endpoints that match the
-criteria are included in the segment. EXCLUSIVE E<ndash> Endpoints that
-match the criteria are excluded from the segment.
+  The type of dimension: INCLUSIVE - Endpoints that match the criteria
+are included in the segment. EXCLUSIVE - Endpoints that match the
+criteria are excluded from the segment.
 
 
 =head2 Values => ArrayRef[Str|Undef]
@@ -58,9 +58,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

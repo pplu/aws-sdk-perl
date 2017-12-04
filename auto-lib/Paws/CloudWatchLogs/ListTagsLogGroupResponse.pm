@@ -16,7 +16,7 @@ Paws::CloudWatchLogs::ListTagsLogGroupResponse
 
 =head2 Tags => L<Paws::CloudWatchLogs::Tags>
 
-The tags.
+The tags for the log group.
 
 
 =head2 _request_id => Str

@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Target
 =head1 DESCRIPTION
 
 An array of search criteria that targets instances using a Key,Value
-combination that you specify. Targets is required if you don't provide
-one or more instance IDs in the call.
+combination that you specify. C<Targets> is required if you don't
+provide one or more instance IDs in the call.
 
 =head1 ATTRIBUTES
 
@@ -45,7 +45,8 @@ one or more instance IDs in the call.
 meet the criteria. Key can be tag:E<lt>Amazon EC2 tagE<gt> or
 InstanceIds. For more information about how to send commands that
 target instances using Key,Value parameters, see Executing a Command
-Using Systems Manager Run Command.
+Using Systems Manager Run Command
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html).
 
 
 =head2 Values => ArrayRef[Str|Undef]
@@ -55,7 +56,8 @@ tag:ServerRole, you could specify value:WebServer to execute a command
 on instances that include Amazon EC2 tags of ServerRole,WebServer. For
 more information about how to send commands that target instances using
 Key,Value parameters, see Executing a Command Using Systems Manager Run
-Command.
+Command
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html).
 
 
 
@@ -65,9 +67,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

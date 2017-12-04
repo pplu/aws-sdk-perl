@@ -4,7 +4,7 @@ package Paws::S3::UploadPart;
   has Body => (is => 'ro', isa => 'Str', traits => ['ParamInBody']);
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
-  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', traits => ['ParamInHeader']);
+  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has PartNumber => (is => 'ro', isa => 'Int', query_name => 'partNumber', traits => ['ParamInQuery'], required => 1);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
@@ -27,7 +27,7 @@ package Paws::S3::UploadPart;
 
 =head1 NAME
 
-Paws::S3::UploadPart - Arguments for method UploadPart on Paws::S3
+Paws::S3::UploadPart - Arguments for method UploadPart on L<Paws::S3>
 
 =head1 DESCRIPTION
 
@@ -131,9 +131,9 @@ This class forms part of L<Paws>, documenting arguments for method UploadPart in
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

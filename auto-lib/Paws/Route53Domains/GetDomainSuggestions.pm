@@ -16,7 +16,7 @@ package Paws::Route53Domains::GetDomainSuggestions;
 
 =head1 NAME
 
-Paws::Route53Domains::GetDomainSuggestions - Arguments for method GetDomainSuggestions on Paws::Route53Domains
+Paws::Route53Domains::GetDomainSuggestions - Arguments for method GetDomainSuggestions on L<Paws::Route53Domains>
 
 =head1 DESCRIPTION
 
@@ -40,8 +40,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 A domain name that you want to use as the basis for a list of possible
 domain names. The domain name must contain a top-level domain (TLD),
 such as .com, that Amazon Route 53 supports. For a list of TLDs, see
-Domains that You Can Register with Amazon Route 53 in the I<Amazon
-Route 53 Developer Guide>.
+Domains that You Can Register with Amazon Route 53
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 
 
@@ -69,9 +70,9 @@ This class forms part of L<Paws>, documenting arguments for method GetDomainSugg
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

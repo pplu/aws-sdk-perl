@@ -91,7 +91,9 @@ Parameter group
 
 For more information about Amazon Redshift resource types and
 constructing ARNs, go to Constructing an Amazon Redshift Amazon
-Resource Name (ARN) in the Amazon Redshift Cluster Management Guide.
+Resource Name (ARN)
+(http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions)
+in the Amazon Redshift Cluster Management Guide.
 
 
 =head2 Tag => L<Paws::RedShift::Tag>
@@ -106,9 +108,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::RedShift>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

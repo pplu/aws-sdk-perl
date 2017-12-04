@@ -8,6 +8,7 @@ package Paws::RDS::RestoreDBClusterToPointInTime;
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has RestoreToTime => (is => 'ro', isa => 'Str');
+  has RestoreType => (is => 'ro', isa => 'Str');
   has SourceDBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has UseLatestRestorableTime => (is => 'ro', isa => 'Bool');
@@ -24,7 +25,7 @@ package Paws::RDS::RestoreDBClusterToPointInTime;
 
 =head1 NAME
 
-Paws::RDS::RestoreDBClusterToPointInTime - Arguments for method RestoreDBClusterToPointInTime on Paws::RDS
+Paws::RDS::RestoreDBClusterToPointInTime - Arguments for method RestoreDBClusterToPointInTime on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -53,7 +54,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens
+Must contain from 1 to 63 letters, numbers, or hyphens
 
 =item *
 
@@ -72,8 +73,8 @@ Cannot end with a hyphen or contain two consecutive hyphens
 
 The DB subnet group name to use for the new DB cluster.
 
-Constraints: Must contain no more than 255 alphanumeric characters,
-periods, underscores, spaces, or hyphens. Must not be default.
+Constraints: If supplied, must match the name of an existing
+DBSubnetGroup.
 
 Example: C<mySubnetgroup>
 
@@ -123,8 +124,8 @@ encrypted.
 
 =back
 
-If C<DBClusterIdentifier> refers to a DB cluster that is note
-encrypted, then the restore request is rejected.
+If C<DBClusterIdentifier> refers to a DB cluster that is not encrypted,
+then the restore request is rejected.
 
 
 
@@ -161,11 +162,47 @@ Must be before the latest restorable time for the DB instance
 
 =item *
 
+Must be specified if C<UseLatestRestorableTime> parameter is not
+provided
+
+=item *
+
 Cannot be specified if C<UseLatestRestorableTime> parameter is true
+
+=item *
+
+Cannot be specified if C<RestoreType> parameter is C<copy-on-write>
 
 =back
 
 Example: C<2015-03-07T23:45:00Z>
+
+
+
+=head2 RestoreType => Str
+
+The type of restore to be performed. You can specify one of the
+following values:
+
+=over
+
+=item *
+
+C<full-copy> - The new DB cluster is restored as a full copy of the
+source DB cluster.
+
+=item *
+
+C<copy-on-write> - The new DB cluster is restored as a clone of the
+source DB cluster.
+
+=back
+
+Constraints: You cannot specify C<copy-on-write> if the engine version
+of the source DB cluster is earlier than 1.11.
+
+If you don't specify a C<RestoreType> value, then the new DB cluster is
+restored as a full copy of the source DB cluster.
 
 
 
@@ -179,19 +216,7 @@ Constraints:
 
 =item *
 
-Must be the identifier of an existing database instance
-
-=item *
-
-Must contain from 1 to 63 alphanumeric characters or hyphens
-
-=item *
-
-First character must be a letter
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens
+Must match the identifier of an existing DBCluster.
 
 =back
 
@@ -218,7 +243,7 @@ provided.
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
 
-A lst of VPC security groups that the new DB cluster belongs to.
+A list of VPC security groups that the new DB cluster belongs to.
 
 
 
@@ -229,9 +254,9 @@ This class forms part of L<Paws>, documenting arguments for method RestoreDBClus
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -17,7 +17,7 @@ package Paws::EC2::DescribeNatGateways;
 
 =head1 NAME
 
-Paws::EC2::DescribeNatGateways - Arguments for method DescribeNatGateways on Paws::EC2
+Paws::EC2::DescribeNatGateways - Arguments for method DescribeNatGateways on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -54,6 +54,29 @@ C<available> | C<deleting> | C<deleted>).
 =item *
 
 C<subnet-id> - The ID of the subnet in which the NAT gateway resides.
+
+=item *
+
+C<tag>:I<key>=I<value> - The key/value combination of a tag assigned to
+the resource. Specify the key of the tag in the filter name and the
+value of the tag in the filter value. For example, for the tag
+Purpose=X, specify C<tag:Purpose> for the filter name and C<X> for the
+filter value.
+
+=item *
+
+C<tag-key> - The key of a tag assigned to the resource. This filter is
+independent of the C<tag-value> filter. For example, if you use both
+the filter "tag-key=Purpose" and the filter "tag-value=X", you get any
+resources assigned both the tag key Purpose (regardless of what the
+tag's value is), and the tag value X (regardless of what the tag's key
+is). If you want to list only resources where Purpose is X, see the
+C<tag>:I<key>=I<value> filter.
+
+=item *
+
+C<tag-value> - The value of a tag assigned to the resource. This filter
+is independent of the C<tag-key> filter.
 
 =item *
 
@@ -94,9 +117,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeNatGa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

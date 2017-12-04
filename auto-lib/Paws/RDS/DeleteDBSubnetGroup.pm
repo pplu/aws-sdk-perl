@@ -14,7 +14,7 @@ package Paws::RDS::DeleteDBSubnetGroup;
 
 =head1 NAME
 
-Paws::RDS::DeleteDBSubnetGroup - Arguments for method DeleteDBSubnetGroup on Paws::RDS
+Paws::RDS::DeleteDBSubnetGroup - Arguments for method DeleteDBSubnetGroup on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -41,8 +41,8 @@ You cannot delete the default subnet group.
 
 Constraints:
 
-Constraints: Must contain no more than 255 alphanumeric characters,
-periods, underscores, spaces, or hyphens. Must not be default.
+Constraints: Must match the name of an existing DBSubnetGroup. Must not
+be default.
 
 Example: C<mySubnetgroup>
 
@@ -55,9 +55,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteDBSubne
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

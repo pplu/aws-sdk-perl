@@ -16,7 +16,7 @@ package Paws::Organizations::MoveAccount;
 
 =head1 NAME
 
-Paws::Organizations::MoveAccount - Arguments for method MoveAccount on Paws::Organizations
+Paws::Organizations::MoveAccount - Arguments for method MoveAccount on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
@@ -39,7 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The unique identifier (ID) of the account that you want to move.
 
-The regex pattern for an account ID string requires exactly 12 digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for an account ID
+string requires exactly 12 digits.
 
 
 
@@ -48,7 +49,8 @@ The regex pattern for an account ID string requires exactly 12 digits.
 The unique identifier (ID) of the root or organizational unit that you
 want to move the account to.
 
-The regex pattern for a parent ID string requires one of the following:
+The regex pattern (http://wikipedia.org/wiki/regex) for a parent ID
+string requires one of the following:
 
 =over
 
@@ -74,7 +76,8 @@ lower-case letters or digits.
 The unique identifier (ID) of the root or organizational unit that you
 want to move the account from.
 
-The regex pattern for a parent ID string requires one of the following:
+The regex pattern (http://wikipedia.org/wiki/regex) for a parent ID
+string requires one of the following:
 
 =over
 
@@ -102,9 +105,9 @@ This class forms part of L<Paws>, documenting arguments for method MoveAccount i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

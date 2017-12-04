@@ -17,7 +17,7 @@ package Paws::RDS::CopyDBClusterParameterGroup;
 
 =head1 NAME
 
-Paws::RDS::CopyDBClusterParameterGroup - Arguments for method CopyDBClusterParameterGroup on Paws::RDS
+Paws::RDS::CopyDBClusterParameterGroup - Arguments for method CopyDBClusterParameterGroup on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -40,7 +40,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The identifier or Amazon Resource Name (ARN) for the source DB cluster
 parameter group. For information about creating an ARN, see
-Constructing an RDS Amazon Resource Name (ARN).
+Constructing an RDS Amazon Resource Name (ARN)
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
 
 Constraints:
 
@@ -52,13 +53,13 @@ Must specify a valid DB cluster parameter group.
 
 =item *
 
-If the source DB cluster parameter group is in the same region as the
-copy, specify a valid DB parameter group identifier, for example
+If the source DB cluster parameter group is in the same AWS Region as
+the copy, specify a valid DB parameter group identifier, for example
 C<my-db-cluster-param-group>, or a valid ARN.
 
 =item *
 
-If the source DB parameter group is in a different region than the
+If the source DB parameter group is in a different AWS Region than the
 copy, specify a valid DB cluster parameter group ARN, for example
 C<arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1>.
 
@@ -93,7 +94,7 @@ Cannot be null, empty, or blank
 
 =item *
 
-Must contain from 1 to 255 alphanumeric characters or hyphens
+Must contain from 1 to 255 letters, numbers, or hyphens
 
 =item *
 
@@ -116,9 +117,9 @@ This class forms part of L<Paws>, documenting arguments for method CopyDBCluster
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -1,0 +1,11 @@
+---
+tests:
+  - expected: "ID3..."
+    op: eq
+    path: AudioStream
+  - expected: audio/mpeg
+    op: eq
+    path: ContentType
+  - expected: 6
+    op: eq
+    path: RequestCharacters

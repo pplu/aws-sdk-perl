@@ -11,7 +11,7 @@ package Paws::Organizations;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub AcceptHandshake {
@@ -210,6 +210,282 @@ package Paws::Organizations;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllAccounts {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAccounts(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAccounts(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Accounts }, @{ $next_result->Accounts };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Accounts') foreach (@{ $result->Accounts });
+        $result = $self->ListAccounts(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Accounts') foreach (@{ $result->Accounts });
+    }
+
+    return undef
+  }
+  sub ListAllAccountsForParent {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAccountsForParent(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAccountsForParent(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Accounts }, @{ $next_result->Accounts };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Accounts') foreach (@{ $result->Accounts });
+        $result = $self->ListAccountsForParent(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Accounts') foreach (@{ $result->Accounts });
+    }
+
+    return undef
+  }
+  sub ListAllChildren {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListChildren(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListChildren(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Children }, @{ $next_result->Children };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Children') foreach (@{ $result->Children });
+        $result = $self->ListChildren(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Children') foreach (@{ $result->Children });
+    }
+
+    return undef
+  }
+  sub ListAllCreateAccountStatus {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListCreateAccountStatus(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListCreateAccountStatus(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CreateAccountStatuses }, @{ $next_result->CreateAccountStatuses };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'CreateAccountStatuses') foreach (@{ $result->CreateAccountStatuses });
+        $result = $self->ListCreateAccountStatus(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'CreateAccountStatuses') foreach (@{ $result->CreateAccountStatuses });
+    }
+
+    return undef
+  }
+  sub ListAllHandshakesForAccount {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListHandshakesForAccount(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListHandshakesForAccount(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Handshakes }, @{ $next_result->Handshakes };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Handshakes') foreach (@{ $result->Handshakes });
+        $result = $self->ListHandshakesForAccount(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Handshakes') foreach (@{ $result->Handshakes });
+    }
+
+    return undef
+  }
+  sub ListAllHandshakesForOrganization {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListHandshakesForOrganization(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListHandshakesForOrganization(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Handshakes }, @{ $next_result->Handshakes };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Handshakes') foreach (@{ $result->Handshakes });
+        $result = $self->ListHandshakesForOrganization(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Handshakes') foreach (@{ $result->Handshakes });
+    }
+
+    return undef
+  }
+  sub ListAllOrganizationalUnitsForParent {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOrganizationalUnitsForParent(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListOrganizationalUnitsForParent(@_, NextToken => $next_result->NextToken);
+        push @{ $result->OrganizationalUnits }, @{ $next_result->OrganizationalUnits };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'OrganizationalUnits') foreach (@{ $result->OrganizationalUnits });
+        $result = $self->ListOrganizationalUnitsForParent(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'OrganizationalUnits') foreach (@{ $result->OrganizationalUnits });
+    }
+
+    return undef
+  }
+  sub ListAllParents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListParents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListParents(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Parents }, @{ $next_result->Parents };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Parents') foreach (@{ $result->Parents });
+        $result = $self->ListParents(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Parents') foreach (@{ $result->Parents });
+    }
+
+    return undef
+  }
+  sub ListAllPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPolicies(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListPolicies(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Policies }, @{ $next_result->Policies };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Policies') foreach (@{ $result->Policies });
+        $result = $self->ListPolicies(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Policies') foreach (@{ $result->Policies });
+    }
+
+    return undef
+  }
+  sub ListAllPoliciesForTarget {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPoliciesForTarget(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListPoliciesForTarget(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Policies }, @{ $next_result->Policies };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Policies') foreach (@{ $result->Policies });
+        $result = $self->ListPoliciesForTarget(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Policies') foreach (@{ $result->Policies });
+    }
+
+    return undef
+  }
+  sub ListAllRoots {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRoots(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListRoots(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Roots }, @{ $next_result->Roots };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Roots') foreach (@{ $result->Roots });
+        $result = $self->ListRoots(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Roots') foreach (@{ $result->Roots });
+    }
+
+    return undef
+  }
+  sub ListAllTargetsForPolicy {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTargetsForPolicy(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTargetsForPolicy(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Targets }, @{ $next_result->Targets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Targets') foreach (@{ $result->Targets });
+        $result = $self->ListTargetsForPolicy(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Targets') foreach (@{ $result->Targets });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AcceptHandshake AttachPolicy CancelHandshake CreateAccount CreateOrganization CreateOrganizationalUnit CreatePolicy DeclineHandshake DeleteOrganization DeleteOrganizationalUnit DeletePolicy DescribeAccount DescribeCreateAccountStatus DescribeHandshake DescribeOrganization DescribeOrganizationalUnit DescribePolicy DetachPolicy DisablePolicyType EnableAllFeatures EnablePolicyType InviteAccountToOrganization LeaveOrganization ListAccounts ListAccountsForParent ListChildren ListCreateAccountStatus ListHandshakesForAccount ListHandshakesForOrganization ListOrganizationalUnitsForParent ListParents ListPolicies ListPoliciesForTarget ListRoots ListTargetsForPolicy MoveAccount RemoveAccountFromOrganization UpdateOrganizationalUnit UpdatePolicy / }
@@ -248,7 +524,8 @@ accounts and their resources.
 
 This guide provides descriptions of the Organizations API. For more
 information about using this service, see the AWS Organizations User
-Guide.
+Guide
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html).
 
 B<API Version>
 
@@ -263,15 +540,16 @@ access to AWS Organizations. For example, the SDKs take care of
 cryptographically signing requests, managing errors, and retrying
 requests automatically. For more information about the AWS SDKs,
 including how to download and install them, see Tools for Amazon Web
-Services.
+Services (http://aws.amazon.com/tools/).
 
 We recommend that you use the AWS SDKs to make programmatic API calls
 to Organizations. However, you also can use the Organizations Query API
 to make direct calls to the Organizations web service. To learn more
-about the Organizations Query API, see Making Query Requests in the
-I<AWS Organizations User Guide>. Organizations supports GET and POST
-requests for all actions. That is, the API does not require you to use
-GET for some actions and POST for others. However, GET requests are
+about the Organizations Query API, see Making Query Requests
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_query-requests.html)
+in the I<AWS Organizations User Guide>. Organizations supports GET and
+POST requests for all actions. That is, the API does not require you to
+use GET for some actions and POST for others. However, GET requests are
 subject to the limitation size of a URL. Therefore, for operations that
 require larger sizes, use a POST request.
 
@@ -288,11 +566,12 @@ privileges. As another option, use AWS Security Token Service to
 generate temporary security credentials, and use those credentials to
 sign requests.
 
-To sign requests, we recommend that you use Signature Version 4. If you
-have an existing application that uses Signature Version 2, you do not
-have to update it to use Signature Version 4. However, some operations
-now require Signature Version 4. The documentation for operations that
-require version 4 indicate this requirement.
+To sign requests, we recommend that you use Signature Version 4
+(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+If you have an existing application that uses Signature Version 2, you
+do not have to update it to use Signature Version 4. However, some
+operations now require Signature Version 4. The documentation for
+operations that require version 4 indicate this requirement.
 
 When you use the AWS Command Line Interface (AWS CLI) or one of the AWS
 SDKs to make requests to AWS, these tools automatically sign the
@@ -305,11 +584,14 @@ release, a single organization will support multiple roots.
 B<Support and Feedback for AWS Organizations>
 
 We welcome your feedback. Send your comments to
-feedback-awsorganizations@amazon.com or post your feedback and
-questions in our private AWS Organizations support forum. If you don't
+feedback-awsorganizations@amazon.com
+(mailto:feedback-awsorganizations@amazon.com) or post your feedback and
+questions in our private AWS Organizations support forum
+(http://forums.aws.amazon.com/forum.jspa?forumID=219). If you don't
 have access to the forum, send a request for access to the email
 address, along with your forum user ID. For more information about the
-AWS support forums, see Forums Help.
+AWS support forums, see Forums Help
+(http://forums.aws.amazon.com/help.jspa).
 
 B<Endpoint to Call When Using the CLI or the AWS API>
 
@@ -343,8 +625,9 @@ C<--region us-east-1>
 
 For the various SDKs used to call the APIs, see the documentation for
 the SDK of interest to learn how to direct the requests to a specific
-endpoint. For more information, see Regions and Endpoints in the I<AWS
-General Reference>.
+endpoint. For more information, see Regions and Endpoints
+(http://docs.aws.amazon.com/general/latest/gr/rande.html#sts_region) in
+the I<AWS General Reference>.
 
 B<How examples are presented>
 
@@ -364,9 +647,12 @@ bucket. By using information collected by AWS CloudTrail, you can
 determine which requests were successfully made to Organizations, who
 made the request, when it was made, and so on. For more about AWS
 Organizations and its support for AWS CloudTrail, see Logging AWS
-Organizations Events with AWS CloudTrail in the I<AWS Organizations
-User Guide>. To learn more about CloudTrail, including how to turn it
-on and find your log files, see the AWS CloudTrail User Guide.
+Organizations Events with AWS CloudTrail
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_cloudtrail-integration.html)
+in the I<AWS Organizations User Guide>. To learn more about CloudTrail,
+including how to turn it on and find your log files, see the AWS
+CloudTrail User Guide
+(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 
 =head1 METHODS
 
@@ -376,7 +662,7 @@ Each argument is described in detail in: L<Paws::Organizations::AcceptHandshake>
 
 Returns: a L<Paws::Organizations::AcceptHandshakeResponse> instance
 
-  Sends a response to the originator of a handshake agreeing to the
+Sends a response to the originator of a handshake agreeing to the
 action proposed by the handshake request.
 
 This operation can be called only by the following principals when they
@@ -389,19 +675,34 @@ also have the relevant IAM permissions:
 B<Invitation to join> or B<Approve all features request> handshakes:
 only a principal from the member account.
 
+The user who calls the API for an invitation to join must have the
+C<organizations:AcceptHandshake> permission. If you enabled all
+features in the organization, then the user must also have the
+C<iam:CreateServiceLinkedRole> permission so that Organizations can
+create the required service-linked role named
+I<OrgsServiceLinkedRoleName>. For more information, see AWS
+Organizations and Service-Linked Roles
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integration_services.html#orgs_integration_service-linked-roles)
+in the I<AWS Organizations User Guide>.
+
 =item *
 
 B<Enable all features final confirmation> handshake: only a principal
 from the master account.
 
 For more information about invitations, see Inviting an AWS Account to
-Join Your Organization in the I<AWS Organizations User Guide>. For more
-information about requests to enable all features in the organization,
-see Enabling All Features in Your Organization in the I<AWS
-Organizations User Guide>.
+Join Your Organization
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_invites.html)
+in the I<AWS Organizations User Guide>. For more information about
+requests to enable all features in the organization, see Enabling All
+Features in Your Organization
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
+in the I<AWS Organizations User Guide>.
 
 =back
 
+After you accept a handshake, it continues to appear in the results of
+relevant APIs for only 30 days. After that it is deleted.
 
 
 =head2 AttachPolicy(PolicyId => Str, TargetId => Str)
@@ -410,7 +711,7 @@ Each argument is described in detail in: L<Paws::Organizations::AttachPolicy>
 
 Returns: nothing
 
-  Attaches a policy to a root, an organizational unit, or an individual
+Attaches a policy to a root, an organizational unit, or an individual
 account. How the policy affects accounts depends on the type of policy:
 
 =over
@@ -462,8 +763,9 @@ you must replace it with a policy that specifies the permissions that
 you want to allow in that OU or account.
 
 For more information about how Organizations policies permissions work,
-see Using Service Control Policies in the I<AWS Organizations User
-Guide>.
+see Using Service Control Policies
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html)
+in the I<AWS Organizations User Guide>.
 
 =back
 
@@ -477,13 +779,16 @@ Each argument is described in detail in: L<Paws::Organizations::CancelHandshake>
 
 Returns: a L<Paws::Organizations::CancelHandshakeResponse> instance
 
-  Cancels a handshake. Canceling a handshake sets the handshake state to
+Cancels a handshake. Canceling a handshake sets the handshake state to
 C<CANCELED>.
 
 This operation can be called only from the account that originated the
 handshake. The recipient of the handshake can't cancel it, but can use
 DeclineHandshake instead. After a handshake is canceled, the recipient
 can no longer respond to that handshake.
+
+After you cancel a handshake, it continues to appear in the results of
+relevant APIs for only 30 days. After that it is deleted.
 
 
 =head2 CreateAccount(AccountName => Str, Email => Str, [IamUserAccessToBilling => Str, RoleName => Str])
@@ -492,26 +797,50 @@ Each argument is described in detail in: L<Paws::Organizations::CreateAccount>
 
 Returns: a L<Paws::Organizations::CreateAccountResponse> instance
 
-  Creates an AWS account that is automatically a member of the
+Creates an AWS account that is automatically a member of the
 organization whose credentials made the request. This is an
 asynchronous request that AWS performs in the background. If you want
 to check the status of the request later, you need the C<OperationId>
 response element from this operation to provide as a parameter to the
 DescribeCreateAccountStatus operation.
 
-AWS Organizations preconfigures the new member account with a role
-(named C<OrganizationAccountAccessRole> by default) that grants
-administrator permissions to the new account. Principals in the master
-account can assume the role. AWS Organizations clones the company name
-and address information for the new account from the organization's
-master account.
+The user who calls the API for an invitation to join must have the
+C<organizations:CreateAccount> permission. If you enabled all features
+in the organization, then the user must also have the
+C<iam:CreateServiceLinkedRole> permission so that Organizations can
+create the required service-linked role named
+I<OrgsServiceLinkedRoleName>. For more information, see AWS
+Organizations and Service-Linked Roles
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integration_services.html#orgs_integration_service-linked-roles)
+in the I<AWS Organizations User Guide>.
+
+The user in the master account who calls this API must also have the
+C<iam:CreateRole> permission because AWS Organizations preconfigures
+the new member account with a role (named
+C<OrganizationAccountAccessRole>) that grants users in the master
+account administrator permissions in the new member account. Principals
+in the master account can assume the role. AWS Organizations clones the
+company name and address information for the new account from the
+organization's master account.
+
+This operation can be called only from the organization's master
+account.
 
 For more information about creating accounts, see Creating an AWS
-Account in Your Organization in the I<AWS Organizations User Guide>.
+Account in Your Organization
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html)
+in the I<AWS Organizations User Guide>.
 
-You cannot remove accounts that are created with this operation from an
-organization. That also means that you cannot delete an organization
-that contains an account that is created with this operation.
+When you create an account in an organization using the AWS
+Organizations console, API, or CLI commands, the information required
+for the account to operate as a standalone account, such as a payment
+method and signing the End User Licence Agreement (EULA) is I<not>
+automatically collected. If you must remove an account from your
+organization later, you can do so only after you provide the missing
+information. Follow the steps at To leave an organization when all
+required account information has not yet been provided
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info)
+in the I<AWS Organizations User Guide>.
 
 When you create a member account with this operation, you can choose
 whether to create the account with the B<IAM User and Role Access to
@@ -520,10 +849,13 @@ roles that have appropriate permissions can view billing information
 for the account. If you disable this, then only the account root user
 can access billing information. For information about how to disable
 this for an account, see Granting Access to Your Billing Information
-and Tools.
+and Tools
+(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html).
 
-This operation can be called only from the organization's master
-account.
+If you get an exception that indicates that you exceeded your account
+limits for the organization or that you can"t add an account because
+your organization is still initializing, please contact AWS Customer
+Support (https://console.aws.amazon.com/support/home#/).
 
 
 =head2 CreateOrganization([FeatureSet => Str])
@@ -532,8 +864,9 @@ Each argument is described in detail in: L<Paws::Organizations::CreateOrganizati
 
 Returns: a L<Paws::Organizations::CreateOrganizationResponse> instance
 
-  Creates an AWS organization. The account whose user is calling the
+Creates an AWS organization. The account whose user is calling the
 CreateOrganization operation automatically becomes the master account
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/orgs_getting-started_concepts.html#account)
 of the new organization.
 
 This operation must be called using credentials from the account that
@@ -555,14 +888,15 @@ Each argument is described in detail in: L<Paws::Organizations::CreateOrganizati
 
 Returns: a L<Paws::Organizations::CreateOrganizationalUnitResponse> instance
 
-  Creates an organizational unit (OU) within a root or parent OU. An OU
+Creates an organizational unit (OU) within a root or parent OU. An OU
 is a container for accounts that enables you to organize your accounts
 to apply policies according to your business requirements. The number
 of levels deep that you can nest OUs is dependent upon the policy types
 enabled for that root. For service control policies, the limit is five.
 
-For more information about OUs, see Managing Organizational Units in
-the I<AWS Organizations User Guide>.
+For more information about OUs, see Managing Organizational Units
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_ous.html)
+in the I<AWS Organizations User Guide>.
 
 This operation can be called only from the organization's master
 account.
@@ -574,11 +908,12 @@ Each argument is described in detail in: L<Paws::Organizations::CreatePolicy>
 
 Returns: a L<Paws::Organizations::CreatePolicyResponse> instance
 
-  Creates a policy of a specified type that you can attach to a root, an
+Creates a policy of a specified type that you can attach to a root, an
 organizational unit (OU), or an individual AWS account.
 
 For more information about policies and their use, see Managing
-Organization Policies.
+Organization Policies
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html).
 
 This operation can be called only from the organization's master
 account.
@@ -590,13 +925,16 @@ Each argument is described in detail in: L<Paws::Organizations::DeclineHandshake
 
 Returns: a L<Paws::Organizations::DeclineHandshakeResponse> instance
 
-  Declines a handshake request. This sets the handshake state to
+Declines a handshake request. This sets the handshake state to
 C<DECLINED> and effectively deactivates the request.
 
 This operation can be called only from the account that received the
 handshake. The originator of the handshake can use CancelHandshake
 instead. The originator can't reactivate a declined request, but can
 re-initiate the process with a new handshake request.
+
+After you decline a handshake, it continues to appear in the results of
+relevant APIs for only 30 days. After that it is deleted.
 
 
 =head2 DeleteOrganization( => )
@@ -605,13 +943,9 @@ Each argument is described in detail in: L<Paws::Organizations::DeleteOrganizati
 
 Returns: nothing
 
-  Deletes the organization. You can delete an organization only by using
+Deletes the organization. You can delete an organization only by using
 credentials from the master account. The organization must be empty of
 member accounts, OUs, and policies.
-
-If you create any accounts using Organizations operations or the
-Organizations console, you can't remove those accounts from the
-organization, which means that you can't delete the organization.
 
 
 =head2 DeleteOrganizationalUnit(OrganizationalUnitId => Str)
@@ -620,7 +954,7 @@ Each argument is described in detail in: L<Paws::Organizations::DeleteOrganizati
 
 Returns: nothing
 
-  Deletes an organizational unit from a root or another OU. You must
+Deletes an organizational unit from a root or another OU. You must
 first remove all accounts and child OUs from the OU that you want to
 delete.
 
@@ -634,7 +968,7 @@ Each argument is described in detail in: L<Paws::Organizations::DeletePolicy>
 
 Returns: nothing
 
-  Deletes the specified policy from your organization. Before you perform
+Deletes the specified policy from your organization. Before you perform
 this operation, you must first detach the policy from all OUs, roots,
 and accounts.
 
@@ -648,7 +982,7 @@ Each argument is described in detail in: L<Paws::Organizations::DescribeAccount>
 
 Returns: a L<Paws::Organizations::DescribeAccountResponse> instance
 
-  Retrieves Organizations-related information about the specified
+Retrieves Organizations-related information about the specified
 account.
 
 This operation can be called only from the organization's master
@@ -661,7 +995,7 @@ Each argument is described in detail in: L<Paws::Organizations::DescribeCreateAc
 
 Returns: a L<Paws::Organizations::DescribeCreateAccountStatusResponse> instance
 
-  Retrieves the current status of an asynchronous request to create an
+Retrieves the current status of an asynchronous request to create an
 account.
 
 This operation can be called only from the organization's master
@@ -674,9 +1008,13 @@ Each argument is described in detail in: L<Paws::Organizations::DescribeHandshak
 
 Returns: a L<Paws::Organizations::DescribeHandshakeResponse> instance
 
-  Retrieves information about a previously requested handshake. The
+Retrieves information about a previously requested handshake. The
 handshake ID comes from the response to the original
 InviteAccountToOrganization operation that generated the handshake.
+
+You can access handshakes that are ACCEPTED, DECLINED, or CANCELED for
+only 30 days after they change to that state. They are then deleted and
+no longer accessible.
 
 This operation can be called from any account in the organization.
 
@@ -687,7 +1025,7 @@ Each argument is described in detail in: L<Paws::Organizations::DescribeOrganiza
 
 Returns: a L<Paws::Organizations::DescribeOrganizationResponse> instance
 
-  Retrieves information about the organization that the user's account
+Retrieves information about the organization that the user's account
 belongs to.
 
 This operation can be called from any account in the organization.
@@ -699,7 +1037,7 @@ Each argument is described in detail in: L<Paws::Organizations::DescribeOrganiza
 
 Returns: a L<Paws::Organizations::DescribeOrganizationalUnitResponse> instance
 
-  Retrieves information about an organizational unit (OU).
+Retrieves information about an organizational unit (OU).
 
 This operation can be called only from the organization's master
 account.
@@ -711,7 +1049,7 @@ Each argument is described in detail in: L<Paws::Organizations::DescribePolicy>
 
 Returns: a L<Paws::Organizations::DescribePolicyResponse> instance
 
-  Retrieves information about a policy.
+Retrieves information about a policy.
 
 This operation can be called only from the organization's master
 account.
@@ -723,7 +1061,7 @@ Each argument is described in detail in: L<Paws::Organizations::DetachPolicy>
 
 Returns: nothing
 
-  Detaches a policy from a target root, organizational unit, or account.
+Detaches a policy from a target root, organizational unit, or account.
 If the policy being detached is a service control policy (SCP), the
 changes to permissions for IAM users and roles in affected accounts are
 immediate.
@@ -732,12 +1070,14 @@ B<Note:> Every root, OU, and account must have at least one SCP
 attached. If you want to replace the default C<FullAWSAccess> policy
 with one that limits the permissions that can be delegated, then you
 must attach the replacement policy before you can remove the default
-one. This is the authorization strategy of whitelisting. If you instead
-attach a second SCP and leave the C<FullAWSAccess> SCP still attached,
-and specify C<"Effect": "Deny"> in the second SCP to override the
-C<"Effect": "Allow"> in the C<FullAWSAccess> policy (or any other
-attached SCP), then you are using the authorization strategy of
-blacklisting.
+one. This is the authorization strategy of whitelisting
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_whitelist).
+If you instead attach a second SCP and leave the C<FullAWSAccess> SCP
+still attached, and specify C<"Effect": "Deny"> in the second SCP to
+override the C<"Effect": "Allow"> in the C<FullAWSAccess> policy (or
+any other attached SCP), then you are using the authorization strategy
+of blacklisting
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_blacklist).
 
 This operation can be called only from the organization's master
 account.
@@ -749,7 +1089,7 @@ Each argument is described in detail in: L<Paws::Organizations::DisablePolicyTyp
 
 Returns: a L<Paws::Organizations::DisablePolicyTypeResponse> instance
 
-  Disables an organizational control policy type in a root. A poicy of a
+Disables an organizational control policy type in a root. A policy of a
 certain type can be attached to entities in a root only if that type is
 enabled in the root. After you perform this operation, you no longer
 can attach policies of the specified type to that root or to any OU or
@@ -766,13 +1106,15 @@ Each argument is described in detail in: L<Paws::Organizations::EnableAllFeature
 
 Returns: a L<Paws::Organizations::EnableAllFeaturesResponse> instance
 
-  Enables all features in an organization. This enables the use of
+Enables all features in an organization. This enables the use of
 organization policies that can restrict the services and actions that
 can be called in each account. Until you enable all features, you have
 access only to consolidated billing, and you can't use any of the
 advanced account administration features that AWS Organizations
 supports. For more information, see Enabling All Features in Your
-Organization in the I<AWS Organizations User Guide>.
+Organization
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
+in the I<AWS Organizations User Guide>.
 
 This operation is required only for organizations that were created
 explicitly with only the consolidated billing features enabled, or that
@@ -804,7 +1146,7 @@ Each argument is described in detail in: L<Paws::Organizations::EnablePolicyType
 
 Returns: a L<Paws::Organizations::EnablePolicyTypeResponse> instance
 
-  Enables a policy type in a root. After you enable a policy type in a
+Enables a policy type in a root. After you enable a policy type in a
 root, you can attach policies of that type to the root, any OU, or
 account in that root. You can undo this by using the DisablePolicyType
 operation.
@@ -819,14 +1161,27 @@ Each argument is described in detail in: L<Paws::Organizations::InviteAccountToO
 
 Returns: a L<Paws::Organizations::InviteAccountToOrganizationResponse> instance
 
-  Sends an invitation to another account to join your organization as a
+Sends an invitation to another account to join your organization as a
 member account. Organizations sends email on your behalf to the email
 address that is associated with the other account's owner. The
 invitation is implemented as a Handshake whose details are in the
 response.
 
+You can invite AWS accounts only from the same seller as the master
+account. For example, if your organization's master account was created
+by Amazon Internet Services Pvt. Ltd (AISPL), an AWS seller in India,
+then you can only invite other AISPL accounts to your organization. You
+can't combine accounts from AISPL and AWS, or any other AWS seller. For
+more information, see Consolidated Billing in India
+(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilliing-India.html).
+
 This operation can be called only from the organization's master
 account.
+
+If you get an exception that indicates that you exceeded your account
+limits for the organization or that you can"t add an account because
+your organization is still initializing, please contact AWS Customer
+Support (https://console.aws.amazon.com/support/home#/).
 
 
 =head2 LeaveOrganization( => )
@@ -835,7 +1190,7 @@ Each argument is described in detail in: L<Paws::Organizations::LeaveOrganizatio
 
 Returns: nothing
 
-  Removes a member account from its parent organization. This version of
+Removes a member account from its parent organization. This version of
 the operation is performed by the account that wants to leave. To
 remove a member account as a user in the master account, use
 RemoveAccountFromOrganization instead.
@@ -843,10 +1198,42 @@ RemoveAccountFromOrganization instead.
 This operation can be called only from a member account in the
 organization.
 
+=over
+
+=item *
+
 The master account in an organization with all features enabled can set
 service control policies (SCPs) that can restrict what administrators
 of member accounts can do, including preventing them from successfully
 calling C<LeaveOrganization> and leaving the organization.
+
+=item *
+
+You can leave an organization as a member account only if the account
+is configured with the information required to operate as a standalone
+account. When you create an account in an organization using the AWS
+Organizations console, API, or CLI commands, the information required
+of standalone accounts is I<not> automatically collected. For each
+account that you want to make standalone, you must accept the End User
+License Agreement (EULA), choose a support plan, provide and verify the
+required contact information, and provide a current payment method. AWS
+uses the payment method to charge for any billable (not free tier) AWS
+activity that occurs while the account is not attached to an
+organization. Follow the steps at To leave an organization when all
+required account information has not yet been provided
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info)
+in the I<AWS Organizations User Guide>.
+
+=item *
+
+You can leave an organization only after you enable IAM user access to
+billing in your account. For more information, see Activating Access to
+the Billing and Cost Management Console
+(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate)
+in the I<AWS Billing and Cost Management User Guide>.
+
+=back
+
 
 
 =head2 ListAccounts([MaxResults => Int, NextToken => Str])
@@ -855,7 +1242,7 @@ Each argument is described in detail in: L<Paws::Organizations::ListAccounts>
 
 Returns: a L<Paws::Organizations::ListAccountsResponse> instance
 
-  Lists all the accounts in the organization. To request only the
+Lists all the accounts in the organization. To request only the
 accounts in a root or OU, use the ListAccountsForParent operation
 instead.
 
@@ -869,12 +1256,15 @@ Each argument is described in detail in: L<Paws::Organizations::ListAccountsForP
 
 Returns: a L<Paws::Organizations::ListAccountsForParentResponse> instance
 
-  Lists the accounts in an organization that are contained by the
+Lists the accounts in an organization that are contained by the
 specified target root or organizational unit (OU). If you specify the
 root, you get a list of all the accounts that are not in any OU. If you
 specify an OU, you get a list of all the accounts in only that OU, and
 not in any child OUs. To get a list of all accounts in the
 organization, use the ListAccounts operation.
+
+This operation can be called only from the organization's master
+account.
 
 
 =head2 ListChildren(ChildType => Str, ParentId => Str, [MaxResults => Int, NextToken => Str])
@@ -883,9 +1273,12 @@ Each argument is described in detail in: L<Paws::Organizations::ListChildren>
 
 Returns: a L<Paws::Organizations::ListChildrenResponse> instance
 
-  Lists all of the OUs or accounts that are contained in the specified
+Lists all of the OUs or accounts that are contained in the specified
 parent OU or root. This operation, along with ListParents enables you
 to traverse the tree structure that makes up this root.
+
+This operation can be called only from the organization's master
+account.
 
 
 =head2 ListCreateAccountStatus([MaxResults => Int, NextToken => Str, States => ArrayRef[Str|Undef]])
@@ -894,7 +1287,7 @@ Each argument is described in detail in: L<Paws::Organizations::ListCreateAccoun
 
 Returns: a L<Paws::Organizations::ListCreateAccountStatusResponse> instance
 
-  Lists the account creation requests that match the specified status
+Lists the account creation requests that match the specified status
 that is currently being tracked for the organization.
 
 This operation can be called only from the organization's master
@@ -907,8 +1300,12 @@ Each argument is described in detail in: L<Paws::Organizations::ListHandshakesFo
 
 Returns: a L<Paws::Organizations::ListHandshakesForAccountResponse> instance
 
-  Lists the current handshakes that are associated with the account of
+Lists the current handshakes that are associated with the account of
 the requesting user.
+
+Handshakes that are ACCEPTED, DECLINED, or CANCELED appear in the
+results of this API for only 30 days after changing to that state.
+After that they are deleted and no longer accessible.
 
 This operation can be called from any account in the organization.
 
@@ -919,10 +1316,14 @@ Each argument is described in detail in: L<Paws::Organizations::ListHandshakesFo
 
 Returns: a L<Paws::Organizations::ListHandshakesForOrganizationResponse> instance
 
-  Lists the handshakes that are associated with the organization that the
+Lists the handshakes that are associated with the organization that the
 requesting user is part of. The C<ListHandshakesForOrganization>
 operation returns a list of handshake structures. Each structure
 contains details and status about a handshake.
+
+Handshakes that are ACCEPTED, DECLINED, or CANCELED appear in the
+results of this API for only 30 days after changing to that state.
+After that they are deleted and no longer accessible.
 
 This operation can be called only from the organization's master
 account.
@@ -934,7 +1335,7 @@ Each argument is described in detail in: L<Paws::Organizations::ListOrganization
 
 Returns: a L<Paws::Organizations::ListOrganizationalUnitsForParentResponse> instance
 
-  Lists the organizational units (OUs) in a parent organizational unit or
+Lists the organizational units (OUs) in a parent organizational unit or
 root.
 
 This operation can be called only from the organization's master
@@ -947,7 +1348,7 @@ Each argument is described in detail in: L<Paws::Organizations::ListParents>
 
 Returns: a L<Paws::Organizations::ListParentsResponse> instance
 
-  Lists the root or organizational units (OUs) that serve as the
+Lists the root or organizational units (OUs) that serve as the
 immediate parent of the specified child OU or account. This operation,
 along with ListChildren enables you to traverse the tree structure that
 makes up this root.
@@ -964,7 +1365,7 @@ Each argument is described in detail in: L<Paws::Organizations::ListPolicies>
 
 Returns: a L<Paws::Organizations::ListPoliciesResponse> instance
 
-  Retrieves the list of all policies in an organization of a specified
+Retrieves the list of all policies in an organization of a specified
 type.
 
 This operation can be called only from the organization's master
@@ -977,7 +1378,7 @@ Each argument is described in detail in: L<Paws::Organizations::ListPoliciesForT
 
 Returns: a L<Paws::Organizations::ListPoliciesForTargetResponse> instance
 
-  Lists the policies that are directly attached to the specified target
+Lists the policies that are directly attached to the specified target
 root, organizational unit (OU), or account. You must specify the policy
 type that you want included in the returned list.
 
@@ -991,7 +1392,7 @@ Each argument is described in detail in: L<Paws::Organizations::ListRoots>
 
 Returns: a L<Paws::Organizations::ListRootsResponse> instance
 
-  Lists the roots that are defined in the current organization.
+Lists the roots that are defined in the current organization.
 
 This operation can be called only from the organization's master
 account.
@@ -1003,7 +1404,7 @@ Each argument is described in detail in: L<Paws::Organizations::ListTargetsForPo
 
 Returns: a L<Paws::Organizations::ListTargetsForPolicyResponse> instance
 
-  Lists all the roots, OUs, and accounts to which the specified policy is
+Lists all the roots, OUs, and accounts to which the specified policy is
 attached.
 
 This operation can be called only from the organization's master
@@ -1016,7 +1417,7 @@ Each argument is described in detail in: L<Paws::Organizations::MoveAccount>
 
 Returns: nothing
 
-  Moves an account from its current source parent root or OU to the
+Moves an account from its current source parent root or OU to the
 specified destination parent root or OU.
 
 This operation can be called only from the organization's master
@@ -1029,7 +1430,7 @@ Each argument is described in detail in: L<Paws::Organizations::RemoveAccountFro
 
 Returns: nothing
 
-  Removes the specified account from the organization.
+Removes the specified account from the organization.
 
 The removed account becomes a stand-alone account that is not a member
 of any organization. It is no longer subject to any policies and is
@@ -1041,9 +1442,37 @@ This operation can be called only from the organization's master
 account. Member accounts can remove themselves with LeaveOrganization
 instead.
 
-You can remove only existing accounts that were invited to join the
-organization. You cannot remove accounts that were created by AWS
-Organizations.
+=over
+
+=item *
+
+You can remove an account from your organization only if the account is
+configured with the information required to operate as a standalone
+account. When you create an account in an organization using the AWS
+Organizations console, API, or CLI commands, the information required
+of standalone accounts is I<not> automatically collected. For an
+account that you want to make standalone, you must accept the End User
+License Agreement (EULA), choose a support plan, provide and verify the
+required contact information, and provide a current payment method. AWS
+uses the payment method to charge for any billable (not free tier) AWS
+activity that occurs while the account is not attached to an
+organization. To remove an account that does not yet have this
+information, you must sign in as the member account and follow the
+steps at To leave an organization when all required account information
+has not yet been provided
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info)
+in the I<AWS Organizations User Guide>.
+
+=item *
+
+You can remove a member account only after you enable IAM user access
+to billing in the member account. For more information, see Activating
+Access to the Billing and Cost Management Console
+(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate)
+in the I<AWS Billing and Cost Management User Guide>.
+
+=back
+
 
 
 =head2 UpdateOrganizationalUnit(OrganizationalUnitId => Str, [Name => Str])
@@ -1052,7 +1481,7 @@ Each argument is described in detail in: L<Paws::Organizations::UpdateOrganizati
 
 Returns: a L<Paws::Organizations::UpdateOrganizationalUnitResponse> instance
 
-  Renames the specified organizational unit (OU). The ID and ARN do not
+Renames the specified organizational unit (OU). The ID and ARN do not
 change. The child OUs and accounts remain in place, and any attached
 policies of the OU remain attached.
 
@@ -1066,7 +1495,7 @@ Each argument is described in detail in: L<Paws::Organizations::UpdatePolicy>
 
 Returns: a L<Paws::Organizations::UpdatePolicyResponse> instance
 
-  Updates an existing policy with a new name, description, or content. If
+Updates an existing policy with a new name, description, or content. If
 any parameter is not supplied, that value remains unchanged. Note that
 you cannot change a policy's type.
 
@@ -1080,6 +1509,150 @@ account.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 ListAllAccounts(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAccounts([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Accounts, passing the object as the first parameter, and the string 'Accounts' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListAccountsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAccountsForParent(sub { },ParentId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAccountsForParent(ParentId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Accounts, passing the object as the first parameter, and the string 'Accounts' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListAccountsForParentResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllChildren(sub { },ChildType => Str, ParentId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllChildren(ChildType => Str, ParentId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Children, passing the object as the first parameter, and the string 'Children' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListChildrenResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllCreateAccountStatus(sub { },[MaxResults => Int, NextToken => Str, States => ArrayRef[Str|Undef]])
+
+=head2 ListAllCreateAccountStatus([MaxResults => Int, NextToken => Str, States => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CreateAccountStatuses, passing the object as the first parameter, and the string 'CreateAccountStatuses' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListCreateAccountStatusResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllHandshakesForAccount(sub { },[Filter => L<Paws::Organizations::HandshakeFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllHandshakesForAccount([Filter => L<Paws::Organizations::HandshakeFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Handshakes, passing the object as the first parameter, and the string 'Handshakes' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListHandshakesForAccountResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllHandshakesForOrganization(sub { },[Filter => L<Paws::Organizations::HandshakeFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllHandshakesForOrganization([Filter => L<Paws::Organizations::HandshakeFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Handshakes, passing the object as the first parameter, and the string 'Handshakes' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListHandshakesForOrganizationResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOrganizationalUnitsForParent(sub { },ParentId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllOrganizationalUnitsForParent(ParentId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - OrganizationalUnits, passing the object as the first parameter, and the string 'OrganizationalUnits' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListOrganizationalUnitsForParentResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllParents(sub { },ChildId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllParents(ChildId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Parents, passing the object as the first parameter, and the string 'Parents' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListParentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPolicies(sub { },Filter => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllPolicies(Filter => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Policies, passing the object as the first parameter, and the string 'Policies' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPoliciesForTarget(sub { },Filter => Str, TargetId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllPoliciesForTarget(Filter => Str, TargetId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Policies, passing the object as the first parameter, and the string 'Policies' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListPoliciesForTargetResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRoots(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllRoots([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Roots, passing the object as the first parameter, and the string 'Roots' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListRootsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTargetsForPolicy(sub { },PolicyId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTargetsForPolicy(PolicyId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Targets, passing the object as the first parameter, and the string 'Targets' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListTargetsForPolicyResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 
 
 
@@ -1089,9 +1662,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

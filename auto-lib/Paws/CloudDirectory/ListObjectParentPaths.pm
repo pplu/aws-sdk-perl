@@ -1,7 +1,7 @@
 
 package Paws::CloudDirectory::ListObjectParentPaths;
   use Moose;
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
@@ -12,14 +12,13 @@ package Paws::CloudDirectory::ListObjectParentPaths;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/object/parentpaths');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::ListObjectParentPathsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CloudDirectory::ListObjectParentPaths - Arguments for method ListObjectParentPaths on Paws::CloudDirectory
+Paws::CloudDirectory::ListObjectParentPaths - Arguments for method ListObjectParentPaths on L<Paws::CloudDirectory>
 
 =head1 DESCRIPTION
 
@@ -46,8 +45,8 @@ The ARN of the directory to which the parent path applies.
 
 =head2 MaxResults => Int
 
-Maximum number of items to be retrieved in a single call. This is an
-approximate number.
+The maximum number of items to be retrieved in a single call. This is
+an approximate number.
 
 
 
@@ -59,7 +58,7 @@ The pagination token.
 
 =head2 B<REQUIRED> ObjectReference => L<Paws::CloudDirectory::ObjectReference>
 
-Reference that identifies the object whose parent paths are listed.
+The reference that identifies the object whose parent paths are listed.
 
 
 
@@ -70,9 +69,9 @@ This class forms part of L<Paws>, documenting arguments for method ListObjectPar
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

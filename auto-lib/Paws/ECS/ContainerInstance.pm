@@ -129,8 +129,9 @@ C<INACTIVE>, or C<DRAINING>. C<ACTIVE> indicates that the container
 instance can accept tasks. C<DRAINING> indicates that new tasks are not
 placed on the container instance and any service tasks running on the
 container instance are removed if possible. For more information, see
-Container Instance Draining in the I<Amazon EC2 Container Service
-Developer Guide>.
+Container Instance Draining
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 
 =head2 Version => Int
@@ -158,9 +159,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ECS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

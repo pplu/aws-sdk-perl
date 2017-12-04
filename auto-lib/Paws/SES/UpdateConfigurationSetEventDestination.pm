@@ -15,7 +15,7 @@ package Paws::SES::UpdateConfigurationSetEventDestination;
 
 =head1 NAME
 
-Paws::SES::UpdateConfigurationSetEventDestination - Arguments for method UpdateConfigurationSetEventDestination on Paws::SES
+Paws::SES::UpdateConfigurationSetEventDestination - Arguments for method UpdateConfigurationSetEventDestination on L<Paws::SES>
 
 =head1 DESCRIPTION
 
@@ -36,7 +36,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ConfigurationSetName => Str
 
-The name of the configuration set that you want to update.
+The name of the configuration set that contains the event destination
+that you want to update.
 
 
 
@@ -54,9 +55,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateConfigu
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

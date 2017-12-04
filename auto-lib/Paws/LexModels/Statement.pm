@@ -45,9 +45,11 @@ runtime, Amazon Lex selects the message to convey.
 
 =head2 ResponseCard => Str
 
-  At runtime, if the client is using the API, Amazon Lex includes the
-response card in the response. It substitutes all of the session
-attributes and slot values for placeholders in the response card.
+  At runtime, if the client is using the PostText
+(http://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html)
+API, Amazon Lex includes the response card in the response. It
+substitutes all of the session attributes and slot values for
+placeholders in the response card.
 
 
 
@@ -57,9 +59,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::LexModels
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

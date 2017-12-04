@@ -46,7 +46,8 @@ Directory structure that includes the directory name and directory ARN.
 
 =head2 DirectoryArn => Str
 
-  ARN associated with the directory. For more information, see arns.
+  The Amazon Resource Name (ARN) that is associated with the directory.
+For more information, see arns.
 
 
 =head2 Name => Str
@@ -67,9 +68,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudDire
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

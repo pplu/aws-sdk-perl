@@ -74,7 +74,9 @@ available if you attached the instance to the Auto Scaling group.
 =head2 B<REQUIRED> LifecycleState => Str
 
   The lifecycle state for the instance. For more information, see Auto
-Scaling Lifecycle in the I<Auto Scaling User Guide>.
+Scaling Lifecycle
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html)
+in the I<Auto Scaling User Guide>.
 
 
 =head2 B<REQUIRED> ProtectedFromScaleIn => Bool
@@ -90,9 +92,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::AutoScali
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

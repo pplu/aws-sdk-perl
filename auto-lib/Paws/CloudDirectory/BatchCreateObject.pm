@@ -42,7 +42,9 @@ Represents the output of a CreateObject operation.
 
 =head2 B<REQUIRED> BatchReferenceName => Str
 
-  The batch reference name. See Batches for more information.
+  The batch reference name. See Batches
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches)
+for more information.
 
 
 =head2 B<REQUIRED> LinkName => Str
@@ -52,8 +54,8 @@ Represents the output of a CreateObject operation.
 
 =head2 B<REQUIRED> ObjectAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>]
 
-  Attribute map, which contains an attribute ARN as the key and attribute
-value as the map value.
+  An attribute map, which contains an attribute ARN as the key and
+attribute value as the map value.
 
 
 =head2 B<REQUIRED> ParentReference => L<Paws::CloudDirectory::ObjectReference>
@@ -64,8 +66,8 @@ attached.
 
 =head2 B<REQUIRED> SchemaFacet => ArrayRef[L<Paws::CloudDirectory::SchemaFacet>]
 
-  List of FacetArns that will be associated with the object. For more
-information, see arns.
+  A list of C<FacetArns> that will be associated with the object. For
+more information, see arns.
 
 
 
@@ -75,9 +77,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudDire
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

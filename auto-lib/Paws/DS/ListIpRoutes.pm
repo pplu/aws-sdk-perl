@@ -16,7 +16,7 @@ package Paws::DS::ListIpRoutes;
 
 =head1 NAME
 
-Paws::DS::ListIpRoutes - Arguments for method ListIpRoutes on Paws::DS
+Paws::DS::ListIpRoutes - Arguments for method ListIpRoutes on L<Paws::DS>
 
 =head1 DESCRIPTION
 
@@ -63,9 +63,9 @@ This class forms part of L<Paws>, documenting arguments for method ListIpRoutes 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

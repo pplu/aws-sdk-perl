@@ -1,7 +1,7 @@
 
 package Paws::CloudDirectory::AttachToIndex;
   use Moose;
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
   has IndexReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
   has TargetReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
 
@@ -11,14 +11,13 @@ package Paws::CloudDirectory::AttachToIndex;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/index/attach');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::AttachToIndexResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CloudDirectory::AttachToIndex - Arguments for method AttachToIndex on Paws::CloudDirectory
+Paws::CloudDirectory::AttachToIndex - Arguments for method AttachToIndex on L<Paws::CloudDirectory>
 
 =head1 DESCRIPTION
 
@@ -39,7 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-The ARN of the directory where the object and index exist.
+The Amazon Resource Name (ARN) of the directory where the object and
+index exist.
 
 
 
@@ -62,9 +62,9 @@ This class forms part of L<Paws>, documenting arguments for method AttachToIndex
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -38,7 +38,7 @@ The type of policy in a user pool.
 
 =head2 PasswordPolicy => L<Paws::CognitoIdp::PasswordPolicyType>
 
-  A container with information about the user pool password policy.
+  A container for information about the user pool password policy.
 
 
 
@@ -48,9 +48,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CognitoId
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

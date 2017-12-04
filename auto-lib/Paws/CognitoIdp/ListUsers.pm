@@ -18,7 +18,7 @@ package Paws::CognitoIdp::ListUsers;
 
 =head1 NAME
 
-Paws::CognitoIdp::ListUsers - Arguments for method ListUsers on Paws::CognitoIdp
+Paws::CognitoIdp::ListUsers - Arguments for method ListUsers on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -39,19 +39,98 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributesToGet => ArrayRef[Str|Undef]
 
-The attributes to get from the request to list users.
+An array of strings, where each string is the name of a user attribute
+to be returned for each user in the search results. If the array is
+empty, all attributes are returned.
 
 
 
 =head2 Filter => Str
 
-The filter for the list users request.
+A filter string of the form "I<AttributeName> I<Filter-Type>
+"I<AttributeValue>"". Quotation marks within the filter string must be
+escaped using the backslash (\) character. For example, "C<family_name>
+= \"Reddy\"".
+
+=over
+
+=item *
+
+I<AttributeName>: The name of the attribute to search for. You can only
+search for one attribute at a time.
+
+=item *
+
+I<Filter-Type>: For an exact match, use =, for example, "C<given_name>
+= \"Jon\"". For a prefix ("starts with") match, use ^=, for example,
+"C<given_name> ^= \"Jon\"".
+
+=item *
+
+I<AttributeValue>: The attribute value that must be matched for each
+user.
+
+=back
+
+If the filter string is empty, C<ListUsers> returns all users in the
+user pool.
+
+You can only search for the following standard attributes:
+
+=over
+
+=item *
+
+C<username> (case-sensitive)
+
+=item *
+
+C<email>
+
+=item *
+
+C<phone_number>
+
+=item *
+
+C<name>
+
+=item *
+
+C<given_name>
+
+=item *
+
+C<family_name>
+
+=item *
+
+C<preferred_username>
+
+=item *
+
+C<cognito:user_status> (called B<Enabled> in the Console)
+(case-sensitive)
+
+=item *
+
+C<status> (case-insensitive)
+
+=back
+
+Custom attributes are not searchable.
+
+For more information, see Searching for Users Using the ListUsers API
+(http://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-using-listusers-api)
+and Examples of Using the ListUsers API
+(http://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-listusers-api-examples)
+in the I<Amazon Cognito Developer Guide>.
 
 
 
 =head2 Limit => Int
 
-The limit of the request to list users.
+Maximum number of users to be returned.
 
 
 
@@ -65,7 +144,8 @@ list.
 
 =head2 B<REQUIRED> UserPoolId => Str
 
-The user pool ID for which you want to list users.
+The user pool ID for the user pool on which the search should be
+performed.
 
 
 
@@ -76,9 +156,9 @@ This class forms part of L<Paws>, documenting arguments for method ListUsers in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

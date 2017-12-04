@@ -49,7 +49,7 @@ C<myawslogbucket.s3.amazonaws.com>.
 =head2 B<REQUIRED> Enabled => Bool
 
   Specifies whether you want CloudFront to save access logs to an Amazon
-S3 bucket. If you do not want to enable logging when you create a
+S3 bucket. If you don't want to enable logging when you create a
 distribution or if you want to disable logging for an existing
 distribution, specify C<false> for C<Enabled>, and specify empty
 C<Bucket> and C<Prefix> elements. If you specify C<false> for
@@ -62,7 +62,7 @@ C<IncludeCookies>, the values are automatically deleted.
   Specifies whether you want CloudFront to include cookies in access
 logs, specify C<true> for C<IncludeCookies>. If you choose to include
 cookies in logs, CloudFront logs all cookies regardless of how you
-configure the cache behaviors for this distribution. If you do not want
+configure the cache behaviors for this distribution. If you don't want
 to include cookies when you create a distribution or if you want to
 disable include cookies for an existing distribution, specify C<false>
 for C<IncludeCookies>.
@@ -72,7 +72,7 @@ for C<IncludeCookies>.
 
   An optional string that you want CloudFront to prefix to the access log
 C<filenames> for this distribution, for example, C<myprefix/>. If you
-want to enable logging, but you do not want to specify a prefix, you
+want to enable logging, but you don't want to specify a prefix, you
 still must include an empty C<Prefix> element in the C<Logging>
 element.
 
@@ -84,9 +84,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudFron
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

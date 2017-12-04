@@ -20,7 +20,7 @@ package Paws::StorageGateway::ActivateGateway;
 
 =head1 NAME
 
-Paws::StorageGateway::ActivateGateway - Arguments for method ActivateGateway on Paws::StorageGateway
+Paws::StorageGateway::ActivateGateway - Arguments for method ActivateGateway on L<Paws::StorageGateway>
 
 =head1 DESCRIPTION
 
@@ -64,7 +64,9 @@ A value that indicates the region where you want to store your data.
 The gateway region specified must be the same region as the region in
 your C<Host> header in the request. For more information about
 available regions and endpoints for AWS Storage Gateway, see Regions
-and Endpoints in the I<Amazon Web Services Glossary>.
+and Endpoints
+(http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in
+the I<Amazon Web Services Glossary>.
 
 Valid Values: "us-east-1", "us-east-2", "us-west-1", "us-west-2",
 "ca-central-1", "eu-west-1", "eu-central-1", "eu-west-2",
@@ -118,9 +120,9 @@ This class forms part of L<Paws>, documenting arguments for method ActivateGatew
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

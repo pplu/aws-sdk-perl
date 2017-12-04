@@ -24,7 +24,7 @@ package Paws::IAM::SimulatePrincipalPolicy;
 
 =head1 NAME
 
-Paws::IAM::SimulatePrincipalPolicy - Arguments for method SimulatePrincipalPolicy on Paws::IAM
+Paws::IAM::SimulatePrincipalPolicy - Arguments for method SimulatePrincipalPolicy on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -71,7 +71,9 @@ that the resource-based policy's C<Principal> element has a value to
 use in evaluating the policy.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces in the I<AWS General Reference>.
+AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+in the I<AWS General Reference>.
 
 
 
@@ -113,13 +115,13 @@ An optional list of additional policy documents to include in the
 simulation. Each document is specified as a string containing the
 complete, valid JSON text of an IAM policy.
 
-The regex pattern used to validate this parameter is a string of
-characters consisting of any printable ASCII character ranging from the
-space character (\u0020) through end of the ASCII character range as
-well as the printable characters in the Basic Latin and Latin-1
-Supplement character set (through \u00FF). It also includes the special
-characters tab (\u0009), line feed (\u000A), and carriage return
-(\u000D).
+The regex pattern (http://wikipedia.org/wiki/regex) used to validate
+this parameter is a string of characters consisting of any printable
+ASCII character ranging from the space character (\u0020) through end
+of the ASCII character range as well as the printable characters in the
+Basic Latin and Latin-1 Supplement character set (through \u00FF). It
+also includes the special characters tab (\u0009), line feed (\u000A),
+and carriage return (\u000D).
 
 
 
@@ -132,7 +134,9 @@ that entity. If you specify a user, the simulation also includes all
 policies that are attached to any groups the user belongs to.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces in the I<AWS General Reference>.
+AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+in the I<AWS General Reference>.
 
 
 
@@ -150,7 +154,9 @@ simulation, then you must include the policy as a string in the
 C<ResourcePolicy> parameter.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces in the I<AWS General Reference>.
+AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+in the I<AWS General Reference>.
 
 
 
@@ -171,7 +177,9 @@ then you must specify that volume as a resource. If the EC2 scenario
 includes VPC, then you must supply the network-interface resource. If
 it includes an IP subnet, then you must specify the subnet resource.
 For more information on the EC2 scenario options, see Supported
-Platforms in the I<AWS EC2 User Guide>.
+Platforms
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html)
+in the I<AWS EC2 User Guide>.
 
 =over
 
@@ -238,13 +246,13 @@ string. Each resource in the simulation is treated as if it had this
 policy attached. You can include only one resource-based policy in a
 simulation.
 
-The regex pattern used to validate this parameter is a string of
-characters consisting of any printable ASCII character ranging from the
-space character (\u0020) through end of the ASCII character range as
-well as the printable characters in the Basic Latin and Latin-1
-Supplement character set (through \u00FF). It also includes the special
-characters tab (\u0009), line feed (\u000A), and carriage return
-(\u000D).
+The regex pattern (http://wikipedia.org/wiki/regex) used to validate
+this parameter is a string of characters consisting of any printable
+ASCII character ranging from the space character (\u0020) through end
+of the ASCII character range as well as the printable characters in the
+Basic Latin and Latin-1 Supplement character set (through \u00FF). It
+also includes the special characters tab (\u0009), line feed (\u000A),
+and carriage return (\u000D).
 
 
 
@@ -255,9 +263,9 @@ This class forms part of L<Paws>, documenting arguments for method SimulatePrinc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

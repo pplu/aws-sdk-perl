@@ -11,7 +11,7 @@ package Paws::Health;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub DescribeAffectedEntities {
@@ -50,18 +50,20 @@ package Paws::Health;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeAffectedEntities(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeAffectedEntities(@_, nextToken => $result->nextToken);
-        push @{ $result->entities }, @{ $result->entities };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeAffectedEntities(@_, nextToken => $next_result->nextToken);
+        push @{ $result->entities }, @{ $next_result->entities };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeAffectedEntities(@_, nextToken => $result->nextToken);
         $callback->($_ => 'entities') foreach (@{ $result->entities });
+        $result = $self->DescribeAffectedEntities(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'entities') foreach (@{ $result->entities });
     }
 
     return undef
@@ -71,18 +73,20 @@ package Paws::Health;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEventAggregates(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeEventAggregates(@_, nextToken => $result->nextToken);
-        push @{ $result->eventAggregates }, @{ $result->eventAggregates };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeEventAggregates(@_, nextToken => $next_result->nextToken);
+        push @{ $result->eventAggregates }, @{ $next_result->eventAggregates };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeEventAggregates(@_, nextToken => $result->nextToken);
         $callback->($_ => 'eventAggregates') foreach (@{ $result->eventAggregates });
+        $result = $self->DescribeEventAggregates(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'eventAggregates') foreach (@{ $result->eventAggregates });
     }
 
     return undef
@@ -92,18 +96,20 @@ package Paws::Health;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEvents(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeEvents(@_, nextToken => $result->nextToken);
-        push @{ $result->events }, @{ $result->events };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeEvents(@_, nextToken => $next_result->nextToken);
+        push @{ $result->events }, @{ $next_result->events };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeEvents(@_, nextToken => $result->nextToken);
         $callback->($_ => 'events') foreach (@{ $result->events });
+        $result = $self->DescribeEvents(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'events') foreach (@{ $result->events });
     }
 
     return undef
@@ -113,18 +119,20 @@ package Paws::Health;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEventTypes(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeEventTypes(@_, nextToken => $result->nextToken);
-        push @{ $result->eventTypes }, @{ $result->eventTypes };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeEventTypes(@_, nextToken => $next_result->nextToken);
+        push @{ $result->eventTypes }, @{ $next_result->eventTypes };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeEventTypes(@_, nextToken => $result->nextToken);
         $callback->($_ => 'eventTypes') foreach (@{ $result->eventTypes });
+        $result = $self->DescribeEventTypes(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'eventTypes') foreach (@{ $result->eventTypes });
     }
 
     return undef
@@ -162,8 +170,9 @@ Paws::Health - Perl Interface to AWS AWS Health APIs and Notifications
 AWS Health
 
 The AWS Health API provides programmatic access to the AWS Health
-information that is presented in the AWS Personal Health Dashboard. You
-can get information about events that affect your AWS resources:
+information that is presented in the AWS Personal Health Dashboard
+(https://phd.aws.amazon.com/phd/home#/). You can get information about
+events that affect your AWS resources:
 
 =over
 
@@ -205,14 +214,17 @@ that meet specified criteria.
 =back
 
 The Health API requires a Business or Enterprise support plan from AWS
-Support. Calling the Health API from an account that does not have a
-Business or Enterprise support plan causes a
-C<SubscriptionRequiredException>.
+Support (http://aws.amazon.com/premiumsupport/). Calling the Health API
+from an account that does not have a Business or Enterprise support
+plan causes a C<SubscriptionRequiredException>.
 
 For authentication of requests, AWS Health uses the Signature Version 4
-Signing Process.
+Signing Process
+(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
-See the AWS Health User Guide for information about how to use the API.
+See the AWS Health User Guide
+(http://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html)
+for information about how to use the API.
 
 B<Service Endpoint>
 
@@ -235,7 +247,7 @@ Each argument is described in detail in: L<Paws::Health::DescribeAffectedEntitie
 
 Returns: a L<Paws::Health::DescribeAffectedEntitiesResponse> instance
 
-  Returns a list of entities that have been affected by the specified
+Returns a list of entities that have been affected by the specified
 events, based on the specified filter criteria. Entities can refer to
 individual customer resources, groups of customer resources, or any
 other construct, depending on the AWS service. Events that have impact
@@ -252,7 +264,7 @@ Each argument is described in detail in: L<Paws::Health::DescribeEntityAggregate
 
 Returns: a L<Paws::Health::DescribeEntityAggregatesResponse> instance
 
-  Returns the number of entities that are affected by each of the
+Returns the number of entities that are affected by each of the
 specified events. If no events are specified, the counts of all
 affected entities are returned.
 
@@ -263,7 +275,7 @@ Each argument is described in detail in: L<Paws::Health::DescribeEventAggregates
 
 Returns: a L<Paws::Health::DescribeEventAggregatesResponse> instance
 
-  Returns the number of events of each event type (issue, scheduled
+Returns the number of events of each event type (issue, scheduled
 change, and account notification). If no filter is specified, the
 counts of all events in each category are returned.
 
@@ -274,7 +286,7 @@ Each argument is described in detail in: L<Paws::Health::DescribeEventDetails>
 
 Returns: a L<Paws::Health::DescribeEventDetailsResponse> instance
 
-  Returns detailed information about one or more specified events.
+Returns detailed information about one or more specified events.
 Information includes standard event data (region, service, etc., as
 returned by DescribeEvents), a detailed event description, and possible
 additional metadata that depends upon the nature of the event. Affected
@@ -291,7 +303,7 @@ Each argument is described in detail in: L<Paws::Health::DescribeEvents>
 
 Returns: a L<Paws::Health::DescribeEventsResponse> instance
 
-  Returns information about events that meet the specified filter
+Returns information about events that meet the specified filter
 criteria. Events are returned in a summary form and do not include the
 detailed description, any additional metadata that depends on the event
 type, or any affected resources. To retrieve that information, use the
@@ -307,7 +319,7 @@ Each argument is described in detail in: L<Paws::Health::DescribeEventTypes>
 
 Returns: a L<Paws::Health::DescribeEventTypesResponse> instance
 
-  Returns the event types that meet the specified filter criteria. If no
+Returns the event types that meet the specified filter criteria. If no
 filter criteria are specified, all event types are returned, in no
 particular order.
 
@@ -375,9 +387,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

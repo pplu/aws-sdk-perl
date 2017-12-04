@@ -65,7 +65,7 @@ retirement.
 
 =item *
 
-C<Server.SpotInstanceTermination>: A Spot instance was terminated due
+C<Server.SpotInstanceTermination>: A Spot Instance was terminated due
 to an increase in the market price.
 
 =item *
@@ -77,6 +77,11 @@ terminate on launch.
 
 C<Client.InstanceInitiatedShutdown>: The instance was shut down using
 the C<shutdown -h> command from the instance.
+
+=item *
+
+C<Client.InstanceTerminated>: The instance was terminated or rebooted
+during AMI creation.
 
 =item *
 
@@ -105,8 +110,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

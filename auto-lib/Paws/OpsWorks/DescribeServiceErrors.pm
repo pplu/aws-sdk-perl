@@ -16,7 +16,7 @@ package Paws::OpsWorks::DescribeServiceErrors;
 
 =head1 NAME
 
-Paws::OpsWorks::DescribeServiceErrors - Arguments for method DescribeServiceErrors on Paws::OpsWorks
+Paws::OpsWorks::DescribeServiceErrors - Arguments for method DescribeServiceErrors on L<Paws::OpsWorks>
 
 =head1 DESCRIPTION
 
@@ -65,9 +65,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeServi
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

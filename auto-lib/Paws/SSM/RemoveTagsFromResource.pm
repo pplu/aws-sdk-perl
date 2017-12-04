@@ -16,7 +16,7 @@ package Paws::SSM::RemoveTagsFromResource;
 
 =head1 NAME
 
-Paws::SSM::RemoveTagsFromResource - Arguments for method RemoveTagsFromResource on Paws::SSM
+Paws::SSM::RemoveTagsFromResource - Arguments for method RemoveTagsFromResource on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -45,7 +45,7 @@ The resource ID for which you want to remove tags.
 
 The type of resource of which you want to remove a tag.
 
-Valid values are: C<"ManagedInstance">, C<"MaintenanceWindow">, C<"Parameter">
+Valid values are: C<"Document">, C<"ManagedInstance">, C<"MaintenanceWindow">, C<"Parameter">, C<"PatchBaseline">
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
@@ -60,9 +60,9 @@ This class forms part of L<Paws>, documenting arguments for method RemoveTagsFro
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

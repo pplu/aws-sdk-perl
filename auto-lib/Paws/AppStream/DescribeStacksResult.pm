@@ -23,7 +23,7 @@ this operation. If there are no more pages, this value is null.
 
 =head2 Stacks => ArrayRef[L<Paws::AppStream::Stack>]
 
-The list of stack details.
+Information about the stacks.
 
 
 =head2 _request_id => Str

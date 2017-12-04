@@ -30,7 +30,7 @@ package Paws::ElastiCache::ModifyCacheCluster;
 
 =head1 NAME
 
-Paws::ElastiCache::ModifyCacheCluster - Arguments for method ModifyCacheCluster on Paws::ElastiCache
+Paws::ElastiCache::ModifyCacheCluster - Arguments for method ModifyCacheCluster on L<Paws::ElastiCache>
 
 =head1 DESCRIPTION
 
@@ -93,7 +93,8 @@ Availability Zone.
 Only newly created nodes are located in different Availability Zones.
 For instructions on how to move existing Memcached nodes to different
 Availability Zones, see the B<Availability Zone Considerations> section
-of Cache Node Considerations for Memcached.
+of Cache Node Considerations for Memcached
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheNode.Memcached.html).
 
 Valid values are: C<"single-az">, C<"cross-az">
 
@@ -115,7 +116,7 @@ pending cache nodes, whichever is greater, and the value of
 C<NumCacheNodes> in the request.
 
 For example: If you have 3 active cache nodes, 7 pending cache nodes,
-and the number of cache nodes in this C<ModifyCacheCluser> call is 5,
+and the number of cache nodes in this C<ModifyCacheCluster> call is 5,
 you must list 2 (7 - 5) cache node IDs to remove.
 
 
@@ -154,10 +155,11 @@ Must not be "Default".
 The upgraded version of the cache engine to be run on the cache nodes.
 
 B<Important:> You can upgrade to a newer engine version (see Selecting
-a Cache Engine and Version), but you cannot downgrade to an earlier
-engine version. If you want to use an earlier engine version, you must
-delete the existing cache cluster and create it anew with the earlier
-engine version.
+a Cache Engine and Version
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement)),
+but you cannot downgrade to an earlier engine version. If you want to
+use an earlier engine version, you must delete the existing cache
+cluster and create it anew with the earlier engine version.
 
 
 
@@ -206,8 +208,8 @@ If C<cross-az> is specified, existing Memcached nodes remain in their
 current Availability Zone. Only newly created nodes can be located in
 different Availability Zones. For guidance on how to move existing
 Memcached nodes to different Availability Zones, see the B<Availability
-Zone Considerations> section of Cache Node Considerations for
-Memcached.
+Zone Considerations> section of Cache Node Considerations for Memcached
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheNode.Memcached.html).
 
 B<Impact of new add/remove requests upon pending requests>
 
@@ -443,9 +445,9 @@ This class forms part of L<Paws>, documenting arguments for method ModifyCacheCl
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

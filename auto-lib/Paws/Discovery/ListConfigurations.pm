@@ -18,7 +18,7 @@ package Paws::Discovery::ListConfigurations;
 
 =head1 NAME
 
-Paws::Discovery::ListConfigurations - Arguments for method ListConfigurations on Paws::Discovery
+Paws::Discovery::ListConfigurations - Arguments for method ListConfigurations on L<Paws::Discovery>
 
 =head1 DESCRIPTION
 
@@ -51,7 +51,8 @@ I<key>-I<value> format. For example:
 C<{"key": "serverType", "value": "webServer"}>
 
 For a complete list of filter options and guidance about using them
-with this action, see Querying Discovered Configuration Items.
+with this action, see Querying Discovered Configuration Items
+(http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations).
 
 
 
@@ -75,7 +76,8 @@ next set of 10.
 
 Certain filter criteria return output that can be sorted in ascending
 or descending order. For a list of output characteristics for each
-filter, see Using the ListConfigurations Action.
+filter, see Using the ListConfigurations Action
+(http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations).
 
 
 
@@ -86,9 +88,9 @@ This class forms part of L<Paws>, documenting arguments for method ListConfigura
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

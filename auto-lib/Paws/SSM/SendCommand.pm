@@ -28,7 +28,7 @@ package Paws::SSM::SendCommand;
 
 =head1 NAME
 
-Paws::SSM::SendCommand - Arguments for method SendCommand on Paws::SSM
+Paws::SSM::SendCommand - Arguments for method SendCommand on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -83,7 +83,9 @@ be a public document or a custom document.
 The instance IDs where the command should execute. You can specify a
 maximum of 50 IDs. If you prefer not to list individual instance IDs,
 you can instead send commands to a fleet of instances using the Targets
-parameter, which accepts EC2 tags.
+parameter, which accepts EC2 tags. For more information about how to
+use Targets, see Sending Commands to a Fleet
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html).
 
 
 
@@ -92,8 +94,8 @@ parameter, which accepts EC2 tags.
 (Optional) The maximum number of instances that are allowed to execute
 the command at the same time. You can specify a number such as 10 or a
 percentage such as 10%. The default value is 50. For more information
-about how to use MaxConcurrency, see Executing a Command Using Systems
-Manager Run Command.
+about how to use MaxConcurrency, see Using Concurrency Controls
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-velocity.html).
 
 
 
@@ -103,8 +105,9 @@ The maximum number of errors allowed without the command failing. When
 the command fails one more time beyond the value of MaxErrors, the
 systems stops sending the command to additional targets. You can
 specify a number like 10 or a percentage like 10%. The default value is
-50. For more information about how to use MaxErrors, see Executing a
-Command Using Systems Manager Run Command.
+50. For more information about how to use MaxErrors, see Using Error
+Controls
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-maxerrors.html).
 
 
 
@@ -130,9 +133,9 @@ be stored.
 
 =head2 OutputS3Region => Str
 
-(Optional) The region where the Amazon Simple Storage Service (Amazon
-S3) output bucket is located. The default value is the region where Run
-Command is being called.
+(Deprecated) You can no longer specify this parameter. The system
+ignores it. Instead, Systems Manager automatically determines the
+Amazon S3 bucket region.
 
 
 
@@ -154,8 +157,8 @@ The IAM role that Systems Manager uses to send notifications.
 (Optional) An array of search criteria that targets instances using a
 Key,Value combination that you specify. Targets is required if you
 don't provide one or more instance IDs in the call. For more
-information about how to use Targets, see Executing a Command Using
-Systems Manager Run Command.
+information about how to use Targets, see Sending Commands to a Fleet
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html).
 
 
 
@@ -173,9 +176,9 @@ This class forms part of L<Paws>, documenting arguments for method SendCommand i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

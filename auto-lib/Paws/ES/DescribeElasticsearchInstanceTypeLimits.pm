@@ -1,9 +1,9 @@
 
 package Paws::ES::DescribeElasticsearchInstanceTypeLimits;
   use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'domainName' );
-  has ElasticsearchVersion => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ElasticsearchVersion' , required => 1);
-  has InstanceType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'InstanceType' , required => 1);
+  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'domainName');
+  has ElasticsearchVersion => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ElasticsearchVersion', required => 1);
+  has InstanceType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'InstanceType', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -11,14 +11,13 @@ package Paws::ES::DescribeElasticsearchInstanceTypeLimits;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-01-01/es/instanceTypeLimits/{ElasticsearchVersion}/{InstanceType}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ES::DescribeElasticsearchInstanceTypeLimitsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ES::DescribeElasticsearchInstanceTypeLimits - Arguments for method DescribeElasticsearchInstanceTypeLimits on Paws::ES
+Paws::ES::DescribeElasticsearchInstanceTypeLimits - Arguments for method DescribeElasticsearchInstanceTypeLimits on L<Paws::ES>
 
 =head1 DESCRIPTION
 
@@ -56,7 +55,7 @@ Version of Elasticsearch for which C< Limits > are needed.
 The instance type for an Elasticsearch cluster for which Elasticsearch
 C< Limits > are needed.
 
-Valid values are: C<"m3.medium.elasticsearch">, C<"m3.large.elasticsearch">, C<"m3.xlarge.elasticsearch">, C<"m3.2xlarge.elasticsearch">, C<"m4.large.elasticsearch">, C<"m4.xlarge.elasticsearch">, C<"m4.2xlarge.elasticsearch">, C<"m4.4xlarge.elasticsearch">, C<"m4.10xlarge.elasticsearch">, C<"t2.micro.elasticsearch">, C<"t2.small.elasticsearch">, C<"t2.medium.elasticsearch">, C<"r3.large.elasticsearch">, C<"r3.xlarge.elasticsearch">, C<"r3.2xlarge.elasticsearch">, C<"r3.4xlarge.elasticsearch">, C<"r3.8xlarge.elasticsearch">, C<"i2.xlarge.elasticsearch">, C<"i2.2xlarge.elasticsearch">, C<"d2.xlarge.elasticsearch">, C<"d2.2xlarge.elasticsearch">, C<"d2.4xlarge.elasticsearch">, C<"d2.8xlarge.elasticsearch">, C<"c4.large.elasticsearch">, C<"c4.xlarge.elasticsearch">, C<"c4.2xlarge.elasticsearch">, C<"c4.4xlarge.elasticsearch">, C<"c4.8xlarge.elasticsearch">, C<"r4.large.elasticsearch">, C<"r4.xlarge.elasticsearch">, C<"r4.2xlarge.elasticsearch">, C<"r4.4xlarge.elasticsearch">, C<"r4.8xlarge.elasticsearch">, C<"r4.16xlarge.elasticsearch">
+Valid values are: C<"m3.medium.elasticsearch">, C<"m3.large.elasticsearch">, C<"m3.xlarge.elasticsearch">, C<"m3.2xlarge.elasticsearch">, C<"m4.large.elasticsearch">, C<"m4.xlarge.elasticsearch">, C<"m4.2xlarge.elasticsearch">, C<"m4.4xlarge.elasticsearch">, C<"m4.10xlarge.elasticsearch">, C<"t2.micro.elasticsearch">, C<"t2.small.elasticsearch">, C<"t2.medium.elasticsearch">, C<"r3.large.elasticsearch">, C<"r3.xlarge.elasticsearch">, C<"r3.2xlarge.elasticsearch">, C<"r3.4xlarge.elasticsearch">, C<"r3.8xlarge.elasticsearch">, C<"i2.xlarge.elasticsearch">, C<"i2.2xlarge.elasticsearch">, C<"d2.xlarge.elasticsearch">, C<"d2.2xlarge.elasticsearch">, C<"d2.4xlarge.elasticsearch">, C<"d2.8xlarge.elasticsearch">, C<"c4.large.elasticsearch">, C<"c4.xlarge.elasticsearch">, C<"c4.2xlarge.elasticsearch">, C<"c4.4xlarge.elasticsearch">, C<"c4.8xlarge.elasticsearch">, C<"r4.large.elasticsearch">, C<"r4.xlarge.elasticsearch">, C<"r4.2xlarge.elasticsearch">, C<"r4.4xlarge.elasticsearch">, C<"r4.8xlarge.elasticsearch">, C<"r4.16xlarge.elasticsearch">, C<"i3.large.elasticsearch">, C<"i3.xlarge.elasticsearch">, C<"i3.2xlarge.elasticsearch">, C<"i3.4xlarge.elasticsearch">, C<"i3.8xlarge.elasticsearch">, C<"i3.16xlarge.elasticsearch">
 
 
 =head1 SEE ALSO
@@ -65,9 +64,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeElast
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

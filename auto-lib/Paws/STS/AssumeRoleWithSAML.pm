@@ -18,7 +18,7 @@ package Paws::STS::AssumeRoleWithSAML;
 
 =head1 NAME
 
-Paws::STS::AssumeRoleWithSAML - Arguments for method AssumeRoleWithSAML on Paws::STS
+Paws::STS::AssumeRoleWithSAML - Arguments for method AssumeRoleWithSAML on L<Paws::STS>
 
 =head1 DESCRIPTION
 
@@ -51,7 +51,9 @@ endpoint for a console sign-in token takes a C<SessionDuration>
 parameter that specifies the maximum length of the console session,
 separately from the C<DurationSeconds> parameter on this API. For more
 information, see Enabling SAML 2.0 Federated Users to Access the AWS
-Management Console in the I<IAM User Guide>.
+Management Console
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-saml.html)
+in the I<IAM User Guide>.
 
 
 
@@ -67,8 +69,9 @@ a way to further restrict the permissions for the resulting temporary
 security credentials. You cannot use the passed policy to grant
 permissions that are in excess of those allowed by the access policy of
 the role that is being assumed. For more information, Permissions for
-AssumeRole, AssumeRoleWithSAML, and AssumeRoleWithWebIdentity in the
-I<IAM User Guide>.
+AssumeRole, AssumeRoleWithSAML, and AssumeRoleWithWebIdentity
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_assumerole.html)
+in the I<IAM User Guide>.
 
 The format for this parameter, as described by its regex pattern, is a
 string of characters up to 2048 characters in length. The characters
@@ -102,6 +105,7 @@ The Amazon Resource Name (ARN) of the role that the caller is assuming.
 The base-64 encoded SAML authentication response provided by the IdP.
 
 For more information, see Configuring a Relying Party and Adding Claims
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/create-role-saml-IdP-tasks.html)
 in the I<Using IAM> guide.
 
 
@@ -113,9 +117,9 @@ This class forms part of L<Paws>, documenting arguments for method AssumeRoleWit
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

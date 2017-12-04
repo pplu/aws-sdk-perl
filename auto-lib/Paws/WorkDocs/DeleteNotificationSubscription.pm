@@ -1,8 +1,8 @@
 
 package Paws::WorkDocs::DeleteNotificationSubscription;
   use Moose;
-  has OrganizationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'OrganizationId' , required => 1);
-  has SubscriptionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'SubscriptionId' , required => 1);
+  has OrganizationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'OrganizationId', required => 1);
+  has SubscriptionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'SubscriptionId', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -10,14 +10,13 @@ package Paws::WorkDocs::DeleteNotificationSubscription;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/organizations/{OrganizationId}/subscriptions/{SubscriptionId}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::WorkDocs::DeleteNotificationSubscription - Arguments for method DeleteNotificationSubscription on Paws::WorkDocs
+Paws::WorkDocs::DeleteNotificationSubscription - Arguments for method DeleteNotificationSubscription on L<Paws::WorkDocs>
 
 =head1 DESCRIPTION
 
@@ -55,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteNotific
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

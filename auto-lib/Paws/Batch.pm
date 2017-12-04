@@ -10,7 +10,7 @@ package Paws::Batch;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
   sub CancelJob {
@@ -152,7 +152,7 @@ Each argument is described in detail in: L<Paws::Batch::CancelJob>
 
 Returns: a L<Paws::Batch::CancelJobResponse> instance
 
-  Cancels jobs in an AWS Batch job queue. Jobs that are in the
+Cancels jobs in an AWS Batch job queue. Jobs that are in the
 C<SUBMITTED>, C<PENDING>, or C<RUNNABLE> state are cancelled. Jobs that
 have progressed to C<STARTING> or C<RUNNING> are not cancelled (but the
 API operation still succeeds, even if no jobs are cancelled); these
@@ -165,28 +165,32 @@ Each argument is described in detail in: L<Paws::Batch::CreateComputeEnvironment
 
 Returns: a L<Paws::Batch::CreateComputeEnvironmentResponse> instance
 
-  Creates an AWS Batch compute environment. You can create C<MANAGED> or
+Creates an AWS Batch compute environment. You can create C<MANAGED> or
 C<UNMANAGED> compute environments.
 
 In a managed compute environment, AWS Batch manages the compute
 resources within the environment, based on the compute resources that
 you specify. Instances launched into a managed compute environment use
-the latest Amazon ECS-optimized AMI. You can choose to use Amazon EC2
-On-Demand instances in your managed compute environment, or you can use
-Amazon EC2 Spot instances that only launch when the Spot bid price is
-below a specified percentage of the On-Demand price.
+a recent, approved version of the Amazon ECS-optimized AMI. You can
+choose to use Amazon EC2 On-Demand instances in your managed compute
+environment, or you can use Amazon EC2 Spot instances that only launch
+when the Spot bid price is below a specified percentage of the
+On-Demand price.
 
 In an unmanaged compute environment, you can manage your own compute
 resources. This provides more compute resource configuration options,
 such as using a custom AMI, but you must ensure that your AMI meets the
 Amazon ECS container instance AMI specification. For more information,
-see Container Instance AMIs in the I<Amazon EC2 Container Service
-Developer Guide>. After you have created your unmanaged compute
-environment, you can use the DescribeComputeEnvironments operation to
-find the Amazon ECS cluster that is associated with it and then
-manually launch your container instances into that Amazon ECS cluster.
-For more information, see Launching an Amazon ECS Container Instance in
-the I<Amazon EC2 Container Service Developer Guide>.
+see Container Instance AMIs
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container_instance_AMIs.html)
+in the I<Amazon EC2 Container Service Developer Guide>. After you have
+created your unmanaged compute environment, you can use the
+DescribeComputeEnvironments operation to find the Amazon ECS cluster
+that is associated with it and then manually launch your container
+instances into that Amazon ECS cluster. For more information, see
+Launching an Amazon ECS Container Instance
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 
 =head2 CreateJobQueue(ComputeEnvironmentOrder => ArrayRef[L<Paws::Batch::ComputeEnvironmentOrder>], JobQueueName => Str, Priority => Int, [State => Str])
@@ -195,7 +199,7 @@ Each argument is described in detail in: L<Paws::Batch::CreateJobQueue>
 
 Returns: a L<Paws::Batch::CreateJobQueueResponse> instance
 
-  Creates an AWS Batch job queue. When you create a job queue, you
+Creates an AWS Batch job queue. When you create a job queue, you
 associate one or more compute environments to the queue and assign an
 order of preference for the compute environments.
 
@@ -212,7 +216,7 @@ Each argument is described in detail in: L<Paws::Batch::DeleteComputeEnvironment
 
 Returns: a L<Paws::Batch::DeleteComputeEnvironmentResponse> instance
 
-  Deletes an AWS Batch compute environment.
+Deletes an AWS Batch compute environment.
 
 Before you can delete a compute environment, you must set its state to
 C<DISABLED> with the UpdateComputeEnvironment API operation and
@@ -226,9 +230,9 @@ Each argument is described in detail in: L<Paws::Batch::DeleteJobQueue>
 
 Returns: a L<Paws::Batch::DeleteJobQueueResponse> instance
 
-  Deletes the specified job queue. You must first disable submissions for
-a queue with the UpdateJobQueue operation and terminate any jobs that
-have not completed with the TerminateJob.
+Deletes the specified job queue. You must first disable submissions for
+a queue with the UpdateJobQueue operation. All jobs in the queue are
+terminated when you delete a job queue.
 
 It is not necessary to disassociate compute environments from a queue
 before submitting a C<DeleteJobQueue> request.
@@ -240,7 +244,7 @@ Each argument is described in detail in: L<Paws::Batch::DeregisterJobDefinition>
 
 Returns: a L<Paws::Batch::DeregisterJobDefinitionResponse> instance
 
-  Deregisters an AWS Batch job definition.
+Deregisters an AWS Batch job definition.
 
 
 =head2 DescribeComputeEnvironments([ComputeEnvironments => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
@@ -249,7 +253,7 @@ Each argument is described in detail in: L<Paws::Batch::DescribeComputeEnvironme
 
 Returns: a L<Paws::Batch::DescribeComputeEnvironmentsResponse> instance
 
-  Describes one or more of your compute environments.
+Describes one or more of your compute environments.
 
 If you are using an unmanaged compute environment, you can use the
 C<DescribeComputeEnvironment> operation to determine the
@@ -263,7 +267,7 @@ Each argument is described in detail in: L<Paws::Batch::DescribeJobDefinitions>
 
 Returns: a L<Paws::Batch::DescribeJobDefinitionsResponse> instance
 
-  Describes a list of job definitions. You can specify a C<status> (such
+Describes a list of job definitions. You can specify a C<status> (such
 as C<ACTIVE>) to only return job definitions that match that status.
 
 
@@ -273,7 +277,7 @@ Each argument is described in detail in: L<Paws::Batch::DescribeJobQueues>
 
 Returns: a L<Paws::Batch::DescribeJobQueuesResponse> instance
 
-  Describes one or more of your job queues.
+Describes one or more of your job queues.
 
 
 =head2 DescribeJobs(Jobs => ArrayRef[Str|Undef])
@@ -282,7 +286,7 @@ Each argument is described in detail in: L<Paws::Batch::DescribeJobs>
 
 Returns: a L<Paws::Batch::DescribeJobsResponse> instance
 
-  Describes a list of AWS Batch jobs.
+Describes a list of AWS Batch jobs.
 
 
 =head2 ListJobs(JobQueue => Str, [JobStatus => Str, MaxResults => Int, NextToken => Str])
@@ -291,8 +295,9 @@ Each argument is described in detail in: L<Paws::Batch::ListJobs>
 
 Returns: a L<Paws::Batch::ListJobsResponse> instance
 
-  Returns a list of task jobs for a specified job queue. You can filter
-the results by job status with the C<jobStatus> parameter.
+Returns a list of task jobs for a specified job queue. You can filter
+the results by job status with the C<jobStatus> parameter. If you do
+not specify a status, only C<RUNNING> jobs are returned.
 
 
 =head2 RegisterJobDefinition(JobDefinitionName => Str, Type => Str, [ContainerProperties => L<Paws::Batch::ContainerProperties>, Parameters => L<Paws::Batch::ParametersMap>, RetryStrategy => L<Paws::Batch::RetryStrategy>])
@@ -301,7 +306,7 @@ Each argument is described in detail in: L<Paws::Batch::RegisterJobDefinition>
 
 Returns: a L<Paws::Batch::RegisterJobDefinitionResponse> instance
 
-  Registers an AWS Batch job definition.
+Registers an AWS Batch job definition.
 
 
 =head2 SubmitJob(JobDefinition => Str, JobName => Str, JobQueue => Str, [ContainerOverrides => L<Paws::Batch::ContainerOverrides>, DependsOn => ArrayRef[L<Paws::Batch::JobDependency>], Parameters => L<Paws::Batch::ParametersMap>, RetryStrategy => L<Paws::Batch::RetryStrategy>])
@@ -310,7 +315,7 @@ Each argument is described in detail in: L<Paws::Batch::SubmitJob>
 
 Returns: a L<Paws::Batch::SubmitJobResponse> instance
 
-  Submits an AWS Batch job from a job definition. Parameters specified
+Submits an AWS Batch job from a job definition. Parameters specified
 during SubmitJob override parameters defined in the job definition.
 
 
@@ -320,7 +325,7 @@ Each argument is described in detail in: L<Paws::Batch::TerminateJob>
 
 Returns: a L<Paws::Batch::TerminateJobResponse> instance
 
-  Terminates jobs in a job queue. Jobs that are in the C<STARTING> or
+Terminates jobs in a job queue. Jobs that are in the C<STARTING> or
 C<RUNNING> state are terminated, which causes them to transition to
 C<FAILED>. Jobs that have not progressed to the C<STARTING> state are
 cancelled.
@@ -332,7 +337,7 @@ Each argument is described in detail in: L<Paws::Batch::UpdateComputeEnvironment
 
 Returns: a L<Paws::Batch::UpdateComputeEnvironmentResponse> instance
 
-  Updates an AWS Batch compute environment.
+Updates an AWS Batch compute environment.
 
 
 =head2 UpdateJobQueue(JobQueue => Str, [ComputeEnvironmentOrder => ArrayRef[L<Paws::Batch::ComputeEnvironmentOrder>], Priority => Int, State => Str])
@@ -341,7 +346,7 @@ Each argument is described in detail in: L<Paws::Batch::UpdateJobQueue>
 
 Returns: a L<Paws::Batch::UpdateJobQueueResponse> instance
 
-  Updates a job queue.
+Updates a job queue.
 
 
 
@@ -359,9 +364,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

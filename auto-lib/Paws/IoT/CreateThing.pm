@@ -1,9 +1,9 @@
 
 package Paws::IoT::CreateThing;
   use Moose;
-  has AttributePayload => (is => 'ro', isa => 'Paws::IoT::AttributePayload');
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName' , required => 1);
-  has ThingTypeName => (is => 'ro', isa => 'Str');
+  has AttributePayload => (is => 'ro', isa => 'Paws::IoT::AttributePayload', traits => ['NameInRequest'], request_name => 'attributePayload');
+  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
+  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingTypeName');
 
   use MooseX::ClassAttribute;
 
@@ -11,14 +11,13 @@ package Paws::IoT::CreateThing;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/things/{thingName}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreateThingResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::IoT::CreateThing - Arguments for method CreateThing on Paws::IoT
+Paws::IoT::CreateThing - Arguments for method CreateThing on L<Paws::IoT>
 
 =head1 DESCRIPTION
 
@@ -42,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The attribute payload, which consists of up to three name/value pairs
 in a JSON document. For example:
 
-C<{\"attributes\":{\"string1\":\"string2\"}})>
+C<{\"attributes\":{\"string1\":\"string2\"}}>
 
 
 
@@ -65,9 +64,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateThing i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

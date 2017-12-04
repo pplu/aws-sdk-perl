@@ -15,7 +15,7 @@ package Paws::ELBv2::RegisterTargets;
 
 =head1 NAME
 
-Paws::ELBv2::RegisterTargets - Arguments for method RegisterTargets on Paws::ELBv2
+Paws::ELBv2::RegisterTargets - Arguments for method RegisterTargets on L<Paws::ELBv2>
 
 =head1 DESCRIPTION
 
@@ -42,9 +42,7 @@ The Amazon Resource Name (ARN) of the target group.
 
 =head2 B<REQUIRED> Targets => ArrayRef[L<Paws::ELBv2::TargetDescription>]
 
-The targets. The default port for a target is the port for the target
-group. You can specify a port override. If a target is already
-registered, you can register it again using a different port.
+The targets.
 
 
 
@@ -55,9 +53,9 @@ This class forms part of L<Paws>, documenting arguments for method RegisterTarge
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

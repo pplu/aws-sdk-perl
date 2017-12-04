@@ -139,8 +139,9 @@ termination by Auto Scaling when scaling in.
 =head2 PlacementGroup => Str
 
   The name of the placement group into which you'll launch your
-instances, if any. For more information, see Placement Groups in the
-I<Amazon Elastic Compute Cloud User Guide>.
+instances, if any. For more information, see Placement Groups
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 Status => Str
@@ -186,9 +187,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::AutoScali
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -16,7 +16,7 @@ package Paws::IAM::GetSSHPublicKey;
 
 =head1 NAME
 
-Paws::IAM::GetSSHPublicKey - Arguments for method GetSSHPublicKey on Paws::IAM
+Paws::IAM::GetSSHPublicKey - Arguments for method GetSSHPublicKey on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -47,8 +47,9 @@ Valid values are: C<"SSH">, C<"PEM">
 
 The unique identifier for the SSH public key.
 
-This parameter allows (per its regex pattern) a string of characters
-that can consist of any upper or lowercased letter or digit.
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters that can
+consist of any upper or lowercased letter or digit.
 
 
 
@@ -56,9 +57,10 @@ that can consist of any upper or lowercased letter or digit.
 
 The name of the IAM user associated with the SSH public key.
 
-This parameter allows (per its regex pattern) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+upper and lowercase alphanumeric characters with no spaces. You can
+also include any of the following characters: =,.@-
 
 
 
@@ -69,9 +71,9 @@ This class forms part of L<Paws>, documenting arguments for method GetSSHPublicK
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

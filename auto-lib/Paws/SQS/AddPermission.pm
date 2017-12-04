@@ -17,7 +17,7 @@ package Paws::SQS::AddPermission;
 
 =head1 NAME
 
-Paws::SQS::AddPermission - Arguments for method AddPermission on Paws::SQS
+Paws::SQS::AddPermission - Arguments for method AddPermission on L<Paws::SQS>
 
 =head1 DESCRIPTION
 
@@ -74,7 +74,8 @@ C<SendMessage>
 =back
 
 For more information about these actions, see Understanding Permissions
-in the I<Amazon SQS Developer Guide>.
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/acp-overview.html#PermissionTypes)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 Specifying C<SendMessage>, C<DeleteMessage>, or
 C<ChangeMessageVisibility> for C<ActionName.n> also grants permissions
@@ -86,11 +87,13 @@ C<ChangeMessageVisibilityBatch>.
 
 =head2 B<REQUIRED> AWSAccountIds => ArrayRef[Str|Undef]
 
-The AWS account number of the principal who is given permission. The
-principal must have an AWS account, but does not need to be signed up
-for Amazon SQS. For information about locating the AWS account
-identification, see Your AWS Identifiers in the I<Amazon SQS Developer
-Guide>.
+The AWS account number of the principal
+(http://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P) who is
+given permission. The principal must have an AWS account, but does not
+need to be signed up for Amazon SQS. For information about locating the
+AWS account identification, see Your AWS Identifiers
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AWSCredentials.html)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 
 
@@ -118,9 +121,9 @@ This class forms part of L<Paws>, documenting arguments for method AddPermission
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

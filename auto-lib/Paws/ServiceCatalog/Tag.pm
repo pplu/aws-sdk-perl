@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-Key/value pairs to associate with this provisioning. These tags are
+Key-value pairs to associate with this provisioning. These tags are
 entirely discretionary and are propagated to the resources created in
 the provisioning.
 
@@ -47,7 +47,7 @@ DescribeProvisioningParameters.
 
 =head2 B<REQUIRED> Value => Str
 
-  The esired value for this key.
+  The desired value for this key.
 
 
 
@@ -57,9 +57,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ServiceCa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

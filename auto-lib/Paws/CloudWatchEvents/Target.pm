@@ -56,8 +56,9 @@ Run Command, and built-in targets.
 
   Contains the Amazon ECS task definition and task count to be used, if
 the event target is an Amazon ECS task. For more information about
-Amazon ECS tasks, see Task Definitions in the I<Amazon EC2 Container
-Service Developer Guide>.
+Amazon ECS tasks, see Task Definitions
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 
 =head2 B<REQUIRED> Id => Str
@@ -70,7 +71,8 @@ Service Developer Guide>.
   Valid JSON text passed to the target. In this case, nothing from the
 event itself is passed to the target. You must use JSON dot notation,
 not bracket notation. For more information, see The JavaScript Object
-Notation (JSON) Data Interchange Format.
+Notation (JSON) Data Interchange Format
+(http://www.rfc-editor.org/rfc/rfc7159.txt).
 
 
 =head2 InputPath => Str
@@ -78,7 +80,7 @@ Notation (JSON) Data Interchange Format.
   The value of the JSONPath that is used for extracting part of the
 matched event when passing it to the target. You must use JSON dot
 notation, not bracket notation. For more information about JSON paths,
-see JSONPath.
+see JSONPath (http://goessner.net/articles/JsonPath/).
 
 
 =head2 InputTransformer => L<Paws::CloudWatchEvents::InputTransformer>
@@ -116,9 +118,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudWatc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 =head1 DESCRIPTION
 
 Used when a regular object exists in a Directory and you want to find
-all of the policies associated with that object and the parent to that
-object.
+all of the policies that are associated with that object and the parent
+to that object.
 
 =head1 ATTRIBUTES
 
@@ -56,9 +56,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudDire
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

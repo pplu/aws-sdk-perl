@@ -37,7 +37,7 @@ access the source code to be built.
 
 This information is for the AWS CodeBuild console's use only. Your code
 should not get or set this information directly (unless the build
-project's source C<type> value is C<GITHUB>).
+project's source C<type> value is C<BITBUCKET> or C<GITHUB>).
 
 =head1 ATTRIBUTES
 
@@ -60,9 +60,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodeBuild
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

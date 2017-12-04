@@ -25,7 +25,7 @@ package Paws::ElasticBeanstalk::UpdateEnvironment;
 
 =head1 NAME
 
-Paws::ElasticBeanstalk::UpdateEnvironment - Arguments for method UpdateEnvironment on Paws::ElasticBeanstalk
+Paws::ElasticBeanstalk::UpdateEnvironment - Arguments for method UpdateEnvironment on L<Paws::ElasticBeanstalk>
 
 =head1 DESCRIPTION
 
@@ -87,7 +87,9 @@ C<MissingRequiredParameter> error.
 The name of the group to which the target environment belongs. Specify
 a group name only if the environment's name is specified in an
 environment manifest and not with the environment name or environment
-ID parameters. See Environment Manifest (env.yaml) for details.
+ID parameters. See Environment Manifest (env.yaml)
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
+for details.
 
 
 
@@ -152,9 +154,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateEnviron
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

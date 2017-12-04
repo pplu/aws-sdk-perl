@@ -64,6 +64,7 @@ explains how each set of policies contributes to the final evaluation
 decision. When simulating cross-account access to a resource, both the
 resource-based policy and the caller's IAM policy must grant access.
 See How IAM Roles Differ from Resource-based Policies
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_compare-resource-policies.html)
 
 
 =head2 EvalResourceName => Str
@@ -112,9 +113,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

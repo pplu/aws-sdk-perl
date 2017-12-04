@@ -74,8 +74,9 @@ deployment. Although this allows one instance at a time to be taken
 offline for a new deployment, it also means that if the deployment to
 the last instance fails, the overall deployment still succeeds.
 
-For more information, see AWS CodeDeploy Instance Health in the I<AWS
-CodeDeploy User Guide>.
+For more information, see AWS CodeDeploy Instance Health
+(http://docs.aws.amazon.com/codedeploy/latest/userguide/instances-health.html)
+in the I<AWS CodeDeploy User Guide>.
 
 
 =head2 Value => Int
@@ -90,9 +91,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodeDeplo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

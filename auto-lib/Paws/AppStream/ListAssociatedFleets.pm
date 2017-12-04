@@ -15,7 +15,7 @@ package Paws::AppStream::ListAssociatedFleets;
 
 =head1 NAME
 
-Paws::AppStream::ListAssociatedFleets - Arguments for method ListAssociatedFleets on Paws::AppStream
+Paws::AppStream::ListAssociatedFleets - Arguments for method ListAssociatedFleets on L<Paws::AppStream>
 
 =head1 DESCRIPTION
 
@@ -43,7 +43,7 @@ this operation. If this value is null, it retrieves the first page.
 
 =head2 B<REQUIRED> StackName => Str
 
-The name of the stack whose associated fleets are listed.
+The name of the stack.
 
 
 
@@ -54,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method ListAssociate
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -15,7 +15,7 @@ package Paws::Organizations::EnablePolicyType;
 
 =head1 NAME
 
-Paws::Organizations::EnablePolicyType - Arguments for method EnablePolicyType on Paws::Organizations
+Paws::Organizations::EnablePolicyType - Arguments for method EnablePolicyType on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
@@ -45,8 +45,9 @@ Valid values are: C<"SERVICE_CONTROL_POLICY">
 The unique identifier (ID) of the root in which you want to enable a
 policy type. You can get the ID from the ListRoots operation.
 
-The regex pattern for a root ID string requires "r-" followed by from 4
-to 32 lower-case letters or digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for a root ID
+string requires "r-" followed by from 4 to 32 lower-case letters or
+digits.
 
 
 
@@ -57,9 +58,9 @@ This class forms part of L<Paws>, documenting arguments for method EnablePolicyT
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

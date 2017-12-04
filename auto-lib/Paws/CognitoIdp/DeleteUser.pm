@@ -1,7 +1,7 @@
 
 package Paws::CognitoIdp::DeleteUser;
   use Moose;
-  has AccessToken => (is => 'ro', isa => 'Str');
+  has AccessToken => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -14,7 +14,7 @@ package Paws::CognitoIdp::DeleteUser;
 
 =head1 NAME
 
-Paws::CognitoIdp::DeleteUser - Arguments for method DeleteUser on Paws::CognitoIdp
+Paws::CognitoIdp::DeleteUser - Arguments for method DeleteUser on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AccessToken => Str
+=head2 B<REQUIRED> AccessToken => Str
 
 The access token from a request to delete a user.
 
@@ -46,9 +46,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteUser in
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -9,14 +9,13 @@ package Paws::ES::DescribeElasticsearchDomains;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-01-01/es/domain-info');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ES::DescribeElasticsearchDomainsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ES::DescribeElasticsearchDomains - Arguments for method DescribeElasticsearchDomains on Paws::ES
+Paws::ES::DescribeElasticsearchDomains - Arguments for method DescribeElasticsearchDomains on L<Paws::ES>
 
 =head1 DESCRIPTION
 
@@ -48,9 +47,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeElast
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

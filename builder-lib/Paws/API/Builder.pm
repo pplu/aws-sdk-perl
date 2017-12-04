@@ -334,7 +334,7 @@ package Paws::API::Builder {
 
 =head1 NAME
 
-[% c.api %]::[% op_name %] - Arguments for method [% op_name %] on [% c.api %]
+[% c.api %]::[% op_name %] - Arguments for method [% op_name %] on L<[% c.api %]>
 
 =head1 DESCRIPTION
 
@@ -368,9 +368,9 @@ This class forms part of L<Paws>, documenting arguments for method [% operation.
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 #);
@@ -427,7 +427,7 @@ Each argument is described in detail in: L<[% c.api %]::[% op_name %]>
 
 Returns: [% out_shape = c.shapename_for_operation_output(op_name); IF (out_shape) %]a L<[% c.api %]::[% out_shape %]> instance[% ELSE %]nothing[% END %]
 
-  [% c.doc_for_method(op_name) %]
+[% c.doc_for_method(op_name) %]
 
 [% END %]
 
@@ -439,9 +439,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 #);
@@ -493,9 +493,9 @@ This class forms part of L<Paws>, describing an object used in L<[% c.api %]>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 #);
@@ -786,7 +786,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     my $pod = Pod::HTML2Pod::convert(
       content => $html,
       a_name => 0,
-      a_href => 0,
+      a_href => 1,
       debug => 0,
     );
     $pod =~ s/=pod//;
@@ -849,9 +849,9 @@ This class forms part of L<Paws>, describing an object used in L<[% c.api %]>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 #);
@@ -916,9 +916,9 @@ This class forms part of L<Paws>, describing an object used in L<[% c.api %]>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 #);
@@ -975,8 +975,9 @@ package [% inner_class %];
 #);
 
   sub paginator_accessor {
-    my ($self, $accessor) = @_;
-   
+    my ($self, $accessor, $wanted_prefix) = @_;
+  
+    my $prefix = '$' . ((defined $wanted_prefix) ? $wanted_prefix : 'result');
     if (ref($accessor) eq 'ARRAY'){
       warn "Complex accessor ", join ',', @$accessor;
     }
@@ -992,7 +993,7 @@ package [% inner_class %];
     $accessor =~ s|(\w+)([.*?])|$1->$2|g;
     $accessor =~ s|(\w+)\[|$1\-\>\[|g;
 
-    $accessor = "\$result->$accessor";
+    $accessor = "${prefix}->${accessor}";
     return $accessor;
   }
   sub paginator_result_key {
@@ -1004,12 +1005,12 @@ package [% inner_class %];
     }
   }
   sub paginator_pass_params {
-    my ($self, $paginator) = @_;
+    my ($self, $paginator, $res_name) = @_;
     if (ref($paginator->{ input_token }) eq 'ARRAY'){
       my $i = 0;
-      return join ', ', map { "$_ => " . $self->paginator_accessor($paginator->{ output_token }->[ $i++ ]) } @{ $paginator->{ input_token } };
+      return join ', ', map { "$_ => " . $self->paginator_accessor($paginator->{ output_token }->[ $i++ ], $res_name) } @{ $paginator->{ input_token } };
     } else {
-      return "$paginator->{ input_token } => " . $self->paginator_accessor($paginator->{ output_token });
+      return "$paginator->{ input_token } => " . $self->paginator_accessor($paginator->{ output_token }, $res_name);
     }
   }
 
@@ -1078,20 +1079,21 @@ If not, it will return a [% out_shape = c.shapename_for_operation_output(op_name
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->[% op %](@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
       [%- IF (paginator.more_results.defined) %]
-      while ([% c.paginator_accessor(paginator.more_results) %]) {
-        $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
+      while ([% c.paginator_accessor(paginator.more_results, 'next_result') %]) {
+        $next_result = $self->[% op %](@_, [% c.paginator_pass_params(paginator, 'next_result') %]);
         [%- FOREACH param = c.paginator_result_key(paginator) %]
-        push @{ [% c.paginator_accessor(param) %] }, @{ [% c.paginator_accessor(param) %] };
+        push @{ [% c.paginator_accessor(param) %] }, @{ [% c.paginator_accessor(param, 'next_result') %] };
         [%- END %]
       }
       [%- ELSE %]
-      while ([% c.paginator_accessor(paginator.input_token) %]) {
-        $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
+      while ([% c.paginator_accessor(paginator.output_token, 'next_result') %]) {
+        $next_result = $self->[% op %](@_, [% c.paginator_pass_params(paginator, 'next_result') %]);
         [%- FOREACH param = c.paginator_result_key(paginator) %]
-        push @{ [% c.paginator_accessor(param) %] }, @{ [% c.paginator_accessor(param) %] };
+        push @{ [% c.paginator_accessor(param) %] }, @{ [% c.paginator_accessor(param, 'next_result') %] };
         [%- END %]
       }
       [%- END %]
@@ -1099,18 +1101,24 @@ If not, it will return a [% out_shape = c.shapename_for_operation_output(op_name
     } else {
       [%- IF (paginator.more_results.defined) %]
       while ([% c.paginator_accessor(paginator.more_results) %]) {
-        $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
         [%- FOREACH param = c.paginator_result_key(paginator) %]
         $callback->($_ => '[% param %]') foreach (@{ [% c.paginator_accessor(param) %] });
         [%- END %]
+        $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
       }
+      [%- FOREACH param = c.paginator_result_key(paginator) %]
+      $callback->($_ => '[% param %]') foreach (@{ [% c.paginator_accessor(param) %] });
+      [%- END %]
       [%- ELSE %]
-      while ([% c.paginator_accessor(paginator.input_token) %]) {
-        $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
+      while ([% c.paginator_accessor(paginator.output_token) %]) {
         [%- FOREACH param = c.paginator_result_key(paginator) %]
         $callback->($_ => '[% param %]') foreach (@{ [% c.paginator_accessor(param) %] });
         [%- END %]
+        $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
       }
+      [%- FOREACH param = c.paginator_result_key(paginator) %]
+      $callback->($_ => '[% param %]') foreach (@{ [% c.paginator_accessor(param) %] });
+      [%- END %]
       [%- END %]
     }
 

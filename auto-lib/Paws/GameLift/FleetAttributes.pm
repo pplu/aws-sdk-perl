@@ -47,6 +47,109 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::F
 
 General properties describing a fleet.
 
+Fleet-related operations include:
+
+=over
+
+=item *
+
+CreateFleet
+
+=item *
+
+ListFleets
+
+=item *
+
+Describe fleets:
+
+=over
+
+=item *
+
+DescribeFleetAttributes
+
+=item *
+
+DescribeFleetPortSettings
+
+=item *
+
+DescribeFleetUtilization
+
+=item *
+
+DescribeRuntimeConfiguration
+
+=item *
+
+DescribeFleetEvents
+
+=back
+
+=item *
+
+Update fleets:
+
+=over
+
+=item *
+
+UpdateFleetAttributes
+
+=item *
+
+UpdateFleetCapacity
+
+=item *
+
+UpdateFleetPortSettings
+
+=item *
+
+UpdateRuntimeConfiguration
+
+=back
+
+=item *
+
+Manage fleet capacity:
+
+=over
+
+=item *
+
+DescribeFleetCapacity
+
+=item *
+
+UpdateFleetCapacity
+
+=item *
+
+PutScalingPolicy (automatic scaling)
+
+=item *
+
+DescribeScalingPolicies (automatic scaling)
+
+=item *
+
+DeleteScalingPolicy (automatic scaling)
+
+=item *
+
+DescribeEC2InstanceLimits
+
+=back
+
+=item *
+
+DeleteFleet
+
+=back
+
+
 =head1 ATTRIBUTES
 
 
@@ -82,19 +185,20 @@ number expressed in Unix time as milliseconds (for example
   Location of default log files. When a server process is shut down,
 Amazon GameLift captures and stores any log files in this location.
 These logs are in addition to game session logs; see more on game
-session logs in the Amazon GameLift Developer Guide. If no default log
-path for a fleet is specified, Amazon GameLift will automatically
-upload logs that are stored on each instance at C<C:\game\logs> (for
-Windows) or C</local/game/logs> (for Linux). Use the Amazon GameLift
-console to access stored logs.
+session logs in the Amazon GameLift Developer Guide
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code).
+If no default log path for a fleet is specified, Amazon GameLift
+automatically uploads logs that are stored on each instance at
+C<C:\game\logs> (for Windows) or C</local/game/logs> (for Linux). Use
+the Amazon GameLift console to access stored logs.
 
 
 =head2 MetricGroups => ArrayRef[Str|Undef]
 
   Names of metric groups that this fleet is included in. In Amazon
 CloudWatch, you can view metrics for an individual fleet or aggregated
-metrics for a fleets that are in a fleet metric group. Currently, a
-fleet can be included in only one metric group at a time.
+metrics for fleets that are in a fleet metric group. A fleet can be
+included in only one metric group at a time.
 
 
 =head2 Name => Str
@@ -112,13 +216,13 @@ the fleet.
 
 =item *
 
-B<NoProtection> E<ndash> The game session can be terminated during a
+B<NoProtection> -- The game session can be terminated during a
 scale-down event.
 
 =item *
 
-B<FullProtection> E<ndash> If the game session is in an C<ACTIVE>
-status, it cannot be terminated during a scale-down event.
+B<FullProtection> -- If the game session is in an C<ACTIVE> status, it
+cannot be terminated during a scale-down event.
 
 =back
 
@@ -139,7 +243,7 @@ can create over a span of time.
 
 =head2 ServerLaunchParameters => Str
 
-  Game server launch parameters specified for fleets created prior to
+  Game server launch parameters specified for fleets created before
 2016-08-04 (or AWS SDK v. 0.12.16). Server launch parameters for fleets
 created after this date are specified in the fleet's
 RuntimeConfiguration.
@@ -148,9 +252,9 @@ RuntimeConfiguration.
 =head2 ServerLaunchPath => Str
 
   Path to a game server executable in the fleet's build, specified for
-fleets created prior to 2016-08-04 (or AWS SDK v. 0.12.16). Server
-launch paths for fleets created after this date are specified in the
-fleet's RuntimeConfiguration.
+fleets created before 2016-08-04 (or AWS SDK v. 0.12.16). Server launch
+paths for fleets created after this date are specified in the fleet's
+RuntimeConfiguration.
 
 
 =head2 Status => Str
@@ -163,31 +267,31 @@ Possible fleet statuses include the following:
 
 =item *
 
-B<NEW> E<ndash> A new fleet has been defined and desired instances is
-set to 1.
+B<NEW> -- A new fleet has been defined and desired instances is set to
+1.
 
 =item *
 
-B<DOWNLOADING/VALIDATING/BUILDING/ACTIVATING> E<ndash> Amazon GameLift
-is setting up the new fleet, creating new instances with the game build
+B<DOWNLOADING/VALIDATING/BUILDING/ACTIVATING> -- Amazon GameLift is
+setting up the new fleet, creating new instances with the game build
 and starting server processes.
 
 =item *
 
-B<ACTIVE> E<ndash> Hosts can now accept game sessions.
+B<ACTIVE> -- Hosts can now accept game sessions.
 
 =item *
 
-B<ERROR> E<ndash> An error occurred when downloading, validating,
-building, or activating the fleet.
+B<ERROR> -- An error occurred when downloading, validating, building,
+or activating the fleet.
 
 =item *
 
-B<DELETING> E<ndash> Hosts are responding to a delete fleet request.
+B<DELETING> -- Hosts are responding to a delete fleet request.
 
 =item *
 
-B<TERMINATED> E<ndash> The fleet no longer exists.
+B<TERMINATED> -- The fleet no longer exists.
 
 =back
 
@@ -207,9 +311,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::GameLift>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

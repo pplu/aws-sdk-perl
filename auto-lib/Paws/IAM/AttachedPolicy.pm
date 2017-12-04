@@ -40,7 +40,9 @@ the ListAttachedGroupPolicies, ListAttachedRolePolicies,
 ListAttachedUserPolicies, and GetAccountAuthorizationDetails actions.
 
 For more information about managed policies, refer to Managed Policies
-and Inline Policies in the I<Using IAM> guide.
+and Inline Policies
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+in the I<Using IAM> guide.
 
 =head1 ATTRIBUTES
 
@@ -62,9 +64,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

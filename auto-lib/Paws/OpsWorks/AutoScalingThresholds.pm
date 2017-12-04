@@ -54,7 +54,8 @@ To use custom alarms, you must update your service role to allow
 C<cloudwatch:DescribeAlarms>. You can either have AWS OpsWorks Stacks
 update the role for you when you first use this feature or you can edit
 the role manually. For more information, see Allowing AWS OpsWorks
-Stacks to Act on Your Behalf.
+Stacks to Act on Your Behalf
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-servicerole.html).
 
 
 =head2 CpuThreshold => Num
@@ -85,7 +86,8 @@ threshold.
 =head2 LoadThreshold => Num
 
   The load threshold. A value of -1 disables the threshold. For more
-information about how load is computed, see Load (computing).
+information about how load is computed, see Load (computing)
+(http://en.wikipedia.org/wiki/Load_%28computing%29).
 
 
 =head2 MemoryThreshold => Num
@@ -107,9 +109,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::OpsWorks>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

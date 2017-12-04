@@ -15,7 +15,7 @@ package Paws::SES::ReorderReceiptRuleSet;
 
 =head1 NAME
 
-Paws::SES::ReorderReceiptRuleSet - Arguments for method ReorderReceiptRuleSet on Paws::SES
+Paws::SES::ReorderReceiptRuleSet - Arguments for method ReorderReceiptRuleSet on L<Paws::SES>
 
 =head1 DESCRIPTION
 
@@ -54,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method ReorderReceip
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

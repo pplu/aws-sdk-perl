@@ -15,7 +15,7 @@ package Paws::CognitoIdp::AdminEnableUser;
 
 =head1 NAME
 
-Paws::CognitoIdp::AdminEnableUser - Arguments for method AdminEnableUser on Paws::CognitoIdp
+Paws::CognitoIdp::AdminEnableUser - Arguments for method AdminEnableUser on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Username => Str
 
-The user name of the user you wish to ebable.
+The user name of the user you wish to enable.
 
 
 
@@ -53,9 +53,9 @@ This class forms part of L<Paws>, documenting arguments for method AdminEnableUs
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -20,7 +20,7 @@ package Paws::Route53::ListGeoLocations;
 
 =head1 NAME
 
-Paws::Route53::ListGeoLocations - Arguments for method ListGeoLocations on Paws::Route53
+Paws::Route53::ListGeoLocations - Arguments for method ListGeoLocations on L<Paws::Route53>
 
 =head1 DESCRIPTION
 
@@ -73,7 +73,8 @@ value, enter that value in C<StartCountryCode> to return the next page
 of results.
 
 Amazon Route 53 uses the two-letter country codes that are specified in
-ISO standard 3166-1 alpha-2.
+ISO standard 3166-1 alpha-2
+(https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 
 
 
@@ -98,9 +99,9 @@ This class forms part of L<Paws>, documenting arguments for method ListGeoLocati
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -2,7 +2,7 @@
 package Paws::Polly::PutLexicon;
   use Moose;
   has Content => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LexiconName' , required => 1);
+  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LexiconName', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -10,14 +10,13 @@ package Paws::Polly::PutLexicon;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/lexicons/{LexiconName}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Polly::PutLexiconOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Polly::PutLexicon - Arguments for method PutLexicon on Paws::Polly
+Paws::Polly::PutLexicon - Arguments for method PutLexicon on L<Paws::Polly>
 
 =head1 DESCRIPTION
 
@@ -57,9 +56,9 @@ This class forms part of L<Paws>, documenting arguments for method PutLexicon in
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

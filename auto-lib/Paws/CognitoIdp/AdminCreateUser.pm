@@ -21,7 +21,7 @@ package Paws::CognitoIdp::AdminCreateUser;
 
 =head1 NAME
 
-Paws::CognitoIdp::AdminCreateUser - Arguments for method AdminCreateUser on Paws::CognitoIdp
+Paws::CognitoIdp::AdminCreateUser - Arguments for method AdminCreateUser on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -42,35 +42,36 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DesiredDeliveryMediums => ArrayRef[Str|Undef]
 
-Specify "EMAIL" if email will be used to send the welcome message.
-Specify "SMS" if the phone number will be used. The default value is
-"SMS". More than one value can be specified.
+Specify C<"EMAIL"> if email will be used to send the welcome message.
+Specify C<"SMS"> if the phone number will be used. The default value is
+C<"SMS">. More than one value can be specified.
 
 
 
 =head2 ForceAliasCreation => Bool
 
-This parameter is only used if the phone_number_verified or
-email_verified attribute is set to True. Otherwise, it is ignored.
+This parameter is only used if the C<phone_number_verified> or
+C<email_verified> attribute is set to C<True>. Otherwise, it is
+ignored.
 
-If this parameter is set to True and the phone number or email address
-specified in the UserAttributes parameter already exists as an alias
-with a different user, the API call will migrate the alias from the
-previous user to the newly created user. The previous user will no
+If this parameter is set to C<True> and the phone number or email
+address specified in the UserAttributes parameter already exists as an
+alias with a different user, the API call will migrate the alias from
+the previous user to the newly created user. The previous user will no
 longer be able to log in using that alias.
 
-If this parameter is set to False, the API throws an
-AliasExistsException error if the alias already exists. The default
-value is False.
+If this parameter is set to C<False>, the API throws an
+C<AliasExistsException> error if the alias already exists. The default
+value is C<False>.
 
 
 
 =head2 MessageAction => Str
 
-Set to "RESEND" to resend the invitation message to a user that already
-exists and reset the expiration limit on the user's account. Set to
-"SUPPRESS" to suppress sending the message. Only one value can be
-specified.
+Set to C<"RESEND"> to resend the invitation message to a user that
+already exists and reset the expiration limit on the user's account.
+Set to C<"SUPPRESS"> to suppress sending the message. Only one value
+can be specified.
 
 Valid values are: C<"RESEND">, C<"SUPPRESS">
 
@@ -88,8 +89,9 @@ Cognito generates one for you.
 
 The temporary password can only be used until the user account
 expiration limit that you specified when you created the user pool. To
-reset the account after that time limit, you must call AdminCreateUser
-again, specifying "RESEND" for the MessageAction parameter.
+reset the account after that time limit, you must call
+C<AdminCreateUser> again, specifying C<"RESEND"> for the
+C<MessageAction> parameter.
 
 
 
@@ -97,20 +99,23 @@ again, specifying "RESEND" for the MessageAction parameter.
 
 An array of name-value pairs that contain user attributes and attribute
 values to be set for the user to be created. You can create a user
-without specifying any attributes other than Username. However, any
+without specifying any attributes other than C<Username>. However, any
 attributes that you specify as required (in CreateUserPool or in the
 B<Attributes> tab of the console) must be supplied either by you (in
-your call to AdminCreateUser) or by the user (when he or she signs up
-in response to your welcome message).
+your call to C<AdminCreateUser>) or by the user (when he or she signs
+up in response to your welcome message).
+
+For custom attributes, you must prepend the C<custom:> prefix to the
+attribute name.
 
 To send a message inviting the user to sign up, you must specify the
 user's email address or phone number. This can be done in your call to
 AdminCreateUser or in the B<Users> tab of the Amazon Cognito console
 for managing your user pools.
 
-In your call to AdminCreateUser, you can set the email_verified
-attribute to True, and you can set the phone_number_verified attribute
-to True. (You cannot do this by calling other operations such as
+In your call to C<AdminCreateUser>, you can set the C<email_verified>
+attribute to C<True>, and you can set the C<phone_number_verified>
+attribute to C<True>. (You can also do this by calling
 AdminUpdateUserAttributes.)
 
 =over
@@ -119,15 +124,15 @@ AdminUpdateUserAttributes.)
 
 B<email>: The email address of the user to whom the message that
 contains the code and username will be sent. Required if the
-email_verified attribute is set to True, or if "EMAIL" is specified in
-the DesiredDeliveryMediums parameter.
+C<email_verified> attribute is set to C<True>, or if C<"EMAIL"> is
+specified in the C<DesiredDeliveryMediums> parameter.
 
 =item *
 
 B<phone_number>: The phone number of the user to whom the message that
 contains the code and username will be sent. Required if the
-phone_number_verified attribute is set to True, or if "SMS" is
-specified in the DesiredDeliveryMediums parameter.
+C<phone_number_verified> attribute is set to C<True>, or if C<"SMS"> is
+specified in the C<DesiredDeliveryMediums> parameter.
 
 =back
 
@@ -172,9 +177,9 @@ This class forms part of L<Paws>, documenting arguments for method AdminCreateUs
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

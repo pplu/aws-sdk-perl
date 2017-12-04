@@ -1,5 +1,6 @@
 package Paws::OpsWorks::Layer;
   use Moose;
+  has Arn => (is => 'ro', isa => 'Str');
   has Attributes => (is => 'ro', isa => 'Paws::OpsWorks::LayerAttributes');
   has AutoAssignElasticIps => (is => 'ro', isa => 'Bool');
   has AutoAssignPublicIps => (is => 'ro', isa => 'Bool');
@@ -41,20 +42,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::OpsWorks::Layer object:
 
-  $service_obj->Method(Att1 => { Attributes => $value, ..., VolumeConfigurations => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., VolumeConfigurations => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::Layer object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Attributes
+  $result->Att1->Arn
 
 =head1 DESCRIPTION
 
 Describes a layer.
 
 =head1 ATTRIBUTES
+
+
+=head2 Arn => Str
+
+  
 
 
 =head2 Attributes => L<Paws::OpsWorks::LayerAttributes>
@@ -71,15 +77,18 @@ attribute is set to the cluster's ARN.
 
 =head2 AutoAssignElasticIps => Bool
 
-  Whether to automatically assign an Elastic IP address to the layer's
-instances. For more information, see How to Edit a Layer.
+  Whether to automatically assign an Elastic IP address
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
+to the layer's instances. For more information, see How to Edit a Layer
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
 
 
 =head2 AutoAssignPublicIps => Bool
 
   For stacks that are running in a VPC, whether to automatically assign a
 public IP address to the layer's instances. For more information, see
-How to Edit a Layer.
+How to Edit a Layer
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
 
 
 =head2 CloudWatchLogsConfiguration => L<Paws::OpsWorks::CloudWatchLogsConfiguration>
@@ -95,7 +104,8 @@ How to Edit a Layer.
 =head2 CustomInstanceProfileArn => Str
 
   The ARN of the default IAM profile to be used for the layer's EC2
-instances. For more information about IAM ARNs, see Using Identifiers.
+instances. For more information about IAM ARNs, see Using Identifiers
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 
 
 =head2 CustomJson => Str
@@ -197,9 +207,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::OpsWorks>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

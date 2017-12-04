@@ -41,7 +41,7 @@ Represents a log event.
 =head2 IngestionTime => Int
 
   The time the event was ingested, expressed as the number of
-milliseconds since Jan 1, 1970 00:00:00 UTC.
+milliseconds after Jan 1, 1970 00:00:00 UTC.
 
 
 =head2 Message => Str
@@ -52,7 +52,7 @@ milliseconds since Jan 1, 1970 00:00:00 UTC.
 =head2 Timestamp => Int
 
   The time the event occurred, expressed as the number of milliseconds
-since Jan 1, 1970 00:00:00 UTC.
+after Jan 1, 1970 00:00:00 UTC.
 
 
 
@@ -62,9 +62,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudWatc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

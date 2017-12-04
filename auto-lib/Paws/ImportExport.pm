@@ -10,7 +10,7 @@ package Paws::ImportExport;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V2Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V2Signature', 'Paws::Net::QueryCaller';
 
   has '+region_rules' => (default => sub {
     my $regioninfo;
@@ -67,18 +67,20 @@ package Paws::ImportExport;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListJobs(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListJobs(@_, Marker => $result->Jobs->[-1]->JobId);
-        push @{ $result->Jobs }, @{ $result->Jobs };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListJobs(@_, Marker => $next_result->Jobs->[-1]->JobId);
+        push @{ $result->Jobs }, @{ $next_result->Jobs };
       }
       return $result;
     } else {
       while ($result->IsTruncated) {
-        $result = $self->ListJobs(@_, Marker => $result->Jobs->[-1]->JobId);
         $callback->($_ => 'Jobs') foreach (@{ $result->Jobs });
+        $result = $self->ListJobs(@_, Marker => $result->Jobs->[-1]->JobId);
       }
+      $callback->($_ => 'Jobs') foreach (@{ $result->Jobs });
     }
 
     return undef
@@ -129,7 +131,7 @@ Each argument is described in detail in: L<Paws::ImportExport::CancelJob>
 
 Returns: a L<Paws::ImportExport::CancelJobOutput> instance
 
-  This operation cancels a specified job. Only the job owner can cancel
+This operation cancels a specified job. Only the job owner can cancel
 it. The operation fails if the job has already started or is complete.
 
 
@@ -139,7 +141,7 @@ Each argument is described in detail in: L<Paws::ImportExport::CreateJob>
 
 Returns: a L<Paws::ImportExport::CreateJobOutput> instance
 
-  This operation initiates the process of scheduling an upload or
+This operation initiates the process of scheduling an upload or
 download of your data. You include in the request a manifest that
 describes the data transfer specifics. The response to the request
 includes a job ID, which you can use in other operations, a signature
@@ -153,7 +155,7 @@ Each argument is described in detail in: L<Paws::ImportExport::GetShippingLabel>
 
 Returns: a L<Paws::ImportExport::GetShippingLabelOutput> instance
 
-  This operation generates a pre-paid UPS shipping label that you will
+This operation generates a pre-paid UPS shipping label that you will
 use to ship your device to AWS for processing.
 
 
@@ -163,7 +165,7 @@ Each argument is described in detail in: L<Paws::ImportExport::GetStatus>
 
 Returns: a L<Paws::ImportExport::GetStatusOutput> instance
 
-  This operation returns information about a job, including where the job
+This operation returns information about a job, including where the job
 is in the processing pipeline, the status of the results, and the
 signature value associated with the job. You can only return
 information about jobs you own.
@@ -175,7 +177,7 @@ Each argument is described in detail in: L<Paws::ImportExport::ListJobs>
 
 Returns: a L<Paws::ImportExport::ListJobsOutput> instance
 
-  This operation returns the jobs associated with the requester. AWS
+This operation returns the jobs associated with the requester. AWS
 Import/Export lists the jobs in reverse chronological order based on
 the date of creation. For example if Job Test1 was created 2009Dec30
 and Test2 was created 2010Feb05, the ListJobs operation would return
@@ -188,7 +190,7 @@ Each argument is described in detail in: L<Paws::ImportExport::UpdateJob>
 
 Returns: a L<Paws::ImportExport::UpdateJobOutput> instance
 
-  You use this operation to change the parameters specified in the
+You use this operation to change the parameters specified in the
 original manifest file by supplying a new manifest file. The manifest
 file attached to this request replaces the original manifest file. You
 can only use the operation after a CreateJob request but before the
@@ -222,9 +224,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

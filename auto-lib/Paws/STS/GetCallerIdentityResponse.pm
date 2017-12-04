@@ -32,8 +32,10 @@ The AWS ARN associated with the calling entity.
 
 The unique identifier of the calling entity. The exact value depends on
 the type of entity making the call. The values returned are those
-listed in the B<aws:userid> column in the Principal table found on the
-B<Policy Variables> reference page in the I<IAM User Guide>.
+listed in the B<aws:userid> column in the Principal table
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_variables.html#principaltable)
+found on the B<Policy Variables> reference page in the I<IAM User
+Guide>.
 
 
 =head2 _request_id => Str

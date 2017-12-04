@@ -43,12 +43,12 @@ for a workflow execution.
 
 =head2 B<REQUIRED> OpenActivityTasks => Int
 
-  The count of activity tasks whose status is OPEN.
+  The count of activity tasks whose status is C<OPEN>.
 
 
 =head2 B<REQUIRED> OpenChildWorkflowExecutions => Int
 
-  The count of child workflow executions whose status is OPEN.
+  The count of child workflow executions whose status is C<OPEN>.
 
 
 =head2 B<REQUIRED> OpenDecisionTasks => Int
@@ -59,7 +59,7 @@ can have at most one open decision task.
 
 =head2 OpenLambdaFunctions => Int
 
-  The count of AWS Lambda functions that are currently executing.
+  The count of Lambda tasks whose status is C<OPEN>.
 
 
 =head2 B<REQUIRED> OpenTimers => Int
@@ -75,9 +75,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SimpleWor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

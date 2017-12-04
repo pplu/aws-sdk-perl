@@ -10,7 +10,7 @@ package Paws::SDB;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V2Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V2Signature', 'Paws::Net::QueryCaller';
 
   has '+region_rules' => (default => sub {
     my $regioninfo;
@@ -87,18 +87,20 @@ package Paws::SDB;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDomains(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListDomains(@_, NextToken => $result->NextToken);
-        push @{ $result->DomainNames }, @{ $result->DomainNames };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDomains(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DomainNames }, @{ $next_result->DomainNames };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListDomains(@_, NextToken => $result->NextToken);
         $callback->($_ => 'DomainNames') foreach (@{ $result->DomainNames });
+        $result = $self->ListDomains(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'DomainNames') foreach (@{ $result->DomainNames });
     }
 
     return undef
@@ -108,18 +110,20 @@ package Paws::SDB;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->Select(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->Select(@_, NextToken => $result->NextToken);
-        push @{ $result->Items }, @{ $result->Items };
+      while ($next_result->NextToken) {
+        $next_result = $self->Select(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Items }, @{ $next_result->Items };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->Select(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Items') foreach (@{ $result->Items });
+        $result = $self->Select(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Items') foreach (@{ $result->Items });
     }
 
     return undef
@@ -170,7 +174,8 @@ performance tuning. Developers gain access to this functionality within
 Amazon's proven computing environment, are able to scale instantly, and
 pay only for what they use.
 
-Visit http://aws.amazon.com/simpledb/ for more information.
+Visit http://aws.amazon.com/simpledb/ (http://aws.amazon.com/simpledb/)
+for more information.
 
 =head1 METHODS
 
@@ -180,7 +185,7 @@ Each argument is described in detail in: L<Paws::SDB::BatchDeleteAttributes>
 
 Returns: nothing
 
-  Performs multiple DeleteAttributes operations in a single call, which
+Performs multiple DeleteAttributes operations in a single call, which
 reduces round trips and latencies. This enables Amazon SimpleDB to
 optimize requests, which generally yields better throughput.
 
@@ -202,7 +207,7 @@ Each argument is described in detail in: L<Paws::SDB::BatchPutAttributes>
 
 Returns: nothing
 
-  The C<BatchPutAttributes> operation creates or replaces attributes
+The C<BatchPutAttributes> operation creates or replaces attributes
 within one or more items. By using this operation, the client can
 perform multiple PutAttribute operation with a single call. This helps
 yield savings in round trips and latencies, enabling Amazon SimpleDB to
@@ -267,7 +272,7 @@ Each argument is described in detail in: L<Paws::SDB::CreateDomain>
 
 Returns: nothing
 
-  The C<CreateDomain> operation creates a new domain. The domain name
+The C<CreateDomain> operation creates a new domain. The domain name
 should be unique among the domains associated with the Access Key ID
 provided in the request. The C<CreateDomain> operation may take 10 or
 more seconds to complete.
@@ -275,7 +280,8 @@ more seconds to complete.
 The client can create up to 100 domains per account.
 
 If the client requires additional domains, go to
-http://aws.amazon.com/contact-us/simpledb-limit-request/.
+http://aws.amazon.com/contact-us/simpledb-limit-request/
+(http://aws.amazon.com/contact-us/simpledb-limit-request/).
 
 
 =head2 DeleteAttributes(DomainName => Str, ItemName => Str, [Attributes => ArrayRef[L<Paws::SDB::DeletableAttribute>], Expected => L<Paws::SDB::UpdateCondition>])
@@ -284,7 +290,7 @@ Each argument is described in detail in: L<Paws::SDB::DeleteAttributes>
 
 Returns: nothing
 
-  Deletes one or more attributes associated with an item. If all
+Deletes one or more attributes associated with an item. If all
 attributes of the item are deleted, the item is deleted.
 
 C<DeleteAttributes> is an idempotent operation; running it multiple
@@ -303,7 +309,7 @@ Each argument is described in detail in: L<Paws::SDB::DeleteDomain>
 
 Returns: nothing
 
-  The C<DeleteDomain> operation deletes a domain. Any items (and their
+The C<DeleteDomain> operation deletes a domain. Any items (and their
 attributes) in the domain are deleted as well. The C<DeleteDomain>
 operation might take 10 or more seconds to complete.
 
@@ -314,7 +320,7 @@ Each argument is described in detail in: L<Paws::SDB::DomainMetadata>
 
 Returns: a L<Paws::SDB::DomainMetadataResult> instance
 
-  Returns information about the domain, including when the domain was
+Returns information about the domain, including when the domain was
 created, the number of items and attributes in the domain, and the size
 of the attribute names and values.
 
@@ -325,7 +331,7 @@ Each argument is described in detail in: L<Paws::SDB::GetAttributes>
 
 Returns: a L<Paws::SDB::GetAttributesResult> instance
 
-  Returns all of the attributes associated with the specified item.
+Returns all of the attributes associated with the specified item.
 Optionally, the attributes returned can be limited to one or more
 attributes by specifying an attribute name parameter.
 
@@ -340,13 +346,13 @@ Each argument is described in detail in: L<Paws::SDB::ListDomains>
 
 Returns: a L<Paws::SDB::ListDomainsResult> instance
 
-  The C<ListDomains> operation lists all domains associated with the
+The C<ListDomains> operation lists all domains associated with the
 Access Key ID. It returns domain names up to the limit set by
-MaxNumberOfDomains. A NextToken is returned if there are more than
-C<MaxNumberOfDomains> domains. Calling C<ListDomains> successive times
-with the C<NextToken> provided by the operation returns up to
-C<MaxNumberOfDomains> more domain names with each successive operation
-call.
+L<MaxNumberOfDomains|/MaxNumberOfDomains>. A L<NextToken|/NextToken> is
+returned if there are more than C<MaxNumberOfDomains> domains. Calling
+C<ListDomains> successive times with the C<NextToken> provided by the
+operation returns up to C<MaxNumberOfDomains> more domain names with
+each successive operation call.
 
 
 =head2 PutAttributes(Attributes => ArrayRef[L<Paws::SDB::ReplaceableAttribute>], DomainName => Str, ItemName => Str, [Expected => L<Paws::SDB::UpdateCondition>])
@@ -355,7 +361,7 @@ Each argument is described in detail in: L<Paws::SDB::PutAttributes>
 
 Returns: nothing
 
-  The PutAttributes operation creates or replaces attributes in an item.
+The PutAttributes operation creates or replaces attributes in an item.
 The client may specify new attributes using a combination of the
 C<Attribute.X.Name> and C<Attribute.X.Value> parameters. The client
 specifies the first attribute by the parameters C<Attribute.0.Name> and
@@ -405,7 +411,7 @@ Each argument is described in detail in: L<Paws::SDB::Select>
 
 Returns: a L<Paws::SDB::SelectResult> instance
 
-  The C<Select> operation returns a set of attributes for C<ItemNames>
+The C<Select> operation returns a set of attributes for C<ItemNames>
 that match the select expression. C<Select> is similar to the standard
 SQL SELECT statement.
 
@@ -459,9 +465,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -3,6 +3,7 @@ package Paws::CloudWatch::MetricDatum;
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
   has StatisticValues => (is => 'ro', isa => 'Paws::CloudWatch::StatisticSet');
+  has StorageResolution => (is => 'ro', isa => 'Int');
   has Timestamp => (is => 'ro', isa => 'Str');
   has Unit => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Num');
@@ -57,6 +58,22 @@ values to be aggregated into an existing metric.
   The statistical values for the metric.
 
 
+=head2 StorageResolution => Int
+
+  Valid values are 1 and 60. Setting this to 1 specifies this metric as a
+high-resolution metric, so that CloudWatch stores the metric with
+sub-minute resolution down to one second. Setting this to 60 specifies
+this metric as a regular-resolution metric, which CloudWatch stores at
+1-minute resolution. Currently, high resolution is available only for
+custom metrics. For more information about high-resolution metrics, see
+High-Resolution Metrics
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics)
+in the I<Amazon CloudWatch User Guide>.
+
+This field is optional, if you do not specify it the default of 60 is
+used.
+
+
 =head2 Timestamp => Str
 
   The time the metric data was received, expressed as the number of
@@ -72,11 +89,11 @@ milliseconds since Jan 1, 1970 00:00:00 UTC.
 
   The value for the metric.
 
-Although the parameter accepts numbers of type Double, Amazon
-CloudWatch rejects values that are either too small or too large.
-Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10)
-or 2e-360 to 2e360 (Base 2). In addition, special values (for example,
-NaN, +Infinity, -Infinity) are not supported.
+Although the parameter accepts numbers of type Double, CloudWatch
+rejects values that are either too small or too large. Values must be
+in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to
+2e360 (Base 2). In addition, special values (for example, NaN,
++Infinity, -Infinity) are not supported.
 
 
 
@@ -86,9 +103,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudWatc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

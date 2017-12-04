@@ -15,7 +15,7 @@ package Paws::Kinesis::DisableEnhancedMonitoring;
 
 =head1 NAME
 
-Paws::Kinesis::DisableEnhancedMonitoring - Arguments for method DisableEnhancedMonitoring on Paws::Kinesis
+Paws::Kinesis::DisableEnhancedMonitoring - Arguments for method DisableEnhancedMonitoring on L<Paws::Kinesis>
 
 =head1 DESCRIPTION
 
@@ -78,8 +78,9 @@ C<ALL>
 =back
 
 For more information, see Monitoring the Amazon Kinesis Streams Service
-with Amazon CloudWatch in the I<Amazon Kinesis Streams Developer
-Guide>.
+with Amazon CloudWatch
+(http://docs.aws.amazon.com/kinesis/latest/dev/monitoring-with-cloudwatch.html)
+in the I<Amazon Kinesis Streams Developer Guide>.
 
 
 
@@ -97,9 +98,9 @@ This class forms part of L<Paws>, documenting arguments for method DisableEnhanc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

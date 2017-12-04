@@ -32,22 +32,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-Facet attribute reference that specifies the attribute definition which
-contains attribute facet name and attribute name.
+The facet attribute reference that specifies the attribute definition
+that contains the attribute facet name and attribute name.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> TargetAttributeName => Str
 
-  Target attribute name associated with the facet reference. See
-Attribute References for more information.
+  The target attribute name that is associated with the facet reference.
+See Attribute References
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences)
+for more information.
 
 
 =head2 B<REQUIRED> TargetFacetName => Str
 
-  Target facet name associated with the facet reference. See Attribute
-References for more information.
+  The target facet name that is associated with the facet reference. See
+Attribute References
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences)
+for more information.
 
 
 
@@ -57,9 +61,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudDire
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

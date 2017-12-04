@@ -18,7 +18,8 @@ Paws::KMS::ReEncryptResponse
 
 =head2 CiphertextBlob => Str
 
-The reencrypted data.
+The reencrypted data. When you use the HTTP API or the AWS CLI, the
+value is Base64-encoded. Otherwise, it is not encoded.
 
 
 =head2 KeyId => Str

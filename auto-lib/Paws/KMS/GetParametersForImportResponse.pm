@@ -34,7 +34,7 @@ C<GetParametersForImport> request.
 The time at which the import token and public key are no longer valid.
 After this time, you cannot use them to make an ImportKeyMaterial
 request and you must send another C<GetParametersForImport> request to
-retrieve new ones.
+get new ones.
 
 
 =head2 PublicKey => Str

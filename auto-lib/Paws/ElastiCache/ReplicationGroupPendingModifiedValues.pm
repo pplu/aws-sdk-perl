@@ -40,9 +40,11 @@ immediately or during the next maintenance window.
 
 =head2 AutomaticFailoverStatus => Str
 
-  Indicates the status of Multi-AZ for this Redis replication group.
+  Indicates the status of Multi-AZ with automatic failover for this Redis
+replication group.
 
-ElastiCache Multi-AZ replication groups are not supported on:
+Amazon ElastiCache for Redis does not support Multi-AZ with automatic
+failover on:
 
 =over
 
@@ -52,7 +54,9 @@ Redis versions earlier than 2.8.6.
 
 =item *
 
-Redis (cluster mode disabled):T1 and T2 cache node types.
+Redis (cluster mode disabled): T1 and T2 cache node types.
+
+=item *
 
 Redis (cluster mode enabled): T1 node types.
 
@@ -74,9 +78,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ElastiCac
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

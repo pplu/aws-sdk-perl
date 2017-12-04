@@ -20,7 +20,7 @@ package Paws::Firehose::UpdateDestination;
 
 =head1 NAME
 
-Paws::Firehose::UpdateDestination - Arguments for method UpdateDestination on Paws::Firehose
+Paws::Firehose::UpdateDestination - Arguments for method UpdateDestination on L<Paws::Firehose>
 
 =head1 DESCRIPTION
 
@@ -43,7 +43,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Obtain this value from the B<VersionId> result of
 DeliveryStreamDescription. This value is required, and helps the
-service to perform conditional operations. For example, if there is a
+service to perform conditional operations. For example, if there is an
 interleaving update and this value is null, then the update destination
 fails. After the update is successful, the B<VersionId> value is
 updated. The service then performs a merge of the old configuration
@@ -94,9 +94,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateDestina
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

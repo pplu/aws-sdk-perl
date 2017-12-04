@@ -44,7 +44,8 @@ This class has no description
 
   The access key ID of the owner of the bucket. Before you specify a
 value for your access key ID, review and follow the guidance in Best
-Practices for Managing AWS Access Keys.
+Practices for Managing AWS Access Keys
+(http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html).
 
 
 =head2 Bucket => Str
@@ -78,8 +79,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

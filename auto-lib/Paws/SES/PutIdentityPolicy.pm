@@ -16,7 +16,7 @@ package Paws::SES::PutIdentityPolicy;
 
 =head1 NAME
 
-Paws::SES::PutIdentityPolicy - Arguments for method PutIdentityPolicy on Paws::SES
+Paws::SES::PutIdentityPolicy - Arguments for method PutIdentityPolicy on L<Paws::SES>
 
 =head1 DESCRIPTION
 
@@ -37,9 +37,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Identity => Str
 
-The identity to which the policy will apply. You can specify an
-identity by using its name or by using its Amazon Resource Name (ARN).
-Examples: C<user@example.com>, C<example.com>,
+The identity that the policy will apply to. You can specify an identity
+by using its name or by using its Amazon Resource Name (ARN). Examples:
+C<user@example.com>, C<example.com>,
 C<arn:aws:ses:us-east-1:123456789012:identity/example.com>.
 
 To successfully call this API, you must own the identity.
@@ -51,7 +51,8 @@ To successfully call this API, you must own the identity.
 The text of the policy in JSON format. The policy cannot exceed 4 KB.
 
 For information about the syntax of sending authorization policies, see
-the Amazon SES Developer Guide.
+the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html).
 
 
 
@@ -71,9 +72,9 @@ This class forms part of L<Paws>, documenting arguments for method PutIdentityPo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

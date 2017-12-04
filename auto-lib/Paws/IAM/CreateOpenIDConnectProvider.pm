@@ -16,7 +16,7 @@ package Paws::IAM::CreateOpenIDConnectProvider;
 
 =head1 NAME
 
-Paws::IAM::CreateOpenIDConnectProvider - Arguments for method CreateOpenIDConnectProvider on Paws::IAM
+Paws::IAM::CreateOpenIDConnectProvider - Arguments for method CreateOpenIDConnectProvider on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -73,8 +73,9 @@ would be the hex-encoded SHA-1 hash value of the certificate used by
 https://keys.server.example.com.
 
 For more information about obtaining the OIDC provider's thumbprint,
-see Obtaining the Thumbprint for an OpenID Connect Provider in the
-I<IAM User Guide>.
+see Obtaining the Thumbprint for an OpenID Connect Provider
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/identity-providers-oidc-obtain-thumbprint.html)
+in the I<IAM User Guide>.
 
 
 
@@ -99,9 +100,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateOpenIDC
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

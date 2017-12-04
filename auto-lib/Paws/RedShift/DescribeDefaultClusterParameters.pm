@@ -16,7 +16,7 @@ package Paws::RedShift::DescribeDefaultClusterParameters;
 
 =head1 NAME
 
-Paws::RedShift::DescribeDefaultClusterParameters - Arguments for method DescribeDefaultClusterParameters on Paws::RedShift
+Paws::RedShift::DescribeDefaultClusterParameters - Arguments for method DescribeDefaultClusterParameters on L<Paws::RedShift>
 
 =head1 DESCRIPTION
 
@@ -74,9 +74,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeDefau
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

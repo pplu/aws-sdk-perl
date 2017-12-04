@@ -5,6 +5,8 @@ package Paws::EC2::DescribeSecurityGroups;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has GroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'GroupId' );
   has GroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'GroupName' );
+  has MaxResults => (is => 'ro', isa => 'Int');
+  has NextToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -17,7 +19,7 @@ package Paws::EC2::DescribeSecurityGroups;
 
 =head1 NAME
 
-Paws::EC2::DescribeSecurityGroups - Arguments for method DescribeSecurityGroups on Paws::EC2
+Paws::EC2::DescribeSecurityGroups - Arguments for method DescribeSecurityGroups on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -152,6 +154,20 @@ Default: Describes all your security groups.
 
 
 
+=head2 MaxResults => Int
+
+The maximum number of results to return in a single call. To retrieve
+the remaining results, make another request with the returned
+C<NextToken> value. This value can be between 5 and 1000.
+
+
+
+=head2 NextToken => Str
+
+The token to request the next page of results.
+
+
+
 
 =head1 SEE ALSO
 
@@ -159,9 +175,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeSecur
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

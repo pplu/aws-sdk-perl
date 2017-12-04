@@ -1,0 +1,26 @@
+---
+tests:
+  - expected: LS1
+    op: eq
+    path: LogStreams.0.LogStreamName
+  - expected: 1497041663354
+    op: eq
+    path: LogStreams.0.CreationTime
+  - expected: 1497041972000
+    op: eq
+    path: LogStreams.0.LastEventTimestamp
+  - expected: 49566437988839809929601761641783276331148065183434287010
+    op: eq
+    path: LogStreams.0.UploadSequenceToken
+  - expected: 0
+    op: eq
+    path: LogStreams.0.StoredBytes
+  - expected: 1497041972000
+    op: eq
+    path: LogStreams.0.FirstEventTimestamp
+  - expected: 1497042029542
+    op: eq
+    path: LogStreams.0.LastIngestionTime
+  - expected: arn:aws:logs:eu-west-1:000000000000:log-group:LGNAME1:log-stream:LS1
+    op: eq
+    path: LogStreams.0.Arn

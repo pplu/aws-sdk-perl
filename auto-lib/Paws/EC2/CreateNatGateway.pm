@@ -16,7 +16,7 @@ package Paws::EC2::CreateNatGateway;
 
 =head1 NAME
 
-Paws::EC2::CreateNatGateway - Arguments for method CreateNatGateway on Paws::EC2
+Paws::EC2::CreateNatGateway - Arguments for method CreateNatGateway on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -46,7 +46,8 @@ you must first disassociate it.
 =head2 ClientToken => Str
 
 Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. For more information, see How to Ensure Idempotency.
+of the request. For more information, see How to Ensure Idempotency
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 Constraint: Maximum 64 ASCII characters.
 
@@ -65,9 +66,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateNatGate
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

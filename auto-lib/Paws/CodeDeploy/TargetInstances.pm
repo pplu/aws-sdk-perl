@@ -1,6 +1,7 @@
 package Paws::CodeDeploy::TargetInstances;
   use Moose;
   has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'autoScalingGroups', traits => ['NameInRequest']);
+  has Ec2TagSet => (is => 'ro', isa => 'Paws::CodeDeploy::EC2TagSet', request_name => 'ec2TagSet', traits => ['NameInRequest']);
   has TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]', request_name => 'tagFilters', traits => ['NameInRequest']);
 1;
 
@@ -44,10 +45,19 @@ environment in a blue/green deployment.
 environment for a blue/green deployment.
 
 
+=head2 Ec2TagSet => L<Paws::CodeDeploy::EC2TagSet>
+
+  Information about the groups of EC2 instance tags that an instance must
+be identified by in order for it to be included in the replacement
+environment for a blue/green deployment. Cannot be used in the same
+call as tagFilters.
+
+
 =head2 TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
 
   The tag filter key, type, and value used to identify Amazon EC2
 instances in a replacement environment for a blue/green deployment.
+Cannot be used in the same call as ec2TagSet.
 
 
 
@@ -57,9 +67,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodeDeplo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -58,7 +58,9 @@ table.
 
   The number of provisioned throughput decreases for this table during
 this UTC calendar day. For current maximums on provisioned throughput
-decreases, see Limits in the I<Amazon DynamoDB Developer Guide>.
+decreases, see Limits
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 =head2 ReadCapacityUnits => Int
@@ -83,9 +85,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::DynamoDB>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

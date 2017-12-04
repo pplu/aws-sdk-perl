@@ -3,6 +3,7 @@ package Paws::CodeDeploy::ApplicationInfo;
   has ApplicationId => (is => 'ro', isa => 'Str', request_name => 'applicationId', traits => ['NameInRequest']);
   has ApplicationName => (is => 'ro', isa => 'Str', request_name => 'applicationName', traits => ['NameInRequest']);
   has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
+  has GitHubAccountName => (is => 'ro', isa => 'Str', request_name => 'gitHubAccountName', traits => ['NameInRequest']);
   has LinkedToGitHub => (is => 'ro', isa => 'Bool', request_name => 'linkedToGitHub', traits => ['NameInRequest']);
 1;
 
@@ -54,6 +55,11 @@ Information about an application.
   The time at which the application was created.
 
 
+=head2 GitHubAccountName => Str
+
+  The name for a connection to a GitHub account.
+
+
 =head2 LinkedToGitHub => Bool
 
   True if the user has authenticated with GitHub for the specified
@@ -67,9 +73,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodeDeplo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

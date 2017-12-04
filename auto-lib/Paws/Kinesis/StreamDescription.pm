@@ -1,7 +1,9 @@
 package Paws::Kinesis::StreamDescription;
   use Moose;
+  has EncryptionType => (is => 'ro', isa => 'Str');
   has EnhancedMonitoring => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::EnhancedMetrics]', required => 1);
   has HasMoreShards => (is => 'ro', isa => 'Bool', required => 1);
+  has KeyId => (is => 'ro', isa => 'Str');
   has RetentionPeriodHours => (is => 'ro', isa => 'Int', required => 1);
   has Shards => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::Shard]', required => 1);
   has StreamARN => (is => 'ro', isa => 'Str', required => 1);
@@ -27,20 +29,40 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Kinesis::StreamDescription object:
 
-  $service_obj->Method(Att1 => { EnhancedMonitoring => $value, ..., StreamStatus => $value  });
+  $service_obj->Method(Att1 => { EncryptionType => $value, ..., StreamStatus => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::StreamDescription object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->EnhancedMonitoring
+  $result->Att1->EncryptionType
 
 =head1 DESCRIPTION
 
 Represents the output for DescribeStream.
 
 =head1 ATTRIBUTES
+
+
+=head2 EncryptionType => Str
+
+  The server-side encryption type used on the stream. This parameter can
+be one of the following values:
+
+=over
+
+=item *
+
+C<NONE>: Do not encrypt the records in the stream.
+
+=item *
+
+C<KMS>: Use server-side encryption on the records in the stream using a
+customer-managed KMS key.
+
+=back
+
 
 
 =head2 B<REQUIRED> EnhancedMonitoring => ArrayRef[L<Paws::Kinesis::EnhancedMetrics>]
@@ -51,6 +73,12 @@ Represents the output for DescribeStream.
 =head2 B<REQUIRED> HasMoreShards => Bool
 
   If set to C<true>, more shards in the stream are available to describe.
+
+
+=head2 KeyId => Str
+
+  The GUID for the customer-managed KMS key used for encryption on the
+stream.
 
 
 =head2 B<REQUIRED> RetentionPeriodHours => Int
@@ -118,9 +146,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Kinesis>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

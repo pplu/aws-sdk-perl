@@ -42,13 +42,14 @@ Describes a C<COPY> command for Amazon Redshift.
 
   Optional parameters to use with the Amazon Redshift C<COPY> command.
 For more information, see the "Optional Parameters" section of Amazon
-Redshift COPY command. Some possible examples that would apply to
-Firehose are as follows:
+Redshift COPY command
+(http://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html). Some
+possible examples that would apply to Kinesis Firehose are as follows:
 
 C<delimiter '\t' lzop;> - fields are delimited with "\t" (TAB
 character) and compressed using lzop.
 
-C<delimiter '|> - fields are delimited with "|" (this is the default
+C<delimiter '|'> - fields are delimited with "|" (this is the default
 delimiter).
 
 C<delimiter '|' escape> - the delimiter should be escaped.
@@ -61,7 +62,8 @@ every column in the table.
 C<JSON 's3://mybucket/jsonpaths.txt'> - data is in JSON format, and the
 path specified is the format of the data.
 
-For more examples, see Amazon Redshift COPY command examples.
+For more examples, see Amazon Redshift COPY command examples
+(http://docs.aws.amazon.com/redshift/latest/dg/r_COPY_command_examples.html).
 
 
 =head2 DataTableColumns => Str
@@ -82,9 +84,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Firehose>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

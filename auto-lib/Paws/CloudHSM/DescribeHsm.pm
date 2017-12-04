@@ -15,7 +15,7 @@ package Paws::CloudHSM::DescribeHsm;
 
 =head1 NAME
 
-Paws::CloudHSM::DescribeHsm - Arguments for method DescribeHsm on Paws::CloudHSM
+Paws::CloudHSM::DescribeHsm - Arguments for method DescribeHsm on L<Paws::CloudHSM>
 
 =head1 DESCRIPTION
 
@@ -36,15 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 HsmArn => Str
 
-The ARN of the HSM. Either the I<HsmArn> or the I<SerialNumber>
+The ARN of the HSM. Either the C<HsmArn> or the C<SerialNumber>
 parameter must be specified.
 
 
 
 =head2 HsmSerialNumber => Str
 
-The serial number of the HSM. Either the I<HsmArn> or the
-I<HsmSerialNumber> parameter must be specified.
+The serial number of the HSM. Either the C<HsmArn> or the
+C<HsmSerialNumber> parameter must be specified.
 
 
 
@@ -55,9 +55,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeHsm i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

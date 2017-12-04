@@ -17,7 +17,7 @@ package Paws::Rekognition::SearchFaces;
 
 =head1 NAME
 
-Paws::Rekognition::SearchFaces - Arguments for method SearchFaces on Paws::Rekognition
+Paws::Rekognition::SearchFaces - Arguments for method SearchFaces on L<Paws::Rekognition>
 
 =head1 DESCRIPTION
 
@@ -70,9 +70,9 @@ This class forms part of L<Paws>, documenting arguments for method SearchFaces i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

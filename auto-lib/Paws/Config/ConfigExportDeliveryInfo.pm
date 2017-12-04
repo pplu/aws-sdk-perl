@@ -36,8 +36,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 
 =head1 DESCRIPTION
 
-A list that contains the status of the delivery of either the snapshot
-or the configuration history to the specified Amazon S3 bucket.
+Provides status of the delivery of the snapshot or the configuration
+history to the specified Amazon S3 bucket. Also provides the status of
+notifications about the Amazon S3 delivery to the specified Amazon SNS
+topic.
 
 =head1 ATTRIBUTES
 
@@ -79,9 +81,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Config>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

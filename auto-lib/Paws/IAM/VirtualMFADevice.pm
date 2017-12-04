@@ -42,8 +42,9 @@ Contains information about a virtual MFA device.
 
 =head2 Base32StringSeed => Str
 
-  The Base32 seed defined as specified in RFC3548. The
-C<Base32StringSeed> is Base64-encoded.
+  The Base32 seed defined as specified in RFC3548
+(https://tools.ietf.org/html/rfc3548.txt). The C<Base32StringSeed> is
+Base64-encoded.
 
 
 =head2 EnableDate => Str
@@ -78,9 +79,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

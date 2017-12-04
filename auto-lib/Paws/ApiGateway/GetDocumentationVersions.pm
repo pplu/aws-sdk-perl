@@ -1,9 +1,9 @@
 
 package Paws::ApiGateway::GetDocumentationVersions;
   use Moose;
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit' );
-  has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position' );
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
+  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
+  has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position');
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -11,14 +11,13 @@ package Paws::ApiGateway::GetDocumentationVersions;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/documentation/versions');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::DocumentationVersions');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::GetDocumentationVersions - Arguments for method GetDocumentationVersions on Paws::ApiGateway
+Paws::ApiGateway::GetDocumentationVersions - Arguments for method GetDocumentationVersions on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -51,8 +50,7 @@ The current pagination position in the paged result set.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-[Required] The identifier of an API of the to-be-retrieved
-documentation versions.
+[Required] The string identifier of the associated RestApi.
 
 
 
@@ -63,9 +61,9 @@ This class forms part of L<Paws>, documenting arguments for method GetDocumentat
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

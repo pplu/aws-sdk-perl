@@ -16,7 +16,7 @@ package Paws::DynamoDB::BatchWriteItem;
 
 =head1 NAME
 
-Paws::DynamoDB::BatchWriteItem - Arguments for method BatchWriteItem on Paws::DynamoDB
+Paws::DynamoDB::BatchWriteItem - Arguments for method BatchWriteItem on L<Paws::DynamoDB>
 
 =head1 DESCRIPTION
 
@@ -53,7 +53,7 @@ item. The item to be deleted is identified by a C<Key> subelement:
 =item *
 
 C<Key> - A map of primary key attribute values that uniquely identify
-the ! item. Each entry in this map consists of an attribute name and an
+the item. Each entry in this map consists of an attribute name and an
 attribute value. For each primary key, you must provide I<all> of the
 key attributes. For example, with a simple primary key, you only need
 to provide a value for the partition key. For a composite primary key,
@@ -110,9 +110,9 @@ This class forms part of L<Paws>, documenting arguments for method BatchWriteIte
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -1,10 +1,10 @@
 
 package Paws::IoT::RegisterCACertificate;
   use Moose;
-  has AllowAutoRegistration => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'allowAutoRegistration' );
-  has CaCertificate => (is => 'ro', isa => 'Str', required => 1);
-  has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive' );
-  has VerificationCertificate => (is => 'ro', isa => 'Str', required => 1);
+  has AllowAutoRegistration => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'allowAutoRegistration');
+  has CaCertificate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'caCertificate', required => 1);
+  has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive');
+  has VerificationCertificate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'verificationCertificate', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -12,14 +12,13 @@ package Paws::IoT::RegisterCACertificate;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/cacertificate');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::RegisterCACertificateResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::IoT::RegisterCACertificate - Arguments for method RegisterCACertificate on Paws::IoT
+Paws::IoT::RegisterCACertificate - Arguments for method RegisterCACertificate on L<Paws::IoT>
 
 =head1 DESCRIPTION
 
@@ -70,9 +69,9 @@ This class forms part of L<Paws>, documenting arguments for method RegisterCACer
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

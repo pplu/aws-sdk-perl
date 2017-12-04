@@ -11,7 +11,7 @@ package Paws::CodeDeploy;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub AddTagsToOnPremisesInstances {
@@ -159,6 +159,11 @@ package Paws::CodeDeploy;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::ListDeployments', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListGitHubAccountTokenNames {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::ListGitHubAccountTokenNames', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListOnPremisesInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::ListOnPremisesInstances', @_);
@@ -205,18 +210,20 @@ package Paws::CodeDeploy;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListApplicationRevisions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListApplicationRevisions(@_, nextToken => $result->nextToken);
-        push @{ $result->revisions }, @{ $result->revisions };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListApplicationRevisions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->revisions }, @{ $next_result->revisions };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListApplicationRevisions(@_, nextToken => $result->nextToken);
         $callback->($_ => 'revisions') foreach (@{ $result->revisions });
+        $result = $self->ListApplicationRevisions(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'revisions') foreach (@{ $result->revisions });
     }
 
     return undef
@@ -226,18 +233,20 @@ package Paws::CodeDeploy;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListApplications(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListApplications(@_, nextToken => $result->nextToken);
-        push @{ $result->applications }, @{ $result->applications };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListApplications(@_, nextToken => $next_result->nextToken);
+        push @{ $result->applications }, @{ $next_result->applications };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListApplications(@_, nextToken => $result->nextToken);
         $callback->($_ => 'applications') foreach (@{ $result->applications });
+        $result = $self->ListApplications(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'applications') foreach (@{ $result->applications });
     }
 
     return undef
@@ -247,18 +256,20 @@ package Paws::CodeDeploy;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDeploymentConfigs(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListDeploymentConfigs(@_, nextToken => $result->nextToken);
-        push @{ $result->deploymentConfigsList }, @{ $result->deploymentConfigsList };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDeploymentConfigs(@_, nextToken => $next_result->nextToken);
+        push @{ $result->deploymentConfigsList }, @{ $next_result->deploymentConfigsList };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListDeploymentConfigs(@_, nextToken => $result->nextToken);
         $callback->($_ => 'deploymentConfigsList') foreach (@{ $result->deploymentConfigsList });
+        $result = $self->ListDeploymentConfigs(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'deploymentConfigsList') foreach (@{ $result->deploymentConfigsList });
     }
 
     return undef
@@ -268,18 +279,20 @@ package Paws::CodeDeploy;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDeploymentGroups(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListDeploymentGroups(@_, nextToken => $result->nextToken);
-        push @{ $result->deploymentGroups }, @{ $result->deploymentGroups };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDeploymentGroups(@_, nextToken => $next_result->nextToken);
+        push @{ $result->deploymentGroups }, @{ $next_result->deploymentGroups };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListDeploymentGroups(@_, nextToken => $result->nextToken);
         $callback->($_ => 'deploymentGroups') foreach (@{ $result->deploymentGroups });
+        $result = $self->ListDeploymentGroups(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'deploymentGroups') foreach (@{ $result->deploymentGroups });
     }
 
     return undef
@@ -289,18 +302,20 @@ package Paws::CodeDeploy;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDeploymentInstances(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListDeploymentInstances(@_, nextToken => $result->nextToken);
-        push @{ $result->instancesList }, @{ $result->instancesList };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDeploymentInstances(@_, nextToken => $next_result->nextToken);
+        push @{ $result->instancesList }, @{ $next_result->instancesList };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListDeploymentInstances(@_, nextToken => $result->nextToken);
         $callback->($_ => 'instancesList') foreach (@{ $result->instancesList });
+        $result = $self->ListDeploymentInstances(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'instancesList') foreach (@{ $result->instancesList });
     }
 
     return undef
@@ -310,25 +325,27 @@ package Paws::CodeDeploy;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDeployments(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListDeployments(@_, nextToken => $result->nextToken);
-        push @{ $result->deployments }, @{ $result->deployments };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDeployments(@_, nextToken => $next_result->nextToken);
+        push @{ $result->deployments }, @{ $next_result->deployments };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListDeployments(@_, nextToken => $result->nextToken);
         $callback->($_ => 'deployments') foreach (@{ $result->deployments });
+        $result = $self->ListDeployments(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'deployments') foreach (@{ $result->deployments });
     }
 
     return undef
   }
 
 
-  sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplicationRevisions BatchGetApplications BatchGetDeploymentGroups BatchGetDeploymentInstances BatchGetDeployments BatchGetOnPremisesInstances ContinueDeployment CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListOnPremisesInstances RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances SkipWaitTimeForInstanceTermination StopDeployment UpdateApplication UpdateDeploymentGroup / }
+  sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplicationRevisions BatchGetApplications BatchGetDeploymentGroups BatchGetDeploymentInstances BatchGetDeployments BatchGetOnPremisesInstances ContinueDeployment CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListGitHubAccountTokenNames ListOnPremisesInstances RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances SkipWaitTimeForInstanceTermination StopDeployment UpdateApplication UpdateDeploymentGroup / }
 
 1;
 
@@ -428,18 +445,22 @@ B<AWS CodeDeploy Information Resources>
 =item *
 
 AWS CodeDeploy User Guide
+(http://docs.aws.amazon.com/codedeploy/latest/userguide)
 
 =item *
 
 AWS CodeDeploy API Reference Guide
+(http://docs.aws.amazon.com/codedeploy/latest/APIReference/)
 
 =item *
 
 AWS CLI Reference for AWS CodeDeploy
+(http://docs.aws.amazon.com/cli/latest/reference/deploy/index.html)
 
 =item *
 
 AWS CodeDeploy Developer Forum
+(https://forums.aws.amazon.com/forum.jspa?forumID=179)
 
 =back
 
@@ -452,7 +473,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::AddTagsToOnPremises
 
 Returns: nothing
 
-  Adds tags to on-premises instances.
+Adds tags to on-premises instances.
 
 
 =head2 BatchGetApplicationRevisions(ApplicationName => Str, Revisions => ArrayRef[L<Paws::CodeDeploy::RevisionLocation>])
@@ -461,7 +482,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetApplication
 
 Returns: a L<Paws::CodeDeploy::BatchGetApplicationRevisionsOutput> instance
 
-  Gets information about one or more application revisions.
+Gets information about one or more application revisions.
 
 
 =head2 BatchGetApplications([ApplicationNames => ArrayRef[Str|Undef]])
@@ -470,7 +491,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetApplication
 
 Returns: a L<Paws::CodeDeploy::BatchGetApplicationsOutput> instance
 
-  Gets information about one or more applications.
+Gets information about one or more applications.
 
 
 =head2 BatchGetDeploymentGroups(ApplicationName => Str, DeploymentGroupNames => ArrayRef[Str|Undef])
@@ -479,7 +500,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetDeploymentG
 
 Returns: a L<Paws::CodeDeploy::BatchGetDeploymentGroupsOutput> instance
 
-  Gets information about one or more deployment groups.
+Gets information about one or more deployment groups.
 
 
 =head2 BatchGetDeploymentInstances(DeploymentId => Str, InstanceIds => ArrayRef[Str|Undef])
@@ -488,7 +509,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetDeploymentI
 
 Returns: a L<Paws::CodeDeploy::BatchGetDeploymentInstancesOutput> instance
 
-  Gets information about one or more instance that are part of a
+Gets information about one or more instance that are part of a
 deployment group.
 
 
@@ -498,7 +519,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetDeployments
 
 Returns: a L<Paws::CodeDeploy::BatchGetDeploymentsOutput> instance
 
-  Gets information about one or more deployments.
+Gets information about one or more deployments.
 
 
 =head2 BatchGetOnPremisesInstances([InstanceNames => ArrayRef[Str|Undef]])
@@ -507,7 +528,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetOnPremisesI
 
 Returns: a L<Paws::CodeDeploy::BatchGetOnPremisesInstancesOutput> instance
 
-  Gets information about one or more on-premises instances.
+Gets information about one or more on-premises instances.
 
 
 =head2 ContinueDeployment([DeploymentId => Str])
@@ -516,7 +537,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ContinueDeployment>
 
 Returns: nothing
 
-  For a blue/green deployment, starts the process of rerouting traffic
+For a blue/green deployment, starts the process of rerouting traffic
 from instances in the original environment to instances in the
 replacement environment without waiting for a specified wait time to
 elapse. (Traffic rerouting, which is achieved by registering instances
@@ -530,7 +551,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::CreateApplication>
 
 Returns: a L<Paws::CodeDeploy::CreateApplicationOutput> instance
 
-  Creates an application.
+Creates an application.
 
 
 =head2 CreateDeployment(ApplicationName => Str, [AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>, DeploymentConfigName => Str, DeploymentGroupName => Str, Description => Str, FileExistsBehavior => Str, IgnoreApplicationStopFailures => Bool, Revision => L<Paws::CodeDeploy::RevisionLocation>, TargetInstances => L<Paws::CodeDeploy::TargetInstances>, UpdateOutdatedInstancesOnly => Bool])
@@ -539,25 +560,25 @@ Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeployment>
 
 Returns: a L<Paws::CodeDeploy::CreateDeploymentOutput> instance
 
-  Deploys an application revision through the specified deployment group.
+Deploys an application revision through the specified deployment group.
 
 
-=head2 CreateDeploymentConfig(DeploymentConfigName => Str, [MinimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>])
+=head2 CreateDeploymentConfig(DeploymentConfigName => Str, MinimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>)
 
 Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeploymentConfig>
 
 Returns: a L<Paws::CodeDeploy::CreateDeploymentConfigOutput> instance
 
-  Creates a deployment configuration.
+Creates a deployment configuration.
 
 
-=head2 CreateDeploymentGroup(ApplicationName => Str, DeploymentGroupName => Str, ServiceRoleArn => Str, [AlarmConfiguration => L<Paws::CodeDeploy::AlarmConfiguration>, AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>, AutoScalingGroups => ArrayRef[Str|Undef], BlueGreenDeploymentConfiguration => L<Paws::CodeDeploy::BlueGreenDeploymentConfiguration>, DeploymentConfigName => Str, DeploymentStyle => L<Paws::CodeDeploy::DeploymentStyle>, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], LoadBalancerInfo => L<Paws::CodeDeploy::LoadBalancerInfo>, OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]])
+=head2 CreateDeploymentGroup(ApplicationName => Str, DeploymentGroupName => Str, ServiceRoleArn => Str, [AlarmConfiguration => L<Paws::CodeDeploy::AlarmConfiguration>, AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>, AutoScalingGroups => ArrayRef[Str|Undef], BlueGreenDeploymentConfiguration => L<Paws::CodeDeploy::BlueGreenDeploymentConfiguration>, DeploymentConfigName => Str, DeploymentStyle => L<Paws::CodeDeploy::DeploymentStyle>, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], Ec2TagSet => L<Paws::CodeDeploy::EC2TagSet>, LoadBalancerInfo => L<Paws::CodeDeploy::LoadBalancerInfo>, OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], OnPremisesTagSet => L<Paws::CodeDeploy::OnPremisesTagSet>, TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeploymentGroup>
 
 Returns: a L<Paws::CodeDeploy::CreateDeploymentGroupOutput> instance
 
-  Creates a deployment group to which application revisions will be
+Creates a deployment group to which application revisions will be
 deployed.
 
 
@@ -567,7 +588,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::DeleteApplication>
 
 Returns: nothing
 
-  Deletes an application.
+Deletes an application.
 
 
 =head2 DeleteDeploymentConfig(DeploymentConfigName => Str)
@@ -576,7 +597,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::DeleteDeploymentCon
 
 Returns: nothing
 
-  Deletes a deployment configuration.
+Deletes a deployment configuration.
 
 A deployment configuration cannot be deleted if it is currently in use.
 Predefined configurations cannot be deleted.
@@ -588,7 +609,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::DeleteDeploymentGro
 
 Returns: a L<Paws::CodeDeploy::DeleteDeploymentGroupOutput> instance
 
-  Deletes a deployment group.
+Deletes a deployment group.
 
 
 =head2 DeregisterOnPremisesInstance(InstanceName => Str)
@@ -597,7 +618,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::DeregisterOnPremise
 
 Returns: nothing
 
-  Deregisters an on-premises instance.
+Deregisters an on-premises instance.
 
 
 =head2 GetApplication(ApplicationName => Str)
@@ -606,7 +627,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::GetApplication>
 
 Returns: a L<Paws::CodeDeploy::GetApplicationOutput> instance
 
-  Gets information about an application.
+Gets information about an application.
 
 
 =head2 GetApplicationRevision(ApplicationName => Str, Revision => L<Paws::CodeDeploy::RevisionLocation>)
@@ -615,7 +636,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::GetApplicationRevis
 
 Returns: a L<Paws::CodeDeploy::GetApplicationRevisionOutput> instance
 
-  Gets information about an application revision.
+Gets information about an application revision.
 
 
 =head2 GetDeployment(DeploymentId => Str)
@@ -624,7 +645,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::GetDeployment>
 
 Returns: a L<Paws::CodeDeploy::GetDeploymentOutput> instance
 
-  Gets information about a deployment.
+Gets information about a deployment.
 
 
 =head2 GetDeploymentConfig(DeploymentConfigName => Str)
@@ -633,7 +654,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::GetDeploymentConfig
 
 Returns: a L<Paws::CodeDeploy::GetDeploymentConfigOutput> instance
 
-  Gets information about a deployment configuration.
+Gets information about a deployment configuration.
 
 
 =head2 GetDeploymentGroup(ApplicationName => Str, DeploymentGroupName => Str)
@@ -642,7 +663,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::GetDeploymentGroup>
 
 Returns: a L<Paws::CodeDeploy::GetDeploymentGroupOutput> instance
 
-  Gets information about a deployment group.
+Gets information about a deployment group.
 
 
 =head2 GetDeploymentInstance(DeploymentId => Str, InstanceId => Str)
@@ -651,7 +672,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::GetDeploymentInstan
 
 Returns: a L<Paws::CodeDeploy::GetDeploymentInstanceOutput> instance
 
-  Gets information about an instance as part of a deployment.
+Gets information about an instance as part of a deployment.
 
 
 =head2 GetOnPremisesInstance(InstanceName => Str)
@@ -660,7 +681,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::GetOnPremisesInstan
 
 Returns: a L<Paws::CodeDeploy::GetOnPremisesInstanceOutput> instance
 
-  Gets information about an on-premises instance.
+Gets information about an on-premises instance.
 
 
 =head2 ListApplicationRevisions(ApplicationName => Str, [Deployed => Str, NextToken => Str, S3Bucket => Str, S3KeyPrefix => Str, SortBy => Str, SortOrder => Str])
@@ -669,7 +690,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ListApplicationRevi
 
 Returns: a L<Paws::CodeDeploy::ListApplicationRevisionsOutput> instance
 
-  Lists information about revisions for an application.
+Lists information about revisions for an application.
 
 
 =head2 ListApplications([NextToken => Str])
@@ -678,7 +699,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ListApplications>
 
 Returns: a L<Paws::CodeDeploy::ListApplicationsOutput> instance
 
-  Lists the applications registered with the applicable IAM user or AWS
+Lists the applications registered with the applicable IAM user or AWS
 account.
 
 
@@ -688,7 +709,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ListDeploymentConfi
 
 Returns: a L<Paws::CodeDeploy::ListDeploymentConfigsOutput> instance
 
-  Lists the deployment configurations with the applicable IAM user or AWS
+Lists the deployment configurations with the applicable IAM user or AWS
 account.
 
 
@@ -698,7 +719,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ListDeploymentGroup
 
 Returns: a L<Paws::CodeDeploy::ListDeploymentGroupsOutput> instance
 
-  Lists the deployment groups for an application registered with the
+Lists the deployment groups for an application registered with the
 applicable IAM user or AWS account.
 
 
@@ -708,7 +729,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ListDeploymentInsta
 
 Returns: a L<Paws::CodeDeploy::ListDeploymentInstancesOutput> instance
 
-  Lists the instance for a deployment associated with the applicable IAM
+Lists the instance for a deployment associated with the applicable IAM
 user or AWS account.
 
 
@@ -718,8 +739,17 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ListDeployments>
 
 Returns: a L<Paws::CodeDeploy::ListDeploymentsOutput> instance
 
-  Lists the deployments in a deployment group for an application
+Lists the deployments in a deployment group for an application
 registered with the applicable IAM user or AWS account.
+
+
+=head2 ListGitHubAccountTokenNames([NextToken => Str])
+
+Each argument is described in detail in: L<Paws::CodeDeploy::ListGitHubAccountTokenNames>
+
+Returns: a L<Paws::CodeDeploy::ListGitHubAccountTokenNamesOutput> instance
+
+Lists the names of stored connections to GitHub accounts.
 
 
 =head2 ListOnPremisesInstances([NextToken => Str, RegistrationStatus => Str, TagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]])
@@ -728,7 +758,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ListOnPremisesInsta
 
 Returns: a L<Paws::CodeDeploy::ListOnPremisesInstancesOutput> instance
 
-  Gets a list of names for one or more on-premises instances.
+Gets a list of names for one or more on-premises instances.
 
 Unless otherwise specified, both registered and deregistered
 on-premises instance names will be listed. To list only registered or
@@ -742,7 +772,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::RegisterApplication
 
 Returns: nothing
 
-  Registers with AWS CodeDeploy a revision for the specified application.
+Registers with AWS CodeDeploy a revision for the specified application.
 
 
 =head2 RegisterOnPremisesInstance(InstanceName => Str, [IamSessionArn => Str, IamUserArn => Str])
@@ -751,7 +781,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::RegisterOnPremisesI
 
 Returns: nothing
 
-  Registers an on-premises instance.
+Registers an on-premises instance.
 
 Only one IAM ARN (an IAM session ARN or IAM user ARN) is supported in
 the request. You cannot use both.
@@ -763,7 +793,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::RemoveTagsFromOnPre
 
 Returns: nothing
 
-  Removes one or more tags from one or more on-premises instances.
+Removes one or more tags from one or more on-premises instances.
 
 
 =head2 SkipWaitTimeForInstanceTermination([DeploymentId => Str])
@@ -772,7 +802,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::SkipWaitTimeForInst
 
 Returns: nothing
 
-  In a blue/green deployment, overrides any specified wait time and
+In a blue/green deployment, overrides any specified wait time and
 starts terminating instances immediately after the traffic routing is
 completed.
 
@@ -783,7 +813,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::StopDeployment>
 
 Returns: a L<Paws::CodeDeploy::StopDeploymentOutput> instance
 
-  Attempts to stop an ongoing deployment.
+Attempts to stop an ongoing deployment.
 
 
 =head2 UpdateApplication([ApplicationName => Str, NewApplicationName => Str])
@@ -792,16 +822,16 @@ Each argument is described in detail in: L<Paws::CodeDeploy::UpdateApplication>
 
 Returns: nothing
 
-  Changes the name of an application.
+Changes the name of an application.
 
 
-=head2 UpdateDeploymentGroup(ApplicationName => Str, CurrentDeploymentGroupName => Str, [AlarmConfiguration => L<Paws::CodeDeploy::AlarmConfiguration>, AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>, AutoScalingGroups => ArrayRef[Str|Undef], BlueGreenDeploymentConfiguration => L<Paws::CodeDeploy::BlueGreenDeploymentConfiguration>, DeploymentConfigName => Str, DeploymentStyle => L<Paws::CodeDeploy::DeploymentStyle>, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], LoadBalancerInfo => L<Paws::CodeDeploy::LoadBalancerInfo>, NewDeploymentGroupName => Str, OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], ServiceRoleArn => Str, TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]])
+=head2 UpdateDeploymentGroup(ApplicationName => Str, CurrentDeploymentGroupName => Str, [AlarmConfiguration => L<Paws::CodeDeploy::AlarmConfiguration>, AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>, AutoScalingGroups => ArrayRef[Str|Undef], BlueGreenDeploymentConfiguration => L<Paws::CodeDeploy::BlueGreenDeploymentConfiguration>, DeploymentConfigName => Str, DeploymentStyle => L<Paws::CodeDeploy::DeploymentStyle>, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], Ec2TagSet => L<Paws::CodeDeploy::EC2TagSet>, LoadBalancerInfo => L<Paws::CodeDeploy::LoadBalancerInfo>, NewDeploymentGroupName => Str, OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], OnPremisesTagSet => L<Paws::CodeDeploy::OnPremisesTagSet>, ServiceRoleArn => Str, TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::UpdateDeploymentGroup>
 
 Returns: a L<Paws::CodeDeploy::UpdateDeploymentGroupOutput> instance
 
-  Changes information about a deployment group.
+Changes information about a deployment group.
 
 
 
@@ -891,9 +921,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

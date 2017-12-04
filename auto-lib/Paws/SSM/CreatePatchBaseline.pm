@@ -3,10 +3,12 @@ package Paws::SSM::CreatePatchBaseline;
   use Moose;
   has ApprovalRules => (is => 'ro', isa => 'Paws::SSM::PatchRuleGroup');
   has ApprovedPatches => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ApprovedPatchesComplianceLevel => (is => 'ro', isa => 'Str');
   has ClientToken => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has GlobalFilters => (is => 'ro', isa => 'Paws::SSM::PatchFilterGroup');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has OperatingSystem => (is => 'ro', isa => 'Str');
   has RejectedPatches => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
@@ -20,7 +22,7 @@ package Paws::SSM::CreatePatchBaseline;
 
 =head1 NAME
 
-Paws::SSM::CreatePatchBaseline - Arguments for method CreatePatchBaseline on Paws::SSM
+Paws::SSM::CreatePatchBaseline - Arguments for method CreatePatchBaseline on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -51,6 +53,16 @@ A list of explicitly approved patches for the baseline.
 
 
 
+=head2 ApprovedPatchesComplianceLevel => Str
+
+Defines the compliance level for approved patches. This means that if
+an approved patch is reported as missing, this is the severity of the
+compliance violation. Valid compliance severity levels include the
+following: CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED. The
+default value is UNSPECIFIED.
+
+Valid values are: C<"CRITICAL">, C<"HIGH">, C<"MEDIUM">, C<"LOW">, C<"INFORMATIONAL">, C<"UNSPECIFIED">
+
 =head2 ClientToken => Str
 
 User-provided idempotency token.
@@ -75,6 +87,14 @@ The name of the patch baseline.
 
 
 
+=head2 OperatingSystem => Str
+
+Defines the operating system the patch baseline applies to. Supported
+operating systems include WINDOWS, AMAZON_LINUX, UBUNTU and
+REDHAT_ENTERPRISE_LINUX. The Default value is WINDOWS.
+
+Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">
+
 =head2 RejectedPatches => ArrayRef[Str|Undef]
 
 A list of explicitly rejected patches for the baseline.
@@ -88,9 +108,9 @@ This class forms part of L<Paws>, documenting arguments for method CreatePatchBa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

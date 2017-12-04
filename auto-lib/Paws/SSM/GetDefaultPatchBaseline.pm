@@ -1,6 +1,7 @@
 
 package Paws::SSM::GetDefaultPatchBaseline;
   use Moose;
+  has OperatingSystem => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -13,7 +14,7 @@ package Paws::SSM::GetDefaultPatchBaseline;
 
 =head1 NAME
 
-Paws::SSM::GetDefaultPatchBaseline - Arguments for method GetDefaultPatchBaseline on Paws::SSM
+Paws::SSM::GetDefaultPatchBaseline - Arguments for method GetDefaultPatchBaseline on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -32,6 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 OperatingSystem => Str
+
+Returns the default patch baseline for the specified operating system.
+
+Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">
+
 
 =head1 SEE ALSO
 
@@ -39,9 +46,9 @@ This class forms part of L<Paws>, documenting arguments for method GetDefaultPat
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

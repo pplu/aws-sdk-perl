@@ -41,7 +41,7 @@ A range of attribute values.
 
 =head2 B<REQUIRED> EndMode => Str
 
-  Inclusive or exclusive range end.
+  The inclusive or exclusive range end.
 
 
 =head2 EndValue => L<Paws::CloudDirectory::TypedAttributeValue>
@@ -51,7 +51,7 @@ A range of attribute values.
 
 =head2 B<REQUIRED> StartMode => Str
 
-  Inclusive or exclusive range start.
+  The inclusive or exclusive range start.
 
 
 =head2 StartValue => L<Paws::CloudDirectory::TypedAttributeValue>
@@ -66,9 +66,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudDire
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

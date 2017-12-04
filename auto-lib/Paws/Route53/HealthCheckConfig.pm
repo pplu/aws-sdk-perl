@@ -96,8 +96,9 @@ message.
   The number of consecutive health checks that an endpoint must pass or
 fail for Amazon Route 53 to change the current status of the endpoint
 from unhealthy to healthy or vice versa. For more information, see How
-Amazon Route 53 Determines Whether an Endpoint Is Healthy in the
-I<Amazon Route 53 Developer Guide>.
+Amazon Route 53 Determines Whether an Endpoint Is Healthy
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 If you don't specify a value for C<FailureThreshold>, the default value
 is three health checks.
@@ -285,14 +286,17 @@ create health checks, see the following documents:
 =item *
 
 RFC 5735, Special Use IPv4 Addresses
+(https://tools.ietf.org/html/rfc5735)
 
 =item *
 
 RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space
+(https://tools.ietf.org/html/rfc6598)
 
 =item *
 
 RFC 5156, Special-Use IPv6 Addresses
+(https://tools.ietf.org/html/rfc5156)
 
 =back
 
@@ -433,7 +437,9 @@ that number with the value of C<HealthThreshold>.
 =back
 
 For more information, see How Amazon Route 53 Determines Whether an
-Endpoint Is Healthy in the I<Amazon Route 53 Developer Guide>.
+Endpoint Is Healthy
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 
 
@@ -443,9 +449,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Route53>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

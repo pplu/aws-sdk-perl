@@ -20,7 +20,7 @@ package Paws::RedShift::DescribeEvents;
 
 =head1 NAME
 
-Paws::RedShift::DescribeEvents - Arguments for method DescribeEvents on Paws::RedShift
+Paws::RedShift::DescribeEvents - Arguments for method DescribeEvents on L<Paws::RedShift>
 
 =head1 DESCRIPTION
 
@@ -54,7 +54,7 @@ Default: C<60>
 
 The end of the time interval for which to retrieve events, specified in
 ISO 8601 format. For more information about ISO 8601, go to the ISO8601
-Wikipedia page.
+Wikipedia page. (http://en.wikipedia.org/wiki/ISO_8601)
 
 Example: C<2009-07-08T18:00Z>
 
@@ -162,7 +162,7 @@ Valid values are: C<"cluster">, C<"cluster-parameter-group">, C<"cluster-securit
 
 The beginning of the time interval to retrieve events for, specified in
 ISO 8601 format. For more information about ISO 8601, go to the ISO8601
-Wikipedia page.
+Wikipedia page. (http://en.wikipedia.org/wiki/ISO_8601)
 
 Example: C<2009-07-08T18:00Z>
 
@@ -175,9 +175,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeEvent
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

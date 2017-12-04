@@ -31,8 +31,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::E
 
 =head1 DESCRIPTION
 
-Configures retry behavior in the event that Firehose is unable to
-deliver documents to Amazon ES.
+Configures retry behavior in case Kinesis Firehose is unable to deliver
+documents to Amazon ES.
 
 =head1 ATTRIBUTES
 
@@ -40,10 +40,10 @@ deliver documents to Amazon ES.
 =head2 DurationInSeconds => Int
 
   After an initial failure to deliver to Amazon ES, the total amount of
-time during which Firehose re-attempts delivery (including the first
-attempt). After this time has elapsed, the failed documents are written
-to Amazon S3. Default value is 300 seconds (5 minutes). A value of 0
-(zero) results in no retries.
+time during which Kinesis Firehose re-attempts delivery (including the
+first attempt). After this time has elapsed, the failed documents are
+written to Amazon S3. Default value is 300 seconds (5 minutes). A value
+of 0 (zero) results in no retries.
 
 
 
@@ -53,9 +53,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Firehose>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

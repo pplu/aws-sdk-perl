@@ -1,6 +1,7 @@
 package Paws::Pinpoint::GCMChannelRequest;
   use Moose;
   has ApiKey => (is => 'ro', isa => 'Str');
+  has Enabled => (is => 'ro', isa => 'Bool');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::GCMChannelRequest object:
 
-  $service_obj->Method(Att1 => { ApiKey => $value, ..., ApiKey => $value  });
+  $service_obj->Method(Att1 => { ApiKey => $value, ..., Enabled => $value  });
 
 =head3 Results returned from an API call
 
@@ -41,6 +42,11 @@ Google Cloud Messaging credentials
   Platform credential API key from Google.
 
 
+=head2 Enabled => Bool
+
+  If the channel is enabled for sending messages.
+
+
 
 =head1 SEE ALSO
 
@@ -48,9 +54,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

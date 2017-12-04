@@ -4,6 +4,7 @@ package Paws::SSM::DescribeParameters;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::ParametersFilter]');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has ParameterFilters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::ParameterStringFilter]');
 
   use MooseX::ClassAttribute;
 
@@ -16,7 +17,7 @@ package Paws::SSM::DescribeParameters;
 
 =head1 NAME
 
-Paws::SSM::DescribeParameters - Arguments for method DescribeParameters on Paws::SSM
+Paws::SSM::DescribeParameters - Arguments for method DescribeParameters on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -57,6 +58,12 @@ from a previous call.)
 
 
 
+=head2 ParameterFilters => ArrayRef[L<Paws::SSM::ParameterStringFilter>]
+
+Filters to limit the request results.
+
+
+
 
 =head1 SEE ALSO
 
@@ -64,9 +71,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeParam
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

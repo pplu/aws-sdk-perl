@@ -11,7 +11,7 @@ package Paws::StepFunctions;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub CreateActivity {
@@ -105,18 +105,20 @@ package Paws::StepFunctions;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetExecutionHistory(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->GetExecutionHistory(@_, nextToken => $result->nextToken);
-        push @{ $result->events }, @{ $result->events };
+      while ($next_result->nextToken) {
+        $next_result = $self->GetExecutionHistory(@_, nextToken => $next_result->nextToken);
+        push @{ $result->events }, @{ $next_result->events };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->GetExecutionHistory(@_, nextToken => $result->nextToken);
         $callback->($_ => 'events') foreach (@{ $result->events });
+        $result = $self->GetExecutionHistory(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'events') foreach (@{ $result->events });
     }
 
     return undef
@@ -126,18 +128,20 @@ package Paws::StepFunctions;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListActivities(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListActivities(@_, nextToken => $result->nextToken);
-        push @{ $result->activities }, @{ $result->activities };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListActivities(@_, nextToken => $next_result->nextToken);
+        push @{ $result->activities }, @{ $next_result->activities };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListActivities(@_, nextToken => $result->nextToken);
         $callback->($_ => 'activities') foreach (@{ $result->activities });
+        $result = $self->ListActivities(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'activities') foreach (@{ $result->activities });
     }
 
     return undef
@@ -147,18 +151,20 @@ package Paws::StepFunctions;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListExecutions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListExecutions(@_, nextToken => $result->nextToken);
-        push @{ $result->executions }, @{ $result->executions };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListExecutions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->executions }, @{ $next_result->executions };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListExecutions(@_, nextToken => $result->nextToken);
         $callback->($_ => 'executions') foreach (@{ $result->executions });
+        $result = $self->ListExecutions(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'executions') foreach (@{ $result->executions });
     }
 
     return undef
@@ -168,18 +174,20 @@ package Paws::StepFunctions;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListStateMachines(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListStateMachines(@_, nextToken => $result->nextToken);
-        push @{ $result->stateMachines }, @{ $result->stateMachines };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListStateMachines(@_, nextToken => $next_result->nextToken);
+        push @{ $result->stateMachines }, @{ $next_result->stateMachines };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListStateMachines(@_, nextToken => $result->nextToken);
         $callback->($_ => 'stateMachines') foreach (@{ $result->stateMachines });
+        $result = $self->ListStateMachines(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'stateMachines') foreach (@{ $result->stateMachines });
     }
 
     return undef
@@ -216,23 +224,26 @@ Paws::StepFunctions - Perl Interface to AWS AWS Step Functions
 
 AWS Step Functions
 
-AWS Step Functions is a web service that enables you to coordinate the
-components of distributed applications and microservices using visual
-workflows. You build applications from individual components that each
-perform a discrete function, or I<task>, allowing you to scale and
-change applications quickly. Step Functions provides a graphical
-console to visualize the components of your application as a series of
-steps. It automatically triggers and tracks each step, and retries when
-there are errors, so your application executes in order and as
-expected, every time. Step Functions logs the state of each step, so
-when things do go wrong, you can diagnose and debug problems quickly.
+AWS Step Functions is a service that lets you coordinate the components
+of distributed applications and microservices using visual workflows.
 
-Step Functions manages the operations and underlying infrastructure for
-you to ensure your application is available at any scale. You can run
-tasks on the AWS cloud, on your own servers, or an any system that has
-access to AWS. Step Functions can be accessed and used with the Step
-Functions console, the AWS SDKs (included with your Beta release
-invitation email), or an HTTP API (the subject of this document).
+You can use Step Functions to build applications from individual
+components, each of which performs a discrete function, or I<task>,
+allowing you to scale and change applications quickly. Step Functions
+provides a console that helps visualize the components of your
+application as a series of steps. Step Functions automatically triggers
+and tracks each step, and retries steps when there are errors, so your
+application executes in order and as expected, every time. Step
+Functions logs the state of each step, so you can diagnose and debug
+problems quickly.
+
+Step Functions manages operations and underlying infrastructure to
+ensure your application is available at any scale. You can run tasks on
+AWS, your own servers, or any system that has access to AWS. You can
+access and use Step Functions using the console, the AWS SDKs, or an
+HTTP API. For more information about Step Functions, see the I< AWS
+Step Functions Developer Guide
+(http://docs.aws.amazon.com/step-functions/latest/dg/welcome.html) >.
 
 =head1 METHODS
 
@@ -242,7 +253,13 @@ Each argument is described in detail in: L<Paws::StepFunctions::CreateActivity>
 
 Returns: a L<Paws::StepFunctions::CreateActivityOutput> instance
 
-  Creates an activity.
+Creates an activity. An Activity is a task which you write, in any
+language and hosted on any machine which has access to AWS Step
+Functions. Activities must poll Step Functions using the
+C<GetActivityTask> and respond using C<SendTask*> API calls. This
+function lets Step Functions know the existence of your activity and
+returns an identifier for use in a state machine and when polling from
+the activity.
 
 
 =head2 CreateStateMachine(Definition => Str, Name => Str, RoleArn => Str)
@@ -251,7 +268,11 @@ Each argument is described in detail in: L<Paws::StepFunctions::CreateStateMachi
 
 Returns: a L<Paws::StepFunctions::CreateStateMachineOutput> instance
 
-  Creates a state machine.
+Creates a state machine. A state machine consists of a collection of
+states that can do work (C<Task> states), determine which states to
+transition to next (C<Choice> states), stop an execution with an error
+(C<Fail> states), and so on. State machines are specified using a
+JSON-based, structured language.
 
 
 =head2 DeleteActivity(ActivityArn => Str)
@@ -260,7 +281,7 @@ Each argument is described in detail in: L<Paws::StepFunctions::DeleteActivity>
 
 Returns: a L<Paws::StepFunctions::DeleteActivityOutput> instance
 
-  Deletes an activity.
+Deletes an activity.
 
 
 =head2 DeleteStateMachine(StateMachineArn => Str)
@@ -269,8 +290,11 @@ Each argument is described in detail in: L<Paws::StepFunctions::DeleteStateMachi
 
 Returns: a L<Paws::StepFunctions::DeleteStateMachineOutput> instance
 
-  Deletes a state machine. This is an asynchronous operation-- it sets
+Deletes a state machine. This is an asynchronous operation-- it sets
 the state machine's status to "DELETING" and begins the delete process.
+Each state machine execution will be deleted the next time it makes a
+state transition. After all executions have completed or been deleted,
+the state machine itself will be deleted.
 
 
 =head2 DescribeActivity(ActivityArn => Str)
@@ -279,7 +303,7 @@ Each argument is described in detail in: L<Paws::StepFunctions::DescribeActivity
 
 Returns: a L<Paws::StepFunctions::DescribeActivityOutput> instance
 
-  Describes an activity.
+Describes an activity.
 
 
 =head2 DescribeExecution(ExecutionArn => Str)
@@ -288,7 +312,7 @@ Each argument is described in detail in: L<Paws::StepFunctions::DescribeExecutio
 
 Returns: a L<Paws::StepFunctions::DescribeExecutionOutput> instance
 
-  Describes an execution.
+Describes an execution.
 
 
 =head2 DescribeStateMachine(StateMachineArn => Str)
@@ -297,7 +321,7 @@ Each argument is described in detail in: L<Paws::StepFunctions::DescribeStateMac
 
 Returns: a L<Paws::StepFunctions::DescribeStateMachineOutput> instance
 
-  Describes a state machine.
+Describes a state machine.
 
 
 =head2 GetActivityTask(ActivityArn => Str, [WorkerName => Str])
@@ -306,14 +330,14 @@ Each argument is described in detail in: L<Paws::StepFunctions::GetActivityTask>
 
 Returns: a L<Paws::StepFunctions::GetActivityTaskOutput> instance
 
-  Used by workers to retrieve a task (with the specified activity ARN)
-scheduled for execution by a running state machine. This initiates a
-long poll, where the service holds the HTTP connection open and
-responds as soon as a task becomes available (i.e. an execution of a
-task of this type is needed.) The maximum time the service holds on to
-the request before responding is 60 seconds. If no task is available
-within 60 seconds, the poll will return an empty result, that is, the
-C<taskToken> returned is an empty string.
+Used by workers to retrieve a task (with the specified activity ARN)
+which has been scheduled for execution by a running state machine. This
+initiates a long poll, where the service holds the HTTP connection open
+and responds as soon as a task becomes available (i.e. an execution of
+a task of this type is needed.) The maximum time the service holds on
+to the request before responding is 60 seconds. If no task is available
+within 60 seconds, the poll will return a C<taskToken> with a null
+string.
 
 Workers should set their client side socket timeout to at least 65
 seconds (5 seconds higher than the maximum time the service may hold
@@ -326,7 +350,7 @@ Each argument is described in detail in: L<Paws::StepFunctions::GetExecutionHist
 
 Returns: a L<Paws::StepFunctions::GetExecutionHistoryOutput> instance
 
-  Returns the history of the specified execution as a list of events. By
+Returns the history of the specified execution as a list of events. By
 default, the results are returned in ascending order of the
 C<timeStamp> of the events. Use the C<reverseOrder> parameter to get
 the latest events first. The results may be split into multiple pages.
@@ -340,7 +364,7 @@ Each argument is described in detail in: L<Paws::StepFunctions::ListActivities>
 
 Returns: a L<Paws::StepFunctions::ListActivitiesOutput> instance
 
-  Lists the existing activities. The results may be split into multiple
+Lists the existing activities. The results may be split into multiple
 pages. To retrieve subsequent pages, make the call again using the
 C<nextToken> returned by the previous call.
 
@@ -351,7 +375,7 @@ Each argument is described in detail in: L<Paws::StepFunctions::ListExecutions>
 
 Returns: a L<Paws::StepFunctions::ListExecutionsOutput> instance
 
-  Lists the executions of a state machine that meet the filtering
+Lists the executions of a state machine that meet the filtering
 criteria. The results may be split into multiple pages. To retrieve
 subsequent pages, make the call again using the C<nextToken> returned
 by the previous call.
@@ -363,7 +387,7 @@ Each argument is described in detail in: L<Paws::StepFunctions::ListStateMachine
 
 Returns: a L<Paws::StepFunctions::ListStateMachinesOutput> instance
 
-  Lists the existing state machines. The results may be split into
+Lists the existing state machines. The results may be split into
 multiple pages. To retrieve subsequent pages, make the call again using
 the C<nextToken> returned by the previous call.
 
@@ -374,7 +398,7 @@ Each argument is described in detail in: L<Paws::StepFunctions::SendTaskFailure>
 
 Returns: a L<Paws::StepFunctions::SendTaskFailureOutput> instance
 
-  Used by workers to report that the task identified by the C<taskToken>
+Used by workers to report that the task identified by the C<taskToken>
 failed.
 
 
@@ -384,7 +408,7 @@ Each argument is described in detail in: L<Paws::StepFunctions::SendTaskHeartbea
 
 Returns: a L<Paws::StepFunctions::SendTaskHeartbeatOutput> instance
 
-  Used by workers to report to the service that the task represented by
+Used by workers to report to the service that the task represented by
 the specified C<taskToken> is still making progress. This action resets
 the C<Heartbeat> clock. The C<Heartbeat> threshold is specified in the
 state machine's Amazon States Language definition. This action does not
@@ -406,7 +430,7 @@ Each argument is described in detail in: L<Paws::StepFunctions::SendTaskSuccess>
 
 Returns: a L<Paws::StepFunctions::SendTaskSuccessOutput> instance
 
-  Used by workers to report that the task identified by the C<taskToken>
+Used by workers to report that the task identified by the C<taskToken>
 completed successfully.
 
 
@@ -416,7 +440,7 @@ Each argument is described in detail in: L<Paws::StepFunctions::StartExecution>
 
 Returns: a L<Paws::StepFunctions::StartExecutionOutput> instance
 
-  Starts a state machine execution.
+Starts a state machine execution.
 
 
 =head2 StopExecution(ExecutionArn => Str, [Cause => Str, Error => Str])
@@ -425,7 +449,7 @@ Each argument is described in detail in: L<Paws::StepFunctions::StopExecution>
 
 Returns: a L<Paws::StepFunctions::StopExecutionOutput> instance
 
-  Stops an execution.
+Stops an execution.
 
 
 
@@ -491,9 +515,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

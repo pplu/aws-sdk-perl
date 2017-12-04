@@ -35,7 +35,7 @@ package Paws::RDS::RestoreDBInstanceFromDBSnapshot;
 
 =head1 NAME
 
-Paws::RDS::RestoreDBInstanceFromDBSnapshot - Arguments for method RestoreDBInstanceFromDBSnapshot on Paws::RDS
+Paws::RDS::RestoreDBInstanceFromDBSnapshot - Arguments for method RestoreDBInstanceFromDBSnapshot on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -106,8 +106,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens (1 to 15
-for SQL Server)
+Must contain from 1 to 63 numbers, letters, or hyphens
 
 =item *
 
@@ -142,20 +141,15 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 255 alphanumeric characters or hyphens
+Must match the identifier of an existing DBSnapshot.
 
 =item *
-
-First character must be a letter
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens
-
-=back
 
 If you are restoring from a shared manual DB snapshot, the
 C<DBSnapshotIdentifier> must be the ARN of the shared DB snapshot.
+
+=back
+
 
 
 
@@ -163,8 +157,8 @@ C<DBSnapshotIdentifier> must be the ARN of the shared DB snapshot.
 
 The DB subnet group name to use for the new instance.
 
-Constraints: Must contain no more than 255 alphanumeric characters,
-periods, underscores, spaces, or hyphens. Must not be default.
+Constraints: If supplied, must match the name of an existing
+DBSubnetGroup.
 
 Example: C<mySubnetgroup>
 
@@ -220,9 +214,60 @@ Default: The same as source
 Constraint: Must be compatible with the engine of the source. You can
 restore a MariaDB 10.1 DB instance from a MySQL 5.6 snapshot.
 
-Valid Values: C<MySQL> | C<mariadb> | C<oracle-se1> | C<oracle-se> |
-C<oracle-ee> | C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> |
-C<sqlserver-web> | C<postgres> | C<aurora>
+Valid Values:
+
+=over
+
+=item *
+
+C<aurora>
+
+=item *
+
+C<mariadb>
+
+=item *
+
+C<mysql>
+
+=item *
+
+C<oracle-ee>
+
+=item *
+
+C<oracle-se2>
+
+=item *
+
+C<oracle-se1>
+
+=item *
+
+C<oracle-se>
+
+=item *
+
+C<postgres>
+
+=item *
+
+C<sqlserver-ee>
+
+=item *
+
+C<sqlserver-se>
+
+=item *
+
+C<sqlserver-ex>
+
+=item *
+
+C<sqlserver-web>
+
+=back
+
 
 
 
@@ -358,9 +403,9 @@ This class forms part of L<Paws>, documenting arguments for method RestoreDBInst
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -1,12 +1,12 @@
 
 package Paws::ApiGateway::GetDocumentationParts;
   use Moose;
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit' );
-  has NameQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nameQuery' );
-  has Path => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'path' );
-  has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position' );
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
-  has Type => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'type' );
+  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
+  has NameQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nameQuery');
+  has Path => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'path');
+  has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position');
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has Type => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'type');
 
   use MooseX::ClassAttribute;
 
@@ -14,14 +14,13 @@ package Paws::ApiGateway::GetDocumentationParts;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/documentation/parts');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::DocumentationParts');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::GetDocumentationParts - Arguments for method GetDocumentationParts on Paws::ApiGateway
+Paws::ApiGateway::GetDocumentationParts - Arguments for method GetDocumentationParts on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -66,8 +65,7 @@ The current pagination position in the paged result set.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-[Required] The identifier of the API of the to-be-retrieved
-documentation parts.
+[Required] The string identifier of the associated RestApi.
 
 
 
@@ -84,9 +82,9 @@ This class forms part of L<Paws>, documenting arguments for method GetDocumentat
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

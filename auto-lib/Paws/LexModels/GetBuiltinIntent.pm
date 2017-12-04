@@ -1,7 +1,7 @@
 
 package Paws::LexModels::GetBuiltinIntent;
   use Moose;
-  has Signature => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'signature' , required => 1);
+  has Signature => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'signature', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -9,14 +9,13 @@ package Paws::LexModels::GetBuiltinIntent;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/builtins/intents/{signature}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexModels::GetBuiltinIntentResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::LexModels::GetBuiltinIntent - Arguments for method GetBuiltinIntent on Paws::LexModels
+Paws::LexModels::GetBuiltinIntent - Arguments for method GetBuiltinIntent on L<Paws::LexModels>
 
 =head1 DESCRIPTION
 
@@ -38,7 +37,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> Signature => Str
 
 The unique identifier for a built-in intent. To find the signature for
-an intent, see Standard Built-in Intents in the I<Alexa Skills Kit>.
+an intent, see Standard Built-in Intents
+(https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents)
+in the I<Alexa Skills Kit>.
 
 
 
@@ -49,9 +50,9 @@ This class forms part of L<Paws>, documenting arguments for method GetBuiltinInt
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

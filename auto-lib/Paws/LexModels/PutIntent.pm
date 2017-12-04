@@ -1,18 +1,18 @@
 
 package Paws::LexModels::PutIntent;
   use Moose;
-  has Checksum => (is => 'ro', isa => 'Str');
-  has ConclusionStatement => (is => 'ro', isa => 'Paws::LexModels::Statement');
-  has ConfirmationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt');
-  has Description => (is => 'ro', isa => 'Str');
-  has DialogCodeHook => (is => 'ro', isa => 'Paws::LexModels::CodeHook');
-  has FollowUpPrompt => (is => 'ro', isa => 'Paws::LexModels::FollowUpPrompt');
-  has FulfillmentActivity => (is => 'ro', isa => 'Paws::LexModels::FulfillmentActivity');
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name' , required => 1);
-  has ParentIntentSignature => (is => 'ro', isa => 'Str');
-  has RejectionStatement => (is => 'ro', isa => 'Paws::LexModels::Statement');
-  has SampleUtterances => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Slots => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Slot]');
+  has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
+  has ConclusionStatement => (is => 'ro', isa => 'Paws::LexModels::Statement', traits => ['NameInRequest'], request_name => 'conclusionStatement');
+  has ConfirmationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', traits => ['NameInRequest'], request_name => 'confirmationPrompt');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has DialogCodeHook => (is => 'ro', isa => 'Paws::LexModels::CodeHook', traits => ['NameInRequest'], request_name => 'dialogCodeHook');
+  has FollowUpPrompt => (is => 'ro', isa => 'Paws::LexModels::FollowUpPrompt', traits => ['NameInRequest'], request_name => 'followUpPrompt');
+  has FulfillmentActivity => (is => 'ro', isa => 'Paws::LexModels::FulfillmentActivity', traits => ['NameInRequest'], request_name => 'fulfillmentActivity');
+  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
+  has ParentIntentSignature => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'parentIntentSignature');
+  has RejectionStatement => (is => 'ro', isa => 'Paws::LexModels::Statement', traits => ['NameInRequest'], request_name => 'rejectionStatement');
+  has SampleUtterances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'sampleUtterances');
+  has Slots => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Slot]', traits => ['NameInRequest'], request_name => 'slots');
 
   use MooseX::ClassAttribute;
 
@@ -20,14 +20,13 @@ package Paws::LexModels::PutIntent;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/intents/{name}/versions/$LATEST');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexModels::PutIntentResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::LexModels::PutIntent - Arguments for method PutIntent on Paws::LexModels
+Paws::LexModels::PutIntent - Arguments for method PutIntent on L<Paws::LexModels>
 
 =head1 DESCRIPTION
 
@@ -114,28 +113,46 @@ and set the corresponding session attribute.
 
 =head2 FollowUpPrompt => L<Paws::LexModels::FollowUpPrompt>
 
-A user prompt for additional activity after an intent is fulfilled. For
-example, after the C<OrderPizza> intent is fulfilled (your Lambda
-function placed an order with a pizzeria), you might prompt the user to
-find if they want to order a drink (assuming that you have defined an
-C<OrderDrink> intent in your bot).
+Amazon Lex uses this prompt to solicit additional activity after
+fulfilling an intent. For example, after the C<OrderPizza> intent is
+fulfilled, you might prompt the user to order a drink.
 
-The C<followUpPrompt> and C<conclusionStatement> are mutually
-exclusive. You can specify only one. For example, your bot may not
-solicit both the following:
+The action that Amazon Lex takes depends on the user's response, as
+follows:
 
-Follow up prompt - "C<$session.FirstName>, your pizza order has been
-placed. Would you like to order a drink or a dessert?"
+=over
 
-Conclusion statement - "C<$session.FirstName>, your pizza order has
-been placed."
+=item *
+
+If the user says "Yes" it responds with the clarification prompt that
+is configured for the bot.
+
+=item *
+
+if the user says "Yes" and continues with an utterance that triggers an
+intent it starts a conversation for the intent.
+
+=item *
+
+If the user says "No" it responds with the rejection statement
+configured for the the follow-up prompt.
+
+=item *
+
+If it doesn't recognize the utterance it repeats the follow-up prompt
+again.
+
+=back
+
+The C<followUpPrompt> field and the C<conclusionStatement> field are
+mutually exclusive. You can specify only one.
 
 
 
 =head2 FulfillmentActivity => L<Paws::LexModels::FulfillmentActivity>
 
-Describes how the intent is fulfilled. For example, after a user
-provides all of the information for a pizza order,
+Required. Describes how the intent is fulfilled. For example, after a
+user provides all of the information for a pizza order,
 C<fulfillmentActivity> defines how the bot places an order with a local
 pizza store.
 
@@ -155,16 +172,18 @@ with "AMAZON." removed. For example, because there is a built-in intent
 called C<AMAZON.HelpIntent>, you can't create a custom intent called
 C<HelpIntent>.
 
-For a list of built-in intents, see Standard Built-in Intents in the
-I<Alexa Skills Kit>.
+For a list of built-in intents, see Standard Built-in Intents
+(https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents)
+in the I<Alexa Skills Kit>.
 
 
 
 =head2 ParentIntentSignature => Str
 
 A unique identifier for the built-in intent to base this intent on. To
-find the signature for an intent, see Standard Built-in Intents in the
-I<Alexa Skills Kit>.
+find the signature for an intent, see Standard Built-in Intents
+(https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents)
+in the I<Alexa Skills Kit>.
 
 
 
@@ -193,7 +212,7 @@ In each utterance, a slot name is enclosed in curly braces.
 
 An array of intent slots. At runtime, Amazon Lex elicits required slot
 values from the user using prompts defined in the slots. For more
-information, see E<lt>xref linkend="how-it-works"/E<gt>.
+information, see how-it-works.
 
 
 
@@ -204,9 +223,9 @@ This class forms part of L<Paws>, documenting arguments for method PutIntent in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

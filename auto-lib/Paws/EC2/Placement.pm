@@ -4,6 +4,7 @@ package Paws::EC2::Placement;
   has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
   has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
   has HostId => (is => 'ro', isa => 'Str', request_name => 'hostId', traits => ['NameInRequest']);
+  has SpreadDomain => (is => 'ro', isa => 'Str', request_name => 'spreadDomain', traits => ['NameInRequest']);
   has Tenancy => (is => 'ro', isa => 'Str', request_name => 'tenancy', traits => ['NameInRequest']);
 1;
 
@@ -63,6 +64,11 @@ instances).
 parameter is not supported for the ImportInstance command.
 
 
+=head2 SpreadDomain => Str
+
+  Reserved for future use.
+
+
 =head2 Tenancy => Str
 
   The tenancy of the instance (if the instance is running in a VPC). An
@@ -77,8 +83,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

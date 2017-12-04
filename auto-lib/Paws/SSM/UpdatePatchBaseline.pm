@@ -3,6 +3,7 @@ package Paws::SSM::UpdatePatchBaseline;
   use Moose;
   has ApprovalRules => (is => 'ro', isa => 'Paws::SSM::PatchRuleGroup');
   has ApprovedPatches => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ApprovedPatchesComplianceLevel => (is => 'ro', isa => 'Str');
   has BaselineId => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
   has GlobalFilters => (is => 'ro', isa => 'Paws::SSM::PatchFilterGroup');
@@ -20,7 +21,7 @@ package Paws::SSM::UpdatePatchBaseline;
 
 =head1 NAME
 
-Paws::SSM::UpdatePatchBaseline - Arguments for method UpdatePatchBaseline on Paws::SSM
+Paws::SSM::UpdatePatchBaseline - Arguments for method UpdatePatchBaseline on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -50,6 +51,12 @@ A set of rules used to include patches in the baseline.
 A list of explicitly approved patches for the baseline.
 
 
+
+=head2 ApprovedPatchesComplianceLevel => Str
+
+Assigns a new compliance severity level to an existing patch baseline.
+
+Valid values are: C<"CRITICAL">, C<"HIGH">, C<"MEDIUM">, C<"LOW">, C<"INFORMATIONAL">, C<"UNSPECIFIED">
 
 =head2 B<REQUIRED> BaselineId => Str
 
@@ -88,9 +95,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdatePatchBa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

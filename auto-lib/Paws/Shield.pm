@@ -11,7 +11,7 @@ package Paws::Shield;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub CreateProtection {
@@ -97,7 +97,8 @@ developers who need detailed information about the AWS Shield Advanced
 API actions, data types, and errors. For detailed information about AWS
 WAF and AWS Shield Advanced features and an overview of how to use the
 AWS WAF and AWS Shield Advanced APIs, see the AWS WAF and AWS Shield
-Developer Guide.
+Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 =head1 METHODS
 
@@ -107,7 +108,7 @@ Each argument is described in detail in: L<Paws::Shield::CreateProtection>
 
 Returns: a L<Paws::Shield::CreateProtectionResponse> instance
 
-  Enables AWS Shield Advanced for a specific AWS resource. The resource
+Enables AWS Shield Advanced for a specific AWS resource. The resource
 can be an Amazon CloudFront distribution, Elastic Load Balancing load
 balancer, or an Amazon Route 53 hosted zone.
 
@@ -118,7 +119,7 @@ Each argument is described in detail in: L<Paws::Shield::CreateSubscription>
 
 Returns: a L<Paws::Shield::CreateSubscriptionResponse> instance
 
-  Activates AWS Shield Advanced for an account.
+Activates AWS Shield Advanced for an account.
 
 
 =head2 DeleteProtection(ProtectionId => Str)
@@ -127,7 +128,7 @@ Each argument is described in detail in: L<Paws::Shield::DeleteProtection>
 
 Returns: a L<Paws::Shield::DeleteProtectionResponse> instance
 
-  Deletes an AWS Shield Advanced Protection.
+Deletes an AWS Shield Advanced Protection.
 
 
 =head2 DeleteSubscription()
@@ -136,7 +137,7 @@ Each argument is described in detail in: L<Paws::Shield::DeleteSubscription>
 
 Returns: a L<Paws::Shield::DeleteSubscriptionResponse> instance
 
-  Removes AWS Shield Advanced from an account.
+Removes AWS Shield Advanced from an account.
 
 
 =head2 DescribeAttack(AttackId => Str)
@@ -145,7 +146,7 @@ Each argument is described in detail in: L<Paws::Shield::DescribeAttack>
 
 Returns: a L<Paws::Shield::DescribeAttackResponse> instance
 
-  Describes the details of a DDoS attack.
+Describes the details of a DDoS attack.
 
 
 =head2 DescribeProtection(ProtectionId => Str)
@@ -154,7 +155,7 @@ Each argument is described in detail in: L<Paws::Shield::DescribeProtection>
 
 Returns: a L<Paws::Shield::DescribeProtectionResponse> instance
 
-  Lists the details of a Protection object.
+Lists the details of a Protection object.
 
 
 =head2 DescribeSubscription()
@@ -163,7 +164,7 @@ Each argument is described in detail in: L<Paws::Shield::DescribeSubscription>
 
 Returns: a L<Paws::Shield::DescribeSubscriptionResponse> instance
 
-  Provides details about the AWS Shield Advanced subscription for an
+Provides details about the AWS Shield Advanced subscription for an
 account.
 
 
@@ -173,7 +174,7 @@ Each argument is described in detail in: L<Paws::Shield::ListAttacks>
 
 Returns: a L<Paws::Shield::ListAttacksResponse> instance
 
-  Returns all ongoing DDoS attacks or all DDoS attacks during a specified
+Returns all ongoing DDoS attacks or all DDoS attacks during a specified
 time period.
 
 
@@ -183,7 +184,7 @@ Each argument is described in detail in: L<Paws::Shield::ListProtections>
 
 Returns: a L<Paws::Shield::ListProtectionsResponse> instance
 
-  Lists all Protection objects for the account.
+Lists all Protection objects for the account.
 
 
 
@@ -201,9 +202,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

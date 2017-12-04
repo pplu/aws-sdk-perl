@@ -43,26 +43,32 @@ The configuration settings of a workflow type.
 
 =head2 DefaultChildPolicy => Str
 
-  I<Optional.> The default policy to use for the child workflow
-executions when a workflow execution of this type is terminated, by
-calling the TerminateWorkflowExecution action explicitly or due to an
-expired timeout. This default can be overridden when starting a
-workflow execution using the StartWorkflowExecution action or the
-C<StartChildWorkflowExecution> decision.
+  The default policy to use for the child workflow executions when a
+workflow execution of this type is terminated, by calling the
+TerminateWorkflowExecution action explicitly or due to an expired
+timeout. This default can be overridden when starting a workflow
+execution using the StartWorkflowExecution action or the
+C<StartChildWorkflowExecution> Decision.
 
 The supported child policies are:
 
 =over
 
-=item * B<TERMINATE:> the child executions will be terminated.
+=item *
 
-=item * B<REQUEST_CANCEL:> a request to cancel will be attempted for
-each child execution by recording a C<WorkflowExecutionCancelRequested>
+C<TERMINATE> E<ndash> The child executions are terminated.
+
+=item *
+
+C<REQUEST_CANCEL> E<ndash> A request to cancel is attempted for each
+child execution by recording a C<WorkflowExecutionCancelRequested>
 event in its history. It is up to the decider to take appropriate
 actions when it receives an execution history with this event.
 
-=item * B<ABANDON:> no action will be taken. The child executions will
-continue to run.
+=item *
+
+C<ABANDON> E<ndash> No action is taken. The child executions continue
+to run.
 
 =back
 
@@ -70,36 +76,43 @@ continue to run.
 
 =head2 DefaultExecutionStartToCloseTimeout => Str
 
-  I<Optional.> The default maximum duration, specified when registering
-the workflow type, for executions of this workflow type. This default
-can be overridden when starting a workflow execution using the
+  The default maximum duration, specified when registering the workflow
+type, for executions of this workflow type. This default can be
+overridden when starting a workflow execution using the
 StartWorkflowExecution action or the C<StartChildWorkflowExecution>
-decision.
+Decision.
 
-The duration is specified in seconds; an integer greater than or equal
-to 0. The value "NONE" can be used to specify unlimited duration.
+The duration is specified in seconds, an integer greater than or equal
+to C<0>. You can use C<NONE> to specify unlimited duration.
 
 
 =head2 DefaultLambdaRole => Str
 
-  The default IAM role to use when a workflow execution invokes a AWS
-Lambda function.
+  The default IAM role attached to this workflow type.
+
+Executions of this workflow type need IAM roles to invoke Lambda
+functions. If you don't specify an IAM role when starting this workflow
+type, the default Lambda role is attached to the execution. For more
+information, see
+http://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 DefaultTaskList => L<Paws::SimpleWorkflow::TaskList>
 
-  I<Optional.> The default task list, specified when registering the
-workflow type, for decisions tasks scheduled for workflow executions of
-this type. This default can be overridden when starting a workflow
-execution using the StartWorkflowExecution action or the
-C<StartChildWorkflowExecution> decision.
+  The default task list, specified when registering the workflow type,
+for decisions tasks scheduled for workflow executions of this type.
+This default can be overridden when starting a workflow execution using
+the StartWorkflowExecution action or the C<StartChildWorkflowExecution>
+Decision.
 
 
 =head2 DefaultTaskPriority => Str
 
-  I<Optional.> The default task priority, specified when registering the
-workflow type, for all decision tasks of this workflow type. This
-default can be overridden when starting a workflow execution using the
+  The default task priority, specified when registering the workflow
+type, for all decision tasks of this workflow type. This default can be
+overridden when starting a workflow execution using the
 StartWorkflowExecution action or the C<StartChildWorkflowExecution>
 decision.
 
@@ -108,22 +121,24 @@ Valid values are integers that range from Java's C<Integer.MIN_VALUE>
 indicate higher priority.
 
 For more information about setting task priority, see Setting Task
-Priority in the I<Amazon Simple Workflow Developer Guide>.
+Priority
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 DefaultTaskStartToCloseTimeout => Str
 
-  I<Optional.> The default maximum duration, specified when registering
-the workflow type, that a decision task for executions of this workflow
-type might take before returning completion or failure. If the task
-does not close in the specified time then the task is automatically
-timed out and rescheduled. If the decider eventually reports a
-completion or failure, it is ignored. This default can be overridden
-when starting a workflow execution using the StartWorkflowExecution
-action or the C<StartChildWorkflowExecution> decision.
+  The default maximum duration, specified when registering the workflow
+type, that a decision task for executions of this workflow type might
+take before returning completion or failure. If the task doesn'tdo
+close in the specified time then the task is automatically timed out
+and rescheduled. If the decider eventually reports a completion or
+failure, it is ignored. This default can be overridden when starting a
+workflow execution using the StartWorkflowExecution action or the
+C<StartChildWorkflowExecution> Decision.
 
-The duration is specified in seconds; an integer greater than or equal
-to 0. The value "NONE" can be used to specify unlimited duration.
+The duration is specified in seconds, an integer greater than or equal
+to C<0>. You can use C<NONE> to specify unlimited duration.
 
 
 
@@ -133,9 +148,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SimpleWor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

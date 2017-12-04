@@ -43,7 +43,7 @@ address followed by a C</32>, for example, 192.0.2.0/31. To block a
 range of IP addresses, you can specify a C</128>, C</64>, C</56>,
 C</48>, C</32>, C</24>, C</16>, or C</8> CIDR. For more information
 about CIDR notation, see the Wikipedia entry Classless Inter-Domain
-Routing.
+Routing (https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 =head1 ATTRIBUTES
 
@@ -52,23 +52,9 @@ Routing.
 
   The IP address type (C<IPV4> or C<IPV6>) and the IP address range (in
 CIDR notation) that web requests originate from. If the C<WebACL> is
-associated with a CloudFront distribution, this is the value of one of
-the following fields in CloudFront access logs:
-
-=over
-
-=item *
-
-C<c-ip>, if the viewer did not use an HTTP proxy or a load balancer to
-send the request
-
-=item *
-
-C<x-forwarded-for>, if the viewer did use an HTTP proxy or a load
-balancer to send the request
-
-=back
-
+associated with a CloudFront distribution and the viewer did not use an
+HTTP proxy or a load balancer to send the request, this is the value of
+the c-ip field in the CloudFront access logs.
 
 
 =head2 B<REQUIRED> IPSetId => Str
@@ -94,9 +80,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::WAFRegion
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

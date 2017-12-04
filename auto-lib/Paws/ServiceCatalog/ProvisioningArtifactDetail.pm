@@ -52,7 +52,8 @@ Detailed provisioning artifact information.
 
 =head2 Id => Str
 
-  The identifier of the provisioning artifact.
+  The identifier of the provisioning artifact. This is sometimes referred
+to as the product version.
 
 
 =head2 Name => Str
@@ -62,7 +63,12 @@ Detailed provisioning artifact information.
 
 =head2 Type => Str
 
-  The type of the provisioning artifact.
+  The type of the provisioning artifact. The following provisioning
+artifact types are used by AWS Marketplace products:
+
+C<MARKETPLACE_AMI> - AMI products.
+
+C<MARKETPLACE_CAR> - CAR (Cluster and AWS Resources) products.
 
 
 
@@ -72,9 +78,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ServiceCa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -1,10 +1,10 @@
 
 package Paws::ApiGateway::GetSdk;
   use Moose;
-  has Parameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['ParamInQuery'], query_name => 'parameters' );
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
-  has SdkType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'sdkType' , required => 1);
-  has StageName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'stageName' , required => 1);
+  has Parameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['ParamInQuery'], query_name => 'parameters');
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has SdkType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'sdkType', required => 1);
+  has StageName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'stageName', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -12,14 +12,13 @@ package Paws::ApiGateway::GetSdk;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/stages/{stage_name}/sdks/{sdk_type}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::SdkResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::GetSdk - Arguments for method GetSdk on Paws::ApiGateway
+Paws::ApiGateway::GetSdk - Arguments for method GetSdk on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -40,24 +39,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Parameters => L<Paws::ApiGateway::MapOfStringToString>
 
-A key-value map of query string parameters that specify properties of
-the SDK, depending on the requested C<sdkType>. For C<sdkType> of
-C<objectivec>, a parameter named C<classPrefix> is required. For
-C<sdkType> of C<android>, parameters named C<groupId>, C<artifactId>,
-C<artifactVersion>, and C<invokerPackage> are required.
+A string-to-string key-value map of query parameters
+C<sdkType>-dependent properties of the SDK. For C<sdkType> of
+C<objectivec> or C<swift>, a parameter named C<classPrefix> is
+required. For C<sdkType> of C<android>, parameters named C<groupId>,
+C<artifactId>, C<artifactVersion>, and C<invokerPackage> are required.
+For C<sdkType> of C<java>, parameters named C<serviceName> and
+C<javaPackageName> are required.
 
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The identifier of the RestApi that the SDK will use.
+The string identifier of the associated RestApi.
 
 
 
 =head2 B<REQUIRED> SdkType => Str
 
-The language for the generated SDK. Currently C<javascript>,
-C<android>, and C<objectivec> (for iOS) are supported.
+The language for the generated SDK. Currently C<java>, C<javascript>,
+C<android>, C<objectivec> and C<swift> (for iOS) are supported.
 
 
 
@@ -74,9 +75,9 @@ This class forms part of L<Paws>, documenting arguments for method GetSdk in L<P
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

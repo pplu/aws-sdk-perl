@@ -3,6 +3,7 @@ package Paws::CodeBuild::ProjectEnvironment;
   has ComputeType => (is => 'ro', isa => 'Str', request_name => 'computeType', traits => ['NameInRequest'], required => 1);
   has EnvironmentVariables => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::EnvironmentVariable]', request_name => 'environmentVariables', traits => ['NameInRequest']);
   has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest'], required => 1);
+  has PrivilegedMode => (is => 'ro', isa => 'Bool', request_name => 'privilegedMode', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -73,6 +74,26 @@ build project.
   The ID of the Docker image to use for this build project.
 
 
+=head2 PrivilegedMode => Bool
+
+  If set to true, enables running the Docker daemon inside a Docker
+container; otherwise, false or not specified (the default). This value
+must be set to true only if this build project will be used to build
+Docker images, and the specified build environment image is not one
+provided by AWS CodeBuild with Docker support. Otherwise, all
+associated builds that attempt to interact with the Docker daemon will
+fail. Note that you must also start the Docker daemon so that your
+builds can interact with it as needed. One way to do this is to
+initialize the Docker daemon in the install phase of your build spec by
+running the following build commands. (Do not run the following build
+commands if the specified build environment image is provided by AWS
+CodeBuild with Docker support.)
+
+C<- nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock
+--host=tcp://0.0.0.0:2375 --storage-driver=overlay& - timeout -t 15 sh
+-c "until docker info; do echo .; sleep 1; done">
+
+
 =head2 B<REQUIRED> Type => Str
 
   The type of build environment to use for related builds.
@@ -85,9 +106,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodeBuild
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

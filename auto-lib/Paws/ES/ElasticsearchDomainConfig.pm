@@ -5,7 +5,9 @@ package Paws::ES::ElasticsearchDomainConfig;
   has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptionsStatus');
   has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfigStatus');
   has ElasticsearchVersion => (is => 'ro', isa => 'Paws::ES::ElasticsearchVersionStatus');
+  has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptionsStatus');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptionsStatus');
+  has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCDerivedInfoStatus');
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ES::ElasticsearchDomainConfig object:
 
-  $service_obj->Method(Att1 => { AccessPolicies => $value, ..., SnapshotOptions => $value  });
+  $service_obj->Method(Att1 => { AccessPolicies => $value, ..., VPCOptions => $value  });
 
 =head3 Results returned from an API call
 
@@ -49,7 +51,9 @@ The configuration of an Elasticsearch domain.
 =head2 AdvancedOptions => L<Paws::ES::AdvancedOptionsStatus>
 
   Specifies the C<AdvancedOptions> for the domain. See Configuring
-Advanced Options for more information.
+Advanced Options
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options)
+for more information.
 
 
 =head2 EBSOptions => L<Paws::ES::EBSOptionsStatus>
@@ -68,9 +72,21 @@ domain.
   String of format X.Y to specify version for the Elasticsearch domain.
 
 
+=head2 LogPublishingOptions => L<Paws::ES::LogPublishingOptionsStatus>
+
+  Log publishing options for the given domain.
+
+
 =head2 SnapshotOptions => L<Paws::ES::SnapshotOptionsStatus>
 
   Specifies the C<SnapshotOptions> for the Elasticsearch domain.
+
+
+=head2 VPCOptions => L<Paws::ES::VPCDerivedInfoStatus>
+
+  The C<VPCOptions> for the specified domain. For more information, see
+VPC Endpoints for Amazon Elasticsearch Service Domains
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html).
 
 
 
@@ -80,9 +96,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ES>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -24,7 +24,7 @@ The documents in the specified folder.
 
 =head2 Folders => ArrayRef[L<Paws::WorkDocs::FolderMetadata>]
 
-The sub-folders in the specified folder.
+The subfolders in the specified folder.
 
 
 =head2 Marker => Str

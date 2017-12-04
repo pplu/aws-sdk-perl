@@ -43,10 +43,8 @@ This class has no description
 
 =head2 AccepterVpcInfo => L<Paws::EC2::VpcPeeringConnectionVpcInfo>
 
-  Information about the accepter VPC. CIDR block information is not
-returned when creating a VPC peering connection, or when describing a
-VPC peering connection that's in the C<initiating-request> or
-C<pending-acceptance> state.
+  Information about the accepter VPC. CIDR block information is only
+returned when describing an active VPC peering connection.
 
 
 =head2 ExpirationTime => Str
@@ -56,7 +54,8 @@ C<pending-acceptance> state.
 
 =head2 RequesterVpcInfo => L<Paws::EC2::VpcPeeringConnectionVpcInfo>
 
-  Information about the requester VPC.
+  Information about the requester VPC. CIDR block information is only
+returned when describing an active VPC peering connection.
 
 
 =head2 Status => L<Paws::EC2::VpcPeeringConnectionStateReason>
@@ -81,8 +80,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

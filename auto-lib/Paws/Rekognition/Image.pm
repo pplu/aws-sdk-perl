@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Provides the source image either as bytes or an S3 object.
+Provides the input image either as bytes or an S3 object.
 
 You pass image bytes to a Rekognition API operation by using the
 C<Bytes> property. For example, you would use the C<Bytes> property to
@@ -77,9 +77,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Rekogniti
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

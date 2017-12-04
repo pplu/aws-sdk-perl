@@ -16,7 +16,7 @@ package Paws::ECS::DeregisterContainerInstance;
 
 =head1 NAME
 
-Paws::ECS::DeregisterContainerInstance - Arguments for method DeregisterContainerInstance on Paws::ECS
+Paws::ECS::DeregisterContainerInstance - Arguments for method DeregisterContainerInstance on L<Paws::ECS>
 
 =head1 DESCRIPTION
 
@@ -67,7 +67,7 @@ service, then the service scheduler starts another copy of that task,
 on a different container instance if possible.
 
 Any containers in orphaned service tasks that are registered with a
-Classic load balancer or an Application load balancer target group are
+Classic Load Balancer or an Application Load Balancer target group are
 deregistered, and they will begin connection draining according to the
 settings on the load balancer or target group.
 
@@ -80,9 +80,9 @@ This class forms part of L<Paws>, documenting arguments for method DeregisterCon
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

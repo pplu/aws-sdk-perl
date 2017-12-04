@@ -17,7 +17,7 @@ package Paws::Organizations::ListPoliciesForTarget;
 
 =head1 NAME
 
-Paws::Organizations::ListPoliciesForTarget - Arguments for method ListPoliciesForTarget on Paws::Organizations
+Paws::Organizations::ListPoliciesForTarget - Arguments for method ListPoliciesForTarget on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
@@ -71,7 +71,8 @@ where the output should continue from.
 The unique identifier (ID) of the root, organizational unit, or account
 whose policies you want to list.
 
-The regex pattern for a target ID string requires one of the following:
+The regex pattern (http://wikipedia.org/wiki/regex) for a target ID
+string requires one of the following:
 
 =over
 
@@ -103,9 +104,9 @@ This class forms part of L<Paws>, documenting arguments for method ListPoliciesF
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

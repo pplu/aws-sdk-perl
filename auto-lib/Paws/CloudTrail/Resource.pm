@@ -52,7 +52,8 @@ resource type cannot be determined, null is returned. Some examples of
 resource types are: B<Instance> for EC2, B<Trail> for CloudTrail,
 B<DBInstance> for RDS, and B<AccessKey> for IAM. For a list of resource
 types supported for event lookup, see Resource Types Supported for
-Event Lookup.
+Event Lookup
+(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/lookup_supported_resourcetypes.html).
 
 
 
@@ -62,9 +63,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudTrai
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

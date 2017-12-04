@@ -63,7 +63,8 @@ request has not yet been applied to all Amazon Route 53 DNS servers.
 =head2 B<REQUIRED> SubmittedAt => Str
 
   The date and time that the change request was submitted in ISO 8601
-format and Coordinated Universal Time (UTC). For example, the value
+format (https://en.wikipedia.org/wiki/ISO_8601) and Coordinated
+Universal Time (UTC). For example, the value
 C<2017-03-27T17:48:16.751Z> represents March 27, 2017 at 17:48:16.751
 UTC.
 
@@ -75,9 +76,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Route53>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

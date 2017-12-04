@@ -1,10 +1,11 @@
 
 package Paws::WorkDocs::GetDocumentPath;
   use Moose;
-  has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId' , required => 1);
-  has Fields => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'fields' );
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit' );
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
+  has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId', required => 1);
+  has Fields => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'fields');
+  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
+  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
 
   use MooseX::ClassAttribute;
 
@@ -12,14 +13,13 @@ package Paws::WorkDocs::GetDocumentPath;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/documents/{DocumentId}/path');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::GetDocumentPathResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::WorkDocs::GetDocumentPath - Arguments for method GetDocumentPath on Paws::WorkDocs
+Paws::WorkDocs::GetDocumentPath - Arguments for method GetDocumentPath on L<Paws::WorkDocs>
 
 =head1 DESCRIPTION
 
@@ -38,6 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AuthenticationToken => Str
+
+Amazon WorkDocs authentication token. This field should not be set when
+using administrative API actions, as in accessing the API using AWS
+credentials.
+
+
+
 =head2 B<REQUIRED> DocumentId => Str
 
 The ID of the document.
@@ -46,7 +54,7 @@ The ID of the document.
 
 =head2 Fields => Str
 
-A comma-separated list of values. Specify "NAME" to include the names
+A comma-separated list of values. Specify C<NAME> to include the names
 of the parent folders.
 
 
@@ -70,9 +78,9 @@ This class forms part of L<Paws>, documenting arguments for method GetDocumentPa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

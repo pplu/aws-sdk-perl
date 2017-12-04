@@ -2,6 +2,8 @@
 package Paws::SSM::RegisterTargetWithMaintenanceWindow;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str');
+  has Description => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str');
   has OwnerInformation => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]', required => 1);
@@ -18,7 +20,7 @@ package Paws::SSM::RegisterTargetWithMaintenanceWindow;
 
 =head1 NAME
 
-Paws::SSM::RegisterTargetWithMaintenanceWindow - Arguments for method RegisterTargetWithMaintenanceWindow on Paws::SSM
+Paws::SSM::RegisterTargetWithMaintenanceWindow - Arguments for method RegisterTargetWithMaintenanceWindow on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -40,6 +42,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 ClientToken => Str
 
 User-provided idempotency token.
+
+
+
+=head2 Description => Str
+
+An optional description for the target.
+
+
+
+=head2 Name => Str
+
+An optional name for the target.
 
 
 
@@ -79,9 +93,9 @@ This class forms part of L<Paws>, documenting arguments for method RegisterTarge
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

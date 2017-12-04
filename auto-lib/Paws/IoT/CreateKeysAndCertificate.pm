@@ -1,7 +1,7 @@
 
 package Paws::IoT::CreateKeysAndCertificate;
   use Moose;
-  has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive' );
+  has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive');
 
   use MooseX::ClassAttribute;
 
@@ -9,14 +9,13 @@ package Paws::IoT::CreateKeysAndCertificate;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/keys-and-certificate');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreateKeysAndCertificateResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::IoT::CreateKeysAndCertificate - Arguments for method CreateKeysAndCertificate on Paws::IoT
+Paws::IoT::CreateKeysAndCertificate - Arguments for method CreateKeysAndCertificate on L<Paws::IoT>
 
 =head1 DESCRIPTION
 
@@ -48,9 +47,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateKeysAnd
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

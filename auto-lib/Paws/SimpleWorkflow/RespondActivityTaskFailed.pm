@@ -16,7 +16,7 @@ package Paws::SimpleWorkflow::RespondActivityTaskFailed;
 
 =head1 NAME
 
-Paws::SimpleWorkflow::RespondActivityTaskFailed - Arguments for method RespondActivityTaskFailed on Paws::SimpleWorkflow
+Paws::SimpleWorkflow::RespondActivityTaskFailed - Arguments for method RespondActivityTaskFailed on L<Paws::SimpleWorkflow>
 
 =head1 DESCRIPTION
 
@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Details => Str
 
-I<Optional.> Detailed information about the failure.
+Detailed information about the failure.
 
 
 
@@ -65,9 +65,9 @@ This class forms part of L<Paws>, documenting arguments for method RespondActivi
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

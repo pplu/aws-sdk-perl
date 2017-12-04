@@ -16,7 +16,7 @@ package Paws::SimpleWorkflow::RespondDecisionTaskCompleted;
 
 =head1 NAME
 
-Paws::SimpleWorkflow::RespondDecisionTaskCompleted - Arguments for method RespondDecisionTaskCompleted on Paws::SimpleWorkflow
+Paws::SimpleWorkflow::RespondDecisionTaskCompleted - Arguments for method RespondDecisionTaskCompleted on L<Paws::SimpleWorkflow>
 
 =head1 DESCRIPTION
 
@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 Decisions => ArrayRef[L<Paws::SimpleWorkflow::Decision>]
 
 The list of decisions (possibly empty) made by the decider while
-processing this decision task. See the docs for the decision structure
+processing this decision task. See the docs for the Decision structure
 for details.
 
 
@@ -67,9 +67,9 @@ This class forms part of L<Paws>, documenting arguments for method RespondDecisi
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -39,7 +39,7 @@ region where a player is reporting latency higher than the cap. Latency
 policies are only enforced when the placement request contains player
 latency information.
 
-Latency policy-related operations include:
+Queue-related operations include:
 
 =over
 
@@ -49,11 +49,15 @@ CreateGameSessionQueue
 
 =item *
 
+DescribeGameSessionQueues
+
+=item *
+
 UpdateGameSessionQueue
 
 =item *
 
-StartGameSessionPlacement
+DeleteGameSessionQueue
 
 =back
 
@@ -81,9 +85,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::GameLift>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

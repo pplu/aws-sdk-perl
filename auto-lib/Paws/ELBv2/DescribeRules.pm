@@ -2,6 +2,8 @@
 package Paws::ELBv2::DescribeRules;
   use Moose;
   has ListenerArn => (is => 'ro', isa => 'Str');
+  has Marker => (is => 'ro', isa => 'Str');
+  has PageSize => (is => 'ro', isa => 'Int');
   has RuleArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
@@ -15,7 +17,7 @@ package Paws::ELBv2::DescribeRules;
 
 =head1 NAME
 
-Paws::ELBv2::DescribeRules - Arguments for method DescribeRules on Paws::ELBv2
+Paws::ELBv2::DescribeRules - Arguments for method DescribeRules on L<Paws::ELBv2>
 
 =head1 DESCRIPTION
 
@@ -40,6 +42,19 @@ The Amazon Resource Name (ARN) of the listener.
 
 
 
+=head2 Marker => Str
+
+The marker for the next set of results. (You received this marker from
+a previous call.)
+
+
+
+=head2 PageSize => Int
+
+The maximum number of results to return with this call.
+
+
+
 =head2 RuleArns => ArrayRef[Str|Undef]
 
 The Amazon Resource Names (ARN) of the rules.
@@ -53,9 +68,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeRules
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

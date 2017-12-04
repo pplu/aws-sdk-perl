@@ -4,6 +4,7 @@ package Paws::DS::DirectoryDescription;
   has Alias => (is => 'ro', isa => 'Str');
   has ConnectSettings => (is => 'ro', isa => 'Paws::DS::DirectoryConnectSettingsDescription');
   has Description => (is => 'ro', isa => 'Str');
+  has DesiredNumberOfDomainControllers => (is => 'ro', isa => 'Int');
   has DirectoryId => (is => 'ro', isa => 'Str');
   has DnsIpAddrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has LaunchTime => (is => 'ro', isa => 'Str');
@@ -78,6 +79,12 @@ present if the directory is an AD Connector directory.
 =head2 Description => Str
 
   The textual description for the directory.
+
+
+=head2 DesiredNumberOfDomainControllers => Int
+
+  The desired number of domain controllers in the directory if the
+directory is Microsoft AD.
 
 
 =head2 DirectoryId => Str
@@ -165,9 +172,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::DS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

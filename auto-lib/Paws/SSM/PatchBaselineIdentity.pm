@@ -4,6 +4,7 @@ package Paws::SSM::PatchBaselineIdentity;
   has BaselineId => (is => 'ro', isa => 'Str');
   has BaselineName => (is => 'ro', isa => 'Str');
   has DefaultBaseline => (is => 'ro', isa => 'Bool');
+  has OperatingSystem => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::PatchBaselineIdentity object:
 
-  $service_obj->Method(Att1 => { BaselineDescription => $value, ..., DefaultBaseline => $value  });
+  $service_obj->Method(Att1 => { BaselineDescription => $value, ..., OperatingSystem => $value  });
 
 =head3 Results returned from an API call
 
@@ -56,7 +57,16 @@ Defines the basic information about a patch baseline.
 
 =head2 DefaultBaseline => Bool
 
-  Whether this is the default baseline.
+  Whether this is the default baseline. Note that Systems Manager
+supports creating multiple default patch baselines. For example, you
+can create a default patch baseline for each operating system.
+
+
+=head2 OperatingSystem => Str
+
+  Defines the operating system the patch baseline applies to. Supported
+operating systems include WINDOWS, AMAZON_LINUX, UBUNTU and
+REDHAT_ENTERPRISE_LINUX. The Default value is WINDOWS.
 
 
 
@@ -66,9 +76,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

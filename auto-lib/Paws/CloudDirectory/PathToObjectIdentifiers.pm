@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-Returns the path to the C<ObjectIdentifiers> associated with the
-directory.
+Returns the path to the C<ObjectIdentifiers> that is associated with
+the directory.
 
 =head1 ATTRIBUTES
 
@@ -46,7 +46,8 @@ in the request.
 
 =head2 Path => Str
 
-  The path used to identify the object starting from directory root.
+  The path that is used to identify the object starting from directory
+root.
 
 
 
@@ -56,9 +57,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudDire
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

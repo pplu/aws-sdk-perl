@@ -22,6 +22,7 @@ package Paws::S3::CreateMultipartUpload;
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
   has SSEKMSKeyId => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-aws-kms-key-id', traits => ['ParamInHeader']);
   has StorageClass => (is => 'ro', isa => 'Str', header_name => 'x-amz-storage-class', traits => ['ParamInHeader']);
+  has Tagging => (is => 'ro', isa => 'Str', header_name => 'x-amz-tagging', traits => ['ParamInHeader']);
   has WebsiteRedirectLocation => (is => 'ro', isa => 'Str', header_name => 'x-amz-website-redirect-location', traits => ['ParamInHeader']);
 
   use MooseX::ClassAttribute;
@@ -38,7 +39,7 @@ package Paws::S3::CreateMultipartUpload;
 
 =head1 NAME
 
-Paws::S3::CreateMultipartUpload - Arguments for method CreateMultipartUpload on Paws::S3
+Paws::S3::CreateMultipartUpload - Arguments for method CreateMultipartUpload on L<Paws::S3>
 
 =head1 DESCRIPTION
 
@@ -198,6 +199,13 @@ The type of storage to use for the object. Defaults to 'STANDARD'.
 
 Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">
 
+=head2 Tagging => Str
+
+The tag-set for the object. The tag-set must be encoded as URL Query
+parameters
+
+
+
 =head2 WebsiteRedirectLocation => Str
 
 If the bucket is configured as a website, redirects requests for this
@@ -213,9 +221,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateMultipa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -18,7 +18,7 @@ package Paws::CognitoIdp::ConfirmSignUp;
 
 =head1 NAME
 
-Paws::CognitoIdp::ConfirmSignUp - Arguments for method ConfirmSignUp on Paws::CognitoIdp
+Paws::CognitoIdp::ConfirmSignUp - Arguments for method ConfirmSignUp on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClientId => Str
 
-The ID of the client associated with the user pool.
+The ID of the app client associated with the user pool.
 
 
 
@@ -52,11 +52,12 @@ The confirmation code sent by a user's request to confirm registration.
 =head2 ForceAliasCreation => Bool
 
 Boolean to be specified to force user confirmation irrespective of
-existing alias. By default set to False. If this parameter is set to
-True and the phone number/email used for sign up confirmation already
-exists as an alias with a different user, the API call will migrate the
-alias from the previous user to the newly created user being confirmed.
-If set to False, the API will throw an B<AliasExistsException> error.
+existing alias. By default set to C<False>. If this parameter is set to
+C<True> and the phone number/email used for sign up confirmation
+already exists as an alias with a different user, the API call will
+migrate the alias from the previous user to the newly created user
+being confirmed. If set to C<False>, the API will throw an
+B<AliasExistsException> error.
 
 
 
@@ -81,9 +82,9 @@ This class forms part of L<Paws>, documenting arguments for method ConfirmSignUp
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

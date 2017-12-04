@@ -15,7 +15,7 @@ package Paws::CloudHSM::ModifyLunaClient;
 
 =head1 NAME
 
-Paws::CloudHSM::ModifyLunaClient - Arguments for method ModifyLunaClient on Paws::CloudHSM
+Paws::CloudHSM::ModifyLunaClient - Arguments for method ModifyLunaClient on L<Paws::CloudHSM>
 
 =head1 DESCRIPTION
 
@@ -53,9 +53,9 @@ This class forms part of L<Paws>, documenting arguments for method ModifyLunaCli
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

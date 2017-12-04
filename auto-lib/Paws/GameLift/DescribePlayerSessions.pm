@@ -19,7 +19,7 @@ package Paws::GameLift::DescribePlayerSessions;
 
 =head1 NAME
 
-Paws::GameLift::DescribePlayerSessions - Arguments for method DescribePlayerSessions on Paws::GameLift
+Paws::GameLift::DescribePlayerSessions - Arguments for method DescribePlayerSessions on L<Paws::GameLift>
 
 =head1 DESCRIPTION
 
@@ -56,7 +56,7 @@ session ID is specified, this parameter is ignored.
 
 Token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this action. To
-specify the start of the result set, do not specify a value. If a
+start at the beginning of the result set, do not specify a value. If a
 player session ID is specified, this parameter is ignored.
 
 
@@ -83,24 +83,24 @@ Possible player session statuses include the following:
 
 =item *
 
-B<RESERVED> E<ndash> The player session request has been received, but
-the player has not yet connected to the server process and/or been
+B<RESERVED> -- The player session request has been received, but the
+player has not yet connected to the server process and/or been
 validated.
 
 =item *
 
-B<ACTIVE> E<ndash> The player has been validated by the server process
-and is currently connected.
+B<ACTIVE> -- The player has been validated by the server process and is
+currently connected.
 
 =item *
 
-B<COMPLETED> E<ndash> The player connection has been dropped.
+B<COMPLETED> -- The player connection has been dropped.
 
 =item *
 
-B<TIMEDOUT> E<ndash> A player session request was received, but the
-player did not connect and/or was not validated within the time-out
-limit (60 seconds).
+B<TIMEDOUT> -- A player session request was received, but the player
+did not connect and/or was not validated within the timeout limit (60
+seconds).
 
 =back
 
@@ -114,9 +114,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribePlaye
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

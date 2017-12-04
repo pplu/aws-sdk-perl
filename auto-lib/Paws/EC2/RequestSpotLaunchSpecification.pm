@@ -60,9 +60,6 @@ This class has no description
 
   One or more block device mapping entries.
 
-Although you can specify encrypted EBS volumes in this block device
-mapping for your Spot Instances, these volumes are not encrypted.
-
 
 =head2 EbsOptimized => Bool
 
@@ -102,7 +99,10 @@ Default: C<false>
 
 =head2 Monitoring => L<Paws::EC2::RunInstancesMonitoringEnabled>
 
-  
+  Indicates whether basic or detailed monitoring is enabled for the
+instance.
+
+Default: Disabled
 
 
 =head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterfaceSpecification>]
@@ -124,12 +124,15 @@ interface.
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
-  
+  One or more security group IDs.
 
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
-  
+  One or more security groups. When requesting instances in a VPC, you
+must specify the IDs of the security groups. When requesting instances
+in EC2-Classic, you can specify the names or the IDs of the security
+groups.
 
 
 =head2 SubnetId => Str
@@ -152,8 +155,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

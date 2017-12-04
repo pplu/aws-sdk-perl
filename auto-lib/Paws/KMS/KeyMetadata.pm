@@ -8,6 +8,7 @@ package Paws::KMS::KeyMetadata;
   has Enabled => (is => 'ro', isa => 'Bool');
   has ExpirationModel => (is => 'ro', isa => 'Str');
   has KeyId => (is => 'ro', isa => 'Str', required => 1);
+  has KeyManager => (is => 'ro', isa => 'Str');
   has KeyState => (is => 'ro', isa => 'Str');
   has KeyUsage => (is => 'ro', isa => 'Str');
   has Origin => (is => 'ro', isa => 'Str');
@@ -53,8 +54,9 @@ DescribeKey operations.
 =head2 Arn => Str
 
   The Amazon Resource Name (ARN) of the CMK. For examples, see AWS Key
-Management Service (AWS KMS) in the Example ARNs section of the I<AWS
-General Reference>.
+Management Service (AWS KMS)
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms)
+in the Example ARNs section of the I<AWS General Reference>.
 
 
 =head2 AWSAccountId => Str
@@ -96,13 +98,22 @@ only when C<Origin> is C<EXTERNAL>, otherwise this value is omitted.
   The globally unique identifier for the CMK.
 
 
+=head2 KeyManager => Str
+
+  The CMK's manager. CMKs are either customer-managed or AWS-managed. For
+more information about the difference, see Customer Master Keys
+(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys)
+in the I<AWS Key Management Service Developer Guide>.
+
+
 =head2 KeyState => Str
 
   The state of the CMK.
 
 For more information about how key state affects the use of a CMK, see
-How Key State Affects the Use of a Customer Master Key in the I<AWS Key
-Management Service Developer Guide>.
+How Key State Affects the Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 =head2 KeyUsage => Str
@@ -136,9 +147,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::KMS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

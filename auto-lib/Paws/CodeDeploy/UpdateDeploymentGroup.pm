@@ -10,9 +10,11 @@ package Paws::CodeDeploy::UpdateDeploymentGroup;
   has DeploymentConfigName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentConfigName' );
   has DeploymentStyle => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentStyle', traits => ['NameInRequest'], request_name => 'deploymentStyle' );
   has Ec2TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]', traits => ['NameInRequest'], request_name => 'ec2TagFilters' );
+  has Ec2TagSet => (is => 'ro', isa => 'Paws::CodeDeploy::EC2TagSet', traits => ['NameInRequest'], request_name => 'ec2TagSet' );
   has LoadBalancerInfo => (is => 'ro', isa => 'Paws::CodeDeploy::LoadBalancerInfo', traits => ['NameInRequest'], request_name => 'loadBalancerInfo' );
   has NewDeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'newDeploymentGroupName' );
   has OnPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', traits => ['NameInRequest'], request_name => 'onPremisesInstanceTagFilters' );
+  has OnPremisesTagSet => (is => 'ro', isa => 'Paws::CodeDeploy::OnPremisesTagSet', traits => ['NameInRequest'], request_name => 'onPremisesTagSet' );
   has ServiceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRoleArn' );
   has TriggerConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TriggerConfig]', traits => ['NameInRequest'], request_name => 'triggerConfigurations' );
 
@@ -27,7 +29,7 @@ package Paws::CodeDeploy::UpdateDeploymentGroup;
 
 =head1 NAME
 
-Paws::CodeDeploy::UpdateDeploymentGroup - Arguments for method UpdateDeploymentGroup on Paws::CodeDeploy
+Paws::CodeDeploy::UpdateDeploymentGroup - Arguments for method UpdateDeploymentGroup on L<Paws::CodeDeploy>
 
 =head1 DESCRIPTION
 
@@ -110,6 +112,14 @@ tags, do not enter any tag names.
 
 
 
+=head2 Ec2TagSet => L<Paws::CodeDeploy::EC2TagSet>
+
+Information about groups of tags applied to on-premises instances. The
+deployment group will include only EC2 instances identified by all the
+tag groups.
+
+
+
 =head2 LoadBalancerInfo => L<Paws::CodeDeploy::LoadBalancerInfo>
 
 Information about the load balancer used in a deployment.
@@ -130,6 +140,14 @@ To remove tags, do not enter any tag names.
 
 
 
+=head2 OnPremisesTagSet => L<Paws::CodeDeploy::OnPremisesTagSet>
+
+Information about an on-premises instance tag set. The deployment group
+will include only on-premises instances identified by all the tag
+groups.
+
+
+
 =head2 ServiceRoleArn => Str
 
 A replacement ARN for the service role, if you want to change it.
@@ -140,7 +158,9 @@ A replacement ARN for the service role, if you want to change it.
 
 Information about triggers to change when the deployment group is
 updated. For examples, see Modify Triggers in an AWS CodeDeploy
-Deployment Group in the AWS CodeDeploy User Guide.
+Deployment Group
+(http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-edit.html)
+in the AWS CodeDeploy User Guide.
 
 
 
@@ -151,9 +171,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateDeploym
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

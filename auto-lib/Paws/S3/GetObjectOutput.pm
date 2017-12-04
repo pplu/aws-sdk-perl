@@ -29,6 +29,7 @@ package Paws::S3::GetObjectOutput;
   has TagCount => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'x-amz-tagging-count');
   has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-version-id');
   has WebsiteRedirectLocation => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-website-redirect-location');
+
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');
   has _request_id => (is => 'ro', isa => 'Str');

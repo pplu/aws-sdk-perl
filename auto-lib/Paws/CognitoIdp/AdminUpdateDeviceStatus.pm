@@ -17,7 +17,7 @@ package Paws::CognitoIdp::AdminUpdateDeviceStatus;
 
 =head1 NAME
 
-Paws::CognitoIdp::AdminUpdateDeviceStatus - Arguments for method AdminUpdateDeviceStatus on Paws::CognitoIdp
+Paws::CognitoIdp::AdminUpdateDeviceStatus - Arguments for method AdminUpdateDeviceStatus on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -56,7 +56,7 @@ The user name.
 
 =head2 B<REQUIRED> UserPoolId => Str
 
-The user pool IDE<gt>
+The user pool ID.
 
 
 
@@ -67,9 +67,9 @@ This class forms part of L<Paws>, documenting arguments for method AdminUpdateDe
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

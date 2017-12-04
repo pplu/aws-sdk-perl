@@ -1,9 +1,9 @@
 
 package Paws::ApiGateway::UpdateResource;
   use Moose;
-  has PatchOperations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::PatchOperation]');
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId' , required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
+  has PatchOperations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::PatchOperation]', traits => ['NameInRequest'], request_name => 'patchOperations');
+  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -11,14 +11,13 @@ package Paws::ApiGateway::UpdateResource;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/resources/{resource_id}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Resource');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::UpdateResource - Arguments for method UpdateResource on Paws::ApiGateway
+Paws::ApiGateway::UpdateResource - Arguments for method UpdateResource on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -52,7 +51,7 @@ The identifier of the Resource resource.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The RestApi identifier for the Resource resource.
+The string identifier of the associated RestApi.
 
 
 
@@ -63,9 +62,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateResourc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -20,7 +20,7 @@ package Paws::MarketplaceCommerceAnalytics::GenerateDataSet;
 
 =head1 NAME
 
-Paws::MarketplaceCommerceAnalytics::GenerateDataSet - Arguments for method GenerateDataSet on Paws::MarketplaceCommerceAnalytics
+Paws::MarketplaceCommerceAnalytics::GenerateDataSet - Arguments for method GenerateDataSet on L<Paws::MarketplaceCommerceAnalytics>
 
 =head1 DESCRIPTION
 
@@ -65,72 +65,127 @@ The desired data set type.
 
 =over
 
-=item * I<customer_subscriber_hourly_monthly_subscriptions> - Available
-daily by 5:00 PM Pacific Time since 2014-07-21.
+=item * B<customer_subscriber_hourly_monthly_subscriptions>
 
-=item * I<customer_subscriber_annual_subscriptions> - Available daily
-by 5:00 PM Pacific Time since 2014-07-21.
+From 2014-07-21 to present: Available daily by 5:00 PM Pacific Time.
 
-=item * I<daily_business_usage_by_instance_type> - Available daily by
-5:00 PM Pacific Time since 2015-01-26.
+=item * B<customer_subscriber_annual_subscriptions>
 
-=item * I<daily_business_fees> - Available daily by 5:00 PM Pacific
-Time since 2015-01-26.
+From 2014-07-21 to present: Available daily by 5:00 PM Pacific Time.
 
-=item * I<daily_business_free_trial_conversions> - Available daily by
-5:00 PM Pacific Time since 2015-01-26.
+=item * B<daily_business_usage_by_instance_type>
 
-=item * I<daily_business_new_instances> - Available daily by 5:00 PM
-Pacific Time since 2015-01-26.
+From 2015-01-26 to present: Available daily by 5:00 PM Pacific Time.
 
-=item * I<daily_business_new_product_subscribers> - Available daily by
-5:00 PM Pacific Time since 2015-01-26.
+=item * B<daily_business_fees>
 
-=item * I<daily_business_canceled_product_subscribers> - Available
-daily by 5:00 PM Pacific Time since 2015-01-26.
+From 2015-01-26 to present: Available daily by 5:00 PM Pacific Time.
 
-=item * I<monthly_revenue_billing_and_revenue_data> - Available monthly
-on the 4th day of the month by 5:00 PM Pacific Time since 2015-02.
+=item * B<daily_business_free_trial_conversions>
 
-=item * I<monthly_revenue_annual_subscriptions> - Available monthly on
-the 4th day of the month by 5:00 PM Pacific Time since 2015-02.
+From 2015-01-26 to present: Available daily by 5:00 PM Pacific Time.
 
-=item * I<disbursed_amount_by_product> - Available every 30 days by
-5:00 PM Pacific Time since 2015-01-26.
+=item * B<daily_business_new_instances>
 
-=item * I<disbursed_amount_by_product_with_uncollected_funds> -This
-data set is only available from 2012-04-19 until 2015-01-25. After
-2015-01-25, this data set was split into three data sets:
-disbursed_amount_by_product,
+From 2015-01-26 to present: Available daily by 5:00 PM Pacific Time.
+
+=item * B<daily_business_new_product_subscribers>
+
+From 2015-01-26 to present: Available daily by 5:00 PM Pacific Time.
+
+=item * B<daily_business_canceled_product_subscribers>
+
+From 2015-01-26 to present: Available daily by 5:00 PM Pacific Time.
+
+=item * B<monthly_revenue_billing_and_revenue_data>
+
+From 2015-02 to 2017-06: Available monthly on the 4th day of the month
+by 5:00pm Pacific Time. Data includes metered transactions (e.g.
+hourly) from two months prior.
+
+From 2017-07 to present: Available monthly on the 15th day of the month
+by 5:00pm Pacific Time. Data includes metered transactions (e.g.
+hourly) from one month prior.
+
+=item * B<monthly_revenue_annual_subscriptions>
+
+From 2015-02 to 2017-06: Available monthly on the 4th day of the month
+by 5:00pm Pacific Time. Data includes up-front software charges (e.g.
+annual) from one month prior.
+
+From 2017-07 to present: Available monthly on the 15th day of the month
+by 5:00pm Pacific Time. Data includes up-front software charges (e.g.
+annual) from one month prior.
+
+=item * B<disbursed_amount_by_product>
+
+From 2015-01-26 to present: Available every 30 days by 5:00 PM Pacific
+Time.
+
+=item * B<disbursed_amount_by_product_with_uncollected_funds>
+
+From 2012-04-19 to 2015-01-25: Available every 30 days by 5:00 PM
+Pacific Time.
+
+From 2015-01-26 to present: This data set was split into three data
+sets: disbursed_amount_by_product,
 disbursed_amount_by_age_of_uncollected_funds, and
 disbursed_amount_by_age_of_disbursed_funds.
 
-=item * I<disbursed_amount_by_instance_hours> - Available every 30 days
-by 5:00 PM Pacific Time since 2012-09-04.
+=item * B<disbursed_amount_by_instance_hours>
 
-=item * I<disbursed_amount_by_customer_geo> - Available every 30 days
-by 5:00 PM Pacific Time since 2012-04-19.
+From 2012-09-04 to present: Available every 30 days by 5:00 PM Pacific
+Time.
 
-=item * I<disbursed_amount_by_age_of_uncollected_funds> - Available
-every 30 days by 5:00 PM Pacific Time since 2015-01-26.
+=item * B<disbursed_amount_by_customer_geo>
 
-=item * I<disbursed_amount_by_age_of_disbursed_funds> - Available every
-30 days by 5:00 PM Pacific Time since 2015-01-26.
+From 2012-04-19 to present: Available every 30 days by 5:00 PM Pacific
+Time.
 
-=item * I<customer_profile_by_industry> - Available daily by 5:00 PM
-Pacific Time since 2015-10-01.
+=item * B<disbursed_amount_by_age_of_uncollected_funds>
 
-=item * I<customer_profile_by_revenue> - Available daily by 5:00 PM
-Pacific Time since 2015-10-01.
+From 2015-01-26 to present: Available every 30 days by 5:00 PM Pacific
+Time.
 
-=item * I<customer_profile_by_geography> - Available daily by 5:00 PM
-Pacific Time since 2015-10-01.
+=item * B<disbursed_amount_by_age_of_disbursed_funds>
 
-=item * I<sales_compensation_billed_revenue> - Available monthly on the
-4th day of the month by 5:00 PM Pacific Time since 2016-12.
+From 2015-01-26 to present: Available every 30 days by 5:00 PM Pacific
+Time.
 
-=item * I<us_sales_and_use_tax_records> - Available monthly on the 15th
-day of the month by 5:00 PM Pacific Time since 2017-02-15.
+=item * B<customer_profile_by_industry>
+
+From 2015-10-01 to 2017-06-29: Available daily by 5:00 PM Pacific Time.
+
+From 2017-06-30 to present: This data set is no longer available.
+
+=item * B<customer_profile_by_revenue>
+
+From 2015-10-01 to 2017-06-29: Available daily by 5:00 PM Pacific Time.
+
+From 2017-06-30 to present: This data set is no longer available.
+
+=item * B<customer_profile_by_geography>
+
+From 2015-10-01 to 2017-06-29: Available daily by 5:00 PM Pacific Time.
+
+From 2017-06-30 to present: This data set is no longer available.
+
+=item * B<sales_compensation_billed_revenue>
+
+From 2016-12 to 2017-06: Available monthly on the 4th day of the month
+by 5:00pm Pacific Time. Data includes metered transactions (e.g.
+hourly) from two months prior, and up-front software charges (e.g.
+annual) from one month prior.
+
+From 2017-06 to present: Available monthly on the 15th day of the month
+by 5:00pm Pacific Time. Data includes metered transactions (e.g.
+hourly) from one month prior, and up-front software charges (e.g.
+annual) from one month prior.
+
+=item * B<us_sales_and_use_tax_records>
+
+From 2017-02-15 to present: Available monthly on the 15th day of the
+month by 5:00 PM Pacific Time.
 
 =back
 
@@ -176,9 +231,9 @@ This class forms part of L<Paws>, documenting arguments for method GenerateDataS
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

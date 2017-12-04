@@ -73,7 +73,7 @@ Describes an update for a destination in Amazon Redshift.
 
 =head2 RetryOptions => L<Paws::Firehose::RedshiftRetryOptions>
 
-  The retry behavior in the event that Firehose is unable to deliver
+  The retry behavior in case Kinesis Firehose is unable to deliver
 documents to Amazon Redshift. Default value is 3600 (60 minutes).
 
 
@@ -114,9 +114,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Firehose>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

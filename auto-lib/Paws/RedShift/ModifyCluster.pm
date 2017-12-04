@@ -31,7 +31,7 @@ package Paws::RedShift::ModifyCluster;
 
 =head1 NAME
 
-Paws::RedShift::ModifyCluster - Arguments for method ModifyCluster on Paws::RedShift
+Paws::RedShift::ModifyCluster - Arguments for method ModifyCluster on L<Paws::RedShift>
 
 =head1 DESCRIPTION
 
@@ -150,8 +150,9 @@ currently in use, a new cluster parameter group in the cluster
 parameter group family for the new version must be specified. The new
 cluster parameter group can be the default for that cluster parameter
 group family. For more information about parameters and parameter
-groups, go to Amazon Redshift Parameter Groups in the I<Amazon Redshift
-Cluster Management Guide>.
+groups, go to Amazon Redshift Parameter Groups
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 Example: C<1.0>
 
@@ -164,7 +165,9 @@ The Elastic IP (EIP) address for the cluster.
 Constraints: The cluster must be provisioned in EC2-VPC and
 publicly-accessible through an Internet gateway. For more information
 about provisioning clusters in EC2-VPC, go to Supported Platforms to
-Launch Your Cluster in the Amazon Redshift Cluster Management Guide.
+Launch Your Cluster
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms)
+in the Amazon Redshift Cluster Management Guide.
 
 
 
@@ -173,7 +176,9 @@ Launch Your Cluster in the Amazon Redshift Cluster Management Guide.
 An option that specifies whether to create the cluster with enhanced
 VPC routing enabled. To create a cluster that uses enhanced VPC
 routing, the cluster must be in a VPC. For more information, see
-Enhanced VPC Routing in the Amazon Redshift Cluster Management Guide.
+Enhanced VPC Routing
+(http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)
+in the Amazon Redshift Cluster Management Guide.
 
 If this option is C<true>, enhanced VPC routing is enabled.
 
@@ -351,9 +356,9 @@ This class forms part of L<Paws>, documenting arguments for method ModifyCluster
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

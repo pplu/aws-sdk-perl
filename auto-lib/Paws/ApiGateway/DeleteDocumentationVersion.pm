@@ -1,8 +1,8 @@
 
 package Paws::ApiGateway::DeleteDocumentationVersion;
   use Moose;
-  has DocumentationVersion => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'documentationVersion' , required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
+  has DocumentationVersion => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'documentationVersion', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -10,14 +10,13 @@ package Paws::ApiGateway::DeleteDocumentationVersion;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/documentation/versions/{doc_version}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::DeleteDocumentationVersion - Arguments for method DeleteDocumentationVersion on Paws::ApiGateway
+Paws::ApiGateway::DeleteDocumentationVersion - Arguments for method DeleteDocumentationVersion on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -45,8 +44,7 @@ snapshot.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-[Required] The identifier of an API of a to-be-deleted documentation
-snapshot.
+[Required] The string identifier of the associated RestApi.
 
 
 
@@ -57,9 +55,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteDocumen
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

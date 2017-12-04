@@ -35,7 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head1 DESCRIPTION
 
-Provides details of the C<SignalExternalWorkflowExecution> decision.
+Provides the details of the C<SignalExternalWorkflowExecution>
+decision.
 
 B<Access Control>
 
@@ -44,37 +45,43 @@ SWF resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * You cannot use an IAM policy to constrain this action's
-parameters.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+You cannot use an IAM policy to constrain this action's parameters.
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 =head1 ATTRIBUTES
 
 
 =head2 Control => Str
 
-  I<Optional.> Data attached to the event that can be used by the decider
-in subsequent decision tasks.
+  The data attached to the event that can be used by the decider in
+subsequent decision tasks.
 
 
 =head2 Input => Str
 
-  I<Optional.> Input data to be provided with the signal. The target
-workflow execution will use the signal name and input data to process
-the signal.
+  The input data to be provided with the signal. The target workflow
+execution uses the signal name and input data to process the signal.
 
 
 =head2 RunId => Str
@@ -84,14 +91,13 @@ the signal.
 
 =head2 B<REQUIRED> SignalName => Str
 
-  B<Required.> The name of the signal.The target workflow execution will
-use the signal name and input to process the signal.
+  The name of the signal.The target workflow execution uses the signal
+name and input to process the signal.
 
 
 =head2 B<REQUIRED> WorkflowId => Str
 
-  B<Required.> The C<workflowId> of the workflow execution to be
-signaled.
+  The C<workflowId> of the workflow execution to be signaled.
 
 
 
@@ -101,9 +107,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SimpleWor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

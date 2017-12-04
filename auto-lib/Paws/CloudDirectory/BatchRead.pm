@@ -1,8 +1,8 @@
 
 package Paws::CloudDirectory::BatchRead;
   use Moose;
-  has ConsistencyLevel => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-consistency-level' );
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has ConsistencyLevel => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-consistency-level');
+  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
   has Operations => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::BatchReadOperation]', required => 1);
 
   use MooseX::ClassAttribute;
@@ -11,14 +11,13 @@ package Paws::CloudDirectory::BatchRead;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/batchread');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::BatchReadResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CloudDirectory::BatchRead - Arguments for method BatchRead on Paws::CloudDirectory
+Paws::CloudDirectory::BatchRead - Arguments for method BatchRead on L<Paws::CloudDirectory>
 
 =head1 DESCRIPTION
 
@@ -47,13 +46,14 @@ Valid values are: C<"SERIALIZABLE">, C<"EVENTUAL">
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-ARN associated with the Directory. For more information, see arns.
+The Amazon Resource Name (ARN) that is associated with the Directory.
+For more information, see arns.
 
 
 
 =head2 B<REQUIRED> Operations => ArrayRef[L<Paws::CloudDirectory::BatchReadOperation>]
 
-List of operations that are part of the batch.
+A list of operations that are part of the batch.
 
 
 
@@ -64,9 +64,9 @@ This class forms part of L<Paws>, documenting arguments for method BatchRead in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

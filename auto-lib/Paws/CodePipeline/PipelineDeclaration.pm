@@ -43,7 +43,8 @@ pipeline.
 
 =head2 B<REQUIRED> ArtifactStore => L<Paws::CodePipeline::ArtifactStore>
 
-  
+  Represents information about the Amazon S3 bucket where artifacts are
+stored for the pipeline.
 
 
 =head2 B<REQUIRED> Name => Str
@@ -77,9 +78,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodePipel
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -20,7 +20,7 @@ package Paws::DynamoDB::GetItem;
 
 =head1 NAME
 
-Paws::DynamoDB::GetItem - Arguments for method GetItem on Paws::DynamoDB
+Paws::DynamoDB::GetItem - Arguments for method GetItem on L<Paws::DynamoDB>
 
 =head1 DESCRIPTION
 
@@ -42,8 +42,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 AttributesToGet => ArrayRef[Str|Undef]
 
 This is a legacy parameter. Use C<ProjectionExpression> instead. For
-more information, see AttributesToGet in the I<Amazon DynamoDB
-Developer Guide>.
+more information, see AttributesToGet
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -92,9 +93,10 @@ C<Percentile>
 
 The name of this attribute conflicts with a reserved word, so it cannot
 be used directly in an expression. (For the complete list of reserved
-words, see Reserved Words in the I<Amazon DynamoDB Developer Guide>).
-To work around this, you could specify the following for
-C<ExpressionAttributeNames>:
+words, see Reserved Words
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+in the I<Amazon DynamoDB Developer Guide>). To work around this, you
+could specify the following for C<ExpressionAttributeNames>:
 
 =over
 
@@ -119,7 +121,9 @@ Tokens that begin with the B<:> character are I<expression attribute
 values>, which are placeholders for the actual value at runtime.
 
 For more information on expression attribute names, see Accessing Item
-Attributes in the I<Amazon DynamoDB Developer Guide>.
+Attributes
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -146,8 +150,9 @@ If no attribute names are specified, then all attributes will be
 returned. If any of the requested attributes are not found, they will
 not appear in the result.
 
-For more information, see Accessing Item Attributes in the I<Amazon
-DynamoDB Developer Guide>.
+For more information, see Accessing Item Attributes
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -170,9 +175,9 @@ This class forms part of L<Paws>, documenting arguments for method GetItem in L<
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

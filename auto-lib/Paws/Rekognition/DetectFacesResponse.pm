@@ -28,10 +28,10 @@ image orientation. The bounding box coordinates returned in
 C<FaceDetails> represent face locations before the image orientation is
 corrected.
 
-If the source image is in .jpeg format, it might contain exchangeable
+If the input image is in .jpeg format, it might contain exchangeable
 image (Exif) metadata that includes the image's orientation. If so, and
-the Exif metadata for the source image populates the orientation field,
-the value of C<OrientationCorrection> is nil and the C<FaceDetails>
+the Exif metadata for the input image populates the orientation field,
+the value of C<OrientationCorrection> is null and the C<FaceDetails>
 bounding box coordinates represent face locations after Exif metadata
 is used to correct the image orientation. Images in .png format don't
 contain Exif metadata.

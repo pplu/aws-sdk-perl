@@ -16,7 +16,7 @@ package Paws::EC2::DescribeSpotInstanceRequests;
 
 =head1 NAME
 
-Paws::EC2::DescribeSpotInstanceRequests - Arguments for method DescribeSpotInstanceRequests on Paws::EC2
+Paws::EC2::DescribeSpotInstanceRequests - Arguments for method DescribeSpotInstanceRequests on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -126,8 +126,8 @@ with.
 
 =item *
 
-C<launch.monitoring-enabled> - Whether monitoring is enabled for the
-Spot instance.
+C<launch.monitoring-enabled> - Whether detailed monitoring is enabled
+for the Spot instance.
 
 =item *
 
@@ -135,7 +135,22 @@ C<launch.ramdisk-id> - The RAM disk ID.
 
 =item *
 
-C<network-interface.network-interface-id> - The ID of the network
+C<launched-availability-zone> - The Availability Zone in which the bid
+is launched.
+
+=item *
+
+C<network-interface.addresses.primary> - Indicates whether the IP
+address is the primary private IP address.
+
+=item *
+
+C<network-interface.delete-on-termination> - Indicates whether the
+network interface is deleted when the instance is terminated.
+
+=item *
+
+C<network-interface.description> - A description of the network
 interface.
 
 =item *
@@ -145,11 +160,12 @@ network interface attachment on the instance.
 
 =item *
 
-C<network-interface.subnet-id> - The ID of the subnet for the instance.
+C<network-interface.group-id> - The ID of the security group associated
+with the network interface.
 
 =item *
 
-C<network-interface.description> - A description of the network
+C<network-interface.network-interface-id> - The ID of the network
 interface.
 
 =item *
@@ -159,23 +175,7 @@ address of the network interface.
 
 =item *
 
-C<network-interface.delete-on-termination> - Indicates whether the
-network interface is deleted when the instance is terminated.
-
-=item *
-
-C<network-interface.group-id> - The ID of the security group associated
-with the network interface.
-
-=item *
-
-C<network-interface.group-name> - The name of the security group
-associated with the network interface.
-
-=item *
-
-C<network-interface.addresses.primary> - Indicates whether the IP
-address is the primary private IP address.
+C<network-interface.subnet-id> - The ID of the subnet for the instance.
 
 =item *
 
@@ -196,8 +196,9 @@ to fulfill the request.
 C<state> - The state of the Spot instance request (C<open> | C<active>
 | C<closed> | C<cancelled> | C<failed>). Spot bid status information
 can help you track your Amazon EC2 Spot instance requests. For more
-information, see Spot Bid Status in the Amazon Elastic Compute Cloud
-User Guide.
+information, see Spot Bid Status
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html)
+in the Amazon Elastic Compute Cloud User Guide.
 
 =item *
 
@@ -239,11 +240,6 @@ C<persistent>).
 
 =item *
 
-C<launched-availability-zone> - The Availability Zone in which the bid
-is launched.
-
-=item *
-
 C<valid-from> - The start date of the request.
 
 =item *
@@ -268,9 +264,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeSpotI
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -18,7 +18,7 @@ package Paws::ResourceTagging::GetResources;
 
 =head1 NAME
 
-Paws::ResourceTagging::GetResources - Arguments for method GetResources on Paws::ResourceTagging
+Paws::ResourceTagging::GetResources - Arguments for method GetResources on L<Paws::ResourceTagging>
 
 =head1 DESCRIPTION
 
@@ -70,16 +70,19 @@ General Reference> for the following:
 
 =item *
 
-For a list of service name strings, see AWS Service Namespaces.
+For a list of service name strings, see AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces).
 
 =item *
 
-For resource type strings, see Example ARNs.
+For resource type strings, see Example ARNs
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax).
 
 =item *
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces.
+AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 =back
 
@@ -131,9 +134,9 @@ This class forms part of L<Paws>, documenting arguments for method GetResources 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

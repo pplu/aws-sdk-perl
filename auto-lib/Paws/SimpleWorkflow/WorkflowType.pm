@@ -39,7 +39,7 @@ Represents a workflow type.
 
 =head2 B<REQUIRED> Name => Str
 
-  B<Required.> The name of the workflow type.
+  The name of the workflow type.
 
 The combination of workflow type name and version must be unique with
 in a domain.
@@ -47,7 +47,7 @@ in a domain.
 
 =head2 B<REQUIRED> Version => Str
 
-  B<Required.> The version of the workflow type.
+  The version of the workflow type.
 
 The combination of workflow type name and version must be unique with
 in a domain.
@@ -60,9 +60,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SimpleWor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

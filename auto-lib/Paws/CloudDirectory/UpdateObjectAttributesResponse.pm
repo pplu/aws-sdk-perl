@@ -17,7 +17,7 @@ Paws::CloudDirectory::UpdateObjectAttributesResponse
 
 =head2 ObjectIdentifier => Str
 
-C<ObjectIdentifier> of the updated object.
+The C<ObjectIdentifier> of the updated object.
 
 
 =head2 _request_id => Str

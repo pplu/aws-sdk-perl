@@ -53,7 +53,7 @@ Include one C<Location> element for each country.
 CloudFront and C<MaxMind> both use C<ISO 3166> country codes. For the
 current list of countries and the corresponding codes, see C<ISO
 3166-1-alpha-2> code on the I<International Organization for
-Standardization> website. You can also refer to the country list in the
+Standardization> website. You can also refer to the country list on the
 CloudFront console, which includes both country names and codes.
 
 
@@ -79,7 +79,7 @@ not restricted by client geo location.
 =item *
 
 C<blacklist>: The C<Location> elements specify the countries in which
-you do not want CloudFront to distribute your content.
+you don't want CloudFront to distribute your content.
 
 =item *
 
@@ -97,9 +97,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudFron
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

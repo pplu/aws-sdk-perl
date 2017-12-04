@@ -18,14 +18,15 @@ Paws::CloudDirectory::ApplySchemaResponse
 
 =head2 AppliedSchemaArn => Str
 
-Applied schema ARN associated with the copied schema in the Directory.
-You can use this ARN to describe the schema information applied on this
-directory. For more information, see arns.
+The applied schema ARN that is associated with the copied schema in the
+Directory. You can use this ARN to describe the schema information
+applied on this directory. For more information, see arns.
 
 
 =head2 DirectoryArn => Str
 
-ARN associated with the Directory. For more information, see arns.
+The ARN that is associated with the Directory. For more information,
+see arns.
 
 
 =head2 _request_id => Str

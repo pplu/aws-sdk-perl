@@ -54,9 +54,10 @@ stream notification to the Amazon SNS topic.
 
   Status of the last attempted delivery.
 
-B<Note> Providing an SNS topic on a DeliveryChannel for AWS Config is
-optional. If the SNS delivery is turned off, the last status will be
-B<Not_Applicable>.
+B<Note> Providing an SNS topic on a DeliveryChannel
+(http://docs.aws.amazon.com/config/latest/APIReference/API_DeliveryChannel.html)
+for AWS Config is optional. If the SNS delivery is turned off, the last
+status will be B<Not_Applicable>.
 
 
 =head2 LastStatusChangeTime => Str
@@ -71,9 +72,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Config>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

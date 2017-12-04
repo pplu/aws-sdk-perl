@@ -19,7 +19,7 @@ package Paws::StorageGateway::CreateStorediSCSIVolume;
 
 =head1 NAME
 
-Paws::StorageGateway::CreateStorediSCSIVolume - Arguments for method CreateStorediSCSIVolume on Paws::StorageGateway
+Paws::StorageGateway::CreateStorediSCSIVolume - Arguments for method CreateStorediSCSIVolume on L<Paws::StorageGateway>
 
 =head1 DESCRIPTION
 
@@ -41,7 +41,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> DiskId => Str
 
 The unique identifier for the gateway local disk that is configured as
-a stored volume. Use ListLocalDisks to list disk IDs for a gateway.
+a stored volume. Use ListLocalDisks
+(http://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html)
+to list disk IDs for a gateway.
 
 
 
@@ -77,8 +79,9 @@ Valid Values: true, false
 The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as
 the new stored volume. Specify this field if you want to create the
 iSCSI storage volume from a snapshot otherwise do not include this
-field. To list snapshots for your account use DescribeSnapshots in the
-I<Amazon Elastic Compute Cloud API Reference>.
+field. To list snapshots for your account use DescribeSnapshots
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html)
+in the I<Amazon Elastic Compute Cloud API Reference>.
 
 
 
@@ -87,7 +90,7 @@ I<Amazon Elastic Compute Cloud API Reference>.
 The name of the iSCSI target used by initiators to connect to the
 target and as a suffix for the target ARN. For example, specifying
 C<TargetName> as I<myvolume> results in the target ARN of
-arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume.
+arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume.
 The target name must be unique across all volumes of a gateway.
 
 
@@ -99,9 +102,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateStoredi
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -18,7 +18,7 @@ package Paws::CloudFront::CreateInvalidation;
 
 =head1 NAME
 
-Paws::CloudFront::CreateInvalidation - Arguments for method CreateInvalidation on Paws::CloudFront
+Paws::CloudFront::CreateInvalidation - Arguments for method CreateInvalidation on L<Paws::CloudFront>
 
 =head1 DESCRIPTION
 
@@ -56,9 +56,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateInvalid
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

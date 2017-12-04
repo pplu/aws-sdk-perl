@@ -45,7 +45,7 @@ an origin access identity to configure the origin so that viewers can
 I<only> access objects in an Amazon S3 bucket through CloudFront. The
 format of the value is:
 
-origin-access-identity/CloudFront/I<ID-of-origin-access-identity>
+origin-access-identity/cloudfront/I<ID-of-origin-access-identity>
 
 where C< I<ID-of-origin-access-identity> > is the value that CloudFront
 returned in the C<ID> element when you created the origin access
@@ -63,8 +63,9 @@ To replace the origin access identity, update the distribution
 configuration and specify the new origin access identity.
 
 For more information about the origin access identity, see Serving
-Private Content through CloudFront in the I<Amazon CloudFront Developer
-Guide>.
+Private Content through CloudFront
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 
@@ -74,9 +75,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudFron
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -17,7 +17,7 @@ package Paws::Rekognition::IndexFaces;
 
 =head1 NAME
 
-Paws::Rekognition::IndexFaces - Arguments for method IndexFaces on Paws::Rekognition
+Paws::Rekognition::IndexFaces - Arguments for method IndexFaces on L<Paws::Rekognition>
 
 =head1 DESCRIPTION
 
@@ -67,7 +67,7 @@ ID you want to assign to all the faces detected in the image.
 
 =head2 B<REQUIRED> Image => L<Paws::Rekognition::Image>
 
-
+The input image as bytes or an S3 object.
 
 
 
@@ -78,9 +78,9 @@ This class forms part of L<Paws>, documenting arguments for method IndexFaces in
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

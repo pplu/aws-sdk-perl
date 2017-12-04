@@ -44,7 +44,8 @@ user.
 =head2 ConfirmationPrompt => L<Paws::LexModels::Prompt>
 
 If defined in the bot, Amazon Lex uses prompt to confirm the intent
-before fulfilling the user's request. For more information, see .
+before fulfilling the user's request. For more information, see
+PutIntent.
 
 
 =head2 CreatedDate => Str
@@ -60,19 +61,20 @@ A description of the intent.
 =head2 DialogCodeHook => L<Paws::LexModels::CodeHook>
 
 If defined in the bot, Amazon Amazon Lex invokes this Lambda function
-for each user input. For more information, see .
+for each user input. For more information, see PutIntent.
 
 
 =head2 FollowUpPrompt => L<Paws::LexModels::FollowUpPrompt>
 
 If defined in the bot, Amazon Lex uses this prompt to solicit
 additional user activity after the intent is fulfilled. For more
-information, see .
+information, see PutIntent.
 
 
 =head2 FulfillmentActivity => L<Paws::LexModels::FulfillmentActivity>
 
-Describes how the intent is fulfilled. For more information, see .
+Describes how the intent is fulfilled. For more information, see
+PutIntent.
 
 
 =head2 LastUpdatedDate => Str

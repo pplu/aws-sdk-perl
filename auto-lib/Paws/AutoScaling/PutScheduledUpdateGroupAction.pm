@@ -22,7 +22,7 @@ package Paws::AutoScaling::PutScheduledUpdateGroupAction;
 
 =head1 NAME
 
-Paws::AutoScaling::PutScheduledUpdateGroupAction - Arguments for method PutScheduledUpdateGroupAction on Paws::AutoScaling
+Paws::AutoScaling::PutScheduledUpdateGroupAction - Arguments for method PutScheduledUpdateGroupAction on L<Paws::AutoScaling>
 
 =head1 DESCRIPTION
 
@@ -75,7 +75,8 @@ The minimum size for the Auto Scaling group.
 =head2 Recurrence => Str
 
 The recurring schedule for this action, in Unix cron syntax format. For
-more information, see Cron in Wikipedia.
+more information, see Cron (http://en.wikipedia.org/wiki/Cron) in
+Wikipedia.
 
 
 
@@ -112,9 +113,9 @@ This class forms part of L<Paws>, documenting arguments for method PutScheduledU
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

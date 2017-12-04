@@ -16,7 +16,7 @@ package Paws::IAM::ListInstanceProfilesForRole;
 
 =head1 NAME
 
-Paws::IAM::ListInstanceProfilesForRole - Arguments for method ListInstanceProfilesForRole on Paws::IAM
+Paws::IAM::ListInstanceProfilesForRole - Arguments for method ListInstanceProfilesForRole on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -63,9 +63,10 @@ the service where to continue from.
 
 The name of the role to list instance profiles for.
 
-This parameter allows (per its regex pattern) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: _+=,.@-
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+upper and lowercase alphanumeric characters with no spaces. You can
+also include any of the following characters: _+=,.@-
 
 
 
@@ -76,9 +77,9 @@ This class forms part of L<Paws>, documenting arguments for method ListInstanceP
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

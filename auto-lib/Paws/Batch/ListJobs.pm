@@ -1,10 +1,10 @@
 
 package Paws::Batch::ListJobs;
   use Moose;
-  has JobQueue => (is => 'ro', isa => 'Str', required => 1);
-  has JobStatus => (is => 'ro', isa => 'Str');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  has JobQueue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueue', required => 1);
+  has JobStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobStatus');
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
 
   use MooseX::ClassAttribute;
 
@@ -12,14 +12,13 @@ package Paws::Batch::ListJobs;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/listjobs');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Batch::ListJobsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Batch::ListJobs - Arguments for method ListJobs on Paws::Batch
+Paws::Batch::ListJobs - Arguments for method ListJobs on L<Paws::Batch>
 
 =head1 DESCRIPTION
 
@@ -47,7 +46,8 @@ to list jobs.
 
 =head2 JobStatus => Str
 
-The job status with which to filter jobs in the specified queue.
+The job status with which to filter jobs in the specified queue. If you
+do not specify a status, only C<RUNNING> jobs are returned.
 
 Valid values are: C<"SUBMITTED">, C<"PENDING">, C<"RUNNABLE">, C<"STARTING">, C<"RUNNING">, C<"SUCCEEDED">, C<"FAILED">
 
@@ -85,9 +85,9 @@ This class forms part of L<Paws>, documenting arguments for method ListJobs in L
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

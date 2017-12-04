@@ -18,7 +18,7 @@ package Paws::CodeStar::AssociateTeamMember;
 
 =head1 NAME
 
-Paws::CodeStar::AssociateTeamMember - Arguments for method AssociateTeamMember on Paws::CodeStar
+Paws::CodeStar::AssociateTeamMember - Arguments for method AssociateTeamMember on L<Paws::CodeStar>
 
 =head1 DESCRIPTION
 
@@ -69,7 +69,7 @@ instances.
 =head2 B<REQUIRED> UserArn => Str
 
 The Amazon Resource Name (ARN) for the IAM user you want to add to the
-DevHub project.
+AWS CodeStar project.
 
 
 
@@ -80,9 +80,9 @@ This class forms part of L<Paws>, documenting arguments for method AssociateTeam
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

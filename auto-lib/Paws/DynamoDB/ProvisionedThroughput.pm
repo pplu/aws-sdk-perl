@@ -36,7 +36,9 @@ Represents the provisioned throughput settings for a specified table or
 index. The settings can be modified using the C<UpdateTable> operation.
 
 For current minimum and maximum provisioned throughput values, see
-Limits in the I<Amazon DynamoDB Developer Guide>.
+Limits
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 =head1 ATTRIBUTES
 
@@ -45,15 +47,18 @@ Limits in the I<Amazon DynamoDB Developer Guide>.
 
   The maximum number of strongly consistent reads consumed per second
 before DynamoDB returns a C<ThrottlingException>. For more information,
-see Specifying Read and Write Requirements in the I<Amazon DynamoDB
-Developer Guide>.
+see Specifying Read and Write Requirements
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 =head2 B<REQUIRED> WriteCapacityUnits => Int
 
   The maximum number of writes consumed per second before DynamoDB
 returns a C<ThrottlingException>. For more information, see Specifying
-Read and Write Requirements in the I<Amazon DynamoDB Developer Guide>.
+Read and Write Requirements
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -63,9 +68,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::DynamoDB>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

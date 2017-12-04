@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head1 DESCRIPTION
 
-Provides details of the C<ScheduleActivityTask> decision.
+Provides the details of the C<ScheduleActivityTask> decision.
 
 B<Access Control>
 
@@ -49,58 +49,72 @@ SWF resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * Constrain the following parameters by using a C<Condition>
-element with the appropriate keys.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+Constrain the following parameters by using a C<Condition> element with
+the appropriate keys.
 
 =over
 
-=item * C<activityType.name>: String constraint. The key is
+=item *
+
+C<activityType.name> E<ndash> String constraint. The key is
 C<swf:activityType.name>.
 
-=item * C<activityType.version>: String constraint. The key is
+=item *
+
+C<activityType.version> E<ndash> String constraint. The key is
 C<swf:activityType.version>.
 
-=item * C<taskList>: String constraint. The key is
+=item *
+
+C<taskList> E<ndash> String constraint. The key is
 C<swf:taskList.name>.
 
 =back
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ActivityId => Str
 
-  B<Required.> The C<activityId> of the activity task.
+  The C<activityId> of the activity task.
 
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
-control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
-contain the literal string quotarnquot.
+control characters (C<\u0000-\u001f> | C<\u007f-\u009f>). Also, it must
+not contain the literal string C<arn>.
 
 
 =head2 B<REQUIRED> ActivityType => L<Paws::SimpleWorkflow::ActivityType>
 
-  B<Required.> The type of the activity task to schedule.
+  The type of the activity task to schedule.
 
 
 =head2 Control => Str
 
-  I<Optional.> Data attached to the event that can be used by the decider
-in subsequent workflow tasks. This data is not sent to the activity.
+  Data attached to the event that can be used by the decider in
+subsequent workflow tasks. This data isn't sent to the activity.
 
 
 =head2 HeartbeatTimeout => Str
@@ -109,12 +123,12 @@ in subsequent workflow tasks. This data is not sent to the activity.
 task of this type must report progress by calling
 RecordActivityTaskHeartbeat. If the timeout is exceeded, the activity
 task is automatically timed out. If the worker subsequently attempts to
-record a heartbeat or returns a result, it will be ignored. This
-overrides the default heartbeat timeout specified when registering the
-activity type using RegisterActivityType.
+record a heartbeat or returns a result, it is ignored. This overrides
+the default heartbeat timeout specified when registering the activity
+type using RegisterActivityType.
 
-The duration is specified in seconds; an integer greater than or equal
-to 0. The value "NONE" can be used to specify unlimited duration.
+The duration is specified in seconds, an integer greater than or equal
+to C<0>. You can use C<NONE> to specify unlimited duration.
 
 
 =head2 Input => Str
@@ -126,29 +140,29 @@ to 0. The value "NONE" can be used to specify unlimited duration.
 
   The maximum duration for this activity task.
 
-The duration is specified in seconds; an integer greater than or equal
-to 0. The value "NONE" can be used to specify unlimited duration.
+The duration is specified in seconds, an integer greater than or equal
+to C<0>. You can use C<NONE> to specify unlimited duration.
 
 A schedule-to-close timeout for this activity task must be specified
 either as a default for the activity type or through this field. If
 neither this field is set nor a default schedule-to-close timeout was
-specified at registration time then a fault will be returned.
+specified at registration time then a fault is returned.
 
 
 =head2 ScheduleToStartTimeout => Str
 
-  I<Optional.> If set, specifies the maximum duration the activity task
-can wait to be assigned to a worker. This overrides the default
-schedule-to-start timeout specified when registering the activity type
-using RegisterActivityType.
+  If set, specifies the maximum duration the activity task can wait to be
+assigned to a worker. This overrides the default schedule-to-start
+timeout specified when registering the activity type using
+RegisterActivityType.
 
-The duration is specified in seconds; an integer greater than or equal
-to 0. The value "NONE" can be used to specify unlimited duration.
+The duration is specified in seconds, an integer greater than or equal
+to C<0>. You can use C<NONE> to specify unlimited duration.
 
 A schedule-to-start timeout for this activity task must be specified
 either as a default for the activity type or through this field. If
 neither this field is set nor a default schedule-to-start timeout was
-specified at registration time then a fault will be returned.
+specified at registration time then a fault is returned.
 
 
 =head2 StartToCloseTimeout => Str
@@ -158,43 +172,45 @@ this activity task. This overrides the default start-to-close timeout
 specified when registering the activity type using
 RegisterActivityType.
 
-The duration is specified in seconds; an integer greater than or equal
-to 0. The value "NONE" can be used to specify unlimited duration.
+The duration is specified in seconds, an integer greater than or equal
+to C<0>. You can use C<NONE> to specify unlimited duration.
 
 A start-to-close timeout for this activity task must be specified
 either as a default for the activity type or through this field. If
 neither this field is set nor a default start-to-close timeout was
-specified at registration time then a fault will be returned.
+specified at registration time then a fault is returned.
 
 
 =head2 TaskList => L<Paws::SimpleWorkflow::TaskList>
 
   If set, specifies the name of the task list in which to schedule the
 activity task. If not specified, the C<defaultTaskList> registered with
-the activity type will be used.
+the activity type is used.
 
 A task list for this activity task must be specified either as a
 default for the activity type or through this field. If neither this
 field is set nor a default task list was specified at registration time
-then a fault will be returned.
+then a fault is returned.
 
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
-control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
-contain the literal string quotarnquot.
+control characters (C<\u0000-\u001f> | C<\u007f-\u009f>). Also, it must
+not contain the literal string C<arn>.
 
 
 =head2 TaskPriority => Str
 
-  I<Optional.> If set, specifies the priority with which the activity
-task is to be assigned to a worker. This overrides the
-defaultTaskPriority specified when registering the activity type using
-RegisterActivityType. Valid values are integers that range from Java's
-C<Integer.MIN_VALUE> (-2147483648) to C<Integer.MAX_VALUE>
-(2147483647). Higher numbers indicate higher priority.
+  If set, specifies the priority with which the activity task is to be
+assigned to a worker. This overrides the defaultTaskPriority specified
+when registering the activity type using RegisterActivityType. Valid
+values are integers that range from Java's C<Integer.MIN_VALUE>
+(-2147483648) to C<Integer.MAX_VALUE> (2147483647). Higher numbers
+indicate higher priority.
 
 For more information about setting task priority, see Setting Task
-Priority in the I<Amazon Simple Workflow Developer Guide>.
+Priority
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 
@@ -204,9 +220,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SimpleWor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

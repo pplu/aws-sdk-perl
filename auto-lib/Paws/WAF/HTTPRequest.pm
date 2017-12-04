@@ -70,7 +70,7 @@ balancer to send the request
 
   The two-letter country code for the country that the request originated
 from. For a current list of country codes, see the Wikipedia entry ISO
-3166-1 alpha-2.
+3166-1 alpha-2 (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 
 
 =head2 Headers => ArrayRef[L<Paws::WAF::HTTPHeader>]
@@ -105,9 +105,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::WAF>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

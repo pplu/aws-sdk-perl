@@ -9,7 +9,7 @@ package Paws::API::Builder::Paws {
   use Moose;
 
   sub version {
-    '0.33';
+    '0.36';
   }
 
   sub services {
@@ -434,8 +434,30 @@ constructor called (without parameters). Also, the resulting instance or the alr
 
 =head3 region
 
-A string representing the region that service objects will be instantiated with. Default value is undefined, meaning that you will have to specify
-the desired region every time you call the B<service> method.
+A string representing the region that service objects will be instantiated with. Most services need a region specified, meaning that you will have to specify the desired region every time you call the B<service> method.
+
+  my $cfn = Paws->service('CloudFormation', region => 'eu-west-1');
+
+Some services (like IAM) are global, so they don't need their region specified:
+
+  my $iam = Paws->service('IAM');
+
+A special service is STS, which by default has a global endpoint, but you can also specify regional endpoints
+
+  my $global_sts = Paws->service('STS');
+  my $regional_sts = Paws->service('STS', region => 'eu-west-1');
+
+=head3 endpoint
+
+Paws needs to send HTTP requests to different URLS (endpoints) depending on the service and the region. URLs are normally automatically derived by specifying the region, but for special cases, like pointing to "fake-sqs" or "fake-s3" services, you can:
+
+  Paws->service('SQS', endpoint => 'http://localhost:3000', region => 'eu-west-1');
+
+Some services, like the MachineLearning predictor API want you to specify a custom endpoint:
+
+  my $model = $ml->GetMLModel(MLModelId => $model_id);
+  my $predictor = Paws->service('ML', endpoint => $model->EndpointInfo->EndpointUrl, region => 'eu-west-1');
+  $predictor->...
 
 =head1 Pluggability
 
@@ -506,9 +528,9 @@ L<https://github.com/pplu/aws-sdk-perl>
 
 =head1 BUGS and SOURCE
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =head1 COPYRIGHT and LICENSE
 

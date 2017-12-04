@@ -76,7 +76,9 @@ system shutdown).
 =head2 InstanceType => Str
 
   The instance type. For more information about the instance types that
-you can import, see Instance Types in the VM Import/Export User Guide.
+you can import, see Instance Types
+(http://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#vmimport-instance-types)
+in the VM Import/Export User Guide.
 
 
 =head2 Monitoring => Bool
@@ -115,8 +117,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

@@ -21,7 +21,7 @@ package Paws::AutoScaling::PutLifecycleHook;
 
 =head1 NAME
 
-Paws::AutoScaling::PutLifecycleHook - Arguments for method PutLifecycleHook on Paws::AutoScaling
+Paws::AutoScaling::PutLifecycleHook - Arguments for method PutLifecycleHook on L<Paws::AutoScaling>
 
 =head1 DESCRIPTION
 
@@ -58,11 +58,13 @@ C<ABANDON>.
 
 =head2 HeartbeatTimeout => Int
 
-The amount of time, in seconds, that can elapse before the lifecycle
-hook times out. When the lifecycle hook times out, Auto Scaling
-performs the default action. You can prevent the lifecycle hook from
-timing out by calling RecordLifecycleActionHeartbeat. The default is
-3600 seconds (1 hour).
+The maximum time, in seconds, that can elapse before the lifecycle hook
+times out. The range is from 30 to 7200 seconds. The default is 3600
+seconds (1 hour).
+
+If the lifecycle hook times out, Auto Scaling performs the default
+action. You can prevent the lifecycle hook from timing out by calling
+RecordLifecycleActionHeartbeat.
 
 
 
@@ -123,9 +125,9 @@ This class forms part of L<Paws>, documenting arguments for method PutLifecycleH
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

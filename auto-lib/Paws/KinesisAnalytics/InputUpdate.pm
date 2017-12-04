@@ -2,6 +2,7 @@ package Paws::KinesisAnalytics::InputUpdate;
   use Moose;
   has InputId => (is => 'ro', isa => 'Str', required => 1);
   has InputParallelismUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputParallelismUpdate');
+  has InputProcessingConfigurationUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputProcessingConfigurationUpdate');
   has InputSchemaUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputSchemaUpdate');
   has KinesisFirehoseInputUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisFirehoseInputUpdate');
   has KinesisStreamsInputUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisStreamsInputUpdate');
@@ -50,7 +51,12 @@ C<InputId> of an application).
 =head2 InputParallelismUpdate => L<Paws::KinesisAnalytics::InputParallelismUpdate>
 
   Describes the parallelism updates (the number in-application streams
-Kinesis Analytics creates for the specific streaming source).
+Amazon Kinesis Analytics creates for the specific streaming source).
+
+
+=head2 InputProcessingConfigurationUpdate => L<Paws::KinesisAnalytics::InputProcessingConfigurationUpdate>
+
+  Describes updates for an input processing configuration.
 
 
 =head2 InputSchemaUpdate => L<Paws::KinesisAnalytics::InputSchemaUpdate>
@@ -75,8 +81,8 @@ provides an updated stream ARN and IAM role ARN.
 
 =head2 NamePrefixUpdate => Str
 
-  Name prefix for in-application stream(s) that Kinesis Analytics creates
-for the specific streaming source.
+  Name prefix for in-application streams that Amazon Kinesis Analytics
+creates for the specific streaming source.
 
 
 
@@ -86,9 +92,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::KinesisAn
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

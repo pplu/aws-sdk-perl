@@ -23,7 +23,7 @@ package Paws::Route53Domains::RegisterDomain;
 
 =head1 NAME
 
-Paws::Route53Domains::RegisterDomain - Arguments for method RegisterDomain on Paws::Route53Domains
+Paws::Route53Domains::RegisterDomain - Arguments for method RegisterDomain on L<Paws::Route53Domains>
 
 =head1 DESCRIPTION
 
@@ -73,8 +73,9 @@ are not supported.
 The number of years that you want to register the domain for. Domains
 are registered for a minimum of one year. The maximum period depends on
 the top-level domain. For the range of valid values for your domain,
-see Domains that You Can Register with Amazon Route 53 in the I<Amazon
-Route 53 Developer Guide>.
+see Domains that You Can Register with Amazon Route 53
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 Default: 1
 
@@ -138,9 +139,9 @@ This class forms part of L<Paws>, documenting arguments for method RegisterDomai
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -5,7 +5,9 @@ package Paws::AppStream::CreateFleet;
   has Description => (is => 'ro', isa => 'Str');
   has DisconnectTimeoutInSeconds => (is => 'ro', isa => 'Int');
   has DisplayName => (is => 'ro', isa => 'Str');
+  has DomainJoinInfo => (is => 'ro', isa => 'Paws::AppStream::DomainJoinInfo');
   has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
+  has FleetType => (is => 'ro', isa => 'Str');
   has ImageName => (is => 'ro', isa => 'Str', required => 1);
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has MaxUserDurationInSeconds => (is => 'ro', isa => 'Int');
@@ -23,7 +25,7 @@ package Paws::AppStream::CreateFleet;
 
 =head1 NAME
 
-Paws::AppStream::CreateFleet - Arguments for method CreateFleet on Paws::AppStream
+Paws::AppStream::CreateFleet - Arguments for method CreateFleet on L<Paws::AppStream>
 
 =head1 DESCRIPTION
 
@@ -44,60 +46,157 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ComputeCapacity => L<Paws::AppStream::ComputeCapacity>
 
-The parameters for the capacity allocated to the fleet.
+The desired capacity for the fleet.
 
 
 
 =head2 Description => Str
 
-The description of the fleet.
+The description displayed to end users.
 
 
 
 =head2 DisconnectTimeoutInSeconds => Int
 
 The time after disconnection when a session is considered to have
-ended. If a user who got disconnected reconnects within this timeout
-interval, the user is connected back to their previous session. The
-input can be any numeric value in seconds between 60 and 57600.
+ended, in seconds. If a user who was disconnected reconnects within
+this time interval, the user is connected to their previous session.
+Specify a value between 60 and 57600.
 
 
 
 =head2 DisplayName => Str
 
-The display name of the fleet.
+The fleet name displayed to end users.
+
+
+
+=head2 DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>
+
+The information needed for streaming instances to join a domain.
 
 
 
 =head2 EnableDefaultInternetAccess => Bool
 
-Enables or disables default Internet access for the fleet.
+Enables or disables default internet access for the fleet.
 
 
+
+=head2 FleetType => Str
+
+
+
+Valid values are: C<"ALWAYS_ON">, C<"ON_DEMAND">
 
 =head2 B<REQUIRED> ImageName => Str
 
-Unique name of the image used by the fleet.
+The name of the image used by the fleet.
 
 
 
 =head2 B<REQUIRED> InstanceType => Str
 
-The instance type of compute resources for the fleet. Fleet instances
-are launched from this instance type.
+The instance type to use when launching fleet instances. The following
+instance types are available:
+
+=over
+
+=item *
+
+stream.standard.medium
+
+=item *
+
+stream.standard.large
+
+=item *
+
+stream.compute.large
+
+=item *
+
+stream.compute.xlarge
+
+=item *
+
+stream.compute.2xlarge
+
+=item *
+
+stream.compute.4xlarge
+
+=item *
+
+stream.compute.8xlarge
+
+=item *
+
+stream.memory.large
+
+=item *
+
+stream.memory.xlarge
+
+=item *
+
+stream.memory.2xlarge
+
+=item *
+
+stream.memory.4xlarge
+
+=item *
+
+stream.memory.8xlarge
+
+=item *
+
+stream.graphics-design.large
+
+=item *
+
+stream.graphics-design.xlarge
+
+=item *
+
+stream.graphics-design.2xlarge
+
+=item *
+
+stream.graphics-design.4xlarge
+
+=item *
+
+stream.graphics-desktop.2xlarge
+
+=item *
+
+stream.graphics-pro.4xlarge
+
+=item *
+
+stream.graphics-pro.8xlarge
+
+=item *
+
+stream.graphics-pro.16xlarge
+
+=back
+
 
 
 
 =head2 MaxUserDurationInSeconds => Int
 
-The maximum time for which a streaming session can run. The input can
-be any numeric value in seconds between 600 and 57600.
+The maximum time that a streaming session can run, in seconds. Specify
+a value between 600 and 57600.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-A unique identifier for the fleet.
+A unique name for the fleet.
 
 
 
@@ -114,9 +213,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateFleet i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

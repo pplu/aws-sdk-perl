@@ -39,8 +39,9 @@ in-application stream and a destination where you want the
 in-application stream data to be written. The destination can be an
 Amazon Kinesis stream or an Amazon Kinesis Firehose delivery stream.
 
-You can configure your application to write output to up to five
-destinations.
+For limits on how many destinations an application can write and other
+limitations, see Limits
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html).
 
 =head1 ATTRIBUTES
 
@@ -73,9 +74,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::KinesisAn
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 
