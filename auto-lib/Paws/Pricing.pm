@@ -30,6 +30,75 @@ package Paws::Pricing;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllServices {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeServices(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeServices(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Services }, @{ $next_result->Services };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Services') foreach (@{ $result->Services });
+        $result = $self->DescribeServices(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Services') foreach (@{ $result->Services });
+    }
+
+    return undef
+  }
+  sub GetAllAttributeValues {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetAttributeValues(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetAttributeValues(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AttributeValues }, @{ $next_result->AttributeValues };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AttributeValues') foreach (@{ $result->AttributeValues });
+        $result = $self->GetAttributeValues(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AttributeValues') foreach (@{ $result->AttributeValues });
+    }
+
+    return undef
+  }
+  sub GetAllProducts {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetProducts(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetProducts(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PriceList }, @{ $next_result->PriceList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PriceList') foreach (@{ $result->PriceList });
+        $result = $self->GetProducts(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PriceList') foreach (@{ $result->PriceList });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/DescribeServices GetAttributeValues GetProducts / }
@@ -141,6 +210,42 @@ Returns a list of all products that match the filter criteria.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllServices(sub { },[FormatVersion => Str, MaxResults => Int, NextToken => Str, ServiceCode => Str])
+
+=head2 DescribeAllServices([FormatVersion => Str, MaxResults => Int, NextToken => Str, ServiceCode => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Services, passing the object as the first parameter, and the string 'Services' as the second parameter 
+
+If not, it will return a a L<Paws::Pricing::DescribeServicesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllAttributeValues(sub { },AttributeName => Str, ServiceCode => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 GetAllAttributeValues(AttributeName => Str, ServiceCode => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AttributeValues, passing the object as the first parameter, and the string 'AttributeValues' as the second parameter 
+
+If not, it will return a a L<Paws::Pricing::GetAttributeValuesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllProducts(sub { },[Filters => ArrayRef[L<Paws::Pricing::Filter>], FormatVersion => Str, MaxResults => Int, NextToken => Str, ServiceCode => Str])
+
+=head2 GetAllProducts([Filters => ArrayRef[L<Paws::Pricing::Filter>], FormatVersion => Str, MaxResults => Int, NextToken => Str, ServiceCode => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PriceList, passing the object as the first parameter, and the string 'PriceList' as the second parameter 
+
+If not, it will return a a L<Paws::Pricing::GetProductsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 
