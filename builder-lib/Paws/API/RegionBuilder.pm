@@ -146,15 +146,11 @@ print Dumper($service);
 
   sub region_accessor {
     my ($self) = @_;
-    if (defined $self->json) {
-      my $tt = Template->new;
-      my $template = $self->region_accessor_template;
-      my $output = '';
-      $tt->process(\$template, { c => $self }, \$output) || die $tt->error();
-      return $output;
-    } else {
-      return '';
-    }
+    my $tt = Template->new;
+    my $template = $self->region_accessor_template;
+    my $output = '';
+    $tt->process(\$template, { c => $self }, \$output) || die $tt->error();
+    return $output;
   }
 }
 1;
