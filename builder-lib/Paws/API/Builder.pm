@@ -134,7 +134,7 @@ package Paws::API::Builder {
   );
 
   has endpoints_file => (is => 'ro', isa => 'Str', default => sub {
-    'botocore/botocore/data/_endpoints.json';
+    'botocore/botocore/data/endpoints.json';
   });
 
   has service_endpoint_rules => (is => 'ro', lazy => 1, default => sub { 
