@@ -16,15 +16,15 @@ package Paws::Signin;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::NoSignature', 'Paws::Net::SigninCaller';
  
-  has '+region_rules' => (default => sub {
-    my $regioninfo;
-    $regioninfo = [
-    {
-      uri => 'https://signin.aws.amazon.com'
-    }
-    ];
-    return $regioninfo;
-  });
+  #has '+region_rules' => (default => sub {
+  #  my $regioninfo;
+  #  $regioninfo = [
+  #  {
+  #    uri => 'https://signin.aws.amazon.com'
+  #  }
+  #  ];
+  #  return $regioninfo;
+  #});
 
   sub operations { qw/GetSigninToken Login/ }
  

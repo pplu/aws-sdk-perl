@@ -12,7 +12,10 @@ package Paws::API::EndpointResolver;
     is => 'ro',
     init_arg => undef,
     lazy => 1,
-    builder => '_construct_endpoint',
+    default => sub {
+      my $self = shift;
+      $self->region_endpoints->{ $self->region };
+    },
   );
 
   has _region_for_signature => (
@@ -22,24 +25,6 @@ package Paws::API::EndpointResolver;
     init_arg => undef, 
     default => sub {
       my $self = shift;
-      my $sig_region;
-   
-      # For global services:   don't specify region: we sign with the region in the credentialScope
-      #                        specify the region: we override the credentialScope (use the region specified)
-      # For regional services: use the region specified for signing
-      # If endpoint is specified: use the region specified (no _endpoint_info) 
-      if (defined $self->_endpoint_info->{ credentialScope } and not defined $self->region) {
-        $sig_region = $self->_endpoint_info->{ credentialScope }->{ region }
-      }
-      $sig_region = $self->region if (not defined $sig_region);
-
-      Paws::Exception->throw(
-        message => "Can't find a region for signing. region is required",
-        code => 'NoRegionError',
-        request_id => ''
-      ) if (not defined $sig_region);
-
-      return $sig_region;
     },
   );
 
@@ -56,7 +41,7 @@ package Paws::API::EndpointResolver;
     lazy => 1,
     coerce => 1,
     default => sub {
-      shift->_endpoint_info->{ url };
+      'https:// ' . shift->_endpoint_info->{ hostname };
     }
   );
 
@@ -77,20 +62,6 @@ package Paws::API::EndpointResolver;
       shift->endpoint->as_string;
     }
   ); 
-
-  has region_rules => (is => 'ro', isa => 'ArrayRef');
-
-  has _default_rules => (is => 'ro', isa => 'ArrayRef', default => sub {
-    [ { constraints => [ [ 'region', 'startsWith', 'cn-' ] ], 
-        properties => { signatureVersion => 'v4' }, 
-        uri => '{scheme}://{service}.{region}.amazonaws.com.cn'
-      },
-      { constraints => [ [ 'region', 'notEquals', undef ] ],
-        uri => '{scheme}://{service}.{region}.amazonaws.com'
-      },
-    ]    
-    },
-  );
 
   has default_scheme => ( is => 'ro', isa => 'Str', default => 'https' );
 

@@ -137,9 +137,8 @@ print Dumper($service);
   );
 
    has region_accessor_template => (is => 'ro', isa => 'Str', default => q#
-  has '+region_rules' => (default => sub {
-    my $regioninfo;
-    [% c.perl_ds %]
+  has region_endpoints => (is => 'ro', default => sub {
+    my [% c.perl_ds %];
     return $regioninfo;
   });
 #);
