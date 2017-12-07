@@ -35,7 +35,10 @@ package Paws::Net::S3Signature;
     # AWS prefers X-Amz-Date but Net::Amazon::Signature::V4 only handles Date in the headerpackage Paws::Net::S3Signature;
     $request->header( 'Date' => $request->{'date'} );
 
-    $request->header( 'Host' => $self->endpoint_host );
+    $request->header(
+        'Host' => $self->endpoint->default_port == $self->endpoint->port
+        ? $self->endpoint->host
+        : $self->endpoint->host_port);
 
     my $sig = Net::Amazon::Signature::V4->new( $self->access_key, $self->secret_key, $self->region, $self->service );
     my $signed_req = $sig->sign( $request );
