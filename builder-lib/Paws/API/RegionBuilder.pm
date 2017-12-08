@@ -5,6 +5,7 @@ package Paws::API::Region {
 package Paws::API::CredentialScope {
   use MooseX::DataModel;
   key service => (isa => 'Str');
+  key region => (isa => 'Str');
 }
 package Paws::API::ServiceEndpoint {
   use MooseX::DataModel;
@@ -31,6 +32,9 @@ coerce 'JBool',
 package Paws::API::ServiceDefaults {
   use MooseX::DataModel;
   key credentialScope => (isa => 'Paws::API::CredentialScope');
+  key sslCommonName => (isa => 'Str');
+  key hostname => (isa => 'Str');
+  array protocols => (isa => 'Str');
 }
 
 package Paws::API::Service {
@@ -78,12 +82,12 @@ package Paws::API::RegionBuilder {
   has partitions => (
      is => 'ro',
      lazy => 1,
-     isa => 'ArrayRef',
+     isa => 'HashRef',
      default => sub {
        my $self = shift;
-       my $svc = [];
+       my $svc = {};
        foreach my $partition (@{ $self->schema->partitions }) {
-         push @$svc, $partition if (defined $partition->services->{ $self->service });
+         $svc->{ $partition->partition } = $partition if (defined $partition->services->{ $self->service });
        }
        return $svc;
      },
@@ -96,23 +100,54 @@ package Paws::API::RegionBuilder {
     default => sub {
       my $self = shift;
 
-use Data::Dumper;
-
       my $region_rules = {};
-      foreach my $partition (@{ $self->partitions }) {
-print Dumper($partition);
-        foreach my $region (keys %{ $partition->services->{ $self->service }->endpoints }) {
-          my $service = $partition->services->{ $self->service };
-print Dumper($service);          
-          my $credscope = (defined $service->defaults and defined $service->defaults->credentialScope)?$service->defaults->credentialScope->service:undef;
-          my $hostname = $partition->defaults->hostname;
+      foreach my $partition (keys %{ $self->partitions }) {
+        my $part = $self->partitions->{ $partition };
+        
+        next if (not defined $part->services->{ $self->service }->endpoints);
+
+        foreach my $region (keys %{ $part->services->{ $self->service }->endpoints }) {
+          my $service = $part->services->{ $self->service };
+          my $endpoint = $part->services->{ $self->service }->endpoints->{ $region };
+
+          my ($sig_service, $sig_region, $hostname) = (undef, undef, undef);
+          
+          if (defined $endpoint->credentialScope and
+                      $endpoint->credentialScope->service) {
+            $sig_service = $endpoint->credentialScope->service;
+          } elsif (defined $service->defaults) {
+            if (defined $service->defaults->credentialScope and
+                defined $service->defaults->credentialScope->service) {
+              $sig_service = $service->defaults->credentialScope->service;
+            }
+          }
+
+          if (defined $endpoint->credentialScope and
+                      $endpoint->credentialScope->region) {
+            $sig_region = $endpoint->credentialScope->region;
+          } elsif (defined $service->defaults) {
+            if (defined $service->defaults->credentialScope and
+                defined $service->defaults->credentialScope->region) {
+              $sig_region = $service->defaults->credentialScope->region;
+            }           
+          }
+
+          if (defined $endpoint->hostname or defined $endpoint->sslCommonName) {
+            $hostname = $endpoint->hostname || $endpoint->sslCommonName;
+          } elsif (defined $service->defaults and 
+                   (defined $service->defaults->hostname or defined $service->defaults->sslCommonName)
+                  ) {
+            $hostname = $service->defaults->hostname || $service->defaults->sslCommonName;
+          } else {
+            $hostname = $part->defaults->hostname || $part->defaults->sslCommonName;
+          }
           $hostname =~ s|{service}|$self->service|e;
           $hostname =~ s|{region}|$region|;
-          $hostname =~ s|{dnsSuffix}|$partition->dnsSuffix|e;
+          $hostname =~ s|{dnsSuffix}|$part->dnsSuffix|e;
           $region_rules->{ $region } = {
             hostname => $hostname,
-            (defined $credscope)? (signature => $credscope) : (),
-            #TODO: region => ...
+            (defined $sig_service)? (sig_service => $sig_service) : (),
+            (defined $sig_region) ? (sig_region => $sig_region) : (),
           } 
         }
       }
@@ -136,7 +171,24 @@ print Dumper($service);
     }
   );
 
-   has region_accessor_template => (is => 'ro', isa => 'Str', default => q#
+  has global_endpoint => (
+    is => 'ro',
+    isa => 'Str|Undef',
+    lazy => 1,
+    default => sub {
+      my $self = shift;
+      foreach my $partition (@{ $self->schema->partitions }) {
+        if (defined $partition->services->{ $self->service } and
+                    $partition->services->{ $self->service }->isRegionalized == 0
+           ){
+          return $partition->services->{ $self->service }->partitionEndpoint;
+        }
+      }
+    }
+  );
+
+  has region_accessor_template => (is => 'ro', isa => 'Str', default => q#
+  has _global_region => (is => 'ro', isa => 'Str', [% IF (c.global_endpoint) %]default => '[% c.global_endpoint %]'[% END %]);
   has region_endpoints => (is => 'ro', default => sub {
     my [% c.perl_ds %];
     return $regioninfo;
@@ -152,5 +204,5 @@ print Dumper($service);
     return $output;
   }
 }
-1;
 
+1;

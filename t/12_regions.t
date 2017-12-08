@@ -314,10 +314,18 @@ for my $region ( sort keys %$known_regions ) {
     my $paws_region = ($region eq '[UNDEF]') ? undef : $region;
     my $svc = $paws->service($paws_service, region => $paws_region);
 
-    cmp_ok($svc->endpoint_host, 'eq', $expected_endpoint, "Paws->service('$service', region => $region) endpoint is $expected_endpoint");
+    cmp_ok(
+      $svc->endpoint_host,
+      'eq',
+      $expected_endpoint,
+      "Paws->service('$service', region => $region) endpoint is $expected_endpoint"
+    );
   }
 }
 
+# Tests for signature
+
+# test with which region we sign
 my $global_services = {
   'IAM' => 'us-east-1',
   'Route53', => 'us-east-1',
@@ -328,11 +336,31 @@ foreach my $service (keys %$global_services) {
   my $svc = $paws->service($service);
 
   cmp_ok(
-    $svc->_region_for_signature,
+    $svc->signature_region,
     'eq',
     $global_services->{ $service },
     "Will sign $service with region $global_services->{ $service }"
   );
+}
+
+# test with which service we sign
+my $services = {
+  LexRuntime => { 'us-east-1' => 'lex', },
+  Pinpoint => { 'us-east-1' => 'mobiletargeting' },
+  IoT => { 'us-east-1' => 'execute-api' },
+};
+
+foreach my $service (keys %$services) {
+  foreach my $region (keys %{ $services->{ $service } }) {
+    my $svc = $paws->service($service, region => $region);
+
+    cmp_ok(
+      $svc->signature_service,
+      'eq',
+      $services->{ $service }->{ $region },
+      "Will sign $service in $region with $services->{ $service }->{ $region }"
+    );
+  }
 }
 
 done_testing;
