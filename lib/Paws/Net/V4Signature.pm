@@ -9,7 +9,7 @@ package Paws::Net::V4Signature;
     my $self = shift;
 
     # These calls are here so that when you construct
-    # the object the endpoint information and the _region_for_signature
+    # the object the endpoint information and the signature_region
     # are calculated during construction. This is to avoid the fact that 
     # these attributes are lazy (because they depend on other attributes) 
     # and they don't get used until the first method is called, so if
@@ -18,7 +18,7 @@ package Paws::Net::V4Signature;
     # as this is the point where the user had specified "incorrect" information,
     # instead of the problem happening in the first method call.
     $self->endpoint;
-    $self->_region_for_signature;
+    $self->signature_region;
   }
 
   sub sign {
@@ -30,7 +30,7 @@ package Paws::Net::V4Signature;
       $request->header( 'X-Amz-Security-Token' => $self->session_token );
     }
 
-    my $sig = Net::Amazon::Signature::V4->new( $self->access_key, $self->secret_key, $self->_region_for_signature, $self->service );
+    my $sig = Net::Amazon::Signature::V4->new( $self->access_key, $self->secret_key, $self->signature_region, $self->service );
     $sig->sign( $request );
   }
 1;

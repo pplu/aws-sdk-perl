@@ -18,11 +18,10 @@ package Paws::API::EndpointResolver;
     },
   );
 
-  has _region_for_signature => (
+  has signature_region => (
     is => 'rw',
     isa => 'Str', 
     lazy => 1,
-    init_arg => undef, 
     default => sub {
       my $self = shift;
     },

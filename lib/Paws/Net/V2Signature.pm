@@ -10,7 +10,7 @@ package Paws::Net::V2Signature;
     my $self = shift;
 
     # These calls are here so that when you construct
-    # the object the endpoint information and the _region_for_signature
+    # the object the endpoint information and the signature_region
     # are calculated during construction. This is to avoid the fact that 
     # these attributes are lazy (because they depend on other attributes) 
     # and they don't get used until the first method is called, so if
@@ -19,7 +19,7 @@ package Paws::Net::V2Signature;
     # as this is the point where the user had specified "incorrect" information,
     # instead of the problem happening in the first method call.
     $self->endpoint;
-    $self->_region_for_signature;
+    $self->signature_region;
   }
 
 has 'base_url'           => ( 
