@@ -7,6 +7,7 @@ package Paws::CloudWatch::MetricAlarm;
   has AlarmDescription => (is => 'ro', isa => 'Str');
   has AlarmName => (is => 'ro', isa => 'Str');
   has ComparisonOperator => (is => 'ro', isa => 'Str');
+  has DatapointsToAlarm => (is => 'ro', isa => 'Int');
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
   has EvaluateLowSampleCountPercentile => (is => 'ro', isa => 'Str');
   has EvaluationPeriods => (is => 'ro', isa => 'Int');
@@ -97,6 +98,11 @@ Resource Name (ARN).
   The arithmetic operation to use when comparing the specified statistic
 and threshold. The specified statistic value is used as the first
 operand.
+
+
+=head2 DatapointsToAlarm => Int
+
+  The number of datapoints that must be breaching to trigger the alarm.
 
 
 =head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]

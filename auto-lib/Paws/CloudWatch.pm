@@ -217,7 +217,7 @@ Deletes the specified alarms. In the event of an error, no alarms are
 deleted.
 
 
-=head2 DeleteDashboards([DashboardNames => ArrayRef[Str|Undef]])
+=head2 DeleteDashboards(DashboardNames => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::CloudWatch::DeleteDashboards>
 
@@ -283,7 +283,7 @@ Returns: nothing
 Enables the actions for the specified alarms.
 
 
-=head2 GetDashboard([DashboardName => Str])
+=head2 GetDashboard(DashboardName => Str)
 
 Each argument is described in detail in: L<Paws::CloudWatch::GetDashboard>
 
@@ -409,7 +409,7 @@ metric appears. Statistics about the metric, however, are available
 sooner using GetMetricStatistics.
 
 
-=head2 PutDashboard([DashboardBody => Str, DashboardName => Str])
+=head2 PutDashboard(DashboardBody => Str, DashboardName => Str)
 
 Each argument is described in detail in: L<Paws::CloudWatch::PutDashboard>
 
@@ -438,7 +438,7 @@ the C<DashboardBody> script or the CloudFormation template used to
 create the dashboard.
 
 
-=head2 PutMetricAlarm(AlarmName => Str, ComparisonOperator => Str, EvaluationPeriods => Int, MetricName => Str, Namespace => Str, Period => Int, Threshold => Num, [ActionsEnabled => Bool, AlarmActions => ArrayRef[Str|Undef], AlarmDescription => Str, Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], EvaluateLowSampleCountPercentile => Str, ExtendedStatistic => Str, InsufficientDataActions => ArrayRef[Str|Undef], OKActions => ArrayRef[Str|Undef], Statistic => Str, TreatMissingData => Str, Unit => Str])
+=head2 PutMetricAlarm(AlarmName => Str, ComparisonOperator => Str, EvaluationPeriods => Int, MetricName => Str, Namespace => Str, Period => Int, Threshold => Num, [ActionsEnabled => Bool, AlarmActions => ArrayRef[Str|Undef], AlarmDescription => Str, DatapointsToAlarm => Int, Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], EvaluateLowSampleCountPercentile => Str, ExtendedStatistic => Str, InsufficientDataActions => ArrayRef[Str|Undef], OKActions => ArrayRef[Str|Undef], Statistic => Str, TreatMissingData => Str, Unit => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatch::PutMetricAlarm>
 

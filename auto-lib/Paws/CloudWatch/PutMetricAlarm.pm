@@ -6,6 +6,7 @@ package Paws::CloudWatch::PutMetricAlarm;
   has AlarmDescription => (is => 'ro', isa => 'Str');
   has AlarmName => (is => 'ro', isa => 'Str', required => 1);
   has ComparisonOperator => (is => 'ro', isa => 'Str', required => 1);
+  has DatapointsToAlarm => (is => 'ro', isa => 'Int');
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
   has EvaluateLowSampleCountPercentile => (is => 'ro', isa => 'Str');
   has EvaluationPeriods => (is => 'ro', isa => 'Int', required => 1);
@@ -65,14 +66,17 @@ Resource Name (ARN).
 
 Valid Values: arn:aws:automate:I<region>:ec2:stop |
 arn:aws:automate:I<region>:ec2:terminate |
-arn:aws:automate:I<region>:ec2:recover
+arn:aws:automate:I<region>:ec2:recover |
+arn:aws:sns:I<region>:I<account-id>:I<sns-topic-name> |
+arn:aws:autoscaling:I<region>:I<account-id>:scalingPolicy:I<policy-id>
+autoScalingGroupName/I<group-friendly-name>:policyName/I<policy-friendly-name>
 
 Valid Values (for use with IAM roles):
-arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Stop/1.0
+arn:aws:swf:I<region>:{I<account-id>}:action/actions/AWS_EC2.InstanceId.Stop/1.0
 |
-arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0
+arn:aws:swf:I<region>:{I<account-id>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0
 |
-arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0
+arn:aws:swf:I<region>:{I<account-id>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0
 
 
 
@@ -96,6 +100,12 @@ and threshold. The specified statistic value is used as the first
 operand.
 
 Valid values are: C<"GreaterThanOrEqualToThreshold">, C<"GreaterThanThreshold">, C<"LessThanThreshold">, C<"LessThanOrEqualToThreshold">
+
+=head2 DatapointsToAlarm => Int
+
+The number of datapoints that must be breaching to trigger the alarm.
+
+
 
 =head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
 
@@ -130,7 +140,9 @@ than 86,400 seconds.
 =head2 ExtendedStatistic => Str
 
 The percentile statistic for the metric associated with the alarm.
-Specify a value between p0.0 and p100.
+Specify a value between p0.0 and p100. When you call C<PutMetricAlarm>,
+you must specify either C<Statistic> or C<ExtendedStatistic,> but not
+both.
 
 
 
@@ -142,14 +154,17 @@ specified as an Amazon Resource Name (ARN).
 
 Valid Values: arn:aws:automate:I<region>:ec2:stop |
 arn:aws:automate:I<region>:ec2:terminate |
-arn:aws:automate:I<region>:ec2:recover
+arn:aws:automate:I<region>:ec2:recover |
+arn:aws:sns:I<region>:I<account-id>:I<sns-topic-name> |
+arn:aws:autoscaling:I<region>:I<account-id>:scalingPolicy:I<policy-id>
+autoScalingGroupName/I<group-friendly-name>:policyName/I<policy-friendly-name>
 
 Valid Values (for use with IAM roles):
-arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Stop/1.0
+arn:aws:swf:I<region>:{I<account-id>}:action/actions/AWS_EC2.InstanceId.Stop/1.0
 |
-arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0
+arn:aws:swf:I<region>:{I<account-id>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0
 |
-arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0
+arn:aws:swf:I<region>:{I<account-id>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0
 
 
 
@@ -173,14 +188,17 @@ Name (ARN).
 
 Valid Values: arn:aws:automate:I<region>:ec2:stop |
 arn:aws:automate:I<region>:ec2:terminate |
-arn:aws:automate:I<region>:ec2:recover
+arn:aws:automate:I<region>:ec2:recover |
+arn:aws:sns:I<region>:I<account-id>:I<sns-topic-name> |
+arn:aws:autoscaling:I<region>:I<account-id>:scalingPolicy:I<policy-id>
+autoScalingGroupName/I<group-friendly-name>:policyName/I<policy-friendly-name>
 
 Valid Values (for use with IAM roles):
-arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Stop/1.0
+arn:aws:swf:I<region>:{I<account-id>}:action/actions/AWS_EC2.InstanceId.Stop/1.0
 |
-arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0
+arn:aws:swf:I<region>:{I<account-id>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0
 |
-arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0
+arn:aws:swf:I<region>:{I<account-id>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0
 
 
 
@@ -210,7 +228,9 @@ than 86,400 seconds.
 =head2 Statistic => Str
 
 The statistic for the metric associated with the alarm, other than
-percentile. For percentile statistics, use C<ExtendedStatistic>.
+percentile. For percentile statistics, use C<ExtendedStatistic>. When
+you call C<PutMetricAlarm>, you must specify either C<Statistic> or
+C<ExtendedStatistic,> but not both.
 
 Valid values are: C<"SampleCount">, C<"Average">, C<"Sum">, C<"Minimum">, C<"Maximum">
 

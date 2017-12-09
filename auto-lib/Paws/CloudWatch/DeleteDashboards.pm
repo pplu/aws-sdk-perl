@@ -1,7 +1,7 @@
 
 package Paws::CloudWatch::DeleteDashboards;
   use Moose;
-  has DashboardNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has DashboardNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,9 +33,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 DashboardNames => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> DashboardNames => ArrayRef[Str|Undef]
 
-The dashboards to be deleted.
+The dashboards to be deleted. This parameter is required.
 
 
 

@@ -1,7 +1,7 @@
 
 package Paws::CloudWatch::GetDashboard;
   use Moose;
-  has DashboardName => (is => 'ro', isa => 'Str');
+  has DashboardName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 DashboardName => Str
+=head2 B<REQUIRED> DashboardName => Str
 
 The name of the dashboard to be described.
 
