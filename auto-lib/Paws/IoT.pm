@@ -1329,8 +1329,7 @@ Each argument is described in detail in: L<Paws::IoT::DescribeCertificate>
 
 Returns: a L<Paws::IoT::DescribeCertificateResponse> instance
 
-Gets information about the specified certificate. You may specify the
-certificate using either its ID or PEM.
+Gets information about the specified certificate.
 
 
 =head2 DescribeDefaultAuthorizer()

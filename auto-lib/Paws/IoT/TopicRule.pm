@@ -4,6 +4,7 @@ package Paws::IoT::TopicRule;
   has AwsIotSqlVersion => (is => 'ro', isa => 'Str', request_name => 'awsIotSqlVersion', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has ErrorAction => (is => 'ro', isa => 'Paws::IoT::Action', request_name => 'errorAction', traits => ['NameInRequest']);
   has RuleDisabled => (is => 'ro', isa => 'Bool', request_name => 'ruleDisabled', traits => ['NameInRequest']);
   has RuleName => (is => 'ro', isa => 'Str', request_name => 'ruleName', traits => ['NameInRequest']);
   has Sql => (is => 'ro', isa => 'Str', request_name => 'sql', traits => ['NameInRequest']);
@@ -60,6 +61,11 @@ Describes a rule.
 =head2 Description => Str
 
   The description of the rule.
+
+
+=head2 ErrorAction => L<Paws::IoT::Action>
+
+  The action to perform when an error occurs.
 
 
 =head2 RuleDisabled => Bool
