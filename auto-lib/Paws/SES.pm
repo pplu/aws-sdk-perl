@@ -33,6 +33,11 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::CreateConfigurationSetTrackingOptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateCustomVerificationEmailTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::CreateCustomVerificationEmailTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateReceiptFilter {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::CreateReceiptFilter', @_);
@@ -66,6 +71,11 @@ package Paws::SES;
   sub DeleteConfigurationSetTrackingOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::DeleteConfigurationSetTrackingOptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteCustomVerificationEmailTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::DeleteCustomVerificationEmailTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteIdentity {
@@ -128,6 +138,11 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::GetAccountSendingEnabled', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetCustomVerificationEmailTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::GetCustomVerificationEmailTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetIdentityDkimAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::GetIdentityDkimAttributes', @_);
@@ -171,6 +186,11 @@ package Paws::SES;
   sub ListConfigurationSets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::ListConfigurationSets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListCustomVerificationEmailTemplates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::ListCustomVerificationEmailTemplates', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListIdentities {
@@ -221,6 +241,11 @@ package Paws::SES;
   sub SendBulkTemplatedEmail {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::SendBulkTemplatedEmail', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SendCustomVerificationEmail {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::SendCustomVerificationEmail', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SendEmail {
@@ -303,6 +328,11 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::UpdateConfigurationSetTrackingOptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateCustomVerificationEmailTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::UpdateCustomVerificationEmailTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateReceiptRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::UpdateReceiptRule', @_);
@@ -359,7 +389,7 @@ package Paws::SES;
   }
 
 
-  sub operations { qw/CloneReceiptRuleSet CreateConfigurationSet CreateConfigurationSetEventDestination CreateConfigurationSetTrackingOptions CreateReceiptFilter CreateReceiptRule CreateReceiptRuleSet CreateTemplate DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteConfigurationSetTrackingOptions DeleteIdentity DeleteIdentityPolicy DeleteReceiptFilter DeleteReceiptRule DeleteReceiptRuleSet DeleteTemplate DeleteVerifiedEmailAddress DescribeActiveReceiptRuleSet DescribeConfigurationSet DescribeReceiptRule DescribeReceiptRuleSet GetAccountSendingEnabled GetIdentityDkimAttributes GetIdentityMailFromDomainAttributes GetIdentityNotificationAttributes GetIdentityPolicies GetIdentityVerificationAttributes GetSendQuota GetSendStatistics GetTemplate ListConfigurationSets ListIdentities ListIdentityPolicies ListReceiptFilters ListReceiptRuleSets ListTemplates ListVerifiedEmailAddresses PutIdentityPolicy ReorderReceiptRuleSet SendBounce SendBulkTemplatedEmail SendEmail SendRawEmail SendTemplatedEmail SetActiveReceiptRuleSet SetIdentityDkimEnabled SetIdentityFeedbackForwardingEnabled SetIdentityHeadersInNotificationsEnabled SetIdentityMailFromDomain SetIdentityNotificationTopic SetReceiptRulePosition TestRenderTemplate UpdateAccountSendingEnabled UpdateConfigurationSetEventDestination UpdateConfigurationSetReputationMetricsEnabled UpdateConfigurationSetSendingEnabled UpdateConfigurationSetTrackingOptions UpdateReceiptRule UpdateTemplate VerifyDomainDkim VerifyDomainIdentity VerifyEmailAddress VerifyEmailIdentity / }
+  sub operations { qw/CloneReceiptRuleSet CreateConfigurationSet CreateConfigurationSetEventDestination CreateConfigurationSetTrackingOptions CreateCustomVerificationEmailTemplate CreateReceiptFilter CreateReceiptRule CreateReceiptRuleSet CreateTemplate DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteConfigurationSetTrackingOptions DeleteCustomVerificationEmailTemplate DeleteIdentity DeleteIdentityPolicy DeleteReceiptFilter DeleteReceiptRule DeleteReceiptRuleSet DeleteTemplate DeleteVerifiedEmailAddress DescribeActiveReceiptRuleSet DescribeConfigurationSet DescribeReceiptRule DescribeReceiptRuleSet GetAccountSendingEnabled GetCustomVerificationEmailTemplate GetIdentityDkimAttributes GetIdentityMailFromDomainAttributes GetIdentityNotificationAttributes GetIdentityPolicies GetIdentityVerificationAttributes GetSendQuota GetSendStatistics GetTemplate ListConfigurationSets ListCustomVerificationEmailTemplates ListIdentities ListIdentityPolicies ListReceiptFilters ListReceiptRuleSets ListTemplates ListVerifiedEmailAddresses PutIdentityPolicy ReorderReceiptRuleSet SendBounce SendBulkTemplatedEmail SendCustomVerificationEmail SendEmail SendRawEmail SendTemplatedEmail SetActiveReceiptRuleSet SetIdentityDkimEnabled SetIdentityFeedbackForwardingEnabled SetIdentityHeadersInNotificationsEnabled SetIdentityMailFromDomain SetIdentityNotificationTopic SetReceiptRulePosition TestRenderTemplate UpdateAccountSendingEnabled UpdateConfigurationSetEventDestination UpdateConfigurationSetReputationMetricsEnabled UpdateConfigurationSetSendingEnabled UpdateConfigurationSetTrackingOptions UpdateCustomVerificationEmailTemplate UpdateReceiptRule UpdateTemplate VerifyDomainDkim VerifyDomainIdentity VerifyEmailAddress VerifyEmailIdentity / }
 
 1;
 
@@ -476,6 +506,22 @@ in the Amazon SES Developer Guide
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
 
 
+=head2 CreateCustomVerificationEmailTemplate(FailureRedirectionURL => Str, FromEmailAddress => Str, SuccessRedirectionURL => Str, TemplateContent => Str, TemplateName => Str, TemplateSubject => Str)
+
+Each argument is described in detail in: L<Paws::SES::CreateCustomVerificationEmailTemplate>
+
+Returns: nothing
+
+Creates a new custom verification email template.
+
+For more information about custom verification email templates, see
+Using Custom Verification Email Templates
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+in the I<Amazon SES Developer Guide>.
+
+You can execute this operation no more than once per second.
+
+
 =head2 CreateReceiptFilter(Filter => L<Paws::SES::ReceiptFilter>)
 
 Each argument is described in detail in: L<Paws::SES::CreateReceiptFilter>
@@ -585,6 +631,22 @@ in the Amazon SES Developer Guide
 Deleting this kind of association will result in emails sent using the
 specified configuration set to capture open and click events using the
 standard, Amazon SES-operated domains.
+
+
+=head2 DeleteCustomVerificationEmailTemplate(TemplateName => Str)
+
+Each argument is described in detail in: L<Paws::SES::DeleteCustomVerificationEmailTemplate>
+
+Returns: nothing
+
+Deletes an existing custom verification email template.
+
+For more information about custom verification email templates, see
+Using Custom Verification Email Templates
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+in the I<Amazon SES Developer Guide>.
+
+You can execute this operation no more than once per second.
 
 
 =head2 DeleteIdentity(Identity => Str)
@@ -755,6 +817,23 @@ Each argument is described in detail in: L<Paws::SES::GetAccountSendingEnabled>
 Returns: a L<Paws::SES::GetAccountSendingEnabledResponse> instance
 
 Returns the email sending status of the Amazon SES account.
+
+You can execute this operation no more than once per second.
+
+
+=head2 GetCustomVerificationEmailTemplate(TemplateName => Str)
+
+Each argument is described in detail in: L<Paws::SES::GetCustomVerificationEmailTemplate>
+
+Returns: a L<Paws::SES::GetCustomVerificationEmailTemplateResponse> instance
+
+Returns the custom email verification template for the template name
+you specify.
+
+For more information about custom verification email templates, see
+Using Custom Verification Email Templates
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+in the I<Amazon SES Developer Guide>.
 
 You can execute this operation no more than once per second.
 
@@ -939,6 +1018,23 @@ this operation will also return a NextToken element. You can then
 execute the C<ListConfigurationSets> operation again, passing the
 C<NextToken> parameter and the value of the NextToken element to
 retrieve additional results.
+
+
+=head2 ListCustomVerificationEmailTemplates([MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::SES::ListCustomVerificationEmailTemplates>
+
+Returns: a L<Paws::SES::ListCustomVerificationEmailTemplatesResponse> instance
+
+Lists the existing custom verification email templates for your
+account.
+
+For more information about custom verification email templates, see
+Using Custom Verification Email Templates
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+in the I<Amazon SES Developer Guide>.
+
+You can execute this operation no more than once per second.
 
 
 =head2 ListIdentities([IdentityType => Str, MaxItems => Int, NextToken => Str])
@@ -1136,6 +1232,22 @@ recipients that are valid.
 
 =back
 
+
+
+=head2 SendCustomVerificationEmail(EmailAddress => Str, TemplateName => Str, [ConfigurationSetName => Str])
+
+Each argument is described in detail in: L<Paws::SES::SendCustomVerificationEmail>
+
+Returns: a L<Paws::SES::SendCustomVerificationEmailResponse> instance
+
+Sends a custom verification email to a specified recipient.
+Verification emails sent using this operation are counted against your
+24-hour sending quota and per-second sending rate.
+
+For more information about custom verification email templates, see
+Using Custom Verification Email Templates
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+in the I<Amazon SES Developer Guide>.
 
 
 =head2 SendEmail(Destination => L<Paws::SES::Destination>, Message => L<Paws::SES::Message>, Source => Str, [ConfigurationSetName => Str, ReplyToAddresses => ArrayRef[Str|Undef], ReturnPath => Str, ReturnPathArn => Str, SourceArn => Str, Tags => ArrayRef[L<Paws::SES::MessageTag>]])
@@ -1620,6 +1732,22 @@ and Click Tracking
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html)
 in the Amazon SES Developer Guide
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
+
+
+=head2 UpdateCustomVerificationEmailTemplate(TemplateName => Str, [FailureRedirectionURL => Str, FromEmailAddress => Str, SuccessRedirectionURL => Str, TemplateContent => Str, TemplateSubject => Str])
+
+Each argument is described in detail in: L<Paws::SES::UpdateCustomVerificationEmailTemplate>
+
+Returns: nothing
+
+Updates an existing custom verification email template.
+
+For more information about custom verification email templates, see
+Using Custom Verification Email Templates
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+in the I<Amazon SES Developer Guide>.
+
+You can execute this operation no more than once per second.
 
 
 =head2 UpdateReceiptRule(Rule => L<Paws::SES::ReceiptRule>, RuleSetName => Str)

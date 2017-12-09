@@ -131,11 +131,19 @@ C<SourceArn> parameter. For more information about sending
 authorization, see the Amazon SES Developer Guide
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
-In all cases, the email address must be 7-bit ASCII. If the text must
-contain any other characters, then you must use MIME encoded-word
-syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax
-uses the following form: C<=?charset?encoding?encoded-text?=>. For more
-information, see RFC 2047 (https://tools.ietf.org/html/rfc2047).
+Amazon SES does not support the SMTPUTF8 extension, as described in
+RFC6531 (https://tools.ietf.org/html/rfc6531). For this reason, the
+I<local part> of a source email address (the part of the email address
+that precedes the @ sign) may only contain 7-bit ASCII characters
+(https://en.wikipedia.org/wiki/Email_address#Local-part). If the
+I<domain part> of an address (the part after the @ sign) contains
+non-ASCII characters, they must be encoded using Punycode, as described
+in RFC3492 (https://tools.ietf.org/html/rfc3492.html). The sender name
+(also known as the I<friendly name>) may contain non-ASCII characters.
+These characters must be encoded using MIME encoded-word syntax, as
+described in RFC 2047 (https://tools.ietf.org/html/rfc2047). MIME
+encoded-word syntax uses the following form:
+C<=?charset?encoding?encoded-text?=>.
 
 
 
