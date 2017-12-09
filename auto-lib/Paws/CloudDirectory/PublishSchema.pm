@@ -2,6 +2,7 @@
 package Paws::CloudDirectory::PublishSchema;
   use Moose;
   has DevelopmentSchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
+  has MinorVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str', required => 1);
 
@@ -43,6 +44,14 @@ schema. For more information, see arns.
 
 
 
+=head2 MinorVersion => Str
+
+The minor version under which the schema will be published. This
+parameter is recommended. Schemas have both a major and minor version
+associated with them.
+
+
+
 =head2 Name => Str
 
 The new name under which the schema will be published. If this is not
@@ -52,7 +61,8 @@ provided, the development schema is considered.
 
 =head2 B<REQUIRED> Version => Str
 
-The version under which the schema will be published.
+The major version under which the schema will be published. Schemas
+have both a major and minor version associated with them.
 
 
 

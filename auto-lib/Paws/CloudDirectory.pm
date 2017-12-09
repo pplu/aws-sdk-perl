@@ -138,6 +138,11 @@ package Paws::CloudDirectory;
     my $call_object = $self->new_with_coercions('Paws::CloudDirectory::EnableDirectory', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAppliedSchemaVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudDirectory::GetAppliedSchemaVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetDirectory {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudDirectory::GetDirectory', @_);
@@ -308,10 +313,20 @@ package Paws::CloudDirectory;
     my $call_object = $self->new_with_coercions('Paws::CloudDirectory::UpdateTypedLinkFacet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpgradeAppliedSchema {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudDirectory::UpgradeAppliedSchema', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpgradePublishedSchema {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudDirectory::UpgradePublishedSchema', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/AddFacetToObject ApplySchema AttachObject AttachPolicy AttachToIndex AttachTypedLink BatchRead BatchWrite CreateDirectory CreateFacet CreateIndex CreateObject CreateSchema CreateTypedLinkFacet DeleteDirectory DeleteFacet DeleteObject DeleteSchema DeleteTypedLinkFacet DetachFromIndex DetachObject DetachPolicy DetachTypedLink DisableDirectory EnableDirectory GetDirectory GetFacet GetObjectInformation GetSchemaAsJson GetTypedLinkFacetInformation ListAppliedSchemaArns ListAttachedIndices ListDevelopmentSchemaArns ListDirectories ListFacetAttributes ListFacetNames ListIncomingTypedLinks ListIndex ListObjectAttributes ListObjectChildren ListObjectParentPaths ListObjectParents ListObjectPolicies ListOutgoingTypedLinks ListPolicyAttachments ListPublishedSchemaArns ListTagsForResource ListTypedLinkFacetAttributes ListTypedLinkFacetNames LookupPolicy PublishSchema PutSchemaFromJson RemoveFacetFromObject TagResource UntagResource UpdateFacet UpdateObjectAttributes UpdateSchema UpdateTypedLinkFacet / }
+  sub operations { qw/AddFacetToObject ApplySchema AttachObject AttachPolicy AttachToIndex AttachTypedLink BatchRead BatchWrite CreateDirectory CreateFacet CreateIndex CreateObject CreateSchema CreateTypedLinkFacet DeleteDirectory DeleteFacet DeleteObject DeleteSchema DeleteTypedLinkFacet DetachFromIndex DetachObject DetachPolicy DetachTypedLink DisableDirectory EnableDirectory GetAppliedSchemaVersion GetDirectory GetFacet GetObjectInformation GetSchemaAsJson GetTypedLinkFacetInformation ListAppliedSchemaArns ListAttachedIndices ListDevelopmentSchemaArns ListDirectories ListFacetAttributes ListFacetNames ListIncomingTypedLinks ListIndex ListObjectAttributes ListObjectChildren ListObjectParentPaths ListObjectParents ListObjectPolicies ListOutgoingTypedLinks ListPolicyAttachments ListPublishedSchemaArns ListTagsForResource ListTypedLinkFacetAttributes ListTypedLinkFacetNames LookupPolicy PublishSchema PutSchemaFromJson RemoveFacetFromObject TagResource UntagResource UpdateFacet UpdateObjectAttributes UpdateSchema UpdateTypedLinkFacet UpgradeAppliedSchema UpgradePublishedSchema / }
 
 1;
 
@@ -368,8 +383,9 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ApplySchema>
 
 Returns: a L<Paws::CloudDirectory::ApplySchemaResponse> instance
 
-Copies the input published schema into the Directory with the same name
-and version as that of the published schema .
+Copies the input published schema, at the specified version, into the
+Directory with the same name and version as that of the published
+schema.
 
 
 =head2 AttachObject(ChildReference => L<Paws::CloudDirectory::ObjectReference>, DirectoryArn => Str, LinkName => Str, ParentReference => L<Paws::CloudDirectory::ObjectReference>)
@@ -441,7 +457,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::BatchWrite>
 Returns: a L<Paws::CloudDirectory::BatchWriteResponse> instance
 
 Performs all the write operations in a batch. Either all the operations
-succeed or none. Batch writes supports only object-related operations.
+succeed or none.
 
 
 =head2 CreateDirectory(Name => Str, SchemaArn => Str)
@@ -643,6 +659,16 @@ Enables the specified directory. Only disabled directories can be
 enabled. Once enabled, the directory can then be read and written to.
 
 
+=head2 GetAppliedSchemaVersion(SchemaArn => Str)
+
+Each argument is described in detail in: L<Paws::CloudDirectory::GetAppliedSchemaVersion>
+
+Returns: a L<Paws::CloudDirectory::GetAppliedSchemaVersionResponse> instance
+
+Returns current applied schema version ARN, including the minor version
+in use.
+
+
 =head2 GetDirectory(DirectoryArn => Str)
 
 Each argument is described in detail in: L<Paws::CloudDirectory::GetDirectory>
@@ -694,13 +720,14 @@ more information, see Typed link
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
-=head2 ListAppliedSchemaArns(DirectoryArn => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListAppliedSchemaArns(DirectoryArn => Str, [MaxResults => Int, NextToken => Str, SchemaArn => Str])
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListAppliedSchemaArns>
 
 Returns: a L<Paws::CloudDirectory::ListAppliedSchemaArnsResponse> instance
 
-Lists schemas applied to a directory.
+Lists schema major versions applied to a directory. If C<SchemaArn> is
+provided, lists the minor version.
 
 
 =head2 ListAttachedIndices(DirectoryArn => Str, TargetReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
@@ -709,7 +736,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListAttachedInd
 
 Returns: a L<Paws::CloudDirectory::ListAttachedIndicesResponse> instance
 
-Lists indices attached to an object.
+Lists indices attached to the specified object.
 
 
 =head2 ListDevelopmentSchemaArns([MaxResults => Int, NextToken => Str])
@@ -767,7 +794,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListIndex>
 
 Returns: a L<Paws::CloudDirectory::ListIndexResponse> instance
 
-Lists objects attached to the specified index.
+Lists objects and indexed values attached to the index.
 
 
 =head2 ListObjectAttributes(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FacetFilter => L<Paws::CloudDirectory::SchemaFacet>, MaxResults => Int, NextToken => Str])
@@ -850,13 +877,14 @@ Returns all of the C<ObjectIdentifiers> to which a given policy is
 attached.
 
 
-=head2 ListPublishedSchemaArns([MaxResults => Int, NextToken => Str])
+=head2 ListPublishedSchemaArns([MaxResults => Int, NextToken => Str, SchemaArn => Str])
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListPublishedSchemaArns>
 
 Returns: a L<Paws::CloudDirectory::ListPublishedSchemaArnsResponse> instance
 
-Retrieves each published schema Amazon Resource Name (ARN).
+Lists schema major versions for a published schema. If C<SchemaArn> is
+provided, lists the minor version.
 
 
 =head2 ListTagsForResource(ResourceArn => Str, [MaxResults => Int, NextToken => Str])
@@ -908,16 +936,14 @@ are ignored. For more information, see Policies
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies).
 
 
-=head2 PublishSchema(DevelopmentSchemaArn => Str, Version => Str, [Name => Str])
+=head2 PublishSchema(DevelopmentSchemaArn => Str, Version => Str, [MinorVersion => Str, Name => Str])
 
 Each argument is described in detail in: L<Paws::CloudDirectory::PublishSchema>
 
 Returns: a L<Paws::CloudDirectory::PublishSchemaResponse> instance
 
-Publishes a development schema with a version. If description and
-attributes are specified, C<PublishSchema> overrides the development
-schema description and attributes. If not, the development schema
-description and attributes are used.
+Publishes a development schema with a major version and a recommended
+minor version.
 
 
 =head2 PutSchemaFromJson(Document => Str, SchemaArn => Str)
@@ -1012,6 +1038,31 @@ Returns: a L<Paws::CloudDirectory::UpdateTypedLinkFacetResponse> instance
 
 Updates a TypedLinkFacet. For more information, see Typed link
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+
+
+=head2 UpgradeAppliedSchema(DirectoryArn => Str, PublishedSchemaArn => Str, [DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::CloudDirectory::UpgradeAppliedSchema>
+
+Returns: a L<Paws::CloudDirectory::UpgradeAppliedSchemaResponse> instance
+
+Upgrades a single directory in-place using the C<PublishedSchemaArn>
+with schema updates found in C<MinorVersion>. Backwards-compatible
+minor version upgrades are instantaneously available for readers on all
+objects in the directory. Note: This is a synchronous API call and
+upgrades only one schema on a given directory per call. To upgrade
+multiple directories from one schema, you would need to call this API
+on each directory.
+
+
+=head2 UpgradePublishedSchema(DevelopmentSchemaArn => Str, MinorVersion => Str, PublishedSchemaArn => Str, [DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::CloudDirectory::UpgradePublishedSchema>
+
+Returns: a L<Paws::CloudDirectory::UpgradePublishedSchemaResponse> instance
+
+Upgrades a published schema under a new minor version revision using
+the current contents of C<DevelopmentSchemaArn>.
 
 
 

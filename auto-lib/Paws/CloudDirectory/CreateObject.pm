@@ -67,8 +67,8 @@ attached.
 
 =head2 B<REQUIRED> SchemaFacets => ArrayRef[L<Paws::CloudDirectory::SchemaFacet>]
 
-A list of schema facets to be associated with the object that contains
-C<SchemaArn> and facet name. For more information, see arns.
+A list of schema facets to be associated with the object. Do not
+provide minor version components. See SchemaFacet for details.
 
 
 

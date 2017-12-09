@@ -59,7 +59,10 @@ The reference to the index to list.
 
 =head2 MaxResults => Int
 
-The maximum number of results to retrieve from the index.
+The maximum number of objects in a single page to retrieve from the
+index during a request. For more information, see AWS Directory Service
+Limits
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/limits.html#limits_cd).
 
 
 

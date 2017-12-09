@@ -58,7 +58,8 @@ A reference to the object you are adding the specified facet to.
 
 =head2 B<REQUIRED> SchemaFacet => L<Paws::CloudDirectory::SchemaFacet>
 
-Identifiers for the facet that you are adding to the object.
+Identifiers for the facet that you are adding to the object. See
+SchemaFacet for details.
 
 
 

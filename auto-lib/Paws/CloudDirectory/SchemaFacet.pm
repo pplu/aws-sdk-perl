@@ -44,7 +44,10 @@ A facet.
 
 =head2 SchemaArn => Str
 
-  The ARN of the schema that contains the facet.
+  The ARN of the schema that contains the facet with no minor component.
+See arns and In-Place Schema Upgrade
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/inplaceschemaupgrade.html)
+for a description of when to provide minor versions.
 
 
 

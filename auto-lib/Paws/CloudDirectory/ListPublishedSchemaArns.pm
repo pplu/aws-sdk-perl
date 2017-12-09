@@ -3,6 +3,7 @@ package Paws::CloudDirectory::ListPublishedSchemaArns;
   use Moose;
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has SchemaArn => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -44,6 +45,13 @@ The maximum number of results to retrieve.
 =head2 NextToken => Str
 
 The pagination token.
+
+
+
+=head2 SchemaArn => Str
+
+The response for C<ListPublishedSchemaArns> when this parameter is used
+will list all minor version ARNs for a major version.
 
 
 

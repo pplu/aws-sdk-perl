@@ -50,7 +50,7 @@ A reference to the object to remove the facet from.
 
 =head2 B<REQUIRED> SchemaFacet => L<Paws::CloudDirectory::SchemaFacet>
 
-The facet to remove.
+The facet to remove. See SchemaFacet for details.
 
 
 

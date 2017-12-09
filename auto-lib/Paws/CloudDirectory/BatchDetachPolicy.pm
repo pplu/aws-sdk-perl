@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 =head1 DESCRIPTION
 
 Detaches the specified policy from the specified directory inside a
-BatchRead operation. For more information, see DetachPolicy and
-BatchReadRequest$Operations.
+BatchWrite operation. For more information, see DetachPolicy and
+BatchWriteRequest$Operations.
 
 =head1 ATTRIBUTES
 

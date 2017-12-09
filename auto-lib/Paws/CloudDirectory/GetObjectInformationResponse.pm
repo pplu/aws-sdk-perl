@@ -23,7 +23,10 @@ The C<ObjectIdentifier> of the specified object.
 
 =head2 SchemaFacets => ArrayRef[L<Paws::CloudDirectory::SchemaFacet>]
 
-The facets attached to the specified object.
+The facets attached to the specified object. Although the response does
+not include minor version information, the most recently applied minor
+version of each Facet is in effect. See GetAppliedSchemaVersion for
+details.
 
 
 =head2 _request_id => Str

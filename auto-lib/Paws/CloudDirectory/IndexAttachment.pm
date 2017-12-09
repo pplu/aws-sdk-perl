@@ -44,7 +44,11 @@ Represents an index and an attached object.
 
 =head2 ObjectIdentifier => Str
 
-  The C<ObjectIdentifier> of the object attached to the index.
+  In response to ListIndex, the C<ObjectIdentifier> of the object
+attached to the index. In response to ListAttachedIndices, the
+C<ObjectIdentifier> of the index attached to the object. This field
+will always contain the C<ObjectIdentifier> of the object on the
+opposite side of the attachment specified in the query.
 
 
 
