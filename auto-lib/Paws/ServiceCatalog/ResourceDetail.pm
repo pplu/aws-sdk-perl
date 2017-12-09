@@ -35,34 +35,34 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-Detailed resource information.
+Information about a resource.
 
 =head1 ATTRIBUTES
 
 
 =head2 ARN => Str
 
-  ARN of the resource.
+  The ARN of the resource.
 
 
 =head2 CreatedTime => Str
 
-  Creation time of the resource.
+  The creation time of the resource.
 
 
 =head2 Description => Str
 
-  Description of the resource.
+  The description of the resource.
 
 
 =head2 Id => Str
 
-  Identifier of the resource.
+  The identifier of the resource.
 
 
 =head2 Name => Str
 
-  Name of the resource.
+  The name of the resource.
 
 
 

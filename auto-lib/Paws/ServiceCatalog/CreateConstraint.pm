@@ -64,28 +64,45 @@ C<zh> - Chinese
 
 =head2 Description => Str
 
-The text description of the constraint.
+The description of the constraint.
 
 
 
 =head2 B<REQUIRED> IdempotencyToken => Str
 
-A token to disambiguate duplicate requests. You can use the same input
-in multiple requests, provided that you also specify a different
-idempotency token for each request.
+A unique identifier that you provide to ensure idempotency. If multiple
+requests differ only by the idempotency token, the same response is
+returned for each repeated request.
 
 
 
 =head2 B<REQUIRED> Parameters => Str
 
-The constraint parameters. Expected values vary depending on which
-B<Type> is specified. For more information, see the Examples section.
+The constraint parameters, in JSON format. The syntax depends on the
+constraint type as follows:
 
-For Type C<LAUNCH>, the C<RoleArn> property is required.
+=over
 
-For Type C<NOTIFICATION>, the C<NotificationArns> property is required.
+=item LAUNCH
 
-For Type C<TEMPLATE>, the C<Rules> property is required.
+Specify the C<RoleArn> property as follows:
+
+\"RoleArn\" : \"arn:aws:iam::123456789012:role/LaunchRole\"
+
+=item NOTIFICATION
+
+Specify the C<NotificationArns> property as follows:
+
+\"NotificationArns\" : [\"arn:aws:sns:us-east-1:123456789012:Topic\"]
+
+=item TEMPLATE
+
+Specify the C<Rules> property. For more information, see Template
+Constraint Rules
+(http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html).
+
+=back
+
 
 
 
@@ -103,8 +120,24 @@ The product identifier.
 
 =head2 B<REQUIRED> Type => Str
 
-The type of the constraint. Case-sensitive valid values are: C<LAUNCH>,
-C<NOTIFICATION>, or C<TEMPLATE>.
+The type of constraint.
+
+=over
+
+=item *
+
+C<LAUNCH>
+
+=item *
+
+C<NOTIFICATION>
+
+=item *
+
+C<TEMPLATE>
+
+=back
+
 
 
 

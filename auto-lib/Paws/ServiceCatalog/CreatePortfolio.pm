@@ -63,7 +63,7 @@ C<zh> - Chinese
 
 =head2 Description => Str
 
-The text description of the portfolio.
+The description of the portfolio.
 
 
 
@@ -75,9 +75,9 @@ The name to use for display purposes.
 
 =head2 B<REQUIRED> IdempotencyToken => Str
 
-A token to disambiguate duplicate requests. You can use the same input
-in multiple requests, provided that you also specify a different
-idempotency token for each request.
+A unique identifier that you provide to ensure idempotency. If multiple
+requests differ only by the idempotency token, the same response is
+returned for each repeated request.
 
 
 
@@ -89,7 +89,7 @@ The name of the portfolio provider.
 
 =head2 Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
 
-Tags to associate with the new portfolio.
+The tags to associate with the portfolio.
 
 
 

@@ -66,7 +66,7 @@ The portfolio identifier.
 
 =head2 B<REQUIRED> PrincipalARN => Str
 
-The ARN representing the principal (IAM user, role, or group).
+The ARN of the principal (IAM user, role, or group).
 
 
 

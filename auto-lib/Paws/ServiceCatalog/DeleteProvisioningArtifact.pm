@@ -66,8 +66,7 @@ The product identifier.
 
 =head2 B<REQUIRED> ProvisioningArtifactId => Str
 
-The identifier of the provisioning artifact for the delete request.
-This is sometimes referred to as the product version.
+The identifier of the provisioning artifact.
 
 
 

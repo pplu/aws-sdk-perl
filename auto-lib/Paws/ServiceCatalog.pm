@@ -312,32 +312,12 @@ Paws::ServiceCatalog - Perl Interface to AWS AWS Service Catalog
 
 AWS Service Catalog
 
-B<Overview>
-
-AWS Service Catalog (https://aws.amazon.com/servicecatalog/) allows
+AWS Service Catalog (https://aws.amazon.com/servicecatalog/) enables
 organizations to create and manage catalogs of IT services that are
-approved for use on AWS. This documentation provides reference material
-for the AWS Service Catalog end user API. To get the most out of this
-documentation, be familiar with the terminology discussed in AWS
-Service Catalog Concepts
+approved for use on AWS. To get the most out of this documentation, you
+should be familiar with the terminology discussed in AWS Service
+Catalog Concepts
 (http://docs.aws.amazon.com/servicecatalog/latest/adminguide/what-is_concepts.html).
-
-I<Additional Resources>
-
-=over
-
-=item *
-
-AWS Service Catalog Administrator Guide
-(http://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html)
-
-=item *
-
-AWS Service Catalog User Guide
-(http://docs.aws.amazon.com/servicecatalog/latest/userguide/introduction.html)
-
-=back
-
 
 =head1 METHODS
 
@@ -347,7 +327,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::AcceptPortfolio
 
 Returns: a L<Paws::ServiceCatalog::AcceptPortfolioShareOutput> instance
 
-Accepts an offer to share a portfolio.
+Accepts an offer to share the specified portfolio.
 
 
 =head2 AssociatePrincipalWithPortfolio(PortfolioId => Str, PrincipalARN => Str, PrincipalType => Str, [AcceptLanguage => Str])
@@ -365,7 +345,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::AssociateProduc
 
 Returns: a L<Paws::ServiceCatalog::AssociateProductWithPortfolioOutput> instance
 
-Associates a product with a portfolio.
+Associates the specified product with the specified portfolio.
 
 
 =head2 AssociateTagOptionWithResource(ResourceId => Str, TagOptionId => Str)
@@ -374,7 +354,8 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::AssociateTagOpt
 
 Returns: a L<Paws::ServiceCatalog::AssociateTagOptionWithResourceOutput> instance
 
-Associate a TagOption identifier with a resource identifier.
+Associate the specified TagOption with the specified portfolio or
+product.
 
 
 =head2 CopyProduct(IdempotencyToken => Str, SourceProductArn => Str, [AcceptLanguage => Str, CopyOptions => ArrayRef[Str|Undef], SourceProvisioningArtifactIdentifiers => ArrayRef[L<Paws::ServiceCatalog::SourceProvisioningArtifactPropertiesMap>], TargetProductId => Str, TargetProductName => Str])
@@ -386,8 +367,8 @@ Returns: a L<Paws::ServiceCatalog::CopyProductOutput> instance
 Copies the specified source product to the specified target product or
 a new product.
 
-You can copy the product to the same account or another account. You
-can copy the product to the same region or another region.
+You can copy a product to the same account or another account. You can
+copy a product to the same region or another region.
 
 This operation is performed asynchronously. To track the progress of
 the operation, use DescribeCopyProductStatus.
@@ -399,8 +380,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::CreateConstrain
 
 Returns: a L<Paws::ServiceCatalog::CreateConstraintOutput> instance
 
-Creates a new constraint. For more information, see Using Constraints
-(http://docs.aws.amazon.com/servicecatalog/latest/adminguide/constraints.html).
+Creates a constraint.
 
 
 =head2 CreatePortfolio(DisplayName => Str, IdempotencyToken => Str, ProviderName => Str, [AcceptLanguage => Str, Description => Str, Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]])
@@ -409,7 +389,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::CreatePortfolio
 
 Returns: a L<Paws::ServiceCatalog::CreatePortfolioOutput> instance
 
-Creates a new portfolio.
+Creates a portfolio.
 
 
 =head2 CreatePortfolioShare(AccountId => Str, PortfolioId => Str, [AcceptLanguage => Str])
@@ -418,7 +398,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::CreatePortfolio
 
 Returns: a L<Paws::ServiceCatalog::CreatePortfolioShareOutput> instance
 
-Creates a new portfolio share.
+Shares the specified portfolio with the specified account.
 
 
 =head2 CreateProduct(IdempotencyToken => Str, Name => Str, Owner => Str, ProductType => Str, ProvisioningArtifactParameters => L<Paws::ServiceCatalog::ProvisioningArtifactProperties>, [AcceptLanguage => Str, Description => Str, Distributor => Str, SupportDescription => Str, SupportEmail => Str, SupportUrl => Str, Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]])
@@ -427,7 +407,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::CreateProduct>
 
 Returns: a L<Paws::ServiceCatalog::CreateProductOutput> instance
 
-Creates a new product.
+Creates a product.
 
 
 =head2 CreateProvisioningArtifact(IdempotencyToken => Str, Parameters => L<Paws::ServiceCatalog::ProvisioningArtifactProperties>, ProductId => Str, [AcceptLanguage => Str])
@@ -436,8 +416,11 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::CreateProvision
 
 Returns: a L<Paws::ServiceCatalog::CreateProvisioningArtifactOutput> instance
 
-Create a new provisioning artifact for the specified product. This
-operation does not work with a product that has been shared with you.
+Creates a provisioning artifact (also known as a version) for the
+specified product.
+
+You cannot create a provisioning artifact for a product that was shared
+with you.
 
 
 =head2 CreateTagOption(Key => Str, Value => Str)
@@ -446,7 +429,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::CreateTagOption
 
 Returns: a L<Paws::ServiceCatalog::CreateTagOptionOutput> instance
 
-Create a new TagOption.
+Creates a TagOption.
 
 
 =head2 DeleteConstraint(Id => Str, [AcceptLanguage => Str])
@@ -464,9 +447,10 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DeletePortfolio
 
 Returns: a L<Paws::ServiceCatalog::DeletePortfolioOutput> instance
 
-Deletes the specified portfolio. This operation does not work with a
-portfolio that has been shared with you or if it has products, users,
-constraints, or shared accounts associated with it.
+Deletes the specified portfolio.
+
+You cannot delete a portfolio if it was shared with you or if it has
+associated products, users, constraints, or shared accounts.
 
 
 =head2 DeletePortfolioShare(AccountId => Str, PortfolioId => Str, [AcceptLanguage => Str])
@@ -475,7 +459,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DeletePortfolio
 
 Returns: a L<Paws::ServiceCatalog::DeletePortfolioShareOutput> instance
 
-Deletes the specified portfolio share.
+Stops sharing the specified portfolio with the specified account.
 
 
 =head2 DeleteProduct(Id => Str, [AcceptLanguage => Str])
@@ -484,9 +468,10 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DeleteProduct>
 
 Returns: a L<Paws::ServiceCatalog::DeleteProductOutput> instance
 
-Deletes the specified product. This operation does not work with a
-product that has been shared with you or is associated with a
-portfolio.
+Deletes the specified product.
+
+You cannot delete a product if it was shared with you or is associated
+with a portfolio.
 
 
 =head2 DeleteProvisioningArtifact(ProductId => Str, ProvisioningArtifactId => Str, [AcceptLanguage => Str])
@@ -495,10 +480,13 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DeleteProvision
 
 Returns: a L<Paws::ServiceCatalog::DeleteProvisioningArtifactOutput> instance
 
-Deletes the specified provisioning artifact. This operation does not
-work on a provisioning artifact associated with a product that has been
-shared with you, or on the last provisioning artifact associated with a
-product (a product must have at least one provisioning artifact).
+Deletes the specified provisioning artifact (also known as a version)
+for the specified product.
+
+You cannot delete a provisioning artifact associated with a product
+that was shared with you. You cannot delete the last provisioning
+artifact for a product, because a product must have at least one
+provisioning artifact.
 
 
 =head2 DescribeConstraint(Id => Str, [AcceptLanguage => Str])
@@ -507,7 +495,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeConstra
 
 Returns: a L<Paws::ServiceCatalog::DescribeConstraintOutput> instance
 
-Retrieves detailed information for a specified constraint.
+Gets information about the specified constraint.
 
 
 =head2 DescribeCopyProductStatus(CopyProductToken => Str, [AcceptLanguage => Str])
@@ -516,7 +504,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeCopyPro
 
 Returns: a L<Paws::ServiceCatalog::DescribeCopyProductStatusOutput> instance
 
-Describes the status of the specified copy product operation.
+Gets the status of the specified copy product operation.
 
 
 =head2 DescribePortfolio(Id => Str, [AcceptLanguage => Str])
@@ -525,8 +513,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DescribePortfol
 
 Returns: a L<Paws::ServiceCatalog::DescribePortfolioOutput> instance
 
-Retrieves detailed information and any tags associated with the
-specified portfolio.
+Gets information about the specified portfolio.
 
 
 =head2 DescribeProduct(Id => Str, [AcceptLanguage => Str])
@@ -535,10 +522,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeProduct
 
 Returns: a L<Paws::ServiceCatalog::DescribeProductOutput> instance
 
-Retrieves information about a specified product.
-
-This operation is functionally identical to DescribeProductView except
-that it takes as input C<ProductId> instead of C<ProductViewId>.
+Gets information about the specified product.
 
 
 =head2 DescribeProductAsAdmin(Id => Str, [AcceptLanguage => Str])
@@ -547,8 +531,8 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeProduct
 
 Returns: a L<Paws::ServiceCatalog::DescribeProductAsAdminOutput> instance
 
-Retrieves information about a specified product, run with administrator
-access.
+Gets information about the specified product. This operation is run
+with administrator access.
 
 
 =head2 DescribeProductView(Id => Str, [AcceptLanguage => Str])
@@ -557,10 +541,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeProduct
 
 Returns: a L<Paws::ServiceCatalog::DescribeProductViewOutput> instance
 
-Retrieves information about a specified product.
-
-This operation is functionally identical to DescribeProduct except that
-it takes as input C<ProductViewId> instead of C<ProductId>.
+Gets information about the specified product.
 
 
 =head2 DescribeProvisionedProduct(Id => Str, [AcceptLanguage => Str])
@@ -569,7 +550,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeProvisi
 
 Returns: a L<Paws::ServiceCatalog::DescribeProvisionedProductOutput> instance
 
-Retrieve detailed information about the provisioned product.
+Gets information about the specified provisioned product.
 
 
 =head2 DescribeProvisioningArtifact(ProductId => Str, ProvisioningArtifactId => Str, [AcceptLanguage => Str, Verbose => Bool])
@@ -578,8 +559,8 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeProvisi
 
 Returns: a L<Paws::ServiceCatalog::DescribeProvisioningArtifactOutput> instance
 
-Retrieves detailed information about the specified provisioning
-artifact.
+Gets information about the specified provisioning artifact (also known
+as a version) for the specified product.
 
 
 =head2 DescribeProvisioningParameters(ProductId => Str, ProvisioningArtifactId => Str, [AcceptLanguage => Str, PathId => Str])
@@ -588,21 +569,17 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeProvisi
 
 Returns: a L<Paws::ServiceCatalog::DescribeProvisioningParametersOutput> instance
 
-Provides information about parameters required to provision a specified
-product in a specified manner. Use this operation to obtain the list of
-C<ProvisioningArtifactParameters> parameters available to call the
-ProvisionProduct operation for the specified product.
+Gets information about the configuration required to provision the
+specified product using the specified provisioning artifact.
 
 If the output contains a TagOption key with an empty list of values,
 there is a TagOption conflict for that key. The end user cannot take
 action to fix the conflict, and launch is not blocked. In subsequent
-calls to the C<ProvisionProduct> operation, do not include conflicted
-TagOption keys as tags. Calls to C<ProvisionProduct> with empty
-TagOption values cause the error "Parameter validation failed: Missing
-required parameter in Tags[I<N>]:I<Value> ". Calls to
-C<ProvisionProduct> with conflicted TagOption keys automatically tag
-the provisioned product with the conflicted keys with the value
-"C<sc-tagoption-conflict-portfolioId-productId>".
+calls to ProvisionProduct, do not include conflicted TagOption keys as
+tags, or this will cause the error "Parameter validation failed:
+Missing required parameter in Tags[I<N>]:I<Value>" and tag the
+provisioned product with the value
+C<sc-tagoption-conflict-portfolioId-productId>.
 
 
 =head2 DescribeRecord(Id => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
@@ -611,9 +588,11 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeRecord>
 
 Returns: a L<Paws::ServiceCatalog::DescribeRecordOutput> instance
 
-Retrieves a paginated list of the full details of a specific request.
-Use this operation after calling a request operation (ProvisionProduct,
-TerminateProvisionedProduct, or UpdateProvisionedProduct).
+Gets information about the specified request operation.
+
+Use this operation after calling a request operation (for example,
+ProvisionProduct, TerminateProvisionedProduct, or
+UpdateProvisionedProduct).
 
 
 =head2 DescribeTagOption(Id => Str)
@@ -622,7 +601,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeTagOpti
 
 Returns: a L<Paws::ServiceCatalog::DescribeTagOptionOutput> instance
 
-Describes a TagOption.
+Gets information about the specified TagOption.
 
 
 =head2 DisassociatePrincipalFromPortfolio(PortfolioId => Str, PrincipalARN => Str, [AcceptLanguage => Str])
@@ -650,7 +629,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DisassociateTag
 
 Returns: a L<Paws::ServiceCatalog::DisassociateTagOptionFromResourceOutput> instance
 
-Disassociates a TagOption from a resource.
+Disassociates the specified TagOption from the specified resource.
 
 
 =head2 ListAcceptedPortfolioShares([AcceptLanguage => Str, PageSize => Int, PageToken => Str])
@@ -659,8 +638,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::ListAcceptedPor
 
 Returns: a L<Paws::ServiceCatalog::ListAcceptedPortfolioSharesOutput> instance
 
-Lists details of all portfolios for which sharing was accepted by this
-account.
+Lists all portfolios for which sharing was accepted by this account.
 
 
 =head2 ListConstraintsForPortfolio(PortfolioId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str, ProductId => Str])
@@ -669,8 +647,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::ListConstraints
 
 Returns: a L<Paws::ServiceCatalog::ListConstraintsForPortfolioOutput> instance
 
-Retrieves detailed constraint information for the specified portfolio
-and product.
+Lists the constraints for the specified portfolio and product.
 
 
 =head2 ListLaunchPaths(ProductId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
@@ -679,10 +656,9 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::ListLaunchPaths
 
 Returns: a L<Paws::ServiceCatalog::ListLaunchPathsOutput> instance
 
-Returns a paginated list of all paths to a specified product. A path is
-how the user has access to a specified product, and is necessary when
-provisioning a product. A path also determines the constraints put on
-the product.
+Lists the paths to the specified product. A path is how the user has
+access to a specified product, and is necessary when provisioning a
+product. A path also determines the constraints put on the product.
 
 
 =head2 ListPortfolioAccess(PortfolioId => Str, [AcceptLanguage => Str])
@@ -691,8 +667,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::ListPortfolioAc
 
 Returns: a L<Paws::ServiceCatalog::ListPortfolioAccessOutput> instance
 
-Lists the account IDs that have been authorized sharing of the
-specified portfolio.
+Lists the account IDs that have access to the specified portfolio.
 
 
 =head2 ListPortfolios([AcceptLanguage => Str, PageSize => Int, PageToken => Str])
@@ -728,7 +703,8 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::ListProvisionin
 
 Returns: a L<Paws::ServiceCatalog::ListProvisioningArtifactsOutput> instance
 
-Lists all provisioning artifacts associated with the specified product.
+Lists all provisioning artifacts (also known as versions) for the
+specified product.
 
 
 =head2 ListRecordHistory([AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str, SearchFilter => L<Paws::ServiceCatalog::ListRecordHistorySearchFilter>])
@@ -737,8 +713,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::ListRecordHisto
 
 Returns: a L<Paws::ServiceCatalog::ListRecordHistoryOutput> instance
 
-Returns a paginated list of all performed requests, in the form of
-RecordDetails objects that are filtered as specified.
+Lists the specified requests or all performed requests.
 
 
 =head2 ListResourcesForTagOption(TagOptionId => Str, [PageSize => Int, PageToken => Str, ResourceType => Str])
@@ -747,7 +722,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::ListResourcesFo
 
 Returns: a L<Paws::ServiceCatalog::ListResourcesForTagOptionOutput> instance
 
-Lists resources associated with a TagOption.
+Lists the resources associated with the specified TagOption.
 
 
 =head2 ListTagOptions([Filters => L<Paws::ServiceCatalog::ListTagOptionsFilters>, PageSize => Int, PageToken => Str])
@@ -756,7 +731,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::ListTagOptions>
 
 Returns: a L<Paws::ServiceCatalog::ListTagOptionsOutput> instance
 
-Lists detailed TagOptions information.
+Lists the specified TagOptions or all TagOptions.
 
 
 =head2 ProvisionProduct(ProductId => Str, ProvisionedProductName => Str, ProvisioningArtifactId => Str, ProvisionToken => Str, [AcceptLanguage => Str, NotificationArns => ArrayRef[Str|Undef], PathId => Str, ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::ProvisioningParameter>], Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]])
@@ -765,20 +740,17 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::ProvisionProduc
 
 Returns: a L<Paws::ServiceCatalog::ProvisionProductOutput> instance
 
-Requests a I<provision> of a specified product. A I<provisioned
-product> is a resourced instance for a product. For example,
-provisioning a CloudFormation-template-backed product results in
-launching a CloudFormation stack and all the underlying resources that
-come with it.
+Provisions the specified product.
 
-You can check the status of this request using the DescribeRecord
-operation. The error "Parameter validation failed: Missing required
-parameter in Tags[I<N>]:I<Value>" indicates that your request contains
-a tag which has a tag key but no corresponding tag value (value is
-empty or null). Your call may have included values returned from a
-C<DescribeProvisioningParameters> call that resulted in a TagOption key
-with an empty list. This happens when TagOption keys are in conflict.
-For more information, see DescribeProvisioningParameters.
+A provisioned product is a resourced instance of a product. For
+example, provisioning a product based on a CloudFormation template
+launches a CloudFormation stack and its underlying resources. You can
+check the status of this request using DescribeRecord.
+
+If the request contains a tag key with an empty list of values, there
+is a tag conflict for that key. Do not include conflicted keys as tags,
+or this will cause the error "Parameter validation failed: Missing
+required parameter in Tags[I<N>]:I<Value>".
 
 
 =head2 RejectPortfolioShare(PortfolioId => Str, [AcceptLanguage => Str])
@@ -787,7 +759,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::RejectPortfolio
 
 Returns: a L<Paws::ServiceCatalog::RejectPortfolioShareOutput> instance
 
-Rejects an offer to share a portfolio.
+Rejects an offer to share the specified portfolio.
 
 
 =head2 ScanProvisionedProducts([AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str])
@@ -796,8 +768,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::ScanProvisioned
 
 Returns: a L<Paws::ServiceCatalog::ScanProvisionedProductsOutput> instance
 
-Returns a paginated list of all the ProvisionedProduct objects that are
-currently available (not terminated).
+Lists the provisioned products that are available (not terminated).
 
 
 =head2 SearchProducts([AcceptLanguage => Str, Filters => L<Paws::ServiceCatalog::ProductViewFilters>, PageSize => Int, PageToken => Str, SortBy => Str, SortOrder => Str])
@@ -806,11 +777,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::SearchProducts>
 
 Returns: a L<Paws::ServiceCatalog::SearchProductsOutput> instance
 
-Returns a paginated list all of the C<Products> objects to which the
-caller has access.
-
-The output of this operation can be used as input for other operations,
-such as DescribeProductView.
+Gets information about the products to which the caller has access.
 
 
 =head2 SearchProductsAsAdmin([AcceptLanguage => Str, Filters => L<Paws::ServiceCatalog::ProductViewFilters>, PageSize => Int, PageToken => Str, PortfolioId => Str, ProductSource => Str, SortBy => Str, SortOrder => Str])
@@ -819,10 +786,8 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::SearchProductsA
 
 Returns: a L<Paws::ServiceCatalog::SearchProductsAsAdminOutput> instance
 
-Retrieves summary and status information about all products created
-within the caller's account. If a portfolio ID is provided, this
-operation retrieves information for only those products that are
-associated with the specified portfolio.
+Gets information about the products for the specified portfolio or all
+products.
 
 
 =head2 TerminateProvisionedProduct(TerminateToken => Str, [AcceptLanguage => Str, IgnoreErrors => Bool, ProvisionedProductId => Str, ProvisionedProductName => Str])
@@ -831,15 +796,12 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::TerminateProvis
 
 Returns: a L<Paws::ServiceCatalog::TerminateProvisionedProductOutput> instance
 
-Requests termination of an existing ProvisionedProduct object. If there
-are C<Tags> associated with the object, they are terminated when the
-ProvisionedProduct object is terminated.
+Terminates the specified provisioned product.
 
 This operation does not delete any records associated with the
-ProvisionedProduct object.
+provisioned product.
 
-You can check the status of this request using the DescribeRecord
-operation.
+You can check the status of this request using DescribeRecord.
 
 
 =head2 UpdateConstraint(Id => Str, [AcceptLanguage => Str, Description => Str])
@@ -848,7 +810,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::UpdateConstrain
 
 Returns: a L<Paws::ServiceCatalog::UpdateConstraintOutput> instance
 
-Updates an existing constraint.
+Updates the specified constraint.
 
 
 =head2 UpdatePortfolio(Id => Str, [AcceptLanguage => Str, AddTags => ArrayRef[L<Paws::ServiceCatalog::Tag>], Description => Str, DisplayName => Str, ProviderName => Str, RemoveTags => ArrayRef[Str|Undef]])
@@ -857,8 +819,9 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::UpdatePortfolio
 
 Returns: a L<Paws::ServiceCatalog::UpdatePortfolioOutput> instance
 
-Updates the specified portfolio's details. This operation does not work
-with a product that has been shared with you.
+Updates the specified portfolio.
+
+You cannot update a product that was shared with you.
 
 
 =head2 UpdateProduct(Id => Str, [AcceptLanguage => Str, AddTags => ArrayRef[L<Paws::ServiceCatalog::Tag>], Description => Str, Distributor => Str, Name => Str, Owner => Str, RemoveTags => ArrayRef[Str|Undef], SupportDescription => Str, SupportEmail => Str, SupportUrl => Str])
@@ -867,7 +830,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::UpdateProduct>
 
 Returns: a L<Paws::ServiceCatalog::UpdateProductOutput> instance
 
-Updates an existing product.
+Updates the specified product.
 
 
 =head2 UpdateProvisionedProduct(UpdateToken => Str, [AcceptLanguage => Str, PathId => Str, ProductId => Str, ProvisionedProductId => Str, ProvisionedProductName => Str, ProvisioningArtifactId => Str, ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::UpdateProvisioningParameter>]])
@@ -876,25 +839,28 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::UpdateProvision
 
 Returns: a L<Paws::ServiceCatalog::UpdateProvisionedProductOutput> instance
 
-Requests updates to the configuration of an existing ProvisionedProduct
-object. If there are tags associated with the object, they cannot be
-updated or added with this operation. Depending on the specific updates
-requested, this operation may update with no interruption, with some
-interruption, or replace the ProvisionedProduct object entirely.
+Requests updates to the configuration of the specified provisioned
+product.
 
-You can check the status of this request using the DescribeRecord
-operation.
+If there are tags associated with the object, they cannot be updated or
+added. Depending on the specific updates requested, this operation can
+update with no interruption, with some interruption, or replace the
+provisioned product entirely.
+
+You can check the status of this request using DescribeRecord.
 
 
-=head2 UpdateProvisioningArtifact(ProductId => Str, ProvisioningArtifactId => Str, [AcceptLanguage => Str, Description => Str, Name => Str])
+=head2 UpdateProvisioningArtifact(ProductId => Str, ProvisioningArtifactId => Str, [AcceptLanguage => Str, Active => Bool, Description => Str, Name => Str])
 
 Each argument is described in detail in: L<Paws::ServiceCatalog::UpdateProvisioningArtifact>
 
 Returns: a L<Paws::ServiceCatalog::UpdateProvisioningArtifactOutput> instance
 
-Updates an existing provisioning artifact's information. This operation
-does not work on a provisioning artifact associated with a product that
-has been shared with you.
+Updates the specified provisioning artifact (also known as a version)
+for the specified product.
+
+You cannot update a provisioning artifact for a product that was shared
+with you.
 
 
 =head2 UpdateTagOption(Id => Str, [Active => Bool, Value => Str])
@@ -903,7 +869,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::UpdateTagOption
 
 Returns: a L<Paws::ServiceCatalog::UpdateTagOptionOutput> instance
 
-Updates an existing TagOption.
+Updates the specified TagOption.
 
 
 

@@ -16,8 +16,7 @@ Paws::ServiceCatalog::CopyProductOutput
 
 =head2 CopyProductToken => Str
 
-A unique token to pass to C<DescribeCopyProductStatus> to track the
-progress of the operation.
+The token to use to track the progress of the operation.
 
 
 =head2 _request_id => Str

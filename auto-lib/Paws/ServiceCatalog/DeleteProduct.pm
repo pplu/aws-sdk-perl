@@ -59,7 +59,7 @@ C<zh> - Chinese
 
 =head2 B<REQUIRED> Id => Str
 
-The identifier of the product for the delete request.
+The product identifier.
 
 
 

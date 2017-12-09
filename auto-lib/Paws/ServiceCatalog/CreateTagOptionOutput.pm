@@ -16,7 +16,7 @@ Paws::ServiceCatalog::CreateTagOptionOutput
 
 =head2 TagOptionDetail => L<Paws::ServiceCatalog::TagOptionDetail>
 
-The resulting detailed TagOption information.
+Information about the TagOption.
 
 
 =head2 _request_id => Str

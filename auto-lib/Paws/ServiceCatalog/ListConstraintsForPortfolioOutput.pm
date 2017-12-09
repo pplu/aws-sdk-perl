@@ -17,13 +17,13 @@ Paws::ServiceCatalog::ListConstraintsForPortfolioOutput
 
 =head2 ConstraintDetails => ArrayRef[L<Paws::ServiceCatalog::ConstraintDetail>]
 
-List of detailed constraint information objects.
+Information about the constraints.
 
 
 =head2 NextPageToken => Str
 
-The page token to use to retrieve the next page of results for this
-operation. If there are no more pages, this value is null.
+The page token to use to retrieve the next set of results. If there are
+no additional results, this value is null.
 
 
 =head2 _request_id => Str

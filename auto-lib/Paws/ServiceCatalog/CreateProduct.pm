@@ -69,7 +69,7 @@ C<zh> - Chinese
 
 =head2 Description => Str
 
-The text description of the product.
+The description of the product.
 
 
 
@@ -81,9 +81,9 @@ The distributor of the product.
 
 =head2 B<REQUIRED> IdempotencyToken => Str
 
-A token to disambiguate duplicate requests. You can use the same input
-in multiple requests, provided that you also specify a different
-idempotency token for each request.
+A unique identifier that you provide to ensure idempotency. If multiple
+requests differ only by the idempotency token, the same response is
+returned for each repeated request.
 
 
 
@@ -101,37 +101,37 @@ The owner of the product.
 
 =head2 B<REQUIRED> ProductType => Str
 
-The type of the product to create.
+The type of product.
 
 Valid values are: C<"CLOUD_FORMATION_TEMPLATE">, C<"MARKETPLACE">
 
 =head2 B<REQUIRED> ProvisioningArtifactParameters => L<Paws::ServiceCatalog::ProvisioningArtifactProperties>
 
-Parameters for the provisioning artifact.
+The configuration of the provisioning artifact.
 
 
 
 =head2 SupportDescription => Str
 
-Support information about the product.
+The support information about the product.
 
 
 
 =head2 SupportEmail => Str
 
-Contact email for product support.
+The contact email for product support.
 
 
 
 =head2 SupportUrl => Str
 
-Contact URL for product support.
+The contact URL for product support.
 
 
 
 =head2 Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
 
-Tags to associate with the new product.
+The tags to associate with the product.
 
 
 

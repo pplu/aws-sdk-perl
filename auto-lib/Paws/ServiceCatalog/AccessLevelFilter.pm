@@ -32,27 +32,38 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-The access level to limit results.
+The access level to use to filter results.
 
 =head1 ATTRIBUTES
 
 
 =head2 Key => Str
 
-  Specifies the access level.
+  The access level.
 
-C<Account> allows results at the account level.
+=over
 
-C<Role> allows results based on the federated role of the specified
+=item *
+
+C<Account> - Filter results based on the account.
+
+=item *
+
+C<Role> - Filter results based on the federated role of the specified
 user.
 
-C<User> allows results limited to the specified user.
+=item *
+
+C<User> - Filter results based on the specified user.
+
+=back
+
 
 
 =head2 Value => Str
 
-  Specifies the user to which the access level applies. A value of
-C<Self> is currently supported.
+  The user to which the access level applies. The only supported value is
+C<Self>.
 
 
 

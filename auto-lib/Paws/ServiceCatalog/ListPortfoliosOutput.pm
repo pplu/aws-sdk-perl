@@ -17,13 +17,13 @@ Paws::ServiceCatalog::ListPortfoliosOutput
 
 =head2 NextPageToken => Str
 
-The page token to use to retrieve the next page of results for this
-operation. If there are no more pages, this value is null.
+The page token to use to retrieve the next set of results. If there are
+no additional results, this value is null.
 
 
 =head2 PortfolioDetails => ArrayRef[L<Paws::ServiceCatalog::PortfolioDetail>]
 
-List of detailed portfolio information objects.
+Information about the portfolios.
 
 
 =head2 _request_id => Str

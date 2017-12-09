@@ -19,22 +19,23 @@ Paws::ServiceCatalog::DescribeProductAsAdminOutput
 
 =head2 ProductViewDetail => L<Paws::ServiceCatalog::ProductViewDetail>
 
-Detailed product view information.
+Information about the product view.
 
 
 =head2 ProvisioningArtifactSummaries => ArrayRef[L<Paws::ServiceCatalog::ProvisioningArtifactSummary>]
 
-A list of provisioning artifact summaries for the product.
+Information about the provisioning artifacts (also known as versions)
+for the specified product.
 
 
 =head2 TagOptions => ArrayRef[L<Paws::ServiceCatalog::TagOptionDetail>]
 
-List of TagOptions associated with the product.
+Information about the TagOptions associated with the product.
 
 
 =head2 Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
 
-Tags associated with the product.
+Information about the tags associated with the product.
 
 
 =head2 _request_id => Str

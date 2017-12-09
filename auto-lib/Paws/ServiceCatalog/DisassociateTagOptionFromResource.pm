@@ -36,13 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceId => Str
 
-Identifier of the resource from which to disassociate the TagOption.
+The resource identifier.
 
 
 
 =head2 B<REQUIRED> TagOptionId => Str
 
-Identifier of the TagOption to disassociate from the resource.
+The TagOption identifier.
 
 
 

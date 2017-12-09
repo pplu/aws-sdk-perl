@@ -34,31 +34,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-Summary information about a path for a user to have access to a
-specified product.
+Summary information about a product path for a user.
 
 =head1 ATTRIBUTES
 
 
 =head2 ConstraintSummaries => ArrayRef[L<Paws::ServiceCatalog::ConstraintSummary>]
 
-  List of constraints on the portfolio-product relationship.
+  The constraints on the portfolio-product relationship.
 
 
 =head2 Id => Str
 
-  The unique identifier of the product path.
+  The identifier of the product path.
 
 
 =head2 Name => Str
 
-  Corresponds to the name of the portfolio to which the user was
-assigned.
+  The name of the portfolio to which the user was assigned.
 
 
 =head2 Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
 
-  List of tags used by this launch path.
+  The tags associated with this product path.
 
 
 

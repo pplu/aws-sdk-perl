@@ -60,7 +60,7 @@ C<zh> - Chinese
 
 =head2 B<REQUIRED> AccountId => Str
 
-The account ID associated with the share to delete.
+The AWS account ID.
 
 
 

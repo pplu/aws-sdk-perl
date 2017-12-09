@@ -59,7 +59,7 @@ C<zh> - Chinese
 
 =head2 B<REQUIRED> Id => Str
 
-The C<ProductId> of the product to describe.
+The product identifier.
 
 
 

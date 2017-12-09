@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-A principal's ARN and type.
+Information about a principal.
 
 =head1 ATTRIBUTES
 
 
 =head2 PrincipalARN => Str
 
-  The ARN representing the principal (IAM user, role, or group).
+  The ARN of the principal (IAM user, role, or group).
 
 
 =head2 PrincipalType => Str
 
-  The principal type. Must be C<IAM>
+  The principal type. The supported value is C<IAM>.
 
 
 

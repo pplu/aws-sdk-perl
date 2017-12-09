@@ -28,7 +28,7 @@ The status message.
 
 =head2 TargetProductId => Str
 
-The ID of the copied product.
+The identifier of the copied product.
 
 
 =head2 _request_id => Str

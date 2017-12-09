@@ -60,13 +60,13 @@ C<zh> - Chinese
 
 =head2 Description => Str
 
-The updated text description of the constraint.
+The updated description of the constraint.
 
 
 
 =head2 B<REQUIRED> Id => Str
 
-The identifier of the constraint to update.
+The identifier of the constraint.
 
 
 

@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-The TagOption summary key-value pair.
+Summary information about a TagOption.
 
 =head1 ATTRIBUTES
 
 
 =head2 Key => Str
 
-  The TagOptionSummary key.
+  The TagOption key.
 
 
 =head2 Values => ArrayRef[Str|Undef]
 
-  The TagOptionSummary value.
+  The TagOption value.
 
 
 

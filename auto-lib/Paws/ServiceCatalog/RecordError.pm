@@ -44,7 +44,7 @@ The error code and description resulting from an operation.
 
 =head2 Description => Str
 
-  The text description of the error.
+  The description of the error.
 
 
 

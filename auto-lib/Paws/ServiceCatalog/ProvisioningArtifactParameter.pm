@@ -36,20 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-A parameter used to successfully provision the product. This value
-includes a list of allowable values and additional metadata.
+Information about a parameter used to provision a product.
 
 =head1 ATTRIBUTES
 
 
 =head2 DefaultValue => Str
 
-  The default value for this parameter.
+  The default value.
 
 
 =head2 Description => Str
 
-  The text description of the parameter.
+  The description of the parameter.
 
 
 =head2 IsNoEcho => Bool
@@ -61,8 +60,7 @@ sensitive information.
 
 =head2 ParameterConstraints => L<Paws::ServiceCatalog::ParameterConstraints>
 
-  The list of constraints that the administrator has put on the
-parameter.
+  Constraints that the administrator has put on a parameter.
 
 
 =head2 ParameterKey => Str

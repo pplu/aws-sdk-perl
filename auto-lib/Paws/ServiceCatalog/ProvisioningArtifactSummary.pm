@@ -35,7 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-Stores summary information about a provisioning artifact.
+Summary information about a provisioning artifact (also known as a
+version) for a product.
 
 =head1 ATTRIBUTES
 
@@ -62,8 +63,8 @@ Stores summary information about a provisioning artifact.
 
 =head2 ProvisioningArtifactMetadata => L<Paws::ServiceCatalog::ProvisioningArtifactInfo>
 
-  The provisioning artifact metadata. This data is used with products
-created by AWS Marketplace.
+  The metadata for the provisioning artifact. This is used with AWS
+Marketplace products.
 
 
 

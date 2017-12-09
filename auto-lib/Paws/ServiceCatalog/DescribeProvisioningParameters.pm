@@ -61,9 +61,9 @@ C<zh> - Chinese
 
 =head2 PathId => Str
 
-The identifier of the path for this product's provisioning. This value
-is optional if the product has a default path, and is required if there
-is more than one path for the specified product.
+The path identifier of the product. This value is optional if the
+product has a default path, and required if the product has more than
+one path. To list the paths for a product, use ListLaunchPaths.
 
 
 
@@ -75,8 +75,7 @@ The product identifier.
 
 =head2 B<REQUIRED> ProvisioningArtifactId => Str
 
-The provisioning artifact identifier for this product. This is
-sometimes referred to as the product version.
+The identifier of the provisioning artifact.
 
 
 

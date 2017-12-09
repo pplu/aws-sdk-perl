@@ -17,13 +17,13 @@ Paws::ServiceCatalog::ListRecordHistoryOutput
 
 =head2 NextPageToken => Str
 
-The page token to use to retrieve the next page of results for this
-operation. If there are no more pages, this value is null.
+The page token to use to retrieve the next set of results. If there are
+no additional results, this value is null.
 
 
 =head2 RecordDetails => ArrayRef[L<Paws::ServiceCatalog::RecordDetail>]
 
-A list of record detail objects, listed in reverse chronological order.
+The records, in reverse chronological order.
 
 
 =head2 _request_id => Str

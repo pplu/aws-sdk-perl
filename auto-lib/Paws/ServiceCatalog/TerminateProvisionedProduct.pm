@@ -63,23 +63,21 @@ C<zh> - Chinese
 =head2 IgnoreErrors => Bool
 
 If set to true, AWS Service Catalog stops managing the specified
-ProvisionedProduct object even if it cannot delete the underlying
-resources.
+provisioned product even if it cannot delete the underlying resources.
 
 
 
 =head2 ProvisionedProductId => Str
 
-The identifier of the ProvisionedProduct object to terminate. Specify
-either C<ProvisionedProductName> or C<ProvisionedProductId>, but not
-both.
+The identifier of the provisioned product. You cannot specify both
+C<ProvisionedProductName> and C<ProvisionedProductId>.
 
 
 
 =head2 ProvisionedProductName => Str
 
-The name of the ProvisionedProduct object to terminate. Specify either
-C<ProvisionedProductName> or C<ProvisionedProductId>, but not both.
+The name of the provisioned product. You cannot specify both
+C<ProvisionedProductName> and C<ProvisionedProductId>.
 
 
 
@@ -87,9 +85,8 @@ C<ProvisionedProductName> or C<ProvisionedProductId>, but not both.
 
 An idempotency token that uniquely identifies the termination request.
 This token is only valid during the termination process. After the
-ProvisionedProduct object is terminated, further requests to terminate
-the same ProvisionedProduct object always return B<ResourceNotFound>
-regardless of the value of C<TerminateToken>.
+provisioned product is terminated, subsequent requests to terminate the
+same provisioned product always return B<ResourceNotFound>.
 
 
 

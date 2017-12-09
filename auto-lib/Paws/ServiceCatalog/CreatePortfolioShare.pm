@@ -60,7 +60,7 @@ C<zh> - Chinese
 
 =head2 B<REQUIRED> AccountId => Str
 
-The account ID with which to share the portfolio.
+The AWS account ID.
 
 
 

@@ -34,29 +34,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-The TagOption details.
+Information about a TagOption.
 
 =head1 ATTRIBUTES
 
 
 =head2 Active => Bool
 
-  The TagOptionDetail active state.
+  The TagOption active state.
 
 
 =head2 Id => Str
 
-  The TagOptionDetail identifier.
+  The TagOption identifier.
 
 
 =head2 Key => Str
 
-  The TagOptionDetail key.
+  The TagOption key.
 
 
 =head2 Value => Str
 
-  The TagOptionDetail value.
+  The TagOption value.
 
 
 

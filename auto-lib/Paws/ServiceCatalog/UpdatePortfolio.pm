@@ -64,13 +64,13 @@ C<zh> - Chinese
 
 =head2 AddTags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
 
-Tags to add to the existing list of tags associated with the portfolio.
+The tags to add.
 
 
 
 =head2 Description => Str
 
-The updated text description of the portfolio.
+The updated description of the portfolio.
 
 
 
@@ -82,7 +82,7 @@ The name to use for display purposes.
 
 =head2 B<REQUIRED> Id => Str
 
-The identifier of the portfolio for the update request.
+The portfolio identifier.
 
 
 
@@ -94,8 +94,7 @@ The updated name of the portfolio provider.
 
 =head2 RemoveTags => ArrayRef[Str|Undef]
 
-Tags to remove from the existing list of tags associated with the
-portfolio.
+The tags to remove.
 
 
 

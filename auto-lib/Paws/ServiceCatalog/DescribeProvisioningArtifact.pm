@@ -67,14 +67,13 @@ The product identifier.
 
 =head2 B<REQUIRED> ProvisioningArtifactId => Str
 
-The identifier of the provisioning artifact. This is sometimes referred
-to as the product version.
+The identifier of the provisioning artifact.
 
 
 
 =head2 Verbose => Bool
 
-Enable a verbose level of details for the provisioning artifact.
+Indicates whether a verbose level of detail is enabled.
 
 
 

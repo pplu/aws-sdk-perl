@@ -43,7 +43,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-The full details of a specific ProvisionedProduct object.
+Information about a request operation.
 
 =head1 ATTRIBUTES
 
@@ -55,7 +55,7 @@ The full details of a specific ProvisionedProduct object.
 
 =head2 PathId => Str
 
-  The identifier of the path for this product's provisioning.
+  The path identifier.
 
 
 =head2 ProductId => Str
@@ -65,67 +65,97 @@ The full details of a specific ProvisionedProduct object.
 
 =head2 ProvisionedProductId => Str
 
-  The identifier of the ProvisionedProduct object.
+  The identifier of the provisioned product.
 
 
 =head2 ProvisionedProductName => Str
 
-  The user-friendly name of the ProvisionedProduct object.
+  The user-friendly name of the provisioned product.
 
 
 =head2 ProvisionedProductType => Str
 
-  The type of the ProvisionedProduct object.
+  The type of provisioned product. The supported value is C<CFN_STACK>.
 
 
 =head2 ProvisioningArtifactId => Str
 
-  The provisioning artifact identifier for this product. This is
-sometimes referred to as the product version.
+  The identifier of the provisioning artifact.
 
 
 =head2 RecordErrors => ArrayRef[L<Paws::ServiceCatalog::RecordError>]
 
-  A list of errors that occurred while processing the request.
+  The errors that occurred while processing the request.
 
 
 =head2 RecordId => Str
 
-  The identifier of the ProvisionedProduct object record.
+  The identifier of the record.
 
 
 =head2 RecordTags => ArrayRef[L<Paws::ServiceCatalog::RecordTag>]
 
-  List of tags associated with this record.
+  The tags associated with this record.
 
 
 =head2 RecordType => Str
 
   The record type for this record.
 
+=over
+
+=item *
+
+C<PROVISION_PRODUCT>
+
+=item *
+
+C<UPDATE_PROVISIONED_PRODUCT>
+
+=item *
+
+C<TERMINATE_PROVISIONED_PRODUCT>
+
+=back
+
+
 
 =head2 Status => Str
 
-  The status of the ProvisionedProduct object.
+  The status of the provisioned product.
 
-C<CREATED> - Request created but the operation has not yet started.
+=over
 
-C<IN_PROGRESS> - The requested operation is in-progress.
+=item *
+
+C<CREATED> - The request was created but the operation has not started.
+
+=item *
+
+C<IN_PROGRESS> - The requested operation is in progress.
+
+=item *
 
 C<IN_PROGRESS_IN_ERROR> - The provisioned product is under change but
 the requested operation failed and some remediation is occurring. For
 example, a rollback.
 
+=item *
+
 C<SUCCEEDED> - The requested operation has successfully completed.
 
-C<FAILED> - The requested operation has completed but has failed.
+=item *
+
+C<FAILED> - The requested operation has unsuccessfully completed.
 Investigate using the error messages returned.
+
+=back
+
 
 
 =head2 UpdatedTime => Str
 
-  The time when the record for the ProvisionedProduct object was last
-updated.
+  The time when the record was last updated.
 
 
 

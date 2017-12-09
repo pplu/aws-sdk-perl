@@ -65,51 +65,47 @@ C<zh> - Chinese
 
 =head2 PathId => Str
 
-The identifier of the path to use in the updated ProvisionedProduct
-object. This value is optional if the product has a default path, and
-is required if there is more than one path for the specified product.
+The new path identifier. This value is optional if the product has a
+default path, and required if the product has more than one path.
 
 
 
 =head2 ProductId => Str
 
-The identifier of the ProvisionedProduct object.
+The identifier of the provisioned product.
 
 
 
 =head2 ProvisionedProductId => Str
 
-The identifier of the ProvisionedProduct object to update. Specify
-either C<ProvisionedProductName> or C<ProvisionedProductId>, but not
-both.
+The identifier of the provisioned product. You cannot specify both
+C<ProvisionedProductName> and C<ProvisionedProductId>.
 
 
 
 =head2 ProvisionedProductName => Str
 
-The updated name of the ProvisionedProduct object. Specify either
-C<ProvisionedProductName> or C<ProvisionedProductId>, but not both.
+The updated name of the provisioned product. You cannot specify both
+C<ProvisionedProductName> and C<ProvisionedProductId>.
 
 
 
 =head2 ProvisioningArtifactId => Str
 
-The provisioning artifact identifier for this product. This is
-sometimes referred to as the product version.
+The identifier of the provisioning artifact.
 
 
 
 =head2 ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::UpdateProvisioningParameter>]
 
-A list of C<ProvisioningParameter> objects used to update the
-ProvisionedProduct object.
+The new parameters.
 
 
 
 =head2 B<REQUIRED> UpdateToken => Str
 
 The idempotency token that uniquely identifies the provisioning update
-request.
+rquest.
 
 
 

@@ -71,9 +71,9 @@ product are copied to the target product.
 
 =head2 B<REQUIRED> IdempotencyToken => Str
 
-A token to disambiguate duplicate requests. You can use the same input
-in multiple requests, provided that you also specify a different
-idempotency token for each request.
+A unique identifier that you provide to ensure idempotency. If multiple
+requests differ only by the idempotency token, the same response is
+returned for each repeated request.
 
 
 
@@ -85,14 +85,16 @@ The Amazon Resource Name (ARN) of the source product.
 
 =head2 SourceProvisioningArtifactIdentifiers => ArrayRef[L<Paws::ServiceCatalog::SourceProvisioningArtifactPropertiesMap>]
 
-The IDs of the product versions to copy. By default, all provisioning
-artifacts are copied.
+The identifiers of the provisioning artifacts (also known as versions)
+of the product to copy. By default, all provisioning artifacts are
+copied.
 
 
 
 =head2 TargetProductId => Str
 
-The ID of the target product. By default, a new product is created.
+The identifier of the target product. By default, a new product is
+created.
 
 
 

@@ -17,12 +17,12 @@ Paws::ServiceCatalog::UpdateProductOutput
 
 =head2 ProductViewDetail => L<Paws::ServiceCatalog::ProductViewDetail>
 
-The resulting detailed product view information.
+Information about the product view.
 
 
 =head2 Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
 
-Tags associated with the product.
+Information about the tags associated with the product.
 
 
 =head2 _request_id => Str

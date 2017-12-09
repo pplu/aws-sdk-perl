@@ -43,7 +43,7 @@ The updated active state.
 
 =head2 B<REQUIRED> Id => Str
 
-The identifier of the constraint to update.
+The TagOption identifier.
 
 
 

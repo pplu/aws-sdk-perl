@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-Detailed portfolio information.
+Information about a portfolio.
 
 =head1 ATTRIBUTES
 
@@ -53,7 +53,7 @@ Detailed portfolio information.
 
 =head2 Description => Str
 
-  The text description of the portfolio.
+  The description of the portfolio.
 
 
 =head2 DisplayName => Str
@@ -63,7 +63,7 @@ Detailed portfolio information.
 
 =head2 Id => Str
 
-  The identifier for the portfolio.
+  The portfolio identifier.
 
 
 =head2 ProviderName => Str

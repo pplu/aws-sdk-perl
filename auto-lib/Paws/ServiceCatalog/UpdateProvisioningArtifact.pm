@@ -2,6 +2,7 @@
 package Paws::ServiceCatalog::UpdateProvisioningArtifact;
   use Moose;
   has AcceptLanguage => (is => 'ro', isa => 'Str');
+  has Active => (is => 'ro', isa => 'Bool');
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has ProductId => (is => 'ro', isa => 'Str', required => 1);
@@ -60,9 +61,15 @@ C<zh> - Chinese
 
 
 
+=head2 Active => Bool
+
+Indicates whether the product version is active.
+
+
+
 =head2 Description => Str
 
-The updated text description of the provisioning artifact.
+The updated description of the provisioning artifact.
 
 
 
@@ -80,8 +87,7 @@ The product identifier.
 
 =head2 B<REQUIRED> ProvisioningArtifactId => Str
 
-The identifier of the provisioning artifact for the update request.
-This is sometimes referred to as the product version.
+The identifier of the provisioning artifact.
 
 
 

@@ -61,16 +61,14 @@ C<zh> - Chinese
 
 =head2 PageSize => Int
 
-The maximum number of items to return in the results. If more results
-exist than fit in the specified C<PageSize>, the value of
-C<NextPageToken> in the response is non-null.
+The maximum number of items to return with this call.
 
 
 
 =head2 PageToken => Str
 
-The page token of the first page retrieved. If null, this retrieves the
-first page of size C<PageSize>.
+The page token for the next set of results. To retrieve the first set
+of results, use null.
 
 
 

@@ -65,24 +65,21 @@ C<zh> - Chinese
 
 =head2 Filters => L<Paws::ServiceCatalog::ProductViewFilters>
 
-The list of filters with which to limit search results. If no search
-filters are specified, the output is all the products to which the
-administrator has access.
+The search filters. If no search filters are specified, the output
+includes all products to which the administrator has access.
 
 
 
 =head2 PageSize => Int
 
-The maximum number of items to return in the results. If more results
-exist than fit in the specified C<PageSize>, the value of
-C<NextPageToken> in the response is non-null.
+The maximum number of items to return with this call.
 
 
 
 =head2 PageToken => Str
 
-The page token of the first page retrieved. If null, this retrieves the
-first page of size C<PageSize>.
+The page token for the next set of results. To retrieve the first set
+of results, use null.
 
 
 
@@ -100,15 +97,13 @@ Valid values are: C<"ACCOUNT">
 
 =head2 SortBy => Str
 
-The sort field specifier. If no value is specified, results are not
-sorted.
+The sort field. If no value is specified, the results are not sorted.
 
 Valid values are: C<"Title">, C<"VersionCount">, C<"CreationDate">
 
 =head2 SortOrder => Str
 
-The sort order specifier. If no value is specified, results are not
-sorted.
+The sort order. If no value is specified, the results are not sorted.
 
 Valid values are: C<"ASCENDING">, C<"DESCENDING">
 

@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-Detailed constraint information.
+Information about a constraint.
 
 =head1 ATTRIBUTES
 
@@ -46,7 +46,7 @@ Detailed constraint information.
 
 =head2 Description => Str
 
-  The text description of the constraint.
+  The description of the constraint.
 
 
 =head2 Owner => Str
@@ -56,7 +56,24 @@ Detailed constraint information.
 
 =head2 Type => Str
 
-  The type of the constraint.
+  The type of constraint.
+
+=over
+
+=item *
+
+C<LAUNCH>
+
+=item *
+
+C<NOTIFICATION>
+
+=item *
+
+C<TEMPLATE>
+
+=back
+
 
 
 

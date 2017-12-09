@@ -59,8 +59,8 @@ C<zh> - Chinese
 
 =head2 B<REQUIRED> CopyProductToken => Str
 
-The token returned from the call to C<CopyProduct> that initiated the
-operation.
+The token for the copy product operation. This token is returned by
+CopyProduct.
 
 
 

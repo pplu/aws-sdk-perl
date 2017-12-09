@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-The summary metadata about the specified product.
+Summary information about a product view.
 
 =head1 ATTRIBUTES
 
@@ -54,11 +54,10 @@ the significance of this value.
 
 =head2 HasDefaultPath => Bool
 
-  A value of C<false> indicates that the product does not have a default
-path, while a value of C<true> indicates that it does. If it's false,
-call ListLaunchPaths to disambiguate between paths. If true,
-ListLaunchPaths is not required, and the output of the
-ProductViewSummary operation can be used directly with
+  Indicates whether the product has a default path. If the product does
+not have a default path, call ListLaunchPaths to disambiguate between
+paths. Otherwise, ListLaunchPaths is not required, and the output of
+ProductViewSummary can be used directly with
 DescribeProvisioningParameters.
 
 

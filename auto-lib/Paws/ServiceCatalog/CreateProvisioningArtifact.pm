@@ -61,15 +61,15 @@ C<zh> - Chinese
 
 =head2 B<REQUIRED> IdempotencyToken => Str
 
-A token to disambiguate duplicate requests. You can use the same input
-in multiple requests, provided that you also specify a different
-idempotency token for each request.
+A unique identifier that you provide to ensure idempotency. If multiple
+requests differ only by the idempotency token, the same response is
+returned for each repeated request.
 
 
 
 =head2 B<REQUIRED> Parameters => L<Paws::ServiceCatalog::ProvisioningArtifactProperties>
 
-The parameters to use when creating the new provisioning artifact.
+The configuration for the provisioning artifact.
 
 
 

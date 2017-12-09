@@ -32,21 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-The parameter key-value pairs used to provision a product.
+Information about a parameter used to provision a product.
 
 =head1 ATTRIBUTES
 
 
 =head2 Key => Str
 
-  The C<ProvisioningArtifactParameter.ParameterKey> parameter from
-DescribeProvisioningParameters.
+  The parameter key.
 
 
 =head2 Value => Str
 
-  The value to use for provisioning. Any constraints on this value can be
-found in C<ProvisioningArtifactParameter> for C<Key>.
+  The parameter value.
 
 
 

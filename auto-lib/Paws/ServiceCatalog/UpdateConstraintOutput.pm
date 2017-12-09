@@ -18,12 +18,12 @@ Paws::ServiceCatalog::UpdateConstraintOutput
 
 =head2 ConstraintDetail => L<Paws::ServiceCatalog::ConstraintDetail>
 
-The resulting detailed constraint information.
+Information about the constraint.
 
 
 =head2 ConstraintParameters => Str
 
-The resulting updated constraint parameters.
+The constraint parameters.
 
 
 =head2 Status => Str

@@ -68,13 +68,13 @@ C<zh> - Chinese
 
 =head2 AddTags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
 
-Tags to add to the existing list of tags associated with the product.
+The tags to add to the product.
 
 
 
 =head2 Description => Str
 
-The updated text description of the product.
+The updated description of the product.
 
 
 
@@ -86,7 +86,7 @@ The updated distributor of the product.
 
 =head2 B<REQUIRED> Id => Str
 
-The identifier of the product for the update request.
+The product identifier.
 
 
 
@@ -104,8 +104,7 @@ The updated owner of the product.
 
 =head2 RemoveTags => ArrayRef[Str|Undef]
 
-Tags to remove from the existing list of tags associated with the
-product.
+The tags to remove from the product.
 
 
 

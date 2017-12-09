@@ -16,10 +16,7 @@ Paws::ServiceCatalog::ProvisionProductOutput
 
 =head2 RecordDetail => L<Paws::ServiceCatalog::RecordDetail>
 
-The detailed result of the ProvisionProduct request, containing the
-inputs made to that request, the current state of the request, a
-pointer to the ProvisionedProduct object of the request, and a list of
-any errors that the request encountered.
+Information about the result of ProvisionProduct.
 
 
 =head2 _request_id => Str

@@ -18,17 +18,17 @@ Paws::ServiceCatalog::CreateProductOutput
 
 =head2 ProductViewDetail => L<Paws::ServiceCatalog::ProductViewDetail>
 
-The resulting detailed product view information.
+Information about the product view.
 
 
 =head2 ProvisioningArtifactDetail => L<Paws::ServiceCatalog::ProvisioningArtifactDetail>
 
-The resulting detailed provisioning artifact information.
+Information about the provisioning artifact.
 
 
 =head2 Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
 
-Tags successfully associated with the new product.
+Information about the tags associated with the product.
 
 
 =head2 _request_id => Str

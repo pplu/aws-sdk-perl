@@ -17,13 +17,13 @@ Paws::ServiceCatalog::ListTagOptionsOutput
 
 =head2 PageToken => Str
 
-The page token of the first page retrieved. If null, this retrieves the
-first page of size C<PageSize>.
+The page token for the next set of results. To retrieve the first set
+of results, use null.
 
 
 =head2 TagOptionDetails => ArrayRef[L<Paws::ServiceCatalog::TagOptionDetail>]
 
-The resulting detailed TagOption information.
+Information about the TagOptions.
 
 
 =head2 _request_id => Str

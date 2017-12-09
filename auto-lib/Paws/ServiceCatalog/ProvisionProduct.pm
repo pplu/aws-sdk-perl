@@ -73,9 +73,9 @@ stack-related events.
 
 =head2 PathId => Str
 
-The identifier of the path for this product's provisioning. This value
-is optional if the product has a default path, and is required if there
-is more than one path for the specified product.
+The path identifier of the product. This value is optional if the
+product has a default path, and required if the product has more than
+one path. To list the paths for a product, use ListLaunchPaths.
 
 
 
@@ -87,16 +87,15 @@ The product identifier.
 
 =head2 B<REQUIRED> ProvisionedProductName => Str
 
-A user-friendly name to identify the ProvisionedProduct object. This
-value must be unique for the AWS account and cannot be updated after
-the product is provisioned.
+A user-friendly name for the provisioned product. This value must be
+unique for the AWS account and cannot be updated after the product is
+provisioned.
 
 
 
 =head2 B<REQUIRED> ProvisioningArtifactId => Str
 
-The provisioning artifact identifier for this product. This is
-sometimes referred to as the product version.
+The identifier of the provisioning artifact.
 
 
 
@@ -115,7 +114,7 @@ An idempotency token that uniquely identifies the provisioning request.
 
 =head2 Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
 
-A list of tags to use as provisioning options.
+The tags to use as provisioning options.
 
 
 

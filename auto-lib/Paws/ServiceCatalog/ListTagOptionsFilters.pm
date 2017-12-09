@@ -33,24 +33,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-The ListTagOptions filters.
+Filters to use when listing TagOptions.
 
 =head1 ATTRIBUTES
 
 
 =head2 Active => Bool
 
-  The ListTagOptionsFilters active state.
+  The active state.
 
 
 =head2 Key => Str
 
-  The ListTagOptionsFilters key.
+  The TagOption key.
 
 
 =head2 Value => Str
 
-  The ListTagOptionsFilters value.
+  The TagOption value.
 
 
 

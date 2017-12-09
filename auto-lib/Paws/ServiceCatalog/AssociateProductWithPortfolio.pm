@@ -73,7 +73,7 @@ The product identifier.
 
 =head2 SourcePortfolioId => Str
 
-The identifier of the source portfolio to use with this association.
+The identifier of the source portfolio.
 
 
 
