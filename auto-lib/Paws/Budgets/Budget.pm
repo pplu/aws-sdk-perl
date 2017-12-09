@@ -5,7 +5,7 @@ package Paws::Budgets::Budget;
   has BudgetType => (is => 'ro', isa => 'Str', required => 1);
   has CalculatedSpend => (is => 'ro', isa => 'Paws::Budgets::CalculatedSpend');
   has CostFilters => (is => 'ro', isa => 'Paws::Budgets::CostFilters');
-  has CostTypes => (is => 'ro', isa => 'Paws::Budgets::CostTypes', required => 1);
+  has CostTypes => (is => 'ro', isa => 'Paws::Budgets::CostTypes');
   has TimePeriod => (is => 'ro', isa => 'Paws::Budgets::TimePeriod', required => 1);
   has TimeUnit => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -68,7 +68,7 @@ AWS Budget model
   
 
 
-=head2 B<REQUIRED> CostTypes => L<Paws::Budgets::CostTypes>
+=head2 CostTypes => L<Paws::Budgets::CostTypes>
 
   
 
