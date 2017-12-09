@@ -1505,6 +1505,29 @@ package Paws::EC2;
 
     return undef
   }
+  sub DescribeAllSpotFleetInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSpotFleetInstances(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeSpotFleetInstances(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ActiveInstances }, @{ $next_result->ActiveInstances };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ActiveInstances') foreach (@{ $result->ActiveInstances });
+        $result = $self->DescribeSpotFleetInstances(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ActiveInstances') foreach (@{ $result->ActiveInstances });
+    }
+
+    return undef
+  }
   sub DescribeAllSpotFleetRequests {
     my $self = shift;
 
@@ -6379,6 +6402,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Snapshots, passing the object as the first parameter, and the string 'Snapshots' as the second parameter 
 
 If not, it will return a a L<Paws::EC2::DescribeSnapshotsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSpotFleetInstances(sub { },SpotFleetRequestId => Str, [DryRun => Bool, MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllSpotFleetInstances(SpotFleetRequestId => Str, [DryRun => Bool, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ActiveInstances, passing the object as the first parameter, and the string 'ActiveInstances' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeSpotFleetInstancesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllSpotFleetRequests(sub { },[DryRun => Bool, MaxResults => Int, NextToken => Str, SpotFleetRequestIds => ArrayRef[Str|Undef]])
