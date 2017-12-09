@@ -5,6 +5,7 @@ package Paws::ES::ElasticsearchDomainConfig;
   has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptionsStatus');
   has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfigStatus');
   has ElasticsearchVersion => (is => 'ro', isa => 'Paws::ES::ElasticsearchVersionStatus');
+  has EncryptionAtRestOptions => (is => 'ro', isa => 'Paws::ES::EncryptionAtRestOptionsStatus');
   has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptionsStatus');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptionsStatus');
   has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCDerivedInfoStatus');
@@ -70,6 +71,11 @@ domain.
 =head2 ElasticsearchVersion => L<Paws::ES::ElasticsearchVersionStatus>
 
   String of format X.Y to specify version for the Elasticsearch domain.
+
+
+=head2 EncryptionAtRestOptions => L<Paws::ES::EncryptionAtRestOptionsStatus>
+
+  Specifies the C<EncryptionAtRestOptions> for the Elasticsearch domain.
 
 
 =head2 LogPublishingOptions => L<Paws::ES::LogPublishingOptionsStatus>

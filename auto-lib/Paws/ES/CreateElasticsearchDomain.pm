@@ -7,6 +7,7 @@ package Paws::ES::CreateElasticsearchDomain;
   has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptions');
   has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfig');
   has ElasticsearchVersion => (is => 'ro', isa => 'Str');
+  has EncryptionAtRestOptions => (is => 'ro', isa => 'Paws::ES::EncryptionAtRestOptions');
   has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptions');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptions');
   has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCOptions');
@@ -88,6 +89,12 @@ eg. "1.5" or "2.3". For more information, see Creating Elasticsearch
 Domains
 (http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains)
 in the I<Amazon Elasticsearch Service Developer Guide>.
+
+
+
+=head2 EncryptionAtRestOptions => L<Paws::ES::EncryptionAtRestOptions>
+
+Specifies the Encryption At Rest Options.
 
 
 

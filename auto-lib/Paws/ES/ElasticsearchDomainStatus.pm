@@ -10,6 +10,7 @@ package Paws::ES::ElasticsearchDomainStatus;
   has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptions');
   has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfig', required => 1);
   has ElasticsearchVersion => (is => 'ro', isa => 'Str');
+  has EncryptionAtRestOptions => (is => 'ro', isa => 'Paws::ES::EncryptionAtRestOptions');
   has Endpoint => (is => 'ro', isa => 'Str');
   has Endpoints => (is => 'ro', isa => 'Paws::ES::EndpointsMap');
   has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptions');
@@ -112,6 +113,11 @@ for more information.
 =head2 ElasticsearchVersion => Str
 
   
+
+
+=head2 EncryptionAtRestOptions => L<Paws::ES::EncryptionAtRestOptions>
+
+  Specifies the status of the C<EncryptionAtRestOptions>.
 
 
 =head2 Endpoint => Str

@@ -140,7 +140,7 @@ information.
 (http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-awsresorcetagging)
 
 
-=head2 CreateElasticsearchDomain(DomainName => Str, [AccessPolicies => Str, AdvancedOptions => L<Paws::ES::AdvancedOptions>, EBSOptions => L<Paws::ES::EBSOptions>, ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>, ElasticsearchVersion => Str, LogPublishingOptions => L<Paws::ES::LogPublishingOptions>, SnapshotOptions => L<Paws::ES::SnapshotOptions>, VPCOptions => L<Paws::ES::VPCOptions>])
+=head2 CreateElasticsearchDomain(DomainName => Str, [AccessPolicies => Str, AdvancedOptions => L<Paws::ES::AdvancedOptions>, EBSOptions => L<Paws::ES::EBSOptions>, ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>, ElasticsearchVersion => Str, EncryptionAtRestOptions => L<Paws::ES::EncryptionAtRestOptions>, LogPublishingOptions => L<Paws::ES::LogPublishingOptions>, SnapshotOptions => L<Paws::ES::SnapshotOptions>, VPCOptions => L<Paws::ES::VPCOptions>])
 
 Each argument is described in detail in: L<Paws::ES::CreateElasticsearchDomain>
 
