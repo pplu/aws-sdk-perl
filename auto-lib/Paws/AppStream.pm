@@ -224,13 +224,16 @@ Returns: a L<Paws::AppStream::CreateFleetResult> instance
 Creates a fleet.
 
 
-=head2 CreateImageBuilder(ImageName => Str, InstanceType => Str, Name => Str, [Description => Str, DisplayName => Str, DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>, EnableDefaultInternetAccess => Bool, VpcConfig => L<Paws::AppStream::VpcConfig>])
+=head2 CreateImageBuilder(ImageName => Str, InstanceType => Str, Name => Str, [AppstreamAgentVersion => Str, Description => Str, DisplayName => Str, DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>, EnableDefaultInternetAccess => Bool, VpcConfig => L<Paws::AppStream::VpcConfig>])
 
 Each argument is described in detail in: L<Paws::AppStream::CreateImageBuilder>
 
 Returns: a L<Paws::AppStream::CreateImageBuilderResult> instance
 
+Creates an image builder.
 
+The initial state of the builder is C<PENDING>. When it is ready, the
+state is C<RUNNING>.
 
 
 =head2 CreateImageBuilderStreamingURL(Name => Str, [Validity => Int])
@@ -239,7 +242,7 @@ Each argument is described in detail in: L<Paws::AppStream::CreateImageBuilderSt
 
 Returns: a L<Paws::AppStream::CreateImageBuilderStreamingURLResult> instance
 
-
+Creates a URL to start an image builder streaming session.
 
 
 =head2 CreateStack(Name => Str, [Description => Str, DisplayName => Str, StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]])
@@ -258,9 +261,6 @@ Each argument is described in detail in: L<Paws::AppStream::CreateStreamingURL>
 Returns: a L<Paws::AppStream::CreateStreamingURLResult> instance
 
 Creates a URL to start a streaming session for the specified user.
-
-By default, the URL is valid only for one minute from the time that it
-is generated.
 
 
 =head2 DeleteDirectoryConfig(DirectoryName => Str)
@@ -287,7 +287,9 @@ Each argument is described in detail in: L<Paws::AppStream::DeleteImage>
 
 Returns: a L<Paws::AppStream::DeleteImageResult> instance
 
-
+Deletes the specified image. You cannot delete an image that is
+currently in use. After you delete an image, you cannot provision new
+capacity using the image.
 
 
 =head2 DeleteImageBuilder(Name => Str)
@@ -296,7 +298,7 @@ Each argument is described in detail in: L<Paws::AppStream::DeleteImageBuilder>
 
 Returns: a L<Paws::AppStream::DeleteImageBuilderResult> instance
 
-
+Deletes the specified image builder and releases the capacity.
 
 
 =head2 DeleteStack(Name => Str)
@@ -334,7 +336,8 @@ Each argument is described in detail in: L<Paws::AppStream::DescribeImageBuilder
 
 Returns: a L<Paws::AppStream::DescribeImageBuildersResult> instance
 
-
+Describes the specified image builders or all image builders in the
+account.
 
 
 =head2 DescribeImages([Names => ArrayRef[Str|Undef]])
@@ -412,13 +415,13 @@ Returns: a L<Paws::AppStream::StartFleetResult> instance
 Starts the specified fleet.
 
 
-=head2 StartImageBuilder(Name => Str)
+=head2 StartImageBuilder(Name => Str, [AppstreamAgentVersion => Str])
 
 Each argument is described in detail in: L<Paws::AppStream::StartImageBuilder>
 
 Returns: a L<Paws::AppStream::StartImageBuilderResult> instance
 
-
+Starts the specified image builder.
 
 
 =head2 StopFleet(Name => Str)
@@ -436,7 +439,7 @@ Each argument is described in detail in: L<Paws::AppStream::StopImageBuilder>
 
 Returns: a L<Paws::AppStream::StopImageBuilderResult> instance
 
-
+Stops the specified image builder.
 
 
 =head2 UpdateDirectoryConfig(DirectoryName => Str, [OrganizationalUnitDistinguishedNames => ArrayRef[Str|Undef], ServiceAccountCredentials => L<Paws::AppStream::ServiceAccountCredentials>])

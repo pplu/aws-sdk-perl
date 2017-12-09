@@ -1,6 +1,7 @@
 package Paws::AppStream::Image;
   use Moose;
   has Applications => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::Application]');
+  has AppstreamAgentVersion => (is => 'ro', isa => 'Str');
   has Arn => (is => 'ro', isa => 'Str');
   has BaseImageArn => (is => 'ro', isa => 'Str');
   has CreatedTime => (is => 'ro', isa => 'Str');
@@ -53,6 +54,12 @@ Describes an image.
   The applications associated with the image.
 
 
+=head2 AppstreamAgentVersion => Str
+
+  The version of the AppStream 2.0 agent to use for instances that are
+launched from this image.
+
+
 =head2 Arn => Str
 
   The ARN of the image.
@@ -70,12 +77,12 @@ Describes an image.
 
 =head2 Description => Str
 
-  The description displayed to end users.
+  The description for display.
 
 
 =head2 DisplayName => Str
 
-  The image name displayed to end users.
+  The image name for display.
 
 
 =head2 ImageBuilderSupported => Bool

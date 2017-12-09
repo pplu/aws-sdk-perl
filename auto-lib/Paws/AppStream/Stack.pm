@@ -54,12 +54,12 @@ Describes a stack.
 
 =head2 Description => Str
 
-  The description displayed to end users.
+  The description for display.
 
 
 =head2 DisplayName => Str
 
-  The stack name displayed to end users.
+  The stack name for display.
 
 
 =head2 B<REQUIRED> Name => Str

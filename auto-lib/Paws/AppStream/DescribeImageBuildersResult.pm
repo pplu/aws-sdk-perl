@@ -17,12 +17,13 @@ Paws::AppStream::DescribeImageBuildersResult
 
 =head2 ImageBuilders => ArrayRef[L<Paws::AppStream::ImageBuilder>]
 
-
+Information about the image builders.
 
 
 =head2 NextToken => Str
 
-
+The pagination token to use to retrieve the next page of results for
+this operation. If there are no more pages, this value is null.
 
 
 =head2 _request_id => Str

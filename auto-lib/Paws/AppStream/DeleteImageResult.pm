@@ -16,7 +16,7 @@ Paws::AppStream::DeleteImageResult
 
 =head2 Image => L<Paws::AppStream::Image>
 
-
+Information about the image.
 
 
 =head2 _request_id => Str

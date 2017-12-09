@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-Contains the information needed for streaming instances to join a
+Contains the information needed to join a Microsoft Active Directory
 domain.
 
 =head1 ATTRIBUTES

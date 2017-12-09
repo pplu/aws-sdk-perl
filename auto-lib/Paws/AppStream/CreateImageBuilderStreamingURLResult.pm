@@ -17,12 +17,13 @@ Paws::AppStream::CreateImageBuilderStreamingURLResult
 
 =head2 Expires => Str
 
-
+The elapsed time, in seconds after the Unix epoch, when this URL
+expires.
 
 
 =head2 StreamingURL => Str
 
-
+The URL to start the AppStream 2.0 streaming session.
 
 
 =head2 _request_id => Str

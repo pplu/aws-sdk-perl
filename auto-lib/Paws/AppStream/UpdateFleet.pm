@@ -65,7 +65,7 @@ Deletes the VPC association for the specified fleet.
 
 =head2 Description => Str
 
-The description displayed to end users.
+The description for display.
 
 
 
@@ -80,13 +80,13 @@ Specify a value between 60 and 57600.
 
 =head2 DisplayName => Str
 
-The fleet name displayed to end users.
+The fleet name for display.
 
 
 
 =head2 DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>
 
-The information needed for streaming instances to join a domain.
+The information needed to join a Microsoft Active Directory domain.
 
 
 
@@ -98,7 +98,7 @@ Enables or disables default internet access for the fleet.
 
 =head2 ImageName => Str
 
-The name of the image used by the fleet.
+The name of the image used to create the fleet.
 
 
 

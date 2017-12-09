@@ -33,24 +33,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-This class has no description
+Describes a resource error.
 
 =head1 ATTRIBUTES
 
 
 =head2 ErrorCode => Str
 
-  
+  The error code.
 
 
 =head2 ErrorMessage => Str
 
-  
+  The error message.
 
 
 =head2 ErrorTimestamp => Str
 
-  
+  The time the error occurred.
 
 
 

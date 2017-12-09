@@ -37,19 +37,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 MaxResults => Int
 
-
+The maximum size of each page of results.
 
 
 
 =head2 Names => ArrayRef[Str|Undef]
 
-
+The names of the image builders to describe.
 
 
 
 =head2 NextToken => Str
 
-
+The pagination token to use to retrieve the next page of results for
+this operation. If this value is null, it retrieves the first page.
 
 
 

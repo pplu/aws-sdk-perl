@@ -16,7 +16,7 @@ Paws::AppStream::CreateImageBuilderResult
 
 =head2 ImageBuilder => L<Paws::AppStream::ImageBuilder>
 
-
+Information about the image builder.
 
 
 =head2 _request_id => Str

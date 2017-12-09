@@ -44,7 +44,7 @@ Describes an application in the application catalog.
 
 =head2 DisplayName => Str
 
-  The application name displayed to end users.
+  The application name for display.
 
 
 =head2 Enabled => Bool

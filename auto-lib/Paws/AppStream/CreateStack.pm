@@ -38,13 +38,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Description => Str
 
-The description displayed to end users.
+The description for display.
 
 
 
 =head2 DisplayName => Str
 
-The stack name displayed to end users.
+The stack name for display.
 
 
 

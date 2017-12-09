@@ -1,6 +1,7 @@
 
 package Paws::AppStream::CreateImageBuilder;
   use Moose;
+  has AppstreamAgentVersion => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has DisplayName => (is => 'ro', isa => 'Str');
   has DomainJoinInfo => (is => 'ro', isa => 'Paws::AppStream::DomainJoinInfo');
@@ -40,51 +41,59 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AppstreamAgentVersion => Str
+
+The version of the AppStream 2.0 agent to use for this image builder.
+To use the latest version of the AppStream 2.0 agent, specify [LATEST].
+
+
+
 =head2 Description => Str
 
-
+The description for display.
 
 
 
 =head2 DisplayName => Str
 
-
+The image builder name for display.
 
 
 
 =head2 DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>
 
-
+The information needed to join a Microsoft Active Directory domain.
 
 
 
 =head2 EnableDefaultInternetAccess => Bool
 
-
+Enables or disables default internet access for the image builder.
 
 
 
 =head2 B<REQUIRED> ImageName => Str
 
-
+The name of the image used to create the builder.
 
 
 
 =head2 B<REQUIRED> InstanceType => Str
 
-
+The instance type to use when launching the image builder.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-
+A unique name for the image builder.
 
 
 
 =head2 VpcConfig => L<Paws::AppStream::VpcConfig>
 
-
+The VPC configuration for the image builder. You can specify only one
+subnet.
 
 
 

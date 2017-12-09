@@ -36,13 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Name => Str
 
-
+The name of the image builder.
 
 
 
 =head2 Validity => Int
 
-
+The time that the streaming URL will be valid, in seconds. Specify a
+value between 1 and 604800 seconds. The default is 3600 seconds.
 
 
 

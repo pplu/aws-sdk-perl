@@ -1,6 +1,7 @@
 
 package Paws::AppStream::StartImageBuilder;
   use Moose;
+  has AppstreamAgentVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -33,9 +34,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AppstreamAgentVersion => Str
+
+The version of the AppStream 2.0 agent to use for this image builder.
+To use the latest version of the AppStream 2.0 agent, specify [LATEST].
+
+
+
 =head2 B<REQUIRED> Name => Str
 
-
+The name of the image builder.
 
 
 

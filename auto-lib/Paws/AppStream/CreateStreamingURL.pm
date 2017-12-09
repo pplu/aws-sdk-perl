@@ -40,8 +40,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ApplicationId => Str
 
-The ID of the application that must be launched after the session
-starts.
+The name of the application to launch after the session starts. This is
+the name that you specified as B<Name> in the Image Assistant.
 
 
 
@@ -53,7 +53,9 @@ The name of the fleet.
 
 =head2 SessionContext => Str
 
-The session context of the streaming URL.
+The session context. For more information, see Session Context
+(http://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters)
+in the I<Amazon AppStream 2.0 Developer Guide>.
 
 
 
@@ -72,7 +74,7 @@ The ID of the user.
 =head2 Validity => Int
 
 The time that the streaming URL will be valid, in seconds. Specify a
-value between 1 and 604800 seconds.
+value between 1 and 604800 seconds. The default is 60 seconds.
 
 
 

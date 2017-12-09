@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-Describes the reason why the last state change occurred.
+Describes the reason why the last image state change occurred.
 
 =head1 ATTRIBUTES
 

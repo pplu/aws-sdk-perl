@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-This class has no description
+Describes the reason why the last image builder state change occurred.
 
 =head1 ATTRIBUTES
 
 
 =head2 Code => Str
 
-  
+  The state change reason code.
 
 
 =head2 Message => Str
 
-  
+  The state change reason message.
 
 
 

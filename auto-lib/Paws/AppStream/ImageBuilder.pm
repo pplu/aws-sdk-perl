@@ -1,5 +1,6 @@
 package Paws::AppStream::ImageBuilder;
   use Moose;
+  has AppstreamAgentVersion => (is => 'ro', isa => 'Str');
   has Arn => (is => 'ro', isa => 'Str');
   has CreatedTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -33,90 +34,97 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AppStream::ImageBuilder object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., VpcConfig => $value  });
+  $service_obj->Method(Att1 => { AppstreamAgentVersion => $value, ..., VpcConfig => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::ImageBuilder object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Arn
+  $result->Att1->AppstreamAgentVersion
 
 =head1 DESCRIPTION
 
-This class has no description
+Describes a streaming instance used for editing an image. New images
+are created from a snapshot through an image builder.
 
 =head1 ATTRIBUTES
 
 
+=head2 AppstreamAgentVersion => Str
+
+  The version of the AppStream 2.0 agent that is currently being used by
+this image builder.
+
+
 =head2 Arn => Str
 
-  
+  The ARN for the image builder.
 
 
 =head2 CreatedTime => Str
 
-  
+  The time stamp when the image builder was created.
 
 
 =head2 Description => Str
 
-  
+  The description for display.
 
 
 =head2 DisplayName => Str
 
-  
+  The image builder name for display.
 
 
 =head2 DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>
 
-  
+  The information needed to join a Microsoft Active Directory domain.
 
 
 =head2 EnableDefaultInternetAccess => Bool
 
-  
+  Enables or disables default internet access for the image builder.
 
 
 =head2 ImageArn => Str
 
-  
+  The ARN of the image from which this builder was created.
 
 
 =head2 ImageBuilderErrors => ArrayRef[L<Paws::AppStream::ResourceError>]
 
-  
+  The image builder errors.
 
 
 =head2 InstanceType => Str
 
-  
+  The instance type for the image builder.
 
 
 =head2 B<REQUIRED> Name => Str
 
-  
+  The name of the image builder.
 
 
 =head2 Platform => Str
 
-  
+  The operating system platform of the image builder.
 
 
 =head2 State => Str
 
-  
+  The state of the image builder.
 
 
 =head2 StateChangeReason => L<Paws::AppStream::ImageBuilderStateChangeReason>
 
-  
+  The reason why the last state change occurred.
 
 
 =head2 VpcConfig => L<Paws::AppStream::VpcConfig>
 
-  
+  The VPC configuration of the image builder.
 
 
 

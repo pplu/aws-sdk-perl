@@ -68,7 +68,7 @@ Contains the parameters for a fleet.
 
 =head2 Description => Str
 
-  The description displayed to end users.
+  The description for display.
 
 
 =head2 DisconnectTimeoutInSeconds => Int
@@ -81,12 +81,12 @@ Specify a value between 60 and 57600.
 
 =head2 DisplayName => Str
 
-  The fleet name displayed to end users.
+  The fleet name for display.
 
 
 =head2 DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>
 
-  The information needed for streaming instances to join a domain.
+  The information needed to join a Microsoft Active Directory domain.
 
 
 =head2 EnableDefaultInternetAccess => Bool
@@ -101,12 +101,30 @@ Specify a value between 60 and 57600.
 
 =head2 FleetType => Str
 
-  
+  The fleet type.
+
+=over
+
+=item ALWAYS_ON
+
+Provides users with instant-on access to their apps. You are charged
+for all running instances in your fleet, even if no users are streaming
+apps.
+
+=item ON_DEMAND
+
+Provide users with access to applications after they connect, which
+takes one to two minutes. You are charged for instance streaming when
+users are connected and a small hourly fee for instances that are not
+streaming apps.
+
+=back
+
 
 
 =head2 B<REQUIRED> ImageName => Str
 
-  The image used by the fleet.
+  The name of the image used to create the fleet.
 
 
 =head2 B<REQUIRED> InstanceType => Str
