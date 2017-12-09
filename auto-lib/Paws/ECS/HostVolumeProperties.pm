@@ -47,8 +47,8 @@ manually. If the C<sourcePath> value does not exist on the host
 container instance, the Docker daemon creates it. If the location does
 exist, the contents of the source path folder are exported.
 
-If you are using the Fargate launch type, the C<host> parameter is not
-supported.
+If you are using the Fargate launch type, the C<sourcePath> parameter
+is not supported.
 
 
 

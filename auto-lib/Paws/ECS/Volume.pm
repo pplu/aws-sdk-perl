@@ -45,8 +45,11 @@ If the host parameter is empty, then the Docker daemon assigns a host
 path for your data volume, but the data is not guaranteed to persist
 after the containers associated with it stop running.
 
-If you are using the Fargate launch type, the C<host> parameter is not
-supported.
+Windows containers can mount whole directories on the same drive as
+C<$env:ProgramData>. Windows containers cannot mount directories on a
+different drive, and mount point cannot be across drives. For example,
+you can mount C<C:\my\path:C:\my\path> and C<D:\:D:\>, but not
+C<D:\my\path:C:\my\path> or C<D:\:C:\my\path>.
 
 
 =head2 Name => Str

@@ -172,6 +172,10 @@ If the network mode is C<host>, you can't run multiple instantiations
 of the same task on a single container instance when port mappings are
 used.
 
+Docker for Windows uses different network modes than Docker for Linux.
+When you register a task definition with Windows containers, you must
+not specify a network mode.
+
 For more information, see Network settings
 (https://docs.docker.com/engine/reference/run/#network-settings) in the
 I<Docker run reference>.

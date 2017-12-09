@@ -177,12 +177,22 @@ If the network mode is C<awsvpc>, the task is allocated an Elastic
 Network Interface, and you must specify a NetworkConfiguration when you
 create a service or run a task with the task definition. For more
 information, see Task Networking
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguidetask-networking.html)
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
+
+Currently, only the Amazon ECS-optimized AMI, other Amazon Linux
+variants with the C<ecs-init> package, or AWS Fargate infrastructure
+support the C<awsvpc> network mode.
 
 If the network mode is C<host>, you can't run multiple instantiations
 of the same task on a single container instance when port mappings are
 used.
+
+Docker for Windows uses different network modes than Docker for Linux.
+When you register a task definition with Windows containers, you must
+not specify a network mode. If you use the console to register a task
+definition with Windows containers, you must choose the
+C<E<lt>defaultE<gt>> network mode object.
 
 For more information, see Network settings
 (https://docs.docker.com/engine/reference/run/#network-settings) in the
@@ -231,6 +241,14 @@ previous revisions in this family).
   The ARN of the IAM role that containers in this task can assume. All
 containers in this task are granted the permissions that are specified
 in this role.
+
+IAM roles for tasks on Windows require that the C<-EnableTaskIAMRole>
+option is set when you launch the Amazon ECS-optimized Windows AMI.
+Your containers must also run some configuration code in order to take
+advantage of the feature. For more information, see Windows IAM Roles
+for Tasks
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 Volumes => ArrayRef[L<Paws::ECS::Volume>]

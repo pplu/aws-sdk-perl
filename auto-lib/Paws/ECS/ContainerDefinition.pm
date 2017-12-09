@@ -78,23 +78,17 @@ see https://docs.docker.com/engine/reference/builder/#cmd
 
 =head2 Cpu => Int
 
-  The number of C<cpu> units reserved for the container. If your
-containers will be part of a task using the Fargate launch type, this
-field is optional and the only requirement is that the total amount of
-CPU reserved for all containers within a task be lower than the task
-C<cpu> value.
-
-For containers that will be part of a task using the EC2 launch type, a
-container instance has 1,024 C<cpu> units for every CPU core. This
-parameter specifies the minimum amount of CPU to reserve for a
-container, and containers share unallocated CPU units with other
-containers on the instance with the same ratio as their allocated
-amount. This parameter maps to C<CpuShares> in the Create a container
+  The number of C<cpu> units reserved for the container. This parameter
+maps to C<CpuShares> in the Create a container
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
 section of the Docker Remote API
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
 and the C<--cpu-shares> option to docker run
 (https://docs.docker.com/engine/reference/run/).
+
+This field is optional for tasks using the Fargate launch type, and the
+only requirement is that the total amount of CPU reserved for all
+containers within a task be lower than the task-level C<cpu> value.
 
 You can determine the number of CPU units that are available per EC2
 instance type by multiplying the vCPUs listed for that instance type on
@@ -111,15 +105,27 @@ and each container could float to higher CPU usage if the other
 container was not using it, but if both tasks were 100% active all of
 the time, they would be limited to 512 CPU units.
 
-The Docker daemon on the container instance uses the CPU value to
-calculate the relative CPU share ratios for running containers. For
-more information, see CPU share constraint
+Linux containers share unallocated CPU units with other containers on
+the container instance with the same ratio as their allocated amount.
+For example, if you run a single-container task on a single-core
+instance type with 512 CPU units specified for that container, and that
+is the only task running on the container instance, that container
+could use the full 1,024 CPU unit share at any given time. However, if
+you launched another copy of the same task on that container instance,
+each task would be guaranteed a minimum of 512 CPU units when needed,
+and each container could float to higher CPU usage if the other
+container was not using it, but if both tasks were 100% active all of
+the time, they would be limited to 512 CPU units.
+
+On Linux container instances, the Docker daemon on the container
+instance uses the CPU value to calculate the relative CPU share ratios
+for running containers. For more information, see CPU share constraint
 (https://docs.docker.com/engine/reference/run/#cpu-share-constraint) in
 the Docker documentation. The minimum valid CPU share value that the
-Linux kernel allows is 2; however, the CPU parameter is not required,
-and you can use CPU values below 2 in your container definitions. For
-CPU values below 2 (including null), the behavior varies based on your
-Amazon ECS container agent version:
+Linux kernel will allow is 2; however, the CPU parameter is not
+required, and you can use CPU values below 2 in your container
+definitions. For CPU values below 2 (including null), the behavior
+varies based on your Amazon ECS container agent version:
 
 =over
 
@@ -137,6 +143,9 @@ values of 1 are passed to Docker as 2.
 
 =back
 
+On Windows container instances, the CPU limit is enforced as an
+absolute limit, or a quota. Windows containers only have access to the
+specified amount of CPU that is described in the task definition.
 
 
 =head2 DisableNetworking => Bool
@@ -147,6 +156,8 @@ container
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
 section of the Docker Remote API
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/).
+
+This parameter is not supported for Windows containers.
 
 
 =head2 DnsSearchDomains => ArrayRef[Str|Undef]
@@ -159,6 +170,8 @@ section of the Docker Remote API
 and the C<--dns-search> option to docker run
 (https://docs.docker.com/engine/reference/run/).
 
+This parameter is not supported for Windows containers.
+
 
 =head2 DnsServers => ArrayRef[Str|Undef]
 
@@ -169,6 +182,8 @@ section of the Docker Remote API
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
 and the C<--dns> option to docker run
 (https://docs.docker.com/engine/reference/run/).
+
+This parameter is not supported for Windows containers.
 
 
 =head2 DockerLabels => L<Paws::ECS::DockerLabelsMap>
@@ -206,6 +221,8 @@ placed on that instance can use these security options. For more
 information, see Amazon ECS Container Agent Configuration
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
+
+This parameter is not supported for Windows containers.
 
 
 =head2 EntryPoint => ArrayRef[Str|Undef]
@@ -270,6 +287,8 @@ section of the Docker Remote API
 and the C<--add-host> option to docker run
 (https://docs.docker.com/engine/reference/run/).
 
+This parameter is not supported for Windows containers.
+
 
 =head2 Hostname => Str
 
@@ -331,21 +350,22 @@ name (for example, C<quay.io/assemblyline/ubuntu>).
 =head2 Links => ArrayRef[Str|Undef]
 
   The C<link> parameter allows containers to communicate with each other
-without the need for port mappings, using the C<name> parameter and
-optionally, an C<alias> for the link. This construct is analogous to
-C<name:alias> in Docker links. This field is not valid for containers
-in tasks using the Fargate launch type. Up to 255 letters (uppercase
-and lowercase), numbers, hyphens, and underscores are allowed for each
-C<name> and C<alias>. For more information on linking Docker
-containers, see
+without the need for port mappings. Only supported if the network mode
+of a task definition is set to C<bridge>. The C<name:internalName>
+construct is analogous to C<name:alias> in Docker links. Up to 255
+letters (uppercase and lowercase), numbers, hyphens, and underscores
+are allowed. For more information about linking Docker containers, go
+to
 https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/
 (https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/).
 This parameter maps to C<Links> in the Create a container
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
 section of the Docker Remote API
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--link> option to docker run
-(https://docs.docker.com/engine/reference/run/).
+and the C<--link> option to C<docker run>
+(https://docs.docker.com/engine/reference/commandline/run/).
+
+This parameter is not supported for Windows containers.
 
 Containers that are collocated on a single container instance may be
 able to communicate with each other without requiring links or host
@@ -356,8 +376,10 @@ using security groups and VPC settings.
 =head2 LinuxParameters => L<Paws::ECS::LinuxParameters>
 
   Linux-specific modifications that are applied to the container, such as
-Linux KernelCapabilities. This field is not valid for containers in
-tasks using the Fargate launch type.
+Linux KernelCapabilities.
+
+This parameter is not supported for Windows containers or tasks using
+the Fargate launch type.
 
 
 =head2 LogConfiguration => L<Paws::ECS::LogConfiguration>
@@ -468,15 +490,16 @@ when needed.
 
   The mount points for data volumes in your container.
 
-If using the Fargate launch type, the C<sourceVolume> parameter is not
-supported.
-
 This parameter maps to C<Volumes> in the Create a container
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
 section of the Docker Remote API
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
 and the C<--volume> option to docker run
 (https://docs.docker.com/engine/reference/run/).
+
+Windows containers can mount whole directories on the same drive as
+C<$env:ProgramData>. Windows containers cannot mount directories on a
+different drive, and mount point cannot be across drives.
 
 
 =head2 Name => Str
@@ -500,9 +523,13 @@ and the C<--name> option to docker run
 containers to access ports on the host container instance to send or
 receive traffic.
 
-If using containers in a task with the Fargate, exposed ports should be
-specified using C<containerPort>. The C<hostPort> can be left blank or
+For task definitions that use the C<awsvpc> network mode, you should
+only specify the C<containerPort>. The C<hostPort> can be left blank or
 it must be the same value as the C<containerPort>.
+
+Port mappings on Windows use the C<NetNAT> gateway address rather than
+C<localhost>. There is no loopback for port mappings on Windows, so you
+cannot access a container's mapped port from the host itself.
 
 This parameter maps to C<PortBindings> in the Create a container
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
@@ -532,6 +559,9 @@ section of the Docker Remote API
 and the C<--privileged> option to docker run
 (https://docs.docker.com/engine/reference/run/).
 
+This parameter is not supported for Windows containers or tasks using
+the Fargate launch type.
+
 
 =head2 ReadonlyRootFilesystem => Bool
 
@@ -542,6 +572,8 @@ Create a container
 section of the Docker Remote API
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
 and the C<--read-only> option to C<docker run>.
+
+This parameter is not supported for Windows containers.
 
 
 =head2 Ulimits => ArrayRef[L<Paws::ECS::Ulimit>]
@@ -559,6 +591,8 @@ check the Docker Remote API version on your container instance, log in
 to your container instance and run the following command: C<sudo docker
 version | grep "Server API version">
 
+This parameter is not supported for Windows containers.
+
 
 =head2 User => Str
 
@@ -569,6 +603,8 @@ section of the Docker Remote API
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
 and the C<--user> option to docker run
 (https://docs.docker.com/engine/reference/run/).
+
+This parameter is not supported for Windows containers.
 
 
 =head2 VolumesFrom => ArrayRef[L<Paws::ECS::VolumeFrom>]

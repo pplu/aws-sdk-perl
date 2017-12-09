@@ -52,8 +52,7 @@ volume. The default value is C<false>.
 
 =head2 SourceVolume => Str
 
-  The name of the volume to mount. If using the Fargate launch type, the
-C<sourceVolume> parameter is not supported.
+  The name of the volume to mount.
 
 
 
