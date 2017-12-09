@@ -44,6 +44,29 @@ package Paws::Polly;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllVoices {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeVoices(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeVoices(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Voices }, @{ $next_result->Voices };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Voices') foreach (@{ $result->Voices });
+        $result = $self->DescribeVoices(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Voices') foreach (@{ $result->Voices });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/DeleteLexicon DescribeVoices GetLexicon ListLexicons PutLexicon SynthesizeSpeech / }
@@ -184,6 +207,18 @@ information, see How it Works
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllVoices(sub { },[LanguageCode => Str, NextToken => Str])
+
+=head2 DescribeAllVoices([LanguageCode => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Voices, passing the object as the first parameter, and the string 'Voices' as the second parameter 
+
+If not, it will return a a L<Paws::Polly::DescribeVoicesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 
