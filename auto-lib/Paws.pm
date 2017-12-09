@@ -460,6 +460,8 @@ L<Paws::ServerlessRepo>
 
 L<Paws::ServiceCatalog>
 
+L<Paws::ServiceDiscovery>
+
 L<Paws::SES>
 
 L<Paws::SES>

@@ -16,6 +16,7 @@
  - New API: Cloud9
  - New API: AppSync
  - New API: AlexaForBusiness
+ - New API: ServiceDiscovery
  - API update: IoT
  - API update: Shield
  - API update: Rekognition
@@ -67,6 +68,11 @@
  - API update: AutoScaling
  - API update: DynamoDB
  - API update: Glacier
+ - API update: CloudDirectory
+ - API update: ServiceCatalog
+ - API update: CloudWatch
+ - API update: AppStream
+ - API update: Budgets
 
 0.36 03 Nov 2017
  - Fix Bug: #210: S3 PutObject was not working: the Content-MD5 header was not 

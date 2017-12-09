@@ -120,6 +120,7 @@ package Paws::API::ServiceToClass;
     ses => 'SES',
     servicecatalog => 'ServiceCatalog',
     serverlessrepo => 'ServerlessRepo',
+    servicediscovery => 'ServiceDiscovery',
     shield => 'Shield',
     signin => 'Signin',
     simpledb => 'SimpleDB',
