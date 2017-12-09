@@ -70,7 +70,7 @@ obtained from the solution stack or the source configuration template.
 
 =head2 PlatformArn => Str
 
-The ARN of the custome platform.
+The ARN of the custom platform.
 
 
 
