@@ -15,7 +15,7 @@ package Paws::Organizations::DetachPolicy;
 
 =head1 NAME
 
-Paws::Organizations::DetachPolicy - Arguments for method DetachPolicy on Paws::Organizations
+Paws::Organizations::DetachPolicy - Arguments for method DetachPolicy on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
@@ -39,8 +39,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The unique identifier (ID) of the policy you want to detach. You can
 get the ID from the ListPolicies or ListPoliciesForTarget operations.
 
-The regex pattern for a policy ID string requires "p-" followed by from
-8 to 128 lower-case letters or digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for a policy ID
+string requires "p-" followed by from 8 to 128 lower-case letters or
+digits.
 
 
 
@@ -50,7 +51,8 @@ The unique identifier (ID) of the root, OU, or account from which you
 want to detach the policy. You can get the ID from the ListRoots,
 ListOrganizationalUnitsForParent, or ListAccounts operations.
 
-The regex pattern for a target ID string requires one of the following:
+The regex pattern (http://wikipedia.org/wiki/regex) for a target ID
+string requires one of the following:
 
 =over
 
@@ -82,9 +84,9 @@ This class forms part of L<Paws>, documenting arguments for method DetachPolicy 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

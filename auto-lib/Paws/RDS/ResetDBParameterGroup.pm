@@ -16,7 +16,7 @@ package Paws::RDS::ResetDBParameterGroup;
 
 =head1 NAME
 
-Paws::RDS::ResetDBParameterGroup - Arguments for method ResetDBParameterGroup on Paws::RDS
+Paws::RDS::ResetDBParameterGroup - Arguments for method ResetDBParameterGroup on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -45,15 +45,7 @@ Constraints:
 
 =item *
 
-Must be 1 to 255 alphanumeric characters
-
-=item *
-
-First character must be a letter
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens
+Must match the name of an existing DBParameterGroup.
 
 =back
 
@@ -106,9 +98,9 @@ This class forms part of L<Paws>, documenting arguments for method ResetDBParame
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

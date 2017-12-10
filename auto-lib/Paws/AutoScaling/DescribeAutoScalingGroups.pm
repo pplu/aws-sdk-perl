@@ -16,7 +16,7 @@ package Paws::AutoScaling::DescribeAutoScalingGroups;
 
 =head1 NAME
 
-Paws::AutoScaling::DescribeAutoScalingGroups - Arguments for method DescribeAutoScalingGroups on Paws::AutoScaling
+Paws::AutoScaling::DescribeAutoScalingGroups - Arguments for method DescribeAutoScalingGroups on L<Paws::AutoScaling>
 
 =head1 DESCRIPTION
 
@@ -37,8 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AutoScalingGroupNames => ArrayRef[Str|Undef]
 
-The group names. If you omit this parameter, all Auto Scaling groups
-are described.
+The names of the Auto Scaling groups. If you omit this parameter, all
+Auto Scaling groups are described.
 
 
 
@@ -63,9 +63,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeAutoS
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

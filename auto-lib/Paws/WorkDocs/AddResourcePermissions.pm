@@ -1,9 +1,10 @@
 
 package Paws::WorkDocs::AddResourcePermissions;
   use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
+  has NotificationOptions => (is => 'ro', isa => 'Paws::WorkDocs::NotificationOptions');
   has Principals => (is => 'ro', isa => 'ArrayRef[Paws::WorkDocs::SharePrincipal]', required => 1);
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceId' , required => 1);
+  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceId', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -11,14 +12,13 @@ package Paws::WorkDocs::AddResourcePermissions;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/resources/{ResourceId}/permissions');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::AddResourcePermissionsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::WorkDocs::AddResourcePermissions - Arguments for method AddResourcePermissions on Paws::WorkDocs
+Paws::WorkDocs::AddResourcePermissions - Arguments for method AddResourcePermissions on L<Paws::WorkDocs>
 
 =head1 DESCRIPTION
 
@@ -39,9 +39,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AuthenticationToken => Str
 
-Amazon WorkDocs authentication token. This field should not be set when
-using administrative API actions, as in accessing the API using AWS
+Amazon WorkDocs authentication token. Do not set this field when using
+administrative API actions, as in accessing the API using AWS
 credentials.
+
+
+
+=head2 NotificationOptions => L<Paws::WorkDocs::NotificationOptions>
+
+The notification options.
 
 
 
@@ -64,9 +70,9 @@ This class forms part of L<Paws>, documenting arguments for method AddResourcePe
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

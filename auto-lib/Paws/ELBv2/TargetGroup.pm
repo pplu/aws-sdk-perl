@@ -12,6 +12,7 @@ package Paws::ELBv2::TargetGroup;
   has Protocol => (is => 'ro', isa => 'Str');
   has TargetGroupArn => (is => 'ro', isa => 'Str');
   has TargetGroupName => (is => 'ro', isa => 'Str');
+  has TargetType => (is => 'ro', isa => 'Str');
   has UnhealthyThresholdCount => (is => 'ro', isa => 'Int');
   has VpcId => (is => 'ro', isa => 'Str');
 1;
@@ -114,6 +115,14 @@ target.
   The name of the target group.
 
 
+=head2 TargetType => Str
+
+  The type of target that you must specify when registering targets with
+this target group. The possible values are C<instance> (targets are
+specified by instance ID) or C<ip> (targets are specified by IP
+address).
+
+
 =head2 UnhealthyThresholdCount => Int
 
   The number of consecutive health check failures required before
@@ -132,9 +141,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ELBv2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

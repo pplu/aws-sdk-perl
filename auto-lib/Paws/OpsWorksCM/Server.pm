@@ -92,18 +92,18 @@ C<myserver-asdfghjkl.us-east-1.opsworks.io>
 
 =head2 Engine => Str
 
-  The engine type of the server. The valid value in this release is
-C<Chef>.
+  The engine type of the server. Valid values in this release include
+C<Chef> and C<Puppet>.
 
 
 =head2 EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]
 
   The response of a createServer() request returns the master credential
 to access the server in EngineAttributes. These credentials are not
-stored by AWS OpsWorks for Chef Automate; they are returned only as
-part of the result of createServer().
+stored by AWS OpsWorks CM; they are returned only as part of the result
+of createServer().
 
-B<Attributes returned in a createServer response:>
+B<Attributes returned in a createServer response for Chef>
 
 =over
 
@@ -123,18 +123,37 @@ directory, you can run Knife commands.
 
 =back
 
+B<Attributes returned in a createServer response for Puppet>
+
+=over
+
+=item *
+
+C<PUPPET_STARTER_KIT>: A base64-encoded ZIP file. The ZIP file contains
+a Puppet starter kit, including a README and a required private key.
+Save this file, unzip it, and then change to the directory where you've
+unzipped the file contents.
+
+=item *
+
+C<PUPPET_ADMIN_PASSWORD>: An administrator password that you can use to
+sign in to the Puppet Enterprise console after the server is online.
+
+=back
+
 
 
 =head2 EngineModel => Str
 
-  The engine model of the server. The valid value in this release is
-C<Single>.
+  The engine model of the server. Valid values in this release include
+C<Monolithic> for Puppet and C<Single> for Chef.
 
 
 =head2 EngineVersion => Str
 
-  The engine version of the server. Because Chef is the engine available
-in this release, the valid value for EngineVersion is C<12>.
+  The engine version of the server. For a Chef server, the valid value
+for EngineVersion is currently C<12>. For a Puppet server, the valid
+value is C<2017>.
 
 
 =head2 InstanceProfileArn => Str
@@ -218,9 +237,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::OpsWorksC
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

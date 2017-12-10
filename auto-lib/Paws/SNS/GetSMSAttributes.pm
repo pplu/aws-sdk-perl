@@ -14,7 +14,7 @@ package Paws::SNS::GetSMSAttributes;
 
 =head1 NAME
 
-Paws::SNS::GetSMSAttributes - Arguments for method GetSMSAttributes on Paws::SNS
+Paws::SNS::GetSMSAttributes - Arguments for method GetSMSAttributes on L<Paws::SNS>
 
 =head1 DESCRIPTION
 
@@ -38,7 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 A list of the individual attribute names, such as C<MonthlySpendLimit>,
 for which you want values.
 
-For all attribute names, see SetSMSAttributes.
+For all attribute names, see SetSMSAttributes
+(http://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html).
 
 If you don't use this parameter, Amazon SNS returns all SMS attributes.
 
@@ -51,9 +52,9 @@ This class forms part of L<Paws>, documenting arguments for method GetSMSAttribu
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

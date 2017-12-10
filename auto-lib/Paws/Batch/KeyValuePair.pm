@@ -39,13 +39,13 @@ A key-value pair object.
 
 =head2 Name => Str
 
-  The name of the key value pair. For environment variables, this is the
+  The name of the key-value pair. For environment variables, this is the
 name of the environment variable.
 
 
 =head2 Value => Str
 
-  The value of the key value pair. For environment variables, this is the
+  The value of the key-value pair. For environment variables, this is the
 value of the environment variable.
 
 
@@ -56,9 +56,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Batch>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

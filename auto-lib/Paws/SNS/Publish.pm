@@ -20,7 +20,7 @@ package Paws::SNS::Publish;
 
 =head1 NAME
 
-Paws::SNS::Publish - Arguments for method Publish on Paws::SNS
+Paws::SNS::Publish - Arguments for method Publish on L<Paws::SNS>
 
 =head1 DESCRIPTION
 
@@ -136,8 +136,9 @@ send to a specific transport protocol (e.g., "http").
 
 For information about sending different messages for each protocol
 using the AWS Management Console, go to Create Different Messages for
-Each Protocol in the I<Amazon Simple Notification Service Getting
-Started Guide>.
+Each Protocol
+(http://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol)
+in the I<Amazon Simple Notification Service Getting Started Guide>.
 
 Valid value: C<json>
 
@@ -190,9 +191,9 @@ This class forms part of L<Paws>, documenting arguments for method Publish in L<
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

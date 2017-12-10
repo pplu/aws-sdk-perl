@@ -28,7 +28,7 @@ package Paws::DMS::ModifyEndpoint;
 
 =head1 NAME
 
-Paws::DMS::ModifyEndpoint - Arguments for method ModifyEndpoint on Paws::DMS
+Paws::DMS::ModifyEndpoint - Arguments for method ModifyEndpoint on L<Paws::DMS>
 
 =head1 DESCRIPTION
 
@@ -65,7 +65,8 @@ The name of the endpoint database.
 Settings in JSON format for the target Amazon DynamoDB endpoint. For
 more information about the available settings, see the B<Using Object
 Mapping to Migrate Data to DynamoDB> section at Using an Amazon
-DynamoDB Database as a Target for AWS Database Migration Service.
+DynamoDB Database as a Target for AWS Database Migration Service
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html).
 
 
 
@@ -100,7 +101,8 @@ REDSHIFT, S3, DYNAMODB, MONGODB, SYBASE, and SQLSERVER.
 
 =head2 ExtraConnectionAttributes => Str
 
-Additional attributes associated with the connection.
+Additional attributes associated with the connection. To reset this
+parameter, pass the empty string ("") as an argument.
 
 
 
@@ -110,7 +112,8 @@ Settings in JSON format for the source MongoDB endpoint. For more
 information about the available settings, see the B<Configuration
 Properties When Using MongoDB as a Source for AWS Database Migration
 Service> section at Using Amazon S3 as a Target for AWS Database
-Migration Service.
+Migration Service
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html).
 
 
 
@@ -131,7 +134,8 @@ The port used by the endpoint database.
 Settings in JSON format for the target S3 endpoint. For more
 information about the available settings, see the B<Extra Connection
 Attributes> section at Using Amazon S3 as a Target for AWS Database
-Migration Service.
+Migration Service
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html).
 
 
 
@@ -165,9 +169,9 @@ This class forms part of L<Paws>, documenting arguments for method ModifyEndpoin
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

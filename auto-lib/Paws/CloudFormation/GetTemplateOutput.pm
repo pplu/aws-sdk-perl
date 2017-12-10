@@ -28,7 +28,9 @@ template becomes available.
 =head2 TemplateBody => Str
 
 Structure containing the template body. (For more information, go to
-Template Anatomy in the AWS CloudFormation User Guide.)
+Template Anatomy
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+in the AWS CloudFormation User Guide.)
 
 AWS CloudFormation returns the same template that was used when the
 stack was created.

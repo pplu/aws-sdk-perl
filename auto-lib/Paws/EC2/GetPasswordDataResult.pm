@@ -24,7 +24,8 @@ The ID of the Windows instance.
 
 =head2 PasswordData => Str
 
-The password of the instance.
+The password of the instance. Returns an empty string if the password
+is not available.
 
 
 =head2 Timestamp => Str

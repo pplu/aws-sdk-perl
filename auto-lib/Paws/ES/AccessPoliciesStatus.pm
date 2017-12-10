@@ -42,7 +42,9 @@ endpoints, and the current status of those rules.
 
   The access policy configured for the Elasticsearch domain. Access
 policies may be resource-based, IP-based, or IAM-based. See Configuring
-Access Policiesfor more information.
+Access Policies
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies)for
+more information.
 
 
 =head2 B<REQUIRED> Status => L<Paws::ES::OptionStatus>
@@ -58,9 +60,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ES>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

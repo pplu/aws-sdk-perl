@@ -295,7 +295,8 @@ Roger Pettett for testing and contributing fixes for tests on MacOSX
 
 Henri Yandell for help with licensing issues
 
-Oriol Soriano (@ureesoriano) for contribution to API builders
+Oriol Soriano (@ureesoriano) for contributions to API builders and better
+documentation generation
 
 H. Daniel Cesario (@maneta) for devel setup instructions on RH and MacOSX
 
@@ -325,7 +326,8 @@ PopeFelix for solving issues around S3 and MojoAsyncCaller
 
 meis for contributing Paws::Credential::Explicit
 
-sven-schubert for contributing fixes to RestXML services
+sven-schubert for contributing fixes to RestXML services,
+working on fixing S3 to work correctly. 
 
 SeptamusNonovant for fixing paginators in non-callback mode
 

@@ -10,9 +10,14 @@ package Paws::ELBv2;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
 
   
+  sub AddListenerCertificates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ELBv2::AddListenerCertificates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AddTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ELBv2::AddTags', @_);
@@ -66,6 +71,11 @@ package Paws::ELBv2;
   sub DescribeAccountLimits {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ELBv2::DescribeAccountLimits', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeListenerCertificates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ELBv2::DescribeListenerCertificates', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeListeners {
@@ -141,6 +151,11 @@ package Paws::ELBv2;
   sub RegisterTargets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ELBv2::RegisterTargets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemoveListenerCertificates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ELBv2::RemoveListenerCertificates', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveTags {
@@ -240,7 +255,7 @@ package Paws::ELBv2;
   }
 
 
-  sub operations { qw/AddTags CreateListener CreateLoadBalancer CreateRule CreateTargetGroup DeleteListener DeleteLoadBalancer DeleteRule DeleteTargetGroup DeregisterTargets DescribeAccountLimits DescribeListeners DescribeLoadBalancerAttributes DescribeLoadBalancers DescribeRules DescribeSSLPolicies DescribeTags DescribeTargetGroupAttributes DescribeTargetGroups DescribeTargetHealth ModifyListener ModifyLoadBalancerAttributes ModifyRule ModifyTargetGroup ModifyTargetGroupAttributes RegisterTargets RemoveTags SetIpAddressType SetRulePriorities SetSecurityGroups SetSubnets / }
+  sub operations { qw/AddListenerCertificates AddTags CreateListener CreateLoadBalancer CreateRule CreateTargetGroup DeleteListener DeleteLoadBalancer DeleteRule DeleteTargetGroup DeregisterTargets DescribeAccountLimits DescribeListenerCertificates DescribeListeners DescribeLoadBalancerAttributes DescribeLoadBalancers DescribeRules DescribeSSLPolicies DescribeTags DescribeTargetGroupAttributes DescribeTargetGroups DescribeTargetHealth ModifyListener ModifyLoadBalancerAttributes ModifyRule ModifyTargetGroup ModifyTargetGroupAttributes RegisterTargets RemoveListenerCertificates RemoveTags SetIpAddressType SetRulePriorities SetSecurityGroups SetSubnets / }
 
 1;
 
@@ -282,19 +297,26 @@ connections from the load balancer to the targets, and with health
 check settings to be used when checking the health status of the
 targets.
 
-Elastic Load Balancing supports two types of load balancers: Classic
-Load Balancers and Application Load Balancers. A Classic Load Balancer
-makes routing and load balancing decisions either at the transport
-layer (TCP/SSL) or the application layer (HTTP/HTTPS), and supports
-either EC2-Classic or a VPC. An Application Load Balancer makes routing
-and load balancing decisions at the application layer (HTTP/HTTPS),
-supports path-based routing, and can route requests to one or more
-ports on each EC2 instance or container instance in your virtual
-private cloud (VPC). For more information, see the Elastic Load
-Balancing User Guide.
+Elastic Load Balancing supports the following types of load balancers:
+Application Load Balancers, Network Load Balancers, and Classic Load
+Balancers.
+
+An Application Load Balancer makes routing and load balancing decisions
+at the application layer (HTTP/HTTPS). A Network Load Balancer makes
+routing and load balancing decisions at the transport layer (TCP). Both
+Application Load Balancers and Network Load Balancers can route
+requests to one or more ports on each EC2 instance or container
+instance in your virtual private cloud (VPC).
+
+A Classic Load Balancer makes routing and load balancing decisions
+either at the transport layer (TCP/SSL) or the application layer
+(HTTP/HTTPS), and supports either EC2-Classic or a VPC. For more
+information, see the Elastic Load Balancing User Guide
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/).
 
 This reference covers the 2015-12-01 API, which supports Application
-Load Balancers. The 2012-06-01 API supports Classic Load Balancers.
+Load Balancers and Network Load Balancers. The 2012-06-01 API supports
+Classic Load Balancers.
 
 To get started, complete the following tasks:
 
@@ -302,7 +324,7 @@ To get started, complete the following tasks:
 
 =item 1.
 
-Create an Application Load Balancer using CreateLoadBalancer.
+Create a load balancer using CreateLoadBalancer.
 
 =item 2.
 
@@ -317,15 +339,10 @@ Register targets for the target group using RegisterTargets.
 Create one or more listeners for your load balancer using
 CreateListener.
 
-=item 5.
-
-(Optional) Create one or more rules for content routing based on URL
-using CreateRule.
-
 =back
 
-To delete an Application Load Balancer and its related resources,
-complete the following tasks:
+To delete a load balancer and its related resources, complete the
+following tasks:
 
 =over
 
@@ -345,14 +362,31 @@ succeeds.
 
 =head1 METHODS
 
+=head2 AddListenerCertificates(Certificates => ArrayRef[L<Paws::ELBv2::Certificate>], ListenerArn => Str)
+
+Each argument is described in detail in: L<Paws::ELBv2::AddListenerCertificates>
+
+Returns: a L<Paws::ELBv2::AddListenerCertificatesOutput> instance
+
+Adds the specified certificate to the specified secure listener.
+
+If the certificate was already added, the call is successful but the
+certificate is not added again.
+
+To list the certificates for your listener, use
+DescribeListenerCertificates. To remove certificates from your
+listener, use RemoveListenerCertificates.
+
+
 =head2 AddTags(ResourceArns => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELBv2::Tag>])
 
 Each argument is described in detail in: L<Paws::ELBv2::AddTags>
 
 Returns: a L<Paws::ELBv2::AddTagsOutput> instance
 
-  Adds the specified tags to the specified resource. You can tag your
-Application Load Balancers and your target groups.
+Adds the specified tags to the specified Elastic Load Balancing
+resource. You can tag your Application Load Balancers, Network Load
+Balancers, and your target groups.
 
 Each tag consists of a key and an optional value. If a resource already
 has a tag with the same key, C<AddTags> updates its value.
@@ -367,26 +401,33 @@ Each argument is described in detail in: L<Paws::ELBv2::CreateListener>
 
 Returns: a L<Paws::ELBv2::CreateListenerOutput> instance
 
-  Creates a listener for the specified Application Load Balancer.
-
-You can create up to 10 listeners per load balancer.
+Creates a listener for the specified Application Load Balancer or
+Network Load Balancer.
 
 To update a listener, use ModifyListener. When you are finished with a
 listener, you can delete it using DeleteListener. If you are finished
 with both the listener and the load balancer, you can delete them both
 using DeleteLoadBalancer.
 
+This operation is idempotent, which means that it completes at most one
+time. If you attempt to create multiple listeners with the same
+settings, each call succeeds.
+
 For more information, see Listeners for Your Application Load Balancers
-in the I<Application Load Balancers Guide>.
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html)
+in the I<Application Load Balancers Guide> and Listeners for Your
+Network Load Balancers
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html)
+in the I<Network Load Balancers Guide>.
 
 
-=head2 CreateLoadBalancer(Name => Str, Subnets => ArrayRef[Str|Undef], [IpAddressType => Str, Scheme => Str, SecurityGroups => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELBv2::Tag>]])
+=head2 CreateLoadBalancer(Name => Str, [IpAddressType => Str, Scheme => Str, SecurityGroups => ArrayRef[Str|Undef], SubnetMappings => ArrayRef[L<Paws::ELBv2::SubnetMapping>], Subnets => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELBv2::Tag>], Type => Str])
 
 Each argument is described in detail in: L<Paws::ELBv2::CreateLoadBalancer>
 
 Returns: a L<Paws::ELBv2::CreateLoadBalancerOutput> instance
 
-  Creates an Application Load Balancer.
+Creates an Application Load Balancer or a Network Load Balancer.
 
 When you create a load balancer, you can specify security groups,
 subnets, IP address type, and tags. Otherwise, you could do so later
@@ -397,13 +438,22 @@ describe your current load balancers, see DescribeLoadBalancers. When
 you are finished with a load balancer, you can delete it using
 DeleteLoadBalancer.
 
-You can create up to 20 load balancers per region per account. You can
-request an increase for the number of load balancers for your account.
-For more information, see Limits for Your Application Load Balancer in
-the I<Application Load Balancers Guide>.
+For limit information, see Limits for Your Application Load Balancer
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html)
+in the I<Application Load Balancers Guide> and Limits for Your Network
+Load Balancer
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html)
+in the I<Network Load Balancers Guide>.
 
-For more information, see Application Load Balancers in the
-I<Application Load Balancers Guide>.
+This operation is idempotent, which means that it completes at most one
+time. If you attempt to create multiple load balancers with the same
+settings, each call succeeds.
+
+For more information, see Application Load Balancers
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html)
+in the I<Application Load Balancers Guide> and Network Load Balancers
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html)
+in the I<Network Load Balancers Guide>.
 
 
 =head2 CreateRule(Actions => ArrayRef[L<Paws::ELBv2::Action>], Conditions => ArrayRef[L<Paws::ELBv2::RuleCondition>], ListenerArn => Str, Priority => Int)
@@ -412,27 +462,28 @@ Each argument is described in detail in: L<Paws::ELBv2::CreateRule>
 
 Returns: a L<Paws::ELBv2::CreateRuleOutput> instance
 
-  Creates a rule for the specified listener.
+Creates a rule for the specified listener. The listener must be
+associated with an Application Load Balancer.
 
-Each rule can have one action and one condition. Rules are evaluated in
-priority order, from the lowest value to the highest value. When the
-condition for a rule is met, the specified action is taken. If no
-conditions are met, the default action for the default rule is taken.
-For more information, see Listener Rules in the I<Application Load
-Balancers Guide>.
+Rules are evaluated in priority order, from the lowest value to the
+highest value. When the condition for a rule is met, the specified
+action is taken. If no conditions are met, the action for the default
+rule is taken. For more information, see Listener Rules
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules)
+in the I<Application Load Balancers Guide>.
 
 To view your current rules, use DescribeRules. To update a rule, use
 ModifyRule. To set the priorities of your rules, use SetRulePriorities.
 To delete a rule, use DeleteRule.
 
 
-=head2 CreateTargetGroup(Name => Str, Port => Int, Protocol => Str, VpcId => Str, [HealthCheckIntervalSeconds => Int, HealthCheckPath => Str, HealthCheckPort => Str, HealthCheckProtocol => Str, HealthCheckTimeoutSeconds => Int, HealthyThresholdCount => Int, Matcher => L<Paws::ELBv2::Matcher>, UnhealthyThresholdCount => Int])
+=head2 CreateTargetGroup(Name => Str, Port => Int, Protocol => Str, VpcId => Str, [HealthCheckIntervalSeconds => Int, HealthCheckPath => Str, HealthCheckPort => Str, HealthCheckProtocol => Str, HealthCheckTimeoutSeconds => Int, HealthyThresholdCount => Int, Matcher => L<Paws::ELBv2::Matcher>, TargetType => Str, UnhealthyThresholdCount => Int])
 
 Each argument is described in detail in: L<Paws::ELBv2::CreateTargetGroup>
 
 Returns: a L<Paws::ELBv2::CreateTargetGroupOutput> instance
 
-  Creates a target group.
+Creates a target group.
 
 To register targets with the target group, use RegisterTargets. To
 update the health check settings for the target group, use
@@ -444,8 +495,17 @@ group in an action using CreateListener or CreateRule.
 
 To delete a target group, use DeleteTargetGroup.
 
+This operation is idempotent, which means that it completes at most one
+time. If you attempt to create multiple target groups with the same
+settings, each call succeeds.
+
 For more information, see Target Groups for Your Application Load
-Balancers in the I<Application Load Balancers Guide>.
+Balancers
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html)
+in the I<Application Load Balancers Guide> or Target Groups for Your
+Network Load Balancers
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html)
+in the I<Network Load Balancers Guide>.
 
 
 =head2 DeleteListener(ListenerArn => Str)
@@ -454,7 +514,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DeleteListener>
 
 Returns: a L<Paws::ELBv2::DeleteListenerOutput> instance
 
-  Deletes the specified listener.
+Deletes the specified listener.
 
 Alternatively, your listener is deleted when you delete the load
 balancer it is attached to using DeleteLoadBalancer.
@@ -466,8 +526,8 @@ Each argument is described in detail in: L<Paws::ELBv2::DeleteLoadBalancer>
 
 Returns: a L<Paws::ELBv2::DeleteLoadBalancerOutput> instance
 
-  Deletes the specified Application Load Balancer and its attached
-listeners.
+Deletes the specified Application Load Balancer or Network Load
+Balancer and its attached listeners.
 
 You can't delete a load balancer if deletion protection is enabled. If
 the load balancer does not exist or has already been deleted, the call
@@ -485,7 +545,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DeleteRule>
 
 Returns: a L<Paws::ELBv2::DeleteRuleOutput> instance
 
-  Deletes the specified rule.
+Deletes the specified rule.
 
 
 =head2 DeleteTargetGroup(TargetGroupArn => Str)
@@ -494,7 +554,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DeleteTargetGroup>
 
 Returns: a L<Paws::ELBv2::DeleteTargetGroupOutput> instance
 
-  Deletes the specified target group.
+Deletes the specified target group.
 
 You can delete a target group if it is not referenced by any actions.
 Deleting a target group also deletes any associated health checks.
@@ -506,7 +566,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DeregisterTargets>
 
 Returns: a L<Paws::ELBv2::DeregisterTargetsOutput> instance
 
-  Deregisters the specified targets from the specified target group.
+Deregisters the specified targets from the specified target group.
 After the targets are deregistered, they no longer receive traffic from
 the load balancer.
 
@@ -517,11 +577,24 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeAccountLimits>
 
 Returns: a L<Paws::ELBv2::DescribeAccountLimitsOutput> instance
 
-  Describes the current Elastic Load Balancing resource limits for your
+Describes the current Elastic Load Balancing resource limits for your
 AWS account.
 
-For more information, see Limits for Your Application Load Balancer in
-the I<Application Load Balancer Guide>.
+For more information, see Limits for Your Application Load Balancers
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html)
+in the I<Application Load Balancer Guide> or Limits for Your Network
+Load Balancers
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html)
+in the I<Network Load Balancers Guide>.
+
+
+=head2 DescribeListenerCertificates(ListenerArn => Str, [Marker => Str, PageSize => Int])
+
+Each argument is described in detail in: L<Paws::ELBv2::DescribeListenerCertificates>
+
+Returns: a L<Paws::ELBv2::DescribeListenerCertificatesOutput> instance
+
+Describes the certificates for the specified secure listener.
 
 
 =head2 DescribeListeners([ListenerArns => ArrayRef[Str|Undef], LoadBalancerArn => Str, Marker => Str, PageSize => Int])
@@ -530,9 +603,9 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeListeners>
 
 Returns: a L<Paws::ELBv2::DescribeListenersOutput> instance
 
-  Describes the specified listeners or the listeners for the specified
-Application Load Balancer. You must specify either a load balancer or
-one or more listeners.
+Describes the specified listeners or the listeners for the specified
+Application Load Balancer or Network Load Balancer. You must specify
+either a load balancer or one or more listeners.
 
 
 =head2 DescribeLoadBalancerAttributes(LoadBalancerArn => Str)
@@ -541,7 +614,8 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeLoadBalancerAttr
 
 Returns: a L<Paws::ELBv2::DescribeLoadBalancerAttributesOutput> instance
 
-  Describes the attributes for the specified Application Load Balancer.
+Describes the attributes for the specified Application Load Balancer or
+Network Load Balancer.
 
 
 =head2 DescribeLoadBalancers([LoadBalancerArns => ArrayRef[Str|Undef], Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int])
@@ -550,8 +624,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeLoadBalancers>
 
 Returns: a L<Paws::ELBv2::DescribeLoadBalancersOutput> instance
 
-  Describes the specified Application Load Balancers or all of your
-Application Load Balancers.
+Describes the specified load balancers or all of your load balancers.
 
 To describe the listeners for a load balancer, use DescribeListeners.
 To describe the attributes for a load balancer, use
@@ -564,7 +637,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeRules>
 
 Returns: a L<Paws::ELBv2::DescribeRulesOutput> instance
 
-  Describes the specified rules or the rules for the specified listener.
+Describes the specified rules or the rules for the specified listener.
 You must specify either a listener or one or more rules.
 
 
@@ -574,11 +647,12 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeSSLPolicies>
 
 Returns: a L<Paws::ELBv2::DescribeSSLPoliciesOutput> instance
 
-  Describes the specified policies or all policies used for SSL
+Describes the specified policies or all policies used for SSL
 negotiation.
 
-For more information, see Security Policies in the I<Application Load
-Balancers Guide>.
+For more information, see Security Policies
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
+in the I<Application Load Balancers Guide>.
 
 
 =head2 DescribeTags(ResourceArns => ArrayRef[Str|Undef])
@@ -587,8 +661,9 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeTags>
 
 Returns: a L<Paws::ELBv2::DescribeTagsOutput> instance
 
-  Describes the tags for the specified resources. You can describe the
-tags for one or more Application Load Balancers and target groups.
+Describes the tags for the specified resources. You can describe the
+tags for one or more Application Load Balancers, Network Load
+Balancers, and target groups.
 
 
 =head2 DescribeTargetGroupAttributes(TargetGroupArn => Str)
@@ -597,7 +672,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeTargetGroupAttri
 
 Returns: a L<Paws::ELBv2::DescribeTargetGroupAttributesOutput> instance
 
-  Describes the attributes for the specified target group.
+Describes the attributes for the specified target group.
 
 
 =head2 DescribeTargetGroups([LoadBalancerArn => Str, Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int, TargetGroupArns => ArrayRef[Str|Undef]])
@@ -606,7 +681,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeTargetGroups>
 
 Returns: a L<Paws::ELBv2::DescribeTargetGroupsOutput> instance
 
-  Describes the specified target groups or all of your target groups. By
+Describes the specified target groups or all of your target groups. By
 default, all target groups are described. Alternatively, you can
 specify one of the following to filter the results: the ARN of the load
 balancer, the names of one or more target groups, or the ARNs of one or
@@ -623,7 +698,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeTargetHealth>
 
 Returns: a L<Paws::ELBv2::DescribeTargetHealthOutput> instance
 
-  Describes the health of the specified targets or all of your targets.
+Describes the health of the specified targets or all of your targets.
 
 
 =head2 ModifyListener(ListenerArn => Str, [Certificates => ArrayRef[L<Paws::ELBv2::Certificate>], DefaultActions => ArrayRef[L<Paws::ELBv2::Action>], Port => Int, Protocol => Str, SslPolicy => Str])
@@ -632,7 +707,7 @@ Each argument is described in detail in: L<Paws::ELBv2::ModifyListener>
 
 Returns: a L<Paws::ELBv2::ModifyListenerOutput> instance
 
-  Modifies the specified properties of the specified listener.
+Modifies the specified properties of the specified listener.
 
 Any properties that you do not specify retain their current values.
 However, changing the protocol from HTTPS to HTTP removes the security
@@ -646,8 +721,8 @@ Each argument is described in detail in: L<Paws::ELBv2::ModifyLoadBalancerAttrib
 
 Returns: a L<Paws::ELBv2::ModifyLoadBalancerAttributesOutput> instance
 
-  Modifies the specified attributes of the specified Application Load
-Balancer.
+Modifies the specified attributes of the specified Application Load
+Balancer or Network Load Balancer.
 
 If any of the specified attributes can't be modified as requested, the
 call fails. Any existing attributes that you do not modify retain their
@@ -660,7 +735,7 @@ Each argument is described in detail in: L<Paws::ELBv2::ModifyRule>
 
 Returns: a L<Paws::ELBv2::ModifyRuleOutput> instance
 
-  Modifies the specified rule.
+Modifies the specified rule.
 
 Any existing properties that you do not modify retain their current
 values.
@@ -674,7 +749,7 @@ Each argument is described in detail in: L<Paws::ELBv2::ModifyTargetGroup>
 
 Returns: a L<Paws::ELBv2::ModifyTargetGroupOutput> instance
 
-  Modifies the health checks used when evaluating the health state of the
+Modifies the health checks used when evaluating the health state of the
 targets in the specified target group.
 
 To monitor the health of the targets, use DescribeTargetHealth.
@@ -686,7 +761,7 @@ Each argument is described in detail in: L<Paws::ELBv2::ModifyTargetGroupAttribu
 
 Returns: a L<Paws::ELBv2::ModifyTargetGroupAttributesOutput> instance
 
-  Modifies the specified attributes of the specified target group.
+Modifies the specified attributes of the specified target group.
 
 
 =head2 RegisterTargets(TargetGroupArn => Str, Targets => ArrayRef[L<Paws::ELBv2::TargetDescription>])
@@ -695,17 +770,39 @@ Each argument is described in detail in: L<Paws::ELBv2::RegisterTargets>
 
 Returns: a L<Paws::ELBv2::RegisterTargetsOutput> instance
 
-  Registers the specified targets with the specified target group.
+Registers the specified targets with the specified target group.
+
+You can register targets by instance ID or by IP address. If the target
+is an EC2 instance, it must be in the C<running> state when you
+register it.
 
 By default, the load balancer routes requests to registered targets
-using the protocol and port number for the target group. Alternatively,
-you can override the port for a target when you register it.
+using the protocol and port for the target group. Alternatively, you
+can override the port for a target when you register it. You can
+register each EC2 instance or IP address with the same target group
+multiple times using different ports.
 
-The target must be in the virtual private cloud (VPC) that you
-specified for the target group. If the target is an EC2 instance, it
-must be in the C<running> state when you register it.
+With a Network Load Balancer, you cannot register instances by instance
+ID if they have the following instance types: C1, CC1, CC2, CG1, CG2,
+CR1, CS1, G1, G2, HI1, HS1, M1, M2, M3, and T1. You can register
+instances of these types by IP address.
 
 To remove a target from a target group, use DeregisterTargets.
+
+
+=head2 RemoveListenerCertificates(Certificates => ArrayRef[L<Paws::ELBv2::Certificate>], ListenerArn => Str)
+
+Each argument is described in detail in: L<Paws::ELBv2::RemoveListenerCertificates>
+
+Returns: a L<Paws::ELBv2::RemoveListenerCertificatesOutput> instance
+
+Removes the specified certificate from the specified secure listener.
+
+You can't remove the default certificate for a listener. To replace the
+default certificate, call ModifyListener.
+
+To list the certificates for your listener, use
+DescribeListenerCertificates.
 
 
 =head2 RemoveTags(ResourceArns => ArrayRef[Str|Undef], TagKeys => ArrayRef[Str|Undef])
@@ -714,7 +811,8 @@ Each argument is described in detail in: L<Paws::ELBv2::RemoveTags>
 
 Returns: a L<Paws::ELBv2::RemoveTagsOutput> instance
 
-  Removes the specified tags from the specified resource.
+Removes the specified tags from the specified Elastic Load Balancing
+resource.
 
 To list the current tags for your resources, use DescribeTags.
 
@@ -725,8 +823,10 @@ Each argument is described in detail in: L<Paws::ELBv2::SetIpAddressType>
 
 Returns: a L<Paws::ELBv2::SetIpAddressTypeOutput> instance
 
-  Sets the type of IP addresses used by the subnets of the specified
-Application Load Balancer.
+Sets the type of IP addresses used by the subnets of the specified
+Application Load Balancer or Network Load Balancer.
+
+Note that Network Load Balancers must use C<ipv4>.
 
 
 =head2 SetRulePriorities(RulePriorities => ArrayRef[L<Paws::ELBv2::RulePriorityPair>])
@@ -735,7 +835,7 @@ Each argument is described in detail in: L<Paws::ELBv2::SetRulePriorities>
 
 Returns: a L<Paws::ELBv2::SetRulePrioritiesOutput> instance
 
-  Sets the priorities of the specified rules.
+Sets the priorities of the specified rules.
 
 You can reorder the rules as long as there are no priority conflicts in
 the new order. Any existing rules that you do not specify retain their
@@ -748,20 +848,25 @@ Each argument is described in detail in: L<Paws::ELBv2::SetSecurityGroups>
 
 Returns: a L<Paws::ELBv2::SetSecurityGroupsOutput> instance
 
-  Associates the specified security groups with the specified load
-balancer. The specified security groups override the previously
+Associates the specified security groups with the specified Application
+Load Balancer. The specified security groups override the previously
 associated security groups.
 
+Note that you can't specify a security group for a Network Load
+Balancer.
 
-=head2 SetSubnets(LoadBalancerArn => Str, Subnets => ArrayRef[Str|Undef])
+
+=head2 SetSubnets(LoadBalancerArn => Str, Subnets => ArrayRef[Str|Undef], [SubnetMappings => ArrayRef[L<Paws::ELBv2::SubnetMapping>]])
 
 Each argument is described in detail in: L<Paws::ELBv2::SetSubnets>
 
 Returns: a L<Paws::ELBv2::SetSubnetsOutput> instance
 
-  Enables the Availability Zone for the specified subnets for the
-specified load balancer. The specified subnets replace the previously
-enabled subnets.
+Enables the Availability Zone for the specified subnets for the
+specified Application Load Balancer. The specified subnets replace the
+previously enabled subnets.
+
+Note that you can't change the subnets for a Network Load Balancer.
 
 
 
@@ -815,9 +920,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

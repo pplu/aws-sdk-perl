@@ -1,16 +1,16 @@
 
 package Paws::ApiGateway::PutMethod;
   use Moose;
-  has ApiKeyRequired => (is => 'ro', isa => 'Bool');
-  has AuthorizationType => (is => 'ro', isa => 'Str', required => 1);
-  has AuthorizerId => (is => 'ro', isa => 'Str');
-  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod' , required => 1);
-  has OperationName => (is => 'ro', isa => 'Str');
-  has RequestModels => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
-  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean');
-  has RequestValidatorId => (is => 'ro', isa => 'Str');
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId' , required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
+  has ApiKeyRequired => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'apiKeyRequired');
+  has AuthorizationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizationType', required => 1);
+  has AuthorizerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerId');
+  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod', required => 1);
+  has OperationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'operationName');
+  has RequestModels => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'requestModels');
+  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean', traits => ['NameInRequest'], request_name => 'requestParameters');
+  has RequestValidatorId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestValidatorId');
+  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -18,14 +18,13 @@ package Paws::ApiGateway::PutMethod;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Method');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::PutMethod - Arguments for method PutMethod on Paws::ApiGateway
+Paws::ApiGateway::PutMethod - Arguments for method PutMethod on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -76,7 +75,8 @@ Specifies the method request's HTTP method type.
 
 A human-friendly operation identifier for the method. For example, you
 can assign the C<operationName> of C<ListPets> for the C<GET /pets>
-method in PetStore example.
+method in PetStore
+(http://petstore-demo-endpoint.execute-api.com/petstore/pets) example.
 
 
 
@@ -91,8 +91,8 @@ as the key and a Model name as the value.
 =head2 RequestParameters => L<Paws::ApiGateway::MapOfStringToBoolean>
 
 A key-value map defining required or optional method request parameters
-that can be accepted by Amazon API Gateway. A key defines a method
-request parameter name matching the pattern of
+that can be accepted by API Gateway. A key defines a method request
+parameter name matching the pattern of
 C<method.request.{location}.{name}>, where C<location> is
 C<querystring>, C<path>, or C<header> and C<name> is a valid and unique
 parameter name. The value associated with the key is a Boolean flag
@@ -117,7 +117,7 @@ The Resource identifier for the new Method resource.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The RestApi identifier for the new Method resource.
+The string identifier of the associated RestApi.
 
 
 
@@ -128,9 +128,9 @@ This class forms part of L<Paws>, documenting arguments for method PutMethod in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

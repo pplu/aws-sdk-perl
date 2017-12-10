@@ -16,7 +16,7 @@ package Paws::IAM::ListInstanceProfiles;
 
 =head1 NAME
 
-Paws::IAM::ListInstanceProfiles - Arguments for method ListInstanceProfiles on Paws::IAM
+Paws::IAM::ListInstanceProfiles - Arguments for method ListInstanceProfiles on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -67,11 +67,12 @@ path starts with C</application_abc/component_xyz/>.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/), listing all instance profiles. This paramater allows (per
-its regex pattern) a string of characters consisting of either a
-forward slash (/) by itself or a string that must begin and end with
-forward slashes, containing any ASCII character from the ! (\u0021)
-thru the DEL character (\u007F), including most punctuation characters,
-digits, and upper and lowercased letters.
+its regex pattern (http://wikipedia.org/wiki/regex)) a string of
+characters consisting of either a forward slash (/) by itself or a
+string that must begin and end with forward slashes, containing any
+ASCII character from the ! (\u0021) thru the DEL character (\u007F),
+including most punctuation characters, digits, and upper and lowercased
+letters.
 
 
 
@@ -82,9 +83,9 @@ This class forms part of L<Paws>, documenting arguments for method ListInstanceP
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

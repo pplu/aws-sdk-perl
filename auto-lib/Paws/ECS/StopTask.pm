@@ -16,7 +16,7 @@ package Paws::ECS::StopTask;
 
 =head1 NAME
 
-Paws::ECS::StopTask - Arguments for method StopTask on Paws::ECS
+Paws::ECS::StopTask - Arguments for method StopTask on L<Paws::ECS>
 
 =head1 DESCRIPTION
 
@@ -47,7 +47,7 @@ cluster is assumed.
 
 An optional message specified when a task is stopped. For example, if
 you are using a custom scheduler, you can use this parameter to specify
-the reason for stopping the task here, and the message will appear in
+the reason for stopping the task here, and the message appears in
 subsequent DescribeTasks API operations on this task. Up to 255
 characters are allowed in this message.
 
@@ -55,8 +55,7 @@ characters are allowed in this message.
 
 =head2 B<REQUIRED> Task => Str
 
-The task ID or full Amazon Resource Name (ARN) entry of the task to
-stop.
+The task ID or full ARN entry of the task to stop.
 
 
 
@@ -67,9 +66,9 @@ This class forms part of L<Paws>, documenting arguments for method StopTask in L
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

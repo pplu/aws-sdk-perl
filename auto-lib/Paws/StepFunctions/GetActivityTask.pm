@@ -15,7 +15,7 @@ package Paws::StepFunctions::GetActivityTask;
 
 =head1 NAME
 
-Paws::StepFunctions::GetActivityTask - Arguments for method GetActivityTask on Paws::StepFunctions
+Paws::StepFunctions::GetActivityTask - Arguments for method GetActivityTask on L<Paws::StepFunctions>
 
 =head1 DESCRIPTION
 
@@ -36,15 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ActivityArn => Str
 
-The Amazon Resource Name (ARN) of the activity to retrieve tasks from.
+The Amazon Resource Name (ARN) of the activity to retrieve tasks from
+(assigned when you create the task using CreateActivity.)
 
 
 
 =head2 WorkerName => Str
 
-An arbitrary name may be provided in order to identify the worker that
-the task is assigned to. This name will be used when it is logged in
-the execution history.
+You can provide an arbitrary name in order to identify the worker that
+the task is assigned to. This name is used when it is logged in the
+execution history.
 
 
 
@@ -55,9 +56,9 @@ This class forms part of L<Paws>, documenting arguments for method GetActivityTa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

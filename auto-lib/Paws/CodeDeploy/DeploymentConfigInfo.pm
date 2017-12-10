@@ -1,9 +1,11 @@
 package Paws::CodeDeploy::DeploymentConfigInfo;
   use Moose;
+  has ComputePlatform => (is => 'ro', isa => 'Str', request_name => 'computePlatform', traits => ['NameInRequest']);
   has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
   has DeploymentConfigId => (is => 'ro', isa => 'Str', request_name => 'deploymentConfigId', traits => ['NameInRequest']);
   has DeploymentConfigName => (is => 'ro', isa => 'Str', request_name => 'deploymentConfigName', traits => ['NameInRequest']);
   has MinimumHealthyHosts => (is => 'ro', isa => 'Paws::CodeDeploy::MinimumHealthyHosts', request_name => 'minimumHealthyHosts', traits => ['NameInRequest']);
+  has TrafficRoutingConfig => (is => 'ro', isa => 'Paws::CodeDeploy::TrafficRoutingConfig', request_name => 'trafficRoutingConfig', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -23,20 +25,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeDeploy::DeploymentConfigInfo object:
 
-  $service_obj->Method(Att1 => { CreateTime => $value, ..., MinimumHealthyHosts => $value  });
+  $service_obj->Method(Att1 => { ComputePlatform => $value, ..., TrafficRoutingConfig => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy::DeploymentConfigInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CreateTime
+  $result->Att1->ComputePlatform
 
 =head1 DESCRIPTION
 
 Information about a deployment configuration.
 
 =head1 ATTRIBUTES
+
+
+=head2 ComputePlatform => Str
+
+  The destination platform type for the deployment (C<Lambda> or
+C<Server>).
 
 
 =head2 CreateTime => Str
@@ -59,6 +67,12 @@ Information about a deployment configuration.
   Information about the number or percentage of minimum healthy instance.
 
 
+=head2 TrafficRoutingConfig => L<Paws::CodeDeploy::TrafficRoutingConfig>
+
+  The configuration specifying how the deployment traffic will be routed.
+Only deployments with a Lambda compute platform can specify this.
+
+
 
 =head1 SEE ALSO
 
@@ -66,9 +80,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodeDeplo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

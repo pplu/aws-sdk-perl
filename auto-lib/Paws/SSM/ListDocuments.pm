@@ -2,6 +2,7 @@
 package Paws::SSM::ListDocuments;
   use Moose;
   has DocumentFilterList => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentFilter]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentKeyValuesFilter]');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -16,7 +17,7 @@ package Paws::SSM::ListDocuments;
 
 =head1 NAME
 
-Paws::SSM::ListDocuments - Arguments for method ListDocuments on Paws::SSM
+Paws::SSM::ListDocuments - Arguments for method ListDocuments on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -36,6 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 
 =head2 DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>]
+
+One or more filters. Use a filter to return a more specific list of
+results.
+
+
+
+=head2 Filters => ArrayRef[L<Paws::SSM::DocumentKeyValuesFilter>]
 
 One or more filters. Use a filter to return a more specific list of
 results.
@@ -64,9 +72,9 @@ This class forms part of L<Paws>, documenting arguments for method ListDocuments
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

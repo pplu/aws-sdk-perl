@@ -22,8 +22,8 @@ The list of ARNs that identify the HSMs.
 
 =head2 NextToken => Str
 
-If not null, more results are available. Pass this value to ListHsms to
-retrieve the next set of items.
+If not null, more results are available. Pass this value to C<ListHsms>
+to retrieve the next set of items.
 
 
 =head2 _request_id => Str

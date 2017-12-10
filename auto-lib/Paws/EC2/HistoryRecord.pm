@@ -51,17 +51,20 @@ This class has no description
 
 =item *
 
-C<error> - Indicates an error with the Spot fleet request.
+C<error> - An error with the Spot Fleet request.
 
 =item *
 
-C<fleetRequestChange> - Indicates a change in the status or
-configuration of the Spot fleet request.
+C<fleetRequestChange> - A change in the status or configuration of the
+Spot Fleet request.
 
 =item *
 
-C<instanceChange> - Indicates that an instance was launched or
-terminated.
+C<instanceChange> - An instance was launched or terminated.
+
+=item *
+
+C<Information> - An informational event.
 
 =back
 
@@ -80,8 +83,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

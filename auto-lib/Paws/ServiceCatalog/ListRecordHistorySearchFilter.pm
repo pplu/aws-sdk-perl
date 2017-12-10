@@ -32,8 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-The search filter to limit results when listing request history
-records.
+The search filter to use when listing history records.
 
 =head1 ATTRIBUTES
 
@@ -42,10 +41,24 @@ records.
 
   The filter key.
 
+=over
+
+=item *
+
+C<product> - Filter results based on the specified product identifier.
+
+=item *
+
+C<provisionedproduct> - Filter results based on the provisioned product
+identifier.
+
+=back
+
+
 
 =head2 Value => Str
 
-  The filter value for C<Key>.
+  The filter value.
 
 
 
@@ -55,9 +68,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ServiceCa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

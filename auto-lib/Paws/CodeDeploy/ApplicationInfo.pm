@@ -2,6 +2,7 @@ package Paws::CodeDeploy::ApplicationInfo;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str', request_name => 'applicationId', traits => ['NameInRequest']);
   has ApplicationName => (is => 'ro', isa => 'Str', request_name => 'applicationName', traits => ['NameInRequest']);
+  has ComputePlatform => (is => 'ro', isa => 'Str', request_name => 'computePlatform', traits => ['NameInRequest']);
   has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
   has GitHubAccountName => (is => 'ro', isa => 'Str', request_name => 'gitHubAccountName', traits => ['NameInRequest']);
   has LinkedToGitHub => (is => 'ro', isa => 'Bool', request_name => 'linkedToGitHub', traits => ['NameInRequest']);
@@ -50,6 +51,12 @@ Information about an application.
   The application name.
 
 
+=head2 ComputePlatform => Str
+
+  The destination platform type for deployment of the application
+(C<Lambda> or C<Server>).
+
+
 =head2 CreateTime => Str
 
   The time at which the application was created.
@@ -73,9 +80,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodeDeplo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

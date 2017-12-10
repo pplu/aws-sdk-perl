@@ -31,6 +31,12 @@ previous results causes an C<InvalidNextTokenException> to occur.
 
 Contains the response to a C<DescribeServers> request.
 
+I<For Puppet Server:>
+C<DescribeServersResponse$Servers$EngineAttributes> contains
+PUPPET_API_CA_CERT. This is the PEM-encoded CA certificate that is used
+by the Puppet API over TCP port number 8140. The CA certificate is also
+used to sign node certificates.
+
 
 =head2 _request_id => Str
 

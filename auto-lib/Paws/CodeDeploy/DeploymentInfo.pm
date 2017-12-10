@@ -5,12 +5,14 @@ package Paws::CodeDeploy::DeploymentInfo;
   has AutoRollbackConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::AutoRollbackConfiguration', request_name => 'autoRollbackConfiguration', traits => ['NameInRequest']);
   has BlueGreenDeploymentConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::BlueGreenDeploymentConfiguration', request_name => 'blueGreenDeploymentConfiguration', traits => ['NameInRequest']);
   has CompleteTime => (is => 'ro', isa => 'Str', request_name => 'completeTime', traits => ['NameInRequest']);
+  has ComputePlatform => (is => 'ro', isa => 'Str', request_name => 'computePlatform', traits => ['NameInRequest']);
   has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
   has Creator => (is => 'ro', isa => 'Str', request_name => 'creator', traits => ['NameInRequest']);
   has DeploymentConfigName => (is => 'ro', isa => 'Str', request_name => 'deploymentConfigName', traits => ['NameInRequest']);
   has DeploymentGroupName => (is => 'ro', isa => 'Str', request_name => 'deploymentGroupName', traits => ['NameInRequest']);
   has DeploymentId => (is => 'ro', isa => 'Str', request_name => 'deploymentId', traits => ['NameInRequest']);
   has DeploymentOverview => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentOverview', request_name => 'deploymentOverview', traits => ['NameInRequest']);
+  has DeploymentStatusMessages => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'deploymentStatusMessages', traits => ['NameInRequest']);
   has DeploymentStyle => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentStyle', request_name => 'deploymentStyle', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has ErrorInformation => (is => 'ro', isa => 'Paws::CodeDeploy::ErrorInformation', request_name => 'errorInformation', traits => ['NameInRequest']);
@@ -88,6 +90,12 @@ the deployment.
   A timestamp indicating when the deployment was complete.
 
 
+=head2 ComputePlatform => Str
+
+  The destination platform type for the deployment (C<Lambda> or
+C<Server>).
+
+
 =head2 CreateTime => Str
 
   A timestamp indicating when the deployment was created.
@@ -133,6 +141,11 @@ codeDeployRollback: A rollback process created the deployment.
 =head2 DeploymentOverview => L<Paws::CodeDeploy::DeploymentOverview>
 
   A summary of the deployment status of the instances in the deployment.
+
+
+=head2 DeploymentStatusMessages => ArrayRef[Str|Undef]
+
+  Messages that contain information about the status of a deployment.
 
 
 =head2 DeploymentStyle => L<Paws::CodeDeploy::DeploymentStyle>
@@ -256,9 +269,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodeDeplo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

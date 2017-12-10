@@ -2,7 +2,7 @@
 package Paws::Greengrass::UpdateConnectivityInfo;
   use Moose;
   has ConnectivityInfo => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::ConnectivityInfo]');
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ThingName' , required => 1);
+  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ThingName', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -10,14 +10,13 @@ package Paws::Greengrass::UpdateConnectivityInfo;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/things/{ThingName}/connectivityInfo');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::UpdateConnectivityInfoResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Greengrass::UpdateConnectivityInfo - Arguments for method UpdateConnectivityInfo on Paws::Greengrass
+Paws::Greengrass::UpdateConnectivityInfo - Arguments for method UpdateConnectivityInfo on L<Paws::Greengrass>
 
 =head1 DESCRIPTION
 
@@ -38,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ConnectivityInfo => ArrayRef[L<Paws::Greengrass::ConnectivityInfo>]
 
-Connectivity info array
+Connectivity info list
 
 
 
@@ -55,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateConnect
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

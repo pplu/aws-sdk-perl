@@ -18,7 +18,7 @@ package Paws::EC2::PurchaseHostReservation;
 
 =head1 NAME
 
-Paws::EC2::PurchaseHostReservation - Arguments for method PurchaseHostReservation on Paws::EC2
+Paws::EC2::PurchaseHostReservation - Arguments for method PurchaseHostReservation on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -40,8 +40,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 ClientToken => Str
 
 Unique, case-sensitive identifier you provide to ensure idempotency of
-the request. For more information, see How to Ensure Idempotency in the
-I<Amazon Elastic Compute Cloud User Guide>.
+the request. For more information, see How to Ensure Idempotency
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -85,9 +86,9 @@ This class forms part of L<Paws>, documenting arguments for method PurchaseHostR
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

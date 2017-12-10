@@ -16,7 +16,7 @@ package Paws::ELBv2::ModifyRule;
 
 =head1 NAME
 
-Paws::ELBv2::ModifyRule - Arguments for method ModifyRule on Paws::ELBv2
+Paws::ELBv2::ModifyRule - Arguments for method ModifyRule on L<Paws::ELBv2>
 
 =head1 DESCRIPTION
 
@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Actions => ArrayRef[L<Paws::ELBv2::Action>]
 
-The actions.
+The actions. The target group must use the HTTP or HTTPS protocol.
 
 
 
@@ -60,9 +60,9 @@ This class forms part of L<Paws>, documenting arguments for method ModifyRule in
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

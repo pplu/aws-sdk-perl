@@ -108,7 +108,8 @@ a resource.
 
 A populated field indicates that the current configuration was
 initiated by the events recorded in the CloudTrail log. For more
-information about CloudTrail, see What is AWS CloudTrail?.
+information about CloudTrail, see What is AWS CloudTrail?
+(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 
 An empty field indicates that the current configuration was not
 initiated by any event.
@@ -163,9 +164,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Config>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

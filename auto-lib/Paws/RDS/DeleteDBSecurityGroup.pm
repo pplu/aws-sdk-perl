@@ -14,7 +14,7 @@ package Paws::RDS::DeleteDBSecurityGroup;
 
 =head1 NAME
 
-Paws::RDS::DeleteDBSecurityGroup - Arguments for method DeleteDBSecurityGroup on Paws::RDS
+Paws::RDS::DeleteDBSecurityGroup - Arguments for method DeleteDBSecurityGroup on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The name of the DB security group to delete.
 
-You cannot delete the default DB security group.
+You can't delete the default DB security group.
 
 Constraints:
 
@@ -45,7 +45,7 @@ Constraints:
 
 =item *
 
-Must be 1 to 255 alphanumeric characters
+Must be 1 to 255 letters, numbers, or hyphens.
 
 =item *
 
@@ -71,9 +71,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteDBSecur
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

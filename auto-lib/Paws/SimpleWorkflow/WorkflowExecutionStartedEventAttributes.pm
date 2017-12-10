@@ -57,15 +57,21 @@ The supported child policies are:
 
 =over
 
-=item * B<TERMINATE:> the child executions will be terminated.
+=item *
 
-=item * B<REQUEST_CANCEL:> a request to cancel will be attempted for
-each child execution by recording a C<WorkflowExecutionCancelRequested>
+C<TERMINATE> E<ndash> The child executions are terminated.
+
+=item *
+
+C<REQUEST_CANCEL> E<ndash> A request to cancel is attempted for each
+child execution by recording a C<WorkflowExecutionCancelRequested>
 event in its history. It is up to the decider to take appropriate
 actions when it receives an execution history with this event.
 
-=item * B<ABANDON:> no action will be taken. The child executions will
-continue to run.
+=item *
+
+C<ABANDON> E<ndash> No action is taken. The child executions continue
+to run.
 
 =back
 
@@ -83,25 +89,24 @@ continued as this execution.
 
   The maximum duration for this workflow execution.
 
-The duration is specified in seconds; an integer greater than or equal
-to 0. The value "NONE" can be used to specify unlimited duration.
+The duration is specified in seconds, an integer greater than or equal
+to C<0>. You can use C<NONE> to specify unlimited duration.
 
 
 =head2 Input => Str
 
-  The input provided to the workflow execution (if any).
+  The input provided to the workflow execution.
 
 
 =head2 LambdaRole => Str
 
-  The IAM role attached to this workflow execution to use when invoking
-AWS Lambda functions.
+  The IAM role attached to the workflow execution.
 
 
 =head2 ParentInitiatedEventId => Int
 
   The ID of the C<StartChildWorkflowExecutionInitiated> event
-corresponding to the C<StartChildWorkflowExecution> decision to start
+corresponding to the C<StartChildWorkflowExecution> Decision to start
 this workflow execution. The source event with this ID can be found in
 the history of the source workflow execution. This information can be
 useful for diagnosing problems by tracing back the chain of events
@@ -111,7 +116,7 @@ leading up to this event.
 =head2 ParentWorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   The source workflow execution that started this workflow execution. The
-member is not set if the workflow execution was not started by a
+member isn't set if the workflow execution was not started by a
 workflow.
 
 
@@ -129,15 +134,15 @@ workflow execution.
 
 =head2 TaskPriority => Str
 
-  
+  The priority of the decision tasks in the workflow execution.
 
 
 =head2 TaskStartToCloseTimeout => Str
 
   The maximum duration of decision tasks for this workflow type.
 
-The duration is specified in seconds; an integer greater than or equal
-to 0. The value "NONE" can be used to specify unlimited duration.
+The duration is specified in seconds, an integer greater than or equal
+to C<0>. You can use C<NONE> to specify unlimited duration.
 
 
 =head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
@@ -152,9 +157,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SimpleWor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

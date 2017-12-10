@@ -11,7 +11,7 @@ package Paws::DynamoDBStreams;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub DescribeStream {
@@ -69,8 +69,9 @@ Amazon DynamoDB
 
 Amazon DynamoDB Streams provides API actions for accessing streams and
 processing stream records. To learn more about application development
-with Streams, see Capturing Table Activity with DynamoDB Streams in the
-Amazon DynamoDB Developer Guide.
+with Streams, see Capturing Table Activity with DynamoDB Streams
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html)
+in the Amazon DynamoDB Developer Guide.
 
 =head1 METHODS
 
@@ -80,7 +81,7 @@ Each argument is described in detail in: L<Paws::DynamoDBStreams::DescribeStream
 
 Returns: a L<Paws::DynamoDBStreams::DescribeStreamOutput> instance
 
-  Returns information about a stream, including the current status of the
+Returns information about a stream, including the current status of the
 stream, its Amazon Resource Name (ARN), the composition of its shards,
 and its corresponding DynamoDB table.
 
@@ -101,7 +102,7 @@ Each argument is described in detail in: L<Paws::DynamoDBStreams::GetRecords>
 
 Returns: a L<Paws::DynamoDBStreams::GetRecordsOutput> instance
 
-  Retrieves the stream records from a given shard.
+Retrieves the stream records from a given shard.
 
 Specify a shard iterator using the C<ShardIterator> parameter. The
 shard iterator specifies the position in the shard from which you want
@@ -121,7 +122,7 @@ Each argument is described in detail in: L<Paws::DynamoDBStreams::GetShardIterat
 
 Returns: a L<Paws::DynamoDBStreams::GetShardIteratorOutput> instance
 
-  Returns a shard iterator. A shard iterator provides information about
+Returns a shard iterator. A shard iterator provides information about
 how to retrieve the stream records from within a shard. Use the shard
 iterator in a subsequent C<GetRecords> request to read the stream
 records from the shard.
@@ -136,7 +137,7 @@ Each argument is described in detail in: L<Paws::DynamoDBStreams::ListStreams>
 
 Returns: a L<Paws::DynamoDBStreams::ListStreamsOutput> instance
 
-  Returns an array of stream ARNs associated with the current account and
+Returns an array of stream ARNs associated with the current account and
 endpoint. If the C<TableName> parameter is present, then C<ListStreams>
 will return only the streams ARNs for that table.
 
@@ -158,9 +159,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

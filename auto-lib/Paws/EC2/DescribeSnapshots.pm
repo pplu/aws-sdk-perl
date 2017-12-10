@@ -20,7 +20,7 @@ package Paws::EC2::DescribeSnapshots;
 
 =head1 NAME
 
-Paws::EC2::DescribeSnapshots - Arguments for method DescribeSnapshots on Paws::EC2
+Paws::EC2::DescribeSnapshots - Arguments for method DescribeSnapshots on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -63,7 +63,7 @@ C<description> - A description of the snapshot.
 C<owner-alias> - Value from an Amazon-maintained list (C<amazon> |
 C<aws-marketplace> | C<microsoft>) of snapshot owners. Not to be
 confused with the user-configured AWS account alias, which is set from
-the IAM consolew.
+the IAM console.
 
 =item *
 
@@ -176,9 +176,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeSnaps
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

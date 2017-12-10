@@ -32,8 +32,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Notific
 =head1 DESCRIPTION
 
 Container for object key name filtering rules. For information about
-key name filtering, go to Configuring Event Notifications in the Amazon
-Simple Storage Service Developer Guide.
+key name filtering, go to Configuring Event Notifications
+(http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html)
+in the Amazon Simple Storage Service Developer Guide.
 
 =head1 ATTRIBUTES
 
@@ -50,9 +51,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::S3>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

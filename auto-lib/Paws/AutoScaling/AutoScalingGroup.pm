@@ -11,6 +11,7 @@ package Paws::AutoScaling::AutoScalingGroup;
   has HealthCheckType => (is => 'ro', isa => 'Str', required => 1);
   has Instances => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::Instance]');
   has LaunchConfigurationName => (is => 'ro', isa => 'Str');
+  has LaunchTemplate => (is => 'ro', isa => 'Paws::AutoScaling::LaunchTemplateSpecification');
   has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaxSize => (is => 'ro', isa => 'Int', required => 1);
   has MinSize => (is => 'ro', isa => 'Int', required => 1);
@@ -59,12 +60,12 @@ Describes an Auto Scaling group.
 
 =head2 AutoScalingGroupARN => Str
 
-  The Amazon Resource Name (ARN) of the group.
+  The Amazon Resource Name (ARN) of the Auto Scaling group.
 
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  The name of the group.
+  The name of the Auto Scaling group.
 
 
 =head2 B<REQUIRED> AvailabilityZones => ArrayRef[Str|Undef]
@@ -115,6 +116,11 @@ and C<ELB>.
   The name of the associated launch configuration.
 
 
+=head2 LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>
+
+  The launch template for the group.
+
+
 =head2 LoadBalancerNames => ArrayRef[Str|Undef]
 
   One or more load balancers associated with the group.
@@ -139,8 +145,9 @@ termination by Auto Scaling when scaling in.
 =head2 PlacementGroup => Str
 
   The name of the placement group into which you'll launch your
-instances, if any. For more information, see Placement Groups in the
-I<Amazon Elastic Compute Cloud User Guide>.
+instances, if any. For more information, see Placement Groups
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 Status => Str
@@ -186,9 +193,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::AutoScali
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

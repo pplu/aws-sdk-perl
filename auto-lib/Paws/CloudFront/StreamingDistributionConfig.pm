@@ -101,8 +101,9 @@ distribution.
 to create signed URLs for private content. If you want the distribution
 to use signed URLs, include this element; if you want the distribution
 to use public URLs, remove this element. For more information, see
-Serving Private Content through CloudFront in the I<Amazon CloudFront
-Developer Guide>.
+Serving Private Content through CloudFront
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 
@@ -112,9 +113,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudFron
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

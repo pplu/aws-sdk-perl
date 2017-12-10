@@ -16,7 +16,7 @@ package Paws::DMS::StartReplicationTask;
 
 =head1 NAME
 
-Paws::DMS::StartReplicationTask - Arguments for method StartReplicationTask on Paws::DMS
+Paws::DMS::StartReplicationTask - Arguments for method StartReplicationTask on L<Paws::DMS>
 
 =head1 DESCRIPTION
 
@@ -43,7 +43,7 @@ The start time for the Change Data Capture (CDC) operation.
 
 =head2 B<REQUIRED> ReplicationTaskArn => Str
 
-The Amazon Resource Number (ARN) of the replication task to be started.
+The Amazon Resource Name (ARN) of the replication task to be started.
 
 
 
@@ -60,9 +60,9 @@ This class forms part of L<Paws>, documenting arguments for method StartReplicat
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

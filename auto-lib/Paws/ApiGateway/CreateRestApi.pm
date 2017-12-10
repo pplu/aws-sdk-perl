@@ -1,11 +1,12 @@
 
 package Paws::ApiGateway::CreateRestApi;
   use Moose;
-  has BinaryMediaTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CloneFrom => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Version => (is => 'ro', isa => 'Str');
+  has BinaryMediaTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'binaryMediaTypes');
+  has CloneFrom => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cloneFrom');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has EndpointConfiguration => (is => 'ro', isa => 'Paws::ApiGateway::EndpointConfiguration', traits => ['NameInRequest'], request_name => 'endpointConfiguration');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
+  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
 
   use MooseX::ClassAttribute;
 
@@ -13,14 +14,13 @@ package Paws::ApiGateway::CreateRestApi;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::RestApi');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::CreateRestApi - Arguments for method CreateRestApi on Paws::ApiGateway
+Paws::ApiGateway::CreateRestApi - Arguments for method CreateRestApi on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -58,6 +58,13 @@ The description of the RestApi.
 
 
 
+=head2 EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>
+
+The endpoint configuration of this RestApi showing the endpoint types
+of the API.
+
+
+
 =head2 B<REQUIRED> Name => Str
 
 The name of the RestApi.
@@ -77,9 +84,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateRestApi
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

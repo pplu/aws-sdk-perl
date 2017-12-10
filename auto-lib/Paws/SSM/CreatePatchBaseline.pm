@@ -22,7 +22,7 @@ package Paws::SSM::CreatePatchBaseline;
 
 =head1 NAME
 
-Paws::SSM::CreatePatchBaseline - Arguments for method CreatePatchBaseline on Paws::SSM
+Paws::SSM::CreatePatchBaseline - Arguments for method CreatePatchBaseline on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -89,9 +89,8 @@ The name of the patch baseline.
 
 =head2 OperatingSystem => Str
 
-Defines the operating system the patch baseline applies to. Supported
-operating systems include WINDOWS, AMAZON_LINUX, UBUNTU and
-REDHAT_ENTERPRISE_LINUX. The Default value is WINDOWS.
+Defines the operating system the patch baseline applies to. The Default
+value is WINDOWS.
 
 Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">
 
@@ -108,9 +107,9 @@ This class forms part of L<Paws>, documenting arguments for method CreatePatchBa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

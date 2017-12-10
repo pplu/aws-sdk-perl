@@ -14,7 +14,7 @@ package Paws::WAF::GetByteMatchSet;
 
 =head1 NAME
 
-Paws::WAF::GetByteMatchSet - Arguments for method GetByteMatchSet on Paws::WAF
+Paws::WAF::GetByteMatchSet - Arguments for method GetByteMatchSet on L<Paws::WAF>
 
 =head1 DESCRIPTION
 
@@ -48,9 +48,9 @@ This class forms part of L<Paws>, documenting arguments for method GetByteMatchS
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

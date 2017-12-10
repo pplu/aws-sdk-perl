@@ -25,7 +25,7 @@ package Paws::OpsWorks::UpdateInstance;
 
 =head1 NAME
 
-Paws::OpsWorks::UpdateInstance - Arguments for method UpdateInstance on Paws::OpsWorks
+Paws::OpsWorks::UpdateInstance - Arguments for method UpdateInstance on L<Paws::OpsWorks>
 
 =head1 DESCRIPTION
 
@@ -88,7 +88,8 @@ using custom AMIs.
 
 The instance architecture. Instance types do not necessarily support
 both architectures. For a list of the architectures that are supported
-by the different instance types, see Instance Families and Types.
+by the different instance types, see Instance Families and Types
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
 
 Valid values are: C<"x86_64">, C<"i386">
 
@@ -136,9 +137,10 @@ The instance ID.
 The instance type, such as C<t2.micro>. For a list of supported
 instance types, open the stack in the console, choose B<Instances>, and
 choose B<+ Instance>. The B<Size> list contains the currently supported
-types. For more information, see Instance Families and Types. The
-parameter values that you use to specify the various types are in the
-B<API Name> column of the B<Available Instance Types> table.
+types. For more information, see Instance Families and Types
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
+The parameter values that you use to specify the various types are in
+the B<API Name> column of the B<Available Instance Types> table.
 
 
 
@@ -184,13 +186,17 @@ Standard>, or C<Microsoft Windows Server 2012 R2 with SQL Server Web>.
 =back
 
 For more information on the supported operating systems, see AWS
-OpsWorks Stacks Operating Systems.
+OpsWorks Stacks Operating Systems
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 
 The default option is the current Amazon Linux version. If you set this
 parameter to C<Custom>, you must use the AmiId parameter to specify the
 custom AMI that you want to use. For more information on the supported
-operating systems, see Operating Systems. For more information on how
-to use custom AMIs with OpsWorks, see Using Custom AMIs.
+operating systems, see Operating Systems
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+For more information on how to use custom AMIs with OpsWorks, see Using
+Custom AMIs
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 
 You can specify a different Linux operating system for the updated
 stack, but you cannot change from Linux to Windows or Windows to Linux.
@@ -210,9 +216,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateInstanc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -15,6 +15,7 @@ package Paws::EC2::SpotFleetLaunchSpecification;
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', request_name => 'groupSet', traits => ['NameInRequest']);
   has SpotPrice => (is => 'ro', isa => 'Str', request_name => 'spotPrice', traits => ['NameInRequest']);
   has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SpotFleetTagSpecification]', request_name => 'tagSpecificationSet', traits => ['NameInRequest']);
   has UserData => (is => 'ro', isa => 'Str', request_name => 'userData', traits => ['NameInRequest']);
   has WeightedCapacity => (is => 'ro', isa => 'Num', request_name => 'weightedCapacity', traits => ['NameInRequest']);
 1;
@@ -59,7 +60,11 @@ This class has no description
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
-  One or more block device mapping entries.
+  One or more block device mapping entries. You can't specify both a
+snapshot ID and an encryption value. This is because only blank volumes
+can be encrypted on creation. If a snapshot is the basis for a volume,
+it is not blank and its encryption status is used for the volume
+encryption status.
 
 
 =head2 EbsOptimized => Bool
@@ -85,8 +90,7 @@ Default: C<false>
 
 =head2 InstanceType => Str
 
-  The instance type. Note that T2 and HS1 instance types are not
-supported.
+  The instance type.
 
 
 =head2 KernelId => Str
@@ -131,10 +135,10 @@ groups.
 
 =head2 SpotPrice => Str
 
-  The bid price per unit hour for the specified instance type. If this
-value is not specified, the default is the Spot bid price specified for
-the fleet. To determine the bid price per unit hour, divide the Spot
-bid price by the value of C<WeightedCapacity>.
+  The maximum price per unit hour that you are willing to pay for a Spot
+Instance. If this value is not specified, the default is the Spot price
+specified for the fleet. To determine the Spot price per unit hour,
+divide the Spot price by the value of C<WeightedCapacity>.
 
 
 =head2 SubnetId => Str
@@ -142,6 +146,11 @@ bid price by the value of C<WeightedCapacity>.
   The ID of the subnet in which to launch the instances. To specify
 multiple subnets, separate them using commas; for example,
 "subnet-a61dafcf, subnet-65ea5f08".
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::SpotFleetTagSpecification>]
+
+  The tags to apply during creation.
 
 
 =head2 UserData => Str
@@ -171,8 +180,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

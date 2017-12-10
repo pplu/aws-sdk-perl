@@ -3,6 +3,7 @@ package Paws::Greengrass::Deployment;
   has CreatedAt => (is => 'ro', isa => 'Str');
   has DeploymentArn => (is => 'ro', isa => 'Str');
   has DeploymentId => (is => 'ro', isa => 'Str');
+  has DeploymentType => (is => 'ro', isa => 'Str');
   has GroupArn => (is => 'ro', isa => 'Str');
 1;
 
@@ -54,6 +55,11 @@ Information on the deployment
   Id of the deployment.
 
 
+=head2 DeploymentType => Str
+
+  The type of deployment.
+
+
 =head2 GroupArn => Str
 
   Arn of the group for this deployment.
@@ -66,9 +72,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Greengras
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

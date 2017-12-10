@@ -43,20 +43,22 @@ To enable Amazon SES to write emails to your Amazon S3 bucket, use an
 AWS KMS key to encrypt your emails, or publish to an Amazon SNS topic
 of another account, Amazon SES must have permission to access those
 resources. For information about giving permissions, see the Amazon SES
-Developer Guide.
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html).
 
 When you save your emails to an Amazon S3 bucket, the maximum email
 size (including headers) is 30 MB. Emails larger than that will bounce.
 
 For information about specifying Amazon S3 actions in receipt rules,
-see the Amazon SES Developer Guide.
+see the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-s3.html).
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> BucketName => Str
 
-  The name of the Amazon S3 bucket to which to save the received email.
+  The name of the Amazon S3 bucket that incoming email will be saved to.
 
 
 =head2 KmsKeyArn => Str
@@ -84,13 +86,16 @@ Amazon SES permission to use the key.
 To use a custom master key you created in AWS KMS, provide the ARN of
 the master key and ensure that you add a statement to your key's policy
 to give Amazon SES permission to use it. For more information about
-giving permissions, see the Amazon SES Developer Guide.
+giving permissions, see the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html).
 
 =back
 
 For more information about key policies, see the AWS KMS Developer
-Guide. If you do not specify a master key, Amazon SES will not encrypt
-your emails.
+Guide
+(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html).
+If you do not specify a master key, Amazon SES will not encrypt your
+emails.
 
 Your mail is encrypted by Amazon SES using the Amazon S3 encryption
 client before the mail is submitted to Amazon S3 for storage. It is not
@@ -98,9 +103,11 @@ encrypted using Amazon S3 server-side encryption. This means that you
 must use the Amazon S3 encryption client to decrypt the email after
 retrieving it from Amazon S3, as the service has no access to use your
 AWS KMS keys for decryption. This encryption client is currently
-available with the AWS Java SDK and AWS Ruby SDK only. For more
+available with the AWS Java SDK (http://aws.amazon.com/sdk-for-java/)
+and AWS Ruby SDK (http://aws.amazon.com/sdk-for-ruby/) only. For more
 information about client-side encryption using AWS KMS master keys, see
-the Amazon S3 Developer Guide.
+the Amazon S3 Developer Guide
+(http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html).
 
 
 =head2 ObjectKeyPrefix => Str
@@ -115,7 +122,8 @@ directory in a bucket.
   The ARN of the Amazon SNS topic to notify when the message is saved to
 the Amazon S3 bucket. An example of an Amazon SNS topic ARN is
 C<arn:aws:sns:us-west-2:123456789012:MyTopic>. For more information
-about Amazon SNS topics, see the Amazon SNS Developer Guide.
+about Amazon SNS topics, see the Amazon SNS Developer Guide
+(http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html).
 
 
 
@@ -125,9 +133,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SES>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

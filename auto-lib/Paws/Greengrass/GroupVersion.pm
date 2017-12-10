@@ -4,6 +4,7 @@ package Paws::Greengrass::GroupVersion;
   has DeviceDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has FunctionDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has LoggerDefinitionVersionArn => (is => 'ro', isa => 'Str');
+  has ResourceDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has SubscriptionDefinitionVersionArn => (is => 'ro', isa => 'Str');
 1;
 
@@ -57,7 +58,12 @@ Information on group version
 
 =head2 LoggerDefinitionVersionArn => Str
 
-  Logger definitionv ersion arn for this group.
+  Logger definition version arn for this group.
+
+
+=head2 ResourceDefinitionVersionArn => Str
+
+  Resource definition version arn for this group.
 
 
 =head2 SubscriptionDefinitionVersionArn => Str
@@ -72,9 +78,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Greengras
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

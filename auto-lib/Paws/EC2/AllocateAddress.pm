@@ -1,6 +1,7 @@
 
 package Paws::EC2::AllocateAddress;
   use Moose;
+  has Address => (is => 'ro', isa => 'Str');
   has Domain => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
 
@@ -15,7 +16,7 @@ package Paws::EC2::AllocateAddress;
 
 =head1 NAME
 
-Paws::EC2::AllocateAddress - Arguments for method AllocateAddress on Paws::EC2
+Paws::EC2::AllocateAddress - Arguments for method AllocateAddress on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -32,6 +33,12 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 Address => Str
+
+[EC2-VPC] The Elastic IP address to recover.
+
 
 
 =head2 Domain => Str
@@ -58,9 +65,9 @@ This class forms part of L<Paws>, documenting arguments for method AllocateAddre
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

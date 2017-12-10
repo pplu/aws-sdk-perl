@@ -60,7 +60,13 @@ package Paws::Net::MojoAsyncCaller;
         if (my $err = $response->error and not defined $response->error->{ code }){
           $future->fail(Paws::Exception->new(message => $err->{ message }, code => 'ConnectionError', request_id => ''));
         } else {
-          my $res = $service->handle_response($call_object, $response->res->code, $response->res->body, $response->res->headers->to_hash);
+          my $rObj = Paws::Net::APIResponse->new(
+            status  => $response->res->code,
+            content => $response->res->body,
+            headers => $response->res->headers->to_hash,
+          );
+
+          my $res = $service->response_to_object->process($call_object, $rObj);
 
           if (not ref($res)){
             $future->done($res);

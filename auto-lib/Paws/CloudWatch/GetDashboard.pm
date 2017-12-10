@@ -1,7 +1,7 @@
 
 package Paws::CloudWatch::GetDashboard;
   use Moose;
-  has DashboardName => (is => 'ro', isa => 'Str');
+  has DashboardName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -14,7 +14,7 @@ package Paws::CloudWatch::GetDashboard;
 
 =head1 NAME
 
-Paws::CloudWatch::GetDashboard - Arguments for method GetDashboard on Paws::CloudWatch
+Paws::CloudWatch::GetDashboard - Arguments for method GetDashboard on L<Paws::CloudWatch>
 
 =head1 DESCRIPTION
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 DashboardName => Str
+=head2 B<REQUIRED> DashboardName => Str
 
 The name of the dashboard to be described.
 
@@ -46,9 +46,9 @@ This class forms part of L<Paws>, documenting arguments for method GetDashboard 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

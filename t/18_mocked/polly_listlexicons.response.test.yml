@@ -1,0 +1,25 @@
+---
+call: ListLexicons
+service: Polly
+tests:
+  - expected: Lex1
+    op: eq
+    path: Lexicons.0.Name
+  - expected: arn:aws:polly:eu-west-1:358194553427:lexicon/Lex1
+    op: eq
+    path: Lexicons.0.Attributes.LexiconArn
+  - expected: 1
+    op: eq
+    path: Lexicons.0.Attributes.LexemesCount
+  - expected: en-US
+    op: eq
+    path: Lexicons.0.Attributes.LanguageCode
+  - expected: 1500584528.717
+    op: eq
+    path: Lexicons.0.Attributes.LastModified
+  - expected: 491
+    op: eq
+    path: Lexicons.0.Attributes.Size
+  - expected: ipa
+    op: eq
+    path: Lexicons.0.Attributes.Alphabet

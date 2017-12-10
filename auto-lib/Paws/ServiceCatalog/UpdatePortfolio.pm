@@ -20,7 +20,7 @@ package Paws::ServiceCatalog::UpdatePortfolio;
 
 =head1 NAME
 
-Paws::ServiceCatalog::UpdatePortfolio - Arguments for method UpdatePortfolio on Paws::ServiceCatalog
+Paws::ServiceCatalog::UpdatePortfolio - Arguments for method UpdatePortfolio on L<Paws::ServiceCatalog>
 
 =head1 DESCRIPTION
 
@@ -41,28 +41,36 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AcceptLanguage => Str
 
-The language code to use for this operation. Supported language codes
-are as follows:
+The language code.
 
-"en" (English)
+=over
 
-"jp" (Japanese)
+=item *
 
-"zh" (Chinese)
+C<en> - English (default)
 
-If no code is specified, "en" is used as the default.
+=item *
+
+C<jp> - Japanese
+
+=item *
+
+C<zh> - Chinese
+
+=back
+
 
 
 
 =head2 AddTags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
 
-Tags to add to the existing list of tags associated with the portfolio.
+The tags to add.
 
 
 
 =head2 Description => Str
 
-The updated text description of the portfolio.
+The updated description of the portfolio.
 
 
 
@@ -74,7 +82,7 @@ The name to use for display purposes.
 
 =head2 B<REQUIRED> Id => Str
 
-The identifier of the portfolio for the update request.
+The portfolio identifier.
 
 
 
@@ -86,8 +94,7 @@ The updated name of the portfolio provider.
 
 =head2 RemoveTags => ArrayRef[Str|Undef]
 
-Tags to remove from the existing list of tags associated with the
-portfolio.
+The tags to remove.
 
 
 
@@ -98,9 +105,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdatePortfol
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

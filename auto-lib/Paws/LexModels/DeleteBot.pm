@@ -1,7 +1,7 @@
 
 package Paws::LexModels::DeleteBot;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name' , required => 1);
+  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -9,14 +9,13 @@ package Paws::LexModels::DeleteBot;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/bots/{name}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::LexModels::DeleteBot - Arguments for method DeleteBot on Paws::LexModels
+Paws::LexModels::DeleteBot - Arguments for method DeleteBot on L<Paws::LexModels>
 
 =head1 DESCRIPTION
 
@@ -48,9 +47,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteBot in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -15,7 +15,7 @@ package Paws::EMR::CreateSecurityConfiguration;
 
 =head1 NAME
 
-Paws::EMR::CreateSecurityConfiguration - Arguments for method CreateSecurityConfiguration on Paws::EMR
+Paws::EMR::CreateSecurityConfiguration - Arguments for method CreateSecurityConfiguration on L<Paws::EMR>
 
 =head1 DESCRIPTION
 
@@ -42,7 +42,11 @@ The name of the security configuration.
 
 =head2 B<REQUIRED> SecurityConfiguration => Str
 
-The security configuration details in JSON format.
+The security configuration details in JSON format. For JSON parameters
+and examples, see Use Security Configurations to Set Up Cluster
+Security
+(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-security-configurations.html)
+in the I<Amazon EMR Management Guide>.
 
 
 
@@ -53,9 +57,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateSecurit
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -15,7 +15,7 @@ package Paws::CodeCommit::CreateRepository;
 
 =head1 NAME
 
-Paws::CodeCommit::CreateRepository - Arguments for method CreateRepository on Paws::CodeCommit
+Paws::CodeCommit::CreateRepository - Arguments for method CreateRepository on L<Paws::CodeCommit>
 
 =head1 DESCRIPTION
 
@@ -54,8 +54,9 @@ The name of the new repository to be created.
 The repository name must be unique across the calling AWS account. In
 addition, repository names are limited to 100 alphanumeric, dash, and
 underscore characters, and cannot include certain characters. For a
-full description of the limits on repository names, see Limits in the
-AWS CodeCommit User Guide. The suffix ".git" is prohibited.
+full description of the limits on repository names, see Limits
+(http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html) in
+the AWS CodeCommit User Guide. The suffix ".git" is prohibited.
 
 
 
@@ -66,9 +67,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateReposit
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

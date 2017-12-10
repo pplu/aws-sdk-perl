@@ -1,6 +1,7 @@
 
 package Paws::EC2::CreateVpnGateway;
   use Moose;
+  has AmazonSideAsn => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Type => (is => 'ro', isa => 'Str', required => 1);
@@ -16,7 +17,7 @@ package Paws::EC2::CreateVpnGateway;
 
 =head1 NAME
 
-Paws::EC2::CreateVpnGateway - Arguments for method CreateVpnGateway on Paws::EC2
+Paws::EC2::CreateVpnGateway - Arguments for method CreateVpnGateway on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -33,6 +34,17 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 AmazonSideAsn => Int
+
+A private Autonomous System Number (ASN) for the Amazon side of a BGP
+session. If you're using a 16-bit ASN, it must be in the 64512 to 65534
+range. If you're using a 32-bit ASN, it must be in the 4200000000 to
+4294967294 range.
+
+Default: 64512
+
 
 
 =head2 AvailabilityZone => Str
@@ -63,9 +75,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateVpnGate
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

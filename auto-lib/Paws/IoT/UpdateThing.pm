@@ -1,11 +1,11 @@
 
 package Paws::IoT::UpdateThing;
   use Moose;
-  has AttributePayload => (is => 'ro', isa => 'Paws::IoT::AttributePayload');
-  has ExpectedVersion => (is => 'ro', isa => 'Int');
-  has RemoveThingType => (is => 'ro', isa => 'Bool');
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName' , required => 1);
-  has ThingTypeName => (is => 'ro', isa => 'Str');
+  has AttributePayload => (is => 'ro', isa => 'Paws::IoT::AttributePayload', traits => ['NameInRequest'], request_name => 'attributePayload');
+  has ExpectedVersion => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'expectedVersion');
+  has RemoveThingType => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'removeThingType');
+  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
+  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingTypeName');
 
   use MooseX::ClassAttribute;
 
@@ -13,14 +13,13 @@ package Paws::IoT::UpdateThing;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/things/{thingName}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::UpdateThingResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::IoT::UpdateThing - Arguments for method UpdateThing on Paws::IoT
+Paws::IoT::UpdateThing - Arguments for method UpdateThing on L<Paws::IoT>
 
 =head1 DESCRIPTION
 
@@ -61,7 +60,8 @@ rejected with a C<VersionConflictException>.
 
 =head2 RemoveThingType => Bool
 
-Remove a thing type association. If B<true>, the assocation is removed.
+Remove a thing type association. If B<true>, the association is
+removed.
 
 
 
@@ -84,9 +84,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateThing i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -41,17 +41,17 @@ DescribeSourceRegions action.
 
 =head2 Endpoint => Str
 
-  The source region endpoint.
+  The endpoint for the source AWS Region endpoint.
 
 
 =head2 RegionName => Str
 
-  The source region name.
+  The name of the source AWS Region.
 
 
 =head2 Status => Str
 
-  The status of the source region.
+  The status of the source AWS Region.
 
 
 
@@ -61,9 +61,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

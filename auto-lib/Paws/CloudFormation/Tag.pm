@@ -1,7 +1,7 @@
 package Paws::CloudFormation::Tag;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Str');
+  has Key => (is => 'ro', isa => 'Str', required => 1);
+  has Value => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -38,14 +38,14 @@ to store information about an AWS CloudFormation stack.
 =head1 ATTRIBUTES
 
 
-=head2 Key => Str
+=head2 B<REQUIRED> Key => Str
 
   I<Required>. A string used to identify this tag. You can specify a
 maximum of 128 characters for a tag key. Tags owned by Amazon Web
 Services (AWS) have the reserved prefix: C<aws:>.
 
 
-=head2 Value => Str
+=head2 B<REQUIRED> Value => Str
 
   I<Required>. A string containing the value for this tag. You can
 specify a maximum of 256 characters for a tag value.
@@ -58,9 +58,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudForm
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

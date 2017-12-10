@@ -42,8 +42,9 @@ The reference that identifies an object.
 parent/child links leading to it from the directory root. Use the link
 names from each parent/child link to construct the path. Path selectors
 start with a slash (/) and link names are separated by slashes. For
-more information about paths, see Accessing Objects. You can identify
-an object in one of the following ways:
+more information about paths, see Accessing Objects
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#accessingobjects).
+You can identify an object in one of the following ways:
 
 =over
 
@@ -74,9 +75,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudDire
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

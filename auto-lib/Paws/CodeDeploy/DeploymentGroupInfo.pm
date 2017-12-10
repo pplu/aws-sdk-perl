@@ -5,15 +5,18 @@ package Paws::CodeDeploy::DeploymentGroupInfo;
   has AutoRollbackConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::AutoRollbackConfiguration', request_name => 'autoRollbackConfiguration', traits => ['NameInRequest']);
   has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::AutoScalingGroup]', request_name => 'autoScalingGroups', traits => ['NameInRequest']);
   has BlueGreenDeploymentConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::BlueGreenDeploymentConfiguration', request_name => 'blueGreenDeploymentConfiguration', traits => ['NameInRequest']);
+  has ComputePlatform => (is => 'ro', isa => 'Str', request_name => 'computePlatform', traits => ['NameInRequest']);
   has DeploymentConfigName => (is => 'ro', isa => 'Str', request_name => 'deploymentConfigName', traits => ['NameInRequest']);
   has DeploymentGroupId => (is => 'ro', isa => 'Str', request_name => 'deploymentGroupId', traits => ['NameInRequest']);
   has DeploymentGroupName => (is => 'ro', isa => 'Str', request_name => 'deploymentGroupName', traits => ['NameInRequest']);
   has DeploymentStyle => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentStyle', request_name => 'deploymentStyle', traits => ['NameInRequest']);
   has Ec2TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]', request_name => 'ec2TagFilters', traits => ['NameInRequest']);
+  has Ec2TagSet => (is => 'ro', isa => 'Paws::CodeDeploy::EC2TagSet', request_name => 'ec2TagSet', traits => ['NameInRequest']);
   has LastAttemptedDeployment => (is => 'ro', isa => 'Paws::CodeDeploy::LastDeploymentInfo', request_name => 'lastAttemptedDeployment', traits => ['NameInRequest']);
   has LastSuccessfulDeployment => (is => 'ro', isa => 'Paws::CodeDeploy::LastDeploymentInfo', request_name => 'lastSuccessfulDeployment', traits => ['NameInRequest']);
   has LoadBalancerInfo => (is => 'ro', isa => 'Paws::CodeDeploy::LoadBalancerInfo', request_name => 'loadBalancerInfo', traits => ['NameInRequest']);
   has OnPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', request_name => 'onPremisesInstanceTagFilters', traits => ['NameInRequest']);
+  has OnPremisesTagSet => (is => 'ro', isa => 'Paws::CodeDeploy::OnPremisesTagSet', request_name => 'onPremisesTagSet', traits => ['NameInRequest']);
   has ServiceRoleArn => (is => 'ro', isa => 'Str', request_name => 'serviceRoleArn', traits => ['NameInRequest']);
   has TargetRevision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', request_name => 'targetRevision', traits => ['NameInRequest']);
   has TriggerConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TriggerConfig]', request_name => 'triggerConfigurations', traits => ['NameInRequest']);
@@ -78,6 +81,12 @@ the deployment group.
   Information about blue/green deployment options for a deployment group.
 
 
+=head2 ComputePlatform => Str
+
+  The destination platform type for the deployment group (C<Lambda> or
+C<Server>).
+
+
 =head2 DeploymentConfigName => Str
 
   The deployment configuration name.
@@ -102,7 +111,15 @@ behind a load balancer.
 
 =head2 Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
 
-  The Amazon EC2 tags on which to filter.
+  The Amazon EC2 tags on which to filter. The deployment group includes
+EC2 instances with any of the specified tags.
+
+
+=head2 Ec2TagSet => L<Paws::CodeDeploy::EC2TagSet>
+
+  Information about groups of tags applied to an EC2 instance. The
+deployment group includes only EC2 instances identified by all the tag
+groups. Cannot be used in the same call as ec2TagFilters.
 
 
 =head2 LastAttemptedDeployment => L<Paws::CodeDeploy::LastDeploymentInfo>
@@ -124,7 +141,16 @@ deployment group.
 
 =head2 OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
 
-  The on-premises instance tags on which to filter.
+  The on-premises instance tags on which to filter. The deployment group
+includes on-premises instances with any of the specified tags.
+
+
+=head2 OnPremisesTagSet => L<Paws::CodeDeploy::OnPremisesTagSet>
+
+  Information about groups of tags applied to an on-premises instance.
+The deployment group includes only on-premises instances identified by
+all the tag groups. Cannot be used in the same call as
+onPremisesInstanceTagFilters.
 
 
 =head2 ServiceRoleArn => Str
@@ -150,9 +176,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodeDeplo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

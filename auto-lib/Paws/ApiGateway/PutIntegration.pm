@@ -1,19 +1,22 @@
 
 package Paws::ApiGateway::PutIntegration;
   use Moose;
-  has CacheKeyParameters => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CacheNamespace => (is => 'ro', isa => 'Str');
-  has ContentHandling => (is => 'ro', isa => 'Str');
-  has Credentials => (is => 'ro', isa => 'Str');
-  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod' , required => 1);
-  has IntegrationHttpMethod => (is => 'ro', isa => 'Str');
-  has PassthroughBehavior => (is => 'ro', isa => 'Str');
-  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
-  has RequestTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId' , required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
-  has Type => (is => 'ro', isa => 'Str', required => 1);
-  has Uri => (is => 'ro', isa => 'Str');
+  has CacheKeyParameters => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'cacheKeyParameters');
+  has CacheNamespace => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cacheNamespace');
+  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId');
+  has ConnectionType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionType');
+  has ContentHandling => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contentHandling');
+  has Credentials => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'credentials');
+  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod', required => 1);
+  has IntegrationHttpMethod => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationHttpMethod');
+  has PassthroughBehavior => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'passthroughBehavior');
+  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'requestParameters');
+  has RequestTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'requestTemplates');
+  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has TimeoutInMillis => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'timeoutInMillis');
+  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type', required => 1);
+  has Uri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uri');
 
   use MooseX::ClassAttribute;
 
@@ -21,14 +24,13 @@ package Paws::ApiGateway::PutIntegration;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Integration');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::PutIntegration - Arguments for method PutIntegration on Paws::ApiGateway
+Paws::ApiGateway::PutIntegration - Arguments for method PutIntegration on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -58,6 +60,24 @@ Specifies a put integration input's cache key parameters.
 Specifies a put integration input's cache namespace.
 
 
+
+=head2 ConnectionId => Str
+
+The (C<id>
+(http://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id))
+of the VpcLink used for the integration when C<connectionType=VPC_LINK>
+and undefined, otherwise.
+
+
+
+=head2 ConnectionType => Str
+
+The type of the network connection to the integration endpoint. The
+valid value is C<INTERNET> for connections through the public routable
+internet or C<VPC_LINK> for private connections between API Gateway and
+an network load balancer in a VPC. The default value is C<INTERNET>.
+
+Valid values are: C<"INTERNET">, C<"VPC_LINK">
 
 =head2 ContentHandling => Str
 
@@ -167,7 +187,14 @@ Specifies a put integration request's resource ID.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-Specifies a put integration request's API identifier.
+The string identifier of the associated RestApi.
+
+
+
+=head2 TimeoutInMillis => Int
+
+Custom timeout between 50 and 29,000 milliseconds. The default value is
+29,000 milliseconds or 29 seconds.
 
 
 
@@ -179,11 +206,43 @@ Valid values are: C<"HTTP">, C<"AWS">, C<"MOCK">, C<"HTTP_PROXY">, C<"AWS_PROXY"
 
 =head2 Uri => Str
 
-Specifies a put integration input's Uniform Resource Identifier (URI).
-When the integration type is HTTP or AWS, this field is required. For
-integration with Lambda as an AWS service proxy, this value is of the
-'arn:aws:apigateway:E<lt>regionE<gt>:lambda:path/2015-03-31/functions/E<lt>functionArnE<gt>/invocations'
-format.
+Specifies Uniform Resource Identifier (URI) of the integration
+endpoint.
+
+=over
+
+=item *
+
+For C<HTTP> or C<HTTP_PROXY> integrations, the URI must be a fully
+formed, encoded HTTP(S) URL according to the RFC-3986 specification
+(https://en.wikipedia.org/wiki/Uniform_Resource_Identifier), for either
+standard integration, where C<connectionType> is not C<VPC_LINK>, or
+private integration, where C<connectionType> is C<VPC_LINK>. For a
+private HTTP integration, the URI is not used for routing.
+
+=item *
+
+For C<AWS> or C<AWS_PROXY> integrations, the URI is of the form
+C<arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}>.
+Here, C<{Region}> is the API Gateway region (e.g., C<us-east-1>);
+C<{service}> is the name of the integrated AWS service (e.g., C<s3>);
+and C<{subdomain}> is a designated subdomain supported by certain AWS
+service for fast host-name lookup. C<action> can be used for an AWS
+service action-based API, using an
+C<Action={name}&{p1}={v1}&p2={v2}...> query string. The ensuing
+C<{service_api}> refers to a supported action C<{name}> plus any
+required input parameters. Alternatively, C<path> can be used for an
+AWS service path-based API. The ensuing C<service_api> refers to the
+path to an AWS service resource, including the region of the integrated
+AWS service, if applicable. For example, for integration with the S3
+API of C<GetObject
+(http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html)>,
+the C<uri> can be either
+C<arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}>
+or C<arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}>
+
+=back
+
 
 
 
@@ -194,9 +253,9 @@ This class forms part of L<Paws>, documenting arguments for method PutIntegratio
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -61,11 +61,14 @@ C<NotifyAll> set to true.
 
   The new SNS C<TopicArn> that you want to associate with this job. You
 can create Amazon Resource Names (ARNs) for topics by using the
-CreateTopic Amazon SNS API action.
+CreateTopic
+(http://docs.aws.amazon.com/sns/latest/api/API_CreateTopic.html) Amazon
+SNS API action.
 
 You can subscribe email addresses to an Amazon SNS topic through the
-AWS Management Console, or by using the Subscribe AWS Simple
-Notification Service (SNS) API action.
+AWS Management Console, or by using the Subscribe
+(http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html) AWS
+Simple Notification Service (SNS) API action.
 
 
 
@@ -75,9 +78,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Snowball>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

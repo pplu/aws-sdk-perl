@@ -133,8 +133,9 @@ A detailed status of the command execution for an invocation.
 StatusDetails includes more information than Status because it includes
 states resulting from error and concurrency control parameters.
 StatusDetails can show different results than Status. For more
-information about these statuses, see Run Command Status. StatusDetails
-can be one of the following values:
+information about these statuses, see Run Command Status
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html).
+StatusDetails can be one of the following values:
 
 =over
 

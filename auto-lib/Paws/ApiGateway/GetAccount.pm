@@ -8,14 +8,13 @@ package Paws::ApiGateway::GetAccount;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/account');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Account');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::GetAccount - Arguments for method GetAccount on Paws::ApiGateway
+Paws::ApiGateway::GetAccount - Arguments for method GetAccount on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -41,9 +40,9 @@ This class forms part of L<Paws>, documenting arguments for method GetAccount in
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

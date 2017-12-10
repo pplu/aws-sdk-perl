@@ -23,7 +23,7 @@ package Paws::EC2::ImportImage;
 
 =head1 NAME
 
-Paws::EC2::ImportImage - Arguments for method ImportImage on Paws::EC2
+Paws::EC2::ImportImage - Arguments for method ImportImage on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -98,7 +98,9 @@ importing.
 
 B<Note:> You may only use BYOL if you have existing licenses with
 rights to use these licenses in a third party cloud like AWS. For more
-information, see Prerequisites in the VM Import/Export User Guide.
+information, see Prerequisites
+(http://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image)
+in the VM Import/Export User Guide.
 
 Valid values: C<AWS> | C<BYOL>
 
@@ -126,9 +128,9 @@ This class forms part of L<Paws>, documenting arguments for method ImportImage i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

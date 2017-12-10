@@ -9,6 +9,7 @@ package Paws::Lightsail::Bundle;
   has Power => (is => 'ro', isa => 'Int', request_name => 'power', traits => ['NameInRequest']);
   has Price => (is => 'ro', isa => 'Num', request_name => 'price', traits => ['NameInRequest']);
   has RamSizeInGb => (is => 'ro', isa => 'Num', request_name => 'ramSizeInGb', traits => ['NameInRequest']);
+  has SupportedPlatforms => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supportedPlatforms', traits => ['NameInRequest']);
   has TransferPerMonthInGb => (is => 'ro', isa => 'Int', request_name => 'transferPerMonthInGb', traits => ['NameInRequest']);
 1;
 
@@ -78,7 +79,12 @@ private server (or I<instance>).
 
 =head2 Power => Int
 
-  The power of the bundle (e.g., C<500>).
+  A numeric value that represents the power of the bundle (e.g., C<500>).
+You can use the bundle's power value in conjunction with a blueprint's
+minimum power value to determine whether the blueprint will run on the
+bundle. For example, you need a bundle with a power value of 500 or
+more to create an instance that uses a blueprint with a minimum power
+value of 500.
 
 
 =head2 Price => Num
@@ -89,6 +95,14 @@ private server (or I<instance>).
 =head2 RamSizeInGb => Num
 
   The amount of RAM in GB (e.g., C<2.0>).
+
+
+=head2 SupportedPlatforms => ArrayRef[Str|Undef]
+
+  The operating system platform (Linux/Unix-based or Windows
+Server-based) that the bundle supports. You can only launch a
+C<WINDOWS> bundle on a blueprint that supports the C<WINDOWS> platform.
+C<LINUX_UNIX> blueprints require a C<LINUX_UNIX> bundle.
 
 
 =head2 TransferPerMonthInGb => Int
@@ -103,9 +117,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Lightsail
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

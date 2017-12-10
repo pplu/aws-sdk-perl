@@ -23,7 +23,7 @@ package Paws::CloudTrail::UpdateTrail;
 
 =head1 NAME
 
-Paws::CloudTrail::UpdateTrail - Arguments for method UpdateTrail on Paws::CloudTrail
+Paws::CloudTrail::UpdateTrail - Arguments for method UpdateTrail on L<Paws::CloudTrail>
 
 =head1 DESCRIPTION
 
@@ -165,7 +165,8 @@ C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
 =head2 S3BucketName => Str
 
 Specifies the name of the Amazon S3 bucket designated for publishing
-log files. See Amazon S3 Bucket Naming Requirements.
+log files. See Amazon S3 Bucket Naming Requirements
+(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html).
 
 
 
@@ -173,8 +174,9 @@ log files. See Amazon S3 Bucket Naming Requirements.
 
 Specifies the Amazon S3 key prefix that comes after the name of the
 bucket you have designated for log file delivery. For more information,
-see Finding Your CloudTrail Log Files. The maximum length is 200
-characters.
+see Finding Your CloudTrail Log Files
+(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html).
+The maximum length is 200 characters.
 
 
 
@@ -192,9 +194,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateTrail i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

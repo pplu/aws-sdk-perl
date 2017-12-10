@@ -1,10 +1,12 @@
 
 package Paws::CognitoIdp::InitiateAuth;
   use Moose;
+  has AnalyticsMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::AnalyticsMetadataType');
   has AuthFlow => (is => 'ro', isa => 'Str', required => 1);
   has AuthParameters => (is => 'ro', isa => 'Paws::CognitoIdp::AuthParametersType');
   has ClientId => (is => 'ro', isa => 'Str', required => 1);
   has ClientMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::ClientMetadataType');
+  has UserContextData => (is => 'ro', isa => 'Paws::CognitoIdp::UserContextDataType');
 
   use MooseX::ClassAttribute;
 
@@ -17,7 +19,7 @@ package Paws::CognitoIdp::InitiateAuth;
 
 =head1 NAME
 
-Paws::CognitoIdp::InitiateAuth - Arguments for method InitiateAuth on Paws::CognitoIdp
+Paws::CognitoIdp::InitiateAuth - Arguments for method InitiateAuth on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -36,6 +38,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>
+
+The Amazon Pinpoint analytics metadata for collecting metrics for
+C<InitiateAuth> calls.
+
+
+
 =head2 B<REQUIRED> AuthFlow => Str
 
 The authentication flow for this call to execute. The API action will
@@ -50,8 +59,8 @@ tokens.
 
 =item *
 
-C<USER_SRP_AUTH> will take in USERNAME and SRPA and return the SRP
-variables to be used for next challenge execution.
+C<USER_SRP_AUTH> will take in C<USERNAME> and C<SRP_A> and return the
+SRP variables to be used for next challenge execution.
 
 =back
 
@@ -90,7 +99,7 @@ value of C<AuthFlow>:
 
 =item *
 
-For C<USER_SRP_AUTH>: C<USERNAME> (required), C<SRPA> (required),
+For C<USER_SRP_AUTH>: C<USERNAME> (required), C<SRP_A> (required),
 C<SECRET_HASH> (required if the app client is configured with a client
 secret), C<DEVICE_KEY>
 
@@ -124,6 +133,14 @@ used to implement additional validations around authentication.
 
 
 
+=head2 UserContextData => L<Paws::CognitoIdp::UserContextDataType>
+
+Contextual data such as the user's device fingerprint, IP address, or
+location used for evaluating the risk of an unexpected event by Amazon
+Cognito advanced security.
+
+
+
 
 =head1 SEE ALSO
 
@@ -131,9 +148,9 @@ This class forms part of L<Paws>, documenting arguments for method InitiateAuth 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

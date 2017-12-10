@@ -15,7 +15,7 @@ package Paws::ACM::AddTagsToCertificate;
 
 =head1 NAME
 
-Paws::ACM::AddTagsToCertificate - Arguments for method AddTagsToCertificate on Paws::ACM
+Paws::ACM::AddTagsToCertificate - Arguments for method AddTagsToCertificate on L<Paws::ACM>
 
 =head1 DESCRIPTION
 
@@ -42,7 +42,8 @@ to be applied. This must be of the form:
 C<arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012>
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces.
+AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
 
@@ -59,9 +60,9 @@ This class forms part of L<Paws>, documenting arguments for method AddTagsToCert
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

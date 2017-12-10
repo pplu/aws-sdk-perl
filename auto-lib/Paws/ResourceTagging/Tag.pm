@@ -34,8 +34,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ResourceTag
 
 The metadata that you apply to AWS resources to help you categorize and
 organize them. Each tag consists of a key and an optional value, both
-of which you define. For more information, see Tag Basics in the
-I<Amazon EC2 User Guide for Linux Instances>.
+of which you define. For more information, see Tag Basics
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-basics)
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 =head1 ATTRIBUTES
 
@@ -59,9 +60,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ResourceT
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

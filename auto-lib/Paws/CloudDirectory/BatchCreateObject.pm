@@ -35,14 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-Represents the output of a C<CreateObject> operation.
+Represents the output of a CreateObject operation.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> BatchReferenceName => Str
 
-  The batch reference name. See Batches for more information.
+  The batch reference name. See Batches
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches)
+for more information.
 
 
 =head2 B<REQUIRED> LinkName => Str
@@ -75,9 +77,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudDire
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

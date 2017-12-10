@@ -43,7 +43,7 @@ address followed by a C</32>, for example, 192.0.2.0/31. To block a
 range of IP addresses, you can specify a C</128>, C</64>, C</56>,
 C</48>, C</32>, C</24>, C</16>, or C</8> CIDR. For more information
 about CIDR notation, see the Wikipedia entry Classless Inter-Domain
-Routing.
+Routing (https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 =head1 ATTRIBUTES
 
@@ -80,9 +80,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::WAF>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

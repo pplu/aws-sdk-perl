@@ -36,6 +36,11 @@ A key-value pair. A tag consists of a tag key and a tag value. Tag keys
 and tag values are both required, but tag values can be empty (null)
 strings.
 
+For information about the rules that apply to tag keys and tag values,
+see User-Defined Tag Restrictions
+(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html)
+in the I<AWS Billing and Cost Management User Guide>.
+
 =head1 ATTRIBUTES
 
 
@@ -56,9 +61,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::KMS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

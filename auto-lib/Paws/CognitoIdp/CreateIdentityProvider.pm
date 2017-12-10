@@ -19,7 +19,7 @@ package Paws::CognitoIdp::CreateIdentityProvider;
 
 =head1 NAME
 
-Paws::CognitoIdp::CreateIdentityProvider - Arguments for method CreateIdentityProvider on Paws::CognitoIdp
+Paws::CognitoIdp::CreateIdentityProvider - Arguments for method CreateIdentityProvider on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -68,7 +68,7 @@ The identity provider name.
 
 The identity provider type.
 
-Valid values are: C<"SAML">
+Valid values are: C<"SAML">, C<"Facebook">, C<"Google">, C<"LoginWithAmazon">
 
 =head2 B<REQUIRED> UserPoolId => Str
 
@@ -83,9 +83,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateIdentit
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

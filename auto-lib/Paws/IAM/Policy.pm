@@ -46,7 +46,9 @@ This data type is used as a response element in the CreatePolicy,
 GetPolicy, and ListPolicies actions.
 
 For more information about managed policies, refer to Managed Policies
-and Inline Policies in the I<Using IAM> guide.
+and Inline Policies
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+in the I<Using IAM> guide.
 
 =head1 ATTRIBUTES
 
@@ -64,8 +66,8 @@ attached to.
 
 =head2 CreateDate => Str
 
-  The date and time, in ISO 8601 date-time format, when the policy was
-created.
+  The date and time, in ISO 8601 date-time format
+(http://www.iso.org/iso/iso8601), when the policy was created.
 
 
 =head2 DefaultVersionId => Str
@@ -92,16 +94,18 @@ role.
 
   The path to the policy.
 
-For more information about paths, see IAM Identifiers in the I<Using
-IAM> guide.
+For more information about paths, see IAM Identifiers
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+in the I<Using IAM> guide.
 
 
 =head2 PolicyId => Str
 
   The stable and unique string identifying the policy.
 
-For more information about IDs, see IAM Identifiers in the I<Using IAM>
-guide.
+For more information about IDs, see IAM Identifiers
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+in the I<Using IAM> guide.
 
 
 =head2 PolicyName => Str
@@ -111,8 +115,8 @@ guide.
 
 =head2 UpdateDate => Str
 
-  The date and time, in ISO 8601 date-time format, when the policy was
-last updated.
+  The date and time, in ISO 8601 date-time format
+(http://www.iso.org/iso/iso8601), when the policy was last updated.
 
 When a policy has only one version, this field contains the date and
 time when the policy was created. When a policy has more than one
@@ -127,9 +131,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

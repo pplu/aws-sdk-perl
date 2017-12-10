@@ -16,7 +16,7 @@ package Paws::RDS::ResetDBClusterParameterGroup;
 
 =head1 NAME
 
-Paws::RDS::ResetDBClusterParameterGroup - Arguments for method ResetDBClusterParameterGroup on Paws::RDS
+Paws::RDS::ResetDBClusterParameterGroup - Arguments for method ResetDBClusterParameterGroup on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -44,7 +44,7 @@ The name of the DB cluster parameter group to reset.
 =head2 Parameters => ArrayRef[L<Paws::RDS::Parameter>]
 
 A list of parameter names in the DB cluster parameter group to reset to
-the default values. You cannot use this parameter if the
+the default values. You can't use this parameter if the
 C<ResetAllParameters> parameter is set to C<true>.
 
 
@@ -53,8 +53,8 @@ C<ResetAllParameters> parameter is set to C<true>.
 
 A value that is set to C<true> to reset all parameters in the DB
 cluster parameter group to their default values, and C<false>
-otherwise. You cannot use this parameter if there is a list of
-parameter names specified for the C<Parameters> parameter.
+otherwise. You can't use this parameter if there is a list of parameter
+names specified for the C<Parameters> parameter.
 
 
 
@@ -65,9 +65,9 @@ This class forms part of L<Paws>, documenting arguments for method ResetDBCluste
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

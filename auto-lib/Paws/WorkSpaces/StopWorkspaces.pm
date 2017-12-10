@@ -14,7 +14,7 @@ package Paws::WorkSpaces::StopWorkspaces;
 
 =head1 NAME
 
-Paws::WorkSpaces::StopWorkspaces - Arguments for method StopWorkspaces on Paws::WorkSpaces
+Paws::WorkSpaces::StopWorkspaces - Arguments for method StopWorkspaces on L<Paws::WorkSpaces>
 
 =head1 DESCRIPTION
 
@@ -46,9 +46,9 @@ This class forms part of L<Paws>, documenting arguments for method StopWorkspace
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

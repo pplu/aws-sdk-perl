@@ -39,8 +39,9 @@ to the cluster. This structure contains a list of strings that
 indicates the software to use with the cluster and accepts a user
 argument list. Amazon EMR accepts and forwards the argument list to the
 corresponding installation script as bootstrap action argument. For
-more information, see Using the MapR Distribution for Hadoop. Currently
-supported values are:
+more information, see Using the MapR Distribution for Hadoop
+(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-mapr.html).
+Currently supported values are:
 
 =over
 
@@ -60,7 +61,7 @@ respectively.
 
 =back
 
-In Amazon EMR releases 4.0 and greater, the only accepted parameter is
+In Amazon EMR releases 4.x and later, the only accepted parameter is
 the application name. To pass arguments to applications, you supply a
 configuration for each application.
 
@@ -96,9 +97,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EMR>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -16,7 +16,7 @@ package Paws::Organizations::ListParents;
 
 =head1 NAME
 
-Paws::Organizations::ListParents - Arguments for method ListParents on Paws::Organizations
+Paws::Organizations::ListParents - Arguments for method ListParents on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
@@ -40,7 +40,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The unique identifier (ID) of the OU or account whose parent containers
 you want to list. Do not specify a root.
 
-The regex pattern for a child ID string requires one of the following:
+The regex pattern (http://wikipedia.org/wiki/regex) for a child ID
+string requires one of the following:
 
 =over
 
@@ -91,9 +92,9 @@ This class forms part of L<Paws>, documenting arguments for method ListParents i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

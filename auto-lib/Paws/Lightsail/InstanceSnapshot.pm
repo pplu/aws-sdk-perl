@@ -2,6 +2,7 @@ package Paws::Lightsail::InstanceSnapshot;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
+  has FromAttachedDisks => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Disk]', request_name => 'fromAttachedDisks', traits => ['NameInRequest']);
   has FromBlueprintId => (is => 'ro', isa => 'Str', request_name => 'fromBlueprintId', traits => ['NameInRequest']);
   has FromBundleId => (is => 'ro', isa => 'Str', request_name => 'fromBundleId', traits => ['NameInRequest']);
   has FromInstanceArn => (is => 'ro', isa => 'Str', request_name => 'fromInstanceArn', traits => ['NameInRequest']);
@@ -51,12 +52,18 @@ Describes the snapshot of the virtual private server, or I<instance>.
 =head2 Arn => Str
 
   The Amazon Resource Name (ARN) of the snapshot (e.g.,
-C<arn:aws:lightsail:us-east-1:123456789101:InstanceSnapshot/d23b5706-3322-4d83-81e5-12345EXAMPLE>).
+C<arn:aws:lightsail:us-east-2:123456789101:InstanceSnapshot/d23b5706-3322-4d83-81e5-12345EXAMPLE>).
 
 
 =head2 CreatedAt => Str
 
   The timestamp when the snapshot was created (e.g., C<1479907467.024>).
+
+
+=head2 FromAttachedDisks => ArrayRef[L<Paws::Lightsail::Disk>]
+
+  An array of disk objects containing information about all block storage
+disks.
 
 
 =head2 FromBlueprintId => Str
@@ -75,7 +82,7 @@ I<instance>) image used to create instances quickly.
 
   The Amazon Resource Name (ARN) of the instance from which the snapshot
 was created (e.g.,
-C<arn:aws:lightsail:us-east-1:123456789101:Instance/64b8404c-ccb1-430b-8daf-12345EXAMPLE>).
+C<arn:aws:lightsail:us-east-2:123456789101:Instance/64b8404c-ccb1-430b-8daf-12345EXAMPLE>).
 
 
 =head2 FromInstanceName => Str
@@ -128,9 +135,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Lightsail
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

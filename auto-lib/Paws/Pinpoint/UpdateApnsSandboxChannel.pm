@@ -2,7 +2,7 @@
 package Paws::Pinpoint::UpdateApnsSandboxChannel;
   use Moose;
   has APNSSandboxChannelRequest => (is => 'ro', isa => 'Paws::Pinpoint::APNSSandboxChannelRequest', required => 1);
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id' , required => 1);
+  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'APNSSandboxChannelRequest');
@@ -10,14 +10,13 @@ package Paws::Pinpoint::UpdateApnsSandboxChannel;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/channels/apns_sandbox');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::UpdateApnsSandboxChannelResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Pinpoint::UpdateApnsSandboxChannel - Arguments for method UpdateApnsSandboxChannel on Paws::Pinpoint
+Paws::Pinpoint::UpdateApnsSandboxChannel - Arguments for method UpdateApnsSandboxChannel on L<Paws::Pinpoint>
 
 =head1 DESCRIPTION
 
@@ -55,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateApnsSan
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

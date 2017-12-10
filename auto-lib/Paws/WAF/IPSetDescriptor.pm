@@ -63,7 +63,8 @@ C<192.0.2.0/24>.
 =back
 
 For more information about CIDR notation, see the Wikipedia entry
-Classless Inter-Domain Routing.
+Classless Inter-Domain Routing
+(https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 Specify an IPv6 address by using CIDR notation. For example:
 
@@ -93,9 +94,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::WAF>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

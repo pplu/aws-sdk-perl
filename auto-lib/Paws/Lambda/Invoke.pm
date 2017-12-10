@@ -1,12 +1,12 @@
 
 package Paws::Lambda::Invoke;
   use Moose;
-  has ClientContext => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Client-Context' );
-  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
-  has InvocationType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Invocation-Type' );
-  has LogType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Log-Type' );
+  has ClientContext => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Client-Context');
+  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
+  has InvocationType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Invocation-Type');
+  has LogType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Log-Type');
   has Payload => (is => 'ro', isa => 'Str');
-  has Qualifier => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Qualifier' );
+  has Qualifier => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Qualifier');
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Payload');
@@ -14,14 +14,13 @@ package Paws::Lambda::Invoke;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/invocations');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::InvocationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Lambda::Invoke - Arguments for method Invoke on Paws::Lambda
+Paws::Lambda::Invoke - Arguments for method Invoke on L<Paws::Lambda>
 
 =head1 DESCRIPTION
 
@@ -45,10 +44,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 Using the C<ClientContext> you can pass client-specific information to
 the Lambda function you are invoking. You can then process the client
 information in your Lambda function as you choose through the context
-variable. For an example of a C<ClientContext> JSON, see PutEvents in
-the I<Amazon Mobile Analytics API Reference and User Guide>.
+variable. For an example of a C<ClientContext> JSON, see PutEvents
+(http://docs.aws.amazon.com/mobileanalytics/latest/ug/PutEvents.html)
+in the I<Amazon Mobile Analytics API Reference and User Guide>.
 
-The ClientContext JSON must be base64-encoded.
+The ClientContext JSON must be base64-encoded and has a maximum size of
+3583 bytes.
 
 
 
@@ -116,9 +117,9 @@ This class forms part of L<Paws>, documenting arguments for method Invoke in L<P
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

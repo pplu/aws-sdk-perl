@@ -19,7 +19,7 @@ package Paws::EC2::CreateFpgaImage;
 
 =head1 NAME
 
-Paws::EC2::CreateFpgaImage - Arguments for method CreateFpgaImage on Paws::EC2
+Paws::EC2::CreateFpgaImage - Arguments for method CreateFpgaImage on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -42,7 +42,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see Ensuring
-Idempotency.
+Idempotency
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
 
 
 
@@ -87,9 +88,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateFpgaIma
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

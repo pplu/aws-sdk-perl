@@ -1,6 +1,7 @@
 package Paws::IoT::ThingAttribute;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::IoT::Attributes', request_name => 'attributes', traits => ['NameInRequest']);
+  has ThingArn => (is => 'ro', isa => 'Str', request_name => 'thingArn', traits => ['NameInRequest']);
   has ThingName => (is => 'ro', isa => 'Str', request_name => 'thingName', traits => ['NameInRequest']);
   has ThingTypeName => (is => 'ro', isa => 'Str', request_name => 'thingTypeName', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest']);
@@ -45,6 +46,11 @@ a list of thing attributes.
   A list of thing attributes which are name-value pairs.
 
 
+=head2 ThingArn => Str
+
+  The thing ARN.
+
+
 =head2 ThingName => Str
 
   The name of the thing.
@@ -68,9 +74,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::IoT>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

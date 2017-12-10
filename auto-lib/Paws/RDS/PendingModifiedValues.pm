@@ -52,7 +52,7 @@ action.
 =head2 AllocatedStorage => Int
 
   Contains the new C<AllocatedStorage> size for the DB instance that will
-be applied or is in progress.
+be applied or is currently being applied.
 
 
 =head2 BackupRetentionPeriod => Int
@@ -69,13 +69,13 @@ retained.
 =head2 DBInstanceClass => Str
 
   Contains the new C<DBInstanceClass> for the DB instance that will be
-applied or is in progress.
+applied or is currently being applied.
 
 
 =head2 DBInstanceIdentifier => Str
 
   Contains the new C<DBInstanceIdentifier> for the DB instance that will
-be applied or is in progress.
+be applied or is currently being applied.
 
 
 =head2 DBSubnetGroupName => Str
@@ -91,7 +91,7 @@ be applied or is in progress.
 =head2 Iops => Int
 
   Specifies the new Provisioned IOPS value for the DB instance that will
-be applied or is being applied.
+be applied or is currently being applied.
 
 
 =head2 LicenseModel => Str
@@ -104,8 +104,8 @@ C<general-public-license>
 
 =head2 MasterUserPassword => Str
 
-  Contains the pending or in-progress change of the master credentials
-for the DB instance.
+  Contains the pending or currently-in-progress change of the master
+credentials for the DB instance.
 
 
 =head2 MultiAZ => Bool
@@ -131,9 +131,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

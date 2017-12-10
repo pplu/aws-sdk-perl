@@ -60,8 +60,9 @@ gives the instance a two-minute warning before it terminates.
   The action to take when C<TargetSpotCapacity> has not been fulfilled
 when the C<TimeoutDurationMinutes> has expired. Spot instances are not
 uprovisioned within the Spot provisioining timeout. Valid values are
-C<TERMINATE_CLUSTER> and C<SWITCH_TO_ON_DEMAND> to fulfill the
-remaining capacity.
+C<TERMINATE_CLUSTER> and C<SWITCH_TO_ON_DEMAND>. SWITCH_TO_ON_DEMAND
+specifies that if no Spot instances are available, On-Demand Instances
+should be provisioned to fulfill any remaining Spot capacity.
 
 
 =head2 B<REQUIRED> TimeoutDurationMinutes => Int
@@ -79,9 +80,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EMR>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

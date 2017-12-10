@@ -16,7 +16,7 @@ package Paws::Kinesis::StopStreamEncryption;
 
 =head1 NAME
 
-Paws::Kinesis::StopStreamEncryption - Arguments for method StopStreamEncryption on Paws::Kinesis
+Paws::Kinesis::StopStreamEncryption - Arguments for method StopStreamEncryption on L<Paws::Kinesis>
 
 =head1 DESCRIPTION
 
@@ -37,28 +37,44 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> EncryptionType => Str
 
-The encryption type. This parameter can be one of the following values:
-
-=over
-
-=item *
-
-C<NONE>: Not valid for this operation. An C<InvalidOperationException>
-will be thrown.
-
-=item *
-
-C<KMS>: Use server-side encryption on the records in the stream using a
-customer-managed KMS key.
-
-=back
-
+The encryption type. The only valid value is C<KMS>.
 
 Valid values are: C<"NONE">, C<"KMS">
 
 =head2 B<REQUIRED> KeyId => Str
 
-The GUID for the customer-managed key that was used for encryption.
+The GUID for the customer-managed KMS key to use for encryption. This
+value can be a globally unique identifier, a fully specified ARN to
+either an alias or a key, or an alias name prefixed by "alias/".You can
+also use a master key owned by Kinesis Streams by specifying the alias
+C<aws/kinesis>.
+
+=over
+
+=item *
+
+Key ARN example:
+C<arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012>
+
+=item *
+
+Alias ARN example:
+C<arn:aws:kms:us-east-1:123456789012:alias/MyAliasName>
+
+=item *
+
+Globally unique key ID example: C<12345678-1234-1234-1234-123456789012>
+
+=item *
+
+Alias name example: C<alias/MyAliasName>
+
+=item *
+
+Master key owned by Kinesis Streams: C<alias/aws/kinesis>
+
+=back
+
 
 
 
@@ -75,9 +91,9 @@ This class forms part of L<Paws>, documenting arguments for method StopStreamEnc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

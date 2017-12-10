@@ -15,7 +15,7 @@ package Paws::ECS::UpdateContainerAgent;
 
 =head1 NAME
 
-Paws::ECS::UpdateContainerAgent - Arguments for method UpdateContainerAgent on Paws::ECS
+Paws::ECS::UpdateContainerAgent - Arguments for method UpdateContainerAgent on L<Paws::ECS>
 
 =head1 DESCRIPTION
 
@@ -44,9 +44,9 @@ the default cluster is assumed.
 
 =head2 B<REQUIRED> ContainerInstance => Str
 
-The container instance ID or full Amazon Resource Name (ARN) entries
-for the container instance on which you would like to update the Amazon
-ECS container agent.
+The container instance ID or full ARN entries for the container
+instance on which you would like to update the Amazon ECS container
+agent.
 
 
 
@@ -57,9 +57,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateContain
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

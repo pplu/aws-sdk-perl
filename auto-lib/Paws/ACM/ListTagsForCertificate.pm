@@ -14,7 +14,7 @@ package Paws::ACM::ListTagsForCertificate;
 
 =head1 NAME
 
-Paws::ACM::ListTagsForCertificate - Arguments for method ListTagsForCertificate on Paws::ACM
+Paws::ACM::ListTagsForCertificate - Arguments for method ListTagsForCertificate on L<Paws::ACM>
 
 =head1 DESCRIPTION
 
@@ -36,12 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> CertificateArn => Str
 
 String that contains the ARN of the ACM Certificate for which you want
-to list the tags. This has the following form:
+to list the tags. This must have the following form:
 
 C<arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012>
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces.
+AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
 
@@ -52,9 +53,9 @@ This class forms part of L<Paws>, documenting arguments for method ListTagsForCe
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

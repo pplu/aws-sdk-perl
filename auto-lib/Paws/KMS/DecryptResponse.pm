@@ -23,9 +23,8 @@ if no errors are encountered during the operation.
 
 =head2 Plaintext => Str
 
-Decrypted plaintext data. This value may not be returned if the
-customer master key is not available or if you didn't have permission
-to use it.
+Decrypted plaintext data. When you use the HTTP API or the AWS CLI, the
+value is Base64-encoded. Otherwise, it is not encoded.
 
 
 =head2 _request_id => Str

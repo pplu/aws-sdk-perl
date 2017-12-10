@@ -39,9 +39,13 @@ target.
 
 =head2 B<REQUIRED> HttpCode => Str
 
-  The HTTP codes. You can specify values between 200 and 499. The default
-value is 200. You can specify multiple values (for example, "200,202")
-or a range of values (for example, "200-299").
+  The HTTP codes.
+
+For Application Load Balancers, you can specify values between 200 and
+499, and the default value is 200. You can specify multiple values (for
+example, "200,202") or a range of values (for example, "200-299").
+
+For Network Load Balancers, this is 200 to 399.
 
 
 
@@ -51,9 +55,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ELBv2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

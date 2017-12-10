@@ -15,7 +15,7 @@ package Paws::IAM::SetDefaultPolicyVersion;
 
 =head1 NAME
 
-Paws::IAM::SetDefaultPolicyVersion - Arguments for method SetDefaultPolicyVersion on Paws::IAM
+Paws::IAM::SetDefaultPolicyVersion - Arguments for method SetDefaultPolicyVersion on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -40,7 +40,9 @@ The Amazon Resource Name (ARN) of the IAM policy whose default version
 you want to set.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces in the I<AWS General Reference>.
+AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+in the I<AWS General Reference>.
 
 
 
@@ -49,7 +51,9 @@ AWS Service Namespaces in the I<AWS General Reference>.
 The version of the policy to set as the default (operative) version.
 
 For more information about managed policy versions, see Versioning for
-Managed Policies in the I<IAM User Guide>.
+Managed Policies
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html)
+in the I<IAM User Guide>.
 
 
 
@@ -60,9 +64,9 @@ This class forms part of L<Paws>, documenting arguments for method SetDefaultPol
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

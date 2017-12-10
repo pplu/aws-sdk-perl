@@ -34,29 +34,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-The TagOption details.
+Information about a TagOption.
 
 =head1 ATTRIBUTES
 
 
 =head2 Active => Bool
 
-  The TagOptionDetail active state.
+  The TagOption active state.
 
 
 =head2 Id => Str
 
-  The TagOptionDetail identifier.
+  The TagOption identifier.
 
 
 =head2 Key => Str
 
-  The TagOptionDetail key.
+  The TagOption key.
 
 
 =head2 Value => Str
 
-  The TagOptionDetail value.
+  The TagOption value.
 
 
 
@@ -66,9 +66,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ServiceCa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

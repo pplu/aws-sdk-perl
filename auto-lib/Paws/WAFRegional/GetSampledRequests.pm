@@ -17,7 +17,7 @@ package Paws::WAFRegional::GetSampledRequests;
 
 =head1 NAME
 
-Paws::WAFRegional::GetSampledRequests - Arguments for method GetSampledRequests on Paws::WAFRegional
+Paws::WAFRegional::GetSampledRequests - Arguments for method GetSampledRequests on L<Paws::WAFRegional>
 
 =head1 DESCRIPTION
 
@@ -48,14 +48,15 @@ them.
 
 =head2 B<REQUIRED> RuleId => Str
 
-C<RuleId> is one of two values:
+C<RuleId> is one of three values:
 
 =over
 
 =item *
 
-The C<RuleId> of the C<Rule> for which you want C<GetSampledRequests>
-to return a sample of requests.
+The C<RuleId> of the C<Rule> or the C<RuleGroupId> of the C<RuleGroup>
+for which you want C<GetSampledRequests> to return a sample of
+requests.
 
 =item *
 
@@ -92,9 +93,9 @@ This class forms part of L<Paws>, documenting arguments for method GetSampledReq
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

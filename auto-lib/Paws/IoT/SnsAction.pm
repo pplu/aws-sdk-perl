@@ -45,7 +45,8 @@ are "JSON" and "RAW". The default value of the attribute is "RAW". SNS
 uses this setting to determine if the payload should be parsed and
 relevant platform-specific bits of the payload should be extracted. To
 read more about SNS message formats, see
-http://docs.aws.amazon.com/sns/latest/dg/json-formats.html refer to
+http://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+(http://docs.aws.amazon.com/sns/latest/dg/json-formats.html) refer to
 their official documentation.
 
 
@@ -66,9 +67,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::IoT>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

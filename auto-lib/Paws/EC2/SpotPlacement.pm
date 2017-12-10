@@ -42,20 +42,20 @@ This class has no description
 
   The Availability Zone.
 
-[Spot fleet only] To specify multiple Availability Zones, separate them
+[Spot Fleet only] To specify multiple Availability Zones, separate them
 using commas; for example, "us-west-2a, us-west-2b".
 
 
 =head2 GroupName => Str
 
-  The name of the placement group (for cluster instances).
+  The name of the placement group.
 
 
 =head2 Tenancy => Str
 
   The tenancy of the instance (if the instance is running in a VPC). An
 instance with a tenancy of C<dedicated> runs on single-tenant hardware.
-The C<host> tenancy is not supported for Spot instances.
+The C<host> tenancy is not supported for Spot Instances.
 
 
 
@@ -65,8 +65,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

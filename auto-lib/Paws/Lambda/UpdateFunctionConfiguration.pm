@@ -4,7 +4,7 @@ package Paws::Lambda::UpdateFunctionConfiguration;
   has DeadLetterConfig => (is => 'ro', isa => 'Paws::Lambda::DeadLetterConfig');
   has Description => (is => 'ro', isa => 'Str');
   has Environment => (is => 'ro', isa => 'Paws::Lambda::Environment');
-  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
+  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
   has Handler => (is => 'ro', isa => 'Str');
   has KMSKeyArn => (is => 'ro', isa => 'Str');
   has MemorySize => (is => 'ro', isa => 'Int');
@@ -20,14 +20,13 @@ package Paws::Lambda::UpdateFunctionConfiguration;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/configuration');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::FunctionConfiguration');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Lambda::UpdateFunctionConfiguration - Arguments for method UpdateFunctionConfiguration on Paws::Lambda
+Paws::Lambda::UpdateFunctionConfiguration - Arguments for method UpdateFunctionConfiguration on L<Paws::Lambda>
 
 =head1 DESCRIPTION
 
@@ -122,15 +121,12 @@ To use the Python runtime v3.6, set the value to "python3.6". To use
 the Python runtime v2.7, set the value to "python2.7". To use the
 Node.js runtime v6.10, set the value to "nodejs6.10". To use the
 Node.js runtime v4.3, set the value to "nodejs4.3". To use the Python
-runtime v3.6, set the value to "python3.6". To use the Python runtime
-v2.7, set the value to "python2.7".
+runtime v3.6, set the value to "python3.6".
 
 Node v0.10.42 is currently marked as deprecated. You must migrate
 existing functions to the newer Node.js runtime versions available on
-AWS Lambda (nodejs4.3 or nodejs6.10) as soon as possible. You can
-request a one-time extension until June 30, 2017 by going to the Lambda
-console and following the instructions provided. Failure to do so will
-result in an invalid parameter value error being returned. Note that
+AWS Lambda (nodejs4.3 or nodejs6.10) as soon as possible. Failure to do
+so will result in an invalid parameter error being returned. Note that
 you will have to follow this procedure for each region that contains
 functions written in the Node v0.10.42 runtime.
 
@@ -164,9 +160,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateFunctio
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -1,0 +1,107 @@
+
+package Paws::SageMaker::CreateNotebookInstance;
+  use Moose;
+  has InstanceType => (is => 'ro', isa => 'Str', required => 1);
+  has KmsKeyId => (is => 'ro', isa => 'Str');
+  has NotebookInstanceName => (is => 'ro', isa => 'Str', required => 1);
+  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has SubnetId => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateNotebookInstance');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMaker::CreateNotebookInstanceOutput');
+  class_has _result_key => (isa => 'Str', is => 'ro');
+1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::SageMaker::CreateNotebookInstance - Arguments for method CreateNotebookInstance on L<Paws::SageMaker>
+
+=head1 DESCRIPTION
+
+This class represents the parameters used for calling the method CreateNotebookInstance on the 
+Amazon SageMaker Service service. Use the attributes of this class
+as arguments to method CreateNotebookInstance.
+
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateNotebookInstance.
+
+As an example:
+
+  $service_obj->CreateNotebookInstance(Att1 => $value1, Att2 => $value2, ...);
+
+Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+
+=head1 ATTRIBUTES
+
+
+=head2 B<REQUIRED> InstanceType => Str
+
+The type of ML compute instance to launch for the notebook instance.
+
+Valid values are: C<"ml.t2.medium">, C<"ml.m4.xlarge">, C<"ml.p2.xlarge">
+
+=head2 KmsKeyId => Str
+
+If you provide a AWS KMS key ID, Amazon SageMaker uses it to encrypt
+data at rest on the ML storage volume that is attached to your notebook
+instance.
+
+
+
+=head2 B<REQUIRED> NotebookInstanceName => Str
+
+The name of the new notebook instance.
+
+
+
+=head2 B<REQUIRED> RoleArn => Str
+
+When you send any requests to AWS resources from the notebook instance,
+Amazon SageMaker assumes this role to perform tasks on your behalf. You
+must grant this role necessary permissions so Amazon SageMaker can
+perform these tasks. The policy must allow the Amazon SageMaker service
+principal (sagemaker.amazonaws.com) permissions to assume this role.
+For more information, see Amazon SageMaker Roles
+(http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
+
+
+
+=head2 SecurityGroupIds => ArrayRef[Str|Undef]
+
+The VPC security group IDs, in the form sg-xxxxxxxx. The security
+groups must be for the same VPC as specified in the subnet.
+
+
+
+=head2 SubnetId => Str
+
+The ID of the subnet in a VPC to which you would like to have a
+connectivity from your ML compute instance.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
+
+A list of tags to associate with the notebook instance. You can add
+tags later by using the C<CreateTags> API.
+
+
+
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, documenting arguments for method CreateNotebookInstance in L<Paws::SageMaker>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
+
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
+
+=cut
+

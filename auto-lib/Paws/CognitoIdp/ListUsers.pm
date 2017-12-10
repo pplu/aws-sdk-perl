@@ -18,7 +18,7 @@ package Paws::CognitoIdp::ListUsers;
 
 =head1 NAME
 
-Paws::CognitoIdp::ListUsers - Arguments for method ListUsers on Paws::CognitoIdp
+Paws::CognitoIdp::ListUsers - Arguments for method ListUsers on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 An array of strings, where each string is the name of a user attribute
 to be returned for each user in the search results. If the array is
-empty, all attributes are returned.
+null, all attributes are returned.
 
 
 
@@ -116,13 +116,19 @@ C<cognito:user_status> (called B<Enabled> in the Console)
 
 C<status> (case-insensitive)
 
+=item *
+
+C<sub>
+
 =back
 
 Custom attributes are not searchable.
 
 For more information, see Searching for Users Using the ListUsers API
-and Examples of Using the ListUsers API in the I<Amazon Cognito
-Developer Guide>.
+(http://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-using-listusers-api)
+and Examples of Using the ListUsers API
+(http://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-listusers-api-examples)
+in the I<Amazon Cognito Developer Guide>.
 
 
 
@@ -154,9 +160,9 @@ This class forms part of L<Paws>, documenting arguments for method ListUsers in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

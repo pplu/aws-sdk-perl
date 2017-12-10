@@ -4,6 +4,7 @@ package Paws::StorageGateway::UpdateNFSFileShare;
   has ClientList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DefaultStorageClass => (is => 'ro', isa => 'Str');
   has FileShareARN => (is => 'ro', isa => 'Str', required => 1);
+  has GuessMIMETypeEnabled => (is => 'ro', isa => 'Bool');
   has KMSEncrypted => (is => 'ro', isa => 'Bool');
   has KMSKey => (is => 'ro', isa => 'Str');
   has NFSFileShareDefaults => (is => 'ro', isa => 'Paws::StorageGateway::NFSFileShareDefaults');
@@ -21,7 +22,7 @@ package Paws::StorageGateway::UpdateNFSFileShare;
 
 =head1 NAME
 
-Paws::StorageGateway::UpdateNFSFileShare - Arguments for method UpdateNFSFileShare on Paws::StorageGateway
+Paws::StorageGateway::UpdateNFSFileShare - Arguments for method UpdateNFSFileShare on L<Paws::StorageGateway>
 
 =head1 DESCRIPTION
 
@@ -62,6 +63,13 @@ The Amazon Resource Name (ARN) of the file share to be updated.
 
 
 
+=head2 GuessMIMETypeEnabled => Bool
+
+Enables guessing of the MIME type for uploaded objects based on file
+extensions: "true" to enable MIME type guessing, and otherwise "false".
+
+
+
 =head2 KMSEncrypted => Bool
 
 True to use Amazon S3 server side encryption with your own AWS KMS key,
@@ -85,7 +93,7 @@ The default values for the file share. Optional.
 =head2 ReadOnly => Bool
 
 Sets the write status of a file share: "true" if the write status is
-read-only, and otherwise "false".
+read-only, otherwise "false".
 
 
 
@@ -119,9 +127,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateNFSFile
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

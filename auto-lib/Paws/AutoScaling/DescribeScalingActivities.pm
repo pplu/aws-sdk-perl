@@ -17,7 +17,7 @@ package Paws::AutoScaling::DescribeScalingActivities;
 
 =head1 NAME
 
-Paws::AutoScaling::DescribeScalingActivities - Arguments for method DescribeScalingActivities on Paws::AutoScaling
+Paws::AutoScaling::DescribeScalingActivities - Arguments for method DescribeScalingActivities on L<Paws::AutoScaling>
 
 =head1 DESCRIPTION
 
@@ -48,7 +48,7 @@ unknown activities are requested, they are ignored with no error.
 
 =head2 AutoScalingGroupName => Str
 
-The name of the group.
+The name of the Auto Scaling group.
 
 
 
@@ -73,9 +73,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeScali
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

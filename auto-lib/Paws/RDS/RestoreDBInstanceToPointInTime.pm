@@ -37,7 +37,7 @@ package Paws::RDS::RestoreDBInstanceToPointInTime;
 
 =head1 NAME
 
-Paws::RDS::RestoreDBInstanceToPointInTime - Arguments for method RestoreDBInstanceToPointInTime on Paws::RDS
+Paws::RDS::RestoreDBInstanceToPointInTime - Arguments for method RestoreDBInstanceToPointInTime on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -58,19 +58,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AutoMinorVersionUpgrade => Bool
 
-Indicates that minor version upgrades will be applied automatically to
-the DB instance during the maintenance window.
+Indicates that minor version upgrades are applied automatically to the
+DB instance during the maintenance window.
 
 
 
 =head2 AvailabilityZone => Str
 
-The EC2 Availability Zone that the database instance will be created
-in.
+The EC2 Availability Zone that the DB instance is created in.
 
 Default: A random, system-chosen Availability Zone.
 
-Constraint: You cannot specify the AvailabilityZone parameter if the
+Constraint: You can't specify the AvailabilityZone parameter if the
 MultiAZ parameter is set to true.
 
 Example: C<us-east-1a>
@@ -80,20 +79,19 @@ Example: C<us-east-1a>
 =head2 CopyTagsToSnapshot => Bool
 
 True to copy all tags from the restored DB instance to snapshots of the
-DB instance; otherwise false. The default is false.
+DB instance, and otherwise false. The default is false.
 
 
 
 =head2 DBInstanceClass => Str
 
-The compute and memory capacity of the Amazon RDS DB instance.
-
-Valid Values: C<db.t1.micro | db.m1.small | db.m1.medium | db.m1.large
-| db.m1.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium |
-db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge
-| db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large |
-db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge |
-db.t2.micro | db.t2.small | db.t2.medium | db.t2.large>
+The compute and memory capacity of the Amazon RDS DB instance, for
+example, C<db.m4.large>. Not all DB instance classes are available in
+all AWS Regions, or for all database engines. For the full list of DB
+instance classes, and availability for your engine, see DB Instance
+Class
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
+in the Amazon RDS User Guide.
 
 Default: The same DBInstanceClass as the original DB instance.
 
@@ -111,8 +109,8 @@ This parameter is not used for the MySQL or MariaDB engines.
 
 The DB subnet group name to use for the new instance.
 
-Constraints: Must contain no more than 255 alphanumeric characters,
-periods, underscores, spaces, or hyphens. Must not be default.
+Constraints: If supplied, must match the name of an existing
+DBSubnetGroup.
 
 Example: C<mySubnetgroup>
 
@@ -134,7 +132,7 @@ the Directory Service.
 =head2 EnableIAMDatabaseAuthentication => Bool
 
 True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts; otherwise false.
+accounts to database accounts, and otherwise false.
 
 You can enable IAM database authentication for the following database
 engines
@@ -167,9 +165,64 @@ Default: The same as source
 
 Constraint: Must be compatible with the engine of the source
 
-Valid Values: C<MySQL> | C<mariadb> | C<oracle-se1> | C<oracle-se> |
-C<oracle-ee> | C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> |
-C<sqlserver-web> | C<postgres> | C<aurora>
+Valid Values:
+
+=over
+
+=item *
+
+C<aurora>
+
+=item *
+
+C<aurora-postgresql>
+
+=item *
+
+C<mariadb>
+
+=item *
+
+C<mysql>
+
+=item *
+
+C<oracle-ee>
+
+=item *
+
+C<oracle-se2>
+
+=item *
+
+C<oracle-se1>
+
+=item *
+
+C<oracle-se>
+
+=item *
+
+C<postgres>
+
+=item *
+
+C<sqlserver-ee>
+
+=item *
+
+C<sqlserver-se>
+
+=item *
+
+C<sqlserver-ex>
+
+=item *
+
+C<sqlserver-web>
+
+=back
+
 
 
 
@@ -202,7 +255,7 @@ C<general-public-license>
 
 Specifies if the DB instance is a Multi-AZ deployment.
 
-Constraint: You cannot specify the AvailabilityZone parameter if the
+Constraint: You can't specify the AvailabilityZone parameter if the
 MultiAZ parameter is set to C<true>.
 
 
@@ -212,9 +265,8 @@ MultiAZ parameter is set to C<true>.
 The name of the option group to be used for the restored DB instance.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
-TDE, cannot be removed from an option group, and that option group
-cannot be removed from a DB instance once it is associated with a DB
-instance
+TDE, can't be removed from an option group, and that option group can't
+be removed from a DB instance once it is associated with a DB instance
 
 
 
@@ -253,10 +305,10 @@ B<VPC:>false
 =back
 
 If no DB subnet group has been specified as part of the request and the
-PubliclyAccessible value has not been set, the DB instance will be
-publicly accessible. If a specific DB subnet group has been specified
-as part of the request and the PubliclyAccessible value has not been
-set, the DB instance will be private.
+PubliclyAccessible value has not been set, the DB instance is publicly
+accessible. If a specific DB subnet group has been specified as part of
+the request and the PubliclyAccessible value has not been set, the DB
+instance is private.
 
 
 
@@ -295,19 +347,7 @@ Constraints:
 
 =item *
 
-Must be the identifier of an existing database instance
-
-=item *
-
-Must contain from 1 to 63 alphanumeric characters or hyphens
-
-=item *
-
-First character must be a letter
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens
+Must match the identifier of an existing DBInstance.
 
 =back
 
@@ -323,7 +363,7 @@ Valid values: C<standard | gp2 | io1>
 If you specify C<io1>, you must also include a value for the C<Iops>
 parameter.
 
-Default: C<io1> if the C<Iops> parameter is specified; otherwise
+Default: C<io1> if the C<Iops> parameter is specified, otherwise
 C<standard>
 
 
@@ -336,7 +376,7 @@ C<standard>
 
 =head2 B<REQUIRED> TargetDBInstanceIdentifier => Str
 
-The name of the new database instance to be created.
+The name of the new DB instance to be created.
 
 Constraints:
 
@@ -344,7 +384,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens
+Must contain from 1 to 63 letters, numbers, or hyphens
 
 =item *
 
@@ -361,14 +401,14 @@ Cannot end with a hyphen or contain two consecutive hyphens
 
 =head2 TdeCredentialArn => Str
 
-The ARN from the Key Store with which to associate the instance for TDE
+The ARN from the key store with which to associate the instance for TDE
 encryption.
 
 
 
 =head2 TdeCredentialPassword => Str
 
-The password for the given ARN from the Key Store in order to access
+The password for the given ARN from the key store in order to access
 the device.
 
 
@@ -391,9 +431,9 @@ This class forms part of L<Paws>, documenting arguments for method RestoreDBInst
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

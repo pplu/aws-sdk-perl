@@ -1,6 +1,7 @@
 
 package Paws::CloudWatchLogs::CreateLogGroup;
   use Moose;
+  has KmsKeyId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'kmsKeyId' );
   has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
   has Tags => (is => 'ro', isa => 'Paws::CloudWatchLogs::Tags', traits => ['NameInRequest'], request_name => 'tags' );
 
@@ -15,7 +16,7 @@ package Paws::CloudWatchLogs::CreateLogGroup;
 
 =head1 NAME
 
-Paws::CloudWatchLogs::CreateLogGroup - Arguments for method CreateLogGroup on Paws::CloudWatchLogs
+Paws::CloudWatchLogs::CreateLogGroup - Arguments for method CreateLogGroup on L<Paws::CloudWatchLogs>
 
 =head1 DESCRIPTION
 
@@ -32,6 +33,15 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 KmsKeyId => Str
+
+The Amazon Resource Name (ARN) of the CMK to use when encrypting log
+data. For more information, see Amazon Resource Names - AWS Key
+Management Service (AWS KMS)
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms).
+
 
 
 =head2 B<REQUIRED> LogGroupName => Str
@@ -53,9 +63,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateLogGrou
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

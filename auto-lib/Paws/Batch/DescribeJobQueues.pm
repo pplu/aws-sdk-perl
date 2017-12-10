@@ -1,9 +1,9 @@
 
 package Paws::Batch::DescribeJobQueues;
   use Moose;
-  has JobQueues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  has JobQueues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'jobQueues');
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
 
   use MooseX::ClassAttribute;
 
@@ -11,14 +11,13 @@ package Paws::Batch::DescribeJobQueues;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/describejobqueues');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Batch::DescribeJobQueuesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Batch::DescribeJobQueues - Arguments for method DescribeJobQueues on Paws::Batch
+Paws::Batch::DescribeJobQueues - Arguments for method DescribeJobQueues on L<Paws::Batch>
 
 =head1 DESCRIPTION
 
@@ -78,9 +77,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeJobQu
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

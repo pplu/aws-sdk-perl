@@ -59,7 +59,7 @@ configure custom timeout lengths using the CloudFront API. The minimum
 timeout length is 1 second; the maximum is 60 seconds.
 
 If you need to increase the maximum time limit, contact the AWS Support
-Center.
+Center (https://console.aws.amazon.com/support/home#/).
 
 
 =head2 B<REQUIRED> OriginProtocolPolicy => Str
@@ -75,7 +75,7 @@ configure custom timeout lengths using the CloudFront API. The minimum
 timeout length is 4 seconds; the maximum is 60 seconds.
 
 If you need to increase the maximum time limit, contact the AWS Support
-Center.
+Center (https://console.aws.amazon.com/support/home#/).
 
 
 =head2 OriginSslProtocols => L<Paws::CloudFront::OriginSslProtocols>
@@ -91,9 +91,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudFron
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

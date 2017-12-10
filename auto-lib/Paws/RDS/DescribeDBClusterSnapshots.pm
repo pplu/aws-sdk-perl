@@ -21,7 +21,7 @@ package Paws::RDS::DescribeDBClusterSnapshots;
 
 =head1 NAME
 
-Paws::RDS::DescribeDBClusterSnapshots - Arguments for method DescribeDBClusterSnapshots on Paws::RDS
+Paws::RDS::DescribeDBClusterSnapshots - Arguments for method DescribeDBClusterSnapshots on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -43,7 +43,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 DBClusterIdentifier => Str
 
 The ID of the DB cluster to retrieve the list of DB cluster snapshots
-for. This parameter cannot be used in conjunction with the
+for. This parameter can't be used in conjunction with the
 C<DBClusterSnapshotIdentifier> parameter. This parameter is not
 case-sensitive.
 
@@ -53,15 +53,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens
-
-=item *
-
-First character must be a letter
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens
+If supplied, must match the identifier of an existing DBCluster.
 
 =back
 
@@ -71,8 +63,8 @@ Cannot end with a hyphen or contain two consecutive hyphens
 =head2 DBClusterSnapshotIdentifier => Str
 
 A specific DB cluster snapshot identifier to describe. This parameter
-cannot be used in conjunction with the C<DBClusterIdentifier>
-parameter. This value is stored as a lowercase string.
+can't be used in conjunction with the C<DBClusterIdentifier> parameter.
+This value is stored as a lowercase string.
 
 Constraints:
 
@@ -80,15 +72,8 @@ Constraints:
 
 =item *
 
-Must be 1 to 255 alphanumeric characters
-
-=item *
-
-First character must be a letter
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens
+If supplied, must match the identifier of an existing
+DBClusterSnapshot.
 
 =item *
 
@@ -108,10 +93,9 @@ This parameter is not currently supported.
 
 =head2 IncludePublic => Bool
 
-Set this value to C<true> to include manual DB cluster snapshots that
-are public and can be copied or restored by any AWS account, otherwise
-set this value to C<false>. The default is C<false>. The default is
-false.
+True to include manual DB cluster snapshots that are public and can be
+copied or restored by any AWS account, and otherwise false. The default
+is C<false>. The default is false.
 
 You can share a manual DB cluster snapshot as public by using the
 ModifyDBClusterSnapshotAttribute API action.
@@ -120,10 +104,9 @@ ModifyDBClusterSnapshotAttribute API action.
 
 =head2 IncludeShared => Bool
 
-Set this value to C<true> to include shared manual DB cluster snapshots
-from other AWS accounts that this AWS account has been given permission
-to copy or restore, otherwise set this value to C<false>. The default
-is C<false>.
+True to include shared manual DB cluster snapshots from other AWS
+accounts that this AWS account has been given permission to copy or
+restore, and otherwise false. The default is C<false>.
 
 You can give an AWS account permission to restore a manual DB cluster
 snapshot from another AWS account by the
@@ -203,9 +186,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeDBClu
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

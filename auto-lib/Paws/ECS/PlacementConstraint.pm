@@ -33,8 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Placem
 =head1 DESCRIPTION
 
 An object representing a constraint on task placement. For more
-information, see Task Placement Constraints in the I<Amazon EC2
-Container Service Developer Guide>.
+information, see Task Placement Constraints
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 =head1 ATTRIBUTES
 
@@ -44,15 +45,16 @@ Container Service Developer Guide>.
   A cluster query language expression to apply to the constraint. Note
 you cannot specify an expression if the constraint type is
 C<distinctInstance>. For more information, see Cluster Query Language
-in the I<Amazon EC2 Container Service Developer Guide>.
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 Type => Str
 
   The type of constraint. Use C<distinctInstance> to ensure that each
 task in a particular group is running on a different container
-instance. Use C<memberOf> to restrict selection to a group of valid
-candidates. Note that C<distinctInstance> is not supported in task
+instance. Use C<memberOf> to restrict the selection to a group of valid
+candidates. The value C<distinctInstance> is not supported in task
 definitions.
 
 
@@ -63,9 +65,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ECS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

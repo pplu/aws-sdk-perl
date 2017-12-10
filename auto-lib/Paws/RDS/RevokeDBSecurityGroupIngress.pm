@@ -18,7 +18,7 @@ package Paws::RDS::RevokeDBSecurityGroupIngress;
 
 =head1 NAME
 
-Paws::RDS::RevokeDBSecurityGroupIngress - Arguments for method RevokeDBSecurityGroupIngress on Paws::RDS
+Paws::RDS::RevokeDBSecurityGroupIngress - Arguments for method RevokeDBSecurityGroupIngress on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The IP range to revoke access from. Must be a valid CIDR range. If
 C<CIDRIP> is specified, C<EC2SecurityGroupName>, C<EC2SecurityGroupId>
-and C<EC2SecurityGroupOwnerId> cannot be provided.
+and C<EC2SecurityGroupOwnerId> can't be provided.
 
 
 
@@ -86,9 +86,9 @@ This class forms part of L<Paws>, documenting arguments for method RevokeDBSecur
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

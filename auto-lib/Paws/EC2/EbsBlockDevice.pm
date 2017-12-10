@@ -3,6 +3,7 @@ package Paws::EC2::EbsBlockDevice;
   has DeleteOnTermination => (is => 'ro', isa => 'Bool', request_name => 'deleteOnTermination', traits => ['NameInRequest']);
   has Encrypted => (is => 'ro', isa => 'Bool', request_name => 'encrypted', traits => ['NameInRequest']);
   has Iops => (is => 'ro', isa => 'Int', request_name => 'iops', traits => ['NameInRequest']);
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has SnapshotId => (is => 'ro', isa => 'Str', request_name => 'snapshotId', traits => ['NameInRequest']);
   has VolumeSize => (is => 'ro', isa => 'Int', request_name => 'volumeSize', traits => ['NameInRequest']);
   has VolumeType => (is => 'ro', isa => 'Str', request_name => 'volumeType', traits => ['NameInRequest']);
@@ -48,9 +49,11 @@ This class has no description
 
 =head2 Encrypted => Bool
 
-  Indicates whether the EBS volume is encrypted. Encrypted Amazon EBS
-volumes may only be attached to instances that support Amazon EBS
-encryption.
+  Indicates whether the EBS volume is encrypted. Encrypted volumes can
+only be attached to instances that support Amazon EBS encryption. If
+you are creating a volume from a snapshot, you can't specify an
+encryption value. This is because only blank volumes can be encrypted
+on creation.
 
 
 =head2 Iops => Int
@@ -61,7 +64,9 @@ provisioned for the volume. For C<gp2>, this represents the baseline
 performance of the volume and the rate at which the volume accumulates
 I/O credits for bursting. For more information about General Purpose
 SSD baseline performance, I/O credits, and bursting, see Amazon EBS
-Volume Types in the I<Amazon Elastic Compute Cloud User Guide>.
+Volume Types
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Constraint: Range is 100-20000 IOPS for C<io1> volumes and 100-10000
 IOPS for C<gp2> volumes.
@@ -69,6 +74,19 @@ IOPS for C<gp2> volumes.
 Condition: This parameter is required for requests to create C<io1>
 volumes; it is not used in requests to create C<gp2>, C<st1>, C<sc1>,
 or C<standard> volumes.
+
+
+=head2 KmsKeyId => Str
+
+  ID for a user-managed CMK under which the EBS volume is encrypted.
+
+Note: This parameter is only supported on C<BlockDeviceMapping> objects
+called by RunInstances
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html),
+RequestSpotFleet
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotFleet.html),
+and RequestSpotInstances
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotInstances.html).
 
 
 =head2 SnapshotId => Str
@@ -104,8 +122,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

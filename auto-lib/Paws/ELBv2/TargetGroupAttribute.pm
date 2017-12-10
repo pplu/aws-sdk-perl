@@ -52,21 +52,26 @@ default value is 300 seconds.
 
 =item *
 
-C<stickiness.enabled> - Indicates whether sticky sessions are enabled.
-The value is C<true> or C<false>.
+C<proxy_protocol_v2.enabled> - [Network Load Balancers] Indicates
+whether Proxy Protocol version 2 is enabled.
 
 =item *
 
-C<stickiness.type> - The type of sticky sessions. The possible value is
-C<lb_cookie>.
+C<stickiness.enabled> - [Application Load Balancers] Indicates whether
+sticky sessions are enabled. The value is C<true> or C<false>.
 
 =item *
 
-C<stickiness.lb_cookie.duration_seconds> - The time period, in seconds,
-during which requests from a client should be routed to the same
-target. After this time period expires, the load balancer-generated
-cookie is considered stale. The range is 1 second to 1 week (604800
-seconds). The default value is 1 day (86400 seconds).
+C<stickiness.type> - [Application Load Balancers] The type of sticky
+sessions. The possible value is C<lb_cookie>.
+
+=item *
+
+C<stickiness.lb_cookie.duration_seconds> - [Application Load Balancers]
+The time period, in seconds, during which requests from a client should
+be routed to the same target. After this time period expires, the load
+balancer-generated cookie is considered stale. The range is 1 second to
+1 week (604800 seconds). The default value is 1 day (86400 seconds).
 
 =back
 
@@ -84,9 +89,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ELBv2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

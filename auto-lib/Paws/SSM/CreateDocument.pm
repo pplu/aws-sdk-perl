@@ -2,8 +2,10 @@
 package Paws::SSM::CreateDocument;
   use Moose;
   has Content => (is => 'ro', isa => 'Str', required => 1);
+  has DocumentFormat => (is => 'ro', isa => 'Str');
   has DocumentType => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has TargetType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -16,7 +18,7 @@ package Paws::SSM::CreateDocument;
 
 =head1 NAME
 
-Paws::SSM::CreateDocument - Arguments for method CreateDocument on Paws::SSM
+Paws::SSM::CreateDocument - Arguments for method CreateDocument on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -37,9 +39,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Content => Str
 
-A valid JSON string.
+A valid JSON or YAML string.
 
 
+
+=head2 DocumentFormat => Str
+
+Specify the document format for the request. The document format can be
+either JSON or YAML. JSON is the default format.
+
+Valid values are: C<"YAML">, C<"JSON">
 
 =head2 DocumentType => Str
 
@@ -54,6 +63,19 @@ A name for the Systems Manager document.
 
 
 
+=head2 TargetType => Str
+
+Specify a target type to define the kinds of resources the document can
+run on. For example, to run a document on EC2 instances, specify the
+following value: /AWS::EC2::Instance. If you specify a value of '/' the
+document can run on all types of resources. If you don't specify a
+value, the document can't run on any resources. For a list of valid
+resource types, see AWS Resource Types Reference
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
+in the I<AWS CloudFormation User Guide>.
+
+
+
 
 =head1 SEE ALSO
 
@@ -61,9 +83,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateDocumen
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

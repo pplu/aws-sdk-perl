@@ -110,20 +110,20 @@ Possible build statuses include the following:
 
 =item *
 
-B<INITIALIZED> E<ndash> A new build has been defined, but no files have
-been uploaded. You cannot create fleets for builds that are in this
-status. When a build is successfully created, the build status is set
-to this value.
+B<INITIALIZED> -- A new build has been defined, but no files have been
+uploaded. You cannot create fleets for builds that are in this status.
+When a build is successfully created, the build status is set to this
+value.
 
 =item *
 
-B<READY> E<ndash> The game build has been successfully uploaded. You
-can now create new fleets for this build.
+B<READY> -- The game build has been successfully uploaded. You can now
+create new fleets for this build.
 
 =item *
 
-B<FAILED> E<ndash> The game build upload failed. You cannot create new
-fleets for this build.
+B<FAILED> -- The game build upload failed. You cannot create new fleets
+for this build.
 
 =back
 
@@ -142,9 +142,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::GameLift>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

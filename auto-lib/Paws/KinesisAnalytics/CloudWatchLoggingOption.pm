@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 =head1 DESCRIPTION
 
 Provides a description of CloudWatch logging options, including the log
-stream ARN and the role ARN.
+stream Amazon Resource Name (ARN) and the role ARN.
 
 =head1 ATTRIBUTES
 
@@ -46,8 +46,8 @@ stream ARN and the role ARN.
 =head2 B<REQUIRED> RoleARN => Str
 
   IAM ARN of the role to use to send application messages. Note: To write
-application messages to CloudWatch, the IAM role used must have the
-C<PutLogEvents> policy action enabled.
+application messages to CloudWatch, the IAM role that is used must have
+the C<PutLogEvents> policy action enabled.
 
 
 
@@ -57,9 +57,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::KinesisAn
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

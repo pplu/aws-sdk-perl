@@ -56,7 +56,7 @@ Describes an instance (a virtual private server).
 =head2 Arn => Str
 
   The Amazon Resource Name (ARN) of the instance (e.g.,
-C<arn:aws:lightsail:us-east-1:123456789101:Instance/244ad76f-8aad-4741-809f-12345EXAMPLE>).
+C<arn:aws:lightsail:us-east-2:123456789101:Instance/244ad76f-8aad-4741-809f-12345EXAMPLE>).
 
 
 =head2 BlueprintId => Str
@@ -102,8 +102,7 @@ assigned to it.
 
 =head2 Name => Str
 
-  The name the user gave the instance (e.g.,
-C<Amazon_Linux-1GB-Virginia-1>).
+  The name the user gave the instance (e.g., C<Amazon_Linux-1GB-Ohio-1>).
 
 
 =head2 Networking => L<Paws::Lightsail::InstanceNetworking>
@@ -158,9 +157,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Lightsail
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

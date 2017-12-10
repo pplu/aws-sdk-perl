@@ -1,7 +1,7 @@
 
 package Paws::ApiGateway::DeleteApiKey;
   use Moose;
-  has ApiKey => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiKey' , required => 1);
+  has ApiKey => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiKey', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -9,14 +9,13 @@ package Paws::ApiGateway::DeleteApiKey;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/apikeys/{api_Key}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::DeleteApiKey - Arguments for method DeleteApiKey on Paws::ApiGateway
+Paws::ApiGateway::DeleteApiKey - Arguments for method DeleteApiKey on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -48,9 +47,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteApiKey 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

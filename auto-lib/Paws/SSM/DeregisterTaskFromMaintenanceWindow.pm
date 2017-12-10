@@ -15,7 +15,7 @@ package Paws::SSM::DeregisterTaskFromMaintenanceWindow;
 
 =head1 NAME
 
-Paws::SSM::DeregisterTaskFromMaintenanceWindow - Arguments for method DeregisterTaskFromMaintenanceWindow on Paws::SSM
+Paws::SSM::DeregisterTaskFromMaintenanceWindow - Arguments for method DeregisterTaskFromMaintenanceWindow on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -53,9 +53,9 @@ This class forms part of L<Paws>, documenting arguments for method DeregisterTas
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

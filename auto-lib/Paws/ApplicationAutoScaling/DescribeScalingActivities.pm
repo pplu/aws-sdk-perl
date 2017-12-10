@@ -18,7 +18,7 @@ package Paws::ApplicationAutoScaling::DescribeScalingActivities;
 
 =head1 NAME
 
-Paws::ApplicationAutoScaling::DescribeScalingActivities - Arguments for method DescribeScalingActivities on Paws::ApplicationAutoScaling
+Paws::ApplicationAutoScaling::DescribeScalingActivities - Arguments for method DescribeScalingActivities on L<Paws::ApplicationAutoScaling>
 
 =head1 DESCRIPTION
 
@@ -98,6 +98,11 @@ DynamoDB global secondary index - The resource type is C<index> and the
 unique identifier is the resource ID. Example:
 C<table/my-table/index/my-table-index>.
 
+=item *
+
+Aurora DB cluster - The resource type is C<cluster> and the unique
+identifier is the cluster name. Example: C<cluster:my-db-cluster>.
+
 =back
 
 
@@ -150,17 +155,24 @@ a DynamoDB global secondary index.
 C<dynamodb:index:WriteCapacityUnits> - The provisioned write capacity
 for a DynamoDB global secondary index.
 
+=item *
+
+C<rds:cluster:ReadReplicaCount> - The count of Aurora Replicas in an
+Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+
 =back
 
 
-Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">
+Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">, C<"rds:cluster:ReadReplicaCount">
 
 =head2 B<REQUIRED> ServiceNamespace => Str
 
 The namespace of the AWS service. For more information, see AWS Service
-Namespaces in the I<Amazon Web Services General Reference>.
+Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+in the I<Amazon Web Services General Reference>.
 
-Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">
+Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">
 
 
 =head1 SEE ALSO
@@ -169,9 +181,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeScali
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

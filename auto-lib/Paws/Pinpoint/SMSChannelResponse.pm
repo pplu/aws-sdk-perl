@@ -3,6 +3,7 @@ package Paws::Pinpoint::SMSChannelResponse;
   has ApplicationId => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
+  has HasCredential => (is => 'ro', isa => 'Bool');
   has Id => (is => 'ro', isa => 'Str');
   has IsArchived => (is => 'ro', isa => 'Bool');
   has LastModifiedBy => (is => 'ro', isa => 'Str');
@@ -48,7 +49,7 @@ SMS Channel Response.
 
 =head2 ApplicationId => Str
 
-  Application id
+  The unique ID of the application to which the SMS channel belongs.
 
 
 =head2 CreationDate => Str
@@ -59,6 +60,11 @@ SMS Channel Response.
 =head2 Enabled => Bool
 
   If the channel is enabled for sending messages.
+
+
+=head2 HasCredential => Bool
+
+  If the channel is registered with a credential for authentication.
 
 
 =head2 Id => Str
@@ -108,9 +114,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

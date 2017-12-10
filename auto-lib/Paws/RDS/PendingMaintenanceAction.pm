@@ -49,16 +49,16 @@ resource.
 
 =head2 AutoAppliedAfterDate => Str
 
-  The date of the maintenance window when the action will be applied. The
-maintenance action will be applied to the resource during its first
+  The date of the maintenance window when the action is applied. The
+maintenance action is applied to the resource during its first
 maintenance window after this date. If this date is specified, any
 C<next-maintenance> opt-in requests are ignored.
 
 
 =head2 CurrentApplyDate => Str
 
-  The effective date when the pending maintenance action will be applied
-to the resource. This date takes into account opt-in requests received
+  The effective date when the pending maintenance action is applied to
+the resource. This date takes into account opt-in requests received
 from the ApplyPendingMaintenanceAction API, the
 C<AutoAppliedAfterDate>, and the C<ForcedApplyDate>. This value is
 blank if an opt-in request has not been received and nothing has been
@@ -72,10 +72,10 @@ specified as C<AutoAppliedAfterDate> or C<ForcedApplyDate>.
 
 =head2 ForcedApplyDate => Str
 
-  The date when the maintenance action will be automatically applied. The
-maintenance action will be applied to the resource on this date
-regardless of the maintenance window for the resource. If this date is
-specified, any C<immediate> opt-in requests are ignored.
+  The date when the maintenance action is automatically applied. The
+maintenance action is applied to the resource on this date regardless
+of the maintenance window for the resource. If this date is specified,
+any C<immediate> opt-in requests are ignored.
 
 
 =head2 OptInStatus => Str
@@ -91,9 +91,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

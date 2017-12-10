@@ -16,7 +16,7 @@ package Paws::EC2::ModifySpotFleetRequest;
 
 =head1 NAME
 
-Paws::EC2::ModifySpotFleetRequest - Arguments for method ModifySpotFleetRequest on Paws::EC2
+Paws::EC2::ModifySpotFleetRequest - Arguments for method ModifySpotFleetRequest on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -37,15 +37,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ExcessCapacityTerminationPolicy => Str
 
-Indicates whether running Spot instances should be terminated if the
-target capacity of the Spot fleet request is decreased below the
-current size of the Spot fleet.
+Indicates whether running Spot Instances should be terminated if the
+target capacity of the Spot Fleet request is decreased below the
+current size of the Spot Fleet.
 
 Valid values are: C<"noTermination">, C<"default">
 
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 
-The ID of the Spot fleet request.
+The ID of the Spot Fleet request.
 
 
 
@@ -62,9 +62,9 @@ This class forms part of L<Paws>, documenting arguments for method ModifySpotFle
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

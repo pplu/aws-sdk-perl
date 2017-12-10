@@ -19,7 +19,7 @@ package Paws::ECS::ListAttributes;
 
 =head1 NAME
 
-Paws::ECS::ListAttributes - Arguments for method ListAttributes on Paws::ECS
+Paws::ECS::ListAttributes - Arguments for method ListAttributes on L<Paws::ECS>
 
 =head1 DESCRIPTION
 
@@ -77,8 +77,7 @@ results and a C<nextToken> value if applicable.
 The C<nextToken> value returned from a previous paginated
 C<ListAttributes> request where C<maxResults> was used and the results
 exceeded the value of that parameter. Pagination continues from the end
-of the previous results that returned the C<nextToken> value. This
-value is C<null> when there are no more results to return.
+of the previous results that returned the C<nextToken> value.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic
@@ -99,9 +98,9 @@ This class forms part of L<Paws>, documenting arguments for method ListAttribute
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

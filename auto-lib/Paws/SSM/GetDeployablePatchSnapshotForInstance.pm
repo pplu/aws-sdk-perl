@@ -15,7 +15,7 @@ package Paws::SSM::GetDeployablePatchSnapshotForInstance;
 
 =head1 NAME
 
-Paws::SSM::GetDeployablePatchSnapshotForInstance - Arguments for method GetDeployablePatchSnapshotForInstance on Paws::SSM
+Paws::SSM::GetDeployablePatchSnapshotForInstance - Arguments for method GetDeployablePatchSnapshotForInstance on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -54,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method GetDeployable
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

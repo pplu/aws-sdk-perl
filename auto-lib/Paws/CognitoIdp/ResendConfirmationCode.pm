@@ -1,8 +1,10 @@
 
 package Paws::CognitoIdp::ResendConfirmationCode;
   use Moose;
+  has AnalyticsMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::AnalyticsMetadataType');
   has ClientId => (is => 'ro', isa => 'Str', required => 1);
   has SecretHash => (is => 'ro', isa => 'Str');
+  has UserContextData => (is => 'ro', isa => 'Paws::CognitoIdp::UserContextDataType');
   has Username => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -16,7 +18,7 @@ package Paws::CognitoIdp::ResendConfirmationCode;
 
 =head1 NAME
 
-Paws::CognitoIdp::ResendConfirmationCode - Arguments for method ResendConfirmationCode on Paws::CognitoIdp
+Paws::CognitoIdp::ResendConfirmationCode - Arguments for method ResendConfirmationCode on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -35,6 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>
+
+The Amazon Pinpoint analytics metadata for collecting metrics for
+C<ResendConfirmationCode> calls.
+
+
+
 =head2 B<REQUIRED> ClientId => Str
 
 The ID of the client associated with the user pool.
@@ -46,6 +55,14 @@ The ID of the client associated with the user pool.
 A keyed-hash message authentication code (HMAC) calculated using the
 secret key of a user pool client and username plus the client ID in the
 message.
+
+
+
+=head2 UserContextData => L<Paws::CognitoIdp::UserContextDataType>
+
+Contextual data such as the user's device fingerprint, IP address, or
+location used for evaluating the risk of an unexpected event by Amazon
+Cognito advanced security.
 
 
 
@@ -63,9 +80,9 @@ This class forms part of L<Paws>, documenting arguments for method ResendConfirm
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::BatchGetOnPremisesInstances;
   use Moose;
-  has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceNames' );
+  has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceNames' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -14,7 +14,7 @@ package Paws::CodeDeploy::BatchGetOnPremisesInstances;
 
 =head1 NAME
 
-Paws::CodeDeploy::BatchGetOnPremisesInstances - Arguments for method BatchGetOnPremisesInstances on Paws::CodeDeploy
+Paws::CodeDeploy::BatchGetOnPremisesInstances - Arguments for method BatchGetOnPremisesInstances on L<Paws::CodeDeploy>
 
 =head1 DESCRIPTION
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 InstanceNames => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> InstanceNames => ArrayRef[Str|Undef]
 
 The names of the on-premises instances about which to get information.
 
@@ -46,9 +46,9 @@ This class forms part of L<Paws>, documenting arguments for method BatchGetOnPre
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

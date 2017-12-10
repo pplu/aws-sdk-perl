@@ -17,7 +17,7 @@ package Paws::EC2::DescribeSpotFleetInstances;
 
 =head1 NAME
 
-Paws::EC2::DescribeSpotFleetInstances - Arguments for method DescribeSpotFleetInstances on Paws::EC2
+Paws::EC2::DescribeSpotFleetInstances - Arguments for method DescribeSpotFleetInstances on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -62,7 +62,7 @@ The token for the next set of results.
 
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 
-The ID of the Spot fleet request.
+The ID of the Spot Fleet request.
 
 
 
@@ -73,9 +73,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeSpotF
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

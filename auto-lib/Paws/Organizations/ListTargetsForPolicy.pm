@@ -16,7 +16,7 @@ package Paws::Organizations::ListTargetsForPolicy;
 
 =head1 NAME
 
-Paws::Organizations::ListTargetsForPolicy - Arguments for method ListTargetsForPolicy on Paws::Organizations
+Paws::Organizations::ListTargetsForPolicy - Arguments for method ListTargetsForPolicy on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
@@ -64,8 +64,9 @@ where the output should continue from.
 The unique identifier (ID) of the policy for which you want to know its
 attachments.
 
-The regex pattern for a policy ID string requires "p-" followed by from
-8 to 128 lower-case letters or digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for a policy ID
+string requires "p-" followed by from 8 to 128 lower-case letters or
+digits.
 
 
 
@@ -76,9 +77,9 @@ This class forms part of L<Paws>, documenting arguments for method ListTargetsFo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

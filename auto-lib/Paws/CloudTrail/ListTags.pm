@@ -15,7 +15,7 @@ package Paws::CloudTrail::ListTags;
 
 =head1 NAME
 
-Paws::CloudTrail::ListTags - Arguments for method ListTags on Paws::CloudTrail
+Paws::CloudTrail::ListTags - Arguments for method ListTags on L<Paws::CloudTrail>
 
 =head1 DESCRIPTION
 
@@ -56,9 +56,9 @@ This class forms part of L<Paws>, documenting arguments for method ListTags in L
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

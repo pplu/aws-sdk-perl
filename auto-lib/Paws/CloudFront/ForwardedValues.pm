@@ -45,13 +45,15 @@ cookies.
   A complex type that specifies whether you want CloudFront to forward
 cookies to the origin and, if so, which ones. For more information
 about forwarding cookies to the origin, see How CloudFront Forwards,
-Caches, and Logs Cookies in the I<Amazon CloudFront Developer Guide>.
+Caches, and Logs Cookies
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 Headers => L<Paws::CloudFront::Headers>
 
   A complex type that specifies the C<Headers>, if any, that you want
-CloudFront to vary upon for this cache behavior.
+CloudFront to base caching on for this cache behavior.
 
 
 =head2 B<REQUIRED> QueryString => Bool
@@ -79,7 +81,9 @@ query string parameters to the origin, and doesn't cache based on query
 string parameters.
 
 For more information, see Configuring CloudFront to Cache Based on
-Query String Parameters in the I<Amazon CloudFront Developer Guide>.
+Query String Parameters
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 QueryStringCacheKeys => L<Paws::CloudFront::QueryStringCacheKeys>
@@ -96,9 +100,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudFron
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -3,6 +3,7 @@ package Paws::CognitoIdp::UserPoolClientType;
   has AllowedOAuthFlows => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has AllowedOAuthFlowsUserPoolClient => (is => 'ro', isa => 'Bool');
   has AllowedOAuthScopes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AnalyticsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::AnalyticsConfigurationType');
   has CallbackURLs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ClientId => (is => 'ro', isa => 'Str');
   has ClientName => (is => 'ro', isa => 'Str');
@@ -47,7 +48,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIdp:
 
 =head1 DESCRIPTION
 
-A user pool of the client type.
+Contains information about a user pool client.
 
 =head1 ATTRIBUTES
 
@@ -72,6 +73,11 @@ interacting with Cognito user pools.
 
   A list of allowed C<OAuth> scopes. Currently supported values are
 C<"phone">, C<"email">, C<"openid">, and C<"Cognito">.
+
+
+=head2 AnalyticsConfiguration => L<Paws::CognitoIdp::AnalyticsConfigurationType>
+
+  The Amazon Pinpoint analytics configuration for the user pool client.
 
 
 =head2 CallbackURLs => ArrayRef[Str|Undef]
@@ -116,7 +122,7 @@ C<"phone">, C<"email">, C<"openid">, and C<"Cognito">.
 
 =head2 LogoutURLs => ArrayRef[Str|Undef]
 
-  A list ofallowed logout URLs for the identity providers.
+  A list of allowed logout URLs for the identity providers.
 
 
 =head2 ReadAttributes => ArrayRef[Str|Undef]
@@ -153,9 +159,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CognitoId
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

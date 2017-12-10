@@ -37,7 +37,8 @@ interfaces linking to your virtual private gateway.
 
 Virtual private gateways can be managed using the Amazon Virtual
 Private Cloud (Amazon VPC) console or the Amazon EC2 CreateVpnGateway
-action.
+action
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html).
 
 =head1 ATTRIBUTES
 
@@ -59,9 +60,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::DirectCon
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

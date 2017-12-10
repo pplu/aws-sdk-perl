@@ -16,7 +16,7 @@ package Paws::ServiceCatalog::UpdateConstraint;
 
 =head1 NAME
 
-Paws::ServiceCatalog::UpdateConstraint - Arguments for method UpdateConstraint on Paws::ServiceCatalog
+Paws::ServiceCatalog::UpdateConstraint - Arguments for method UpdateConstraint on L<Paws::ServiceCatalog>
 
 =head1 DESCRIPTION
 
@@ -37,28 +37,36 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AcceptLanguage => Str
 
-The language code to use for this operation. Supported language codes
-are as follows:
+The language code.
 
-"en" (English)
+=over
 
-"jp" (Japanese)
+=item *
 
-"zh" (Chinese)
+C<en> - English (default)
 
-If no code is specified, "en" is used as the default.
+=item *
+
+C<jp> - Japanese
+
+=item *
+
+C<zh> - Chinese
+
+=back
+
 
 
 
 =head2 Description => Str
 
-The updated text description of the constraint.
+The updated description of the constraint.
 
 
 
 =head2 B<REQUIRED> Id => Str
 
-The identifier of the constraint to update.
+The identifier of the constraint.
 
 
 
@@ -69,9 +77,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateConstra
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

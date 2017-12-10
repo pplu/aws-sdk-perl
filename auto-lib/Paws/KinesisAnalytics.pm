@@ -11,7 +11,7 @@ package Paws::KinesisAnalytics;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub AddApplicationCloudWatchLoggingOption {
@@ -22,6 +22,11 @@ package Paws::KinesisAnalytics;
   sub AddApplicationInput {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KinesisAnalytics::AddApplicationInput', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AddApplicationInputProcessingConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KinesisAnalytics::AddApplicationInputProcessingConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub AddApplicationOutput {
@@ -47,6 +52,11 @@ package Paws::KinesisAnalytics;
   sub DeleteApplicationCloudWatchLoggingOption {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KinesisAnalytics::DeleteApplicationCloudWatchLoggingOption', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteApplicationInputProcessingConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KinesisAnalytics::DeleteApplicationInputProcessingConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteApplicationOutput {
@@ -92,7 +102,7 @@ package Paws::KinesisAnalytics;
   
 
 
-  sub operations { qw/AddApplicationCloudWatchLoggingOption AddApplicationInput AddApplicationOutput AddApplicationReferenceDataSource CreateApplication DeleteApplication DeleteApplicationCloudWatchLoggingOption DeleteApplicationOutput DeleteApplicationReferenceDataSource DescribeApplication DiscoverInputSchema ListApplications StartApplication StopApplication UpdateApplication / }
+  sub operations { qw/AddApplicationCloudWatchLoggingOption AddApplicationInput AddApplicationInputProcessingConfiguration AddApplicationOutput AddApplicationReferenceDataSource CreateApplication DeleteApplication DeleteApplicationCloudWatchLoggingOption DeleteApplicationInputProcessingConfiguration DeleteApplicationOutput DeleteApplicationReferenceDataSource DescribeApplication DiscoverInputSchema ListApplications StartApplication StopApplication UpdateApplication / }
 
 1;
 
@@ -130,10 +140,11 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::AddApplicatio
 
 Returns: a L<Paws::KinesisAnalytics::AddApplicationCloudWatchLoggingOptionResponse> instance
 
-  Adds a CloudWatch log stream to monitor application configuration
+Adds a CloudWatch log stream to monitor application configuration
 errors. For more information about using CloudWatch log streams with
-Amazon Kinesis Analytics applications, see Monitoring Configuration
-Errors.
+Amazon Kinesis Analytics applications, see Working with Amazon
+CloudWatch Logs
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html).
 
 
 =head2 AddApplicationInput(ApplicationName => Str, CurrentApplicationVersionId => Int, Input => L<Paws::KinesisAnalytics::Input>)
@@ -142,8 +153,9 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::AddApplicatio
 
 Returns: a L<Paws::KinesisAnalytics::AddApplicationInputResponse> instance
 
-  Adds a streaming source to your Amazon Kinesis application. For
-conceptual information, see Configuring Application Input.
+Adds a streaming source to your Amazon Kinesis application. For
+conceptual information, see Configuring Application Input
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
 
 You can add a streaming source either when you create an application or
 you can use this operation to add a streaming source after you create
@@ -158,13 +170,25 @@ This operation requires permissions to perform the
 C<kinesisanalytics:AddApplicationInput> action.
 
 
+=head2 AddApplicationInputProcessingConfiguration(ApplicationName => Str, CurrentApplicationVersionId => Int, InputId => Str, InputProcessingConfiguration => L<Paws::KinesisAnalytics::InputProcessingConfiguration>)
+
+Each argument is described in detail in: L<Paws::KinesisAnalytics::AddApplicationInputProcessingConfiguration>
+
+Returns: a L<Paws::KinesisAnalytics::AddApplicationInputProcessingConfigurationResponse> instance
+
+Adds an InputProcessingConfiguration to an application. An input
+processor preprocesses records on the input stream before the
+application's SQL code executes. Currently, the only input processor
+available is AWS Lambda (https://aws.amazon.com/documentation/lambda/).
+
+
 =head2 AddApplicationOutput(ApplicationName => Str, CurrentApplicationVersionId => Int, Output => L<Paws::KinesisAnalytics::Output>)
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::AddApplicationOutput>
 
 Returns: a L<Paws::KinesisAnalytics::AddApplicationOutputResponse> instance
 
-  Adds an external destination to your Amazon Kinesis Analytics
+Adds an external destination to your Amazon Kinesis Analytics
 application.
 
 If you want Amazon Kinesis Analytics to deliver data from an
@@ -178,7 +202,8 @@ and an external destination.
 You can use one of the output configurations to deliver data from your
 in-application error stream to an external destination so that you can
 analyze the errors. For conceptual information, see Understanding
-Application Output (Destination).
+Application Output (Destination)
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html).
 
 Note that any configuration update, including adding a streaming source
 using this operation, results in a new version of the application. You
@@ -186,7 +211,8 @@ can use the DescribeApplication operation to find the current
 application version.
 
 For the limits on the number of application inputs and outputs you can
-configure, see Limits.
+configure, see Limits
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html).
 
 This operation requires permissions to perform the
 C<kinesisanalytics:AddApplicationOutput> action.
@@ -198,7 +224,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::AddApplicatio
 
 Returns: a L<Paws::KinesisAnalytics::AddApplicationReferenceDataSourceResponse> instance
 
-  Adds a reference data source to an existing application.
+Adds a reference data source to an existing application.
 
 Amazon Kinesis Analytics reads reference data (that is, an Amazon S3
 object) and creates an in-application table within your application. In
@@ -207,8 +233,11 @@ name), name of the in-application table to create, and the necessary
 mapping information that describes how data in Amazon S3 object maps to
 columns in the resulting in-application table.
 
-For conceptual information, see Configuring Application Input. For the
-limits on data sources you can add to your application, see Limits.
+For conceptual information, see Configuring Application Input
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
+For the limits on data sources you can add to your application, see
+Limits
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html).
 
 This operation requires permissions to perform the
 C<kinesisanalytics:AddApplicationOutput> action.
@@ -220,11 +249,12 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::CreateApplica
 
 Returns: a L<Paws::KinesisAnalytics::CreateApplicationResponse> instance
 
-  Creates an Amazon Kinesis Analytics application. You can configure each
+Creates an Amazon Kinesis Analytics application. You can configure each
 application with one streaming source as input, application code to
 process the input, and up to five streaming destinations where you want
 Amazon Kinesis Analytics to write the output data from your
-application. For an overview, see How it Works.
+application. For an overview, see How it Works
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works.html).
 
 In the input configuration, you map the streaming source to an
 in-application stream, which you can think of as a constantly updating
@@ -247,7 +277,8 @@ permissions to perform the C<kinesisanalytics:CreateApplication>
 action.
 
 For introductory exercises to create an Amazon Kinesis Analytics
-application, see Getting Started.
+application, see Getting Started
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/getting-started.html).
 
 
 =head2 DeleteApplication(ApplicationName => Str, CreateTimestamp => Str)
@@ -256,7 +287,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::DeleteApplica
 
 Returns: a L<Paws::KinesisAnalytics::DeleteApplicationResponse> instance
 
-  Deletes the specified application. Amazon Kinesis Analytics halts
+Deletes the specified application. Amazon Kinesis Analytics halts
 application execution and deletes the application, including any
 application artifacts (such as in-application streams, reference table,
 and application code).
@@ -271,9 +302,19 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::DeleteApplica
 
 Returns: a L<Paws::KinesisAnalytics::DeleteApplicationCloudWatchLoggingOptionResponse> instance
 
-  Deletes a CloudWatch log stream from an application. For more
+Deletes a CloudWatch log stream from an application. For more
 information about using CloudWatch log streams with Amazon Kinesis
-Analytics applications, see Monitoring Configuration Errors.
+Analytics applications, see Working with Amazon CloudWatch Logs
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html).
+
+
+=head2 DeleteApplicationInputProcessingConfiguration(ApplicationName => Str, CurrentApplicationVersionId => Int, InputId => Str)
+
+Each argument is described in detail in: L<Paws::KinesisAnalytics::DeleteApplicationInputProcessingConfiguration>
+
+Returns: a L<Paws::KinesisAnalytics::DeleteApplicationInputProcessingConfigurationResponse> instance
+
+Deletes an InputProcessingConfiguration from an input.
 
 
 =head2 DeleteApplicationOutput(ApplicationName => Str, CurrentApplicationVersionId => Int, OutputId => Str)
@@ -282,7 +323,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::DeleteApplica
 
 Returns: a L<Paws::KinesisAnalytics::DeleteApplicationOutputResponse> instance
 
-  Deletes output destination configuration from your application
+Deletes output destination configuration from your application
 configuration. Amazon Kinesis Analytics will no longer write data from
 the corresponding in-application stream to the external output
 destination.
@@ -297,7 +338,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::DeleteApplica
 
 Returns: a L<Paws::KinesisAnalytics::DeleteApplicationReferenceDataSourceResponse> instance
 
-  Deletes a reference data source configuration from the specified
+Deletes a reference data source configuration from the specified
 application configuration.
 
 If the application is running, Amazon Kinesis Analytics immediately
@@ -314,7 +355,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::DescribeAppli
 
 Returns: a L<Paws::KinesisAnalytics::DescribeApplicationResponse> instance
 
-  Returns information about a specific Amazon Kinesis Analytics
+Returns information about a specific Amazon Kinesis Analytics
 application.
 
 If you want to retrieve a list of all applications in your account, use
@@ -326,22 +367,24 @@ C<DescribeApplication> to get the current application versionId, which
 you need to call other operations such as C<Update>.
 
 
-=head2 DiscoverInputSchema(InputStartingPositionConfiguration => L<Paws::KinesisAnalytics::InputStartingPositionConfiguration>, ResourceARN => Str, RoleARN => Str)
+=head2 DiscoverInputSchema([InputProcessingConfiguration => L<Paws::KinesisAnalytics::InputProcessingConfiguration>, InputStartingPositionConfiguration => L<Paws::KinesisAnalytics::InputStartingPositionConfiguration>, ResourceARN => Str, RoleARN => Str, S3Configuration => L<Paws::KinesisAnalytics::S3Configuration>])
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::DiscoverInputSchema>
 
 Returns: a L<Paws::KinesisAnalytics::DiscoverInputSchemaResponse> instance
 
-  Infers a schema by evaluating sample records on the specified streaming
+Infers a schema by evaluating sample records on the specified streaming
 source (Amazon Kinesis stream or Amazon Kinesis Firehose delivery
 stream). In the response, the operation returns the inferred schema and
 also the sample records that the operation used to infer the schema.
 
 You can use the inferred schema when configuring a streaming source for
 your application. For conceptual information, see Configuring
-Application Input. Note that when you create an application using the
-Amazon Kinesis Analytics console, the console uses this operation to
-infer a schema and show it in the console user interface.
+Application Input
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
+Note that when you create an application using the Amazon Kinesis
+Analytics console, the console uses this operation to infer a schema
+and show it in the console user interface.
 
 This operation requires permissions to perform the
 C<kinesisanalytics:DiscoverInputSchema> action.
@@ -353,7 +396,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::ListApplicati
 
 Returns: a L<Paws::KinesisAnalytics::ListApplicationsResponse> instance
 
-  Returns a list of Amazon Kinesis Analytics applications in your
+Returns a list of Amazon Kinesis Analytics applications in your
 account. For each application, the response includes the application
 name, Amazon Resource Name (ARN), and status. If the response returns
 the C<HasMoreApplications> value as true, you can send another request
@@ -374,7 +417,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::StartApplicat
 
 Returns: a L<Paws::KinesisAnalytics::StartApplicationResponse> instance
 
-  Starts the specified Amazon Kinesis Analytics application. After
+Starts the specified Amazon Kinesis Analytics application. After
 creating an application, you must exclusively call this operation to
 start your application.
 
@@ -398,7 +441,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::StopApplicati
 
 Returns: a L<Paws::KinesisAnalytics::StopApplicationResponse> instance
 
-  Stops the application from processing input data. You can stop an
+Stops the application from processing input data. You can stop an
 application only if it is in the running state. You can use the
 DescribeApplication operation to find the application state. After the
 application is stopped, Amazon Kinesis Analytics stops reading data
@@ -415,7 +458,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::UpdateApplica
 
 Returns: a L<Paws::KinesisAnalytics::UpdateApplicationResponse> instance
 
-  Updates an existing Amazon Kinesis Analytics application. Using this
+Updates an existing Amazon Kinesis Analytics application. Using this
 API, you can update application code, input configuration, and output
 configuration.
 
@@ -441,9 +484,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

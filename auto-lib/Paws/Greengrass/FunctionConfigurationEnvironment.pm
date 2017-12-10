@@ -1,5 +1,7 @@
 package Paws::Greengrass::FunctionConfigurationEnvironment;
   use Moose;
+  has AccessSysfs => (is => 'ro', isa => 'Bool');
+  has ResourceAccessPolicies => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::ResourceAccessPolicy]');
   has Variables => (is => 'ro', isa => 'Paws::Greengrass::MapOf__string');
 1;
 
@@ -20,20 +22,30 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Greengrass::FunctionConfigurationEnvironment object:
 
-  $service_obj->Method(Att1 => { Variables => $value, ..., Variables => $value  });
+  $service_obj->Method(Att1 => { AccessSysfs => $value, ..., Variables => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass::FunctionConfigurationEnvironment object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Variables
+  $result->Att1->AccessSysfs
 
 =head1 DESCRIPTION
 
 Environment of the function configuration
 
 =head1 ATTRIBUTES
+
+
+=head2 AccessSysfs => Bool
+
+  Flag to allow lambda access sys filesystem.
+
+
+=head2 ResourceAccessPolicies => ArrayRef[L<Paws::Greengrass::ResourceAccessPolicy>]
+
+  Policies for the function to access resources.
 
 
 =head2 Variables => L<Paws::Greengrass::MapOf__string>
@@ -48,9 +60,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Greengras
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

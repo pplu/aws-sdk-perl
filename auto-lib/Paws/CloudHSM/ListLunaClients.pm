@@ -14,7 +14,7 @@ package Paws::CloudHSM::ListLunaClients;
 
 =head1 NAME
 
-Paws::CloudHSM::ListLunaClients - Arguments for method ListLunaClients on Paws::CloudHSM
+Paws::CloudHSM::ListLunaClients - Arguments for method ListLunaClients on L<Paws::CloudHSM>
 
 =head1 DESCRIPTION
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NextToken => Str
 
-The I<NextToken> value from a previous call to ListLunaClients. Pass
+The C<NextToken> value from a previous call to C<ListLunaClients>. Pass
 null if this is the first call.
 
 
@@ -47,9 +47,9 @@ This class forms part of L<Paws>, documenting arguments for method ListLunaClien
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

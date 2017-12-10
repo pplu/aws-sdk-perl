@@ -6,6 +6,7 @@ package Paws::StorageGateway::NFSFileShareInfo;
   has FileShareId => (is => 'ro', isa => 'Str');
   has FileShareStatus => (is => 'ro', isa => 'Str');
   has GatewayARN => (is => 'ro', isa => 'Str');
+  has GuessMIMETypeEnabled => (is => 'ro', isa => 'Bool');
   has KMSEncrypted => (is => 'ro', isa => 'Bool');
   has KMSKey => (is => 'ro', isa => 'Str');
   has LocationARN => (is => 'ro', isa => 'Str');
@@ -84,6 +85,12 @@ Optional.
   
 
 
+=head2 GuessMIMETypeEnabled => Bool
+
+  Enables guessing of the MIME type for uploaded objects based on file
+extensions: "true" to enable MIME type guessing, and otherwise "false".
+
+
 =head2 KMSEncrypted => Bool
 
   True to use Amazon S3 server side encryption with your own KMS key, or
@@ -132,9 +139,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::StorageGa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

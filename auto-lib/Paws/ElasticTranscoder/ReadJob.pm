@@ -1,7 +1,7 @@
 
 package Paws::ElasticTranscoder::ReadJob;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
+  has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -9,14 +9,13 @@ package Paws::ElasticTranscoder::ReadJob;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2012-09-25/jobs/{Id}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::ReadJobResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ElasticTranscoder::ReadJob - Arguments for method ReadJob on Paws::ElasticTranscoder
+Paws::ElasticTranscoder::ReadJob - Arguments for method ReadJob on L<Paws::ElasticTranscoder>
 
 =head1 DESCRIPTION
 
@@ -49,9 +48,9 @@ This class forms part of L<Paws>, documenting arguments for method ReadJob in L<
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

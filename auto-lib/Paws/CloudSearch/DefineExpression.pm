@@ -15,7 +15,7 @@ package Paws::CloudSearch::DefineExpression;
 
 =head1 NAME
 
-Paws::CloudSearch::DefineExpression - Arguments for method DefineExpression on Paws::CloudSearch
+Paws::CloudSearch::DefineExpression - Arguments for method DefineExpression on L<Paws::CloudSearch>
 
 =head1 DESCRIPTION
 
@@ -53,9 +53,9 @@ This class forms part of L<Paws>, documenting arguments for method DefineExpress
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

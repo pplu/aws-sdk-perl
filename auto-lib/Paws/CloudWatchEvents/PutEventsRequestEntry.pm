@@ -65,8 +65,9 @@ event primarily concerns. Any number, including zero, may be present.
 
 =head2 Time => Str
 
-  The timestamp of the event, per RFC3339. If no timestamp is provided,
-the timestamp of the PutEvents call is used.
+  The timestamp of the event, per RFC3339
+(https://www.rfc-editor.org/rfc/rfc3339.txt). If no timestamp is
+provided, the timestamp of the PutEvents call is used.
 
 
 
@@ -76,9 +77,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudWatc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

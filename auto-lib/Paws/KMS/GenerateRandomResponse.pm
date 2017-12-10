@@ -16,7 +16,8 @@ Paws::KMS::GenerateRandomResponse
 
 =head2 Plaintext => Str
 
-The random byte string.
+The random byte string. When you use the HTTP API or the AWS CLI, the
+value is Base64-encoded. Otherwise, it is not encoded.
 
 
 =head2 _request_id => Str

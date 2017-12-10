@@ -46,7 +46,7 @@ Represents a single cache security group and its status.
 
   The status of the cache security group membership. The status changes
 whenever a cache security group is modified, or when the cache security
-groups assigned to a cache cluster are modified.
+groups assigned to a cluster are modified.
 
 
 
@@ -56,9 +56,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ElastiCac
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

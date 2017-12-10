@@ -1,5 +1,6 @@
 package Paws::SSM::ResourceDataSyncS3Destination;
   use Moose;
+  has AWSKMSKeyARN => (is => 'ro', isa => 'Str');
   has BucketName => (is => 'ro', isa => 'Str', required => 1);
   has Prefix => (is => 'ro', isa => 'Str');
   has Region => (is => 'ro', isa => 'Str', required => 1);
@@ -23,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::ResourceDataSyncS3Destination object:
 
-  $service_obj->Method(Att1 => { BucketName => $value, ..., SyncFormat => $value  });
+  $service_obj->Method(Att1 => { AWSKMSKeyARN => $value, ..., SyncFormat => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::ResourceDataSyncS3Destination object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->BucketName
+  $result->Att1->AWSKMSKeyARN
 
 =head1 DESCRIPTION
 
@@ -38,6 +39,12 @@ Information about the target Amazon S3 bucket for the Resource Data
 Sync.
 
 =head1 ATTRIBUTES
+
+
+=head2 AWSKMSKeyARN => Str
+
+  The ARN of an encryption key for a destination in Amazon S3. Must
+belong to the same region as the destination Amazon S3 bucket.
 
 
 =head2 B<REQUIRED> BucketName => Str
@@ -69,9 +76,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

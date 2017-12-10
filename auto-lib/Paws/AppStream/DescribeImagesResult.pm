@@ -16,7 +16,7 @@ Paws::AppStream::DescribeImagesResult
 
 =head2 Images => ArrayRef[L<Paws::AppStream::Image>]
 
-The list of images.
+Information about the images.
 
 
 =head2 _request_id => Str

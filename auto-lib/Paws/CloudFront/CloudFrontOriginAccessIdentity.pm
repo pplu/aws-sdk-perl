@@ -45,7 +45,7 @@ CloudFront origin access identity.
 
 =head2 B<REQUIRED> Id => Str
 
-  The ID for the origin access identity. For example: C<E74FTE3AJFJ256A>.
+  The ID for the origin access identity, for example, C<E74FTE3AJFJ256A>.
 
 
 =head2 B<REQUIRED> S3CanonicalUserId => Str
@@ -62,9 +62,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudFron
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

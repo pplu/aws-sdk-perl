@@ -17,7 +17,7 @@ package Paws::Organizations::CreateAccount;
 
 =head1 NAME
 
-Paws::Organizations::CreateAccount - Arguments for method CreateAccount on Paws::Organizations
+Paws::Organizations::CreateAccount - Arguments for method CreateAccount on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
@@ -46,7 +46,9 @@ The friendly name of the member account.
 
 The email address of the owner to assign to the new member account.
 This email address must not already be associated with another AWS
-account.
+account. You must use a valid email address to complete account
+creation. You cannot access the root user of the account or remove an
+account that was created with an invalid email address.
 
 
 
@@ -56,8 +58,9 @@ If set to C<ALLOW>, the new account enables IAM users to access account
 billing information I<if> they have the required permissions. If set to
 C<DENY>, then only the root user of the new account can access account
 billing information. For more information, see Activating Access to the
-Billing and Cost Management Console in the I<AWS Billing and Cost
-Management User Guide>.
+Billing and Cost Management Console
+(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate)
+in the I<AWS Billing and Cost Management User Guide>.
 
 If you do not specify this parameter, the value defaults to ALLOW, and
 IAM users and roles with the required permissions can access billing
@@ -80,13 +83,17 @@ C<OrganizationAccountAccessRole>.
 
 For more information about how to use this role to access the member
 account, see Accessing and Administering the Member Accounts in Your
-Organization in the I<AWS Organizations User Guide>, and steps 2 and 3
-in Tutorial: Delegate Access Across AWS Accounts Using IAM Roles in the
-I<IAM User Guide>.
+Organization
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
+in the I<AWS Organizations User Guide>, and steps 2 and 3 in Tutorial:
+Delegate Access Across AWS Accounts Using IAM Roles
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
+in the I<IAM User Guide>.
 
-The regex pattern that is used to validate this parameter is a string
-of characters that can consist of uppercase letters, lowercase letters,
-digits with no spaces, and any of the following characters: =,.@-
+The regex pattern (http://wikipedia.org/wiki/regex) that is used to
+validate this parameter is a string of characters that can consist of
+uppercase letters, lowercase letters, digits with no spaces, and any of
+the following characters: =,.@-
 
 
 
@@ -97,9 +104,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateAccount
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

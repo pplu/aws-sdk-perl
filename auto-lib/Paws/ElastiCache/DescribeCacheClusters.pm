@@ -18,7 +18,7 @@ package Paws::ElastiCache::DescribeCacheClusters;
 
 =head1 NAME
 
-Paws::ElastiCache::DescribeCacheClusters - Arguments for method DescribeCacheClusters on Paws::ElastiCache
+Paws::ElastiCache::DescribeCacheClusters - Arguments for method DescribeCacheClusters on L<Paws::ElastiCache>
 
 =head1 DESCRIPTION
 
@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 CacheClusterId => Str
 
 The user-supplied cluster identifier. If this parameter is specified,
-only information about that specific cache cluster is returned. This
+only information about that specific cluster is returned. This
 parameter isn't case sensitive.
 
 
@@ -90,9 +90,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeCache
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

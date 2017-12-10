@@ -18,7 +18,7 @@ package Paws::Shield::ListAttacks;
 
 =head1 NAME
 
-Paws::Shield::ListAttacks - Arguments for method ListAttacks on Paws::Shield
+Paws::Shield::ListAttacks - Arguments for method ListAttacks on L<Paws::Shield>
 
 =head1 DESCRIPTION
 
@@ -39,7 +39,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EndTime => L<Paws::Shield::TimeRange>
 
-The end of the time period for the attacks.
+The end of the time period for the attacks. This is a C<timestamp>
+type. The sample request above indicates a C<number> type because the
+default used by WAF is Unix time in seconds. However any valid
+timestamp format
+(http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types)
+is allowed.
 
 
 
@@ -67,7 +72,12 @@ included.
 
 =head2 StartTime => L<Paws::Shield::TimeRange>
 
-The time period for the attacks.
+The start of the time period for the attacks. This is a C<timestamp>
+type. The sample request above indicates a C<number> type because the
+default used by WAF is Unix time in seconds. However any valid
+timestamp format
+(http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types)
+is allowed.
 
 
 
@@ -78,9 +88,9 @@ This class forms part of L<Paws>, documenting arguments for method ListAttacks i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

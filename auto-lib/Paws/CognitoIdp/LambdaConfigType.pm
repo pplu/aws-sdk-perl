@@ -7,6 +7,7 @@ package Paws::CognitoIdp::LambdaConfigType;
   has PostConfirmation => (is => 'ro', isa => 'Str');
   has PreAuthentication => (is => 'ro', isa => 'Str');
   has PreSignUp => (is => 'ro', isa => 'Str');
+  has PreTokenGeneration => (is => 'ro', isa => 'Str');
   has VerifyAuthChallengeResponse => (is => 'ro', isa => 'Str');
 1;
 
@@ -38,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIdp:
 
 =head1 DESCRIPTION
 
-Specifies the type of configuration for AWS Lambda triggers.
+Specifies the configuration for AWS Lambda triggers.
 
 =head1 ATTRIBUTES
 
@@ -78,6 +79,11 @@ Specifies the type of configuration for AWS Lambda triggers.
   A pre-registration AWS Lambda trigger.
 
 
+=head2 PreTokenGeneration => Str
+
+  A Lambda trigger that is invoked before token generation.
+
+
 =head2 VerifyAuthChallengeResponse => Str
 
   Verifies the authentication challenge response.
@@ -90,9 +96,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CognitoId
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

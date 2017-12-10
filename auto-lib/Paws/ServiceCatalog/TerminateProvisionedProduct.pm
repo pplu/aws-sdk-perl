@@ -18,7 +18,7 @@ package Paws::ServiceCatalog::TerminateProvisionedProduct;
 
 =head1 NAME
 
-Paws::ServiceCatalog::TerminateProvisionedProduct - Arguments for method TerminateProvisionedProduct on Paws::ServiceCatalog
+Paws::ServiceCatalog::TerminateProvisionedProduct - Arguments for method TerminateProvisionedProduct on L<Paws::ServiceCatalog>
 
 =head1 DESCRIPTION
 
@@ -39,39 +39,45 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AcceptLanguage => Str
 
-The language code to use for this operation. Supported language codes
-are as follows:
+The language code.
 
-"en" (English)
+=over
 
-"jp" (Japanese)
+=item *
 
-"zh" (Chinese)
+C<en> - English (default)
 
-If no code is specified, "en" is used as the default.
+=item *
+
+C<jp> - Japanese
+
+=item *
+
+C<zh> - Chinese
+
+=back
+
 
 
 
 =head2 IgnoreErrors => Bool
 
 If set to true, AWS Service Catalog stops managing the specified
-ProvisionedProduct object even if it cannot delete the underlying
-resources.
+provisioned product even if it cannot delete the underlying resources.
 
 
 
 =head2 ProvisionedProductId => Str
 
-The identifier of the ProvisionedProduct object to terminate. Specify
-either C<ProvisionedProductName> or C<ProvisionedProductId>, but not
-both.
+The identifier of the provisioned product. You cannot specify both
+C<ProvisionedProductName> and C<ProvisionedProductId>.
 
 
 
 =head2 ProvisionedProductName => Str
 
-The name of the ProvisionedProduct object to terminate. Specify either
-C<ProvisionedProductName> or C<ProvisionedProductId>, but not both.
+The name of the provisioned product. You cannot specify both
+C<ProvisionedProductName> and C<ProvisionedProductId>.
 
 
 
@@ -79,9 +85,8 @@ C<ProvisionedProductName> or C<ProvisionedProductId>, but not both.
 
 An idempotency token that uniquely identifies the termination request.
 This token is only valid during the termination process. After the
-ProvisionedProduct object is terminated, further requests to terminate
-the same ProvisionedProduct object always return B<ResourceNotFound>
-regardless of the value of C<TerminateToken>.
+provisioned product is terminated, subsequent requests to terminate the
+same provisioned product always return B<ResourceNotFound>.
 
 
 
@@ -92,9 +97,9 @@ This class forms part of L<Paws>, documenting arguments for method TerminateProv
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

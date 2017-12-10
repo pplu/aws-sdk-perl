@@ -1,8 +1,8 @@
 
 package Paws::IoT::CreateTopicRule;
   use Moose;
-  has RuleName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ruleName' , required => 1);
-  has TopicRulePayload => (is => 'ro', isa => 'Paws::IoT::TopicRulePayload', required => 1);
+  has RuleName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ruleName', required => 1);
+  has TopicRulePayload => (is => 'ro', isa => 'Paws::IoT::TopicRulePayload', traits => ['NameInRequest'], request_name => 'topicRulePayload', required => 1);
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'TopicRulePayload');
@@ -10,14 +10,13 @@ package Paws::IoT::CreateTopicRule;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/rules/{ruleName}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::IoT::CreateTopicRule - Arguments for method CreateTopicRule on Paws::IoT
+Paws::IoT::CreateTopicRule - Arguments for method CreateTopicRule on L<Paws::IoT>
 
 =head1 DESCRIPTION
 
@@ -55,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateTopicRu
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

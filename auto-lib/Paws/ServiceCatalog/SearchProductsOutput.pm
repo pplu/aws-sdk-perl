@@ -18,18 +18,18 @@ Paws::ServiceCatalog::SearchProductsOutput
 
 =head2 NextPageToken => Str
 
-The page token to use to retrieve the next page of results for this
-operation. If there are no more pages, this value is null.
+The page token to use to retrieve the next set of results. If there are
+no additional results, this value is null.
 
 
 =head2 ProductViewAggregations => L<Paws::ServiceCatalog::ProductViewAggregations>
 
-A list of the product view aggregation value objects.
+The product view aggregations.
 
 
 =head2 ProductViewSummaries => ArrayRef[L<Paws::ServiceCatalog::ProductViewSummary>]
 
-A list of the product view summary objects.
+Information about the product views.
 
 
 =head2 _request_id => Str

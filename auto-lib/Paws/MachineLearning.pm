@@ -11,7 +11,7 @@ package Paws::MachineLearning;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub AddTags {
@@ -287,7 +287,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::AddTags>
 
 Returns: a L<Paws::MachineLearning::AddTagsOutput> instance
 
-  Adds one or more tags to an object, up to a limit of 10. Each tag
+Adds one or more tags to an object, up to a limit of 10. Each tag
 consists of a key and an optional value. If you add a tag using a key
 that is already associated with the ML object, C<AddTags> updates the
 tag's value.
@@ -299,7 +299,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::CreateBatchPre
 
 Returns: a L<Paws::MachineLearning::CreateBatchPredictionOutput> instance
 
-  Generates predictions for a group of observations. The observations to
+Generates predictions for a group of observations. The observations to
 process exist in one or more data files referenced by a C<DataSource>.
 This operation creates a new C<BatchPrediction>, and uses an C<MLModel>
 and the data files referenced by the C<DataSource> as information
@@ -323,10 +323,10 @@ Each argument is described in detail in: L<Paws::MachineLearning::CreateDataSour
 
 Returns: a L<Paws::MachineLearning::CreateDataSourceFromRDSOutput> instance
 
-  Creates a C<DataSource> object from an Amazon Relational Database
-Service (Amazon RDS). A C<DataSource> references data that can be used
-to perform C<CreateMLModel>, C<CreateEvaluation>, or
-C<CreateBatchPrediction> operations.
+Creates a C<DataSource> object from an Amazon Relational Database
+Service (http://aws.amazon.com/rds/) (Amazon RDS). A C<DataSource>
+references data that can be used to perform C<CreateMLModel>,
+C<CreateEvaluation>, or C<CreateBatchPrediction> operations.
 
 C<CreateDataSourceFromRDS> is an asynchronous operation. In response to
 C<CreateDataSourceFromRDS>, Amazon Machine Learning (Amazon ML)
@@ -348,7 +348,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::CreateDataSour
 
 Returns: a L<Paws::MachineLearning::CreateDataSourceFromRedshiftOutput> instance
 
-  Creates a C<DataSource> from a database hosted on an Amazon Redshift
+Creates a C<DataSource> from a database hosted on an Amazon Redshift
 cluster. A C<DataSource> references data that can be used to perform
 either C<CreateMLModel>, C<CreateEvaluation>, or
 C<CreateBatchPrediction> operations.
@@ -395,7 +395,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::CreateDataSour
 
 Returns: a L<Paws::MachineLearning::CreateDataSourceFromS3Output> instance
 
-  Creates a C<DataSource> object. A C<DataSource> references data that
+Creates a C<DataSource> object. A C<DataSource> references data that
 can be used to perform C<CreateMLModel>, C<CreateEvaluation>, or
 C<CreateBatchPrediction> operations.
 
@@ -436,7 +436,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::CreateEvaluati
 
 Returns: a L<Paws::MachineLearning::CreateEvaluationOutput> instance
 
-  Creates a new C<Evaluation> of an C<MLModel>. An C<MLModel> is
+Creates a new C<Evaluation> of an C<MLModel>. An C<MLModel> is
 evaluated on a set of observations associated to a C<DataSource>. Like
 a C<DataSource> for an C<MLModel>, the C<DataSource> for an
 C<Evaluation> contains values for the C<Target Variable>. The
@@ -463,7 +463,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::CreateMLModel>
 
 Returns: a L<Paws::MachineLearning::CreateMLModelOutput> instance
 
-  Creates a new C<MLModel> using the C<DataSource> and the recipe as
+Creates a new C<MLModel> using the C<DataSource> and the recipe as
 information sources.
 
 An C<MLModel> is nearly immutable. Users can update only the
@@ -491,7 +491,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::CreateRealtime
 
 Returns: a L<Paws::MachineLearning::CreateRealtimeEndpointOutput> instance
 
-  Creates a real-time endpoint for the C<MLModel>. The endpoint contains
+Creates a real-time endpoint for the C<MLModel>. The endpoint contains
 the URI of the C<MLModel>; that is, the location to send real-time
 prediction requests for the specified C<MLModel>.
 
@@ -502,7 +502,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::DeleteBatchPre
 
 Returns: a L<Paws::MachineLearning::DeleteBatchPredictionOutput> instance
 
-  Assigns the DELETED status to a C<BatchPrediction>, rendering it
+Assigns the DELETED status to a C<BatchPrediction>, rendering it
 unusable.
 
 After using the C<DeleteBatchPrediction> operation, you can use the
@@ -519,7 +519,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::DeleteDataSour
 
 Returns: a L<Paws::MachineLearning::DeleteDataSourceOutput> instance
 
-  Assigns the DELETED status to a C<DataSource>, rendering it unusable.
+Assigns the DELETED status to a C<DataSource>, rendering it unusable.
 
 After using the C<DeleteDataSource> operation, you can use the
 GetDataSource operation to verify that the status of the C<DataSource>
@@ -535,7 +535,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::DeleteEvaluati
 
 Returns: a L<Paws::MachineLearning::DeleteEvaluationOutput> instance
 
-  Assigns the C<DELETED> status to an C<Evaluation>, rendering it
+Assigns the C<DELETED> status to an C<Evaluation>, rendering it
 unusable.
 
 After invoking the C<DeleteEvaluation> operation, you can use the
@@ -551,7 +551,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::DeleteMLModel>
 
 Returns: a L<Paws::MachineLearning::DeleteMLModelOutput> instance
 
-  Assigns the C<DELETED> status to an C<MLModel>, rendering it unusable.
+Assigns the C<DELETED> status to an C<MLModel>, rendering it unusable.
 
 After using the C<DeleteMLModel> operation, you can use the
 C<GetMLModel> operation to verify that the status of the C<MLModel>
@@ -567,7 +567,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::DeleteRealtime
 
 Returns: a L<Paws::MachineLearning::DeleteRealtimeEndpointOutput> instance
 
-  Deletes a real time endpoint of an C<MLModel>.
+Deletes a real time endpoint of an C<MLModel>.
 
 
 =head2 DeleteTags(ResourceId => Str, ResourceType => Str, TagKeys => ArrayRef[Str|Undef])
@@ -576,7 +576,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::DeleteTags>
 
 Returns: a L<Paws::MachineLearning::DeleteTagsOutput> instance
 
-  Deletes the specified tags associated with an ML object. After this
+Deletes the specified tags associated with an ML object. After this
 operation is complete, you can't recover deleted tags.
 
 If you specify a tag that doesn't exist, Amazon ML ignores it.
@@ -588,7 +588,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::DescribeBatchP
 
 Returns: a L<Paws::MachineLearning::DescribeBatchPredictionsOutput> instance
 
-  Returns a list of C<BatchPrediction> operations that match the search
+Returns a list of C<BatchPrediction> operations that match the search
 criteria in the request.
 
 
@@ -598,7 +598,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::DescribeDataSo
 
 Returns: a L<Paws::MachineLearning::DescribeDataSourcesOutput> instance
 
-  Returns a list of C<DataSource> that match the search criteria in the
+Returns a list of C<DataSource> that match the search criteria in the
 request.
 
 
@@ -608,7 +608,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::DescribeEvalua
 
 Returns: a L<Paws::MachineLearning::DescribeEvaluationsOutput> instance
 
-  Returns a list of C<DescribeEvaluations> that match the search criteria
+Returns a list of C<DescribeEvaluations> that match the search criteria
 in the request.
 
 
@@ -618,7 +618,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::DescribeMLMode
 
 Returns: a L<Paws::MachineLearning::DescribeMLModelsOutput> instance
 
-  Returns a list of C<MLModel> that match the search criteria in the
+Returns a list of C<MLModel> that match the search criteria in the
 request.
 
 
@@ -628,7 +628,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::DescribeTags>
 
 Returns: a L<Paws::MachineLearning::DescribeTagsOutput> instance
 
-  Describes one or more of the tags for your Amazon ML object.
+Describes one or more of the tags for your Amazon ML object.
 
 
 =head2 GetBatchPrediction(BatchPredictionId => Str)
@@ -637,7 +637,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::GetBatchPredic
 
 Returns: a L<Paws::MachineLearning::GetBatchPredictionOutput> instance
 
-  Returns a C<BatchPrediction> that includes detailed metadata, status,
+Returns a C<BatchPrediction> that includes detailed metadata, status,
 and data file information for a C<Batch Prediction> request.
 
 
@@ -647,7 +647,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::GetDataSource>
 
 Returns: a L<Paws::MachineLearning::GetDataSourceOutput> instance
 
-  Returns a C<DataSource> that includes metadata and data file
+Returns a C<DataSource> that includes metadata and data file
 information, as well as the current status of the C<DataSource>.
 
 C<GetDataSource> provides results in normal or verbose format. The
@@ -661,7 +661,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::GetEvaluation>
 
 Returns: a L<Paws::MachineLearning::GetEvaluationOutput> instance
 
-  Returns an C<Evaluation> that includes metadata as well as the current
+Returns an C<Evaluation> that includes metadata as well as the current
 status of the C<Evaluation>.
 
 
@@ -671,7 +671,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::GetMLModel>
 
 Returns: a L<Paws::MachineLearning::GetMLModelOutput> instance
 
-  Returns an C<MLModel> that includes detailed metadata, data source
+Returns an C<MLModel> that includes detailed metadata, data source
 information, and the current status of the C<MLModel>.
 
 C<GetMLModel> provides results in normal or verbose format.
@@ -683,7 +683,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::Predict>
 
 Returns: a L<Paws::MachineLearning::PredictOutput> instance
 
-  Generates a prediction for the observation using the specified C<ML
+Generates a prediction for the observation using the specified C<ML
 Model>.
 
 Not all response parameters will be populated. Whether a response
@@ -696,7 +696,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::UpdateBatchPre
 
 Returns: a L<Paws::MachineLearning::UpdateBatchPredictionOutput> instance
 
-  Updates the C<BatchPredictionName> of a C<BatchPrediction>.
+Updates the C<BatchPredictionName> of a C<BatchPrediction>.
 
 You can use the C<GetBatchPrediction> operation to view the contents of
 the updated data element.
@@ -708,7 +708,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::UpdateDataSour
 
 Returns: a L<Paws::MachineLearning::UpdateDataSourceOutput> instance
 
-  Updates the C<DataSourceName> of a C<DataSource>.
+Updates the C<DataSourceName> of a C<DataSource>.
 
 You can use the C<GetDataSource> operation to view the contents of the
 updated data element.
@@ -720,7 +720,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::UpdateEvaluati
 
 Returns: a L<Paws::MachineLearning::UpdateEvaluationOutput> instance
 
-  Updates the C<EvaluationName> of an C<Evaluation>.
+Updates the C<EvaluationName> of an C<Evaluation>.
 
 You can use the C<GetEvaluation> operation to view the contents of the
 updated data element.
@@ -732,7 +732,7 @@ Each argument is described in detail in: L<Paws::MachineLearning::UpdateMLModel>
 
 Returns: a L<Paws::MachineLearning::UpdateMLModelOutput> instance
 
-  Updates the C<MLModelName> and the C<ScoreThreshold> of an C<MLModel>.
+Updates the C<MLModelName> and the C<ScoreThreshold> of an C<MLModel>.
 
 You can use the C<GetMLModel> operation to view the contents of the
 updated data element.
@@ -801,9 +801,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

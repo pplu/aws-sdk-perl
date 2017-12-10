@@ -11,12 +11,17 @@ package Paws::ApplicationAutoScaling;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub DeleteScalingPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApplicationAutoScaling::DeleteScalingPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteScheduledAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApplicationAutoScaling::DeleteScheduledAction', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeregisterScalableTarget {
@@ -39,9 +44,19 @@ package Paws::ApplicationAutoScaling;
     my $call_object = $self->new_with_coercions('Paws::ApplicationAutoScaling::DescribeScalingPolicies', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeScheduledActions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApplicationAutoScaling::DescribeScheduledActions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutScalingPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApplicationAutoScaling::PutScalingPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutScheduledAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApplicationAutoScaling::PutScheduledAction', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RegisterScalableTarget {
@@ -121,7 +136,7 @@ package Paws::ApplicationAutoScaling;
   }
 
 
-  sub operations { qw/DeleteScalingPolicy DeregisterScalableTarget DescribeScalableTargets DescribeScalingActivities DescribeScalingPolicies PutScalingPolicy RegisterScalableTarget / }
+  sub operations { qw/DeleteScalingPolicy DeleteScheduledAction DeregisterScalableTarget DescribeScalableTargets DescribeScalingActivities DescribeScalingPolicies DescribeScheduledActions PutScalingPolicy PutScheduledAction RegisterScalableTarget / }
 
 1;
 
@@ -150,8 +165,9 @@ Paws::ApplicationAutoScaling - Perl Interface to AWS Application Auto Scaling
 =head1 DESCRIPTION
 
 With Application Auto Scaling, you can automatically scale your AWS
-resources. The experience similar to that of Auto Scaling. You can use
-Application Auto Scaling to accomplish the following tasks:
+resources. The experience is similar to that of Auto Scaling
+(https://aws.amazon.com/autoscaling/). You can use Application Auto
+Scaling to accomplish the following tasks:
 
 =over
 
@@ -175,34 +191,51 @@ Application Auto Scaling can scale the following AWS resources:
 
 =item *
 
-Amazon ECS services. For more information, see Service Auto Scaling in
-the I<Amazon EC2 Container Service Developer Guide>.
+Amazon ECS services. For more information, see Service Auto Scaling
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 =item *
 
 Amazon EC2 Spot fleets. For more information, see Automatic Scaling for
-Spot Fleet in the I<Amazon EC2 User Guide>.
+Spot Fleet
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/fleet-auto-scaling.html)
+in the I<Amazon EC2 User Guide>.
 
 =item *
 
 Amazon EMR clusters. For more information, see Using Automatic Scaling
-in Amazon EMR in the I<Amazon EMR Management Guide>.
+in Amazon EMR
+(http://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/emr-automatic-scaling.html)
+in the I<Amazon EMR Management Guide>.
 
 =item *
 
 AppStream 2.0 fleets. For more information, see Fleet Auto Scaling for
-Amazon AppStream 2.0 in the I<Amazon AppStream 2.0 Developer Guide>.
+Amazon AppStream 2.0
+(http://docs.aws.amazon.com/appstream2/latest/developerguide/autoscaling.html)
+in the I<Amazon AppStream 2.0 Developer Guide>.
 
 =item *
 
 Provisioned read and write capacity for Amazon DynamoDB tables and
-global secondary indexes. For more information, see Auto Scaling for
-DynamoDB in the I<Amazon DynamoDB Developer Guide>.
+global secondary indexes. For more information, see Managing Throughput
+Capacity Automatically with DynamoDB Auto Scaling
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/AutoScaling.html)
+in the I<Amazon DynamoDB Developer Guide>.
+
+=item *
+
+Amazon Aurora Replicas. For more information, see Using Application
+Auto Scaling with an Amazon Aurora DB Cluster
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Integrating.AutoScaling.html).
 
 =back
 
 For a list of supported regions, see AWS Regions and Endpoints:
-Application Auto Scaling in the I<AWS General Reference>.
+Application Auto Scaling
+(http://docs.aws.amazon.com/general/latest/gr/rande.html#as-app_region)
+in the I<AWS General Reference>.
 
 =head1 METHODS
 
@@ -212,7 +245,7 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DeleteS
 
 Returns: a L<Paws::ApplicationAutoScaling::DeleteScalingPolicyResponse> instance
 
-  Deletes the specified Application Auto Scaling scaling policy.
+Deletes the specified Application Auto Scaling scaling policy.
 
 Deleting a policy deletes the underlying alarm action, but does not
 delete the CloudWatch alarm associated with the scaling policy, even if
@@ -222,13 +255,22 @@ To create a scaling policy or update an existing one, see
 PutScalingPolicy.
 
 
+=head2 DeleteScheduledAction(ResourceId => Str, ScheduledActionName => Str, ServiceNamespace => Str, [ScalableDimension => Str])
+
+Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DeleteScheduledAction>
+
+Returns: a L<Paws::ApplicationAutoScaling::DeleteScheduledActionResponse> instance
+
+Deletes the specified Application Auto Scaling scheduled action.
+
+
 =head2 DeregisterScalableTarget(ResourceId => Str, ScalableDimension => Str, ServiceNamespace => Str)
 
 Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DeregisterScalableTarget>
 
 Returns: a L<Paws::ApplicationAutoScaling::DeregisterScalableTargetResponse> instance
 
-  Deregisters a scalable target.
+Deregisters a scalable target.
 
 Deregistering a scalable target deletes the scaling policies that are
 associated with it.
@@ -243,7 +285,7 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::Describ
 
 Returns: a L<Paws::ApplicationAutoScaling::DescribeScalableTargetsResponse> instance
 
-  Provides descriptive information about the scalable targets in the
+Provides descriptive information about the scalable targets in the
 specified namespace.
 
 You can filter the results using the C<ResourceIds> and
@@ -260,7 +302,7 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::Describ
 
 Returns: a L<Paws::ApplicationAutoScaling::DescribeScalingActivitiesResponse> instance
 
-  Provides descriptive information about the scaling activities in the
+Provides descriptive information about the scaling activities in the
 specified namespace from the previous six weeks.
 
 You can filter the results using the C<ResourceId> and
@@ -278,8 +320,7 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::Describ
 
 Returns: a L<Paws::ApplicationAutoScaling::DescribeScalingPoliciesResponse> instance
 
-  Provides descriptive information about the scaling policies in the
-specified namespace.
+Describes the scaling policies for the specified service namespace.
 
 You can filter the results using the C<ResourceId>,
 C<ScalableDimension>, and C<PolicyNames> parameters.
@@ -289,13 +330,29 @@ PutScalingPolicy. If you are no longer using a scaling policy, you can
 delete it using DeleteScalingPolicy.
 
 
+=head2 DescribeScheduledActions(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceId => Str, ScalableDimension => Str, ScheduledActionNames => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DescribeScheduledActions>
+
+Returns: a L<Paws::ApplicationAutoScaling::DescribeScheduledActionsResponse> instance
+
+Describes the scheduled actions for the specified service namespace.
+
+You can filter the results using the C<ResourceId>,
+C<ScalableDimension>, and C<ScheduledActionNames> parameters.
+
+To create a scheduled action or update an existing one, see
+PutScheduledAction. If you are no longer using a scheduled action, you
+can delete it using DeleteScheduledAction.
+
+
 =head2 PutScalingPolicy(PolicyName => Str, ResourceId => Str, ScalableDimension => Str, ServiceNamespace => Str, [PolicyType => Str, StepScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration>, TargetTrackingScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::TargetTrackingScalingPolicyConfiguration>])
 
 Each argument is described in detail in: L<Paws::ApplicationAutoScaling::PutScalingPolicy>
 
 Returns: a L<Paws::ApplicationAutoScaling::PutScalingPolicyResponse> instance
 
-  Creates or updates a policy for an Application Auto Scaling scalable
+Creates or updates a policy for an Application Auto Scaling scalable
 target.
 
 Each scalable target is identified by a service namespace, resource ID,
@@ -313,13 +370,38 @@ DescribeScalingPolicies. If you are no longer using a scaling policy,
 you can delete it using DeleteScalingPolicy.
 
 
+=head2 PutScheduledAction(ResourceId => Str, ScheduledActionName => Str, ServiceNamespace => Str, [EndTime => Str, ScalableDimension => Str, ScalableTargetAction => L<Paws::ApplicationAutoScaling::ScalableTargetAction>, Schedule => Str, StartTime => Str])
+
+Each argument is described in detail in: L<Paws::ApplicationAutoScaling::PutScheduledAction>
+
+Returns: a L<Paws::ApplicationAutoScaling::PutScheduledActionResponse> instance
+
+Creates or updates a scheduled action for an Application Auto Scaling
+scalable target.
+
+Each scalable target is identified by a service namespace, resource ID,
+and scalable dimension. A scheduled action applies to the scalable
+target identified by those three attributes. You cannot create a
+scheduled action without first registering a scalable target using
+RegisterScalableTarget.
+
+To update an action, specify its name and the parameters that you want
+to change. If you don't specify start and end times, the old values are
+deleted. Any other parameters that you don't specify are not changed by
+this update request.
+
+You can view the scheduled actions using DescribeScheduledActions. If
+you are no longer using a scheduled action, you can delete it using
+DeleteScheduledAction.
+
+
 =head2 RegisterScalableTarget(ResourceId => Str, ScalableDimension => Str, ServiceNamespace => Str, [MaxCapacity => Int, MinCapacity => Int, RoleARN => Str])
 
 Each argument is described in detail in: L<Paws::ApplicationAutoScaling::RegisterScalableTarget>
 
 Returns: a L<Paws::ApplicationAutoScaling::RegisterScalableTargetResponse> instance
 
-  Registers or updates a scalable target. A scalable target is a resource
+Registers or updates a scalable target. A scalable target is a resource
 that Application Auto Scaling can scale out or scale in. After you have
 registered a scalable target, you can use this operation to update the
 minimum and maximum values for your scalable dimension.
@@ -382,9 +464,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

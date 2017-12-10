@@ -16,7 +16,7 @@ package Paws::AutoScaling::DescribeLoadBalancers;
 
 =head1 NAME
 
-Paws::AutoScaling::DescribeLoadBalancers - Arguments for method DescribeLoadBalancers on Paws::AutoScaling
+Paws::AutoScaling::DescribeLoadBalancers - Arguments for method DescribeLoadBalancers on L<Paws::AutoScaling>
 
 =head1 DESCRIPTION
 
@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-The name of the group.
+The name of the Auto Scaling group.
 
 
 
@@ -62,9 +62,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeLoadB
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

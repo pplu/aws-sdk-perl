@@ -2,14 +2,26 @@ package Paws::SSM::AutomationExecution;
   use Moose;
   has AutomationExecutionId => (is => 'ro', isa => 'Str');
   has AutomationExecutionStatus => (is => 'ro', isa => 'Str');
+  has CurrentAction => (is => 'ro', isa => 'Str');
+  has CurrentStepName => (is => 'ro', isa => 'Str');
   has DocumentName => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
+  has ExecutedBy => (is => 'ro', isa => 'Str');
   has ExecutionEndTime => (is => 'ro', isa => 'Str');
   has ExecutionStartTime => (is => 'ro', isa => 'Str');
   has FailureMessage => (is => 'ro', isa => 'Str');
+  has MaxConcurrency => (is => 'ro', isa => 'Str');
+  has MaxErrors => (is => 'ro', isa => 'Str');
+  has Mode => (is => 'ro', isa => 'Str');
   has Outputs => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
   has Parameters => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
+  has ParentAutomationExecutionId => (is => 'ro', isa => 'Str');
+  has ResolvedTargets => (is => 'ro', isa => 'Paws::SSM::ResolvedTargets');
   has StepExecutions => (is => 'ro', isa => 'ArrayRef[Paws::SSM::StepExecution]');
+  has StepExecutionsTruncated => (is => 'ro', isa => 'Bool');
+  has Target => (is => 'ro', isa => 'Str');
+  has TargetParameterName => (is => 'ro', isa => 'Str');
+  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +41,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::AutomationExecution object:
 
-  $service_obj->Method(Att1 => { AutomationExecutionId => $value, ..., StepExecutions => $value  });
+  $service_obj->Method(Att1 => { AutomationExecutionId => $value, ..., Targets => $value  });
 
 =head3 Results returned from an API call
 
@@ -56,6 +68,16 @@ Automation execution.
   The execution status of the Automation.
 
 
+=head2 CurrentAction => Str
+
+  The action of the currently executing step.
+
+
+=head2 CurrentStepName => Str
+
+  The name of the currently executing step.
+
+
 =head2 DocumentName => Str
 
   The name of the Automation document used during the execution.
@@ -64,6 +86,11 @@ Automation execution.
 =head2 DocumentVersion => Str
 
   The version of the document to use during execution.
+
+
+=head2 ExecutedBy => Str
+
+  The Amazon Resource Name (ARN) of the user who executed the automation.
 
 
 =head2 ExecutionEndTime => Str
@@ -82,6 +109,22 @@ Automation execution.
 to Failed.
 
 
+=head2 MaxConcurrency => Str
+
+  The MaxConcurrency value specified by the user when the execution
+started.
+
+
+=head2 MaxErrors => Str
+
+  The MaxErrors value specified by the user when the execution started.
+
+
+=head2 Mode => Str
+
+  The automation execution mode.
+
+
 =head2 Outputs => L<Paws::SSM::AutomationParameterMap>
 
   The list of execution outputs as defined in the automation document.
@@ -93,11 +136,44 @@ to Failed.
 calling StartAutomationExecution.
 
 
+=head2 ParentAutomationExecutionId => Str
+
+  The AutomationExecutionId of the parent automation.
+
+
+=head2 ResolvedTargets => L<Paws::SSM::ResolvedTargets>
+
+  A list of resolved targets in the rate control execution.
+
+
 =head2 StepExecutions => ArrayRef[L<Paws::SSM::StepExecution>]
 
   A list of details about the current state of all steps that comprise an
 execution. An Automation document contains a list of steps that are
 executed in order.
+
+
+=head2 StepExecutionsTruncated => Bool
+
+  A boolean value that indicates if the response contains the full list
+of the Automation step executions. If true, use the
+DescribeAutomationStepExecutions API action to get the full list of
+step executions.
+
+
+=head2 Target => Str
+
+  The target of the execution.
+
+
+=head2 TargetParameterName => Str
+
+  The parameter name.
+
+
+=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
+
+  The specified targets.
 
 
 
@@ -107,9 +183,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

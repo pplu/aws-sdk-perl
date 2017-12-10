@@ -59,9 +59,6 @@ This class has no description
 
   One or more block device mapping entries.
 
-Although you can specify encrypted EBS volumes in this block device
-mapping for your Spot Instances, these volumes are not encrypted.
-
 
 =head2 EbsOptimized => Bool
 
@@ -149,8 +146,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

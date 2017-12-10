@@ -15,7 +15,7 @@ package Paws::IAM::GetContextKeysForPrincipalPolicy;
 
 =head1 NAME
 
-Paws::IAM::GetContextKeysForPrincipalPolicy - Arguments for method GetContextKeysForPrincipalPolicy on Paws::IAM
+Paws::IAM::GetContextKeysForPrincipalPolicy - Arguments for method GetContextKeysForPrincipalPolicy on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -39,13 +39,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 An optional list of additional policies for which you want the list of
 context keys that are referenced.
 
-The regex pattern used to validate this parameter is a string of
-characters consisting of any printable ASCII character ranging from the
-space character (\u0020) through end of the ASCII character range as
-well as the printable characters in the Basic Latin and Latin-1
-Supplement character set (through \u00FF). It also includes the special
-characters tab (\u0009), line feed (\u000A), and carriage return
-(\u000D).
+The regex pattern (http://wikipedia.org/wiki/regex) used to validate
+this parameter is a string of characters consisting of any printable
+ASCII character ranging from the space character (\u0020) through end
+of the ASCII character range as well as the printable characters in the
+Basic Latin and Latin-1 Supplement character set (through \u00FF). It
+also includes the special characters tab (\u0009), line feed (\u000A),
+and carriage return (\u000D).
 
 
 
@@ -61,7 +61,9 @@ unencoded form here for clarity, but must be URL encoded to be included
 as a part of a real HTML request.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces in the I<AWS General Reference>.
+AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+in the I<AWS General Reference>.
 
 
 
@@ -72,9 +74,9 @@ This class forms part of L<Paws>, documenting arguments for method GetContextKey
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -14,7 +14,7 @@ package Paws::SMS::DeleteReplicationJob;
 
 =head1 NAME
 
-Paws::SMS::DeleteReplicationJob - Arguments for method DeleteReplicationJob on Paws::SMS
+Paws::SMS::DeleteReplicationJob - Arguments for method DeleteReplicationJob on L<Paws::SMS>
 
 =head1 DESCRIPTION
 
@@ -46,9 +46,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteReplica
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

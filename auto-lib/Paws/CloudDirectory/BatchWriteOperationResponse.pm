@@ -2,9 +2,16 @@ package Paws::CloudDirectory::BatchWriteOperationResponse;
   use Moose;
   has AddFacetToObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchAddFacetToObjectResponse');
   has AttachObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchAttachObjectResponse');
+  has AttachPolicy => (is => 'ro', isa => 'Paws::CloudDirectory::BatchAttachPolicyResponse');
+  has AttachToIndex => (is => 'ro', isa => 'Paws::CloudDirectory::BatchAttachToIndexResponse');
+  has AttachTypedLink => (is => 'ro', isa => 'Paws::CloudDirectory::BatchAttachTypedLinkResponse');
+  has CreateIndex => (is => 'ro', isa => 'Paws::CloudDirectory::BatchCreateIndexResponse');
   has CreateObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchCreateObjectResponse');
   has DeleteObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDeleteObjectResponse');
+  has DetachFromIndex => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachFromIndexResponse');
   has DetachObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachObjectResponse');
+  has DetachPolicy => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachPolicyResponse');
+  has DetachTypedLink => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachTypedLinkResponse');
   has RemoveFacetFromObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchRemoveFacetFromObjectResponse');
   has UpdateObjectAttributes => (is => 'ro', isa => 'Paws::CloudDirectory::BatchUpdateObjectAttributesResponse');
 1;
@@ -52,6 +59,31 @@ Represents the output of a C<BatchWrite> response operation.
   Attaches an object to a Directory.
 
 
+=head2 AttachPolicy => L<Paws::CloudDirectory::BatchAttachPolicyResponse>
+
+  Attaches a policy object to a regular object. An object can have a
+limited number of attached policies.
+
+
+=head2 AttachToIndex => L<Paws::CloudDirectory::BatchAttachToIndexResponse>
+
+  Attaches the specified object to the specified index.
+
+
+=head2 AttachTypedLink => L<Paws::CloudDirectory::BatchAttachTypedLinkResponse>
+
+  Attaches a typed link to a specified source and target object. For more
+information, see Typed link
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+
+
+=head2 CreateIndex => L<Paws::CloudDirectory::BatchCreateIndexResponse>
+
+  Creates an index object. See Indexing
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_indexing.html)
+for more information.
+
+
 =head2 CreateObject => L<Paws::CloudDirectory::BatchCreateObjectResponse>
 
   Creates an object in a Directory.
@@ -62,9 +94,26 @@ Represents the output of a C<BatchWrite> response operation.
   Deletes an object in a Directory.
 
 
+=head2 DetachFromIndex => L<Paws::CloudDirectory::BatchDetachFromIndexResponse>
+
+  Detaches the specified object from the specified index.
+
+
 =head2 DetachObject => L<Paws::CloudDirectory::BatchDetachObjectResponse>
 
   Detaches an object from a Directory.
+
+
+=head2 DetachPolicy => L<Paws::CloudDirectory::BatchDetachPolicyResponse>
+
+  Detaches a policy from a Directory.
+
+
+=head2 DetachTypedLink => L<Paws::CloudDirectory::BatchDetachTypedLinkResponse>
+
+  Detaches a typed link from a specified source and target object. For
+more information, see Typed link
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
 =head2 RemoveFacetFromObject => L<Paws::CloudDirectory::BatchRemoveFacetFromObjectResponse>
@@ -84,9 +133,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudDire
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

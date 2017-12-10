@@ -14,7 +14,7 @@ package Paws::GameLift::DeleteGameSessionQueue;
 
 =head1 NAME
 
-Paws::GameLift::DeleteGameSessionQueue - Arguments for method DeleteGameSessionQueue on Paws::GameLift
+Paws::GameLift::DeleteGameSessionQueue - Arguments for method DeleteGameSessionQueue on L<Paws::GameLift>
 
 =head1 DESCRIPTION
 
@@ -35,8 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Name => Str
 
-Descriptive label that is associated with queue. Queue names must be
-unique within each region.
+Descriptive label that is associated with game session queue. Queue
+names must be unique within each region.
 
 
 
@@ -47,9 +47,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteGameSes
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -1,7 +1,8 @@
 
 package Paws::DirectConnect::ConfirmPrivateVirtualInterface;
   use Moose;
-  has VirtualGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualGatewayId' , required => 1);
+  has DirectConnectGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'directConnectGatewayId' );
+  has VirtualGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualGatewayId' );
   has VirtualInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceId' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -15,7 +16,7 @@ package Paws::DirectConnect::ConfirmPrivateVirtualInterface;
 
 =head1 NAME
 
-Paws::DirectConnect::ConfirmPrivateVirtualInterface - Arguments for method ConfirmPrivateVirtualInterface on Paws::DirectConnect
+Paws::DirectConnect::ConfirmPrivateVirtualInterface - Arguments for method ConfirmPrivateVirtualInterface on L<Paws::DirectConnect>
 
 =head1 DESCRIPTION
 
@@ -34,13 +35,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> VirtualGatewayId => Str
+=head2 DirectConnectGatewayId => Str
+
+ID of the direct connect gateway that will be attached to the virtual
+interface.
+
+A direct connect gateway can be managed via the AWS Direct Connect
+console or the CreateDirectConnectGateway action.
+
+Default: None
+
+
+
+=head2 VirtualGatewayId => Str
 
 ID of the virtual private gateway that will be attached to the virtual
 interface.
 
 A virtual private gateway can be managed via the Amazon Virtual Private
-Cloud (VPC) console or the EC2 CreateVpnGateway action.
+Cloud (VPC) console or the EC2 CreateVpnGateway
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html)
+action.
 
 Default: None
 
@@ -59,9 +74,9 @@ This class forms part of L<Paws>, documenting arguments for method ConfirmPrivat
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -15,7 +15,7 @@ package Paws::SSM::ListTagsForResource;
 
 =head1 NAME
 
-Paws::SSM::ListTagsForResource - Arguments for method ListTagsForResource on Paws::SSM
+Paws::SSM::ListTagsForResource - Arguments for method ListTagsForResource on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -44,7 +44,7 @@ The resource ID for which you want to see a list of tags.
 
 Returns a list of tags for a specific resource type.
 
-Valid values are: C<"ManagedInstance">, C<"MaintenanceWindow">, C<"Parameter">
+Valid values are: C<"Document">, C<"ManagedInstance">, C<"MaintenanceWindow">, C<"Parameter">, C<"PatchBaseline">
 
 
 =head1 SEE ALSO
@@ -53,9 +53,9 @@ This class forms part of L<Paws>, documenting arguments for method ListTagsForRe
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

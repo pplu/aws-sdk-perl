@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ACM::Domain
 =head1 DESCRIPTION
 
 Contains information about the domain names that you want ACM to use to
-send you emails to validate your ownership of the domain.
+send you emails that enable you to validate domain ownership.
 
 =head1 ATTRIBUTES
 
@@ -86,9 +86,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ACM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

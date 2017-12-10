@@ -33,30 +33,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-The parameter key-value pair used to update a ProvisionedProduct
-object. If C<UsePreviousValue> is set to true, C<Value> is ignored and
-the value for C<Key> is kept as previously set (current value).
+The parameter key-value pair used to update a provisioned product.
 
 =head1 ATTRIBUTES
 
 
 =head2 Key => Str
 
-  The C<ProvisioningArtifactParameter.ParameterKey> parameter from
-DescribeProvisioningParameters.
+  The parameter key.
 
 
 =head2 UsePreviousValue => Bool
 
-  If true, uses the currently set value for C<Key>, ignoring
-C<UpdateProvisioningParameter.Value>.
+  If set to true, C<Value> is ignored and the previous parameter value is
+kept.
 
 
 =head2 Value => Str
 
-  The value to use for updating the product provisioning. Any constraints
-on this value can be found in the C<ProvisioningArtifactParameter>
-parameter for C<Key>.
+  The parameter value.
 
 
 
@@ -66,9 +61,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ServiceCa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

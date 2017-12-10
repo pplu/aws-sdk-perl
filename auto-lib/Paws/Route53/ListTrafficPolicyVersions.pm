@@ -19,7 +19,7 @@ package Paws::Route53::ListTrafficPolicyVersions;
 
 =head1 NAME
 
-Paws::Route53::ListTrafficPolicyVersions - Arguments for method ListTrafficPolicyVersions on Paws::Route53
+Paws::Route53::ListTrafficPolicyVersions - Arguments for method ListTrafficPolicyVersions on L<Paws::Route53>
 
 =head1 DESCRIPTION
 
@@ -77,9 +77,9 @@ This class forms part of L<Paws>, documenting arguments for method ListTrafficPo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

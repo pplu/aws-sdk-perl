@@ -7,6 +7,7 @@ package Paws::Pinpoint::Message;
   has ImageUrl => (is => 'ro', isa => 'Str');
   has JsonBody => (is => 'ro', isa => 'Str');
   has MediaUrl => (is => 'ro', isa => 'Str');
+  has RawContent => (is => 'ro', isa => 'Str');
   has SilentPush => (is => 'ro', isa => 'Bool');
   has Title => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
@@ -89,6 +90,12 @@ icon, for example, the app icon.
 file.
 
 
+=head2 RawContent => Str
+
+  The Raw JSON formatted string to be used as the payload. This value
+overrides the message.
+
+
 =head2 SilentPush => Bool
 
   Indicates if the message should display on the users device. Silent
@@ -113,9 +120,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

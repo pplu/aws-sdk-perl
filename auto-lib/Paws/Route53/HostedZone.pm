@@ -3,6 +3,7 @@ package Paws::Route53::HostedZone;
   has CallerReference => (is => 'ro', isa => 'Str', required => 1);
   has Config => (is => 'ro', isa => 'Paws::Route53::HostedZoneConfig');
   has Id => (is => 'ro', isa => 'Str', required => 1);
+  has LinkedService => (is => 'ro', isa => 'Paws::Route53::LinkedService');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has ResourceRecordSetCount => (is => 'ro', isa => 'Int');
 1;
@@ -60,6 +61,13 @@ appear in the response.
 created it.
 
 
+=head2 LinkedService => L<Paws::Route53::LinkedService>
+
+  If the hosted zone was created by another service, the service that
+created the hosted zone. When a hosted zone is created by another
+service, you can't edit or delete it using Amazon Route 53.
+
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the domain. For public hosted zones, this is the name that
@@ -82,9 +90,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Route53>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

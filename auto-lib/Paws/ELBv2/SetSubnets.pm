@@ -2,6 +2,7 @@
 package Paws::ELBv2::SetSubnets;
   use Moose;
   has LoadBalancerArn => (is => 'ro', isa => 'Str', required => 1);
+  has SubnetMappings => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::SubnetMapping]');
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
@@ -15,7 +16,7 @@ package Paws::ELBv2::SetSubnets;
 
 =head1 NAME
 
-Paws::ELBv2::SetSubnets - Arguments for method SetSubnets on Paws::ELBv2
+Paws::ELBv2::SetSubnets - Arguments for method SetSubnets on L<Paws::ELBv2>
 
 =head1 DESCRIPTION
 
@@ -40,10 +41,21 @@ The Amazon Resource Name (ARN) of the load balancer.
 
 
 
+=head2 SubnetMappings => ArrayRef[L<Paws::ELBv2::SubnetMapping>]
+
+The IDs of the subnets. You must specify subnets from at least two
+Availability Zones. You can specify only one subnet per Availability
+Zone. You must specify either subnets or subnet mappings.
+
+You cannot specify Elastic IP addresses for your subnets.
+
+
+
 =head2 B<REQUIRED> Subnets => ArrayRef[Str|Undef]
 
-The IDs of the subnets. You must specify at least two subnets. You can
-add only one subnet per Availability Zone.
+The IDs of the subnets. You must specify subnets from at least two
+Availability Zones. You can specify only one subnet per Availability
+Zone. You must specify either subnets or subnet mappings.
 
 
 
@@ -54,9 +66,9 @@ This class forms part of L<Paws>, documenting arguments for method SetSubnets in
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -15,7 +15,7 @@ package Paws::ELB::DescribeLoadBalancerPolicies;
 
 =head1 NAME
 
-Paws::ELB::DescribeLoadBalancerPolicies - Arguments for method DescribeLoadBalancerPolicies on Paws::ELB
+Paws::ELB::DescribeLoadBalancerPolicies - Arguments for method DescribeLoadBalancerPolicies on L<Paws::ELB>
 
 =head1 DESCRIPTION
 
@@ -53,9 +53,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeLoadB
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

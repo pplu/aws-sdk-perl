@@ -44,7 +44,10 @@ A facet.
 
 =head2 SchemaArn => Str
 
-  The ARN of the schema that contains the facet.
+  The ARN of the schema that contains the facet with no minor component.
+See arns and In-Place Schema Upgrade
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/inplaceschemaupgrade.html)
+for a description of when to provide minor versions.
 
 
 
@@ -54,9 +57,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudDire
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

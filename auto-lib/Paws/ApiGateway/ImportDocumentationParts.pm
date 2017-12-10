@@ -1,10 +1,10 @@
 
 package Paws::ApiGateway::ImportDocumentationParts;
   use Moose;
-  has Body => (is => 'ro', isa => 'Str', required => 1);
-  has FailOnWarnings => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'failOnWarnings' );
-  has Mode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'mode' );
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
+  has Body => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'body', required => 1);
+  has FailOnWarnings => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'failOnWarnings');
+  has Mode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'mode');
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');
@@ -12,14 +12,13 @@ package Paws::ApiGateway::ImportDocumentationParts;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/documentation/parts');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::DocumentationPartIds');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::ImportDocumentationParts - Arguments for method ImportDocumentationParts on Paws::ApiGateway
+Paws::ApiGateway::ImportDocumentationParts - Arguments for method ImportDocumentationParts on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -63,8 +62,7 @@ Valid values are: C<"merge">, C<"overwrite">
 
 =head2 B<REQUIRED> RestApiId => Str
 
-[Required] The identifier of an API of the to-be-imported documentation
-parts.
+[Required] The string identifier of the associated RestApi.
 
 
 
@@ -75,9 +73,9 @@ This class forms part of L<Paws>, documenting arguments for method ImportDocumen
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

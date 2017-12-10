@@ -99,23 +99,31 @@ instances of the cluster assume this role.
 
 =head2 RequestedEc2AvailabilityZones => ArrayRef[Str|Undef]
 
-  Applies to clusters configured with the The list of availability zones
-to choose from. The service will choose the availability zone with the
-best mix of available capacity and lowest cost to launch the cluster.
-If you do not specify this value, the cluster is launched in any
-availability zone that the customer account has access to.
+  Applies to clusters configured with the instance fleets option.
+Specifies one or more Availability Zones in which to launch EC2 cluster
+instances when the EC2-Classic network configuration is supported.
+Amazon EMR chooses the Availability Zone with the best fit from among
+the list of C<RequestedEc2AvailabilityZones>, and then launches all
+cluster instances within that Availability Zone. If you do not specify
+this value, Amazon EMR chooses the Availability Zone for you.
+C<RequestedEc2SubnetIDs> and C<RequestedEc2AvailabilityZones> cannot be
+specified together.
 
 
 =head2 RequestedEc2SubnetIds => ArrayRef[Str|Undef]
 
   Applies to clusters configured with the instance fleets option.
 Specifies the unique identifier of one or more Amazon EC2 subnets in
-which to launch EC2 cluster instances. Amazon EMR chooses the EC2
-subnet with the best performance and cost characteristics from among
-the list of RequestedEc2SubnetIds and launches all cluster instances
-within that subnet. If this value is not specified, and the account
-supports EC2-Classic networks, the cluster launches instances in the
-EC2-Classic network and uses Requested
+which to launch EC2 cluster instances. Subnets must exist within the
+same VPC. Amazon EMR chooses the EC2 subnet with the best fit from
+among the list of C<RequestedEc2SubnetIds>, and then launches all
+cluster instances within that Subnet. If this value is not specified,
+and the account and region support EC2-Classic networks, the cluster
+launches instances in the EC2-Classic network and uses
+C<RequestedEc2AvailabilityZones> instead of this setting. If
+EC2-Classic is not supported, and no Subnet is specified, Amazon EMR
+chooses the subnet for you. C<RequestedEc2SubnetIDs> and
+C<RequestedEc2AvailabilityZones> cannot be specified together.
 
 
 =head2 ServiceAccessSecurityGroup => Str
@@ -131,9 +139,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EMR>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

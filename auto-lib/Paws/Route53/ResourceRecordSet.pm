@@ -75,6 +75,7 @@ resource record sets in a private hosted zone is unsupported.
 
 For information about creating failover resource record sets in a
 private hosted zone, see Configuring Failover in a Private Hosted Zone
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-private-hosted-zones.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 =back
@@ -141,10 +142,12 @@ see the following topics in the I<Amazon Route 53 Developer Guide>:
 =item *
 
 Amazon Route 53 Health Checks and DNS Failover
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html)
 
 =item *
 
 Configuring Failover in a Private Hosted Zone
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-private-hosted-zones.html)
 
 =back
 
@@ -223,7 +226,8 @@ metric health checks)
 =back
 
 For more information, see How Amazon Route 53 Determines Whether an
-Endpoint Is Healthy.
+Endpoint Is Healthy
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html).
 
 The C<HealthCheckId> element is only useful when Amazon Route 53 is
 choosing between two or more resource record sets to respond to a DNS
@@ -290,10 +294,12 @@ Developer Guide>:
 =item *
 
 Amazon Route 53 Health Checks and DNS Failover
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html)
 
 =item *
 
 Configuring Failover in a Private Hosted Zone
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-private-hosted-zones.html)
 
 =back
 
@@ -360,8 +366,9 @@ C<www.example.com> (without a trailing dot) and C<www.example.com.>
 
 For information about how to specify characters other than C<a-z>,
 C<0-9>, and C<-> (hyphen) and how to specify internationalized domain
-names, see DNS Domain Name Format in the I<Amazon Route 53 Developer
-Guide>.
+names, see DNS Domain Name Format
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 You can use the asterisk (*) wildcard to replace the leftmost label in
 a domain name, for example, C<*.example.com>. Note the following:
@@ -520,14 +527,16 @@ C<Weight>.
 
   The DNS record type. For information about different record types and
 how data is encoded for them, see Supported DNS Resource Record Types
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/ResourceRecordTypes.html)
 in the I<Amazon Route 53 Developer Guide>.
 
-Valid values for basic resource record sets: C<A> | C<AAAA> | C<CNAME>
-| C<MX> | C<NAPTR> | C<NS> | C<PTR> | C<SOA> | C<SPF> | C<SRV> | C<TXT>
+Valid values for basic resource record sets: C<A> | C<AAAA> | C<CAA> |
+C<CNAME> | C<MX> | C<NAPTR> | C<NS> | C<PTR> | C<SOA> | C<SPF> | C<SRV>
+| C<TXT>
 
 Values for weighted, latency, geolocation, and failover resource record
-sets: C<A> | C<AAAA> | C<CNAME> | C<MX> | C<NAPTR> | C<PTR> | C<SPF> |
-C<SRV> | C<TXT>. When creating a group of weighted, latency,
+sets: C<A> | C<AAAA> | C<CAA> | C<CNAME> | C<MX> | C<NAPTR> | C<PTR> |
+C<SPF> | C<SRV> | C<TXT>. When creating a group of weighted, latency,
 geolocation, or failover resource record sets, specify the same value
 for all of the resource record sets in the group.
 
@@ -542,7 +551,8 @@ Email, Version 1>, has been updated to say, "...[I]ts existence and
 mechanism defined in [RFC4408] have led to some interoperability
 issues. Accordingly, its use is no longer appropriate for SPF version
 1; implementations are not to use it." In RFC 7208, see section 14.1,
-The SPF DNS Record Type.
+The SPF DNS Record Type
+(http://tools.ietf.org/html/rfc7208#section-14.1).
 
 Values for alias resource record sets:
 
@@ -624,7 +634,9 @@ to all resources with equal probability.
 The effect of setting C<Weight> to C<0> is different when you associate
 health checks with weighted resource record sets. For more information,
 see Options for Configuring Amazon Route 53 Active-Active and
-Active-Passive Failover in the I<Amazon Route 53 Developer Guide>.
+Active-Passive Failover
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 =back
 
@@ -637,9 +649,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Route53>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -17,7 +17,7 @@ package Paws::GameLift::CreateBuild;
 
 =head1 NAME
 
-Paws::GameLift::CreateBuild - Arguments for method CreateBuild on Paws::GameLift
+Paws::GameLift::CreateBuild - Arguments for method CreateBuild on L<Paws::GameLift>
 
 =head1 DESCRIPTION
 
@@ -59,7 +59,8 @@ bucket must be owned by the same AWS account that you're using to
 manage Amazon GameLift. It also must in the same region that you want
 to create a new build in. Before calling C<CreateBuild> with this
 location, you must allow Amazon GameLift to access your Amazon S3
-bucket (see Create a Build with Files in Amazon S3).
+bucket (see Create a Build with Files in Amazon S3
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build)).
 
 
 
@@ -77,9 +78,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateBuild i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

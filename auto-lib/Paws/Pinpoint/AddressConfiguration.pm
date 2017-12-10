@@ -48,7 +48,7 @@ Address configuration.
 
 =head2 ChannelType => Str
 
-  Type of channel of this address
+  The channel type. Valid values: GCM | APNS | SMS | EMAIL
 
 
 =head2 Context => L<Paws::Pinpoint::MapOf__string>
@@ -84,9 +84,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

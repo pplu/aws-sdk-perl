@@ -15,7 +15,7 @@ package Paws::Organizations::AttachPolicy;
 
 =head1 NAME
 
-Paws::Organizations::AttachPolicy - Arguments for method AttachPolicy on Paws::Organizations
+Paws::Organizations::AttachPolicy - Arguments for method AttachPolicy on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
@@ -40,8 +40,9 @@ The unique identifier (ID) of the policy that you want to attach to the
 target. You can get the ID for the policy by calling the ListPolicies
 operation.
 
-The regex pattern for a policy ID string requires "p-" followed by from
-8 to 128 lower-case letters or digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for a policy ID
+string requires "p-" followed by from 8 to 128 lower-case letters or
+digits.
 
 
 
@@ -51,7 +52,8 @@ The unique identifier (ID) of the root, OU, or account that you want to
 attach the policy to. You can get the ID by calling the ListRoots,
 ListOrganizationalUnitsForParent, or ListAccounts operations.
 
-The regex pattern for a target ID string requires one of the following:
+The regex pattern (http://wikipedia.org/wiki/regex) for a target ID
+string requires one of the following:
 
 =over
 
@@ -83,9 +85,9 @@ This class forms part of L<Paws>, documenting arguments for method AttachPolicy 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

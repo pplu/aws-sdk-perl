@@ -4,6 +4,7 @@ package Paws::CloudDirectory::ListAppliedSchemaArns;
   has DirectoryArn => (is => 'ro', isa => 'Str', required => 1);
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has SchemaArn => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -11,14 +12,13 @@ package Paws::CloudDirectory::ListAppliedSchemaArns;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/schema/applied');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::ListAppliedSchemaArnsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CloudDirectory::ListAppliedSchemaArns - Arguments for method ListAppliedSchemaArns on Paws::CloudDirectory
+Paws::CloudDirectory::ListAppliedSchemaArns - Arguments for method ListAppliedSchemaArns on L<Paws::CloudDirectory>
 
 =head1 DESCRIPTION
 
@@ -55,6 +55,13 @@ The pagination token.
 
 
 
+=head2 SchemaArn => Str
+
+The response for C<ListAppliedSchemaArns> when this parameter is used
+will list all minor version ARNs for a major version.
+
+
+
 
 =head1 SEE ALSO
 
@@ -62,9 +69,9 @@ This class forms part of L<Paws>, documenting arguments for method ListAppliedSc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

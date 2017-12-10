@@ -58,8 +58,8 @@ C<BidPriceAsPercentageOfOnDemandPrice> defaults to 100%.
 =head2 BidPriceAsPercentageOfOnDemandPrice => Num
 
   The bid price, as a percentage of On-Demand price, for each EC2 Spot
-instance as defined by C<InstanceType>. Expressed as a number between 0
-and 1000 (for example, 20 specifies 20%). If neither C<BidPrice> nor
+instance as defined by C<InstanceType>. Expressed as a number (for
+example, 20 specifies 20%). If neither C<BidPrice> nor
 C<BidPriceAsPercentageOfOnDemandPrice> is provided,
 C<BidPriceAsPercentageOfOnDemandPrice> defaults to 100%.
 
@@ -86,8 +86,8 @@ each instance as defined by C<InstanceType>.
 
   The number of units that a provisioned instance of this type provides
 toward fulfilling the target capacities defined in InstanceFleetConfig.
-This value is 1 for a master instance fleet, and must be greater than 0
-for core and task instance fleets.
+This value is 1 for a master instance fleet, and must be 1 or greater
+for core and task instance fleets. Defaults to 1 if not specified.
 
 
 
@@ -97,9 +97,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EMR>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

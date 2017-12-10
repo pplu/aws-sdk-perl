@@ -19,7 +19,7 @@ package Paws::KMS::CreateKey;
 
 =head1 NAME
 
-Paws::KMS::CreateKey - Arguments for method CreateKey on Paws::KMS
+Paws::KMS::CreateKey - Arguments for method CreateKey on L<Paws::KMS>
 
 =head1 DESCRIPTION
 
@@ -47,6 +47,7 @@ Setting this value to true increases the likelihood that the CMK
 becomes unmanageable. Do not set this value to true indiscriminately.
 
 For more information, refer to the scenario in the Default Key Policy
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam)
 section in the I<AWS Key Management Service Developer Guide>.
 
 Use this parameter only when you include a policy in the request and
@@ -83,6 +84,7 @@ material. When this parameter is set to C<EXTERNAL>, the request
 creates a CMK without key material so that you can import key material
 from your existing key management infrastructure. For more information
 about importing key material into AWS KMS, see Importing Key Material
+(http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html)
 in the I<AWS Key Management Service Developer Guide>.
 
 The CMK's C<Origin> is immutable and is set when the CMK is created.
@@ -104,8 +106,9 @@ following criteria:
 It must allow the principal that is making the C<CreateKey> request to
 make a subsequent PutKeyPolicy request on the CMK. This reduces the
 likelihood that the CMK becomes unmanageable. For more information,
-refer to the scenario in the Default Key Policy section in the I<AWS
-Key Management Service Developer Guide>.
+refer to the scenario in the Default Key Policy
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam)
+section in the I<AWS Key Management Service Developer Guide>.
 
 =item *
 
@@ -114,16 +117,18 @@ visible to AWS KMS. When you create a new AWS principal (for example,
 an IAM user or role), you might need to enforce a delay before
 specifying the new principal in a key policy because the new principal
 might not immediately be visible to AWS KMS. For more information, see
-Changes that I make are not always immediately visible in the I<IAM
-User Guide>.
+Changes that I make are not always immediately visible
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency)
+in the I<IAM User Guide>.
 
 =back
 
 If you do not specify a policy, AWS KMS attaches a default key policy
-to the CMK. For more information, see Default Key Policy in the I<AWS
-Key Management Service Developer Guide>.
+to the CMK. For more information, see Default Key Policy
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default)
+in the I<AWS Key Management Service Developer Guide>.
 
-The policy size limit is 32 KiB (32768 bytes).
+The policy size limit is 32 kilobytes (32768 bytes).
 
 
 
@@ -146,9 +151,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateKey in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

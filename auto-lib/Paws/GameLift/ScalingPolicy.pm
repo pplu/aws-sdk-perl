@@ -175,37 +175,37 @@ adjustment.
 
 =item *
 
-B<ActivatingGameSessions> E<ndash> number of game sessions in the
-process of being created (game session status = C<ACTIVATING>).
+B<ActivatingGameSessions> -- number of game sessions in the process of
+being created (game session status = C<ACTIVATING>).
 
 =item *
 
-B<ActiveGameSessions> E<ndash> number of game sessions currently
-running (game session status = C<ACTIVE>).
+B<ActiveGameSessions> -- number of game sessions currently running
+(game session status = C<ACTIVE>).
 
 =item *
 
-B<CurrentPlayerSessions> E<ndash> number of active or reserved player
+B<CurrentPlayerSessions> -- number of active or reserved player
 sessions (player session status = C<ACTIVE> or C<RESERVED>).
 
 =item *
 
-B<AvailablePlayerSessions> E<ndash> number of player session slots
-currently available in active game sessions across the fleet,
-calculated by subtracting a game session's current player session count
-from its maximum player session count. This number does include game
-sessions that are not currently accepting players (game session
+B<AvailablePlayerSessions> -- number of player session slots currently
+available in active game sessions across the fleet, calculated by
+subtracting a game session's current player session count from its
+maximum player session count. This number does include game sessions
+that are not currently accepting players (game session
 C<PlayerSessionCreationPolicy> = C<DENY_ALL>).
 
 =item *
 
-B<ActiveInstances> E<ndash> number of instances currently running a
-game session.
+B<ActiveInstances> -- number of instances currently running a game
+session.
 
 =item *
 
-B<IdleInstances> E<ndash> number of instances not currently running a
-game session.
+B<IdleInstances> -- number of instances not currently running a game
+session.
 
 =back
 
@@ -231,20 +231,20 @@ FleetCapacity):
 
 =item *
 
-B<ChangeInCapacity> E<ndash> add (or subtract) the scaling adjustment
-value from the current instance count. Positive values scale up while
+B<ChangeInCapacity> -- add (or subtract) the scaling adjustment value
+from the current instance count. Positive values scale up while
 negative values scale down.
 
 =item *
 
-B<ExactCapacity> E<ndash> set the instance count to the scaling
-adjustment value.
+B<ExactCapacity> -- set the instance count to the scaling adjustment
+value.
 
 =item *
 
-B<PercentChangeInCapacity> E<ndash> increase or reduce the current
-instance count by the scaling adjustment, read as a percentage.
-Positive values scale up while negative values scale down.
+B<PercentChangeInCapacity> -- increase or reduce the current instance
+count by the scaling adjustment, read as a percentage. Positive values
+scale up while negative values scale down.
 
 =back
 
@@ -259,34 +259,34 @@ force when in an C<ACTIVE> status.
 
 =item *
 
-B<ACTIVE> E<ndash> The scaling policy is currently in force.
+B<ACTIVE> -- The scaling policy is currently in force.
 
 =item *
 
-B<UPDATE_REQUESTED> E<ndash> A request to update the scaling policy has
-been received.
+B<UPDATE_REQUESTED> -- A request to update the scaling policy has been
+received.
 
 =item *
 
-B<UPDATING> E<ndash> A change is being made to the scaling policy.
+B<UPDATING> -- A change is being made to the scaling policy.
 
 =item *
 
-B<DELETE_REQUESTED> E<ndash> A request to delete the scaling policy has
-been received.
+B<DELETE_REQUESTED> -- A request to delete the scaling policy has been
+received.
 
 =item *
 
-B<DELETING> E<ndash> The scaling policy is being deleted.
+B<DELETING> -- The scaling policy is being deleted.
 
 =item *
 
-B<DELETED> E<ndash> The scaling policy has been deleted.
+B<DELETED> -- The scaling policy has been deleted.
 
 =item *
 
-B<ERROR> E<ndash> An error occurred in creating the policy. It should
-be removed and recreated.
+B<ERROR> -- An error occurred in creating the policy. It should be
+removed and recreated.
 
 =back
 
@@ -304,9 +304,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::GameLift>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

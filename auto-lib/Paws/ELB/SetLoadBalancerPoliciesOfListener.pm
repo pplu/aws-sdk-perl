@@ -16,7 +16,7 @@ package Paws::ELB::SetLoadBalancerPoliciesOfListener;
 
 =head1 NAME
 
-Paws::ELB::SetLoadBalancerPoliciesOfListener - Arguments for method SetLoadBalancerPoliciesOfListener on Paws::ELB
+Paws::ELB::SetLoadBalancerPoliciesOfListener - Arguments for method SetLoadBalancerPoliciesOfListener on L<Paws::ELB>
 
 =head1 DESCRIPTION
 
@@ -62,9 +62,9 @@ This class forms part of L<Paws>, documenting arguments for method SetLoadBalanc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

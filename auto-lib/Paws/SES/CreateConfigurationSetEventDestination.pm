@@ -15,7 +15,7 @@ package Paws::SES::CreateConfigurationSetEventDestination;
 
 =head1 NAME
 
-Paws::SES::CreateConfigurationSetEventDestination - Arguments for method CreateConfigurationSetEventDestination on Paws::SES
+Paws::SES::CreateConfigurationSetEventDestination - Arguments for method CreateConfigurationSetEventDestination on L<Paws::SES>
 
 =head1 DESCRIPTION
 
@@ -36,16 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ConfigurationSetName => Str
 
-The name of the configuration set to which to apply the event
-destination.
+The name of the configuration set that the event destination should be
+associated with.
 
 
 
 =head2 B<REQUIRED> EventDestination => L<Paws::SES::EventDestination>
 
-An object that describes the AWS service to which Amazon SES will
-publish the email sending events associated with the specified
-configuration set.
+An object that describes the AWS service that email sending event
+information will be published to.
 
 
 
@@ -56,9 +55,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateConfigu
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

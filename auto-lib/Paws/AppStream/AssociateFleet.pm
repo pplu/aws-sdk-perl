@@ -15,7 +15,7 @@ package Paws::AppStream::AssociateFleet;
 
 =head1 NAME
 
-Paws::AppStream::AssociateFleet - Arguments for method AssociateFleet on Paws::AppStream
+Paws::AppStream::AssociateFleet - Arguments for method AssociateFleet on L<Paws::AppStream>
 
 =head1 DESCRIPTION
 
@@ -36,13 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FleetName => Str
 
-The name of the fleet to associate.
+The name of the fleet.
 
 
 
 =head2 B<REQUIRED> StackName => Str
 
-The name of the stack to which the fleet is associated.
+The name of the stack.
 
 
 
@@ -53,9 +53,9 @@ This class forms part of L<Paws>, documenting arguments for method AssociateFlee
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

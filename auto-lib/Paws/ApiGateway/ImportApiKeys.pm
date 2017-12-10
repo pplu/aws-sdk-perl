@@ -1,9 +1,9 @@
 
 package Paws::ApiGateway::ImportApiKeys;
   use Moose;
-  has Body => (is => 'ro', isa => 'Str', required => 1);
-  has FailOnWarnings => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'failOnWarnings' );
-  has Format => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'format' , required => 1);
+  has Body => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'body', required => 1);
+  has FailOnWarnings => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'failOnWarnings');
+  has Format => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'format', required => 1);
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');
@@ -11,14 +11,13 @@ package Paws::ApiGateway::ImportApiKeys;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/apikeys?mode=import');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::ApiKeyIds');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::ImportApiKeys - Arguments for method ImportApiKeys on Paws::ApiGateway
+Paws::ApiGateway::ImportApiKeys - Arguments for method ImportApiKeys on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -40,7 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> Body => Str
 
 The payload of the POST request to import API keys. For the payload
-format, see API Key File Format.
+format, see API Key File Format
+(http://docs.aws.amazon.com/apigateway/latest/developerguide/api-key-file-format.html).
 
 
 
@@ -65,9 +65,9 @@ This class forms part of L<Paws>, documenting arguments for method ImportApiKeys
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

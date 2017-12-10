@@ -2,6 +2,8 @@
 package Paws::SSM::UpdateAssociation;
   use Moose;
   has AssociationId => (is => 'ro', isa => 'Str', required => 1);
+  has AssociationName => (is => 'ro', isa => 'Str');
+  has AssociationVersion => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has OutputLocation => (is => 'ro', isa => 'Paws::SSM::InstanceAssociationOutputLocation');
@@ -20,7 +22,7 @@ package Paws::SSM::UpdateAssociation;
 
 =head1 NAME
 
-Paws::SSM::UpdateAssociation - Arguments for method UpdateAssociation on Paws::SSM
+Paws::SSM::UpdateAssociation - Arguments for method UpdateAssociation on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -42,6 +44,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> AssociationId => Str
 
 The ID of the association you want to update.
+
+
+
+=head2 AssociationName => Str
+
+The name of the association that you want to update.
+
+
+
+=head2 AssociationVersion => Str
+
+This parameter is provided for concurrency control purposes. You must
+specify the latest association version in the service. If you want to
+ensure that this request succeeds, either specify C<$LATEST>, or omit
+this parameter.
 
 
 
@@ -92,9 +109,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateAssocia
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

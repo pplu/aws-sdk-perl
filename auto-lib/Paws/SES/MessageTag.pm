@@ -37,7 +37,8 @@ C<SendEmail> or C<SendRawEmail> to apply to an email.
 
 Message tags, which you use with configuration sets, enable you to
 publish email sending events. For information about using configuration
-sets, see the Amazon SES Developer Guide.
+sets, see the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
 
 =head1 ATTRIBUTES
 
@@ -87,9 +88,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SES>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

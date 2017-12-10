@@ -11,6 +11,7 @@ package Paws::StorageGateway::StorediSCSIVolume;
   has VolumeSizeInBytes => (is => 'ro', isa => 'Int');
   has VolumeStatus => (is => 'ro', isa => 'Str');
   has VolumeType => (is => 'ro', isa => 'Str');
+  has VolumeUsedInBytes => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +31,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::StorageGateway::StorediSCSIVolume object:
 
-  $service_obj->Method(Att1 => { CreatedDate => $value, ..., VolumeType => $value  });
+  $service_obj->Method(Att1 => { CreatedDate => $value, ..., VolumeUsedInBytes => $value  });
 
 =head3 Results returned from an API call
 
@@ -114,6 +115,14 @@ volume.
 volume.
 
 
+=head2 VolumeUsedInBytes => Int
+
+  The size of the data stored on the volume in bytes.
+
+This value is not available for volumes created prior to May 13, 2015,
+until you store data on the volume.
+
+
 
 =head1 SEE ALSO
 
@@ -121,9 +130,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::StorageGa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

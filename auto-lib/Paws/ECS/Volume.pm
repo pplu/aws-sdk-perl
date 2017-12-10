@@ -45,6 +45,12 @@ If the host parameter is empty, then the Docker daemon assigns a host
 path for your data volume, but the data is not guaranteed to persist
 after the containers associated with it stop running.
 
+Windows containers can mount whole directories on the same drive as
+C<$env:ProgramData>. Windows containers cannot mount directories on a
+different drive, and mount point cannot be across drives. For example,
+you can mount C<C:\my\path:C:\my\path> and C<D:\:D:\>, but not
+C<D:\my\path:C:\my\path> or C<D:\:C:\my\path>.
+
 
 =head2 Name => Str
 
@@ -61,9 +67,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ECS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

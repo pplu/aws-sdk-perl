@@ -51,13 +51,13 @@ force.
 
 =item *
 
-B<NoProtection> E<ndash> The game session can be terminated during a
+B<NoProtection> -- The game session can be terminated during a
 scale-down event.
 
 =item *
 
-B<FullProtection> E<ndash> If the game session is in an C<ACTIVE>
-status, it cannot be terminated during a scale-down event.
+B<FullProtection> -- If the game session is in an C<ACTIVE> status, it
+cannot be terminated during a scale-down event.
 
 =back
 
@@ -70,9 +70,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::GameLift>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

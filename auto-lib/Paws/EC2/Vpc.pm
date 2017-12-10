@@ -1,6 +1,7 @@
 package Paws::EC2::Vpc;
   use Moose;
   has CidrBlock => (is => 'ro', isa => 'Str', request_name => 'cidrBlock', traits => ['NameInRequest']);
+  has CidrBlockAssociationSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpcCidrBlockAssociation]', request_name => 'cidrBlockAssociationSet', traits => ['NameInRequest']);
   has DhcpOptionsId => (is => 'ro', isa => 'Str', request_name => 'dhcpOptionsId', traits => ['NameInRequest']);
   has InstanceTenancy => (is => 'ro', isa => 'Str', request_name => 'instanceTenancy', traits => ['NameInRequest']);
   has Ipv6CidrBlockAssociationSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpcIpv6CidrBlockAssociation]', request_name => 'ipv6CidrBlockAssociationSet', traits => ['NameInRequest']);
@@ -45,7 +46,12 @@ This class has no description
 
 =head2 CidrBlock => Str
 
-  The IPv4 CIDR block for the VPC.
+  The primary IPv4 CIDR block for the VPC.
+
+
+=head2 CidrBlockAssociationSet => ArrayRef[L<Paws::EC2::VpcCidrBlockAssociation>]
+
+  Information about the IPv4 CIDR blocks associated with the VPC.
 
 
 =head2 DhcpOptionsId => Str
@@ -91,8 +97,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

@@ -47,7 +47,7 @@ you deploy source code or change instance configuration settings.
 
 =head2 DeploymentTime => Str
 
-  For in-progress deployments, the time that the deloyment started.
+  For in-progress deployments, the time that the deployment started.
 
 For completed deployments, the time that the deployment ended.
 
@@ -86,9 +86,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ElasticBe
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -16,7 +16,7 @@ package Paws::KinesisAnalytics::AddApplicationOutput;
 
 =head1 NAME
 
-Paws::KinesisAnalytics::AddApplicationOutput - Arguments for method AddApplicationOutput on Paws::KinesisAnalytics
+Paws::KinesisAnalytics::AddApplicationOutput - Arguments for method AddApplicationOutput on L<Paws::KinesisAnalytics>
 
 =head1 DESCRIPTION
 
@@ -68,9 +68,9 @@ This class forms part of L<Paws>, documenting arguments for method AddApplicatio
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

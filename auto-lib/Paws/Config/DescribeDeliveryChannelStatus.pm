@@ -14,7 +14,7 @@ package Paws::Config::DescribeDeliveryChannelStatus;
 
 =head1 NAME
 
-Paws::Config::DescribeDeliveryChannelStatus - Arguments for method DescribeDeliveryChannelStatus on Paws::Config
+Paws::Config::DescribeDeliveryChannelStatus - Arguments for method DescribeDeliveryChannelStatus on L<Paws::Config>
 
 =head1 DESCRIPTION
 
@@ -46,9 +46,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeDeliv
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

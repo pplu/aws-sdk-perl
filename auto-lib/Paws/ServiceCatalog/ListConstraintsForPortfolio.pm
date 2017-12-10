@@ -18,7 +18,7 @@ package Paws::ServiceCatalog::ListConstraintsForPortfolio;
 
 =head1 NAME
 
-Paws::ServiceCatalog::ListConstraintsForPortfolio - Arguments for method ListConstraintsForPortfolio on Paws::ServiceCatalog
+Paws::ServiceCatalog::ListConstraintsForPortfolio - Arguments for method ListConstraintsForPortfolio on L<Paws::ServiceCatalog>
 
 =head1 DESCRIPTION
 
@@ -39,31 +39,37 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AcceptLanguage => Str
 
-The language code to use for this operation. Supported language codes
-are as follows:
+The language code.
 
-"en" (English)
+=over
 
-"jp" (Japanese)
+=item *
 
-"zh" (Chinese)
+C<en> - English (default)
 
-If no code is specified, "en" is used as the default.
+=item *
+
+C<jp> - Japanese
+
+=item *
+
+C<zh> - Chinese
+
+=back
+
 
 
 
 =head2 PageSize => Int
 
-The maximum number of items to return in the results. If more results
-exist than fit in the specified C<PageSize>, the value of
-C<NextPageToken> in the response is non-null.
+The maximum number of items to return with this call.
 
 
 
 =head2 PageToken => Str
 
-The page token of the first page retrieved. If null, this retrieves the
-first page of size C<PageSize>.
+The page token for the next set of results. To retrieve the first set
+of results, use null.
 
 
 
@@ -86,9 +92,9 @@ This class forms part of L<Paws>, documenting arguments for method ListConstrain
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

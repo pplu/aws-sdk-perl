@@ -15,7 +15,7 @@ package Paws::IAM::CreateVirtualMFADevice;
 
 =head1 NAME
 
-Paws::IAM::CreateVirtualMFADevice - Arguments for method CreateVirtualMFADevice on Paws::IAM
+Paws::IAM::CreateVirtualMFADevice - Arguments for method CreateVirtualMFADevice on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -37,16 +37,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 Path => Str
 
 The path for the virtual MFA device. For more information about paths,
-see IAM Identifiers in the I<IAM User Guide>.
+see IAM Identifiers
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+in the I<IAM User Guide>.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
 
-This paramater allows (per its regex pattern) a string of characters
-consisting of either a forward slash (/) by itself or a string that
-must begin and end with forward slashes, containing any ASCII character
-from the ! (\u0021) thru the DEL character (\u007F), including most
-punctuation characters, digits, and upper and lowercased letters.
+This paramater allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+either a forward slash (/) by itself or a string that must begin and
+end with forward slashes, containing any ASCII character from the !
+(\u0021) thru the DEL character (\u007F), including most punctuation
+characters, digits, and upper and lowercased letters.
 
 
 
@@ -55,9 +58,10 @@ punctuation characters, digits, and upper and lowercased letters.
 The name of the virtual MFA device. Use with path to uniquely identify
 a virtual MFA device.
 
-This parameter allows (per its regex pattern) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+upper and lowercase alphanumeric characters with no spaces. You can
+also include any of the following characters: =,.@-
 
 
 
@@ -68,9 +72,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateVirtual
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

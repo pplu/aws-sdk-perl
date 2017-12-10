@@ -42,6 +42,7 @@ available:
 =item * Option to allow references to indices in an HTTP request body.
 Must be C<false> when configuring access to individual sub-resources.
 By default, the value is C<true>. See Configuration Advanced Options
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options)
 for more information.
 
 =item * Option to specify the percentage of heap space that is
@@ -49,7 +50,8 @@ allocated to field data. By default, this setting is unbounded.
 
 =back
 
-For more information, see Configuring Advanced Options.
+For more information, see Configuring Advanced Options
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options).
 
 =head1 ATTRIBUTES
 
@@ -63,9 +65,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ES>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

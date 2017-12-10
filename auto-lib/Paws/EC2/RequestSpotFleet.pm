@@ -15,7 +15,7 @@ package Paws::EC2::RequestSpotFleet;
 
 =head1 NAME
 
-Paws::EC2::RequestSpotFleet - Arguments for method RequestSpotFleet on Paws::EC2
+Paws::EC2::RequestSpotFleet - Arguments for method RequestSpotFleet on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -45,7 +45,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> SpotFleetRequestConfig => L<Paws::EC2::SpotFleetRequestConfigData>
 
-The configuration for the Spot fleet request.
+The configuration for the Spot Fleet request.
 
 
 
@@ -56,9 +56,9 @@ This class forms part of L<Paws>, documenting arguments for method RequestSpotFl
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -1,6 +1,8 @@
 package Paws::Pinpoint::CampaignLimits;
   use Moose;
   has Daily => (is => 'ro', isa => 'Int');
+  has MaximumDuration => (is => 'ro', isa => 'Int');
+  has MessagesPerSecond => (is => 'ro', isa => 'Int');
   has Total => (is => 'ro', isa => 'Int');
 1;
 
@@ -43,6 +45,19 @@ sent to a user.
   The maximum number of messages that the campaign can send daily.
 
 
+=head2 MaximumDuration => Int
+
+  The maximum duration of a campaign from the scheduled start. Must be a
+minimum of 60 seconds.
+
+
+=head2 MessagesPerSecond => Int
+
+  The maximum number of messages per second that the campaign will send.
+This is a best effort maximum cap and can go as high as 20000 and as
+low as 50
+
+
 =head2 Total => Int
 
   The maximum total number of messages that the campaign can send.
@@ -55,9 +70,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

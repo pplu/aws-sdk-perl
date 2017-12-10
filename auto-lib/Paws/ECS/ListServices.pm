@@ -2,6 +2,7 @@
 package Paws::ECS::ListServices;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has LaunchType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'launchType' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
@@ -16,7 +17,7 @@ package Paws::ECS::ListServices;
 
 =head1 NAME
 
-Paws::ECS::ListServices - Arguments for method ListServices on Paws::ECS
+Paws::ECS::ListServices - Arguments for method ListServices on L<Paws::ECS>
 
 =head1 DESCRIPTION
 
@@ -43,16 +44,22 @@ default cluster is assumed.
 
 
 
+=head2 LaunchType => Str
+
+The launch type for services you want to list.
+
+Valid values are: C<"EC2">, C<"FARGATE">
+
 =head2 MaxResults => Int
 
-The maximum number of container instance results returned by
-C<ListServices> in paginated output. When this parameter is used,
-C<ListServices> only returns C<maxResults> results in a single page
-along with a C<nextToken> response element. The remaining results of
-the initial request can be seen by sending another C<ListServices>
-request with the returned C<nextToken> value. This value can be between
-1 and 10. If this parameter is not used, then C<ListServices> returns
-up to 10 results and a C<nextToken> value if applicable.
+The maximum number of service results returned by C<ListServices> in
+paginated output. When this parameter is used, C<ListServices> only
+returns C<maxResults> results in a single page along with a
+C<nextToken> response element. The remaining results of the initial
+request can be seen by sending another C<ListServices> request with the
+returned C<nextToken> value. This value can be between 1 and 10. If
+this parameter is not used, then C<ListServices> returns up to 10
+results and a C<nextToken> value if applicable.
 
 
 
@@ -61,8 +68,7 @@ up to 10 results and a C<nextToken> value if applicable.
 The C<nextToken> value returned from a previous paginated
 C<ListServices> request where C<maxResults> was used and the results
 exceeded the value of that parameter. Pagination continues from the end
-of the previous results that returned the C<nextToken> value. This
-value is C<null> when there are no more results to return.
+of the previous results that returned the C<nextToken> value.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic
@@ -77,9 +83,9 @@ This class forms part of L<Paws>, documenting arguments for method ListServices 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

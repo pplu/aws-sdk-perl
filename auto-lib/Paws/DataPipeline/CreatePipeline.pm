@@ -17,7 +17,7 @@ package Paws::DataPipeline::CreatePipeline;
 
 =head1 NAME
 
-Paws::DataPipeline::CreatePipeline - Arguments for method CreatePipeline on Paws::DataPipeline
+Paws::DataPipeline::CreatePipeline - Arguments for method CreatePipeline on L<Paws::DataPipeline>
 
 =head1 DESCRIPTION
 
@@ -54,7 +54,9 @@ assigns each pipeline a unique pipeline identifier.
 
 A list of tags to associate with the pipeline at creation. Tags let you
 control access to pipelines. For more information, see Controlling User
-Access to Pipelines in the I<AWS Data Pipeline Developer Guide>.
+Access to Pipelines
+(http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html)
+in the I<AWS Data Pipeline Developer Guide>.
 
 
 
@@ -82,9 +84,9 @@ This class forms part of L<Paws>, documenting arguments for method CreatePipelin
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

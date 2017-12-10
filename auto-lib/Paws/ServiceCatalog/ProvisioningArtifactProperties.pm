@@ -34,39 +34,53 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-Provisioning artifact properties. For example request JSON, see
-CreateProvisioningArtifact.
+Information about a provisioning artifact (also known as a version) for
+a product.
 
 =head1 ATTRIBUTES
 
 
 =head2 Description => Str
 
-  The text description of the provisioning artifact properties.
+  The description of the provisioning artifact, including how it differs
+from the previous provisioning artifact.
 
 
 =head2 B<REQUIRED> Info => L<Paws::ServiceCatalog::ProvisioningArtifactInfo>
 
-  Additional information about the provisioning artifact properties. When
-using this element in a request, you must specify
-C<LoadTemplateFromURL>. For more information, see
-CreateProvisioningArtifact.
+  The URL of the CloudFormation template in Amazon S3. Specify the URL in
+JSON format as follows:
+
+C<"LoadTemplateFromURL":
+"https://s3.amazonaws.com/cf-templates-ozkq9d3hgiq2-us-east-1/...">
 
 
 =head2 Name => Str
 
-  The name assigned to the provisioning artifact properties.
+  The name of the provisioning artifact (for example, v1 v2beta). No
+spaces are allowed.
 
 
 =head2 Type => Str
 
-  The type of the provisioning artifact properties. The following
-provisioning artifact property types are used by AWS Marketplace
-products:
+  The type of provisioning artifact.
 
-C<MARKETPLACE_AMI> - AMI products.
+=over
 
-C<MARKETPLACE_CAR> - CAR (Cluster and AWS Resources) products.
+=item *
+
+C<CLOUD_FORMATION_TEMPLATE> - AWS CloudFormation template
+
+=item *
+
+C<MARKETPLACE_AMI> - AWS Marketplace AMI
+
+=item *
+
+C<MARKETPLACE_CAR> - AWS Marketplace Clusters and AWS Resources
+
+=back
+
 
 
 
@@ -76,9 +90,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ServiceCa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

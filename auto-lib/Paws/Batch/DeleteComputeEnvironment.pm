@@ -1,7 +1,7 @@
 
 package Paws::Batch::DeleteComputeEnvironment;
   use Moose;
-  has ComputeEnvironment => (is => 'ro', isa => 'Str', required => 1);
+  has ComputeEnvironment => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'computeEnvironment', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -9,14 +9,13 @@ package Paws::Batch::DeleteComputeEnvironment;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/deletecomputeenvironment');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Batch::DeleteComputeEnvironmentResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Batch::DeleteComputeEnvironment - Arguments for method DeleteComputeEnvironment on Paws::Batch
+Paws::Batch::DeleteComputeEnvironment - Arguments for method DeleteComputeEnvironment on L<Paws::Batch>
 
 =head1 DESCRIPTION
 
@@ -49,9 +48,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteCompute
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

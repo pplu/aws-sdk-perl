@@ -15,7 +15,7 @@ package Paws::DS::RegisterEventTopic;
 
 =head1 NAME
 
-Paws::DS::RegisterEventTopic - Arguments for method RegisterEventTopic on Paws::DS
+Paws::DS::RegisterEventTopic - Arguments for method RegisterEventTopic on L<Paws::DS>
 
 =head1 DESCRIPTION
 
@@ -55,9 +55,9 @@ This class forms part of L<Paws>, documenting arguments for method RegisterEvent
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

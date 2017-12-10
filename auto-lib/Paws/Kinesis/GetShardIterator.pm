@@ -18,7 +18,7 @@ package Paws::Kinesis::GetShardIterator;
 
 =head1 NAME
 
-Paws::Kinesis::GetShardIterator - Arguments for method GetShardIterator on Paws::Kinesis
+Paws::Kinesis::GetShardIterator - Arguments for method GetShardIterator on L<Paws::Kinesis>
 
 =head1 DESCRIPTION
 
@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ShardId => Str
 
-The shard ID of the Amazon Kinesis shard to get the iterator for.
+The shard ID of the Kinesis Streams shard to get the iterator for.
 
 
 
@@ -67,7 +67,7 @@ C<StartingSequenceNumber>.
 =item *
 
 AT_TIMESTAMP - Start reading from the position denoted by a specific
-timestamp, provided in the value C<Timestamp>.
+time stamp, provided in the value C<Timestamp>.
 
 =item *
 
@@ -100,12 +100,12 @@ The name of the Amazon Kinesis stream.
 
 =head2 Timestamp => Str
 
-The timestamp of the data record from which to start reading. Used with
-shard iterator type AT_TIMESTAMP. A timestamp is the Unix epoch date
-with precision in milliseconds. For example,
+The time stamp of the data record from which to start reading. Used
+with shard iterator type AT_TIMESTAMP. A time stamp is the Unix epoch
+date with precision in milliseconds. For example,
 C<2016-04-04T19:58:46.480-00:00> or C<1459799926.480>. If a record with
-this exact timestamp does not exist, the iterator returned is for the
-next (later) record. If the timestamp is older than the current trim
+this exact time stamp does not exist, the iterator returned is for the
+next (later) record. If the time stamp is older than the current trim
 horizon, the iterator returned is for the oldest untrimmed data record
 (TRIM_HORIZON).
 
@@ -118,9 +118,9 @@ This class forms part of L<Paws>, documenting arguments for method GetShardItera
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

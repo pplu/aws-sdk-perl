@@ -43,21 +43,28 @@ explanation of how each operation is used.
 
 =head2 From => Str
 
-  Not supported.
+  The C<copy> update operation's source as identified by a
+C<JSON-Pointer> value referencing the location within the targeted
+resource to copy the value from. For example, to promote a canary
+deployment, you copy the canary deployment ID to the affiliated
+deployment ID by calling a PATCH request on a Stage resource with
+C<"op":"copy">, C<"from":"/canarySettings/deploymentId"> and
+C<"path":"/deploymentId">.
 
 
 =head2 Op => Str
 
   An update operation to be performed with this PATCH request. The valid
-value can be "add", "remove", or "replace". Not all valid operations
-are supported for a given resource. Support of the operations depends
-on specific operational contexts. Attempts to apply an unsupported
-operation on a resource will return an error message.
+value can be C<add>, C<remove>, C<replace> or C<copy>. Not all valid
+operations are supported for a given resource. Support of the
+operations depends on specific operational contexts. Attempts to apply
+an unsupported operation on a resource will return an error message.
 
 
 =head2 Path => Str
 
-  The C<op> operation's target, as identified by a JSON Pointer value
+  The C<op> operation's target, as identified by a JSON Pointer
+(https://tools.ietf.org/html/draft-ietf-appsawg-json-pointer-08) value
 that references a location within the targeted resource. For example,
 if the target resource has an updateable property of
 C<{"name":"value"}>, the path for this property is C</name>. If the
@@ -71,10 +78,12 @@ associated with it.
 
 =head2 Value => Str
 
-  The new target value of the update operation. When using AWS CLI to
-update a property of a JSON value, enclose the JSON object with a pair
-of single quotes in a Linux shell, e.g., '{"a": ...}'. In a Windows
-shell, see Using JSON for Parameters.
+  The new target value of the update operation. It is applicable for the
+C<add> or C<replace> operation. When using AWS CLI to update a property
+of a JSON value, enclose the JSON object with a pair of single quotes
+in a Linux shell, e.g., '{"a": ...}'. In a Windows shell, see Using
+JSON for Parameters
+(http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json).
 
 
 
@@ -84,9 +93,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ApiGatewa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

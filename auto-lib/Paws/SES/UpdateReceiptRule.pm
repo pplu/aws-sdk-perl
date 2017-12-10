@@ -15,7 +15,7 @@ package Paws::SES::UpdateReceiptRule;
 
 =head1 NAME
 
-Paws::SES::UpdateReceiptRule - Arguments for method UpdateReceiptRule on Paws::SES
+Paws::SES::UpdateReceiptRule - Arguments for method UpdateReceiptRule on L<Paws::SES>
 
 =head1 DESCRIPTION
 
@@ -42,7 +42,7 @@ A data structure that contains the updated receipt rule information.
 
 =head2 B<REQUIRED> RuleSetName => Str
 
-The name of the receipt rule set to which the receipt rule belongs.
+The name of the receipt rule set that the receipt rule belongs to.
 
 
 
@@ -53,9 +53,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateReceipt
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -36,7 +36,7 @@ package Paws::ElastiCache::CreateCacheCluster;
 
 =head1 NAME
 
-Paws::ElastiCache::CreateCacheCluster - Arguments for method CreateCacheCluster on Paws::ElastiCache
+Paws::ElastiCache::CreateCacheCluster - Arguments for method CreateCacheCluster on L<Paws::ElastiCache>
 
 =head1 DESCRIPTION
 
@@ -60,6 +60,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 B<Reserved parameter.> The password used to access a password protected
 server.
 
+This parameter is valid only if:
+
+=over
+
+=item *
+
+The parameter C<TransitEncryptionEnabled> was set to C<true> when the
+cluster was created.
+
+=item *
+
+The line C<requirepass> was added to the database configuration file.
+
+=back
+
 Password constraints:
 
 =over
@@ -75,11 +90,12 @@ length.
 
 =item *
 
-Cannot contain any of the following characters: '/', '"', or "@".
+Cannot contain any of the following characters: '/', '"', or '@'.
 
 =back
 
-For more information, see AUTH password at Redis.
+For more information, see AUTH password (http://redis.io/commands/AUTH)
+at http://redis.io/commands/AUTH.
 
 
 
@@ -95,7 +111,7 @@ Specifies whether the nodes in this Memcached cluster are created in a
 single Availability Zone or created across multiple Availability Zones
 in the cluster's region.
 
-This parameter is only supported for Memcached cache clusters.
+This parameter is only supported for Memcached clusters.
 
 If the C<AZMode> and C<PreferredAvailabilityZones> are not specified,
 ElastiCache assumes C<single-az> mode.
@@ -132,7 +148,10 @@ A name cannot end with a hyphen or contain two consecutive hyphens.
 
 The compute and memory capacity of the nodes in the node group (shard).
 
-Valid node types are as follows:
+The following node types are supported by ElastiCache. Generally
+speaking, the current generation types provide more memory and
+computational power at lower cost when compared to their equivalent
+previous generation counterparts.
 
 =over
 
@@ -144,22 +163,41 @@ General purpose:
 
 =item *
 
-Current generation: C<cache.t2.micro>, C<cache.t2.small>,
-C<cache.t2.medium>, C<cache.m3.medium>, C<cache.m3.large>,
-C<cache.m3.xlarge>, C<cache.m3.2xlarge>, C<cache.m4.large>,
-C<cache.m4.xlarge>, C<cache.m4.2xlarge>, C<cache.m4.4xlarge>,
-C<cache.m4.10xlarge>
+Current generation:
+
+B<T2 node types:> C<cache.t2.micro>, C<cache.t2.small>,
+C<cache.t2.medium>
+
+B<M3 node types:> C<cache.m3.medium>, C<cache.m3.large>,
+C<cache.m3.xlarge>, C<cache.m3.2xlarge>
+
+B<M4 node types:> C<cache.m4.large>, C<cache.m4.xlarge>,
+C<cache.m4.2xlarge>, C<cache.m4.4xlarge>, C<cache.m4.10xlarge>
 
 =item *
 
-Previous generation: C<cache.t1.micro>, C<cache.m1.small>,
-C<cache.m1.medium>, C<cache.m1.large>, C<cache.m1.xlarge>
+Previous generation: (not recommended)
+
+B<T1 node types:> C<cache.t1.micro>
+
+B<M1 node types:> C<cache.m1.small>, C<cache.m1.medium>,
+C<cache.m1.large>, C<cache.m1.xlarge>
 
 =back
 
 =item *
 
-Compute optimized: C<cache.c1.xlarge>
+Compute optimized:
+
+=over
+
+=item *
+
+Previous generation: (not recommended)
+
+B<C1 node types:> C<cache.c1.xlarge>
+
+=back
 
 =item *
 
@@ -169,12 +207,16 @@ Memory optimized:
 
 =item *
 
-Current generation: C<cache.r3.large>, C<cache.r3.xlarge>,
+Current generation:
+
+B<R3 node types:> C<cache.r3.large>, C<cache.r3.xlarge>,
 C<cache.r3.2xlarge>, C<cache.r3.4xlarge>, C<cache.r3.8xlarge>
 
 =item *
 
-Previous generation: C<cache.m2.xlarge>, C<cache.m2.2xlarge>,
+Previous generation: (not recommended)
+
+B<M2 node types:> C<cache.m2.xlarge>, C<cache.m2.2xlarge>,
 C<cache.m2.4xlarge>
 
 =back
@@ -192,9 +234,13 @@ VPC).
 
 =item *
 
-Redis backup/restore is not supported for Redis (cluster mode disabled)
-T1 and T2 instances. Backup/restore is supported on Redis (cluster mode
-enabled) T2 instances.
+Redis (cluster mode disabled): Redis backup/restore is not supported on
+T1 and T2 instances.
+
+=item *
+
+Redis (cluster mode enabled): Backup/restore is not supported on T1
+instances.
 
 =item *
 
@@ -204,46 +250,50 @@ T2 instances.
 =back
 
 For a complete listing of node types and specifications, see Amazon
-ElastiCache Product Features and Details and either Cache Node
-Type-Specific Parameters for Memcached or Cache Node Type-Specific
-Parameters for Redis.
+ElastiCache Product Features and Details
+(http://aws.amazon.com/elasticache/details) and either Cache Node
+Type-Specific Parameters for Memcached
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific)
+or Cache Node Type-Specific Parameters for Redis
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific).
 
 
 
 =head2 CacheParameterGroupName => Str
 
-The name of the parameter group to associate with this cache cluster.
-If this argument is omitted, the default parameter group for the
-specified engine is used. You cannot use any parameter group which has
+The name of the parameter group to associate with this cluster. If this
+argument is omitted, the default parameter group for the specified
+engine is used. You cannot use any parameter group which has
 C<cluster-enabled='yes'> when creating a cluster.
 
 
 
 =head2 CacheSecurityGroupNames => ArrayRef[Str|Undef]
 
-A list of security group names to associate with this cache cluster.
+A list of security group names to associate with this cluster.
 
-Use this parameter only when you are creating a cache cluster outside
-of an Amazon Virtual Private Cloud (Amazon VPC).
+Use this parameter only when you are creating a cluster outside of an
+Amazon Virtual Private Cloud (Amazon VPC).
 
 
 
 =head2 CacheSubnetGroupName => Str
 
-The name of the subnet group to be used for the cache cluster.
+The name of the subnet group to be used for the cluster.
 
-Use this parameter only when you are creating a cache cluster in an
-Amazon Virtual Private Cloud (Amazon VPC).
+Use this parameter only when you are creating a cluster in an Amazon
+Virtual Private Cloud (Amazon VPC).
 
 If you're going to launch your cluster in an Amazon VPC, you need to
 create a subnet group before you start creating a cluster. For more
-information, see Subnets and Subnet Groups.
+information, see Subnets and Subnet Groups
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SubnetGroups.html).
 
 
 
 =head2 Engine => Str
 
-The name of the cache engine to be used for this cache cluster.
+The name of the cache engine to be used for this cluster.
 
 Valid values for this parameter are: C<memcached> | C<redis>
 
@@ -251,15 +301,16 @@ Valid values for this parameter are: C<memcached> | C<redis>
 
 =head2 EngineVersion => Str
 
-The version number of the cache engine to be used for this cache
-cluster. To view the supported cache engine versions, use the
+The version number of the cache engine to be used for this cluster. To
+view the supported cache engine versions, use the
 DescribeCacheEngineVersions operation.
 
 B<Important:> You can upgrade to a newer engine version (see Selecting
-a Cache Engine and Version), but you cannot downgrade to an earlier
-engine version. If you want to use an earlier engine version, you must
-delete the existing cache cluster or replication group and create it
-anew with the earlier engine version.
+a Cache Engine and Version
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement)),
+but you cannot downgrade to an earlier engine version. If you want to
+use an earlier engine version, you must delete the existing cluster or
+replication group and create it anew with the earlier engine version.
 
 
 
@@ -268,20 +319,21 @@ anew with the earlier engine version.
 The Amazon Resource Name (ARN) of the Amazon Simple Notification
 Service (SNS) topic to which notifications are sent.
 
-The Amazon SNS topic owner must be the same as the cache cluster owner.
+The Amazon SNS topic owner must be the same as the cluster owner.
 
 
 
 =head2 NumCacheNodes => Int
 
-The initial number of cache nodes that the cache cluster has.
+The initial number of cache nodes that the cluster has.
 
 For clusters running Redis, this value must be 1. For clusters running
 Memcached, this value must be between 1 and 20.
 
 If you need more than 20 nodes for your Memcached cluster, please fill
 out the ElastiCache Limit Increase Request form at
-http://aws.amazon.com/contact-us/elasticache-node-limit-request/.
+http://aws.amazon.com/contact-us/elasticache-node-limit-request/
+(http://aws.amazon.com/contact-us/elasticache-node-limit-request/).
 
 
 
@@ -293,9 +345,9 @@ The port number on which each of the cache nodes accepts connections.
 
 =head2 PreferredAvailabilityZone => Str
 
-The EC2 Availability Zone in which the cache cluster is created.
+The EC2 Availability Zone in which the cluster is created.
 
-All nodes belonging to this Memcached cache cluster are placed in the
+All nodes belonging to this Memcached cluster are placed in the
 preferred Availability Zone. If you want to create your nodes across
 multiple Availability Zones, use C<PreferredAvailabilityZones>.
 
@@ -310,9 +362,9 @@ order of the zones in the list is not important.
 
 This option is only supported on Memcached.
 
-If you are creating your cache cluster in an Amazon VPC (recommended)
-you can only locate nodes in Availability Zones that are associated
-with the subnets in the selected subnet group.
+If you are creating your cluster in an Amazon VPC (recommended) you can
+only locate nodes in Availability Zones that are associated with the
+subnets in the selected subnet group.
 
 The number of Availability Zones listed must equal the value of
 C<NumCacheNodes>.
@@ -327,8 +379,8 @@ Default: System chosen Availability Zones.
 
 =head2 PreferredMaintenanceWindow => Str
 
-Specifies the weekly time range during which maintenance on the cache
-cluster is performed. It is specified as a range in the format
+Specifies the weekly time range during which maintenance on the cluster
+is performed. It is specified as a range in the format
 ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
 is a 60 minute period. Valid values for C<ddd> are:
 
@@ -381,14 +433,13 @@ Due to current limitations on Redis (cluster mode disabled), this
 operation or parameter is not supported on Redis (cluster mode enabled)
 replication groups.
 
-The ID of the replication group to which this cache cluster should
-belong. If this parameter is specified, the cache cluster is added to
-the specified replication group as a read replica; otherwise, the cache
-cluster is a standalone primary that is not part of any replication
-group.
+The ID of the replication group to which this cluster should belong. If
+this parameter is specified, the cluster is added to the specified
+replication group as a read replica; otherwise, the cluster is a
+standalone primary that is not part of any replication group.
 
 If the specified replication group is Multi-AZ enabled and the
-Availability Zone is not specified, the cache cluster is created in
+Availability Zone is not specified, the cluster is created in
 Availability Zones that provide the best spread of read replicas across
 Availability Zones.
 
@@ -398,10 +449,10 @@ This parameter is only valid if the C<Engine> parameter is C<redis>.
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
-One or more VPC security groups associated with the cache cluster.
+One or more VPC security groups associated with the cluster.
 
-Use this parameter only when you are creating a cache cluster in an
-Amazon Virtual Private Cloud (Amazon VPC).
+Use this parameter only when you are creating a cluster in an Amazon
+Virtual Private Cloud (Amazon VPC).
 
 
 
@@ -437,8 +488,7 @@ deleted.
 
 This parameter is only valid if the C<Engine> parameter is C<redis>.
 
-Default: 0 (i.e., automatic backups are disabled for this cache
-cluster).
+Default: 0 (i.e., automatic backups are disabled for this cluster).
 
 
 
@@ -452,15 +502,13 @@ Example: C<05:00-09:00>
 If you do not specify this parameter, ElastiCache automatically chooses
 an appropriate time range.
 
-B<Note:> This parameter is only valid if the C<Engine> parameter is
-C<redis>.
+This parameter is only valid if the C<Engine> parameter is C<redis>.
 
 
 
 =head2 Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
 
-A list of cost allocation tags to be added to this resource. A tag is a
-key-value pair. A tag key must be accompanied by a tag value.
+A list of cost allocation tags to be added to this resource.
 
 
 
@@ -471,9 +519,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateCacheCl
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

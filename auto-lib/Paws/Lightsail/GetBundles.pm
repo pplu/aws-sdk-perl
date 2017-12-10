@@ -15,7 +15,7 @@ package Paws::Lightsail::GetBundles;
 
 =head1 NAME
 
-Paws::Lightsail::GetBundles - Arguments for method GetBundles on Paws::Lightsail
+Paws::Lightsail::GetBundles - Arguments for method GetBundles on L<Paws::Lightsail>
 
 =head1 DESCRIPTION
 
@@ -55,9 +55,9 @@ This class forms part of L<Paws>, documenting arguments for method GetBundles in
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -35,7 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ES::EBSOpti
 =head1 DESCRIPTION
 
 Options to enable, disable, and specify the properties of EBS storage
-volumes. For more information, see Configuring EBS-based Storage.
+volumes. For more information, see Configuring EBS-based Storage
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs).
 
 =head1 ATTRIBUTES
 
@@ -67,9 +68,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ES>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -14,7 +14,7 @@ package Paws::IAM::CreateAccountAlias;
 
 =head1 NAME
 
-Paws::IAM::CreateAccountAlias - Arguments for method CreateAccountAlias on Paws::IAM
+Paws::IAM::CreateAccountAlias - Arguments for method CreateAccountAlias on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -37,9 +37,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The account alias to create.
 
-This parameter allows (per its regex pattern) a string of characters
-consisting of lowercase letters, digits, and dashes. You cannot start
-or finish with a dash, nor can you have two dashes in a row.
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+lowercase letters, digits, and dashes. You cannot start or finish with
+a dash, nor can you have two dashes in a row.
 
 
 
@@ -50,9 +51,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateAccount
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

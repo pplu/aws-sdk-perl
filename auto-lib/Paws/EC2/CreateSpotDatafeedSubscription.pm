@@ -16,7 +16,7 @@ package Paws::EC2::CreateSpotDatafeedSubscription;
 
 =head1 NAME
 
-Paws::EC2::CreateSpotDatafeedSubscription - Arguments for method CreateSpotDatafeedSubscription on Paws::EC2
+Paws::EC2::CreateSpotDatafeedSubscription - Arguments for method CreateSpotDatafeedSubscription on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Bucket => Str
 
-The Amazon S3 bucket in which to store the Spot instance data feed.
+The Amazon S3 bucket in which to store the Spot Instance data feed.
 
 
 
@@ -63,9 +63,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateSpotDat
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

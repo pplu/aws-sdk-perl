@@ -1,6 +1,7 @@
 
 package Paws::Lambda::InvocationResponse;
   use Moose;
+  has ExecutedVersion => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Executed-Version');
   has FunctionError => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Function-Error');
   has LogResult => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Log-Result');
   has Payload => (is => 'ro', isa => 'Str');
@@ -19,6 +20,12 @@ Paws::Lambda::InvocationResponse
 =head1 ATTRIBUTES
 
 
+=head2 ExecutedVersion => Str
+
+The function version that has been executed. This value is returned
+only if the invocation type is C<RequestResponse>.
+
+
 =head2 FunctionError => Str
 
 Indicates whether an error occurred while executing the Lambda
@@ -27,7 +34,8 @@ C<Handled> or C<Unhandled>. C<Handled> errors are errors that are
 reported by the function while the C<Unhandled> errors are those
 detected and reported by AWS Lambda. Unhandled errors include out of
 memory errors and function timeouts. For information about how to
-report an C<Handled> error, see Programming Model.
+report an C<Handled> error, see Programming Model
+(http://docs.aws.amazon.com/lambda/latest/dg/programming-model.html).
 
 
 =head2 LogResult => Str

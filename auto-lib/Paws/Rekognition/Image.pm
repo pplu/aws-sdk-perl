@@ -39,7 +39,7 @@ C<Bytes> property. For example, you would use the C<Bytes> property to
 pass an image loaded from a local file system. Image bytes passed by
 using the C<Bytes> property must be base64-encoded. Your code may not
 need to encode image bytes if you are using an AWS SDK to call
-Rekognition API operations. For more information, see example4.
+Rekognition API operations. For more information, see images-bytes.
 
 You pass images stored in an S3 bucket to a Rekognition API operation
 by using the C<S3Object> property. Images stored in an S3 bucket do not
@@ -77,9 +77,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Rekogniti
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

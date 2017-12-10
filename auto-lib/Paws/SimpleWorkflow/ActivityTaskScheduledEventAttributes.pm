@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head1 DESCRIPTION
 
-Provides details of the C<ActivityTaskScheduled> event.
+Provides the details of the C<ActivityTaskScheduled> event.
 
 =head1 ATTRIBUTES
 
@@ -58,8 +58,8 @@ Provides details of the C<ActivityTaskScheduled> event.
 
 =head2 Control => Str
 
-  I<Optional.> Data attached to the event that can be used by the decider
-in subsequent workflow tasks. This data is not sent to the activity.
+  Data attached to the event that can be used by the decider in
+subsequent workflow tasks. This data isn't sent to the activity.
 
 
 =head2 B<REQUIRED> DecisionTaskCompletedEventId => Int
@@ -76,7 +76,7 @@ chain of events leading up to this event.
 report progress by calling RecordActivityTaskHeartbeat. If the timeout
 is exceeded, the activity task is automatically timed out. If the
 worker subsequently attempts to record a heartbeat or return a result,
-it will be ignored.
+it is ignored.
 
 
 =head2 Input => Str
@@ -108,16 +108,18 @@ task.
 
 =head2 TaskPriority => Str
 
-  I<Optional.> The priority to assign to the scheduled activity task. If
-set, this will override any default priority value that was assigned
-when the activity type was registered.
+  The priority to assign to the scheduled activity task. If set, this
+overrides any default priority value that was assigned when the
+activity type was registered.
 
 Valid values are integers that range from Java's C<Integer.MIN_VALUE>
 (-2147483648) to C<Integer.MAX_VALUE> (2147483647). Higher numbers
 indicate higher priority.
 
 For more information about setting task priority, see Setting Task
-Priority in the I<Amazon Simple Workflow Developer Guide>.
+Priority
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 
@@ -127,9 +129,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SimpleWor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

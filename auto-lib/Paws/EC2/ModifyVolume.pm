@@ -18,7 +18,7 @@ package Paws::EC2::ModifyVolume;
 
 =head1 NAME
 
-Paws::EC2::ModifyVolume - Arguments for method ModifyVolume on Paws::EC2
+Paws::EC2::ModifyVolume - Arguments for method ModifyVolume on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -52,7 +52,8 @@ Target IOPS rate of the volume to be modified.
 
 Only valid for Provisioned IOPS SSD (C<io1>) volumes. For more
 information about C<io1> IOPS configuration, see
-http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html#EBSVolumeTypes_piops.
+http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html#EBSVolumeTypes_piops
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html#EBSVolumeTypes_piops).
 
 Default: If no IOPS value is specified, the existing value is retained.
 
@@ -63,7 +64,8 @@ Default: If no IOPS value is specified, the existing value is retained.
 Target size in GiB of the volume to be modified. Target volume size
 must be greater than or equal to than the existing size of the volume.
 For information about available EBS volume sizes, see
-http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html.
+http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
 
 Default: If no size is specified, the existing size is retained.
 
@@ -93,9 +95,9 @@ This class forms part of L<Paws>, documenting arguments for method ModifyVolume 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

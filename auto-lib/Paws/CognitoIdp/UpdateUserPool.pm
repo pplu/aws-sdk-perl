@@ -13,8 +13,10 @@ package Paws::CognitoIdp::UpdateUserPool;
   has SmsAuthenticationMessage => (is => 'ro', isa => 'Str');
   has SmsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SmsConfigurationType');
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
+  has UserPoolAddOns => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolAddOnsType');
   has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
   has UserPoolTags => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolTagsType');
+  has VerificationMessageTemplate => (is => 'ro', isa => 'Paws::CognitoIdp::VerificationMessageTemplateType');
 
   use MooseX::ClassAttribute;
 
@@ -27,7 +29,7 @@ package Paws::CognitoIdp::UpdateUserPool;
 
 =head1 NAME
 
-Paws::CognitoIdp::UpdateUserPool - Arguments for method UpdateUserPool on Paws::CognitoIdp
+Paws::CognitoIdp::UpdateUserPool - Arguments for method UpdateUserPool on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -140,6 +142,13 @@ A container with information about the SMS verification message.
 
 
 
+=head2 UserPoolAddOns => L<Paws::CognitoIdp::UserPoolAddOnsType>
+
+Used to enable advanced security risk detection. Set the key
+C<AdvancedSecurityMode> to the value "AUDIT".
+
+
+
 =head2 B<REQUIRED> UserPoolId => Str
 
 The user pool ID for the user pool you want to update.
@@ -150,6 +159,13 @@ The user pool ID for the user pool you want to update.
 
 The cost allocation tags for the user pool. For more information, see
 Adding Cost Allocation Tags to Your User Pool
+(http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html)
+
+
+
+=head2 VerificationMessageTemplate => L<Paws::CognitoIdp::VerificationMessageTemplateType>
+
+The template for verification messages.
 
 
 
@@ -160,9 +176,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateUserPoo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

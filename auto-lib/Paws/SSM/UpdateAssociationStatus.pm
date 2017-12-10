@@ -16,7 +16,7 @@ package Paws::SSM::UpdateAssociationStatus;
 
 =head1 NAME
 
-Paws::SSM::UpdateAssociationStatus - Arguments for method UpdateAssociationStatus on Paws::SSM
+Paws::SSM::UpdateAssociationStatus - Arguments for method UpdateAssociationStatus on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -49,7 +49,7 @@ The ID of the instance.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the SSM document.
+The name of the Systems Manager document.
 
 
 
@@ -60,9 +60,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateAssocia
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

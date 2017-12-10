@@ -14,7 +14,7 @@ package Paws::Organizations::RemoveAccountFromOrganization;
 
 =head1 NAME
 
-Paws::Organizations::RemoveAccountFromOrganization - Arguments for method RemoveAccountFromOrganization on Paws::Organizations
+Paws::Organizations::RemoveAccountFromOrganization - Arguments for method RemoveAccountFromOrganization on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
@@ -38,7 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The unique identifier (ID) of the member account that you want to
 remove from the organization.
 
-The regex pattern for an account ID string requires exactly 12 digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for an account ID
+string requires exactly 12 digits.
 
 
 
@@ -49,9 +50,9 @@ This class forms part of L<Paws>, documenting arguments for method RemoveAccount
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

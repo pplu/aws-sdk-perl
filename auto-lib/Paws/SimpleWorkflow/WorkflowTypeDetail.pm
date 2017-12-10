@@ -30,10 +30,14 @@ structure) can be one of the following.
 
 =over
 
-=item * B<REGISTERED>: The type is registered and available. Workers
+=item *
+
+C<REGISTERED> E<ndash> The type is registered and available. Workers
 supporting this type should be running.
 
-=item * B<DEPRECATED>: The type was deprecated using
+=item *
+
+C<DEPRECATED> E<ndash> The type was deprecated using
 DeprecateWorkflowType, but is still in use. You should keep workers
 supporting this type running. You cannot create new workflow executions
 of this type.

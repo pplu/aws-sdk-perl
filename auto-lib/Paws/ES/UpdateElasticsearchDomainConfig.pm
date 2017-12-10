@@ -3,10 +3,12 @@ package Paws::ES::UpdateElasticsearchDomainConfig;
   use Moose;
   has AccessPolicies => (is => 'ro', isa => 'Str');
   has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptions');
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DomainName' , required => 1);
+  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DomainName', required => 1);
   has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptions');
   has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfig');
+  has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptions');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptions');
+  has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCOptions');
 
   use MooseX::ClassAttribute;
 
@@ -14,14 +16,13 @@ package Paws::ES::UpdateElasticsearchDomainConfig;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-01-01/es/domain/{DomainName}/config');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ES::UpdateElasticsearchDomainConfigResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ES::UpdateElasticsearchDomainConfig - Arguments for method UpdateElasticsearchDomainConfig on Paws::ES
+Paws::ES::UpdateElasticsearchDomainConfig - Arguments for method UpdateElasticsearchDomainConfig on L<Paws::ES>
 
 =head1 DESCRIPTION
 
@@ -51,7 +52,9 @@ IAM access policy as a JSON-formatted string.
 Modifies the advanced option to allow references to indices in an HTTP
 request body. Must be C<false> when configuring access to individual
 sub-resources. By default, the value is C<true>. See Configuration
-Advanced Options for more information.
+Advanced Options
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options)
+for more information.
 
 
 
@@ -73,10 +76,26 @@ The type and number of instances to instantiate for the domain cluster.
 
 
 
+=head2 LogPublishingOptions => L<Paws::ES::LogPublishingOptions>
+
+Map of C<LogType> and C<LogPublishingOption>, each containing options
+to publish a given type of Elasticsearch log.
+
+
+
 =head2 SnapshotOptions => L<Paws::ES::SnapshotOptions>
 
 Option to set the time, in UTC format, for the daily automated
 snapshot. Default value is C<0> hours.
+
+
+
+=head2 VPCOptions => L<Paws::ES::VPCOptions>
+
+Options to specify the subnets and security groups for VPC endpoint.
+For more information, see Creating a VPC
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc)
+in I<VPC Endpoints for Amazon Elasticsearch Service Domains>
 
 
 
@@ -87,9 +106,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateElastic
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

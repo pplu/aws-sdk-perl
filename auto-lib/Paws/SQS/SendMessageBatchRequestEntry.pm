@@ -65,8 +65,9 @@ The C<Id>s of a batch request need to be unique within a request
 =head2 MessageAttributes => L<Paws::SQS::MessageBodyAttributeMap>
 
   Each message attribute consists of a C<Name>, C<Type>, and C<Value>.
-For more information, see Message Attribute Items and Validation in the
-I<Amazon SQS Developer Guide>.
+For more information, see Message Attribute Items and Validation
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-items-validation)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 
 =head2 B<REQUIRED> MessageBody => Str
@@ -82,8 +83,9 @@ The token used for deduplication of messages within a 5-minute minimum
 deduplication interval. If a message with a particular
 C<MessageDeduplicationId> is sent successfully, subsequent messages
 with the same C<MessageDeduplicationId> are accepted successfully but
-aren't delivered. For more information, see Exactly-Once Processing in
-the I<Amazon SQS Developer Guide>.
+aren't delivered. For more information, see Exactly-Once Processing
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 =over
 
@@ -145,8 +147,9 @@ C<A-Z>, C<0-9>) and punctuation
 (C<!"#$%&'()*+,-./:;E<lt>=E<gt>?@[\]^_`{|}~>).
 
 For best practices of using C<MessageDeduplicationId>, see Using the
-MessageDeduplicationId Property in the I<Amazon Simple Queue Service
-Developer Guide>.
+MessageDeduplicationId Property
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queue-recommendations.html#using-messagededuplicationid-property)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 
 =head2 MessageGroupId => Str
@@ -182,8 +185,9 @@ alphanumeric characters and punctuation
 C<(!"#$%&'()*+,-./:;E<lt>=E<gt>?@[\]^_`{|}~)>.
 
 For best practices of using C<MessageGroupId>, see Using the
-MessageGroupId Property in the I<Amazon Simple Queue Service Developer
-Guide>.
+MessageGroupId Property
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queue-recommendations.html#using-messagegroupid-property)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 C<MessageGroupId> is required for FIFO queues. You can't use it for
 Standard queues.
@@ -196,9 +200,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SQS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

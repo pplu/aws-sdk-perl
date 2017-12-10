@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIdp:
 
 =head1 DESCRIPTION
 
-The type of policy in a user pool.
+The policy associated with a user pool.
 
 =head1 ATTRIBUTES
 
 
 =head2 PasswordPolicy => L<Paws::CognitoIdp::PasswordPolicyType>
 
-  A container for information about the user pool password policy.
+  The password policy.
 
 
 
@@ -48,9 +48,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CognitoId
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

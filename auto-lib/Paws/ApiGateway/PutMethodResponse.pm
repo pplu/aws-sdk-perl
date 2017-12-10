@@ -1,12 +1,12 @@
 
 package Paws::ApiGateway::PutMethodResponse;
   use Moose;
-  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod' , required => 1);
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId' , required => 1);
-  has ResponseModels => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
-  has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
-  has StatusCode => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'statusCode' , required => 1);
+  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod', required => 1);
+  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId', required => 1);
+  has ResponseModels => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'responseModels');
+  has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean', traits => ['NameInRequest'], request_name => 'responseParameters');
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has StatusCode => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'statusCode', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -14,14 +14,13 @@ package Paws::ApiGateway::PutMethodResponse;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::MethodResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::PutMethodResponse - Arguments for method PutMethodResponse on Paws::ApiGateway
+Paws::ApiGateway::PutMethodResponse - Arguments for method PutMethodResponse on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -63,8 +62,8 @@ as the key and a Model name as the value.
 =head2 ResponseParameters => L<Paws::ApiGateway::MapOfStringToBoolean>
 
 A key-value map specifying required or optional response parameters
-that Amazon API Gateway can send back to the caller. A key defines a
-method response header name and the associated value is a Boolean flag
+that API Gateway can send back to the caller. A key defines a method
+response header name and the associated value is a Boolean flag
 indicating whether the method response parameter is required or not.
 The method response header names must match the pattern of
 C<method.response.header.{name}>, where C<name> is a valid and unique
@@ -81,7 +80,7 @@ prefix.)
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The RestApi identifier for the Method resource.
+The string identifier of the associated RestApi.
 
 
 
@@ -98,9 +97,9 @@ This class forms part of L<Paws>, documenting arguments for method PutMethodResp
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

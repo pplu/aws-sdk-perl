@@ -20,7 +20,7 @@ package Paws::SSM::PutParameter;
 
 =head1 NAME
 
-Paws::SSM::PutParameter - Arguments for method PutParameter on Paws::SSM
+Paws::SSM::PutParameter - Arguments for method PutParameter on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -49,7 +49,7 @@ following: AllowedPattern=^\d+$
 
 =head2 Description => Str
 
-Information about the parameter that you want to add to the system
+Information about the parameter that you want to add to the system.
 
 
 
@@ -63,7 +63,14 @@ system uses the default key associated with your AWS account.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the parameter that you want to add to the system.
+The fully qualified name of the parameter that you want to add to the
+system. The fully qualified name includes the complete hierarchy of the
+parameter path and name. For example:
+C</Dev/DBServer/MySQL/db-string13>
+
+The maximum length constraint listed below includes capacity for
+additional system attributes that are not part of the name. The maximum
+length for the fully qualified parameter name is 1011 characters.
 
 
 
@@ -93,9 +100,9 @@ This class forms part of L<Paws>, documenting arguments for method PutParameter 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

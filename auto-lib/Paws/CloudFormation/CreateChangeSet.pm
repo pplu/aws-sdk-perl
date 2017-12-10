@@ -10,6 +10,7 @@ package Paws::CloudFormation::CreateChangeSet;
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
   has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RoleARN => (is => 'ro', isa => 'Str');
+  has RollbackConfiguration => (is => 'ro', isa => 'Paws::CloudFormation::RollbackConfiguration');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
   has TemplateBody => (is => 'ro', isa => 'Str');
@@ -27,7 +28,7 @@ package Paws::CloudFormation::CreateChangeSet;
 
 =head1 NAME
 
-Paws::CloudFormation::CreateChangeSet - Arguments for method CreateChangeSet on Paws::CloudFormation
+Paws::CloudFormation::CreateChangeSet - Arguments for method CreateChangeSet on L<Paws::CloudFormation>
 
 =head1 DESCRIPTION
 
@@ -57,12 +58,23 @@ specifying this parameter.
 
 The only valid values are C<CAPABILITY_IAM> and
 C<CAPABILITY_NAMED_IAM>. The following resources require you to specify
-this parameter: AWS::IAM::AccessKey, AWS::IAM::Group,
-AWS::IAM::InstanceProfile, AWS::IAM::Policy, AWS::IAM::Role,
-AWS::IAM::User, and AWS::IAM::UserToGroupAddition. If your stack
-template contains these resources, we recommend that you review all
-permissions associated with them and edit their permissions if
-necessary.
+this parameter: AWS::IAM::AccessKey
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html),
+AWS::IAM::Group
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html),
+AWS::IAM::InstanceProfile
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html),
+AWS::IAM::Policy
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html),
+AWS::IAM::Role
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html),
+AWS::IAM::User
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html),
+and AWS::IAM::UserToGroupAddition
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html).
+If your stack template contains these resources, we recommend that you
+review all permissions associated with them and edit their permissions
+if necessary.
 
 If you have IAM resources, you can specify either capability. If you
 have IAM resources with custom names, you must specify
@@ -70,7 +82,8 @@ C<CAPABILITY_NAMED_IAM>. If you don't specify this parameter, this
 action returns an C<InsufficientCapabilities> error.
 
 For more information, see Acknowledging IAM Resources in AWS
-CloudFormation Templates.
+CloudFormation Templates
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
 
 
 
@@ -93,8 +106,9 @@ specify C<UPDATE>.
 
 If you create a change set for a new stack, AWS Cloudformation creates
 a stack with a unique stack ID, but no template or resources. The stack
-will be in the C<REVIEW_IN_PROGRESS> state until you execute the change
-set.
+will be in the C<REVIEW_IN_PROGRESS>
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995)
+state until you execute the change set.
 
 By default, AWS CloudFormation specifies C<UPDATE>. You can't use the
 C<UPDATE> type to create a change set for a new stack or the C<CREATE>
@@ -129,7 +143,9 @@ To remove all associated notification topics, specify an empty list.
 =head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
 
 A list of C<Parameter> structures that specify input parameters for the
-change set. For more information, see the Parameter data type.
+change set. For more information, see the Parameter
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html)
+data type.
 
 
 
@@ -144,8 +160,9 @@ you're updating, the stack update fails. By default, AWS CloudFormation
 grants permissions to all resource types. AWS Identity and Access
 Management (IAM) uses this parameter for condition keys in IAM policies
 for AWS CloudFormation. For more information, see Controlling Access
-with AWS Identity and Access Management in the AWS CloudFormation User
-Guide.
+with AWS Identity and Access Management
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html)
+in the AWS CloudFormation User Guide.
 
 
 
@@ -167,6 +184,14 @@ user credentials.
 
 
 
+=head2 RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>
+
+The rollback triggers for AWS CloudFormation to monitor during stack
+creation and updating operations, and for the specified monitoring
+period afterwards.
+
+
+
 =head2 B<REQUIRED> StackName => Str
 
 The name or the unique ID of the stack for which you are creating a
@@ -180,7 +205,7 @@ a modified template or different parameter input values.
 
 Key-value pairs to associate with this stack. AWS CloudFormation also
 propagates these tags to resources in the stack. You can specify a
-maximum of 10 tags.
+maximum of 50 tags.
 
 
 
@@ -220,9 +245,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateChangeS
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

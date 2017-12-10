@@ -47,6 +47,9 @@ manually. If the C<sourcePath> value does not exist on the host
 container instance, the Docker daemon creates it. If the location does
 exist, the contents of the source path folder are exported.
 
+If you are using the Fargate launch type, the C<sourcePath> parameter
+is not supported.
+
 
 
 =head1 SEE ALSO
@@ -55,9 +58,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ECS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

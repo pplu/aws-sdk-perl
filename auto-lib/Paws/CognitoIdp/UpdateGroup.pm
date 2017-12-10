@@ -18,7 +18,7 @@ package Paws::CognitoIdp::UpdateGroup;
 
 =head1 NAME
 
-Paws::CognitoIdp::UpdateGroup - Arguments for method UpdateGroup on Paws::CognitoIdp
+Paws::CognitoIdp::UpdateGroup - Arguments for method UpdateGroup on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -52,7 +52,7 @@ The name of the group.
 =head2 Precedence => Int
 
 The new precedence value for the group. For more information about this
-parameter, see CreateGroup.
+parameter, see .
 
 
 
@@ -76,9 +76,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateGroup i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

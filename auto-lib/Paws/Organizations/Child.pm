@@ -41,7 +41,8 @@ Contains a list of child entities, either OUs or accounts.
 
   The unique identifier (ID) of this child entity.
 
-The regex pattern for a child ID string requires one of the following:
+The regex pattern (http://wikipedia.org/wiki/regex) for a child ID
+string requires one of the following:
 
 =over
 
@@ -72,9 +73,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Organizat
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

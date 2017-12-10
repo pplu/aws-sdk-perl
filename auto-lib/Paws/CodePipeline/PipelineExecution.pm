@@ -72,17 +72,17 @@ InProgress: The pipeline execution is currently running.
 
 =item *
 
-Succeeded: The pipeline execution completed successfully.
+Succeeded: The pipeline execution was completed successfully.
 
 =item *
 
 Superseded: While this pipeline execution was waiting for the next
-stage to be completed, a newer pipeline execution caught up and
+stage to be completed, a newer pipeline execution advanced and
 continued through the pipeline instead.
 
 =item *
 
-Failed: The pipeline execution did not complete successfully.
+Failed: The pipeline execution was not completed successfully.
 
 =back
 
@@ -95,9 +95,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodePipel
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

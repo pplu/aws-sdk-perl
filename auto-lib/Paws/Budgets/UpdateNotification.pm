@@ -17,7 +17,7 @@ package Paws::Budgets::UpdateNotification;
 
 =head1 NAME
 
-Paws::Budgets::UpdateNotification - Arguments for method UpdateNotification on Paws::Budgets
+Paws::Budgets::UpdateNotification - Arguments for method UpdateNotification on L<Paws::Budgets>
 
 =head1 DESCRIPTION
 
@@ -67,9 +67,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateNotific
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

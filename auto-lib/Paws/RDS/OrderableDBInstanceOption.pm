@@ -5,12 +5,19 @@ package Paws::RDS::OrderableDBInstanceOption;
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has LicenseModel => (is => 'ro', isa => 'Str');
+  has MaxIopsPerDbInstance => (is => 'ro', isa => 'Int');
+  has MaxIopsPerGib => (is => 'ro', isa => 'Num');
+  has MaxStorageSize => (is => 'ro', isa => 'Int');
+  has MinIopsPerDbInstance => (is => 'ro', isa => 'Int');
+  has MinIopsPerGib => (is => 'ro', isa => 'Num');
+  has MinStorageSize => (is => 'ro', isa => 'Int');
   has MultiAZCapable => (is => 'ro', isa => 'Bool');
   has ReadReplicaCapable => (is => 'ro', isa => 'Bool');
   has StorageType => (is => 'ro', isa => 'Str');
   has SupportsEnhancedMonitoring => (is => 'ro', isa => 'Bool');
   has SupportsIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has SupportsIops => (is => 'ro', isa => 'Bool');
+  has SupportsPerformanceInsights => (is => 'ro', isa => 'Bool');
   has SupportsStorageEncryption => (is => 'ro', isa => 'Bool');
   has Vpc => (is => 'ro', isa => 'Bool');
 1;
@@ -43,7 +50,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Ordera
 
 =head1 DESCRIPTION
 
-Contains a list of available options for a DB instance
+Contains a list of available options for a DB instance.
 
 This data type is used as a response element in the
 DescribeOrderableDBInstanceOptions action.
@@ -53,70 +60,103 @@ DescribeOrderableDBInstanceOptions action.
 
 =head2 AvailabilityZones => ArrayRef[L<Paws::RDS::AvailabilityZone>]
 
-  A list of Availability Zones for the orderable DB instance.
+  A list of Availability Zones for a DB instance.
 
 
 =head2 DBInstanceClass => Str
 
-  The DB instance class for the orderable DB instance.
+  The DB instance class for a DB instance.
 
 
 =head2 Engine => Str
 
-  The engine type of the orderable DB instance.
+  The engine type of a DB instance.
 
 
 =head2 EngineVersion => Str
 
-  The engine version of the orderable DB instance.
+  The engine version of a DB instance.
 
 
 =head2 LicenseModel => Str
 
-  The license model for the orderable DB instance.
+  The license model for a DB instance.
+
+
+=head2 MaxIopsPerDbInstance => Int
+
+  Maximum total provisioned IOPS for a DB instance.
+
+
+=head2 MaxIopsPerGib => Num
+
+  Maximum provisioned IOPS per GiB for a DB instance.
+
+
+=head2 MaxStorageSize => Int
+
+  Maximum storage size for a DB instance.
+
+
+=head2 MinIopsPerDbInstance => Int
+
+  Minimum total provisioned IOPS for a DB instance.
+
+
+=head2 MinIopsPerGib => Num
+
+  Minimum provisioned IOPS per GiB for a DB instance.
+
+
+=head2 MinStorageSize => Int
+
+  Minimum storage size for a DB instance.
 
 
 =head2 MultiAZCapable => Bool
 
-  Indicates whether this orderable DB instance is multi-AZ capable.
+  Indicates whether a DB instance is Multi-AZ capable.
 
 
 =head2 ReadReplicaCapable => Bool
 
-  Indicates whether this orderable DB instance can have a Read Replica.
+  Indicates whether a DB instance can have a Read Replica.
 
 
 =head2 StorageType => Str
 
-  Indicates the storage type for this orderable DB instance.
+  Indicates the storage type for a DB instance.
 
 
 =head2 SupportsEnhancedMonitoring => Bool
 
-  Indicates whether the DB instance supports enhanced monitoring at
+  Indicates whether a DB instance supports Enhanced Monitoring at
 intervals from 1 to 60 seconds.
 
 
 =head2 SupportsIAMDatabaseAuthentication => Bool
 
-  Indicates whether this orderable DB instance supports IAM database
-authentication.
+  Indicates whether a DB instance supports IAM database authentication.
 
 
 =head2 SupportsIops => Bool
 
-  Indicates whether this orderable DB instance supports provisioned IOPS.
+  Indicates whether a DB instance supports provisioned IOPS.
+
+
+=head2 SupportsPerformanceInsights => Bool
+
+  True if a DB instance supports Performance Insights, otherwise false.
 
 
 =head2 SupportsStorageEncryption => Bool
 
-  Indicates whether this orderable DB instance supports encrypted
-storage.
+  Indicates whether a DB instance supports encrypted storage.
 
 
 =head2 Vpc => Bool
 
-  Indicates whether this is a VPC orderable DB instance.
+  Indicates whether a DB instance is in a VPC.
 
 
 
@@ -126,9 +166,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

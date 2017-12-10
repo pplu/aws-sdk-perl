@@ -17,7 +17,7 @@ package Paws::AutoScaling::RecordLifecycleActionHeartbeat;
 
 =head1 NAME
 
-Paws::AutoScaling::RecordLifecycleActionHeartbeat - Arguments for method RecordLifecycleActionHeartbeat on Paws::AutoScaling
+Paws::AutoScaling::RecordLifecycleActionHeartbeat - Arguments for method RecordLifecycleActionHeartbeat on L<Paws::AutoScaling>
 
 =head1 DESCRIPTION
 
@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-The name of the Auto Scaling group for the hook.
+The name of the Auto Scaling group.
 
 
 
@@ -69,9 +69,9 @@ This class forms part of L<Paws>, documenting arguments for method RecordLifecyc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

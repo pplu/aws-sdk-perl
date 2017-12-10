@@ -11,7 +11,7 @@ package Paws::CloudHSM;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub AddTagsToResource {
@@ -147,6 +147,20 @@ Paws::CloudHSM - Perl Interface to AWS Amazon CloudHSM
 
 AWS CloudHSM Service
 
+This is documentation for B<AWS CloudHSM Classic>. For more
+information, see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/), the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the AWS
+CloudHSM Classic API Reference
+(http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+
+B<For information about the current version of AWS CloudHSM>, see AWS
+CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
+CloudHSM API Reference
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
 =head1 METHODS
 
 =head2 AddTagsToResource(ResourceArn => Str, TagList => ArrayRef[L<Paws::CloudHSM::Tag>])
@@ -155,7 +169,21 @@ Each argument is described in detail in: L<Paws::CloudHSM::AddTagsToResource>
 
 Returns: a L<Paws::CloudHSM::AddTagsToResourceResponse> instance
 
-  Adds or overwrites one or more tags for the specified AWS CloudHSM
+This is documentation for B<AWS CloudHSM Classic>. For more
+information, see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/), the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the AWS
+CloudHSM Classic API Reference
+(http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+
+B<For information about the current version of AWS CloudHSM>, see AWS
+CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
+CloudHSM API Reference
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
+Adds or overwrites one or more tags for the specified AWS CloudHSM
 resource.
 
 Each tag consists of a key and a value. Tag keys must be unique to each
@@ -168,7 +196,21 @@ Each argument is described in detail in: L<Paws::CloudHSM::CreateHapg>
 
 Returns: a L<Paws::CloudHSM::CreateHapgResponse> instance
 
-  Creates a high-availability partition group. A high-availability
+This is documentation for B<AWS CloudHSM Classic>. For more
+information, see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/), the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the AWS
+CloudHSM Classic API Reference
+(http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+
+B<For information about the current version of AWS CloudHSM>, see AWS
+CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
+CloudHSM API Reference
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
+Creates a high-availability partition group. A high-availability
 partition group is a group of partitions that spans multiple physical
 HSMs.
 
@@ -179,13 +221,28 @@ Each argument is described in detail in: L<Paws::CloudHSM::CreateHsm>
 
 Returns: a L<Paws::CloudHSM::CreateHsmResponse> instance
 
-  Creates an uninitialized HSM instance.
+This is documentation for B<AWS CloudHSM Classic>. For more
+information, see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/), the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the AWS
+CloudHSM Classic API Reference
+(http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+
+B<For information about the current version of AWS CloudHSM>, see AWS
+CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
+CloudHSM API Reference
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
+Creates an uninitialized HSM instance.
 
 There is an upfront fee charged for each HSM instance that you create
-with the CreateHsm operation. If you accidentally provision an HSM and
-want to request a refund, delete the instance using the DeleteHsm
-operation, go to the AWS Support Center, create a new case, and select
-B<Account and Billing Support>.
+with the C<CreateHsm> operation. If you accidentally provision an HSM
+and want to request a refund, delete the instance using the DeleteHsm
+operation, go to the AWS Support Center
+(https://console.aws.amazon.com/support/home), create a new case, and
+select B<Account and Billing Support>.
 
 It can take up to 20 minutes to create and provision an HSM. You can
 monitor the status of the HSM with the DescribeHsm operation. The HSM
@@ -198,7 +255,21 @@ Each argument is described in detail in: L<Paws::CloudHSM::CreateLunaClient>
 
 Returns: a L<Paws::CloudHSM::CreateLunaClientResponse> instance
 
-  Creates an HSM client.
+This is documentation for B<AWS CloudHSM Classic>. For more
+information, see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/), the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the AWS
+CloudHSM Classic API Reference
+(http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+
+B<For information about the current version of AWS CloudHSM>, see AWS
+CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
+CloudHSM API Reference
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
+Creates an HSM client.
 
 
 =head2 DeleteHapg(HapgArn => Str)
@@ -207,7 +278,21 @@ Each argument is described in detail in: L<Paws::CloudHSM::DeleteHapg>
 
 Returns: a L<Paws::CloudHSM::DeleteHapgResponse> instance
 
-  Deletes a high-availability partition group.
+This is documentation for B<AWS CloudHSM Classic>. For more
+information, see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/), the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the AWS
+CloudHSM Classic API Reference
+(http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+
+B<For information about the current version of AWS CloudHSM>, see AWS
+CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
+CloudHSM API Reference
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
+Deletes a high-availability partition group.
 
 
 =head2 DeleteHsm(HsmArn => Str)
@@ -216,7 +301,21 @@ Each argument is described in detail in: L<Paws::CloudHSM::DeleteHsm>
 
 Returns: a L<Paws::CloudHSM::DeleteHsmResponse> instance
 
-  Deletes an HSM. After completion, this operation cannot be undone and
+This is documentation for B<AWS CloudHSM Classic>. For more
+information, see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/), the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the AWS
+CloudHSM Classic API Reference
+(http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+
+B<For information about the current version of AWS CloudHSM>, see AWS
+CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
+CloudHSM API Reference
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
+Deletes an HSM. After completion, this operation cannot be undone and
 your key material cannot be recovered.
 
 
@@ -226,7 +325,21 @@ Each argument is described in detail in: L<Paws::CloudHSM::DeleteLunaClient>
 
 Returns: a L<Paws::CloudHSM::DeleteLunaClientResponse> instance
 
-  Deletes a client.
+This is documentation for B<AWS CloudHSM Classic>. For more
+information, see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/), the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the AWS
+CloudHSM Classic API Reference
+(http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+
+B<For information about the current version of AWS CloudHSM>, see AWS
+CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
+CloudHSM API Reference
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
+Deletes a client.
 
 
 =head2 DescribeHapg(HapgArn => Str)
@@ -235,7 +348,21 @@ Each argument is described in detail in: L<Paws::CloudHSM::DescribeHapg>
 
 Returns: a L<Paws::CloudHSM::DescribeHapgResponse> instance
 
-  Retrieves information about a high-availability partition group.
+This is documentation for B<AWS CloudHSM Classic>. For more
+information, see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/), the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the AWS
+CloudHSM Classic API Reference
+(http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+
+B<For information about the current version of AWS CloudHSM>, see AWS
+CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
+CloudHSM API Reference
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
+Retrieves information about a high-availability partition group.
 
 
 =head2 DescribeHsm([HsmArn => Str, HsmSerialNumber => Str])
@@ -244,7 +371,21 @@ Each argument is described in detail in: L<Paws::CloudHSM::DescribeHsm>
 
 Returns: a L<Paws::CloudHSM::DescribeHsmResponse> instance
 
-  Retrieves information about an HSM. You can identify the HSM by its ARN
+This is documentation for B<AWS CloudHSM Classic>. For more
+information, see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/), the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the AWS
+CloudHSM Classic API Reference
+(http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+
+B<For information about the current version of AWS CloudHSM>, see AWS
+CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
+CloudHSM API Reference
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
+Retrieves information about an HSM. You can identify the HSM by its ARN
 or its serial number.
 
 
@@ -254,7 +395,21 @@ Each argument is described in detail in: L<Paws::CloudHSM::DescribeLunaClient>
 
 Returns: a L<Paws::CloudHSM::DescribeLunaClientResponse> instance
 
-  Retrieves information about an HSM client.
+This is documentation for B<AWS CloudHSM Classic>. For more
+information, see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/), the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the AWS
+CloudHSM Classic API Reference
+(http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+
+B<For information about the current version of AWS CloudHSM>, see AWS
+CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
+CloudHSM API Reference
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
+Retrieves information about an HSM client.
 
 
 =head2 GetConfig(ClientArn => Str, ClientVersion => Str, HapgList => ArrayRef[Str|Undef])
@@ -263,7 +418,21 @@ Each argument is described in detail in: L<Paws::CloudHSM::GetConfig>
 
 Returns: a L<Paws::CloudHSM::GetConfigResponse> instance
 
-  Gets the configuration files necessary to connect to all high
+This is documentation for B<AWS CloudHSM Classic>. For more
+information, see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/), the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the AWS
+CloudHSM Classic API Reference
+(http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+
+B<For information about the current version of AWS CloudHSM>, see AWS
+CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
+CloudHSM API Reference
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
+Gets the configuration files necessary to connect to all high
 availability partition groups the client is associated with.
 
 
@@ -273,7 +442,21 @@ Each argument is described in detail in: L<Paws::CloudHSM::ListAvailableZones>
 
 Returns: a L<Paws::CloudHSM::ListAvailableZonesResponse> instance
 
-  Lists the Availability Zones that have available AWS CloudHSM capacity.
+This is documentation for B<AWS CloudHSM Classic>. For more
+information, see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/), the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the AWS
+CloudHSM Classic API Reference
+(http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+
+B<For information about the current version of AWS CloudHSM>, see AWS
+CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
+CloudHSM API Reference
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
+Lists the Availability Zones that have available AWS CloudHSM capacity.
 
 
 =head2 ListHapgs([NextToken => Str])
@@ -282,12 +465,26 @@ Each argument is described in detail in: L<Paws::CloudHSM::ListHapgs>
 
 Returns: a L<Paws::CloudHSM::ListHapgsResponse> instance
 
-  Lists the high-availability partition groups for the account.
+This is documentation for B<AWS CloudHSM Classic>. For more
+information, see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/), the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the AWS
+CloudHSM Classic API Reference
+(http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 
-This operation supports pagination with the use of the I<NextToken>
-member. If more results are available, the I<NextToken> member of the
-response contains a token that you pass in the next call to ListHapgs
-to retrieve the next set of items.
+B<For information about the current version of AWS CloudHSM>, see AWS
+CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
+CloudHSM API Reference
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
+Lists the high-availability partition groups for the account.
+
+This operation supports pagination with the use of the C<NextToken>
+member. If more results are available, the C<NextToken> member of the
+response contains a token that you pass in the next call to
+C<ListHapgs> to retrieve the next set of items.
 
 
 =head2 ListHsms([NextToken => Str])
@@ -296,13 +493,27 @@ Each argument is described in detail in: L<Paws::CloudHSM::ListHsms>
 
 Returns: a L<Paws::CloudHSM::ListHsmsResponse> instance
 
-  Retrieves the identifiers of all of the HSMs provisioned for the
+This is documentation for B<AWS CloudHSM Classic>. For more
+information, see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/), the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the AWS
+CloudHSM Classic API Reference
+(http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+
+B<For information about the current version of AWS CloudHSM>, see AWS
+CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
+CloudHSM API Reference
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
+Retrieves the identifiers of all of the HSMs provisioned for the
 current customer.
 
-This operation supports pagination with the use of the I<NextToken>
-member. If more results are available, the I<NextToken> member of the
-response contains a token that you pass in the next call to ListHsms to
-retrieve the next set of items.
+This operation supports pagination with the use of the C<NextToken>
+member. If more results are available, the C<NextToken> member of the
+response contains a token that you pass in the next call to C<ListHsms>
+to retrieve the next set of items.
 
 
 =head2 ListLunaClients([NextToken => Str])
@@ -311,12 +522,26 @@ Each argument is described in detail in: L<Paws::CloudHSM::ListLunaClients>
 
 Returns: a L<Paws::CloudHSM::ListLunaClientsResponse> instance
 
-  Lists all of the clients.
+This is documentation for B<AWS CloudHSM Classic>. For more
+information, see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/), the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the AWS
+CloudHSM Classic API Reference
+(http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 
-This operation supports pagination with the use of the I<NextToken>
-member. If more results are available, the I<NextToken> member of the
+B<For information about the current version of AWS CloudHSM>, see AWS
+CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
+CloudHSM API Reference
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
+Lists all of the clients.
+
+This operation supports pagination with the use of the C<NextToken>
+member. If more results are available, the C<NextToken> member of the
 response contains a token that you pass in the next call to
-ListLunaClients to retrieve the next set of items.
+C<ListLunaClients> to retrieve the next set of items.
 
 
 =head2 ListTagsForResource(ResourceArn => Str)
@@ -325,7 +550,21 @@ Each argument is described in detail in: L<Paws::CloudHSM::ListTagsForResource>
 
 Returns: a L<Paws::CloudHSM::ListTagsForResourceResponse> instance
 
-  Returns a list of all tags for the specified AWS CloudHSM resource.
+This is documentation for B<AWS CloudHSM Classic>. For more
+information, see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/), the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the AWS
+CloudHSM Classic API Reference
+(http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+
+B<For information about the current version of AWS CloudHSM>, see AWS
+CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
+CloudHSM API Reference
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
+Returns a list of all tags for the specified AWS CloudHSM resource.
 
 
 =head2 ModifyHapg(HapgArn => Str, [Label => Str, PartitionSerialList => ArrayRef[Str|Undef]])
@@ -334,7 +573,21 @@ Each argument is described in detail in: L<Paws::CloudHSM::ModifyHapg>
 
 Returns: a L<Paws::CloudHSM::ModifyHapgResponse> instance
 
-  Modifies an existing high-availability partition group.
+This is documentation for B<AWS CloudHSM Classic>. For more
+information, see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/), the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the AWS
+CloudHSM Classic API Reference
+(http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+
+B<For information about the current version of AWS CloudHSM>, see AWS
+CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
+CloudHSM API Reference
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
+Modifies an existing high-availability partition group.
 
 
 =head2 ModifyHsm(HsmArn => Str, [EniIp => Str, ExternalId => Str, IamRoleArn => Str, SubnetId => Str, SyslogIp => Str])
@@ -343,7 +596,21 @@ Each argument is described in detail in: L<Paws::CloudHSM::ModifyHsm>
 
 Returns: a L<Paws::CloudHSM::ModifyHsmResponse> instance
 
-  Modifies an HSM.
+This is documentation for B<AWS CloudHSM Classic>. For more
+information, see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/), the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the AWS
+CloudHSM Classic API Reference
+(http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+
+B<For information about the current version of AWS CloudHSM>, see AWS
+CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
+CloudHSM API Reference
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
+Modifies an HSM.
 
 This operation can result in the HSM being offline for up to 15 minutes
 while the AWS CloudHSM service is reconfigured. If you are modifying a
@@ -358,7 +625,21 @@ Each argument is described in detail in: L<Paws::CloudHSM::ModifyLunaClient>
 
 Returns: a L<Paws::CloudHSM::ModifyLunaClientResponse> instance
 
-  Modifies the certificate used by the client.
+This is documentation for B<AWS CloudHSM Classic>. For more
+information, see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/), the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the AWS
+CloudHSM Classic API Reference
+(http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+
+B<For information about the current version of AWS CloudHSM>, see AWS
+CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
+CloudHSM API Reference
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
+Modifies the certificate used by the client.
 
 This action can potentially start a workflow to install the new
 certificate on the client's HSMs.
@@ -370,7 +651,21 @@ Each argument is described in detail in: L<Paws::CloudHSM::RemoveTagsFromResourc
 
 Returns: a L<Paws::CloudHSM::RemoveTagsFromResourceResponse> instance
 
-  Removes one or more tags from the specified AWS CloudHSM resource.
+This is documentation for B<AWS CloudHSM Classic>. For more
+information, see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/), the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the AWS
+CloudHSM Classic API Reference
+(http://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
+
+B<For information about the current version of AWS CloudHSM>, see AWS
+CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
+CloudHSM API Reference
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
+Removes one or more tags from the specified AWS CloudHSM resource.
 
 To remove a tag, specify only the tag key to remove (not the value). To
 overwrite the value for an existing tag, use AddTagsToResource.
@@ -391,9 +686,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

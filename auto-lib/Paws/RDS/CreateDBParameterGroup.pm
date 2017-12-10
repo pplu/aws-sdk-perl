@@ -17,7 +17,7 @@ package Paws::RDS::CreateDBParameterGroup;
 
 =head1 NAME
 
-Paws::RDS::CreateDBParameterGroup - Arguments for method CreateDBParameterGroup on Paws::RDS
+Paws::RDS::CreateDBParameterGroup - Arguments for method CreateDBParameterGroup on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -55,7 +55,7 @@ Constraints:
 
 =item *
 
-Must be 1 to 255 alphanumeric characters
+Must be 1 to 255 letters, numbers, or hyphens.
 
 =item *
 
@@ -90,9 +90,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateDBParam
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

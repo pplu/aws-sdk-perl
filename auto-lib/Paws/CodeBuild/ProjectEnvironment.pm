@@ -90,8 +90,8 @@ commands if the specified build environment image is provided by AWS
 CodeBuild with Docker support.)
 
 C<- nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock
---host=tcp://0.0.0.0:2375 --storage-driver=vfs& - timeout -t 15 sh -c
-"until docker info; do echo .; sleep 1; done">
+--host=tcp://0.0.0.0:2375 --storage-driver=overlay& - timeout -t 15 sh
+-c "until docker info; do echo .; sleep 1; done">
 
 
 =head2 B<REQUIRED> Type => Str
@@ -106,9 +106,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodeBuild
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

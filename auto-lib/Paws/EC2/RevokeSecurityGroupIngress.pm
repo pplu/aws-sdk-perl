@@ -23,7 +23,7 @@ package Paws::EC2::RevokeSecurityGroupIngress;
 
 =head1 NAME
 
-Paws::EC2::RevokeSecurityGroupIngress - Arguments for method RevokeSecurityGroupIngress on Paws::EC2
+Paws::EC2::RevokeSecurityGroupIngress - Arguments for method RevokeSecurityGroupIngress on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -67,28 +67,33 @@ number. For the ICMP type number, use C<-1> to specify all ICMP types.
 
 =head2 GroupId => Str
 
-The ID of the security group. Required for a security group in a
-nondefault VPC.
+The ID of the security group. You must specify either the security
+group ID or the security group name in the request. For security groups
+in a nondefault VPC, you must specify the security group ID.
 
 
 
 =head2 GroupName => Str
 
-[EC2-Classic, default VPC] The name of the security group.
+[EC2-Classic, default VPC] The name of the security group. You must
+specify either the security group ID or the security group name in the
+request.
 
 
 
 =head2 IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]
 
-A set of IP permissions. You can't specify a source security group and
-a CIDR IP address range.
+One or more sets of IP permissions. You can't specify a source security
+group and a CIDR IP address range in the same set of permissions.
 
 
 
 =head2 IpProtocol => Str
 
 The IP protocol name (C<tcp>, C<udp>, C<icmp>) or number (see Protocol
-Numbers). Use C<-1> to specify all.
+Numbers
+(http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)).
+Use C<-1> to specify all.
 
 
 
@@ -129,9 +134,9 @@ This class forms part of L<Paws>, documenting arguments for method RevokeSecurit
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

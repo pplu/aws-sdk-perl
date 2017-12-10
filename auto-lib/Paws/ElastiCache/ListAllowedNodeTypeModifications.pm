@@ -15,7 +15,7 @@ package Paws::ElastiCache::ListAllowedNodeTypeModifications;
 
 =head1 NAME
 
-Paws::ElastiCache::ListAllowedNodeTypeModifications - Arguments for method ListAllowedNodeTypeModifications on Paws::ElastiCache
+Paws::ElastiCache::ListAllowedNodeTypeModifications - Arguments for method ListAllowedNodeTypeModifications on L<Paws::ElastiCache>
 
 =head1 DESCRIPTION
 
@@ -36,10 +36,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CacheClusterId => Str
 
-The name of the cache cluster you want to scale up to a larger node
-instanced type. ElastiCache uses the cluster id to identify the current
-node type of this cluster and from that to create a list of node types
-you can scale up to.
+The name of the cluster you want to scale up to a larger node instanced
+type. ElastiCache uses the cluster id to identify the current node type
+of this cluster and from that to create a list of node types you can
+scale up to.
 
 You must provide a value for either the C<CacheClusterId> or the
 C<ReplicationGroupId>.
@@ -65,9 +65,9 @@ This class forms part of L<Paws>, documenting arguments for method ListAllowedNo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

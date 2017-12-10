@@ -43,47 +43,13 @@ A complex type that specifies the following:
 
 =item *
 
-Which SSL/TLS certificate to use when viewers request objects using
-HTTPS
-
-=item *
-
-Whether you want CloudFront to use dedicated IP addresses or SNI when
-you're using alternate domain names in your object names
-
-=item *
-
-The minimum protocol version that you want CloudFront to use when
-communicating with viewers
-
-=back
-
-For more information, see Using an HTTPS Connection to Access Your
-Objects in the I<Amazon Amazon CloudFront Developer Guide>.
-
-=head1 ATTRIBUTES
-
-
-=head2 ACMCertificateArn => Str
-
-  
-
-
-=head2 Certificate => Str
-
-  Include one of these values to specify the following:
-
-=over
-
-=item *
-
 Whether you want viewers to use HTTP or HTTPS to request your objects.
 
 =item *
 
 If you want viewers to use HTTPS, whether you're using an alternate
-domain name such as example.com or the CloudFront domain name for your
-distribution, such as C<d111111abcdef8.cloudfront.net>.
+domain name such as C<example.com> or the CloudFront domain name for
+your distribution, such as C<d111111abcdef8.cloudfront.net>.
 
 =item *
 
@@ -94,11 +60,28 @@ uploaded it to the IAM certificate store.
 
 =back
 
-You must specify one (and only one) of the three values. Do not specify
-C<false> for C<CloudFrontDefaultCertificate>.
+You must specify only one of the following values:
 
-B<If you want viewers to use HTTP to request your objects>: Specify the
-following value:
+=over
+
+=item *
+
+ViewerCertificate$ACMCertificateArn
+
+=item *
+
+ViewerCertificate$IAMCertificateId
+
+=item *
+
+ViewerCertificate$CloudFrontDefaultCertificate
+
+=back
+
+Don't specify C<false> for C<CloudFrontDefaultCertificate>.
+
+B<If you want viewers to use HTTP instead of HTTPS to request your
+objects>: Specify the following value:
 
 C<E<lt>CloudFrontDefaultCertificateE<gt>trueE<lt>CloudFrontDefaultCertificateE<gt>>
 
@@ -123,17 +106,17 @@ certificate authority:
 
 =item *
 
-C<E<lt>ACMCertificateArnE<gt>ARN for ACM SSL/TLS
-certificateE<lt>ACMCertificateArnE<gt>> where ARN for ACM SSL/TLS
-certificate is the ARN for the ACM SSL/TLS certificate that you want to
-use for this distribution.
+C<E<lt>ACMCertificateArnE<gt>I<ARN for ACM SSL/TLS
+certificate>E<lt>ACMCertificateArnE<gt>> where C< I<ARN for ACM SSL/TLS
+certificate> > is the ARN for the ACM SSL/TLS certificate that you want
+to use for this distribution.
 
 =item *
 
-C<E<lt>IAMCertificateIdE<gt>IAM certificate
-IDE<lt>IAMCertificateIdE<gt>> where IAM certificate ID is the ID that
-IAM returned when you added the certificate to the IAM certificate
-store.
+C<E<lt>IAMCertificateIdE<gt>I<IAM certificate
+ID>E<lt>IAMCertificateIdE<gt>> where C< I<IAM certificate ID> > is the
+ID that IAM returned when you added the certificate to the IAM
+certificate store.
 
 =back
 
@@ -144,9 +127,9 @@ If you choose to use an ACM certificate or a certificate in the IAM
 certificate store, we recommend that you use only an alternate domain
 name in your object URLs (C<https://example.com/logo.jpg>). If you use
 the domain name that is associated with your CloudFront distribution
-(C<https://d111111abcdef8.cloudfront.net/logo.jpg>) and the viewer
-supports C<SNI>, then CloudFront behaves normally. However, if the
-browser does not support SNI, the user's experience depends on the
+(such as C<https://d111111abcdef8.cloudfront.net/logo.jpg>) and the
+viewer supports C<SNI>, then CloudFront behaves normally. However, if
+the browser does not support SNI, the user's experience depends on the
 value that you choose for C<SSLSupportMethod>:
 
 =over
@@ -171,6 +154,8 @@ such as C<d111111abcdef8.cloudfront.net> >: Specify the following
 value:
 
 C<E<lt>CloudFrontDefaultCertificateE<gt>trueE<lt>CloudFrontDefaultCertificateE<gt>>
+
+=back
 
 If you want viewers to use HTTPS, you must also specify one of the
 following values in your cache behaviors:
@@ -203,8 +188,37 @@ C<E<lt>OriginProtocolPolicyE<gt>match-viewerE<lt>OriginProtocolPolicyE<gt>>
 
 =back
 
-For more information, see Using Alternate Domain Names and HTTPS in the
-I<Amazon CloudFront Developer Guide>.
+For more information, see Using Alternate Domain Names and HTTPS
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html#CNAMEsAndHTTPS)
+in the I<Amazon CloudFront Developer Guide>.
+
+=head1 ATTRIBUTES
+
+
+=head2 ACMCertificateArn => Str
+
+  For information about how and when to use C<ACMCertificateArn>, see
+ViewerCertificate.
+
+
+=head2 Certificate => Str
+
+  This field has been deprecated. Use one of the following fields
+instead:
+
+=over
+
+=item *
+
+ViewerCertificate$ACMCertificateArn
+
+=item *
+
+ViewerCertificate$IAMCertificateId
+
+=item *
+
+ViewerCertificate$CloudFrontDefaultCertificate
 
 =back
 
@@ -212,56 +226,97 @@ I<Amazon CloudFront Developer Guide>.
 
 =head2 CertificateSource => Str
 
-  This field is deprecated. You can use one of the following:
-C<[ACMCertificateArn>, C<IAMCertificateId>, or
-C<CloudFrontDefaultCertificate]>.
-
-
-=head2 CloudFrontDefaultCertificate => Bool
-
-  
-
-
-=head2 IAMCertificateId => Str
-
-  
-
-
-=head2 MinimumProtocolVersion => Str
-
-  Specify the minimum version of the SSL/TLS protocol that you want
-CloudFront to use for HTTPS connections between viewers and CloudFront:
-C<SSLv3> or C<TLSv1>. CloudFront serves your objects only to viewers
-that support SSL/TLS version that you specify and later versions. The
-C<TLSv1> protocol is more secure, so we recommend that you specify
-C<SSLv3> only if your users are using browsers or devices that don't
-support C<TLSv1>. Note the following:
+  This field has been deprecated. Use one of the following fields
+instead:
 
 =over
 
 =item *
 
-If you specify
-E<lt>CloudFrontDefaultCertificateE<gt>trueE<lt>CloudFrontDefaultCertificateE<gt>,
-the minimum SSL protocol version is C<TLSv1> and can't be changed.
+ViewerCertificate$ACMCertificateArn
 
 =item *
 
-If you're using a custom certificate (if you specify a value for
-C<ACMCertificateArn> or for C<IAMCertificateId>) and if you're using
-SNI (if you specify C<sni-only> for C<SSLSupportMethod>), you must
-specify C<TLSv1> for C<MinimumProtocolVersion>.
+ViewerCertificate$IAMCertificateId
+
+=item *
+
+ViewerCertificate$CloudFrontDefaultCertificate
 
 =back
 
 
 
+=head2 CloudFrontDefaultCertificate => Bool
+
+  For information about how and when to use
+C<CloudFrontDefaultCertificate>, see ViewerCertificate.
+
+
+=head2 IAMCertificateId => Str
+
+  For information about how and when to use C<IAMCertificateId>, see
+ViewerCertificate.
+
+
+=head2 MinimumProtocolVersion => Str
+
+  Specify the security policy that you want CloudFront to use for HTTPS
+connections. A security policy determines two settings:
+
+=over
+
+=item *
+
+The minimum SSL/TLS protocol that CloudFront uses to communicate with
+viewers
+
+=item *
+
+The cipher that CloudFront uses to encrypt the content that it returns
+to viewers
+
+=back
+
+On the CloudFront console, this setting is called B<Security policy>.
+
+We recommend that you specify C<TLSv1.1_2016> unless your users are
+using browsers or devices that do not support TLSv1.1 or later.
+
+When both of the following are true, you must specify C<TLSv1> or later
+for the security policy:
+
+=over
+
+=item *
+
+You're using a custom certificate: you specified a value for
+C<ACMCertificateArn> or for C<IAMCertificateId>
+
+=item *
+
+You're using SNI: you specified C<sni-only> for C<SSLSupportMethod>
+
+=back
+
+If you specify C<true> for C<CloudFrontDefaultCertificate>, CloudFront
+automatically sets the security policy to C<TLSv1> regardless of the
+value that you specify for C<MinimumProtocolVersion>.
+
+For information about the relationship between the security policy that
+you choose and the protocols and ciphers that CloudFront uses to
+communicate with viewers, see Supported SSL/TLS Protocols and Ciphers
+for Communication Between Viewers and CloudFront
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/secure-connections-supported-viewer-protocols-ciphers.html#secure-connections-supported-ciphers)
+in the I<Amazon CloudFront Developer Guide>.
+
+
 =head2 SSLSupportMethod => Str
 
-  If you specify a value for C<ACMCertificateArn> or for
-C<IAMCertificateId>, you must also specify how you want CloudFront to
-serve HTTPS requests: using a method that works for all clients or one
-that works for most clients:
+  If you specify a value for ViewerCertificate$ACMCertificateArn or for
+ViewerCertificate$IAMCertificateId, you must also specify how you want
+CloudFront to serve HTTPS requests: using a method that works for all
+clients or one that works for most clients:
 
 =over
 
@@ -305,11 +360,12 @@ Use HTTP instead of HTTPS.
 
 =back
 
-Do not specify a value for C<SSLSupportMethod> if you specified
+Don't specify a value for C<SSLSupportMethod> if you specified
 C<E<lt>CloudFrontDefaultCertificateE<gt>trueE<lt>CloudFrontDefaultCertificateE<gt>>.
 
-For more information, see Using Alternate Domain Names and HTTPS in the
-I<Amazon CloudFront Developer Guide>.
+For more information, see Using Alternate Domain Names and HTTPS
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html#CNAMEsAndHTTPS.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 
@@ -319,9 +375,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudFron
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

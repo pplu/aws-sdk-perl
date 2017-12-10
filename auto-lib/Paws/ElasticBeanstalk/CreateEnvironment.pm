@@ -26,7 +26,7 @@ package Paws::ElasticBeanstalk::CreateEnvironment;
 
 =head1 NAME
 
-Paws::ElasticBeanstalk::CreateEnvironment - Arguments for method CreateEnvironment on Paws::ElasticBeanstalk
+Paws::ElasticBeanstalk::CreateEnvironment - Arguments for method CreateEnvironment on L<Paws::ElasticBeanstalk>
 
 =head1 DESCRIPTION
 
@@ -75,9 +75,9 @@ URL.
 
 Constraint: Must be from 4 to 40 characters in length. The name can
 contain only letters, numbers, and hyphens. It cannot start or end with
-a hyphen. This name must be unique in your account. If the specified
-name already exists, AWS Elastic Beanstalk returns an
-C<InvalidParameterValue> error.
+a hyphen. This name must be unique within a region in your account. If
+the specified name already exists in the region, AWS Elastic Beanstalk
+returns an C<InvalidParameterValue> error.
 
 Default: If the CNAME parameter is not specified, the environment name
 becomes part of the CNAME, and therefore part of the visible URL for
@@ -90,7 +90,9 @@ your application.
 The name of the group to which the target environment belongs. Specify
 a group name only if the environment's name is specified in an
 environment manifest and not with the environment name parameter. See
-Environment Manifest (env.yaml) for details.
+Environment Manifest (env.yaml)
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
+for details.
 
 
 
@@ -112,7 +114,7 @@ configuration set for this new environment.
 
 =head2 PlatformArn => Str
 
-The ARN of the custom platform.
+The ARN of the platform.
 
 
 
@@ -164,9 +166,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateEnviron
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

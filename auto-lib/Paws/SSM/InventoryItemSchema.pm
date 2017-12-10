@@ -1,6 +1,7 @@
 package Paws::SSM::InventoryItemSchema;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryItemAttribute]', request_name => 'Attribute', traits => ['NameInRequest'], required => 1);
+  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryItemAttribute]', required => 1);
+  has DisplayName => (is => 'ro', isa => 'Str');
   has TypeName => (is => 'ro', isa => 'Str', required => 1);
   has Version => (is => 'ro', isa => 'Str');
 1;
@@ -45,6 +46,12 @@ inventory query filters.
 attribute name.
 
 
+=head2 DisplayName => Str
+
+  The alias name of the inventory type. The alias name is used for
+display purposes.
+
+
 =head2 B<REQUIRED> TypeName => Str
 
   The name of the inventory type. Default inventory item type names start
@@ -66,9 +73,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

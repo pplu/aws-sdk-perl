@@ -39,7 +39,7 @@ S3 objects in S3 buckets don't, by default, have Unix file permissions
 assigned to them. Upon discovery in an S3 bucket by Storage Gateway,
 the S3 objects that represent files and folders are assigned these
 default Unix permissions. This operation is only supported in the file
-gateway architecture.
+gateway type.
 
 =head1 ATTRIBUTES
 
@@ -76,9 +76,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::StorageGa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

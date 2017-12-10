@@ -1,0 +1,199 @@
+package Paws::MediaStore;
+  use Moose;
+  sub service { 'mediastore' }
+  sub version { '2017-09-01' }
+  sub target_prefix { 'MediaStore_20170901' }
+  sub json_version { "1.1" }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
+
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
+
+  
+  sub CreateContainer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::CreateContainer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteContainer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::DeleteContainer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteContainerPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::DeleteContainerPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeContainer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::DescribeContainer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetContainerPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::GetContainerPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListContainers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::ListContainers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutContainerPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::PutContainerPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  
+
+
+  sub operations { qw/CreateContainer DeleteContainer DeleteContainerPolicy DescribeContainer GetContainerPolicy ListContainers PutContainerPolicy / }
+
+1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::MediaStore - Perl Interface to AWS AWS Elemental MediaStore
+
+=head1 SYNOPSIS
+
+  use Paws;
+
+  my $obj = Paws->service('MediaStore');
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
+
+=head1 DESCRIPTION
+
+An AWS Elemental MediaStore container is a namespace that holds folders
+and objects. You use a container endpoint to create, read, and delete
+objects.
+
+=head1 METHODS
+
+=head2 CreateContainer(ContainerName => Str)
+
+Each argument is described in detail in: L<Paws::MediaStore::CreateContainer>
+
+Returns: a L<Paws::MediaStore::CreateContainerOutput> instance
+
+Creates a storage container to hold objects. A container is similar to
+a bucket in the Amazon S3 service.
+
+
+=head2 DeleteContainer(ContainerName => Str)
+
+Each argument is described in detail in: L<Paws::MediaStore::DeleteContainer>
+
+Returns: a L<Paws::MediaStore::DeleteContainerOutput> instance
+
+Deletes the specified container. Before you make a C<DeleteContainer>
+request, delete any objects in the container or in any folders in the
+container. You can delete only empty containers.
+
+
+=head2 DeleteContainerPolicy(ContainerName => Str)
+
+Each argument is described in detail in: L<Paws::MediaStore::DeleteContainerPolicy>
+
+Returns: a L<Paws::MediaStore::DeleteContainerPolicyOutput> instance
+
+Deletes the access policy that is associated with the specified
+container.
+
+
+=head2 DescribeContainer([ContainerName => Str])
+
+Each argument is described in detail in: L<Paws::MediaStore::DescribeContainer>
+
+Returns: a L<Paws::MediaStore::DescribeContainerOutput> instance
+
+Retrieves the properties of the requested container. This returns a
+single C<Container> object based on C<ContainerName>. To return all
+C<Container> objects that are associated with a specified AWS account,
+use ListContainers.
+
+
+=head2 GetContainerPolicy(ContainerName => Str)
+
+Each argument is described in detail in: L<Paws::MediaStore::GetContainerPolicy>
+
+Returns: a L<Paws::MediaStore::GetContainerPolicyOutput> instance
+
+Retrieves the access policy for the specified container. For
+information about the data that is included in an access policy, see
+the AWS Identity and Access Management User Guide
+(https://aws.amazon.com/documentation/iam/).
+
+
+=head2 ListContainers([MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::MediaStore::ListContainers>
+
+Returns: a L<Paws::MediaStore::ListContainersOutput> instance
+
+Lists the properties of all containers in AWS Elemental MediaStore.
+
+You can query to receive all the containers in one response. Or you can
+include the C<MaxResults> parameter to receive a limited number of
+containers in each response. In this case, the response includes a
+token. To get the next set of containers, send the command again, this
+time with the C<NextToken> parameter (with the returned token as its
+value). The next set of responses appears, with a token if there are
+still more containers to receive.
+
+See also DescribeContainer, which gets the properties of one container.
+
+
+=head2 PutContainerPolicy(ContainerName => Str, Policy => Str)
+
+Each argument is described in detail in: L<Paws::MediaStore::PutContainerPolicy>
+
+Returns: a L<Paws::MediaStore::PutContainerPolicyOutput> instance
+
+Creates an access policy for the specified container to restrict the
+users and clients that can access it. For information about the data
+that is included in an access policy, see the AWS Identity and Access
+Management User Guide (https://aws.amazon.com/documentation/iam/).
+
+For this release of the REST API, you can create only one policy for a
+container. If you enter C<PutContainerPolicy> twice, the second command
+modifies the existing policy.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
+
+
+=head1 SEE ALSO
+
+This service class forms part of L<Paws>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
+
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
+
+=cut
+

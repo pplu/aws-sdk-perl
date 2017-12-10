@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-A principal's ARN and type.
+Information about a principal.
 
 =head1 ATTRIBUTES
 
 
 =head2 PrincipalARN => Str
 
-  The ARN representing the principal (IAM user, role, or group).
+  The ARN of the principal (IAM user, role, or group).
 
 
 =head2 PrincipalType => Str
 
-  The principal type. Must be C<IAM>
+  The principal type. The supported value is C<IAM>.
 
 
 
@@ -54,9 +54,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ServiceCa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

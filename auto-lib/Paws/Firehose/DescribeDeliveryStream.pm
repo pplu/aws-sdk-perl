@@ -16,7 +16,7 @@ package Paws::Firehose::DescribeDeliveryStream;
 
 =head1 NAME
 
-Paws::Firehose::DescribeDeliveryStream - Arguments for method DescribeDeliveryStream on Paws::Firehose
+Paws::Firehose::DescribeDeliveryStream - Arguments for method DescribeDeliveryStream on L<Paws::Firehose>
 
 =head1 DESCRIPTION
 
@@ -44,8 +44,8 @@ The name of the delivery stream.
 =head2 ExclusiveStartDestinationId => Str
 
 The ID of the destination to start returning the destination
-information. Currently Firehose supports one destination per delivery
-stream.
+information. Currently, Kinesis Firehose supports one destination per
+delivery stream.
 
 
 
@@ -63,9 +63,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeDeliv
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

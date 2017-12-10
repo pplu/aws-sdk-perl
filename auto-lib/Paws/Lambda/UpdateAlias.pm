@@ -2,9 +2,10 @@
 package Paws::Lambda::UpdateAlias;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
-  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
+  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
   has FunctionVersion => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Name' , required => 1);
+  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Name', required => 1);
+  has RoutingConfig => (is => 'ro', isa => 'Paws::Lambda::AliasRoutingConfiguration');
 
   use MooseX::ClassAttribute;
 
@@ -12,14 +13,13 @@ package Paws::Lambda::UpdateAlias;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/aliases/{Name}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::AliasConfiguration');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Lambda::UpdateAlias - Arguments for method UpdateAlias on Paws::Lambda
+Paws::Lambda::UpdateAlias - Arguments for method UpdateAlias on L<Paws::Lambda>
 
 =head1 DESCRIPTION
 
@@ -65,6 +65,14 @@ The alias name.
 
 
 
+=head2 RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>
+
+Specifies an additional version your alias can point to, allowing you
+to dictate what percentage of traffic will invoke each version. For
+more information, see lambda-traffic-shifting-using-aliases.
+
+
+
 
 =head1 SEE ALSO
 
@@ -72,9 +80,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateAlias i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

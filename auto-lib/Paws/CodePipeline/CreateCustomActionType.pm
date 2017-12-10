@@ -20,7 +20,7 @@ package Paws::CodePipeline::CreateCustomActionType;
 
 =head1 NAME
 
-Paws::CodePipeline::CreateCustomActionType - Arguments for method CreateCustomActionType on Paws::CodePipeline
+Paws::CodePipeline::CreateCustomActionType - Arguments for method CreateCustomActionType on L<Paws::CodePipeline>
 
 =head1 DESCRIPTION
 
@@ -57,7 +57,8 @@ You can refer to a name in the configuration properties of the custom
 action within the URL templates by following the format of
 {Config:name}, as long as the configuration property is both required
 and not secret. For more information, see Create a Custom Action for a
-Pipeline.
+Pipeline
+(http://docs.aws.amazon.com/codepipeline/latest/userguide/how-to-create-custom-action.html).
 
 
 
@@ -101,9 +102,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateCustomA
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -29,7 +29,7 @@ package Paws::MTurk::CreateHIT;
 
 =head1 NAME
 
-Paws::MTurk::CreateHIT - Arguments for method CreateHIT on Paws::MTurk
+Paws::MTurk::CreateHIT - Arguments for method CreateHIT on L<Paws::MTurk>
 
 =head1 DESCRIPTION
 
@@ -211,9 +211,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateHIT in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

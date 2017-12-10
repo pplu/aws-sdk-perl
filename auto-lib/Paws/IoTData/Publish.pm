@@ -1,9 +1,9 @@
 
 package Paws::IoTData::Publish;
   use Moose;
-  has Payload => (is => 'ro', isa => 'Str');
-  has Qos => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'qos' );
-  has Topic => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'topic' , required => 1);
+  has Payload => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'payload');
+  has Qos => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'qos');
+  has Topic => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'topic', required => 1);
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Payload');
@@ -11,14 +11,13 @@ package Paws::IoTData::Publish;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/topics/{topic}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::IoTData::Publish - Arguments for method Publish on Paws::IoTData
+Paws::IoTData::Publish - Arguments for method Publish on L<Paws::IoTData>
 
 =head1 DESCRIPTION
 
@@ -62,9 +61,9 @@ This class forms part of L<Paws>, documenting arguments for method Publish in L<
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

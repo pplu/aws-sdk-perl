@@ -52,6 +52,10 @@ environment variables, which are added to the container at launch, or
 you can override the existing environment variables from the Docker
 image or the job definition.
 
+Environment variables must not start with C<AWS_BATCH>; this naming
+convention is reserved for variables that are set by the AWS Batch
+service.
+
 
 =head2 Memory => Int
 
@@ -72,9 +76,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Batch>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

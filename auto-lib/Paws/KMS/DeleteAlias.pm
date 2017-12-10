@@ -14,7 +14,7 @@ package Paws::KMS::DeleteAlias;
 
 =head1 NAME
 
-Paws::KMS::DeleteAlias - Arguments for method DeleteAlias on Paws::KMS
+Paws::KMS::DeleteAlias - Arguments for method DeleteAlias on L<Paws::KMS>
 
 =head1 DESCRIPTION
 
@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The alias to be deleted. The name must start with the word "alias"
 followed by a forward slash (alias/). Aliases that begin with
-"alias/AWS" are reserved.
+"alias/aws" are reserved.
 
 
 
@@ -48,9 +48,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteAlias i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

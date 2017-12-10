@@ -1,14 +1,15 @@
 
 package Paws::ApiGateway::CreateStage;
   use Moose;
-  has CacheClusterEnabled => (is => 'ro', isa => 'Bool');
-  has CacheClusterSize => (is => 'ro', isa => 'Str');
-  has DeploymentId => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has DocumentationVersion => (is => 'ro', isa => 'Str');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
-  has StageName => (is => 'ro', isa => 'Str', required => 1);
-  has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
+  has CacheClusterEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'cacheClusterEnabled');
+  has CacheClusterSize => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cacheClusterSize');
+  has CanarySettings => (is => 'ro', isa => 'Paws::ApiGateway::CanarySettings', traits => ['NameInRequest'], request_name => 'canarySettings');
+  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId', required => 1);
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has DocumentationVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'documentationVersion');
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName', required => 1);
+  has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'variables');
 
   use MooseX::ClassAttribute;
 
@@ -16,14 +17,13 @@ package Paws::ApiGateway::CreateStage;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/stages');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Stage');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::CreateStage - Arguments for method CreateStage on Paws::ApiGateway
+Paws::ApiGateway::CreateStage - Arguments for method CreateStage on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -54,9 +54,16 @@ The stage's cache cluster size.
 
 Valid values are: C<"0.5">, C<"1.6">, C<"6.1">, C<"13.5">, C<"28.4">, C<"58.2">, C<"118">, C<"237">
 
+=head2 CanarySettings => L<Paws::ApiGateway::CanarySettings>
+
+The canary deployment settings of this stage.
+
+
+
 =head2 B<REQUIRED> DeploymentId => Str
 
-The identifier of the Deployment resource for the Stage resource.
+[Required] The identifier of the Deployment resource for the Stage
+resource.
 
 
 
@@ -74,14 +81,13 @@ The version of the associated API documentation.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The identifier of the RestApi resource for the Stage resource to
-create.
+The string identifier of the associated RestApi.
 
 
 
 =head2 B<REQUIRED> StageName => Str
 
-The name for the Stage resource.
+[Required] The name for the Stage resource.
 
 
 
@@ -100,9 +106,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateStage i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

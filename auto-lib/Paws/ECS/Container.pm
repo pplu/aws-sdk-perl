@@ -5,6 +5,7 @@ package Paws::ECS::Container;
   has LastStatus => (is => 'ro', isa => 'Str', request_name => 'lastStatus', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has NetworkBindings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::NetworkBinding]', request_name => 'networkBindings', traits => ['NameInRequest']);
+  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::ECS::NetworkInterface]', request_name => 'networkInterfaces', traits => ['NameInRequest']);
   has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
   has TaskArn => (is => 'ro', isa => 'Str', request_name => 'taskArn', traits => ['NameInRequest']);
 1;
@@ -67,6 +68,11 @@ A Docker container that is part of a task.
   The network bindings associated with the container.
 
 
+=head2 NetworkInterfaces => ArrayRef[L<Paws::ECS::NetworkInterface>]
+
+  The network interfaces associated with the container.
+
+
 =head2 Reason => Str
 
   A short (255 max characters) human-readable string to provide
@@ -75,7 +81,7 @@ additional details about a running or stopped container.
 
 =head2 TaskArn => Str
 
-  The Amazon Resource Name (ARN) of the task.
+  The ARN of the task.
 
 
 
@@ -85,9 +91,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ECS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

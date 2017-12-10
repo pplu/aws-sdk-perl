@@ -11,7 +11,7 @@ package Paws::OpsWorksCM;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub AssociateNode {
@@ -120,10 +120,10 @@ Paws::OpsWorksCM - Perl Interface to AWS AWS OpsWorks for Chef Automate
 
 =head1 DESCRIPTION
 
-AWS OpsWorks for Chef Automate
+AWS OpsWorks CM
 
-AWS OpsWorks for Chef Automate is a service that runs and manages
-configuration management servers.
+AWS OpsWorks for configuration management (CM) is a service that runs
+and manages configuration management servers.
 
 B<Glossary of terms>
 
@@ -132,50 +132,49 @@ B<Glossary of terms>
 =item *
 
 B<Server>: A configuration management server that can be
-highly-available. The configuration manager runs on your instances by
-using various AWS services, such as Amazon Elastic Compute Cloud (EC2),
-and potentially Amazon Relational Database Service (RDS). A server is a
-generic abstraction over the configuration manager that you want to
-use, much like Amazon RDS. In AWS OpsWorks for Chef Automate, you do
-not start or stop servers. After you create servers, they continue to
-run until they are deleted.
+highly-available. The configuration management server runs on an Amazon
+Elastic Compute Cloud (EC2) instance, and may use various other AWS
+services, such as Amazon Relational Database Service (RDS) and Elastic
+Load Balancing. A server is a generic abstraction over the
+configuration manager that you want to use, much like Amazon RDS. In
+AWS OpsWorks CM, you do not start or stop servers. After you create
+servers, they continue to run until they are deleted.
 
 =item *
 
-B<Engine>: The specific configuration manager that you want to use
-(such as C<Chef>) is the engine.
+B<Engine>: The engine is the specific configuration manager that you
+want to use. Valid values in this release include C<Chef> and
+C<Puppet>.
 
 =item *
 
 B<Backup>: This is an application-level backup of the data that the
-configuration manager stores. A backup creates a .tar.gz file that is
-stored in an Amazon Simple Storage Service (S3) bucket in your account.
-AWS OpsWorks for Chef Automate creates the S3 bucket when you launch
-the first instance. A backup maintains a snapshot of all of a server's
-important attributes at the time of the backup.
+configuration manager stores. AWS OpsWorks CM creates an S3 bucket for
+backups when you launch the first server. A backup maintains a snapshot
+of a server's configuration-related attributes at the time the backup
+starts.
 
 =item *
 
 B<Events>: Events are always related to a server. Events are written
 during server creation, when health checks run, when backups are
-created, etc. When you delete a server, the server's events are also
-deleted.
+created, when system maintenance is performed, etc. When you delete a
+server, the server's events are also deleted.
 
 =item *
 
-B<AccountAttributes>: Every account has attributes that are assigned in
-the AWS OpsWorks for Chef Automate database. These attributes store
-information about configuration limits (servers, backups, etc.) and
-your customer account.
+B<Account attributes>: Every account has attributes that are assigned
+in the AWS OpsWorks CM database. These attributes store information
+about configuration limits (servers, backups, etc.) and your customer
+account.
 
 =back
 
 B<Endpoints>
 
-AWS OpsWorks for Chef Automate supports the following endpoints, all
-HTTPS. You must connect to one of the following endpoints. Chef servers
-can only be accessed or managed within the endpoint in which they are
-created.
+AWS OpsWorks CM supports the following endpoints, all HTTPS. You must
+connect to one of the following endpoints. Your servers can only be
+accessed or managed within the endpoint in which they are created.
 
 =over
 
@@ -206,9 +205,22 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::AssociateNode>
 
 Returns: a L<Paws::OpsWorksCM::AssociateNodeResponse> instance
 
-  Associates a new node with the Chef server. This command is an
-alternative to C<knife bootstrap>. For more information about how to
-disassociate a node, see DisassociateNode.
+Associates a new node with the server. For more information about how
+to disassociate a node, see DisassociateNode.
+
+On a Chef server: This command is an alternative to C<knife bootstrap>.
+
+Example (Chef): C<aws opsworks-cm associate-node --server-name
+I<MyServer> --node-name I<MyManagedNode> --engine-attributes
+"Name=I<CHEF_ORGANIZATION>,Value=default"
+"Name=I<CHEF_NODE_PUBLIC_KEY>,Value=I<public-key-pem>">
+
+On a Puppet server, this command is an alternative to the C<puppet cert
+sign> command that signs a Puppet node CSR.
+
+Example (Chef): C<aws opsworks-cm associate-node --server-name
+I<MyServer> --node-name I<MyManagedNode> --engine-attributes
+"Name=I<PUPPET_NODE_CSR>,Value=I<csr-pem>">
 
 A node can can only be associated with servers that are in a C<HEALTHY>
 state. Otherwise, an C<InvalidStateException> is thrown. A
@@ -218,11 +230,6 @@ not valid. The AssociateNode API call can be integrated into Auto
 Scaling configurations, AWS Cloudformation templates, or the user data
 of a server's instance.
 
-Example: C<aws opsworks-cm associate-node --server-name I<MyServer>
---node-name I<MyManagedNode> --engine-attributes
-"Name=I<MyOrganization>,Value=default"
-"Name=I<Chef_node_public_key>,Value=I<Public_key_contents>">
-
 
 =head2 CreateBackup(ServerName => Str, [Description => Str])
 
@@ -230,7 +237,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::CreateBackup>
 
 Returns: a L<Paws::OpsWorksCM::CreateBackupResponse> instance
 
-  Creates an application-level backup of a server. While the server is in
+Creates an application-level backup of a server. While the server is in
 the C<BACKING_UP> state, the server cannot be changed, and no
 additional backup can be created.
 
@@ -254,7 +261,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::CreateServer>
 
 Returns: a L<Paws::OpsWorksCM::CreateServerResponse> instance
 
-  Creates and immedately starts a new server. The server is ready to use
+Creates and immedately starts a new server. The server is ready to use
 when it is in the C<HEALTHY> state. By default, you can create a
 maximum of 10 servers.
 
@@ -270,15 +277,21 @@ valid.
 
 If you do not specify a security group by adding the
 C<SecurityGroupIds> parameter, AWS OpsWorks creates a new security
-group. The default security group opens the Chef server to the world on
-TCP port 443. If a KeyName is present, AWS OpsWorks enables SSH access.
-SSH is also open to the world on TCP port 22.
+group.
 
-By default, the Chef Server is accessible from any IP address. We
-recommend that you update your security group rules to allow access
-from known IP addresses and address ranges only. To edit security group
-rules, open Security Groups in the navigation pane of the EC2
-management console.
+I<Chef Automate:> The default security group opens the Chef server to
+the world on TCP port 443. If a KeyName is present, AWS OpsWorks
+enables SSH access. SSH is also open to the world on TCP port 22.
+
+I<Puppet Enterprise:> The default security group opens TCP ports 22,
+443, 4433, 8140, 8142, 8143, and 8170. If a KeyName is present, AWS
+OpsWorks enables SSH access. SSH is also open to the world on TCP port
+22.
+
+By default, your server is accessible from any IP address. We recommend
+that you update your security group rules to allow access from known IP
+addresses and address ranges only. To edit security group rules, open
+Security Groups in the navigation pane of the EC2 management console.
 
 
 =head2 DeleteBackup(BackupId => Str)
@@ -287,7 +300,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DeleteBackup>
 
 Returns: a L<Paws::OpsWorksCM::DeleteBackupResponse> instance
 
-  Deletes a backup. You can delete both manual and automated backups.
+Deletes a backup. You can delete both manual and automated backups.
 This operation is asynchronous.
 
 An C<InvalidStateException> is thrown when a backup deletion is already
@@ -302,7 +315,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DeleteServer>
 
 Returns: a L<Paws::OpsWorksCM::DeleteServerResponse> instance
 
-  Deletes the server and the underlying AWS CloudFormation stack
+Deletes the server and the underlying AWS CloudFormation stacks
 (including the server's EC2 instance). When you run this command, the
 server state is updated to C<DELETING>. After the server is deleted, it
 is no longer returned by C<DescribeServer> requests. If the AWS
@@ -322,7 +335,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DescribeAccountAttr
 
 Returns: a L<Paws::OpsWorksCM::DescribeAccountAttributesResponse> instance
 
-  Describes your account attributes, and creates requests to increase
+Describes your account attributes, and creates requests to increase
 limits before they are reached or exceeded.
 
 This operation is synchronous.
@@ -334,7 +347,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DescribeBackups>
 
 Returns: a L<Paws::OpsWorksCM::DescribeBackupsResponse> instance
 
-  Describes backups. The results are ordered by time, with newest backups
+Describes backups. The results are ordered by time, with newest backups
 first. If you do not specify a BackupId or ServerName, the command
 returns all backups.
 
@@ -351,7 +364,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DescribeEvents>
 
 Returns: a L<Paws::OpsWorksCM::DescribeEventsResponse> instance
 
-  Describes events for a specified server. Results are ordered by time,
+Describes events for a specified server. Results are ordered by time,
 with newest events first.
 
 This operation is synchronous.
@@ -367,7 +380,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DescribeNodeAssocia
 
 Returns: a L<Paws::OpsWorksCM::DescribeNodeAssociationStatusResponse> instance
 
-  Returns the current status of an existing association or disassociation
+Returns the current status of an existing association or disassociation
 request.
 
 A C<ResourceNotFoundException> is thrown when no recent association or
@@ -382,9 +395,9 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DescribeServers>
 
 Returns: a L<Paws::OpsWorksCM::DescribeServersResponse> instance
 
-  Lists all configuration management servers that are identified with
+Lists all configuration management servers that are identified with
 your account. Only the stored results from Amazon DynamoDB are
-returned. AWS OpsWorks for Chef Automate does not query other services.
+returned. AWS OpsWorks CM does not query other services.
 
 This operation is synchronous.
 
@@ -399,10 +412,11 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DisassociateNode>
 
 Returns: a L<Paws::OpsWorksCM::DisassociateNodeResponse> instance
 
-  Disassociates a node from a Chef server, and removes the node from the
-Chef server's managed nodes. After a node is disassociated, the node
-key pair is no longer valid for accessing the Chef API. For more
-information about how to associate a node, see AssociateNode.
+Disassociates a node from an AWS OpsWorks CM server, and removes the
+node from the server's managed nodes. After a node is disassociated,
+the node key pair is no longer valid for accessing the configuration
+manager's API. For more information about how to associate a node, see
+AssociateNode.
 
 A node can can only be disassociated from a server that is in a
 C<HEALTHY> state. Otherwise, an C<InvalidStateException> is thrown. A
@@ -417,7 +431,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::RestoreServer>
 
 Returns: a L<Paws::OpsWorksCM::RestoreServerResponse> instance
 
-  Restores a backup to a server that is in a C<CONNECTION_LOST>,
+Restores a backup to a server that is in a C<CONNECTION_LOST>,
 C<HEALTHY>, C<RUNNING>, C<UNHEALTHY>, or C<TERMINATED> state. When you
 run RestoreServer, the server's EC2 instance is deleted, and a new EC2
 instance is configured. RestoreServer maintains the existing server
@@ -432,13 +446,13 @@ not exist. A C<ValidationException> is raised when parameters of the
 request are not valid.
 
 
-=head2 StartMaintenance(ServerName => Str)
+=head2 StartMaintenance(ServerName => Str, [EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]])
 
 Each argument is described in detail in: L<Paws::OpsWorksCM::StartMaintenance>
 
 Returns: a L<Paws::OpsWorksCM::StartMaintenanceResponse> instance
 
-  Manually starts server maintenance. This command can be useful if an
+Manually starts server maintenance. This command can be useful if an
 earlier maintenance attempt failed, and the underlying cause of
 maintenance failure has been resolved. The server is in an
 C<UNDER_MAINTENANCE> state while maintenance is in progress.
@@ -456,7 +470,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::UpdateServer>
 
 Returns: a L<Paws::OpsWorksCM::UpdateServerResponse> instance
 
-  Updates settings for a server.
+Updates settings for a server.
 
 This operation is synchronous.
 
@@ -467,10 +481,12 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::UpdateServerEngineA
 
 Returns: a L<Paws::OpsWorksCM::UpdateServerEngineAttributesResponse> instance
 
-  Updates engine-specific attributes on a specified server. The server
+Updates engine-specific attributes on a specified server. The server
 enters the C<MODIFYING> state when this operation is in progress. Only
-one update can occur at a time. You can use this command to reset the
-Chef server's private key (C<CHEF_PIVOTAL_KEY>).
+one update can occur at a time. You can use this command to reset a
+Chef server's private key (C<CHEF_PIVOTAL_KEY>), a Chef server's admin
+password (C<CHEF_DELIVERY_ADMIN_PASSWORD>), or a Puppet server's admin
+password (C<PUPPET_ADMIN_PASSWORD>).
 
 This operation is asynchronous.
 
@@ -496,9 +512,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

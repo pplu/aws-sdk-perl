@@ -2,6 +2,7 @@
 package Paws::CodeDeploy::CreateApplication;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
+  has ComputePlatform => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'computePlatform' );
 
   use MooseX::ClassAttribute;
 
@@ -14,7 +15,7 @@ package Paws::CodeDeploy::CreateApplication;
 
 =head1 NAME
 
-Paws::CodeDeploy::CreateApplication - Arguments for method CreateApplication on Paws::CodeDeploy
+Paws::CodeDeploy::CreateApplication - Arguments for method CreateApplication on L<Paws::CodeDeploy>
 
 =head1 DESCRIPTION
 
@@ -40,6 +41,13 @@ applicable IAM user or AWS account.
 
 
 
+=head2 ComputePlatform => Str
+
+The destination platform type for the deployment C<Lambda> or
+C<Server>).
+
+Valid values are: C<"Server">, C<"Lambda">
+
 
 =head1 SEE ALSO
 
@@ -47,9 +55,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateApplica
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

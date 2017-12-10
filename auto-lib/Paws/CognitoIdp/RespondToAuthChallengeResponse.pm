@@ -25,22 +25,21 @@ to the authentication challenge.
 
 =head2 ChallengeName => Str
 
-The challenge name. For more information, see InitiateAuth.
+The challenge name. For more information, see .
 
-Valid values are: C<"SMS_MFA">, C<"PASSWORD_VERIFIER">, C<"CUSTOM_CHALLENGE">, C<"DEVICE_SRP_AUTH">, C<"DEVICE_PASSWORD_VERIFIER">, C<"ADMIN_NO_SRP_AUTH">, C<"NEW_PASSWORD_REQUIRED">
+Valid values are: C<"SMS_MFA">, C<"SOFTWARE_TOKEN_MFA">, C<"SELECT_MFA_TYPE">, C<"MFA_SETUP">, C<"PASSWORD_VERIFIER">, C<"CUSTOM_CHALLENGE">, C<"DEVICE_SRP_AUTH">, C<"DEVICE_PASSWORD_VERIFIER">, C<"ADMIN_NO_SRP_AUTH">, C<"NEW_PASSWORD_REQUIRED">
 =head2 ChallengeParameters => L<Paws::CognitoIdp::ChallengeParametersType>
 
-The challenge parameters. For more information, see InitiateAuth.
+The challenge parameters. For more information, see .
 
 
 =head2 Session => Str
 
 The session which should be passed both ways in challenge-response
-calls to the service. If the InitiateAuth or RespondToAuthChallenge API
-call determines that the caller needs to go through another challenge,
-they return a session with other challenge parameters. This session
-should be passed as it is to the next C<RespondToAuthChallenge> API
-call.
+calls to the service. If the or API call determines that the caller
+needs to go through another challenge, they return a session with other
+challenge parameters. This session should be passed as it is to the
+next C<RespondToAuthChallenge> API call.
 
 
 =head2 _request_id => Str

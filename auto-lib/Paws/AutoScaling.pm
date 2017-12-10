@@ -10,7 +10,7 @@ package Paws::AutoScaling;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
 
   
   sub AttachInstances {
@@ -503,7 +503,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::AttachInstances>
 
 Returns: nothing
 
-  Attaches one or more EC2 instances to the specified Auto Scaling group.
+Attaches one or more EC2 instances to the specified Auto Scaling group.
 
 When you attach instances, Auto Scaling increases the desired capacity
 of the group by the number of instances being attached. If the number
@@ -516,7 +516,9 @@ there are target groups attached to your Auto Scaling group, the
 instances are also registered with the target groups.
 
 For more information, see Attach EC2 Instances to Your Auto Scaling
-Group in the I<Auto Scaling User Guide>.
+Group
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/attach-instance-asg.html)
+in the I<Auto Scaling User Guide>.
 
 
 =head2 AttachLoadBalancers(AutoScalingGroupName => Str, LoadBalancerNames => ArrayRef[Str|Undef])
@@ -525,7 +527,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::AttachLoadBalancer
 
 Returns: a L<Paws::AutoScaling::AttachLoadBalancersResultType> instance
 
-  Attaches one or more Classic Load Balancers to the specified Auto
+Attaches one or more Classic Load Balancers to the specified Auto
 Scaling group.
 
 To attach an Application Load Balancer instead, see
@@ -536,7 +538,9 @@ DescribeLoadBalancers. To detach the load balancer from the Auto
 Scaling group, use DetachLoadBalancers.
 
 For more information, see Attach a Load Balancer to Your Auto Scaling
-Group in the I<Auto Scaling User Guide>.
+Group
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/attach-load-balancer-asg.html)
+in the I<Auto Scaling User Guide>.
 
 
 =head2 AttachLoadBalancerTargetGroups(AutoScalingGroupName => Str, TargetGroupARNs => ArrayRef[Str|Undef])
@@ -545,14 +549,16 @@ Each argument is described in detail in: L<Paws::AutoScaling::AttachLoadBalancer
 
 Returns: a L<Paws::AutoScaling::AttachLoadBalancerTargetGroupsResultType> instance
 
-  Attaches one or more target groups to the specified Auto Scaling group.
+Attaches one or more target groups to the specified Auto Scaling group.
 
 To describe the target groups for an Auto Scaling group, use
 DescribeLoadBalancerTargetGroups. To detach the target group from the
 Auto Scaling group, use DetachLoadBalancerTargetGroups.
 
 For more information, see Attach a Load Balancer to Your Auto Scaling
-Group in the I<Auto Scaling User Guide>.
+Group
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/attach-load-balancer-asg.html)
+in the I<Auto Scaling User Guide>.
 
 
 =head2 CompleteLifecycleAction(AutoScalingGroupName => Str, LifecycleActionResult => Str, LifecycleHookName => Str, [InstanceId => Str, LifecycleActionToken => Str])
@@ -561,7 +567,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::CompleteLifecycleA
 
 Returns: a L<Paws::AutoScaling::CompleteLifecycleActionAnswer> instance
 
-  Completes the lifecycle action for the specified token or instance with
+Completes the lifecycle action for the specified token or instance with
 the specified result.
 
 This step is a part of the procedure for adding a lifecycle hook to an
@@ -598,24 +604,26 @@ action.>
 
 =back
 
-For more information, see Auto Scaling Lifecycle in the I<Auto Scaling
-User Guide>.
+For more information, see Auto Scaling Lifecycle
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html)
+in the I<Auto Scaling User Guide>.
 
 
-=head2 CreateAutoScalingGroup(AutoScalingGroupName => Str, MaxSize => Int, MinSize => Int, [AvailabilityZones => ArrayRef[Str|Undef], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, InstanceId => Str, LaunchConfigurationName => Str, LoadBalancerNames => ArrayRef[Str|Undef], NewInstancesProtectedFromScaleIn => Bool, PlacementGroup => Str, Tags => ArrayRef[L<Paws::AutoScaling::Tag>], TargetGroupARNs => ArrayRef[Str|Undef], TerminationPolicies => ArrayRef[Str|Undef], VPCZoneIdentifier => Str])
+=head2 CreateAutoScalingGroup(AutoScalingGroupName => Str, MaxSize => Int, MinSize => Int, [AvailabilityZones => ArrayRef[Str|Undef], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, InstanceId => Str, LaunchConfigurationName => Str, LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>, LifecycleHookSpecificationList => ArrayRef[L<Paws::AutoScaling::LifecycleHookSpecification>], LoadBalancerNames => ArrayRef[Str|Undef], NewInstancesProtectedFromScaleIn => Bool, PlacementGroup => Str, Tags => ArrayRef[L<Paws::AutoScaling::Tag>], TargetGroupARNs => ArrayRef[Str|Undef], TerminationPolicies => ArrayRef[Str|Undef], VPCZoneIdentifier => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::CreateAutoScalingGroup>
 
 Returns: nothing
 
-  Creates an Auto Scaling group with the specified name and attributes.
+Creates an Auto Scaling group with the specified name and attributes.
 
 If you exceed your maximum limit of Auto Scaling groups, which by
 default is 20 per region, the call fails. For information about viewing
 and updating this limit, see DescribeAccountLimits.
 
-For more information, see Auto Scaling Groups in the I<Auto Scaling
-User Guide>.
+For more information, see Auto Scaling Groups
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroup.html)
+in the I<Auto Scaling User Guide>.
 
 
 =head2 CreateLaunchConfiguration(LaunchConfigurationName => Str, [AssociatePublicIpAddress => Bool, BlockDeviceMappings => ArrayRef[L<Paws::AutoScaling::BlockDeviceMapping>], ClassicLinkVPCId => Str, ClassicLinkVPCSecurityGroups => ArrayRef[Str|Undef], EbsOptimized => Bool, IamInstanceProfile => Str, ImageId => Str, InstanceId => Str, InstanceMonitoring => L<Paws::AutoScaling::InstanceMonitoring>, InstanceType => Str, KernelId => Str, KeyName => Str, PlacementTenancy => Str, RamdiskId => Str, SecurityGroups => ArrayRef[Str|Undef], SpotPrice => Str, UserData => Str])
@@ -624,14 +632,15 @@ Each argument is described in detail in: L<Paws::AutoScaling::CreateLaunchConfig
 
 Returns: nothing
 
-  Creates a launch configuration.
+Creates a launch configuration.
 
 If you exceed your maximum limit of launch configurations, which by
 default is 100 per region, the call fails. For information about
 viewing and updating this limit, see DescribeAccountLimits.
 
-For more information, see Launch Configurations in the I<Auto Scaling
-User Guide>.
+For more information, see Launch Configurations
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/LaunchConfiguration.html)
+in the I<Auto Scaling User Guide>.
 
 
 =head2 CreateOrUpdateTags(Tags => ArrayRef[L<Paws::AutoScaling::Tag>])
@@ -640,14 +649,15 @@ Each argument is described in detail in: L<Paws::AutoScaling::CreateOrUpdateTags
 
 Returns: nothing
 
-  Creates or updates tags for the specified Auto Scaling group.
+Creates or updates tags for the specified Auto Scaling group.
 
 When you specify a tag with a key that already exists, the operation
 overwrites the previous tag definition, and you do not get an error
 message.
 
-For more information, see Tagging Auto Scaling Groups and Instances in
-the I<Auto Scaling User Guide>.
+For more information, see Tagging Auto Scaling Groups and Instances
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/autoscaling-tagging.html)
+in the I<Auto Scaling User Guide>.
 
 
 =head2 DeleteAutoScalingGroup(AutoScalingGroupName => Str, [ForceDelete => Bool])
@@ -656,7 +666,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DeleteAutoScalingG
 
 Returns: nothing
 
-  Deletes the specified Auto Scaling group.
+Deletes the specified Auto Scaling group.
 
 If the group has instances or scaling activities in progress, you must
 specify the option to force the deletion in order for it to succeed.
@@ -681,7 +691,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DeleteLaunchConfig
 
 Returns: nothing
 
-  Deletes the specified launch configuration.
+Deletes the specified launch configuration.
 
 The launch configuration must not be attached to an Auto Scaling group.
 When this call completes, the launch configuration is no longer
@@ -694,7 +704,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DeleteLifecycleHoo
 
 Returns: a L<Paws::AutoScaling::DeleteLifecycleHookAnswer> instance
 
-  Deletes the specified lifecycle hook.
+Deletes the specified lifecycle hook.
 
 If there are any outstanding lifecycle actions, they are completed
 first (C<ABANDON> for launching instances, C<CONTINUE> for terminating
@@ -707,7 +717,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DeleteNotification
 
 Returns: nothing
 
-  Deletes the specified notification.
+Deletes the specified notification.
 
 
 =head2 DeletePolicy(PolicyName => Str, [AutoScalingGroupName => Str])
@@ -716,7 +726,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DeletePolicy>
 
 Returns: nothing
 
-  Deletes the specified Auto Scaling policy.
+Deletes the specified Auto Scaling policy.
 
 Deleting a policy deletes the underlying alarm action, but does not
 delete the alarm, even if it no longer has an associated action.
@@ -728,7 +738,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DeleteScheduledAct
 
 Returns: nothing
 
-  Deletes the specified scheduled action.
+Deletes the specified scheduled action.
 
 
 =head2 DeleteTags(Tags => ArrayRef[L<Paws::AutoScaling::Tag>])
@@ -737,7 +747,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DeleteTags>
 
 Returns: nothing
 
-  Deletes the specified tags.
+Deletes the specified tags.
 
 
 =head2 DescribeAccountLimits( => )
@@ -746,11 +756,13 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeAccountLim
 
 Returns: a L<Paws::AutoScaling::DescribeAccountLimitsAnswer> instance
 
-  Describes the current Auto Scaling resource limits for your AWS
+Describes the current Auto Scaling resource limits for your AWS
 account.
 
 For information about requesting an increase in these limits, see AWS
-Service Limits in the I<Amazon Web Services General Reference>.
+Service Limits
+(http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html)
+in the I<Amazon Web Services General Reference>.
 
 
 =head2 DescribeAdjustmentTypes( => )
@@ -759,7 +771,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeAdjustment
 
 Returns: a L<Paws::AutoScaling::DescribeAdjustmentTypesAnswer> instance
 
-  Describes the policy adjustment types for use with PutScalingPolicy.
+Describes the policy adjustment types for use with PutScalingPolicy.
 
 
 =head2 DescribeAutoScalingGroups([AutoScalingGroupNames => ArrayRef[Str|Undef], MaxRecords => Int, NextToken => Str])
@@ -768,7 +780,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeAutoScalin
 
 Returns: a L<Paws::AutoScaling::AutoScalingGroupsType> instance
 
-  Describes one or more Auto Scaling groups.
+Describes one or more Auto Scaling groups.
 
 
 =head2 DescribeAutoScalingInstances([InstanceIds => ArrayRef[Str|Undef], MaxRecords => Int, NextToken => Str])
@@ -777,7 +789,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeAutoScalin
 
 Returns: a L<Paws::AutoScaling::AutoScalingInstancesType> instance
 
-  Describes one or more Auto Scaling instances.
+Describes one or more Auto Scaling instances.
 
 
 =head2 DescribeAutoScalingNotificationTypes( => )
@@ -786,7 +798,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeAutoScalin
 
 Returns: a L<Paws::AutoScaling::DescribeAutoScalingNotificationTypesAnswer> instance
 
-  Describes the notification types that are supported by Auto Scaling.
+Describes the notification types that are supported by Auto Scaling.
 
 
 =head2 DescribeLaunchConfigurations([LaunchConfigurationNames => ArrayRef[Str|Undef], MaxRecords => Int, NextToken => Str])
@@ -795,7 +807,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeLaunchConf
 
 Returns: a L<Paws::AutoScaling::LaunchConfigurationsType> instance
 
-  Describes one or more launch configurations.
+Describes one or more launch configurations.
 
 
 =head2 DescribeLifecycleHooks(AutoScalingGroupName => Str, [LifecycleHookNames => ArrayRef[Str|Undef]])
@@ -804,7 +816,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeLifecycleH
 
 Returns: a L<Paws::AutoScaling::DescribeLifecycleHooksAnswer> instance
 
-  Describes the lifecycle hooks for the specified Auto Scaling group.
+Describes the lifecycle hooks for the specified Auto Scaling group.
 
 
 =head2 DescribeLifecycleHookTypes( => )
@@ -813,7 +825,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeLifecycleH
 
 Returns: a L<Paws::AutoScaling::DescribeLifecycleHookTypesAnswer> instance
 
-  Describes the available types of lifecycle hooks.
+Describes the available types of lifecycle hooks.
 
 
 =head2 DescribeLoadBalancers(AutoScalingGroupName => Str, [MaxRecords => Int, NextToken => Str])
@@ -822,7 +834,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeLoadBalanc
 
 Returns: a L<Paws::AutoScaling::DescribeLoadBalancersResponse> instance
 
-  Describes the load balancers for the specified Auto Scaling group.
+Describes the load balancers for the specified Auto Scaling group.
 
 Note that this operation describes only Classic Load Balancers. If you
 have Application Load Balancers, use DescribeLoadBalancerTargetGroups
@@ -835,7 +847,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeLoadBalanc
 
 Returns: a L<Paws::AutoScaling::DescribeLoadBalancerTargetGroupsResponse> instance
 
-  Describes the target groups for the specified Auto Scaling group.
+Describes the target groups for the specified Auto Scaling group.
 
 
 =head2 DescribeMetricCollectionTypes( => )
@@ -844,7 +856,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeMetricColl
 
 Returns: a L<Paws::AutoScaling::DescribeMetricCollectionTypesAnswer> instance
 
-  Describes the available CloudWatch metrics for Auto Scaling.
+Describes the available CloudWatch metrics for Auto Scaling.
 
 Note that the C<GroupStandbyInstances> metric is not returned by
 default. You must explicitly request this metric when calling
@@ -857,7 +869,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeNotificati
 
 Returns: a L<Paws::AutoScaling::DescribeNotificationConfigurationsAnswer> instance
 
-  Describes the notification actions associated with the specified Auto
+Describes the notification actions associated with the specified Auto
 Scaling group.
 
 
@@ -867,7 +879,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribePolicies>
 
 Returns: a L<Paws::AutoScaling::PoliciesType> instance
 
-  Describes the policies for the specified Auto Scaling group.
+Describes the policies for the specified Auto Scaling group.
 
 
 =head2 DescribeScalingActivities([ActivityIds => ArrayRef[Str|Undef], AutoScalingGroupName => Str, MaxRecords => Int, NextToken => Str])
@@ -876,7 +888,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeScalingAct
 
 Returns: a L<Paws::AutoScaling::ActivitiesType> instance
 
-  Describes one or more scaling activities for the specified Auto Scaling
+Describes one or more scaling activities for the specified Auto Scaling
 group.
 
 
@@ -886,7 +898,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeScalingPro
 
 Returns: a L<Paws::AutoScaling::ProcessesType> instance
 
-  Describes the scaling process types for use with ResumeProcesses and
+Describes the scaling process types for use with ResumeProcesses and
 SuspendProcesses.
 
 
@@ -896,7 +908,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeScheduledA
 
 Returns: a L<Paws::AutoScaling::ScheduledActionsType> instance
 
-  Describes the actions scheduled for your Auto Scaling group that
+Describes the actions scheduled for your Auto Scaling group that
 haven't run. To describe the actions that have already run, use
 DescribeScalingActivities.
 
@@ -907,7 +919,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeTags>
 
 Returns: a L<Paws::AutoScaling::TagsType> instance
 
-  Describes the specified tags.
+Describes the specified tags.
 
 You can use filters to limit the results. For example, you can query
 for the tags for a specific Auto Scaling group. You can specify
@@ -925,7 +937,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeTerminatio
 
 Returns: a L<Paws::AutoScaling::DescribeTerminationPolicyTypesAnswer> instance
 
-  Describes the termination policies supported by Auto Scaling.
+Describes the termination policies supported by Auto Scaling.
 
 
 =head2 DetachInstances(AutoScalingGroupName => Str, ShouldDecrementDesiredCapacity => Bool, [InstanceIds => ArrayRef[Str|Undef]])
@@ -934,7 +946,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DetachInstances>
 
 Returns: a L<Paws::AutoScaling::DetachInstancesAnswer> instance
 
-  Removes one or more instances from the specified Auto Scaling group.
+Removes one or more instances from the specified Auto Scaling group.
 
 After the instances are detached, you can manage them independent of
 the Auto Scaling group.
@@ -948,7 +960,9 @@ target groups attached to the Auto Scaling group, the instances are
 deregistered from the target groups.
 
 For more information, see Detach EC2 Instances from Your Auto Scaling
-Group in the I<Auto Scaling User Guide>.
+Group
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/detach-instance-asg.html)
+in the I<Auto Scaling User Guide>.
 
 
 =head2 DetachLoadBalancers(AutoScalingGroupName => Str, LoadBalancerNames => ArrayRef[Str|Undef])
@@ -957,7 +971,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DetachLoadBalancer
 
 Returns: a L<Paws::AutoScaling::DetachLoadBalancersResultType> instance
 
-  Detaches one or more Classic Load Balancers from the specified Auto
+Detaches one or more Classic Load Balancers from the specified Auto
 Scaling group.
 
 Note that this operation detaches only Classic Load Balancers. If you
@@ -976,7 +990,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DetachLoadBalancer
 
 Returns: a L<Paws::AutoScaling::DetachLoadBalancerTargetGroupsResultType> instance
 
-  Detaches one or more target groups from the specified Auto Scaling
+Detaches one or more target groups from the specified Auto Scaling
 group.
 
 
@@ -986,7 +1000,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DisableMetricsColl
 
 Returns: nothing
 
-  Disables group metrics for the specified Auto Scaling group.
+Disables group metrics for the specified Auto Scaling group.
 
 
 =head2 EnableMetricsCollection(AutoScalingGroupName => Str, Granularity => Str, [Metrics => ArrayRef[Str|Undef]])
@@ -995,9 +1009,10 @@ Each argument is described in detail in: L<Paws::AutoScaling::EnableMetricsColle
 
 Returns: nothing
 
-  Enables group metrics for the specified Auto Scaling group. For more
-information, see Monitoring Your Auto Scaling Groups and Instances in
-the I<Auto Scaling User Guide>.
+Enables group metrics for the specified Auto Scaling group. For more
+information, see Monitoring Your Auto Scaling Groups and Instances
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-monitoring.html)
+in the I<Auto Scaling User Guide>.
 
 
 =head2 EnterStandby(AutoScalingGroupName => Str, ShouldDecrementDesiredCapacity => Bool, [InstanceIds => ArrayRef[Str|Undef]])
@@ -1006,10 +1021,12 @@ Each argument is described in detail in: L<Paws::AutoScaling::EnterStandby>
 
 Returns: a L<Paws::AutoScaling::EnterStandbyAnswer> instance
 
-  Moves the specified instances into the standby state.
+Moves the specified instances into the standby state.
 
 For more information, see Temporarily Removing Instances from Your Auto
-Scaling Group in the I<Auto Scaling User Guide>.
+Scaling Group
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-enter-exit-standby.html)
+in the I<Auto Scaling User Guide>.
 
 
 =head2 ExecutePolicy(PolicyName => Str, [AutoScalingGroupName => Str, BreachThreshold => Num, HonorCooldown => Bool, MetricValue => Num])
@@ -1018,7 +1035,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::ExecutePolicy>
 
 Returns: nothing
 
-  Executes the specified policy.
+Executes the specified policy.
 
 
 =head2 ExitStandby(AutoScalingGroupName => Str, [InstanceIds => ArrayRef[Str|Undef]])
@@ -1027,10 +1044,12 @@ Each argument is described in detail in: L<Paws::AutoScaling::ExitStandby>
 
 Returns: a L<Paws::AutoScaling::ExitStandbyAnswer> instance
 
-  Moves the specified instances out of the standby state.
+Moves the specified instances out of the standby state.
 
 For more information, see Temporarily Removing Instances from Your Auto
-Scaling Group in the I<Auto Scaling User Guide>.
+Scaling Group
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-enter-exit-standby.html)
+in the I<Auto Scaling User Guide>.
 
 
 =head2 PutLifecycleHook(AutoScalingGroupName => Str, LifecycleHookName => Str, [DefaultResult => Str, HeartbeatTimeout => Int, LifecycleTransition => Str, NotificationMetadata => Str, NotificationTargetARN => Str, RoleARN => Str])
@@ -1039,7 +1058,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::PutLifecycleHook>
 
 Returns: a L<Paws::AutoScaling::PutLifecycleHookAnswer> instance
 
-  Creates or updates a lifecycle hook for the specified Auto Scaling
+Creates or updates a lifecycle hook for the specified Auto Scaling
 Group.
 
 A lifecycle hook tells Auto Scaling that you want to perform an action
@@ -1080,13 +1099,15 @@ action.
 
 =back
 
-For more information, see Auto Scaling Lifecycle Hooks in the I<Auto
-Scaling User Guide>.
+For more information, see Auto Scaling Lifecycle Hooks
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html)
+in the I<Auto Scaling User Guide>.
 
 If you exceed your maximum limit of lifecycle hooks, which by default
 is 50 per Auto Scaling group, the call fails. For information about
-updating this limit, see AWS Service Limits in the I<Amazon Web
-Services General Reference>.
+updating this limit, see AWS Service Limits
+(http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html)
+in the I<Amazon Web Services General Reference>.
 
 
 =head2 PutNotificationConfiguration(AutoScalingGroupName => Str, NotificationTypes => ArrayRef[Str|Undef], TopicARN => Str)
@@ -1095,31 +1116,34 @@ Each argument is described in detail in: L<Paws::AutoScaling::PutNotificationCon
 
 Returns: nothing
 
-  Configures an Auto Scaling group to send notifications when specified
+Configures an Auto Scaling group to send notifications when specified
 events take place. Subscribers to the specified topic can have messages
 delivered to an endpoint such as a web server or an email address.
 
 This configuration overwrites any existing configuration.
 
 For more information see Getting SNS Notifications When Your Auto
-Scaling Group Scales in the I<Auto Scaling User Guide>.
+Scaling Group Scales
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/ASGettingNotifications.html)
+in the I<Auto Scaling User Guide>.
 
 
-=head2 PutScalingPolicy(AdjustmentType => Str, AutoScalingGroupName => Str, PolicyName => Str, [Cooldown => Int, EstimatedInstanceWarmup => Int, MetricAggregationType => Str, MinAdjustmentMagnitude => Int, MinAdjustmentStep => Int, PolicyType => Str, ScalingAdjustment => Int, StepAdjustments => ArrayRef[L<Paws::AutoScaling::StepAdjustment>]])
+=head2 PutScalingPolicy(AutoScalingGroupName => Str, PolicyName => Str, [AdjustmentType => Str, Cooldown => Int, EstimatedInstanceWarmup => Int, MetricAggregationType => Str, MinAdjustmentMagnitude => Int, MinAdjustmentStep => Int, PolicyType => Str, ScalingAdjustment => Int, StepAdjustments => ArrayRef[L<Paws::AutoScaling::StepAdjustment>], TargetTrackingConfiguration => L<Paws::AutoScaling::TargetTrackingConfiguration>])
 
 Each argument is described in detail in: L<Paws::AutoScaling::PutScalingPolicy>
 
 Returns: a L<Paws::AutoScaling::PolicyARNType> instance
 
-  Creates or updates a policy for an Auto Scaling group. To update an
+Creates or updates a policy for an Auto Scaling group. To update an
 existing policy, use the existing policy name and set the parameters
 you want to change. Any existing parameter not changed in an update to
 an existing policy is not changed in this update request.
 
 If you exceed your maximum limit of step adjustments, which by default
 is 20 per region, the call fails. For information about updating this
-limit, see AWS Service Limits in the I<Amazon Web Services General
-Reference>.
+limit, see AWS Service Limits
+(http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html)
+in the I<Amazon Web Services General Reference>.
 
 
 =head2 PutScheduledUpdateGroupAction(AutoScalingGroupName => Str, ScheduledActionName => Str, [DesiredCapacity => Int, EndTime => Str, MaxSize => Int, MinSize => Int, Recurrence => Str, StartTime => Str, Time => Str])
@@ -1128,12 +1152,13 @@ Each argument is described in detail in: L<Paws::AutoScaling::PutScheduledUpdate
 
 Returns: nothing
 
-  Creates or updates a scheduled scaling action for an Auto Scaling
+Creates or updates a scheduled scaling action for an Auto Scaling
 group. When updating a scheduled scaling action, if you leave a
 parameter unspecified, the corresponding value remains unchanged.
 
-For more information, see Scheduled Scaling in the I<Auto Scaling User
-Guide>.
+For more information, see Scheduled Scaling
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/schedule_time.html)
+in the I<Auto Scaling User Guide>.
 
 
 =head2 RecordLifecycleActionHeartbeat(AutoScalingGroupName => Str, LifecycleHookName => Str, [InstanceId => Str, LifecycleActionToken => Str])
@@ -1142,7 +1167,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::RecordLifecycleAct
 
 Returns: a L<Paws::AutoScaling::RecordLifecycleActionHeartbeatAnswer> instance
 
-  Records a heartbeat for the lifecycle action associated with the
+Records a heartbeat for the lifecycle action associated with the
 specified token or instance. This extends the timeout by the length of
 time defined using PutLifecycleHook.
 
@@ -1180,8 +1205,9 @@ action.
 
 =back
 
-For more information, see Auto Scaling Lifecycle in the I<Auto Scaling
-User Guide>.
+For more information, see Auto Scaling Lifecycle
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html)
+in the I<Auto Scaling User Guide>.
 
 
 =head2 ResumeProcesses(AutoScalingGroupName => Str, [ScalingProcesses => ArrayRef[Str|Undef]])
@@ -1190,11 +1216,13 @@ Each argument is described in detail in: L<Paws::AutoScaling::ResumeProcesses>
 
 Returns: nothing
 
-  Resumes the specified suspended Auto Scaling processes, or all
+Resumes the specified suspended Auto Scaling processes, or all
 suspended process, for the specified Auto Scaling group.
 
 For more information, see Suspending and Resuming Auto Scaling
-Processes in the I<Auto Scaling User Guide>.
+Processes
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-suspend-resume-processes.html)
+in the I<Auto Scaling User Guide>.
 
 
 =head2 SetDesiredCapacity(AutoScalingGroupName => Str, DesiredCapacity => Int, [HonorCooldown => Bool])
@@ -1203,9 +1231,10 @@ Each argument is described in detail in: L<Paws::AutoScaling::SetDesiredCapacity
 
 Returns: nothing
 
-  Sets the size of the specified Auto Scaling group.
+Sets the size of the specified Auto Scaling group.
 
 For more information about desired capacity, see What Is Auto Scaling?
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/WhatIsAutoScaling.html)
 in the I<Auto Scaling User Guide>.
 
 
@@ -1215,10 +1244,11 @@ Each argument is described in detail in: L<Paws::AutoScaling::SetInstanceHealth>
 
 Returns: nothing
 
-  Sets the health status of the specified instance.
+Sets the health status of the specified instance.
 
-For more information, see Health Checks in the I<Auto Scaling User
-Guide>.
+For more information, see Health Checks
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html)
+in the I<Auto Scaling User Guide>.
 
 
 =head2 SetInstanceProtection(AutoScalingGroupName => Str, InstanceIds => ArrayRef[Str|Undef], ProtectedFromScaleIn => Bool)
@@ -1227,10 +1257,11 @@ Each argument is described in detail in: L<Paws::AutoScaling::SetInstanceProtect
 
 Returns: a L<Paws::AutoScaling::SetInstanceProtectionAnswer> instance
 
-  Updates the instance protection settings of the specified instances.
+Updates the instance protection settings of the specified instances.
 
-For more information, see Instance Protection in the I<Auto Scaling
-User Guide>.
+For more information, see Instance Protection
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-termination.html#instance-protection)
+in the I<Auto Scaling User Guide>.
 
 
 =head2 SuspendProcesses(AutoScalingGroupName => Str, [ScalingProcesses => ArrayRef[Str|Undef]])
@@ -1239,7 +1270,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::SuspendProcesses>
 
 Returns: nothing
 
-  Suspends the specified Auto Scaling processes, or all processes, for
+Suspends the specified Auto Scaling processes, or all processes, for
 the specified Auto Scaling group.
 
 Note that if you suspend either the C<Launch> or C<Terminate> process
@@ -1248,7 +1279,9 @@ types, it can prevent other process types from functioning properly.
 To resume processes that have been suspended, use ResumeProcesses.
 
 For more information, see Suspending and Resuming Auto Scaling
-Processes in the I<Auto Scaling User Guide>.
+Processes
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-suspend-resume-processes.html)
+in the I<Auto Scaling User Guide>.
 
 
 =head2 TerminateInstanceInAutoScalingGroup(InstanceId => Str, ShouldDecrementDesiredCapacity => Bool)
@@ -1257,20 +1290,20 @@ Each argument is described in detail in: L<Paws::AutoScaling::TerminateInstanceI
 
 Returns: a L<Paws::AutoScaling::ActivityType> instance
 
-  Terminates the specified instance and optionally adjusts the desired
+Terminates the specified instance and optionally adjusts the desired
 group size.
 
 This call simply makes a termination request. The instance is not
 terminated immediately.
 
 
-=head2 UpdateAutoScalingGroup(AutoScalingGroupName => Str, [AvailabilityZones => ArrayRef[Str|Undef], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, LaunchConfigurationName => Str, MaxSize => Int, MinSize => Int, NewInstancesProtectedFromScaleIn => Bool, PlacementGroup => Str, TerminationPolicies => ArrayRef[Str|Undef], VPCZoneIdentifier => Str])
+=head2 UpdateAutoScalingGroup(AutoScalingGroupName => Str, [AvailabilityZones => ArrayRef[Str|Undef], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, LaunchConfigurationName => Str, LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>, MaxSize => Int, MinSize => Int, NewInstancesProtectedFromScaleIn => Bool, PlacementGroup => Str, TerminationPolicies => ArrayRef[Str|Undef], VPCZoneIdentifier => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::UpdateAutoScalingGroup>
 
 Returns: nothing
 
-  Updates the configuration for the specified Auto Scaling group.
+Updates the configuration for the specified Auto Scaling group.
 
 The new settings take effect on any scaling activities after this call
 returns. Scaling activities that are currently in progress aren't
@@ -1419,9 +1452,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

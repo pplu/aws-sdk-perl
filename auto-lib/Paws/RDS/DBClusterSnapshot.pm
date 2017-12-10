@@ -50,20 +50,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBClus
 
 =head1 DESCRIPTION
 
-Contains the result of a successful invocation of the following
-actions:
-
-=over
-
-=item *
-
-CreateDBClusterSnapshot
-
-=item *
-
-DeleteDBClusterSnapshot
-
-=back
+Contains the details for an Amazon RDS DB cluster snapshot
 
 This data type is used as a response element in the
 DescribeDBClusterSnapshots action.
@@ -118,12 +105,12 @@ snapshot.
 =head2 IAMDatabaseAuthenticationEnabled => Bool
 
   True if mapping of AWS Identity and Access Management (IAM) accounts to
-database accounts is enabled; otherwise false.
+database accounts is enabled, and otherwise false.
 
 
 =head2 KmsKeyId => Str
 
-  If C<StorageEncrypted> is true, the KMS key identifier for the
+  If C<StorageEncrypted> is true, the AWS KMS key identifier for the
 encrypted DB cluster snapshot.
 
 
@@ -164,7 +151,7 @@ Time (UTC).
 
   If the DB cluster snapshot was copied from a source DB cluster
 snapshot, the Amazon Resource Name (ARN) for the source DB cluster
-snapshot; otherwise, a null value.
+snapshot, otherwise, a null value.
 
 
 =head2 Status => Str
@@ -189,9 +176,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

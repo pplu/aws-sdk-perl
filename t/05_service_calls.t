@@ -292,6 +292,24 @@ $test_params = {
 
 request_has_params($test_params, $request);
 
+$request = $s3->PutObject(
+  Bucket => 'test_bucket',
+  Key => 'A/key',
+  Body => 'My Value',
+);
+
+my $md5_r1 = $request->headers->header('Content-MD5');
+
+$request = $s3->PutObject(
+  Bucket => 'test_bucket',
+  Key => 'A/key',
+  Body => 'My Other Value',
+);
+
+my $md5_r2 = $request->headers->header('Content-MD5');
+
+cmp_ok($md5_r1, 'ne', $md5_r2, 'Content-MD5 of different values is different');
+
 $request = $s3->ListObjectsV2(
   Bucket => 'test_bucket',
   Prefix => 'A/Prefix',
@@ -548,6 +566,29 @@ $test_params = {
   Code => {
     ZipFile => 'ZIPFILE',
   }
+};
+
+request_contentjson($test_params, $request);
+
+my $batch = $aws->service('Batch');
+
+$request = $batch->SubmitJob(
+  JobDefinition => 'X',
+  JobName => 'jname',
+  JobQueue => 'jqueue',
+  DependsOn => [ { JobId => 'job1' } ],
+  Parameters => { P1 => 1, P2 => 2 }
+);
+
+use Data::Dumper;
+print Dumper($request);
+
+$test_params = {
+  jobDefinition => 'X',
+  jobName => 'jname',
+  jobQueue => 'jqueue',
+  dependsOn => [ { jobId => 'job1' } ],
+  parameters => { P1 => 1, P2 => 2 }
 };
 
 request_contentjson($test_params, $request);

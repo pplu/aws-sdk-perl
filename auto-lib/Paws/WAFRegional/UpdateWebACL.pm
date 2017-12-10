@@ -17,7 +17,7 @@ package Paws::WAFRegional::UpdateWebACL;
 
 =head1 NAME
 
-Paws::WAFRegional::UpdateWebACL - Arguments for method UpdateWebACL on Paws::WAFRegional
+Paws::WAFRegional::UpdateWebACL - Arguments for method UpdateWebACL on L<Paws::WAFRegional>
 
 =head1 DESCRIPTION
 
@@ -66,7 +66,11 @@ WebACLUpdate: Contains C<Action> and C<ActivatedRule>
 
 =item *
 
-ActivatedRule: Contains C<Action>, C<Priority>, C<RuleId>, and C<Type>
+ActivatedRule: Contains C<Action>, C<Priority>, C<RuleId>, and C<Type>.
+The C<OverrideAction> data type within C<ActivatedRule> is used only
+when submitting an C<UpdateRuleGroup> request.
+C<ActivatedRule|OverrideAction> is not applicable and therefore not
+available for C<UpdateWebACL>.
 
 =item *
 
@@ -91,9 +95,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateWebACL 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

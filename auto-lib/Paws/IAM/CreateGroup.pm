@@ -15,7 +15,7 @@ package Paws::IAM::CreateGroup;
 
 =head1 NAME
 
-Paws::IAM::CreateGroup - Arguments for method CreateGroup on Paws::IAM
+Paws::IAM::CreateGroup - Arguments for method CreateGroup on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -38,28 +38,32 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The name of the group to create. Do not include the path in this value.
 
-This parameter allows (per its regex pattern) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: =,.@-.
-The group name must be unique within the account. Group names are not
-distinguished by case. For example, you cannot create groups named both
-"ADMINS" and "admins".
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+upper and lowercase alphanumeric characters with no spaces. You can
+also include any of the following characters: =,.@-. The group name
+must be unique within the account. Group names are not distinguished by
+case. For example, you cannot create groups named both "ADMINS" and
+"admins".
 
 
 
 =head2 Path => Str
 
 The path to the group. For more information about paths, see IAM
-Identifiers in the I<IAM User Guide>.
+Identifiers
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+in the I<IAM User Guide>.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
 
-This paramater allows (per its regex pattern) a string of characters
-consisting of either a forward slash (/) by itself or a string that
-must begin and end with forward slashes, containing any ASCII character
-from the ! (\u0021) thru the DEL character (\u007F), including most
-punctuation characters, digits, and upper and lowercased letters.
+This paramater allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+either a forward slash (/) by itself or a string that must begin and
+end with forward slashes, containing any ASCII character from the !
+(\u0021) thru the DEL character (\u007F), including most punctuation
+characters, digits, and upper and lowercased letters.
 
 
 
@@ -70,9 +74,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateGroup i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

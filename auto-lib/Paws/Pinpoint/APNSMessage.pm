@@ -4,13 +4,17 @@ package Paws::Pinpoint::APNSMessage;
   has Badge => (is => 'ro', isa => 'Int');
   has Body => (is => 'ro', isa => 'Str');
   has Category => (is => 'ro', isa => 'Str');
+  has CollapseId => (is => 'ro', isa => 'Str');
   has Data => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
   has MediaUrl => (is => 'ro', isa => 'Str');
+  has PreferredAuthenticationMethod => (is => 'ro', isa => 'Str');
+  has Priority => (is => 'ro', isa => 'Str');
   has RawContent => (is => 'ro', isa => 'Str');
   has SilentPush => (is => 'ro', isa => 'Bool');
   has Sound => (is => 'ro', isa => 'Str');
   has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
   has ThreadId => (is => 'ro', isa => 'Str');
+  has TimeToLive => (is => 'ro', isa => 'Int');
   has Title => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
 1;
@@ -80,6 +84,13 @@ type. This value corresponds to the value in the identifier property of
 one of your app's registered categories.
 
 
+=head2 CollapseId => Str
+
+  Multiple notifications with the same collapse identifier are displayed
+to the user as a single notification. The value of this key must not
+exceed 64 bytes.
+
+
 =head2 Data => L<Paws::Pinpoint::MapOf__string>
 
   The data payload used for a silent push. This payload is added to the
@@ -89,6 +100,16 @@ notifications' data.pinpoint.jsonBody' object
 =head2 MediaUrl => Str
 
   The URL that points to a video used in the push notification.
+
+
+=head2 PreferredAuthenticationMethod => Str
+
+  The preferred authentication method, either "CERTIFICATE" or "TOKEN"
+
+
+=head2 Priority => Str
+
+  Is this a transaction priority message or lower priority.
 
 
 =head2 RawContent => Str
@@ -126,6 +147,15 @@ Content app extension, you can use this value to group your
 notifications together.
 
 
+=head2 TimeToLive => Int
+
+  This parameter specifies how long (in seconds) the message should be
+kept if APNS is unable to deliver the notification the first time. If
+the value is 0, APNS treats the notification as if it expires
+immediately and does not store the notification or attempt to redeliver
+it. This value is converted to the expiration field when sent to APNS
+
+
 =head2 Title => Str
 
   The message title that displays above the message on the user's device.
@@ -144,9 +174,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -22,7 +22,10 @@ package Paws::CognitoIdp::UserPoolType;
   has SmsConfigurationFailure => (is => 'ro', isa => 'Str');
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+  has UsernameAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has UserPoolAddOns => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolAddOnsType');
   has UserPoolTags => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolTagsType');
+  has VerificationMessageTemplate => (is => 'ro', isa => 'Paws::CognitoIdp::VerificationMessageTemplateType');
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +45,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CognitoIdp::UserPoolType object:
 
-  $service_obj->Method(Att1 => { AdminCreateUserConfig => $value, ..., UserPoolTags => $value  });
+  $service_obj->Method(Att1 => { AdminCreateUserConfig => $value, ..., VerificationMessageTemplate => $value  });
 
 =head3 Results returned from an API call
 
@@ -53,7 +56,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIdp:
 
 =head1 DESCRIPTION
 
-A container for information about the user pool type.
+A container for information about the user pool.
 
 =head1 ATTRIBUTES
 
@@ -116,7 +119,7 @@ users.
 
 =head2 LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>
 
-  A container for the AWS Lambda triggers associated with a user pool.
+  The AWS Lambda triggers associated with tue user pool.
 
 
 =head2 LastModifiedDate => Str
@@ -156,7 +159,7 @@ token.
 
 =head2 Policies => L<Paws::CognitoIdp::UserPoolPolicyType>
 
-  A container for the policies associated with a user pool.
+  The policies associated with the user pool.
 
 
 =head2 SchemaAttributes => ArrayRef[L<Paws::CognitoIdp::SchemaAttributeType>]
@@ -190,10 +193,27 @@ users.
   The status of a user pool.
 
 
+=head2 UsernameAttributes => ArrayRef[Str|Undef]
+
+  Specifies whether email addresses or phone numbers can be specified as
+usernames when a user signs up.
+
+
+=head2 UserPoolAddOns => L<Paws::CognitoIdp::UserPoolAddOnsType>
+
+  The user pool add-ons.
+
+
 =head2 UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>
 
   The cost allocation tags for the user pool. For more information, see
 Adding Cost Allocation Tags to Your User Pool
+(http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html)
+
+
+=head2 VerificationMessageTemplate => L<Paws::CognitoIdp::VerificationMessageTemplateType>
+
+  The template for verification messages.
 
 
 
@@ -203,9 +223,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CognitoId
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

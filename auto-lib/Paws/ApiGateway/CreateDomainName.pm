@@ -1,12 +1,15 @@
 
 package Paws::ApiGateway::CreateDomainName;
   use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str');
-  has CertificateBody => (is => 'ro', isa => 'Str');
-  has CertificateChain => (is => 'ro', isa => 'Str');
-  has CertificateName => (is => 'ro', isa => 'Str');
-  has CertificatePrivateKey => (is => 'ro', isa => 'Str');
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
+  has CertificateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateArn');
+  has CertificateBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateBody');
+  has CertificateChain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateChain');
+  has CertificateName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateName');
+  has CertificatePrivateKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificatePrivateKey');
+  has DomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainName', required => 1);
+  has EndpointConfiguration => (is => 'ro', isa => 'Paws::ApiGateway::EndpointConfiguration', traits => ['NameInRequest'], request_name => 'endpointConfiguration');
+  has RegionalCertificateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalCertificateArn');
+  has RegionalCertificateName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalCertificateName');
 
   use MooseX::ClassAttribute;
 
@@ -14,14 +17,13 @@ package Paws::ApiGateway::CreateDomainName;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/domainnames');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::DomainName');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::CreateDomainName - Arguments for method CreateDomainName on Paws::ApiGateway
+Paws::ApiGateway::CreateDomainName - Arguments for method CreateDomainName on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -42,14 +44,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CertificateArn => Str
 
-The reference to an AWS-managed certificate. AWS Certificate Manager is
-the only supported source.
+The reference to an AWS-managed certificate that will be used by
+edge-optimized endpoint for this domain name. AWS Certificate Manager
+is the only supported source.
 
 
 
 =head2 CertificateBody => Str
 
-[Deprecated] The body of the server certificate provided by your
+[Deprecated] The body of the server certificate that will be used by
+edge-optimized endpoint for this domain name provided by your
 certificate authority.
 
 
@@ -57,30 +61,54 @@ certificate authority.
 =head2 CertificateChain => Str
 
 [Deprecated] The intermediate certificates and optionally the root
-certificate, one after the other without any blank lines. If you
-include the root certificate, your certificate chain must start with
-intermediate certificates and end with the root certificate. Use the
-intermediate certificates that were provided by your certificate
-authority. Do not include any intermediaries that are not in the chain
-of trust path.
+certificate, one after the other without any blank lines, used by an
+edge-optimized endpoint for this domain name. If you include the root
+certificate, your certificate chain must start with intermediate
+certificates and end with the root certificate. Use the intermediate
+certificates that were provided by your certificate authority. Do not
+include any intermediaries that are not in the chain of trust path.
 
 
 
 =head2 CertificateName => Str
 
-The user-friendly name of the certificate.
+The user-friendly name of the certificate that will be used by
+edge-optimized endpoint for this domain name.
 
 
 
 =head2 CertificatePrivateKey => Str
 
-[Deprecated] Your certificate's private key.
+[Deprecated] Your edge-optimized endpoint's domain name certificate's
+private key.
 
 
 
 =head2 B<REQUIRED> DomainName => Str
 
 (Required) The name of the DomainName resource.
+
+
+
+=head2 EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>
+
+The endpoint configuration of this DomainName showing the endpoint
+types of the domain name.
+
+
+
+=head2 RegionalCertificateArn => Str
+
+The reference to an AWS-managed certificate that will be used by
+regional endpoint for this domain name. AWS Certificate Manager is the
+only supported source.
+
+
+
+=head2 RegionalCertificateName => Str
+
+The user-friendly name of the certificate that will be used by regional
+endpoint for this domain name.
 
 
 
@@ -91,9 +119,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateDomainN
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

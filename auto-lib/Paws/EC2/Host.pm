@@ -63,8 +63,9 @@ Host.
 =head2 ClientToken => Str
 
   Unique, case-sensitive identifier you provide to ensure idempotency of
-the request. For more information, see How to Ensure Idempotency in the
-I<Amazon Elastic Compute Cloud User Guide>.
+the request. For more information, see How to Ensure Idempotency
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 HostId => Str
@@ -101,8 +102,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

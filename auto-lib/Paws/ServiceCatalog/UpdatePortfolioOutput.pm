@@ -17,12 +17,12 @@ Paws::ServiceCatalog::UpdatePortfolioOutput
 
 =head2 PortfolioDetail => L<Paws::ServiceCatalog::PortfolioDetail>
 
-The resulting detailed portfolio information.
+Information about the portfolio.
 
 
 =head2 Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
 
-Tags associated with the portfolio.
+Information about the tags associated with the portfolio.
 
 
 =head2 _request_id => Str

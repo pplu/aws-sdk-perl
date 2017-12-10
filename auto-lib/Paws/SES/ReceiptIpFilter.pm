@@ -36,7 +36,8 @@ A receipt IP address filter enables you to specify whether to accept or
 reject mail originating from an IP address or range of IP addresses.
 
 For information about setting up IP address filters, see the Amazon SES
-Developer Guide.
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html).
 
 =head1 ATTRIBUTES
 
@@ -47,7 +48,7 @@ Developer Guide.
 or allow, specified in Classless Inter-Domain Routing (CIDR) notation.
 An example of a single email address is 10.0.0.1. An example of a range
 of IP addresses is 10.0.0.1/24. For more information about CIDR
-notation, see RFC 2317.
+notation, see RFC 2317 (https://tools.ietf.org/html/rfc2317).
 
 
 =head2 B<REQUIRED> Policy => Str
@@ -63,9 +64,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SES>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

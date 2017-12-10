@@ -20,7 +20,7 @@ package Paws::CloudWatchLogs::CreateExportTask;
 
 =head1 NAME
 
-Paws::CloudWatchLogs::CreateExportTask - Arguments for method CreateExportTask on Paws::CloudWatchLogs
+Paws::CloudWatchLogs::CreateExportTask - Arguments for method CreateExportTask on L<Paws::CloudWatchLogs>
 
 =head1 DESCRIPTION
 
@@ -56,7 +56,7 @@ you don't specify a value, the default is C<exportedlogs>.
 =head2 B<REQUIRED> From => Int
 
 The start time of the range for the request, expressed as the number of
-milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp
+milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp
 earlier than this time are not exported.
 
 
@@ -83,7 +83,7 @@ The name of the export task.
 =head2 B<REQUIRED> To => Int
 
 The end time of the range for the request, expressed as the number of
-milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp
+milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp
 later than this time are not exported.
 
 
@@ -95,9 +95,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateExportT
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

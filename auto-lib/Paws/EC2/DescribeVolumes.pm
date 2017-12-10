@@ -18,7 +18,7 @@ package Paws::EC2::DescribeVolumes;
 
 =head1 NAME
 
-Paws::EC2::DescribeVolumes - Arguments for method DescribeVolumes on Paws::EC2
+Paws::EC2::DescribeVolumes - Arguments for method DescribeVolumes on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -64,8 +64,8 @@ instance termination.
 
 =item *
 
-C<attachment.device> - The device name that is exposed to the instance
-(for example, C</dev/sda1>).
+C<attachment.device> - The device name specified in the block device
+mapping (for example, C</dev/sda1>).
 
 =item *
 
@@ -180,9 +180,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeVolum
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

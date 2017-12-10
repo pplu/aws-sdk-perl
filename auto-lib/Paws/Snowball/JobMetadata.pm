@@ -120,7 +120,9 @@ you.
 
   The Amazon Resource Name (ARN) for the AWS Key Management Service (AWS
 KMS) key associated with this job. This ARN was created using the
-CreateKey API action in AWS KMS.
+CreateKey
+(http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html)
+API action in AWS KMS.
 
 
 =head2 Notification => L<Paws::Snowball::Notification>
@@ -141,7 +143,9 @@ imported into.
 =head2 RoleARN => Str
 
   The role ARN associated with this job. This ARN was created using the
-CreateRole API action in AWS Identity and Access Management (IAM).
+CreateRole
+(http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
+API action in AWS Identity and Access Management (IAM).
 
 
 =head2 ShippingDetails => L<Paws::Snowball::ShippingDetails>
@@ -169,9 +173,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Snowball>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -2,6 +2,7 @@
 package Paws::Inspector::StopAssessmentRun;
   use Moose;
   has AssessmentRunArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentRunArn' , required => 1);
+  has StopAction => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stopAction' );
 
   use MooseX::ClassAttribute;
 
@@ -14,7 +15,7 @@ package Paws::Inspector::StopAssessmentRun;
 
 =head1 NAME
 
-Paws::Inspector::StopAssessmentRun - Arguments for method StopAssessmentRun on Paws::Inspector
+Paws::Inspector::StopAssessmentRun - Arguments for method StopAssessmentRun on L<Paws::Inspector>
 
 =head1 DESCRIPTION
 
@@ -39,6 +40,16 @@ The ARN of the assessment run that you want to stop.
 
 
 
+=head2 StopAction => Str
+
+An input option that can be set to either START_EVALUATION or
+SKIP_EVALUATION. START_EVALUATION (the default value), stops the AWS
+agent from collecting data and begins the results evaluation and the
+findings generation process. SKIP_EVALUATION cancels the assessment run
+immediately, after which no findings are generated.
+
+Valid values are: C<"START_EVALUATION">, C<"SKIP_EVALUATION">
+
 
 =head1 SEE ALSO
 
@@ -46,9 +57,9 @@ This class forms part of L<Paws>, documenting arguments for method StopAssessmen
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

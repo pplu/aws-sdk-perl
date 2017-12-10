@@ -22,7 +22,7 @@ package Paws::EC2::DescribeSpotPriceHistory;
 
 =head1 NAME
 
-Paws::EC2::DescribeSpotPriceHistory - Arguments for method DescribeSpotPriceHistory on Paws::EC2
+Paws::EC2::DescribeSpotPriceHistory - Arguments for method DescribeSpotPriceHistory on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -104,8 +104,7 @@ supported.
 
 =head2 InstanceTypes => ArrayRef[Str|Undef]
 
-Filters the results by the specified instance types. Note that T2 and
-HS1 instance types are not supported.
+Filters the results by the specified instance types.
 
 
 
@@ -145,9 +144,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeSpotP
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

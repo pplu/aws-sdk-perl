@@ -38,9 +38,12 @@ Represents the raw data of the message.
 
 =head2 B<REQUIRED> Data => Str
 
-  The raw data of the message. The client must ensure that the message
-format complies with Internet email standards regarding email header
-fields, MIME types, MIME encoding, and base64 encoding.
+  The raw data of the message. This data needs to base64-encoded if you
+are accessing Amazon SES directly through the HTTPS interface. If you
+are accessing Amazon SES using an AWS SDK, the SDK takes care of the
+base 64-encoding for you. In all cases, the client must ensure that the
+message format complies with Internet email standards regarding email
+header fields, MIME types, and MIME encoding.
 
 The To:, CC:, and BCC: headers in the raw message can contain a group
 list.
@@ -53,7 +56,8 @@ documentation for C<SendRawEmail>.
 Do not include these X-headers in the DKIM signature, because they are
 removed by Amazon SES before sending the email.
 
-For more information, go to the Amazon SES Developer Guide.
+For more information, go to the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html).
 
 
 
@@ -63,9 +67,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SES>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

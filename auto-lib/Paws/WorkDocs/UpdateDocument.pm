@@ -1,8 +1,8 @@
 
 package Paws::WorkDocs::UpdateDocument;
   use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
-  has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId' , required => 1);
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
+  has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId', required => 1);
   has Name => (is => 'ro', isa => 'Str');
   has ParentFolderId => (is => 'ro', isa => 'Str');
   has ResourceState => (is => 'ro', isa => 'Str');
@@ -13,14 +13,13 @@ package Paws::WorkDocs::UpdateDocument;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/documents/{DocumentId}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::WorkDocs::UpdateDocument - Arguments for method UpdateDocument on Paws::WorkDocs
+Paws::WorkDocs::UpdateDocument - Arguments for method UpdateDocument on L<Paws::WorkDocs>
 
 =head1 DESCRIPTION
 
@@ -41,8 +40,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AuthenticationToken => Str
 
-Amazon WorkDocs authentication token. This field should not be set when
-using administrative API actions, as in accessing the API using AWS
+Amazon WorkDocs authentication token. Do not set this field when using
+administrative API actions, as in accessing the API using AWS
 credentials.
 
 
@@ -67,8 +66,8 @@ The ID of the parent folder.
 
 =head2 ResourceState => Str
 
-The resource state of the document. Note that only ACTIVE and RECYCLED
-are supported.
+The resource state of the document. Only ACTIVE and RECYCLED are
+supported.
 
 Valid values are: C<"ACTIVE">, C<"RESTORING">, C<"RECYCLING">, C<"RECYCLED">
 
@@ -79,9 +78,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateDocumen
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

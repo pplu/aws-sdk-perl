@@ -18,9 +18,12 @@ Paws::DynamoDB::UpdateItemOutput
 
 =head2 Attributes => L<Paws::DynamoDB::AttributeMap>
 
-A map of attribute values as they appeared before the C<UpdateItem>
-operation. This map only appears if C<ReturnValues> was specified as
-something other than C<NONE> in the request. Each element represents
+A map of attribute values as they appear before or after the
+C<UpdateItem> operation, as determined by the C<ReturnValues>
+parameter.
+
+The C<Attributes> map is only present if C<ReturnValues> was specified
+as something other than C<NONE> in the request. Each element represents
 one attribute.
 
 
@@ -31,7 +34,9 @@ returned includes the total provisioned throughput consumed, along with
 statistics for the table and any indexes involved in the operation.
 C<ConsumedCapacity> is only returned if the C<ReturnConsumedCapacity>
 parameter was specified. For more information, see Provisioned
-Throughput in the I<Amazon DynamoDB Developer Guide>.
+Throughput
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 =head2 ItemCollectionMetrics => L<Paws::DynamoDB::ItemCollectionMetrics>
@@ -53,7 +58,7 @@ This is the same as the partition key value of the item itself.
 
 =item *
 
-C<SizeEstimateRange> - An estimate of item collection size, in
+C<SizeEstimateRangeGB> - An estimate of item collection size, in
 gigabytes. This value is a two-element array containing a lower bound
 and an upper bound for the estimate. The estimate includes the size of
 all the items in the table, plus the size of all attributes projected

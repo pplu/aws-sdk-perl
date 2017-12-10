@@ -15,7 +15,7 @@ package Paws::CodeCommit::GetCommit;
 
 =head1 NAME
 
-Paws::CodeCommit::GetCommit - Arguments for method GetCommit on Paws::CodeCommit
+Paws::CodeCommit::GetCommit - Arguments for method GetCommit on L<Paws::CodeCommit>
 
 =head1 DESCRIPTION
 
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CommitId => Str
 
-The commit ID.
+The commit ID. Commit IDs are the full SHA of the commit.
 
 
 
@@ -53,9 +53,9 @@ This class forms part of L<Paws>, documenting arguments for method GetCommit in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

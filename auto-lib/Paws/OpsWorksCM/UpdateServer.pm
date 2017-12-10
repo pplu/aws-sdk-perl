@@ -18,7 +18,7 @@ package Paws::OpsWorksCM::UpdateServer;
 
 =head1 NAME
 
-Paws::OpsWorksCM::UpdateServer - Arguments for method UpdateServer on Paws::OpsWorksCM
+Paws::OpsWorksCM::UpdateServer - Arguments for method UpdateServer on L<Paws::OpsWorksCM>
 
 =head1 DESCRIPTION
 
@@ -75,9 +75,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateServer 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

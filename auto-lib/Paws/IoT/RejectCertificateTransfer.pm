@@ -1,8 +1,8 @@
 
 package Paws::IoT::RejectCertificateTransfer;
   use Moose;
-  has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId' , required => 1);
-  has RejectReason => (is => 'ro', isa => 'Str');
+  has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId', required => 1);
+  has RejectReason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'rejectReason');
 
   use MooseX::ClassAttribute;
 
@@ -10,14 +10,13 @@ package Paws::IoT::RejectCertificateTransfer;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/reject-certificate-transfer/{certificateId}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::IoT::RejectCertificateTransfer - Arguments for method RejectCertificateTransfer on Paws::IoT
+Paws::IoT::RejectCertificateTransfer - Arguments for method RejectCertificateTransfer on L<Paws::IoT>
 
 =head1 DESCRIPTION
 
@@ -55,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method RejectCertifi
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

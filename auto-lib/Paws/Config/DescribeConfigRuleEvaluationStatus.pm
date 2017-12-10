@@ -16,7 +16,7 @@ package Paws::Config::DescribeConfigRuleEvaluationStatus;
 
 =head1 NAME
 
-Paws::Config::DescribeConfigRuleEvaluationStatus - Arguments for method DescribeConfigRuleEvaluationStatus on Paws::Config
+Paws::Config::DescribeConfigRuleEvaluationStatus - Arguments for method DescribeConfigRuleEvaluationStatus on L<Paws::Config>
 
 =head1 DESCRIPTION
 
@@ -51,7 +51,9 @@ This parameter is required if the rule limit for your account is more
 than the default of 50 rules.
 
 For more information about requesting a rule limit increase, see AWS
-Config Limits in the I<AWS General Reference Guide>.
+Config Limits
+(http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config)
+in the I<AWS General Reference Guide>.
 
 
 
@@ -69,9 +71,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeConfi
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

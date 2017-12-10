@@ -2,6 +2,7 @@
 package Paws::IoT::CreateThingTypeResponse;
   use Moose;
   has ThingTypeArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingTypeArn');
+  has ThingTypeId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingTypeId');
   has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingTypeName');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -19,6 +20,11 @@ Paws::IoT::CreateThingTypeResponse
 =head2 ThingTypeArn => Str
 
 The Amazon Resource Name (ARN) of the thing type.
+
+
+=head2 ThingTypeId => Str
+
+The thing type ID.
 
 
 =head2 ThingTypeName => Str

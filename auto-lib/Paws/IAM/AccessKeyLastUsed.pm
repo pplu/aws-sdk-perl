@@ -43,8 +43,9 @@ GetAccessKeyLastUsed action.
 
 =head2 B<REQUIRED> LastUsedDate => Str
 
-  The date and time, in ISO 8601 date-time format, when the access key
-was most recently used. This field is null when:
+  The date and time, in ISO 8601 date-time format
+(http://www.iso.org/iso/iso8601), when the access key was most recently
+used. This field is null when:
 
 =over
 
@@ -87,8 +88,9 @@ There is no sign-in data associated with the user
 
 =back
 
-For more information about AWS regions, see Regions and Endpoints in
-the Amazon Web Services General Reference.
+For more information about AWS regions, see Regions and Endpoints
+(http://docs.aws.amazon.com/general/latest/gr/rande.html) in the Amazon
+Web Services General Reference.
 
 
 =head2 B<REQUIRED> ServiceName => Str
@@ -122,9 +124,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

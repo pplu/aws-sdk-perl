@@ -2,8 +2,10 @@
 package Paws::SSM::UpdateDocument;
   use Moose;
   has Content => (is => 'ro', isa => 'Str', required => 1);
+  has DocumentFormat => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has TargetType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -16,7 +18,7 @@ package Paws::SSM::UpdateDocument;
 
 =head1 NAME
 
-Paws::SSM::UpdateDocument - Arguments for method UpdateDocument on Paws::SSM
+Paws::SSM::UpdateDocument - Arguments for method UpdateDocument on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -41,6 +43,13 @@ The content in a document that you want to update.
 
 
 
+=head2 DocumentFormat => Str
+
+Specify the document format for the new document version. Systems
+Manager supports JSON and YAML documents. JSON is the default format.
+
+Valid values are: C<"YAML">, C<"JSON">
+
 =head2 DocumentVersion => Str
 
 The version of the document that you want to update.
@@ -53,6 +62,12 @@ The name of the document that you want to update.
 
 
 
+=head2 TargetType => Str
+
+Specify a new target type for the document.
+
+
+
 
 =head1 SEE ALSO
 
@@ -60,9 +75,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateDocumen
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

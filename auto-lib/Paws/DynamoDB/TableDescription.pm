@@ -9,8 +9,10 @@ package Paws::DynamoDB::TableDescription;
   has LatestStreamLabel => (is => 'ro', isa => 'Str');
   has LocalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::LocalSecondaryIndexDescription]');
   has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughputDescription');
+  has RestoreSummary => (is => 'ro', isa => 'Paws::DynamoDB::RestoreSummary');
   has StreamSpecification => (is => 'ro', isa => 'Paws::DynamoDB::StreamSpecification');
   has TableArn => (is => 'ro', isa => 'Str');
+  has TableId => (is => 'ro', isa => 'Str');
   has TableName => (is => 'ro', isa => 'Str');
   has TableSizeBytes => (is => 'ro', isa => 'Int');
   has TableStatus => (is => 'ro', isa => 'Str');
@@ -73,7 +75,7 @@ C<AttributeType> - The data type for the attribute.
 =head2 CreationDateTime => Str
 
   The date and time when the table was created, in UNIX epoch time
-format.
+(http://www.epochconverter.com/) format.
 
 
 =head2 GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndexDescription>]
@@ -239,8 +241,9 @@ the sort key value.
 
 =back
 
-For more information about primary keys, see Primary Key in the
-I<Amazon DynamoDB Developer Guide>.
+For more information about primary keys, see Primary Key
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 =head2 LatestStreamArn => Str
@@ -364,6 +367,11 @@ and write capacity units, along with data about increases and
 decreases.
 
 
+=head2 RestoreSummary => L<Paws::DynamoDB::RestoreSummary>
+
+  Contains details for the restore.
+
+
 =head2 StreamSpecification => L<Paws::DynamoDB::StreamSpecification>
 
   The current DynamoDB Streams configuration for the table.
@@ -372,6 +380,11 @@ decreases.
 =head2 TableArn => Str
 
   The Amazon Resource Name (ARN) that uniquely identifies the table.
+
+
+=head2 TableId => Str
+
+  Unique identifier for the table for which the backup was created.
 
 
 =head2 TableName => Str
@@ -419,9 +432,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::DynamoDB>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

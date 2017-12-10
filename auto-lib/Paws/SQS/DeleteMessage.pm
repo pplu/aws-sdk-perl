@@ -15,7 +15,7 @@ package Paws::SQS::DeleteMessage;
 
 =head1 NAME
 
-Paws::SQS::DeleteMessage - Arguments for method DeleteMessage on Paws::SQS
+Paws::SQS::DeleteMessage - Arguments for method DeleteMessage on L<Paws::SQS>
 
 =head1 DESCRIPTION
 
@@ -55,9 +55,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteMessage
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

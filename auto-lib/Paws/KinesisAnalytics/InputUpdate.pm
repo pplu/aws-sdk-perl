@@ -2,6 +2,7 @@ package Paws::KinesisAnalytics::InputUpdate;
   use Moose;
   has InputId => (is => 'ro', isa => 'Str', required => 1);
   has InputParallelismUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputParallelismUpdate');
+  has InputProcessingConfigurationUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputProcessingConfigurationUpdate');
   has InputSchemaUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputSchemaUpdate');
   has KinesisFirehoseInputUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisFirehoseInputUpdate');
   has KinesisStreamsInputUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisStreamsInputUpdate');
@@ -53,6 +54,11 @@ C<InputId> of an application).
 Amazon Kinesis Analytics creates for the specific streaming source).
 
 
+=head2 InputProcessingConfigurationUpdate => L<Paws::KinesisAnalytics::InputProcessingConfigurationUpdate>
+
+  Describes updates for an input processing configuration.
+
+
 =head2 InputSchemaUpdate => L<Paws::KinesisAnalytics::InputSchemaUpdate>
 
   Describes the data format on the streaming source, and how record
@@ -86,9 +92,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::KinesisAn
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

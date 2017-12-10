@@ -20,7 +20,7 @@ package Paws::MachineLearning::CreateMLModel;
 
 =head1 NAME
 
-Paws::MachineLearning::CreateMLModel - Arguments for method CreateMLModel on Paws::MachineLearning
+Paws::MachineLearning::CreateMLModel - Arguments for method CreateMLModel on L<Paws::MachineLearning>
 
 =head1 DESCRIPTION
 
@@ -69,7 +69,8 @@ number of values.
 
 =back
 
-For more information, see the Amazon Machine Learning Developer Guide.
+For more information, see the Amazon Machine Learning Developer Guide
+(http://docs.aws.amazon.com/machine-learning/latest/dg).
 
 Valid values are: C<"REGRESSION">, C<"BINARY">, C<"MULTICLASS">
 
@@ -163,9 +164,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateMLModel
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

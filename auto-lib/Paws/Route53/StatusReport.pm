@@ -41,9 +41,10 @@ checker reports and the time of the health check.
 =head2 CheckedTime => Str
 
   The date and time that the health checker performed the health check in
-ISO 8601 format and Coordinated Universal Time (UTC). For example, the
-value C<2017-03-27T17:48:16.751Z> represents March 27, 2017 at
-17:48:16.751 UTC.
+ISO 8601 format (https://en.wikipedia.org/wiki/ISO_8601) and
+Coordinated Universal Time (UTC). For example, the value
+C<2017-03-27T17:48:16.751Z> represents March 27, 2017 at 17:48:16.751
+UTC.
 
 
 =head2 Status => Str
@@ -59,9 +60,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Route53>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

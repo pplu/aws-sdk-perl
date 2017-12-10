@@ -14,7 +14,7 @@ package Paws::Organizations::DescribeOrganizationalUnit;
 
 =head1 NAME
 
-Paws::Organizations::DescribeOrganizationalUnit - Arguments for method DescribeOrganizationalUnit on Paws::Organizations
+Paws::Organizations::DescribeOrganizationalUnit - Arguments for method DescribeOrganizationalUnit on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
@@ -39,10 +39,11 @@ The unique identifier (ID) of the organizational unit that you want
 details about. You can get the ID from the
 ListOrganizationalUnitsForParent operation.
 
-The regex pattern for an organizational unit ID string requires "ou-"
-followed by from 4 to 32 lower-case letters or digits (the ID of the
-root that contains the OU) followed by a second "-" dash and from 8 to
-32 additional lower-case letters or digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for an
+organizational unit ID string requires "ou-" followed by from 4 to 32
+lower-case letters or digits (the ID of the root that contains the OU)
+followed by a second "-" dash and from 8 to 32 additional lower-case
+letters or digits.
 
 
 
@@ -53,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeOrgan
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

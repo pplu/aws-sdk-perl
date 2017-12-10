@@ -3,6 +3,7 @@ package Paws::GameLift::GameSessionPlacement;
   has EndTime => (is => 'ro', isa => 'Str');
   has GameProperties => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameProperty]');
   has GameSessionArn => (is => 'ro', isa => 'Str');
+  has GameSessionData => (is => 'ro', isa => 'Str');
   has GameSessionId => (is => 'ro', isa => 'Str');
   has GameSessionName => (is => 'ro', isa => 'Str');
   has GameSessionQueueName => (is => 'ro', isa => 'Str');
@@ -79,22 +80,34 @@ timed out.
 
 =head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
 
-  Set of developer-defined properties for a game session. These
-properties are passed to the server process hosting the game session.
+  Set of developer-defined properties for a game session, formatted as a
+set of type:value pairs. These properties are included in the
+GameSession object, which is passed to the game server with a request
+to start a new game session (see Start a Game Session
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 
 
 =head2 GameSessionArn => Str
 
   Identifier for the game session created by this placement request. This
 value is set once the new game session is placed (placement status is
-Fulfilled). This identifier is unique across all regions. You can use
-this value as a C<GameSessionId> value as needed.
+C<FULFILLED>). This identifier is unique across all regions. You can
+use this value as a C<GameSessionId> value as needed.
+
+
+=head2 GameSessionData => Str
+
+  Set of developer-defined game session properties, formatted as a single
+string value. This data is included in the GameSession object, which is
+passed to the game server with a request to start a new game session
+(see Start a Game Session
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 
 
 =head2 GameSessionId => Str
 
   Unique identifier for the game session. This value is set once the new
-game session is placed (placement status is Fulfilled).
+game session is placed (placement status is C<FULFILLED>).
 
 
 =head2 GameSessionName => Str
@@ -105,15 +118,15 @@ do not need to be unique.
 
 =head2 GameSessionQueueName => Str
 
-  Descriptive label that is associated with queue. Queue names must be
-unique within each region.
+  Descriptive label that is associated with game session queue. Queue
+names must be unique within each region.
 
 
 =head2 GameSessionRegion => Str
 
   Name of the region where the game session created by this placement
 request is running. This value is set once the new game session is
-placed (placement status is Fulfilled).
+placed (placement status is C<FULFILLED>).
 
 
 =head2 IpAddress => Str
@@ -121,7 +134,7 @@ placed (placement status is Fulfilled).
   IP address of the game session. To connect to a Amazon GameLift game
 server, an app needs both the IP address and port number. This value is
 set once the new game session is placed (placement status is
-Fulfilled).
+C<FULFILLED>).
 
 
 =head2 MaximumPlayerSessionCount => Int
@@ -135,10 +148,10 @@ game session.
   Collection of information on player sessions created in response to the
 game session placement request. These player sessions are created only
 once a new game session is successfully placed (placement status is
-Fulfilled). This information includes the player ID (as provided in the
-placement request) and the corresponding player session ID. Retrieve
-full player sessions by calling DescribePlayerSessions with the player
-session ID.
+C<FULFILLED>). This information includes the player ID (as provided in
+the placement request) and the corresponding player session ID.
+Retrieve full player sessions by calling DescribePlayerSessions with
+the player session ID.
 
 
 =head2 PlacementId => Str
@@ -149,7 +162,7 @@ session ID.
 =head2 PlayerLatencies => ArrayRef[L<Paws::GameLift::PlayerLatency>]
 
   Set of values, expressed in milliseconds, indicating the amount of
-latency that players are experiencing when connected to AWS regions.
+latency that a player experiences when connected to AWS regions.
 
 
 =head2 Port => Int
@@ -157,7 +170,7 @@ latency that players are experiencing when connected to AWS regions.
   Port number for the game session. To connect to a Amazon GameLift game
 server, an app needs both the IP address and port number. This value is
 set once the new game session is placed (placement status is
-Fulfilled).
+C<FULFILLED>).
 
 
 =head2 StartTime => Str
@@ -175,25 +188,25 @@ is a number expressed in Unix time as milliseconds (for example
 
 =item *
 
-B<PENDING> E<ndash> The placement request is currently in the queue
-waiting to be processed.
+B<PENDING> -- The placement request is currently in the queue waiting
+to be processed.
 
 =item *
 
-B<FULFILLED> E<ndash> A new game session and player sessions (if
-requested) have been successfully created. Values for I<GameSessionArn>
-and I<GameSessionRegion> are available.
+B<FULFILLED> -- A new game session and player sessions (if requested)
+have been successfully created. Values for I<GameSessionArn> and
+I<GameSessionRegion> are available.
 
 =item *
 
-B<CANCELLED> E<ndash> The placement request was canceled with a call to
+B<CANCELLED> -- The placement request was canceled with a call to
 StopGameSessionPlacement.
 
 =item *
 
-B<TIMED_OUT> E<ndash> A new game session was not successfully created
-before the time limit expired. You can resubmit the placement request
-as needed.
+B<TIMED_OUT> -- A new game session was not successfully created before
+the time limit expired. You can resubmit the placement request as
+needed.
 
 =back
 
@@ -206,9 +219,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::GameLift>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -19,7 +19,7 @@ package Paws::SQS::SendMessage;
 
 =head1 NAME
 
-Paws::SQS::SendMessage - Arguments for method SendMessage on Paws::SQS
+Paws::SQS::SendMessage - Arguments for method SendMessage on L<Paws::SQS>
 
 =head1 DESCRIPTION
 
@@ -54,8 +54,9 @@ You can set this parameter only on a queue level.
 =head2 MessageAttributes => L<Paws::SQS::MessageBodyAttributeMap>
 
 Each message attribute consists of a C<Name>, C<Type>, and C<Value>.
-For more information, see Message Attribute Items and Validation in the
-I<Amazon SQS Developer Guide>.
+For more information, see Message Attribute Items and Validation
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-items-validation)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 
 
@@ -70,7 +71,8 @@ C<#x9> | C<#xA> | C<#xD> | C<#x20> to C<#xD7FF> | C<#xE000> to
 C<#xFFFD> | C<#x10000> to C<#x10FFFF>
 
 Any characters not included in this list will be rejected. For more
-information, see the W3C specification for characters.
+information, see the W3C specification for characters
+(http://www.w3.org/TR/REC-xml/#charsets).
 
 
 
@@ -82,8 +84,9 @@ The token used for deduplication of sent messages. If a message with a
 particular C<MessageDeduplicationId> is sent successfully, any messages
 sent with the same C<MessageDeduplicationId> are accepted successfully
 but aren't delivered during the 5-minute deduplication interval. For
-more information, see Exactly-Once Processing in the I<Amazon SQS
-Developer Guide>.
+more information, see Exactly-Once Processing
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 =over
 
@@ -145,8 +148,9 @@ C<A-Z>, C<0-9>) and punctuation
 (C<!"#$%&'()*+,-./:;E<lt>=E<gt>?@[\]^_`{|}~>).
 
 For best practices of using C<MessageDeduplicationId>, see Using the
-MessageDeduplicationId Property in the I<Amazon Simple Queue Service
-Developer Guide>.
+MessageDeduplicationId Property
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queue-recommendations.html#using-messagededuplicationid-property)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 
 
@@ -183,8 +187,9 @@ alphanumeric characters and punctuation
 C<(!"#$%&'()*+,-./:;E<lt>=E<gt>?@[\]^_`{|}~)>.
 
 For best practices of using C<MessageGroupId>, see Using the
-MessageGroupId Property in the I<Amazon Simple Queue Service Developer
-Guide>.
+MessageGroupId Property
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queue-recommendations.html#using-messagegroupid-property)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 C<MessageGroupId> is required for FIFO queues. You can't use it for
 Standard queues.
@@ -206,9 +211,9 @@ This class forms part of L<Paws>, documenting arguments for method SendMessage i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

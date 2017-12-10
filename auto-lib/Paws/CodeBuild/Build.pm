@@ -4,18 +4,21 @@ package Paws::CodeBuild::Build;
   has Artifacts => (is => 'ro', isa => 'Paws::CodeBuild::BuildArtifacts', request_name => 'artifacts', traits => ['NameInRequest']);
   has BuildComplete => (is => 'ro', isa => 'Bool', request_name => 'buildComplete', traits => ['NameInRequest']);
   has BuildStatus => (is => 'ro', isa => 'Str', request_name => 'buildStatus', traits => ['NameInRequest']);
+  has Cache => (is => 'ro', isa => 'Paws::CodeBuild::ProjectCache', request_name => 'cache', traits => ['NameInRequest']);
   has CurrentPhase => (is => 'ro', isa => 'Str', request_name => 'currentPhase', traits => ['NameInRequest']);
   has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
   has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', request_name => 'environment', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has Initiator => (is => 'ro', isa => 'Str', request_name => 'initiator', traits => ['NameInRequest']);
   has Logs => (is => 'ro', isa => 'Paws::CodeBuild::LogsLocation', request_name => 'logs', traits => ['NameInRequest']);
+  has NetworkInterface => (is => 'ro', isa => 'Paws::CodeBuild::NetworkInterface', request_name => 'networkInterface', traits => ['NameInRequest']);
   has Phases => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::BuildPhase]', request_name => 'phases', traits => ['NameInRequest']);
   has ProjectName => (is => 'ro', isa => 'Str', request_name => 'projectName', traits => ['NameInRequest']);
   has Source => (is => 'ro', isa => 'Paws::CodeBuild::ProjectSource', request_name => 'source', traits => ['NameInRequest']);
   has SourceVersion => (is => 'ro', isa => 'Str', request_name => 'sourceVersion', traits => ['NameInRequest']);
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
   has TimeoutInMinutes => (is => 'ro', isa => 'Int', request_name => 'timeoutInMinutes', traits => ['NameInRequest']);
+  has VpcConfig => (is => 'ro', isa => 'Paws::CodeBuild::VpcConfig', request_name => 'vpcConfig', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -35,7 +38,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeBuild::Build object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., TimeoutInMinutes => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., VpcConfig => $value  });
 
 =head3 Results returned from an API call
 
@@ -100,6 +103,11 @@ C<TIMED_OUT>: The build timed out.
 
 
 
+=head2 Cache => L<Paws::CodeBuild::ProjectCache>
+
+  Information about the cache for the build.
+
+
 =head2 CurrentPhase => Str
 
   The current build phase.
@@ -150,6 +158,11 @@ C<CodeBuild-Jenkins-Plugin>.
   Information about the build's logs in Amazon CloudWatch Logs.
 
 
+=head2 NetworkInterface => L<Paws::CodeBuild::NetworkInterface>
+
+  Describes a network interface.
+
+
 =head2 Phases => ArrayRef[L<Paws::CodeBuild::BuildPhase>]
 
   Information about all previous build phases that are completed and
@@ -182,6 +195,15 @@ information about any current build phase that is not yet complete.
 build if it does not get marked as completed.
 
 
+=head2 VpcConfig => L<Paws::CodeBuild::VpcConfig>
+
+  If your AWS CodeBuild project accesses resources in an Amazon VPC, you
+provide this parameter that identifies the VPC ID and the list of
+security group IDs and subnet IDs. The security groups and subnets must
+belong to the same VPC. You must provide at least one security group
+and one subnet ID.
+
+
 
 =head1 SEE ALSO
 
@@ -189,9 +211,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodeBuild
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -32,22 +32,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-Key-value pairs to associate with this provisioning. These tags are
-entirely discretionary and are propagated to the resources created in
-the provisioning.
+Information about a tag. A tag is a key-value pair. Tags are entirely
+discretionary and are propagated to the resources created when
+provisioning a product.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Key => Str
 
-  The C<ProvisioningArtifactParameter.TagKey> parameter from
-DescribeProvisioningParameters.
+  The tag key.
 
 
 =head2 B<REQUIRED> Value => Str
 
-  The desired value for this key.
+  The value for this key.
 
 
 
@@ -57,9 +56,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ServiceCa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

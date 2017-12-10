@@ -16,7 +16,7 @@ package Paws::EC2::CancelSpotFleetRequests;
 
 =head1 NAME
 
-Paws::EC2::CancelSpotFleetRequests - Arguments for method CancelSpotFleetRequests on Paws::EC2
+Paws::EC2::CancelSpotFleetRequests - Arguments for method CancelSpotFleetRequests on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -46,13 +46,13 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> SpotFleetRequestIds => ArrayRef[Str|Undef]
 
-The IDs of the Spot fleet requests.
+The IDs of the Spot Fleet requests.
 
 
 
 =head2 B<REQUIRED> TerminateInstances => Bool
 
-Indicates whether to terminate instances for a Spot fleet request if it
+Indicates whether to terminate instances for a Spot Fleet request if it
 is canceled successfully.
 
 
@@ -64,9 +64,9 @@ This class forms part of L<Paws>, documenting arguments for method CancelSpotFle
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -17,13 +17,13 @@ Paws::ServiceCatalog::SearchProductsAsAdminOutput
 
 =head2 NextPageToken => Str
 
-The page token to use to retrieve the next page of results for this
-operation. If there are no more pages, this value is null.
+The page token to use to retrieve the next set of results. If there are
+no additional results, this value is null.
 
 
 =head2 ProductViewDetails => ArrayRef[L<Paws::ServiceCatalog::ProductViewDetail>]
 
-List of detailed product view information objects.
+Information about the product views.
 
 
 =head2 _request_id => Str

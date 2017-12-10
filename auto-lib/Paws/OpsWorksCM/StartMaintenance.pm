@@ -1,6 +1,7 @@
 
 package Paws::OpsWorksCM::StartMaintenance;
   use Moose;
+  has EngineAttributes => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorksCM::EngineAttribute]');
   has ServerName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -14,7 +15,7 @@ package Paws::OpsWorksCM::StartMaintenance;
 
 =head1 NAME
 
-Paws::OpsWorksCM::StartMaintenance - Arguments for method StartMaintenance on Paws::OpsWorksCM
+Paws::OpsWorksCM::StartMaintenance - Arguments for method StartMaintenance on L<Paws::OpsWorksCM>
 
 =head1 DESCRIPTION
 
@@ -33,6 +34,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]
+
+Engine attributes that are specific to the server on which you want to
+run maintenance.
+
+
+
 =head2 B<REQUIRED> ServerName => Str
 
 The name of the server on which to run maintenance.
@@ -46,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method StartMaintena
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

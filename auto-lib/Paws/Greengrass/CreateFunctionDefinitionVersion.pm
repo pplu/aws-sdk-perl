@@ -1,8 +1,8 @@
 
 package Paws::Greengrass::CreateFunctionDefinitionVersion;
   use Moose;
-  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token' );
-  has FunctionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionDefinitionId' , required => 1);
+  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
+  has FunctionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionDefinitionId', required => 1);
   has Functions => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Function]');
 
   use MooseX::ClassAttribute;
@@ -11,14 +11,13 @@ package Paws::Greengrass::CreateFunctionDefinitionVersion;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/functions/{FunctionDefinitionId}/versions');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::CreateFunctionDefinitionVersionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Greengrass::CreateFunctionDefinitionVersion - Arguments for method CreateFunctionDefinitionVersion on Paws::Greengrass
+Paws::Greengrass::CreateFunctionDefinitionVersion - Arguments for method CreateFunctionDefinitionVersion on L<Paws::Greengrass>
 
 =head1 DESCRIPTION
 
@@ -62,9 +61,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateFunctio
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

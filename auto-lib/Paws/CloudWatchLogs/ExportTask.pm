@@ -62,8 +62,8 @@ exported.
 
 =head2 From => Int
 
-  The start time, expressed as the number of milliseconds since Jan 1,
-1970 00:00:00 UTC. Events with a timestamp prior to this time are not
+  The start time, expressed as the number of milliseconds after Jan 1,
+1970 00:00:00 UTC. Events with a time stamp before this time are not
 exported.
 
 
@@ -89,8 +89,8 @@ exported.
 
 =head2 To => Int
 
-  The end time, expressed as the number of milliseconds since Jan 1, 1970
-00:00:00 UTC. Events with a timestamp later than this time are not
+  The end time, expressed as the number of milliseconds after Jan 1, 1970
+00:00:00 UTC. Events with a time stamp later than this time are not
 exported.
 
 
@@ -101,9 +101,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudWatc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

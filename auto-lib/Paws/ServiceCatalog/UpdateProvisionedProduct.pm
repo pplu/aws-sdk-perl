@@ -21,7 +21,7 @@ package Paws::ServiceCatalog::UpdateProvisionedProduct;
 
 =head1 NAME
 
-Paws::ServiceCatalog::UpdateProvisionedProduct - Arguments for method UpdateProvisionedProduct on Paws::ServiceCatalog
+Paws::ServiceCatalog::UpdateProvisionedProduct - Arguments for method UpdateProvisionedProduct on L<Paws::ServiceCatalog>
 
 =head1 DESCRIPTION
 
@@ -42,66 +42,70 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AcceptLanguage => Str
 
-The language code to use for this operation. Supported language codes
-are as follows:
+The language code.
 
-"en" (English)
+=over
 
-"jp" (Japanese)
+=item *
 
-"zh" (Chinese)
+C<en> - English (default)
 
-If no code is specified, "en" is used as the default.
+=item *
+
+C<jp> - Japanese
+
+=item *
+
+C<zh> - Chinese
+
+=back
+
 
 
 
 =head2 PathId => Str
 
-The identifier of the path to use in the updated ProvisionedProduct
-object. This value is optional if the product has a default path, and
-is required if there is more than one path for the specified product.
+The new path identifier. This value is optional if the product has a
+default path, and required if the product has more than one path.
 
 
 
 =head2 ProductId => Str
 
-The identifier of the ProvisionedProduct object.
+The identifier of the provisioned product.
 
 
 
 =head2 ProvisionedProductId => Str
 
-The identifier of the ProvisionedProduct object to update. Specify
-either C<ProvisionedProductName> or C<ProvisionedProductId>, but not
-both.
+The identifier of the provisioned product. You cannot specify both
+C<ProvisionedProductName> and C<ProvisionedProductId>.
 
 
 
 =head2 ProvisionedProductName => Str
 
-The updated name of the ProvisionedProduct object. Specify either
-C<ProvisionedProductName> or C<ProvisionedProductId>, but not both.
+The updated name of the provisioned product. You cannot specify both
+C<ProvisionedProductName> and C<ProvisionedProductId>.
 
 
 
 =head2 ProvisioningArtifactId => Str
 
-The provisioning artifact identifier for this product. This is
-sometimes referred to as the product version.
+The identifier of the provisioning artifact.
 
 
 
 =head2 ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::UpdateProvisioningParameter>]
 
-A list of C<ProvisioningParameter> objects used to update the
-ProvisionedProduct object.
+The new parameters.
 
 
 
 =head2 B<REQUIRED> UpdateToken => Str
 
 The idempotency token that uniquely identifies the provisioning update
-request.
+rquest.
 
 
 
@@ -112,9 +116,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateProvisi
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

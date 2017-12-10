@@ -68,7 +68,8 @@ B<InitiateJob> request.
 vault inventory retrieval results. You use the marker in a new
 B<InitiateJob> request to obtain additional inventory items. If there
 are no more inventory items, this value is C<null>. For more
-information, see Range Inventory Retrieval.
+information, see Range Inventory Retrieval
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering).
 
 
 =head2 StartDate => Str
@@ -86,9 +87,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Glacier>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

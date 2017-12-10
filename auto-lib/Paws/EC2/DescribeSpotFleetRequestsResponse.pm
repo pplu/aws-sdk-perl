@@ -24,7 +24,7 @@ C<null> when there are no more results to return.
 
 =head2 B<REQUIRED> SpotFleetRequestConfigs => ArrayRef[L<Paws::EC2::SpotFleetRequestConfig>]
 
-Information about the configuration of your Spot fleet.
+Information about the configuration of your Spot Fleet.
 
 
 =head2 _request_id => Str

@@ -11,6 +11,7 @@ package Paws::CloudFormation::DescribeChangeSetOutput;
   has NextToken => (is => 'ro', isa => 'Str');
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
+  has RollbackConfiguration => (is => 'ro', isa => 'Paws::CloudFormation::RollbackConfiguration');
   has StackId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -86,7 +87,16 @@ that will be associated with the stack if you execute the change set.
 
 A list of C<Parameter> structures that describes the input parameters
 and their values used to create the change set. For more information,
-see the Parameter data type.
+see the Parameter
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html)
+data type.
+
+
+=head2 RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>
+
+The rollback triggers for AWS CloudFormation to monitor during stack
+creation and updating operations, and for the specified monitoring
+period afterwards.
 
 
 =head2 StackId => Str

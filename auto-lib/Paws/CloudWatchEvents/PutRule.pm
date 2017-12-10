@@ -19,7 +19,7 @@ package Paws::CloudWatchEvents::PutRule;
 
 =head1 NAME
 
-Paws::CloudWatchEvents::PutRule - Arguments for method PutRule on Paws::CloudWatchEvents
+Paws::CloudWatchEvents::PutRule - Arguments for method PutRule on L<Paws::CloudWatchEvents>
 
 =head1 DESCRIPTION
 
@@ -47,6 +47,7 @@ A description of the rule.
 =head2 EventPattern => Str
 
 The event pattern. For more information, see Events and Event Patterns
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html)
 in the I<Amazon CloudWatch Events User Guide>.
 
 
@@ -84,9 +85,9 @@ This class forms part of L<Paws>, documenting arguments for method PutRule in L<
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

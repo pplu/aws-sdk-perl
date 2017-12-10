@@ -50,7 +50,8 @@ type number. A value of C<-1> indicates all ICMP types.
 =head2 IpProtocol => Str
 
   The IP protocol name (for C<tcp>, C<udp>, and C<icmp>) or number (see
-Protocol Numbers).
+Protocol Numbers)
+(http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 
 
 =head2 IpRanges => ArrayRef[Str|Undef]
@@ -84,8 +85,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

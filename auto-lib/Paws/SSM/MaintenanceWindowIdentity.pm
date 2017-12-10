@@ -1,6 +1,7 @@
 package Paws::SSM::MaintenanceWindowIdentity;
   use Moose;
   has Cutoff => (is => 'ro', isa => 'Int');
+  has Description => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
   has Enabled => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str');
@@ -46,6 +47,11 @@ Information about the Maintenance Window.
 Systems Manager stops scheduling new tasks for execution.
 
 
+=head2 Description => Str
+
+  A description of the Maintenance Window.
+
+
 =head2 Duration => Int
 
   The duration of the Maintenance Window in hours.
@@ -73,9 +79,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

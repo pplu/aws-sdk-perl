@@ -87,9 +87,9 @@ The virtual tape is retrieved from the virtual tape shelf (VTS).
 
 =head2 TapeUsedInBytes => Int
 
-  The size, in bytes, of data written to the virtual tape.
+  The size, in bytes, of data stored on the virtual tape.
 
-This value is not available for tapes created prior to May,13 2015.
+This value is not available for tapes created prior to May 13, 2015.
 
 
 
@@ -99,9 +99,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::StorageGa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

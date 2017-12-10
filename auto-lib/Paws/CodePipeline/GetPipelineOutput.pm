@@ -1,6 +1,7 @@
 
 package Paws::CodePipeline::GetPipelineOutput;
   use Moose;
+  has Metadata => (is => 'ro', isa => 'Paws::CodePipeline::PipelineMetadata', traits => ['NameInRequest'], request_name => 'metadata' );
   has Pipeline => (is => 'ro', isa => 'Paws::CodePipeline::PipelineDeclaration', traits => ['NameInRequest'], request_name => 'pipeline' );
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -12,6 +13,12 @@ package Paws::CodePipeline::GetPipelineOutput;
 Paws::CodePipeline::GetPipelineOutput
 
 =head1 ATTRIBUTES
+
+
+=head2 Metadata => L<Paws::CodePipeline::PipelineMetadata>
+
+Represents the pipeline metadata information returned as part of the
+output of a GetPipeline action.
 
 
 =head2 Pipeline => L<Paws::CodePipeline::PipelineDeclaration>

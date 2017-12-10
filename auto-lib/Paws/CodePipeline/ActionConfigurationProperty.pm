@@ -60,7 +60,7 @@ displayed to users.
 
 =head2 Queryable => Bool
 
-  Indicates that the proprety will be used in conjunction with
+  Indicates that the property will be used in conjunction with
 PollForJobs. When creating a custom action, an action can have up to
 one queryable property. If it has one, that property must be both
 required and not secret.
@@ -99,9 +99,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodePipel
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

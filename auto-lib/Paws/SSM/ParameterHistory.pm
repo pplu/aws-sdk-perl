@@ -8,6 +8,7 @@ package Paws::SSM::ParameterHistory;
   has Name => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
+  has Version => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::ParameterHistory object:
 
-  $service_obj->Method(Att1 => { AllowedPattern => $value, ..., Value => $value  });
+  $service_obj->Method(Att1 => { AllowedPattern => $value, ..., Version => $value  });
 
 =head3 Results returned from an API call
 
@@ -86,6 +87,11 @@ parameter.
   The parameter value.
 
 
+=head2 Version => Int
+
+  The parameter version.
+
+
 
 =head1 SEE ALSO
 
@@ -93,9 +99,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

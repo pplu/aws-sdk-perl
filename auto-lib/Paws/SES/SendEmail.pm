@@ -22,7 +22,7 @@ package Paws::SES::SendEmail;
 
 =head1 NAME
 
-Paws::SES::SendEmail - Arguments for method SendEmail on Paws::SES
+Paws::SES::SendEmail - Arguments for method SendEmail on L<Paws::SES>
 
 =head1 DESCRIPTION
 
@@ -69,9 +69,9 @@ replies to the message, each reply-to address will receive the reply.
 
 =head2 ReturnPath => Str
 
-The email address to which bounces and complaints are to be forwarded
-when feedback forwarding is enabled. If the message cannot be delivered
-to the recipient, then an error message will be returned from the
+The email address that bounces and complaints will be forwarded to when
+feedback forwarding is enabled. If the message cannot be delivered to
+the recipient, then an error message will be returned from the
 recipient's ISP; this message will then be forwarded to the email
 address specified by the C<ReturnPath> parameter. The C<ReturnPath>
 parameter is never overwritten. This email address must be either
@@ -95,7 +95,8 @@ C<arn:aws:ses:us-east-1:123456789012:identity/example.com>, and the
 C<ReturnPath> to be C<feedback@example.com>.
 
 For more information about sending authorization, see the Amazon SES
-Developer Guide.
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
 
 
@@ -104,18 +105,28 @@ Developer Guide.
 The email address that is sending the email. This email address must be
 either individually verified with Amazon SES, or from a domain that has
 been verified with Amazon SES. For information about verifying
-identities, see the Amazon SES Developer Guide.
+identities, see the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html).
 
 If you are sending on behalf of another user and have been permitted to
 do so by a sending authorization policy, then you must also specify the
 C<SourceArn> parameter. For more information about sending
-authorization, see the Amazon SES Developer Guide.
+authorization, see the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
-In all cases, the email address must be 7-bit ASCII. If the text must
-contain any other characters, then you must use MIME encoded-word
-syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax
-uses the following form: C<=?charset?encoding?encoded-text?=>. For more
-information, see RFC 2047.
+Amazon SES does not support the SMTPUTF8 extension, as described in
+RFC6531 (https://tools.ietf.org/html/rfc6531). For this reason, the
+I<local part> of a source email address (the part of the email address
+that precedes the @ sign) may only contain 7-bit ASCII characters
+(https://en.wikipedia.org/wiki/Email_address#Local-part). If the
+I<domain part> of an address (the part after the @ sign) contains
+non-ASCII characters, they must be encoded using Punycode, as described
+in RFC3492 (https://tools.ietf.org/html/rfc3492.html). The sender name
+(also known as the I<friendly name>) may contain non-ASCII characters.
+These characters must be encoded using MIME encoded-word syntax, as
+described in RFC 2047 (https://tools.ietf.org/html/rfc2047). MIME
+encoded-word syntax uses the following form:
+C<=?charset?encoding?encoded-text?=>.
 
 
 
@@ -134,7 +145,8 @@ C<arn:aws:ses:us-east-1:123456789012:identity/example.com>, and the
 C<Source> to be C<user@example.com>.
 
 For more information about sending authorization, see the Amazon SES
-Developer Guide.
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
 
 
@@ -154,9 +166,9 @@ This class forms part of L<Paws>, documenting arguments for method SendEmail in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

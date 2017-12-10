@@ -18,17 +18,17 @@ Paws::ServiceCatalog::DescribePortfolioOutput
 
 =head2 PortfolioDetail => L<Paws::ServiceCatalog::PortfolioDetail>
 
-Detailed portfolio information.
+Information about the portfolio.
 
 
 =head2 TagOptions => ArrayRef[L<Paws::ServiceCatalog::TagOptionDetail>]
 
-TagOptions associated with the portfolio.
+Information about the TagOptions associated with the portfolio.
 
 
 =head2 Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
 
-Tags associated with the portfolio.
+Information about the tags associated with the portfolio.
 
 
 =head2 _request_id => Str

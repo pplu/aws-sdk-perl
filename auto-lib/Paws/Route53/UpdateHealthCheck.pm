@@ -14,6 +14,7 @@ package Paws::Route53::UpdateHealthCheck;
   has IPAddress => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ResetElements => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ResourcePath => (is => 'ro', isa => 'Str');
   has SearchString => (is => 'ro', isa => 'Str');
 
@@ -31,7 +32,7 @@ package Paws::Route53::UpdateHealthCheck;
 
 =head1 NAME
 
-Paws::Route53::UpdateHealthCheck - Arguments for method UpdateHealthCheck on Paws::Route53
+Paws::Route53::UpdateHealthCheck - Arguments for method UpdateHealthCheck on L<Paws::Route53>
 
 =head1 DESCRIPTION
 
@@ -97,8 +98,9 @@ message.
 The number of consecutive health checks that an endpoint must pass or
 fail for Amazon Route 53 to change the current status of the endpoint
 from unhealthy to healthy or vice versa. For more information, see How
-Amazon Route 53 Determines Whether an Endpoint Is Healthy in the
-I<Amazon Route 53 Developer Guide>.
+Amazon Route 53 Determines Whether an Endpoint Is Healthy
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 If you don't specify a value for C<FailureThreshold>, the default value
 is three health checks.
@@ -331,13 +333,15 @@ applicable documentation:
 
 =item *
 
-Linux: Elastic IP Addresses (EIP) in the I<Amazon EC2 User Guide for
-Linux Instances>
+Linux: Elastic IP Addresses (EIP)
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
+in the I<Amazon EC2 User Guide for Linux Instances>
 
 =item *
 
-Windows: Elastic IP Addresses (EIP) in the I<Amazon EC2 User Guide for
-Windows Instances>
+Windows: Elastic IP Addresses (EIP)
+(http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html)
+in the I<Amazon EC2 User Guide for Windows Instances>
 
 =back
 
@@ -358,14 +362,17 @@ create health checks, see the following documents:
 =item *
 
 RFC 5735, Special Use IPv4 Addresses
+(https://tools.ietf.org/html/rfc5735)
 
 =item *
 
 RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space
+(https://tools.ietf.org/html/rfc6598)
 
 =item *
 
 RFC 5156, Special-Use IPv6 Addresses
+(https://tools.ietf.org/html/rfc5156)
 
 =back
 
@@ -384,6 +391,39 @@ health checks.
 A complex type that contains one C<Region> element for each region that
 you want Amazon Route 53 health checkers to check the specified
 endpoint from.
+
+
+
+=head2 ResetElements => ArrayRef[Str|Undef]
+
+A complex type that contains one C<ResettableElementName> element for
+each element that you want to reset to the default value. Valid values
+for C<ResettableElementName> include the following:
+
+=over
+
+=item *
+
+C<ChildHealthChecks>: Amazon Route 53 resets
+HealthCheckConfig$ChildHealthChecks to null.
+
+=item *
+
+C<FullyQualifiedDomainName>: Amazon Route 53 resets
+HealthCheckConfig$FullyQualifiedDomainName to null.
+
+=item *
+
+C<Regions>: Amazon Route 53 resets the HealthCheckConfig$Regions list
+to the default set of regions.
+
+=item *
+
+C<ResourcePath>: Amazon Route 53 resets HealthCheckConfig$ResourcePath
+to null.
+
+=back
+
 
 
 
@@ -415,9 +455,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateHealthC
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

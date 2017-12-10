@@ -10,7 +10,7 @@ package Paws::CloudDirectory;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
   sub AddFacetToObject {
@@ -136,6 +136,11 @@ package Paws::CloudDirectory;
   sub EnableDirectory {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudDirectory::EnableDirectory', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetAppliedSchemaVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudDirectory::GetAppliedSchemaVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetDirectory {
@@ -308,10 +313,20 @@ package Paws::CloudDirectory;
     my $call_object = $self->new_with_coercions('Paws::CloudDirectory::UpdateTypedLinkFacet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpgradeAppliedSchema {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudDirectory::UpgradeAppliedSchema', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpgradePublishedSchema {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudDirectory::UpgradePublishedSchema', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/AddFacetToObject ApplySchema AttachObject AttachPolicy AttachToIndex AttachTypedLink BatchRead BatchWrite CreateDirectory CreateFacet CreateIndex CreateObject CreateSchema CreateTypedLinkFacet DeleteDirectory DeleteFacet DeleteObject DeleteSchema DeleteTypedLinkFacet DetachFromIndex DetachObject DetachPolicy DetachTypedLink DisableDirectory EnableDirectory GetDirectory GetFacet GetObjectInformation GetSchemaAsJson GetTypedLinkFacetInformation ListAppliedSchemaArns ListAttachedIndices ListDevelopmentSchemaArns ListDirectories ListFacetAttributes ListFacetNames ListIncomingTypedLinks ListIndex ListObjectAttributes ListObjectChildren ListObjectParentPaths ListObjectParents ListObjectPolicies ListOutgoingTypedLinks ListPolicyAttachments ListPublishedSchemaArns ListTagsForResource ListTypedLinkFacetAttributes ListTypedLinkFacetNames LookupPolicy PublishSchema PutSchemaFromJson RemoveFacetFromObject TagResource UntagResource UpdateFacet UpdateObjectAttributes UpdateSchema UpdateTypedLinkFacet / }
+  sub operations { qw/AddFacetToObject ApplySchema AttachObject AttachPolicy AttachToIndex AttachTypedLink BatchRead BatchWrite CreateDirectory CreateFacet CreateIndex CreateObject CreateSchema CreateTypedLinkFacet DeleteDirectory DeleteFacet DeleteObject DeleteSchema DeleteTypedLinkFacet DetachFromIndex DetachObject DetachPolicy DetachTypedLink DisableDirectory EnableDirectory GetAppliedSchemaVersion GetDirectory GetFacet GetObjectInformation GetSchemaAsJson GetTypedLinkFacetInformation ListAppliedSchemaArns ListAttachedIndices ListDevelopmentSchemaArns ListDirectories ListFacetAttributes ListFacetNames ListIncomingTypedLinks ListIndex ListObjectAttributes ListObjectChildren ListObjectParentPaths ListObjectParents ListObjectPolicies ListOutgoingTypedLinks ListPolicyAttachments ListPublishedSchemaArns ListTagsForResource ListTypedLinkFacetAttributes ListTypedLinkFacetNames LookupPolicy PublishSchema PutSchemaFromJson RemoveFacetFromObject TagResource UntagResource UpdateFacet UpdateObjectAttributes UpdateSchema UpdateTypedLinkFacet UpgradeAppliedSchema UpgradePublishedSchema / }
 
 1;
 
@@ -346,8 +361,10 @@ simplifies the development and management of cloud-scale web, mobile,
 and IoT applications. This guide describes the Cloud Directory
 operations that you can call programmatically and includes detailed
 information on data types and errors. For information about AWS
-Directory Services features, see AWS Directory Service and the AWS
-Directory Service Administration Guide.
+Directory Services features, see AWS Directory Service
+(https://aws.amazon.com/directoryservice/) and the AWS Directory
+Service Administration Guide
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html).
 
 =head1 METHODS
 
@@ -357,7 +374,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::AddFacetToObjec
 
 Returns: a L<Paws::CloudDirectory::AddFacetToObjectResponse> instance
 
-  Adds a new Facet to an object.
+Adds a new Facet to an object.
 
 
 =head2 ApplySchema(DirectoryArn => Str, PublishedSchemaArn => Str)
@@ -366,8 +383,9 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ApplySchema>
 
 Returns: a L<Paws::CloudDirectory::ApplySchemaResponse> instance
 
-  Copies the input published schema into the Directory with the same name
-and version as that of the published schema .
+Copies the input published schema, at the specified version, into the
+Directory with the same name and version as that of the published
+schema.
 
 
 =head2 AttachObject(ChildReference => L<Paws::CloudDirectory::ObjectReference>, DirectoryArn => Str, LinkName => Str, ParentReference => L<Paws::CloudDirectory::ObjectReference>)
@@ -376,7 +394,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::AttachObject>
 
 Returns: a L<Paws::CloudDirectory::AttachObjectResponse> instance
 
-  Attaches an existing object to another object. An object can be
+Attaches an existing object to another object. An object can be
 accessed in two ways:
 
 =over
@@ -399,7 +417,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::AttachPolicy>
 
 Returns: a L<Paws::CloudDirectory::AttachPolicyResponse> instance
 
-  Attaches a policy object to a regular object. An object can have a
+Attaches a policy object to a regular object. An object can have a
 limited number of attached policies.
 
 
@@ -409,7 +427,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::AttachToIndex>
 
 Returns: a L<Paws::CloudDirectory::AttachToIndexResponse> instance
 
-  Attaches the specified object to the specified index.
+Attaches the specified object to the specified index.
 
 
 =head2 AttachTypedLink(Attributes => ArrayRef[L<Paws::CloudDirectory::AttributeNameAndValue>], DirectoryArn => Str, SourceObjectReference => L<Paws::CloudDirectory::ObjectReference>, TargetObjectReference => L<Paws::CloudDirectory::ObjectReference>, TypedLinkFacet => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>)
@@ -418,8 +436,9 @@ Each argument is described in detail in: L<Paws::CloudDirectory::AttachTypedLink
 
 Returns: a L<Paws::CloudDirectory::AttachTypedLinkResponse> instance
 
-  Attaches a typed link to a specified source and target object. For more
-information, see Typed link.
+Attaches a typed link to a specified source and target object. For more
+information, see Typed link
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
 =head2 BatchRead(DirectoryArn => Str, Operations => ArrayRef[L<Paws::CloudDirectory::BatchReadOperation>], [ConsistencyLevel => Str])
@@ -428,7 +447,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::BatchRead>
 
 Returns: a L<Paws::CloudDirectory::BatchReadResponse> instance
 
-  Performs all the read operations in a batch.
+Performs all the read operations in a batch.
 
 
 =head2 BatchWrite(DirectoryArn => Str, Operations => ArrayRef[L<Paws::CloudDirectory::BatchWriteOperation>])
@@ -437,8 +456,8 @@ Each argument is described in detail in: L<Paws::CloudDirectory::BatchWrite>
 
 Returns: a L<Paws::CloudDirectory::BatchWriteResponse> instance
 
-  Performs all the write operations in a batch. Either all the operations
-succeed or none. Batch writes supports only object-related operations.
+Performs all the write operations in a batch. Either all the operations
+succeed or none.
 
 
 =head2 CreateDirectory(Name => Str, SchemaArn => Str)
@@ -447,7 +466,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::CreateDirectory
 
 Returns: a L<Paws::CloudDirectory::CreateDirectoryResponse> instance
 
-  Creates a Directory by copying the published schema into the directory.
+Creates a Directory by copying the published schema into the directory.
 A directory cannot be created without a schema.
 
 
@@ -457,7 +476,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::CreateFacet>
 
 Returns: a L<Paws::CloudDirectory::CreateFacetResponse> instance
 
-  Creates a new Facet in a schema. Facet creation is allowed only in
+Creates a new Facet in a schema. Facet creation is allowed only in
 development or applied schemas.
 
 
@@ -467,7 +486,9 @@ Each argument is described in detail in: L<Paws::CloudDirectory::CreateIndex>
 
 Returns: a L<Paws::CloudDirectory::CreateIndexResponse> instance
 
-  Creates an index object. See Indexing for more information.
+Creates an index object. See Indexing
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_indexing.html)
+for more information.
 
 
 =head2 CreateObject(DirectoryArn => Str, SchemaFacets => ArrayRef[L<Paws::CloudDirectory::SchemaFacet>], [LinkName => Str, ObjectAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>], ParentReference => L<Paws::CloudDirectory::ObjectReference>])
@@ -476,7 +497,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::CreateObject>
 
 Returns: a L<Paws::CloudDirectory::CreateObjectResponse> instance
 
-  Creates an object in a Directory. Additionally attaches the object to a
+Creates an object in a Directory. Additionally attaches the object to a
 parent, if a parent reference and C<LinkName> is specified. An object
 is simply a collection of Facet attributes. You can also use this API
 call to create a policy object, if the facet from which you create the
@@ -489,7 +510,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::CreateSchema>
 
 Returns: a L<Paws::CloudDirectory::CreateSchemaResponse> instance
 
-  Creates a new schema in a development state. A schema can exist in
+Creates a new schema in a development state. A schema can exist in
 three phases:
 
 =over
@@ -522,7 +543,8 @@ Each argument is described in detail in: L<Paws::CloudDirectory::CreateTypedLink
 
 Returns: a L<Paws::CloudDirectory::CreateTypedLinkFacetResponse> instance
 
-  Creates a TypedLinkFacet. For more information, see Typed link.
+Creates a TypedLinkFacet. For more information, see Typed link
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
 =head2 DeleteDirectory(DirectoryArn => Str)
@@ -531,7 +553,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::DeleteDirectory
 
 Returns: a L<Paws::CloudDirectory::DeleteDirectoryResponse> instance
 
-  Deletes a directory. Only disabled directories can be deleted. A
+Deletes a directory. Only disabled directories can be deleted. A
 deleted directory cannot be undone. Exercise extreme caution when
 deleting directories.
 
@@ -542,7 +564,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::DeleteFacet>
 
 Returns: a L<Paws::CloudDirectory::DeleteFacetResponse> instance
 
-  Deletes a given Facet. All attributes and Rules that are associated
+Deletes a given Facet. All attributes and Rules that are associated
 with the facet will be deleted. Only development schema facets are
 allowed deletion.
 
@@ -553,7 +575,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::DeleteObject>
 
 Returns: a L<Paws::CloudDirectory::DeleteObjectResponse> instance
 
-  Deletes an object and its associated attributes. Only objects with no
+Deletes an object and its associated attributes. Only objects with no
 children and no parents can be deleted.
 
 
@@ -563,7 +585,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::DeleteSchema>
 
 Returns: a L<Paws::CloudDirectory::DeleteSchemaResponse> instance
 
-  Deletes a given schema. Schemas in a development and published state
+Deletes a given schema. Schemas in a development and published state
 can only be deleted.
 
 
@@ -573,7 +595,8 @@ Each argument is described in detail in: L<Paws::CloudDirectory::DeleteTypedLink
 
 Returns: a L<Paws::CloudDirectory::DeleteTypedLinkFacetResponse> instance
 
-  Deletes a TypedLinkFacet. For more information, see Typed link.
+Deletes a TypedLinkFacet. For more information, see Typed link
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
 =head2 DetachFromIndex(DirectoryArn => Str, IndexReference => L<Paws::CloudDirectory::ObjectReference>, TargetReference => L<Paws::CloudDirectory::ObjectReference>)
@@ -582,7 +605,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::DetachFromIndex
 
 Returns: a L<Paws::CloudDirectory::DetachFromIndexResponse> instance
 
-  Detaches the specified object from the specified index.
+Detaches the specified object from the specified index.
 
 
 =head2 DetachObject(DirectoryArn => Str, LinkName => Str, ParentReference => L<Paws::CloudDirectory::ObjectReference>)
@@ -591,7 +614,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::DetachObject>
 
 Returns: a L<Paws::CloudDirectory::DetachObjectResponse> instance
 
-  Detaches a given object from the parent object. The object that is to
+Detaches a given object from the parent object. The object that is to
 be detached from the parent is specified by the link name.
 
 
@@ -601,7 +624,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::DetachPolicy>
 
 Returns: a L<Paws::CloudDirectory::DetachPolicyResponse> instance
 
-  Detaches a policy from an object.
+Detaches a policy from an object.
 
 
 =head2 DetachTypedLink(DirectoryArn => Str, TypedLinkSpecifier => L<Paws::CloudDirectory::TypedLinkSpecifier>)
@@ -610,8 +633,9 @@ Each argument is described in detail in: L<Paws::CloudDirectory::DetachTypedLink
 
 Returns: nothing
 
-  Detaches a typed link from a specified source and target object. For
-more information, see Typed link.
+Detaches a typed link from a specified source and target object. For
+more information, see Typed link
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
 =head2 DisableDirectory(DirectoryArn => Str)
@@ -620,7 +644,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::DisableDirector
 
 Returns: a L<Paws::CloudDirectory::DisableDirectoryResponse> instance
 
-  Disables the specified directory. Disabled directories cannot be read
+Disables the specified directory. Disabled directories cannot be read
 or written to. Only enabled directories can be disabled. Disabled
 directories may be reenabled.
 
@@ -631,8 +655,18 @@ Each argument is described in detail in: L<Paws::CloudDirectory::EnableDirectory
 
 Returns: a L<Paws::CloudDirectory::EnableDirectoryResponse> instance
 
-  Enables the specified directory. Only disabled directories can be
+Enables the specified directory. Only disabled directories can be
 enabled. Once enabled, the directory can then be read and written to.
+
+
+=head2 GetAppliedSchemaVersion(SchemaArn => Str)
+
+Each argument is described in detail in: L<Paws::CloudDirectory::GetAppliedSchemaVersion>
+
+Returns: a L<Paws::CloudDirectory::GetAppliedSchemaVersionResponse> instance
+
+Returns current applied schema version ARN, including the minor version
+in use.
 
 
 =head2 GetDirectory(DirectoryArn => Str)
@@ -641,7 +675,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::GetDirectory>
 
 Returns: a L<Paws::CloudDirectory::GetDirectoryResponse> instance
 
-  Retrieves metadata about a directory.
+Retrieves metadata about a directory.
 
 
 =head2 GetFacet(Name => Str, SchemaArn => Str)
@@ -650,7 +684,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::GetFacet>
 
 Returns: a L<Paws::CloudDirectory::GetFacetResponse> instance
 
-  Gets details of the Facet, such as facet name, attributes, Rules, or
+Gets details of the Facet, such as facet name, attributes, Rules, or
 C<ObjectType>. You can call this on all kinds of schema facets --
 published, development, or applied.
 
@@ -661,7 +695,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::GetObjectInform
 
 Returns: a L<Paws::CloudDirectory::GetObjectInformationResponse> instance
 
-  Retrieves metadata about an object.
+Retrieves metadata about an object.
 
 
 =head2 GetSchemaAsJson(SchemaArn => Str)
@@ -670,7 +704,8 @@ Each argument is described in detail in: L<Paws::CloudDirectory::GetSchemaAsJson
 
 Returns: a L<Paws::CloudDirectory::GetSchemaAsJsonResponse> instance
 
-  Retrieves a JSON representation of the schema. See JSON Schema Format
+Retrieves a JSON representation of the schema. See JSON Schema Format
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_schemas.html#jsonformat)
 for more information.
 
 
@@ -680,17 +715,19 @@ Each argument is described in detail in: L<Paws::CloudDirectory::GetTypedLinkFac
 
 Returns: a L<Paws::CloudDirectory::GetTypedLinkFacetInformationResponse> instance
 
-  Returns the identity attribute order for a specific TypedLinkFacet. For
-more information, see Typed link.
+Returns the identity attribute order for a specific TypedLinkFacet. For
+more information, see Typed link
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
-=head2 ListAppliedSchemaArns(DirectoryArn => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListAppliedSchemaArns(DirectoryArn => Str, [MaxResults => Int, NextToken => Str, SchemaArn => Str])
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListAppliedSchemaArns>
 
 Returns: a L<Paws::CloudDirectory::ListAppliedSchemaArnsResponse> instance
 
-  Lists schemas applied to a directory.
+Lists schema major versions applied to a directory. If C<SchemaArn> is
+provided, lists the minor version.
 
 
 =head2 ListAttachedIndices(DirectoryArn => Str, TargetReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
@@ -699,7 +736,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListAttachedInd
 
 Returns: a L<Paws::CloudDirectory::ListAttachedIndicesResponse> instance
 
-  Lists indices attached to an object.
+Lists indices attached to the specified object.
 
 
 =head2 ListDevelopmentSchemaArns([MaxResults => Int, NextToken => Str])
@@ -708,7 +745,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListDevelopment
 
 Returns: a L<Paws::CloudDirectory::ListDevelopmentSchemaArnsResponse> instance
 
-  Retrieves each Amazon Resource Name (ARN) of schemas in the development
+Retrieves each Amazon Resource Name (ARN) of schemas in the development
 state.
 
 
@@ -718,7 +755,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListDirectories
 
 Returns: a L<Paws::CloudDirectory::ListDirectoriesResponse> instance
 
-  Lists directories created within an account.
+Lists directories created within an account.
 
 
 =head2 ListFacetAttributes(Name => Str, SchemaArn => Str, [MaxResults => Int, NextToken => Str])
@@ -727,7 +764,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListFacetAttrib
 
 Returns: a L<Paws::CloudDirectory::ListFacetAttributesResponse> instance
 
-  Retrieves attributes attached to the facet.
+Retrieves attributes attached to the facet.
 
 
 =head2 ListFacetNames(SchemaArn => Str, [MaxResults => Int, NextToken => Str])
@@ -736,7 +773,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListFacetNames>
 
 Returns: a L<Paws::CloudDirectory::ListFacetNamesResponse> instance
 
-  Retrieves the names of facets that exist in a schema.
+Retrieves the names of facets that exist in a schema.
 
 
 =head2 ListIncomingTypedLinks(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FilterAttributeRanges => ArrayRef[L<Paws::CloudDirectory::TypedLinkAttributeRange>], FilterTypedLink => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>, MaxResults => Int, NextToken => Str])
@@ -745,9 +782,10 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListIncomingTyp
 
 Returns: a L<Paws::CloudDirectory::ListIncomingTypedLinksResponse> instance
 
-  Returns a paginated list of all the incoming TypedLinkSpecifier
+Returns a paginated list of all the incoming TypedLinkSpecifier
 information for an object. It also supports filtering by typed link
-facet and identity attributes. For more information, see Typed link.
+facet and identity attributes. For more information, see Typed link
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
 =head2 ListIndex(DirectoryArn => Str, IndexReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str, RangesOnIndexedValues => ArrayRef[L<Paws::CloudDirectory::ObjectAttributeRange>]])
@@ -756,7 +794,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListIndex>
 
 Returns: a L<Paws::CloudDirectory::ListIndexResponse> instance
 
-  Lists objects attached to the specified index.
+Lists objects and indexed values attached to the index.
 
 
 =head2 ListObjectAttributes(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FacetFilter => L<Paws::CloudDirectory::SchemaFacet>, MaxResults => Int, NextToken => Str])
@@ -765,7 +803,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListObjectAttri
 
 Returns: a L<Paws::CloudDirectory::ListObjectAttributesResponse> instance
 
-  Lists all attributes that are associated with an object.
+Lists all attributes that are associated with an object.
 
 
 =head2 ListObjectChildren(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
@@ -774,7 +812,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListObjectChild
 
 Returns: a L<Paws::CloudDirectory::ListObjectChildrenResponse> instance
 
-  Returns a paginated list of child objects that are associated with a
+Returns a paginated list of child objects that are associated with a
 given object.
 
 
@@ -784,9 +822,10 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListObjectParen
 
 Returns: a L<Paws::CloudDirectory::ListObjectParentPathsResponse> instance
 
-  Retrieves all available parent paths for any object type such as node,
+Retrieves all available parent paths for any object type such as node,
 leaf node, policy node, and index node objects. For more information
-about objects, see Directory Structure.
+about objects, see Directory Structure
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#dirstructure).
 
 Use this API to evaluate all parents for an object. The call returns
 all objects from the root of the directory up to the requested object.
@@ -803,7 +842,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListObjectParen
 
 Returns: a L<Paws::CloudDirectory::ListObjectParentsResponse> instance
 
-  Lists parent objects that are associated with a given object in
+Lists parent objects that are associated with a given object in
 pagination fashion.
 
 
@@ -813,7 +852,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListObjectPolic
 
 Returns: a L<Paws::CloudDirectory::ListObjectPoliciesResponse> instance
 
-  Returns policies attached to an object in pagination fashion.
+Returns policies attached to an object in pagination fashion.
 
 
 =head2 ListOutgoingTypedLinks(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FilterAttributeRanges => ArrayRef[L<Paws::CloudDirectory::TypedLinkAttributeRange>], FilterTypedLink => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>, MaxResults => Int, NextToken => Str])
@@ -822,9 +861,10 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListOutgoingTyp
 
 Returns: a L<Paws::CloudDirectory::ListOutgoingTypedLinksResponse> instance
 
-  Returns a paginated list of all the outgoing TypedLinkSpecifier
+Returns a paginated list of all the outgoing TypedLinkSpecifier
 information for an object. It also supports filtering by typed link
-facet and identity attributes. For more information, see Typed link.
+facet and identity attributes. For more information, see Typed link
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
 =head2 ListPolicyAttachments(DirectoryArn => Str, PolicyReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
@@ -833,17 +873,18 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListPolicyAttac
 
 Returns: a L<Paws::CloudDirectory::ListPolicyAttachmentsResponse> instance
 
-  Returns all of the C<ObjectIdentifiers> to which a given policy is
+Returns all of the C<ObjectIdentifiers> to which a given policy is
 attached.
 
 
-=head2 ListPublishedSchemaArns([MaxResults => Int, NextToken => Str])
+=head2 ListPublishedSchemaArns([MaxResults => Int, NextToken => Str, SchemaArn => Str])
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListPublishedSchemaArns>
 
 Returns: a L<Paws::CloudDirectory::ListPublishedSchemaArnsResponse> instance
 
-  Retrieves each published schema Amazon Resource Name (ARN).
+Lists schema major versions for a published schema. If C<SchemaArn> is
+provided, lists the minor version.
 
 
 =head2 ListTagsForResource(ResourceArn => Str, [MaxResults => Int, NextToken => Str])
@@ -852,7 +893,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListTagsForReso
 
 Returns: a L<Paws::CloudDirectory::ListTagsForResourceResponse> instance
 
-  Returns tags for a resource. Tagging is currently supported only for
+Returns tags for a resource. Tagging is currently supported only for
 directories with a limit of 50 tags per directory. All 50 tags are
 returned for a given directory with this API call.
 
@@ -863,8 +904,9 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListTypedLinkFa
 
 Returns: a L<Paws::CloudDirectory::ListTypedLinkFacetAttributesResponse> instance
 
-  Returns a paginated list of all attribute definitions for a particular
-TypedLinkFacet. For more information, see Typed link.
+Returns a paginated list of all attribute definitions for a particular
+TypedLinkFacet. For more information, see Typed link
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
 =head2 ListTypedLinkFacetNames(SchemaArn => Str, [MaxResults => Int, NextToken => Str])
@@ -873,8 +915,9 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListTypedLinkFa
 
 Returns: a L<Paws::CloudDirectory::ListTypedLinkFacetNamesResponse> instance
 
-  Returns a paginated list of C<TypedLink> facet names for a particular
-schema. For more information, see Typed link.
+Returns a paginated list of C<TypedLink> facet names for a particular
+schema. For more information, see Typed link
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
 =head2 LookupPolicy(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [MaxResults => Int, NextToken => Str])
@@ -883,25 +926,24 @@ Each argument is described in detail in: L<Paws::CloudDirectory::LookupPolicy>
 
 Returns: a L<Paws::CloudDirectory::LookupPolicyResponse> instance
 
-  Lists all policies from the root of the Directory to the object
+Lists all policies from the root of the Directory to the object
 specified. If there are no policies present, an empty list is returned.
 If policies are present, and if some objects don't have the policies
 attached, it returns the C<ObjectIdentifier> for such objects. If
 policies are present, it returns C<ObjectIdentifier>, C<policyId>, and
 C<policyType>. Paths that don't lead to the root from the target object
-are ignored. For more information, see Policies.
+are ignored. For more information, see Policies
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies).
 
 
-=head2 PublishSchema(DevelopmentSchemaArn => Str, Version => Str, [Name => Str])
+=head2 PublishSchema(DevelopmentSchemaArn => Str, Version => Str, [MinorVersion => Str, Name => Str])
 
 Each argument is described in detail in: L<Paws::CloudDirectory::PublishSchema>
 
 Returns: a L<Paws::CloudDirectory::PublishSchemaResponse> instance
 
-  Publishes a development schema with a version. If description and
-attributes are specified, C<PublishSchema> overrides the development
-schema description and attributes. If not, the development schema
-description and attributes are used.
+Publishes a development schema with a major version and a recommended
+minor version.
 
 
 =head2 PutSchemaFromJson(Document => Str, SchemaArn => Str)
@@ -910,8 +952,10 @@ Each argument is described in detail in: L<Paws::CloudDirectory::PutSchemaFromJs
 
 Returns: a L<Paws::CloudDirectory::PutSchemaFromJsonResponse> instance
 
-  Allows a schema to be updated using JSON upload. Only available for
-development schemas. See JSON Schema Format for more information.
+Allows a schema to be updated using JSON upload. Only available for
+development schemas. See JSON Schema Format
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_schemas.html#jsonformat)
+for more information.
 
 
 =head2 RemoveFacetFromObject(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, SchemaFacet => L<Paws::CloudDirectory::SchemaFacet>)
@@ -920,7 +964,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::RemoveFacetFrom
 
 Returns: a L<Paws::CloudDirectory::RemoveFacetFromObjectResponse> instance
 
-  Removes the specified facet from the specified object.
+Removes the specified facet from the specified object.
 
 
 =head2 TagResource(ResourceArn => Str, Tags => ArrayRef[L<Paws::CloudDirectory::Tag>])
@@ -929,7 +973,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::TagResource>
 
 Returns: a L<Paws::CloudDirectory::TagResourceResponse> instance
 
-  An API operation for adding tags to a resource.
+An API operation for adding tags to a resource.
 
 
 =head2 UntagResource(ResourceArn => Str, TagKeys => ArrayRef[Str|Undef])
@@ -938,7 +982,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::UntagResource>
 
 Returns: a L<Paws::CloudDirectory::UntagResourceResponse> instance
 
-  An API operation for removing tags from a resource.
+An API operation for removing tags from a resource.
 
 
 =head2 UpdateFacet(Name => Str, SchemaArn => Str, [AttributeUpdates => ArrayRef[L<Paws::CloudDirectory::FacetAttributeUpdate>], ObjectType => Str])
@@ -947,7 +991,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::UpdateFacet>
 
 Returns: a L<Paws::CloudDirectory::UpdateFacetResponse> instance
 
-  Does the following:
+Does the following:
 
 =over
 
@@ -973,7 +1017,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::UpdateObjectAtt
 
 Returns: a L<Paws::CloudDirectory::UpdateObjectAttributesResponse> instance
 
-  Updates a given object's attributes.
+Updates a given object's attributes.
 
 
 =head2 UpdateSchema(Name => Str, SchemaArn => Str)
@@ -982,7 +1026,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::UpdateSchema>
 
 Returns: a L<Paws::CloudDirectory::UpdateSchemaResponse> instance
 
-  Updates the schema name with a new name. Only development schema names
+Updates the schema name with a new name. Only development schema names
 can be updated.
 
 
@@ -992,7 +1036,33 @@ Each argument is described in detail in: L<Paws::CloudDirectory::UpdateTypedLink
 
 Returns: a L<Paws::CloudDirectory::UpdateTypedLinkFacetResponse> instance
 
-  Updates a TypedLinkFacet. For more information, see Typed link.
+Updates a TypedLinkFacet. For more information, see Typed link
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+
+
+=head2 UpgradeAppliedSchema(DirectoryArn => Str, PublishedSchemaArn => Str, [DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::CloudDirectory::UpgradeAppliedSchema>
+
+Returns: a L<Paws::CloudDirectory::UpgradeAppliedSchemaResponse> instance
+
+Upgrades a single directory in-place using the C<PublishedSchemaArn>
+with schema updates found in C<MinorVersion>. Backwards-compatible
+minor version upgrades are instantaneously available for readers on all
+objects in the directory. Note: This is a synchronous API call and
+upgrades only one schema on a given directory per call. To upgrade
+multiple directories from one schema, you would need to call this API
+on each directory.
+
+
+=head2 UpgradePublishedSchema(DevelopmentSchemaArn => Str, MinorVersion => Str, PublishedSchemaArn => Str, [DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::CloudDirectory::UpgradePublishedSchema>
+
+Returns: a L<Paws::CloudDirectory::UpgradePublishedSchemaResponse> instance
+
+Upgrades a published schema under a new minor version revision using
+the current contents of C<DevelopmentSchemaArn>.
 
 
 
@@ -1010,9 +1080,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

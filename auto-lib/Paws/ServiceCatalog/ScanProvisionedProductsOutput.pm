@@ -17,13 +17,13 @@ Paws::ServiceCatalog::ScanProvisionedProductsOutput
 
 =head2 NextPageToken => Str
 
-The page token to use to retrieve the next page of results for this
-operation. If there are no more pages, this value is null.
+The page token to use to retrieve the next set of results. If there are
+no additional results, this value is null.
 
 
 =head2 ProvisionedProducts => ArrayRef[L<Paws::ServiceCatalog::ProvisionedProductDetail>]
 
-A list of ProvisionedProduct detail objects.
+Information about the provisioned products.
 
 
 =head2 _request_id => Str

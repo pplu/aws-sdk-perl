@@ -14,7 +14,7 @@ package Paws::ElastiCache::ListTagsForResource;
 
 =head1 NAME
 
-Paws::ElastiCache::ListTagsForResource - Arguments for method ListTagsForResource on Paws::ElastiCache
+Paws::ElastiCache::ListTagsForResource - Arguments for method ListTagsForResource on L<Paws::ElastiCache>
 
 =head1 DESCRIPTION
 
@@ -41,7 +41,8 @@ C<arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster> or
 C<arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot>.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces.
+AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
 
@@ -52,9 +53,9 @@ This class forms part of L<Paws>, documenting arguments for method ListTagsForRe
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

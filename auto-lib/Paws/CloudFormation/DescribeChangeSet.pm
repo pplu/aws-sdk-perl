@@ -16,7 +16,7 @@ package Paws::CloudFormation::DescribeChangeSet;
 
 =head1 NAME
 
-Paws::CloudFormation::DescribeChangeSet - Arguments for method DescribeChangeSet on Paws::CloudFormation
+Paws::CloudFormation::DescribeChangeSet - Arguments for method DescribeChangeSet on L<Paws::CloudFormation>
 
 =head1 DESCRIPTION
 
@@ -63,9 +63,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeChang
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

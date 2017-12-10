@@ -1,6 +1,7 @@
 package Paws::CodeBuild::EnvironmentVariable;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
   has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -43,6 +44,25 @@ build.
   The name or key of the environment variable.
 
 
+=head2 Type => Str
+
+  The type of environment variable. Valid values include:
+
+=over
+
+=item *
+
+C<PARAMETER_STORE>: An environment variable stored in Amazon EC2
+Systems Manager Parameter Store.
+
+=item *
+
+C<PLAINTEXT>: An environment variable in plaintext format.
+
+=back
+
+
+
 =head2 B<REQUIRED> Value => Str
 
   The value of the environment variable.
@@ -61,9 +81,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodeBuild
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

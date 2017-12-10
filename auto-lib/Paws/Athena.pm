@@ -11,7 +11,7 @@ package Paws::Athena;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub BatchGetNamedQuery {
@@ -80,15 +80,15 @@ package Paws::Athena;
     if (not defined $callback) {
       while ($next_result->NextToken) {
         $next_result = $self->GetQueryResults(@_, NextToken => $next_result->NextToken);
-        push @{ $result->ResultSet }, @{ $next_result->ResultSet };
+        push @{ $result->ResultSet->Rows }, @{ $next_result->ResultSet->Rows };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $callback->($_ => 'ResultSet') foreach (@{ $result->ResultSet });
+        $callback->($_ => 'ResultSet.Rows') foreach (@{ $result->ResultSet->Rows });
         $result = $self->GetQueryResults(@_, NextToken => $result->NextToken);
       }
-      $callback->($_ => 'ResultSet') foreach (@{ $result->ResultSet });
+      $callback->($_ => 'ResultSet.Rows') foreach (@{ $result->ResultSet->Rows });
     }
 
     return undef
@@ -176,11 +176,13 @@ in seconds. Athena is serverless, so there is no infrastructure to set
 up or manage. You pay only for the queries you run. Athena scales
 automaticallyE<mdash>executing queries in parallelE<mdash>so results
 are fast, even with large datasets and complex queries. For more
-information, see What is Amazon Athena in the I<Amazon Athena User
-Guide>.
+information, see What is Amazon Athena
+(http://docs.aws.amazon.com/athena/latest/ug/what-is.html) in the
+I<Amazon Athena User Guide>.
 
 For code samples using the AWS SDK for Java, see Examples and Code
-Samples in the I<Amazon Athena User Guide>.
+Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+in the I<Amazon Athena User Guide>.
 
 =head1 METHODS
 
@@ -190,7 +192,7 @@ Each argument is described in detail in: L<Paws::Athena::BatchGetNamedQuery>
 
 Returns: a L<Paws::Athena::BatchGetNamedQueryOutput> instance
 
-  Returns the details of a single named query or a list of up to 50
+Returns the details of a single named query or a list of up to 50
 queries, which you provide as an array of query ID strings. Use
 ListNamedQueries to get the list of named query IDs. If information
 could not be retrieved for a submitted query ID, information about the
@@ -206,7 +208,7 @@ Each argument is described in detail in: L<Paws::Athena::BatchGetQueryExecution>
 
 Returns: a L<Paws::Athena::BatchGetQueryExecutionOutput> instance
 
-  Returns the details of a single query execution or a list of up to 50
+Returns the details of a single query execution or a list of up to 50
 query executions, which you provide as an array of query execution ID
 strings. To get a list of query execution IDs, use ListQueryExecutions.
 Query executions are different from named (saved) queries. Use
@@ -219,10 +221,11 @@ Each argument is described in detail in: L<Paws::Athena::CreateNamedQuery>
 
 Returns: a L<Paws::Athena::CreateNamedQueryOutput> instance
 
-  Creates a named query.
+Creates a named query.
 
 For code samples using the AWS SDK for Java, see Examples and Code
-Samples in the I<Amazon Athena User Guide>.
+Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+in the I<Amazon Athena User Guide>.
 
 
 =head2 DeleteNamedQuery(NamedQueryId => Str)
@@ -231,10 +234,11 @@ Each argument is described in detail in: L<Paws::Athena::DeleteNamedQuery>
 
 Returns: a L<Paws::Athena::DeleteNamedQueryOutput> instance
 
-  Deletes a named query.
+Deletes a named query.
 
 For code samples using the AWS SDK for Java, see Examples and Code
-Samples in the I<Amazon Athena User Guide>.
+Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+in the I<Amazon Athena User Guide>.
 
 
 =head2 GetNamedQuery(NamedQueryId => Str)
@@ -243,7 +247,7 @@ Each argument is described in detail in: L<Paws::Athena::GetNamedQuery>
 
 Returns: a L<Paws::Athena::GetNamedQueryOutput> instance
 
-  Returns information about a single query.
+Returns information about a single query.
 
 
 =head2 GetQueryExecution(QueryExecutionId => Str)
@@ -252,7 +256,7 @@ Each argument is described in detail in: L<Paws::Athena::GetQueryExecution>
 
 Returns: a L<Paws::Athena::GetQueryExecutionOutput> instance
 
-  Returns information about a single execution of a query. Each time a
+Returns information about a single execution of a query. Each time a
 query executes, information about the query execution is saved with a
 unique ID.
 
@@ -263,7 +267,7 @@ Each argument is described in detail in: L<Paws::Athena::GetQueryResults>
 
 Returns: a L<Paws::Athena::GetQueryResultsOutput> instance
 
-  Returns the results of a single query execution specified by
+Returns the results of a single query execution specified by
 C<QueryExecutionId>. This request does not execute the query but
 returns results. Use StartQueryExecution to run a query.
 
@@ -274,10 +278,11 @@ Each argument is described in detail in: L<Paws::Athena::ListNamedQueries>
 
 Returns: a L<Paws::Athena::ListNamedQueriesOutput> instance
 
-  Provides a list of all available query IDs.
+Provides a list of all available query IDs.
 
 For code samples using the AWS SDK for Java, see Examples and Code
-Samples in the I<Amazon Athena User Guide>.
+Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+in the I<Amazon Athena User Guide>.
 
 
 =head2 ListQueryExecutions([MaxResults => Int, NextToken => Str])
@@ -286,10 +291,11 @@ Each argument is described in detail in: L<Paws::Athena::ListQueryExecutions>
 
 Returns: a L<Paws::Athena::ListQueryExecutionsOutput> instance
 
-  Provides a list of all available query execution IDs.
+Provides a list of all available query execution IDs.
 
 For code samples using the AWS SDK for Java, see Examples and Code
-Samples in the I<Amazon Athena User Guide>.
+Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+in the I<Amazon Athena User Guide>.
 
 
 =head2 StartQueryExecution(QueryString => Str, ResultConfiguration => L<Paws::Athena::ResultConfiguration>, [ClientRequestToken => Str, QueryExecutionContext => L<Paws::Athena::QueryExecutionContext>])
@@ -298,11 +304,12 @@ Each argument is described in detail in: L<Paws::Athena::StartQueryExecution>
 
 Returns: a L<Paws::Athena::StartQueryExecutionOutput> instance
 
-  Runs (executes) the SQL query statements contained in the C<Query>
+Runs (executes) the SQL query statements contained in the C<Query>
 string.
 
 For code samples using the AWS SDK for Java, see Examples and Code
-Samples in the I<Amazon Athena User Guide>.
+Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+in the I<Amazon Athena User Guide>.
 
 
 =head2 StopQueryExecution(QueryExecutionId => Str)
@@ -311,10 +318,11 @@ Each argument is described in detail in: L<Paws::Athena::StopQueryExecution>
 
 Returns: a L<Paws::Athena::StopQueryExecutionOutput> instance
 
-  Stops a query execution.
+Stops a query execution.
 
 For code samples using the AWS SDK for Java, see Examples and Code
-Samples in the I<Amazon Athena User Guide>.
+Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+in the I<Amazon Athena User Guide>.
 
 
 
@@ -330,7 +338,7 @@ Paginator methods are helpers that repetively call methods that return partial r
 
 If passed a sub as first parameter, it will call the sub for each element found in :
 
- - ResultSet, passing the object as the first parameter, and the string 'ResultSet' as the second parameter 
+ - ResultSet.Rows, passing the object as the first parameter, and the string 'ResultSet.Rows' as the second parameter 
 
 If not, it will return a a L<Paws::Athena::GetQueryResultsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
@@ -368,9 +376,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

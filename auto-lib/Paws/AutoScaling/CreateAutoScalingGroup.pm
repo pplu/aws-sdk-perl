@@ -9,6 +9,8 @@ package Paws::AutoScaling::CreateAutoScalingGroup;
   has HealthCheckType => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has LaunchConfigurationName => (is => 'ro', isa => 'Str');
+  has LaunchTemplate => (is => 'ro', isa => 'Paws::AutoScaling::LaunchTemplateSpecification');
+  has LifecycleHookSpecificationList => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::LifecycleHookSpecification]');
   has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaxSize => (is => 'ro', isa => 'Int', required => 1);
   has MinSize => (is => 'ro', isa => 'Int', required => 1);
@@ -30,7 +32,7 @@ package Paws::AutoScaling::CreateAutoScalingGroup;
 
 =head1 NAME
 
-Paws::AutoScaling::CreateAutoScalingGroup - Arguments for method CreateAutoScalingGroup on Paws::AutoScaling
+Paws::AutoScaling::CreateAutoScalingGroup - Arguments for method CreateAutoScalingGroup on L<Paws::AutoScaling>
 
 =head1 DESCRIPTION
 
@@ -51,8 +53,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-The name of the group. This name must be unique within the scope of
-your AWS account.
+The name of the Auto Scaling group. This name must be unique within the
+scope of your AWS account.
 
 
 
@@ -68,8 +70,9 @@ optional if you specify one or more subnets.
 The amount of time, in seconds, after a scaling activity completes
 before another scaling activity can start. The default is 300.
 
-For more information, see Auto Scaling Cooldowns in the I<Auto Scaling
-User Guide>.
+For more information, see Auto Scaling Cooldowns
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html)
+in the I<Auto Scaling User Guide>.
 
 
 
@@ -92,8 +95,9 @@ default is 0.
 
 This parameter is required if you are adding an C<ELB> health check.
 
-For more information, see Health Checks in the I<Auto Scaling User
-Guide>.
+For more information, see Health Checks
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html)
+in the I<Auto Scaling User Guide>.
 
 
 
@@ -104,15 +108,17 @@ and C<ELB>.
 
 By default, health checks use Amazon EC2 instance status checks to
 determine the health of an instance. For more information, see Health
-Checks in the I<Auto Scaling User Guide>.
+Checks
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html)
+in the I<Auto Scaling User Guide>.
 
 
 
 =head2 InstanceId => Str
 
 The ID of the instance used to create a launch configuration for the
-group. Alternatively, specify a launch configuration instead of an EC2
-instance.
+group. You must specify one of the following: an EC2 instance, a launch
+configuration, or a launch template.
 
 When you specify an ID of an instance, Auto Scaling creates a new
 launch configuration and associates it with the group. This launch
@@ -120,14 +126,31 @@ configuration derives its attributes from the specified instance, with
 the exception of the block device mapping.
 
 For more information, see Create an Auto Scaling Group Using an EC2
-Instance in the I<Auto Scaling User Guide>.
+Instance
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/create-asg-from-instance.html)
+in the I<Auto Scaling User Guide>.
 
 
 
 =head2 LaunchConfigurationName => Str
 
-The name of the launch configuration. Alternatively, specify an EC2
-instance instead of a launch configuration.
+The name of the launch configuration. You must specify one of the
+following: a launch configuration, a launch template, or an EC2
+instance.
+
+
+
+=head2 LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>
+
+The launch template to use to launch instances. You must specify one of
+the following: a launch template, a launch configuration, or an EC2
+instance.
+
+
+
+=head2 LifecycleHookSpecificationList => ArrayRef[L<Paws::AutoScaling::LifecycleHookSpecification>]
+
+One or more lifecycle hooks.
 
 
 
@@ -137,7 +160,9 @@ One or more Classic Load Balancers. To specify an Application Load
 Balancer, use C<TargetGroupARNs> instead.
 
 For more information, see Using a Load Balancer With an Auto Scaling
-Group in the I<Auto Scaling User Guide>.
+Group
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/create-asg-from-instance.html)
+in the I<Auto Scaling User Guide>.
 
 
 
@@ -163,8 +188,9 @@ termination by Auto Scaling when scaling in.
 =head2 PlacementGroup => Str
 
 The name of the placement group into which you'll launch your
-instances, if any. For more information, see Placement Groups in the
-I<Amazon Elastic Compute Cloud User Guide>.
+instances, if any. For more information, see Placement Groups
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -172,8 +198,9 @@ I<Amazon Elastic Compute Cloud User Guide>.
 
 One or more tags.
 
-For more information, see Tagging Auto Scaling Groups and Instances in
-the I<Auto Scaling User Guide>.
+For more information, see Tagging Auto Scaling Groups and Instances
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/autoscaling-tagging.html)
+in the I<Auto Scaling User Guide>.
 
 
 
@@ -190,7 +217,9 @@ terminate. These policies are executed in the order that they are
 listed.
 
 For more information, see Controlling Which Instances Auto Scaling
-Terminates During Scale In in the I<Auto Scaling User Guide>.
+Terminates During Scale In
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-termination.html)
+in the I<Auto Scaling User Guide>.
 
 
 
@@ -203,8 +232,9 @@ If you specify subnets and Availability Zones with this call, ensure
 that the subnets' Availability Zones match the Availability Zones
 specified.
 
-For more information, see Launching Auto Scaling Instances in a VPC in
-the I<Auto Scaling User Guide>.
+For more information, see Launching Auto Scaling Instances in a VPC
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html)
+in the I<Auto Scaling User Guide>.
 
 
 
@@ -215,9 +245,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateAutoSca
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

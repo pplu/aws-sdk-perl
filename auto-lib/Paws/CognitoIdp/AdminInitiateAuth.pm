@@ -1,10 +1,12 @@
 
 package Paws::CognitoIdp::AdminInitiateAuth;
   use Moose;
+  has AnalyticsMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::AnalyticsMetadataType');
   has AuthFlow => (is => 'ro', isa => 'Str', required => 1);
   has AuthParameters => (is => 'ro', isa => 'Paws::CognitoIdp::AuthParametersType');
   has ClientId => (is => 'ro', isa => 'Str', required => 1);
   has ClientMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::ClientMetadataType');
+  has ContextData => (is => 'ro', isa => 'Paws::CognitoIdp::ContextDataType');
   has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -18,7 +20,7 @@ package Paws::CognitoIdp::AdminInitiateAuth;
 
 =head1 NAME
 
-Paws::CognitoIdp::AdminInitiateAuth - Arguments for method AdminInitiateAuth on Paws::CognitoIdp
+Paws::CognitoIdp::AdminInitiateAuth - Arguments for method AdminInitiateAuth on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -37,6 +39,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>
+
+The analytics metadata for collecting Amazon Pinpoint metrics for
+C<AdminInitiateAuth> calls.
+
+
+
 =head2 B<REQUIRED> AuthFlow => Str
 
 The authentication flow for this call to execute. The API action will
@@ -51,7 +60,7 @@ tokens.
 
 =item *
 
-C<USER_SRP_AUTH> will take in C<USERNAME> and C<SRPA> and return the
+C<USER_SRP_AUTH> will take in C<USERNAME> and C<SRP_A> and return the
 SRP variables to be used for next challenge execution.
 
 =back
@@ -96,7 +105,7 @@ value of C<AuthFlow>:
 
 =item *
 
-For C<USER_SRP_AUTH>: C<USERNAME> (required), C<SRPA> (required),
+For C<USER_SRP_AUTH>: C<USERNAME> (required), C<SRP_A> (required),
 C<SECRET_HASH> (required if the app client is configured with a client
 secret), C<DEVICE_KEY>
 
@@ -136,6 +145,14 @@ used to implement additional validations around authentication.
 
 
 
+=head2 ContextData => L<Paws::CognitoIdp::ContextDataType>
+
+Contextual data such as the user's device fingerprint, IP address, or
+location used for evaluating the risk of an unexpected event by Amazon
+Cognito advanced security.
+
+
+
 =head2 B<REQUIRED> UserPoolId => Str
 
 The ID of the Amazon Cognito user pool.
@@ -149,9 +166,9 @@ This class forms part of L<Paws>, documenting arguments for method AdminInitiate
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -14,7 +14,7 @@ package Paws::Organizations::DeletePolicy;
 
 =head1 NAME
 
-Paws::Organizations::DeletePolicy - Arguments for method DeletePolicy on Paws::Organizations
+Paws::Organizations::DeletePolicy - Arguments for method DeletePolicy on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
@@ -39,8 +39,9 @@ The unique identifier (ID) of the policy that you want to delete. You
 can get the ID from the ListPolicies or ListPoliciesForTarget
 operations.
 
-The regex pattern for a policy ID string requires "p-" followed by from
-8 to 128 lower-case letters or digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for a policy ID
+string requires "p-" followed by from 8 to 128 lower-case letters or
+digits.
 
 
 
@@ -51,9 +52,9 @@ This class forms part of L<Paws>, documenting arguments for method DeletePolicy 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -2,7 +2,10 @@ package Paws::Pinpoint::APNSSandboxChannelResponse;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
+  has DefaultAuthenticationMethod => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
+  has HasCredential => (is => 'ro', isa => 'Bool');
+  has HasTokenKey => (is => 'ro', isa => 'Bool');
   has Id => (is => 'ro', isa => 'Str');
   has IsArchived => (is => 'ro', isa => 'Bool');
   has LastModifiedBy => (is => 'ro', isa => 'Str');
@@ -54,9 +57,24 @@ Apple Development Push Notification Service channel definition.
   When was this segment created
 
 
+=head2 DefaultAuthenticationMethod => Str
+
+  The default authentication method used for APNs.
+
+
 =head2 Enabled => Bool
 
   If the channel is enabled for sending messages.
+
+
+=head2 HasCredential => Bool
+
+  If the channel is registered with a credential for authentication.
+
+
+=head2 HasTokenKey => Bool
+
+  If the channel is registered with a token key for authentication.
 
 
 =head2 Id => Str
@@ -81,7 +99,7 @@ Apple Development Push Notification Service channel definition.
 
 =head2 Platform => Str
 
-  The platform type. Will be APNS.
+  The platform type. Will be APNS_SANDBOX.
 
 
 =head2 Version => Int
@@ -96,9 +114,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

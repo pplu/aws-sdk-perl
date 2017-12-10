@@ -18,7 +18,7 @@ package Paws::EC2::DescribeVpcEndpoints;
 
 =head1 NAME
 
-Paws::EC2::DescribeVpcEndpoints - Arguments for method DescribeVpcEndpoints on Paws::EC2
+Paws::EC2::DescribeVpcEndpoints - Arguments for method DescribeVpcEndpoints on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -54,7 +54,7 @@ One or more filters.
 
 =item *
 
-C<service-name>: The name of the AWS service.
+C<service-name>: The name of the service.
 
 =item *
 
@@ -105,9 +105,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeVpcEn
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

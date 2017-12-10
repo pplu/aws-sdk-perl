@@ -14,7 +14,7 @@ package Paws::DeviceFarm::StopRemoteAccessSession;
 
 =head1 NAME
 
-Paws::DeviceFarm::StopRemoteAccessSession - Arguments for method StopRemoteAccessSession on Paws::DeviceFarm
+Paws::DeviceFarm::StopRemoteAccessSession - Arguments for method StopRemoteAccessSession on L<Paws::DeviceFarm>
 
 =head1 DESCRIPTION
 
@@ -47,9 +47,9 @@ This class forms part of L<Paws>, documenting arguments for method StopRemoteAcc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

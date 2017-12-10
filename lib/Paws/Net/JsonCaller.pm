@@ -4,6 +4,15 @@ package Paws::Net::JsonCaller;
   use POSIX qw(strftime);
   requires 'json_version';
 
+  use Paws::Net::JsonResponse;
+
+  has response_to_object => (
+    is => 'ro',
+    default => sub {
+      Paws::Net::JsonResponse->new;
+    }
+  );
+
   # converts the objects that represent the call into parameters that the API can understand
   sub _to_jsoncaller_params {
     my ($self, $params) = @_;

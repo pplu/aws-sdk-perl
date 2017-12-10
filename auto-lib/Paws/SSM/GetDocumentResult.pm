@@ -2,6 +2,7 @@
 package Paws::SSM::GetDocumentResult;
   use Moose;
   has Content => (is => 'ro', isa => 'Str');
+  has DocumentFormat => (is => 'ro', isa => 'Str');
   has DocumentType => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
@@ -19,9 +20,14 @@ Paws::SSM::GetDocumentResult
 
 =head2 Content => Str
 
-The contents of the SSM document.
+The contents of the Systems Manager document.
 
 
+=head2 DocumentFormat => Str
+
+The document format, either JSON or YAML.
+
+Valid values are: C<"YAML">, C<"JSON">
 =head2 DocumentType => Str
 
 The document type.
@@ -34,7 +40,7 @@ The document version.
 
 =head2 Name => Str
 
-The name of the SSM document.
+The name of the Systems Manager document.
 
 
 =head2 _request_id => Str

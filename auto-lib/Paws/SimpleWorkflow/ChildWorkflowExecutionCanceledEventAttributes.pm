@@ -48,7 +48,7 @@ Provide details of the C<ChildWorkflowExecutionCanceled> event.
 =head2 B<REQUIRED> InitiatedEventId => Int
 
   The ID of the C<StartChildWorkflowExecutionInitiated> event
-corresponding to the C<StartChildWorkflowExecution> decision to start
+corresponding to the C<StartChildWorkflowExecution> Decision to start
 this child workflow execution. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
@@ -79,9 +79,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SimpleWor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

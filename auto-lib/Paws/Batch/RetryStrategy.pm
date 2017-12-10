@@ -39,9 +39,9 @@ The retry strategy associated with a job.
 =head2 Attempts => Int
 
   The number of times to move a job to the C<RUNNABLE> status. You may
-specify between 1 and 10 attempts. If C<attempts> is greater than one,
-the job is retried if it fails until it has moved to C<RUNNABLE> that
-many times.
+specify between 1 and 10 attempts. If the value of C<attempts> is
+greater than one, the job is retried if it fails until it has moved to
+C<RUNNABLE> that many times.
 
 
 
@@ -51,9 +51,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Batch>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

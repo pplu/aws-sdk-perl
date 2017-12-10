@@ -8,14 +8,13 @@ package Paws::Lambda::GetAccountSettings;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2016-08-19/account-settings/');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::GetAccountSettingsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Lambda::GetAccountSettings - Arguments for method GetAccountSettings on Paws::Lambda
+Paws::Lambda::GetAccountSettings - Arguments for method GetAccountSettings on L<Paws::Lambda>
 
 =head1 DESCRIPTION
 
@@ -41,9 +40,9 @@ This class forms part of L<Paws>, documenting arguments for method GetAccountSet
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

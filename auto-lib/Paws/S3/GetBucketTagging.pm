@@ -17,7 +17,7 @@ package Paws::S3::GetBucketTagging;
 
 =head1 NAME
 
-Paws::S3::GetBucketTagging - Arguments for method GetBucketTagging on Paws::S3
+Paws::S3::GetBucketTagging - Arguments for method GetBucketTagging on L<Paws::S3>
 
 =head1 DESCRIPTION
 
@@ -49,9 +49,9 @@ This class forms part of L<Paws>, documenting arguments for method GetBucketTagg
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

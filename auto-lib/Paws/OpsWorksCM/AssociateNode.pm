@@ -16,7 +16,7 @@ package Paws::OpsWorksCM::AssociateNode;
 
 =head1 NAME
 
-Paws::OpsWorksCM::AssociateNode - Arguments for method AssociateNode on Paws::OpsWorksCM
+Paws::OpsWorksCM::AssociateNode - Arguments for method AssociateNode on L<Paws::OpsWorksCM>
 
 =head1 DESCRIPTION
 
@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Engine attributes used for associating the node.
 
-B<Attributes accepted in a AssociateNode request:>
+B<Attributes accepted in a AssociateNode request for Chef>
 
 =over
 
@@ -56,12 +56,23 @@ required for the C<chef-client> agent to access the Chef API.
 
 =back
 
+B<Attributes accepted in a AssociateNode request for Puppet>
+
+=over
+
+=item *
+
+C<PUPPET_NODE_CSR>: A PEM-formatted certificate-signing request (CSR)
+that is created by the node.
+
+=back
+
 
 
 
 =head2 B<REQUIRED> NodeName => Str
 
-The name of the Chef client node.
+The name of the node.
 
 
 
@@ -78,9 +89,9 @@ This class forms part of L<Paws>, documenting arguments for method AssociateNode
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

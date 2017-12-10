@@ -15,7 +15,7 @@ package Paws::ResourceTagging::UntagResources;
 
 =head1 NAME
 
-Paws::ResourceTagging::UntagResources - Arguments for method UntagResources on Paws::ResourceTagging
+Paws::ResourceTagging::UntagResources - Arguments for method UntagResources on L<Paws::ResourceTagging>
 
 =head1 DESCRIPTION
 
@@ -40,7 +40,9 @@ A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a
 resource. You can specify a minimum of 1 and a maximum of 20 ARNs
 (resources) to untag. An ARN can be set to a maximum of 1600
 characters. For more information, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces in the I<AWS General Reference>.
+AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+in the I<AWS General Reference>.
 
 
 
@@ -58,9 +60,9 @@ This class forms part of L<Paws>, documenting arguments for method UntagResource
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

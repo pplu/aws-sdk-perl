@@ -40,17 +40,17 @@ This class has no description
 
 =head2 B<REQUIRED> CurrentSpotFleetRequestState => Str
 
-  The current state of the Spot fleet request.
+  The current state of the Spot Fleet request.
 
 
 =head2 B<REQUIRED> PreviousSpotFleetRequestState => Str
 
-  The previous state of the Spot fleet request.
+  The previous state of the Spot Fleet request.
 
 
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 
-  The ID of the Spot fleet request.
+  The ID of the Spot Fleet request.
 
 
 
@@ -60,8 +60,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

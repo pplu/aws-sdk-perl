@@ -2,6 +2,8 @@
 package Paws::CodeBuild::CreateProject;
   use Moose;
   has Artifacts => (is => 'ro', isa => 'Paws::CodeBuild::ProjectArtifacts', traits => ['NameInRequest'], request_name => 'artifacts' , required => 1);
+  has BadgeEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'badgeEnabled' );
+  has Cache => (is => 'ro', isa => 'Paws::CodeBuild::ProjectCache', traits => ['NameInRequest'], request_name => 'cache' );
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has EncryptionKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'encryptionKey' );
   has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', traits => ['NameInRequest'], request_name => 'environment' , required => 1);
@@ -10,6 +12,7 @@ package Paws::CodeBuild::CreateProject;
   has Source => (is => 'ro', isa => 'Paws::CodeBuild::ProjectSource', traits => ['NameInRequest'], request_name => 'source' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has TimeoutInMinutes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'timeoutInMinutes' );
+  has VpcConfig => (is => 'ro', isa => 'Paws::CodeBuild::VpcConfig', traits => ['NameInRequest'], request_name => 'vpcConfig' );
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +25,7 @@ package Paws::CodeBuild::CreateProject;
 
 =head1 NAME
 
-Paws::CodeBuild::CreateProject - Arguments for method CreateProject on Paws::CodeBuild
+Paws::CodeBuild::CreateProject - Arguments for method CreateProject on L<Paws::CodeBuild>
 
 =head1 DESCRIPTION
 
@@ -44,6 +47,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> Artifacts => L<Paws::CodeBuild::ProjectArtifacts>
 
 Information about the build output artifacts for the build project.
+
+
+
+=head2 BadgeEnabled => Bool
+
+Set this to true to generate a publicly-accessible URL for your
+project's build badge.
+
+
+
+=head2 Cache => L<Paws::CodeBuild::ProjectCache>
+
+Stores recently used information so that it can be quickly accessed at
+a later time.
 
 
 
@@ -106,6 +123,12 @@ The default is 60 minutes.
 
 
 
+=head2 VpcConfig => L<Paws::CodeBuild::VpcConfig>
+
+VpcConfig enables AWS CodeBuild to access resources in an Amazon VPC.
+
+
+
 
 =head1 SEE ALSO
 
@@ -113,9 +136,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateProject
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

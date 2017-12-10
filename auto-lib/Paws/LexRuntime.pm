@@ -10,7 +10,7 @@ package Paws::LexRuntime;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
   sub PostContent {
@@ -69,15 +69,20 @@ operations, see the build-time API, .
 
 =head1 METHODS
 
-=head2 PostContent(BotAlias => Str, BotName => Str, ContentType => Str, InputStream => Str, UserId => Str, [Accept => Str, SessionAttributes => Str])
+=head2 PostContent(BotAlias => Str, BotName => Str, ContentType => Str, InputStream => Str, UserId => Str, [Accept => Str, RequestAttributes => Str, SessionAttributes => Str])
 
 Each argument is described in detail in: L<Paws::LexRuntime::PostContent>
 
 Returns: a L<Paws::LexRuntime::PostContentResponse> instance
 
-  Sends user input (text or speech) to Amazon Lex. Clients use this API
-to send requests to Amazon Lex at runtime. Amazon Lex interprets the
-user input using the machine learning model that it built for the bot.
+Sends user input (text or speech) to Amazon Lex. Clients use this API
+to send text and audio requests to Amazon Lex at runtime. Amazon Lex
+interprets the user input using the machine learning model that it
+built for the bot.
+
+The C<PostContent> operation supports audio input at 8kHz and 16kHz.
+You can use 8kHz audio to achieve higher speech recognition accuracy in
+telephone audio applications.
 
 In response, Amazon Lex returns the next message to convey to the user.
 Consider the following example messages:
@@ -159,16 +164,16 @@ C<x-amz-slot-to-elicit> header is omitted.
 
 In addition, Amazon Lex also returns your application-specific
 C<sessionAttributes>. For more information, see Managing Conversation
-Context.
+Context (http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html).
 
 
-=head2 PostText(BotAlias => Str, BotName => Str, InputText => Str, UserId => Str, [SessionAttributes => L<Paws::LexRuntime::StringMap>])
+=head2 PostText(BotAlias => Str, BotName => Str, InputText => Str, UserId => Str, [RequestAttributes => L<Paws::LexRuntime::StringMap>, SessionAttributes => L<Paws::LexRuntime::StringMap>])
 
 Each argument is described in detail in: L<Paws::LexRuntime::PostText>
 
 Returns: a L<Paws::LexRuntime::PostTextResponse> instance
 
-  Sends user input (text-only) to Amazon Lex. Client applications can use
+Sends user input (text-only) to Amazon Lex. Client applications can use
 this API to send requests to Amazon Lex at runtime. Amazon Lex then
 interprets the user input using the machine learning model it built for
 the bot.
@@ -252,7 +257,7 @@ is set to ElicitIntent and C<slotToElicit> is set to null.
 
 In addition, Amazon Lex also returns your application-specific
 C<sessionAttributes>. For more information, see Managing Conversation
-Context.
+Context (http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html).
 
 
 
@@ -270,9 +275,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

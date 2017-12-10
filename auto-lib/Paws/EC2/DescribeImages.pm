@@ -18,7 +18,7 @@ package Paws::EC2::DescribeImages;
 
 =head1 NAME
 
-Paws::EC2::DescribeImages - Arguments for method DescribeImages on Paws::EC2
+Paws::EC2::DescribeImages - Arguments for method DescribeImages on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -72,8 +72,8 @@ termination.
 
 =item *
 
-C<block-device-mapping.device-name> - The device name for the EBS
-volume (for example, C</dev/sdh>).
+C<block-device-mapping.device-name> - The device name specified in the
+block device mapping (for example, C</dev/sdh> or C<xvdh>).
 
 =item *
 
@@ -159,8 +159,8 @@ C<ramdisk-id> - The RAM disk ID.
 
 =item *
 
-C<root-device-name> - The name of the root device volume (for example,
-C</dev/sda1>).
+C<root-device-name> - The device name of the root device volume (for
+example, C</dev/sda1>).
 
 =item *
 
@@ -179,6 +179,11 @@ C<state-reason-code> - The reason code for the state change.
 =item *
 
 C<state-reason-message> - The message for the state change.
+
+=item *
+
+C<sriov-net-support> - A value of C<simple> indicates that enhanced
+networking with the Intel 82599 VF interface is enabled.
 
 =item *
 
@@ -238,9 +243,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeImage
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

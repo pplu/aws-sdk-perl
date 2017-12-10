@@ -133,7 +133,9 @@ instance targeted by the command). StatusDetails includes more
 information than Status because it includes states resulting from error
 and concurrency control parameters. StatusDetails can show different
 results than Status. For more information about these statuses, see Run
-Command Status. StatusDetails can be one of the following values:
+Command Status
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html).
+StatusDetails can be one of the following values:
 
 =over
 
@@ -209,9 +211,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

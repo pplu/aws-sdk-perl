@@ -17,7 +17,7 @@ package Paws::RDS::ModifyOptionGroup;
 
 =head1 NAME
 
-Paws::RDS::ModifyOptionGroup - Arguments for method ModifyOptionGroup on Paws::RDS
+Paws::RDS::ModifyOptionGroup - Arguments for method ModifyOptionGroup on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -49,9 +49,8 @@ option group.
 The name of the option group to be modified.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
-TDE, cannot be removed from an option group, and that option group
-cannot be removed from a DB instance once it is associated with a DB
-instance
+TDE, can't be removed from an option group, and that option group can't
+be removed from a DB instance once it is associated with a DB instance
 
 
 
@@ -76,9 +75,9 @@ This class forms part of L<Paws>, documenting arguments for method ModifyOptionG
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

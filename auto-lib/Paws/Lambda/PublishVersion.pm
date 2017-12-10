@@ -3,7 +3,7 @@ package Paws::Lambda::PublishVersion;
   use Moose;
   has CodeSha256 => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
-  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
+  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -11,14 +11,13 @@ package Paws::Lambda::PublishVersion;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/versions');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::FunctionConfiguration');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Lambda::PublishVersion - Arguments for method PublishVersion on Paws::Lambda
+Paws::Lambda::PublishVersion - Arguments for method PublishVersion on L<Paws::Lambda>
 
 =head1 DESCRIPTION
 
@@ -41,8 +40,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The SHA256 hash of the deployment package you want to publish. This
 provides validation on the code you are publishing. If you provide this
-parameter value must match the SHA256 of the $LATEST version for the
-publication to succeed.
+parameter, the value must match the SHA256 of the $LATEST version for
+the publication to succeed. You can use the B<DryRun> parameter of
+UpdateFunctionCode to verify the hash value that will be returned
+before publishing your new version.
 
 
 
@@ -73,9 +74,9 @@ This class forms part of L<Paws>, documenting arguments for method PublishVersio
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

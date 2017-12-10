@@ -19,7 +19,7 @@ package Paws::CloudWatchLogs::DescribeMetricFilters;
 
 =head1 NAME
 
-Paws::CloudWatchLogs::DescribeMetricFilters - Arguments for method DescribeMetricFilters on Paws::CloudWatchLogs
+Paws::CloudWatchLogs::DescribeMetricFilters - Arguments for method DescribeMetricFilters on L<Paws::CloudWatchLogs>
 
 =head1 DESCRIPTION
 
@@ -59,7 +59,7 @@ The name of the log group.
 
 =head2 MetricName => Str
 
-The name of the CloudWatch metric.
+
 
 
 
@@ -83,9 +83,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeMetri
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

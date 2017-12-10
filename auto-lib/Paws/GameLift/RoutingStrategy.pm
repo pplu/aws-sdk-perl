@@ -161,13 +161,13 @@ Possible routing types include the following:
 
 =item *
 
-B<SIMPLE> E<ndash> The alias resolves to one specific fleet. Use this
-type when routing to active fleets.
+B<SIMPLE> -- The alias resolves to one specific fleet. Use this type
+when routing to active fleets.
 
 =item *
 
-B<TERMINAL> E<ndash> The alias does not resolve to a fleet but instead
-can be used to display a message to the user. A terminal alias throws a
+B<TERMINAL> -- The alias does not resolve to a fleet but instead can be
+used to display a message to the user. A terminal alias throws a
 TerminalRoutingStrategyException with the RoutingStrategy message
 embedded.
 
@@ -182,9 +182,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::GameLift>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

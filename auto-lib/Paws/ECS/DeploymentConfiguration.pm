@@ -51,8 +51,8 @@ C<maximumPercent>/100, rounded down to the nearest integer value.
 
   The lower limit (as a percentage of the service's C<desiredCount>) of
 the number of running tasks that must remain in the C<RUNNING> state in
-a service during a deployment. The minimum healthy tasks during a
-deployment is the C<desiredCount> multiplied by
+a service during a deployment. The minimum number of healthy tasks
+during a deployment is the C<desiredCount> multiplied by
 C<minimumHealthyPercent>/100, rounded up to the nearest integer value.
 
 
@@ -63,9 +63,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ECS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

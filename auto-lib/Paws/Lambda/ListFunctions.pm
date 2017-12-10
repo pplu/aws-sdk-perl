@@ -1,8 +1,10 @@
 
 package Paws::Lambda::ListFunctions;
   use Moose;
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker' );
-  has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxItems' );
+  has FunctionVersion => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'FunctionVersion');
+  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker');
+  has MasterRegion => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'MasterRegion');
+  has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxItems');
 
   use MooseX::ClassAttribute;
 
@@ -10,14 +12,13 @@ package Paws::Lambda::ListFunctions;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::ListFunctionsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Lambda::ListFunctions - Arguments for method ListFunctions on Paws::Lambda
+Paws::Lambda::ListFunctions - Arguments for method ListFunctions on L<Paws::Lambda>
 
 =head1 DESCRIPTION
 
@@ -36,11 +37,39 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 FunctionVersion => Str
+
+Optional string. If not specified, only the unqualified functions ARNs
+(Amazon Resource Names) will be returned.
+
+Valid value:
+
+C<ALL>: Will return all versions, including C<$LATEST> which will have
+fully qualified ARNs (Amazon Resource Names).
+
+Valid values are: C<"ALL">
+
 =head2 Marker => Str
 
 Optional string. An opaque pagination token returned from a previous
 C<ListFunctions> operation. If present, indicates where to continue the
 listing.
+
+
+
+=head2 MasterRegion => Str
+
+Optional string. If not specified, will return only regular function
+versions (i.e., non-replicated versions).
+
+Valid values are:
+
+The region from which the functions are replicated. For example, if you
+specify C<us-east-1>, only functions replicated from that region will
+be returned.
+
+C<ALL>: Will return all functions from any region. If specified, you
+also must specify a valid FunctionVersion parameter.
 
 
 
@@ -58,9 +87,9 @@ This class forms part of L<Paws>, documenting arguments for method ListFunctions
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

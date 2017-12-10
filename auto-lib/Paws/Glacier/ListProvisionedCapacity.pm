@@ -1,7 +1,7 @@
 
 package Paws::Glacier::ListProvisionedCapacity;
   use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
+  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -9,14 +9,13 @@ package Paws::Glacier::ListProvisionedCapacity;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/provisioned-capacity');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::ListProvisionedCapacityOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Glacier::ListProvisionedCapacity - Arguments for method ListProvisionedCapacity on Paws::Glacier
+Paws::Glacier::ListProvisionedCapacity - Arguments for method ListProvisionedCapacity on L<Paws::Glacier>
 
 =head1 DESCRIPTION
 
@@ -37,11 +36,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AccountId => Str
 
-The C<AccountId> value is the AWS account ID of the account that owns
-the vault. You can either specify an AWS account ID or optionally a
-single '-' (hyphen), in which case Amazon Glacier uses the AWS account
-ID associated with the credentials used to sign the request. If you use
-an account ID, don't include any hyphens ('-') in the ID.
+The AWS account ID of the account that owns the vault. You can either
+specify an AWS account ID or optionally a single '-' (hyphen), in which
+case Amazon Glacier uses the AWS account ID associated with the
+credentials used to sign the request. If you use an account ID, don't
+include any hyphens ('-') in the ID.
 
 
 
@@ -52,9 +51,9 @@ This class forms part of L<Paws>, documenting arguments for method ListProvision
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

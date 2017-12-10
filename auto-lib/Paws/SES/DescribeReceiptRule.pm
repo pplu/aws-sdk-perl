@@ -15,7 +15,7 @@ package Paws::SES::DescribeReceiptRule;
 
 =head1 NAME
 
-Paws::SES::DescribeReceiptRule - Arguments for method DescribeReceiptRule on Paws::SES
+Paws::SES::DescribeReceiptRule - Arguments for method DescribeReceiptRule on L<Paws::SES>
 
 =head1 DESCRIPTION
 
@@ -42,7 +42,7 @@ The name of the receipt rule.
 
 =head2 B<REQUIRED> RuleSetName => Str
 
-The name of the receipt rule set to which the receipt rule belongs.
+The name of the receipt rule set that the receipt rule belongs to.
 
 
 
@@ -53,9 +53,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeRecei
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

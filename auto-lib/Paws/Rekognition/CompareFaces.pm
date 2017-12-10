@@ -16,7 +16,7 @@ package Paws::Rekognition::CompareFaces;
 
 =head1 NAME
 
-Paws::Rekognition::CompareFaces - Arguments for method CompareFaces on Paws::Rekognition
+Paws::Rekognition::CompareFaces - Arguments for method CompareFaces on L<Paws::Rekognition>
 
 =head1 DESCRIPTION
 
@@ -44,13 +44,17 @@ meet to be included in the C<FaceMatches> array.
 
 =head2 B<REQUIRED> SourceImage => L<Paws::Rekognition::Image>
 
-The source image, either as bytes or as an S3 object.
+The input image as base64-encoded bytes or an S3 object. If you use the
+AWS CLI to call Amazon Rekognition operations, passing base64-encoded
+image bytes is not supported.
 
 
 
 =head2 B<REQUIRED> TargetImage => L<Paws::Rekognition::Image>
 
-The target image, either as bytes or as an S3 object.
+The target image as base64-encoded bytes or an S3 object. If you use
+the AWS CLI to call Amazon Rekognition operations, passing
+base64-encoded image bytes is not supported.
 
 
 
@@ -61,9 +65,9 @@ This class forms part of L<Paws>, documenting arguments for method CompareFaces 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

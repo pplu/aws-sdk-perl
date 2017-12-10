@@ -2,8 +2,10 @@
 package Paws::EC2::DescribeVpcEndpointServices;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has ServiceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ServiceName' );
 
   use MooseX::ClassAttribute;
 
@@ -16,7 +18,7 @@ package Paws::EC2::DescribeVpcEndpointServices;
 
 =head1 NAME
 
-Paws::EC2::DescribeVpcEndpointServices - Arguments for method DescribeVpcEndpointServices on Paws::EC2
+Paws::EC2::DescribeVpcEndpointServices - Arguments for method DescribeVpcEndpointServices on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -44,6 +46,21 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
+=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
+
+One or more filters.
+
+=over
+
+=item *
+
+C<service-name>: The name of the service.
+
+=back
+
+
+
+
 =head2 MaxResults => Int
 
 The maximum number of items to return for this request. The request
@@ -62,6 +79,12 @@ from a prior call.)
 
 
 
+=head2 ServiceNames => ArrayRef[Str|Undef]
+
+One or more service names.
+
+
+
 
 =head1 SEE ALSO
 
@@ -69,9 +92,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeVpcEn
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

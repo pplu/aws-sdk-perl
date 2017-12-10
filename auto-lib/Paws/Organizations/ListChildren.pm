@@ -17,7 +17,7 @@ package Paws::Organizations::ListChildren;
 
 =head1 NAME
 
-Paws::Organizations::ListChildren - Arguments for method ListChildren on Paws::Organizations
+Paws::Organizations::ListChildren - Arguments for method ListChildren on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
@@ -71,7 +71,8 @@ where the output should continue from.
 The unique identifier (ID) for the parent root or OU whose children you
 want to list.
 
-The regex pattern for a parent ID string requires one of the following:
+The regex pattern (http://wikipedia.org/wiki/regex) for a parent ID
+string requires one of the following:
 
 =over
 
@@ -99,9 +100,9 @@ This class forms part of L<Paws>, documenting arguments for method ListChildren 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

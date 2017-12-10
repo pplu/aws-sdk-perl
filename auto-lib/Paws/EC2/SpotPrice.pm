@@ -47,8 +47,7 @@ This class has no description
 
 =head2 InstanceType => Str
 
-  The instance type. Note that T2 and HS1 instance types are not
-supported.
+  The instance type.
 
 
 =head2 ProductDescription => Str
@@ -58,8 +57,8 @@ supported.
 
 =head2 SpotPrice => Str
 
-  The maximum price (bid) that you are willing to pay for a Spot
-instance.
+  The maximum price per hour that you are willing to pay for a Spot
+Instance.
 
 
 =head2 Timestamp => Str
@@ -75,8 +74,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

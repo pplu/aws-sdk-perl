@@ -56,8 +56,9 @@ CloudFront key pairs that are associated with the trusted signer's AWS
 account. If no C<KeyPairId> element appears for a C<Signer>, that
 signer can't create signed URLs.
 
-For more information, see Serving Private Content through CloudFront in
-the I<Amazon CloudFront Developer Guide>.
+For more information, see Serving Private Content through CloudFront
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 B<REQUIRED> ARN => Str
@@ -67,8 +68,8 @@ the I<Amazon CloudFront Developer Guide>.
 
 =head2 B<REQUIRED> DomainName => Str
 
-  The domain name that corresponds to the streaming distribution. For
-example: C<s5c39gqb8ow64r.cloudfront.net>.
+  The domain name that corresponds to the streaming distribution, for
+example, C<s5c39gqb8ow64r.cloudfront.net>.
 
 
 =head2 B<REQUIRED> Id => Str
@@ -101,9 +102,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudFron
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

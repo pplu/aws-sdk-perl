@@ -15,7 +15,7 @@ package Paws::Kinesis::CreateStream;
 
 =head1 NAME
 
-Paws::Kinesis::CreateStream - Arguments for method CreateStream on Paws::Kinesis
+Paws::Kinesis::CreateStream - Arguments for method CreateStream on L<Paws::Kinesis>
 
 =head1 DESCRIPTION
 
@@ -49,8 +49,8 @@ DefaultShardLimit;
 A name to identify the stream. The stream name is scoped to the AWS
 account used by the application that creates the stream. It is also
 scoped by region. That is, two streams in two different AWS accounts
-can have the same name, and two streams in the same AWS account but in
-two different regions can have the same name.
+can have the same name. Two streams in the same AWS account but in two
+different regions can also have the same name.
 
 
 
@@ -61,9 +61,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateStream 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

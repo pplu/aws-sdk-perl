@@ -1,7 +1,7 @@
 
 package Paws::EFS::ModifyMountTargetSecurityGroups;
   use Moose;
-  has MountTargetId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'MountTargetId' , required => 1);
+  has MountTargetId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'MountTargetId', required => 1);
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
@@ -10,14 +10,13 @@ package Paws::EFS::ModifyMountTargetSecurityGroups;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-02-01/mount-targets/{MountTargetId}/security-groups');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::EFS::ModifyMountTargetSecurityGroups - Arguments for method ModifyMountTargetSecurityGroups on Paws::EFS
+Paws::EFS::ModifyMountTargetSecurityGroups - Arguments for method ModifyMountTargetSecurityGroups on L<Paws::EFS>
 
 =head1 DESCRIPTION
 
@@ -55,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method ModifyMountTa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

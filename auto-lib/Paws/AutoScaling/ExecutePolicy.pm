@@ -18,7 +18,7 @@ package Paws::AutoScaling::ExecutePolicy;
 
 =head1 NAME
 
-Paws::AutoScaling::ExecutePolicy - Arguments for method ExecutePolicy on Paws::AutoScaling
+Paws::AutoScaling::ExecutePolicy - Arguments for method ExecutePolicy on L<Paws::AutoScaling>
 
 =head1 DESCRIPTION
 
@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AutoScalingGroupName => Str
 
-The name or Amazon Resource Name (ARN) of the Auto Scaling group.
+The name of the Auto Scaling group.
 
 
 
@@ -61,8 +61,9 @@ complete.
 
 This parameter is not supported if the policy type is C<StepScaling>.
 
-For more information, see Auto Scaling Cooldowns in the I<Auto Scaling
-User Guide>.
+For more information, see Auto Scaling Cooldowns
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html)
+in the I<Auto Scaling User Guide>.
 
 
 
@@ -95,9 +96,9 @@ This class forms part of L<Paws>, documenting arguments for method ExecutePolicy
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

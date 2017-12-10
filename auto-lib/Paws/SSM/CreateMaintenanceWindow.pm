@@ -4,6 +4,7 @@ package Paws::SSM::CreateMaintenanceWindow;
   has AllowUnassociatedTargets => (is => 'ro', isa => 'Bool', required => 1);
   has ClientToken => (is => 'ro', isa => 'Str');
   has Cutoff => (is => 'ro', isa => 'Int', required => 1);
+  has Description => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Schedule => (is => 'ro', isa => 'Str', required => 1);
@@ -19,7 +20,7 @@ package Paws::SSM::CreateMaintenanceWindow;
 
 =head1 NAME
 
-Paws::SSM::CreateMaintenanceWindow - Arguments for method CreateMaintenanceWindow on Paws::SSM
+Paws::SSM::CreateMaintenanceWindow - Arguments for method CreateMaintenanceWindow on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -40,8 +41,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AllowUnassociatedTargets => Bool
 
-Whether targets must be registered with the Maintenance Window before
-tasks can be defined for those targets.
+Enables a Maintenance Window task to execute on managed instances, even
+if you have not registered those instances as targets. If enabled, then
+you must specify the unregistered instances (by instance ID) when you
+register a task with the Maintenance Window
+
+If you don't enable this option, then you must specify
+previously-registered targets when you register a task with the
+Maintenance Window.
 
 
 
@@ -55,6 +62,13 @@ User-provided idempotency token.
 
 The number of hours before the end of the Maintenance Window that
 Systems Manager stops scheduling new tasks for execution.
+
+
+
+=head2 Description => Str
+
+An optional description for the Maintenance Window. We recommend
+specifying a description to help you organize your Maintenance Windows.
 
 
 
@@ -84,9 +98,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateMainten
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StepFunctio
 
 =head1 DESCRIPTION
 
-This class has no description
+Contains details about an exit from a state during an execution.
 
 =head1 ATTRIBUTES
 
@@ -40,6 +40,33 @@ This class has no description
 =head2 B<REQUIRED> Name => Str
 
   The name of the state.
+
+A name must I<not> contain:
+
+=over
+
+=item *
+
+whitespace
+
+=item *
+
+brackets C<E<lt> E<gt> { } [ ]>
+
+=item *
+
+wildcard characters C<? *>
+
+=item *
+
+special characters C<" # % \ ^ | ~ ` $ & , ; : />
+
+=item *
+
+control characters (C<U+0000-001F>, C<U+007F-009F>)
+
+=back
+
 
 
 =head2 Output => Str
@@ -54,9 +81,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::StepFunct
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

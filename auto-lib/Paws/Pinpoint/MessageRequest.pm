@@ -2,6 +2,7 @@ package Paws::Pinpoint::MessageRequest;
   use Moose;
   has Addresses => (is => 'ro', isa => 'Paws::Pinpoint::MapOfAddressConfiguration');
   has Context => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
+  has Endpoints => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEndpointSendConfiguration');
   has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::DirectMessageConfiguration');
 1;
 
@@ -52,6 +53,13 @@ This payload is added to the push notification's 'data.pinpoint' object
 or added to the email/sms delivery receipt event attributes.
 
 
+=head2 Endpoints => L<Paws::Pinpoint::MapOfEndpointSendConfiguration>
+
+  A map of destination addresses, with the address as the key(Email
+address, phone number or push token) and the Address Configuration as
+the value.
+
+
 =head2 MessageConfiguration => L<Paws::Pinpoint::DirectMessageConfiguration>
 
   Message configuration.
@@ -64,9 +72,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

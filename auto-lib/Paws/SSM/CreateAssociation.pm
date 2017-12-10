@@ -1,6 +1,7 @@
 
 package Paws::SSM::CreateAssociation;
   use Moose;
+  has AssociationName => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -20,7 +21,7 @@ package Paws::SSM::CreateAssociation;
 
 =head1 NAME
 
-Paws::SSM::CreateAssociation - Arguments for method CreateAssociation on Paws::SSM
+Paws::SSM::CreateAssociation - Arguments for method CreateAssociation on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -37,6 +38,12 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 AssociationName => Str
+
+Specify a descriptive name for the association.
+
 
 
 =head2 DocumentVersion => Str
@@ -91,9 +98,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateAssocia
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -15,7 +15,7 @@ package Paws::RDS::AddSourceIdentifierToSubscription;
 
 =head1 NAME
 
-Paws::RDS::AddSourceIdentifierToSubscription - Arguments for method AddSourceIdentifierToSubscription on Paws::RDS
+Paws::RDS::AddSourceIdentifierToSubscription - Arguments for method AddSourceIdentifierToSubscription on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -36,10 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SourceIdentifier => Str
 
-The identifier of the event source to be added. An identifier must
-begin with a letter and must contain only ASCII letters, digits, and
-hyphens; it cannot end with a hyphen or contain two consecutive
-hyphens.
+The identifier of the event source to be added.
 
 Constraints:
 
@@ -84,9 +81,9 @@ This class forms part of L<Paws>, documenting arguments for method AddSourceIden
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

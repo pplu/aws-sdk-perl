@@ -40,8 +40,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 =head1 DESCRIPTION
 
 A parameter that has a different value for each cache node type it is
-applied to. For example, in a Redis cache cluster, a C<cache.m1.large>
-cache node type would have a larger C<maxmemory> value than a
+applied to. For example, in a Redis cluster, a C<cache.m1.large> cache
+node type would have a larger C<maxmemory> value than a
 C<cache.m1.small> type.
 
 =head1 ATTRIBUTES
@@ -63,7 +63,8 @@ parameter.
   Indicates whether a change to the parameter is applied immediately or
 requires a reboot for the change to be applied. You can force a reboot
 or wait until the next maintenance window's reboot. For more
-information, see Rebooting a Cluster.
+information, see Rebooting a Cluster
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Clusters.Rebooting.html).
 
 
 =head2 DataType => Str
@@ -105,9 +106,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ElastiCac
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

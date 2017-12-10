@@ -16,7 +16,7 @@ package Paws::EC2::DescribeVpcs;
 
 =head1 NAME
 
-Paws::EC2::DescribeVpcs - Arguments for method DescribeVpcs on Paws::EC2
+Paws::EC2::DescribeVpcs - Arguments for method DescribeVpcs on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -52,10 +52,25 @@ One or more filters.
 
 =item *
 
-C<cidr> - The IPv4 CIDR block of the VPC. The CIDR block you specify
-must exactly match the VPC's CIDR block for information to be returned
-for the VPC. Must contain the slash followed by one or two digits (for
-example, C</28>).
+C<cidr> - The primary IPv4 CIDR block of the VPC. The CIDR block you
+specify must exactly match the VPC's CIDR block for information to be
+returned for the VPC. Must contain the slash followed by one or two
+digits (for example, C</28>).
+
+=item *
+
+C<cidr-block-association.cidr-block> - An IPv4 CIDR block associated
+with the VPC.
+
+=item *
+
+C<cidr-block-association.association-id> - The association ID for an
+IPv4 CIDR block associated with the VPC.
+
+=item *
+
+C<cidr-block-association.state> - The state of an IPv4 CIDR block
+associated with the VPC.
 
 =item *
 
@@ -131,9 +146,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeVpcs 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -16,7 +16,7 @@ package Paws::ECR::GetDownloadUrlForLayer;
 
 =head1 NAME
 
-Paws::ECR::GetDownloadUrlForLayer - Arguments for method GetDownloadUrlForLayer on Paws::ECR
+Paws::ECR::GetDownloadUrlForLayer - Arguments for method GetDownloadUrlForLayer on L<Paws::ECR>
 
 =head1 DESCRIPTION
 
@@ -63,9 +63,9 @@ This class forms part of L<Paws>, documenting arguments for method GetDownloadUr
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

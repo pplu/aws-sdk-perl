@@ -80,7 +80,7 @@ C<1479816991.349>).
 
 =head2 OperationDetails => Str
 
-  Details about the operation (e.g., C<Debian-1GB-Virginia-1>).
+  Details about the operation (e.g., C<Debian-1GB-Ohio-1>).
 
 
 =head2 OperationType => Str
@@ -115,9 +115,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Lightsail
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

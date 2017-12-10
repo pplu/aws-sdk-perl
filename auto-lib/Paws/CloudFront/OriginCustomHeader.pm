@@ -42,8 +42,9 @@ if any, for this distribution.
 
   The name of a header that you want CloudFront to forward to your
 origin. For more information, see Forwarding Custom Headers to Your
-Origin (Web Distributions Only) in the I<Amazon Amazon CloudFront
-Developer Guide>.
+Origin (Web Distributions Only)
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html)
+in the I<Amazon Amazon CloudFront Developer Guide>.
 
 
 =head2 B<REQUIRED> HeaderValue => Str
@@ -58,9 +59,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudFron
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -15,7 +15,7 @@ package Paws::ElastiCache::RebootCacheCluster;
 
 =head1 NAME
 
-Paws::ElastiCache::RebootCacheCluster - Arguments for method RebootCacheCluster on Paws::ElastiCache
+Paws::ElastiCache::RebootCacheCluster - Arguments for method RebootCacheCluster on L<Paws::ElastiCache>
 
 =head1 DESCRIPTION
 
@@ -36,16 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CacheClusterId => Str
 
-The cache cluster identifier. This parameter is stored as a lowercase
-string.
+The cluster identifier. This parameter is stored as a lowercase string.
 
 
 
 =head2 B<REQUIRED> CacheNodeIdsToReboot => ArrayRef[Str|Undef]
 
 A list of cache node IDs to reboot. A node ID is a numeric identifier
-(0001, 0002, etc.). To reboot an entire cache cluster, specify all of
-the cache node IDs.
+(0001, 0002, etc.). To reboot an entire cluster, specify all of the
+cache node IDs.
 
 
 
@@ -56,9 +55,9 @@ This class forms part of L<Paws>, documenting arguments for method RebootCacheCl
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

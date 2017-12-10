@@ -50,8 +50,9 @@ this topic.
   The different events for which you can receive notifications. These
 events include the following: All (events), InProgress, Success,
 TimedOut, Cancelled, Failed. To learn more about these events, see
-Setting Up Events and Notifications in the I<Amazon EC2 Systems Manager
-User Guide>.
+Setting Up Events and Notifications
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-commands.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 =head2 NotificationType => Str
@@ -69,9 +70,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

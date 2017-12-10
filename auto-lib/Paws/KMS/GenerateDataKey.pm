@@ -18,7 +18,7 @@ package Paws::KMS::GenerateDataKey;
 
 =head1 NAME
 
-Paws::KMS::GenerateDataKey - Arguments for method GenerateDataKey on Paws::KMS
+Paws::KMS::GenerateDataKey - Arguments for method GenerateDataKey on L<Paws::KMS>
 
 =head1 DESCRIPTION
 
@@ -41,8 +41,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 A set of key-value pairs that represents additional authenticated data.
 
-For more information, see Encryption Context in the I<AWS Key
-Management Service Developer Guide>.
+For more information, see Encryption Context
+(http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 
@@ -50,8 +51,9 @@ Management Service Developer Guide>.
 
 A list of grant tokens.
 
-For more information, see Grant Tokens in the I<AWS Key Management
-Service Developer Guide>.
+For more information, see Grant Tokens
+(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 
@@ -60,19 +62,22 @@ Service Developer Guide>.
 The identifier of the CMK under which to generate and encrypt the data
 encryption key.
 
-A valid identifier is the unique key ID or the Amazon Resource Name
-(ARN) of the CMK, or the alias name or ARN of an alias that refers to
-the CMK. Examples:
+To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
+name, or alias ARN. When using an alias name, prefix it with "alias/".
+To specify a CMK in a different AWS account, you must use the key ARN
+or alias ARN.
+
+For example:
 
 =over
 
 =item *
 
-Unique key ID: C<1234abcd-12ab-34cd-56ef-1234567890ab>
+Key ID: C<1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =item *
 
-CMK ARN:
+Key ARN:
 C<arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =item *
@@ -85,6 +90,8 @@ Alias ARN: C<arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias>
 
 =back
 
+To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+To get the alias name and alias ARN, use ListAliases.
 
 
 
@@ -112,9 +119,9 @@ This class forms part of L<Paws>, documenting arguments for method GenerateDataK
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

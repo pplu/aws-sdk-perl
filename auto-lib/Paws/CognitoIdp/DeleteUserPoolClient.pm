@@ -15,7 +15,7 @@ package Paws::CognitoIdp::DeleteUserPoolClient;
 
 =head1 NAME
 
-Paws::CognitoIdp::DeleteUserPoolClient - Arguments for method DeleteUserPoolClient on Paws::CognitoIdp
+Paws::CognitoIdp::DeleteUserPoolClient - Arguments for method DeleteUserPoolClient on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClientId => Str
 
-The ID of the client associated with the user pool.
+The app client ID of the app associated with the user pool.
 
 
 
@@ -53,9 +53,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteUserPoo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -35,7 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-Stores summary information about a provisioning artifact.
+Summary information about a provisioning artifact (also known as a
+version) for a product.
 
 =head1 ATTRIBUTES
 
@@ -62,8 +63,8 @@ Stores summary information about a provisioning artifact.
 
 =head2 ProvisioningArtifactMetadata => L<Paws::ServiceCatalog::ProvisioningArtifactInfo>
 
-  The provisioning artifact metadata. This data is used with products
-created by AWS Marketplace.
+  The metadata for the provisioning artifact. This is used with AWS
+Marketplace products.
 
 
 
@@ -73,9 +74,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ServiceCa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

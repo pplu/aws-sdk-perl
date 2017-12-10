@@ -4,7 +4,7 @@ package Paws::CloudDirectory::UpdateTypedLinkFacet;
   has AttributeUpdates => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::TypedLinkFacetAttributeUpdate]', required => 1);
   has IdentityAttributeOrder => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
-  has SchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has SchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -12,14 +12,13 @@ package Paws::CloudDirectory::UpdateTypedLinkFacet;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/typedlink/facet');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::UpdateTypedLinkFacetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CloudDirectory::UpdateTypedLinkFacet - Arguments for method UpdateTypedLinkFacet on Paws::CloudDirectory
+Paws::CloudDirectory::UpdateTypedLinkFacet - Arguments for method UpdateTypedLinkFacet on L<Paws::CloudDirectory>
 
 =head1 DESCRIPTION
 
@@ -54,7 +53,8 @@ specified at the end. Any attributes that do not have a range specified
 are presumed to match the entire range. Filters are interpreted in the
 order of the attributes on the typed link facet, not the order in which
 they are supplied to any API calls. For more information about identity
-attributes, see Typed link.
+attributes, see Typed link
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
 
@@ -78,9 +78,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateTypedLi
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

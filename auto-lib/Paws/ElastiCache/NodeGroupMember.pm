@@ -42,12 +42,12 @@ Represents a single node within a node group (shard).
 
 =head2 CacheClusterId => Str
 
-  The ID of the cache cluster to which the node belongs.
+  The ID of the cluster to which the node belongs.
 
 
 =head2 CacheNodeId => Str
 
-  The ID of the node within its cache cluster. A node ID is a numeric
+  The ID of the node within its cluster. A node ID is a numeric
 identifier (0001, 0002, etc.).
 
 
@@ -74,9 +74,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ElastiCac
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

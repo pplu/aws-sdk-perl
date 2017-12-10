@@ -13,7 +13,7 @@ package Paws::Organizations::DescribeOrganization;
 
 =head1 NAME
 
-Paws::Organizations::DescribeOrganization - Arguments for method DescribeOrganization on Paws::Organizations
+Paws::Organizations::DescribeOrganization - Arguments for method DescribeOrganization on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
@@ -39,9 +39,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeOrgan
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

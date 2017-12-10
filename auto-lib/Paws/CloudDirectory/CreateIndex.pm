@@ -1,7 +1,7 @@
 
 package Paws::CloudDirectory::CreateIndex;
   use Moose;
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
   has IsUnique => (is => 'ro', isa => 'Bool', required => 1);
   has LinkName => (is => 'ro', isa => 'Str');
   has OrderedIndexedAttributeList => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeKey]', required => 1);
@@ -13,14 +13,13 @@ package Paws::CloudDirectory::CreateIndex;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/index');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::CreateIndexResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CloudDirectory::CreateIndex - Arguments for method CreateIndex on Paws::CloudDirectory
+Paws::CloudDirectory::CreateIndex - Arguments for method CreateIndex on L<Paws::CloudDirectory>
 
 =head1 DESCRIPTION
 
@@ -78,9 +77,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateIndex i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -4,12 +4,14 @@ package Paws::ACM::CertificateDetail;
   has CreatedAt => (is => 'ro', isa => 'Str');
   has DomainName => (is => 'ro', isa => 'Str');
   has DomainValidationOptions => (is => 'ro', isa => 'ArrayRef[Paws::ACM::DomainValidation]');
+  has ExtendedKeyUsages => (is => 'ro', isa => 'ArrayRef[Paws::ACM::ExtendedKeyUsage]');
   has FailureReason => (is => 'ro', isa => 'Str');
   has ImportedAt => (is => 'ro', isa => 'Str');
   has InUseBy => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has IssuedAt => (is => 'ro', isa => 'Str');
   has Issuer => (is => 'ro', isa => 'Str');
   has KeyAlgorithm => (is => 'ro', isa => 'Str');
+  has KeyUsages => (is => 'ro', isa => 'ArrayRef[Paws::ACM::KeyUsage]');
   has NotAfter => (is => 'ro', isa => 'Str');
   has NotBefore => (is => 'ro', isa => 'Str');
   has RenewalSummary => (is => 'ro', isa => 'Paws::ACM::RenewalSummary');
@@ -61,6 +63,7 @@ in the response to a DescribeCertificate request.
 
   The Amazon Resource Name (ARN) of the certificate. For more information
 about ARNs, see Amazon Resource Names (ARNs) and AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 
 
@@ -83,12 +86,20 @@ that occurs as a result of the RequestCertificate request. This field
 exists only when the certificate type is C<AMAZON_ISSUED>.
 
 
+=head2 ExtendedKeyUsages => ArrayRef[L<Paws::ACM::ExtendedKeyUsage>]
+
+  Contains a list of Extended Key Usage X.509 v3 extension objects. Each
+object specifies a purpose for which the certificate public key can be
+used and consists of a name and an object identifier (OID).
+
+
 =head2 FailureReason => Str
 
   The reason the certificate request failed. This value exists only when
 the certificate status is C<FAILED>. For more information, see
-Certificate Request Failed in the I<AWS Certificate Manager User
-Guide>.
+Certificate Request Failed
+(http://docs.aws.amazon.com/acm/latest/userguide/troubleshooting.html#troubleshooting-failed)
+in the I<AWS Certificate Manager User Guide>.
 
 
 =head2 ImportedAt => Str
@@ -117,8 +128,15 @@ certificate.
 
 =head2 KeyAlgorithm => Str
 
-  The algorithm that was used to generate the key pair (the public and
-private key).
+  The algorithm that was used to generate the public-private key pair.
+
+
+=head2 KeyUsages => ArrayRef[L<Paws::ACM::KeyUsage>]
+
+  A list of Key Usage X.509 v3 extension objects. Each object is a string
+value that identifies the purpose of the public key contained in the
+certificate. Possible extension values include DIGITAL_SIGNATURE,
+KEY_ENCHIPHERMENT, NON_REPUDIATION, and more.
 
 
 =head2 NotAfter => Str
@@ -133,8 +151,9 @@ private key).
 
 =head2 RenewalSummary => L<Paws::ACM::RenewalSummary>
 
-  Contains information about the status of ACM's managed renewal for the
-certificate. This field exists only when the certificate type is
+  Contains information about the status of ACM's managed renewal
+(http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for
+the certificate. This field exists only when the certificate type is
 C<AMAZON_ISSUED>.
 
 
@@ -186,10 +205,13 @@ the website.
   The source of the certificate. For certificates provided by ACM, this
 value is C<AMAZON_ISSUED>. For certificates that you imported with
 ImportCertificate, this value is C<IMPORTED>. ACM does not provide
-managed renewal for imported certificates. For more information about
-the differences between certificates that you import and those that ACM
-provides, see Importing Certificates in the I<AWS Certificate Manager
-User Guide>.
+managed renewal
+(http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for
+imported certificates. For more information about the differences
+between certificates that you import and those that ACM provides, see
+Importing Certificates
+(http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html)
+in the I<AWS Certificate Manager User Guide>.
 
 
 
@@ -199,9 +221,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ACM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -16,7 +16,10 @@ package Paws::CognitoIdp::CreateUserPool;
   has SmsAuthenticationMessage => (is => 'ro', isa => 'Str');
   has SmsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SmsConfigurationType');
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
+  has UsernameAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has UserPoolAddOns => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolAddOnsType');
   has UserPoolTags => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolTagsType');
+  has VerificationMessageTemplate => (is => 'ro', isa => 'Paws::CognitoIdp::VerificationMessageTemplateType');
 
   use MooseX::ClassAttribute;
 
@@ -29,7 +32,7 @@ package Paws::CognitoIdp::CreateUserPool;
 
 =head1 NAME
 
-Paws::CognitoIdp::CreateUserPool - Arguments for method CreateUserPool on Paws::CognitoIdp
+Paws::CognitoIdp::CreateUserPool - Arguments for method CreateUserPool on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -141,10 +144,32 @@ A string representing the SMS verification message.
 
 
 
+=head2 UsernameAttributes => ArrayRef[Str|Undef]
+
+Specifies whether email addresses or phone numbers can be specified as
+usernames when a user signs up.
+
+
+
+=head2 UserPoolAddOns => L<Paws::CognitoIdp::UserPoolAddOnsType>
+
+Used to enable advanced security risk detection. Set the key
+C<AdvancedSecurityMode> to the value "AUDIT".
+
+
+
 =head2 UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>
 
 The cost allocation tags for the user pool. For more information, see
 Adding Cost Allocation Tags to Your User Pool
+(http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html)
+
+
+
+=head2 VerificationMessageTemplate => L<Paws::CognitoIdp::VerificationMessageTemplateType>
+
+The template for the verification message that the user sees when the
+app requests permission to access the user's information.
 
 
 
@@ -155,9 +180,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateUserPoo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

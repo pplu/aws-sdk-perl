@@ -14,7 +14,7 @@ package Paws::Organizations::CreateOrganization;
 
 =head1 NAME
 
-Paws::Organizations::CreateOrganization - Arguments for method CreateOrganization on Paws::Organizations
+Paws::Organizations::CreateOrganization - Arguments for method CreateOrganization on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
@@ -44,14 +44,18 @@ feature set supports different levels of functionality.
 
 I<CONSOLIDATED_BILLING>: All member accounts have their bills
 consolidated to and paid by the master account. For more information,
-see Consolidated Billing in the I<AWS Organizations User Guide>.
+see Consolidated Billing
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only)
+in the I<AWS Organizations User Guide>.
 
 =item *
 
 I<ALL>: In addition to all the features supported by the consolidated
 billing feature set, the master account can also apply any type of
 policy to any member account in the organization. For more information,
-see All features in the I<AWS Organizations User Guide>.
+see All features
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all)
+in the I<AWS Organizations User Guide>.
 
 =back
 
@@ -65,9 +69,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateOrganiz
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

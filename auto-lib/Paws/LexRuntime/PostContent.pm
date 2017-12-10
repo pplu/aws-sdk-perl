@@ -1,13 +1,14 @@
 
 package Paws::LexRuntime::PostContent;
   use Moose;
-  has Accept => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'accept' );
-  has BotAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botAlias' , required => 1);
-  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName' , required => 1);
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'contentType' , required => 1);
-  has InputStream => (is => 'ro', isa => 'Str', required => 1);
-  has SessionAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'sessionAttributes' );
-  has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'userId' , required => 1);
+  has Accept => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'accept');
+  has BotAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botAlias', required => 1);
+  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName', required => 1);
+  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'contentType', required => 1);
+  has InputStream => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'inputStream', required => 1);
+  has RequestAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'requestAttributes');
+  has SessionAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'sessionAttributes');
+  has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'userId', required => 1);
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'InputStream');
@@ -15,14 +16,13 @@ package Paws::LexRuntime::PostContent;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/bot/{botName}/alias/{botAlias}/user/{userId}/content');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexRuntime::PostContentResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::LexRuntime::PostContent - Arguments for method PostContent on Paws::LexRuntime
+Paws::LexRuntime::PostContent - Arguments for method PostContent on L<Paws::LexRuntime>
 
 =head1 DESCRIPTION
 
@@ -108,7 +108,7 @@ Name of the Amazon Lex bot.
 
 =head2 B<REQUIRED> ContentType => Str
 
-You pass this values as the C<Content-Type> HTTP header.
+You pass this value as the C<Content-Type> HTTP header.
 
 Indicates the audio format or text. The header value must start with
 one of the following prefixes:
@@ -117,7 +117,7 @@ one of the following prefixes:
 
 =item *
 
-PCM format
+PCM format, audio data must be in little-endian byte order.
 
 =over
 
@@ -129,6 +129,11 @@ audio/l16; rate=16000; channels=1
 
 audio/x-l16; sample-rate=16000; channel-count=1
 
+=item *
+
+audio/lpcm; sample-rate=8000; sample-size-bits=16; channel-count=1;
+is-big-endian=false
+
 =back
 
 =item *
@@ -139,8 +144,8 @@ Opus format
 
 =item *
 
-audio/x-cbr-opus-with-preamble; preamble-size=0; bit-rate=1;
-frame-size-milliseconds=1.1
+audio/x-cbr-opus-with-preamble; preamble-size=0; bit-rate=256000;
+frame-size-milliseconds=4
 
 =back
 
@@ -166,100 +171,80 @@ text/plain; charset=utf-8
 User input in PCM or Opus audio format or text format as described in
 the C<Content-Type> HTTP header.
 
+You can stream audio data to Amazon Lex or you can create a local
+buffer that captures all of the audio data before sending. In general,
+you get better performance if you stream audio data rather than
+buffering the data locally.
+
+
+
+=head2 RequestAttributes => Str
+
+You pass this value as the C<x-amz-lex-request-attributes> HTTP header.
+
+Request-specific information passed between Amazon Lex and a client
+application. The value must be a JSON serialized and base64 encoded map
+with string keys and values. The total size of the C<requestAttributes>
+and C<sessionAttributes> headers is limited to 12 KB.
+
+The namespace C<x-amz-lex:> is reserved for special attributes. Don't
+create any request attributes with the prefix C<x-amz-lex:>.
+
+For more information, see Setting Request Attributes
+(http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs).
+
 
 
 =head2 SessionAttributes => Str
 
-You pass this value in the C<x-amz-lex-session-attributes> HTTP header.
-The value must be map (keys and values must be strings) that is JSON
-serialized and then base64 encoded.
+You pass this value as the C<x-amz-lex-session-attributes> HTTP header.
 
-A session represents dialog between a user and Amazon Lex. At runtime,
-a client application can pass contextual information, in the request to
-Amazon Lex. For example,
+Application-specific information passed between Amazon Lex and a client
+application. The value must be a JSON serialized and base64 encoded map
+with string keys and values. The total size of the C<sessionAttributes>
+and C<requestAttributes> headers is limited to 12 KB.
 
-=over
-
-=item *
-
-You might use session attributes to track the requestID of user
-requests.
-
-=item *
-
-In Getting Started Exercise 1, the example bot uses the price session
-attribute to maintain the price of flowers ordered (for example,
-"price":25). The code hook (Lambda function) sets this attribute based
-on the type of flowers ordered. For more information, see Review the
-Details of Information Flow.
-
-=item *
-
-In the BookTrip bot exercise, the bot uses the C<currentReservation>
-session attribute to maintains the slot data during the in-progress
-conversation to book a hotel or book a car. For more information, see
-Details of Information Flow.
-
-=back
-
-Amazon Lex passes these session attributes to the Lambda functions
-configured for the intent In the your Lambda function, you can use the
-session attributes for initialization and customization (prompts). Some
-examples are:
-
-=over
-
-=item *
-
-Initialization - In a pizza ordering bot, if you pass user location
-(for example, C<"Location : 111 Maple Street">), then your Lambda
-function might use this information to determine the closest pizzeria
-to place the order (and perhaps set the storeAddress slot value as
-well).
-
-Personalized prompts - For example, you can configure prompts to refer
-to the user by name (for example, "Hey [firstName], what toppings would
-you like?"). You can pass the user's name as a session attribute
-("firstName": "Joe") so that Amazon Lex can substitute the placeholder
-to provide a personalized prompt to the user ("Hey Joe, what toppings
-would you like?").
-
-=back
-
-Amazon Lex does not persist session attributes.
-
-If you configured a code hook for the intent, Amazon Lex passes the
-incoming session attributes to the Lambda function. The Lambda function
-must return these session attributes if you want Amazon Lex to return
-them to the client.
-
-If there is no code hook configured for the intent Amazon Lex simply
-returns the session attributes to the client application.
+For more information, see Setting Session Attributes
+(http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs).
 
 
 
 =head2 B<REQUIRED> UserId => Str
 
-ID of the client application user. Typically, each of your application
-users should have a unique ID. The application developer decides the
-user IDs. At runtime, each request must include the user ID. Note the
-following considerations:
+The ID of the client application user. Amazon Lex uses this to identify
+a user's conversation with your bot. At runtime, each request must
+contain the C<userID> field.
+
+To decide the user ID to use for your application, consider the
+following factors.
 
 =over
 
 =item *
 
-If you want a user to start conversation on one device and continue the
-conversation on another device, you might choose a user-specific
-identifier, such as the user's login, or Amazon Cognito user ID
-(assuming your application is using Amazon Cognito).
+The C<userID> field must not contain any personally identifiable
+information of the user, for example, name, personal identification
+numbers, or other end user personal information.
+
+=item *
+
+If you want a user to start a conversation on one device and continue
+on another device, use a user-specific identifier.
 
 =item *
 
 If you want the same user to be able to have two independent
-conversations on two different devices, you might choose
-device-specific identifier, such as device ID, or some globally unique
+conversations on two different devices, choose a device-specific
 identifier.
+
+=item *
+
+A user can't have two independent conversations with two different
+versions of the same bot. For example, a user can't have a conversation
+with the PROD and BETA versions of the same bot. If you anticipate that
+a user will need to have conversation with two different versions, for
+example, while testing, include the bot alias in the user ID to
+separate the two conversations.
 
 =back
 
@@ -273,9 +258,9 @@ This class forms part of L<Paws>, documenting arguments for method PostContent i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

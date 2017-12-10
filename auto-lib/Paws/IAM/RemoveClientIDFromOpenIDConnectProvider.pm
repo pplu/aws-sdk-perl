@@ -15,7 +15,7 @@ package Paws::IAM::RemoveClientIDFromOpenIDConnectProvider;
 
 =head1 NAME
 
-Paws::IAM::RemoveClientIDFromOpenIDConnectProvider - Arguments for method RemoveClientIDFromOpenIDConnectProvider on Paws::IAM
+Paws::IAM::RemoveClientIDFromOpenIDConnectProvider - Arguments for method RemoveClientIDFromOpenIDConnectProvider on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -49,7 +49,9 @@ remove the client ID from. You can get a list of OIDC provider ARNs by
 using the ListOpenIDConnectProviders action.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces in the I<AWS General Reference>.
+AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+in the I<AWS General Reference>.
 
 
 
@@ -60,9 +62,9 @@ This class forms part of L<Paws>, documenting arguments for method RemoveClientI
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

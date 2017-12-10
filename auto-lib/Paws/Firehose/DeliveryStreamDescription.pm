@@ -4,9 +4,11 @@ package Paws::Firehose::DeliveryStreamDescription;
   has DeliveryStreamARN => (is => 'ro', isa => 'Str', required => 1);
   has DeliveryStreamName => (is => 'ro', isa => 'Str', required => 1);
   has DeliveryStreamStatus => (is => 'ro', isa => 'Str', required => 1);
+  has DeliveryStreamType => (is => 'ro', isa => 'Str', required => 1);
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::Firehose::DestinationDescription]', required => 1);
   has HasMoreDestinations => (is => 'ro', isa => 'Bool', required => 1);
   has LastUpdateTimestamp => (is => 'ro', isa => 'Str');
+  has Source => (is => 'ro', isa => 'Paws::Firehose::SourceDescription');
   has VersionId => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -63,6 +65,26 @@ Contains information about a delivery stream.
   The status of the delivery stream.
 
 
+=head2 B<REQUIRED> DeliveryStreamType => Str
+
+  The delivery stream type. This can be one of the following values:
+
+=over
+
+=item *
+
+C<DirectPut>: Provider applications access the delivery stream
+directly.
+
+=item *
+
+C<KinesisStreamAsSource>: The delivery stream uses a Kinesis stream as
+a source.
+
+=back
+
+
+
 =head2 B<REQUIRED> Destinations => ArrayRef[L<Paws::Firehose::DestinationDescription>]
 
   The destinations.
@@ -76,6 +98,12 @@ Contains information about a delivery stream.
 =head2 LastUpdateTimestamp => Str
 
   The date and time that the delivery stream was last updated.
+
+
+=head2 Source => L<Paws::Firehose::SourceDescription>
+
+  If the C<DeliveryStreamType> parameter is C<KinesisStreamAsSource>, a
+SourceDescription object describing the source Kinesis stream.
 
 
 =head2 B<REQUIRED> VersionId => Str
@@ -93,9 +121,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Firehose>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

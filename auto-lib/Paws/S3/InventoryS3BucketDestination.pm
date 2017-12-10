@@ -2,6 +2,7 @@ package Paws::S3::InventoryS3BucketDestination;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str');
   has Bucket => (is => 'ro', isa => 'Str', required => 1);
+  has Encryption => (is => 'ro', isa => 'Paws::S3::InventoryEncryption');
   has Format => (is => 'ro', isa => 'Str', required => 1);
   has Prefix => (is => 'ro', isa => 'Str');
 1;
@@ -50,6 +51,12 @@ This class has no description
 will be published.
 
 
+=head2 Encryption => L<Paws::S3::InventoryEncryption>
+
+  Contains the type of server-side encryption used to encrypt the
+inventory results.
+
+
 =head2 B<REQUIRED> Format => Str
 
   Specifies the output format of the inventory results.
@@ -67,9 +74,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::S3>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

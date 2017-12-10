@@ -22,7 +22,7 @@ package Paws::RDS::DescribeEvents;
 
 =head1 NAME
 
-Paws::RDS::DescribeEvents - Arguments for method DescribeEvents on Paws::RDS
+Paws::RDS::DescribeEvents - Arguments for method DescribeEvents on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -53,7 +53,7 @@ Default: 60
 
 The end of the time interval for which to retrieve events, specified in
 ISO 8601 format. For more information about ISO 8601, go to the ISO8601
-Wikipedia page.
+Wikipedia page. (http://en.wikipedia.org/wiki/ISO_8601)
 
 Example: 2009-07-08T18:00Z
 
@@ -95,8 +95,8 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 SourceIdentifier => Str
 
-The identifier of the event source for which events will be returned.
-If not specified, then all sources are included in the response.
+The identifier of the event source for which events are returned. If
+not specified, then all sources are included in the response.
 
 Constraints:
 
@@ -146,7 +146,7 @@ Valid values are: C<"db-instance">, C<"db-parameter-group">, C<"db-security-grou
 
 The beginning of the time interval to retrieve events for, specified in
 ISO 8601 format. For more information about ISO 8601, go to the ISO8601
-Wikipedia page.
+Wikipedia page. (http://en.wikipedia.org/wiki/ISO_8601)
 
 Example: 2009-07-08T18:00Z
 
@@ -159,9 +159,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeEvent
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -1,6 +1,7 @@
 package Paws::WAFRegional::ActivatedRule;
   use Moose;
-  has Action => (is => 'ro', isa => 'Paws::WAFRegional::WafAction', required => 1);
+  has Action => (is => 'ro', isa => 'Paws::WAFRegional::WafAction');
+  has OverrideAction => (is => 'ro', isa => 'Paws::WAFRegional::WafOverrideAction');
   has Priority => (is => 'ro', isa => 'Int', required => 1);
   has RuleId => (is => 'ro', isa => 'Str', required => 1);
   has Type => (is => 'ro', isa => 'Str');
@@ -45,7 +46,7 @@ parameter in the WebACLUpdate data type.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Action => L<Paws::WAFRegional::WafAction>
+=head2 Action => L<Paws::WAFRegional::WafAction>
 
   Specifies the action that CloudFront or AWS WAF takes when a web
 request matches the conditions in the C<Rule>. Valid values for
@@ -69,6 +70,29 @@ based on the remaining rules in the web ACL.
 
 =back
 
+The C<Action> data type within C<ActivatedRule> is used only when
+submitting an C<UpdateWebACL> request. C<ActivatedRule|Action> is not
+applicable and therefore not available for C<UpdateRuleGroup>.
+
+
+=head2 OverrideAction => L<Paws::WAFRegional::WafOverrideAction>
+
+  Use the C<OverrideAction> to test your C<RuleGroup>.
+
+Any rule in a C<RuleGroup> can potentially block a request. If you set
+the C<OverrideAction> to C<None>, the C<RuleGroup> will block a request
+if any individual rule in the C<RuleGroup> matches the request and is
+configured to block that request. However if you first want to test the
+C<RuleGroup>, set the C<OverrideAction> to C<Count>. The C<RuleGroup>
+will then override any block action specified by individual rules
+contained within the group. Instead of blocking matching requests,
+those requests will be counted. You can view a record of counted
+requests using GetSampledRequests.
+
+The C<OverrideAction> data type within C<ActivatedRule> is used only
+when submitting an C<UpdateRuleGroup> request.
+C<ActivatedRule|OverrideAction> is not applicable and therefore not
+available for C<UpdateWebACL>.
 
 
 =head2 B<REQUIRED> Priority => Int
@@ -92,12 +116,12 @@ C<RuleId> is returned by CreateRule and by ListRules.
 
 =head2 Type => Str
 
-  The rule type, either C<REGULAR>, as defined by Rule, or C<RATE_BASED>,
-as defined by RateBasedRule. The default is REGULAR. Although this
-field is optional, be aware that if you try to add a RATE_BASED rule to
-a web ACL without setting the type, the UpdateWebACL request will fail
-because the request tries to add a REGULAR rule with the specified ID,
-which does not exist.
+  The rule type, either C<REGULAR>, as defined by Rule, C<RATE_BASED>, as
+defined by RateBasedRule, or C<GROUP>, as defined by RuleGroup. The
+default is REGULAR. Although this field is optional, be aware that if
+you try to add a RATE_BASED rule to a web ACL without setting the type,
+the UpdateWebACL request will fail because the request tries to add a
+REGULAR rule with the specified ID, which does not exist.
 
 
 
@@ -107,9 +131,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::WAFRegion
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

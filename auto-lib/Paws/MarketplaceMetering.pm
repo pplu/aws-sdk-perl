@@ -11,7 +11,7 @@ package Paws::MarketplaceMetering;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub BatchMeterUsage {
@@ -108,7 +108,7 @@ Each argument is described in detail in: L<Paws::MarketplaceMetering::BatchMeter
 
 Returns: a L<Paws::MarketplaceMetering::BatchMeterUsageResult> instance
 
-  BatchMeterUsage is called from a SaaS application listed on the AWS
+BatchMeterUsage is called from a SaaS application listed on the AWS
 Marketplace to post metering records for a set of customers.
 
 For identical requests, the API is idempotent; requests can be retried
@@ -127,7 +127,7 @@ Each argument is described in detail in: L<Paws::MarketplaceMetering::MeterUsage
 
 Returns: a L<Paws::MarketplaceMetering::MeterUsageResult> instance
 
-  API to emit metering records. For identical requests, the API is
+API to emit metering records. For identical requests, the API is
 idempotent. It simply returns the metering record ID.
 
 MeterUsage is authenticated on the buyer's AWS account, generally when
@@ -140,7 +140,7 @@ Each argument is described in detail in: L<Paws::MarketplaceMetering::ResolveCus
 
 Returns: a L<Paws::MarketplaceMetering::ResolveCustomerResult> instance
 
-  ResolveCustomer is called by a SaaS application during the registration
+ResolveCustomer is called by a SaaS application during the registration
 process. When a buyer visits your website during the registration
 process, the buyer submits a registration token through their browser.
 The registration token is resolved through this API to obtain a
@@ -162,9 +162,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

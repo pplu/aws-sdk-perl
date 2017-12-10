@@ -50,12 +50,12 @@ Describes a version of a document.
 
 =head2 ContentCreatedTimestamp => Str
 
-  The time stamp when the content of the document was originally created.
+  The timestamp when the content of the document was originally created.
 
 
 =head2 ContentModifiedTimestamp => Str
 
-  The time stamp when the content of the document was modified.
+  The timestamp when the content of the document was modified.
 
 
 =head2 ContentType => Str
@@ -65,7 +65,7 @@ Describes a version of a document.
 
 =head2 CreatedTimestamp => Str
 
-  The time stamp when the document was first uploaded.
+  The timestamp when the document was first uploaded.
 
 
 =head2 CreatorId => Str
@@ -80,7 +80,7 @@ Describes a version of a document.
 
 =head2 ModifiedTimestamp => Str
 
-  The time stamp when the document was last uploaded.
+  The timestamp when the document was last uploaded.
 
 
 =head2 Name => Str
@@ -120,9 +120,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::WorkDocs>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

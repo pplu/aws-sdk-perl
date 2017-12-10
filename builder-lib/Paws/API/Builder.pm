@@ -107,6 +107,8 @@ package Paws::API::Builder {
     return 'SimulateAllCustomPolicies' if ($name eq 'SimulateCustomPolicy');
     return 'SimulateAllPrincipalPolicies' if ($name eq 'SimulatePrincipalPolicy');
     return 'LookupAllEvents' if ($name eq 'LookupEvents');
+    return 'BatchGetAllTraces' if ($name eq 'BatchGetTraces');
+
     die "Please help me generate a good name for the paginator $name";
   }
 
@@ -334,7 +336,7 @@ package Paws::API::Builder {
 
 =head1 NAME
 
-[% c.api %]::[% op_name %] - Arguments for method [% op_name %] on [% c.api %]
+[% c.api %]::[% op_name %] - Arguments for method [% op_name %] on L<[% c.api %]>
 
 =head1 DESCRIPTION
 
@@ -368,9 +370,9 @@ This class forms part of L<Paws>, documenting arguments for method [% operation.
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 #);
@@ -427,7 +429,7 @@ Each argument is described in detail in: L<[% c.api %]::[% op_name %]>
 
 Returns: [% out_shape = c.shapename_for_operation_output(op_name); IF (out_shape) %]a L<[% c.api %]::[% out_shape %]> instance[% ELSE %]nothing[% END %]
 
-  [% c.doc_for_method(op_name) %]
+[% c.doc_for_method(op_name) %]
 
 [% END %]
 
@@ -439,9 +441,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 #);
@@ -493,9 +495,9 @@ This class forms part of L<Paws>, describing an object used in L<[% c.api %]>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 #);
@@ -786,7 +788,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     my $pod = Pod::HTML2Pod::convert(
       content => $html,
       a_name => 0,
-      a_href => 0,
+      a_href => 1,
       debug => 0,
     );
     $pod =~ s/=pod//;
@@ -849,9 +851,9 @@ This class forms part of L<Paws>, describing an object used in L<[% c.api %]>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 #);
@@ -916,9 +918,9 @@ This class forms part of L<Paws>, describing an object used in L<[% c.api %]>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 #);

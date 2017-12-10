@@ -3,9 +3,9 @@ package Paws::DMS::EventSubscription;
   has CustomerAwsId => (is => 'ro', isa => 'Str');
   has CustSubscriptionId => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
-  has EventCategoriesList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'EventCategory', traits => ['NameInRequest']);
+  has EventCategoriesList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SnsTopicArn => (is => 'ro', isa => 'Str');
-  has SourceIdsList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'SourceId', traits => ['NameInRequest']);
+  has SourceIdsList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SourceType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has SubscriptionCreationTime => (is => 'ro', isa => 'Str');
@@ -110,9 +110,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::DMS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

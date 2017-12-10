@@ -3,6 +3,7 @@ package Paws::IoT::TopicRulePayload;
   has Actions => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Action]', request_name => 'actions', traits => ['NameInRequest'], required => 1);
   has AwsIotSqlVersion => (is => 'ro', isa => 'Str', request_name => 'awsIotSqlVersion', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has ErrorAction => (is => 'ro', isa => 'Paws::IoT::Action', request_name => 'errorAction', traits => ['NameInRequest']);
   has RuleDisabled => (is => 'ro', isa => 'Bool', request_name => 'ruleDisabled', traits => ['NameInRequest']);
   has Sql => (is => 'ro', isa => 'Str', request_name => 'sql', traits => ['NameInRequest'], required => 1);
 1;
@@ -55,6 +56,11 @@ Describes a rule.
   The description of the rule.
 
 
+=head2 ErrorAction => L<Paws::IoT::Action>
+
+  The action to take when an error occurs.
+
+
 =head2 RuleDisabled => Bool
 
   Specifies whether the rule is disabled.
@@ -63,7 +69,9 @@ Describes a rule.
 =head2 B<REQUIRED> Sql => Str
 
   The SQL statement used to query the topic. For more information, see
-AWS IoT SQL Reference in the I<AWS IoT Developer Guide>.
+AWS IoT SQL Reference
+(http://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html#aws-iot-sql-reference)
+in the I<AWS IoT Developer Guide>.
 
 
 
@@ -73,9 +81,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::IoT>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

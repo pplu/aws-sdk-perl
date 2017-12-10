@@ -33,16 +33,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-An output for the specified Product object created as the result of a
-request. For example, a CloudFormation-backed product that creates an
-S3 bucket would have an output for the S3 bucket URL.
+The output for the product created as the result of a request. For
+example, the output for a CloudFormation-backed product that creates an
+S3 bucket would include the S3 bucket URL.
 
 =head1 ATTRIBUTES
 
 
 =head2 Description => Str
 
-  The text description of the output.
+  The description of the output.
 
 
 =head2 OutputKey => Str
@@ -62,9 +62,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ServiceCa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

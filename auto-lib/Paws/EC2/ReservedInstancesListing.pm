@@ -48,7 +48,8 @@ This class has no description
 =head2 ClientToken => Str
 
   A unique, case-sensitive key supplied by the client to ensure that the
-request is idempotent. For more information, see Ensuring Idempotency.
+request is idempotent. For more information, see Ensuring Idempotency
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 
 =head2 CreateDate => Str
@@ -104,8 +105,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

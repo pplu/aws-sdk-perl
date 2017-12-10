@@ -19,7 +19,7 @@ package Paws::Route53::GetGeoLocation;
 
 =head1 NAME
 
-Paws::Route53::GetGeoLocation - Arguments for method GetGeoLocation on Paws::Route53
+Paws::Route53::GetGeoLocation - Arguments for method GetGeoLocation on L<Paws::Route53>
 
 =head1 DESCRIPTION
 
@@ -80,15 +80,17 @@ B<SA>: South America
 =head2 CountryCode => Str
 
 Amazon Route 53 uses the two-letter country codes that are specified in
-ISO standard 3166-1 alpha-2.
+ISO standard 3166-1 alpha-2
+(https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 
 
 
 =head2 SubdivisionCode => Str
 
 Amazon Route 53 uses the one- to three-letter subdivision codes that
-are specified in ISO standard 3166-1 alpha-2. Amazon Route 53 doesn't
-support subdivision codes for all countries. If you specify
+are specified in ISO standard 3166-1 alpha-2
+(https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Amazon Route 53
+doesn't support subdivision codes for all countries. If you specify
 C<SubdivisionCode>, you must also specify C<CountryCode>.
 
 
@@ -100,9 +102,9 @@ This class forms part of L<Paws>, documenting arguments for method GetGeoLocatio
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

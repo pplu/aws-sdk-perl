@@ -54,11 +54,15 @@ Contains general information about a domain.
 
 =over
 
-=item * B<REGISTERED>: The domain is properly registered and available.
+=item *
+
+C<REGISTERED> E<ndash> The domain is properly registered and available.
 You can use this domain for registering types and creating new workflow
 executions.
 
-=item * B<DEPRECATED>: The domain was deprecated using DeprecateDomain,
+=item *
+
+C<DEPRECATED> E<ndash> The domain was deprecated using DeprecateDomain,
 but is still in use. You should not create new workflow executions in
 this domain.
 
@@ -73,9 +77,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SimpleWor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

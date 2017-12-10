@@ -16,7 +16,7 @@ package Paws::EC2::ModifyReservedInstances;
 
 =head1 NAME
 
-Paws::EC2::ModifyReservedInstances - Arguments for method ModifyReservedInstances on Paws::EC2
+Paws::EC2::ModifyReservedInstances - Arguments for method ModifyReservedInstances on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -39,7 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 A unique, case-sensitive token you provide to ensure idempotency of
 your modification request. For more information, see Ensuring
-Idempotency.
+Idempotency
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 
 
@@ -62,9 +63,9 @@ This class forms part of L<Paws>, documenting arguments for method ModifyReserve
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

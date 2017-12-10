@@ -1,7 +1,6 @@
 package Paws::Pinpoint::WriteEventStream;
   use Moose;
   has DestinationStreamArn => (is => 'ro', isa => 'Str');
-  has ExternalId => (is => 'ro', isa => 'Str');
   has RoleArn => (is => 'ro', isa => 'Str');
 1;
 
@@ -46,12 +45,6 @@ arn:aws:firehose:REGION:ACCOUNT_ID:deliverystream/STREAM_NAME Kinesis
 ARN: arn:aws:kinesis:REGION:ACCOUNT_ID:stream/STREAM_NAME
 
 
-=head2 ExternalId => Str
-
-  The external ID assigned the IAM role that authorizes Amazon Pinpoint
-to publish to the stream.
-
-
 =head2 RoleArn => Str
 
   The IAM role that authorizes Amazon Pinpoint to publish events to the
@@ -65,9 +58,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

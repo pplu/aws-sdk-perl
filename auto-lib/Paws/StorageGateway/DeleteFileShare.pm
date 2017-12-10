@@ -2,6 +2,7 @@
 package Paws::StorageGateway::DeleteFileShare;
   use Moose;
   has FileShareARN => (is => 'ro', isa => 'Str', required => 1);
+  has ForceDelete => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
 
@@ -14,7 +15,7 @@ package Paws::StorageGateway::DeleteFileShare;
 
 =head1 NAME
 
-Paws::StorageGateway::DeleteFileShare - Arguments for method DeleteFileShare on Paws::StorageGateway
+Paws::StorageGateway::DeleteFileShare - Arguments for method DeleteFileShare on L<Paws::StorageGateway>
 
 =head1 DESCRIPTION
 
@@ -39,6 +40,16 @@ The Amazon Resource Name (ARN) of the file share to be deleted.
 
 
 
+=head2 ForceDelete => Bool
+
+If this value is set to true, the operation deletes a file share
+immediately and aborts all data uploads to AWS. Otherwise, the file
+share is not deleted until all data is uploaded to AWS. This process
+aborts the data upload process, and the file share enters the
+FORCE_DELETING status.
+
+
+
 
 =head1 SEE ALSO
 
@@ -46,9 +57,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteFileSha
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

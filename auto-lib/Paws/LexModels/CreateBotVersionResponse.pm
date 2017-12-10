@@ -32,7 +32,7 @@ Paws::LexModels::CreateBotVersionResponse
 =head2 AbortStatement => L<Paws::LexModels::Statement>
 
 The message that Amazon Lex uses to abort a conversation. For more
-information, see .
+information, see PutBot.
 
 
 =head2 Checksum => Str
@@ -66,13 +66,13 @@ application that is directed in whole or in part, to children under age
 COPPA. For information regarding the use of Amazon Lex in connection
 with websites, programs, or other applications that are directed or
 targeted, in whole or in part, to children under age 13, see the Amazon
-Lex FAQ.
+Lex FAQ. (https://aws.amazon.com/lex/faqs#data-security)
 
 
 =head2 ClarificationPrompt => L<Paws::LexModels::Prompt>
 
 The message that Amazon Lex uses when it doesn't understand the user's
-request. For more information, see .
+request. For more information, see PutBot.
 
 
 =head2 CreatedDate => Str
@@ -94,12 +94,12 @@ failed to build the bot.
 =head2 IdleSessionTTLInSeconds => Int
 
 The maximum time in seconds that Amazon Lex retains the data gathered
-in a conversation. For more information, see .
+in a conversation. For more information, see PutBot.
 
 
 =head2 Intents => ArrayRef[L<Paws::LexModels::Intent>]
 
-An array of C<Intent> objects. For more information, see .
+An array of C<Intent> objects. For more information, see PutBot.
 
 
 =head2 LastUpdatedDate => Str

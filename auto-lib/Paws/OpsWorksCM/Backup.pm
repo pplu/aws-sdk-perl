@@ -186,8 +186,8 @@ created.
 
 =head2 ToolsVersion => Str
 
-  The version of AWS OpsWorks for Chef Automate-specific tools that is
-obtained from the server when the backup is created.
+  The version of AWS OpsWorks CM-specific tools that is obtained from the
+server when the backup is created.
 
 
 =head2 UserArn => Str
@@ -203,9 +203,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::OpsWorksC
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

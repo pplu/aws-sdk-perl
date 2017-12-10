@@ -1,0 +1,81 @@
+
+package Paws::SageMakerRuntime::InvokeEndpoint;
+  use Moose;
+  has Accept => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Accept');
+  has Body => (is => 'ro', isa => 'Str', required => 1);
+  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
+  has EndpointName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'EndpointName', required => 1);
+
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => 'Body');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'InvokeEndpoint');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/endpoints/{EndpointName}/invocations');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMakerRuntime::InvokeEndpointOutput');
+1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::SageMakerRuntime::InvokeEndpoint - Arguments for method InvokeEndpoint on L<Paws::SageMakerRuntime>
+
+=head1 DESCRIPTION
+
+This class represents the parameters used for calling the method InvokeEndpoint on the 
+Amazon SageMaker Runtime service. Use the attributes of this class
+as arguments to method InvokeEndpoint.
+
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to InvokeEndpoint.
+
+As an example:
+
+  $service_obj->InvokeEndpoint(Att1 => $value1, Att2 => $value2, ...);
+
+Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+
+=head1 ATTRIBUTES
+
+
+=head2 Accept => Str
+
+The desired MIME type of the inference in the response.
+
+
+
+=head2 B<REQUIRED> Body => Str
+
+Provides input data, in the format specified in the C<ContentType>
+request header. Amazon SageMaker passes all of the data in the body to
+the model.
+
+
+
+=head2 ContentType => Str
+
+The MIME type of the input data in the request body.
+
+
+
+=head2 B<REQUIRED> EndpointName => Str
+
+The name of the endpoint that you specified when you created the
+endpoint using the CreateEndpoint
+(http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html)
+API.
+
+
+
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, documenting arguments for method InvokeEndpoint in L<Paws::SageMakerRuntime>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
+
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
+
+=cut
+

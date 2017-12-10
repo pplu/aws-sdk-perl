@@ -60,7 +60,7 @@ these attributes as selection criteria when you create a segment.
 
 =head2 ChannelType => Str
 
-  The channel type. Valid values: APNS, GCM
+  The channel type. Valid values: GCM | APNS | SMS | EMAIL
 
 
 =head2 Demographic => L<Paws::Pinpoint::EndpointDemographic>
@@ -93,8 +93,8 @@ updated.
 =head2 OptOut => Str
 
   Indicates whether a user has opted out of receiving messages with one
-of the following values: ALL E<ndash> User receives all messages. NONE
-E<ndash> User receives no messages.
+of the following values: ALL - User has opted out of all messages. NONE
+- Users has not opted out and receives all messages.
 
 
 =head2 RequestId => Str
@@ -115,9 +115,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

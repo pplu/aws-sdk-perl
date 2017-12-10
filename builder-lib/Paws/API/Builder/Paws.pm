@@ -9,7 +9,7 @@ package Paws::API::Builder::Paws {
   use Moose;
 
   sub version {
-    '0.35';
+    '0.36';
   }
 
   sub services {
@@ -528,9 +528,9 @@ L<https://github.com/pplu/aws-sdk-perl>
 
 =head1 BUGS and SOURCE
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =head1 COPYRIGHT and LICENSE
 

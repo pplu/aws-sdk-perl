@@ -14,7 +14,7 @@ package Paws::RDS::DeleteOptionGroup;
 
 =head1 NAME
 
-Paws::RDS::DeleteOptionGroup - Arguments for method DeleteOptionGroup on Paws::RDS
+Paws::RDS::DeleteOptionGroup - Arguments for method DeleteOptionGroup on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The name of the option group to be deleted.
 
-You cannot delete default option groups.
+You can't delete default option groups.
 
 
 
@@ -48,9 +48,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteOptionG
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

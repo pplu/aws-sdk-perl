@@ -1,5 +1,141 @@
-0.35
+0.37
+ - Big refactor of all result handling for all services
+ - Better docu generation (osoriano)
+ - Documentation update: Now POD contains links from the botocore documentation
+ - New API: Pricing
+ - New API: CostExplorer
+ - New API: Translate
+ - New API: ServerlessRepo
+ - New APIs: SageMaker and SageMakerRuntime
+ - New APIs: MediaConvert, MediaLive, MediaPackage, MediaStore, MediaStoreData
+ - New APIs: KinesisVideo, KinesisVideoMedia, KinesisVideoArchivedMedia
+ - New API: MQ
+ - New API: ResourceGroups
+ - New API: GuardDuty
+ - New API: Comprehend
+ - New API: Cloud9
+ - New API: AppSync
+ - New API: AlexaForBusiness
+ - New API: ServiceDiscovery
+ - API update: IoT
+ - API update: Shield
+ - API update: Rekognition
+ - API update: Route53
+ - API update: Glue
+ - API update: Organizations
+ - API update: CodeBuild
+ - API update: StepFunctions
+ - API update: WorkDocs
+ - API update: CloudFormation
+ - API update: Firehose
+ - API update: Kinesis
+ - API update: StorageGateway
+ - API update: EMR
+ - API update: XRay
+ - API update: ACM
+ - API update: S3
+ - API update: ApiGateway
+ - API update: ApplicationAutoscaling
+ - API update: ECS
+ - API update: EC2
+ - API update: ELBv2
+ - API update: OpsWorksCM
+ - API update: WAFRegional
+ - API update: WAF
+ - API update: SQS
+ - API update: SES
+ - API update: ES
+ - API update: CodeCommit
+ - API update: ECR
+ - API update: RDS
+ - API update: DMS
+ - API update: ElasticBeanstalk
+ - API update: Lightsail
+ - API update: SSM
+ - API update: Pinpoint
+ - API update: DirectConnect
+ - API update: ApiGateway
+ - API update: CloudFront
+ - API update: Glue
+ - API update: ElastiCache
+ - API update: Lambda
+ - API update: SSM
+ - API update: CodeDeploy
+ - API update: Batch
+ - API update: CognitoIdp
+ - API update: Greengrass
+ - API update: ECS
+ - API update: AutoScaling
+ - API update: DynamoDB
+ - API update: Glacier
+ - API update: CloudDirectory
+ - API update: ServiceCatalog
+ - API update: CloudWatch
+ - API update: AppStream
+ - API update: Budgets
 
+0.36 03 Nov 2017
+ - Fix Bug: #210: S3 PutObject was not working: the Content-MD5 header was not 
+            calculated correctly (glenveegee)
+ - Fix Bug: #201: RestJson services were not passing fields in their correct
+            locations
+
+0.35 09 Oct 2017
+ - Fix Bug: Correctly throw Paws::Exceptions even if there is no information
+            in the body / headers (#190 svn-schubert) (#198 ilmari)
+ - Work on S3 (sven-schubert)
+   - No need to specify ContentMD5 parameter anymore (it gets autocalculated)
+   - Added support for responses with properties returned in their payload
+ - New API: MobileHub
+ - New API: MigrationHub
+ - New API: Glue
+ - New API: CloudHSMv2
+ - API update: Lambda
+ - API update: Discovery
+ - API update: EC2
+ - API update: ApiGateway
+ - API update: Autoscaling
+ - API update: CognitoIdp
+ - API update: AppStream
+ - API update: EMR
+ - API update: CloudFormation
+ - API update: CloudDirectory 
+ - API update: Pinpoint
+ - API update: CodeDeploy
+ - API update: CodeStar
+ - API update: Config
+ - API update: Inspector
+ - API update: SES
+ - API update: SSM
+ - API update: ElasticBeanstalk
+ - API update: CloudDirectory
+ - API update: GameLift
+ - API update: Firehose
+ - API update: StorageGateway
+ - API update: Batch
+ - API update: EFS
+ - API update: RDS
+ - API update: ELBv2
+ - API update: LexModels
+ - API update: CodeBuild
+ - API update: ApplicationAutoScaling
+ - API update: Budget
+ - API update: Route53
+ - API update: DeviceFarm
+ - API update: CloudWatchLogs
+ - API update: ServiceCatalog
+ - API update: SES
+ - API update: IAM
+ - API update: Greengrass
+ - API update: AppStream
+ - API update: CodePipeline
+ - API update: LexRuntime
+ - API update: Pinpoint
+ - API update: MTurk
+ - API update: Organizations
+ - API update: Route53Domains
+ - API update: KinesisAnalytics
+ - API update: RedShift
 
 0.34 07 Jul 2017
  - New Credential provider: Paws::Credential::ECSContainerProfile (gadgetjunkie)

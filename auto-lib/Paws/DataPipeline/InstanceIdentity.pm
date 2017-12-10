@@ -34,10 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
 Identity information for the EC2 instance that is hosting the task
 runner. You can get this value by calling a metadata URI from the EC2
-instance. For more information, see Instance Metadata in the I<Amazon
-Elastic Compute Cloud User Guide.> Passing in this value proves that
-your task runner is running on an EC2 instance, and ensures the proper
-AWS Data Pipeline service charges are applied to your pipeline.
+instance. For more information, see Instance Metadata
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AESDG-chapter-instancedata.html)
+in the I<Amazon Elastic Compute Cloud User Guide.> Passing in this
+value proves that your task runner is running on an EC2 instance, and
+ensures the proper AWS Data Pipeline service charges are applied to
+your pipeline.
 
 =head1 ATTRIBUTES
 
@@ -62,9 +64,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::DataPipel
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

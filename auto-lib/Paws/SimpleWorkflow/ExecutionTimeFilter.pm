@@ -35,7 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 Used to filter the workflow executions in visibility APIs by various
 time-based rules. Each parameter, if specified, defines a rule that
 must be satisfied by each returned query result. The parameter values
-are in the Unix Time format. For example: C<"oldestDate": 1325376070.>
+are in the Unix Time format (https://en.wikipedia.org/wiki/Unix_time).
+For example: C<"oldestDate": 1325376070.>
 
 =head1 ATTRIBUTES
 
@@ -57,9 +58,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SimpleWor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

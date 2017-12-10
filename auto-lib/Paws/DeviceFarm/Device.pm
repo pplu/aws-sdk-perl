@@ -16,6 +16,7 @@ package Paws::DeviceFarm::Device;
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
   has Radio => (is => 'ro', isa => 'Str', request_name => 'radio', traits => ['NameInRequest']);
   has RemoteAccessEnabled => (is => 'ro', isa => 'Bool', request_name => 'remoteAccessEnabled', traits => ['NameInRequest']);
+  has RemoteDebugEnabled => (is => 'ro', isa => 'Bool', request_name => 'remoteDebugEnabled', traits => ['NameInRequest']);
   has Resolution => (is => 'ro', isa => 'Paws::DeviceFarm::Resolution', request_name => 'resolution', traits => ['NameInRequest']);
 1;
 
@@ -164,6 +165,12 @@ IOS: The iOS platform.
 device.
 
 
+=head2 RemoteDebugEnabled => Bool
+
+  This flag is set to C<true> if remote debugging is enabled for the
+device.
+
+
 =head2 Resolution => L<Paws::DeviceFarm::Resolution>
 
   The resolution of the device.
@@ -176,9 +183,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::DeviceFar
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

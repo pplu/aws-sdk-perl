@@ -16,7 +16,7 @@ package Paws::ACM::ResendValidationEmail;
 
 =head1 NAME
 
-Paws::ACM::ResendValidationEmail - Arguments for method ResendValidationEmail on Paws::ACM
+Paws::ACM::ResendValidationEmail - Arguments for method ResendValidationEmail on L<Paws::ACM>
 
 =head1 DESCRIPTION
 
@@ -41,9 +41,7 @@ String that contains the ARN of the requested certificate. The
 certificate ARN is generated and returned by the RequestCertificate
 action as soon as the request is made. By default, using this parameter
 causes email to be sent to all top-level domains you specified in the
-certificate request.
-
-The ARN must be of the form:
+certificate request. The ARN must be of the form:
 
 C<arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012>
 
@@ -101,9 +99,9 @@ This class forms part of L<Paws>, documenting arguments for method ResendValidat
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

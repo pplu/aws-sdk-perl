@@ -63,8 +63,9 @@ Contains detailed information about the specified stack resource.
 =head2 Metadata => Str
 
   The content of the C<Metadata> attribute declared for the resource. For
-more information, see Metadata Attribute in the AWS CloudFormation User
-Guide.
+more information, see Metadata Attribute
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-metadata.html)
+in the AWS CloudFormation User Guide.
 
 
 =head2 PhysicalResourceId => Str
@@ -86,7 +87,9 @@ ID of a resource supported by AWS CloudFormation.
 =head2 B<REQUIRED> ResourceType => Str
 
   Type of resource. ((For more information, go to AWS Resource Types
-Reference in the AWS CloudFormation User Guide.)
+Reference
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
+in the AWS CloudFormation User Guide.)
 
 
 =head2 StackId => Str
@@ -106,9 +109,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudForm
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

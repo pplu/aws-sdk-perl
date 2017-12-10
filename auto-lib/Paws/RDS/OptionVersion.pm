@@ -40,7 +40,7 @@ the DescribeOptionGroupOptions action.
 
 =head2 IsDefault => Bool
 
-  True if the version is the default version of the option; otherwise,
+  True if the version is the default version of the option, and otherwise
 false.
 
 
@@ -56,9 +56,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

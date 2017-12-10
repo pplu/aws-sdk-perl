@@ -21,7 +21,7 @@ package Paws::ElasticBeanstalk::CreateApplicationVersion;
 
 =head1 NAME
 
-Paws::ElasticBeanstalk::CreateApplicationVersion - Arguments for method CreateApplicationVersion on Paws::ElasticBeanstalk
+Paws::ElasticBeanstalk::CreateApplicationVersion - Arguments for method CreateApplicationVersion on L<Paws::ElasticBeanstalk>
 
 =head1 DESCRIPTION
 
@@ -69,9 +69,14 @@ Describes this version.
 
 =head2 Process => Bool
 
-Preprocesses and validates the environment manifest and configuration
-files in the source bundle. Validating configuration files can identify
+Preprocesses and validates the environment manifest (C<env.yaml>) and
+configuration files (C<*.config> files in the C<.ebextensions> folder)
+in the source bundle. Validating configuration files can identify
 issues prior to deploying the application version to an environment.
+
+The C<Process> option validates Elastic Beanstalk configuration files.
+It doesn't validate your application's configuration files, like proxy
+server or Docker configuration.
 
 
 
@@ -113,9 +118,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateApplica
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

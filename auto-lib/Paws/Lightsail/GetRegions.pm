@@ -14,7 +14,7 @@ package Paws::Lightsail::GetRegions;
 
 =head1 NAME
 
-Paws::Lightsail::GetRegions - Arguments for method GetRegions on Paws::Lightsail
+Paws::Lightsail::GetRegions - Arguments for method GetRegions on L<Paws::Lightsail>
 
 =head1 DESCRIPTION
 
@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 A Boolean value indicating whether to also include Availability Zones
 in your get regions request. Availability Zones are indicated with a
-letter: e.g., C<us-east-1a>.
+letter: e.g., C<us-east-2a>.
 
 
 
@@ -48,9 +48,9 @@ This class forms part of L<Paws>, documenting arguments for method GetRegions in
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -16,7 +16,7 @@ package Paws::Route53Domains::RenewDomain;
 
 =head1 NAME
 
-Paws::Route53Domains::RenewDomain - Arguments for method RenewDomain on Paws::Route53Domains
+Paws::Route53Domains::RenewDomain - Arguments for method RenewDomain on L<Paws::Route53Domains>
 
 =head1 DESCRIPTION
 
@@ -53,7 +53,9 @@ The name of the domain that you want to renew.
 The number of years that you want to renew the domain for. The maximum
 number of years depends on the top-level domain. For the range of valid
 values for your domain, see Domains that You Can Register with Amazon
-Route 53 in the I<Amazon Route 53 Developer Guide>.
+Route 53
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 Default: 1
 
@@ -66,9 +68,9 @@ This class forms part of L<Paws>, documenting arguments for method RenewDomain i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

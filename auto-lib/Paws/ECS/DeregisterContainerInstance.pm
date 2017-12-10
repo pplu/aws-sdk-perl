@@ -16,7 +16,7 @@ package Paws::ECS::DeregisterContainerInstance;
 
 =head1 NAME
 
-Paws::ECS::DeregisterContainerInstance - Arguments for method DeregisterContainerInstance on Paws::ECS
+Paws::ECS::DeregisterContainerInstance - Arguments for method DeregisterContainerInstance on L<Paws::ECS>
 
 =head1 DESCRIPTION
 
@@ -45,11 +45,11 @@ cluster, the default cluster is assumed.
 
 =head2 B<REQUIRED> ContainerInstance => Str
 
-The container instance ID or full Amazon Resource Name (ARN) of the
-container instance to deregister. The ARN contains the C<arn:aws:ecs>
-namespace, followed by the region of the container instance, the AWS
-account ID of the container instance owner, the C<container-instance>
-namespace, and then the container instance ID. For example,
+The container instance ID or full ARN of the container instance to
+deregister. The ARN contains the C<arn:aws:ecs> namespace, followed by
+the region of the container instance, the AWS account ID of the
+container instance owner, the C<container-instance> namespace, and then
+the container instance ID. For example,
 C<arn:aws:ecs:I<region>:I<aws_account_id>:container-instance/I<container_instance_ID>
 >.
 
@@ -67,9 +67,9 @@ service, then the service scheduler starts another copy of that task,
 on a different container instance if possible.
 
 Any containers in orphaned service tasks that are registered with a
-Classic load balancer or an Application load balancer target group are
-deregistered, and they will begin connection draining according to the
-settings on the load balancer or target group.
+Classic Load Balancer or an Application Load Balancer target group are
+deregistered. They begin connection draining according to the settings
+on the load balancer or target group.
 
 
 
@@ -80,9 +80,9 @@ This class forms part of L<Paws>, documenting arguments for method DeregisterCon
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

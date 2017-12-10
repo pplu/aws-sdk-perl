@@ -16,7 +16,7 @@ package Paws::ElastiCache::CreateSnapshot;
 
 =head1 NAME
 
-Paws::ElastiCache::CreateSnapshot - Arguments for method CreateSnapshot on Paws::ElastiCache
+Paws::ElastiCache::CreateSnapshot - Arguments for method CreateSnapshot on L<Paws::ElastiCache>
 
 =head1 DESCRIPTION
 
@@ -37,8 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CacheClusterId => Str
 
-The identifier of an existing cache cluster. The snapshot is created
-from this cache cluster.
+The identifier of an existing cluster. The snapshot is created from
+this cluster.
 
 
 
@@ -62,9 +62,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateSnapsho
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

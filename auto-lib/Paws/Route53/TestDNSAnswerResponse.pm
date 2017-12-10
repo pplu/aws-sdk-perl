@@ -50,7 +50,7 @@ The name of the resource record set that you submitted a request for.
 
 The type of the resource record set that you submitted a request for.
 
-Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">
+Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">, C<"CAA">
 
 =head2 B<REQUIRED> ResponseCode => Str
 
@@ -58,7 +58,9 @@ A code that indicates whether the request is valid or not. The most
 common response code is C<NOERROR>, meaning that the request is valid.
 If the response is not valid, Amazon Route 53 returns a response code
 that describes the error. For a list of possible response codes, see
-DNS RCODES on the IANA website.
+DNS RCODES
+(http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6)
+on the IANA website.
 
 
 

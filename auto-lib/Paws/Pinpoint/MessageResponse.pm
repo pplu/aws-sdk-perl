@@ -1,6 +1,7 @@
 package Paws::Pinpoint::MessageResponse;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str');
+  has EndpointResult => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEndpointMessageResult');
   has RequestId => (is => 'ro', isa => 'Str');
   has Result => (is => 'ro', isa => 'Paws::Pinpoint::MapOfMessageResult');
 1;
@@ -43,6 +44,12 @@ Send message response.
   Application id of the message.
 
 
+=head2 EndpointResult => L<Paws::Pinpoint::MapOfEndpointMessageResult>
+
+  A map containing a multi part response for each address, with the
+endpointId as the key and the result as the value.
+
+
 =head2 RequestId => Str
 
   Original request Id for which this message was delivered.
@@ -62,9 +69,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

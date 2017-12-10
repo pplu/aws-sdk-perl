@@ -13,6 +13,7 @@ package Paws::AutoScaling::ScalingPolicy;
   has PolicyType => (is => 'ro', isa => 'Str');
   has ScalingAdjustment => (is => 'ro', isa => 'Int');
   has StepAdjustments => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::StepAdjustment]');
+  has TargetTrackingConfiguration => (is => 'ro', isa => 'Paws::AutoScaling::TargetTrackingConfiguration');
 1;
 
 ### main pod documentation begin ###
@@ -32,7 +33,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AutoScaling::ScalingPolicy object:
 
-  $service_obj->Method(Att1 => { AdjustmentType => $value, ..., StepAdjustments => $value  });
+  $service_obj->Method(Att1 => { AdjustmentType => $value, ..., TargetTrackingConfiguration => $value  });
 
 =head3 Results returned from an API call
 
@@ -62,7 +63,7 @@ and C<PercentChangeInCapacity>.
 
 =head2 AutoScalingGroupName => Str
 
-  The name of the Auto Scaling group associated with this scaling policy.
+  The name of the Auto Scaling group.
 
 
 =head2 Cooldown => Int
@@ -125,6 +126,11 @@ removes from the current capacity.
 alarm breach.
 
 
+=head2 TargetTrackingConfiguration => L<Paws::AutoScaling::TargetTrackingConfiguration>
+
+  A target tracking policy.
+
+
 
 =head1 SEE ALSO
 
@@ -132,9 +138,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::AutoScali
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

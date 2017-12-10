@@ -78,10 +78,11 @@ no encryption.
 
   The "YYYY/MM/DD/HH" time format prefix is automatically used for
 delivered S3 files. You can specify an extra prefix to be added in
-front of the time format prefix. Note that if the prefix ends with a
-slash, it appears as a folder in the S3 bucket. For more information,
-see Amazon S3 Object Name Format in the I<Amazon Kinesis Firehose
-Developer Guide>.
+front of the time format prefix. If the prefix ends with a slash, it
+appears as a folder in the S3 bucket. For more information, see Amazon
+S3 Object Name Format
+(http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html) in
+the I<Amazon Kinesis Firehose Developer Guide>.
 
 
 =head2 B<REQUIRED> RoleARN => Str
@@ -96,9 +97,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Firehose>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -82,7 +82,8 @@ following format:
 C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 
 For more information on custom JSON, see Use Custom JSON to Modify the
-Stack Configuration Attributes.
+Stack Configuration Attributes
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
 
 
 =head2 DeploymentId => Str
@@ -139,9 +140,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::OpsWorks>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -35,7 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 A link to another environment, defined in the environment's manifest.
 Links provide connection information in system properties that can be
 used to connect to another environment in the same group. See
-Environment Manifest (env.yaml) for details.
+Environment Manifest (env.yaml)
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
+for details.
 
 =head1 ATTRIBUTES
 
@@ -57,9 +59,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ElasticBe
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

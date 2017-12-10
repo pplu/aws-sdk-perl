@@ -39,14 +39,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-Detailed information about a ProvisionedProduct object.
+Information about a provisioned product.
 
 =head1 ATTRIBUTES
 
 
 =head2 Arn => Str
 
-  The ARN associated with the ProvisionedProduct object.
+  The ARN of the provisioned product.
 
 
 =head2 CreatedTime => Str
@@ -56,57 +56,69 @@ Detailed information about a ProvisionedProduct object.
 
 =head2 Id => Str
 
-  The identifier of the ProvisionedProduct object.
+  The identifier of the provisioned product.
 
 
 =head2 IdempotencyToken => Str
 
-  A token to disambiguate duplicate requests. You can create multiple
-resources using the same input in multiple requests, provided that you
-also specify a different idempotency token for each request.
+  A unique identifier that you provide to ensure idempotency. If multiple
+requests differ only by the idempotency token, the same response is
+returned for each repeated request.
 
 
 =head2 LastRecordId => Str
 
-  The record identifier of the last request performed on this
-ProvisionedProduct object.
+  The record identifier of the last request performed on this provisioned
+product.
 
 
 =head2 Name => Str
 
-  The user-friendly name of the ProvisionedProduct object.
+  The user-friendly name of the provisioned product.
 
 
 =head2 Status => Str
 
-  The current status of the ProvisionedProduct.
+  The current status of the provisioned product.
+
+=over
+
+=item *
 
 C<AVAILABLE> - Stable state, ready to perform any operation. The most
-recent action request succeeded and completed.
+recent operation succeeded and completed.
 
-C<UNDER_CHANGE> - Transitive state, operations performed may or may not
-have valid results. Wait for an C<AVAILABLE> status before performing
+=item *
+
+C<UNDER_CHANGE> - Transitive state, operations performed might not have
+valid results. Wait for an C<AVAILABLE> status before performing
 operations.
+
+=item *
 
 C<TAINTED> - Stable state, ready to perform any operation. The stack
 has completed the requested operation but is not exactly what was
 requested. For example, a request to update to a new version failed and
 the stack rolled back to the current version.
 
-C<ERROR> - Something unexpected happened such that the provisioned
-product exists but the stack is not running. For example,
-CloudFormation received an invalid parameter value and could not launch
-the stack.
+=item *
+
+C<ERROR> - An unexpected error occurred, the provisioned product exists
+but the stack is not running. For example, CloudFormation received a
+parameter value that was not valid and could not launch the stack.
+
+=back
+
 
 
 =head2 StatusMessage => Str
 
-  The current status message of the ProvisionedProduct.
+  The current status message of the provisioned product.
 
 
 =head2 Type => Str
 
-  The type of the ProvisionedProduct object.
+  The type of provisioned product. The supported value is C<CFN_STACK>.
 
 
 
@@ -116,9 +128,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ServiceCa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

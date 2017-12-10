@@ -56,7 +56,7 @@ subscription filters against this destination.
 =head2 CreationTime => Int
 
   The creation time of the destination, expressed as the number of
-milliseconds since Jan 1, 1970 00:00:00 UTC.
+milliseconds after Jan 1, 1970 00:00:00 UTC.
 
 
 =head2 DestinationName => Str
@@ -72,8 +72,8 @@ target.
 
 =head2 TargetArn => Str
 
-  The Amazon Resource Name (ARN) of the physical target where the log
-events will be delivered (for example, a Kinesis stream).
+  The Amazon Resource Name (ARN) of the physical target to where the log
+events are delivered (for example, a Kinesis stream).
 
 
 
@@ -83,9 +83,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudWatc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

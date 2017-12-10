@@ -5,7 +5,7 @@ package Paws::Budgets::Budget;
   has BudgetType => (is => 'ro', isa => 'Str', required => 1);
   has CalculatedSpend => (is => 'ro', isa => 'Paws::Budgets::CalculatedSpend');
   has CostFilters => (is => 'ro', isa => 'Paws::Budgets::CostFilters');
-  has CostTypes => (is => 'ro', isa => 'Paws::Budgets::CostTypes', required => 1);
+  has CostTypes => (is => 'ro', isa => 'Paws::Budgets::CostTypes');
   has TimePeriod => (is => 'ro', isa => 'Paws::Budgets::TimePeriod', required => 1);
   has TimeUnit => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -68,7 +68,7 @@ AWS Budget model
   
 
 
-=head2 B<REQUIRED> CostTypes => L<Paws::Budgets::CostTypes>
+=head2 CostTypes => L<Paws::Budgets::CostTypes>
 
   
 
@@ -90,9 +90,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Budgets>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

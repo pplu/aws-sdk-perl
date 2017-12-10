@@ -45,6 +45,46 @@ versions 4.8.0 and later, excluding 5.0.x versions.
 
   A code representing the instance fleet status.
 
+=over
+
+=item *
+
+C<PROVISIONING>E<mdash>The instance fleet is provisioning EC2 resources
+and is not yet ready to run jobs.
+
+=item *
+
+C<BOOTSTRAPPING>E<mdash>EC2 instances and other resources have been
+provisioned and the bootstrap actions specified for the instances are
+underway.
+
+=item *
+
+C<RUNNING>E<mdash>EC2 instances and other resources are running. They
+are either executing jobs or waiting to execute jobs.
+
+=item *
+
+C<RESIZING>E<mdash>A resize operation is underway. EC2 instances are
+either being added or removed.
+
+=item *
+
+C<SUSPENDED>E<mdash>A resize operation could not complete. Existing EC2
+instances are running, but instances can't be added or removed.
+
+=item *
+
+C<TERMINATING>E<mdash>The instance fleet is terminating EC2 instances.
+
+=item *
+
+C<TERMINATED>E<mdash>The instance fleet is no longer active, and all
+EC2 instances have been terminated.
+
+=back
+
+
 
 =head2 StateChangeReason => L<Paws::EMR::InstanceFleetStateChangeReason>
 
@@ -65,9 +105,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EMR>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

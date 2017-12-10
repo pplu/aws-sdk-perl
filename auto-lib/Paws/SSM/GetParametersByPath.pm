@@ -19,7 +19,7 @@ package Paws::SSM::GetParametersByPath;
 
 =head1 NAME
 
-Paws::SSM::GetParametersByPath - Arguments for method GetParametersByPath on Paws::SSM
+Paws::SSM::GetParametersByPath - Arguments for method GetParametersByPath on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -63,9 +63,7 @@ Filters to limit the request results.
 
 The hierarchy for the parameter. Hierarchies start with a forward slash
 (/) and end with the parameter name. A hierarchy can have a maximum of
-five levels. Examples: /Environment/Test/DBString003
-
-/Finance/Prod/IAD/OS/WinServ2016/license15
+five levels. For example: C</Finance/Prod/IAD/WinServ2016/license15>
 
 
 
@@ -88,9 +86,9 @@ This class forms part of L<Paws>, documenting arguments for method GetParameters
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

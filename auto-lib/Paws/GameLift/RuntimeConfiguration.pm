@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::R
 
 A collection of server process configurations that describe what
 processes to run on each instance in a fleet. All fleets must have a
-runtime configuration. Each instance in the fleet launches the server
+run-time configuration. Each instance in the fleet launches the server
 processes specified in the run-time configuration and launches new ones
 as existing processes end. Each instance regularly checks for an
 updated run-time configuration and follows the new instructions.
@@ -191,9 +191,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::GameLift>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

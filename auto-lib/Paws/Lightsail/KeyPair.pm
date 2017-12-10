@@ -45,7 +45,7 @@ Describes the SSH key pair.
 =head2 Arn => Str
 
   The Amazon Resource Name (ARN) of the key pair (e.g.,
-C<arn:aws:lightsail:us-east-1:123456789101:KeyPair/05859e3d-331d-48ba-9034-12345EXAMPLE>).
+C<arn:aws:lightsail:us-east-2:123456789101:KeyPair/05859e3d-331d-48ba-9034-12345EXAMPLE>).
 
 
 =head2 CreatedAt => Str
@@ -88,9 +88,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Lightsail
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

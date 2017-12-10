@@ -33,8 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 Describes a process type.
 
-For more information, see Auto Scaling Processes in the I<Auto Scaling
-User Guide>.
+For more information, see Auto Scaling Processes
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-suspend-resume-processes.html#process-types)
+in the I<Auto Scaling User Guide>.
 
 =head1 ATTRIBUTES
 
@@ -88,9 +89,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::AutoScali
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -22,7 +22,7 @@ The Amazon Resource Name (ARN) that identifies the execution.
 
 =head2 B<REQUIRED> StartDate => Str
 
-The date the execution was started.
+The date the execution is started.
 
 
 =head2 _request_id => Str

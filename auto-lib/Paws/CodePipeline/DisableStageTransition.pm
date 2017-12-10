@@ -17,7 +17,7 @@ package Paws::CodePipeline::DisableStageTransition;
 
 =head1 NAME
 
-Paws::CodePipeline::DisableStageTransition - Arguments for method DisableStageTransition on Paws::CodePipeline
+Paws::CodePipeline::DisableStageTransition - Arguments for method DisableStageTransition on L<Paws::CodePipeline>
 
 =head1 DESCRIPTION
 
@@ -74,9 +74,9 @@ This class forms part of L<Paws>, documenting arguments for method DisableStageT
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

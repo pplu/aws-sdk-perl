@@ -32,25 +32,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LexModels::
 
 =head1 DESCRIPTION
 
-After an intent is fulfilled, you might prompt the user for additional
-activity. For example, after the C<OrderPizza> intent is fulfilled (the
-pizza order is placed with a pizzeria), you might prompt the user to
-find out whether the user wants to order drinks (another intent you
-defined in your bot).
+A prompt for additional activity after an intent is fulfilled. For
+example, after the C<OrderPizza> intent is fulfilled, you might prompt
+the user to find out whether the user wants to order drinks.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Prompt => L<Paws::LexModels::Prompt>
 
-  Obtains information from the user.
+  Prompts for information from the user.
 
 
 =head2 B<REQUIRED> RejectionStatement => L<Paws::LexModels::Statement>
 
-  If the user answers "no" to the question defined in
-C<confirmationPrompt>, Amazon Lex responds with this statement to
-acknowledge that the intent was canceled.
+  If the user answers "no" to the question defined in the C<prompt>
+field, Amazon Lex responds with this statement to acknowledge that the
+intent was canceled.
 
 
 
@@ -60,9 +58,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::LexModels
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

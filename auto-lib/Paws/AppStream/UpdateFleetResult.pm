@@ -16,7 +16,7 @@ Paws::AppStream::UpdateFleetResult
 
 =head2 Fleet => L<Paws::AppStream::Fleet>
 
-A list of fleet details.
+Information about the fleet.
 
 
 =head2 _request_id => Str

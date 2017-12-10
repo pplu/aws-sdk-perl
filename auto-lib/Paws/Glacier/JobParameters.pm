@@ -4,7 +4,9 @@ package Paws::Glacier::JobParameters;
   has Description => (is => 'ro', isa => 'Str');
   has Format => (is => 'ro', isa => 'Str');
   has InventoryRetrievalParameters => (is => 'ro', isa => 'Paws::Glacier::InventoryRetrievalJobInput');
+  has OutputLocation => (is => 'ro', isa => 'Paws::Glacier::OutputLocation');
   has RetrievalByteRange => (is => 'ro', isa => 'Str');
+  has SelectParameters => (is => 'ro', isa => 'Paws::Glacier::SelectParameters');
   has SNSTopic => (is => 'ro', isa => 'Str');
   has Tier => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
@@ -46,8 +48,9 @@ Provides options for defining a job.
 =head2 ArchiveId => Str
 
   The ID of the archive that you want to retrieve. This field is required
-only if C<Type> is set to archive-retrieval. An error occurs if you
-specify this request parameter for an inventory retrieval job request.
+only if C<Type> is set to C<select> or C<archive-retrieval>codeE<gt>.
+An error occurs if you specify this request parameter for an inventory
+retrieval job request.
 
 
 =head2 Description => Str
@@ -71,6 +74,12 @@ is the default format. Valid values are "CSV" and "JSON".
   Input parameters used for range inventory retrieval.
 
 
+=head2 OutputLocation => L<Paws::Glacier::OutputLocation>
+
+  Contains information about the location where the select job results
+are stored.
+
+
 =head2 RetrievalByteRange => Str
 
   The byte range to retrieve for an archive retrieval. in the form
@@ -86,6 +95,11 @@ An error occurs if you specify this field for an inventory retrieval
 job request.
 
 
+=head2 SelectParameters => L<Paws::Glacier::SelectParameters>
+
+  Contains the parameters that define a job.
+
+
 =head2 SNSTopic => Str
 
   The Amazon SNS topic ARN to which Amazon Glacier sends a notification
@@ -96,15 +110,16 @@ SNS topic must exist.
 
 =head2 Tier => Str
 
-  The retrieval option to use for the archive retrieval. Valid values are
-C<Expedited>, C<Standard>, or C<Bulk>. C<Standard> is the default.
+  The retrieval option to use for a select or archive retrieval job.
+Valid values are C<Expedited>, C<Standard>, or C<Bulk>. C<Standard> is
+the default.
 
 
 =head2 Type => Str
 
-  The job type. You can initiate a job to retrieve an archive or get an
-inventory of a vault. Valid values are "archive-retrieval" and
-"inventory-retrieval".
+  The job type. You can initiate a job to perform a select query on an
+archive, retrieve an archive, or get an inventory of a vault. Valid
+values are "select", "archive-retrieval" and "inventory-retrieval".
 
 
 
@@ -114,9 +129,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Glacier>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

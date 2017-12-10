@@ -18,7 +18,7 @@ package Paws::DynamoDB::UpdateTable;
 
 =head1 NAME
 
-Paws::DynamoDB::UpdateTable - Arguments for method UpdateTable on Paws::DynamoDB
+Paws::DynamoDB::UpdateTable - Arguments for method UpdateTable on L<Paws::DynamoDB>
 
 =head1 DESCRIPTION
 
@@ -68,8 +68,9 @@ C<Delete> - remove a global secondary index from the table.
 
 =back
 
-For more information, see Managing Global Secondary Indexes in the
-I<Amazon DynamoDB Developer Guide>.
+For more information, see Managing Global Secondary Indexes
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -103,9 +104,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateTable i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

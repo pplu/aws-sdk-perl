@@ -1,6 +1,8 @@
 package Paws::SSM::InstanceAssociationStatusInfo;
   use Moose;
   has AssociationId => (is => 'ro', isa => 'Str');
+  has AssociationName => (is => 'ro', isa => 'Str');
+  has AssociationVersion => (is => 'ro', isa => 'Str');
   has DetailedStatus => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has ErrorCode => (is => 'ro', isa => 'Str');
@@ -48,6 +50,16 @@ Status information about the instance association.
 =head2 AssociationId => Str
 
   The association ID.
+
+
+=head2 AssociationName => Str
+
+  The name of the association applied to the instance.
+
+
+=head2 AssociationVersion => Str
+
+  The version of the association applied to the instance.
 
 
 =head2 DetailedStatus => Str
@@ -103,9 +115,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

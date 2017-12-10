@@ -58,10 +58,11 @@ This class has no description
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
-  One or more block device mapping entries.
-
-Although you can specify encrypted EBS volumes in this block device
-mapping for your Spot Instances, these volumes are not encrypted.
+  One or more block device mapping entries. You can't specify both a
+snapshot ID and an encryption value. This is because only blank volumes
+can be encrypted on creation. If a snapshot is the basis for a volume,
+it is not blank and its encryption status is used for the volume
+encryption status.
 
 
 =head2 EbsOptimized => Bool
@@ -158,8 +159,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

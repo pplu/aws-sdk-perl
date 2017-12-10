@@ -17,7 +17,7 @@ Paws::AppStream::DescribeFleetsResult
 
 =head2 Fleets => ArrayRef[L<Paws::AppStream::Fleet>]
 
-The list of fleet details.
+Information about the fleets.
 
 
 =head2 NextToken => Str

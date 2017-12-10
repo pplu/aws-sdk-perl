@@ -57,7 +57,8 @@ If the field is numeric (C<int>, C<int-array>, C<double>, or
 C<double-array>), C<max> is the string representation of a
 double-precision 64-bit floating point value. If the field is C<date>
 or C<date-array>, C<max> is the string representation of a date with
-the format specified in IETF RFC3339: yyyy-mm-ddTHH:mm:ss.SSSZ.
+the format specified in IETF RFC3339
+(http://tools.ietf.org/html/rfc3339): yyyy-mm-ddTHH:mm:ss.SSSZ.
 
 
 =head2 Mean => Str
@@ -69,7 +70,8 @@ If the field is numeric (C<int>, C<int-array>, C<double>, or
 C<double-array>), C<mean> is the string representation of a
 double-precision 64-bit floating point value. If the field is C<date>
 or C<date-array>, C<mean> is the string representation of a date with
-the format specified in IETF RFC3339: yyyy-mm-ddTHH:mm:ss.SSSZ.
+the format specified in IETF RFC3339
+(http://tools.ietf.org/html/rfc3339): yyyy-mm-ddTHH:mm:ss.SSSZ.
 
 
 =head2 Min => Str
@@ -80,7 +82,8 @@ If the field is numeric (C<int>, C<int-array>, C<double>, or
 C<double-array>), C<min> is the string representation of a
 double-precision 64-bit floating point value. If the field is C<date>
 or C<date-array>, C<min> is the string representation of a date with
-the format specified in IETF RFC3339: yyyy-mm-ddTHH:mm:ss.SSSZ.
+the format specified in IETF RFC3339
+(http://tools.ietf.org/html/rfc3339): yyyy-mm-ddTHH:mm:ss.SSSZ.
 
 
 =head2 Missing => Int
@@ -113,9 +116,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudSear
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

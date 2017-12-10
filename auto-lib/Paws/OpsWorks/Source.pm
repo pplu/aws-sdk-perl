@@ -37,8 +37,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::S
 =head1 DESCRIPTION
 
 Contains the information required to retrieve an app or cookbook from a
-repository. For more information, see Creating Apps or Custom Recipes
-and Cookbooks.
+repository. For more information, see Creating Apps
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html)
+or Custom Recipes and Cookbooks
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html).
 
 =head1 ATTRIBUTES
 
@@ -63,7 +65,8 @@ password.
 =back
 
 For more information on how to safely handle IAM credentials, see
-http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html.
+http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+(http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html).
 
 In responses, AWS OpsWorks Stacks returns C<*****FILTERED*****> instead
 of the actual value.
@@ -123,9 +126,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::OpsWorks>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

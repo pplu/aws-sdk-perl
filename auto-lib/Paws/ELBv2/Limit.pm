@@ -59,6 +59,14 @@ listeners-per-application-load-balancer
 
 =item *
 
+listeners-per-network-load-balancer
+
+=item *
+
+network-load-balancers
+
+=item *
+
 rules-per-application-load-balancer
 
 =item *
@@ -68,6 +76,14 @@ target-groups
 =item *
 
 targets-per-application-load-balancer
+
+=item *
+
+targets-per-availability-zone-per-network-load-balancer
+
+=item *
+
+targets-per-network-load-balancer
 
 =back
 
@@ -80,9 +96,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ELBv2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

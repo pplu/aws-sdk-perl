@@ -15,7 +15,7 @@ package Paws::Organizations::CreateOrganizationalUnit;
 
 =head1 NAME
 
-Paws::Organizations::CreateOrganizationalUnit - Arguments for method CreateOrganizationalUnit on Paws::Organizations
+Paws::Organizations::CreateOrganizationalUnit - Arguments for method CreateOrganizationalUnit on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
@@ -45,7 +45,8 @@ The friendly name to assign to the new OU.
 The unique identifier (ID) of the parent root or OU in which you want
 to create the new OU.
 
-The regex pattern for a parent ID string requires one of the following:
+The regex pattern (http://wikipedia.org/wiki/regex) for a parent ID
+string requires one of the following:
 
 =over
 
@@ -73,9 +74,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateOrganiz
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

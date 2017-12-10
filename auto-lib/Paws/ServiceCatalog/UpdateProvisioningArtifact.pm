@@ -2,6 +2,7 @@
 package Paws::ServiceCatalog::UpdateProvisioningArtifact;
   use Moose;
   has AcceptLanguage => (is => 'ro', isa => 'Str');
+  has Active => (is => 'ro', isa => 'Bool');
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has ProductId => (is => 'ro', isa => 'Str', required => 1);
@@ -18,7 +19,7 @@ package Paws::ServiceCatalog::UpdateProvisioningArtifact;
 
 =head1 NAME
 
-Paws::ServiceCatalog::UpdateProvisioningArtifact - Arguments for method UpdateProvisioningArtifact on Paws::ServiceCatalog
+Paws::ServiceCatalog::UpdateProvisioningArtifact - Arguments for method UpdateProvisioningArtifact on L<Paws::ServiceCatalog>
 
 =head1 DESCRIPTION
 
@@ -39,22 +40,36 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AcceptLanguage => Str
 
-The language code to use for this operation. Supported language codes
-are as follows:
+The language code.
 
-"en" (English)
+=over
 
-"jp" (Japanese)
+=item *
 
-"zh" (Chinese)
+C<en> - English (default)
 
-If no code is specified, "en" is used as the default.
+=item *
+
+C<jp> - Japanese
+
+=item *
+
+C<zh> - Chinese
+
+=back
+
+
+
+
+=head2 Active => Bool
+
+Indicates whether the product version is active.
 
 
 
 =head2 Description => Str
 
-The updated text description of the provisioning artifact.
+The updated description of the provisioning artifact.
 
 
 
@@ -72,8 +87,7 @@ The product identifier.
 
 =head2 B<REQUIRED> ProvisioningArtifactId => Str
 
-The identifier of the provisioning artifact for the update request.
-This is sometimes referred to as the product version.
+The identifier of the provisioning artifact.
 
 
 
@@ -84,9 +98,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateProvisi
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

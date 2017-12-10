@@ -15,7 +15,7 @@ package Paws::Shield::CreateProtection;
 
 =head1 NAME
 
-Paws::Shield::CreateProtection - Arguments for method CreateProtection on Paws::Shield
+Paws::Shield::CreateProtection - Arguments for method CreateProtection on L<Paws::Shield>
 
 =head1 DESCRIPTION
 
@@ -44,6 +44,38 @@ Friendly name for the C<Protection> you are creating.
 
 The ARN (Amazon Resource Name) of the resource to be protected.
 
+The ARN should be in one of the following formats:
+
+=over
+
+=item *
+
+For an Application Load Balancer:
+C<arn:aws:elasticloadbalancing:I<region>:I<account-id>:loadbalancer/app/I<load-balancer-name>/I<load-balancer-id>>
+
+=item *
+
+For an Elastic Load Balancer (Classic Load Balancer):
+C<arn:aws:elasticloadbalancing:I<region>:I<account-id>:loadbalancer/I<load-balancer-name>>
+
+=item *
+
+For AWS CloudFront distribution:
+C<arn:aws:cloudfront::I<account-id>:distribution/I<distribution-id>>
+
+=item *
+
+For Amazon Route 53:
+C<arn:aws:route53::I<account-id>:hostedzone/I<hosted-zone-id>>
+
+=item *
+
+For an Elastic IP address:
+C<arn:aws:ec2:I<region>:I<account-id>:eip-allocation/I<allocation-id>>
+
+=back
+
+
 
 
 
@@ -53,9 +85,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateProtect
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

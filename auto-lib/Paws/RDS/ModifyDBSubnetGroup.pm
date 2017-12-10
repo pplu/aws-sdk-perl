@@ -16,7 +16,7 @@ package Paws::RDS::ModifyDBSubnetGroup;
 
 =head1 NAME
 
-Paws::RDS::ModifyDBSubnetGroup - Arguments for method ModifyDBSubnetGroup on Paws::RDS
+Paws::RDS::ModifyDBSubnetGroup - Arguments for method ModifyDBSubnetGroup on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -44,10 +44,10 @@ The description for the DB subnet group.
 =head2 B<REQUIRED> DBSubnetGroupName => Str
 
 The name for the DB subnet group. This value is stored as a lowercase
-string.
+string. You can't modify the default subnet group.
 
-Constraints: Must contain no more than 255 alphanumeric characters,
-periods, underscores, spaces, or hyphens. Must not be default.
+Constraints: Must match the name of an existing DBSubnetGroup. Must not
+be default.
 
 Example: C<mySubnetgroup>
 
@@ -66,9 +66,9 @@ This class forms part of L<Paws>, documenting arguments for method ModifyDBSubne
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

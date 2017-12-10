@@ -18,7 +18,7 @@ package Paws::AppStream::UpdateStack;
 
 =head1 NAME
 
-Paws::AppStream::UpdateStack - Arguments for method UpdateStack on Paws::AppStream
+Paws::AppStream::UpdateStack - Arguments for method UpdateStack on L<Paws::AppStream>
 
 =head1 DESCRIPTION
 
@@ -39,31 +39,31 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DeleteStorageConnectors => Bool
 
-Remove all the storage connectors currently enabled for the stack.
+Deletes the storage connectors currently enabled for the stack.
 
 
 
 =head2 Description => Str
 
-The description displayed to end users on the AppStream 2.0 portal.
+The description for display.
 
 
 
 =head2 DisplayName => Str
 
-The name displayed to end users on the AppStream 2.0 portal.
+The stack name for display.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the stack to update.
+The name of the stack.
 
 
 
 =head2 StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]
 
-The storage connectors to be enabled for the stack.
+The storage connectors to enable.
 
 
 
@@ -74,9 +74,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateStack i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

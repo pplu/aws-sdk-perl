@@ -47,7 +47,9 @@ To see the content of a policy, see DescribePolicy.
   The Amazon Resource Name (ARN) of the policy.
 
 For more information about ARNs in Organizations, see ARN Formats
-Supported by Organizations in the I<AWS Organizations User Guide>.
+Supported by Organizations
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns)
+in the I<AWS Organizations User Guide>.
 
 
 =head2 AwsManaged => Bool
@@ -66,16 +68,18 @@ or accounts, but you cannot edit it.
 
   The unique identifier (ID) of the policy.
 
-The regex pattern for a policy ID string requires "p-" followed by from
-8 to 128 lower-case letters or digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for a policy ID
+string requires "p-" followed by from 8 to 128 lower-case letters or
+digits.
 
 
 =head2 Name => Str
 
   The friendly name of the policy.
 
-The regex pattern that is used to validate this parameter is a string
-of any of the characters in the ASCII character range.
+The regex pattern (http://wikipedia.org/wiki/regex) that is used to
+validate this parameter is a string of any of the characters in the
+ASCII character range.
 
 
 =head2 Type => Str
@@ -90,9 +94,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Organizat
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

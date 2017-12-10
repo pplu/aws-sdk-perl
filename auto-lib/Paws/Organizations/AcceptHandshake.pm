@@ -14,7 +14,7 @@ package Paws::Organizations::AcceptHandshake;
 
 =head1 NAME
 
-Paws::Organizations::AcceptHandshake - Arguments for method AcceptHandshake on Paws::Organizations
+Paws::Organizations::AcceptHandshake - Arguments for method AcceptHandshake on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
@@ -37,8 +37,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The unique identifier (ID) of the handshake that you want to accept.
 
-The regex pattern for handshake ID string requires "h-" followed by
-from 8 to 32 lower-case letters or digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for handshake ID
+string requires "h-" followed by from 8 to 32 lower-case letters or
+digits.
 
 
 
@@ -49,9 +50,9 @@ This class forms part of L<Paws>, documenting arguments for method AcceptHandsha
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

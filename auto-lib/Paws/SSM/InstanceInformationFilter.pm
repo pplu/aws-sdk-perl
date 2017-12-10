@@ -1,7 +1,7 @@
 package Paws::SSM::InstanceInformationFilter;
   use Moose;
   has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest'], required => 1);
-  has ValueSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'InstanceInformationFilterValue', request_name => 'valueSet', traits => ['NameInRequest','NameInRequest'], required => 1);
+  has ValueSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'valueSet', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -54,9 +54,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -1,10 +1,10 @@
 
 package Paws::Batch::UpdateComputeEnvironment;
   use Moose;
-  has ComputeEnvironment => (is => 'ro', isa => 'Str', required => 1);
-  has ComputeResources => (is => 'ro', isa => 'Paws::Batch::ComputeResourceUpdate');
-  has ServiceRole => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  has ComputeEnvironment => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'computeEnvironment', required => 1);
+  has ComputeResources => (is => 'ro', isa => 'Paws::Batch::ComputeResourceUpdate', traits => ['NameInRequest'], request_name => 'computeResources');
+  has ServiceRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRole');
+  has State => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'state');
 
   use MooseX::ClassAttribute;
 
@@ -12,14 +12,13 @@ package Paws::Batch::UpdateComputeEnvironment;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/updatecomputeenvironment');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Batch::UpdateComputeEnvironmentResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Batch::UpdateComputeEnvironment - Arguments for method UpdateComputeEnvironment on Paws::Batch
+Paws::Batch::UpdateComputeEnvironment - Arguments for method UpdateComputeEnvironment on L<Paws::Batch>
 
 =head1 DESCRIPTION
 
@@ -54,8 +53,19 @@ Required for a managed compute environment.
 
 =head2 ServiceRole => Str
 
-The name or full Amazon Resource Name (ARN) of the IAM role that allows
-AWS Batch to make calls to ECS, Auto Scaling, and EC2 on your behalf.
+The full Amazon Resource Name (ARN) of the IAM role that allows AWS
+Batch to make calls to other AWS services on your behalf.
+
+If your specified role has a path other than C</>, then you must either
+specify the full role ARN (this is recommended) or prefix the role name
+with the path.
+
+Depending on how you created your AWS Batch service role, its ARN may
+contain the C<service-role> path prefix. When you only specify the name
+of the service role, AWS Batch assumes that your ARN does not use the
+C<service-role> path prefix. Because of this, we recommend that you
+specify the full ARN of your service role when you create compute
+environments.
 
 
 
@@ -74,9 +84,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateCompute
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

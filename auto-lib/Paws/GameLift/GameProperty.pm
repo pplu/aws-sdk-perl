@@ -32,22 +32,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::G
 
 =head1 DESCRIPTION
 
-Set of key-value pairs containing information a server process requires
-to set up a game session. This object allows you to pass in any set of
-data needed for your game. For more information, see the Amazon
-GameLift Developer Guide.
+Set of key-value pairs that contain information about a game session.
+When included in a game session request, these properties communicate
+details to be used when setting up the new game session, such as to
+specify a game mode, level, or map. Game properties are passed to the
+game server process when initiating a new game session; the server
+process uses the properties as appropriate. For more information, see
+the Amazon GameLift Developer Guide
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-client-api.html#gamelift-sdk-client-api-create).
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Key => Str
 
-  TBD
+  Game property identifier.
 
 
 =head2 B<REQUIRED> Value => Str
 
-  TBD
+  Game property value.
 
 
 
@@ -57,9 +61,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::GameLift>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

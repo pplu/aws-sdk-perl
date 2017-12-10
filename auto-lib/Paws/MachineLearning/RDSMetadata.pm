@@ -62,7 +62,9 @@ the instance in the Data Pipeline console.
 
   The role (DataPipelineDefaultResourceRole) assumed by an Amazon EC2
 instance to carry out the copy task from Amazon RDS to Amazon S3. For
-more information, see Role templates for data pipelines.
+more information, see Role templates
+(http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
+for data pipelines.
 
 
 =head2 SelectSqlQuery => Str
@@ -75,7 +77,9 @@ only if C<Verbose> is true in C<GetDataSourceInput>.
 
   The role (DataPipelineDefaultRole) assumed by the Data Pipeline service
 to monitor the progress of the copy task from Amazon RDS to Amazon S3.
-For more information, see Role templates for data pipelines.
+For more information, see Role templates
+(http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
+for data pipelines.
 
 
 
@@ -85,9 +89,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::MachineLe
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -11,7 +11,7 @@ package Paws::Discovery;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub AssociateConfigurationItemsToApplication {
@@ -151,7 +151,8 @@ migration. The data collected by Application Discovery Service is
 securely retained in an Amazon-hosted and managed database in the
 cloud. You can export the data as a CSV or XML file into your preferred
 visualization tool or cloud-migration solution to plan your migration.
-For more information, see the Application Discovery Service FAQ.
+For more information, see the Application Discovery Service FAQ
+(http://aws.amazon.com/application-discovery/faqs/).
 
 Application Discovery Service offers two modes of operation.
 
@@ -195,25 +196,29 @@ You can then import the data into either a visualization tool or
 cloud-migration solution.
 
 Application Discovery Service doesn't gather sensitive information. All
-data is handled according to the AWS Privacy Policy. You can operate
-Application Discovery Service using offline mode to inspect collected
-data before it is shared with the service.
+data is handled according to the AWS Privacy Policy
+(http://aws.amazon.com/privacy/). You can operate Application Discovery
+Service using offline mode to inspect collected data before it is
+shared with the service.
 
 Your AWS account must be granted access to Application Discovery
 Service, a process called I<whitelisting>. This is true for AWS
 partners and customers alike. To request access, sign up for AWS
-Application Discovery Service here. We send you information about how
-to get started.
+Application Discovery Service here
+(http://aws.amazon.com/application-discovery/preview/). We send you
+information about how to get started.
 
 This API reference provides descriptions, syntax, and usage examples
 for each of the actions and data types for Application Discovery
 Service. The topic for each action shows the API request parameters and
 the response. Alternatively, you can use one of the AWS SDKs to access
 an API that is tailored to the programming language or platform that
-you're using. For more information, see AWS SDKs.
+you're using. For more information, see AWS SDKs
+(http://aws.amazon.com/tools/#SDKs).
 
 This guide is intended for use with the I<AWS Application Discovery
-Service User Guide> .
+Service User Guide>
+(http://docs.aws.amazon.com/application-discovery/latest/userguide/).
 
 =head1 METHODS
 
@@ -223,7 +228,7 @@ Each argument is described in detail in: L<Paws::Discovery::AssociateConfigurati
 
 Returns: a L<Paws::Discovery::AssociateConfigurationItemsToApplicationResponse> instance
 
-  Associates one or more configuration items with an application.
+Associates one or more configuration items with an application.
 
 
 =head2 CreateApplication(Name => Str, [Description => Str])
@@ -232,7 +237,7 @@ Each argument is described in detail in: L<Paws::Discovery::CreateApplication>
 
 Returns: a L<Paws::Discovery::CreateApplicationResponse> instance
 
-  Creates an application with the given name and description.
+Creates an application with the given name and description.
 
 
 =head2 CreateTags(ConfigurationIds => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::Discovery::Tag>])
@@ -241,7 +246,7 @@ Each argument is described in detail in: L<Paws::Discovery::CreateTags>
 
 Returns: a L<Paws::Discovery::CreateTagsResponse> instance
 
-  Creates one or more tags for configuration items. Tags are metadata
+Creates one or more tags for configuration items. Tags are metadata
 that help you categorize IT assets. This API accepts a list of multiple
 configuration items.
 
@@ -252,7 +257,7 @@ Each argument is described in detail in: L<Paws::Discovery::DeleteApplications>
 
 Returns: a L<Paws::Discovery::DeleteApplicationsResponse> instance
 
-  Deletes a list of applications and their associations with
+Deletes a list of applications and their associations with
 configuration items.
 
 
@@ -262,7 +267,7 @@ Each argument is described in detail in: L<Paws::Discovery::DeleteTags>
 
 Returns: a L<Paws::Discovery::DeleteTagsResponse> instance
 
-  Deletes the association between configuration items and one or more
+Deletes the association between configuration items and one or more
 tags. This API accepts a list of multiple configuration items.
 
 
@@ -272,7 +277,7 @@ Each argument is described in detail in: L<Paws::Discovery::DescribeAgents>
 
 Returns: a L<Paws::Discovery::DescribeAgentsResponse> instance
 
-  Lists agents or the Connector by ID or lists all agents/Connectors
+Lists agents or the Connector by ID or lists all agents/Connectors
 associated with your user account if you did not specify an ID.
 
 
@@ -282,7 +287,7 @@ Each argument is described in detail in: L<Paws::Discovery::DescribeConfiguratio
 
 Returns: a L<Paws::Discovery::DescribeConfigurationsResponse> instance
 
-  Retrieves attributes for a list of configuration item IDs. All of the
+Retrieves attributes for a list of configuration item IDs. All of the
 supplied IDs must be for the same asset type (server, application,
 process, or connection). Output fields are specific to the asset type
 selected. For example, the output for a I<server> configuration item
@@ -290,7 +295,8 @@ includes a list of attributes about the server, such as host name,
 operating system, and number of network cards.
 
 For a complete list of outputs for each asset type, see Using the
-DescribeConfigurations Action.
+DescribeConfigurations Action
+(http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#DescribeConfigurations).
 
 
 =head2 DescribeExportConfigurations([ExportIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
@@ -299,19 +305,19 @@ Each argument is described in detail in: L<Paws::Discovery::DescribeExportConfig
 
 Returns: a L<Paws::Discovery::DescribeExportConfigurationsResponse> instance
 
-  Deprecated. Use C<DescribeExportTasks> instead.
+Deprecated. Use C<DescribeExportTasks> instead.
 
 Retrieves the status of a given export process. You can retrieve status
 from a maximum of 100 processes.
 
 
-=head2 DescribeExportTasks([ExportIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeExportTasks([ExportIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Discovery::ExportFilter>], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Discovery::DescribeExportTasks>
 
 Returns: a L<Paws::Discovery::DescribeExportTasksResponse> instance
 
-  Retrieve status of one or more export tasks. You can retrieve the
+Retrieve status of one or more export tasks. You can retrieve the
 status of up to 100 export tasks.
 
 
@@ -321,7 +327,7 @@ Each argument is described in detail in: L<Paws::Discovery::DescribeTags>
 
 Returns: a L<Paws::Discovery::DescribeTagsResponse> instance
 
-  Retrieves a list of configuration items that are tagged with a specific
+Retrieves a list of configuration items that are tagged with a specific
 tag. Or retrieves a list of all tags assigned to a specific
 configuration item.
 
@@ -332,7 +338,7 @@ Each argument is described in detail in: L<Paws::Discovery::DisassociateConfigur
 
 Returns: a L<Paws::Discovery::DisassociateConfigurationItemsFromApplicationResponse> instance
 
-  Disassociates one or more configuration items from an application.
+Disassociates one or more configuration items from an application.
 
 
 =head2 ExportConfigurations( => )
@@ -341,7 +347,7 @@ Each argument is described in detail in: L<Paws::Discovery::ExportConfigurations
 
 Returns: a L<Paws::Discovery::ExportConfigurationsResponse> instance
 
-  Deprecated. Use C<StartExportTask> instead.
+Deprecated. Use C<StartExportTask> instead.
 
 Exports all discovered configuration data to an Amazon S3 bucket or an
 application that enables you to view and evaluate the data. Data
@@ -357,7 +363,7 @@ Each argument is described in detail in: L<Paws::Discovery::GetDiscoverySummary>
 
 Returns: a L<Paws::Discovery::GetDiscoverySummaryResponse> instance
 
-  Retrieves a short summary of discovered assets.
+Retrieves a short summary of discovered assets.
 
 
 =head2 ListConfigurations(ConfigurationType => Str, [Filters => ArrayRef[L<Paws::Discovery::Filter>], MaxResults => Int, NextToken => Str, OrderBy => ArrayRef[L<Paws::Discovery::OrderByElement>]])
@@ -366,7 +372,7 @@ Each argument is described in detail in: L<Paws::Discovery::ListConfigurations>
 
 Returns: a L<Paws::Discovery::ListConfigurationsResponse> instance
 
-  Retrieves a list of configuration items according to criteria that you
+Retrieves a list of configuration items according to criteria that you
 specify in a filter. The filter criteria identifies the relationship
 requirements.
 
@@ -377,7 +383,7 @@ Each argument is described in detail in: L<Paws::Discovery::ListServerNeighbors>
 
 Returns: a L<Paws::Discovery::ListServerNeighborsResponse> instance
 
-  Retrieves a list of servers that are one network hop away from a
+Retrieves a list of servers that are one network hop away from a
 specified server.
 
 
@@ -387,17 +393,28 @@ Each argument is described in detail in: L<Paws::Discovery::StartDataCollectionB
 
 Returns: a L<Paws::Discovery::StartDataCollectionByAgentIdsResponse> instance
 
-  Instructs the specified agents or connectors to start collecting data.
+Instructs the specified agents or connectors to start collecting data.
 
 
-=head2 StartExportTask([ExportDataFormat => ArrayRef[Str|Undef]])
+=head2 StartExportTask([EndTime => Str, ExportDataFormat => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Discovery::ExportFilter>], StartTime => Str])
 
 Each argument is described in detail in: L<Paws::Discovery::StartExportTask>
 
 Returns: a L<Paws::Discovery::StartExportTaskResponse> instance
 
-  Export the configuration data about discovered configuration items and
-relationships to an S3 bucket in a specified format.
+Begins the export of discovered data to an S3 bucket.
+
+If you specify C<agentId> in a filter, the task exports up to 72 hours
+of detailed data collected by the identified Application Discovery
+Agent, including network, process, and performance details. A time
+range for exported agent data may be set by using C<startTime> and
+C<endTime>. Export of detailed agent data is limited to five
+concurrently running exports.
+
+If you do not include an C<agentId> filter, summary data is exported
+that includes both AWS Agentless Discovery Connector data and summary
+data from AWS Discovery Agents. Export of summary data is limited to
+two exports per day.
 
 
 =head2 StopDataCollectionByAgentIds(AgentIds => ArrayRef[Str|Undef])
@@ -406,7 +423,7 @@ Each argument is described in detail in: L<Paws::Discovery::StopDataCollectionBy
 
 Returns: a L<Paws::Discovery::StopDataCollectionByAgentIdsResponse> instance
 
-  Instructs the specified agents or connectors to stop collecting data.
+Instructs the specified agents or connectors to stop collecting data.
 
 
 =head2 UpdateApplication(ConfigurationId => Str, [Description => Str, Name => Str])
@@ -415,7 +432,7 @@ Each argument is described in detail in: L<Paws::Discovery::UpdateApplication>
 
 Returns: a L<Paws::Discovery::UpdateApplicationResponse> instance
 
-  Updates metadata about an application.
+Updates metadata about an application.
 
 
 
@@ -433,9 +450,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

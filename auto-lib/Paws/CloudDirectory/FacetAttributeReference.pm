@@ -41,13 +41,17 @@ that contains the attribute facet name and attribute name.
 =head2 B<REQUIRED> TargetAttributeName => Str
 
   The target attribute name that is associated with the facet reference.
-See Attribute References for more information.
+See Attribute References
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences)
+for more information.
 
 
 =head2 B<REQUIRED> TargetFacetName => Str
 
   The target facet name that is associated with the facet reference. See
-Attribute References for more information.
+Attribute References
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences)
+for more information.
 
 
 
@@ -57,9 +61,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudDire
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

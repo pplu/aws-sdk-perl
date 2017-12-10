@@ -1,6 +1,7 @@
 
 package Paws::SSM::GetInventory;
   use Moose;
+  has Aggregators => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryAggregator]');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryFilter]');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -17,7 +18,7 @@ package Paws::SSM::GetInventory;
 
 =head1 NAME
 
-Paws::SSM::GetInventory - Arguments for method GetInventory on Paws::SSM
+Paws::SSM::GetInventory - Arguments for method GetInventory on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -34,6 +35,15 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 Aggregators => ArrayRef[L<Paws::SSM::InventoryAggregator>]
+
+Returns counts of inventory types based on one or more expressions. For
+example, if you aggregate by using an expression that uses the
+C<AWS:InstanceInformation.PlatformType> type, you can see a count of
+how many Windows and Linux instances exist in your inventoried fleet.
+
 
 
 =head2 Filters => ArrayRef[L<Paws::SSM::InventoryFilter>]
@@ -71,9 +81,9 @@ This class forms part of L<Paws>, documenting arguments for method GetInventory 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

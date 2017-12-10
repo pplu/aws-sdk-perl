@@ -17,7 +17,7 @@ package Paws::KMS::PutKeyPolicy;
 
 =head1 NAME
 
-Paws::KMS::PutKeyPolicy - Arguments for method PutKeyPolicy on Paws::KMS
+Paws::KMS::PutKeyPolicy - Arguments for method PutKeyPolicy on L<Paws::KMS>
 
 =head1 DESCRIPTION
 
@@ -45,6 +45,7 @@ Setting this value to true increases the likelihood that the CMK
 becomes unmanageable. Do not set this value to true indiscriminately.
 
 For more information, refer to the scenario in the Default Key Policy
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam)
 section in the I<AWS Key Management Service Developer Guide>.
 
 Use this parameter only when you intend to prevent the principal that
@@ -57,24 +58,26 @@ The default value is false.
 
 =head2 B<REQUIRED> KeyId => Str
 
-A unique identifier for the CMK.
+A unique identifier for the customer master key (CMK).
 
-Use the CMK's unique identifier or its Amazon Resource Name (ARN). For
-example:
+Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+
+For example:
 
 =over
 
 =item *
 
-Unique ID: 1234abcd-12ab-34cd-56ef-1234567890ab
+Key ID: C<1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =item *
 
-ARN:
-arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
+Key ARN:
+C<arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =back
 
+To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 
 
 
@@ -92,8 +95,9 @@ must meet the following criteria:
 It must allow the principal that is making the C<PutKeyPolicy> request
 to make a subsequent C<PutKeyPolicy> request on the CMK. This reduces
 the likelihood that the CMK becomes unmanageable. For more information,
-refer to the scenario in the Default Key Policy section in the I<AWS
-Key Management Service Developer Guide>.
+refer to the scenario in the Default Key Policy
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam)
+section in the I<AWS Key Management Service Developer Guide>.
 
 =item *
 
@@ -102,20 +106,19 @@ visible to AWS KMS. When you create a new AWS principal (for example,
 an IAM user or role), you might need to enforce a delay before
 specifying the new principal in a key policy because the new principal
 might not immediately be visible to AWS KMS. For more information, see
-Changes that I make are not always immediately visible in the I<IAM
-User Guide>.
+Changes that I make are not always immediately visible
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency)
+in the I<IAM User Guide>.
 
 =back
 
-The policy size limit is 32 KiB (32768 bytes).
+The policy size limit is 32 kilobytes (32768 bytes).
 
 
 
 =head2 B<REQUIRED> PolicyName => Str
 
-The name of the key policy.
-
-This value must be C<default>.
+The name of the key policy. The only valid value is C<default>.
 
 
 
@@ -126,9 +129,9 @@ This class forms part of L<Paws>, documenting arguments for method PutKeyPolicy 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

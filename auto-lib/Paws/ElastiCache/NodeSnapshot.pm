@@ -37,25 +37,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head1 DESCRIPTION
 
-Represents an individual cache node in a snapshot of a cache cluster.
+Represents an individual cache node in a snapshot of a cluster.
 
 =head1 ATTRIBUTES
 
 
 =head2 CacheClusterId => Str
 
-  A unique identifier for the source cache cluster.
+  A unique identifier for the source cluster.
 
 
 =head2 CacheNodeCreateTime => Str
 
-  The date and time when the cache node was created in the source cache
+  The date and time when the cache node was created in the source
 cluster.
 
 
 =head2 CacheNodeId => Str
 
-  The cache node identifier for the node in the source cache cluster.
+  The cache node identifier for the node in the source cluster.
 
 
 =head2 CacheSize => Str
@@ -86,9 +86,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ElastiCac
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

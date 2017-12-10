@@ -22,7 +22,7 @@ package Paws::Route53::TestDNSAnswer;
 
 =head1 NAME
 
-Paws::Route53::TestDNSAnswer - Arguments for method TestDNSAnswer on Paws::Route53
+Paws::Route53::TestDNSAnswer - Arguments for method TestDNSAnswer on L<Paws::Route53>
 
 =head1 DESCRIPTION
 
@@ -80,7 +80,7 @@ simulate a query for.
 
 The type of the resource record set.
 
-Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">
+Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">, C<"CAA">
 
 =head2 ResolverIP => Str
 
@@ -98,9 +98,9 @@ This class forms part of L<Paws>, documenting arguments for method TestDNSAnswer
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

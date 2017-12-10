@@ -19,7 +19,7 @@ package Paws::ELBv2::ModifyListener;
 
 =head1 NAME
 
-Paws::ELBv2::ModifyListener - Arguments for method ModifyListener on Paws::ELBv2
+Paws::ELBv2::ModifyListener - Arguments for method ModifyListener on L<Paws::ELBv2>
 
 =head1 DESCRIPTION
 
@@ -40,13 +40,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]
 
-The SSL server certificate.
+The default SSL server certificate.
 
 
 
 =head2 DefaultActions => ArrayRef[L<Paws::ELBv2::Action>]
 
-The default actions.
+The default action. For Application Load Balancers, the protocol of the
+specified target group must be HTTP or HTTPS. For Network Load
+Balancers, the protocol of the specified target group must be TCP.
 
 
 
@@ -65,14 +67,17 @@ The port for connections from clients to the load balancer.
 =head2 Protocol => Str
 
 The protocol for connections from clients to the load balancer.
+Application Load Balancers support HTTP and HTTPS and Network Load
+Balancers support TCP.
 
-Valid values are: C<"HTTP">, C<"HTTPS">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
 
 =head2 SslPolicy => Str
 
 The security policy that defines which protocols and ciphers are
-supported. For more information, see Security Policies in the
-I<Application Load Balancers Guide>.
+supported. For more information, see Security Policies
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
+in the I<Application Load Balancers Guide>.
 
 
 
@@ -83,9 +88,9 @@ This class forms part of L<Paws>, documenting arguments for method ModifyListene
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

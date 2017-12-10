@@ -51,7 +51,9 @@ cluster.
 =head2 DedicatedMasterEnabled => Bool
 
   A boolean value to indicate whether a dedicated master node is enabled.
-See About Dedicated Master Nodes for more information.
+See About Dedicated Master Nodes
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-dedicatedmasternodes)
+for more information.
 
 
 =head2 DedicatedMasterType => Str
@@ -72,7 +74,9 @@ See About Dedicated Master Nodes for more information.
 =head2 ZoneAwarenessEnabled => Bool
 
   A boolean value to indicate whether zone awareness is enabled. See
-About Zone Awareness for more information.
+About Zone Awareness
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-zoneawareness)
+for more information.
 
 
 
@@ -82,9 +86,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ES>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

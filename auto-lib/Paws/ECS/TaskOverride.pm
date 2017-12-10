@@ -1,6 +1,7 @@
 package Paws::ECS::TaskOverride;
   use Moose;
   has ContainerOverrides => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerOverride]', request_name => 'containerOverrides', traits => ['NameInRequest']);
+  has ExecutionRoleArn => (is => 'ro', isa => 'Str', request_name => 'executionRoleArn', traits => ['NameInRequest']);
   has TaskRoleArn => (is => 'ro', isa => 'Str', request_name => 'taskRoleArn', traits => ['NameInRequest']);
 1;
 
@@ -42,6 +43,12 @@ The overrides associated with a task.
   One or more container overrides sent to a task.
 
 
+=head2 ExecutionRoleArn => Str
+
+  The Amazon Resource Name (ARN) of the task execution role that the
+Amazon ECS container agent and the Docker daemon can assume.
+
+
 =head2 TaskRoleArn => Str
 
   The Amazon Resource Name (ARN) of the IAM role that containers in this
@@ -56,9 +63,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ECS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -17,7 +17,7 @@ package Paws::IAM::ListAttachedRolePolicies;
 
 =head1 NAME
 
-Paws::IAM::ListAttachedRolePolicies - Arguments for method ListAttachedRolePolicies on Paws::IAM
+Paws::IAM::ListAttachedRolePolicies - Arguments for method ListAttachedRolePolicies on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -66,11 +66,12 @@ The path prefix for filtering the results. This parameter is optional.
 If it is not included, it defaults to a slash (/), listing all
 policies.
 
-This paramater allows (per its regex pattern) a string of characters
-consisting of either a forward slash (/) by itself or a string that
-must begin and end with forward slashes, containing any ASCII character
-from the ! (\u0021) thru the DEL character (\u007F), including most
-punctuation characters, digits, and upper and lowercased letters.
+This paramater allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+either a forward slash (/) by itself or a string that must begin and
+end with forward slashes, containing any ASCII character from the !
+(\u0021) thru the DEL character (\u007F), including most punctuation
+characters, digits, and upper and lowercased letters.
 
 
 
@@ -79,9 +80,10 @@ punctuation characters, digits, and upper and lowercased letters.
 The name (friendly name, not ARN) of the role to list attached policies
 for.
 
-This parameter allows (per its regex pattern) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: _+=,.@-
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+upper and lowercase alphanumeric characters with no spaces. You can
+also include any of the following characters: _+=,.@-
 
 
 
@@ -92,9 +94,9 @@ This class forms part of L<Paws>, documenting arguments for method ListAttachedR
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

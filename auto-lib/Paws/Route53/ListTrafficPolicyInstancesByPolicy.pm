@@ -22,7 +22,7 @@ package Paws::Route53::ListTrafficPolicyInstancesByPolicy;
 
 =head1 NAME
 
-Paws::Route53::ListTrafficPolicyInstancesByPolicy - Arguments for method ListTrafficPolicyInstancesByPolicy on Paws::Route53
+Paws::Route53::ListTrafficPolicyInstancesByPolicy - Arguments for method ListTrafficPolicyInstancesByPolicy on L<Paws::Route53>
 
 =head1 DESCRIPTION
 
@@ -110,7 +110,7 @@ return if you submit another request.
 If the value of C<IsTruncated> in the previous response was C<false>,
 there are no more traffic policy instances to get.
 
-Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">
+Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">, C<"CAA">
 
 =head2 B<REQUIRED> TrafficPolicyVersion => Int
 
@@ -127,9 +127,9 @@ This class forms part of L<Paws>, documenting arguments for method ListTrafficPo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

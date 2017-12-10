@@ -3,14 +3,39 @@
 use strict;
 use warnings;
 
+use lib 't/lib';
+
 use Paws;
 use Data::Dumper;
 
-my $efs = Paws->service('EFS', region => 'eu-west-1');
+use TestMakerCaller;
+
+my $efs = Paws->service('EFS', region => 'eu-west-1', caller => TestMakerCaller->new);
 
 my $res = $efs->CreateFileSystem(
   CreationToken => 4,
   PerformanceMode => 'generalPurpose'
 );
+
+print Dumper($res);
+
+my $fs_id = $res->FileSystemId;
+
+my $fs = $efs->DescribeFileSystems(FileSystemId => $fs_id);
+
+print Dumper($res);
+
+
+
+
+$res = $efs->DeleteFileSystem(
+  FileSystemId => $fs_id,
+);
+
+print Dumper($res);
+
+sleep 30;
+
+$fs = $efs->DescribeFileSystems(FileSystemId => $fs_id);
 
 print Dumper($res);

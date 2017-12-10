@@ -10,7 +10,7 @@ package Paws::CloudWatch;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
 
   
   sub DeleteAlarms {
@@ -213,17 +213,17 @@ Each argument is described in detail in: L<Paws::CloudWatch::DeleteAlarms>
 
 Returns: nothing
 
-  Deletes the specified alarms. In the event of an error, no alarms are
+Deletes the specified alarms. In the event of an error, no alarms are
 deleted.
 
 
-=head2 DeleteDashboards([DashboardNames => ArrayRef[Str|Undef]])
+=head2 DeleteDashboards(DashboardNames => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::CloudWatch::DeleteDashboards>
 
 Returns: a L<Paws::CloudWatch::DeleteDashboardsOutput> instance
 
-  Deletes all dashboards that you specify. You may specify up to 100
+Deletes all dashboards that you specify. You may specify up to 100
 dashboards to delete. If there is an error during this call, no
 dashboards are deleted.
 
@@ -234,7 +234,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarmHistor
 
 Returns: a L<Paws::CloudWatch::DescribeAlarmHistoryOutput> instance
 
-  Retrieves the history for the specified alarm. You can filter the
+Retrieves the history for the specified alarm. You can filter the
 results by date range or item type. If an alarm name is not specified,
 the histories for all alarms are returned.
 
@@ -248,7 +248,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarms>
 
 Returns: a L<Paws::CloudWatch::DescribeAlarmsOutput> instance
 
-  Retrieves the specified alarms. If no alarms are specified, all alarms
+Retrieves the specified alarms. If no alarms are specified, all alarms
 are returned. Alarms can be retrieved by using only a prefix for the
 alarm name, the alarm state, or a prefix for any action.
 
@@ -259,7 +259,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarmsForMe
 
 Returns: a L<Paws::CloudWatch::DescribeAlarmsForMetricOutput> instance
 
-  Retrieves the alarms for the specified metric. To filter the results,
+Retrieves the alarms for the specified metric. To filter the results,
 specify a statistic, period, or unit.
 
 
@@ -269,7 +269,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::DisableAlarmActions
 
 Returns: nothing
 
-  Disables the actions for the specified alarms. When an alarm's actions
+Disables the actions for the specified alarms. When an alarm's actions
 are disabled, the alarm actions do not execute when the alarm state
 changes.
 
@@ -280,16 +280,16 @@ Each argument is described in detail in: L<Paws::CloudWatch::EnableAlarmActions>
 
 Returns: nothing
 
-  Enables the actions for the specified alarms.
+Enables the actions for the specified alarms.
 
 
-=head2 GetDashboard([DashboardName => Str])
+=head2 GetDashboard(DashboardName => Str)
 
 Each argument is described in detail in: L<Paws::CloudWatch::GetDashboard>
 
 Returns: a L<Paws::CloudWatch::GetDashboardOutput> instance
 
-  Displays the details of the dashboard that you specify.
+Displays the details of the dashboard that you specify.
 
 To copy an existing dashboard, use C<GetDashboard>, and then use the
 data returned within C<DashboardBody> as the template for the new
@@ -302,39 +302,14 @@ Each argument is described in detail in: L<Paws::CloudWatch::GetMetricStatistics
 
 Returns: a L<Paws::CloudWatch::GetMetricStatisticsOutput> instance
 
-  Gets statistics for the specified metric.
-
-Amazon CloudWatch retains metric data as follows:
-
-=over
-
-=item *
-
-Data points with a period of 60 seconds (1-minute) are available for 15
-days
-
-=item *
-
-Data points with a period of 300 seconds (5-minute) are available for
-63 days
-
-=item *
-
-Data points with a period of 3600 seconds (1 hour) are available for
-455 days (15 months)
-
-=back
-
-CloudWatch started retaining 5-minute and 1-hour metric data as of July
-9, 2016.
+Gets statistics for the specified metric.
 
 The maximum number of data points returned from a single call is 1,440.
 If you request more than 1,440 data points, CloudWatch returns an
 error. To reduce the number of data points, you can narrow the
 specified time range and make multiple requests across adjacent time
-ranges, or you can increase the specified period. A period can be as
-short as one minute (60 seconds). Data points are not returned in
-chronological order.
+ranges, or you can increase the specified period. Data points are not
+returned in chronological order.
 
 CloudWatch aggregates data points based on the length of the period
 that you specify. For example, if you request statistics with a
@@ -360,9 +335,49 @@ The Min and the Max values of the statistic set are equal.
 
 =back
 
-For a list of metrics and dimensions supported by AWS services, see the
-Amazon CloudWatch Metrics and Dimensions Reference in the I<Amazon
-CloudWatch User Guide>.
+Amazon CloudWatch retains metric data as follows:
+
+=over
+
+=item *
+
+Data points with a period of less than 60 seconds are available for 3
+hours. These data points are high-resolution metrics and are available
+only for custom metrics that have been defined with a
+C<StorageResolution> of 1.
+
+=item *
+
+Data points with a period of 60 seconds (1-minute) are available for 15
+days.
+
+=item *
+
+Data points with a period of 300 seconds (5-minute) are available for
+63 days.
+
+=item *
+
+Data points with a period of 3600 seconds (1 hour) are available for
+455 days (15 months).
+
+=back
+
+Data points that are initially published with a shorter period are
+aggregated together for long-term storage. For example, if you collect
+data using a period of 1 minute, the data remains available for 15 days
+with 1-minute resolution. After 15 days, this data is still available,
+but is aggregated and retrievable only with a resolution of 5 minutes.
+After 63 days, the data is further aggregated and is available with a
+resolution of 1 hour.
+
+CloudWatch started retaining 5-minute and 1-hour metric data as of July
+9, 2016.
+
+For information about metrics and dimensions supported by AWS services,
+see the Amazon CloudWatch Metrics and Dimensions Reference
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CW_Support_For_AWS.html)
+in the I<Amazon CloudWatch User Guide>.
 
 
 =head2 ListDashboards([DashboardNamePrefix => Str, NextToken => Str])
@@ -371,7 +386,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::ListDashboards>
 
 Returns: a L<Paws::CloudWatch::ListDashboardsOutput> instance
 
-  Returns a list of the dashboards for your account. If you include
+Returns a list of the dashboards for your account. If you include
 C<DashboardNamePrefix>, only those dashboards with names starting with
 the prefix are listed. Otherwise, all dashboards in your account are
 listed.
@@ -383,7 +398,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::ListMetrics>
 
 Returns: a L<Paws::CloudWatch::ListMetricsOutput> instance
 
-  List the specified metrics. You can use the returned metrics with
+List the specified metrics. You can use the returned metrics with
 GetMetricStatistics to obtain statistical data.
 
 Up to 500 results are returned for any one call. To retrieve additional
@@ -394,31 +409,42 @@ metric appears. Statistics about the metric, however, are available
 sooner using GetMetricStatistics.
 
 
-=head2 PutDashboard([DashboardBody => Str, DashboardName => Str])
+=head2 PutDashboard(DashboardBody => Str, DashboardName => Str)
 
 Each argument is described in detail in: L<Paws::CloudWatch::PutDashboard>
 
 Returns: a L<Paws::CloudWatch::PutDashboardOutput> instance
 
-  Creates a dashboard if it does not already exist, or updates an
+Creates a dashboard if it does not already exist, or updates an
 existing dashboard. If you update a dashboard, the entire contents are
 replaced with what you specify here.
 
 You can have up to 500 dashboards per account. All dashboards in your
 account are global, not region-specific.
 
-To copy an existing dashboard, use C<GetDashboard>, and then use the
+A simple way to create a dashboard using C<PutDashboard> is to copy an
+existing dashboard. To copy an existing dashboard using the console,
+you can load the dashboard and then use the View/edit source command in
+the Actions menu to display the JSON block for that dashboard. Another
+way to copy a dashboard is to use C<GetDashboard>, and then use the
 data returned within C<DashboardBody> as the template for the new
-dashboard when you call C<PutDashboard> to create the copy.
+dashboard when you call C<PutDashboard>.
+
+When you create a dashboard with C<PutDashboard>, a good practice is to
+add a text widget at the top of the dashboard with a message that the
+dashboard was created by script and should not be changed in the
+console. This message could also point console users to the location of
+the C<DashboardBody> script or the CloudFormation template used to
+create the dashboard.
 
 
-=head2 PutMetricAlarm(AlarmName => Str, ComparisonOperator => Str, EvaluationPeriods => Int, MetricName => Str, Namespace => Str, Period => Int, Threshold => Num, [ActionsEnabled => Bool, AlarmActions => ArrayRef[Str|Undef], AlarmDescription => Str, Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], EvaluateLowSampleCountPercentile => Str, ExtendedStatistic => Str, InsufficientDataActions => ArrayRef[Str|Undef], OKActions => ArrayRef[Str|Undef], Statistic => Str, TreatMissingData => Str, Unit => Str])
+=head2 PutMetricAlarm(AlarmName => Str, ComparisonOperator => Str, EvaluationPeriods => Int, MetricName => Str, Namespace => Str, Period => Int, Threshold => Num, [ActionsEnabled => Bool, AlarmActions => ArrayRef[Str|Undef], AlarmDescription => Str, DatapointsToAlarm => Int, Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], EvaluateLowSampleCountPercentile => Str, ExtendedStatistic => Str, InsufficientDataActions => ArrayRef[Str|Undef], OKActions => ArrayRef[Str|Undef], Statistic => Str, TreatMissingData => Str, Unit => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatch::PutMetricAlarm>
 
 Returns: nothing
 
-  Creates or updates an alarm and associates it with the specified
+Creates or updates an alarm and associates it with the specified
 metric. Optionally, this operation can associate one or more Amazon SNS
 resources with the alarm.
 
@@ -482,7 +508,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::PutMetricData>
 
 Returns: nothing
 
-  Publishes metric data points to Amazon CloudWatch. CloudWatch
+Publishes metric data points to Amazon CloudWatch. CloudWatch
 associates the data points with the specified metric. If the specified
 metric does not exist, CloudWatch creates the metric. When CloudWatch
 creates a metric, it can take up to fifteen minutes for the metric to
@@ -499,7 +525,9 @@ NaN, +Infinity, -Infinity) are not supported.
 
 You can use up to 10 dimensions per metric to further clarify what data
 the metric collects. For more information about specifying dimensions,
-see Publishing Metrics in the I<Amazon CloudWatch User Guide>.
+see Publishing Metrics
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html)
+in the I<Amazon CloudWatch User Guide>.
 
 Data points with time stamps from 24 hours ago or longer can take at
 least 48 hours to become available for GetMetricStatistics from the
@@ -530,7 +558,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::SetAlarmState>
 
 Returns: nothing
 
-  Temporarily sets the state of an alarm for testing purposes. When the
+Temporarily sets the state of an alarm for testing purposes. When the
 updated state differs from the previous value, the action configured
 for the appropriate state is invoked. For example, if your alarm is
 configured to send an Amazon SNS message when an alarm is triggered,
@@ -592,9 +620,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

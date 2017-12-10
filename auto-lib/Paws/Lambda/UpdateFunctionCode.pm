@@ -2,7 +2,7 @@
 package Paws::Lambda::UpdateFunctionCode;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
-  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
+  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
   has Publish => (is => 'ro', isa => 'Bool');
   has S3Bucket => (is => 'ro', isa => 'Str');
   has S3Key => (is => 'ro', isa => 'Str');
@@ -15,14 +15,13 @@ package Paws::Lambda::UpdateFunctionCode;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/code');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::FunctionConfiguration');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Lambda::UpdateFunctionCode - Arguments for method UpdateFunctionCode on Paws::Lambda
+Paws::Lambda::UpdateFunctionCode - Arguments for method UpdateFunctionCode on L<Paws::Lambda>
 
 =head1 DESCRIPTION
 
@@ -47,7 +46,7 @@ This boolean parameter can be used to test your request to AWS Lambda
 to update the Lambda function and publish a version as an atomic
 operation. It will do all necessary computation and validation of your
 code but will not upload it or a publish a version. Each time this
-operation is invoked, the C<CodeSha256> hash value the provided code
+operation is invoked, the C<CodeSha256> hash value of the provided code
 will also be computed and returned in the response.
 
 
@@ -101,8 +100,9 @@ The contents of your zip file containing your deployment package. If
 you are using the web API directly, the contents of the zip file must
 be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the
 SDKs or CLI will do the encoding for you. For more information about
-creating a .zip file, see Execution Permissions in the I<AWS Lambda
-Developer Guide>.
+creating a .zip file, see Execution Permissions
+(http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html)
+in the I<AWS Lambda Developer Guide>.
 
 
 
@@ -113,9 +113,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateFunctio
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

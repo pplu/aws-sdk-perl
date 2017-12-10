@@ -5,7 +5,7 @@ package Paws::XRay::TelemetryRecord;
   has SegmentsRejectedCount => (is => 'ro', isa => 'Int');
   has SegmentsSentCount => (is => 'ro', isa => 'Int');
   has SegmentsSpilloverCount => (is => 'ro', isa => 'Int');
-  has Timestamp => (is => 'ro', isa => 'Str');
+  has Timestamp => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +66,7 @@ This class has no description
   
 
 
-=head2 Timestamp => Str
+=head2 B<REQUIRED> Timestamp => Str
 
   
 
@@ -78,9 +78,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::XRay>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

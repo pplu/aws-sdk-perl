@@ -11,6 +11,10 @@ package Paws::DMS::TableStatistics;
   has TableName => (is => 'ro', isa => 'Str');
   has TableState => (is => 'ro', isa => 'Str');
   has Updates => (is => 'ro', isa => 'Int');
+  has ValidationFailedRecords => (is => 'ro', isa => 'Int');
+  has ValidationPendingRecords => (is => 'ro', isa => 'Int');
+  has ValidationState => (is => 'ro', isa => 'Str');
+  has ValidationSuspendedRecords => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +34,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DMS::TableStatistics object:
 
-  $service_obj->Method(Att1 => { Ddls => $value, ..., Updates => $value  });
+  $service_obj->Method(Att1 => { Ddls => $value, ..., ValidationSuspendedRecords => $value  });
 
 =head3 Results returned from an API call
 
@@ -96,12 +100,83 @@ operation (valid only for DynamoDB as a target migrations).
 
 =head2 TableState => Str
 
-  The state of the table.
+  The state of the tables described.
+
+Valid states: Table does not exist | Before load | Full load | Table
+completed | Table cancelled | Table error | Table all | Table updates |
+Table is being reloaded
 
 
 =head2 Updates => Int
 
   The number of update actions performed on a table.
+
+
+=head2 ValidationFailedRecords => Int
+
+  The number of records that failed validation.
+
+
+=head2 ValidationPendingRecords => Int
+
+  The number of records that have yet to be validated.
+
+
+=head2 ValidationState => Str
+
+  The validation state of the table.
+
+The parameter can have the following values
+
+=over
+
+=item *
+
+Not enabledE<mdash>Validation is not enabled for the table in the
+migration task.
+
+=item *
+
+Pending recordsE<mdash>Some records in the table are waiting for
+validation.
+
+=item *
+
+Mismatched recordsE<mdash>Some records in the table do not match
+between the source and target.
+
+=item *
+
+Suspended recordsE<mdash>Some records in the table could not be
+validated.
+
+=item *
+
+No primary keyE<mdash>The table could not be validated because it had
+no primary key.
+
+=item *
+
+Table errorE<mdash>The table was not validated because it was in an
+error state and some data was not migrated.
+
+=item *
+
+ValidatedE<mdash>All rows in the table were validated. If the table is
+updated, the status can change from Validated.
+
+=item *
+
+ErrorE<mdash>The table could not be validated because of an unexpected
+error.
+
+=back
+
+
+
+=head2 ValidationSuspendedRecords => Int
+
+  The number of records that could not be validated.
 
 
 
@@ -111,9 +186,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::DMS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

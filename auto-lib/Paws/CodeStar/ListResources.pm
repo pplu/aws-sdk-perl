@@ -16,7 +16,7 @@ package Paws::CodeStar::ListResources;
 
 =head1 NAME
 
-Paws::CodeStar::ListResources - Arguments for method ListResources on Paws::CodeStar
+Paws::CodeStar::ListResources - Arguments for method ListResources on L<Paws::CodeStar>
 
 =head1 DESCRIPTION
 
@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 MaxResults => Int
 
-he maximum amount of data that can be contained in a single set of
+The maximum amount of data that can be contained in a single set of
 results.
 
 
@@ -62,9 +62,9 @@ This class forms part of L<Paws>, documenting arguments for method ListResources
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

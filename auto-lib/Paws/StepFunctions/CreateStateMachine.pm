@@ -16,7 +16,7 @@ package Paws::StepFunctions::CreateStateMachine;
 
 =head1 NAME
 
-Paws::StepFunctions::CreateStateMachine - Arguments for method CreateStateMachine on Paws::StepFunctions
+Paws::StepFunctions::CreateStateMachine - Arguments for method CreateStateMachine on L<Paws::StepFunctions>
 
 =head1 DESCRIPTION
 
@@ -44,7 +44,37 @@ The Amazon States Language definition of the state machine.
 =head2 B<REQUIRED> Name => Str
 
 The name of the state machine. This name must be unique for your AWS
-account and region.
+account and region for 90 days. For more information, see Limits
+Related to State Machine Executions
+(http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions)
+in the I<AWS Step Functions Developer Guide>.
+
+A name must I<not> contain:
+
+=over
+
+=item *
+
+whitespace
+
+=item *
+
+brackets C<E<lt> E<gt> { } [ ]>
+
+=item *
+
+wildcard characters C<? *>
+
+=item *
+
+special characters C<" # % \ ^ | ~ ` $ & , ; : />
+
+=item *
+
+control characters (C<U+0000-001F>, C<U+007F-009F>)
+
+=back
+
 
 
 
@@ -62,9 +92,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateStateMa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

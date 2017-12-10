@@ -32,7 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 =head1 DESCRIPTION
 
 Information about a load balancer in Elastic Load Balancing to use in a
-deployment.
+deployment. Instances are registered directly with a load balancer, and
+traffic is routed to the load balancer.
 
 =head1 ATTRIBUTES
 
@@ -54,9 +55,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodeDeplo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

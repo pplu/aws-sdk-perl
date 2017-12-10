@@ -16,7 +16,7 @@ package Paws::Rekognition::DetectLabels;
 
 =head1 NAME
 
-Paws::Rekognition::DetectLabels - Arguments for method DetectLabels on Paws::Rekognition
+Paws::Rekognition::DetectLabels - Arguments for method DetectLabels on L<Paws::Rekognition>
 
 =head1 DESCRIPTION
 
@@ -37,7 +37,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Image => L<Paws::Rekognition::Image>
 
-The input image. You can provide a blob of image bytes or an S3 object.
+The input image as base64-encoded bytes or an S3 object. If you use the
+AWS CLI to call Amazon Rekognition operations, passing base64-encoded
+image bytes is not supported.
 
 
 
@@ -67,9 +69,9 @@ This class forms part of L<Paws>, documenting arguments for method DetectLabels 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -4,6 +4,7 @@ package Paws::CognitoIdp::UpdateUserPoolClient;
   has AllowedOAuthFlows => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has AllowedOAuthFlowsUserPoolClient => (is => 'ro', isa => 'Bool');
   has AllowedOAuthScopes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AnalyticsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::AnalyticsConfigurationType');
   has CallbackURLs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ClientId => (is => 'ro', isa => 'Str', required => 1);
   has ClientName => (is => 'ro', isa => 'Str');
@@ -27,7 +28,7 @@ package Paws::CognitoIdp::UpdateUserPoolClient;
 
 =head1 NAME
 
-Paws::CognitoIdp::UpdateUserPoolClient - Arguments for method UpdateUserPoolClient on Paws::CognitoIdp
+Paws::CognitoIdp::UpdateUserPoolClient - Arguments for method UpdateUserPoolClient on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -71,6 +72,13 @@ C<"phone">, C<"email">, C<"openid">, and C<"Cognito">.
 
 
 
+=head2 AnalyticsConfiguration => L<Paws::CognitoIdp::AnalyticsConfigurationType>
+
+The Amazon Pinpoint analytics configuration for collecting metrics for
+this user pool.
+
+
+
 =head2 CallbackURLs => ArrayRef[Str|Undef]
 
 A list of allowed callback URLs for the identity providers.
@@ -103,7 +111,7 @@ Explicit authentication flows.
 
 =head2 LogoutURLs => ArrayRef[Str|Undef]
 
-A list ofallowed logout URLs for the identity providers.
+A list of allowed logout URLs for the identity providers.
 
 
 
@@ -147,9 +155,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateUserPoo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

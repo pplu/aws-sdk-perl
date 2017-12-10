@@ -7,6 +7,7 @@ package Paws::CloudWatch::MetricAlarm;
   has AlarmDescription => (is => 'ro', isa => 'Str');
   has AlarmName => (is => 'ro', isa => 'Str');
   has ComparisonOperator => (is => 'ro', isa => 'Str');
+  has DatapointsToAlarm => (is => 'ro', isa => 'Int');
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
   has EvaluateLowSampleCountPercentile => (is => 'ro', isa => 'Str');
   has EvaluationPeriods => (is => 'ro', isa => 'Int');
@@ -99,6 +100,11 @@ and threshold. The specified statistic value is used as the first
 operand.
 
 
+=head2 DatapointsToAlarm => Int
+
+  The number of datapoints that must be breaching to trigger the alarm.
+
+
 =head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
 
   The dimensions for the metric associated with the alarm.
@@ -109,7 +115,7 @@ operand.
   Used only for alarms based on percentiles. If C<ignore>, the alarm
 state does not change during periods with too few data points to be
 statistically significant. If C<evaluate> or this parameter is not
-used, the alarm will always be evaluated and possibly change state no
+used, the alarm is always evaluated and possibly changes state no
 matter how many data points are available.
 
 
@@ -203,9 +209,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudWatc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

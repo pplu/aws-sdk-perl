@@ -8,9 +8,10 @@ package Paws::Glacier;
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+       sub { defined $_[0]->http_status and $_[0]->http_status == 408 and $_[0]->code eq 'RequestTimeoutException' },
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
   sub AbortMultipartUpload {
@@ -316,7 +317,8 @@ Amazon Glacier is a great storage choice when low storage cost is
 paramount, your data is rarely retrieved, and retrieval latency of
 several hours is acceptable. If your application requires fast or
 frequent access to your data, consider using Amazon S3. For more
-information, see Amazon Simple Storage Service (Amazon S3).
+information, see Amazon Simple Storage Service (Amazon S3)
+(http://aws.amazon.com/s3/).
 
 You can store any kind of data in any format. There is no maximum limit
 on the total amount of data you can store in Amazon Glacier.
@@ -329,16 +331,19 @@ Developer Guide>:
 
 =item *
 
-What is Amazon Glacier - This section of the Developer Guide describes
-the underlying data model, the operations it supports, and the AWS SDKs
-that you can use to interact with the service.
+What is Amazon Glacier
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/introduction.html)
+- This section of the Developer Guide describes the underlying data
+model, the operations it supports, and the AWS SDKs that you can use to
+interact with the service.
 
 =item *
 
-Getting Started with Amazon Glacier - The Getting Started section walks
-you through the process of creating a vault, uploading archives,
-creating jobs to download archives, retrieving the job output, and
-deleting archives.
+Getting Started with Amazon Glacier
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/amazon-glacier-getting-started.html)
+- The Getting Started section walks you through the process of creating
+a vault, uploading archives, creating jobs to download archives,
+retrieving the job output, and deleting archives.
 
 =back
 
@@ -351,7 +356,7 @@ Each argument is described in detail in: L<Paws::Glacier::AbortMultipartUpload>
 
 Returns: nothing
 
-  This operation aborts a multipart upload identified by the upload ID.
+This operation aborts a multipart upload identified by the upload ID.
 
 After the Abort Multipart Upload request succeeds, you cannot upload
 any more parts to the multipart upload or complete the multipart
@@ -366,11 +371,15 @@ An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM).
+Using AWS Identity and Access Management (IAM)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
 
 For conceptual information and underlying REST API, see Working with
-Archives in Amazon Glacier and Abort Multipart Upload in the I<Amazon
-Glacier Developer Guide>.
+Archives in Amazon Glacier
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html)
+and Abort Multipart Upload
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-abort-upload.html)
+in the I<Amazon Glacier Developer Guide>.
 
 
 =head2 AbortVaultLock(AccountId => Str, VaultName => Str)
@@ -379,7 +388,7 @@ Each argument is described in detail in: L<Paws::Glacier::AbortVaultLock>
 
 Returns: nothing
 
-  This operation aborts the vault locking process if the vault lock is
+This operation aborts the vault locking process if the vault lock is
 not in the C<Locked> state. If the vault lock is in the C<Locked> state
 when this operation is requested, the operation returns an
 C<AccessDeniedException> error. Aborting the vault locking process
@@ -389,9 +398,11 @@ A vault lock is put into the C<InProgress> state by calling
 InitiateVaultLock. A vault lock is put into the C<Locked> state by
 calling CompleteVaultLock. You can get the state of a vault lock by
 calling GetVaultLock. For more information about the vault locking
-process, see Amazon Glacier Vault Lock. For more information about
-vault lock policies, see Amazon Glacier Access Control with Vault Lock
-Policies.
+process, see Amazon Glacier Vault Lock
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html).
+For more information about vault lock policies, see Amazon Glacier
+Access Control with Vault Lock Policies
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock-policy.html).
 
 This operation is idempotent. You can successfully invoke this
 operation multiple times, if the vault lock is in the C<InProgress>
@@ -404,13 +415,14 @@ Each argument is described in detail in: L<Paws::Glacier::AddTagsToVault>
 
 Returns: nothing
 
-  This operation adds the specified tags to a vault. Each tag is composed
+This operation adds the specified tags to a vault. Each tag is composed
 of a key and a value. Each vault can have up to 10 tags. If your
 request would cause the tag limit for the vault to be exceeded, the
 operation throws the C<LimitExceededException> error. If a tag already
 exists on the vault under a specified key, the existing key value will
 be overwritten. For more information about tags, see Tagging Amazon
-Glacier Resources.
+Glacier Resources
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html).
 
 
 =head2 CompleteMultipartUpload(AccountId => Str, UploadId => Str, VaultName => Str, [ArchiveSize => Str, Checksum => Str])
@@ -419,7 +431,7 @@ Each argument is described in detail in: L<Paws::Glacier::CompleteMultipartUploa
 
 Returns: a L<Paws::Glacier::ArchiveCreationOutput> instance
 
-  You call this operation to inform Amazon Glacier that all the archive
+You call this operation to inform Amazon Glacier that all the archive
 parts have been uploaded and that Amazon Glacier can now assemble the
 archive from the uploaded parts. After assembling and saving the
 archive to the vault, Amazon Glacier returns the URI path of the newly
@@ -431,13 +443,14 @@ information, see InitiateJob.
 
 In the request, you must include the computed SHA256 tree hash of the
 entire archive you have uploaded. For information about computing a
-SHA256 tree hash, see Computing Checksums. On the server side, Amazon
-Glacier also constructs the SHA256 tree hash of the assembled archive.
-If the values match, Amazon Glacier saves the archive to the vault;
-otherwise, it returns an error, and the operation fails. The ListParts
-operation returns a list of parts uploaded for a specific multipart
-upload. It includes checksum information for each uploaded part that
-can be used to debug a bad checksum issue.
+SHA256 tree hash, see Computing Checksums
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html).
+On the server side, Amazon Glacier also constructs the SHA256 tree hash
+of the assembled archive. If the values match, Amazon Glacier saves the
+archive to the vault; otherwise, it returns an error, and the operation
+fails. The ListParts operation returns a list of parts uploaded for a
+specific multipart upload. It includes checksum information for each
+uploaded part that can be used to debug a bad checksum issue.
 
 Additionally, Amazon Glacier also checks for any missing content ranges
 when assembling the archive, if missing content ranges are found,
@@ -458,11 +471,15 @@ An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM).
+Using AWS Identity and Access Management (IAM)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
 
 For conceptual information and underlying REST API, see Uploading Large
-Archives in Parts (Multipart Upload) and Complete Multipart Upload in
-the I<Amazon Glacier Developer Guide>.
+Archives in Parts (Multipart Upload)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html)
+and Complete Multipart Upload
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-complete-upload.html)
+in the I<Amazon Glacier Developer Guide>.
 
 
 =head2 CompleteVaultLock(AccountId => Str, LockId => Str, VaultName => Str)
@@ -471,12 +488,13 @@ Each argument is described in detail in: L<Paws::Glacier::CompleteVaultLock>
 
 Returns: nothing
 
-  This operation completes the vault locking process by transitioning the
+This operation completes the vault locking process by transitioning the
 vault lock from the C<InProgress> state to the C<Locked> state, which
 causes the vault lock policy to become unchangeable. A vault lock is
 put into the C<InProgress> state by calling InitiateVaultLock. You can
 obtain the state of the vault lock by calling GetVaultLock. For more
-information about the vault locking process, Amazon Glacier Vault Lock.
+information about the vault locking process, Amazon Glacier Vault Lock
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html).
 
 This operation is idempotent. This request is always successful if the
 vault lock is in the C<Locked> state and the provided lock ID matches
@@ -495,7 +513,7 @@ Each argument is described in detail in: L<Paws::Glacier::CreateVault>
 
 Returns: a L<Paws::Glacier::CreateVaultOutput> instance
 
-  This operation creates a new vault with the specified name. The name of
+This operation creates a new vault with the specified name. The name of
 the vault must be unique within a region for an AWS account. You can
 create up to 1,000 vaults per account. If you need to create more
 vaults, contact Amazon Glacier.
@@ -521,11 +539,15 @@ An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM).
+Using AWS Identity and Access Management (IAM)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
 
 For conceptual information and underlying REST API, see Creating a
-Vault in Amazon Glacier and Create Vault in the I<Amazon Glacier
-Developer Guide>.
+Vault in Amazon Glacier
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/creating-vaults.html)
+and Create Vault
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-put.html)
+in the I<Amazon Glacier Developer Guide>.
 
 
 =head2 DeleteArchive(AccountId => Str, ArchiveId => Str, VaultName => Str)
@@ -534,7 +556,7 @@ Each argument is described in detail in: L<Paws::Glacier::DeleteArchive>
 
 Returns: nothing
 
-  This operation deletes an archive from a vault. Subsequent requests to
+This operation deletes an archive from a vault. Subsequent requests to
 initiate a retrieval of this archive will fail. Archive retrievals that
 are in progress for this archive ID may or may not succeed according to
 the following scenarios:
@@ -562,11 +584,15 @@ An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM).
+Using AWS Identity and Access Management (IAM)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
 
 For conceptual information and underlying REST API, see Deleting an
-Archive in Amazon Glacier and Delete Archive in the I<Amazon Glacier
-Developer Guide>.
+Archive in Amazon Glacier
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/deleting-an-archive.html)
+and Delete Archive
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delete.html)
+in the I<Amazon Glacier Developer Guide>.
 
 
 =head2 DeleteVault(AccountId => Str, VaultName => Str)
@@ -575,15 +601,18 @@ Each argument is described in detail in: L<Paws::Glacier::DeleteVault>
 
 Returns: nothing
 
-  This operation deletes a vault. Amazon Glacier will delete a vault only
+This operation deletes a vault. Amazon Glacier will delete a vault only
 if there are no archives in the vault as of the last inventory and
 there have been no writes to the vault since the last inventory. If
 either of these conditions is not satisfied, the vault deletion fails
 (that is, the vault is not removed) and Amazon Glacier returns an
 error. You can use DescribeVault to return the number of archives in a
-vault, and you can use Initiate a Job (POST jobs) to initiate a new
-inventory retrieval for a vault. The inventory contains the archive IDs
-you use to delete archives using Delete Archive (DELETE archive).
+vault, and you can use Initiate a Job (POST jobs)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html)
+to initiate a new inventory retrieval for a vault. The inventory
+contains the archive IDs you use to delete archives using Delete
+Archive (DELETE archive)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delete.html).
 
 This operation is idempotent.
 
@@ -591,11 +620,15 @@ An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM).
+Using AWS Identity and Access Management (IAM)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
 
 For conceptual information and underlying REST API, see Deleting a
-Vault in Amazon Glacier and Delete Vault in the I<Amazon Glacier
-Developer Guide>.
+Vault in Amazon Glacier
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/deleting-vaults.html)
+and Delete Vault
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-delete.html)
+in the I<Amazon Glacier Developer Guide>.
 
 
 =head2 DeleteVaultAccessPolicy(AccountId => Str, VaultName => Str)
@@ -604,7 +637,7 @@ Each argument is described in detail in: L<Paws::Glacier::DeleteVaultAccessPolic
 
 Returns: nothing
 
-  This operation deletes the access policy associated with the specified
+This operation deletes the access policy associated with the specified
 vault. The operation is eventually consistent; that is, it might take
 some time for Amazon Glacier to completely remove the access policy,
 and you might still see the effect of the policy for a short time after
@@ -613,7 +646,8 @@ you send the delete request.
 This operation is idempotent. You can invoke delete multiple times,
 even if there is no policy associated with the vault. For more
 information about vault access policies, see Amazon Glacier Access
-Control with Vault Access Policies.
+Control with Vault Access Policies
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html).
 
 
 =head2 DeleteVaultNotifications(AccountId => Str, VaultName => Str)
@@ -622,7 +656,7 @@ Each argument is described in detail in: L<Paws::Glacier::DeleteVaultNotificatio
 
 Returns: nothing
 
-  This operation deletes the notification configuration set for a vault.
+This operation deletes the notification configuration set for a vault.
 The operation is eventually consistent; that is, it might take some
 time for Amazon Glacier to completely disable the notifications and you
 might still receive some notifications for a short time after you send
@@ -632,11 +666,15 @@ An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM).
+Using AWS Identity and Access Management (IAM)
+(http://docs.aws.amazon.com/latest/dev/using-iam-with-amazon-glacier.html).
 
 For conceptual information and underlying REST API, see Configuring
-Vault Notifications in Amazon Glacier and Delete Vault Notification
-Configuration in the Amazon Glacier Developer Guide.
+Vault Notifications in Amazon Glacier
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html)
+and Delete Vault Notification Configuration
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-delete.html)
+in the Amazon Glacier Developer Guide.
 
 
 =head2 DescribeJob(AccountId => Str, JobId => Str, VaultName => Str)
@@ -645,7 +683,7 @@ Each argument is described in detail in: L<Paws::Glacier::DescribeJob>
 
 Returns: a L<Paws::Glacier::GlacierJobDescription> instance
 
-  This operation returns information about a job you previously
+This operation returns information about a job you previously
 initiated, including the job initiation date, the user who initiated
 the job, the job status code/message and the Amazon SNS topic to notify
 after Amazon Glacier completes the job. For more information about
@@ -663,10 +701,13 @@ An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM).
+Using AWS Identity and Access Management (IAM)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
 
-For information about the underlying REST API, see Working with
-Archives in Amazon Glacier in the I<Amazon Glacier Developer Guide>.
+For more information about using this operation, see the documentation
+for the underlying REST API Describe Job
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-describe-job-get.html)
+in the I<Amazon Glacier Developer Guide>.
 
 
 =head2 DescribeVault(AccountId => Str, VaultName => Str)
@@ -675,7 +716,7 @@ Each argument is described in detail in: L<Paws::Glacier::DescribeVault>
 
 Returns: a L<Paws::Glacier::DescribeVaultOutput> instance
 
-  This operation returns information about a vault, including the vault's
+This operation returns information about a vault, including the vault's
 Amazon Resource Name (ARN), the date the vault was created, the number
 of archives it contains, and the total size of all the archives in the
 vault. The number of archives and their total size are as of the last
@@ -684,17 +725,22 @@ from a vault, and then immediately use Describe Vault, the change in
 contents will not be immediately reflected. If you want to retrieve the
 latest inventory of the vault, use InitiateJob. Amazon Glacier
 generates vault inventories approximately daily. For more information,
-see Downloading a Vault Inventory in Amazon Glacier.
+see Downloading a Vault Inventory in Amazon Glacier
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html).
 
 An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM).
+Using AWS Identity and Access Management (IAM)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
 
 For conceptual information and underlying REST API, see Retrieving
-Vault Metadata in Amazon Glacier and Describe Vault in the I<Amazon
-Glacier Developer Guide>.
+Vault Metadata in Amazon Glacier
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/retrieving-vault-info.html)
+and Describe Vault
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-get.html)
+in the I<Amazon Glacier Developer Guide>.
 
 
 =head2 GetDataRetrievalPolicy(AccountId => Str)
@@ -703,10 +749,11 @@ Each argument is described in detail in: L<Paws::Glacier::GetDataRetrievalPolicy
 
 Returns: a L<Paws::Glacier::GetDataRetrievalPolicyOutput> instance
 
-  This operation returns the current data retrieval policy for the
+This operation returns the current data retrieval policy for the
 account and region specified in the GET request. For more information
 about data retrieval policies, see Amazon Glacier Data Retrieval
-Policies.
+Policies
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html).
 
 
 =head2 GetJobOutput(AccountId => Str, JobId => Str, VaultName => Str, [Range => Str])
@@ -715,7 +762,7 @@ Each argument is described in detail in: L<Paws::Glacier::GetJobOutput>
 
 Returns: a L<Paws::Glacier::GetJobOutputOutput> instance
 
-  This operation downloads the output of the job you initiated using
+This operation downloads the output of the job you initiated using
 InitiateJob. Depending on the job type you specified when you initiated
 the job, the output will be either the content of an archive or a vault
 inventory.
@@ -755,10 +802,16 @@ An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM).
+Using AWS Identity and Access Management (IAM)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
 
 For conceptual information and the underlying REST API, see Downloading
-a Vault Inventory, Downloading an Archive, and Get Job Output
+a Vault Inventory
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html),
+Downloading an Archive
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/downloading-an-archive.html),
+and Get Job Output
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-job-output-get.html)
 
 
 =head2 GetVaultAccessPolicy(AccountId => Str, VaultName => Str)
@@ -767,12 +820,14 @@ Each argument is described in detail in: L<Paws::Glacier::GetVaultAccessPolicy>
 
 Returns: a L<Paws::Glacier::GetVaultAccessPolicyOutput> instance
 
-  This operation retrieves the C<access-policy> subresource set on the
+This operation retrieves the C<access-policy> subresource set on the
 vault; for more information on setting this subresource, see Set Vault
-Access Policy (PUT access-policy). If there is no access policy set on
-the vault, the operation returns a C<404 Not found> error. For more
-information about vault access policies, see Amazon Glacier Access
-Control with Vault Access Policies.
+Access Policy (PUT access-policy)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-SetVaultAccessPolicy.html).
+If there is no access policy set on the vault, the operation returns a
+C<404 Not found> error. For more information about vault access
+policies, see Amazon Glacier Access Control with Vault Access Policies
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html).
 
 
 =head2 GetVaultLock(AccountId => Str, VaultName => Str)
@@ -781,7 +836,7 @@ Each argument is described in detail in: L<Paws::Glacier::GetVaultLock>
 
 Returns: a L<Paws::Glacier::GetVaultLockOutput> instance
 
-  This operation retrieves the following attributes from the
+This operation retrieves the following attributes from the
 C<lock-policy> subresource set on the specified vault:
 
 =over
@@ -809,11 +864,13 @@ A vault lock is put into the C<InProgress> state by calling
 InitiateVaultLock. A vault lock is put into the C<Locked> state by
 calling CompleteVaultLock. You can abort the vault locking process by
 calling AbortVaultLock. For more information about the vault locking
-process, Amazon Glacier Vault Lock.
+process, Amazon Glacier Vault Lock
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html).
 
 If there is no vault lock policy set on the vault, the operation
 returns a C<404 Not found> error. For more information about vault lock
-policies, Amazon Glacier Access Control with Vault Lock Policies.
+policies, Amazon Glacier Access Control with Vault Lock Policies
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock-policy.html).
 
 
 =head2 GetVaultNotifications(AccountId => Str, VaultName => Str)
@@ -822,24 +879,29 @@ Each argument is described in detail in: L<Paws::Glacier::GetVaultNotifications>
 
 Returns: a L<Paws::Glacier::GetVaultNotificationsOutput> instance
 
-  This operation retrieves the C<notification-configuration> subresource
+This operation retrieves the C<notification-configuration> subresource
 of the specified vault.
 
 For information about setting a notification configuration on a vault,
 see SetVaultNotifications. If a notification configuration for a vault
 is not set, the operation returns a C<404 Not Found> error. For more
 information about vault notifications, see Configuring Vault
-Notifications in Amazon Glacier.
+Notifications in Amazon Glacier
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html).
 
 An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM).
+Using AWS Identity and Access Management (IAM)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
 
 For conceptual information and underlying REST API, see Configuring
-Vault Notifications in Amazon Glacier and Get Vault Notification
-Configuration in the I<Amazon Glacier Developer Guide>.
+Vault Notifications in Amazon Glacier
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html)
+and Get Vault Notification Configuration
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-get.html)
+in the I<Amazon Glacier Developer Guide>.
 
 
 =head2 InitiateJob(AccountId => Str, VaultName => Str, [JobParameters => L<Paws::Glacier::JobParameters>])
@@ -848,176 +910,11 @@ Each argument is described in detail in: L<Paws::Glacier::InitiateJob>
 
 Returns: a L<Paws::Glacier::InitiateJobOutput> instance
 
-  This operation initiates a job of the specified type. In this release,
-you can initiate a job to retrieve either an archive or a vault
-inventory (a list of archives in a vault).
-
-Retrieving data from Amazon Glacier is a two-step process:
-
-=over
-
-=item 1.
-
-Initiate a retrieval job.
-
-A data retrieval policy can cause your initiate retrieval job request
-to fail with a PolicyEnforcedException exception. For more information
-about data retrieval policies, see Amazon Glacier Data Retrieval
-Policies. For more information about the PolicyEnforcedException
-exception, see Error Responses.
-
-=item 2.
-
-After the job completes, download the bytes.
-
-=back
-
-The retrieval request is executed asynchronously. When you initiate a
-retrieval job, Amazon Glacier creates a job and returns a job ID in the
-response. When Amazon Glacier completes the job, you can get the job
-output (archive or inventory data). For information about getting job
-output, see GetJobOutput operation.
-
-The job must complete before you can get its output. To determine when
-a job is complete, you have the following options:
-
-=over
-
-=item *
-
-B<Use Amazon SNS Notification> You can specify an Amazon Simple
-Notification Service (Amazon SNS) topic to which Amazon Glacier can
-post a notification after the job is completed. You can specify an SNS
-topic per job request. The notification is sent only after Amazon
-Glacier completes the job. In addition to specifying an SNS topic per
-job request, you can configure vault notifications for a vault so that
-job notifications are always sent. For more information, see
-SetVaultNotifications.
-
-=item *
-
-B<Get job details> You can make a DescribeJob request to obtain job
-status information while a job is in progress. However, it is more
-efficient to use an Amazon SNS notification to determine when a job is
-complete.
-
-=back
-
-The information you get via notification is same that you get by
-calling DescribeJob.
-
-If for a specific event, you add both the notification configuration on
-the vault and also specify an SNS topic in your initiate job request,
-Amazon Glacier sends both notifications. For more information, see
-SetVaultNotifications.
-
-An AWS account has full permission to perform all operations (actions).
-However, AWS Identity and Access Management (IAM) users don't have any
-permissions by default. You must grant them explicit permission to
-perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM).
-
-B<About the Vault Inventory>
-
-Amazon Glacier prepares an inventory for each vault periodically, every
-24 hours. When you initiate a job for a vault inventory, Amazon Glacier
-returns the last inventory for the vault. The inventory data you get
-might be up to a day or two days old. Also, the initiate inventory job
-might take some time to complete before you can download the vault
-inventory. So you do not want to retrieve a vault inventory for each
-vault operation. However, in some scenarios, you might find the vault
-inventory useful. For example, when you upload an archive, you can
-provide an archive description but not an archive name. Amazon Glacier
-provides you a unique archive ID, an opaque string of characters. So,
-you might maintain your own database that maps archive names to their
-corresponding Amazon Glacier assigned archive IDs. You might find the
-vault inventory useful in the event you need to reconcile information
-in your database with the actual vault inventory.
-
-B<Range Inventory Retrieval>
-
-You can limit the number of inventory items retrieved by filtering on
-the archive creation date or by setting a limit.
-
-I<Filtering by Archive Creation Date>
-
-You can retrieve inventory items for archives created between
-C<StartDate> and C<EndDate> by specifying values for these parameters
-in the B<InitiateJob> request. Archives created on or after the
-C<StartDate> and before the C<EndDate> will be returned. If you only
-provide the C<StartDate> without the C<EndDate>, you will retrieve the
-inventory for all archives created on or after the C<StartDate>. If you
-only provide the C<EndDate> without the C<StartDate>, you will get back
-the inventory for all archives created before the C<EndDate>.
-
-I<Limiting Inventory Items per Retrieval>
-
-You can limit the number of inventory items returned by setting the
-C<Limit> parameter in the B<InitiateJob> request. The inventory job
-output will contain inventory items up to the specified C<Limit>. If
-there are more inventory items available, the result is paginated.
-After a job is complete you can use the DescribeJob operation to get a
-marker that you use in a subsequent B<InitiateJob> request. The marker
-will indicate the starting point to retrieve the next set of inventory
-items. You can page through your entire inventory by repeatedly making
-B<InitiateJob> requests with the marker from the previous
-B<DescribeJob> output, until you get a marker from B<DescribeJob> that
-returns null, indicating that there are no more inventory items
-available.
-
-You can use the C<Limit> parameter together with the date range
-parameters.
-
-B<About Ranged Archive Retrieval>
-
-You can initiate an archive retrieval for the whole archive or a range
-of the archive. In the case of ranged archive retrieval, you specify a
-byte range to return or the whole archive. The range specified must be
-megabyte (MB) aligned, that is the range start value must be divisible
-by 1 MB and range end value plus 1 must be divisible by 1 MB or equal
-the end of the archive. If the ranged archive retrieval is not megabyte
-aligned, this operation returns a 400 response. Furthermore, to ensure
-you get checksum values for data you download using Get Job Output API,
-the range must be tree hash aligned.
-
-An AWS account has full permission to perform all operations (actions).
-However, AWS Identity and Access Management (IAM) users don't have any
-permissions by default. You must grant them explicit permission to
-perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM).
-
-For conceptual information and the underlying REST API, see Initiate a
-Job and Downloading a Vault Inventory
-
-B<Expedited and Bulk Archive Retrievals>
-
-When retrieving an archive, you can specify one of the following
-options in the C<Tier> field of the request body:
-
-=over
-
-=item *
-
-B<Standard> The default type of retrieval, which allows access to any
-of your archives within several hours. Standard retrievals typically
-complete within 3E<ndash>5 hours.
-
-=item *
-
-B<Bulk> Amazon GlacierE<rsquo>s lowest-cost retrieval option, which
-enables you to retrieve large amounts of data inexpensively in a day.
-Bulk retrieval requests typically complete within 5E<ndash>12 hours.
-
-=item *
-
-B<Expedited> Amazon GlacierE<rsquo>s option for the fastest retrievals.
-Archives requested using the expedited retrievals typically become
-accessible within 1E<ndash>5 minutes.
-
-=back
-
-For more information about expedited and bulk retrievals, see
-Retrieving Amazon Glacier Archives.
+This operation initiates a job of the specified type, which can be a
+select, an archival retrieval, or a vault retrieval. For more
+information about using this operation, see the documentation for the
+underlying REST API Initiate a Job
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html).
 
 
 =head2 InitiateMultipartUpload(AccountId => Str, VaultName => Str, [ArchiveDescription => Str, PartSize => Str])
@@ -1026,7 +923,7 @@ Each argument is described in detail in: L<Paws::Glacier::InitiateMultipartUploa
 
 Returns: a L<Paws::Glacier::InitiateMultipartUploadOutput> instance
 
-  This operation initiates a multipart upload. Amazon Glacier creates a
+This operation initiates a multipart upload. Amazon Glacier creates a
 multipart upload resource and returns its ID in the response. The
 multipart upload ID is used in subsequent requests to upload parts of
 an archive (see UploadMultipartPart).
@@ -1057,11 +954,15 @@ An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM).
+Using AWS Identity and Access Management (IAM)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
 
 For conceptual information and underlying REST API, see Uploading Large
-Archives in Parts (Multipart Upload) and Initiate Multipart Upload in
-the I<Amazon Glacier Developer Guide>.
+Archives in Parts (Multipart Upload)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html)
+and Initiate Multipart Upload
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-initiate-upload.html)
+in the I<Amazon Glacier Developer Guide>.
 
 
 =head2 InitiateVaultLock(AccountId => Str, VaultName => Str, [Policy => L<Paws::Glacier::VaultLockPolicy>])
@@ -1070,7 +971,7 @@ Each argument is described in detail in: L<Paws::Glacier::InitiateVaultLock>
 
 Returns: a L<Paws::Glacier::InitiateVaultLockOutput> instance
 
-  This operation initiates the vault locking process by doing the
+This operation initiates the vault locking process by doing the
 following:
 
 =over
@@ -1092,7 +993,8 @@ process.
 
 You can set one vault lock policy for each vault and this policy can be
 up to 20 KB in size. For more information about vault lock policies,
-see Amazon Glacier Access Control with Vault Lock Policies.
+see Amazon Glacier Access Control with Vault Lock Policies
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock-policy.html).
 
 You must complete the vault locking process within 24 hours after the
 vault lock enters the C<InProgress> state. After the 24 hour window
@@ -1106,7 +1008,8 @@ vault lock for the vault.
 
 You can abort the vault locking process by calling AbortVaultLock. You
 can get the state of the vault lock by calling GetVaultLock. For more
-information about the vault locking process, Amazon Glacier Vault Lock.
+information about the vault locking process, Amazon Glacier Vault Lock
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html).
 
 If this operation is called when the vault lock is in the C<InProgress>
 state, the operation returns an C<AccessDeniedException> error. When
@@ -1120,8 +1023,9 @@ Each argument is described in detail in: L<Paws::Glacier::ListJobs>
 
 Returns: a L<Paws::Glacier::ListJobsOutput> instance
 
-  This operation lists jobs for a vault, including jobs that are
-in-progress and jobs that have recently finished.
+This operation lists jobs for a vault, including jobs that are
+in-progress and jobs that have recently finished. The List Job
+operation returns a list of these jobs sorted by job initiation time.
 
 Amazon Glacier retains recently completed jobs for a period before
 deleting them; however, it eventually removes completed jobs. The
@@ -1133,13 +1037,6 @@ archive retrieval job to download an archive. After the job completes,
 you start to download the archive but encounter a network error. In
 this scenario, you can retry and download the archive while the job
 exists.
-
-To retrieve an archive or retrieve a vault inventory from Amazon
-Glacier, you first initiate a job, and after the job completes, you
-download the data. For an archive retrieval, the output is the archive
-data. For an inventory retrieval, it is the inventory list. The List
-Job operation returns a list of these jobs sorted by job initiation
-time.
 
 The List Jobs operation supports pagination. You should always check
 the response C<Marker> field. If there are no more jobs to list, the
@@ -1163,7 +1060,9 @@ Using the C<completed> parameter, you can specify to return only jobs
 that were completed (C<true>) or jobs that were not completed
 (C<false>).
 
-For the underlying REST API, see List Jobs.
+For more information about using this operation, see the documentation
+for the underlying REST API List Jobs
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-jobs-get.html).
 
 
 =head2 ListMultipartUploads(AccountId => Str, VaultName => Str, [Limit => Str, Marker => Str])
@@ -1172,7 +1071,7 @@ Each argument is described in detail in: L<Paws::Glacier::ListMultipartUploads>
 
 Returns: a L<Paws::Glacier::ListMultipartUploadsOutput> instance
 
-  This operation lists in-progress multipart uploads for the specified
+This operation lists in-progress multipart uploads for the specified
 vault. An in-progress multipart upload is a multipart upload that has
 been initiated by an InitiateMultipartUpload request, but has not yet
 been completed or aborted. The list returned in the List Multipart
@@ -1198,11 +1097,15 @@ An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM).
+Using AWS Identity and Access Management (IAM)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
 
 For conceptual information and the underlying REST API, see Working
-with Archives in Amazon Glacier and List Multipart Uploads in the
-I<Amazon Glacier Developer Guide>.
+with Archives in Amazon Glacier
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html)
+and List Multipart Uploads
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-list-uploads.html)
+in the I<Amazon Glacier Developer Guide>.
 
 
 =head2 ListParts(AccountId => Str, UploadId => Str, VaultName => Str, [Limit => Str, Marker => Str])
@@ -1211,7 +1114,7 @@ Each argument is described in detail in: L<Paws::Glacier::ListParts>
 
 Returns: a L<Paws::Glacier::ListPartsOutput> instance
 
-  This operation lists the parts of an archive that have been uploaded in
+This operation lists the parts of an archive that have been uploaded in
 a specific multipart upload. You can make this request at any time
 during an in-progress multipart upload before you complete the upload
 (see CompleteMultipartUpload. List Parts returns an error for completed
@@ -1231,11 +1134,15 @@ An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM).
+Using AWS Identity and Access Management (IAM)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
 
 For conceptual information and the underlying REST API, see Working
-with Archives in Amazon Glacier and List Parts in the I<Amazon Glacier
-Developer Guide>.
+with Archives in Amazon Glacier
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html)
+and List Parts
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-list-parts.html)
+in the I<Amazon Glacier Developer Guide>.
 
 
 =head2 ListProvisionedCapacity(AccountId => Str)
@@ -1244,8 +1151,8 @@ Each argument is described in detail in: L<Paws::Glacier::ListProvisionedCapacit
 
 Returns: a L<Paws::Glacier::ListProvisionedCapacityOutput> instance
 
-  This operation lists the provisioned capacity for the specified AWS
-account.
+This operation lists the provisioned capacity units for the specified
+AWS account.
 
 
 =head2 ListTagsForVault(AccountId => Str, VaultName => Str)
@@ -1254,9 +1161,10 @@ Each argument is described in detail in: L<Paws::Glacier::ListTagsForVault>
 
 Returns: a L<Paws::Glacier::ListTagsForVaultOutput> instance
 
-  This operation lists all the tags attached to a vault. The operation
+This operation lists all the tags attached to a vault. The operation
 returns an empty map if there are no tags. For more information about
-tags, see Tagging Amazon Glacier Resources.
+tags, see Tagging Amazon Glacier Resources
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html).
 
 
 =head2 ListVaults(AccountId => Str, [Limit => Str, Marker => Str])
@@ -1265,7 +1173,7 @@ Each argument is described in detail in: L<Paws::Glacier::ListVaults>
 
 Returns: a L<Paws::Glacier::ListVaultsOutput> instance
 
-  This operation lists all vaults owned by the calling user's account.
+This operation lists all vaults owned by the calling user's account.
 The list returned in the response is ASCII-sorted by vault name.
 
 By default, this operation returns up to 1,000 items. If there are more
@@ -1281,11 +1189,15 @@ An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM).
+Using AWS Identity and Access Management (IAM)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
 
 For conceptual information and underlying REST API, see Retrieving
-Vault Metadata in Amazon Glacier and List Vaults in the I<Amazon
-Glacier Developer Guide>.
+Vault Metadata in Amazon Glacier
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/retrieving-vault-info.html)
+and List Vaults
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vaults-get.html)
+in the I<Amazon Glacier Developer Guide>.
 
 
 =head2 PurchaseProvisionedCapacity(AccountId => Str)
@@ -1294,7 +1206,7 @@ Each argument is described in detail in: L<Paws::Glacier::PurchaseProvisionedCap
 
 Returns: a L<Paws::Glacier::PurchaseProvisionedCapacityOutput> instance
 
-  This operation purchases a provisioned capacity unit for an AWS
+This operation purchases a provisioned capacity unit for an AWS
 account.
 
 
@@ -1304,10 +1216,12 @@ Each argument is described in detail in: L<Paws::Glacier::RemoveTagsFromVault>
 
 Returns: nothing
 
-  This operation removes one or more tags from the set of tags attached
+This operation removes one or more tags from the set of tags attached
 to a vault. For more information about tags, see Tagging Amazon Glacier
-Resources. This operation is idempotent. The operation will be
-successful, even if there are no tags attached to the vault.
+Resources
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html).
+This operation is idempotent. The operation will be successful, even if
+there are no tags attached to the vault.
 
 
 =head2 SetDataRetrievalPolicy(AccountId => Str, [Policy => L<Paws::Glacier::DataRetrievalPolicy>])
@@ -1316,14 +1230,15 @@ Each argument is described in detail in: L<Paws::Glacier::SetDataRetrievalPolicy
 
 Returns: nothing
 
-  This operation sets and then enacts a data retrieval policy in the
+This operation sets and then enacts a data retrieval policy in the
 region specified in the PUT request. You can set one policy per region
 for an AWS account. The policy is enacted within a few minutes of a
 successful PUT operation.
 
 The set policy operation does not affect retrieval jobs that were in
 progress before the policy was enacted. For more information about data
-retrieval policies, see Amazon Glacier Data Retrieval Policies.
+retrieval policies, see Amazon Glacier Data Retrieval Policies
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html).
 
 
 =head2 SetVaultAccessPolicy(AccountId => Str, VaultName => Str, [Policy => L<Paws::Glacier::VaultAccessPolicy>])
@@ -1332,13 +1247,14 @@ Each argument is described in detail in: L<Paws::Glacier::SetVaultAccessPolicy>
 
 Returns: nothing
 
-  This operation configures an access policy for a vault and will
+This operation configures an access policy for a vault and will
 overwrite an existing policy. To configure a vault access policy, send
 a PUT request to the C<access-policy> subresource of the vault. An
 access policy is specific to a vault and is also called a vault
 subresource. You can set one access policy per vault and the policy can
 be up to 20 KB in size. For more information about vault access
-policies, see Amazon Glacier Access Control with Vault Access Policies.
+policies, see Amazon Glacier Access Control with Vault Access Policies
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html).
 
 
 =head2 SetVaultNotifications(AccountId => Str, VaultName => Str, [VaultNotificationConfig => L<Paws::Glacier::VaultNotificationConfig>])
@@ -1347,7 +1263,7 @@ Each argument is described in detail in: L<Paws::Glacier::SetVaultNotifications>
 
 Returns: nothing
 
-  This operation configures notifications that will be sent when specific
+This operation configures notifications that will be sent when specific
 events happen to a vault. By default, you don't get any notifications.
 
 To configure vault notifications, send a PUT request to the
@@ -1384,11 +1300,15 @@ An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM).
+Using AWS Identity and Access Management (IAM)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
 
 For conceptual information and underlying REST API, see Configuring
-Vault Notifications in Amazon Glacier and Set Vault Notification
-Configuration in the I<Amazon Glacier Developer Guide>.
+Vault Notifications in Amazon Glacier
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html)
+and Set Vault Notification Configuration
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-put.html)
+in the I<Amazon Glacier Developer Guide>.
 
 
 =head2 UploadArchive(AccountId => Str, VaultName => Str, [ArchiveDescription => Str, Body => Str, Checksum => Str])
@@ -1397,7 +1317,7 @@ Each argument is described in detail in: L<Paws::Glacier::UploadArchive>
 
 Returns: a L<Paws::Glacier::ArchiveCreationOutput> instance
 
-  This operation adds an archive to a vault. This is a synchronous
+This operation adds an archive to a vault. This is a synchronous
 operation, and for a successful upload, your data is durably persisted.
 Amazon Glacier returns the archive ID in the C<x-amz-archive-id> header
 of the response.
@@ -1413,8 +1333,8 @@ the vault inventory to obtain a list of archive IDs in a vault. For
 more information, see InitiateJob.
 
 You must provide a SHA256 tree hash of the data you are uploading. For
-information about computing a SHA256 tree hash, see Computing
-Checksums.
+information about computing a SHA256 tree hash, see Computing Checksums
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html).
 
 You can optionally specify an archive description of up to 1,024
 printable ASCII characters. You can get the archive description when
@@ -1431,11 +1351,15 @@ An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM).
+Using AWS Identity and Access Management (IAM)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
 
 For conceptual information and underlying REST API, see Uploading an
-Archive in Amazon Glacier and Upload Archive in the I<Amazon Glacier
-Developer Guide>.
+Archive in Amazon Glacier
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-an-archive.html)
+and Upload Archive
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-post.html)
+in the I<Amazon Glacier Developer Guide>.
 
 
 =head2 UploadMultipartPart(AccountId => Str, UploadId => Str, VaultName => Str, [Body => Str, Checksum => Str, Range => Str])
@@ -1444,7 +1368,7 @@ Each argument is described in detail in: L<Paws::Glacier::UploadMultipartPart>
 
 Returns: a L<Paws::Glacier::UploadMultipartPartOutput> instance
 
-  This operation uploads a part of an archive. You can upload archive
+This operation uploads a part of an archive. You can upload archive
 parts in any order. You can also upload them in parallel. You can
 upload up to 10,000 parts for a multipart upload.
 
@@ -1460,7 +1384,8 @@ corrupted in transmission, you compute a SHA256 tree hash of the part
 and include it in your request. Upon receiving the part data, Amazon
 Glacier also computes a SHA256 tree hash. If these hash values don't
 match, the operation fails. For information about computing a SHA256
-tree hash, see Computing Checksums.
+tree hash, see Computing Checksums
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html).
 
 =item *
 
@@ -1494,11 +1419,15 @@ An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM).
+Using AWS Identity and Access Management (IAM)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
 
 For conceptual information and underlying REST API, see Uploading Large
-Archives in Parts (Multipart Upload) and Upload Part in the I<Amazon
-Glacier Developer Guide>.
+Archives in Parts (Multipart Upload)
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html)
+and Upload Part
+(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-upload-part.html)
+in the I<Amazon Glacier Developer Guide>.
 
 
 
@@ -1564,9 +1493,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

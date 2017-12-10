@@ -4,6 +4,7 @@ package Paws::AutoScaling::Instance;
   has HealthStatus => (is => 'ro', isa => 'Str', required => 1);
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has LaunchConfigurationName => (is => 'ro', isa => 'Str');
+  has LaunchTemplate => (is => 'ro', isa => 'Paws::AutoScaling::LaunchTemplateSpecification');
   has LifecycleState => (is => 'ro', isa => 'Str', required => 1);
   has ProtectedFromScaleIn => (is => 'ro', isa => 'Bool', required => 1);
 1;
@@ -64,6 +65,11 @@ replace it.
   The launch configuration associated with the instance.
 
 
+=head2 LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>
+
+  The launch template for the instance.
+
+
 =head2 B<REQUIRED> LifecycleState => Str
 
   A description of the current lifecycle state. Note that the
@@ -83,9 +89,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::AutoScali
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

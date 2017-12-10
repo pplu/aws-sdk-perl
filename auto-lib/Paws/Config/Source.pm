@@ -56,11 +56,12 @@ evaluate your AWS resources.
 
   For AWS Config managed rules, a predefined identifier from a list. For
 example, C<IAM_PASSWORD_POLICY> is a managed rule. To reference a
-managed rule, see Using AWS Managed Config Rules.
+managed rule, see Using AWS Managed Config Rules
+(http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html).
 
 For custom rules, the identifier is the Amazon Resource Name (ARN) of
 the rule's AWS Lambda function, such as
-C<arn:aws:lambda:us-east-1:123456789012:function:custom_rule_name>.
+C<arn:aws:lambda:us-east-2:123456789012:function:custom_rule_name>.
 
 
 
@@ -70,9 +71,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Config>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -2,7 +2,7 @@
 package Paws::MTurk::CreateAdditionalAssignmentsForHIT;
   use Moose;
   has HITId => (is => 'ro', isa => 'Str', required => 1);
-  has NumberOfAdditionalAssignments => (is => 'ro', isa => 'Int');
+  has NumberOfAdditionalAssignments => (is => 'ro', isa => 'Int', required => 1);
   has UniqueRequestToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -16,7 +16,7 @@ package Paws::MTurk::CreateAdditionalAssignmentsForHIT;
 
 =head1 NAME
 
-Paws::MTurk::CreateAdditionalAssignmentsForHIT - Arguments for method CreateAdditionalAssignmentsForHIT on Paws::MTurk
+Paws::MTurk::CreateAdditionalAssignmentsForHIT - Arguments for method CreateAdditionalAssignmentsForHIT on L<Paws::MTurk>
 
 =head1 DESCRIPTION
 
@@ -41,7 +41,7 @@ The ID of the HIT to extend.
 
 
 
-=head2 NumberOfAdditionalAssignments => Int
+=head2 B<REQUIRED> NumberOfAdditionalAssignments => Int
 
 The number of additional assignments to request for this HIT.
 
@@ -66,9 +66,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateAdditio
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

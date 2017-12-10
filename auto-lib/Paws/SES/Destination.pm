@@ -36,11 +36,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Destin
 Represents the destination of the message, consisting of To:, CC:, and
 BCC: fields.
 
-By default, the string must be 7-bit ASCII. If the text must contain
-any other characters, then you must use MIME encoded-word syntax (RFC
-2047) instead of a literal string. MIME encoded-word syntax uses the
-following form: C<=?charset?encoding?encoded-text?=>. For more
-information, see RFC 2047.
+Amazon SES does not support the SMTPUTF8 extension, as described in
+RFC6531 (https://tools.ietf.org/html/rfc6531). For this reason, the
+I<local part> of a destination email address (the part of the email
+address that precedes the @ sign) may only contain 7-bit ASCII
+characters (https://en.wikipedia.org/wiki/Email_address#Local-part). If
+the I<domain part> of an address (the part after the @ sign) contains
+non-ASCII characters, they must be encoded using Punycode, as described
+in RFC3492 (https://tools.ietf.org/html/rfc3492.html).
 
 =head1 ATTRIBUTES
 
@@ -67,9 +70,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SES>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

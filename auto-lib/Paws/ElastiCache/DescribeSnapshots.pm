@@ -20,7 +20,7 @@ package Paws::ElastiCache::DescribeSnapshots;
 
 =head1 NAME
 
-Paws::ElastiCache::DescribeSnapshots - Arguments for method DescribeSnapshots on Paws::ElastiCache
+Paws::ElastiCache::DescribeSnapshots - Arguments for method DescribeSnapshots on L<Paws::ElastiCache>
 
 =head1 DESCRIPTION
 
@@ -42,8 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 CacheClusterId => Str
 
 A user-supplied cluster identifier. If this parameter is specified,
-only snapshots associated with that specific cache cluster are
-described.
+only snapshots associated with that specific cluster are described.
 
 
 
@@ -107,9 +106,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeSnaps
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

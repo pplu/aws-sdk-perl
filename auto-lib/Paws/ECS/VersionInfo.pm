@@ -42,7 +42,9 @@ container instance.
 =head2 AgentHash => Str
 
   The Git commit hash for the Amazon ECS container agent build on the
-amazon-ecs-agent GitHub repository.
+amazon-ecs-agent
+(https://github.com/aws/amazon-ecs-agent/commits/master) GitHub
+repository.
 
 
 =head2 AgentVersion => Str
@@ -62,9 +64,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ECS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

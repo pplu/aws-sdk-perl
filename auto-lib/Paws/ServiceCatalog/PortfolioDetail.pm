@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-Detailed portfolio information.
+Information about a portfolio.
 
 =head1 ATTRIBUTES
 
@@ -53,7 +53,7 @@ Detailed portfolio information.
 
 =head2 Description => Str
 
-  The text description of the portfolio.
+  The description of the portfolio.
 
 
 =head2 DisplayName => Str
@@ -63,7 +63,7 @@ Detailed portfolio information.
 
 =head2 Id => Str
 
-  The identifier for the portfolio.
+  The portfolio identifier.
 
 
 =head2 ProviderName => Str
@@ -78,9 +78,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ServiceCa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

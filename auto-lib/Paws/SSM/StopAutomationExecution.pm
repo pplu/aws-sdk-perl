@@ -2,6 +2,7 @@
 package Paws::SSM::StopAutomationExecution;
   use Moose;
   has AutomationExecutionId => (is => 'ro', isa => 'Str', required => 1);
+  has Type => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -14,7 +15,7 @@ package Paws::SSM::StopAutomationExecution;
 
 =head1 NAME
 
-Paws::SSM::StopAutomationExecution - Arguments for method StopAutomationExecution on Paws::SSM
+Paws::SSM::StopAutomationExecution - Arguments for method StopAutomationExecution on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -39,6 +40,13 @@ The execution ID of the Automation to stop.
 
 
 
+=head2 Type => Str
+
+The stop request type. Valid types include the following: Cancel and
+Complete. The default type is Cancel.
+
+Valid values are: C<"Complete">, C<"Cancel">
+
 
 =head1 SEE ALSO
 
@@ -46,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method StopAutomatio
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

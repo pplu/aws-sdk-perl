@@ -33,7 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Polly::Lexi
 =head1 DESCRIPTION
 
 Provides lexicon name and lexicon content in string format. For more
-information, see Pronunciation Lexicon Specification (PLS) Version 1.0.
+information, see Pronunciation Lexicon Specification (PLS) Version 1.0
+(https://www.w3.org/TR/pronunciation-lexicon/).
 
 =head1 ATTRIBUTES
 
@@ -56,9 +57,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Polly>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

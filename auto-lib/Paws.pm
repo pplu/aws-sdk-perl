@@ -57,7 +57,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.35';
+our $VERSION = '0.36';
 
 use Moose;
 use MooseX::ClassAttribute;
@@ -236,11 +236,15 @@ kept stable, and changes to it should be notified via ChangeLog
 
 L<Paws::ACM>
 
+L<Paws::AlexaForBusiness>
+
 L<Paws::ApiGateway>
 
 L<Paws::ApplicationAutoScaling>
 
 L<Paws::AppStream>
+
+L<Paws::AppSync>
 
 L<Paws::Athena>
 
@@ -250,6 +254,8 @@ L<Paws::Batch>
 
 L<Paws::Budgets>
 
+L<Paws::Cloud9>
+
 L<Paws::CloudDirectory>
 
 L<Paws::CloudFormation>
@@ -257,6 +263,8 @@ L<Paws::CloudFormation>
 L<Paws::CloudFront>
 
 L<Paws::CloudHSM>
+
+L<Paws::CloudHSMv2>
 
 L<Paws::CloudSearch>
 
@@ -288,7 +296,11 @@ L<Paws::CognitoIdp>
 
 L<Paws::CognitoSync>
 
+L<Paws::Comprehend>
+
 L<Paws::Config>
+
+L<Paws::CostExplorer>
 
 L<Paws::CUR>
 
@@ -318,6 +330,8 @@ L<Paws::ECS>
 
 L<Paws::EFS>
 
+L<Paws::EFS>
+
 L<Paws::ElastiCache>
 
 L<Paws::ElasticBeanstalk>
@@ -342,7 +356,11 @@ L<Paws::GameLift>
 
 L<Paws::Glacier>
 
+L<Paws::Glue>
+
 L<Paws::Greengrass>
+
+L<Paws::GuardDuty>
 
 L<Paws::Health>
 
@@ -356,9 +374,17 @@ L<Paws::IoT>
 
 L<Paws::IoTData>
 
+L<Paws::IoTJobsData>
+
 L<Paws::Kinesis>
 
 L<Paws::KinesisAnalytics>
+
+L<Paws::KinesisVideo>
+
+L<Paws::KinesisVideoArchivedMedia>
+
+L<Paws::KinesisVideoMedia>
 
 L<Paws::KMS>
 
@@ -378,6 +404,22 @@ L<Paws::MarketplaceEntitlement>
 
 L<Paws::MarketplaceMetering>
 
+L<Paws::MediaConvert>
+
+L<Paws::MediaLive>
+
+L<Paws::MediaPackage>
+
+L<Paws::MediaStore>
+
+L<Paws::MediaStoreData>
+
+L<Paws::MigrationHub>
+
+L<Paws::MobileHub>
+
+L<Paws::MQ>
+
 L<Paws::MTurk>
 
 L<Paws::OpsWorks>
@@ -390,11 +432,15 @@ L<Paws::Pinpoint>
 
 L<Paws::Polly>
 
+L<Paws::Pricing>
+
 L<Paws::RDS>
 
 L<Paws::RedShift>
 
 L<Paws::Rekognition>
+
+L<Paws::ResourceGroups>
 
 L<Paws::ResourceTagging>
 
@@ -404,9 +450,17 @@ L<Paws::Route53Domains>
 
 L<Paws::S3>
 
+L<Paws::SageMaker>
+
+L<Paws::SageMakerRuntime>
+
 L<Paws::SDB>
 
+L<Paws::ServerlessRepo>
+
 L<Paws::ServiceCatalog>
+
+L<Paws::ServiceDiscovery>
 
 L<Paws::SES>
 
@@ -437,6 +491,8 @@ L<Paws::StorageGateway>
 L<Paws::STS>
 
 L<Paws::Support>
+
+L<Paws::Translate>
 
 L<Paws::WAF>
 
@@ -672,9 +728,9 @@ L<https://github.com/pplu/aws-sdk-perl>
 
 =head1 BUGS and SOURCE
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =head1 COPYRIGHT and LICENSE
 
@@ -730,7 +786,8 @@ Roger Pettett for testing and contributing fixes for tests on MacOSX
 
 Henri Yandell for help with licensing issues
 
-Oriol Soriano (@ureesoriano) for contribution to API builders
+Oriol Soriano (@ureesoriano) for contributions to API builders and better
+documentation generation
 
 H. Daniel Cesario (@maneta) for devel setup instructions on RH and MacOSX
 
@@ -760,7 +817,8 @@ PopeFelix for solving issues around S3 and MojoAsyncCaller
 
 meis for contributing Paws::Credential::Explicit
 
-sven-schubert for contributing fixes to RestXML services
+sven-schubert for contributing fixes to RestXML services,
+working on fixing S3 to work correctly. 
 
 SeptamusNonovant for fixing paginators in non-callback mode
 

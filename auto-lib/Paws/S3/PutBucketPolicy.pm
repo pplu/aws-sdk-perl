@@ -2,7 +2,8 @@
 package Paws::S3::PutBucketPolicy;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', traits => ['ParamInHeader']);
+  has ConfirmRemoveSelfBucketAccess => (is => 'ro', isa => 'Bool', header_name => 'x-amz-confirm-remove-self-bucket-access', traits => ['ParamInHeader']);
+  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has Policy => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -19,7 +20,7 @@ package Paws::S3::PutBucketPolicy;
 
 =head1 NAME
 
-Paws::S3::PutBucketPolicy - Arguments for method PutBucketPolicy on Paws::S3
+Paws::S3::PutBucketPolicy - Arguments for method PutBucketPolicy on L<Paws::S3>
 
 =head1 DESCRIPTION
 
@@ -44,6 +45,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 
 
+=head2 ConfirmRemoveSelfBucketAccess => Bool
+
+Set this parameter to true to confirm that you want to remove your
+permissions to change this bucket policy in the future.
+
+
+
 =head2 ContentMD5 => Str
 
 
@@ -63,9 +71,9 @@ This class forms part of L<Paws>, documenting arguments for method PutBucketPoli
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

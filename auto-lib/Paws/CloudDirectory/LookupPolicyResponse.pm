@@ -25,7 +25,8 @@ The pagination token.
 
 Provides list of path to policies. Policies contain C<PolicyId>,
 C<ObjectIdentifier>, and C<PolicyType>. For more information, see
-Policies.
+Policies
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies).
 
 
 =head2 _request_id => Str

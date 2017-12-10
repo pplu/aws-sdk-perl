@@ -16,7 +16,7 @@ package Paws::CodeDeploy::RegisterApplicationRevision;
 
 =head1 NAME
 
-Paws::CodeDeploy::RegisterApplicationRevision - Arguments for method RegisterApplicationRevision on Paws::CodeDeploy
+Paws::CodeDeploy::RegisterApplicationRevision - Arguments for method RegisterApplicationRevision on L<Paws::CodeDeploy>
 
 =head1 DESCRIPTION
 
@@ -62,9 +62,9 @@ This class forms part of L<Paws>, documenting arguments for method RegisterAppli
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

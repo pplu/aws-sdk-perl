@@ -1,6 +1,7 @@
 
 package Paws::Lightsail::StopInstance;
   use Moose;
+  has Force => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'force' );
   has InstanceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceName' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -14,7 +15,7 @@ package Paws::Lightsail::StopInstance;
 
 =head1 NAME
 
-Paws::Lightsail::StopInstance - Arguments for method StopInstance on Paws::Lightsail
+Paws::Lightsail::StopInstance - Arguments for method StopInstance on L<Paws::Lightsail>
 
 =head1 DESCRIPTION
 
@@ -33,6 +34,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 Force => Bool
+
+When set to C<True>, forces a Lightsail instance that is stuck in a
+C<stopping> state to stop.
+
+Only use the C<force> parameter if your instance is stuck in the
+C<stopping> state. In any other state, your instance should stop
+normally without adding this parameter to your API request.
+
+
+
 =head2 B<REQUIRED> InstanceName => Str
 
 The name of the instance (a virtual private server) to stop.
@@ -46,9 +58,9 @@ This class forms part of L<Paws>, documenting arguments for method StopInstance 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

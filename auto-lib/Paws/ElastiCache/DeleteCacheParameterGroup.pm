@@ -14,7 +14,7 @@ package Paws::ElastiCache::DeleteCacheParameterGroup;
 
 =head1 NAME
 
-Paws::ElastiCache::DeleteCacheParameterGroup - Arguments for method DeleteCacheParameterGroup on Paws::ElastiCache
+Paws::ElastiCache::DeleteCacheParameterGroup - Arguments for method DeleteCacheParameterGroup on L<Paws::ElastiCache>
 
 =head1 DESCRIPTION
 
@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The name of the cache parameter group to delete.
 
 The specified cache security group must not be associated with any
-cache clusters.
+clusters.
 
 
 
@@ -49,9 +49,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteCachePa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

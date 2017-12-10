@@ -86,7 +86,9 @@ attributes and index key attributes, which are automatically projected.
 secondary index.
 
 For current minimum and maximum provisioned throughput values, see
-Limits in the I<Amazon DynamoDB Developer Guide>.
+Limits
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -96,9 +98,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::DynamoDB>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

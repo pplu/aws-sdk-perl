@@ -1,11 +1,11 @@
 
 package Paws::Batch::CreateComputeEnvironment;
   use Moose;
-  has ComputeEnvironmentName => (is => 'ro', isa => 'Str', required => 1);
-  has ComputeResources => (is => 'ro', isa => 'Paws::Batch::ComputeResource');
-  has ServiceRole => (is => 'ro', isa => 'Str', required => 1);
-  has State => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  has ComputeEnvironmentName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'computeEnvironmentName', required => 1);
+  has ComputeResources => (is => 'ro', isa => 'Paws::Batch::ComputeResource', traits => ['NameInRequest'], request_name => 'computeResources');
+  has ServiceRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRole', required => 1);
+  has State => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'state');
+  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -13,14 +13,13 @@ package Paws::Batch::CreateComputeEnvironment;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/createcomputeenvironment');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Batch::CreateComputeEnvironmentResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Batch::CreateComputeEnvironment - Arguments for method CreateComputeEnvironment on Paws::Batch
+Paws::Batch::CreateComputeEnvironment - Arguments for method CreateComputeEnvironment on L<Paws::Batch>
 
 =head1 DESCRIPTION
 
@@ -42,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> ComputeEnvironmentName => Str
 
 The name for your compute environment. Up to 128 letters (uppercase and
-lowercase), numbers, and underscores are allowed.
+lowercase), numbers, hyphens, and underscores are allowed.
 
 
 
@@ -57,6 +56,17 @@ This parameter is required for managed compute environments.
 
 The full Amazon Resource Name (ARN) of the IAM role that allows AWS
 Batch to make calls to other AWS services on your behalf.
+
+If your specified role has a path other than C</>, then you must either
+specify the full role ARN (this is recommended) or prefix the role name
+with the path.
+
+Depending on how you created your AWS Batch service role, its ARN may
+contain the C<service-role> path prefix. When you only specify the name
+of the service role, AWS Batch assumes that your ARN does not use the
+C<service-role> path prefix. Because of this, we recommend that you
+specify the full ARN of your service role when you create compute
+environments.
 
 
 
@@ -81,9 +91,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateCompute
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

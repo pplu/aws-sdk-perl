@@ -25,7 +25,7 @@ package Paws::DynamoDB::UpdateItem;
 
 =head1 NAME
 
-Paws::DynamoDB::UpdateItem - Arguments for method UpdateItem on Paws::DynamoDB
+Paws::DynamoDB::UpdateItem - Arguments for method UpdateItem on L<Paws::DynamoDB>
 
 =head1 DESCRIPTION
 
@@ -47,16 +47,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 AttributeUpdates => L<Paws::DynamoDB::AttributeUpdates>
 
 This is a legacy parameter. Use C<UpdateExpression> instead. For more
-information, see AttributeUpdates in the I<Amazon DynamoDB Developer
-Guide>.
+information, see AttributeUpdates
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributeUpdates.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 
 =head2 ConditionalOperator => Str
 
 This is a legacy parameter. Use C<ConditionExpression> instead. For
-more information, see ConditionalOperator in the I<Amazon DynamoDB
-Developer Guide>.
+more information, see ConditionalOperator
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 Valid values are: C<"AND">, C<"OR">
 
@@ -88,15 +90,18 @@ Logical operators: C<AND | OR | NOT>
 =back
 
 For more information on condition expressions, see Specifying
-Conditions in the I<Amazon DynamoDB Developer Guide>.
+Conditions
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 
 =head2 Expected => L<Paws::DynamoDB::ExpectedAttributeMap>
 
-This is a legacy parameter. Use C<ConditionExpresssion> instead. For
-more information, see Expected in the I<Amazon DynamoDB Developer
-Guide>.
+This is a legacy parameter. Use C<ConditionExpression> instead. For
+more information, see Expected
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -137,9 +142,10 @@ C<Percentile>
 
 The name of this attribute conflicts with a reserved word, so it cannot
 be used directly in an expression. (For the complete list of reserved
-words, see Reserved Words in the I<Amazon DynamoDB Developer Guide>).
-To work around this, you could specify the following for
-C<ExpressionAttributeNames>:
+words, see Reserved Words
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+in the I<Amazon DynamoDB Developer Guide>). To work around this, you
+could specify the following for C<ExpressionAttributeNames>:
 
 =over
 
@@ -164,7 +170,9 @@ Tokens that begin with the B<:> character are I<expression attribute
 values>, which are placeholders for the actual value at runtime.
 
 For more information on expression attribute names, see Accessing Item
-Attributes in the I<Amazon DynamoDB Developer Guide>.
+Attributes
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -189,7 +197,9 @@ You could then use these values in an expression, such as this:
 C<ProductStatus IN (:avail, :back, :disc)>
 
 For more information on expression attribute values, see Specifying
-Conditions in the I<Amazon DynamoDB Developer Guide>.
+Conditions
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -223,8 +233,8 @@ Valid values are: C<"SIZE">, C<"NONE">
 =head2 ReturnValues => Str
 
 Use C<ReturnValues> if you want to get the item attributes as they
-appeared either before or after they were updated. For C<UpdateItem>,
-the valid values are:
+appear before or after they are updated. For C<UpdateItem>, the valid
+values are:
 
 =over
 
@@ -258,9 +268,9 @@ after the UpdateItem operation.
 
 There is no additional cost associated with requesting a return value
 aside from the small network and processing overhead of receiving a
-larger response. No Read Capacity Units are consumed.
+larger response. No read capacity units are consumed.
 
-Values returned are strongly consistent
+The values returned are strongly consistent.
 
 Valid values are: C<"NONE">, C<"ALL_OLD">, C<"UPDATED_OLD">, C<"ALL_NEW">, C<"UPDATED_NEW">
 
@@ -376,7 +386,9 @@ You can have many actions in a single expression, such as the
 following: C<SET a=:value1, b=:value2 DELETE :value3, :value4, :value5>
 
 For more information on update expressions, see Modifying Items and
-Attributes in the I<Amazon DynamoDB Developer Guide>.
+Attributes
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Modifying.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -387,9 +399,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateItem in
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

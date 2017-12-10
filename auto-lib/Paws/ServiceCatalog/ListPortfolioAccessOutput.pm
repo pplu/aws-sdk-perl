@@ -17,13 +17,13 @@ Paws::ServiceCatalog::ListPortfolioAccessOutput
 
 =head2 AccountIds => ArrayRef[Str|Undef]
 
-List of account IDs associated with access to the portfolio.
+Information about the AWS accounts with access to the portfolio.
 
 
 =head2 NextPageToken => Str
 
-The page token to use to retrieve the next page of results for this
-operation. If there are no more pages, this value is null.
+The page token to use to retrieve the next set of results. If there are
+no additional results, this value is null.
 
 
 =head2 _request_id => Str

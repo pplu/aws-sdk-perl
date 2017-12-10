@@ -89,8 +89,9 @@ supported for clusters is C<LOCAL_USE>.
 =head2 KmsKeyARN => Str
 
   The C<KmsKeyARN> Amazon Resource Name (ARN) associated with this
-cluster. This ARN was created using the CreateKey API action in AWS Key
-Management Service (AWS KMS).
+cluster. This ARN was created using the CreateKey
+(http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html)
+API action in AWS Key Management Service (AWS KMS).
 
 
 =head2 Notification => L<Paws::Snowball::Notification>
@@ -108,7 +109,9 @@ objects or LambdaResource objects.
 =head2 RoleARN => Str
 
   The role ARN associated with this cluster. This ARN was created using
-the CreateRole API action in AWS Identity and Access Management (IAM).
+the CreateRole
+(http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
+API action in AWS Identity and Access Management (IAM).
 
 
 =head2 ShippingOption => Str
@@ -157,9 +160,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Snowball>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

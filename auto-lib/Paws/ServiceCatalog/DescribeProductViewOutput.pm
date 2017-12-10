@@ -17,14 +17,12 @@ Paws::ServiceCatalog::DescribeProductViewOutput
 
 =head2 ProductViewSummary => L<Paws::ServiceCatalog::ProductViewSummary>
 
-The summary metadata about the specified product.
+Summary information about the product.
 
 
 =head2 ProvisioningArtifacts => ArrayRef[L<Paws::ServiceCatalog::ProvisioningArtifact>]
 
-A list of provisioning artifact objects for the specified product. The
-C<ProvisioningArtifacts> represent the ways in which the specified
-product can be provisioned.
+Information about the provisioning artifacts for the product.
 
 
 =head2 _request_id => Str

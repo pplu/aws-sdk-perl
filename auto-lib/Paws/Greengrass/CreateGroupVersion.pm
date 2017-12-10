@@ -1,12 +1,13 @@
 
 package Paws::Greengrass::CreateGroupVersion;
   use Moose;
-  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token' );
+  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
   has CoreDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has DeviceDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has FunctionDefinitionVersionArn => (is => 'ro', isa => 'Str');
-  has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId' , required => 1);
+  has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId', required => 1);
   has LoggerDefinitionVersionArn => (is => 'ro', isa => 'Str');
+  has ResourceDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has SubscriptionDefinitionVersionArn => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -15,14 +16,13 @@ package Paws::Greengrass::CreateGroupVersion;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/groups/{GroupId}/versions');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::CreateGroupVersionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Greengrass::CreateGroupVersion - Arguments for method CreateGroupVersion on Paws::Greengrass
+Paws::Greengrass::CreateGroupVersion - Arguments for method CreateGroupVersion on L<Paws::Greengrass>
 
 =head1 DESCRIPTION
 
@@ -73,7 +73,13 @@ The unique Id of the AWS Greengrass Group
 
 =head2 LoggerDefinitionVersionArn => Str
 
-Logger definitionv ersion arn for this group.
+Logger definition version arn for this group.
+
+
+
+=head2 ResourceDefinitionVersionArn => Str
+
+Resource definition version arn for this group.
 
 
 
@@ -90,9 +96,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateGroupVe
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

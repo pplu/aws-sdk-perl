@@ -4,6 +4,8 @@ package Paws::RedShift::DescribeEventSubscriptions;
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has SubscriptionName => (is => 'ro', isa => 'Str');
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has TagValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -16,7 +18,7 @@ package Paws::RedShift::DescribeEventSubscriptions;
 
 =head1 NAME
 
-Paws::RedShift::DescribeEventSubscriptions - Arguments for method DescribeEventSubscriptions on Paws::RedShift
+Paws::RedShift::DescribeEventSubscriptions - Arguments for method DescribeEventSubscriptions on L<Paws::RedShift>
 
 =head1 DESCRIPTION
 
@@ -67,6 +69,30 @@ described.
 
 
 
+=head2 TagKeys => ArrayRef[Str|Undef]
+
+A tag key or keys for which you want to return all matching event
+notification subscriptions that are associated with the specified key
+or keys. For example, suppose that you have subscriptions that are
+tagged with keys called C<owner> and C<environment>. If you specify
+both of these tag keys in the request, Amazon Redshift returns a
+response with the subscriptions that have either or both of these tag
+keys associated with them.
+
+
+
+=head2 TagValues => ArrayRef[Str|Undef]
+
+A tag value or values for which you want to return all matching event
+notification subscriptions that are associated with the specified tag
+value or values. For example, suppose that you have subscriptions that
+are tagged with values called C<admin> and C<test>. If you specify both
+of these tag values in the request, Amazon Redshift returns a response
+with the subscriptions that have either or both of these tag values
+associated with them.
+
+
+
 
 =head1 SEE ALSO
 
@@ -74,9 +100,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeEvent
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

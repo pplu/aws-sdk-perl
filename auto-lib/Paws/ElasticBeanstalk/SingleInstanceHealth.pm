@@ -66,7 +66,8 @@ health status.
 
   Represents the color indicator that gives you information about the
 health of the EC2 instance. For more information, see Health Colors and
-Statuses.
+Statuses
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html).
 
 
 =head2 Deployment => L<Paws::ElasticBeanstalk::Deployment>
@@ -77,7 +78,8 @@ Statuses.
 =head2 HealthStatus => Str
 
   Returns the health status of the specified instance. For more
-information, see Health Colors and Statuses.
+information, see Health Colors and Statuses
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html).
 
 
 =head2 InstanceId => Str
@@ -107,9 +109,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ElasticBe
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

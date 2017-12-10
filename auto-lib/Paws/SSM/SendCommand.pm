@@ -28,7 +28,7 @@ package Paws::SSM::SendCommand;
 
 =head1 NAME
 
-Paws::SSM::SendCommand - Arguments for method SendCommand on Paws::SSM
+Paws::SSM::SendCommand - Arguments for method SendCommand on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -84,7 +84,8 @@ The instance IDs where the command should execute. You can specify a
 maximum of 50 IDs. If you prefer not to list individual instance IDs,
 you can instead send commands to a fleet of instances using the Targets
 parameter, which accepts EC2 tags. For more information about how to
-use Targets, see Sending Commands to a Fleet.
+use Targets, see Sending Commands to a Fleet
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html).
 
 
 
@@ -93,7 +94,8 @@ use Targets, see Sending Commands to a Fleet.
 (Optional) The maximum number of instances that are allowed to execute
 the command at the same time. You can specify a number such as 10 or a
 percentage such as 10%. The default value is 50. For more information
-about how to use MaxConcurrency, see Using Concurrency Controls.
+about how to use MaxConcurrency, see Using Concurrency Controls
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-velocity.html).
 
 
 
@@ -104,7 +106,8 @@ the command fails one more time beyond the value of MaxErrors, the
 systems stops sending the command to additional targets. You can
 specify a number like 10 or a percentage like 10%. The default value is
 50. For more information about how to use MaxErrors, see Using Error
-Controls.
+Controls
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-maxerrors.html).
 
 
 
@@ -154,7 +157,8 @@ The IAM role that Systems Manager uses to send notifications.
 (Optional) An array of search criteria that targets instances using a
 Key,Value combination that you specify. Targets is required if you
 don't provide one or more instance IDs in the call. For more
-information about how to use Targets, see Sending Commands to a Fleet.
+information about how to use Targets, see Sending Commands to a Fleet
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html).
 
 
 
@@ -172,9 +176,9 @@ This class forms part of L<Paws>, documenting arguments for method SendCommand i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

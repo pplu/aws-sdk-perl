@@ -20,7 +20,7 @@ package Paws::ServiceCatalog::CreateConstraint;
 
 =head1 NAME
 
-Paws::ServiceCatalog::CreateConstraint - Arguments for method CreateConstraint on Paws::ServiceCatalog
+Paws::ServiceCatalog::CreateConstraint - Arguments for method CreateConstraint on L<Paws::ServiceCatalog>
 
 =head1 DESCRIPTION
 
@@ -41,43 +41,68 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AcceptLanguage => Str
 
-The language code to use for this operation. Supported language codes
-are as follows:
+The language code.
 
-"en" (English)
+=over
 
-"jp" (Japanese)
+=item *
 
-"zh" (Chinese)
+C<en> - English (default)
 
-If no code is specified, "en" is used as the default.
+=item *
+
+C<jp> - Japanese
+
+=item *
+
+C<zh> - Chinese
+
+=back
+
 
 
 
 =head2 Description => Str
 
-The text description of the constraint.
+The description of the constraint.
 
 
 
 =head2 B<REQUIRED> IdempotencyToken => Str
 
-A token to disambiguate duplicate requests. You can create multiple
-resources using the same input in multiple requests, provided that you
-also specify a different idempotency token for each request.
+A unique identifier that you provide to ensure idempotency. If multiple
+requests differ only by the idempotency token, the same response is
+returned for each repeated request.
 
 
 
 =head2 B<REQUIRED> Parameters => Str
 
-The constraint parameters. Expected values vary depending on which
-B<Type> is specified. For examples, see the bottom of this topic.
+The constraint parameters, in JSON format. The syntax depends on the
+constraint type as follows:
 
-For Type C<LAUNCH>, the C<RoleArn> property is required.
+=over
 
-For Type C<NOTIFICATION>, the C<NotificationArns> property is required.
+=item LAUNCH
 
-For Type C<TEMPLATE>, the C<Rules> property is required.
+Specify the C<RoleArn> property as follows:
+
+\"RoleArn\" : \"arn:aws:iam::123456789012:role/LaunchRole\"
+
+=item NOTIFICATION
+
+Specify the C<NotificationArns> property as follows:
+
+\"NotificationArns\" : [\"arn:aws:sns:us-east-1:123456789012:Topic\"]
+
+=item TEMPLATE
+
+Specify the C<Rules> property. For more information, see Template
+Constraint Rules
+(http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html).
+
+=back
+
 
 
 
@@ -95,8 +120,24 @@ The product identifier.
 
 =head2 B<REQUIRED> Type => Str
 
-The type of the constraint. Case-sensitive valid values are: C<LAUNCH>,
-C<NOTIFICATION>, or C<TEMPLATE>.
+The type of constraint.
+
+=over
+
+=item *
+
+C<LAUNCH>
+
+=item *
+
+C<NOTIFICATION>
+
+=item *
+
+C<TEMPLATE>
+
+=back
+
 
 
 
@@ -107,9 +148,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateConstra
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

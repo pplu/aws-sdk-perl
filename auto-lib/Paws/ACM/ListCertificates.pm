@@ -2,6 +2,7 @@
 package Paws::ACM::ListCertificates;
   use Moose;
   has CertificateStatuses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Includes => (is => 'ro', isa => 'Paws::ACM::Filters');
   has MaxItems => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -16,7 +17,7 @@ package Paws::ACM::ListCertificates;
 
 =head1 NAME
 
-Paws::ACM::ListCertificates - Arguments for method ListCertificates on Paws::ACM
+Paws::ACM::ListCertificates - Arguments for method ListCertificates on L<Paws::ACM>
 
 =head1 DESCRIPTION
 
@@ -37,7 +38,31 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CertificateStatuses => ArrayRef[Str|Undef]
 
-The status or statuses on which to filter the list of ACM Certificates.
+Filter the certificate list by status value.
+
+
+
+=head2 Includes => L<Paws::ACM::Filters>
+
+Filter the certificate list by one or more of the following values. For
+more information, see the Filters structure.
+
+=over
+
+=item *
+
+extendedKeyUsage
+
+=item *
+
+keyUsage
+
+=item *
+
+keyTypes
+
+=back
+
 
 
 
@@ -67,9 +92,9 @@ This class forms part of L<Paws>, documenting arguments for method ListCertifica
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

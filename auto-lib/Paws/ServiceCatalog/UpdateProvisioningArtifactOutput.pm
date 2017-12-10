@@ -18,12 +18,12 @@ Paws::ServiceCatalog::UpdateProvisioningArtifactOutput
 
 =head2 Info => L<Paws::ServiceCatalog::ProvisioningArtifactInfo>
 
-Additional information about the provisioning artifact update request.
+The URL of the CloudFormation template in Amazon S3.
 
 
 =head2 ProvisioningArtifactDetail => L<Paws::ServiceCatalog::ProvisioningArtifactDetail>
 
-The resulting detailed provisioning artifact information.
+Information about the provisioning artifact.
 
 
 =head2 Status => Str

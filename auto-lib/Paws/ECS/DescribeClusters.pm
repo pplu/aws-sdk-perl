@@ -2,6 +2,7 @@
 package Paws::ECS::DescribeClusters;
   use Moose;
   has Clusters => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'clusters' );
+  has Include => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'include' );
 
   use MooseX::ClassAttribute;
 
@@ -14,7 +15,7 @@ package Paws::ECS::DescribeClusters;
 
 =head1 NAME
 
-Paws::ECS::DescribeClusters - Arguments for method DescribeClusters on Paws::ECS
+Paws::ECS::DescribeClusters - Arguments for method DescribeClusters on L<Paws::ECS>
 
 =head1 DESCRIPTION
 
@@ -41,6 +42,50 @@ assumed.
 
 
 
+=head2 Include => ArrayRef[Str|Undef]
+
+Additional information about your clusters to be separated by launch
+type, including:
+
+=over
+
+=item *
+
+runningEC2TasksCount
+
+=item *
+
+RunningFargateTasksCount
+
+=item *
+
+pendingEC2TasksCount
+
+=item *
+
+pendingFargateTasksCount
+
+=item *
+
+activeEC2ServiceCount
+
+=item *
+
+activeFargateServiceCount
+
+=item *
+
+drainingEC2ServiceCount
+
+=item *
+
+drainingFargateServiceCount
+
+=back
+
+
+
+
 
 =head1 SEE ALSO
 
@@ -48,9 +93,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeClust
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

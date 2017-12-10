@@ -14,7 +14,7 @@ package Paws::RDS::DeleteDBParameterGroup;
 
 =head1 NAME
 
-Paws::RDS::DeleteDBParameterGroup - Arguments for method DeleteDBParameterGroup on Paws::RDS
+Paws::RDS::DeleteDBParameterGroup - Arguments for method DeleteDBParameterGroup on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -47,7 +47,7 @@ Must be the name of an existing DB parameter group
 
 =item *
 
-You cannot delete a default DB parameter group
+You can't delete a default DB parameter group
 
 =item *
 
@@ -65,9 +65,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteDBParam
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -20,7 +20,7 @@ package Paws::DMS::CreateEventSubscription;
 
 =head1 NAME
 
-Paws::DMS::CreateEventSubscription - Arguments for method CreateEventSubscription on Paws::DMS
+Paws::DMS::CreateEventSubscription - Arguments for method CreateEventSubscription on L<Paws::DMS>
 
 =head1 DESCRIPTION
 
@@ -51,8 +51,9 @@ B<false> to create the subscription but not activate it.
 A list of event categories for a source type that you want to subscribe
 to. You can see a list of the categories for a given source type by
 calling the B<DescribeEventCategories> action or in the topic Working
-with Events and Notifications in the AWS Database Migration Service
-User Guide.
+with Events and Notifications
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in
+the AWS Database Migration Service User Guide.
 
 
 
@@ -106,9 +107,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateEventSu
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

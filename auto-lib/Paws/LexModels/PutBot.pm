@@ -1,17 +1,17 @@
 
 package Paws::LexModels::PutBot;
   use Moose;
-  has AbortStatement => (is => 'ro', isa => 'Paws::LexModels::Statement');
-  has Checksum => (is => 'ro', isa => 'Str');
-  has ChildDirected => (is => 'ro', isa => 'Bool', required => 1);
-  has ClarificationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt');
-  has Description => (is => 'ro', isa => 'Str');
-  has IdleSessionTTLInSeconds => (is => 'ro', isa => 'Int');
-  has Intents => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Intent]');
-  has Locale => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name' , required => 1);
-  has ProcessBehavior => (is => 'ro', isa => 'Str');
-  has VoiceId => (is => 'ro', isa => 'Str');
+  has AbortStatement => (is => 'ro', isa => 'Paws::LexModels::Statement', traits => ['NameInRequest'], request_name => 'abortStatement');
+  has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
+  has ChildDirected => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'childDirected', required => 1);
+  has ClarificationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', traits => ['NameInRequest'], request_name => 'clarificationPrompt');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has IdleSessionTTLInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'idleSessionTTLInSeconds');
+  has Intents => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Intent]', traits => ['NameInRequest'], request_name => 'intents');
+  has Locale => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'locale', required => 1);
+  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
+  has ProcessBehavior => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'processBehavior');
+  has VoiceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'voiceId');
 
   use MooseX::ClassAttribute;
 
@@ -19,14 +19,13 @@ package Paws::LexModels::PutBot;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/bots/{name}/versions/$LATEST');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexModels::PutBotResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::LexModels::PutBot - Arguments for method PutBot on Paws::LexModels
+Paws::LexModels::PutBot - Arguments for method PutBot on L<Paws::LexModels>
 
 =head1 DESCRIPTION
 
@@ -106,17 +105,22 @@ application that is directed in whole or in part, to children under age
 COPPA. For information regarding the use of Amazon Lex in connection
 with websites, programs, or other applications that are directed or
 targeted, in whole or in part, to children under age 13, see the Amazon
-Lex FAQ.
+Lex FAQ. (https://aws.amazon.com/lex/faqs#data-security)
 
 
 
 =head2 ClarificationPrompt => L<Paws::LexModels::Prompt>
 
-When Amazon Lex doesn't understand the user's intent, it uses one of
-these messages to get clarification. For example, "Sorry, I didn't
-understand. Please repeat." Amazon Lex repeats the clarification prompt
-the number of times specified in C<maxAttempts>. If Amazon Lex still
-can't understand, it sends the message specified in C<abortStatement>.
+When Amazon Lex doesn't understand the user's intent, it uses this
+message to get clarification. To specify how many times Amazon Lex
+should repeate the clarification prompt, use the C<maxAttempts> field.
+If Amazon Lex still doesn't understand, it sends the message in the
+C<abortStatement> field.
+
+When you create a clarification prompt, make sure that it suggests the
+correct response from the user. for example, for a bot that orders
+pizza and drinks, you might create this clarification prompt: "What
+would you like to do? You can say 'Order a pizza' or 'Order a drink.'"
 
 
 
@@ -185,7 +189,8 @@ Valid values are: C<"SAVE">, C<"BUILD">
 
 The Amazon Polly voice ID that you want Amazon Lex to use for voice
 interactions with the user. The locale configured for the voice must
-match the locale of the bot. For more information, see Voice in the
+match the locale of the bot. For more information, see Available Voices
+(http://docs.aws.amazon.com/polly/latest/dg/voicelist.html) in the
 I<Amazon Polly Developer Guide>.
 
 
@@ -197,9 +202,9 @@ This class forms part of L<Paws>, documenting arguments for method PutBot in L<P
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

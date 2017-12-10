@@ -2,6 +2,8 @@
 package Paws::EFS::CreateFileSystem;
   use Moose;
   has CreationToken => (is => 'ro', isa => 'Str', required => 1);
+  has Encrypted => (is => 'ro', isa => 'Bool');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has PerformanceMode => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -10,14 +12,13 @@ package Paws::EFS::CreateFileSystem;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-02-01/file-systems');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EFS::FileSystemDescription');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::EFS::CreateFileSystem - Arguments for method CreateFileSystem on Paws::EFS
+Paws::EFS::CreateFileSystem - Arguments for method CreateFileSystem on L<Paws::EFS>
 
 =head1 DESCRIPTION
 
@@ -43,6 +44,53 @@ idempotent creation.
 
 
 
+=head2 Encrypted => Bool
+
+A boolean value that, if true, creates an encrypted file system. When
+creating an encrypted file system, you have the option of specifying a
+CreateFileSystemRequest$KmsKeyId for an existing AWS Key Management
+Service (AWS KMS) customer master key (CMK). If you don't specify a
+CMK, then the default CMK for Amazon EFS, C</aws/elasticfilesystem>, is
+used to protect the encrypted file system.
+
+
+
+=head2 KmsKeyId => Str
+
+The id of the AWS KMS CMK that will be used to protect the encrypted
+file system. This parameter is only required if you want to use a
+non-default CMK. If this parameter is not specified, the default CMK
+for Amazon EFS is used. This id can be in one of the following formats:
+
+=over
+
+=item *
+
+Key ID - A unique identifier of the key. For example,
+C<1234abcd-12ab-34cd-56ef-1234567890ab>.
+
+=item *
+
+ARN - An Amazon Resource Name for the key. For example,
+C<arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>.
+
+=item *
+
+Key alias - A previously created display name for a key. For example,
+C<alias/projectKey1>.
+
+=item *
+
+Key alias ARN - An Amazon Resource Name for a key alias. For example,
+C<arn:aws:kms:us-west-2:444455556666:alias/projectKey1>.
+
+=back
+
+Note that if the KmsKeyId is specified, the
+CreateFileSystemRequest$Encrypted parameter must be set to true.
+
+
+
 =head2 PerformanceMode => Str
 
 The C<PerformanceMode> of the file system. We recommend
@@ -61,9 +109,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateFileSys
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

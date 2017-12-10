@@ -42,6 +42,7 @@ prefix user: in the Cost Allocation Report. You cannot backdate the
 application of a tag.
 
 For an overview on tagging DynamoDB resources, see Tagging for DynamoDB
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 =head1 ATTRIBUTES
@@ -67,9 +68,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::DynamoDB>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

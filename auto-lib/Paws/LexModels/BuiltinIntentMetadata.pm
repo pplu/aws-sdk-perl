@@ -40,7 +40,9 @@ Provides metadata for a built-in intent.
 =head2 Signature => Str
 
   A unique identifier for the built-in intent. To find the signature for
-an intent, see Standard Built-in Intents in the I<Alexa Skills Kit>.
+an intent, see Standard Built-in Intents
+(https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents)
+in the I<Alexa Skills Kit>.
 
 
 =head2 SupportedLocales => ArrayRef[Str|Undef]
@@ -55,9 +57,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::LexModels
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

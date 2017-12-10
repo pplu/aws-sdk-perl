@@ -14,7 +14,7 @@ package Paws::RedShift::DeleteClusterSecurityGroup;
 
 =head1 NAME
 
-Paws::RedShift::DeleteClusterSecurityGroup - Arguments for method DeleteClusterSecurityGroup on Paws::RedShift
+Paws::RedShift::DeleteClusterSecurityGroup - Arguments for method DeleteClusterSecurityGroup on L<Paws::RedShift>
 
 =head1 DESCRIPTION
 
@@ -46,9 +46,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteCluster
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

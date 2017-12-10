@@ -34,32 +34,34 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head1 DESCRIPTION
 
-Provides details for the C<LambdaFunctionFailed> event.
+Provides the details of the C<LambdaFunctionFailed> event. It isn't set
+for other event types.
 
 =head1 ATTRIBUTES
 
 
 =head2 Details => Str
 
-  The details of the failure (if any).
+  The details of the failure.
 
 
 =head2 Reason => Str
 
-  The reason provided for the failure (if any).
+  The reason provided for the failure.
 
 
 =head2 B<REQUIRED> ScheduledEventId => Int
 
   The ID of the C<LambdaFunctionScheduled> event that was recorded when
-this AWS Lambda function was scheduled. This information can be useful
-for diagnosing problems by tracing back the chain of events leading up
-to this event.
+this activity task was scheduled. To help diagnose issues, use this
+information to trace back the chain of events leading up to this event.
 
 
 =head2 B<REQUIRED> StartedEventId => Int
 
-  The ID of the C<LambdaFunctionStarted> event recorded in the history.
+  The ID of the C<LambdaFunctionStarted> event recorded when this
+activity task started. To help diagnose issues, use this information to
+trace back the chain of events leading up to this event.
 
 
 
@@ -69,9 +71,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SimpleWor
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

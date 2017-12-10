@@ -1,6 +1,7 @@
 
 package Paws::Lightsail::CreateInstancesFromSnapshot;
   use Moose;
+  has AttachedDiskMapping => (is => 'ro', isa => 'Paws::Lightsail::AttachedDiskMap', traits => ['NameInRequest'], request_name => 'attachedDiskMapping' );
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' , required => 1);
   has BundleId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bundleId' , required => 1);
   has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceNames' , required => 1);
@@ -19,7 +20,7 @@ package Paws::Lightsail::CreateInstancesFromSnapshot;
 
 =head1 NAME
 
-Paws::Lightsail::CreateInstancesFromSnapshot - Arguments for method CreateInstancesFromSnapshot on Paws::Lightsail
+Paws::Lightsail::CreateInstancesFromSnapshot - Arguments for method CreateInstancesFromSnapshot on L<Paws::Lightsail>
 
 =head1 DESCRIPTION
 
@@ -38,12 +39,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AttachedDiskMapping => L<Paws::Lightsail::AttachedDiskMap>
+
+An object containing information about one or more disk mappings.
+
+
+
 =head2 B<REQUIRED> AvailabilityZone => Str
 
 The Availability Zone where you want to create your instances. Use the
-following formatting: C<us-east-1a> (case sensitive). You can get a
-list of availability zones by using the get regions operation. Be sure
-to add the C<include availability zones> parameter to your request.
+following formatting: C<us-east-2a> (case sensitive). You can get a
+list of availability zones by using the get regions
+(http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html)
+operation. Be sure to add the C<include availability zones> parameter
+to your request.
 
 
 
@@ -77,12 +86,13 @@ The name for your key pair.
 =head2 UserData => Str
 
 You can create a launch script that configures a server with additional
-user data. For example, C<apt-get E<ndash>y update>.
+user data. For example, C<apt-get -y update>.
 
 Depending on the machine image you choose, the command to get software
 on your instance varies. Amazon Linux and CentOS use C<yum>, Debian and
 Ubuntu use C<apt-get>, and FreeBSD uses C<pkg>. For a complete list,
-see the Dev Guide.
+see the Dev Guide
+(http://lightsail.aws.amazon.com/ls/docs/getting-started/articles/pre-installed-apps).
 
 
 
@@ -93,9 +103,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateInstanc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

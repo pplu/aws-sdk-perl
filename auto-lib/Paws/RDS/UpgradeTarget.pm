@@ -43,8 +43,8 @@ to.
 
 =head2 AutoUpgrade => Bool
 
-  A value that indicates whether the target version will be applied to
-any source DB instances that have AutoMinorVersionUpgrade set to true.
+  A value that indicates whether the target version is applied to any
+source DB instances that have AutoMinorVersionUpgrade set to true.
 
 
 =head2 Description => Str
@@ -65,8 +65,8 @@ to.
 
 =head2 IsMajorVersionUpgrade => Bool
 
-  A value that indicates whether a database engine will be upgraded to a
-major version.
+  A value that indicates whether a database engine is upgraded to a major
+version.
 
 
 
@@ -76,9 +76,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

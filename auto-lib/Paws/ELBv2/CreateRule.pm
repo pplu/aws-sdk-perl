@@ -17,7 +17,7 @@ package Paws::ELBv2::CreateRule;
 
 =head1 NAME
 
-Paws::ELBv2::CreateRule - Arguments for method CreateRule on Paws::ELBv2
+Paws::ELBv2::CreateRule - Arguments for method CreateRule on L<Paws::ELBv2>
 
 =head1 DESCRIPTION
 
@@ -45,7 +45,8 @@ group.
 
 =head2 B<REQUIRED> Conditions => ArrayRef[L<Paws::ELBv2::RuleCondition>]
 
-A condition. Each condition specifies a field name and a single value.
+The conditions. Each condition specifies a field name and a single
+value.
 
 If the field name is C<host-header>, you can specify a single host name
 (for example, my.example.com). A host name is case insensitive, can be
@@ -124,9 +125,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateRule in
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

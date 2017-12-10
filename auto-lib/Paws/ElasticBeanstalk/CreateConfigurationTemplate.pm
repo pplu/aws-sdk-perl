@@ -21,7 +21,7 @@ package Paws::ElasticBeanstalk::CreateConfigurationTemplate;
 
 =head1 NAME
 
-Paws::ElasticBeanstalk::CreateConfigurationTemplate - Arguments for method CreateConfigurationTemplate on Paws::ElasticBeanstalk
+Paws::ElasticBeanstalk::CreateConfigurationTemplate - Arguments for method CreateConfigurationTemplate on L<Paws::ElasticBeanstalk>
 
 =head1 DESCRIPTION
 
@@ -70,7 +70,7 @@ obtained from the solution stack or the source configuration template.
 
 =head2 PlatformArn => Str
 
-The ARN of the custome platform.
+The ARN of the custom platform.
 
 
 
@@ -131,9 +131,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateConfigu
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -34,10 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Identifies the bounding box around the object or face. The C<left>
-(x-coordinate) and C<top> (y-coordinate) are coordinates representing
-the top and left sides of the bounding box. Note that the upper-left
-corner of the image is the origin (0,0).
+Identifies the bounding box around the object, face or text. The
+C<left> (x-coordinate) and C<top> (y-coordinate) are coordinates
+representing the top and left sides of the bounding box. Note that the
+upper-left corner of the image is the origin (0,0).
 
 The C<top> and C<left> values returned are ratios of the overall image
 size. For example, if the input image is 700x200 pixels, and the
@@ -87,9 +87,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Rekogniti
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -16,7 +16,7 @@ package Paws::KMS::RetireGrant;
 
 =head1 NAME
 
-Paws::KMS::RetireGrant - Arguments for method RetireGrant on Paws::KMS
+Paws::KMS::RetireGrant - Arguments for method RetireGrant on L<Paws::KMS>
 
 =head1 DESCRIPTION
 
@@ -60,16 +60,10 @@ Token that identifies the grant to be retired.
 
 =head2 KeyId => Str
 
-The Amazon Resource Name of the CMK associated with the grant. Example:
+The Amazon Resource Name (ARN) of the CMK associated with the grant.
 
-=over
-
-=item *
-
-arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab
-
-=back
-
+For example:
+C<arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab>
 
 
 
@@ -80,9 +74,9 @@ This class forms part of L<Paws>, documenting arguments for method RetireGrant i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

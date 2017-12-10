@@ -16,7 +16,7 @@ package Paws::EC2::AcceptReservedInstancesExchangeQuote;
 
 =head1 NAME
 
-Paws::EC2::AcceptReservedInstancesExchangeQuote - Arguments for method AcceptReservedInstancesExchangeQuote on Paws::EC2
+Paws::EC2::AcceptReservedInstancesExchangeQuote - Arguments for method AcceptReservedInstancesExchangeQuote on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -46,15 +46,15 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> ReservedInstanceIds => ArrayRef[Str|Undef]
 
-The IDs of the Convertible Reserved Instances to exchange for other
-Convertible Reserved Instances of the same or higher value.
+The IDs of the Convertible Reserved Instances to exchange for another
+Convertible Reserved Instance of the same or higher value.
 
 
 
 =head2 TargetConfigurations => ArrayRef[L<Paws::EC2::TargetConfigurationRequest>]
 
-The configurations of the Convertible Reserved Instance offerings that
-you are purchasing in this exchange.
+The configuration of the target Convertible Reserved Instance to
+exchange for your current Convertible Reserved Instances.
 
 
 
@@ -65,9 +65,9 @@ This class forms part of L<Paws>, documenting arguments for method AcceptReserve
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -15,7 +15,7 @@ package Paws::ELB::DescribeAccountLimits;
 
 =head1 NAME
 
-Paws::ELB::DescribeAccountLimits - Arguments for method DescribeAccountLimits on Paws::ELB
+Paws::ELB::DescribeAccountLimits - Arguments for method DescribeAccountLimits on L<Paws::ELB>
 
 =head1 DESCRIPTION
 
@@ -54,9 +54,9 @@ This class forms part of L<Paws>, documenting arguments for method DescribeAccou
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

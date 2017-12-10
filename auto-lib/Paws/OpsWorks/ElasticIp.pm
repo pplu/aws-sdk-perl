@@ -62,7 +62,8 @@ Describes an Elastic IP address.
 
 =head2 Region => Str
 
-  The AWS region. For more information, see Regions and Endpoints.
+  The AWS region. For more information, see Regions and Endpoints
+(http://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 
 
@@ -72,9 +73,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::OpsWorks>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

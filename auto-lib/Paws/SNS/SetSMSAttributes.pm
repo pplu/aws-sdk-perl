@@ -14,7 +14,7 @@ package Paws::SNS::SetSMSAttributes;
 
 =head1 NAME
 
-Paws::SNS::SetSMSAttributes - Arguments for method SetSMSAttributes on Paws::SNS
+Paws::SNS::SetSMSAttributes - Arguments for method SetSMSAttributes on L<Paws::SNS>
 
 =head1 DESCRIPTION
 
@@ -48,8 +48,9 @@ crossed. During that interval, if you continue to send SMS messages,
 you will incur costs that exceed your limit.
 
 By default, the spend limit is set to the maximum allowed by Amazon
-SNS. If you want to exceed the maximum, contact AWS Support or your AWS
-sales representative for a service limit increase.
+SNS. If you want to exceed the maximum, contact AWS Support
+(https://aws.amazon.com/premiumsupport/) or your AWS sales
+representative for a service limit increase.
 
 C<DeliveryStatusIAMRole> E<ndash> The ARN of the IAM role that allows
 Amazon SNS to write logs about SMS deliveries in CloudWatch Logs. For
@@ -137,7 +138,8 @@ Amazon SNS service principle to perform the C<s3:PutObject> and
 C<s3:GetBucketLocation> actions.
 
 For an example bucket policy and usage report, see Monitoring SMS
-Activity in the I<Amazon SNS Developer Guide>.
+Activity (http://docs.aws.amazon.com/sns/latest/dg/sms_stats.html) in
+the I<Amazon SNS Developer Guide>.
 
 
 
@@ -148,9 +150,9 @@ This class forms part of L<Paws>, documenting arguments for method SetSMSAttribu
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

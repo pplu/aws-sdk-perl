@@ -43,8 +43,9 @@ rule.
   Object key name prefix or suffix identifying one or more objects to
 which the filtering rule applies. Maximum prefix length can be up to
 1,024 characters. Overlapping prefixes and suffixes are not supported.
-For more information, go to Configuring Event Notifications in the
-Amazon Simple Storage Service Developer Guide.
+For more information, go to Configuring Event Notifications
+(http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html)
+in the Amazon Simple Storage Service Developer Guide.
 
 
 =head2 Value => Str
@@ -59,9 +60,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::S3>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

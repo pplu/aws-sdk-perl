@@ -35,7 +35,7 @@ package Paws::RedShift::RestoreFromClusterSnapshot;
 
 =head1 NAME
 
-Paws::RedShift::RestoreFromClusterSnapshot - Arguments for method RestoreFromClusterSnapshot on Paws::RedShift
+Paws::RedShift::RestoreFromClusterSnapshot - Arguments for method RestoreFromClusterSnapshot on L<Paws::RedShift>
 
 =head1 DESCRIPTION
 
@@ -134,7 +134,8 @@ The name of the parameter group to be associated with this cluster.
 
 Default: The default Amazon Redshift cluster parameter group. For
 information about the default parameter group, go to Working with
-Amazon Redshift Parameter Groups.
+Amazon Redshift Parameter Groups
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html).
 
 Constraints:
 
@@ -187,7 +188,9 @@ The elastic IP (EIP) address for the cluster.
 An option that specifies whether to create the cluster with enhanced
 VPC routing enabled. To create a cluster that uses enhanced VPC
 routing, the cluster must be in a VPC. For more information, see
-Enhanced VPC Routing in the Amazon Redshift Cluster Management Guide.
+Enhanced VPC Routing
+(http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)
+in the Amazon Redshift Cluster Management Guide.
 
 If this option is C<true>, enhanced VPC routing is enabled.
 
@@ -241,7 +244,9 @@ ds2.xlarge into ds1.xlarge. If you have a DC instance type, you must
 restore into that same instance type and size. In other words, you can
 only restore a dc1.large instance type into another dc1.large instance
 type. For more information about node types, see About Clusters and
-Nodes in the I<Amazon Redshift Cluster Management Guide>
+Nodes
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes)
+in the I<Amazon Redshift Cluster Management Guide>
 
 
 
@@ -272,7 +277,9 @@ Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
 Default: The value selected for the cluster from which the snapshot was
 taken. For more information about the time blocks for each region, see
-Maintenance Windows in Amazon Redshift Cluster Management Guide.
+Maintenance Windows
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows)
+in Amazon Redshift Cluster Management Guide.
 
 Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun
 
@@ -322,9 +329,9 @@ This class forms part of L<Paws>, documenting arguments for method RestoreFromCl
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

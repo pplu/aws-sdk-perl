@@ -45,22 +45,23 @@ Information about a load balancer attribute.
 
 =item *
 
-C<access_logs.s3.enabled> - Indicates whether access logs stored in
-Amazon S3 are enabled. The value is C<true> or C<false>.
+C<access_logs.s3.enabled> - [Application Load Balancers] Indicates
+whether access logs stored in Amazon S3 are enabled. The value is
+C<true> or C<false>.
 
 =item *
 
-C<access_logs.s3.bucket> - The name of the S3 bucket for the access
-logs. This attribute is required if access logs in Amazon S3 are
-enabled. The bucket must exist in the same region as the load balancer
-and have a bucket policy that grants Elastic Load Balancing permission
-to write to the bucket.
+C<access_logs.s3.bucket> - [Application Load Balancers] The name of the
+S3 bucket for the access logs. This attribute is required if access
+logs in Amazon S3 are enabled. The bucket must exist in the same region
+as the load balancer and have a bucket policy that grants Elastic Load
+Balancing permission to write to the bucket.
 
 =item *
 
-C<access_logs.s3.prefix> - The prefix for the location in the S3
-bucket. If you don't specify a prefix, the access logs are stored in
-the root of the bucket.
+C<access_logs.s3.prefix> - [Application Load Balancers] The prefix for
+the location in the S3 bucket. If you don't specify a prefix, the
+access logs are stored in the root of the bucket.
 
 =item *
 
@@ -69,8 +70,9 @@ is enabled. The value is C<true> or C<false>.
 
 =item *
 
-C<idle_timeout.timeout_seconds> - The idle timeout value, in seconds.
-The valid range is 1-3600. The default is 60 seconds.
+C<idle_timeout.timeout_seconds> - [Application Load Balancers] The idle
+timeout value, in seconds. The valid range is 1-4000. The default is 60
+seconds.
 
 =back
 
@@ -88,9 +90,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ELBv2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

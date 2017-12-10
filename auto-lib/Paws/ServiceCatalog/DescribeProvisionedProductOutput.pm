@@ -16,7 +16,7 @@ Paws::ServiceCatalog::DescribeProvisionedProductOutput
 
 =head2 ProvisionedProductDetail => L<Paws::ServiceCatalog::ProvisionedProductDetail>
 
-Detailed provisioned product information.
+Information about the provisioned product.
 
 
 =head2 _request_id => Str

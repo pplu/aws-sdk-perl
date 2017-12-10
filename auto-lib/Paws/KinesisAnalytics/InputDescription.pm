@@ -3,6 +3,7 @@ package Paws::KinesisAnalytics::InputDescription;
   has InAppStreamNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has InputId => (is => 'ro', isa => 'Str');
   has InputParallelism => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputParallelism');
+  has InputProcessingConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputProcessingConfigurationDescription');
   has InputSchema => (is => 'ro', isa => 'Paws::KinesisAnalytics::SourceSchema');
   has InputStartingPositionConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputStartingPositionConfiguration');
   has KinesisFirehoseInputDescription => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisFirehoseInputDescription');
@@ -39,7 +40,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 =head1 DESCRIPTION
 
 Describes the application input configuration. For more information,
-see Configuring Application Input.
+see Configuring Application Input
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
 
 =head1 ATTRIBUTES
 
@@ -63,9 +65,17 @@ your application.
 mapped to the streaming source).
 
 
+=head2 InputProcessingConfigurationDescription => L<Paws::KinesisAnalytics::InputProcessingConfigurationDescription>
+
+  The description of the preprocessor that executes on records in this
+input before the application's code is run.
+
+
 =head2 InputSchema => L<Paws::KinesisAnalytics::SourceSchema>
 
-  
+  Describes the format of the data in the streaming source, and how each
+data element maps to corresponding columns in the in-application stream
+that is being created.
 
 
 =head2 InputStartingPositionConfiguration => L<Paws::KinesisAnalytics::InputStartingPositionConfiguration>
@@ -101,9 +111,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::KinesisAn
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

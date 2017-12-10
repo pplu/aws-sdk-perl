@@ -1,7 +1,7 @@
 
 package Paws::CloudDirectory::DetachTypedLink;
   use Moose;
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
   has TypedLinkSpecifier => (is => 'ro', isa => 'Paws::CloudDirectory::TypedLinkSpecifier', required => 1);
 
   use MooseX::ClassAttribute;
@@ -10,14 +10,13 @@ package Paws::CloudDirectory::DetachTypedLink;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/typedlink/detach');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CloudDirectory::DetachTypedLink - Arguments for method DetachTypedLink on Paws::CloudDirectory
+Paws::CloudDirectory::DetachTypedLink - Arguments for method DetachTypedLink on L<Paws::CloudDirectory>
 
 =head1 DESCRIPTION
 
@@ -56,9 +55,9 @@ This class forms part of L<Paws>, documenting arguments for method DetachTypedLi
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

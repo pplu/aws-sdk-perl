@@ -47,7 +47,7 @@ Describes the metadata of a comment.
 
 =head2 CommentStatus => Str
 
-  
+  The status of the comment.
 
 
 =head2 Contributor => L<Paws::WorkDocs::User>
@@ -57,7 +57,7 @@ Describes the metadata of a comment.
 
 =head2 CreatedTimestamp => Str
 
-  
+  The timestamp that the comment was created.
 
 
 =head2 RecipientId => Str
@@ -72,9 +72,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::WorkDocs>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

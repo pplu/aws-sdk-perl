@@ -77,15 +77,18 @@ attribute is set to the cluster's ARN.
 
 =head2 AutoAssignElasticIps => Bool
 
-  Whether to automatically assign an Elastic IP address to the layer's
-instances. For more information, see How to Edit a Layer.
+  Whether to automatically assign an Elastic IP address
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
+to the layer's instances. For more information, see How to Edit a Layer
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
 
 
 =head2 AutoAssignPublicIps => Bool
 
   For stacks that are running in a VPC, whether to automatically assign a
 public IP address to the layer's instances. For more information, see
-How to Edit a Layer.
+How to Edit a Layer
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
 
 
 =head2 CloudWatchLogsConfiguration => L<Paws::OpsWorks::CloudWatchLogsConfiguration>
@@ -101,7 +104,8 @@ How to Edit a Layer.
 =head2 CustomInstanceProfileArn => Str
 
   The ARN of the default IAM profile to be used for the layer's EC2
-instances. For more information about IAM ARNs, see Using Identifiers.
+instances. For more information about IAM ARNs, see Using Identifiers
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 
 
 =head2 CustomJson => Str
@@ -203,9 +207,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::OpsWorks>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

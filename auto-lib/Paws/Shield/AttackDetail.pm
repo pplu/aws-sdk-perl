@@ -2,6 +2,7 @@ package Paws::Shield::AttackDetail;
   use Moose;
   has AttackCounters => (is => 'ro', isa => 'ArrayRef[Paws::Shield::SummarizedCounter]');
   has AttackId => (is => 'ro', isa => 'Str');
+  has AttackProperties => (is => 'ro', isa => 'ArrayRef[Paws::Shield::AttackProperty]');
   has EndTime => (is => 'ro', isa => 'Str');
   has Mitigations => (is => 'ro', isa => 'ArrayRef[Paws::Shield::Mitigation]');
   has ResourceArn => (is => 'ro', isa => 'Str');
@@ -53,9 +54,16 @@ period.
   The unique identifier (ID) of the attack.
 
 
+=head2 AttackProperties => ArrayRef[L<Paws::Shield::AttackProperty>]
+
+  The array of AttackProperty objects.
+
+
 =head2 EndTime => Str
 
-  The time the attack ended, in the format 2016-12-16T13:50Z.
+  The time the attack ended, in Unix time in seconds. For more
+information see timestamp
+(http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types).
 
 
 =head2 Mitigations => ArrayRef[L<Paws::Shield::Mitigation>]
@@ -70,7 +78,9 @@ period.
 
 =head2 StartTime => Str
 
-  The time the attack started, in the format 2016-12-16T13:50Z.
+  The time the attack started, in Unix time in seconds. For more
+information see timestamp
+(http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types).
 
 
 =head2 SubResources => ArrayRef[L<Paws::Shield::SubResourceSummary>]
@@ -86,9 +96,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Shield>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

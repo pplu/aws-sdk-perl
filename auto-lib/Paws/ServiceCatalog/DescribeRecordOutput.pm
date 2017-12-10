@@ -18,20 +18,20 @@ Paws::ServiceCatalog::DescribeRecordOutput
 
 =head2 NextPageToken => Str
 
-The page token to use to retrieve the next page of results for this
-operation. If there are no more pages, this value is null.
+The page token to use to retrieve the next set of results. If there are
+no additional results, this value is null.
 
 
 =head2 RecordDetail => L<Paws::ServiceCatalog::RecordDetail>
 
-Detailed record information for the specified product.
+Information about the product.
 
 
 =head2 RecordOutputs => ArrayRef[L<Paws::ServiceCatalog::RecordOutput>]
 
-A list of outputs for the specified Product object created as the
-result of a request. For example, a CloudFormation-backed product that
-creates an S3 bucket would have an output for the S3 bucket URL.
+Information about the product created as the result of a request. For
+example, the output for a CloudFormation-backed product that creates an
+S3 bucket would include the S3 bucket URL.
 
 
 =head2 _request_id => Str

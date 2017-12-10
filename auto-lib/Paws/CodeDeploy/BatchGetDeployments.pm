@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::BatchGetDeployments;
   use Moose;
-  has DeploymentIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'deploymentIds' );
+  has DeploymentIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'deploymentIds' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -14,7 +14,7 @@ package Paws::CodeDeploy::BatchGetDeployments;
 
 =head1 NAME
 
-Paws::CodeDeploy::BatchGetDeployments - Arguments for method BatchGetDeployments on Paws::CodeDeploy
+Paws::CodeDeploy::BatchGetDeployments - Arguments for method BatchGetDeployments on L<Paws::CodeDeploy>
 
 =head1 DESCRIPTION
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 DeploymentIds => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> DeploymentIds => ArrayRef[Str|Undef]
 
 A list of deployment IDs, separated by spaces.
 
@@ -46,9 +46,9 @@ This class forms part of L<Paws>, documenting arguments for method BatchGetDeplo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

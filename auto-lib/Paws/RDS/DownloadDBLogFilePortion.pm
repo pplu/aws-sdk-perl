@@ -17,7 +17,7 @@ package Paws::RDS::DownloadDBLogFilePortion;
 
 =head1 NAME
 
-Paws::RDS::DownloadDBLogFilePortion - Arguments for method DownloadDBLogFilePortion on Paws::RDS
+Paws::RDS::DownloadDBLogFilePortion - Arguments for method DownloadDBLogFilePortion on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -47,15 +47,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens
-
-=item *
-
-First character must be a letter
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens
+Must match the identifier of an existing DBInstance.
 
 =back
 
@@ -79,8 +71,8 @@ the marker until the end of the file or up to NumberOfLines.
 =head2 NumberOfLines => Int
 
 The number of lines to download. If the number of lines specified
-results in a file over 1 MB in size, the file will be truncated at 1 MB
-in size.
+results in a file over 1 MB in size, the file is truncated at 1 MB in
+size.
 
 If the NumberOfLines parameter is specified, then the block of lines
 returned can be from the beginning or the end of the log file,
@@ -125,9 +117,9 @@ This class forms part of L<Paws>, documenting arguments for method DownloadDBLog
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

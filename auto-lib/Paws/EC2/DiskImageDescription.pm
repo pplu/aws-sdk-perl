@@ -54,11 +54,13 @@ This class has no description
   A presigned URL for the import manifest stored in Amazon S3. For
 information about creating a presigned URL for an Amazon S3 object,
 read the "Query String Request Authentication Alternative" section of
-the Authenticating REST Requests topic in the I<Amazon Simple Storage
-Service Developer Guide>.
+the Authenticating REST Requests
+(http://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html)
+topic in the I<Amazon Simple Storage Service Developer Guide>.
 
 For information about the import manifest referenced by this API
-action, see VM Import Manifest.
+action, see VM Import Manifest
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html).
 
 
 =head2 B<REQUIRED> Size => Int
@@ -73,8 +75,8 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut

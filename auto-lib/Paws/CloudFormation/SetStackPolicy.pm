@@ -16,7 +16,7 @@ package Paws::CloudFormation::SetStackPolicy;
 
 =head1 NAME
 
-Paws::CloudFormation::SetStackPolicy - Arguments for method SetStackPolicy on Paws::CloudFormation
+Paws::CloudFormation::SetStackPolicy - Arguments for method SetStackPolicy on L<Paws::CloudFormation>
 
 =head1 DESCRIPTION
 
@@ -44,9 +44,10 @@ The name or unique stack ID that you want to associate a policy with.
 =head2 StackPolicyBody => Str
 
 Structure containing the stack policy body. For more information, go to
-Prevent Updates to Stack Resources in the AWS CloudFormation User
-Guide. You can specify either the C<StackPolicyBody> or the
-C<StackPolicyURL> parameter, but not both.
+Prevent Updates to Stack Resources
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html)
+in the AWS CloudFormation User Guide. You can specify either the
+C<StackPolicyBody> or the C<StackPolicyURL> parameter, but not both.
 
 
 
@@ -66,9 +67,9 @@ This class forms part of L<Paws>, documenting arguments for method SetStackPolic
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

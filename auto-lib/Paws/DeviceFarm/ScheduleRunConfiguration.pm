@@ -2,6 +2,7 @@ package Paws::DeviceFarm::ScheduleRunConfiguration;
   use Moose;
   has AuxiliaryApps => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'auxiliaryApps', traits => ['NameInRequest']);
   has BillingMethod => (is => 'ro', isa => 'Str', request_name => 'billingMethod', traits => ['NameInRequest']);
+  has CustomerArtifactPaths => (is => 'ro', isa => 'Paws::DeviceFarm::CustomerArtifactPaths', request_name => 'customerArtifactPaths', traits => ['NameInRequest']);
   has ExtraDataPackageArn => (is => 'ro', isa => 'Str', request_name => 'extraDataPackageArn', traits => ['NameInRequest']);
   has Locale => (is => 'ro', isa => 'Str', request_name => 'locale', traits => ['NameInRequest']);
   has Location => (is => 'ro', isa => 'Paws::DeviceFarm::Location', request_name => 'location', traits => ['NameInRequest']);
@@ -55,6 +56,12 @@ C<unmetered>. If the parameter is not specified, the default value is
 C<metered>.
 
 
+=head2 CustomerArtifactPaths => L<Paws::DeviceFarm::CustomerArtifactPaths>
+
+  Input C<CustomerArtifactPaths> object for the scheduled run
+configuration.
+
+
 =head2 ExtraDataPackageArn => Str
 
   The ARN of the extra data for the run. The extra data is a .zip file
@@ -89,9 +96,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::DeviceFar
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

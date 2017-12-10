@@ -3,9 +3,9 @@ package Paws::Lambda::AddPermission;
   use Moose;
   has Action => (is => 'ro', isa => 'Str', required => 1);
   has EventSourceToken => (is => 'ro', isa => 'Str');
-  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
+  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
   has Principal => (is => 'ro', isa => 'Str', required => 1);
-  has Qualifier => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Qualifier' );
+  has Qualifier => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Qualifier');
   has SourceAccount => (is => 'ro', isa => 'Str');
   has SourceArn => (is => 'ro', isa => 'Str');
   has StatementId => (is => 'ro', isa => 'Str', required => 1);
@@ -16,14 +16,13 @@ package Paws::Lambda::AddPermission;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/policy');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::AddPermissionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Lambda::AddPermission - Arguments for method AddPermission on Paws::Lambda
+Paws::Lambda::AddPermission - Arguments for method AddPermission on L<Paws::Lambda>
 
 =head1 DESCRIPTION
 
@@ -146,9 +145,9 @@ This class forms part of L<Paws>, documenting arguments for method AddPermission
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

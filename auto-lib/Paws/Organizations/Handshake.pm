@@ -55,7 +55,34 @@ deleted.
 =head2 Action => Str
 
   The type of handshake, indicating what action occurs when the recipient
-accepts the handshake.
+accepts the handshake. The following handshake types are supported:
+
+=over
+
+=item *
+
+B<INVITE>: This type of handshake represents a request to join an
+organization. It is always sent from the master account to only
+non-member accounts.
+
+=item *
+
+B<ENABLE_ALL_FEATURES>: This type of handshake represents a request to
+enable all features in an organization. It is always sent from the
+master account to only I<invited> member accounts. Created accounts do
+not receive this because those accounts were created by the
+organization's master account and approval is inferred.
+
+=item *
+
+B<APPROVE_ALL_FEATURES>: This type of handshake is sent from the
+Organizations service when all member accounts have approved the
+C<ENABLE_ALL_FEATURES> invitation. It is sent only to the master
+account and signals the master that it can finalize the process to
+enable all features.
+
+=back
+
 
 
 =head2 Arn => Str
@@ -63,7 +90,9 @@ accepts the handshake.
   The Amazon Resource Name (ARN) of a handshake.
 
 For more information about ARNs in Organizations, see ARN Formats
-Supported by Organizations in the I<AWS Organizations User Guide>.
+Supported by Organizations
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns)
+in the I<AWS Organizations User Guide>.
 
 
 =head2 ExpirationTimestamp => Str
@@ -78,8 +107,9 @@ the handshake becomes inactive and is no longer valid.
   The unique identifier (ID) of a handshake. The originating account
 creates the ID when it initiates the handshake.
 
-The regex pattern for handshake ID string requires "h-" followed by
-from 8 to 32 lower-case letters or digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for handshake ID
+string requires "h-" followed by from 8 to 32 lower-case letters or
+digits.
 
 
 =head2 Parties => ArrayRef[L<Paws::Organizations::HandshakeParty>]
@@ -151,9 +181,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Organizat
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -20,7 +20,7 @@ package Paws::CloudWatchLogs::GetLogEvents;
 
 =head1 NAME
 
-Paws::CloudWatchLogs::GetLogEvents - Arguments for method GetLogEvents on Paws::CloudWatchLogs
+Paws::CloudWatchLogs::GetLogEvents - Arguments for method GetLogEvents on L<Paws::CloudWatchLogs>
 
 =head1 DESCRIPTION
 
@@ -42,8 +42,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 EndTime => Int
 
 The end of the time range, expressed as the number of milliseconds
-since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this
-time are not included.
+after Jan 1, 1970 00:00:00 UTC. Events with a time stamp later than
+this time are not included.
 
 
 
@@ -51,7 +51,7 @@ time are not included.
 
 The maximum number of log events returned. If you don't specify a
 value, the maximum is as many log events as can fit in a response size
-of 1MB, up to 10,000 log events.
+of 1 MB, up to 10,000 log events.
 
 
 
@@ -85,7 +85,7 @@ default value is false.
 =head2 StartTime => Int
 
 The start of the time range, expressed as the number of milliseconds
-since Jan 1, 1970 00:00:00 UTC. Events with a timestamp earlier than
+after Jan 1, 1970 00:00:00 UTC. Events with a time stamp earlier than
 this time are not included.
 
 
@@ -97,9 +97,9 @@ This class forms part of L<Paws>, documenting arguments for method GetLogEvents 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

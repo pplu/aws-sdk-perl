@@ -43,14 +43,16 @@ If you own the Amazon SNS topic, you don't need to do anything to give
 Amazon SES permission to publish emails to it. However, if you don't
 own the Amazon SNS topic, you need to attach a policy to the topic to
 give Amazon SES permissions to access it. For information about giving
-permissions, see the Amazon SES Developer Guide.
+permissions, see the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html).
 
 You can only publish emails that are 150 KB or less (including the
 header) to Amazon SNS. Larger emails will bounce. If you anticipate
 emails larger than 150 KB, use the S3 action instead.
 
 For information about using a receipt rule to publish an Amazon SNS
-notification, see the Amazon SES Developer Guide.
+notification, see the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-sns.html).
 
 =head1 ATTRIBUTES
 
@@ -68,7 +70,8 @@ preserves all special characters. The default value is UTF-8.
   The Amazon Resource Name (ARN) of the Amazon SNS topic to notify. An
 example of an Amazon SNS topic ARN is
 C<arn:aws:sns:us-west-2:123456789012:MyTopic>. For more information
-about Amazon SNS topics, see the Amazon SNS Developer Guide.
+about Amazon SNS topics, see the Amazon SNS Developer Guide
+(http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html).
 
 
 
@@ -78,9 +81,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::SES>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

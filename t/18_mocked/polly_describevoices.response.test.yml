@@ -1,0 +1,725 @@
+---
+todo: "UTF-8 handling has to be revised"
+call: DescribeVoices
+service: Polly
+tests:
+  - expected: Male
+    op: eq
+    path: Voices.45.Gender
+  - expected: en-AU
+    op: eq
+    path: Voices.40.LanguageCode
+  - expected: Male
+    op: eq
+    path: Voices.14.Gender
+  - expected: Male
+    op: eq
+    path: Voices.21.Gender
+  - expected: Cristiano
+    op: eq
+    path: Voices.8.Id
+  - expected: Emma
+    op: eq
+    path: Voices.36.Name
+  - expected: Joey
+    op: eq
+    path: Voices.33.Id
+  - expected: Tatyana
+    op: eq
+    path: Voices.5.Id
+  - expected: Mizuki
+    op: eq
+    path: Voices.1.Name
+  - expected: Russian
+    op: eq
+    path: Voices.4.LanguageName
+  - expected: Maja
+    op: eq
+    path: Voices.11.Id
+  - expected: Female
+    op: eq
+    path: Voices.15.Gender
+  - expected: nb-NO
+    op: eq
+    path: Voices.16.LanguageCode
+  - expected: pt-PT
+    op: eq
+    path: Voices.7.LanguageCode
+  - expected: Emma
+    op: eq
+    path: Voices.36.Id
+  - expected: Italian
+    op: eq
+    path: Voices.17.LanguageName
+  - expected: Nicole
+    op: eq
+    path: Voices.40.Name
+  - expected: Australian English
+    op: eq
+    path: Voices.39.LanguageName
+  - expected: Salli
+    op: eq
+    path: Voices.29.Id
+  - expected: Gwyneth
+    op: eq
+    path: Voices.46.Name
+  - expected: German
+    op: eq
+    path: Voices.43.LanguageName
+  - expected: Female
+    op: eq
+    path: Voices.0.Gender
+  - expected: Ewa
+    op: eq
+    path: Voices.13.Name
+  - expected: US English
+    op: eq
+    path: Voices.33.LanguageName
+  - expected: Naja
+    op: eq
+    path: Voices.44.Id
+  - expected: Male
+    op: eq
+    path: Voices.43.Gender
+  - expected: Turkish
+    op: eq
+    path: Voices.2.LanguageName
+  - expected: pl-PL
+    op: eq
+    path: Voices.11.LanguageCode
+  - expected: ro-RO
+    op: eq
+    path: Voices.6.LanguageCode
+  - expected: Dora
+    op: eq
+    path: Voices.20.Id
+  - expected: pl-PL
+    op: eq
+    path: Voices.47.LanguageCode
+  - expected: US English
+    op: eq
+    path: Voices.31.LanguageName
+  - expected: en-US
+    op: eq
+    path: Voices.30.LanguageCode
+  - expected: Dutch
+    op: eq
+    path: Voices.14.LanguageName
+  - expected: Female
+    op: eq
+    path: Voices.13.Gender
+  - expected: British English
+    op: eq
+    path: Voices.38.LanguageName
+  - expected: Female
+    op: eq
+    path: Voices.16.Gender
+  - expected: Female
+    op: eq
+    path: Voices.6.Gender
+  - expected: Nicole
+    op: eq
+    path: Voices.40.Id
+  - expected: British English
+    op: eq
+    path: Voices.37.LanguageName
+  - expected: en-US
+    op: eq
+    path: Voices.0.LanguageCode
+  - expected: Female
+    op: eq
+    path: Voices.46.Gender
+  - expected: Female
+    op: eq
+    path: Voices.2.Gender
+  - expected: Castilian Spanish
+    op: eq
+    path: Voices.27.LanguageName
+  - expected: Geraint
+    op: eq
+    path: Voices.28.Name
+  - expected: Portuguese
+    op: eq
+    path: Voices.7.LanguageName
+  - expected: Female
+    op: eq
+    path: Voices.34.Gender
+  - expected: Ewa
+    op: eq
+    path: Voices.13.Id
+  - expected: Carla
+    op: eq
+    path: Voices.18.Name
+  - expected: Chantal
+    op: eq
+    path: Voices.23.Id
+  - expected: Jacek
+    op: eq
+    path: Voices.47.Name
+  - expected: Vicki
+    op: eq
+    path: Voices.41.Name
+  - expected: Male
+    op: eq
+    path: Voices.8.Gender
+  - expected: Dóra
+    op: eq
+    path: Voices.20.Name
+  - expected: Hans
+    op: eq
+    path: Voices.43.Name
+  - expected: en-US
+    op: eq
+    path: Voices.31.LanguageCode
+  - expected: Brazilian Portuguese
+    op: eq
+    path: Voices.9.LanguageName
+  - expected: Female
+    op: eq
+    path: Voices.36.Gender
+  - expected: Female
+    op: eq
+    path: Voices.11.Gender
+  - expected: fr-FR
+    op: eq
+    path: Voices.22.LanguageCode
+  - expected: pl-PL
+    op: eq
+    path: Voices.12.LanguageCode
+  - expected: Karl
+    op: eq
+    path: Voices.19.Name
+  - expected: it-IT
+    op: eq
+    path: Voices.17.LanguageCode
+  - expected: Male
+    op: eq
+    path: Voices.26.Gender
+  - expected: Céline
+    op: eq
+    path: Voices.22.Name
+  - expected: Russian
+    op: eq
+    path: Voices.5.LanguageName
+  - expected: Dutch
+    op: eq
+    path: Voices.15.LanguageName
+  - expected: Female
+    op: eq
+    path: Voices.41.Gender
+  - expected: Polish
+    op: eq
+    path: Voices.11.LanguageName
+  - expected: Cristiano
+    op: eq
+    path: Voices.8.Name
+  - expected: es-US
+    op: eq
+    path: Voices.24.LanguageCode
+  - expected: Carmen
+    op: eq
+    path: Voices.6.Id
+  - expected: Astrid
+    op: eq
+    path: Voices.3.Id
+  - expected: pl-PL
+    op: eq
+    path: Voices.13.LanguageCode
+  - expected: Ivy
+    op: eq
+    path: Voices.34.Id
+  - expected: Welsh English
+    op: eq
+    path: Voices.28.LanguageName
+  - expected: Salli
+    op: eq
+    path: Voices.29.Name
+  - expected: en-GB
+    op: eq
+    path: Voices.38.LanguageCode
+  - expected: en-GB
+    op: eq
+    path: Voices.36.LanguageCode
+  - expected: Indian English
+    op: eq
+    path: Voices.35.LanguageName
+  - expected: Kimberly
+    op: eq
+    path: Voices.30.Id
+  - expected: Liv
+    op: eq
+    path: Voices.16.Name
+  - expected: Mizuki
+    op: eq
+    path: Voices.1.Id
+  - expected: Penélope
+    op: eq
+    path: Voices.24.Id
+  - expected: Celine
+    op: eq
+    path: Voices.22.Id
+  - expected: Mathieu
+    op: eq
+    path: Voices.21.Id
+  - expected: Canadian French
+    op: eq
+    path: Voices.23.LanguageName
+  - expected: Ruben
+    op: eq
+    path: Voices.14.Name
+  - expected: ru-RU
+    op: eq
+    path: Voices.4.LanguageCode
+  - expected: Russell
+    op: eq
+    path: Voices.39.Name
+  - expected: Female
+    op: eq
+    path: Voices.29.Gender
+  - expected: en-IN
+    op: eq
+    path: Voices.35.LanguageCode
+  - expected: Female
+    op: eq
+    path: Voices.5.Gender
+  - expected: Joanna
+    op: eq
+    path: Voices.0.Id
+  - expected: Male
+    op: eq
+    path: Voices.32.Gender
+  - expected: Male
+    op: eq
+    path: Voices.17.Gender
+  - expected: Female
+    op: eq
+    path: Voices.42.Gender
+  - expected: Ruben
+    op: eq
+    path: Voices.14.Id
+  - expected: Russell
+    op: eq
+    path: Voices.39.Id
+  - expected: pt-PT
+    op: eq
+    path: Voices.8.LanguageCode
+  - expected: Gwyneth
+    op: eq
+    path: Voices.46.Id
+  - expected: Italian
+    op: eq
+    path: Voices.18.LanguageName
+  - expected: Vitoria
+    op: eq
+    path: Voices.9.Id
+  - expected: Female
+    op: eq
+    path: Voices.9.Gender
+  - expected: en-GB-WLS
+    op: eq
+    path: Voices.28.LanguageCode
+  - expected: de-DE
+    op: eq
+    path: Voices.42.LanguageCode
+  - expected: Enrique
+    op: eq
+    path: Voices.26.Id
+  - expected: US Spanish
+    op: eq
+    path: Voices.24.LanguageName
+  - expected: Female
+    op: eq
+    path: Voices.24.Gender
+  - expected: Welsh
+    op: eq
+    path: Voices.46.LanguageName
+  - expected: en-US
+    op: eq
+    path: Voices.33.LanguageCode
+  - expected: Filiz
+    op: eq
+    path: Voices.2.Id
+  - expected: Portuguese
+    op: eq
+    path: Voices.8.LanguageName
+  - expected: Ricardo
+    op: eq
+    path: Voices.10.Name
+  - expected: es-ES
+    op: eq
+    path: Voices.27.LanguageCode
+  - expected: Norwegian
+    op: eq
+    path: Voices.16.LanguageName
+  - expected: de-DE
+    op: eq
+    path: Voices.41.LanguageCode
+  - expected: German
+    op: eq
+    path: Voices.42.LanguageName
+  - expected: tr-TR
+    op: eq
+    path: Voices.2.LanguageCode
+  - expected: Female
+    op: eq
+    path: Voices.30.Gender
+  - expected: Male
+    op: eq
+    path: Voices.28.Gender
+  - expected: US English
+    op: eq
+    path: Voices.29.LanguageName
+  - expected: Ines
+    op: eq
+    path: Voices.7.Id
+  - expected: Female
+    op: eq
+    path: Voices.40.Gender
+  - expected: Polish
+    op: eq
+    path: Voices.13.LanguageName
+  - expected: US English
+    op: eq
+    path: Voices.32.LanguageName
+  - expected: Male
+    op: eq
+    path: Voices.47.Gender
+  - expected: Icelandic
+    op: eq
+    path: Voices.20.LanguageName
+  - expected: Joanna
+    op: eq
+    path: Voices.0.Name
+  - expected: es-ES
+    op: eq
+    path: Voices.26.LanguageCode
+  - expected: Raveena
+    op: eq
+    path: Voices.35.Id
+  - expected: Kendra
+    op: eq
+    path: Voices.31.Id
+  - expected: Vitória
+    op: eq
+    path: Voices.9.Name
+  - expected: Male
+    op: eq
+    path: Voices.25.Gender
+  - expected: Karl
+    op: eq
+    path: Voices.19.Id
+  - expected: da-DK
+    op: eq
+    path: Voices.44.LanguageCode
+  - expected: Amy
+    op: eq
+    path: Voices.38.Name
+  - expected: Female
+    op: eq
+    path: Voices.35.Gender
+  - expected: Danish
+    op: eq
+    path: Voices.45.LanguageName
+  - expected: Polish
+    op: eq
+    path: Voices.47.LanguageName
+  - expected: Enrique
+    op: eq
+    path: Voices.26.Name
+  - expected: Geraint
+    op: eq
+    path: Voices.28.Id
+  - expected: Maxim
+    op: eq
+    path: Voices.4.Id
+  - expected: Chantal
+    op: eq
+    path: Voices.23.Name
+  - expected: Liv
+    op: eq
+    path: Voices.16.Id
+  - expected: de-DE
+    op: eq
+    path: Voices.43.LanguageCode
+  - expected: British English
+    op: eq
+    path: Voices.36.LanguageName
+  - expected: ru-RU
+    op: eq
+    path: Voices.5.LanguageCode
+  - expected: US English
+    op: eq
+    path: Voices.0.LanguageName
+  - expected: Naja
+    op: eq
+    path: Voices.44.Name
+  - expected: German
+    op: eq
+    path: Voices.41.LanguageName
+  - expected: Male
+    op: eq
+    path: Voices.4.Gender
+  - expected: French
+    op: eq
+    path: Voices.22.LanguageName
+  - expected: Vicki
+    op: eq
+    path: Voices.41.Id
+  - expected: Justin
+    op: eq
+    path: Voices.32.Name
+  - expected: Amy
+    op: eq
+    path: Voices.38.Id
+  - expected: fr-FR
+    op: eq
+    path: Voices.21.LanguageCode
+  - expected: Jan
+    op: eq
+    path: Voices.12.Id
+  - expected: Justin
+    op: eq
+    path: Voices.32.Id
+  - expected: Brian
+    op: eq
+    path: Voices.37.Name
+  - expected: Mads
+    op: eq
+    path: Voices.45.Id
+  - expected: en-GB
+    op: eq
+    path: Voices.37.LanguageCode
+  - expected: en-US
+    op: eq
+    path: Voices.34.LanguageCode
+  - expected: Polish
+    op: eq
+    path: Voices.12.LanguageName
+  - expected: Male
+    op: eq
+    path: Voices.37.Gender
+  - expected: Raveena
+    op: eq
+    path: Voices.35.Name
+  - expected: Male
+    op: eq
+    path: Voices.33.Gender
+  - expected: Male
+    op: eq
+    path: Voices.12.Gender
+  - expected: US English
+    op: eq
+    path: Voices.30.LanguageName
+  - expected: da-DK
+    op: eq
+    path: Voices.45.LanguageCode
+  - expected: Australian English
+    op: eq
+    path: Voices.40.LanguageName
+  - expected: Female
+    op: eq
+    path: Voices.7.Gender
+  - expected: Inés
+    op: eq
+    path: Voices.7.Name
+  - expected: Carmen
+    op: eq
+    path: Voices.6.Name
+  - expected: Lotte
+    op: eq
+    path: Voices.15.Id
+  - expected: Conchita
+    op: eq
+    path: Voices.27.Id
+  - expected: Female
+    op: eq
+    path: Voices.44.Gender
+  - expected: Male
+    op: eq
+    path: Voices.39.Gender
+  - expected: Ricardo
+    op: eq
+    path: Voices.10.Id
+  - expected: ja-JP
+    op: eq
+    path: Voices.1.LanguageCode
+  - expected: it-IT
+    op: eq
+    path: Voices.18.LanguageCode
+  - expected: Astrid
+    op: eq
+    path: Voices.3.Name
+  - expected: en-US
+    op: eq
+    path: Voices.32.LanguageCode
+  - expected: Mads
+    op: eq
+    path: Voices.45.Name
+  - expected: US English
+    op: eq
+    path: Voices.34.LanguageName
+  - expected: Maja
+    op: eq
+    path: Voices.11.Name
+  - expected: Male
+    op: eq
+    path: Voices.19.Gender
+  - expected: fr-CA
+    op: eq
+    path: Voices.23.LanguageCode
+  - expected: Female
+    op: eq
+    path: Voices.20.Gender
+  - expected: Miguel
+    op: eq
+    path: Voices.25.Name
+  - expected: Jan
+    op: eq
+    path: Voices.12.Name
+  - expected: Giorgio
+    op: eq
+    path: Voices.17.Name
+  - expected: Giorgio
+    op: eq
+    path: Voices.17.Id
+  - expected: Carla
+    op: eq
+    path: Voices.18.Id
+  - expected: Female
+    op: eq
+    path: Voices.22.Gender
+  - expected: Filiz
+    op: eq
+    path: Voices.2.Name
+  - expected: Lotte
+    op: eq
+    path: Voices.15.Name
+  - expected: en-US
+    op: eq
+    path: Voices.29.LanguageCode
+  - expected: Swedish
+    op: eq
+    path: Voices.3.LanguageName
+  - expected: Ivy
+    op: eq
+    path: Voices.34.Name
+  - expected: Jacek
+    op: eq
+    path: Voices.47.Id
+  - expected: is-IS
+    op: eq
+    path: Voices.19.LanguageCode
+  - expected: Joey
+    op: eq
+    path: Voices.33.Name
+  - expected: Female
+    op: eq
+    path: Voices.23.Gender
+  - expected: nl-NL
+    op: eq
+    path: Voices.15.LanguageCode
+  - expected: Icelandic
+    op: eq
+    path: Voices.19.LanguageName
+  - expected: pt-BR
+    op: eq
+    path: Voices.9.LanguageCode
+  - expected: Female
+    op: eq
+    path: Voices.38.Gender
+  - expected: Maxim
+    op: eq
+    path: Voices.4.Name
+  - expected: Tatyana
+    op: eq
+    path: Voices.5.Name
+  - expected: Male
+    op: eq
+    path: Voices.10.Gender
+  - expected: Conchita
+    op: eq
+    path: Voices.27.Name
+  - expected: Miguel
+    op: eq
+    path: Voices.25.Id
+  - expected: en-AU
+    op: eq
+    path: Voices.39.LanguageCode
+  - expected: French
+    op: eq
+    path: Voices.21.LanguageName
+  - expected: es-US
+    op: eq
+    path: Voices.25.LanguageCode
+  - expected: Castilian Spanish
+    op: eq
+    path: Voices.26.LanguageName
+  - expected: sv-SE
+    op: eq
+    path: Voices.3.LanguageCode
+  - expected: Marlene
+    op: eq
+    path: Voices.42.Id
+  - expected: Female
+    op: eq
+    path: Voices.1.Gender
+  - expected: Kimberly
+    op: eq
+    path: Voices.30.Name
+  - expected: Female
+    op: eq
+    path: Voices.3.Gender
+  - expected: Danish
+    op: eq
+    path: Voices.44.LanguageName
+  - expected: pt-BR
+    op: eq
+    path: Voices.10.LanguageCode
+  - expected: Hans
+    op: eq
+    path: Voices.43.Id
+  - expected: Romanian
+    op: eq
+    path: Voices.6.LanguageName
+  - expected: Female
+    op: eq
+    path: Voices.27.Gender
+  - expected: nl-NL
+    op: eq
+    path: Voices.14.LanguageCode
+  - expected: Marlene
+    op: eq
+    path: Voices.42.Name
+  - expected: Female
+    op: eq
+    path: Voices.18.Gender
+  - expected: Japanese
+    op: eq
+    path: Voices.1.LanguageName
+  - expected: Brazilian Portuguese
+    op: eq
+    path: Voices.10.LanguageName
+  - expected: Penélope
+    op: eq
+    path: Voices.24.Name
+  - expected: Kendra
+    op: eq
+    path: Voices.31.Name
+  - expected: Mathieu
+    op: eq
+    path: Voices.21.Name
+  - expected: US Spanish
+    op: eq
+    path: Voices.25.LanguageName
+  - expected: Brian
+    op: eq
+    path: Voices.37.Id
+  - expected: is-IS
+    op: eq
+    path: Voices.20.LanguageCode
+  - expected: Female
+    op: eq
+    path: Voices.31.Gender
+  - expected: cy-GB
+    op: eq
+    path: Voices.46.LanguageCode

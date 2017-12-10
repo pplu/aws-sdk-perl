@@ -1,6 +1,7 @@
 package Paws::CodeDeploy::LoadBalancerInfo;
   use Moose;
   has ElbInfoList => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::ELBInfo]', request_name => 'elbInfoList', traits => ['NameInRequest']);
+  has TargetGroupInfoList => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TargetGroupInfo]', request_name => 'targetGroupInfoList', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeDeploy::LoadBalancerInfo object:
 
-  $service_obj->Method(Att1 => { ElbInfoList => $value, ..., ElbInfoList => $value  });
+  $service_obj->Method(Att1 => { ElbInfoList => $value, ..., TargetGroupInfoList => $value  });
 
 =head3 Results returned from an API call
 
@@ -31,15 +32,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head1 DESCRIPTION
 
-Information about the load balancer used in a deployment.
+Information about the Elastic Load Balancing load balancer or target
+group used in a deployment.
 
 =head1 ATTRIBUTES
 
 
 =head2 ElbInfoList => ArrayRef[L<Paws::CodeDeploy::ELBInfo>]
 
-  An array containing information about the load balancer in Elastic Load
-Balancing to use in a deployment.
+  An array containing information about the load balancer to use for load
+balancing in a deployment. In Elastic Load Balancing, load balancers
+are used with Classic Load Balancers.
+
+
+=head2 TargetGroupInfoList => ArrayRef[L<Paws::CodeDeploy::TargetGroupInfo>]
+
+  An array containing information about the target group to use for load
+balancing in a deployment. In Elastic Load Balancing, target groups are
+used with Application Load Balancers.
 
 
 
@@ -49,9 +59,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodeDeplo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

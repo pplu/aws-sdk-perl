@@ -10,7 +10,7 @@ package Paws::ElasticBeanstalk;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
 
   
   sub AbortEnvironmentUpdate {
@@ -158,6 +158,11 @@ package Paws::ElasticBeanstalk;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::ListPlatformVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RebuildEnvironment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::RebuildEnvironment', @_);
@@ -213,6 +218,11 @@ package Paws::ElasticBeanstalk;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::UpdateEnvironment', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::UpdateTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ValidateConfigurationSettings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::ValidateConfigurationSettings', @_);
@@ -244,7 +254,7 @@ package Paws::ElasticBeanstalk;
   }
 
 
-  sub operations { qw/AbortEnvironmentUpdate ApplyEnvironmentManagedAction CheckDNSAvailability ComposeEnvironments CreateApplication CreateApplicationVersion CreateConfigurationTemplate CreateEnvironment CreatePlatformVersion CreateStorageLocation DeleteApplication DeleteApplicationVersion DeleteConfigurationTemplate DeleteEnvironmentConfiguration DeletePlatformVersion DescribeApplications DescribeApplicationVersions DescribeConfigurationOptions DescribeConfigurationSettings DescribeEnvironmentHealth DescribeEnvironmentManagedActionHistory DescribeEnvironmentManagedActions DescribeEnvironmentResources DescribeEnvironments DescribeEvents DescribeInstancesHealth DescribePlatformVersion ListAvailableSolutionStacks ListPlatformVersions RebuildEnvironment RequestEnvironmentInfo RestartAppServer RetrieveEnvironmentInfo SwapEnvironmentCNAMEs TerminateEnvironment UpdateApplication UpdateApplicationResourceLifecycle UpdateApplicationVersion UpdateConfigurationTemplate UpdateEnvironment ValidateConfigurationSettings / }
+  sub operations { qw/AbortEnvironmentUpdate ApplyEnvironmentManagedAction CheckDNSAvailability ComposeEnvironments CreateApplication CreateApplicationVersion CreateConfigurationTemplate CreateEnvironment CreatePlatformVersion CreateStorageLocation DeleteApplication DeleteApplicationVersion DeleteConfigurationTemplate DeleteEnvironmentConfiguration DeletePlatformVersion DescribeApplications DescribeApplicationVersions DescribeConfigurationOptions DescribeConfigurationSettings DescribeEnvironmentHealth DescribeEnvironmentManagedActionHistory DescribeEnvironmentManagedActions DescribeEnvironmentResources DescribeEnvironments DescribeEvents DescribeInstancesHealth DescribePlatformVersion ListAvailableSolutionStacks ListPlatformVersions ListTagsForResource RebuildEnvironment RequestEnvironmentInfo RestartAppServer RetrieveEnvironmentInfo SwapEnvironmentCNAMEs TerminateEnvironment UpdateApplication UpdateApplicationResourceLifecycle UpdateApplicationVersion UpdateConfigurationTemplate UpdateEnvironment UpdateTagsForResource ValidateConfigurationSettings / }
 
 1;
 
@@ -279,18 +289,21 @@ manage scalable, fault-tolerant applications running on the Amazon Web
 Services cloud.
 
 For more information about this product, go to the AWS Elastic
-Beanstalk details page. The location of the latest AWS Elastic
-Beanstalk WSDL is
-http://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl.
+Beanstalk (http://aws.amazon.com/elasticbeanstalk/) details page. The
+location of the latest AWS Elastic Beanstalk WSDL is
+http://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl
+(http://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl).
 To install the Software Development Kits (SDKs), Integrated Development
 Environment (IDE) Toolkits, and command line tools that enable you to
-access the API, go to Tools for Amazon Web Services.
+access the API, go to Tools for Amazon Web Services
+(http://aws.amazon.com/tools/).
 
 B<Endpoints>
 
 For a list of region-specific endpoints that AWS Elastic Beanstalk
-supports, go to Regions and Endpoints in the I<Amazon Web Services
-Glossary>.
+supports, go to Regions and Endpoints
+(http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region)
+in the I<Amazon Web Services Glossary>.
 
 =head1 METHODS
 
@@ -300,7 +313,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::AbortEnvironm
 
 Returns: nothing
 
-  Cancels in-progress environment configuration update or application
+Cancels in-progress environment configuration update or application
 version deployment.
 
 
@@ -310,7 +323,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::ApplyEnvironm
 
 Returns: a L<Paws::ElasticBeanstalk::ApplyEnvironmentManagedActionResult> instance
 
-  Applies a scheduled managed action immediately. A managed action can be
+Applies a scheduled managed action immediately. A managed action can be
 applied only if its status is C<Scheduled>. Get the status and action
 ID of a managed action with DescribeEnvironmentManagedActions.
 
@@ -321,7 +334,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::CheckDNSAvail
 
 Returns: a L<Paws::ElasticBeanstalk::CheckDNSAvailabilityResultMessage> instance
 
-  Checks if the specified CNAME is available.
+Checks if the specified CNAME is available.
 
 
 =head2 ComposeEnvironments([ApplicationName => Str, GroupName => Str, VersionLabels => ArrayRef[Str|Undef]])
@@ -330,12 +343,14 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::ComposeEnviro
 
 Returns: a L<Paws::ElasticBeanstalk::EnvironmentDescriptionsMessage> instance
 
-  Create or update a group of environments that each run a separate
+Create or update a group of environments that each run a separate
 component of a single application. Takes a list of version labels that
 specify application source bundles for each of the environments to
 create or update. The name of each environment and other required
 information must be included in the source bundles in an environment
-manifest named C<env.yaml>. See Compose Environments for details.
+manifest named C<env.yaml>. See Compose Environments
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html)
+for details.
 
 
 =head2 CreateApplication(ApplicationName => Str, [Description => Str, ResourceLifecycleConfig => L<Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig>])
@@ -344,7 +359,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateApplica
 
 Returns: a L<Paws::ElasticBeanstalk::ApplicationDescriptionMessage> instance
 
-  Creates an application that has one configuration template named
+Creates an application that has one configuration template named
 C<default> and no application versions.
 
 
@@ -354,7 +369,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateApplica
 
 Returns: a L<Paws::ElasticBeanstalk::ApplicationVersionDescriptionMessage> instance
 
-  Creates an application version for the specified application. You can
+Creates an application version for the specified application. You can
 create an application version from a source bundle in Amazon S3, a
 commit in AWS CodeCommit, or the output of an AWS CodeBuild build as
 follows:
@@ -382,7 +397,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateConfigu
 
 Returns: a L<Paws::ElasticBeanstalk::ConfigurationSettingsDescription> instance
 
-  Creates a configuration template. Templates are associated with a
+Creates a configuration template. Templates are associated with a
 specific application and are used to deploy different versions of the
 application with the same configuration settings.
 
@@ -412,7 +427,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateEnviron
 
 Returns: a L<Paws::ElasticBeanstalk::EnvironmentDescription> instance
 
-  Launches an environment for the specified application using the
+Launches an environment for the specified application using the
 specified configuration.
 
 
@@ -422,7 +437,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreatePlatfor
 
 Returns: a L<Paws::ElasticBeanstalk::CreatePlatformVersionResult> instance
 
-  Create a new version of your custom platform.
+Create a new version of your custom platform.
 
 
 =head2 CreateStorageLocation( => )
@@ -431,9 +446,12 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateStorage
 
 Returns: a L<Paws::ElasticBeanstalk::CreateStorageLocationResultMessage> instance
 
-  Creates the Amazon S3 storage location for the account.
-
-This location is used to store user log files.
+Creates a bucket in Amazon S3 to store application versions, logs, and
+other files used by Elastic Beanstalk environments. The Elastic
+Beanstalk console and EB CLI call this API the first time you create an
+environment in a region. If the storage location already exists,
+C<CreateStorageLocation> still returns the bucket name but does not
+create a new bucket.
 
 
 =head2 DeleteApplication(ApplicationName => Str, [TerminateEnvByForce => Bool])
@@ -442,7 +460,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DeleteApplica
 
 Returns: nothing
 
-  Deletes the specified application along with all associated versions
+Deletes the specified application along with all associated versions
 and configurations. The application versions will not be deleted from
 your Amazon S3 bucket.
 
@@ -455,7 +473,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DeleteApplica
 
 Returns: nothing
 
-  Deletes the specified version from the specified application.
+Deletes the specified version from the specified application.
 
 You cannot delete an application version that is associated with a
 running environment.
@@ -467,7 +485,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DeleteConfigu
 
 Returns: nothing
 
-  Deletes the specified configuration template.
+Deletes the specified configuration template.
 
 When you launch an environment using a configuration template, the
 environment gets a copy of the template. You can delete or modify the
@@ -481,7 +499,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DeleteEnviron
 
 Returns: nothing
 
-  Deletes the draft configuration associated with the running
+Deletes the draft configuration associated with the running
 environment.
 
 Updating a running environment with any configuration changes creates a
@@ -499,7 +517,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DeletePlatfor
 
 Returns: a L<Paws::ElasticBeanstalk::DeletePlatformVersionResult> instance
 
-  Deletes the specified version of a custom platform.
+Deletes the specified version of a custom platform.
 
 
 =head2 DescribeApplications([ApplicationNames => ArrayRef[Str|Undef]])
@@ -508,7 +526,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeAppli
 
 Returns: a L<Paws::ElasticBeanstalk::ApplicationDescriptionsMessage> instance
 
-  Returns the descriptions of existing applications.
+Returns the descriptions of existing applications.
 
 
 =head2 DescribeApplicationVersions([ApplicationName => Str, MaxRecords => Int, NextToken => Str, VersionLabels => ArrayRef[Str|Undef]])
@@ -517,7 +535,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeAppli
 
 Returns: a L<Paws::ElasticBeanstalk::ApplicationVersionDescriptionsMessage> instance
 
-  Retrieve a list of application versions.
+Retrieve a list of application versions.
 
 
 =head2 DescribeConfigurationOptions([ApplicationName => Str, EnvironmentName => Str, Options => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>], PlatformArn => Str, SolutionStackName => Str, TemplateName => Str])
@@ -526,7 +544,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeConfi
 
 Returns: a L<Paws::ElasticBeanstalk::ConfigurationOptionsDescription> instance
 
-  Describes the configuration options that are used in a particular
+Describes the configuration options that are used in a particular
 configuration template or environment, or that a specified solution
 stack defines. The description includes the values the options, their
 default values, and an indication of the required action on a running
@@ -539,7 +557,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeConfi
 
 Returns: a L<Paws::ElasticBeanstalk::ConfigurationSettingsDescriptions> instance
 
-  Returns a description of the settings for the specified configuration
+Returns a description of the settings for the specified configuration
 set, that is, either a configuration template or the configuration set
 associated with a running environment.
 
@@ -567,7 +585,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEnvir
 
 Returns: a L<Paws::ElasticBeanstalk::DescribeEnvironmentHealthResult> instance
 
-  Returns information about the overall health of the specified
+Returns information about the overall health of the specified
 environment. The B<DescribeEnvironmentHealth> operation is only
 available with AWS Elastic Beanstalk Enhanced Health.
 
@@ -578,7 +596,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEnvir
 
 Returns: a L<Paws::ElasticBeanstalk::DescribeEnvironmentManagedActionHistoryResult> instance
 
-  Lists an environment's completed and failed managed actions.
+Lists an environment's completed and failed managed actions.
 
 
 =head2 DescribeEnvironmentManagedActions([EnvironmentId => Str, EnvironmentName => Str, Status => Str])
@@ -587,7 +605,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEnvir
 
 Returns: a L<Paws::ElasticBeanstalk::DescribeEnvironmentManagedActionsResult> instance
 
-  Lists an environment's upcoming and in-progress managed actions.
+Lists an environment's upcoming and in-progress managed actions.
 
 
 =head2 DescribeEnvironmentResources([EnvironmentId => Str, EnvironmentName => Str])
@@ -596,16 +614,16 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEnvir
 
 Returns: a L<Paws::ElasticBeanstalk::EnvironmentResourceDescriptionsMessage> instance
 
-  Returns AWS resources for this environment.
+Returns AWS resources for this environment.
 
 
-=head2 DescribeEnvironments([ApplicationName => Str, EnvironmentIds => ArrayRef[Str|Undef], EnvironmentNames => ArrayRef[Str|Undef], IncludedDeletedBackTo => Str, IncludeDeleted => Bool, VersionLabel => Str])
+=head2 DescribeEnvironments([ApplicationName => Str, EnvironmentIds => ArrayRef[Str|Undef], EnvironmentNames => ArrayRef[Str|Undef], IncludedDeletedBackTo => Str, IncludeDeleted => Bool, MaxRecords => Int, NextToken => Str, VersionLabel => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEnvironments>
 
 Returns: a L<Paws::ElasticBeanstalk::EnvironmentDescriptionsMessage> instance
 
-  Returns descriptions for existing environments.
+Returns descriptions for existing environments.
 
 
 =head2 DescribeEvents([ApplicationName => Str, EndTime => Str, EnvironmentId => Str, EnvironmentName => Str, MaxRecords => Int, NextToken => Str, PlatformArn => Str, RequestId => Str, Severity => Str, StartTime => Str, TemplateName => Str, VersionLabel => Str])
@@ -614,7 +632,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEvent
 
 Returns: a L<Paws::ElasticBeanstalk::EventDescriptionsMessage> instance
 
-  Returns list of event descriptions matching criteria up to the last 6
+Returns list of event descriptions matching criteria up to the last 6
 weeks.
 
 This action returns the most recent 1,000 events from the specified
@@ -627,8 +645,9 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeInsta
 
 Returns: a L<Paws::ElasticBeanstalk::DescribeInstancesHealthResult> instance
 
-  Retrives detailed information about the health of instances in your AWS
-Elastic Beanstalk. This operation requires enhanced health reporting.
+Retrives detailed information about the health of instances in your AWS
+Elastic Beanstalk. This operation requires enhanced health reporting
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html).
 
 
 =head2 DescribePlatformVersion([PlatformArn => Str])
@@ -637,7 +656,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribePlatf
 
 Returns: a L<Paws::ElasticBeanstalk::DescribePlatformVersionResult> instance
 
-  Describes the version of the platform.
+Describes the version of the platform.
 
 
 =head2 ListAvailableSolutionStacks( => )
@@ -646,7 +665,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::ListAvailable
 
 Returns: a L<Paws::ElasticBeanstalk::ListAvailableSolutionStacksResultMessage> instance
 
-  Returns a list of the available solution stack names, with the public
+Returns a list of the available solution stack names, with the public
 version first and then in reverse chronological order.
 
 
@@ -656,7 +675,22 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::ListPlatformV
 
 Returns: a L<Paws::ElasticBeanstalk::ListPlatformVersionsResult> instance
 
-  Lists the available platforms.
+Lists the available platforms.
+
+
+=head2 ListTagsForResource(ResourceArn => Str)
+
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::ListTagsForResource>
+
+Returns: a L<Paws::ElasticBeanstalk::ResourceTagsDescriptionMessage> instance
+
+Returns the tags applied to an AWS Elastic Beanstalk resource. The
+response contains a list of tag key-value pairs.
+
+Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk
+environments. For details about environment tagging, see Tagging
+Resources in Your Elastic Beanstalk Environment
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html).
 
 
 =head2 RebuildEnvironment([EnvironmentId => Str, EnvironmentName => Str])
@@ -665,7 +699,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::RebuildEnviro
 
 Returns: nothing
 
-  Deletes and recreates all of the AWS resources (for example: the Auto
+Deletes and recreates all of the AWS resources (for example: the Auto
 Scaling group, load balancer, etc.) for a specified environment and
 forces a restart.
 
@@ -676,7 +710,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::RequestEnviro
 
 Returns: nothing
 
-  Initiates a request to compile the specified type of information of the
+Initiates a request to compile the specified type of information of the
 deployed environment.
 
 Setting the C<InfoType> to C<tail> compiles the last lines from the
@@ -707,7 +741,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::RestartAppSer
 
 Returns: nothing
 
-  Causes the environment to restart the application container server
+Causes the environment to restart the application container server
 running on each Amazon EC2 instance.
 
 
@@ -717,7 +751,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::RetrieveEnvir
 
 Returns: a L<Paws::ElasticBeanstalk::RetrieveEnvironmentInfoResultMessage> instance
 
-  Retrieves the compiled information from a RequestEnvironmentInfo
+Retrieves the compiled information from a RequestEnvironmentInfo
 request.
 
 Related Topics
@@ -738,7 +772,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::SwapEnvironme
 
 Returns: nothing
 
-  Swaps the CNAMEs of two environments.
+Swaps the CNAMEs of two environments.
 
 
 =head2 TerminateEnvironment([EnvironmentId => Str, EnvironmentName => Str, ForceTerminate => Bool, TerminateResources => Bool])
@@ -747,7 +781,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::TerminateEnvi
 
 Returns: a L<Paws::ElasticBeanstalk::EnvironmentDescription> instance
 
-  Terminates the specified environment.
+Terminates the specified environment.
 
 
 =head2 UpdateApplication(ApplicationName => Str, [Description => Str])
@@ -756,7 +790,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::UpdateApplica
 
 Returns: a L<Paws::ElasticBeanstalk::ApplicationDescriptionMessage> instance
 
-  Updates the specified application to have the specified properties.
+Updates the specified application to have the specified properties.
 
 If a property (for example, C<description>) is not provided, the value
 remains unchanged. To clear these properties, specify an empty string.
@@ -768,7 +802,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::UpdateApplica
 
 Returns: a L<Paws::ElasticBeanstalk::ApplicationResourceLifecycleDescriptionMessage> instance
 
-  Modifies lifecycle settings for an application.
+Modifies lifecycle settings for an application.
 
 
 =head2 UpdateApplicationVersion(ApplicationName => Str, VersionLabel => Str, [Description => Str])
@@ -777,7 +811,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::UpdateApplica
 
 Returns: a L<Paws::ElasticBeanstalk::ApplicationVersionDescriptionMessage> instance
 
-  Updates the specified application version to have the specified
+Updates the specified application version to have the specified
 properties.
 
 If a property (for example, C<description>) is not provided, the value
@@ -790,7 +824,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::UpdateConfigu
 
 Returns: a L<Paws::ElasticBeanstalk::ConfigurationSettingsDescription> instance
 
-  Updates the specified configuration template to have the specified
+Updates the specified configuration template to have the specified
 properties or configuration option values.
 
 If a property (for example, C<ApplicationName>) is not provided, its
@@ -815,7 +849,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::UpdateEnviron
 
 Returns: a L<Paws::ElasticBeanstalk::EnvironmentDescription> instance
 
-  Updates the environment description, deploys a new application version,
+Updates the environment description, deploys a new application version,
 updates the configuration settings to an entirely new configuration
 template, or updates select configuration option values in the running
 environment.
@@ -830,13 +864,51 @@ DescribeConfigurationSettings for this environment returns two setting
 descriptions with different C<DeploymentStatus> values.
 
 
+=head2 UpdateTagsForResource(ResourceArn => Str, [TagsToAdd => ArrayRef[L<Paws::ElasticBeanstalk::Tag>], TagsToRemove => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::UpdateTagsForResource>
+
+Returns: nothing
+
+Update the list of tags applied to an AWS Elastic Beanstalk resource.
+Two lists can be passed: C<TagsToAdd> for tags to add or update, and
+C<TagsToRemove>.
+
+Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk
+environments. For details about environment tagging, see Tagging
+Resources in Your Elastic Beanstalk Environment
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html).
+
+If you create a custom IAM user policy to control permission to this
+operation, specify one of the following two virtual actions (or both)
+instead of the API operation name:
+
+=over
+
+=item elasticbeanstalk:AddTags
+
+Controls permission to call C<UpdateTagsForResource> and pass a list of
+tags to add in the C<TagsToAdd> parameter.
+
+=item elasticbeanstalk:RemoveTags
+
+Controls permission to call C<UpdateTagsForResource> and pass a list of
+tag keys to remove in the C<TagsToRemove> parameter.
+
+=back
+
+For details about creating a custom user policy, see Creating a Custom
+User Policy
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#AWSHowTo.iam.policies).
+
+
 =head2 ValidateConfigurationSettings(ApplicationName => Str, OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>], [EnvironmentName => Str, TemplateName => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::ValidateConfigurationSettings>
 
 Returns: a L<Paws::ElasticBeanstalk::ConfigurationSettingsValidationMessages> instance
 
-  Takes a set of configuration settings and either a configuration
+Takes a set of configuration settings and either a configuration
 template or environment, and determines whether those values are valid.
 
 This action returns a list of messages indicating any errors or
@@ -870,9 +942,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

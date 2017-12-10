@@ -3,6 +3,7 @@ package Paws::S3::ReplicationRule;
   has Destination => (is => 'ro', isa => 'Paws::S3::Destination', required => 1);
   has ID => (is => 'ro', isa => 'Str');
   has Prefix => (is => 'ro', isa => 'Str', required => 1);
+  has SourceSelectionCriteria => (is => 'ro', isa => 'Paws::S3::SourceSelectionCriteria');
   has Status => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -34,14 +35,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Replica
 
 =head1 DESCRIPTION
 
-This class has no description
+Container for information about a particular replication rule.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Destination => L<Paws::S3::Destination>
 
-  
+  Container for replication destination information.
 
 
 =head2 ID => Str
@@ -57,6 +58,12 @@ applies. Maximum prefix length can be up to 1,024 characters.
 Overlapping prefixes are not supported.
 
 
+=head2 SourceSelectionCriteria => L<Paws::S3::SourceSelectionCriteria>
+
+  Container for filters that define which source objects should be
+replicated.
+
+
 =head2 B<REQUIRED> Status => Str
 
   The rule is ignored if status is not Enabled.
@@ -69,9 +76,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::S3>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

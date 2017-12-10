@@ -20,7 +20,7 @@ package Paws::ECS::SubmitContainerStateChange;
 
 =head1 NAME
 
-Paws::ECS::SubmitContainerStateChange - Arguments for method SubmitContainerStateChange on Paws::ECS
+Paws::ECS::SubmitContainerStateChange - Arguments for method SubmitContainerStateChange on L<Paws::ECS>
 
 =head1 DESCRIPTION
 
@@ -41,8 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Cluster => Str
 
-The short name or full Amazon Resource Name (ARN) of the cluster that
-hosts the container.
+The short name or full ARN of the cluster that hosts the container.
 
 
 
@@ -90,9 +89,9 @@ This class forms part of L<Paws>, documenting arguments for method SubmitContain
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

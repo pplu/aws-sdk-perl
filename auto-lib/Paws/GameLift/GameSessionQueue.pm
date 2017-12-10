@@ -38,28 +38,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::G
 Configuration of a queue that is used to process game session placement
 requests. The queue configuration identifies several game features:
 
-Queue-related operations include:
-
-=over
-
-=item *
-
-CreateGameSessionQueue
-
-=item *
-
-DescribeGameSessionQueues
-
-=item *
-
-UpdateGameSessionQueue
-
-=item *
-
-DeleteGameSessionQueue
-
-=back
-
 =over
 
 =item *
@@ -84,7 +62,7 @@ individual player is reporting latency higher than a policy's maximum.
 
 =back
 
-Queue-related operations include the following:
+Queue-related operations include:
 
 =over
 
@@ -119,15 +97,17 @@ fleet alias ARN. Destinations are listed in default preference order.
 
 =head2 GameSessionQueueArn => Str
 
-  Amazon Resource Name (ARN) that is assigned to a game session queue and
-uniquely identifies it. Format is
+  Amazon Resource Name (ARN
+(http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
+that is assigned to a game session queue and uniquely identifies it.
+Format is
 C<arn:aws:gamelift:E<lt>regionE<gt>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912>.
 
 
 =head2 Name => Str
 
-  Descriptive label that is associated with queue. Queue names must be
-unique within each region.
+  Descriptive label that is associated with game session queue. Queue
+names must be unique within each region.
 
 
 =head2 PlayerLatencyPolicies => ArrayRef[L<Paws::GameLift::PlayerLatencyPolicy>]
@@ -147,7 +127,7 @@ of the placement.
 
   Maximum time, in seconds, that a new game session placement request
 remains in the queue. When a request exceeds this time, the game
-session placement changes to a TIMED_OUT status.
+session placement changes to a C<TIMED_OUT> status.
 
 
 
@@ -157,9 +137,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::GameLift>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

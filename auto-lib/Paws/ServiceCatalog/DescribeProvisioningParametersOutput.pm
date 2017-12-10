@@ -19,21 +19,17 @@ Paws::ServiceCatalog::DescribeProvisioningParametersOutput
 
 =head2 ConstraintSummaries => ArrayRef[L<Paws::ServiceCatalog::ConstraintSummary>]
 
-The list of constraint summaries that apply to provisioning this
-product.
+Information about the constraints used to provision the product.
 
 
 =head2 ProvisioningArtifactParameters => ArrayRef[L<Paws::ServiceCatalog::ProvisioningArtifactParameter>]
 
-The list of parameters used to successfully provision the product. Each
-parameter includes a list of allowable values and additional metadata
-about each parameter.
+Information about the parameters used to provision the product.
 
 
 =head2 TagOptions => ArrayRef[L<Paws::ServiceCatalog::TagOptionSummary>]
 
-List of TagOptions associated with the provisioned provisioning
-parameters.
+Information about the TagOptions associated with the resource.
 
 
 =head2 UsageInstructions => ArrayRef[L<Paws::ServiceCatalog::UsageInstruction>]

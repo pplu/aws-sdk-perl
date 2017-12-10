@@ -2,6 +2,7 @@ package Paws::CloudWatchLogs::LogGroup;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has CreationTime => (is => 'ro', isa => 'Int', request_name => 'creationTime', traits => ['NameInRequest']);
+  has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest']);
   has LogGroupName => (is => 'ro', isa => 'Str', request_name => 'logGroupName', traits => ['NameInRequest']);
   has MetricFilterCount => (is => 'ro', isa => 'Int', request_name => 'metricFilterCount', traits => ['NameInRequest']);
   has RetentionInDays => (is => 'ro', isa => 'Int', request_name => 'retentionInDays', traits => ['NameInRequest']);
@@ -49,7 +50,13 @@ Represents a log group.
 =head2 CreationTime => Int
 
   The creation time of the log group, expressed as the number of
-milliseconds since Jan 1, 1970 00:00:00 UTC.
+milliseconds after Jan 1, 1970 00:00:00 UTC.
+
+
+=head2 KmsKeyId => Str
+
+  The Amazon Resource Name (ARN) of the CMK to use when encrypting log
+data.
 
 
 =head2 LogGroupName => Str
@@ -79,9 +86,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudWatc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

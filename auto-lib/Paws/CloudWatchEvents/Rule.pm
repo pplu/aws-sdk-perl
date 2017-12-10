@@ -55,7 +55,9 @@ Contains information about a rule in Amazon CloudWatch Events.
 =head2 EventPattern => Str
 
   The event pattern of the rule. For more information, see Events and
-Event Patterns in the I<Amazon CloudWatch Events User Guide>.
+Event Patterns
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html)
+in the I<Amazon CloudWatch Events User Guide>.
 
 
 =head2 Name => Str
@@ -87,9 +89,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudWatc
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

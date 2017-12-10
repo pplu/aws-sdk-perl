@@ -18,7 +18,7 @@ Paws::ApiGateway::UsagePlans
 
 =head2 Items => ArrayRef[L<Paws::ApiGateway::UsagePlan>]
 
-Gets the current item when enumerating the collection of UsagePlan.
+The current page of elements from this collection.
 
 
 =head2 Position => Str

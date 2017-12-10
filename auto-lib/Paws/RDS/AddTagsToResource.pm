@@ -15,7 +15,7 @@ package Paws::RDS::AddTagsToResource;
 
 =head1 NAME
 
-Paws::RDS::AddTagsToResource - Arguments for method AddTagsToResource on Paws::RDS
+Paws::RDS::AddTagsToResource - Arguments for method AddTagsToResource on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -36,9 +36,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceName => Str
 
-The Amazon RDS resource the tags will be added to. This value is an
+The Amazon RDS resource that the tags are added to. This value is an
 Amazon Resource Name (ARN). For information about creating an ARN, see
-Constructing an RDS Amazon Resource Name (ARN).
+Constructing an RDS Amazon Resource Name (ARN)
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
 
 
 
@@ -55,9 +56,9 @@ This class forms part of L<Paws>, documenting arguments for method AddTagsToReso
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

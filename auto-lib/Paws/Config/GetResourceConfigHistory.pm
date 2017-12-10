@@ -20,7 +20,7 @@ package Paws::Config::GetResourceConfigHistory;
 
 =head1 NAME
 
-Paws::Config::GetResourceConfigHistory - Arguments for method GetResourceConfigHistory on Paws::Config
+Paws::Config::GetResourceConfigHistory - Arguments for method GetResourceConfigHistory on L<Paws::Config>
 
 =head1 DESCRIPTION
 
@@ -86,7 +86,7 @@ The ID of the resource (for example., C<sg-xxxxxx>).
 
 The resource type.
 
-Valid values are: C<"AWS::EC2::CustomerGateway">, C<"AWS::EC2::EIP">, C<"AWS::EC2::Host">, C<"AWS::EC2::Instance">, C<"AWS::EC2::InternetGateway">, C<"AWS::EC2::NetworkAcl">, C<"AWS::EC2::NetworkInterface">, C<"AWS::EC2::RouteTable">, C<"AWS::EC2::SecurityGroup">, C<"AWS::EC2::Subnet">, C<"AWS::CloudTrail::Trail">, C<"AWS::EC2::Volume">, C<"AWS::EC2::VPC">, C<"AWS::EC2::VPNConnection">, C<"AWS::EC2::VPNGateway">, C<"AWS::IAM::Group">, C<"AWS::IAM::Policy">, C<"AWS::IAM::Role">, C<"AWS::IAM::User">, C<"AWS::ACM::Certificate">, C<"AWS::RDS::DBInstance">, C<"AWS::RDS::DBSubnetGroup">, C<"AWS::RDS::DBSecurityGroup">, C<"AWS::RDS::DBSnapshot">, C<"AWS::RDS::EventSubscription">, C<"AWS::ElasticLoadBalancingV2::LoadBalancer">, C<"AWS::S3::Bucket">, C<"AWS::SSM::ManagedInstanceInventory">, C<"AWS::Redshift::Cluster">, C<"AWS::Redshift::ClusterSnapshot">, C<"AWS::Redshift::ClusterParameterGroup">, C<"AWS::Redshift::ClusterSecurityGroup">, C<"AWS::Redshift::ClusterSubnetGroup">, C<"AWS::Redshift::EventSubscription">, C<"AWS::CloudWatch::Alarm">
+Valid values are: C<"AWS::EC2::CustomerGateway">, C<"AWS::EC2::EIP">, C<"AWS::EC2::Host">, C<"AWS::EC2::Instance">, C<"AWS::EC2::InternetGateway">, C<"AWS::EC2::NetworkAcl">, C<"AWS::EC2::NetworkInterface">, C<"AWS::EC2::RouteTable">, C<"AWS::EC2::SecurityGroup">, C<"AWS::EC2::Subnet">, C<"AWS::CloudTrail::Trail">, C<"AWS::EC2::Volume">, C<"AWS::EC2::VPC">, C<"AWS::EC2::VPNConnection">, C<"AWS::EC2::VPNGateway">, C<"AWS::IAM::Group">, C<"AWS::IAM::Policy">, C<"AWS::IAM::Role">, C<"AWS::IAM::User">, C<"AWS::ACM::Certificate">, C<"AWS::RDS::DBInstance">, C<"AWS::RDS::DBSubnetGroup">, C<"AWS::RDS::DBSecurityGroup">, C<"AWS::RDS::DBSnapshot">, C<"AWS::RDS::EventSubscription">, C<"AWS::ElasticLoadBalancingV2::LoadBalancer">, C<"AWS::S3::Bucket">, C<"AWS::SSM::ManagedInstanceInventory">, C<"AWS::Redshift::Cluster">, C<"AWS::Redshift::ClusterSnapshot">, C<"AWS::Redshift::ClusterParameterGroup">, C<"AWS::Redshift::ClusterSecurityGroup">, C<"AWS::Redshift::ClusterSubnetGroup">, C<"AWS::Redshift::EventSubscription">, C<"AWS::CloudWatch::Alarm">, C<"AWS::CloudFormation::Stack">, C<"AWS::DynamoDB::Table">, C<"AWS::AutoScaling::AutoScalingGroup">, C<"AWS::AutoScaling::LaunchConfiguration">, C<"AWS::AutoScaling::ScalingPolicy">, C<"AWS::AutoScaling::ScheduledAction">, C<"AWS::CodeBuild::Project">
 
 
 =head1 SEE ALSO
@@ -95,9 +95,9 @@ This class forms part of L<Paws>, documenting arguments for method GetResourceCo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

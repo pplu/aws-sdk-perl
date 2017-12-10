@@ -19,7 +19,7 @@ package Paws::AppStream::CreateStreamingURL;
 
 =head1 NAME
 
-Paws::AppStream::CreateStreamingURL - Arguments for method CreateStreamingURL on Paws::AppStream
+Paws::AppStream::CreateStreamingURL - Arguments for method CreateStreamingURL on L<Paws::AppStream>
 
 =head1 DESCRIPTION
 
@@ -40,39 +40,41 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ApplicationId => Str
 
-The ID of the application that must be launched after the session
-starts.
+The name of the application to launch after the session starts. This is
+the name that you specified as B<Name> in the Image Assistant.
 
 
 
 =head2 B<REQUIRED> FleetName => Str
 
-The fleet for which the URL is generated.
+The name of the fleet.
 
 
 
 =head2 SessionContext => Str
 
-The sessionContext of the streaming URL.
+The session context. For more information, see Session Context
+(http://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters)
+in the I<Amazon AppStream 2.0 Developer Guide>.
 
 
 
 =head2 B<REQUIRED> StackName => Str
 
-The stack for which the URL is generated.
+The name of the stack.
 
 
 
 =head2 B<REQUIRED> UserId => Str
 
-A unique user ID for whom the URL is generated.
+The ID of the user.
 
 
 
 =head2 Validity => Int
 
-The duration up to which the URL returned by this action is valid. The
-input can be any numeric value in seconds between 1 and 604800 seconds.
+The time that the streaming URL will be valid, in seconds. Specify a
+value between 1 and 604800 seconds. The default is 60 seconds.
 
 
 
@@ -83,9 +85,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateStreami
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

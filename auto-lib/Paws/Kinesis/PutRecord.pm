@@ -18,7 +18,7 @@ package Paws::Kinesis::PutRecord;
 
 =head1 NAME
 
-Paws::Kinesis::PutRecord - Arguments for method PutRecord on Paws::Kinesis
+Paws::Kinesis::PutRecord - Arguments for method PutRecord on L<Paws::Kinesis>
 
 =head1 DESCRIPTION
 
@@ -73,7 +73,7 @@ Guarantees strictly increasing sequence numbers, for puts from the same
 client and to the same partition key. Usage: set the
 C<SequenceNumberForOrdering> of record I<n> to the sequence number of
 record I<n-1> (as returned in the result when putting record I<n-1>).
-If this parameter is not set, records will be coarsely ordered based on
+If this parameter is not set, records are coarsely ordered based on
 arrival time.
 
 
@@ -91,9 +91,9 @@ This class forms part of L<Paws>, documenting arguments for method PutRecord in 
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

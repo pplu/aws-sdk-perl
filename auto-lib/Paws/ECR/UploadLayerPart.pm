@@ -19,7 +19,7 @@ package Paws::ECR::UploadLayerPart;
 
 =head1 NAME
 
-Paws::ECR::UploadLayerPart - Arguments for method UploadLayerPart on Paws::ECR
+Paws::ECR::UploadLayerPart - Arguments for method UploadLayerPart on L<Paws::ECR>
 
 =head1 DESCRIPTION
 
@@ -58,15 +58,15 @@ The integer value of the last byte of the layer part.
 
 =head2 RegistryId => Str
 
-The AWS account ID associated with the registry that you are uploading
-layer parts to. If you do not specify a registry, the default registry
-is assumed.
+The AWS account ID associated with the registry to which you are
+uploading layer parts. If you do not specify a registry, the default
+registry is assumed.
 
 
 
 =head2 B<REQUIRED> RepositoryName => Str
 
-The name of the repository that you are uploading layer parts to.
+The name of the repository to which you are uploading layer parts.
 
 
 
@@ -84,9 +84,9 @@ This class forms part of L<Paws>, documenting arguments for method UploadLayerPa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

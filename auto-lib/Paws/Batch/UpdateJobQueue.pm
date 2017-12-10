@@ -1,10 +1,10 @@
 
 package Paws::Batch::UpdateJobQueue;
   use Moose;
-  has ComputeEnvironmentOrder => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ComputeEnvironmentOrder]');
-  has JobQueue => (is => 'ro', isa => 'Str', required => 1);
-  has Priority => (is => 'ro', isa => 'Int');
-  has State => (is => 'ro', isa => 'Str');
+  has ComputeEnvironmentOrder => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ComputeEnvironmentOrder]', traits => ['NameInRequest'], request_name => 'computeEnvironmentOrder');
+  has JobQueue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueue', required => 1);
+  has Priority => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'priority');
+  has State => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'state');
 
   use MooseX::ClassAttribute;
 
@@ -12,14 +12,13 @@ package Paws::Batch::UpdateJobQueue;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/updatejobqueue');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Batch::UpdateJobQueueResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Batch::UpdateJobQueue - Arguments for method UpdateJobQueue on Paws::Batch
+Paws::Batch::UpdateJobQueue - Arguments for method UpdateJobQueue on L<Paws::Batch>
 
 =head1 DESCRIPTION
 
@@ -56,11 +55,11 @@ The name or the Amazon Resource Name (ARN) of the job queue.
 =head2 Priority => Int
 
 The priority of the job queue. Job queues with a higher priority (or a
-lower integer value for the C<priority> parameter) are evaluated first
+higher integer value for the C<priority> parameter) are evaluated first
 when associated with same compute environment. Priority is determined
-in ascending order, for example, a job queue with a priority value of
-C<1> is given scheduling preference over a job queue with a priority
-value of C<10>.
+in descending order, for example, a job queue with a priority value of
+C<10> is given scheduling preference over a job queue with a priority
+value of C<1>.
 
 
 
@@ -77,9 +76,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateJobQueu
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

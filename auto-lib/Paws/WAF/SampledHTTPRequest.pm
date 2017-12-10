@@ -2,6 +2,7 @@ package Paws::WAF::SampledHTTPRequest;
   use Moose;
   has Action => (is => 'ro', isa => 'Str');
   has Request => (is => 'ro', isa => 'Paws::WAF::HTTPRequest', required => 1);
+  has RuleWithinRuleGroup => (is => 'ro', isa => 'Str');
   has Timestamp => (is => 'ro', isa => 'Str');
   has Weight => (is => 'ro', isa => 'Int', required => 1);
 1;
@@ -54,6 +55,14 @@ C<BLOCK>, or C<COUNT>.
   A complex type that contains detailed information about the request.
 
 
+=head2 RuleWithinRuleGroup => Str
+
+  This value is returned if the C<GetSampledRequests> request specifies
+the ID of a C<RuleGroup> rather than the ID of an individual rule.
+C<RuleWithinRuleGroup> is the rule within the specified C<RuleGroup>
+that matched the request listed in the response.
+
+
 =head2 Timestamp => Str
 
   The time at which AWS WAF received the request from your AWS resource,
@@ -75,9 +84,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::WAF>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

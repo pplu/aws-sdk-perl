@@ -22,7 +22,7 @@ package Paws::IAM::UpdateAccountPasswordPolicy;
 
 =head1 NAME
 
-Paws::IAM::UpdateAccountPasswordPolicy - Arguments for method UpdateAccountPasswordPolicy on Paws::IAM
+Paws::IAM::UpdateAccountPasswordPolicy - Arguments for method UpdateAccountPasswordPolicy on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
@@ -45,7 +45,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Allows all IAM users in your account to use the AWS Management Console
 to change their own passwords. For more information, see Letting IAM
-Users Change Their Own Passwords in the I<IAM User Guide>.
+Users Change Their Own Passwords
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/HowToPwdIAMUser.html)
+in the I<IAM User Guide>.
 
 Default value: false
 
@@ -132,9 +134,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateAccount
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -28,22 +28,52 @@ The Amazon Resource Name (ARN) that identifies the execution.
 
 =head2 B<REQUIRED> Input => Str
 
-The JSON input data of the execution.
+The string that contains the JSON input data of the execution.
 
 
 =head2 Name => Str
 
 The name of the execution.
 
+A name must I<not> contain:
+
+=over
+
+=item *
+
+whitespace
+
+=item *
+
+brackets C<E<lt> E<gt> { } [ ]>
+
+=item *
+
+wildcard characters C<? *>
+
+=item *
+
+special characters C<" # % \ ^ | ~ ` $ & , ; : />
+
+=item *
+
+control characters (C<U+0000-001F>, C<U+007F-009F>)
+
+=back
+
+
 
 =head2 Output => Str
 
 The JSON output data of the execution.
 
+This field is set only if the execution succeeds. If the execution
+fails, this field is null.
+
 
 =head2 B<REQUIRED> StartDate => Str
 
-The date the execution was started.
+The date the execution is started.
 
 
 =head2 B<REQUIRED> StateMachineArn => Str

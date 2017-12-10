@@ -36,7 +36,7 @@ The execution latency of the test invoke request.
 
 =head2 Log => Str
 
-The Amazon API Gateway execution log for the test invoke request.
+The API Gateway execution log for the test invoke request.
 
 
 =head2 Status => Int

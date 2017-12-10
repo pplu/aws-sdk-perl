@@ -1,11 +1,11 @@
 
 package Paws::ApiGateway::CreateModel;
   use Moose;
-  has ContentType => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
-  has Schema => (is => 'ro', isa => 'Str');
+  has ContentType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contentType', required => 1);
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has Schema => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'schema');
 
   use MooseX::ClassAttribute;
 
@@ -13,14 +13,13 @@ package Paws::ApiGateway::CreateModel;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/models');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Model');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGateway::CreateModel - Arguments for method CreateModel on Paws::ApiGateway
+Paws::ApiGateway::CreateModel - Arguments for method CreateModel on L<Paws::ApiGateway>
 
 =head1 DESCRIPTION
 
@@ -53,7 +52,7 @@ The description of the model.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the model.
+The name of the model. Must be alphanumeric.
 
 
 
@@ -66,7 +65,8 @@ The RestApi identifier under which the Model will be created.
 =head2 Schema => Str
 
 The schema for the model. For C<application/json> models, this should
-be JSON-schema draft v4 model.
+be JSON-schema draft v4 (http://json-schema.org/documentation.html)
+model.
 
 
 
@@ -77,9 +77,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateModel i
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

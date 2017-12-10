@@ -16,7 +16,7 @@ package Paws::EC2::DisassociateAddress;
 
 =head1 NAME
 
-Paws::EC2::DisassociateAddress - Arguments for method DisassociateAddress on Paws::EC2
+Paws::EC2::DisassociateAddress - Arguments for method DisassociateAddress on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -63,9 +63,9 @@ This class forms part of L<Paws>, documenting arguments for method DisassociateA
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

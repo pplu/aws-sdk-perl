@@ -4,6 +4,7 @@ package Paws::CognitoIdp::CreateUserPoolClient;
   has AllowedOAuthFlows => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has AllowedOAuthFlowsUserPoolClient => (is => 'ro', isa => 'Bool');
   has AllowedOAuthScopes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AnalyticsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::AnalyticsConfigurationType');
   has CallbackURLs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ClientName => (is => 'ro', isa => 'Str', required => 1);
   has DefaultRedirectURI => (is => 'ro', isa => 'Str');
@@ -27,7 +28,7 @@ package Paws::CognitoIdp::CreateUserPoolClient;
 
 =head1 NAME
 
-Paws::CognitoIdp::CreateUserPoolClient - Arguments for method CreateUserPoolClient on Paws::CognitoIdp
+Paws::CognitoIdp::CreateUserPoolClient - Arguments for method CreateUserPoolClient on L<Paws::CognitoIdp>
 
 =head1 DESCRIPTION
 
@@ -68,6 +69,13 @@ when interacting with Cognito user pools.
 
 A list of allowed C<OAuth> scopes. Currently supported values are
 C<"phone">, C<"email">, C<"openid">, and C<"Cognito">.
+
+
+
+=head2 AnalyticsConfiguration => L<Paws::CognitoIdp::AnalyticsConfigurationType>
+
+The Amazon Pinpoint analytics configuration for collecting metrics for
+this user pool.
 
 
 
@@ -148,9 +156,9 @@ This class forms part of L<Paws>, documenting arguments for method CreateUserPoo
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

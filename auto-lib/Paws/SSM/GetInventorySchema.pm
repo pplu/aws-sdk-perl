@@ -1,8 +1,10 @@
 
 package Paws::SSM::GetInventorySchema;
   use Moose;
+  has Aggregator => (is => 'ro', isa => 'Bool');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has SubType => (is => 'ro', isa => 'Bool');
   has TypeName => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -16,7 +18,7 @@ package Paws::SSM::GetInventorySchema;
 
 =head1 NAME
 
-Paws::SSM::GetInventorySchema - Arguments for method GetInventorySchema on Paws::SSM
+Paws::SSM::GetInventorySchema - Arguments for method GetInventorySchema on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
@@ -35,6 +37,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 Aggregator => Bool
+
+Returns inventory schemas that support aggregation. For example, this
+call returns the C<AWS:InstanceInformation> type, because it supports
+aggregation based on the C<PlatformName>, C<PlatformType>, and
+C<PlatformVersion> attributes.
+
+
+
 =head2 MaxResults => Int
 
 The maximum number of items to return for this call. The call also
@@ -47,6 +58,12 @@ next set of results.
 
 The token for the next set of items to return. (You received this token
 from a previous call.)
+
+
+
+=head2 SubType => Bool
+
+Returns the sub-type schema for a specified inventory type.
 
 
 
@@ -63,9 +80,9 @@ This class forms part of L<Paws>, documenting arguments for method GetInventoryS
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

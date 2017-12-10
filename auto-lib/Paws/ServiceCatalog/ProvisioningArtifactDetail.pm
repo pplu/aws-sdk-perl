@@ -1,5 +1,6 @@
 package Paws::ServiceCatalog::ProvisioningArtifactDetail;
   use Moose;
+  has Active => (is => 'ro', isa => 'Bool');
   has CreatedTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
@@ -24,20 +25,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ServiceCatalog::ProvisioningArtifactDetail object:
 
-  $service_obj->Method(Att1 => { CreatedTime => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { Active => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCatalog::ProvisioningArtifactDetail object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CreatedTime
+  $result->Att1->Active
 
 =head1 DESCRIPTION
 
-Detailed provisioning artifact information.
+Information about a provisioning artifact (also known as a version) for
+a product.
 
 =head1 ATTRIBUTES
+
+
+=head2 Active => Bool
+
+  Indicates whether the product version is active.
 
 
 =head2 CreatedTime => Str
@@ -47,28 +54,39 @@ Detailed provisioning artifact information.
 
 =head2 Description => Str
 
-  The text description of the provisioning artifact.
+  The description of the provisioning artifact.
 
 
 =head2 Id => Str
 
-  The identifier of the provisioning artifact. This is sometimes referred
-to as the product version.
+  The identifier of the provisioning artifact.
 
 
 =head2 Name => Str
 
-  The name assigned to the provisioning artifact.
+  The name of the provisioning artifact.
 
 
 =head2 Type => Str
 
-  The type of the provisioning artifact. The following provisioning
-artifact types are used by AWS Marketplace products:
+  The type of provisioning artifact.
 
-C<MARKETPLACE_AMI> - AMI products.
+=over
 
-C<MARKETPLACE_CAR> - CAR (Cluster and AWS Resources) products.
+=item *
+
+C<CLOUD_FORMATION_TEMPLATE> - AWS CloudFormation template
+
+=item *
+
+C<MARKETPLACE_AMI> - AWS Marketplace AMI
+
+=item *
+
+C<MARKETPLACE_CAR> - AWS Marketplace Clusters and AWS Resources
+
+=back
+
 
 
 
@@ -78,9 +96,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ServiceCa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

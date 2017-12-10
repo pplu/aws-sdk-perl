@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::I
 =head1 DESCRIPTION
 
 Properties that describe an instance of a virtual computing resource
-that hosts one or more game servers. A fleet contains zero or more
+that hosts one or more game servers. A fleet may contain zero or more
 instances.
 
 =head1 ATTRIBUTES
@@ -80,22 +80,22 @@ following:
 
 =item *
 
-B<PENDING> E<ndash> The instance is in the process of being created and
+B<PENDING> -- The instance is in the process of being created and
 launching server processes as defined in the fleet's run-time
 configuration.
 
 =item *
 
-B<ACTIVE> E<ndash> The instance has been successfully created and at
-least one server process has successfully launched and reported back to
+B<ACTIVE> -- The instance has been successfully created and at least
+one server process has successfully launched and reported back to
 Amazon GameLift that it is ready to host a game session. The instance
 is now considered ready to host game sessions.
 
 =item *
 
-B<TERMINATING> E<ndash> The instance is in the process of shutting
-down. This may happen to reduce capacity during a scaling down event or
-to recycle resources in the event of a problem.
+B<TERMINATING> -- The instance is in the process of shutting down. This
+may happen to reduce capacity during a scaling down event or to recycle
+resources in the event of a problem.
 
 =back
 
@@ -114,9 +114,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::GameLift>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-Detailed product view information.
+Information about a product view.
 
 =head1 ATTRIBUTES
 
@@ -46,23 +46,35 @@ Detailed product view information.
 
 =head2 ProductARN => Str
 
-  The ARN associated with the product.
+  The ARN of the product.
 
 
 =head2 ProductViewSummary => L<Paws::ServiceCatalog::ProductViewSummary>
 
-  The summary metadata about the specified product view.
+  Summary information about the product view.
 
 
 =head2 Status => Str
 
-  Current status of the product.
+  The status of the product.
 
-C<AVAILABLE> - Product is available for use.
+=over
 
-C<CREATING> - Creation of product started, not ready for use.
+=item *
 
-C<FAILED> - Action on product failed.
+C<AVAILABLE> - The product is ready for use.
+
+=item *
+
+C<CREATING> - Product creation has started; the product is not ready
+for use.
+
+=item *
+
+C<FAILED> - An action failed.
+
+=back
+
 
 
 
@@ -72,9 +84,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ServiceCa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

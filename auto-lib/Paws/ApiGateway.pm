@@ -10,7 +10,7 @@ package Paws::ApiGateway;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
   sub CreateApiKey {
@@ -83,6 +83,11 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::CreateUsagePlanKey', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateVpcLink {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::CreateVpcLink', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteApiKey {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteApiKey', @_);
@@ -121,6 +126,11 @@ package Paws::ApiGateway;
   sub DeleteDomainName {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteDomainName', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteGatewayResponse {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteGatewayResponse', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteIntegration {
@@ -176,6 +186,11 @@ package Paws::ApiGateway;
   sub DeleteUsagePlanKey {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteUsagePlanKey', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteVpcLink {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteVpcLink', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub FlushStageAuthorizersCache {
@@ -281,6 +296,16 @@ package Paws::ApiGateway;
   sub GetExport {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetExport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetGatewayResponse {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetGatewayResponse', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetGatewayResponses {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetGatewayResponses', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetIntegration {
@@ -398,6 +423,16 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetUsagePlans', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetVpcLink {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetVpcLink', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetVpcLinks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetVpcLinks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ImportApiKeys {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::ImportApiKeys', @_);
@@ -411,6 +446,11 @@ package Paws::ApiGateway;
   sub ImportRestApi {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::ImportRestApi', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutGatewayResponse {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::PutGatewayResponse', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutIntegration {
@@ -493,6 +533,11 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::UpdateDomainName', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateGatewayResponse {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::UpdateGatewayResponse', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateIntegration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::UpdateIntegration', @_);
@@ -546,6 +591,11 @@ package Paws::ApiGateway;
   sub UpdateUsagePlan {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::UpdateUsagePlan', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateVpcLink {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::UpdateVpcLink', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -802,9 +852,32 @@ package Paws::ApiGateway;
 
     return undef
   }
+  sub GetAllVpcLinks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetVpcLinks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->position) {
+        $next_result = $self->GetVpcLinks(@_, position => $next_result->position);
+        push @{ $result->items }, @{ $next_result->items };
+      }
+      return $result;
+    } else {
+      while ($result->position) {
+        $callback->($_ => 'items') foreach (@{ $result->items });
+        $result = $self->GetVpcLinks(@_, position => $result->position);
+      }
+      $callback->($_ => 'items') foreach (@{ $result->items });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/CreateApiKey CreateAuthorizer CreateBasePathMapping CreateDeployment CreateDocumentationPart CreateDocumentationVersion CreateDomainName CreateModel CreateRequestValidator CreateResource CreateRestApi CreateStage CreateUsagePlan CreateUsagePlanKey DeleteApiKey DeleteAuthorizer DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDocumentationPart DeleteDocumentationVersion DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteRequestValidator DeleteResource DeleteRestApi DeleteStage DeleteUsagePlan DeleteUsagePlanKey FlushStageAuthorizersCache FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetAuthorizer GetAuthorizers GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDocumentationPart GetDocumentationParts GetDocumentationVersion GetDocumentationVersions GetDomainName GetDomainNames GetExport GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetRequestValidator GetRequestValidators GetResource GetResources GetRestApi GetRestApis GetSdk GetSdkType GetSdkTypes GetStage GetStages GetUsage GetUsagePlan GetUsagePlanKey GetUsagePlanKeys GetUsagePlans ImportApiKeys ImportDocumentationParts ImportRestApi PutIntegration PutIntegrationResponse PutMethod PutMethodResponse PutRestApi TestInvokeAuthorizer TestInvokeMethod UpdateAccount UpdateApiKey UpdateAuthorizer UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDocumentationPart UpdateDocumentationVersion UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateRequestValidator UpdateResource UpdateRestApi UpdateStage UpdateUsage UpdateUsagePlan / }
+  sub operations { qw/CreateApiKey CreateAuthorizer CreateBasePathMapping CreateDeployment CreateDocumentationPart CreateDocumentationVersion CreateDomainName CreateModel CreateRequestValidator CreateResource CreateRestApi CreateStage CreateUsagePlan CreateUsagePlanKey CreateVpcLink DeleteApiKey DeleteAuthorizer DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDocumentationPart DeleteDocumentationVersion DeleteDomainName DeleteGatewayResponse DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteRequestValidator DeleteResource DeleteRestApi DeleteStage DeleteUsagePlan DeleteUsagePlanKey DeleteVpcLink FlushStageAuthorizersCache FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetAuthorizer GetAuthorizers GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDocumentationPart GetDocumentationParts GetDocumentationVersion GetDocumentationVersions GetDomainName GetDomainNames GetExport GetGatewayResponse GetGatewayResponses GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetRequestValidator GetRequestValidators GetResource GetResources GetRestApi GetRestApis GetSdk GetSdkType GetSdkTypes GetStage GetStages GetUsage GetUsagePlan GetUsagePlanKey GetUsagePlanKeys GetUsagePlans GetVpcLink GetVpcLinks ImportApiKeys ImportDocumentationParts ImportRestApi PutGatewayResponse PutIntegration PutIntegrationResponse PutMethod PutMethodResponse PutRestApi TestInvokeAuthorizer TestInvokeMethod UpdateAccount UpdateApiKey UpdateAuthorizer UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDocumentationPart UpdateDocumentationVersion UpdateDomainName UpdateGatewayResponse UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateRequestValidator UpdateResource UpdateRestApi UpdateStage UpdateUsage UpdateUsagePlan UpdateVpcLink / }
 
 1;
 
@@ -835,10 +908,10 @@ Paws::ApiGateway - Perl Interface to AWS Amazon API Gateway
 Amazon API Gateway
 
 Amazon API Gateway helps developers deliver robust, secure, and
-scalable mobile and web application back ends. Amazon API Gateway
-allows developers to securely connect mobile and web applications to
-APIs that run on AWS Lambda, Amazon EC2, or other publicly addressable
-web services that are hosted outside of AWS.
+scalable mobile and web application back ends. API Gateway allows
+developers to securely connect mobile and web applications to APIs that
+run on AWS Lambda, Amazon EC2, or other publicly addressable web
+services that are hosted outside of AWS.
 
 =head1 METHODS
 
@@ -848,20 +921,22 @@ Each argument is described in detail in: L<Paws::ApiGateway::CreateApiKey>
 
 Returns: a L<Paws::ApiGateway::ApiKey> instance
 
-  Create an ApiKey resource.
+Create an ApiKey resource.
 
 AWS CLI
+(http://docs.aws.amazon.com/cli/latest/reference/apigateway/create-api-key.html)
 
 
-=head2 CreateAuthorizer(IdentitySource => Str, Name => Str, RestApiId => Str, Type => Str, [AuthorizerCredentials => Str, AuthorizerResultTtlInSeconds => Int, AuthorizerUri => Str, AuthType => Str, IdentityValidationExpression => Str, ProviderARNs => ArrayRef[Str|Undef]])
+=head2 CreateAuthorizer(Name => Str, RestApiId => Str, Type => Str, [AuthorizerCredentials => Str, AuthorizerResultTtlInSeconds => Int, AuthorizerUri => Str, AuthType => Str, IdentitySource => Str, IdentityValidationExpression => Str, ProviderARNs => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateAuthorizer>
 
 Returns: a L<Paws::ApiGateway::Authorizer> instance
 
-  Adds a new Authorizer resource to an existing RestApi resource.
+Adds a new Authorizer resource to an existing RestApi resource.
 
 AWS CLI
+(http://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html)
 
 
 =head2 CreateBasePathMapping(DomainName => Str, RestApiId => Str, [BasePath => Str, Stage => Str])
@@ -870,16 +945,16 @@ Each argument is described in detail in: L<Paws::ApiGateway::CreateBasePathMappi
 
 Returns: a L<Paws::ApiGateway::BasePathMapping> instance
 
-  Creates a new BasePathMapping resource.
+Creates a new BasePathMapping resource.
 
 
-=head2 CreateDeployment(RestApiId => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, Description => Str, StageDescription => Str, StageName => Str, Variables => L<Paws::ApiGateway::MapOfStringToString>])
+=head2 CreateDeployment(RestApiId => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, CanarySettings => L<Paws::ApiGateway::DeploymentCanarySettings>, Description => Str, StageDescription => Str, StageName => Str, Variables => L<Paws::ApiGateway::MapOfStringToString>])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateDeployment>
 
 Returns: a L<Paws::ApiGateway::Deployment> instance
 
-  Creates a Deployment resource, which makes a specified RestApi callable
+Creates a Deployment resource, which makes a specified RestApi callable
 over the internet.
 
 
@@ -889,7 +964,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::CreateDocumentation
 
 Returns: a L<Paws::ApiGateway::DocumentationPart> instance
 
-  
+
 
 
 =head2 CreateDocumentationVersion(DocumentationVersion => Str, RestApiId => Str, [Description => Str, StageName => Str])
@@ -898,16 +973,16 @@ Each argument is described in detail in: L<Paws::ApiGateway::CreateDocumentation
 
 Returns: a L<Paws::ApiGateway::DocumentationVersion> instance
 
-  
 
 
-=head2 CreateDomainName(DomainName => Str, [CertificateArn => Str, CertificateBody => Str, CertificateChain => Str, CertificateName => Str, CertificatePrivateKey => Str])
+
+=head2 CreateDomainName(DomainName => Str, [CertificateArn => Str, CertificateBody => Str, CertificateChain => Str, CertificateName => Str, CertificatePrivateKey => Str, EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>, RegionalCertificateArn => Str, RegionalCertificateName => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateDomainName>
 
 Returns: a L<Paws::ApiGateway::DomainName> instance
 
-  Creates a new domain name.
+Creates a new domain name.
 
 
 =head2 CreateModel(ContentType => Str, Name => Str, RestApiId => Str, [Description => Str, Schema => Str])
@@ -916,7 +991,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::CreateModel>
 
 Returns: a L<Paws::ApiGateway::Model> instance
 
-  Adds a new Model resource to an existing RestApi resource.
+Adds a new Model resource to an existing RestApi resource.
 
 
 =head2 CreateRequestValidator(RestApiId => Str, [Name => Str, ValidateRequestBody => Bool, ValidateRequestParameters => Bool])
@@ -925,7 +1000,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::CreateRequestValida
 
 Returns: a L<Paws::ApiGateway::RequestValidator> instance
 
-  Creates a ReqeustValidator of a given RestApi.
+Creates a ReqeustValidator of a given RestApi.
 
 
 =head2 CreateResource(ParentId => Str, PathPart => Str, RestApiId => Str)
@@ -934,25 +1009,25 @@ Each argument is described in detail in: L<Paws::ApiGateway::CreateResource>
 
 Returns: a L<Paws::ApiGateway::Resource> instance
 
-  Creates a Resource resource.
+Creates a Resource resource.
 
 
-=head2 CreateRestApi(Name => Str, [BinaryMediaTypes => ArrayRef[Str|Undef], CloneFrom => Str, Description => Str, Version => Str])
+=head2 CreateRestApi(Name => Str, [BinaryMediaTypes => ArrayRef[Str|Undef], CloneFrom => Str, Description => Str, EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>, Version => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateRestApi>
 
 Returns: a L<Paws::ApiGateway::RestApi> instance
 
-  Creates a new RestApi resource.
+Creates a new RestApi resource.
 
 
-=head2 CreateStage(DeploymentId => Str, RestApiId => Str, StageName => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, Description => Str, DocumentationVersion => Str, Variables => L<Paws::ApiGateway::MapOfStringToString>])
+=head2 CreateStage(DeploymentId => Str, RestApiId => Str, StageName => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, CanarySettings => L<Paws::ApiGateway::CanarySettings>, Description => Str, DocumentationVersion => Str, Variables => L<Paws::ApiGateway::MapOfStringToString>])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateStage>
 
 Returns: a L<Paws::ApiGateway::Stage> instance
 
-  Creates a new Stage resource that references a pre-existing Deployment
+Creates a new Stage resource that references a pre-existing Deployment
 for the API.
 
 
@@ -962,7 +1037,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::CreateUsagePlan>
 
 Returns: a L<Paws::ApiGateway::UsagePlan> instance
 
-  Creates a usage plan with the throttle and quota limits, as well as the
+Creates a usage plan with the throttle and quota limits, as well as the
 associated API stages, specified in the payload.
 
 
@@ -972,8 +1047,20 @@ Each argument is described in detail in: L<Paws::ApiGateway::CreateUsagePlanKey>
 
 Returns: a L<Paws::ApiGateway::UsagePlanKey> instance
 
-  Creates a usage plan key for adding an existing API key to a usage
+Creates a usage plan key for adding an existing API key to a usage
 plan.
+
+
+=head2 CreateVpcLink(Name => Str, TargetArns => ArrayRef[Str|Undef], [Description => Str])
+
+Each argument is described in detail in: L<Paws::ApiGateway::CreateVpcLink>
+
+Returns: a L<Paws::ApiGateway::VpcLink> instance
+
+Creates a VPC link, under the caller's account in a selected region, in
+an asynchronous operation that typically takes 2-4 minutes to complete
+and become operational. The caller must have permissions to create and
+update VPC Endpoint services.
 
 
 =head2 DeleteApiKey(ApiKey => Str)
@@ -982,7 +1069,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteApiKey>
 
 Returns: nothing
 
-  Deletes the ApiKey resource.
+Deletes the ApiKey resource.
 
 
 =head2 DeleteAuthorizer(AuthorizerId => Str, RestApiId => Str)
@@ -991,9 +1078,10 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteAuthorizer>
 
 Returns: nothing
 
-  Deletes an existing Authorizer resource.
+Deletes an existing Authorizer resource.
 
 AWS CLI
+(http://docs.aws.amazon.com/cli/latest/reference/apigateway/delete-authorizer.html)
 
 
 =head2 DeleteBasePathMapping(BasePath => Str, DomainName => Str)
@@ -1002,7 +1090,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteBasePathMappi
 
 Returns: nothing
 
-  Deletes the BasePathMapping resource.
+Deletes the BasePathMapping resource.
 
 
 =head2 DeleteClientCertificate(ClientCertificateId => Str)
@@ -1011,7 +1099,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteClientCertifi
 
 Returns: nothing
 
-  Deletes the ClientCertificate resource.
+Deletes the ClientCertificate resource.
 
 
 =head2 DeleteDeployment(DeploymentId => Str, RestApiId => Str)
@@ -1020,7 +1108,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteDeployment>
 
 Returns: nothing
 
-  Deletes a Deployment resource. Deleting a deployment will only succeed
+Deletes a Deployment resource. Deleting a deployment will only succeed
 if there are no Stage resources associated with it.
 
 
@@ -1030,7 +1118,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteDocumentation
 
 Returns: nothing
 
-  
+
 
 
 =head2 DeleteDocumentationVersion(DocumentationVersion => Str, RestApiId => Str)
@@ -1039,7 +1127,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteDocumentation
 
 Returns: nothing
 
-  
+
 
 
 =head2 DeleteDomainName(DomainName => Str)
@@ -1048,7 +1136,17 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteDomainName>
 
 Returns: nothing
 
-  Deletes the DomainName resource.
+Deletes the DomainName resource.
+
+
+=head2 DeleteGatewayResponse(ResponseType => Str, RestApiId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::DeleteGatewayResponse>
+
+Returns: nothing
+
+Clears any customization of a GatewayResponse of a specified response
+type on the given RestApi and resets it with the default settings.
 
 
 =head2 DeleteIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str)
@@ -1057,7 +1155,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteIntegration>
 
 Returns: nothing
 
-  Represents a delete integration.
+Represents a delete integration.
 
 
 =head2 DeleteIntegrationResponse(HttpMethod => Str, ResourceId => Str, RestApiId => Str, StatusCode => Str)
@@ -1066,7 +1164,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteIntegrationRe
 
 Returns: nothing
 
-  Represents a delete integration response.
+Represents a delete integration response.
 
 
 =head2 DeleteMethod(HttpMethod => Str, ResourceId => Str, RestApiId => Str)
@@ -1075,7 +1173,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteMethod>
 
 Returns: nothing
 
-  Deletes an existing Method resource.
+Deletes an existing Method resource.
 
 
 =head2 DeleteMethodResponse(HttpMethod => Str, ResourceId => Str, RestApiId => Str, StatusCode => Str)
@@ -1084,7 +1182,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteMethodRespons
 
 Returns: nothing
 
-  Deletes an existing MethodResponse resource.
+Deletes an existing MethodResponse resource.
 
 
 =head2 DeleteModel(ModelName => Str, RestApiId => Str)
@@ -1093,7 +1191,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteModel>
 
 Returns: nothing
 
-  Deletes a model.
+Deletes a model.
 
 
 =head2 DeleteRequestValidator(RequestValidatorId => Str, RestApiId => Str)
@@ -1102,7 +1200,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteRequestValida
 
 Returns: nothing
 
-  Deletes a RequestValidator of a given RestApi.
+Deletes a RequestValidator of a given RestApi.
 
 
 =head2 DeleteResource(ResourceId => Str, RestApiId => Str)
@@ -1111,7 +1209,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteResource>
 
 Returns: nothing
 
-  Deletes a Resource resource.
+Deletes a Resource resource.
 
 
 =head2 DeleteRestApi(RestApiId => Str)
@@ -1120,7 +1218,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteRestApi>
 
 Returns: nothing
 
-  Deletes the specified API.
+Deletes the specified API.
 
 
 =head2 DeleteStage(RestApiId => Str, StageName => Str)
@@ -1129,7 +1227,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteStage>
 
 Returns: nothing
 
-  Deletes a Stage resource.
+Deletes a Stage resource.
 
 
 =head2 DeleteUsagePlan(UsagePlanId => Str)
@@ -1138,7 +1236,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteUsagePlan>
 
 Returns: nothing
 
-  Deletes a usage plan of a given plan Id.
+Deletes a usage plan of a given plan Id.
 
 
 =head2 DeleteUsagePlanKey(KeyId => Str, UsagePlanId => Str)
@@ -1147,8 +1245,17 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteUsagePlanKey>
 
 Returns: nothing
 
-  Deletes a usage plan key and remove the underlying API key from the
+Deletes a usage plan key and remove the underlying API key from the
 associated usage plan.
+
+
+=head2 DeleteVpcLink(VpcLinkId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::DeleteVpcLink>
+
+Returns: nothing
+
+Deletes an existing VpcLink of a specified identifier.
 
 
 =head2 FlushStageAuthorizersCache(RestApiId => Str, StageName => Str)
@@ -1157,7 +1264,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::FlushStageAuthorize
 
 Returns: nothing
 
-  Flushes all authorizer cache entries on a stage.
+Flushes all authorizer cache entries on a stage.
 
 
 =head2 FlushStageCache(RestApiId => Str, StageName => Str)
@@ -1166,7 +1273,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::FlushStageCache>
 
 Returns: nothing
 
-  Flushes a stage's cache.
+Flushes a stage's cache.
 
 
 =head2 GenerateClientCertificate([Description => Str])
@@ -1175,7 +1282,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GenerateClientCerti
 
 Returns: a L<Paws::ApiGateway::ClientCertificate> instance
 
-  Generates a ClientCertificate resource.
+Generates a ClientCertificate resource.
 
 
 =head2 GetAccount()
@@ -1184,7 +1291,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetAccount>
 
 Returns: a L<Paws::ApiGateway::Account> instance
 
-  Gets information about the current Account resource.
+Gets information about the current Account resource.
 
 
 =head2 GetApiKey(ApiKey => Str, [IncludeValue => Bool])
@@ -1193,7 +1300,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetApiKey>
 
 Returns: a L<Paws::ApiGateway::ApiKey> instance
 
-  Gets information about the current ApiKey resource.
+Gets information about the current ApiKey resource.
 
 
 =head2 GetApiKeys([CustomerId => Str, IncludeValues => Bool, Limit => Int, NameQuery => Str, Position => Str])
@@ -1202,7 +1309,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetApiKeys>
 
 Returns: a L<Paws::ApiGateway::ApiKeys> instance
 
-  Gets information about the current ApiKeys resource.
+Gets information about the current ApiKeys resource.
 
 
 =head2 GetAuthorizer(AuthorizerId => Str, RestApiId => Str)
@@ -1211,9 +1318,10 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetAuthorizer>
 
 Returns: a L<Paws::ApiGateway::Authorizer> instance
 
-  Describe an existing Authorizer resource.
+Describe an existing Authorizer resource.
 
 AWS CLI
+(http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizer.html)
 
 
 =head2 GetAuthorizers(RestApiId => Str, [Limit => Int, Position => Str])
@@ -1222,9 +1330,10 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetAuthorizers>
 
 Returns: a L<Paws::ApiGateway::Authorizers> instance
 
-  Describe an existing Authorizers resource.
+Describe an existing Authorizers resource.
 
 AWS CLI
+(http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizers.html)
 
 
 =head2 GetBasePathMapping(BasePath => Str, DomainName => Str)
@@ -1233,7 +1342,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetBasePathMapping>
 
 Returns: a L<Paws::ApiGateway::BasePathMapping> instance
 
-  Describe a BasePathMapping resource.
+Describe a BasePathMapping resource.
 
 
 =head2 GetBasePathMappings(DomainName => Str, [Limit => Int, Position => Str])
@@ -1242,7 +1351,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetBasePathMappings
 
 Returns: a L<Paws::ApiGateway::BasePathMappings> instance
 
-  Represents a collection of BasePathMapping resources.
+Represents a collection of BasePathMapping resources.
 
 
 =head2 GetClientCertificate(ClientCertificateId => Str)
@@ -1251,7 +1360,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetClientCertificat
 
 Returns: a L<Paws::ApiGateway::ClientCertificate> instance
 
-  Gets information about the current ClientCertificate resource.
+Gets information about the current ClientCertificate resource.
 
 
 =head2 GetClientCertificates([Limit => Int, Position => Str])
@@ -1260,7 +1369,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetClientCertificat
 
 Returns: a L<Paws::ApiGateway::ClientCertificates> instance
 
-  Gets a collection of ClientCertificate resources.
+Gets a collection of ClientCertificate resources.
 
 
 =head2 GetDeployment(DeploymentId => Str, RestApiId => Str, [Embed => ArrayRef[Str|Undef]])
@@ -1269,7 +1378,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetDeployment>
 
 Returns: a L<Paws::ApiGateway::Deployment> instance
 
-  Gets information about a Deployment resource.
+Gets information about a Deployment resource.
 
 
 =head2 GetDeployments(RestApiId => Str, [Limit => Int, Position => Str])
@@ -1278,7 +1387,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetDeployments>
 
 Returns: a L<Paws::ApiGateway::Deployments> instance
 
-  Gets information about a Deployments collection.
+Gets information about a Deployments collection.
 
 
 =head2 GetDocumentationPart(DocumentationPartId => Str, RestApiId => Str)
@@ -1287,16 +1396,16 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetDocumentationPar
 
 Returns: a L<Paws::ApiGateway::DocumentationPart> instance
 
-  
 
 
-=head2 GetDocumentationParts(RestApiId => Str, [Limit => Int, NameQuery => Str, Path => Str, Position => Str, Type => Str])
+
+=head2 GetDocumentationParts(RestApiId => Str, [Limit => Int, LocationStatus => Str, NameQuery => Str, Path => Str, Position => Str, Type => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::GetDocumentationParts>
 
 Returns: a L<Paws::ApiGateway::DocumentationParts> instance
 
-  
+
 
 
 =head2 GetDocumentationVersion(DocumentationVersion => Str, RestApiId => Str)
@@ -1305,7 +1414,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetDocumentationVer
 
 Returns: a L<Paws::ApiGateway::DocumentationVersion> instance
 
-  
+
 
 
 =head2 GetDocumentationVersions(RestApiId => Str, [Limit => Int, Position => Str])
@@ -1314,7 +1423,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetDocumentationVer
 
 Returns: a L<Paws::ApiGateway::DocumentationVersions> instance
 
-  
+
 
 
 =head2 GetDomainName(DomainName => Str)
@@ -1323,7 +1432,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetDomainName>
 
 Returns: a L<Paws::ApiGateway::DomainName> instance
 
-  Represents a domain name that is contained in a simpler, more intuitive
+Represents a domain name that is contained in a simpler, more intuitive
 URL that can be called.
 
 
@@ -1333,7 +1442,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetDomainNames>
 
 Returns: a L<Paws::ApiGateway::DomainNames> instance
 
-  Represents a collection of DomainName resources.
+Represents a collection of DomainName resources.
 
 
 =head2 GetExport(ExportType => Str, RestApiId => Str, StageName => Str, [Accepts => Str, Parameters => L<Paws::ApiGateway::MapOfStringToString>])
@@ -1342,7 +1451,29 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetExport>
 
 Returns: a L<Paws::ApiGateway::ExportResponse> instance
 
-  Exports a deployed version of a RestApi in a specified format.
+Exports a deployed version of a RestApi in a specified format.
+
+
+=head2 GetGatewayResponse(ResponseType => Str, RestApiId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetGatewayResponse>
+
+Returns: a L<Paws::ApiGateway::GatewayResponse> instance
+
+Gets a GatewayResponse of a specified response type on the given
+RestApi.
+
+
+=head2 GetGatewayResponses(RestApiId => Str, [Limit => Int, Position => Str])
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetGatewayResponses>
+
+Returns: a L<Paws::ApiGateway::GatewayResponses> instance
+
+Gets the GatewayResponses collection on the given RestApi. If an API
+developer has not added any definitions for gateway responses, the
+result will be the API Gateway-generated default GatewayResponses
+collection for the supported response types.
 
 
 =head2 GetIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str)
@@ -1351,7 +1482,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetIntegration>
 
 Returns: a L<Paws::ApiGateway::Integration> instance
 
-  Represents a get integration.
+Get the integration settings.
 
 
 =head2 GetIntegrationResponse(HttpMethod => Str, ResourceId => Str, RestApiId => Str, StatusCode => Str)
@@ -1360,7 +1491,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetIntegrationRespo
 
 Returns: a L<Paws::ApiGateway::IntegrationResponse> instance
 
-  Represents a get integration response.
+Represents a get integration response.
 
 
 =head2 GetMethod(HttpMethod => Str, ResourceId => Str, RestApiId => Str)
@@ -1369,7 +1500,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetMethod>
 
 Returns: a L<Paws::ApiGateway::Method> instance
 
-  Describe an existing Method resource.
+Describe an existing Method resource.
 
 
 =head2 GetMethodResponse(HttpMethod => Str, ResourceId => Str, RestApiId => Str, StatusCode => Str)
@@ -1378,7 +1509,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetMethodResponse>
 
 Returns: a L<Paws::ApiGateway::MethodResponse> instance
 
-  Describes a MethodResponse resource.
+Describes a MethodResponse resource.
 
 
 =head2 GetModel(ModelName => Str, RestApiId => Str, [Flatten => Bool])
@@ -1387,7 +1518,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetModel>
 
 Returns: a L<Paws::ApiGateway::Model> instance
 
-  Describes an existing model defined for a RestApi resource.
+Describes an existing model defined for a RestApi resource.
 
 
 =head2 GetModels(RestApiId => Str, [Limit => Int, Position => Str])
@@ -1396,7 +1527,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetModels>
 
 Returns: a L<Paws::ApiGateway::Models> instance
 
-  Describes existing Models defined for a RestApi resource.
+Describes existing Models defined for a RestApi resource.
 
 
 =head2 GetModelTemplate(ModelName => Str, RestApiId => Str)
@@ -1405,7 +1536,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetModelTemplate>
 
 Returns: a L<Paws::ApiGateway::Template> instance
 
-  Generates a sample mapping template that can be used to transform a
+Generates a sample mapping template that can be used to transform a
 payload into the structure of a model.
 
 
@@ -1415,7 +1546,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetRequestValidator
 
 Returns: a L<Paws::ApiGateway::RequestValidator> instance
 
-  Gets a RequestValidator of a given RestApi.
+Gets a RequestValidator of a given RestApi.
 
 
 =head2 GetRequestValidators(RestApiId => Str, [Limit => Int, Position => Str])
@@ -1424,7 +1555,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetRequestValidator
 
 Returns: a L<Paws::ApiGateway::RequestValidators> instance
 
-  Gets the RequestValidators collection of a given RestApi.
+Gets the RequestValidators collection of a given RestApi.
 
 
 =head2 GetResource(ResourceId => Str, RestApiId => Str, [Embed => ArrayRef[Str|Undef]])
@@ -1433,7 +1564,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetResource>
 
 Returns: a L<Paws::ApiGateway::Resource> instance
 
-  Lists information about a resource.
+Lists information about a resource.
 
 
 =head2 GetResources(RestApiId => Str, [Embed => ArrayRef[Str|Undef], Limit => Int, Position => Str])
@@ -1442,7 +1573,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetResources>
 
 Returns: a L<Paws::ApiGateway::Resources> instance
 
-  Lists information about a collection of Resource resources.
+Lists information about a collection of Resource resources.
 
 
 =head2 GetRestApi(RestApiId => Str)
@@ -1451,7 +1582,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetRestApi>
 
 Returns: a L<Paws::ApiGateway::RestApi> instance
 
-  Lists the RestApi resource in the collection.
+Lists the RestApi resource in the collection.
 
 
 =head2 GetRestApis([Limit => Int, Position => Str])
@@ -1460,7 +1591,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetRestApis>
 
 Returns: a L<Paws::ApiGateway::RestApis> instance
 
-  Lists the RestApis resources for your collection.
+Lists the RestApis resources for your collection.
 
 
 =head2 GetSdk(RestApiId => Str, SdkType => Str, StageName => Str, [Parameters => L<Paws::ApiGateway::MapOfStringToString>])
@@ -1469,7 +1600,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetSdk>
 
 Returns: a L<Paws::ApiGateway::SdkResponse> instance
 
-  Generates a client SDK for a RestApi and Stage.
+Generates a client SDK for a RestApi and Stage.
 
 
 =head2 GetSdkType(Id => Str)
@@ -1478,7 +1609,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetSdkType>
 
 Returns: a L<Paws::ApiGateway::SdkType> instance
 
-  
+
 
 
 =head2 GetSdkTypes([Limit => Int, Position => Str])
@@ -1487,7 +1618,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetSdkTypes>
 
 Returns: a L<Paws::ApiGateway::SdkTypes> instance
 
-  
+
 
 
 =head2 GetStage(RestApiId => Str, StageName => Str)
@@ -1496,7 +1627,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetStage>
 
 Returns: a L<Paws::ApiGateway::Stage> instance
 
-  Gets information about a Stage resource.
+Gets information about a Stage resource.
 
 
 =head2 GetStages(RestApiId => Str, [DeploymentId => Str])
@@ -1505,7 +1636,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetStages>
 
 Returns: a L<Paws::ApiGateway::Stages> instance
 
-  Gets information about one or more Stage resources.
+Gets information about one or more Stage resources.
 
 
 =head2 GetUsage(EndDate => Str, StartDate => Str, UsagePlanId => Str, [KeyId => Str, Limit => Int, Position => Str])
@@ -1514,7 +1645,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetUsage>
 
 Returns: a L<Paws::ApiGateway::Usage> instance
 
-  Gets the usage data of a usage plan in a specified time interval.
+Gets the usage data of a usage plan in a specified time interval.
 
 
 =head2 GetUsagePlan(UsagePlanId => Str)
@@ -1523,7 +1654,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetUsagePlan>
 
 Returns: a L<Paws::ApiGateway::UsagePlan> instance
 
-  Gets a usage plan of a given plan identifier.
+Gets a usage plan of a given plan identifier.
 
 
 =head2 GetUsagePlanKey(KeyId => Str, UsagePlanId => Str)
@@ -1532,7 +1663,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetUsagePlanKey>
 
 Returns: a L<Paws::ApiGateway::UsagePlanKey> instance
 
-  Gets a usage plan key of a given key identifier.
+Gets a usage plan key of a given key identifier.
 
 
 =head2 GetUsagePlanKeys(UsagePlanId => Str, [Limit => Int, NameQuery => Str, Position => Str])
@@ -1541,7 +1672,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetUsagePlanKeys>
 
 Returns: a L<Paws::ApiGateway::UsagePlanKeys> instance
 
-  Gets all the usage plan keys representing the API keys added to a
+Gets all the usage plan keys representing the API keys added to a
 specified usage plan.
 
 
@@ -1551,7 +1682,26 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetUsagePlans>
 
 Returns: a L<Paws::ApiGateway::UsagePlans> instance
 
-  Gets all the usage plans of the caller's account.
+Gets all the usage plans of the caller's account.
+
+
+=head2 GetVpcLink(VpcLinkId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetVpcLink>
+
+Returns: a L<Paws::ApiGateway::VpcLink> instance
+
+Gets a specified VPC link under the caller's account in a region.
+
+
+=head2 GetVpcLinks([Limit => Int, Position => Str])
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetVpcLinks>
+
+Returns: a L<Paws::ApiGateway::VpcLinks> instance
+
+Gets the VpcLinks collection under the caller's account in a selected
+region.
 
 
 =head2 ImportApiKeys(Body => Str, Format => Str, [FailOnWarnings => Bool])
@@ -1560,7 +1710,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::ImportApiKeys>
 
 Returns: a L<Paws::ApiGateway::ApiKeyIds> instance
 
-  Import API keys from an external source, such as a CSV-formatted file.
+Import API keys from an external source, such as a CSV-formatted file.
 
 
 =head2 ImportDocumentationParts(Body => Str, RestApiId => Str, [FailOnWarnings => Bool, Mode => Str])
@@ -1569,7 +1719,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::ImportDocumentation
 
 Returns: a L<Paws::ApiGateway::DocumentationPartIds> instance
 
-  
+
 
 
 =head2 ImportRestApi(Body => Str, [FailOnWarnings => Bool, Parameters => L<Paws::ApiGateway::MapOfStringToString>])
@@ -1578,17 +1728,27 @@ Each argument is described in detail in: L<Paws::ApiGateway::ImportRestApi>
 
 Returns: a L<Paws::ApiGateway::RestApi> instance
 
-  A feature of the Amazon API Gateway control service for creating a new
-API from an external API definition file.
+A feature of the API Gateway control service for creating a new API
+from an external API definition file.
 
 
-=head2 PutIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str, Type => Str, [CacheKeyParameters => ArrayRef[Str|Undef], CacheNamespace => Str, ContentHandling => Str, Credentials => Str, IntegrationHttpMethod => Str, PassthroughBehavior => Str, RequestParameters => L<Paws::ApiGateway::MapOfStringToString>, RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>, Uri => Str])
+=head2 PutGatewayResponse(ResponseType => Str, RestApiId => Str, [ResponseParameters => L<Paws::ApiGateway::MapOfStringToString>, ResponseTemplates => L<Paws::ApiGateway::MapOfStringToString>, StatusCode => Str])
+
+Each argument is described in detail in: L<Paws::ApiGateway::PutGatewayResponse>
+
+Returns: a L<Paws::ApiGateway::GatewayResponse> instance
+
+Creates a customization of a GatewayResponse of a specified response
+type and status code on the given RestApi.
+
+
+=head2 PutIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str, Type => Str, [CacheKeyParameters => ArrayRef[Str|Undef], CacheNamespace => Str, ConnectionId => Str, ConnectionType => Str, ContentHandling => Str, Credentials => Str, IntegrationHttpMethod => Str, PassthroughBehavior => Str, RequestParameters => L<Paws::ApiGateway::MapOfStringToString>, RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>, TimeoutInMillis => Int, Uri => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::PutIntegration>
 
 Returns: a L<Paws::ApiGateway::Integration> instance
 
-  Represents a put integration.
+Sets up a method's integration.
 
 
 =head2 PutIntegrationResponse(HttpMethod => Str, ResourceId => Str, RestApiId => Str, StatusCode => Str, [ContentHandling => Str, ResponseParameters => L<Paws::ApiGateway::MapOfStringToString>, ResponseTemplates => L<Paws::ApiGateway::MapOfStringToString>, SelectionPattern => Str])
@@ -1597,7 +1757,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::PutIntegrationRespo
 
 Returns: a L<Paws::ApiGateway::IntegrationResponse> instance
 
-  Represents a put integration.
+Represents a put integration.
 
 
 =head2 PutMethod(AuthorizationType => Str, HttpMethod => Str, ResourceId => Str, RestApiId => Str, [ApiKeyRequired => Bool, AuthorizerId => Str, OperationName => Str, RequestModels => L<Paws::ApiGateway::MapOfStringToString>, RequestParameters => L<Paws::ApiGateway::MapOfStringToBoolean>, RequestValidatorId => Str])
@@ -1606,7 +1766,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::PutMethod>
 
 Returns: a L<Paws::ApiGateway::Method> instance
 
-  Add a method to an existing Resource resource.
+Add a method to an existing Resource resource.
 
 
 =head2 PutMethodResponse(HttpMethod => Str, ResourceId => Str, RestApiId => Str, StatusCode => Str, [ResponseModels => L<Paws::ApiGateway::MapOfStringToString>, ResponseParameters => L<Paws::ApiGateway::MapOfStringToBoolean>])
@@ -1615,7 +1775,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::PutMethodResponse>
 
 Returns: a L<Paws::ApiGateway::MethodResponse> instance
 
-  Adds a MethodResponse to an existing Method resource.
+Adds a MethodResponse to an existing Method resource.
 
 
 =head2 PutRestApi(Body => Str, RestApiId => Str, [FailOnWarnings => Bool, Mode => Str, Parameters => L<Paws::ApiGateway::MapOfStringToString>])
@@ -1624,10 +1784,10 @@ Each argument is described in detail in: L<Paws::ApiGateway::PutRestApi>
 
 Returns: a L<Paws::ApiGateway::RestApi> instance
 
-  A feature of the Amazon API Gateway control service for updating an
-existing API with an input of external API definitions. The update can
-take the form of merging the supplied definition into the existing API
-or overwriting the existing API.
+A feature of the API Gateway control service for updating an existing
+API with an input of external API definitions. The update can take the
+form of merging the supplied definition into the existing API or
+overwriting the existing API.
 
 
 =head2 TestInvokeAuthorizer(AuthorizerId => Str, RestApiId => Str, [AdditionalContext => L<Paws::ApiGateway::MapOfStringToString>, Body => Str, Headers => L<Paws::ApiGateway::MapOfHeaderValues>, PathWithQueryString => Str, StageVariables => L<Paws::ApiGateway::MapOfStringToString>])
@@ -1636,10 +1796,11 @@ Each argument is described in detail in: L<Paws::ApiGateway::TestInvokeAuthorize
 
 Returns: a L<Paws::ApiGateway::TestInvokeAuthorizerResponse> instance
 
-  Simulate the execution of an Authorizer in your RestApi with headers,
+Simulate the execution of an Authorizer in your RestApi with headers,
 parameters, and an incoming request body.
 
 Enable custom authorizers
+(http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html)
 
 
 =head2 TestInvokeMethod(HttpMethod => Str, ResourceId => Str, RestApiId => Str, [Body => Str, ClientCertificateId => Str, Headers => L<Paws::ApiGateway::MapOfHeaderValues>, PathWithQueryString => Str, StageVariables => L<Paws::ApiGateway::MapOfStringToString>])
@@ -1648,7 +1809,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::TestInvokeMethod>
 
 Returns: a L<Paws::ApiGateway::TestInvokeMethodResponse> instance
 
-  Simulate the execution of a Method in your RestApi with headers,
+Simulate the execution of a Method in your RestApi with headers,
 parameters, and an incoming request body.
 
 
@@ -1658,7 +1819,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateAccount>
 
 Returns: a L<Paws::ApiGateway::Account> instance
 
-  Changes information about the current Account resource.
+Changes information about the current Account resource.
 
 
 =head2 UpdateApiKey(ApiKey => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
@@ -1667,7 +1828,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateApiKey>
 
 Returns: a L<Paws::ApiGateway::ApiKey> instance
 
-  Changes information about an ApiKey resource.
+Changes information about an ApiKey resource.
 
 
 =head2 UpdateAuthorizer(AuthorizerId => Str, RestApiId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
@@ -1676,9 +1837,10 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateAuthorizer>
 
 Returns: a L<Paws::ApiGateway::Authorizer> instance
 
-  Updates an existing Authorizer resource.
+Updates an existing Authorizer resource.
 
 AWS CLI
+(http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-authorizer.html)
 
 
 =head2 UpdateBasePathMapping(BasePath => Str, DomainName => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
@@ -1687,7 +1849,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateBasePathMappi
 
 Returns: a L<Paws::ApiGateway::BasePathMapping> instance
 
-  Changes information about the BasePathMapping resource.
+Changes information about the BasePathMapping resource.
 
 
 =head2 UpdateClientCertificate(ClientCertificateId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
@@ -1696,7 +1858,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateClientCertifi
 
 Returns: a L<Paws::ApiGateway::ClientCertificate> instance
 
-  Changes information about an ClientCertificate resource.
+Changes information about an ClientCertificate resource.
 
 
 =head2 UpdateDeployment(DeploymentId => Str, RestApiId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
@@ -1705,7 +1867,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateDeployment>
 
 Returns: a L<Paws::ApiGateway::Deployment> instance
 
-  Changes information about a Deployment resource.
+Changes information about a Deployment resource.
 
 
 =head2 UpdateDocumentationPart(DocumentationPartId => Str, RestApiId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
@@ -1714,7 +1876,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateDocumentation
 
 Returns: a L<Paws::ApiGateway::DocumentationPart> instance
 
-  
+
 
 
 =head2 UpdateDocumentationVersion(DocumentationVersion => Str, RestApiId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
@@ -1723,7 +1885,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateDocumentation
 
 Returns: a L<Paws::ApiGateway::DocumentationVersion> instance
 
-  
+
 
 
 =head2 UpdateDomainName(DomainName => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
@@ -1732,7 +1894,17 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateDomainName>
 
 Returns: a L<Paws::ApiGateway::DomainName> instance
 
-  Changes information about the DomainName resource.
+Changes information about the DomainName resource.
+
+
+=head2 UpdateGatewayResponse(ResponseType => Str, RestApiId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
+
+Each argument is described in detail in: L<Paws::ApiGateway::UpdateGatewayResponse>
+
+Returns: a L<Paws::ApiGateway::GatewayResponse> instance
+
+Updates a GatewayResponse of a specified response type on the given
+RestApi.
 
 
 =head2 UpdateIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
@@ -1741,7 +1913,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateIntegration>
 
 Returns: a L<Paws::ApiGateway::Integration> instance
 
-  Represents an update integration.
+Represents an update integration.
 
 
 =head2 UpdateIntegrationResponse(HttpMethod => Str, ResourceId => Str, RestApiId => Str, StatusCode => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
@@ -1750,7 +1922,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateIntegrationRe
 
 Returns: a L<Paws::ApiGateway::IntegrationResponse> instance
 
-  Represents an update integration response.
+Represents an update integration response.
 
 
 =head2 UpdateMethod(HttpMethod => Str, ResourceId => Str, RestApiId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
@@ -1759,7 +1931,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateMethod>
 
 Returns: a L<Paws::ApiGateway::Method> instance
 
-  Updates an existing Method resource.
+Updates an existing Method resource.
 
 
 =head2 UpdateMethodResponse(HttpMethod => Str, ResourceId => Str, RestApiId => Str, StatusCode => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
@@ -1768,7 +1940,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateMethodRespons
 
 Returns: a L<Paws::ApiGateway::MethodResponse> instance
 
-  Updates an existing MethodResponse resource.
+Updates an existing MethodResponse resource.
 
 
 =head2 UpdateModel(ModelName => Str, RestApiId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
@@ -1777,7 +1949,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateModel>
 
 Returns: a L<Paws::ApiGateway::Model> instance
 
-  Changes information about a model.
+Changes information about a model.
 
 
 =head2 UpdateRequestValidator(RequestValidatorId => Str, RestApiId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
@@ -1786,7 +1958,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateRequestValida
 
 Returns: a L<Paws::ApiGateway::RequestValidator> instance
 
-  Updates a RequestValidator of a given RestApi.
+Updates a RequestValidator of a given RestApi.
 
 
 =head2 UpdateResource(ResourceId => Str, RestApiId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
@@ -1795,7 +1967,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateResource>
 
 Returns: a L<Paws::ApiGateway::Resource> instance
 
-  Changes information about a Resource resource.
+Changes information about a Resource resource.
 
 
 =head2 UpdateRestApi(RestApiId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
@@ -1804,7 +1976,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateRestApi>
 
 Returns: a L<Paws::ApiGateway::RestApi> instance
 
-  Changes information about the specified API.
+Changes information about the specified API.
 
 
 =head2 UpdateStage(RestApiId => Str, StageName => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
@@ -1813,7 +1985,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateStage>
 
 Returns: a L<Paws::ApiGateway::Stage> instance
 
-  Changes information about a Stage resource.
+Changes information about a Stage resource.
 
 
 =head2 UpdateUsage(KeyId => Str, UsagePlanId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
@@ -1822,7 +1994,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateUsage>
 
 Returns: a L<Paws::ApiGateway::Usage> instance
 
-  Grants a temporary extension to the reamining quota of a usage plan
+Grants a temporary extension to the remaining quota of a usage plan
 associated with a specified API key.
 
 
@@ -1832,7 +2004,16 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateUsagePlan>
 
 Returns: a L<Paws::ApiGateway::UsagePlan> instance
 
-  Updates a usage plan of a given plan Id.
+Updates a usage plan of a given plan Id.
+
+
+=head2 UpdateVpcLink(VpcLinkId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
+
+Each argument is described in detail in: L<Paws::ApiGateway::UpdateVpcLink>
+
+Returns: a L<Paws::ApiGateway::VpcLink> instance
+
+Updates an existing VpcLink of a specified identifier.
 
 
 
@@ -1973,6 +2154,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ApiGateway::UsagePlans> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 GetAllVpcLinks(sub { },[Limit => Int, Position => Str])
+
+=head2 GetAllVpcLinks([Limit => Int, Position => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - items, passing the object as the first parameter, and the string 'items' as the second parameter 
+
+If not, it will return a a L<Paws::ApiGateway::VpcLinks> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 
 
 
@@ -1982,9 +2175,9 @@ This service class forms part of L<Paws>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -1,11 +1,11 @@
 
 package Paws::CognitoSync::UpdateRecords;
   use Moose;
-  has ClientContext => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-Client-Context' );
-  has DatasetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DatasetName' , required => 1);
+  has ClientContext => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-Client-Context');
+  has DatasetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DatasetName', required => 1);
   has DeviceId => (is => 'ro', isa => 'Str');
-  has IdentityId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityId' , required => 1);
-  has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId' , required => 1);
+  has IdentityId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityId', required => 1);
+  has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId', required => 1);
   has RecordPatches => (is => 'ro', isa => 'ArrayRef[Paws::CognitoSync::RecordPatch]');
   has SyncSessionToken => (is => 'ro', isa => 'Str', required => 1);
 
@@ -15,14 +15,13 @@ package Paws::CognitoSync::UpdateRecords;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::UpdateRecordsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CognitoSync::UpdateRecords - Arguments for method UpdateRecords on Paws::CognitoSync
+Paws::CognitoSync::UpdateRecords - Arguments for method UpdateRecords on L<Paws::CognitoSync>
 
 =head1 DESCRIPTION
 
@@ -98,9 +97,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateRecords
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

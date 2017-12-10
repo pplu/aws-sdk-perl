@@ -15,7 +15,7 @@ package Paws::EC2::DeleteVpcEndpoints;
 
 =head1 NAME
 
-Paws::EC2::DeleteVpcEndpoints - Arguments for method DeleteVpcEndpoints on Paws::EC2
+Paws::EC2::DeleteVpcEndpoints - Arguments for method DeleteVpcEndpoints on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -45,7 +45,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> VpcEndpointIds => ArrayRef[Str|Undef]
 
-One or more endpoint IDs.
+One or more VPC endpoint IDs.
 
 
 
@@ -56,9 +56,9 @@ This class forms part of L<Paws>, documenting arguments for method DeleteVpcEndp
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

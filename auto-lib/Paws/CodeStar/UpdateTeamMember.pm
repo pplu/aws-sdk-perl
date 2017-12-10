@@ -17,7 +17,7 @@ package Paws::CodeStar::UpdateTeamMember;
 
 =head1 NAME
 
-Paws::CodeStar::UpdateTeamMember - Arguments for method UpdateTeamMember on Paws::CodeStar
+Paws::CodeStar::UpdateTeamMember - Arguments for method UpdateTeamMember on L<Paws::CodeStar>
 
 =head1 DESCRIPTION
 
@@ -46,7 +46,9 @@ The ID of the project.
 
 The role assigned to the user in the project. Project roles have
 different levels of access. For more information, see Working with
-Teams in the AWS CodeStar User Guide.
+Teams
+(http://docs.aws.amazon.com/codestar/latest/userguide/working-with-teams.html)
+in the I<AWS CodeStar User Guide>.
 
 
 
@@ -73,9 +75,9 @@ This class forms part of L<Paws>, documenting arguments for method UpdateTeamMem
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

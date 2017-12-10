@@ -43,13 +43,16 @@ An attribute that is associated with the Facet.
 
   A facet attribute consists of either a definition or a reference. This
 structure contains the attribute definition. See Attribute References
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences)
 for more information.
 
 
 =head2 AttributeReference => L<Paws::CloudDirectory::FacetAttributeReference>
 
   An attribute reference that is associated with the attribute. See
-Attribute References for more information.
+Attribute References
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences)
+for more information.
 
 
 =head2 B<REQUIRED> Name => Str
@@ -69,9 +72,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudDire
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

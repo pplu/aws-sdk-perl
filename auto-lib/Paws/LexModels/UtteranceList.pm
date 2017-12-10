@@ -45,8 +45,9 @@ of your bot. The list contains a maximum of 100 utterances.
 
 =head2 Utterances => ArrayRef[L<Paws::LexModels::UtteranceData>]
 
-  One or more objects that contain information about the utterances that
-have been made to a bot. The maximum number of object is 100.
+  One or more UtteranceData objects that contain information about the
+utterances that have been made to a bot. The maximum number of object
+is 100.
 
 
 
@@ -56,9 +57,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::LexModels
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

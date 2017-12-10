@@ -17,7 +17,7 @@ package Paws::RDS::CopyOptionGroup;
 
 =head1 NAME
 
-Paws::RDS::CopyOptionGroup - Arguments for method CopyOptionGroup on Paws::RDS
+Paws::RDS::CopyOptionGroup - Arguments for method CopyOptionGroup on L<Paws::RDS>
 
 =head1 DESCRIPTION
 
@@ -40,7 +40,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The identifier or ARN for the source option group. For information
 about creating an ARN, see Constructing an RDS Amazon Resource Name
-(ARN).
+(ARN)
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
 
 Constraints:
 
@@ -52,13 +53,13 @@ Must specify a valid option group.
 
 =item *
 
-If the source option group is in the same region as the copy, specify a
-valid option group identifier, for example C<my-option-group>, or a
-valid ARN.
+If the source option group is in the same AWS Region as the copy,
+specify a valid option group identifier, for example
+C<my-option-group>, or a valid ARN.
 
 =item *
 
-If the source option group is in a different region than the copy,
+If the source option group is in a different AWS Region than the copy,
 specify a valid option group ARN, for example
 C<arn:aws:rds:us-west-2:123456789012:og:special-options>.
 
@@ -93,7 +94,7 @@ Cannot be null, empty, or blank
 
 =item *
 
-Must contain from 1 to 255 alphanumeric characters or hyphens
+Must contain from 1 to 255 letters, numbers, or hyphens
 
 =item *
 
@@ -116,9 +117,9 @@ This class forms part of L<Paws>, documenting arguments for method CopyOptionGro
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

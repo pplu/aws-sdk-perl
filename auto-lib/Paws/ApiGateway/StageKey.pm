@@ -40,12 +40,12 @@ C<{restApiId}/{stage}>.
 
 =head2 RestApiId => Str
 
-  A list of Stage resources that are associated with the ApiKey resource.
+  The string identifier of the associated RestApi.
 
 
 =head2 StageName => Str
 
-  The stage name in the RestApi that the stage key references.
+  The stage name associated with the stage key.
 
 
 
@@ -55,9 +55,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ApiGatewa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

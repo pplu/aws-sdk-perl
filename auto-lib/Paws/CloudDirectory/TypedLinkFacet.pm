@@ -53,7 +53,7 @@ type between the same objects.
   The set of attributes that distinguish links made from this facet from
 each other, in the order of significance. Listing typed links can
 filter on the values of these attributes. See ListOutgoingTypedLinks
-and ListIncomingTypeLinks for details.
+and ListIncomingTypedLinks for details.
 
 
 =head2 B<REQUIRED> Name => Str
@@ -68,9 +68,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CloudDire
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

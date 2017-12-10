@@ -97,7 +97,9 @@ all steps.
 
 =head2 MasterPublicDnsName => Str
 
-  The DNS name of the master node.
+  The DNS name of the master node. If the cluster is on a private subnet,
+this is the private DNS name. On a public subnet, this is the public
+DNS name.
 
 
 =head2 NormalizedInstanceHours => Int
@@ -134,9 +136,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::EMR>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

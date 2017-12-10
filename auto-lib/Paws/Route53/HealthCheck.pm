@@ -5,6 +5,7 @@ package Paws::Route53::HealthCheck;
   has HealthCheckConfig => (is => 'ro', isa => 'Paws::Route53::HealthCheckConfig', required => 1);
   has HealthCheckVersion => (is => 'ro', isa => 'Int', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
+  has LinkedService => (is => 'ro', isa => 'Paws::Route53::LinkedService');
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Route53::HealthCheck object:
 
-  $service_obj->Method(Att1 => { CallerReference => $value, ..., Id => $value  });
+  $service_obj->Method(Att1 => { CallerReference => $value, ..., LinkedService => $value  });
 
 =head3 Results returned from an API call
 
@@ -73,6 +74,13 @@ this value to specify which health check to use. The value can be up to
 64 characters long.
 
 
+=head2 LinkedService => L<Paws::Route53::LinkedService>
+
+  If the health check was created by another service, the service that
+created the health check. When a health check is created by another
+service, you can't edit or delete it using Amazon Route 53.
+
+
 
 =head1 SEE ALSO
 
@@ -80,9 +88,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Route53>
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

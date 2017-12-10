@@ -39,7 +39,7 @@ Describes the resource location.
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone. Follows the format C<us-east-1a>
+  The Availability Zone. Follows the format C<us-east-2a>
 (case-sensitive).
 
 
@@ -55,9 +55,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::Lightsail
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

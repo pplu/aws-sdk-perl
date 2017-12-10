@@ -19,7 +19,7 @@ package Paws::EC2::ModifyNetworkInterfaceAttribute;
 
 =head1 NAME
 
-Paws::EC2::ModifyNetworkInterfaceAttribute - Arguments for method ModifyNetworkInterfaceAttribute on Paws::EC2
+Paws::EC2::ModifyNetworkInterfaceAttribute - Arguments for method ModifyNetworkInterfaceAttribute on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
@@ -81,8 +81,9 @@ The ID of the network interface.
 Indicates whether source/destination checking is enabled. A value of
 C<true> means checking is enabled, and C<false> means checking is
 disabled. This value must be C<false> for a NAT instance to perform
-NAT. For more information, see NAT Instances in the I<Amazon Virtual
-Private Cloud User Guide>.
+NAT. For more information, see NAT Instances
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 
@@ -93,9 +94,9 @@ This class forms part of L<Paws>, documenting arguments for method ModifyNetwork
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

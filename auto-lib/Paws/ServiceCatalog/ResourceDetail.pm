@@ -35,34 +35,34 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-Detailed resource information.
+Information about a resource.
 
 =head1 ATTRIBUTES
 
 
 =head2 ARN => Str
 
-  ARN of the resource.
+  The ARN of the resource.
 
 
 =head2 CreatedTime => Str
 
-  Creation time of the resource.
+  The creation time of the resource.
 
 
 =head2 Description => Str
 
-  Description of the resource.
+  The description of the resource.
 
 
 =head2 Id => Str
 
-  Identifier of the resource.
+  The identifier of the resource.
 
 
 =head2 Name => Str
 
-  Name of the resource.
+  The name of the resource.
 
 
 
@@ -72,9 +72,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::ServiceCa
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

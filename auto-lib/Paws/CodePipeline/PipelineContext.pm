@@ -40,7 +40,8 @@ Represents information about a pipeline to a job worker.
 
 =head2 Action => L<Paws::CodePipeline::ActionContext>
 
-  
+  The context of an action to a job worker within the stage of a
+pipeline.
 
 
 =head2 PipelineName => Str
@@ -62,9 +63,9 @@ This class forms part of L<Paws>, describing an object used in L<Paws::CodePipel
 
 =head1 BUGS and CONTRIBUTIONS
 
-The source code is located here: https://github.com/pplu/aws-sdk-perl
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 
