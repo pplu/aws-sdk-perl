@@ -73,6 +73,7 @@
  - API update: CloudWatch
  - API update: AppStream
  - API update: Budgets
+ - API update: LexModels
 
 0.36 03 Nov 2017
  - Fix Bug: #210: S3 PutObject was not working: the Content-MD5 header was not 
