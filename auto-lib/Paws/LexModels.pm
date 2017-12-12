@@ -441,7 +441,7 @@ Deletes stored utterances.
 Amazon Lex stores the utterances that users send to your bot unless the
 C<childDirected> field in the bot is set to C<true>. Utterances are
 stored for 15 days for use with the GetUtterancesView operation, and
-then stored indefinately for use in improving the ability of your bot
+then stored indefinitely for use in improving the ability of your bot
 to respond to user input.
 
 Use the C<DeleteStoredUtterances> operation to manually delete stored
@@ -865,10 +865,12 @@ example, asking "Do you want to order a drink with your pizza?"
 =back
 
 If you specify an existing intent name to update the intent, Amazon Lex
-replaces the values in the C<$LATEST> version of the slot type with the
+replaces the values in the C<$LATEST> version of the intent with the
 values in the request. Amazon Lex removes fields that you don't provide
 in the request. If you don't specify the required fields, Amazon Lex
-throws an exception.
+throws an exception. When you update the C<$LATEST> version of an
+intent, the C<status> field of any bot that uses the C<$LATEST> version
+of the intent is set to C<NOT_BUILT>.
 
 For more information, see how-it-works.
 
@@ -891,7 +893,9 @@ If you specify the name of an existing slot type, the fields in the
 request replace the existing values in the C<$LATEST> version of the
 slot type. Amazon Lex removes the fields that you don't provide in the
 request. If you don't specify required fields, Amazon Lex throws an
-exception.
+exception. When you update the C<$LATEST> version of a slot type, if a
+bot uses the C<$LATEST> version of an intent that contains the slot
+type, the bot's C<status> field is set to C<NOT_BUILT>.
 
 This operation requires permissions for the C<lex:PutSlotType> action.
 
