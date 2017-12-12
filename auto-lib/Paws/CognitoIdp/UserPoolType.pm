@@ -5,6 +5,7 @@ package Paws::CognitoIdp::UserPoolType;
   has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CreationDate => (is => 'ro', isa => 'Str');
   has DeviceConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::DeviceConfigurationType');
+  has Domain => (is => 'ro', isa => 'Str');
   has EmailConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::EmailConfigurationType');
   has EmailConfigurationFailure => (is => 'ro', isa => 'Str');
   has EmailVerificationMessage => (is => 'ro', isa => 'Str');
@@ -84,6 +85,12 @@ A container for information about the user pool.
 =head2 DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>
 
   The device configuration.
+
+
+=head2 Domain => Str
+
+  Holds the domain prefix if the user pool has a domain associated with
+it.
 
 
 =head2 EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>
