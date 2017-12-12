@@ -1,7 +1,7 @@
 
 package Paws::SageMaker::CreateModel;
   use Moose;
-  has ExecutionRoleArn => (is => 'ro', isa => 'Str');
+  has ExecutionRoleArn => (is => 'ro', isa => 'Str', required => 1);
   has ModelName => (is => 'ro', isa => 'Str', required => 1);
   has PrimaryContainer => (is => 'ro', isa => 'Paws::SageMaker::ContainerDefinition', required => 1);
   has SupplementalContainers => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ContainerDefinition]');
@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ExecutionRoleArn => Str
+=head2 B<REQUIRED> ExecutionRoleArn => Str
 
 The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker
 can assume to access model artifacts and docker image for deployment on

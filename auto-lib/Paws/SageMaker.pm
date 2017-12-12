@@ -277,7 +277,7 @@ distributes two-thirds of the traffic to Model A, and one-third to
 model B.
 
 
-=head2 CreateModel(ModelName => Str, PrimaryContainer => L<Paws::SageMaker::ContainerDefinition>, [ExecutionRoleArn => Str, SupplementalContainers => ArrayRef[L<Paws::SageMaker::ContainerDefinition>], Tags => ArrayRef[L<Paws::SageMaker::Tag>]])
+=head2 CreateModel(ExecutionRoleArn => Str, ModelName => Str, PrimaryContainer => L<Paws::SageMaker::ContainerDefinition>, [SupplementalContainers => ArrayRef[L<Paws::SageMaker::ContainerDefinition>], Tags => ArrayRef[L<Paws::SageMaker::Tag>]])
 
 Each argument is described in detail in: L<Paws::SageMaker::CreateModel>
 
