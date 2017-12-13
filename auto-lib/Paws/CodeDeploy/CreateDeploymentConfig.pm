@@ -83,7 +83,8 @@ of FLEET_PERCENT and a value of 95.
 
 =head2 TrafficRoutingConfig => L<Paws::CodeDeploy::TrafficRoutingConfig>
 
-The configuration specifying how the deployment traffic will be routed.
+The configuration that specifies how the deployment traffic will be
+routed.
 
 
 

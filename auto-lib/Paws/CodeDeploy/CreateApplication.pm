@@ -43,7 +43,7 @@ applicable IAM user or AWS account.
 
 =head2 ComputePlatform => Str
 
-The destination platform type for the deployment C<Lambda> or
+The destination platform type for the deployment (C<Lambda> or
 C<Server>).
 
 Valid values are: C<"Server">, C<"Lambda">

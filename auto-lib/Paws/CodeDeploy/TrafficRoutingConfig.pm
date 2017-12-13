@@ -33,8 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head1 DESCRIPTION
 
-The configuration specifying how traffic is shifted from one version of
-a Lambda function to another version during an AWS Lambda deployment.
+The configuration that specifies how traffic is shifted from one
+version of a Lambda function to another version during an AWS Lambda
+deployment.
 
 =head1 ATTRIBUTES
 
@@ -56,8 +57,8 @@ versions are specified in the deployment's AppSpec file.
 
 =head2 Type => Str
 
-  The type of traffic shifting a deployment configuration uses
-(C<TimeBasedCanary> or C<TimeBasedLinear>).
+  The type of traffic shifting (C<TimeBasedCanary> or C<TimeBasedLinear>)
+used by a deployment configuration .
 
 
 

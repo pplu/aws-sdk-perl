@@ -425,22 +425,22 @@ deployment.
 
 =item *
 
-B<Deployment>: The process, and the components involved in the process,
-of updating a Lambda function or of installing content on one or more
+B<Deployment>: The process and the components used in the process of
+updating a Lambda function or of installing content on one or more
 instances.
 
 =item *
 
-B<Application revisions>: For an AWS Lambda deployment this is an
+B<Application revisions>: For an AWS Lambda deployment, this is an
 AppSpec file that specifies the Lambda function to update and one or
 more functions to validate deployment lifecycle events. For an
 EC2/On-premises deployment, this is an archive file containing source
 contentE<mdash>source code, web pages, executable files, and deployment
-scriptsE<mdash>along with an application specification file (AppSpec
-file). Revisions are stored in Amazon S3 buckets or GitHub
-repositories. For Amazon S3, a revision is uniquely identified by its
-Amazon S3 object key and its ETag, version, or both. For GitHub, a
-revision is uniquely identified by its commit ID.
+scriptsE<mdash>along with an AppSpec file. Revisions are stored in
+Amazon S3 buckets or GitHub repositories. For Amazon S3, a revision is
+uniquely identified by its Amazon S3 object key and its ETag, version,
+or both. For GitHub, a revision is uniquely identified by its commit
+ID.
 
 =back
 

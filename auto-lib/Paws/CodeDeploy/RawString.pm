@@ -42,7 +42,7 @@ same as the AppSpec file.
 =head2 Content => Str
 
   The YAML-formatted or JSON-formatted revision string. It includes
-information about what Lambda function to update and optional Lambda
+information about which Lambda function to update and optional Lambda
 functions that validate deployment lifecycle events.
 
 
