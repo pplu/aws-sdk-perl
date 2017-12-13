@@ -139,6 +139,7 @@ package Paws::API::ServiceToClass;
     waf => 'WAF',
    'waf-regional' => 'WAFRegional',
     workdocs => 'WorkDocs',
+    workmail => 'WorkMail',
     workspaces => 'WorkSpaces',
     xray => 'XRay',
   };

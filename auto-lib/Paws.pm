@@ -500,6 +500,8 @@ L<Paws::WAFRegional>
 
 L<Paws::WorkDocs>
 
+L<Paws::WorkMail>
+
 L<Paws::WorkSpaces>
 
 L<Paws::XRay>
