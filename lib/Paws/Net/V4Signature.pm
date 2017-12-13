@@ -25,7 +25,10 @@ package Paws::Net::V4Signature;
     my ($self, $request) = @_;
 
     $request->header( Date => $request->header('X-Amz-Date') // strftime( '%Y%m%dT%H%M%SZ', gmtime ) );
-    $request->header( Host => $self->endpoint_host );
+    $request->header(
+        'Host' => $self->endpoint->default_port == $self->endpoint->port
+        ? $self->endpoint->host
+        : $self->endpoint->host_port);
     if ($self->session_token) {
       $request->header( 'X-Amz-Security-Token' => $self->session_token );
     }

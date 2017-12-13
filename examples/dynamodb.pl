@@ -10,9 +10,10 @@ use Data::Printer;
 
 my $table_name = 'Emails';
 
+# To run dynamodb-local, try the make target "make run_dynamo_local"
+# to download and run a dynamodb that responds to the "local" region
 my $d = Paws->service('DynamoDB', 
-  region => 'eu-west-1', 
-#  caller => TestMakerCaller->new,
+  region => 'local', 
 );
 my $r;
 
@@ -23,12 +24,9 @@ if (not grep { $_ eq $table_name } @{ $r->TableNames }){
   $r = $d->CreateTable(
     AttributeDefinitions => [ 
       { AttributeName => 'email', AttributeType => 'S' },
-#      { AttributeName => 'count', AttributeType => 'N' },
-  #    { AttributeName => 'number', AttributeType => 'N' },
     ],
     KeySchema => [
       { AttributeName => 'email', KeyType => 'HASH' },
-  #    { AttributeName => 'count', KeyType => 'RANGE' },
     ],
     ProvisionedThroughput => {
       ReadCapacityUnits => 1,
@@ -71,7 +69,6 @@ $r = $d->GetItem(
   ConsistentRead => 1,
   Key => {
     email => { S => 'e1@test.com' },
-    count => { N => '33' },
   }
 );
 
@@ -88,4 +85,3 @@ p $r;
 p $r->ConsumedCapacity;
 p $r->Responses;
 
-#$d->DeleteTable(TableName => $table_name);

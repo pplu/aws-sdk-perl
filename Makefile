@@ -40,3 +40,6 @@ numbers:
 	echo "Query" ; grep "::QueryCaller" auto-lib/Paws/*.pm | wc -l
 	echo "REST-XML" ; grep "::RestXML" auto-lib/Paws/*.pm | wc -l
 	echo "EC2Caller" ; grep "::EC2Caller" auto-lib/Paws/*.pm | wc -l
+
+run_dynamo_local:
+	( mkdir /tmp/dynamodb-local && curl https://s3.eu-central-1.amazonaws.com/dynamodb-local-frankfurt/dynamodb_local_latest.tar.gz | tar xvz --directory /tmp/dynamodb-local ) ; java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb -inMemory
