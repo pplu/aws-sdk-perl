@@ -26,8 +26,8 @@ account.
 
 A token indicating that there are additional custom verification email
 templates available to be listed. Pass this token to a subsequent call
-to C<ListCustomVerificationEmailTemplates> to retrieve the next 50
-custom verification email templates.
+to C<ListTemplates> to retrieve the next 50 custom verification email
+templates.
 
 
 =head2 _request_id => Str

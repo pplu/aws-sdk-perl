@@ -72,7 +72,7 @@ receipt rule.
 
 =item *
 
-Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
+This value can only contain ASCII letters (a-z, A-Z), numbers (0-9),
 underscores (_), or dashes (-).
 
 =item *

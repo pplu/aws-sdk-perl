@@ -87,8 +87,8 @@ associated with an Amazon Kinesis Firehose event destination.
 
 =item *
 
-Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_),
-or dashes (-).
+This value can only contain ASCII letters (a-z, A-Z), numbers (0-9),
+underscores (_), or dashes (-).
 
 =item *
 

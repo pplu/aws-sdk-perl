@@ -45,7 +45,8 @@ return up to 10 results.
 
 =head2 NextToken => Str
 
-The token to use for pagination.
+A token returned from a previous call to C<ListTemplates> to indicate
+the position in the list of email templates.
 
 
 

@@ -106,8 +106,7 @@ AWS KMS keys for decryption. This encryption client is currently
 available with the AWS Java SDK (http://aws.amazon.com/sdk-for-java/)
 and AWS Ruby SDK (http://aws.amazon.com/sdk-for-ruby/) only. For more
 information about client-side encryption using AWS KMS master keys, see
-the Amazon S3 Developer Guide
-(http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html).
+the Amazon S3 Developer Guide.
 
 
 =head2 ObjectKeyPrefix => Str

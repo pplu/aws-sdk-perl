@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Templa
 
 =head1 DESCRIPTION
 
-Information about an email template.
+Contains information about an email template.
 
 =head1 ATTRIBUTES
 

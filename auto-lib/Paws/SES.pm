@@ -1240,14 +1240,19 @@ Each argument is described in detail in: L<Paws::SES::SendCustomVerificationEmai
 
 Returns: a L<Paws::SES::SendCustomVerificationEmailResponse> instance
 
-Sends a custom verification email to a specified recipient.
-Verification emails sent using this operation are counted against your
-24-hour sending quota and per-second sending rate.
+Adds an email address to the list of identities for your Amazon SES
+account and attempts to verify it. As a result of executing this
+operation, a customized verification email is sent to the specified
+address.
 
-For more information about custom verification email templates, see
-Using Custom Verification Email Templates
+To use this operation, you must first create a custom verification
+email template. For more information about creating and using custom
+verification email templates, see Using Custom Verification Email
+Templates
 (https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
 in the I<Amazon SES Developer Guide>.
+
+You can execute this operation no more than once per second.
 
 
 =head2 SendEmail(Destination => L<Paws::SES::Destination>, Message => L<Paws::SES::Message>, Source => Str, [ConfigurationSetName => Str, ReplyToAddresses => ArrayRef[Str|Undef], ReturnPath => Str, ReturnPathArn => Str, SourceArn => Str, Tags => ArrayRef[L<Paws::SES::MessageTag>]])
@@ -1835,8 +1840,8 @@ Each argument is described in detail in: L<Paws::SES::VerifyEmailIdentity>
 Returns: a L<Paws::SES::VerifyEmailIdentityResponse> instance
 
 Adds an email address to the list of identities for your Amazon SES
-account and attempts to verify it. This operation causes a confirmation
-email message to be sent to the specified address.
+account and attempts to verify it. As a result of executing this
+operation, a verification email is sent to the specified address.
 
 You can execute this operation no more than once per second.
 

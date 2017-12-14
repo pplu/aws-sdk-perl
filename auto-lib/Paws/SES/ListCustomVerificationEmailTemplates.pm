@@ -45,9 +45,8 @@ than 50, the operation will return up to 50 results.
 
 =head2 NextToken => Str
 
-A token returned from a previous call to
-C<ListCustomVerificationEmailTemplates> to indicate the position in the
-list of email templates.
+An array the contains the name and creation time stamp for each
+template in your Amazon SES account.
 
 
 
