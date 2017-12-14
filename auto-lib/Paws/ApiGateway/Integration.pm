@@ -51,7 +51,7 @@ and undefined, otherwise.
 The type of the network connection to the integration endpoint. The
 valid value is C<INTERNET> for connections through the public routable
 internet or C<VPC_LINK> for private connections between API Gateway and
-an network load balancer in a VPC. The default value is C<INTERNET>.
+a network load balancer in a VPC. The default value is C<INTERNET>.
 
 Valid values are: C<"INTERNET">, C<"VPC_LINK">
 =head2 ContentHandling => Str

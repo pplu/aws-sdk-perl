@@ -1760,7 +1760,7 @@ Returns: a L<Paws::ApiGateway::IntegrationResponse> instance
 Represents a put integration.
 
 
-=head2 PutMethod(AuthorizationType => Str, HttpMethod => Str, ResourceId => Str, RestApiId => Str, [ApiKeyRequired => Bool, AuthorizerId => Str, OperationName => Str, RequestModels => L<Paws::ApiGateway::MapOfStringToString>, RequestParameters => L<Paws::ApiGateway::MapOfStringToBoolean>, RequestValidatorId => Str])
+=head2 PutMethod(AuthorizationType => Str, HttpMethod => Str, ResourceId => Str, RestApiId => Str, [ApiKeyRequired => Bool, AuthorizationScopes => ArrayRef[Str|Undef], AuthorizerId => Str, OperationName => Str, RequestModels => L<Paws::ApiGateway::MapOfStringToString>, RequestParameters => L<Paws::ApiGateway::MapOfStringToBoolean>, RequestValidatorId => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::PutMethod>
 

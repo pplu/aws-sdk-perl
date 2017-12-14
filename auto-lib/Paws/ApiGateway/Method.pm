@@ -2,6 +2,7 @@
 package Paws::ApiGateway::Method;
   use Moose;
   has ApiKeyRequired => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'apiKeyRequired');
+  has AuthorizationScopes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'authorizationScopes');
   has AuthorizationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizationType');
   has AuthorizerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerId');
   has HttpMethod => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'httpMethod');
@@ -28,6 +29,18 @@ Paws::ApiGateway::Method
 
 A boolean flag specifying whether a valid ApiKey is required to invoke
 this method.
+
+
+=head2 AuthorizationScopes => ArrayRef[Str|Undef]
+
+A list authorization scopes configured on the method used with a
+C<COGNITO_USER_POOL> authorizer to authorize the method invocation by
+matching them against the scopes parsed from the access token in the
+incoming request. The method invocation is authorized if any method
+scopes matches a claimed scope in the access token. Otherwise, the
+invocation is not authorized. When the method scope is configured, the
+client must provide an access token instead of an identity token for
+authorizatinon purposes.
 
 
 =head2 AuthorizationType => Str
