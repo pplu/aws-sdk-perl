@@ -124,6 +124,11 @@ package Paws::AppStream;
     my $call_object = $self->new_with_coercions('Paws::AppStream::ListAssociatedStacks', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartFleet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppStream::StartFleet', @_);
@@ -144,6 +149,16 @@ package Paws::AppStream;
     my $call_object = $self->new_with_coercions('Paws::AppStream::StopImageBuilder', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateDirectoryConfig {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppStream::UpdateDirectoryConfig', @_);
@@ -162,7 +177,7 @@ package Paws::AppStream;
   
 
 
-  sub operations { qw/AssociateFleet CreateDirectoryConfig CreateFleet CreateImageBuilder CreateImageBuilderStreamingURL CreateStack CreateStreamingURL DeleteDirectoryConfig DeleteFleet DeleteImage DeleteImageBuilder DeleteStack DescribeDirectoryConfigs DescribeFleets DescribeImageBuilders DescribeImages DescribeSessions DescribeStacks DisassociateFleet ExpireSession ListAssociatedFleets ListAssociatedStacks StartFleet StartImageBuilder StopFleet StopImageBuilder UpdateDirectoryConfig UpdateFleet UpdateStack / }
+  sub operations { qw/AssociateFleet CreateDirectoryConfig CreateFleet CreateImageBuilder CreateImageBuilderStreamingURL CreateStack CreateStreamingURL DeleteDirectoryConfig DeleteFleet DeleteImage DeleteImageBuilder DeleteStack DescribeDirectoryConfigs DescribeFleets DescribeImageBuilders DescribeImages DescribeSessions DescribeStacks DisassociateFleet ExpireSession ListAssociatedFleets ListAssociatedStacks ListTagsForResource StartFleet StartImageBuilder StopFleet StopImageBuilder TagResource UntagResource UpdateDirectoryConfig UpdateFleet UpdateStack / }
 
 1;
 
@@ -406,6 +421,20 @@ Returns: a L<Paws::AppStream::ListAssociatedStacksResult> instance
 Lists the stacks associated with the specified fleet.
 
 
+=head2 ListTagsForResource(ResourceArn => Str)
+
+Each argument is described in detail in: L<Paws::AppStream::ListTagsForResource>
+
+Returns: a L<Paws::AppStream::ListTagsForResourceResponse> instance
+
+Lists the tags for the specified AppStream 2.0 resource. You can tag
+AppStream 2.0 image builders, images, fleets, and stacks.
+
+For more information about tags, see Tagging Your Resources
+(http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic)
+in the I<Amazon AppStream 2.0 Developer Guide>.
+
+
 =head2 StartFleet(Name => Str)
 
 Each argument is described in detail in: L<Paws::AppStream::StartFleet>
@@ -440,6 +469,43 @@ Each argument is described in detail in: L<Paws::AppStream::StopImageBuilder>
 Returns: a L<Paws::AppStream::StopImageBuilderResult> instance
 
 Stops the specified image builder.
+
+
+=head2 TagResource(ResourceArn => Str, Tags => L<Paws::AppStream::Tags>)
+
+Each argument is described in detail in: L<Paws::AppStream::TagResource>
+
+Returns: a L<Paws::AppStream::TagResourceResponse> instance
+
+Adds or overwrites one or more tags for the specified AppStream 2.0
+resource. You can tag AppStream 2.0 image builders, images, fleets, and
+stacks.
+
+Each tag consists of a key and an optional value. If a resource already
+has a tag with the same key, this operation updates its value.
+
+To list the current tags for your resources, use ListTagsForResource.
+To disassociate tags from your resources, use UntagResource.
+
+For more information about tags, see Tagging Your Resources
+(http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic)
+in the I<Amazon AppStream 2.0 Developer Guide>.
+
+
+=head2 UntagResource(ResourceArn => Str, TagKeys => ArrayRef[Str|Undef])
+
+Each argument is described in detail in: L<Paws::AppStream::UntagResource>
+
+Returns: a L<Paws::AppStream::UntagResourceResponse> instance
+
+Disassociates the specified tags from the specified AppStream 2.0
+resource.
+
+To list the current tags for your resources, use ListTagsForResource.
+
+For more information about tags, see Tagging Your Resources
+(http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic)
+in the I<Amazon AppStream 2.0 Developer Guide>.
 
 
 =head2 UpdateDirectoryConfig(DirectoryName => Str, [OrganizationalUnitDistinguishedNames => ArrayRef[Str|Undef], ServiceAccountCredentials => L<Paws::AppStream::ServiceAccountCredentials>])
