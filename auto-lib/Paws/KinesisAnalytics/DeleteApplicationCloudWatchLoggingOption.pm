@@ -44,8 +44,8 @@ The Kinesis Analytics application name.
 =head2 B<REQUIRED> CloudWatchLoggingOptionId => Str
 
 The C<CloudWatchLoggingOptionId> of the CloudWatch logging option to
-delete. You can use the DescribeApplication operation to get the
-C<CloudWatchLoggingOptionId>.
+delete. You can get the C<CloudWatchLoggingOptionId> by using the
+DescribeApplication operation.
 
 
 

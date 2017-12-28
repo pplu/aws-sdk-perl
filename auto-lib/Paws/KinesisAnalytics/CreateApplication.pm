@@ -44,7 +44,7 @@ One or more SQL statements that read input data, transform it, and
 generate output. For example, you can write a SQL statement that reads
 data from one in-application stream, generates a running average of the
 number of advertisement clicks by vendor, and insert resulting rows in
-another in-application stream using pumps. For more inforamtion about
+another in-application stream using pumps. For more information about
 the typical pattern, see Application Code
 (http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-app-code.html).
 
@@ -93,7 +93,7 @@ then query the in-application stream like a table (you can think of it
 as a constantly updating table).
 
 For the streaming source, you provide its Amazon Resource Name (ARN)
-and format of data on the stream (for example, JSON, CSV, etc). You
+and format of data on the stream (for example, JSON, CSV, etc.). You
 also must provide an IAM role that Amazon Kinesis Analytics can assume
 to read this stream on your behalf.
 
@@ -107,21 +107,23 @@ streaming source to record columns in the in-app stream.
 =head2 Outputs => ArrayRef[L<Paws::KinesisAnalytics::Output>]
 
 You can configure application output to write data from any of the
-in-application streams to up to five destinations.
+in-application streams to up to three destinations.
 
 These destinations can be Amazon Kinesis streams, Amazon Kinesis
-Firehose delivery streams, or both.
+Firehose delivery streams, Amazon Lambda destinations, or any
+combination of the three.
 
 In the configuration, you specify the in-application stream name, the
-destination stream Amazon Resource Name (ARN), and the format to use
-when writing data. You must also provide an IAM role that Amazon
-Kinesis Analytics can assume to write to the destination stream on your
-behalf.
+destination stream or Lambda function Amazon Resource Name (ARN), and
+the format to use when writing data. You must also provide an IAM role
+that Amazon Kinesis Analytics can assume to write to the destination
+stream or Lambda function on your behalf.
 
-In the output configuration, you also provide the output stream Amazon
-Resource Name (ARN) and the format of data in the stream (for example,
-JSON, CSV). You also must provide an IAM role that Amazon Kinesis
-Analytics can assume to write to this stream on your behalf.
+In the output configuration, you also provide the output stream or
+Lambda function ARN. For stream destinations, you provide the format of
+data in the stream (for example, JSON, CSV). You also must provide an
+IAM role that Amazon Kinesis Analytics can assume to write to the
+stream or Lambda function on your behalf.
 
 
 

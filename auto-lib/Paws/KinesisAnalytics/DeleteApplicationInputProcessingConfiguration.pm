@@ -50,8 +50,8 @@ The version ID of the Kinesis Analytics application.
 =head2 B<REQUIRED> InputId => Str
 
 The ID of the input configuration from which to delete the input
-configuration. You can get a list of the input IDs for an application
-using the DescribeApplication operation.
+processing configuration. You can get a list of the input IDs for an
+application by using the DescribeApplication operation.
 
 
 

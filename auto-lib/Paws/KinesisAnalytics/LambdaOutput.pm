@@ -1,4 +1,4 @@
-package Paws::KinesisAnalytics::KinesisFirehoseInput;
+package Paws::KinesisAnalytics::LambdaOutput;
   use Moose;
   has ResourceARN => (is => 'ro', isa => 'Str', required => 1);
   has RoleARN => (is => 'ro', isa => 'Str', required => 1);
@@ -8,7 +8,7 @@ package Paws::KinesisAnalytics::KinesisFirehoseInput;
 
 =head1 NAME
 
-Paws::KinesisAnalytics::KinesisFirehoseInput
+Paws::KinesisAnalytics::LambdaOutput
 
 =head1 USAGE
 
@@ -19,37 +19,38 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::KinesisAnalytics::KinesisFirehoseInput object:
+As an example, if Att1 is expected to be a Paws::KinesisAnalytics::LambdaOutput object:
 
   $service_obj->Method(Att1 => { ResourceARN => $value, ..., RoleARN => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnalytics::KinesisFirehoseInput object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnalytics::LambdaOutput object:
 
   $result = $service_obj->Method(...);
   $result->Att1->ResourceARN
 
 =head1 DESCRIPTION
 
-Identifies an Amazon Kinesis Firehose delivery stream as the streaming
-source. You provide the delivery stream's Amazon Resource Name (ARN)
-and an IAM role ARN that enables Amazon Kinesis Analytics to access the
-stream on your behalf.
+When configuring application output, identifies an AWS Lambda function
+as the destination. You provide the function Amazon Resource Name (ARN)
+and also an IAM role ARN that Amazon Kinesis Analytics can use to write
+to the function on your behalf.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ResourceARN => Str
 
-  ARN of the input delivery stream.
+  Amazon Resource Name (ARN) of the destination Lambda function to write
+to.
 
 
 =head2 B<REQUIRED> RoleARN => Str
 
-  ARN of the IAM role that Amazon Kinesis Analytics can assume to access
-the stream on your behalf. You need to make sure the role has necessary
-permissions to access the stream.
+  ARN of the IAM role that Amazon Kinesis Analytics can assume to write
+to the destination function on your behalf. You need to grant the
+necessary permissions to this role.
 
 
 

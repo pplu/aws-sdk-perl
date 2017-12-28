@@ -44,7 +44,7 @@ configuration.
 
 =head2 B<REQUIRED> CurrentApplicationVersionId => Int
 
-Version of the application to which you want add the output
+Version of the application to which you want to add the output
 configuration. You can use the DescribeApplication operation to get the
 current application version. If the version specified is not the
 current version, the C<ConcurrentModificationException> is returned.
@@ -55,9 +55,9 @@ current version, the C<ConcurrentModificationException> is returned.
 
 An array of objects, each describing one output configuration. In the
 output configuration, you specify the name of an in-application stream,
-a destination (that is, an Amazon Kinesis stream or an Amazon Kinesis
-Firehose delivery stream), and record the formation to use when writing
-to the destination.
+a destination (that is, an Amazon Kinesis stream, an Amazon Kinesis
+Firehose delivery stream, or an Amazon Lambda function), and record the
+formation to use when writing to the destination.
 
 
 

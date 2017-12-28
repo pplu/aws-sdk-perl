@@ -66,7 +66,7 @@ the stream on your behalf.
 
 =head2 S3Configuration => L<Paws::KinesisAnalytics::S3Configuration>
 
-
+Specify this parameter to discover a schema from data in an S3 object.
 
 
 

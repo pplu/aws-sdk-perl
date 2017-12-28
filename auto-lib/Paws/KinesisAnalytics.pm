@@ -193,11 +193,12 @@ application.
 
 If you want Amazon Kinesis Analytics to deliver data from an
 in-application stream within your application to an external
-destination (such as an Amazon Kinesis stream or a Firehose delivery
-stream), you add the relevant configuration to your application using
-this operation. You can configure one or more outputs for your
-application. Each output configuration maps an in-application stream
-and an external destination.
+destination (such as an Amazon Kinesis stream, an Amazon Kinesis
+Firehose delivery stream, or an Amazon Lambda function), you add the
+relevant configuration to your application using this operation. You
+can configure one or more outputs for your application. Each output
+configuration maps an in-application stream and an external
+destination.
 
 You can use one of the output configurations to deliver data from your
 in-application error stream to an external destination so that you can
@@ -251,9 +252,9 @@ Returns: a L<Paws::KinesisAnalytics::CreateApplicationResponse> instance
 
 Creates an Amazon Kinesis Analytics application. You can configure each
 application with one streaming source as input, application code to
-process the input, and up to five streaming destinations where you want
-Amazon Kinesis Analytics to write the output data from your
-application. For an overview, see How it Works
+process the input, and up to three destinations where you want Amazon
+Kinesis Analytics to write the output data from your application. For
+an overview, see How it Works
 (http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works.html).
 
 In the input configuration, you map the streaming source to an
@@ -268,7 +269,7 @@ create one or more SQL artifacts like SQL streams or pumps.
 
 In the output configuration, you can configure the application to write
 data from in-application streams created in your applications to up to
-five streaming destinations.
+three destinations.
 
 To read data from your source stream or write data to destination
 streams, Amazon Kinesis Analytics needs your permissions. You grant
@@ -375,8 +376,9 @@ Returns: a L<Paws::KinesisAnalytics::DiscoverInputSchemaResponse> instance
 
 Infers a schema by evaluating sample records on the specified streaming
 source (Amazon Kinesis stream or Amazon Kinesis Firehose delivery
-stream). In the response, the operation returns the inferred schema and
-also the sample records that the operation used to infer the schema.
+stream) or S3 object. In the response, the operation returns the
+inferred schema and also the sample records that the operation used to
+infer the schema.
 
 You can use the inferred schema when configuring a streaming source for
 your application. For conceptual information, see Configuring

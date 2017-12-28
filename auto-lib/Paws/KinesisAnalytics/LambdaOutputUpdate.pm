@@ -1,4 +1,4 @@
-package Paws::KinesisAnalytics::KinesisFirehoseInputUpdate;
+package Paws::KinesisAnalytics::LambdaOutputUpdate;
   use Moose;
   has ResourceARNUpdate => (is => 'ro', isa => 'Str');
   has RoleARNUpdate => (is => 'ro', isa => 'Str');
@@ -8,7 +8,7 @@ package Paws::KinesisAnalytics::KinesisFirehoseInputUpdate;
 
 =head1 NAME
 
-Paws::KinesisAnalytics::KinesisFirehoseInputUpdate
+Paws::KinesisAnalytics::LambdaOutputUpdate
 
 =head1 USAGE
 
@@ -19,37 +19,36 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::KinesisAnalytics::KinesisFirehoseInputUpdate object:
+As an example, if Att1 is expected to be a Paws::KinesisAnalytics::LambdaOutputUpdate object:
 
   $service_obj->Method(Att1 => { ResourceARNUpdate => $value, ..., RoleARNUpdate => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnalytics::KinesisFirehoseInputUpdate object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnalytics::LambdaOutputUpdate object:
 
   $result = $service_obj->Method(...);
   $result->Att1->ResourceARNUpdate
 
 =head1 DESCRIPTION
 
-When updating application input configuration, provides information
-about an Amazon Kinesis Firehose delivery stream as the streaming
-source.
+When updating an output configuration using the UpdateApplication
+operation, provides information about an AWS Lambda function configured
+as the destination.
 
 =head1 ATTRIBUTES
 
 
 =head2 ResourceARNUpdate => Str
 
-  Amazon Resource Name (ARN) of the input Amazon Kinesis Firehose
-delivery stream to read.
+  Amazon Resource Name (ARN) of the destination Lambda function.
 
 
 =head2 RoleARNUpdate => Str
 
-  ARN of the IAM role that Amazon Kinesis Analytics can assume to access
-the stream on your behalf. You need to grant necessary permissions to
-this role.
+  ARN of the IAM role that Amazon Kinesis Analytics can assume to write
+to the destination function on your behalf. You need to grant the
+necessary permissions to this role.
 
 
 

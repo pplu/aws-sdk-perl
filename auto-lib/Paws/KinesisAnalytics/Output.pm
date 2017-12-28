@@ -3,6 +3,7 @@ package Paws::KinesisAnalytics::Output;
   has DestinationSchema => (is => 'ro', isa => 'Paws::KinesisAnalytics::DestinationSchema', required => 1);
   has KinesisFirehoseOutput => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisFirehoseOutput');
   has KinesisStreamsOutput => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisStreamsOutput');
+  has LambdaOutput => (is => 'ro', isa => 'Paws::KinesisAnalytics::LambdaOutput');
   has Name => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -48,7 +49,9 @@ limitations, see Limits
 
 =head2 B<REQUIRED> DestinationSchema => L<Paws::KinesisAnalytics::DestinationSchema>
 
-  
+  Describes the data format when records are written to the destination.
+For more information, see Configuring Application Output
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html).
 
 
 =head2 KinesisFirehoseOutput => L<Paws::KinesisAnalytics::KinesisFirehoseOutput>
@@ -60,6 +63,11 @@ destination.
 =head2 KinesisStreamsOutput => L<Paws::KinesisAnalytics::KinesisStreamsOutput>
 
   Identifies an Amazon Kinesis stream as the destination.
+
+
+=head2 LambdaOutput => L<Paws::KinesisAnalytics::LambdaOutput>
+
+  Identifies an AWS Lambda function as the destination.
 
 
 =head2 B<REQUIRED> Name => Str

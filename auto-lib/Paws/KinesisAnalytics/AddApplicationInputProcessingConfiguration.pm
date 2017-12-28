@@ -55,9 +55,9 @@ returned.
 
 =head2 B<REQUIRED> InputId => Str
 
-The ID of the input configuration to which to add the input
-configuration. You can get a list of the input IDs for an application
-using the DescribeApplication operation.
+The ID of the input configuration to add the input processing
+configuration to. You can get a list of the input IDs for an
+application using the DescribeApplication operation.
 
 
 

@@ -52,7 +52,9 @@ DescribeApplication operation to get this value.
 
 =head2 ReferenceSchemaUpdate => L<Paws::KinesisAnalytics::SourceSchema>
 
-  
+  Describes the format of the data in the streaming source, and how each
+data element maps to corresponding columns created in the
+in-application stream.
 
 
 =head2 S3ReferenceDataSourceUpdate => L<Paws::KinesisAnalytics::S3ReferenceDataSourceUpdate>

@@ -49,8 +49,7 @@ Input
 
   Describes the number of in-application streams to create.
 
-Data from your source will be routed to these in-application input
-streams.
+Data from your source is routed to these in-application input streams.
 
 (see Configuring Application Input
 (http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
@@ -58,7 +57,7 @@ streams.
 
 =head2 InputProcessingConfiguration => L<Paws::KinesisAnalytics::InputProcessingConfiguration>
 
-  The InputProcessingConfiguration for the Input. An input processor
+  The InputProcessingConfiguration for the input. An input processor
 transforms records as they are received from the stream, before the
 application's SQL code executes. Currently, the only input processing
 configuration available is InputLambdaProcessor.
@@ -76,8 +75,8 @@ Also used to describe the format of the reference data source.
 =head2 KinesisFirehoseInput => L<Paws::KinesisAnalytics::KinesisFirehoseInput>
 
   If the streaming source is an Amazon Kinesis Firehose delivery stream,
-identifies the Firehose delivery stream's ARN and an IAM role that
-enables Amazon Kinesis Analytics to access the stream on your behalf.
+identifies the delivery stream's ARN and an IAM role that enables
+Amazon Kinesis Analytics to access the stream on your behalf.
 
 Note: Either C<KinesisStreamsInput> or C<KinesisFirehoseInput> is
 required.
@@ -95,11 +94,11 @@ required.
 
 =head2 B<REQUIRED> NamePrefix => Str
 
-  Name prefix to use when creating in-application stream. Suppose you
-specify a prefix "MyInApplicationStream". Amazon Kinesis Analytics will
-then create one or more (as per the C<InputParallelism> count you
+  Name prefix to use when creating an in-application stream. Suppose that
+you specify a prefix "MyInApplicationStream." Amazon Kinesis Analytics
+then creates one or more (as per the C<InputParallelism> count you
 specified) in-application streams with names
-"MyInApplicationStream_001", "MyInApplicationStream_002" and so on.
+"MyInApplicationStream_001," "MyInApplicationStream_002," and so on.
 
 
 

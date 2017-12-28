@@ -69,14 +69,13 @@ stream that is created.
 =head2 KinesisFirehoseInputUpdate => L<Paws::KinesisAnalytics::KinesisFirehoseInputUpdate>
 
   If an Amazon Kinesis Firehose delivery stream is the streaming source
-to be updated, provides an updated stream Amazon Resource Name (ARN)
-and IAM role ARN.
+to be updated, provides an updated stream ARN and IAM role ARN.
 
 
 =head2 KinesisStreamsInputUpdate => L<Paws::KinesisAnalytics::KinesisStreamsInputUpdate>
 
-  If a Amazon Kinesis stream is the streaming source to be updated,
-provides an updated stream ARN and IAM role ARN.
+  If an Amazon Kinesis stream is the streaming source to be updated,
+provides an updated stream Amazon Resource Name (ARN) and IAM role ARN.
 
 
 =head2 NamePrefixUpdate => Str
