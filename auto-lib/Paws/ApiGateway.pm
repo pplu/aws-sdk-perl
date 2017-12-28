@@ -398,6 +398,11 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetStages', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetUsage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetUsage', @_);
@@ -478,6 +483,11 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::PutRestApi', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TestInvokeAuthorizer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::TestInvokeAuthorizer', @_);
@@ -486,6 +496,11 @@ package Paws::ApiGateway;
   sub TestInvokeMethod {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::TestInvokeMethod', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateAccount {
@@ -877,7 +892,7 @@ package Paws::ApiGateway;
   }
 
 
-  sub operations { qw/CreateApiKey CreateAuthorizer CreateBasePathMapping CreateDeployment CreateDocumentationPart CreateDocumentationVersion CreateDomainName CreateModel CreateRequestValidator CreateResource CreateRestApi CreateStage CreateUsagePlan CreateUsagePlanKey CreateVpcLink DeleteApiKey DeleteAuthorizer DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDocumentationPart DeleteDocumentationVersion DeleteDomainName DeleteGatewayResponse DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteRequestValidator DeleteResource DeleteRestApi DeleteStage DeleteUsagePlan DeleteUsagePlanKey DeleteVpcLink FlushStageAuthorizersCache FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetAuthorizer GetAuthorizers GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDocumentationPart GetDocumentationParts GetDocumentationVersion GetDocumentationVersions GetDomainName GetDomainNames GetExport GetGatewayResponse GetGatewayResponses GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetRequestValidator GetRequestValidators GetResource GetResources GetRestApi GetRestApis GetSdk GetSdkType GetSdkTypes GetStage GetStages GetUsage GetUsagePlan GetUsagePlanKey GetUsagePlanKeys GetUsagePlans GetVpcLink GetVpcLinks ImportApiKeys ImportDocumentationParts ImportRestApi PutGatewayResponse PutIntegration PutIntegrationResponse PutMethod PutMethodResponse PutRestApi TestInvokeAuthorizer TestInvokeMethod UpdateAccount UpdateApiKey UpdateAuthorizer UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDocumentationPart UpdateDocumentationVersion UpdateDomainName UpdateGatewayResponse UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateRequestValidator UpdateResource UpdateRestApi UpdateStage UpdateUsage UpdateUsagePlan UpdateVpcLink / }
+  sub operations { qw/CreateApiKey CreateAuthorizer CreateBasePathMapping CreateDeployment CreateDocumentationPart CreateDocumentationVersion CreateDomainName CreateModel CreateRequestValidator CreateResource CreateRestApi CreateStage CreateUsagePlan CreateUsagePlanKey CreateVpcLink DeleteApiKey DeleteAuthorizer DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDocumentationPart DeleteDocumentationVersion DeleteDomainName DeleteGatewayResponse DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteRequestValidator DeleteResource DeleteRestApi DeleteStage DeleteUsagePlan DeleteUsagePlanKey DeleteVpcLink FlushStageAuthorizersCache FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetAuthorizer GetAuthorizers GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDocumentationPart GetDocumentationParts GetDocumentationVersion GetDocumentationVersions GetDomainName GetDomainNames GetExport GetGatewayResponse GetGatewayResponses GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetRequestValidator GetRequestValidators GetResource GetResources GetRestApi GetRestApis GetSdk GetSdkType GetSdkTypes GetStage GetStages GetTags GetUsage GetUsagePlan GetUsagePlanKey GetUsagePlanKeys GetUsagePlans GetVpcLink GetVpcLinks ImportApiKeys ImportDocumentationParts ImportRestApi PutGatewayResponse PutIntegration PutIntegrationResponse PutMethod PutMethodResponse PutRestApi TagResource TestInvokeAuthorizer TestInvokeMethod UntagResource UpdateAccount UpdateApiKey UpdateAuthorizer UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDocumentationPart UpdateDocumentationVersion UpdateDomainName UpdateGatewayResponse UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateRequestValidator UpdateResource UpdateRestApi UpdateStage UpdateUsage UpdateUsagePlan UpdateVpcLink / }
 
 1;
 
@@ -1012,7 +1027,7 @@ Returns: a L<Paws::ApiGateway::Resource> instance
 Creates a Resource resource.
 
 
-=head2 CreateRestApi(Name => Str, [BinaryMediaTypes => ArrayRef[Str|Undef], CloneFrom => Str, Description => Str, EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>, Version => Str])
+=head2 CreateRestApi(Name => Str, [ApiKeySource => Str, BinaryMediaTypes => ArrayRef[Str|Undef], CloneFrom => Str, Description => Str, EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>, MinimumCompressionSize => Int, Version => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateRestApi>
 
@@ -1021,7 +1036,7 @@ Returns: a L<Paws::ApiGateway::RestApi> instance
 Creates a new RestApi resource.
 
 
-=head2 CreateStage(DeploymentId => Str, RestApiId => Str, StageName => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, CanarySettings => L<Paws::ApiGateway::CanarySettings>, Description => Str, DocumentationVersion => Str, Variables => L<Paws::ApiGateway::MapOfStringToString>])
+=head2 CreateStage(DeploymentId => Str, RestApiId => Str, StageName => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, CanarySettings => L<Paws::ApiGateway::CanarySettings>, Description => Str, DocumentationVersion => Str, Tags => L<Paws::ApiGateway::MapOfStringToString>, Variables => L<Paws::ApiGateway::MapOfStringToString>])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateStage>
 
@@ -1639,6 +1654,15 @@ Returns: a L<Paws::ApiGateway::Stages> instance
 Gets information about one or more Stage resources.
 
 
+=head2 GetTags(ResourceArn => Str, [Limit => Int, Position => Str])
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetTags>
+
+Returns: a L<Paws::ApiGateway::Tags> instance
+
+Gets the Tags collection for a given resource.
+
+
 =head2 GetUsage(EndDate => Str, StartDate => Str, UsagePlanId => Str, [KeyId => Str, Limit => Int, Position => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::GetUsage>
@@ -1790,6 +1814,15 @@ form of merging the supplied definition into the existing API or
 overwriting the existing API.
 
 
+=head2 TagResource(ResourceArn => Str, Tags => L<Paws::ApiGateway::MapOfStringToString>)
+
+Each argument is described in detail in: L<Paws::ApiGateway::TagResource>
+
+Returns: nothing
+
+Adds or updates Tags on a gievn resource.
+
+
 =head2 TestInvokeAuthorizer(AuthorizerId => Str, RestApiId => Str, [AdditionalContext => L<Paws::ApiGateway::MapOfStringToString>, Body => Str, Headers => L<Paws::ApiGateway::MapOfHeaderValues>, PathWithQueryString => Str, StageVariables => L<Paws::ApiGateway::MapOfStringToString>])
 
 Each argument is described in detail in: L<Paws::ApiGateway::TestInvokeAuthorizer>
@@ -1811,6 +1844,15 @@ Returns: a L<Paws::ApiGateway::TestInvokeMethodResponse> instance
 
 Simulate the execution of a Method in your RestApi with headers,
 parameters, and an incoming request body.
+
+
+=head2 UntagResource(ResourceArn => Str, TagKeys => ArrayRef[Str|Undef])
+
+Each argument is described in detail in: L<Paws::ApiGateway::UntagResource>
+
+Returns: nothing
+
+Removes Tags from a given resource.
 
 
 =head2 UpdateAccount([PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])

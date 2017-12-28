@@ -14,6 +14,7 @@ package Paws::ApiGateway::Stage;
   has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
   has MethodSettings => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethodSettings', traits => ['NameInRequest'], request_name => 'methodSettings');
   has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName');
+  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
   has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'variables');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -95,6 +96,11 @@ or C</\*/\*> for overriding all methods in the stage.
 
 The name of the stage is the first path segment in the Uniform Resource
 Identifier (URI) of a call to API Gateway.
+
+
+=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+
+A collection of Tags associated with a given resource.
 
 
 =head2 Variables => L<Paws::ApiGateway::MapOfStringToString>

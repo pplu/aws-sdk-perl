@@ -9,6 +9,7 @@ package Paws::ApiGateway::CreateStage;
   has DocumentationVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'documentationVersion');
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
   has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
   has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'variables');
 
   use MooseX::ClassAttribute;
@@ -88,6 +89,14 @@ The string identifier of the associated RestApi.
 =head2 B<REQUIRED> StageName => Str
 
 [Required] The name for the Stage resource.
+
+
+
+=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+
+Key/Value map of strings. Valid character set is [a-zA-Z+-=._:/]. Tag
+key can be up to 128 characters and must not start with "aws:". Tag
+value can be up to 256 characters.
 
 
 
