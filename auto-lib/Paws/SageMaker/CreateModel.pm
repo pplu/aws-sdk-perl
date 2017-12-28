@@ -4,7 +4,6 @@ package Paws::SageMaker::CreateModel;
   has ExecutionRoleArn => (is => 'ro', isa => 'Str', required => 1);
   has ModelName => (is => 'ro', isa => 'Str', required => 1);
   has PrimaryContainer => (is => 'ro', isa => 'Paws::SageMaker::ContainerDefinition', required => 1);
-  has SupplementalContainers => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ContainerDefinition]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
 
   use MooseX::ClassAttribute;
@@ -58,12 +57,6 @@ The name of the new model.
 The location of the primary docker image containing inference code,
 associated artifacts, and custom environment map that the inference
 code uses when the model is deployed into production.
-
-
-
-=head2 SupplementalContainers => ArrayRef[L<Paws::SageMaker::ContainerDefinition>]
-
-The additional optional containers to deploy.
 
 
 

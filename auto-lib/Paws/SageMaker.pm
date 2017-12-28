@@ -277,7 +277,7 @@ distributes two-thirds of the traffic to Model A, and one-third to
 model B.
 
 
-=head2 CreateModel(ExecutionRoleArn => Str, ModelName => Str, PrimaryContainer => L<Paws::SageMaker::ContainerDefinition>, [SupplementalContainers => ArrayRef[L<Paws::SageMaker::ContainerDefinition>], Tags => ArrayRef[L<Paws::SageMaker::Tag>]])
+=head2 CreateModel(ExecutionRoleArn => Str, ModelName => Str, PrimaryContainer => L<Paws::SageMaker::ContainerDefinition>, [Tags => ArrayRef[L<Paws::SageMaker::Tag>]])
 
 Each argument is described in detail in: L<Paws::SageMaker::CreateModel>
 
@@ -297,9 +297,8 @@ endpoint with the C<CreateEndpoint> API.
 Amazon SageMaker then deploys all of the containers that you defined
 for the model in the hosting environment.
 
-In the C<CreateModel> request, you must define at least one container
-with the C<PrimaryContainer> parameter. You can optionally specify
-additional containers with the C<SupplementalContainers> parameter.
+In the C<CreateModel> request, you must define a container with the
+C<PrimaryContainer> parameter.
 
 In the request, you also provide an IAM role that Amazon SageMaker can
 assume to access model artifacts and docker image for deployment on ML
@@ -616,9 +615,8 @@ Returns: nothing
 Launches an ML compute instance with the latest version of the
 libraries and attaches your ML storage volume. After configuring the
 notebook instance, Amazon SageMaker sets the notebook instance status
-to C<InService>. A notebook instance's status must be C<InService> (is
-this same as "Running" in the console?) before you can connect to your
-Jupyter notebook.
+to C<InService>. A notebook instance's status must be C<InService>
+before you can connect to your Jupyter notebook.
 
 
 =head2 StopNotebookInstance(NotebookInstanceName => Str)
