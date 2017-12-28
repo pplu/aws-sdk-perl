@@ -860,14 +860,77 @@ Returns: a L<Paws::Route53::CreateReusableDelegationSetResponse> instance
 Creates a delegation set (a group of four name servers) that can be
 reused by multiple hosted zones. If a hosted zoned ID is specified,
 C<CreateReusableDelegationSet> marks the delegation set associated with
-that zone as reusable
+that zone as reusable.
 
-A reusable delegation set can't be associated with a private hosted
+You can't associate a reusable delegation set with a private hosted
 zone.
 
-For information on how to use a reusable delegation set to configure
+For information about using a reusable delegation set to configure
 white label name servers, see Configuring White Label Name Servers
 (http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/white-label-name-servers.html).
+
+The process for migrating existing hosted zones to use a reusable
+delegation set is comparable to the process for configuring white label
+name servers. You need to perform the following steps:
+
+=over
+
+=item 1.
+
+Create a reusable delegation set.
+
+=item 2.
+
+Recreate hosted zones, and reduce the TTL to 60 seconds or less.
+
+=item 3.
+
+Recreate resource record sets in the new hosted zones.
+
+=item 4.
+
+Change the registrar's name servers to use the name servers for the new
+hosted zones.
+
+=item 5.
+
+Monitor traffic for the website or application.
+
+=item 6.
+
+Change TTLs back to their original values.
+
+=back
+
+If you want to migrate existing hosted zones to use a reusable
+delegation set, the existing hosted zones can't use any of the name
+servers that are assigned to the reusable delegation set. If one or
+more hosted zones do use one or more name servers that are assigned to
+the reusable delegation set, you can do one of the following:
+
+=over
+
+=item *
+
+For small numbers of hosted zonesE<mdash>up to a few
+hundredE<mdash>it's relatively easy to create reusable delegation sets
+until you get one that has four name servers that don't overlap with
+any of the name servers in your hosted zones.
+
+=item *
+
+For larger numbers of hosted zones, the easiest solution is to use more
+than one reusable delegation set.
+
+=item *
+
+For larger numbers of hosted zones, you can also migrate hosted zones
+that have overlapping name servers to hosted zones that don't have
+overlapping name servers, then migrate the hosted zones again to use
+the reusable delegation set.
+
+=back
+
 
 
 =head2 CreateTrafficPolicy(Document => Str, Name => Str, [Comment => Str])
