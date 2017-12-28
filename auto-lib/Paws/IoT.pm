@@ -78,6 +78,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreateKeysAndCertificate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateOTAUpdate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CreateOTAUpdate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreatePolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreatePolicy', @_);
@@ -91,6 +96,11 @@ package Paws::IoT;
   sub CreateRoleAlias {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreateRoleAlias', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateStream {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CreateStream', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateThing {
@@ -128,6 +138,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteCertificate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteOTAUpdate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DeleteOTAUpdate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeletePolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeletePolicy', @_);
@@ -146,6 +161,11 @@ package Paws::IoT;
   sub DeleteRoleAlias {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteRoleAlias', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteStream {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DeleteStream', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteThing {
@@ -228,6 +248,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::DescribeRoleAlias', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeStream {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DescribeStream', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeThing {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DescribeThing', @_);
@@ -291,6 +316,11 @@ package Paws::IoT;
   sub GetLoggingOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::GetLoggingOptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetOTAUpdate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::GetOTAUpdate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetPolicy {
@@ -363,6 +393,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListJobs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListOTAUpdates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListOTAUpdates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListOutgoingCertificates {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListOutgoingCertificates', @_);
@@ -396,6 +431,11 @@ package Paws::IoT;
   sub ListRoleAliases {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListRoleAliases', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListStreams {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListStreams', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListTargetsForPolicy {
@@ -566,6 +606,11 @@ package Paws::IoT;
   sub UpdateRoleAlias {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::UpdateRoleAlias', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateStream {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::UpdateStream', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateThing {
@@ -839,7 +884,7 @@ package Paws::IoT;
   }
 
 
-  sub operations { qw/AcceptCertificateTransfer AddThingToThingGroup AssociateTargetsWithJob AttachPolicy AttachPrincipalPolicy AttachThingPrincipal CancelCertificateTransfer CancelJob ClearDefaultAuthorizer CreateAuthorizer CreateCertificateFromCsr CreateJob CreateKeysAndCertificate CreatePolicy CreatePolicyVersion CreateRoleAlias CreateThing CreateThingGroup CreateThingType CreateTopicRule DeleteAuthorizer DeleteCACertificate DeleteCertificate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteRoleAlias DeleteThing DeleteThingGroup DeleteThingType DeleteTopicRule DeleteV2LoggingLevel DeprecateThingType DescribeAuthorizer DescribeCACertificate DescribeCertificate DescribeDefaultAuthorizer DescribeEndpoint DescribeEventConfigurations DescribeIndex DescribeJob DescribeJobExecution DescribeRoleAlias DescribeThing DescribeThingGroup DescribeThingRegistrationTask DescribeThingType DetachPolicy DetachPrincipalPolicy DetachThingPrincipal DisableTopicRule EnableTopicRule GetEffectivePolicies GetIndexingConfiguration GetJobDocument GetLoggingOptions GetPolicy GetPolicyVersion GetRegistrationCode GetTopicRule GetV2LoggingOptions ListAttachedPolicies ListAuthorizers ListCACertificates ListCertificates ListCertificatesByCA ListIndices ListJobExecutionsForJob ListJobExecutionsForThing ListJobs ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListRoleAliases ListTargetsForPolicy ListThingGroups ListThingGroupsForThing ListThingPrincipals ListThingRegistrationTaskReports ListThingRegistrationTasks ListThings ListThingsInThingGroup ListThingTypes ListTopicRules ListV2LoggingLevels RegisterCACertificate RegisterCertificate RegisterThing RejectCertificateTransfer RemoveThingFromThingGroup ReplaceTopicRule SearchIndex SetDefaultAuthorizer SetDefaultPolicyVersion SetLoggingOptions SetV2LoggingLevel SetV2LoggingOptions StartThingRegistrationTask StopThingRegistrationTask TestAuthorization TestInvokeAuthorizer TransferCertificate UpdateAuthorizer UpdateCACertificate UpdateCertificate UpdateEventConfigurations UpdateIndexingConfiguration UpdateRoleAlias UpdateThing UpdateThingGroup UpdateThingGroupsForThing / }
+  sub operations { qw/AcceptCertificateTransfer AddThingToThingGroup AssociateTargetsWithJob AttachPolicy AttachPrincipalPolicy AttachThingPrincipal CancelCertificateTransfer CancelJob ClearDefaultAuthorizer CreateAuthorizer CreateCertificateFromCsr CreateJob CreateKeysAndCertificate CreateOTAUpdate CreatePolicy CreatePolicyVersion CreateRoleAlias CreateStream CreateThing CreateThingGroup CreateThingType CreateTopicRule DeleteAuthorizer DeleteCACertificate DeleteCertificate DeleteOTAUpdate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteRoleAlias DeleteStream DeleteThing DeleteThingGroup DeleteThingType DeleteTopicRule DeleteV2LoggingLevel DeprecateThingType DescribeAuthorizer DescribeCACertificate DescribeCertificate DescribeDefaultAuthorizer DescribeEndpoint DescribeEventConfigurations DescribeIndex DescribeJob DescribeJobExecution DescribeRoleAlias DescribeStream DescribeThing DescribeThingGroup DescribeThingRegistrationTask DescribeThingType DetachPolicy DetachPrincipalPolicy DetachThingPrincipal DisableTopicRule EnableTopicRule GetEffectivePolicies GetIndexingConfiguration GetJobDocument GetLoggingOptions GetOTAUpdate GetPolicy GetPolicyVersion GetRegistrationCode GetTopicRule GetV2LoggingOptions ListAttachedPolicies ListAuthorizers ListCACertificates ListCertificates ListCertificatesByCA ListIndices ListJobExecutionsForJob ListJobExecutionsForThing ListJobs ListOTAUpdates ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListRoleAliases ListStreams ListTargetsForPolicy ListThingGroups ListThingGroupsForThing ListThingPrincipals ListThingRegistrationTaskReports ListThingRegistrationTasks ListThings ListThingsInThingGroup ListThingTypes ListTopicRules ListV2LoggingLevels RegisterCACertificate RegisterCertificate RegisterThing RejectCertificateTransfer RemoveThingFromThingGroup ReplaceTopicRule SearchIndex SetDefaultAuthorizer SetDefaultPolicyVersion SetLoggingOptions SetV2LoggingLevel SetV2LoggingOptions StartThingRegistrationTask StopThingRegistrationTask TestAuthorization TestInvokeAuthorizer TransferCertificate UpdateAuthorizer UpdateCACertificate UpdateCertificate UpdateEventConfigurations UpdateIndexingConfiguration UpdateRoleAlias UpdateStream UpdateThing UpdateThingGroup UpdateThingGroupsForThing / }
 
 1;
 
@@ -1084,6 +1129,15 @@ B<Note> This is the only time AWS IoT issues the private key for this
 certificate, so it is important to keep it in a secure location.
 
 
+=head2 CreateOTAUpdate(Files => ArrayRef[L<Paws::IoT::OTAUpdateFile>], OtaUpdateId => Str, RoleArn => Str, Targets => ArrayRef[Str|Undef], [AdditionalParameters => L<Paws::IoT::AdditionalParameterMap>, Description => Str, TargetSelection => Str])
+
+Each argument is described in detail in: L<Paws::IoT::CreateOTAUpdate>
+
+Returns: a L<Paws::IoT::CreateOTAUpdateResponse> instance
+
+Creates an AWS IoT OTAUpdate on a target group of things or groups.
+
+
 =head2 CreatePolicy(PolicyDocument => Str, PolicyName => Str)
 
 Each argument is described in detail in: L<Paws::IoT::CreatePolicy>
@@ -1122,6 +1176,22 @@ Each argument is described in detail in: L<Paws::IoT::CreateRoleAlias>
 Returns: a L<Paws::IoT::CreateRoleAliasResponse> instance
 
 Creates a role alias.
+
+
+=head2 CreateStream(Files => ArrayRef[L<Paws::IoT::StreamFile>], RoleArn => Str, StreamId => Str, [Description => Str])
+
+Each argument is described in detail in: L<Paws::IoT::CreateStream>
+
+Returns: a L<Paws::IoT::CreateStreamResponse> instance
+
+Creates a stream for delivering one or more large files in chunks over
+MQTT. A stream transports data bytes in chunks or blocks packaged as
+MQTT messages from a source like S3. You can have one or more files
+associated with a stream. The total size of a file associated with the
+stream cannot exceed more than 2 MB. The stream will be created with
+version 0. If a stream is created with the same streamID as a stream
+that existed and was deleted within last 90 days, we will resurrect
+that old stream by incrementing the version by 1.
 
 
 =head2 CreateThing(ThingName => Str, [AttributePayload => L<Paws::IoT::AttributePayload>, ThingTypeName => Str])
@@ -1194,6 +1264,15 @@ DetachPrincipalPolicy API to detach all policies. Next, use the
 UpdateCertificate API to set the certificate to the INACTIVE status.
 
 
+=head2 DeleteOTAUpdate(OtaUpdateId => Str)
+
+Each argument is described in detail in: L<Paws::IoT::DeleteOTAUpdate>
+
+Returns: a L<Paws::IoT::DeleteOTAUpdateResponse> instance
+
+Delete an OTA update.
+
+
 =head2 DeletePolicy(PolicyName => Str)
 
 Each argument is described in detail in: L<Paws::IoT::DeletePolicy>
@@ -1243,6 +1322,15 @@ Each argument is described in detail in: L<Paws::IoT::DeleteRoleAlias>
 Returns: a L<Paws::IoT::DeleteRoleAliasResponse> instance
 
 Deletes a role alias
+
+
+=head2 DeleteStream(StreamId => Str)
+
+Each argument is described in detail in: L<Paws::IoT::DeleteStream>
+
+Returns: a L<Paws::IoT::DeleteStreamResponse> instance
+
+Deletes a stream.
 
 
 =head2 DeleteThing(ThingName => Str, [ExpectedVersion => Int])
@@ -1395,6 +1483,15 @@ Returns: a L<Paws::IoT::DescribeRoleAliasResponse> instance
 Describes a role alias.
 
 
+=head2 DescribeStream(StreamId => Str)
+
+Each argument is described in detail in: L<Paws::IoT::DescribeStream>
+
+Returns: a L<Paws::IoT::DescribeStreamResponse> instance
+
+Gets information about a stream.
+
+
 =head2 DescribeThing(ThingName => Str)
 
 Each argument is described in detail in: L<Paws::IoT::DescribeThing>
@@ -1512,6 +1609,15 @@ Each argument is described in detail in: L<Paws::IoT::GetLoggingOptions>
 Returns: a L<Paws::IoT::GetLoggingOptionsResponse> instance
 
 Gets the logging options.
+
+
+=head2 GetOTAUpdate(OtaUpdateId => Str)
+
+Each argument is described in detail in: L<Paws::IoT::GetOTAUpdate>
+
+Returns: a L<Paws::IoT::GetOTAUpdateResponse> instance
+
+Gets an OTA update.
 
 
 =head2 GetPolicy(PolicyName => Str)
@@ -1648,6 +1754,15 @@ Returns: a L<Paws::IoT::ListJobsResponse> instance
 Lists jobs.
 
 
+=head2 ListOTAUpdates([MaxResults => Int, NextToken => Str, OtaUpdateStatus => Str])
+
+Each argument is described in detail in: L<Paws::IoT::ListOTAUpdates>
+
+Returns: a L<Paws::IoT::ListOTAUpdatesResponse> instance
+
+Lists OTA updates.
+
+
 =head2 ListOutgoingCertificates([AscendingOrder => Bool, Marker => Str, PageSize => Int])
 
 Each argument is described in detail in: L<Paws::IoT::ListOutgoingCertificates>
@@ -1718,6 +1833,15 @@ Each argument is described in detail in: L<Paws::IoT::ListRoleAliases>
 Returns: a L<Paws::IoT::ListRoleAliasesResponse> instance
 
 Lists the role aliases registered in your account.
+
+
+=head2 ListStreams([AscendingOrder => Bool, MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::IoT::ListStreams>
+
+Returns: a L<Paws::IoT::ListStreamsResponse> instance
+
+Lists all of the streams in your AWS account.
 
 
 =head2 ListTargetsForPolicy(PolicyName => Str, [Marker => Str, PageSize => Int])
@@ -2072,6 +2196,16 @@ Each argument is described in detail in: L<Paws::IoT::UpdateRoleAlias>
 Returns: a L<Paws::IoT::UpdateRoleAliasResponse> instance
 
 Updates a role alias.
+
+
+=head2 UpdateStream(StreamId => Str, [Description => Str, Files => ArrayRef[L<Paws::IoT::StreamFile>], RoleArn => Str])
+
+Each argument is described in detail in: L<Paws::IoT::UpdateStream>
+
+Returns: a L<Paws::IoT::UpdateStreamResponse> instance
+
+Updates an existing stream. The stream version will be incremented by
+one.
 
 
 =head2 UpdateThing(ThingName => Str, [AttributePayload => L<Paws::IoT::AttributePayload>, ExpectedVersion => Int, RemoveThingType => Bool, ThingTypeName => Str])
