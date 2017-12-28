@@ -8,6 +8,7 @@ package Paws::EC2::Address;
   has NetworkInterfaceOwnerId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceOwnerId', traits => ['NameInRequest']);
   has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
   has PublicIp => (is => 'ro', isa => 'Str', request_name => 'publicIp', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::Address object:
 
-  $service_obj->Method(Att1 => { AllocationId => $value, ..., PublicIp => $value  });
+  $service_obj->Method(Att1 => { AllocationId => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -83,6 +84,11 @@ EC2-Classic (C<standard>) or instances in a VPC (C<vpc>).
 =head2 PublicIp => Str
 
   The Elastic IP address.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+  Any tags assigned to the Elastic IP address.
 
 
 

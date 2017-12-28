@@ -77,11 +77,11 @@ and codes is allowed when authorizing rules.
 
 =head2 PrefixListIds => ArrayRef[L<Paws::EC2::PrefixListId>]
 
-  (Valid for AuthorizeSecurityGroupEgress, RevokeSecurityGroupEgress and
-DescribeSecurityGroups only) One or more prefix list IDs for an AWS
-service. In an AuthorizeSecurityGroupEgress request, this is the AWS
-service that you want to access through a VPC endpoint from instances
-associated with the security group.
+  (EC2-VPC only; valid for AuthorizeSecurityGroupEgress,
+RevokeSecurityGroupEgress and DescribeSecurityGroups only) One or more
+prefix list IDs for an AWS service. In an AuthorizeSecurityGroupEgress
+request, this is the AWS service that you want to access through a VPC
+endpoint from instances associated with the security group.
 
 
 =head2 ToPort => Int

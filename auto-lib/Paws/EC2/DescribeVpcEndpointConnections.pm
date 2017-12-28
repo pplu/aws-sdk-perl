@@ -53,22 +53,22 @@ One or more filters.
 
 =item *
 
-C<customer-account-id> - The AWS account number of the owner of the
+C<service-id> - The ID of the service.
+
+=item *
+
+C<vpc-endpoint-owner> - The AWS account number of the owner of the
 endpoint.
 
 =item *
 
-C<endpoint-connection-state> - The state of the endpoint
-(C<PendingAcceptance> | C<Pending> | C<Available> | C<Deleting> |
-C<Deleted> | C<Rejected> | C<Failed>).
+C<vpc-endpoint-state> - The state of the endpoint (C<pendingAcceptance>
+| C<pending> | C<available> | C<deleting> | C<deleted> | C<rejected> |
+C<failed>).
 
 =item *
 
 C<vpc-endpoint-id> - The ID of the endpoint.
-
-=item *
-
-C<vpc-endpoint-service-id> - The ID of the service.
 
 =back
 

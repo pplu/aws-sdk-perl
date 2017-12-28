@@ -54,16 +54,16 @@ One or more filters.
 
 =item *
 
-C<service-name> - The ARN of the service.
+C<service-name> - The name of the service.
 
 =item *
 
-C<vpc-endpoint-service-id> - The ID of the service.
+C<service-id> - The ID of the service.
 
 =item *
 
-C<vpc-endpoint-service-state> - The state of the service (C<Pending> |
-C<Available> | C<Deleting> | C<Deleted> | C<Failed>).
+C<service-state> - The state of the service (C<Pending> | C<Available>
+| C<Deleting> | C<Deleted> | C<Failed>).
 
 =back
 

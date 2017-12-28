@@ -5792,6 +5792,8 @@ network ACL. For more information about network ACLs, see Network ACLs
 (http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
+This is an idempotent operation.
+
 
 =head2 ReplaceNetworkAclEntry(Egress => Bool, NetworkAclId => Str, Protocol => Str, RuleAction => Str, RuleNumber => Int, [CidrBlock => Str, DryRun => Bool, IcmpTypeCode => L<Paws::EC2::IcmpTypeCode>, Ipv6CidrBlock => Str, PortRange => L<Paws::EC2::PortRange>])
 
