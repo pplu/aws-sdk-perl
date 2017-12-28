@@ -164,6 +164,29 @@ package Paws::Lambda;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllAliases {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAliases(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->ListAliases(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Aliases }, @{ $next_result->Aliases };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'Aliases') foreach (@{ $result->Aliases });
+        $result = $self->ListAliases(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'Aliases') foreach (@{ $result->Aliases });
+    }
+
+    return undef
+  }
   sub ListAllEventSourceMappings {
     my $self = shift;
 
@@ -800,6 +823,18 @@ C<lambda:UpdateFunctionConfiguration> action.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllAliases(sub { },FunctionName => Str, [FunctionVersion => Str, Marker => Str, MaxItems => Int])
+
+=head2 ListAllAliases(FunctionName => Str, [FunctionVersion => Str, Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Aliases, passing the object as the first parameter, and the string 'Aliases' as the second parameter 
+
+If not, it will return a a L<Paws::Lambda::ListAliasesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 ListAllEventSourceMappings(sub { },[EventSourceArn => Str, FunctionName => Str, Marker => Str, MaxItems => Int])
 
