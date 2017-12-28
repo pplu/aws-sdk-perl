@@ -135,11 +135,7 @@ completed. The default is 60 minutes.
 
 =head2 VpcConfig => L<Paws::CodeBuild::VpcConfig>
 
-  If your AWS CodeBuild project accesses resources in an Amazon VPC, you
-provide this parameter that identifies the VPC ID and the list of
-security group IDs and subnet IDs. The security groups and subnets must
-belong to the same VPC. You must provide at least one security group
-and one subnet ID.
+  Information about the VPC configuration that AWS CodeBuild will access.
 
 
 =head2 Webhook => L<Paws::CodeBuild::Webhook>

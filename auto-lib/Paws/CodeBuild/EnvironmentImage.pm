@@ -2,6 +2,7 @@ package Paws::CodeBuild::EnvironmentImage;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Versions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'versions', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeBuild::EnvironmentImage object:
 
-  $service_obj->Method(Att1 => { Description => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { Description => $value, ..., Versions => $value  });
 
 =head3 Results returned from an API call
 
@@ -45,6 +46,11 @@ Information about a Docker image that is managed by AWS CodeBuild.
 =head2 Name => Str
 
   The name of the Docker image.
+
+
+=head2 Versions => ArrayRef[Str|Undef]
+
+  A list of environment image versions.
 
 
 

@@ -33,11 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::
 
 =head1 DESCRIPTION
 
-If your AWS CodeBuild project accesses resources in an Amazon VPC, you
-provide this parameter that identifies the VPC ID and the list of
-security group IDs and subnet IDs. The security groups and subnets must
-belong to the same VPC. You must provide at least one security group
-and one subnet ID.
+Information about the VPC configuration that AWS CodeBuild will access.
 
 =head1 ATTRIBUTES
 
