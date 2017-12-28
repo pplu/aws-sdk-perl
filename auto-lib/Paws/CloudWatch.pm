@@ -463,6 +463,10 @@ operations:
 
 =item *
 
+C<iam:CreateServiceLinkedRole> for all alarms with EC2 actions
+
+=item *
+
 C<ec2:DescribeInstanceStatus> and C<ec2:DescribeInstances> for all
 alarms on EC2 instance status metrics
 
