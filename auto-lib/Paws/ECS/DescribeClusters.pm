@@ -55,7 +55,7 @@ runningEC2TasksCount
 
 =item *
 
-RunningFargateTasksCount
+runningFargateTasksCount
 
 =item *
 

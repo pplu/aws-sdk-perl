@@ -105,7 +105,7 @@ C<memory> parameter:
 
 =item *
 
-256 (.25 vCPU) - Available C<memory> values: 512MB, 1GB, 2GB
+256 (.25 vCPU) - Available C<memory> values: 0.5GB, 1GB, 2GB
 
 =item *
 
@@ -173,7 +173,7 @@ C<cpu> parameter:
 
 =item *
 
-512MB, 1GB, 2GB - Available C<cpu> values: 256 (.25 vCPU)
+0.5GB, 1GB, 2GB - Available C<cpu> values: 256 (.25 vCPU)
 
 =item *
 

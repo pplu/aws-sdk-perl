@@ -37,9 +37,10 @@ Port mappings allow containers to access ports on the host container
 instance to send or receive traffic. Port mappings are specified as
 part of the container definition.
 
-If using containers in a task with the Fargate launch type, exposed
-ports should be specified using C<containerPort>. The C<hostPort> can
-be left blank or it must be the same value as the C<containerPort>.
+If using containers in a task with the C<awsvpc> or C<host> network
+mode, exposed ports should be specified using C<containerPort>. The
+C<hostPort> can be left blank or it must be the same value as the
+C<containerPort>.
 
 After a task reaches the C<RUNNING> status, manual and automatic host
 and container port assignments are visible in the C<networkBindings>
@@ -53,15 +54,15 @@ section of DescribeTasks API responses.
   The port number on the container that is bound to the user-specified or
 automatically assigned host port.
 
-If using containers in a task with the Fargate launch type, exposed
-ports should be specified using C<containerPort>.
+If using containers in a task with the C<awsvpc> or C<host> network
+mode, exposed ports should be specified using C<containerPort>.
 
-If using containers in a task with the EC2 launch type and you specify
-a container port and not a host port, your container automatically
-receives a host port in the ephemeral port range (for more information,
-see C<hostPort>). Port mappings that are automatically assigned in this
-way do not count toward the 100 reserved ports limit of a container
-instance.
+If using containers in a task with the C<bridge> network mode and you
+specify a container port and not a host port, your container
+automatically receives a host port in the ephemeral port range (for
+more information, see C<hostPort>). Port mappings that are
+automatically assigned in this way do not count toward the 100 reserved
+ports limit of a container instance.
 
 
 =head2 HostPort => Int
@@ -69,13 +70,13 @@ instance.
   The port number on the container instance to reserve for your
 container.
 
-If using containers in a task with the Fargate launch type, the
-C<hostPort> can either be left blank or needs to be the same value as
-the C<containerPort>.
+If using containers in a task with the C<awsvpc> or C<host> network
+mode, the C<hostPort> can either be left blank or needs to be the same
+value as the C<containerPort>.
 
-If using containers in a task with the EC2 launch type, you can specify
-a non-reserved host port for your container port mapping, or you can
-omit the C<hostPort> (or set it to C<0>) while specifying a
+If using containers in a task with the C<bridge> network mode, you can
+specify a non-reserved host port for your container port mapping, or
+you can omit the C<hostPort> (or set it to C<0>) while specifying a
 C<containerPort> and your container automatically receives a port in
 the ephemeral port range for your container instance operating system
 and Docker version.

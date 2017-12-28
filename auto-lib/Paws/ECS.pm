@@ -346,7 +346,7 @@ your services or tasks using the Fargate launch type. For more control,
 you can host your tasks on a cluster of Amazon Elastic Compute Cloud
 (Amazon EC2) instances that you manage by using the EC2 launch type.
 For more information about launch types, see Amazon ECS Launch Types
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguidelaunch_types.html).
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html).
 
 Amazon ECS lets you launch and stop container-based applications with
 simple API calls, allows you to get the state of your cluster from a
@@ -382,7 +382,7 @@ Using Service-Linked Roles for Amazon ECS
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 CreateService(DesiredCount => Int, ServiceName => Str, TaskDefinition => Str, [ClientToken => Str, Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, LaunchType => Str, LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>], NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>, PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>], PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>], PlatformVersion => Str, Role => Str])
+=head2 CreateService(DesiredCount => Int, ServiceName => Str, TaskDefinition => Str, [ClientToken => Str, Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, HealthCheckGracePeriodSeconds => Int, LaunchType => Str, LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>], NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>, PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>], PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>], PlatformVersion => Str, Role => Str])
 
 Each argument is described in detail in: L<Paws::ECS::CreateService>
 
@@ -800,6 +800,36 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 Alternatively, you can use StartTask to use your own scheduler or place
 tasks manually on specific container instances.
 
+The Amazon ECS API follows an eventual consistency model, due to the
+distributed nature of the system supporting the API. This means that
+the result of an API command you run that affects your Amazon ECS
+resources might not be immediately visible to all subsequent commands
+you run. You should keep this in mind when you carry out an API command
+that immediately follows a previous API command.
+
+To manage eventual consistency, you can do the following:
+
+=over
+
+=item *
+
+Confirm the state of the resource before you run a command to modify
+it. Run the DescribeTasks command using an exponential backoff
+algorithm to ensure that you allow enough time for the previous command
+to propagate through the system. To do this, run the DescribeTasks
+command repeatedly, starting with a couple of seconds of wait time, and
+increasing gradually up to five minutes of wait time.
+
+=item *
+
+Add wait time between subsequent commands, even if the DescribeTasks
+command returns an accurate response. Apply an exponential backoff
+algorithm starting with a couple of seconds of wait time, and increase
+gradually up to about five minutes of wait time.
+
+=back
+
+
 
 =head2 StartTask(ContainerInstances => ArrayRef[Str|Undef], TaskDefinition => Str, [Cluster => Str, Group => Str, NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>, Overrides => L<Paws::ECS::TaskOverride>, StartedBy => Str])
 
@@ -947,7 +977,7 @@ When you set a container instance to C<ACTIVE>, the Amazon ECS
 scheduler can begin scheduling tasks on the instance again.
 
 
-=head2 UpdateService(Service => Str, [Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, DesiredCount => Int, ForceNewDeployment => Bool, NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>, PlatformVersion => Str, TaskDefinition => Str])
+=head2 UpdateService(Service => Str, [Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, DesiredCount => Int, ForceNewDeployment => Bool, HealthCheckGracePeriodSeconds => Int, NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>, PlatformVersion => Str, TaskDefinition => Str])
 
 Each argument is described in detail in: L<Paws::ECS::UpdateService>
 

@@ -485,6 +485,10 @@ reserve 128 MiB of memory from the remaining resources on the container
 instance, but also allow the container to consume more memory resources
 when needed.
 
+The Docker daemon reserves a minimum of 4 MiB of memory for a
+container, so you should not specify fewer than 4 MiB of memory for
+your containers.
+
 
 =head2 MountPoints => ArrayRef[L<Paws::ECS::MountPoint>]
 

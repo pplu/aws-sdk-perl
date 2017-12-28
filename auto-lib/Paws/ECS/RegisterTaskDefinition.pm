@@ -52,16 +52,21 @@ different containers that make up your task.
 =head2 Cpu => Str
 
 The number of C<cpu> units used by the task. If using the EC2 launch
-type, this field is optional and any value can be used. If you are
-using the Fargate launch type, this field is required and you must use
-one of the following values, which determines your range of valid
-values for the C<memory> parameter:
+type, this field is optional and any value can be used.
+
+Task-level CPU and memory parameters are ignored for Windows
+containers. We recommend specifying container-level resources for
+Windows containers.
+
+If you are using the Fargate launch type, this field is required and
+you must use one of the following values, which determines your range
+of valid values for the C<memory> parameter:
 
 =over
 
 =item *
 
-256 (.25 vCPU) - Available C<memory> values: 512MB, 1GB, 2GB
+256 (.25 vCPU) - Available C<memory> values: 0.5GB, 1GB, 2GB
 
 =item *
 
@@ -106,16 +111,21 @@ and lowercase), numbers, hyphens, and underscores are allowed.
 =head2 Memory => Str
 
 The amount (in MiB) of memory used by the task. If using the EC2 launch
-type, this field is optional and any value can be used. If you are
-using the Fargate launch type, this field is required and you must use
-one of the following values, which determines your range of valid
-values for the C<cpu> parameter:
+type, this field is optional and any value can be used.
+
+Task-level CPU and memory parameters are ignored for Windows
+containers. We recommend specifying container-level resources for
+Windows containers.
+
+If you are using the Fargate launch type, this field is required and
+you must use one of the following values, which determines your range
+of valid values for the C<cpu> parameter:
 
 =over
 
 =item *
 
-512MB, 1GB, 2GB - Available C<cpu> values: 256 (.25 vCPU)
+0.5GB, 1GB, 2GB - Available C<cpu> values: 256 (.25 vCPU)
 
 =item *
 

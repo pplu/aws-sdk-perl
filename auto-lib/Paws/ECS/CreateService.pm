@@ -5,6 +5,7 @@ package Paws::ECS::CreateService;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', traits => ['NameInRequest'], request_name => 'deploymentConfiguration' );
   has DesiredCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'desiredCount' , required => 1);
+  has HealthCheckGracePeriodSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'healthCheckGracePeriodSeconds' );
   has LaunchType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'launchType' );
   has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::LoadBalancer]', traits => ['NameInRequest'], request_name => 'loadBalancers' );
   has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', traits => ['NameInRequest'], request_name => 'networkConfiguration' );
@@ -71,6 +72,20 @@ the deployment and the ordering of stopping and starting tasks.
 
 The number of instantiations of the specified task definition to place
 and keep running on your cluster.
+
+
+
+=head2 HealthCheckGracePeriodSeconds => Int
+
+The period of time, in seconds, that the Amazon ECS service scheduler
+should ignore unhealthy Elastic Load Balancing target health checks
+after a task has first started. This is only valid if your service is
+configured to use a load balancer. If your service's tasks take a while
+to start and respond to ELB health checks, you can specify a health
+check grace period of up to 1,800 seconds during which the ECS service
+scheduler will ignore ELB health check status. This grace period can
+prevent the ECS service scheduler from marking tasks as unhealthy and
+stopping them before they have time to come up.
 
 
 

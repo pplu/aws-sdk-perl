@@ -6,6 +6,7 @@ package Paws::ECS::Service;
   has Deployments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Deployment]', request_name => 'deployments', traits => ['NameInRequest']);
   has DesiredCount => (is => 'ro', isa => 'Int', request_name => 'desiredCount', traits => ['NameInRequest']);
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceEvent]', request_name => 'events', traits => ['NameInRequest']);
+  has HealthCheckGracePeriodSeconds => (is => 'ro', isa => 'Int', request_name => 'healthCheckGracePeriodSeconds', traits => ['NameInRequest']);
   has LaunchType => (is => 'ro', isa => 'Str', request_name => 'launchType', traits => ['NameInRequest']);
   has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::LoadBalancer]', request_name => 'loadBalancers', traits => ['NameInRequest']);
   has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', request_name => 'networkConfiguration', traits => ['NameInRequest']);
@@ -86,6 +87,13 @@ created with CreateService, and it can be modified with UpdateService.
 
   The event stream for your service. A maximum of 100 of the latest
 events are displayed.
+
+
+=head2 HealthCheckGracePeriodSeconds => Int
+
+  The period of time, in seconds, that the Amazon ECS service scheduler
+ignores unhealthy Elastic Load Balancing target health checks after a
+task has first started.
 
 
 =head2 LaunchType => Str
