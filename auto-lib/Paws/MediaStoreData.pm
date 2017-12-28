@@ -90,7 +90,7 @@ Each argument is described in detail in: L<Paws::MediaStoreData::DescribeObject>
 
 Returns: a L<Paws::MediaStoreData::DescribeObjectResponse> instance
 
-Gets the header for an object at the specified path.
+Gets the headers for an object at the specified path.
 
 
 =head2 GetObject(Path => Str, [Range => Str])
