@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Contains information about a WorkSpace that could not be created.
+Information about a WorkSpace that could not be created.
 
 =head1 ATTRIBUTES
 
@@ -50,8 +50,7 @@ Contains information about a WorkSpace that could not be created.
 
 =head2 WorkspaceRequest => L<Paws::WorkSpaces::WorkspaceRequest>
 
-  A FailedCreateWorkspaceRequest$WorkspaceRequest object that contains
-the information about the WorkSpace that could not be created.
+  Information about the WorkSpace.
 
 
 

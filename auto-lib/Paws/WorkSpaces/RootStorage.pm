@@ -1,4 +1,4 @@
-package Paws::WorkSpaces::UserStorage;
+package Paws::WorkSpaces::RootStorage;
   use Moose;
   has Capacity => (is => 'ro', isa => 'Str');
 1;
@@ -7,7 +7,7 @@ package Paws::WorkSpaces::UserStorage;
 
 =head1 NAME
 
-Paws::WorkSpaces::UserStorage
+Paws::WorkSpaces::RootStorage
 
 =head1 USAGE
 
@@ -18,27 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::WorkSpaces::UserStorage object:
+As an example, if Att1 is expected to be a Paws::WorkSpaces::RootStorage object:
 
   $service_obj->Method(Att1 => { Capacity => $value, ..., Capacity => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces::UserStorage object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces::RootStorage object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Capacity
 
 =head1 DESCRIPTION
 
-Information about the user storage for a WorkSpace bundle.
+Information about the root volume for a WorkSpace bundle.
 
 =head1 ATTRIBUTES
 
 
 =head2 Capacity => Str
 
-  The size of the user storage.
+  The size of the root volume.
 
 
 

@@ -186,8 +186,8 @@ Paws::WorkSpaces - Perl Interface to AWS Amazon WorkSpaces
 
 Amazon WorkSpaces Service
 
-This reference provides detailed information about the Amazon
-WorkSpaces operations.
+Amazon WorkSpaces enables you to provision virtual, cloud-based
+Microsoft Windows desktops for your users.
 
 =head1 METHODS
 
@@ -197,7 +197,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::CreateTags>
 
 Returns: a L<Paws::WorkSpaces::CreateTagsResult> instance
 
-Creates tags for a WorkSpace.
+Creates tags for the specified WorkSpace.
 
 
 =head2 CreateWorkspaces(Workspaces => ArrayRef[L<Paws::WorkSpaces::WorkspaceRequest>])
@@ -218,7 +218,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DeleteTags>
 
 Returns: a L<Paws::WorkSpaces::DeleteTagsResult> instance
 
-Deletes tags from a WorkSpace.
+Deletes the specified tags from a WorkSpace.
 
 
 =head2 DescribeTags(ResourceId => Str)
@@ -227,7 +227,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DescribeTags>
 
 Returns: a L<Paws::WorkSpaces::DescribeTagsResult> instance
 
-Describes tags for a WorkSpace.
+Describes the tags for the specified WorkSpace.
 
 
 =head2 DescribeWorkspaceBundles([BundleIds => ArrayRef[Str|Undef], NextToken => Str, Owner => Str])
@@ -236,16 +236,10 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaceBu
 
 Returns: a L<Paws::WorkSpaces::DescribeWorkspaceBundlesResult> instance
 
-Obtains information about the WorkSpace bundles that are available to
-your account in the specified region.
+Describes the available WorkSpace bundles.
 
-You can filter the results with either the C<BundleIds> parameter, or
-the C<Owner> parameter, but not both.
-
-This operation supports pagination with the use of the C<NextToken>
-request and response parameters. If more results are available, the
-C<NextToken> response member contains a token that you pass in the next
-call to this operation to retrieve the next set of items.
+You can filter the results using either bundle ID or owner, but not
+both.
 
 
 =head2 DescribeWorkspaceDirectories([DirectoryIds => ArrayRef[Str|Undef], NextToken => Str])
@@ -254,14 +248,8 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaceDi
 
 Returns: a L<Paws::WorkSpaces::DescribeWorkspaceDirectoriesResult> instance
 
-Retrieves information about the AWS Directory Service directories in
-the region that are registered with Amazon WorkSpaces and are available
-to your account.
-
-This operation supports pagination with the use of the C<NextToken>
-request and response parameters. If more results are available, the
-C<NextToken> response member contains a token that you pass in the next
-call to this operation to retrieve the next set of items.
+Describes the available AWS Directory Service directories that are
+registered with Amazon WorkSpaces.
 
 
 =head2 DescribeWorkspaces([BundleId => Str, DirectoryId => Str, Limit => Int, NextToken => Str, UserName => Str, WorkspaceIds => ArrayRef[Str|Undef]])
@@ -270,15 +258,10 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaces>
 
 Returns: a L<Paws::WorkSpaces::DescribeWorkspacesResult> instance
 
-Obtains information about the specified WorkSpaces.
+Describes the specified WorkSpaces.
 
-Only one of the filter parameters, such as C<BundleId>, C<DirectoryId>,
-or C<WorkspaceIds>, can be specified at a time.
-
-This operation supports pagination with the use of the C<NextToken>
-request and response parameters. If more results are available, the
-C<NextToken> response member contains a token that you pass in the next
-call to this operation to retrieve the next set of items.
+You can filter the results using bundle ID, directory ID, or owner, but
+you can specify only one filter at a time.
 
 
 =head2 DescribeWorkspacesConnectionStatus([NextToken => Str, WorkspaceIds => ArrayRef[Str|Undef]])
@@ -287,7 +270,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspacesC
 
 Returns: a L<Paws::WorkSpaces::DescribeWorkspacesConnectionStatusResult> instance
 
-Describes the connection status of a specified WorkSpace.
+Describes the connection status of the specified WorkSpaces.
 
 
 =head2 ModifyWorkspaceProperties(WorkspaceId => Str, WorkspaceProperties => L<Paws::WorkSpaces::WorkspaceProperties>)
@@ -296,8 +279,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::ModifyWorkspaceProp
 
 Returns: a L<Paws::WorkSpaces::ModifyWorkspacePropertiesResult> instance
 
-Modifies the WorkSpace properties, including the running mode and
-AutoStop time.
+Modifies the specified WorkSpace properties.
 
 
 =head2 RebootWorkspaces(RebootWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::RebootRequest>])
@@ -308,8 +290,8 @@ Returns: a L<Paws::WorkSpaces::RebootWorkspacesResult> instance
 
 Reboots the specified WorkSpaces.
 
-To be able to reboot a WorkSpace, the WorkSpace must have a B<State> of
-C<AVAILABLE>, C<IMPAIRED>, or C<INOPERABLE>.
+You cannot reboot a WorkSpace unless its state is C<AVAILABLE>,
+C<IMPAIRED>, or C<INOPERABLE>.
 
 This operation is asynchronous and returns before the WorkSpaces have
 rebooted.
@@ -323,30 +305,13 @@ Returns: a L<Paws::WorkSpaces::RebuildWorkspacesResult> instance
 
 Rebuilds the specified WorkSpaces.
 
+You cannot rebuild a WorkSpace unless its state is C<AVAILABLE> or
+C<ERROR>.
+
 Rebuilding a WorkSpace is a potentially destructive action that can
-result in the loss of data. Rebuilding a WorkSpace causes the following
-to occur:
-
-=over
-
-=item *
-
-The system is restored to the image of the bundle that the WorkSpace is
-created from. Any applications that have been installed, or system
-settings that have been made since the WorkSpace was created will be
-lost.
-
-=item *
-
-The data drive (D drive) is re-created from the last automatic snapshot
-taken of the data drive. The current contents of the data drive are
-overwritten. Automatic snapshots of the data drive are taken every 12
-hours, so the snapshot can be as much as 12 hours old.
-
-=back
-
-To be able to rebuild a WorkSpace, the WorkSpace must have a B<State>
-of C<AVAILABLE> or C<ERROR>.
+result in the loss of data. For more information, see Rebuild a
+WorkSpace
+(http://docs.aws.amazon.com/workspaces/latest/adminguide/reset-workspace.html).
 
 This operation is asynchronous and returns before the WorkSpaces have
 been completely rebuilt.
@@ -358,8 +323,10 @@ Each argument is described in detail in: L<Paws::WorkSpaces::StartWorkspaces>
 
 Returns: a L<Paws::WorkSpaces::StartWorkspacesResult> instance
 
-Starts the specified WorkSpaces. The WorkSpaces must have a running
-mode of AutoStop and a state of STOPPED.
+Starts the specified WorkSpaces.
+
+You cannot start a WorkSpace unless it has a running mode of
+C<AutoStop> and a state of C<STOPPED>.
 
 
 =head2 StopWorkspaces(StopWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::StopRequest>])
@@ -368,8 +335,10 @@ Each argument is described in detail in: L<Paws::WorkSpaces::StopWorkspaces>
 
 Returns: a L<Paws::WorkSpaces::StopWorkspacesResult> instance
 
-Stops the specified WorkSpaces. The WorkSpaces must have a running mode
-of AutoStop and a state of AVAILABLE, IMPAIRED, UNHEALTHY, or ERROR.
+Stops the specified WorkSpaces.
+
+You cannot stop a WorkSpace unless it has a running mode of C<AutoStop>
+and a state of C<AVAILABLE>, C<IMPAIRED>, C<UNHEALTHY>, or C<ERROR>.
 
 
 =head2 TerminateWorkspaces(TerminateWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::TerminateRequest>])
@@ -381,9 +350,8 @@ Returns: a L<Paws::WorkSpaces::TerminateWorkspacesResult> instance
 Terminates the specified WorkSpaces.
 
 Terminating a WorkSpace is a permanent action and cannot be undone. The
-user's data is not maintained and will be destroyed. If you need to
-archive any user data, contact Amazon Web Services before terminating
-the WorkSpace.
+user's data is destroyed. If you need to archive any user data, contact
+Amazon Web Services before terminating the WorkSpace.
 
 You can terminate a WorkSpace that is in any state except C<SUSPENDED>.
 

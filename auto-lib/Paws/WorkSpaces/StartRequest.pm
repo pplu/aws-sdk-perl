@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Describes the start request.
+Information used to start a WorkSpace.
 
 =head1 ATTRIBUTES
 

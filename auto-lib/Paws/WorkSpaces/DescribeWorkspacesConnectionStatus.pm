@@ -36,13 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NextToken => Str
 
-The next token of the request.
+The token for the next set of results. (You received this token from a
+previous call.)
 
 
 
 =head2 WorkspaceIds => ArrayRef[Str|Undef]
 
-An array of strings that contain the identifiers of the WorkSpaces.
+The identifiers of the WorkSpaces.
 
 
 

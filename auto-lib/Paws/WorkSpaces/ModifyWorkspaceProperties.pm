@@ -42,7 +42,7 @@ The ID of the WorkSpace.
 
 =head2 B<REQUIRED> WorkspaceProperties => L<Paws::WorkSpaces::WorkspaceProperties>
 
-The WorkSpace properties of the request.
+The properties of the WorkSpace.
 
 
 

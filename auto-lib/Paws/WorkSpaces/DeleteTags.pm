@@ -36,13 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceId => Str
 
-The resource ID of the request.
+The ID of the resource.
 
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-The tag keys of the request.
+The tag keys.
 
 
 

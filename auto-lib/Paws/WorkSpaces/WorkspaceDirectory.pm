@@ -75,8 +75,7 @@ with Amazon WorkSpaces.
 
 =head2 DnsIpAddresses => ArrayRef[Str|Undef]
 
-  An array of strings that contains the IP addresses of the DNS servers
-for the directory.
+  The IP addresses of the DNS servers for the directory.
 
 
 =head2 IamRoleId => Str
@@ -100,14 +99,12 @@ directory.
 
 =head2 SubnetIds => ArrayRef[Str|Undef]
 
-  An array of strings that contains the identifiers of the subnets used
-with the directory.
+  The identifiers of the subnets used with the directory.
 
 
 =head2 WorkspaceCreationProperties => L<Paws::WorkSpaces::DefaultWorkspaceCreationProperties>
 
-  A structure that specifies the default creation properties for all
-WorkSpaces in the directory.
+  The default creation properties for all WorkSpaces in the directory.
 
 
 =head2 WorkspaceSecurityGroupId => Str

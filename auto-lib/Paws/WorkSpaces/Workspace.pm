@@ -6,6 +6,7 @@ package Paws::WorkSpaces::Workspace;
   has ErrorCode => (is => 'ro', isa => 'Str');
   has ErrorMessage => (is => 'ro', isa => 'Str');
   has IpAddress => (is => 'ro', isa => 'Str');
+  has ModificationStates => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::ModificationState]');
   has RootVolumeEncryptionEnabled => (is => 'ro', isa => 'Bool');
   has State => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str');
@@ -44,36 +45,36 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Contains information about a WorkSpace.
+Information about a WorkSpace.
 
 =head1 ATTRIBUTES
 
 
 =head2 BundleId => Str
 
-  The identifier of the bundle that the WorkSpace was created from.
+  The identifier of the bundle used to create the WorkSpace.
 
 
 =head2 ComputerName => Str
 
-  The name of the WorkSpace as seen by the operating system.
+  The name of the WorkSpace, as seen by the operating system.
 
 
 =head2 DirectoryId => Str
 
-  The identifier of the AWS Directory Service directory that the
-WorkSpace belongs to.
+  The identifier of the AWS Directory Service directory for the
+WorkSpace.
 
 
 =head2 ErrorCode => Str
 
-  If the WorkSpace could not be created, this contains the error code.
+  If the WorkSpace could not be created, contains the error code.
 
 
 =head2 ErrorMessage => Str
 
-  If the WorkSpace could not be created, this contains a textual error
-message that describes the failure.
+  If the WorkSpace could not be created, contains a textual error message
+that describes the failure.
 
 
 =head2 IpAddress => Str
@@ -81,10 +82,14 @@ message that describes the failure.
   The IP address of the WorkSpace.
 
 
+=head2 ModificationStates => ArrayRef[L<Paws::WorkSpaces::ModificationState>]
+
+  The modification states of the WorkSpace.
+
+
 =head2 RootVolumeEncryptionEnabled => Bool
 
-  Specifies whether the data stored on the root volume, or C: drive, is
-encrypted.
+  Indicates whether the data stored on the root volume is encrypted.
 
 
 =head2 State => Str
@@ -94,18 +99,17 @@ encrypted.
 
 =head2 SubnetId => Str
 
-  The identifier of the subnet that the WorkSpace is in.
+  The identifier of the subnet for the WorkSpace.
 
 
 =head2 UserName => Str
 
-  The user that the WorkSpace is assigned to.
+  The user for the WorkSpace.
 
 
 =head2 UserVolumeEncryptionEnabled => Bool
 
-  Specifies whether the data stored on the user volume, or D: drive, is
-encrypted.
+  Indicates whether the data stored on the user volume is encrypted.
 
 
 =head2 VolumeEncryptionKey => Str
@@ -120,7 +124,7 @@ encrypted.
 
 =head2 WorkspaceProperties => L<Paws::WorkSpaces::WorkspaceProperties>
 
-  
+  The properties of the WorkSpace.
 
 
 

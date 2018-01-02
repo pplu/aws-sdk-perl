@@ -16,8 +16,7 @@ Paws::WorkSpaces::RebootWorkspacesResult
 
 =head2 FailedRequests => ArrayRef[L<Paws::WorkSpaces::FailedWorkspaceChangeRequest>]
 
-An array of structures representing any WorkSpaces that could not be
-rebooted.
+Information about the WorkSpaces that could not be rebooted.
 
 
 =head2 _request_id => Str

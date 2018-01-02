@@ -38,47 +38,43 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Contains information about a WorkSpace creation request.
+Information used to create a WorkSpace.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> BundleId => Str
 
-  The identifier of the bundle to create the WorkSpace from. You can use
-the DescribeWorkspaceBundles operation to obtain a list of the bundles
-that are available.
+  The identifier of the bundle for the WorkSpace. You can use
+DescribeWorkspaceBundles to list the available bundles.
 
 
 =head2 B<REQUIRED> DirectoryId => Str
 
-  The identifier of the AWS Directory Service directory to create the
-WorkSpace in. You can use the DescribeWorkspaceDirectories operation to
-obtain a list of the directories that are available.
+  The identifier of the AWS Directory Service directory for the
+WorkSpace. You can use DescribeWorkspaceDirectories to list the
+available directories.
 
 
 =head2 RootVolumeEncryptionEnabled => Bool
 
-  Specifies whether the data stored on the root volume, or C: drive, is
-encrypted.
+  Indicates whether the data stored on the root volume is encrypted.
 
 
 =head2 Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]
 
-  The tags of the WorkSpace request.
+  The tags for the WorkSpace.
 
 
 =head2 B<REQUIRED> UserName => Str
 
-  The username that the WorkSpace is assigned to. This username must
-exist in the AWS Directory Service directory specified by the
-C<DirectoryId> member.
+  The username of the user for the WorkSpace. This username must exist in
+the AWS Directory Service directory for the WorkSpace.
 
 
 =head2 UserVolumeEncryptionEnabled => Bool
 
-  Specifies whether the data stored on the user volume, or D: drive, is
-encrypted.
+  Indicates whether the data stored on the user volume is encrypted.
 
 
 =head2 VolumeEncryptionKey => Str
@@ -88,7 +84,7 @@ encrypted.
 
 =head2 WorkspaceProperties => L<Paws::WorkSpaces::WorkspaceProperties>
 
-  
+  The WorkSpace properties.
 
 
 

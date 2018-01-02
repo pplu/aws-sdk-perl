@@ -16,7 +16,7 @@ Paws::WorkSpaces::DescribeTagsResult
 
 =head2 TagList => ArrayRef[L<Paws::WorkSpaces::Tag>]
 
-The list of tags.
+The tags.
 
 
 =head2 _request_id => Str

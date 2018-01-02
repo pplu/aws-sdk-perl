@@ -40,18 +40,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 BundleId => Str
 
-The identifier of a bundle to obtain the WorkSpaces for. All WorkSpaces
-that are created from this bundle will be retrieved. This parameter
-cannot be combined with any other filter parameter.
+The ID of the bundle. All WorkSpaces that are created from this bundle
+are retrieved. This parameter cannot be combined with any other filter.
 
 
 
 =head2 DirectoryId => Str
 
-Specifies the directory identifier to which to limit the WorkSpaces.
-Optionally, you can specify a specific directory user with the
-C<UserName> parameter. This parameter cannot be combined with any other
-filter parameter.
+The ID of the directory. In addition, you can optionally specify a
+specific directory user (see C<UserName>). This parameter cannot be
+combined with any other filter.
 
 
 
@@ -63,23 +61,22 @@ The maximum number of items to return.
 
 =head2 NextToken => Str
 
-The C<NextToken> value from a previous call to this operation. Pass
-null if this is the first call.
+The token for the next set of results. (You received this token from a
+previous call.)
 
 
 
 =head2 UserName => Str
 
-Used with the C<DirectoryId> parameter to specify the directory user
-for whom to obtain the WorkSpace.
+The name of the directory user. You must specify this parameter with
+C<DirectoryId>.
 
 
 
 =head2 WorkspaceIds => ArrayRef[Str|Undef]
 
-An array of strings that contain the identifiers of the WorkSpaces for
-which to retrieve information. This parameter cannot be combined with
-any other filter parameter.
+The IDs of the WorkSpaces. This parameter cannot be combined with any
+other filter.
 
 Because the CreateWorkspaces operation is asynchronous, the identifier
 it returns is not immediately available. If you immediately call
