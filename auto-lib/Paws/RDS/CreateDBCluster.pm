@@ -270,7 +270,8 @@ DB cluster.
 The port number on which the instances in the DB cluster accept
 connections.
 
-Default: C<3306>
+Default: C<3306> if engine is set as aurora or C<5432> if set to
+aurora-postgresql.
 
 
 

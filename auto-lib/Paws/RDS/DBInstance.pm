@@ -91,7 +91,7 @@ action.
 
 =head2 AllocatedStorage => Int
 
-  Specifies the allocated storage size specified in gigabytes.
+  Specifies the allocated storage size specified in gibibytes.
 
 
 =head2 AutoMinorVersionUpgrade => Bool

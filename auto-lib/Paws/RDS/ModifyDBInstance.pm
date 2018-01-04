@@ -69,79 +69,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AllocatedStorage => Int
 
-The new storage capacity of the RDS instance. Changing this setting
-does not result in an outage and the change is applied during the next
-maintenance window unless C<ApplyImmediately> is set to C<true> for
-this request.
+The new amount of storage (in gibibytes) to allocate for the DB
+instance.
 
-B<MySQL>
+For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be
+at least 10% greater than the current value. Values that are not at
+least 10% greater than the existing value are rounded up so that they
+are 10% greater than the current value.
 
-Default: Uses existing setting
-
-Valid Values: 5-6144
-
-Constraints: Value supplied must be at least 10% greater than the
-current value. Values that are not at least 10% greater than the
-existing value are rounded up so that they are 10% greater than the
-current value.
-
-Type: Integer
-
-B<MariaDB>
-
-Default: Uses existing setting
-
-Valid Values: 5-6144
-
-Constraints: Value supplied must be at least 10% greater than the
-current value. Values that are not at least 10% greater than the
-existing value are rounded up so that they are 10% greater than the
-current value.
-
-Type: Integer
-
-B<PostgreSQL>
-
-Default: Uses existing setting
-
-Valid Values: 5-6144
-
-Constraints: Value supplied must be at least 10% greater than the
-current value. Values that are not at least 10% greater than the
-existing value are rounded up so that they are 10% greater than the
-current value.
-
-Type: Integer
-
-B<Oracle>
-
-Default: Uses existing setting
-
-Valid Values: 10-6144
-
-Constraints: Value supplied must be at least 10% greater than the
-current value. Values that are not at least 10% greater than the
-existing value are rounded up so that they are 10% greater than the
-current value.
-
-B<SQL Server>
-
-Cannot be modified.
-
-If you choose to migrate your DB instance from using standard storage
-to using Provisioned IOPS, or from using Provisioned IOPS to using
-standard storage, the process can take time. The duration of the
-migration depends on several factors such as database load, storage
-size, storage type (standard or Provisioned IOPS), amount of IOPS
-provisioned (if any), and the number of prior scale storage operations.
-Typical migration times are under 24 hours, but the process can take up
-to several days in some cases. During the migration, the DB instance is
-available for use, but might experience performance degradation. While
-the migration takes place, nightly backups for the instance are
-suspended. No other Amazon RDS operations can take place for the
-instance, including modifying the instance, rebooting the instance,
-deleting the instance, creating a Read Replica for the instance, and
-creating a DB snapshot of the instance.
+For the valid values for allocated storage for each engine, see
+CreateDBInstance.
 
 
 
@@ -464,25 +401,14 @@ For a list of valid engine versions, see CreateDBInstance.
 =head2 Iops => Int
 
 The new Provisioned IOPS (I/O operations per second) value for the RDS
-instance. Changing this setting does not result in an outage and the
-change is applied during the next maintenance window unless the
-C<ApplyImmediately> parameter is set to C<true> for this request.
+instance.
 
-Default: Uses existing setting
-
-Constraints: Value supplied must be at least 10% greater than the
-current value. Values that are not at least 10% greater than the
-existing value are rounded up so that they are 10% greater than the
-current value. If you are migrating from Provisioned IOPS to standard
-storage, set this value to 0. The DB instance will require a reboot for
-the change in storage type to take effect.
-
-B<SQL Server>
-
-Setting the IOPS value for the SQL Server database engine is not
-supported.
-
-Type: Integer
+Changing this setting does not result in an outage and the change is
+applied during the next maintenance window unless the
+C<ApplyImmediately> parameter is set to C<true> for this request. If
+you are migrating from Provisioned IOPS to standard storage, set this
+value to 0. The DB instance will require a reboot for the change in
+storage type to take effect.
 
 If you choose to migrate your DB instance from using standard storage
 to using Provisioned IOPS, or from using Provisioned IOPS to using
@@ -498,6 +424,13 @@ suspended. No other Amazon RDS operations can take place for the
 instance, including modifying the instance, rebooting the instance,
 deleting the instance, creating a Read Replica for the instance, and
 creating a DB snapshot of the instance.
+
+Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL, the value
+supplied must be at least 10% greater than the current value. Values
+that are not at least 10% greater than the existing value are rounded
+up so that they are 10% greater than the current value.
+
+Default: Uses existing setting
 
 
 
@@ -745,10 +678,25 @@ Default: false
 
 Specifies the storage type to be associated with the DB instance.
 
-Valid values: C<standard | gp2 | io1>
+If you specify Provisioned IOPS (C<io1>), you must also include a value
+for the C<Iops> parameter.
 
-If you specify C<io1>, you must also include a value for the C<Iops>
-parameter.
+If you choose to migrate your DB instance from using standard storage
+to using Provisioned IOPS, or from using Provisioned IOPS to using
+standard storage, the process can take time. The duration of the
+migration depends on several factors such as database load, storage
+size, storage type (standard or Provisioned IOPS), amount of IOPS
+provisioned (if any), and the number of prior scale storage operations.
+Typical migration times are under 24 hours, but the process can take up
+to several days in some cases. During the migration, the DB instance is
+available for use, but might experience performance degradation. While
+the migration takes place, nightly backups for the instance are
+suspended. No other Amazon RDS operations can take place for the
+instance, including modifying the instance, rebooting the instance,
+deleting the instance, creating a Read Replica for the instance, and
+creating a DB snapshot of the instance.
+
+Valid values: C<standard | gp2 | io1>
 
 Default: C<io1> if the C<Iops> parameter is specified, otherwise
 C<standard>

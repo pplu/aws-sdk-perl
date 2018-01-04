@@ -75,8 +75,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AllocatedStorage => Int
 
-The amount of storage (in gigabytes) to be initially allocated for the
-DB instance.
+The amount of storage (in gibibytes) to allocate for the DB instance.
 
 Type: Integer
 
@@ -95,11 +94,12 @@ following:
 
 =item *
 
-General Purpose (SSD) storage (gp2): Must be an integer from 5 to 6144.
+General Purpose (SSD) storage (gp2): Must be an integer from 5 to
+16384.
 
 =item *
 
-Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+Provisioned IOPS storage (io1): Must be an integer from 100 to 16384.
 
 =item *
 
@@ -116,11 +116,12 @@ following:
 
 =item *
 
-General Purpose (SSD) storage (gp2): Must be an integer from 5 to 6144.
+General Purpose (SSD) storage (gp2): Must be an integer from 5 to
+16384.
 
 =item *
 
-Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+Provisioned IOPS storage (io1): Must be an integer from 100 to 16384.
 
 =item *
 
@@ -137,11 +138,12 @@ following:
 
 =item *
 
-General Purpose (SSD) storage (gp2): Must be an integer from 5 to 6144.
+General Purpose (SSD) storage (gp2): Must be an integer from 5 to
+16384.
 
 =item *
 
-Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+Provisioned IOPS storage (io1): Must be an integer from 100 to 16384.
 
 =item *
 
@@ -159,11 +161,11 @@ following:
 =item *
 
 General Purpose (SSD) storage (gp2): Must be an integer from 10 to
-6144.
+16384.
 
 =item *
 
-Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+Provisioned IOPS storage (io1): Must be an integer from 100 to 16384.
 
 =item *
 
@@ -653,6 +655,10 @@ B<MariaDB>
 
 =item *
 
+C<10.1.26> (supported in all AWS Regions)
+
+=item *
+
 C<10.1.23> (supported in all AWS Regions)
 
 =item *
@@ -666,6 +672,10 @@ C<10.1.14> (supported in all AWS Regions except us-east-2)
 =back
 
 =over
+
+=item *
+
+C<10.0.32> (supported in all AWS Regions)
 
 =item *
 
@@ -686,9 +696,23 @@ ca-central-1, eu-west-2)
 
 =back
 
+B<Microsoft SQL Server 2017>
+
+=over
+
+=item *
+
+C<14.00.1000.169.v1> (supported for all editions, and all AWS Regions)
+
+=back
+
 B<Microsoft SQL Server 2016>
 
 =over
+
+=item *
+
+C<13.00.4451.0.v1> (supported for all editions, and all AWS Regions)
 
 =item *
 
@@ -965,9 +989,9 @@ Iops values, see see Amazon RDS Provisioned IOPS Storage to Improve
 Performance
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS).
 
-Constraints: Must be a multiple between 3 and 10 of the storage amount
+Constraints: Must be a multiple between 1 and 50 of the storage amount
 for the DB instance. Must also be an integer multiple of 1000. For
-example, if the size of your DB instance is 500 GB, then your C<Iops>
+example, if the size of your DB instance is 500 GiB, then your C<Iops>
 value can be 2000, 3000, 4000, or 5000.
 
 

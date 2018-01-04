@@ -60,7 +60,7 @@ DescribeDBClusterSnapshots action.
 
 =head2 AllocatedStorage => Int
 
-  Specifies the allocated storage size in gigabytes (GB).
+  Specifies the allocated storage size in gibibytes (GiB).
 
 
 =head2 AvailabilityZones => ArrayRef[Str|Undef]

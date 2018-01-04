@@ -76,7 +76,7 @@ action.
 =head2 AllocatedStorage => Int
 
   For all database engines except Amazon Aurora, C<AllocatedStorage>
-specifies the allocated storage size in gigabytes (GB). For Aurora,
+specifies the allocated storage size in gibibytes (GiB). For Aurora,
 C<AllocatedStorage> always returns 1, because Aurora DB cluster storage
 size is not fixed, but instead automatically adjusts as needed.
 
