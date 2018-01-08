@@ -63,7 +63,8 @@ Filters to limit the request results.
 
 The hierarchy for the parameter. Hierarchies start with a forward slash
 (/) and end with the parameter name. A hierarchy can have a maximum of
-five levels. For example: C</Finance/Prod/IAD/WinServ2016/license15>
+15 levels. Here is an example of a hierarchy:
+C</Finance/Prod/IAD/WinServ2016/license33>
 
 
 

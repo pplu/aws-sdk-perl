@@ -734,7 +734,7 @@ you track each instance's owner and stack level. For example: Key=Owner
 and Value=DbAdmin, SysAdmin, or Dev. Or Key=Stack and Value=Production,
 Pre-Production, or Test.
 
-Each resource can have a maximum of 10 tags.
+Each resource can have a maximum of 50 tags.
 
 We recommend that you devise a set of tag keys that meets your needs
 for each resource type. Using a consistent set of tag keys makes it
@@ -837,6 +837,10 @@ Each argument is described in detail in: L<Paws::SSM::CreatePatchBaseline>
 Returns: a L<Paws::SSM::CreatePatchBaselineResult> instance
 
 Creates a patch baseline.
+
+For information about valid key and value pairs in C<PatchFilters> for
+each supported operating system type, see PatchFilter
+(http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html).
 
 
 =head2 CreateResourceDataSync(S3Destination => L<Paws::SSM::ResourceDataSyncS3Destination>, SyncName => Str)
@@ -1406,6 +1410,8 @@ returns the matching values up to that point and a C<NextToken>. You
 can specify the C<NextToken> in a subsequent call to get the next set
 of results.
 
+This API action doesn't support filtering by tags.
+
 
 =head2 GetPatchBaseline(BaselineId => Str)
 
@@ -1583,6 +1589,79 @@ designated resource. This action lets you register custom compliance
 details with a resource. This call overwrites existing compliance
 information on the resource, so you must provide a full list of
 compliance items each time that you send the request.
+
+ComplianceType can be one of the following:
+
+=over
+
+=item *
+
+ExecutionId: The execution ID when the patch, association, or custom
+compliance item was applied.
+
+=item *
+
+ExecutionType: Specify patch, association, or Custom:C<string>.
+
+=item *
+
+ExecutionTime. The time the patch, association, or custom compliance
+item was applied to the instance.
+
+=item *
+
+Id: The patch, association, or custom compliance ID.
+
+=item *
+
+Title: A title.
+
+=item *
+
+Status: The status of the compliance item. For example, C<approved> for
+patches, or C<Failed> for associations.
+
+=item *
+
+Severity: A patch severity. For example, C<critical>.
+
+=item *
+
+DocumentName: A SSM document name. For example, AWS-RunPatchBaseline.
+
+=item *
+
+DocumentVersion: An SSM document version number. For example, 4.
+
+=item *
+
+Classification: A patch classification. For example, C<security
+updates>.
+
+=item *
+
+PatchBaselineId: A patch baseline ID.
+
+=item *
+
+PatchSeverity: A patch severity. For example, C<Critical>.
+
+=item *
+
+PatchState: A patch state. For example, C<InstancesWithFailedPatches>.
+
+=item *
+
+PatchGroup: The name of a patch group.
+
+=item *
+
+InstalledTime: The time the association, patch, or custom compliance
+item was applied to the resource. Specify the time by using the
+following format: yyyy-MM-dd'T'HH:mm:ss'Z'
+
+=back
+
 
 
 =head2 PutInventory(InstanceId => Str, Items => ArrayRef[L<Paws::SSM::InventoryItem>])
@@ -1807,6 +1886,10 @@ Returns: a L<Paws::SSM::UpdatePatchBaselineResult> instance
 
 Modifies an existing patch baseline. Fields not specified in the
 request are left unchanged.
+
+For information about valid key and value pairs in C<PatchFilters> for
+each supported operating system type, see PatchFilter
+(http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html).
 
 
 

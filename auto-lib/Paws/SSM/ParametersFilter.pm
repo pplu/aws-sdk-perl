@@ -32,8 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Parame
 
 =head1 DESCRIPTION
 
-One or more filters. Use a filter to return a more specific list of
-results.
+This data type is deprecated. Instead, use ParameterStringFilter.
 
 =head1 ATTRIBUTES
 
