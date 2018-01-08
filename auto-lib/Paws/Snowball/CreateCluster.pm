@@ -44,7 +44,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AddressId => Str
 
-The ID for the address that you want the cluster shipped to.E<gt>
+The ID for the address that you want the cluster shipped to.
 
 
 

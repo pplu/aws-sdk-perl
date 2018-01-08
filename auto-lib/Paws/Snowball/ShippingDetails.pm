@@ -42,13 +42,13 @@ numbers and shipping speed options.
 =head2 InboundShipment => L<Paws::Snowball::Shipment>
 
   The C<Status> and C<TrackingNumber> values for a Snowball being
-delivered to the address that you specified for a particular job.
+returned to AWS for a particular job.
 
 
 =head2 OutboundShipment => L<Paws::Snowball::Shipment>
 
   The C<Status> and C<TrackingNumber> values for a Snowball being
-returned to AWS for a particular job.
+delivered to the address that you specified for a particular job.
 
 
 =head2 ShippingOption => Str
