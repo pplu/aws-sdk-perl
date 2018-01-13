@@ -77,14 +77,6 @@ target-groups
 
 targets-per-application-load-balancer
 
-=item *
-
-targets-per-availability-zone-per-network-load-balancer
-
-=item *
-
-targets-per-network-load-balancer
-
 =back
 
 

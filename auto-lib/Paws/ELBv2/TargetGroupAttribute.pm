@@ -52,11 +52,6 @@ default value is 300 seconds.
 
 =item *
 
-C<proxy_protocol_v2.enabled> - [Network Load Balancers] Indicates
-whether Proxy Protocol version 2 is enabled.
-
-=item *
-
 C<stickiness.enabled> - [Application Load Balancers] Indicates whether
 sticky sessions are enabled. The value is C<true> or C<false>.
 

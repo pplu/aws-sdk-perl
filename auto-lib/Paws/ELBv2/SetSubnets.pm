@@ -47,7 +47,8 @@ The IDs of the subnets. You must specify subnets from at least two
 Availability Zones. You can specify only one subnet per Availability
 Zone. You must specify either subnets or subnet mappings.
 
-You cannot specify Elastic IP addresses for your subnets.
+The load balancer is allocated one static IP address per subnet. You
+cannot specify your own Elastic IP addresses.
 
 
 
