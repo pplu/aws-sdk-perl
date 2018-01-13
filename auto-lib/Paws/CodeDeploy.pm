@@ -89,6 +89,11 @@ package Paws::CodeDeploy;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::DeleteDeploymentGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteGitHubAccountToken {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::DeleteGitHubAccountToken', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeregisterOnPremisesInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::DeregisterOnPremisesInstance', @_);
@@ -350,7 +355,7 @@ package Paws::CodeDeploy;
   }
 
 
-  sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplicationRevisions BatchGetApplications BatchGetDeploymentGroups BatchGetDeploymentInstances BatchGetDeployments BatchGetOnPremisesInstances ContinueDeployment CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListGitHubAccountTokenNames ListOnPremisesInstances PutLifecycleEventHookExecutionStatus RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances SkipWaitTimeForInstanceTermination StopDeployment UpdateApplication UpdateDeploymentGroup / }
+  sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplicationRevisions BatchGetApplications BatchGetDeploymentGroups BatchGetDeploymentInstances BatchGetDeployments BatchGetOnPremisesInstances ContinueDeployment CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeleteGitHubAccountToken DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListGitHubAccountTokenNames ListOnPremisesInstances PutLifecycleEventHookExecutionStatus RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances SkipWaitTimeForInstanceTermination StopDeployment UpdateApplication UpdateDeploymentGroup / }
 
 1;
 
@@ -574,7 +579,7 @@ Returns: a L<Paws::CodeDeploy::CreateDeploymentOutput> instance
 Deploys an application revision through the specified deployment group.
 
 
-=head2 CreateDeploymentConfig(DeploymentConfigName => Str, MinimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>, [ComputePlatform => Str, TrafficRoutingConfig => L<Paws::CodeDeploy::TrafficRoutingConfig>])
+=head2 CreateDeploymentConfig(DeploymentConfigName => Str, [ComputePlatform => Str, MinimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>, TrafficRoutingConfig => L<Paws::CodeDeploy::TrafficRoutingConfig>])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeploymentConfig>
 
@@ -621,6 +626,15 @@ Each argument is described in detail in: L<Paws::CodeDeploy::DeleteDeploymentGro
 Returns: a L<Paws::CodeDeploy::DeleteDeploymentGroupOutput> instance
 
 Deletes a deployment group.
+
+
+=head2 DeleteGitHubAccountToken([TokenName => Str])
+
+Each argument is described in detail in: L<Paws::CodeDeploy::DeleteGitHubAccountToken>
+
+Returns: a L<Paws::CodeDeploy::DeleteGitHubAccountTokenOutput> instance
+
+Deletes a GitHub account connection.
 
 
 =head2 DeregisterOnPremisesInstance(InstanceName => Str)
