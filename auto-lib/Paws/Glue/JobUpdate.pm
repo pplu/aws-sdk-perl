@@ -39,19 +39,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::JobUp
 
 =head1 DESCRIPTION
 
-Specifies information used to update an existing job.
+Specifies information used to update an existing job. Note that the
+previous job definition will be completely overwritten by this
+information.
 
 =head1 ATTRIBUTES
 
 
 =head2 AllocatedCapacity => Int
 
-  The number of capacity units allocated to this job.
+  The number of AWS Glue data processing units (DPUs) to allocate to this
+Job. From 2 to 100 DPUs can be allocated; the default is 10. A DPU is a
+relative measure of processing power that consists of 4 vCPUs of
+compute capacity and 16 GB of memory. For more information, see the AWS
+Glue pricing page (https://aws.amazon.com/glue/pricing/).
 
 
 =head2 Command => L<Paws::Glue::JobCommand>
 
-  The JobCommand that executes this job.
+  The JobCommand that executes this job (required).
 
 
 =head2 Connections => L<Paws::Glue::ConnectionsList>
@@ -61,7 +67,20 @@ Specifies information used to update an existing job.
 
 =head2 DefaultArguments => L<Paws::Glue::GenericMap>
 
-  The default parameters for this job.
+  The default arguments for this job.
+
+You can specify arguments here that your own job-execution script
+consumes, as well as arguments that AWS Glue itself consumes.
+
+For information about how to specify and consume your own Job
+arguments, see the Calling AWS Glue APIs in Python
+(http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html)
+topic in the developer guide.
+
+For information about the key-value pairs that AWS Glue consumes to set
+up your job, see the Special Parameters Used by AWS Glue
+(http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-glue-arguments.html)
+topic in the developer guide.
 
 
 =head2 Description => Str
@@ -87,7 +106,7 @@ allowed for this job.
 
 =head2 Role => Str
 
-  The role associated with this job.
+  The name of the IAM role associated with this job (required).
 
 
 

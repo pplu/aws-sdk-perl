@@ -1,6 +1,7 @@
 
 package Paws::Glue::GetPlan;
   use Moose;
+  has Language => (is => 'ro', isa => 'Str');
   has Location => (is => 'ro', isa => 'Paws::Glue::Location');
   has Mapping => (is => 'ro', isa => 'ArrayRef[Paws::Glue::MappingEntry]', required => 1);
   has Sinks => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CatalogEntry]');
@@ -35,6 +36,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
+=head2 Language => Str
+
+The programming language of the code to perform the mapping.
+
+Valid values are: C<"PYTHON">, C<"SCALA">
 
 =head2 Location => L<Paws::Glue::Location>
 

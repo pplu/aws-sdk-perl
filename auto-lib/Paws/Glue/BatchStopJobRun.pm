@@ -36,13 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> JobName => Str
 
-The name of the job whose job runs are to be stopped.
+The name of the Job in question.
 
 
 
 =head2 B<REQUIRED> JobRunIds => ArrayRef[Str|Undef]
 
-A list of job run Ids of the given job to be stopped.
+A list of the JobRunIds that should be stopped for that Job.
 
 
 

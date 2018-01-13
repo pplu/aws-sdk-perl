@@ -43,7 +43,7 @@ Name of the job being run.
 
 =head2 PredecessorsIncluded => Bool
 
-A list of the predecessor runs to return as well.
+True if a list of predecessor runs should be returned.
 
 
 

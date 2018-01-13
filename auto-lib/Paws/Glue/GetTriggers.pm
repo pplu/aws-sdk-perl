@@ -37,7 +37,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DependentJobName => Str
 
-The name of the job for which to retrieve triggers.
+The name of the job for which to retrieve triggers. The trigger that
+can start this job will be returned, and if there is no such trigger,
+all triggers will be returned.
 
 
 

@@ -39,12 +39,12 @@ Specifies code that executes a job.
 
 =head2 Name => Str
 
-  The name of this job command.
+  The name of the job command: this must be C<glueetl>.
 
 
 =head2 ScriptLocation => Str
 
-  Specifies the location of a script that executes a job.
+  Specifies the S3 path to a script that executes a job (required).
 
 
 

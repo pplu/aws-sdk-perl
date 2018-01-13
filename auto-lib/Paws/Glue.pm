@@ -477,7 +477,7 @@ Each argument is described in detail in: L<Paws::Glue::BatchStopJobRun>
 
 Returns: a L<Paws::Glue::BatchStopJobRunResponse> instance
 
-Stops a batch of job runs for a given job.
+Stops one or more job runs for a specified Job.
 
 
 =head2 CreateClassifier([GrokClassifier => L<Paws::Glue::CreateGrokClassifierRequest>, XMLClassifier => L<Paws::Glue::CreateXMLClassifierRequest>])
@@ -546,13 +546,13 @@ Returns: a L<Paws::Glue::CreatePartitionResponse> instance
 Creates a new partition.
 
 
-=head2 CreateScript([DagEdges => ArrayRef[L<Paws::Glue::CodeGenEdge>], DagNodes => ArrayRef[L<Paws::Glue::CodeGenNode>]])
+=head2 CreateScript([DagEdges => ArrayRef[L<Paws::Glue::CodeGenEdge>], DagNodes => ArrayRef[L<Paws::Glue::CodeGenNode>], Language => Str])
 
 Each argument is described in detail in: L<Paws::Glue::CreateScript>
 
 Returns: a L<Paws::Glue::CreateScriptResponse> instance
 
-Transforms a directed acyclic graph (DAG) into a Python script.
+Transforms a directed acyclic graph (DAG) into code.
 
 
 =head2 CreateTable(DatabaseName => Str, TableInput => L<Paws::Glue::TableInput>, [CatalogId => Str])
@@ -634,7 +634,8 @@ Each argument is described in detail in: L<Paws::Glue::DeleteJob>
 
 Returns: a L<Paws::Glue::DeleteJobResponse> instance
 
-Deletes a specified job.
+Deletes a specified job. If the job is not found, no exception is
+thrown.
 
 
 =head2 DeletePartition(DatabaseName => Str, PartitionValues => ArrayRef[Str|Undef], TableName => Str, [CatalogId => Str])
@@ -661,7 +662,8 @@ Each argument is described in detail in: L<Paws::Glue::DeleteTrigger>
 
 Returns: a L<Paws::Glue::DeleteTriggerResponse> instance
 
-Deletes a specified trigger.
+Deletes a specified trigger. If the trigger is not found, no exception
+is thrown.
 
 
 =head2 DeleteUserDefinedFunction(DatabaseName => Str, FunctionName => Str, [CatalogId => Str])
@@ -853,13 +855,13 @@ Returns: a L<Paws::Glue::GetPartitionsResponse> instance
 Retrieves information about the partitions in a table.
 
 
-=head2 GetPlan(Mapping => ArrayRef[L<Paws::Glue::MappingEntry>], Source => L<Paws::Glue::CatalogEntry>, [Location => L<Paws::Glue::Location>, Sinks => ArrayRef[L<Paws::Glue::CatalogEntry>]])
+=head2 GetPlan(Mapping => ArrayRef[L<Paws::Glue::MappingEntry>], Source => L<Paws::Glue::CatalogEntry>, [Language => Str, Location => L<Paws::Glue::Location>, Sinks => ArrayRef[L<Paws::Glue::CatalogEntry>]])
 
 Each argument is described in detail in: L<Paws::Glue::GetPlan>
 
 Returns: a L<Paws::Glue::GetPlanResponse> instance
 
-Gets a Python script to perform a specified mapping.
+Gets code to perform a specified mapping.
 
 
 =head2 GetTable(DatabaseName => Str, Name => Str, [CatalogId => Str])
@@ -982,7 +984,9 @@ Each argument is described in detail in: L<Paws::Glue::StartTrigger>
 
 Returns: a L<Paws::Glue::StartTriggerResponse> instance
 
-Starts an existing trigger.
+Starts an existing trigger. See Triggering Jobs
+(http://docs.aws.amazon.com/glue/latest/dg/trigger-job.html) for
+information about how different types of trigger are started.
 
 
 =head2 StopCrawler(Name => Str)

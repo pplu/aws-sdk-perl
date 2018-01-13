@@ -61,6 +61,9 @@ schema from their parent table, rather than detect this information
 separately for each partition. Use the following JSON string to specify
 that behavior:
 
+Example: C<'{ "Version": 1.0, "CrawlerOutput": { "Partitions": {
+"AddOrUpdateBehavior": "InheritFromTable" } } }'>
+
 
 
 =head2 DatabaseName => Str

@@ -32,7 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Prede
 
 =head1 DESCRIPTION
 
-A job run that preceded this one.
+A job run that was used in the predicate of a conditional trigger that
+triggered this job run.
 
 =head1 ATTRIBUTES
 
@@ -44,7 +45,7 @@ A job run that preceded this one.
 
 =head2 RunId => Str
 
-  The job-run ID of the precessor job run.
+  The job-run ID of the predecessor job run.
 
 
 

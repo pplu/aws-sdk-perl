@@ -3,6 +3,7 @@ package Paws::Glue::CreateScript;
   use Moose;
   has DagEdges => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CodeGenEdge]');
   has DagNodes => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CodeGenNode]');
+  has Language => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -45,6 +46,12 @@ A list of the edges in the DAG.
 A list of the nodes in the DAG.
 
 
+
+=head2 Language => Str
+
+The programming language of the resulting code from the DAG.
+
+Valid values are: C<"PYTHON">, C<"SCALA">
 
 
 =head1 SEE ALSO

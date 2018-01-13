@@ -59,7 +59,11 @@ users to specify aspects of a Crawler's behavior.
 You can use this field to force partitions to inherit metadata such as
 classification, input format, output format, serde information, and
 schema from their parent table, rather than detect this information
-separately for each partition.
+separately for each partition. Use the following JSON string to specify
+that behavior:
+
+Example: C<'{ "Version": 1.0, "CrawlerOutput": { "Partitions": {
+"AddOrUpdateBehavior": "InheritFromTable" } } }'>
 
 
 

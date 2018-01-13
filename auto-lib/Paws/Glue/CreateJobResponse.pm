@@ -16,7 +16,7 @@ Paws::Glue::CreateJobResponse
 
 =head2 Name => Str
 
-The unique name of the new job that has been created.
+The unique name that was provided.
 
 
 =head2 _request_id => Str

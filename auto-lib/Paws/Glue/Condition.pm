@@ -40,7 +40,8 @@ Defines a condition under which a trigger fires.
 
 =head2 JobName => Str
 
-  The name of the job in question.
+  The name of the Job to whose JobRuns this condition applies and on
+which this trigger waits.
 
 
 =head2 LogicalOperator => Str
@@ -50,7 +51,8 @@ Defines a condition under which a trigger fires.
 
 =head2 State => Str
 
-  The condition state.
+  The condition state. Currently, the values supported are SUCCEEDED,
+STOPPED and FAILED.
 
 
 
