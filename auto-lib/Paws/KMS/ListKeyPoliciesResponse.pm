@@ -24,8 +24,8 @@ value to use for the C<Marker> parameter in a subsequent request.
 
 =head2 PolicyNames => ArrayRef[Str|Undef]
 
-A list of policy names. Currently, there is only one policy and it is
-named "Default".
+A list of key policy names. Currently, there is only one key policy per
+CMK and it is always named C<default>.
 
 
 =head2 Truncated => Bool

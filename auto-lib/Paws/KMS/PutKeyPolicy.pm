@@ -41,8 +41,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 A flag to indicate whether to bypass the key policy lockout safety
 check.
 
-Setting this value to true increases the likelihood that the CMK
-becomes unmanageable. Do not set this value to true indiscriminately.
+Setting this value to true increases the risk that the CMK becomes
+unmanageable. Do not set this value to true indiscriminately.
 
 For more information, refer to the scenario in the Default Key Policy
 (http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam)
@@ -85,34 +85,35 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 
 The key policy to attach to the CMK.
 
-If you do not set C<BypassPolicyLockoutSafetyCheck> to true, the policy
-must meet the following criteria:
+The key policy must meet the following criteria:
 
 =over
 
 =item *
 
-It must allow the principal that is making the C<PutKeyPolicy> request
-to make a subsequent C<PutKeyPolicy> request on the CMK. This reduces
-the likelihood that the CMK becomes unmanageable. For more information,
-refer to the scenario in the Default Key Policy
+If you don't set C<BypassPolicyLockoutSafetyCheck> to true, the key
+policy must allow the principal that is making the C<PutKeyPolicy>
+request to make a subsequent C<PutKeyPolicy> request on the CMK. This
+reduces the risk that the CMK becomes unmanageable. For more
+information, refer to the scenario in the Default Key Policy
 (http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam)
-section in the I<AWS Key Management Service Developer Guide>.
+section of the I<AWS Key Management Service Developer Guide>.
 
 =item *
 
-The principals that are specified in the key policy must exist and be
-visible to AWS KMS. When you create a new AWS principal (for example,
-an IAM user or role), you might need to enforce a delay before
-specifying the new principal in a key policy because the new principal
-might not immediately be visible to AWS KMS. For more information, see
-Changes that I make are not always immediately visible
+Each statement in the key policy must contain one or more principals.
+The principals in the key policy must exist and be visible to AWS KMS.
+When you create a new AWS principal (for example, an IAM user or role),
+you might need to enforce a delay before including the new principal in
+a key policy because the new principal might not be immediately visible
+to AWS KMS. For more information, see Changes that I make are not
+always immediately visible
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency)
-in the I<IAM User Guide>.
+in the I<AWS Identity and Access Management User Guide>.
 
 =back
 
-The policy size limit is 32 kilobytes (32768 bytes).
+The key policy size limit is 32 kilobytes (32768 bytes).
 
 
 

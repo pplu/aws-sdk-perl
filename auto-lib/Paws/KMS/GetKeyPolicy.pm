@@ -61,8 +61,8 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 
 =head2 B<REQUIRED> PolicyName => Str
 
-Specifies the name of the policy. The only valid name is C<default>. To
-get the names of key policies, use ListKeyPolicies.
+Specifies the name of the key policy. The only valid name is
+C<default>. To get the names of key policies, use ListKeyPolicies.
 
 
 
