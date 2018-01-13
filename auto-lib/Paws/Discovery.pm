@@ -204,9 +204,8 @@ shared with the service.
 Your AWS account must be granted access to Application Discovery
 Service, a process called I<whitelisting>. This is true for AWS
 partners and customers alike. To request access, sign up for AWS
-Application Discovery Service here
-(http://aws.amazon.com/application-discovery/preview/). We send you
-information about how to get started.
+Application Discovery Service
+(http://aws.amazon.com/application-discovery/how-to-start/).
 
 This API reference provides descriptions, syntax, and usage examples
 for each of the actions and data types for Application Discovery
@@ -404,14 +403,14 @@ Returns: a L<Paws::Discovery::StartExportTaskResponse> instance
 
 Begins the export of discovered data to an S3 bucket.
 
-If you specify C<agentId> in a filter, the task exports up to 72 hours
+If you specify C<agentIds> in a filter, the task exports up to 72 hours
 of detailed data collected by the identified Application Discovery
 Agent, including network, process, and performance details. A time
 range for exported agent data may be set by using C<startTime> and
 C<endTime>. Export of detailed agent data is limited to five
 concurrently running exports.
 
-If you do not include an C<agentId> filter, summary data is exported
+If you do not include an C<agentIds> filter, summary data is exported
 that includes both AWS Agentless Discovery Connector data and summary
 data from AWS Discovery Agents. Export of summary data is limited to
 two exports per day.

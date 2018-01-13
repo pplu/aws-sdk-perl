@@ -47,6 +47,7 @@ exported data includes the most recent data collected by the agent.
 =head2 ExportDataFormat => ArrayRef[Str|Undef]
 
 The file format for the returned export data. Default value is C<CSV>.
+B<Note:> I<The> C<GRAPHML> I<option has been deprecated.>
 
 
 
