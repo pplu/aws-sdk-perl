@@ -379,7 +379,7 @@ Resources, and Conditions Reference
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 
 
-=head2 CreateMicrosoftAD(Name => Str, Password => Str, VpcSettings => L<Paws::DS::DirectoryVpcSettings>, [Description => Str, ShortName => Str])
+=head2 CreateMicrosoftAD(Name => Str, Password => Str, VpcSettings => L<Paws::DS::DirectoryVpcSettings>, [Description => Str, Edition => Str, ShortName => Str])
 
 Each argument is described in detail in: L<Paws::DS::CreateMicrosoftAD>
 

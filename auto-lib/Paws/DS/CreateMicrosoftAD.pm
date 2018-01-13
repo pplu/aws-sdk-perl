@@ -2,6 +2,7 @@
 package Paws::DS::CreateMicrosoftAD;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
+  has Edition => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Password => (is => 'ro', isa => 'Str', required => 1);
   has ShortName => (is => 'ro', isa => 'Str');
@@ -43,6 +44,13 @@ A textual description for the directory. This label will appear on the
 AWS console C<Directory Details> page after the directory is created.
 
 
+
+=head2 Edition => Str
+
+AWS Microsoft AD is available in two editions: Standard and Enterprise.
+Enterprise is the default.
+
+Valid values are: C<"Enterprise">, C<"Standard">
 
 =head2 B<REQUIRED> Name => Str
 

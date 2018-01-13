@@ -46,10 +46,7 @@ Contains information about the directory.
 
 =head2 SecurityGroupId => Str
 
-  The security group identifier for the directory. If the directory was
-created before 8/1/2014, this is the identifier of the directory
-members security group that was created when the directory was created.
-If the directory was created after this date, this value is null.
+  The domain controller security group identifier for the directory.
 
 
 =head2 SubnetIds => ArrayRef[Str|Undef]
