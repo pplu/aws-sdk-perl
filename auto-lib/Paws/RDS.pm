@@ -1309,7 +1309,7 @@ Returns: a L<Paws::RDS::CreateDBInstanceResult> instance
 Creates a new DB instance.
 
 
-=head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, EnablePerformanceInsights => Bool, Iops => Int, KmsKeyId => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, OptionGroupName => Str, PerformanceInsightsKMSKeyId => Str, Port => Int, PreSignedUrl => Str, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
+=head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, EnablePerformanceInsights => Bool, Iops => Int, KmsKeyId => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, OptionGroupName => Str, PerformanceInsightsKMSKeyId => Str, Port => Int, PreSignedUrl => Str, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBInstanceReadReplica>
 
@@ -1317,22 +1317,20 @@ Returns: a L<Paws::RDS::CreateDBInstanceReadReplicaResult> instance
 
 Creates a new DB instance that acts as a Read Replica for an existing
 source DB instance. You can create a Read Replica for a DB instance
-running MySQL, MariaDB, or PostgreSQL.
+running MySQL, MariaDB, or PostgreSQL. For more information, see
+Working with PostgreSQL, MySQL, and MariaDB Read Replicas
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html).
 
 Amazon Aurora does not support this action. You must call the
 C<CreateDBInstance> action to create a DB instance for an Aurora DB
 cluster.
 
-All Read Replica DB instances are created as Single-AZ deployments with
-backups disabled. All other DB instance attributes (including DB
-security groups and DB parameter groups) are inherited from the source
-DB instance, except as specified below.
+All Read Replica DB instances are created with backups disabled. All
+other DB instance attributes (including DB security groups and DB
+parameter groups) are inherited from the source DB instance, except as
+specified below.
 
-The source DB instance must have backup retention enabled.
-
-For more information, see Working with PostgreSQL, MySQL, and MariaDB
-Read Replicas
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html).
+Your source DB instance must have backup retention enabled.
 
 
 =head2 CreateDBParameterGroup(DBParameterGroupFamily => Str, DBParameterGroupName => Str, Description => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
@@ -2452,6 +2450,8 @@ stop-db-instance AWS CLI command, or the StopDBInstance action. For
 more information, see Stopping and Starting a DB instance in the AWS
 RDS user guide.
 
+This command does not apply to Aurora MySQL and Aurora PostgreSQL.
+
 
 =head2 StopDBInstance(DBInstanceIdentifier => Str, [DBSnapshotIdentifier => Str])
 
@@ -2465,6 +2465,8 @@ and option group membership. Amazon RDS also retains the transaction
 logs so you can do a point-in-time restore if necessary. For more
 information, see Stopping and Starting a DB instance in the AWS RDS
 user guide.
+
+This command does not apply to Aurora MySQL and Aurora PostgreSQL.
 
 
 

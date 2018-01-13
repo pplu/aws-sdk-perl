@@ -94,7 +94,7 @@ following:
 
 =item *
 
-General Purpose (SSD) storage (gp2): Must be an integer from 5 to
+General Purpose (SSD) storage (gp2): Must be an integer from 20 to
 16384.
 
 =item *
@@ -116,7 +116,7 @@ following:
 
 =item *
 
-General Purpose (SSD) storage (gp2): Must be an integer from 5 to
+General Purpose (SSD) storage (gp2): Must be an integer from 20 to
 16384.
 
 =item *
@@ -138,7 +138,7 @@ following:
 
 =item *
 
-General Purpose (SSD) storage (gp2): Must be an integer from 5 to
+General Purpose (SSD) storage (gp2): Must be an integer from 20 to
 16384.
 
 =item *
@@ -160,7 +160,7 @@ following:
 
 =item *
 
-General Purpose (SSD) storage (gp2): Must be an integer from 10 to
+General Purpose (SSD) storage (gp2): Must be an integer from 20 to
 16384.
 
 =item *
@@ -650,6 +650,14 @@ the DB instance is managed by the DB cluster. For more information, see
 CreateDBCluster.
 
 B<MariaDB>
+
+=over
+
+=item *
+
+C<10.2.11> (supported in all AWS Regions)
+
+=back
 
 =over
 

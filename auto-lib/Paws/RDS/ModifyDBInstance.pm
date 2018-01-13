@@ -522,8 +522,6 @@ parameter does not result in an outage and the change is applied during
 the next maintenance window unless the C<ApplyImmediately> parameter is
 set to C<true> for this request.
 
-Constraints: Cannot be specified if the DB instance is a Read Replica.
-
 
 
 =head2 NewDBInstanceIdentifier => Str

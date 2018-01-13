@@ -13,6 +13,7 @@ package Paws::RDS::CreateDBInstanceReadReplica;
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MonitoringInterval => (is => 'ro', isa => 'Int');
   has MonitoringRoleArn => (is => 'ro', isa => 'Str');
+  has MultiAZ => (is => 'ro', isa => 'Bool');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
@@ -237,6 +238,12 @@ Monitoring
 
 If C<MonitoringInterval> is set to a value other than 0, then you must
 supply a C<MonitoringRoleArn> value.
+
+
+
+=head2 MultiAZ => Bool
+
+Specifies whether the read replica is in a Multi-AZ deployment.
 
 
 
