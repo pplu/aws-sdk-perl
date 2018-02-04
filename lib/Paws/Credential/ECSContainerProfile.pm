@@ -81,7 +81,6 @@ package Paws::Credential::ECSContainerProfile;
     return if ! $self->metadata_url;
 
     my $ua = $self->ua;
-    $DB::single=1;
 
     my $r = $ua->get($self->metadata_url);
     return unless $r->{success};
