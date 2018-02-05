@@ -4,6 +4,7 @@ package Paws::SageMaker::DescribeEndpointConfigOutput;
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has EndpointConfigArn => (is => 'ro', isa => 'Str', required => 1);
   has EndpointConfigName => (is => 'ro', isa => 'Str', required => 1);
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has ProductionVariants => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ProductionVariant]', required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -30,6 +31,12 @@ The Amazon Resource Name (ARN) of the endpoint configuration.
 =head2 B<REQUIRED> EndpointConfigName => Str
 
 Name of the Amazon SageMaker endpoint configuration.
+
+
+=head2 KmsKeyId => Str
+
+AWS KMS key ID Amazon SageMaker uses to encrypt data when storing it on
+the ML storage volume attached to the instance.
 
 
 =head2 B<REQUIRED> ProductionVariants => ArrayRef[L<Paws::SageMaker::ProductionVariant>]

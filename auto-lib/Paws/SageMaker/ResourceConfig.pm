@@ -2,6 +2,7 @@ package Paws::SageMaker::ResourceConfig;
   use Moose;
   has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
+  has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
   has VolumeSizeInGB => (is => 'ro', isa => 'Int', required => 1);
 1;
 
@@ -48,6 +49,13 @@ provide a value greater than 1.
 =head2 B<REQUIRED> InstanceType => Str
 
   The ML compute instance type.
+
+
+=head2 VolumeKmsKeyId => Str
+
+  The Amazon Resource Name (ARN) of a AWS Key Management Service key that
+Amazon SageMaker uses to encrypt data on the storage volume attached to
+the ML compute instance(s) that run the training job.
 
 
 =head2 B<REQUIRED> VolumeSizeInGB => Int

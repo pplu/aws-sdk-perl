@@ -160,6 +160,144 @@ package Paws::SageMaker;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllEndpointConfigs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListEndpointConfigs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListEndpointConfigs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->EndpointConfigs }, @{ $next_result->EndpointConfigs };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'EndpointConfigs') foreach (@{ $result->EndpointConfigs });
+        $result = $self->ListEndpointConfigs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'EndpointConfigs') foreach (@{ $result->EndpointConfigs });
+    }
+
+    return undef
+  }
+  sub ListAllEndpoints {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListEndpoints(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListEndpoints(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Endpoints }, @{ $next_result->Endpoints };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Endpoints') foreach (@{ $result->Endpoints });
+        $result = $self->ListEndpoints(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Endpoints') foreach (@{ $result->Endpoints });
+    }
+
+    return undef
+  }
+  sub ListAllModels {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListModels(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListModels(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Models }, @{ $next_result->Models };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Models') foreach (@{ $result->Models });
+        $result = $self->ListModels(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Models') foreach (@{ $result->Models });
+    }
+
+    return undef
+  }
+  sub ListAllNotebookInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListNotebookInstances(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListNotebookInstances(@_, NextToken => $next_result->NextToken);
+        push @{ $result->NotebookInstances }, @{ $next_result->NotebookInstances };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'NotebookInstances') foreach (@{ $result->NotebookInstances });
+        $result = $self->ListNotebookInstances(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'NotebookInstances') foreach (@{ $result->NotebookInstances });
+    }
+
+    return undef
+  }
+  sub ListAllTags {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTags(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTags(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Tags }, @{ $next_result->Tags };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->ListTags(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+    }
+
+    return undef
+  }
+  sub ListAllTrainingJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTrainingJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTrainingJobs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TrainingJobSummaries }, @{ $next_result->TrainingJobSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TrainingJobSummaries') foreach (@{ $result->TrainingJobSummaries });
+        $result = $self->ListTrainingJobs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TrainingJobSummaries') foreach (@{ $result->TrainingJobSummaries });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AddTags CreateEndpoint CreateEndpointConfig CreateModel CreateNotebookInstance CreatePresignedNotebookInstanceUrl CreateTrainingJob DeleteEndpoint DeleteEndpointConfig DeleteModel DeleteNotebookInstance DeleteTags DescribeEndpoint DescribeEndpointConfig DescribeModel DescribeNotebookInstance DescribeTrainingJob ListEndpointConfigs ListEndpoints ListModels ListNotebookInstances ListTags ListTrainingJobs StartNotebookInstance StopNotebookInstance StopTrainingJob UpdateEndpoint UpdateEndpointWeightsAndCapacities UpdateNotebookInstance / }
@@ -247,7 +385,7 @@ Amazon SageMaker
 (http://docs.aws.amazon.com/sagemaker/latest/dg/ex1.html).
 
 
-=head2 CreateEndpointConfig(EndpointConfigName => Str, ProductionVariants => ArrayRef[L<Paws::SageMaker::ProductionVariant>], [Tags => ArrayRef[L<Paws::SageMaker::Tag>]])
+=head2 CreateEndpointConfig(EndpointConfigName => Str, ProductionVariants => ArrayRef[L<Paws::SageMaker::ProductionVariant>], [KmsKeyId => Str, Tags => ArrayRef[L<Paws::SageMaker::Tag>]])
 
 Each argument is described in detail in: L<Paws::SageMaker::CreateEndpointConfig>
 
@@ -682,12 +820,12 @@ Each argument is described in detail in: L<Paws::SageMaker::UpdateEndpointWeight
 
 Returns: a L<Paws::SageMaker::UpdateEndpointWeightsAndCapacitiesOutput> instance
 
-Updates variant weight, capacity, or both of one or more variants
-associated with an endpoint. This operation updates weight, capacity,
-or both for the previously provisioned endpoint. When it receives the
-request, Amazon SageMaker sets the endpoint status to C<Updating>.
-After updating the endpoint, it sets the status to C<InService>. To
-check the status of an endpoint, use the DescribeEndpoint
+Updates variant weight of one or more variants associated with an
+existing endpoint, or capacity of one variant associated with an
+existing endpoint. When it receives the request, Amazon SageMaker sets
+the endpoint status to C<Updating>. After updating the endpoint, it
+sets the status to C<InService>. To check the status of an endpoint,
+use the DescribeEndpoint
 (http://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
 API.
 
@@ -709,6 +847,78 @@ update the VPC security groups.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllEndpointConfigs(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+=head2 ListAllEndpointConfigs([CreationTimeAfter => Str, CreationTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EndpointConfigs, passing the object as the first parameter, and the string 'EndpointConfigs' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListEndpointConfigsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllEndpoints(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+=head2 ListAllEndpoints([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Endpoints, passing the object as the first parameter, and the string 'Endpoints' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListEndpointsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllModels(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+=head2 ListAllModels([CreationTimeAfter => Str, CreationTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Models, passing the object as the first parameter, and the string 'Models' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListModelsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllNotebookInstances(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+=head2 ListAllNotebookInstances([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - NotebookInstances, passing the object as the first parameter, and the string 'NotebookInstances' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListNotebookInstancesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTags(sub { },ResourceArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTags(ResourceArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListTagsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTrainingJobs(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+=head2 ListAllTrainingJobs([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TrainingJobSummaries, passing the object as the first parameter, and the string 'TrainingJobSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListTrainingJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

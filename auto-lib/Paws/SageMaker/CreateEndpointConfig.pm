@@ -2,6 +2,7 @@
 package Paws::SageMaker::CreateEndpointConfig;
   use Moose;
   has EndpointConfigName => (is => 'ro', isa => 'Str', required => 1);
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has ProductionVariants => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ProductionVariant]', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
 
@@ -41,6 +42,14 @@ The name of the endpoint configuration. You specify this name in a
 CreateEndpoint
 (http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html)
 request.
+
+
+
+=head2 KmsKeyId => Str
+
+The Amazon Resource Name (ARN) of a AWS Key Management Service key that
+Amazon SageMaker uses to encrypt data on the storage volume attached to
+the ML compute instance that hosts the endpoint.
 
 
 
