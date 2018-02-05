@@ -181,6 +181,10 @@ Scale your resources in response to CloudWatch alarms
 
 =item *
 
+Schedule one-time or recurring scaling actions
+
+=item *
+
 View the history of your scaling events
 
 =back
@@ -193,7 +197,7 @@ Application Auto Scaling can scale the following AWS resources:
 
 Amazon ECS services. For more information, see Service Auto Scaling
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html)
-in the I<Amazon EC2 Container Service Developer Guide>.
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 =item *
 
@@ -226,8 +230,8 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 =item *
 
-Amazon Aurora Replicas. For more information, see Using Application
-Auto Scaling with an Amazon Aurora DB Cluster
+Amazon Aurora Replicas. For more information, see Using Amazon Aurora
+Auto Scaling with Aurora Replicas
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Integrating.AutoScaling.html).
 
 =back
@@ -285,8 +289,7 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::Describ
 
 Returns: a L<Paws::ApplicationAutoScaling::DescribeScalableTargetsResponse> instance
 
-Provides descriptive information about the scalable targets in the
-specified namespace.
+Gets information about the scalable targets in the specified namespace.
 
 You can filter the results using the C<ResourceIds> and
 C<ScalableDimension> parameters.
@@ -358,7 +361,7 @@ target.
 Each scalable target is identified by a service namespace, resource ID,
 and scalable dimension. A scaling policy applies to the scalable target
 identified by those three attributes. You cannot create a scaling
-policy without first registering a scalable target using
+policy until you register the scalable target using
 RegisterScalableTarget.
 
 To update a policy, specify its policy name and the parameters that you
@@ -382,7 +385,7 @@ scalable target.
 Each scalable target is identified by a service namespace, resource ID,
 and scalable dimension. A scheduled action applies to the scalable
 target identified by those three attributes. You cannot create a
-scheduled action without first registering a scalable target using
+scheduled action until you register the scalable target using
 RegisterScalableTarget.
 
 To update an action, specify its name and the parameters that you want
@@ -404,12 +407,12 @@ Returns: a L<Paws::ApplicationAutoScaling::RegisterScalableTargetResponse> insta
 Registers or updates a scalable target. A scalable target is a resource
 that Application Auto Scaling can scale out or scale in. After you have
 registered a scalable target, you can use this operation to update the
-minimum and maximum values for your scalable dimension.
+minimum and maximum values for its scalable dimension.
 
 After you register a scalable target, you can create and apply scaling
 policies using PutScalingPolicy. You can view the scaling policies for
-a service namespace using DescribeScalableTargets. If you are no longer
-using a scalable target, you can deregister it using
+a service namespace using DescribeScalableTargets. If you no longer
+need a scalable target, you can deregister it using
 DeregisterScalableTarget.
 
 

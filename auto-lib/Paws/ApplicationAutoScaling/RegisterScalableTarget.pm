@@ -41,16 +41,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 MaxCapacity => Int
 
 The maximum value to scale to in response to a scale out event. This
-parameter is required if you are registering a scalable target and
-optional if you are updating one.
+parameter is required if you are registering a scalable target.
 
 
 
 =head2 MinCapacity => Int
 
 The minimum value to scale to in response to a scale in event. This
-parameter is required if you are registering a scalable target and
-optional if you are updating one.
+parameter is required if you are registering a scalable target.
 
 
 
@@ -107,17 +105,15 @@ identifier is the cluster name. Example: C<cluster:my-db-cluster>.
 
 =head2 RoleARN => Str
 
-The ARN of an IAM role that allows Application Auto Scaling to modify
-the scalable target on your behalf.
-
-With Amazon RDS resources, permissions are granted using a
-service-linked role. For more information, see Service-Linked Roles for
-Application Auto Scaling
+Application Auto Scaling creates a service-linked role that grants it
+permissions to modify the scalable target on your behalf. For more
+information, see Service-Linked Roles for Application Auto Scaling
 (http://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/application-autoscaling-service-linked-roles.html).
 
 For resources that are not supported using a service-linked role, this
-parameter is required when you register a scalable target and optional
-when you update one.
+parameter is required and must specify the ARN of an IAM role that
+allows Application Auto Scaling to modify the scalable target on your
+behalf.
 
 
 

@@ -39,8 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 MaxResults => Int
 
-The maximum number of scalable target results. This value can be
-between 1 and 50. The default value is 50.
+The maximum number of scalable targets. This value can be between 1 and
+50. The default value is 50.
 
 If this parameter is used, the operation returns up to C<MaxResults>
 results at a time, along with a C<NextToken> value. To get the next set

@@ -47,11 +47,13 @@ The name of the scaling policy.
 
 =head2 PolicyType => Str
 
-The policy type. If you are creating a new policy, this parameter is
-required. If you are updating a policy, this parameter is not required.
+The policy type. This parameter is required if you are creating a
+policy.
 
-For DynamoDB, only C<TargetTrackingScaling> is supported. For any other
-service, only C<StepScaling> is supported.
+For DynamoDB, only C<TargetTrackingScaling> is supported. For Amazon
+ECS, Spot Fleet, and Amazon RDS, both C<StepScaling> and
+C<TargetTrackingScaling> are supported. For any other service, only
+C<StepScaling> is supported.
 
 Valid values are: C<"StepScaling">, C<"TargetTrackingScaling">
 
@@ -184,8 +186,8 @@ type is C<StepScaling>.
 
 A target tracking policy.
 
-This parameter is required if you are creating a new policy and the
-policy type is C<TargetTrackingScaling>.
+This parameter is required if you are creating a policy and the policy
+type is C<TargetTrackingScaling>.
 
 
 

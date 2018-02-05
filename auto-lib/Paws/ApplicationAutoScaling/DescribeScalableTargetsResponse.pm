@@ -23,7 +23,7 @@ C<null> if there are no more results to return.
 
 =head2 ScalableTargets => ArrayRef[L<Paws::ApplicationAutoScaling::ScalableTarget>]
 
-The list of scalable targets that matches the request parameters.
+The scalable targets that match the request parameters.
 
 
 =head2 _request_id => Str

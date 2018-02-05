@@ -40,7 +40,7 @@ Configures a predefined metric for a target tracking policy.
 =head2 B<REQUIRED> PredefinedMetricType => Str
 
   The metric type. The C<ALBRequestCountPerTarget> metric type applies
-only to Spot fleet requests.
+only to Spot fleet requests and ECS services.
 
 
 =head2 ResourceLabel => Str
@@ -48,7 +48,7 @@ only to Spot fleet requests.
   Identifies the resource associated with the metric type. You can't
 specify a resource label unless the metric type is
 C<ALBRequestCountPerTarget> and there is a target group attached to the
-Spot fleet request.
+Spot fleet request or ECS service.
 
 The format is
 app/E<lt>load-balancer-nameE<gt>/E<lt>load-balancer-idE<gt>/targetgroup/E<lt>target-group-nameE<gt>/E<lt>target-group-idE<gt>,

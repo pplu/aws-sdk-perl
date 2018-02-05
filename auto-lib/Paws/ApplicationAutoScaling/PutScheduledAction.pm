@@ -99,7 +99,8 @@ identifier is the cluster name. Example: C<cluster:my-db-cluster>.
 
 =head2 ScalableDimension => Str
 
-The scalable dimension. This string consists of the service namespace,
+The scalable dimension. This parameter is required if you are creating
+a scheduled action. This string consists of the service namespace,
 resource type, and scaling property.
 
 =over
