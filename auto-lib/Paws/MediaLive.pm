@@ -187,7 +187,7 @@ API for AWS Elemental MediaLive
 
 =head1 METHODS
 
-=head2 CreateChannel([Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>], EncoderSettings => L<Paws::MediaLive::EncoderSettings>, InputAttachments => ArrayRef[L<Paws::MediaLive::InputAttachment>], Name => Str, RequestId => Str, Reserved => Str, RoleArn => Str])
+=head2 CreateChannel([Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>], EncoderSettings => L<Paws::MediaLive::EncoderSettings>, InputAttachments => ArrayRef[L<Paws::MediaLive::InputAttachment>], InputSpecification => L<Paws::MediaLive::InputSpecification>, Name => Str, RequestId => Str, Reserved => Str, RoleArn => Str])
 
 Each argument is described in detail in: L<Paws::MediaLive::CreateChannel>
 

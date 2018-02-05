@@ -4,6 +4,7 @@ package Paws::MediaLive::CreateChannel;
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestination]', traits => ['NameInRequest'], request_name => 'destinations');
   has EncoderSettings => (is => 'ro', isa => 'Paws::MediaLive::EncoderSettings', traits => ['NameInRequest'], request_name => 'encoderSettings');
   has InputAttachments => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputAttachment]', traits => ['NameInRequest'], request_name => 'inputAttachments');
+  has InputSpecification => (is => 'ro', isa => 'Paws::MediaLive::InputSpecification', traits => ['NameInRequest'], request_name => 'inputSpecification');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
   has RequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestId');
   has Reserved => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reserved');
@@ -55,6 +56,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 InputAttachments => ArrayRef[L<Paws::MediaLive::InputAttachment>]
 
 List of input attachments for channel.
+
+
+
+=head2 InputSpecification => L<Paws::MediaLive::InputSpecification>
+
+Specification of input for this channel (max. bitrate, resolution,
+codec, etc.)
 
 
 

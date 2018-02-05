@@ -33,14 +33,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-Settings for for a PULL type input
+Settings for for a PULL type input.
 
 =head1 ATTRIBUTES
 
 
 =head2 PasswordParam => Str
 
-  key used to extract the password from EC2 Parameter store
+  The key used to extract the password from EC2 Parameter store.
 
 
 =head2 Url => Str
@@ -50,7 +50,7 @@ Settings for for a PULL type input
 
 =head2 Username => Str
 
-  username for input source
+  The username for the input source.
 
 
 

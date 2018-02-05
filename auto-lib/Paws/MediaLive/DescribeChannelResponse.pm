@@ -7,6 +7,7 @@ package Paws::MediaLive::DescribeChannelResponse;
   has EncoderSettings => (is => 'ro', isa => 'Paws::MediaLive::EncoderSettings', traits => ['NameInRequest'], request_name => 'encoderSettings');
   has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
   has InputAttachments => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputAttachment]', traits => ['NameInRequest'], request_name => 'inputAttachments');
+  has InputSpecification => (is => 'ro', isa => 'Paws::MediaLive::InputSpecification', traits => ['NameInRequest'], request_name => 'inputSpecification');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
   has PipelinesRunningCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'pipelinesRunningCount');
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
@@ -54,6 +55,11 @@ The unique id of the channel.
 =head2 InputAttachments => ArrayRef[L<Paws::MediaLive::InputAttachment>]
 
 List of input attachments for channel.
+
+
+=head2 InputSpecification => L<Paws::MediaLive::InputSpecification>
+
+
 
 
 =head2 Name => Str

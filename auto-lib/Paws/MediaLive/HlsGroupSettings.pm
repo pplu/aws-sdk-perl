@@ -155,9 +155,9 @@ parameter if no encryption is desired.
 
 =head2 IndexNSegments => Int
 
-  Number of segments to keep in the playlist (.m3u8) file. mode must be
-"vod" for this setting to have an effect, and this number should be
-less than or equal to keepSegments.
+  If mode is "live", the number of segments to retain in the manifest
+(.m3u8) file. This number must be less than or equal to keepSegments.
+If mode is "vod", this parameter has no effect.
 
 
 =head2 InputLossAction => Str
@@ -184,8 +184,8 @@ change every segment (to match the segment number). If this is set to
 
 =head2 KeepSegments => Int
 
-  Number of segments to retain in the destination directory. mode must be
-"live" for this setting to have an effect.
+  If mode is "live", the number of TS segments to retain in the
+destination directory. If mode is "vod", this parameter has no effect.
 
 
 =head2 KeyFormat => Str
@@ -226,9 +226,13 @@ size if needed.
 
 =head2 Mode => Str
 
-  If set to "vod", keeps and indexes all segments starting with the first
-segment. If set to "live" segments will age out and only the last
-keepSegments number of segments will be retained.
+  If "vod", all segments are indexed and kept permanently in the
+destination and manifest. If "live", only the number segments specified
+in keepSegments and indexNSegments are kept; newer segments replace
+older segments, which may prevent players from rewinding all the way to
+the beginning of the event. VOD mode uses HLS EXT-X-PLAYLIST-TYPE of
+EVENT while the channel is running, converting it to a "VOD" type
+manifest on completion of the stream.
 
 
 =head2 OutputSelection => Str

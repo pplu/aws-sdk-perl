@@ -33,20 +33,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-Settings for a PUSH type input
+The settings for a PUSH type input.
 
 =head1 ATTRIBUTES
 
 
 =head2 Ip => Str
 
-  system-generated static IP address of endpoint. Remains fixed for the
-lifetime of the input
+  The system-generated static IP address of endpoint. It remains fixed
+for the lifetime of the input.
 
 
 =head2 Port => Str
 
-  port for input
+  The port number for the input.
 
 
 =head2 Url => Str

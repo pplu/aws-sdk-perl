@@ -5,6 +5,7 @@ package Paws::MediaLive::ChannelSummary;
   has EgressEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::ChannelEgressEndpoint]', request_name => 'egressEndpoints', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has InputAttachments => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputAttachment]', request_name => 'inputAttachments', traits => ['NameInRequest']);
+  has InputSpecification => (is => 'ro', isa => 'Paws::MediaLive::InputSpecification', request_name => 'inputSpecification', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has PipelinesRunningCount => (is => 'ro', isa => 'Int', request_name => 'pipelinesRunningCount', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
@@ -69,6 +70,11 @@ one destination per packager.
 =head2 InputAttachments => ArrayRef[L<Paws::MediaLive::InputAttachment>]
 
   List of input attachments for channel.
+
+
+=head2 InputSpecification => L<Paws::MediaLive::InputSpecification>
+
+  
 
 
 =head2 Name => Str

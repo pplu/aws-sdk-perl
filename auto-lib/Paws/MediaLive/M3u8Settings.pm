@@ -65,11 +65,7 @@ hexadecimal values.
 
 =head2 EcmPid => Str
 
-  ThePlatform-protected transport streams using 'microsoft' as Target
-Client include an ECM stream. This ECM stream contains the size, IV,
-and PTS of every sample in the transport stream. This stream PID is
-specified here. This PID has no effect on non ThePlatform-protected
-streams.
+  This parameter is unused and deprecated.
 
 
 =head2 PatInterval => Int

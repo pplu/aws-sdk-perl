@@ -41,9 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Destinations => ArrayRef[L<Paws::MediaLive::InputDestinationRequest>]
 
-settings required for PUSH-type inputs; one per redundancy group. Only
-one of sources and destinations can be specified. Note: there are
-currently no settings required for PUSH-type inputs
+Destination settings for PUSH type inputs.
 
 
 
@@ -62,14 +60,15 @@ Name of the input.
 =head2 RequestId => Str
 
 Unique identifier of the request to ensure the request is handled
-exactly once in case of retries
+exactly once in case of retries.
 
 
 
 =head2 Sources => ArrayRef[L<Paws::MediaLive::InputSourceRequest>]
 
-settings required for PULL-type inputs; one per redundancy group Only
-one of sources and destinations can be specified
+The source URLs for a PULL-type input. Every PULL type input needs
+exactly two source URLs for redundancy. Only specify sources for PULL
+type Inputs. Leave Destinations empty.
 
 
 
