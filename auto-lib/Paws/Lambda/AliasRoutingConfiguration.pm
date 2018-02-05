@@ -40,9 +40,10 @@ lambda-traffic-shifting-using-aliases.
 
 =head2 AdditionalVersionWeights => L<Paws::Lambda::AdditionalVersionWeights>
 
-  Set this property value to dictate what percentage of traffic will
-invoke the updated function version. If set to an empty string, 100
-percent of traffic will invoke C<function-version>.
+  Set this value to dictate what percentage of traffic will invoke the
+updated function version. If set to an empty string, 100 percent of
+traffic will invoke C<function-version>. For more information, see
+lambda-traffic-shifting-using-aliases.
 
 
 

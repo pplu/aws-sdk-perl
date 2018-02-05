@@ -25,7 +25,8 @@ Paws::Lambda::GetFunctionResponse
 
 =head2 Concurrency => L<Paws::Lambda::Concurrency>
 
-The concurrent execution limit set for this function.
+The concurrent execution limit set for this function. For more
+information, see concurrent-executions.
 
 
 =head2 Configuration => L<Paws::Lambda::FunctionConfiguration>

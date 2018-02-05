@@ -8,6 +8,7 @@ package Paws::Lambda::UpdateFunctionConfiguration;
   has Handler => (is => 'ro', isa => 'Str');
   has KMSKeyArn => (is => 'ro', isa => 'Str');
   has MemorySize => (is => 'ro', isa => 'Int');
+  has RevisionId => (is => 'ro', isa => 'Str');
   has Role => (is => 'ro', isa => 'Str');
   has Runtime => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
@@ -106,6 +107,16 @@ The value must be a multiple of 64 MB.
 
 
 
+=head2 RevisionId => Str
+
+An optional value you can use to ensure you are updating the latest
+update of the function version or alias. If the C<RevisionID> you pass
+doesn't match the latest C<RevisionId> of the function or alias, it
+will fail with an error message, advising you to retrieve the latest
+function version or alias C<RevisionID> using either or .
+
+
+
 =head2 Role => Str
 
 The Amazon Resource Name (ARN) of the IAM role that Lambda will assume
@@ -130,7 +141,7 @@ so will result in an invalid parameter error being returned. Note that
 you will have to follow this procedure for each region that contains
 functions written in the Node v0.10.42 runtime.
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"dotnetcore1.0">, C<"nodejs4.3-edge">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"nodejs4.3-edge">, C<"go1.x">
 
 =head2 Timeout => Int
 

@@ -5,6 +5,7 @@ package Paws::Lambda::AliasConfiguration;
   has Description => (is => 'ro', isa => 'Str');
   has FunctionVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has RevisionId => (is => 'ro', isa => 'Str');
   has RoutingConfig => (is => 'ro', isa => 'Paws::Lambda::AliasRoutingConfiguration');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -40,6 +41,11 @@ Function version to which the alias points.
 =head2 Name => Str
 
 Alias name.
+
+
+=head2 RevisionId => Str
+
+Represents the latest updated revision of the function or alias.
 
 
 =head2 RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>

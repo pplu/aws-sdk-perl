@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> FunctionName => Str
 
 The name of the function you are removing concurrent execution limits
-from.
+from. For more information, see concurrent-executions.
 
 
 

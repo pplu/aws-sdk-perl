@@ -4,6 +4,7 @@ package Paws::Lambda::UpdateFunctionCode;
   has DryRun => (is => 'ro', isa => 'Bool');
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
   has Publish => (is => 'ro', isa => 'Bool');
+  has RevisionId => (is => 'ro', isa => 'Str');
   has S3Bucket => (is => 'ro', isa => 'Str');
   has S3Key => (is => 'ro', isa => 'Str');
   has S3ObjectVersion => (is => 'ro', isa => 'Str');
@@ -69,6 +70,16 @@ characters in length.
 
 This boolean parameter can be used to request AWS Lambda to update the
 Lambda function and publish a version as an atomic operation.
+
+
+
+=head2 RevisionId => Str
+
+An optional value you can use to ensure you are updating the latest
+update of the function version or alias. If the C<RevisionID> you pass
+doesn't match the latest C<RevisionId> of the function or alias, it
+will fail with an error message, advising you to retrieve the latest
+function version or alias C<RevisionID> using either or .
 
 
 

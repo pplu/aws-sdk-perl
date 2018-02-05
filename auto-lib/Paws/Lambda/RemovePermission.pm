@@ -3,6 +3,7 @@ package Paws::Lambda::RemovePermission;
   use Moose;
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
   has Qualifier => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Qualifier');
+  has RevisionId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'RevisionId');
   has StatementId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'StatementId', required => 1);
 
   use MooseX::ClassAttribute;
@@ -57,6 +58,16 @@ You can specify this optional parameter to remove permission associated
 with a specific function version or function alias. If you don't
 specify this parameter, the API removes permission associated with the
 unqualified function ARN.
+
+
+
+=head2 RevisionId => Str
+
+An optional value you can use to ensure you are updating the latest
+update of the function version or alias. If the C<RevisionID> you pass
+doesn't match the latest C<RevisionId> of the function or alias, it
+will fail with an error message, advising you to retrieve the latest
+function version or alias C<RevisionID> using either or .
 
 
 

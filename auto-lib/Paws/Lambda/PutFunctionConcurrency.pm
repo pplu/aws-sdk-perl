@@ -38,13 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> FunctionName => Str
 
 The name of the function you are setting concurrent execution limits
-on.
+on. For more information, see concurrent-executions.
 
 
 
 =head2 B<REQUIRED> ReservedConcurrentExecutions => Int
 
-The concurrent execution limit reserved for this function.
+The concurrent execution limit reserved for this function. For more
+information, see concurrent-executions.
 
 
 

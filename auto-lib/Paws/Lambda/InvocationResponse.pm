@@ -23,7 +23,8 @@ Paws::Lambda::InvocationResponse
 =head2 ExecutedVersion => Str
 
 The function version that has been executed. This value is returned
-only if the invocation type is C<RequestResponse>.
+only if the invocation type is C<RequestResponse>. For more
+information, see lambda-traffic-shifting-using-aliases.
 
 
 =head2 FunctionError => Str

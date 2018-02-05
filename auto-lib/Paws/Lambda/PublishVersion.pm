@@ -4,6 +4,7 @@ package Paws::Lambda::PublishVersion;
   has CodeSha256 => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
+  has RevisionId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -64,6 +65,16 @@ also allows you to specify a partial ARN (for example,
 C<account-id:Thumbnail>). Note that the length constraint applies only
 to the ARN. If you specify only the function name, it is limited to 64
 characters in length.
+
+
+
+=head2 RevisionId => Str
+
+An optional value you can use to ensure you are updating the latest
+update of the function version or alias. If the C<RevisionID> you pass
+doesn't match the latest C<RevisionId> of the function or alias, it
+will fail with an error message, advising you to retrieve the latest
+function version or alias C<RevisionID> using either or .
 
 
 

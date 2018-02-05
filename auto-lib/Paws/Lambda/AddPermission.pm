@@ -6,6 +6,7 @@ package Paws::Lambda::AddPermission;
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
   has Principal => (is => 'ro', isa => 'Str', required => 1);
   has Qualifier => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Qualifier');
+  has RevisionId => (is => 'ro', isa => 'Str');
   has SourceAccount => (is => 'ro', isa => 'Str');
   has SourceArn => (is => 'ro', isa => 'Str');
   has StatementId => (is => 'ro', isa => 'Str', required => 1);
@@ -103,6 +104,16 @@ If the qualifier is not specified, the permission is valid only when
 requests is made using unqualified function ARN.
 
 C<arn:aws:lambda:aws-region:acct-id:function:function-name>
+
+
+
+=head2 RevisionId => Str
+
+An optional value you can use to ensure you are updating the latest
+update of the function version or alias. If the C<RevisionID> you pass
+doesn't match the latest C<RevisionId> of the function or alias, it
+will fail with an error message, advising you to retrieve the latest
+function version or alias C<RevisionID> using either or .
 
 
 

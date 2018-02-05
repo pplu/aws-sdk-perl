@@ -277,7 +277,7 @@ in the I<AWS Lambda Developer Guide>.
 
 =head1 METHODS
 
-=head2 AddPermission(Action => Str, FunctionName => Str, Principal => Str, StatementId => Str, [EventSourceToken => Str, Qualifier => Str, SourceAccount => Str, SourceArn => Str])
+=head2 AddPermission(Action => Str, FunctionName => Str, Principal => Str, StatementId => Str, [EventSourceToken => Str, Qualifier => Str, RevisionId => Str, SourceAccount => Str, SourceArn => Str])
 
 Each argument is described in detail in: L<Paws::Lambda::AddPermission>
 
@@ -432,7 +432,8 @@ Each argument is described in detail in: L<Paws::Lambda::DeleteFunctionConcurren
 
 Returns: nothing
 
-Removes concurrent execution limits from this function.
+Removes concurrent execution limits from this function. For more
+information, see concurrent-executions.
 
 
 =head2 GetAccountSettings()
@@ -565,6 +566,15 @@ Lambda Function Versioning and Aliases
 This operation requires permission for the C<lambda:InvokeFunction>
 action.
 
+The C<TooManyRequestsException> noted below will return the following:
+C<ConcurrentInvocationLimitExceeded> will be returned if you have no
+functions with reserved concurrency and have exceeded your account
+concurrent limit or if a function without reserved concurrency exceeds
+the account's unreserved concurrency limit.
+C<ReservedFunctionConcurrentInvocationLimitExceeded> will be returned
+when a function with reserved concurrency exceeds its configured
+concurrency limit.
+
 
 =head2 InvokeAsync(FunctionName => Str, InvokeArgs => Str)
 
@@ -661,7 +671,7 @@ feature, see AWS Lambda Function Versioning and Aliases
 (http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
 
 
-=head2 PublishVersion(FunctionName => Str, [CodeSha256 => Str, Description => Str])
+=head2 PublishVersion(FunctionName => Str, [CodeSha256 => Str, Description => Str, RevisionId => Str])
 
 Each argument is described in detail in: L<Paws::Lambda::PublishVersion>
 
@@ -687,10 +697,11 @@ function. It is a subset of your account's total concurrent execution
 limit per region. Note that Lambda automatically reserves a buffer of
 100 concurrent executions for functions without any reserved
 concurrency limit. This means if your account limit is 1000, you have a
-total of 900 available to allocate to individual functions.
+total of 900 available to allocate to individual functions. For more
+information, see concurrent-executions.
 
 
-=head2 RemovePermission(FunctionName => Str, StatementId => Str, [Qualifier => Str])
+=head2 RemovePermission(FunctionName => Str, StatementId => Str, [Qualifier => Str, RevisionId => Str])
 
 Each argument is described in detail in: L<Paws::Lambda::RemovePermission>
 
@@ -735,7 +746,7 @@ Removes tags from a Lambda function. Requires the function ARN (Amazon
 Resource Name).
 
 
-=head2 UpdateAlias(FunctionName => Str, Name => Str, [Description => Str, FunctionVersion => Str, RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>])
+=head2 UpdateAlias(FunctionName => Str, Name => Str, [Description => Str, FunctionVersion => Str, RevisionId => Str, RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>])
 
 Each argument is described in detail in: L<Paws::Lambda::UpdateAlias>
 
@@ -776,7 +787,7 @@ This operation requires permission for the
 C<lambda:UpdateEventSourceMapping> action.
 
 
-=head2 UpdateFunctionCode(FunctionName => Str, [DryRun => Bool, Publish => Bool, S3Bucket => Str, S3Key => Str, S3ObjectVersion => Str, ZipFile => Str])
+=head2 UpdateFunctionCode(FunctionName => Str, [DryRun => Bool, Publish => Bool, RevisionId => Str, S3Bucket => Str, S3Key => Str, S3ObjectVersion => Str, ZipFile => Str])
 
 Each argument is described in detail in: L<Paws::Lambda::UpdateFunctionCode>
 
@@ -796,7 +807,7 @@ This operation requires permission for the C<lambda:UpdateFunctionCode>
 action.
 
 
-=head2 UpdateFunctionConfiguration(FunctionName => Str, [DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>, Description => Str, Environment => L<Paws::Lambda::Environment>, Handler => Str, KMSKeyArn => Str, MemorySize => Int, Role => Str, Runtime => Str, Timeout => Int, TracingConfig => L<Paws::Lambda::TracingConfig>, VpcConfig => L<Paws::Lambda::VpcConfig>])
+=head2 UpdateFunctionConfiguration(FunctionName => Str, [DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>, Description => Str, Environment => L<Paws::Lambda::Environment>, Handler => Str, KMSKeyArn => Str, MemorySize => Int, RevisionId => Str, Role => Str, Runtime => Str, Timeout => Int, TracingConfig => L<Paws::Lambda::TracingConfig>, VpcConfig => L<Paws::Lambda::VpcConfig>])
 
 Each argument is described in detail in: L<Paws::Lambda::UpdateFunctionConfiguration>
 

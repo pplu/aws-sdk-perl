@@ -17,7 +17,8 @@ Paws::Lambda::Concurrency
 
 =head2 ReservedConcurrentExecutions => Int
 
-The number of concurrent executions reserved for this function.
+The number of concurrent executions reserved for this function. For
+more information, see concurrent-executions.
 
 
 =head2 _request_id => Str

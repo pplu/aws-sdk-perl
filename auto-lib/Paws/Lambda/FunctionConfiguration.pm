@@ -13,6 +13,7 @@ package Paws::Lambda::FunctionConfiguration;
   has LastModified => (is => 'ro', isa => 'Str');
   has MasterArn => (is => 'ro', isa => 'Str');
   has MemorySize => (is => 'ro', isa => 'Int');
+  has RevisionId => (is => 'ro', isa => 'Str');
   has Role => (is => 'ro', isa => 'Str');
   has Runtime => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
@@ -103,6 +104,11 @@ The memory size, in MB, you configured for the function. Must be a
 multiple of 64 MB.
 
 
+=head2 RevisionId => Str
+
+Represents the latest updated revision of the function or alias.
+
+
 =head2 Role => Str
 
 The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when
@@ -114,7 +120,7 @@ resources.
 
 The runtime environment for the Lambda function.
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"dotnetcore1.0">, C<"nodejs4.3-edge">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"nodejs4.3-edge">, C<"go1.x">
 =head2 Timeout => Int
 
 The function execution time at which Lambda should terminate the
