@@ -4,6 +4,7 @@ package Paws::AlexaForBusiness::DeviceData;
   has DeviceName => (is => 'ro', isa => 'Str');
   has DeviceSerialNumber => (is => 'ro', isa => 'Str');
   has DeviceStatus => (is => 'ro', isa => 'Str');
+  has DeviceStatusInfo => (is => 'ro', isa => 'Paws::AlexaForBusiness::DeviceStatusInfo');
   has DeviceType => (is => 'ro', isa => 'Str');
   has MacAddress => (is => 'ro', isa => 'Str');
   has RoomArn => (is => 'ro', isa => 'Str');
@@ -62,6 +63,11 @@ Device attributes.
 =head2 DeviceStatus => Str
 
   The status of a device.
+
+
+=head2 DeviceStatusInfo => L<Paws::AlexaForBusiness::DeviceStatusInfo>
+
+  Detailed information about a device's status.
 
 
 =head2 DeviceType => Str

@@ -195,6 +195,167 @@ package Paws::AlexaForBusiness;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllSkills {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSkills(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListSkills(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SkillSummaries }, @{ $next_result->SkillSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SkillSummaries') foreach (@{ $result->SkillSummaries });
+        $result = $self->ListSkills(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SkillSummaries') foreach (@{ $result->SkillSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllTags {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTags(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTags(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Tags }, @{ $next_result->Tags };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->ListTags(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+    }
+
+    return undef
+  }
+  sub SearchAllDevices {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->SearchDevices(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->SearchDevices(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Devices }, @{ $next_result->Devices };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Devices') foreach (@{ $result->Devices });
+        $result = $self->SearchDevices(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Devices') foreach (@{ $result->Devices });
+    }
+
+    return undef
+  }
+  sub SearchAllProfiles {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->SearchProfiles(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->SearchProfiles(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Profiles }, @{ $next_result->Profiles };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Profiles') foreach (@{ $result->Profiles });
+        $result = $self->SearchProfiles(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Profiles') foreach (@{ $result->Profiles });
+    }
+
+    return undef
+  }
+  sub SearchAllRooms {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->SearchRooms(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->SearchRooms(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Rooms }, @{ $next_result->Rooms };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Rooms') foreach (@{ $result->Rooms });
+        $result = $self->SearchRooms(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Rooms') foreach (@{ $result->Rooms });
+    }
+
+    return undef
+  }
+  sub SearchAllSkillGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->SearchSkillGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->SearchSkillGroups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SkillGroups }, @{ $next_result->SkillGroups };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SkillGroups') foreach (@{ $result->SkillGroups });
+        $result = $self->SearchSkillGroups(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SkillGroups') foreach (@{ $result->SkillGroups });
+    }
+
+    return undef
+  }
+  sub SearchAllUsers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->SearchUsers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->SearchUsers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Users }, @{ $next_result->Users };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Users') foreach (@{ $result->Users });
+        $result = $self->SearchUsers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Users') foreach (@{ $result->Users });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AssociateDeviceWithRoom AssociateSkillGroupWithRoom CreateProfile CreateRoom CreateSkillGroup CreateUser DeleteProfile DeleteRoom DeleteRoomSkillParameter DeleteSkillGroup DeleteUser DisassociateDeviceFromRoom DisassociateSkillGroupFromRoom GetDevice GetProfile GetRoom GetRoomSkillParameter GetSkillGroup ListSkills ListTags PutRoomSkillParameter ResolveRoom RevokeInvitation SearchDevices SearchProfiles SearchRooms SearchSkillGroups SearchUsers SendInvitation StartDeviceSync TagResource UntagResource UpdateDevice UpdateProfile UpdateRoom UpdateSkillGroup / }
@@ -583,6 +744,90 @@ Updates skill group details by skill group ARN.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllSkills(sub { },[MaxResults => Int, NextToken => Str, SkillGroupArn => Str])
+
+=head2 ListAllSkills([MaxResults => Int, NextToken => Str, SkillGroupArn => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SkillSummaries, passing the object as the first parameter, and the string 'SkillSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::AlexaForBusiness::ListSkillsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTags(sub { },Arn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTags(Arn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
+
+If not, it will return a a L<Paws::AlexaForBusiness::ListTagsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 SearchAllDevices(sub { },[Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+
+=head2 SearchAllDevices([Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Devices, passing the object as the first parameter, and the string 'Devices' as the second parameter 
+
+If not, it will return a a L<Paws::AlexaForBusiness::SearchDevicesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 SearchAllProfiles(sub { },[Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+
+=head2 SearchAllProfiles([Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Profiles, passing the object as the first parameter, and the string 'Profiles' as the second parameter 
+
+If not, it will return a a L<Paws::AlexaForBusiness::SearchProfilesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 SearchAllRooms(sub { },[Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+
+=head2 SearchAllRooms([Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Rooms, passing the object as the first parameter, and the string 'Rooms' as the second parameter 
+
+If not, it will return a a L<Paws::AlexaForBusiness::SearchRoomsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 SearchAllSkillGroups(sub { },[Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+
+=head2 SearchAllSkillGroups([Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SkillGroups, passing the object as the first parameter, and the string 'SkillGroups' as the second parameter 
+
+If not, it will return a a L<Paws::AlexaForBusiness::SearchSkillGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 SearchAllUsers(sub { },[Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+
+=head2 SearchAllUsers([Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Users, passing the object as the first parameter, and the string 'Users' as the second parameter 
+
+If not, it will return a a L<Paws::AlexaForBusiness::SearchUsersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

@@ -39,8 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]
 
 The filters to use to list a specified set of devices. Supported filter
-keys are DeviceName, DeviceStatus, RoomName, DeviceType,
-DeviceSerialNumber, and UnassociatedOnly.
+keys are DeviceName, DeviceStatus, DeviceStatusDetailCode, RoomName,
+DeviceType, DeviceSerialNumber, and UnassociatedOnly.
 
 
 
