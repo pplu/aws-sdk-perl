@@ -46,7 +46,8 @@ supplied, the AWS account ID is used by default.
 
 =head2 B<REQUIRED> DatabaseName => Str
 
-The database in the catalog whose tables to list.
+The database in the catalog whose tables to list. For Hive
+compatibility, this name is entirely lowercase.
 
 
 

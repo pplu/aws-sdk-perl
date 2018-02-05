@@ -34,6 +34,11 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::BatchDeleteTable', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub BatchDeleteTableVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::BatchDeleteTableVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchGetPartition {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::BatchGetPartition', @_);
@@ -137,6 +142,11 @@ package Paws::Glue;
   sub DeleteTable {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::DeleteTable', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteTableVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::DeleteTableVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteTrigger {
@@ -262,6 +272,11 @@ package Paws::Glue;
   sub GetTables {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::GetTables', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetTableVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetTableVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetTableVersions {
@@ -390,9 +405,308 @@ package Paws::Glue;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub GetAllClassifiers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetClassifiers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetClassifiers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Classifiers }, @{ $next_result->Classifiers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Classifiers') foreach (@{ $result->Classifiers });
+        $result = $self->GetClassifiers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Classifiers') foreach (@{ $result->Classifiers });
+    }
+
+    return undef
+  }
+  sub GetAllConnections {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetConnections(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetConnections(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ConnectionList }, @{ $next_result->ConnectionList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ConnectionList') foreach (@{ $result->ConnectionList });
+        $result = $self->GetConnections(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ConnectionList') foreach (@{ $result->ConnectionList });
+    }
+
+    return undef
+  }
+  sub GetAllCrawlerMetrics {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetCrawlerMetrics(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetCrawlerMetrics(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CrawlerMetricsList }, @{ $next_result->CrawlerMetricsList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'CrawlerMetricsList') foreach (@{ $result->CrawlerMetricsList });
+        $result = $self->GetCrawlerMetrics(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'CrawlerMetricsList') foreach (@{ $result->CrawlerMetricsList });
+    }
+
+    return undef
+  }
+  sub GetAllCrawlers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetCrawlers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetCrawlers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Crawlers }, @{ $next_result->Crawlers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Crawlers') foreach (@{ $result->Crawlers });
+        $result = $self->GetCrawlers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Crawlers') foreach (@{ $result->Crawlers });
+    }
+
+    return undef
+  }
+  sub GetAllDatabases {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetDatabases(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetDatabases(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DatabaseList }, @{ $next_result->DatabaseList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DatabaseList') foreach (@{ $result->DatabaseList });
+        $result = $self->GetDatabases(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DatabaseList') foreach (@{ $result->DatabaseList });
+    }
+
+    return undef
+  }
+  sub GetAllDevEndpoints {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetDevEndpoints(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetDevEndpoints(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DevEndpoints }, @{ $next_result->DevEndpoints };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DevEndpoints') foreach (@{ $result->DevEndpoints });
+        $result = $self->GetDevEndpoints(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DevEndpoints') foreach (@{ $result->DevEndpoints });
+    }
+
+    return undef
+  }
+  sub GetAllJobRuns {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetJobRuns(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetJobRuns(@_, NextToken => $next_result->NextToken);
+        push @{ $result->JobRuns }, @{ $next_result->JobRuns };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'JobRuns') foreach (@{ $result->JobRuns });
+        $result = $self->GetJobRuns(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'JobRuns') foreach (@{ $result->JobRuns });
+    }
+
+    return undef
+  }
+  sub GetAllJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetJobs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Jobs }, @{ $next_result->Jobs };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Jobs') foreach (@{ $result->Jobs });
+        $result = $self->GetJobs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Jobs') foreach (@{ $result->Jobs });
+    }
+
+    return undef
+  }
+  sub GetAllPartitions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetPartitions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetPartitions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Partitions }, @{ $next_result->Partitions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Partitions') foreach (@{ $result->Partitions });
+        $result = $self->GetPartitions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Partitions') foreach (@{ $result->Partitions });
+    }
+
+    return undef
+  }
+  sub GetAllTables {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetTables(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetTables(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TableList }, @{ $next_result->TableList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TableList') foreach (@{ $result->TableList });
+        $result = $self->GetTables(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TableList') foreach (@{ $result->TableList });
+    }
+
+    return undef
+  }
+  sub GetAllTableVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetTableVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetTableVersions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TableVersions }, @{ $next_result->TableVersions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TableVersions') foreach (@{ $result->TableVersions });
+        $result = $self->GetTableVersions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TableVersions') foreach (@{ $result->TableVersions });
+    }
+
+    return undef
+  }
+  sub GetAllTriggers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetTriggers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetTriggers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Triggers }, @{ $next_result->Triggers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Triggers') foreach (@{ $result->Triggers });
+        $result = $self->GetTriggers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Triggers') foreach (@{ $result->Triggers });
+    }
+
+    return undef
+  }
+  sub GetAllUserDefinedFunctions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetUserDefinedFunctions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetUserDefinedFunctions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->UserDefinedFunctions }, @{ $next_result->UserDefinedFunctions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'UserDefinedFunctions') foreach (@{ $result->UserDefinedFunctions });
+        $result = $self->GetUserDefinedFunctions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'UserDefinedFunctions') foreach (@{ $result->UserDefinedFunctions });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/BatchCreatePartition BatchDeleteConnection BatchDeletePartition BatchDeleteTable BatchGetPartition BatchStopJobRun CreateClassifier CreateConnection CreateCrawler CreateDatabase CreateDevEndpoint CreateJob CreatePartition CreateScript CreateTable CreateTrigger CreateUserDefinedFunction DeleteClassifier DeleteConnection DeleteCrawler DeleteDatabase DeleteDevEndpoint DeleteJob DeletePartition DeleteTable DeleteTrigger DeleteUserDefinedFunction GetCatalogImportStatus GetClassifier GetClassifiers GetConnection GetConnections GetCrawler GetCrawlerMetrics GetCrawlers GetDatabase GetDatabases GetDataflowGraph GetDevEndpoint GetDevEndpoints GetJob GetJobRun GetJobRuns GetJobs GetMapping GetPartition GetPartitions GetPlan GetTable GetTables GetTableVersions GetTrigger GetTriggers GetUserDefinedFunction GetUserDefinedFunctions ImportCatalogToGlue ResetJobBookmark StartCrawler StartCrawlerSchedule StartJobRun StartTrigger StopCrawler StopCrawlerSchedule StopTrigger UpdateClassifier UpdateConnection UpdateCrawler UpdateCrawlerSchedule UpdateDatabase UpdateDevEndpoint UpdateJob UpdatePartition UpdateTable UpdateTrigger UpdateUserDefinedFunction / }
+  sub operations { qw/BatchCreatePartition BatchDeleteConnection BatchDeletePartition BatchDeleteTable BatchDeleteTableVersion BatchGetPartition BatchStopJobRun CreateClassifier CreateConnection CreateCrawler CreateDatabase CreateDevEndpoint CreateJob CreatePartition CreateScript CreateTable CreateTrigger CreateUserDefinedFunction DeleteClassifier DeleteConnection DeleteCrawler DeleteDatabase DeleteDevEndpoint DeleteJob DeletePartition DeleteTable DeleteTableVersion DeleteTrigger DeleteUserDefinedFunction GetCatalogImportStatus GetClassifier GetClassifiers GetConnection GetConnections GetCrawler GetCrawlerMetrics GetCrawlers GetDatabase GetDatabases GetDataflowGraph GetDevEndpoint GetDevEndpoints GetJob GetJobRun GetJobRuns GetJobs GetMapping GetPartition GetPartitions GetPlan GetTable GetTables GetTableVersion GetTableVersions GetTrigger GetTriggers GetUserDefinedFunction GetUserDefinedFunctions ImportCatalogToGlue ResetJobBookmark StartCrawler StartCrawlerSchedule StartJobRun StartTrigger StopCrawler StopCrawlerSchedule StopTrigger UpdateClassifier UpdateConnection UpdateCrawler UpdateCrawlerSchedule UpdateDatabase UpdateDevEndpoint UpdateJob UpdatePartition UpdateTable UpdateTrigger UpdateUserDefinedFunction / }
 
 1;
 
@@ -460,6 +774,15 @@ Each argument is described in detail in: L<Paws::Glue::BatchDeleteTable>
 Returns: a L<Paws::Glue::BatchDeleteTableResponse> instance
 
 Deletes multiple tables at once.
+
+
+=head2 BatchDeleteTableVersion(DatabaseName => Str, TableName => Str, VersionIds => ArrayRef[Str|Undef], [CatalogId => Str])
+
+Each argument is described in detail in: L<Paws::Glue::BatchDeleteTableVersion>
+
+Returns: a L<Paws::Glue::BatchDeleteTableVersionResponse> instance
+
+Deletes a specified batch of versions of a table.
 
 
 =head2 BatchGetPartition(DatabaseName => Str, PartitionsToGet => ArrayRef[L<Paws::Glue::PartitionValueList>], TableName => Str, [CatalogId => Str])
@@ -654,6 +977,15 @@ Each argument is described in detail in: L<Paws::Glue::DeleteTable>
 Returns: a L<Paws::Glue::DeleteTableResponse> instance
 
 Removes a table definition from the Data Catalog.
+
+
+=head2 DeleteTableVersion(DatabaseName => Str, TableName => Str, VersionId => Str, [CatalogId => Str])
+
+Each argument is described in detail in: L<Paws::Glue::DeleteTableVersion>
+
+Returns: a L<Paws::Glue::DeleteTableVersionResponse> instance
+
+Deletes a specified version of a table.
 
 
 =head2 DeleteTrigger(Name => Str)
@@ -884,6 +1216,15 @@ Retrieves the definitions of some or all of the tables in a given
 C<Database>.
 
 
+=head2 GetTableVersion(DatabaseName => Str, TableName => Str, [CatalogId => Str, VersionId => Str])
+
+Each argument is described in detail in: L<Paws::Glue::GetTableVersion>
+
+Returns: a L<Paws::Glue::GetTableVersionResponse> instance
+
+Retrieves a specified version of a table.
+
+
 =head2 GetTableVersions(DatabaseName => Str, TableName => Str, [CatalogId => Str, MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Glue::GetTableVersions>
@@ -1091,7 +1432,7 @@ Returns: a L<Paws::Glue::UpdatePartitionResponse> instance
 Updates a partition.
 
 
-=head2 UpdateTable(DatabaseName => Str, TableInput => L<Paws::Glue::TableInput>, [CatalogId => Str])
+=head2 UpdateTable(DatabaseName => Str, TableInput => L<Paws::Glue::TableInput>, [CatalogId => Str, SkipArchive => Bool])
 
 Each argument is described in detail in: L<Paws::Glue::UpdateTable>
 
@@ -1123,6 +1464,162 @@ Updates an existing function definition in the Data Catalog.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 GetAllClassifiers(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 GetAllClassifiers([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Classifiers, passing the object as the first parameter, and the string 'Classifiers' as the second parameter 
+
+If not, it will return a a L<Paws::Glue::GetClassifiersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllConnections(sub { },[CatalogId => Str, Filter => L<Paws::Glue::GetConnectionsFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 GetAllConnections([CatalogId => Str, Filter => L<Paws::Glue::GetConnectionsFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ConnectionList, passing the object as the first parameter, and the string 'ConnectionList' as the second parameter 
+
+If not, it will return a a L<Paws::Glue::GetConnectionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllCrawlerMetrics(sub { },[CrawlerNameList => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 GetAllCrawlerMetrics([CrawlerNameList => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CrawlerMetricsList, passing the object as the first parameter, and the string 'CrawlerMetricsList' as the second parameter 
+
+If not, it will return a a L<Paws::Glue::GetCrawlerMetricsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllCrawlers(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 GetAllCrawlers([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Crawlers, passing the object as the first parameter, and the string 'Crawlers' as the second parameter 
+
+If not, it will return a a L<Paws::Glue::GetCrawlersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllDatabases(sub { },[CatalogId => Str, MaxResults => Int, NextToken => Str])
+
+=head2 GetAllDatabases([CatalogId => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DatabaseList, passing the object as the first parameter, and the string 'DatabaseList' as the second parameter 
+
+If not, it will return a a L<Paws::Glue::GetDatabasesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllDevEndpoints(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 GetAllDevEndpoints([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DevEndpoints, passing the object as the first parameter, and the string 'DevEndpoints' as the second parameter 
+
+If not, it will return a a L<Paws::Glue::GetDevEndpointsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllJobRuns(sub { },JobName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 GetAllJobRuns(JobName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - JobRuns, passing the object as the first parameter, and the string 'JobRuns' as the second parameter 
+
+If not, it will return a a L<Paws::Glue::GetJobRunsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllJobs(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 GetAllJobs([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Jobs, passing the object as the first parameter, and the string 'Jobs' as the second parameter 
+
+If not, it will return a a L<Paws::Glue::GetJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllPartitions(sub { },DatabaseName => Str, TableName => Str, [CatalogId => Str, Expression => Str, MaxResults => Int, NextToken => Str, Segment => L<Paws::Glue::Segment>])
+
+=head2 GetAllPartitions(DatabaseName => Str, TableName => Str, [CatalogId => Str, Expression => Str, MaxResults => Int, NextToken => Str, Segment => L<Paws::Glue::Segment>])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Partitions, passing the object as the first parameter, and the string 'Partitions' as the second parameter 
+
+If not, it will return a a L<Paws::Glue::GetPartitionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllTables(sub { },DatabaseName => Str, [CatalogId => Str, Expression => Str, MaxResults => Int, NextToken => Str])
+
+=head2 GetAllTables(DatabaseName => Str, [CatalogId => Str, Expression => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TableList, passing the object as the first parameter, and the string 'TableList' as the second parameter 
+
+If not, it will return a a L<Paws::Glue::GetTablesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllTableVersions(sub { },DatabaseName => Str, TableName => Str, [CatalogId => Str, MaxResults => Int, NextToken => Str])
+
+=head2 GetAllTableVersions(DatabaseName => Str, TableName => Str, [CatalogId => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TableVersions, passing the object as the first parameter, and the string 'TableVersions' as the second parameter 
+
+If not, it will return a a L<Paws::Glue::GetTableVersionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllTriggers(sub { },[DependentJobName => Str, MaxResults => Int, NextToken => Str])
+
+=head2 GetAllTriggers([DependentJobName => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Triggers, passing the object as the first parameter, and the string 'Triggers' as the second parameter 
+
+If not, it will return a a L<Paws::Glue::GetTriggersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllUserDefinedFunctions(sub { },DatabaseName => Str, Pattern => Str, [CatalogId => Str, MaxResults => Int, NextToken => Str])
+
+=head2 GetAllUserDefinedFunctions(DatabaseName => Str, Pattern => Str, [CatalogId => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - UserDefinedFunctions, passing the object as the first parameter, and the string 'UserDefinedFunctions' as the second parameter 
+
+If not, it will return a a L<Paws::Glue::GetUserDefinedFunctionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

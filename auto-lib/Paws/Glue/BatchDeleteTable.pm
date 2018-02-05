@@ -44,7 +44,8 @@ supplied, the AWS account ID is used by default.
 
 =head2 B<REQUIRED> DatabaseName => Str
 
-The name of the catalog database where the tables to delete reside.
+The name of the catalog database where the tables to delete reside. For
+Hive compatibility, this name is entirely lowercase.
 
 
 

@@ -44,13 +44,15 @@ supplied, the AWS account ID is used by default.
 
 =head2 B<REQUIRED> DatabaseName => Str
 
-The name of the database in the catalog in which the table resides.
+The name of the database in the catalog in which the table resides. For
+Hive compatibility, this name is entirely lowercase.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the table for which to retrieve the definition.
+The name of the table for which to retrieve the definition. For Hive
+compatibility, this name is entirely lowercase.
 
 
 

@@ -64,7 +64,8 @@ Structure used to create or update the table.
 
 =head2 B<REQUIRED> Name => Str
 
-  Name of the table.
+  Name of the table. For Hive compatibility, this is folded to lowercase
+when it is stored.
 
 
 =head2 Owner => Str

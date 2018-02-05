@@ -40,7 +40,8 @@ Specifies the physical requirements for a connection.
 
 =head2 AvailabilityZone => Str
 
-  The connection's availability zone.
+  The connection's availability zone. This field is deprecated and has no
+effect.
 
 
 =head2 SecurityGroupIdList => ArrayRef[Str|Undef]

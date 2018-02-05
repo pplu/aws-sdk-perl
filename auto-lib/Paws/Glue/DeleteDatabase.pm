@@ -43,7 +43,8 @@ supplied, the AWS account ID is used by default.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the Database to delete.
+The name of the Database to delete. For Hive compatibility, this must
+be all lowercase.
 
 
 

@@ -44,7 +44,8 @@ supplied, the AWS account ID is used by default.
 
 =head2 B<REQUIRED> DatabaseName => Str
 
-The catalog database in which to create the new table.
+The catalog database in which to create the new table. For Hive
+compatibility, this name is entirely lowercase.
 
 
 

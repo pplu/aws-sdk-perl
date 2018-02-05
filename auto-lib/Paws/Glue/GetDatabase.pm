@@ -43,7 +43,8 @@ supplied, the AWS account ID is used by default.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the database to retrieve.
+The name of the database to retrieve. For Hive compatibility, this
+should be all lowercase.
 
 
 

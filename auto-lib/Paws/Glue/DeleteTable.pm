@@ -44,13 +44,15 @@ supplied, the AWS account ID is used by default.
 
 =head2 B<REQUIRED> DatabaseName => Str
 
-The name of the catalog database in which the table resides.
+The name of the catalog database in which the table resides. For Hive
+compatibility, this name is entirely lowercase.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the table to be deleted.
+The name of the table to be deleted. For Hive compatibility, this name
+is entirely lowercase.
 
 
 

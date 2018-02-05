@@ -51,7 +51,8 @@ database in the catalog.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the metadata database to update in the catalog.
+The name of the database to update in the catalog. For Hive
+compatibility, this is folded to lowercase.
 
 
 

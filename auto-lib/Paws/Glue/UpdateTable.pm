@@ -3,6 +3,7 @@ package Paws::Glue::UpdateTable;
   use Moose;
   has CatalogId => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
+  has SkipArchive => (is => 'ro', isa => 'Bool');
   has TableInput => (is => 'ro', isa => 'Paws::Glue::TableInput', required => 1);
 
   use MooseX::ClassAttribute;
@@ -44,7 +45,16 @@ supplied, the AWS account ID is used by default.
 
 =head2 B<REQUIRED> DatabaseName => Str
 
-The name of the catalog database in which the table resides.
+The name of the catalog database in which the table resides. For Hive
+compatibility, this name is entirely lowercase.
+
+
+
+=head2 SkipArchive => Bool
+
+By default, C<UpdateTable> always creates an archived version of the
+table before updating it. If C<skipArchive> is set to true, however,
+C<UpdateTable> does not create the archived version.
 
 
 

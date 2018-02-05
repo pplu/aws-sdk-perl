@@ -1,10 +1,10 @@
 package Paws::Glue::ConnectionInput;
   use Moose;
-  has ConnectionProperties => (is => 'ro', isa => 'Paws::Glue::ConnectionProperties');
-  has ConnectionType => (is => 'ro', isa => 'Str');
+  has ConnectionProperties => (is => 'ro', isa => 'Paws::Glue::ConnectionProperties', required => 1);
+  has ConnectionType => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
   has MatchCriteria => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Name => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str', required => 1);
   has PhysicalConnectionRequirements => (is => 'ro', isa => 'Paws::Glue::PhysicalConnectionRequirements');
 1;
 
@@ -41,12 +41,12 @@ A structure used to specify a connection to create or update.
 =head1 ATTRIBUTES
 
 
-=head2 ConnectionProperties => L<Paws::Glue::ConnectionProperties>
+=head2 B<REQUIRED> ConnectionProperties => L<Paws::Glue::ConnectionProperties>
 
   A list of key-value pairs used as parameters for this connection.
 
 
-=head2 ConnectionType => Str
+=head2 B<REQUIRED> ConnectionType => Str
 
   The type of the connection. Currently, only JDBC is supported; SFTP is
 not supported.
@@ -62,7 +62,7 @@ not supported.
   A list of criteria that can be used in selecting this connection.
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
   The name of the connection.
 
