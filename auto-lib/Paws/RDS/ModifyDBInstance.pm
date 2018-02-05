@@ -7,6 +7,7 @@ package Paws::RDS::ModifyDBInstance;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CACertificateIdentifier => (is => 'ro', isa => 'Str');
+  has CloudwatchLogsExportConfiguration => (is => 'ro', isa => 'Paws::RDS::CloudwatchLogsExportConfiguration');
   has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -178,6 +179,13 @@ Cannot be set to 0 if the DB instance is a source to Read Replicas
 
 Indicates the certificate that needs to be associated with the
 instance.
+
+
+
+=head2 CloudwatchLogsExportConfiguration => L<Paws::RDS::CloudwatchLogsExportConfiguration>
+
+The configuration setting for the log types to be enabled for export to
+CloudWatch Logs for a specific DB instance or DB cluster.
 
 
 

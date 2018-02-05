@@ -6,8 +6,10 @@ package Paws::RDS::DBEngineVersion;
   has DefaultCharacterSet => (is => 'ro', isa => 'Paws::RDS::CharacterSet');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has ExportableLogTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SupportedCharacterSets => (is => 'ro', isa => 'ArrayRef[Paws::RDS::CharacterSet]', request_name => 'CharacterSet', traits => ['NameInRequest']);
   has SupportedTimezones => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Timezone]', request_name => 'Timezone', traits => ['NameInRequest']);
+  has SupportsLogExportsToCloudwatchLogs => (is => 'ro', isa => 'Bool');
   has ValidUpgradeTarget => (is => 'ro', isa => 'ArrayRef[Paws::RDS::UpgradeTarget]', request_name => 'UpgradeTarget', traits => ['NameInRequest']);
 1;
 
@@ -77,6 +79,12 @@ specified.
   The version number of the database engine.
 
 
+=head2 ExportableLogTypes => ArrayRef[Str|Undef]
+
+  The types of logs that the database engine has available for export to
+CloudWatch Logs.
+
+
 =head2 SupportedCharacterSets => ArrayRef[L<Paws::RDS::CharacterSet>]
 
   A list of the character sets supported by this engine for the
@@ -87,6 +95,12 @@ C<CharacterSetName> parameter of the C<CreateDBInstance> action.
 
   A list of the time zones supported by this engine for the C<Timezone>
 parameter of the C<CreateDBInstance> action.
+
+
+=head2 SupportsLogExportsToCloudwatchLogs => Bool
+
+  A value that indicates whether the engine version supports exporting
+the log types specified by ExportableLogTypes to CloudWatch Logs.
 
 
 =head2 ValidUpgradeTarget => ArrayRef[L<Paws::RDS::UpgradeTarget>]

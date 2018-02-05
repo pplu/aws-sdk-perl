@@ -19,6 +19,7 @@ package Paws::RDS::DBInstance;
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSecurityGroupMembership]', request_name => 'DBSecurityGroup', traits => ['NameInRequest']);
   has DBSubnetGroup => (is => 'ro', isa => 'Paws::RDS::DBSubnetGroup');
   has DomainMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DomainMembership]', request_name => 'DomainMembership', traits => ['NameInRequest']);
+  has EnabledCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Endpoint => (is => 'ro', isa => 'Paws::RDS::Endpoint');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -214,6 +215,12 @@ group.
 
   The Active Directory Domain membership records associated with the DB
 instance.
+
+
+=head2 EnabledCloudwatchLogsExports => ArrayRef[Str|Undef]
+
+  A list of log types that this DB instance is configured to export to
+CloudWatch Logs.
 
 
 =head2 Endpoint => L<Paws::RDS::Endpoint>

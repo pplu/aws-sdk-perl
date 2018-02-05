@@ -16,6 +16,7 @@ package Paws::RDS::CreateDBInstance;
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has EnablePerformanceInsights => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
@@ -527,6 +528,13 @@ Specify the Active Directory Domain to create the instance in.
 
 Specify the name of the IAM role to be used when making API calls to
 the Directory Service.
+
+
+
+=head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
+
+The list of log types that need to be enabled for exporting to
+CloudWatch Logs.
 
 
 

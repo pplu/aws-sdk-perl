@@ -7,6 +7,7 @@ package Paws::RDS::CreateDBInstanceReadReplica;
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has EnablePerformanceInsights => (is => 'ro', isa => 'Bool');
   has Iops => (is => 'ro', isa => 'Int');
@@ -150,6 +151,13 @@ Example: C<mySubnetgroup>
 
 
 
+=head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
+
+The list of logs that the new DB instance is to export to CloudWatch
+Logs.
+
+
+
 =head2 EnableIAMDatabaseAuthentication => Bool
 
 True to enable mapping of AWS Identity and Access Management (IAM)
@@ -244,6 +252,15 @@ supply a C<MonitoringRoleArn> value.
 =head2 MultiAZ => Bool
 
 Specifies whether the read replica is in a Multi-AZ deployment.
+
+You can create a Read Replica as a Multi-AZ DB instance. RDS creates a
+standby of your replica in another Availability Zone for failover
+support for the replica. Creating your Read Replica as a Multi-AZ DB
+instance is independent of whether the source database is a Multi-AZ DB
+instance.
+
+Currently PostgreSQL Read Replicas can only be created as single-AZ DB
+instances.
 
 
 

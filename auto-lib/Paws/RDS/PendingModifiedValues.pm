@@ -11,6 +11,7 @@ package Paws::RDS::PendingModifiedValues;
   has LicenseModel => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has MultiAZ => (is => 'ro', isa => 'Bool');
+  has PendingCloudwatchLogsExports => (is => 'ro', isa => 'Paws::RDS::PendingCloudwatchLogsExports');
   has Port => (is => 'ro', isa => 'Int');
   has StorageType => (is => 'ro', isa => 'Str');
 1;
@@ -112,6 +113,11 @@ credentials for the DB instance.
 
   Indicates that the Single-AZ DB instance is to change to a Multi-AZ
 deployment.
+
+
+=head2 PendingCloudwatchLogsExports => L<Paws::RDS::PendingCloudwatchLogsExports>
+
+  
 
 
 =head2 Port => Int
