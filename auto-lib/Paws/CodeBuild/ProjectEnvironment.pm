@@ -1,5 +1,6 @@
 package Paws::CodeBuild::ProjectEnvironment;
   use Moose;
+  has Certificate => (is => 'ro', isa => 'Str', request_name => 'certificate', traits => ['NameInRequest']);
   has ComputeType => (is => 'ro', isa => 'Str', request_name => 'computeType', traits => ['NameInRequest'], required => 1);
   has EnvironmentVariables => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::EnvironmentVariable]', request_name => 'environmentVariables', traits => ['NameInRequest']);
   has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest'], required => 1);
@@ -24,20 +25,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeBuild::ProjectEnvironment object:
 
-  $service_obj->Method(Att1 => { ComputeType => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { Certificate => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::ProjectEnvironment object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ComputeType
+  $result->Att1->Certificate
 
 =head1 DESCRIPTION
 
 Information about the build environment of the build project.
 
 =head1 ATTRIBUTES
+
+
+=head2 Certificate => Str
+
+  The certificate to use with this build project.
 
 
 =head2 B<REQUIRED> ComputeType => Str
