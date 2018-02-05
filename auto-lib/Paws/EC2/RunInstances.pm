@@ -149,7 +149,9 @@ The IAM instance profile.
 
 =head2 ImageId => Str
 
-The ID of the AMI, which you can get by calling DescribeImages.
+The ID of the AMI, which you can get by calling DescribeImages. An AMI
+is required to launch an instance and must be specified here or in a
+launch template.
 
 
 

@@ -39,7 +39,9 @@ This class has no description
 
 =head2 State => Str
 
-  The current state of the attachment.
+  The current state of the attachment. For an Internet gateway, the state
+is C<available> when attached to a VPC; otherwise, this value is not
+returned.
 
 
 =head2 VpcId => Str

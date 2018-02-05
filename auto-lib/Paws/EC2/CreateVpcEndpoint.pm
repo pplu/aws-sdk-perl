@@ -103,7 +103,8 @@ with the endpoint network interface.
 =head2 B<REQUIRED> ServiceName => Str
 
 The service name. To get a list of available services, use the
-DescribeVpcEndpointServices request.
+DescribeVpcEndpointServices request, or get the name from the service
+provider.
 
 
 

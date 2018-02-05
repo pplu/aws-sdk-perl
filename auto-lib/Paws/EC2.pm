@@ -1676,9 +1676,9 @@ Paws::EC2 - Perl Interface to AWS Amazon Elastic Compute Cloud
 Amazon Elastic Compute Cloud
 
 Amazon Elastic Compute Cloud (Amazon EC2) provides resizable computing
-capacity in the Amazon Web Services (AWS) cloud. Using Amazon EC2
-eliminates your need to invest in hardware up front, so you can develop
-and deploy applications faster.
+capacity in the AWS Cloud. Using Amazon EC2 eliminates your need to
+invest in hardware up front, so you can develop and deploy applications
+faster.
 
 =head1 METHODS
 
@@ -3021,6 +3021,11 @@ that you own and an accepter VPC with which to create the connection.
 The accepter VPC can belong to another AWS account and can be in a
 different region to the requester VPC. The requester VPC and accepter
 VPC cannot have overlapping CIDR blocks.
+
+Limitations and rules apply to a VPC peering connection. For more
+information, see the limitations
+(http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/vpc-peering-basics.html#vpc-peering-limitations)
+section in the I<VPC Peering Guide>.
 
 The owner of the accepter VPC must accept the peering request to
 activate the peering connection. The VPC peering connection request
@@ -5486,9 +5491,10 @@ Each argument is described in detail in: L<Paws::EC2::ModifyVpcEndpointServicePe
 
 Returns: a L<Paws::EC2::ModifyVpcEndpointServicePermissionsResult> instance
 
-Modifies the permissions for your VPC endpoint service. You can add or
-remove permissions for service consumers (IAM users, IAM roles, and AWS
-accounts) to discover your endpoint service.
+Modifies the permissions for your VPC endpoint service
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/endpoint-service.html).
+You can add or remove permissions for service consumers (IAM users, IAM
+roles, and AWS accounts) to connect to your endpoint service.
 
 
 =head2 ModifyVpcPeeringConnectionOptions(VpcPeeringConnectionId => Str, [AccepterPeeringConnectionOptions => L<Paws::EC2::PeeringConnectionOptionsRequest>, DryRun => Bool, RequesterPeeringConnectionOptions => L<Paws::EC2::PeeringConnectionOptionsRequest>])

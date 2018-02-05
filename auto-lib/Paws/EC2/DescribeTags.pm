@@ -62,11 +62,12 @@ C<resource-id> - The resource ID.
 =item *
 
 C<resource-type> - The resource type (C<customer-gateway> |
-C<dhcp-options> | C<image> | C<instance> | C<internet-gateway> |
-C<network-acl> | C<network-interface> | C<reserved-instances> |
+C<dhcp-options> | C<elastic-ip> | C<fpga-image> | C<image> |
+C<instance> | C<internet-gateway> | C<launch-template> | C<natgateway>
+| C<network-acl> | C<network-interface> | C<reserved-instances> |
 C<route-table> | C<security-group> | C<snapshot> |
 C<spot-instances-request> | C<subnet> | C<volume> | C<vpc> |
-C<vpn-connection> | C<vpn-gateway>).
+C<vpc-peering-connection> | C<vpn-connection> | C<vpn-gateway>).
 
 =item *
 
