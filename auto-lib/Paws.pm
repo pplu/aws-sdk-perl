@@ -250,6 +250,8 @@ L<Paws::Athena>
 
 L<Paws::AutoScaling>
 
+L<Paws::AutoScalingPlans>
+
 L<Paws::Batch>
 
 L<Paws::Budgets>
@@ -491,6 +493,8 @@ L<Paws::StorageGateway>
 L<Paws::STS>
 
 L<Paws::Support>
+
+L<Paws::Transcribe>
 
 L<Paws::Translate>
 

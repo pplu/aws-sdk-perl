@@ -18,6 +18,8 @@
  - New API: AlexaForBusiness
  - New API: ServiceDiscovery
  - New API: WorkMail
+ - New API: Transcribe
+ - New API: AutoScalingPlans
  - API update: IoT
  - API update: Shield
  - API update: Rekognition

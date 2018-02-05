@@ -108,6 +108,16 @@ package Paws::API::Builder {
     return 'SimulateAllPrincipalPolicies' if ($name eq 'SimulatePrincipalPolicy');
     return 'LookupAllEvents' if ($name eq 'LookupEvents');
     return 'BatchGetAllTraces' if ($name eq 'BatchGetTraces');
+    return 'SearchAllDevices' if ($name eq 'SearchDevices');
+    return 'SearchAllProfiles' if ($name eq 'SearchProfiles');
+    return 'SearchAllRooms' if ($name eq 'SearchRooms');
+    return 'SearchAllSkillGroups' if ($name eq 'SearchSkillGroups');
+    return 'SearchAllUsers' if ($name eq 'SearchUsers');
+    return 'LookupAllPolicies' if ($name eq 'LookupPolicy');
+    return 'PreviewAllAgents' if ($name eq 'PreviewAgents');
+    return 'SearchAllResources' if ($name eq 'SearchResources');
+    return 'SearchAllProductsAsAdmin' if ($name eq 'SearchProductsAsAdmin');
+    return '' if ($name eq '');
 
     die "Please help me generate a good name for the paginator $name";
   }
