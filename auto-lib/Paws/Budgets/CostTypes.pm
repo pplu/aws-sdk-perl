@@ -1,6 +1,7 @@
 package Paws::Budgets::CostTypes;
   use Moose;
   has IncludeCredit => (is => 'ro', isa => 'Bool');
+  has IncludeDiscount => (is => 'ro', isa => 'Bool');
   has IncludeOtherSubscription => (is => 'ro', isa => 'Bool');
   has IncludeRecurring => (is => 'ro', isa => 'Bool');
   has IncludeRefund => (is => 'ro', isa => 'Bool');
@@ -8,6 +9,7 @@ package Paws::Budgets::CostTypes;
   has IncludeSupport => (is => 'ro', isa => 'Bool');
   has IncludeTax => (is => 'ro', isa => 'Bool');
   has IncludeUpfront => (is => 'ro', isa => 'Bool');
+  has UseAmortized => (is => 'ro', isa => 'Bool');
   has UseBlended => (is => 'ro', isa => 'Bool');
 1;
 
@@ -49,6 +51,11 @@ This includes the options for getting the cost of a budget.
   A boolean value whether to include credits in the cost budget.
 
 
+=head2 IncludeDiscount => Bool
+
+  A boolean value whether to include discounts in the cost budget.
+
+
 =head2 IncludeOtherSubscription => Bool
 
   A boolean value whether to include other subscription costs in the cost
@@ -83,6 +90,11 @@ budget.
 =head2 IncludeUpfront => Bool
 
   A boolean value whether to include upfront costs in the cost budget.
+
+
+=head2 UseAmortized => Bool
+
+  A boolean value whether to include amortized costs in the cost budget.
 
 
 =head2 UseBlended => Bool
