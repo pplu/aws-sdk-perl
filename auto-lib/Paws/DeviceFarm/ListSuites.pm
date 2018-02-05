@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Arn => Str
 
-The suites' ARNs.
+The job's Amazon Resource Name (ARN).
 
 
 

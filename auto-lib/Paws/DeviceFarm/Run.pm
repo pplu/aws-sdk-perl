@@ -1,5 +1,6 @@
 package Paws::DeviceFarm::Run;
   use Moose;
+  has AppUpload => (is => 'ro', isa => 'Str', request_name => 'appUpload', traits => ['NameInRequest']);
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has BillingMethod => (is => 'ro', isa => 'Str', request_name => 'billingMethod', traits => ['NameInRequest']);
   has CompletedJobs => (is => 'ro', isa => 'Int', request_name => 'completedJobs', traits => ['NameInRequest']);
@@ -7,18 +8,26 @@ package Paws::DeviceFarm::Run;
   has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has CustomerArtifactPaths => (is => 'ro', isa => 'Paws::DeviceFarm::CustomerArtifactPaths', request_name => 'customerArtifactPaths', traits => ['NameInRequest']);
   has DeviceMinutes => (is => 'ro', isa => 'Paws::DeviceFarm::DeviceMinutes', request_name => 'deviceMinutes', traits => ['NameInRequest']);
+  has DevicePoolArn => (is => 'ro', isa => 'Str', request_name => 'devicePoolArn', traits => ['NameInRequest']);
+  has EventCount => (is => 'ro', isa => 'Int', request_name => 'eventCount', traits => ['NameInRequest']);
+  has JobTimeoutMinutes => (is => 'ro', isa => 'Int', request_name => 'jobTimeoutMinutes', traits => ['NameInRequest']);
+  has Locale => (is => 'ro', isa => 'Str', request_name => 'locale', traits => ['NameInRequest']);
+  has Location => (is => 'ro', isa => 'Paws::DeviceFarm::Location', request_name => 'location', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has NetworkProfile => (is => 'ro', isa => 'Paws::DeviceFarm::NetworkProfile', request_name => 'networkProfile', traits => ['NameInRequest']);
   has ParsingResultUrl => (is => 'ro', isa => 'Str', request_name => 'parsingResultUrl', traits => ['NameInRequest']);
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
+  has Radios => (is => 'ro', isa => 'Paws::DeviceFarm::Radios', request_name => 'radios', traits => ['NameInRequest']);
   has Result => (is => 'ro', isa => 'Str', request_name => 'result', traits => ['NameInRequest']);
   has ResultCode => (is => 'ro', isa => 'Str', request_name => 'resultCode', traits => ['NameInRequest']);
+  has Seed => (is => 'ro', isa => 'Int', request_name => 'seed', traits => ['NameInRequest']);
   has Started => (is => 'ro', isa => 'Str', request_name => 'started', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Stopped => (is => 'ro', isa => 'Str', request_name => 'stopped', traits => ['NameInRequest']);
   has TotalJobs => (is => 'ro', isa => 'Int', request_name => 'totalJobs', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  has WebUrl => (is => 'ro', isa => 'Str', request_name => 'webUrl', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -38,14 +47,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DeviceFarm::Run object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { AppUpload => $value, ..., WebUrl => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm::Run object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Arn
+  $result->Att1->AppUpload
 
 =head1 DESCRIPTION
 
@@ -53,6 +62,11 @@ Represents a test run on a set of devices with a given app package,
 test parameters, etc.
 
 =head1 ATTRIBUTES
+
+
+=head2 AppUpload => Str
+
+  An app to upload or that has been uploaded.
 
 
 =head2 Arn => Str
@@ -91,6 +105,32 @@ C<metered>.
 
   Represents the total (metered or unmetered) minutes used by the test
 run.
+
+
+=head2 DevicePoolArn => Str
+
+  The ARN of the device pool for the run.
+
+
+=head2 EventCount => Int
+
+  For fuzz tests, this is the number of events, between 1 and 10000, that
+the UI fuzz test should perform.
+
+
+=head2 JobTimeoutMinutes => Int
+
+  The number of minutes the job will execute before it times out.
+
+
+=head2 Locale => Str
+
+  Information about the locale that is used for the run.
+
+
+=head2 Location => L<Paws::DeviceFarm::Location>
+
+  Information about the location that is used for the run.
 
 
 =head2 Message => Str
@@ -134,6 +174,11 @@ IOS: The iOS platform.
 
 =back
 
+
+
+=head2 Radios => L<Paws::DeviceFarm::Radios>
+
+  Information about the radio states for the run.
 
 
 =head2 Result => Str
@@ -181,6 +226,13 @@ STOPPED: A stopped condition.
   Supporting field for the result field. Set only if C<result> is
 C<SKIPPED>. C<PARSING_FAILED> if the result is skipped because of test
 package parsing failure.
+
+
+=head2 Seed => Int
+
+  For fuzz tests, this is a seed to use for randomizing the UI fuzz test.
+Using the same seed value between tests ensures identical event
+sequences.
 
 
 =head2 Started => Str
@@ -314,6 +366,12 @@ XCTEST_UI: The XCode UI test type.
 
 =back
 
+
+
+=head2 WebUrl => Str
+
+  A pre-signed Amazon S3 URL that can be used with a corresponding GET
+request to download the symbol file for the run.
 
 
 

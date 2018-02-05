@@ -648,7 +648,7 @@ Returns: a L<Paws::DeviceFarm::CreateProjectResult> instance
 Creates a new project.
 
 
-=head2 CreateRemoteAccessSession(DeviceArn => Str, ProjectArn => Str, [ClientId => Str, Configuration => L<Paws::DeviceFarm::CreateRemoteAccessSessionConfiguration>, Name => Str, RemoteDebugEnabled => Bool, SshPublicKey => Str])
+=head2 CreateRemoteAccessSession(DeviceArn => Str, ProjectArn => Str, [ClientId => Str, Configuration => L<Paws::DeviceFarm::CreateRemoteAccessSessionConfiguration>, InteractionMode => Str, Name => Str, RemoteDebugEnabled => Bool, RemoteRecordAppArn => Str, RemoteRecordEnabled => Bool, SshPublicKey => Str])
 
 Each argument is described in detail in: L<Paws::DeviceFarm::CreateRemoteAccessSession>
 
@@ -893,7 +893,7 @@ Each argument is described in detail in: L<Paws::DeviceFarm::ListJobs>
 
 Returns: a L<Paws::DeviceFarm::ListJobsResult> instance
 
-Gets information about jobs.
+Gets information about jobs for a given test run.
 
 
 =head2 ListNetworkProfiles(Arn => Str, [NextToken => Str, Type => Str])
@@ -991,7 +991,7 @@ Each argument is described in detail in: L<Paws::DeviceFarm::ListSuites>
 
 Returns: a L<Paws::DeviceFarm::ListSuitesResult> instance
 
-Gets information about suites.
+Gets information about test suites for a given job.
 
 
 =head2 ListTests(Arn => Str, [NextToken => Str])
@@ -1000,7 +1000,7 @@ Each argument is described in detail in: L<Paws::DeviceFarm::ListTests>
 
 Returns: a L<Paws::DeviceFarm::ListTestsResult> instance
 
-Gets information about tests.
+Gets information about tests in a given test suite.
 
 
 =head2 ListUniqueProblems(Arn => Str, [NextToken => Str])

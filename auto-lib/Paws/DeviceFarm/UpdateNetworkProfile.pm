@@ -46,8 +46,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Arn => Str
 
-The Amazon Resource Name (ARN) of the project that you wish to update
-network profile settings.
+The Amazon Resource Name (ARN) of the project for which you want to
+update network profile settings.
 
 
 

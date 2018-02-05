@@ -11,6 +11,7 @@ package Paws::DeviceFarm::Device;
   has Manufacturer => (is => 'ro', isa => 'Str', request_name => 'manufacturer', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
   has Model => (is => 'ro', isa => 'Str', request_name => 'model', traits => ['NameInRequest']);
+  has ModelId => (is => 'ro', isa => 'Str', request_name => 'modelId', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Os => (is => 'ro', isa => 'Str', request_name => 'os', traits => ['NameInRequest']);
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
@@ -122,6 +123,11 @@ TABLET: The tablet form factor.
 =head2 Model => Str
 
   The device's model name.
+
+
+=head2 ModelId => Str
+
+  The device's model ID.
 
 
 =head2 Name => Str

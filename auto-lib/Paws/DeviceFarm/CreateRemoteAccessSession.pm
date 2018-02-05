@@ -4,9 +4,12 @@ package Paws::DeviceFarm::CreateRemoteAccessSession;
   has ClientId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientId' );
   has Configuration => (is => 'ro', isa => 'Paws::DeviceFarm::CreateRemoteAccessSessionConfiguration', traits => ['NameInRequest'], request_name => 'configuration' );
   has DeviceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deviceArn' , required => 1);
+  has InteractionMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'interactionMode' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
   has ProjectArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectArn' , required => 1);
   has RemoteDebugEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'remoteDebugEnabled' );
+  has RemoteRecordAppArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'remoteRecordAppArn' );
+  has RemoteRecordEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'remoteRecordEnabled' );
   has SshPublicKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sshPublicKey' );
 
   use MooseX::ClassAttribute;
@@ -44,7 +47,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 Unique identifier for the client. If you want access to multiple
 devices on the same client, you should pass the same C<clientId> value
 in each call to C<CreateRemoteAccessSession>. This is required only if
-C<remoteDebugEnabled> is set to true C<true>.
+C<remoteDebugEnabled> is set to C<true>.
 
 
 
@@ -60,6 +63,35 @@ The Amazon Resource Name (ARN) of the device for which you want to
 create a remote access session.
 
 
+
+=head2 InteractionMode => Str
+
+The interaction mode of the remote access session. Valid values are:
+
+=over
+
+=item *
+
+INTERACTIVE: You can interact with the iOS device by viewing, touching,
+and rotating the screen. You B<cannot> run XCUITest framework-based
+tests in this mode.
+
+=item *
+
+NO_VIDEO: You are connected to the device but cannot interact with it
+or view the screen. This mode has the fastest test execution speed. You
+B<can> run XCUITest framework-based tests in this mode.
+
+=item *
+
+VIDEO_ONLY: You can view the screen but cannot touch or rotate it. You
+B<can> run XCUITest framework-based tests and watch the screen in this
+mode.
+
+=back
+
+
+Valid values are: C<"INTERACTIVE">, C<"NO_VIDEO">, C<"VIDEO_ONLY">
 
 =head2 Name => Str
 
@@ -78,6 +110,20 @@ create a remote access session.
 
 Set to C<true> if you want to access devices remotely for debugging in
 your remote access session.
+
+
+
+=head2 RemoteRecordAppArn => Str
+
+The Amazon Resource Name (ARN) for the app to be recorded in the remote
+access session.
+
+
+
+=head2 RemoteRecordEnabled => Bool
+
+Set to C<true> to enable remote recording for the remote access
+session.
 
 
 

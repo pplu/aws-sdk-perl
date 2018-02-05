@@ -9,9 +9,12 @@ package Paws::DeviceFarm::RemoteAccessSession;
   has DeviceUdid => (is => 'ro', isa => 'Str', request_name => 'deviceUdid', traits => ['NameInRequest']);
   has Endpoint => (is => 'ro', isa => 'Str', request_name => 'endpoint', traits => ['NameInRequest']);
   has HostAddress => (is => 'ro', isa => 'Str', request_name => 'hostAddress', traits => ['NameInRequest']);
+  has InteractionMode => (is => 'ro', isa => 'Str', request_name => 'interactionMode', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has RemoteDebugEnabled => (is => 'ro', isa => 'Bool', request_name => 'remoteDebugEnabled', traits => ['NameInRequest']);
+  has RemoteRecordAppArn => (is => 'ro', isa => 'Str', request_name => 'remoteRecordAppArn', traits => ['NameInRequest']);
+  has RemoteRecordEnabled => (is => 'ro', isa => 'Bool', request_name => 'remoteRecordEnabled', traits => ['NameInRequest']);
   has Result => (is => 'ro', isa => 'Str', request_name => 'result', traits => ['NameInRequest']);
   has Started => (is => 'ro', isa => 'Str', request_name => 'started', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
@@ -104,6 +107,34 @@ devices. Only returned if remote debugging is enabled for the remote
 access session.
 
 
+=head2 InteractionMode => Str
+
+  The interaction mode of the remote access session. Valid values are:
+
+=over
+
+=item *
+
+INTERACTIVE: You can interact with the iOS device by viewing, touching,
+and rotating the screen. You B<cannot> run XCUITest framework-based
+tests in this mode.
+
+=item *
+
+NO_VIDEO: You are connected to the device but cannot interact with it
+or view the screen. This mode has the fastest test execution speed. You
+B<can> run XCUITest framework-based tests in this mode.
+
+=item *
+
+VIDEO_ONLY: You can view the screen but cannot touch or rotate it. You
+B<can> run XCUITest framework-based tests and watch the screen in this
+mode.
+
+=back
+
+
+
 =head2 Message => Str
 
   A message about the remote access session.
@@ -117,6 +148,18 @@ access session.
 =head2 RemoteDebugEnabled => Bool
 
   This flag is set to C<true> if remote debugging is enabled for the
+remote access session.
+
+
+=head2 RemoteRecordAppArn => Str
+
+  The Amazon Resource Name (ARN) for the app to be recorded in the remote
+access session.
+
+
+=head2 RemoteRecordEnabled => Bool
+
+  This flag is set to C<true> if remote recording is enabled for the
 remote access session.
 
 
