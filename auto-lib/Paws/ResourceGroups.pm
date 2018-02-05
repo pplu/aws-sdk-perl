@@ -74,6 +74,75 @@ package Paws::ResourceGroups;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllGroupResources {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListGroupResources(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListGroupResources(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ResourceIdentifiers }, @{ $next_result->ResourceIdentifiers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ResourceIdentifiers') foreach (@{ $result->ResourceIdentifiers });
+        $result = $self->ListGroupResources(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ResourceIdentifiers') foreach (@{ $result->ResourceIdentifiers });
+    }
+
+    return undef
+  }
+  sub ListAllGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListGroups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Groups }, @{ $next_result->Groups };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Groups') foreach (@{ $result->Groups });
+        $result = $self->ListGroups(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Groups') foreach (@{ $result->Groups });
+    }
+
+    return undef
+  }
+  sub SearchAllResources {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->SearchResources(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->SearchResources(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ResourceIdentifiers }, @{ $next_result->ResourceIdentifiers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ResourceIdentifiers') foreach (@{ $result->ResourceIdentifiers });
+        $result = $self->SearchResources(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ResourceIdentifiers') foreach (@{ $result->ResourceIdentifiers });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateGroup DeleteGroup GetGroup GetGroupQuery GetTags ListGroupResources ListGroups SearchResources Tag Untag UpdateGroup UpdateGroupQuery / }
@@ -283,6 +352,42 @@ Updates the resource query of a group.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllGroupResources(sub { },GroupName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllGroupResources(GroupName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ResourceIdentifiers, passing the object as the first parameter, and the string 'ResourceIdentifiers' as the second parameter 
+
+If not, it will return a a L<Paws::ResourceGroups::ListGroupResourcesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllGroups(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllGroups([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Groups, passing the object as the first parameter, and the string 'Groups' as the second parameter 
+
+If not, it will return a a L<Paws::ResourceGroups::ListGroupsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 SearchAllResources(sub { },ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>, [MaxResults => Int, NextToken => Str])
+
+=head2 SearchAllResources(ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ResourceIdentifiers, passing the object as the first parameter, and the string 'ResourceIdentifiers' as the second parameter 
+
+If not, it will return a a L<Paws::ResourceGroups::SearchResourcesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

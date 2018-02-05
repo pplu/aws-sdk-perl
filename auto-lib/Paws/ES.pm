@@ -84,6 +84,52 @@ package Paws::ES;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllElasticsearchInstanceTypes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListElasticsearchInstanceTypes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListElasticsearchInstanceTypes(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ElasticsearchInstanceTypes }, @{ $next_result->ElasticsearchInstanceTypes };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ElasticsearchInstanceTypes') foreach (@{ $result->ElasticsearchInstanceTypes });
+        $result = $self->ListElasticsearchInstanceTypes(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ElasticsearchInstanceTypes') foreach (@{ $result->ElasticsearchInstanceTypes });
+    }
+
+    return undef
+  }
+  sub ListAllElasticsearchVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListElasticsearchVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListElasticsearchVersions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ElasticsearchVersions }, @{ $next_result->ElasticsearchVersions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ElasticsearchVersions') foreach (@{ $result->ElasticsearchVersions });
+        $result = $self->ListElasticsearchVersions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ElasticsearchVersions') foreach (@{ $result->ElasticsearchVersions });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AddTags CreateElasticsearchDomain DeleteElasticsearchDomain DeleteElasticsearchServiceRole DescribeElasticsearchDomain DescribeElasticsearchDomainConfig DescribeElasticsearchDomains DescribeElasticsearchInstanceTypeLimits ListDomainNames ListElasticsearchInstanceTypes ListElasticsearchVersions ListTags RemoveTags UpdateElasticsearchDomainConfig / }
@@ -285,6 +331,30 @@ instances.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllElasticsearchInstanceTypes(sub { },ElasticsearchVersion => Str, [DomainName => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllElasticsearchInstanceTypes(ElasticsearchVersion => Str, [DomainName => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ElasticsearchInstanceTypes, passing the object as the first parameter, and the string 'ElasticsearchInstanceTypes' as the second parameter 
+
+If not, it will return a a L<Paws::ES::ListElasticsearchInstanceTypesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllElasticsearchVersions(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllElasticsearchVersions([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ElasticsearchVersions, passing the object as the first parameter, and the string 'ElasticsearchVersions' as the second parameter 
+
+If not, it will return a a L<Paws::ES::ListElasticsearchVersionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

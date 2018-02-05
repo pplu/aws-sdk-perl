@@ -180,6 +180,190 @@ package Paws::Inspector;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllAssessmentRunAgents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAssessmentRunAgents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAssessmentRunAgents(@_, nextToken => $next_result->nextToken);
+        push @{ $result->assessmentRunAgents }, @{ $next_result->assessmentRunAgents };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'assessmentRunAgents') foreach (@{ $result->assessmentRunAgents });
+        $result = $self->ListAssessmentRunAgents(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'assessmentRunAgents') foreach (@{ $result->assessmentRunAgents });
+    }
+
+    return undef
+  }
+  sub ListAllAssessmentRuns {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAssessmentRuns(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAssessmentRuns(@_, nextToken => $next_result->nextToken);
+        push @{ $result->assessmentRunArns }, @{ $next_result->assessmentRunArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'assessmentRunArns') foreach (@{ $result->assessmentRunArns });
+        $result = $self->ListAssessmentRuns(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'assessmentRunArns') foreach (@{ $result->assessmentRunArns });
+    }
+
+    return undef
+  }
+  sub ListAllAssessmentTargets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAssessmentTargets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAssessmentTargets(@_, nextToken => $next_result->nextToken);
+        push @{ $result->assessmentTargetArns }, @{ $next_result->assessmentTargetArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'assessmentTargetArns') foreach (@{ $result->assessmentTargetArns });
+        $result = $self->ListAssessmentTargets(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'assessmentTargetArns') foreach (@{ $result->assessmentTargetArns });
+    }
+
+    return undef
+  }
+  sub ListAllAssessmentTemplates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAssessmentTemplates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAssessmentTemplates(@_, nextToken => $next_result->nextToken);
+        push @{ $result->assessmentTemplateArns }, @{ $next_result->assessmentTemplateArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'assessmentTemplateArns') foreach (@{ $result->assessmentTemplateArns });
+        $result = $self->ListAssessmentTemplates(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'assessmentTemplateArns') foreach (@{ $result->assessmentTemplateArns });
+    }
+
+    return undef
+  }
+  sub ListAllEventSubscriptions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListEventSubscriptions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListEventSubscriptions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->subscriptions }, @{ $next_result->subscriptions };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'subscriptions') foreach (@{ $result->subscriptions });
+        $result = $self->ListEventSubscriptions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'subscriptions') foreach (@{ $result->subscriptions });
+    }
+
+    return undef
+  }
+  sub ListAllFindings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListFindings(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListFindings(@_, nextToken => $next_result->nextToken);
+        push @{ $result->findingArns }, @{ $next_result->findingArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'findingArns') foreach (@{ $result->findingArns });
+        $result = $self->ListFindings(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'findingArns') foreach (@{ $result->findingArns });
+    }
+
+    return undef
+  }
+  sub ListAllRulesPackages {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRulesPackages(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListRulesPackages(@_, nextToken => $next_result->nextToken);
+        push @{ $result->rulesPackageArns }, @{ $next_result->rulesPackageArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'rulesPackageArns') foreach (@{ $result->rulesPackageArns });
+        $result = $self->ListRulesPackages(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'rulesPackageArns') foreach (@{ $result->rulesPackageArns });
+    }
+
+    return undef
+  }
+  sub PreviewAllAgents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->PreviewAgents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->PreviewAgents(@_, nextToken => $next_result->nextToken);
+        push @{ $result->agentPreviews }, @{ $next_result->agentPreviews };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'agentPreviews') foreach (@{ $result->agentPreviews });
+        $result = $self->PreviewAgents(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'agentPreviews') foreach (@{ $result->agentPreviews });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AddAttributesToFindings CreateAssessmentTarget CreateAssessmentTemplate CreateResourceGroup DeleteAssessmentRun DeleteAssessmentTarget DeleteAssessmentTemplate DescribeAssessmentRuns DescribeAssessmentTargets DescribeAssessmentTemplates DescribeCrossAccountAccessRole DescribeFindings DescribeResourceGroups DescribeRulesPackages GetAssessmentReport GetTelemetryMetadata ListAssessmentRunAgents ListAssessmentRuns ListAssessmentTargets ListAssessmentTemplates ListEventSubscriptions ListFindings ListRulesPackages ListTagsForResource PreviewAgents RegisterCrossAccountAccessRole RemoveAttributesFromFindings SetTagsForResource StartAssessmentRun StopAssessmentRun SubscribeToEvent UnsubscribeFromEvent UpdateAssessmentTarget / }
@@ -572,6 +756,102 @@ assessment target.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllAssessmentRunAgents(sub { },AssessmentRunArn => Str, [Filter => L<Paws::Inspector::AgentFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAssessmentRunAgents(AssessmentRunArn => Str, [Filter => L<Paws::Inspector::AgentFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - assessmentRunAgents, passing the object as the first parameter, and the string 'assessmentRunAgents' as the second parameter 
+
+If not, it will return a a L<Paws::Inspector::ListAssessmentRunAgentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAssessmentRuns(sub { },[AssessmentTemplateArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::AssessmentRunFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAssessmentRuns([AssessmentTemplateArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::AssessmentRunFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - assessmentRunArns, passing the object as the first parameter, and the string 'assessmentRunArns' as the second parameter 
+
+If not, it will return a a L<Paws::Inspector::ListAssessmentRunsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAssessmentTargets(sub { },[Filter => L<Paws::Inspector::AssessmentTargetFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAssessmentTargets([Filter => L<Paws::Inspector::AssessmentTargetFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - assessmentTargetArns, passing the object as the first parameter, and the string 'assessmentTargetArns' as the second parameter 
+
+If not, it will return a a L<Paws::Inspector::ListAssessmentTargetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAssessmentTemplates(sub { },[AssessmentTargetArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::AssessmentTemplateFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAssessmentTemplates([AssessmentTargetArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::AssessmentTemplateFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - assessmentTemplateArns, passing the object as the first parameter, and the string 'assessmentTemplateArns' as the second parameter 
+
+If not, it will return a a L<Paws::Inspector::ListAssessmentTemplatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllEventSubscriptions(sub { },[MaxResults => Int, NextToken => Str, ResourceArn => Str])
+
+=head2 ListAllEventSubscriptions([MaxResults => Int, NextToken => Str, ResourceArn => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - subscriptions, passing the object as the first parameter, and the string 'subscriptions' as the second parameter 
+
+If not, it will return a a L<Paws::Inspector::ListEventSubscriptionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllFindings(sub { },[AssessmentRunArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::FindingFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllFindings([AssessmentRunArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::FindingFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - findingArns, passing the object as the first parameter, and the string 'findingArns' as the second parameter 
+
+If not, it will return a a L<Paws::Inspector::ListFindingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRulesPackages(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllRulesPackages([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - rulesPackageArns, passing the object as the first parameter, and the string 'rulesPackageArns' as the second parameter 
+
+If not, it will return a a L<Paws::Inspector::ListRulesPackagesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 PreviewAllAgents(sub { },PreviewAgentsArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 PreviewAllAgents(PreviewAgentsArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - agentPreviews, passing the object as the first parameter, and the string 'agentPreviews' as the second parameter 
+
+If not, it will return a a L<Paws::Inspector::PreviewAgentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

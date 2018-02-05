@@ -229,6 +229,29 @@ package Paws::Rekognition;
 
     return undef
   }
+  sub ListAllStreamProcessors {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListStreamProcessors(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListStreamProcessors(@_, NextToken => $next_result->NextToken);
+        push @{ $result->StreamProcessors }, @{ $next_result->StreamProcessors };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'StreamProcessors') foreach (@{ $result->StreamProcessors });
+        $result = $self->ListStreamProcessors(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'StreamProcessors') foreach (@{ $result->StreamProcessors });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CompareFaces CreateCollection CreateStreamProcessor DeleteCollection DeleteFaces DeleteStreamProcessor DescribeStreamProcessor DetectFaces DetectLabels DetectModerationLabels DetectText GetCelebrityInfo GetCelebrityRecognition GetContentModeration GetFaceDetection GetFaceSearch GetLabelDetection GetPersonTracking IndexFaces ListCollections ListFaces ListStreamProcessors RecognizeCelebrities SearchFaces SearchFacesByImage StartCelebrityRecognition StartContentModeration StartFaceDetection StartFaceSearch StartLabelDetection StartPersonTracking StartStreamProcessor StopStreamProcessor / }
@@ -1191,6 +1214,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Faces, passing the object as the first parameter, and the string 'Faces' as the second parameter 
 
 If not, it will return a a L<Paws::Rekognition::ListFacesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllStreamProcessors(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllStreamProcessors([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - StreamProcessors, passing the object as the first parameter, and the string 'StreamProcessors' as the second parameter 
+
+If not, it will return a a L<Paws::Rekognition::ListStreamProcessorsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

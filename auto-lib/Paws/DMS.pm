@@ -225,6 +225,305 @@ package Paws::DMS;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllCertificates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeCertificates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeCertificates(@_, Marker => $next_result->Marker);
+        push @{ $result->Certificates }, @{ $next_result->Certificates };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Certificates') foreach (@{ $result->Certificates });
+        $result = $self->DescribeCertificates(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Certificates') foreach (@{ $result->Certificates });
+    }
+
+    return undef
+  }
+  sub DescribeAllConnections {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeConnections(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeConnections(@_, Marker => $next_result->Marker);
+        push @{ $result->Connections }, @{ $next_result->Connections };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Connections') foreach (@{ $result->Connections });
+        $result = $self->DescribeConnections(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Connections') foreach (@{ $result->Connections });
+    }
+
+    return undef
+  }
+  sub DescribeAllEndpoints {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEndpoints(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeEndpoints(@_, Marker => $next_result->Marker);
+        push @{ $result->Endpoints }, @{ $next_result->Endpoints };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Endpoints') foreach (@{ $result->Endpoints });
+        $result = $self->DescribeEndpoints(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Endpoints') foreach (@{ $result->Endpoints });
+    }
+
+    return undef
+  }
+  sub DescribeAllEndpointTypes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEndpointTypes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeEndpointTypes(@_, Marker => $next_result->Marker);
+        push @{ $result->SupportedEndpointTypes }, @{ $next_result->SupportedEndpointTypes };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'SupportedEndpointTypes') foreach (@{ $result->SupportedEndpointTypes });
+        $result = $self->DescribeEndpointTypes(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'SupportedEndpointTypes') foreach (@{ $result->SupportedEndpointTypes });
+    }
+
+    return undef
+  }
+  sub DescribeAllEvents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEvents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeEvents(@_, Marker => $next_result->Marker);
+        push @{ $result->Events }, @{ $next_result->Events };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Events') foreach (@{ $result->Events });
+        $result = $self->DescribeEvents(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Events') foreach (@{ $result->Events });
+    }
+
+    return undef
+  }
+  sub DescribeAllEventSubscriptions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEventSubscriptions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeEventSubscriptions(@_, Marker => $next_result->Marker);
+        push @{ $result->EventSubscriptionsList }, @{ $next_result->EventSubscriptionsList };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'EventSubscriptionsList') foreach (@{ $result->EventSubscriptionsList });
+        $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'EventSubscriptionsList') foreach (@{ $result->EventSubscriptionsList });
+    }
+
+    return undef
+  }
+  sub DescribeAllOrderableReplicationInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeOrderableReplicationInstances(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeOrderableReplicationInstances(@_, Marker => $next_result->Marker);
+        push @{ $result->OrderableReplicationInstances }, @{ $next_result->OrderableReplicationInstances };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'OrderableReplicationInstances') foreach (@{ $result->OrderableReplicationInstances });
+        $result = $self->DescribeOrderableReplicationInstances(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'OrderableReplicationInstances') foreach (@{ $result->OrderableReplicationInstances });
+    }
+
+    return undef
+  }
+  sub DescribeAllReplicationInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeReplicationInstances(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeReplicationInstances(@_, Marker => $next_result->Marker);
+        push @{ $result->ReplicationInstances }, @{ $next_result->ReplicationInstances };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'ReplicationInstances') foreach (@{ $result->ReplicationInstances });
+        $result = $self->DescribeReplicationInstances(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'ReplicationInstances') foreach (@{ $result->ReplicationInstances });
+    }
+
+    return undef
+  }
+  sub DescribeAllReplicationSubnetGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeReplicationSubnetGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeReplicationSubnetGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->ReplicationSubnetGroups }, @{ $next_result->ReplicationSubnetGroups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'ReplicationSubnetGroups') foreach (@{ $result->ReplicationSubnetGroups });
+        $result = $self->DescribeReplicationSubnetGroups(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'ReplicationSubnetGroups') foreach (@{ $result->ReplicationSubnetGroups });
+    }
+
+    return undef
+  }
+  sub DescribeAllReplicationTaskAssessmentResults {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeReplicationTaskAssessmentResults(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeReplicationTaskAssessmentResults(@_, Marker => $next_result->Marker);
+        push @{ $result->ReplicationTaskAssessmentResults }, @{ $next_result->ReplicationTaskAssessmentResults };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'ReplicationTaskAssessmentResults') foreach (@{ $result->ReplicationTaskAssessmentResults });
+        $result = $self->DescribeReplicationTaskAssessmentResults(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'ReplicationTaskAssessmentResults') foreach (@{ $result->ReplicationTaskAssessmentResults });
+    }
+
+    return undef
+  }
+  sub DescribeAllReplicationTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeReplicationTasks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeReplicationTasks(@_, Marker => $next_result->Marker);
+        push @{ $result->ReplicationTasks }, @{ $next_result->ReplicationTasks };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'ReplicationTasks') foreach (@{ $result->ReplicationTasks });
+        $result = $self->DescribeReplicationTasks(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'ReplicationTasks') foreach (@{ $result->ReplicationTasks });
+    }
+
+    return undef
+  }
+  sub DescribeAllSchemas {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSchemas(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeSchemas(@_, Marker => $next_result->Marker);
+        push @{ $result->Schemas }, @{ $next_result->Schemas };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Schemas') foreach (@{ $result->Schemas });
+        $result = $self->DescribeSchemas(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Schemas') foreach (@{ $result->Schemas });
+    }
+
+    return undef
+  }
+  sub DescribeAllTableStatistics {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTableStatistics(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeTableStatistics(@_, Marker => $next_result->Marker);
+        push @{ $result->TableStatistics }, @{ $next_result->TableStatistics };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'TableStatistics') foreach (@{ $result->TableStatistics });
+        $result = $self->DescribeTableStatistics(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'TableStatistics') foreach (@{ $result->TableStatistics });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AddTagsToResource CreateEndpoint CreateEventSubscription CreateReplicationInstance CreateReplicationSubnetGroup CreateReplicationTask DeleteCertificate DeleteEndpoint DeleteEventSubscription DeleteReplicationInstance DeleteReplicationSubnetGroup DeleteReplicationTask DescribeAccountAttributes DescribeCertificates DescribeConnections DescribeEndpoints DescribeEndpointTypes DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOrderableReplicationInstances DescribeRefreshSchemasStatus DescribeReplicationInstances DescribeReplicationSubnetGroups DescribeReplicationTaskAssessmentResults DescribeReplicationTasks DescribeSchemas DescribeTableStatistics ImportCertificate ListTagsForResource ModifyEndpoint ModifyEventSubscription ModifyReplicationInstance ModifyReplicationSubnetGroup ModifyReplicationTask RefreshSchemas ReloadTables RemoveTagsFromResource StartReplicationTask StartReplicationTaskAssessment StopReplicationTask TestConnection / }
@@ -732,6 +1031,162 @@ Tests the connection between the replication instance and the endpoint.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllCertificates(sub { },[Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllCertificates([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Certificates, passing the object as the first parameter, and the string 'Certificates' as the second parameter 
+
+If not, it will return a a L<Paws::DMS::DescribeCertificatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllConnections(sub { },[Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllConnections([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Connections, passing the object as the first parameter, and the string 'Connections' as the second parameter 
+
+If not, it will return a a L<Paws::DMS::DescribeConnectionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEndpoints(sub { },[Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllEndpoints([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Endpoints, passing the object as the first parameter, and the string 'Endpoints' as the second parameter 
+
+If not, it will return a a L<Paws::DMS::DescribeEndpointsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEndpointTypes(sub { },[Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllEndpointTypes([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SupportedEndpointTypes, passing the object as the first parameter, and the string 'SupportedEndpointTypes' as the second parameter 
+
+If not, it will return a a L<Paws::DMS::DescribeEndpointTypesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEvents(sub { },[Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+
+=head2 DescribeAllEvents([Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Events, passing the object as the first parameter, and the string 'Events' as the second parameter 
+
+If not, it will return a a L<Paws::DMS::DescribeEventsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEventSubscriptions(sub { },[Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
+
+=head2 DescribeAllEventSubscriptions([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EventSubscriptionsList, passing the object as the first parameter, and the string 'EventSubscriptionsList' as the second parameter 
+
+If not, it will return a a L<Paws::DMS::DescribeEventSubscriptionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllOrderableReplicationInstances(sub { },[Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllOrderableReplicationInstances([Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - OrderableReplicationInstances, passing the object as the first parameter, and the string 'OrderableReplicationInstances' as the second parameter 
+
+If not, it will return a a L<Paws::DMS::DescribeOrderableReplicationInstancesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllReplicationInstances(sub { },[Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllReplicationInstances([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReplicationInstances, passing the object as the first parameter, and the string 'ReplicationInstances' as the second parameter 
+
+If not, it will return a a L<Paws::DMS::DescribeReplicationInstancesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllReplicationSubnetGroups(sub { },[Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllReplicationSubnetGroups([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReplicationSubnetGroups, passing the object as the first parameter, and the string 'ReplicationSubnetGroups' as the second parameter 
+
+If not, it will return a a L<Paws::DMS::DescribeReplicationSubnetGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllReplicationTaskAssessmentResults(sub { },[Marker => Str, MaxRecords => Int, ReplicationTaskArn => Str])
+
+=head2 DescribeAllReplicationTaskAssessmentResults([Marker => Str, MaxRecords => Int, ReplicationTaskArn => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReplicationTaskAssessmentResults, passing the object as the first parameter, and the string 'ReplicationTaskAssessmentResults' as the second parameter 
+
+If not, it will return a a L<Paws::DMS::DescribeReplicationTaskAssessmentResultsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllReplicationTasks(sub { },[Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllReplicationTasks([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReplicationTasks, passing the object as the first parameter, and the string 'ReplicationTasks' as the second parameter 
+
+If not, it will return a a L<Paws::DMS::DescribeReplicationTasksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSchemas(sub { },EndpointArn => Str, [Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllSchemas(EndpointArn => Str, [Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Schemas, passing the object as the first parameter, and the string 'Schemas' as the second parameter 
+
+If not, it will return a a L<Paws::DMS::DescribeSchemasResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTableStatistics(sub { },ReplicationTaskArn => Str, [Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllTableStatistics(ReplicationTaskArn => Str, [Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TableStatistics, passing the object as the first parameter, and the string 'TableStatistics' as the second parameter 
+
+If not, it will return a a L<Paws::DMS::DescribeTableStatisticsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

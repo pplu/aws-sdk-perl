@@ -210,6 +210,213 @@ package Paws::MTurk;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllAssignmentsForHIT {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAssignmentsForHIT(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAssignmentsForHIT(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Assignments }, @{ $next_result->Assignments };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Assignments') foreach (@{ $result->Assignments });
+        $result = $self->ListAssignmentsForHIT(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Assignments') foreach (@{ $result->Assignments });
+    }
+
+    return undef
+  }
+  sub ListAllBonusPayments {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListBonusPayments(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListBonusPayments(@_, NextToken => $next_result->NextToken);
+        push @{ $result->BonusPayments }, @{ $next_result->BonusPayments };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'BonusPayments') foreach (@{ $result->BonusPayments });
+        $result = $self->ListBonusPayments(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'BonusPayments') foreach (@{ $result->BonusPayments });
+    }
+
+    return undef
+  }
+  sub ListAllHITs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListHITs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListHITs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->HITs }, @{ $next_result->HITs };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'HITs') foreach (@{ $result->HITs });
+        $result = $self->ListHITs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'HITs') foreach (@{ $result->HITs });
+    }
+
+    return undef
+  }
+  sub ListAllHITsForQualificationType {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListHITsForQualificationType(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListHITsForQualificationType(@_, NextToken => $next_result->NextToken);
+        push @{ $result->HITs }, @{ $next_result->HITs };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'HITs') foreach (@{ $result->HITs });
+        $result = $self->ListHITsForQualificationType(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'HITs') foreach (@{ $result->HITs });
+    }
+
+    return undef
+  }
+  sub ListAllQualificationRequests {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListQualificationRequests(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListQualificationRequests(@_, NextToken => $next_result->NextToken);
+        push @{ $result->QualificationRequests }, @{ $next_result->QualificationRequests };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'QualificationRequests') foreach (@{ $result->QualificationRequests });
+        $result = $self->ListQualificationRequests(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'QualificationRequests') foreach (@{ $result->QualificationRequests });
+    }
+
+    return undef
+  }
+  sub ListAllQualificationTypes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListQualificationTypes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListQualificationTypes(@_, NextToken => $next_result->NextToken);
+        push @{ $result->QualificationTypes }, @{ $next_result->QualificationTypes };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'QualificationTypes') foreach (@{ $result->QualificationTypes });
+        $result = $self->ListQualificationTypes(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'QualificationTypes') foreach (@{ $result->QualificationTypes });
+    }
+
+    return undef
+  }
+  sub ListAllReviewableHITs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListReviewableHITs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListReviewableHITs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->HITs }, @{ $next_result->HITs };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'HITs') foreach (@{ $result->HITs });
+        $result = $self->ListReviewableHITs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'HITs') foreach (@{ $result->HITs });
+    }
+
+    return undef
+  }
+  sub ListAllWorkerBlocks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListWorkerBlocks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListWorkerBlocks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->WorkerBlocks }, @{ $next_result->WorkerBlocks };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'WorkerBlocks') foreach (@{ $result->WorkerBlocks });
+        $result = $self->ListWorkerBlocks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'WorkerBlocks') foreach (@{ $result->WorkerBlocks });
+    }
+
+    return undef
+  }
+  sub ListAllWorkersWithQualificationType {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListWorkersWithQualificationType(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListWorkersWithQualificationType(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Qualifications }, @{ $next_result->Qualifications };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Qualifications') foreach (@{ $result->Qualifications });
+        $result = $self->ListWorkersWithQualificationType(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Qualifications') foreach (@{ $result->Qualifications });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AcceptQualificationRequest ApproveAssignment AssociateQualificationWithWorker CreateAdditionalAssignmentsForHIT CreateHIT CreateHITType CreateHITWithHITType CreateQualificationType CreateWorkerBlock DeleteHIT DeleteQualificationType DeleteWorkerBlock DisassociateQualificationFromWorker GetAccountBalance GetAssignment GetFileUploadURL GetHIT GetQualificationScore GetQualificationType ListAssignmentsForHIT ListBonusPayments ListHITs ListHITsForQualificationType ListQualificationRequests ListQualificationTypes ListReviewableHITs ListReviewPolicyResultsForHIT ListWorkerBlocks ListWorkersWithQualificationType NotifyWorkers RejectAssignment RejectQualificationRequest SendBonus SendTestEventNotification UpdateExpirationForHIT UpdateHITReviewStatus UpdateHITTypeOfHIT UpdateNotificationSettings UpdateQualificationType / }
@@ -567,7 +774,12 @@ as an answer to a FileUploadAnswer question for a HIT. The temporary
 URL is generated the instant the GetFileUploadURL operation is called,
 and is valid for 60 seconds. You can get a temporary file upload URL
 any time until the HIT is disposed. After the HIT is disposed, any
-uploaded files are deleted, and cannot be retrieved.
+uploaded files are deleted, and cannot be retrieved. Pending
+Deprecation on December 12, 2017. The Answer Specification structure
+will no longer support the C<FileUploadAnswer> element to be used for
+the QuestionForm data structure. Instead, we recommend that Requesters
+who want to create HITs asking Workers to upload files to use Amazon
+S3.
 
 
 =head2 GetHIT(HITId => Str)
@@ -921,6 +1133,114 @@ the Qualification type.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllAssignmentsForHIT(sub { },HITId => Str, [AssignmentStatuses => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAssignmentsForHIT(HITId => Str, [AssignmentStatuses => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Assignments, passing the object as the first parameter, and the string 'Assignments' as the second parameter 
+
+If not, it will return a a L<Paws::MTurk::ListAssignmentsForHITResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllBonusPayments(sub { },[AssignmentId => Str, HITId => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllBonusPayments([AssignmentId => Str, HITId => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - BonusPayments, passing the object as the first parameter, and the string 'BonusPayments' as the second parameter 
+
+If not, it will return a a L<Paws::MTurk::ListBonusPaymentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllHITs(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllHITs([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - HITs, passing the object as the first parameter, and the string 'HITs' as the second parameter 
+
+If not, it will return a a L<Paws::MTurk::ListHITsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllHITsForQualificationType(sub { },QualificationTypeId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllHITsForQualificationType(QualificationTypeId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - HITs, passing the object as the first parameter, and the string 'HITs' as the second parameter 
+
+If not, it will return a a L<Paws::MTurk::ListHITsForQualificationTypeResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllQualificationRequests(sub { },[MaxResults => Int, NextToken => Str, QualificationTypeId => Str])
+
+=head2 ListAllQualificationRequests([MaxResults => Int, NextToken => Str, QualificationTypeId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - QualificationRequests, passing the object as the first parameter, and the string 'QualificationRequests' as the second parameter 
+
+If not, it will return a a L<Paws::MTurk::ListQualificationRequestsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllQualificationTypes(sub { },MustBeRequestable => Bool, [MaxResults => Int, MustBeOwnedByCaller => Bool, NextToken => Str, Query => Str])
+
+=head2 ListAllQualificationTypes(MustBeRequestable => Bool, [MaxResults => Int, MustBeOwnedByCaller => Bool, NextToken => Str, Query => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - QualificationTypes, passing the object as the first parameter, and the string 'QualificationTypes' as the second parameter 
+
+If not, it will return a a L<Paws::MTurk::ListQualificationTypesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllReviewableHITs(sub { },[HITTypeId => Str, MaxResults => Int, NextToken => Str, Status => Str])
+
+=head2 ListAllReviewableHITs([HITTypeId => Str, MaxResults => Int, NextToken => Str, Status => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - HITs, passing the object as the first parameter, and the string 'HITs' as the second parameter 
+
+If not, it will return a a L<Paws::MTurk::ListReviewableHITsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllWorkerBlocks(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllWorkerBlocks([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - WorkerBlocks, passing the object as the first parameter, and the string 'WorkerBlocks' as the second parameter 
+
+If not, it will return a a L<Paws::MTurk::ListWorkerBlocksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllWorkersWithQualificationType(sub { },QualificationTypeId => Str, [MaxResults => Int, NextToken => Str, Status => Str])
+
+=head2 ListAllWorkersWithQualificationType(QualificationTypeId => Str, [MaxResults => Int, NextToken => Str, Status => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Qualifications, passing the object as the first parameter, and the string 'Qualifications' as the second parameter 
+
+If not, it will return a a L<Paws::MTurk::ListWorkersWithQualificationTypeResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

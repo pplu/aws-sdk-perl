@@ -339,8 +339,7 @@ webhooks, and one through AWS CodePipeline. Because billing is on a
 per-build basis, you will be billed for both builds. Therefore, if you
 are using AWS CodePipeline, we recommend that you disable webhooks in
 CodeBuild. In the AWS CodeBuild console, clear the Webhook box. For
-more information, see step 9 in Change a Build ProjectE<rsquo>s
-Settings
+more information, see step 9 in Change a Build Project's Settings
 (http://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console).
 
 
@@ -413,7 +412,7 @@ Gets a list of build project names, with each build project name
 representing a single build project.
 
 
-=head2 StartBuild(ProjectName => Str, [ArtifactsOverride => L<Paws::CodeBuild::ProjectArtifacts>, BuildspecOverride => Str, EnvironmentVariablesOverride => ArrayRef[L<Paws::CodeBuild::EnvironmentVariable>], SourceVersion => Str, TimeoutInMinutesOverride => Int])
+=head2 StartBuild(ProjectName => Str, [ArtifactsOverride => L<Paws::CodeBuild::ProjectArtifacts>, BuildspecOverride => Str, EnvironmentVariablesOverride => ArrayRef[L<Paws::CodeBuild::EnvironmentVariable>], GitCloneDepthOverride => Int, SourceVersion => Str, TimeoutInMinutesOverride => Int])
 
 Each argument is described in detail in: L<Paws::CodeBuild::StartBuild>
 

@@ -190,6 +190,98 @@ package Paws::CodeCommit;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllPullRequestEvents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribePullRequestEvents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribePullRequestEvents(@_, nextToken => $next_result->nextToken);
+        push @{ $result->pullRequestEvents }, @{ $next_result->pullRequestEvents };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'pullRequestEvents') foreach (@{ $result->pullRequestEvents });
+        $result = $self->DescribePullRequestEvents(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'pullRequestEvents') foreach (@{ $result->pullRequestEvents });
+    }
+
+    return undef
+  }
+  sub GetAllCommentsForComparedCommit {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetCommentsForComparedCommit(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetCommentsForComparedCommit(@_, nextToken => $next_result->nextToken);
+        push @{ $result->commentsForComparedCommitData }, @{ $next_result->commentsForComparedCommitData };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'commentsForComparedCommitData') foreach (@{ $result->commentsForComparedCommitData });
+        $result = $self->GetCommentsForComparedCommit(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'commentsForComparedCommitData') foreach (@{ $result->commentsForComparedCommitData });
+    }
+
+    return undef
+  }
+  sub GetAllCommentsForPullRequest {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetCommentsForPullRequest(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetCommentsForPullRequest(@_, nextToken => $next_result->nextToken);
+        push @{ $result->commentsForPullRequestData }, @{ $next_result->commentsForPullRequestData };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'commentsForPullRequestData') foreach (@{ $result->commentsForPullRequestData });
+        $result = $self->GetCommentsForPullRequest(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'commentsForPullRequestData') foreach (@{ $result->commentsForPullRequestData });
+    }
+
+    return undef
+  }
+  sub GetAllDifferences {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetDifferences(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetDifferences(@_, NextToken => $next_result->NextToken);
+        push @{ $result->differences }, @{ $next_result->differences };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'differences') foreach (@{ $result->differences });
+        $result = $self->GetDifferences(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'differences') foreach (@{ $result->differences });
+    }
+
+    return undef
+  }
   sub ListAllBranches {
     my $self = shift;
 
@@ -209,6 +301,29 @@ package Paws::CodeCommit;
         $result = $self->ListBranches(@_, nextToken => $result->nextToken);
       }
       $callback->($_ => 'branches') foreach (@{ $result->branches });
+    }
+
+    return undef
+  }
+  sub ListAllPullRequests {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPullRequests(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListPullRequests(@_, nextToken => $next_result->nextToken);
+        push @{ $result->pullRequestIds }, @{ $next_result->pullRequestIds };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'pullRequestIds') foreach (@{ $result->pullRequestIds });
+        $result = $self->ListPullRequests(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'pullRequestIds') foreach (@{ $result->pullRequestIds });
     }
 
     return undef
@@ -862,6 +977,54 @@ the AWS CodeCommit User Guide.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 DescribeAllPullRequestEvents(sub { },PullRequestId => Str, [ActorArn => Str, MaxResults => Int, NextToken => Str, PullRequestEventType => Str])
+
+=head2 DescribeAllPullRequestEvents(PullRequestId => Str, [ActorArn => Str, MaxResults => Int, NextToken => Str, PullRequestEventType => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - pullRequestEvents, passing the object as the first parameter, and the string 'pullRequestEvents' as the second parameter 
+
+If not, it will return a a L<Paws::CodeCommit::DescribePullRequestEventsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllCommentsForComparedCommit(sub { },AfterCommitId => Str, RepositoryName => Str, [BeforeCommitId => Str, MaxResults => Int, NextToken => Str])
+
+=head2 GetAllCommentsForComparedCommit(AfterCommitId => Str, RepositoryName => Str, [BeforeCommitId => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - commentsForComparedCommitData, passing the object as the first parameter, and the string 'commentsForComparedCommitData' as the second parameter 
+
+If not, it will return a a L<Paws::CodeCommit::GetCommentsForComparedCommitOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllCommentsForPullRequest(sub { },PullRequestId => Str, [AfterCommitId => Str, BeforeCommitId => Str, MaxResults => Int, NextToken => Str, RepositoryName => Str])
+
+=head2 GetAllCommentsForPullRequest(PullRequestId => Str, [AfterCommitId => Str, BeforeCommitId => Str, MaxResults => Int, NextToken => Str, RepositoryName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - commentsForPullRequestData, passing the object as the first parameter, and the string 'commentsForPullRequestData' as the second parameter 
+
+If not, it will return a a L<Paws::CodeCommit::GetCommentsForPullRequestOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllDifferences(sub { },AfterCommitSpecifier => Str, RepositoryName => Str, [AfterPath => Str, BeforeCommitSpecifier => Str, BeforePath => Str, MaxResults => Int, NextToken => Str])
+
+=head2 GetAllDifferences(AfterCommitSpecifier => Str, RepositoryName => Str, [AfterPath => Str, BeforeCommitSpecifier => Str, BeforePath => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - differences, passing the object as the first parameter, and the string 'differences' as the second parameter 
+
+If not, it will return a a L<Paws::CodeCommit::GetDifferencesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllBranches(sub { },RepositoryName => Str, [NextToken => Str])
 
 =head2 ListAllBranches(RepositoryName => Str, [NextToken => Str])
@@ -872,6 +1035,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - branches, passing the object as the first parameter, and the string 'branches' as the second parameter 
 
 If not, it will return a a L<Paws::CodeCommit::ListBranchesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPullRequests(sub { },RepositoryName => Str, [AuthorArn => Str, MaxResults => Int, NextToken => Str, PullRequestStatus => Str])
+
+=head2 ListAllPullRequests(RepositoryName => Str, [AuthorArn => Str, MaxResults => Int, NextToken => Str, PullRequestStatus => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - pullRequestIds, passing the object as the first parameter, and the string 'pullRequestIds' as the second parameter 
+
+If not, it will return a a L<Paws::CodeCommit::ListPullRequestsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllRepositories(sub { },[NextToken => Str, Order => Str, SortBy => Str])

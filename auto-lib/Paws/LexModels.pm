@@ -184,6 +184,236 @@ package Paws::LexModels;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub GetAllBotAliases {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetBotAliases(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetBotAliases(@_, nextToken => $next_result->nextToken);
+        push @{ $result->BotAliases }, @{ $next_result->BotAliases };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'BotAliases') foreach (@{ $result->BotAliases });
+        $result = $self->GetBotAliases(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'BotAliases') foreach (@{ $result->BotAliases });
+    }
+
+    return undef
+  }
+  sub GetAllBotChannelAssociations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetBotChannelAssociations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetBotChannelAssociations(@_, nextToken => $next_result->nextToken);
+        push @{ $result->botChannelAssociations }, @{ $next_result->botChannelAssociations };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'botChannelAssociations') foreach (@{ $result->botChannelAssociations });
+        $result = $self->GetBotChannelAssociations(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'botChannelAssociations') foreach (@{ $result->botChannelAssociations });
+    }
+
+    return undef
+  }
+  sub GetAllBots {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetBots(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetBots(@_, nextToken => $next_result->nextToken);
+        push @{ $result->bots }, @{ $next_result->bots };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'bots') foreach (@{ $result->bots });
+        $result = $self->GetBots(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'bots') foreach (@{ $result->bots });
+    }
+
+    return undef
+  }
+  sub GetAllBotVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetBotVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetBotVersions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->bots }, @{ $next_result->bots };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'bots') foreach (@{ $result->bots });
+        $result = $self->GetBotVersions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'bots') foreach (@{ $result->bots });
+    }
+
+    return undef
+  }
+  sub GetAllBuiltinIntents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetBuiltinIntents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetBuiltinIntents(@_, nextToken => $next_result->nextToken);
+        push @{ $result->intents }, @{ $next_result->intents };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'intents') foreach (@{ $result->intents });
+        $result = $self->GetBuiltinIntents(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'intents') foreach (@{ $result->intents });
+    }
+
+    return undef
+  }
+  sub GetAllBuiltinSlotTypes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetBuiltinSlotTypes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetBuiltinSlotTypes(@_, nextToken => $next_result->nextToken);
+        push @{ $result->slotTypes }, @{ $next_result->slotTypes };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'slotTypes') foreach (@{ $result->slotTypes });
+        $result = $self->GetBuiltinSlotTypes(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'slotTypes') foreach (@{ $result->slotTypes });
+    }
+
+    return undef
+  }
+  sub GetAllIntents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetIntents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetIntents(@_, nextToken => $next_result->nextToken);
+        push @{ $result->intents }, @{ $next_result->intents };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'intents') foreach (@{ $result->intents });
+        $result = $self->GetIntents(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'intents') foreach (@{ $result->intents });
+    }
+
+    return undef
+  }
+  sub GetAllIntentVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetIntentVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetIntentVersions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->intents }, @{ $next_result->intents };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'intents') foreach (@{ $result->intents });
+        $result = $self->GetIntentVersions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'intents') foreach (@{ $result->intents });
+    }
+
+    return undef
+  }
+  sub GetAllSlotTypes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetSlotTypes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetSlotTypes(@_, nextToken => $next_result->nextToken);
+        push @{ $result->slotTypes }, @{ $next_result->slotTypes };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'slotTypes') foreach (@{ $result->slotTypes });
+        $result = $self->GetSlotTypes(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'slotTypes') foreach (@{ $result->slotTypes });
+    }
+
+    return undef
+  }
+  sub GetAllSlotTypeVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetSlotTypeVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetSlotTypeVersions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->slotTypes }, @{ $next_result->slotTypes };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'slotTypes') foreach (@{ $result->slotTypes });
+        $result = $self->GetSlotTypeVersions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'slotTypes') foreach (@{ $result->slotTypes });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateBotVersion CreateIntentVersion CreateSlotTypeVersion DeleteBot DeleteBotAlias DeleteBotChannelAssociation DeleteBotVersion DeleteIntent DeleteIntentVersion DeleteSlotType DeleteSlotTypeVersion DeleteUtterances GetBot GetBotAlias GetBotAliases GetBotChannelAssociation GetBotChannelAssociations GetBots GetBotVersions GetBuiltinIntent GetBuiltinIntents GetBuiltinSlotTypes GetExport GetIntent GetIntents GetIntentVersions GetSlotType GetSlotTypes GetSlotTypeVersions GetUtterancesView PutBot PutBotAlias PutIntent PutSlotType / }
@@ -905,6 +1135,126 @@ This operation requires permissions for the C<lex:PutSlotType> action.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 GetAllBotAliases(sub { },BotName => Str, [MaxResults => Int, NameContains => Str, NextToken => Str])
+
+=head2 GetAllBotAliases(BotName => Str, [MaxResults => Int, NameContains => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - BotAliases, passing the object as the first parameter, and the string 'BotAliases' as the second parameter 
+
+If not, it will return a a L<Paws::LexModels::GetBotAliasesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllBotChannelAssociations(sub { },BotAlias => Str, BotName => Str, [MaxResults => Int, NameContains => Str, NextToken => Str])
+
+=head2 GetAllBotChannelAssociations(BotAlias => Str, BotName => Str, [MaxResults => Int, NameContains => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - botChannelAssociations, passing the object as the first parameter, and the string 'botChannelAssociations' as the second parameter 
+
+If not, it will return a a L<Paws::LexModels::GetBotChannelAssociationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllBots(sub { },[MaxResults => Int, NameContains => Str, NextToken => Str])
+
+=head2 GetAllBots([MaxResults => Int, NameContains => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - bots, passing the object as the first parameter, and the string 'bots' as the second parameter 
+
+If not, it will return a a L<Paws::LexModels::GetBotsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllBotVersions(sub { },Name => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 GetAllBotVersions(Name => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - bots, passing the object as the first parameter, and the string 'bots' as the second parameter 
+
+If not, it will return a a L<Paws::LexModels::GetBotVersionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllBuiltinIntents(sub { },[Locale => Str, MaxResults => Int, NextToken => Str, SignatureContains => Str])
+
+=head2 GetAllBuiltinIntents([Locale => Str, MaxResults => Int, NextToken => Str, SignatureContains => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - intents, passing the object as the first parameter, and the string 'intents' as the second parameter 
+
+If not, it will return a a L<Paws::LexModels::GetBuiltinIntentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllBuiltinSlotTypes(sub { },[Locale => Str, MaxResults => Int, NextToken => Str, SignatureContains => Str])
+
+=head2 GetAllBuiltinSlotTypes([Locale => Str, MaxResults => Int, NextToken => Str, SignatureContains => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - slotTypes, passing the object as the first parameter, and the string 'slotTypes' as the second parameter 
+
+If not, it will return a a L<Paws::LexModels::GetBuiltinSlotTypesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllIntents(sub { },[MaxResults => Int, NameContains => Str, NextToken => Str])
+
+=head2 GetAllIntents([MaxResults => Int, NameContains => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - intents, passing the object as the first parameter, and the string 'intents' as the second parameter 
+
+If not, it will return a a L<Paws::LexModels::GetIntentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllIntentVersions(sub { },Name => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 GetAllIntentVersions(Name => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - intents, passing the object as the first parameter, and the string 'intents' as the second parameter 
+
+If not, it will return a a L<Paws::LexModels::GetIntentVersionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllSlotTypes(sub { },[MaxResults => Int, NameContains => Str, NextToken => Str])
+
+=head2 GetAllSlotTypes([MaxResults => Int, NameContains => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - slotTypes, passing the object as the first parameter, and the string 'slotTypes' as the second parameter 
+
+If not, it will return a a L<Paws::LexModels::GetSlotTypesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllSlotTypeVersions(sub { },Name => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 GetAllSlotTypeVersions(Name => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - slotTypes, passing the object as the first parameter, and the string 'slotTypes' as the second parameter 
+
+If not, it will return a a L<Paws::LexModels::GetSlotTypeVersionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

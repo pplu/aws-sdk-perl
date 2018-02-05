@@ -324,6 +324,374 @@ package Paws::CloudDirectory;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllAppliedSchemaArns {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAppliedSchemaArns(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAppliedSchemaArns(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SchemaArns }, @{ $next_result->SchemaArns };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SchemaArns') foreach (@{ $result->SchemaArns });
+        $result = $self->ListAppliedSchemaArns(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SchemaArns') foreach (@{ $result->SchemaArns });
+    }
+
+    return undef
+  }
+  sub ListAllAttachedIndices {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAttachedIndices(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAttachedIndices(@_, NextToken => $next_result->NextToken);
+        push @{ $result->IndexAttachments }, @{ $next_result->IndexAttachments };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'IndexAttachments') foreach (@{ $result->IndexAttachments });
+        $result = $self->ListAttachedIndices(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'IndexAttachments') foreach (@{ $result->IndexAttachments });
+    }
+
+    return undef
+  }
+  sub ListAllDevelopmentSchemaArns {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDevelopmentSchemaArns(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDevelopmentSchemaArns(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SchemaArns }, @{ $next_result->SchemaArns };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SchemaArns') foreach (@{ $result->SchemaArns });
+        $result = $self->ListDevelopmentSchemaArns(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SchemaArns') foreach (@{ $result->SchemaArns });
+    }
+
+    return undef
+  }
+  sub ListAllDirectories {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDirectories(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDirectories(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Directories }, @{ $next_result->Directories };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Directories') foreach (@{ $result->Directories });
+        $result = $self->ListDirectories(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Directories') foreach (@{ $result->Directories });
+    }
+
+    return undef
+  }
+  sub ListAllFacetAttributes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListFacetAttributes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListFacetAttributes(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Attributes }, @{ $next_result->Attributes };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Attributes') foreach (@{ $result->Attributes });
+        $result = $self->ListFacetAttributes(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Attributes') foreach (@{ $result->Attributes });
+    }
+
+    return undef
+  }
+  sub ListAllFacetNames {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListFacetNames(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListFacetNames(@_, NextToken => $next_result->NextToken);
+        push @{ $result->FacetNames }, @{ $next_result->FacetNames };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'FacetNames') foreach (@{ $result->FacetNames });
+        $result = $self->ListFacetNames(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'FacetNames') foreach (@{ $result->FacetNames });
+    }
+
+    return undef
+  }
+  sub ListAllIndex {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListIndex(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListIndex(@_, NextToken => $next_result->NextToken);
+        push @{ $result->IndexAttachments }, @{ $next_result->IndexAttachments };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'IndexAttachments') foreach (@{ $result->IndexAttachments });
+        $result = $self->ListIndex(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'IndexAttachments') foreach (@{ $result->IndexAttachments });
+    }
+
+    return undef
+  }
+  sub ListAllObjectAttributes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListObjectAttributes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListObjectAttributes(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Attributes }, @{ $next_result->Attributes };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Attributes') foreach (@{ $result->Attributes });
+        $result = $self->ListObjectAttributes(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Attributes') foreach (@{ $result->Attributes });
+    }
+
+    return undef
+  }
+  sub ListAllObjectParentPaths {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListObjectParentPaths(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListObjectParentPaths(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PathToObjectIdentifiersList }, @{ $next_result->PathToObjectIdentifiersList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PathToObjectIdentifiersList') foreach (@{ $result->PathToObjectIdentifiersList });
+        $result = $self->ListObjectParentPaths(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PathToObjectIdentifiersList') foreach (@{ $result->PathToObjectIdentifiersList });
+    }
+
+    return undef
+  }
+  sub ListAllObjectPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListObjectPolicies(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListObjectPolicies(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AttachedPolicyIds }, @{ $next_result->AttachedPolicyIds };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AttachedPolicyIds') foreach (@{ $result->AttachedPolicyIds });
+        $result = $self->ListObjectPolicies(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AttachedPolicyIds') foreach (@{ $result->AttachedPolicyIds });
+    }
+
+    return undef
+  }
+  sub ListAllPolicyAttachments {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPolicyAttachments(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListPolicyAttachments(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ObjectIdentifiers }, @{ $next_result->ObjectIdentifiers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ObjectIdentifiers') foreach (@{ $result->ObjectIdentifiers });
+        $result = $self->ListPolicyAttachments(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ObjectIdentifiers') foreach (@{ $result->ObjectIdentifiers });
+    }
+
+    return undef
+  }
+  sub ListAllPublishedSchemaArns {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPublishedSchemaArns(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListPublishedSchemaArns(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SchemaArns }, @{ $next_result->SchemaArns };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SchemaArns') foreach (@{ $result->SchemaArns });
+        $result = $self->ListPublishedSchemaArns(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SchemaArns') foreach (@{ $result->SchemaArns });
+    }
+
+    return undef
+  }
+  sub ListAllTagsForResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTagsForResource(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTagsForResource(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Tags }, @{ $next_result->Tags };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->ListTagsForResource(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+    }
+
+    return undef
+  }
+  sub ListAllTypedLinkFacetAttributes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTypedLinkFacetAttributes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTypedLinkFacetAttributes(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Attributes }, @{ $next_result->Attributes };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Attributes') foreach (@{ $result->Attributes });
+        $result = $self->ListTypedLinkFacetAttributes(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Attributes') foreach (@{ $result->Attributes });
+    }
+
+    return undef
+  }
+  sub ListAllTypedLinkFacetNames {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTypedLinkFacetNames(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTypedLinkFacetNames(@_, NextToken => $next_result->NextToken);
+        push @{ $result->FacetNames }, @{ $next_result->FacetNames };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'FacetNames') foreach (@{ $result->FacetNames });
+        $result = $self->ListTypedLinkFacetNames(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'FacetNames') foreach (@{ $result->FacetNames });
+    }
+
+    return undef
+  }
+  sub LookupAllPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->LookupPolicy(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->LookupPolicy(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PolicyToPathList }, @{ $next_result->PolicyToPathList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PolicyToPathList') foreach (@{ $result->PolicyToPathList });
+        $result = $self->LookupPolicy(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PolicyToPathList') foreach (@{ $result->PolicyToPathList });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AddFacetToObject ApplySchema AttachObject AttachPolicy AttachToIndex AttachTypedLink BatchRead BatchWrite CreateDirectory CreateFacet CreateIndex CreateObject CreateSchema CreateTypedLinkFacet DeleteDirectory DeleteFacet DeleteObject DeleteSchema DeleteTypedLinkFacet DetachFromIndex DetachObject DetachPolicy DetachTypedLink DisableDirectory EnableDirectory GetAppliedSchemaVersion GetDirectory GetFacet GetObjectInformation GetSchemaAsJson GetTypedLinkFacetInformation ListAppliedSchemaArns ListAttachedIndices ListDevelopmentSchemaArns ListDirectories ListFacetAttributes ListFacetNames ListIncomingTypedLinks ListIndex ListObjectAttributes ListObjectChildren ListObjectParentPaths ListObjectParents ListObjectPolicies ListOutgoingTypedLinks ListPolicyAttachments ListPublishedSchemaArns ListTagsForResource ListTypedLinkFacetAttributes ListTypedLinkFacetNames LookupPolicy PublishSchema PutSchemaFromJson RemoveFacetFromObject TagResource UntagResource UpdateFacet UpdateObjectAttributes UpdateSchema UpdateTypedLinkFacet UpgradeAppliedSchema UpgradePublishedSchema / }
@@ -1070,6 +1438,198 @@ the current contents of C<DevelopmentSchemaArn>.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllAppliedSchemaArns(sub { },DirectoryArn => Str, [MaxResults => Int, NextToken => Str, SchemaArn => Str])
+
+=head2 ListAllAppliedSchemaArns(DirectoryArn => Str, [MaxResults => Int, NextToken => Str, SchemaArn => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SchemaArns, passing the object as the first parameter, and the string 'SchemaArns' as the second parameter 
+
+If not, it will return a a L<Paws::CloudDirectory::ListAppliedSchemaArnsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAttachedIndices(sub { },DirectoryArn => Str, TargetReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAttachedIndices(DirectoryArn => Str, TargetReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - IndexAttachments, passing the object as the first parameter, and the string 'IndexAttachments' as the second parameter 
+
+If not, it will return a a L<Paws::CloudDirectory::ListAttachedIndicesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDevelopmentSchemaArns(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDevelopmentSchemaArns([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SchemaArns, passing the object as the first parameter, and the string 'SchemaArns' as the second parameter 
+
+If not, it will return a a L<Paws::CloudDirectory::ListDevelopmentSchemaArnsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDirectories(sub { },[MaxResults => Int, NextToken => Str, State => Str])
+
+=head2 ListAllDirectories([MaxResults => Int, NextToken => Str, State => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Directories, passing the object as the first parameter, and the string 'Directories' as the second parameter 
+
+If not, it will return a a L<Paws::CloudDirectory::ListDirectoriesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllFacetAttributes(sub { },Name => Str, SchemaArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllFacetAttributes(Name => Str, SchemaArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Attributes, passing the object as the first parameter, and the string 'Attributes' as the second parameter 
+
+If not, it will return a a L<Paws::CloudDirectory::ListFacetAttributesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllFacetNames(sub { },SchemaArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllFacetNames(SchemaArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FacetNames, passing the object as the first parameter, and the string 'FacetNames' as the second parameter 
+
+If not, it will return a a L<Paws::CloudDirectory::ListFacetNamesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllIndex(sub { },DirectoryArn => Str, IndexReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str, RangesOnIndexedValues => ArrayRef[L<Paws::CloudDirectory::ObjectAttributeRange>]])
+
+=head2 ListAllIndex(DirectoryArn => Str, IndexReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str, RangesOnIndexedValues => ArrayRef[L<Paws::CloudDirectory::ObjectAttributeRange>]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - IndexAttachments, passing the object as the first parameter, and the string 'IndexAttachments' as the second parameter 
+
+If not, it will return a a L<Paws::CloudDirectory::ListIndexResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllObjectAttributes(sub { },DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FacetFilter => L<Paws::CloudDirectory::SchemaFacet>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllObjectAttributes(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FacetFilter => L<Paws::CloudDirectory::SchemaFacet>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Attributes, passing the object as the first parameter, and the string 'Attributes' as the second parameter 
+
+If not, it will return a a L<Paws::CloudDirectory::ListObjectAttributesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllObjectParentPaths(sub { },DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllObjectParentPaths(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PathToObjectIdentifiersList, passing the object as the first parameter, and the string 'PathToObjectIdentifiersList' as the second parameter 
+
+If not, it will return a a L<Paws::CloudDirectory::ListObjectParentPathsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllObjectPolicies(sub { },DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllObjectPolicies(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AttachedPolicyIds, passing the object as the first parameter, and the string 'AttachedPolicyIds' as the second parameter 
+
+If not, it will return a a L<Paws::CloudDirectory::ListObjectPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPolicyAttachments(sub { },DirectoryArn => Str, PolicyReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllPolicyAttachments(DirectoryArn => Str, PolicyReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ObjectIdentifiers, passing the object as the first parameter, and the string 'ObjectIdentifiers' as the second parameter 
+
+If not, it will return a a L<Paws::CloudDirectory::ListPolicyAttachmentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPublishedSchemaArns(sub { },[MaxResults => Int, NextToken => Str, SchemaArn => Str])
+
+=head2 ListAllPublishedSchemaArns([MaxResults => Int, NextToken => Str, SchemaArn => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SchemaArns, passing the object as the first parameter, and the string 'SchemaArns' as the second parameter 
+
+If not, it will return a a L<Paws::CloudDirectory::ListPublishedSchemaArnsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTagsForResource(sub { },ResourceArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTagsForResource(ResourceArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
+
+If not, it will return a a L<Paws::CloudDirectory::ListTagsForResourceResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTypedLinkFacetAttributes(sub { },Name => Str, SchemaArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTypedLinkFacetAttributes(Name => Str, SchemaArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Attributes, passing the object as the first parameter, and the string 'Attributes' as the second parameter 
+
+If not, it will return a a L<Paws::CloudDirectory::ListTypedLinkFacetAttributesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTypedLinkFacetNames(sub { },SchemaArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTypedLinkFacetNames(SchemaArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FacetNames, passing the object as the first parameter, and the string 'FacetNames' as the second parameter 
+
+If not, it will return a a L<Paws::CloudDirectory::ListTypedLinkFacetNamesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 LookupAllPolicies(sub { },DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [MaxResults => Int, NextToken => Str])
+
+=head2 LookupAllPolicies(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PolicyToPathList, passing the object as the first parameter, and the string 'PolicyToPathList' as the second parameter 
+
+If not, it will return a a L<Paws::CloudDirectory::LookupPolicyResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

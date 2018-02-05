@@ -59,6 +59,52 @@ package Paws::MobileHub;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllBundles {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListBundles(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListBundles(@_, nextToken => $next_result->nextToken);
+        push @{ $result->bundleList }, @{ $next_result->bundleList };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'bundleList') foreach (@{ $result->bundleList });
+        $result = $self->ListBundles(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'bundleList') foreach (@{ $result->bundleList });
+    }
+
+    return undef
+  }
+  sub ListAllProjects {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListProjects(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListProjects(@_, nextToken => $next_result->nextToken);
+        push @{ $result->projects }, @{ $next_result->projects };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'projects') foreach (@{ $result->projects });
+        $result = $self->ListProjects(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'projects') foreach (@{ $result->projects });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateProject DeleteProject DescribeBundle DescribeProject ExportBundle ExportProject ListBundles ListProjects UpdateProject / }
@@ -187,6 +233,30 @@ Update an existing project.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllBundles(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllBundles([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - bundleList, passing the object as the first parameter, and the string 'bundleList' as the second parameter 
+
+If not, it will return a a L<Paws::MobileHub::ListBundlesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllProjects(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllProjects([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - projects, passing the object as the first parameter, and the string 'projects' as the second parameter 
+
+If not, it will return a a L<Paws::MobileHub::ListProjectsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

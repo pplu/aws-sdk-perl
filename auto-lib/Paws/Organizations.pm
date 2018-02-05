@@ -271,6 +271,29 @@ package Paws::Organizations;
 
     return undef
   }
+  sub ListAllAWSServiceAccessForOrganization {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAWSServiceAccessForOrganization(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAWSServiceAccessForOrganization(@_, NextToken => $next_result->NextToken);
+        push @{ $result->EnabledServicePrincipals }, @{ $next_result->EnabledServicePrincipals };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'EnabledServicePrincipals') foreach (@{ $result->EnabledServicePrincipals });
+        $result = $self->ListAWSServiceAccessForOrganization(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'EnabledServicePrincipals') foreach (@{ $result->EnabledServicePrincipals });
+    }
+
+    return undef
+  }
   sub ListAllChildren {
     my $self = shift;
 
@@ -1644,6 +1667,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Accounts, passing the object as the first parameter, and the string 'Accounts' as the second parameter 
 
 If not, it will return a a L<Paws::Organizations::ListAccountsForParentResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAWSServiceAccessForOrganization(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAWSServiceAccessForOrganization([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EnabledServicePrincipals, passing the object as the first parameter, and the string 'EnabledServicePrincipals' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListAWSServiceAccessForOrganizationResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllChildren(sub { },ChildType => Str, ParentId => Str, [MaxResults => Int, NextToken => Str])

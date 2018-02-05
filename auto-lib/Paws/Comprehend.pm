@@ -70,6 +70,29 @@ package Paws::Comprehend;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllTopicsDetectionJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTopicsDetectionJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTopicsDetectionJobs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TopicsDetectionJobPropertiesList }, @{ $next_result->TopicsDetectionJobPropertiesList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TopicsDetectionJobPropertiesList') foreach (@{ $result->TopicsDetectionJobPropertiesList });
+        $result = $self->ListTopicsDetectionJobs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TopicsDetectionJobPropertiesList') foreach (@{ $result->TopicsDetectionJobPropertiesList });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/BatchDetectDominantLanguage BatchDetectEntities BatchDetectKeyPhrases BatchDetectSentiment DescribeTopicsDetectionJob DetectDominantLanguage DetectEntities DetectKeyPhrases DetectSentiment ListTopicsDetectionJobs StartTopicsDetectionJob / }
@@ -224,6 +247,18 @@ C<DescribeTopicDetectionJob> operation to track the status of a job.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllTopicsDetectionJobs(sub { },[Filter => L<Paws::Comprehend::TopicsDetectionJobFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTopicsDetectionJobs([Filter => L<Paws::Comprehend::TopicsDetectionJobFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TopicsDetectionJobPropertiesList, passing the object as the first parameter, and the string 'TopicsDetectionJobPropertiesList' as the second parameter 
+
+If not, it will return a a L<Paws::Comprehend::ListTopicsDetectionJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

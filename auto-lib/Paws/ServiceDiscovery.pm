@@ -100,6 +100,98 @@ package Paws::ServiceDiscovery;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListInstances(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListInstances(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Instances }, @{ $next_result->Instances };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Instances') foreach (@{ $result->Instances });
+        $result = $self->ListInstances(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Instances') foreach (@{ $result->Instances });
+    }
+
+    return undef
+  }
+  sub ListAllNamespaces {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListNamespaces(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListNamespaces(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Namespaces }, @{ $next_result->Namespaces };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Namespaces') foreach (@{ $result->Namespaces });
+        $result = $self->ListNamespaces(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Namespaces') foreach (@{ $result->Namespaces });
+    }
+
+    return undef
+  }
+  sub ListAllOperations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOperations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListOperations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Operations }, @{ $next_result->Operations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Operations') foreach (@{ $result->Operations });
+        $result = $self->ListOperations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Operations') foreach (@{ $result->Operations });
+    }
+
+    return undef
+  }
+  sub ListAllServices {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListServices(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListServices(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Services }, @{ $next_result->Services };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Services') foreach (@{ $result->Services });
+        $result = $self->ListServices(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Services') foreach (@{ $result->Services });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreatePrivateDnsNamespace CreatePublicDnsNamespace CreateService DeleteNamespace DeleteService DeregisterInstance GetInstance GetInstancesHealthStatus GetNamespace GetOperation GetService ListInstances ListNamespaces ListOperations ListServices RegisterInstance UpdateService / }
@@ -390,6 +482,54 @@ health checks that were created by using the specified service.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllInstances(sub { },ServiceId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllInstances(ServiceId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Instances, passing the object as the first parameter, and the string 'Instances' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceDiscovery::ListInstancesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllNamespaces(sub { },[Filters => ArrayRef[L<Paws::ServiceDiscovery::NamespaceFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllNamespaces([Filters => ArrayRef[L<Paws::ServiceDiscovery::NamespaceFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Namespaces, passing the object as the first parameter, and the string 'Namespaces' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceDiscovery::ListNamespacesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOperations(sub { },[Filters => ArrayRef[L<Paws::ServiceDiscovery::OperationFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllOperations([Filters => ArrayRef[L<Paws::ServiceDiscovery::OperationFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Operations, passing the object as the first parameter, and the string 'Operations' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceDiscovery::ListOperationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllServices(sub { },[Filters => ArrayRef[L<Paws::ServiceDiscovery::ServiceFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllServices([Filters => ArrayRef[L<Paws::ServiceDiscovery::ServiceFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Services, passing the object as the first parameter, and the string 'Services' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceDiscovery::ListServicesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

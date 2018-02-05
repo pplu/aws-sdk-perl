@@ -135,6 +135,29 @@ package Paws::CloudWatch;
 
     return undef
   }
+  sub ListAllDashboards {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDashboards(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDashboards(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DashboardEntries }, @{ $next_result->DashboardEntries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DashboardEntries') foreach (@{ $result->DashboardEntries });
+        $result = $self->ListDashboards(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DashboardEntries') foreach (@{ $result->DashboardEntries });
+    }
+
+    return undef
+  }
   sub ListAllMetrics {
     my $self = shift;
 
@@ -601,6 +624,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - MetricAlarms, passing the object as the first parameter, and the string 'MetricAlarms' as the second parameter 
 
 If not, it will return a a L<Paws::CloudWatch::DescribeAlarmsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDashboards(sub { },[DashboardNamePrefix => Str, NextToken => Str])
+
+=head2 ListAllDashboards([DashboardNamePrefix => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DashboardEntries, passing the object as the first parameter, and the string 'DashboardEntries' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatch::ListDashboardsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllMetrics(sub { },[Dimensions => ArrayRef[L<Paws::CloudWatch::DimensionFilter>], MetricName => Str, Namespace => Str, NextToken => Str])

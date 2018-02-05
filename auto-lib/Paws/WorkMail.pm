@@ -155,6 +155,144 @@ package Paws::WorkMail;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllAliases {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAliases(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAliases(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Aliases }, @{ $next_result->Aliases };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Aliases') foreach (@{ $result->Aliases });
+        $result = $self->ListAliases(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Aliases') foreach (@{ $result->Aliases });
+    }
+
+    return undef
+  }
+  sub ListAllGroupMembers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListGroupMembers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListGroupMembers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Members }, @{ $next_result->Members };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Members') foreach (@{ $result->Members });
+        $result = $self->ListGroupMembers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Members') foreach (@{ $result->Members });
+    }
+
+    return undef
+  }
+  sub ListAllGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListGroups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Groups }, @{ $next_result->Groups };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Groups') foreach (@{ $result->Groups });
+        $result = $self->ListGroups(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Groups') foreach (@{ $result->Groups });
+    }
+
+    return undef
+  }
+  sub ListAllOrganizations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOrganizations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListOrganizations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->OrganizationSummaries }, @{ $next_result->OrganizationSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'OrganizationSummaries') foreach (@{ $result->OrganizationSummaries });
+        $result = $self->ListOrganizations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'OrganizationSummaries') foreach (@{ $result->OrganizationSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllResources {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListResources(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListResources(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Resources }, @{ $next_result->Resources };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Resources') foreach (@{ $result->Resources });
+        $result = $self->ListResources(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Resources') foreach (@{ $result->Resources });
+    }
+
+    return undef
+  }
+  sub ListAllUsers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListUsers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListUsers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Users }, @{ $next_result->Users };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Users') foreach (@{ $result->Users });
+        $result = $self->ListUsers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Users') foreach (@{ $result->Users });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AssociateDelegateToResource AssociateMemberToGroup CreateAlias CreateGroup CreateResource CreateUser DeleteAlias DeleteGroup DeleteResource DeleteUser DeregisterFromWorkMail DescribeGroup DescribeOrganization DescribeResource DescribeUser DisassociateDelegateFromResource DisassociateMemberFromGroup ListAliases ListGroupMembers ListGroups ListOrganizations ListResourceDelegates ListResources ListUsers RegisterToWorkMail ResetPassword UpdatePrimaryEmailAddress UpdateResource / }
@@ -522,6 +660,78 @@ should be the one expected when performing another describe call.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllAliases(sub { },EntityId => Str, OrganizationId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAliases(EntityId => Str, OrganizationId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Aliases, passing the object as the first parameter, and the string 'Aliases' as the second parameter 
+
+If not, it will return a a L<Paws::WorkMail::ListAliasesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllGroupMembers(sub { },GroupId => Str, OrganizationId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllGroupMembers(GroupId => Str, OrganizationId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Members, passing the object as the first parameter, and the string 'Members' as the second parameter 
+
+If not, it will return a a L<Paws::WorkMail::ListGroupMembersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllGroups(sub { },OrganizationId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllGroups(OrganizationId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Groups, passing the object as the first parameter, and the string 'Groups' as the second parameter 
+
+If not, it will return a a L<Paws::WorkMail::ListGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOrganizations(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllOrganizations([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - OrganizationSummaries, passing the object as the first parameter, and the string 'OrganizationSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::WorkMail::ListOrganizationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllResources(sub { },OrganizationId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllResources(OrganizationId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Resources, passing the object as the first parameter, and the string 'Resources' as the second parameter 
+
+If not, it will return a a L<Paws::WorkMail::ListResourcesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllUsers(sub { },OrganizationId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllUsers(OrganizationId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Users, passing the object as the first parameter, and the string 'Users' as the second parameter 
+
+If not, it will return a a L<Paws::WorkMail::ListUsersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

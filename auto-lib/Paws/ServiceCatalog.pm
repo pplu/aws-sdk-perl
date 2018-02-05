@@ -280,6 +280,213 @@ package Paws::ServiceCatalog;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllAcceptedPortfolioShares {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAcceptedPortfolioShares(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListAcceptedPortfolioShares(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->PortfolioDetails }, @{ $next_result->PortfolioDetails };
+      }
+      return $result;
+    } else {
+      while ($result->NextPageToken) {
+        $callback->($_ => 'PortfolioDetails') foreach (@{ $result->PortfolioDetails });
+        $result = $self->ListAcceptedPortfolioShares(@_, PageToken => $result->NextPageToken);
+      }
+      $callback->($_ => 'PortfolioDetails') foreach (@{ $result->PortfolioDetails });
+    }
+
+    return undef
+  }
+  sub ListAllConstraintsForPortfolio {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListConstraintsForPortfolio(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListConstraintsForPortfolio(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->ConstraintDetails }, @{ $next_result->ConstraintDetails };
+      }
+      return $result;
+    } else {
+      while ($result->NextPageToken) {
+        $callback->($_ => 'ConstraintDetails') foreach (@{ $result->ConstraintDetails });
+        $result = $self->ListConstraintsForPortfolio(@_, PageToken => $result->NextPageToken);
+      }
+      $callback->($_ => 'ConstraintDetails') foreach (@{ $result->ConstraintDetails });
+    }
+
+    return undef
+  }
+  sub ListAllLaunchPaths {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListLaunchPaths(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListLaunchPaths(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->LaunchPathSummaries }, @{ $next_result->LaunchPathSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextPageToken) {
+        $callback->($_ => 'LaunchPathSummaries') foreach (@{ $result->LaunchPathSummaries });
+        $result = $self->ListLaunchPaths(@_, PageToken => $result->NextPageToken);
+      }
+      $callback->($_ => 'LaunchPathSummaries') foreach (@{ $result->LaunchPathSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllPortfolios {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPortfolios(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListPortfolios(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->PortfolioDetails }, @{ $next_result->PortfolioDetails };
+      }
+      return $result;
+    } else {
+      while ($result->NextPageToken) {
+        $callback->($_ => 'PortfolioDetails') foreach (@{ $result->PortfolioDetails });
+        $result = $self->ListPortfolios(@_, PageToken => $result->NextPageToken);
+      }
+      $callback->($_ => 'PortfolioDetails') foreach (@{ $result->PortfolioDetails });
+    }
+
+    return undef
+  }
+  sub ListAllPortfoliosForProduct {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPortfoliosForProduct(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListPortfoliosForProduct(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->PortfolioDetails }, @{ $next_result->PortfolioDetails };
+      }
+      return $result;
+    } else {
+      while ($result->NextPageToken) {
+        $callback->($_ => 'PortfolioDetails') foreach (@{ $result->PortfolioDetails });
+        $result = $self->ListPortfoliosForProduct(@_, PageToken => $result->NextPageToken);
+      }
+      $callback->($_ => 'PortfolioDetails') foreach (@{ $result->PortfolioDetails });
+    }
+
+    return undef
+  }
+  sub ListAllPrincipalsForPortfolio {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPrincipalsForPortfolio(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListPrincipalsForPortfolio(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->Principals }, @{ $next_result->Principals };
+      }
+      return $result;
+    } else {
+      while ($result->NextPageToken) {
+        $callback->($_ => 'Principals') foreach (@{ $result->Principals });
+        $result = $self->ListPrincipalsForPortfolio(@_, PageToken => $result->NextPageToken);
+      }
+      $callback->($_ => 'Principals') foreach (@{ $result->Principals });
+    }
+
+    return undef
+  }
+  sub ListAllResourcesForTagOption {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListResourcesForTagOption(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->PageToken) {
+        $next_result = $self->ListResourcesForTagOption(@_, PageToken => $next_result->PageToken);
+        push @{ $result->ResourceDetails }, @{ $next_result->ResourceDetails };
+      }
+      return $result;
+    } else {
+      while ($result->PageToken) {
+        $callback->($_ => 'ResourceDetails') foreach (@{ $result->ResourceDetails });
+        $result = $self->ListResourcesForTagOption(@_, PageToken => $result->PageToken);
+      }
+      $callback->($_ => 'ResourceDetails') foreach (@{ $result->ResourceDetails });
+    }
+
+    return undef
+  }
+  sub ListAllTagOptions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTagOptions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->PageToken) {
+        $next_result = $self->ListTagOptions(@_, PageToken => $next_result->PageToken);
+        push @{ $result->TagOptionDetails }, @{ $next_result->TagOptionDetails };
+      }
+      return $result;
+    } else {
+      while ($result->PageToken) {
+        $callback->($_ => 'TagOptionDetails') foreach (@{ $result->TagOptionDetails });
+        $result = $self->ListTagOptions(@_, PageToken => $result->PageToken);
+      }
+      $callback->($_ => 'TagOptionDetails') foreach (@{ $result->TagOptionDetails });
+    }
+
+    return undef
+  }
+  sub SearchAllProductsAsAdmin {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->SearchProductsAsAdmin(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextPageToken) {
+        $next_result = $self->SearchProductsAsAdmin(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->ProductViewDetails }, @{ $next_result->ProductViewDetails };
+      }
+      return $result;
+    } else {
+      while ($result->NextPageToken) {
+        $callback->($_ => 'ProductViewDetails') foreach (@{ $result->ProductViewDetails });
+        $result = $self->SearchProductsAsAdmin(@_, PageToken => $result->NextPageToken);
+      }
+      $callback->($_ => 'ProductViewDetails') foreach (@{ $result->ProductViewDetails });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AcceptPortfolioShare AssociatePrincipalWithPortfolio AssociateProductWithPortfolio AssociateTagOptionWithResource CopyProduct CreateConstraint CreatePortfolio CreatePortfolioShare CreateProduct CreateProvisioningArtifact CreateTagOption DeleteConstraint DeletePortfolio DeletePortfolioShare DeleteProduct DeleteProvisioningArtifact DescribeConstraint DescribeCopyProductStatus DescribePortfolio DescribeProduct DescribeProductAsAdmin DescribeProductView DescribeProvisionedProduct DescribeProvisioningArtifact DescribeProvisioningParameters DescribeRecord DescribeTagOption DisassociatePrincipalFromPortfolio DisassociateProductFromPortfolio DisassociateTagOptionFromResource ListAcceptedPortfolioShares ListConstraintsForPortfolio ListLaunchPaths ListPortfolioAccess ListPortfolios ListPortfoliosForProduct ListPrincipalsForPortfolio ListProvisioningArtifacts ListRecordHistory ListResourcesForTagOption ListTagOptions ProvisionProduct RejectPortfolioShare ScanProvisionedProducts SearchProducts SearchProductsAsAdmin TerminateProvisionedProduct UpdateConstraint UpdatePortfolio UpdateProduct UpdateProvisionedProduct UpdateProvisioningArtifact UpdateTagOption / }
@@ -877,6 +1084,114 @@ Updates the specified TagOption.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllAcceptedPortfolioShares(sub { },[AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+=head2 ListAllAcceptedPortfolioShares([AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PortfolioDetails, passing the object as the first parameter, and the string 'PortfolioDetails' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ListAcceptedPortfolioSharesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllConstraintsForPortfolio(sub { },PortfolioId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str, ProductId => Str])
+
+=head2 ListAllConstraintsForPortfolio(PortfolioId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str, ProductId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ConstraintDetails, passing the object as the first parameter, and the string 'ConstraintDetails' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ListConstraintsForPortfolioOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllLaunchPaths(sub { },ProductId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+=head2 ListAllLaunchPaths(ProductId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LaunchPathSummaries, passing the object as the first parameter, and the string 'LaunchPathSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ListLaunchPathsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPortfolios(sub { },[AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+=head2 ListAllPortfolios([AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PortfolioDetails, passing the object as the first parameter, and the string 'PortfolioDetails' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ListPortfoliosOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPortfoliosForProduct(sub { },ProductId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+=head2 ListAllPortfoliosForProduct(ProductId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PortfolioDetails, passing the object as the first parameter, and the string 'PortfolioDetails' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ListPortfoliosForProductOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPrincipalsForPortfolio(sub { },PortfolioId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+=head2 ListAllPrincipalsForPortfolio(PortfolioId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Principals, passing the object as the first parameter, and the string 'Principals' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ListPrincipalsForPortfolioOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllResourcesForTagOption(sub { },TagOptionId => Str, [PageSize => Int, PageToken => Str, ResourceType => Str])
+
+=head2 ListAllResourcesForTagOption(TagOptionId => Str, [PageSize => Int, PageToken => Str, ResourceType => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ResourceDetails, passing the object as the first parameter, and the string 'ResourceDetails' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ListResourcesForTagOptionOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTagOptions(sub { },[Filters => L<Paws::ServiceCatalog::ListTagOptionsFilters>, PageSize => Int, PageToken => Str])
+
+=head2 ListAllTagOptions([Filters => L<Paws::ServiceCatalog::ListTagOptionsFilters>, PageSize => Int, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TagOptionDetails, passing the object as the first parameter, and the string 'TagOptionDetails' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ListTagOptionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 SearchAllProductsAsAdmin(sub { },[AcceptLanguage => Str, Filters => L<Paws::ServiceCatalog::ProductViewFilters>, PageSize => Int, PageToken => Str, PortfolioId => Str, ProductSource => Str, SortBy => Str, SortOrder => Str])
+
+=head2 SearchAllProductsAsAdmin([AcceptLanguage => Str, Filters => L<Paws::ServiceCatalog::ProductViewFilters>, PageSize => Int, PageToken => Str, PortfolioId => Str, ProductSource => Str, SortBy => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ProductViewDetails, passing the object as the first parameter, and the string 'ProductViewDetails' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::SearchProductsAsAdminOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

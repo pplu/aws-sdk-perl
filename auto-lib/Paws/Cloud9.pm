@@ -65,6 +65,52 @@ package Paws::Cloud9;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllEnvironmentMemberships {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEnvironmentMemberships(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeEnvironmentMemberships(@_, nextToken => $next_result->nextToken);
+        push @{ $result->memberships }, @{ $next_result->memberships };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'memberships') foreach (@{ $result->memberships });
+        $result = $self->DescribeEnvironmentMemberships(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'memberships') foreach (@{ $result->memberships });
+    }
+
+    return undef
+  }
+  sub ListAllEnvironments {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListEnvironments(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListEnvironments(@_, nextToken => $next_result->nextToken);
+        push @{ $result->environmentIds }, @{ $next_result->environmentIds };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'environmentIds') foreach (@{ $result->environmentIds });
+        $result = $self->ListEnvironments(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'environmentIds') foreach (@{ $result->environmentIds });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateEnvironmentEC2 CreateEnvironmentMembership DeleteEnvironment DeleteEnvironmentMembership DescribeEnvironmentMemberships DescribeEnvironments DescribeEnvironmentStatus ListEnvironments UpdateEnvironment UpdateEnvironmentMembership / }
@@ -269,6 +315,30 @@ Cloud9 development environment.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllEnvironmentMemberships(sub { },[EnvironmentId => Str, MaxResults => Int, NextToken => Str, Permissions => ArrayRef[Str|Undef], UserArn => Str])
+
+=head2 DescribeAllEnvironmentMemberships([EnvironmentId => Str, MaxResults => Int, NextToken => Str, Permissions => ArrayRef[Str|Undef], UserArn => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - memberships, passing the object as the first parameter, and the string 'memberships' as the second parameter 
+
+If not, it will return a a L<Paws::Cloud9::DescribeEnvironmentMembershipsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllEnvironments(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllEnvironments([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - environmentIds, passing the object as the first parameter, and the string 'environmentIds' as the second parameter 
+
+If not, it will return a a L<Paws::Cloud9::ListEnvironmentsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

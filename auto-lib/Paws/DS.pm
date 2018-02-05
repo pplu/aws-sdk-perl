@@ -215,6 +215,29 @@ package Paws::DS;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllDomainControllers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDomainControllers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeDomainControllers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DomainControllers }, @{ $next_result->DomainControllers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DomainControllers') foreach (@{ $result->DomainControllers });
+        $result = $self->DescribeDomainControllers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DomainControllers') foreach (@{ $result->DomainControllers });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AddIpRoutes AddTagsToResource CancelSchemaExtension ConnectDirectory CreateAlias CreateComputer CreateConditionalForwarder CreateDirectory CreateMicrosoftAD CreateSnapshot CreateTrust DeleteConditionalForwarder DeleteDirectory DeleteSnapshot DeleteTrust DeregisterEventTopic DescribeConditionalForwarders DescribeDirectories DescribeDomainControllers DescribeEventTopics DescribeSnapshots DescribeTrusts DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits ListIpRoutes ListSchemaExtensions ListTagsForResource RegisterEventTopic RemoveIpRoutes RemoveTagsFromResource RestoreFromSnapshot StartSchemaExtension UpdateConditionalForwarder UpdateNumberOfDomainControllers UpdateRadius VerifyTrust / }
@@ -763,6 +786,18 @@ the AWS cloud and an external domain.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllDomainControllers(sub { },DirectoryId => Str, [DomainControllerIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+=head2 DescribeAllDomainControllers(DirectoryId => Str, [DomainControllerIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DomainControllers, passing the object as the first parameter, and the string 'DomainControllers' as the second parameter 
+
+If not, it will return a a L<Paws::DS::DescribeDomainControllersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 
