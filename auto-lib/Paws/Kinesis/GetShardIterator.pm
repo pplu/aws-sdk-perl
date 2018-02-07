@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ShardId => Str
 
-The shard ID of the Kinesis Streams shard to get the iterator for.
+The shard ID of the Kinesis Data Streams shard to get the iterator for.
 
 
 
@@ -94,7 +94,7 @@ AFTER_SEQUENCE_NUMBER.
 
 =head2 B<REQUIRED> StreamName => Str
 
-The name of the Amazon Kinesis stream.
+The name of the Amazon Kinesis data stream.
 
 
 

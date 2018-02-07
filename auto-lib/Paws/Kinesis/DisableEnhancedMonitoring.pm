@@ -77,16 +77,16 @@ C<ALL>
 
 =back
 
-For more information, see Monitoring the Amazon Kinesis Streams Service
-with Amazon CloudWatch
+For more information, see Monitoring the Amazon Kinesis Data Streams
+Service with Amazon CloudWatch
 (http://docs.aws.amazon.com/kinesis/latest/dev/monitoring-with-cloudwatch.html)
-in the I<Amazon Kinesis Streams Developer Guide>.
+in the I<Amazon Kinesis Data Streams Developer Guide>.
 
 
 
 =head2 B<REQUIRED> StreamName => Str
 
-The name of the Kinesis stream for which to disable enhanced
+The name of the Kinesis data stream for which to disable enhanced
 monitoring.
 
 

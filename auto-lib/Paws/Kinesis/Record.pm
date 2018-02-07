@@ -35,8 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::Re
 
 =head1 DESCRIPTION
 
-The unit of data of the Kinesis stream, which is composed of a sequence
-number, a partition key, and a data blob.
+The unit of data of the Kinesis data stream, which is composed of a
+sequence number, a partition key, and a data blob.
 
 =head1 ATTRIBUTES
 
@@ -49,8 +49,8 @@ number, a partition key, and a data blob.
 =head2 B<REQUIRED> Data => Str
 
   The data blob. The data in the blob is both opaque and immutable to
-Kinesis Streams, which does not inspect, interpret, or change the data
-in the blob in any way. When the data blob (the payload before
+Kinesis Data Streams, which does not inspect, interpret, or change the
+data in the blob in any way. When the data blob (the payload before
 base64-encoding) is added to the partition key size, the total size
 must not exceed the maximum record size (1 MB).
 
@@ -69,7 +69,7 @@ C<NONE>: Do not encrypt the records in the stream.
 =item *
 
 C<KMS>: Use server-side encryption on the records in the stream using a
-customer-managed KMS key.
+customer-managed AWS KMS key.
 
 =back
 

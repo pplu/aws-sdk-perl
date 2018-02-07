@@ -69,11 +69,11 @@ C<NONE>
 
 =head2 KeyId => Str
 
-  The GUID for the customer-managed KMS key to use for encryption. This
-value can be a globally unique identifier, a fully specified ARN to
-either an alias or a key, or an alias name prefixed by "alias/".You can
-also use a master key owned by Kinesis Streams by specifying the alias
-C<aws/kinesis>.
+  The GUID for the customer-managed AWS KMS key to use for encryption.
+This value can be a globally unique identifier, a fully specified ARN
+to either an alias or a key, or an alias name prefixed by "alias/".You
+can also use a master key owned by Kinesis Data Streams by specifying
+the alias C<aws/kinesis>.
 
 =over
 
@@ -97,7 +97,7 @@ Alias name example: C<alias/MyAliasName>
 
 =item *
 
-Master key owned by Kinesis: C<alias/aws/kinesis>
+Master key owned by Kinesis Data Streams: C<alias/aws/kinesis>
 
 =back
 
@@ -137,13 +137,14 @@ one of the following states:
 
 =item *
 
-C<CREATING> - The stream is being created. Kinesis Streams immediately
-returns and sets C<StreamStatus> to C<CREATING>.
+C<CREATING> - The stream is being created. Kinesis Data Streams
+immediately returns and sets C<StreamStatus> to C<CREATING>.
 
 =item *
 
 C<DELETING> - The stream is being deleted. The specified stream is in
-the C<DELETING> state until Kinesis Streams completes the deletion.
+the C<DELETING> state until Kinesis Data Streams completes the
+deletion.
 
 =item *
 
