@@ -26,7 +26,7 @@ The ID of the patch baseline that should be used for the patch group.
 The operating system rule specified for patch groups using the patch
 baseline.
 
-Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">
+Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">, C<"SUSE">
 =head2 PatchGroup => Str
 
 The name of the patch group.

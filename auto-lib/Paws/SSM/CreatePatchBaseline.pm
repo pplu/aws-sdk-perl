@@ -4,12 +4,14 @@ package Paws::SSM::CreatePatchBaseline;
   has ApprovalRules => (is => 'ro', isa => 'Paws::SSM::PatchRuleGroup');
   has ApprovedPatches => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ApprovedPatchesComplianceLevel => (is => 'ro', isa => 'Str');
+  has ApprovedPatchesEnableNonSecurity => (is => 'ro', isa => 'Bool');
   has ClientToken => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has GlobalFilters => (is => 'ro', isa => 'Paws::SSM::PatchFilterGroup');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has OperatingSystem => (is => 'ro', isa => 'Str');
   has RejectedPatches => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Sources => (is => 'ro', isa => 'ArrayRef[Paws::SSM::PatchSource]');
 
   use MooseX::ClassAttribute;
 
@@ -63,6 +65,14 @@ default value is UNSPECIFIED.
 
 Valid values are: C<"CRITICAL">, C<"HIGH">, C<"MEDIUM">, C<"LOW">, C<"INFORMATIONAL">, C<"UNSPECIFIED">
 
+=head2 ApprovedPatchesEnableNonSecurity => Bool
+
+Indicates whether the list of approved patches includes non-security
+updates that should be applied to the instances. The default value is
+'false'. Applies to Linux instances only.
+
+
+
 =head2 ClientToken => Str
 
 User-provided idempotency token.
@@ -92,11 +102,19 @@ The name of the patch baseline.
 Defines the operating system the patch baseline applies to. The Default
 value is WINDOWS.
 
-Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">
+Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">, C<"SUSE">
 
 =head2 RejectedPatches => ArrayRef[Str|Undef]
 
 A list of explicitly rejected patches for the baseline.
+
+
+
+=head2 Sources => ArrayRef[L<Paws::SSM::PatchSource>]
+
+Information about the patches to use to update the instances, including
+target operating systems and source repositories. Applies to Linux
+instances only.
 
 
 

@@ -876,7 +876,7 @@ Returns: a L<Paws::SSM::CreateMaintenanceWindowResult> instance
 Creates a new Maintenance Window.
 
 
-=head2 CreatePatchBaseline(Name => Str, [ApprovalRules => L<Paws::SSM::PatchRuleGroup>, ApprovedPatches => ArrayRef[Str|Undef], ApprovedPatchesComplianceLevel => Str, ClientToken => Str, Description => Str, GlobalFilters => L<Paws::SSM::PatchFilterGroup>, OperatingSystem => Str, RejectedPatches => ArrayRef[Str|Undef]])
+=head2 CreatePatchBaseline(Name => Str, [ApprovalRules => L<Paws::SSM::PatchRuleGroup>, ApprovedPatches => ArrayRef[Str|Undef], ApprovedPatchesComplianceLevel => Str, ApprovedPatchesEnableNonSecurity => Bool, ClientToken => Str, Description => Str, GlobalFilters => L<Paws::SSM::PatchFilterGroup>, OperatingSystem => Str, RejectedPatches => ArrayRef[Str|Undef], Sources => ArrayRef[L<Paws::SSM::PatchSource>]])
 
 Each argument is described in detail in: L<Paws::SSM::CreatePatchBaseline>
 
@@ -1924,7 +1924,7 @@ Assigns or changes an Amazon Identity and Access Management (IAM) role
 to the managed instance.
 
 
-=head2 UpdatePatchBaseline(BaselineId => Str, [ApprovalRules => L<Paws::SSM::PatchRuleGroup>, ApprovedPatches => ArrayRef[Str|Undef], ApprovedPatchesComplianceLevel => Str, Description => Str, GlobalFilters => L<Paws::SSM::PatchFilterGroup>, Name => Str, RejectedPatches => ArrayRef[Str|Undef]])
+=head2 UpdatePatchBaseline(BaselineId => Str, [ApprovalRules => L<Paws::SSM::PatchRuleGroup>, ApprovedPatches => ArrayRef[Str|Undef], ApprovedPatchesComplianceLevel => Str, ApprovedPatchesEnableNonSecurity => Bool, Description => Str, GlobalFilters => L<Paws::SSM::PatchFilterGroup>, Name => Str, RejectedPatches => ArrayRef[Str|Undef], Replace => Bool, Sources => ArrayRef[L<Paws::SSM::PatchSource>]])
 
 Each argument is described in detail in: L<Paws::SSM::UpdatePatchBaseline>
 

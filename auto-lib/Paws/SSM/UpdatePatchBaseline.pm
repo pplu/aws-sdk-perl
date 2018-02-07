@@ -4,11 +4,14 @@ package Paws::SSM::UpdatePatchBaseline;
   has ApprovalRules => (is => 'ro', isa => 'Paws::SSM::PatchRuleGroup');
   has ApprovedPatches => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ApprovedPatchesComplianceLevel => (is => 'ro', isa => 'Str');
+  has ApprovedPatchesEnableNonSecurity => (is => 'ro', isa => 'Bool');
   has BaselineId => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
   has GlobalFilters => (is => 'ro', isa => 'Paws::SSM::PatchFilterGroup');
   has Name => (is => 'ro', isa => 'Str');
   has RejectedPatches => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Replace => (is => 'ro', isa => 'Bool');
+  has Sources => (is => 'ro', isa => 'ArrayRef[Paws::SSM::PatchSource]');
 
   use MooseX::ClassAttribute;
 
@@ -58,6 +61,14 @@ Assigns a new compliance severity level to an existing patch baseline.
 
 Valid values are: C<"CRITICAL">, C<"HIGH">, C<"MEDIUM">, C<"LOW">, C<"INFORMATIONAL">, C<"UNSPECIFIED">
 
+=head2 ApprovedPatchesEnableNonSecurity => Bool
+
+Indicates whether the list of approved patches includes non-security
+updates that should be applied to the instances. The default value is
+'false'. Applies to Linux instances only.
+
+
+
 =head2 B<REQUIRED> BaselineId => Str
 
 The ID of the patch baseline to update.
@@ -85,6 +96,22 @@ The name of the patch baseline.
 =head2 RejectedPatches => ArrayRef[Str|Undef]
 
 A list of explicitly rejected patches for the baseline.
+
+
+
+=head2 Replace => Bool
+
+If True, then all fields that are required by the CreatePatchBaseline
+action are also required for this API request. Optional fields that are
+not specified are set to null.
+
+
+
+=head2 Sources => ArrayRef[L<Paws::SSM::PatchSource>]
+
+Information about the patches to use to update the instances, including
+target operating systems and source repositories. Applies to Linux
+instances only.
 
 
 

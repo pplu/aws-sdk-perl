@@ -68,6 +68,11 @@ system. The fully qualified name includes the complete hierarchy of the
 parameter path and name. For example:
 C</Dev/DBServer/MySQL/db-string13>
 
+For information about parameter name requirements and restrictions, see
+About Creating Systems Manager Parameters
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-create.html#sysman-paramstore-su-create-about)
+in the I<AWS Systems Manager User Guide>.
+
 The maximum length constraint listed below includes capacity for
 additional system attributes that are not part of the name. The maximum
 length for the fully qualified parameter name is 1011 characters.

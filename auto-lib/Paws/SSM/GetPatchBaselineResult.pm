@@ -4,6 +4,7 @@ package Paws::SSM::GetPatchBaselineResult;
   has ApprovalRules => (is => 'ro', isa => 'Paws::SSM::PatchRuleGroup');
   has ApprovedPatches => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ApprovedPatchesComplianceLevel => (is => 'ro', isa => 'Str');
+  has ApprovedPatchesEnableNonSecurity => (is => 'ro', isa => 'Bool');
   has BaselineId => (is => 'ro', isa => 'Str');
   has CreatedDate => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -13,6 +14,7 @@ package Paws::SSM::GetPatchBaselineResult;
   has OperatingSystem => (is => 'ro', isa => 'Str');
   has PatchGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RejectedPatches => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Sources => (is => 'ro', isa => 'ArrayRef[Paws::SSM::PatchSource]');
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -41,6 +43,13 @@ Returns the specified compliance severity level for approved patches in
 the patch baseline.
 
 Valid values are: C<"CRITICAL">, C<"HIGH">, C<"MEDIUM">, C<"LOW">, C<"INFORMATIONAL">, C<"UNSPECIFIED">
+=head2 ApprovedPatchesEnableNonSecurity => Bool
+
+Indicates whether the list of approved patches includes non-security
+updates that should be applied to the instances. The default value is
+'false'. Applies to Linux instances only.
+
+
 =head2 BaselineId => Str
 
 The ID of the retrieved patch baseline.
@@ -75,7 +84,7 @@ The name of the patch baseline.
 
 Returns the operating system specified for the patch baseline.
 
-Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">
+Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">, C<"SUSE">
 =head2 PatchGroups => ArrayRef[Str|Undef]
 
 Patch groups included in the patch baseline.
@@ -84,6 +93,13 @@ Patch groups included in the patch baseline.
 =head2 RejectedPatches => ArrayRef[Str|Undef]
 
 A list of explicitly rejected patches for the baseline.
+
+
+=head2 Sources => ArrayRef[L<Paws::SSM::PatchSource>]
+
+Information about the patches to use to update the instances, including
+target operating systems and source repositories. Applies to Linux
+instances only.
 
 
 =head2 _request_id => Str

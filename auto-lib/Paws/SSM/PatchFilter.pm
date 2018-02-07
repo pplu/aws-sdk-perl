@@ -453,6 +453,116 @@ C<Low>
 
 =back
 
+B<SUSE Linux Enterprise Server (SUSE) Operating Systems>
+
+The supported keys for SUSE operating systems are C<PRODUCT>,
+C<CLASSIFICATION>, and C<SEVERITY>. See the following lists for valid
+values for each of these keys.
+
+I<Supported key:> C<PRODUCT>
+
+I<Supported values:>
+
+=over
+
+=item *
+
+C<Suse12.0>
+
+=item *
+
+C<Suse12.1>
+
+=item *
+
+C<Suse12.2>
+
+=item *
+
+C<Suse12.3>
+
+=item *
+
+C<Suse12.4>
+
+=item *
+
+C<Suse12.5>
+
+=item *
+
+C<Suse12.6>
+
+=item *
+
+C<Suse12.7>
+
+=item *
+
+C<Suse12.8>
+
+=item *
+
+C<Suse12.9>
+
+=back
+
+I<Supported key:> C<CLASSIFICATION>
+
+I<Supported values:>
+
+=over
+
+=item *
+
+C<Security>
+
+=item *
+
+C<Recommended>
+
+=item *
+
+C<Optional>
+
+=item *
+
+C<Feature>
+
+=item *
+
+C<Document>
+
+=item *
+
+C<Yast>
+
+=back
+
+I<Supported key:> C<SEVERITY>
+
+I<Supported values:>
+
+=over
+
+=item *
+
+C<Critical>
+
+=item *
+
+C<Important>
+
+=item *
+
+C<Moderate>
+
+=item *
+
+C<Low>
+
+=back
+
 
 =head1 ATTRIBUTES
 

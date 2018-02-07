@@ -61,6 +61,26 @@ Valid values are: C<"Command">, C<"Policy">, C<"Automation">
 
 A name for the Systems Manager document.
 
+Do not use the following to begin the names of documents you create.
+They are reserved by AWS for use as document prefixes:
+
+=over
+
+=item *
+
+C<aws>
+
+=item *
+
+C<amazon>
+
+=item *
+
+C<amzn>
+
+=back
+
+
 
 
 =head2 TargetType => Str
