@@ -105,7 +105,7 @@ The new parameters.
 =head2 B<REQUIRED> UpdateToken => Str
 
 The idempotency token that uniquely identifies the provisioning update
-rquest.
+request.
 
 
 

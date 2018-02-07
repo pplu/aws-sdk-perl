@@ -32,9 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-Information about a tag. A tag is a key-value pair. Tags are entirely
-discretionary and are propagated to the resources created when
-provisioning a product.
+Information about a tag. A tag is a key-value pair. Tags are propagated
+to the resources created when provisioning a product.
 
 =head1 ATTRIBUTES
 

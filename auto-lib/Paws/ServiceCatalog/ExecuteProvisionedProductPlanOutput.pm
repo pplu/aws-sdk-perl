@@ -1,5 +1,5 @@
 
-package Paws::ServiceCatalog::ProvisionProductOutput;
+package Paws::ServiceCatalog::ExecuteProvisionedProductPlanOutput;
   use Moose;
   has RecordDetail => (is => 'ro', isa => 'Paws::ServiceCatalog::RecordDetail');
 
@@ -9,7 +9,7 @@ package Paws::ServiceCatalog::ProvisionProductOutput;
 
 =head1 NAME
 
-Paws::ServiceCatalog::ProvisionProductOutput
+Paws::ServiceCatalog::ExecuteProvisionedProductPlanOutput
 
 =head1 ATTRIBUTES
 

@@ -131,7 +131,7 @@ The contact URL for product support.
 
 =head2 Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
 
-The tags to associate with the product.
+One or more tags.
 
 
 

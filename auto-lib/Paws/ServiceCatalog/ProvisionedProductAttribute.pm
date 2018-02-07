@@ -1,4 +1,4 @@
-package Paws::ServiceCatalog::ProvisionedProductDetail;
+package Paws::ServiceCatalog::ProvisionedProductAttribute;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
   has CreatedTime => (is => 'ro', isa => 'Str');
@@ -6,16 +6,22 @@ package Paws::ServiceCatalog::ProvisionedProductDetail;
   has IdempotencyToken => (is => 'ro', isa => 'Str');
   has LastRecordId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has PhysicalId => (is => 'ro', isa => 'Str');
+  has ProductId => (is => 'ro', isa => 'Str');
+  has ProvisioningArtifactId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StatusMessage => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::Tag]');
   has Type => (is => 'ro', isa => 'Str');
+  has UserArn => (is => 'ro', isa => 'Str');
+  has UserArnSession => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ServiceCatalog::ProvisionedProductDetail
+Paws::ServiceCatalog::ProvisionedProductAttribute
 
 =head1 USAGE
 
@@ -26,13 +32,13 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::ServiceCatalog::ProvisionedProductDetail object:
+As an example, if Att1 is expected to be a Paws::ServiceCatalog::ProvisionedProductAttribute object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., UserArnSession => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCatalog::ProvisionedProductDetail object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCatalog::ProvisionedProductAttribute object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Arn
@@ -77,6 +83,22 @@ product.
   The user-friendly name of the provisioned product.
 
 
+=head2 PhysicalId => Str
+
+  The assigned identifier for the resource, such as an EC2 instance ID or
+an S3 bucket name.
+
+
+=head2 ProductId => Str
+
+  The product identifier.
+
+
+=head2 ProvisioningArtifactId => Str
+
+  The identifier of the provisioning artifact.
+
+
 =head2 Status => Str
 
   The current status of the provisioned product.
@@ -116,9 +138,25 @@ parameter value that was not valid and could not launch the stack.
   The current status message of the provisioned product.
 
 
+=head2 Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
+
+  One or more tags.
+
+
 =head2 Type => Str
 
   The type of provisioned product. The supported value is C<CFN_STACK>.
+
+
+=head2 UserArn => Str
+
+  The Amazon Resource Name (ARN) of the IAM user.
+
+
+=head2 UserArnSession => Str
+
+  The ARN of the IAM user in the session. This ARN might contain a
+session ID.
 
 
 

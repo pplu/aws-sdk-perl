@@ -1,14 +1,19 @@
-package Paws::ServiceCatalog::RecordTag;
+package Paws::ServiceCatalog::ProvisionedProductFilters;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Str');
+  with 'Paws::API::MapParser';
+
+  use MooseX::ClassAttribute;
+  class_has xml_keys =>(is => 'ro', default => 'key');
+  class_has xml_values =>(is => 'ro', default => 'value');
+
+  has SearchQuery => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ServiceCatalog::RecordTag
+Paws::ServiceCatalog::ProvisionedProductFilters
 
 =head1 USAGE
 
@@ -19,32 +24,25 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::ServiceCatalog::RecordTag object:
+As an example, if Att1 is expected to be a Paws::ServiceCatalog::ProvisionedProductFilters object:
 
-  $service_obj->Method(Att1 => { Key => $value, ..., Value => $value  });
+  $service_obj->Method(Att1 => { SearchQuery => $value, ..., SearchQuery => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCatalog::RecordTag object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCatalog::ProvisionedProductFilters object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Key
+  $result->Att1->SearchQuery
 
 =head1 DESCRIPTION
 
-Information about a tag, which is a key-value pair.
+This class has no description
 
 =head1 ATTRIBUTES
 
 
-=head2 Key => Str
-
-  The key for this tag.
-
-
-=head2 Value => Str
-
-  The value for this tag.
+=head2 SearchQuery => ArrayRef[Str|Undef]
 
 
 

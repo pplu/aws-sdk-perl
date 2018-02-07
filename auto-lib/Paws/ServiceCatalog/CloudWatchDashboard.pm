@@ -1,14 +1,13 @@
-package Paws::ServiceCatalog::RecordTag;
+package Paws::ServiceCatalog::CloudWatchDashboard;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ServiceCatalog::RecordTag
+Paws::ServiceCatalog::CloudWatchDashboard
 
 =head1 USAGE
 
@@ -19,32 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::ServiceCatalog::RecordTag object:
+As an example, if Att1 is expected to be a Paws::ServiceCatalog::CloudWatchDashboard object:
 
-  $service_obj->Method(Att1 => { Key => $value, ..., Value => $value  });
+  $service_obj->Method(Att1 => { Name => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCatalog::RecordTag object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCatalog::CloudWatchDashboard object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Key
+  $result->Att1->Name
 
 =head1 DESCRIPTION
 
-Information about a tag, which is a key-value pair.
+Information about a CloudWatch dashboard.
 
 =head1 ATTRIBUTES
 
 
-=head2 Key => Str
+=head2 Name => Str
 
-  The key for this tag.
-
-
-=head2 Value => Str
-
-  The value for this tag.
+  The name of the CloudWatch dashboard.
 
 
 

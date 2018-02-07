@@ -89,7 +89,7 @@ The name of the portfolio provider.
 
 =head2 Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
 
-The tags to associate with the portfolio.
+One or more tags.
 
 
 

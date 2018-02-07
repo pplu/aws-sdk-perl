@@ -59,6 +59,11 @@ package Paws::ServiceCatalog;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::CreateProduct', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateProvisionedProductPlan {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::CreateProvisionedProductPlan', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateProvisioningArtifact {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::CreateProvisioningArtifact', @_);
@@ -87,6 +92,11 @@ package Paws::ServiceCatalog;
   sub DeleteProduct {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DeleteProduct', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteProvisionedProductPlan {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DeleteProvisionedProductPlan', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteProvisioningArtifact {
@@ -129,6 +139,11 @@ package Paws::ServiceCatalog;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribeProvisionedProduct', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeProvisionedProductPlan {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribeProvisionedProductPlan', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeProvisioningArtifact {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribeProvisioningArtifact', @_);
@@ -164,6 +179,11 @@ package Paws::ServiceCatalog;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DisassociateTagOptionFromResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ExecuteProvisionedProductPlan {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ExecuteProvisionedProductPlan', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListAcceptedPortfolioShares {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ListAcceptedPortfolioShares', @_);
@@ -197,6 +217,11 @@ package Paws::ServiceCatalog;
   sub ListPrincipalsForPortfolio {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ListPrincipalsForPortfolio', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListProvisionedProductPlans {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ListProvisionedProductPlans', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListProvisioningArtifacts {
@@ -242,6 +267,11 @@ package Paws::ServiceCatalog;
   sub SearchProductsAsAdmin {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::SearchProductsAsAdmin', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SearchProvisionedProducts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::SearchProvisionedProducts', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub TerminateProvisionedProduct {
@@ -489,7 +519,7 @@ package Paws::ServiceCatalog;
   }
 
 
-  sub operations { qw/AcceptPortfolioShare AssociatePrincipalWithPortfolio AssociateProductWithPortfolio AssociateTagOptionWithResource CopyProduct CreateConstraint CreatePortfolio CreatePortfolioShare CreateProduct CreateProvisioningArtifact CreateTagOption DeleteConstraint DeletePortfolio DeletePortfolioShare DeleteProduct DeleteProvisioningArtifact DescribeConstraint DescribeCopyProductStatus DescribePortfolio DescribeProduct DescribeProductAsAdmin DescribeProductView DescribeProvisionedProduct DescribeProvisioningArtifact DescribeProvisioningParameters DescribeRecord DescribeTagOption DisassociatePrincipalFromPortfolio DisassociateProductFromPortfolio DisassociateTagOptionFromResource ListAcceptedPortfolioShares ListConstraintsForPortfolio ListLaunchPaths ListPortfolioAccess ListPortfolios ListPortfoliosForProduct ListPrincipalsForPortfolio ListProvisioningArtifacts ListRecordHistory ListResourcesForTagOption ListTagOptions ProvisionProduct RejectPortfolioShare ScanProvisionedProducts SearchProducts SearchProductsAsAdmin TerminateProvisionedProduct UpdateConstraint UpdatePortfolio UpdateProduct UpdateProvisionedProduct UpdateProvisioningArtifact UpdateTagOption / }
+  sub operations { qw/AcceptPortfolioShare AssociatePrincipalWithPortfolio AssociateProductWithPortfolio AssociateTagOptionWithResource CopyProduct CreateConstraint CreatePortfolio CreatePortfolioShare CreateProduct CreateProvisionedProductPlan CreateProvisioningArtifact CreateTagOption DeleteConstraint DeletePortfolio DeletePortfolioShare DeleteProduct DeleteProvisionedProductPlan DeleteProvisioningArtifact DescribeConstraint DescribeCopyProductStatus DescribePortfolio DescribeProduct DescribeProductAsAdmin DescribeProductView DescribeProvisionedProduct DescribeProvisionedProductPlan DescribeProvisioningArtifact DescribeProvisioningParameters DescribeRecord DescribeTagOption DisassociatePrincipalFromPortfolio DisassociateProductFromPortfolio DisassociateTagOptionFromResource ExecuteProvisionedProductPlan ListAcceptedPortfolioShares ListConstraintsForPortfolio ListLaunchPaths ListPortfolioAccess ListPortfolios ListPortfoliosForProduct ListPrincipalsForPortfolio ListProvisionedProductPlans ListProvisioningArtifacts ListRecordHistory ListResourcesForTagOption ListTagOptions ProvisionProduct RejectPortfolioShare ScanProvisionedProducts SearchProducts SearchProductsAsAdmin SearchProvisionedProducts TerminateProvisionedProduct UpdateConstraint UpdatePortfolio UpdateProduct UpdateProvisionedProduct UpdateProvisioningArtifact UpdateTagOption / }
 
 1;
 
@@ -617,6 +647,25 @@ Returns: a L<Paws::ServiceCatalog::CreateProductOutput> instance
 Creates a product.
 
 
+=head2 CreateProvisionedProductPlan(IdempotencyToken => Str, PlanName => Str, PlanType => Str, ProductId => Str, ProvisionedProductName => Str, ProvisioningArtifactId => Str, [AcceptLanguage => Str, NotificationArns => ArrayRef[Str|Undef], PathId => Str, ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::UpdateProvisioningParameter>], Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]])
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::CreateProvisionedProductPlan>
+
+Returns: a L<Paws::ServiceCatalog::CreateProvisionedProductPlanOutput> instance
+
+Creates a plan. A plan includes the list of resources that will be
+created (when provisioning a new product) or modified (when updating a
+provisioned product) when the plan is executed.
+
+You can create one plan per provisioned product. To create a plan for
+an existing provisioned product, it's status must be AVAILBLE or
+TAINTED.
+
+To view the resource changes in the change set, use
+DescribeProvisionedProductPlan. To create or modify the provisioned
+product, use ExecuteProvisionedProductPlan.
+
+
 =head2 CreateProvisioningArtifact(IdempotencyToken => Str, Parameters => L<Paws::ServiceCatalog::ProvisioningArtifactProperties>, ProductId => Str, [AcceptLanguage => Str])
 
 Each argument is described in detail in: L<Paws::ServiceCatalog::CreateProvisioningArtifact>
@@ -679,6 +728,15 @@ Deletes the specified product.
 
 You cannot delete a product if it was shared with you or is associated
 with a portfolio.
+
+
+=head2 DeleteProvisionedProductPlan(PlanId => Str, [AcceptLanguage => Str, IgnoreErrors => Bool])
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::DeleteProvisionedProductPlan>
+
+Returns: a L<Paws::ServiceCatalog::DeleteProvisionedProductPlanOutput> instance
+
+Deletes the specified plan.
 
 
 =head2 DeleteProvisioningArtifact(ProductId => Str, ProvisioningArtifactId => Str, [AcceptLanguage => Str])
@@ -760,6 +818,15 @@ Returns: a L<Paws::ServiceCatalog::DescribeProvisionedProductOutput> instance
 Gets information about the specified provisioned product.
 
 
+=head2 DescribeProvisionedProductPlan(PlanId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeProvisionedProductPlan>
+
+Returns: a L<Paws::ServiceCatalog::DescribeProvisionedProductPlanOutput> instance
+
+Gets information about the resource changes for the specified plan.
+
+
 =head2 DescribeProvisioningArtifact(ProductId => Str, ProvisioningArtifactId => Str, [AcceptLanguage => Str, Verbose => Bool])
 
 Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeProvisioningArtifact>
@@ -783,10 +850,9 @@ If the output contains a TagOption key with an empty list of values,
 there is a TagOption conflict for that key. The end user cannot take
 action to fix the conflict, and launch is not blocked. In subsequent
 calls to ProvisionProduct, do not include conflicted TagOption keys as
-tags, or this will cause the error "Parameter validation failed:
-Missing required parameter in Tags[I<N>]:I<Value>" and tag the
-provisioned product with the value
-C<sc-tagoption-conflict-portfolioId-productId>.
+tags, or this causes the error "Parameter validation failed: Missing
+required parameter in Tags[I<N>]:I<Value>". Tag the provisioned product
+with the value C<sc-tagoption-conflict-portfolioId-productId>.
 
 
 =head2 DescribeRecord(Id => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
@@ -837,6 +903,16 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DisassociateTag
 Returns: a L<Paws::ServiceCatalog::DisassociateTagOptionFromResourceOutput> instance
 
 Disassociates the specified TagOption from the specified resource.
+
+
+=head2 ExecuteProvisionedProductPlan(IdempotencyToken => Str, PlanId => Str, [AcceptLanguage => Str])
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::ExecuteProvisionedProductPlan>
+
+Returns: a L<Paws::ServiceCatalog::ExecuteProvisionedProductPlanOutput> instance
+
+Provisions or modifies a product based on the resource changes for the
+specified plan.
 
 
 =head2 ListAcceptedPortfolioShares([AcceptLanguage => Str, PageSize => Int, PageToken => Str])
@@ -904,6 +980,16 @@ Returns: a L<Paws::ServiceCatalog::ListPrincipalsForPortfolioOutput> instance
 Lists all principal ARNs associated with the specified portfolio.
 
 
+=head2 ListProvisionedProductPlans([AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str, ProvisionProductId => Str])
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::ListProvisionedProductPlans>
+
+Returns: a L<Paws::ServiceCatalog::ListProvisionedProductPlansOutput> instance
+
+Lists the plans for the specified provisioned product or all plans the
+user has access to.
+
+
 =head2 ListProvisioningArtifacts(ProductId => Str, [AcceptLanguage => Str])
 
 Each argument is described in detail in: L<Paws::ServiceCatalog::ListProvisioningArtifacts>
@@ -956,8 +1042,8 @@ check the status of this request using DescribeRecord.
 
 If the request contains a tag key with an empty list of values, there
 is a tag conflict for that key. Do not include conflicted keys as tags,
-or this will cause the error "Parameter validation failed: Missing
-required parameter in Tags[I<N>]:I<Value>".
+or this causes the error "Parameter validation failed: Missing required
+parameter in Tags[I<N>]:I<Value>".
 
 
 =head2 RejectPortfolioShare(PortfolioId => Str, [AcceptLanguage => Str])
@@ -977,6 +1063,8 @@ Returns: a L<Paws::ServiceCatalog::ScanProvisionedProductsOutput> instance
 
 Lists the provisioned products that are available (not terminated).
 
+To use additional filtering, see SearchProvisionedProducts.
+
 
 =head2 SearchProducts([AcceptLanguage => Str, Filters => L<Paws::ServiceCatalog::ProductViewFilters>, PageSize => Int, PageToken => Str, SortBy => Str, SortOrder => Str])
 
@@ -995,6 +1083,16 @@ Returns: a L<Paws::ServiceCatalog::SearchProductsAsAdminOutput> instance
 
 Gets information about the products for the specified portfolio or all
 products.
+
+
+=head2 SearchProvisionedProducts([AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, Filters => L<Paws::ServiceCatalog::ProvisionedProductFilters>, PageSize => Int, PageToken => Str, SortBy => Str, SortOrder => Str])
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::SearchProvisionedProducts>
+
+Returns: a L<Paws::ServiceCatalog::SearchProvisionedProductsOutput> instance
+
+Gets information about the provisioned products that meet the specified
+criteria.
 
 
 =head2 TerminateProvisionedProduct(TerminateToken => Str, [AcceptLanguage => Str, IgnoreErrors => Bool, ProvisionedProductId => Str, ProvisionedProductName => Str])

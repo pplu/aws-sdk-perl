@@ -41,7 +41,7 @@ Information about a product view.
 
 =head2 CreatedTime => Str
 
-  The UTC timestamp of the creation time.
+  The UTC time stamp of the creation time.
 
 
 =head2 ProductARN => Str
