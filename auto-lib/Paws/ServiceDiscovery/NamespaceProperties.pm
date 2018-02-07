@@ -39,8 +39,8 @@ namespace type.
 
 =head2 DnsProperties => L<Paws::ServiceDiscovery::DnsProperties>
 
-  A complex type that contains the ID for the hosted zone that Amazon
-Route 53 creates when you create a namespace.
+  A complex type that contains the ID for the hosted zone that Route 53
+creates when you create a namespace.
 
 
 

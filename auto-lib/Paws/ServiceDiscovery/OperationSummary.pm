@@ -56,7 +56,7 @@ request.
 
 =item *
 
-B<PENDING>: Amazon Route 53 is performing the operation.
+B<PENDING>: Route 53 is performing the operation.
 
 =item *
 

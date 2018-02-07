@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The maximum number of instances that you want Amazon Route 53 to return
 in the response to a C<ListInstances> request. If you don't specify a
-value for C<MaxResults>, Amazon Route 53 returns up to 100 instances.
+value for C<MaxResults>, Route 53 returns up to 100 instances.
 
 
 

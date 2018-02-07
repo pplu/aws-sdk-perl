@@ -222,11 +222,11 @@ Paws::ServiceDiscovery - Perl Interface to AWS Amazon Route 53 Auto Naming
 
 =head1 DESCRIPTION
 
-Amazon Route 53 autonaming lets you configure public or private
+Amazon Route 53 auto naming lets you configure public or private
 namespaces that your microservice applications run in. When instances
-of the service become available, you can call the autonaming API to
-register the instance, and Amazon Route 53 automatically creates up to
-five DNS records and an optional health check. Clients that submit DNS
+of the service become available, you can call the auto naming API to
+register the instance, and Route 53 automatically creates up to five
+DNS records and an optional health check. Clients that submit DNS
 queries for the service receive an answer that contains up to eight
 healthy records.
 
@@ -266,13 +266,14 @@ Each argument is described in detail in: L<Paws::ServiceDiscovery::CreateService
 
 Returns: a L<Paws::ServiceDiscovery::CreateServiceResponse> instance
 
-Creates a service, which defines a template for the following entities:
+Creates a service, which defines the configuration for the following
+entities:
 
 =over
 
 =item *
 
-One to five resource record sets
+Up to three records (A, AAAA, and SRV) or one CNAME record
 
 =item *
 
@@ -281,8 +282,8 @@ Optionally, a health check
 =back
 
 After you create the service, you can submit a RegisterInstance
-request, and Amazon Route 53 uses the values in the template to create
-the specified entities.
+request, and Amazon Route 53 uses the values in the configuration to
+create the specified entities.
 
 
 =head2 DeleteNamespace(Id => Str)
@@ -311,8 +312,8 @@ Each argument is described in detail in: L<Paws::ServiceDiscovery::DeregisterIns
 
 Returns: a L<Paws::ServiceDiscovery::DeregisterInstanceResponse> instance
 
-Deletes the resource record sets and the health check, if any, that
-Amazon Route 53 created for the specified instance.
+Deletes the records and the health check, if any, that Amazon Route 53
+created for the specified instance.
 
 
 =head2 GetInstance(InstanceId => Str, ServiceId => Str)
@@ -334,6 +335,9 @@ Gets the current health status (C<Healthy>, C<Unhealthy>, or
 C<Unknown>) of one or more instances that are associated with a
 specified service.
 
+There is a brief delay between when you register an instance and when
+the health status for the instance is available.
+
 
 =head2 GetNamespace(Id => Str)
 
@@ -351,8 +355,10 @@ Each argument is described in detail in: L<Paws::ServiceDiscovery::GetOperation>
 Returns: a L<Paws::ServiceDiscovery::GetOperationResponse> instance
 
 Gets information about any operation that returns an operation ID in
-the response, such as a C<CreateService> request. To get a list of
-operations that match specified criteria, see ListOperations.
+the response, such as a C<CreateService> request.
+
+To get a list of operations that match specified criteria, see
+ListOperations.
 
 
 =head2 GetService(Id => Str)
@@ -370,8 +376,8 @@ Each argument is described in detail in: L<Paws::ServiceDiscovery::ListInstances
 
 Returns: a L<Paws::ServiceDiscovery::ListInstancesResponse> instance
 
-Gets summary information about the instances that you created by using
-a specified service.
+Lists summary information about the instances that you registered by
+using a specified service.
 
 
 =head2 ListNamespaces([Filters => ArrayRef[L<Paws::ServiceDiscovery::NamespaceFilter>], MaxResults => Int, NextToken => Str])
@@ -380,8 +386,8 @@ Each argument is described in detail in: L<Paws::ServiceDiscovery::ListNamespace
 
 Returns: a L<Paws::ServiceDiscovery::ListNamespacesResponse> instance
 
-Gets information about the namespaces that were created by the current
-AWS account.
+Lists summary information about the namespaces that were created by the
+current AWS account.
 
 
 =head2 ListOperations([Filters => ArrayRef[L<Paws::ServiceDiscovery::OperationFilter>], MaxResults => Int, NextToken => Str])
@@ -399,8 +405,8 @@ Each argument is described in detail in: L<Paws::ServiceDiscovery::ListServices>
 
 Returns: a L<Paws::ServiceDiscovery::ListServicesResponse> instance
 
-Gets settings for all the services that are associated with one or more
-specified namespaces.
+Lists summary information for all the services that are associated with
+one or more specified namespaces.
 
 
 =head2 RegisterInstance(Attributes => L<Paws::ServiceDiscovery::Attributes>, InstanceId => Str, ServiceId => Str, [CreatorRequestId => Str])
@@ -409,7 +415,7 @@ Each argument is described in detail in: L<Paws::ServiceDiscovery::RegisterInsta
 
 Returns: a L<Paws::ServiceDiscovery::RegisterInstanceResponse> instance
 
-Creates one or more resource record sets and optionally a health check
+Creates or updates one or more records and optionally a health check
 based on the settings in a specified service. When you submit a
 C<RegisterInstance> request, Amazon Route 53 does the following:
 
@@ -417,34 +423,34 @@ C<RegisterInstance> request, Amazon Route 53 does the following:
 
 =item *
 
-Creates a resource record set for each resource record set template in
-the service
+For each DNS record that you define in the service specified by
+C<ServiceId>, creates or updates a record in the hosted zone that is
+associated with the corresponding namespace
 
 =item *
 
-Creates a health check based on the settings in the health check
-template in the service, if any
+Creates or updates a health check based on the settings in the health
+check configuration, if any, for the service
 
 =item *
 
-Associates the health check, if any, with each of the resource record
-sets
+Associates the health check, if any, with each of the records
 
 =back
 
 One C<RegisterInstance> request must complete before you can submit
-another request and specify the same service and instance ID.
+another request and specify the same service ID and instance ID.
 
 For more information, see CreateService.
 
-When Amazon Route 53 receives a DNS query for the specified DNS name,
-it returns the applicable value:
+When Route 53 receives a DNS query for the specified DNS name, it
+returns the applicable value:
 
 =over
 
 =item *
 
-B<If the health check is healthy>: returns all the resource record sets
+B<If the health check is healthy>: returns all the records
 
 =item *
 
@@ -453,8 +459,8 @@ healthy instance
 
 =item *
 
-B<If you didn't specify a health check template>: returns all the
-resource record sets
+B<If you didn't specify a health check configuration>: returns all the
+records
 
 =back
 
@@ -466,15 +472,34 @@ Each argument is described in detail in: L<Paws::ServiceDiscovery::UpdateService
 
 Returns: a L<Paws::ServiceDiscovery::UpdateServiceResponse> instance
 
-Updates the TTL setting for a specified service. You must specify all
-the resource record set templates (and, optionally, a health check
-template) that you want to appear in the updated service. Any current
-resource record set templates (or health check template) that don't
-appear in an C<UpdateService> request are deleted.
+Submits a request to perform the following operations:
+
+=over
+
+=item *
+
+Add or delete C<DnsRecords> configurations
+
+=item *
+
+Update the TTL setting for existing C<DnsRecords> configurations
+
+=item *
+
+Add, update, or delete C<HealthCheckConfig> for a specified service
+
+=item *
+
+=back
+
+You must specify all C<DnsRecords> configurations (and, optionally,
+C<HealthCheckConfig>) that you want to appear in the updated service.
+Any current configurations that don't appear in an C<UpdateService>
+request are deleted.
 
 When you update the TTL setting for a service, Amazon Route 53 also
-updates the corresponding settings in all the resource record sets and
-health checks that were created by using the specified service.
+updates the corresponding settings in all the records and health checks
+that were created by using the specified service.
 
 
 

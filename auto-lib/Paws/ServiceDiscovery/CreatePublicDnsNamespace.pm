@@ -37,9 +37,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CreatorRequestId => Str
 
-An optional parameter that you can use to resolve concurrent creation
-requests. C<CreatorRequestId> helps to determine if a specific client
-owns the namespace.
+A unique string that identifies the request and that allows failed
+C<CreatePublicDnsNamespace> requests to be retried without the risk of
+executing the operation twice. C<CreatorRequestId> can be any unique
+string, for example, a date/time stamp.
 
 
 

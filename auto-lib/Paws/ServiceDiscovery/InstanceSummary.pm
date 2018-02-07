@@ -33,30 +33,59 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceDisc
 =head1 DESCRIPTION
 
 A complex type that contains information about the instances that you
-created by using a specified service.
+registered by using a specified service.
 
 =head1 ATTRIBUTES
 
 
 =head2 Attributes => L<Paws::ServiceDiscovery::Attributes>
 
-  A string map that contain attribute keys and values for an instance.
+  A string map that contains the following information:
+
+=over
+
+=item *
+
+The attributes that are associate with the instance.
+
+=item *
+
+For each attribute, the applicable value.
+
+=back
+
 Supported attribute keys include the following:
 
 =over
 
 =item *
 
-C<AWS_INSTANCE_PORT>: The port on the endpoint that you want Amazon
-Route 53 to perform health checks on. This value is also used for the
-port value in an SRV record if the service that you specify includes an
-SRV record. For more information, see CreateService.
+C<AWS_ALIAS_DNS_NAME>: For an alias record that routes traffic to an
+Elastic Load Balancing load balancer, the DNS name that is associated
+with the load balancer.
 
 =item *
 
-C<AWS_INSTANCE_IP>: If the service that you specify contains a resource
-record set template for an A or AAAA record, the IP address that you
-want Amazon Route 53 to use for the value of the A record.
+C<AWS_INSTANCE_CNAME>: For a CNAME record, the domain name that Route
+53 returns in response to DNS queries, for example, C<example.com>.
+
+=item *
+
+C<AWS_INSTANCE_IPV4>: For an A record, the IPv4 address that Route 53
+returns in response to DNS queries, for example, C<192.0.2.44>.
+
+=item *
+
+C<AWS_INSTANCE_IPV6>: For an AAAA record, the IPv6 address that Route
+53 returns in response to DNS queries, for example,
+C<2001:0db8:85a3:0000:0000:abcd:0001:2345>.
+
+=item *
+
+C<AWS_INSTANCE_PORT>: For an SRV record, the value that Route 53
+returns for the port. In addition, if the service includes
+C<HealthCheckConfig>, the port on the endpoint that Route 53 sends
+requests to.
 
 =back
 

@@ -39,20 +39,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 Instances => ArrayRef[Str|Undef]
 
 An array that contains the IDs of all the instances that you want to
-get the health status for. To get the IDs for the instances that you've
-created by using a specified service, submit a ListInstances request.
+get the health status for.
 
 If you omit C<Instances>, Amazon Route 53 returns the health status for
 all the instances that are associated with the specified service.
+
+To get the IDs for the instances that you've registered by using a
+specified service, submit a ListInstances request.
 
 
 
 =head2 MaxResults => Int
 
-The maximum number of instances that you want Amazon Route 53 to return
-in the response to a C<GetInstancesHealthStatus> request. If you don't
-specify a value for C<MaxResults>, Amazon Route 53 returns up to 100
-instances.
+The maximum number of instances that you want Route 53 to return in the
+response to a C<GetInstancesHealthStatus> request. If you don't specify
+a value for C<MaxResults>, Route 53 returns up to 100 instances.
 
 
 

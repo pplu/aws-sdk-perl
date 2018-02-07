@@ -41,8 +41,8 @@ A complex type that contains information about a namespace.
 
 =head2 Arn => Str
 
-  The Amazon Resource Name (ARN) that Amazon Route 53 assigns to the
-namespace when you create it.
+  The Amazon Resource Name (ARN) that Route 53 assigns to the namespace
+when you create it.
 
 
 =head2 Id => Str
@@ -52,7 +52,7 @@ namespace when you create it.
 
 =head2 Name => Str
 
-  The name of the namespace. When you create a namespace, Amazon Route 53
+  The name of the namespace. When you create a namespace, Route 53
 automatically creates a hosted zone that has the same name as the
 namespace.
 

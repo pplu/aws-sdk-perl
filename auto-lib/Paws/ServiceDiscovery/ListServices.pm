@@ -49,7 +49,7 @@ filters to be returned by C<ListServices>.
 
 The maximum number of services that you want Amazon Route 53 to return
 in the response to a C<ListServices> request. If you don't specify a
-value for C<MaxResults>, Amazon Route 53 returns up to 100 services.
+value for C<MaxResults>, Route 53 returns up to 100 services.
 
 
 
@@ -57,10 +57,15 @@ value for C<MaxResults>, Amazon Route 53 returns up to 100 services.
 
 For the first C<ListServices> request, omit this value.
 
-If more than C<MaxResults> services match the specified criteria, you
-can submit another C<ListServices> request to get the next group of
-results. Specify the value of C<NextToken> from the previous response
-in the next request.
+If the response contains C<NextToken>, submit another C<ListServices>
+request to get the next group of results. Specify the value of
+C<NextToken> from the previous response in the next request.
+
+Route 53 gets C<MaxResults> services and then filters them based on the
+specified criteria. It's possible that no services in the first
+C<MaxResults> services matched the specified criteria but that
+subsequent groups of C<MaxResults> services do contain services that
+match the criteria.
 
 
 

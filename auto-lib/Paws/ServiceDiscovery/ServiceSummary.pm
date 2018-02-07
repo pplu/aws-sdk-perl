@@ -42,8 +42,8 @@ A complex type that contains information about a specified service.
 
 =head2 Arn => Str
 
-  The Amazon Resource Name (ARN) that Amazon Route 53 assigns to the
-service when you create it.
+  The Amazon Resource Name (ARN) that Route 53 assigns to the service
+when you create it.
 
 
 =head2 Description => Str
@@ -53,8 +53,7 @@ service when you create it.
 
 =head2 Id => Str
 
-  The ID that Amazon Route 53 assigned to the service when you created
-it.
+  The ID that Route 53 assigned to the service when you created it.
 
 
 =head2 InstanceCount => Int

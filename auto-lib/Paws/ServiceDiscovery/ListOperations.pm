@@ -50,7 +50,7 @@ filters to be returned by C<ListOperations>.
 
 The maximum number of items that you want Amazon Route 53 to return in
 the response to a C<ListOperations> request. If you don't specify a
-value for C<MaxResults>, Amazon Route 53 returns up to 100 operations.
+value for C<MaxResults>, Route 53 returns up to 100 operations.
 
 
 
@@ -58,10 +58,15 @@ value for C<MaxResults>, Amazon Route 53 returns up to 100 operations.
 
 For the first C<ListOperations> request, omit this value.
 
-If more than C<MaxResults> operations match the specified criteria, you
-can submit another C<ListOperations> request to get the next group of
-results. Specify the value of C<NextToken> from the previous response
-in the next request.
+If the response contains C<NextToken>, submit another C<ListOperations>
+request to get the next group of results. Specify the value of
+C<NextToken> from the previous response in the next request.
+
+Route 53 gets C<MaxResults> operations and then filters them based on
+the specified criteria. It's possible that no operations in the first
+C<MaxResults> operations matched the specified criteria but that
+subsequent groups of C<MaxResults> operations do contain operations
+that match the criteria.
 
 
 

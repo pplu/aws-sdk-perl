@@ -38,40 +38,119 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Attributes => L<Paws::ServiceDiscovery::Attributes>
 
-A string map that contain attribute keys and values. Supported
-attribute keys include the following:
+A string map that contains the following information for the service
+that you specify in C<ServiceId>:
 
 =over
 
 =item *
 
-C<AWS_INSTANCE_PORT>: The port on the endpoint that you want Amazon
-Route 53 to perform health checks on. This value is also used for the
-port value in an SRV record if the service that you specify includes an
-SRV record. For more information, see CreateService.
+The attributes that apply to the records that are defined in the
+service.
 
 =item *
 
-C<AWS_INSTANCE_IPV4>: If the service that you specify contains a
-resource record set template for an A record, the IPv4 address that you
-want Amazon Route 53 to use for the value of the A record.
-
-=item *
-
-C<AWS_INSTANCE_IPV6>: If the service that you specify contains a
-resource record set template for an AAAA record, the IPv6 address that
-you want Amazon Route 53 to use for the value of the AAAA record.
+For each attribute, the applicable value.
 
 =back
 
+Supported attribute keys include the following:
+
+B<AWS_ALIAS_DNS_NAME>
+
+B<>
+
+If you want Route 53 to create an alias record that routes traffic to
+an Elastic Load Balancing load balancer, specify the DNS name that is
+associated with the load balancer. For information about how to get the
+DNS name, see "DNSName" in the topic AliasTarget
+(http://docs.aws.amazon.com/http:/docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html).
+
+Note the following:
+
+=over
+
+=item *
+
+The configuration for the service that is specified by C<ServiceId>
+must include settings for an A record, an AAAA record, or both.
+
+=item *
+
+In the service that is specified by C<ServiceId>, the value of
+C<RoutingPolicy> must be C<WEIGHTED>.
+
+=item *
+
+If the service that is specified by C<ServiceId> includes
+C<HealthCheckConfig> settings, Route 53 will create the health check,
+but it won't associate the health check with the alias record.
+
+=item *
+
+Auto naming currently doesn't support creating alias records that route
+traffic to AWS resources other than ELB load balancers.
+
+=item *
+
+If you specify a value for C<AWS_ALIAS_DNS_NAME>, don't specify values
+for any of the C<AWS_INSTANCE> attributes.
+
+=back
+
+B<AWS_INSTANCE_CNAME>
+
+If the service configuration includes a CNAME record, the domain name
+that you want Route 53 to return in response to DNS queries, for
+example, C<example.com>.
+
+This value is required if the service specified by C<ServiceId>
+includes settings for an CNAME record.
+
+B<AWS_INSTANCE_IPV4>
+
+If the service configuration includes an A record, the IPv4 address
+that you want Route 53 to return in response to DNS queries, for
+example, C<192.0.2.44>.
+
+This value is required if the service specified by C<ServiceId>
+includes settings for an A record. Either C<AWS_INSTANCE_IPV4> or
+C<AWS_INSTANCE_IPV6> is required if the service includes settings for
+an SRV record.
+
+B<AWS_INSTANCE_IPV6>
+
+If the service configuration includes an AAAA record, the IPv6 address
+that you want Route 53 to return in response to DNS queries, for
+example, C<2001:0db8:85a3:0000:0000:abcd:0001:2345>.
+
+This value is required if the service specified by C<ServiceId>
+includes settings for an AAAA record. Either C<AWS_INSTANCE_IPV4> or
+C<AWS_INSTANCE_IPV6> is required if the service includes settings for
+an SRV record.
+
+B<AWS_INSTANCE_PORT>
+
+If the service includes an SRV record, the value that you want Route 53
+to return for the port.
+
+If the service includes C<HealthCheckConfig>, the port on the endpoint
+that you want Route 53 to send requests to.
+
+This value is required if you specified settings for an SRV record when
+you created the service.
 
 
 
 =head2 CreatorRequestId => Str
 
-An optional parameter that you can use to resolve concurrent creation
-requests. C<CreatorRequestId> helps to determine if a specific client
-owns the namespace.
+A unique string that identifies the request and that allows failed
+C<RegisterInstance> requests to be retried without the risk of
+executing the operation twice. You must use a unique
+C<CreatorRequestId> string every time you submit a C<RegisterInstance>
+request if you're registering additional instances for the same
+namespace and service. C<CreatorRequestId> can be any unique string,
+for example, a date/time stamp.
 
 
 
@@ -84,12 +163,28 @@ following:
 
 =item *
 
+If the service that is specified by C<ServiceId> includes settings for
+an SRV record, the value of C<InstanceId> is automatically included as
+part of the value for the SRV record. For more information, see
+DnsRecord$Type.
+
+=item *
+
 You can use this value to update an existing instance.
 
 =item *
 
 To register a new instance, you must specify a value that is unique
 among instances that you register by using the same service.
+
+=item *
+
+If you specify an existing C<InstanceId> and C<ServiceId>, Route 53
+updates the existing records. If there's also an existing health check,
+Route 53 deletes the old health check and creates a new one.
+
+The health check isn't deleted immediately, so it will still appear for
+a while if you submit a C<ListHealthChecks> request, for example.
 
 =back
 
@@ -98,8 +193,8 @@ among instances that you register by using the same service.
 
 =head2 B<REQUIRED> ServiceId => Str
 
-The ID of the service that you want to use for settings for the
-resource record sets and health check that Amazon Route 53 will create.
+The ID of the service that you want to use for settings for the records
+and health check that Route 53 will create.
 
 
 

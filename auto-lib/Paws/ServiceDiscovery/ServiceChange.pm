@@ -45,8 +45,8 @@ A complex type that contains changes to an existing service.
 
 =head2 B<REQUIRED> DnsConfig => L<Paws::ServiceDiscovery::DnsConfigChange>
 
-  A complex type that contains information about the resource record sets
-that you want Amazon Route 53 to create when you register an instance.
+  A complex type that contains information about the records that you
+want Route 53 to create when you register an instance.
 
 
 =head2 HealthCheckConfig => L<Paws::ServiceDiscovery::HealthCheckConfig>

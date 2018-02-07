@@ -39,9 +39,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CreatorRequestId => Str
 
-An optional parameter that you can use to resolve concurrent creation
-requests. C<CreatorRequestId> helps to determine if a specific client
-owns the namespace.
+A unique string that identifies the request and that allows failed
+C<CreateService> requests to be retried without the risk of executing
+the operation twice. C<CreatorRequestId> can be any unique string, for
+example, a date/time stamp.
 
 
 
@@ -53,8 +54,8 @@ A description for the service.
 
 =head2 B<REQUIRED> DnsConfig => L<Paws::ServiceDiscovery::DnsConfig>
 
-A complex type that contains information about the resource record sets
-that you want Amazon Route 53 to create when you register an instance.
+A complex type that contains information about the records that you
+want Route 53 to create when you register an instance.
 
 
 
@@ -62,22 +63,11 @@ that you want Amazon Route 53 to create when you register an instance.
 
 I<Public DNS namespaces only.> A complex type that contains settings
 for an optional health check. If you specify settings for a health
-check, Amazon Route 53 associates the health check with all the
-resource record sets that you specify in C<DnsConfig>.
+check, Route 53 associates the health check with all the records that
+you specify in C<DnsConfig>.
 
-The health check uses 30 seconds as the request interval. This is the
-number of seconds between the time that each Amazon Route 53 health
-checker gets a response from your endpoint and the time that it sends
-the next health check request. A health checker in each data center
-around the world sends your endpoint a health check request every 30
-seconds. On average, your endpoint receives a health check request
-about every two seconds. Health checkers in different data centers
-don't coordinate with one another, so you'll sometimes see several
-requests per second followed by a few seconds with no health checks at
-all.
-
-For information about the charges for health checks, see Amazon Route
-53 Pricing (http://aws.amazon.com/route53/pricing).
+For information about the charges for health checks, see Route 53
+Pricing (http://aws.amazon.com/route53/pricing).
 
 
 

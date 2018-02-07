@@ -23,10 +23,15 @@ namespace that matches the specified filter criteria.
 
 =head2 NextToken => Str
 
-If more than C<MaxResults> namespaces match the specified criteria, you
-can submit another C<ListNamespaces> request to get the next group of
-results. Specify the value of C<NextToken> from the previous response
-in the next request.
+If the response contains C<NextToken>, submit another C<ListNamespaces>
+request to get the next group of results. Specify the value of
+C<NextToken> from the previous response in the next request.
+
+Route 53 gets C<MaxResults> namespaces and then filters them based on
+the specified criteria. It's possible that no namespaces in the first
+C<MaxResults> namespaces matched the specified criteria but that
+subsequent groups of C<MaxResults> namespaces do contain namespaces
+that match the criteria.
 
 
 =head2 _request_id => Str
