@@ -53,8 +53,8 @@ be up to 253 octets in length.
 
 =head2 DomainValidationOptions => ArrayRef[L<Paws::ACM::DomainValidationOption>]
 
-The domain name that you want ACM to use to send you emails so taht
-your can validate domain ownership.
+The domain name that you want ACM to use to send you emails so that you
+can validate domain ownership.
 
 
 

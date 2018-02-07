@@ -44,25 +44,8 @@ Filter the certificate list by status value.
 
 =head2 Includes => L<Paws::ACM::Filters>
 
-Filter the certificate list by one or more of the following values. For
-more information, see the Filters structure.
-
-=over
-
-=item *
-
-extendedKeyUsage
-
-=item *
-
-keyUsage
-
-=item *
-
-keyTypes
-
-=back
-
+Filter the certificate list. For more information, see the Filters
+structure.
 
 
 

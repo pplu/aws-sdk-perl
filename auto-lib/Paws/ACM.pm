@@ -191,7 +191,7 @@ Returns: a L<Paws::ACM::GetCertificateResponse> instance
 
 Retrieves a certificate specified by an ARN and its certificate chain .
 The chain is an ordered list of certificates that contains the end
-entity ertificate, intermediate certificates of subordinate CAs, and
+entity certificate, intermediate certificates of subordinate CAs, and
 the root certificate in that order. The certificate and certificate
 chain are base64 encoded. If you want to decode the certificate to see
 the individual fields, you can use OpenSSL.
@@ -204,24 +204,22 @@ Each argument is described in detail in: L<Paws::ACM::ImportCertificate>
 Returns: a L<Paws::ACM::ImportCertificateResponse> instance
 
 Imports a certificate into AWS Certificate Manager (ACM) to use with
-services that are integrated with ACM. For more information, see
-Integrated Services
-(http://docs.aws.amazon.com/acm/latest/userguide/acm-services.html).
+services that are integrated with ACM. Note that integrated services
+(http://docs.aws.amazon.com/acm/latest/userguide/acm-services.html)
+allow only certificate types and keys they support to be associated
+with their resources. Further, their support differs depending on
+whether the certificate is imported into IAM or into ACM. For more
+information, see the documentation for each service. For more
+information about importing certificates into ACM, see Importing
+Certificates
+(http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html)
+in the I<AWS Certificate Manager User Guide>.
 
 ACM does not provide managed renewal
 (http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for
 certificates that you import.
 
-For more information about importing certificates into ACM, including
-the differences between certificates that you import and those that ACM
-provides, see Importing Certificates
-(http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html)
-in the I<AWS Certificate Manager User Guide>.
-
-In general, you can import almost any valid certificate. However,
-services integrated with ACM allow only certificate types they support
-to be associated with their resources. The following guidelines are
-also important:
+Note the following guidelines when importing third party certificates:
 
 =over
 
@@ -261,22 +259,22 @@ The C<Issuer> field must not be empty.
 
 =item *
 
-The OCSP authority URL must not exceed 1000 characters.
+The OCSP authority URL, if present, must not exceed 1000 characters.
 
 =item *
 
-To import a new certificate, omit the C<CertificateArn> field. Include
-this field only when you want to replace a previously imported
-certificate.
+To import a new certificate, omit the C<CertificateArn> argument.
+Include this argument only when you want to replace a previously
+imported certificate.
 
 =item *
 
 When you import a certificate by using the CLI or one of the SDKs, you
-must specify the certificate, certificate chain, and private key
-parameters as file names preceded by C<file://>. For example, you can
+must specify the certificate, the certificate chain, and the private
+key by their file names preceded by C<file://>. For example, you can
 specify a certificate saved in the C<C:\temp> folder as
-C<C:\temp\certificate_to_import.pem>. If you are making an HTTP or
-HTTPS Query request, include these parameters as BLOBs.
+C<file://C:\temp\certificate_to_import.pem>. If you are making an HTTP
+or HTTPS Query request, include these arguments as BLOBs.
 
 =back
 
