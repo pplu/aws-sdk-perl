@@ -65,7 +65,7 @@ The description of the environment to create.
 
 =head2 B<REQUIRED> InstanceType => Str
 
-The type of instance to host the environment on (for example,
+The type of instance to connect to the environment (for example,
 C<t2.micro>).
 
 

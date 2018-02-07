@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> EnvironmentIds => ArrayRef[Str|Undef]
 
-The IDs of invidividual environments to get information about.
+The IDs of individual environments to get information about.
 
 
 

@@ -49,7 +49,7 @@ The ID of the environment to change settings.
 
 =head2 Name => Str
 
-Any replacement name for the environment.
+A replacement name for the environment.
 
 
 

@@ -146,15 +146,8 @@ AWS Cloud9
 AWS Cloud9 is a collection of tools that you can use to code, build,
 run, test, debug, and release software in the cloud.
 
-In the background, these tools are available through development
-environments running on Amazon Elastic Compute Cloud (Amazon EC2)
-instances (known as I<Amazon EC2 environments>), your own servers
-(known as I<SSH environments>), or a combination. This enables you to
-create and switch between multiple environments, with each environment
-set up for a specific development project.
-
-For more information about AWS Cloud9, see the I<AWS Cloud9 User
-Guide>.
+For more information about AWS Cloud9, see the AWS Cloud9 User Guide
+(https://docs.aws.amazon.com/cloud9/latest/user-guide).
 
 AWS Cloud9 supports these operations:
 
@@ -163,8 +156,8 @@ AWS Cloud9 supports these operations:
 =item *
 
 C<CreateEnvironmentEC2>: Creates an AWS Cloud9 development environment,
-launches an Amazon EC2 instance, and then hosts the environment on the
-instance.
+launches an Amazon EC2 instance, and then connects from the instance to
+the environment.
 
 =item *
 
@@ -173,8 +166,8 @@ environment.
 
 =item *
 
-C<DeleteEnvironment>: Deletes an environment. If the environment is
-hosted on an Amazon EC2 instance, also terminates the instance.
+C<DeleteEnvironment>: Deletes an environment. If an Amazon EC2 instance
+is connected to the environment, also terminates the instance.
 
 =item *
 
@@ -220,8 +213,8 @@ Each argument is described in detail in: L<Paws::Cloud9::CreateEnvironmentEC2>
 Returns: a L<Paws::Cloud9::CreateEnvironmentEC2Result> instance
 
 Creates an AWS Cloud9 development environment, launches an Amazon
-Elastic Compute Cloud (Amazon EC2) instance, and then hosts the
-environment on the instance.
+Elastic Compute Cloud (Amazon EC2) instance, and then connects from the
+instance to the environment.
 
 
 =head2 CreateEnvironmentMembership(EnvironmentId => Str, Permissions => Str, UserArn => Str)
@@ -239,9 +232,8 @@ Each argument is described in detail in: L<Paws::Cloud9::DeleteEnvironment>
 
 Returns: a L<Paws::Cloud9::DeleteEnvironmentResult> instance
 
-Deletes an AWS Cloud9 development environment. If the environment is
-hosted on an Amazon Elastic Compute Cloud (Amazon EC2) instance, also
-terminates the instance.
+Deletes an AWS Cloud9 development environment. If an Amazon EC2
+instance is connected to the environment, also terminates the instance.
 
 
 =head2 DeleteEnvironmentMembership(EnvironmentId => Str, UserArn => Str)
