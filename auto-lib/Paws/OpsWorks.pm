@@ -174,6 +174,11 @@ package Paws::OpsWorks;
     my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeMyUserProfile', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeOperatingSystems {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeOperatingSystems', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribePermissions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribePermissions', @_);
@@ -405,7 +410,7 @@ package Paws::OpsWorks;
   }
 
 
-  sub operations { qw/AssignInstance AssignVolume AssociateElasticIp AttachElasticLoadBalancer CloneStack CreateApp CreateDeployment CreateInstance CreateLayer CreateStack CreateUserProfile DeleteApp DeleteInstance DeleteLayer DeleteStack DeleteUserProfile DeregisterEcsCluster DeregisterElasticIp DeregisterInstance DeregisterRdsDbInstance DeregisterVolume DescribeAgentVersions DescribeApps DescribeCommands DescribeDeployments DescribeEcsClusters DescribeElasticIps DescribeElasticLoadBalancers DescribeInstances DescribeLayers DescribeLoadBasedAutoScaling DescribeMyUserProfile DescribePermissions DescribeRaidArrays DescribeRdsDbInstances DescribeServiceErrors DescribeStackProvisioningParameters DescribeStacks DescribeStackSummary DescribeTimeBasedAutoScaling DescribeUserProfiles DescribeVolumes DetachElasticLoadBalancer DisassociateElasticIp GetHostnameSuggestion GrantAccess ListTags RebootInstance RegisterEcsCluster RegisterElasticIp RegisterInstance RegisterRdsDbInstance RegisterVolume SetLoadBasedAutoScaling SetPermission SetTimeBasedAutoScaling StartInstance StartStack StopInstance StopStack TagResource UnassignInstance UnassignVolume UntagResource UpdateApp UpdateElasticIp UpdateInstance UpdateLayer UpdateMyUserProfile UpdateRdsDbInstance UpdateStack UpdateUserProfile UpdateVolume / }
+  sub operations { qw/AssignInstance AssignVolume AssociateElasticIp AttachElasticLoadBalancer CloneStack CreateApp CreateDeployment CreateInstance CreateLayer CreateStack CreateUserProfile DeleteApp DeleteInstance DeleteLayer DeleteStack DeleteUserProfile DeregisterEcsCluster DeregisterElasticIp DeregisterInstance DeregisterRdsDbInstance DeregisterVolume DescribeAgentVersions DescribeApps DescribeCommands DescribeDeployments DescribeEcsClusters DescribeElasticIps DescribeElasticLoadBalancers DescribeInstances DescribeLayers DescribeLoadBasedAutoScaling DescribeMyUserProfile DescribeOperatingSystems DescribePermissions DescribeRaidArrays DescribeRdsDbInstances DescribeServiceErrors DescribeStackProvisioningParameters DescribeStacks DescribeStackSummary DescribeTimeBasedAutoScaling DescribeUserProfiles DescribeVolumes DetachElasticLoadBalancer DisassociateElasticIp GetHostnameSuggestion GrantAccess ListTags RebootInstance RegisterEcsCluster RegisterElasticIp RegisterInstance RegisterRdsDbInstance RegisterVolume SetLoadBasedAutoScaling SetPermission SetTimeBasedAutoScaling StartInstance StartStack StopInstance StopStack TagResource UnassignInstance UnassignVolume UntagResource UpdateApp UpdateElasticIp UpdateInstance UpdateLayer UpdateMyUserProfile UpdateRdsDbInstance UpdateStack UpdateUserProfile UpdateVolume / }
 
 1;
 
@@ -516,11 +521,20 @@ opsworks.us-west-2.amazonaws.com
 
 =item *
 
+opsworks.ca-central-1.amazonaws.com (API only; not available in the AWS
+console)
+
+=item *
+
 opsworks.eu-west-1.amazonaws.com
 
 =item *
 
 opsworks.eu-west-2.amazonaws.com
+
+=item *
+
+opsworks.eu-west-3.amazonaws.com
 
 =item *
 
@@ -1139,6 +1153,16 @@ User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
+=head2 DescribeOperatingSystems( => )
+
+Each argument is described in detail in: L<Paws::OpsWorks::DescribeOperatingSystems>
+
+Returns: a L<Paws::OpsWorks::DescribeOperatingSystemsResponse> instance
+
+Describes the operating systems that are supported by AWS OpsWorks
+Stacks.
+
+
 =head2 DescribePermissions([IamUserArn => Str, StackId => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribePermissions>
@@ -1582,7 +1606,7 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 StopInstance(InstanceId => Str)
+=head2 StopInstance(InstanceId => Str, [Force => Bool])
 
 Each argument is described in detail in: L<Paws::OpsWorks::StopInstance>
 

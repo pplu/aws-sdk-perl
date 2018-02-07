@@ -37,26 +37,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AppId => Str
 
-The app ID. If you include this parameter, C<DescribeDeployments>
-returns a description of the commands associated with the specified
-app.
+The app ID. If you include this parameter, the command returns a
+description of the commands associated with the specified app.
 
 
 
 =head2 DeploymentIds => ArrayRef[Str|Undef]
 
 An array of deployment IDs to be described. If you include this
-parameter, C<DescribeDeployments> returns a description of the
-specified deployments. Otherwise, it returns a description of every
-deployment.
+parameter, the command returns a description of the specified
+deployments. Otherwise, it returns a description of every deployment.
 
 
 
 =head2 StackId => Str
 
-The stack ID. If you include this parameter, C<DescribeDeployments>
-returns a description of the commands associated with the specified
-stack.
+The stack ID. If you include this parameter, the command returns a
+description of the commands associated with the specified stack.
 
 
 

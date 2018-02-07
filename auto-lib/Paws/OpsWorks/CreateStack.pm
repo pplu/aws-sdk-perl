@@ -160,8 +160,9 @@ create the instance. You can specify one of the following.
 =item *
 
 A supported Linux operating system: An Amazon Linux version, such as
-C<Amazon Linux 2017.03>, C<Amazon Linux 2016.09>, C<Amazon Linux
-2016.03>, C<Amazon Linux 2015.09>, or C<Amazon Linux 2015.03>.
+C<Amazon Linux 2017.09>, C<Amazon Linux 2017.03>, C<Amazon Linux
+2016.09>, C<Amazon Linux 2016.03>, C<Amazon Linux 2015.09>, or C<Amazon
+Linux 2015.03>.
 
 =item *
 

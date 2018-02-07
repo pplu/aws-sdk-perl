@@ -3,6 +3,7 @@ package Paws::OpsWorks::Volume;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has Device => (is => 'ro', isa => 'Str');
   has Ec2VolumeId => (is => 'ro', isa => 'Str');
+  has Encrypted => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has MountPoint => (is => 'ro', isa => 'Str');
@@ -62,6 +63,11 @@ Endpoints (http://docs.aws.amazon.com/general/latest/gr/rande.html).
 =head2 Ec2VolumeId => Str
 
   The Amazon EC2 volume ID.
+
+
+=head2 Encrypted => Bool
+
+  
 
 
 =head2 InstanceId => Str

@@ -51,7 +51,7 @@ Describes an app's data source.
 =head2 Type => Str
 
   The data source's type, C<AutoSelectOpsworksMysqlInstance>,
-C<OpsworksMysqlInstance>, or C<RdsDbInstance>.
+C<OpsworksMysqlInstance>, C<RdsDbInstance>, or C<None>.
 
 
 
