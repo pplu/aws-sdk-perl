@@ -1,6 +1,7 @@
 package Paws::Glue::Classifier;
   use Moose;
   has GrokClassifier => (is => 'ro', isa => 'Paws::Glue::GrokClassifier');
+  has JsonClassifier => (is => 'ro', isa => 'Paws::Glue::JsonClassifier');
   has XMLClassifier => (is => 'ro', isa => 'Paws::Glue::XMLClassifier');
 1;
 
@@ -39,8 +40,9 @@ checks whether a given file is in a format it can handle, and if it is,
 the classifier creates a schema in the form of a C<StructType> object
 that matches that data format.
 
-A classifier can be either a C<grok> classifier or an XML classifier,
-specified in one or the other field of the C<Classifier> object.
+A classifier can be a C<grok> classifier, an XML classifier, or a JSON
+classifier, asspecified in one of the fields in the C<Classifier>
+object.
 
 =head1 ATTRIBUTES
 
@@ -48,6 +50,11 @@ specified in one or the other field of the C<Classifier> object.
 =head2 GrokClassifier => L<Paws::Glue::GrokClassifier>
 
   A C<GrokClassifier> object.
+
+
+=head2 JsonClassifier => L<Paws::Glue::JsonClassifier>
+
+  A C<JsonClassifier> object.
 
 
 =head2 XMLClassifier => L<Paws::Glue::XMLClassifier>

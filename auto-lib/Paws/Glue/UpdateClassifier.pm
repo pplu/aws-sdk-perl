@@ -2,6 +2,7 @@
 package Paws::Glue::UpdateClassifier;
   use Moose;
   has GrokClassifier => (is => 'ro', isa => 'Paws::Glue::UpdateGrokClassifierRequest');
+  has JsonClassifier => (is => 'ro', isa => 'Paws::Glue::UpdateJsonClassifierRequest');
   has XMLClassifier => (is => 'ro', isa => 'Paws::Glue::UpdateXMLClassifierRequest');
 
   use MooseX::ClassAttribute;
@@ -37,6 +38,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 GrokClassifier => L<Paws::Glue::UpdateGrokClassifierRequest>
 
 A C<GrokClassifier> object with updated fields.
+
+
+
+=head2 JsonClassifier => L<Paws::Glue::UpdateJsonClassifierRequest>
+
+A C<JsonClassifier> object with updated fields.
 
 
 

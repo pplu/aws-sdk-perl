@@ -803,14 +803,15 @@ Returns: a L<Paws::Glue::BatchStopJobRunResponse> instance
 Stops one or more job runs for a specified Job.
 
 
-=head2 CreateClassifier([GrokClassifier => L<Paws::Glue::CreateGrokClassifierRequest>, XMLClassifier => L<Paws::Glue::CreateXMLClassifierRequest>])
+=head2 CreateClassifier([GrokClassifier => L<Paws::Glue::CreateGrokClassifierRequest>, JsonClassifier => L<Paws::Glue::CreateJsonClassifierRequest>, XMLClassifier => L<Paws::Glue::CreateXMLClassifierRequest>])
 
 Each argument is described in detail in: L<Paws::Glue::CreateClassifier>
 
 Returns: a L<Paws::Glue::CreateClassifierResponse> instance
 
-Creates a classifier in the user's account. This may be either a
-C<GrokClassifier> or an C<XMLClassifier>.
+Creates a classifier in the user's account. This may be a
+C<GrokClassifier>, an C<XMLClassifier>, or abbrev C<JsonClassifier>,
+depending on which field of the request is present.
 
 
 =head2 CreateConnection(ConnectionInput => L<Paws::Glue::ConnectionInput>, [CatalogId => Str])
@@ -1358,14 +1359,14 @@ Returns: a L<Paws::Glue::StopTriggerResponse> instance
 Stops a specified trigger.
 
 
-=head2 UpdateClassifier([GrokClassifier => L<Paws::Glue::UpdateGrokClassifierRequest>, XMLClassifier => L<Paws::Glue::UpdateXMLClassifierRequest>])
+=head2 UpdateClassifier([GrokClassifier => L<Paws::Glue::UpdateGrokClassifierRequest>, JsonClassifier => L<Paws::Glue::UpdateJsonClassifierRequest>, XMLClassifier => L<Paws::Glue::UpdateXMLClassifierRequest>])
 
 Each argument is described in detail in: L<Paws::Glue::UpdateClassifier>
 
 Returns: a L<Paws::Glue::UpdateClassifierResponse> instance
 
-Modifies an existing classifier (either a C<GrokClassifier> or an
-C<XMLClassifier>).
+Modifies an existing classifier (a C<GrokClassifier>, C<XMLClassifier>,
+or C<JsonClassifier>, depending on which field is present).
 
 
 =head2 UpdateConnection(ConnectionInput => L<Paws::Glue::ConnectionInput>, Name => Str, [CatalogId => Str])
