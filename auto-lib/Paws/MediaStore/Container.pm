@@ -59,9 +59,10 @@ For example: arn:aws:mediastore:us-west-2:111122223333:container/movies
 
 =head2 Endpoint => Str
 
-  The DNS endpoint of the container. Use from 1 to 255 characters. Use
-this endpoint to identify this container when sending requests to the
-data plane.
+  The DNS endpoint of the container. Use the endpoint to identify the
+specific container when sending requests to the data plane. The service
+assigns this value when the container is created. Once the value has
+been assigned, it does not change.
 
 
 =head2 Name => Str

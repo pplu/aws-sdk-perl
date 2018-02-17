@@ -29,6 +29,11 @@ package Paws::MediaStore;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::DeleteContainerPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteCorsPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::DeleteCorsPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeContainer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::DescribeContainer', @_);
@@ -37,6 +42,11 @@ package Paws::MediaStore;
   sub GetContainerPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::GetContainerPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetCorsPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::GetCorsPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListContainers {
@@ -49,10 +59,15 @@ package Paws::MediaStore;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::PutContainerPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutCorsPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::PutCorsPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/CreateContainer DeleteContainer DeleteContainerPolicy DescribeContainer GetContainerPolicy ListContainers PutContainerPolicy / }
+  sub operations { qw/CreateContainer DeleteContainer DeleteContainerPolicy DeleteCorsPolicy DescribeContainer GetContainerPolicy GetCorsPolicy ListContainers PutContainerPolicy PutCorsPolicy / }
 
 1;
 
@@ -117,16 +132,33 @@ Deletes the access policy that is associated with the specified
 container.
 
 
+=head2 DeleteCorsPolicy(ContainerName => Str)
+
+Each argument is described in detail in: L<Paws::MediaStore::DeleteCorsPolicy>
+
+Returns: a L<Paws::MediaStore::DeleteCorsPolicyOutput> instance
+
+Deletes the cross-origin resource sharing (CORS) configuration
+information that is set for the container.
+
+To use this operation, you must have permission to perform the
+C<MediaStore:DeleteCorsPolicy> action. The container owner has this
+permission by default and can grant this permission to others.
+
+
 =head2 DescribeContainer([ContainerName => Str])
 
 Each argument is described in detail in: L<Paws::MediaStore::DescribeContainer>
 
 Returns: a L<Paws::MediaStore::DescribeContainerOutput> instance
 
-Retrieves the properties of the requested container. This returns a
-single C<Container> object based on C<ContainerName>. To return all
-C<Container> objects that are associated with a specified AWS account,
-use ListContainers.
+Retrieves the properties of the requested container. This request is
+commonly used to retrieve the endpoint of a container. An endpoint is a
+value assigned by the service when a new container is created. A
+container's endpoint does not change after it has been assigned. The
+C<DescribeContainer> request returns a single C<Container> object based
+on C<ContainerName>. To return all C<Container> objects that are
+associated with a specified AWS account, use ListContainers.
 
 
 =head2 GetContainerPolicy(ContainerName => Str)
@@ -139,6 +171,20 @@ Retrieves the access policy for the specified container. For
 information about the data that is included in an access policy, see
 the AWS Identity and Access Management User Guide
 (https://aws.amazon.com/documentation/iam/).
+
+
+=head2 GetCorsPolicy(ContainerName => Str)
+
+Each argument is described in detail in: L<Paws::MediaStore::GetCorsPolicy>
+
+Returns: a L<Paws::MediaStore::GetCorsPolicyOutput> instance
+
+Returns the cross-origin resource sharing (CORS) configuration
+information that is set for the container.
+
+To use this operation, you must have permission to perform the
+C<MediaStore:GetCorsPolicy> action. By default, the container owner has
+this permission and can grant it to others.
 
 
 =head2 ListContainers([MaxResults => Int, NextToken => Str])
@@ -174,6 +220,27 @@ Management User Guide (https://aws.amazon.com/documentation/iam/).
 For this release of the REST API, you can create only one policy for a
 container. If you enter C<PutContainerPolicy> twice, the second command
 modifies the existing policy.
+
+
+=head2 PutCorsPolicy(ContainerName => Str, CorsPolicy => ArrayRef[L<Paws::MediaStore::CorsRule>])
+
+Each argument is described in detail in: L<Paws::MediaStore::PutCorsPolicy>
+
+Returns: a L<Paws::MediaStore::PutCorsPolicyOutput> instance
+
+Sets the cross-origin resource sharing (CORS) configuration on a
+container so that the container can service cross-origin requests. For
+example, you might want to enable a request whose origin is
+http://www.example.com to access your AWS Elemental MediaStore
+container at my.example.container.com by using the browser's
+XMLHttpRequest capability.
+
+To enable CORS on a container, you attach a CORS policy to the
+container. In the CORS policy, you configure rules that identify
+origins and the HTTP methods that can be executed on your container.
+The policy can contain up to 398,000 characters. You can add up to 100
+rules to a CORS policy. If more than one rule applies, the service uses
+the first applicable rule listed.
 
 
 
