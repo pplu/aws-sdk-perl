@@ -17,12 +17,13 @@ Paws::Budgets::DescribeBudgetsResponse
 
 =head2 Budgets => ArrayRef[L<Paws::Budgets::Budget>]
 
-
+A list of budgets.
 
 
 =head2 NextToken => Str
 
-
+The pagination token that indicates the next set of results that you
+can retrieve.
 
 
 =head2 _request_id => Str

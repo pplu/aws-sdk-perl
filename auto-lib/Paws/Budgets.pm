@@ -110,7 +110,58 @@ Paws::Budgets - Perl Interface to AWS AWS Budgets
 
 =head1 DESCRIPTION
 
-All public APIs for AWS Budgets
+Budgets enable you to plan your service usage, service costs, and your
+RI utilization. You can also track how close your plan is to your
+budgeted amount or to the free tier limits. Budgets provide you with a
+quick way to see your usage-to-date and current estimated charges from
+AWS and to see how much your predicted usage accrues in charges by the
+end of the month. Budgets also compare current estimates and charges to
+the amount that you indicated you want to use or spend and lets you see
+how much of your budget has been used. AWS updates your budget status
+several times a day. Budgets track your unblended costs, subscriptions,
+and refunds. You can create the following types of budgets:
+
+=over
+
+=item *
+
+Cost budgets allow you to say how much you want to spend on a service.
+
+=item *
+
+Usage budgets allow you to say how many hours you want to use for one
+or more services.
+
+=item *
+
+RI utilization budgets allow you to define a utilization threshold and
+receive alerts when RIs are tracking below that threshold.
+
+=back
+
+You can create up to 20,000 budgets per AWS master account. Your first
+two budgets are free of charge. Each additional budget costs $0.02 per
+day. You can set up optional notifications that warn you if you exceed,
+or are forecasted to exceed, your budgeted amount. You can have
+notifications sent to an Amazon SNS topic, to an email address, or to
+both. For more information, see Creating an Amazon SNS Topic for Budget
+Notifications
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-sns-policy.html).
+AWS Free Tier usage alerts via AWS Budgets are provided for you, and do
+not count toward your budget limits.
+
+Service Endpoint
+
+The AWS Budgets API provides the following endpoint:
+
+=over
+
+=item *
+
+https://budgets.us-east-1.amazonaws.com
+
+=back
+
 
 =head1 METHODS
 
@@ -120,7 +171,7 @@ Each argument is described in detail in: L<Paws::Budgets::CreateBudget>
 
 Returns: a L<Paws::Budgets::CreateBudgetResponse> instance
 
-Create a new budget
+Creates a budget and, if included, notifications and subscribers.
 
 
 =head2 CreateNotification(AccountId => Str, BudgetName => Str, Notification => L<Paws::Budgets::Notification>, Subscribers => ArrayRef[L<Paws::Budgets::Subscriber>])
@@ -129,7 +180,8 @@ Each argument is described in detail in: L<Paws::Budgets::CreateNotification>
 
 Returns: a L<Paws::Budgets::CreateNotificationResponse> instance
 
-Create a new Notification with subscribers for a budget
+Creates a notification. You must create the budget before you create
+the associated notification.
 
 
 =head2 CreateSubscriber(AccountId => Str, BudgetName => Str, Notification => L<Paws::Budgets::Notification>, Subscriber => L<Paws::Budgets::Subscriber>)
@@ -138,7 +190,8 @@ Each argument is described in detail in: L<Paws::Budgets::CreateSubscriber>
 
 Returns: a L<Paws::Budgets::CreateSubscriberResponse> instance
 
-Create a new Subscriber for a notification
+Creates a subscriber. You must create the associated budget and
+notification before you create the subscriber.
 
 
 =head2 DeleteBudget(AccountId => Str, BudgetName => Str)
@@ -147,7 +200,10 @@ Each argument is described in detail in: L<Paws::Budgets::DeleteBudget>
 
 Returns: a L<Paws::Budgets::DeleteBudgetResponse> instance
 
-Delete a budget and related notifications
+Deletes a budget. You can delete your budget at any time.
+
+B<Deleting a budget also deletes the notifications and subscribers
+associated with that budget.>
 
 
 =head2 DeleteNotification(AccountId => Str, BudgetName => Str, Notification => L<Paws::Budgets::Notification>)
@@ -156,7 +212,10 @@ Each argument is described in detail in: L<Paws::Budgets::DeleteNotification>
 
 Returns: a L<Paws::Budgets::DeleteNotificationResponse> instance
 
-Delete a notification and related subscribers
+Deletes a notification.
+
+B<Deleting a notification also deletes the subscribers associated with
+the notification.>
 
 
 =head2 DeleteSubscriber(AccountId => Str, BudgetName => Str, Notification => L<Paws::Budgets::Notification>, Subscriber => L<Paws::Budgets::Subscriber>)
@@ -165,7 +224,10 @@ Each argument is described in detail in: L<Paws::Budgets::DeleteSubscriber>
 
 Returns: a L<Paws::Budgets::DeleteSubscriberResponse> instance
 
-Delete a Subscriber for a notification
+Deletes a subscriber.
+
+B<Deleting the last subscriber to a notification also deletes the
+notification.>
 
 
 =head2 DescribeBudget(AccountId => Str, BudgetName => Str)
@@ -174,7 +236,7 @@ Each argument is described in detail in: L<Paws::Budgets::DescribeBudget>
 
 Returns: a L<Paws::Budgets::DescribeBudgetResponse> instance
 
-Get a single budget
+Describes a budget.
 
 
 =head2 DescribeBudgets(AccountId => Str, [MaxResults => Int, NextToken => Str])
@@ -183,7 +245,7 @@ Each argument is described in detail in: L<Paws::Budgets::DescribeBudgets>
 
 Returns: a L<Paws::Budgets::DescribeBudgetsResponse> instance
 
-Get all budgets for an account
+Lists the budgets associated with an account.
 
 
 =head2 DescribeNotificationsForBudget(AccountId => Str, BudgetName => Str, [MaxResults => Int, NextToken => Str])
@@ -192,7 +254,7 @@ Each argument is described in detail in: L<Paws::Budgets::DescribeNotificationsF
 
 Returns: a L<Paws::Budgets::DescribeNotificationsForBudgetResponse> instance
 
-Get notifications of a budget
+Lists the notifications associated with a budget.
 
 
 =head2 DescribeSubscribersForNotification(AccountId => Str, BudgetName => Str, Notification => L<Paws::Budgets::Notification>, [MaxResults => Int, NextToken => Str])
@@ -201,7 +263,7 @@ Each argument is described in detail in: L<Paws::Budgets::DescribeSubscribersFor
 
 Returns: a L<Paws::Budgets::DescribeSubscribersForNotificationResponse> instance
 
-Get subscribers of a notification
+Lists the subscribers associated with a notification.
 
 
 =head2 UpdateBudget(AccountId => Str, NewBudget => L<Paws::Budgets::Budget>)
@@ -210,7 +272,10 @@ Each argument is described in detail in: L<Paws::Budgets::UpdateBudget>
 
 Returns: a L<Paws::Budgets::UpdateBudgetResponse> instance
 
-Update the information of a budget already created
+Updates a budget. You can change every part of a budget except for the
+C<budgetName> and the C<calculatedSpend>. When a budget is modified,
+the C<calculatedSpend> drops to zero until AWS has new usage data to
+use for forecasting.
 
 
 =head2 UpdateNotification(AccountId => Str, BudgetName => Str, NewNotification => L<Paws::Budgets::Notification>, OldNotification => L<Paws::Budgets::Notification>)
@@ -219,7 +284,7 @@ Each argument is described in detail in: L<Paws::Budgets::UpdateNotification>
 
 Returns: a L<Paws::Budgets::UpdateNotificationResponse> instance
 
-Update the information about a notification already created
+Updates a notification.
 
 
 =head2 UpdateSubscriber(AccountId => Str, BudgetName => Str, NewSubscriber => L<Paws::Budgets::Subscriber>, Notification => L<Paws::Budgets::Notification>, OldSubscriber => L<Paws::Budgets::Subscriber>)
@@ -228,7 +293,7 @@ Each argument is described in detail in: L<Paws::Budgets::UpdateSubscriber>
 
 Returns: a L<Paws::Budgets::UpdateSubscriberResponse> instance
 
-Update a subscriber
+Updates a subscriber.
 
 
 

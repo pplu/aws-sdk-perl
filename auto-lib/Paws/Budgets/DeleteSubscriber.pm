@@ -38,25 +38,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AccountId => Str
 
-
+The C<accountId> that is associated with the budget whose subscriber
+you want to delete.
 
 
 
 =head2 B<REQUIRED> BudgetName => Str
 
-
+The name of the budget whose subscriber you want to delete.
 
 
 
 =head2 B<REQUIRED> Notification => L<Paws::Budgets::Notification>
 
-
+The notification whose subscriber you want to delete.
 
 
 
 =head2 B<REQUIRED> Subscriber => L<Paws::Budgets::Subscriber>
 
-
+The subscriber that you want to delete.
 
 
 

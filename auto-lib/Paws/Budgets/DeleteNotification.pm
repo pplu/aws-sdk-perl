@@ -37,19 +37,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AccountId => Str
 
-
+The C<accountId> that is associated with the budget whose notification
+you want to delete.
 
 
 
 =head2 B<REQUIRED> BudgetName => Str
 
-
+The name of the budget whose notification you want to delete.
 
 
 
 =head2 B<REQUIRED> Notification => L<Paws::Budgets::Notification>
 
-
+The notification that you want to delete.
 
 
 

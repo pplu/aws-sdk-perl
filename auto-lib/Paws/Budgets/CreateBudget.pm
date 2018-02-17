@@ -37,19 +37,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AccountId => Str
 
-
+The C<accountId> that is associated with the budget.
 
 
 
 =head2 B<REQUIRED> Budget => L<Paws::Budgets::Budget>
 
-
+The budget object that you want to create.
 
 
 
 =head2 NotificationsWithSubscribers => ArrayRef[L<Paws::Budgets::NotificationWithSubscribers>]
 
-
+A notification that you want to associate with a budget. A budget can
+have up to five notifications, and each notification can have one SNS
+subscriber and up to ten email subscribers. If you include
+notifications and subscribers in your C<CreateBudget> call, AWS creates
+the notifications and subscribers for you.
 
 
 

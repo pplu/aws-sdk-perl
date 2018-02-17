@@ -34,30 +34,60 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Budgets::No
 
 =head1 DESCRIPTION
 
-Notification model. Each budget may contain multiple notifications with
-different settings.
+A notification associated with a budget. A budget can have up to five
+notifications.
+
+Each notification must have at least one subscriber. A notification can
+have one SNS subscriber and up to ten email subscribers, for a total of
+11 subscribers.
+
+For example, if you have a budget for 200 dollars and you want to be
+notified when you go over 160 dollars, create a notification with the
+following parameters:
+
+=over
+
+=item *
+
+A notificationType of C<ACTUAL>
+
+=item *
+
+A comparisonOperator of C<GREATER_THAN>
+
+=item *
+
+A notification threshold of C<80>
+
+=back
+
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ComparisonOperator => Str
 
-  
+  The comparison used for this notification.
 
 
 =head2 B<REQUIRED> NotificationType => Str
 
-  
+  Whether the notification is for how much you have spent (C<ACTUAL>) or
+for how much you are forecasted to spend (C<FORECASTED>).
 
 
 =head2 B<REQUIRED> Threshold => Num
 
-  
+  The threshold associated with a notification. Thresholds are always a
+percentage.
 
 
 =head2 ThresholdType => Str
 
-  
+  The type of threshold for a notification. For C<ACTUAL> thresholds, AWS
+notifies you when you go over the threshold, and for C<FORECASTED>
+thresholds AWS notifies you when you are forecasted to go over the
+threshold.
 
 
 

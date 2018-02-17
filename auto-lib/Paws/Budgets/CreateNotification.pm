@@ -38,25 +38,29 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AccountId => Str
 
-
+The C<accountId> that is associated with the budget that you want to
+create a notification for.
 
 
 
 =head2 B<REQUIRED> BudgetName => Str
 
-
+The name of the budget that you want AWS to notified you about. Budget
+names must be unique within an account.
 
 
 
 =head2 B<REQUIRED> Notification => L<Paws::Budgets::Notification>
 
-
+The notification that you want to create.
 
 
 
 =head2 B<REQUIRED> Subscribers => ArrayRef[L<Paws::Budgets::Subscriber>]
 
-
+A list of subscribers that you want to associate with the notification.
+Each notification can have one SNS subscriber and up to ten email
+subscribers.
 
 
 

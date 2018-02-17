@@ -37,19 +37,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AccountId => Str
 
-
+The C<accountId> that is associated with the budgets that you want
+descriptions of.
 
 
 
 =head2 MaxResults => Int
 
-
+Optional integer. Specifies the maximum number of results to return in
+response.
 
 
 
 =head2 NextToken => Str
 
-
+The pagination token that indicates the next set of results to
+retrieve.
 
 
 

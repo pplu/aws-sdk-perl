@@ -39,31 +39,32 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AccountId => Str
 
-
+The C<accountId> that is associated with the budget whose subscriber
+you want to update.
 
 
 
 =head2 B<REQUIRED> BudgetName => Str
 
-
+The name of the budget whose subscriber you want to update.
 
 
 
 =head2 B<REQUIRED> NewSubscriber => L<Paws::Budgets::Subscriber>
 
-
+The updated subscriber associated with a budget notification.
 
 
 
 =head2 B<REQUIRED> Notification => L<Paws::Budgets::Notification>
 
-
+The notification whose subscriber you want to update.
 
 
 
 =head2 B<REQUIRED> OldSubscriber => L<Paws::Budgets::Subscriber>
 
-
+The previous subscriber associated with a budget notification.
 
 
 

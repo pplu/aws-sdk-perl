@@ -38,25 +38,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AccountId => Str
 
-
+The C<accountId> associated with the budget that you want to create a
+subscriber for.
 
 
 
 =head2 B<REQUIRED> BudgetName => Str
 
-
+The name of the budget that you want to subscribe to. Budget names must
+be unique within an account.
 
 
 
 =head2 B<REQUIRED> Notification => L<Paws::Budgets::Notification>
 
-
+The notification that you want to create a subscriber for.
 
 
 
 =head2 B<REQUIRED> Subscriber => L<Paws::Budgets::Subscriber>
 
-
+The subscriber that you want to associate with a budget notification.
 
 
 

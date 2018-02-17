@@ -41,65 +41,87 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Budgets::Co
 
 =head1 DESCRIPTION
 
-This includes the options for getting the cost of a budget.
+The types of cost included in a budget, such as tax and subscriptions.
 
 =head1 ATTRIBUTES
 
 
 =head2 IncludeCredit => Bool
 
-  A boolean value whether to include credits in the cost budget.
+  Specifies whether a budget includes credits.
+
+The default value is C<true>.
 
 
 =head2 IncludeDiscount => Bool
 
-  A boolean value whether to include discounts in the cost budget.
+  Specifies whether a budget includes discounts.
+
+The default value is C<true>.
 
 
 =head2 IncludeOtherSubscription => Bool
 
-  A boolean value whether to include other subscription costs in the cost
-budget.
+  Specifies whether a budget includes non-RI subscription costs.
+
+The default value is C<true>.
 
 
 =head2 IncludeRecurring => Bool
 
-  A boolean value whether to include recurring costs in the cost budget.
+  Specifies whether a budget includes recurring fees such as monthly RI
+fees.
+
+The default value is C<true>.
 
 
 =head2 IncludeRefund => Bool
 
-  A boolean value whether to include refunds in the cost budget.
+  Specifies whether a budget includes refunds.
+
+The default value is C<true>.
 
 
 =head2 IncludeSubscription => Bool
 
-  A boolean value whether to include subscriptions in the cost budget.
+  Specifies whether a budget includes subscriptions.
+
+The default value is C<true>.
 
 
 =head2 IncludeSupport => Bool
 
-  A boolean value whether to include support costs in the cost budget.
+  Specifies whether a budget includes support subscription fees.
+
+The default value is C<true>.
 
 
 =head2 IncludeTax => Bool
 
-  A boolean value whether to include tax in the cost budget.
+  Specifies whether a budget includes taxes.
+
+The default value is C<true>.
 
 
 =head2 IncludeUpfront => Bool
 
-  A boolean value whether to include upfront costs in the cost budget.
+  Specifies whether a budget includes upfront RI costs.
+
+The default value is C<true>.
 
 
 =head2 UseAmortized => Bool
 
-  A boolean value whether to include amortized costs in the cost budget.
+  Specifies whether a budget uses the amortized rate.
+
+The default value is C<false>.
 
 
 =head2 UseBlended => Bool
 
-  A boolean value whether to use blended costs in the cost budget.
+  Specifies whether a budget uses blended rate.
+
+The default value is C<false>.
 
 
 

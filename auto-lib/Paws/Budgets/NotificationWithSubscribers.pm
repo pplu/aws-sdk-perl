@@ -32,20 +32,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Budgets::No
 
 =head1 DESCRIPTION
 
-A structure to relate notification and a list of subscribers who belong
-to the notification.
+A notification with subscribers. A notification can have one SNS
+subscriber and up to ten email subscribers, for a total of 11
+subscribers.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Notification => L<Paws::Budgets::Notification>
 
-  
+  The notification associated with a budget.
 
 
 =head2 B<REQUIRED> Subscribers => ArrayRef[L<Paws::Budgets::Subscriber>]
 
-  
+  A list of subscribers who are subscribed to this notification.
 
 
 

@@ -36,13 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AccountId => Str
 
-
+The C<accountId> that is associated with the budget that you want to
+update.
 
 
 
 =head2 B<REQUIRED> NewBudget => L<Paws::Budgets::Budget>
 
-
+The budget that you want to update your budget to.
 
 
 
