@@ -60,8 +60,8 @@ condition consists of the following:
 =item *
 
 B<Operand> -- Name of a game session attribute. Valid values are
-C<gameSessionName>, C<gameSessionId>, C<creationTimeMillis>,
-C<playerSessionCount>, C<maximumSessions>,
+C<gameSessionName>, C<gameSessionId>, C<gameSessionProperties>,
+C<maximumSessions>, C<creationTimeMillis>, C<playerSessionCount>,
 C<hasAvailablePlayerSessions>.
 
 =item *
@@ -71,13 +71,13 @@ C<E<gt>>, C<E<lt>=>, C<E<gt>=>.
 
 =item *
 
-B<Value> -- Value to be searched for. Values can be numbers, boolean
-values (true/false) or strings. String values are case sensitive,
-enclosed in single quotes. Special characters must be escaped. Boolean
-and string values can only be used with the comparators C<=> and
-C<E<lt>E<gt>>. For example, the following filter expression searches on
-C<gameSessionName>: "C<FilterExpression": "gameSessionName = 'Matt\\'s
-Awesome Game 1'">.
+B<Value> -- Value to be searched for. Values may be numbers, boolean
+values (true/false) or strings depending on the operand. String values
+are case sensitive and must be enclosed in single quotes. Special
+characters must be escaped. Boolean and string values can only be used
+with the comparators C<=> and C<E<lt>E<gt>>. For example, the following
+filter expression searches on C<gameSessionName>: "C<FilterExpression":
+"gameSessionName = 'Matt\\'s Awesome Game 1'">.
 
 =back
 
@@ -153,8 +153,8 @@ expression consists of the following elements:
 =item *
 
 B<Operand> -- Name of a game session attribute. Valid values are
-C<gameSessionName>, C<gameSessionId>, C<creationTimeMillis>,
-C<playerSessionCount>, C<maximumSessions>,
+C<gameSessionName>, C<gameSessionId>, C<gameSessionProperties>,
+C<maximumSessions>, C<creationTimeMillis>, C<playerSessionCount>,
 C<hasAvailablePlayerSessions>.
 
 =item *

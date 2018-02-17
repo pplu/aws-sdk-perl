@@ -54,8 +54,10 @@ objects contain the name of the team the player is assigned to.
 
 =head2 TicketId => Str
 
-Unique identifier for a matchmaking ticket. Use this identifier to
-track the matchmaking ticket status and retrieve match results.
+Unique identifier for a matchmaking ticket. If no ticket ID is
+specified here, Amazon GameLift will generate one in the form of a
+UUID. Use this identifier to track the matchmaking ticket status and
+retrieve match results.
 
 
 

@@ -48,16 +48,6 @@ debugging problems.
 
   Type of event being logged. The following events are currently in use:
 
-B<General events:>
-
-=over
-
-=item *
-
-GENERIC_EVENT -- An unspecified event has occurred.
-
-=back
-
 B<Fleet creation events:>
 
 =over
@@ -181,6 +171,17 @@ successfully deleted.
 
 =back
 
+B<Spot instance events:>
+
+=over
+
+=item *
+
+INSTANCE_INTERRUPTED -- A spot instance was interrupted by EC2 with a
+two-minute notification.
+
+=back
+
 B<Other fleet events:>
 
 =over
@@ -200,6 +201,10 @@ includes both the old and new policy setting.
 =item *
 
 FLEET_DELETED -- A request to delete a fleet was initiated.
+
+=item *
+
+GENERIC_EVENT -- An unspecified event has occurred.
 
 =back
 

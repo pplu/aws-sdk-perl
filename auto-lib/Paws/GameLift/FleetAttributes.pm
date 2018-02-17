@@ -5,6 +5,8 @@ package Paws::GameLift::FleetAttributes;
   has Description => (is => 'ro', isa => 'Str');
   has FleetArn => (is => 'ro', isa => 'Str');
   has FleetId => (is => 'ro', isa => 'Str');
+  has FleetType => (is => 'ro', isa => 'Str');
+  has InstanceType => (is => 'ro', isa => 'Str');
   has LogPaths => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MetricGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str');
@@ -178,6 +180,20 @@ number expressed in Unix time as milliseconds (for example
 =head2 FleetId => Str
 
   Unique identifier for a fleet.
+
+
+=head2 FleetType => Str
+
+  Indicates whether the fleet uses on-demand or spot instances. A spot
+instance in use may be interrupted with a two-minute notification.
+
+
+=head2 InstanceType => Str
+
+  EC2 instance type indicating the computing resources of each instance
+in the fleet, including CPU, memory, storage, and networking capacity.
+See Amazon EC2 Instance Types
+(http://aws.amazon.com/ec2/instance-types/) for detailed descriptions.
 
 
 =head2 LogPaths => ArrayRef[Str|Undef]

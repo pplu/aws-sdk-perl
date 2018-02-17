@@ -5,6 +5,7 @@ package Paws::GameLift::CreateFleet;
   has Description => (is => 'ro', isa => 'Str');
   has EC2InboundPermissions => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::IpPermission]');
   has EC2InstanceType => (is => 'ro', isa => 'Str', required => 1);
+  has FleetType => (is => 'ro', isa => 'Str');
   has LogPaths => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MetricGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -82,6 +83,21 @@ detailed descriptions.
 
 Valid values are: C<"t2.micro">, C<"t2.small">, C<"t2.medium">, C<"t2.large">, C<"c3.large">, C<"c3.xlarge">, C<"c3.2xlarge">, C<"c3.4xlarge">, C<"c3.8xlarge">, C<"c4.large">, C<"c4.xlarge">, C<"c4.2xlarge">, C<"c4.4xlarge">, C<"c4.8xlarge">, C<"r3.large">, C<"r3.xlarge">, C<"r3.2xlarge">, C<"r3.4xlarge">, C<"r3.8xlarge">, C<"r4.large">, C<"r4.xlarge">, C<"r4.2xlarge">, C<"r4.4xlarge">, C<"r4.8xlarge">, C<"r4.16xlarge">, C<"m3.medium">, C<"m3.large">, C<"m3.xlarge">, C<"m3.2xlarge">, C<"m4.large">, C<"m4.xlarge">, C<"m4.2xlarge">, C<"m4.4xlarge">, C<"m4.10xlarge">
 
+=head2 FleetType => Str
+
+Indicates whether to use on-demand instances or spot instances for this
+fleet. If empty, the default is ON_DEMAND. Both categories of instances
+use identical hardware and configurations, based on the instance type
+selected for this fleet. You can acquire on-demand instances at any
+time for a fixed price and keep them as long as you need them. Spot
+instances have lower prices, but spot pricing is variable, and while in
+use they can be interrupted (with a two-minute notification). Learn
+more about Amazon GameLift spot instances with at Choose Computing
+Resources
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-ec2-instances.html).
+
+Valid values are: C<"ON_DEMAND">, C<"SPOT">
+
 =head2 LogPaths => ArrayRef[Str|Undef]
 
 This parameter is no longer used. Instead, to specify where Amazon
@@ -95,10 +111,11 @@ Server API Reference
 
 =head2 MetricGroups => ArrayRef[Str|Undef]
 
-Names of metric groups to add this fleet to. Use an existing metric
-group name to add this fleet to the group. Or use a new name to create
-a new metric group. A fleet can only be included in one metric group at
-a time.
+Name of a metric group to add this fleet to. A metric group tracks
+metrics across all fleets in the group. Use an existing metric group
+name to add this fleet to the group, or use a new name to create a new
+metric group. A fleet can only be included in one metric group at a
+time.
 
 
 

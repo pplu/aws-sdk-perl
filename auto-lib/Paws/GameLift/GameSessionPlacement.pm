@@ -9,6 +9,7 @@ package Paws::GameLift::GameSessionPlacement;
   has GameSessionQueueName => (is => 'ro', isa => 'Str');
   has GameSessionRegion => (is => 'ro', isa => 'Str');
   has IpAddress => (is => 'ro', isa => 'Str');
+  has MatchmakerData => (is => 'ro', isa => 'Str');
   has MaximumPlayerSessionCount => (is => 'ro', isa => 'Int');
   has PlacedPlayerSessions => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::PlacedPlayerSession]');
   has PlacementId => (is => 'ro', isa => 'Str');
@@ -80,10 +81,10 @@ timed out.
 
 =head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
 
-  Set of developer-defined properties for a game session, formatted as a
-set of type:value pairs. These properties are included in the
-GameSession object, which is passed to the game server with a request
-to start a new game session (see Start a Game Session
+  Set of custom properties for a game session, formatted as key:value
+pairs. These properties are passed to a game server process in the
+GameSession object with a request to start a new game session (see
+Start a Game Session
 (http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 
 
@@ -97,10 +98,10 @@ use this value as a C<GameSessionId> value as needed.
 
 =head2 GameSessionData => Str
 
-  Set of developer-defined game session properties, formatted as a single
-string value. This data is included in the GameSession object, which is
-passed to the game server with a request to start a new game session
-(see Start a Game Session
+  Set of custom game session properties, formatted as a single string
+value. This data is passed to a game server process in the GameSession
+object with a request to start a new game session (see Start a Game
+Session
 (http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 
 
@@ -135,6 +136,16 @@ placed (placement status is C<FULFILLED>).
 server, an app needs both the IP address and port number. This value is
 set once the new game session is placed (placement status is
 C<FULFILLED>).
+
+
+=head2 MatchmakerData => Str
+
+  Information on the matchmaking process for this game. Data is in JSON
+syntax, formated as a string. It identifies the matchmaking
+configuration used to create the match, and contains data on all
+players assigned to the match, including player attributes and team
+assignments. For more details on matchmaker data, see Match Data
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/match-server.html#match-server-data).
 
 
 =head2 MaximumPlayerSessionCount => Int

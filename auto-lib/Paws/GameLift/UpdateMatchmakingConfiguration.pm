@@ -84,10 +84,10 @@ Descriptive label that is associated with matchmaking configuration.
 
 =head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
 
-Set of developer-defined properties for a game session, formatted as a
-set of type:value pairs. These properties are included in the
-GameSession object, which is passed to the game server with a request
-to start a new game session (see Start a Game Session
+Set of custom properties for a game session, formatted as key:value
+pairs. These properties are passed to a game server process in the
+GameSession object with a request to start a new game session (see
+Start a Game Session
 (http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 This information is added to the new GameSession object that is created
 for a successful match.
@@ -96,10 +96,10 @@ for a successful match.
 
 =head2 GameSessionData => Str
 
-Set of developer-defined game session properties, formatted as a single
-string value. This data is included in the GameSession object, which is
-passed to the game server with a request to start a new game session
-(see Start a Game Session
+Set of custom game session properties, formatted as a single string
+value. This data is passed to a game server process in the GameSession
+object with a request to start a new game session (see Start a Game
+Session
 (http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 This information is added to the new GameSession object that is created
 for a successful match.

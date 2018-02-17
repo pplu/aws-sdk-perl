@@ -8,11 +8,13 @@ package Paws::GameLift::GameSession;
   has GameSessionData => (is => 'ro', isa => 'Str');
   has GameSessionId => (is => 'ro', isa => 'Str');
   has IpAddress => (is => 'ro', isa => 'Str');
+  has MatchmakerData => (is => 'ro', isa => 'Str');
   has MaximumPlayerSessionCount => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
   has PlayerSessionCreationPolicy => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has Status => (is => 'ro', isa => 'Str');
+  has StatusReason => (is => 'ro', isa => 'Str');
   has TerminationTime => (is => 'ro', isa => 'Str');
 1;
 
@@ -133,19 +135,21 @@ sessions a player can create.
 
 =head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
 
-  Set of developer-defined properties for a game session, formatted as a
-set of type:value pairs. These properties are included in the
-GameSession object, which is passed to the game server with a request
-to start a new game session (see Start a Game Session
+  Set of custom properties for a game session, formatted as key:value
+pairs. These properties are passed to a game server process in the
+GameSession object with a request to start a new game session (see
+Start a Game Session
 (http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+You can search for active game sessions based on this custom data with
+SearchGameSessions.
 
 
 =head2 GameSessionData => Str
 
-  Set of developer-defined game session properties, formatted as a single
-string value. This data is included in the GameSession object, which is
-passed to the game server with a request to start a new game session
-(see Start a Game Session
+  Set of custom game session properties, formatted as a single string
+value. This data is passed to a game server process in the GameSession
+object with a request to start a new game session (see Start a Game
+Session
 (http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 
 
@@ -161,6 +165,19 @@ IDE<gt>/E<lt>custom ID string or idempotency tokenE<gt>>.
 
   IP address of the game session. To connect to a Amazon GameLift game
 server, an app needs both the IP address and port number.
+
+
+=head2 MatchmakerData => Str
+
+  Information about the matchmaking process that was used to create the
+game session. It is in JSON syntax, formated as a string. In addition
+the matchmaking configuration used, it contains data on all players
+assigned to the match, including player attributes and team
+assignments. For more details on matchmaker data, see Match Data
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/match-server.html#match-server-data).
+Matchmaker data is useful when requesting match backfills, and is
+updated whenever new players are added during a successful backfill
+(see StartMatchBackfill).
 
 
 =head2 MaximumPlayerSessionCount => Int
@@ -190,6 +207,14 @@ server, an app needs both the IP address and port number.
 
   Current status of the game session. A game session must have an
 C<ACTIVE> status to have player sessions.
+
+
+=head2 StatusReason => Str
+
+  Provides additional information about game session status.
+C<INTERRUPTED> indicates that the game session was hosted on a spot
+instance that was reclaimed, causing the active game session to be
+terminated.
 
 
 =head2 TerminationTime => Str

@@ -35,8 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> TicketIds => ArrayRef[Str|Undef]
 
-Unique identifier for a matchmaking ticket. To request all existing
-tickets, leave this parameter empty.
+Unique identifier for a matchmaking ticket. You can include up to 10 ID
+values.
 
 
 
