@@ -129,6 +129,11 @@ package Paws::DMS;
     my $call_object = $self->new_with_coercions('Paws::DMS::DescribeReplicationInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeReplicationInstanceTaskLogs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::DescribeReplicationInstanceTaskLogs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeReplicationSubnetGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::DescribeReplicationSubnetGroups', @_);
@@ -187,6 +192,11 @@ package Paws::DMS;
   sub ModifyReplicationTask {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::ModifyReplicationTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RebootReplicationInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::RebootReplicationInstance', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RefreshSchemas {
@@ -526,7 +536,7 @@ package Paws::DMS;
   }
 
 
-  sub operations { qw/AddTagsToResource CreateEndpoint CreateEventSubscription CreateReplicationInstance CreateReplicationSubnetGroup CreateReplicationTask DeleteCertificate DeleteEndpoint DeleteEventSubscription DeleteReplicationInstance DeleteReplicationSubnetGroup DeleteReplicationTask DescribeAccountAttributes DescribeCertificates DescribeConnections DescribeEndpoints DescribeEndpointTypes DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOrderableReplicationInstances DescribeRefreshSchemasStatus DescribeReplicationInstances DescribeReplicationSubnetGroups DescribeReplicationTaskAssessmentResults DescribeReplicationTasks DescribeSchemas DescribeTableStatistics ImportCertificate ListTagsForResource ModifyEndpoint ModifyEventSubscription ModifyReplicationInstance ModifyReplicationSubnetGroup ModifyReplicationTask RefreshSchemas ReloadTables RemoveTagsFromResource StartReplicationTask StartReplicationTaskAssessment StopReplicationTask TestConnection / }
+  sub operations { qw/AddTagsToResource CreateEndpoint CreateEventSubscription CreateReplicationInstance CreateReplicationSubnetGroup CreateReplicationTask DeleteCertificate DeleteEndpoint DeleteEventSubscription DeleteReplicationInstance DeleteReplicationSubnetGroup DeleteReplicationTask DescribeAccountAttributes DescribeCertificates DescribeConnections DescribeEndpoints DescribeEndpointTypes DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOrderableReplicationInstances DescribeRefreshSchemasStatus DescribeReplicationInstances DescribeReplicationInstanceTaskLogs DescribeReplicationSubnetGroups DescribeReplicationTaskAssessmentResults DescribeReplicationTasks DescribeSchemas DescribeTableStatistics ImportCertificate ListTagsForResource ModifyEndpoint ModifyEventSubscription ModifyReplicationInstance ModifyReplicationSubnetGroup ModifyReplicationTask RebootReplicationInstance RefreshSchemas ReloadTables RemoveTagsFromResource StartReplicationTask StartReplicationTaskAssessment StopReplicationTask TestConnection / }
 
 1;
 
@@ -829,6 +839,15 @@ Returns information about replication instances for your account in the
 current region.
 
 
+=head2 DescribeReplicationInstanceTaskLogs(ReplicationInstanceArn => Str, [Marker => Str, MaxRecords => Int])
+
+Each argument is described in detail in: L<Paws::DMS::DescribeReplicationInstanceTaskLogs>
+
+Returns: a L<Paws::DMS::DescribeReplicationInstanceTaskLogsResponse> instance
+
+Returns information about the task logs for the specified task.
+
+
 =head2 DescribeReplicationSubnetGroups([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::DMS::DescribeReplicationSubnetGroups>
@@ -953,6 +972,16 @@ you can modify it.
 For more information about AWS DMS tasks, see the AWS DMS user guide at
 Working with Migration Tasks
 (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html)
+
+
+=head2 RebootReplicationInstance(ReplicationInstanceArn => Str, [ForceFailover => Bool])
+
+Each argument is described in detail in: L<Paws::DMS::RebootReplicationInstance>
+
+Returns: a L<Paws::DMS::RebootReplicationInstanceResponse> instance
+
+Reboots a replication instance. Rebooting results in a momentary
+outage, until the replication instance becomes available again.
 
 
 =head2 RefreshSchemas(EndpointArn => Str, ReplicationInstanceArn => Str)

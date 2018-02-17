@@ -94,8 +94,8 @@ Valid values are: C<"source">, C<"target">
 =head2 EngineName => Str
 
 The type of engine for the endpoint. Valid values, depending on the
-EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA,
-REDSHIFT, S3, DYNAMODB, MONGODB, SYBASE, and SQLSERVER.
+EndPointType, include mysql, oracle, postgres, mariadb, aurora,
+redshift, S3, sybase, dynamodb, mongodb, and sqlserver.
 
 
 
