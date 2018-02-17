@@ -203,10 +203,6 @@ For MySQL 5.6, minor version 5.6.34 or higher
 
 For MySQL 5.7, minor version 5.7.16 or higher
 
-=item *
-
-Aurora 5.6 or higher.
-
 =back
 
 Default: C<false>
@@ -226,14 +222,6 @@ snapshot.
 Valid Values:
 
 =over
-
-=item *
-
-C<aurora>
-
-=item *
-
-C<aurora-postgresql>
 
 =item *
 

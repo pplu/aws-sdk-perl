@@ -62,6 +62,14 @@ group family, and can be applied only to a DB cluster running a
 database engine and engine version compatible with that DB cluster
 parameter group family.
 
+B<Aurora MySQL>
+
+Example: C<aurora5.6>, C<aurora-mysql5.7>
+
+B<Aurora PostgreSQL>
+
+Example: C<aurora-postgresql9.6>
+
 
 
 =head2 B<REQUIRED> Description => Str

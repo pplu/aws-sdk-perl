@@ -86,7 +86,7 @@ CreateDBInstance.
 =head2 AllowMajorVersionUpgrade => Bool
 
 Indicates that major version upgrades are allowed. Changing this
-parameter does not result in an outage and the change is asynchronously
+parameter doesn't result in an outage and the change is asynchronously
 applied as soon as possible.
 
 Constraints: This parameter must be set to true when specifying a value
@@ -119,9 +119,9 @@ Default: C<false>
 =head2 AutoMinorVersionUpgrade => Bool
 
 Indicates that minor version upgrades are applied automatically to the
-DB instance during the maintenance window. Changing this parameter does
-not result in an outage except in the following case and the change is
-asynchronously applied as soon as possible. An outage will result if
+DB instance during the maintenance window. Changing this parameter
+doesn't result in an outage except in the following case and the change
+is asynchronously applied as soon as possible. An outage will result if
 this parameter is set to C<true> during the maintenance window, and a
 newer minor version is available, and RDS has enabled auto patching for
 that engine version.
@@ -233,7 +233,7 @@ Must match the identifier of an existing DBInstance.
 =head2 DBParameterGroupName => Str
 
 The name of the DB parameter group to apply to the DB instance.
-Changing this setting does not result in an outage. The parameter group
+Changing this setting doesn't result in an outage. The parameter group
 name itself is changed immediately, but the actual parameter changes
 are not applied until you reboot the instance without failover. The db
 instance will NOT be rebooted automatically and the parameter changes
@@ -301,7 +301,7 @@ Valid Values: C<1150-65535>
 =head2 DBSecurityGroups => ArrayRef[Str|Undef]
 
 A list of DB security groups to authorize on this DB instance. Changing
-this setting does not result in an outage and the change is
+this setting doesn't result in an outage and the change is
 asynchronously applied as soon as possible.
 
 Constraints:
@@ -411,7 +411,7 @@ For a list of valid engine versions, see CreateDBInstance.
 The new Provisioned IOPS (I/O operations per second) value for the RDS
 instance.
 
-Changing this setting does not result in an outage and the change is
+Changing this setting doesn't result in an outage and the change is
 applied during the next maintenance window unless the
 C<ApplyImmediately> parameter is set to C<true> for this request. If
 you are migrating from Provisioned IOPS to standard storage, set this
@@ -456,7 +456,7 @@ C<general-public-license>
 The new password for the master user. The password can include any
 printable ASCII character except "/", """, or "@".
 
-Changing this parameter does not result in an outage and the change is
+Changing this parameter doesn't result in an outage and the change is
 asynchronously applied as soon as possible. Between the time of the
 request and the completion of the request, the C<MasterUserPassword>
 element exists in the C<PendingModifiedValues> element of the operation
@@ -526,7 +526,7 @@ supply a C<MonitoringRoleArn> value.
 =head2 MultiAZ => Bool
 
 Specifies if the DB instance is a Multi-AZ deployment. Changing this
-parameter does not result in an outage and the change is applied during
+parameter doesn't result in an outage and the change is applied during
 the next maintenance window unless the C<ApplyImmediately> parameter is
 set to C<true> for this request.
 
@@ -565,7 +565,7 @@ Example: C<mydbinstance>
 =head2 OptionGroupName => Str
 
 Indicates that the DB instance should be associated with the specified
-option group. Changing this parameter does not result in an outage
+option group. Changing this parameter doesn't result in an outage
 except in the following case and the change is applied during the next
 maintenance window unless the C<ApplyImmediately> parameter is set to
 C<true> for this request. If the parameter change results in an option
@@ -591,7 +591,7 @@ or the KMS key alias for the KMS encryption key.
 
 The daily time range during which automated backups are created if
 automated backups are enabled, as determined by the
-C<BackupRetentionPeriod> parameter. Changing this parameter does not
+C<BackupRetentionPeriod> parameter. Changing this parameter doesn't
 result in an outage and the change is asynchronously applied as soon as
 possible.
 
@@ -628,14 +628,14 @@ Must be at least 30 minutes
 =head2 PreferredMaintenanceWindow => Str
 
 The weekly time range (in UTC) during which system maintenance can
-occur, which might result in an outage. Changing this parameter does
-not result in an outage, except in the following situation, and the
-change is asynchronously applied as soon as possible. If there are
-pending actions that cause a reboot, and the maintenance window is
-changed to include the current time, then changing this parameter will
-cause a reboot of the DB instance. If moving this window to the current
-time, there must be at least 30 minutes between the current time and
-end of the window to ensure pending changes are applied.
+occur, which might result in an outage. Changing this parameter doesn't
+result in an outage, except in the following situation, and the change
+is asynchronously applied as soon as possible. If there are pending
+actions that cause a reboot, and the maintenance window is changed to
+include the current time, then changing this parameter will cause a
+reboot of the DB instance. If moving this window to the current time,
+there must be at least 30 minutes between the current time and end of
+the window to ensure pending changes are applied.
 
 Default: Uses existing setting
 

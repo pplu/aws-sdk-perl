@@ -176,9 +176,13 @@ Valid Values: C<aurora>, C<aurora-postgresql>
 
 The version number of the database engine to use.
 
-B<Aurora>
+B<Aurora MySQL>
 
 Example: C<5.6.10a>
+
+B<Aurora PostgreSQL>
+
+Example: C<9.6.3>
 
 
 

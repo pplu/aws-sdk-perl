@@ -156,7 +156,7 @@ Example: C<my-cluster2>
 =head2 OptionGroupName => Str
 
 A value that indicates that the DB cluster should be associated with
-the specified option group. Changing this parameter does not result in
+the specified option group. Changing this parameter doesn't result in
 an outage except in the following case, and the change is applied
 during the next maintenance window unless the C<ApplyImmediately>
 parameter is set to C<true> for this request. If the parameter change

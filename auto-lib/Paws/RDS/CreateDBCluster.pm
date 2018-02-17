@@ -168,7 +168,9 @@ Default: C<false>
 
 The name of the database engine to be used for this DB cluster.
 
-Valid Values: C<aurora>, C<aurora-postgresql>
+Valid Values: C<aurora> (for MySQL 5.6-compatible Aurora),
+C<aurora-mysql> (for MySQL 5.7-compatible Aurora), and
+C<aurora-postgresql>
 
 
 
@@ -176,9 +178,13 @@ Valid Values: C<aurora>, C<aurora-postgresql>
 
 The version number of the database engine to use.
 
-B<Aurora>
+B<Aurora MySQL>
 
-Example: C<5.6.10a>
+Example: C<5.6.10a>, C<5.7.12>
+
+B<Aurora PostgreSQL>
+
+Example: C<9.6.3>
 
 
 

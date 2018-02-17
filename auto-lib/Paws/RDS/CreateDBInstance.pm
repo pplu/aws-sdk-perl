@@ -588,7 +588,11 @@ Valid Values:
 
 =item *
 
-C<aurora>
+C<aurora> (for MySQL 5.6-compatible Aurora)
+
+=item *
+
+C<aurora-mysql> (for MySQL 5.7-compatible Aurora)
 
 =item *
 

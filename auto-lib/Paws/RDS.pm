@@ -1321,14 +1321,14 @@ running MySQL, MariaDB, or PostgreSQL. For more information, see
 Working with PostgreSQL, MySQL, and MariaDB Read Replicas
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html).
 
-Amazon Aurora does not support this action. You must call the
+Amazon Aurora doesn't support this action. You must call the
 C<CreateDBInstance> action to create a DB instance for an Aurora DB
 cluster.
 
 All Read Replica DB instances are created with backups disabled. All
 other DB instance attributes (including DB security groups and DB
 parameter groups) are inherited from the source DB instance, except as
-specified below.
+specified following.
 
 Your source DB instance must have backup retention enabled.
 
@@ -1599,7 +1599,7 @@ include Amazon RDS quotas for the account, such as the number of DB
 instances allowed. The description for a quota includes the quota name,
 current usage toward that quota, and the quota's maximum value.
 
-This command does not take any parameters.
+This command doesn't take any parameters.
 
 
 =head2 DescribeCertificates([CertificateIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
@@ -2185,10 +2185,21 @@ Returns: a L<Paws::RDS::PromoteReadReplicaResult> instance
 
 Promotes a Read Replica DB instance to a standalone DB instance.
 
+=over
+
+=item *
+
 We recommend that you enable automated backups on your Read Replica
 before promoting the Read Replica. This ensures that no backup is taken
 during the promotion process. Once the instance is promoted to a
 primary instance, backups are taken based on your backup settings.
+
+=item *
+
+This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
+
+=back
+
 
 
 =head2 PromoteReadReplicaDBCluster(DBClusterIdentifier => Str)
@@ -2379,7 +2390,7 @@ deployment.
 
 If your intent is to replace your original DB instance with the new,
 restored DB instance, then rename your original DB instance before you
-call the RestoreDBInstanceFromDBSnapshot action. RDS does not allow two
+call the RestoreDBInstanceFromDBSnapshot action. RDS doesn't allow two
 DB instances with the same name. Once you have renamed your original DB
 instance with a different identifier, then you can pass the original
 name of the DB instance as the DBInstanceIdentifier in the call to the
@@ -2389,6 +2400,9 @@ snapshot.
 
 If you are restoring from a shared manual DB snapshot, the
 C<DBSnapshotIdentifier> must be the ARN of the shared DB snapshot.
+
+This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
+Aurora, use RestoreDBClusterFromSnapshot.
 
 
 =head2 RestoreDBInstanceFromS3(DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, S3BucketName => Str, S3IngestionRoleArn => Str, SourceEngine => Str, SourceEngineVersion => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CopyTagsToSnapshot => Bool, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str|Undef], DBSubnetGroupName => Str, EnableCloudwatchLogsExports => ArrayRef[Str|Undef], EnableIAMDatabaseAuthentication => Bool, EnablePerformanceInsights => Bool, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MasterUsername => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, OptionGroupName => Str, PerformanceInsightsKMSKeyId => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, S3Prefix => Str, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
@@ -2425,6 +2439,9 @@ except when the instance is a SQL Server instance that has an option
 group that is associated with mirroring; in this case, the instance
 becomes a mirrored deployment and not a single-AZ deployment.
 
+This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
+Aurora, use RestoreDBClusterToPointInTime.
+
 
 =head2 RevokeDBSecurityGroupIngress(DBSecurityGroupName => Str, [CIDRIP => Str, EC2SecurityGroupId => Str, EC2SecurityGroupName => Str, EC2SecurityGroupOwnerId => Str])
 
@@ -2450,7 +2467,7 @@ stop-db-instance AWS CLI command, or the StopDBInstance action. For
 more information, see Stopping and Starting a DB instance in the AWS
 RDS user guide.
 
-This command does not apply to Aurora MySQL and Aurora PostgreSQL.
+This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
 
 
 =head2 StopDBInstance(DBInstanceIdentifier => Str, [DBSnapshotIdentifier => Str])
@@ -2466,7 +2483,7 @@ logs so you can do a point-in-time restore if necessary. For more
 information, see Stopping and Starting a DB instance in the AWS RDS
 user guide.
 
-This command does not apply to Aurora MySQL and Aurora PostgreSQL.
+This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
 
 
 
