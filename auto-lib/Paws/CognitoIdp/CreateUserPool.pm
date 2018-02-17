@@ -99,6 +99,18 @@ A string representing the email verification subject.
 
 The Lambda trigger configuration information for the new user pool.
 
+In a push model, event sources (such as Amazon S3 and custom
+applications) need permission to invoke a function. So you will need to
+make an extra call to add permission for these event sources to invoke
+your Lambda function.
+
+For more information on using the Lambda API to add permission, see
+AddPermission
+(https://docs.aws.amazon.com/lambda/latest/dg/API_AddPermission.html).
+
+For adding permission using the AWS CLI, see add-permission
+(https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html).
+
 
 
 =head2 MfaConfiguration => Str

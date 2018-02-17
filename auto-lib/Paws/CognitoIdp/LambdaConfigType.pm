@@ -8,6 +8,7 @@ package Paws::CognitoIdp::LambdaConfigType;
   has PreAuthentication => (is => 'ro', isa => 'Str');
   has PreSignUp => (is => 'ro', isa => 'Str');
   has PreTokenGeneration => (is => 'ro', isa => 'Str');
+  has UserMigration => (is => 'ro', isa => 'Str');
   has VerifyAuthChallengeResponse => (is => 'ro', isa => 'Str');
 1;
 
@@ -82,6 +83,11 @@ Specifies the configuration for AWS Lambda triggers.
 =head2 PreTokenGeneration => Str
 
   A Lambda trigger that is invoked before token generation.
+
+
+=head2 UserMigration => Str
+
+  The user migration Lambda config type.
 
 
 =head2 VerifyAuthChallengeResponse => Str

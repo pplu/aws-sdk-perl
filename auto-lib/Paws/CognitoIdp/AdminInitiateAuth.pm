@@ -63,6 +63,11 @@ tokens.
 C<USER_SRP_AUTH> will take in C<USERNAME> and C<SRP_A> and return the
 SRP variables to be used for next challenge execution.
 
+=item *
+
+C<USER_PASSWORD_AUTH> will take in C<USERNAME> and C<PASSWORD> and
+return the next challenge or tokens.
+
 =back
 
 Valid values include:
@@ -90,10 +95,17 @@ C<ADMIN_NO_SRP_AUTH>: Non-SRP authentication flow; you can pass in the
 USERNAME and PASSWORD directly if the flow is enabled for calling the
 app client.
 
+=item *
+
+C<USER_PASSWORD_AUTH>: Non-SRP authentication flow; USERNAME and
+PASSWORD are passed directly. If a user migration Lambda trigger is
+set, this flow will invoke the user migration Lambda if the USERNAME is
+not found in the user pool.
+
 =back
 
 
-Valid values are: C<"USER_SRP_AUTH">, C<"REFRESH_TOKEN_AUTH">, C<"REFRESH_TOKEN">, C<"CUSTOM_AUTH">, C<"ADMIN_NO_SRP_AUTH">
+Valid values are: C<"USER_SRP_AUTH">, C<"REFRESH_TOKEN_AUTH">, C<"REFRESH_TOKEN">, C<"CUSTOM_AUTH">, C<"ADMIN_NO_SRP_AUTH">, C<"USER_PASSWORD_AUTH">
 
 =head2 AuthParameters => L<Paws::CognitoIdp::AuthParametersType>
 
@@ -111,9 +123,9 @@ secret), C<DEVICE_KEY>
 
 =item *
 
-For C<REFRESH_TOKEN_AUTH/REFRESH_TOKEN>: C<USERNAME> (required),
+For C<REFRESH_TOKEN_AUTH/REFRESH_TOKEN>: C<REFRESH_TOKEN> (required),
 C<SECRET_HASH> (required if the app client is configured with a client
-secret), C<REFRESH_TOKEN> (required), C<DEVICE_KEY>
+secret), C<DEVICE_KEY>
 
 =item *
 

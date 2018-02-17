@@ -50,7 +50,7 @@ The time-based one-time password software token MFA settings.
 
 =head2 B<REQUIRED> Username => Str
 
-The user pool username.
+The user pool username or alias.
 
 
 

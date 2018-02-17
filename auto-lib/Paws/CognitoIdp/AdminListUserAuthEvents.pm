@@ -50,7 +50,7 @@ A pagination token.
 
 =head2 B<REQUIRED> Username => Str
 
-The user pool username.
+The user pool username or an alias.
 
 
 

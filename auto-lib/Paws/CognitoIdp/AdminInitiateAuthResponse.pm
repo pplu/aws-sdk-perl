@@ -86,7 +86,7 @@ next call (C<AdminRespondToAuthChallenge>).
 
 All challenges require C<USERNAME> and C<SECRET_HASH> (if applicable).
 
-The value of the C<USER_IF_FOR_SRP> attribute will be the user's actual
+The value of the C<USER_ID_FOR_SRP> attribute will be the user's actual
 username, not an alias (such as email address or phone number), even if
 you specified an alias in your call to C<AdminInitiateAuth>. This is
 because, in the C<AdminRespondToAuthChallenge> API
