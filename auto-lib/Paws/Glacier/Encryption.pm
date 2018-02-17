@@ -48,7 +48,7 @@ Amazon S3, for example C<AES256> or C<aws:kms>.
 =head2 KMSContext => Str
 
   Optional. If the encryption type is C<aws:kms>, you can use this value
-to specify the encryption context for the restore results.
+to specify the encryption context for the job results.
 
 
 =head2 KMSKeyId => Str

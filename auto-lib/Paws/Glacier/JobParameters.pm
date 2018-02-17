@@ -110,9 +110,8 @@ SNS topic must exist.
 
 =head2 Tier => Str
 
-  The retrieval option to use for a select or archive retrieval job.
-Valid values are C<Expedited>, C<Standard>, or C<Bulk>. C<Standard> is
-the default.
+  The tier to use for a select or an archive retrieval job. Valid values
+are C<Expedited>, C<Standard>, or C<Bulk>. C<Standard> is the default.
 
 
 =head2 Type => Str
