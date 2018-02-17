@@ -84,7 +84,7 @@ account.
 =head2 Type => Str
 
   A preset can be of two types: system or custom. System or built-in
-preset canE<rsquo>t be modified or deleted by the user.
+preset can't be modified or deleted by the user.
 
 
 

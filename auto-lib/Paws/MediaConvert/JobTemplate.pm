@@ -90,7 +90,7 @@ to. If you don't specify this, jobs will go to the default queue.
 =head2 Type => Str
 
   A job template can be of two types: system or custom. System or
-built-in job templates canE<rsquo>t be modified or deleted by the user.
+built-in job templates can't be modified or deleted by the user.
 
 
 

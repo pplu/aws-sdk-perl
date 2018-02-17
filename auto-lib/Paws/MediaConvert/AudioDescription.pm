@@ -46,7 +46,7 @@ Description of audio output
 
 =head2 AudioNormalizationSettings => L<Paws::MediaConvert::AudioNormalizationSettings>
 
-  Settings for Audio Normalization
+  
 
 
 =head2 AudioSourceName => Str

@@ -79,7 +79,7 @@ account.
 =head2 Type => Str
 
   A queue can be of two types: system or custom. System or built-in
-queues canE<rsquo>t be modified or deleted by the user.
+queues can't be modified or deleted by the user.
 
 
 

@@ -50,8 +50,7 @@ caption data is Embedded or Teletext.
 
 =head2 DestinationType => Str
 
-  Type of Caption output, including Burn-In, Embedded, SCC, SRT, TTML,
-WebVTT, DVB-Sub, Teletext.
+  
 
 
 =head2 DvbSubDestinationSettings => L<Paws::MediaConvert::DvbSubDestinationSettings>
@@ -71,8 +70,7 @@ WebVTT, DVB-Sub, Teletext.
 
 =head2 TtmlDestinationSettings => L<Paws::MediaConvert::TtmlDestinationSettings>
 
-  Settings specific to TTML caption outputs, including Pass style
-information (TtmlStylePassthrough).
+  
 
 
 

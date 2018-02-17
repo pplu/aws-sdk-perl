@@ -62,8 +62,7 @@ Output Group settings, including type
 
 =head2 Type => Str
 
-  Type of output group (File group, Apple HLS, DASH ISO, Microsoft Smooth
-Streaming)
+  
 
 
 

@@ -51,8 +51,7 @@ Selector for Audio
 
 =head2 ExternalAudioFileInput => Str
 
-  Specifies audio data from an external file source. Auto populated when
-Infer External Filename is checked
+  Specifies audio data from an external file source.
 
 
 =head2 LanguageCode => Str
