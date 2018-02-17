@@ -41,8 +41,9 @@ Maps a caption channel to an ISO 693-2 language code
 
 =head2 CaptionChannel => Int
 
-  Channel to insert closed captions. Each channel mapping must have a
-unique channel number (maximum of 4)
+  The closed caption channel being described by this
+CaptionLanguageMapping. Each channel mapping must have a unique channel
+number (maximum of 4)
 
 
 =head2 LanguageCode => Str

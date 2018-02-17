@@ -81,7 +81,7 @@ from creating multiple resources.
 
 =head2 Reserved => Str
 
-Reserved for future use.
+Deprecated field that's only usable by whitelisted customers.
 
 
 

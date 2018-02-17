@@ -83,6 +83,11 @@ package Paws::MediaLive;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::StopChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::UpdateChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
   sub ListAllChannels {
     my $self = shift;
@@ -155,7 +160,7 @@ package Paws::MediaLive;
   }
 
 
-  sub operations { qw/CreateChannel CreateInput CreateInputSecurityGroup DeleteChannel DeleteInput DeleteInputSecurityGroup DescribeChannel DescribeInput DescribeInputSecurityGroup ListChannels ListInputs ListInputSecurityGroups StartChannel StopChannel / }
+  sub operations { qw/CreateChannel CreateInput CreateInputSecurityGroup DeleteChannel DeleteInput DeleteInputSecurityGroup DescribeChannel DescribeInput DescribeInputSecurityGroup ListChannels ListInputs ListInputSecurityGroups StartChannel StopChannel UpdateChannel / }
 
 1;
 
@@ -311,6 +316,15 @@ Each argument is described in detail in: L<Paws::MediaLive::StopChannel>
 Returns: a L<Paws::MediaLive::StopChannelResponse> instance
 
 Stops a running channel
+
+
+=head2 UpdateChannel(ChannelId => Str, [Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>], EncoderSettings => L<Paws::MediaLive::EncoderSettings>, InputSpecification => L<Paws::MediaLive::InputSpecification>, Name => Str, RoleArn => Str])
+
+Each argument is described in detail in: L<Paws::MediaLive::UpdateChannel>
+
+Returns: a L<Paws::MediaLive::UpdateChannelResponse> instance
+
+Updates a channel.
 
 
 
