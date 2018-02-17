@@ -5,6 +5,7 @@ package Paws::AppStream::Stack;
   has Description => (is => 'ro', isa => 'Str');
   has DisplayName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has RedirectURL => (is => 'ro', isa => 'Str');
   has StackErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::StackError]');
   has StorageConnectors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::StorageConnector]');
 1;
@@ -65,6 +66,11 @@ Describes a stack.
 =head2 B<REQUIRED> Name => Str
 
   The name of the stack.
+
+
+=head2 RedirectURL => Str
+
+  The URL the user is redirected to after the streaming session ends.
 
 
 =head2 StackErrors => ArrayRef[L<Paws::AppStream::StackError>]

@@ -17,7 +17,9 @@ Paws::AppStream::DescribeDirectoryConfigsResult
 
 =head2 DirectoryConfigs => ArrayRef[L<Paws::AppStream::DirectoryConfig>]
 
-Information about the directory configurations.
+Information about the directory configurations. Note that although the
+response syntax in this topic includes the account password, this
+password is not returned in the actual response.
 
 
 =head2 NextToken => Str

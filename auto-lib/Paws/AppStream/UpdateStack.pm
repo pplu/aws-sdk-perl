@@ -1,10 +1,12 @@
 
 package Paws::AppStream::UpdateStack;
   use Moose;
+  has AttributesToDelete => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DeleteStorageConnectors => (is => 'ro', isa => 'Bool');
   has Description => (is => 'ro', isa => 'Str');
   has DisplayName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has RedirectURL => (is => 'ro', isa => 'Str');
   has StorageConnectors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::StorageConnector]');
 
   use MooseX::ClassAttribute;
@@ -37,6 +39,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AttributesToDelete => ArrayRef[Str|Undef]
+
+The stack attributes to delete.
+
+
+
 =head2 DeleteStorageConnectors => Bool
 
 Deletes the storage connectors currently enabled for the stack.
@@ -58,6 +66,12 @@ The stack name for display.
 =head2 B<REQUIRED> Name => Str
 
 The name of the stack.
+
+
+
+=head2 RedirectURL => Str
+
+The URL the user is redirected to after the streaming session ends.
 
 
 

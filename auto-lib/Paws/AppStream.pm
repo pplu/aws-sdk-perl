@@ -260,7 +260,7 @@ Returns: a L<Paws::AppStream::CreateImageBuilderStreamingURLResult> instance
 Creates a URL to start an image builder streaming session.
 
 
-=head2 CreateStack(Name => Str, [Description => Str, DisplayName => Str, StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]])
+=head2 CreateStack(Name => Str, [Description => Str, DisplayName => Str, RedirectURL => Str, StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]])
 
 Each argument is described in detail in: L<Paws::AppStream::CreateStack>
 
@@ -333,7 +333,9 @@ Each argument is described in detail in: L<Paws::AppStream::DescribeDirectoryCon
 
 Returns: a L<Paws::AppStream::DescribeDirectoryConfigsResult> instance
 
-Describes the specified directory configurations.
+Describes the specified directory configurations. Note that although
+the response syntax in this topic includes the account password, this
+password is not returned in the actual response.
 
 
 =head2 DescribeFleets([Names => ArrayRef[Str|Undef], NextToken => Str])
@@ -431,7 +433,7 @@ Lists the tags for the specified AppStream 2.0 resource. You can tag
 AppStream 2.0 image builders, images, fleets, and stacks.
 
 For more information about tags, see Tagging Your Resources
-(http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic)
+(http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
 in the I<Amazon AppStream 2.0 Developer Guide>.
 
 
@@ -488,7 +490,7 @@ To list the current tags for your resources, use ListTagsForResource.
 To disassociate tags from your resources, use UntagResource.
 
 For more information about tags, see Tagging Your Resources
-(http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic)
+(http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
 in the I<Amazon AppStream 2.0 Developer Guide>.
 
 
@@ -504,7 +506,7 @@ resource.
 To list the current tags for your resources, use ListTagsForResource.
 
 For more information about tags, see Tagging Your Resources
-(http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic)
+(http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
 in the I<Amazon AppStream 2.0 Developer Guide>.
 
 
@@ -531,7 +533,7 @@ update the C<DisplayName> and C<ComputeCapacity> attributes. If the
 fleet is in the C<STARTING> or C<STOPPING> state, you can't update it.
 
 
-=head2 UpdateStack(Name => Str, [DeleteStorageConnectors => Bool, Description => Str, DisplayName => Str, StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]])
+=head2 UpdateStack(Name => Str, [AttributesToDelete => ArrayRef[Str|Undef], DeleteStorageConnectors => Bool, Description => Str, DisplayName => Str, RedirectURL => Str, StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]])
 
 Each argument is described in detail in: L<Paws::AppStream::UpdateStack>
 
