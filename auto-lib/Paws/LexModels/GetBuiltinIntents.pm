@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 A list of locales that the intent supports.
 
-Valid values are: C<"en-US">
+Valid values are: C<"en-US">, C<"en-GB">, C<"de-DE">
 
 =head2 MaxResults => Int
 

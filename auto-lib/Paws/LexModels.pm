@@ -128,6 +128,11 @@ package Paws::LexModels;
     my $call_object = $self->new_with_coercions('Paws::LexModels::GetExport', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetImport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LexModels::GetImport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetIntent {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::LexModels::GetIntent', @_);
@@ -181,6 +186,11 @@ package Paws::LexModels;
   sub PutSlotType {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::LexModels::PutSlotType', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartImport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LexModels::StartImport', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -416,7 +426,7 @@ package Paws::LexModels;
   }
 
 
-  sub operations { qw/CreateBotVersion CreateIntentVersion CreateSlotTypeVersion DeleteBot DeleteBotAlias DeleteBotChannelAssociation DeleteBotVersion DeleteIntent DeleteIntentVersion DeleteSlotType DeleteSlotTypeVersion DeleteUtterances GetBot GetBotAlias GetBotAliases GetBotChannelAssociation GetBotChannelAssociations GetBots GetBotVersions GetBuiltinIntent GetBuiltinIntents GetBuiltinSlotTypes GetExport GetIntent GetIntents GetIntentVersions GetSlotType GetSlotTypes GetSlotTypeVersions GetUtterancesView PutBot PutBotAlias PutIntent PutSlotType / }
+  sub operations { qw/CreateBotVersion CreateIntentVersion CreateSlotTypeVersion DeleteBot DeleteBotAlias DeleteBotChannelAssociation DeleteBotVersion DeleteIntent DeleteIntentVersion DeleteSlotType DeleteSlotTypeVersion DeleteUtterances GetBot GetBotAlias GetBotAliases GetBotChannelAssociation GetBotChannelAssociations GetBots GetBotVersions GetBuiltinIntent GetBuiltinIntents GetBuiltinSlotTypes GetExport GetImport GetIntent GetIntents GetIntentVersions GetSlotType GetSlotTypes GetSlotTypeVersions GetUtterancesView PutBot PutBotAlias PutIntent PutSlotType StartImport / }
 
 1;
 
@@ -668,11 +678,10 @@ Returns: nothing
 
 Deletes stored utterances.
 
-Amazon Lex stores the utterances that users send to your bot unless the
-C<childDirected> field in the bot is set to C<true>. Utterances are
-stored for 15 days for use with the GetUtterancesView operation, and
-then stored indefinitely for use in improving the ability of your bot
-to respond to user input.
+Amazon Lex stores the utterances that users send to your bot.
+Utterances are stored for 15 days for use with the GetUtterancesView
+operation, and then stored indefinitely for use in improving the
+ability of your bot to respond to user input.
 
 Use the C<DeleteStoredUtterances> operation to manually delete stored
 utterances for a specific user.
@@ -839,6 +848,16 @@ Returns: a L<Paws::LexModels::GetExportResponse> instance
 Exports the contents of a Amazon Lex resource in a specified format.
 
 
+=head2 GetImport(ImportId => Str)
+
+Each argument is described in detail in: L<Paws::LexModels::GetImport>
+
+Returns: a L<Paws::LexModels::GetImportResponse> instance
+
+Gets information about an import job started with the C<StartImport>
+operation.
+
+
 =head2 GetIntent(Name => Str, Version => Str)
 
 Each argument is described in detail in: L<Paws::LexModels::GetIntent>
@@ -978,19 +997,16 @@ After you publish a new version of a bot, you can get information about
 the old version and the new so that you can compare the performance
 across the two versions.
 
-Data is available for the last 15 days. You can request information for
-up to 5 versions in each request. The response contains information
-about a maximum of 100 utterances for each version.
-
-If the bot's C<childDirected> field is set to C<true>, utterances for
-the bot are not stored and cannot be retrieved with the
-C<GetUtterancesView> operation. For more information, see PutBot.
+Utterance statistics are generated once a day. Data is available for
+the last 15 days. You can request information for up to 5 versions in
+each request. The response contains information about a maximum of 100
+utterances for each version.
 
 This operation requires permissions for the C<lex:GetUtterancesView>
 action.
 
 
-=head2 PutBot(ChildDirected => Bool, Locale => Str, Name => Str, [AbortStatement => L<Paws::LexModels::Statement>, Checksum => Str, ClarificationPrompt => L<Paws::LexModels::Prompt>, Description => Str, IdleSessionTTLInSeconds => Int, Intents => ArrayRef[L<Paws::LexModels::Intent>], ProcessBehavior => Str, VoiceId => Str])
+=head2 PutBot(ChildDirected => Bool, Locale => Str, Name => Str, [AbortStatement => L<Paws::LexModels::Statement>, Checksum => Str, ClarificationPrompt => L<Paws::LexModels::Prompt>, CreateVersion => Bool, Description => Str, IdleSessionTTLInSeconds => Int, Intents => ArrayRef[L<Paws::LexModels::Intent>], ProcessBehavior => Str, VoiceId => Str])
 
 Each argument is described in detail in: L<Paws::LexModels::PutBot>
 
@@ -998,11 +1014,12 @@ Returns: a L<Paws::LexModels::PutBotResponse> instance
 
 Creates an Amazon Lex conversational bot or replaces an existing bot.
 When you create or update a bot you are only required to specify a
-name. You can use this to add intents later, or to remove intents from
-an existing bot. When you create a bot with a name only, the bot is
-created or updated but Amazon Lex returns the C< response C<FAILED>.
-You can build the bot after you add one or more intents. For more
-information about Amazon Lex bots, see how-it-works.>
+name, a locale, and whether the bot is directed toward children under
+age 13. You can use this to add intents later, or to remove intents
+from an existing bot. When you create a bot with the minimum
+information, the bot is created or updated but Amazon Lex returns the
+C< response C<FAILED>. You can build the bot after you add one or more
+intents. For more information about Amazon Lex bots, see how-it-works.>
 
 If you specify the name of an existing bot, the fields in the request
 replace the existing values in the C<$LATEST> version of the bot.
@@ -1029,7 +1046,7 @@ see versioning-aliases.
 This operation requires permissions for the C<lex:PutBotAlias> action.
 
 
-=head2 PutIntent(Name => Str, [Checksum => Str, ConclusionStatement => L<Paws::LexModels::Statement>, ConfirmationPrompt => L<Paws::LexModels::Prompt>, Description => Str, DialogCodeHook => L<Paws::LexModels::CodeHook>, FollowUpPrompt => L<Paws::LexModels::FollowUpPrompt>, FulfillmentActivity => L<Paws::LexModels::FulfillmentActivity>, ParentIntentSignature => Str, RejectionStatement => L<Paws::LexModels::Statement>, SampleUtterances => ArrayRef[Str|Undef], Slots => ArrayRef[L<Paws::LexModels::Slot>]])
+=head2 PutIntent(Name => Str, [Checksum => Str, ConclusionStatement => L<Paws::LexModels::Statement>, ConfirmationPrompt => L<Paws::LexModels::Prompt>, CreateVersion => Bool, Description => Str, DialogCodeHook => L<Paws::LexModels::CodeHook>, FollowUpPrompt => L<Paws::LexModels::FollowUpPrompt>, FulfillmentActivity => L<Paws::LexModels::FulfillmentActivity>, ParentIntentSignature => Str, RejectionStatement => L<Paws::LexModels::Statement>, SampleUtterances => ArrayRef[Str|Undef], Slots => ArrayRef[L<Paws::LexModels::Slot>]])
 
 Each argument is described in detail in: L<Paws::LexModels::PutIntent>
 
@@ -1107,7 +1124,7 @@ For more information, see how-it-works.
 This operation requires permissions for the C<lex:PutIntent> action.
 
 
-=head2 PutSlotType(Name => Str, [Checksum => Str, Description => Str, EnumerationValues => ArrayRef[L<Paws::LexModels::EnumerationValue>], ValueSelectionStrategy => Str])
+=head2 PutSlotType(Name => Str, [Checksum => Str, CreateVersion => Bool, Description => Str, EnumerationValues => ArrayRef[L<Paws::LexModels::EnumerationValue>], ValueSelectionStrategy => Str])
 
 Each argument is described in detail in: L<Paws::LexModels::PutSlotType>
 
@@ -1128,6 +1145,15 @@ bot uses the C<$LATEST> version of an intent that contains the slot
 type, the bot's C<status> field is set to C<NOT_BUILT>.
 
 This operation requires permissions for the C<lex:PutSlotType> action.
+
+
+=head2 StartImport(MergeStrategy => Str, Payload => Str, ResourceType => Str)
+
+Each argument is described in detail in: L<Paws::LexModels::StartImport>
+
+Returns: a L<Paws::LexModels::StartImportResponse> instance
+
+Starts a job to import a resource to Amazon Lex.
 
 
 

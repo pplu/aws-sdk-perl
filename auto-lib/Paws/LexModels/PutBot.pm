@@ -5,6 +5,7 @@ package Paws::LexModels::PutBot;
   has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
   has ChildDirected => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'childDirected', required => 1);
   has ClarificationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', traits => ['NameInRequest'], request_name => 'clarificationPrompt');
+  has CreateVersion => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'createVersion');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has IdleSessionTTLInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'idleSessionTTLInSeconds');
   has Intents => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Intent]', traits => ['NameInRequest'], request_name => 'intents');
@@ -124,6 +125,12 @@ would you like to do? You can say 'Order a pizza' or 'Order a drink.'"
 
 
 
+=head2 CreateVersion => Bool
+
+
+
+
+
 =head2 Description => Str
 
 A description of the bot.
@@ -167,7 +174,7 @@ must be compatible with the locale of the bot.
 
 The default is C<en-US>.
 
-Valid values are: C<"en-US">
+Valid values are: C<"en-US">, C<"en-GB">, C<"de-DE">
 
 =head2 B<REQUIRED> Name => Str
 
@@ -177,11 +184,11 @@ The name of the bot. The name is I<not> case sensitive.
 
 =head2 ProcessBehavior => Str
 
-If you set the C<processBehavior> element to C<Build>, Amazon Lex
-builds the bot so that it can be run. If you set the element to
-C<Save>Amazon Lex saves the bot, but doesn't build it.
+If you set the C<processBehavior> element to C<BUILD>, Amazon Lex
+builds the bot so that it can be run. If you set the element to C<SAVE>
+Amazon Lex saves the bot, but doesn't build it.
 
-If you don't specify this value, the default value is C<Save>.
+If you don't specify this value, the default value is C<BUILD>.
 
 Valid values are: C<"SAVE">, C<"BUILD">
 

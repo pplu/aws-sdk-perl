@@ -2,6 +2,7 @@
 package Paws::LexModels::PutSlotType;
   use Moose;
   has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
+  has CreateVersion => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'createVersion');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has EnumerationValues => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::EnumerationValue]', traits => ['NameInRequest'], request_name => 'enumerationValues');
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
@@ -50,6 +51,12 @@ checksum of the most recent revision of the C<$LATEST> version. If you
 don't specify the C< checksum> field, or if the checksum does not match
 the C<$LATEST> version, you get a C<PreconditionFailedException>
 exception.
+
+
+
+=head2 CreateVersion => Bool
+
+
 
 
 

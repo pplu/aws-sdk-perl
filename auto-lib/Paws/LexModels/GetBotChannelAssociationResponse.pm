@@ -89,7 +89,7 @@ Valid values are: C<"IN_PROGRESS">, C<"CREATED">, C<"FAILED">
 
 The type of the messaging platform.
 
-Valid values are: C<"Facebook">, C<"Slack">, C<"Twilio-Sms">
+Valid values are: C<"Facebook">, C<"Slack">, C<"Twilio-Sms">, C<"Kik">
 =head2 _request_id => Str
 
 

@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The format of the exported data.
 
-Valid values are: C<"ALEXA_SKILLS_KIT">
+Valid values are: C<"ALEXA_SKILLS_KIT">, C<"LEX">
 
 =head2 B<REQUIRED> Name => Str
 
@@ -53,7 +53,7 @@ The name of the bot to export.
 
 The type of resource to export.
 
-Valid values are: C<"BOT">
+Valid values are: C<"BOT">, C<"INTENT">, C<"SLOT_TYPE">
 
 =head2 B<REQUIRED> Version => Str
 

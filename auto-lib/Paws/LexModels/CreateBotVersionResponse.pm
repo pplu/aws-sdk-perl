@@ -111,7 +111,7 @@ The date when the C<$LATEST> version of this bot was updated.
 
 Specifies the target locale for the bot.
 
-Valid values are: C<"en-US">
+Valid values are: C<"en-US">, C<"en-GB">, C<"de-DE">
 =head2 Name => Str
 
 The name of the bot.

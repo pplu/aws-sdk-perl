@@ -2,6 +2,7 @@ package Paws::LexModels::Message;
   use Moose;
   has Content => (is => 'ro', isa => 'Str', request_name => 'content', traits => ['NameInRequest'], required => 1);
   has ContentType => (is => 'ro', isa => 'Str', request_name => 'contentType', traits => ['NameInRequest'], required => 1);
+  has GroupNumber => (is => 'ro', isa => 'Int', request_name => 'groupNumber', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::LexModels::Message object:
 
-  $service_obj->Method(Att1 => { Content => $value, ..., ContentType => $value  });
+  $service_obj->Method(Att1 => { Content => $value, ..., GroupNumber => $value  });
 
 =head3 Results returned from an API call
 
@@ -45,6 +46,13 @@ The message object that provides the message text and its type.
 =head2 B<REQUIRED> ContentType => Str
 
   The content type of the message string.
+
+
+=head2 GroupNumber => Int
+
+  Identifies the message group that the message belongs to. When a group
+is assigned to a message, Amazon Lex returns one message from each
+group in the response.
 
 
 
