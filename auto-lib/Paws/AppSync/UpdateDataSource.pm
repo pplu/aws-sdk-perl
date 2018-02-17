@@ -87,7 +87,7 @@ The new service role ARN for the data source.
 
 The new data source type.
 
-Valid values are: C<"AWS_LAMBDA">, C<"AMAZON_DYNAMODB">, C<"AMAZON_ELASTICSEARCH">
+Valid values are: C<"AWS_LAMBDA">, C<"AMAZON_DYNAMODB">, C<"AMAZON_ELASTICSEARCH">, C<"NONE">
 
 
 =head1 SEE ALSO

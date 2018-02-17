@@ -123,6 +123,11 @@ package Paws::AppSync;
     my $call_object = $self->new_with_coercions('Paws::AppSync::StartSchemaCreation', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateApiKey {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppSync::UpdateApiKey', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateDataSource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppSync::UpdateDataSource', @_);
@@ -146,7 +151,7 @@ package Paws::AppSync;
   
 
 
-  sub operations { qw/CreateApiKey CreateDataSource CreateGraphqlApi CreateResolver CreateType DeleteApiKey DeleteDataSource DeleteGraphqlApi DeleteResolver DeleteType GetDataSource GetGraphqlApi GetIntrospectionSchema GetResolver GetSchemaCreationStatus GetType ListApiKeys ListDataSources ListGraphqlApis ListResolvers ListTypes StartSchemaCreation UpdateDataSource UpdateGraphqlApi UpdateResolver UpdateType / }
+  sub operations { qw/CreateApiKey CreateDataSource CreateGraphqlApi CreateResolver CreateType DeleteApiKey DeleteDataSource DeleteGraphqlApi DeleteResolver DeleteType GetDataSource GetGraphqlApi GetIntrospectionSchema GetResolver GetSchemaCreationStatus GetType ListApiKeys ListDataSources ListGraphqlApis ListResolvers ListTypes StartSchemaCreation UpdateApiKey UpdateDataSource UpdateGraphqlApi UpdateResolver UpdateType / }
 
 1;
 
@@ -179,7 +184,7 @@ sources using GraphQL from your application.
 
 =head1 METHODS
 
-=head2 CreateApiKey(ApiId => Str, [Description => Str])
+=head2 CreateApiKey(ApiId => Str, [Description => Str, Expires => Int])
 
 Each argument is described in detail in: L<Paws::AppSync::CreateApiKey>
 
@@ -381,6 +386,15 @@ Returns: a L<Paws::AppSync::StartSchemaCreationResponse> instance
 Adds a new schema to your GraphQL API.
 
 This operation is asynchronous. Use to determine when it has completed.
+
+
+=head2 UpdateApiKey(ApiId => Str, Id => Str, [Description => Str, Expires => Int])
+
+Each argument is described in detail in: L<Paws::AppSync::UpdateApiKey>
+
+Returns: a L<Paws::AppSync::UpdateApiKeyResponse> instance
+
+Updates an API key.
 
 
 =head2 UpdateDataSource(ApiId => Str, Name => Str, Type => Str, [Description => Str, DynamodbConfig => L<Paws::AppSync::DynamodbDataSourceConfig>, ElasticsearchConfig => L<Paws::AppSync::ElasticsearchDataSourceConfig>, LambdaConfig => L<Paws::AppSync::LambdaDataSourceConfig>, ServiceRoleArn => Str])

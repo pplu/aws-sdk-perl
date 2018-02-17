@@ -61,7 +61,7 @@ The name of the field to attach the resolver to.
 
 The mapping template to be used for requests.
 
-A resolver use a request mapping template to convert a GraphQL
+A resolver uses a request mapping template to convert a GraphQL
 expression into a format that a data source can understand. Mapping
 templates are written in Apache Velocity Template Language (VTL).
 

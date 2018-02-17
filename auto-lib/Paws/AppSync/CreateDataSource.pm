@@ -88,7 +88,7 @@ role when accessing the data source.
 
 The type of the C<DataSource>.
 
-Valid values are: C<"AWS_LAMBDA">, C<"AMAZON_DYNAMODB">, C<"AMAZON_ELASTICSEARCH">
+Valid values are: C<"AWS_LAMBDA">, C<"AMAZON_DYNAMODB">, C<"AMAZON_ELASTICSEARCH">, C<"NONE">
 
 
 =head1 SEE ALSO

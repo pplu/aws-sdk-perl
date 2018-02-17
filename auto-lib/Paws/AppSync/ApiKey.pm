@@ -45,7 +45,8 @@ Describes an API key.
 
 =head2 Expires => Int
 
-  The time when the API key expires.
+  The time after which the API key expires. The date is represented as
+seconds since the epoch, rounded down to the nearest hour.
 
 
 =head2 Id => Str

@@ -17,7 +17,7 @@ Paws::AppSync::UpdateGraphqlApiResponse
 
 =head2 GraphqlApi => L<Paws::AppSync::GraphqlApi>
 
-The udpated C<GraphqlApi> object.
+The updated C<GraphqlApi> object.
 
 
 =head2 _request_id => Str

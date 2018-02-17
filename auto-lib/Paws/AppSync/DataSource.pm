@@ -83,6 +83,30 @@ role when accessing the data source.
 
   The type of the data source.
 
+=over
+
+=item *
+
+B<AMAZON_DYNAMODB>: The data source is an Amazon DynamoDB table.
+
+=item *
+
+B<AMAZON_ELASTICSEARCH>: The data source is an Amazon Elasticsearch
+Service domain.
+
+=item *
+
+B<AWS_LAMBDA>: The data source is an AWS Lambda function.
+
+=item *
+
+B<NONE>: There is no data source. This type is used when the required
+information can be computed on the fly without connecting to a back-end
+data source.
+
+=back
+
+
 
 
 =head1 SEE ALSO
