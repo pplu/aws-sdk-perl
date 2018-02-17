@@ -4,6 +4,7 @@ package Paws::GuardDuty::Action;
   has AwsApiCallAction => (is => 'ro', isa => 'Paws::GuardDuty::AwsApiCallAction', request_name => 'awsApiCallAction', traits => ['NameInRequest']);
   has DnsRequestAction => (is => 'ro', isa => 'Paws::GuardDuty::DnsRequestAction', request_name => 'dnsRequestAction', traits => ['NameInRequest']);
   has NetworkConnectionAction => (is => 'ro', isa => 'Paws::GuardDuty::NetworkConnectionAction', request_name => 'networkConnectionAction', traits => ['NameInRequest']);
+  has PortProbeAction => (is => 'ro', isa => 'Paws::GuardDuty::PortProbeAction', request_name => 'portProbeAction', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::GuardDuty::Action object:
 
-  $service_obj->Method(Att1 => { ActionType => $value, ..., NetworkConnectionAction => $value  });
+  $service_obj->Method(Att1 => { ActionType => $value, ..., PortProbeAction => $value  });
 
 =head3 Results returned from an API call
 
@@ -58,6 +59,11 @@ Information about the activity described in a finding.
 
   Information about the NETWORK_CONNECTION action described in this
 finding.
+
+
+=head2 PortProbeAction => L<Paws::GuardDuty::PortProbeAction>
+
+  Information about the PORT_PROBE action described in this finding.
 
 
 
