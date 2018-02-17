@@ -146,10 +146,7 @@ groups.
 
 =head2 UserData => Str
 
-  The user data to make available to the instances. If you are using an
-AWS SDK or command line tool, Base64-encoding is performed for you, and
-you can load the text from a file. Otherwise, you must provide
-Base64-encoded text.
+  The Base64-encoded user data for the instance.
 
 
 

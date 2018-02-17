@@ -77,7 +77,7 @@ system shutdown).
 
   The instance type. For more information about the instance types that
 you can import, see Instance Types
-(http://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#vmimport-instance-types)
+(http://docs.aws.amazon.com/vm-import/latest/userguide/vmie_prereqs.html#vmimport-instance-types)
 in the VM Import/Export User Guide.
 
 
@@ -104,10 +104,7 @@ subnet.
 
 =head2 UserData => L<Paws::EC2::UserData>
 
-  The user data to make available to the instance. If you are using an
-AWS SDK or command line tool, Base64-encoding is performed for you, and
-you can load the text from a file. Otherwise, you must provide
-Base64-encoded text.
+  The Base64-encoded user data to make available to the instance.
 
 
 

@@ -35,8 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Resource => Str
 
-The type of resource: C<instance> | C<reservation> | C<snapshot> |
-C<volume>
+The type of resource: C<bundle> | C<conversion-task> | C<dhcp-options>
+| C<elastic-ip-allocation> | C<elastic-ip-association> | C<export-task>
+| C<flow-log> | C<image> | C<import-task> | C<instance> |
+C<internet-gateway> | C<network-acl> | C<network-acl-association> |
+C<network-interface> | C<network-interface-attachment> | C<prefix-list>
+| C<reservation> | C<route-table> | C<route-table-association> |
+C<security-group> | C<snapshot> | C<subnet> |
+C<subnet-cidr-block-association> | C<volume> | C<vpc> |
+C<vpc-cidr-block-association> | C<vpc-peering-connection>
 
 
 

@@ -2,9 +2,9 @@
 package Paws::EC2::ModifyVpcEndpointServiceConfiguration;
   use Moose;
   has AcceptanceRequired => (is => 'ro', isa => 'Bool');
-  has AddNetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'addNetworkLoadBalancerArn' );
+  has AddNetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'AddNetworkLoadBalancerArn' );
   has DryRun => (is => 'ro', isa => 'Bool');
-  has RemoveNetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'removeNetworkLoadBalancerArn' );
+  has RemoveNetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RemoveNetworkLoadBalancerArn' );
   has ServiceId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;

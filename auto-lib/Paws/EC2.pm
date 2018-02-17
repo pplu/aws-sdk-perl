@@ -524,6 +524,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeAddresses', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAggregateIdFormat {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeAggregateIdFormat', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeAvailabilityZones {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeAvailabilityZones', @_);
@@ -712,6 +717,11 @@ package Paws::EC2;
   sub DescribePrefixLists {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribePrefixLists', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribePrincipalIdFormat {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribePrincipalIdFormat', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeRegions {
@@ -1645,7 +1655,7 @@ package Paws::EC2;
   }
 
 
-  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcEndpointConnections AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCreditSpecification ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress / }
+  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcEndpointConnections AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCreditSpecification ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress / }
 
 1;
 
@@ -1676,7 +1686,7 @@ Paws::EC2 - Perl Interface to AWS Amazon Elastic Compute Cloud
 Amazon Elastic Compute Cloud
 
 Amazon Elastic Compute Cloud (Amazon EC2) provides resizable computing
-capacity in the AWS Cloud. Using Amazon EC2 eliminates your need to
+capacity in the AWS Cloud. Using Amazon EC2 eliminates the need to
 invest in hardware up front, so you can develop and deploy applications
 faster.
 
@@ -3508,7 +3518,7 @@ C<default-vpc>: The ID of the default VPC for your account, or C<none>.
 
 =item *
 
-C<max-instances>: The maximum number of On-Demand instances that you
+C<max-instances>: The maximum number of On-Demand Instances that you
 can run.
 
 =item *
@@ -3542,6 +3552,31 @@ An Elastic IP address is for use in either the EC2-Classic platform or
 in a VPC. For more information, see Elastic IP Addresses
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 DescribeAggregateIdFormat([DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeAggregateIdFormat>
+
+Returns: a L<Paws::EC2::DescribeAggregateIdFormatResult> instance
+
+Describes the longer ID format settings for all resource types in a
+specific region. This request is useful for performing a quick audit to
+determine whether a specific region is fully opted in for longer IDs
+(17-character IDs).
+
+This request only returns information about resource types that support
+longer IDs.
+
+The following resource types support longer IDs: C<bundle> |
+C<conversion-task> | C<dhcp-options> | C<elastic-ip-allocation> |
+C<elastic-ip-association> | C<export-task> | C<flow-log> | C<image> |
+C<import-task> | C<instance> | C<internet-gateway> | C<network-acl> |
+C<network-acl-association> | C<network-interface> |
+C<network-interface-attachment> | C<prefix-list> | C<reservation> |
+C<route-table> | C<route-table-association> | C<security-group> |
+C<snapshot> | C<subnet> | C<subnet-cidr-block-association> | C<volume>
+| C<vpc> | C<vpc-cidr-block-association> | C<vpc-peering-connection>.
 
 
 =head2 DescribeAvailabilityZones([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], ZoneNames => ArrayRef[Str|Undef]])
@@ -3757,8 +3792,15 @@ information, see Resource IDs
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
-The following resource types support longer IDs: C<instance> |
-C<reservation> | C<snapshot> | C<volume>.
+The following resource types support longer IDs: C<bundle> |
+C<conversion-task> | C<dhcp-options> | C<elastic-ip-allocation> |
+C<elastic-ip-association> | C<export-task> | C<flow-log> | C<image> |
+C<import-task> | C<instance> | C<internet-gateway> | C<network-acl> |
+C<network-acl-association> | C<network-interface> |
+C<network-interface-attachment> | C<prefix-list> | C<reservation> |
+C<route-table> | C<route-table-association> | C<security-group> |
+C<snapshot> | C<subnet> | C<subnet-cidr-block-association> | C<volume>
+| C<vpc> | C<vpc-cidr-block-association> | C<vpc-peering-connection>.
 
 These settings apply to the principal specified in the request. They do
 not apply to the principal that makes the request.
@@ -3776,8 +3818,15 @@ IDs. This request only returns information about resource types whose
 ID formats can be modified; it does not return information about other
 resource types.
 
-The following resource types support longer IDs: C<instance> |
-C<reservation> | C<snapshot> | C<volume>.
+The following resource types support longer IDs: C<bundle> |
+C<conversion-task> | C<dhcp-options> | C<elastic-ip-allocation> |
+C<elastic-ip-association> | C<export-task> | C<flow-log> | C<image> |
+C<import-task> | C<instance> | C<internet-gateway> | C<network-acl> |
+C<network-acl-association> | C<network-interface> |
+C<network-interface-attachment> | C<prefix-list> | C<reservation> |
+C<route-table> | C<route-table-association> | C<security-group> |
+C<snapshot> | C<subnet> | C<subnet-cidr-block-association> | C<volume>
+| C<vpc> | C<vpc-cidr-block-association> | C<vpc-peering-connection>.
 
 These settings apply to the IAM user who makes the request; they do not
 apply to the entire AWS account. By default, an IAM user defaults to
@@ -4071,6 +4120,32 @@ includes the prefix list name and prefix list ID of the service and the
 IP address range for the service. A prefix list ID is required for
 creating an outbound security group rule that allows traffic from a VPC
 to access an AWS service through a gateway VPC endpoint.
+
+
+=head2 DescribePrincipalIdFormat([DryRun => Bool, MaxResults => Int, NextToken => Str, Resources => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::EC2::DescribePrincipalIdFormat>
+
+Returns: a L<Paws::EC2::DescribePrincipalIdFormatResult> instance
+
+Describes the ID format settings for the root user and all IAM roles
+and IAM users that have explicitly specified a longer ID (17-character
+ID) preference.
+
+By default, all IAM roles and IAM users default to the same ID settings
+as the root user, unless they explicitly override the settings. This
+request is useful for identifying those IAM users and IAM roles that
+have overridden the default ID settings.
+
+The following resource types support longer IDs: C<bundle> |
+C<conversion-task> | C<dhcp-options> | C<elastic-ip-allocation> |
+C<elastic-ip-association> | C<export-task> | C<flow-log> | C<image> |
+C<import-task> | C<instance> | C<internet-gateway> | C<network-acl> |
+C<network-acl-association> | C<network-interface> |
+C<network-interface-attachment> | C<prefix-list> | C<reservation> |
+C<route-table> | C<route-table-association> | C<security-group> |
+C<snapshot> | C<subnet> | C<subnet-cidr-block-association> | C<volume>
+| C<vpc> | C<vpc-cidr-block-association> | C<vpc-peering-connection>.
 
 
 =head2 DescribeRegions([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], RegionNames => ArrayRef[Str|Undef]])
@@ -5148,9 +5223,18 @@ role, or the root user for an account; or all IAM users, IAM roles, and
 the root user for an account. You can specify that resources should
 receive longer IDs (17-character IDs) when they are created.
 
-The following resource types support longer IDs: C<instance> |
-C<reservation> | C<snapshot> | C<volume>. For more information, see
-Resource IDs
+This request can only be used to modify longer ID settings for resource
+types that are within the opt-in period. Resources currently in their
+opt-in period include: C<bundle> | C<conversion-task> | C<dhcp-options>
+| C<elastic-ip-allocation> | C<elastic-ip-association> | C<export-task>
+| C<flow-log> | C<image> | C<import-task> | C<internet-gateway> |
+C<network-acl> | C<network-acl-association> | C<network-interface> |
+C<network-interface-attachment> | C<prefix-list> | C<route-table> |
+C<route-table-association> | C<security-group> | C<subnet> |
+C<subnet-cidr-block-association> | C<vpc> |
+C<vpc-cidr-block-association> | C<vpc-peering-connection>..
+
+For more information, see Resource IDs
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -5171,9 +5255,18 @@ Returns: nothing
 
 Modifies the ID format for the specified resource on a per-region
 basis. You can specify that resources should receive longer IDs
-(17-character IDs) when they are created. The following resource types
-support longer IDs: C<instance> | C<reservation> | C<snapshot> |
-C<volume>.
+(17-character IDs) when they are created.
+
+This request can only be used to modify longer ID settings for resource
+types that are within the opt-in period. Resources currently in their
+opt-in period include: C<bundle> | C<conversion-task> | C<dhcp-options>
+| C<elastic-ip-allocation> | C<elastic-ip-association> | C<export-task>
+| C<flow-log> | C<image> | C<import-task> | C<internet-gateway> |
+C<network-acl> | C<network-acl-association> | C<network-interface> |
+C<network-interface-attachment> | C<prefix-list> | C<route-table> |
+C<route-table-association> | C<security-group> | C<subnet> |
+C<subnet-cidr-block-association> | C<vpc> |
+C<vpc-cidr-block-association> | C<vpc-peering-connection>.
 
 This setting applies to the IAM user who makes the request; it does not
 apply to the entire AWS account. By default, an IAM user defaults to

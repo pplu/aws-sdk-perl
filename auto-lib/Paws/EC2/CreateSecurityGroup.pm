@@ -62,7 +62,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 The name of the security group.
 
-Constraints: Up to 255 characters in length
+Constraints: Up to 255 characters in length. Cannot start with C<sg->.
 
 Constraints for EC2-Classic: ASCII characters
 

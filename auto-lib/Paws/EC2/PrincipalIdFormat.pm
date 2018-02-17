@@ -1,13 +1,14 @@
-package Paws::EC2::AttributeValue;
+package Paws::EC2::PrincipalIdFormat;
   use Moose;
-  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has Statuses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IdFormat]', request_name => 'statusSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::EC2::AttributeValue
+Paws::EC2::PrincipalIdFormat
 
 =head1 USAGE
 
@@ -18,16 +19,16 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::EC2::AttributeValue object:
+As an example, if Att1 is expected to be a Paws::EC2::PrincipalIdFormat object:
 
-  $service_obj->Method(Att1 => { Value => $value, ..., Value => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Statuses => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::AttributeValue object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::PrincipalIdFormat object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Value
+  $result->Att1->Arn
 
 =head1 DESCRIPTION
 
@@ -36,9 +37,14 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Value => Str
+=head2 Arn => Str
 
-  The attribute value. The value is case-sensitive.
+  PrincipalIdFormatARN description
+
+
+=head2 Statuses => ArrayRef[L<Paws::EC2::IdFormat>]
+
+  PrincipalIdFormatStatuses description
 
 
 

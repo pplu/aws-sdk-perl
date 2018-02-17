@@ -193,14 +193,12 @@ that are created during launch.
 
 =head2 UserData => Str
 
-  The user data to make available to the instance. For more information,
-see Running Commands on Your Linux Instance at Launch
+  The Base64-encoded user data to make available to the instance. For
+more information, see Running Commands on Your Linux Instance at Launch
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html)
 (Linux) and Adding User Data
 (http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data)
-(Windows). If you are using a command line tool, base64-encoding is
-performed for you and you can load the text from a file. Otherwise, you
-must provide base64-encoded text.
+(Windows).
 
 
 

@@ -78,7 +78,8 @@ or C<standard> volumes.
 
 =head2 KmsKeyId => Str
 
-  ID for a user-managed CMK under which the EBS volume is encrypted.
+  Identifier (key ID, key alias, ID ARN, or alias ARN) for a user-managed
+CMK under which the EBS volume is encrypted.
 
 Note: This parameter is only supported on C<BlockDeviceMapping> objects
 called by RunInstances

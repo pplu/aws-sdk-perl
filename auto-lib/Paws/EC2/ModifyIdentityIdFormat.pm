@@ -45,8 +45,17 @@ IAM roles, and the root user of the account.
 
 =head2 B<REQUIRED> Resource => Str
 
-The type of resource: C<instance> | C<reservation> | C<snapshot> |
-C<volume>
+The type of resource: C<bundle> | C<conversion-task> | C<dhcp-options>
+| C<elastic-ip-allocation> | C<elastic-ip-association> | C<export-task>
+| C<flow-log> | C<image> | C<import-task> | C<internet-gateway> |
+C<network-acl> | C<network-acl-association> | C<network-interface> |
+C<network-interface-attachment> | C<prefix-list> | C<route-table> |
+C<route-table-association> | C<security-group> | C<subnet> |
+C<subnet-cidr-block-association> | C<vpc> |
+C<vpc-cidr-block-association> | C<vpc-peering-connection>.
+
+Alternatively, use the C<all-current> option to include all resource
+types that are currently within their opt-in period for longer IDs.
 
 
 
