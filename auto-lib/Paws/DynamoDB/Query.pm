@@ -221,11 +221,12 @@ The condition that specifies the key value(s) for items to be retrieved
 by the C<Query> action.
 
 The condition must perform an equality test on a single partition key
-value. The condition can also perform one of several comparison tests
-on a single sort key value. C<Query> can use C<KeyConditionExpression>
-to retrieve one item with a given partition key value and sort key
-value, or several items that have the same partition key value but
-different sort key values.
+value.
+
+The condition can optionally perform one of several comparison tests on
+a single sort key value. This allows C<Query> to retrieve one item with
+a given partition key value and sort key value, or several items that
+have the same partition key value but different sort key values.
 
 The partition key equality test is required, and must be specified in
 the following format:

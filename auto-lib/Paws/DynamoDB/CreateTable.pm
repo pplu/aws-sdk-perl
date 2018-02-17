@@ -6,6 +6,7 @@ package Paws::DynamoDB::CreateTable;
   has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::KeySchemaElement]', required => 1);
   has LocalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::LocalSecondaryIndex]');
   has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput', required => 1);
+  has SSESpecification => (is => 'ro', isa => 'Paws::DynamoDB::SSESpecification');
   has StreamSpecification => (is => 'ro', isa => 'Paws::DynamoDB::StreamSpecification');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -250,6 +251,12 @@ For current minimum and maximum provisioned throughput values, see
 Limits
 (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 in the I<Amazon DynamoDB Developer Guide>.
+
+
+
+=head2 SSESpecification => L<Paws::DynamoDB::SSESpecification>
+
+Represents the settings used to enable server-side encryption.
 
 
 

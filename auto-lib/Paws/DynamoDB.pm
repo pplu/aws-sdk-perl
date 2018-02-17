@@ -505,25 +505,22 @@ Each time you create an On-Demand Backup, the entire table data is
 backed up. There is no limit to the number of on-demand backups that
 can be taken.
 
+When you create an On-Demand Backup, a time marker of the request is
+cataloged, and the backup is created asynchronously, by applying all
+changes until the time of the request to the last full table snapshot.
+Backup requests are processed instantaneously and become available for
+restore within minutes.
+
 You can call C<CreateBackup> at a maximum rate of 50 times per second.
 
 All backups in DynamoDB work without consuming any provisioned
-throughput on the table. This results in a fast, low-cost, and scalable
-backup process. In general, the larger the table, the more time it
-takes to back up. The backup is stored in an S3 data store that is
-maintained and managed by DynamoDB.
+throughput on the table.
 
-Backups incorporate all writes (delete, put, update) that were
-completed within the last minute before the backup request was
-initiated. Backups might include some writes (delete, put, update) that
-were completed before the backup request was finished.
-
-For example, if you submit the backup request on 2018-12-14 at
-14:25:00, the backup is guaranteed to contain all data committed to the
-table up to 14:24:00, and data committed after 14:26:00 will not be.
-The backup may or may not contain data modifications made between
-14:24:00 and 14:26:00. On-Demand Backup does not support causal
-consistency.
+If you submit a backup request on 2018-12-14 at 14:25:00, the backup is
+guaranteed to contain all data committed to the table up to 14:24:00,
+and data committed after 14:26:00 will not be. The backup may or may
+not contain data modifications made between 14:24:00 and 14:26:00.
+On-Demand Backup does not support causal consistency.
 
 Along with data, the following are also included on the backups:
 
@@ -584,7 +581,7 @@ The tables must have DynamoDB Streams enabled (NEW_AND_OLD_IMAGES).
 
 
 
-=head2 CreateTable(AttributeDefinitions => ArrayRef[L<Paws::DynamoDB::AttributeDefinition>], KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>], ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>, TableName => Str, [GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndex>], LocalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndex>], StreamSpecification => L<Paws::DynamoDB::StreamSpecification>])
+=head2 CreateTable(AttributeDefinitions => ArrayRef[L<Paws::DynamoDB::AttributeDefinition>], KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>], ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>, TableName => Str, [GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndex>], LocalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndex>], SSESpecification => L<Paws::DynamoDB::SSESpecification>, StreamSpecification => L<Paws::DynamoDB::StreamSpecification>])
 
 Each argument is described in detail in: L<Paws::DynamoDB::CreateTable>
 
@@ -704,7 +701,7 @@ Each argument is described in detail in: L<Paws::DynamoDB::DescribeGlobalTable>
 
 Returns: a L<Paws::DynamoDB::DescribeGlobalTableOutput> instance
 
-Returns information about the global table.
+Returns information about the specified global table.
 
 
 =head2 DescribeLimits()
@@ -872,8 +869,7 @@ Each argument is described in detail in: L<Paws::DynamoDB::ListGlobalTables>
 
 Returns: a L<Paws::DynamoDB::ListGlobalTablesOutput> instance
 
-Lists all the global tables. Only those global tables that have
-replicas in the region specified as input are returned.
+Lists all global tables that have a replica in the specified region.
 
 
 =head2 ListTables([ExclusiveStartTableName => Str, Limit => Int])
@@ -1085,6 +1081,10 @@ Tags
 
 =item *
 
+Stream settings
+
+=item *
+
 Time to Live (TTL) settings
 
 =back
@@ -1166,9 +1166,15 @@ Each argument is described in detail in: L<Paws::DynamoDB::UpdateGlobalTable>
 
 Returns: a L<Paws::DynamoDB::UpdateGlobalTableOutput> instance
 
-Adds or removes replicas to the specified global table. The global
-table should already exist to be able to use this operation. Currently,
-the replica to be added should be empty.
+Adds or removes replicas in the specified global table. The global
+table must already exist to be able to use this operation. Any replica
+to be added must be empty, must have the same name as the global table,
+must have the same key schema, must have DynamoDB Streams enabled, and
+cannot have any local secondary indexes (LSIs).
+
+Although you can use C<UpdateGlobalTable> to add replicas and remove
+replicas in a single request, for simplicity we recommend that you
+issue separate requests for adding or removing replicas.
 
 
 =head2 UpdateItem(Key => L<Paws::DynamoDB::Key>, TableName => Str, [AttributeUpdates => L<Paws::DynamoDB::AttributeUpdates>, ConditionalOperator => Str, ConditionExpression => Str, Expected => L<Paws::DynamoDB::ExpectedAttributeMap>, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>, ReturnConsumedCapacity => Str, ReturnItemCollectionMetrics => Str, ReturnValues => Str, UpdateExpression => Str])

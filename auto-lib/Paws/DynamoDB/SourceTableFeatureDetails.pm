@@ -2,6 +2,7 @@ package Paws::DynamoDB::SourceTableFeatureDetails;
   use Moose;
   has GlobalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndexInfo]');
   has LocalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::LocalSecondaryIndexInfo]');
+  has SSEDescription => (is => 'ro', isa => 'Paws::DynamoDB::SSEDescription');
   has StreamDescription => (is => 'ro', isa => 'Paws::DynamoDB::StreamSpecification');
   has TimeToLiveDescription => (is => 'ro', isa => 'Paws::DynamoDB::TimeToLiveDescription');
 1;
@@ -52,6 +53,12 @@ ProvisionedThroughput for the GSIs on the table at the time of backup.
   Represents the LSI properties for the table when the backup was
 created. It includes the IndexName, KeySchema and Projection for the
 LSIs on the table at the time of backup.
+
+
+=head2 SSEDescription => L<Paws::DynamoDB::SSEDescription>
+
+  The description of the server-side encryption status on the table when
+the backup was created.
 
 
 =head2 StreamDescription => L<Paws::DynamoDB::StreamSpecification>
