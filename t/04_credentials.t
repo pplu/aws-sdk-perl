@@ -137,51 +137,56 @@ delete @ENV{qw(
 }
 
 {
-	my $creds = Paws::Credential::File->new(
-		path => 't/04_credentials/'
-	);
-	ok($creds->are_set, 'File: Attribute path works correctly');
-	cmp_ok($creds->access_key, 'eq', 'defaultAK', 'File: default Access Key loaded correctly');
-	cmp_ok($creds->secret_key, 'eq', 'defaultSK', 'File: default Secret Key loaded correctly');
+  my $creds = Paws::Credential::File->new(
+    path => 't/04_credentials/'
+  );
+  ok($creds->are_set, 'File: Attribute path works correctly');
+  cmp_ok($creds->access_key, 'eq', 'defaultAK', 'File: default Access Key loaded correctly');
+  cmp_ok($creds->secret_key, 'eq', 'defaultSK', 'File: default Secret Key loaded correctly');
 }
 
 {
-	my $creds = Paws::Credential::File->new(
-		path => 't/04_credentials/',
-		profile => 'testprofile'
-	);
-	ok($creds->are_set, 'File: Attributes path and profile work correctly');
-	cmp_ok($creds->access_key, 'eq', 'testAK', 'File: named profile Access Key loaded correctly');
-	cmp_ok($creds->secret_key, 'eq', 'testSK', 'File: named profile Secret Key loaded correctly');
+  my $creds = Paws::Credential::File->new(
+    path => 't/04_credentials/',
+    profile => 'testprofile'
+  );
+  ok($creds->are_set, 'File: Attributes path and profile work correctly');
+  cmp_ok($creds->access_key, 'eq', 'testAK', 'File: named profile Access Key loaded correctly');
+  cmp_ok($creds->secret_key, 'eq', 'testSK', 'File: named profile Secret Key loaded correctly');
 }
 
 {
-	my $creds = Paws::Credential::File->new(
-		credentials_file => 't/04_credentials/credentials.alternate',
-	);
-	ok($creds->are_set, 'File: credentials_file attribute works correctly');
-	cmp_ok($creds->access_key, 'eq', 'alternateAK', 'File: alternate Access Key loaded correctly');
-	cmp_ok($creds->secret_key, 'eq', 'alternateSK', 'File: alternate Secret Key loaded correctly');
+  my $creds = Paws::Credential::File->new(
+    credentials_file => 't/04_credentials/credentials.alternate',
+  );
+  ok($creds->are_set, 'File: credentials_file attribute works correctly');
+  cmp_ok($creds->access_key, 'eq', 'alternateAK', 'File: alternate Access Key loaded correctly');
+  cmp_ok($creds->secret_key, 'eq', 'alternateSK', 'File: alternate Secret Key loaded correctly');
 }
 
 {
-	my $creds = Paws::Credential::File->new(
-		path => 't/04_credentials/',
-		file_name => 'credentials.alternate',
-	);
-	ok($creds->are_set, 'File: file_name attribute works correctly');
-	cmp_ok($creds->access_key, 'eq', 'alternateAK', 'File: alternate Access Key loaded correctly');
-	cmp_ok($creds->secret_key, 'eq', 'alternateSK', 'File: alternate Secret Key loaded correctly');
+  my $creds = Paws::Credential::File->new(
+    path => 't/04_credentials/',
+    file_name => 'credentials.alternate',
+  );
+  ok($creds->are_set, 'File: file_name attribute works correctly');
+  cmp_ok($creds->access_key, 'eq', 'alternateAK', 'File: alternate Access Key loaded correctly');
+  cmp_ok($creds->secret_key, 'eq', 'alternateSK', 'File: alternate Secret Key loaded correctly');
 }
 
 {
-	local $ENV{AWS_DEFAULT_PROFILE} = 'alternate';
-	local $ENV{AWS_CONFIG_FILE} = 't/04_credentials/credentials.alternate';
-	my $creds = Paws::Credential::File->new;
+  local $ENV{AWS_DEFAULT_PROFILE} = 'alternate';
+  local $ENV{AWS_CONFIG_FILE} = 't/04_credentials/credentials.alternate';
+  my $creds = Paws::Credential::File->new;
 
-	ok($creds->are_set, 'File: Attributes from environment variables');
-	cmp_ok($creds->access_key, 'eq', 'alternateprofileAK',
-		'File: alternate using ENV variables Access Key loaded correctly');
+  ok($creds->are_set, 'File: Attributes from environment variables');
+  cmp_ok($creds->access_key, 'eq', 'alternateprofileAK',
+    'File: alternate using ENV variables Access Key loaded correctly');
+
+  cmp_ok($creds->secret_key, 'eq', 'alternateprofileSK',
+    'File: alternate using ENV variables Secret Key loaded correctly');
+}
+
 
 	cmp_ok($creds->secret_key, 'eq', 'alternateprofileSK',
 		'File: alternate using ENV variables Secret Key loaded correctly');
