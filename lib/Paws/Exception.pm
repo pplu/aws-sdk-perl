@@ -1,3 +1,7 @@
+package Paws::Exception::CredentialProcess;
+  use Moose;
+  extends 'Throwable::Error';
+
 package Paws::Exception;
   use Moose;
   extends 'Throwable::Error';

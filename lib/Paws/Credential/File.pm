@@ -2,6 +2,8 @@ package Paws::Credential::File;
   use Moose;
   use Config::INI::Reader;
   use File::HomeDir;
+  use JSON::MaybeXS qw/decode_json/;
+  use Paws::Exception;
 
   has profile => (is => 'ro', default => sub { $ENV{ AWS_DEFAULT_PROFILE } or 'default' });
 
@@ -16,8 +18,8 @@ package Paws::Credential::File;
 
   has file_name => (is => 'ro', default => sub { 'credentials' });
   has path => (is => 'ro', default => sub {
-		  return (File::HomeDir->my_home || '') . '/.aws/';
-	  });
+    return (File::HomeDir->my_home || '') . '/.aws/';
+  });
 
   has _ini_contents => (is => 'ro', isa => 'HashRef', lazy => 1, default => sub {
     my $self = shift;
@@ -27,24 +29,64 @@ package Paws::Credential::File;
     return $ini;
   });
 
-  has access_key => (is => 'ro', lazy => 1, default => sub {  
+  has _profile => (is => 'ro', isa => 'HashRef', lazy => 1, default => sub {
     my $self = shift;
-    my $ini_section = $self->profile;
-    my $ak = $self->_ini_contents->{ $ini_section }->{ aws_access_key_id };
-    return $ak;
+    my $profile = $self->profile;
+    return $self->_ini_contents->{ $profile } || {};
   });
-  has secret_key => (is => 'ro', lazy => 1, default => sub {  
+
+  has _from_cred_process => (is => 'ro', isa => 'HashRef', lazy => 1, default => sub {
     my $self = shift;
-    my $ini_section = $self->profile;
-    my $sk = $self->_ini_contents->{ $ini_section }->{ aws_secret_access_key };
-    return $sk;
+    my $creds;
+    my $rc;
+    {
+      local $/ = undef;
+      open (my $fh, '-|', $self->credential_process);
+      $creds = <$fh>;
+      close $fh;
+      $rc = $?;
+    }
+    Paws::Exception::CredentialProcess->throw("credential_process returned non-zero code") if ($rc != 0);
+    $creds = decode_json($creds);
+    Paws::Exception::CredentialProcess->throw("credential_process didn't return a Version key") if (not exists $creds->{ Version }); 
+    Paws::Exception::CredentialProcess->throw("credential_process only understands Version 1") if ($creds->{ Version } != 1); 
+    return $creds;
   });
-  has session_token => (is => 'ro', lazy => 1, default => sub { 
+
+  has credential_process => (is => 'ro', lazy => 1, default => sub {
     my $self = shift;
-    my $ini_section = $self->profile;
-    my $st = $self->_ini_contents->{ $ini_section }->{ aws_session_token };
-    return $st;
+    return $self->_profile->{ credential_process };
   });
+
+  sub access_key {  
+    my $self = shift;
+
+    if (defined $self->credential_process) {
+      return $self->_from_cred_process->{ AccessKeyId };
+    } else {
+      return $self->_profile->{ aws_access_key_id };
+    }
+  }
+
+  sub secret_key {  
+    my $self = shift;
+
+    if (defined $self->credential_process) {
+      return $self->_from_cred_process->{ SecretAccessKey };
+    } else {
+      return $self->_profile->{ aws_secret_access_key };
+    }
+  }
+
+  sub session_token { 
+    my $self = shift;
+
+    if (defined $self->credential_process) {
+      return $self->_from_cred_process->{ SessionToken };
+    } else {
+      return $self->_profile->{ aws_session_token };
+    }
+  }
 
   with 'Paws::Credential';
 
