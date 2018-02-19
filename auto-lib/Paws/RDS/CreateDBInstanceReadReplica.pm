@@ -259,9 +259,6 @@ support for the replica. Creating your Read Replica as a Multi-AZ DB
 instance is independent of whether the source database is a Multi-AZ DB
 instance.
 
-Currently, you can't create PostgreSQL Read Replicas as Multi-AZ DB
-instances.
-
 
 
 =head2 OptionGroupName => Str

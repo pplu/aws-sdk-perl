@@ -10,6 +10,7 @@ package Paws::RDS::DBEngineVersion;
   has SupportedCharacterSets => (is => 'ro', isa => 'ArrayRef[Paws::RDS::CharacterSet]', request_name => 'CharacterSet', traits => ['NameInRequest']);
   has SupportedTimezones => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Timezone]', request_name => 'Timezone', traits => ['NameInRequest']);
   has SupportsLogExportsToCloudwatchLogs => (is => 'ro', isa => 'Bool');
+  has SupportsReadReplica => (is => 'ro', isa => 'Bool');
   has ValidUpgradeTarget => (is => 'ro', isa => 'ArrayRef[Paws::RDS::UpgradeTarget]', request_name => 'UpgradeTarget', traits => ['NameInRequest']);
 1;
 
@@ -101,6 +102,11 @@ parameter of the C<CreateDBInstance> action.
 
   A value that indicates whether the engine version supports exporting
 the log types specified by ExportableLogTypes to CloudWatch Logs.
+
+
+=head2 SupportsReadReplica => Bool
+
+  Indicates whether the database engine version supports read replicas.
 
 
 =head2 ValidUpgradeTarget => ArrayRef[L<Paws::RDS::UpgradeTarget>]
