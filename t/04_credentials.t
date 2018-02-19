@@ -187,9 +187,33 @@ delete @ENV{qw(
     'File: alternate using ENV variables Secret Key loaded correctly');
 }
 
+{
+  my $creds = Paws::Credential::File->new(
+    path => 't/04_credentials/',
+    file_name => 'credentials.process',
+  );
+  ok($creds->are_set, 'File: file_name attribute works correctly');
+  cmp_ok($creds->access_key, 'eq', 'PCAccessKey', 'process: Access Key loaded correctly');
+  cmp_ok($creds->secret_key, 'eq', 'PCSecretKey', 'process: Secret Key loaded correctly');
+  cmp_ok($creds->session_token, 'eq', 'PCSessionToken', 'process: Session Token loaded correctly');
+}
 
-	cmp_ok($creds->secret_key, 'eq', 'alternateprofileSK',
-		'File: alternate using ENV variables Secret Key loaded correctly');
+{
+  my $creds = Paws::Credential::File->new(
+    path => 't/04_credentials/',
+    file_name => 'credentials.process',
+    profile => 'fail',
+  );
+  throws_ok(sub { $creds->are_set }, 'Paws::Exception::CredentialProcess', 'CredentialProcess throws a Paws exception');
+}
+
+{
+  my $creds = Paws::Credential::File->new(
+    path => 't/04_credentials/',
+    file_name => 'credentials.process',
+    profile => 'noversion',
+  );
+  throws_ok(sub { $creds->are_set }, 'Paws::Exception::CredentialProcess', 'CredentialProcess throws a Paws exception');
 }
 
 done_testing;

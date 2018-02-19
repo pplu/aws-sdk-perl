@@ -1,0 +1,10 @@
+#!/usr/bin/env perl
+
+use JSON::MaybeXS;
+
+print encode_json({
+  AccessKeyId => 'PCAccessKey',
+  SecretAccessKey => 'PCSecretKey',
+  SessionToken => 'PCSessionToken',
+  Version => 1,
+});
