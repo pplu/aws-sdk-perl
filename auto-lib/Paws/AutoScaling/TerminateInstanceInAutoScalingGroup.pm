@@ -42,8 +42,8 @@ The ID of the instance.
 
 =head2 B<REQUIRED> ShouldDecrementDesiredCapacity => Bool
 
-If C<true>, terminating the instance also decrements the size of the
-Auto Scaling group.
+Indicates whether terminating the instance also decrements the size of
+the Auto Scaling group.
 
 
 

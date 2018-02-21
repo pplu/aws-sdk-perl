@@ -43,9 +43,8 @@ Describes an Amazon EBS volume.
 
 =head2 DeleteOnTermination => Bool
 
-  Indicates whether the volume is deleted on instance termination.
-
-Default: C<true>
+  Indicates whether the volume is deleted on instance termination. The
+default is C<true>.
 
 
 =head2 Encrypted => Bool

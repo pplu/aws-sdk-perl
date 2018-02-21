@@ -13,6 +13,7 @@ package Paws::AutoScaling::UpdateAutoScalingGroup;
   has MinSize => (is => 'ro', isa => 'Int');
   has NewInstancesProtectedFromScaleIn => (is => 'ro', isa => 'Bool');
   has PlacementGroup => (is => 'ro', isa => 'Str');
+  has ServiceLinkedRoleARN => (is => 'ro', isa => 'Str');
   has TerminationPolicies => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VPCZoneIdentifier => (is => 'ro', isa => 'Str');
 
@@ -98,15 +99,15 @@ and C<ELB>.
 
 =head2 LaunchConfigurationName => Str
 
-The name of the launch configuration. You must specify either a launch
-configuration or a launch template.
+The name of the launch configuration. If you specify a launch
+configuration, you can't specify a launch template.
 
 
 
 =head2 LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>
 
-The launch template to use to specify the updates. You must specify a
-launch configuration or a launch template.
+The launch template to use to specify the updates. If you specify a
+launch template, you can't specify a launch configuration.
 
 
 
@@ -135,6 +136,13 @@ The name of the placement group into which you'll launch your
 instances, if any. For more information, see Placement Groups
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+
+=head2 ServiceLinkedRoleARN => Str
+
+The Amazon Resource Name (ARN) of the service-linked role that the Auto
+Scaling group uses to call other AWS services on your behalf.
 
 
 

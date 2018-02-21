@@ -42,7 +42,8 @@ The name of the Auto Scaling group.
 
 =head2 B<REQUIRED> LoadBalancerNames => ArrayRef[Str|Undef]
 
-One or more load balancer names.
+The names of the load balancers. You can specify up to 10 load
+balancers.
 
 
 

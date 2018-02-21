@@ -52,8 +52,11 @@ name or a template ID.
 
 =head2 Version => Str
 
-  The version number. By default, the default version of the launch
-template is used.
+  The version number, C<$Latest>, or C<$Default>. If the value is
+C<$Latest>, Auto Scaling selects the latest version of the launch
+template when launching instances. If the value is C<$Default>, Auto
+Scaling selects the default version of the launch template when
+launching instances. The default value is C<$Default>.
 
 
 

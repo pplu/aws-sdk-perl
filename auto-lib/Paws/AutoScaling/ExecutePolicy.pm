@@ -54,10 +54,8 @@ supported otherwise.
 
 =head2 HonorCooldown => Bool
 
-If this parameter is true, Auto Scaling waits for the cooldown period
-to complete before executing the policy. Otherwise, Auto Scaling
-executes the policy without waiting for the cooldown period to
-complete.
+Indicates whether Auto Scaling waits for the cooldown period to
+complete before executing the policy.
 
 This parameter is not supported if the policy type is C<StepScaling>.
 

@@ -50,11 +50,10 @@ group.
 
 =head2 HonorCooldown => Bool
 
-By default, C<SetDesiredCapacity> overrides any cooldown period
-associated with the Auto Scaling group. Specify C<True> to make Auto
-Scaling to wait for the cool-down period associated with the Auto
-Scaling group to complete before initiating a scaling activity to set
-your Auto Scaling group to its new capacity.
+Indicates whether Auto Scaling waits for the cooldown period to
+complete before initiating a scaling activity to set your Auto Scaling
+group to its new capacity. By default, Auto Scaling does not honor the
+cooldown period during manual scaling activities.
 
 
 

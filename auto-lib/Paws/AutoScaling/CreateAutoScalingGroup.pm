@@ -16,6 +16,7 @@ package Paws::AutoScaling::CreateAutoScalingGroup;
   has MinSize => (is => 'ro', isa => 'Int', required => 1);
   has NewInstancesProtectedFromScaleIn => (is => 'ro', isa => 'Bool');
   has PlacementGroup => (is => 'ro', isa => 'Str');
+  has ServiceLinkedRoleARN => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::Tag]');
   has TargetGroupARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has TerminationPolicies => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -191,6 +192,15 @@ The name of the placement group into which you'll launch your
 instances, if any. For more information, see Placement Groups
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+
+=head2 ServiceLinkedRoleARN => Str
+
+The Amazon Resource Name (ARN) of the service-linked role that the Auto
+Scaling group uses to call other AWS services on your behalf. By
+default, Auto Scaling uses a service-linked role named
+AWSServiceRoleForAutoScaling, which it creates if it does not exist.
 
 
 

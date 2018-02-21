@@ -17,6 +17,7 @@ package Paws::AutoScaling::AutoScalingGroup;
   has MinSize => (is => 'ro', isa => 'Int', required => 1);
   has NewInstancesProtectedFromScaleIn => (is => 'ro', isa => 'Bool');
   has PlacementGroup => (is => 'ro', isa => 'Str');
+  has ServiceLinkedRoleARN => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has SuspendedProcesses => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::SuspendedProcess]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::TagDescription]');
@@ -148,6 +149,12 @@ termination by Auto Scaling when scaling in.
 instances, if any. For more information, see Placement Groups
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 ServiceLinkedRoleARN => Str
+
+  The Amazon Resource Name (ARN) of the service-linked role that the Auto
+Scaling group uses to call other AWS services on your behalf.
 
 
 =head2 Status => Str

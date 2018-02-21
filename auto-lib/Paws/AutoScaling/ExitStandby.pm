@@ -42,7 +42,7 @@ The name of the Auto Scaling group.
 
 =head2 InstanceIds => ArrayRef[Str|Undef]
 
-One or more instance IDs. You must specify at least one instance ID.
+The IDs of the instances. You can specify up to 20 instances.
 
 
 

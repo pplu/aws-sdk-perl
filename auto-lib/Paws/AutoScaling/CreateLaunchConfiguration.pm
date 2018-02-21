@@ -63,10 +63,8 @@ If you specify this parameter, be sure to specify at least one subnet
 when you create your group.
 
 Default: If the instance is launched into a default subnet, the default
-is C<true>. If the instance is launched into a nondefault subnet, the
-default is C<false>. For more information, see Supported Platforms
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+is to assign a public IP address. If the instance is launched into a
+nondefault subnet, the default is not to assign a public IP address.
 
 
 

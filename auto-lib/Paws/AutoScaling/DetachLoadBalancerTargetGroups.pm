@@ -42,7 +42,8 @@ The name of the Auto Scaling group.
 
 =head2 B<REQUIRED> TargetGroupARNs => ArrayRef[Str|Undef]
 
-The Amazon Resource Names (ARN) of the target groups.
+The Amazon Resource Names (ARN) of the target groups. You can specify
+up to 10 target groups.
 
 
 

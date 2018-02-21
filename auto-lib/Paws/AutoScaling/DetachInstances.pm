@@ -43,14 +43,14 @@ The name of the Auto Scaling group.
 
 =head2 InstanceIds => ArrayRef[Str|Undef]
 
-One or more instance IDs.
+The IDs of the instances. You can specify up to 20 instances.
 
 
 
 =head2 B<REQUIRED> ShouldDecrementDesiredCapacity => Bool
 
-If C<True>, the Auto Scaling group decrements the desired capacity
-value by the number of instances detached.
+Indicates whether the Auto Scaling group decrements the desired
+capacity value by the number of instances detached.
 
 
 

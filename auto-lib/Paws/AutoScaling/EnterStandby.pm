@@ -43,17 +43,14 @@ The name of the Auto Scaling group.
 
 =head2 InstanceIds => ArrayRef[Str|Undef]
 
-One or more instances to move into C<Standby> mode. You must specify at
-least one instance ID.
+The IDs of the instances. You can specify up to 20 instances.
 
 
 
 =head2 B<REQUIRED> ShouldDecrementDesiredCapacity => Bool
 
-Specifies whether the instances moved to C<Standby> mode count as part
-of the Auto Scaling group's desired capacity. If set, the desired
-capacity for the Auto Scaling group decrements by the number of
-instances moved to C<Standby> mode.
+Indicates whether to decrement the desired capacity of the Auto Scaling
+group by the number of instances moved to C<Standby> mode.
 
 
 

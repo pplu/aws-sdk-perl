@@ -488,12 +488,12 @@ Paws::AutoScaling - Perl Interface to AWS Auto Scaling
 
 =head1 DESCRIPTION
 
-Auto Scaling
+Amazon EC2 Auto Scaling
 
-Auto Scaling is designed to automatically launch or terminate EC2
-instances based on user-defined policies, schedules, and health checks.
-Use this service in conjunction with the Amazon CloudWatch and Elastic
-Load Balancing services.
+Amazon EC2 Auto Scaling is designed to automatically launch or
+terminate EC2 instances based on user-defined policies, schedules, and
+health checks. Use this service in conjunction with the AWS Auto
+Scaling, Amazon CloudWatch, and Elastic Load Balancing services.
 
 =head1 METHODS
 
@@ -609,7 +609,7 @@ For more information, see Auto Scaling Lifecycle
 in the I<Auto Scaling User Guide>.
 
 
-=head2 CreateAutoScalingGroup(AutoScalingGroupName => Str, MaxSize => Int, MinSize => Int, [AvailabilityZones => ArrayRef[Str|Undef], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, InstanceId => Str, LaunchConfigurationName => Str, LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>, LifecycleHookSpecificationList => ArrayRef[L<Paws::AutoScaling::LifecycleHookSpecification>], LoadBalancerNames => ArrayRef[Str|Undef], NewInstancesProtectedFromScaleIn => Bool, PlacementGroup => Str, Tags => ArrayRef[L<Paws::AutoScaling::Tag>], TargetGroupARNs => ArrayRef[Str|Undef], TerminationPolicies => ArrayRef[Str|Undef], VPCZoneIdentifier => Str])
+=head2 CreateAutoScalingGroup(AutoScalingGroupName => Str, MaxSize => Int, MinSize => Int, [AvailabilityZones => ArrayRef[Str|Undef], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, InstanceId => Str, LaunchConfigurationName => Str, LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>, LifecycleHookSpecificationList => ArrayRef[L<Paws::AutoScaling::LifecycleHookSpecification>], LoadBalancerNames => ArrayRef[Str|Undef], NewInstancesProtectedFromScaleIn => Bool, PlacementGroup => Str, ServiceLinkedRoleARN => Str, Tags => ArrayRef[L<Paws::AutoScaling::Tag>], TargetGroupARNs => ArrayRef[Str|Undef], TerminationPolicies => ArrayRef[Str|Undef], VPCZoneIdentifier => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::CreateAutoScalingGroup>
 
@@ -617,9 +617,12 @@ Returns: nothing
 
 Creates an Auto Scaling group with the specified name and attributes.
 
-If you exceed your maximum limit of Auto Scaling groups, which by
-default is 20 per region, the call fails. For information about viewing
-and updating this limit, see DescribeAccountLimits.
+If you exceed your maximum limit of Auto Scaling groups, the call
+fails. For information about viewing this limit, see
+DescribeAccountLimits. For information about updating this limit, see
+Auto Scaling Limits
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-account-limits.html)
+in the I<Auto Scaling User Guide>.
 
 For more information, see Auto Scaling Groups
 (http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroup.html)
@@ -634,9 +637,12 @@ Returns: nothing
 
 Creates a launch configuration.
 
-If you exceed your maximum limit of launch configurations, which by
-default is 100 per region, the call fails. For information about
-viewing and updating this limit, see DescribeAccountLimits.
+If you exceed your maximum limit of launch configurations, the call
+fails. For information about viewing this limit, see
+DescribeAccountLimits. For information about updating this limit, see
+Auto Scaling Limits
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-account-limits.html)
+in the I<Auto Scaling User Guide>.
 
 For more information, see Launch Configurations
 (http://docs.aws.amazon.com/autoscaling/latest/userguide/LaunchConfiguration.html)
@@ -759,10 +765,10 @@ Returns: a L<Paws::AutoScaling::DescribeAccountLimitsAnswer> instance
 Describes the current Auto Scaling resource limits for your AWS
 account.
 
-For information about requesting an increase in these limits, see AWS
-Service Limits
-(http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html)
-in the I<Amazon Web Services General Reference>.
+For information about requesting an increase in these limits, see Auto
+Scaling Limits
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-account-limits.html)
+in the I<Auto Scaling User Guide>.
 
 
 =head2 DescribeAdjustmentTypes( => )
@@ -1297,7 +1303,7 @@ This call simply makes a termination request. The instance is not
 terminated immediately.
 
 
-=head2 UpdateAutoScalingGroup(AutoScalingGroupName => Str, [AvailabilityZones => ArrayRef[Str|Undef], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, LaunchConfigurationName => Str, LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>, MaxSize => Int, MinSize => Int, NewInstancesProtectedFromScaleIn => Bool, PlacementGroup => Str, TerminationPolicies => ArrayRef[Str|Undef], VPCZoneIdentifier => Str])
+=head2 UpdateAutoScalingGroup(AutoScalingGroupName => Str, [AvailabilityZones => ArrayRef[Str|Undef], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, LaunchConfigurationName => Str, LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>, MaxSize => Int, MinSize => Int, NewInstancesProtectedFromScaleIn => Bool, PlacementGroup => Str, ServiceLinkedRoleARN => Str, TerminationPolicies => ArrayRef[Str|Undef], VPCZoneIdentifier => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::UpdateAutoScalingGroup>
 
