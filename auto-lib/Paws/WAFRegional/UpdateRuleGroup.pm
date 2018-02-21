@@ -55,9 +55,11 @@ delete from a RuleGroup.
 
 You can only insert C<REGULAR> rules into a rule group.
 
-The C<Action> data type within C<ActivatedRule> is used only when
-submitting an C<UpdateWebACL> request. C<ActivatedRule|Action> is not
-applicable and therefore not available for C<UpdateRuleGroup>.
+C<ActivatedRule|OverrideAction> applies only when updating or adding a
+C<RuleGroup> to a C<WebACL>. In this case you do not use
+C<ActivatedRule|Action>. For all other update requests,
+C<ActivatedRule|Action> is used instead of
+C<ActivatedRule|OverrideAction>.
 
 
 

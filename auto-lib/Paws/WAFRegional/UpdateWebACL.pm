@@ -66,11 +66,12 @@ WebACLUpdate: Contains C<Action> and C<ActivatedRule>
 
 =item *
 
-ActivatedRule: Contains C<Action>, C<Priority>, C<RuleId>, and C<Type>.
-The C<OverrideAction> data type within C<ActivatedRule> is used only
-when submitting an C<UpdateRuleGroup> request.
-C<ActivatedRule|OverrideAction> is not applicable and therefore not
-available for C<UpdateWebACL>.
+ActivatedRule: Contains C<Action>, C<OverrideAction>, C<Priority>,
+C<RuleId>, and C<Type>. C<ActivatedRule|OverrideAction> applies only
+when updating or adding a C<RuleGroup> to a C<WebACL>. In this case you
+do not use C<ActivatedRule|Action>. For all other update requests,
+C<ActivatedRule|Action> is used instead of
+C<ActivatedRule|OverrideAction>.
 
 =item *
 

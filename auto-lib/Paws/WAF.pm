@@ -112,6 +112,11 @@ package Paws::WAF;
     my $call_object = $self->new_with_coercions('Paws::WAF::DeleteIPSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeletePermissionPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::DeletePermissionPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteRateBasedRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::DeleteRateBasedRule', @_);
@@ -180,6 +185,11 @@ package Paws::WAF;
   sub GetIPSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::GetIPSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetPermissionPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::GetPermissionPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetRateBasedRule {
@@ -305,6 +315,11 @@ package Paws::WAF;
   sub ListXssMatchSets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::ListXssMatchSets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutPermissionPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::PutPermissionPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateByteMatchSet {
@@ -531,7 +546,7 @@ package Paws::WAF;
   }
 
 
-  sub operations { qw/CreateByteMatchSet CreateGeoMatchSet CreateIPSet CreateRateBasedRule CreateRegexMatchSet CreateRegexPatternSet CreateRule CreateRuleGroup CreateSizeConstraintSet CreateSqlInjectionMatchSet CreateWebACL CreateXssMatchSet DeleteByteMatchSet DeleteGeoMatchSet DeleteIPSet DeleteRateBasedRule DeleteRegexMatchSet DeleteRegexPatternSet DeleteRule DeleteRuleGroup DeleteSizeConstraintSet DeleteSqlInjectionMatchSet DeleteWebACL DeleteXssMatchSet GetByteMatchSet GetChangeToken GetChangeTokenStatus GetGeoMatchSet GetIPSet GetRateBasedRule GetRateBasedRuleManagedKeys GetRegexMatchSet GetRegexPatternSet GetRule GetRuleGroup GetSampledRequests GetSizeConstraintSet GetSqlInjectionMatchSet GetWebACL GetXssMatchSet ListActivatedRulesInRuleGroup ListByteMatchSets ListGeoMatchSets ListIPSets ListRateBasedRules ListRegexMatchSets ListRegexPatternSets ListRuleGroups ListRules ListSizeConstraintSets ListSqlInjectionMatchSets ListSubscribedRuleGroups ListWebACLs ListXssMatchSets UpdateByteMatchSet UpdateGeoMatchSet UpdateIPSet UpdateRateBasedRule UpdateRegexMatchSet UpdateRegexPatternSet UpdateRule UpdateRuleGroup UpdateSizeConstraintSet UpdateSqlInjectionMatchSet UpdateWebACL UpdateXssMatchSet / }
+  sub operations { qw/CreateByteMatchSet CreateGeoMatchSet CreateIPSet CreateRateBasedRule CreateRegexMatchSet CreateRegexPatternSet CreateRule CreateRuleGroup CreateSizeConstraintSet CreateSqlInjectionMatchSet CreateWebACL CreateXssMatchSet DeleteByteMatchSet DeleteGeoMatchSet DeleteIPSet DeletePermissionPolicy DeleteRateBasedRule DeleteRegexMatchSet DeleteRegexPatternSet DeleteRule DeleteRuleGroup DeleteSizeConstraintSet DeleteSqlInjectionMatchSet DeleteWebACL DeleteXssMatchSet GetByteMatchSet GetChangeToken GetChangeTokenStatus GetGeoMatchSet GetIPSet GetPermissionPolicy GetRateBasedRule GetRateBasedRuleManagedKeys GetRegexMatchSet GetRegexPatternSet GetRule GetRuleGroup GetSampledRequests GetSizeConstraintSet GetSqlInjectionMatchSet GetWebACL GetXssMatchSet ListActivatedRulesInRuleGroup ListByteMatchSets ListGeoMatchSets ListIPSets ListRateBasedRules ListRegexMatchSets ListRegexPatternSets ListRuleGroups ListRules ListSizeConstraintSets ListSqlInjectionMatchSets ListSubscribedRuleGroups ListWebACLs ListXssMatchSets PutPermissionPolicy UpdateByteMatchSet UpdateGeoMatchSet UpdateIPSet UpdateRateBasedRule UpdateRegexMatchSet UpdateRegexPatternSet UpdateRule UpdateRuleGroup UpdateSizeConstraintSet UpdateSqlInjectionMatchSet UpdateWebACL UpdateXssMatchSet / }
 
 1;
 
@@ -1296,6 +1311,17 @@ Submit a C<DeleteIPSet> request.
 
 
 
+=head2 DeletePermissionPolicy(ResourceArn => Str)
+
+Each argument is described in detail in: L<Paws::WAF::DeletePermissionPolicy>
+
+Returns: a L<Paws::WAF::DeletePermissionPolicyResponse> instance
+
+Permanently deletes an IAM policy from the specified RuleGroup.
+
+The user making the request must be the owner of the RuleGroup.
+
+
 =head2 DeleteRateBasedRule(ChangeToken => Str, RuleId => Str)
 
 Each argument is described in detail in: L<Paws::WAF::DeleteRateBasedRule>
@@ -1668,6 +1694,15 @@ Returns: a L<Paws::WAF::GetIPSetResponse> instance
 Returns the IPSet that is specified by C<IPSetId>.
 
 
+=head2 GetPermissionPolicy(ResourceArn => Str)
+
+Each argument is described in detail in: L<Paws::WAF::GetPermissionPolicy>
+
+Returns: a L<Paws::WAF::GetPermissionPolicyResponse> instance
+
+Returns the IAM policy attached to the RuleGroup.
+
+
 =head2 GetRateBasedRule(RuleId => Str)
 
 Each argument is described in detail in: L<Paws::WAF::GetRateBasedRule>
@@ -1912,6 +1947,64 @@ Each argument is described in detail in: L<Paws::WAF::ListXssMatchSets>
 Returns: a L<Paws::WAF::ListXssMatchSetsResponse> instance
 
 Returns an array of XssMatchSet objects.
+
+
+=head2 PutPermissionPolicy(Policy => Str, ResourceArn => Str)
+
+Each argument is described in detail in: L<Paws::WAF::PutPermissionPolicy>
+
+Returns: a L<Paws::WAF::PutPermissionPolicyResponse> instance
+
+Attaches a IAM policy to the specified resource. The only supported use
+for this action is to share a RuleGroup across accounts.
+
+The C<PutPermissionPolicy> is subject to the following restrictions:
+
+=over
+
+=item *
+
+You can attach only one policy with each C<PutPermissionPolicy>
+request.
+
+=item *
+
+The policy must include an C<Effect>, C<Action> and C<Principal>.
+
+=item *
+
+C<Effect> must specify C<Allow>.
+
+=item *
+
+The C<Action> in the policy must be C<waf:UpdateWebACL> and
+C<waf-regional:UpdateWebACL>. Any extra or wildcard actions in the
+policy will be rejected.
+
+=item *
+
+The policy cannot include a C<Resource> parameter.
+
+=item *
+
+The ARN in the request must be a valid WAF RuleGroup ARN and the
+RuleGroup must exist in the same region.
+
+=item *
+
+The user making the request must be the owner of the RuleGroup.
+
+=item *
+
+Your policy must be composed using IAM Policy version 2012-10-17.
+
+=back
+
+For more information, see IAM Policies
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html).
+
+An example of a valid policy parameter is shown in the Examples section
+below.
 
 
 =head2 UpdateByteMatchSet(ByteMatchSetId => Str, ChangeToken => Str, Updates => ArrayRef[L<Paws::WAF::ByteMatchSetUpdate>])

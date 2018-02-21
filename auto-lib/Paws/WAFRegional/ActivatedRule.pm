@@ -70,9 +70,11 @@ based on the remaining rules in the web ACL.
 
 =back
 
-The C<Action> data type within C<ActivatedRule> is used only when
-submitting an C<UpdateWebACL> request. C<ActivatedRule|Action> is not
-applicable and therefore not available for C<UpdateRuleGroup>.
+C<ActivatedRule|OverrideAction> applies only when updating or adding a
+C<RuleGroup> to a C<WebACL>. In this case you do not use
+C<ActivatedRule|Action>. For all other update requests,
+C<ActivatedRule|Action> is used instead of
+C<ActivatedRule|OverrideAction>.
 
 
 =head2 OverrideAction => L<Paws::WAFRegional::WafOverrideAction>
@@ -89,10 +91,11 @@ contained within the group. Instead of blocking matching requests,
 those requests will be counted. You can view a record of counted
 requests using GetSampledRequests.
 
-The C<OverrideAction> data type within C<ActivatedRule> is used only
-when submitting an C<UpdateRuleGroup> request.
-C<ActivatedRule|OverrideAction> is not applicable and therefore not
-available for C<UpdateWebACL>.
+C<ActivatedRule|OverrideAction> applies only when updating or adding a
+C<RuleGroup> to a C<WebACL>. In this case you do not use
+C<ActivatedRule|Action>. For all other update requests,
+C<ActivatedRule|Action> is used instead of
+C<ActivatedRule|OverrideAction>.
 
 
 =head2 B<REQUIRED> Priority => Int
