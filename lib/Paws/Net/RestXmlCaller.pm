@@ -69,15 +69,21 @@ package Paws::Net::RestXmlCaller;
     {
       if ($attribute->does('Paws::API::Attribute::Trait::ParamInURI')) {
         my $att_name = $attribute->name;
-        $vars->{ $attribute->uri_name } = $call->$att_name;
         if ($uri_attrib_is_greedy{$att_name}) {
-            $uri_template =~ s{$att_name\+}{\+$att_name}g;
+          $vars->{ $attribute->uri_name } = uri_escape_utf8($call->$att_name, q[^A-Za-z0-9\-\._~/]);
+          $uri_template =~ s{$att_name\+}{\+$att_name}g;
+        } else {
+          $vars->{ $attribute->uri_name } = uri_escape_utf8($call->$att_name, q[^A-Za-z0-9\-\._~]);
         }
       }
     }
 
     my $t = URI::Template->new( $uri_template );
     my $uri = $t->process($vars);
+    # URI::Template will double encode %, so undo it
+    my $uri_str = $uri->as_string;
+    $uri_str =~ s/\%25/\%/g;
+    $uri = URI->new( $uri_str );
     return $uri;
   }
 
