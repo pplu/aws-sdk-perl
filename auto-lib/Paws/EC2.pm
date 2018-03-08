@@ -1354,6 +1354,29 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::UpdateSecurityGroupRuleDescriptionsIngress', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAllIamInstanceProfileAssociations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeIamInstanceProfileAssociations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeIamInstanceProfileAssociations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->IamInstanceProfileAssociations }, @{ $next_result->IamInstanceProfileAssociations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'IamInstanceProfileAssociations') foreach (@{ $result->IamInstanceProfileAssociations });
+        $result = $self->DescribeIamInstanceProfileAssociations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'IamInstanceProfileAssociations') foreach (@{ $result->IamInstanceProfileAssociations });
+    }
+
+    return undef
+  }
   sub DescribeAllInstances {
     my $self = shift;
 
@@ -2435,6 +2458,10 @@ You can view the data in your log streams using Amazon CloudWatch Logs.
 In your request, you must also specify an IAM role that has permission
 to publish logs to CloudWatch Logs.
 
+For more information, see VPC Flow Logs
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html)
+in the I<Amazon Virtual Private Cloud User Guide>.
+
 
 =head2 CreateFpgaImage(InputStorageLocation => L<Paws::EC2::StorageLocation>, [ClientToken => Str, Description => Str, DryRun => Bool, LogsStorageLocation => L<Paws::EC2::StorageLocation>, Name => Str])
 
@@ -2785,7 +2812,7 @@ AuthorizeSecurityGroupIngress, AuthorizeSecurityGroupEgress,
 RevokeSecurityGroupIngress, and RevokeSecurityGroupEgress.
 
 
-=head2 CreateSnapshot(VolumeId => Str, [Description => Str, DryRun => Bool])
+=head2 CreateSnapshot(VolumeId => Str, [Description => Str, DryRun => Bool, TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]])
 
 Each argument is described in detail in: L<Paws::EC2::CreateSnapshot>
 
@@ -2816,6 +2843,10 @@ Snapshots that are taken from encrypted volumes are automatically
 encrypted. Volumes that are created from encrypted snapshots are also
 automatically encrypted. Your encrypted volumes and any associated
 snapshots always remain protected.
+
+You can tag your snapshots during creation. For more information, see
+Tagging Your Amazon EC2 Resources
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html).
 
 For more information, see Amazon Elastic Block Store
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html) and
@@ -3431,7 +3462,8 @@ Returns: a L<Paws::EC2::DeleteVpcPeeringConnectionResult> instance
 Deletes a VPC peering connection. Either the owner of the requester VPC
 or the owner of the accepter VPC can delete the VPC peering connection
 if it's in the C<active> state. The owner of the requester VPC can
-delete a VPC peering connection in the C<pending-acceptance> state.
+delete a VPC peering connection in the C<pending-acceptance> state. You
+cannot delete a VPC peering connection that's in the C<failed> state.
 
 
 =head2 DeleteVpnConnection(VpnConnectionId => Str, [DryRun => Bool])
@@ -3569,14 +3601,16 @@ This request only returns information about resource types that support
 longer IDs.
 
 The following resource types support longer IDs: C<bundle> |
-C<conversion-task> | C<dhcp-options> | C<elastic-ip-allocation> |
-C<elastic-ip-association> | C<export-task> | C<flow-log> | C<image> |
-C<import-task> | C<instance> | C<internet-gateway> | C<network-acl> |
-C<network-acl-association> | C<network-interface> |
-C<network-interface-attachment> | C<prefix-list> | C<reservation> |
-C<route-table> | C<route-table-association> | C<security-group> |
-C<snapshot> | C<subnet> | C<subnet-cidr-block-association> | C<volume>
-| C<vpc> | C<vpc-cidr-block-association> | C<vpc-peering-connection>.
+C<conversion-task> | C<customer-gateway> | C<dhcp-options> |
+C<elastic-ip-allocation> | C<elastic-ip-association> | C<export-task> |
+C<flow-log> | C<image> | C<import-task> | C<instance> |
+C<internet-gateway> | C<network-acl> | C<network-acl-association> |
+C<network-interface> | C<network-interface-attachment> | C<prefix-list>
+| C<reservation> | C<route-table> | C<route-table-association> |
+C<security-group> | C<snapshot> | C<subnet> |
+C<subnet-cidr-block-association> | C<volume> | C<vpc> |
+C<vpc-cidr-block-association> | C<vpc-endpoint> |
+C<vpc-peering-connection> | C<vpn-connection> | C<vpn-gateway>.
 
 
 =head2 DescribeAvailabilityZones([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], ZoneNames => ArrayRef[Str|Undef]])
@@ -3793,14 +3827,16 @@ information, see Resource IDs
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 The following resource types support longer IDs: C<bundle> |
-C<conversion-task> | C<dhcp-options> | C<elastic-ip-allocation> |
-C<elastic-ip-association> | C<export-task> | C<flow-log> | C<image> |
-C<import-task> | C<instance> | C<internet-gateway> | C<network-acl> |
-C<network-acl-association> | C<network-interface> |
-C<network-interface-attachment> | C<prefix-list> | C<reservation> |
-C<route-table> | C<route-table-association> | C<security-group> |
-C<snapshot> | C<subnet> | C<subnet-cidr-block-association> | C<volume>
-| C<vpc> | C<vpc-cidr-block-association> | C<vpc-peering-connection>.
+C<conversion-task> | C<customer-gateway> | C<dhcp-options> |
+C<elastic-ip-allocation> | C<elastic-ip-association> | C<export-task> |
+C<flow-log> | C<image> | C<import-task> | C<instance> |
+C<internet-gateway> | C<network-acl> | C<network-acl-association> |
+C<network-interface> | C<network-interface-attachment> | C<prefix-list>
+| C<reservation> | C<route-table> | C<route-table-association> |
+C<security-group> | C<snapshot> | C<subnet> |
+C<subnet-cidr-block-association> | C<volume> | C<vpc> |
+C<vpc-cidr-block-association> | C<vpc-endpoint> |
+C<vpc-peering-connection> | C<vpn-connection> | C<vpn-gateway>.
 
 These settings apply to the principal specified in the request. They do
 not apply to the principal that makes the request.
@@ -3819,14 +3855,16 @@ ID formats can be modified; it does not return information about other
 resource types.
 
 The following resource types support longer IDs: C<bundle> |
-C<conversion-task> | C<dhcp-options> | C<elastic-ip-allocation> |
-C<elastic-ip-association> | C<export-task> | C<flow-log> | C<image> |
-C<import-task> | C<instance> | C<internet-gateway> | C<network-acl> |
-C<network-acl-association> | C<network-interface> |
-C<network-interface-attachment> | C<prefix-list> | C<reservation> |
-C<route-table> | C<route-table-association> | C<security-group> |
-C<snapshot> | C<subnet> | C<subnet-cidr-block-association> | C<volume>
-| C<vpc> | C<vpc-cidr-block-association> | C<vpc-peering-connection>.
+C<conversion-task> | C<customer-gateway> | C<dhcp-options> |
+C<elastic-ip-allocation> | C<elastic-ip-association> | C<export-task> |
+C<flow-log> | C<image> | C<import-task> | C<instance> |
+C<internet-gateway> | C<network-acl> | C<network-acl-association> |
+C<network-interface> | C<network-interface-attachment> | C<prefix-list>
+| C<reservation> | C<route-table> | C<route-table-association> |
+C<security-group> | C<snapshot> | C<subnet> |
+C<subnet-cidr-block-association> | C<volume> | C<vpc> |
+C<vpc-cidr-block-association> | C<vpc-endpoint> |
+C<vpc-peering-connection> | C<vpn-connection> | C<vpn-gateway>.
 
 These settings apply to the IAM user who makes the request; they do not
 apply to the entire AWS account. By default, an IAM user defaults to
@@ -4138,14 +4176,16 @@ request is useful for identifying those IAM users and IAM roles that
 have overridden the default ID settings.
 
 The following resource types support longer IDs: C<bundle> |
-C<conversion-task> | C<dhcp-options> | C<elastic-ip-allocation> |
-C<elastic-ip-association> | C<export-task> | C<flow-log> | C<image> |
-C<import-task> | C<instance> | C<internet-gateway> | C<network-acl> |
-C<network-acl-association> | C<network-interface> |
-C<network-interface-attachment> | C<prefix-list> | C<reservation> |
-C<route-table> | C<route-table-association> | C<security-group> |
-C<snapshot> | C<subnet> | C<subnet-cidr-block-association> | C<volume>
-| C<vpc> | C<vpc-cidr-block-association> | C<vpc-peering-connection>.
+C<conversion-task> | C<customer-gateway> | C<dhcp-options> |
+C<elastic-ip-allocation> | C<elastic-ip-association> | C<export-task> |
+C<flow-log> | C<image> | C<import-task> | C<instance> |
+C<internet-gateway> | C<network-acl> | C<network-acl-association> |
+C<network-interface> | C<network-interface-attachment> | C<prefix-list>
+| C<reservation> | C<route-table> | C<route-table-association> |
+C<security-group> | C<snapshot> | C<subnet> |
+C<subnet-cidr-block-association> | C<volume> | C<vpc> |
+C<vpc-cidr-block-association> | C<vpc-endpoint> |
+C<vpc-peering-connection> | C<vpn-connection> | C<vpn-gateway>.
 
 
 =head2 DescribeRegions([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], RegionNames => ArrayRef[Str|Undef]])
@@ -5225,14 +5265,16 @@ receive longer IDs (17-character IDs) when they are created.
 
 This request can only be used to modify longer ID settings for resource
 types that are within the opt-in period. Resources currently in their
-opt-in period include: C<bundle> | C<conversion-task> | C<dhcp-options>
-| C<elastic-ip-allocation> | C<elastic-ip-association> | C<export-task>
-| C<flow-log> | C<image> | C<import-task> | C<internet-gateway> |
-C<network-acl> | C<network-acl-association> | C<network-interface> |
+opt-in period include: C<bundle> | C<conversion-task> |
+C<customer-gateway> | C<dhcp-options> | C<elastic-ip-allocation> |
+C<elastic-ip-association> | C<export-task> | C<flow-log> | C<image> |
+C<import-task> | C<internet-gateway> | C<network-acl> |
+C<network-acl-association> | C<network-interface> |
 C<network-interface-attachment> | C<prefix-list> | C<route-table> |
 C<route-table-association> | C<security-group> | C<subnet> |
 C<subnet-cidr-block-association> | C<vpc> |
-C<vpc-cidr-block-association> | C<vpc-peering-connection>..
+C<vpc-cidr-block-association> | C<vpc-endpoint> |
+C<vpc-peering-connection> | C<vpn-connection> | C<vpn-gateway>.
 
 For more information, see Resource IDs
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html)
@@ -5259,14 +5301,16 @@ basis. You can specify that resources should receive longer IDs
 
 This request can only be used to modify longer ID settings for resource
 types that are within the opt-in period. Resources currently in their
-opt-in period include: C<bundle> | C<conversion-task> | C<dhcp-options>
-| C<elastic-ip-allocation> | C<elastic-ip-association> | C<export-task>
-| C<flow-log> | C<image> | C<import-task> | C<internet-gateway> |
-C<network-acl> | C<network-acl-association> | C<network-interface> |
+opt-in period include: C<bundle> | C<conversion-task> |
+C<customer-gateway> | C<dhcp-options> | C<elastic-ip-allocation> |
+C<elastic-ip-association> | C<export-task> | C<flow-log> | C<image> |
+C<import-task> | C<internet-gateway> | C<network-acl> |
+C<network-acl-association> | C<network-interface> |
 C<network-interface-attachment> | C<prefix-list> | C<route-table> |
 C<route-table-association> | C<security-group> | C<subnet> |
 C<subnet-cidr-block-association> | C<vpc> |
-C<vpc-cidr-block-association> | C<vpc-peering-connection>.
+C<vpc-cidr-block-association> | C<vpc-endpoint> |
+C<vpc-peering-connection> | C<vpn-connection> | C<vpn-gateway>.
 
 This setting applies to the IAM user who makes the request; it does not
 apply to the entire AWS account. By default, an IAM user defaults to
@@ -5331,32 +5375,48 @@ For more information, see T2 Instances
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
-=head2 ModifyInstancePlacement(InstanceId => Str, [Affinity => Str, HostId => Str, Tenancy => Str])
+=head2 ModifyInstancePlacement(InstanceId => Str, [Affinity => Str, GroupName => Str, HostId => Str, Tenancy => Str])
 
 Each argument is described in detail in: L<Paws::EC2::ModifyInstancePlacement>
 
 Returns: a L<Paws::EC2::ModifyInstancePlacementResult> instance
 
-Set the instance affinity value for a specific stopped instance and
-modify the instance tenancy setting.
+Modifies the placement attributes for a specified instance. You can do
+the following:
 
-Instance affinity is disabled by default. When instance affinity is
-C<host> and it is not associated with a specific Dedicated Host, the
-next time it is launched it will automatically be associated with the
-host it lands on. This relationship will persist if the instance is
-stopped/started, or rebooted.
+=over
 
-You can modify the host ID associated with a stopped instance. If a
-stopped instance has a new host ID association, the instance will
-target that host when restarted.
+=item *
 
-You can modify the tenancy of a stopped instance with a tenancy of
-C<host> or C<dedicated>.
+Modify the affinity between an instance and a Dedicated Host
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html).
+When affinity is set to C<host> and the instance is not associated with
+a specific Dedicated Host, the next time the instance is launched, it
+is automatically associated with the host on which it lands. If the
+instance is restarted or rebooted, this relationship persists.
 
-Affinity, hostID, and tenancy are not required parameters, but at least
-one of them must be specified in the request. Affinity and tenancy can
-be modified in the same request, but tenancy can only be modified on
-instances that are stopped.
+=item *
+
+Change the Dedicated Host with which an instance is associated.
+
+=item *
+
+Change the instance tenancy of an instance from C<host> to
+C<dedicated>, or from C<dedicated> to C<host>.
+
+=item *
+
+Move an instance to or from a placement group
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html).
+
+=back
+
+At least one attribute for affinity, host ID, tenancy, or placement
+group name must be specified in the request. Affinity and tenancy can
+be modified in the same request.
+
+To modify the host ID, tenancy, or placement group for an instance, the
+instance must be in the C<stopped> state.
 
 
 =head2 ModifyLaunchTemplate([ClientToken => Str, DefaultVersion => Str, DryRun => Bool, LaunchTemplateId => Str, LaunchTemplateName => Str])
@@ -5615,7 +5675,7 @@ peer VPC.
 
 =item *
 
-Enable/disable a local VPC to resolve public DNS hostnames to private
+Enable/disable the ability to resolve public DNS hostnames to private
 IP addresses when queried from instances in the peer VPC.
 
 =back
@@ -6420,6 +6480,18 @@ description parameter in the request.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllIamInstanceProfileAssociations(sub { },[AssociationIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllIamInstanceProfileAssociations([AssociationIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - IamInstanceProfileAssociations, passing the object as the first parameter, and the string 'IamInstanceProfileAssociations' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeIamInstanceProfileAssociationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 DescribeAllInstances(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 

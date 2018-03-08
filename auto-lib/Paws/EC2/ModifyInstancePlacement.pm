@@ -2,6 +2,7 @@
 package Paws::EC2::ModifyInstancePlacement;
   use Moose;
   has Affinity => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'affinity' );
+  has GroupName => (is => 'ro', isa => 'Str');
   has HostId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hostId' );
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' , required => 1);
   has Tenancy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'tenancy' );
@@ -38,13 +39,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Affinity => Str
 
-The new affinity setting for the instance.
+The affinity setting for the instance.
 
 Valid values are: C<"default">, C<"host">
 
+=head2 GroupName => Str
+
+The name of the placement group in which to place the instance. For
+spread placement groups, the instance must have a tenancy of
+C<default>. For cluster placement groups, the instance must have a
+tenancy of C<default> or C<dedicated>.
+
+To remove an instance from a placement group, specify an empty string
+("").
+
+
+
 =head2 HostId => Str
 
-The ID of the Dedicated Host that the instance will have affinity with.
+The ID of the Dedicated Host with which to associate the instance.
 
 
 
@@ -56,7 +69,7 @@ The ID of the instance that you are modifying.
 
 =head2 Tenancy => Str
 
-The tenancy of the instance that you are modifying.
+The tenancy for the instance.
 
 Valid values are: C<"dedicated">, C<"host">
 

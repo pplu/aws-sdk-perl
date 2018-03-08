@@ -93,7 +93,7 @@ Key ID
 
 =item *
 
-Key alias
+Key alias, in the form C<alias/I<ExampleAlias>>
 
 =item *
 

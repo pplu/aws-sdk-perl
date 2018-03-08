@@ -126,11 +126,13 @@ The action will eventually fail.
 
 =head2 PresignedUrl => Str
 
-The pre-signed URL that facilitates copying an encrypted snapshot. This
-parameter is only required when copying an encrypted snapshot with the
-Amazon EC2 Query API; it is available as an optional parameter in all
-other cases. The C<PresignedUrl> should use the snapshot source
-endpoint, the C<CopySnapshot> action, and include the C<SourceRegion>,
+The pre-signed URL parameter is required when copying an encrypted
+snapshot with the Amazon EC2 Query API; it is available as an optional
+parameter in all other cases. For more information, see Query Requests
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html).
+
+The C<PresignedUrl> should use the snapshot source endpoint, the
+C<CopySnapshot> action, and include the C<SourceRegion>,
 C<SourceSnapshotId>, and C<DestinationRegion> parameters. The
 C<PresignedUrl> must be signed using AWS Signature Version 4. Because
 EBS snapshots are stored in Amazon S3, the signing algorithm for this
