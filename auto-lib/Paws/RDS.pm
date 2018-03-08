@@ -487,6 +487,29 @@ package Paws::RDS;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllDBClusters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBClusters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBClusters(@_, Marker => $next_result->Marker);
+        push @{ $result->DBClusters }, @{ $next_result->DBClusters };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'DBClusters') foreach (@{ $result->DBClusters });
+        $result = $self->DescribeDBClusters(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'DBClusters') foreach (@{ $result->DBClusters });
+    }
+
+    return undef
+  }
   sub DescribeAllDBClusterSnapshots {
     my $self = shift;
 
@@ -2491,6 +2514,18 @@ This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllDBClusters(sub { },[DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBClusters([DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBClusters, passing the object as the first parameter, and the string 'DBClusters' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DBClusterMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 DescribeAllDBClusterSnapshots(sub { },[DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
 
