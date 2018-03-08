@@ -1,5 +1,7 @@
 0.37
  - Big refactor of all result handling for all services
+ - Support for credential_process in credential handlers
+   https://docs.aws.amazon.com/cli/latest/topic/config-vars.html#sourcing-credentials-from-external-processes
  - Better docu generation (osoriano)
  - Documentation update: Now POD contains links from the botocore documentation
  - New API: Pricing
