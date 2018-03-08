@@ -289,6 +289,11 @@ Returns: a L<Paws::CloudWatchEvents::PutRuleResponse> instance
 Creates or updates the specified rule. Rules are enabled by default, or
 based on value of the state. You can disable a rule using DisableRule.
 
+If you are updating an existing rule, the rule is completely replaced
+with what you specify in this C<PutRule> command. If you omit arguments
+in C<PutRule>, the old values for those arguments are not kept.
+Instead, they are replaced with null values.
+
 When you create or update a rule, incoming events might not immediately
 start matching to new or updated rules. Please allow a short period of
 time for changes to take effect.
@@ -345,6 +350,10 @@ Amazon ECS tasks
 =item *
 
 AWS Step Functions state machines
+
+=item *
+
+AWS Batch jobs
 
 =item *
 
@@ -434,8 +443,8 @@ that you specify as the input to the target.
 
 =back
 
-When you specify C<Input>, C<InputPath>, or C<InputTransformer>, you
-must use JSON dot notation, not bracket notation.
+When you specify C<InputPath> or C<InputTransformer>, you must use JSON
+dot notation, not bracket notation.
 
 When you add targets to a rule and the associated rule triggers soon
 after, new or updated targets might not be immediately invoked. Please

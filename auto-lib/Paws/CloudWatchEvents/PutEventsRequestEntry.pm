@@ -42,8 +42,8 @@ Represents an event to be submitted.
 
 =head2 Detail => Str
 
-  In the JSON sense, an object containing fields, which may also contain
-nested subobjects. No constraints are imposed on its contents.
+  A valid JSON string. There is no other schema imposed. The JSON string
+may contain fields and nested subobjects.
 
 
 =head2 DetailType => Str

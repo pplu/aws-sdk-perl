@@ -1,6 +1,7 @@
 package Paws::CloudWatchEvents::Target;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
+  has BatchParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::BatchParameters');
   has EcsParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::EcsParameters');
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has Input => (is => 'ro', isa => 'Str');
@@ -52,6 +53,14 @@ Run Command, and built-in targets.
   The Amazon Resource Name (ARN) of the target.
 
 
+=head2 BatchParameters => L<Paws::CloudWatchEvents::BatchParameters>
+
+  Contains the job definition, job name, and other parameters if the
+event target is an AWS Batch job. For more information about AWS Batch,
+see Jobs (http://docs.aws.amazon.com/batch/latest/userguide/jobs.html)
+in the I<AWS Batch User Guide>.
+
+
 =head2 EcsParameters => L<Paws::CloudWatchEvents::EcsParameters>
 
   Contains the Amazon ECS task definition and task count to be used, if
@@ -69,9 +78,8 @@ in the I<Amazon EC2 Container Service Developer Guide>.
 =head2 Input => Str
 
   Valid JSON text passed to the target. In this case, nothing from the
-event itself is passed to the target. You must use JSON dot notation,
-not bracket notation. For more information, see The JavaScript Object
-Notation (JSON) Data Interchange Format
+event itself is passed to the target. For more information, see The
+JavaScript Object Notation (JSON) Data Interchange Format
 (http://www.rfc-editor.org/rfc/rfc7159.txt).
 
 
