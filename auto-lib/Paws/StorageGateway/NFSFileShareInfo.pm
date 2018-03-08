@@ -11,8 +11,10 @@ package Paws::StorageGateway::NFSFileShareInfo;
   has KMSKey => (is => 'ro', isa => 'Str');
   has LocationARN => (is => 'ro', isa => 'Str');
   has NFSFileShareDefaults => (is => 'ro', isa => 'Paws::StorageGateway::NFSFileShareDefaults');
+  has ObjectACL => (is => 'ro', isa => 'Str');
   has Path => (is => 'ro', isa => 'Str');
   has ReadOnly => (is => 'ro', isa => 'Bool');
+  has RequesterPays => (is => 'ro', isa => 'Bool');
   has Role => (is => 'ro', isa => 'Str');
   has Squash => (is => 'ro', isa => 'Str');
 1;
@@ -88,7 +90,8 @@ Optional.
 =head2 GuessMIMETypeEnabled => Bool
 
   Enables guessing of the MIME type for uploaded objects based on file
-extensions: "true" to enable MIME type guessing, and otherwise "false".
+extensions. Set this value to true to enable MIME type guessing, and
+otherwise to false. The default value is true.
 
 
 =head2 KMSEncrypted => Bool
@@ -112,6 +115,11 @@ false to use a key managed by Amazon S3. Optional.
   
 
 
+=head2 ObjectACL => Str
+
+  
+
+
 =head2 Path => Str
 
   
@@ -119,7 +127,15 @@ false to use a key managed by Amazon S3. Optional.
 
 =head2 ReadOnly => Bool
 
-  
+  Sets the write status of a file share. This value is true if the write
+status is read-only, and otherwise false.
+
+
+=head2 RequesterPays => Bool
+
+  Sets who pays the cost of the request and the data download from the
+Amazon S3 bucket. Set this value to true if you want the requester to
+pay instead of the bucket owner, and otherwise to false.
 
 
 =head2 Role => Str

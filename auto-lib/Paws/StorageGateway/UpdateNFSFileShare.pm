@@ -8,7 +8,9 @@ package Paws::StorageGateway::UpdateNFSFileShare;
   has KMSEncrypted => (is => 'ro', isa => 'Bool');
   has KMSKey => (is => 'ro', isa => 'Str');
   has NFSFileShareDefaults => (is => 'ro', isa => 'Paws::StorageGateway::NFSFileShareDefaults');
+  has ObjectACL => (is => 'ro', isa => 'Str');
   has ReadOnly => (is => 'ro', isa => 'Bool');
+  has RequesterPays => (is => 'ro', isa => 'Bool');
   has Squash => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -66,7 +68,8 @@ The Amazon Resource Name (ARN) of the file share to be updated.
 =head2 GuessMIMETypeEnabled => Bool
 
 Enables guessing of the MIME type for uploaded objects based on file
-extensions: "true" to enable MIME type guessing, and otherwise "false".
+extensions. Set this value to true to enable MIME type guessing, and
+otherwise to false. The default value is true.
 
 
 
@@ -90,10 +93,25 @@ The default values for the file share. Optional.
 
 
 
+=head2 ObjectACL => Str
+
+Sets the access control list permission for objects in the S3 bucket
+that a file gateway puts objects into. The default value is "private".
+
+Valid values are: C<"private">, C<"public-read">, C<"public-read-write">, C<"authenticated-read">, C<"bucket-owner-read">, C<"bucket-owner-full-control">, C<"aws-exec-read">
+
 =head2 ReadOnly => Bool
 
-Sets the write status of a file share: "true" if the write status is
-read-only, otherwise "false".
+Sets the write status of a file share. This value is true if the write
+status is read-only, and otherwise false.
+
+
+
+=head2 RequesterPays => Bool
+
+Sets who pays the cost of the request and the data download from the
+Amazon S3 bucket. Set this value to true if you want the requester to
+pay instead of the bucket owner, and otherwise to false.
 
 
 

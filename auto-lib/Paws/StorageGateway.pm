@@ -585,14 +585,12 @@ Each argument is described in detail in: L<Paws::StorageGateway::ActivateGateway
 
 Returns: a L<Paws::StorageGateway::ActivateGatewayOutput> instance
 
-Activates the gateway you previously deployed on your host. For more
-information, see Activate the AWS Storage Gateway
-(http://docs.aws.amazon.com/storagegateway/latest/userguide/GettingStartedActivateGateway-common.html).
-In the activation process, you specify information such as the region
-you want to use for storing snapshots or tapes, the time zone for
-scheduled snapshots the gateway snapshot schedule window, an activation
-key, and a name for your gateway. The activation process also
-associates your gateway with your account; for more information, see
+Activates the gateway you previously deployed on your host. In the
+activation process, you specify information such as the region you want
+to use for storing snapshots or tapes, the time zone for scheduled
+snapshots the gateway snapshot schedule window, an activation key, and
+a name for your gateway. The activation process also associates your
+gateway with your account; for more information, see
 UpdateGatewayInformation.
 
 You must turn on the gateway VM before you can activate your gateway.
@@ -741,7 +739,7 @@ C<VolumeSizeInBytes> value must be equal to or larger than the size of
 the copied volume, in bytes.
 
 
-=head2 CreateNFSFileShare(ClientToken => Str, GatewayARN => Str, LocationARN => Str, Role => Str, [ClientList => ArrayRef[Str|Undef], DefaultStorageClass => Str, GuessMIMETypeEnabled => Bool, KMSEncrypted => Bool, KMSKey => Str, NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>, ReadOnly => Bool, Squash => Str])
+=head2 CreateNFSFileShare(ClientToken => Str, GatewayARN => Str, LocationARN => Str, Role => Str, [ClientList => ArrayRef[Str|Undef], DefaultStorageClass => Str, GuessMIMETypeEnabled => Bool, KMSEncrypted => Bool, KMSKey => Str, NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>, ObjectACL => Str, ReadOnly => Bool, RequesterPays => Bool, Squash => Str])
 
 Each argument is described in detail in: L<Paws::StorageGateway::CreateNFSFileShare>
 
@@ -1358,18 +1356,22 @@ Each argument is described in detail in: L<Paws::StorageGateway::NotifyWhenUploa
 
 Returns: a L<Paws::StorageGateway::NotifyWhenUploadedOutput> instance
 
-Sends you notification when all file data written to the NFS file share
-has been uploaded to Amazon S3.
+Sends you notification through CloudWatch Events when all files written
+to your NFS file share have been uploaded to Amazon S3.
 
 AWS Storage Gateway can send a notification through Amazon CloudWatch
 Events when all files written to your file share up to that point in
 time have been uploaded to Amazon S3. These files include files written
 to the NFS file share up to the time that you make a request for
 notification. When the upload is done, Storage Gateway sends you
-notification through an Amazon CloudWatch event. You can configure
-CloudWatch Events to sent the notification through event targets such
-as email, SNS or a Lambda function. text or Lambda functions. This
-operation is only supported in the file gateway type.
+notification through an Amazon CloudWatch Event. You can configure
+CloudWatch Events to send the notification through event targets such
+as Amazon SNS or AWS Lambda function. This operation is only supported
+in the file gateway type.
+
+For more information, see Getting File Upload Notification in the
+Storage Gateway User Guide
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-upload-notification).
 
 
 =head2 RefreshCache(FileShareARN => Str)
@@ -1408,7 +1410,7 @@ on virtual tapes in the gateway. For example, an error can occur when a
 disk is corrupted or removed from the gateway. When a cache is reset,
 the gateway loses its cache storage. At this point you can reconfigure
 the disks as cache disks. This operation is only supported in the
-cached volume, tape and file gateway types.
+cached volume and tape types.
 
 If the cache disk you are resetting contains data that has not been
 uploaded to Amazon S3 yet, that data can be lost. After you reset cache
@@ -1603,7 +1605,7 @@ including day and time of the week. The maintenance time is the time in
 your gateway's time zone.
 
 
-=head2 UpdateNFSFileShare(FileShareARN => Str, [ClientList => ArrayRef[Str|Undef], DefaultStorageClass => Str, GuessMIMETypeEnabled => Bool, KMSEncrypted => Bool, KMSKey => Str, NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>, ReadOnly => Bool, Squash => Str])
+=head2 UpdateNFSFileShare(FileShareARN => Str, [ClientList => ArrayRef[Str|Undef], DefaultStorageClass => Str, GuessMIMETypeEnabled => Bool, KMSEncrypted => Bool, KMSKey => Str, NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>, ObjectACL => Str, ReadOnly => Bool, RequesterPays => Bool, Squash => Str])
 
 Each argument is described in detail in: L<Paws::StorageGateway::UpdateNFSFileShare>
 

@@ -50,6 +50,10 @@ parameters, however, these are merely defaults -- the arguments you
 pass to the C<ActivateGateway> API call determine the actual
 configuration of your gateway.
 
+For more information, see
+https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html
+in the Storage Gateway User Guide.
+
 
 
 =head2 B<REQUIRED> GatewayName => Str
@@ -69,7 +73,7 @@ and Endpoints
 the I<Amazon Web Services Glossary>.
 
 Valid Values: "us-east-1", "us-east-2", "us-west-1", "us-west-2",
-"ca-central-1", "eu-west-1", "eu-central-1", "eu-west-2",
+"ca-central-1", "eu-west-1", "eu-central-1", "eu-west-2", "eu-west-3",
 "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2",
 "ap-south-1", "sa-east-1"
 
