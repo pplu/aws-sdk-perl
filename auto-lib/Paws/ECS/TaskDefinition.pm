@@ -80,26 +80,28 @@ C<memory> parameter:
 
 =item *
 
-256 (.25 vCPU) - Available C<memory> values: 0.5GB, 1GB, 2GB
+256 (.25 vCPU) - Available C<memory> values: 512 (0.5GB), 1024 (1GB),
+2048 (2GB)
 
 =item *
 
-512 (.5 vCPU) - Available C<memory> values: 1GB, 2GB, 3GB, 4GB
+512 (.5 vCPU) - Available C<memory> values: 1024 (1GB), 2048 (2GB),
+3072 (3GB), 4096 (4GB)
 
 =item *
 
-1024 (1 vCPU) - Available C<memory> values: 2GB, 3GB, 4GB, 5GB, 6GB,
-7GB, 8GB
+1024 (1 vCPU) - Available C<memory> values: 2048 (2GB), 3072 (3GB),
+4096 (4GB), 5120 (5GB), 6144 (6GB), 7168 (7GB), 8192 (8GB)
 
 =item *
 
-2048 (2 vCPU) - Available C<memory> values: Between 4GB and 16GB in 1GB
-increments
+2048 (2 vCPU) - Available C<memory> values: Between 4096 (4GB) and
+16384 (16GB) in increments of 1024 (1GB)
 
 =item *
 
-4096 (4 vCPU) - Available C<memory> values: Between 8GB and 30GB in 1GB
-increments
+4096 (4 vCPU) - Available C<memory> values: Between 8192 (8GB) and
+30720 (30GB) in increments of 1024 (1GB)
 
 =back
 
@@ -128,26 +130,28 @@ C<cpu> parameter:
 
 =item *
 
-0.5GB, 1GB, 2GB - Available C<cpu> values: 256 (.25 vCPU)
-
-=item *
-
-1GB, 2GB, 3GB, 4GB - Available C<cpu> values: 512 (.5 vCPU)
-
-=item *
-
-2GB, 3GB, 4GB, 5GB, 6GB, 7GB, 8GB - Available C<cpu> values: 1024 (1
+512 (0.5GB), 1024 (1GB), 2048 (2GB) - Available C<cpu> values: 256 (.25
 vCPU)
 
 =item *
 
-Between 4GB and 16GB in 1GB increments - Available C<cpu> values: 2048
-(2 vCPU)
+1024 (1GB), 2048 (2GB), 3072 (3GB), 4096 (4GB) - Available C<cpu>
+values: 512 (.5 vCPU)
 
 =item *
 
-Between 8GB and 30GB in 1GB increments - Available C<cpu> values: 4096
-(4 vCPU)
+2048 (2GB), 3072 (3GB), 4096 (4GB), 5120 (5GB), 6144 (6GB), 7168 (7GB),
+8192 (8GB) - Available C<cpu> values: 1024 (1 vCPU)
+
+=item *
+
+Between 4096 (4GB) and 16384 (16GB) in increments of 1024 (1GB) -
+Available C<cpu> values: 2048 (2 vCPU)
+
+=item *
+
+Between 8192 (8GB) and 30720 (30GB) in increments of 1024 (1GB) -
+Available C<cpu> values: 4096 (4 vCPU)
 
 =back
 

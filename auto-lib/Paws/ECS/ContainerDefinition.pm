@@ -321,6 +321,13 @@ and the C<IMAGE> parameter of docker run
 
 =item *
 
+When a new task starts, the Amazon ECS container agent pulls the latest
+version of the specified image and tag for the container to use.
+However, subsequent updates to a repository image are not propagated to
+already running tasks.
+
+=item *
+
 Images in Amazon ECR repositories can be specified by either using the
 full C<registry/repository:tag> or C<registry/repository@digest>. For
 example,
@@ -378,8 +385,7 @@ using security groups and VPC settings.
   Linux-specific modifications that are applied to the container, such as
 Linux KernelCapabilities.
 
-This parameter is not supported for Windows containers or tasks using
-the Fargate launch type.
+This parameter is not supported for Windows containers.
 
 
 =head2 LogConfiguration => L<Paws::ECS::LogConfiguration>

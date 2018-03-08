@@ -44,6 +44,9 @@ KernelCapabilities.
   The Linux capabilities for the container that are added to or dropped
 from the default configuration provided by Docker.
 
+If you are using tasks that use the Fargate launch type,
+C<capabilities> is supported but the C<add> parameter is not supported.
+
 
 =head2 Devices => ArrayRef[L<Paws::ECS::Device>]
 
@@ -54,6 +57,9 @@ section of the Docker Remote API
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
 and the C<--device> option to docker run
 (https://docs.docker.com/engine/reference/run/).
+
+If you are using tasks that use the Fargate launch type, the C<devices>
+parameter is not supported.
 
 
 =head2 InitProcessEnabled => Bool

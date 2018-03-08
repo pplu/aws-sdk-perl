@@ -56,6 +56,9 @@ section of the Docker Remote API
 and the C<--cap-add> option to docker run
 (https://docs.docker.com/engine/reference/run/).
 
+If you are using tasks that use the Fargate launch type, the C<add>
+parameter is not supported.
+
 Valid values: C<"ALL" | "AUDIT_CONTROL" | "AUDIT_WRITE" |
 "BLOCK_SUSPEND" | "CHOWN" | "DAC_OVERRIDE" | "DAC_READ_SEARCH" |
 "FOWNER" | "FSETID" | "IPC_LOCK" | "IPC_OWNER" | "KILL" | "LEASE" |

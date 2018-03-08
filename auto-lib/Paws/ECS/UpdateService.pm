@@ -65,7 +65,8 @@ your service.
 
 =head2 ForceNewDeployment => Bool
 
-Whether or not to force a new deployment of the service.
+Whether or not to force a new deployment of the service. By default,
+C<--no-force-new-deployment> is assumed unless specified otherwise.
 
 
 
