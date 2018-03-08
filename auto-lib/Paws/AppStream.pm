@@ -19,6 +19,11 @@ package Paws::AppStream;
     my $call_object = $self->new_with_coercions('Paws::AppStream::AssociateFleet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CopyImage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::CopyImage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDirectoryConfig {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppStream::CreateDirectoryConfig', @_);
@@ -177,7 +182,7 @@ package Paws::AppStream;
   
 
 
-  sub operations { qw/AssociateFleet CreateDirectoryConfig CreateFleet CreateImageBuilder CreateImageBuilderStreamingURL CreateStack CreateStreamingURL DeleteDirectoryConfig DeleteFleet DeleteImage DeleteImageBuilder DeleteStack DescribeDirectoryConfigs DescribeFleets DescribeImageBuilders DescribeImages DescribeSessions DescribeStacks DisassociateFleet ExpireSession ListAssociatedFleets ListAssociatedStacks ListTagsForResource StartFleet StartImageBuilder StopFleet StopImageBuilder TagResource UntagResource UpdateDirectoryConfig UpdateFleet UpdateStack / }
+  sub operations { qw/AssociateFleet CopyImage CreateDirectoryConfig CreateFleet CreateImageBuilder CreateImageBuilderStreamingURL CreateStack CreateStreamingURL DeleteDirectoryConfig DeleteFleet DeleteImage DeleteImageBuilder DeleteStack DescribeDirectoryConfigs DescribeFleets DescribeImageBuilders DescribeImages DescribeSessions DescribeStacks DisassociateFleet ExpireSession ListAssociatedFleets ListAssociatedStacks ListTagsForResource StartFleet StartImageBuilder StopFleet StopImageBuilder TagResource UntagResource UpdateDirectoryConfig UpdateFleet UpdateStack / }
 
 1;
 
@@ -219,6 +224,17 @@ Each argument is described in detail in: L<Paws::AppStream::AssociateFleet>
 Returns: a L<Paws::AppStream::AssociateFleetResult> instance
 
 Associates the specified fleet with the specified stack.
+
+
+=head2 CopyImage(DestinationImageName => Str, DestinationRegion => Str, SourceImageName => Str, [DestinationImageDescription => Str])
+
+Each argument is described in detail in: L<Paws::AppStream::CopyImage>
+
+Returns: a L<Paws::AppStream::CopyImageResponse> instance
+
+Copies the image within the same region or to a new region within the
+same AWS account. Note that any tags you added to the image will not be
+copied.
 
 
 =head2 CreateDirectoryConfig(DirectoryName => Str, OrganizationalUnitDistinguishedNames => ArrayRef[Str|Undef], ServiceAccountCredentials => L<Paws::AppStream::ServiceAccountCredentials>)

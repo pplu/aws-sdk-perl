@@ -48,7 +48,7 @@ Valid values are: C<"API">, C<"SAML">, C<"USERPOOL">
 
 =head2 B<REQUIRED> FleetName => Str
 
-The name of the fleet.
+The name of the fleet. This value is case-sensitive.
 
 
 
@@ -68,7 +68,7 @@ this operation. If this value is null, it retrieves the first page.
 
 =head2 B<REQUIRED> StackName => Str
 
-The name of the stack.
+The name of the stack. This value is case-sensitive.
 
 
 
