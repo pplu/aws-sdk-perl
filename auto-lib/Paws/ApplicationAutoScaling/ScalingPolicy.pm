@@ -116,6 +116,12 @@ C<table/my-table/index/my-table-index>.
 Aurora DB cluster - The resource type is C<cluster> and the unique
 identifier is the cluster name. Example: C<cluster:my-db-cluster>.
 
+=item *
+
+Amazon SageMaker endpoint variants - The resource type is C<variant>
+and the unique identifier is the resource ID. Example:
+C<endpoint/my-end-point/variant/KMeansClustering>.
+
 =back
 
 
@@ -170,6 +176,11 @@ for a DynamoDB global secondary index.
 
 C<rds:cluster:ReadReplicaCount> - The count of Aurora Replicas in an
 Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+
+=item *
+
+C<sagemaker:variant:DesiredInstanceCount> - The number of EC2 instances
+for an Amazon SageMaker model endpoint variant.
 
 =back
 

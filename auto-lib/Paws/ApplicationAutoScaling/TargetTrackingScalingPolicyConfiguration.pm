@@ -43,7 +43,7 @@ Represents a target tracking scaling policy configuration.
 
 =head2 CustomizedMetricSpecification => L<Paws::ApplicationAutoScaling::CustomizedMetricSpecification>
 
-  Reserved for future use.
+  A customized metric.
 
 
 =head2 DisableScaleIn => Bool

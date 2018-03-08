@@ -164,10 +164,9 @@ Paws::ApplicationAutoScaling - Perl Interface to AWS Application Auto Scaling
 
 =head1 DESCRIPTION
 
-With Application Auto Scaling, you can automatically scale your AWS
-resources. The experience is similar to that of Auto Scaling
-(https://aws.amazon.com/autoscaling/). You can use Application Auto
-Scaling to accomplish the following tasks:
+With Application Auto Scaling, you can configure automatic scaling for
+your scalable AWS resources. You can use Application Auto Scaling to
+accomplish the following tasks:
 
 =over
 
@@ -234,7 +233,18 @@ Amazon Aurora Replicas. For more information, see Using Amazon Aurora
 Auto Scaling with Aurora Replicas
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Integrating.AutoScaling.html).
 
+=item *
+
+Amazon SageMaker endpoints. For more information, see Automatically
+Scaling Amazon SageMaker Models
+(http://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html).
+
 =back
+
+To configure automatic scaling for multiple resources across multiple
+services, use AWS Auto Scaling to create a scaling plan for your
+application. For more information, see AWS Auto Scaling
+(http://aws.amazon.com/autoscaling).
 
 For a list of supported regions, see AWS Regions and Endpoints:
 Application Auto Scaling

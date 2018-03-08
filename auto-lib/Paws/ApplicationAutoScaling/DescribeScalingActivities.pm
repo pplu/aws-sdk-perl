@@ -103,6 +103,12 @@ C<table/my-table/index/my-table-index>.
 Aurora DB cluster - The resource type is C<cluster> and the unique
 identifier is the cluster name. Example: C<cluster:my-db-cluster>.
 
+=item *
+
+Amazon SageMaker endpoint variants - The resource type is C<variant>
+and the unique identifier is the resource ID. Example:
+C<endpoint/my-end-point/variant/KMeansClustering>.
+
 =back
 
 
@@ -160,10 +166,15 @@ for a DynamoDB global secondary index.
 C<rds:cluster:ReadReplicaCount> - The count of Aurora Replicas in an
 Aurora DB cluster. Available for Aurora MySQL-compatible edition.
 
+=item *
+
+C<sagemaker:variant:DesiredInstanceCount> - The number of EC2 instances
+for an Amazon SageMaker model endpoint variant.
+
 =back
 
 
-Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">, C<"rds:cluster:ReadReplicaCount">
+Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">, C<"rds:cluster:ReadReplicaCount">, C<"sagemaker:variant:DesiredInstanceCount">
 
 =head2 B<REQUIRED> ServiceNamespace => Str
 
@@ -172,7 +183,7 @@ Namespaces
 (http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 in the I<Amazon Web Services General Reference>.
 
-Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">
+Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">
 
 
 =head1 SEE ALSO
