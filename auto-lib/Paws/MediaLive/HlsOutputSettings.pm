@@ -1,6 +1,6 @@
 package Paws::MediaLive::HlsOutputSettings;
   use Moose;
-  has HlsSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsSettings', request_name => 'hlsSettings', traits => ['NameInRequest']);
+  has HlsSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsSettings', request_name => 'hlsSettings', traits => ['NameInRequest'], required => 1);
   has NameModifier => (is => 'ro', isa => 'Str', request_name => 'nameModifier', traits => ['NameInRequest']);
   has SegmentModifier => (is => 'ro', isa => 'Str', request_name => 'segmentModifier', traits => ['NameInRequest']);
 1;
@@ -38,7 +38,7 @@ Placeholder documentation for HlsOutputSettings
 =head1 ATTRIBUTES
 
 
-=head2 HlsSettings => L<Paws::MediaLive::HlsSettings>
+=head2 B<REQUIRED> HlsSettings => L<Paws::MediaLive::HlsSettings>
 
   Settings regarding the underlying stream. These settings are different
 for audio-only outputs.

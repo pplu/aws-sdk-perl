@@ -1,7 +1,7 @@
 package Paws::MediaLive::CaptionSelector;
   use Moose;
   has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has SelectorSettings => (is => 'ro', isa => 'Paws::MediaLive::CaptionSelectorSettings', request_name => 'selectorSettings', traits => ['NameInRequest']);
 1;
 
@@ -45,7 +45,7 @@ about where streams should be distributed.
 the caption track to extract from the source.
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
   Name identifier for a caption selector. This name is used to associate
 this caption selector with one or more caption descriptions. Names must

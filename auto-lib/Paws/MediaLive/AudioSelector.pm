@@ -1,6 +1,6 @@
 package Paws::MediaLive::AudioSelector;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has SelectorSettings => (is => 'ro', isa => 'Paws::MediaLive::AudioSelectorSettings', request_name => 'selectorSettings', traits => ['NameInRequest']);
 1;
 
@@ -37,7 +37,7 @@ Placeholder documentation for AudioSelector
 =head1 ATTRIBUTES
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
   The name of this AudioSelector. AudioDescriptions will use this name to
 uniquely identify this Selector. Selector names should be unique per

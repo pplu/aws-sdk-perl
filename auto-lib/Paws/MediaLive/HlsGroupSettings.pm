@@ -8,7 +8,7 @@ package Paws::MediaLive::HlsGroupSettings;
   has ClientCache => (is => 'ro', isa => 'Str', request_name => 'clientCache', traits => ['NameInRequest']);
   has CodecSpecification => (is => 'ro', isa => 'Str', request_name => 'codecSpecification', traits => ['NameInRequest']);
   has ConstantIv => (is => 'ro', isa => 'Str', request_name => 'constantIv', traits => ['NameInRequest']);
-  has Destination => (is => 'ro', isa => 'Paws::MediaLive::OutputLocationRef', request_name => 'destination', traits => ['NameInRequest']);
+  has Destination => (is => 'ro', isa => 'Paws::MediaLive::OutputLocationRef', request_name => 'destination', traits => ['NameInRequest'], required => 1);
   has DirectoryStructure => (is => 'ro', isa => 'Str', request_name => 'directoryStructure', traits => ['NameInRequest']);
   has EncryptionType => (is => 'ro', isa => 'Str', request_name => 'encryptionType', traits => ['NameInRequest']);
   has HlsCdnSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsCdnSettings', request_name => 'hlsCdnSettings', traits => ['NameInRequest']);
@@ -131,7 +131,7 @@ represented by a 32-character text string. If ivSource is set to
 encryption.
 
 
-=head2 Destination => L<Paws::MediaLive::OutputLocationRef>
+=head2 B<REQUIRED> Destination => L<Paws::MediaLive::OutputLocationRef>
 
   A directory or HTTP destination for the HLS segments, manifest files,
 and encryption keys (if enabled).

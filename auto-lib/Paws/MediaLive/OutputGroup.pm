@@ -1,8 +1,8 @@
 package Paws::MediaLive::OutputGroup;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has OutputGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::OutputGroupSettings', request_name => 'outputGroupSettings', traits => ['NameInRequest']);
-  has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::Output]', request_name => 'outputs', traits => ['NameInRequest']);
+  has OutputGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::OutputGroupSettings', request_name => 'outputGroupSettings', traits => ['NameInRequest'], required => 1);
+  has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::Output]', request_name => 'outputs', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -46,12 +46,12 @@ numbers, and the underscore character allowed; only 32 characters
 allowed.
 
 
-=head2 OutputGroupSettings => L<Paws::MediaLive::OutputGroupSettings>
+=head2 B<REQUIRED> OutputGroupSettings => L<Paws::MediaLive::OutputGroupSettings>
 
   Settings associated with the output group.
 
 
-=head2 Outputs => ArrayRef[L<Paws::MediaLive::Output>]
+=head2 B<REQUIRED> Outputs => ArrayRef[L<Paws::MediaLive::Output>]
 
   
 

@@ -4,7 +4,7 @@ package Paws::MediaLive::MsSmoothGroupSettings;
   has AudioOnlyTimecodeControl => (is => 'ro', isa => 'Str', request_name => 'audioOnlyTimecodeControl', traits => ['NameInRequest']);
   has CertificateMode => (is => 'ro', isa => 'Str', request_name => 'certificateMode', traits => ['NameInRequest']);
   has ConnectionRetryInterval => (is => 'ro', isa => 'Int', request_name => 'connectionRetryInterval', traits => ['NameInRequest']);
-  has Destination => (is => 'ro', isa => 'Paws::MediaLive::OutputLocationRef', request_name => 'destination', traits => ['NameInRequest']);
+  has Destination => (is => 'ro', isa => 'Paws::MediaLive::OutputLocationRef', request_name => 'destination', traits => ['NameInRequest'], required => 1);
   has EventId => (is => 'ro', isa => 'Str', request_name => 'eventId', traits => ['NameInRequest']);
   has EventIdMode => (is => 'ro', isa => 'Str', request_name => 'eventIdMode', traits => ['NameInRequest']);
   has EventStopBehavior => (is => 'ro', isa => 'Str', request_name => 'eventStopBehavior', traits => ['NameInRequest']);
@@ -84,7 +84,7 @@ the cache will be be delivered to the IIS server once the connection is
 re-established.
 
 
-=head2 Destination => L<Paws::MediaLive::OutputLocationRef>
+=head2 B<REQUIRED> Destination => L<Paws::MediaLive::OutputLocationRef>
 
   Smooth Streaming publish point on an IIS server. Elemental Live acts as
 a "Push" encoder to IIS.

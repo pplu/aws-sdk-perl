@@ -1,8 +1,8 @@
 package Paws::MediaLive::UdpOutputSettings;
   use Moose;
   has BufferMsec => (is => 'ro', isa => 'Int', request_name => 'bufferMsec', traits => ['NameInRequest']);
-  has ContainerSettings => (is => 'ro', isa => 'Paws::MediaLive::UdpContainerSettings', request_name => 'containerSettings', traits => ['NameInRequest']);
-  has Destination => (is => 'ro', isa => 'Paws::MediaLive::OutputLocationRef', request_name => 'destination', traits => ['NameInRequest']);
+  has ContainerSettings => (is => 'ro', isa => 'Paws::MediaLive::UdpContainerSettings', request_name => 'containerSettings', traits => ['NameInRequest'], required => 1);
+  has Destination => (is => 'ro', isa => 'Paws::MediaLive::OutputLocationRef', request_name => 'destination', traits => ['NameInRequest'], required => 1);
   has FecOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::FecOutputSettings', request_name => 'fecOutputSettings', traits => ['NameInRequest']);
 1;
 
@@ -48,12 +48,12 @@ clock recovery, input switching, input disruptions, picture reordering,
 etc.
 
 
-=head2 ContainerSettings => L<Paws::MediaLive::UdpContainerSettings>
+=head2 B<REQUIRED> ContainerSettings => L<Paws::MediaLive::UdpContainerSettings>
 
   
 
 
-=head2 Destination => L<Paws::MediaLive::OutputLocationRef>
+=head2 B<REQUIRED> Destination => L<Paws::MediaLive::OutputLocationRef>
 
   Destination address and port number for RTP or UDP packets. Can be
 unicast or multicast RTP or UDP (eg. rtp://239.10.10.10:5001 or

@@ -1,7 +1,7 @@
 package Paws::MediaLive::AudioChannelMapping;
   use Moose;
-  has InputChannelLevels => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputChannelLevel]', request_name => 'inputChannelLevels', traits => ['NameInRequest']);
-  has OutputChannel => (is => 'ro', isa => 'Int', request_name => 'outputChannel', traits => ['NameInRequest']);
+  has InputChannelLevels => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputChannelLevel]', request_name => 'inputChannelLevels', traits => ['NameInRequest'], required => 1);
+  has OutputChannel => (is => 'ro', isa => 'Int', request_name => 'outputChannel', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -37,13 +37,13 @@ Placeholder documentation for AudioChannelMapping
 =head1 ATTRIBUTES
 
 
-=head2 InputChannelLevels => ArrayRef[L<Paws::MediaLive::InputChannelLevel>]
+=head2 B<REQUIRED> InputChannelLevels => ArrayRef[L<Paws::MediaLive::InputChannelLevel>]
 
   Indices and gain values for each input channel that should be remixed
 into this output channel.
 
 
-=head2 OutputChannel => Int
+=head2 B<REQUIRED> OutputChannel => Int
 
   The index of the output channel being produced.
 

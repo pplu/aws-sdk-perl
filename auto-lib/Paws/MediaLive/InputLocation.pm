@@ -1,7 +1,7 @@
 package Paws::MediaLive::InputLocation;
   use Moose;
   has PasswordParam => (is => 'ro', isa => 'Str', request_name => 'passwordParam', traits => ['NameInRequest']);
-  has Uri => (is => 'ro', isa => 'Str', request_name => 'uri', traits => ['NameInRequest']);
+  has Uri => (is => 'ro', isa => 'Str', request_name => 'uri', traits => ['NameInRequest'], required => 1);
   has Username => (is => 'ro', isa => 'Str', request_name => 'username', traits => ['NameInRequest']);
 1;
 
@@ -43,7 +43,7 @@ Placeholder documentation for InputLocation
   key used to extract the password from EC2 Parameter store
 
 
-=head2 Uri => Str
+=head2 B<REQUIRED> Uri => Str
 
   Uniform Resource Identifier - This should be a path to a file
 accessible to the Live system (eg. a http:// URI) depending on the

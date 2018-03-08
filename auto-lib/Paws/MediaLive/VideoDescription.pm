@@ -2,7 +2,7 @@ package Paws::MediaLive::VideoDescription;
   use Moose;
   has CodecSettings => (is => 'ro', isa => 'Paws::MediaLive::VideoCodecSettings', request_name => 'codecSettings', traits => ['NameInRequest']);
   has Height => (is => 'ro', isa => 'Int', request_name => 'height', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has RespondToAfd => (is => 'ro', isa => 'Str', request_name => 'respondToAfd', traits => ['NameInRequest']);
   has ScalingBehavior => (is => 'ro', isa => 'Str', request_name => 'scalingBehavior', traits => ['NameInRequest']);
   has Sharpness => (is => 'ro', isa => 'Int', request_name => 'sharpness', traits => ['NameInRequest']);
@@ -53,7 +53,7 @@ Video settings for this stream.
 height. If left blank, width must also be unspecified.
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
   The name of this VideoDescription. Outputs will use this name to
 uniquely identify this Description. Description names should be unique

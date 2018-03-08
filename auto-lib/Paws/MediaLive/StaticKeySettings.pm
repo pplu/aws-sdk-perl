@@ -1,7 +1,7 @@
 package Paws::MediaLive::StaticKeySettings;
   use Moose;
   has KeyProviderServer => (is => 'ro', isa => 'Paws::MediaLive::InputLocation', request_name => 'keyProviderServer', traits => ['NameInRequest']);
-  has StaticKeyValue => (is => 'ro', isa => 'Str', request_name => 'staticKeyValue', traits => ['NameInRequest']);
+  has StaticKeyValue => (is => 'ro', isa => 'Str', request_name => 'staticKeyValue', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +42,7 @@ Placeholder documentation for StaticKeySettings
   The URL of the license server used for protecting content.
 
 
-=head2 StaticKeyValue => Str
+=head2 B<REQUIRED> StaticKeyValue => Str
 
   Static key value as a 32 character hexadecimal string.
 

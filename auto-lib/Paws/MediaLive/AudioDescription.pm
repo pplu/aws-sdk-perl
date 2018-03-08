@@ -1,13 +1,13 @@
 package Paws::MediaLive::AudioDescription;
   use Moose;
   has AudioNormalizationSettings => (is => 'ro', isa => 'Paws::MediaLive::AudioNormalizationSettings', request_name => 'audioNormalizationSettings', traits => ['NameInRequest']);
-  has AudioSelectorName => (is => 'ro', isa => 'Str', request_name => 'audioSelectorName', traits => ['NameInRequest']);
+  has AudioSelectorName => (is => 'ro', isa => 'Str', request_name => 'audioSelectorName', traits => ['NameInRequest'], required => 1);
   has AudioType => (is => 'ro', isa => 'Str', request_name => 'audioType', traits => ['NameInRequest']);
   has AudioTypeControl => (is => 'ro', isa => 'Str', request_name => 'audioTypeControl', traits => ['NameInRequest']);
   has CodecSettings => (is => 'ro', isa => 'Paws::MediaLive::AudioCodecSettings', request_name => 'codecSettings', traits => ['NameInRequest']);
   has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
   has LanguageCodeControl => (is => 'ro', isa => 'Str', request_name => 'languageCodeControl', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has RemixSettings => (is => 'ro', isa => 'Paws::MediaLive::RemixSettings', request_name => 'remixSettings', traits => ['NameInRequest']);
   has StreamName => (is => 'ro', isa => 'Str', request_name => 'streamName', traits => ['NameInRequest']);
 1;
@@ -50,7 +50,7 @@ Placeholder documentation for AudioDescription
   Advanced audio normalization settings.
 
 
-=head2 AudioSelectorName => Str
+=head2 B<REQUIRED> AudioSelectorName => Str
 
   The name of the AudioSelector used as the source for this
 AudioDescription.
@@ -92,7 +92,7 @@ be used when useConfigured is set, or when followInput is selected but
 there is no ISO 639 language code specified by the input.
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
   The name of this AudioDescription. Outputs will use this name to
 uniquely identify this AudioDescription. Description names should be
