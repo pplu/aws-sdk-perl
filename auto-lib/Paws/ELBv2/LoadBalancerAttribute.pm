@@ -74,6 +74,18 @@ C<idle_timeout.timeout_seconds> - [Application Load Balancers] The idle
 timeout value, in seconds. The valid range is 1-4000. The default is 60
 seconds.
 
+=item *
+
+C<load_balancing.cross_zone.enabled> - [Network Load Balancers]
+Indicates whether cross-zone load balancing is enabled. The value is
+C<true> or C<false>. The default is C<false>.
+
+=item *
+
+C<routing.http2.enabled> - [Application Load Balancers] Indicates
+whether HTTP/2 is enabled. The value is C<true> or C<false>. The
+default is C<true>.
+
 =back
 
 

@@ -43,20 +43,19 @@ The Amazon Resource Name (ARN) of the load balancer.
 
 =head2 SubnetMappings => ArrayRef[L<Paws::ELBv2::SubnetMapping>]
 
-The IDs of the subnets. You must specify subnets from at least two
-Availability Zones. You can specify only one subnet per Availability
-Zone. You must specify either subnets or subnet mappings.
+The IDs of the public subnets. You must specify subnets from at least
+two Availability Zones. You can specify only one subnet per
+Availability Zone. You must specify either subnets or subnet mappings.
 
-The load balancer is allocated one static IP address per subnet. You
-cannot specify your own Elastic IP addresses.
+You cannot specify Elastic IP addresses for your subnets.
 
 
 
 =head2 B<REQUIRED> Subnets => ArrayRef[Str|Undef]
 
-The IDs of the subnets. You must specify subnets from at least two
-Availability Zones. You can specify only one subnet per Availability
-Zone. You must specify either subnets or subnet mappings.
+The IDs of the public subnets. You must specify subnets from at least
+two Availability Zones. You can specify only one subnet per
+Availability Zone. You must specify either subnets or subnet mappings.
 
 
 
