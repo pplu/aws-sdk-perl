@@ -40,7 +40,7 @@ Information about a change to a resource attribute.
 
 =head2 Attribute => Str
 
-  The attribute that will change.
+  The attribute to be changed.
 
 
 =head2 Name => Str
@@ -52,7 +52,7 @@ property. Otherwise, the value is null.
 =head2 RequiresRecreation => Str
 
   If the attribute is C<Properties>, indicates whether a change to this
-property causes the resource to be recreated.
+property causes the resource to be re-created.
 
 
 

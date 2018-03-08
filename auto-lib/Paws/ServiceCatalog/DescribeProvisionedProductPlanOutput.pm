@@ -29,8 +29,8 @@ Information about the plan.
 
 =head2 ResourceChanges => ArrayRef[L<Paws::ServiceCatalog::ResourceChange>]
 
-Information about the resources changes that will occur when the plan
-is executed.
+Information about the resource changes that will occur when the plan is
+executed.
 
 
 =head2 _request_id => Str

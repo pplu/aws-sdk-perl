@@ -45,14 +45,14 @@ Information about a change to a resource attribute.
 
 =head2 Evaluation => Str
 
-  For static evaluations, the value the resource attribute will change
+  For static evaluations, the value of the resource attribute will change
 and the new value is known. For dynamic evaluations, the value might
 change, and any new value will be determined when the plan is updated.
 
 
 =head2 Target => L<Paws::ServiceCatalog::ResourceTargetDefinition>
 
-  Information about the resource attribute that will be modified.
+  Information about the resource attribute to be modified.
 
 
 

@@ -104,6 +104,11 @@ package Paws::ServiceCatalog;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DeleteProvisioningArtifact', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteTagOption {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DeleteTagOption', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeConstraint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribeConstraint', @_);
@@ -519,7 +524,7 @@ package Paws::ServiceCatalog;
   }
 
 
-  sub operations { qw/AcceptPortfolioShare AssociatePrincipalWithPortfolio AssociateProductWithPortfolio AssociateTagOptionWithResource CopyProduct CreateConstraint CreatePortfolio CreatePortfolioShare CreateProduct CreateProvisionedProductPlan CreateProvisioningArtifact CreateTagOption DeleteConstraint DeletePortfolio DeletePortfolioShare DeleteProduct DeleteProvisionedProductPlan DeleteProvisioningArtifact DescribeConstraint DescribeCopyProductStatus DescribePortfolio DescribeProduct DescribeProductAsAdmin DescribeProductView DescribeProvisionedProduct DescribeProvisionedProductPlan DescribeProvisioningArtifact DescribeProvisioningParameters DescribeRecord DescribeTagOption DisassociatePrincipalFromPortfolio DisassociateProductFromPortfolio DisassociateTagOptionFromResource ExecuteProvisionedProductPlan ListAcceptedPortfolioShares ListConstraintsForPortfolio ListLaunchPaths ListPortfolioAccess ListPortfolios ListPortfoliosForProduct ListPrincipalsForPortfolio ListProvisionedProductPlans ListProvisioningArtifacts ListRecordHistory ListResourcesForTagOption ListTagOptions ProvisionProduct RejectPortfolioShare ScanProvisionedProducts SearchProducts SearchProductsAsAdmin SearchProvisionedProducts TerminateProvisionedProduct UpdateConstraint UpdatePortfolio UpdateProduct UpdateProvisionedProduct UpdateProvisioningArtifact UpdateTagOption / }
+  sub operations { qw/AcceptPortfolioShare AssociatePrincipalWithPortfolio AssociateProductWithPortfolio AssociateTagOptionWithResource CopyProduct CreateConstraint CreatePortfolio CreatePortfolioShare CreateProduct CreateProvisionedProductPlan CreateProvisioningArtifact CreateTagOption DeleteConstraint DeletePortfolio DeletePortfolioShare DeleteProduct DeleteProvisionedProductPlan DeleteProvisioningArtifact DeleteTagOption DescribeConstraint DescribeCopyProductStatus DescribePortfolio DescribeProduct DescribeProductAsAdmin DescribeProductView DescribeProvisionedProduct DescribeProvisionedProductPlan DescribeProvisioningArtifact DescribeProvisioningParameters DescribeRecord DescribeTagOption DisassociatePrincipalFromPortfolio DisassociateProductFromPortfolio DisassociateTagOptionFromResource ExecuteProvisionedProductPlan ListAcceptedPortfolioShares ListConstraintsForPortfolio ListLaunchPaths ListPortfolioAccess ListPortfolios ListPortfoliosForProduct ListPrincipalsForPortfolio ListProvisionedProductPlans ListProvisioningArtifacts ListRecordHistory ListResourcesForTagOption ListTagOptions ProvisionProduct RejectPortfolioShare ScanProvisionedProducts SearchProducts SearchProductsAsAdmin SearchProvisionedProducts TerminateProvisionedProduct UpdateConstraint UpdatePortfolio UpdateProduct UpdateProvisionedProduct UpdateProvisioningArtifact UpdateTagOption / }
 
 1;
 
@@ -653,12 +658,12 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::CreateProvision
 
 Returns: a L<Paws::ServiceCatalog::CreateProvisionedProductPlanOutput> instance
 
-Creates a plan. A plan includes the list of resources that will be
-created (when provisioning a new product) or modified (when updating a
+Creates a plan. A plan includes the list of resources to be created
+(when provisioning a new product) or modified (when updating a
 provisioned product) when the plan is executed.
 
 You can create one plan per provisioned product. To create a plan for
-an existing provisioned product, it's status must be AVAILBLE or
+an existing provisioned product, the product status must be AVAILBLE or
 TAINTED.
 
 To view the resource changes in the change set, use
@@ -752,6 +757,18 @@ You cannot delete a provisioning artifact associated with a product
 that was shared with you. You cannot delete the last provisioning
 artifact for a product, because a product must have at least one
 provisioning artifact.
+
+
+=head2 DeleteTagOption(Id => Str)
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::DeleteTagOption>
+
+Returns: a L<Paws::ServiceCatalog::DeleteTagOptionOutput> instance
+
+Deletes the specified TagOption.
+
+You cannot delete a TagOption if it is associated with a product or
+portfolio.
 
 
 =head2 DescribeConstraint(Id => Str, [AcceptLanguage => Str])
@@ -986,8 +1003,8 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::ListProvisioned
 
 Returns: a L<Paws::ServiceCatalog::ListProvisionedProductPlansOutput> instance
 
-Lists the plans for the specified provisioned product or all plans the
-user has access to.
+Lists the plans for the specified provisioned product or all plans to
+which the user has access.
 
 
 =head2 ListProvisioningArtifacts(ProductId => Str, [AcceptLanguage => Str])
