@@ -1,5 +1,7 @@
 #!/usr/bin/env perl
 
+use strict;
+use warnings;
 use lib 't/lib';
 use Paws;
 use Paws::Credential::Explicit;
@@ -188,11 +190,51 @@ delete @ENV{qw(
 }
 
 {
+  my $creds = Paws::Credential::CredProcess->new(
+    credential_process => 't/04_credentials/test_cred_process',
+  );
+  ok($creds->are_set, 'CredProcess: creds are set');
+
+  cmp_ok($creds->access_key, 'eq', 'PCAccessKey', 'process: Access Key loaded correctly');
+  cmp_ok($creds->secret_key, 'eq', 'PCSecretKey', 'process: Secret Key loaded correctly');
+  cmp_ok($creds->session_token, 'eq', 'PCSessionToken', 'process: Session Token loaded correctly');
+  ok(not(defined $creds->expiration), 'Creds don\'t expire');
+}
+
+{
+  my $creds = Paws::Credential::CredProcess->new(
+    credential_process => 't/04_credentials/test_cred_process.fail',
+  );
+  throws_ok(sub { $creds->are_set }, 'Paws::Exception::CredentialProcess', 'CredentialProcess throws a Paws exception');
+}
+
+{
+  my $creds = Paws::Credential::CredProcess->new(
+    credential_process => 't/04_credentials/test_cred_process.noversion',
+  );
+  throws_ok(sub { $creds->are_set }, 'Paws::Exception::CredentialProcess', 'CredentialProcess throws a Paws exception');
+}
+
+{
+  my $creds = Paws::Credential::CredProcess->new(
+    credential_process => 't/04_credentials/test_cred_process.expiry',
+  );
+
+  my $first_execution = $creds->access_key; # the test suite returns the timestamp of execution in the AK
+  sleep 1;
+  my $second_execution = $creds->access_key; # the test suite returns the timestamp of execution in the AK
+  cmp_ok($first_execution, 'ne', $second_execution, 'Expiring credentials have been refreshed');
+}
+
+# return to testing the file provider, this time with credential_process
+
+{
   my $creds = Paws::Credential::File->new(
     path => 't/04_credentials/',
     file_name => 'credentials.process',
   );
-  ok($creds->are_set, 'File: file_name attribute works correctly');
+  ok($creds->are_set, 'File with credentials_process');
+
   cmp_ok($creds->access_key, 'eq', 'PCAccessKey', 'process: Access Key loaded correctly');
   cmp_ok($creds->secret_key, 'eq', 'PCSecretKey', 'process: Secret Key loaded correctly');
   cmp_ok($creds->session_token, 'eq', 'PCSessionToken', 'process: Session Token loaded correctly');
@@ -214,6 +256,19 @@ delete @ENV{qw(
     profile => 'noversion',
   );
   throws_ok(sub { $creds->are_set }, 'Paws::Exception::CredentialProcess', 'CredentialProcess throws a Paws exception');
+}
+
+{
+  my $creds = Paws::Credential::File->new(
+    path => 't/04_credentials/',
+    file_name => 'credentials.process',
+    profile => 'expiry',
+  );
+
+  my $first_execution = $creds->access_key; # the test suite returns the timestamp of execution in the AK
+  sleep 1;
+  my $second_execution = $creds->access_key; # the test suite returns the timestamp of execution in the AK
+  cmp_ok($first_execution, 'ne', $second_execution, 'Expiring credentials have been refreshed');
 }
 
 done_testing;

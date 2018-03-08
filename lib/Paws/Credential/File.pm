@@ -4,6 +4,7 @@ package Paws::Credential::File;
   use File::HomeDir;
   use JSON::MaybeXS qw/decode_json/;
   use Paws::Exception;
+  use Paws::Credential::CredProcess;
 
   has profile => (is => 'ro', default => sub { $ENV{ AWS_DEFAULT_PROFILE } or 'default' });
 
@@ -35,57 +36,33 @@ package Paws::Credential::File;
     return $self->_ini_contents->{ $profile } || {};
   });
 
-  has _from_cred_process => (is => 'ro', isa => 'HashRef', lazy => 1, default => sub {
-    my $self = shift;
-    my $creds;
-    my $rc;
-    {
-      local $/ = undef;
-      open (my $fh, '-|', $self->credential_process);
-      $creds = <$fh>;
-      close $fh;
-      $rc = $?;
-    }
-    Paws::Exception::CredentialProcess->throw("credential_process returned non-zero code") if ($rc != 0);
-    $creds = decode_json($creds);
-    Paws::Exception::CredentialProcess->throw("credential_process didn't return a Version key") if (not exists $creds->{ Version }); 
-    Paws::Exception::CredentialProcess->throw("credential_process only understands Version 1") if ($creds->{ Version } != 1); 
-    return $creds;
-  });
-
   has credential_process => (is => 'ro', lazy => 1, default => sub {
     my $self = shift;
-    return $self->_profile->{ credential_process };
+    return undef if (not defined $self->_profile->{ credential_process });
+    return Paws::Credential::CredProcess->new(
+      credential_process => $self->_profile->{ credential_process },
+    );
   });
 
   sub access_key {  
     my $self = shift;
 
-    if (defined $self->credential_process) {
-      return $self->_from_cred_process->{ AccessKeyId };
-    } else {
-      return $self->_profile->{ aws_access_key_id };
-    }
+    return $self->credential_process->access_key if (defined $self->credential_process);
+    return $self->_profile->{ aws_access_key_id };
   }
 
   sub secret_key {  
     my $self = shift;
 
-    if (defined $self->credential_process) {
-      return $self->_from_cred_process->{ SecretAccessKey };
-    } else {
-      return $self->_profile->{ aws_secret_access_key };
-    }
+    return $self->credential_process->secret_key if (defined $self->credential_process);
+    return $self->_profile->{ aws_secret_access_key };
   }
 
   sub session_token { 
     my $self = shift;
 
-    if (defined $self->credential_process) {
-      return $self->_from_cred_process->{ SessionToken };
-    } else {
-      return $self->_profile->{ aws_session_token };
-    }
+    return $self->credential_process->session_token if (defined $self->credential_process);
+    return $self->_profile->{ aws_session_token };
   }
 
   with 'Paws::Credential';
