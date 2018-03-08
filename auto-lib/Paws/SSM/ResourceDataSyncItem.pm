@@ -2,6 +2,7 @@ package Paws::SSM::ResourceDataSyncItem;
   use Moose;
   has LastStatus => (is => 'ro', isa => 'Str');
   has LastSuccessfulSyncTime => (is => 'ro', isa => 'Str');
+  has LastSyncStatusMessage => (is => 'ro', isa => 'Str');
   has LastSyncTime => (is => 'ro', isa => 'Str');
   has S3Destination => (is => 'ro', isa => 'Paws::SSM::ResourceDataSyncS3Destination');
   has SyncCreatedTime => (is => 'ro', isa => 'Str');
@@ -51,6 +52,11 @@ current status and last successful sync.
 
   The last time the sync operations returned a status of C<SUCCESSFUL>
 (UTC).
+
+
+=head2 LastSyncStatusMessage => Str
+
+  The status message details reported by the last sync.
 
 
 =head2 LastSyncTime => Str

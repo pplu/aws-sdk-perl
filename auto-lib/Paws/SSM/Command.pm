@@ -112,7 +112,7 @@ Command Using Systems Manager Run Command
   The maximum number of errors allowed before the system stops sending
 the command to additional targets. You can specify a number of errors,
 such as 10, or a percentage or errors, such as 10%. The default value
-is 50. For more information about how to use MaxErrors, see Executing a
+is 0. For more information about how to use MaxErrors, see Executing a
 Command Using Systems Manager Run Command
 (http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html).
 

@@ -105,7 +105,7 @@ The maximum number of errors allowed without the command failing. When
 the command fails one more time beyond the value of MaxErrors, the
 systems stops sending the command to additional targets. You can
 specify a number like 10 or a percentage like 10%. The default value is
-50. For more information about how to use MaxErrors, see Using Error
+0. For more information about how to use MaxErrors, see Using Error
 Controls
 (http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-maxerrors.html).
 
