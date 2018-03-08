@@ -144,6 +144,11 @@ package Paws::CodeCommit;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::PostCommentReply', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutFile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::PutFile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutRepositoryTriggers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::PutRepositoryTriggers', @_);
@@ -353,7 +358,7 @@ package Paws::CodeCommit;
   }
 
 
-  sub operations { qw/BatchGetRepositories CreateBranch CreatePullRequest CreateRepository DeleteBranch DeleteCommentContent DeleteRepository DescribePullRequestEvents GetBlob GetBranch GetComment GetCommentsForComparedCommit GetCommentsForPullRequest GetCommit GetDifferences GetMergeConflicts GetPullRequest GetRepository GetRepositoryTriggers ListBranches ListPullRequests ListRepositories MergePullRequestByFastForward PostCommentForComparedCommit PostCommentForPullRequest PostCommentReply PutRepositoryTriggers TestRepositoryTriggers UpdateComment UpdateDefaultBranch UpdatePullRequestDescription UpdatePullRequestStatus UpdatePullRequestTitle UpdateRepositoryDescription UpdateRepositoryName / }
+  sub operations { qw/BatchGetRepositories CreateBranch CreatePullRequest CreateRepository DeleteBranch DeleteCommentContent DeleteRepository DescribePullRequestEvents GetBlob GetBranch GetComment GetCommentsForComparedCommit GetCommentsForPullRequest GetCommit GetDifferences GetMergeConflicts GetPullRequest GetRepository GetRepositoryTriggers ListBranches ListPullRequests ListRepositories MergePullRequestByFastForward PostCommentForComparedCommit PostCommentForPullRequest PostCommentReply PutFile PutRepositoryTriggers TestRepositoryTriggers UpdateComment UpdateDefaultBranch UpdatePullRequestDescription UpdatePullRequestStatus UpdatePullRequestTitle UpdateRepositoryDescription UpdateRepositoryName / }
 
 1;
 
@@ -453,6 +458,17 @@ ListBranches, which lists all branches for a specified repository.
 =item *
 
 UpdateDefaultBranch, which changes the default branch for a repository.
+
+=back
+
+Files, by calling the following:
+
+=over
+
+=item *
+
+PutFile, which adds or modifies a file in a specified repository and
+branch.
 
 =back
 
@@ -867,6 +883,15 @@ Returns: a L<Paws::CodeCommit::PostCommentReplyOutput> instance
 
 Posts a comment in reply to an existing comment on a comparison between
 commits or a pull request.
+
+
+=head2 PutFile(BranchName => Str, FileContent => Str, FilePath => Str, RepositoryName => Str, [CommitMessage => Str, Email => Str, FileMode => Str, Name => Str, ParentCommitId => Str])
+
+Each argument is described in detail in: L<Paws::CodeCommit::PutFile>
+
+Returns: a L<Paws::CodeCommit::PutFileOutput> instance
+
+Adds or updates a file in an AWS CodeCommit repository.
 
 
 =head2 PutRepositoryTriggers(RepositoryName => Str, Triggers => ArrayRef[L<Paws::CodeCommit::RepositoryTrigger>])

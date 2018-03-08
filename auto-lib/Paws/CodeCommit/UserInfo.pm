@@ -40,7 +40,8 @@ Information about the user who made a specified commit.
 
 =head2 Date => Str
 
-  The date when the specified commit was pushed to the repository.
+  The date when the specified commit was commited, in timestamp format
+with GMT offset.
 
 
 =head2 Email => Str
