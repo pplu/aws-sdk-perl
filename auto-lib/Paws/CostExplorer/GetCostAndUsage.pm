@@ -41,16 +41,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 Filter => L<Paws::CostExplorer::Expression>
 
 Filters AWS costs by different dimensions. For example, you can specify
-C<Service> and C<Linked Account> and get the costs associated with that
+C<SERVICE> and C<LINKED_ACCOUNT> and get the costs associated with that
 account's usage of that service. You can nest C<Expression> objects to
 define any combination of dimension filters. For more information, see
-the C<Expression> object or C<More Examples>.
+Expression
+(http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html).
 
 
 
 =head2 Granularity => Str
 
-Sets the AWS cost granularity to C<MONTHLY> or C<DAILY>.
+Sets the AWS cost granularity to C<MONTHLY> or C<DAILY>. If
+C<Granularity> isn't set, the response object doesn't include the
+C<Granularity>, either C<MONTHLY> or C<DAILY>.
 
 Valid values are: C<"DAILY">, C<"MONTHLY">
 
@@ -62,17 +65,18 @@ dimensions, tag keys, or both.
 When you group by tag key, you get all tag values, including empty
 strings.
 
-Valid values are: C<AZ>, C<INSTANCE_TYPE>, C<LINKED_ACCCOUNT>,
-C<OPERATION>, C<PURCHASE_TYPE>, C<SERVICE>, C<USAGE_TYPE>, C<TAGS>, and
-C<PLATFORM>.
+Valid values are C<AZ>, C<INSTANCE_TYPE>, C<LINKED_ACCOUNT>,
+C<OPERATION>, C<PLATFORM>, C<PURCHASE_TYPE>, C<SERVICE>, C<TAGS>,
+C<TENANCY>, and C<USAGE_TYPE>.
 
 
 
 =head2 Metrics => ArrayRef[Str|Undef]
 
 Which metrics are returned in the query. For more information about
-blended and unblended rates, see
-https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/.
+blended and unblended rates, see Why does the "blended" annotation
+appear on some line items in my bill?
+(https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/).
 
 Valid values are C<BlendedCost>, C<UnblendedCost>, and
 C<UsageQuantity>.

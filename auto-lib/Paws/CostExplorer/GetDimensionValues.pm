@@ -40,11 +40,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 Context => Str
 
 The context for the call to C<GetDimensionValues>. This can be
-C<RESERVED_INSTANCE> or C<COST_AND_USAGE>. The default value is
-C<COST_AND_USAGE>. If the context is set to C<RESERVED_INSTANCE>, the
+C<RESERVATIONS> or C<COST_AND_USAGE>. The default value is
+C<COST_AND_USAGE>. If the context is set to C<RESERVATIONS>, the
 resulting dimension values can be used in the
 C<GetReservationUtilization> action. If the context is set to
-C<COST_AND_USAGE>, , the resulting dimension values can be used in the
+C<COST_AND_USAGE>, the resulting dimension values can be used in the
 C<GetCostAndUsage> operation.
 
 If you set the context to C<CostAndUsage>, you can use the following
@@ -58,50 +58,50 @@ AZ - The Availability Zone. An example is us-east-1a.
 
 =item *
 
-InstanceType - The type of EC2 instance. An example is m4.xlarge.
+INSTANCE_TYPE - The type of EC2 instance. An example is m4.xlarge.
 
 =item *
 
-LinkedAccount - The description in the attribute map that includes the
+LINKED_ACCOUNT - The description in the attribute map that includes the
 full name of the member account. The value field contains the AWS ID of
 the member account
 
 =item *
 
-Operation - The action performed. Examples include RunInstance and
+OPERATION - The action performed. Examples include RunInstance and
 CreateBucket.
 
 =item *
 
-PurchaseType - The reservation type of the purchase to which this usage
-is related. Examples include: On Demand Instances and Standard Reserved
-Instances
+PURCHASE_TYPE - The reservation type of the purchase to which this
+usage is related. Examples include: On Demand Instances and Standard
+Reserved Instances
 
 =item *
 
-Service - The AWS service such as DynamoDB.
+SERVICE - The AWS service such as DynamoDB.
 
 =item *
 
-UsageType -The type of usage. An example is DataTransfer-In-Bytes. The
-response for the GetDimensionValues action includes a unit attribute,
-examples of which include GB and Hrs.
+USAGE_TYPE - The type of usage. An example is DataTransfer-In-Bytes.
+The response for the GetDimensionValues action includes a unit
+attribute, examples of which include GB and Hrs.
 
 =item *
 
-UsageTypeGroup - The grouping of common usage types. An example is EC2:
-CloudWatch E<ndash> Alarms. The response for this action includes a
-unit attribute.
+USAGE_TYPE_GROUP - The grouping of common usage types. An example is
+EC2: CloudWatch E<ndash> Alarms. The response for this action includes
+a unit attribute.
 
 =item *
 
-RecordType - The different types of charges such as RI fees, usage
-costs, tax refunds, and credits
+RECORD_TYPE - The different types of charges such as RI fees, usage
+costs, tax refunds, and credits.
 
 =back
 
-If you set the context to C<ReservedInstance>, you can use the
-following dimensions for searching:
+If you set the context to C<RESERVATIONS>, you can use the following
+dimensions for searching:
 
 =over
 
@@ -111,30 +111,30 @@ AZ - The Availability Zone. An example is us-east-1a.
 
 =item *
 
-InstanceType - The type of EC2 instance. An example is m4.xlarge.
+INSTANCE_TYPE - The type of EC2 instance. An example is m4.xlarge.
 
 =item *
 
-LinkedAccount - The description in the attribute map that includes the
+LINKED_ACCOUNT - The description in the attribute map that includes the
 full name of the member account. The value field contains the AWS ID of
 the member account
 
 =item *
 
-Platform - The operating system. Examples are Windows or Linux.
+PLATFORM - The operating system. Examples are Windows or Linux.
 
 =item *
 
-Region - The AWS region.
+REGION - The AWS region.
 
 =item *
 
-Scope - The scope of a reserved instance (RI). Values are regional or a
+SCOPE - The scope of a reserved instance (RI). Values are regional or a
 single availability zone.
 
 =item *
 
-Tenancy - The tenancy of a resource. Examples are shared or dedicated.
+TENANCY - The tenancy of a resource. Examples are shared or dedicated.
 
 =back
 
@@ -143,10 +143,10 @@ Valid values are: C<"COST_AND_USAGE">, C<"RESERVATIONS">
 
 =head2 B<REQUIRED> Dimension => Str
 
-The name of the dimension. Different C<Dimensions>are available for
-different C<Context>s. For more information, see C<Context>.
+The name of the dimension. Each C<Dimensions>is available for different
+a C<Context>. For more information, see C<Context>.
 
-Valid values are: C<"AZ">, C<"INSTANCE_TYPE">, C<"LINKED_ACCOUNT">, C<"OPERATION">, C<"PURCHASE_TYPE">, C<"REGION">, C<"SERVICE">, C<"USAGE_TYPE">, C<"USAGE_TYPE_GROUP">, C<"RECORD_TYPE">, C<"OPERATING_SYSTEM">, C<"TENANCY">, C<"SCOPE">, C<"PLATFORM">, C<"SUBSCRIPTION_ID">
+Valid values are: C<"AZ">, C<"INSTANCE_TYPE">, C<"LINKED_ACCOUNT">, C<"OPERATION">, C<"PURCHASE_TYPE">, C<"REGION">, C<"SERVICE">, C<"USAGE_TYPE">, C<"USAGE_TYPE_GROUP">, C<"RECORD_TYPE">, C<"OPERATING_SYSTEM">, C<"TENANCY">, C<"SCOPE">, C<"PLATFORM">, C<"SUBSCRIPTION_ID">, C<"LEGAL_ENTITY_NAME">, C<"DEPLOYMENT_OPTION">, C<"DATABASE_ENGINE">, C<"CACHE_ENGINE">, C<"INSTANCE_TYPE_FAMILY">
 
 =head2 NextPageToken => Str
 

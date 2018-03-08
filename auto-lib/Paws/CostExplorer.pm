@@ -24,6 +24,11 @@ package Paws::CostExplorer;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetDimensionValues', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetReservationCoverage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetReservationCoverage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetReservationUtilization {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetReservationUtilization', @_);
@@ -37,7 +42,7 @@ package Paws::CostExplorer;
   
 
 
-  sub operations { qw/GetCostAndUsage GetDimensionValues GetReservationUtilization GetTags / }
+  sub operations { qw/GetCostAndUsage GetDimensionValues GetReservationCoverage GetReservationUtilization GetTags / }
 
 1;
 
@@ -95,11 +100,10 @@ Returns: a L<Paws::CostExplorer::GetCostAndUsageResponse> instance
 Retrieve cost and usage metrics for your account. You can specify which
 cost and usage-related metric, such as C<BlendedCosts> or
 C<UsageQuantity>, that you want the request to return. You can also
-filter and group your data by various dimensions, such as C<AWS
-Service> or C<AvailabilityZone>, in a specific time range. See the
-C<GetDimensionValues> action for a complete list of the valid
-dimensions. Master accounts in an organization have access to all
-member accounts.
+filter and group your data by various dimensions, such as C<SERVICE> or
+C<AZ>, in a specific time range. See the C<GetDimensionValues> action
+for a complete list of the valid dimensions. Master accounts in an
+organization have access to all member accounts.
 
 
 =head2 GetDimensionValues(Dimension => Str, TimePeriod => L<Paws::CostExplorer::DateInterval>, [Context => Str, NextPageToken => Str, SearchString => Str])
@@ -111,6 +115,49 @@ Returns: a L<Paws::CostExplorer::GetDimensionValuesResponse> instance
 You can use C<GetDimensionValues> to retrieve all available filter
 values for a specific filter over a period of time. You can search the
 dimension values for an arbitrary string.
+
+
+=head2 GetReservationCoverage(TimePeriod => L<Paws::CostExplorer::DateInterval>, [Filter => L<Paws::CostExplorer::Expression>, Granularity => Str, GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>], NextPageToken => Str])
+
+Each argument is described in detail in: L<Paws::CostExplorer::GetReservationCoverage>
+
+Returns: a L<Paws::CostExplorer::GetReservationCoverageResponse> instance
+
+Retrieve the reservation coverage for your account. An organization's
+master account has access to the associated member accounts. For any
+time period, you can filter data about reservation usage by the
+following dimensions.
+
+=over
+
+=item *
+
+AZ
+
+=item *
+
+INSTANCE_TYPE
+
+=item *
+
+LINKED_ACCOUNT
+
+=item *
+
+PLATFORM
+
+=item *
+
+REGION
+
+=item *
+
+TENANCY
+
+=back
+
+To determine valid values for a dimension, use the
+C<GetDimensionValues> operation.
 
 
 =head2 GetReservationUtilization(TimePeriod => L<Paws::CostExplorer::DateInterval>, [Filter => L<Paws::CostExplorer::Expression>, Granularity => Str, GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>], NextPageToken => Str])

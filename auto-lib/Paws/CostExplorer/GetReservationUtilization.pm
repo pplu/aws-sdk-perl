@@ -49,17 +49,16 @@ multiple values for a dimension, they are OR'd together.
 
 =head2 Granularity => Str
 
-Sets the AWS cost granularity to C<MONTHLY> or C<DAILY>. If both
-C<GroupBy> and C<granularity> are not set, C<GetReservationUtilization>
-defaults to C<DAILY>. If C<GroupBy> is set, C<Granularity> can't be
-set, and the response object doesn't include C<MONTHLY> or C<DAILY>
-granularity.
+If C<GroupBy> is set, C<Granularity> can't be set. If C<Granularity>
+isn't set, the response object doesn't include the C<Granularity>,
+either C<MONTHLY> or C<DAILY>. If both C<GroupBy> and C<Granularity>
+aren't set, C<GetReservationUtilization> defaults to C<DAILY>.
 
 Valid values are: C<"DAILY">, C<"MONTHLY">
 
 =head2 GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]
 
-Groups only by C<SubscriptionId>. Metadata is included.
+Groups only by C<SUBSCRIPTION_ID>. Metadata is included.
 
 
 
