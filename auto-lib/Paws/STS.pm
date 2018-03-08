@@ -270,7 +270,13 @@ policy that allows the user to call AssumeRole on the ARN of the role
 in the other account. If the user is in the same account as the role,
 then you can either attach a policy to the user (identical to the
 previous different account user), or you can add the user as a
-principal directly in the role's trust policy
+principal directly in the role's trust policy. In this case, the trust
+policy acts as the only resource-based policy in IAM, and users in the
+same account as the role do not need explicit permission to assume the
+role. For more information about trust policies and resource-based
+policies, see IAM Policies
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html)
+in the I<IAM User Guide>.
 
 B<Using MFA with AssumeRole>
 
@@ -517,9 +523,10 @@ temporary security credentials.
 =item *
 
 Web Identity Federation with Mobile Applications
-(http://aws.amazon.com/articles/4617974389850313). This article
-discusses web identity federation and shows an example of how to use
-web identity federation to get access to content in Amazon S3.
+(http://aws.amazon.com/articles/web-identity-federation-with-mobile-applications).
+This article discusses web identity federation and shows an example of
+how to use web identity federation to get access to content in Amazon
+S3.
 
 =back
 
