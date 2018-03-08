@@ -44,8 +44,7 @@ assumed.
 
 =head2 B<REQUIRED> RepositoryName => Str
 
-The name of the repository that is associated with the repository
-policy to delete.
+The name of the repository.
 
 
 

@@ -46,7 +46,8 @@ results of the initial request can be seen by sending another
 C<DescribeRepositories> request with the returned C<nextToken> value.
 This value can be between 1 and 100. If this parameter is not used,
 then C<DescribeRepositories> returns up to 100 results and a
-C<nextToken> value, if applicable.
+C<nextToken> value, if applicable. This option cannot be used when you
+specify repositories with C<repositoryNames>.
 
 
 
@@ -56,7 +57,9 @@ The C<nextToken> value returned from a previous paginated
 C<DescribeRepositories> request where C<maxResults> was used and the
 results exceeded the value of that parameter. Pagination continues from
 the end of the previous results that returned the C<nextToken> value.
-This value is C<null> when there are no more results to return.
+This value is C<null> when there are no more results to return. This
+option cannot be used when you specify repositories with
+C<repositoryNames>.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic

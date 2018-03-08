@@ -224,10 +224,10 @@ Paws::ECR - Perl Interface to AWS Amazon EC2 Container Registry
 
 =head1 DESCRIPTION
 
-Amazon EC2 Container Registry (Amazon ECR) is a managed Docker registry
-service. Customers can use the familiar Docker CLI to push, pull, and
-manage images. Amazon ECR provides a secure, scalable, and reliable
-registry. Amazon ECR supports private Docker repositories with
+Amazon Elastic Container Registry (Amazon ECR) is a managed Docker
+registry service. Customers can use the familiar Docker CLI to push,
+pull, and manage images. Amazon ECR provides a secure, scalable, and
+reliable registry. Amazon ECR supports private Docker repositories with
 resource-based permissions using IAM so that specific users or Amazon
 EC2 instances can access repositories and images. Developers can use
 the Docker CLI to author and manage images.
@@ -463,7 +463,9 @@ Each argument is described in detail in: L<Paws::ECR::PutLifecyclePolicy>
 
 Returns: a L<Paws::ECR::PutLifecyclePolicyResponse> instance
 
-Creates or updates a lifecycle policy.
+Creates or updates a lifecycle policy. For information about lifecycle
+policy syntax, see Lifecycle Policy Template
+(http://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html).
 
 
 =head2 SetRepositoryPolicy(PolicyText => Str, RepositoryName => Str, [Force => Bool, RegistryId => Str])

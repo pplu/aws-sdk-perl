@@ -62,7 +62,8 @@ seen by sending another C<GetLifecyclePolicyPreviewRequest> request
 with the returned C<nextToken> value. This value can be between 1 and
 100. If this parameter is not used, then
 C<GetLifecyclePolicyPreviewRequest> returns up to 100 results and a
-C<nextToken> value, if applicable.
+C<nextToken> value, if applicable. This option cannot be used when you
+specify images with C<imageIds>.
 
 
 
@@ -73,7 +74,8 @@ C<GetLifecyclePolicyPreviewRequest> request where C<maxResults> was
 used and the results exceeded the value of that parameter. Pagination
 continues from the end of the previous results that returned the
 C<nextToken> value. This value is C<null> when there are no more
-results to return.
+results to return. This option cannot be used when you specify images
+with C<imageIds>.
 
 
 
@@ -87,7 +89,7 @@ assumed.
 
 =head2 B<REQUIRED> RepositoryName => Str
 
-The name of the repository with the policy to retrieve.
+The name of the repository.
 
 
 
