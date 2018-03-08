@@ -1,9 +1,9 @@
 package Paws::ServerlessRepo::ChangeSetDetails;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', request_name => 'applicationId', traits => ['NameInRequest']);
-  has ChangeSetId => (is => 'ro', isa => 'Str', request_name => 'changeSetId', traits => ['NameInRequest']);
-  has SemanticVersion => (is => 'ro', isa => 'Str', request_name => 'semanticVersion', traits => ['NameInRequest']);
-  has StackId => (is => 'ro', isa => 'Str', request_name => 'stackId', traits => ['NameInRequest']);
+  has ApplicationId => (is => 'ro', isa => 'Str', request_name => 'applicationId', traits => ['NameInRequest'], required => 1);
+  has ChangeSetId => (is => 'ro', isa => 'Str', request_name => 'changeSetId', traits => ['NameInRequest'], required => 1);
+  has SemanticVersion => (is => 'ro', isa => 'Str', request_name => 'semanticVersion', traits => ['NameInRequest'], required => 1);
+  has StackId => (is => 'ro', isa => 'Str', request_name => 'stackId', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -39,23 +39,28 @@ Details of the change set.
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationId => Str
+=head2 B<REQUIRED> ApplicationId => Str
 
   The application Amazon Resource Name (ARN).
 
 
-=head2 ChangeSetId => Str
+=head2 B<REQUIRED> ChangeSetId => Str
 
-  The ARN of the change set.\nLength Constraints: Minimum length of
-1.\nPattern: arn:[-a-zA-Z0-9:/]*
+  The ARN of the change set.
 
+Length Constraints: Minimum length of 1.
 
-=head2 SemanticVersion => Str
-
-  The semantic version of the application:\n\n https://semver.org/
+Pattern: Amazon Resource Name (ARN):[-a-zA-Z0-9:/]*
 
 
-=head2 StackId => Str
+=head2 B<REQUIRED> SemanticVersion => Str
+
+  The semantic version of the application:
+
+https://semver.org/
+
+
+=head2 B<REQUIRED> StackId => Str
 
   The unique ID of the stack.
 

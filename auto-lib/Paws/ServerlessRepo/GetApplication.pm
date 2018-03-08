@@ -37,13 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The id of the application to get
+The ID of the application to get.
 
 
 
 =head2 SemanticVersion => Str
 
-The semantic version of the application to get
+The semantic version of the application to get.
 
 
 

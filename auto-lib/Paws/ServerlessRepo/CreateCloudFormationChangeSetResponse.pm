@@ -25,13 +25,18 @@ The application Amazon Resource Name (ARN).
 
 =head2 ChangeSetId => Str
 
-The ARN of the change set.\nLength Constraints: Minimum length of
-1.\nPattern: arn:[-a-zA-Z0-9:/]*
+The ARN of the change set.
+
+Length Constraints: Minimum length of 1.
+
+Pattern: Amazon Resource Name (ARN):[-a-zA-Z0-9:/]*
 
 
 =head2 SemanticVersion => Str
 
-The semantic version of the application:\n\n https://semver.org/
+The semantic version of the application:
+
+https://semver.org/
 
 
 =head2 StackId => Str

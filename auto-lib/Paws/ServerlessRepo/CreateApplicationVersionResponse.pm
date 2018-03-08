@@ -37,7 +37,9 @@ Array of parameter types supported by the application.
 
 =head2 SemanticVersion => Str
 
-The semantic version of the application:\n\n https://semver.org/
+The semantic version of the application:
+
+https://semver.org/
 
 
 =head2 SourceCodeUrl => Str
@@ -47,7 +49,7 @@ A link to a public repository for the source code of your application.
 
 =head2 TemplateUrl => Str
 
-A link to the packaged SAM template of your application.
+A link to the packaged AWS SAM template of your application.
 
 
 =head2 _request_id => Str

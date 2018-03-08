@@ -40,13 +40,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The id of the application to create a new version for
+The ID of the application to get.
 
 
 
 =head2 B<REQUIRED> SemanticVersion => Str
 
-The semantic version of the new version
+The semantic version of the new version.
 
 
 
@@ -58,13 +58,13 @@ A link to a public repository for the source code of your application.
 
 =head2 TemplateBody => Str
 
-The raw packaged SAM template of your application.
+The raw packaged AWS SAM template of your application.
 
 
 
 =head2 TemplateUrl => Str
 
-A link to the packaged SAM template of your application.
+A link to the packaged AWS SAM template of your application.
 
 
 

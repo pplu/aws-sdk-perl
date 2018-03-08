@@ -1,7 +1,7 @@
 package Paws::ServerlessRepo::ApplicationVersionPage;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
-  has Versions => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::VersionSummary]', request_name => 'versions', traits => ['NameInRequest']);
+  has Versions => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::VersionSummary]', request_name => 'versions', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +42,7 @@ List of version summaries for the application.
   The token to request the next page of results.
 
 
-=head2 Versions => ArrayRef[L<Paws::ServerlessRepo::VersionSummary>]
+=head2 B<REQUIRED> Versions => ArrayRef[L<Paws::ServerlessRepo::VersionSummary>]
 
   Array of version summaries for the application.
 

@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The id of the application to get policy for
+The ID of the application to get.
 
 
 

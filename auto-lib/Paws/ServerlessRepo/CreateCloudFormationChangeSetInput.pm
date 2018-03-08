@@ -2,7 +2,7 @@ package Paws::ServerlessRepo::CreateCloudFormationChangeSetInput;
   use Moose;
   has ParameterOverrides => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ParameterValue]', request_name => 'parameterOverrides', traits => ['NameInRequest']);
   has SemanticVersion => (is => 'ro', isa => 'Str', request_name => 'semanticVersion', traits => ['NameInRequest']);
-  has StackName => (is => 'ro', isa => 'Str', request_name => 'stackName', traits => ['NameInRequest']);
+  has StackName => (is => 'ro', isa => 'Str', request_name => 'stackName', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -45,16 +45,21 @@ Create application ChangeSet request.
 
 =head2 SemanticVersion => Str
 
-  The semantic version of the application:\n\n https://semver.org/
+  The semantic version of the application:
+
+https://semver.org/
 
 
-=head2 StackName => Str
+=head2 B<REQUIRED> StackName => Str
 
   The name or the unique ID of the stack for which you are creating a
-change set. AWS CloudFormation generates\n the change set by comparing
+change set. AWS CloudFormation generates the change set by comparing
 this stack's information with the information that you submit, such as
-a modified\n template or different parameter input values.
-\nConstraints: Minimum length of 1.\nPattern:
+a modified template or different parameter input values.
+
+Constraints: Minimum length of 1.
+
+Pattern:
 ([a-zA-Z][-a-zA-Z0-9]*)|(arn:\b(aws|aws-us-gov|aws-cn)\b:[-a-zA-Z0-9:/._+]*)
 
 

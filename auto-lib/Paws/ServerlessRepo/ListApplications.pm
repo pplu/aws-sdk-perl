@@ -37,13 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 MaxItems => Int
 
-The total number of items to return
+The total number of items to return.
 
 
 
 =head2 NextToken => Str
 
-A token to specify where to start paginating
+A token to specify where to start paginating.
 
 
 

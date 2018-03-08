@@ -1,11 +1,12 @@
 package Paws::ServerlessRepo::CreateApplicationInput;
   use Moose;
-  has Author => (is => 'ro', isa => 'Str', request_name => 'author', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has Author => (is => 'ro', isa => 'Str', request_name => 'author', traits => ['NameInRequest'], required => 1);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest'], required => 1);
+  has HomePageUrl => (is => 'ro', isa => 'Str', request_name => 'homePageUrl', traits => ['NameInRequest']);
   has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'labels', traits => ['NameInRequest']);
   has LicenseBody => (is => 'ro', isa => 'Str', request_name => 'licenseBody', traits => ['NameInRequest']);
   has LicenseUrl => (is => 'ro', isa => 'Str', request_name => 'licenseUrl', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has ReadmeBody => (is => 'ro', isa => 'Str', request_name => 'readmeBody', traits => ['NameInRequest']);
   has ReadmeUrl => (is => 'ro', isa => 'Str', request_name => 'readmeUrl', traits => ['NameInRequest']);
   has SemanticVersion => (is => 'ro', isa => 'Str', request_name => 'semanticVersion', traits => ['NameInRequest']);
@@ -48,57 +49,83 @@ Create application request.
 =head1 ATTRIBUTES
 
 
-=head2 Author => Str
+=head2 B<REQUIRED> Author => Str
 
-  The name of the author publishing the app.\nMin Length=1. Max
-Length=127.\nPattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";
+  The name of the author publishing the app.
+
+Min Length=1. Max Length=127.
+
+Pattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";
 
 
-=head2 Description => Str
+=head2 B<REQUIRED> Description => Str
 
-  The description of the application.\nMin Length=1. Max Length=256
+  The description of the application.
+
+Min Length=1. Max Length=256
+
+
+=head2 HomePageUrl => Str
+
+  A URL with more information about the application, for example the
+location of your GitHub repository for the application.
 
 
 =head2 Labels => ArrayRef[Str|Undef]
 
-  Labels to improve discovery of apps in search results.\nMin Length=1.
-Max Length=127. Maximum number of labels: 10\nPattern:
-"^[a-zA-Z0-9+\\-_:\\/@]+$";
+  Labels to improve discovery of apps in search results.
+
+Min Length=1. Max Length=127. Maximum number of labels: 10
+
+Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
 
 
 =head2 LicenseBody => Str
 
   A raw text file that contains the license of the app that matches the
-spdxLicenseID of your application.\nMax size 5 MB
+spdxLicenseID of your application.
+
+Max size 5 MB
 
 
 =head2 LicenseUrl => Str
 
   A link to a license file of the app that matches the spdxLicenseID of
-your application.\nMax size 5 MB
+your application.
+
+Max size 5 MB
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
-  The name of the application you want to publish.\nMin Length=1. Max
-Length=140\nPattern: "[a-zA-Z0-9\\-]+";
+  The name of the application you want to publish.
+
+Min Length=1. Max Length=140
+
+Pattern: "[a-zA-Z0-9\\-]+";
 
 
 =head2 ReadmeBody => Str
 
   A raw text Readme file that contains a more detailed description of the
-application and how it works in markdown language.\nMax size 5 MB
+application and how it works in markdown language.
+
+Max size 5 MB
 
 
 =head2 ReadmeUrl => Str
 
   A link to the Readme file that contains a more detailed description of
-the application and how it works in markdown language.\nMax size 5 MB
+the application and how it works in markdown language.
+
+Max size 5 MB
 
 
 =head2 SemanticVersion => Str
 
-  The semantic version of the application:\n\n https://semver.org/
+  The semantic version of the application:
+
+https://semver.org/
 
 
 =head2 SourceCodeUrl => Str
@@ -108,17 +135,17 @@ the application and how it works in markdown language.\nMax size 5 MB
 
 =head2 SpdxLicenseId => Str
 
-  A valid identifier from https://spdx.org/licenses/ .
+  A valid identifier from https://spdx.org/licenses/.
 
 
 =head2 TemplateBody => Str
 
-  The raw packaged SAM template of your application.
+  The raw packaged AWS SAM template of your application.
 
 
 =head2 TemplateUrl => Str
 
-  A link to the packaged SAM template of your application.
+  A link to the packaged AWS SAM template of your application.
 
 
 

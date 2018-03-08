@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The id of the application to create the ChangeSet for
+The ID of the application to get.
 
 
 
@@ -51,17 +51,22 @@ A list of parameter values for the parameters of the application.
 
 =head2 SemanticVersion => Str
 
-The semantic version of the application:\n\n https://semver.org/
+The semantic version of the application:
+
+https://semver.org/
 
 
 
 =head2 StackName => Str
 
 The name or the unique ID of the stack for which you are creating a
-change set. AWS CloudFormation generates\n the change set by comparing
+change set. AWS CloudFormation generates the change set by comparing
 this stack's information with the information that you submit, such as
-a modified\n template or different parameter input values.
-\nConstraints: Minimum length of 1.\nPattern:
+a modified template or different parameter input values.
+
+Constraints: Minimum length of 1.
+
+Pattern:
 ([a-zA-Z][-a-zA-Z0-9]*)|(arn:\b(aws|aws-us-gov|aws-cn)\b:[-a-zA-Z0-9:/._+]*)
 
 

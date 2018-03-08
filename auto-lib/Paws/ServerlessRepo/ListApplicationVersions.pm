@@ -38,19 +38,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The id of the application to list
+The ID of the application to get.
 
 
 
 =head2 MaxItems => Int
 
-The total number of items to return
+The total number of items to return.
 
 
 
 =head2 NextToken => Str
 
-A token to specify where to start paginating
+A token to specify where to start paginating.
 
 
 

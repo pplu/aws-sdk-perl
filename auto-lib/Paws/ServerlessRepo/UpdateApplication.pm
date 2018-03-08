@@ -4,6 +4,7 @@ package Paws::ServerlessRepo::UpdateApplication;
   has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'applicationId', required => 1);
   has Author => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'author');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has HomePageUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'homePageUrl');
   has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'labels');
   has ReadmeBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'readmeBody');
   has ReadmeUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'readmeUrl');
@@ -41,42 +42,60 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The id of the application to update
+The ID of the application to get.
 
 
 
 =head2 Author => Str
 
-The name of the author publishing the app.\nMin Length=1. Max
-Length=127.\nPattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";
+The name of the author publishing the app.
+
+Min Length=1. Max Length=127.
+
+Pattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";
 
 
 
 =head2 Description => Str
 
-The description of the application.\nMin Length=1. Max Length=256
+The description of the application.
+
+Min Length=1. Max Length=256
+
+
+
+=head2 HomePageUrl => Str
+
+A URL with more information about the application, for example the
+location of your GitHub repository for the application.
 
 
 
 =head2 Labels => ArrayRef[Str|Undef]
 
-Labels to improve discovery of apps in search results.\nMin Length=1.
-Max Length=127. Maximum number of labels: 10\nPattern:
-"^[a-zA-Z0-9+\\-_:\\/@]+$";
+Labels to improve discovery of apps in search results.
+
+Min Length=1. Max Length=127. Maximum number of labels: 10
+
+Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
 
 
 
 =head2 ReadmeBody => Str
 
 A raw text Readme file that contains a more detailed description of the
-application and how it works in markdown language.\nMax size 5 MB
+application and how it works in markdown language.
+
+Max size 5 MB
 
 
 
 =head2 ReadmeUrl => Str
 
 A link to the Readme file that contains a more detailed description of
-the application and how it works in markdown language.\nMax size 5 MB
+the application and how it works in markdown language.
+
+Max size 5 MB
 
 
 
