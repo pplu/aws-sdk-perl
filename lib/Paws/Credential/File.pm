@@ -36,6 +36,41 @@ package Paws::Credential::File;
     return $self->_ini_contents->{ $profile } || {};
   });
 
+  has assume_role_sts_call_creds  => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    if (my $credential_source = $self->_profile->{ source_profile }) {
+      return Paws::Credential::Environment->new if ($credential_source eq 'Environment');
+      return Paws::Credential::InstanceProfile->new if ($credential_source eq 'Ec2InstanceMetadata');
+      return Paws::Credential::ECSContainerProfile->new if ($credential_source eq 'EcsContainer');
+    } elsif (my $source_profile = $self->_profile->{ source_profile }) {
+      return Paws::Credential::Profile->new(
+        file => $self->file,
+        profile => $source_profile
+      );
+    } else {
+      return undef;
+    }
+  });
+
+  has assume_role => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+
+    my $role_arn = $self->_profile->{ role_arn };
+    return undef if (not defined $role_arn);
+    my $external_id = $self->_profile->{ external_id };
+    return undef if (not defined $self->assume_role_sts_call_creds);
+
+    my $role_session_name = $self->_profile->{ role_session_name };
+
+    my $sts = Paws->service('STS', credentials => $self->assume_role_sts_call_creds);
+    Paws::Credential::AssumeRole->new(
+      (defined $external_id) ? (ExternalId => $external_id) : (),
+      (defined $role_session_name) ? (RoleSessionName => $role_session_name) : (),
+      RoleArn => $role_arn,
+      sts => $sts,
+    );
+  });
+
   has credential_process => (is => 'ro', lazy => 1, default => sub {
     my $self = shift;
     return undef if (not defined $self->_profile->{ credential_process });
