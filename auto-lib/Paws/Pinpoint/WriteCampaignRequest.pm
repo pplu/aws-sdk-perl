@@ -3,6 +3,7 @@ package Paws::Pinpoint::WriteCampaignRequest;
   has AdditionalTreatments => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::WriteTreatmentResource]');
   has Description => (is => 'ro', isa => 'Str');
   has HoldoutPercent => (is => 'ro', isa => 'Int');
+  has Hook => (is => 'ro', isa => 'Paws::Pinpoint::CampaignHook');
   has IsPaused => (is => 'ro', isa => 'Bool');
   has Limits => (is => 'ro', isa => 'Paws::Pinpoint::CampaignLimits');
   has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::MessageConfiguration');
@@ -61,6 +62,11 @@ Used to create a campaign.
 
   The allocated percentage of end users who will not receive messages
 from this campaign.
+
+
+=head2 Hook => L<Paws::Pinpoint::CampaignHook>
+
+  Campaign hook information.
 
 
 =head2 IsPaused => Bool

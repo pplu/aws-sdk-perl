@@ -1,6 +1,7 @@
 package Paws::Pinpoint::ApplicationSettingsResource;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str');
+  has CampaignHook => (is => 'ro', isa => 'Paws::Pinpoint::CampaignHook');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has Limits => (is => 'ro', isa => 'Paws::Pinpoint::CampaignLimits');
   has QuietTime => (is => 'ro', isa => 'Paws::Pinpoint::QuietTime');
@@ -42,6 +43,11 @@ Application settings.
 =head2 ApplicationId => Str
 
   The unique ID for the application.
+
+
+=head2 CampaignHook => L<Paws::Pinpoint::CampaignHook>
+
+  Default campaign hook.
 
 
 =head2 LastModifiedDate => Str

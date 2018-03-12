@@ -23,6 +23,11 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::CreateCampaign', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateExportJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::CreateExportJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateImportJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::CreateImportJob', @_);
@@ -183,6 +188,16 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetEventStream', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetExportJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetExportJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetExportJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetExportJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetGcmChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetGcmChannel', @_);
@@ -201,6 +216,11 @@ package Paws::Pinpoint;
   sub GetSegment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetSegment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetSegmentExportJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetSegmentExportJobs', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetSegmentImportJobs {
@@ -316,7 +336,7 @@ package Paws::Pinpoint;
   
 
 
-  sub operations { qw/CreateApp CreateCampaign CreateImportJob CreateSegment DeleteAdmChannel DeleteApnsChannel DeleteApnsSandboxChannel DeleteApnsVoipChannel DeleteApnsVoipSandboxChannel DeleteApp DeleteBaiduChannel DeleteCampaign DeleteEmailChannel DeleteEventStream DeleteGcmChannel DeleteSegment DeleteSmsChannel GetAdmChannel GetApnsChannel GetApnsSandboxChannel GetApnsVoipChannel GetApnsVoipSandboxChannel GetApp GetApplicationSettings GetApps GetBaiduChannel GetCampaign GetCampaignActivities GetCampaigns GetCampaignVersion GetCampaignVersions GetEmailChannel GetEndpoint GetEventStream GetGcmChannel GetImportJob GetImportJobs GetSegment GetSegmentImportJobs GetSegments GetSegmentVersion GetSegmentVersions GetSmsChannel PutEventStream SendMessages SendUsersMessages UpdateAdmChannel UpdateApnsChannel UpdateApnsSandboxChannel UpdateApnsVoipChannel UpdateApnsVoipSandboxChannel UpdateApplicationSettings UpdateBaiduChannel UpdateCampaign UpdateEmailChannel UpdateEndpoint UpdateEndpointsBatch UpdateGcmChannel UpdateSegment UpdateSmsChannel / }
+  sub operations { qw/CreateApp CreateCampaign CreateExportJob CreateImportJob CreateSegment DeleteAdmChannel DeleteApnsChannel DeleteApnsSandboxChannel DeleteApnsVoipChannel DeleteApnsVoipSandboxChannel DeleteApp DeleteBaiduChannel DeleteCampaign DeleteEmailChannel DeleteEventStream DeleteGcmChannel DeleteSegment DeleteSmsChannel GetAdmChannel GetApnsChannel GetApnsSandboxChannel GetApnsVoipChannel GetApnsVoipSandboxChannel GetApp GetApplicationSettings GetApps GetBaiduChannel GetCampaign GetCampaignActivities GetCampaigns GetCampaignVersion GetCampaignVersions GetEmailChannel GetEndpoint GetEventStream GetExportJob GetExportJobs GetGcmChannel GetImportJob GetImportJobs GetSegment GetSegmentExportJobs GetSegmentImportJobs GetSegments GetSegmentVersion GetSegmentVersions GetSmsChannel PutEventStream SendMessages SendUsersMessages UpdateAdmChannel UpdateApnsChannel UpdateApnsSandboxChannel UpdateApnsVoipChannel UpdateApnsVoipSandboxChannel UpdateApplicationSettings UpdateBaiduChannel UpdateCampaign UpdateEmailChannel UpdateEndpoint UpdateEndpointsBatch UpdateGcmChannel UpdateSegment UpdateSmsChannel / }
 
 1;
 
@@ -364,6 +384,15 @@ Each argument is described in detail in: L<Paws::Pinpoint::CreateCampaign>
 Returns: a L<Paws::Pinpoint::CreateCampaignResponse> instance
 
 Creates or updates a campaign.
+
+
+=head2 CreateExportJob(ApplicationId => Str, ExportJobRequest => L<Paws::Pinpoint::ExportJobRequest>)
+
+Each argument is described in detail in: L<Paws::Pinpoint::CreateExportJob>
+
+Returns: a L<Paws::Pinpoint::CreateExportJobResponse> instance
+
+Creates an export job.
 
 
 =head2 CreateImportJob(ApplicationId => Str, ImportJobRequest => L<Paws::Pinpoint::ImportJobRequest>)
@@ -543,7 +572,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetApnsVoipSandboxCha
 
 Returns: a L<Paws::Pinpoint::GetApnsVoipSandboxChannelResponse> instance
 
-Get an APNS VoipSandbox channel
+Get an APNS VoIPSandbox channel
 
 
 =head2 GetApp(ApplicationId => Str)
@@ -654,6 +683,24 @@ Returns: a L<Paws::Pinpoint::GetEventStreamResponse> instance
 Returns the event stream for an app.
 
 
+=head2 GetExportJob(ApplicationId => Str, JobId => Str)
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetExportJob>
+
+Returns: a L<Paws::Pinpoint::GetExportJobResponse> instance
+
+Returns information about an export job.
+
+
+=head2 GetExportJobs(ApplicationId => Str, [PageSize => Str, Token => Str])
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetExportJobs>
+
+Returns: a L<Paws::Pinpoint::GetExportJobsResponse> instance
+
+Returns information about your export jobs.
+
+
 =head2 GetGcmChannel(ApplicationId => Str)
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetGcmChannel>
@@ -688,6 +735,15 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetSegment>
 Returns: a L<Paws::Pinpoint::GetSegmentResponse> instance
 
 Returns information about a segment.
+
+
+=head2 GetSegmentExportJobs(ApplicationId => Str, SegmentId => Str, [PageSize => Str, Token => Str])
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetSegmentExportJobs>
+
+Returns: a L<Paws::Pinpoint::GetSegmentExportJobsResponse> instance
+
+Returns a list of export jobs for a specific segment.
 
 
 =head2 GetSegmentImportJobs(ApplicationId => Str, SegmentId => Str, [PageSize => Str, Token => Str])

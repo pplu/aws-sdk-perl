@@ -6,6 +6,7 @@ package Paws::Pinpoint::CampaignResponse;
   has DefaultState => (is => 'ro', isa => 'Paws::Pinpoint::CampaignState');
   has Description => (is => 'ro', isa => 'Str');
   has HoldoutPercent => (is => 'ro', isa => 'Int');
+  has Hook => (is => 'ro', isa => 'Paws::Pinpoint::CampaignHook');
   has Id => (is => 'ro', isa => 'Str');
   has IsPaused => (is => 'ro', isa => 'Bool');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
@@ -84,6 +85,11 @@ test campaigns.
 
   The allocated percentage of end users who will not receive messages
 from this campaign.
+
+
+=head2 Hook => L<Paws::Pinpoint::CampaignHook>
+
+  Campaign hook information.
 
 
 =head2 Id => Str

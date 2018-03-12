@@ -47,7 +47,7 @@ Amazon Device Messaging channel definition.
 
 =head2 ApplicationId => Str
 
-  Application id
+  The ID of the application to which the channel applies.
 
 
 =head2 CreationDate => Str
@@ -62,7 +62,10 @@ Amazon Device Messaging channel definition.
 
 =head2 HasCredential => Bool
 
-  If the channel is registered with a credential for authentication.
+  Indicates whether the channel is configured with ADM credentials.
+Amazon Pinpoint uses your credentials to authenticate push
+notifications with ADM. Provide your credentials by setting the
+ClientId and ClientSecret attributes.
 
 
 =head2 Id => Str

@@ -1,5 +1,6 @@
 package Paws::Pinpoint::WriteApplicationSettingsRequest;
   use Moose;
+  has CampaignHook => (is => 'ro', isa => 'Paws::Pinpoint::CampaignHook');
   has Limits => (is => 'ro', isa => 'Paws::Pinpoint::CampaignLimits');
   has QuietTime => (is => 'ro', isa => 'Paws::Pinpoint::QuietTime');
 1;
@@ -21,20 +22,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::WriteApplicationSettingsRequest object:
 
-  $service_obj->Method(Att1 => { Limits => $value, ..., QuietTime => $value  });
+  $service_obj->Method(Att1 => { CampaignHook => $value, ..., QuietTime => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::WriteApplicationSettingsRequest object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Limits
+  $result->Att1->CampaignHook
 
 =head1 DESCRIPTION
 
 Creating application setting request
 
 =head1 ATTRIBUTES
+
+
+=head2 CampaignHook => L<Paws::Pinpoint::CampaignHook>
+
+  Default campaign hook information.
 
 
 =head2 Limits => L<Paws::Pinpoint::CampaignLimits>

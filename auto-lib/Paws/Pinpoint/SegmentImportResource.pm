@@ -48,8 +48,10 @@ Segment import definition.
 
 =head2 ExternalId => Str
 
-  A unique, custom ID assigned to the IAM role that restricts who can
-assume the role.
+  DEPRECATED. Your AWS account ID, which you assigned to the ExternalID
+key in an IAM trust policy. Used by Amazon Pinpoint to assume an IAM
+role. This requirement is removed, and external IDs are not recommended
+for IAM roles assumed by Amazon Pinpoint.
 
 
 =head2 Format => Str
