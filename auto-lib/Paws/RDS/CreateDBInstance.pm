@@ -982,7 +982,11 @@ B<PostgreSQL>
 
 =item *
 
-B<Version 9.6.x:> C< 9.6.5 | 9.6.3 | 9.6.2 | 9.6.1>
+B<Version 10.1>
+
+=item *
+
+B<Version 9.6.x:> C< 9.6.6 | 9.6.5 | 9.6.3 | 9.6.2 | 9.6.1>
 
 =item *
 

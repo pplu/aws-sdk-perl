@@ -1236,9 +1236,6 @@ You can copy a snapshot from one AWS Region to another. In that case,
 the AWS Region where you call the C<CopyDBSnapshot> action is the
 destination AWS Region for the DB snapshot copy.
 
-You can't copy an encrypted, shared DB snapshot from one AWS Region to
-another.
-
 For more information about copying snapshots, see Copying a DB Snapshot
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopyDBSnapshot.html)
 in the Amazon RDS User Guide.
@@ -2212,10 +2209,14 @@ Promotes a Read Replica DB instance to a standalone DB instance.
 
 =item *
 
-We recommend that you enable automated backups on your Read Replica
-before promoting the Read Replica. This ensures that no backup is taken
-during the promotion process. Once the instance is promoted to a
-primary instance, backups are taken based on your backup settings.
+Backup duration is a function of the amount of changes to the database
+since the previous backup. If you plan to promote a Read Replica to a
+standalone instance, we recommend that you enable backups and complete
+at least one backup prior to promotion. In addition, a Read Replica
+cannot be promoted to a standalone instance when it is in the
+C<backing-up> status. If you have enabled backups on your Read Replica,
+configure the automated backup window so that daily backups do not
+interfere with Read Replica promotion.
 
 =item *
 
