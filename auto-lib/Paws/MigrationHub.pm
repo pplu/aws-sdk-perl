@@ -125,7 +125,9 @@ Paws::MigrationHub - Perl Interface to AWS AWS Migration Hub
 
 =head1 DESCRIPTION
 
-
+The AWS Migration Hub API methods help to obtain server and application
+migration status and integrate your resource-specific migration tool by
+providing a programmatic interface to Migration Hub.
 
 =head1 METHODS
 
@@ -204,9 +206,9 @@ stream name (same as a C<CreateProgressUpdateStream> call).
 
 =item *
 
-The call will return, and a background process will asynchronously be
-doing the actual delete of the stream and all of its resources (tasks,
-associated resources, resource attributes, created artifacts).
+The call will return, and a background process will asynchronously
+delete the stream and all of its resources (tasks, associated
+resources, resource attributes, created artifacts).
 
 =item *
 
@@ -435,15 +437,27 @@ can be associated in the Application Discovery Service (ADS)'s
 repository. This association occurs asynchronously after
 C<PutResourceAttributes> returns.
 
+=over
+
+=item *
+
 Keep in mind that subsequent calls to PutResourceAttributes will
 override previously stored attributes. For example, if it is first
 called with a MAC address, but later, it is desired to I<add> an IP
 address, it will then be required to call it with I<both> the IP and
 MAC addresses to prevent overiding the MAC address.
 
+=item *
+
+Note the instructions regarding the special use case of the
+C<ResourceAttributeList> parameter when specifying any "VM" related
+value.
+
+=back
+
 Because this is an asynchronous call, it will always return 200,
 whether an association occurs or not. To confirm if an association was
-found based on the provided details, call C<ListAssociatedResource>.
+found based on the provided details, call C<ListDiscoveredResources>.
 
 
 
