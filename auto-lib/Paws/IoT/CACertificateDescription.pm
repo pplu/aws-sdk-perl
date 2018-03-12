@@ -5,6 +5,9 @@ package Paws::IoT::CACertificateDescription;
   has CertificateId => (is => 'ro', isa => 'Str', request_name => 'certificateId', traits => ['NameInRequest']);
   has CertificatePem => (is => 'ro', isa => 'Str', request_name => 'certificatePem', traits => ['NameInRequest']);
   has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
+  has CustomerVersion => (is => 'ro', isa => 'Int', request_name => 'customerVersion', traits => ['NameInRequest']);
+  has GenerationId => (is => 'ro', isa => 'Str', request_name => 'generationId', traits => ['NameInRequest']);
+  has LastModifiedDate => (is => 'ro', isa => 'Str', request_name => 'lastModifiedDate', traits => ['NameInRequest']);
   has OwnedBy => (is => 'ro', isa => 'Str', request_name => 'ownedBy', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
 1;
@@ -66,6 +69,21 @@ certificates. Valid values are "ENABLE" and "DISABLE"
 =head2 CreationDate => Str
 
   The date the CA certificate was created.
+
+
+=head2 CustomerVersion => Int
+
+  
+
+
+=head2 GenerationId => Str
+
+  
+
+
+=head2 LastModifiedDate => Str
+
+  
 
 
 =head2 OwnedBy => Str

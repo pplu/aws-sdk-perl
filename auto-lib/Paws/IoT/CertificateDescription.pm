@@ -5,6 +5,8 @@ package Paws::IoT::CertificateDescription;
   has CertificateId => (is => 'ro', isa => 'Str', request_name => 'certificateId', traits => ['NameInRequest']);
   has CertificatePem => (is => 'ro', isa => 'Str', request_name => 'certificatePem', traits => ['NameInRequest']);
   has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
+  has CustomerVersion => (is => 'ro', isa => 'Int', request_name => 'customerVersion', traits => ['NameInRequest']);
+  has GenerationId => (is => 'ro', isa => 'Str', request_name => 'generationId', traits => ['NameInRequest']);
   has LastModifiedDate => (is => 'ro', isa => 'Str', request_name => 'lastModifiedDate', traits => ['NameInRequest']);
   has OwnedBy => (is => 'ro', isa => 'Str', request_name => 'ownedBy', traits => ['NameInRequest']);
   has PreviousOwnedBy => (is => 'ro', isa => 'Str', request_name => 'previousOwnedBy', traits => ['NameInRequest']);
@@ -68,6 +70,16 @@ Describes a certificate.
 =head2 CreationDate => Str
 
   The date and time the certificate was created.
+
+
+=head2 CustomerVersion => Int
+
+  
+
+
+=head2 GenerationId => Str
+
+  
 
 
 =head2 LastModifiedDate => Str

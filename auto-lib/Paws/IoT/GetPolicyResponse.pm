@@ -1,7 +1,10 @@
 
 package Paws::IoT::GetPolicyResponse;
   use Moose;
+  has CreationDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'creationDate');
   has DefaultVersionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultVersionId');
+  has GenerationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'generationId');
+  has LastModifiedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastModifiedDate');
   has PolicyArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyArn');
   has PolicyDocument => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyDocument');
   has PolicyName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyName');
@@ -18,9 +21,24 @@ Paws::IoT::GetPolicyResponse
 =head1 ATTRIBUTES
 
 
+=head2 CreationDate => Str
+
+
+
+
 =head2 DefaultVersionId => Str
 
 The default policy version ID.
+
+
+=head2 GenerationId => Str
+
+
+
+
+=head2 LastModifiedDate => Str
+
+
 
 
 =head2 PolicyArn => Str
