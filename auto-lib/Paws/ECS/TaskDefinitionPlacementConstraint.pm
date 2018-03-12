@@ -35,8 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::TaskDe
 An object representing a constraint on task placement in the task
 definition.
 
-If you are using the Fargate launch type, task placement contraints are
-not supported.
+If you are using the Fargate launch type, task placement constraints
+are not supported.
 
 For more information, see Task Placement Constraints
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html)

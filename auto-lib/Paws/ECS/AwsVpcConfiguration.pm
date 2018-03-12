@@ -40,8 +40,8 @@ An object representing the networking details for a task or service.
 
 =head2 AssignPublicIp => Str
 
-  Specifies whether or not the task's elastic network interface receives
-a public IP address.
+  Whether the task's elastic network interface receives a public IP
+address.
 
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]

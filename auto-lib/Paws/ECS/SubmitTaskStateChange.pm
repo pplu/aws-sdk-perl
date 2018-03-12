@@ -62,7 +62,7 @@ Any containers associated with the state change request.
 
 =head2 ExecutionStoppedAt => Str
 
-The Unix timestamp for when the task execution stopped.
+The Unix time stamp for when the task execution stopped.
 
 
 

@@ -71,8 +71,8 @@ ports limit of a container instance.
 container.
 
 If using containers in a task with the C<awsvpc> or C<host> network
-mode, the C<hostPort> can either be left blank or needs to be the same
-value as the C<containerPort>.
+mode, the C<hostPort> can either be left blank or set to the same value
+as the C<containerPort>.
 
 If using containers in a task with the C<bridge> network mode, you can
 specify a non-reserved host port for your container port mapping, or

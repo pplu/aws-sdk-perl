@@ -11,6 +11,7 @@ package Paws::ECS::ContainerDefinition;
   has Environment => (is => 'ro', isa => 'ArrayRef[Paws::ECS::KeyValuePair]', request_name => 'environment', traits => ['NameInRequest']);
   has Essential => (is => 'ro', isa => 'Bool', request_name => 'essential', traits => ['NameInRequest']);
   has ExtraHosts => (is => 'ro', isa => 'ArrayRef[Paws::ECS::HostEntry]', request_name => 'extraHosts', traits => ['NameInRequest']);
+  has HealthCheck => (is => 'ro', isa => 'Paws::ECS::HealthCheck', request_name => 'healthCheck', traits => ['NameInRequest']);
   has Hostname => (is => 'ro', isa => 'Str', request_name => 'hostname', traits => ['NameInRequest']);
   has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
   has Links => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'links', traits => ['NameInRequest']);
@@ -122,10 +123,10 @@ instance uses the CPU value to calculate the relative CPU share ratios
 for running containers. For more information, see CPU share constraint
 (https://docs.docker.com/engine/reference/run/#cpu-share-constraint) in
 the Docker documentation. The minimum valid CPU share value that the
-Linux kernel will allow is 2; however, the CPU parameter is not
-required, and you can use CPU values below 2 in your container
-definitions. For CPU values below 2 (including null), the behavior
-varies based on your Amazon ECS container agent version:
+Linux kernel allows is 2; however, the CPU parameter is not required,
+and you can use CPU values below 2 in your container definitions. For
+CPU values below 2 (including null), the behavior varies based on your
+Amazon ECS container agent version:
 
 =over
 
@@ -290,6 +291,18 @@ and the C<--add-host> option to docker run
 This parameter is not supported for Windows containers.
 
 
+=head2 HealthCheck => L<Paws::ECS::HealthCheck>
+
+  The health check command and associated configuration parameters for
+the container. This parameter maps to C<HealthCheck> in the Create a
+container
+(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+section of the Docker Remote API
+(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
+and the C<HEALTHCHECK> parameter of docker run
+(https://docs.docker.com/engine/reference/run/).
+
+
 =head2 Hostname => Str
 
   The hostname to use for your container. This parameter maps to
@@ -443,13 +456,13 @@ section of the Docker Remote API
 and the C<--memory> option to docker run
 (https://docs.docker.com/engine/reference/run/).
 
-If your containers will be part of a task using the Fargate launch
-type, this field is optional and the only requirement is that the total
+If your containers are part of a task using the Fargate launch type,
+this field is optional and the only requirement is that the total
 amount of memory reserved for all containers within a task be lower
 than the task C<memory> value.
 
-For containers that will be part of a task using the EC2 launch type,
-you must specify a non-zero integer for one or both of C<memory> or
+For containers that are part of a task using the EC2 launch type, you
+must specify a non-zero integer for one or both of C<memory> or
 C<memoryReservation> in container definitions. If you specify both,
 C<memory> must be greater than C<memoryReservation>. If you specify
 C<memoryReservation>, then that value is subtracted from the available

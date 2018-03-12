@@ -2,6 +2,7 @@ package Paws::ECS::Container;
   use Moose;
   has ContainerArn => (is => 'ro', isa => 'Str', request_name => 'containerArn', traits => ['NameInRequest']);
   has ExitCode => (is => 'ro', isa => 'Int', request_name => 'exitCode', traits => ['NameInRequest']);
+  has HealthStatus => (is => 'ro', isa => 'Str', request_name => 'healthStatus', traits => ['NameInRequest']);
   has LastStatus => (is => 'ro', isa => 'Str', request_name => 'lastStatus', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has NetworkBindings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::NetworkBinding]', request_name => 'networkBindings', traits => ['NameInRequest']);
@@ -51,6 +52,13 @@ A Docker container that is part of a task.
 =head2 ExitCode => Int
 
   The exit code returned from the container.
+
+
+=head2 HealthStatus => Str
+
+  The health status of the container. If health checks are not configured
+for this container in its task definition, then it reports health
+status as C<UNKNOWN>.
 
 
 =head2 LastStatus => Str

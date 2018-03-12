@@ -11,6 +11,7 @@ package Paws::ECS::Task;
   has DesiredStatus => (is => 'ro', isa => 'Str', request_name => 'desiredStatus', traits => ['NameInRequest']);
   has ExecutionStoppedAt => (is => 'ro', isa => 'Str', request_name => 'executionStoppedAt', traits => ['NameInRequest']);
   has Group => (is => 'ro', isa => 'Str', request_name => 'group', traits => ['NameInRequest']);
+  has HealthStatus => (is => 'ro', isa => 'Str', request_name => 'healthStatus', traits => ['NameInRequest']);
   has LastStatus => (is => 'ro', isa => 'Str', request_name => 'lastStatus', traits => ['NameInRequest']);
   has LaunchType => (is => 'ro', isa => 'Str', request_name => 'launchType', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Str', request_name => 'memory', traits => ['NameInRequest']);
@@ -97,8 +98,8 @@ status.
 
   The number of CPU units used by the task. It can be expressed as an
 integer using CPU units, for example C<1024>, or as a string using
-vCPUs, for example C<1 vCPU> or C<1 vcpu>, in a task definition but
-will be converted to an integer indicating the CPU units when the task
+vCPUs, for example C<1 vCPU> or C<1 vcpu>, in a task definition but is
+converted to an integer indicating the CPU units when the task
 definition is registered.
 
 If using the EC2 launch type, this field is optional. Supported values
@@ -113,28 +114,28 @@ supported values for the C<memory> parameter:
 
 =item *
 
-256 (.25 vCPU) - Available C<memory> values: 512 (0.5GB), 1024 (1GB),
-2048 (2GB)
+256 (.25 vCPU) - Available C<memory> values: 512 (0.5 GB), 1024 (1 GB),
+2048 (2 GB)
 
 =item *
 
-512 (.5 vCPU) - Available C<memory> values: 1024 (1GB), 2048 (2GB),
-3072 (3GB), 4096 (4GB)
+512 (.5 vCPU) - Available C<memory> values: 1024 (1 GB), 2048 (2 GB),
+3072 (3 GB), 4096 (4 GB)
 
 =item *
 
-1024 (1 vCPU) - Available C<memory> values: 2048 (2GB), 3072 (3GB),
-4096 (4GB), 5120 (5GB), 6144 (6GB), 7168 (7GB), 8192 (8GB)
+1024 (1 vCPU) - Available C<memory> values: 2048 (2 GB), 3072 (3 GB),
+4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168 (7 GB), 8192 (8 GB)
 
 =item *
 
-2048 (2 vCPU) - Available C<memory> values: Between 4096 (4GB) and
-16384 (16GB) in increments of 1024 (1GB)
+2048 (2 vCPU) - Available C<memory> values: Between 4096 (4 GB) and
+16384 (16 GB) in increments of 1024 (1 GB)
 
 =item *
 
-4096 (4 vCPU) - Available C<memory> values: Between 8192 (8GB) and
-30720 (30GB) in increments of 1024 (1GB)
+4096 (4 vCPU) - Available C<memory> values: Between 8192 (8 GB) and
+30720 (30 GB) in increments of 1024 (1 GB)
 
 =back
 
@@ -153,12 +154,29 @@ C<PENDING> state).
 
 =head2 ExecutionStoppedAt => Str
 
-  The Unix timestamp for when the task execution stopped.
+  The Unix time stamp for when the task execution stopped.
 
 
 =head2 Group => Str
 
   The name of the task group associated with the task.
+
+
+=head2 HealthStatus => Str
+
+  The health status for the task, which is determined by the health of
+the essential containers in the task. If all essential containers in
+the task are reporting as C<HEALTHY>, then the task status also reports
+as C<HEALTHY>. If any essential containers in the task are reporting as
+C<UNHEALTHY> or C<UNKNOWN>, then the task status also reports as
+C<UNHEALTHY> or C<UNKNOWN>, accordingly.
+
+The Amazon ECS container agent does not monitor or report on Docker
+health checks that are embedded in a container image (such as those
+specified in a parent image or from the image's Dockerfile) and not
+specified in the container definition. Health check parameters that are
+specified in a container definition override any Docker health checks
+that exist in the container image.
 
 
 =head2 LastStatus => Str
@@ -175,9 +193,8 @@ C<PENDING> state).
 
   The amount of memory (in MiB) used by the task. It can be expressed as
 an integer using MiB, for example C<1024>, or as a string using GB, for
-example C<1GB> or C<1 GB>, in a task definition but will be converted
-to an integer indicating the MiB when the task definition is
-registered.
+example C<1GB> or C<1 GB>, in a task definition but is converted to an
+integer indicating the MiB when the task definition is registered.
 
 If using the EC2 launch type, this field is optional.
 
@@ -189,27 +206,27 @@ supported values for the C<cpu> parameter:
 
 =item *
 
-512 (0.5GB), 1024 (1GB), 2048 (2GB) - Available C<cpu> values: 256 (.25
-vCPU)
+512 (0.5 GB), 1024 (1 GB), 2048 (2 GB) - Available C<cpu> values: 256
+(.25 vCPU)
 
 =item *
 
-1024 (1GB), 2048 (2GB), 3072 (3GB), 4096 (4GB) - Available C<cpu>
+1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB) - Available C<cpu>
 values: 512 (.5 vCPU)
 
 =item *
 
-2048 (2GB), 3072 (3GB), 4096 (4GB), 5120 (5GB), 6144 (6GB), 7168 (7GB),
-8192 (8GB) - Available C<cpu> values: 1024 (1 vCPU)
+2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168
+(7 GB), 8192 (8 GB) - Available C<cpu> values: 1024 (1 vCPU)
 
 =item *
 
-Between 4096 (4GB) and 16384 (16GB) in increments of 1024 (1GB) -
+Between 4096 (4 GB) and 16384 (16 GB) in increments of 1024 (1 GB) -
 Available C<cpu> values: 2048 (2 vCPU)
 
 =item *
 
-Between 8192 (8GB) and 30720 (30GB) in increments of 1024 (1GB) -
+Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024 (1 GB) -
 Available C<cpu> values: 4096 (4 vCPU)
 
 =back
@@ -265,8 +282,8 @@ transitioned from the C<RUNNING> state to the C<STOPPED> state).
 
 =head2 StoppingAt => Str
 
-  The Unix time stamp for when the task will stop (the task transitioned
-from the C<RUNNING> state to the C<STOPPED> state).
+  The Unix time stamp for when the task will stop (transitions from the
+C<RUNNING> state to C<STOPPED>).
 
 
 =head2 TaskArn => Str

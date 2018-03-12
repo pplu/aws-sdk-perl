@@ -60,7 +60,7 @@ C<DELETED>.
 
 =head2 Type => Str
 
-  The type of the attachment, such as an C<ElasticNetworkInterface>.
+  The type of the attachment, such as C<ElasticNetworkInterface>.
 
 
 
