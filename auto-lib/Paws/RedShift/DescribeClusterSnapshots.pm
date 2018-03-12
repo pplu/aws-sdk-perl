@@ -1,6 +1,7 @@
 
 package Paws::RedShift::DescribeClusterSnapshots;
   use Moose;
+  has ClusterExists => (is => 'ro', isa => 'Bool');
   has ClusterIdentifier => (is => 'ro', isa => 'Str');
   has EndTime => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
@@ -40,6 +41,15 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 ClusterExists => Bool
+
+A value that indicates whether to return snapshots only for an existing
+cluster. Table-level restore can be performed only using a snapshot of
+an existing cluster, that is, a cluster that has not been deleted. If
+C<ClusterExists> is set to C<true>, C<ClusterIdentifier> is required.
+
 
 
 =head2 ClusterIdentifier => Str

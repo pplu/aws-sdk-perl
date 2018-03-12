@@ -240,13 +240,15 @@ Default: The node type of the cluster from which the snapshot was
 taken. You can modify this if you are using any DS node type. In that
 case, you can choose to restore into another DS node type of the same
 size. For example, you can restore ds1.8xlarge into ds2.8xlarge, or
-ds2.xlarge into ds1.xlarge. If you have a DC instance type, you must
+ds1.xlarge into ds2.xlarge. If you have a DC instance type, you must
 restore into that same instance type and size. In other words, you can
 only restore a dc1.large instance type into another dc1.large instance
-type. For more information about node types, see About Clusters and
-Nodes
+type or dc2.large instance type. You can't restore dc1.8xlarge to
+dc2.8xlarge. First restore to a dc1.8xlareg cluster, then resize to a
+dc2.8large cluster. For more information about node types, see About
+Clusters and Nodes
 (http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes)
-in the I<Amazon Redshift Cluster Management Guide>
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 

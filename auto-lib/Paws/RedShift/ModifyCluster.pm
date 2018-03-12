@@ -292,8 +292,8 @@ connection is switched to the new cluster. When the new connection is
 complete, the original access permissions for the cluster are restored.
 You can use DescribeResize to track the progress of the resize request.
 
-Valid Values: C< ds1.xlarge> | C<ds1.8xlarge> | C< ds2.xlarge> |
-C<ds2.8xlarge> | C<dc1.large> | C<dc1.8xlarge>.
+Valid Values: C<ds2.xlarge> | C<ds2.8xlarge> | C<dc1.large> |
+C<dc1.8xlarge> | C<dc2.large> | C<dc2.8xlarge>
 
 
 

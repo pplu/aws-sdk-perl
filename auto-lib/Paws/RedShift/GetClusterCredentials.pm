@@ -153,7 +153,8 @@ Constraints:
 
 =item *
 
-Must be 1 to 64 alphanumeric characters or hyphens
+Must be 1 to 64 alphanumeric characters or hyphens. The user name can't
+be C<PUBLIC>.
 
 =item *
 

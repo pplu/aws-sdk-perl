@@ -1224,7 +1224,7 @@ groups are returned regardless of whether they have tag keys or values
 associated with them.
 
 
-=head2 DescribeClusterSnapshots([ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, StartTime => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+=head2 DescribeClusterSnapshots([ClusterExists => Bool, ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, StartTime => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeClusterSnapshots>
 
@@ -1885,9 +1885,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RedShift::ClusterSecurityGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllClusterSnapshots(sub { },[ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, StartTime => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+=head2 DescribeAllClusterSnapshots(sub { },[ClusterExists => Bool, ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, StartTime => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllClusterSnapshots([ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, StartTime => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+=head2 DescribeAllClusterSnapshots([ClusterExists => Bool, ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, StartTime => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

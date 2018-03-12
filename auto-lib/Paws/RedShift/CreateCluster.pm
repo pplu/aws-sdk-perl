@@ -347,7 +347,8 @@ Constraints:
 
 =item *
 
-Must be 1 - 128 alphanumeric characters.
+Must be 1 - 128 alphanumeric characters. The user name can't be
+C<PUBLIC>.
 
 =item *
 
@@ -407,8 +408,9 @@ node types, go to Working with Clusters
 (http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes)
 in the I<Amazon Redshift Cluster Management Guide>.
 
-Valid Values: C<ds1.xlarge> | C<ds1.8xlarge> | C<ds2.xlarge> |
-C<ds2.8xlarge> | C<dc1.large> | C<dc1.8xlarge>.
+Valid Values: C<ds2.xlarge> | C<ds2.8xlarge> | C<ds2.xlarge> |
+C<ds2.8xlarge> | C<dc1.large> | C<dc1.8xlarge> | C<dc2.large> |
+C<dc2.8xlarge>
 
 
 
