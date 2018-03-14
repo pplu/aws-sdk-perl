@@ -59,14 +59,14 @@ For each attribute, the applicable value.
 
 Supported attribute keys include the following:
 
-=over
+B<AWS_ALIAS_DNS_NAME>
 
-=item *
+B<>
 
-C<AWS_ALIAS_DNS_NAME>: If you want Route 53 to create an alias record
-that routes traffic to an Elastic Load Balancing load balancer, specify
-the DNS name that is associated with the load balancer. For information
-about how to get the DNS name, see "DNSName" in the topic AliasTarget
+If you want Route 53 to create an alias record that routes traffic to
+an Elastic Load Balancing load balancer, specify the DNS name that is
+associated with the load balancer. For information about how to get the
+DNS name, see "DNSName" in the topic AliasTarget
 (http://docs.aws.amazon.com/http:/docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html).
 
 Note the following:
@@ -101,51 +101,47 @@ for any of the C<AWS_INSTANCE> attributes.
 
 =back
 
-=item *
+B<AWS_INSTANCE_CNAME>
 
-C<AWS_INSTANCE_CNAME>: If the service configuration includes a CNAME
-record, the domain name that you want Route 53 to return in response to
-DNS queries, for example, C<example.com>.
+If the service configuration includes a CNAME record, the domain name
+that you want Route 53 to return in response to DNS queries, for
+example, C<example.com>.
 
 This value is required if the service specified by C<ServiceId>
 includes settings for an CNAME record.
 
-=item *
+B<AWS_INSTANCE_IPV4>
 
-C<AWS_INSTANCE_IPV4>: If the service configuration includes an A
-record, the IPv4 address that you want Route 53 to return in response
-to DNS queries, for example, C<192.0.2.44>.
-
-This value is required if the service specified by C<ServiceId>
-includes settings for an A record. Either C<AWS_INSTANCE_IPV4> or
-C<AWS_INSTANCE_IPV6> is required if the service includes settings for
-an SRV record.
-
-=item *
-
-C<AWS_INSTANCE_IPV6>: If the service configuration includes an AAAA
-record, the IPv6 address that you want Route 53 to return in response
-to DNS queries, for example,
-C<2001:0db8:85a3:0000:0000:abcd:0001:2345>.
+If the service configuration includes an A record, the IPv4 address
+that you want Route 53 to return in response to DNS queries, for
+example, C<192.0.2.44>.
 
 This value is required if the service specified by C<ServiceId>
-includes settings for an AAAA record. Either C<AWS_INSTANCE_IPV4> or
-C<AWS_INSTANCE_IPV6> is required if the service includes settings for
-an SRV record.
+includes settings for an A record. If the service includes settings for
+an SRV record, you must specify a value for C<AWS_INSTANCE_IPV4>,
+C<AWS_INSTANCE_IPV6>, or both.
 
-=item *
+B<AWS_INSTANCE_IPV6>
 
-C<AWS_INSTANCE_PORT>: If the service includes an SRV record, the value
-that you want Route 53 to return for the port. In addition, if the
-service includes C<HealthCheckConfig>, the port on the endpoint that
-you want Route 53 to send requests to. For more information, see
-CreateService.
+If the service configuration includes an AAAA record, the IPv6 address
+that you want Route 53 to return in response to DNS queries, for
+example, C<2001:0db8:85a3:0000:0000:abcd:0001:2345>.
+
+This value is required if the service specified by C<ServiceId>
+includes settings for an AAAA record. If the service includes settings
+for an SRV record, you must specify a value for C<AWS_INSTANCE_IPV4>,
+C<AWS_INSTANCE_IPV6>, or both.
+
+B<AWS_INSTANCE_PORT>
+
+If the service includes an SRV record, the value that you want Route 53
+to return for the port.
+
+If the service includes C<HealthCheckConfig>, the port on the endpoint
+that you want Route 53 to send requests to.
 
 This value is required if you specified settings for an SRV record when
 you created the service.
-
-=back
-
 
 
 =head2 CreatorRequestId => Str

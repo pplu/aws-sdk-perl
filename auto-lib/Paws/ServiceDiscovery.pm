@@ -94,6 +94,11 @@ package Paws::ServiceDiscovery;
     my $call_object = $self->new_with_coercions('Paws::ServiceDiscovery::RegisterInstance', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateInstanceCustomHealthStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceDiscovery::UpdateInstanceCustomHealthStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateService {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceDiscovery::UpdateService', @_);
@@ -194,7 +199,7 @@ package Paws::ServiceDiscovery;
   }
 
 
-  sub operations { qw/CreatePrivateDnsNamespace CreatePublicDnsNamespace CreateService DeleteNamespace DeleteService DeregisterInstance GetInstance GetInstancesHealthStatus GetNamespace GetOperation GetService ListInstances ListNamespaces ListOperations ListServices RegisterInstance UpdateService / }
+  sub operations { qw/CreatePrivateDnsNamespace CreatePublicDnsNamespace CreateService DeleteNamespace DeleteService DeregisterInstance GetInstance GetInstancesHealthStatus GetNamespace GetOperation GetService ListInstances ListNamespaces ListOperations ListServices RegisterInstance UpdateInstanceCustomHealthStatus UpdateService / }
 
 1;
 
@@ -242,8 +247,11 @@ Creates a private namespace based on DNS, which will be visible only
 inside a specified Amazon VPC. The namespace defines your service
 naming scheme. For example, if you name your namespace C<example.com>
 and name your service C<backend>, the resulting DNS name for the
-service will be C<backend.example.com>. You can associate more than one
-service with the same namespace.
+service will be C<backend.example.com>. For the current limit on the
+number of namespaces that you can create using the same AWS account,
+see Limits on Auto Naming
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming)
+in the I<Route 53 Developer Guide>.
 
 
 =head2 CreatePublicDnsNamespace(Name => Str, [CreatorRequestId => Str, Description => Str])
@@ -256,11 +264,14 @@ Creates a public namespace based on DNS, which will be visible on the
 internet. The namespace defines your service naming scheme. For
 example, if you name your namespace C<example.com> and name your
 service C<backend>, the resulting DNS name for the service will be
-C<backend.example.com>. You can associate more than one service with
-the same namespace.
+C<backend.example.com>. For the current limit on the number of
+namespaces that you can create using the same AWS account, see Limits
+on Auto Naming
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming)
+in the I<Route 53 Developer Guide>.
 
 
-=head2 CreateService(DnsConfig => L<Paws::ServiceDiscovery::DnsConfig>, Name => Str, [CreatorRequestId => Str, Description => Str, HealthCheckConfig => L<Paws::ServiceDiscovery::HealthCheckConfig>])
+=head2 CreateService(DnsConfig => L<Paws::ServiceDiscovery::DnsConfig>, Name => Str, [CreatorRequestId => Str, Description => Str, HealthCheckConfig => L<Paws::ServiceDiscovery::HealthCheckConfig>, HealthCheckCustomConfig => L<Paws::ServiceDiscovery::HealthCheckCustomConfig>])
 
 Each argument is described in detail in: L<Paws::ServiceDiscovery::CreateService>
 
@@ -284,6 +295,12 @@ Optionally, a health check
 After you create the service, you can submit a RegisterInstance
 request, and Amazon Route 53 uses the values in the configuration to
 create the specified entities.
+
+For the current limit on the number of instances that you can register
+using the same namespace and using the same service, see Limits on Auto
+Naming
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming)
+in the I<Route 53 Developer Guide>.
 
 
 =head2 DeleteNamespace(Id => Str)
@@ -429,8 +446,8 @@ associated with the corresponding namespace
 
 =item *
 
-Creates or updates a health check based on the settings in the health
-check configuration, if any, for the service
+If the service includes C<HealthCheckConfig>, creates or updates a
+health check based on the settings in the health check configuration
 
 =item *
 
@@ -454,8 +471,8 @@ B<If the health check is healthy>: returns all the records
 
 =item *
 
-B<If the health check is unhealthy>: returns the IP address of the last
-healthy instance
+B<If the health check is unhealthy>: returns the applicable value for
+the last healthy instance
 
 =item *
 
@@ -463,6 +480,20 @@ B<If you didn't specify a health check configuration>: returns all the
 records
 
 =back
+
+For the current limit on the number of instances that you can register
+using the same namespace and using the same service, see Limits on Auto
+Naming
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming)
+in the I<Route 53 Developer Guide>.
+
+
+=head2 UpdateInstanceCustomHealthStatus(InstanceId => Str, ServiceId => Str, Status => Str)
+
+Each argument is described in detail in: L<Paws::ServiceDiscovery::UpdateInstanceCustomHealthStatus>
+
+Returns: nothing
+
 
 
 
@@ -487,8 +518,6 @@ Update the TTL setting for existing C<DnsRecords> configurations
 =item *
 
 Add, update, or delete C<HealthCheckConfig> for a specified service
-
-=item *
 
 =back
 

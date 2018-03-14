@@ -6,6 +6,7 @@ package Paws::ServiceDiscovery::Service;
   has Description => (is => 'ro', isa => 'Str');
   has DnsConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::DnsConfig');
   has HealthCheckConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::HealthCheckConfig');
+  has HealthCheckCustomConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::HealthCheckCustomConfig');
   has Id => (is => 'ro', isa => 'Str');
   has InstanceCount => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
@@ -86,6 +87,11 @@ you specify in C<DnsConfig>.
 
 For information about the charges for health checks, see Route 53
 Pricing (http://aws.amazon.com/route53/pricing).
+
+
+=head2 HealthCheckCustomConfig => L<Paws::ServiceDiscovery::HealthCheckCustomConfig>
+
+  
 
 
 =head2 Id => Str

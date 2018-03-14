@@ -2,7 +2,7 @@ package Paws::ServiceDiscovery::HealthCheckConfig;
   use Moose;
   has FailureThreshold => (is => 'ro', isa => 'Int');
   has ResourcePath => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  has Type => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -119,7 +119,7 @@ adds the DNS name for the service and a leading forward slash (C</>)
 character.
 
 
-=head2 B<REQUIRED> Type => Str
+=head2 Type => Str
 
   The type of health check that you want to create, which indicates how
 Route 53 determines whether an endpoint is healthy.

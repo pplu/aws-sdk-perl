@@ -5,6 +5,7 @@ package Paws::ServiceDiscovery::CreateService;
   has Description => (is => 'ro', isa => 'Str');
   has DnsConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::DnsConfig', required => 1);
   has HealthCheckConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::HealthCheckConfig');
+  has HealthCheckCustomConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::HealthCheckCustomConfig');
   has Name => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -68,6 +69,12 @@ you specify in C<DnsConfig>.
 
 For information about the charges for health checks, see Route 53
 Pricing (http://aws.amazon.com/route53/pricing).
+
+
+
+=head2 HealthCheckCustomConfig => L<Paws::ServiceDiscovery::HealthCheckCustomConfig>
+
+
 
 
 

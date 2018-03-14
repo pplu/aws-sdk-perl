@@ -114,9 +114,9 @@ that you want Route 53 to return in response to DNS queries, for
 example, C<192.0.2.44>.
 
 This value is required if the service specified by C<ServiceId>
-includes settings for an A record. Either C<AWS_INSTANCE_IPV4> or
-C<AWS_INSTANCE_IPV6> is required if the service includes settings for
-an SRV record.
+includes settings for an A record. If the service includes settings for
+an SRV record, you must specify a value for C<AWS_INSTANCE_IPV4>,
+C<AWS_INSTANCE_IPV6>, or both.
 
 B<AWS_INSTANCE_IPV6>
 
@@ -125,9 +125,9 @@ that you want Route 53 to return in response to DNS queries, for
 example, C<2001:0db8:85a3:0000:0000:abcd:0001:2345>.
 
 This value is required if the service specified by C<ServiceId>
-includes settings for an AAAA record. Either C<AWS_INSTANCE_IPV4> or
-C<AWS_INSTANCE_IPV6> is required if the service includes settings for
-an SRV record.
+includes settings for an AAAA record. If the service includes settings
+for an SRV record, you must specify a value for C<AWS_INSTANCE_IPV4>,
+C<AWS_INSTANCE_IPV6>, or both.
 
 B<AWS_INSTANCE_PORT>
 
