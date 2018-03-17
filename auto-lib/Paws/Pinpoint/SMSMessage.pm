@@ -2,6 +2,7 @@ package Paws::Pinpoint::SMSMessage;
   use Moose;
   has Body => (is => 'ro', isa => 'Str');
   has MessageType => (is => 'ro', isa => 'Str');
+  has OriginationNumber => (is => 'ro', isa => 'Str');
   has SenderId => (is => 'ro', isa => 'Str');
   has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
 1;
@@ -50,9 +51,18 @@ message.
   Is this a transaction priority message or lower priority.
 
 
+=head2 OriginationNumber => Str
+
+  The phone number that the SMS message originates from. Specify one of
+the dedicated long codes or short codes that you requested from AWS
+Support and that is assigned to your account. If this attribute is not
+specified, Amazon Pinpoint randomly assigns a long code.
+
+
 =head2 SenderId => Str
 
-  Sender ID of sent message.
+  The sender ID that is shown as the message sender on the recipient's
+device. Support for sender IDs varies by country or region.
 
 
 =head2 Substitutions => L<Paws::Pinpoint::MapOfListOf__string>
