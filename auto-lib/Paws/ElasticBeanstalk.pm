@@ -88,6 +88,11 @@ package Paws::ElasticBeanstalk;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DeletePlatformVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAccountAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DescribeAccountAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeApplications {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DescribeApplications', @_);
@@ -254,7 +259,7 @@ package Paws::ElasticBeanstalk;
   }
 
 
-  sub operations { qw/AbortEnvironmentUpdate ApplyEnvironmentManagedAction CheckDNSAvailability ComposeEnvironments CreateApplication CreateApplicationVersion CreateConfigurationTemplate CreateEnvironment CreatePlatformVersion CreateStorageLocation DeleteApplication DeleteApplicationVersion DeleteConfigurationTemplate DeleteEnvironmentConfiguration DeletePlatformVersion DescribeApplications DescribeApplicationVersions DescribeConfigurationOptions DescribeConfigurationSettings DescribeEnvironmentHealth DescribeEnvironmentManagedActionHistory DescribeEnvironmentManagedActions DescribeEnvironmentResources DescribeEnvironments DescribeEvents DescribeInstancesHealth DescribePlatformVersion ListAvailableSolutionStacks ListPlatformVersions ListTagsForResource RebuildEnvironment RequestEnvironmentInfo RestartAppServer RetrieveEnvironmentInfo SwapEnvironmentCNAMEs TerminateEnvironment UpdateApplication UpdateApplicationResourceLifecycle UpdateApplicationVersion UpdateConfigurationTemplate UpdateEnvironment UpdateTagsForResource ValidateConfigurationSettings / }
+  sub operations { qw/AbortEnvironmentUpdate ApplyEnvironmentManagedAction CheckDNSAvailability ComposeEnvironments CreateApplication CreateApplicationVersion CreateConfigurationTemplate CreateEnvironment CreatePlatformVersion CreateStorageLocation DeleteApplication DeleteApplicationVersion DeleteConfigurationTemplate DeleteEnvironmentConfiguration DeletePlatformVersion DescribeAccountAttributes DescribeApplications DescribeApplicationVersions DescribeConfigurationOptions DescribeConfigurationSettings DescribeEnvironmentHealth DescribeEnvironmentManagedActionHistory DescribeEnvironmentManagedActions DescribeEnvironmentResources DescribeEnvironments DescribeEvents DescribeInstancesHealth DescribePlatformVersion ListAvailableSolutionStacks ListPlatformVersions ListTagsForResource RebuildEnvironment RequestEnvironmentInfo RestartAppServer RetrieveEnvironmentInfo SwapEnvironmentCNAMEs TerminateEnvironment UpdateApplication UpdateApplicationResourceLifecycle UpdateApplicationVersion UpdateConfigurationTemplate UpdateEnvironment UpdateTagsForResource ValidateConfigurationSettings / }
 
 1;
 
@@ -518,6 +523,15 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DeletePlatfor
 Returns: a L<Paws::ElasticBeanstalk::DeletePlatformVersionResult> instance
 
 Deletes the specified version of a custom platform.
+
+
+=head2 DescribeAccountAttributes( => )
+
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeAccountAttributes>
+
+Returns: a L<Paws::ElasticBeanstalk::DescribeAccountAttributesResult> instance
+
+
 
 
 =head2 DescribeApplications([ApplicationNames => ArrayRef[Str|Undef]])
