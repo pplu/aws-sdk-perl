@@ -1069,6 +1069,10 @@ belongs to.
 
 This operation can be called from any account in the organization.
 
+Even if a policy type is shown as available in the organization, it can
+be disabled separately at the root level with DisablePolicyType. Use
+ListRoots to see the status of policy types for a specified root.
+
 
 =head2 DescribeOrganizationalUnit(OrganizationalUnitId => Str)
 
@@ -1179,6 +1183,12 @@ operation.
 This operation can be called only from the organization's master
 account.
 
+If you disable a policy type for a root, it still shows as enabled for
+the organization if all features are enabled in that organization. Use
+ListRoots to see the status of policy types for a specified root. Use
+DescribeOrganization to see the status of policy types in the
+organization.
+
 
 =head2 EnableAllFeatures()
 
@@ -1204,6 +1214,11 @@ invited account in the organization. The feature set change can be
 finalized and the additional features enabled only after all
 administrators in the invited accounts approve the change by accepting
 the handshake.
+
+After you enable all features, you can separately enable or disable
+individual policy types in a root using EnablePolicyType and
+DisablePolicyType. To see the status of policy types in a root, use
+ListRoots.
 
 After all invited member accounts accept the handshake, you finalize
 the feature set change by accepting the handshake that contains
@@ -1267,6 +1282,12 @@ operation.
 
 This operation can be called only from the organization's master
 account.
+
+You can enable a policy type in a root only if that policy type is
+available in the organization. Use DescribeOrganization to view the
+status of available policy types in the organization.
+
+To view the status of policy type in a root, use ListRoots.
 
 
 =head2 InviteAccountToOrganization(Target => L<Paws::Organizations::HandshakeParty>, [Notes => Str])
@@ -1357,8 +1378,14 @@ Each argument is described in detail in: L<Paws::Organizations::ListAccounts>
 Returns: a L<Paws::Organizations::ListAccountsResponse> instance
 
 Lists all the accounts in the organization. To request only the
-accounts in a root or OU, use the ListAccountsForParent operation
-instead.
+accounts in a specified root or OU, use the ListAccountsForParent
+operation instead.
+
+Always check the C<NextToken> response parameter for a C<null> value
+when calling a C<List*> operation. These operations can occasionally
+return an empty set of results even when there are more results
+available. The C<NextToken> response parameter value is C<null> I<only>
+when there are no more results to display.
 
 This operation can be called only from the organization's master
 account.
@@ -1376,6 +1403,12 @@ root, you get a list of all the accounts that are not in any OU. If you
 specify an OU, you get a list of all the accounts in only that OU, and
 not in any child OUs. To get a list of all accounts in the
 organization, use the ListAccounts operation.
+
+Always check the C<NextToken> response parameter for a C<null> value
+when calling a C<List*> operation. These operations can occasionally
+return an empty set of results even when there are more results
+available. The C<NextToken> response parameter value is C<null> I<only>
+when there are no more results to display.
 
 This operation can be called only from the organization's master
 account.
@@ -1413,6 +1446,12 @@ Lists all of the OUs or accounts that are contained in the specified
 parent OU or root. This operation, along with ListParents enables you
 to traverse the tree structure that makes up this root.
 
+Always check the C<NextToken> response parameter for a C<null> value
+when calling a C<List*> operation. These operations can occasionally
+return an empty set of results even when there are more results
+available. The C<NextToken> response parameter value is C<null> I<only>
+when there are no more results to display.
+
 This operation can be called only from the organization's master
 account.
 
@@ -1425,6 +1464,12 @@ Returns: a L<Paws::Organizations::ListCreateAccountStatusResponse> instance
 
 Lists the account creation requests that match the specified status
 that is currently being tracked for the organization.
+
+Always check the C<NextToken> response parameter for a C<null> value
+when calling a C<List*> operation. These operations can occasionally
+return an empty set of results even when there are more results
+available. The C<NextToken> response parameter value is C<null> I<only>
+when there are no more results to display.
 
 This operation can be called only from the organization's master
 account.
@@ -1442,6 +1487,12 @@ the requesting user.
 Handshakes that are ACCEPTED, DECLINED, or CANCELED appear in the
 results of this API for only 30 days after changing to that state.
 After that they are deleted and no longer accessible.
+
+Always check the C<NextToken> response parameter for a C<null> value
+when calling a C<List*> operation. These operations can occasionally
+return an empty set of results even when there are more results
+available. The C<NextToken> response parameter value is C<null> I<only>
+when there are no more results to display.
 
 This operation can be called from any account in the organization.
 
@@ -1461,6 +1512,12 @@ Handshakes that are ACCEPTED, DECLINED, or CANCELED appear in the
 results of this API for only 30 days after changing to that state.
 After that they are deleted and no longer accessible.
 
+Always check the C<NextToken> response parameter for a C<null> value
+when calling a C<List*> operation. These operations can occasionally
+return an empty set of results even when there are more results
+available. The C<NextToken> response parameter value is C<null> I<only>
+when there are no more results to display.
+
 This operation can be called only from the organization's master
 account.
 
@@ -1473,6 +1530,12 @@ Returns: a L<Paws::Organizations::ListOrganizationalUnitsForParentResponse> inst
 
 Lists the organizational units (OUs) in a parent organizational unit or
 root.
+
+Always check the C<NextToken> response parameter for a C<null> value
+when calling a C<List*> operation. These operations can occasionally
+return an empty set of results even when there are more results
+available. The C<NextToken> response parameter value is C<null> I<only>
+when there are no more results to display.
 
 This operation can be called only from the organization's master
 account.
@@ -1489,6 +1552,12 @@ immediate parent of the specified child OU or account. This operation,
 along with ListChildren enables you to traverse the tree structure that
 makes up this root.
 
+Always check the C<NextToken> response parameter for a C<null> value
+when calling a C<List*> operation. These operations can occasionally
+return an empty set of results even when there are more results
+available. The C<NextToken> response parameter value is C<null> I<only>
+when there are no more results to display.
+
 This operation can be called only from the organization's master
 account.
 
@@ -1504,6 +1573,12 @@ Returns: a L<Paws::Organizations::ListPoliciesResponse> instance
 Retrieves the list of all policies in an organization of a specified
 type.
 
+Always check the C<NextToken> response parameter for a C<null> value
+when calling a C<List*> operation. These operations can occasionally
+return an empty set of results even when there are more results
+available. The C<NextToken> response parameter value is C<null> I<only>
+when there are no more results to display.
+
 This operation can be called only from the organization's master
 account.
 
@@ -1518,6 +1593,12 @@ Lists the policies that are directly attached to the specified target
 root, organizational unit (OU), or account. You must specify the policy
 type that you want included in the returned list.
 
+Always check the C<NextToken> response parameter for a C<null> value
+when calling a C<List*> operation. These operations can occasionally
+return an empty set of results even when there are more results
+available. The C<NextToken> response parameter value is C<null> I<only>
+when there are no more results to display.
+
 This operation can be called only from the organization's master
 account.
 
@@ -1530,8 +1611,21 @@ Returns: a L<Paws::Organizations::ListRootsResponse> instance
 
 Lists the roots that are defined in the current organization.
 
+Always check the C<NextToken> response parameter for a C<null> value
+when calling a C<List*> operation. These operations can occasionally
+return an empty set of results even when there are more results
+available. The C<NextToken> response parameter value is C<null> I<only>
+when there are no more results to display.
+
 This operation can be called only from the organization's master
 account.
+
+Policy types can be enabled and disabled in roots. This is distinct
+from whether they are available in the organization. When you enable
+all features, you make policy types available for use in that
+organization. Individual policy types can then be enabled and disabled
+in a root. To see the availability of a policy type in an organization,
+use DescribeOrganization.
 
 
 =head2 ListTargetsForPolicy(PolicyId => Str, [MaxResults => Int, NextToken => Str])
@@ -1542,6 +1636,12 @@ Returns: a L<Paws::Organizations::ListTargetsForPolicyResponse> instance
 
 Lists all the roots, OUs, and accounts to which the specified policy is
 attached.
+
+Always check the C<NextToken> response parameter for a C<null> value
+when calling a C<List*> operation. These operations can occasionally
+return an empty set of results even when there are more results
+available. The C<NextToken> response parameter value is C<null> I<only>
+when there are no more results to display.
 
 This operation can be called only from the organization's master
 account.
