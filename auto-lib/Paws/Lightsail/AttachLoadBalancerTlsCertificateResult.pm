@@ -18,6 +18,9 @@ Paws::Lightsail::AttachLoadBalancerTlsCertificateResult
 
 An object representing the API operations.
 
+These SSL/TLS certificates are only usable by Lightsail load balancers.
+You can't get the certificate and use it for another purpose.
+
 
 =head2 _request_id => Str
 

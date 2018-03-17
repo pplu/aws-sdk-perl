@@ -37,13 +37,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CertificateName => Str
 
-The TLS/SSL certificate name.
+The SSL/TLS certificate name.
 
 
 
 =head2 Force => Bool
 
-When C<true>, forces the deletion of a TLS/SSL certificate.
+When C<true>, forces the deletion of an SSL/TLS certificate.
+
+There can be two certificates associated with a Lightsail load
+balancer: the primary and the backup. The force parameter is required
+when the primary SSL/TLS certificate is in use by an instance attached
+to the load balancer.
 
 
 

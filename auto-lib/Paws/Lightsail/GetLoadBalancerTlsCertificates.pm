@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> LoadBalancerName => Str
 
-The name of the load balancer where you stored your TLS/SSL
+The name of the load balancer you associated with your SSL/TLS
 certificate.
 
 

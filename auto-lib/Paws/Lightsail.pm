@@ -652,6 +652,9 @@ Returns: a L<Paws::Lightsail::AttachInstancesToLoadBalancerResult> instance
 
 Attaches one or more Lightsail instances to a load balancer.
 
+After some time, the instances are attached to the load balancer and
+the health check status is available.
+
 
 =head2 AttachLoadBalancerTlsCertificate(CertificateName => Str, LoadBalancerName => Str)
 
@@ -660,10 +663,15 @@ Each argument is described in detail in: L<Paws::Lightsail::AttachLoadBalancerTl
 Returns: a L<Paws::Lightsail::AttachLoadBalancerTlsCertificateResult> instance
 
 Attaches a Transport Layer Security (TLS) certificate to your load
-balancer.
+balancer. TLS is just an updated, more secure version of Secure Socket
+Layer (SSL).
 
-TLS is just an updated, more secure version of Secure Socket Layer
-(SSL).
+Once you create and validate your certificate, you can attach it to
+your load balancer. You can also use this API to rotate the
+certificates on your account. Use the
+C<AttachLoadBalancerTlsCertificate> operation with the non-attached
+certificate, and it will replace the existing one and become the
+attached certificate.
 
 
 =head2 AttachStaticIp(InstanceName => Str, StaticIpName => Str)
@@ -798,11 +806,15 @@ Each argument is described in detail in: L<Paws::Lightsail::CreateLoadBalancer>
 
 Returns: a L<Paws::Lightsail::CreateLoadBalancerResult> instance
 
-Creates a Lightsail load balancer.
+Creates a Lightsail load balancer. To learn more about deciding whether
+to load balance your application, see Configure your Lightsail
+instances for load balancing
+(https://lightsail.aws.amazon.com/ls/docs/how-to/article/configure-lightsail-instances-for-load-balancing).
+You can create up to 5 load balancers per AWS Region in your account.
 
-When you create a load balancer, you can specify certificates and port
-settings. You can create up to 5 load balancers per AWS Region in your
-account.
+When you create a load balancer, you can specify a unique name and port
+settings. To change additional load balancer settings, use the
+C<UpdateLoadBalancerAttribute> operation.
 
 
 =head2 CreateLoadBalancerTlsCertificate(CertificateDomainName => Str, CertificateName => Str, LoadBalancerName => Str, [CertificateAlternativeNames => ArrayRef[Str|Undef]])
@@ -899,7 +911,10 @@ Each argument is described in detail in: L<Paws::Lightsail::DeleteLoadBalancer>
 
 Returns: a L<Paws::Lightsail::DeleteLoadBalancerResult> instance
 
-Deletes a Lightsail load balancer.
+Deletes a Lightsail load balancer and all its associated SSL/TLS
+certificates. Once the load balancer is deleted, you will need to
+create a new load balancer, create a new certificate, and verify domain
+ownership again.
 
 
 =head2 DeleteLoadBalancerTlsCertificate(CertificateName => Str, LoadBalancerName => Str, [Force => Bool])
@@ -908,7 +923,7 @@ Each argument is described in detail in: L<Paws::Lightsail::DeleteLoadBalancerTl
 
 Returns: a L<Paws::Lightsail::DeleteLoadBalancerTlsCertificateResult> instance
 
-Deletes a TLS/SSL certificate associated with a Lightsail load
+Deletes an SSL/TLS certificate associated with a Lightsail load
 balancer.
 
 
@@ -930,6 +945,9 @@ Each argument is described in detail in: L<Paws::Lightsail::DetachInstancesFromL
 Returns: a L<Paws::Lightsail::DetachInstancesFromLoadBalancerResult> instance
 
 Detaches the specified instances from a Lightsail load balancer.
+
+This operation waits until the instances are no longer needed before
+they are detached from the load balancer.
 
 
 =head2 DetachStaticIp(StaticIpName => Str)
@@ -1187,6 +1205,9 @@ the specified Lightsail load balancer.
 TLS is just an updated, more secure version of Secure Socket Layer
 (SSL).
 
+You can have a maximum of 2 certificates associated with a Lightsail
+load balancer. One is active and the other is inactive.
+
 
 =head2 GetOperation(OperationId => Str)
 
@@ -1364,7 +1385,8 @@ Each argument is described in detail in: L<Paws::Lightsail::UpdateLoadBalancerAt
 
 Returns: a L<Paws::Lightsail::UpdateLoadBalancerAttributeResult> instance
 
-Updates the specified attribute for a load balancer.
+Updates the specified attribute for a load balancer. You can only
+update one attribute at a time.
 
 
 

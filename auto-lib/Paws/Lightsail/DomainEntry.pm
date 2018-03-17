@@ -49,7 +49,9 @@ Describes a domain recordset entry.
 =head2 IsAlias => Bool
 
   When C<true>, specifies whether the domain entry is an alias used by
-the Lightsail load balancer.
+the Lightsail load balancer. You can include an alias (A type) record
+in your request, which points to a load balancer DNS name and routes
+traffic to your load balancer
 
 
 =head2 Name => Str
@@ -68,6 +70,11 @@ in the API response. It is now deprecated.
 =head2 Target => Str
 
   The target AWS name server (e.g., C<ns-111.awsdns-22.com.>).
+
+For Lightsail load balancers, the value looks like
+C<ab1234c56789c6b86aba6fb203d443bc-123456789.us-east-2.elb.amazonaws.com>.
+Be sure to also set C<isAlias> to C<true> when setting up an A record
+for a load balancer.
 
 
 =head2 Type => Str

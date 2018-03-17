@@ -36,14 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CertificateName => Str
 
-The name of your TLS/SSL certificate.
+The name of your SSL/TLS certificate.
 
 
 
 =head2 B<REQUIRED> LoadBalancerName => Str
 
 The name of the load balancer to which you want to associate the
-TLS/SSL certificate.
+SSL/TLS certificate.
 
 
 

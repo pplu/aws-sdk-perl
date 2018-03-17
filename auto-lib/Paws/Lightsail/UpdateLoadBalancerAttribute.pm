@@ -49,7 +49,8 @@ The value that you want to specify for the attribute name.
 
 =head2 B<REQUIRED> LoadBalancerName => Str
 
-The name of the load balancer that you want to modify.
+The name of the load balancer that you want to modify (e.g.,
+C<my-load-balancer>.
 
 
 

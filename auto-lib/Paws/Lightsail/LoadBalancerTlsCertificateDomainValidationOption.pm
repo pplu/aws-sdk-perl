@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lightsail::
 
 =head1 DESCRIPTION
 
-Contains information about the domain names on a TLS/SSL certificate
+Contains information about the domain names on an SSL/TLS certificate
 that you will use to validate domain ownership.
 
 =head1 ATTRIBUTES
@@ -40,7 +40,7 @@ that you will use to validate domain ownership.
 
 =head2 DomainName => Str
 
-  A fully qualified domain name in the certificate request.
+  The fully qualified domain name in the certificate request.
 
 
 =head2 ValidationStatus => Str

@@ -32,20 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lightsail::
 
 =head1 DESCRIPTION
 
-Provides a summary of TLS/SSL certificate metadata.
+Provides a summary of SSL/TLS certificate metadata.
 
 =head1 ATTRIBUTES
 
 
 =head2 IsAttached => Bool
 
-  When C<true>, the TLS/SSL certificate is attached to the Lightsail load
+  When C<true>, the SSL/TLS certificate is attached to the Lightsail load
 balancer.
 
 
 =head2 Name => Str
 
-  The name of the TLS/SSL certificate.
+  The name of the SSL/TLS certificate.
 
 
 

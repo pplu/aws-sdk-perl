@@ -38,26 +38,35 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CertificateAlternativeNames => ArrayRef[Str|Undef]
 
-An array of strings listing alternative domain names for your TLS/SSL
-certificate.
+An array of strings listing alternative domains and subdomains for your
+SSL/TLS certificate. Lightsail will de-dupe the names for you. You can
+have a maximum of 9 alternative names (in addition to the 1 primary
+domain). We do not support wildcards (e.g., C<*.example.com>).
 
 
 
 =head2 B<REQUIRED> CertificateDomainName => Str
 
-The domain name (e.g., C<example.com>) for your TLS/SSL certificate.
+The domain name (e.g., C<example.com>) for your SSL/TLS certificate.
 
 
 
 =head2 B<REQUIRED> CertificateName => Str
 
-The TLS/SSL certificate name.
+The SSL/TLS certificate name.
+
+You can have up to 10 certificates in your account at one time. Each
+Lightsail load balancer can have up to 2 certificates associated with
+it at one time. There is also an overall limit to the number of
+certificates that can be issue in a 365-day period. For more
+information, see Limits
+(http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html).
 
 
 
 =head2 B<REQUIRED> LoadBalancerName => Str
 
-The load balancer name where you want to create the TLS/SSL
+The load balancer name where you want to create the SSL/TLS
 certificate.
 
 

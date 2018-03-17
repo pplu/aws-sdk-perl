@@ -17,7 +17,7 @@ Paws::Lightsail::RebootInstanceResult
 =head2 Operations => ArrayRef[L<Paws::Lightsail::Operation>]
 
 An array of key-value pairs containing information about the request
-operation.
+operations.
 
 
 =head2 _request_id => Str

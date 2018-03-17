@@ -40,8 +40,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CertificateAlternativeNames => ArrayRef[Str|Undef]
 
-The alternative domain names to use with your TLS/SSL certificate
-(e.g., C<www.example.com>, C<www.ejemplo.com>, C<ejemplo.com>).
+The optional alternative domains and subdomains to use with your
+SSL/TLS certificate (e.g., C<www.example.com>, C<example.com>,
+C<m.example.com>, C<blog.example.com>).
 
 
 
@@ -57,7 +58,7 @@ required (and vice-versa).
 
 =head2 CertificateName => Str
 
-The name of the TLS/SSL certificate.
+The name of the SSL/TLS certificate.
 
 If you specify C<certificateName>, then C<certificateDomainName> is
 required (and vice-versa).
@@ -69,6 +70,10 @@ required (and vice-versa).
 The path you provided to perform the load balancer health check. If you
 didn't specify a health check path, Lightsail uses the root path of
 your website (e.g., C<"/">).
+
+You may want to specify a custom health check path other than the root
+of your application if your home page loads slowly or has a lot of
+media or scripting on it.
 
 
 
