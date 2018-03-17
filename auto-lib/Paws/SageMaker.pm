@@ -39,6 +39,11 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateNotebookInstance', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateNotebookInstanceLifecycleConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateNotebookInstanceLifecycleConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreatePresignedNotebookInstanceUrl {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::CreatePresignedNotebookInstanceUrl', @_);
@@ -69,6 +74,11 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DeleteNotebookInstance', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteNotebookInstanceLifecycleConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DeleteNotebookInstanceLifecycleConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DeleteTags', @_);
@@ -94,6 +104,11 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeNotebookInstance', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeNotebookInstanceLifecycleConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeNotebookInstanceLifecycleConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeTrainingJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeTrainingJob', @_);
@@ -112,6 +127,11 @@ package Paws::SageMaker;
   sub ListModels {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListModels', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListNotebookInstanceLifecycleConfigs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::ListNotebookInstanceLifecycleConfigs', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListNotebookInstances {
@@ -157,6 +177,11 @@ package Paws::SageMaker;
   sub UpdateNotebookInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::UpdateNotebookInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateNotebookInstanceLifecycleConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::UpdateNotebookInstanceLifecycleConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -300,7 +325,7 @@ package Paws::SageMaker;
   }
 
 
-  sub operations { qw/AddTags CreateEndpoint CreateEndpointConfig CreateModel CreateNotebookInstance CreatePresignedNotebookInstanceUrl CreateTrainingJob DeleteEndpoint DeleteEndpointConfig DeleteModel DeleteNotebookInstance DeleteTags DescribeEndpoint DescribeEndpointConfig DescribeModel DescribeNotebookInstance DescribeTrainingJob ListEndpointConfigs ListEndpoints ListModels ListNotebookInstances ListTags ListTrainingJobs StartNotebookInstance StopNotebookInstance StopTrainingJob UpdateEndpoint UpdateEndpointWeightsAndCapacities UpdateNotebookInstance / }
+  sub operations { qw/AddTags CreateEndpoint CreateEndpointConfig CreateModel CreateNotebookInstance CreateNotebookInstanceLifecycleConfig CreatePresignedNotebookInstanceUrl CreateTrainingJob DeleteEndpoint DeleteEndpointConfig DeleteModel DeleteNotebookInstance DeleteNotebookInstanceLifecycleConfig DeleteTags DescribeEndpoint DescribeEndpointConfig DescribeModel DescribeNotebookInstance DescribeNotebookInstanceLifecycleConfig DescribeTrainingJob ListEndpointConfigs ListEndpoints ListModels ListNotebookInstanceLifecycleConfigs ListNotebookInstances ListTags ListTrainingJobs StartNotebookInstance StopNotebookInstance StopTrainingJob UpdateEndpoint UpdateEndpointWeightsAndCapacities UpdateNotebookInstance UpdateNotebookInstanceLifecycleConfig / }
 
 1;
 
@@ -446,23 +471,23 @@ inference code access any other AWS resources, you grant necessary
 permissions via this role.
 
 
-=head2 CreateNotebookInstance(InstanceType => Str, NotebookInstanceName => Str, RoleArn => Str, [KmsKeyId => Str, SecurityGroupIds => ArrayRef[Str|Undef], SubnetId => Str, Tags => ArrayRef[L<Paws::SageMaker::Tag>]])
+=head2 CreateNotebookInstance(InstanceType => Str, NotebookInstanceName => Str, RoleArn => Str, [DirectInternetAccess => Str, KmsKeyId => Str, LifecycleConfigName => Str, SecurityGroupIds => ArrayRef[Str|Undef], SubnetId => Str, Tags => ArrayRef[L<Paws::SageMaker::Tag>]])
 
 Each argument is described in detail in: L<Paws::SageMaker::CreateNotebookInstance>
 
 Returns: a L<Paws::SageMaker::CreateNotebookInstanceOutput> instance
 
-Creates an Amazon SageMaker notebook instance. A notebook instance is
-an ML compute instance running on a Jupyter notebook.
+Creates an Amazon SageMaker notebook instance. A notebook instance is a
+machine learning (ML) compute instance running on a Jupyter notebook.
 
-In a C<CreateNotebookInstance> request, you specify the type of ML
-compute instance that you want to run. Amazon SageMaker launches the
-instance, installs common libraries that you can use to explore
-datasets for model training, and attaches an ML storage volume to the
-notebook instance.
+In a C<CreateNotebookInstance> request, specify the type of ML compute
+instance that you want to run. Amazon SageMaker launches the instance,
+installs common libraries that you can use to explore datasets for
+model training, and attaches an ML storage volume to the notebook
+instance.
 
 Amazon SageMaker also provides a set of example notebooks. Each
-notebook demonstrates how to use Amazon SageMaker with a specific an
+notebook demonstrates how to use Amazon SageMaker with a specific
 algorithm or with a machine learning framework.
 
 After receiving the request, Amazon SageMaker does the following:
@@ -475,11 +500,11 @@ Creates a network interface in the Amazon SageMaker VPC.
 
 =item 2.
 
-(Option) If you specified C<SubnetId>, creates a network interface in
-your own VPC, which is inferred from the subnet ID that you provide in
-the input. When creating this network interface, Amazon SageMaker
-attaches the security group that you specified in the request to the
-network interface that it creates in your VPC.
+(Option) If you specified C<SubnetId>, Amazon SageMaker creates a
+network interface in your own VPC, which is inferred from the subnet ID
+that you provide in the input. When creating this network interface,
+Amazon SageMaker attaches the security group that you specified in the
+request to the network interface that it creates in your VPC.
 
 =item 3.
 
@@ -502,6 +527,20 @@ endpoints, and validate hosted models.
 
 For more information, see How It Works
 (http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
+
+
+=head2 CreateNotebookInstanceLifecycleConfig(NotebookInstanceLifecycleConfigName => Str, [OnCreate => ArrayRef[L<Paws::SageMaker::NotebookInstanceLifecycleHook>], OnStart => ArrayRef[L<Paws::SageMaker::NotebookInstanceLifecycleHook>]])
+
+Each argument is described in detail in: L<Paws::SageMaker::CreateNotebookInstanceLifecycleConfig>
+
+Returns: a L<Paws::SageMaker::CreateNotebookInstanceLifecycleConfigOutput> instance
+
+Creates a lifecycle configuration that you can associate with a
+notebook instance. A I<lifecycle configuration> is a collection of
+shell scripts that run when you create or start a notebook instance.
+
+For information about notebook instance lifestyle configurations, see
+notebook-lifecycle-config.
 
 
 =head2 CreatePresignedNotebookInstanceUrl(NotebookInstanceName => Str, [SessionExpirationDurationInSeconds => Int])
@@ -630,6 +669,15 @@ SageMaker removes the ML compute instance, and deletes the ML storage
 volume and the network interface associated with the notebook instance.
 
 
+=head2 DeleteNotebookInstanceLifecycleConfig(NotebookInstanceLifecycleConfigName => Str)
+
+Each argument is described in detail in: L<Paws::SageMaker::DeleteNotebookInstanceLifecycleConfig>
+
+Returns: nothing
+
+Deletes a notebook instance lifecycle configuration.
+
+
 =head2 DeleteTags(ResourceArn => Str, TagKeys => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::SageMaker::DeleteTags>
@@ -678,6 +726,18 @@ Returns: a L<Paws::SageMaker::DescribeNotebookInstanceOutput> instance
 Returns information about a notebook instance.
 
 
+=head2 DescribeNotebookInstanceLifecycleConfig(NotebookInstanceLifecycleConfigName => Str)
+
+Each argument is described in detail in: L<Paws::SageMaker::DescribeNotebookInstanceLifecycleConfig>
+
+Returns: a L<Paws::SageMaker::DescribeNotebookInstanceLifecycleConfigOutput> instance
+
+Returns a description of a notebook instance lifecycle configuration.
+
+For information about notebook instance lifestyle configurations, see
+notebook-lifecycle-config.
+
+
 =head2 DescribeTrainingJob(TrainingJobName => Str)
 
 Each argument is described in detail in: L<Paws::SageMaker::DescribeTrainingJob>
@@ -716,7 +776,16 @@ Lists models created with the CreateModel
 API.
 
 
-=head2 ListNotebookInstances([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+=head2 ListNotebookInstanceLifecycleConfigs([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+Each argument is described in detail in: L<Paws::SageMaker::ListNotebookInstanceLifecycleConfigs>
+
+Returns: a L<Paws::SageMaker::ListNotebookInstanceLifecycleConfigsOutput> instance
+
+Lists notebook instance lifestyle configurations created with the API.
+
+
+=head2 ListNotebookInstances([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, NotebookInstanceLifecycleConfigNameContains => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
 
 Each argument is described in detail in: L<Paws::SageMaker::ListNotebookInstances>
 
@@ -842,6 +911,16 @@ to accommodate changes in your workload requirements. You can also
 update the VPC security groups.
 
 
+=head2 UpdateNotebookInstanceLifecycleConfig(NotebookInstanceLifecycleConfigName => Str, [OnCreate => ArrayRef[L<Paws::SageMaker::NotebookInstanceLifecycleHook>], OnStart => ArrayRef[L<Paws::SageMaker::NotebookInstanceLifecycleHook>]])
+
+Each argument is described in detail in: L<Paws::SageMaker::UpdateNotebookInstanceLifecycleConfig>
+
+Returns: a L<Paws::SageMaker::UpdateNotebookInstanceLifecycleConfigOutput> instance
+
+Updates a notebook instance lifecycle configuration created with the
+API.
+
+
 
 
 =head1 PAGINATORS
@@ -884,9 +963,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SageMaker::ListModelsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllNotebookInstances(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+=head2 ListAllNotebookInstances(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, NotebookInstanceLifecycleConfigNameContains => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
 
-=head2 ListAllNotebookInstances([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+=head2 ListAllNotebookInstances([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, NotebookInstanceLifecycleConfigNameContains => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

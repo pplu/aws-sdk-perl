@@ -4,6 +4,7 @@ package Paws::SageMaker::NotebookInstanceSummary;
   has InstanceType => (is => 'ro', isa => 'Str');
   has LastModifiedTime => (is => 'ro', isa => 'Str');
   has NotebookInstanceArn => (is => 'ro', isa => 'Str', required => 1);
+  has NotebookInstanceLifecycleConfigName => (is => 'ro', isa => 'Str');
   has NotebookInstanceName => (is => 'ro', isa => 'Str', required => 1);
   has NotebookInstanceStatus => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
@@ -61,6 +62,15 @@ on.
 =head2 B<REQUIRED> NotebookInstanceArn => Str
 
   The Amazon Resource Name (ARN) of the notebook instance.
+
+
+=head2 NotebookInstanceLifecycleConfigName => Str
+
+  The name of a notebook instance lifecycle configuration associated with
+this notebook instance.
+
+For information about notebook instance lifestyle configurations, see
+notebook-lifecycle-config.
 
 
 =head2 B<REQUIRED> NotebookInstanceName => Str

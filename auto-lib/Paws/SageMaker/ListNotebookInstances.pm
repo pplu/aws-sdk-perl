@@ -8,6 +8,7 @@ package Paws::SageMaker::ListNotebookInstances;
   has MaxResults => (is => 'ro', isa => 'Int');
   has NameContains => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
+  has NotebookInstanceLifecycleConfigNameContains => (is => 'ro', isa => 'Str');
   has SortBy => (is => 'ro', isa => 'Str');
   has SortOrder => (is => 'ro', isa => 'Str');
   has StatusEquals => (is => 'ro', isa => 'Str');
@@ -93,6 +94,15 @@ notebook instances.
 You might specify a filter or a sort order in your request. When
 response is truncated, you must use the same values for the filer and
 sort order in the next request.
+
+
+
+=head2 NotebookInstanceLifecycleConfigNameContains => Str
+
+A string in the name of a notebook instances lifecycle configuration
+associated with this notebook instance. This filter returns only
+notebook instances associated with a lifecycle configuration with a
+name that contains the specified string.
 
 
 

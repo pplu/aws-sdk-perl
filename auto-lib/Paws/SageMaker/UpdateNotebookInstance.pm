@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The Amazon ML compute instance type.
 
-Valid values are: C<"ml.t2.medium">, C<"ml.m4.xlarge">, C<"ml.p2.xlarge">
+Valid values are: C<"ml.t2.medium">, C<"ml.m4.xlarge">, C<"ml.p2.xlarge">, C<"ml.p3.2xlarge">
 
 =head2 B<REQUIRED> NotebookInstanceName => Str
 

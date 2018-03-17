@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 Describes weight and capacities for a production variant associated
 with an endpoint. If you sent a request to the
-C<UpdateWeightAndCapacities> API and the endpoint status is
+C<UpdateEndpointWeightsAndCapacities> API and the endpoint status is
 C<Updating>, you get different desired and current values.
 
 =head1 ATTRIBUTES
@@ -55,14 +55,14 @@ C<Updating>, you get different desired and current values.
 
 =head2 DesiredInstanceCount => Int
 
-  The number of instances requested in the C<UpdateWeightAndCapacities>
-request.
+  The number of instances requested in the
+C<UpdateEndpointWeightsAndCapacities> request.
 
 
 =head2 DesiredWeight => Num
 
-  The requested weight, as specified in the C<UpdateWeightAndCapacities>
-request.
+  The requested weight, as specified in the
+C<UpdateEndpointWeightsAndCapacities> request.
 
 
 =head2 B<REQUIRED> VariantName => Str

@@ -2,12 +2,14 @@
 package Paws::SageMaker::DescribeNotebookInstanceOutput;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Str');
+  has DirectInternetAccess => (is => 'ro', isa => 'Str');
   has FailureReason => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has LastModifiedTime => (is => 'ro', isa => 'Str');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str');
   has NotebookInstanceArn => (is => 'ro', isa => 'Str');
+  has NotebookInstanceLifecycleConfigName => (is => 'ro', isa => 'Str');
   has NotebookInstanceName => (is => 'ro', isa => 'Str');
   has NotebookInstanceStatus => (is => 'ro', isa => 'Str');
   has RoleArn => (is => 'ro', isa => 'Str');
@@ -32,16 +34,23 @@ A timestamp. Use this parameter to return the time when the notebook
 instance was created
 
 
+=head2 DirectInternetAccess => Str
+
+Describes whether the notebook instance has internet access.
+
+For more information, see appendix-notebook-and-internet-access.
+
+Valid values are: C<"Enabled">, C<"Disabled">
 =head2 FailureReason => Str
 
-If staus is failed, the reason it failed.
+If status is failed, the reason it failed.
 
 
 =head2 InstanceType => Str
 
 The type of ML compute instance running on the notebook instance.
 
-Valid values are: C<"ml.t2.medium">, C<"ml.m4.xlarge">, C<"ml.p2.xlarge">
+Valid values are: C<"ml.t2.medium">, C<"ml.m4.xlarge">, C<"ml.p2.xlarge">, C<"ml.p3.2xlarge">
 =head2 KmsKeyId => Str
 
 AWS KMS key ID Amazon SageMaker uses to encrypt data when storing it on
@@ -63,6 +72,14 @@ creating the instance.
 =head2 NotebookInstanceArn => Str
 
 The Amazon Resource Name (ARN) of the notebook instance.
+
+
+=head2 NotebookInstanceLifecycleConfigName => Str
+
+Returns the name of a notebook instance lifecycle configuration.
+
+For information about notebook instance lifestyle configurations, see
+notebook-lifecycle-config.
 
 
 =head2 NotebookInstanceName => Str

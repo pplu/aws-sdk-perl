@@ -1,8 +1,10 @@
 
 package Paws::SageMaker::CreateNotebookInstance;
   use Moose;
+  has DirectInternetAccess => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has KmsKeyId => (is => 'ro', isa => 'Str');
+  has LifecycleConfigName => (is => 'ro', isa => 'Str');
   has NotebookInstanceName => (is => 'ro', isa => 'Str', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -39,17 +41,39 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 DirectInternetAccess => Str
+
+Sets whether Amazon SageMaker provides internet access to the notebook
+instance. If you set this to C<Disabled> this notebook instance will be
+able to access resources only in your VPC, and will not be able to
+connect to Amazon SageMaker training and endpoint services unless your
+configure a NAT Gateway in your VPC.
+
+For more information, see appendix-notebook-and-internet-access. You
+can set the value of this parameter to C<Disabled> only if you set a
+value for the C<SubnetId> parameter.
+
+Valid values are: C<"Enabled">, C<"Disabled">
+
 =head2 B<REQUIRED> InstanceType => Str
 
 The type of ML compute instance to launch for the notebook instance.
 
-Valid values are: C<"ml.t2.medium">, C<"ml.m4.xlarge">, C<"ml.p2.xlarge">
+Valid values are: C<"ml.t2.medium">, C<"ml.m4.xlarge">, C<"ml.p2.xlarge">, C<"ml.p3.2xlarge">
 
 =head2 KmsKeyId => Str
 
 If you provide a AWS KMS key ID, Amazon SageMaker uses it to encrypt
 data at rest on the ML storage volume that is attached to your notebook
 instance.
+
+
+
+=head2 LifecycleConfigName => Str
+
+The name of a lifecycle configuration to associate with the notebook
+instance. For information about lifestyle configurations, see
+notebook-lifecycle-config.
 
 
 
