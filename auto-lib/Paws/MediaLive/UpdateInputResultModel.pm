@@ -1,13 +1,13 @@
-package Paws::MediaLive::InputWhitelistRuleCidr;
+package Paws::MediaLive::UpdateInputResultModel;
   use Moose;
-  has Cidr => (is => 'ro', isa => 'Str', request_name => 'cidr', traits => ['NameInRequest']);
+  has Input => (is => 'ro', isa => 'Paws::MediaLive::Input', request_name => 'input', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::MediaLive::InputWhitelistRuleCidr
+Paws::MediaLive::UpdateInputResultModel
 
 =head1 USAGE
 
@@ -18,27 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::MediaLive::InputWhitelistRuleCidr object:
+As an example, if Att1 is expected to be a Paws::MediaLive::UpdateInputResultModel object:
 
-  $service_obj->Method(Att1 => { Cidr => $value, ..., Cidr => $value  });
+  $service_obj->Method(Att1 => { Input => $value, ..., Input => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::InputWhitelistRuleCidr object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::UpdateInputResultModel object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Cidr
+  $result->Att1->Input
 
 =head1 DESCRIPTION
 
-An IPv4 CIDR to whitelist.
+Placeholder documentation for UpdateInputResultModel
 
 =head1 ATTRIBUTES
 
 
-=head2 Cidr => Str
+=head2 Input => L<Paws::MediaLive::Input>
 
-  The IPv4 CIDR to whitelist.
+  
 
 
 

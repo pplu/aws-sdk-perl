@@ -1,13 +1,13 @@
-package Paws::MediaLive::InputWhitelistRuleCidr;
+package Paws::MediaLive::UpdateInputSecurityGroupResultModel;
   use Moose;
-  has Cidr => (is => 'ro', isa => 'Str', request_name => 'cidr', traits => ['NameInRequest']);
+  has SecurityGroup => (is => 'ro', isa => 'Paws::MediaLive::InputSecurityGroup', request_name => 'securityGroup', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::MediaLive::InputWhitelistRuleCidr
+Paws::MediaLive::UpdateInputSecurityGroupResultModel
 
 =head1 USAGE
 
@@ -18,27 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::MediaLive::InputWhitelistRuleCidr object:
+As an example, if Att1 is expected to be a Paws::MediaLive::UpdateInputSecurityGroupResultModel object:
 
-  $service_obj->Method(Att1 => { Cidr => $value, ..., Cidr => $value  });
+  $service_obj->Method(Att1 => { SecurityGroup => $value, ..., SecurityGroup => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::InputWhitelistRuleCidr object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::UpdateInputSecurityGroupResultModel object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Cidr
+  $result->Att1->SecurityGroup
 
 =head1 DESCRIPTION
 
-An IPv4 CIDR to whitelist.
+Placeholder documentation for UpdateInputSecurityGroupResultModel
 
 =head1 ATTRIBUTES
 
 
-=head2 Cidr => Str
+=head2 SecurityGroup => L<Paws::MediaLive::InputSecurityGroup>
 
-  The IPv4 CIDR to whitelist.
+  
 
 
 

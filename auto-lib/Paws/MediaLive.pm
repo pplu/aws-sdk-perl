@@ -88,6 +88,16 @@ package Paws::MediaLive;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::UpdateChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateInput {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::UpdateInput', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateInputSecurityGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::UpdateInputSecurityGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
   sub ListAllChannels {
     my $self = shift;
@@ -160,7 +170,7 @@ package Paws::MediaLive;
   }
 
 
-  sub operations { qw/CreateChannel CreateInput CreateInputSecurityGroup DeleteChannel DeleteInput DeleteInputSecurityGroup DescribeChannel DescribeInput DescribeInputSecurityGroup ListChannels ListInputs ListInputSecurityGroups StartChannel StopChannel UpdateChannel / }
+  sub operations { qw/CreateChannel CreateInput CreateInputSecurityGroup DeleteChannel DeleteInput DeleteInputSecurityGroup DescribeChannel DescribeInput DescribeInputSecurityGroup ListChannels ListInputs ListInputSecurityGroups StartChannel StopChannel UpdateChannel UpdateInput UpdateInputSecurityGroup / }
 
 1;
 
@@ -318,13 +328,31 @@ Returns: a L<Paws::MediaLive::StopChannelResponse> instance
 Stops a running channel
 
 
-=head2 UpdateChannel(ChannelId => Str, [Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>], EncoderSettings => L<Paws::MediaLive::EncoderSettings>, InputSpecification => L<Paws::MediaLive::InputSpecification>, Name => Str, RoleArn => Str])
+=head2 UpdateChannel(ChannelId => Str, [Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>], EncoderSettings => L<Paws::MediaLive::EncoderSettings>, InputAttachments => ArrayRef[L<Paws::MediaLive::InputAttachment>], InputSpecification => L<Paws::MediaLive::InputSpecification>, Name => Str, RoleArn => Str])
 
 Each argument is described in detail in: L<Paws::MediaLive::UpdateChannel>
 
 Returns: a L<Paws::MediaLive::UpdateChannelResponse> instance
 
 Updates a channel.
+
+
+=head2 UpdateInput(InputId => Str, [Destinations => ArrayRef[L<Paws::MediaLive::InputDestinationRequest>], InputSecurityGroups => ArrayRef[Str|Undef], Name => Str, Sources => ArrayRef[L<Paws::MediaLive::InputSourceRequest>]])
+
+Each argument is described in detail in: L<Paws::MediaLive::UpdateInput>
+
+Returns: a L<Paws::MediaLive::UpdateInputResponse> instance
+
+Updates an input.
+
+
+=head2 UpdateInputSecurityGroup(InputSecurityGroupId => Str, [WhitelistRules => ArrayRef[L<Paws::MediaLive::InputWhitelistRuleCidr>]])
+
+Each argument is described in detail in: L<Paws::MediaLive::UpdateInputSecurityGroup>
+
+Returns: a L<Paws::MediaLive::UpdateInputSecurityGroupResponse> instance
+
+Update an Input Security Group's Whilelists.
 
 
 
