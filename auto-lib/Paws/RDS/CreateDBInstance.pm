@@ -667,11 +667,19 @@ B<MariaDB>
 
 =item *
 
+C<10.2.12> (supported in all AWS Regions)
+
+=item *
+
 C<10.2.11> (supported in all AWS Regions)
 
 =back
 
 =over
+
+=item *
+
+C<10.1.31> (supported in all AWS Regions)
 
 =item *
 
@@ -692,6 +700,10 @@ C<10.1.14> (supported in all AWS Regions except us-east-2)
 =back
 
 =over
+
+=item *
+
+C<10.0.34> (supported in all AWS Regions)
 
 =item *
 
@@ -814,6 +826,10 @@ B<MySQL>
 
 =item *
 
+C<5.7.21> (supported in all AWS regions)
+
+=item *
+
 C<5.7.19> (supported in all AWS regions)
 
 =item *
@@ -827,6 +843,10 @@ C<5.7.16> (supported in all AWS regions)
 =back
 
 =over
+
+=item *
+
+C<5.6.39> (supported in all AWS Regions)
 
 =item *
 
@@ -852,6 +872,10 @@ eu-west-2)
 =back
 
 =over
+
+=item *
+
+C<5.5.59> (supported in all AWS Regions)
 
 =item *
 
