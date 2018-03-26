@@ -10,6 +10,7 @@ package Paws::CloudWatchEvents::Target;
   has KinesisParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::KinesisParameters');
   has RoleArn => (is => 'ro', isa => 'Str');
   has RunCommandParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::RunCommandParameters');
+  has SqsParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::SqsParameters');
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudWatchEvents::Target object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., RunCommandParameters => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., SqsParameters => $value  });
 
 =head3 Results returned from an API call
 
@@ -117,6 +118,11 @@ targets, you can use a different IAM role for each target.
 
   Parameters used when you are using the rule to invoke Amazon EC2 Run
 Command.
+
+
+=head2 SqsParameters => L<Paws::CloudWatchEvents::SqsParameters>
+
+  Contains the message group ID to use when the target is a FIFO queue.
 
 
 

@@ -369,7 +369,7 @@ Amazon SNS topics
 
 =item *
 
-Amazon SQS queues
+Amazon SQS queues, including FIFO queues
 
 =item *
 
