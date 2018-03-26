@@ -843,7 +843,7 @@ Returns: a L<Paws::Glue::CreateDatabaseResponse> instance
 Creates a new database in a Data Catalog.
 
 
-=head2 CreateDevEndpoint(EndpointName => Str, PublicKey => Str, RoleArn => Str, [ExtraJarsS3Path => Str, ExtraPythonLibsS3Path => Str, NumberOfNodes => Int, SecurityGroupIds => ArrayRef[Str|Undef], SubnetId => Str])
+=head2 CreateDevEndpoint(EndpointName => Str, RoleArn => Str, [ExtraJarsS3Path => Str, ExtraPythonLibsS3Path => Str, NumberOfNodes => Int, PublicKey => Str, SecurityGroupIds => ArrayRef[Str|Undef], SubnetId => Str])
 
 Each argument is described in detail in: L<Paws::Glue::CreateDevEndpoint>
 

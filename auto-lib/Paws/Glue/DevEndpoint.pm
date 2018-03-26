@@ -9,6 +9,7 @@ package Paws::Glue::DevEndpoint;
   has LastModifiedTimestamp => (is => 'ro', isa => 'Str');
   has LastUpdateStatus => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
+  has PrivateAddress => (is => 'ro', isa => 'Str');
   has PublicAddress => (is => 'ro', isa => 'Str');
   has PublicKey => (is => 'ro', isa => 'Str');
   has RoleArn => (is => 'ro', isa => 'Str');
@@ -111,9 +112,14 @@ supported.
 DevEndpoint.
 
 
+=head2 PrivateAddress => Str
+
+  The private address used by this DevEndpoint.
+
+
 =head2 PublicAddress => Str
 
-  The public address used by this DevEndpoint.
+  The public VPC address used by this DevEndpoint.
 
 
 =head2 PublicKey => Str

@@ -5,7 +5,7 @@ package Paws::Glue::CreateDevEndpoint;
   has ExtraJarsS3Path => (is => 'ro', isa => 'Str');
   has ExtraPythonLibsS3Path => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
-  has PublicKey => (is => 'ro', isa => 'Str', required => 1);
+  has PublicKey => (is => 'ro', isa => 'Str');
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SubnetId => (is => 'ro', isa => 'Str');
@@ -73,7 +73,7 @@ DevEndpoint.
 
 
 
-=head2 B<REQUIRED> PublicKey => Str
+=head2 PublicKey => Str
 
 The public key to use for authentication.
 
