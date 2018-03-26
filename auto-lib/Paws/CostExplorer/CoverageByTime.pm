@@ -33,14 +33,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplore
 
 =head1 DESCRIPTION
 
-Reservation coverage, in hours.
+Reservation coverage for a specified period, in hours.
 
 =head1 ATTRIBUTES
 
 
 =head2 Groups => ArrayRef[L<Paws::CostExplorer::ReservationCoverageGroup>]
 
-  The group of instances that a reservation covered.
+  The groups of instances that are covered by a reservation.
 
 
 =head2 TimePeriod => L<Paws::CostExplorer::DateInterval>

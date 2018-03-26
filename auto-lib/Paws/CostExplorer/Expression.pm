@@ -45,7 +45,7 @@ patterns:
 Simple dimension values - You can set the dimension name and values for
 the filters that you plan to use. For example, you can filter for
 C<INSTANCE_TYPE==m4.xlarge OR INSTANCE_TYPE==c4.large>. The
-C<Expression> for that looks like this.
+C<Expression> for that looks like this:
 
 C<{ "Dimensions": { "Key": "INSTANCE_TYPE", "Values": [ "m4.xlarge",
 E<ldquo>c4.largeE<rdquo> ] } }>
@@ -62,7 +62,7 @@ create a list of one or more C<Expression> objects. This allows you to
 filter on more advanced options. For example, you can filter on
 C<((INSTANCE_TYPE == m4.large OR INSTANCE_TYPE == m3.large) OR
 (TAG.Type == Type1)) AND (USAGE_TYPE != DataTransfer)>. The
-C<Expression> for that looks like this.
+C<Expression> for that looks like this:
 
 C<{ "And": [ {"Or": [ {"Dimensions": { "Key": "INSTANCE_TYPE",
 "Values": [ "m4.x.large", "c4.large" ] }}, {"Tag": { "Key": "TagName",
@@ -71,7 +71,7 @@ C<{ "And": [ {"Or": [ {"Dimensions": { "Key": "INSTANCE_TYPE",
 
 Because each C<Expression> can have only one operator, the service
 returns an error if more than one is specified. The following example
-shows an Expression object that will create an error.
+shows an C<Expression> object that creates an error.
 
 C<{ "And": [ ... ], "DimensionValues": { "Dimension": "USAGE_TYPE",
 "Values": [ "DataTransfer" ] } }>
@@ -94,12 +94,12 @@ C<{ "And": [ ... ], "DimensionValues": { "Dimension": "USAGE_TYPE",
 
 =head2 Not => L<Paws::CostExplorer::Expression>
 
-  Return results that don't match C<Dimension>.
+  Return results that don't match a C<Dimension> object.
 
 
 =head2 Or => ArrayRef[L<Paws::CostExplorer::Expression>]
 
-  Return results that match either C<Dimension>.
+  Return results that match either C<Dimension> object.
 
 
 =head2 Tags => L<Paws::CostExplorer::TagValues>

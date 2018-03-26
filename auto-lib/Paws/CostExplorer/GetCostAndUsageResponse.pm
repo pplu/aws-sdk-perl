@@ -18,8 +18,8 @@ Paws::CostExplorer::GetCostAndUsageResponse
 
 =head2 GroupDefinitions => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]
 
-The groups specified by the the C<Filter> or C<GroupBy> parameters in
-the request.
+The groups that are specified by the C<Filter> or C<GroupBy> parameters
+in the request.
 
 
 =head2 NextPageToken => Str
@@ -31,7 +31,7 @@ maximum page size.
 
 =head2 ResultsByTime => ArrayRef[L<Paws::CostExplorer::ResultByTime>]
 
-The time period covered by the results in the response.
+The time period that is covered by the results in the response.
 
 
 =head2 _request_id => Str

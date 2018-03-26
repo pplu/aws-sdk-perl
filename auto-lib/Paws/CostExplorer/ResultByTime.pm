@@ -41,7 +41,7 @@ The result that is associated with a time period.
 
 =head2 Estimated => Bool
 
-  Whether or not this result is estimated.
+  Whether this result is estimated.
 
 
 =head2 Groups => ArrayRef[L<Paws::CostExplorer::Group>]

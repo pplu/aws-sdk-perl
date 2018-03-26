@@ -29,6 +29,11 @@ package Paws::CostExplorer;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetReservationCoverage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetReservationPurchaseRecommendation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetReservationPurchaseRecommendation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetReservationUtilization {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetReservationUtilization', @_);
@@ -42,7 +47,7 @@ package Paws::CostExplorer;
   
 
 
-  sub operations { qw/GetCostAndUsage GetDimensionValues GetReservationCoverage GetReservationUtilization GetTags / }
+  sub operations { qw/GetCostAndUsage GetDimensionValues GetReservationCoverage GetReservationPurchaseRecommendation GetReservationUtilization GetTags / }
 
 1;
 
@@ -97,13 +102,15 @@ Each argument is described in detail in: L<Paws::CostExplorer::GetCostAndUsage>
 
 Returns: a L<Paws::CostExplorer::GetCostAndUsageResponse> instance
 
-Retrieve cost and usage metrics for your account. You can specify which
-cost and usage-related metric, such as C<BlendedCosts> or
+Retrieves cost and usage metrics for your account. You can specify
+which cost and usage-related metric, such as C<BlendedCosts> or
 C<UsageQuantity>, that you want the request to return. You can also
 filter and group your data by various dimensions, such as C<SERVICE> or
-C<AZ>, in a specific time range. See the C<GetDimensionValues> action
-for a complete list of the valid dimensions. Master accounts in an
-organization have access to all member accounts.
+C<AZ>, in a specific time range. For a complete list of valid
+dimensions, see the C< GetDimensionValues
+(http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html)
+> operation. Master accounts in an organization in AWS Organizations
+have access to all member accounts.
 
 
 =head2 GetDimensionValues(Dimension => Str, TimePeriod => L<Paws::CostExplorer::DateInterval>, [Context => Str, NextPageToken => Str, SearchString => Str])
@@ -112,9 +119,9 @@ Each argument is described in detail in: L<Paws::CostExplorer::GetDimensionValue
 
 Returns: a L<Paws::CostExplorer::GetDimensionValuesResponse> instance
 
-You can use C<GetDimensionValues> to retrieve all available filter
-values for a specific filter over a period of time. You can search the
-dimension values for an arbitrary string.
+Retrieves all available filter values for a specific filter over a
+period of time. You can search the dimension values for an arbitrary
+string.
 
 
 =head2 GetReservationCoverage(TimePeriod => L<Paws::CostExplorer::DateInterval>, [Filter => L<Paws::CostExplorer::Expression>, Granularity => Str, GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>], NextPageToken => Str])
@@ -123,10 +130,12 @@ Each argument is described in detail in: L<Paws::CostExplorer::GetReservationCov
 
 Returns: a L<Paws::CostExplorer::GetReservationCoverageResponse> instance
 
-Retrieve the reservation coverage for your account. An organization's
-master account has access to the associated member accounts. For any
-time period, you can filter data about reservation usage by the
-following dimensions.
+Retrieves the reservation coverage for your account. This allows you to
+see how much of your Amazon Elastic Compute Cloud, Amazon ElastiCache,
+Amazon Relational Database Service, or Amazon Redshift usage is covered
+by a reservation. An organization's master account can see the coverage
+of the associated member accounts. For any time period, you can filter
+data about reservation usage by the following dimensions:
 
 =over
 
@@ -160,17 +169,45 @@ To determine valid values for a dimension, use the
 C<GetDimensionValues> operation.
 
 
+=head2 GetReservationPurchaseRecommendation(Service => Str, [AccountId => Str, AccountScope => Str, LookbackPeriodInDays => Str, NextPageToken => Str, PageSize => Int, PaymentOption => Str, ServiceSpecification => L<Paws::CostExplorer::ServiceSpecification>, TermInYears => Str])
+
+Each argument is described in detail in: L<Paws::CostExplorer::GetReservationPurchaseRecommendation>
+
+Returns: a L<Paws::CostExplorer::GetReservationPurchaseRecommendationResponse> instance
+
+Gets recommendations for which reservations to purchase. These
+recommendations could help you reduce your costs. Reservations provide
+a discounted hourly rate (up to 75%) compared to On-Demand pricing.
+
+AWS generates your recommendations by identifying your On-Demand usage
+during a specific time period and collecting your usage into categories
+that are eligible for a reservation. After AWS has these categories, it
+simulates every combination of reservations in each category of usage
+to identify the best number of each type of RI to purchase to maximize
+your estimated savings.
+
+For example, AWS automatically aggregates your EC2 Linux, shared
+tenancy, and c4 family usage in the US West (Oregon) Region and
+recommends that you buy size-flexible regional reservations to apply to
+the c4 family usage. AWS recommends the smallest size instance in an
+instance family. This makes it easier to purchase a size-flexible RI.
+AWS also shows the equal number of normalized units so that you can
+purchase any instance size that you want. For this example, your RI
+recommendation would be for C<c4.large>, because that is the smallest
+size instance in the c4 instance family.
+
+
 =head2 GetReservationUtilization(TimePeriod => L<Paws::CostExplorer::DateInterval>, [Filter => L<Paws::CostExplorer::Expression>, Granularity => Str, GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>], NextPageToken => Str])
 
 Each argument is described in detail in: L<Paws::CostExplorer::GetReservationUtilization>
 
 Returns: a L<Paws::CostExplorer::GetReservationUtilizationResponse> instance
 
-You can retrieve the Reservation utilization for your account. Master
-accounts in an organization have access to their associated member
-accounts. You can filter data by dimensions in a time period. You can
-use C<GetDimensionValues> to determine the possible dimension values.
-Currently, you can group only by C<SUBSCRIPTION_ID>.
+You can retrieve the reservation utilization for your account. Master
+accounts in an organization in AWS Organizations have access to their
+associated member accounts. You can filter data by dimensions in a time
+period. You can use C<GetDimensionValues> to determine the possible
+dimension values. Currently, you can group only by C<SUBSCRIPTION_ID>.
 
 
 =head2 GetTags(TimePeriod => L<Paws::CostExplorer::DateInterval>, [NextPageToken => Str, SearchString => Str, TagKey => Str])

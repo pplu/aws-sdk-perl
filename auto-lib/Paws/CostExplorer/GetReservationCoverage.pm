@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 Filter => L<Paws::CostExplorer::Expression>
 
 Filters utilization data by dimensions. You can filter by the following
-dimensions.
+dimensions:
 
 =over
 
@@ -70,10 +70,11 @@ TENANCY
 
 =back
 
-C<GetReservationCoverage> uses the same C<Expression> object as the
-other operations, but only C<AND> is supported among each dimension.
-You can nest only one level deep. If there are multiple values for a
-dimension, they are OR'd together.
+C<GetReservationCoverage> uses the same C< Expression
+(http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html)
+> object as the other operations, but only C<AND> is supported among
+each dimension. You can nest only one level deep. If there are multiple
+values for a dimension, they are OR'd together.
 
 
 
@@ -90,7 +91,7 @@ Valid values are: C<"DAILY">, C<"MONTHLY">
 
 =head2 GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]
 
-You can group the data by the following attributes.
+You can group the data by the following attributes:
 
 =over
 
@@ -135,7 +136,7 @@ maximum page size.
 
 The start and end dates of the period for which you want to retrieve
 data about reservation coverage. You can retrieve data for a maximum of
-13 months-the last 12 months and the current month. The start date is
+13 months: the last 12 months and the current month. The start date is
 inclusive, but the end date is exclusive. For example, if C<start> is
 C<2017-01-01> and C<end> is C<2017-05-01>, then the cost and usage data
 is retrieved from C<2017-01-01> up to and including C<2017-04-30> but

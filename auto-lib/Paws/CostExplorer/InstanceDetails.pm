@@ -1,14 +1,13 @@
-package Paws::CostExplorer::Group;
+package Paws::CostExplorer::InstanceDetails;
   use Moose;
-  has Keys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Metrics => (is => 'ro', isa => 'Paws::CostExplorer::Metrics');
+  has EC2InstanceDetails => (is => 'ro', isa => 'Paws::CostExplorer::EC2InstanceDetails');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CostExplorer::Group
+Paws::CostExplorer::InstanceDetails
 
 =head1 USAGE
 
@@ -19,32 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::CostExplorer::Group object:
+As an example, if Att1 is expected to be a Paws::CostExplorer::InstanceDetails object:
 
-  $service_obj->Method(Att1 => { Keys => $value, ..., Metrics => $value  });
+  $service_obj->Method(Att1 => { EC2InstanceDetails => $value, ..., EC2InstanceDetails => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplorer::Group object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplorer::InstanceDetails object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Keys
+  $result->Att1->EC2InstanceDetails
 
 =head1 DESCRIPTION
 
-One level of grouped data within the results.
+Details about the instances that AWS recommends that you purchase.
 
 =head1 ATTRIBUTES
 
 
-=head2 Keys => ArrayRef[Str|Undef]
+=head2 EC2InstanceDetails => L<Paws::CostExplorer::EC2InstanceDetails>
 
-  The keys that are included in this group.
-
-
-=head2 Metrics => L<Paws::CostExplorer::Metrics>
-
-  The metrics that are included in this group.
+  The EC2 instances that AWS recommends that you purchase.
 
 
 

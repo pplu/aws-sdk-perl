@@ -40,10 +40,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 Filter => L<Paws::CostExplorer::Expression>
 
 Filters utilization data by using different dimensions.
-C<GetReservationUtilization> uses the same C<Expression> object as the
-other operations, but only C<AND> is supported among each dimension,
-and nesting is supported up to only one level deep. If there are
-multiple values for a dimension, they are OR'd together.
+C<GetReservationUtilization> uses the same C< Expression
+(http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html)
+> object as the other operations, but only C<AND> is supported among
+each dimension, and nesting is supported to only one level deep. If
+there are multiple values for a dimension, they are OR'd together.
 
 
 

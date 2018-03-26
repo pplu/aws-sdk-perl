@@ -41,10 +41,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 Filter => L<Paws::CostExplorer::Expression>
 
 Filters AWS costs by different dimensions. For example, you can specify
-C<SERVICE> and C<LINKED_ACCOUNT> and get the costs associated with that
-account's usage of that service. You can nest C<Expression> objects to
-define any combination of dimension filters. For more information, see
-Expression
+C<SERVICE> and C<LINKED_ACCOUNT> and get the costs that are associated
+with that account's usage of that service. You can nest C<Expression>
+objects to define any combination of dimension filters. For more
+information, see Expression
 (http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html).
 
 
@@ -65,9 +65,9 @@ dimensions, tag keys, or both.
 When you group by tag key, you get all tag values, including empty
 strings.
 
-Valid values are C<AZ>, C<INSTANCE_TYPE>, C<LINKED_ACCOUNT>,
-C<OPERATION>, C<PLATFORM>, C<PURCHASE_TYPE>, C<SERVICE>, C<TAGS>,
-C<TENANCY>, and C<USAGE_TYPE>.
+Valid values are C<AZ>, C<INSTANCE_TYPE>, C<LEGAL_ENTITY_NAME>,
+C<LINKED_ACCOUNT>, C<OPERATION>, C<PLATFORM>, C<PURCHASE_TYPE>,
+C<SERVICE>, C<TAGS>, C<TENANCY>, and C<USAGE_TYPE>.
 
 
 
@@ -87,6 +87,8 @@ you aggregate C<usageQuantity> across all of EC2, the results aren't
 meaningful because EC2 compute hours and data transfer are measured in
 different units (for example, hours vs. GB). To get more meaningful
 C<UsageQuantity> metrics, filter by C<UsageType> or C<UsageTypeGroups>.
+
+C<Metrics> is required for C<GetCostAndUsage> requests.
 
 
 

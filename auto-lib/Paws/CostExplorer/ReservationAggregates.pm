@@ -41,7 +41,7 @@ The aggregated numbers for your RI usage.
 
 =head2 PurchasedHours => Str
 
-  How many RI hours you purchased.
+  How many RI hours that you purchased.
 
 
 =head2 TotalActualHours => Str

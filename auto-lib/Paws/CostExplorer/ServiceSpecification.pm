@@ -1,14 +1,13 @@
-package Paws::CostExplorer::Group;
+package Paws::CostExplorer::ServiceSpecification;
   use Moose;
-  has Keys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Metrics => (is => 'ro', isa => 'Paws::CostExplorer::Metrics');
+  has EC2Specification => (is => 'ro', isa => 'Paws::CostExplorer::EC2Specification');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CostExplorer::Group
+Paws::CostExplorer::ServiceSpecification
 
 =head1 USAGE
 
@@ -19,32 +18,29 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::CostExplorer::Group object:
+As an example, if Att1 is expected to be a Paws::CostExplorer::ServiceSpecification object:
 
-  $service_obj->Method(Att1 => { Keys => $value, ..., Metrics => $value  });
+  $service_obj->Method(Att1 => { EC2Specification => $value, ..., EC2Specification => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplorer::Group object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplorer::ServiceSpecification object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Keys
+  $result->Att1->EC2Specification
 
 =head1 DESCRIPTION
 
-One level of grouped data within the results.
+Hardware specifications for the service that you want recommendations
+for.
 
 =head1 ATTRIBUTES
 
 
-=head2 Keys => ArrayRef[Str|Undef]
+=head2 EC2Specification => L<Paws::CostExplorer::EC2Specification>
 
-  The keys that are included in this group.
-
-
-=head2 Metrics => L<Paws::CostExplorer::Metrics>
-
-  The metrics that are included in this group.
+  The EC2 hardware specifications that you want AWS to provide
+recommendations for.
 
 
 

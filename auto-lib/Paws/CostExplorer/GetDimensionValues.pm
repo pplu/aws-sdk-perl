@@ -43,8 +43,8 @@ The context for the call to C<GetDimensionValues>. This can be
 C<RESERVATIONS> or C<COST_AND_USAGE>. The default value is
 C<COST_AND_USAGE>. If the context is set to C<RESERVATIONS>, the
 resulting dimension values can be used in the
-C<GetReservationUtilization> action. If the context is set to
-C<COST_AND_USAGE>, the resulting dimension values can be used in the
+C<GetReservationUtilization> operation. If the context is set to
+C<COST_AND_USAGE> the resulting dimension values can be used in the
 C<GetCostAndUsage> operation.
 
 If you set the context to C<CostAndUsage>, you can use the following
@@ -54,28 +54,29 @@ dimensions for searching:
 
 =item *
 
-AZ - The Availability Zone. An example is us-east-1a.
+AZ - The Availability Zone. An example is C<us-east-1a>.
 
 =item *
 
-INSTANCE_TYPE - The type of EC2 instance. An example is m4.xlarge.
+INSTANCE_TYPE - The type of instance. An example is an EC2
+C<m4.xlarge>.
 
 =item *
 
 LINKED_ACCOUNT - The description in the attribute map that includes the
 full name of the member account. The value field contains the AWS ID of
-the member account
+the member account.
 
 =item *
 
-OPERATION - The action performed. Examples include RunInstance and
-CreateBucket.
+OPERATION - The action performed. Examples include C<RunInstance> and
+C<CreateBucket>.
 
 =item *
 
 PURCHASE_TYPE - The reservation type of the purchase to which this
-usage is related. Examples include: On Demand Instances and Standard
-Reserved Instances
+usage is related. Examples include On-Demand Instances and Standard
+Reserved Instances.
 
 =item *
 
@@ -83,15 +84,15 @@ SERVICE - The AWS service such as DynamoDB.
 
 =item *
 
-USAGE_TYPE - The type of usage. An example is DataTransfer-In-Bytes.
-The response for the GetDimensionValues action includes a unit
+USAGE_TYPE - The type of usage. An example is C<DataTransfer-In-Bytes>.
+The response for the C<GetDimensionValues> operation includes a unit
 attribute, examples of which include GB and Hrs.
 
 =item *
 
 USAGE_TYPE_GROUP - The grouping of common usage types. An example is
-EC2: CloudWatch E<ndash> Alarms. The response for this action includes
-a unit attribute.
+EC2: CloudWatch E<ndash> Alarms. The response for this operation
+includes a unit attribute.
 
 =item *
 
@@ -107,30 +108,33 @@ dimensions for searching:
 
 =item *
 
-AZ - The Availability Zone. An example is us-east-1a.
+AZ - The Availability Zone. An example is C<us-east-1a>.
 
 =item *
 
-INSTANCE_TYPE - The type of EC2 instance. An example is m4.xlarge.
+INSTANCE_TYPE - The type of instance. An example is an EC2
+C<m4.xlarge>.
 
 =item *
 
 LINKED_ACCOUNT - The description in the attribute map that includes the
 full name of the member account. The value field contains the AWS ID of
-the member account
+the member account.
 
 =item *
 
-PLATFORM - The operating system. Examples are Windows or Linux.
+PLATFORM - The specific combination of operating system, license model,
+and software on an instance. For example, a Windows instance with SQL
+Server Web and no license, or a Red Hat Enterprise Linux instance.
 
 =item *
 
-REGION - The AWS region.
+REGION - The AWS Region.
 
 =item *
 
-SCOPE - The scope of a reserved instance (RI). Values are regional or a
-single availability zone.
+SCOPE - The scope of a Reserved Instance (RI). Values are regional or a
+single Availability Zone.
 
 =item *
 
@@ -143,7 +147,7 @@ Valid values are: C<"COST_AND_USAGE">, C<"RESERVATIONS">
 
 =head2 B<REQUIRED> Dimension => Str
 
-The name of the dimension. Each C<Dimensions>is available for different
+The name of the dimension. Each C<Dimension> is available for different
 a C<Context>. For more information, see C<Context>.
 
 Valid values are: C<"AZ">, C<"INSTANCE_TYPE">, C<"LINKED_ACCOUNT">, C<"OPERATION">, C<"PURCHASE_TYPE">, C<"REGION">, C<"SERVICE">, C<"USAGE_TYPE">, C<"USAGE_TYPE_GROUP">, C<"RECORD_TYPE">, C<"OPERATING_SYSTEM">, C<"TENANCY">, C<"SCOPE">, C<"PLATFORM">, C<"SUBSCRIPTION_ID">, C<"LEGAL_ENTITY_NAME">, C<"DEPLOYMENT_OPTION">, C<"DATABASE_ENGINE">, C<"CACHE_ENGINE">, C<"INSTANCE_TYPE_FAMILY">
