@@ -59,6 +59,11 @@ By default, rules with a periodic trigger are evaluated every 24 hours.
 To change the frequency, specify a valid value for the
 C<MaximumExecutionFrequency> parameter.
 
+Based on the valid value you choose, AWS Config runs evaluations once
+for each valid value. For example, if you choose C<Three_Hours>, AWS
+Config runs evaluations once every three hours. In this case,
+C<Three_Hours> is the frequency of this rule.
+
 
 =head2 MessageType => Str
 
@@ -93,7 +98,8 @@ evaluation when AWS Config delivers a configuration snapshot.
 =back
 
 If you want your custom rule to be triggered by configuration changes,
-specify both C<ConfigurationItemChangeNotification> and
+specify two SourceDetail objects, one for
+C<ConfigurationItemChangeNotification> and one for
 C<OversizedConfigurationItemChangeNotification>.
 
 

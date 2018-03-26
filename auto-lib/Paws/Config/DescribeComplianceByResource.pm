@@ -41,8 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Filters the results by compliance.
 
-The allowed values are C<COMPLIANT>, C<NON_COMPLIANT>, and
-C<INSUFFICIENT_DATA>.
+The allowed values are C<COMPLIANT> and C<NON_COMPLIANT>.
 
 
 

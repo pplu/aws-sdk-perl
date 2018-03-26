@@ -14,6 +14,11 @@ package Paws::Config;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub BatchGetResourceConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::BatchGetResourceConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteConfigRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DeleteConfigRule', @_);
@@ -313,7 +318,7 @@ package Paws::Config;
   }
 
 
-  sub operations { qw/DeleteConfigRule DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeliverConfigSnapshot DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetDiscoveredResourceCounts GetResourceConfigHistory ListDiscoveredResources PutConfigRule PutConfigurationRecorder PutDeliveryChannel PutEvaluations StartConfigRulesEvaluation StartConfigurationRecorder StopConfigurationRecorder / }
+  sub operations { qw/BatchGetResourceConfig DeleteConfigRule DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeliverConfigSnapshot DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetDiscoveredResourceCounts GetResourceConfigHistory ListDiscoveredResources PutConfigRule PutConfigurationRecorder PutDeliveryChannel PutEvaluations StartConfigRulesEvaluation StartConfigurationRecorder StopConfigurationRecorder / }
 
 1;
 
@@ -372,6 +377,33 @@ Console, see What Is AWS Config?
 in the I<AWS Config Developer Guide>.
 
 =head1 METHODS
+
+=head2 BatchGetResourceConfig(ResourceKeys => ArrayRef[L<Paws::Config::ResourceKey>])
+
+Each argument is described in detail in: L<Paws::Config::BatchGetResourceConfig>
+
+Returns: a L<Paws::Config::BatchGetResourceConfigResponse> instance
+
+Returns the current configuration for one or more requested resources.
+The operation also returns a list of resources that are not processed
+in the current request. If there are no unprocessed resources, the
+operation returns an empty unprocessedResourceKeys list.
+
+=over
+
+=item *
+
+The API does not return results for deleted resources.
+
+=item *
+
+The API does not return any tags for the requested resources. This
+information is filtered out of the supplementaryConfiguration section
+of the API response.
+
+=back
+
+
 
 =head2 DeleteConfigRule(ConfigRuleName => Str)
 
