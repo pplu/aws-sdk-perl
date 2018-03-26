@@ -531,7 +531,10 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeAccou
 
 Returns: a L<Paws::ElasticBeanstalk::DescribeAccountAttributesResult> instance
 
+Returns attributes related to AWS Elastic Beanstalk that are associated
+with the calling AWS account.
 
+The result currently has one set of attributesE<mdash>resource quotas.
 
 
 =head2 DescribeApplications([ApplicationNames => ArrayRef[Str|Undef]])

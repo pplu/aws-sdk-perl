@@ -17,7 +17,8 @@ Paws::ElasticBeanstalk::DescribeAccountAttributesResult
 
 =head2 ResourceQuotas => L<Paws::ElasticBeanstalk::ResourceQuotas>
 
-
+The Elastic Beanstalk resource quotas associated with the calling AWS
+account.
 
 
 =head2 _request_id => Str

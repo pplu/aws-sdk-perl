@@ -35,34 +35,36 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head1 DESCRIPTION
 
-This class has no description
+A set of per-resource AWS Elastic Beanstalk quotas associated with an
+AWS account. They reflect Elastic Beanstalk resource limits for this
+account.
 
 =head1 ATTRIBUTES
 
 
 =head2 ApplicationQuota => L<Paws::ElasticBeanstalk::ResourceQuota>
 
-  
+  The quota for applications in the AWS account.
 
 
 =head2 ApplicationVersionQuota => L<Paws::ElasticBeanstalk::ResourceQuota>
 
-  
+  The quota for application versions in the AWS account.
 
 
 =head2 ConfigurationTemplateQuota => L<Paws::ElasticBeanstalk::ResourceQuota>
 
-  
+  The quota for configuration templates in the AWS account.
 
 
 =head2 CustomPlatformQuota => L<Paws::ElasticBeanstalk::ResourceQuota>
 
-  
+  The quota for custom platforms in the AWS account.
 
 
 =head2 EnvironmentQuota => L<Paws::ElasticBeanstalk::ResourceQuota>
 
-  
+  The quota for environments in the AWS account.
 
 
 

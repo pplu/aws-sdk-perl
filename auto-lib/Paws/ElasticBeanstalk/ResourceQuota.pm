@@ -31,14 +31,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head1 DESCRIPTION
 
-This class has no description
+The AWS Elastic Beanstalk quota information for a single resource type
+in an AWS account. It reflects the resource's limits for this account.
 
 =head1 ATTRIBUTES
 
 
 =head2 Maximum => Int
 
-  
+  The maximum number of instances of this Elastic Beanstalk resource type
+that an AWS account can use.
 
 
 
