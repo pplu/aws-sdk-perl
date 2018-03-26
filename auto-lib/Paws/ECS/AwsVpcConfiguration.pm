@@ -48,12 +48,14 @@ address.
 
   The security groups associated with the task or service. If you do not
 specify a security group, the default security group for the VPC is
-used.
+used. There is a limit of 5 security groups able to be specified per
+AwsVpcConfiguration.
 
 
 =head2 B<REQUIRED> Subnets => ArrayRef[Str|Undef]
 
-  The subnets associated with the task or service.
+  The subnets associated with the task or service. There is a limit of 10
+subnets able to be specified per AwsVpcConfiguration.
 
 
 

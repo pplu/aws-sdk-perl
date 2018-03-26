@@ -3,6 +3,8 @@ package Paws::ECS::LinuxParameters;
   has Capabilities => (is => 'ro', isa => 'Paws::ECS::KernelCapabilities', request_name => 'capabilities', traits => ['NameInRequest']);
   has Devices => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Device]', request_name => 'devices', traits => ['NameInRequest']);
   has InitProcessEnabled => (is => 'ro', isa => 'Bool', request_name => 'initProcessEnabled', traits => ['NameInRequest']);
+  has SharedMemorySize => (is => 'ro', isa => 'Int', request_name => 'sharedMemorySize', traits => ['NameInRequest']);
+  has Tmpfs => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tmpfs]', request_name => 'tmpfs', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::LinuxParameters object:
 
-  $service_obj->Method(Att1 => { Capabilities => $value, ..., InitProcessEnabled => $value  });
+  $service_obj->Method(Att1 => { Capabilities => $value, ..., Tmpfs => $value  });
 
 =head3 Results returned from an API call
 
@@ -71,6 +73,20 @@ requires version 1.25 of the Docker Remote API or greater on your
 container instance. To check the Docker Remote API version on your
 container instance, log in to your container instance and run the
 following command: C<sudo docker version | grep "Server API version">
+
+
+=head2 SharedMemorySize => Int
+
+  The value for the size of the C</dev/shm> volume. This parameter maps
+to the C<--shm-size> option to docker run
+(https://docs.docker.com/engine/reference/run/).
+
+
+=head2 Tmpfs => ArrayRef[L<Paws::ECS::Tmpfs>]
+
+  The container path, mount options, and size of the tmpfs mount. This
+parameter maps to the C<--tmpfs> option to docker run
+(https://docs.docker.com/engine/reference/run/).
 
 
 

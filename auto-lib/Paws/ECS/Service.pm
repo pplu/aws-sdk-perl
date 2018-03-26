@@ -18,6 +18,7 @@ package Paws::ECS::Service;
   has RunningCount => (is => 'ro', isa => 'Int', request_name => 'runningCount', traits => ['NameInRequest']);
   has ServiceArn => (is => 'ro', isa => 'Str', request_name => 'serviceArn', traits => ['NameInRequest']);
   has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
+  has ServiceRegistries => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceRegistry]', request_name => 'serviceRegistries', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has TaskDefinition => (is => 'ro', isa => 'Str', request_name => 'taskDefinition', traits => ['NameInRequest']);
 1;
@@ -166,6 +167,11 @@ C<arn:aws:ecs:I<region>:I<012345678910>:service/I<my-service> >.
 numbers, hyphens, and underscores are allowed. Service names must be
 unique within a cluster, but you can have similarly named services in
 multiple clusters within a region or across multiple regions.
+
+
+=head2 ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]
+
+  
 
 
 =head2 Status => Str

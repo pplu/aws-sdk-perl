@@ -14,6 +14,7 @@ package Paws::ECS::CreateService;
   has PlatformVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'platformVersion' );
   has Role => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'role' );
   has ServiceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceName' , required => 1);
+  has ServiceRegistries => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceRegistry]', traits => ['NameInRequest'], request_name => 'serviceRegistries' );
   has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -186,6 +187,14 @@ The name of your service. Up to 255 letters (uppercase and lowercase),
 numbers, hyphens, and underscores are allowed. Service names must be
 unique within a cluster, but you can have similarly named services in
 multiple clusters within a region or across multiple regions.
+
+
+
+=head2 ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]
+
+The details of the service discovery registries you want to assign to
+this service. For more information, see Service Discovery
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguideservice-discovery.html).
 
 
 

@@ -65,8 +65,12 @@ your service.
 
 =head2 ForceNewDeployment => Bool
 
-Whether to force a new deployment of the service. By default,
-C<--no-force-new-deployment> is assumed unless otherwise specified.
+Whether to force a new deployment of the service. Deployments are not
+forced by default. You can use this option to trigger a new deployment
+with no service definition changes. For example, you can update a
+service's tasks to use a newer Docker image with the same image/tag
+combination (C<my_image:latest>) or to roll Fargate tasks onto a newer
+platform version.
 
 
 
