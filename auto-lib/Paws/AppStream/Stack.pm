@@ -4,6 +4,7 @@ package Paws::AppStream::Stack;
   has CreatedTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has DisplayName => (is => 'ro', isa => 'Str');
+  has FeedbackURL => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has RedirectURL => (is => 'ro', isa => 'Str');
   has StackErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::StackError]');
@@ -63,6 +64,12 @@ Describes a stack.
   The stack name for display.
 
 
+=head2 FeedbackURL => Str
+
+  The URL that users are redirected to after they click the Send Feedback
+link. If no URL is specified, no Send Feedback link is displayed.
+
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the stack.
@@ -70,7 +77,8 @@ Describes a stack.
 
 =head2 RedirectURL => Str
 
-  The URL the user is redirected to after the streaming session ends.
+  The URL that users are redirected to after their streaming session
+ends.
 
 
 =head2 StackErrors => ArrayRef[L<Paws::AppStream::StackError>]

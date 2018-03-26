@@ -276,7 +276,7 @@ Returns: a L<Paws::AppStream::CreateImageBuilderStreamingURLResult> instance
 Creates a URL to start an image builder streaming session.
 
 
-=head2 CreateStack(Name => Str, [Description => Str, DisplayName => Str, RedirectURL => Str, StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]])
+=head2 CreateStack(Name => Str, [Description => Str, DisplayName => Str, FeedbackURL => Str, RedirectURL => Str, StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]])
 
 Each argument is described in detail in: L<Paws::AppStream::CreateStack>
 
@@ -549,7 +549,7 @@ update the C<DisplayName> and C<ComputeCapacity> attributes. If the
 fleet is in the C<STARTING> or C<STOPPING> state, you can't update it.
 
 
-=head2 UpdateStack(Name => Str, [AttributesToDelete => ArrayRef[Str|Undef], DeleteStorageConnectors => Bool, Description => Str, DisplayName => Str, RedirectURL => Str, StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]])
+=head2 UpdateStack(Name => Str, [AttributesToDelete => ArrayRef[Str|Undef], DeleteStorageConnectors => Bool, Description => Str, DisplayName => Str, FeedbackURL => Str, RedirectURL => Str, StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]])
 
 Each argument is described in detail in: L<Paws::AppStream::UpdateStack>
 
