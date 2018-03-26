@@ -82,18 +82,16 @@ build project.
 
 =head2 PrivilegedMode => Bool
 
-  If set to true, enables running the Docker daemon inside a Docker
-container; otherwise, false or not specified (the default). This value
-must be set to true only if this build project will be used to build
-Docker images, and the specified build environment image is not one
-provided by AWS CodeBuild with Docker support. Otherwise, all
-associated builds that attempt to interact with the Docker daemon will
-fail. Note that you must also start the Docker daemon so that your
-builds can interact with it as needed. One way to do this is to
-initialize the Docker daemon in the install phase of your build spec by
-running the following build commands. (Do not run the following build
-commands if the specified build environment image is provided by AWS
-CodeBuild with Docker support.)
+  Enables running the Docker daemon inside a Docker container. Set to
+true only if the build project is be used to build Docker images, and
+the specified build environment image is not provided by AWS CodeBuild
+with Docker support. Otherwise, all associated builds that attempt to
+interact with the Docker daemon will fail. Note that you must also
+start the Docker daemon so that builds can interact with it. One way to
+do this is to initialize the Docker daemon during the install phase of
+your build spec by running the following build commands. (Do not run
+the following build commands if the specified build environment image
+is provided by AWS CodeBuild with Docker support.)
 
 C<- nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock
 --host=tcp://0.0.0.0:2375 --storage-driver=overlay& - timeout -t 15 sh

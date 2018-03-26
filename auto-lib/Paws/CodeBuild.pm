@@ -89,6 +89,11 @@ package Paws::CodeBuild;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::UpdateProject', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateWebhook {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::UpdateWebhook', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
   sub ListAllBuilds {
     my $self = shift;
@@ -161,7 +166,7 @@ package Paws::CodeBuild;
   }
 
 
-  sub operations { qw/BatchDeleteBuilds BatchGetBuilds BatchGetProjects CreateProject CreateWebhook DeleteProject DeleteWebhook InvalidateProjectCache ListBuilds ListBuildsForProject ListCuratedEnvironmentImages ListProjects StartBuild StopBuild UpdateProject / }
+  sub operations { qw/BatchDeleteBuilds BatchGetBuilds BatchGetProjects CreateProject CreateWebhook DeleteProject DeleteWebhook InvalidateProjectCache ListBuilds ListBuildsForProject ListCuratedEnvironmentImages ListProjects StartBuild StopBuild UpdateProject UpdateWebhook / }
 
 1;
 
@@ -232,6 +237,10 @@ C<CreateWebhook>: For an existing AWS CodeBuild build project that has
 its source code stored in a GitHub repository, enables AWS CodeBuild to
 begin automatically rebuilding the source code every time a code change
 is pushed to the repository.
+
+=item *
+
+C<UpdateWebhook>: Changes the settings of an existing webhook.
 
 =item *
 
@@ -321,7 +330,7 @@ Returns: a L<Paws::CodeBuild::CreateProjectOutput> instance
 Creates a build project.
 
 
-=head2 CreateWebhook(ProjectName => Str)
+=head2 CreateWebhook(ProjectName => Str, [BranchFilter => Str])
 
 Each argument is described in detail in: L<Paws::CodeBuild::CreateWebhook>
 
@@ -437,6 +446,15 @@ Each argument is described in detail in: L<Paws::CodeBuild::UpdateProject>
 Returns: a L<Paws::CodeBuild::UpdateProjectOutput> instance
 
 Changes the settings of a build project.
+
+
+=head2 UpdateWebhook(ProjectName => Str, [BranchFilter => Str, RotateSecret => Bool])
+
+Each argument is described in detail in: L<Paws::CodeBuild::UpdateWebhook>
+
+Returns: a L<Paws::CodeBuild::UpdateWebhookOutput> instance
+
+Updates the webhook associated with an AWS CodeBuild build project.
 
 
 

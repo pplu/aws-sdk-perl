@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ProjectName => Str
 
-The name of the build project.
+The name of the AWS CodeBuild project.
 
 
 

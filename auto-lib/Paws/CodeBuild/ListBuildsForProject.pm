@@ -49,7 +49,7 @@ returned.
 
 =head2 B<REQUIRED> ProjectName => Str
 
-The name of the build project.
+The name of the AWS CodeBuild project.
 
 
 

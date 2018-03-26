@@ -1,5 +1,7 @@
 package Paws::CodeBuild::Webhook;
   use Moose;
+  has BranchFilter => (is => 'ro', isa => 'Str', request_name => 'branchFilter', traits => ['NameInRequest']);
+  has LastModifiedSecret => (is => 'ro', isa => 'Str', request_name => 'lastModifiedSecret', traits => ['NameInRequest']);
   has PayloadUrl => (is => 'ro', isa => 'Str', request_name => 'payloadUrl', traits => ['NameInRequest']);
   has Secret => (is => 'ro', isa => 'Str', request_name => 'secret', traits => ['NameInRequest']);
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
@@ -22,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeBuild::Webhook object:
 
-  $service_obj->Method(Att1 => { PayloadUrl => $value, ..., Url => $value  });
+  $service_obj->Method(Att1 => { BranchFilter => $value, ..., Url => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::Webhook object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->PayloadUrl
+  $result->Att1->BranchFilter
 
 =head1 DESCRIPTION
 
@@ -39,16 +41,28 @@ to a build project in AWS CodeBuild.
 =head1 ATTRIBUTES
 
 
+=head2 BranchFilter => Str
+
+  A regular expression used to determine which branches in a repository
+are built when a webhook is triggered. If the name of a branch matches
+the regular expression, then it is built. If it doesn't match, then it
+is not. If branchFilter is empty, then all branches are built.
+
+
+=head2 LastModifiedSecret => Str
+
+  A timestamp indicating the last time a repository's secret token was
+modified.
+
+
 =head2 PayloadUrl => Str
 
-  This is the server endpoint that will receive the webhook payload.
+  The CodeBuild endpoint where webhook events are sent.
 
 
 =head2 Secret => Str
 
-  Use this secret while creating a webhook in GitHub for Enterprise. The
-secret allows webhook requests sent by GitHub for Enterprise to be
-authenticated by AWS CodeBuild.
+  The secret token of the associated repository.
 
 
 =head2 Url => Str

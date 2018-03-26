@@ -171,7 +171,7 @@ information about any current build phase that is not yet complete.
 
 =head2 ProjectName => Str
 
-  The name of the build project.
+  The name of the AWS CodeBuild project.
 
 
 =head2 Source => L<Paws::CodeBuild::ProjectSource>

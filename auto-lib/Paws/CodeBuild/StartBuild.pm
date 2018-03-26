@@ -70,7 +70,7 @@ in the build project.
 
 =head2 B<REQUIRED> ProjectName => Str
 
-The name of the build project to start running a build.
+The name of the AWS CodeBuild build project to start running a build.
 
 
 
