@@ -53,7 +53,7 @@ A list of parameter values for the parameters of the application.
 
 The semantic version of the application:
 
-https://semver.org/
+https://semver.org/ (https://semver.org/)
 
 
 

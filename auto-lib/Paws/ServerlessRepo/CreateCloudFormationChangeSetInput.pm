@@ -47,7 +47,7 @@ Create application ChangeSet request.
 
   The semantic version of the application:
 
-https://semver.org/
+https://semver.org/ (https://semver.org/)
 
 
 =head2 B<REQUIRED> StackName => Str

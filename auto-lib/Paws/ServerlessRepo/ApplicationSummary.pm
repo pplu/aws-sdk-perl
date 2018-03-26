@@ -95,7 +95,8 @@ Pattern: "[a-zA-Z0-9\\-]+";
 
 =head2 SpdxLicenseId => Str
 
-  A valid identifier from https://spdx.org/licenses/.
+  A valid identifier from https://spdx.org/licenses/
+(https://spdx.org/licenses/).
 
 
 

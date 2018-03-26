@@ -132,7 +132,7 @@ Max size 5 MB
 
 The semantic version of the application:
 
-https://semver.org/
+https://semver.org/ (https://semver.org/)
 
 
 
@@ -144,7 +144,8 @@ A link to a public repository for the source code of your application.
 
 =head2 SpdxLicenseId => Str
 
-A valid identifier from https://spdx.org/licenses/.
+A valid identifier from https://spdx.org/licenses/
+(https://spdx.org/licenses/).
 
 
 

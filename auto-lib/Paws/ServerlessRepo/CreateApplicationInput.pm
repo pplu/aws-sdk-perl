@@ -125,7 +125,7 @@ Max size 5 MB
 
   The semantic version of the application:
 
-https://semver.org/
+https://semver.org/ (https://semver.org/)
 
 
 =head2 SourceCodeUrl => Str
@@ -135,7 +135,8 @@ https://semver.org/
 
 =head2 SpdxLicenseId => Str
 
-  A valid identifier from https://spdx.org/licenses/.
+  A valid identifier from https://spdx.org/licenses/
+(https://spdx.org/licenses/).
 
 
 =head2 TemplateBody => Str

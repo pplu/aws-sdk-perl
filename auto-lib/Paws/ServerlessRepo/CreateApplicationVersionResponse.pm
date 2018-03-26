@@ -39,7 +39,7 @@ Array of parameter types supported by the application.
 
 The semantic version of the application:
 
-https://semver.org/
+https://semver.org/ (https://semver.org/)
 
 
 =head2 SourceCodeUrl => Str

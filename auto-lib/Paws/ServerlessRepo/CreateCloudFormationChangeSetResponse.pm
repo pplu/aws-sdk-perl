@@ -36,7 +36,7 @@ Pattern: Amazon Resource Name (ARN):[-a-zA-Z0-9:/]*
 
 The semantic version of the application:
 
-https://semver.org/
+https://semver.org/ (https://semver.org/)
 
 
 =head2 StackId => Str
