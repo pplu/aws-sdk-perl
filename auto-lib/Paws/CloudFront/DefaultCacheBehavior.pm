@@ -3,6 +3,7 @@ package Paws::CloudFront::DefaultCacheBehavior;
   has AllowedMethods => (is => 'ro', isa => 'Paws::CloudFront::AllowedMethods');
   has Compress => (is => 'ro', isa => 'Bool');
   has DefaultTTL => (is => 'ro', isa => 'Int');
+  has FieldLevelEncryptionId => (is => 'ro', isa => 'Str');
   has ForwardedValues => (is => 'ro', isa => 'Paws::CloudFront::ForwardedValues', required => 1);
   has LambdaFunctionAssociations => (is => 'ro', isa => 'Paws::CloudFront::LambdaFunctionAssociations');
   has MaxTTL => (is => 'ro', isa => 'Int');
@@ -74,6 +75,11 @@ objects. For more information, see Specifying How Long Objects and
 Errors Stay in a CloudFront Edge Cache (Expiration)
 (http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html)
 in the I<Amazon CloudFront Developer Guide>.
+
+
+=head2 FieldLevelEncryptionId => Str
+
+  
 
 
 =head2 B<REQUIRED> ForwardedValues => L<Paws::CloudFront::ForwardedValues>

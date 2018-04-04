@@ -2,7 +2,7 @@ package Paws::CloudFront;
   warn "Paws::CloudFront is not stable / supported / entirely developed";
   use Moose;
   sub service { 'cloudfront' }
-  sub version { '2017-03-25' }
+  sub version { '2017-10-30' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
   has retry => (is => 'ro', isa => 'HashRef', default => sub {
@@ -52,9 +52,24 @@ package Paws::CloudFront;
     my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateDistributionWithTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateFieldLevelEncryptionConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateFieldLevelEncryptionConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateFieldLevelEncryptionProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateFieldLevelEncryptionProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateInvalidation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateInvalidation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreatePublicKey {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreatePublicKey', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateStreamingDistribution {
@@ -75,6 +90,21 @@ package Paws::CloudFront;
   sub DeleteDistribution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteDistribution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteFieldLevelEncryptionConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteFieldLevelEncryptionConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteFieldLevelEncryptionProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteFieldLevelEncryptionProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeletePublicKey {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::DeletePublicKey', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteServiceLinkedRole {
@@ -107,9 +137,39 @@ package Paws::CloudFront;
     my $call_object = $self->new_with_coercions('Paws::CloudFront::GetDistributionConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetFieldLevelEncryption {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetFieldLevelEncryption', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetFieldLevelEncryptionConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetFieldLevelEncryptionConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetFieldLevelEncryptionProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetFieldLevelEncryptionProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetFieldLevelEncryptionProfileConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetFieldLevelEncryptionProfileConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetInvalidation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFront::GetInvalidation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetPublicKey {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetPublicKey', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetPublicKeyConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetPublicKeyConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetStreamingDistribution {
@@ -137,9 +197,24 @@ package Paws::CloudFront;
     my $call_object = $self->new_with_coercions('Paws::CloudFront::ListDistributionsByWebACLId', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListFieldLevelEncryptionConfigs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListFieldLevelEncryptionConfigs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListFieldLevelEncryptionProfiles {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListFieldLevelEncryptionProfiles', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListInvalidations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFront::ListInvalidations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListPublicKeys {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListPublicKeys', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListStreamingDistributions {
@@ -170,6 +245,21 @@ package Paws::CloudFront;
   sub UpdateDistribution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateDistribution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateFieldLevelEncryptionConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateFieldLevelEncryptionConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateFieldLevelEncryptionProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateFieldLevelEncryptionProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdatePublicKey {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdatePublicKey', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateStreamingDistribution {
@@ -272,7 +362,7 @@ package Paws::CloudFront;
   }
 
 
-  sub operations { qw/CreateCloudFrontOriginAccessIdentity CreateDistribution CreateDistributionWithTags CreateInvalidation CreateStreamingDistribution CreateStreamingDistributionWithTags DeleteCloudFrontOriginAccessIdentity DeleteDistribution DeleteServiceLinkedRole DeleteStreamingDistribution GetCloudFrontOriginAccessIdentity GetCloudFrontOriginAccessIdentityConfig GetDistribution GetDistributionConfig GetInvalidation GetStreamingDistribution GetStreamingDistributionConfig ListCloudFrontOriginAccessIdentities ListDistributions ListDistributionsByWebACLId ListInvalidations ListStreamingDistributions ListTagsForResource TagResource UntagResource UpdateCloudFrontOriginAccessIdentity UpdateDistribution UpdateStreamingDistribution / }
+  sub operations { qw/CreateCloudFrontOriginAccessIdentity CreateDistribution CreateDistributionWithTags CreateFieldLevelEncryptionConfig CreateFieldLevelEncryptionProfile CreateInvalidation CreatePublicKey CreateStreamingDistribution CreateStreamingDistributionWithTags DeleteCloudFrontOriginAccessIdentity DeleteDistribution DeleteFieldLevelEncryptionConfig DeleteFieldLevelEncryptionProfile DeletePublicKey DeleteServiceLinkedRole DeleteStreamingDistribution GetCloudFrontOriginAccessIdentity GetCloudFrontOriginAccessIdentityConfig GetDistribution GetDistributionConfig GetFieldLevelEncryption GetFieldLevelEncryptionConfig GetFieldLevelEncryptionProfile GetFieldLevelEncryptionProfileConfig GetInvalidation GetPublicKey GetPublicKeyConfig GetStreamingDistribution GetStreamingDistributionConfig ListCloudFrontOriginAccessIdentities ListDistributions ListDistributionsByWebACLId ListFieldLevelEncryptionConfigs ListFieldLevelEncryptionProfiles ListInvalidations ListPublicKeys ListStreamingDistributions ListTagsForResource TagResource UntagResource UpdateCloudFrontOriginAccessIdentity UpdateDistribution UpdateFieldLevelEncryptionConfig UpdateFieldLevelEncryptionProfile UpdatePublicKey UpdateStreamingDistribution / }
 
 1;
 
@@ -343,6 +433,24 @@ Returns: a L<Paws::CloudFront::CreateDistributionWithTagsResult> instance
 Create a new distribution with tags.
 
 
+=head2 CreateFieldLevelEncryptionConfig(FieldLevelEncryptionConfig => L<Paws::CloudFront::FieldLevelEncryptionConfig>)
+
+Each argument is described in detail in: L<Paws::CloudFront::CreateFieldLevelEncryptionConfig>
+
+Returns: a L<Paws::CloudFront::CreateFieldLevelEncryptionConfigResult> instance
+
+Create a new field-level encryption configuration.
+
+
+=head2 CreateFieldLevelEncryptionProfile(FieldLevelEncryptionProfileConfig => L<Paws::CloudFront::FieldLevelEncryptionProfileConfig>)
+
+Each argument is described in detail in: L<Paws::CloudFront::CreateFieldLevelEncryptionProfile>
+
+Returns: a L<Paws::CloudFront::CreateFieldLevelEncryptionProfileResult> instance
+
+Create a field-level encryption profile.
+
+
 =head2 CreateInvalidation(DistributionId => Str, InvalidationBatch => L<Paws::CloudFront::InvalidationBatch>)
 
 Each argument is described in detail in: L<Paws::CloudFront::CreateInvalidation>
@@ -350,6 +458,17 @@ Each argument is described in detail in: L<Paws::CloudFront::CreateInvalidation>
 Returns: a L<Paws::CloudFront::CreateInvalidationResult> instance
 
 Create a new invalidation.
+
+
+=head2 CreatePublicKey(PublicKeyConfig => L<Paws::CloudFront::PublicKeyConfig>)
+
+Each argument is described in detail in: L<Paws::CloudFront::CreatePublicKey>
+
+Returns: a L<Paws::CloudFront::CreatePublicKeyResult> instance
+
+Add a new public key to CloudFront to use, for example, for field-level
+encryption. You can add a maximum of 10 public keys with one AWS
+account.
 
 
 =head2 CreateStreamingDistribution(StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>)
@@ -417,6 +536,33 @@ Each argument is described in detail in: L<Paws::CloudFront::DeleteDistribution>
 Returns: nothing
 
 Delete a distribution.
+
+
+=head2 DeleteFieldLevelEncryptionConfig(Id => Str, [IfMatch => Str])
+
+Each argument is described in detail in: L<Paws::CloudFront::DeleteFieldLevelEncryptionConfig>
+
+Returns: nothing
+
+Remove a field-level encryption configuration.
+
+
+=head2 DeleteFieldLevelEncryptionProfile(Id => Str, [IfMatch => Str])
+
+Each argument is described in detail in: L<Paws::CloudFront::DeleteFieldLevelEncryptionProfile>
+
+Returns: nothing
+
+Remove a field-level encryption profile.
+
+
+=head2 DeletePublicKey(Id => Str, [IfMatch => Str])
+
+Each argument is described in detail in: L<Paws::CloudFront::DeletePublicKey>
+
+Returns: nothing
+
+Remove a public key you previously added to CloudFront.
 
 
 =head2 DeleteServiceLinkedRole(RoleName => Str)
@@ -532,6 +678,42 @@ Returns: a L<Paws::CloudFront::GetDistributionConfigResult> instance
 Get the configuration information about a distribution.
 
 
+=head2 GetFieldLevelEncryption(Id => Str)
+
+Each argument is described in detail in: L<Paws::CloudFront::GetFieldLevelEncryption>
+
+Returns: a L<Paws::CloudFront::GetFieldLevelEncryptionResult> instance
+
+Get the field-level encryption configuration information.
+
+
+=head2 GetFieldLevelEncryptionConfig(Id => Str)
+
+Each argument is described in detail in: L<Paws::CloudFront::GetFieldLevelEncryptionConfig>
+
+Returns: a L<Paws::CloudFront::GetFieldLevelEncryptionConfigResult> instance
+
+Get the field-level encryption configuration information.
+
+
+=head2 GetFieldLevelEncryptionProfile(Id => Str)
+
+Each argument is described in detail in: L<Paws::CloudFront::GetFieldLevelEncryptionProfile>
+
+Returns: a L<Paws::CloudFront::GetFieldLevelEncryptionProfileResult> instance
+
+Get the field-level encryption profile information.
+
+
+=head2 GetFieldLevelEncryptionProfileConfig(Id => Str)
+
+Each argument is described in detail in: L<Paws::CloudFront::GetFieldLevelEncryptionProfileConfig>
+
+Returns: a L<Paws::CloudFront::GetFieldLevelEncryptionProfileConfigResult> instance
+
+Get the field-level encryption profile configuration information.
+
+
 =head2 GetInvalidation(DistributionId => Str, Id => Str)
 
 Each argument is described in detail in: L<Paws::CloudFront::GetInvalidation>
@@ -539,6 +721,24 @@ Each argument is described in detail in: L<Paws::CloudFront::GetInvalidation>
 Returns: a L<Paws::CloudFront::GetInvalidationResult> instance
 
 Get the information about an invalidation.
+
+
+=head2 GetPublicKey(Id => Str)
+
+Each argument is described in detail in: L<Paws::CloudFront::GetPublicKey>
+
+Returns: a L<Paws::CloudFront::GetPublicKeyResult> instance
+
+Get the public key information.
+
+
+=head2 GetPublicKeyConfig(Id => Str)
+
+Each argument is described in detail in: L<Paws::CloudFront::GetPublicKeyConfig>
+
+Returns: a L<Paws::CloudFront::GetPublicKeyConfigResult> instance
+
+Return public key configuration informaation
 
 
 =head2 GetStreamingDistribution(Id => Str)
@@ -588,6 +788,26 @@ List the distributions that are associated with a specified AWS WAF web
 ACL.
 
 
+=head2 ListFieldLevelEncryptionConfigs([Marker => Str, MaxItems => Str])
+
+Each argument is described in detail in: L<Paws::CloudFront::ListFieldLevelEncryptionConfigs>
+
+Returns: a L<Paws::CloudFront::ListFieldLevelEncryptionConfigsResult> instance
+
+List all field-level encryption configurations that have been created
+in CloudFront for this account.
+
+
+=head2 ListFieldLevelEncryptionProfiles([Marker => Str, MaxItems => Str])
+
+Each argument is described in detail in: L<Paws::CloudFront::ListFieldLevelEncryptionProfiles>
+
+Returns: a L<Paws::CloudFront::ListFieldLevelEncryptionProfilesResult> instance
+
+Request a list of field-level encryption profiles that have been
+created in CloudFront for this account.
+
+
 =head2 ListInvalidations(DistributionId => Str, [Marker => Str, MaxItems => Str])
 
 Each argument is described in detail in: L<Paws::CloudFront::ListInvalidations>
@@ -595,6 +815,16 @@ Each argument is described in detail in: L<Paws::CloudFront::ListInvalidations>
 Returns: a L<Paws::CloudFront::ListInvalidationsResult> instance
 
 Lists invalidation batches.
+
+
+=head2 ListPublicKeys([Marker => Str, MaxItems => Str])
+
+Each argument is described in detail in: L<Paws::CloudFront::ListPublicKeys>
+
+Returns: a L<Paws::CloudFront::ListPublicKeysResult> instance
+
+List all public keys that have been added to CloudFront for this
+account.
 
 
 =head2 ListStreamingDistributions([Marker => Str, MaxItems => Str])
@@ -729,6 +959,34 @@ number of values you're actually specifying.
 
 =back
 
+
+
+=head2 UpdateFieldLevelEncryptionConfig(FieldLevelEncryptionConfig => L<Paws::CloudFront::FieldLevelEncryptionConfig>, Id => Str, [IfMatch => Str])
+
+Each argument is described in detail in: L<Paws::CloudFront::UpdateFieldLevelEncryptionConfig>
+
+Returns: a L<Paws::CloudFront::UpdateFieldLevelEncryptionConfigResult> instance
+
+Update a field-level encryption configuration.
+
+
+=head2 UpdateFieldLevelEncryptionProfile(FieldLevelEncryptionProfileConfig => L<Paws::CloudFront::FieldLevelEncryptionProfileConfig>, Id => Str, [IfMatch => Str])
+
+Each argument is described in detail in: L<Paws::CloudFront::UpdateFieldLevelEncryptionProfile>
+
+Returns: a L<Paws::CloudFront::UpdateFieldLevelEncryptionProfileResult> instance
+
+Update a field-level encryption profile.
+
+
+=head2 UpdatePublicKey(Id => Str, PublicKeyConfig => L<Paws::CloudFront::PublicKeyConfig>, [IfMatch => Str])
+
+Each argument is described in detail in: L<Paws::CloudFront::UpdatePublicKey>
+
+Returns: a L<Paws::CloudFront::UpdatePublicKeyResult> instance
+
+Update public key information. Note that the only value you can change
+is the comment.
 
 
 =head2 UpdateStreamingDistribution(Id => Str, StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>, [IfMatch => Str])

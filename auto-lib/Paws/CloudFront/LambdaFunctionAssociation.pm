@@ -1,7 +1,7 @@
 package Paws::CloudFront::LambdaFunctionAssociation;
   use Moose;
-  has EventType => (is => 'ro', isa => 'Str');
-  has LambdaFunctionARN => (is => 'ro', isa => 'Str');
+  has EventType => (is => 'ro', isa => 'Str', required => 1);
+  has LambdaFunctionARN => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +37,7 @@ A complex type that contains a Lambda function association.
 =head1 ATTRIBUTES
 
 
-=head2 EventType => Str
+=head2 B<REQUIRED> EventType => Str
 
   Specifies the event type that triggers a Lambda function invocation.
 You can specify the following values:
@@ -79,7 +79,7 @@ function doesn't execute.
 
 
 
-=head2 LambdaFunctionARN => Str
+=head2 B<REQUIRED> LambdaFunctionARN => Str
 
   The ARN of the Lambda function. You must specify the ARN of a function
 version; you can't specify a Lambda alias or $LATEST.
