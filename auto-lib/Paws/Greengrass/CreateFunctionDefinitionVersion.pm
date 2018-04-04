@@ -38,19 +38,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AmznClientToken => Str
 
-The client token used to request idempotent operations.
+A client token used to correlate requests and responses.
 
 
 
 =head2 B<REQUIRED> FunctionDefinitionId => Str
 
-the unique Id of the lambda definition
+The ID of the Lambda function definition.
 
 
 
 =head2 Functions => ArrayRef[L<Paws::Greengrass::Function>]
 
-Lambda functions in this function definition version.
+A list of Lambda functions in this function definition version.
 
 
 

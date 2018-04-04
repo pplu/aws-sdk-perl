@@ -38,19 +38,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AmznClientToken => Str
 
-The client token used to request idempotent operations.
+A client token used to correlate requests and responses.
 
 
 
 =head2 B<REQUIRED> DeviceDefinitionId => Str
 
-device definition Id
+The ID of the device definition.
 
 
 
 =head2 Devices => ArrayRef[L<Paws::Greengrass::Device>]
 
-Devices in the definition version.
+A list of devices in the definition version.
 
 
 

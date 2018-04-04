@@ -37,13 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> LoggerDefinitionId => Str
 
-logger definition Id
+The ID of the logger definition.
 
 
 
 =head2 B<REQUIRED> LoggerDefinitionVersionId => Str
 
-logger definition version Id
+The ID of the logger definition version.
 
 
 

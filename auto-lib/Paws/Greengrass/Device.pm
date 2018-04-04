@@ -34,30 +34,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Information on a Device
+Information about a device.
 
 =head1 ATTRIBUTES
 
 
 =head2 CertificateArn => Str
 
-  Certificate arn of the device.
+  The ARN of the certificate associated with the device.
 
 
 =head2 Id => Str
 
-  Element Id for this entry in the list.
+  The ID of the device.
 
 
 =head2 SyncShadow => Bool
 
-  If true, the local shadow value automatically syncs with the cloud's
-shadow state.
+  If true, the device's local shadow will be automatically synced with
+the cloud.
 
 
 =head2 ThingArn => Str
 
-  Thing arn of the device.
+  The thing ARN of the device.
 
 
 

@@ -21,27 +21,28 @@ Paws::Greengrass::GetLoggerDefinitionVersionResponse
 
 =head2 Arn => Str
 
-Arn of the logger definition version.
+The ARN of the logger definition version.
 
 
 =head2 CreationTimestamp => Str
 
-Timestamp of when the logger definition version was created.
+The time, in milliseconds since the epoch, when the logger definition
+version was created.
 
 
 =head2 Definition => L<Paws::Greengrass::LoggerDefinitionVersion>
 
-Information on definition
+Information about the logger definition version.
 
 
 =head2 Id => Str
 
-Id of the logger definition the version belongs to.
+The ID of the logger definition version.
 
 
 =head2 Version => Str
 
-Version of the logger definition version.
+The version of the logger definition version.
 
 
 =head2 _request_id => Str

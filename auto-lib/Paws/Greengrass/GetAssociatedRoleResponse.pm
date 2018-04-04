@@ -18,12 +18,12 @@ Paws::Greengrass::GetAssociatedRoleResponse
 
 =head2 AssociatedAt => Str
 
-Time when the role was associated for the group.
+The time when the role was associated with the group.
 
 
 =head2 RoleArn => Str
 
-Arn of the role that is associated with the group.
+The ARN of the role that is associated with the group.
 
 
 =head2 _request_id => Str

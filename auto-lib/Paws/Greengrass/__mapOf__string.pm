@@ -1,4 +1,4 @@
-package Paws::Greengrass::MapOf__string;
+package Paws::Greengrass::__mapOf__string;
   use Moose;
   with 'Paws::API::StrToNativeMapParser';
 
@@ -9,7 +9,7 @@ package Paws::Greengrass::MapOf__string;
 
 =head1 NAME
 
-Paws::Greengrass::MapOf__string
+Paws::Greengrass::__mapOf__string
 
 =head1 USAGE
 
@@ -20,13 +20,13 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Greengrass::MapOf__string object:
+As an example, if Att1 is expected to be a Paws::Greengrass::__mapOf__string object:
 
   $service_obj->Method(Att1 => { key1 => $value, ..., keyN => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass::MapOf__string object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass::__mapOf__string object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Map->{ key1 }

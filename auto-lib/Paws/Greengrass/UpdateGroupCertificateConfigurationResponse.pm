@@ -19,17 +19,19 @@ Paws::Greengrass::UpdateGroupCertificateConfigurationResponse
 
 =head2 CertificateAuthorityExpiryInMilliseconds => Str
 
-Amount of time when the certificate authority expires in milliseconds.
+The amount of time remaining before the certificate authority expires,
+in milliseconds.
 
 
 =head2 CertificateExpiryInMilliseconds => Str
 
-Amount of time when the certificate expires in milliseconds.
+The amount of time remaining before the certificate expires, in
+milliseconds.
 
 
 =head2 GroupId => Str
 
-Id of the group the certificate configuration belongs to.
+The ID of the group certificate configuration.
 
 
 =head2 _request_id => Str

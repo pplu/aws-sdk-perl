@@ -37,13 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Name => Str
 
-name of the definition
+The name of the definition.
 
 
 
 =head2 B<REQUIRED> ResourceDefinitionId => Str
 
-Resource definition Id.
+The ID of the resource definition.
 
 
 

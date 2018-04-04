@@ -37,13 +37,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CertificateExpiryInMilliseconds => Str
 
-Amount of time when the certificate expires in milliseconds.
+The amount of time remaining before the certificate expires, in
+milliseconds.
 
 
 
 =head2 B<REQUIRED> GroupId => Str
 
-The unique Id of the AWS Greengrass Group
+The ID of the AWS Greengrass group.
 
 
 

@@ -37,13 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DeploymentId => Str
 
-the deployment Id
+The ID of the deployment.
 
 
 
 =head2 B<REQUIRED> GroupId => Str
 
-The unique Id of the AWS Greengrass Group
+The ID of the AWS Greengrass group.
 
 
 

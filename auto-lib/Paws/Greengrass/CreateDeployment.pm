@@ -40,32 +40,32 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AmznClientToken => Str
 
-The client token used to request idempotent operations.
+A client token used to correlate requests and responses.
 
 
 
 =head2 DeploymentId => Str
 
-Id of the deployment if you wish to redeploy a previous deployment.
+The ID of the deployment if you wish to redeploy a previous deployment.
 
 
 
 =head2 DeploymentType => Str
 
-Type of deployment. When used in CreateDeployment, only NewDeployment
-and Redeployment are valid.
+The type of deployment. When used in ''CreateDeployment'', only
+''NewDeployment'' and ''Redeployment'' are valid.
 
 Valid values are: C<"NewDeployment">, C<"Redeployment">, C<"ResetDeployment">, C<"ForceResetDeployment">
 
 =head2 B<REQUIRED> GroupId => Str
 
-The unique Id of the AWS Greengrass Group
+The ID of the AWS Greengrass group.
 
 
 
 =head2 GroupVersionId => Str
 
-Group Version you wish to deploy.
+The ID of the group version to be deployed.
 
 
 

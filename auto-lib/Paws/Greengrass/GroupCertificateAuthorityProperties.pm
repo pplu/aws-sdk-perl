@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Information on group certificate authority properties
+Information about a certificate authority for a group.
 
 =head1 ATTRIBUTES
 
 
 =head2 GroupCertificateAuthorityArn => Str
 
-  Arn of the certificate authority for the group.
+  The ARN of the certificate authority for the group.
 
 
 =head2 GroupCertificateAuthorityId => Str
 
-  Id of the certificate authority for the group.
+  The ID of the certificate authority for the group.
 
 
 

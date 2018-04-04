@@ -38,19 +38,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AmznClientToken => Str
 
-The client token used to request idempotent operations.
+A client token used to correlate requests and responses.
 
 
 
 =head2 B<REQUIRED> SubscriptionDefinitionId => Str
 
-subscription definition Id
+The ID of the subscription definition.
 
 
 
 =head2 Subscriptions => ArrayRef[L<Paws::Greengrass::Subscription>]
 
-Subscriptions in the version.
+A list of subscriptions.
 
 
 

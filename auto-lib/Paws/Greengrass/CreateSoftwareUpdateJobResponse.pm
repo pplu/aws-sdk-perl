@@ -18,12 +18,12 @@ Paws::Greengrass::CreateSoftwareUpdateJobResponse
 
 =head2 IotJobArn => Str
 
-The Iot Job Arn corresponding to this update.
+The IoT Job ARN corresponding to this update.
 
 
 =head2 IotJobId => Str
 
-The Iot Job Id corresponding to this update.
+The IoT Job Id corresponding to this update.
 
 
 =head2 _request_id => Str

@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Information on the function definition version
+Information about a function definition version.
 
 =head1 ATTRIBUTES
 
 
 =head2 Functions => ArrayRef[L<Paws::Greengrass::Function>]
 
-  Lambda functions in this function definition version.
+  A list of Lambda functions in this function definition version.
 
 
 

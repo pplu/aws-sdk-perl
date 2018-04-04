@@ -21,27 +21,28 @@ Paws::Greengrass::GetDeviceDefinitionVersionResponse
 
 =head2 Arn => Str
 
-Arn of the device definition version.
+The ARN of the device definition version.
 
 
 =head2 CreationTimestamp => Str
 
-Timestamp of when the device definition version was created.
+The time, in milliseconds since the epoch, when the device definition
+version was created.
 
 
 =head2 Definition => L<Paws::Greengrass::DeviceDefinitionVersion>
 
-Device definition version
+Information about the device definition version.
 
 
 =head2 Id => Str
 
-Id of the device definition the version belongs to.
+The ID of the device definition version.
 
 
 =head2 Version => Str
 
-Version of the device definition version.
+The version of the device definition version.
 
 
 =head2 _request_id => Str

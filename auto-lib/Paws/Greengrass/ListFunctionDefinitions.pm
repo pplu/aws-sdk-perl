@@ -37,15 +37,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 MaxResults => Str
 
-Specifies the maximum number of list results to be returned in this
-page
+The maximum number of results to be returned per request.
 
 
 
 =head2 NextToken => Str
 
-Specifies the pagination token used when iterating through a paginated
-request
+The token for the next set of results, or ''null'' if there are no
+additional results.
 
 
 

@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 RoleArn => Str
 
-Role arn you wish to associate with this account.
+The ARN of the service role you wish to associate with your account.
 
 
 

@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Information on subscription definition version
+Information about a subscription definition version.
 
 =head1 ATTRIBUTES
 
 
 =head2 Subscriptions => ArrayRef[L<Paws::Greengrass::Subscription>]
 
-  Subscriptions in the version.
+  A list of subscriptions.
 
 
 

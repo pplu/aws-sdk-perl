@@ -39,12 +39,15 @@ Group owner related settings for local resources.
 
 =head2 AutoAddGroupOwner => Bool
 
-  Eanble the auto added group owner.
+  If true, GreenGrass automatically adds the specified Linux OS group
+owner of the resource to the Lambda process privileges. Thus the Lambda
+process will have the file access permissions of the added Linux group.
 
 
 =head2 GroupOwner => Str
 
-  Name of the group owner.
+  The name of the Linux OS group whose privileges will be added to the
+Lambda process. This field is optional.
 
 
 

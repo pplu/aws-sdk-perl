@@ -34,31 +34,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Information on subscription
+Information about a subscription.
 
 =head1 ATTRIBUTES
 
 
 =head2 Id => Str
 
-  Element Id for this entry in the list.
+  The id of the subscription.
 
 
 =head2 Source => Str
 
-  Source of the subscription. Can be a thing arn, lambda arn or word
-'cloud'
+  The source of the subscription. Can be a thing ARN, a Lambda function
+ARN, 'cloud' (which represents the IoT cloud), or 'GGShadowService'.
 
 
 =head2 Subject => Str
 
-  Subject of the message.
+  The subject of the message.
 
 
 =head2 Target => Str
 
-  Where the message is sent to. Can be a thing arn, lambda arn or word
-'cloud'.
+  Where the message is sent to. Can be a thing ARN, a Lambda function
+ARN, 'cloud' (which represents the IoT cloud), or 'GGShadowService'.
 
 
 

@@ -32,19 +32,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Policy for the function to access a resource.
+A policy used by the function to access a resource.
 
 =head1 ATTRIBUTES
 
 
 =head2 Permission => Str
 
-  The function's access permission to the resource.
+  The permissions that the Lambda function has to the resource. Can be
+one of ''rw'' (read/write) or ''ro'' (read-only).
 
 
 =head2 ResourceId => Str
 
-  Id of the resource. A reference to the resource definiton.
+  The ID of the resource. (This ID is assigned to the resource when you
+create the resource definiton.)
 
 
 

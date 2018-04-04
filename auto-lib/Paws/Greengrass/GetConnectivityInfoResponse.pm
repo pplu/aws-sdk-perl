@@ -18,12 +18,12 @@ Paws::Greengrass::GetConnectivityInfoResponse
 
 =head2 ConnectivityInfo => ArrayRef[L<Paws::Greengrass::ConnectivityInfo>]
 
-Connectivity info list
+Connectivity info list.
 
 
 =head2 Message => Str
 
-Response Text
+A message about the connectivity info request.
 
 
 =head2 _request_id => Str

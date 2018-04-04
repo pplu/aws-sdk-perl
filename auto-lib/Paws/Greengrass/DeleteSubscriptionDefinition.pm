@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SubscriptionDefinitionId => Str
 
-subscription definition Id
+The ID of the subscription definition.
 
 
 

@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Information on logger definition version
+Information about a logger definition version.
 
 =head1 ATTRIBUTES
 
 
 =head2 Loggers => ArrayRef[L<Paws::Greengrass::Logger>]
 
-  List of loggers.
+  A list of loggers.
 
 
 

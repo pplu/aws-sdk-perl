@@ -36,39 +36,39 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Information on group version
+Information about a group version.
 
 =head1 ATTRIBUTES
 
 
 =head2 CoreDefinitionVersionArn => Str
 
-  Core definition version arn for this group.
+  The ARN of the core definition version for this group.
 
 
 =head2 DeviceDefinitionVersionArn => Str
 
-  Device definition version arn for this group.
+  The ARN of the device definition version for this group.
 
 
 =head2 FunctionDefinitionVersionArn => Str
 
-  Function definition version arn for this group.
+  The ARN of the function definition version for this group.
 
 
 =head2 LoggerDefinitionVersionArn => Str
 
-  Logger definition version arn for this group.
+  The ARN of the logger definition version for this group.
 
 
 =head2 ResourceDefinitionVersionArn => Str
 
-  Resource definition version arn for this group.
+  The resource definition version ARN for this group.
 
 
 =head2 SubscriptionDefinitionVersionArn => Str
 
-  Subscription definition version arn for this group.
+  The ARN of the subscription definition version for this group.
 
 
 

@@ -2,6 +2,8 @@ package Paws::Greengrass::ResourceDataContainer;
   use Moose;
   has LocalDeviceResourceData => (is => 'ro', isa => 'Paws::Greengrass::LocalDeviceResourceData');
   has LocalVolumeResourceData => (is => 'ro', isa => 'Paws::Greengrass::LocalVolumeResourceData');
+  has S3MachineLearningModelResourceData => (is => 'ro', isa => 'Paws::Greengrass::S3MachineLearningModelResourceData');
+  has SageMakerMachineLearningModelResourceData => (is => 'ro', isa => 'Paws::Greengrass::SageMakerMachineLearningModelResourceData');
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Greengrass::ResourceDataContainer object:
 
-  $service_obj->Method(Att1 => { LocalDeviceResourceData => $value, ..., LocalVolumeResourceData => $value  });
+  $service_obj->Method(Att1 => { LocalDeviceResourceData => $value, ..., SageMakerMachineLearningModelResourceData => $value  });
 
 =head3 Results returned from an API call
 
@@ -32,19 +34,33 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-A container of data for all resource types.
+A container for resource data. The container takes only one of the
+following supported resource data types: ''LocalDeviceResourceData'',
+''LocalVolumeResourceData'',
+''SageMakerMachineLearningModelResourceData'',
+''S3MachineLearningModelResourceData''.
 
 =head1 ATTRIBUTES
 
 
 =head2 LocalDeviceResourceData => L<Paws::Greengrass::LocalDeviceResourceData>
 
-  Attributes that define the Local Device Resource.
+  Attributes that define the local device resource.
 
 
 =head2 LocalVolumeResourceData => L<Paws::Greengrass::LocalVolumeResourceData>
 
-  Attributes that define the Local Volume Resource.
+  Attributes that define the local volume resource.
+
+
+=head2 S3MachineLearningModelResourceData => L<Paws::Greengrass::S3MachineLearningModelResourceData>
+
+  Attributes that define an S3 machine learning resource.
+
+
+=head2 SageMakerMachineLearningModelResourceData => L<Paws::Greengrass::SageMakerMachineLearningModelResourceData>
+
+  Attributes that define an SageMaker machine learning resource.
 
 
 

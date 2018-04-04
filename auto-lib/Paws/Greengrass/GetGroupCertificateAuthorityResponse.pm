@@ -19,17 +19,17 @@ Paws::Greengrass::GetGroupCertificateAuthorityResponse
 
 =head2 GroupCertificateAuthorityArn => Str
 
-Arn of the certificate authority for the group.
+The ARN of the certificate authority for the group.
 
 
 =head2 GroupCertificateAuthorityId => Str
 
-Id of the certificate authority for the group.
+The ID of the certificate authority for the group.
 
 
 =head2 PemEncodedCertificate => Str
 
-PEM encoded certificate for the group.
+The PEM encoded certificate for the group.
 
 
 =head2 _request_id => Str

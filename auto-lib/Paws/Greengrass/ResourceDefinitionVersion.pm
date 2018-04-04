@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Information on resource definition version
+Information about a resource definition version.
 
 =head1 ATTRIBUTES
 
 
 =head2 Resources => ArrayRef[L<Paws::Greengrass::Resource>]
 
-  List of resources.
+  A list of resources.
 
 
 

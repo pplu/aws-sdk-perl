@@ -21,7 +21,7 @@ Paws::Greengrass::GetDeploymentStatusResponse
 
 =head2 DeploymentStatus => Str
 
-Status of the deployment.
+The status of the deployment.
 
 
 =head2 DeploymentType => Str
@@ -31,17 +31,18 @@ The type of the deployment.
 Valid values are: C<"NewDeployment">, C<"Redeployment">, C<"ResetDeployment">, C<"ForceResetDeployment">
 =head2 ErrorDetails => ArrayRef[L<Paws::Greengrass::ErrorDetail>]
 
-The error Details
+Error details
 
 
 =head2 ErrorMessage => Str
 
-Error Message
+Error message
 
 
 =head2 UpdatedAt => Str
 
-Last time the deployment status was updated.
+The time, in milliseconds since the epoch, when the deployment status
+was updated.
 
 
 =head2 _request_id => Str

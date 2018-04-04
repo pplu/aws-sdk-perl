@@ -38,19 +38,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AmznClientToken => Str
 
-The client token used to request idempotent operations.
+A client token used to correlate requests and responses.
 
 
 
 =head2 InitialVersion => L<Paws::Greengrass::CoreDefinitionVersion>
 
-Information on the initial version
+Information about the initial version of the core definition.
 
 
 
 =head2 Name => Str
 
-name of the core definition
+The name of the core definition.
 
 
 

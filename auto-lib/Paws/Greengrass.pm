@@ -430,10 +430,9 @@ Each argument is described in detail in: L<Paws::Greengrass::AssociateRoleToGrou
 
 Returns: a L<Paws::Greengrass::AssociateRoleToGroupResponse> instance
 
-Associates a role with a group. The role will be used by the AWS
-Greengrass core in order to access AWS cloud services. The role's
-permissions will allow Greengrass core Lambda functions to perform
-actions against the cloud.
+Associates a role with a group. Your AWS Greengrass core will use the
+role to access AWS cloud services. The role's permissions should allow
+Greengrass core Lambda functions to perform actions against the cloud.
 
 
 =head2 AssociateServiceRoleToAccount([RoleArn => Str])
@@ -442,10 +441,11 @@ Each argument is described in detail in: L<Paws::Greengrass::AssociateServiceRol
 
 Returns: a L<Paws::Greengrass::AssociateServiceRoleToAccountResponse> instance
 
-Associates a role which is used by AWS Greengrass. AWS Greengrass uses
-the role to access your Lambda functions and AWS IoT resources. This is
-necessary for deployments to succeed. It needs to have minimum
-permissions in policy ``AWSGreengrassResourceAccessRolePolicy``
+Associates a role with your account. AWS Greengrass will use the role
+to access your Lambda functions and AWS IoT resources. This is
+necessary for deployments to succeed. The role must have at least
+minimum permissions in the policy
+''AWSGreengrassResourceAccessRolePolicy''.
 
 
 =head2 CreateCoreDefinition([AmznClientToken => Str, InitialVersion => L<Paws::Greengrass::CoreDefinitionVersion>, Name => Str])
@@ -454,10 +454,10 @@ Each argument is described in detail in: L<Paws::Greengrass::CreateCoreDefinitio
 
 Returns: a L<Paws::Greengrass::CreateCoreDefinitionResponse> instance
 
-Creates a core definition. You may optionally provide the initial
-version of the core definition or use ''CreateCoreDefinitionVersion''
-at a later time. AWS Greengrass Groups must each contain exactly 1 AWS
-Greengrass Core.
+Creates a core definition. You may provide the initial version of the
+core definition now or use ''CreateCoreDefinitionVersion'' at a later
+time. AWS Greengrass groups must each contain exactly one AWS
+Greengrass core.
 
 
 =head2 CreateCoreDefinitionVersion(CoreDefinitionId => Str, [AmznClientToken => Str, Cores => ArrayRef[L<Paws::Greengrass::Core>]])
@@ -467,7 +467,8 @@ Each argument is described in detail in: L<Paws::Greengrass::CreateCoreDefinitio
 Returns: a L<Paws::Greengrass::CreateCoreDefinitionVersionResponse> instance
 
 Creates a version of a core definition that has already been defined.
-AWS Greengrass Groups must each contain exactly 1 AWS Greengrass Core.
+AWS Greengrass groups must each contain exactly one AWS Greengrass
+core.
 
 
 =head2 CreateDeployment(GroupId => Str, [AmznClientToken => Str, DeploymentId => Str, DeploymentType => Str, GroupVersionId => Str])
@@ -485,9 +486,9 @@ Each argument is described in detail in: L<Paws::Greengrass::CreateDeviceDefinit
 
 Returns: a L<Paws::Greengrass::CreateDeviceDefinitionResponse> instance
 
-Creates a device definition. You may optinally provide the initial
-version of the device definition or use
-``CreateDeviceDefinitionVersion`` at a later time.
+Creates a device definition. You may provide the initial version of the
+device definition now or use ''CreateDeviceDefinitionVersion'' at a
+later time.
 
 
 =head2 CreateDeviceDefinitionVersion(DeviceDefinitionId => Str, [AmznClientToken => Str, Devices => ArrayRef[L<Paws::Greengrass::Device>]])
@@ -509,7 +510,7 @@ Creates a Lambda function definition which contains a list of Lambda
 functions and their configurations to be used in a group. You can
 create an initial version of the definition by providing a list of
 Lambda functions and their configurations now, or use
-``CreateFunctionDefinitionVersion`` later.
+''CreateFunctionDefinitionVersion'' later.
 
 
 =head2 CreateFunctionDefinitionVersion(FunctionDefinitionId => Str, [AmznClientToken => Str, Functions => ArrayRef[L<Paws::Greengrass::Function>]])
@@ -518,7 +519,7 @@ Each argument is described in detail in: L<Paws::Greengrass::CreateFunctionDefin
 
 Returns: a L<Paws::Greengrass::CreateFunctionDefinitionVersionResponse> instance
 
-Create a version of a Lambda function definition that has already been
+Creates a version of a Lambda function definition that has already been
 defined.
 
 
@@ -528,8 +529,8 @@ Each argument is described in detail in: L<Paws::Greengrass::CreateGroup>
 
 Returns: a L<Paws::Greengrass::CreateGroupResponse> instance
 
-Creates a group. You may optionally provide the initial version of the
-group or use ''CreateGroupVersion'' at a later time.
+Creates a group. You may provide the initial version of the group or
+use ''CreateGroupVersion'' at a later time.
 
 
 =head2 CreateGroupCertificateAuthority(GroupId => Str, [AmznClientToken => Str])
@@ -557,9 +558,9 @@ Each argument is described in detail in: L<Paws::Greengrass::CreateLoggerDefinit
 
 Returns: a L<Paws::Greengrass::CreateLoggerDefinitionResponse> instance
 
-Creates a logger definition. You may optionally provide the initial
-version of the logger definition or use
-``CreateLoggerDefinitionVersion`` at a later time.
+Creates a logger definition. You may provide the initial version of the
+logger definition now or use ''CreateLoggerDefinitionVersion'' at a
+later time.
 
 
 =head2 CreateLoggerDefinitionVersion(LoggerDefinitionId => Str, [AmznClientToken => Str, Loggers => ArrayRef[L<Paws::Greengrass::Logger>]])
@@ -580,7 +581,7 @@ Returns: a L<Paws::Greengrass::CreateResourceDefinitionResponse> instance
 Creates a resource definition which contains a list of resources to be
 used in a group. You can create an initial version of the definition by
 providing a list of resources now, or use
-``CreateResourceDefinitionVersion`` later.
+''CreateResourceDefinitionVersion'' later.
 
 
 =head2 CreateResourceDefinitionVersion(ResourceDefinitionId => Str, [AmznClientToken => Str, Resources => ArrayRef[L<Paws::Greengrass::Resource>]])
@@ -589,7 +590,7 @@ Each argument is described in detail in: L<Paws::Greengrass::CreateResourceDefin
 
 Returns: a L<Paws::Greengrass::CreateResourceDefinitionVersionResponse> instance
 
-Create a version of a resource definition that has already been
+Creates a version of a resource definition that has already been
 defined.
 
 
@@ -599,8 +600,11 @@ Each argument is described in detail in: L<Paws::Greengrass::CreateSoftwareUpdat
 
 Returns: a L<Paws::Greengrass::CreateSoftwareUpdateJobResponse> instance
 
-Creates an Iot Job that will trigger your Greengrass Cores to update
-the software they are running.
+Creates a software update for a core or group of cores (specified as an
+IoT thing group.) Use this to update the OTA Agent as well as the
+Greengrass core software. It makes use of the IoT Jobs feature which
+provides additional commands to manage a Greengrass core software
+update job.
 
 
 =head2 CreateSubscriptionDefinition([AmznClientToken => Str, InitialVersion => L<Paws::Greengrass::SubscriptionDefinitionVersion>, Name => Str])
@@ -609,9 +613,9 @@ Each argument is described in detail in: L<Paws::Greengrass::CreateSubscriptionD
 
 Returns: a L<Paws::Greengrass::CreateSubscriptionDefinitionResponse> instance
 
-Creates a subscription definition. You may optionally provide the
-initial version of the subscription definition or use
-``CreateSubscriptionDefinitionVersion`` at a later time.
+Creates a subscription definition. You may provide the initial version
+of the subscription definition now or use
+''CreateSubscriptionDefinitionVersion'' at a later time.
 
 
 =head2 CreateSubscriptionDefinitionVersion(SubscriptionDefinitionId => Str, [AmznClientToken => Str, Subscriptions => ArrayRef[L<Paws::Greengrass::Subscription>]])
@@ -630,8 +634,7 @@ Each argument is described in detail in: L<Paws::Greengrass::DeleteCoreDefinitio
 
 Returns: a L<Paws::Greengrass::DeleteCoreDefinitionResponse> instance
 
-Deletes a core definition. The core definition must not have been used
-in a deployment.
+Deletes a core definition.
 
 
 =head2 DeleteDeviceDefinition(DeviceDefinitionId => Str)
@@ -640,8 +643,7 @@ Each argument is described in detail in: L<Paws::Greengrass::DeleteDeviceDefinit
 
 Returns: a L<Paws::Greengrass::DeleteDeviceDefinitionResponse> instance
 
-Deletes a device definition. The device definition must not have been
-used in a deployment.
+Deletes a device definition.
 
 
 =head2 DeleteFunctionDefinition(FunctionDefinitionId => Str)
@@ -650,8 +652,7 @@ Each argument is described in detail in: L<Paws::Greengrass::DeleteFunctionDefin
 
 Returns: a L<Paws::Greengrass::DeleteFunctionDefinitionResponse> instance
 
-Deletes a Lambda function definition. The Lambda function definition
-must not have been used in a deployment.
+Deletes a Lambda function definition.
 
 
 =head2 DeleteGroup(GroupId => Str)
@@ -660,7 +661,7 @@ Each argument is described in detail in: L<Paws::Greengrass::DeleteGroup>
 
 Returns: a L<Paws::Greengrass::DeleteGroupResponse> instance
 
-Deletes a group. The group must not have been used in deployment.
+Deletes a group.
 
 
 =head2 DeleteLoggerDefinition(LoggerDefinitionId => Str)
@@ -669,8 +670,7 @@ Each argument is described in detail in: L<Paws::Greengrass::DeleteLoggerDefinit
 
 Returns: a L<Paws::Greengrass::DeleteLoggerDefinitionResponse> instance
 
-Deletes a logger definition. The logger definition must not have been
-used in a deployment.
+Deletes a logger definition.
 
 
 =head2 DeleteResourceDefinition(ResourceDefinitionId => Str)
@@ -688,8 +688,7 @@ Each argument is described in detail in: L<Paws::Greengrass::DeleteSubscriptionD
 
 Returns: a L<Paws::Greengrass::DeleteSubscriptionDefinitionResponse> instance
 
-Deletes a subscription definition. The subscription definition must not
-have been used in a deployment.
+Deletes a subscription definition.
 
 
 =head2 DisassociateRoleFromGroup(GroupId => Str)
@@ -707,7 +706,7 @@ Each argument is described in detail in: L<Paws::Greengrass::DisassociateService
 
 Returns: a L<Paws::Greengrass::DisassociateServiceRoleFromAccountResponse> instance
 
-Disassociates the service role from the account. Without a service
+Disassociates the service role from your account. Without a service
 role, deployments will not work.
 
 
@@ -780,7 +779,7 @@ Each argument is described in detail in: L<Paws::Greengrass::GetFunctionDefiniti
 
 Returns: a L<Paws::Greengrass::GetFunctionDefinitionResponse> instance
 
-Retrieves information about a Lambda function definition, such as its
+Retrieves information about a Lambda function definition, including its
 creation time and latest version.
 
 
@@ -790,8 +789,8 @@ Each argument is described in detail in: L<Paws::Greengrass::GetFunctionDefiniti
 
 Returns: a L<Paws::Greengrass::GetFunctionDefinitionVersionResponse> instance
 
-Retrieves information about a Lambda function definition version, such
-as which Lambda functions are included in the version and their
+Retrieves information about a Lambda function definition version,
+including which Lambda functions are included in the version and their
 configurations.
 
 
@@ -856,8 +855,8 @@ Each argument is described in detail in: L<Paws::Greengrass::GetResourceDefiniti
 
 Returns: a L<Paws::Greengrass::GetResourceDefinitionResponse> instance
 
-Retrieves information about a resource definition, such as its creation
-time and latest version.
+Retrieves information about a resource definition, including its
+creation time and latest version.
 
 
 =head2 GetResourceDefinitionVersion(ResourceDefinitionId => Str, ResourceDefinitionVersionId => Str)
@@ -866,7 +865,7 @@ Each argument is described in detail in: L<Paws::Greengrass::GetResourceDefiniti
 
 Returns: a L<Paws::Greengrass::GetResourceDefinitionVersionResponse> instance
 
-Retrieves information about a resource definition version, such as
+Retrieves information about a resource definition version, including
 which resources are included in the version.
 
 
@@ -876,7 +875,7 @@ Each argument is described in detail in: L<Paws::Greengrass::GetServiceRoleForAc
 
 Returns: a L<Paws::Greengrass::GetServiceRoleForAccountResponse> instance
 
-Retrieves the service role that is attached to the account.
+Retrieves the service role that is attached to your account.
 
 
 =head2 GetSubscriptionDefinition(SubscriptionDefinitionId => Str)
@@ -912,7 +911,7 @@ Each argument is described in detail in: L<Paws::Greengrass::ListCoreDefinitionV
 
 Returns: a L<Paws::Greengrass::ListCoreDefinitionVersionsResponse> instance
 
-Lists versions of a core definition.
+Lists the versions of a core definition.
 
 
 =head2 ListDeployments(GroupId => Str, [MaxResults => Str, NextToken => Str])
@@ -984,7 +983,7 @@ Each argument is described in detail in: L<Paws::Greengrass::ListGroupVersions>
 
 Returns: a L<Paws::Greengrass::ListGroupVersionsResponse> instance
 
-List the versions of a group.
+Lists the versions of a group.
 
 
 =head2 ListLoggerDefinitions([MaxResults => Str, NextToken => Str])
@@ -1103,7 +1102,7 @@ Each argument is described in detail in: L<Paws::Greengrass::UpdateGroupCertific
 
 Returns: a L<Paws::Greengrass::UpdateGroupCertificateConfigurationResponse> instance
 
-Updates the Cert expiry time for a group.
+Updates the Certificate expiry time for a group.
 
 
 =head2 UpdateLoggerDefinition(LoggerDefinitionId => Str, [Name => Str])

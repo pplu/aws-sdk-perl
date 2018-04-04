@@ -33,19 +33,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Information on the resource.
+Information about a resource.
 
 =head1 ATTRIBUTES
 
 
 =head2 Id => Str
 
-  Resource Id.
+  The resource ID, used to refer to a resource in the Lambda function
+configuration. Max length is 128 characters with pattern
+''[a-zA-Z0-9:_-]+''. This must be unique within a Greengrass group.
 
 
 =head2 Name => Str
 
-  A descriptive resource name.
+  The descriptive resource name, which is displayed on the Greengrass
+console. Max length 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
+This must be unique within a Greengrass group.
 
 
 =head2 ResourceDataContainer => L<Paws::Greengrass::ResourceDataContainer>

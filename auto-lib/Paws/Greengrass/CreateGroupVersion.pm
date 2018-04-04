@@ -43,49 +43,49 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AmznClientToken => Str
 
-The client token used to request idempotent operations.
+A client token used to correlate requests and responses.
 
 
 
 =head2 CoreDefinitionVersionArn => Str
 
-Core definition version arn for this group.
+The ARN of the core definition version for this group.
 
 
 
 =head2 DeviceDefinitionVersionArn => Str
 
-Device definition version arn for this group.
+The ARN of the device definition version for this group.
 
 
 
 =head2 FunctionDefinitionVersionArn => Str
 
-Function definition version arn for this group.
+The ARN of the function definition version for this group.
 
 
 
 =head2 B<REQUIRED> GroupId => Str
 
-The unique Id of the AWS Greengrass Group
+The ID of the AWS Greengrass group.
 
 
 
 =head2 LoggerDefinitionVersionArn => Str
 
-Logger definition version arn for this group.
+The ARN of the logger definition version for this group.
 
 
 
 =head2 ResourceDefinitionVersionArn => Str
 
-Resource definition version arn for this group.
+The resource definition version ARN for this group.
 
 
 
 =head2 SubscriptionDefinitionVersionArn => Str
 
-Subscription definition version arn for this group.
+The ARN of the subscription definition version for this group.
 
 
 

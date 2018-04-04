@@ -37,13 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FunctionDefinitionId => Str
 
-the unique Id of the lambda definition
+The ID of the Lambda function definition.
 
 
 
 =head2 B<REQUIRED> FunctionDefinitionVersionId => Str
 
-Function definition version Id
+The ID of the function definition version.
 
 
 

@@ -33,24 +33,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Attributes that define the Local Volume Resource.
+Attributes that define a local volume resource.
 
 =head1 ATTRIBUTES
 
 
 =head2 DestinationPath => Str
 
-  Local destination path of the resource.
+  The absolute local path of the resource inside the lambda environment.
 
 
 =head2 GroupOwnerSetting => L<Paws::Greengrass::GroupOwnerSetting>
 
-  Group owner related settings for local resources.
+  Allows you to configure additional group privileges for the Lambda
+process. This field is optional.
 
 
 =head2 SourcePath => Str
 
-  Local source path of the resource.
+  The local absolute path of the volume resource on the host. The source
+path for a volume resource type cannot start with ''/proc'' or
+''/sys''.
 
 
 

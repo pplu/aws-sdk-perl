@@ -18,7 +18,7 @@ Paws::Greengrass::ListLoggerDefinitionsResponse
 
 =head2 Definitions => ArrayRef[L<Paws::Greengrass::DefinitionInformation>]
 
-Definitions
+Information about a definition.
 
 
 =head2 NextToken => Str

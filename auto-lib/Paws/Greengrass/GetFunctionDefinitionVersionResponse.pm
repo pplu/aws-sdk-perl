@@ -21,27 +21,28 @@ Paws::Greengrass::GetFunctionDefinitionVersionResponse
 
 =head2 Arn => Str
 
-Arn of the function definition version.
+The ARN of the function definition version.
 
 
 =head2 CreationTimestamp => Str
 
-Timestamp when the funtion definition version was created.
+The time, in milliseconds since the epoch, when the function definition
+version was created.
 
 
 =head2 Definition => L<Paws::Greengrass::FunctionDefinitionVersion>
 
-Information on the definition
+Information on the definition.
 
 
 =head2 Id => Str
 
-Id of the function definition the version belongs to.
+The ID of the function definition version.
 
 
 =head2 Version => Str
 
-Version of the function definition version.
+The version of the function definition version.
 
 
 =head2 _request_id => Str
