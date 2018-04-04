@@ -9,6 +9,7 @@ package Paws::ApiGateway::RestApi;
   has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
   has MinimumCompressionSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'minimumCompressionSize');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has Policy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policy');
   has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
   has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'warnings');
 
@@ -26,8 +27,8 @@ Paws::ApiGateway::RestApi
 
 =head2 ApiKeySource => Str
 
-The source of the API key for metring requests according to a usage
-plan. Valid values are
+The source of the API key for metering requests according to a usage
+plan. Valid values are:
 
 =over
 
@@ -71,16 +72,23 @@ in API Gateway.
 
 =head2 MinimumCompressionSize => Int
 
-A nullable integer used to enable (non-negative between 0 and 10485760
-(10M) bytes, inclusive) or disable (null) compression on an API. When
-compression is enabled, compression or decompression are not applied on
-the payload if the payload size is smaller than this value. Setting it
-to zero allows compression for any payload size.
+A nullable integer that is used to enable compression (with
+non-negative between 0 and 10485760 (10M) bytes, inclusive) or disable
+compression (with a null value) on an API. When compression is enabled,
+compression or decompression is not applied on the payload if the
+payload size is smaller than this value. Setting it to zero allows
+compression for any payload size.
 
 
 =head2 Name => Str
 
 The API's name.
+
+
+=head2 Policy => Str
+
+A stringified JSON policy document that applies to this RestApi
+regardless of the caller and Method configuration.
 
 
 =head2 Version => Str

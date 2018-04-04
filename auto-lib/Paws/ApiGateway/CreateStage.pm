@@ -82,7 +82,7 @@ The version of the associated API documentation.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The string identifier of the associated RestApi.
+[Required] The string identifier of the associated RestApi.
 
 
 
@@ -94,9 +94,9 @@ The string identifier of the associated RestApi.
 
 =head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
 
-Key/Value map of strings. Valid character set is [a-zA-Z+-=._:/]. Tag
-key can be up to 128 characters and must not start with "aws:". Tag
-value can be up to 256 characters.
+The key-value map of strings. The valid character set is
+[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
+start with C<aws:>. The tag value can be up to 256 characters.
 
 
 

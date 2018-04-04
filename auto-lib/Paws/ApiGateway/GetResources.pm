@@ -51,8 +51,8 @@ the C<"methods"> string. For example, C<GET
 
 =head2 Limit => Int
 
-The maximum number of returned results per page. The value is 25 by
-default and could be between 1 - 500.
+The maximum number of returned results per page. The default value is
+25 and the maximum value is 500.
 
 
 
@@ -64,7 +64,7 @@ The current pagination position in the paged result set.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The string identifier of the associated RestApi.
+[Required] The string identifier of the associated RestApi.
 
 
 

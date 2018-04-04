@@ -39,7 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-The maximum number of returned results per page.
+The maximum number of returned results per page. The default value is
+25 and the maximum value is 500.
 
 
 
@@ -58,8 +59,9 @@ The current pagination position in the paged result set.
 
 =head2 B<REQUIRED> UsagePlanId => Str
 
-The Id of the UsagePlan resource representing the usage plan containing
-the to-be-retrieved UsagePlanKey resource representing a plan customer.
+[Required] The Id of the UsagePlan resource representing the usage plan
+containing the to-be-retrieved UsagePlanKey resource representing a
+plan customer.
 
 
 

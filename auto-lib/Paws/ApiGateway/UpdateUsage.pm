@@ -38,8 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> KeyId => Str
 
-The identifier of the API key associated with the usage plan in which a
-temporary extension is granted to the remaining quota.
+[Required] The identifier of the API key associated with the usage plan
+in which a temporary extension is granted to the remaining quota.
 
 
 
@@ -52,7 +52,7 @@ in the order specified in this list.
 
 =head2 B<REQUIRED> UsagePlanId => Str
 
-The Id of the usage plan associated with the usage data.
+[Required] The Id of the usage plan associated with the usage data.
 
 
 

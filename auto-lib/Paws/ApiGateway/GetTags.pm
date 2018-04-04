@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 Limit => Int
 
 (Not currently supported) The maximum number of returned results per
-page.
+page. The default value is 25 and the maximum value is 500.
 
 
 
@@ -52,8 +52,8 @@ result set.
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-[Required] The ARN of a resource that can be tagged. At present, Stage
-is the only taggable resource.
+[Required] The ARN of a resource that can be tagged. The resource ARN
+must be URL-encoded. At present, Stage is the only taggable resource.
 
 
 

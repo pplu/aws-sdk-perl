@@ -38,9 +38,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-The maximum number of returned results per page. The GatewayResponses
-collection does not support pagination and the limit does not apply
-here.
+The maximum number of returned results per page. The default value is
+25 and the maximum value is 500. The GatewayResponses collection does
+not support pagination and the limit does not apply here.
 
 
 
@@ -54,7 +54,7 @@ does not apply here.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The string identifier of the associated RestApi.
+[Required] The string identifier of the associated RestApi.
 
 
 

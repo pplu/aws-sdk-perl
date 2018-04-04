@@ -36,7 +36,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClientCertificateId => Str
 
-The identifier of the ClientCertificate resource to be deleted.
+[Required] The identifier of the ClientCertificate resource to be
+deleted.
 
 
 

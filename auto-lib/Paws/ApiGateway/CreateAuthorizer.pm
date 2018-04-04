@@ -90,11 +90,11 @@ The identity source for which authorization is requested.
 
 =over
 
-=item * For a C<TOKEN> authorizer, this is required and specifies the
-request header mapping expression for the custom header holding the
-authorization token submitted by the client. For example, if the token
-header name is C<Auth>, the header mapping expression is
-C<method.request.header.Auth>.
+=item * For a C<TOKEN> or C<COGNITO_USER_POOLS> authorizer, this is
+required and specifies the request header mapping expression for the
+custom header holding the authorization token submitted by the client.
+For example, if the token header name is C<Auth>, the header mapping
+expression is C<method.request.header.Auth>.
 
 =item * For the C<REQUEST> authorizer, this is required when
 authorization caching is enabled. The value is a comma-separated string
@@ -112,9 +112,6 @@ string of comma-separated mapping expressions of the specified request
 parameters. When the authorization caching is not enabled, this
 property is optional.
 
-=item * For a C<COGNITO_USER_POOLS> authorizer, this property is not
-used.
-
 =back
 
 
@@ -124,11 +121,11 @@ used.
 
 A validation expression for the incoming identity token. For C<TOKEN>
 authorizers, this value is a regular expression. API Gateway will match
-the incoming token from the client against the specified regular
-expression. It will invoke the authorizer's Lambda function there is a
-match. Otherwise, it will return a 401 Unauthorized response without
-calling the Lambda function. The validation expression does not apply
-to the C<REQUEST> authorizer.
+the C<aud> field of the incoming token from the client against the
+specified regular expression. It will invoke the authorizer's Lambda
+function when there is a match. Otherwise, it will return a 401
+Unauthorized response without calling the Lambda function. The
+validation expression does not apply to the C<REQUEST> authorizer.
 
 
 
@@ -149,7 +146,7 @@ For a C<TOKEN> or C<REQUEST> authorizer, this is not defined.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The string identifier of the associated RestApi.
+[Required] The string identifier of the associated RestApi.
 
 
 

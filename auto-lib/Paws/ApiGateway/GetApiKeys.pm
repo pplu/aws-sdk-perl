@@ -54,7 +54,8 @@ result contains key values.
 
 =head2 Limit => Int
 
-The maximum number of returned results per page.
+The maximum number of returned results per page. The default value is
+25 and the maximum value is 500.
 
 
 

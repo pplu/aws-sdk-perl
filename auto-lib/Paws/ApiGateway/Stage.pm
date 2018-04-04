@@ -100,7 +100,8 @@ Identifier (URI) of a call to API Gateway.
 
 =head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
 
-A collection of Tags associated with a given resource.
+The collection of tags. Each tag element is associated with a given
+resource.
 
 
 =head2 Variables => L<Paws::ApiGateway::MapOfStringToString>

@@ -45,13 +45,13 @@ in the order specified in this list.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The string identifier of the associated RestApi.
+[Required] The string identifier of the associated RestApi.
 
 
 
 =head2 B<REQUIRED> StageName => Str
 
-The name of the Stage resource to change information about.
+[Required] The name of the Stage resource to change information about.
 
 
 

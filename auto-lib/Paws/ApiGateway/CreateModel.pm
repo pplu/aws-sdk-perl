@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ContentType => Str
 
-The content-type for the model.
+[Required] The content-type for the model.
 
 
 
@@ -52,21 +52,22 @@ The description of the model.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the model. Must be alphanumeric.
+[Required] The name of the model. Must be alphanumeric.
 
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The RestApi identifier under which the Model will be created.
+[Required] The RestApi identifier under which the Model will be
+created.
 
 
 
 =head2 Schema => Str
 
 The schema for the model. For C<application/json> models, this should
-be JSON-schema draft v4 (http://json-schema.org/documentation.html)
-model.
+be JSON schema draft 4
+(https://tools.ietf.org/html/draft-zyp-json-schema-04) model.
 
 
 

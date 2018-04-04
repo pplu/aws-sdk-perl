@@ -46,13 +46,13 @@ The default is C<false>.
 
 =head2 B<REQUIRED> ModelName => Str
 
-The name of the model as an identifier.
+[Required] The name of the model as an identifier.
 
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The RestApi identifier under which the Model exists.
+[Required] The RestApi identifier under which the Model exists.
 
 
 

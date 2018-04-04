@@ -38,20 +38,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> KeyId => Str
 
-The identifier of a UsagePlanKey resource for a plan customer.
+[Required] The identifier of a UsagePlanKey resource for a plan
+customer.
 
 
 
 =head2 B<REQUIRED> KeyType => Str
 
-The type of a UsagePlanKey resource for a plan customer.
+[Required] The type of a UsagePlanKey resource for a plan customer.
 
 
 
 =head2 B<REQUIRED> UsagePlanId => Str
 
-The Id of the UsagePlan resource representing the usage plan containing
-the to-be-created UsagePlanKey resource representing a plan customer.
+[Required] The Id of the UsagePlan resource representing the usage plan
+containing the to-be-created UsagePlanKey resource representing a plan
+customer.
 
 
 

@@ -37,16 +37,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-[Required] The ARN of a resource that can be tagged. At present, Stage
-is the only taggable resource.
+[Required] The ARN of a resource that can be tagged. The resource ARN
+must be URL-encoded. At present, Stage is the only taggable resource.
 
 
 
 =head2 B<REQUIRED> Tags => L<Paws::ApiGateway::MapOfStringToString>
 
-[Required] Key/Value map of strings. Valid character set is
-[a-zA-Z+-=._:/]. Tag key can be up to 128 characters and must not start
-with "aws:". Tag value can be up to 256 characters.
+[Required] The key-value map of strings. The valid character set is
+[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
+start with C<aws:>. The tag value can be up to 256 characters.
 
 
 

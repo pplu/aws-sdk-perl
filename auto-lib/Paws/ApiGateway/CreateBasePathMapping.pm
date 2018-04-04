@@ -48,13 +48,13 @@ callers to specify a base path name after the domain name.
 
 =head2 B<REQUIRED> DomainName => Str
 
-The domain name of the BasePathMapping resource to create.
+[Required] The domain name of the BasePathMapping resource to create.
 
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The string identifier of the associated RestApi.
+[Required] The string identifier of the associated RestApi.
 
 
 

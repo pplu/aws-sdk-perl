@@ -86,7 +86,7 @@ private key.
 
 =head2 B<REQUIRED> DomainName => Str
 
-(Required) The name of the DomainName resource.
+[Required] The name of the DomainName resource.
 
 
 

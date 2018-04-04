@@ -37,14 +37,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-[Required] The ARN of a resource that can be tagged. At present, Stage
-is the only taggable resource.
+[Required] The ARN of a resource that can be tagged. The resource ARN
+must be URL-encoded. At present, Stage is the only taggable resource.
 
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-The Tag keys to delete.
+[Required] The Tag keys to delete.
 
 
 

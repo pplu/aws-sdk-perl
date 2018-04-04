@@ -37,6 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResponseType => Str
 
+[Required]
+
 The response type of the associated GatewayResponse. Valid values are
 
 =over
@@ -79,7 +81,7 @@ The response type of the associated GatewayResponse. Valid values are
 
 =item * UNAUTHORIZED
 
-=item * UNSUPPORTED_MEDIA_TYPES
+=item * UNSUPPORTED_MEDIA_TYPE
 
 =back
 
@@ -88,7 +90,7 @@ Valid values are: C<"DEFAULT_4XX">, C<"DEFAULT_5XX">, C<"RESOURCE_NOT_FOUND">, C
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The string identifier of the associated RestApi.
+[Required] The string identifier of the associated RestApi.
 
 
 

@@ -39,25 +39,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HttpMethod => Str
 
-Specifies a get integration response request's HTTP method.
+[Required] Specifies a get integration response request's HTTP method.
 
 
 
 =head2 B<REQUIRED> ResourceId => Str
 
-Specifies a get integration response request's resource identifier.
+[Required] Specifies a get integration response request's resource
+identifier.
 
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The string identifier of the associated RestApi.
+[Required] The string identifier of the associated RestApi.
 
 
 
 =head2 B<REQUIRED> StatusCode => Str
 
-Specifies a get integration response request's status code.
+[Required] Specifies a get integration response request's status code.
 
 
 

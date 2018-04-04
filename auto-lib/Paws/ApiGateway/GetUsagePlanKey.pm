@@ -37,15 +37,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> KeyId => Str
 
-The key Id of the to-be-retrieved UsagePlanKey resource representing a
-plan customer.
+[Required] The key Id of the to-be-retrieved UsagePlanKey resource
+representing a plan customer.
 
 
 
 =head2 B<REQUIRED> UsagePlanId => Str
 
-The Id of the UsagePlan resource representing the usage plan containing
-the to-be-retrieved UsagePlanKey resource representing a plan customer.
+[Required] The Id of the UsagePlan resource representing the usage plan
+containing the to-be-retrieved UsagePlanKey resource representing a
+plan customer.
 
 
 

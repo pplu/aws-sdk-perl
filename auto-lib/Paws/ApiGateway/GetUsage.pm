@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> EndDate => Str
 
-The ending date (e.g., 2016-12-31) of the usage data.
+[Required] The ending date (e.g., 2016-12-31) of the usage data.
 
 
 
@@ -53,7 +53,8 @@ The Id of the API key associated with the resultant usage data.
 
 =head2 Limit => Int
 
-The maximum number of returned results per page.
+The maximum number of returned results per page. The default value is
+25 and the maximum value is 500.
 
 
 
@@ -65,13 +66,13 @@ The current pagination position in the paged result set.
 
 =head2 B<REQUIRED> StartDate => Str
 
-The starting date (e.g., 2016-01-01) of the usage data.
+[Required] The starting date (e.g., 2016-01-01) of the usage data.
 
 
 
 =head2 B<REQUIRED> UsagePlanId => Str
 
-The Id of the usage plan associated with the usage data.
+[Required] The Id of the usage plan associated with the usage data.
 
 
 

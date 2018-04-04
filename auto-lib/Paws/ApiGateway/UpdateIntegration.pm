@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HttpMethod => Str
 
-Represents an update integration request's HTTP method.
+[Required] Represents an update integration request's HTTP method.
 
 
 
@@ -52,13 +52,14 @@ in the order specified in this list.
 
 =head2 B<REQUIRED> ResourceId => Str
 
-Represents an update integration request's resource identifier.
+[Required] Represents an update integration request's resource
+identifier.
 
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The string identifier of the associated RestApi.
+[Required] The string identifier of the associated RestApi.
 
 
 

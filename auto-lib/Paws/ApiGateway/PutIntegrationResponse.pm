@@ -69,13 +69,14 @@ Valid values are: C<"CONVERT_TO_BINARY">, C<"CONVERT_TO_TEXT">
 
 =head2 B<REQUIRED> HttpMethod => Str
 
-Specifies a put integration response request's HTTP method.
+[Required] Specifies a put integration response request's HTTP method.
 
 
 
 =head2 B<REQUIRED> ResourceId => Str
 
-Specifies a put integration response request's resource identifier.
+[Required] Specifies a put integration response request's resource
+identifier.
 
 
 
@@ -103,7 +104,7 @@ Specifies a put integration response's templates.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The string identifier of the associated RestApi.
+[Required] The string identifier of the associated RestApi.
 
 
 
@@ -115,8 +116,8 @@ Specifies the selection pattern of a put integration response.
 
 =head2 B<REQUIRED> StatusCode => Str
 
-Specifies the status code that is used to map the integration response
-to an existing MethodResponse.
+[Required] Specifies the status code that is used to map the
+integration response to an existing MethodResponse.
 
 
 

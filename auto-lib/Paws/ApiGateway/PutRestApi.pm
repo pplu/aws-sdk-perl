@@ -40,9 +40,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Body => Str
 
-The PUT request body containing external API definitions. Currently,
-only Swagger definition JSON files are supported. The maximum size of
-the API definition file is 2MB.
+[Required] The PUT request body containing external API definitions.
+Currently, only Swagger definition JSON files are supported. The
+maximum size of the API definition file is 2MB.
 
 
 
@@ -73,7 +73,7 @@ ignore=documentation --body 'file:///path/to/imported-api-body.json>.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The string identifier of the associated RestApi.
+[Required] The string identifier of the associated RestApi.
 
 
 

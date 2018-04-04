@@ -1027,7 +1027,7 @@ Returns: a L<Paws::ApiGateway::Resource> instance
 Creates a Resource resource.
 
 
-=head2 CreateRestApi(Name => Str, [ApiKeySource => Str, BinaryMediaTypes => ArrayRef[Str|Undef], CloneFrom => Str, Description => Str, EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>, MinimumCompressionSize => Int, Version => Str])
+=head2 CreateRestApi(Name => Str, [ApiKeySource => Str, BinaryMediaTypes => ArrayRef[Str|Undef], CloneFrom => Str, Description => Str, EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>, MinimumCompressionSize => Int, Policy => Str, Version => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateRestApi>
 
@@ -1820,7 +1820,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::TagResource>
 
 Returns: nothing
 
-Adds or updates Tags on a gievn resource.
+Adds or updates a tag on a given resource.
 
 
 =head2 TestInvokeAuthorizer(AuthorizerId => Str, RestApiId => Str, [AdditionalContext => L<Paws::ApiGateway::MapOfStringToString>, Body => Str, Headers => L<Paws::ApiGateway::MapOfHeaderValues>, PathWithQueryString => Str, StageVariables => L<Paws::ApiGateway::MapOfStringToString>])
@@ -1852,7 +1852,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::UntagResource>
 
 Returns: nothing
 
-Removes Tags from a given resource.
+Removes a tag from a given resource.
 
 
 =head2 UpdateAccount([PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])

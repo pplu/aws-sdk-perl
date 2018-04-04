@@ -37,13 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DeploymentId => Str
 
-The identifier of the Deployment resource to delete.
+[Required] The identifier of the Deployment resource to delete.
 
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The string identifier of the associated RestApi.
+[Required] The string identifier of the associated RestApi.
 
 
 

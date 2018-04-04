@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ParentId => Str
 
-The parent resource's identifier.
+[Required] The parent resource's identifier.
 
 
 
@@ -50,7 +50,7 @@ The last path segment for this resource.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The string identifier of the associated RestApi.
+[Required] The string identifier of the associated RestApi.
 
 
 

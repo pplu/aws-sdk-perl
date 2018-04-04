@@ -44,7 +44,7 @@ in the order specified in this list.
 
 =head2 B<REQUIRED> UsagePlanId => Str
 
-The Id of the to-be-updated usage plan.
+[Required] The Id of the to-be-updated usage plan.
 
 
 

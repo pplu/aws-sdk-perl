@@ -38,14 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DomainName => Str
 
-The domain name of a BasePathMapping resource.
+[Required] The domain name of a BasePathMapping resource.
 
 
 
 =head2 Limit => Int
 
-The maximum number of returned results per page. The value is 25 by
-default and could be between 1 - 500.
+The maximum number of returned results per page. The default value is
+25 and the maximum value is 500.
 
 
 

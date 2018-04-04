@@ -67,7 +67,8 @@ and AWS Regions and Endpoints for API Gateway
 
 =head2 DomainName => Str
 
-The name of the DomainName resource.
+The custom domain name as an API host name, for example,
+C<my-api.example.com>.
 
 
 =head2 EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>

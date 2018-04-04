@@ -49,7 +49,7 @@ header for direct API requests.
 
 =head2 B<REQUIRED> ExportType => Str
 
-The type of export. Currently only 'swagger' is supported.
+[Required] The type of export. Currently only 'swagger' is supported.
 
 
 
@@ -68,13 +68,13 @@ Postman tool
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The string identifier of the associated RestApi.
+[Required] The string identifier of the associated RestApi.
 
 
 
 =head2 B<REQUIRED> StageName => Str
 
-The name of the Stage that will be exported.
+[Required] The name of the Stage that will be exported.
 
 
 

@@ -114,7 +114,7 @@ Specifies whether credentials are required for a put integration.
 
 =head2 B<REQUIRED> HttpMethod => Str
 
-Specifies a put integration request's HTTP method.
+[Required] Specifies a put integration request's HTTP method.
 
 
 
@@ -181,13 +181,13 @@ client. The content type value is the key in this map, and the template
 
 =head2 B<REQUIRED> ResourceId => Str
 
-Specifies a put integration request's resource ID.
+[Required] Specifies a put integration request's resource ID.
 
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The string identifier of the associated RestApi.
+[Required] The string identifier of the associated RestApi.
 
 
 
@@ -200,7 +200,7 @@ Custom timeout between 50 and 29,000 milliseconds. The default value is
 
 =head2 B<REQUIRED> Type => Str
 
-Specifies a put integration input's type.
+[Required] Specifies a put integration input's type.
 
 Valid values are: C<"HTTP">, C<"AWS">, C<"MOCK">, C<"HTTP_PROXY">, C<"AWS_PROXY">
 
