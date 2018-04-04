@@ -83,7 +83,7 @@ The name of the patch baseline.
 
 The operating system rule used by the updated patch baseline.
 
-Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">, C<"SUSE">
+Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">, C<"SUSE">, C<"CENTOS">
 =head2 RejectedPatches => ArrayRef[Str|Undef]
 
 A list of explicitly rejected patches for the baseline.

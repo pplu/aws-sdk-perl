@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 Returns he operating system rule specified for patch groups using the
 patch baseline.
 
-Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">, C<"SUSE">
+Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">, C<"SUSE">, C<"CENTOS">
 
 =head2 B<REQUIRED> PatchGroup => Str
 

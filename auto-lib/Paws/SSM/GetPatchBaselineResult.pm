@@ -84,7 +84,7 @@ The name of the patch baseline.
 
 Returns the operating system specified for the patch baseline.
 
-Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">, C<"SUSE">
+Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">, C<"SUSE">, C<"CENTOS">
 =head2 PatchGroups => ArrayRef[Str|Undef]
 
 Patch groups included in the patch baseline.
