@@ -53,6 +53,11 @@ package Paws::CloudWatch;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::GetDashboard', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetMetricData {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::GetMetricData', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetMetricStatistics {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::GetMetricStatistics', @_);
@@ -183,7 +188,7 @@ package Paws::CloudWatch;
   }
 
 
-  sub operations { qw/DeleteAlarms DeleteDashboards DescribeAlarmHistory DescribeAlarms DescribeAlarmsForMetric DisableAlarmActions EnableAlarmActions GetDashboard GetMetricStatistics ListDashboards ListMetrics PutDashboard PutMetricAlarm PutMetricData SetAlarmState / }
+  sub operations { qw/DeleteAlarms DeleteDashboards DescribeAlarmHistory DescribeAlarms DescribeAlarmsForMetric DisableAlarmActions EnableAlarmActions GetDashboard GetMetricData GetMetricStatistics ListDashboards ListMetrics PutDashboard PutMetricAlarm PutMetricData SetAlarmState / }
 
 1;
 
@@ -317,6 +322,29 @@ Displays the details of the dashboard that you specify.
 To copy an existing dashboard, use C<GetDashboard>, and then use the
 data returned within C<DashboardBody> as the template for the new
 dashboard when you call C<PutDashboard> to create the copy.
+
+
+=head2 GetMetricData(EndTime => Str, MetricDataQueries => ArrayRef[L<Paws::CloudWatch::MetricDataQuery>], StartTime => Str, [MaxDatapoints => Int, NextToken => Str, ScanBy => Str])
+
+Each argument is described in detail in: L<Paws::CloudWatch::GetMetricData>
+
+Returns: a L<Paws::CloudWatch::GetMetricDataOutput> instance
+
+You can use the C<GetMetricData> API to retrieve as many as 100
+different metrics in a single request, with a total of as many as
+100,800 datapoints. You can also optionally perform math expressions on
+the values of the returned statistics, to create new time series that
+represent new insights into your data. For example, using Lambda
+metrics, you could divide the Errors metric by the Invocations metric
+to get an error rate time series. For more information about metric
+math expressions, see Metric Math Syntax and Functions
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax)
+in the I<Amazon CloudWatch User Guide>.
+
+Calls to the C<GetMetricData> API have a different pricing structure
+than calls to C<GetMetricStatistics>. For more information about
+pricing, see Amazon CloudWatch Pricing
+(https://aws.amazon.com/cloudwatch/pricing/).
 
 
 =head2 GetMetricStatistics(EndTime => Str, MetricName => Str, Namespace => Str, Period => Int, StartTime => Str, [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], ExtendedStatistics => ArrayRef[Str|Undef], Statistics => ArrayRef[Str|Undef], Unit => Str])

@@ -179,8 +179,9 @@ C<ExtendedStatistics>, but not both.
 =head2 Unit => Str
 
 The unit for a given metric. Metrics may be reported in multiple units.
-Not supplying a unit results in all units being returned. If the metric
-only ever reports one unit, specifying a unit has no effect.
+Not supplying a unit results in all units being returned. If you
+specify only a unit that the metric does not report, the results of the
+call are null.
 
 Valid values are: C<"Seconds">, C<"Microseconds">, C<"Milliseconds">, C<"Bytes">, C<"Kilobytes">, C<"Megabytes">, C<"Gigabytes">, C<"Terabytes">, C<"Bits">, C<"Kilobits">, C<"Megabits">, C<"Gigabits">, C<"Terabits">, C<"Percent">, C<"Count">, C<"Bytes/Second">, C<"Kilobytes/Second">, C<"Megabytes/Second">, C<"Gigabytes/Second">, C<"Terabytes/Second">, C<"Bits/Second">, C<"Kilobits/Second">, C<"Megabits/Second">, C<"Gigabits/Second">, C<"Terabits/Second">, C<"Count/Second">, C<"None">
 
