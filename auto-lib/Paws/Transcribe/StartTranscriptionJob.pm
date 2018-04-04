@@ -5,6 +5,7 @@ package Paws::Transcribe::StartTranscriptionJob;
   has Media => (is => 'ro', isa => 'Paws::Transcribe::Media', required => 1);
   has MediaFormat => (is => 'ro', isa => 'Str', required => 1);
   has MediaSampleRateHertz => (is => 'ro', isa => 'Int');
+  has Settings => (is => 'ro', isa => 'Paws::Transcribe::Settings');
   has TranscriptionJobName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -58,6 +59,13 @@ Valid values are: C<"mp3">, C<"mp4">, C<"wav">, C<"flac">
 =head2 MediaSampleRateHertz => Int
 
 The sample rate, in Hertz, of the audio track in the input media file.
+
+
+
+=head2 Settings => L<Paws::Transcribe::Settings>
+
+A C<Settings> object that provides optional settings for a
+transcription job.
 
 
 

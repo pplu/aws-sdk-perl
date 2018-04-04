@@ -38,16 +38,8 @@ Describes the output of a transcription job.
 
 =head2 TranscriptFileUri => Str
 
-  The S3 location where the transcription result is stored. The general
-form of this Uri is:
-
-C<https://E<lt>aws-regionE<gt>.amazonaws.com/E<lt>bucket-nameE<gt>/E<lt>keyprefixE<gt>/E<lt>objectkeyE<gt>>
-
-For example:
-
-C<https://s3-us-west-2.amazonaws.com/examplebucket/example.json>
-
-C<https://s3-us-west-2.amazonaws.com/examplebucket/mediadocs/example.json>
+  The S3 location where the transcription result is stored. Use this URI
+to access the results of the transcription job.
 
 
 

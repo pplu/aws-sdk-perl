@@ -1,9 +1,10 @@
 
 package Paws::Transcribe::ListTranscriptionJobs;
   use Moose;
+  has JobNameContains => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str', required => 1);
+  has Status => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -35,9 +36,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 JobNameContains => Str
+
+When specified, the jobs returned in the list are limited to jobs whose
+name contains the specified string.
+
+
+
 =head2 MaxResults => Int
 
-The maximum number of jobs to return in the response.
+The maximum number of jobs to return in the response. If there are
+fewer results in the list, this response contains only the actual
+results.
 
 
 
@@ -48,7 +58,7 @@ truncated, include the C<NextToken> to fetch the next set of jobs.
 
 
 
-=head2 B<REQUIRED> Status => Str
+=head2 Status => Str
 
 When specified, returns only transcription jobs with the specified
 status.

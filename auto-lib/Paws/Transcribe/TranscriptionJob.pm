@@ -7,6 +7,7 @@ package Paws::Transcribe::TranscriptionJob;
   has Media => (is => 'ro', isa => 'Paws::Transcribe::Media');
   has MediaFormat => (is => 'ro', isa => 'Str');
   has MediaSampleRateHertz => (is => 'ro', isa => 'Int');
+  has Settings => (is => 'ro', isa => 'Paws::Transcribe::Settings');
   has Transcript => (is => 'ro', isa => 'Paws::Transcribe::Transcript');
   has TranscriptionJobName => (is => 'ro', isa => 'Str');
   has TranscriptionJobStatus => (is => 'ro', isa => 'Str');
@@ -82,6 +83,11 @@ contains information about why the job failed.
   The sample rate, in Hertz, of the audio track in the input media file.
 
 
+=head2 Settings => L<Paws::Transcribe::Settings>
+
+  Optional settings for the transcription job.
+
+
 =head2 Transcript => L<Paws::Transcribe::Transcript>
 
   An object that describes the output of the transcription job.
@@ -94,7 +100,7 @@ contains information about why the job failed.
 
 =head2 TranscriptionJobStatus => Str
 
-  The identifier assigned to the job when it was created.
+  The status of the transcription job.
 
 
 

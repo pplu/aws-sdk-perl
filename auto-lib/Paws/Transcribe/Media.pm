@@ -38,15 +38,20 @@ Describes the input media file in a transcription request.
 
 =head2 MediaFileUri => Str
 
-  The S3 location of the input media file. The general form is:
+  The S3 location of the input media file. The URI must be in the same
+region as the API endpoint that you are calling. The general form is:
 
 C<https://E<lt>aws-regionE<gt>.amazonaws.com/E<lt>bucket-nameE<gt>/E<lt>keyprefixE<gt>/E<lt>objectkeyE<gt>>
 
 For example:
 
-C<https://s3-us-west-2.amazonaws.com/examplebucket/example.mp4>
+C<https://s3-us-east-1.amazonaws.com/examplebucket/example.mp4>
 
-C<https://s3-us-west-2.amazonaws.com/examplebucket/mediadocs/example.mp4>
+C<https://s3-us-east-1.amazonaws.com/examplebucket/mediadocs/example.mp4>
+
+For more information about S3 object names, see Object Keys
+(http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)
+in the I<Amazon S3 Developer Guide>.
 
 
 

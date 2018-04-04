@@ -14,9 +14,24 @@ package Paws::Transcribe;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub CreateVocabulary {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Transcribe::CreateVocabulary', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteVocabulary {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Transcribe::DeleteVocabulary', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetTranscriptionJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Transcribe::GetTranscriptionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetVocabulary {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Transcribe::GetVocabulary', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListTranscriptionJobs {
@@ -24,15 +39,25 @@ package Paws::Transcribe;
     my $call_object = $self->new_with_coercions('Paws::Transcribe::ListTranscriptionJobs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListVocabularies {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Transcribe::ListVocabularies', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartTranscriptionJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Transcribe::StartTranscriptionJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateVocabulary {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Transcribe::UpdateVocabulary', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/GetTranscriptionJob ListTranscriptionJobs StartTranscriptionJob / }
+  sub operations { qw/CreateVocabulary DeleteVocabulary GetTranscriptionJob GetVocabulary ListTranscriptionJobs ListVocabularies StartTranscriptionJob UpdateVocabulary / }
 
 1;
 
@@ -64,6 +89,25 @@ Operations and objects for transcribing speech to text.
 
 =head1 METHODS
 
+=head2 CreateVocabulary(LanguageCode => Str, Phrases => ArrayRef[Str|Undef], VocabularyName => Str)
+
+Each argument is described in detail in: L<Paws::Transcribe::CreateVocabulary>
+
+Returns: a L<Paws::Transcribe::CreateVocabularyResponse> instance
+
+Creates a new custom vocabulary that you can use to change the way
+Amazon Transcribe handles transcription of an audio file.
+
+
+=head2 DeleteVocabulary(VocabularyName => Str)
+
+Each argument is described in detail in: L<Paws::Transcribe::DeleteVocabulary>
+
+Returns: nothing
+
+Deletes a vocabulary from Amazon Transcribe.
+
+
 =head2 GetTranscriptionJob(TranscriptionJobName => Str)
 
 Each argument is described in detail in: L<Paws::Transcribe::GetTranscriptionJob>
@@ -71,12 +115,21 @@ Each argument is described in detail in: L<Paws::Transcribe::GetTranscriptionJob
 Returns: a L<Paws::Transcribe::GetTranscriptionJobResponse> instance
 
 Returns information about a transcription job. To see the status of the
-job, check the C<Status> field. If the status is C<COMPLETE>, the job
-is finished and you can find the results at the location specified in
-the C<TranscriptionFileUri> field.
+job, check the C<TranscriptionJobStatus> field. If the status is
+C<COMPLETED>, the job is finished and you can find the results at the
+location specified in the C<TranscriptionFileUri> field.
 
 
-=head2 ListTranscriptionJobs(Status => Str, [MaxResults => Int, NextToken => Str])
+=head2 GetVocabulary(VocabularyName => Str)
+
+Each argument is described in detail in: L<Paws::Transcribe::GetVocabulary>
+
+Returns: a L<Paws::Transcribe::GetVocabularyResponse> instance
+
+Gets information about a vocabulary.
+
+
+=head2 ListTranscriptionJobs([JobNameContains => Str, MaxResults => Int, NextToken => Str, Status => Str])
 
 Each argument is described in detail in: L<Paws::Transcribe::ListTranscriptionJobs>
 
@@ -85,13 +138,32 @@ Returns: a L<Paws::Transcribe::ListTranscriptionJobsResponse> instance
 Lists transcription jobs with the specified status.
 
 
-=head2 StartTranscriptionJob(LanguageCode => Str, Media => L<Paws::Transcribe::Media>, MediaFormat => Str, TranscriptionJobName => Str, [MediaSampleRateHertz => Int])
+=head2 ListVocabularies([MaxResults => Int, NameContains => Str, NextToken => Str, StateEquals => Str])
+
+Each argument is described in detail in: L<Paws::Transcribe::ListVocabularies>
+
+Returns: a L<Paws::Transcribe::ListVocabulariesResponse> instance
+
+Returns a list of vocabularies that match the specified criteria. If no
+criteria are specified, returns the entire list of vocabularies.
+
+
+=head2 StartTranscriptionJob(LanguageCode => Str, Media => L<Paws::Transcribe::Media>, MediaFormat => Str, TranscriptionJobName => Str, [MediaSampleRateHertz => Int, Settings => L<Paws::Transcribe::Settings>])
 
 Each argument is described in detail in: L<Paws::Transcribe::StartTranscriptionJob>
 
 Returns: a L<Paws::Transcribe::StartTranscriptionJobResponse> instance
 
 Starts an asynchronous job to transcribe speech to text.
+
+
+=head2 UpdateVocabulary(LanguageCode => Str, Phrases => ArrayRef[Str|Undef], VocabularyName => Str)
+
+Each argument is described in detail in: L<Paws::Transcribe::UpdateVocabulary>
+
+Returns: a L<Paws::Transcribe::UpdateVocabularyResponse> instance
+
+Updates an existing vocabulary with new values.
 
 
 
