@@ -50,8 +50,8 @@ Config to evaluate your AWS resources.
 
 =head2 MaximumExecutionFrequency => Str
 
-  The frequency that you want AWS Config to run evaluations for a custom
-rule with a periodic trigger. If you specify a value for
+  The frequency at which you want AWS Config to run evaluations for a
+custom rule with a periodic trigger. If you specify a value for
 C<MaximumExecutionFrequency>, then C<MessageType> must use the
 C<ScheduledNotification> value.
 
@@ -98,8 +98,7 @@ evaluation when AWS Config delivers a configuration snapshot.
 =back
 
 If you want your custom rule to be triggered by configuration changes,
-specify two SourceDetail objects, one for
-C<ConfigurationItemChangeNotification> and one for
+specify both C<ConfigurationItemChangeNotification> and
 C<OversizedConfigurationItemChangeNotification>.
 
 

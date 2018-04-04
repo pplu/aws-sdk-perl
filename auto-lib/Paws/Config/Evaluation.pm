@@ -69,7 +69,7 @@ type.
 
 Similarly, AWS Config does not accept C<INSUFFICIENT_DATA> as the value
 for C<ComplianceType> from a C<PutEvaluations> request. For example, an
-AWS Lambda function for a custom Config rule cannot pass an
+AWS Lambda function for a custom AWS Config rule cannot pass an
 C<INSUFFICIENT_DATA> value to AWS Config.
 
 

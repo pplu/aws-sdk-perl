@@ -35,8 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ConfigRuleName => Str
 
-The name of the Config rule for which you want to delete the evaluation
-results.
+The name of the AWS Config rule for which you want to delete the
+evaluation results.
 
 
 

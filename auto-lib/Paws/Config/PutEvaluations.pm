@@ -46,7 +46,7 @@ AWS Config rule that invokes the AWS Lambda function.
 =head2 B<REQUIRED> ResultToken => Str
 
 An encrypted token that associates an evaluation with an AWS Config
-rule. Identifies the rule and the event that triggered the evaluation
+rule. Identifies the rule and the event that triggered the evaluation.
 
 
 

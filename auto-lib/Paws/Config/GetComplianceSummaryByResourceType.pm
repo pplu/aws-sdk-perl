@@ -40,8 +40,8 @@ are compliant and the number that are noncompliant for each resource
 type.
 
 For this request, you can specify an AWS resource type such as
-C<AWS::EC2::Instance>, and you can specify that the resource type is an
-AWS account by specifying C<AWS::::Account>.
+C<AWS::EC2::Instance>. You can specify that the resource type is an AWS
+account by specifying C<AWS::::Account>.
 
 
 

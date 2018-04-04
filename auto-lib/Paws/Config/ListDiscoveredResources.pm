@@ -48,7 +48,7 @@ By default, deleted resources are not included.
 =head2 Limit => Int
 
 The maximum number of resource identifiers returned on each page. The
-default is 100. You cannot specify a limit greater than 100. If you
+default is 100. You cannot specify a number greater than 100. If you
 specify 0, AWS Config uses the default.
 
 

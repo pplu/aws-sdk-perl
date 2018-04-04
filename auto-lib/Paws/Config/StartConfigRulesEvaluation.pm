@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ConfigRuleNames => ArrayRef[Str|Undef]
 
-The list of names of Config rules that you want to run evaluations for.
+The list of names of AWS Config rules that you want to run evaluations
+for.
 
 
 

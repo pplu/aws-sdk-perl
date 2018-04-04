@@ -47,7 +47,7 @@ configuration.
 
 =head2 ComplianceResourceId => Str
 
-  The IDs of the only AWS resource that you want to trigger an evaluation
+  The ID of the only AWS resource that you want to trigger an evaluation
 for the rule. If you specify a resource ID, you must specify one
 resource type for C<ComplianceResourceTypes>.
 

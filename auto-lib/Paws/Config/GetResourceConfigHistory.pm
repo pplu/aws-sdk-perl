@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ChronologicalOrder => Str
 
-The chronological order for configuration items listed. By default the
+The chronological order for configuration items listed. By default, the
 results are listed in reverse chronological order.
 
 Valid values are: C<"Reverse">, C<"Forward">
@@ -50,7 +50,7 @@ Valid values are: C<"Reverse">, C<"Forward">
 
 The time stamp that indicates an earlier time. If not specified, the
 action returns paginated results that contain configuration items that
-start from when the first configuration item was recorded.
+start when the first configuration item was recorded.
 
 
 
@@ -64,7 +64,7 @@ time is taken.
 =head2 Limit => Int
 
 The maximum number of configuration items returned on each page. The
-default is 10. You cannot specify a limit greater than 100. If you
+default is 10. You cannot specify a number greater than 100. If you
 specify 0, AWS Config uses the default.
 
 

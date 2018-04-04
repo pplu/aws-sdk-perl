@@ -45,7 +45,7 @@ Status information for your AWS managed Config rules. The status
 includes information such as the last time the rule ran, the last time
 it failed, and the related error for the last failure.
 
-This action does not return status information about custom Config
+This action does not return status information about custom AWS Config
 rules.
 
 =head1 ATTRIBUTES

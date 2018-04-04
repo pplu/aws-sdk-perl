@@ -80,7 +80,7 @@ The current status of the configuration recorder.
 
 =head2 Recording => Bool
 
-  Specifies whether the recorder is currently recording or not.
+  Specifies whether or not the recorder is currently recording.
 
 
 

@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 Limit => Int
 
 The maximum number of ResourceCount objects returned on each page. The
-default is 100. You cannot specify a limit greater than 100. If you
+default is 100. You cannot specify a number greater than 100. If you
 specify 0, AWS Config uses the default.
 
 
@@ -53,7 +53,7 @@ the next page of results in a paginated response.
 =head2 ResourceTypes => ArrayRef[Str|Undef]
 
 The comma-separated list that specifies the resource types that you
-want the AWS Config to return. For example, (C<"AWS::EC2::Instance">,
+want AWS Config to return (for example, C<"AWS::EC2::Instance">,
 C<"AWS::IAM::User">).
 
 If a value for C<resourceTypes> is not specified, AWS Config returns
