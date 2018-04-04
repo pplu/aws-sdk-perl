@@ -22,6 +22,7 @@ package Paws::DeviceFarm::Run;
   has Result => (is => 'ro', isa => 'Str', request_name => 'result', traits => ['NameInRequest']);
   has ResultCode => (is => 'ro', isa => 'Str', request_name => 'resultCode', traits => ['NameInRequest']);
   has Seed => (is => 'ro', isa => 'Int', request_name => 'seed', traits => ['NameInRequest']);
+  has SkipAppResign => (is => 'ro', isa => 'Bool', request_name => 'skipAppResign', traits => ['NameInRequest']);
   has Started => (is => 'ro', isa => 'Str', request_name => 'started', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Stopped => (is => 'ro', isa => 'Str', request_name => 'stopped', traits => ['NameInRequest']);
@@ -235,6 +236,17 @@ Using the same seed value between tests ensures identical event
 sequences.
 
 
+=head2 SkipAppResign => Bool
+
+  When set to C<true>, for private devices, Device Farm will not sign
+your app again. For public devices, Device Farm always signs your apps
+again and this parameter has no effect.
+
+For more information about how Device Farm re-signs your app(s), see Do
+you modify my app? (https://aws.amazon.com/device-farm/faq/) in the
+I<AWS Device Farm FAQs>.
+
+
 =head2 Started => Str
 
   The run's start time.
@@ -370,8 +382,7 @@ XCTEST_UI: The XCode UI test type.
 
 =head2 WebUrl => Str
 
-  A pre-signed Amazon S3 URL that can be used with a corresponding GET
-request to download the symbol file for the run.
+  The Device Farm console URL for the recording of the run.
 
 
 

@@ -19,6 +19,11 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::CreateDevicePool', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateInstanceProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::CreateInstanceProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateNetworkProfile {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::CreateNetworkProfile', @_);
@@ -42,6 +47,11 @@ package Paws::DeviceFarm;
   sub DeleteDevicePool {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::DeleteDevicePool', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteInstanceProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::DeleteInstanceProfile', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteNetworkProfile {
@@ -79,6 +89,11 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetDevice', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetDeviceInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetDeviceInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetDevicePool {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetDevicePool', @_);
@@ -87,6 +102,11 @@ package Paws::DeviceFarm;
   sub GetDevicePoolCompatibility {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetDevicePoolCompatibility', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetInstanceProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetInstanceProfile', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetJob {
@@ -144,6 +164,11 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListArtifacts', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListDeviceInstances {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListDeviceInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListDevicePools {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListDevicePools', @_);
@@ -152,6 +177,11 @@ package Paws::DeviceFarm;
   sub ListDevices {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListDevices', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListInstanceProfiles {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListInstanceProfiles', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListJobs {
@@ -244,9 +274,19 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::StopRun', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateDeviceInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::UpdateDeviceInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateDevicePool {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::UpdateDevicePool', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateInstanceProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::UpdateInstanceProfile', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateNetworkProfile {
@@ -587,7 +627,7 @@ package Paws::DeviceFarm;
   }
 
 
-  sub operations { qw/CreateDevicePool CreateNetworkProfile CreateProject CreateRemoteAccessSession CreateUpload DeleteDevicePool DeleteNetworkProfile DeleteProject DeleteRemoteAccessSession DeleteRun DeleteUpload GetAccountSettings GetDevice GetDevicePool GetDevicePoolCompatibility GetJob GetNetworkProfile GetOfferingStatus GetProject GetRemoteAccessSession GetRun GetSuite GetTest GetUpload InstallToRemoteAccessSession ListArtifacts ListDevicePools ListDevices ListJobs ListNetworkProfiles ListOfferingPromotions ListOfferings ListOfferingTransactions ListProjects ListRemoteAccessSessions ListRuns ListSamples ListSuites ListTests ListUniqueProblems ListUploads PurchaseOffering RenewOffering ScheduleRun StopRemoteAccessSession StopRun UpdateDevicePool UpdateNetworkProfile UpdateProject / }
+  sub operations { qw/CreateDevicePool CreateInstanceProfile CreateNetworkProfile CreateProject CreateRemoteAccessSession CreateUpload DeleteDevicePool DeleteInstanceProfile DeleteNetworkProfile DeleteProject DeleteRemoteAccessSession DeleteRun DeleteUpload GetAccountSettings GetDevice GetDeviceInstance GetDevicePool GetDevicePoolCompatibility GetInstanceProfile GetJob GetNetworkProfile GetOfferingStatus GetProject GetRemoteAccessSession GetRun GetSuite GetTest GetUpload InstallToRemoteAccessSession ListArtifacts ListDeviceInstances ListDevicePools ListDevices ListInstanceProfiles ListJobs ListNetworkProfiles ListOfferingPromotions ListOfferings ListOfferingTransactions ListProjects ListRemoteAccessSessions ListRuns ListSamples ListSuites ListTests ListUniqueProblems ListUploads PurchaseOffering RenewOffering ScheduleRun StopRemoteAccessSession StopRun UpdateDeviceInstance UpdateDevicePool UpdateInstanceProfile UpdateNetworkProfile UpdateProject / }
 
 1;
 
@@ -630,6 +670,16 @@ Returns: a L<Paws::DeviceFarm::CreateDevicePoolResult> instance
 Creates a device pool.
 
 
+=head2 CreateInstanceProfile(Name => Str, [Description => Str, ExcludeAppPackagesFromCleanup => ArrayRef[Str|Undef], PackageCleanup => Bool, RebootAfterUse => Bool])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::CreateInstanceProfile>
+
+Returns: a L<Paws::DeviceFarm::CreateInstanceProfileResult> instance
+
+Creates a profile that can be applied to one or more private fleet
+device instances.
+
+
 =head2 CreateNetworkProfile(Name => Str, ProjectArn => Str, [Description => Str, DownlinkBandwidthBits => Int, DownlinkDelayMs => Int, DownlinkJitterMs => Int, DownlinkLossPercent => Int, Type => Str, UplinkBandwidthBits => Int, UplinkDelayMs => Int, UplinkJitterMs => Int, UplinkLossPercent => Int])
 
 Each argument is described in detail in: L<Paws::DeviceFarm::CreateNetworkProfile>
@@ -648,7 +698,7 @@ Returns: a L<Paws::DeviceFarm::CreateProjectResult> instance
 Creates a new project.
 
 
-=head2 CreateRemoteAccessSession(DeviceArn => Str, ProjectArn => Str, [ClientId => Str, Configuration => L<Paws::DeviceFarm::CreateRemoteAccessSessionConfiguration>, InteractionMode => Str, Name => Str, RemoteDebugEnabled => Bool, RemoteRecordAppArn => Str, RemoteRecordEnabled => Bool, SshPublicKey => Str])
+=head2 CreateRemoteAccessSession(DeviceArn => Str, ProjectArn => Str, [ClientId => Str, Configuration => L<Paws::DeviceFarm::CreateRemoteAccessSessionConfiguration>, InstanceArn => Str, InteractionMode => Str, Name => Str, RemoteDebugEnabled => Bool, RemoteRecordAppArn => Str, RemoteRecordEnabled => Bool, SkipAppResign => Bool, SshPublicKey => Str])
 
 Each argument is described in detail in: L<Paws::DeviceFarm::CreateRemoteAccessSession>
 
@@ -674,6 +724,16 @@ Returns: a L<Paws::DeviceFarm::DeleteDevicePoolResult> instance
 
 Deletes a device pool given the pool ARN. Does not allow deletion of
 curated pools owned by the system.
+
+
+=head2 DeleteInstanceProfile(Arn => Str)
+
+Each argument is described in detail in: L<Paws::DeviceFarm::DeleteInstanceProfile>
+
+Returns: a L<Paws::DeviceFarm::DeleteInstanceProfileResult> instance
+
+Deletes a profile that can be applied to one or more private device
+instances.
 
 
 =head2 DeleteNetworkProfile(Arn => Str)
@@ -744,6 +804,16 @@ Returns: a L<Paws::DeviceFarm::GetDeviceResult> instance
 Gets information about a unique device type.
 
 
+=head2 GetDeviceInstance(Arn => Str)
+
+Each argument is described in detail in: L<Paws::DeviceFarm::GetDeviceInstance>
+
+Returns: a L<Paws::DeviceFarm::GetDeviceInstanceResult> instance
+
+Returns information about a device instance belonging to a private
+device fleet.
+
+
 =head2 GetDevicePool(Arn => Str)
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetDevicePool>
@@ -760,6 +830,15 @@ Each argument is described in detail in: L<Paws::DeviceFarm::GetDevicePoolCompat
 Returns: a L<Paws::DeviceFarm::GetDevicePoolCompatibilityResult> instance
 
 Gets information about compatibility with a device pool.
+
+
+=head2 GetInstanceProfile(Arn => Str)
+
+Each argument is described in detail in: L<Paws::DeviceFarm::GetInstanceProfile>
+
+Returns: a L<Paws::DeviceFarm::GetInstanceProfileResult> instance
+
+Returns information about the specified instance profile.
 
 
 =head2 GetJob(Arn => Str)
@@ -869,6 +948,16 @@ Returns: a L<Paws::DeviceFarm::ListArtifactsResult> instance
 Gets information about artifacts.
 
 
+=head2 ListDeviceInstances([MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::ListDeviceInstances>
+
+Returns: a L<Paws::DeviceFarm::ListDeviceInstancesResult> instance
+
+Returns information about the private device instances associated with
+one or more AWS accounts.
+
+
 =head2 ListDevicePools(Arn => Str, [NextToken => Str, Type => Str])
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListDevicePools>
@@ -885,6 +974,15 @@ Each argument is described in detail in: L<Paws::DeviceFarm::ListDevices>
 Returns: a L<Paws::DeviceFarm::ListDevicesResult> instance
 
 Gets information about unique device types.
+
+
+=head2 ListInstanceProfiles([MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::ListInstanceProfiles>
+
+Returns: a L<Paws::DeviceFarm::ListInstanceProfilesResult> instance
+
+Returns information about all the instance profiles in an AWS account.
 
 
 =head2 ListJobs(Arn => Str, [NextToken => Str])
@@ -1083,6 +1181,15 @@ devices. You will be billed for Setup, Teardown, and any tests that
 were in progress or already completed.
 
 
+=head2 UpdateDeviceInstance(Arn => Str, [Labels => ArrayRef[Str|Undef], ProfileArn => Str])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::UpdateDeviceInstance>
+
+Returns: a L<Paws::DeviceFarm::UpdateDeviceInstanceResult> instance
+
+Updates information about an existing private device instance.
+
+
 =head2 UpdateDevicePool(Arn => Str, [Description => Str, Name => Str, Rules => ArrayRef[L<Paws::DeviceFarm::Rule>]])
 
 Each argument is described in detail in: L<Paws::DeviceFarm::UpdateDevicePool>
@@ -1092,6 +1199,15 @@ Returns: a L<Paws::DeviceFarm::UpdateDevicePoolResult> instance
 Modifies the name, description, and rules in a device pool given the
 attributes and the pool ARN. Rule updates are all-or-nothing, meaning
 they can only be updated as a whole (or not at all).
+
+
+=head2 UpdateInstanceProfile(Arn => Str, [Description => Str, ExcludeAppPackagesFromCleanup => ArrayRef[Str|Undef], Name => Str, PackageCleanup => Bool, RebootAfterUse => Bool])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::UpdateInstanceProfile>
+
+Returns: a L<Paws::DeviceFarm::UpdateInstanceProfileResult> instance
+
+Updates information about an existing private device instance profile.
 
 
 =head2 UpdateNetworkProfile(Arn => Str, [Description => Str, DownlinkBandwidthBits => Int, DownlinkDelayMs => Int, DownlinkJitterMs => Int, DownlinkLossPercent => Int, Name => Str, Type => Str, UplinkBandwidthBits => Int, UplinkDelayMs => Int, UplinkJitterMs => Int, UplinkLossPercent => Int])

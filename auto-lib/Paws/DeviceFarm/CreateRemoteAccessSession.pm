@@ -4,12 +4,14 @@ package Paws::DeviceFarm::CreateRemoteAccessSession;
   has ClientId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientId' );
   has Configuration => (is => 'ro', isa => 'Paws::DeviceFarm::CreateRemoteAccessSessionConfiguration', traits => ['NameInRequest'], request_name => 'configuration' );
   has DeviceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deviceArn' , required => 1);
+  has InstanceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceArn' );
   has InteractionMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'interactionMode' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
   has ProjectArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectArn' , required => 1);
   has RemoteDebugEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'remoteDebugEnabled' );
   has RemoteRecordAppArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'remoteRecordAppArn' );
   has RemoteRecordEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'remoteRecordEnabled' );
+  has SkipAppResign => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'skipAppResign' );
   has SshPublicKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sshPublicKey' );
 
   use MooseX::ClassAttribute;
@@ -61,6 +63,13 @@ The configuration information for the remote access session request.
 
 The Amazon Resource Name (ARN) of the device for which you want to
 create a remote access session.
+
+
+
+=head2 InstanceArn => Str
+
+The Amazon Resource Name (ARN) of the device instance for which you
+want to create a remote access session.
 
 
 
@@ -124,6 +133,18 @@ access session.
 
 Set to C<true> to enable remote recording for the remote access
 session.
+
+
+
+=head2 SkipAppResign => Bool
+
+When set to C<true>, for private devices, Device Farm will not sign
+your app again. For public devices, Device Farm always signs your apps
+again and this parameter has no effect.
+
+For more information about how Device Farm re-signs your app(s), see Do
+you modify my app? (https://aws.amazon.com/device-farm/faq/) in the
+I<AWS Device Farm FAQs>.
 
 
 

@@ -9,6 +9,7 @@ package Paws::DeviceFarm::RemoteAccessSession;
   has DeviceUdid => (is => 'ro', isa => 'Str', request_name => 'deviceUdid', traits => ['NameInRequest']);
   has Endpoint => (is => 'ro', isa => 'Str', request_name => 'endpoint', traits => ['NameInRequest']);
   has HostAddress => (is => 'ro', isa => 'Str', request_name => 'hostAddress', traits => ['NameInRequest']);
+  has InstanceArn => (is => 'ro', isa => 'Str', request_name => 'instanceArn', traits => ['NameInRequest']);
   has InteractionMode => (is => 'ro', isa => 'Str', request_name => 'interactionMode', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
@@ -16,6 +17,7 @@ package Paws::DeviceFarm::RemoteAccessSession;
   has RemoteRecordAppArn => (is => 'ro', isa => 'Str', request_name => 'remoteRecordAppArn', traits => ['NameInRequest']);
   has RemoteRecordEnabled => (is => 'ro', isa => 'Bool', request_name => 'remoteRecordEnabled', traits => ['NameInRequest']);
   has Result => (is => 'ro', isa => 'Str', request_name => 'result', traits => ['NameInRequest']);
+  has SkipAppResign => (is => 'ro', isa => 'Bool', request_name => 'skipAppResign', traits => ['NameInRequest']);
   has Started => (is => 'ro', isa => 'Str', request_name => 'started', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Stopped => (is => 'ro', isa => 'Str', request_name => 'stopped', traits => ['NameInRequest']);
@@ -105,6 +107,11 @@ debugging is enabled for the remote access session.
   IP address of the EC2 host where you need to connect to remotely debug
 devices. Only returned if remote debugging is enabled for the remote
 access session.
+
+
+=head2 InstanceArn => Str
+
+  The Amazon Resource Name (ARN) of the instance.
 
 
 =head2 InteractionMode => Str
@@ -199,6 +206,17 @@ STOPPED: A stopped condition.
 
 =back
 
+
+
+=head2 SkipAppResign => Bool
+
+  When set to C<true>, for private devices, Device Farm will not sign
+your app again. For public devices, Device Farm always signs your apps
+again and this parameter has no effect.
+
+For more information about how Device Farm re-signs your app(s), see Do
+you modify my app? (https://aws.amazon.com/device-farm/faq/) in the
+I<AWS Device Farm FAQs>.
 
 
 =head2 Started => Str

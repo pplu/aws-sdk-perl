@@ -8,6 +8,7 @@ package Paws::DeviceFarm::Device;
   has FormFactor => (is => 'ro', isa => 'Str', request_name => 'formFactor', traits => ['NameInRequest']);
   has HeapSize => (is => 'ro', isa => 'Int', request_name => 'heapSize', traits => ['NameInRequest']);
   has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
+  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DeviceInstance]', request_name => 'instances', traits => ['NameInRequest']);
   has Manufacturer => (is => 'ro', isa => 'Str', request_name => 'manufacturer', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
   has Model => (is => 'ro', isa => 'Str', request_name => 'model', traits => ['NameInRequest']);
@@ -108,6 +109,11 @@ TABLET: The tablet form factor.
 =head2 Image => Str
 
   The device's image name.
+
+
+=head2 Instances => ArrayRef[L<Paws::DeviceFarm::DeviceInstance>]
+
+  The instances belonging to this device.
 
 
 =head2 Manufacturer => Str

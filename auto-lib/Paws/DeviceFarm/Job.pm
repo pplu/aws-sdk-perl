@@ -5,6 +5,7 @@ package Paws::DeviceFarm::Job;
   has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has Device => (is => 'ro', isa => 'Paws::DeviceFarm::Device', request_name => 'device', traits => ['NameInRequest']);
   has DeviceMinutes => (is => 'ro', isa => 'Paws::DeviceFarm::DeviceMinutes', request_name => 'deviceMinutes', traits => ['NameInRequest']);
+  has InstanceArn => (is => 'ro', isa => 'Str', request_name => 'instanceArn', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Result => (is => 'ro', isa => 'Str', request_name => 'result', traits => ['NameInRequest']);
@@ -70,6 +71,11 @@ Represents a device.
 =head2 DeviceMinutes => L<Paws::DeviceFarm::DeviceMinutes>
 
   Represents the total (metered or unmetered) minutes used by the job.
+
+
+=head2 InstanceArn => Str
+
+  The Amazon Resource Name (ARN) of the instance.
 
 
 =head2 Message => Str

@@ -71,6 +71,14 @@ REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access.
 
 APPIUM_VERSION: The Appium version for the test.
 
+=item *
+
+INSTANCE_ARN: The Amazon Resource Name (ARN) of the device instance.
+
+=item *
+
+INSTANCE_LABELS: The label of the device instance.
+
 =back
 
 

@@ -31,16 +31,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head1 DESCRIPTION
 
-Creates the configuration settings for a remote access session,
-including the device model and type.
+Configuration settings for a remote access session, including billing
+method.
 
 =head1 ATTRIBUTES
 
 
 =head2 BillingMethod => Str
 
-  Returns the billing method for purposes of configuring a remote access
-session.
+  The billing method for the remote access session.
 
 
 
