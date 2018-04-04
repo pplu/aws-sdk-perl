@@ -1,6 +1,7 @@
 package Paws::ACM::CertificateDetail;
   use Moose;
   has CertificateArn => (is => 'ro', isa => 'Str');
+  has CertificateAuthorityArn => (is => 'ro', isa => 'Str');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has DomainName => (is => 'ro', isa => 'Str');
   has DomainValidationOptions => (is => 'ro', isa => 'ArrayRef[Paws::ACM::DomainValidation]');
@@ -15,6 +16,7 @@ package Paws::ACM::CertificateDetail;
   has NotAfter => (is => 'ro', isa => 'Str');
   has NotBefore => (is => 'ro', isa => 'Str');
   has Options => (is => 'ro', isa => 'Paws::ACM::CertificateOptions');
+  has RenewalEligibility => (is => 'ro', isa => 'Str');
   has RenewalSummary => (is => 'ro', isa => 'Paws::ACM::RenewalSummary');
   has RevocationReason => (is => 'ro', isa => 'Str');
   has RevokedAt => (is => 'ro', isa => 'Str');
@@ -68,6 +70,15 @@ about ARNs, see Amazon Resource Names (ARNs) and AWS Service Namespaces
 in the I<AWS General Reference>.
 
 
+=head2 CertificateAuthorityArn => Str
+
+  The Amazon Resource Name (ARN) of the ACM PCA private certificate
+authority (CA) that issued the certificate. This has the following
+format:
+
+C<arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012>
+
+
 =head2 CreatedAt => Str
 
   The time at which the certificate was requested. This value exists only
@@ -99,7 +110,7 @@ used and consists of a name and an object identifier (OID).
   The reason the certificate request failed. This value exists only when
 the certificate status is C<FAILED>. For more information, see
 Certificate Request Failed
-(http://docs.aws.amazon.com/acm/latest/userguide/troubleshooting.html#troubleshooting-failed)
+(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/troubleshooting.html#troubleshooting-failed)
 in the I<AWS Certificate Manager User Guide>.
 
 
@@ -159,12 +170,17 @@ might respond to certificate that has not been logged by showing an
 error message. The logs are cryptographically secure.
 
 
+=head2 RenewalEligibility => Str
+
+  Specifies whether the certificate is eligible for renewal.
+
+
 =head2 RenewalSummary => L<Paws::ACM::RenewalSummary>
 
   Contains information about the status of ACM's managed renewal
-(http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for
-the certificate. This field exists only when the certificate type is
-C<AMAZON_ISSUED>.
+(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/acm-renewal.html)
+for the certificate. This field exists only when the certificate type
+is C<AMAZON_ISSUED>.
 
 
 =head2 RevocationReason => Str
@@ -216,11 +232,11 @@ the website.
 value is C<AMAZON_ISSUED>. For certificates that you imported with
 ImportCertificate, this value is C<IMPORTED>. ACM does not provide
 managed renewal
-(http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for
-imported certificates. For more information about the differences
+(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/acm-renewal.html)
+for imported certificates. For more information about the differences
 between certificates that you import and those that ACM provides, see
 Importing Certificates
-(http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html)
+(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/import-certificate.html)
 in the I<AWS Certificate Manager User Guide>.
 
 

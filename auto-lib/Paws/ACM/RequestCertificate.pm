@@ -1,6 +1,7 @@
 
 package Paws::ACM::RequestCertificate;
   use Moose;
+  has CertificateAuthorityArn => (is => 'ro', isa => 'Str');
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has DomainValidationOptions => (is => 'ro', isa => 'ArrayRef[Paws::ACM::DomainValidationOption]');
   has IdempotencyToken => (is => 'ro', isa => 'Str');
@@ -36,6 +37,19 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 CertificateAuthorityArn => Str
+
+The Amazon Resource Name (ARN) of the private certificate authority
+(CA) that will be used to issue the certificate. For more information
+about private CAs, see the AWS Certificate Manager Private Certificate
+Authority (PCA)
+(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm-pca/latest/userguide/PcaWelcome.html)
+user guide. The ARN must have the following form:
+
+C<arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012>
+
 
 
 =head2 B<REQUIRED> DomainName => Str
@@ -79,7 +93,7 @@ makes it possible to detect SSL/TLS certificates that have been
 mistakenly or maliciously issued. Certificates that have not been
 logged typically produce an error message in a browser. For more
 information, see Opting Out of Certificate Transparency Logging
-(http://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
+(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
 
 
 
@@ -93,7 +107,7 @@ maximum number of domain names that you can add to an ACM certificate
 is 100. However, the initial limit is 10 domain names. If you need more
 than 10 names, you must request a limit increase. For more information,
 see Limits
-(http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html).
+(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/acm-limits.html).
 
 The maximum length of a SAN DNS name is 253 octets. The name is made up
 of multiple labels separated by periods. No label can be longer than 63
@@ -128,9 +142,9 @@ octets.
 
 The method you want to use to validate that you own or control domain.
 You can validate with DNS
-(http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html)
+(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/gs-acm-validate-dns.html)
 or validate with email
-(http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html).
+(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/gs-acm-validate-email.html).
 We recommend that you use DNS validation.
 
 Valid values are: C<"EMAIL">, C<"DNS">

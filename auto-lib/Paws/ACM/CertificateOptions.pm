@@ -39,7 +39,7 @@ logged typically generate a browser error. Transparency makes it
 possible for you to detect SSL/TLS certificates that have been
 mistakenly or maliciously issued for your domain. For general
 information, see Certificate Transparency Logging
-(http://docs.aws.amazon.com/acm/latest/userguide/acm-concepts.html#concept-transparency).
+(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/acm-concepts.html#concept-transparency).
 
 =head1 ATTRIBUTES
 
