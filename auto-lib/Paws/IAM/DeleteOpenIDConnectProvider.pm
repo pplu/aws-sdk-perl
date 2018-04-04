@@ -37,7 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The Amazon Resource Name (ARN) of the IAM OpenID Connect provider
 resource object to delete. You can get a list of OpenID Connect
-provider resource ARNs by using the ListOpenIDConnectProviders action.
+provider resource ARNs by using the ListOpenIDConnectProviders
+operation.
 
 
 

@@ -39,12 +39,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The contents of the signing certificate.
 
 The regex pattern (http://wikipedia.org/wiki/regex) used to validate
-this parameter is a string of characters consisting of any printable
-ASCII character ranging from the space character (\u0020) through end
-of the ASCII character range as well as the printable characters in the
-Basic Latin and Latin-1 Supplement character set (through \u00FF). It
-also includes the special characters tab (\u0009), line feed (\u000A),
-and carriage return (\u000D).
+this parameter is a string of characters consisting of the following:
+
+=over
+
+=item *
+
+Any printable ASCII character ranging from the space character (\u0020)
+through the end of the ASCII character range
+
+=item *
+
+The printable characters in the Basic Latin and Latin-1 Supplement
+character set (through \u00FF)
+
+=item *
+
+The special characters tab (\u0009), line feed (\u000A), and carriage
+return (\u000D)
+
+=back
+
 
 
 
@@ -55,7 +70,7 @@ The name of the user the signing certificate is for.
 This parameter allows (per its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: =,.@-
+also include any of the following characters: _+=,.@-
 
 
 

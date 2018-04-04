@@ -38,7 +38,7 @@ Contains information about an SSH public key, without the key's body or
 fingerprint.
 
 This data type is used as a response element in the ListSSHPublicKeys
-action.
+operation.
 
 =head1 ATTRIBUTES
 
@@ -50,9 +50,9 @@ action.
 
 =head2 B<REQUIRED> Status => Str
 
-  The status of the SSH public key. C<Active> means the key can be used
-for authentication with an AWS CodeCommit repository. C<Inactive> means
-the key cannot be used.
+  The status of the SSH public key. C<Active> means that the key can be
+used for authentication with an AWS CodeCommit repository. C<Inactive>
+means that the key cannot be used.
 
 
 =head2 B<REQUIRED> UploadDate => Str

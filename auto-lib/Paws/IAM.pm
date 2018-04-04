@@ -609,6 +609,11 @@ package Paws::IAM;
     my $call_object = $self->new_with_coercions('Paws::IAM::UpdateOpenIDConnectProviderThumbprint', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateRole {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::UpdateRole', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateRoleDescription {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::UpdateRoleDescription', @_);
@@ -1275,7 +1280,7 @@ package Paws::IAM;
   }
 
 
-  sub operations { qw/AddClientIDToOpenIDConnectProvider AddRoleToInstanceProfile AddUserToGroup AttachGroupPolicy AttachRolePolicy AttachUserPolicy ChangePassword CreateAccessKey CreateAccountAlias CreateGroup CreateInstanceProfile CreateLoginProfile CreateOpenIDConnectProvider CreatePolicy CreatePolicyVersion CreateRole CreateSAMLProvider CreateServiceLinkedRole CreateServiceSpecificCredential CreateUser CreateVirtualMFADevice DeactivateMFADevice DeleteAccessKey DeleteAccountAlias DeleteAccountPasswordPolicy DeleteGroup DeleteGroupPolicy DeleteInstanceProfile DeleteLoginProfile DeleteOpenIDConnectProvider DeletePolicy DeletePolicyVersion DeleteRole DeleteRolePolicy DeleteSAMLProvider DeleteServerCertificate DeleteServiceLinkedRole DeleteServiceSpecificCredential DeleteSigningCertificate DeleteSSHPublicKey DeleteUser DeleteUserPolicy DeleteVirtualMFADevice DetachGroupPolicy DetachRolePolicy DetachUserPolicy EnableMFADevice GenerateCredentialReport GetAccessKeyLastUsed GetAccountAuthorizationDetails GetAccountPasswordPolicy GetAccountSummary GetContextKeysForCustomPolicy GetContextKeysForPrincipalPolicy GetCredentialReport GetGroup GetGroupPolicy GetInstanceProfile GetLoginProfile GetOpenIDConnectProvider GetPolicy GetPolicyVersion GetRole GetRolePolicy GetSAMLProvider GetServerCertificate GetServiceLinkedRoleDeletionStatus GetSSHPublicKey GetUser GetUserPolicy ListAccessKeys ListAccountAliases ListAttachedGroupPolicies ListAttachedRolePolicies ListAttachedUserPolicies ListEntitiesForPolicy ListGroupPolicies ListGroups ListGroupsForUser ListInstanceProfiles ListInstanceProfilesForRole ListMFADevices ListOpenIDConnectProviders ListPolicies ListPolicyVersions ListRolePolicies ListRoles ListSAMLProviders ListServerCertificates ListServiceSpecificCredentials ListSigningCertificates ListSSHPublicKeys ListUserPolicies ListUsers ListVirtualMFADevices PutGroupPolicy PutRolePolicy PutUserPolicy RemoveClientIDFromOpenIDConnectProvider RemoveRoleFromInstanceProfile RemoveUserFromGroup ResetServiceSpecificCredential ResyncMFADevice SetDefaultPolicyVersion SimulateCustomPolicy SimulatePrincipalPolicy UpdateAccessKey UpdateAccountPasswordPolicy UpdateAssumeRolePolicy UpdateGroup UpdateLoginProfile UpdateOpenIDConnectProviderThumbprint UpdateRoleDescription UpdateSAMLProvider UpdateServerCertificate UpdateServiceSpecificCredential UpdateSigningCertificate UpdateSSHPublicKey UpdateUser UploadServerCertificate UploadSigningCertificate UploadSSHPublicKey / }
+  sub operations { qw/AddClientIDToOpenIDConnectProvider AddRoleToInstanceProfile AddUserToGroup AttachGroupPolicy AttachRolePolicy AttachUserPolicy ChangePassword CreateAccessKey CreateAccountAlias CreateGroup CreateInstanceProfile CreateLoginProfile CreateOpenIDConnectProvider CreatePolicy CreatePolicyVersion CreateRole CreateSAMLProvider CreateServiceLinkedRole CreateServiceSpecificCredential CreateUser CreateVirtualMFADevice DeactivateMFADevice DeleteAccessKey DeleteAccountAlias DeleteAccountPasswordPolicy DeleteGroup DeleteGroupPolicy DeleteInstanceProfile DeleteLoginProfile DeleteOpenIDConnectProvider DeletePolicy DeletePolicyVersion DeleteRole DeleteRolePolicy DeleteSAMLProvider DeleteServerCertificate DeleteServiceLinkedRole DeleteServiceSpecificCredential DeleteSigningCertificate DeleteSSHPublicKey DeleteUser DeleteUserPolicy DeleteVirtualMFADevice DetachGroupPolicy DetachRolePolicy DetachUserPolicy EnableMFADevice GenerateCredentialReport GetAccessKeyLastUsed GetAccountAuthorizationDetails GetAccountPasswordPolicy GetAccountSummary GetContextKeysForCustomPolicy GetContextKeysForPrincipalPolicy GetCredentialReport GetGroup GetGroupPolicy GetInstanceProfile GetLoginProfile GetOpenIDConnectProvider GetPolicy GetPolicyVersion GetRole GetRolePolicy GetSAMLProvider GetServerCertificate GetServiceLinkedRoleDeletionStatus GetSSHPublicKey GetUser GetUserPolicy ListAccessKeys ListAccountAliases ListAttachedGroupPolicies ListAttachedRolePolicies ListAttachedUserPolicies ListEntitiesForPolicy ListGroupPolicies ListGroups ListGroupsForUser ListInstanceProfiles ListInstanceProfilesForRole ListMFADevices ListOpenIDConnectProviders ListPolicies ListPolicyVersions ListRolePolicies ListRoles ListSAMLProviders ListServerCertificates ListServiceSpecificCredentials ListSigningCertificates ListSSHPublicKeys ListUserPolicies ListUsers ListVirtualMFADevices PutGroupPolicy PutRolePolicy PutUserPolicy RemoveClientIDFromOpenIDConnectProvider RemoveRoleFromInstanceProfile RemoveUserFromGroup ResetServiceSpecificCredential ResyncMFADevice SetDefaultPolicyVersion SimulateCustomPolicy SimulatePrincipalPolicy UpdateAccessKey UpdateAccountPasswordPolicy UpdateAssumeRolePolicy UpdateGroup UpdateLoginProfile UpdateOpenIDConnectProviderThumbprint UpdateRole UpdateRoleDescription UpdateSAMLProvider UpdateServerCertificate UpdateServiceSpecificCredential UpdateSigningCertificate UpdateSSHPublicKey UpdateUser UploadServerCertificate UploadSigningCertificate UploadSSHPublicKey / }
 
 1;
 
@@ -1391,8 +1396,8 @@ Adds a new client ID (also known as audience) to the list of client IDs
 already registered for the specified IAM OpenID Connect (OIDC) provider
 resource.
 
-This action is idempotent; it does not fail or return an error if you
-add an existing client ID to the provider.
+This operation is idempotent; it does not fail or return an error if
+you add an existing client ID to the provider.
 
 
 =head2 AddRoleToInstanceProfile(InstanceProfileName => Str, RoleName => Str)
@@ -1403,7 +1408,15 @@ Returns: nothing
 
 Adds the specified IAM role to the specified instance profile. An
 instance profile can contain only one role, and this limit cannot be
-increased.
+increased. You can remove the existing role and then add a different
+role to an instance profile. You must then wait for the change to
+appear across all of AWS because of eventual consistency
+(https://en.wikipedia.org/wiki/Eventual_consistency). To force the
+change, you must disassociate the instance profile
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateIamInstanceProfile.html)
+and then associate the instance profile
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateIamInstanceProfile.html),
+or you can stop your instance and then restart it.
 
 The caller of this API must be granted the C<PassRole> permission on
 the IAM role by a permission policy.
@@ -1485,8 +1498,8 @@ Each argument is described in detail in: L<Paws::IAM::ChangePassword>
 
 Returns: nothing
 
-Changes the password of the IAM user who is calling this action. The
-root account password is not affected by this action.
+Changes the password of the IAM user who is calling this operation. The
+AWS account root user password is not affected by this operation.
 
 To change the password for a different user, see UpdateLoginProfile.
 For more information about modifying passwords, see Managing Passwords
@@ -1505,9 +1518,9 @@ for the specified user. The default status for new keys is C<Active>.
 
 If you do not specify a user name, IAM determines the user name
 implicitly based on the AWS access key ID signing the request. Because
-this action works for access keys under the AWS account, you can use
-this action to manage root credentials even if the AWS account has no
-associated users.
+this operation works for access keys under the AWS account, you can use
+this operation to manage AWS account root user credentials. This is
+true even if the AWS account has no associated users.
 
 For information about limits on the number of keys you can create, see
 Limitations on IAM Entities
@@ -1586,21 +1599,35 @@ Creates an IAM entity to describe an identity provider (IdP) that
 supports OpenID Connect (OIDC) (http://openid.net/connect/).
 
 The OIDC provider that you create with this operation can be used as a
-principal in a role's trust policy to establish a trust relationship
-between AWS and the OIDC provider.
+principal in a role's trust policy. Such a policy establishes a trust
+relationship between AWS and the OIDC provider.
 
-When you create the IAM OIDC provider, you specify the URL of the OIDC
-identity provider (IdP) to trust, a list of client IDs (also known as
-audiences) that identify the application or applications that are
-allowed to authenticate using the OIDC provider, and a list of
-thumbprints of the server certificate(s) that the IdP uses. You get all
-of this information from the OIDC IdP that you want to use for access
-to AWS.
+When you create the IAM OIDC provider, you specify the following:
 
-Because trust for the OIDC provider is ultimately derived from the IAM
-provider that this action creates, it is a best practice to limit
-access to the CreateOpenIDConnectProvider action to highly-privileged
-users.
+=over
+
+=item *
+
+The URL of the OIDC identity provider (IdP) to trust
+
+=item *
+
+A list of client IDs (also known as audiences) that identify the
+application or applications that are allowed to authenticate using the
+OIDC provider
+
+=item *
+
+A list of thumbprints of the server certificate(s) that the IdP uses.
+
+=back
+
+You get all of this information from the OIDC IdP that you want to use
+to access AWS.
+
+Because trust for the OIDC provider is derived from the IAM provider
+that this operation creates, it is best to limit access to the
+CreateOpenIDConnectProvider operation to highly privileged users.
 
 
 =head2 CreatePolicy(PolicyDocument => Str, PolicyName => Str, [Description => Str, Path => Str])
@@ -1645,14 +1672,14 @@ Managed Policies
 in the I<IAM User Guide>.
 
 
-=head2 CreateRole(AssumeRolePolicyDocument => Str, RoleName => Str, [Description => Str, Path => Str])
+=head2 CreateRole(AssumeRolePolicyDocument => Str, RoleName => Str, [Description => Str, MaxSessionDuration => Int, Path => Str])
 
 Each argument is described in detail in: L<Paws::IAM::CreateRole>
 
 Returns: a L<Paws::IAM::CreateRoleResponse> instance
 
 Creates a new role for your AWS account. For more information about
-roles, go to Working with Roles
+roles, go to IAM Roles
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html).
 For information about limitations on role names and the number of roles
 you can create, go to Limitations on IAM Entities
@@ -1670,13 +1697,14 @@ Creates an IAM resource that describes an identity provider (IdP) that
 supports SAML 2.0.
 
 The SAML provider resource that you create with this operation can be
-used as a principal in an IAM role's trust policy to enable federated
-users who sign-in using the SAML IdP to assume the role. You can create
-an IAM role that supports Web-based single sign-on (SSO) to the AWS
-Management Console or one that supports API access to AWS.
+used as a principal in an IAM role's trust policy. Such a policy can
+enable federated users who sign-in using the SAML IdP to assume the
+role. You can create an IAM role that supports Web-based single sign-on
+(SSO) to the AWS Management Console or one that supports API access to
+AWS.
 
-When you create the SAML provider resource, you upload an a SAML
-metadata document that you get from your IdP and that includes the
+When you create the SAML provider resource, you upload a SAML metadata
+document that you get from your IdP. That document includes the
 issuer's name, expiration information, and keys that can be used to
 validate the SAML authentication response (assertions) that the IdP
 sends. You must generate the metadata document using the identity
@@ -1707,7 +1735,7 @@ resources into an unknown state. Allowing the service to control the
 role helps improve service stability and proper cleanup when a service
 and its role are no longer needed.
 
-The name of the role is autogenerated by combining the string that you
+The name of the role is generated by combining the string that you
 specify for the C<AWSServiceName> parameter with the string that you
 specify for the C<CustomSuffix> parameter. The resulting name must be
 unique in your account or the request fails.
@@ -1805,9 +1833,9 @@ Deletes the access key pair associated with the specified IAM user.
 
 If you do not specify a user name, IAM determines the user name
 implicitly based on the AWS access key ID signing the request. Because
-this action works for access keys under the AWS account, you can use
-this action to manage root credentials even if the AWS account has no
-associated users.
+this operation works for access keys under the AWS account, you can use
+this operation to manage AWS account root user credentials even if the
+AWS account has no associated users.
 
 
 =head2 DeleteAccountAlias(AccountAlias => Str)
@@ -1868,10 +1896,10 @@ Returns: nothing
 Deletes the specified instance profile. The instance profile must not
 have an associated role.
 
-Make sure you do not have any Amazon EC2 instances running with the
-instance profile you are about to delete. Deleting a role or instance
-profile that is associated with a running instance will break any
-applications running on the instance.
+Make sure that you do not have any Amazon EC2 instances running with
+the instance profile you are about to delete. Deleting a role or
+instance profile that is associated with a running instance will break
+any applications running on the instance.
 
 For more information about instance profiles, go to About Instance
 Profiles
@@ -1908,8 +1936,8 @@ Deleting an IAM OIDC provider resource does not update any roles that
 reference the provider as a principal in their trust policies. Any
 attempt to assume a role that references a deleted provider fails.
 
-This action is idempotent; it does not fail or return an error if you
-call the action for a provider that does not exist.
+This operation is idempotent; it does not fail or return an error if
+you call the operation for a provider that does not exist.
 
 
 =head2 DeletePolicy(PolicyArn => Str)
@@ -1921,8 +1949,8 @@ Returns: nothing
 Deletes the specified managed policy.
 
 Before you can delete a managed policy, you must first detach the
-policy from all users, groups, and roles that it is attached to, and
-you must delete all of the policy's versions. The following steps
+policy from all users, groups, and roles that it is attached to. In
+addition you must delete all the policy's versions. The following steps
 describe the process for deleting a managed policy:
 
 =over
@@ -1931,8 +1959,8 @@ describe the process for deleting a managed policy:
 
 Detach the policy from all users, groups, and roles that the policy is
 attached to, using the DetachUserPolicy, DetachGroupPolicy, or
-DetachRolePolicy APIs. To list all the users, groups, and roles that a
-policy is attached to, use ListEntitiesForPolicy.
+DetachRolePolicy API operations. To list all the users, groups, and
+roles that a policy is attached to, use ListEntitiesForPolicy.
 
 =item *
 
@@ -1984,9 +2012,9 @@ Deletes the specified role. The role must not have any policies
 attached. For more information about roles, go to Working with Roles
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html).
 
-Make sure you do not have any Amazon EC2 instances running with the
-role you are about to delete. Deleting a role or instance profile that
-is associated with a running instance will break any applications
+Make sure that you do not have any Amazon EC2 instances running with
+the role you are about to delete. Deleting a role or instance profile
+that is associated with a running instance will break any applications
 running on the instance.
 
 
@@ -2031,11 +2059,11 @@ Returns: nothing
 
 Deletes the specified server certificate.
 
-For more information about working with server certificates, including
-a list of AWS services that can use the server certificates that you
-manage with IAM, go to Working with Server Certificates
+For more information about working with server certificates, see
+Working with Server Certificates
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html)
-in the I<IAM User Guide>.
+in the I<IAM User Guide>. This topic also includes a list of AWS
+services that can use the server certificates that you manage with IAM.
 
 If you are using a server certificate with Elastic Load Balancing,
 deleting the certificate could have implications for your application.
@@ -2066,12 +2094,13 @@ then the C<DeletionTaskId> of the earlier request is returned.
 If you submit a deletion request for a service-linked role whose linked
 service is still accessing a resource, then the deletion task fails. If
 it fails, the GetServiceLinkedRoleDeletionStatus API operation returns
-the reason for the failure, including the resources that must be
-deleted. To delete the service-linked role, you must first remove those
-resources from the linked service and then submit the deletion request
-again. Resources are specific to the service that is linked to the
-role. For more information about removing resources from a service, see
-the AWS documentation (http://docs.aws.amazon.com/) for your service.
+the reason for the failure, usually including the resources that must
+be deleted. To delete the service-linked role, you must first remove
+those resources from the linked service and then submit the deletion
+request again. Resources are specific to the service that is linked to
+the role. For more information about removing resources from a service,
+see the AWS documentation (http://docs.aws.amazon.com/) for your
+service.
 
 For more information about service-linked roles, see Roles Terms and
 Concepts: AWS Service-Linked Role
@@ -2098,9 +2127,9 @@ Deletes a signing certificate associated with the specified IAM user.
 
 If you do not specify a user name, IAM determines the user name
 implicitly based on the AWS access key ID signing the request. Because
-this action works for access keys under the AWS account, you can use
-this action to manage root credentials even if the AWS account has no
-associated IAM users.
+this operation works for access keys under the AWS account, you can use
+this operation to manage AWS account root user credentials even if the
+AWS account has no associated IAM users.
 
 
 =head2 DeleteSSHPublicKey(SSHPublicKeyId => Str, UserName => Str)
@@ -2111,7 +2140,7 @@ Returns: nothing
 
 Deletes the specified SSH public key.
 
-The SSH public key deleted by this action is used only for
+The SSH public key deleted by this operation is used only for
 authenticating the associated IAM user to an AWS CodeCommit repository.
 For more information about using SSH keys to authenticate to an AWS
 CodeCommit repository, see Set up AWS CodeCommit for SSH Connections
@@ -2249,6 +2278,13 @@ in your AWS account, including their relationships to one another. Use
 this API to obtain a snapshot of the configuration of IAM permissions
 (users, groups, roles, and policies) in your account.
 
+Policies returned by this API are URL-encoded compliant with RFC 3986
+(https://tools.ietf.org/html/rfc3986). You can use a URL decoding
+method to convert the policy back to plain JSON text. For example, if
+you use Java, you can use the C<decode> method of the
+C<java.net.URLDecoder> utility class in the Java SDK. Other languages
+and SDKs provide similar functionality.
+
 You can optionally filter the results using the C<Filter> parameter.
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
@@ -2292,11 +2328,11 @@ To get the context keys from policies associated with an IAM user,
 group, or role, use GetContextKeysForPrincipalPolicy.
 
 Context keys are variables maintained by AWS and its services that
-provide details about the context of an API query request, and can be
-evaluated by testing against a value specified in an IAM policy. Use
-GetContextKeysForCustomPolicy to understand what key names and values
-you must supply when you call SimulateCustomPolicy. Note that all
-parameters are shown in unencoded form here for clarity, but must be
+provide details about the context of an API query request. Context keys
+can be evaluated by testing against a value specified in an IAM policy.
+Use C<GetContextKeysForCustomPolicy> to understand what key names and
+values you must supply when you call SimulateCustomPolicy. Note that
+all parameters are shown in unencoded form here for clarity but must be
 URL encoded to be included as a part of a real HTML request.
 
 
@@ -2306,10 +2342,10 @@ Each argument is described in detail in: L<Paws::IAM::GetContextKeysForPrincipal
 
 Returns: a L<Paws::IAM::GetContextKeysForPolicyResponse> instance
 
-Gets a list of all of the context keys referenced in all of the IAM
-policies attached to the specified IAM entity. The entity can be an IAM
-user, group, or role. If you specify a user, then the request also
-includes all of the policies attached to groups that the user is a
+Gets a list of all of the context keys referenced in all the IAM
+policies that are attached to the specified IAM entity. The entity can
+be an IAM user, group, or role. If you specify a user, then the request
+also includes all of the policies attached to groups that the user is a
 member of.
 
 You can optionally include a list of one or more additional policies,
@@ -2322,8 +2358,8 @@ permissions, then consider allowing them to use
 GetContextKeysForCustomPolicy instead.
 
 Context keys are variables maintained by AWS and its services that
-provide details about the context of an API query request, and can be
-evaluated by testing against a value in an IAM policy. Use
+provide details about the context of an API query request. Context keys
+can be evaluated by testing against a value in an IAM policy. Use
 GetContextKeysForPrincipalPolicy to understand what key names and
 values you must supply when you call SimulatePrincipalPolicy.
 
@@ -2398,7 +2434,7 @@ Each argument is described in detail in: L<Paws::IAM::GetLoginProfile>
 Returns: a L<Paws::IAM::GetLoginProfileResponse> instance
 
 Retrieves the user name and password-creation date for the specified
-IAM user. If the user has not been assigned a password, the action
+IAM user. If the user has not been assigned a password, the operation
 returns a 404 (C<NoSuchEntity>) error.
 
 
@@ -2543,11 +2579,11 @@ Returns: a L<Paws::IAM::GetServerCertificateResponse> instance
 Retrieves information about the specified server certificate stored in
 IAM.
 
-For more information about working with server certificates, including
-a list of AWS services that can use the server certificates that you
-manage with IAM, go to Working with Server Certificates
+For more information about working with server certificates, see
+Working with Server Certificates
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html)
-in the I<IAM User Guide>.
+in the I<IAM User Guide>. This topic includes a list of AWS services
+that can use the server certificates that you manage with IAM.
 
 
 =head2 GetServiceLinkedRoleDeletionStatus(DeletionTaskId => Str)
@@ -2561,7 +2597,7 @@ use the DeleteServiceLinkedRole API operation to submit a
 service-linked role for deletion, you can use the C<DeletionTaskId>
 parameter in C<GetServiceLinkedRoleDeletionStatus> to check the status
 of the deletion. If the deletion fails, this operation returns the
-reason that it failed.
+reason that it failed, if that information is returned by the service.
 
 
 =head2 GetSSHPublicKey(Encoding => Str, SSHPublicKeyId => Str, UserName => Str)
@@ -2573,7 +2609,7 @@ Returns: a L<Paws::IAM::GetSSHPublicKeyResponse> instance
 Retrieves the specified SSH public key, including metadata about the
 key.
 
-The SSH public key retrieved by this action is used only for
+The SSH public key retrieved by this operation is used only for
 authenticating the associated IAM user to an AWS CodeCommit repository.
 For more information about using SSH keys to authenticate to an AWS
 CodeCommit repository, see Set up AWS CodeCommit for SSH Connections
@@ -2629,17 +2665,17 @@ Each argument is described in detail in: L<Paws::IAM::ListAccessKeys>
 Returns: a L<Paws::IAM::ListAccessKeysResponse> instance
 
 Returns information about the access key IDs associated with the
-specified IAM user. If there are none, the action returns an empty
+specified IAM user. If there are none, the operation returns an empty
 list.
 
 Although each user is limited to a small number of keys, you can still
 paginate the results using the C<MaxItems> and C<Marker> parameters.
 
-If the C<UserName> field is not specified, the UserName is determined
+If the C<UserName> field is not specified, the user name is determined
 implicitly based on the AWS access key ID used to sign the request.
-Because this action works for access keys under the AWS account, you
-can use this action to manage root credentials even if the AWS account
-has no associated users.
+Because this operation works for access keys under the AWS account, you
+can use this operation to manage AWS account root user credentials even
+if the AWS account has no associated users.
 
 To ensure the security of your AWS account, the secret access key is
 accessible only during key and user creation.
@@ -2677,7 +2713,7 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters. You can use the C<PathPrefix> parameter to limit the list
 of policies to only those matching the specified path prefix. If there
 are no policies attached to the specified group (or none that match the
-specified path prefix), the action returns an empty list.
+specified path prefix), the operation returns an empty list.
 
 
 =head2 ListAttachedRolePolicies(RoleName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
@@ -2698,7 +2734,7 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters. You can use the C<PathPrefix> parameter to limit the list
 of policies to only those matching the specified path prefix. If there
 are no policies attached to the specified role (or none that match the
-specified path prefix), the action returns an empty list.
+specified path prefix), the operation returns an empty list.
 
 
 =head2 ListAttachedUserPolicies(UserName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
@@ -2719,7 +2755,7 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters. You can use the C<PathPrefix> parameter to limit the list
 of policies to only those matching the specified path prefix. If there
 are no policies attached to the specified group (or none that match the
-specified path prefix), the action returns an empty list.
+specified path prefix), the operation returns an empty list.
 
 
 =head2 ListEntitiesForPolicy(PolicyArn => Str, [EntityFilter => Str, Marker => Str, MaxItems => Int, PathPrefix => Str])
@@ -2758,7 +2794,7 @@ in the I<IAM User Guide>.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters. If there are no inline policies embedded with the specified
-group, the action returns an empty list.
+group, the operation returns an empty list.
 
 
 =head2 ListGroups([Marker => Str, MaxItems => Int, PathPrefix => Str])
@@ -2792,8 +2828,8 @@ Each argument is described in detail in: L<Paws::IAM::ListInstanceProfiles>
 Returns: a L<Paws::IAM::ListInstanceProfilesResponse> instance
 
 Lists the instance profiles that have the specified path prefix. If
-there are none, the action returns an empty list. For more information
-about instance profiles, go to About Instance Profiles
+there are none, the operation returns an empty list. For more
+information about instance profiles, go to About Instance Profiles
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
 
 You can paginate the results using the C<MaxItems> and C<Marker>
@@ -2807,7 +2843,7 @@ Each argument is described in detail in: L<Paws::IAM::ListInstanceProfilesForRol
 Returns: a L<Paws::IAM::ListInstanceProfilesForRoleResponse> instance
 
 Lists the instance profiles that have the specified associated IAM
-role. If there are none, the action returns an empty list. For more
+role. If there are none, the operation returns an empty list. For more
 information about instance profiles, go to About Instance Profiles
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
 
@@ -2822,10 +2858,10 @@ Each argument is described in detail in: L<Paws::IAM::ListMFADevices>
 Returns: a L<Paws::IAM::ListMFADevicesResponse> instance
 
 Lists the MFA devices for an IAM user. If the request includes a IAM
-user name, then this action lists all the MFA devices associated with
-the specified user. If you do not specify a user name, IAM determines
-the user name implicitly based on the AWS access key ID signing the
-request for this API.
+user name, then this operation lists all the MFA devices associated
+with the specified user. If you do not specify a user name, IAM
+determines the user name implicitly based on the AWS access key ID
+signing the request for this API.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
@@ -2900,7 +2936,7 @@ in the I<IAM User Guide>.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters. If there are no inline policies embedded with the specified
-role, the action returns an empty list.
+role, the operation returns an empty list.
 
 
 =head2 ListRoles([Marker => Str, MaxItems => Int, PathPrefix => Str])
@@ -2910,7 +2946,7 @@ Each argument is described in detail in: L<Paws::IAM::ListRoles>
 Returns: a L<Paws::IAM::ListRolesResponse> instance
 
 Lists the IAM roles that have the specified path prefix. If there are
-none, the action returns an empty list. For more information about
+none, the operation returns an empty list. For more information about
 roles, go to Working with Roles
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html).
 
@@ -2937,16 +2973,16 @@ Each argument is described in detail in: L<Paws::IAM::ListServerCertificates>
 Returns: a L<Paws::IAM::ListServerCertificatesResponse> instance
 
 Lists the server certificates stored in IAM that have the specified
-path prefix. If none exist, the action returns an empty list.
+path prefix. If none exist, the operation returns an empty list.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
-For more information about working with server certificates, including
-a list of AWS services that can use the server certificates that you
-manage with IAM, go to Working with Server Certificates
+For more information about working with server certificates, see
+Working with Server Certificates
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html)
-in the I<IAM User Guide>.
+in the I<IAM User Guide>. This topic also includes a list of AWS
+services that can use the server certificates that you manage with IAM.
 
 
 =head2 ListServiceSpecificCredentials([ServiceName => Str, UserName => Str])
@@ -2956,11 +2992,12 @@ Each argument is described in detail in: L<Paws::IAM::ListServiceSpecificCredent
 Returns: a L<Paws::IAM::ListServiceSpecificCredentialsResponse> instance
 
 Returns information about the service-specific credentials associated
-with the specified IAM user. If there are none, the action returns an
-empty list. The service-specific credentials returned by this action
-are used only for authenticating the IAM user to a specific service.
-For more information about using service-specific credentials to
-authenticate to an AWS service, see Set Up service-specific credentials
+with the specified IAM user. If there are none, the operation returns
+an empty list. The service-specific credentials returned by this
+operation are used only for authenticating the IAM user to a specific
+service. For more information about using service-specific credentials
+to authenticate to an AWS service, see Set Up service-specific
+credentials
 (http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html)
 in the AWS CodeCommit User Guide.
 
@@ -2972,7 +3009,7 @@ Each argument is described in detail in: L<Paws::IAM::ListSigningCertificates>
 Returns: a L<Paws::IAM::ListSigningCertificatesResponse> instance
 
 Returns information about the signing certificates associated with the
-specified IAM user. If there are none, the action returns an empty
+specified IAM user. If there are none, the operation returns an empty
 list.
 
 Although each user is limited to a small number of signing
@@ -2981,9 +3018,9 @@ and C<Marker> parameters.
 
 If the C<UserName> field is not specified, the user name is determined
 implicitly based on the AWS access key ID used to sign the request for
-this API. Because this action works for access keys under the AWS
-account, you can use this action to manage root credentials even if the
-AWS account has no associated users.
+this API. Because this operation works for access keys under the AWS
+account, you can use this operation to manage AWS account root user
+credentials even if the AWS account has no associated users.
 
 
 =head2 ListSSHPublicKeys([Marker => Str, MaxItems => Int, UserName => Str])
@@ -2993,10 +3030,10 @@ Each argument is described in detail in: L<Paws::IAM::ListSSHPublicKeys>
 Returns: a L<Paws::IAM::ListSSHPublicKeysResponse> instance
 
 Returns information about the SSH public keys associated with the
-specified IAM user. If there are none, the action returns an empty
+specified IAM user. If there are none, the operation returns an empty
 list.
 
-The SSH public keys returned by this action are used only for
+The SSH public keys returned by this operation are used only for
 authenticating the IAM user to an AWS CodeCommit repository. For more
 information about using SSH keys to authenticate to an AWS CodeCommit
 repository, see Set up AWS CodeCommit for SSH Connections
@@ -3025,7 +3062,7 @@ in the I<IAM User Guide>.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters. If there are no inline policies embedded with the specified
-user, the action returns an empty list.
+user, the operation returns an empty list.
 
 
 =head2 ListUsers([Marker => Str, MaxItems => Int, PathPrefix => Str])
@@ -3035,8 +3072,8 @@ Each argument is described in detail in: L<Paws::IAM::ListUsers>
 Returns: a L<Paws::IAM::ListUsersResponse> instance
 
 Lists the IAM users that have the specified path prefix. If no path
-prefix is specified, the action returns all users in the AWS account.
-If there are none, the action returns an empty list.
+prefix is specified, the operation returns all users in the AWS
+account. If there are none, the operation returns an empty list.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
@@ -3049,8 +3086,8 @@ Each argument is described in detail in: L<Paws::IAM::ListVirtualMFADevices>
 Returns: a L<Paws::IAM::ListVirtualMFADevicesResponse> instance
 
 Lists the virtual MFA devices defined in the AWS account by assignment
-status. If you do not specify an assignment status, the action returns
-a list of all virtual MFA devices. Assignment status can be
+status. If you do not specify an assignment status, the operation
+returns a list of all virtual MFA devices. Assignment status can be
 C<Assigned>, C<Unassigned>, or C<Any>.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
@@ -3159,8 +3196,8 @@ Removes the specified client ID (also known as audience) from the list
 of client IDs registered for the specified IAM OpenID Connect (OIDC)
 provider resource object.
 
-This action is idempotent; it does not fail or return an error if you
-try to remove a client ID that does not exist.
+This operation is idempotent; it does not fail or return an error if
+you try to remove a client ID that does not exist.
 
 
 =head2 RemoveRoleFromInstanceProfile(InstanceProfileName => Str, RoleName => Str)
@@ -3171,10 +3208,10 @@ Returns: nothing
 
 Removes the specified IAM role from the specified EC2 instance profile.
 
-Make sure you do not have any Amazon EC2 instances running with the
-role you are about to remove from the instance profile. Removing a role
-from an instance profile that is associated with a running instance
-might break any applications running on the instance.
+Make sure that you do not have any Amazon EC2 instances running with
+the role you are about to remove from the instance profile. Removing a
+role from an instance profile that is associated with a running
+instance might break any applications running on the instance.
 
 For more information about IAM roles, go to Working with Roles
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html).
@@ -3228,7 +3265,7 @@ Returns: nothing
 Sets the specified version of the specified policy as the policy's
 default (operative) version.
 
-This action affects all users, groups, and roles that the policy is
+This operation affects all users, groups, and roles that the policy is
 attached to. To list the users, groups, and roles that the policy is
 attached to, use the ListEntitiesForPolicy API.
 
@@ -3245,13 +3282,13 @@ Each argument is described in detail in: L<Paws::IAM::SimulateCustomPolicy>
 Returns: a L<Paws::IAM::SimulatePolicyResponse> instance
 
 Simulate how a set of IAM policies and optionally a resource-based
-policy works with a list of API actions and AWS resources to determine
-the policies' effective permissions. The policies are provided as
-strings.
+policy works with a list of API operations and AWS resources to
+determine the policies' effective permissions. The policies are
+provided as strings.
 
-The simulation does not perform the API actions; it only checks the
+The simulation does not perform the API operations; it only checks the
 authorization to determine if the simulated policies allow or deny the
-actions.
+operations.
 
 If you want to simulate existing policies attached to an IAM user,
 group, or role, use SimulatePrincipalPolicy instead.
@@ -3273,10 +3310,10 @@ Each argument is described in detail in: L<Paws::IAM::SimulatePrincipalPolicy>
 Returns: a L<Paws::IAM::SimulatePolicyResponse> instance
 
 Simulate how a set of IAM policies attached to an IAM entity works with
-a list of API actions and AWS resources to determine the policies'
+a list of API operations and AWS resources to determine the policies'
 effective permissions. The entity can be an IAM user, group, or role.
 If you specify a user, then the simulation also includes all of the
-policies that are attached to groups that the user belongs to .
+policies that are attached to groups that the user belongs to.
 
 You can optionally include a list of one or more additional policies
 specified as strings to include in the simulation. If you want to
@@ -3286,9 +3323,9 @@ instead.
 You can also optionally include one resource-based policy to be
 evaluated with each of the resources included in the simulation.
 
-The simulation does not perform the API actions, it only checks the
+The simulation does not perform the API operations, it only checks the
 authorization to determine if the simulated policies allow or deny the
-actions.
+operations.
 
 B<Note:> This API discloses information about the permissions granted
 to other users. If you do not want users to see other user's
@@ -3312,14 +3349,14 @@ Each argument is described in detail in: L<Paws::IAM::UpdateAccessKey>
 Returns: nothing
 
 Changes the status of the specified access key from Active to Inactive,
-or vice versa. This action can be used to disable a user's key as part
-of a key rotation work flow.
+or vice versa. This operation can be used to disable a user's key as
+part of a key rotation workflow.
 
-If the C<UserName> field is not specified, the UserName is determined
+If the C<UserName> field is not specified, the user name is determined
 implicitly based on the AWS access key ID used to sign the request.
-Because this action works for access keys under the AWS account, you
-can use this action to manage root credentials even if the AWS account
-has no associated users.
+Because this operation works for access keys under the AWS account, you
+can use this operation to manage AWS account root user credentials even
+if the AWS account has no associated users.
 
 For information about rotating keys, see Managing Keys and Certificates
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingCredentials.html)
@@ -3334,10 +3371,19 @@ Returns: nothing
 
 Updates the password policy settings for the AWS account.
 
-This action does not support partial updates. No parameters are
+=over
+
+=item *
+
+This operation does not support partial updates. No parameters are
 required, but if you do not specify a parameter, that parameter's value
 reverts to its default value. See the B<Request Parameters> section for
-each parameter's default value.
+each parameter's default value. Also note that some parameters do not
+allow the default parameter to be explicitly set. Instead, to invoke
+the default value, do not include that parameter when you invoke the
+operation.
+
+=back
 
 For more information about using a password policy, see Managing an IAM
 Password Policy
@@ -3371,13 +3417,14 @@ name. For more information, see Renaming Users and Groups
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_WorkingWithGroupsAndUsers.html)
 in the I<IAM User Guide>.
 
-To change an IAM group name the requester must have appropriate
-permissions on both the source object and the target object. For
-example, to change "Managers" to "MGRs", the entity making the request
-must have permission on both "Managers" and "MGRs", or must have
-permission on all (*). For more information about permissions, see
-Permissions and Policies
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsAndPolicies.html).
+The person making the request (the principal), must have permission to
+change the role group with the old name and the new name. For example,
+to change the group named C<Managers> to C<MGRs>, the principal must
+have a policy that allows them to update both groups. If the principal
+has permission to update the C<Managers> group, but not the C<MGRs>
+group, then the update fails. For more information about permissions,
+see Access Management
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html).
 
 
 =head2 UpdateLoginProfile(UserName => Str, [Password => Str, PasswordResetRequired => Bool])
@@ -3404,7 +3451,7 @@ Replaces the existing list of server certificate thumbprints associated
 with an OpenID Connect (OIDC) provider resource object with a new list
 of thumbprints.
 
-The list that you pass with this action completely replaces the
+The list that you pass with this operation completely replaces the
 existing list of thumbprints. (The lists are not merged.)
 
 Typically, you need to update a thumbprint only when the identity
@@ -3413,11 +3460,19 @@ provider's certificate I<does> change, any attempt to assume an IAM
 role that specifies the OIDC provider as a principal fails until the
 certificate thumbprint is updated.
 
-Because trust for the OIDC provider is ultimately derived from the
-provider's certificate and is validated by the thumbprint, it is a best
-practice to limit access to the
-C<UpdateOpenIDConnectProviderThumbprint> action to highly-privileged
-users.
+Because trust for the OIDC provider is derived from the provider's
+certificate and is validated by the thumbprint, it is best to limit
+access to the C<UpdateOpenIDConnectProviderThumbprint> operation to
+highly privileged users.
+
+
+=head2 UpdateRole(RoleName => Str, [Description => Str, MaxSessionDuration => Int])
+
+Each argument is described in detail in: L<Paws::IAM::UpdateRole>
+
+Returns: a L<Paws::IAM::UpdateRoleResponse> instance
+
+Updates the description or maximum session duration setting of a role.
 
 
 =head2 UpdateRoleDescription(Description => Str, RoleName => Str)
@@ -3426,7 +3481,11 @@ Each argument is described in detail in: L<Paws::IAM::UpdateRoleDescription>
 
 Returns: a L<Paws::IAM::UpdateRoleDescriptionResponse> instance
 
-Modifies the description of a role.
+Use instead.
+
+Modifies only the description of a role. This operation performs the
+same function as the C<Description> parameter in the C<UpdateRole>
+operation.
 
 
 =head2 UpdateSAMLProvider(SAMLMetadataDocument => Str, SAMLProviderArn => Str)
@@ -3451,11 +3510,11 @@ Returns: nothing
 Updates the name and/or the path of the specified server certificate
 stored in IAM.
 
-For more information about working with server certificates, including
-a list of AWS services that can use the server certificates that you
-manage with IAM, go to Working with Server Certificates
+For more information about working with server certificates, see
+Working with Server Certificates
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html)
-in the I<IAM User Guide>.
+in the I<IAM User Guide>. This topic also includes a list of AWS
+services that can use the server certificates that you manage with IAM.
 
 You should understand the implications of changing a server
 certificate's path or name. For more information, see Renaming a Server
@@ -3463,12 +3522,14 @@ Certificate
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs_manage.html#RenamingServerCerts)
 in the I<IAM User Guide>.
 
-To change a server certificate name the requester must have appropriate
-permissions on both the source object and the target object. For
-example, to change the name from "ProductionCert" to "ProdCert", the
-entity making the request must have permission on "ProductionCert" and
-"ProdCert", or must have permission on all (*). For more information
-about permissions, see Access Management
+The person making the request (the principal), must have permission to
+change the server certificate with the old name and the new name. For
+example, to change the certificate named C<ProductionCert> to
+C<ProdCert>, the principal must have a policy that allows them to
+update both certificates. If the principal has permission to update the
+C<ProductionCert> group, but not the C<ProdCert> certificate, then the
+update fails. For more information about permissions, see Access
+Management
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html) in the
 I<IAM User Guide>.
 
@@ -3481,7 +3542,7 @@ Returns: nothing
 
 Sets the status of a service-specific credential to C<Active> or
 C<Inactive>. Service-specific credentials that are inactive cannot be
-used for authentication to the service. This action can be used to
+used for authentication to the service. This operation can be used to
 disable a userE<rsquo>s service-specific credential as part of a
 credential rotation work flow.
 
@@ -3493,15 +3554,15 @@ Each argument is described in detail in: L<Paws::IAM::UpdateSigningCertificate>
 Returns: nothing
 
 Changes the status of the specified user signing certificate from
-active to disabled, or vice versa. This action can be used to disable
-an IAM user's signing certificate as part of a certificate rotation
-work flow.
+active to disabled, or vice versa. This operation can be used to
+disable an IAM user's signing certificate as part of a certificate
+rotation work flow.
 
-If the C<UserName> field is not specified, the UserName is determined
+If the C<UserName> field is not specified, the user name is determined
 implicitly based on the AWS access key ID used to sign the request.
-Because this action works for access keys under the AWS account, you
-can use this action to manage root credentials even if the AWS account
-has no associated users.
+Because this operation works for access keys under the AWS account, you
+can use this operation to manage AWS account root user credentials even
+if the AWS account has no associated users.
 
 
 =head2 UpdateSSHPublicKey(SSHPublicKeyId => Str, Status => Str, UserName => Str)
@@ -3512,10 +3573,10 @@ Returns: nothing
 
 Sets the status of an IAM user's SSH public key to active or inactive.
 SSH public keys that are inactive cannot be used for authentication.
-This action can be used to disable a user's SSH public key as part of a
-key rotation work flow.
+This operation can be used to disable a user's SSH public key as part
+of a key rotation work flow.
 
-The SSH public key affected by this action is used only for
+The SSH public key affected by this operation is used only for
 authenticating the associated IAM user to an AWS CodeCommit repository.
 For more information about using SSH keys to authenticate to an AWS
 CodeCommit repository, see Set up AWS CodeCommit for SSH Connections
@@ -3538,7 +3599,7 @@ and Renaming an IAM Group
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups_manage_rename.html)
 in the I<IAM User Guide>.
 
-To change a user name the requester must have appropriate permissions
+To change a user name, the requester must have appropriate permissions
 on both the source object and the target object. For example, to change
 Bob to Robert, the entity making the request must have permission on
 Bob and Robert, or must have permission on all (*). For more
@@ -3564,11 +3625,11 @@ renewals for you. Certificates provided by ACM are free. For more
 information about using ACM, see the AWS Certificate Manager User Guide
 (http://docs.aws.amazon.com/acm/latest/userguide/).
 
-For more information about working with server certificates, including
-a list of AWS services that can use the server certificates that you
-manage with IAM, go to Working with Server Certificates
+For more information about working with server certificates, see
+Working with Server Certificates
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html)
-in the I<IAM User Guide>.
+in the I<IAM User Guide>. This topic includes a list of AWS services
+that can use the server certificates that you manage with IAM.
 
 For information about the number of server certificates you can upload,
 see Limitations on IAM Entities and Objects
@@ -3601,11 +3662,11 @@ When you upload the certificate, its default status is C<Active>.
 
 If the C<UserName> field is not specified, the IAM user name is
 determined implicitly based on the AWS access key ID used to sign the
-request. Because this action works for access keys under the AWS
-account, you can use this action to manage root credentials even if the
-AWS account has no associated users.
+request. Because this operation works for access keys under the AWS
+account, you can use this operation to manage AWS account root user
+credentials even if the AWS account has no associated users.
 
-Because the body of a X.509 certificate can be large, you should use
+Because the body of an X.509 certificate can be large, you should use
 POST rather than GET when calling C<UploadSigningCertificate>. For
 information about setting up signatures and authorization through the
 API, go to Signing AWS API Requests
@@ -3625,7 +3686,7 @@ Returns: a L<Paws::IAM::UploadSSHPublicKeyResponse> instance
 Uploads an SSH public key and associates it with the specified IAM
 user.
 
-The SSH public key uploaded by this action can be used only for
+The SSH public key uploaded by this operation can be used only for
 authenticating the associated IAM user to an AWS CodeCommit repository.
 For more information about using SSH keys to authenticate to an AWS
 CodeCommit repository, see Set up AWS CodeCommit for SSH Connections

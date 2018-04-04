@@ -37,7 +37,8 @@ Contains information about an attached policy.
 An attached policy is a managed policy that has been attached to a
 user, group, or role. This data type is used as a response element in
 the ListAttachedGroupPolicies, ListAttachedRolePolicies,
-ListAttachedUserPolicies, and GetAccountAuthorizationDetails actions.
+ListAttachedUserPolicies, and GetAccountAuthorizationDetails
+operations.
 
 For more information about managed policies, refer to Managed Policies
 and Inline Policies

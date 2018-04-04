@@ -40,14 +40,30 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The new password for the specified IAM user.
 
 The regex pattern (http://wikipedia.org/wiki/regex) used to validate
-this parameter is a string of characters consisting of any printable
-ASCII character ranging from the space character (\u0020) through end
-of the ASCII character range as well as the printable characters in the
-Basic Latin and Latin-1 Supplement character set (through \u00FF). It
-also includes the special characters tab (\u0009), line feed (\u000A),
-and carriage return (\u000D). However, the format can be further
-restricted by the account administrator by setting a password policy on
-the AWS account. For more information, see UpdateAccountPasswordPolicy.
+this parameter is a string of characters consisting of the following:
+
+=over
+
+=item *
+
+Any printable ASCII character ranging from the space character (\u0020)
+through the end of the ASCII character range
+
+=item *
+
+The printable characters in the Basic Latin and Latin-1 Supplement
+character set (through \u00FF)
+
+=item *
+
+The special characters tab (\u0009), line feed (\u000A), and carriage
+return (\u000D)
+
+=back
+
+However, the format can be further restricted by the account
+administrator by setting a password policy on the AWS account. For more
+information, see UpdateAccountPasswordPolicy.
 
 
 
@@ -65,7 +81,7 @@ The name of the user whose password you want to update.
 This parameter allows (per its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: =,.@-
+also include any of the following characters: _+=,.@-
 
 
 

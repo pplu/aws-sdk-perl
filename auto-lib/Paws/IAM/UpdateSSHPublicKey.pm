@@ -47,9 +47,9 @@ consist of any upper or lowercased letter or digit.
 
 =head2 B<REQUIRED> Status => Str
 
-The status to assign to the SSH public key. C<Active> means the key can
-be used for authentication with an AWS CodeCommit repository.
-C<Inactive> means the key cannot be used.
+The status to assign to the SSH public key. C<Active> means that the
+key can be used for authentication with an AWS CodeCommit repository.
+C<Inactive> means that the key cannot be used.
 
 Valid values are: C<"Active">, C<"Inactive">
 
@@ -60,7 +60,7 @@ The name of the IAM user associated with the SSH public key.
 This parameter allows (per its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: =,.@-
+also include any of the following characters: _+=,.@-
 
 
 

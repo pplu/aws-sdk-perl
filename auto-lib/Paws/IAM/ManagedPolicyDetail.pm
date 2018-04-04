@@ -46,7 +46,7 @@ ARN, versions, and the number of principal entities (users, groups, and
 roles) that the policy is attached to.
 
 This data type is used as a response element in the
-GetAccountAuthorizationDetails action.
+GetAccountAuthorizationDetails operation.
 
 For more information about managed policies, see Managed Policies and
 Inline Policies

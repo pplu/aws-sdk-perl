@@ -59,12 +59,13 @@ in the I<IAM User Guide>.
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
 
-This paramater allows (per its regex pattern
+This parameter allows (per its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 either a forward slash (/) by itself or a string that must begin and
-end with forward slashes, containing any ASCII character from the !
-(\u0021) thru the DEL character (\u007F), including most punctuation
-characters, digits, and upper and lowercased letters.
+end with forward slashes. In addition, it can contain any ASCII
+character from the ! (\u0021) through the DEL character (\u007F),
+including most punctuation characters, digits, and upper and lowercased
+letters.
 
 
 
@@ -74,12 +75,27 @@ The JSON policy document that you want to use as the content for the
 new policy.
 
 The regex pattern (http://wikipedia.org/wiki/regex) used to validate
-this parameter is a string of characters consisting of any printable
-ASCII character ranging from the space character (\u0020) through end
-of the ASCII character range as well as the printable characters in the
-Basic Latin and Latin-1 Supplement character set (through \u00FF). It
-also includes the special characters tab (\u0009), line feed (\u000A),
-and carriage return (\u000D).
+this parameter is a string of characters consisting of the following:
+
+=over
+
+=item *
+
+Any printable ASCII character ranging from the space character (\u0020)
+through the end of the ASCII character range
+
+=item *
+
+The printable characters in the Basic Latin and Latin-1 Supplement
+character set (through \u00FF)
+
+=item *
+
+The special characters tab (\u0009), line feed (\u000A), and carriage
+return (\u000D)
+
+=back
+
 
 
 
@@ -90,7 +106,7 @@ The friendly name of the policy.
 This parameter allows (per its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: =,.@-+
+also include any of the following characters: _+=,.@-
 
 
 

@@ -45,7 +45,7 @@ provider resource.
 
 The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC)
 provider resource to add the client ID to. You can get a list of OIDC
-provider ARNs by using the ListOpenIDConnectProviders action.
+provider ARNs by using the ListOpenIDConnectProviders operation.
 
 
 

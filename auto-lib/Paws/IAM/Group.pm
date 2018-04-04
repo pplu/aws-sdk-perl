@@ -37,7 +37,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Group 
 
 Contains information about an IAM group entity.
 
-This data type is used as a response element in the following actions:
+This data type is used as a response element in the following
+operations:
 
 =over
 

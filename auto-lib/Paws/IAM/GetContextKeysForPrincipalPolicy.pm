@@ -40,12 +40,27 @@ An optional list of additional policies for which you want the list of
 context keys that are referenced.
 
 The regex pattern (http://wikipedia.org/wiki/regex) used to validate
-this parameter is a string of characters consisting of any printable
-ASCII character ranging from the space character (\u0020) through end
-of the ASCII character range as well as the printable characters in the
-Basic Latin and Latin-1 Supplement character set (through \u00FF). It
-also includes the special characters tab (\u0009), line feed (\u000A),
-and carriage return (\u000D).
+this parameter is a string of characters consisting of the following:
+
+=over
+
+=item *
+
+Any printable ASCII character ranging from the space character (\u0020)
+through the end of the ASCII character range
+
+=item *
+
+The printable characters in the Basic Latin and Latin-1 Supplement
+character set (through \u00FF)
+
+=item *
+
+The special characters tab (\u0009), line feed (\u000A), and carriage
+return (\u000D)
+
+=back
+
 
 
 
@@ -53,12 +68,12 @@ and carriage return (\u000D).
 
 The ARN of a user, group, or role whose policies contain the context
 keys that you want listed. If you specify a user, the list includes
-context keys that are found in all policies attached to the user as
-well as to all groups that the user is a member of. If you pick a group
-or a role, then it includes only those context keys that are found in
-policies attached to that entity. Note that all parameters are shown in
-unencoded form here for clarity, but must be URL encoded to be included
-as a part of a real HTML request.
+context keys that are found in all policies that are attached to the
+user. The list also includes all groups that the user is a member of.
+If you pick a group or a role, then it includes only those context keys
+that are found in policies attached to that entity. Note that all
+parameters are shown in unencoded form here for clarity, but must be
+URL encoded to be included as a part of a real HTML request.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
 AWS Service Namespaces

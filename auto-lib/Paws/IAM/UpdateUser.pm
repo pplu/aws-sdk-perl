@@ -40,12 +40,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 New path for the IAM user. Include this parameter only if you're
 changing the user's path.
 
-This paramater allows (per its regex pattern
+This parameter allows (per its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 either a forward slash (/) by itself or a string that must begin and
-end with forward slashes, containing any ASCII character from the !
-(\u0021) thru the DEL character (\u007F), including most punctuation
-characters, digits, and upper and lowercased letters.
+end with forward slashes. In addition, it can contain any ASCII
+character from the ! (\u0021) through the DEL character (\u007F),
+including most punctuation characters, digits, and upper and lowercased
+letters.
 
 
 
@@ -57,7 +58,7 @@ the user's name.
 This parameter allows (per its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: =,.@-
+also include any of the following characters: _+=,.@-
 
 
 
@@ -69,7 +70,7 @@ this is the original user name.
 This parameter allows (per its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: =,.@-
+also include any of the following characters: _+=,.@-
 
 
 

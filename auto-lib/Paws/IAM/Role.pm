@@ -4,6 +4,7 @@ package Paws::IAM::Role;
   has AssumeRolePolicyDocument => (is => 'ro', isa => 'Str', decode_as => 'URLJSON', method => 'Policy', traits => ['JSONAttribute']);
   has CreateDate => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
+  has MaxSessionDuration => (is => 'ro', isa => 'Int');
   has Path => (is => 'ro', isa => 'Str', required => 1);
   has RoleId => (is => 'ro', isa => 'Str', required => 1);
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
@@ -38,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Role o
 =head1 DESCRIPTION
 
 Contains information about an IAM role. This structure is returned as a
-response element in several APIs that interact with roles.
+response element in several API operations that interact with roles.
 
 =head1 ATTRIBUTES
 
@@ -66,6 +67,14 @@ in the I<IAM User Guide> guide.
 =head2 Description => Str
 
   A description of the role that you provide.
+
+
+=head2 MaxSessionDuration => Int
+
+  The maximum session duration (in seconds) for the specified role.
+Anyone who uses the AWS CLI or API to assume the role can specify the
+duration using the optional C<DurationSeconds> API parameter or
+C<duration-seconds> CLI parameter.
 
 
 =head2 B<REQUIRED> Path => Str

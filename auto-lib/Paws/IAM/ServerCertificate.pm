@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Server
 Contains information about a server certificate.
 
 This data type is used as a response element in the
-GetServerCertificate action.
+GetServerCertificate operation.
 
 =head1 ATTRIBUTES
 

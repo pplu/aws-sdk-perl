@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The Amazon Resource Name (ARN) of the OIDC provider resource object in
 IAM to get information for. You can get a list of OIDC provider
-resource ARNs by using the ListOpenIDConnectProviders action.
+resource ARNs by using the ListOpenIDConnectProviders operation.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
 AWS Service Namespaces

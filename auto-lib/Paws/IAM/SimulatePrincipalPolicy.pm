@@ -45,22 +45,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ActionNames => ArrayRef[Str|Undef]
 
-A list of names of API actions to evaluate in the simulation. Each
-action is evaluated for each resource. Each action must include the
-service identifier, such as C<iam:CreateUser>.
+A list of names of API operations to evaluate in the simulation. Each
+operation is evaluated for each resource. Each operation must include
+the service identifier, such as C<iam:CreateUser>.
 
 
 
 =head2 CallerArn => Str
 
 The ARN of the IAM user that you want to specify as the simulated
-caller of the APIs. If you do not specify a C<CallerArn>, it defaults
-to the ARN of the user that you specify in C<PolicySourceArn>, if you
-specified a user. If you include both a C<PolicySourceArn> (for
+caller of the API operations. If you do not specify a C<CallerArn>, it
+defaults to the ARN of the user that you specify in C<PolicySourceArn>,
+if you specified a user. If you include both a C<PolicySourceArn> (for
 example, C<arn:aws:iam::123456789012:user/David>) and a C<CallerArn>
 (for example, C<arn:aws:iam::123456789012:user/Bob>), the result is
-that you simulate calling the APIs as Bob, as if Bob had David's
-policies.
+that you simulate calling the API operations as Bob, as if Bob had
+David's policies.
 
 You can specify only the ARN of an IAM user. You cannot specify the ARN
 of an assumed role, federated user, or a service principal.
@@ -116,12 +116,27 @@ simulation. Each document is specified as a string containing the
 complete, valid JSON text of an IAM policy.
 
 The regex pattern (http://wikipedia.org/wiki/regex) used to validate
-this parameter is a string of characters consisting of any printable
-ASCII character ranging from the space character (\u0020) through end
-of the ASCII character range as well as the printable characters in the
-Basic Latin and Latin-1 Supplement character set (through \u00FF). It
-also includes the special characters tab (\u0009), line feed (\u000A),
-and carriage return (\u000D).
+this parameter is a string of characters consisting of the following:
+
+=over
+
+=item *
+
+Any printable ASCII character ranging from the space character (\u0020)
+through the end of the ASCII character range
+
+=item *
+
+The printable characters in the Basic Latin and Latin-1 Supplement
+character set (through \u00FF)
+
+=item *
+
+The special characters tab (\u0009), line feed (\u000A), and carriage
+return (\u000D)
+
+=back
+
 
 
 
@@ -143,7 +158,7 @@ in the I<AWS General Reference>.
 =head2 ResourceArns => ArrayRef[Str|Undef]
 
 A list of ARNs of AWS resources to include in the simulation. If this
-parameter is not provided then the value defaults to C<*> (all
+parameter is not provided, then the value defaults to C<*> (all
 resources). Each API in the C<ActionNames> parameter is evaluated for
 each resource in this list. The simulation determines the access result
 (allowed or denied) of each combination and reports it in the response.
@@ -162,12 +177,12 @@ in the I<AWS General Reference>.
 
 =head2 ResourceHandlingOption => Str
 
-Specifies the type of simulation to run. Different APIs that support
-resource-based policies require different combinations of resources. By
-specifying the type of simulation to run, you enable the policy
-simulator to enforce the presence of the required resources to ensure
-reliable simulation results. If your simulation does not match one of
-the following scenarios, then you can omit this parameter. The
+Specifies the type of simulation to run. Different API operations that
+support resource-based policies require different combinations of
+resources. By specifying the type of simulation to run, you enable the
+policy simulator to enforce the presence of the required resources to
+ensure reliable simulation results. If your simulation does not match
+one of the following scenarios, then you can omit this parameter. The
 following list shows each of the supported scenario values and the
 resources that you must define to run the simulation.
 
@@ -179,7 +194,7 @@ it includes an IP subnet, then you must specify the subnet resource.
 For more information on the EC2 scenario options, see Supported
 Platforms
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html)
-in the I<AWS EC2 User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 =over
 
@@ -247,12 +262,27 @@ policy attached. You can include only one resource-based policy in a
 simulation.
 
 The regex pattern (http://wikipedia.org/wiki/regex) used to validate
-this parameter is a string of characters consisting of any printable
-ASCII character ranging from the space character (\u0020) through end
-of the ASCII character range as well as the printable characters in the
-Basic Latin and Latin-1 Supplement character set (through \u00FF). It
-also includes the special characters tab (\u0009), line feed (\u000A),
-and carriage return (\u000D).
+this parameter is a string of characters consisting of the following:
+
+=over
+
+=item *
+
+Any printable ASCII character ranging from the space character (\u0020)
+through the end of the ASCII character range
+
+=item *
+
+The printable characters in the Basic Latin and Latin-1 Supplement
+character set (through \u00FF)
+
+=item *
+
+The special characters tab (\u0009), line feed (\u000A), and carriage
+return (\u000D)
+
+=back
+
 
 
 

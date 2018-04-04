@@ -43,7 +43,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Policy
 Contains information about a managed policy.
 
 This data type is used as a response element in the CreatePolicy,
-GetPolicy, and ListPolicies actions.
+GetPolicy, and ListPolicies operations.
 
 For more information about managed policies, refer to Managed Policies
 and Inline Policies

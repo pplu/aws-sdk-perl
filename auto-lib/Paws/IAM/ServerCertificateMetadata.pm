@@ -40,7 +40,7 @@ Contains information about a server certificate without its certificate
 body, certificate chain, and private key.
 
 This data type is used as a response element in the
-UploadServerCertificate and ListServerCertificates actions.
+UploadServerCertificate and ListServerCertificates operations.
 
 =head1 ATTRIBUTES
 

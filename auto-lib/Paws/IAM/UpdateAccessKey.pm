@@ -48,8 +48,8 @@ consist of any upper or lowercased letter or digit.
 =head2 B<REQUIRED> Status => Str
 
 The status you want to assign to the secret access key. C<Active> means
-the key can be used for API calls to AWS, while C<Inactive> means the
-key cannot be used.
+that the key can be used for API calls to AWS, while C<Inactive> means
+that the key cannot be used.
 
 Valid values are: C<"Active">, C<"Inactive">
 
@@ -60,7 +60,7 @@ The name of the user whose key you want to update.
 This parameter allows (per its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: =,.@-
+also include any of the following characters: _+=,.@-
 
 
 

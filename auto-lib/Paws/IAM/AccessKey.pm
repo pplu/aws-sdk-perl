@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Access
 Contains information about an AWS access key.
 
 This data type is used as a response element in the CreateAccessKey and
-ListAccessKeys actions.
+ListAccessKeys operations.
 
 The C<SecretAccessKey> value is returned only in response to
 CreateAccessKey. You can get a secret access key only when you first
@@ -65,8 +65,8 @@ If you lose a secret access key, you must create a new access key.
 
 =head2 B<REQUIRED> Status => Str
 
-  The status of the access key. C<Active> means the key is valid for API
-calls, while C<Inactive> means it is not.
+  The status of the access key. C<Active> means that the key is valid for
+API calls, while C<Inactive> means it is not.
 
 
 =head2 B<REQUIRED> UserName => Str

@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Access
 Contains information about an AWS access key, without its secret key.
 
 This data type is used as a response element in the ListAccessKeys
-action.
+operation.
 
 =head1 ATTRIBUTES
 

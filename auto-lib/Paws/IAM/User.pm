@@ -38,7 +38,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::User o
 
 Contains information about an IAM user entity.
 
-This data type is used as a response element in the following actions:
+This data type is used as a response element in the following
+operations:
 
 =over
 
@@ -105,7 +106,7 @@ the user does not currently have a password, but had one in the past,
 then this field contains the date and time the most recent password was
 used.
 
-This value is returned only in the GetUser and ListUsers actions.
+This value is returned only in the GetUser and ListUsers operations.
 
 
 =head2 B<REQUIRED> Path => Str

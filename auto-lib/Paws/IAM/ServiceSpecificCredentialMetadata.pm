@@ -66,8 +66,8 @@ credential.
 
 =head2 B<REQUIRED> Status => Str
 
-  The status of the service-specific credential. C<Active> means the key
-is valid for API calls, while C<Inactive> means it is not.
+  The status of the service-specific credential. C<Active> means that the
+key is valid for API calls, while C<Inactive> means it is not.
 
 
 =head2 B<REQUIRED> UserName => Str

@@ -43,7 +43,7 @@ Contains information about an IAM role, including all of the role's
 policies.
 
 This data type is used as a response element in the
-GetAccountAuthorizationDetails action.
+GetAccountAuthorizationDetails operation.
 
 =head1 ATTRIBUTES
 

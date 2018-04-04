@@ -62,13 +62,13 @@ the service where to continue from.
 =head2 UserName => Str
 
 The name of the IAM user to list SSH public keys for. If none is
-specified, the UserName field is determined implicitly based on the AWS
-access key used to sign the request.
+specified, the C<UserName> field is determined implicitly based on the
+AWS access key used to sign the request.
 
 This parameter allows (per its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: =,.@-
+also include any of the following characters: _+=,.@-
 
 
 

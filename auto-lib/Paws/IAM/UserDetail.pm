@@ -42,7 +42,7 @@ Contains information about an IAM user, including all the user's
 policies and all the IAM groups the user is in.
 
 This data type is used as a response element in the
-GetAccountAuthorizationDetails action.
+GetAccountAuthorizationDetails operation.
 
 =head1 ATTRIBUTES
 

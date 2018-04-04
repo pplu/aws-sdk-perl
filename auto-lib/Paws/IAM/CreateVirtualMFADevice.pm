@@ -44,12 +44,13 @@ in the I<IAM User Guide>.
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
 
-This paramater allows (per its regex pattern
+This parameter allows (per its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 either a forward slash (/) by itself or a string that must begin and
-end with forward slashes, containing any ASCII character from the !
-(\u0021) thru the DEL character (\u007F), including most punctuation
-characters, digits, and upper and lowercased letters.
+end with forward slashes. In addition, it can contain any ASCII
+character from the ! (\u0021) through the DEL character (\u007F),
+including most punctuation characters, digits, and upper and lowercased
+letters.
 
 
 
@@ -61,7 +62,7 @@ a virtual MFA device.
 This parameter allows (per its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: =,.@-
+also include any of the following characters: _+=,.@-
 
 
 

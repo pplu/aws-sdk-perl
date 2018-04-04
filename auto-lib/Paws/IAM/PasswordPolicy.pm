@@ -43,7 +43,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Passwo
 Contains information about the account password policy.
 
 This data type is used as a response element in the
-GetAccountPasswordPolicy action.
+GetAccountPasswordPolicy operation.
 
 =head1 ATTRIBUTES
 
@@ -56,7 +56,7 @@ GetAccountPasswordPolicy action.
 =head2 ExpirePasswords => Bool
 
   Indicates whether passwords in the account expire. Returns true if
-MaxPasswordAge is contains a value greater than 0. Returns false if
+C<MaxPasswordAge> contains a value greater than 0. Returns false if
 MaxPasswordAge is 0 or not present.
 
 
