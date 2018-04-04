@@ -59,7 +59,7 @@ Valid values are: C<"Enabled">, C<"Disabled">
 
 The type of ML compute instance to launch for the notebook instance.
 
-Valid values are: C<"ml.t2.medium">, C<"ml.m4.xlarge">, C<"ml.p2.xlarge">, C<"ml.p3.2xlarge">
+Valid values are: C<"ml.t2.medium">, C<"ml.t2.large">, C<"ml.t2.xlarge">, C<"ml.t2.2xlarge">, C<"ml.m4.xlarge">, C<"ml.m4.2xlarge">, C<"ml.m4.4xlarge">, C<"ml.m4.10xlarge">, C<"ml.m4.16xlarge">, C<"ml.p2.xlarge">, C<"ml.p2.8xlarge">, C<"ml.p2.16xlarge">, C<"ml.p3.2xlarge">, C<"ml.p3.8xlarge">, C<"ml.p3.16xlarge">
 
 =head2 KmsKeyId => Str
 

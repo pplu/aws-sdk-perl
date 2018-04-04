@@ -36,7 +36,10 @@ instance was created
 
 =head2 DirectInternetAccess => Str
 
-Describes whether the notebook instance has internet access.
+Describes whether Amazon SageMaker provides internet access to the
+notebook instance. If this value is set to I<Disabled, he notebook
+instance does not have internet access, and cannot connect to Amazon
+SageMaker training and endpoint services>.
 
 For more information, see appendix-notebook-and-internet-access.
 
@@ -50,7 +53,7 @@ If status is failed, the reason it failed.
 
 The type of ML compute instance running on the notebook instance.
 
-Valid values are: C<"ml.t2.medium">, C<"ml.m4.xlarge">, C<"ml.p2.xlarge">, C<"ml.p3.2xlarge">
+Valid values are: C<"ml.t2.medium">, C<"ml.t2.large">, C<"ml.t2.xlarge">, C<"ml.t2.2xlarge">, C<"ml.m4.xlarge">, C<"ml.m4.2xlarge">, C<"ml.m4.4xlarge">, C<"ml.m4.10xlarge">, C<"ml.m4.16xlarge">, C<"ml.p2.xlarge">, C<"ml.p2.8xlarge">, C<"ml.p2.16xlarge">, C<"ml.p3.2xlarge">, C<"ml.p3.8xlarge">, C<"ml.p3.16xlarge">
 =head2 KmsKeyId => Str
 
 AWS KMS key ID Amazon SageMaker uses to encrypt data when storing it on

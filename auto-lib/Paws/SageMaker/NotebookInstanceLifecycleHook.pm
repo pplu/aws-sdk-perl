@@ -33,7 +33,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 Contains the notebook instance lifecycle configuration script.
 
-This script runs in the path C</sbin:bin:/usr/sbin:/usr/bin>.
+Each lifecycle configuration script has a limit of 16384 characters.
+
+The value of the C<$PATH> environment variable that is available to
+both scripts is C</sbin:bin:/usr/sbin:/usr/bin>.
+
+View CloudWatch Logs for notebook instance lifecycle configurations in
+log group C</aws/sagemaker/NotebookInstances> in log stream
+C<[notebook-instance-name]/[LifecycleConfigHook]>.
+
+Lifecycle configuration scripts cannot run for longer than 5 minutes.
+If a script runs for longer than 5 minutes, it fails and the notebook
+instance is not created or started.
 
 For information about notebook instance lifestyle configurations, see
 notebook-lifecycle-config.
