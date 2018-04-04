@@ -233,9 +233,20 @@ Scenarios for Temporary Credentials
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html#sts-introduction)
 in the I<IAM User Guide>.
 
-The temporary security credentials are valid for the duration that you
-specified when calling C<AssumeRole>, which can be from 900 seconds (15
-minutes) to a maximum of 3600 seconds (1 hour). The default is 1 hour.
+By default, the temporary security credentials created by C<AssumeRole>
+last for one hour. However, you can use the optional C<DurationSeconds>
+parameter to specify the duration of your session. You can provide a
+value from 900 seconds (15 minutes) up to the maximum session duration
+setting for the role. This setting can have a value from 1 hour to 12
+hours. To learn how to view the maximum value for your role, see View
+the Maximum Session Duration Setting for a Role
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
+in the I<IAM User Guide>. The maximum session duration limit applies
+when you use the C<AssumeRole*> API operations or the C<assume-role*>
+CLI operations but does not apply when you use those operations to
+create a console URL. For more information, see Using IAM Roles
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html) in
+the I<IAM User Guide>.
 
 The temporary security credentials created by C<AssumeRole> can be used
 to make API calls to any AWS service with the following exception: you
@@ -325,11 +336,23 @@ of an access key ID, a secret access key, and a security token.
 Applications can use these temporary security credentials to sign calls
 to AWS services.
 
-The temporary security credentials are valid for the duration that you
-specified when calling C<AssumeRole>, or until the time specified in
-the SAML authentication response's C<SessionNotOnOrAfter> value,
-whichever is shorter. The duration can be from 900 seconds (15 minutes)
-to a maximum of 3600 seconds (1 hour). The default is 1 hour.
+By default, the temporary security credentials created by
+C<AssumeRoleWithSAML> last for one hour. However, you can use the
+optional C<DurationSeconds> parameter to specify the duration of your
+session. Your role session lasts for the duration that you specify, or
+until the time specified in the SAML authentication response's
+C<SessionNotOnOrAfter> value, whichever is shorter. You can provide a
+C<DurationSeconds> value from 900 seconds (15 minutes) up to the
+maximum session duration setting for the role. This setting can have a
+value from 1 hour to 12 hours. To learn how to view the maximum value
+for your role, see View the Maximum Session Duration Setting for a Role
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
+in the I<IAM User Guide>. The maximum session duration limit applies
+when you use the C<AssumeRole*> API operations or the C<assume-role*>
+CLI operations but does not apply when you use those operations to
+create a console URL. For more information, see Using IAM Roles
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html) in
+the I<IAM User Guide>.
 
 The temporary security credentials created by C<AssumeRoleWithSAML> can
 be used to make API calls to any AWS service with the following
@@ -450,9 +473,21 @@ access key ID, a secret access key, and a security token. Applications
 can use these temporary security credentials to sign calls to AWS
 service APIs.
 
-The credentials are valid for the duration that you specified when
-calling C<AssumeRoleWithWebIdentity>, which can be from 900 seconds (15
-minutes) to a maximum of 3600 seconds (1 hour). The default is 1 hour.
+By default, the temporary security credentials created by
+C<AssumeRoleWithWebIdentity> last for one hour. However, you can use
+the optional C<DurationSeconds> parameter to specify the duration of
+your session. You can provide a value from 900 seconds (15 minutes) up
+to the maximum session duration setting for the role. This setting can
+have a value from 1 hour to 12 hours. To learn how to view the maximum
+value for your role, see View the Maximum Session Duration Setting for
+a Role
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
+in the I<IAM User Guide>. The maximum session duration limit applies
+when you use the C<AssumeRole*> API operations or the C<assume-role*>
+CLI operations but does not apply when you use those operations to
+create a console URL. For more information, see Using IAM Roles
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html) in
+the I<IAM User Guide>.
 
 The temporary security credentials created by
 C<AssumeRoleWithWebIdentity> can be used to make API calls to any AWS
