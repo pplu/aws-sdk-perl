@@ -3,6 +3,7 @@ package Paws::ES::UpdateElasticsearchDomainConfig;
   use Moose;
   has AccessPolicies => (is => 'ro', isa => 'Str');
   has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptions');
+  has CognitoOptions => (is => 'ro', isa => 'Paws::ES::CognitoOptions');
   has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DomainName', required => 1);
   has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptions');
   has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfig');
@@ -55,6 +56,15 @@ sub-resources. By default, the value is C<true>. See Configuration
 Advanced Options
 (http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options)
 for more information.
+
+
+
+=head2 CognitoOptions => L<Paws::ES::CognitoOptions>
+
+Options to specify the Cognito user and identity pools for Kibana
+authentication. For more information, see Amazon Cognito Authentication
+for Kibana
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html).
 
 
 

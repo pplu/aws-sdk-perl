@@ -3,6 +3,7 @@ package Paws::ES::ElasticsearchDomainStatus;
   has AccessPolicies => (is => 'ro', isa => 'Str');
   has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptions');
   has ARN => (is => 'ro', isa => 'Str', required => 1);
+  has CognitoOptions => (is => 'ro', isa => 'Paws::ES::CognitoOptions');
   has Created => (is => 'ro', isa => 'Bool');
   has Deleted => (is => 'ro', isa => 'Bool');
   has DomainId => (is => 'ro', isa => 'Str', required => 1);
@@ -68,6 +69,13 @@ The current status of an Elasticsearch domain.
 Identifiers for IAM Entities
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html)
 in I<Using AWS Identity and Access Management> for more information.
+
+
+=head2 CognitoOptions => L<Paws::ES::CognitoOptions>
+
+  The C<CognitoOptions> for the specified domain. For more information,
+see Amazon Cognito Authentication for Kibana
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html).
 
 
 =head2 Created => Bool

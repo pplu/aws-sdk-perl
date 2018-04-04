@@ -2,6 +2,7 @@ package Paws::ES::ElasticsearchDomainConfig;
   use Moose;
   has AccessPolicies => (is => 'ro', isa => 'Paws::ES::AccessPoliciesStatus');
   has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptionsStatus');
+  has CognitoOptions => (is => 'ro', isa => 'Paws::ES::CognitoOptionsStatus');
   has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptionsStatus');
   has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfigStatus');
   has ElasticsearchVersion => (is => 'ro', isa => 'Paws::ES::ElasticsearchVersionStatus');
@@ -55,6 +56,13 @@ The configuration of an Elasticsearch domain.
 Advanced Options
 (http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options)
 for more information.
+
+
+=head2 CognitoOptions => L<Paws::ES::CognitoOptionsStatus>
+
+  The C<CognitoOptions> for the specified domain. For more information,
+see Amazon Cognito Authentication for Kibana
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html).
 
 
 =head2 EBSOptions => L<Paws::ES::EBSOptionsStatus>
