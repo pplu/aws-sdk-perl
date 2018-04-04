@@ -22,6 +22,10 @@
  - New API: WorkMail
  - New API: Transcribe
  - New API: AutoScalingPlans
+ - New API: Connect
+ - New API: ACMCPA
+ - New API: FMS
+ - New API: SecretsManager
  - API update: IoT
  - API update: Shield
  - API update: Rekognition

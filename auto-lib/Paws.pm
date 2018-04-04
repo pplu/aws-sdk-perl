@@ -236,6 +236,8 @@ kept stable, and changes to it should be notified via ChangeLog
 
 L<Paws::ACM>
 
+L<Paws::ACMPCA>
+
 L<Paws::AlexaForBusiness>
 
 L<Paws::ApiGateway>
@@ -302,6 +304,8 @@ L<Paws::Comprehend>
 
 L<Paws::Config>
 
+L<Paws::Connect>
+
 L<Paws::CostExplorer>
 
 L<Paws::CUR>
@@ -353,6 +357,8 @@ L<Paws::EMR>
 L<Paws::ES>
 
 L<Paws::Firehose>
+
+L<Paws::FMS>
 
 L<Paws::GameLift>
 
@@ -457,6 +463,8 @@ L<Paws::SageMaker>
 L<Paws::SageMakerRuntime>
 
 L<Paws::SDB>
+
+L<Paws::SecretsManager>
 
 L<Paws::ServerlessRepo>
 

@@ -4,6 +4,7 @@ package Paws::API::ServiceToClass;
 
   our $services_to_classes = {
     acm => 'ACM',
+   'acm-pca', 'ACMPCA',
     alexaforbusiness => 'AlexaForBusiness',
     athena => 'Athena',
     apigateway => 'ApiGateway',
@@ -35,6 +36,7 @@ package Paws::API::ServiceToClass;
    'cognito-sync' => 'CognitoSync',
     comprehend => 'Comprehend',
     config => 'Config',
+    connect => 'Connect',
     cur => 'CUR',
     datapipeline => 'DataPipeline',
     dax => 'DAX',
@@ -64,6 +66,7 @@ package Paws::API::ServiceToClass;
     email => 'SES',
     events => 'CloudWatchEvents',
     firehose => 'Firehose',
+    fms => 'FMS',
     gamelift => 'GameLift',
     glacier => 'Glacier',
     glue => 'Glue',
@@ -118,6 +121,7 @@ package Paws::API::ServiceToClass;
     s3 => 'S3',
     sagemaker => 'SageMaker',
    'sagemaker-runtime' => 'SageMakerRuntime',
+    secretsmanager => 'SecretsManager',
     ses => 'SES',
     servicecatalog => 'ServiceCatalog',
     serverlessrepo => 'ServerlessRepo',
