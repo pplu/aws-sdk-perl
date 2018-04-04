@@ -1,6 +1,7 @@
 
 package Paws::CloudFormation::UpdateStackSet;
   use Moose;
+  has AdministrationRoleARN => (is => 'ro', isa => 'Str');
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Description => (is => 'ro', isa => 'Str');
   has OperationId => (is => 'ro', isa => 'Str');
@@ -40,6 +41,26 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 AdministrationRoleARN => Str
+
+The Amazon Resource Number (ARN) of the IAM role to use to update this
+stack set.
+
+Specify an IAM role only if you are using customized administrator
+roles to control which users or groups can manage specific stack sets
+within the same administrator account. For more information, see Define
+Permissions for Multiple Administrators
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
+in the I<AWS CloudFormation User Guide>.
+
+If you specify a customized administrator role, AWS CloudFormation uses
+that role to update the stack. If you do not specify a customized
+administrator role, AWS CloudFormation performs the update using the
+role previously associated with the stack set, so long as you have
+permissions to perform operations on the stack set.
+
 
 
 =head2 Capabilities => ArrayRef[Str|Undef]

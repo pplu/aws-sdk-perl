@@ -1,8 +1,10 @@
 package Paws::CloudFormation::StackSet;
   use Moose;
+  has AdministrationRoleARN => (is => 'ro', isa => 'Str');
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Description => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
+  has StackSetARN => (is => 'ro', isa => 'Str');
   has StackSetId => (is => 'ro', isa => 'Str');
   has StackSetName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -27,14 +29,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudFormation::StackSet object:
 
-  $service_obj->Method(Att1 => { Capabilities => $value, ..., TemplateBody => $value  });
+  $service_obj->Method(Att1 => { AdministrationRoleARN => $value, ..., TemplateBody => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormation::StackSet object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Capabilities
+  $result->Att1->AdministrationRoleARN
 
 =head1 DESCRIPTION
 
@@ -45,6 +47,18 @@ the template to use, as well as any parameters and capabilities that
 the template requires.
 
 =head1 ATTRIBUTES
+
+
+=head2 AdministrationRoleARN => Str
+
+  The Amazon Resource Number (ARN) of the IAM role used to create or
+update the stack set.
+
+Use customized administrator roles to control which users or groups can
+manage specific stack sets within the same administrator account. For
+more information, see Define Permissions for Multiple Administrators
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
+in the I<AWS CloudFormation User Guide>.
 
 
 =head2 Capabilities => ArrayRef[Str|Undef]
@@ -66,6 +80,11 @@ created or updated.
 =head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
 
   A list of input parameters for a stack set.
+
+
+=head2 StackSetARN => Str
+
+  The Amazon Resource Number (ARN) of the stack set.
 
 
 =head2 StackSetId => Str

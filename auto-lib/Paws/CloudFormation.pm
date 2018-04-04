@@ -502,7 +502,7 @@ account and region. C<Accounts> and C<Regions> are required
 parametersE<mdash>you must specify at least one account and one region.
 
 
-=head2 CreateStackSet(StackSetName => Str, [Capabilities => ArrayRef[Str|Undef], ClientRequestToken => Str, Description => Str, Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str])
+=head2 CreateStackSet(StackSetName => Str, [AdministrationRoleARN => Str, Capabilities => ArrayRef[Str|Undef], ClientRequestToken => Str, Description => Str, Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str])
 
 Each argument is described in detail in: L<Paws::CloudFormation::CreateStackSet>
 
@@ -948,7 +948,7 @@ updated with the new parameter, you can then override the parameter
 value using C<UpdateStackInstances>.
 
 
-=head2 UpdateStackSet(StackSetName => Str, [Capabilities => ArrayRef[Str|Undef], Description => Str, OperationId => Str, OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>, Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
+=head2 UpdateStackSet(StackSetName => Str, [AdministrationRoleARN => Str, Capabilities => ArrayRef[Str|Undef], Description => Str, OperationId => Str, OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>, Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
 
 Each argument is described in detail in: L<Paws::CloudFormation::UpdateStackSet>
 

@@ -1,6 +1,7 @@
 package Paws::CloudFormation::StackSetOperation;
   use Moose;
   has Action => (is => 'ro', isa => 'Str');
+  has AdministrationRoleARN => (is => 'ro', isa => 'Str');
   has CreationTimestamp => (is => 'ro', isa => 'Str');
   has EndTimestamp => (is => 'ro', isa => 'Str');
   has OperationId => (is => 'ro', isa => 'Str');
@@ -50,6 +51,18 @@ Create and delete operations affect only the specified stack set
 instances that are associated with the specified stack set. Update
 operations affect both the stack set itself, as well as I<all>
 associated stack set instances.
+
+
+=head2 AdministrationRoleARN => Str
+
+  The Amazon Resource Number (ARN) of the IAM role used to perform this
+stack set operation.
+
+Use customized administrator roles to control which users or groups can
+manage specific stack sets within the same administrator account. For
+more information, see Define Permissions for Multiple Administrators
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
+in the I<AWS CloudFormation User Guide>.
 
 
 =head2 CreationTimestamp => Str
