@@ -93,6 +93,10 @@ Spanish (es)
 
 =back
 
+To have Amazon Translate determine the source language of your text,
+you can specify C<auto> in the C<SourceLanguageCode> field. If you
+specify C<auto>, Amazon Translate will call Amazon Comprehend to
+determine the source language.
 
 
 

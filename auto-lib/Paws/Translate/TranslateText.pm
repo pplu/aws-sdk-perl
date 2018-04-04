@@ -41,6 +41,11 @@ One of the supported language codes for the source text. If the
 C<TargetLanguageCode> is not "en", the C<SourceLanguageCode> must be
 "en".
 
+To have Amazon Translate determine the source language of your text,
+you can specify C<auto> in the C<SourceLanguageCode> field. If you
+specify C<auto>, Amazon Translate will call Amazon Comprehend to
+determine the source language.
+
 
 
 =head2 B<REQUIRED> TargetLanguageCode => Str
