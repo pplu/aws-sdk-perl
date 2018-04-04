@@ -36,7 +36,10 @@ information, see concurrent-executions.
 
 =head2 Tags => L<Paws::Lambda::Tags>
 
-Returns the list of tags associated with the function.
+Returns the list of tags associated with the function. For more
+information, see Tagging Lambda Functions
+(http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the B<AWS
+Lambda Developer Guide>.
 
 
 =head2 _request_id => Str

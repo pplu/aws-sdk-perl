@@ -46,7 +46,8 @@ The size, in bytes, of the function .zip file you uploaded.
 =head2 DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>
 
 The parent object that contains the target ARN (Amazon Resource Name)
-of an Amazon SQS queue or Amazon SNS topic.
+of an Amazon SQS queue or Amazon SNS topic. For more information, see
+dlq.
 
 
 =head2 Description => Str
@@ -120,7 +121,7 @@ resources.
 
 The runtime environment for the Lambda function.
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"nodejs4.3-edge">, C<"go1.x">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"nodejs4.3-edge">, C<"go1.x">
 =head2 Timeout => Int
 
 The function execution time at which Lambda should terminate the

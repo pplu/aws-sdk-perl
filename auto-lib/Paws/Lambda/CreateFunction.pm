@@ -57,7 +57,8 @@ The code for the Lambda function.
 =head2 DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>
 
 The parent object that contains the target ARN (Amazon Resource Name)
-of an Amazon SQS queue or Amazon SNS topic.
+of an Amazon SQS queue or Amazon SNS topic. For more information, see
+dlq.
 
 
 
@@ -138,7 +139,9 @@ The runtime environment for the Lambda function you are uploading.
 To use the Python runtime v3.6, set the value to "python3.6". To use
 the Python runtime v2.7, set the value to "python2.7". To use the
 Node.js runtime v6.10, set the value to "nodejs6.10". To use the
-Node.js runtime v4.3, set the value to "nodejs4.3".
+Node.js runtime v4.3, set the value to "nodejs4.3". To use the .NET
+Core runtime v1.0, set the value to "dotnetcore1.0". To use the .NET
+Core runtime v2.0, set the value to "dotnetcore2.0".
 
 Node v0.10.42 is currently marked as deprecated. You must migrate
 existing functions to the newer Node.js runtime versions available on
@@ -147,11 +150,14 @@ so will result in an invalid parameter error being returned. Note that
 you will have to follow this procedure for each region that contains
 functions written in the Node v0.10.42 runtime.
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"nodejs4.3-edge">, C<"go1.x">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"nodejs4.3-edge">, C<"go1.x">
 
 =head2 Tags => L<Paws::Lambda::Tags>
 
-The list of tags (key-value pairs) assigned to the new function.
+The list of tags (key-value pairs) assigned to the new function. For
+more information, see Tagging Lambda Functions
+(http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the B<AWS
+Lambda Developer Guide>.
 
 
 

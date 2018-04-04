@@ -36,7 +36,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Resource => Str
 
-The ARN (Amazon Resource Name) of the function.
+The ARN (Amazon Resource Name) of the function. For more information,
+see Tagging Lambda Functions
+(http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the B<AWS
+Lambda Developer Guide>.
 
 
 

@@ -273,7 +273,7 @@ AWS Lambda (http://docs.aws.amazon.com/lambda/latest/dg/welcome.html),
 and for information about how the service works, see AWS Lambda: How it
 Works
 (http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html)
-in the I<AWS Lambda Developer Guide>.
+in the B<AWS Lambda Developer Guide>.
 
 =head1 METHODS
 
@@ -290,7 +290,7 @@ event sources that use I<push> model. In a I<push> model, event sources
 function. Each permission you add to the resource policy allows an
 event source, permission to invoke the Lambda function.
 
-For information about the push model, see AWS Lambda: How it Works
+For information about the push model, see Lambda Functions
 (http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html).
 
 If you are using versioning, the permissions you add are specific to
@@ -332,17 +332,11 @@ stream.
 This association between a stream source and a Lambda function is
 called the event source mapping.
 
-This event source mapping is relevant only in the AWS Lambda pull
-model, where AWS Lambda invokes the function. For more information, see
-AWS Lambda: How it Works
-(http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html)
-in the I<AWS Lambda Developer Guide>.
-
 You provide mapping information (for example, which stream to read from
 and which Lambda function to invoke) in the request body.
 
 Each event source, such as an Amazon Kinesis or a DynamoDB stream, can
-be associated with multiple AWS Lambda function. A given Lambda
+be associated with multiple AWS Lambda functions. A given Lambda
 function can be associated with multiple AWS event sources.
 
 If you are using versioning, you can specify a specific function
@@ -657,7 +651,10 @@ Each argument is described in detail in: L<Paws::Lambda::ListTags>
 Returns: a L<Paws::Lambda::ListTagsResponse> instance
 
 Returns a list of tags assigned to a function when supplied the
-function ARN (Amazon Resource Name).
+function ARN (Amazon Resource Name). For more information on Tagging,
+see Tagging Lambda Functions
+(http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the B<AWS
+Lambda Developer Guide>.
 
 
 =head2 ListVersionsByFunction(FunctionName => Str, [Marker => Str, MaxItems => Int])
@@ -733,7 +730,9 @@ Returns: nothing
 Creates a list of tags (key-value pairs) on the Lambda function.
 Requires the Lambda function ARN (Amazon Resource Name). If a key is
 specified without a value, Lambda creates a tag with the specified key
-and a value of null.
+and a value of null. For more information, see Tagging Lambda Functions
+(http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the B<AWS
+Lambda Developer Guide>.
 
 
 =head2 UntagResource(Resource => Str, TagKeys => ArrayRef[Str|Undef])
@@ -743,7 +742,9 @@ Each argument is described in detail in: L<Paws::Lambda::UntagResource>
 Returns: nothing
 
 Removes tags from a Lambda function. Requires the function ARN (Amazon
-Resource Name).
+Resource Name). For more information, see Tagging Lambda Functions
+(http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the B<AWS
+Lambda Developer Guide>.
 
 
 =head2 UpdateAlias(FunctionName => Str, Name => Str, [Description => Str, FunctionVersion => Str, RevisionId => Str, RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>])

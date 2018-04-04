@@ -90,10 +90,14 @@ only the function name, it is limited to 64 characters in length.
 
 =head2 B<REQUIRED> StartingPosition => Str
 
-The position in the stream where AWS Lambda should start reading. Valid
-only for Kinesis streams. For more information, see ShardIteratorType
+The position in the DynamoDB or Kinesis stream where AWS Lambda should
+start reading. For more information, see GetShardIterator
 (http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType)
-in the I<Amazon Kinesis API Reference>.
+in the I<Amazon Kinesis API Reference Guide> or GetShardIterator
+(http://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_streams_GetShardIterator.html)
+in the I<Amazon DynamoDB API Reference Guide>. The C<AT_TIMESTAMP>
+value is supported only for Kinesis streams
+(http://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html).
 
 Valid values are: C<"TRIM_HORIZON">, C<"LATEST">, C<"AT_TIMESTAMP">
 
@@ -106,7 +110,8 @@ AT_TIMESTAMP. If a record with this exact timestamp does not exist, the
 iterator returned is for the next (later) record. If the timestamp is
 older than the current trim horizon, the iterator returned is for the
 oldest untrimmed data record (TRIM_HORIZON). Valid only for Kinesis
-streams.
+streams
+(http://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html).
 
 
 
