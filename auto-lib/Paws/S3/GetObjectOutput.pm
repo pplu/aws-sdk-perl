@@ -211,7 +211,7 @@ master encryption key that was used for the object.
 
 
 
-Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">
+Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">
 
 =head2 TagCount => Int
 

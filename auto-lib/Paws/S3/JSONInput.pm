@@ -1,14 +1,13 @@
-package Paws::S3::OutputSerialization;
+package Paws::S3::JSONInput;
   use Moose;
-  has CSV => (is => 'ro', isa => 'Paws::S3::CSVOutput');
-  has JSON => (is => 'ro', isa => 'Paws::S3::JSONOutput');
+  has Type => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::S3::OutputSerialization
+Paws::S3::JSONInput
 
 =head1 USAGE
 
@@ -19,32 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::S3::OutputSerialization object:
+As an example, if Att1 is expected to be a Paws::S3::JSONInput object:
 
-  $service_obj->Method(Att1 => { CSV => $value, ..., JSON => $value  });
+  $service_obj->Method(Att1 => { Type => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::S3::OutputSerialization object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::S3::JSONInput object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CSV
+  $result->Att1->Type
 
 =head1 DESCRIPTION
 
-Describes how results of the Select job are serialized.
+This class has no description
 
 =head1 ATTRIBUTES
 
 
-=head2 CSV => L<Paws::S3::CSVOutput>
+=head2 Type => Str
 
-  Describes the serialization of CSV-encoded Select results.
-
-
-=head2 JSON => L<Paws::S3::JSONOutput>
-
-  Specifies JSON as request's output serialization format.
+  The type of JSON. Valid values: Document, Lines.
 
 
 

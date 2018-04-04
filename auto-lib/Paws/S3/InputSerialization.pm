@@ -1,6 +1,8 @@
 package Paws::S3::InputSerialization;
   use Moose;
+  has CompressionType => (is => 'ro', isa => 'Str');
   has CSV => (is => 'ro', isa => 'Paws::S3::CSVInput');
+  has JSON => (is => 'ro', isa => 'Paws::S3::JSONInput');
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::S3::InputSerialization object:
 
-  $service_obj->Method(Att1 => { CSV => $value, ..., CSV => $value  });
+  $service_obj->Method(Att1 => { CompressionType => $value, ..., JSON => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::S3::InputSerialization object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CSV
+  $result->Att1->CompressionType
 
 =head1 DESCRIPTION
 
@@ -36,9 +38,20 @@ Describes the serialization format of the object.
 =head1 ATTRIBUTES
 
 
+=head2 CompressionType => Str
+
+  Specifies object's compression format. Valid values: NONE, GZIP.
+Default Value: NONE.
+
+
 =head2 CSV => L<Paws::S3::CSVInput>
 
   Describes the serialization of a CSV-encoded object.
+
+
+=head2 JSON => L<Paws::S3::JSONInput>
+
+  Specifies JSON as object's input serialization format.
 
 
 

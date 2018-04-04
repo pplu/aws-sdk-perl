@@ -33,11 +33,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Noncurr
 =head1 DESCRIPTION
 
 Container for the transition rule that describes when noncurrent
-objects transition to the STANDARD_IA or GLACIER storage class. If your
-bucket is versioning-enabled (or versioning is suspended), you can set
-this action to request that Amazon S3 transition noncurrent object
-versions to the STANDARD_IA or GLACIER storage class at a specific
-period in the object's lifetime.
+objects transition to the STANDARD_IA, ONEZONE_IA or GLACIER storage
+class. If your bucket is versioning-enabled (or versioning is
+suspended), you can set this action to request that Amazon S3
+transition noncurrent object versions to the STANDARD_IA, ONEZONE_IA or
+GLACIER storage class at a specific period in the object's lifetime.
 
 =head1 ATTRIBUTES
 
