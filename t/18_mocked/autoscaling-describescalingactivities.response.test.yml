@@ -2,4 +2,4 @@
 tests:
   - expected: ""
     op: eq
-    path: Activites.0.Cause
+    path: Activities.0.Cause
