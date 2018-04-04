@@ -9,8 +9,8 @@ package Paws::DynamoDB;
     { base => '0.05', type => 'exponential', growth_factor => 2 }
   });
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
-       sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'ProvisionedThroughputExceededException' },
        sub { $_[0]->code eq 'Crc32Error' },
+       sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'ProvisionedThroughputExceededException' },
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -150,6 +150,11 @@ package Paws::DynamoDB;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::RestoreTableFromBackup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RestoreTableToPointInTime {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::RestoreTableToPointInTime', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub Scan {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::Scan', @_);
@@ -163,6 +168,11 @@ package Paws::DynamoDB;
   sub UntagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateContinuousBackups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::UpdateContinuousBackups', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateGlobalTable {
@@ -269,7 +279,7 @@ package Paws::DynamoDB;
   }
 
 
-  sub operations { qw/BatchGetItem BatchWriteItem CreateBackup CreateGlobalTable CreateTable DeleteBackup DeleteItem DeleteTable DescribeBackup DescribeContinuousBackups DescribeGlobalTable DescribeLimits DescribeTable DescribeTimeToLive GetItem ListBackups ListGlobalTables ListTables ListTagsOfResource PutItem Query RestoreTableFromBackup Scan TagResource UntagResource UpdateGlobalTable UpdateItem UpdateTable UpdateTimeToLive / }
+  sub operations { qw/BatchGetItem BatchWriteItem CreateBackup CreateGlobalTable CreateTable DeleteBackup DeleteItem DeleteTable DescribeBackup DescribeContinuousBackups DescribeGlobalTable DescribeLimits DescribeTable DescribeTimeToLive GetItem ListBackups ListGlobalTables ListTables ListTagsOfResource PutItem Query RestoreTableFromBackup RestoreTableToPointInTime Scan TagResource UntagResource UpdateContinuousBackups UpdateGlobalTable UpdateItem UpdateTable UpdateTimeToLive / }
 
 1;
 
@@ -476,6 +486,11 @@ those in the corresponding table's primary key schema.
 You try to perform multiple operations on the same item in the same
 C<BatchWriteItem> request. For example, you cannot put and delete the
 same item in the same C<BatchWriteItem> request.
+
+=item *
+
+Your request contains at least two items with identical hash and range
+keys (which essentially is two put operations).
 
 =item *
 
@@ -687,9 +702,18 @@ Each argument is described in detail in: L<Paws::DynamoDB::DescribeContinuousBac
 
 Returns: a L<Paws::DynamoDB::DescribeContinuousBackupsOutput> instance
 
-Checks the status of the backup restore settings on the specified
-table. If backups are enabled, C<ContinuousBackupsStatus> will bet set
-to ENABLED.
+Checks the status of continuous backups and point in time recovery on
+the specified table. Continuous backups are C<ENABLED> on all tables at
+table creation. If point in time recovery is enabled,
+C<PointInTimeRecoveryStatus> will be set to ENABLED.
+
+Once continuous backups and point in time recovery are enabled, you can
+restore to any point in time within C<EarliestRestorableDateTime> and
+C<LatestRestorableDateTime>.
+
+C<LatestRestorableDateTime> is typically 5 minutes before the current
+time. You can restore your table to any point in time during the last
+35 days with a 1-minute granularity.
 
 You can call C<DescribeContinuousBackups> at a maximum rate of 10 times
 per second.
@@ -1054,7 +1078,8 @@ Each argument is described in detail in: L<Paws::DynamoDB::RestoreTableFromBacku
 Returns: a L<Paws::DynamoDB::RestoreTableFromBackupOutput> instance
 
 Creates a new table from an existing backup. Any number of users can
-execute up to 10 concurrent restores in a given account.
+execute up to 4 concurrent restores (any type of restore) in a given
+account.
 
 You can call C<RestoreTableFromBackup> at a maximum rate of 10 times
 per second.
@@ -1086,6 +1111,54 @@ Stream settings
 =item *
 
 Time to Live (TTL) settings
+
+=back
+
+
+
+=head2 RestoreTableToPointInTime(SourceTableName => Str, TargetTableName => Str, [RestoreDateTime => Str, UseLatestRestorableTime => Bool])
+
+Each argument is described in detail in: L<Paws::DynamoDB::RestoreTableToPointInTime>
+
+Returns: a L<Paws::DynamoDB::RestoreTableToPointInTimeOutput> instance
+
+Restores the specified table to the specified point in time within
+C<EarliestRestorableDateTime> and C<LatestRestorableDateTime>. You can
+restore your table to any point in time during the last 35 days with a
+1-minute granularity. Any number of users can execute up to 4
+concurrent restores (any type of restore) in a given account.
+
+You must manually set up the following on the restored table:
+
+=over
+
+=item *
+
+Auto scaling policies
+
+=item *
+
+IAM policies
+
+=item *
+
+Cloudwatch metrics and alarms
+
+=item *
+
+Tags
+
+=item *
+
+Stream settings
+
+=item *
+
+Time to Live (TTL) settings
+
+=item *
+
+Point in time recovery settings
 
 =back
 
@@ -1160,6 +1233,28 @@ For an overview on tagging DynamoDB resources, see Tagging for DynamoDB
 in the I<Amazon DynamoDB Developer Guide>.
 
 
+=head2 UpdateContinuousBackups(PointInTimeRecoverySpecification => L<Paws::DynamoDB::PointInTimeRecoverySpecification>, TableName => Str)
+
+Each argument is described in detail in: L<Paws::DynamoDB::UpdateContinuousBackups>
+
+Returns: a L<Paws::DynamoDB::UpdateContinuousBackupsOutput> instance
+
+C<UpdateContinuousBackups> enables or disables point in time recovery
+for the specified table. A successful C<UpdateContinuousBackups> call
+returns the current C<ContinuousBackupsDescription>. Continuous backups
+are C<ENABLED> on all tables at table creation. If point in time
+recovery is enabled, C<PointInTimeRecoveryStatus> will be set to
+ENABLED.
+
+Once continuous backups and point in time recovery are enabled, you can
+restore to any point in time within C<EarliestRestorableDateTime> and
+C<LatestRestorableDateTime>.
+
+C<LatestRestorableDateTime> is typically 5 minutes before the current
+time. You can restore your table to any point in time during the last
+35 days with a 1-minute granularity.
+
+
 =head2 UpdateGlobalTable(GlobalTableName => Str, ReplicaUpdates => ArrayRef[L<Paws::DynamoDB::ReplicaUpdate>])
 
 Each argument is described in detail in: L<Paws::DynamoDB::UpdateGlobalTable>
@@ -1169,8 +1264,7 @@ Returns: a L<Paws::DynamoDB::UpdateGlobalTableOutput> instance
 Adds or removes replicas in the specified global table. The global
 table must already exist to be able to use this operation. Any replica
 to be added must be empty, must have the same name as the global table,
-must have the same key schema, must have DynamoDB Streams enabled, and
-cannot have any local secondary indexes (LSIs).
+must have the same key schema, and must have DynamoDB Streams enabled.
 
 Although you can use C<UpdateGlobalTable> to add replicas and remove
 replicas in a single request, for simplicity we recommend that you

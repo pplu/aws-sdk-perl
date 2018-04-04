@@ -393,8 +393,8 @@ is performed in descending order.
 Items with the same partition key value are stored in sorted order by
 sort key. If the sort key data type is Number, the results are stored
 in numeric order. For type String, the results are stored in order of
-ASCII character code values. For type Binary, DynamoDB treats each byte
-of the binary data as unsigned.
+UTF-8 bytes. For type Binary, DynamoDB treats each byte of the binary
+data as unsigned.
 
 If C<ScanIndexForward> is C<true>, DynamoDB returns the results in the
 order in which they are stored (by sort key value). This is the default

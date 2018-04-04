@@ -35,8 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> TableName => Str
 
-Name of the table for which the customer wants to check the backup and
-restore settings.
+Name of the table for which the customer wants to check the continuous
+backups and point in time recovery settings.
 
 
 

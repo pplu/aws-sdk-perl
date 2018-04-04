@@ -1,6 +1,7 @@
 package Paws::DynamoDB::ContinuousBackupsDescription;
   use Moose;
   has ContinuousBackupsStatus => (is => 'ro', isa => 'Str', required => 1);
+  has PointInTimeRecoveryDescription => (is => 'ro', isa => 'Paws::DynamoDB::PointInTimeRecoveryDescription');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DynamoDB::ContinuousBackupsDescription object:
 
-  $service_obj->Method(Att1 => { ContinuousBackupsStatus => $value, ..., ContinuousBackupsStatus => $value  });
+  $service_obj->Method(Att1 => { ContinuousBackupsStatus => $value, ..., PointInTimeRecoveryDescription => $value  });
 
 =head3 Results returned from an API call
 
@@ -31,16 +32,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::C
 
 =head1 DESCRIPTION
 
-Represents the backup and restore settings on the table when the backup
-was created.
+Represents the continuous backups and point in time recovery settings
+on the table.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ContinuousBackupsStatus => Str
 
-  ContinuousBackupsStatus can be one of the following states : ENABLED,
-DISABLED
+  C<ContinuousBackupsStatus> can be one of the following states :
+ENABLED, DISABLED
+
+
+=head2 PointInTimeRecoveryDescription => L<Paws::DynamoDB::PointInTimeRecoveryDescription>
+
+  The description of the point in time recovery settings applied to the
+table.
 
 
 
