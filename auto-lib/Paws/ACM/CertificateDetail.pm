@@ -14,6 +14,7 @@ package Paws::ACM::CertificateDetail;
   has KeyUsages => (is => 'ro', isa => 'ArrayRef[Paws::ACM::KeyUsage]');
   has NotAfter => (is => 'ro', isa => 'Str');
   has NotBefore => (is => 'ro', isa => 'Str');
+  has Options => (is => 'ro', isa => 'Paws::ACM::CertificateOptions');
   has RenewalSummary => (is => 'ro', isa => 'Paws::ACM::RenewalSummary');
   has RevocationReason => (is => 'ro', isa => 'Str');
   has RevokedAt => (is => 'ro', isa => 'Str');
@@ -147,6 +148,15 @@ KEY_ENCHIPHERMENT, NON_REPUDIATION, and more.
 =head2 NotBefore => Str
 
   The time before which the certificate is not valid.
+
+
+=head2 Options => L<Paws::ACM::CertificateOptions>
+
+  Value that specifies whether to add the certificate to a transparency
+log. Certificate transparency makes it possible to detect SSL
+certificates that have been mistakenly or maliciously issued. A browser
+might respond to certificate that has not been logged by showing an
+error message. The logs are cryptographically secure.
 
 
 =head2 RenewalSummary => L<Paws::ACM::RenewalSummary>

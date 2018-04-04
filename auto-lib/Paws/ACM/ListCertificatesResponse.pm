@@ -17,7 +17,7 @@ Paws::ACM::ListCertificatesResponse
 
 =head2 CertificateSummaryList => ArrayRef[L<Paws::ACM::CertificateSummary>]
 
-A list of ACM Certificates.
+A list of ACM certificates.
 
 
 =head2 NextToken => Str

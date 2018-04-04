@@ -4,6 +4,7 @@ package Paws::ACM::RequestCertificate;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has DomainValidationOptions => (is => 'ro', isa => 'ArrayRef[Paws::ACM::DomainValidationOption]');
   has IdempotencyToken => (is => 'ro', isa => 'Str');
+  has Options => (is => 'ro', isa => 'Paws::ACM::CertificateOptions');
   has SubjectAlternativeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ValidationMethod => (is => 'ro', isa => 'Str');
 
@@ -70,13 +71,25 @@ requesting multiple certificates.
 
 
 
+=head2 Options => L<Paws::ACM::CertificateOptions>
+
+Currently, you can use this parameter to specify whether to add the
+certificate to a certificate transparency log. Certificate transparency
+makes it possible to detect SSL/TLS certificates that have been
+mistakenly or maliciously issued. Certificates that have not been
+logged typically produce an error message in a browser. For more
+information, see Opting Out of Certificate Transparency Logging
+(http://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
+
+
+
 =head2 SubjectAlternativeNames => ArrayRef[Str|Undef]
 
 Additional FQDNs to be included in the Subject Alternative Name
-extension of the ACM Certificate. For example, add the name
+extension of the ACM certificate. For example, add the name
 www.example.net to a certificate for which the C<DomainName> field is
 www.example.com if users can reach your site by using either name. The
-maximum number of domain names that you can add to an ACM Certificate
+maximum number of domain names that you can add to an ACM certificate
 is 100. However, the initial limit is 10 domain names. If you need more
 than 10 names, you must request a limit increase. For more information,
 see Limits
@@ -113,7 +126,12 @@ octets.
 
 =head2 ValidationMethod => Str
 
-The method you want to use to validate your domain.
+The method you want to use to validate that you own or control domain.
+You can validate with DNS
+(http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html)
+or validate with email
+(http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html).
+We recommend that you use DNS validation.
 
 Valid values are: C<"EMAIL">, C<"DNS">
 
