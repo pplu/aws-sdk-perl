@@ -136,8 +136,11 @@ HIT becomes unavailable.
 
 =head2 QualificationRequirements => ArrayRef[L<Paws::MTurk::QualificationRequirement>]
 
-A condition that a Worker's Qualifications must meet before the Worker
-is allowed to accept and complete the HIT.
+Conditions that a Worker's Qualifications must meet in order to accept
+the HIT. A HIT can have between zero and ten Qualification
+requirements. All requirements must be met in order for a Worker to
+accept the HIT. Additionally, other actions can be restricted using the
+C<ActionsGuarded> field on each C<QualificationRequirement> structure.
 
 
 

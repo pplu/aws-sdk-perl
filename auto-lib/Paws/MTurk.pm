@@ -899,10 +899,8 @@ Each argument is described in detail in: L<Paws::MTurk::ListQualificationTypes>
 
 Returns: a L<Paws::MTurk::ListQualificationTypesResponse> instance
 
-The C<ListQualificationRequests> operation retrieves requests for
-Qualifications of a particular Qualification type. The owner of the
-Qualification type calls this operation to poll for pending requests,
-and accepts them using the AcceptQualification operation.
+The C<ListQualificationTypes> operation returns a list of Qualification
+types, filtered by an optional search term.
 
 
 =head2 ListReviewableHITs([HITTypeId => Str, MaxResults => Int, NextToken => Str, Status => Str])
