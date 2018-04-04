@@ -14,6 +14,11 @@ package Paws::AlexaForBusiness;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub AssociateContactWithAddressBook {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::AssociateContactWithAddressBook', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AssociateDeviceWithRoom {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::AssociateDeviceWithRoom', @_);
@@ -22,6 +27,16 @@ package Paws::AlexaForBusiness;
   sub AssociateSkillGroupWithRoom {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::AssociateSkillGroupWithRoom', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateAddressBook {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::CreateAddressBook', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateContact {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::CreateContact', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateProfile {
@@ -42,6 +57,16 @@ package Paws::AlexaForBusiness;
   sub CreateUser {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::CreateUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteAddressBook {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::DeleteAddressBook', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteContact {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::DeleteContact', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteProfile {
@@ -69,6 +94,11 @@ package Paws::AlexaForBusiness;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::DeleteUser', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisassociateContactFromAddressBook {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::DisassociateContactFromAddressBook', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisassociateDeviceFromRoom {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::DisassociateDeviceFromRoom', @_);
@@ -77,6 +107,16 @@ package Paws::AlexaForBusiness;
   sub DisassociateSkillGroupFromRoom {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::DisassociateSkillGroupFromRoom', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetAddressBook {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::GetAddressBook', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetContact {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::GetContact', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetDevice {
@@ -129,6 +169,16 @@ package Paws::AlexaForBusiness;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::RevokeInvitation', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SearchAddressBooks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::SearchAddressBooks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SearchContacts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::SearchContacts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SearchDevices {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::SearchDevices', @_);
@@ -172,6 +222,16 @@ package Paws::AlexaForBusiness;
   sub UntagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateAddressBook {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::UpdateAddressBook', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateContact {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::UpdateContact', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateDevice {
@@ -358,7 +418,7 @@ package Paws::AlexaForBusiness;
   }
 
 
-  sub operations { qw/AssociateDeviceWithRoom AssociateSkillGroupWithRoom CreateProfile CreateRoom CreateSkillGroup CreateUser DeleteProfile DeleteRoom DeleteRoomSkillParameter DeleteSkillGroup DeleteUser DisassociateDeviceFromRoom DisassociateSkillGroupFromRoom GetDevice GetProfile GetRoom GetRoomSkillParameter GetSkillGroup ListSkills ListTags PutRoomSkillParameter ResolveRoom RevokeInvitation SearchDevices SearchProfiles SearchRooms SearchSkillGroups SearchUsers SendInvitation StartDeviceSync TagResource UntagResource UpdateDevice UpdateProfile UpdateRoom UpdateSkillGroup / }
+  sub operations { qw/AssociateContactWithAddressBook AssociateDeviceWithRoom AssociateSkillGroupWithRoom CreateAddressBook CreateContact CreateProfile CreateRoom CreateSkillGroup CreateUser DeleteAddressBook DeleteContact DeleteProfile DeleteRoom DeleteRoomSkillParameter DeleteSkillGroup DeleteUser DisassociateContactFromAddressBook DisassociateDeviceFromRoom DisassociateSkillGroupFromRoom GetAddressBook GetContact GetDevice GetProfile GetRoom GetRoomSkillParameter GetSkillGroup ListSkills ListTags PutRoomSkillParameter ResolveRoom RevokeInvitation SearchAddressBooks SearchContacts SearchDevices SearchProfiles SearchRooms SearchSkillGroups SearchUsers SendInvitation StartDeviceSync TagResource UntagResource UpdateAddressBook UpdateContact UpdateDevice UpdateProfile UpdateRoom UpdateSkillGroup / }
 
 1;
 
@@ -397,6 +457,15 @@ context-aware voice experiences for your customers.
 
 =head1 METHODS
 
+=head2 AssociateContactWithAddressBook(AddressBookArn => Str, ContactArn => Str)
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::AssociateContactWithAddressBook>
+
+Returns: a L<Paws::AlexaForBusiness::AssociateContactWithAddressBookResponse> instance
+
+Associates a contact to a given address book.
+
+
 =head2 AssociateDeviceWithRoom([DeviceArn => Str, RoomArn => Str])
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::AssociateDeviceWithRoom>
@@ -417,6 +486,24 @@ Returns: a L<Paws::AlexaForBusiness::AssociateSkillGroupWithRoomResponse> instan
 
 Associates a skill group to a given room. This enables all skills in
 the associated skill group on all devices in the room.
+
+
+=head2 CreateAddressBook(Name => Str, [ClientRequestToken => Str, Description => Str])
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::CreateAddressBook>
+
+Returns: a L<Paws::AlexaForBusiness::CreateAddressBookResponse> instance
+
+Creates an address book with the specified details.
+
+
+=head2 CreateContact(FirstName => Str, PhoneNumber => Str, [ClientRequestToken => Str, DisplayName => Str, LastName => Str])
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::CreateContact>
+
+Returns: a L<Paws::AlexaForBusiness::CreateContactResponse> instance
+
+Creates a contact with the specified details.
 
 
 =head2 CreateProfile(Address => Str, DistanceUnit => Str, ProfileName => Str, TemperatureUnit => Str, Timezone => Str, WakeWord => Str, [ClientRequestToken => Str, MaxVolumeLimit => Int, PSTNEnabled => Bool, SetupModeDisabled => Bool])
@@ -453,6 +540,24 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::CreateUser>
 Returns: a L<Paws::AlexaForBusiness::CreateUserResponse> instance
 
 Creates a user.
+
+
+=head2 DeleteAddressBook(AddressBookArn => Str)
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::DeleteAddressBook>
+
+Returns: a L<Paws::AlexaForBusiness::DeleteAddressBookResponse> instance
+
+Deletes an address book by the address book ARN.
+
+
+=head2 DeleteContact(ContactArn => Str)
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::DeleteContact>
+
+Returns: a L<Paws::AlexaForBusiness::DeleteContactResponse> instance
+
+Deletes a contact by the contact ARN.
 
 
 =head2 DeleteProfile([ProfileArn => Str])
@@ -501,6 +606,15 @@ Returns: a L<Paws::AlexaForBusiness::DeleteUserResponse> instance
 Deletes a specified user by user ARN and enrollment ARN.
 
 
+=head2 DisassociateContactFromAddressBook(AddressBookArn => Str, ContactArn => Str)
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::DisassociateContactFromAddressBook>
+
+Returns: a L<Paws::AlexaForBusiness::DisassociateContactFromAddressBookResponse> instance
+
+Disassociates a contact from a given address book.
+
+
 =head2 DisassociateDeviceFromRoom([DeviceArn => Str])
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::DisassociateDeviceFromRoom>
@@ -520,6 +634,24 @@ Returns: a L<Paws::AlexaForBusiness::DisassociateSkillGroupFromRoomResponse> ins
 
 Disassociates a skill group from a specified room. This disables all
 skills in the skill group on all devices in the room.
+
+
+=head2 GetAddressBook(AddressBookArn => Str)
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::GetAddressBook>
+
+Returns: a L<Paws::AlexaForBusiness::GetAddressBookResponse> instance
+
+Gets address the book details by the address book ARN.
+
+
+=head2 GetContact(ContactArn => Str)
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::GetContact>
+
+Returns: a L<Paws::AlexaForBusiness::GetContactResponse> instance
+
+Gets the contact details by the contact ARN.
 
 
 =head2 GetDevice([DeviceArn => Str])
@@ -615,6 +747,26 @@ Returns: a L<Paws::AlexaForBusiness::RevokeInvitationResponse> instance
 Revokes an invitation and invalidates the enrollment URL.
 
 
+=head2 SearchAddressBooks([Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::SearchAddressBooks>
+
+Returns: a L<Paws::AlexaForBusiness::SearchAddressBooksResponse> instance
+
+Searches address books and lists the ones that meet a set of filter and
+sort criteria.
+
+
+=head2 SearchContacts([Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::SearchContacts>
+
+Returns: a L<Paws::AlexaForBusiness::SearchContactsResponse> instance
+
+Searches contacts and lists the ones that meet a set of filter and sort
+criteria.
+
+
 =head2 SearchDevices([Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::SearchDevices>
@@ -701,6 +853,24 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::UntagResource
 Returns: a L<Paws::AlexaForBusiness::UntagResourceResponse> instance
 
 Removes metadata tags from a specified resource.
+
+
+=head2 UpdateAddressBook(AddressBookArn => Str, [Description => Str, Name => Str])
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::UpdateAddressBook>
+
+Returns: a L<Paws::AlexaForBusiness::UpdateAddressBookResponse> instance
+
+Updates address book details by the address book ARN.
+
+
+=head2 UpdateContact(ContactArn => Str, [DisplayName => Str, FirstName => Str, LastName => Str, PhoneNumber => Str])
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::UpdateContact>
+
+Returns: a L<Paws::AlexaForBusiness::UpdateContactResponse> instance
+
+Updates the contact details by the contact ARN.
 
 
 =head2 UpdateDevice([DeviceArn => Str, DeviceName => Str])
