@@ -139,6 +139,12 @@ and the C<--memory> option to docker run
 (https://docs.docker.com/engine/reference/run/). You must specify at
 least 4 MiB of memory for a job.
 
+If you are trying to maximize your resource utilization by providing
+your jobs as much memory as possible for a particular instance type,
+see Memory Management
+(http://docs.aws.amazon.com/batch/latest/userguide/memory-management.html)
+in the I<AWS Batch User Guide>.
+
 
 =head2 MountPoints => ArrayRef[L<Paws::Batch::MountPoint>]
 

@@ -5,6 +5,7 @@ package Paws::Batch::RegisterJobDefinition;
   has JobDefinitionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobDefinitionName', required => 1);
   has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', traits => ['NameInRequest'], request_name => 'parameters');
   has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', traits => ['NameInRequest'], request_name => 'retryStrategy');
+  has Timeout => (is => 'ro', isa => 'Paws::Batch::JobTimeout', traits => ['NameInRequest'], request_name => 'timeout');
   has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type', required => 1);
 
   use MooseX::ClassAttribute;
@@ -66,7 +67,22 @@ parameter defaults from the job definition.
 
 The retry strategy to use for failed jobs that are submitted with this
 job definition. Any retry strategy that is specified during a SubmitJob
-operation overrides the retry strategy defined here.
+operation overrides the retry strategy defined here. If a job is
+terminated due to a timeout, it is not retried.
+
+
+
+=head2 Timeout => L<Paws::Batch::JobTimeout>
+
+The timeout configuration for jobs that are submitted with this job
+definition, after which AWS Batch terminates your jobs if they have not
+finished. If a job is terminated due to a timeout, it is not retried.
+The minimum value for the timeout is 60 seconds. Any timeout
+configuration that is specified during a SubmitJob operation overrides
+the timeout configuration defined here. For more information, see Job
+Timeouts
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 

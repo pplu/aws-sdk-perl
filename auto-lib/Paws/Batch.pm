@@ -300,7 +300,7 @@ the results by job status with the C<jobStatus> parameter. If you do
 not specify a status, only C<RUNNING> jobs are returned.
 
 
-=head2 RegisterJobDefinition(JobDefinitionName => Str, Type => Str, [ContainerProperties => L<Paws::Batch::ContainerProperties>, Parameters => L<Paws::Batch::ParametersMap>, RetryStrategy => L<Paws::Batch::RetryStrategy>])
+=head2 RegisterJobDefinition(JobDefinitionName => Str, Type => Str, [ContainerProperties => L<Paws::Batch::ContainerProperties>, Parameters => L<Paws::Batch::ParametersMap>, RetryStrategy => L<Paws::Batch::RetryStrategy>, Timeout => L<Paws::Batch::JobTimeout>])
 
 Each argument is described in detail in: L<Paws::Batch::RegisterJobDefinition>
 
@@ -309,7 +309,7 @@ Returns: a L<Paws::Batch::RegisterJobDefinitionResponse> instance
 Registers an AWS Batch job definition.
 
 
-=head2 SubmitJob(JobDefinition => Str, JobName => Str, JobQueue => Str, [ArrayProperties => L<Paws::Batch::ArrayProperties>, ContainerOverrides => L<Paws::Batch::ContainerOverrides>, DependsOn => ArrayRef[L<Paws::Batch::JobDependency>], Parameters => L<Paws::Batch::ParametersMap>, RetryStrategy => L<Paws::Batch::RetryStrategy>])
+=head2 SubmitJob(JobDefinition => Str, JobName => Str, JobQueue => Str, [ArrayProperties => L<Paws::Batch::ArrayProperties>, ContainerOverrides => L<Paws::Batch::ContainerOverrides>, DependsOn => ArrayRef[L<Paws::Batch::JobDependency>], Parameters => L<Paws::Batch::ParametersMap>, RetryStrategy => L<Paws::Batch::RetryStrategy>, Timeout => L<Paws::Batch::JobTimeout>])
 
 Each argument is described in detail in: L<Paws::Batch::SubmitJob>
 

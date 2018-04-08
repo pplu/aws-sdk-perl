@@ -15,6 +15,7 @@ package Paws::Batch::JobDetail;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
   has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest']);
   has StoppedAt => (is => 'ro', isa => 'Int', request_name => 'stoppedAt', traits => ['NameInRequest']);
+  has Timeout => (is => 'ro', isa => 'Paws::Batch::JobTimeout', request_name => 'timeout', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -34,7 +35,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Batch::JobDetail object:
 
-  $service_obj->Method(Att1 => { ArrayProperties => $value, ..., StoppedAt => $value  });
+  $service_obj->Method(Att1 => { ArrayProperties => $value, ..., Timeout => $value  });
 
 =head3 Results returned from an API call
 
@@ -68,11 +69,11 @@ with the job.
 
 =head2 CreatedAt => Int
 
-  The Unix time stamp for when the job was created. For non-array jobs
-and parent array jobs, this is when the job entered the C<SUBMITTED>
-state (at the time SubmitJob was called). For array child jobs, this is
-when the child job was spawned by its parent and entered the C<PENDING>
-state.
+  The Unix time stamp (in seconds and milliseconds) for when the job was
+created. For non-array jobs and parent array jobs, this is when the job
+entered the C<SUBMITTED> state (at the time SubmitJob was called). For
+array child jobs, this is when the child job was spawned by its parent
+and entered the C<PENDING> state.
 
 
 =head2 DependsOn => ArrayRef[L<Paws::Batch::JobDependency>]
@@ -115,8 +116,9 @@ defaults from the job definition.
 
 =head2 B<REQUIRED> StartedAt => Int
 
-  The Unix time stamp for when the job was started (when the job
-transitioned from the C<STARTING> state to the C<RUNNING> state).
+  The Unix time stamp (in seconds and milliseconds) for when the job was
+started (when the job transitioned from the C<STARTING> state to the
+C<RUNNING> state).
 
 
 =head2 B<REQUIRED> Status => Str
@@ -132,9 +134,14 @@ current status of the job.
 
 =head2 StoppedAt => Int
 
-  The Unix time stamp for when the job was stopped (when the job
-transitioned from the C<RUNNING> state to a terminal state, such as
-C<SUCCEEDED> or C<FAILED>).
+  The Unix time stamp (in seconds and milliseconds) for when the job was
+stopped (when the job transitioned from the C<RUNNING> state to a
+terminal state, such as C<SUCCEEDED> or C<FAILED>).
+
+
+=head2 Timeout => L<Paws::Batch::JobTimeout>
+
+  The timeout configuration for the job.
 
 
 

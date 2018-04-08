@@ -9,6 +9,7 @@ package Paws::Batch::SubmitJob;
   has JobQueue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueue', required => 1);
   has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', traits => ['NameInRequest'], request_name => 'parameters');
   has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', traits => ['NameInRequest'], request_name => 'retryStrategy');
+  has Timeout => (is => 'ro', isa => 'Paws::Batch::JobTimeout', traits => ['NameInRequest'], request_name => 'timeout');
 
   use MooseX::ClassAttribute;
 
@@ -114,6 +115,20 @@ from the job definition.
 The retry strategy to use for failed jobs from this SubmitJob
 operation. When a retry strategy is specified here, it overrides the
 retry strategy defined in the job definition.
+
+
+
+=head2 Timeout => L<Paws::Batch::JobTimeout>
+
+The timeout configuration for this SubmitJob operation. You can specify
+a timeout duration after which AWS Batch terminates your jobs if they
+have not finished. If a job is terminated due to a timeout, it is not
+retried. The minimum value for the timeout is 60 seconds. This
+configuration overrides any timeout configuration specified in the job
+definition. For array jobs, child jobs have the same timeout
+configuration as the parent job. For more information, see Job Timeouts
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 
