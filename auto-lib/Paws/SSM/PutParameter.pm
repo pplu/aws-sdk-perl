@@ -51,6 +51,8 @@ following: AllowedPattern=^\d+$
 
 Information about the parameter that you want to add to the system.
 
+Do not enter personally identifiable information in this field.
+
 
 
 =head2 KeyId => Str

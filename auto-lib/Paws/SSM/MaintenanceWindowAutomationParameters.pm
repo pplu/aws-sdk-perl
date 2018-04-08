@@ -46,6 +46,25 @@ The parameters for an AUTOMATION task type.
 
   The parameters for the AUTOMATION task.
 
+For information about specifying and updating task parameters, see
+RegisterTaskWithMaintenanceWindow and UpdateMaintenanceWindowTask.
+
+C<LoggingInfo> has been deprecated. To specify an S3 bucket to contain
+logs, instead use the C<OutputS3BucketName> and C<OutputS3KeyPrefix>
+options in the C<TaskInvocationParameters> structure. For information
+about how Systems Manager handles these options for the supported
+Maintenance Window task types, see
+MaintenanceWindowTaskInvocationParameters.
+
+C<TaskParameters> has been deprecated. To specify parameters to pass to
+a task when it runs, instead use the C<Parameters> option in the
+C<TaskInvocationParameters> structure. For information about how
+Systems Manager handles these options for the supported Maintenance
+Window task types, see MaintenanceWindowTaskInvocationParameters.
+
+For AUTOMATION task types, Systems Manager ignores any values specified
+for these parameters.
+
 
 
 =head1 SEE ALSO

@@ -1321,6 +1321,9 @@ Retrieves the default patch baseline. Note that Systems Manager
 supports creating multiple default patch baselines. For example, you
 can create a default patch baseline for each operating system.
 
+If you do not specify an operating system value, the default patch
+baseline for Windows is returned.
+
 
 =head2 GetDeployablePatchSnapshotForInstance(InstanceId => Str, SnapshotId => Str)
 
@@ -1895,18 +1898,34 @@ Returns: a L<Paws::SSM::UpdateMaintenanceWindowTaskResult> instance
 Modifies a task assigned to a Maintenance Window. You can't change the
 task type, but you can change the following values:
 
-Task ARN. For example, you can change a RUN_COMMAND task from
+=over
+
+=item *
+
+TaskARN. For example, you can change a RUN_COMMAND task from
 AWS-RunPowerShellScript to AWS-RunShellScript.
 
-Service role ARN.
+=item *
 
-Task parameters.
+ServiceRoleArn
 
-Task priority.
+=item *
 
-Task MaxConcurrency and MaxErrors.
+TaskInvocationParameters
 
-Log location.
+=item *
+
+Priority
+
+=item *
+
+MaxConcurrency
+
+=item *
+
+MaxErrors
+
+=back
 
 If a parameter is null, then the corresponding field is not modified.
 Also, if you set Replace to true, then all fields required by the

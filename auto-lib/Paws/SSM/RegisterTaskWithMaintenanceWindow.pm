@@ -63,6 +63,13 @@ An optional description for the task.
 A structure containing information about an Amazon S3 bucket to write
 instance-level logs to.
 
+C<LoggingInfo> has been deprecated. To specify an S3 bucket to contain
+logs, instead use the C<OutputS3BucketName> and C<OutputS3KeyPrefix>
+options in the C<TaskInvocationParameters> structure. For information
+about how Systems Manager handles these options for the supported
+Maintenance Window task types, see
+MaintenanceWindowTaskInvocationParameters.
+
 
 
 =head2 B<REQUIRED> MaxConcurrency => Str
@@ -101,10 +108,15 @@ The role that should be assumed when executing the task.
 
 =head2 B<REQUIRED> Targets => ArrayRef[L<Paws::SSM::Target>]
 
-The targets (either instances or tags). Instances are specified using
-Key=instanceids,Values=E<lt>instanceid1E<gt>,E<lt>instanceid2E<gt>.
-Tags are specified using Key=E<lt>tag nameE<gt>,Values=E<lt>tag
-valueE<gt>.
+The targets (either instances or Maintenance Window targets).
+
+Specify instances using the following format:
+
+C<Key=InstanceIds,Values=E<lt>instance-id-1E<gt>,E<lt>instance-id-2E<gt>>
+
+Specify Maintenance Window targets using the following format:
+
+C<Key=E<lt>WindowTargetIdsE<gt>,Values=E<lt>window-target-id-1E<gt>,E<lt>window-target-id-2E<gt>>
 
 
 
@@ -125,6 +137,12 @@ the fields that match the task type. All other fields should be empty.
 
 The parameters that should be passed to the task when it is executed.
 
+C<TaskParameters> has been deprecated. To specify parameters to pass to
+a task when it runs, instead use the C<Parameters> option in the
+C<TaskInvocationParameters> structure. For information about how
+Systems Manager handles these options for the supported Maintenance
+Window task types, see MaintenanceWindowTaskInvocationParameters.
+
 
 
 =head2 B<REQUIRED> TaskType => Str
@@ -135,7 +153,7 @@ Valid values are: C<"RUN_COMMAND">, C<"AUTOMATION">, C<"STEP_FUNCTIONS">, C<"LAM
 
 =head2 B<REQUIRED> WindowId => Str
 
-The id of the Maintenance Window the task should be added to.
+The ID of the Maintenance Window the task should be added to.
 
 
 

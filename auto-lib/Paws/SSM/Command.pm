@@ -88,8 +88,8 @@ Out.
 =head2 ExpiresAfter => Str
 
   If this time is reached and the command has not already started
-executing, it will not execute. Calculated based on the ExpiresAfter
-user input provided as part of the SendCommand API.
+executing, it will not run. Calculated based on the ExpiresAfter user
+input provided as part of the SendCommand API.
 
 
 =head2 InstanceIds => ArrayRef[Str|Undef]
