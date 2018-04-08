@@ -65,6 +65,29 @@ package Paws::Shield;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllProtections {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListProtections(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListProtections(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Protections }, @{ $next_result->Protections };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Protections') foreach (@{ $result->Protections });
+        $result = $self->ListProtections(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Protections') foreach (@{ $result->Protections });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateProtection CreateSubscription DeleteProtection DeleteSubscription DescribeAttack DescribeProtection DescribeSubscription GetSubscriptionState ListAttacks ListProtections / }
@@ -208,6 +231,18 @@ Lists all Protection objects for the account.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllProtections(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllProtections([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Protections, passing the object as the first parameter, and the string 'Protections' as the second parameter 
+
+If not, it will return a a L<Paws::Shield::ListProtectionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 
