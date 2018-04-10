@@ -153,6 +153,11 @@ package Paws::CloudDirectory;
     my $call_object = $self->new_with_coercions('Paws::CloudDirectory::GetFacet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetObjectAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudDirectory::GetObjectAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetObjectInformation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudDirectory::GetObjectInformation', @_);
@@ -694,7 +699,7 @@ package Paws::CloudDirectory;
   }
 
 
-  sub operations { qw/AddFacetToObject ApplySchema AttachObject AttachPolicy AttachToIndex AttachTypedLink BatchRead BatchWrite CreateDirectory CreateFacet CreateIndex CreateObject CreateSchema CreateTypedLinkFacet DeleteDirectory DeleteFacet DeleteObject DeleteSchema DeleteTypedLinkFacet DetachFromIndex DetachObject DetachPolicy DetachTypedLink DisableDirectory EnableDirectory GetAppliedSchemaVersion GetDirectory GetFacet GetObjectInformation GetSchemaAsJson GetTypedLinkFacetInformation ListAppliedSchemaArns ListAttachedIndices ListDevelopmentSchemaArns ListDirectories ListFacetAttributes ListFacetNames ListIncomingTypedLinks ListIndex ListObjectAttributes ListObjectChildren ListObjectParentPaths ListObjectParents ListObjectPolicies ListOutgoingTypedLinks ListPolicyAttachments ListPublishedSchemaArns ListTagsForResource ListTypedLinkFacetAttributes ListTypedLinkFacetNames LookupPolicy PublishSchema PutSchemaFromJson RemoveFacetFromObject TagResource UntagResource UpdateFacet UpdateObjectAttributes UpdateSchema UpdateTypedLinkFacet UpgradeAppliedSchema UpgradePublishedSchema / }
+  sub operations { qw/AddFacetToObject ApplySchema AttachObject AttachPolicy AttachToIndex AttachTypedLink BatchRead BatchWrite CreateDirectory CreateFacet CreateIndex CreateObject CreateSchema CreateTypedLinkFacet DeleteDirectory DeleteFacet DeleteObject DeleteSchema DeleteTypedLinkFacet DetachFromIndex DetachObject DetachPolicy DetachTypedLink DisableDirectory EnableDirectory GetAppliedSchemaVersion GetDirectory GetFacet GetObjectAttributes GetObjectInformation GetSchemaAsJson GetTypedLinkFacetInformation ListAppliedSchemaArns ListAttachedIndices ListDevelopmentSchemaArns ListDirectories ListFacetAttributes ListFacetNames ListIncomingTypedLinks ListIndex ListObjectAttributes ListObjectChildren ListObjectParentPaths ListObjectParents ListObjectPolicies ListOutgoingTypedLinks ListPolicyAttachments ListPublishedSchemaArns ListTagsForResource ListTypedLinkFacetAttributes ListTypedLinkFacetNames LookupPolicy PublishSchema PutSchemaFromJson RemoveFacetFromObject TagResource UntagResource UpdateFacet UpdateObjectAttributes UpdateSchema UpdateTypedLinkFacet UpgradeAppliedSchema UpgradePublishedSchema / }
 
 1;
 
@@ -742,7 +747,8 @@ Each argument is described in detail in: L<Paws::CloudDirectory::AddFacetToObjec
 
 Returns: a L<Paws::CloudDirectory::AddFacetToObjectResponse> instance
 
-Adds a new Facet to an object.
+Adds a new Facet to an object. An object can have more than one facet
+applied on it.
 
 
 =head2 ApplySchema(DirectoryArn => Str, PublishedSchemaArn => Str)
@@ -779,7 +785,7 @@ Using C<ObjectIdentifier>
 
 
 
-=head2 AttachPolicy(ObjectReference => L<Paws::CloudDirectory::ObjectReference>, PolicyReference => L<Paws::CloudDirectory::ObjectReference>, [DirectoryArn => Str])
+=head2 AttachPolicy(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, PolicyReference => L<Paws::CloudDirectory::ObjectReference>)
 
 Each argument is described in detail in: L<Paws::CloudDirectory::AttachPolicy>
 
@@ -1057,6 +1063,15 @@ C<ObjectType>. You can call this on all kinds of schema facets --
 published, development, or applied.
 
 
+=head2 GetObjectAttributes(AttributeNames => ArrayRef[Str|Undef], DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, SchemaFacet => L<Paws::CloudDirectory::SchemaFacet>, [ConsistencyLevel => Str])
+
+Each argument is described in detail in: L<Paws::CloudDirectory::GetObjectAttributes>
+
+Returns: a L<Paws::CloudDirectory::GetObjectAttributesResponse> instance
+
+Retrieves attributes within a facet that are associated with an object.
+
+
 =head2 GetObjectInformation(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str])
 
 Each argument is described in detail in: L<Paws::CloudDirectory::GetObjectInformation>
@@ -1162,7 +1177,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListIndex>
 
 Returns: a L<Paws::CloudDirectory::ListIndexResponse> instance
 
-Lists objects and indexed values attached to the index.
+Lists objects attached to the specified index.
 
 
 =head2 ListObjectAttributes(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FacetFilter => L<Paws::CloudDirectory::SchemaFacet>, MaxResults => Int, NextToken => Str])
@@ -1251,8 +1266,9 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListPublishedSc
 
 Returns: a L<Paws::CloudDirectory::ListPublishedSchemaArnsResponse> instance
 
-Lists schema major versions for a published schema. If C<SchemaArn> is
-provided, lists the minor version.
+Lists the major version families of each published schema. If a major
+version ARN is provided as C<SchemaArn>, the minor version revisions in
+that family are listed instead.
 
 
 =head2 ListTagsForResource(ResourceArn => Str, [MaxResults => Int, NextToken => Str])

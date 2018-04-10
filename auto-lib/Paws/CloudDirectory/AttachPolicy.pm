@@ -1,7 +1,7 @@
 
 package Paws::CloudDirectory::AttachPolicy;
   use Moose;
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition');
+  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
   has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
   has PolicyReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
 
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 DirectoryArn => Str
+=head2 B<REQUIRED> DirectoryArn => Str
 
 The Amazon Resource Name (ARN) that is associated with the Directory
 where both objects reside. For more information, see arns.

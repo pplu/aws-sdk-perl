@@ -1,5 +1,6 @@
 package Paws::CloudDirectory::BatchReadOperation;
   use Moose;
+  has GetObjectAttributes => (is => 'ro', isa => 'Paws::CloudDirectory::BatchGetObjectAttributes');
   has GetObjectInformation => (is => 'ro', isa => 'Paws::CloudDirectory::BatchGetObjectInformation');
   has ListAttachedIndices => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListAttachedIndices');
   has ListIncomingTypedLinks => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListIncomingTypedLinks');
@@ -30,20 +31,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudDirectory::BatchReadOperation object:
 
-  $service_obj->Method(Att1 => { GetObjectInformation => $value, ..., LookupPolicy => $value  });
+  $service_obj->Method(Att1 => { GetObjectAttributes => $value, ..., LookupPolicy => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirectory::BatchReadOperation object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->GetObjectInformation
+  $result->Att1->GetObjectAttributes
 
 =head1 DESCRIPTION
 
 Represents the output of a C<BatchRead> operation.
 
 =head1 ATTRIBUTES
+
+
+=head2 GetObjectAttributes => L<Paws::CloudDirectory::BatchGetObjectAttributes>
+
+  Retrieves attributes within a facet that are associated with an object.
 
 
 =head2 GetObjectInformation => L<Paws::CloudDirectory::BatchGetObjectInformation>

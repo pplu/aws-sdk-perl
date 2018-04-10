@@ -1,6 +1,6 @@
 package Paws::CloudDirectory::BatchDetachObject;
   use Moose;
-  has BatchReferenceName => (is => 'ro', isa => 'Str', required => 1);
+  has BatchReferenceName => (is => 'ro', isa => 'Str');
   has LinkName => (is => 'ro', isa => 'Str', required => 1);
   has ParentReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
 1;
@@ -38,7 +38,7 @@ Represents the output of a DetachObject operation.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> BatchReferenceName => Str
+=head2 BatchReferenceName => Str
 
   The batch reference name. See Batches
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches)

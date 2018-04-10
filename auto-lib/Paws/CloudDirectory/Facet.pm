@@ -32,8 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-A structure that contains C<Name>, C<ARN>, C<Attributes>, Rules, and
-C<ObjectTypes>.
+A structure that contains C<Name>, C<ARN>, C<Attributes>, C< Rules>,
+and C<ObjectTypes>. See Facets
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/whatarefacets.html)
+for more information.
 
 =head1 ATTRIBUTES
 
