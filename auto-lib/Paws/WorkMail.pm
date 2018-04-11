@@ -54,6 +54,11 @@ package Paws::WorkMail;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::DeleteGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteMailboxPermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::DeleteMailboxPermissions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::DeleteResource', @_);
@@ -114,6 +119,11 @@ package Paws::WorkMail;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::ListGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListMailboxPermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::ListMailboxPermissions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListOrganizations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::ListOrganizations', @_);
@@ -132,6 +142,11 @@ package Paws::WorkMail;
   sub ListUsers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::ListUsers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutMailboxPermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::PutMailboxPermissions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RegisterToWorkMail {
@@ -295,7 +310,7 @@ package Paws::WorkMail;
   }
 
 
-  sub operations { qw/AssociateDelegateToResource AssociateMemberToGroup CreateAlias CreateGroup CreateResource CreateUser DeleteAlias DeleteGroup DeleteResource DeleteUser DeregisterFromWorkMail DescribeGroup DescribeOrganization DescribeResource DescribeUser DisassociateDelegateFromResource DisassociateMemberFromGroup ListAliases ListGroupMembers ListGroups ListOrganizations ListResourceDelegates ListResources ListUsers RegisterToWorkMail ResetPassword UpdatePrimaryEmailAddress UpdateResource / }
+  sub operations { qw/AssociateDelegateToResource AssociateMemberToGroup CreateAlias CreateGroup CreateResource CreateUser DeleteAlias DeleteGroup DeleteMailboxPermissions DeleteResource DeleteUser DeregisterFromWorkMail DescribeGroup DescribeOrganization DescribeResource DescribeUser DisassociateDelegateFromResource DisassociateMemberFromGroup ListAliases ListGroupMembers ListGroups ListMailboxPermissions ListOrganizations ListResourceDelegates ListResources ListUsers PutMailboxPermissions RegisterToWorkMail ResetPassword UpdatePrimaryEmailAddress UpdateResource / }
 
 1;
 
@@ -454,6 +469,15 @@ Returns: a L<Paws::WorkMail::DeleteGroupResponse> instance
 Deletes a group from Amazon WorkMail.
 
 
+=head2 DeleteMailboxPermissions(EntityId => Str, GranteeId => Str, OrganizationId => Str)
+
+Each argument is described in detail in: L<Paws::WorkMail::DeleteMailboxPermissions>
+
+Returns: a L<Paws::WorkMail::DeleteMailboxPermissionsResponse> instance
+
+Deletes permissions granted to a user or group.
+
+
 =head2 DeleteResource(OrganizationId => Str, ResourceId => Str)
 
 Each argument is described in detail in: L<Paws::WorkMail::DeleteResource>
@@ -569,6 +593,15 @@ Returns: a L<Paws::WorkMail::ListGroupsResponse> instance
 Returns summaries of the organization's groups.
 
 
+=head2 ListMailboxPermissions(EntityId => Str, OrganizationId => Str, [MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::WorkMail::ListMailboxPermissions>
+
+Returns: a L<Paws::WorkMail::ListMailboxPermissionsResponse> instance
+
+Lists the mailbox permissions associated with a mailbox.
+
+
 =head2 ListOrganizations([MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::WorkMail::ListOrganizations>
@@ -604,6 +637,16 @@ Each argument is described in detail in: L<Paws::WorkMail::ListUsers>
 Returns: a L<Paws::WorkMail::ListUsersResponse> instance
 
 Returns summaries of the organization's users.
+
+
+=head2 PutMailboxPermissions(EntityId => Str, GranteeId => Str, OrganizationId => Str, PermissionValues => ArrayRef[Str|Undef])
+
+Each argument is described in detail in: L<Paws::WorkMail::PutMailboxPermissions>
+
+Returns: a L<Paws::WorkMail::PutMailboxPermissionsResponse> instance
+
+Sets permissions for a user or group. This replaces any pre-existing
+permissions set for the entity.
 
 
 =head2 RegisterToWorkMail(Email => Str, EntityId => Str, OrganizationId => Str)
