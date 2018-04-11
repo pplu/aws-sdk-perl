@@ -35,13 +35,6 @@ The updated task description.
 
 The updated logging information in Amazon S3.
 
-C<LoggingInfo> has been deprecated. To specify an S3 bucket to contain
-logs, instead use the C<OutputS3BucketName> and C<OutputS3KeyPrefix>
-options in the C<TaskInvocationParameters> structure. For information
-about how Systems Manager handles these options for the supported
-Maintenance Window task types, see
-MaintenanceWindowTaskInvocationParameters.
-
 
 =head2 MaxConcurrency => Str
 
@@ -86,12 +79,6 @@ The updated parameter values.
 =head2 TaskParameters => L<Paws::SSM::MaintenanceWindowTaskParameters>
 
 The updated parameter values.
-
-C<TaskParameters> has been deprecated. To specify parameters to pass to
-a task when it runs, instead use the C<Parameters> option in the
-C<TaskInvocationParameters> structure. For information about how
-Systems Manager handles these options for the supported Maintenance
-Window task types, see MaintenanceWindowTaskInvocationParameters.
 
 
 =head2 WindowId => Str

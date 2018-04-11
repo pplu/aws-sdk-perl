@@ -53,12 +53,6 @@ A set of rules used to include patches in the baseline.
 
 A list of explicitly approved patches for the baseline.
 
-For information about accepted formats for lists of approved patches
-and rejected patches, see Package Name Formats for Approved and
-Rejected Patch Lists
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
-in the I<AWS Systems Manager User Guide>.
-
 
 
 =head2 ApprovedPatchesComplianceLevel => Str
@@ -102,12 +96,6 @@ The name of the patch baseline.
 =head2 RejectedPatches => ArrayRef[Str|Undef]
 
 A list of explicitly rejected patches for the baseline.
-
-For information about accepted formats for lists of approved patches
-and rejected patches, see Package Name Formats for Approved and
-Rejected Patch Lists
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
-in the I<AWS Systems Manager User Guide>.
 
 
 

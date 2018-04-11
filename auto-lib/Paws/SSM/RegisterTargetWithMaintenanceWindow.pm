@@ -73,17 +73,10 @@ Valid values are: C<"INSTANCE">
 
 =head2 B<REQUIRED> Targets => ArrayRef[L<Paws::SSM::Target>]
 
-The targets (either instances or tags).
-
-Specify instances using the following format:
-
-C<Key=InstanceIds,Values=E<lt>instance-id-1E<gt>,E<lt>instance-id-2E<gt>>
-
-Specify tags using either of the following formats:
-
-C<Key=tag:E<lt>tag-keyE<gt>,Values=E<lt>tag-value-1E<gt>,E<lt>tag-value-2E<gt>>
-
-C<Key=tag-key,Values=E<lt>tag-key-1E<gt>,E<lt>tag-key-2E<gt>>
+The targets (either instances or tags). Instances are specified using
+Key=instanceids,Values=E<lt>instanceid1E<gt>,E<lt>instanceid2E<gt>.
+Tags are specified using Key=E<lt>tag nameE<gt>,Values=E<lt>tag
+valueE<gt>.
 
 
 

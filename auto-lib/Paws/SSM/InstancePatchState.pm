@@ -111,7 +111,7 @@ instance.
 
 =head2 OwnerInformation => Str
 
-  Placeholder information. This field will always be empty in the current
+  Placeholder information, this field will always be empty in the current
 release of the service.
 
 

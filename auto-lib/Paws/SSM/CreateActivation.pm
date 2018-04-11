@@ -43,16 +43,12 @@ The name of the registered, managed instance as it will appear in the
 Amazon EC2 console or when you use the AWS command line tools to list
 EC2 resources.
 
-Do not enter personally identifiable information in this field.
-
 
 
 =head2 Description => Str
 
-A user-defined description of the resource that you want to register
+A userdefined description of the resource that you want to register
 with Amazon EC2.
-
-Do not enter personally identifiable information in this field.
 
 
 

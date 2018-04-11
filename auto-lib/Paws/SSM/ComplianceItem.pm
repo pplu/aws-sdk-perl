@@ -67,7 +67,7 @@ ID, the execution type (for example, command), and the execution time.
 =head2 Id => Str
 
   An ID for the compliance item. For example, if the compliance item is a
-Windows patch, the ID could be the number of the KB article; for
+Windows patch, the ID could be the number of the KB article. Here's an
 example: KB4010320.
 
 
@@ -99,8 +99,8 @@ NON_COMPLIANT.
 
   A title for the compliance item. For example, if the compliance item is
 a Windows patch, the title could be the title of the KB article for the
-patch; for example: Security Update for Active Directory Federation
-Services.
+patch. Here's an example: Security Update for Active Directory
+Federation Services.
 
 
 
