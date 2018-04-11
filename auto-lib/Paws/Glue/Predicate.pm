@@ -44,7 +44,8 @@ Defines the predicate of the trigger, which determines when it fires.
 
 =head2 Logical => Str
 
-  Currently "OR" is not supported.
+  Optional field if only one condition is listed. If multiple conditions
+are listed, then this field is required.
 
 
 

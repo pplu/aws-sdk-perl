@@ -17,12 +17,13 @@ Paws::Glue::GetJobsResponse
 
 =head2 Jobs => ArrayRef[L<Paws::Glue::Job>]
 
-A list of jobs.
+A list of job definitions.
 
 
 =head2 NextToken => Str
 
-A continuation token, if not all jobs have yet been returned.
+A continuation token, if not all job definitions have yet been
+returned.
 
 
 =head2 _request_id => Str

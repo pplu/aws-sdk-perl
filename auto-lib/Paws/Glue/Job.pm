@@ -12,6 +12,7 @@ package Paws::Glue::Job;
   has MaxRetries => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
   has Role => (is => 'ro', isa => 'Str');
+  has Timeout => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -31,7 +32,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Glue::Job object:
 
-  $service_obj->Method(Att1 => { AllocatedCapacity => $value, ..., Role => $value  });
+  $service_obj->Method(Att1 => { AllocatedCapacity => $value, ..., Timeout => $value  });
 
 =head3 Results returned from an API call
 
@@ -42,18 +43,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Job o
 
 =head1 DESCRIPTION
 
-Specifies a job.
+Specifies a job definition.
 
 =head1 ATTRIBUTES
 
 
 =head2 AllocatedCapacity => Int
 
-  The number of AWS Glue data processing units (DPUs) allocated to this
-Job. From 2 to 100 DPUs can be allocated; the default is 10. A DPU is a
-relative measure of processing power that consists of 4 vCPUs of
-compute capacity and 16 GB of memory. For more information, see the AWS
-Glue pricing page (https://aws.amazon.com/glue/pricing/).
+  The number of AWS Glue data processing units (DPUs) allocated to runs
+of this job. From 2 to 100 DPUs can be allocated; the default is 10. A
+DPU is a relative measure of processing power that consists of 4 vCPUs
+of compute capacity and 16 GB of memory. For more information, see the
+AWS Glue pricing page (https://aws.amazon.com/glue/pricing/).
 
 
 =head2 Command => L<Paws::Glue::JobCommand>
@@ -68,7 +69,7 @@ Glue pricing page (https://aws.amazon.com/glue/pricing/).
 
 =head2 CreatedOn => Str
 
-  The time and date that this job specification was created.
+  The time and date that this job definition was created.
 
 
 =head2 DefaultArguments => L<Paws::Glue::GenericMap>
@@ -85,13 +86,13 @@ topic in the developer guide.
 
 For information about the key-value pairs that AWS Glue consumes to set
 up your job, see the Special Parameters Used by AWS Glue
-(http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-glue-arguments.html)
+(http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
 topic in the developer guide.
 
 
 =head2 Description => Str
 
-  Description of this job.
+  Description of the job being defined.
 
 
 =head2 ExecutionProperty => L<Paws::Glue::ExecutionProperty>
@@ -102,7 +103,7 @@ allowed for this job.
 
 =head2 LastModifiedOn => Str
 
-  The last point in time when this job specification was modified.
+  The last point in time when this job definition was modified.
 
 
 =head2 LogUri => Str
@@ -112,17 +113,22 @@ allowed for this job.
 
 =head2 MaxRetries => Int
 
-  The maximum number of times to retry this job if it fails.
+  The maximum number of times to retry this job after a JobRun fails.
 
 
 =head2 Name => Str
 
-  The name you assign to this job.
+  The name you assign to this job definition.
 
 
 =head2 Role => Str
 
-  The name of the IAM role associated with this job.
+  The name or ARN of the IAM role associated with this job.
+
+
+=head2 Timeout => Int
+
+  The job timeout in minutes.
 
 
 

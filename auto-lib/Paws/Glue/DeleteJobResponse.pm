@@ -16,7 +16,7 @@ Paws::Glue::DeleteJobResponse
 
 =head2 JobName => Str
 
-The name of the job that was deleted.
+The name of the job definition that was deleted.
 
 
 =head2 _request_id => Str

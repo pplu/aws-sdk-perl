@@ -40,7 +40,7 @@ triggered this job run.
 
 =head2 JobName => Str
 
-  The name of the predecessor job.
+  The name of the job definition used by the predecessor job run.
 
 
 =head2 RunId => Str

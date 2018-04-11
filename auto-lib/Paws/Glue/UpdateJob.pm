@@ -42,7 +42,7 @@ Name of the job definition to update.
 
 =head2 B<REQUIRED> JobUpdate => L<Paws::Glue::JobUpdate>
 
-Specifies the values with which to update the job.
+Specifies the values with which to update the job definition.
 
 
 

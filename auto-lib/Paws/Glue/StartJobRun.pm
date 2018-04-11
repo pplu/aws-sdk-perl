@@ -5,6 +5,7 @@ package Paws::Glue::StartJobRun;
   has Arguments => (is => 'ro', isa => 'Paws::Glue::GenericMap');
   has JobName => (is => 'ro', isa => 'Str', required => 1);
   has JobRunId => (is => 'ro', isa => 'Str');
+  has Timeout => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
 
@@ -49,7 +50,7 @@ Glue pricing page (https://aws.amazon.com/glue/pricing/).
 =head2 Arguments => L<Paws::Glue::GenericMap>
 
 The job arguments specifically for this run. They override the
-equivalent default arguments set for the job itself.
+equivalent default arguments set for in the job definition itself.
 
 You can specify arguments here that your own job-execution script
 consumes, as well as arguments that AWS Glue itself consumes.
@@ -61,20 +62,27 @@ topic in the developer guide.
 
 For information about the key-value pairs that AWS Glue consumes to set
 up your job, see the Special Parameters Used by AWS Glue
-(http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-glue-arguments.html)
+(http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
 topic in the developer guide.
 
 
 
 =head2 B<REQUIRED> JobName => Str
 
-The name of the job to start.
+The name of the job definition to use.
 
 
 
 =head2 JobRunId => Str
 
 The ID of a previous JobRun to retry.
+
+
+
+=head2 Timeout => Int
+
+The job run timeout in minutes. It overrides the timeout value of the
+job.
 
 
 

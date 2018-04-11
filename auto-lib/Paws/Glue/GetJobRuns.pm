@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> JobName => Str
 
-The name of the job for which to retrieve all job runs.
+The name of the job definition for which to retrieve all job runs.
 
 
 

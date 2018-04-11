@@ -5,6 +5,7 @@ package Paws::Glue::JobRun;
   has Attempt => (is => 'ro', isa => 'Int');
   has CompletedOn => (is => 'ro', isa => 'Str');
   has ErrorMessage => (is => 'ro', isa => 'Str');
+  has ExecutionTime => (is => 'ro', isa => 'Int');
   has Id => (is => 'ro', isa => 'Str');
   has JobName => (is => 'ro', isa => 'Str');
   has JobRunState => (is => 'ro', isa => 'Str');
@@ -12,6 +13,7 @@ package Paws::Glue::JobRun;
   has PredecessorRuns => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Predecessor]');
   has PreviousRunId => (is => 'ro', isa => 'Str');
   has StartedOn => (is => 'ro', isa => 'Str');
+  has Timeout => (is => 'ro', isa => 'Int');
   has TriggerName => (is => 'ro', isa => 'Str');
 1;
 
@@ -72,7 +74,7 @@ topic in the developer guide.
 
 For information about the key-value pairs that AWS Glue consumes to set
 up your job, see the Special Parameters Used by AWS Glue
-(http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-glue-arguments.html)
+(http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
 topic in the developer guide.
 
 
@@ -91,6 +93,11 @@ topic in the developer guide.
   An error message associated with this job run.
 
 
+=head2 ExecutionTime => Int
+
+  The amount of time (in seconds) that the job run consumed resources.
+
+
 =head2 Id => Str
 
   The ID of this job run.
@@ -98,7 +105,7 @@ topic in the developer guide.
 
 =head2 JobName => Str
 
-  The name of the job being run.
+  The name of the job definition being used in this run.
 
 
 =head2 JobRunState => Str
@@ -125,6 +132,11 @@ specified in the StartJobRun action.
 =head2 StartedOn => Str
 
   The date and time at which this job run was started.
+
+
+=head2 Timeout => Int
+
+  The job run timeout in minutes.
 
 
 =head2 TriggerName => Str

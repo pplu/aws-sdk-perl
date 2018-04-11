@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::JobCo
 
 =head1 DESCRIPTION
 
-Specifies code that executes a job.
+Specifies code executed when a job is run.
 
 =head1 ATTRIBUTES
 

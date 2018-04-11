@@ -6,6 +6,7 @@ package Paws::Glue::CreateTrigger;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Predicate => (is => 'ro', isa => 'Paws::Glue::Predicate');
   has Schedule => (is => 'ro', isa => 'Str');
+  has StartOnCreation => (is => 'ro', isa => 'Bool');
   has Type => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -73,6 +74,13 @@ For example, to run something every day at 12:15 UTC, you would
 specify: C<cron(15 12 * * ? *)>.
 
 This field is required when the trigger type is SCHEDULED.
+
+
+
+=head2 StartOnCreation => Bool
+
+Set to true to start SCHEDULED and CONDITIONAL triggers when created.
+True not supported for ON_DEMAND triggers.
 
 
 

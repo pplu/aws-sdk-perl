@@ -11,6 +11,7 @@ package Paws::Glue::CreateJob;
   has MaxRetries => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Role => (is => 'ro', isa => 'Str', required => 1);
+  has Timeout => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
 
@@ -78,14 +79,14 @@ topic in the developer guide.
 
 For information about the key-value pairs that AWS Glue consumes to set
 up your job, see the Special Parameters Used by AWS Glue
-(http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-glue-arguments.html)
+(http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
 topic in the developer guide.
 
 
 
 =head2 Description => Str
 
-Description of the job.
+Description of the job being defined.
 
 
 
@@ -110,13 +111,20 @@ The maximum number of times to retry this job if it fails.
 
 =head2 B<REQUIRED> Name => Str
 
-The name you assign to this job. It must be unique in your account.
+The name you assign to this job definition. It must be unique in your
+account.
 
 
 
 =head2 B<REQUIRED> Role => Str
 
-The name of the IAM role associated with this job.
+The name or ARN of the IAM role associated with this job.
+
+
+
+=head2 Timeout => Int
+
+The job timeout in minutes. The default is 2880 minutes (48 hours).
 
 
 

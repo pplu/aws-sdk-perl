@@ -39,12 +39,12 @@ Records a successful request to stop a specified JobRun.
 
 =head2 JobName => Str
 
-  The Name of the Job in question.
+  The name of the job definition used in the job run that was stopped.
 
 
 =head2 JobRunId => Str
 
-  The JobRunId of the JobRun in question.
+  The JobRunId of the job run that was stopped.
 
 
 

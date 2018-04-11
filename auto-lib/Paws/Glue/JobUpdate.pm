@@ -9,6 +9,7 @@ package Paws::Glue::JobUpdate;
   has LogUri => (is => 'ro', isa => 'Str');
   has MaxRetries => (is => 'ro', isa => 'Int');
   has Role => (is => 'ro', isa => 'Str');
+  has Timeout => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Glue::JobUpdate object:
 
-  $service_obj->Method(Att1 => { AllocatedCapacity => $value, ..., Role => $value  });
+  $service_obj->Method(Att1 => { AllocatedCapacity => $value, ..., Timeout => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,8 +40,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::JobUp
 
 =head1 DESCRIPTION
 
-Specifies information used to update an existing job. Note that the
-previous job definition will be completely overwritten by this
+Specifies information used to update an existing job definition. Note
+that the previous job definition will be completely overwritten by this
 information.
 
 =head1 ATTRIBUTES
@@ -79,13 +80,13 @@ topic in the developer guide.
 
 For information about the key-value pairs that AWS Glue consumes to set
 up your job, see the Special Parameters Used by AWS Glue
-(http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-glue-arguments.html)
+(http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
 topic in the developer guide.
 
 
 =head2 Description => Str
 
-  Description of the job.
+  Description of the job being defined.
 
 
 =head2 ExecutionProperty => L<Paws::Glue::ExecutionProperty>
@@ -106,7 +107,12 @@ allowed for this job.
 
 =head2 Role => Str
 
-  The name of the IAM role associated with this job (required).
+  The name or ARN of the IAM role associated with this job (required).
+
+
+=head2 Timeout => Int
+
+  The job timeout in minutes. The default is 2880 minutes (48 hours).
 
 
 

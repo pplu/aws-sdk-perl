@@ -2,6 +2,7 @@ package Paws::Glue::Action;
   use Moose;
   has Arguments => (is => 'ro', isa => 'Paws::Glue::GenericMap');
   has JobName => (is => 'ro', isa => 'Str');
+  has Timeout => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Glue::Action object:
 
-  $service_obj->Method(Att1 => { Arguments => $value, ..., JobName => $value  });
+  $service_obj->Method(Att1 => { Arguments => $value, ..., Timeout => $value  });
 
 =head3 Results returned from an API call
 
@@ -51,13 +52,19 @@ topic in the developer guide.
 
 For information about the key-value pairs that AWS Glue consumes to set
 up your job, see the Special Parameters Used by AWS Glue
-(http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-glue-arguments.html)
+(http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
 topic in the developer guide.
 
 
 =head2 JobName => Str
 
   The name of a job to be executed.
+
+
+=head2 Timeout => Int
+
+  The job run timeout in minutes. It overrides the timeout value of the
+job.
 
 
 

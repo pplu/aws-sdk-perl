@@ -800,7 +800,7 @@ Each argument is described in detail in: L<Paws::Glue::BatchStopJobRun>
 
 Returns: a L<Paws::Glue::BatchStopJobRunResponse> instance
 
-Stops one or more job runs for a specified Job.
+Stops one or more job runs for a specified job definition.
 
 
 =head2 CreateClassifier([GrokClassifier => L<Paws::Glue::CreateGrokClassifierRequest>, JsonClassifier => L<Paws::Glue::CreateJsonClassifierRequest>, XMLClassifier => L<Paws::Glue::CreateXMLClassifierRequest>])
@@ -852,13 +852,13 @@ Returns: a L<Paws::Glue::CreateDevEndpointResponse> instance
 Creates a new DevEndpoint.
 
 
-=head2 CreateJob(Command => L<Paws::Glue::JobCommand>, Name => Str, Role => Str, [AllocatedCapacity => Int, Connections => L<Paws::Glue::ConnectionsList>, DefaultArguments => L<Paws::Glue::GenericMap>, Description => Str, ExecutionProperty => L<Paws::Glue::ExecutionProperty>, LogUri => Str, MaxRetries => Int])
+=head2 CreateJob(Command => L<Paws::Glue::JobCommand>, Name => Str, Role => Str, [AllocatedCapacity => Int, Connections => L<Paws::Glue::ConnectionsList>, DefaultArguments => L<Paws::Glue::GenericMap>, Description => Str, ExecutionProperty => L<Paws::Glue::ExecutionProperty>, LogUri => Str, MaxRetries => Int, Timeout => Int])
 
 Each argument is described in detail in: L<Paws::Glue::CreateJob>
 
 Returns: a L<Paws::Glue::CreateJobResponse> instance
 
-Creates a new job.
+Creates a new job definition.
 
 
 =head2 CreatePartition(DatabaseName => Str, PartitionInput => L<Paws::Glue::PartitionInput>, TableName => Str, [CatalogId => Str])
@@ -888,7 +888,7 @@ Returns: a L<Paws::Glue::CreateTableResponse> instance
 Creates a new table definition in the Data Catalog.
 
 
-=head2 CreateTrigger(Actions => ArrayRef[L<Paws::Glue::Action>], Name => Str, Type => Str, [Description => Str, Predicate => L<Paws::Glue::Predicate>, Schedule => Str])
+=head2 CreateTrigger(Actions => ArrayRef[L<Paws::Glue::Action>], Name => Str, Type => Str, [Description => Str, Predicate => L<Paws::Glue::Predicate>, Schedule => Str, StartOnCreation => Bool])
 
 Each argument is described in detail in: L<Paws::Glue::CreateTrigger>
 
@@ -958,8 +958,8 @@ Each argument is described in detail in: L<Paws::Glue::DeleteJob>
 
 Returns: a L<Paws::Glue::DeleteJobResponse> instance
 
-Deletes a specified job. If the job is not found, no exception is
-thrown.
+Deletes a specified job definition. If the job definition is not found,
+no exception is thrown.
 
 
 =head2 DeletePartition(DatabaseName => Str, PartitionValues => ArrayRef[Str|Undef], TableName => Str, [CatalogId => Str])
@@ -1149,7 +1149,7 @@ Each argument is described in detail in: L<Paws::Glue::GetJobRuns>
 
 Returns: a L<Paws::Glue::GetJobRunsResponse> instance
 
-Retrieves metadata for all runs of a given job.
+Retrieves metadata for all runs of a given job definition.
 
 
 =head2 GetJobs([MaxResults => Int, NextToken => Str])
@@ -1158,7 +1158,7 @@ Each argument is described in detail in: L<Paws::Glue::GetJobs>
 
 Returns: a L<Paws::Glue::GetJobsResponse> instance
 
-Retrieves all current jobs.
+Retrieves all current job definitions.
 
 
 =head2 GetMapping(Source => L<Paws::Glue::CatalogEntry>, [Location => L<Paws::Glue::Location>, Sinks => ArrayRef[L<Paws::Glue::CatalogEntry>]])
@@ -1311,13 +1311,13 @@ unless the crawler is already running or the schedule state is already
 C<SCHEDULED>.
 
 
-=head2 StartJobRun(JobName => Str, [AllocatedCapacity => Int, Arguments => L<Paws::Glue::GenericMap>, JobRunId => Str])
+=head2 StartJobRun(JobName => Str, [AllocatedCapacity => Int, Arguments => L<Paws::Glue::GenericMap>, JobRunId => Str, Timeout => Int])
 
 Each argument is described in detail in: L<Paws::Glue::StartJobRun>
 
 Returns: a L<Paws::Glue::StartJobRunResponse> instance
 
-Runs a job.
+Starts a job run using a job definition.
 
 
 =head2 StartTrigger(Name => Str)

@@ -52,7 +52,7 @@ which this trigger waits.
 =head2 State => Str
 
   The condition state. Currently, the values supported are SUCCEEDED,
-STOPPED and FAILED.
+STOPPED, TIMEOUT and FAILED.
 
 
 

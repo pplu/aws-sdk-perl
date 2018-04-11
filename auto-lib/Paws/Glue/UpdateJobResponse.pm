@@ -16,7 +16,7 @@ Paws::Glue::UpdateJobResponse
 
 =head2 JobName => Str
 
-Returns the name of the updated job.
+Returns the name of the updated job definition.
 
 
 =head2 _request_id => Str
