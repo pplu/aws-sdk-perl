@@ -7,6 +7,7 @@ package Paws::DMS::CreateEndpoint;
   has EndpointIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has EndpointType => (is => 'ro', isa => 'Str', required => 1);
   has EngineName => (is => 'ro', isa => 'Str', required => 1);
+  has ExternalTableDefinition => (is => 'ro', isa => 'Str');
   has ExtraConnectionAttributes => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MongoDbSettings => (is => 'ro', isa => 'Paws::DMS::MongoDbSettings');
@@ -14,6 +15,7 @@ package Paws::DMS::CreateEndpoint;
   has Port => (is => 'ro', isa => 'Int');
   has S3Settings => (is => 'ro', isa => 'Paws::DMS::S3Settings');
   has ServerName => (is => 'ro', isa => 'Str');
+  has ServiceAccessRoleArn => (is => 'ro', isa => 'Str');
   has SslMode => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Tag]');
   has Username => (is => 'ro', isa => 'Str');
@@ -88,7 +90,14 @@ Valid values are: C<"source">, C<"target">
 
 The type of engine for the endpoint. Valid values, depending on the
 EndPointType, include mysql, oracle, postgres, mariadb, aurora,
-redshift, S3, sybase, dynamodb, mongodb, and sqlserver.
+aurora-postgresql, redshift, s3, db2, azuredb, sybase, dynamodb,
+mongodb, and sqlserver.
+
+
+
+=head2 ExternalTableDefinition => Str
+
+The external table definition.
 
 
 
@@ -133,7 +142,7 @@ The port used by the endpoint database.
 
 =head2 S3Settings => L<Paws::DMS::S3Settings>
 
-Settings in JSON format for the target S3 endpoint. For more
+Settings in JSON format for the target Amazon S3 endpoint. For more
 information about the available settings, see the B<Extra Connection
 Attributes> section at Using Amazon S3 as a Target for AWS Database
 Migration Service
@@ -144,6 +153,13 @@ Migration Service
 =head2 ServerName => Str
 
 The name of the server where the endpoint database resides.
+
+
+
+=head2 ServiceAccessRoleArn => Str
+
+The Amazon Resource Name (ARN) for the service access role you want to
+use to create the endpoint.
 
 
 

@@ -88,7 +88,7 @@ Valid values: replication-instance | migration-task
 
 =head2 B<REQUIRED> SubscriptionName => Str
 
-The name of the DMS event notification subscription.
+The name of the AWS DMS event notification subscription.
 
 Constraints: The name must be less than 255 characters.
 

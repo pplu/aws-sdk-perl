@@ -6,14 +6,17 @@ package Paws::DMS::Endpoint;
   has EndpointArn => (is => 'ro', isa => 'Str');
   has EndpointIdentifier => (is => 'ro', isa => 'Str');
   has EndpointType => (is => 'ro', isa => 'Str');
+  has EngineDisplayName => (is => 'ro', isa => 'Str');
   has EngineName => (is => 'ro', isa => 'Str');
   has ExternalId => (is => 'ro', isa => 'Str');
+  has ExternalTableDefinition => (is => 'ro', isa => 'Str');
   has ExtraConnectionAttributes => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MongoDbSettings => (is => 'ro', isa => 'Paws::DMS::MongoDbSettings');
   has Port => (is => 'ro', isa => 'Int');
   has S3Settings => (is => 'ro', isa => 'Paws::DMS::S3Settings');
   has ServerName => (is => 'ro', isa => 'Str');
+  has ServiceAccessRoleArn => (is => 'ro', isa => 'Str');
   has SslMode => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has Username => (is => 'ro', isa => 'Str');
@@ -86,11 +89,19 @@ with a hyphen or contain two consecutive hyphens.
   The type of endpoint.
 
 
+=head2 EngineDisplayName => Str
+
+  The expanded name for the engine name. For example, if the
+C<EngineName> parameter is "aurora," this value would be "Amazon Aurora
+MySQL."
+
+
 =head2 EngineName => Str
 
   The database engine name. Valid values, depending on the EndPointType,
-include mysql, oracle, postgres, mariadb, aurora, redshift, S3, sybase,
-dynamodb, mongodb, and sqlserver.
+include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql,
+redshift, s3, db2, azuredb, sybase, sybase, dynamodb, mongodb, and
+sqlserver.
 
 
 =head2 ExternalId => Str
@@ -98,6 +109,11 @@ dynamodb, mongodb, and sqlserver.
   Value returned by a call to CreateEndpoint that can be used for
 cross-account validation. Use it on a subsequent call to CreateEndpoint
 to create the endpoint with a cross-account.
+
+
+=head2 ExternalTableDefinition => Str
+
+  The external table definition.
 
 
 =head2 ExtraConnectionAttributes => Str
@@ -134,6 +150,11 @@ C<S3Settings> structure.
 =head2 ServerName => Str
 
   The name of the server at the endpoint.
+
+
+=head2 ServiceAccessRoleArn => Str
+
+  The Amazon Resource Name (ARN) used by the service access IAM role.
 
 
 =head2 SslMode => Str

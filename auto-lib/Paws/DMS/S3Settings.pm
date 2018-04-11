@@ -77,7 +77,7 @@ a carriage return (\n).
 
 =head2 ExternalTableDefinition => Str
 
-  
+  The external table definition.
 
 
 =head2 ServiceAccessRoleArn => Str

@@ -586,13 +586,14 @@ Each argument is described in detail in: L<Paws::DMS::AddTagsToResource>
 
 Returns: a L<Paws::DMS::AddTagsToResourceResponse> instance
 
-Adds metadata tags to a DMS resource, including replication instance,
-endpoint, security group, and migration task. These tags can also be
-used with cost allocation reporting to track cost associated with DMS
-resources, or used in a Condition statement in an IAM policy for DMS.
+Adds metadata tags to an AWS DMS resource, including replication
+instance, endpoint, security group, and migration task. These tags can
+also be used with cost allocation reporting to track cost associated
+with DMS resources, or used in a Condition statement in an IAM policy
+for DMS.
 
 
-=head2 CreateEndpoint(EndpointIdentifier => Str, EndpointType => Str, EngineName => Str, [CertificateArn => Str, DatabaseName => Str, DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>, ExtraConnectionAttributes => Str, KmsKeyId => Str, MongoDbSettings => L<Paws::DMS::MongoDbSettings>, Password => Str, Port => Int, S3Settings => L<Paws::DMS::S3Settings>, ServerName => Str, SslMode => Str, Tags => ArrayRef[L<Paws::DMS::Tag>], Username => Str])
+=head2 CreateEndpoint(EndpointIdentifier => Str, EndpointType => Str, EngineName => Str, [CertificateArn => Str, DatabaseName => Str, DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>, ExternalTableDefinition => Str, ExtraConnectionAttributes => Str, KmsKeyId => Str, MongoDbSettings => L<Paws::DMS::MongoDbSettings>, Password => Str, Port => Int, S3Settings => L<Paws::DMS::S3Settings>, ServerName => Str, ServiceAccessRoleArn => Str, SslMode => Str, Tags => ArrayRef[L<Paws::DMS::Tag>], Username => Str])
 
 Each argument is described in detail in: L<Paws::DMS::CreateEndpoint>
 
@@ -647,7 +648,7 @@ Creates a replication subnet group given a list of the subnet IDs in a
 VPC.
 
 
-=head2 CreateReplicationTask(MigrationType => Str, ReplicationInstanceArn => Str, ReplicationTaskIdentifier => Str, SourceEndpointArn => Str, TableMappings => Str, TargetEndpointArn => Str, [CdcStartTime => Str, ReplicationTaskSettings => Str, Tags => ArrayRef[L<Paws::DMS::Tag>]])
+=head2 CreateReplicationTask(MigrationType => Str, ReplicationInstanceArn => Str, ReplicationTaskIdentifier => Str, SourceEndpointArn => Str, TableMappings => Str, TargetEndpointArn => Str, [CdcStartPosition => Str, CdcStartTime => Str, CdcStopPosition => Str, ReplicationTaskSettings => Str, Tags => ArrayRef[L<Paws::DMS::Tag>]])
 
 Each argument is described in detail in: L<Paws::DMS::CreateReplicationTask>
 
@@ -918,7 +919,7 @@ Returns: a L<Paws::DMS::ListTagsForResourceResponse> instance
 Lists all tags for an AWS DMS resource.
 
 
-=head2 ModifyEndpoint(EndpointArn => Str, [CertificateArn => Str, DatabaseName => Str, DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>, EndpointIdentifier => Str, EndpointType => Str, EngineName => Str, ExtraConnectionAttributes => Str, MongoDbSettings => L<Paws::DMS::MongoDbSettings>, Password => Str, Port => Int, S3Settings => L<Paws::DMS::S3Settings>, ServerName => Str, SslMode => Str, Username => Str])
+=head2 ModifyEndpoint(EndpointArn => Str, [CertificateArn => Str, DatabaseName => Str, DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>, EndpointIdentifier => Str, EndpointType => Str, EngineName => Str, ExternalTableDefinition => Str, ExtraConnectionAttributes => Str, MongoDbSettings => L<Paws::DMS::MongoDbSettings>, Password => Str, Port => Int, S3Settings => L<Paws::DMS::S3Settings>, ServerName => Str, ServiceAccessRoleArn => Str, SslMode => Str, Username => Str])
 
 Each argument is described in detail in: L<Paws::DMS::ModifyEndpoint>
 
@@ -958,7 +959,7 @@ Returns: a L<Paws::DMS::ModifyReplicationSubnetGroupResponse> instance
 Modifies the settings for the specified replication subnet group.
 
 
-=head2 ModifyReplicationTask(ReplicationTaskArn => Str, [CdcStartTime => Str, MigrationType => Str, ReplicationTaskIdentifier => Str, ReplicationTaskSettings => Str, TableMappings => Str])
+=head2 ModifyReplicationTask(ReplicationTaskArn => Str, [CdcStartPosition => Str, CdcStartTime => Str, CdcStopPosition => Str, MigrationType => Str, ReplicationTaskIdentifier => Str, ReplicationTaskSettings => Str, TableMappings => Str])
 
 Each argument is described in detail in: L<Paws::DMS::ModifyReplicationTask>
 
@@ -1014,7 +1015,7 @@ Returns: a L<Paws::DMS::RemoveTagsFromResourceResponse> instance
 Removes metadata tags from a DMS resource.
 
 
-=head2 StartReplicationTask(ReplicationTaskArn => Str, StartReplicationTaskType => Str, [CdcStartTime => Str])
+=head2 StartReplicationTask(ReplicationTaskArn => Str, StartReplicationTaskType => Str, [CdcStartPosition => Str, CdcStartTime => Str, CdcStopPosition => Str])
 
 Each argument is described in detail in: L<Paws::DMS::StartReplicationTask>
 

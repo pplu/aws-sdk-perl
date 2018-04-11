@@ -1,7 +1,9 @@
 
 package Paws::DMS::CreateReplicationTask;
   use Moose;
+  has CdcStartPosition => (is => 'ro', isa => 'Str');
   has CdcStartTime => (is => 'ro', isa => 'Str');
+  has CdcStopPosition => (is => 'ro', isa => 'Str');
   has MigrationType => (is => 'ro', isa => 'Str', required => 1);
   has ReplicationInstanceArn => (is => 'ro', isa => 'Str', required => 1);
   has ReplicationTaskIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -41,9 +43,42 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 CdcStartPosition => Str
+
+Indicates when you want a change data capture (CDC) operation to start.
+Use either CdcStartPosition or CdcStartTime to specify when you want a
+CDC operation to start. Specifying both values results in an error.
+
+The value can be in date, checkpoint, or LSN/SCN format.
+
+Date Example: --cdc-start-position E<ldquo>2018-03-08T12:12:12E<rdquo>
+
+Checkpoint Example: --cdc-start-position
+"checkpoint:V1#27#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876#0#0#*#0#93"
+
+LSN Example: --cdc-start-position
+E<ldquo>mysql-bin-changelog.000024:373E<rdquo>
+
+
+
 =head2 CdcStartTime => Str
 
-The start time for the Change Data Capture (CDC) operation.
+Indicates the start time for a change data capture (CDC) operation. Use
+either CdcStartTime or CdcStartPosition to specify when you want a CDC
+operation to start. Specifying both values results in an error.
+
+
+
+=head2 CdcStopPosition => Str
+
+Indicates when you want a change data capture (CDC) operation to stop.
+The value can be either server time or commit time.
+
+Server time example: --cdc-stop-position
+E<ldquo>server_time:3018-02-09T12:12:12E<rdquo>
+
+Commit time example: --cdc-stop-position E<ldquo>commit_time:
+3018-02-09T12:12:12 E<ldquo>
 
 
 

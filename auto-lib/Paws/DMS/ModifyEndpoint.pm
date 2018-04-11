@@ -8,12 +8,14 @@ package Paws::DMS::ModifyEndpoint;
   has EndpointIdentifier => (is => 'ro', isa => 'Str');
   has EndpointType => (is => 'ro', isa => 'Str');
   has EngineName => (is => 'ro', isa => 'Str');
+  has ExternalTableDefinition => (is => 'ro', isa => 'Str');
   has ExtraConnectionAttributes => (is => 'ro', isa => 'Str');
   has MongoDbSettings => (is => 'ro', isa => 'Paws::DMS::MongoDbSettings');
   has Password => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has S3Settings => (is => 'ro', isa => 'Paws::DMS::S3Settings');
   has ServerName => (is => 'ro', isa => 'Str');
+  has ServiceAccessRoleArn => (is => 'ro', isa => 'Str');
   has SslMode => (is => 'ro', isa => 'Str');
   has Username => (is => 'ro', isa => 'Str');
 
@@ -95,7 +97,14 @@ Valid values are: C<"source">, C<"target">
 
 The type of engine for the endpoint. Valid values, depending on the
 EndPointType, include mysql, oracle, postgres, mariadb, aurora,
-redshift, S3, sybase, dynamodb, mongodb, and sqlserver.
+aurora-postgresql, redshift, s3, db2, azuredb, sybase, sybase,
+dynamodb, mongodb, and sqlserver.
+
+
+
+=head2 ExternalTableDefinition => Str
+
+The external table definition.
 
 
 
@@ -142,6 +151,13 @@ Migration Service
 =head2 ServerName => Str
 
 The name of the server where the endpoint database resides.
+
+
+
+=head2 ServiceAccessRoleArn => Str
+
+The Amazon Resource Name (ARN) for the service access role you want to
+use to modify the endpoint.
 
 
 

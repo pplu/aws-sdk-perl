@@ -4,6 +4,7 @@ package Paws::DMS::ReplicationInstance;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has FreeUntil => (is => 'ro', isa => 'Str');
   has InstanceCreateTime => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MultiAZ => (is => 'ro', isa => 'Bool');
@@ -76,6 +77,12 @@ automatically applied to the instance.
 =head2 EngineVersion => Str
 
   The engine version number of the replication instance.
+
+
+=head2 FreeUntil => Str
+
+  The expiration date of the free replication instance that is part of
+the Free DMS program.
 
 
 =head2 InstanceCreateTime => Str
