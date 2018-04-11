@@ -1,10 +1,11 @@
 package Paws::MediaPackage::OriginEndpointCreateParameters;
   use Moose;
-  has ChannelId => (is => 'ro', isa => 'Str', request_name => 'channelId', traits => ['NameInRequest']);
+  has ChannelId => (is => 'ro', isa => 'Str', request_name => 'channelId', traits => ['NameInRequest'], required => 1);
+  has CmafPackage => (is => 'ro', isa => 'Paws::MediaPackage::CmafPackageCreateOrUpdateParameters', request_name => 'cmafPackage', traits => ['NameInRequest']);
   has DashPackage => (is => 'ro', isa => 'Paws::MediaPackage::DashPackage', request_name => 'dashPackage', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has HlsPackage => (is => 'ro', isa => 'Paws::MediaPackage::HlsPackage', request_name => 'hlsPackage', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
   has ManifestName => (is => 'ro', isa => 'Str', request_name => 'manifestName', traits => ['NameInRequest']);
   has MssPackage => (is => 'ro', isa => 'Paws::MediaPackage::MssPackage', request_name => 'mssPackage', traits => ['NameInRequest']);
   has StartoverWindowSeconds => (is => 'ro', isa => 'Int', request_name => 'startoverWindowSeconds', traits => ['NameInRequest']);
@@ -45,10 +46,15 @@ Configuration parameters for a new OriginEndpoint.
 =head1 ATTRIBUTES
 
 
-=head2 ChannelId => Str
+=head2 B<REQUIRED> ChannelId => Str
 
   The ID of the Channel that the OriginEndpoint will be associated with.
 This cannot be changed after the OriginEndpoint is created.
+
+
+=head2 CmafPackage => L<Paws::MediaPackage::CmafPackageCreateOrUpdateParameters>
+
+  
 
 
 =head2 DashPackage => L<Paws::MediaPackage::DashPackage>
@@ -66,7 +72,7 @@ This cannot be changed after the OriginEndpoint is created.
   
 
 
-=head2 Id => Str
+=head2 B<REQUIRED> Id => Str
 
   The ID of the OriginEndpoint. The ID must be unique within the region
 and it cannot be changed after the OriginEndpoint is created.

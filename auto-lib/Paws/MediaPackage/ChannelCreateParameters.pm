@@ -1,7 +1,7 @@
 package Paws::MediaPackage::ChannelCreateParameters;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +42,7 @@ Configuration parameters for a new Channel.
   A short text description of the Channel.
 
 
-=head2 Id => Str
+=head2 B<REQUIRED> Id => Str
 
   The ID of the Channel. The ID must be unique within the region and it
 cannot be changed after a Channel is created.

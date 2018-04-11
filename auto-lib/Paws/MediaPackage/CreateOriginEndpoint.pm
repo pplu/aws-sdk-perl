@@ -2,6 +2,7 @@
 package Paws::MediaPackage::CreateOriginEndpoint;
   use Moose;
   has ChannelId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'channelId', required => 1);
+  has CmafPackage => (is => 'ro', isa => 'Paws::MediaPackage::CmafPackageCreateOrUpdateParameters', traits => ['NameInRequest'], request_name => 'cmafPackage');
   has DashPackage => (is => 'ro', isa => 'Paws::MediaPackage::DashPackage', traits => ['NameInRequest'], request_name => 'dashPackage');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has HlsPackage => (is => 'ro', isa => 'Paws::MediaPackage::HlsPackage', traits => ['NameInRequest'], request_name => 'hlsPackage');
@@ -47,6 +48,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The ID of the Channel that the OriginEndpoint will be associated with.
 This cannot be changed after the OriginEndpoint is created.
+
+
+
+=head2 CmafPackage => L<Paws::MediaPackage::CmafPackageCreateOrUpdateParameters>
+
+
 
 
 

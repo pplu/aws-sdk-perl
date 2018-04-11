@@ -158,7 +158,7 @@ Returns: a L<Paws::MediaPackage::CreateChannelResponse> instance
 Creates a new Channel.
 
 
-=head2 CreateOriginEndpoint(ChannelId => Str, Id => Str, [DashPackage => L<Paws::MediaPackage::DashPackage>, Description => Str, HlsPackage => L<Paws::MediaPackage::HlsPackage>, ManifestName => Str, MssPackage => L<Paws::MediaPackage::MssPackage>, StartoverWindowSeconds => Int, TimeDelaySeconds => Int, Whitelist => ArrayRef[Str|Undef]])
+=head2 CreateOriginEndpoint(ChannelId => Str, Id => Str, [CmafPackage => L<Paws::MediaPackage::CmafPackageCreateOrUpdateParameters>, DashPackage => L<Paws::MediaPackage::DashPackage>, Description => Str, HlsPackage => L<Paws::MediaPackage::HlsPackage>, ManifestName => Str, MssPackage => L<Paws::MediaPackage::MssPackage>, StartoverWindowSeconds => Int, TimeDelaySeconds => Int, Whitelist => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::MediaPackage::CreateOriginEndpoint>
 
@@ -239,7 +239,7 @@ Returns: a L<Paws::MediaPackage::UpdateChannelResponse> instance
 Updates an existing Channel.
 
 
-=head2 UpdateOriginEndpoint(Id => Str, [DashPackage => L<Paws::MediaPackage::DashPackage>, Description => Str, HlsPackage => L<Paws::MediaPackage::HlsPackage>, ManifestName => Str, MssPackage => L<Paws::MediaPackage::MssPackage>, StartoverWindowSeconds => Int, TimeDelaySeconds => Int, Whitelist => ArrayRef[Str|Undef]])
+=head2 UpdateOriginEndpoint(Id => Str, [CmafPackage => L<Paws::MediaPackage::CmafPackageCreateOrUpdateParameters>, DashPackage => L<Paws::MediaPackage::DashPackage>, Description => Str, HlsPackage => L<Paws::MediaPackage::HlsPackage>, ManifestName => Str, MssPackage => L<Paws::MediaPackage::MssPackage>, StartoverWindowSeconds => Int, TimeDelaySeconds => Int, Whitelist => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::MediaPackage::UpdateOriginEndpoint>
 

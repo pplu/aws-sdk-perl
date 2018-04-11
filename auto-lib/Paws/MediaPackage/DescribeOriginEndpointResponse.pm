@@ -3,6 +3,7 @@ package Paws::MediaPackage::DescribeOriginEndpointResponse;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
   has ChannelId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'channelId');
+  has CmafPackage => (is => 'ro', isa => 'Paws::MediaPackage::CmafPackage', traits => ['NameInRequest'], request_name => 'cmafPackage');
   has DashPackage => (is => 'ro', isa => 'Paws::MediaPackage::DashPackage', traits => ['NameInRequest'], request_name => 'dashPackage');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has HlsPackage => (is => 'ro', isa => 'Paws::MediaPackage::HlsPackage', traits => ['NameInRequest'], request_name => 'hlsPackage');
@@ -34,6 +35,11 @@ The Amazon Resource Name (ARN) assigned to the OriginEndpoint.
 =head2 ChannelId => Str
 
 The ID of the Channel the OriginEndpoint is associated with.
+
+
+=head2 CmafPackage => L<Paws::MediaPackage::CmafPackage>
+
+
 
 
 =head2 DashPackage => L<Paws::MediaPackage::DashPackage>
