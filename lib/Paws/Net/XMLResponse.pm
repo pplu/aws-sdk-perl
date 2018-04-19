@@ -10,7 +10,7 @@ package Paws::Net::XMLResponse;
       return XML::Simple->new(
         ForceArray    => qr/^(?:item|Errors)/i,
         KeyAttr       => '',
-        SuppressEmpty => undef,
+        SuppressEmpty => '',
       );
     }
   );
