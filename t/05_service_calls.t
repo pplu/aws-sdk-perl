@@ -580,9 +580,6 @@ $request = $batch->SubmitJob(
   Parameters => { P1 => 1, P2 => 2 }
 );
 
-use Data::Dumper;
-print Dumper($request);
-
 $test_params = {
   jobDefinition => 'X',
   jobName => 'jname',
@@ -625,5 +622,11 @@ $request = $r53->ChangeResourceRecordSets(
 $ref = XMLin($request->content);
 
 like($request->url, qr|hostedzone/A999AAA999AAA/rrset|, 'URL has the HostedZoneId');
+
+my $glacier = $aws->service('Glacier');
+
+$request = $glacier->ListVaults(AccountId => '-');
+
+cmp_ok($request->header('x-amz-glacier-version'), 'eq', $glacier->version, 'The API version is in the correct header');
 
 done_testing;
