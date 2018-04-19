@@ -339,7 +339,7 @@ package Paws::API::Builder {
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method [% operation.name %] on the 
-[% c.api_struct.metadata.serviceFullName %] service. Use the attributes of this class
+L<[% c.api_struct.metadata.serviceFullName %]|[% c.api %]> service. Use the attributes of this class
 as arguments to method [% operation.name %].
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to [% operation.name %].
