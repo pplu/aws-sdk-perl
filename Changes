@@ -4,6 +4,7 @@
    https://docs.aws.amazon.com/cli/latest/topic/config-vars.html#sourcing-credentials-from-external-processes
  - Better docu generation (osoriano)
  - Documentation update: Now POD contains links from the botocore documentation
+ - Bump XML::Simple dependency to 2.21 (mla)
  - New API: Pricing
  - New API: CostExplorer
  - New API: Translate

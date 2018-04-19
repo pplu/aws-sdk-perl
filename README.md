@@ -332,3 +332,5 @@ working on fixing S3 to work correctly.
 SeptamusNonovant for fixing paginators in non-callback mode
 
 gadgetjunkie for contributing the ECS credential provider
+
+mla for contributing a fix to correct dependencies
