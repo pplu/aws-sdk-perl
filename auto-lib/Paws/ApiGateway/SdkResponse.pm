@@ -2,8 +2,8 @@
 package Paws::ApiGateway::SdkResponse;
   use Moose;
   has Body => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'body');
-  has ContentDisposition => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'contentDisposition');
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'contentType');
+  has ContentDisposition => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Disposition');
+  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');
   has _request_id => (is => 'ro', isa => 'Str');

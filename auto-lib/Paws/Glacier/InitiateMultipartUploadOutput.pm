@@ -1,8 +1,8 @@
 
 package Paws::Glacier::InitiateMultipartUploadOutput;
   use Moose;
-  has Location => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'location');
-  has UploadId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'uploadId');
+  has Location => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Location');
+  has UploadId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-multipart-upload-id');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

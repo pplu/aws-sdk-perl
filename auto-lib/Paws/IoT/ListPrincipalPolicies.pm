@@ -1,10 +1,10 @@
 
 package Paws::IoT::ListPrincipalPolicies;
   use Moose;
-  has AscendingOrder => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'ascendingOrder');
+  has AscendingOrder => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'isAscendingOrder');
   has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
   has PageSize => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'pageSize');
-  has Principal => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'principal', required => 1);
+  has Principal => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amzn-iot-principal', required => 1);
 
   use MooseX::ClassAttribute;
 

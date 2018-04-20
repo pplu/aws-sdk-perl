@@ -1,7 +1,7 @@
 
 package Paws::ApiGateway::UntagResource;
   use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceArn', required => 1);
+  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resource_arn', required => 1);
   has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'tagKeys', required => 1);
 
   use MooseX::ClassAttribute;

@@ -3,7 +3,7 @@ package Paws::ApiGateway::GetDeployments;
   use Moose;
   has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
   has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
 
   use MooseX::ClassAttribute;
 

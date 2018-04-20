@@ -4,7 +4,7 @@ package Paws::ApiGateway::GetApiKeys;
   has CustomerId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'customerId');
   has IncludeValues => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'includeValues');
   has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
-  has NameQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nameQuery');
+  has NameQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'name');
   has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position');
 
   use MooseX::ClassAttribute;

@@ -2,7 +2,7 @@
 package Paws::ApiGateway::UpdateVpcLink;
   use Moose;
   has PatchOperations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::PatchOperation]', traits => ['NameInRequest'], request_name => 'patchOperations');
-  has VpcLinkId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vpcLinkId', required => 1);
+  has VpcLinkId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vpclink_id', required => 1);
 
   use MooseX::ClassAttribute;
 

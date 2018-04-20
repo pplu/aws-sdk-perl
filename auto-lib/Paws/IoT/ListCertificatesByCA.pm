@@ -1,7 +1,7 @@
 
 package Paws::IoT::ListCertificatesByCA;
   use Moose;
-  has AscendingOrder => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'ascendingOrder');
+  has AscendingOrder => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'isAscendingOrder');
   has CaCertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'caCertificateId', required => 1);
   has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
   has PageSize => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'pageSize');

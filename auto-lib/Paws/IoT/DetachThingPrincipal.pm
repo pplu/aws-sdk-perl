@@ -1,7 +1,7 @@
 
 package Paws::IoT::DetachThingPrincipal;
   use Moose;
-  has Principal => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'principal', required => 1);
+  has Principal => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amzn-principal', required => 1);
   has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
 
   use MooseX::ClassAttribute;

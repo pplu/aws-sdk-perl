@@ -1,7 +1,7 @@
 
 package Paws::ApiGateway::DeleteVpcLink;
   use Moose;
-  has VpcLinkId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vpcLinkId', required => 1);
+  has VpcLinkId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vpclink_id', required => 1);
 
   use MooseX::ClassAttribute;
 

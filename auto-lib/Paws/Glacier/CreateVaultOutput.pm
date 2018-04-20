@@ -1,7 +1,7 @@
 
 package Paws::Glacier::CreateVaultOutput;
   use Moose;
-  has Location => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'location');
+  has Location => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Location');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
