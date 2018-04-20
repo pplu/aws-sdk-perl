@@ -629,4 +629,17 @@ $request = $glacier->ListVaults(AccountId => '-');
 
 cmp_ok($request->header('x-amz-glacier-version'), 'eq', $glacier->version, 'The API version is in the correct header');
 
+$request = $glacier->InitiateMultipartUpload(
+  AccountId => '1234',
+  ArchiveDescription => 'Desc',
+  VaultName => 'myvault',
+  PartSize => 34
+);  
+
+like($request->url, qr|/myvault/|);
+like($request->url, qr|/1234/|);
+cmp_ok($request->header('x-amz-part-size'), 'eq', '34', 'The PartSize is in the correct header');
+cmp_ok($request->header('x-amz-archive-description'), 'eq', 'Desc', 'The ArchiveDescripiton is in the correct header');
+
+
 done_testing;
