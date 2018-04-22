@@ -59,6 +59,8 @@ One or more tags. The value parameter is required, but if you don't
 want the tag to have a value, specify the parameter with no value, and
 we set the value to an empty string.
 
+Do not enter personally identifiable information in this field.
+
 
 
 

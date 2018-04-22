@@ -165,7 +165,7 @@ information about how to use Targets, see Sending Commands to a Fleet
 =head2 TimeoutSeconds => Int
 
 If this time is reached and the command has not already started
-executing, it will not execute.
+executing, it will not run.
 
 
 

@@ -74,6 +74,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::DeleteDocument', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteInventory {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DeleteInventory', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteMaintenanceWindow {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DeleteMaintenanceWindow', @_);
@@ -187,6 +192,11 @@ package Paws::SSM;
   sub DescribeInstancePatchStatesForPatchGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeInstancePatchStatesForPatchGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeInventoryDeletions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeInventoryDeletions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeMaintenanceWindowExecutions {
@@ -709,7 +719,7 @@ package Paws::SSM;
   }
 
 
-  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState GetAutomationExecution GetCommandInvocation GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource SendAutomationSignal SendCommand StartAutomationExecution StopAutomationExecution UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdatePatchBaseline / }
+  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState GetAutomationExecution GetCommandInvocation GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource SendAutomationSignal SendCommand StartAutomationExecution StopAutomationExecution UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdatePatchBaseline / }
 
 1;
 
@@ -953,6 +963,17 @@ DeleteAssociation to disassociate all instances that are associated
 with the document.
 
 
+=head2 DeleteInventory(TypeName => Str, [ClientToken => Str, DryRun => Bool, SchemaDeleteOption => Str])
+
+Each argument is described in detail in: L<Paws::SSM::DeleteInventory>
+
+Returns: a L<Paws::SSM::DeleteInventoryResult> instance
+
+Delete a custom inventory type, or the data associated with a custom
+Inventory type. Deleting a custom inventory type is also referred to as
+deleting a custom inventory schema.
+
+
 =head2 DeleteMaintenanceWindow(WindowId => Str)
 
 Each argument is described in detail in: L<Paws::SSM::DeleteMaintenanceWindow>
@@ -1187,6 +1208,15 @@ Returns: a L<Paws::SSM::DescribeInstancePatchStatesForPatchGroupResult> instance
 
 Retrieves the high-level patch state for the instances in the specified
 patch group.
+
+
+=head2 DescribeInventoryDeletions([DeletionId => Str, MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::SSM::DescribeInventoryDeletions>
+
+Returns: a L<Paws::SSM::DescribeInventoryDeletionsResult> instance
+
+Describes a specific delete inventory operation.
 
 
 =head2 DescribeMaintenanceWindowExecutions(WindowId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
@@ -1895,18 +1925,34 @@ Returns: a L<Paws::SSM::UpdateMaintenanceWindowTaskResult> instance
 Modifies a task assigned to a Maintenance Window. You can't change the
 task type, but you can change the following values:
 
-Task ARN. For example, you can change a RUN_COMMAND task from
+=over
+
+=item *
+
+TaskARN. For example, you can change a RUN_COMMAND task from
 AWS-RunPowerShellScript to AWS-RunShellScript.
 
-Service role ARN.
+=item *
 
-Task parameters.
+ServiceRoleArn
 
-Task priority.
+=item *
 
-Task MaxConcurrency and MaxErrors.
+TaskInvocationParameters
 
-Log location.
+=item *
+
+Priority
+
+=item *
+
+MaxConcurrency
+
+=item *
+
+MaxErrors
+
+=back
 
 If a parameter is null, then the corresponding field is not modified.
 Also, if you set Replace to true, then all fields required by the

@@ -57,6 +57,8 @@ results.
 
 Filters to limit the request results.
 
+You can't filter using the parameter name.
+
 
 
 =head2 B<REQUIRED> Path => Str
@@ -71,6 +73,12 @@ C</Finance/Prod/IAD/WinServ2016/license33>
 =head2 Recursive => Bool
 
 Retrieve all parameters within a hierarchy.
+
+If a user has access to a path, then the user can access all levels of
+that path. For example, if a user has permission to access path /a,
+then the user can also access /a/b. Even if a user has explicitly been
+denied access in IAM for parameter /a, they can still call the
+GetParametersByPath API action recursively and view /a/b.
 
 
 

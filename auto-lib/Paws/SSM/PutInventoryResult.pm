@@ -1,6 +1,7 @@
 
 package Paws::SSM::PutInventoryResult;
   use Moose;
+  has Message => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -11,6 +12,11 @@ package Paws::SSM::PutInventoryResult;
 Paws::SSM::PutInventoryResult
 
 =head1 ATTRIBUTES
+
+
+=head2 Message => Str
+
+Information about the request.
 
 
 =head2 _request_id => Str

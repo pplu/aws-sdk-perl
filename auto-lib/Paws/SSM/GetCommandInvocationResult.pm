@@ -123,8 +123,8 @@ empty.
 
 =head2 Status => Str
 
-The status of the parent command for this invocation. This status can
-be different than StatusDetails.
+The status of this invocation plugin. This status can be different than
+StatusDetails.
 
 Valid values are: C<"Pending">, C<"InProgress">, C<"Delayed">, C<"Success">, C<"Cancelled">, C<"TimedOut">, C<"Failed">, C<"Cancelling">
 =head2 StatusDetails => Str
