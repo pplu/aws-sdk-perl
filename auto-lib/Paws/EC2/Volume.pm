@@ -58,7 +58,7 @@ and bursting, see Amazon EBS Volume Types
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
-Constraint: Range is 100-20000 IOPS for io1 volumes and 100-10000 IOPS
+Constraint: Range is 100-32000 IOPS for io1 volumes and 100-10000 IOPS
 for C<gp2> volumes.
 
 Condition: This parameter is required for requests to create C<io1>

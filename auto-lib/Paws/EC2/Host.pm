@@ -1,5 +1,6 @@
 package Paws::EC2::Host;
   use Moose;
+  has AllocationTime => (is => 'ro', isa => 'Str', request_name => 'allocationTime', traits => ['NameInRequest']);
   has AutoPlacement => (is => 'ro', isa => 'Str', request_name => 'autoPlacement', traits => ['NameInRequest']);
   has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
   has AvailableCapacity => (is => 'ro', isa => 'Paws::EC2::AvailableCapacity', request_name => 'availableCapacity', traits => ['NameInRequest']);
@@ -8,6 +9,7 @@ package Paws::EC2::Host;
   has HostProperties => (is => 'ro', isa => 'Paws::EC2::HostProperties', request_name => 'hostProperties', traits => ['NameInRequest']);
   has HostReservationId => (is => 'ro', isa => 'Str', request_name => 'hostReservationId', traits => ['NameInRequest']);
   has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::HostInstance]', request_name => 'instances', traits => ['NameInRequest']);
+  has ReleaseTime => (is => 'ro', isa => 'Str', request_name => 'releaseTime', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
 1;
 
@@ -28,20 +30,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::Host object:
 
-  $service_obj->Method(Att1 => { AutoPlacement => $value, ..., State => $value  });
+  $service_obj->Method(Att1 => { AllocationTime => $value, ..., State => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Host object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AutoPlacement
+  $result->Att1->AllocationTime
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 AllocationTime => Str
+
+  The time that the Dedicated Host was allocated.
 
 
 =head2 AutoPlacement => Str
@@ -88,6 +95,11 @@ response if the Dedicated Host doesn't have an associated reservation.
 
   The IDs and instance type that are currently running on the Dedicated
 Host.
+
+
+=head2 ReleaseTime => Str
+
+  The time that the Dedicated Host was released.
 
 
 =head2 State => Str

@@ -44,13 +44,17 @@ One or more filters.
 
 =item *
 
-C<instance-type> - The instance type size that the Dedicated Host is
-configured to support.
+C<auto-placement> - Whether auto-placement is enabled or disabled
+(C<on> | C<off>).
 
 =item *
 
-C<auto-placement> - Whether auto-placement is enabled or disabled
-(C<on> | C<off>).
+C<availability-zone> - The Availability Zone of the host.
+
+=item *
+
+C<client-token> - The idempotency token you provided when you allocated
+the host.
 
 =item *
 
@@ -59,18 +63,14 @@ host.
 
 =item *
 
-C<client-token> - The idempotency token you provided when you launched
-the instance
+C<instance-type> - The instance type size that the Dedicated Host is
+configured to support.
 
 =item *
 
-C<state>- The allocation state of the Dedicated Host (C<available> |
+C<state> - The allocation state of the Dedicated Host (C<available> |
 C<under-assessment> | C<permanent-failure> | C<released> |
 C<released-permanent-failure>).
-
-=item *
-
-C<availability-zone> - The Availability Zone of the host.
 
 =back
 

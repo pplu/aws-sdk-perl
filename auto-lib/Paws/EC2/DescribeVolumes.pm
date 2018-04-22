@@ -75,7 +75,7 @@ attached to.
 =item *
 
 C<attachment.status> - The attachment state (C<attaching> | C<attached>
-| C<detaching> | C<detached>).
+| C<detaching>).
 
 =item *
 

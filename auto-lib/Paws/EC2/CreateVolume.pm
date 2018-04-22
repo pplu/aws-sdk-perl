@@ -74,11 +74,13 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 Iops => Int
 
-Only valid for Provisioned IOPS SSD volumes. The number of I/O
-operations per second (IOPS) to provision for the volume, with a
-maximum ratio of 50 IOPS/GiB.
+The number of I/O operations per second (IOPS) to provision for the
+volume, with a maximum ratio of 50 IOPS/GiB. Range is 100 to 32000 IOPS
+for volumes in most regions. For exceptions, see Amazon EBS Volume
+Types
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
 
-Constraint: Range is 100 to 20000 for Provisioned IOPS SSD volumes
+This parameter is valid only for Provisioned IOPS SSD (io1) volumes.
 
 
 
@@ -156,7 +158,11 @@ The volume type. This can be C<gp2> for General Purpose SSD, C<io1> for
 Provisioned IOPS SSD, C<st1> for Throughput Optimized HDD, C<sc1> for
 Cold HDD, or C<standard> for Magnetic volumes.
 
-Default: C<standard>
+Defaults: If no volume type is specified, the default is C<standard> in
+us-east-1, eu-west-1, eu-central-1, us-west-2, us-west-1, sa-east-1,
+ap-northeast-1, ap-northeast-2, ap-southeast-1, ap-southeast-2,
+ap-south-1, us-gov-west-1, and cn-north-1. In all other regions, EBS
+defaults to C<gp2>.
 
 Valid values are: C<"standard">, C<"io1">, C<"gp2">, C<"sc1">, C<"st1">
 

@@ -105,7 +105,11 @@ Magnetic.
 
 =item *
 
-C<launch.group-id> - The security group for the instance.
+C<launch.group-id> - The ID of the security group for the instance.
+
+=item *
+
+C<launch.group-name> - The name of the security group for the instance.
 
 =item *
 
