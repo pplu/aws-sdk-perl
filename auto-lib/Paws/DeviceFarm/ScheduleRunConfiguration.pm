@@ -8,6 +8,7 @@ package Paws::DeviceFarm::ScheduleRunConfiguration;
   has Location => (is => 'ro', isa => 'Paws::DeviceFarm::Location', request_name => 'location', traits => ['NameInRequest']);
   has NetworkProfileArn => (is => 'ro', isa => 'Str', request_name => 'networkProfileArn', traits => ['NameInRequest']);
   has Radios => (is => 'ro', isa => 'Paws::DeviceFarm::Radios', request_name => 'radios', traits => ['NameInRequest']);
+  has VpceConfigurationArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'vpceConfigurationArns', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DeviceFarm::ScheduleRunConfiguration object:
 
-  $service_obj->Method(Att1 => { AuxiliaryApps => $value, ..., Radios => $value  });
+  $service_obj->Method(Att1 => { AuxiliaryApps => $value, ..., VpceConfigurationArns => $value  });
 
 =head3 Results returned from an API call
 
@@ -87,6 +88,12 @@ app's sandbox for iOS.
 =head2 Radios => L<Paws::DeviceFarm::Radios>
 
   Information about the radio states for the run.
+
+
+=head2 VpceConfigurationArns => ArrayRef[Str|Undef]
+
+  An array of Amazon Resource Names (ARNs) for your VPC endpoint
+configurations.
 
 
 

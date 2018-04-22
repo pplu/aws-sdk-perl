@@ -44,6 +44,11 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::CreateUpload', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateVPCEConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::CreateVPCEConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDevicePool {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::DeleteDevicePool', @_);
@@ -77,6 +82,11 @@ package Paws::DeviceFarm;
   sub DeleteUpload {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::DeleteUpload', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteVPCEConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::DeleteVPCEConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetAccountSettings {
@@ -152,6 +162,11 @@ package Paws::DeviceFarm;
   sub GetUpload {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetUpload', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetVPCEConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetVPCEConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub InstallToRemoteAccessSession {
@@ -249,6 +264,11 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListUploads', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListVPCEConfigurations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListVPCEConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PurchaseOffering {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::PurchaseOffering', @_);
@@ -297,6 +317,11 @@ package Paws::DeviceFarm;
   sub UpdateProject {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::UpdateProject', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateVPCEConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::UpdateVPCEConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -627,7 +652,7 @@ package Paws::DeviceFarm;
   }
 
 
-  sub operations { qw/CreateDevicePool CreateInstanceProfile CreateNetworkProfile CreateProject CreateRemoteAccessSession CreateUpload DeleteDevicePool DeleteInstanceProfile DeleteNetworkProfile DeleteProject DeleteRemoteAccessSession DeleteRun DeleteUpload GetAccountSettings GetDevice GetDeviceInstance GetDevicePool GetDevicePoolCompatibility GetInstanceProfile GetJob GetNetworkProfile GetOfferingStatus GetProject GetRemoteAccessSession GetRun GetSuite GetTest GetUpload InstallToRemoteAccessSession ListArtifacts ListDeviceInstances ListDevicePools ListDevices ListInstanceProfiles ListJobs ListNetworkProfiles ListOfferingPromotions ListOfferings ListOfferingTransactions ListProjects ListRemoteAccessSessions ListRuns ListSamples ListSuites ListTests ListUniqueProblems ListUploads PurchaseOffering RenewOffering ScheduleRun StopRemoteAccessSession StopRun UpdateDeviceInstance UpdateDevicePool UpdateInstanceProfile UpdateNetworkProfile UpdateProject / }
+  sub operations { qw/CreateDevicePool CreateInstanceProfile CreateNetworkProfile CreateProject CreateRemoteAccessSession CreateUpload CreateVPCEConfiguration DeleteDevicePool DeleteInstanceProfile DeleteNetworkProfile DeleteProject DeleteRemoteAccessSession DeleteRun DeleteUpload DeleteVPCEConfiguration GetAccountSettings GetDevice GetDeviceInstance GetDevicePool GetDevicePoolCompatibility GetInstanceProfile GetJob GetNetworkProfile GetOfferingStatus GetProject GetRemoteAccessSession GetRun GetSuite GetTest GetUpload GetVPCEConfiguration InstallToRemoteAccessSession ListArtifacts ListDeviceInstances ListDevicePools ListDevices ListInstanceProfiles ListJobs ListNetworkProfiles ListOfferingPromotions ListOfferings ListOfferingTransactions ListProjects ListRemoteAccessSessions ListRuns ListSamples ListSuites ListTests ListUniqueProblems ListUploads ListVPCEConfigurations PurchaseOffering RenewOffering ScheduleRun StopRemoteAccessSession StopRun UpdateDeviceInstance UpdateDevicePool UpdateInstanceProfile UpdateNetworkProfile UpdateProject UpdateVPCEConfiguration / }
 
 1;
 
@@ -716,6 +741,16 @@ Returns: a L<Paws::DeviceFarm::CreateUploadResult> instance
 Uploads an app or test scripts.
 
 
+=head2 CreateVPCEConfiguration(ServiceDnsName => Str, VpceConfigurationName => Str, VpceServiceName => Str, [VpceConfigurationDescription => Str])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::CreateVPCEConfiguration>
+
+Returns: a L<Paws::DeviceFarm::CreateVPCEConfigurationResult> instance
+
+Creates a configuration record in Device Farm for your Amazon Virtual
+Private Cloud (VPC) endpoint.
+
+
 =head2 DeleteDevicePool(Arn => Str)
 
 Each argument is described in detail in: L<Paws::DeviceFarm::DeleteDevicePool>
@@ -785,6 +820,16 @@ Returns: a L<Paws::DeviceFarm::DeleteUploadResult> instance
 Deletes an upload given the upload ARN.
 
 
+=head2 DeleteVPCEConfiguration(Arn => Str)
+
+Each argument is described in detail in: L<Paws::DeviceFarm::DeleteVPCEConfiguration>
+
+Returns: a L<Paws::DeviceFarm::DeleteVPCEConfigurationResult> instance
+
+Deletes a configuration for your Amazon Virtual Private Cloud (VPC)
+endpoint.
+
+
 =head2 GetAccountSettings()
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetAccountSettings>
@@ -823,7 +868,7 @@ Returns: a L<Paws::DeviceFarm::GetDevicePoolResult> instance
 Gets information about a device pool.
 
 
-=head2 GetDevicePoolCompatibility(DevicePoolArn => Str, [AppArn => Str, Test => L<Paws::DeviceFarm::ScheduleRunTest>, TestType => Str])
+=head2 GetDevicePoolCompatibility(DevicePoolArn => Str, [AppArn => Str, Configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>, Test => L<Paws::DeviceFarm::ScheduleRunTest>, TestType => Str])
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetDevicePoolCompatibility>
 
@@ -926,6 +971,16 @@ Each argument is described in detail in: L<Paws::DeviceFarm::GetUpload>
 Returns: a L<Paws::DeviceFarm::GetUploadResult> instance
 
 Gets information about an upload.
+
+
+=head2 GetVPCEConfiguration(Arn => Str)
+
+Each argument is described in detail in: L<Paws::DeviceFarm::GetVPCEConfiguration>
+
+Returns: a L<Paws::DeviceFarm::GetVPCEConfigurationResult> instance
+
+Returns information about the configuration settings for your Amazon
+Virtual Private Cloud (VPC) endpoint.
 
 
 =head2 InstallToRemoteAccessSession(AppArn => Str, RemoteAccessSessionArn => Str)
@@ -1119,6 +1174,16 @@ Returns: a L<Paws::DeviceFarm::ListUploadsResult> instance
 Gets information about uploads, given an AWS Device Farm project ARN.
 
 
+=head2 ListVPCEConfigurations([MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::ListVPCEConfigurations>
+
+Returns: a L<Paws::DeviceFarm::ListVPCEConfigurationsResult> instance
+
+Returns information about all Amazon Virtual Private Cloud (VPC)
+endpoint configurations in the AWS account.
+
+
 =head2 PurchaseOffering([OfferingId => Str, OfferingPromotionId => Str, Quantity => Int])
 
 Each argument is described in detail in: L<Paws::DeviceFarm::PurchaseOffering>
@@ -1227,6 +1292,16 @@ Returns: a L<Paws::DeviceFarm::UpdateProjectResult> instance
 
 Modifies the specified project name, given the project ARN and a new
 name.
+
+
+=head2 UpdateVPCEConfiguration(Arn => Str, [ServiceDnsName => Str, VpceConfigurationDescription => Str, VpceConfigurationName => Str, VpceServiceName => Str])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::UpdateVPCEConfiguration>
+
+Returns: a L<Paws::DeviceFarm::UpdateVPCEConfigurationResult> instance
+
+Updates information about an existing Amazon Virtual Private Cloud
+(VPC) endpoint configuration.
 
 
 

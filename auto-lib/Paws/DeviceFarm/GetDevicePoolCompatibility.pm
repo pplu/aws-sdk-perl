@@ -2,6 +2,7 @@
 package Paws::DeviceFarm::GetDevicePoolCompatibility;
   use Moose;
   has AppArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'appArn' );
+  has Configuration => (is => 'ro', isa => 'Paws::DeviceFarm::ScheduleRunConfiguration', traits => ['NameInRequest'], request_name => 'configuration' );
   has DevicePoolArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'devicePoolArn' , required => 1);
   has Test => (is => 'ro', isa => 'Paws::DeviceFarm::ScheduleRunTest', traits => ['NameInRequest'], request_name => 'test' );
   has TestType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'testType' );
@@ -39,6 +40,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 AppArn => Str
 
 The ARN of the app that is associated with the specified device pool.
+
+
+
+=head2 Configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>
+
+An object containing information about the settings for a run.
 
 
 
