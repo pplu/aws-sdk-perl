@@ -47,8 +47,8 @@ Placeholder documentation for InputLocation
 
   Uniform Resource Identifier - This should be a path to a file
 accessible to the Live system (eg. a http:// URI) depending on the
-output type. For example, a rtmpEndpoint should have a uri simliar to:
-"rtmp://fmsserver/live".
+output type. For example, a RTMP destination should have a uri simliar
+to: "rtmp://fmsserver/live".
 
 
 =head2 Username => Str

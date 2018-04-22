@@ -72,8 +72,7 @@ write timecodes to the audio elementary stream.
 
   If set to verifyAuthenticity, verify the https certificate chain to a
 trusted Certificate Authority (CA). This will cause https outputs to
-self-signed certificates to fail unless those certificates are manually
-added to the OS trusted keystore.
+self-signed certificates to fail.
 
 
 =head2 ConnectionRetryInterval => Int

@@ -3,6 +3,7 @@ package Paws::MediaLive::OutputSettings;
   has ArchiveOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::ArchiveOutputSettings', request_name => 'archiveOutputSettings', traits => ['NameInRequest']);
   has HlsOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsOutputSettings', request_name => 'hlsOutputSettings', traits => ['NameInRequest']);
   has MsSmoothOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::MsSmoothOutputSettings', request_name => 'msSmoothOutputSettings', traits => ['NameInRequest']);
+  has RtmpOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::RtmpOutputSettings', request_name => 'rtmpOutputSettings', traits => ['NameInRequest']);
   has UdpOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::UdpOutputSettings', request_name => 'udpOutputSettings', traits => ['NameInRequest']);
 1;
 
@@ -50,6 +51,11 @@ Placeholder documentation for OutputSettings
 
 
 =head2 MsSmoothOutputSettings => L<Paws::MediaLive::MsSmoothOutputSettings>
+
+  
+
+
+=head2 RtmpOutputSettings => L<Paws::MediaLive::RtmpOutputSettings>
 
   
 
