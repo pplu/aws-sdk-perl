@@ -6,6 +6,7 @@ package Paws::RDS::ModifyDBCluster;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
+  has EngineVersion => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has NewDBClusterIdentifier => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
@@ -114,6 +115,18 @@ True to enable mapping of AWS Identity and Access Management (IAM)
 accounts to database accounts, and otherwise false.
 
 Default: C<false>
+
+
+
+=head2 EngineVersion => Str
+
+The version number of the database engine to which you want to upgrade.
+Changing this parameter results in an outage. The change is applied
+during the next maintenance window unless the ApplyImmediately
+parameter is set to true.
+
+For a list of valid engine versions, see CreateDBInstance, or call
+DescribeDBEngineVersions.
 
 
 
