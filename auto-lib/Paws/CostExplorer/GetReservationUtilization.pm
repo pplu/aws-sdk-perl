@@ -39,11 +39,65 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Filter => L<Paws::CostExplorer::Expression>
 
-Filters utilization data by using different dimensions.
+Filters utilization data by dimensions. You can filter by the following
+dimensions:
+
+=over
+
+=item *
+
+AZ
+
+=item *
+
+CACHE_ENGINE
+
+=item *
+
+DATABASE_ENGINE
+
+=item *
+
+DEPLOYMENT_OPTION
+
+=item *
+
+INSTANCE_TYPE
+
+=item *
+
+LINKED_ACCOUNT
+
+=item *
+
+OPERATING_SYSTEM
+
+=item *
+
+PLATFORM
+
+=item *
+
+REGION
+
+=item *
+
+SERVICE
+
+=item *
+
+SCOPE
+
+=item *
+
+TENANCY
+
+=back
+
 C<GetReservationUtilization> uses the same C< Expression
 (http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html)
 > object as the other operations, but only C<AND> is supported among
-each dimension, and nesting is supported to only one level deep. If
+each dimension, and nesting is supported up to only one level deep. If
 there are multiple values for a dimension, they are OR'd together.
 
 
@@ -51,9 +105,9 @@ there are multiple values for a dimension, they are OR'd together.
 =head2 Granularity => Str
 
 If C<GroupBy> is set, C<Granularity> can't be set. If C<Granularity>
-isn't set, the response object doesn't include the C<Granularity>,
-either C<MONTHLY> or C<DAILY>. If both C<GroupBy> and C<Granularity>
-aren't set, C<GetReservationUtilization> defaults to C<DAILY>.
+isn't set, the response object doesn't include C<Granularity>, either
+C<MONTHLY> or C<DAILY>. If both C<GroupBy> and C<Granularity> aren't
+set, C<GetReservationUtilization> defaults to C<DAILY>.
 
 Valid values are: C<"DAILY">, C<"MONTHLY">
 
@@ -73,7 +127,7 @@ maximum page size.
 
 =head2 B<REQUIRED> TimePeriod => L<Paws::CostExplorer::DateInterval>
 
-Sets the start and end dates for retrieving reserve instance (RI)
+Sets the start and end dates for retrieving Reserved Instance (RI)
 utilization. The start date is inclusive, but the end date is
 exclusive. For example, if C<start> is C<2017-01-01> and C<end> is
 C<2017-05-01>, then the cost and usage data is retrieved from

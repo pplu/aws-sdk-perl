@@ -1,6 +1,7 @@
 package Paws::CostExplorer::InstanceDetails;
   use Moose;
   has EC2InstanceDetails => (is => 'ro', isa => 'Paws::CostExplorer::EC2InstanceDetails');
+  has RDSInstanceDetails => (is => 'ro', isa => 'Paws::CostExplorer::RDSInstanceDetails');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CostExplorer::InstanceDetails object:
 
-  $service_obj->Method(Att1 => { EC2InstanceDetails => $value, ..., EC2InstanceDetails => $value  });
+  $service_obj->Method(Att1 => { EC2InstanceDetails => $value, ..., RDSInstanceDetails => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,6 +40,11 @@ Details about the instances that AWS recommends that you purchase.
 =head2 EC2InstanceDetails => L<Paws::CostExplorer::EC2InstanceDetails>
 
   The EC2 instances that AWS recommends that you purchase.
+
+
+=head2 RDSInstanceDetails => L<Paws::CostExplorer::RDSInstanceDetails>
+
+  The RDS instances that AWS recommends that you purchase.
 
 
 

@@ -78,8 +78,8 @@ Paws::CostExplorer - Perl Interface to AWS AWS Cost Explorer Service
 The Cost Explorer API allows you to programmatically query your cost
 and usage data. You can query for aggregated data such as total monthly
 costs or total daily usage. You can also query for granular data, such
-as the number of daily write operations for DynamoDB database tables in
-your production environment.
+as the number of daily write operations for Amazon DynamoDB database
+tables in your production environment.
 
 Service Endpoint
 
@@ -93,6 +93,9 @@ https://ce.us-east-1.amazonaws.com
 
 =back
 
+For information about costs associated with the Cost Explorer API, see
+AWS Cost Management Pricing
+(https://aws.amazon.com/aws-cost-management/pricing/).
 
 =head1 METHODS
 
@@ -119,7 +122,7 @@ Each argument is described in detail in: L<Paws::CostExplorer::GetDimensionValue
 
 Returns: a L<Paws::CostExplorer::GetDimensionValuesResponse> instance
 
-Retrieves all available filter values for a specific filter over a
+Retrieves all available filter values for a specified filter over a
 period of time. You can search the dimension values for an arbitrary
 string.
 
@@ -145,6 +148,18 @@ AZ
 
 =item *
 
+CACHE_ENGINE
+
+=item *
+
+DATABASE_ENGINE
+
+=item *
+
+DEPLOYMENT_OPTION
+
+=item *
+
 INSTANCE_TYPE
 
 =item *
@@ -153,11 +168,23 @@ LINKED_ACCOUNT
 
 =item *
 
+OPERATING_SYSTEM
+
+=item *
+
 PLATFORM
 
 =item *
 
 REGION
+
+=item *
+
+SERVICE
+
+=item *
+
+TAG
 
 =item *
 
@@ -203,11 +230,11 @@ Each argument is described in detail in: L<Paws::CostExplorer::GetReservationUti
 
 Returns: a L<Paws::CostExplorer::GetReservationUtilizationResponse> instance
 
-You can retrieve the reservation utilization for your account. Master
-accounts in an organization in AWS Organizations have access to their
-associated member accounts. You can filter data by dimensions in a time
-period. You can use C<GetDimensionValues> to determine the possible
-dimension values. Currently, you can group only by C<SUBSCRIPTION_ID>.
+Retrieves the reservation utilization for your account. Master accounts
+in an organization have access to member accounts. You can filter data
+by dimensions in a time period. You can use C<GetDimensionValues> to
+determine the possible dimension values. Currently, you can group only
+by C<SUBSCRIPTION_ID>.
 
 
 =head2 GetTags(TimePeriod => L<Paws::CostExplorer::DateInterval>, [NextPageToken => Str, SearchString => Str, TagKey => Str])
@@ -216,8 +243,8 @@ Each argument is described in detail in: L<Paws::CostExplorer::GetTags>
 
 Returns: a L<Paws::CostExplorer::GetTagsResponse> instance
 
-You can query for available tag keys and tag values for a specified
-period. You can search the tag values for an arbitrary string.
+Queries for available tag keys and tag values for a specified period.
+You can search the tag values for an arbitrary string.
 
 
 

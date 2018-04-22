@@ -22,7 +22,7 @@ Paws::CostExplorer::GetDimensionValuesResponse
 The filters that you used to filter your request. Some dimensions are
 available only for a specific context:
 
-If you set the context to C<CostAndUsage>, you can use the following
+If you set the context to C<COST_AND_USAGE>, you can use the following
 dimensions for searching:
 
 =over
@@ -33,8 +33,17 @@ AZ - The Availability Zone. An example is C<us-east-1a>.
 
 =item *
 
-INSTANCE_TYPE - The type of instance. An example is an EC2
-C<m4.xlarge>.
+DATABASE_ENGINE - The Amazon Relational Database Service database.
+Examples are Aurora or MySQL.
+
+=item *
+
+INSTANCE_TYPE - The type of EC2 instance. An example is C<m4.xlarge>.
+
+=item *
+
+LEGAL_ENTITY_NAME - The name of the organization that sells you AWS
+services, such as Amazon Web Services.
 
 =item *
 
@@ -44,8 +53,16 @@ the member account.
 
 =item *
 
+OPERATING_SYSTEM - The operating system. Examples are Windows or Linux.
+
+=item *
+
 OPERATION - The action performed. Examples include C<RunInstance> and
 C<CreateBucket>.
+
+=item *
+
+PLATFORM - The EC2 operating system. Examples are Windows or Linux.
 
 =item *
 
@@ -55,13 +72,13 @@ Reserved Instances.
 
 =item *
 
-SERVICE - The AWS service such as DynamoDB.
+SERVICE - The AWS service such as Amazon DynamoDB.
 
 =item *
 
-USAGE_TYPE - The type of usage. An example is C<DataTransfer-In-Bytes>.
+USAGE_TYPE - The type of usage. An example is DataTransfer-In-Bytes.
 The response for the C<GetDimensionValues> operation includes a unit
-attribute, examples of which include GB and Hrs.
+attribute. Examples include GB and Hrs.
 
 =item *
 
@@ -87,8 +104,17 @@ AZ - The Availability Zone. An example is C<us-east-1a>.
 
 =item *
 
-INSTANCE_TYPE - The type of instance. An example is an EC2
-C<m4.xlarge>.
+CACHE_ENGINE - The Amazon ElastiCache operating system. Examples are
+Windows or Linux.
+
+=item *
+
+DEPLOYMENT_OPTION - The scope of Amazon Relational Database Service
+deployments. Valid values are C<SingleAZ> and C<MultiAZ>.
+
+=item *
+
+INSTANCE_TYPE - The type of EC2 instance. An example is C<m4.xlarge>.
 
 =item *
 
@@ -98,9 +124,7 @@ the member account.
 
 =item *
 
-PLATFORM - The specific combination of operating system, license model,
-and software on an instance. For example, a Windows instance with SQL
-Server Web and no license, or a Red Hat Enterprise Linux instance.
+PLATFORM - The EC2 operating system. Examples are Windows or Linux.
 
 =item *
 
@@ -108,8 +132,13 @@ REGION - The AWS Region.
 
 =item *
 
-SCOPE - The scope of a Reserved Instance (RI). Values are regional or a
-single Availability Zone.
+SCOPE (Utilization only) - The scope of a Reserved Instance (RI).
+Values are regional or a single Availability Zone.
+
+=item *
+
+TAG (Coverage only) - The tags that are associated with a Reserved
+Instance (RI).
 
 =item *
 

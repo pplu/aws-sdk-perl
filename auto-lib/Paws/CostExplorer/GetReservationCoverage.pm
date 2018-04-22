@@ -50,6 +50,18 @@ AZ
 
 =item *
 
+CACHE_ENGINE
+
+=item *
+
+DATABASE_ENGINE
+
+=item *
+
+DEPLOYMENT_OPTION
+
+=item *
+
 INSTANCE_TYPE
 
 =item *
@@ -58,11 +70,23 @@ LINKED_ACCOUNT
 
 =item *
 
+OPERATING_SYSTEM
+
+=item *
+
 PLATFORM
 
 =item *
 
 REGION
+
+=item *
+
+SERVICE
+
+=item *
+
+TAG
 
 =item *
 
@@ -84,8 +108,8 @@ The granularity of the AWS cost data for the reservation. Valid values
 are C<MONTHLY> and C<DAILY>.
 
 If C<GroupBy> is set, C<Granularity> can't be set. If C<Granularity>
-isn't set, the response object doesn't include the C<Granularity>,
-either C<MONTHLY> or C<DAILY>.
+isn't set, the response object doesn't include C<Granularity>, either
+C<MONTHLY> or C<DAILY>.
 
 Valid values are: C<"DAILY">, C<"MONTHLY">
 
@@ -101,6 +125,18 @@ AZ
 
 =item *
 
+CACHE_ENGINE
+
+=item *
+
+DATABASE_ENGINE
+
+=item *
+
+DEPLOYMENT_OPTION
+
+=item *
+
 INSTANCE_TYPE
 
 =item *
@@ -109,11 +145,19 @@ LINKED_ACCOUNT
 
 =item *
 
+OPERATING_SYSTEM
+
+=item *
+
 PLATFORM
 
 =item *
 
 REGION
+
+=item *
+
+TAG
 
 =item *
 

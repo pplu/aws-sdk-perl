@@ -90,7 +90,8 @@ The specific service that you want recommendations for.
 
 =head2 ServiceSpecification => L<Paws::CostExplorer::ServiceSpecification>
 
-The specific service, such as EC2, that you want recommendations for.
+The hardware specifications for the service instances that you want
+recommendations for, such as standard or convertible EC2 instances.
 
 
 
