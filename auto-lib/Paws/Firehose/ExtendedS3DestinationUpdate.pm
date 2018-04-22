@@ -75,12 +75,12 @@ no encryption.
 =head2 Prefix => Str
 
   The "YYYY/MM/DD/HH" time format prefix is automatically used for
-delivered S3 files. You can specify an extra prefix to be added in
-front of the time format prefix. If the prefix ends with a slash, it
+delivered Amazon S3 files. You can specify an extra prefix to be added
+in front of the time format prefix. If the prefix ends with a slash, it
 appears as a folder in the S3 bucket. For more information, see Amazon
 S3 Object Name Format
-(http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html) in
-the I<Amazon Kinesis Firehose Developer Guide>.
+(http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#s3-object-name)
+in the I<Amazon Kinesis Data Firehose Developer Guide>.
 
 
 =head2 ProcessingConfiguration => L<Paws::Firehose::ProcessingConfiguration>
@@ -90,7 +90,7 @@ the I<Amazon Kinesis Firehose Developer Guide>.
 
 =head2 RoleARN => Str
 
-  The ARN of the AWS credentials.
+  The Amazon Resource Name (ARN) of the AWS credentials.
 
 
 =head2 S3BackupMode => Str

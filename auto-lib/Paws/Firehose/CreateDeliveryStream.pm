@@ -43,8 +43,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> DeliveryStreamName => Str
 
 The name of the delivery stream. This name must be unique per AWS
-account in the same region. If the delivery streams are in different
-accounts or different regions, you can have multiple delivery streams
+account in the same Region. If the delivery streams are in different
+accounts or different Regions, you can have multiple delivery streams
 with the same name.
 
 
@@ -63,8 +63,8 @@ directly.
 
 =item *
 
-C<KinesisStreamAsSource>: The delivery stream uses a Kinesis stream as
-a source.
+C<KinesisStreamAsSource>: The delivery stream uses a Kinesis data
+stream as a source.
 
 =back
 
@@ -85,9 +85,10 @@ The destination in Amazon S3. You can specify only one destination.
 
 =head2 KinesisStreamSourceConfiguration => L<Paws::Firehose::KinesisStreamSourceConfiguration>
 
-When a Kinesis stream is used as the source for the delivery stream, a
-KinesisStreamSourceConfiguration containing the Kinesis stream ARN and
-the role ARN for the source stream.
+When a Kinesis data stream is used as the source for the delivery
+stream, a KinesisStreamSourceConfiguration containing the Kinesis data
+stream Amazon Resource Name (ARN) and the role ARN for the source
+stream.
 
 
 

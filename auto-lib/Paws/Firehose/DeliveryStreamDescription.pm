@@ -78,8 +78,8 @@ directly.
 
 =item *
 
-C<KinesisStreamAsSource>: The delivery stream uses a Kinesis stream as
-a source.
+C<KinesisStreamAsSource>: The delivery stream uses a Kinesis data
+stream as a source.
 
 =back
 
@@ -103,7 +103,7 @@ a source.
 =head2 Source => L<Paws::Firehose::SourceDescription>
 
   If the C<DeliveryStreamType> parameter is C<KinesisStreamAsSource>, a
-SourceDescription object describing the source Kinesis stream.
+SourceDescription object describing the source Kinesis data stream.
 
 
 =head2 B<REQUIRED> VersionId => Str

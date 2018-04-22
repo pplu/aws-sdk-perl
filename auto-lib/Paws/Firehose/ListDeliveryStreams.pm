@@ -48,8 +48,8 @@ directly.
 
 =item *
 
-C<KinesisStreamAsSource>: The delivery stream uses a Kinesis stream as
-a source.
+C<KinesisStreamAsSource>: The delivery stream uses a Kinesis data
+stream as a source.
 
 =back
 

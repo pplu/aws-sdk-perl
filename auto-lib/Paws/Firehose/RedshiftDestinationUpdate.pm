@@ -73,13 +73,13 @@ Describes an update for a destination in Amazon Redshift.
 
 =head2 RetryOptions => L<Paws::Firehose::RedshiftRetryOptions>
 
-  The retry behavior in case Kinesis Firehose is unable to deliver
+  The retry behavior in case Kinesis Data Firehose is unable to deliver
 documents to Amazon Redshift. Default value is 3600 (60 minutes).
 
 
 =head2 RoleARN => Str
 
-  The ARN of the AWS credentials.
+  The Amazon Resource Name (ARN) of the AWS credentials.
 
 
 =head2 S3BackupMode => Str
@@ -97,7 +97,7 @@ documents to Amazon Redshift. Default value is 3600 (60 minutes).
   The Amazon S3 destination.
 
 The compression formats C<SNAPPY> or C<ZIP> cannot be specified in
-B<RedshiftDestinationUpdate.S3Update> because the Amazon Redshift
+C<RedshiftDestinationUpdate.S3Update> because the Amazon Redshift
 C<COPY> operation that reads from the S3 bucket doesn't support these
 compression formats.
 

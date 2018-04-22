@@ -33,26 +33,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::K
 
 =head1 DESCRIPTION
 
-Details about a Kinesis stream used as the source for a Kinesis
-Firehose delivery stream.
+Details about a Kinesis data stream used as the source for a Kinesis
+Data Firehose delivery stream.
 
 =head1 ATTRIBUTES
 
 
 =head2 DeliveryStartTimestamp => Str
 
-  Kinesis Firehose starts retrieving records from the Kinesis stream
-starting with this time stamp.
+  Kinesis Data Firehose starts retrieving records from the Kinesis data
+stream starting with this time stamp.
 
 
 =head2 KinesisStreamARN => Str
 
-  The ARN of the source Kinesis stream.
+  The Amazon Resource Name (ARN) of the source Kinesis data stream.
 
 
 =head2 RoleARN => Str
 
-  The ARN of the role used by the source Kinesis stream.
+  The ARN of the role used by the source Kinesis data stream.
 
 
 

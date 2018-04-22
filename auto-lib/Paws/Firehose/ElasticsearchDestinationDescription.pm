@@ -83,7 +83,7 @@ The destination description in Amazon ES.
 
 =head2 RoleARN => Str
 
-  The ARN of the AWS credentials.
+  The Amazon Resource Name (ARN) of the AWS credentials.
 
 
 =head2 S3BackupMode => Str

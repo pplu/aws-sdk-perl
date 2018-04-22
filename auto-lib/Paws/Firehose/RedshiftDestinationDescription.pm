@@ -67,13 +67,13 @@ Describes a destination in Amazon Redshift.
 
 =head2 RetryOptions => L<Paws::Firehose::RedshiftRetryOptions>
 
-  The retry behavior in case Kinesis Firehose is unable to deliver
+  The retry behavior in case Kinesis Data Firehose is unable to deliver
 documents to Amazon Redshift. Default value is 3600 (60 minutes).
 
 
 =head2 B<REQUIRED> RoleARN => Str
 
-  The ARN of the AWS credentials.
+  The Amazon Resource Name (ARN) of the AWS credentials.
 
 
 =head2 S3BackupDescription => L<Paws::Firehose::S3DestinationDescription>

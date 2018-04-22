@@ -51,21 +51,21 @@ Describes a destination in Splunk.
 
 =head2 HECAcknowledgmentTimeoutInSeconds => Int
 
-  The amount of time that Kinesis Firehose waits to receive an
+  The amount of time that Kinesis Data Firehose waits to receive an
 acknowledgment from Splunk after it sends it data. At the end of the
-timeout period Kinesis Firehose either tries to send the data again or
-considers it an error, based on your retry settings.
+timeout period, Kinesis Data Firehose either tries to send the data
+again or considers it an error, based on your retry settings.
 
 
 =head2 HECEndpoint => Str
 
-  The HTTP Event Collector (HEC) endpoint to which Kinesis Firehose sends
-your data.
+  The HTTP Event Collector (HEC) endpoint to which Kinesis Data Firehose
+sends your data.
 
 
 =head2 HECEndpointType => Str
 
-  This type can be either "Raw" or "Event".
+  This type can be either "Raw" or "Event."
 
 
 =head2 HECToken => Str
@@ -81,19 +81,19 @@ new HEC endpoint.
 
 =head2 RetryOptions => L<Paws::Firehose::SplunkRetryOptions>
 
-  The retry behavior in case Kinesis Firehose is unable to deliver data
-to Splunk or if it doesn't receive an acknowledgment of receipt from
-Splunk.
+  The retry behavior in case Kinesis Data Firehose is unable to deliver
+data to Splunk or if it doesn't receive an acknowledgment of receipt
+from Splunk.
 
 
 =head2 S3BackupMode => Str
 
   Defines how documents should be delivered to Amazon S3. When set to
-C<FailedDocumentsOnly>, Kinesis Firehose writes any data that could not
-be indexed to the configured Amazon S3 destination. When set to
-C<AllDocuments>, Kinesis Firehose delivers all incoming records to
-Amazon S3, and also writes failed documents to Amazon S3. Default value
-is C<FailedDocumentsOnly>.
+C<FailedDocumentsOnly>, Kinesis Data Firehose writes any data that
+could not be indexed to the configured Amazon S3 destination. When set
+to C<AllDocuments>, Kinesis Data Firehose delivers all incoming records
+to Amazon S3, and also writes failed documents to Amazon S3. Default
+value is C<FailedDocumentsOnly>.
 
 
 =head2 S3DestinationDescription => L<Paws::Firehose::S3DestinationDescription>
