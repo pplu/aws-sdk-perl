@@ -42,7 +42,7 @@ that's specific to the operation. If additional items exist beyond the
 maximum you specify, the C<NextToken> response element is present and
 has a value (isn't null). Include that value as the C<NextToken>
 request parameter in the next call to the operation to get the next
-part of the results. Note that AWS Secrets Manager might return fewer
+part of the results. Note that Secrets Manager might return fewer
 results than the maximum even when there are more results available.
 You should check C<NextToken> after every operation to ensure that you
 receive all of the results.

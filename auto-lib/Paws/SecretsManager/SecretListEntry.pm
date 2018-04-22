@@ -54,7 +54,7 @@ get those values, use the GetSecretValue operation.
 
   The Amazon Resource Name (ARN) of the secret.
 
-For more information about ARNs in AWS Secrets Manager, see Policy
+For more information about ARNs in Secrets Manager, see Policy
 Resources
 (http://docs.aws.amazon.com/http:/docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#iam-resources)
 in the I<AWS Secrets Manager User Guide>.
@@ -77,9 +77,9 @@ C<RecoveryWindowInDays> parameter of the DeleteSecret operation.
 
   The ARN or alias of the AWS KMS customer master key (CMK) that's used
 to encrypt the C<SecretString> and C<SecretBinary> fields in each
-version of the secret. If you don't provide a key, then AWS Secrets
-Manager defaults to encrypting the secret fields with the default KMS
-CMK (the one named C<awssecretsmanager>) for this account.
+version of the secret. If you don't provide a key, then Secrets Manager
+defaults to encrypting the secret fields with the default KMS CMK (the
+one named C<awssecretsmanager>) for this account.
 
 
 =head2 LastAccessedDate => Str
@@ -115,9 +115,9 @@ secret.
 
 =head2 RotationLambdaARN => Str
 
-  The ARN of an AWS Lambda function that's invoked by AWS Secrets Manager
-to rotate and expire the secret either automatically per the schedule
-or manually by a call to RotateSecret.
+  The ARN of an AWS Lambda function that's invoked by Secrets Manager to
+rotate and expire the secret either automatically per the schedule or
+manually by a call to RotateSecret.
 
 
 =head2 RotationRules => L<Paws::SecretsManager::RotationRulesType>

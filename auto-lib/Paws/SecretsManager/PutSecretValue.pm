@@ -45,10 +45,9 @@ secret.
 If you use the AWS CLI or one of the AWS SDK to call this operation,
 then you can leave this parameter empty. The CLI or SDK generates a
 random UUID for you and includes that in the request. If you don't use
-the SDK and instead generate a raw HTTP request to the AWS Secrets
-Manager service endpoint, then you must generate a
-C<ClientRequestToken> yourself for new versions and include that value
-in the request.
+the SDK and instead generate a raw HTTP request to the Secrets Manager
+service endpoint, then you must generate a C<ClientRequestToken>
+yourself for new versions and include that value in the request.
 
 This value helps ensure idempotency. Secrets Manager uses this value to
 prevent the accidental creation of duplicate versions if there are
@@ -104,10 +103,6 @@ Specifies the secret to which you want to add a new version. You can
 specify either the Amazon Resource Name (ARN) or the friendly name of
 the secret. The secret must already exist.
 
-The secret name can consist of uppercase letters, lowercase letters,
-digits, and any of the following characters: /_+=.@- Spaces are not
-permitted.
-
 
 
 =head2 SecretString => Str
@@ -142,8 +137,8 @@ you specify a staging label that's already associated with a different
 version of the same secret then that staging label is automatically
 removed from the other version and attached to this version.
 
-If you do not specify a value for C<VersionStages> then AWS Secrets
-Manager automatically moves the staging label C<AWSCURRENT> to this new
+If you do not specify a value for C<VersionStages> then Secrets Manager
+automatically moves the staging label C<AWSCURRENT> to this new
 version.
 
 

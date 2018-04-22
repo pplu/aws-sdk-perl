@@ -49,9 +49,9 @@ If you use the AWS CLI or one of the AWS SDK to call this operation,
 then you can leave this parameter empty. The CLI or SDK generates a
 random UUID for you and includes as the value for this parameter in the
 request. If you don't use the SDK and instead generate a raw HTTP
-request to the AWS Secrets Manager service endpoint, then you must
-generate a C<ClientRequestToken> yourself for the new version and
-include that value in the request.
+request to the Secrets Manager service endpoint, then you must generate
+a C<ClientRequestToken> yourself for the new version and include that
+value in the request.
 
 This value helps ensure idempotency. Secrets Manager uses this value to
 prevent the accidental creation of duplicate versions if there are
@@ -100,7 +100,7 @@ values in the versions stored in this secret.
 
 If you don't specify this value, then Secrets Manager defaults to using
 the AWS account's default CMK (the one named C<aws/secretsmanager>). If
-a KMS CMK with that name doesn't yet exist, then AWS Secrets Manager
+a KMS CMK with that name doesn't yet exist, then Secrets Manager
 creates it for you automatically the first time it needs to encrypt a
 version's C<SecretString> or C<SecretBinary> fields.
 
@@ -113,9 +113,7 @@ create a custom CMK and specify the ARN in this field.
 
 =head2 B<REQUIRED> Name => Str
 
-Specifies the friendly name of the new secret. The secret name can
-consist of uppercase letters, lowercase letters, digits, and any of the
-following characters: /_+=.@- Spaces are not permitted.
+Specifies the friendly name of the new secret.
 
 
 
@@ -182,8 +180,8 @@ tags, you must use UntagResource.
 
 =item *
 
-AWS Secrets Manager tag key names are case sensitive. A tag with the
-key "ABC" is a different tag from one with key "abc".
+Secrets Manager tag key names are case sensitive. A tag with the key
+"ABC" is a different tag from one with key "abc".
 
 =item *
 

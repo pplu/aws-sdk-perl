@@ -47,10 +47,9 @@ ensure idempotency.
 If you use the AWS CLI or one of the AWS SDK to call this operation,
 then you can leave this parameter empty. The CLI or SDK generates a
 random UUID for you and includes that in the request. If you don't use
-the SDK and instead generate a raw HTTP request to the AWS Secrets
-Manager service endpoint, then you must generate a
-C<ClientRequestToken> yourself for new versions and include that value
-in the request.
+the SDK and instead generate a raw HTTP request to the Secrets Manager
+service endpoint, then you must generate a C<ClientRequestToken>
+yourself for new versions and include that value in the request.
 
 You typically only need to interact with this value if you implement
 your own retry logic and want to ensure that a given secret is not
@@ -102,9 +101,9 @@ secret.
 
 If you don't specify this value, then Secrets Manager defaults to using
 the default CMK in the account (the one named C<aws/secretsmanager>).
-If a KMS CMK with that name doesn't exist, then AWS Secrets Manager
-creates it for you automatically the first time it needs to encrypt a
-version's C<Plaintext> or C<PlaintextString> fields.
+If a KMS CMK with that name doesn't exist, then Secrets Manager creates
+it for you automatically the first time it needs to encrypt a version's
+C<Plaintext> or C<PlaintextString> fields.
 
 You can only use the account's default CMK to encrypt and decrypt if
 you call this operation using credentials from the same account that

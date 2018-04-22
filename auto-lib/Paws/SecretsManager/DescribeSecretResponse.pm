@@ -51,9 +51,9 @@ The user-provided description of the secret.
 
 The ARN or alias of the AWS KMS customer master key (CMK) that's used
 to encrypt the C<SecretString> and C<SecretBinary> fields in each
-version of the secret. If you don't provide a key, then AWS Secrets
-Manager defaults to encrypting the secret fields with the default KMS
-CMK (the one named C<awssecretsmanager>) for this account.
+version of the secret. If you don't provide a key, then Secrets Manager
+defaults to encrypting the secret fields with the default KMS CMK (the
+one named C<awssecretsmanager>) for this account.
 
 
 =head2 LastAccessedDate => Str
@@ -89,7 +89,7 @@ disable rotation, use CancelRotateSecret.
 
 =head2 RotationLambdaARN => Str
 
-The ARN of a Lambda function that's invoked by AWS Secrets Manager to
+The ARN of a Lambda function that's invoked by Secrets Manager to
 rotate the secret either automatically per the schedule or manually by
 a call to C<RotateSecret>.
 

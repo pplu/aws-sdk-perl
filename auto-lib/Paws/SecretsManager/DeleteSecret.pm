@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 RecoveryWindowInDays => Int
 
-(Optional) Specifies the number of days that AWS Secrets Manager waits
+(Optional) Specifies the number of days that Secrets Manager waits
 before it can delete the secret.
 
 This value can range from 7 to 30 days. The default value is 30.

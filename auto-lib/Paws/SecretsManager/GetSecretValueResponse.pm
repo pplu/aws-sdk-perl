@@ -62,9 +62,9 @@ Lambda rotation function knows how to parse.
 
 If you store custom information in the secret by using the
 CreateSecret, UpdateSecret, or PutSecretValue API operations instead of
-the AWS Secrets Manager console, or by using the B<Other secret type>
-in the console, then you must code your Lambda rotation function to
-parse and interpret those values.
+the Secrets Manager console, or by using the B<Other secret type> in
+the console, then you must code your Lambda rotation function to parse
+and interpret those values.
 
 
 =head2 VersionId => Str

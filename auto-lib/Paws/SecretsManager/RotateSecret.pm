@@ -45,9 +45,9 @@ If you use the AWS CLI or one of the AWS SDK to call this operation,
 then you can leave this parameter empty. The CLI or SDK generates a
 random UUID for you and includes that in the request for this
 parameter. If you don't use the SDK and instead generate a raw HTTP
-request to the AWS Secrets Manager service endpoint, then you must
-generate a C<ClientRequestToken> yourself for new versions and include
-that value in the request.
+request to the Secrets Manager service endpoint, then you must generate
+a C<ClientRequestToken> yourself for new versions and include that
+value in the request.
 
 You only need to specify your own value if you are implementing your
 own retry logic and want to ensure that a given secret is not created

@@ -21,7 +21,7 @@ Paws::SecretsManager::ListSecretVersionIdsResponse
 
 The Amazon Resource Name (ARN) for the secret.
 
-AWS Secrets Manager automatically adds several random characters to the
+Secrets Manager automatically adds several random characters to the
 name at the end of the ARN when you initially create a secret. This
 affects only the ARN and not the actual friendly name. This ensures
 that if you create a new secret with the same name as an old secret
