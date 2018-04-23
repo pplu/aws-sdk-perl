@@ -6,6 +6,7 @@ package Paws::IoT::Action;
   has DynamoDBv2 => (is => 'ro', isa => 'Paws::IoT::DynamoDBv2Action', request_name => 'dynamoDBv2', traits => ['NameInRequest']);
   has Elasticsearch => (is => 'ro', isa => 'Paws::IoT::ElasticsearchAction', request_name => 'elasticsearch', traits => ['NameInRequest']);
   has Firehose => (is => 'ro', isa => 'Paws::IoT::FirehoseAction', request_name => 'firehose', traits => ['NameInRequest']);
+  has IotAnalytics => (is => 'ro', isa => 'Paws::IoT::IotAnalyticsAction', request_name => 'iotAnalytics', traits => ['NameInRequest']);
   has Kinesis => (is => 'ro', isa => 'Paws::IoT::KinesisAction', request_name => 'kinesis', traits => ['NameInRequest']);
   has Lambda => (is => 'ro', isa => 'Paws::IoT::LambdaAction', request_name => 'lambda', traits => ['NameInRequest']);
   has Republish => (is => 'ro', isa => 'Paws::IoT::RepublishAction', request_name => 'republish', traits => ['NameInRequest']);
@@ -78,6 +79,11 @@ payload into a separate DynamoDB column.
 =head2 Firehose => L<Paws::IoT::FirehoseAction>
 
   Write to an Amazon Kinesis Firehose stream.
+
+
+=head2 IotAnalytics => L<Paws::IoT::IotAnalyticsAction>
+
+  Sends message data to an AWS IoT Analytics channel.
 
 
 =head2 Kinesis => L<Paws::IoT::KinesisAction>

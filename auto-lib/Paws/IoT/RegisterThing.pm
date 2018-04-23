@@ -37,13 +37,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Parameters => L<Paws::IoT::Parameters>
 
-The parameters for provisioning a thing.
+The parameters for provisioning a thing. See Programmatic Provisioning
+(http://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html)
+for more information.
 
 
 
 =head2 B<REQUIRED> TemplateBody => Str
 
-The provisioning template.
+The provisioning template. See Programmatic Provisioning
+(http://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html)
+for more information.
 
 
 
