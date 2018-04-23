@@ -7,6 +7,7 @@ package Paws::AutoScalingPlans::ScalingPlan;
   has ScalingPlanVersion => (is => 'ro', isa => 'Int', required => 1);
   has StatusCode => (is => 'ro', isa => 'Str', required => 1);
   has StatusMessage => (is => 'ro', isa => 'Str');
+  has StatusStartTime => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AutoScalingPlans::ScalingPlan object:
 
-  $service_obj->Method(Att1 => { ApplicationSource => $value, ..., StatusMessage => $value  });
+  $service_obj->Method(Att1 => { ApplicationSource => $value, ..., StatusStartTime => $value  });
 
 =head3 Results returned from an API call
 
@@ -105,6 +106,11 @@ C<DeletionFailed> - The scaling plan could not be deleted.
 =head2 StatusMessage => Str
 
   A simple message about the current status of the scaling plan.
+
+
+=head2 StatusStartTime => Str
+
+  The Unix timestamp when the scaling plan entered the current status.
 
 
 

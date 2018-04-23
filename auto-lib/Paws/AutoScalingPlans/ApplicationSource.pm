@@ -1,6 +1,7 @@
 package Paws::AutoScalingPlans::ApplicationSource;
   use Moose;
   has CloudFormationStackARN => (is => 'ro', isa => 'Str');
+  has TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::AutoScalingPlans::TagFilter]');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AutoScalingPlans::ApplicationSource object:
 
-  $service_obj->Method(Att1 => { CloudFormationStackARN => $value, ..., CloudFormationStackARN => $value  });
+  $service_obj->Method(Att1 => { CloudFormationStackARN => $value, ..., TagFilters => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,6 +40,11 @@ Represents an application source.
 =head2 CloudFormationStackARN => Str
 
   The Amazon Resource Name (ARN) of a CloudFormation stack.
+
+
+=head2 TagFilters => ArrayRef[L<Paws::AutoScalingPlans::TagFilter>]
+
+  A set of tags (up to 50).
 
 
 
