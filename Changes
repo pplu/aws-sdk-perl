@@ -27,6 +27,7 @@
  - New API: ACMCPA
  - New API: FMS
  - New API: SecretsManager
+ - New API: IoTAnalytics
  - API update: IoT
  - API update: Shield
  - API update: Rekognition

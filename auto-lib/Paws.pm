@@ -380,6 +380,8 @@ L<Paws::Inspector>
 
 L<Paws::IoT>
 
+L<Paws::IoTAnalytics>
+
 L<Paws::IoTData>
 
 L<Paws::IoTJobsData>
