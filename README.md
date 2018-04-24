@@ -334,3 +334,5 @@ SeptamusNonovant for fixing paginators in non-callback mode
 gadgetjunkie for contributing the ECS credential provider
 
 mla for contributing a fix to correct dependencies
+
+castaway for contributing to fixing documentation problems
