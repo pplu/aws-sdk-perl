@@ -21,7 +21,7 @@ Paws::Pinpoint::GetImportJob - Arguments for method GetImportJob on L<Paws::Pinp
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetImportJob on the 
-Amazon Pinpoint service. Use the attributes of this class
+L<Amazon Pinpoint|Paws::Pinpoint> service. Use the attributes of this class
 as arguments to method GetImportJob.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetImportJob.

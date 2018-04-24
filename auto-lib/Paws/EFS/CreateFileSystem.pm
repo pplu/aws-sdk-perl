@@ -23,7 +23,7 @@ Paws::EFS::CreateFileSystem - Arguments for method CreateFileSystem on L<Paws::E
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateFileSystem on the 
-Amazon Elastic File System service. Use the attributes of this class
+L<Amazon Elastic File System|Paws::EFS> service. Use the attributes of this class
 as arguments to method CreateFileSystem.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateFileSystem.

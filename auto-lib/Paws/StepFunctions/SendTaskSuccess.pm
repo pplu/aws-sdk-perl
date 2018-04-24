@@ -20,7 +20,7 @@ Paws::StepFunctions::SendTaskSuccess - Arguments for method SendTaskSuccess on L
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method SendTaskSuccess on the 
-AWS Step Functions service. Use the attributes of this class
+L<AWS Step Functions|Paws::StepFunctions> service. Use the attributes of this class
 as arguments to method SendTaskSuccess.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SendTaskSuccess.

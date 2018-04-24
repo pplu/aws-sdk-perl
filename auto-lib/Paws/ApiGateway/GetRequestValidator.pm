@@ -21,7 +21,7 @@ Paws::ApiGateway::GetRequestValidator - Arguments for method GetRequestValidator
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetRequestValidator on the 
-Amazon API Gateway service. Use the attributes of this class
+L<Amazon API Gateway|Paws::ApiGateway> service. Use the attributes of this class
 as arguments to method GetRequestValidator.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetRequestValidator.

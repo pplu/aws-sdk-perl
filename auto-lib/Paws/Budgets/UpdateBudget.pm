@@ -20,7 +20,7 @@ Paws::Budgets::UpdateBudget - Arguments for method UpdateBudget on L<Paws::Budge
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UpdateBudget on the 
-AWS Budgets service. Use the attributes of this class
+L<AWS Budgets|Paws::Budgets> service. Use the attributes of this class
 as arguments to method UpdateBudget.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateBudget.

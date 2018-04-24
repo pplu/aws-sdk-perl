@@ -26,7 +26,7 @@ Paws::IoT::CreateOTAUpdate - Arguments for method CreateOTAUpdate on L<Paws::IoT
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateOTAUpdate on the 
-AWS IoT service. Use the attributes of this class
+L<AWS IoT|Paws::IoT> service. Use the attributes of this class
 as arguments to method CreateOTAUpdate.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateOTAUpdate.

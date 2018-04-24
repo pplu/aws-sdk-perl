@@ -20,7 +20,7 @@ Paws::EFS::DeleteMountTarget - Arguments for method DeleteMountTarget on L<Paws:
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteMountTarget on the 
-Amazon Elastic File System service. Use the attributes of this class
+L<Amazon Elastic File System|Paws::EFS> service. Use the attributes of this class
 as arguments to method DeleteMountTarget.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteMountTarget.

@@ -21,7 +21,7 @@ Paws::Comprehend::ListTopicsDetectionJobs - Arguments for method ListTopicsDetec
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListTopicsDetectionJobs on the 
-Amazon Comprehend service. Use the attributes of this class
+L<Amazon Comprehend|Paws::Comprehend> service. Use the attributes of this class
 as arguments to method ListTopicsDetectionJobs.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTopicsDetectionJobs.

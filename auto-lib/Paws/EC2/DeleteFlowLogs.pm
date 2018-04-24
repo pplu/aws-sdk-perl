@@ -19,7 +19,7 @@ Paws::EC2::DeleteFlowLogs - Arguments for method DeleteFlowLogs on L<Paws::EC2>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteFlowLogs on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DeleteFlowLogs.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteFlowLogs.

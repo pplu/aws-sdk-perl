@@ -33,7 +33,7 @@ Paws::CognitoIdp::UpdateUserPoolClient - Arguments for method UpdateUserPoolClie
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UpdateUserPoolClient on the 
-Amazon Cognito Identity Provider service. Use the attributes of this class
+L<Amazon Cognito Identity Provider|Paws::CognitoIdp> service. Use the attributes of this class
 as arguments to method UpdateUserPoolClient.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateUserPoolClient.

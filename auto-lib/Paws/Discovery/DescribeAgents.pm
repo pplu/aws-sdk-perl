@@ -22,7 +22,7 @@ Paws::Discovery::DescribeAgents - Arguments for method DescribeAgents on L<Paws:
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeAgents on the 
-AWS Application Discovery Service service. Use the attributes of this class
+L<AWS Application Discovery Service|Paws::Discovery> service. Use the attributes of this class
 as arguments to method DescribeAgents.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAgents.

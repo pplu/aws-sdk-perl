@@ -22,7 +22,7 @@ Paws::Lightsail::CreateLoadBalancerTlsCertificate - Arguments for method CreateL
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateLoadBalancerTlsCertificate on the 
-Amazon Lightsail service. Use the attributes of this class
+L<Amazon Lightsail|Paws::Lightsail> service. Use the attributes of this class
 as arguments to method CreateLoadBalancerTlsCertificate.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateLoadBalancerTlsCertificate.

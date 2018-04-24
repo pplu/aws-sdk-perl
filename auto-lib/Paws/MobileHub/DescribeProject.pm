@@ -21,7 +21,7 @@ Paws::MobileHub::DescribeProject - Arguments for method DescribeProject on L<Paw
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeProject on the 
-AWS Mobile service. Use the attributes of this class
+L<AWS Mobile|Paws::MobileHub> service. Use the attributes of this class
 as arguments to method DescribeProject.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeProject.

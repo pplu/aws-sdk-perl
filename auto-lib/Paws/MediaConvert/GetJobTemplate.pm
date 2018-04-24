@@ -20,7 +20,7 @@ Paws::MediaConvert::GetJobTemplate - Arguments for method GetJobTemplate on L<Pa
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetJobTemplate on the 
-AWS Elemental MediaConvert service. Use the attributes of this class
+L<AWS Elemental MediaConvert|Paws::MediaConvert> service. Use the attributes of this class
 as arguments to method GetJobTemplate.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetJobTemplate.

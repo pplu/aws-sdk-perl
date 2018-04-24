@@ -21,7 +21,7 @@ Paws::KMS::ListResourceTags - Arguments for method ListResourceTags on L<Paws::K
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListResourceTags on the 
-AWS Key Management Service service. Use the attributes of this class
+L<AWS Key Management Service|Paws::KMS> service. Use the attributes of this class
 as arguments to method ListResourceTags.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListResourceTags.

@@ -19,7 +19,7 @@ Paws::Route53Domains::EnableDomainAutoRenew - Arguments for method EnableDomainA
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method EnableDomainAutoRenew on the 
-Amazon Route 53 Domains service. Use the attributes of this class
+L<Amazon Route 53 Domains|Paws::Route53Domains> service. Use the attributes of this class
 as arguments to method EnableDomainAutoRenew.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to EnableDomainAutoRenew.

@@ -29,7 +29,7 @@ Paws::ApiGateway::CreateAuthorizer - Arguments for method CreateAuthorizer on L<
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateAuthorizer on the 
-Amazon API Gateway service. Use the attributes of this class
+L<Amazon API Gateway|Paws::ApiGateway> service. Use the attributes of this class
 as arguments to method CreateAuthorizer.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateAuthorizer.

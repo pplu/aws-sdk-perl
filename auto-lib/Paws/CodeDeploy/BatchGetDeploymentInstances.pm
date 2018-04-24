@@ -20,7 +20,7 @@ Paws::CodeDeploy::BatchGetDeploymentInstances - Arguments for method BatchGetDep
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method BatchGetDeploymentInstances on the 
-AWS CodeDeploy service. Use the attributes of this class
+L<AWS CodeDeploy|Paws::CodeDeploy> service. Use the attributes of this class
 as arguments to method BatchGetDeploymentInstances.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to BatchGetDeploymentInstances.

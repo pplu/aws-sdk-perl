@@ -24,7 +24,7 @@ Paws::ELBv2::CreateListener - Arguments for method CreateListener on L<Paws::ELB
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateListener on the 
-Elastic Load Balancing service. Use the attributes of this class
+L<Elastic Load Balancing|Paws::ELBv2> service. Use the attributes of this class
 as arguments to method CreateListener.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateListener.

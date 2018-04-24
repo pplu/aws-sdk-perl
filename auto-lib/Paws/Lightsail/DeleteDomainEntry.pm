@@ -20,7 +20,7 @@ Paws::Lightsail::DeleteDomainEntry - Arguments for method DeleteDomainEntry on L
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteDomainEntry on the 
-Amazon Lightsail service. Use the attributes of this class
+L<Amazon Lightsail|Paws::Lightsail> service. Use the attributes of this class
 as arguments to method DeleteDomainEntry.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDomainEntry.

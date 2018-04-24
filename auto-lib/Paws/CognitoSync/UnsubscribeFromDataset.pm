@@ -23,7 +23,7 @@ Paws::CognitoSync::UnsubscribeFromDataset - Arguments for method UnsubscribeFrom
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UnsubscribeFromDataset on the 
-Amazon Cognito Sync service. Use the attributes of this class
+L<Amazon Cognito Sync|Paws::CognitoSync> service. Use the attributes of this class
 as arguments to method UnsubscribeFromDataset.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UnsubscribeFromDataset.

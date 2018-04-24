@@ -22,7 +22,7 @@ Paws::Route53::DeleteHealthCheck - Arguments for method DeleteHealthCheck on L<P
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteHealthCheck on the 
-Amazon Route 53 service. Use the attributes of this class
+L<Amazon Route 53|Paws::Route53> service. Use the attributes of this class
 as arguments to method DeleteHealthCheck.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteHealthCheck.

@@ -20,7 +20,7 @@ Paws::Greengrass::GetAssociatedRole - Arguments for method GetAssociatedRole on 
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetAssociatedRole on the 
-AWS Greengrass service. Use the attributes of this class
+L<AWS Greengrass|Paws::Greengrass> service. Use the attributes of this class
 as arguments to method GetAssociatedRole.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetAssociatedRole.

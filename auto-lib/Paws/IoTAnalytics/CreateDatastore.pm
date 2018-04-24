@@ -21,7 +21,7 @@ Paws::IoTAnalytics::CreateDatastore - Arguments for method CreateDatastore on L<
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateDatastore on the 
-AWS IoT Analytics service. Use the attributes of this class
+L<AWS IoT Analytics|Paws::IoTAnalytics> service. Use the attributes of this class
 as arguments to method CreateDatastore.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDatastore.

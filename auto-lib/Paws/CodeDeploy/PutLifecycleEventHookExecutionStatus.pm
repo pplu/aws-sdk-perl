@@ -21,7 +21,7 @@ Paws::CodeDeploy::PutLifecycleEventHookExecutionStatus - Arguments for method Pu
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method PutLifecycleEventHookExecutionStatus on the 
-AWS CodeDeploy service. Use the attributes of this class
+L<AWS CodeDeploy|Paws::CodeDeploy> service. Use the attributes of this class
 as arguments to method PutLifecycleEventHookExecutionStatus.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutLifecycleEventHookExecutionStatus.

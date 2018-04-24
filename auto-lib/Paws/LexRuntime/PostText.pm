@@ -25,7 +25,7 @@ Paws::LexRuntime::PostText - Arguments for method PostText on L<Paws::LexRuntime
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method PostText on the 
-Amazon Lex Runtime Service service. Use the attributes of this class
+L<Amazon Lex Runtime Service|Paws::LexRuntime> service. Use the attributes of this class
 as arguments to method PostText.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PostText.

@@ -19,7 +19,7 @@ Paws::OpsWorks::DeleteApp - Arguments for method DeleteApp on L<Paws::OpsWorks>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteApp on the 
-AWS OpsWorks service. Use the attributes of this class
+L<AWS OpsWorks|Paws::OpsWorks> service. Use the attributes of this class
 as arguments to method DeleteApp.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteApp.

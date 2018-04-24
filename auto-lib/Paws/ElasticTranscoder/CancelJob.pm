@@ -20,7 +20,7 @@ Paws::ElasticTranscoder::CancelJob - Arguments for method CancelJob on L<Paws::E
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CancelJob on the 
-Amazon Elastic Transcoder service. Use the attributes of this class
+L<Amazon Elastic Transcoder|Paws::ElasticTranscoder> service. Use the attributes of this class
 as arguments to method CancelJob.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CancelJob.

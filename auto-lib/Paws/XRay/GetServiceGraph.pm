@@ -22,7 +22,7 @@ Paws::XRay::GetServiceGraph - Arguments for method GetServiceGraph on L<Paws::XR
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetServiceGraph on the 
-AWS X-Ray service. Use the attributes of this class
+L<AWS X-Ray|Paws::XRay> service. Use the attributes of this class
 as arguments to method GetServiceGraph.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetServiceGraph.

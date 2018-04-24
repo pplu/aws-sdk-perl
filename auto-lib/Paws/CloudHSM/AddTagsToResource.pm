@@ -20,7 +20,7 @@ Paws::CloudHSM::AddTagsToResource - Arguments for method AddTagsToResource on L<
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method AddTagsToResource on the 
-Amazon CloudHSM service. Use the attributes of this class
+L<Amazon CloudHSM|Paws::CloudHSM> service. Use the attributes of this class
 as arguments to method AddTagsToResource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddTagsToResource.

@@ -22,7 +22,7 @@ Paws::CloudSearchDomain::Suggest - Arguments for method Suggest on L<Paws::Cloud
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method Suggest on the 
-Amazon CloudSearch Domain service. Use the attributes of this class
+L<Amazon CloudSearch Domain|Paws::CloudSearchDomain> service. Use the attributes of this class
 as arguments to method Suggest.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to Suggest.

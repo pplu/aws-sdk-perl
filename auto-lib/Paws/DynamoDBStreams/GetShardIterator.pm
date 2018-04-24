@@ -22,7 +22,7 @@ Paws::DynamoDBStreams::GetShardIterator - Arguments for method GetShardIterator 
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetShardIterator on the 
-Amazon DynamoDB Streams service. Use the attributes of this class
+L<Amazon DynamoDB Streams|Paws::DynamoDBStreams> service. Use the attributes of this class
 as arguments to method GetShardIterator.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetShardIterator.

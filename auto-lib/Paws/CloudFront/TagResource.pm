@@ -23,7 +23,7 @@ Paws::CloudFront::TagResource - Arguments for method TagResource on L<Paws::Clou
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method TagResource2017_10_30 on the 
-Amazon CloudFront service. Use the attributes of this class
+L<Amazon CloudFront|Paws::CloudFront> service. Use the attributes of this class
 as arguments to method TagResource2017_10_30.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to TagResource2017_10_30.

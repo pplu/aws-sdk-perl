@@ -23,7 +23,7 @@ Paws::ResourceGroups::CreateGroup - Arguments for method CreateGroup on L<Paws::
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateGroup on the 
-AWS Resource Groups service. Use the attributes of this class
+L<AWS Resource Groups|Paws::ResourceGroups> service. Use the attributes of this class
 as arguments to method CreateGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateGroup.

@@ -24,7 +24,7 @@ Paws::GameLift::DescribeGameSessionDetails - Arguments for method DescribeGameSe
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeGameSessionDetails on the 
-Amazon GameLift service. Use the attributes of this class
+L<Amazon GameLift|Paws::GameLift> service. Use the attributes of this class
 as arguments to method DescribeGameSessionDetails.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeGameSessionDetails.

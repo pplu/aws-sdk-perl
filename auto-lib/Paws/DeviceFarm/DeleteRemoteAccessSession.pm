@@ -19,7 +19,7 @@ Paws::DeviceFarm::DeleteRemoteAccessSession - Arguments for method DeleteRemoteA
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteRemoteAccessSession on the 
-AWS Device Farm service. Use the attributes of this class
+L<AWS Device Farm|Paws::DeviceFarm> service. Use the attributes of this class
 as arguments to method DeleteRemoteAccessSession.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteRemoteAccessSession.

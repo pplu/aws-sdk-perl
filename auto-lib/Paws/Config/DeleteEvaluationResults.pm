@@ -19,7 +19,7 @@ Paws::Config::DeleteEvaluationResults - Arguments for method DeleteEvaluationRes
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteEvaluationResults on the 
-AWS Config service. Use the attributes of this class
+L<AWS Config|Paws::Config> service. Use the attributes of this class
 as arguments to method DeleteEvaluationResults.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteEvaluationResults.

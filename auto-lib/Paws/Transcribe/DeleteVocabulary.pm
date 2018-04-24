@@ -19,7 +19,7 @@ Paws::Transcribe::DeleteVocabulary - Arguments for method DeleteVocabulary on L<
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteVocabulary on the 
-Amazon Transcribe Service service. Use the attributes of this class
+L<Amazon Transcribe Service|Paws::Transcribe> service. Use the attributes of this class
 as arguments to method DeleteVocabulary.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteVocabulary.

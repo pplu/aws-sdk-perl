@@ -21,7 +21,7 @@ Paws::WorkMail::AssociateDelegateToResource - Arguments for method AssociateDele
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method AssociateDelegateToResource on the 
-Amazon WorkMail service. Use the attributes of this class
+L<Amazon WorkMail|Paws::WorkMail> service. Use the attributes of this class
 as arguments to method AssociateDelegateToResource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AssociateDelegateToResource.

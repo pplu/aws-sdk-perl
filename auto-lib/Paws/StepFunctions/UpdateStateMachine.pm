@@ -21,7 +21,7 @@ Paws::StepFunctions::UpdateStateMachine - Arguments for method UpdateStateMachin
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UpdateStateMachine on the 
-AWS Step Functions service. Use the attributes of this class
+L<AWS Step Functions|Paws::StepFunctions> service. Use the attributes of this class
 as arguments to method UpdateStateMachine.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateStateMachine.

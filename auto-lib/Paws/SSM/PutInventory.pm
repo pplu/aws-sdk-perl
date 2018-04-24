@@ -20,7 +20,7 @@ Paws::SSM::PutInventory - Arguments for method PutInventory on L<Paws::SSM>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method PutInventory on the 
-Amazon Simple Systems Manager (SSM) service. Use the attributes of this class
+L<Amazon Simple Systems Manager (SSM)|Paws::SSM> service. Use the attributes of this class
 as arguments to method PutInventory.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutInventory.

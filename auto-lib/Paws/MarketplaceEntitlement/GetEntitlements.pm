@@ -22,7 +22,7 @@ Paws::MarketplaceEntitlement::GetEntitlements - Arguments for method GetEntitlem
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetEntitlements on the 
-AWS Marketplace Entitlement Service service. Use the attributes of this class
+L<AWS Marketplace Entitlement Service|Paws::MarketplaceEntitlement> service. Use the attributes of this class
 as arguments to method GetEntitlements.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetEntitlements.

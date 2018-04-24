@@ -21,7 +21,7 @@ Paws::XRay::BatchGetTraces - Arguments for method BatchGetTraces on L<Paws::XRay
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method BatchGetTraces on the 
-AWS X-Ray service. Use the attributes of this class
+L<AWS X-Ray|Paws::XRay> service. Use the attributes of this class
 as arguments to method BatchGetTraces.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to BatchGetTraces.

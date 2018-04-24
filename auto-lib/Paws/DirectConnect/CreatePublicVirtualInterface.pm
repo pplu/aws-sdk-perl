@@ -20,7 +20,7 @@ Paws::DirectConnect::CreatePublicVirtualInterface - Arguments for method CreateP
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreatePublicVirtualInterface on the 
-AWS Direct Connect service. Use the attributes of this class
+L<AWS Direct Connect|Paws::DirectConnect> service. Use the attributes of this class
 as arguments to method CreatePublicVirtualInterface.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreatePublicVirtualInterface.

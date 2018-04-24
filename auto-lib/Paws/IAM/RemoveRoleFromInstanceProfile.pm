@@ -20,7 +20,7 @@ Paws::IAM::RemoveRoleFromInstanceProfile - Arguments for method RemoveRoleFromIn
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method RemoveRoleFromInstanceProfile on the 
-AWS Identity and Access Management service. Use the attributes of this class
+L<AWS Identity and Access Management|Paws::IAM> service. Use the attributes of this class
 as arguments to method RemoveRoleFromInstanceProfile.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemoveRoleFromInstanceProfile.

@@ -23,7 +23,7 @@ Paws::Shield::ListAttacks - Arguments for method ListAttacks on L<Paws::Shield>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListAttacks on the 
-AWS Shield service. Use the attributes of this class
+L<AWS Shield|Paws::Shield> service. Use the attributes of this class
 as arguments to method ListAttacks.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListAttacks.

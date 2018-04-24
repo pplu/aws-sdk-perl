@@ -21,7 +21,7 @@ Paws::AutoScaling::DescribeAutoScalingGroups - Arguments for method DescribeAuto
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeAutoScalingGroups on the 
-Auto Scaling service. Use the attributes of this class
+L<Auto Scaling|Paws::AutoScaling> service. Use the attributes of this class
 as arguments to method DescribeAutoScalingGroups.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAutoScalingGroups.

@@ -21,7 +21,7 @@ Paws::CloudHSM::GetConfig - Arguments for method GetConfig on L<Paws::CloudHSM>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetConfig on the 
-Amazon CloudHSM service. Use the attributes of this class
+L<Amazon CloudHSM|Paws::CloudHSM> service. Use the attributes of this class
 as arguments to method GetConfig.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetConfig.

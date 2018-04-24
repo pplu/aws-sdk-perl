@@ -21,7 +21,7 @@ Paws::Connect::StopContact - Arguments for method StopContact on L<Paws::Connect
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method StopContact on the 
-Amazon Connect Service service. Use the attributes of this class
+L<Amazon Connect Service|Paws::Connect> service. Use the attributes of this class
 as arguments to method StopContact.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StopContact.

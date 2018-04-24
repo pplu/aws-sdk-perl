@@ -20,7 +20,7 @@ Paws::DeviceFarm::CreateProject - Arguments for method CreateProject on L<Paws::
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateProject on the 
-AWS Device Farm service. Use the attributes of this class
+L<AWS Device Farm|Paws::DeviceFarm> service. Use the attributes of this class
 as arguments to method CreateProject.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateProject.

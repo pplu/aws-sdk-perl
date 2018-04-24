@@ -20,7 +20,7 @@ Paws::ResourceGroups::GetGroup - Arguments for method GetGroup on L<Paws::Resour
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetGroup on the 
-AWS Resource Groups service. Use the attributes of this class
+L<AWS Resource Groups|Paws::ResourceGroups> service. Use the attributes of this class
 as arguments to method GetGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetGroup.

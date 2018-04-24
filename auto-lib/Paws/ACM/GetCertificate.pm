@@ -19,7 +19,7 @@ Paws::ACM::GetCertificate - Arguments for method GetCertificate on L<Paws::ACM>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetCertificate on the 
-AWS Certificate Manager service. Use the attributes of this class
+L<AWS Certificate Manager|Paws::ACM> service. Use the attributes of this class
 as arguments to method GetCertificate.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetCertificate.

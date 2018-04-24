@@ -22,7 +22,7 @@ Paws::Glacier::AddTagsToVault - Arguments for method AddTagsToVault on L<Paws::G
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method AddTagsToVault on the 
-Amazon Glacier service. Use the attributes of this class
+L<Amazon Glacier|Paws::Glacier> service. Use the attributes of this class
 as arguments to method AddTagsToVault.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddTagsToVault.

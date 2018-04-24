@@ -24,7 +24,7 @@ Paws::ECR::DescribeImages - Arguments for method DescribeImages on L<Paws::ECR>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeImages on the 
-Amazon EC2 Container Registry service. Use the attributes of this class
+L<Amazon EC2 Container Registry|Paws::ECR> service. Use the attributes of this class
 as arguments to method DescribeImages.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeImages.

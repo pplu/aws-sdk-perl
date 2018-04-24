@@ -20,7 +20,7 @@ Paws::IoTAnalytics::DeletePipeline - Arguments for method DeletePipeline on L<Pa
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeletePipeline on the 
-AWS IoT Analytics service. Use the attributes of this class
+L<AWS IoT Analytics|Paws::IoTAnalytics> service. Use the attributes of this class
 as arguments to method DeletePipeline.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeletePipeline.

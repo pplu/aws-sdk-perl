@@ -19,7 +19,7 @@ Paws::SMS::DisassociateConnector - Arguments for method DisassociateConnector on
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DisassociateConnector on the 
-AWS Server Migration Service service. Use the attributes of this class
+L<AWS Server Migration Service|Paws::SMS> service. Use the attributes of this class
 as arguments to method DisassociateConnector.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DisassociateConnector.

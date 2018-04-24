@@ -21,7 +21,7 @@ Paws::MQ::ListBrokers - Arguments for method ListBrokers on L<Paws::MQ>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListBrokers on the 
-AmazonMQ service. Use the attributes of this class
+L<AmazonMQ|Paws::MQ> service. Use the attributes of this class
 as arguments to method ListBrokers.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListBrokers.

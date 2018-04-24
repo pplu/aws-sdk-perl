@@ -20,7 +20,7 @@ Paws::OpsWorks::AssignVolume - Arguments for method AssignVolume on L<Paws::OpsW
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method AssignVolume on the 
-AWS OpsWorks service. Use the attributes of this class
+L<AWS OpsWorks|Paws::OpsWorks> service. Use the attributes of this class
 as arguments to method AssignVolume.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AssignVolume.

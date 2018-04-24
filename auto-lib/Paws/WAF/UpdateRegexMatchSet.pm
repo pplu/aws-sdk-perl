@@ -21,7 +21,7 @@ Paws::WAF::UpdateRegexMatchSet - Arguments for method UpdateRegexMatchSet on L<P
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UpdateRegexMatchSet on the 
-AWS WAF service. Use the attributes of this class
+L<AWS WAF|Paws::WAF> service. Use the attributes of this class
 as arguments to method UpdateRegexMatchSet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateRegexMatchSet.

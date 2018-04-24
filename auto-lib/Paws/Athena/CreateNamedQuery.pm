@@ -23,7 +23,7 @@ Paws::Athena::CreateNamedQuery - Arguments for method CreateNamedQuery on L<Paws
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateNamedQuery on the 
-Amazon Athena service. Use the attributes of this class
+L<Amazon Athena|Paws::Athena> service. Use the attributes of this class
 as arguments to method CreateNamedQuery.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateNamedQuery.

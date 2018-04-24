@@ -21,7 +21,7 @@ Paws::Pinpoint::DeleteCampaign - Arguments for method DeleteCampaign on L<Paws::
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteCampaign on the 
-Amazon Pinpoint service. Use the attributes of this class
+L<Amazon Pinpoint|Paws::Pinpoint> service. Use the attributes of this class
 as arguments to method DeleteCampaign.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteCampaign.

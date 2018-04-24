@@ -20,7 +20,7 @@ Paws::Rekognition::ListCollections - Arguments for method ListCollections on L<P
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListCollections on the 
-Amazon Rekognition service. Use the attributes of this class
+L<Amazon Rekognition|Paws::Rekognition> service. Use the attributes of this class
 as arguments to method ListCollections.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListCollections.

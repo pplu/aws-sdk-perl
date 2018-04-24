@@ -22,7 +22,7 @@ Paws::Health::DescribeEventAggregates - Arguments for method DescribeEventAggreg
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeEventAggregates on the 
-AWS Health APIs and Notifications service. Use the attributes of this class
+L<AWS Health APIs and Notifications|Paws::Health> service. Use the attributes of this class
 as arguments to method DescribeEventAggregates.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEventAggregates.

@@ -28,7 +28,7 @@ Paws::EC2::CreateNetworkAclEntry - Arguments for method CreateNetworkAclEntry on
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateNetworkAclEntry on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method CreateNetworkAclEntry.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateNetworkAclEntry.

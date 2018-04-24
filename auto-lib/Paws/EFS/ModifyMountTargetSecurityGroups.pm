@@ -21,7 +21,7 @@ Paws::EFS::ModifyMountTargetSecurityGroups - Arguments for method ModifyMountTar
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ModifyMountTargetSecurityGroups on the 
-Amazon Elastic File System service. Use the attributes of this class
+L<Amazon Elastic File System|Paws::EFS> service. Use the attributes of this class
 as arguments to method ModifyMountTargetSecurityGroups.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyMountTargetSecurityGroups.

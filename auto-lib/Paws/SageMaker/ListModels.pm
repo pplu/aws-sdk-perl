@@ -25,7 +25,7 @@ Paws::SageMaker::ListModels - Arguments for method ListModels on L<Paws::SageMak
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListModels on the 
-Amazon SageMaker Service service. Use the attributes of this class
+L<Amazon SageMaker Service|Paws::SageMaker> service. Use the attributes of this class
 as arguments to method ListModels.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListModels.

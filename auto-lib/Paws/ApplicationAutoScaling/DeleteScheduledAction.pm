@@ -22,7 +22,7 @@ Paws::ApplicationAutoScaling::DeleteScheduledAction - Arguments for method Delet
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteScheduledAction on the 
-Application Auto Scaling service. Use the attributes of this class
+L<Application Auto Scaling|Paws::ApplicationAutoScaling> service. Use the attributes of this class
 as arguments to method DeleteScheduledAction.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteScheduledAction.

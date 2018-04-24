@@ -20,7 +20,7 @@ Paws::DMS::RebootReplicationInstance - Arguments for method RebootReplicationIns
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method RebootReplicationInstance on the 
-AWS Database Migration Service service. Use the attributes of this class
+L<AWS Database Migration Service|Paws::DMS> service. Use the attributes of this class
 as arguments to method RebootReplicationInstance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RebootReplicationInstance.

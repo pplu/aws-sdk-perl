@@ -18,7 +18,7 @@ Paws::FMS::GetAdminAccount - Arguments for method GetAdminAccount on L<Paws::FMS
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetAdminAccount on the 
-Firewall Management Service service. Use the attributes of this class
+L<Firewall Management Service|Paws::FMS> service. Use the attributes of this class
 as arguments to method GetAdminAccount.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetAdminAccount.

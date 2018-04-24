@@ -27,7 +27,7 @@ Paws::EC2::AuthorizeSecurityGroupEgress - Arguments for method AuthorizeSecurity
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method AuthorizeSecurityGroupEgress on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method AuthorizeSecurityGroupEgress.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AuthorizeSecurityGroupEgress.

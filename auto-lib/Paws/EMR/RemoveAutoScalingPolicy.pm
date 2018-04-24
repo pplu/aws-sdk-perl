@@ -20,7 +20,7 @@ Paws::EMR::RemoveAutoScalingPolicy - Arguments for method RemoveAutoScalingPolic
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method RemoveAutoScalingPolicy on the 
-Amazon Elastic MapReduce service. Use the attributes of this class
+L<Amazon Elastic MapReduce|Paws::EMR> service. Use the attributes of this class
 as arguments to method RemoveAutoScalingPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemoveAutoScalingPolicy.

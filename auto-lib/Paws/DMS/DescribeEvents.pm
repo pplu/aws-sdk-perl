@@ -27,7 +27,7 @@ Paws::DMS::DescribeEvents - Arguments for method DescribeEvents on L<Paws::DMS>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeEvents on the 
-AWS Database Migration Service service. Use the attributes of this class
+L<AWS Database Migration Service|Paws::DMS> service. Use the attributes of this class
 as arguments to method DescribeEvents.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEvents.

@@ -25,7 +25,7 @@ Paws::MarketplaceCommerceAnalytics::StartSupportDataExport - Arguments for metho
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method StartSupportDataExport on the 
-AWS Marketplace Commerce Analytics service. Use the attributes of this class
+L<AWS Marketplace Commerce Analytics|Paws::MarketplaceCommerceAnalytics> service. Use the attributes of this class
 as arguments to method StartSupportDataExport.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartSupportDataExport.

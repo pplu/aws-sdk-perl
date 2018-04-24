@@ -22,7 +22,7 @@ Paws::DS::DescribeTrusts - Arguments for method DescribeTrusts on L<Paws::DS>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeTrusts on the 
-AWS Directory Service service. Use the attributes of this class
+L<AWS Directory Service|Paws::DS> service. Use the attributes of this class
 as arguments to method DescribeTrusts.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeTrusts.

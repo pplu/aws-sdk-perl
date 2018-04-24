@@ -19,7 +19,7 @@ Paws::DMS::DeleteReplicationInstance - Arguments for method DeleteReplicationIns
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteReplicationInstance on the 
-AWS Database Migration Service service. Use the attributes of this class
+L<AWS Database Migration Service|Paws::DMS> service. Use the attributes of this class
 as arguments to method DeleteReplicationInstance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteReplicationInstance.

@@ -19,7 +19,7 @@ Paws::OpsWorksCM::DeleteServer - Arguments for method DeleteServer on L<Paws::Op
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteServer on the 
-AWS OpsWorks for Chef Automate service. Use the attributes of this class
+L<AWS OpsWorks for Chef Automate|Paws::OpsWorksCM> service. Use the attributes of this class
 as arguments to method DeleteServer.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteServer.

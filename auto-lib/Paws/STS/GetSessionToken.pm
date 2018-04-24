@@ -21,7 +21,7 @@ Paws::STS::GetSessionToken - Arguments for method GetSessionToken on L<Paws::STS
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetSessionToken on the 
-AWS Security Token Service service. Use the attributes of this class
+L<AWS Security Token Service|Paws::STS> service. Use the attributes of this class
 as arguments to method GetSessionToken.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetSessionToken.

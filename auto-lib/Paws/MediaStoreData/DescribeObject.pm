@@ -20,7 +20,7 @@ Paws::MediaStoreData::DescribeObject - Arguments for method DescribeObject on L<
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeObject on the 
-AWS Elemental MediaStore Data Plane service. Use the attributes of this class
+L<AWS Elemental MediaStore Data Plane|Paws::MediaStoreData> service. Use the attributes of this class
 as arguments to method DescribeObject.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeObject.

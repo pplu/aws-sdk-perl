@@ -19,7 +19,7 @@ Paws::ServiceDiscovery::GetService - Arguments for method GetService on L<Paws::
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetService on the 
-Amazon Route 53 Auto Naming service. Use the attributes of this class
+L<Amazon Route 53 Auto Naming|Paws::ServiceDiscovery> service. Use the attributes of this class
 as arguments to method GetService.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetService.

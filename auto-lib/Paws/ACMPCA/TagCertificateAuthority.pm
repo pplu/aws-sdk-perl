@@ -20,7 +20,7 @@ Paws::ACMPCA::TagCertificateAuthority - Arguments for method TagCertificateAutho
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method TagCertificateAuthority on the 
-AWS Certificate Manager Private Certificate Authority service. Use the attributes of this class
+L<AWS Certificate Manager Private Certificate Authority|Paws::ACMPCA> service. Use the attributes of this class
 as arguments to method TagCertificateAuthority.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to TagCertificateAuthority.

@@ -20,7 +20,7 @@ Paws::DynamoDB::ListTables - Arguments for method ListTables on L<Paws::DynamoDB
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListTables on the 
-Amazon DynamoDB service. Use the attributes of this class
+L<Amazon DynamoDB|Paws::DynamoDB> service. Use the attributes of this class
 as arguments to method ListTables.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTables.

@@ -60,7 +60,7 @@ Paws::RDS::CreateDBInstance - Arguments for method CreateDBInstance on L<Paws::R
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateDBInstance on the 
-Amazon Relational Database Service service. Use the attributes of this class
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method CreateDBInstance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBInstance.

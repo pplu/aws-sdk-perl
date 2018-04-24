@@ -19,7 +19,7 @@ Paws::CodeBuild::StopBuild - Arguments for method StopBuild on L<Paws::CodeBuild
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method StopBuild on the 
-AWS CodeBuild service. Use the attributes of this class
+L<AWS CodeBuild|Paws::CodeBuild> service. Use the attributes of this class
 as arguments to method StopBuild.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StopBuild.

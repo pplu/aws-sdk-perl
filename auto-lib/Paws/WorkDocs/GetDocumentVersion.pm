@@ -24,7 +24,7 @@ Paws::WorkDocs::GetDocumentVersion - Arguments for method GetDocumentVersion on 
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetDocumentVersion on the 
-Amazon WorkDocs service. Use the attributes of this class
+L<Amazon WorkDocs|Paws::WorkDocs> service. Use the attributes of this class
 as arguments to method GetDocumentVersion.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDocumentVersion.

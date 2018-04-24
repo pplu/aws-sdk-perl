@@ -19,7 +19,7 @@ Paws::FMS::AssociateAdminAccount - Arguments for method AssociateAdminAccount on
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method AssociateAdminAccount on the 
-Firewall Management Service service. Use the attributes of this class
+L<Firewall Management Service|Paws::FMS> service. Use the attributes of this class
 as arguments to method AssociateAdminAccount.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AssociateAdminAccount.

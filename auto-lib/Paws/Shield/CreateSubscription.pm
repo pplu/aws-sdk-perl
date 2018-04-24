@@ -18,7 +18,7 @@ Paws::Shield::CreateSubscription - Arguments for method CreateSubscription on L<
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateSubscription on the 
-AWS Shield service. Use the attributes of this class
+L<AWS Shield|Paws::Shield> service. Use the attributes of this class
 as arguments to method CreateSubscription.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateSubscription.

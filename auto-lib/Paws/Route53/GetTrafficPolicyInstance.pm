@@ -22,7 +22,7 @@ Paws::Route53::GetTrafficPolicyInstance - Arguments for method GetTrafficPolicyI
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetTrafficPolicyInstance on the 
-Amazon Route 53 service. Use the attributes of this class
+L<Amazon Route 53|Paws::Route53> service. Use the attributes of this class
 as arguments to method GetTrafficPolicyInstance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetTrafficPolicyInstance.

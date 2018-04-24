@@ -21,7 +21,7 @@ Paws::KinesisVideo::DescribeStream - Arguments for method DescribeStream on L<Pa
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeStream on the 
-Amazon Kinesis Video Streams service. Use the attributes of this class
+L<Amazon Kinesis Video Streams|Paws::KinesisVideo> service. Use the attributes of this class
 as arguments to method DescribeStream.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeStream.

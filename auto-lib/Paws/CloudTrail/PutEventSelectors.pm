@@ -20,7 +20,7 @@ Paws::CloudTrail::PutEventSelectors - Arguments for method PutEventSelectors on 
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method PutEventSelectors on the 
-AWS CloudTrail service. Use the attributes of this class
+L<AWS CloudTrail|Paws::CloudTrail> service. Use the attributes of this class
 as arguments to method PutEventSelectors.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutEventSelectors.

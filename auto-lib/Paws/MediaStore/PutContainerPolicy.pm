@@ -20,7 +20,7 @@ Paws::MediaStore::PutContainerPolicy - Arguments for method PutContainerPolicy o
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method PutContainerPolicy on the 
-AWS Elemental MediaStore service. Use the attributes of this class
+L<AWS Elemental MediaStore|Paws::MediaStore> service. Use the attributes of this class
 as arguments to method PutContainerPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutContainerPolicy.

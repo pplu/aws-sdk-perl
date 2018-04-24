@@ -19,7 +19,7 @@ Paws::DataPipeline::ListPipelines - Arguments for method ListPipelines on L<Paws
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListPipelines on the 
-AWS Data Pipeline service. Use the attributes of this class
+L<AWS Data Pipeline|Paws::DataPipeline> service. Use the attributes of this class
 as arguments to method ListPipelines.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListPipelines.

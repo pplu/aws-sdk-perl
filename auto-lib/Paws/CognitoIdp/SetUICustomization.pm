@@ -22,7 +22,7 @@ Paws::CognitoIdp::SetUICustomization - Arguments for method SetUICustomization o
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method SetUICustomization on the 
-Amazon Cognito Identity Provider service. Use the attributes of this class
+L<Amazon Cognito Identity Provider|Paws::CognitoIdp> service. Use the attributes of this class
 as arguments to method SetUICustomization.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetUICustomization.

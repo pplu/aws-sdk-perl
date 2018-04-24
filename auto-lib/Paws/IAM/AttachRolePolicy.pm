@@ -20,7 +20,7 @@ Paws::IAM::AttachRolePolicy - Arguments for method AttachRolePolicy on L<Paws::I
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method AttachRolePolicy on the 
-AWS Identity and Access Management service. Use the attributes of this class
+L<AWS Identity and Access Management|Paws::IAM> service. Use the attributes of this class
 as arguments to method AttachRolePolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AttachRolePolicy.

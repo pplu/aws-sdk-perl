@@ -20,7 +20,7 @@ Paws::CodeCommit::PutRepositoryTriggers - Arguments for method PutRepositoryTrig
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method PutRepositoryTriggers on the 
-AWS CodeCommit service. Use the attributes of this class
+L<AWS CodeCommit|Paws::CodeCommit> service. Use the attributes of this class
 as arguments to method PutRepositoryTriggers.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutRepositoryTriggers.

@@ -19,7 +19,7 @@ Paws::AppStream::DeleteDirectoryConfig - Arguments for method DeleteDirectoryCon
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteDirectoryConfig on the 
-Amazon AppStream service. Use the attributes of this class
+L<Amazon AppStream|Paws::AppStream> service. Use the attributes of this class
 as arguments to method DeleteDirectoryConfig.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDirectoryConfig.

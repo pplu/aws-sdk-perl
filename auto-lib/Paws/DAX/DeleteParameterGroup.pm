@@ -19,7 +19,7 @@ Paws::DAX::DeleteParameterGroup - Arguments for method DeleteParameterGroup on L
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteParameterGroup on the 
-Amazon DynamoDB Accelerator (DAX) service. Use the attributes of this class
+L<Amazon DynamoDB Accelerator (DAX)|Paws::DAX> service. Use the attributes of this class
 as arguments to method DeleteParameterGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteParameterGroup.

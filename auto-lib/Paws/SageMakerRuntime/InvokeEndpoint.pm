@@ -23,7 +23,7 @@ Paws::SageMakerRuntime::InvokeEndpoint - Arguments for method InvokeEndpoint on 
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method InvokeEndpoint on the 
-Amazon SageMaker Runtime service. Use the attributes of this class
+L<Amazon SageMaker Runtime|Paws::SageMakerRuntime> service. Use the attributes of this class
 as arguments to method InvokeEndpoint.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to InvokeEndpoint.

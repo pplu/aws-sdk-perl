@@ -22,7 +22,7 @@ Paws::Health::DescribeEventTypes - Arguments for method DescribeEventTypes on L<
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeEventTypes on the 
-AWS Health APIs and Notifications service. Use the attributes of this class
+L<AWS Health APIs and Notifications|Paws::Health> service. Use the attributes of this class
 as arguments to method DescribeEventTypes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEventTypes.

@@ -23,7 +23,7 @@ Paws::XRay::PutTelemetryRecords - Arguments for method PutTelemetryRecords on L<
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method PutTelemetryRecords on the 
-AWS X-Ray service. Use the attributes of this class
+L<AWS X-Ray|Paws::XRay> service. Use the attributes of this class
 as arguments to method PutTelemetryRecords.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutTelemetryRecords.

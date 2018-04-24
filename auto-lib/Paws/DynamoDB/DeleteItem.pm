@@ -28,7 +28,7 @@ Paws::DynamoDB::DeleteItem - Arguments for method DeleteItem on L<Paws::DynamoDB
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteItem on the 
-Amazon DynamoDB service. Use the attributes of this class
+L<Amazon DynamoDB|Paws::DynamoDB> service. Use the attributes of this class
 as arguments to method DeleteItem.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteItem.

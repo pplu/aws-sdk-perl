@@ -20,7 +20,7 @@ Paws::WAFRegional::CreateIPSet - Arguments for method CreateIPSet on L<Paws::WAF
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateIPSet on the 
-AWS WAF Regional service. Use the attributes of this class
+L<AWS WAF Regional|Paws::WAFRegional> service. Use the attributes of this class
 as arguments to method CreateIPSet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateIPSet.

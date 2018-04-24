@@ -19,7 +19,7 @@ Paws::StorageGateway::ListLocalDisks - Arguments for method ListLocalDisks on L<
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListLocalDisks on the 
-AWS Storage Gateway service. Use the attributes of this class
+L<AWS Storage Gateway|Paws::StorageGateway> service. Use the attributes of this class
 as arguments to method ListLocalDisks.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListLocalDisks.

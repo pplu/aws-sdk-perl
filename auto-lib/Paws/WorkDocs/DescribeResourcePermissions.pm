@@ -24,7 +24,7 @@ Paws::WorkDocs::DescribeResourcePermissions - Arguments for method DescribeResou
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeResourcePermissions on the 
-Amazon WorkDocs service. Use the attributes of this class
+L<Amazon WorkDocs|Paws::WorkDocs> service. Use the attributes of this class
 as arguments to method DescribeResourcePermissions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeResourcePermissions.

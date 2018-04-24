@@ -19,7 +19,7 @@ Paws::Comprehend::BatchDetectDominantLanguage - Arguments for method BatchDetect
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method BatchDetectDominantLanguage on the 
-Amazon Comprehend service. Use the attributes of this class
+L<Amazon Comprehend|Paws::Comprehend> service. Use the attributes of this class
 as arguments to method BatchDetectDominantLanguage.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to BatchDetectDominantLanguage.

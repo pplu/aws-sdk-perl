@@ -24,7 +24,7 @@ Paws::SSM::ListCommandInvocations - Arguments for method ListCommandInvocations 
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListCommandInvocations on the 
-Amazon Simple Systems Manager (SSM) service. Use the attributes of this class
+L<Amazon Simple Systems Manager (SSM)|Paws::SSM> service. Use the attributes of this class
 as arguments to method ListCommandInvocations.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListCommandInvocations.

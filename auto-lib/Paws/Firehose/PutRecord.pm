@@ -20,7 +20,7 @@ Paws::Firehose::PutRecord - Arguments for method PutRecord on L<Paws::Firehose>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method PutRecord on the 
-Amazon Kinesis Firehose service. Use the attributes of this class
+L<Amazon Kinesis Firehose|Paws::Firehose> service. Use the attributes of this class
 as arguments to method PutRecord.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutRecord.

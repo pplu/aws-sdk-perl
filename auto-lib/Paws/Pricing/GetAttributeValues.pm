@@ -22,7 +22,7 @@ Paws::Pricing::GetAttributeValues - Arguments for method GetAttributeValues on L
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetAttributeValues on the 
-AWS Price List Service service. Use the attributes of this class
+L<AWS Price List Service|Paws::Pricing> service. Use the attributes of this class
 as arguments to method GetAttributeValues.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetAttributeValues.

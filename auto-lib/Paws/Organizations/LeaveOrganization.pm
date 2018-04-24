@@ -18,7 +18,7 @@ Paws::Organizations::LeaveOrganization - Arguments for method LeaveOrganization 
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method LeaveOrganization on the 
-AWS Organizations service. Use the attributes of this class
+L<AWS Organizations|Paws::Organizations> service. Use the attributes of this class
 as arguments to method LeaveOrganization.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to LeaveOrganization.

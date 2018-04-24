@@ -22,7 +22,7 @@ Paws::Greengrass::ListDeployments - Arguments for method ListDeployments on L<Pa
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListDeployments on the 
-AWS Greengrass service. Use the attributes of this class
+L<AWS Greengrass|Paws::Greengrass> service. Use the attributes of this class
 as arguments to method ListDeployments.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListDeployments.

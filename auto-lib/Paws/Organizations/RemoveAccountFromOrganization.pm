@@ -19,7 +19,7 @@ Paws::Organizations::RemoveAccountFromOrganization - Arguments for method Remove
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method RemoveAccountFromOrganization on the 
-AWS Organizations service. Use the attributes of this class
+L<AWS Organizations|Paws::Organizations> service. Use the attributes of this class
 as arguments to method RemoveAccountFromOrganization.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemoveAccountFromOrganization.

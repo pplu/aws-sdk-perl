@@ -20,7 +20,7 @@ Paws::IoTData::GetThingShadow - Arguments for method GetThingShadow on L<Paws::I
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetThingShadow on the 
-AWS IoT Data Plane service. Use the attributes of this class
+L<AWS IoT Data Plane|Paws::IoTData> service. Use the attributes of this class
 as arguments to method GetThingShadow.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetThingShadow.

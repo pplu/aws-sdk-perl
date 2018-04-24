@@ -23,7 +23,7 @@ Paws::CodePipeline::PutApprovalResult - Arguments for method PutApprovalResult o
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method PutApprovalResult on the 
-AWS CodePipeline service. Use the attributes of this class
+L<AWS CodePipeline|Paws::CodePipeline> service. Use the attributes of this class
 as arguments to method PutApprovalResult.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutApprovalResult.

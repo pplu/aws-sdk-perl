@@ -20,7 +20,7 @@ Paws::CloudHSMv2::UntagResource - Arguments for method UntagResource on L<Paws::
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UntagResource on the 
-AWS CloudHSM V2 service. Use the attributes of this class
+L<AWS CloudHSM V2|Paws::CloudHSMv2> service. Use the attributes of this class
 as arguments to method UntagResource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UntagResource.

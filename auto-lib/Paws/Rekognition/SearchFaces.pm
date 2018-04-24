@@ -22,7 +22,7 @@ Paws::Rekognition::SearchFaces - Arguments for method SearchFaces on L<Paws::Rek
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method SearchFaces on the 
-Amazon Rekognition service. Use the attributes of this class
+L<Amazon Rekognition|Paws::Rekognition> service. Use the attributes of this class
 as arguments to method SearchFaces.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SearchFaces.

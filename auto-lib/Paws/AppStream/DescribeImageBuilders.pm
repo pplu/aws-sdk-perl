@@ -21,7 +21,7 @@ Paws::AppStream::DescribeImageBuilders - Arguments for method DescribeImageBuild
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeImageBuilders on the 
-Amazon AppStream service. Use the attributes of this class
+L<Amazon AppStream|Paws::AppStream> service. Use the attributes of this class
 as arguments to method DescribeImageBuilders.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeImageBuilders.

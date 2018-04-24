@@ -20,7 +20,7 @@ Paws::CodeDeploy::DeleteDeploymentGroup - Arguments for method DeleteDeploymentG
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteDeploymentGroup on the 
-AWS CodeDeploy service. Use the attributes of this class
+L<AWS CodeDeploy|Paws::CodeDeploy> service. Use the attributes of this class
 as arguments to method DeleteDeploymentGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDeploymentGroup.

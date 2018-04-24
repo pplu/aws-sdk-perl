@@ -21,7 +21,7 @@ Paws::ApiGateway::GetSdkTypes - Arguments for method GetSdkTypes on L<Paws::ApiG
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetSdkTypes on the 
-Amazon API Gateway service. Use the attributes of this class
+L<Amazon API Gateway|Paws::ApiGateway> service. Use the attributes of this class
 as arguments to method GetSdkTypes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetSdkTypes.

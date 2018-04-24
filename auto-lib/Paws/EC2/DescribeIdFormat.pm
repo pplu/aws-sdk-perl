@@ -19,7 +19,7 @@ Paws::EC2::DescribeIdFormat - Arguments for method DescribeIdFormat on L<Paws::E
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeIdFormat on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DescribeIdFormat.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeIdFormat.

@@ -29,7 +29,7 @@ Paws::ServiceCatalog::UpdateProduct - Arguments for method UpdateProduct on L<Pa
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UpdateProduct on the 
-AWS Service Catalog service. Use the attributes of this class
+L<AWS Service Catalog|Paws::ServiceCatalog> service. Use the attributes of this class
 as arguments to method UpdateProduct.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateProduct.

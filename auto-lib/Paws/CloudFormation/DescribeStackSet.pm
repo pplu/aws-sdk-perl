@@ -19,7 +19,7 @@ Paws::CloudFormation::DescribeStackSet - Arguments for method DescribeStackSet o
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeStackSet on the 
-AWS CloudFormation service. Use the attributes of this class
+L<AWS CloudFormation|Paws::CloudFormation> service. Use the attributes of this class
 as arguments to method DescribeStackSet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeStackSet.

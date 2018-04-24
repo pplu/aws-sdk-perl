@@ -20,7 +20,7 @@ Paws::AutoScaling::ExitStandby - Arguments for method ExitStandby on L<Paws::Aut
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ExitStandby on the 
-Auto Scaling service. Use the attributes of this class
+L<Auto Scaling|Paws::AutoScaling> service. Use the attributes of this class
 as arguments to method ExitStandby.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ExitStandby.

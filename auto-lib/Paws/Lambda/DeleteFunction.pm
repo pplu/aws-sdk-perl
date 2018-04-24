@@ -21,7 +21,7 @@ Paws::Lambda::DeleteFunction - Arguments for method DeleteFunction on L<Paws::La
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteFunction on the 
-AWS Lambda service. Use the attributes of this class
+L<AWS Lambda|Paws::Lambda> service. Use the attributes of this class
 as arguments to method DeleteFunction.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteFunction.

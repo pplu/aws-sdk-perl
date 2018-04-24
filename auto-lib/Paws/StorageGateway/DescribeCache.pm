@@ -19,7 +19,7 @@ Paws::StorageGateway::DescribeCache - Arguments for method DescribeCache on L<Pa
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeCache on the 
-AWS Storage Gateway service. Use the attributes of this class
+L<AWS Storage Gateway|Paws::StorageGateway> service. Use the attributes of this class
 as arguments to method DescribeCache.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCache.

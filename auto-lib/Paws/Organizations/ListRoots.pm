@@ -20,7 +20,7 @@ Paws::Organizations::ListRoots - Arguments for method ListRoots on L<Paws::Organ
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListRoots on the 
-AWS Organizations service. Use the attributes of this class
+L<AWS Organizations|Paws::Organizations> service. Use the attributes of this class
 as arguments to method ListRoots.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListRoots.

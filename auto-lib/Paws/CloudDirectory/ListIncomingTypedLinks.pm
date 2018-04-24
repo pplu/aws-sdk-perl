@@ -26,7 +26,7 @@ Paws::CloudDirectory::ListIncomingTypedLinks - Arguments for method ListIncoming
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListIncomingTypedLinks on the 
-Amazon CloudDirectory service. Use the attributes of this class
+L<Amazon CloudDirectory|Paws::CloudDirectory> service. Use the attributes of this class
 as arguments to method ListIncomingTypedLinks.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListIncomingTypedLinks.

@@ -20,7 +20,7 @@ Paws::CodeStar::TagProject - Arguments for method TagProject on L<Paws::CodeStar
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method TagProject on the 
-AWS CodeStar service. Use the attributes of this class
+L<AWS CodeStar|Paws::CodeStar> service. Use the attributes of this class
 as arguments to method TagProject.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to TagProject.

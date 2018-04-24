@@ -19,7 +19,7 @@ Paws::Lightsail::GetKeyPairs - Arguments for method GetKeyPairs on L<Paws::Light
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetKeyPairs on the 
-Amazon Lightsail service. Use the attributes of this class
+L<Amazon Lightsail|Paws::Lightsail> service. Use the attributes of this class
 as arguments to method GetKeyPairs.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetKeyPairs.

@@ -22,7 +22,7 @@ Paws::MigrationHub::DisassociateDiscoveredResource - Arguments for method Disass
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DisassociateDiscoveredResource on the 
-AWS Migration Hub service. Use the attributes of this class
+L<AWS Migration Hub|Paws::MigrationHub> service. Use the attributes of this class
 as arguments to method DisassociateDiscoveredResource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DisassociateDiscoveredResource.

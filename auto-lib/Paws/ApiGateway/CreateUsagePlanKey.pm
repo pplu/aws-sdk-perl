@@ -22,7 +22,7 @@ Paws::ApiGateway::CreateUsagePlanKey - Arguments for method CreateUsagePlanKey o
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateUsagePlanKey on the 
-Amazon API Gateway service. Use the attributes of this class
+L<Amazon API Gateway|Paws::ApiGateway> service. Use the attributes of this class
 as arguments to method CreateUsagePlanKey.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateUsagePlanKey.

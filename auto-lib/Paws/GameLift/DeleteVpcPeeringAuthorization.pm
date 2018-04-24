@@ -20,7 +20,7 @@ Paws::GameLift::DeleteVpcPeeringAuthorization - Arguments for method DeleteVpcPe
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteVpcPeeringAuthorization on the 
-Amazon GameLift service. Use the attributes of this class
+L<Amazon GameLift|Paws::GameLift> service. Use the attributes of this class
 as arguments to method DeleteVpcPeeringAuthorization.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteVpcPeeringAuthorization.

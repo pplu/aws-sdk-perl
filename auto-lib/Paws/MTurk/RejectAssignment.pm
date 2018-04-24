@@ -20,7 +20,7 @@ Paws::MTurk::RejectAssignment - Arguments for method RejectAssignment on L<Paws:
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method RejectAssignment on the 
-Amazon Mechanical Turk service. Use the attributes of this class
+L<Amazon Mechanical Turk|Paws::MTurk> service. Use the attributes of this class
 as arguments to method RejectAssignment.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RejectAssignment.

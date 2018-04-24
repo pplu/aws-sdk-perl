@@ -22,7 +22,7 @@ Paws::Support::AddCommunicationToCase - Arguments for method AddCommunicationToC
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method AddCommunicationToCase on the 
-AWS Support service. Use the attributes of this class
+L<AWS Support|Paws::Support> service. Use the attributes of this class
 as arguments to method AddCommunicationToCase.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddCommunicationToCase.

@@ -20,7 +20,7 @@ Paws::CodeDeploy::GetDeploymentInstance - Arguments for method GetDeploymentInst
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetDeploymentInstance on the 
-AWS CodeDeploy service. Use the attributes of this class
+L<AWS CodeDeploy|Paws::CodeDeploy> service. Use the attributes of this class
 as arguments to method GetDeploymentInstance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDeploymentInstance.

@@ -25,7 +25,7 @@ Paws::CodeBuild::StartBuild - Arguments for method StartBuild on L<Paws::CodeBui
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method StartBuild on the 
-AWS CodeBuild service. Use the attributes of this class
+L<AWS CodeBuild|Paws::CodeBuild> service. Use the attributes of this class
 as arguments to method StartBuild.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartBuild.

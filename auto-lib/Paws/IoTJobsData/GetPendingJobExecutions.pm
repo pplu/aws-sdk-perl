@@ -20,7 +20,7 @@ Paws::IoTJobsData::GetPendingJobExecutions - Arguments for method GetPendingJobE
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetPendingJobExecutions on the 
-AWS IoT Jobs Data Plane service. Use the attributes of this class
+L<AWS IoT Jobs Data Plane|Paws::IoTJobsData> service. Use the attributes of this class
 as arguments to method GetPendingJobExecutions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetPendingJobExecutions.

@@ -21,7 +21,7 @@ Paws::ElastiCache::PurchaseReservedCacheNodesOffering - Arguments for method Pur
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method PurchaseReservedCacheNodesOffering on the 
-Amazon ElastiCache service. Use the attributes of this class
+L<Amazon ElastiCache|Paws::ElastiCache> service. Use the attributes of this class
 as arguments to method PurchaseReservedCacheNodesOffering.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PurchaseReservedCacheNodesOffering.
