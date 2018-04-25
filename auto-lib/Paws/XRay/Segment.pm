@@ -37,12 +37,16 @@ segment can be compiled from documents uploaded with PutTraceSegments,
 or an C<inferred> segment for a downstream service, generated from a
 subsegment sent by the service that called it.
 
+For the full segment document schema, see AWS X-Ray Segment Documents
+(https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html)
+in the I<AWS X-Ray Developer Guide>.
+
 =head1 ATTRIBUTES
 
 
 =head2 Document => Str
 
-  The segment document
+  The segment document.
 
 
 =head2 Id => Str

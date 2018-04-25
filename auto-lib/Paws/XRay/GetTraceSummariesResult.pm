@@ -33,7 +33,8 @@ frame.
 
 =head2 TracesProcessedCount => Int
 
-The number of traces that were processed to get this set of summaries.
+The total number of traces processed, including traces that did not
+match the specified filter expression.
 
 
 =head2 TraceSummaries => ArrayRef[L<Paws::XRay::TraceSummary>]

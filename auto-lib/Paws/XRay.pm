@@ -18,6 +18,11 @@ package Paws::XRay;
     my $call_object = $self->new_with_coercions('Paws::XRay::BatchGetTraces', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetEncryptionConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::GetEncryptionConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetServiceGraph {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::XRay::GetServiceGraph', @_);
@@ -31,6 +36,11 @@ package Paws::XRay;
   sub GetTraceSummaries {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::XRay::GetTraceSummaries', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutEncryptionConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::PutEncryptionConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutTelemetryRecords {
@@ -138,7 +148,7 @@ package Paws::XRay;
   }
 
 
-  sub operations { qw/BatchGetTraces GetServiceGraph GetTraceGraph GetTraceSummaries PutTelemetryRecords PutTraceSegments / }
+  sub operations { qw/BatchGetTraces GetEncryptionConfig GetServiceGraph GetTraceGraph GetTraceSummaries PutEncryptionConfig PutTelemetryRecords PutTraceSegments / }
 
 1;
 
@@ -180,6 +190,15 @@ Returns: a L<Paws::XRay::BatchGetTracesResult> instance
 Retrieves a list of traces specified by ID. Each trace is a collection
 of segment documents that originates from a single request. Use
 C<GetTraceSummaries> to get a list of trace IDs.
+
+
+=head2 GetEncryptionConfig()
+
+Each argument is described in detail in: L<Paws::XRay::GetEncryptionConfig>
+
+Returns: a L<Paws::XRay::GetEncryptionConfigResult> instance
+
+Retrieves the current encryption configuration for X-Ray data.
 
 
 =head2 GetServiceGraph(EndTime => Str, StartTime => Str, [NextToken => Str])
@@ -233,6 +252,15 @@ filter expressions, see Using Filter Expressions
 in the I<AWS X-Ray Developer Guide>.
 
 
+=head2 PutEncryptionConfig(Type => Str, [KeyId => Str])
+
+Each argument is described in detail in: L<Paws::XRay::PutEncryptionConfig>
+
+Returns: a L<Paws::XRay::PutEncryptionConfigResult> instance
+
+Updates the encryption configuration for X-Ray data.
+
+
 =head2 PutTelemetryRecords(TelemetryRecords => ArrayRef[L<Paws::XRay::TelemetryRecord>], [EC2InstanceId => Str, Hostname => Str, ResourceARN => Str])
 
 Each argument is described in detail in: L<Paws::XRay::PutTelemetryRecords>
@@ -255,7 +283,7 @@ segment, or an array of subsegments.
 
 Segments must include the following fields. For the full segment
 document schema, see AWS X-Ray Segment Documents
-(http://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html)
+(https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html)
 in the I<AWS X-Ray Developer Guide>.
 
 B<Required Segment Document Fields>
