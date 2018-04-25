@@ -5,6 +5,7 @@ use warnings;
 
 use Data::Printer;
 use Data::Dumper;
+use Cwd;
 use JSON::MaybeXS;
 use File::Slurper 'read_binary';
 use Module::Runtime qw/require_module/;
@@ -66,7 +67,10 @@ sub process_api {
   my $class_maker = "Paws::API::Builder::${type}";
   require_module $class_maker;
 
-  my $c = $class_maker->new(api_file => $file, api => $api);
+  my $c = $class_maker->new(api_file => $file, api => $api, template_path => [
+                                getcwd() . "/templates/${type}",
+                                getcwd() . '/templates/default',
+                            ]);
   $c->process_api;
 }
 

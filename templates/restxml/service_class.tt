@@ -1,0 +1,47 @@
+[%- IF (c.enums.size) -%]
+use Moose::Util::TypeConstraints;
+[%- FOR enum_name IN c.enums.keys.sort %]
+enum '[% enum_name %]', [[% FOR val IN c.enums.$enum_name %]'[% val %]',[% END %]];
+[%- END %]
+[%- END -%]
+package [% c.api %];
+  warn "[% c.api %] is not stable / supported / entirely developed";
+  use Moose;
+  sub service { '[% c.service %]' }
+  sub version { '[% c.version %]' }
+  sub flattened_arrays { [% c.flattened_arrays %] }
+  has max_attempts => (is => 'ro', isa => 'Int', default => [% c.service_max_attempts %]);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => '[% c.service_retry.base %]', type => '[% c.service_retry.type %]', growth_factor => [% c.service_retry.growth_factor %] }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  [%- FOREACH key IN c.retry.policies.keys.sort %]
+     [%- policy = c.retry.policies.$key.applies_when.response %]
+     [%- IF (policy.service_error_code) %]
+       sub { defined $_[0]->http_status and $_[0]->http_status == [% policy.http_status_code %] and $_[0]->code eq '[% policy.service_error_code %]' },
+     [%- ELSIF (policy.crc32body) %]
+       sub { $_[0]->code eq 'Crc32Error' },
+     [%- ELSE %]
+       [% THROW 'Unknown retry type' %]
+     [%- END %]
+  [%- END %]
+  ] });
+
+  with 'Paws::API::Caller', '[% c.endpoint_role %]', '[% c.signature_role %]', '[% c.parameter_role %]';
+
+  [%- c.service_endpoint_rules %]
+  [% FOR op IN c.api_struct.operations.keys.sort %]
+  [%- op_name = op %]
+  sub [% op_name %] {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('[% c.api %]::[% op_name %]', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  [%- END %]
+  [% INCLUDE 'paginator.tt' %]
+
+  sub operations { qw/[% FOR op IN c.api_struct.operations.keys.sort; op _ ' '; END %]/ }
+
+1;
+
+[% INCLUDE 'service_documentation.tt' %]
