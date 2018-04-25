@@ -19,7 +19,7 @@ Paws::DirectConnect::DeleteVirtualInterface - Arguments for method DeleteVirtual
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteVirtualInterface on the 
-AWS Direct Connect service. Use the attributes of this class
+L<AWS Direct Connect|Paws::DirectConnect> service. Use the attributes of this class
 as arguments to method DeleteVirtualInterface.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteVirtualInterface.

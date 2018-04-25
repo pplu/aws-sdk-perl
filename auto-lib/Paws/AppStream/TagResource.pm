@@ -20,7 +20,7 @@ Paws::AppStream::TagResource - Arguments for method TagResource on L<Paws::AppSt
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method TagResource on the 
-Amazon AppStream service. Use the attributes of this class
+L<Amazon AppStream|Paws::AppStream> service. Use the attributes of this class
 as arguments to method TagResource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to TagResource.

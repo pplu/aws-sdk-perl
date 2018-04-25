@@ -20,7 +20,7 @@ Paws::ElasticTranscoder::ReadJob - Arguments for method ReadJob on L<Paws::Elast
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ReadJob on the 
-Amazon Elastic Transcoder service. Use the attributes of this class
+L<Amazon Elastic Transcoder|Paws::ElasticTranscoder> service. Use the attributes of this class
 as arguments to method ReadJob.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ReadJob.

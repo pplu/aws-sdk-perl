@@ -27,7 +27,7 @@ Paws::SageMaker::CreateNotebookInstance - Arguments for method CreateNotebookIns
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateNotebookInstance on the 
-Amazon SageMaker Service service. Use the attributes of this class
+L<Amazon SageMaker Service|Paws::SageMaker> service. Use the attributes of this class
 as arguments to method CreateNotebookInstance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateNotebookInstance.

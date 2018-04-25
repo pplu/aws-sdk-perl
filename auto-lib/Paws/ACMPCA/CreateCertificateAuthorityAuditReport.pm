@@ -21,7 +21,7 @@ Paws::ACMPCA::CreateCertificateAuthorityAuditReport - Arguments for method Creat
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateCertificateAuthorityAuditReport on the 
-AWS Certificate Manager Private Certificate Authority service. Use the attributes of this class
+L<AWS Certificate Manager Private Certificate Authority|Paws::ACMPCA> service. Use the attributes of this class
 as arguments to method CreateCertificateAuthorityAuditReport.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCertificateAuthorityAuditReport.

@@ -20,7 +20,7 @@ Paws::RDS::RemoveRoleFromDBCluster - Arguments for method RemoveRoleFromDBCluste
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method RemoveRoleFromDBCluster on the 
-Amazon Relational Database Service service. Use the attributes of this class
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method RemoveRoleFromDBCluster.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemoveRoleFromDBCluster.

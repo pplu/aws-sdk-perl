@@ -21,7 +21,7 @@ Paws::ElasticBeanstalk::RetrieveEnvironmentInfo - Arguments for method RetrieveE
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method RetrieveEnvironmentInfo on the 
-AWS Elastic Beanstalk service. Use the attributes of this class
+L<AWS Elastic Beanstalk|Paws::ElasticBeanstalk> service. Use the attributes of this class
 as arguments to method RetrieveEnvironmentInfo.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RetrieveEnvironmentInfo.

@@ -21,7 +21,7 @@ Paws::CloudSearchDomain::UploadDocuments - Arguments for method UploadDocuments 
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UploadDocuments on the 
-Amazon CloudSearch Domain service. Use the attributes of this class
+L<Amazon CloudSearch Domain|Paws::CloudSearchDomain> service. Use the attributes of this class
 as arguments to method UploadDocuments.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UploadDocuments.

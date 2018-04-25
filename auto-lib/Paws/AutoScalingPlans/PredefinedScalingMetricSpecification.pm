@@ -47,8 +47,9 @@ only to Auto Scaling groups, Sport Fleet requests, and ECS services.
 
   Identifies the resource associated with the metric type. You can't
 specify a resource label unless the metric type is
-C<ALBRequestCountPerTarget> and there is a target group attached to the
-Auto Scaling group, Spot Fleet request, or ECS service.
+C<ALBRequestCountPerTarget> and there is a target group for an
+Application Load Balancer attached to the Auto Scaling group, Spot
+Fleet request, or ECS service.
 
 The format is
 app/E<lt>load-balancer-nameE<gt>/E<lt>load-balancer-idE<gt>/targetgroup/E<lt>target-group-nameE<gt>/E<lt>target-group-idE<gt>,

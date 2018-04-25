@@ -24,7 +24,7 @@ Paws::GuardDuty::ListFindings - Arguments for method ListFindings on L<Paws::Gua
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListFindings on the 
-Amazon GuardDuty service. Use the attributes of this class
+L<Amazon GuardDuty|Paws::GuardDuty> service. Use the attributes of this class
 as arguments to method ListFindings.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListFindings.

@@ -20,7 +20,7 @@ Paws::Inspector::StartAssessmentRun - Arguments for method StartAssessmentRun on
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method StartAssessmentRun on the 
-Amazon Inspector service. Use the attributes of this class
+L<Amazon Inspector|Paws::Inspector> service. Use the attributes of this class
 as arguments to method StartAssessmentRun.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartAssessmentRun.

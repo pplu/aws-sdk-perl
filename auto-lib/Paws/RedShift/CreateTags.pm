@@ -20,7 +20,7 @@ Paws::RedShift::CreateTags - Arguments for method CreateTags on L<Paws::RedShift
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateTags on the 
-Amazon Redshift service. Use the attributes of this class
+L<Amazon Redshift|Paws::RedShift> service. Use the attributes of this class
 as arguments to method CreateTags.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateTags.

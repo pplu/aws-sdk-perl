@@ -74,12 +74,12 @@ Describes a certificate.
 
 =head2 CustomerVersion => Int
 
-  
+  The customer version of the certificate.
 
 
 =head2 GenerationId => Str
 
-  
+  The generation ID of the certificate.
 
 
 =head2 LastModifiedDate => Str

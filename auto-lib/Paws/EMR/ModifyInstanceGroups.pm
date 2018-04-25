@@ -20,7 +20,7 @@ Paws::EMR::ModifyInstanceGroups - Arguments for method ModifyInstanceGroups on L
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ModifyInstanceGroups on the 
-Amazon Elastic MapReduce service. Use the attributes of this class
+L<Amazon Elastic MapReduce|Paws::EMR> service. Use the attributes of this class
 as arguments to method ModifyInstanceGroups.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyInstanceGroups.

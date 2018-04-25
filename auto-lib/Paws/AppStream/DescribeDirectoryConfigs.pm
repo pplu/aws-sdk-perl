@@ -21,7 +21,7 @@ Paws::AppStream::DescribeDirectoryConfigs - Arguments for method DescribeDirecto
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeDirectoryConfigs on the 
-Amazon AppStream service. Use the attributes of this class
+L<Amazon AppStream|Paws::AppStream> service. Use the attributes of this class
 as arguments to method DescribeDirectoryConfigs.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDirectoryConfigs.

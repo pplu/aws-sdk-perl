@@ -20,7 +20,7 @@ Paws::OpsWorks::DetachElasticLoadBalancer - Arguments for method DetachElasticLo
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DetachElasticLoadBalancer on the 
-AWS OpsWorks service. Use the attributes of this class
+L<AWS OpsWorks|Paws::OpsWorks> service. Use the attributes of this class
 as arguments to method DetachElasticLoadBalancer.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DetachElasticLoadBalancer.

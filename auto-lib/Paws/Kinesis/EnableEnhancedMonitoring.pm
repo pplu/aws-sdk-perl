@@ -20,7 +20,7 @@ Paws::Kinesis::EnableEnhancedMonitoring - Arguments for method EnableEnhancedMon
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method EnableEnhancedMonitoring on the 
-Amazon Kinesis service. Use the attributes of this class
+L<Amazon Kinesis|Paws::Kinesis> service. Use the attributes of this class
 as arguments to method EnableEnhancedMonitoring.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to EnableEnhancedMonitoring.

@@ -27,7 +27,7 @@ Paws::LexRuntime::PostContent - Arguments for method PostContent on L<Paws::LexR
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method PostContent on the 
-Amazon Lex Runtime Service service. Use the attributes of this class
+L<Amazon Lex Runtime Service|Paws::LexRuntime> service. Use the attributes of this class
 as arguments to method PostContent.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PostContent.

@@ -23,7 +23,7 @@ Paws::Route53::ListTrafficPolicies - Arguments for method ListTrafficPolicies on
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListTrafficPolicies on the 
-Amazon Route 53 service. Use the attributes of this class
+L<Amazon Route 53|Paws::Route53> service. Use the attributes of this class
 as arguments to method ListTrafficPolicies.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTrafficPolicies.

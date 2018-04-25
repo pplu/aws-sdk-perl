@@ -21,7 +21,7 @@ Paws::EC2::ResetSnapshotAttribute - Arguments for method ResetSnapshotAttribute 
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ResetSnapshotAttribute on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method ResetSnapshotAttribute.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ResetSnapshotAttribute.

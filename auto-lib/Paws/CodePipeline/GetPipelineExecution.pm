@@ -20,7 +20,7 @@ Paws::CodePipeline::GetPipelineExecution - Arguments for method GetPipelineExecu
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetPipelineExecution on the 
-AWS CodePipeline service. Use the attributes of this class
+L<AWS CodePipeline|Paws::CodePipeline> service. Use the attributes of this class
 as arguments to method GetPipelineExecution.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetPipelineExecution.

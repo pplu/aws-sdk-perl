@@ -21,7 +21,7 @@ Paws::STS::GetFederationToken - Arguments for method GetFederationToken on L<Paw
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetFederationToken on the 
-AWS Security Token Service service. Use the attributes of this class
+L<AWS Security Token Service|Paws::STS> service. Use the attributes of this class
 as arguments to method GetFederationToken.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetFederationToken.

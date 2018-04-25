@@ -20,7 +20,7 @@ Paws::ES::DescribeElasticsearchDomains - Arguments for method DescribeElasticsea
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeElasticsearchDomains on the 
-Amazon Elasticsearch Service service. Use the attributes of this class
+L<Amazon Elasticsearch Service|Paws::ES> service. Use the attributes of this class
 as arguments to method DescribeElasticsearchDomains.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeElasticsearchDomains.

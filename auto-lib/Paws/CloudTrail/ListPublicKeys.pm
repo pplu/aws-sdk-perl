@@ -21,7 +21,7 @@ Paws::CloudTrail::ListPublicKeys - Arguments for method ListPublicKeys on L<Paws
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListPublicKeys on the 
-AWS CloudTrail service. Use the attributes of this class
+L<AWS CloudTrail|Paws::CloudTrail> service. Use the attributes of this class
 as arguments to method ListPublicKeys.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListPublicKeys.

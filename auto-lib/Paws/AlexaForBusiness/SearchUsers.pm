@@ -22,7 +22,7 @@ Paws::AlexaForBusiness::SearchUsers - Arguments for method SearchUsers on L<Paws
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method SearchUsers on the 
-Alexa For Business service. Use the attributes of this class
+L<Alexa For Business|Paws::AlexaForBusiness> service. Use the attributes of this class
 as arguments to method SearchUsers.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SearchUsers.

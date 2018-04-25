@@ -19,7 +19,7 @@ Paws::CodeStar::DescribeUserProfile - Arguments for method DescribeUserProfile o
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeUserProfile on the 
-AWS CodeStar service. Use the attributes of this class
+L<AWS CodeStar|Paws::CodeStar> service. Use the attributes of this class
 as arguments to method DescribeUserProfile.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeUserProfile.

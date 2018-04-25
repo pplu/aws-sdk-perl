@@ -20,7 +20,7 @@ Paws::CloudSearch::DescribeAvailabilityOptions - Arguments for method DescribeAv
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeAvailabilityOptions on the 
-Amazon CloudSearch service. Use the attributes of this class
+L<Amazon CloudSearch|Paws::CloudSearch> service. Use the attributes of this class
 as arguments to method DescribeAvailabilityOptions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAvailabilityOptions.

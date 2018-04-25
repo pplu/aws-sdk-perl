@@ -21,7 +21,7 @@ Paws::MediaLive::ListInputs - Arguments for method ListInputs on L<Paws::MediaLi
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListInputs on the 
-AWS Elemental MediaLive service. Use the attributes of this class
+L<AWS Elemental MediaLive|Paws::MediaLive> service. Use the attributes of this class
 as arguments to method ListInputs.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListInputs.

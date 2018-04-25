@@ -19,7 +19,7 @@ Paws::CodeBuild::BatchGetProjects - Arguments for method BatchGetProjects on L<P
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method BatchGetProjects on the 
-AWS CodeBuild service. Use the attributes of this class
+L<AWS CodeBuild|Paws::CodeBuild> service. Use the attributes of this class
 as arguments to method BatchGetProjects.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to BatchGetProjects.

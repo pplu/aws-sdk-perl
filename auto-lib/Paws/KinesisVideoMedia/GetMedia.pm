@@ -22,7 +22,7 @@ Paws::KinesisVideoMedia::GetMedia - Arguments for method GetMedia on L<Paws::Kin
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetMedia on the 
-Amazon Kinesis Video Streams Media service. Use the attributes of this class
+L<Amazon Kinesis Video Streams Media|Paws::KinesisVideoMedia> service. Use the attributes of this class
 as arguments to method GetMedia.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetMedia.

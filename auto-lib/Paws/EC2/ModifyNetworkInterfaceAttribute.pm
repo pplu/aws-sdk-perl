@@ -24,7 +24,7 @@ Paws::EC2::ModifyNetworkInterfaceAttribute - Arguments for method ModifyNetworkI
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ModifyNetworkInterfaceAttribute on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method ModifyNetworkInterfaceAttribute.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyNetworkInterfaceAttribute.

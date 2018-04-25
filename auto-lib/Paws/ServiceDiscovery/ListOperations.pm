@@ -21,7 +21,7 @@ Paws::ServiceDiscovery::ListOperations - Arguments for method ListOperations on 
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListOperations on the 
-Amazon Route 53 Auto Naming service. Use the attributes of this class
+L<Amazon Route 53 Auto Naming|Paws::ServiceDiscovery> service. Use the attributes of this class
 as arguments to method ListOperations.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListOperations.

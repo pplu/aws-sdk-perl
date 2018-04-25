@@ -29,7 +29,7 @@ Paws::StorageGateway::UpdateNFSFileShare - Arguments for method UpdateNFSFileSha
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UpdateNFSFileShare on the 
-AWS Storage Gateway service. Use the attributes of this class
+L<AWS Storage Gateway|Paws::StorageGateway> service. Use the attributes of this class
 as arguments to method UpdateNFSFileShare.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateNFSFileShare.

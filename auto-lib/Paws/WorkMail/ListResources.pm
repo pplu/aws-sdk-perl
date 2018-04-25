@@ -21,7 +21,7 @@ Paws::WorkMail::ListResources - Arguments for method ListResources on L<Paws::Wo
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListResources on the 
-Amazon WorkMail service. Use the attributes of this class
+L<Amazon WorkMail|Paws::WorkMail> service. Use the attributes of this class
 as arguments to method ListResources.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListResources.

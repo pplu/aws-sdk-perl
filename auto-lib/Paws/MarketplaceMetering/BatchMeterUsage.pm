@@ -20,7 +20,7 @@ Paws::MarketplaceMetering::BatchMeterUsage - Arguments for method BatchMeterUsag
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method BatchMeterUsage on the 
-AWSMarketplace Metering service. Use the attributes of this class
+L<AWSMarketplace Metering|Paws::MarketplaceMetering> service. Use the attributes of this class
 as arguments to method BatchMeterUsage.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to BatchMeterUsage.

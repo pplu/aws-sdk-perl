@@ -26,7 +26,7 @@ Paws::Firehose::UpdateDestination - Arguments for method UpdateDestination on L<
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UpdateDestination on the 
-Amazon Kinesis Firehose service. Use the attributes of this class
+L<Amazon Kinesis Firehose|Paws::Firehose> service. Use the attributes of this class
 as arguments to method UpdateDestination.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateDestination.

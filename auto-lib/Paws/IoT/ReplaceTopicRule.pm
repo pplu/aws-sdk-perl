@@ -21,7 +21,7 @@ Paws::IoT::ReplaceTopicRule - Arguments for method ReplaceTopicRule on L<Paws::I
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ReplaceTopicRule on the 
-AWS IoT service. Use the attributes of this class
+L<AWS IoT|Paws::IoT> service. Use the attributes of this class
 as arguments to method ReplaceTopicRule.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ReplaceTopicRule.

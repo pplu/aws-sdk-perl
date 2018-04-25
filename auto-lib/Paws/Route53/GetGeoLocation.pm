@@ -24,7 +24,7 @@ Paws::Route53::GetGeoLocation - Arguments for method GetGeoLocation on L<Paws::R
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetGeoLocation on the 
-Amazon Route 53 service. Use the attributes of this class
+L<Amazon Route 53|Paws::Route53> service. Use the attributes of this class
 as arguments to method GetGeoLocation.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetGeoLocation.

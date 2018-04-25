@@ -19,7 +19,7 @@ Paws::CloudTrail::GetEventSelectors - Arguments for method GetEventSelectors on 
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetEventSelectors on the 
-AWS CloudTrail service. Use the attributes of this class
+L<AWS CloudTrail|Paws::CloudTrail> service. Use the attributes of this class
 as arguments to method GetEventSelectors.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetEventSelectors.

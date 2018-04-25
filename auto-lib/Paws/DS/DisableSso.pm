@@ -21,7 +21,7 @@ Paws::DS::DisableSso - Arguments for method DisableSso on L<Paws::DS>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DisableSso on the 
-AWS Directory Service service. Use the attributes of this class
+L<AWS Directory Service|Paws::DS> service. Use the attributes of this class
 as arguments to method DisableSso.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DisableSso.

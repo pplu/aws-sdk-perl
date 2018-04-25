@@ -23,7 +23,7 @@ Paws::AlexaForBusiness::UpdateRoom - Arguments for method UpdateRoom on L<Paws::
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UpdateRoom on the 
-Alexa For Business service. Use the attributes of this class
+L<Alexa For Business|Paws::AlexaForBusiness> service. Use the attributes of this class
 as arguments to method UpdateRoom.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateRoom.

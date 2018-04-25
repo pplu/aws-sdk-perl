@@ -24,7 +24,7 @@ Paws::WorkSpaces::DescribeWorkspaces - Arguments for method DescribeWorkspaces o
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeWorkspaces on the 
-Amazon WorkSpaces service. Use the attributes of this class
+L<Amazon WorkSpaces|Paws::WorkSpaces> service. Use the attributes of this class
 as arguments to method DescribeWorkspaces.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeWorkspaces.

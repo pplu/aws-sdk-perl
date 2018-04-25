@@ -19,7 +19,7 @@ Paws::AppStream::ExpireSession - Arguments for method ExpireSession on L<Paws::A
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ExpireSession on the 
-Amazon AppStream service. Use the attributes of this class
+L<Amazon AppStream|Paws::AppStream> service. Use the attributes of this class
 as arguments to method ExpireSession.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ExpireSession.

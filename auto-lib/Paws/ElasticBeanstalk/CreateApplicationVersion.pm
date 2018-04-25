@@ -26,7 +26,7 @@ Paws::ElasticBeanstalk::CreateApplicationVersion - Arguments for method CreateAp
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateApplicationVersion on the 
-AWS Elastic Beanstalk service. Use the attributes of this class
+L<AWS Elastic Beanstalk|Paws::ElasticBeanstalk> service. Use the attributes of this class
 as arguments to method CreateApplicationVersion.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateApplicationVersion.

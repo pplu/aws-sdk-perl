@@ -22,7 +22,7 @@ Paws::ACM::ImportCertificate - Arguments for method ImportCertificate on L<Paws:
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ImportCertificate on the 
-AWS Certificate Manager service. Use the attributes of this class
+L<AWS Certificate Manager|Paws::ACM> service. Use the attributes of this class
 as arguments to method ImportCertificate.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ImportCertificate.

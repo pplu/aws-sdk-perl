@@ -5,6 +5,7 @@
  - Better docu generation (osoriano)
  - Documentation update: Now POD contains links from the botocore documentation
  - Bump XML::Simple dependency to 2.21 (mla)
+ - Documentation improvement: Link back to Service class from method parameters classes (castaway)
  - New API: Pricing
  - New API: CostExplorer
  - New API: Translate
@@ -27,6 +28,7 @@
  - New API: ACMCPA
  - New API: FMS
  - New API: SecretsManager
+ - New API: IoTAnalytics
  - API update: IoT
  - API update: Shield
  - API update: Rekognition

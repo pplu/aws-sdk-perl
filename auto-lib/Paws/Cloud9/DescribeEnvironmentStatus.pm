@@ -19,7 +19,7 @@ Paws::Cloud9::DescribeEnvironmentStatus - Arguments for method DescribeEnvironme
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeEnvironmentStatus on the 
-AWS Cloud9 service. Use the attributes of this class
+L<AWS Cloud9|Paws::Cloud9> service. Use the attributes of this class
 as arguments to method DescribeEnvironmentStatus.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEnvironmentStatus.

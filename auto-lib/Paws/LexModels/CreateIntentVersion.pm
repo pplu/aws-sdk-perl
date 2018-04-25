@@ -21,7 +21,7 @@ Paws::LexModels::CreateIntentVersion - Arguments for method CreateIntentVersion 
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateIntentVersion on the 
-Amazon Lex Model Building Service service. Use the attributes of this class
+L<Amazon Lex Model Building Service|Paws::LexModels> service. Use the attributes of this class
 as arguments to method CreateIntentVersion.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateIntentVersion.

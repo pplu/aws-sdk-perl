@@ -20,7 +20,7 @@ Paws::ELBv2::AddListenerCertificates - Arguments for method AddListenerCertifica
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method AddListenerCertificates on the 
-Elastic Load Balancing service. Use the attributes of this class
+L<Elastic Load Balancing|Paws::ELBv2> service. Use the attributes of this class
 as arguments to method AddListenerCertificates.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddListenerCertificates.

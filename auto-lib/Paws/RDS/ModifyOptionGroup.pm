@@ -22,7 +22,7 @@ Paws::RDS::ModifyOptionGroup - Arguments for method ModifyOptionGroup on L<Paws:
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ModifyOptionGroup on the 
-Amazon Relational Database Service service. Use the attributes of this class
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method ModifyOptionGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyOptionGroup.

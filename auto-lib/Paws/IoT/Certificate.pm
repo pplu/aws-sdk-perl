@@ -46,7 +46,8 @@ Information about a certificate.
 
 =head2 CertificateId => Str
 
-  The ID of the certificate.
+  The ID of the certificate. (The last part of the certificate ARN
+contains the certificate ID.)
 
 
 =head2 CreationDate => Str

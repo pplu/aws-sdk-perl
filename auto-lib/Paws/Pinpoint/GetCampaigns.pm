@@ -22,7 +22,7 @@ Paws::Pinpoint::GetCampaigns - Arguments for method GetCampaigns on L<Paws::Pinp
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetCampaigns on the 
-Amazon Pinpoint service. Use the attributes of this class
+L<Amazon Pinpoint|Paws::Pinpoint> service. Use the attributes of this class
 as arguments to method GetCampaigns.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetCampaigns.

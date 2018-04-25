@@ -24,7 +24,7 @@ Paws::S3::PutBucketMetricsConfiguration - Arguments for method PutBucketMetricsC
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method PutBucketMetricsConfiguration on the 
-Amazon Simple Storage Service service. Use the attributes of this class
+L<Amazon Simple Storage Service|Paws::S3> service. Use the attributes of this class
 as arguments to method PutBucketMetricsConfiguration.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutBucketMetricsConfiguration.

@@ -19,7 +19,7 @@ Paws::KMS::CancelKeyDeletion - Arguments for method CancelKeyDeletion on L<Paws:
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CancelKeyDeletion on the 
-AWS Key Management Service service. Use the attributes of this class
+L<AWS Key Management Service|Paws::KMS> service. Use the attributes of this class
 as arguments to method CancelKeyDeletion.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CancelKeyDeletion.

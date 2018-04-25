@@ -20,7 +20,7 @@ Paws::SNS::SetEndpointAttributes - Arguments for method SetEndpointAttributes on
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method SetEndpointAttributes on the 
-Amazon Simple Notification Service service. Use the attributes of this class
+L<Amazon Simple Notification Service|Paws::SNS> service. Use the attributes of this class
 as arguments to method SetEndpointAttributes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetEndpointAttributes.

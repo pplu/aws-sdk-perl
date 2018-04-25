@@ -21,7 +21,7 @@ Paws::AutoScalingPlans::CreateScalingPlan - Arguments for method CreateScalingPl
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateScalingPlan on the 
-AWS Auto Scaling Plans service. Use the attributes of this class
+L<AWS Auto Scaling Plans|Paws::AutoScalingPlans> service. Use the attributes of this class
 as arguments to method CreateScalingPlan.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateScalingPlan.
@@ -37,7 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationSource => L<Paws::AutoScalingPlans::ApplicationSource>
 
-The source for the application.
+A CloudFormation stack or set of tags. You can create one scaling plan
+per application source.
 
 
 
@@ -49,7 +50,8 @@ The scaling instructions.
 
 =head2 B<REQUIRED> ScalingPlanName => Str
 
-The name of the scaling plan.
+The name of the scaling plan. Names cannot contain vertical bars,
+colons, or forward slashes.
 
 
 

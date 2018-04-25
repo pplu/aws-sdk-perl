@@ -20,7 +20,7 @@ Paws::Snowball::DescribeAddresses - Arguments for method DescribeAddresses on L<
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeAddresses on the 
-Amazon Import/Export Snowball service. Use the attributes of this class
+L<Amazon Import/Export Snowball|Paws::Snowball> service. Use the attributes of this class
 as arguments to method DescribeAddresses.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAddresses.

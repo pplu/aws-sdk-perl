@@ -19,7 +19,7 @@ Paws::Support::DescribeSeverityLevels - Arguments for method DescribeSeverityLev
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeSeverityLevels on the 
-AWS Support service. Use the attributes of this class
+L<AWS Support|Paws::Support> service. Use the attributes of this class
 as arguments to method DescribeSeverityLevels.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSeverityLevels.

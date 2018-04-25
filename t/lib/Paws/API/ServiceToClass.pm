@@ -75,6 +75,7 @@ package Paws::API::ServiceToClass;
     health => 'Health',
     iam => 'IAM',
     iot => 'IoT',
+    iotanalytics => 'IoTAnalytics',
    'iot-jobs-data' => 'IoTJobsData',
    'iot-data' => 'IoTData',
     inspector => 'Inspector',

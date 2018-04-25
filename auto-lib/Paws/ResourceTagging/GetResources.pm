@@ -23,7 +23,7 @@ Paws::ResourceTagging::GetResources - Arguments for method GetResources on L<Paw
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetResources on the 
-AWS Resource Groups Tagging API service. Use the attributes of this class
+L<AWS Resource Groups Tagging API|Paws::ResourceTagging> service. Use the attributes of this class
 as arguments to method GetResources.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetResources.

@@ -24,7 +24,7 @@ Paws::CloudWatchEvents::PutRule - Arguments for method PutRule on L<Paws::CloudW
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method PutRule on the 
-Amazon CloudWatch Events service. Use the attributes of this class
+L<Amazon CloudWatch Events|Paws::CloudWatchEvents> service. Use the attributes of this class
 as arguments to method PutRule.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutRule.

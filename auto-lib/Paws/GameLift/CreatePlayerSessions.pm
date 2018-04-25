@@ -21,7 +21,7 @@ Paws::GameLift::CreatePlayerSessions - Arguments for method CreatePlayerSessions
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreatePlayerSessions on the 
-Amazon GameLift service. Use the attributes of this class
+L<Amazon GameLift|Paws::GameLift> service. Use the attributes of this class
 as arguments to method CreatePlayerSessions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreatePlayerSessions.

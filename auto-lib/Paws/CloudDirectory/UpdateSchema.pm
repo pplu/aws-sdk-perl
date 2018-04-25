@@ -21,7 +21,7 @@ Paws::CloudDirectory::UpdateSchema - Arguments for method UpdateSchema on L<Paws
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UpdateSchema on the 
-Amazon CloudDirectory service. Use the attributes of this class
+L<Amazon CloudDirectory|Paws::CloudDirectory> service. Use the attributes of this class
 as arguments to method UpdateSchema.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateSchema.

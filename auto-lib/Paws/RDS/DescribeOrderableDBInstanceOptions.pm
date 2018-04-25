@@ -26,7 +26,7 @@ Paws::RDS::DescribeOrderableDBInstanceOptions - Arguments for method DescribeOrd
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeOrderableDBInstanceOptions on the 
-Amazon Relational Database Service service. Use the attributes of this class
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method DescribeOrderableDBInstanceOptions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeOrderableDBInstanceOptions.

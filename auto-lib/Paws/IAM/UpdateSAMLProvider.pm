@@ -20,7 +20,7 @@ Paws::IAM::UpdateSAMLProvider - Arguments for method UpdateSAMLProvider on L<Paw
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UpdateSAMLProvider on the 
-AWS Identity and Access Management service. Use the attributes of this class
+L<AWS Identity and Access Management|Paws::IAM> service. Use the attributes of this class
 as arguments to method UpdateSAMLProvider.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateSAMLProvider.

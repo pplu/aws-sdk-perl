@@ -22,7 +22,7 @@ Paws::CloudWatchLogs::DescribeSubscriptionFilters - Arguments for method Describ
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeSubscriptionFilters on the 
-Amazon CloudWatch Logs service. Use the attributes of this class
+L<Amazon CloudWatch Logs|Paws::CloudWatchLogs> service. Use the attributes of this class
 as arguments to method DescribeSubscriptionFilters.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSubscriptionFilters.

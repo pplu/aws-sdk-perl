@@ -28,7 +28,7 @@ Paws::SageMaker::ListEndpoints - Arguments for method ListEndpoints on L<Paws::S
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListEndpoints on the 
-Amazon SageMaker Service service. Use the attributes of this class
+L<Amazon SageMaker Service|Paws::SageMaker> service. Use the attributes of this class
 as arguments to method ListEndpoints.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListEndpoints.

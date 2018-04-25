@@ -22,7 +22,7 @@ Paws::GameLift::UpdateGameSessionQueue - Arguments for method UpdateGameSessionQ
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UpdateGameSessionQueue on the 
-Amazon GameLift service. Use the attributes of this class
+L<Amazon GameLift|Paws::GameLift> service. Use the attributes of this class
 as arguments to method UpdateGameSessionQueue.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateGameSessionQueue.

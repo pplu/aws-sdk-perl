@@ -22,7 +22,7 @@ Paws::ServerlessRepo::ListApplicationVersions - Arguments for method ListApplica
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListApplicationVersions on the 
-AWSServerlessApplicationRepository service. Use the attributes of this class
+L<AWSServerlessApplicationRepository|Paws::ServerlessRepo> service. Use the attributes of this class
 as arguments to method ListApplicationVersions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListApplicationVersions.

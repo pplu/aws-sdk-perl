@@ -20,7 +20,7 @@ Paws::DeviceFarm::ListProjects - Arguments for method ListProjects on L<Paws::De
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListProjects on the 
-AWS Device Farm service. Use the attributes of this class
+L<AWS Device Farm|Paws::DeviceFarm> service. Use the attributes of this class
 as arguments to method ListProjects.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListProjects.

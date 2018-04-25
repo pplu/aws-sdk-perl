@@ -19,7 +19,7 @@ Paws::SDB::CreateDomain - Arguments for method CreateDomain on L<Paws::SDB>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateDomain on the 
-Amazon SimpleDB service. Use the attributes of this class
+L<Amazon SimpleDB|Paws::SDB> service. Use the attributes of this class
 as arguments to method CreateDomain.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDomain.

@@ -21,7 +21,7 @@ Paws::ServiceCatalog::ListPortfolios - Arguments for method ListPortfolios on L<
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListPortfolios on the 
-AWS Service Catalog service. Use the attributes of this class
+L<AWS Service Catalog|Paws::ServiceCatalog> service. Use the attributes of this class
 as arguments to method ListPortfolios.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListPortfolios.

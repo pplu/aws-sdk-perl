@@ -24,7 +24,7 @@ Paws::KinesisVideo::CreateStream - Arguments for method CreateStream on L<Paws::
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateStream on the 
-Amazon Kinesis Video Streams service. Use the attributes of this class
+L<Amazon Kinesis Video Streams|Paws::KinesisVideo> service. Use the attributes of this class
 as arguments to method CreateStream.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateStream.

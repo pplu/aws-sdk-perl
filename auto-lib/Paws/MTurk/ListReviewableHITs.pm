@@ -22,7 +22,7 @@ Paws::MTurk::ListReviewableHITs - Arguments for method ListReviewableHITs on L<P
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListReviewableHITs on the 
-Amazon Mechanical Turk service. Use the attributes of this class
+L<Amazon Mechanical Turk|Paws::MTurk> service. Use the attributes of this class
 as arguments to method ListReviewableHITs.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListReviewableHITs.

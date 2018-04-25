@@ -21,7 +21,7 @@ Paws::Translate::TranslateText - Arguments for method TranslateText on L<Paws::T
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method TranslateText on the 
-Amazon Translate service. Use the attributes of this class
+L<Amazon Translate|Paws::Translate> service. Use the attributes of this class
 as arguments to method TranslateText.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to TranslateText.

@@ -22,7 +22,7 @@ Paws::WorkDocs::GetFolder - Arguments for method GetFolder on L<Paws::WorkDocs>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetFolder on the 
-Amazon WorkDocs service. Use the attributes of this class
+L<Amazon WorkDocs|Paws::WorkDocs> service. Use the attributes of this class
 as arguments to method GetFolder.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetFolder.

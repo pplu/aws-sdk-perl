@@ -21,7 +21,7 @@ Paws::ApiGateway::GetStages - Arguments for method GetStages on L<Paws::ApiGatew
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetStages on the 
-Amazon API Gateway service. Use the attributes of this class
+L<Amazon API Gateway|Paws::ApiGateway> service. Use the attributes of this class
 as arguments to method GetStages.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetStages.

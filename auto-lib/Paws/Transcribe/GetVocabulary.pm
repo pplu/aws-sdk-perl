@@ -19,7 +19,7 @@ Paws::Transcribe::GetVocabulary - Arguments for method GetVocabulary on L<Paws::
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetVocabulary on the 
-Amazon Transcribe Service service. Use the attributes of this class
+L<Amazon Transcribe Service|Paws::Transcribe> service. Use the attributes of this class
 as arguments to method GetVocabulary.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetVocabulary.

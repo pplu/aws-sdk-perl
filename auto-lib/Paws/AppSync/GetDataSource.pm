@@ -21,7 +21,7 @@ Paws::AppSync::GetDataSource - Arguments for method GetDataSource on L<Paws::App
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetDataSource on the 
-AWS AppSync service. Use the attributes of this class
+L<AWS AppSync|Paws::AppSync> service. Use the attributes of this class
 as arguments to method GetDataSource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDataSource.

@@ -21,7 +21,7 @@ Paws::Organizations::MoveAccount - Arguments for method MoveAccount on L<Paws::O
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method MoveAccount on the 
-AWS Organizations service. Use the attributes of this class
+L<AWS Organizations|Paws::Organizations> service. Use the attributes of this class
 as arguments to method MoveAccount.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to MoveAccount.

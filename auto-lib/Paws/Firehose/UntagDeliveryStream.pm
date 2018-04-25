@@ -20,7 +20,7 @@ Paws::Firehose::UntagDeliveryStream - Arguments for method UntagDeliveryStream o
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UntagDeliveryStream on the 
-Amazon Kinesis Firehose service. Use the attributes of this class
+L<Amazon Kinesis Firehose|Paws::Firehose> service. Use the attributes of this class
 as arguments to method UntagDeliveryStream.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UntagDeliveryStream.

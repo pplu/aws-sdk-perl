@@ -23,7 +23,7 @@ Paws::Pricing::GetProducts - Arguments for method GetProducts on L<Paws::Pricing
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetProducts on the 
-AWS Price List Service service. Use the attributes of this class
+L<AWS Price List Service|Paws::Pricing> service. Use the attributes of this class
 as arguments to method GetProducts.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetProducts.

@@ -20,7 +20,7 @@ Paws::DS::DeregisterEventTopic - Arguments for method DeregisterEventTopic on L<
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeregisterEventTopic on the 
-AWS Directory Service service. Use the attributes of this class
+L<AWS Directory Service|Paws::DS> service. Use the attributes of this class
 as arguments to method DeregisterEventTopic.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeregisterEventTopic.

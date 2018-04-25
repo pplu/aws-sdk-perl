@@ -20,7 +20,7 @@ Paws::CloudFormation::DescribeStackEvents - Arguments for method DescribeStackEv
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeStackEvents on the 
-AWS CloudFormation service. Use the attributes of this class
+L<AWS CloudFormation|Paws::CloudFormation> service. Use the attributes of this class
 as arguments to method DescribeStackEvents.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeStackEvents.

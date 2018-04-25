@@ -20,7 +20,7 @@ Paws::Greengrass::DeleteDeviceDefinition - Arguments for method DeleteDeviceDefi
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteDeviceDefinition on the 
-AWS Greengrass service. Use the attributes of this class
+L<AWS Greengrass|Paws::Greengrass> service. Use the attributes of this class
 as arguments to method DeleteDeviceDefinition.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDeviceDefinition.

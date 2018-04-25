@@ -20,7 +20,7 @@ Paws::WAFRegional::DeleteRule - Arguments for method DeleteRule on L<Paws::WAFRe
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteRule on the 
-AWS WAF Regional service. Use the attributes of this class
+L<AWS WAF Regional|Paws::WAFRegional> service. Use the attributes of this class
 as arguments to method DeleteRule.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteRule.

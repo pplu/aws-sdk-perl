@@ -20,7 +20,7 @@ Paws::Cloud9::ListEnvironments - Arguments for method ListEnvironments on L<Paws
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListEnvironments on the 
-AWS Cloud9 service. Use the attributes of this class
+L<AWS Cloud9|Paws::Cloud9> service. Use the attributes of this class
 as arguments to method ListEnvironments.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListEnvironments.

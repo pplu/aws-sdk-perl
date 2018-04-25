@@ -34,7 +34,7 @@ Paws::DynamoDB::Scan - Arguments for method Scan on L<Paws::DynamoDB>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method Scan on the 
-Amazon DynamoDB service. Use the attributes of this class
+L<Amazon DynamoDB|Paws::DynamoDB> service. Use the attributes of this class
 as arguments to method Scan.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to Scan.

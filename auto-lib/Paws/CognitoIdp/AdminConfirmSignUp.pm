@@ -20,7 +20,7 @@ Paws::CognitoIdp::AdminConfirmSignUp - Arguments for method AdminConfirmSignUp o
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method AdminConfirmSignUp on the 
-Amazon Cognito Identity Provider service. Use the attributes of this class
+L<Amazon Cognito Identity Provider|Paws::CognitoIdp> service. Use the attributes of this class
 as arguments to method AdminConfirmSignUp.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AdminConfirmSignUp.

@@ -21,7 +21,7 @@ Paws::MTurk::NotifyWorkers - Arguments for method NotifyWorkers on L<Paws::MTurk
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method NotifyWorkers on the 
-Amazon Mechanical Turk service. Use the attributes of this class
+L<Amazon Mechanical Turk|Paws::MTurk> service. Use the attributes of this class
 as arguments to method NotifyWorkers.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to NotifyWorkers.

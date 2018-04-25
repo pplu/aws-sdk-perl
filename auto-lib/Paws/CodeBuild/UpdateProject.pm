@@ -30,7 +30,7 @@ Paws::CodeBuild::UpdateProject - Arguments for method UpdateProject on L<Paws::C
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UpdateProject on the 
-AWS CodeBuild service. Use the attributes of this class
+L<AWS CodeBuild|Paws::CodeBuild> service. Use the attributes of this class
 as arguments to method UpdateProject.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateProject.

@@ -20,7 +20,7 @@ Paws::Budgets::DescribeBudget - Arguments for method DescribeBudget on L<Paws::B
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeBudget on the 
-AWS Budgets service. Use the attributes of this class
+L<AWS Budgets|Paws::Budgets> service. Use the attributes of this class
 as arguments to method DescribeBudget.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeBudget.

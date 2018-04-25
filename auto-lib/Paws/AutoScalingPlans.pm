@@ -34,10 +34,15 @@ package Paws::AutoScalingPlans;
     my $call_object = $self->new_with_coercions('Paws::AutoScalingPlans::DescribeScalingPlans', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateScalingPlan {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AutoScalingPlans::UpdateScalingPlan', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/CreateScalingPlan DeleteScalingPlan DescribeScalingPlanResources DescribeScalingPlans / }
+  sub operations { qw/CreateScalingPlan DeleteScalingPlan DescribeScalingPlanResources DescribeScalingPlans UpdateScalingPlan / }
 
 1;
 
@@ -64,6 +69,8 @@ Paws::AutoScalingPlans - Perl Interface to AWS AWS Auto Scaling Plans
   );
 
 =head1 DESCRIPTION
+
+AWS Auto Scaling
 
 Use AWS Auto Scaling to quickly discover all the scalable AWS resources
 for your application and configure dynamic scaling for your scalable
@@ -118,6 +125,18 @@ Each argument is described in detail in: L<Paws::AutoScalingPlans::DescribeScali
 Returns: a L<Paws::AutoScalingPlans::DescribeScalingPlansResponse> instance
 
 Describes the specified scaling plans or all of your scaling plans.
+
+
+=head2 UpdateScalingPlan(ScalingPlanName => Str, ScalingPlanVersion => Int, [ApplicationSource => L<Paws::AutoScalingPlans::ApplicationSource>, ScalingInstructions => ArrayRef[L<Paws::AutoScalingPlans::ScalingInstruction>]])
+
+Each argument is described in detail in: L<Paws::AutoScalingPlans::UpdateScalingPlan>
+
+Returns: a L<Paws::AutoScalingPlans::UpdateScalingPlanResponse> instance
+
+Updates the scaling plan for the specified scaling plan.
+
+You cannot update a scaling plan if it is in the process of being
+created, updated, or deleted.
 
 
 

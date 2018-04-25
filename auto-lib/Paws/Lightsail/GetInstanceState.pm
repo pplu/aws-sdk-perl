@@ -19,7 +19,7 @@ Paws::Lightsail::GetInstanceState - Arguments for method GetInstanceState on L<P
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetInstanceState on the 
-Amazon Lightsail service. Use the attributes of this class
+L<Amazon Lightsail|Paws::Lightsail> service. Use the attributes of this class
 as arguments to method GetInstanceState.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetInstanceState.

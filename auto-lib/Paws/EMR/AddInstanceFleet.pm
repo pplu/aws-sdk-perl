@@ -20,7 +20,7 @@ Paws::EMR::AddInstanceFleet - Arguments for method AddInstanceFleet on L<Paws::E
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method AddInstanceFleet on the 
-Amazon Elastic MapReduce service. Use the attributes of this class
+L<Amazon Elastic MapReduce|Paws::EMR> service. Use the attributes of this class
 as arguments to method AddInstanceFleet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddInstanceFleet.

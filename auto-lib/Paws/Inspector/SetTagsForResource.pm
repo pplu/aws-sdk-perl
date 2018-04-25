@@ -20,7 +20,7 @@ Paws::Inspector::SetTagsForResource - Arguments for method SetTagsForResource on
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method SetTagsForResource on the 
-Amazon Inspector service. Use the attributes of this class
+L<Amazon Inspector|Paws::Inspector> service. Use the attributes of this class
 as arguments to method SetTagsForResource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetTagsForResource.

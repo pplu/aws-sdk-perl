@@ -20,7 +20,7 @@ Paws::ServiceCatalog::DescribeProductView - Arguments for method DescribeProduct
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeProductView on the 
-AWS Service Catalog service. Use the attributes of this class
+L<AWS Service Catalog|Paws::ServiceCatalog> service. Use the attributes of this class
 as arguments to method DescribeProductView.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeProductView.

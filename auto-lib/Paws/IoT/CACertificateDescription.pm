@@ -73,17 +73,17 @@ certificates. Valid values are "ENABLE" and "DISABLE"
 
 =head2 CustomerVersion => Int
 
-  
+  The customer version of the CA certificate.
 
 
 =head2 GenerationId => Str
 
-  
+  The generation ID of the CA certificate.
 
 
 =head2 LastModifiedDate => Str
 
-  
+  The date the CA certificate was last modified.
 
 
 =head2 OwnedBy => Str

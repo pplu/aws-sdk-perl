@@ -20,7 +20,7 @@ Paws::FMS::PutNotificationChannel - Arguments for method PutNotificationChannel 
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method PutNotificationChannel on the 
-Firewall Management Service service. Use the attributes of this class
+L<Firewall Management Service|Paws::FMS> service. Use the attributes of this class
 as arguments to method PutNotificationChannel.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutNotificationChannel.

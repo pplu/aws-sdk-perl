@@ -22,7 +22,7 @@ Paws::IoT::ListCACertificates - Arguments for method ListCACertificates on L<Paw
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListCACertificates on the 
-AWS IoT service. Use the attributes of this class
+L<AWS IoT|Paws::IoT> service. Use the attributes of this class
 as arguments to method ListCACertificates.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListCACertificates.

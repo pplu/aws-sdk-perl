@@ -20,7 +20,7 @@ Paws::DataPipeline::GetPipelineDefinition - Arguments for method GetPipelineDefi
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetPipelineDefinition on the 
-AWS Data Pipeline service. Use the attributes of this class
+L<AWS Data Pipeline|Paws::DataPipeline> service. Use the attributes of this class
 as arguments to method GetPipelineDefinition.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetPipelineDefinition.

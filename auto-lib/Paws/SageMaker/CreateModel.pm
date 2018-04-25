@@ -22,7 +22,7 @@ Paws::SageMaker::CreateModel - Arguments for method CreateModel on L<Paws::SageM
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateModel on the 
-Amazon SageMaker Service service. Use the attributes of this class
+L<Amazon SageMaker Service|Paws::SageMaker> service. Use the attributes of this class
 as arguments to method CreateModel.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateModel.

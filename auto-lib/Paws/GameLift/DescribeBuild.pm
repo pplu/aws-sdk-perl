@@ -19,7 +19,7 @@ Paws::GameLift::DescribeBuild - Arguments for method DescribeBuild on L<Paws::Ga
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeBuild on the 
-Amazon GameLift service. Use the attributes of this class
+L<Amazon GameLift|Paws::GameLift> service. Use the attributes of this class
 as arguments to method DescribeBuild.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeBuild.

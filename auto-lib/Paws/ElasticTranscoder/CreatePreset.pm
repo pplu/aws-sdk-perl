@@ -25,7 +25,7 @@ Paws::ElasticTranscoder::CreatePreset - Arguments for method CreatePreset on L<P
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreatePreset on the 
-Amazon Elastic Transcoder service. Use the attributes of this class
+L<Amazon Elastic Transcoder|Paws::ElasticTranscoder> service. Use the attributes of this class
 as arguments to method CreatePreset.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreatePreset.

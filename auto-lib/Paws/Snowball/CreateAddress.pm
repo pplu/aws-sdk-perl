@@ -19,7 +19,7 @@ Paws::Snowball::CreateAddress - Arguments for method CreateAddress on L<Paws::Sn
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateAddress on the 
-Amazon Import/Export Snowball service. Use the attributes of this class
+L<Amazon Import/Export Snowball|Paws::Snowball> service. Use the attributes of this class
 as arguments to method CreateAddress.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateAddress.

@@ -19,7 +19,7 @@ Paws::MachineLearning::DeleteDataSource - Arguments for method DeleteDataSource 
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteDataSource on the 
-Amazon Machine Learning service. Use the attributes of this class
+L<Amazon Machine Learning|Paws::MachineLearning> service. Use the attributes of this class
 as arguments to method DeleteDataSource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDataSource.

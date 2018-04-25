@@ -20,7 +20,7 @@ Paws::EMR::SetTerminationProtection - Arguments for method SetTerminationProtect
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method SetTerminationProtection on the 
-Amazon Elastic MapReduce service. Use the attributes of this class
+L<Amazon Elastic MapReduce|Paws::EMR> service. Use the attributes of this class
 as arguments to method SetTerminationProtection.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetTerminationProtection.

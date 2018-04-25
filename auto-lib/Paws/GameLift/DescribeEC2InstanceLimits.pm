@@ -19,7 +19,7 @@ Paws::GameLift::DescribeEC2InstanceLimits - Arguments for method DescribeEC2Inst
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeEC2InstanceLimits on the 
-Amazon GameLift service. Use the attributes of this class
+L<Amazon GameLift|Paws::GameLift> service. Use the attributes of this class
 as arguments to method DescribeEC2InstanceLimits.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEC2InstanceLimits.

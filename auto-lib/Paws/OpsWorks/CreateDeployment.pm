@@ -25,7 +25,7 @@ Paws::OpsWorks::CreateDeployment - Arguments for method CreateDeployment on L<Pa
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateDeployment on the 
-AWS OpsWorks service. Use the attributes of this class
+L<AWS OpsWorks|Paws::OpsWorks> service. Use the attributes of this class
 as arguments to method CreateDeployment.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDeployment.

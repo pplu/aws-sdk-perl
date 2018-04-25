@@ -21,7 +21,7 @@ Paws::AutoScaling::SetDesiredCapacity - Arguments for method SetDesiredCapacity 
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method SetDesiredCapacity on the 
-Auto Scaling service. Use the attributes of this class
+L<Auto Scaling|Paws::AutoScaling> service. Use the attributes of this class
 as arguments to method SetDesiredCapacity.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetDesiredCapacity.

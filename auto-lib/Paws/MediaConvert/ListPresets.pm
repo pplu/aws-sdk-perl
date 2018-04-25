@@ -24,7 +24,7 @@ Paws::MediaConvert::ListPresets - Arguments for method ListPresets on L<Paws::Me
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListPresets on the 
-AWS Elemental MediaConvert service. Use the attributes of this class
+L<AWS Elemental MediaConvert|Paws::MediaConvert> service. Use the attributes of this class
 as arguments to method ListPresets.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListPresets.

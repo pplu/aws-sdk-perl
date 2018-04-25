@@ -19,7 +19,7 @@ Paws::DeviceFarm::GetInstanceProfile - Arguments for method GetInstanceProfile o
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetInstanceProfile on the 
-AWS Device Farm service. Use the attributes of this class
+L<AWS Device Farm|Paws::DeviceFarm> service. Use the attributes of this class
 as arguments to method GetInstanceProfile.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetInstanceProfile.

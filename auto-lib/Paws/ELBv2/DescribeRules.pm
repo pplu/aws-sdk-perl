@@ -22,7 +22,7 @@ Paws::ELBv2::DescribeRules - Arguments for method DescribeRules on L<Paws::ELBv2
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeRules on the 
-Elastic Load Balancing service. Use the attributes of this class
+L<Elastic Load Balancing|Paws::ELBv2> service. Use the attributes of this class
 as arguments to method DescribeRules.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeRules.

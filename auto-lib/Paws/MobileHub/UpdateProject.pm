@@ -21,7 +21,7 @@ Paws::MobileHub::UpdateProject - Arguments for method UpdateProject on L<Paws::M
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UpdateProject on the 
-AWS Mobile service. Use the attributes of this class
+L<AWS Mobile|Paws::MobileHub> service. Use the attributes of this class
 as arguments to method UpdateProject.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateProject.

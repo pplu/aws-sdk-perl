@@ -20,7 +20,7 @@ Paws::SQS::GetQueueUrl - Arguments for method GetQueueUrl on L<Paws::SQS>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetQueueUrl on the 
-Amazon Simple Queue Service service. Use the attributes of this class
+L<Amazon Simple Queue Service|Paws::SQS> service. Use the attributes of this class
 as arguments to method GetQueueUrl.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetQueueUrl.

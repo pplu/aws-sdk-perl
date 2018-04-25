@@ -23,7 +23,7 @@ Paws::AutoScaling::ExecutePolicy - Arguments for method ExecutePolicy on L<Paws:
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ExecutePolicy on the 
-Auto Scaling service. Use the attributes of this class
+L<Auto Scaling|Paws::AutoScaling> service. Use the attributes of this class
 as arguments to method ExecutePolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ExecutePolicy.

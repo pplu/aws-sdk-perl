@@ -21,7 +21,7 @@ Paws::GuardDuty::DeleteMembers - Arguments for method DeleteMembers on L<Paws::G
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteMembers on the 
-Amazon GuardDuty service. Use the attributes of this class
+L<Amazon GuardDuty|Paws::GuardDuty> service. Use the attributes of this class
 as arguments to method DeleteMembers.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteMembers.

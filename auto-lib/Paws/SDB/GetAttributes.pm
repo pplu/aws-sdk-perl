@@ -22,7 +22,7 @@ Paws::SDB::GetAttributes - Arguments for method GetAttributes on L<Paws::SDB>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetAttributes on the 
-Amazon SimpleDB service. Use the attributes of this class
+L<Amazon SimpleDB|Paws::SDB> service. Use the attributes of this class
 as arguments to method GetAttributes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetAttributes.

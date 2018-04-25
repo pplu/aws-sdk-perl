@@ -20,7 +20,7 @@ Paws::ELBv2::RemoveListenerCertificates - Arguments for method RemoveListenerCer
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method RemoveListenerCertificates on the 
-Elastic Load Balancing service. Use the attributes of this class
+L<Elastic Load Balancing|Paws::ELBv2> service. Use the attributes of this class
 as arguments to method RemoveListenerCertificates.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemoveListenerCertificates.

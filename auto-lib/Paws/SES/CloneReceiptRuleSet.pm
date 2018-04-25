@@ -20,7 +20,7 @@ Paws::SES::CloneReceiptRuleSet - Arguments for method CloneReceiptRuleSet on L<P
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CloneReceiptRuleSet on the 
-Amazon Simple Email Service service. Use the attributes of this class
+L<Amazon Simple Email Service|Paws::SES> service. Use the attributes of this class
 as arguments to method CloneReceiptRuleSet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CloneReceiptRuleSet.

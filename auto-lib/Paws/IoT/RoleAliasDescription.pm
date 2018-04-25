@@ -69,7 +69,7 @@ Role alias description.
 
 =head2 RoleAliasArn => Str
 
-  
+  The ARN of the role alias.
 
 
 =head2 RoleArn => Str

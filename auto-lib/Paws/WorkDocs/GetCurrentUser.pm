@@ -20,7 +20,7 @@ Paws::WorkDocs::GetCurrentUser - Arguments for method GetCurrentUser on L<Paws::
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetCurrentUser on the 
-Amazon WorkDocs service. Use the attributes of this class
+L<Amazon WorkDocs|Paws::WorkDocs> service. Use the attributes of this class
 as arguments to method GetCurrentUser.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetCurrentUser.

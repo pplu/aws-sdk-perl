@@ -22,7 +22,7 @@ Paws::MQ::ListUsers - Arguments for method ListUsers on L<Paws::MQ>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListUsers on the 
-AmazonMQ service. Use the attributes of this class
+L<AmazonMQ|Paws::MQ> service. Use the attributes of this class
 as arguments to method ListUsers.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListUsers.

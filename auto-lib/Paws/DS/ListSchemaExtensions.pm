@@ -21,7 +21,7 @@ Paws::DS::ListSchemaExtensions - Arguments for method ListSchemaExtensions on L<
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListSchemaExtensions on the 
-AWS Directory Service service. Use the attributes of this class
+L<AWS Directory Service|Paws::DS> service. Use the attributes of this class
 as arguments to method ListSchemaExtensions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListSchemaExtensions.

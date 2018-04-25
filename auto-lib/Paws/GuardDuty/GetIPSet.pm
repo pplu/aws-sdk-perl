@@ -21,7 +21,7 @@ Paws::GuardDuty::GetIPSet - Arguments for method GetIPSet on L<Paws::GuardDuty>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetIPSet on the 
-Amazon GuardDuty service. Use the attributes of this class
+L<Amazon GuardDuty|Paws::GuardDuty> service. Use the attributes of this class
 as arguments to method GetIPSet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetIPSet.

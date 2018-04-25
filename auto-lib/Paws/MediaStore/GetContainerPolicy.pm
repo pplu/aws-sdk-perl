@@ -19,7 +19,7 @@ Paws::MediaStore::GetContainerPolicy - Arguments for method GetContainerPolicy o
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetContainerPolicy on the 
-AWS Elemental MediaStore service. Use the attributes of this class
+L<AWS Elemental MediaStore|Paws::MediaStore> service. Use the attributes of this class
 as arguments to method GetContainerPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetContainerPolicy.

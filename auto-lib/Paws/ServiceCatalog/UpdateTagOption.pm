@@ -21,7 +21,7 @@ Paws::ServiceCatalog::UpdateTagOption - Arguments for method UpdateTagOption on 
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UpdateTagOption on the 
-AWS Service Catalog service. Use the attributes of this class
+L<AWS Service Catalog|Paws::ServiceCatalog> service. Use the attributes of this class
 as arguments to method UpdateTagOption.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateTagOption.

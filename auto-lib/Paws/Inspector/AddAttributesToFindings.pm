@@ -20,7 +20,7 @@ Paws::Inspector::AddAttributesToFindings - Arguments for method AddAttributesToF
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method AddAttributesToFindings on the 
-Amazon Inspector service. Use the attributes of this class
+L<Amazon Inspector|Paws::Inspector> service. Use the attributes of this class
 as arguments to method AddAttributesToFindings.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddAttributesToFindings.

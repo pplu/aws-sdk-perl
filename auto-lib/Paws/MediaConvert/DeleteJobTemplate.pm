@@ -20,7 +20,7 @@ Paws::MediaConvert::DeleteJobTemplate - Arguments for method DeleteJobTemplate o
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteJobTemplate on the 
-AWS Elemental MediaConvert service. Use the attributes of this class
+L<AWS Elemental MediaConvert|Paws::MediaConvert> service. Use the attributes of this class
 as arguments to method DeleteJobTemplate.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteJobTemplate.

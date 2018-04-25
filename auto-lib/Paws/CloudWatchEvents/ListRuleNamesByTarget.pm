@@ -21,7 +21,7 @@ Paws::CloudWatchEvents::ListRuleNamesByTarget - Arguments for method ListRuleNam
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListRuleNamesByTarget on the 
-Amazon CloudWatch Events service. Use the attributes of this class
+L<Amazon CloudWatch Events|Paws::CloudWatchEvents> service. Use the attributes of this class
 as arguments to method ListRuleNamesByTarget.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListRuleNamesByTarget.

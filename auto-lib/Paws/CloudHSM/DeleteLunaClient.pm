@@ -19,7 +19,7 @@ Paws::CloudHSM::DeleteLunaClient - Arguments for method DeleteLunaClient on L<Pa
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteLunaClient on the 
-Amazon CloudHSM service. Use the attributes of this class
+L<Amazon CloudHSM|Paws::CloudHSM> service. Use the attributes of this class
 as arguments to method DeleteLunaClient.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLunaClient.

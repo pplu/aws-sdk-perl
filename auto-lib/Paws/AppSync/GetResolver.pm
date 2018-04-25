@@ -22,7 +22,7 @@ Paws::AppSync::GetResolver - Arguments for method GetResolver on L<Paws::AppSync
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetResolver on the 
-AWS AppSync service. Use the attributes of this class
+L<AWS AppSync|Paws::AppSync> service. Use the attributes of this class
 as arguments to method GetResolver.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetResolver.

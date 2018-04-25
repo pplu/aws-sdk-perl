@@ -23,7 +23,7 @@ Paws::EC2::DetachVolume - Arguments for method DetachVolume on L<Paws::EC2>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DetachVolume on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DetachVolume.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DetachVolume.

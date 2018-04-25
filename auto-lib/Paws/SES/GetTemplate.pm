@@ -19,7 +19,7 @@ Paws::SES::GetTemplate - Arguments for method GetTemplate on L<Paws::SES>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetTemplate on the 
-Amazon Simple Email Service service. Use the attributes of this class
+L<Amazon Simple Email Service|Paws::SES> service. Use the attributes of this class
 as arguments to method GetTemplate.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetTemplate.

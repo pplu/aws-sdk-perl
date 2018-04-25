@@ -22,7 +22,7 @@ Paws::SecretsManager::RotateSecret - Arguments for method RotateSecret on L<Paws
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method RotateSecret on the 
-AWS Secrets Manager service. Use the attributes of this class
+L<AWS Secrets Manager|Paws::SecretsManager> service. Use the attributes of this class
 as arguments to method RotateSecret.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RotateSecret.

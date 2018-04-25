@@ -18,7 +18,7 @@ Paws::FMS::GetNotificationChannel - Arguments for method GetNotificationChannel 
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetNotificationChannel on the 
-Firewall Management Service service. Use the attributes of this class
+L<Firewall Management Service|Paws::FMS> service. Use the attributes of this class
 as arguments to method GetNotificationChannel.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetNotificationChannel.

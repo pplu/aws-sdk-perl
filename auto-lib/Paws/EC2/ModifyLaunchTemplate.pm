@@ -23,7 +23,7 @@ Paws::EC2::ModifyLaunchTemplate - Arguments for method ModifyLaunchTemplate on L
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ModifyLaunchTemplate on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method ModifyLaunchTemplate.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyLaunchTemplate.

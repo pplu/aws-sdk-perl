@@ -23,7 +23,7 @@ Paws::AppSync::UpdateApiKey - Arguments for method UpdateApiKey on L<Paws::AppSy
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UpdateApiKey on the 
-AWS AppSync service. Use the attributes of this class
+L<AWS AppSync|Paws::AppSync> service. Use the attributes of this class
 as arguments to method UpdateApiKey.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateApiKey.

@@ -20,7 +20,7 @@ Paws::MediaConvert::DeleteQueue - Arguments for method DeleteQueue on L<Paws::Me
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteQueue on the 
-AWS Elemental MediaConvert service. Use the attributes of this class
+L<AWS Elemental MediaConvert|Paws::MediaConvert> service. Use the attributes of this class
 as arguments to method DeleteQueue.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteQueue.

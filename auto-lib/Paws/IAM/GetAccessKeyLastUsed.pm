@@ -19,7 +19,7 @@ Paws::IAM::GetAccessKeyLastUsed - Arguments for method GetAccessKeyLastUsed on L
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetAccessKeyLastUsed on the 
-AWS Identity and Access Management service. Use the attributes of this class
+L<AWS Identity and Access Management|Paws::IAM> service. Use the attributes of this class
 as arguments to method GetAccessKeyLastUsed.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetAccessKeyLastUsed.

@@ -19,7 +19,7 @@ Paws::CUR::DeleteReportDefinition - Arguments for method DeleteReportDefinition 
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteReportDefinition on the 
-AWS Cost and Usage Report Service service. Use the attributes of this class
+L<AWS Cost and Usage Report Service|Paws::CUR> service. Use the attributes of this class
 as arguments to method DeleteReportDefinition.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteReportDefinition.

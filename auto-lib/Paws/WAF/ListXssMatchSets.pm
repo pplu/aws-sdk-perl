@@ -20,7 +20,7 @@ Paws::WAF::ListXssMatchSets - Arguments for method ListXssMatchSets on L<Paws::W
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListXssMatchSets on the 
-AWS WAF service. Use the attributes of this class
+L<AWS WAF|Paws::WAF> service. Use the attributes of this class
 as arguments to method ListXssMatchSets.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListXssMatchSets.

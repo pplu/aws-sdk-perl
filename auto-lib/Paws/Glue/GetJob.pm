@@ -19,7 +19,7 @@ Paws::Glue::GetJob - Arguments for method GetJob on L<Paws::Glue>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetJob on the 
-AWS Glue service. Use the attributes of this class
+L<AWS Glue|Paws::Glue> service. Use the attributes of this class
 as arguments to method GetJob.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetJob.

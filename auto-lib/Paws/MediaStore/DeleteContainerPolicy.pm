@@ -19,7 +19,7 @@ Paws::MediaStore::DeleteContainerPolicy - Arguments for method DeleteContainerPo
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteContainerPolicy on the 
-AWS Elemental MediaStore service. Use the attributes of this class
+L<AWS Elemental MediaStore|Paws::MediaStore> service. Use the attributes of this class
 as arguments to method DeleteContainerPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteContainerPolicy.

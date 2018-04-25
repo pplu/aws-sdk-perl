@@ -21,7 +21,7 @@ Paws::CloudHSMv2::CreateHsm - Arguments for method CreateHsm on L<Paws::CloudHSM
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateHsm on the 
-AWS CloudHSM V2 service. Use the attributes of this class
+L<AWS CloudHSM V2|Paws::CloudHSMv2> service. Use the attributes of this class
 as arguments to method CreateHsm.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateHsm.

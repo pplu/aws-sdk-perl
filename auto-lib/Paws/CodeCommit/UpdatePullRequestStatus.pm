@@ -20,7 +20,7 @@ Paws::CodeCommit::UpdatePullRequestStatus - Arguments for method UpdatePullReque
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UpdatePullRequestStatus on the 
-AWS CodeCommit service. Use the attributes of this class
+L<AWS CodeCommit|Paws::CodeCommit> service. Use the attributes of this class
 as arguments to method UpdatePullRequestStatus.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdatePullRequestStatus.

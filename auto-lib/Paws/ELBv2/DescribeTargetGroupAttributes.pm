@@ -19,7 +19,7 @@ Paws::ELBv2::DescribeTargetGroupAttributes - Arguments for method DescribeTarget
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeTargetGroupAttributes on the 
-Elastic Load Balancing service. Use the attributes of this class
+L<Elastic Load Balancing|Paws::ELBv2> service. Use the attributes of this class
 as arguments to method DescribeTargetGroupAttributes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeTargetGroupAttributes.

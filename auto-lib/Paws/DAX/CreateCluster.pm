@@ -30,7 +30,7 @@ Paws::DAX::CreateCluster - Arguments for method CreateCluster on L<Paws::DAX>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateCluster on the 
-Amazon DynamoDB Accelerator (DAX) service. Use the attributes of this class
+L<Amazon DynamoDB Accelerator (DAX)|Paws::DAX> service. Use the attributes of this class
 as arguments to method CreateCluster.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCluster.

@@ -20,7 +20,7 @@ Paws::ResourceGroups::GetTags - Arguments for method GetTags on L<Paws::Resource
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetTags on the 
-AWS Resource Groups service. Use the attributes of this class
+L<AWS Resource Groups|Paws::ResourceGroups> service. Use the attributes of this class
 as arguments to method GetTags.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetTags.

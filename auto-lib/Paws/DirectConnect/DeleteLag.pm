@@ -19,7 +19,7 @@ Paws::DirectConnect::DeleteLag - Arguments for method DeleteLag on L<Paws::Direc
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteLag on the 
-AWS Direct Connect service. Use the attributes of this class
+L<AWS Direct Connect|Paws::DirectConnect> service. Use the attributes of this class
 as arguments to method DeleteLag.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLag.

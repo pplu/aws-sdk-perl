@@ -19,7 +19,7 @@ Paws::CodeDeploy::GetOnPremisesInstance - Arguments for method GetOnPremisesInst
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetOnPremisesInstance on the 
-AWS CodeDeploy service. Use the attributes of this class
+L<AWS CodeDeploy|Paws::CodeDeploy> service. Use the attributes of this class
 as arguments to method GetOnPremisesInstance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetOnPremisesInstance.

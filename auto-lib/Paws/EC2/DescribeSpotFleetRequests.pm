@@ -22,7 +22,7 @@ Paws::EC2::DescribeSpotFleetRequests - Arguments for method DescribeSpotFleetReq
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeSpotFleetRequests on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DescribeSpotFleetRequests.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSpotFleetRequests.

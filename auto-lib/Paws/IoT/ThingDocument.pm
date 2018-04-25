@@ -48,7 +48,7 @@ The thing search index document.
 
 =head2 Shadow => Str
 
-  The thing shadow.
+  The shadow.
 
 
 =head2 ThingGroupNames => ArrayRef[Str|Undef]

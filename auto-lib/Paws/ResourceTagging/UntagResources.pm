@@ -20,7 +20,7 @@ Paws::ResourceTagging::UntagResources - Arguments for method UntagResources on L
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UntagResources on the 
-AWS Resource Groups Tagging API service. Use the attributes of this class
+L<AWS Resource Groups Tagging API|Paws::ResourceTagging> service. Use the attributes of this class
 as arguments to method UntagResources.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UntagResources.

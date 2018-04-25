@@ -25,7 +25,7 @@ Paws::Lightsail::GetInstanceMetricData - Arguments for method GetInstanceMetricD
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetInstanceMetricData on the 
-Amazon Lightsail service. Use the attributes of this class
+L<Amazon Lightsail|Paws::Lightsail> service. Use the attributes of this class
 as arguments to method GetInstanceMetricData.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetInstanceMetricData.

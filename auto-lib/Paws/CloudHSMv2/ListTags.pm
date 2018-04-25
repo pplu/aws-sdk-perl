@@ -21,7 +21,7 @@ Paws::CloudHSMv2::ListTags - Arguments for method ListTags on L<Paws::CloudHSMv2
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListTags on the 
-AWS CloudHSM V2 service. Use the attributes of this class
+L<AWS CloudHSM V2|Paws::CloudHSMv2> service. Use the attributes of this class
 as arguments to method ListTags.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTags.

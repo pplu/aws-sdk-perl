@@ -20,7 +20,7 @@ Paws::SageMaker::AddTags - Arguments for method AddTags on L<Paws::SageMaker>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method AddTags on the 
-Amazon SageMaker Service service. Use the attributes of this class
+L<Amazon SageMaker Service|Paws::SageMaker> service. Use the attributes of this class
 as arguments to method AddTags.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddTags.

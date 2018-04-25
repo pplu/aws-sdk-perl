@@ -21,7 +21,7 @@ Paws::KinesisAnalytics::UpdateApplication - Arguments for method UpdateApplicati
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UpdateApplication on the 
-Amazon Kinesis Analytics service. Use the attributes of this class
+L<Amazon Kinesis Analytics|Paws::KinesisAnalytics> service. Use the attributes of this class
 as arguments to method UpdateApplication.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateApplication.

@@ -22,7 +22,7 @@ Paws::CognitoIdp::ListUsersInGroup - Arguments for method ListUsersInGroup on L<
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListUsersInGroup on the 
-Amazon Cognito Identity Provider service. Use the attributes of this class
+L<Amazon Cognito Identity Provider|Paws::CognitoIdp> service. Use the attributes of this class
 as arguments to method ListUsersInGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListUsersInGroup.
