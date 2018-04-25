@@ -45,8 +45,9 @@ from an initial call to C<StartFaceSearch>.
 
 =head2 MaxResults => Int
 
-Maximum number of search results you want Rekognition Video to return
-in the response. The default is 1000.
+Maximum number of results to return per paginated call. The largest
+value you can specify is 1000. If you specify a value greater than
+1000, a maximum of 1000 results is returned. The default value is 1000.
 
 
 

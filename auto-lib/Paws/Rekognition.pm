@@ -636,6 +636,11 @@ they are detected in an array (C<Celebrities>) of objects. Each
 C<CelebrityRecognition> contains information about the celebrity in a
 object and the time, C<Timestamp>, the celebrity was detected.
 
+C<GetCelebrityRecognition> only returns the default facial attributes
+(C<BoundingBox>, C<Confidence>, C<Landmarks>, C<Pose>, and C<Quality>).
+The other facial attributes listed in the C<Face> object of the
+following response syntax are not returned. For more information, see .
+
 By default, the C<Celebrities> array is sorted by time (milliseconds
 from the start of the video). You can also sort the array by celebrity
 by specifying the value C<ID> in the C<SortBy> input parameter.
@@ -752,8 +757,14 @@ information, see collections.
 
 The search results are retured in an array, C<Persons>, of objects.
 EachC<PersonMatch> element contains details about the matching faces in
-the input collection, person information for the matched person, and
-the time the person was matched in the video.
+the input collection, person information (facial attributes, bounding
+boxes, and person identifer) for the matched person, and the time the
+person was matched in the video.
+
+C<GetFaceSearch> only returns the default facial attributes
+(C<BoundingBox>, C<Confidence>, C<Landmarks>, C<Pose>, and C<Quality>).
+The other facial attributes listed in the C<Face> object of the
+following response syntax are not returned. For more information, see .
 
 By default, the C<Persons> array is sorted by the time, in milliseconds
 from the start of the video, persons are matched. You can also sort by
@@ -817,6 +828,11 @@ to C<StartPersonTracking>.
 
 C<GetPersonTracking> returns an array, C<Persons>, of tracked persons
 and the time(s) they were tracked in the video.
+
+C<GetPersonTracking> only returns the default facial attributes
+(C<BoundingBox>, C<Confidence>, C<Landmarks>, C<Pose>, and C<Quality>).
+The other facial attributes listed in the C<Face> object of the
+following response syntax are not returned. For more information, see .
 
 By default, the array is sorted by the time(s) a person is tracked in
 the video. You can sort by tracked persons by specifying C<INDEX> for

@@ -48,6 +48,38 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 Structure containing attributes of the face that the algorithm
 detected.
 
+A C<FaceDetail> object contains either the default facial attributes or
+all facial attributes. The default attributes are C<BoundingBox>,
+C<Confidence>, C<Landmarks>, C<Pose>, and C<Quality>.
+
+is the only Rekognition Video stored video operation that can return a
+C<FaceDetail> object with all attributes. To specify which attributes
+to return, use the C<FaceAttributes> input parameter for . The
+following Rekognition Video operations return only the default
+attributes. The corresponding Start operations don't have a
+C<FaceAttributes> input parameter.
+
+=over
+
+=item *
+
+GetCelebrityRecognition
+
+=item *
+
+GetPersonTracking
+
+=item *
+
+GetFaceSearch
+
+=back
+
+The Rekognition Image and operations can return all facial attributes.
+To specify which attributes to return, use the C<Attributes> input
+parameter for C<DetectFaces>. For C<IndexFaces>, use the
+C<DetectAttributes> input parameter.
+
 =head1 ATTRIBUTES
 
 
@@ -65,13 +97,13 @@ in the determination.
 
 =head2 BoundingBox => L<Paws::Rekognition::BoundingBox>
 
-  Bounding box of the face.
+  Bounding box of the face. Default attribute.
 
 
 =head2 Confidence => Num
 
   Confidence level that the bounding box contains a face (and not a
-different object such as a tree).
+different object such as a tree). Default attribute.
 
 
 =head2 Emotions => ArrayRef[L<Paws::Rekognition::Emotion>]
@@ -99,7 +131,7 @@ confidence level in the determination.
 
 =head2 Landmarks => ArrayRef[L<Paws::Rekognition::Landmark>]
 
-  Indicates the location of landmarks on the face.
+  Indicates the location of landmarks on the face. Default attribute.
 
 
 =head2 MouthOpen => L<Paws::Rekognition::MouthOpen>
@@ -117,12 +149,12 @@ level in the determination.
 =head2 Pose => L<Paws::Rekognition::Pose>
 
   Indicates the pose of the face as determined by its pitch, roll, and
-yaw.
+yaw. Default attribute.
 
 
 =head2 Quality => L<Paws::Rekognition::ImageQuality>
 
-  Identifies image brightness and sharpness.
+  Identifies image brightness and sharpness. Default attribute.
 
 
 =head2 Smile => L<Paws::Rekognition::Smile>
