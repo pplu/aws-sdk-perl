@@ -50,7 +50,7 @@ The user-provided description of the secret.
 =head2 KmsKeyId => Str
 
 The ARN or alias of the AWS KMS customer master key (CMK) that's used
-to encrypt the C<SecretString> and C<SecretBinary> fields in each
+to encrypt the C<SecretString> or C<SecretBinary> fields in each
 version of the secret. If you don't provide a key, then Secrets Manager
 defaults to encrypting the secret fields with the default KMS CMK (the
 one named C<awssecretsmanager>) for this account.

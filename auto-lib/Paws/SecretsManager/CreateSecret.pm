@@ -95,7 +95,7 @@ This value becomes the C<SecretVersionId> of the new version.
 =head2 KmsKeyId => Str
 
 (Optional) Specifies the ARN or alias of the AWS KMS customer master
-key (CMK) to be used to encrypt the C<SecretString> and C<SecretBinary>
+key (CMK) to be used to encrypt the C<SecretString> or C<SecretBinary>
 values in the versions stored in this secret.
 
 If you don't specify this value, then Secrets Manager defaults to using
@@ -125,12 +125,8 @@ command-line tools, we recommend that you store your binary data in a
 file and then use the appropriate technique for your tool to pass the
 contents of the file as a parameter.
 
-Either C<SecretString>, C<SecretBinary>, or both must have a value.
-They cannot both be empty.
-
-This C<SecretBinary> value is stored separately from the
-C<SecretString>, but the two parameters jointly share a maximum size
-limit.
+Either C<SecretString> or C<SecretBinary> must have a value, but not
+both. They cannot both be empty.
 
 This parameter is not available using the Secrets Manager console. It
 can be accessed only by using the AWS CLI or one of the AWS SDKs.
@@ -142,11 +138,8 @@ can be accessed only by using the AWS CLI or one of the AWS SDKs.
 (Optional) Specifies text data that you want to encrypt and store in
 this new version of the secret.
 
-Either C<SecretString>, C<SecretBinary>, or both must have a value.
-They cannot both be empty.
-
-This string value is stored separately from the C<SecretBinary>, but
-the two parameters jointly share a maximum size limit.
+Either C<SecretString> or C<SecretBinary> must have a value, but not
+both. They cannot both be empty.
 
 If you create a secret by using the Secrets Manager console then
 Secrets Manager puts the protected secret text in only the

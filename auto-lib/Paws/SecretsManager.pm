@@ -150,7 +150,7 @@ to Secrets Manager. However, you also can use the Secrets Manager HTTP
 Query API to make direct calls to the Secrets Manager web service. To
 learn more about the Secrets Manager HTTP Query API, see Making Query
 Requests
-(http://docs.aws.amazon.com/secretsmanager/latest/userguide/orgs_query-requests.html)
+(http://docs.aws.amazon.com/secretsmanager/latest/userguide/query-requests.html)
 in the I<AWS Secrets Manager User Guide>.
 
 Secrets Manager supports GET and POST requests for all actions. That
@@ -296,19 +296,19 @@ contains the mapping of staging labels to the active versions of the
 secret. Versions without a staging label are considered deprecated and
 are not included in the list.
 
-You provide the secret data to be encrypted by putting text in the
-C<SecretString> parameter or binary data in the C<SecretBinary>
-parameter. If you include C<SecretString> or C<SecretBinary> then
-Secrets Manager also creates an initial secret version and, if you
-don't supply a staging label, automatically maps the new version's ID
-to the staging label C<AWSCURRENT>.
+You provide the secret data to be encrypted by putting text in either
+the C<SecretString> parameter or binary data in the C<SecretBinary>
+parameter, but not both. If you include C<SecretString> or
+C<SecretBinary> then Secrets Manager also creates an initial secret
+version and, if you don't supply a staging label, automatically maps
+the new version's ID to the staging label C<AWSCURRENT>.
 
 =over
 
 =item *
 
 If you call an operation that needs to encrypt or decrypt the
-C<SecretString> and C<SecretBinary> for a secret in the same account as
+C<SecretString> or C<SecretBinary> for a secret in the same account as
 the calling user and that secret doesn't specify a KMS encryption key,
 Secrets Manager uses the account's default AWS managed customer master
 key (CMK) with the alias C<aws/secretsmanager>. If this key doesn't
@@ -542,8 +542,9 @@ Each argument is described in detail in: L<Paws::SecretsManager::GetSecretValue>
 
 Returns: a L<Paws::SecretsManager::GetSecretValueResponse> instance
 
-Retrieves the contents of the encrypted fields C<SecretString> and
-C<SecretBinary> from the specified version of a secret.
+Retrieves the contents of the encrypted fields C<SecretString> or
+C<SecretBinary> from the specified version of a secret, whichever
+contains content.
 
 B<Minimum permissions>
 
@@ -718,7 +719,7 @@ C<AWSPREVIOUS> to the version that C<AWSCURRENT> was removed from.
 =item *
 
 If you call an operation that needs to encrypt or decrypt the
-C<SecretString> and C<SecretBinary> for a secret in the same account as
+C<SecretString> or C<SecretBinary> for a secret in the same account as
 the calling user and that secret doesn't specify a KMS encryption key,
 Secrets Manager uses the account's default AWS managed customer master
 key (CMK) with the alias C<aws/secretsmanager>. If this key doesn't
@@ -1087,7 +1088,7 @@ new ones.
 =item *
 
 If you call an operation that needs to encrypt or decrypt the
-C<SecretString> and C<SecretBinary> for a secret in the same account as
+C<SecretString> or C<SecretBinary> for a secret in the same account as
 the calling user and that secret doesn't specify a KMS encryption key,
 Secrets Manager uses the account's default AWS managed customer master
 key (CMK) with the alias C<aws/secretsmanager>. If this key doesn't

@@ -90,7 +90,8 @@ the new version of the secret. To use this parameter in the
 command-line tools, we recommend that you store your binary data in a
 file and then use the appropriate technique for your tool to pass the
 contents of the file as a parameter. Either C<SecretBinary> or
-C<SecretString> must have a value. They cannot both be empty.
+C<SecretString> must have a value, but not both. They cannot both be
+empty.
 
 This parameter is not accessible if the secret using the Secrets
 Manager console.
@@ -109,7 +110,8 @@ the secret. The secret must already exist.
 
 (Optional) Specifies text data that you want to encrypt and store in
 this new version of the secret. Either C<SecretString> or
-C<SecretBinary> must have a value. They cannot both be empty.
+C<SecretBinary> must have a value, but not both. They cannot both be
+empty.
 
 If you create this secret by using the Secrets Manager console then
 Secrets Manager puts the protected secret text in only the
