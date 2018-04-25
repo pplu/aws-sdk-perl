@@ -1,5 +1,6 @@
 package Paws::ElasticBeanstalk::ApplicationDescription;
   use Moose;
+  has ApplicationArn => (is => 'ro', isa => 'Str');
   has ApplicationName => (is => 'ro', isa => 'Str');
   has ConfigurationTemplates => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DateCreated => (is => 'ro', isa => 'Str');
@@ -26,20 +27,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ElasticBeanstalk::ApplicationDescription object:
 
-  $service_obj->Method(Att1 => { ApplicationName => $value, ..., Versions => $value  });
+  $service_obj->Method(Att1 => { ApplicationArn => $value, ..., Versions => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBeanstalk::ApplicationDescription object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ApplicationName
+  $result->Att1->ApplicationArn
 
 =head1 DESCRIPTION
 
 Describes the properties of an application.
 
 =head1 ATTRIBUTES
+
+
+=head2 ApplicationArn => Str
+
+  The Amazon Resource Name (ARN) of the application.
 
 
 =head2 ApplicationName => Str

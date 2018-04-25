@@ -79,7 +79,7 @@ instance.
 =head2 EnvironmentArn => Str
 
 The environment's Amazon Resource Name (ARN), which can be used in
-other API reuqests that require an ARN.
+other API requests that require an ARN.
 
 
 =head2 EnvironmentId => Str

@@ -1,6 +1,7 @@
 package Paws::ElasticBeanstalk::ApplicationVersionDescription;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str');
+  has ApplicationVersionArn => (is => 'ro', isa => 'Str');
   has BuildArn => (is => 'ro', isa => 'Str');
   has DateCreated => (is => 'ro', isa => 'Str');
   has DateUpdated => (is => 'ro', isa => 'Str');
@@ -47,6 +48,11 @@ Describes the properties of an application version.
 =head2 ApplicationName => Str
 
   The name of the application to which the application version belongs.
+
+
+=head2 ApplicationVersionArn => Str
+
+  The Amazon Resource Name (ARN) of the application version.
 
 
 =head2 BuildArn => Str
