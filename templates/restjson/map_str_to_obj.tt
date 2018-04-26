@@ -1,0 +1,9 @@
+[%- -%]
+package [% inner_class %];
+  use Moose;
+  with 'Paws::API::StrToObjMapParser';
+
+  has Map => (is => 'ro', isa => '[% map_class %]');
+1;
+
+[% INCLUDE 'map_str_to_whatever.tt' %]

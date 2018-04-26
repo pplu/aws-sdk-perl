@@ -1,0 +1,53 @@
+  [%- FOR op IN c.paginators_struct.keys.sort %]
+  sub [% c.get_paginator_name(op) %] {
+    [%- paginator = c.paginators_struct.$op %]
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->[% op %](@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      [%- IF (paginator.more_results.defined) %]
+      while ([% c.paginator_accessor(paginator.more_results, 'next_result') %]) {
+        $next_result = $self->[% op %](@_, [% c.paginator_pass_params(paginator, 'next_result') %]);
+        [%- FOREACH param = c.paginator_result_key(paginator) %]
+        push @{ [% c.paginator_accessor(param) %] }, @{ [% c.paginator_accessor(param, 'next_result') %] };
+        [%- END %]
+      }
+      [%- ELSE %]
+      while ([% c.paginator_accessor(paginator.output_token, 'next_result') %]) {
+        $next_result = $self->[% op %](@_, [% c.paginator_pass_params(paginator, 'next_result') %]);
+        [%- FOREACH param = c.paginator_result_key(paginator) %]
+        push @{ [% c.paginator_accessor(param) %] }, @{ [% c.paginator_accessor(param, 'next_result') %] };
+        [%- END %]
+      }
+      [%- END %]
+      return $result;
+    } else {
+      [%- IF (paginator.more_results.defined) %]
+      while ([% c.paginator_accessor(paginator.more_results) %]) {
+        [%- FOREACH param = c.paginator_result_key(paginator) %]
+        $callback->($_ => '[% param %]') foreach (@{ [% c.paginator_accessor(param) %] });
+        [%- END %]
+        $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
+      }
+      [%- FOREACH param = c.paginator_result_key(paginator) %]
+      $callback->($_ => '[% param %]') foreach (@{ [% c.paginator_accessor(param) %] });
+      [%- END %]
+      [%- ELSE %]
+      while ([% c.paginator_accessor(paginator.output_token) %]) {
+        [%- FOREACH param = c.paginator_result_key(paginator) %]
+        $callback->($_ => '[% param %]') foreach (@{ [% c.paginator_accessor(param) %] });
+        [%- END %]
+        $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
+      }
+      [%- FOREACH param = c.paginator_result_key(paginator) %]
+      $callback->($_ => '[% param %]') foreach (@{ [% c.paginator_accessor(param) %] });
+      [%- END %]
+      [%- END %]
+    }
+
+    return undef
+  }
+  [%- END %]
