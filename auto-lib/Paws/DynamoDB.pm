@@ -196,6 +196,29 @@ package Paws::DynamoDB;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllBackups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListBackups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->LastEvaluatedBackupArn) {
+        $next_result = $self->ListBackups(@_, ExclusiveStartBackupArn => $next_result->LastEvaluatedBackupArn);
+        push @{ $result->BackupSummaries }, @{ $next_result->BackupSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->LastEvaluatedBackupArn) {
+        $callback->($_ => 'BackupSummaries') foreach (@{ $result->BackupSummaries });
+        $result = $self->ListBackups(@_, ExclusiveStartBackupArn => $result->LastEvaluatedBackupArn);
+      }
+      $callback->($_ => 'BackupSummaries') foreach (@{ $result->BackupSummaries });
+    }
+
+    return undef
+  }
   sub ListAllTables {
     my $self = shift;
 
@@ -1370,6 +1393,18 @@ in the Amazon DynamoDB Developer Guide.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllBackups(sub { },[ExclusiveStartBackupArn => Str, Limit => Int, TableName => Str, TimeRangeLowerBound => Str, TimeRangeUpperBound => Str])
+
+=head2 ListAllBackups([ExclusiveStartBackupArn => Str, Limit => Int, TableName => Str, TimeRangeLowerBound => Str, TimeRangeUpperBound => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - BackupSummaries, passing the object as the first parameter, and the string 'BackupSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::DynamoDB::ListBackupsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 ListAllTables(sub { },[ExclusiveStartTableName => Str, Limit => Int])
 
