@@ -329,7 +329,8 @@ create the secret or when you update it by including it in the
 C<KMSKeyId>. If you call an API that must encrypt or decrypt
 C<SecretString> or C<SecretBinary> using credentials from a different
 account then the KMS key policy must grant cross-account access to that
-other account's user or role.
+other account's user or role for both the kms:GenerateDataKey and
+kms:Decrypt operations.
 
 =back
 
@@ -351,7 +352,7 @@ account's default AWS managed CMK for Secrets Manager.
 
 =item *
 
-kms:Encrypt - needed only if you use a customer-created KMS key to
+kms:Decrypt - needed only if you use a customer-created KMS key to
 encrypt the secret. You do not need this permission to use the
 account's default AWS managed CMK for Secrets Manager.
 
@@ -740,7 +741,8 @@ create the secret or when you update it by including it in the
 C<KMSKeyId>. If you call an API that must encrypt or decrypt
 C<SecretString> or C<SecretBinary> using credentials from a different
 account then the KMS key policy must grant cross-account access to that
-other account's user or role.
+other account's user or role for both the kms:GenerateDataKey and
+kms:Decrypt operations.
 
 =back
 
@@ -1109,7 +1111,8 @@ create the secret or when you update it by including it in the
 C<KMSKeyId>. If you call an API that must encrypt or decrypt
 C<SecretString> or C<SecretBinary> using credentials from a different
 account then the KMS key policy must grant cross-account access to that
-other account's user or role.
+other account's user or role for both the kms:GenerateDataKey and
+kms:Decrypt operations.
 
 =back
 
