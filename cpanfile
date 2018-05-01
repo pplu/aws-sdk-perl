@@ -55,6 +55,7 @@ on 'develop' => sub {
   requires 'EV';
   requires 'LWP::UserAgent';
   requires 'Furl';
+  requires 'Pod::Escapes';
 };
 on 'test' => sub {
   requires 'File::Slurper';
