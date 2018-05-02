@@ -6,6 +6,7 @@ package Paws::SageMaker::DescribeModelOutput;
   has ModelArn => (is => 'ro', isa => 'Str', required => 1);
   has ModelName => (is => 'ro', isa => 'Str', required => 1);
   has PrimaryContainer => (is => 'ro', isa => 'Paws::SageMaker::ContainerDefinition', required => 1);
+  has VpcConfig => (is => 'ro', isa => 'Paws::SageMaker::VpcConfig');
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -44,6 +45,12 @@ Name of the Amazon SageMaker model.
 The location of the primary inference code, associated artifacts, and
 custom environment map that the inference code uses when it is deployed
 in production.
+
+
+=head2 VpcConfig => L<Paws::SageMaker::VpcConfig>
+
+A object that specifies the VPC that this model has access to. For more
+information, see host-vpc
 
 
 =head2 _request_id => Str

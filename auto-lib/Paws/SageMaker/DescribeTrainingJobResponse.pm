@@ -18,6 +18,7 @@ package Paws::SageMaker::DescribeTrainingJobResponse;
   has TrainingJobName => (is => 'ro', isa => 'Str', required => 1);
   has TrainingJobStatus => (is => 'ro', isa => 'Str', required => 1);
   has TrainingStartTime => (is => 'ro', isa => 'Str');
+  has VpcConfig => (is => 'ro', isa => 'Paws::SageMaker::VpcConfig');
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -159,6 +160,12 @@ Valid values are: C<"InProgress">, C<"Completed">, C<"Failed">, C<"Stopping">, C
 =head2 TrainingStartTime => Str
 
 A timestamp that indicates when training started.
+
+
+=head2 VpcConfig => L<Paws::SageMaker::VpcConfig>
+
+A object that specifies the VPC that this training job has access to.
+For more information, see train-vpc.
 
 
 =head2 _request_id => Str

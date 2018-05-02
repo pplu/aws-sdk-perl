@@ -440,7 +440,7 @@ distributes two-thirds of the traffic to Model A, and one-third to
 model B.
 
 
-=head2 CreateModel(ExecutionRoleArn => Str, ModelName => Str, PrimaryContainer => L<Paws::SageMaker::ContainerDefinition>, [Tags => ArrayRef[L<Paws::SageMaker::Tag>]])
+=head2 CreateModel(ExecutionRoleArn => Str, ModelName => Str, PrimaryContainer => L<Paws::SageMaker::ContainerDefinition>, [Tags => ArrayRef[L<Paws::SageMaker::Tag>], VpcConfig => L<Paws::SageMaker::VpcConfig>])
 
 Each argument is described in detail in: L<Paws::SageMaker::CreateModel>
 
@@ -569,7 +569,7 @@ showing the Jupyter server home page from the notebook instance. The
 console uses this API to get the URL and show the page.
 
 
-=head2 CreateTrainingJob(AlgorithmSpecification => L<Paws::SageMaker::AlgorithmSpecification>, InputDataConfig => ArrayRef[L<Paws::SageMaker::Channel>], OutputDataConfig => L<Paws::SageMaker::OutputDataConfig>, ResourceConfig => L<Paws::SageMaker::ResourceConfig>, RoleArn => Str, StoppingCondition => L<Paws::SageMaker::StoppingCondition>, TrainingJobName => Str, [HyperParameters => L<Paws::SageMaker::HyperParameters>, Tags => ArrayRef[L<Paws::SageMaker::Tag>]])
+=head2 CreateTrainingJob(AlgorithmSpecification => L<Paws::SageMaker::AlgorithmSpecification>, InputDataConfig => ArrayRef[L<Paws::SageMaker::Channel>], OutputDataConfig => L<Paws::SageMaker::OutputDataConfig>, ResourceConfig => L<Paws::SageMaker::ResourceConfig>, RoleArn => Str, StoppingCondition => L<Paws::SageMaker::StoppingCondition>, TrainingJobName => Str, [HyperParameters => L<Paws::SageMaker::HyperParameters>, Tags => ArrayRef[L<Paws::SageMaker::Tag>], VpcConfig => L<Paws::SageMaker::VpcConfig>])
 
 Each argument is described in detail in: L<Paws::SageMaker::CreateTrainingJob>
 
