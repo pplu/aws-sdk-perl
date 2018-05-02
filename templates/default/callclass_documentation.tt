@@ -6,7 +6,7 @@
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method [% operation.name %] on the 
+This class represents the parameters used for calling the method [% operation.name %] on the
 L<[% c.api_struct.metadata.serviceFullName %]|[% c.api %]> service. Use the attributes of this class
 as arguments to method [% operation.name %].
 
@@ -31,6 +31,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 [% END %]
 
 =head1 SEE ALSO
+
+For the AWS API documentation, see <[% c.service_url %]>
 
 This class forms part of L<Paws>, documenting arguments for method [% operation.name %] in L<[% c.api %]>
 
