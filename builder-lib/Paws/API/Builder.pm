@@ -7,6 +7,9 @@ package Paws::API::Builder {
   use Template;
   use File::Slurper 'read_binary';
   use JSON::MaybeXS;
+  use Pod::Escapes();
+  use Data::Munge;
+      
   use v5.10;
 
   use Paws::API::RegionBuilder; 
@@ -488,9 +491,18 @@ package Paws::API::Builder {
     return $self->api . '::' . $shape;
   }
 
+  sub escape_pod {
+    my ($string) = @_;
+    my %char2names = reverse %Pod::Escapes::Name2character;
+    my $rekeys = list2re(keys %char2names);
+    $string =~ s/($rekeys)/E<$char2names{$1}>/g;
+    return $string;
+  }
+  
   sub process_template {
     my ($self, $template, $vars) = @_;
-    my $tt = Template->new(INCLUDE_PATH => $self->template_path);
+    my $tt = Template->new(INCLUDE_PATH => $self->template_path,
+        FILTERS => { escape_pod => \&escape_pod });
     my $output = '';
     $tt->process($template, $vars, \$output) || die $tt->error();
     return $output;
