@@ -1,7 +1,7 @@
 package Paws::GuardDuty::AccountDetail;
   use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
-  has Email => (is => 'ro', isa => 'Str', request_name => 'email', traits => ['NameInRequest']);
+  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest'], required => 1);
+  has Email => (is => 'ro', isa => 'Str', request_name => 'email', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +37,12 @@ An object containing the member's accountId and email address.
 =head1 ATTRIBUTES
 
 
-=head2 AccountId => Str
+=head2 B<REQUIRED> AccountId => Str
 
   Member account ID.
 
 
-=head2 Email => Str
+=head2 B<REQUIRED> Email => Str
 
   Member account's email address.
 

@@ -1,7 +1,7 @@
 package Paws::GuardDuty::UnprocessedAccount;
   use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
-  has Result => (is => 'ro', isa => 'Str', request_name => 'result', traits => ['NameInRequest']);
+  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest'], required => 1);
+  has Result => (is => 'ro', isa => 'Str', request_name => 'result', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +38,12 @@ explaining why it was unprocessed.
 =head1 ATTRIBUTES
 
 
-=head2 AccountId => Str
+=head2 B<REQUIRED> AccountId => Str
 
   AWS Account ID.
 
 
-=head2 Result => Str
+=head2 B<REQUIRED> Result => Str
 
   A reason why the account hasn't been processed.
 
