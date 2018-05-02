@@ -27,23 +27,26 @@
 =head1 METHODS
 [% FOR op IN c.api_struct.operations.keys.sort %]
   [%- op_name = op %]
-=head2 [% op_name %](
+=head2 [% op_name %]
+
 [%- out_shape = c.input_for_operation(op_name) %]
 [%- req_list = out_shape.required.sort %]
-[%- FOREACH out_name IN req_list.sort -%]
-  [%- member = c.shape(out_shape.members.$out_name.shape) -%]
-  [%- out_name %] => [% c.perl_type_to_pod(member.perl_type) %]
-  [%- IF (NOT loop.last) %], [% END %]
-[%- END %]
 [%- opt_list = c.optional_params_in_shape(out_shape) %]
+[% IF req_list.size > 0 || opt_list.size > 0 %]=over[% END %]
+
+[% FOREACH out_name IN req_list.sort -%]
+  [%- member = c.shape(out_shape.members.$out_name.shape) -%]
+=item [% out_name %] => [% c.perl_type_to_pod(member.perl_type) %]
+
+[% END %]
 [%- IF (opt_list.size > 0) %]
-[%- IF (req_list.size > 0) %], [% END %][
 [%- FOREACH out_name IN opt_list.sort %]
   [%- member = c.shape(out_shape.members.$out_name.shape) -%]
-  [%- out_name %] => [% c.perl_type_to_pod(member.perl_type) %]
-  [%- IF (NOT loop.last) %], [% END %]
-[%- END %]]
-[%- END %])
+=item [[%- out_name %] => [% c.perl_type_to_pod(member.perl_type) %]]
+
+[% END -%]
+[%- END %]
+[% IF req_list.size > 0 || opt_list.size > 0 %]=back[% END %]
 
 Each argument is described in detail in: L<[% c.api %]::[% op_name %]>
 
