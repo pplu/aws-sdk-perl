@@ -7,6 +7,7 @@ package Paws::API::Builder {
   use Template;
   use File::Slurper 'read_binary';
   use JSON::MaybeXS;
+  use LWP::UserAgent;
   use v5.10;
 
   use Paws::API::RegionBuilder; 
@@ -27,6 +28,21 @@ package Paws::API::Builder {
   has api_file => (is => 'ro', required => 1);
 
   has template_path => (is => 'ro', required => 1);
+
+  has service_url => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    my $url = 'https://aws.amazon.com/documentation/';
+    my $service_url = $url . $self->service;
+    my $ua = LWP::UserAgent->new;
+    $ua->timeout(10);
+    $ua->env_proxy;
+    my $res = $ua->head($url);
+    if ($res->is_success) {
+      return $service_url;
+    } else {
+      return $url;
+    }
+  });
 
   has api_struct => (is => 'ro', lazy => 1, default => sub {
     my $self = shift;
