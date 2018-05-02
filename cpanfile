@@ -57,6 +57,7 @@ on 'develop' => sub {
   requires 'Furl';
   requires 'Pod::Checker';
   requires 'Pod::Escapes';
+  requires 'Data::Munge';
 };
 on 'test' => sub {
   requires 'File::Slurper';
