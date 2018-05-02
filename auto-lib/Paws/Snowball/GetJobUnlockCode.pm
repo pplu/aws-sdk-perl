@@ -19,7 +19,7 @@ Paws::Snowball::GetJobUnlockCode - Arguments for method GetJobUnlockCode on L<Pa
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetJobUnlockCode on the 
-L<Amazon Import/Export Snowball|Paws::Snowball> service. Use the attributes of this class
+L<Amazon ImportE<sol>Export Snowball|Paws::Snowball> service. Use the attributes of this class
 as arguments to method GetJobUnlockCode.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetJobUnlockCode.
