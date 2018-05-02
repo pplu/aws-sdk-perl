@@ -3,6 +3,7 @@ package Paws::Route53Domains::ListOperations;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has MaxItems => (is => 'ro', isa => 'Int');
+  has SubmittedSince => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -50,6 +51,14 @@ value of C<NextPageMarker> in the C<Marker> element.
 Number of domains to be returned.
 
 Default: 20
+
+
+
+=head2 SubmittedSince => Str
+
+An optional parameter that lets you get information about all the
+operations that you submitted after a specified date and time. Specify
+the date and time in Coordinated Universal time (UTC).
 
 
 

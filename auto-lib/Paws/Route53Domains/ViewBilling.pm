@@ -39,7 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 End => Str
 
 The end date and time for the time period for which you want a list of
-billing records. Specify the date in Unix time format.
+billing records. Specify the date and time in Coordinated Universal
+time (UTC).
 
 
 
@@ -69,7 +70,8 @@ Default: 20
 =head2 Start => Str
 
 The beginning date and time for the time period for which you want a
-list of billing records. Specify the date in Unix time format.
+list of billing records. Specify the date and time in Coordinated
+Universal time (UTC).
 
 
 

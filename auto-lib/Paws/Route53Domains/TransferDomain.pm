@@ -102,9 +102,11 @@ Contains details for the host and glue IP addresses.
 =head2 PrivacyProtectAdminContact => Bool
 
 Whether you want to conceal contact information from WHOIS queries. If
-you specify C<true>, WHOIS ("who is") queries will return contact
-information for our registrar partner, Gandi, instead of the contact
-information that you enter.
+you specify C<true>, WHOIS ("who is") queries return contact
+information either for Amazon Registrar (for .com, .net, and .org
+domains) or for our registrar associate, Gandi (for all other TLDs). If
+you specify C<false>, WHOIS queries return the information that you
+entered for the admin contact.
 
 Default: C<true>
 
@@ -113,9 +115,11 @@ Default: C<true>
 =head2 PrivacyProtectRegistrantContact => Bool
 
 Whether you want to conceal contact information from WHOIS queries. If
-you specify C<true>, WHOIS ("who is") queries will return contact
-information for our registrar partner, Gandi, instead of the contact
-information that you enter.
+you specify C<true>, WHOIS ("who is") queries return contact
+information either for Amazon Registrar (for .com, .net, and .org
+domains) or for our registrar associate, Gandi (for all other TLDs). If
+you specify C<false>, WHOIS queries return the information that you
+entered for the registrant contact (domain owner).
 
 Default: C<true>
 
@@ -124,9 +128,11 @@ Default: C<true>
 =head2 PrivacyProtectTechContact => Bool
 
 Whether you want to conceal contact information from WHOIS queries. If
-you specify C<true>, WHOIS ("who is") queries will return contact
-information for our registrar partner, Gandi, instead of the contact
-information that you enter.
+you specify C<true>, WHOIS ("who is") queries return contact
+information either for Amazon Registrar (for .com, .net, and .org
+domains) or for our registrar associate, Gandi (for all other TLDs). If
+you specify C<false>, WHOIS queries return the information that you
+entered for the technical contact.
 
 Default: C<true>
 
