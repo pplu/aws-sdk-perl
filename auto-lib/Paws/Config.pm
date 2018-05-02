@@ -526,7 +526,14 @@ in the I<AWS Config Developer Guide>.
 
 =head1 METHODS
 
-=head2 BatchGetResourceConfig(ResourceKeys => ArrayRef[L<Paws::Config::ResourceKey>])
+=head2 BatchGetResourceConfig
+
+=over
+
+=item ResourceKeys => ArrayRef[L<Paws::Config::ResourceKey>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::BatchGetResourceConfig>
 
@@ -553,7 +560,16 @@ of the API response.
 
 
 
-=head2 DeleteAggregationAuthorization(AuthorizedAccountId => Str, AuthorizedAwsRegion => Str)
+=head2 DeleteAggregationAuthorization
+
+=over
+
+=item AuthorizedAccountId => Str
+
+=item AuthorizedAwsRegion => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DeleteAggregationAuthorization>
 
@@ -563,7 +579,14 @@ Deletes the authorization granted to the specified configuration
 aggregator account in a specified region.
 
 
-=head2 DeleteConfigRule(ConfigRuleName => Str)
+=head2 DeleteConfigRule
+
+=over
+
+=item ConfigRuleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DeleteConfigRule>
 
@@ -581,7 +604,14 @@ You can check the state of a rule by using the C<DescribeConfigRules>
 request.
 
 
-=head2 DeleteConfigurationAggregator(ConfigurationAggregatorName => Str)
+=head2 DeleteConfigurationAggregator
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DeleteConfigurationAggregator>
 
@@ -591,7 +621,14 @@ Deletes the specified configuration aggregator and the aggregated data
 associated with the aggregator.
 
 
-=head2 DeleteConfigurationRecorder(ConfigurationRecorderName => Str)
+=head2 DeleteConfigurationRecorder
+
+=over
+
+=item ConfigurationRecorderName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DeleteConfigurationRecorder>
 
@@ -610,7 +647,14 @@ will not be able to access this information in the AWS Config console
 until you create a new configuration recorder.
 
 
-=head2 DeleteDeliveryChannel(DeliveryChannelName => Str)
+=head2 DeleteDeliveryChannel
+
+=over
+
+=item DeliveryChannelName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DeleteDeliveryChannel>
 
@@ -622,7 +666,14 @@ Before you can delete the delivery channel, you must stop the
 configuration recorder by using the StopConfigurationRecorder action.
 
 
-=head2 DeleteEvaluationResults(ConfigRuleName => Str)
+=head2 DeleteEvaluationResults
+
+=over
+
+=item ConfigRuleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DeleteEvaluationResults>
 
@@ -634,7 +685,16 @@ evaluation results, you can call the StartConfigRulesEvaluation API to
 start evaluating your AWS resources against the rule.
 
 
-=head2 DeletePendingAggregationRequest(RequesterAccountId => Str, RequesterAwsRegion => Str)
+=head2 DeletePendingAggregationRequest
+
+=over
+
+=item RequesterAccountId => Str
+
+=item RequesterAwsRegion => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DeletePendingAggregationRequest>
 
@@ -644,7 +704,14 @@ Deletes pending authorization requests for a specified aggregator
 account in a specified region.
 
 
-=head2 DeliverConfigSnapshot(DeliveryChannelName => Str)
+=head2 DeliverConfigSnapshot
+
+=over
+
+=item DeliveryChannelName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DeliverConfigSnapshot>
 
@@ -674,7 +741,20 @@ Notification of delivery failure, if the delivery failed.
 
 
 
-=head2 DescribeAggregateComplianceByConfigRules(ConfigurationAggregatorName => Str, [Filters => L<Paws::Config::ConfigRuleComplianceFilters>, Limit => Int, NextToken => Str])
+=head2 DescribeAggregateComplianceByConfigRules
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item [Filters => L<Paws::Config::ConfigRuleComplianceFilters>]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DescribeAggregateComplianceByConfigRules>
 
@@ -687,7 +767,16 @@ The results can return an empty result page, but if you have a
 nextToken, the results are displayed on the next page.
 
 
-=head2 DescribeAggregationAuthorizations([Limit => Int, NextToken => Str])
+=head2 DescribeAggregationAuthorizations
+
+=over
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DescribeAggregationAuthorizations>
 
@@ -697,7 +786,18 @@ Returns a list of authorizations granted to various aggregator accounts
 and regions.
 
 
-=head2 DescribeComplianceByConfigRule([ComplianceTypes => ArrayRef[Str|Undef], ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
+=head2 DescribeComplianceByConfigRule
+
+=over
+
+=item [ComplianceTypes => ArrayRef[Str|Undef]]
+
+=item [ConfigRuleNames => ArrayRef[Str|Undef]]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DescribeComplianceByConfigRule>
 
@@ -741,7 +841,22 @@ removed from the rule's scope.
 
 
 
-=head2 DescribeComplianceByResource([ComplianceTypes => ArrayRef[Str|Undef], Limit => Int, NextToken => Str, ResourceId => Str, ResourceType => Str])
+=head2 DescribeComplianceByResource
+
+=over
+
+=item [ComplianceTypes => ArrayRef[Str|Undef]]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceId => Str]
+
+=item [ResourceType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DescribeComplianceByResource>
 
@@ -786,7 +901,18 @@ removed from the rule's scope.
 
 
 
-=head2 DescribeConfigRuleEvaluationStatus([ConfigRuleNames => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+=head2 DescribeConfigRuleEvaluationStatus
+
+=over
+
+=item [ConfigRuleNames => ArrayRef[Str|Undef]]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DescribeConfigRuleEvaluationStatus>
 
@@ -798,7 +924,16 @@ invoked the rule, the last time AWS Config failed to invoke the rule,
 and the related error for the last failure.
 
 
-=head2 DescribeConfigRules([ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
+=head2 DescribeConfigRules
+
+=over
+
+=item [ConfigRuleNames => ArrayRef[Str|Undef]]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DescribeConfigRules>
 
@@ -807,7 +942,18 @@ Returns: a L<Paws::Config::DescribeConfigRulesResponse> instance
 Returns details about your AWS Config rules.
 
 
-=head2 DescribeConfigurationAggregators([ConfigurationAggregatorNames => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+=head2 DescribeConfigurationAggregators
+
+=over
+
+=item [ConfigurationAggregatorNames => ArrayRef[Str|Undef]]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DescribeConfigurationAggregators>
 
@@ -819,7 +965,20 @@ details for all the configuration aggregators associated with the
 account.
 
 
-=head2 DescribeConfigurationAggregatorSourcesStatus(ConfigurationAggregatorName => Str, [Limit => Int, NextToken => Str, UpdateStatus => ArrayRef[Str|Undef]])
+=head2 DescribeConfigurationAggregatorSourcesStatus
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [UpdateStatus => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DescribeConfigurationAggregatorSourcesStatus>
 
@@ -831,7 +990,14 @@ from source accounts or AWS Config failed to aggregate data from source
 accounts with the related error code or message.
 
 
-=head2 DescribeConfigurationRecorders([ConfigurationRecorderNames => ArrayRef[Str|Undef]])
+=head2 DescribeConfigurationRecorders
+
+=over
+
+=item [ConfigurationRecorderNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DescribeConfigurationRecorders>
 
@@ -845,7 +1011,14 @@ Currently, you can specify only one configuration recorder per region
 in your account.
 
 
-=head2 DescribeConfigurationRecorderStatus([ConfigurationRecorderNames => ArrayRef[Str|Undef]])
+=head2 DescribeConfigurationRecorderStatus
+
+=over
+
+=item [ConfigurationRecorderNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DescribeConfigurationRecorderStatus>
 
@@ -859,7 +1032,14 @@ Currently, you can specify only one configuration recorder per region
 in your account.
 
 
-=head2 DescribeDeliveryChannels([DeliveryChannelNames => ArrayRef[Str|Undef]])
+=head2 DescribeDeliveryChannels
+
+=over
+
+=item [DeliveryChannelNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DescribeDeliveryChannels>
 
@@ -873,7 +1053,14 @@ Currently, you can specify only one delivery channel per region in your
 account.
 
 
-=head2 DescribeDeliveryChannelStatus([DeliveryChannelNames => ArrayRef[Str|Undef]])
+=head2 DescribeDeliveryChannelStatus
+
+=over
+
+=item [DeliveryChannelNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DescribeDeliveryChannelStatus>
 
@@ -887,7 +1074,16 @@ Currently, you can specify only one delivery channel per region in your
 account.
 
 
-=head2 DescribePendingAggregationRequests([Limit => Int, NextToken => Str])
+=head2 DescribePendingAggregationRequests
+
+=over
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DescribePendingAggregationRequests>
 
@@ -896,7 +1092,26 @@ Returns: a L<Paws::Config::DescribePendingAggregationRequestsResponse> instance
 Returns a list of all pending aggregation requests.
 
 
-=head2 GetAggregateComplianceDetailsByConfigRule(AccountId => Str, AwsRegion => Str, ConfigRuleName => Str, ConfigurationAggregatorName => Str, [ComplianceType => Str, Limit => Int, NextToken => Str])
+=head2 GetAggregateComplianceDetailsByConfigRule
+
+=over
+
+=item AccountId => Str
+
+=item AwsRegion => Str
+
+=item ConfigRuleName => Str
+
+=item ConfigurationAggregatorName => Str
+
+=item [ComplianceType => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::GetAggregateComplianceDetailsByConfigRule>
 
@@ -911,7 +1126,22 @@ The results can return an empty result page. But if you have a
 nextToken, the results are displayed on the next page.
 
 
-=head2 GetAggregateConfigRuleComplianceSummary(ConfigurationAggregatorName => Str, [Filters => L<Paws::Config::ConfigRuleComplianceSummaryFilters>, GroupByKey => Str, Limit => Int, NextToken => Str])
+=head2 GetAggregateConfigRuleComplianceSummary
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item [Filters => L<Paws::Config::ConfigRuleComplianceSummaryFilters>]
+
+=item [GroupByKey => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::GetAggregateConfigRuleComplianceSummary>
 
@@ -924,7 +1154,20 @@ The results can return an empty result page, but if you have a
 nextToken, the results are displayed on the next page.
 
 
-=head2 GetComplianceDetailsByConfigRule(ConfigRuleName => Str, [ComplianceTypes => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+=head2 GetComplianceDetailsByConfigRule
+
+=over
+
+=item ConfigRuleName => Str
+
+=item [ComplianceTypes => ArrayRef[Str|Undef]]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::GetComplianceDetailsByConfigRule>
 
@@ -936,7 +1179,20 @@ each resource was last evaluated, and whether each resource complies
 with the rule.
 
 
-=head2 GetComplianceDetailsByResource(ResourceId => Str, ResourceType => Str, [ComplianceTypes => ArrayRef[Str|Undef], NextToken => Str])
+=head2 GetComplianceDetailsByResource
+
+=over
+
+=item ResourceId => Str
+
+=item ResourceType => Str
+
+=item [ComplianceTypes => ArrayRef[Str|Undef]]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::GetComplianceDetailsByResource>
 
@@ -948,7 +1204,14 @@ resource, when each rule was last used, and whether the resource
 complies with each rule.
 
 
-=head2 GetComplianceSummaryByConfigRule( => )
+=head2 GetComplianceSummaryByConfigRule
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::GetComplianceSummaryByConfigRule>
 
@@ -958,7 +1221,14 @@ Returns the number of AWS Config rules that are compliant and
 noncompliant, up to a maximum of 25 for each.
 
 
-=head2 GetComplianceSummaryByResourceType([ResourceTypes => ArrayRef[Str|Undef]])
+=head2 GetComplianceSummaryByResourceType
+
+=over
+
+=item [ResourceTypes => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::GetComplianceSummaryByResourceType>
 
@@ -970,7 +1240,18 @@ these numbers for each resource type. The maximum number returned is
 100.
 
 
-=head2 GetDiscoveredResourceCounts([Limit => Int, NextToken => Str, ResourceTypes => ArrayRef[Str|Undef]])
+=head2 GetDiscoveredResourceCounts
+
+=over
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceTypes => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::GetDiscoveredResourceCounts>
 
@@ -1043,7 +1324,26 @@ resources. Wait a few minutes and then retry the
 GetDiscoveredResourceCounts action.
 
 
-=head2 GetResourceConfigHistory(ResourceId => Str, ResourceType => Str, [ChronologicalOrder => Str, EarlierTime => Str, LaterTime => Str, Limit => Int, NextToken => Str])
+=head2 GetResourceConfigHistory
+
+=over
+
+=item ResourceId => Str
+
+=item ResourceType => Str
+
+=item [ChronologicalOrder => Str]
+
+=item [EarlierTime => Str]
+
+=item [LaterTime => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::GetResourceConfigHistory>
 
@@ -1065,7 +1365,24 @@ specified C<limit>. In such cases, you can make another call, using the
 C<nextToken>.
 
 
-=head2 ListDiscoveredResources(ResourceType => Str, [IncludeDeletedResources => Bool, Limit => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ResourceName => Str])
+=head2 ListDiscoveredResources
+
+=over
+
+=item ResourceType => Str
+
+=item [IncludeDeletedResources => Bool]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceIds => ArrayRef[Str|Undef]]
+
+=item [ResourceName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::ListDiscoveredResources>
 
@@ -1089,7 +1406,16 @@ the next page of results, run the request again and specify the string
 for the C<nextToken> parameter.
 
 
-=head2 PutAggregationAuthorization(AuthorizedAccountId => Str, AuthorizedAwsRegion => Str)
+=head2 PutAggregationAuthorization
+
+=over
+
+=item AuthorizedAccountId => Str
+
+=item AuthorizedAwsRegion => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::PutAggregationAuthorization>
 
@@ -1099,7 +1425,14 @@ Authorizes the aggregator account and region to collect data from the
 source account and region.
 
 
-=head2 PutConfigRule(ConfigRule => L<Paws::Config::ConfigRule>)
+=head2 PutConfigRule
+
+=over
+
+=item ConfigRule => L<Paws::Config::ConfigRule>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::PutConfigRule>
 
@@ -1148,7 +1481,18 @@ Evaluating AWS Resource Configurations with AWS Config
 in the I<AWS Config Developer Guide>.
 
 
-=head2 PutConfigurationAggregator(ConfigurationAggregatorName => Str, [AccountAggregationSources => ArrayRef[L<Paws::Config::AccountAggregationSource>], OrganizationAggregationSource => L<Paws::Config::OrganizationAggregationSource>])
+=head2 PutConfigurationAggregator
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item [AccountAggregationSources => ArrayRef[L<Paws::Config::AccountAggregationSource>]]
+
+=item [OrganizationAggregationSource => L<Paws::Config::OrganizationAggregationSource>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::PutConfigurationAggregator>
 
@@ -1161,7 +1505,14 @@ AWS Config should be enabled in accounts and regions you want to
 aggreagate.
 
 
-=head2 PutConfigurationRecorder(ConfigurationRecorder => L<Paws::Config::ConfigurationRecorder>)
+=head2 PutConfigurationRecorder
+
+=over
+
+=item ConfigurationRecorder => L<Paws::Config::ConfigurationRecorder>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::PutConfigurationRecorder>
 
@@ -1182,7 +1533,14 @@ parameter specified, the default is to record all supported resource
 types.
 
 
-=head2 PutDeliveryChannel(DeliveryChannel => L<Paws::Config::DeliveryChannel>)
+=head2 PutDeliveryChannel
+
+=over
+
+=item DeliveryChannel => L<Paws::Config::DeliveryChannel>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::PutDeliveryChannel>
 
@@ -1204,7 +1562,18 @@ existing value for the parameter that is not changed.
 You can have only one delivery channel per region in your account.
 
 
-=head2 PutEvaluations(ResultToken => Str, [Evaluations => ArrayRef[L<Paws::Config::Evaluation>], TestMode => Bool])
+=head2 PutEvaluations
+
+=over
+
+=item ResultToken => Str
+
+=item [Evaluations => ArrayRef[L<Paws::Config::Evaluation>]]
+
+=item [TestMode => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::PutEvaluations>
 
@@ -1215,7 +1584,14 @@ Config. This action is required in every AWS Lambda function that is
 invoked by an AWS Config rule.
 
 
-=head2 StartConfigRulesEvaluation([ConfigRuleNames => ArrayRef[Str|Undef]])
+=head2 StartConfigRulesEvaluation
+
+=over
+
+=item [ConfigRuleNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::StartConfigRulesEvaluation>
 
@@ -1272,7 +1648,14 @@ Your custom rule will still run periodic evaluations every 24 hours.
 
 
 
-=head2 StartConfigurationRecorder(ConfigurationRecorderName => Str)
+=head2 StartConfigurationRecorder
+
+=over
+
+=item ConfigurationRecorderName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::StartConfigurationRecorder>
 
@@ -1285,7 +1668,14 @@ You must have created at least one delivery channel to successfully
 start the configuration recorder.
 
 
-=head2 StopConfigurationRecorder(ConfigurationRecorderName => Str)
+=head2 StopConfigurationRecorder
+
+=over
+
+=item ConfigurationRecorderName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::StopConfigurationRecorder>
 

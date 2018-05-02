@@ -229,7 +229,20 @@ Searching AWS resources based on a resource query
 
 =head1 METHODS
 
-=head2 CreateGroup(Name => Str, ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>, [Description => Str, Tags => L<Paws::ResourceGroups::Tags>])
+=head2 CreateGroup
+
+=over
+
+=item Name => Str
+
+=item ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>
+
+=item [Description => Str]
+
+=item [Tags => L<Paws::ResourceGroups::Tags>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ResourceGroups::CreateGroup>
 
@@ -238,7 +251,14 @@ Returns: a L<Paws::ResourceGroups::CreateGroupOutput> instance
 Creates a group with a specified name, description, and resource query.
 
 
-=head2 DeleteGroup(GroupName => Str)
+=head2 DeleteGroup
+
+=over
+
+=item GroupName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ResourceGroups::DeleteGroup>
 
@@ -249,7 +269,14 @@ delete resources that are members of the group; it only deletes the
 group structure.
 
 
-=head2 GetGroup(GroupName => Str)
+=head2 GetGroup
+
+=over
+
+=item GroupName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ResourceGroups::GetGroup>
 
@@ -258,7 +285,14 @@ Returns: a L<Paws::ResourceGroups::GetGroupOutput> instance
 Returns information about a specified resource group.
 
 
-=head2 GetGroupQuery(GroupName => Str)
+=head2 GetGroupQuery
+
+=over
+
+=item GroupName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ResourceGroups::GetGroupQuery>
 
@@ -268,7 +302,14 @@ Returns the resource query associated with the specified resource
 group.
 
 
-=head2 GetTags(Arn => Str)
+=head2 GetTags
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ResourceGroups::GetTags>
 
@@ -278,7 +319,18 @@ Returns a list of tags that are associated with a resource, specified
 by an ARN.
 
 
-=head2 ListGroupResources(GroupName => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListGroupResources
+
+=over
+
+=item GroupName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ResourceGroups::ListGroupResources>
 
@@ -288,7 +340,16 @@ Returns a list of ARNs of resources that are members of a specified
 resource group.
 
 
-=head2 ListGroups([MaxResults => Int, NextToken => Str])
+=head2 ListGroups
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ResourceGroups::ListGroups>
 
@@ -297,7 +358,18 @@ Returns: a L<Paws::ResourceGroups::ListGroupsOutput> instance
 Returns a list of existing resource groups in your account.
 
 
-=head2 SearchResources(ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>, [MaxResults => Int, NextToken => Str])
+=head2 SearchResources
+
+=over
+
+=item ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ResourceGroups::SearchResources>
 
@@ -308,7 +380,16 @@ query. The query uses the same format as a resource query in a
 CreateGroup or UpdateGroupQuery operation.
 
 
-=head2 Tag(Arn => Str, Tags => L<Paws::ResourceGroups::Tags>)
+=head2 Tag
+
+=over
+
+=item Arn => Str
+
+=item Tags => L<Paws::ResourceGroups::Tags>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ResourceGroups::Tag>
 
@@ -319,7 +400,16 @@ on a resource are not changed if they are not specified in the request
 parameters.
 
 
-=head2 Untag(Arn => Str, Keys => ArrayRef[Str|Undef])
+=head2 Untag
+
+=over
+
+=item Arn => Str
+
+=item Keys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ResourceGroups::Untag>
 
@@ -328,7 +418,16 @@ Returns: a L<Paws::ResourceGroups::UntagOutput> instance
 Deletes specified tags from a specified resource.
 
 
-=head2 UpdateGroup(GroupName => Str, [Description => Str])
+=head2 UpdateGroup
+
+=over
+
+=item GroupName => Str
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ResourceGroups::UpdateGroup>
 
@@ -338,7 +437,16 @@ Updates an existing group with a new or changed description. You cannot
 update the name of a resource group.
 
 
-=head2 UpdateGroupQuery(GroupName => Str, ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>)
+=head2 UpdateGroupQuery
+
+=over
+
+=item GroupName => Str
+
+=item ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ResourceGroups::UpdateGroupQuery>
 

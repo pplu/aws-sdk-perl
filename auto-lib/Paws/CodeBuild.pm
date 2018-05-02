@@ -294,7 +294,14 @@ that are managed by AWS CodeBuild.
 
 =head1 METHODS
 
-=head2 BatchDeleteBuilds(Ids => ArrayRef[Str|Undef])
+=head2 BatchDeleteBuilds
+
+=over
+
+=item Ids => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::BatchDeleteBuilds>
 
@@ -303,7 +310,14 @@ Returns: a L<Paws::CodeBuild::BatchDeleteBuildsOutput> instance
 Deletes one or more builds.
 
 
-=head2 BatchGetBuilds(Ids => ArrayRef[Str|Undef])
+=head2 BatchGetBuilds
+
+=over
+
+=item Ids => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::BatchGetBuilds>
 
@@ -312,7 +326,14 @@ Returns: a L<Paws::CodeBuild::BatchGetBuildsOutput> instance
 Gets information about builds.
 
 
-=head2 BatchGetProjects(Names => ArrayRef[Str|Undef])
+=head2 BatchGetProjects
+
+=over
+
+=item Names => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::BatchGetProjects>
 
@@ -321,7 +342,36 @@ Returns: a L<Paws::CodeBuild::BatchGetProjectsOutput> instance
 Gets information about build projects.
 
 
-=head2 CreateProject(Artifacts => L<Paws::CodeBuild::ProjectArtifacts>, Environment => L<Paws::CodeBuild::ProjectEnvironment>, Name => Str, Source => L<Paws::CodeBuild::ProjectSource>, [BadgeEnabled => Bool, Cache => L<Paws::CodeBuild::ProjectCache>, Description => Str, EncryptionKey => Str, ServiceRole => Str, Tags => ArrayRef[L<Paws::CodeBuild::Tag>], TimeoutInMinutes => Int, VpcConfig => L<Paws::CodeBuild::VpcConfig>])
+=head2 CreateProject
+
+=over
+
+=item Artifacts => L<Paws::CodeBuild::ProjectArtifacts>
+
+=item Environment => L<Paws::CodeBuild::ProjectEnvironment>
+
+=item Name => Str
+
+=item Source => L<Paws::CodeBuild::ProjectSource>
+
+=item [BadgeEnabled => Bool]
+
+=item [Cache => L<Paws::CodeBuild::ProjectCache>]
+
+=item [Description => Str]
+
+=item [EncryptionKey => Str]
+
+=item [ServiceRole => Str]
+
+=item [Tags => ArrayRef[L<Paws::CodeBuild::Tag>]]
+
+=item [TimeoutInMinutes => Int]
+
+=item [VpcConfig => L<Paws::CodeBuild::VpcConfig>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::CreateProject>
 
@@ -330,7 +380,16 @@ Returns: a L<Paws::CodeBuild::CreateProjectOutput> instance
 Creates a build project.
 
 
-=head2 CreateWebhook(ProjectName => Str, [BranchFilter => Str])
+=head2 CreateWebhook
+
+=over
+
+=item ProjectName => Str
+
+=item [BranchFilter => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::CreateWebhook>
 
@@ -352,7 +411,14 @@ more information, see step 9 in Change a Build Project's Settings
 (http://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console).
 
 
-=head2 DeleteProject(Name => Str)
+=head2 DeleteProject
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::DeleteProject>
 
@@ -361,7 +427,14 @@ Returns: a L<Paws::CodeBuild::DeleteProjectOutput> instance
 Deletes a build project.
 
 
-=head2 DeleteWebhook(ProjectName => Str)
+=head2 DeleteWebhook
+
+=over
+
+=item ProjectName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::DeleteWebhook>
 
@@ -373,7 +446,14 @@ rebuilding the source code every time a code change is pushed to the
 repository.
 
 
-=head2 InvalidateProjectCache(ProjectName => Str)
+=head2 InvalidateProjectCache
+
+=over
+
+=item ProjectName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::InvalidateProjectCache>
 
@@ -382,7 +462,16 @@ Returns: a L<Paws::CodeBuild::InvalidateProjectCacheOutput> instance
 Resets the cache for a project.
 
 
-=head2 ListBuilds([NextToken => Str, SortOrder => Str])
+=head2 ListBuilds
+
+=over
+
+=item [NextToken => Str]
+
+=item [SortOrder => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::ListBuilds>
 
@@ -392,7 +481,18 @@ Gets a list of build IDs, with each build ID representing a single
 build.
 
 
-=head2 ListBuildsForProject(ProjectName => Str, [NextToken => Str, SortOrder => Str])
+=head2 ListBuildsForProject
+
+=over
+
+=item ProjectName => Str
+
+=item [NextToken => Str]
+
+=item [SortOrder => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::ListBuildsForProject>
 
@@ -402,7 +502,12 @@ Gets a list of build IDs for the specified build project, with each
 build ID representing a single build.
 
 
-=head2 ListCuratedEnvironmentImages()
+=head2 ListCuratedEnvironmentImages
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::CodeBuild::ListCuratedEnvironmentImages>
 
@@ -411,7 +516,18 @@ Returns: a L<Paws::CodeBuild::ListCuratedEnvironmentImagesOutput> instance
 Gets information about Docker images that are managed by AWS CodeBuild.
 
 
-=head2 ListProjects([NextToken => Str, SortBy => Str, SortOrder => Str])
+=head2 ListProjects
+
+=over
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::ListProjects>
 
@@ -421,7 +537,26 @@ Gets a list of build project names, with each build project name
 representing a single build project.
 
 
-=head2 StartBuild(ProjectName => Str, [ArtifactsOverride => L<Paws::CodeBuild::ProjectArtifacts>, BuildspecOverride => Str, EnvironmentVariablesOverride => ArrayRef[L<Paws::CodeBuild::EnvironmentVariable>], GitCloneDepthOverride => Int, SourceVersion => Str, TimeoutInMinutesOverride => Int])
+=head2 StartBuild
+
+=over
+
+=item ProjectName => Str
+
+=item [ArtifactsOverride => L<Paws::CodeBuild::ProjectArtifacts>]
+
+=item [BuildspecOverride => Str]
+
+=item [EnvironmentVariablesOverride => ArrayRef[L<Paws::CodeBuild::EnvironmentVariable>]]
+
+=item [GitCloneDepthOverride => Int]
+
+=item [SourceVersion => Str]
+
+=item [TimeoutInMinutesOverride => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::StartBuild>
 
@@ -430,7 +565,14 @@ Returns: a L<Paws::CodeBuild::StartBuildOutput> instance
 Starts running a build.
 
 
-=head2 StopBuild(Id => Str)
+=head2 StopBuild
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::StopBuild>
 
@@ -439,7 +581,36 @@ Returns: a L<Paws::CodeBuild::StopBuildOutput> instance
 Attempts to stop running a build.
 
 
-=head2 UpdateProject(Name => Str, [Artifacts => L<Paws::CodeBuild::ProjectArtifacts>, BadgeEnabled => Bool, Cache => L<Paws::CodeBuild::ProjectCache>, Description => Str, EncryptionKey => Str, Environment => L<Paws::CodeBuild::ProjectEnvironment>, ServiceRole => Str, Source => L<Paws::CodeBuild::ProjectSource>, Tags => ArrayRef[L<Paws::CodeBuild::Tag>], TimeoutInMinutes => Int, VpcConfig => L<Paws::CodeBuild::VpcConfig>])
+=head2 UpdateProject
+
+=over
+
+=item Name => Str
+
+=item [Artifacts => L<Paws::CodeBuild::ProjectArtifacts>]
+
+=item [BadgeEnabled => Bool]
+
+=item [Cache => L<Paws::CodeBuild::ProjectCache>]
+
+=item [Description => Str]
+
+=item [EncryptionKey => Str]
+
+=item [Environment => L<Paws::CodeBuild::ProjectEnvironment>]
+
+=item [ServiceRole => Str]
+
+=item [Source => L<Paws::CodeBuild::ProjectSource>]
+
+=item [Tags => ArrayRef[L<Paws::CodeBuild::Tag>]]
+
+=item [TimeoutInMinutes => Int]
+
+=item [VpcConfig => L<Paws::CodeBuild::VpcConfig>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::UpdateProject>
 
@@ -448,7 +619,18 @@ Returns: a L<Paws::CodeBuild::UpdateProjectOutput> instance
 Changes the settings of a build project.
 
 
-=head2 UpdateWebhook(ProjectName => Str, [BranchFilter => Str, RotateSecret => Bool])
+=head2 UpdateWebhook
+
+=over
+
+=item ProjectName => Str
+
+=item [BranchFilter => Str]
+
+=item [RotateSecret => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::UpdateWebhook>
 

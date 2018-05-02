@@ -1386,7 +1386,16 @@ using an access key ID and secret access key.
 
 =head1 METHODS
 
-=head2 AddClientIDToOpenIDConnectProvider(ClientID => Str, OpenIDConnectProviderArn => Str)
+=head2 AddClientIDToOpenIDConnectProvider
+
+=over
+
+=item ClientID => Str
+
+=item OpenIDConnectProviderArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::AddClientIDToOpenIDConnectProvider>
 
@@ -1400,7 +1409,16 @@ This operation is idempotent; it does not fail or return an error if
 you add an existing client ID to the provider.
 
 
-=head2 AddRoleToInstanceProfile(InstanceProfileName => Str, RoleName => Str)
+=head2 AddRoleToInstanceProfile
+
+=over
+
+=item InstanceProfileName => Str
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::AddRoleToInstanceProfile>
 
@@ -1428,7 +1446,16 @@ Profiles
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
 
 
-=head2 AddUserToGroup(GroupName => Str, UserName => Str)
+=head2 AddUserToGroup
+
+=over
+
+=item GroupName => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::AddUserToGroup>
 
@@ -1437,7 +1464,16 @@ Returns: nothing
 Adds the specified user to the specified group.
 
 
-=head2 AttachGroupPolicy(GroupName => Str, PolicyArn => Str)
+=head2 AttachGroupPolicy
+
+=over
+
+=item GroupName => Str
+
+=item PolicyArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::AttachGroupPolicy>
 
@@ -1454,7 +1490,16 @@ Policies
 in the I<IAM User Guide>.
 
 
-=head2 AttachRolePolicy(PolicyArn => Str, RoleName => Str)
+=head2 AttachRolePolicy
+
+=over
+
+=item PolicyArn => Str
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::AttachRolePolicy>
 
@@ -1475,7 +1520,16 @@ policies, see Managed Policies and Inline Policies
 in the I<IAM User Guide>.
 
 
-=head2 AttachUserPolicy(PolicyArn => Str, UserName => Str)
+=head2 AttachUserPolicy
+
+=over
+
+=item PolicyArn => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::AttachUserPolicy>
 
@@ -1492,7 +1546,16 @@ Policies
 in the I<IAM User Guide>.
 
 
-=head2 ChangePassword(NewPassword => Str, OldPassword => Str)
+=head2 ChangePassword
+
+=over
+
+=item NewPassword => Str
+
+=item OldPassword => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ChangePassword>
 
@@ -1507,7 +1570,14 @@ For more information about modifying passwords, see Managing Passwords
 in the I<IAM User Guide>.
 
 
-=head2 CreateAccessKey([UserName => Str])
+=head2 CreateAccessKey
+
+=over
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateAccessKey>
 
@@ -1534,7 +1604,14 @@ again. If a secret key is lost, you can delete the access keys for the
 associated user and then create new keys.
 
 
-=head2 CreateAccountAlias(AccountAlias => Str)
+=head2 CreateAccountAlias
+
+=over
+
+=item AccountAlias => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateAccountAlias>
 
@@ -1546,7 +1623,16 @@ AWS account alias, see Using an Alias for Your AWS Account ID
 the I<IAM User Guide>.
 
 
-=head2 CreateGroup(GroupName => Str, [Path => Str])
+=head2 CreateGroup
+
+=over
+
+=item GroupName => Str
+
+=item [Path => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateGroup>
 
@@ -1560,7 +1646,16 @@ Limitations on IAM Entities
 in the I<IAM User Guide>.
 
 
-=head2 CreateInstanceProfile(InstanceProfileName => Str, [Path => Str])
+=head2 CreateInstanceProfile
+
+=over
+
+=item InstanceProfileName => Str
+
+=item [Path => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateInstanceProfile>
 
@@ -1576,7 +1671,18 @@ see Limitations on IAM Entities
 in the I<IAM User Guide>.
 
 
-=head2 CreateLoginProfile(Password => Str, UserName => Str, [PasswordResetRequired => Bool])
+=head2 CreateLoginProfile
+
+=over
+
+=item Password => Str
+
+=item UserName => Str
+
+=item [PasswordResetRequired => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateLoginProfile>
 
@@ -1589,7 +1695,18 @@ information about managing passwords, see Managing Passwords
 in the I<IAM User Guide>.
 
 
-=head2 CreateOpenIDConnectProvider(ThumbprintList => ArrayRef[Str|Undef], Url => Str, [ClientIDList => ArrayRef[Str|Undef]])
+=head2 CreateOpenIDConnectProvider
+
+=over
+
+=item ThumbprintList => ArrayRef[Str|Undef]
+
+=item Url => Str
+
+=item [ClientIDList => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateOpenIDConnectProvider>
 
@@ -1630,7 +1747,20 @@ that this operation creates, it is best to limit access to the
 CreateOpenIDConnectProvider operation to highly privileged users.
 
 
-=head2 CreatePolicy(PolicyDocument => Str, PolicyName => Str, [Description => Str, Path => Str])
+=head2 CreatePolicy
+
+=over
+
+=item PolicyDocument => Str
+
+=item PolicyName => Str
+
+=item [Description => Str]
+
+=item [Path => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreatePolicy>
 
@@ -1650,7 +1780,18 @@ Policies and Inline Policies
 in the I<IAM User Guide>.
 
 
-=head2 CreatePolicyVersion(PolicyArn => Str, PolicyDocument => Str, [SetAsDefault => Bool])
+=head2 CreatePolicyVersion
+
+=over
+
+=item PolicyArn => Str
+
+=item PolicyDocument => Str
+
+=item [SetAsDefault => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreatePolicyVersion>
 
@@ -1672,7 +1813,22 @@ Managed Policies
 in the I<IAM User Guide>.
 
 
-=head2 CreateRole(AssumeRolePolicyDocument => Str, RoleName => Str, [Description => Str, MaxSessionDuration => Int, Path => Str])
+=head2 CreateRole
+
+=over
+
+=item AssumeRolePolicyDocument => Str
+
+=item RoleName => Str
+
+=item [Description => Str]
+
+=item [MaxSessionDuration => Int]
+
+=item [Path => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateRole>
 
@@ -1687,7 +1843,16 @@ you can create, go to Limitations on IAM Entities
 in the I<IAM User Guide>.
 
 
-=head2 CreateSAMLProvider(Name => Str, SAMLMetadataDocument => Str)
+=head2 CreateSAMLProvider
+
+=over
+
+=item Name => Str
+
+=item SAMLMetadataDocument => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateSAMLProvider>
 
@@ -1721,7 +1886,18 @@ and About SAML 2.0-based Federation
 in the I<IAM User Guide>.
 
 
-=head2 CreateServiceLinkedRole(AWSServiceName => Str, [CustomSuffix => Str, Description => Str])
+=head2 CreateServiceLinkedRole
+
+=over
+
+=item AWSServiceName => Str
+
+=item [CustomSuffix => Str]
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateServiceLinkedRole>
 
@@ -1744,7 +1920,16 @@ To attach a policy to this service-linked role, you must make the
 request using the AWS service that depends on this role.
 
 
-=head2 CreateServiceSpecificCredential(ServiceName => Str, UserName => Str)
+=head2 CreateServiceSpecificCredential
+
+=over
+
+=item ServiceName => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateServiceSpecificCredential>
 
@@ -1769,7 +1954,16 @@ with AWS CodeCommit: Git Credentials, SSH Keys, and AWS Access Keys
 in the I<IAM User Guide>.
 
 
-=head2 CreateUser(UserName => Str, [Path => Str])
+=head2 CreateUser
+
+=over
+
+=item UserName => Str
+
+=item [Path => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateUser>
 
@@ -1783,7 +1977,16 @@ create, see Limitations on IAM Entities
 in the I<IAM User Guide>.
 
 
-=head2 CreateVirtualMFADevice(VirtualMFADeviceName => Str, [Path => Str])
+=head2 CreateVirtualMFADevice
+
+=over
+
+=item VirtualMFADeviceName => Str
+
+=item [Path => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateVirtualMFADevice>
 
@@ -1808,7 +2011,16 @@ virtual device, you should ensure that the information is destroyed
 following secure procedures.
 
 
-=head2 DeactivateMFADevice(SerialNumber => Str, UserName => Str)
+=head2 DeactivateMFADevice
+
+=over
+
+=item SerialNumber => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeactivateMFADevice>
 
@@ -1823,7 +2035,16 @@ devices, go to Using a Virtual MFA Device
 in the I<IAM User Guide>.
 
 
-=head2 DeleteAccessKey(AccessKeyId => Str, [UserName => Str])
+=head2 DeleteAccessKey
+
+=over
+
+=item AccessKeyId => Str
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteAccessKey>
 
@@ -1838,7 +2059,14 @@ this operation to manage AWS account root user credentials even if the
 AWS account has no associated users.
 
 
-=head2 DeleteAccountAlias(AccountAlias => Str)
+=head2 DeleteAccountAlias
+
+=over
+
+=item AccountAlias => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteAccountAlias>
 
@@ -1850,7 +2078,14 @@ AWS account alias, see Using an Alias for Your AWS Account ID
 the I<IAM User Guide>.
 
 
-=head2 DeleteAccountPasswordPolicy( => )
+=head2 DeleteAccountPasswordPolicy
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteAccountPasswordPolicy>
 
@@ -1860,7 +2095,14 @@ Deletes the password policy for the AWS account. There are no
 parameters.
 
 
-=head2 DeleteGroup(GroupName => Str)
+=head2 DeleteGroup
+
+=over
+
+=item GroupName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteGroup>
 
@@ -1870,7 +2112,16 @@ Deletes the specified IAM group. The group must not contain any users
 or have any attached policies.
 
 
-=head2 DeleteGroupPolicy(GroupName => Str, PolicyName => Str)
+=head2 DeleteGroupPolicy
+
+=over
+
+=item GroupName => Str
+
+=item PolicyName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteGroupPolicy>
 
@@ -1887,7 +2138,14 @@ Policies
 in the I<IAM User Guide>.
 
 
-=head2 DeleteInstanceProfile(InstanceProfileName => Str)
+=head2 DeleteInstanceProfile
+
+=over
+
+=item InstanceProfileName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteInstanceProfile>
 
@@ -1906,7 +2164,14 @@ Profiles
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
 
 
-=head2 DeleteLoginProfile(UserName => Str)
+=head2 DeleteLoginProfile
+
+=over
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteLoginProfile>
 
@@ -1923,7 +2188,14 @@ them. For more information about making keys inactive or deleting them,
 see UpdateAccessKey and DeleteAccessKey.
 
 
-=head2 DeleteOpenIDConnectProvider(OpenIDConnectProviderArn => Str)
+=head2 DeleteOpenIDConnectProvider
+
+=over
+
+=item OpenIDConnectProviderArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteOpenIDConnectProvider>
 
@@ -1940,7 +2212,14 @@ This operation is idempotent; it does not fail or return an error if
 you call the operation for a provider that does not exist.
 
 
-=head2 DeletePolicy(PolicyArn => Str)
+=head2 DeletePolicy
+
+=over
+
+=item PolicyArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeletePolicy>
 
@@ -1983,7 +2262,16 @@ Policies
 in the I<IAM User Guide>.
 
 
-=head2 DeletePolicyVersion(PolicyArn => Str, VersionId => Str)
+=head2 DeletePolicyVersion
+
+=over
+
+=item PolicyArn => Str
+
+=item VersionId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeletePolicyVersion>
 
@@ -2002,7 +2290,14 @@ Managed Policies
 in the I<IAM User Guide>.
 
 
-=head2 DeleteRole(RoleName => Str)
+=head2 DeleteRole
+
+=over
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteRole>
 
@@ -2018,7 +2313,16 @@ that is associated with a running instance will break any applications
 running on the instance.
 
 
-=head2 DeleteRolePolicy(PolicyName => Str, RoleName => Str)
+=head2 DeleteRolePolicy
+
+=over
+
+=item PolicyName => Str
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteRolePolicy>
 
@@ -2034,7 +2338,14 @@ about policies, refer to Managed Policies and Inline Policies
 in the I<IAM User Guide>.
 
 
-=head2 DeleteSAMLProvider(SAMLProviderArn => Str)
+=head2 DeleteSAMLProvider
+
+=over
+
+=item SAMLProviderArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteSAMLProvider>
 
@@ -2051,7 +2362,14 @@ This operation requires Signature Version 4
 (http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 
-=head2 DeleteServerCertificate(ServerCertificateName => Str)
+=head2 DeleteServerCertificate
+
+=over
+
+=item ServerCertificateName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteServerCertificate>
 
@@ -2077,7 +2395,14 @@ information, go to DeleteLoadBalancerListeners
 in the I<Elastic Load Balancing API Reference>.
 
 
-=head2 DeleteServiceLinkedRole(RoleName => Str)
+=head2 DeleteServiceLinkedRole
+
+=over
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteServiceLinkedRole>
 
@@ -2108,7 +2433,16 @@ Concepts: AWS Service-Linked Role
 in the I<IAM User Guide>.
 
 
-=head2 DeleteServiceSpecificCredential(ServiceSpecificCredentialId => Str, [UserName => Str])
+=head2 DeleteServiceSpecificCredential
+
+=over
+
+=item ServiceSpecificCredentialId => Str
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteServiceSpecificCredential>
 
@@ -2117,7 +2451,16 @@ Returns: nothing
 Deletes the specified service-specific credential.
 
 
-=head2 DeleteSigningCertificate(CertificateId => Str, [UserName => Str])
+=head2 DeleteSigningCertificate
+
+=over
+
+=item CertificateId => Str
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteSigningCertificate>
 
@@ -2132,7 +2475,16 @@ this operation to manage AWS account root user credentials even if the
 AWS account has no associated IAM users.
 
 
-=head2 DeleteSSHPublicKey(SSHPublicKeyId => Str, UserName => Str)
+=head2 DeleteSSHPublicKey
+
+=over
+
+=item SSHPublicKeyId => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteSSHPublicKey>
 
@@ -2148,7 +2500,14 @@ CodeCommit repository, see Set up AWS CodeCommit for SSH Connections
 in the I<AWS CodeCommit User Guide>.
 
 
-=head2 DeleteUser(UserName => Str)
+=head2 DeleteUser
+
+=over
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteUser>
 
@@ -2158,7 +2517,16 @@ Deletes the specified IAM user. The user must not belong to any groups
 or have any access keys, signing certificates, or attached policies.
 
 
-=head2 DeleteUserPolicy(PolicyName => Str, UserName => Str)
+=head2 DeleteUserPolicy
+
+=over
+
+=item PolicyName => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteUserPolicy>
 
@@ -2174,7 +2542,14 @@ about policies, refer to Managed Policies and Inline Policies
 in the I<IAM User Guide>.
 
 
-=head2 DeleteVirtualMFADevice(SerialNumber => Str)
+=head2 DeleteVirtualMFADevice
+
+=over
+
+=item SerialNumber => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteVirtualMFADevice>
 
@@ -2187,7 +2562,16 @@ it. For information about deactivating MFA devices, see
 DeactivateMFADevice.
 
 
-=head2 DetachGroupPolicy(GroupName => Str, PolicyArn => Str)
+=head2 DetachGroupPolicy
+
+=over
+
+=item GroupName => Str
+
+=item PolicyArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DetachGroupPolicy>
 
@@ -2202,7 +2586,16 @@ policies, see Managed Policies and Inline Policies
 in the I<IAM User Guide>.
 
 
-=head2 DetachRolePolicy(PolicyArn => Str, RoleName => Str)
+=head2 DetachRolePolicy
+
+=over
+
+=item PolicyArn => Str
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DetachRolePolicy>
 
@@ -2217,7 +2610,16 @@ policies, see Managed Policies and Inline Policies
 in the I<IAM User Guide>.
 
 
-=head2 DetachUserPolicy(PolicyArn => Str, UserName => Str)
+=head2 DetachUserPolicy
+
+=over
+
+=item PolicyArn => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DetachUserPolicy>
 
@@ -2232,7 +2634,20 @@ policies, see Managed Policies and Inline Policies
 in the I<IAM User Guide>.
 
 
-=head2 EnableMFADevice(AuthenticationCode1 => Str, AuthenticationCode2 => Str, SerialNumber => Str, UserName => Str)
+=head2 EnableMFADevice
+
+=over
+
+=item AuthenticationCode1 => Str
+
+=item AuthenticationCode2 => Str
+
+=item SerialNumber => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::EnableMFADevice>
 
@@ -2243,7 +2658,14 @@ IAM user. When enabled, the MFA device is required for every subsequent
 login by the IAM user associated with the device.
 
 
-=head2 GenerateCredentialReport( => )
+=head2 GenerateCredentialReport
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GenerateCredentialReport>
 
@@ -2255,7 +2677,14 @@ about the credential report, see Getting Credential Reports
 in the I<IAM User Guide>.
 
 
-=head2 GetAccessKeyLastUsed(AccessKeyId => Str)
+=head2 GetAccessKeyLastUsed
+
+=over
+
+=item AccessKeyId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetAccessKeyLastUsed>
 
@@ -2267,7 +2696,18 @@ with the AWS service and region that were specified in the last request
 made with that key.
 
 
-=head2 GetAccountAuthorizationDetails([Filter => ArrayRef[Str|Undef], Marker => Str, MaxItems => Int])
+=head2 GetAccountAuthorizationDetails
+
+=over
+
+=item [Filter => ArrayRef[Str|Undef]]
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetAccountAuthorizationDetails>
 
@@ -2290,7 +2730,14 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 GetAccountPasswordPolicy( => )
+=head2 GetAccountPasswordPolicy
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetAccountPasswordPolicy>
 
@@ -2301,7 +2748,14 @@ about using a password policy, go to Managing an IAM Password Policy
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingPasswordPolicies.html).
 
 
-=head2 GetAccountSummary( => )
+=head2 GetAccountSummary
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetAccountSummary>
 
@@ -2316,7 +2770,14 @@ IAM Entities
 in the I<IAM User Guide>.
 
 
-=head2 GetContextKeysForCustomPolicy(PolicyInputList => ArrayRef[Str|Undef])
+=head2 GetContextKeysForCustomPolicy
+
+=over
+
+=item PolicyInputList => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetContextKeysForCustomPolicy>
 
@@ -2336,7 +2797,16 @@ all parameters are shown in unencoded form here for clarity but must be
 URL encoded to be included as a part of a real HTML request.
 
 
-=head2 GetContextKeysForPrincipalPolicy(PolicySourceArn => Str, [PolicyInputList => ArrayRef[Str|Undef]])
+=head2 GetContextKeysForPrincipalPolicy
+
+=over
+
+=item PolicySourceArn => Str
+
+=item [PolicyInputList => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetContextKeysForPrincipalPolicy>
 
@@ -2364,7 +2834,14 @@ GetContextKeysForPrincipalPolicy to understand what key names and
 values you must supply when you call SimulatePrincipalPolicy.
 
 
-=head2 GetCredentialReport( => )
+=head2 GetCredentialReport
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetCredentialReport>
 
@@ -2376,7 +2853,18 @@ about the credential report, see Getting Credential Reports
 in the I<IAM User Guide>.
 
 
-=head2 GetGroup(GroupName => Str, [Marker => Str, MaxItems => Int])
+=head2 GetGroup
+
+=over
+
+=item GroupName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetGroup>
 
@@ -2387,7 +2875,16 @@ can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 GetGroupPolicy(GroupName => Str, PolicyName => Str)
+=head2 GetGroupPolicy
+
+=over
+
+=item GroupName => Str
+
+=item PolicyName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetGroupPolicy>
 
@@ -2414,7 +2911,14 @@ Policies
 in the I<IAM User Guide>.
 
 
-=head2 GetInstanceProfile(InstanceProfileName => Str)
+=head2 GetInstanceProfile
+
+=over
+
+=item InstanceProfileName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetInstanceProfile>
 
@@ -2427,7 +2931,14 @@ about instance profiles, see About Instance Profiles
 in the I<IAM User Guide>.
 
 
-=head2 GetLoginProfile(UserName => Str)
+=head2 GetLoginProfile
+
+=over
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetLoginProfile>
 
@@ -2438,7 +2949,14 @@ IAM user. If the user has not been assigned a password, the operation
 returns a 404 (C<NoSuchEntity>) error.
 
 
-=head2 GetOpenIDConnectProvider(OpenIDConnectProviderArn => Str)
+=head2 GetOpenIDConnectProvider
+
+=over
+
+=item OpenIDConnectProviderArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetOpenIDConnectProvider>
 
@@ -2448,7 +2966,14 @@ Returns information about the specified OpenID Connect (OIDC) provider
 resource object in IAM.
 
 
-=head2 GetPolicy(PolicyArn => Str)
+=head2 GetPolicy
+
+=over
+
+=item PolicyArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetPolicy>
 
@@ -2473,7 +2998,16 @@ Policies
 in the I<IAM User Guide>.
 
 
-=head2 GetPolicyVersion(PolicyArn => Str, VersionId => Str)
+=head2 GetPolicyVersion
+
+=over
+
+=item PolicyArn => Str
+
+=item VersionId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetPolicyVersion>
 
@@ -2506,7 +3040,14 @@ Managed Policies
 in the I<IAM User Guide>.
 
 
-=head2 GetRole(RoleName => Str)
+=head2 GetRole
+
+=over
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetRole>
 
@@ -2526,7 +3067,16 @@ C<java.net.URLDecoder> utility class in the Java SDK. Other languages
 and SDKs provide similar functionality.
 
 
-=head2 GetRolePolicy(PolicyName => Str, RoleName => Str)
+=head2 GetRolePolicy
+
+=over
+
+=item PolicyName => Str
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetRolePolicy>
 
@@ -2557,7 +3107,14 @@ Permissions and Federate Identities
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html).
 
 
-=head2 GetSAMLProvider(SAMLProviderArn => Str)
+=head2 GetSAMLProvider
+
+=over
+
+=item SAMLProviderArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetSAMLProvider>
 
@@ -2570,7 +3127,14 @@ This operation requires Signature Version 4
 (http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 
-=head2 GetServerCertificate(ServerCertificateName => Str)
+=head2 GetServerCertificate
+
+=over
+
+=item ServerCertificateName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetServerCertificate>
 
@@ -2586,7 +3150,14 @@ in the I<IAM User Guide>. This topic includes a list of AWS services
 that can use the server certificates that you manage with IAM.
 
 
-=head2 GetServiceLinkedRoleDeletionStatus(DeletionTaskId => Str)
+=head2 GetServiceLinkedRoleDeletionStatus
+
+=over
+
+=item DeletionTaskId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetServiceLinkedRoleDeletionStatus>
 
@@ -2600,7 +3171,18 @@ of the deletion. If the deletion fails, this operation returns the
 reason that it failed, if that information is returned by the service.
 
 
-=head2 GetSSHPublicKey(Encoding => Str, SSHPublicKeyId => Str, UserName => Str)
+=head2 GetSSHPublicKey
+
+=over
+
+=item Encoding => Str
+
+=item SSHPublicKeyId => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetSSHPublicKey>
 
@@ -2617,7 +3199,14 @@ CodeCommit repository, see Set up AWS CodeCommit for SSH Connections
 in the I<AWS CodeCommit User Guide>.
 
 
-=head2 GetUser([UserName => Str])
+=head2 GetUser
+
+=over
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetUser>
 
@@ -2631,7 +3220,16 @@ implicitly based on the AWS access key ID used to sign the request to
 this API.
 
 
-=head2 GetUserPolicy(PolicyName => Str, UserName => Str)
+=head2 GetUserPolicy
+
+=over
+
+=item PolicyName => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetUserPolicy>
 
@@ -2658,7 +3256,18 @@ Policies
 in the I<IAM User Guide>.
 
 
-=head2 ListAccessKeys([Marker => Str, MaxItems => Int, UserName => Str])
+=head2 ListAccessKeys
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListAccessKeys>
 
@@ -2681,7 +3290,16 @@ To ensure the security of your AWS account, the secret access key is
 accessible only during key and user creation.
 
 
-=head2 ListAccountAliases([Marker => Str, MaxItems => Int])
+=head2 ListAccountAliases
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListAccountAliases>
 
@@ -2694,7 +3312,20 @@ Using an Alias for Your AWS Account ID
 the I<IAM User Guide>.
 
 
-=head2 ListAttachedGroupPolicies(GroupName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListAttachedGroupPolicies
+
+=over
+
+=item GroupName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [PathPrefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListAttachedGroupPolicies>
 
@@ -2716,7 +3347,20 @@ are no policies attached to the specified group (or none that match the
 specified path prefix), the operation returns an empty list.
 
 
-=head2 ListAttachedRolePolicies(RoleName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListAttachedRolePolicies
+
+=over
+
+=item RoleName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [PathPrefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListAttachedRolePolicies>
 
@@ -2737,7 +3381,20 @@ are no policies attached to the specified role (or none that match the
 specified path prefix), the operation returns an empty list.
 
 
-=head2 ListAttachedUserPolicies(UserName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListAttachedUserPolicies
+
+=over
+
+=item UserName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [PathPrefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListAttachedUserPolicies>
 
@@ -2758,7 +3415,22 @@ are no policies attached to the specified group (or none that match the
 specified path prefix), the operation returns an empty list.
 
 
-=head2 ListEntitiesForPolicy(PolicyArn => Str, [EntityFilter => Str, Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListEntitiesForPolicy
+
+=over
+
+=item PolicyArn => Str
+
+=item [EntityFilter => Str]
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [PathPrefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListEntitiesForPolicy>
 
@@ -2776,7 +3448,18 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 ListGroupPolicies(GroupName => Str, [Marker => Str, MaxItems => Int])
+=head2 ListGroupPolicies
+
+=over
+
+=item GroupName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListGroupPolicies>
 
@@ -2797,7 +3480,18 @@ parameters. If there are no inline policies embedded with the specified
 group, the operation returns an empty list.
 
 
-=head2 ListGroups([Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListGroups
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [PathPrefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListGroups>
 
@@ -2809,7 +3503,18 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 ListGroupsForUser(UserName => Str, [Marker => Str, MaxItems => Int])
+=head2 ListGroupsForUser
+
+=over
+
+=item UserName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListGroupsForUser>
 
@@ -2821,7 +3526,18 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 ListInstanceProfiles([Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListInstanceProfiles
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [PathPrefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListInstanceProfiles>
 
@@ -2836,7 +3552,18 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 ListInstanceProfilesForRole(RoleName => Str, [Marker => Str, MaxItems => Int])
+=head2 ListInstanceProfilesForRole
+
+=over
+
+=item RoleName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListInstanceProfilesForRole>
 
@@ -2851,7 +3578,18 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 ListMFADevices([Marker => Str, MaxItems => Int, UserName => Str])
+=head2 ListMFADevices
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListMFADevices>
 
@@ -2867,7 +3605,12 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 ListOpenIDConnectProviders()
+=head2 ListOpenIDConnectProviders
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::IAM::ListOpenIDConnectProviders>
 
@@ -2877,7 +3620,22 @@ Lists information about the IAM OpenID Connect (OIDC) provider resource
 objects defined in the AWS account.
 
 
-=head2 ListPolicies([Marker => Str, MaxItems => Int, OnlyAttached => Bool, PathPrefix => Str, Scope => Str])
+=head2 ListPolicies
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [OnlyAttached => Bool]
+
+=item [PathPrefix => Str]
+
+=item [Scope => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListPolicies>
 
@@ -2902,7 +3660,18 @@ Inline Policies
 in the I<IAM User Guide>.
 
 
-=head2 ListPolicyVersions(PolicyArn => Str, [Marker => Str, MaxItems => Int])
+=head2 ListPolicyVersions
+
+=over
+
+=item PolicyArn => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListPolicyVersions>
 
@@ -2918,7 +3687,18 @@ Inline Policies
 in the I<IAM User Guide>.
 
 
-=head2 ListRolePolicies(RoleName => Str, [Marker => Str, MaxItems => Int])
+=head2 ListRolePolicies
+
+=over
+
+=item RoleName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListRolePolicies>
 
@@ -2939,7 +3719,18 @@ parameters. If there are no inline policies embedded with the specified
 role, the operation returns an empty list.
 
 
-=head2 ListRoles([Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListRoles
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [PathPrefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListRoles>
 
@@ -2954,7 +3745,12 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 ListSAMLProviders()
+=head2 ListSAMLProviders
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::IAM::ListSAMLProviders>
 
@@ -2966,7 +3762,18 @@ This operation requires Signature Version 4
 (http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 
-=head2 ListServerCertificates([Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListServerCertificates
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [PathPrefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListServerCertificates>
 
@@ -2985,7 +3792,16 @@ in the I<IAM User Guide>. This topic also includes a list of AWS
 services that can use the server certificates that you manage with IAM.
 
 
-=head2 ListServiceSpecificCredentials([ServiceName => Str, UserName => Str])
+=head2 ListServiceSpecificCredentials
+
+=over
+
+=item [ServiceName => Str]
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListServiceSpecificCredentials>
 
@@ -3002,7 +3818,18 @@ credentials
 in the AWS CodeCommit User Guide.
 
 
-=head2 ListSigningCertificates([Marker => Str, MaxItems => Int, UserName => Str])
+=head2 ListSigningCertificates
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListSigningCertificates>
 
@@ -3023,7 +3850,18 @@ account, you can use this operation to manage AWS account root user
 credentials even if the AWS account has no associated users.
 
 
-=head2 ListSSHPublicKeys([Marker => Str, MaxItems => Int, UserName => Str])
+=head2 ListSSHPublicKeys
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListSSHPublicKeys>
 
@@ -3044,7 +3882,18 @@ Although each user is limited to a small number of keys, you can still
 paginate the results using the C<MaxItems> and C<Marker> parameters.
 
 
-=head2 ListUserPolicies(UserName => Str, [Marker => Str, MaxItems => Int])
+=head2 ListUserPolicies
+
+=over
+
+=item UserName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListUserPolicies>
 
@@ -3065,7 +3914,18 @@ parameters. If there are no inline policies embedded with the specified
 user, the operation returns an empty list.
 
 
-=head2 ListUsers([Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListUsers
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [PathPrefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListUsers>
 
@@ -3079,7 +3939,18 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 ListVirtualMFADevices([AssignmentStatus => Str, Marker => Str, MaxItems => Int])
+=head2 ListVirtualMFADevices
+
+=over
+
+=item [AssignmentStatus => Str]
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListVirtualMFADevices>
 
@@ -3094,7 +3965,18 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 PutGroupPolicy(GroupName => Str, PolicyDocument => Str, PolicyName => Str)
+=head2 PutGroupPolicy
+
+=over
+
+=item GroupName => Str
+
+=item PolicyDocument => Str
+
+=item PolicyName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::PutGroupPolicy>
 
@@ -3122,7 +4004,18 @@ the Query API with IAM, go to Making Query Requests
 in the I<IAM User Guide>.
 
 
-=head2 PutRolePolicy(PolicyDocument => Str, PolicyName => Str, RoleName => Str)
+=head2 PutRolePolicy
+
+=over
+
+=item PolicyDocument => Str
+
+=item PolicyName => Str
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::PutRolePolicy>
 
@@ -3158,7 +4051,18 @@ the Query API with IAM, go to Making Query Requests
 in the I<IAM User Guide>.
 
 
-=head2 PutUserPolicy(PolicyDocument => Str, PolicyName => Str, UserName => Str)
+=head2 PutUserPolicy
+
+=over
+
+=item PolicyDocument => Str
+
+=item PolicyName => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::PutUserPolicy>
 
@@ -3186,7 +4090,16 @@ the Query API with IAM, go to Making Query Requests
 in the I<IAM User Guide>.
 
 
-=head2 RemoveClientIDFromOpenIDConnectProvider(ClientID => Str, OpenIDConnectProviderArn => Str)
+=head2 RemoveClientIDFromOpenIDConnectProvider
+
+=over
+
+=item ClientID => Str
+
+=item OpenIDConnectProviderArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::RemoveClientIDFromOpenIDConnectProvider>
 
@@ -3200,7 +4113,16 @@ This operation is idempotent; it does not fail or return an error if
 you try to remove a client ID that does not exist.
 
 
-=head2 RemoveRoleFromInstanceProfile(InstanceProfileName => Str, RoleName => Str)
+=head2 RemoveRoleFromInstanceProfile
+
+=over
+
+=item InstanceProfileName => Str
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::RemoveRoleFromInstanceProfile>
 
@@ -3220,7 +4142,16 @@ Profiles
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
 
 
-=head2 RemoveUserFromGroup(GroupName => Str, UserName => Str)
+=head2 RemoveUserFromGroup
+
+=over
+
+=item GroupName => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::RemoveUserFromGroup>
 
@@ -3229,7 +4160,16 @@ Returns: nothing
 Removes the specified user from the specified group.
 
 
-=head2 ResetServiceSpecificCredential(ServiceSpecificCredentialId => Str, [UserName => Str])
+=head2 ResetServiceSpecificCredential
+
+=over
+
+=item ServiceSpecificCredentialId => Str
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ResetServiceSpecificCredential>
 
@@ -3241,7 +4181,20 @@ by the user. Resetting the password immediately invalidates the
 previous password associated with this user.
 
 
-=head2 ResyncMFADevice(AuthenticationCode1 => Str, AuthenticationCode2 => Str, SerialNumber => Str, UserName => Str)
+=head2 ResyncMFADevice
+
+=over
+
+=item AuthenticationCode1 => Str
+
+=item AuthenticationCode2 => Str
+
+=item SerialNumber => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ResyncMFADevice>
 
@@ -3256,7 +4209,16 @@ devices, go to Using a Virtual MFA Device
 in the I<IAM User Guide>.
 
 
-=head2 SetDefaultPolicyVersion(PolicyArn => Str, VersionId => Str)
+=head2 SetDefaultPolicyVersion
+
+=over
+
+=item PolicyArn => Str
+
+=item VersionId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::SetDefaultPolicyVersion>
 
@@ -3275,7 +4237,32 @@ Policies
 in the I<IAM User Guide>.
 
 
-=head2 SimulateCustomPolicy(ActionNames => ArrayRef[Str|Undef], PolicyInputList => ArrayRef[Str|Undef], [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+=head2 SimulateCustomPolicy
+
+=over
+
+=item ActionNames => ArrayRef[Str|Undef]
+
+=item PolicyInputList => ArrayRef[Str|Undef]
+
+=item [CallerArn => Str]
+
+=item [ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>]]
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [ResourceArns => ArrayRef[Str|Undef]]
+
+=item [ResourceHandlingOption => Str]
+
+=item [ResourceOwner => Str]
+
+=item [ResourcePolicy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::SimulateCustomPolicy>
 
@@ -3303,7 +4290,34 @@ If the output is long, you can use C<MaxItems> and C<Marker> parameters
 to paginate the results.
 
 
-=head2 SimulatePrincipalPolicy(ActionNames => ArrayRef[Str|Undef], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str|Undef], ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+=head2 SimulatePrincipalPolicy
+
+=over
+
+=item ActionNames => ArrayRef[Str|Undef]
+
+=item PolicySourceArn => Str
+
+=item [CallerArn => Str]
+
+=item [ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>]]
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [PolicyInputList => ArrayRef[Str|Undef]]
+
+=item [ResourceArns => ArrayRef[Str|Undef]]
+
+=item [ResourceHandlingOption => Str]
+
+=item [ResourceOwner => Str]
+
+=item [ResourcePolicy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::SimulatePrincipalPolicy>
 
@@ -3342,7 +4356,18 @@ If the output is long, you can use the C<MaxItems> and C<Marker>
 parameters to paginate the results.
 
 
-=head2 UpdateAccessKey(AccessKeyId => Str, Status => Str, [UserName => Str])
+=head2 UpdateAccessKey
+
+=over
+
+=item AccessKeyId => Str
+
+=item Status => Str
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateAccessKey>
 
@@ -3363,7 +4388,30 @@ For information about rotating keys, see Managing Keys and Certificates
 in the I<IAM User Guide>.
 
 
-=head2 UpdateAccountPasswordPolicy([AllowUsersToChangePassword => Bool, HardExpiry => Bool, MaxPasswordAge => Int, MinimumPasswordLength => Int, PasswordReusePrevention => Int, RequireLowercaseCharacters => Bool, RequireNumbers => Bool, RequireSymbols => Bool, RequireUppercaseCharacters => Bool])
+=head2 UpdateAccountPasswordPolicy
+
+=over
+
+=item [AllowUsersToChangePassword => Bool]
+
+=item [HardExpiry => Bool]
+
+=item [MaxPasswordAge => Int]
+
+=item [MinimumPasswordLength => Int]
+
+=item [PasswordReusePrevention => Int]
+
+=item [RequireLowercaseCharacters => Bool]
+
+=item [RequireNumbers => Bool]
+
+=item [RequireSymbols => Bool]
+
+=item [RequireUppercaseCharacters => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateAccountPasswordPolicy>
 
@@ -3391,7 +4439,16 @@ Password Policy
 in the I<IAM User Guide>.
 
 
-=head2 UpdateAssumeRolePolicy(PolicyDocument => Str, RoleName => Str)
+=head2 UpdateAssumeRolePolicy
+
+=over
+
+=item PolicyDocument => Str
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateAssumeRolePolicy>
 
@@ -3404,7 +4461,18 @@ and Federate Identities
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html).
 
 
-=head2 UpdateGroup(GroupName => Str, [NewGroupName => Str, NewPath => Str])
+=head2 UpdateGroup
+
+=over
+
+=item GroupName => Str
+
+=item [NewGroupName => Str]
+
+=item [NewPath => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateGroup>
 
@@ -3427,7 +4495,18 @@ see Access Management
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html).
 
 
-=head2 UpdateLoginProfile(UserName => Str, [Password => Str, PasswordResetRequired => Bool])
+=head2 UpdateLoginProfile
+
+=over
+
+=item UserName => Str
+
+=item [Password => Str]
+
+=item [PasswordResetRequired => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateLoginProfile>
 
@@ -3441,7 +4520,16 @@ more information about modifying passwords, see Managing Passwords
 in the I<IAM User Guide>.
 
 
-=head2 UpdateOpenIDConnectProviderThumbprint(OpenIDConnectProviderArn => Str, ThumbprintList => ArrayRef[Str|Undef])
+=head2 UpdateOpenIDConnectProviderThumbprint
+
+=over
+
+=item OpenIDConnectProviderArn => Str
+
+=item ThumbprintList => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateOpenIDConnectProviderThumbprint>
 
@@ -3466,7 +4554,18 @@ access to the C<UpdateOpenIDConnectProviderThumbprint> operation to
 highly privileged users.
 
 
-=head2 UpdateRole(RoleName => Str, [Description => Str, MaxSessionDuration => Int])
+=head2 UpdateRole
+
+=over
+
+=item RoleName => Str
+
+=item [Description => Str]
+
+=item [MaxSessionDuration => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateRole>
 
@@ -3475,7 +4574,16 @@ Returns: a L<Paws::IAM::UpdateRoleResponse> instance
 Updates the description or maximum session duration setting of a role.
 
 
-=head2 UpdateRoleDescription(Description => Str, RoleName => Str)
+=head2 UpdateRoleDescription
+
+=over
+
+=item Description => Str
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateRoleDescription>
 
@@ -3488,7 +4596,16 @@ same function as the C<Description> parameter in the C<UpdateRole>
 operation.
 
 
-=head2 UpdateSAMLProvider(SAMLMetadataDocument => Str, SAMLProviderArn => Str)
+=head2 UpdateSAMLProvider
+
+=over
+
+=item SAMLMetadataDocument => Str
+
+=item SAMLProviderArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateSAMLProvider>
 
@@ -3501,7 +4618,18 @@ This operation requires Signature Version 4
 (http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 
-=head2 UpdateServerCertificate(ServerCertificateName => Str, [NewPath => Str, NewServerCertificateName => Str])
+=head2 UpdateServerCertificate
+
+=over
+
+=item ServerCertificateName => Str
+
+=item [NewPath => Str]
+
+=item [NewServerCertificateName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateServerCertificate>
 
@@ -3534,7 +4662,18 @@ Management
 I<IAM User Guide>.
 
 
-=head2 UpdateServiceSpecificCredential(ServiceSpecificCredentialId => Str, Status => Str, [UserName => Str])
+=head2 UpdateServiceSpecificCredential
+
+=over
+
+=item ServiceSpecificCredentialId => Str
+
+=item Status => Str
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateServiceSpecificCredential>
 
@@ -3547,7 +4686,18 @@ disable a userE<rsquo>s service-specific credential as part of a
 credential rotation work flow.
 
 
-=head2 UpdateSigningCertificate(CertificateId => Str, Status => Str, [UserName => Str])
+=head2 UpdateSigningCertificate
+
+=over
+
+=item CertificateId => Str
+
+=item Status => Str
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateSigningCertificate>
 
@@ -3565,7 +4715,18 @@ can use this operation to manage AWS account root user credentials even
 if the AWS account has no associated users.
 
 
-=head2 UpdateSSHPublicKey(SSHPublicKeyId => Str, Status => Str, UserName => Str)
+=head2 UpdateSSHPublicKey
+
+=over
+
+=item SSHPublicKeyId => Str
+
+=item Status => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateSSHPublicKey>
 
@@ -3584,7 +4745,18 @@ CodeCommit repository, see Set up AWS CodeCommit for SSH Connections
 in the I<AWS CodeCommit User Guide>.
 
 
-=head2 UpdateUser(UserName => Str, [NewPath => Str, NewUserName => Str])
+=head2 UpdateUser
+
+=over
+
+=item UserName => Str
+
+=item [NewPath => Str]
+
+=item [NewUserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateUser>
 
@@ -3607,7 +4779,22 @@ information about permissions, see Permissions and Policies
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsAndPolicies.html).
 
 
-=head2 UploadServerCertificate(CertificateBody => Str, PrivateKey => Str, ServerCertificateName => Str, [CertificateChain => Str, Path => Str])
+=head2 UploadServerCertificate
+
+=over
+
+=item CertificateBody => Str
+
+=item PrivateKey => Str
+
+=item ServerCertificateName => Str
+
+=item [CertificateChain => Str]
+
+=item [Path => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UploadServerCertificate>
 
@@ -3649,7 +4836,16 @@ Requests
 the I<IAM User Guide>.
 
 
-=head2 UploadSigningCertificate(CertificateBody => Str, [UserName => Str])
+=head2 UploadSigningCertificate
+
+=over
+
+=item CertificateBody => Str
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UploadSigningCertificate>
 
@@ -3677,7 +4873,16 @@ the Query API with IAM, go to Making Query Requests
 in the I<IAM User Guide>.
 
 
-=head2 UploadSSHPublicKey(SSHPublicKeyBody => Str, UserName => Str)
+=head2 UploadSSHPublicKey
+
+=over
+
+=item SSHPublicKeyBody => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UploadSSHPublicKey>
 

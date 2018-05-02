@@ -59,7 +59,26 @@ Provides AWS Marketplace business intelligence data on-demand.
 
 =head1 METHODS
 
-=head2 GenerateDataSet(DataSetPublicationDate => Str, DataSetType => Str, DestinationS3BucketName => Str, RoleNameArn => Str, SnsTopicArn => Str, [CustomerDefinedValues => L<Paws::MarketplaceCommerceAnalytics::CustomerDefinedValues>, DestinationS3Prefix => Str])
+=head2 GenerateDataSet
+
+=over
+
+=item DataSetPublicationDate => Str
+
+=item DataSetType => Str
+
+=item DestinationS3BucketName => Str
+
+=item RoleNameArn => Str
+
+=item SnsTopicArn => Str
+
+=item [CustomerDefinedValues => L<Paws::MarketplaceCommerceAnalytics::CustomerDefinedValues>]
+
+=item [DestinationS3Prefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MarketplaceCommerceAnalytics::GenerateDataSet>
 
@@ -79,7 +98,26 @@ following actions: s3:PutObject, s3:GetBucketLocation,
 sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
 
 
-=head2 StartSupportDataExport(DataSetType => Str, DestinationS3BucketName => Str, FromDate => Str, RoleNameArn => Str, SnsTopicArn => Str, [CustomerDefinedValues => L<Paws::MarketplaceCommerceAnalytics::CustomerDefinedValues>, DestinationS3Prefix => Str])
+=head2 StartSupportDataExport
+
+=over
+
+=item DataSetType => Str
+
+=item DestinationS3BucketName => Str
+
+=item FromDate => Str
+
+=item RoleNameArn => Str
+
+=item SnsTopicArn => Str
+
+=item [CustomerDefinedValues => L<Paws::MarketplaceCommerceAnalytics::CustomerDefinedValues>]
+
+=item [DestinationS3Prefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MarketplaceCommerceAnalytics::StartSupportDataExport>
 

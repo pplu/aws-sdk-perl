@@ -206,7 +206,26 @@ environment member for an environment.
 
 =head1 METHODS
 
-=head2 CreateEnvironmentEC2(InstanceType => Str, Name => Str, [AutomaticStopTimeMinutes => Int, ClientRequestToken => Str, Description => Str, OwnerArn => Str, SubnetId => Str])
+=head2 CreateEnvironmentEC2
+
+=over
+
+=item InstanceType => Str
+
+=item Name => Str
+
+=item [AutomaticStopTimeMinutes => Int]
+
+=item [ClientRequestToken => Str]
+
+=item [Description => Str]
+
+=item [OwnerArn => Str]
+
+=item [SubnetId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Cloud9::CreateEnvironmentEC2>
 
@@ -217,7 +236,18 @@ Elastic Compute Cloud (Amazon EC2) instance, and then connects from the
 instance to the environment.
 
 
-=head2 CreateEnvironmentMembership(EnvironmentId => Str, Permissions => Str, UserArn => Str)
+=head2 CreateEnvironmentMembership
+
+=over
+
+=item EnvironmentId => Str
+
+=item Permissions => Str
+
+=item UserArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Cloud9::CreateEnvironmentMembership>
 
@@ -226,7 +256,14 @@ Returns: a L<Paws::Cloud9::CreateEnvironmentMembershipResult> instance
 Adds an environment member to an AWS Cloud9 development environment.
 
 
-=head2 DeleteEnvironment(EnvironmentId => Str)
+=head2 DeleteEnvironment
+
+=over
+
+=item EnvironmentId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Cloud9::DeleteEnvironment>
 
@@ -236,7 +273,16 @@ Deletes an AWS Cloud9 development environment. If an Amazon EC2
 instance is connected to the environment, also terminates the instance.
 
 
-=head2 DeleteEnvironmentMembership(EnvironmentId => Str, UserArn => Str)
+=head2 DeleteEnvironmentMembership
+
+=over
+
+=item EnvironmentId => Str
+
+=item UserArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Cloud9::DeleteEnvironmentMembership>
 
@@ -246,7 +292,22 @@ Deletes an environment member from an AWS Cloud9 development
 environment.
 
 
-=head2 DescribeEnvironmentMemberships([EnvironmentId => Str, MaxResults => Int, NextToken => Str, Permissions => ArrayRef[Str|Undef], UserArn => Str])
+=head2 DescribeEnvironmentMemberships
+
+=over
+
+=item [EnvironmentId => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Permissions => ArrayRef[Str|Undef]]
+
+=item [UserArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Cloud9::DescribeEnvironmentMemberships>
 
@@ -256,7 +317,14 @@ Gets information about environment members for an AWS Cloud9
 development environment.
 
 
-=head2 DescribeEnvironments(EnvironmentIds => ArrayRef[Str|Undef])
+=head2 DescribeEnvironments
+
+=over
+
+=item EnvironmentIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Cloud9::DescribeEnvironments>
 
@@ -265,7 +333,14 @@ Returns: a L<Paws::Cloud9::DescribeEnvironmentsResult> instance
 Gets information about AWS Cloud9 development environments.
 
 
-=head2 DescribeEnvironmentStatus(EnvironmentId => Str)
+=head2 DescribeEnvironmentStatus
+
+=over
+
+=item EnvironmentId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Cloud9::DescribeEnvironmentStatus>
 
@@ -274,7 +349,16 @@ Returns: a L<Paws::Cloud9::DescribeEnvironmentStatusResult> instance
 Gets status information for an AWS Cloud9 development environment.
 
 
-=head2 ListEnvironments([MaxResults => Int, NextToken => Str])
+=head2 ListEnvironments
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Cloud9::ListEnvironments>
 
@@ -283,7 +367,18 @@ Returns: a L<Paws::Cloud9::ListEnvironmentsResult> instance
 Gets a list of AWS Cloud9 development environment identifiers.
 
 
-=head2 UpdateEnvironment(EnvironmentId => Str, [Description => Str, Name => Str])
+=head2 UpdateEnvironment
+
+=over
+
+=item EnvironmentId => Str
+
+=item [Description => Str]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Cloud9::UpdateEnvironment>
 
@@ -292,7 +387,18 @@ Returns: a L<Paws::Cloud9::UpdateEnvironmentResult> instance
 Changes the settings of an existing AWS Cloud9 development environment.
 
 
-=head2 UpdateEnvironmentMembership(EnvironmentId => Str, Permissions => Str, UserArn => Str)
+=head2 UpdateEnvironmentMembership
+
+=over
+
+=item EnvironmentId => Str
+
+=item Permissions => Str
+
+=item UserArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Cloud9::UpdateEnvironmentMembership>
 

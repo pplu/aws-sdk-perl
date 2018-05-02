@@ -289,7 +289,18 @@ Tools for Amazon Web Services (http://aws.amazon.com/tools/).
 
 =head1 METHODS
 
-=head2 AddIpRoutes(DirectoryId => Str, IpRoutes => ArrayRef[L<Paws::DS::IpRoute>], [UpdateSecurityGroupForDirectoryControllers => Bool])
+=head2 AddIpRoutes
+
+=over
+
+=item DirectoryId => Str
+
+=item IpRoutes => ArrayRef[L<Paws::DS::IpRoute>]
+
+=item [UpdateSecurityGroupForDirectoryControllers => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::AddIpRoutes>
 
@@ -310,7 +321,16 @@ Resources, and Conditions Reference
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 
 
-=head2 AddTagsToResource(ResourceId => Str, Tags => ArrayRef[L<Paws::DS::Tag>])
+=head2 AddTagsToResource
+
+=over
+
+=item ResourceId => Str
+
+=item Tags => ArrayRef[L<Paws::DS::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::AddTagsToResource>
 
@@ -321,7 +341,16 @@ directory can have a maximum of 50 tags. Each tag consists of a key and
 optional value. Tag keys must be unique to each resource.
 
 
-=head2 CancelSchemaExtension(DirectoryId => Str, SchemaExtensionId => Str)
+=head2 CancelSchemaExtension
+
+=over
+
+=item DirectoryId => Str
+
+=item SchemaExtensionId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::CancelSchemaExtension>
 
@@ -334,7 +363,24 @@ be canceled during any of the following states; C<Initializing>,
 C<CreatingSnapshot>, and C<UpdatingSchema>.
 
 
-=head2 ConnectDirectory(ConnectSettings => L<Paws::DS::DirectoryConnectSettings>, Name => Str, Password => Str, Size => Str, [Description => Str, ShortName => Str])
+=head2 ConnectDirectory
+
+=over
+
+=item ConnectSettings => L<Paws::DS::DirectoryConnectSettings>
+
+=item Name => Str
+
+=item Password => Str
+
+=item Size => Str
+
+=item [Description => Str]
+
+=item [ShortName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::ConnectDirectory>
 
@@ -350,7 +396,16 @@ Resources, and Conditions Reference
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 
 
-=head2 CreateAlias(Alias => Str, DirectoryId => Str)
+=head2 CreateAlias
+
+=over
+
+=item Alias => Str
+
+=item DirectoryId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::CreateAlias>
 
@@ -364,7 +419,22 @@ After an alias has been created, it cannot be deleted or reused, so
 this operation should only be used when absolutely necessary.
 
 
-=head2 CreateComputer(ComputerName => Str, DirectoryId => Str, Password => Str, [ComputerAttributes => ArrayRef[L<Paws::DS::Attribute>], OrganizationalUnitDistinguishedName => Str])
+=head2 CreateComputer
+
+=over
+
+=item ComputerName => Str
+
+=item DirectoryId => Str
+
+=item Password => Str
+
+=item [ComputerAttributes => ArrayRef[L<Paws::DS::Attribute>]]
+
+=item [OrganizationalUnitDistinguishedName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::CreateComputer>
 
@@ -374,7 +444,18 @@ Creates a computer account in the specified directory, and joins the
 computer to the directory.
 
 
-=head2 CreateConditionalForwarder(DirectoryId => Str, DnsIpAddrs => ArrayRef[Str|Undef], RemoteDomainName => Str)
+=head2 CreateConditionalForwarder
+
+=over
+
+=item DirectoryId => Str
+
+=item DnsIpAddrs => ArrayRef[Str|Undef]
+
+=item RemoteDomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::CreateConditionalForwarder>
 
@@ -386,7 +467,24 @@ relationship with another domain. The conditional forwarder points to
 the trusted domain.
 
 
-=head2 CreateDirectory(Name => Str, Password => Str, Size => Str, [Description => Str, ShortName => Str, VpcSettings => L<Paws::DS::DirectoryVpcSettings>])
+=head2 CreateDirectory
+
+=over
+
+=item Name => Str
+
+=item Password => Str
+
+=item Size => Str
+
+=item [Description => Str]
+
+=item [ShortName => Str]
+
+=item [VpcSettings => L<Paws::DS::DirectoryVpcSettings>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::CreateDirectory>
 
@@ -402,7 +500,24 @@ Resources, and Conditions Reference
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 
 
-=head2 CreateMicrosoftAD(Name => Str, Password => Str, VpcSettings => L<Paws::DS::DirectoryVpcSettings>, [Description => Str, Edition => Str, ShortName => Str])
+=head2 CreateMicrosoftAD
+
+=over
+
+=item Name => Str
+
+=item Password => Str
+
+=item VpcSettings => L<Paws::DS::DirectoryVpcSettings>
+
+=item [Description => Str]
+
+=item [Edition => Str]
+
+=item [ShortName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::CreateMicrosoftAD>
 
@@ -418,7 +533,16 @@ Resources, and Conditions Reference
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 
 
-=head2 CreateSnapshot(DirectoryId => Str, [Name => Str])
+=head2 CreateSnapshot
+
+=over
+
+=item DirectoryId => Str
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::CreateSnapshot>
 
@@ -430,7 +554,24 @@ cloud.
 You cannot take snapshots of AD Connector directories.
 
 
-=head2 CreateTrust(DirectoryId => Str, RemoteDomainName => Str, TrustDirection => Str, TrustPassword => Str, [ConditionalForwarderIpAddrs => ArrayRef[Str|Undef], TrustType => Str])
+=head2 CreateTrust
+
+=over
+
+=item DirectoryId => Str
+
+=item RemoteDomainName => Str
+
+=item TrustDirection => Str
+
+=item TrustPassword => Str
+
+=item [ConditionalForwarderIpAddrs => ArrayRef[Str|Undef]]
+
+=item [TrustType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::CreateTrust>
 
@@ -448,7 +589,16 @@ relationship between a Microsoft AD in the AWS cloud and an external
 domain.
 
 
-=head2 DeleteConditionalForwarder(DirectoryId => Str, RemoteDomainName => Str)
+=head2 DeleteConditionalForwarder
+
+=over
+
+=item DirectoryId => Str
+
+=item RemoteDomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::DeleteConditionalForwarder>
 
@@ -458,7 +608,14 @@ Deletes a conditional forwarder that has been set up for your AWS
 directory.
 
 
-=head2 DeleteDirectory(DirectoryId => Str)
+=head2 DeleteDirectory
+
+=over
+
+=item DirectoryId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::DeleteDirectory>
 
@@ -474,7 +631,14 @@ Resources, and Conditions Reference
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 
 
-=head2 DeleteSnapshot(SnapshotId => Str)
+=head2 DeleteSnapshot
+
+=over
+
+=item SnapshotId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::DeleteSnapshot>
 
@@ -483,7 +647,16 @@ Returns: a L<Paws::DS::DeleteSnapshotResult> instance
 Deletes a directory snapshot.
 
 
-=head2 DeleteTrust(TrustId => Str, [DeleteAssociatedConditionalForwarder => Bool])
+=head2 DeleteTrust
+
+=over
+
+=item TrustId => Str
+
+=item [DeleteAssociatedConditionalForwarder => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::DeleteTrust>
 
@@ -493,7 +666,16 @@ Deletes an existing trust relationship between your Microsoft AD in the
 AWS cloud and an external domain.
 
 
-=head2 DeregisterEventTopic(DirectoryId => Str, TopicName => Str)
+=head2 DeregisterEventTopic
+
+=over
+
+=item DirectoryId => Str
+
+=item TopicName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::DeregisterEventTopic>
 
@@ -503,7 +685,16 @@ Removes the specified directory as a publisher to the specified SNS
 topic.
 
 
-=head2 DescribeConditionalForwarders(DirectoryId => Str, [RemoteDomainNames => ArrayRef[Str|Undef]])
+=head2 DescribeConditionalForwarders
+
+=over
+
+=item DirectoryId => Str
+
+=item [RemoteDomainNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::DescribeConditionalForwarders>
 
@@ -515,7 +706,18 @@ If no input parameters are provided for RemoteDomainNames, this request
 describes all conditional forwarders for the specified directory ID.
 
 
-=head2 DescribeDirectories([DirectoryIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+=head2 DescribeDirectories
+
+=over
+
+=item [DirectoryIds => ArrayRef[Str|Undef]]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::DescribeDirectories>
 
@@ -537,7 +739,20 @@ You can also specify a maximum number of return results with the
 I<Limit> parameter.
 
 
-=head2 DescribeDomainControllers(DirectoryId => Str, [DomainControllerIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+=head2 DescribeDomainControllers
+
+=over
+
+=item DirectoryId => Str
+
+=item [DomainControllerIds => ArrayRef[Str|Undef]]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::DescribeDomainControllers>
 
@@ -546,7 +761,16 @@ Returns: a L<Paws::DS::DescribeDomainControllersResult> instance
 Provides information about any domain controllers in your directory.
 
 
-=head2 DescribeEventTopics([DirectoryId => Str, TopicNames => ArrayRef[Str|Undef]])
+=head2 DescribeEventTopics
+
+=over
+
+=item [DirectoryId => Str]
+
+=item [TopicNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::DescribeEventTopics>
 
@@ -559,7 +783,20 @@ If no input parameters are provided, such as DirectoryId or TopicName,
 this request describes all of the associations in the account.
 
 
-=head2 DescribeSnapshots([DirectoryId => Str, Limit => Int, NextToken => Str, SnapshotIds => ArrayRef[Str|Undef]])
+=head2 DescribeSnapshots
+
+=over
+
+=item [DirectoryId => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [SnapshotIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::DescribeSnapshots>
 
@@ -577,7 +814,20 @@ You can also specify a maximum number of return results with the
 I<Limit> parameter.
 
 
-=head2 DescribeTrusts([DirectoryId => Str, Limit => Int, NextToken => Str, TrustIds => ArrayRef[Str|Undef]])
+=head2 DescribeTrusts
+
+=over
+
+=item [DirectoryId => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [TrustIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::DescribeTrusts>
 
@@ -590,7 +840,14 @@ this request describes all the trust relationships belonging to the
 account.
 
 
-=head2 DisableRadius(DirectoryId => Str)
+=head2 DisableRadius
+
+=over
+
+=item DirectoryId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::DisableRadius>
 
@@ -601,7 +858,18 @@ Authentication Dial In User Service (RADIUS) server for an AD Connector
 directory.
 
 
-=head2 DisableSso(DirectoryId => Str, [Password => Str, UserName => Str])
+=head2 DisableSso
+
+=over
+
+=item DirectoryId => Str
+
+=item [Password => Str]
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::DisableSso>
 
@@ -610,7 +878,16 @@ Returns: a L<Paws::DS::DisableSsoResult> instance
 Disables single-sign on for a directory.
 
 
-=head2 EnableRadius(DirectoryId => Str, RadiusSettings => L<Paws::DS::RadiusSettings>)
+=head2 EnableRadius
+
+=over
+
+=item DirectoryId => Str
+
+=item RadiusSettings => L<Paws::DS::RadiusSettings>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::EnableRadius>
 
@@ -621,7 +898,18 @@ Authentication Dial In User Service (RADIUS) server for an AD Connector
 directory.
 
 
-=head2 EnableSso(DirectoryId => Str, [Password => Str, UserName => Str])
+=head2 EnableSso
+
+=over
+
+=item DirectoryId => Str
+
+=item [Password => Str]
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::EnableSso>
 
@@ -630,7 +918,12 @@ Returns: a L<Paws::DS::EnableSsoResult> instance
 Enables single sign-on for a directory.
 
 
-=head2 GetDirectoryLimits()
+=head2 GetDirectoryLimits
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::DS::GetDirectoryLimits>
 
@@ -639,7 +932,14 @@ Returns: a L<Paws::DS::GetDirectoryLimitsResult> instance
 Obtains directory limit information for the current region.
 
 
-=head2 GetSnapshotLimits(DirectoryId => Str)
+=head2 GetSnapshotLimits
+
+=over
+
+=item DirectoryId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::GetSnapshotLimits>
 
@@ -648,7 +948,18 @@ Returns: a L<Paws::DS::GetSnapshotLimitsResult> instance
 Obtains the manual snapshot limits for a directory.
 
 
-=head2 ListIpRoutes(DirectoryId => Str, [Limit => Int, NextToken => Str])
+=head2 ListIpRoutes
+
+=over
+
+=item DirectoryId => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::ListIpRoutes>
 
@@ -657,7 +968,18 @@ Returns: a L<Paws::DS::ListIpRoutesResult> instance
 Lists the address blocks that you have added to a directory.
 
 
-=head2 ListSchemaExtensions(DirectoryId => Str, [Limit => Int, NextToken => Str])
+=head2 ListSchemaExtensions
+
+=over
+
+=item DirectoryId => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::ListSchemaExtensions>
 
@@ -666,7 +988,18 @@ Returns: a L<Paws::DS::ListSchemaExtensionsResult> instance
 Lists all schema extensions applied to a Microsoft AD Directory.
 
 
-=head2 ListTagsForResource(ResourceId => Str, [Limit => Int, NextToken => Str])
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceId => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::ListTagsForResource>
 
@@ -675,7 +1008,16 @@ Returns: a L<Paws::DS::ListTagsForResourceResult> instance
 Lists all tags on a directory.
 
 
-=head2 RegisterEventTopic(DirectoryId => Str, TopicName => Str)
+=head2 RegisterEventTopic
+
+=over
+
+=item DirectoryId => Str
+
+=item TopicName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::RegisterEventTopic>
 
@@ -689,7 +1031,16 @@ to an Impaired or Inoperable status. You also receive a notification
 when the directory returns to an Active status.
 
 
-=head2 RemoveIpRoutes(CidrIps => ArrayRef[Str|Undef], DirectoryId => Str)
+=head2 RemoveIpRoutes
+
+=over
+
+=item CidrIps => ArrayRef[Str|Undef]
+
+=item DirectoryId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::RemoveIpRoutes>
 
@@ -698,7 +1049,16 @@ Returns: a L<Paws::DS::RemoveIpRoutesResult> instance
 Removes IP address blocks from a directory.
 
 
-=head2 RemoveTagsFromResource(ResourceId => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 RemoveTagsFromResource
+
+=over
+
+=item ResourceId => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::RemoveTagsFromResource>
 
@@ -707,7 +1067,14 @@ Returns: a L<Paws::DS::RemoveTagsFromResourceResult> instance
 Removes tags from a directory.
 
 
-=head2 RestoreFromSnapshot(SnapshotId => Str)
+=head2 RestoreFromSnapshot
+
+=over
+
+=item SnapshotId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::RestoreFromSnapshot>
 
@@ -725,7 +1092,20 @@ B<DirectoryDescription.Stage> value changes to C<Active>, the restore
 operation is complete.
 
 
-=head2 StartSchemaExtension(CreateSnapshotBeforeSchemaExtension => Bool, Description => Str, DirectoryId => Str, LdifContent => Str)
+=head2 StartSchemaExtension
+
+=over
+
+=item CreateSnapshotBeforeSchemaExtension => Bool
+
+=item Description => Str
+
+=item DirectoryId => Str
+
+=item LdifContent => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::StartSchemaExtension>
 
@@ -734,7 +1114,18 @@ Returns: a L<Paws::DS::StartSchemaExtensionResult> instance
 Applies a schema extension to a Microsoft AD directory.
 
 
-=head2 UpdateConditionalForwarder(DirectoryId => Str, DnsIpAddrs => ArrayRef[Str|Undef], RemoteDomainName => Str)
+=head2 UpdateConditionalForwarder
+
+=over
+
+=item DirectoryId => Str
+
+=item DnsIpAddrs => ArrayRef[Str|Undef]
+
+=item RemoteDomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::UpdateConditionalForwarder>
 
@@ -744,7 +1135,16 @@ Updates a conditional forwarder that has been set up for your AWS
 directory.
 
 
-=head2 UpdateNumberOfDomainControllers(DesiredNumber => Int, DirectoryId => Str)
+=head2 UpdateNumberOfDomainControllers
+
+=over
+
+=item DesiredNumber => Int
+
+=item DirectoryId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::UpdateNumberOfDomainControllers>
 
@@ -758,7 +1158,16 @@ active once the requested number of domain controllers is updated.
 During this time, you cannot make another update request.
 
 
-=head2 UpdateRadius(DirectoryId => Str, RadiusSettings => L<Paws::DS::RadiusSettings>)
+=head2 UpdateRadius
+
+=over
+
+=item DirectoryId => Str
+
+=item RadiusSettings => L<Paws::DS::RadiusSettings>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::UpdateRadius>
 
@@ -768,7 +1177,14 @@ Updates the Remote Authentication Dial In User Service (RADIUS) server
 information for an AD Connector directory.
 
 
-=head2 VerifyTrust(TrustId => Str)
+=head2 VerifyTrust
+
+=over
+
+=item TrustId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DS::VerifyTrust>
 

@@ -625,7 +625,14 @@ how to set this up, see the Lightsail Dev Guide
 
 =head1 METHODS
 
-=head2 AllocateStaticIp(StaticIpName => Str)
+=head2 AllocateStaticIp
+
+=over
+
+=item StaticIpName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::AllocateStaticIp>
 
@@ -634,7 +641,18 @@ Returns: a L<Paws::Lightsail::AllocateStaticIpResult> instance
 Allocates a static IP address.
 
 
-=head2 AttachDisk(DiskName => Str, DiskPath => Str, InstanceName => Str)
+=head2 AttachDisk
+
+=over
+
+=item DiskName => Str
+
+=item DiskPath => Str
+
+=item InstanceName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::AttachDisk>
 
@@ -644,7 +662,16 @@ Attaches a block storage disk to a running or stopped Lightsail
 instance and exposes it to the instance with the specified disk name.
 
 
-=head2 AttachInstancesToLoadBalancer(InstanceNames => ArrayRef[Str|Undef], LoadBalancerName => Str)
+=head2 AttachInstancesToLoadBalancer
+
+=over
+
+=item InstanceNames => ArrayRef[Str|Undef]
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::AttachInstancesToLoadBalancer>
 
@@ -656,7 +683,16 @@ After some time, the instances are attached to the load balancer and
 the health check status is available.
 
 
-=head2 AttachLoadBalancerTlsCertificate(CertificateName => Str, LoadBalancerName => Str)
+=head2 AttachLoadBalancerTlsCertificate
+
+=over
+
+=item CertificateName => Str
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::AttachLoadBalancerTlsCertificate>
 
@@ -674,7 +710,16 @@ certificate, and it will replace the existing one and become the
 attached certificate.
 
 
-=head2 AttachStaticIp(InstanceName => Str, StaticIpName => Str)
+=head2 AttachStaticIp
+
+=over
+
+=item InstanceName => Str
+
+=item StaticIpName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::AttachStaticIp>
 
@@ -683,7 +728,16 @@ Returns: a L<Paws::Lightsail::AttachStaticIpResult> instance
 Attaches a static IP address to a specific Amazon Lightsail instance.
 
 
-=head2 CloseInstancePublicPorts(InstanceName => Str, PortInfo => L<Paws::Lightsail::PortInfo>)
+=head2 CloseInstancePublicPorts
+
+=over
+
+=item InstanceName => Str
+
+=item PortInfo => L<Paws::Lightsail::PortInfo>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::CloseInstancePublicPorts>
 
@@ -692,7 +746,18 @@ Returns: a L<Paws::Lightsail::CloseInstancePublicPortsResult> instance
 Closes the public ports on a specific Amazon Lightsail instance.
 
 
-=head2 CreateDisk(AvailabilityZone => Str, DiskName => Str, SizeInGb => Int)
+=head2 CreateDisk
+
+=over
+
+=item AvailabilityZone => Str
+
+=item DiskName => Str
+
+=item SizeInGb => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::CreateDisk>
 
@@ -705,7 +770,20 @@ For more information, see Regions and Availability Zones in Lightsail
 (https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail).
 
 
-=head2 CreateDiskFromSnapshot(AvailabilityZone => Str, DiskName => Str, DiskSnapshotName => Str, SizeInGb => Int)
+=head2 CreateDiskFromSnapshot
+
+=over
+
+=item AvailabilityZone => Str
+
+=item DiskName => Str
+
+=item DiskSnapshotName => Str
+
+=item SizeInGb => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::CreateDiskFromSnapshot>
 
@@ -719,7 +797,16 @@ Availability Zones in Lightsail
 (https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail).
 
 
-=head2 CreateDiskSnapshot(DiskName => Str, DiskSnapshotName => Str)
+=head2 CreateDiskSnapshot
+
+=over
+
+=item DiskName => Str
+
+=item DiskSnapshotName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::CreateDiskSnapshot>
 
@@ -741,7 +828,14 @@ remount the disk to ensure a consistent and complete snapshot. You may
 remount and use your disk while the snapshot status is pending.
 
 
-=head2 CreateDomain(DomainName => Str)
+=head2 CreateDomain
+
+=over
+
+=item DomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::CreateDomain>
 
@@ -750,7 +844,16 @@ Returns: a L<Paws::Lightsail::CreateDomainResult> instance
 Creates a domain resource for the specified domain (e.g., example.com).
 
 
-=head2 CreateDomainEntry(DomainEntry => L<Paws::Lightsail::DomainEntry>, DomainName => Str)
+=head2 CreateDomainEntry
+
+=over
+
+=item DomainEntry => L<Paws::Lightsail::DomainEntry>
+
+=item DomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::CreateDomainEntry>
 
@@ -760,7 +863,26 @@ Creates one of the following entry records associated with the domain:
 A record, CNAME record, TXT record, or MX record.
 
 
-=head2 CreateInstances(AvailabilityZone => Str, BlueprintId => Str, BundleId => Str, InstanceNames => ArrayRef[Str|Undef], [CustomImageName => Str, KeyPairName => Str, UserData => Str])
+=head2 CreateInstances
+
+=over
+
+=item AvailabilityZone => Str
+
+=item BlueprintId => Str
+
+=item BundleId => Str
+
+=item InstanceNames => ArrayRef[Str|Undef]
+
+=item [CustomImageName => Str]
+
+=item [KeyPairName => Str]
+
+=item [UserData => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::CreateInstances>
 
@@ -770,7 +892,26 @@ Creates one or more Amazon Lightsail virtual private servers, or
 I<instances>.
 
 
-=head2 CreateInstancesFromSnapshot(AvailabilityZone => Str, BundleId => Str, InstanceNames => ArrayRef[Str|Undef], InstanceSnapshotName => Str, [AttachedDiskMapping => L<Paws::Lightsail::AttachedDiskMap>, KeyPairName => Str, UserData => Str])
+=head2 CreateInstancesFromSnapshot
+
+=over
+
+=item AvailabilityZone => Str
+
+=item BundleId => Str
+
+=item InstanceNames => ArrayRef[Str|Undef]
+
+=item InstanceSnapshotName => Str
+
+=item [AttachedDiskMapping => L<Paws::Lightsail::AttachedDiskMap>]
+
+=item [KeyPairName => Str]
+
+=item [UserData => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::CreateInstancesFromSnapshot>
 
@@ -780,7 +921,16 @@ Uses a specific snapshot as a blueprint for creating one or more new
 instances that are based on that identical configuration.
 
 
-=head2 CreateInstanceSnapshot(InstanceName => Str, InstanceSnapshotName => Str)
+=head2 CreateInstanceSnapshot
+
+=over
+
+=item InstanceName => Str
+
+=item InstanceSnapshotName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::CreateInstanceSnapshot>
 
@@ -791,7 +941,14 @@ I<instance>. You can use a snapshot to create a new instance that is
 based on that snapshot.
 
 
-=head2 CreateKeyPair(KeyPairName => Str)
+=head2 CreateKeyPair
+
+=over
+
+=item KeyPairName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::CreateKeyPair>
 
@@ -800,7 +957,24 @@ Returns: a L<Paws::Lightsail::CreateKeyPairResult> instance
 Creates sn SSH key pair.
 
 
-=head2 CreateLoadBalancer(InstancePort => Int, LoadBalancerName => Str, [CertificateAlternativeNames => ArrayRef[Str|Undef], CertificateDomainName => Str, CertificateName => Str, HealthCheckPath => Str])
+=head2 CreateLoadBalancer
+
+=over
+
+=item InstancePort => Int
+
+=item LoadBalancerName => Str
+
+=item [CertificateAlternativeNames => ArrayRef[Str|Undef]]
+
+=item [CertificateDomainName => Str]
+
+=item [CertificateName => Str]
+
+=item [HealthCheckPath => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::CreateLoadBalancer>
 
@@ -817,7 +991,20 @@ settings. To change additional load balancer settings, use the
 C<UpdateLoadBalancerAttribute> operation.
 
 
-=head2 CreateLoadBalancerTlsCertificate(CertificateDomainName => Str, CertificateName => Str, LoadBalancerName => Str, [CertificateAlternativeNames => ArrayRef[Str|Undef]])
+=head2 CreateLoadBalancerTlsCertificate
+
+=over
+
+=item CertificateDomainName => Str
+
+=item CertificateName => Str
+
+=item LoadBalancerName => Str
+
+=item [CertificateAlternativeNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::CreateLoadBalancerTlsCertificate>
 
@@ -829,7 +1016,14 @@ TLS is just an updated, more secure version of Secure Socket Layer
 (SSL).
 
 
-=head2 DeleteDisk(DiskName => Str)
+=head2 DeleteDisk
+
+=over
+
+=item DiskName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::DeleteDisk>
 
@@ -841,7 +1035,14 @@ C<available> state (not attached to a Lightsail instance).
 The disk may remain in the C<deleting> state for several minutes.
 
 
-=head2 DeleteDiskSnapshot(DiskSnapshotName => Str)
+=head2 DeleteDiskSnapshot
+
+=over
+
+=item DiskSnapshotName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::DeleteDiskSnapshot>
 
@@ -858,7 +1059,14 @@ snapshots will have access to all the information needed to restore the
 disk.
 
 
-=head2 DeleteDomain(DomainName => Str)
+=head2 DeleteDomain
+
+=over
+
+=item DomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::DeleteDomain>
 
@@ -867,7 +1075,16 @@ Returns: a L<Paws::Lightsail::DeleteDomainResult> instance
 Deletes the specified domain recordset and all of its domain records.
 
 
-=head2 DeleteDomainEntry(DomainEntry => L<Paws::Lightsail::DomainEntry>, DomainName => Str)
+=head2 DeleteDomainEntry
+
+=over
+
+=item DomainEntry => L<Paws::Lightsail::DomainEntry>
+
+=item DomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::DeleteDomainEntry>
 
@@ -876,7 +1093,14 @@ Returns: a L<Paws::Lightsail::DeleteDomainEntryResult> instance
 Deletes a specific domain entry.
 
 
-=head2 DeleteInstance(InstanceName => Str)
+=head2 DeleteInstance
+
+=over
+
+=item InstanceName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::DeleteInstance>
 
@@ -886,7 +1110,14 @@ Deletes a specific Amazon Lightsail virtual private server, or
 I<instance>.
 
 
-=head2 DeleteInstanceSnapshot(InstanceSnapshotName => Str)
+=head2 DeleteInstanceSnapshot
+
+=over
+
+=item InstanceSnapshotName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::DeleteInstanceSnapshot>
 
@@ -896,7 +1127,14 @@ Deletes a specific snapshot of a virtual private server (or
 I<instance>).
 
 
-=head2 DeleteKeyPair(KeyPairName => Str)
+=head2 DeleteKeyPair
+
+=over
+
+=item KeyPairName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::DeleteKeyPair>
 
@@ -905,7 +1143,14 @@ Returns: a L<Paws::Lightsail::DeleteKeyPairResult> instance
 Deletes a specific SSH key pair.
 
 
-=head2 DeleteLoadBalancer(LoadBalancerName => Str)
+=head2 DeleteLoadBalancer
+
+=over
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::DeleteLoadBalancer>
 
@@ -917,7 +1162,18 @@ create a new load balancer, create a new certificate, and verify domain
 ownership again.
 
 
-=head2 DeleteLoadBalancerTlsCertificate(CertificateName => Str, LoadBalancerName => Str, [Force => Bool])
+=head2 DeleteLoadBalancerTlsCertificate
+
+=over
+
+=item CertificateName => Str
+
+=item LoadBalancerName => Str
+
+=item [Force => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::DeleteLoadBalancerTlsCertificate>
 
@@ -927,7 +1183,14 @@ Deletes an SSL/TLS certificate associated with a Lightsail load
 balancer.
 
 
-=head2 DetachDisk(DiskName => Str)
+=head2 DetachDisk
+
+=over
+
+=item DiskName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::DetachDisk>
 
@@ -938,7 +1201,16 @@ sure to unmount any file systems on the device within your operating
 system before stopping the instance and detaching the disk.
 
 
-=head2 DetachInstancesFromLoadBalancer(InstanceNames => ArrayRef[Str|Undef], LoadBalancerName => Str)
+=head2 DetachInstancesFromLoadBalancer
+
+=over
+
+=item InstanceNames => ArrayRef[Str|Undef]
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::DetachInstancesFromLoadBalancer>
 
@@ -950,7 +1222,14 @@ This operation waits until the instances are no longer needed before
 they are detached from the load balancer.
 
 
-=head2 DetachStaticIp(StaticIpName => Str)
+=head2 DetachStaticIp
+
+=over
+
+=item StaticIpName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::DetachStaticIp>
 
@@ -960,7 +1239,12 @@ Detaches a static IP from the Amazon Lightsail instance to which it is
 attached.
 
 
-=head2 DownloadDefaultKeyPair()
+=head2 DownloadDefaultKeyPair
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::Lightsail::DownloadDefaultKeyPair>
 
@@ -969,7 +1253,14 @@ Returns: a L<Paws::Lightsail::DownloadDefaultKeyPairResult> instance
 Downloads the default SSH key pair from the user's account.
 
 
-=head2 GetActiveNames([PageToken => Str])
+=head2 GetActiveNames
+
+=over
+
+=item [PageToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetActiveNames>
 
@@ -978,7 +1269,16 @@ Returns: a L<Paws::Lightsail::GetActiveNamesResult> instance
 Returns the names of all active (not deleted) resources.
 
 
-=head2 GetBlueprints([IncludeInactive => Bool, PageToken => Str])
+=head2 GetBlueprints
+
+=over
+
+=item [IncludeInactive => Bool]
+
+=item [PageToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetBlueprints>
 
@@ -991,7 +1291,16 @@ development stack. The software each instance is running depends on the
 blueprint image you choose.
 
 
-=head2 GetBundles([IncludeInactive => Bool, PageToken => Str])
+=head2 GetBundles
+
+=over
+
+=item [IncludeInactive => Bool]
+
+=item [PageToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetBundles>
 
@@ -1001,7 +1310,14 @@ Returns the list of bundles that are available for purchase. A bundle
 describes the specs for your virtual private server (or I<instance>).
 
 
-=head2 GetDisk(DiskName => Str)
+=head2 GetDisk
+
+=over
+
+=item DiskName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetDisk>
 
@@ -1010,7 +1326,14 @@ Returns: a L<Paws::Lightsail::GetDiskResult> instance
 Returns information about a specific block storage disk.
 
 
-=head2 GetDisks([PageToken => Str])
+=head2 GetDisks
+
+=over
+
+=item [PageToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetDisks>
 
@@ -1024,7 +1347,14 @@ to make the list more manageable. You can use the pageToken and
 nextPageToken values to retrieve the next items in the list.
 
 
-=head2 GetDiskSnapshot(DiskSnapshotName => Str)
+=head2 GetDiskSnapshot
+
+=over
+
+=item DiskSnapshotName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetDiskSnapshot>
 
@@ -1033,7 +1363,14 @@ Returns: a L<Paws::Lightsail::GetDiskSnapshotResult> instance
 Returns information about a specific block storage disk snapshot.
 
 
-=head2 GetDiskSnapshots([PageToken => Str])
+=head2 GetDiskSnapshots
+
+=over
+
+=item [PageToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetDiskSnapshots>
 
@@ -1047,7 +1384,14 @@ the output to make the list more manageable. You can use the pageToken
 and nextPageToken values to retrieve the next items in the list.
 
 
-=head2 GetDomain(DomainName => Str)
+=head2 GetDomain
+
+=over
+
+=item DomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetDomain>
 
@@ -1056,7 +1400,14 @@ Returns: a L<Paws::Lightsail::GetDomainResult> instance
 Returns information about a specific domain recordset.
 
 
-=head2 GetDomains([PageToken => Str])
+=head2 GetDomains
+
+=over
+
+=item [PageToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetDomains>
 
@@ -1065,7 +1416,14 @@ Returns: a L<Paws::Lightsail::GetDomainsResult> instance
 Returns a list of all domains in the user's account.
 
 
-=head2 GetInstance(InstanceName => Str)
+=head2 GetInstance
+
+=over
+
+=item InstanceName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetInstance>
 
@@ -1075,7 +1433,16 @@ Returns information about a specific Amazon Lightsail instance, which
 is a virtual private server.
 
 
-=head2 GetInstanceAccessDetails(InstanceName => Str, [Protocol => Str])
+=head2 GetInstanceAccessDetails
+
+=over
+
+=item InstanceName => Str
+
+=item [Protocol => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetInstanceAccessDetails>
 
@@ -1085,7 +1452,26 @@ Returns temporary SSH keys you can use to connect to a specific virtual
 private server, or I<instance>.
 
 
-=head2 GetInstanceMetricData(EndTime => Str, InstanceName => Str, MetricName => Str, Period => Int, StartTime => Str, Statistics => ArrayRef[Str|Undef], Unit => Str)
+=head2 GetInstanceMetricData
+
+=over
+
+=item EndTime => Str
+
+=item InstanceName => Str
+
+=item MetricName => Str
+
+=item Period => Int
+
+=item StartTime => Str
+
+=item Statistics => ArrayRef[Str|Undef]
+
+=item Unit => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetInstanceMetricData>
 
@@ -1095,7 +1481,14 @@ Returns the data points for the specified Amazon Lightsail instance
 metric, given an instance name.
 
 
-=head2 GetInstancePortStates(InstanceName => Str)
+=head2 GetInstancePortStates
+
+=over
+
+=item InstanceName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetInstancePortStates>
 
@@ -1105,7 +1498,14 @@ Returns the port states for a specific virtual private server, or
 I<instance>.
 
 
-=head2 GetInstances([PageToken => Str])
+=head2 GetInstances
+
+=over
+
+=item [PageToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetInstances>
 
@@ -1115,7 +1515,14 @@ Returns information about all Amazon Lightsail virtual private servers,
 or I<instances>.
 
 
-=head2 GetInstanceSnapshot(InstanceSnapshotName => Str)
+=head2 GetInstanceSnapshot
+
+=over
+
+=item InstanceSnapshotName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetInstanceSnapshot>
 
@@ -1124,7 +1531,14 @@ Returns: a L<Paws::Lightsail::GetInstanceSnapshotResult> instance
 Returns information about a specific instance snapshot.
 
 
-=head2 GetInstanceSnapshots([PageToken => Str])
+=head2 GetInstanceSnapshots
+
+=over
+
+=item [PageToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetInstanceSnapshots>
 
@@ -1133,7 +1547,14 @@ Returns: a L<Paws::Lightsail::GetInstanceSnapshotsResult> instance
 Returns all instance snapshots for the user's account.
 
 
-=head2 GetInstanceState(InstanceName => Str)
+=head2 GetInstanceState
+
+=over
+
+=item InstanceName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetInstanceState>
 
@@ -1143,7 +1564,14 @@ Returns the state of a specific instance. Works on one instance at a
 time.
 
 
-=head2 GetKeyPair(KeyPairName => Str)
+=head2 GetKeyPair
+
+=over
+
+=item KeyPairName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetKeyPair>
 
@@ -1152,7 +1580,14 @@ Returns: a L<Paws::Lightsail::GetKeyPairResult> instance
 Returns information about a specific key pair.
 
 
-=head2 GetKeyPairs([PageToken => Str])
+=head2 GetKeyPairs
+
+=over
+
+=item [PageToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetKeyPairs>
 
@@ -1161,7 +1596,14 @@ Returns: a L<Paws::Lightsail::GetKeyPairsResult> instance
 Returns information about all key pairs in the user's account.
 
 
-=head2 GetLoadBalancer(LoadBalancerName => Str)
+=head2 GetLoadBalancer
+
+=over
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetLoadBalancer>
 
@@ -1170,7 +1612,26 @@ Returns: a L<Paws::Lightsail::GetLoadBalancerResult> instance
 Returns information about the specified Lightsail load balancer.
 
 
-=head2 GetLoadBalancerMetricData(EndTime => Str, LoadBalancerName => Str, MetricName => Str, Period => Int, StartTime => Str, Statistics => ArrayRef[Str|Undef], Unit => Str)
+=head2 GetLoadBalancerMetricData
+
+=over
+
+=item EndTime => Str
+
+=item LoadBalancerName => Str
+
+=item MetricName => Str
+
+=item Period => Int
+
+=item StartTime => Str
+
+=item Statistics => ArrayRef[Str|Undef]
+
+=item Unit => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetLoadBalancerMetricData>
 
@@ -1180,7 +1641,14 @@ Returns information about health metrics for your Lightsail load
 balancer.
 
 
-=head2 GetLoadBalancers([PageToken => Str])
+=head2 GetLoadBalancers
+
+=over
+
+=item [PageToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetLoadBalancers>
 
@@ -1193,7 +1661,14 @@ the output to make the list more manageable. You can use the pageToken
 and nextPageToken values to retrieve the next items in the list.
 
 
-=head2 GetLoadBalancerTlsCertificates(LoadBalancerName => Str)
+=head2 GetLoadBalancerTlsCertificates
+
+=over
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetLoadBalancerTlsCertificates>
 
@@ -1209,7 +1684,14 @@ You can have a maximum of 2 certificates associated with a Lightsail
 load balancer. One is active and the other is inactive.
 
 
-=head2 GetOperation(OperationId => Str)
+=head2 GetOperation
+
+=over
+
+=item OperationId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetOperation>
 
@@ -1220,7 +1702,14 @@ events such as when you create an instance, allocate a static IP,
 attach a static IP, and so on.
 
 
-=head2 GetOperations([PageToken => Str])
+=head2 GetOperations
+
+=over
+
+=item [PageToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetOperations>
 
@@ -1234,7 +1723,16 @@ use the maximum (last) C<statusChangedAt> value from the previous
 request.
 
 
-=head2 GetOperationsForResource(ResourceName => Str, [PageToken => Str])
+=head2 GetOperationsForResource
+
+=over
+
+=item ResourceName => Str
+
+=item [PageToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetOperationsForResource>
 
@@ -1244,7 +1742,14 @@ Gets operations for a specific resource (e.g., an instance or a static
 IP).
 
 
-=head2 GetRegions([IncludeAvailabilityZones => Bool])
+=head2 GetRegions
+
+=over
+
+=item [IncludeAvailabilityZones => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetRegions>
 
@@ -1255,7 +1760,14 @@ C<include availability zones> parameter to also return the availability
 zones in a region.
 
 
-=head2 GetStaticIp(StaticIpName => Str)
+=head2 GetStaticIp
+
+=over
+
+=item StaticIpName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetStaticIp>
 
@@ -1264,7 +1776,14 @@ Returns: a L<Paws::Lightsail::GetStaticIpResult> instance
 Returns information about a specific static IP.
 
 
-=head2 GetStaticIps([PageToken => Str])
+=head2 GetStaticIps
+
+=over
+
+=item [PageToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::GetStaticIps>
 
@@ -1273,7 +1792,16 @@ Returns: a L<Paws::Lightsail::GetStaticIpsResult> instance
 Returns information about all static IPs in the user's account.
 
 
-=head2 ImportKeyPair(KeyPairName => Str, PublicKeyBase64 => Str)
+=head2 ImportKeyPair
+
+=over
+
+=item KeyPairName => Str
+
+=item PublicKeyBase64 => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::ImportKeyPair>
 
@@ -1282,7 +1810,12 @@ Returns: a L<Paws::Lightsail::ImportKeyPairResult> instance
 Imports a public SSH key from a specific key pair.
 
 
-=head2 IsVpcPeered()
+=head2 IsVpcPeered
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::Lightsail::IsVpcPeered>
 
@@ -1292,7 +1825,16 @@ Returns a Boolean value indicating whether your Lightsail VPC is
 peered.
 
 
-=head2 OpenInstancePublicPorts(InstanceName => Str, PortInfo => L<Paws::Lightsail::PortInfo>)
+=head2 OpenInstancePublicPorts
+
+=over
+
+=item InstanceName => Str
+
+=item PortInfo => L<Paws::Lightsail::PortInfo>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::OpenInstancePublicPorts>
 
@@ -1301,7 +1843,12 @@ Returns: a L<Paws::Lightsail::OpenInstancePublicPortsResult> instance
 Adds public ports to an Amazon Lightsail instance.
 
 
-=head2 PeerVpc()
+=head2 PeerVpc
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::Lightsail::PeerVpc>
 
@@ -1310,7 +1857,16 @@ Returns: a L<Paws::Lightsail::PeerVpcResult> instance
 Tries to peer the Lightsail VPC with the user's default VPC.
 
 
-=head2 PutInstancePublicPorts(InstanceName => Str, PortInfos => ArrayRef[L<Paws::Lightsail::PortInfo>])
+=head2 PutInstancePublicPorts
+
+=over
+
+=item InstanceName => Str
+
+=item PortInfos => ArrayRef[L<Paws::Lightsail::PortInfo>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::PutInstancePublicPorts>
 
@@ -1321,7 +1877,14 @@ closes all ports for every protocol not included in the current
 request.
 
 
-=head2 RebootInstance(InstanceName => Str)
+=head2 RebootInstance
+
+=over
+
+=item InstanceName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::RebootInstance>
 
@@ -1333,7 +1896,14 @@ the same IP address after restarting, create a static IP address and
 attach it to the instance.
 
 
-=head2 ReleaseStaticIp(StaticIpName => Str)
+=head2 ReleaseStaticIp
+
+=over
+
+=item StaticIpName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::ReleaseStaticIp>
 
@@ -1342,7 +1912,14 @@ Returns: a L<Paws::Lightsail::ReleaseStaticIpResult> instance
 Deletes a specific static IP from your account.
 
 
-=head2 StartInstance(InstanceName => Str)
+=head2 StartInstance
+
+=over
+
+=item InstanceName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::StartInstance>
 
@@ -1352,7 +1929,16 @@ Starts a specific Amazon Lightsail instance from a stopped state. To
 restart an instance, use the reboot instance operation.
 
 
-=head2 StopInstance(InstanceName => Str, [Force => Bool])
+=head2 StopInstance
+
+=over
+
+=item InstanceName => Str
+
+=item [Force => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::StopInstance>
 
@@ -1361,7 +1947,12 @@ Returns: a L<Paws::Lightsail::StopInstanceResult> instance
 Stops a specific Amazon Lightsail instance that is currently running.
 
 
-=head2 UnpeerVpc()
+=head2 UnpeerVpc
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::Lightsail::UnpeerVpc>
 
@@ -1370,7 +1961,16 @@ Returns: a L<Paws::Lightsail::UnpeerVpcResult> instance
 Attempts to unpeer the Lightsail VPC from the user's default VPC.
 
 
-=head2 UpdateDomainEntry(DomainEntry => L<Paws::Lightsail::DomainEntry>, DomainName => Str)
+=head2 UpdateDomainEntry
+
+=over
+
+=item DomainEntry => L<Paws::Lightsail::DomainEntry>
+
+=item DomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::UpdateDomainEntry>
 
@@ -1379,7 +1979,18 @@ Returns: a L<Paws::Lightsail::UpdateDomainEntryResult> instance
 Updates a domain recordset after it is created.
 
 
-=head2 UpdateLoadBalancerAttribute(AttributeName => Str, AttributeValue => Str, LoadBalancerName => Str)
+=head2 UpdateLoadBalancerAttribute
+
+=over
+
+=item AttributeName => Str
+
+=item AttributeValue => Str
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lightsail::UpdateLoadBalancerAttribute>
 

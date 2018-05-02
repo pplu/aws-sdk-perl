@@ -146,7 +146,16 @@ run their batch jobs in the AWS Cloud.
 
 =head1 METHODS
 
-=head2 CancelJob(JobId => Str, Reason => Str)
+=head2 CancelJob
+
+=over
+
+=item JobId => Str
+
+=item Reason => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Batch::CancelJob>
 
@@ -159,7 +168,22 @@ API operation still succeeds, even if no job is cancelled); these jobs
 must be terminated with the TerminateJob operation.
 
 
-=head2 CreateComputeEnvironment(ComputeEnvironmentName => Str, ServiceRole => Str, Type => Str, [ComputeResources => L<Paws::Batch::ComputeResource>, State => Str])
+=head2 CreateComputeEnvironment
+
+=over
+
+=item ComputeEnvironmentName => Str
+
+=item ServiceRole => Str
+
+=item Type => Str
+
+=item [ComputeResources => L<Paws::Batch::ComputeResource>]
+
+=item [State => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Batch::CreateComputeEnvironment>
 
@@ -193,7 +217,20 @@ Launching an Amazon ECS Container Instance
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 CreateJobQueue(ComputeEnvironmentOrder => ArrayRef[L<Paws::Batch::ComputeEnvironmentOrder>], JobQueueName => Str, Priority => Int, [State => Str])
+=head2 CreateJobQueue
+
+=over
+
+=item ComputeEnvironmentOrder => ArrayRef[L<Paws::Batch::ComputeEnvironmentOrder>]
+
+=item JobQueueName => Str
+
+=item Priority => Int
+
+=item [State => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Batch::CreateJobQueue>
 
@@ -210,7 +247,14 @@ more than one job queue, the job queue with a higher priority is given
 preference for scheduling jobs to that compute environment.
 
 
-=head2 DeleteComputeEnvironment(ComputeEnvironment => Str)
+=head2 DeleteComputeEnvironment
+
+=over
+
+=item ComputeEnvironment => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Batch::DeleteComputeEnvironment>
 
@@ -224,7 +268,14 @@ disassociate it from any job queues with the UpdateJobQueue API
 operation.
 
 
-=head2 DeleteJobQueue(JobQueue => Str)
+=head2 DeleteJobQueue
+
+=over
+
+=item JobQueue => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Batch::DeleteJobQueue>
 
@@ -238,7 +289,14 @@ It is not necessary to disassociate compute environments from a queue
 before submitting a C<DeleteJobQueue> request.
 
 
-=head2 DeregisterJobDefinition(JobDefinition => Str)
+=head2 DeregisterJobDefinition
+
+=over
+
+=item JobDefinition => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Batch::DeregisterJobDefinition>
 
@@ -247,7 +305,18 @@ Returns: a L<Paws::Batch::DeregisterJobDefinitionResponse> instance
 Deregisters an AWS Batch job definition.
 
 
-=head2 DescribeComputeEnvironments([ComputeEnvironments => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeComputeEnvironments
+
+=over
+
+=item [ComputeEnvironments => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Batch::DescribeComputeEnvironments>
 
@@ -261,7 +330,22 @@ C<ecsClusterArn> that you should launch your Amazon ECS container
 instances into.
 
 
-=head2 DescribeJobDefinitions([JobDefinitionName => Str, JobDefinitions => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, Status => Str])
+=head2 DescribeJobDefinitions
+
+=over
+
+=item [JobDefinitionName => Str]
+
+=item [JobDefinitions => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Batch::DescribeJobDefinitions>
 
@@ -271,7 +355,18 @@ Describes a list of job definitions. You can specify a C<status> (such
 as C<ACTIVE>) to only return job definitions that match that status.
 
 
-=head2 DescribeJobQueues([JobQueues => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeJobQueues
+
+=over
+
+=item [JobQueues => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Batch::DescribeJobQueues>
 
@@ -280,7 +375,14 @@ Returns: a L<Paws::Batch::DescribeJobQueuesResponse> instance
 Describes one or more of your job queues.
 
 
-=head2 DescribeJobs(Jobs => ArrayRef[Str|Undef])
+=head2 DescribeJobs
+
+=over
+
+=item Jobs => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Batch::DescribeJobs>
 
@@ -289,7 +391,22 @@ Returns: a L<Paws::Batch::DescribeJobsResponse> instance
 Describes a list of AWS Batch jobs.
 
 
-=head2 ListJobs([ArrayJobId => Str, JobQueue => Str, JobStatus => Str, MaxResults => Int, NextToken => Str])
+=head2 ListJobs
+
+=over
+
+=item [ArrayJobId => Str]
+
+=item [JobQueue => Str]
+
+=item [JobStatus => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Batch::ListJobs>
 
@@ -300,7 +417,24 @@ the results by job status with the C<jobStatus> parameter. If you do
 not specify a status, only C<RUNNING> jobs are returned.
 
 
-=head2 RegisterJobDefinition(JobDefinitionName => Str, Type => Str, [ContainerProperties => L<Paws::Batch::ContainerProperties>, Parameters => L<Paws::Batch::ParametersMap>, RetryStrategy => L<Paws::Batch::RetryStrategy>, Timeout => L<Paws::Batch::JobTimeout>])
+=head2 RegisterJobDefinition
+
+=over
+
+=item JobDefinitionName => Str
+
+=item Type => Str
+
+=item [ContainerProperties => L<Paws::Batch::ContainerProperties>]
+
+=item [Parameters => L<Paws::Batch::ParametersMap>]
+
+=item [RetryStrategy => L<Paws::Batch::RetryStrategy>]
+
+=item [Timeout => L<Paws::Batch::JobTimeout>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Batch::RegisterJobDefinition>
 
@@ -309,7 +443,30 @@ Returns: a L<Paws::Batch::RegisterJobDefinitionResponse> instance
 Registers an AWS Batch job definition.
 
 
-=head2 SubmitJob(JobDefinition => Str, JobName => Str, JobQueue => Str, [ArrayProperties => L<Paws::Batch::ArrayProperties>, ContainerOverrides => L<Paws::Batch::ContainerOverrides>, DependsOn => ArrayRef[L<Paws::Batch::JobDependency>], Parameters => L<Paws::Batch::ParametersMap>, RetryStrategy => L<Paws::Batch::RetryStrategy>, Timeout => L<Paws::Batch::JobTimeout>])
+=head2 SubmitJob
+
+=over
+
+=item JobDefinition => Str
+
+=item JobName => Str
+
+=item JobQueue => Str
+
+=item [ArrayProperties => L<Paws::Batch::ArrayProperties>]
+
+=item [ContainerOverrides => L<Paws::Batch::ContainerOverrides>]
+
+=item [DependsOn => ArrayRef[L<Paws::Batch::JobDependency>]]
+
+=item [Parameters => L<Paws::Batch::ParametersMap>]
+
+=item [RetryStrategy => L<Paws::Batch::RetryStrategy>]
+
+=item [Timeout => L<Paws::Batch::JobTimeout>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Batch::SubmitJob>
 
@@ -319,7 +476,16 @@ Submits an AWS Batch job from a job definition. Parameters specified
 during SubmitJob override parameters defined in the job definition.
 
 
-=head2 TerminateJob(JobId => Str, Reason => Str)
+=head2 TerminateJob
+
+=over
+
+=item JobId => Str
+
+=item Reason => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Batch::TerminateJob>
 
@@ -331,7 +497,20 @@ C<FAILED>. Jobs that have not progressed to the C<STARTING> state are
 cancelled.
 
 
-=head2 UpdateComputeEnvironment(ComputeEnvironment => Str, [ComputeResources => L<Paws::Batch::ComputeResourceUpdate>, ServiceRole => Str, State => Str])
+=head2 UpdateComputeEnvironment
+
+=over
+
+=item ComputeEnvironment => Str
+
+=item [ComputeResources => L<Paws::Batch::ComputeResourceUpdate>]
+
+=item [ServiceRole => Str]
+
+=item [State => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Batch::UpdateComputeEnvironment>
 
@@ -340,7 +519,20 @@ Returns: a L<Paws::Batch::UpdateComputeEnvironmentResponse> instance
 Updates an AWS Batch compute environment.
 
 
-=head2 UpdateJobQueue(JobQueue => Str, [ComputeEnvironmentOrder => ArrayRef[L<Paws::Batch::ComputeEnvironmentOrder>], Priority => Int, State => Str])
+=head2 UpdateJobQueue
+
+=over
+
+=item JobQueue => Str
+
+=item [ComputeEnvironmentOrder => ArrayRef[L<Paws::Batch::ComputeEnvironmentOrder>]]
+
+=item [Priority => Int]
+
+=item [State => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Batch::UpdateJobQueue>
 

@@ -125,7 +125,16 @@ effective than upgrading your connectivity.
 
 =head1 METHODS
 
-=head2 CancelJob(JobId => Str, [APIVersion => Str])
+=head2 CancelJob
+
+=over
+
+=item JobId => Str
+
+=item [APIVersion => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ImportExport::CancelJob>
 
@@ -135,7 +144,22 @@ This operation cancels a specified job. Only the job owner can cancel
 it. The operation fails if the job has already started or is complete.
 
 
-=head2 CreateJob(JobType => Str, Manifest => Str, ValidateOnly => Bool, [APIVersion => Str, ManifestAddendum => Str])
+=head2 CreateJob
+
+=over
+
+=item JobType => Str
+
+=item Manifest => Str
+
+=item ValidateOnly => Bool
+
+=item [APIVersion => Str]
+
+=item [ManifestAddendum => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ImportExport::CreateJob>
 
@@ -149,7 +173,36 @@ that you use to identify your storage device, and the address where you
 should ship your storage device.
 
 
-=head2 GetShippingLabel(JobIds => ArrayRef[Str|Undef], [APIVersion => Str, City => Str, Company => Str, Country => Str, Name => Str, PhoneNumber => Str, PostalCode => Str, StateOrProvince => Str, Street1 => Str, Street2 => Str, Street3 => Str])
+=head2 GetShippingLabel
+
+=over
+
+=item JobIds => ArrayRef[Str|Undef]
+
+=item [APIVersion => Str]
+
+=item [City => Str]
+
+=item [Company => Str]
+
+=item [Country => Str]
+
+=item [Name => Str]
+
+=item [PhoneNumber => Str]
+
+=item [PostalCode => Str]
+
+=item [StateOrProvince => Str]
+
+=item [Street1 => Str]
+
+=item [Street2 => Str]
+
+=item [Street3 => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ImportExport::GetShippingLabel>
 
@@ -159,7 +212,16 @@ This operation generates a pre-paid UPS shipping label that you will
 use to ship your device to AWS for processing.
 
 
-=head2 GetStatus(JobId => Str, [APIVersion => Str])
+=head2 GetStatus
+
+=over
+
+=item JobId => Str
+
+=item [APIVersion => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ImportExport::GetStatus>
 
@@ -171,7 +233,18 @@ signature value associated with the job. You can only return
 information about jobs you own.
 
 
-=head2 ListJobs([APIVersion => Str, Marker => Str, MaxJobs => Int])
+=head2 ListJobs
+
+=over
+
+=item [APIVersion => Str]
+
+=item [Marker => Str]
+
+=item [MaxJobs => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ImportExport::ListJobs>
 
@@ -184,7 +257,22 @@ and Test2 was created 2010Feb05, the ListJobs operation would return
 Test2 followed by Test1.
 
 
-=head2 UpdateJob(JobId => Str, JobType => Str, Manifest => Str, ValidateOnly => Bool, [APIVersion => Str])
+=head2 UpdateJob
+
+=over
+
+=item JobId => Str
+
+=item JobType => Str
+
+=item Manifest => Str
+
+=item ValidateOnly => Bool
+
+=item [APIVersion => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ImportExport::UpdateJob>
 

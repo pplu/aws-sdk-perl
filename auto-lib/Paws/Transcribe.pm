@@ -89,7 +89,18 @@ Operations and objects for transcribing speech to text.
 
 =head1 METHODS
 
-=head2 CreateVocabulary(LanguageCode => Str, Phrases => ArrayRef[Str|Undef], VocabularyName => Str)
+=head2 CreateVocabulary
+
+=over
+
+=item LanguageCode => Str
+
+=item Phrases => ArrayRef[Str|Undef]
+
+=item VocabularyName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Transcribe::CreateVocabulary>
 
@@ -99,7 +110,14 @@ Creates a new custom vocabulary that you can use to change the way
 Amazon Transcribe handles transcription of an audio file.
 
 
-=head2 DeleteVocabulary(VocabularyName => Str)
+=head2 DeleteVocabulary
+
+=over
+
+=item VocabularyName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Transcribe::DeleteVocabulary>
 
@@ -108,7 +126,14 @@ Returns: nothing
 Deletes a vocabulary from Amazon Transcribe.
 
 
-=head2 GetTranscriptionJob(TranscriptionJobName => Str)
+=head2 GetTranscriptionJob
+
+=over
+
+=item TranscriptionJobName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Transcribe::GetTranscriptionJob>
 
@@ -120,7 +145,14 @@ C<COMPLETED>, the job is finished and you can find the results at the
 location specified in the C<TranscriptionFileUri> field.
 
 
-=head2 GetVocabulary(VocabularyName => Str)
+=head2 GetVocabulary
+
+=over
+
+=item VocabularyName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Transcribe::GetVocabulary>
 
@@ -129,7 +161,20 @@ Returns: a L<Paws::Transcribe::GetVocabularyResponse> instance
 Gets information about a vocabulary.
 
 
-=head2 ListTranscriptionJobs([JobNameContains => Str, MaxResults => Int, NextToken => Str, Status => Str])
+=head2 ListTranscriptionJobs
+
+=over
+
+=item [JobNameContains => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Transcribe::ListTranscriptionJobs>
 
@@ -138,7 +183,20 @@ Returns: a L<Paws::Transcribe::ListTranscriptionJobsResponse> instance
 Lists transcription jobs with the specified status.
 
 
-=head2 ListVocabularies([MaxResults => Int, NameContains => Str, NextToken => Str, StateEquals => Str])
+=head2 ListVocabularies
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+=item [StateEquals => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Transcribe::ListVocabularies>
 
@@ -148,7 +206,24 @@ Returns a list of vocabularies that match the specified criteria. If no
 criteria are specified, returns the entire list of vocabularies.
 
 
-=head2 StartTranscriptionJob(LanguageCode => Str, Media => L<Paws::Transcribe::Media>, MediaFormat => Str, TranscriptionJobName => Str, [MediaSampleRateHertz => Int, Settings => L<Paws::Transcribe::Settings>])
+=head2 StartTranscriptionJob
+
+=over
+
+=item LanguageCode => Str
+
+=item Media => L<Paws::Transcribe::Media>
+
+=item MediaFormat => Str
+
+=item TranscriptionJobName => Str
+
+=item [MediaSampleRateHertz => Int]
+
+=item [Settings => L<Paws::Transcribe::Settings>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Transcribe::StartTranscriptionJob>
 
@@ -157,7 +232,18 @@ Returns: a L<Paws::Transcribe::StartTranscriptionJobResponse> instance
 Starts an asynchronous job to transcribe speech to text.
 
 
-=head2 UpdateVocabulary(LanguageCode => Str, Phrases => ArrayRef[Str|Undef], VocabularyName => Str)
+=head2 UpdateVocabulary
+
+=over
+
+=item LanguageCode => Str
+
+=item Phrases => ArrayRef[Str|Undef]
+
+=item VocabularyName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Transcribe::UpdateVocabulary>
 

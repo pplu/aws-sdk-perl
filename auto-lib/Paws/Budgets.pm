@@ -165,7 +165,18 @@ https://budgets.us-east-1.amazonaws.com
 
 =head1 METHODS
 
-=head2 CreateBudget(AccountId => Str, Budget => L<Paws::Budgets::Budget>, [NotificationsWithSubscribers => ArrayRef[L<Paws::Budgets::NotificationWithSubscribers>]])
+=head2 CreateBudget
+
+=over
+
+=item AccountId => Str
+
+=item Budget => L<Paws::Budgets::Budget>
+
+=item [NotificationsWithSubscribers => ArrayRef[L<Paws::Budgets::NotificationWithSubscribers>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Budgets::CreateBudget>
 
@@ -174,7 +185,20 @@ Returns: a L<Paws::Budgets::CreateBudgetResponse> instance
 Creates a budget and, if included, notifications and subscribers.
 
 
-=head2 CreateNotification(AccountId => Str, BudgetName => Str, Notification => L<Paws::Budgets::Notification>, Subscribers => ArrayRef[L<Paws::Budgets::Subscriber>])
+=head2 CreateNotification
+
+=over
+
+=item AccountId => Str
+
+=item BudgetName => Str
+
+=item Notification => L<Paws::Budgets::Notification>
+
+=item Subscribers => ArrayRef[L<Paws::Budgets::Subscriber>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Budgets::CreateNotification>
 
@@ -184,7 +208,20 @@ Creates a notification. You must create the budget before you create
 the associated notification.
 
 
-=head2 CreateSubscriber(AccountId => Str, BudgetName => Str, Notification => L<Paws::Budgets::Notification>, Subscriber => L<Paws::Budgets::Subscriber>)
+=head2 CreateSubscriber
+
+=over
+
+=item AccountId => Str
+
+=item BudgetName => Str
+
+=item Notification => L<Paws::Budgets::Notification>
+
+=item Subscriber => L<Paws::Budgets::Subscriber>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Budgets::CreateSubscriber>
 
@@ -194,7 +231,16 @@ Creates a subscriber. You must create the associated budget and
 notification before you create the subscriber.
 
 
-=head2 DeleteBudget(AccountId => Str, BudgetName => Str)
+=head2 DeleteBudget
+
+=over
+
+=item AccountId => Str
+
+=item BudgetName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Budgets::DeleteBudget>
 
@@ -206,7 +252,18 @@ B<Deleting a budget also deletes the notifications and subscribers
 associated with that budget.>
 
 
-=head2 DeleteNotification(AccountId => Str, BudgetName => Str, Notification => L<Paws::Budgets::Notification>)
+=head2 DeleteNotification
+
+=over
+
+=item AccountId => Str
+
+=item BudgetName => Str
+
+=item Notification => L<Paws::Budgets::Notification>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Budgets::DeleteNotification>
 
@@ -218,7 +275,20 @@ B<Deleting a notification also deletes the subscribers associated with
 the notification.>
 
 
-=head2 DeleteSubscriber(AccountId => Str, BudgetName => Str, Notification => L<Paws::Budgets::Notification>, Subscriber => L<Paws::Budgets::Subscriber>)
+=head2 DeleteSubscriber
+
+=over
+
+=item AccountId => Str
+
+=item BudgetName => Str
+
+=item Notification => L<Paws::Budgets::Notification>
+
+=item Subscriber => L<Paws::Budgets::Subscriber>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Budgets::DeleteSubscriber>
 
@@ -230,7 +300,16 @@ B<Deleting the last subscriber to a notification also deletes the
 notification.>
 
 
-=head2 DescribeBudget(AccountId => Str, BudgetName => Str)
+=head2 DescribeBudget
+
+=over
+
+=item AccountId => Str
+
+=item BudgetName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Budgets::DescribeBudget>
 
@@ -239,7 +318,18 @@ Returns: a L<Paws::Budgets::DescribeBudgetResponse> instance
 Describes a budget.
 
 
-=head2 DescribeBudgets(AccountId => Str, [MaxResults => Int, NextToken => Str])
+=head2 DescribeBudgets
+
+=over
+
+=item AccountId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Budgets::DescribeBudgets>
 
@@ -248,7 +338,20 @@ Returns: a L<Paws::Budgets::DescribeBudgetsResponse> instance
 Lists the budgets associated with an account.
 
 
-=head2 DescribeNotificationsForBudget(AccountId => Str, BudgetName => Str, [MaxResults => Int, NextToken => Str])
+=head2 DescribeNotificationsForBudget
+
+=over
+
+=item AccountId => Str
+
+=item BudgetName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Budgets::DescribeNotificationsForBudget>
 
@@ -257,7 +360,22 @@ Returns: a L<Paws::Budgets::DescribeNotificationsForBudgetResponse> instance
 Lists the notifications associated with a budget.
 
 
-=head2 DescribeSubscribersForNotification(AccountId => Str, BudgetName => Str, Notification => L<Paws::Budgets::Notification>, [MaxResults => Int, NextToken => Str])
+=head2 DescribeSubscribersForNotification
+
+=over
+
+=item AccountId => Str
+
+=item BudgetName => Str
+
+=item Notification => L<Paws::Budgets::Notification>
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Budgets::DescribeSubscribersForNotification>
 
@@ -266,7 +384,16 @@ Returns: a L<Paws::Budgets::DescribeSubscribersForNotificationResponse> instance
 Lists the subscribers associated with a notification.
 
 
-=head2 UpdateBudget(AccountId => Str, NewBudget => L<Paws::Budgets::Budget>)
+=head2 UpdateBudget
+
+=over
+
+=item AccountId => Str
+
+=item NewBudget => L<Paws::Budgets::Budget>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Budgets::UpdateBudget>
 
@@ -278,7 +405,20 @@ the C<calculatedSpend> drops to zero until AWS has new usage data to
 use for forecasting.
 
 
-=head2 UpdateNotification(AccountId => Str, BudgetName => Str, NewNotification => L<Paws::Budgets::Notification>, OldNotification => L<Paws::Budgets::Notification>)
+=head2 UpdateNotification
+
+=over
+
+=item AccountId => Str
+
+=item BudgetName => Str
+
+=item NewNotification => L<Paws::Budgets::Notification>
+
+=item OldNotification => L<Paws::Budgets::Notification>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Budgets::UpdateNotification>
 
@@ -287,7 +427,22 @@ Returns: a L<Paws::Budgets::UpdateNotificationResponse> instance
 Updates a notification.
 
 
-=head2 UpdateSubscriber(AccountId => Str, BudgetName => Str, NewSubscriber => L<Paws::Budgets::Subscriber>, Notification => L<Paws::Budgets::Notification>, OldSubscriber => L<Paws::Budgets::Subscriber>)
+=head2 UpdateSubscriber
+
+=over
+
+=item AccountId => Str
+
+=item BudgetName => Str
+
+=item NewSubscriber => L<Paws::Budgets::Subscriber>
+
+=item Notification => L<Paws::Budgets::Notification>
+
+=item OldSubscriber => L<Paws::Budgets::Subscriber>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Budgets::UpdateSubscriber>
 

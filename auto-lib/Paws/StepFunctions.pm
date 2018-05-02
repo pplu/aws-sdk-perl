@@ -257,7 +257,14 @@ Step Functions Developer Guide
 
 =head1 METHODS
 
-=head2 CreateActivity(Name => Str)
+=head2 CreateActivity
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::CreateActivity>
 
@@ -272,7 +279,18 @@ activity and returns an identifier for use in a state machine and when
 polling from the activity.
 
 
-=head2 CreateStateMachine(Definition => Str, Name => Str, RoleArn => Str)
+=head2 CreateStateMachine
+
+=over
+
+=item Definition => Str
+
+=item Name => Str
+
+=item RoleArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::CreateStateMachine>
 
@@ -285,7 +303,14 @@ transition next (C<Choice> states), stop an execution with an error
 JSON-based, structured language.
 
 
-=head2 DeleteActivity(ActivityArn => Str)
+=head2 DeleteActivity
+
+=over
+
+=item ActivityArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::DeleteActivity>
 
@@ -294,7 +319,14 @@ Returns: a L<Paws::StepFunctions::DeleteActivityOutput> instance
 Deletes an activity.
 
 
-=head2 DeleteStateMachine(StateMachineArn => Str)
+=head2 DeleteStateMachine
+
+=over
+
+=item StateMachineArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::DeleteStateMachine>
 
@@ -309,7 +341,14 @@ The state machine itself is deleted after all executions are completed
 or deleted.
 
 
-=head2 DescribeActivity(ActivityArn => Str)
+=head2 DescribeActivity
+
+=over
+
+=item ActivityArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::DescribeActivity>
 
@@ -318,7 +357,14 @@ Returns: a L<Paws::StepFunctions::DescribeActivityOutput> instance
 Describes an activity.
 
 
-=head2 DescribeExecution(ExecutionArn => Str)
+=head2 DescribeExecution
+
+=over
+
+=item ExecutionArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::DescribeExecution>
 
@@ -327,7 +373,14 @@ Returns: a L<Paws::StepFunctions::DescribeExecutionOutput> instance
 Describes an execution.
 
 
-=head2 DescribeStateMachine(StateMachineArn => Str)
+=head2 DescribeStateMachine
+
+=over
+
+=item StateMachineArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::DescribeStateMachine>
 
@@ -336,7 +389,14 @@ Returns: a L<Paws::StepFunctions::DescribeStateMachineOutput> instance
 Describes a state machine.
 
 
-=head2 DescribeStateMachineForExecution(ExecutionArn => Str)
+=head2 DescribeStateMachineForExecution
+
+=over
+
+=item ExecutionArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::DescribeStateMachineForExecution>
 
@@ -345,7 +405,16 @@ Returns: a L<Paws::StepFunctions::DescribeStateMachineForExecutionOutput> instan
 Describes the state machine associated with a specific execution.
 
 
-=head2 GetActivityTask(ActivityArn => Str, [WorkerName => Str])
+=head2 GetActivityTask
+
+=over
+
+=item ActivityArn => Str
+
+=item [WorkerName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::GetActivityTask>
 
@@ -364,7 +433,20 @@ seconds (5 seconds higher than the maximum time the service may hold
 the poll request).
 
 
-=head2 GetExecutionHistory(ExecutionArn => Str, [MaxResults => Int, NextToken => Str, ReverseOrder => Bool])
+=head2 GetExecutionHistory
+
+=over
+
+=item ExecutionArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ReverseOrder => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::GetExecutionHistory>
 
@@ -381,7 +463,16 @@ again using the returned token in C<nextToken>. Keep all other
 arguments unchanged.
 
 
-=head2 ListActivities([MaxResults => Int, NextToken => Str])
+=head2 ListActivities
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::ListActivities>
 
@@ -395,7 +486,20 @@ again using the returned token in C<nextToken>. Keep all other
 arguments unchanged.
 
 
-=head2 ListExecutions(StateMachineArn => Str, [MaxResults => Int, NextToken => Str, StatusFilter => Str])
+=head2 ListExecutions
+
+=over
+
+=item StateMachineArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [StatusFilter => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::ListExecutions>
 
@@ -410,7 +514,16 @@ again using the returned token in C<nextToken>. Keep all other
 arguments unchanged.
 
 
-=head2 ListStateMachines([MaxResults => Int, NextToken => Str])
+=head2 ListStateMachines
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::ListStateMachines>
 
@@ -424,7 +537,18 @@ again using the returned token in C<nextToken>. Keep all other
 arguments unchanged.
 
 
-=head2 SendTaskFailure(TaskToken => Str, [Cause => Str, Error => Str])
+=head2 SendTaskFailure
+
+=over
+
+=item TaskToken => Str
+
+=item [Cause => Str]
+
+=item [Error => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::SendTaskFailure>
 
@@ -434,7 +558,14 @@ Used by workers to report that the task identified by the C<taskToken>
 failed.
 
 
-=head2 SendTaskHeartbeat(TaskToken => Str)
+=head2 SendTaskHeartbeat
+
+=over
+
+=item TaskToken => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::SendTaskHeartbeat>
 
@@ -456,7 +587,16 @@ This operation is only useful for long-lived tasks to report the
 liveliness of the task.
 
 
-=head2 SendTaskSuccess(Output => Str, TaskToken => Str)
+=head2 SendTaskSuccess
+
+=over
+
+=item Output => Str
+
+=item TaskToken => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::SendTaskSuccess>
 
@@ -466,7 +606,18 @@ Used by workers to report that the task identified by the C<taskToken>
 completed successfully.
 
 
-=head2 StartExecution(StateMachineArn => Str, [Input => Str, Name => Str])
+=head2 StartExecution
+
+=over
+
+=item StateMachineArn => Str
+
+=item [Input => Str]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::StartExecution>
 
@@ -475,7 +626,18 @@ Returns: a L<Paws::StepFunctions::StartExecutionOutput> instance
 Starts a state machine execution.
 
 
-=head2 StopExecution(ExecutionArn => Str, [Cause => Str, Error => Str])
+=head2 StopExecution
+
+=over
+
+=item ExecutionArn => Str
+
+=item [Cause => Str]
+
+=item [Error => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::StopExecution>
 
@@ -484,7 +646,18 @@ Returns: a L<Paws::StepFunctions::StopExecutionOutput> instance
 Stops an execution.
 
 
-=head2 UpdateStateMachine(StateMachineArn => Str, [Definition => Str, RoleArn => Str])
+=head2 UpdateStateMachine
+
+=over
+
+=item StateMachineArn => Str
+
+=item [Definition => Str]
+
+=item [RoleArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::UpdateStateMachine>
 

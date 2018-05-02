@@ -104,7 +104,28 @@ Redshift, and Splunk.
 
 =head1 METHODS
 
-=head2 CreateDeliveryStream(DeliveryStreamName => Str, [DeliveryStreamType => Str, ElasticsearchDestinationConfiguration => L<Paws::Firehose::ElasticsearchDestinationConfiguration>, ExtendedS3DestinationConfiguration => L<Paws::Firehose::ExtendedS3DestinationConfiguration>, KinesisStreamSourceConfiguration => L<Paws::Firehose::KinesisStreamSourceConfiguration>, RedshiftDestinationConfiguration => L<Paws::Firehose::RedshiftDestinationConfiguration>, S3DestinationConfiguration => L<Paws::Firehose::S3DestinationConfiguration>, SplunkDestinationConfiguration => L<Paws::Firehose::SplunkDestinationConfiguration>])
+=head2 CreateDeliveryStream
+
+=over
+
+=item DeliveryStreamName => Str
+
+=item [DeliveryStreamType => Str]
+
+=item [ElasticsearchDestinationConfiguration => L<Paws::Firehose::ElasticsearchDestinationConfiguration>]
+
+=item [ExtendedS3DestinationConfiguration => L<Paws::Firehose::ExtendedS3DestinationConfiguration>]
+
+=item [KinesisStreamSourceConfiguration => L<Paws::Firehose::KinesisStreamSourceConfiguration>]
+
+=item [RedshiftDestinationConfiguration => L<Paws::Firehose::RedshiftDestinationConfiguration>]
+
+=item [S3DestinationConfiguration => L<Paws::Firehose::S3DestinationConfiguration>]
+
+=item [SplunkDestinationConfiguration => L<Paws::Firehose::SplunkDestinationConfiguration>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Firehose::CreateDeliveryStream>
 
@@ -186,7 +207,14 @@ Kinesis Firehose Access to an Amazon S3 Destination
 in the I<Amazon Kinesis Data Firehose Developer Guide>.
 
 
-=head2 DeleteDeliveryStream(DeliveryStreamName => Str)
+=head2 DeleteDeliveryStream
+
+=over
+
+=item DeliveryStreamName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Firehose::DeleteDeliveryStream>
 
@@ -207,7 +235,18 @@ practice, you should first stop any applications that are sending
 records before deleting a delivery stream.
 
 
-=head2 DescribeDeliveryStream(DeliveryStreamName => Str, [ExclusiveStartDestinationId => Str, Limit => Int])
+=head2 DescribeDeliveryStream
+
+=over
+
+=item DeliveryStreamName => Str
+
+=item [ExclusiveStartDestinationId => Str]
+
+=item [Limit => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Firehose::DescribeDeliveryStream>
 
@@ -219,7 +258,18 @@ C<DescribeDeliveryStream> to see whether the delivery stream is
 C<ACTIVE> and therefore ready for data to be sent to it.
 
 
-=head2 ListDeliveryStreams([DeliveryStreamType => Str, ExclusiveStartDeliveryStreamName => Str, Limit => Int])
+=head2 ListDeliveryStreams
+
+=over
+
+=item [DeliveryStreamType => Str]
+
+=item [ExclusiveStartDeliveryStreamName => Str]
+
+=item [Limit => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Firehose::ListDeliveryStreams>
 
@@ -237,7 +287,18 @@ last delivery stream returned in the call in the
 C<ExclusiveStartDeliveryStreamName> parameter of a subsequent call.
 
 
-=head2 ListTagsForDeliveryStream(DeliveryStreamName => Str, [ExclusiveStartTagKey => Str, Limit => Int])
+=head2 ListTagsForDeliveryStream
+
+=over
+
+=item DeliveryStreamName => Str
+
+=item [ExclusiveStartTagKey => Str]
+
+=item [Limit => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Firehose::ListTagsForDeliveryStream>
 
@@ -247,7 +308,16 @@ Lists the tags for the specified delivery stream. This operation has a
 limit of five transactions per second per account.
 
 
-=head2 PutRecord(DeliveryStreamName => Str, Record => L<Paws::Firehose::Record>)
+=head2 PutRecord
+
+=over
+
+=item DeliveryStreamName => Str
+
+=item Record => L<Paws::Firehose::Record>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Firehose::PutRecord>
 
@@ -293,7 +363,16 @@ records to the destination. If the destination is unreachable for more
 than 24 hours, the data is no longer available.
 
 
-=head2 PutRecordBatch(DeliveryStreamName => Str, Records => ArrayRef[L<Paws::Firehose::Record>])
+=head2 PutRecordBatch
+
+=over
+
+=item DeliveryStreamName => Str
+
+=item Records => ArrayRef[L<Paws::Firehose::Record>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Firehose::PutRecordBatch>
 
@@ -365,7 +444,16 @@ records to the destination. If the destination is unreachable for more
 than 24 hours, the data is no longer available.
 
 
-=head2 TagDeliveryStream(DeliveryStreamName => Str, Tags => ArrayRef[L<Paws::Firehose::Tag>])
+=head2 TagDeliveryStream
+
+=over
+
+=item DeliveryStreamName => Str
+
+=item Tags => ArrayRef[L<Paws::Firehose::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Firehose::TagDeliveryStream>
 
@@ -387,7 +475,16 @@ Each delivery stream can have up to 50 tags.
 This operation has a limit of five transactions per second per account.
 
 
-=head2 UntagDeliveryStream(DeliveryStreamName => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 UntagDeliveryStream
+
+=over
+
+=item DeliveryStreamName => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Firehose::UntagDeliveryStream>
 
@@ -402,7 +499,28 @@ If you specify a tag that doesn't exist, the operation ignores it.
 This operation has a limit of five transactions per second per account.
 
 
-=head2 UpdateDestination(CurrentDeliveryStreamVersionId => Str, DeliveryStreamName => Str, DestinationId => Str, [ElasticsearchDestinationUpdate => L<Paws::Firehose::ElasticsearchDestinationUpdate>, ExtendedS3DestinationUpdate => L<Paws::Firehose::ExtendedS3DestinationUpdate>, RedshiftDestinationUpdate => L<Paws::Firehose::RedshiftDestinationUpdate>, S3DestinationUpdate => L<Paws::Firehose::S3DestinationUpdate>, SplunkDestinationUpdate => L<Paws::Firehose::SplunkDestinationUpdate>])
+=head2 UpdateDestination
+
+=over
+
+=item CurrentDeliveryStreamVersionId => Str
+
+=item DeliveryStreamName => Str
+
+=item DestinationId => Str
+
+=item [ElasticsearchDestinationUpdate => L<Paws::Firehose::ElasticsearchDestinationUpdate>]
+
+=item [ExtendedS3DestinationUpdate => L<Paws::Firehose::ExtendedS3DestinationUpdate>]
+
+=item [RedshiftDestinationUpdate => L<Paws::Firehose::RedshiftDestinationUpdate>]
+
+=item [S3DestinationUpdate => L<Paws::Firehose::S3DestinationUpdate>]
+
+=item [SplunkDestinationUpdate => L<Paws::Firehose::SplunkDestinationUpdate>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Firehose::UpdateDestination>
 

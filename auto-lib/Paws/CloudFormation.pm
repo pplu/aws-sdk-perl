@@ -413,7 +413,16 @@ find the product's technical documentation at docs.aws.amazon.com
 
 =head1 METHODS
 
-=head2 CancelUpdateStack(StackName => Str, [ClientRequestToken => Str])
+=head2 CancelUpdateStack
+
+=over
+
+=item StackName => Str
+
+=item [ClientRequestToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::CancelUpdateStack>
 
@@ -426,7 +435,20 @@ previous stack configuration.
 You can cancel only stacks that are in the UPDATE_IN_PROGRESS state.
 
 
-=head2 ContinueUpdateRollback(StackName => Str, [ClientRequestToken => Str, ResourcesToSkip => ArrayRef[Str|Undef], RoleARN => Str])
+=head2 ContinueUpdateRollback
+
+=over
+
+=item StackName => Str
+
+=item [ClientRequestToken => Str]
+
+=item [ResourcesToSkip => ArrayRef[Str|Undef]]
+
+=item [RoleARN => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::ContinueUpdateRollback>
 
@@ -449,7 +471,42 @@ assumes that the database instance still exists and attempts to roll
 back to it, causing the update rollback to fail.
 
 
-=head2 CreateChangeSet(ChangeSetName => Str, StackName => Str, [Capabilities => ArrayRef[Str|Undef], ChangeSetType => Str, ClientToken => Str, Description => Str, NotificationARNs => ArrayRef[Str|Undef], Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str|Undef], RoleARN => Str, RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
+=head2 CreateChangeSet
+
+=over
+
+=item ChangeSetName => Str
+
+=item StackName => Str
+
+=item [Capabilities => ArrayRef[Str|Undef]]
+
+=item [ChangeSetType => Str]
+
+=item [ClientToken => Str]
+
+=item [Description => Str]
+
+=item [NotificationARNs => ArrayRef[Str|Undef]]
+
+=item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
+
+=item [ResourceTypes => ArrayRef[Str|Undef]]
+
+=item [RoleARN => Str]
+
+=item [RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>]
+
+=item [Tags => ArrayRef[L<Paws::CloudFormation::Tag>]]
+
+=item [TemplateBody => Str]
+
+=item [TemplateURL => Str]
+
+=item [UsePreviousTemplate => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::CreateChangeSet>
 
@@ -479,7 +536,46 @@ execute the change set by using the ExecuteChangeSet action. AWS
 CloudFormation doesn't make changes until you execute the change set.
 
 
-=head2 CreateStack(StackName => Str, [Capabilities => ArrayRef[Str|Undef], ClientRequestToken => Str, DisableRollback => Bool, EnableTerminationProtection => Bool, NotificationARNs => ArrayRef[Str|Undef], OnFailure => Str, Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str|Undef], RoleARN => Str, RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>, StackPolicyBody => Str, StackPolicyURL => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, TimeoutInMinutes => Int])
+=head2 CreateStack
+
+=over
+
+=item StackName => Str
+
+=item [Capabilities => ArrayRef[Str|Undef]]
+
+=item [ClientRequestToken => Str]
+
+=item [DisableRollback => Bool]
+
+=item [EnableTerminationProtection => Bool]
+
+=item [NotificationARNs => ArrayRef[Str|Undef]]
+
+=item [OnFailure => Str]
+
+=item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
+
+=item [ResourceTypes => ArrayRef[Str|Undef]]
+
+=item [RoleARN => Str]
+
+=item [RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>]
+
+=item [StackPolicyBody => Str]
+
+=item [StackPolicyURL => Str]
+
+=item [Tags => ArrayRef[L<Paws::CloudFormation::Tag>]]
+
+=item [TemplateBody => Str]
+
+=item [TemplateURL => Str]
+
+=item [TimeoutInMinutes => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::CreateStack>
 
@@ -490,7 +586,24 @@ successfully, the stack creation starts. You can check the status of
 the stack via the DescribeStacks API.
 
 
-=head2 CreateStackInstances(Accounts => ArrayRef[Str|Undef], Regions => ArrayRef[Str|Undef], StackSetName => Str, [OperationId => Str, OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>, ParameterOverrides => ArrayRef[L<Paws::CloudFormation::Parameter>]])
+=head2 CreateStackInstances
+
+=over
+
+=item Accounts => ArrayRef[Str|Undef]
+
+=item Regions => ArrayRef[Str|Undef]
+
+=item StackSetName => Str
+
+=item [OperationId => Str]
+
+=item [OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>]
+
+=item [ParameterOverrides => ArrayRef[L<Paws::CloudFormation::Parameter>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::CreateStackInstances>
 
@@ -502,7 +615,30 @@ account and region. C<Accounts> and C<Regions> are required
 parametersE<mdash>you must specify at least one account and one region.
 
 
-=head2 CreateStackSet(StackSetName => Str, [AdministrationRoleARN => Str, Capabilities => ArrayRef[Str|Undef], ClientRequestToken => Str, Description => Str, Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str])
+=head2 CreateStackSet
+
+=over
+
+=item StackSetName => Str
+
+=item [AdministrationRoleARN => Str]
+
+=item [Capabilities => ArrayRef[Str|Undef]]
+
+=item [ClientRequestToken => Str]
+
+=item [Description => Str]
+
+=item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
+
+=item [Tags => ArrayRef[L<Paws::CloudFormation::Tag>]]
+
+=item [TemplateBody => Str]
+
+=item [TemplateURL => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::CreateStackSet>
 
@@ -511,7 +647,16 @@ Returns: a L<Paws::CloudFormation::CreateStackSetOutput> instance
 Creates a stack set.
 
 
-=head2 DeleteChangeSet(ChangeSetName => Str, [StackName => Str])
+=head2 DeleteChangeSet
+
+=over
+
+=item ChangeSetName => Str
+
+=item [StackName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::DeleteChangeSet>
 
@@ -524,7 +669,20 @@ If the call successfully completes, AWS CloudFormation successfully
 deleted the change set.
 
 
-=head2 DeleteStack(StackName => Str, [ClientRequestToken => Str, RetainResources => ArrayRef[Str|Undef], RoleARN => Str])
+=head2 DeleteStack
+
+=over
+
+=item StackName => Str
+
+=item [ClientRequestToken => Str]
+
+=item [RetainResources => ArrayRef[Str|Undef]]
+
+=item [RoleARN => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::DeleteStack>
 
@@ -535,7 +693,24 @@ deletion starts. Deleted stacks do not show up in the DescribeStacks
 API if the deletion has been completed successfully.
 
 
-=head2 DeleteStackInstances(Accounts => ArrayRef[Str|Undef], Regions => ArrayRef[Str|Undef], RetainStacks => Bool, StackSetName => Str, [OperationId => Str, OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>])
+=head2 DeleteStackInstances
+
+=over
+
+=item Accounts => ArrayRef[Str|Undef]
+
+=item Regions => ArrayRef[Str|Undef]
+
+=item RetainStacks => Bool
+
+=item StackSetName => Str
+
+=item [OperationId => Str]
+
+=item [OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::DeleteStackInstances>
 
@@ -545,7 +720,14 @@ Deletes stack instances for the specified accounts, in the specified
 regions.
 
 
-=head2 DeleteStackSet(StackSetName => Str)
+=head2 DeleteStackSet
+
+=over
+
+=item StackSetName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::DeleteStackSet>
 
@@ -556,7 +738,14 @@ member stack instances must be deleted. For more information about how
 to do this, see DeleteStackInstances.
 
 
-=head2 DescribeAccountLimits([NextToken => Str])
+=head2 DescribeAccountLimits
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::DescribeAccountLimits>
 
@@ -566,7 +755,18 @@ Retrieves your account's AWS CloudFormation limits, such as the maximum
 number of stacks that you can create in your account.
 
 
-=head2 DescribeChangeSet(ChangeSetName => Str, [NextToken => Str, StackName => Str])
+=head2 DescribeChangeSet
+
+=over
+
+=item ChangeSetName => Str
+
+=item [NextToken => Str]
+
+=item [StackName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::DescribeChangeSet>
 
@@ -579,7 +779,16 @@ information, see Updating Stacks Using Change Sets
 in the AWS CloudFormation User Guide.
 
 
-=head2 DescribeStackEvents([NextToken => Str, StackName => Str])
+=head2 DescribeStackEvents
+
+=over
+
+=item [NextToken => Str]
+
+=item [StackName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::DescribeStackEvents>
 
@@ -595,7 +804,18 @@ You can list events for stacks that have failed to create or have been
 deleted by specifying the unique stack identifier (stack ID).
 
 
-=head2 DescribeStackInstance(StackInstanceAccount => Str, StackInstanceRegion => Str, StackSetName => Str)
+=head2 DescribeStackInstance
+
+=over
+
+=item StackInstanceAccount => Str
+
+=item StackInstanceRegion => Str
+
+=item StackSetName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::DescribeStackInstance>
 
@@ -608,7 +828,16 @@ For a list of stack instances that are associated with a specific stack
 set, use ListStackInstances.
 
 
-=head2 DescribeStackResource(LogicalResourceId => Str, StackName => Str)
+=head2 DescribeStackResource
+
+=over
+
+=item LogicalResourceId => Str
+
+=item StackName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::DescribeStackResource>
 
@@ -620,7 +849,18 @@ For deleted stacks, DescribeStackResource returns resource information
 for up to 90 days after the stack has been deleted.
 
 
-=head2 DescribeStackResources([LogicalResourceId => Str, PhysicalResourceId => Str, StackName => Str])
+=head2 DescribeStackResources
+
+=over
+
+=item [LogicalResourceId => Str]
+
+=item [PhysicalResourceId => Str]
+
+=item [StackName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::DescribeStackResources>
 
@@ -649,7 +889,16 @@ A C<ValidationError> is returned if you specify both C<StackName> and
 C<PhysicalResourceId> in the same request.
 
 
-=head2 DescribeStacks([NextToken => Str, StackName => Str])
+=head2 DescribeStacks
+
+=over
+
+=item [NextToken => Str]
+
+=item [StackName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::DescribeStacks>
 
@@ -662,7 +911,14 @@ If the stack does not exist, an C<AmazonCloudFormationException> is
 returned.
 
 
-=head2 DescribeStackSet(StackSetName => Str)
+=head2 DescribeStackSet
+
+=over
+
+=item StackSetName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::DescribeStackSet>
 
@@ -671,7 +927,16 @@ Returns: a L<Paws::CloudFormation::DescribeStackSetOutput> instance
 Returns the description of the specified stack set.
 
 
-=head2 DescribeStackSetOperation(OperationId => Str, StackSetName => Str)
+=head2 DescribeStackSetOperation
+
+=over
+
+=item OperationId => Str
+
+=item StackSetName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::DescribeStackSetOperation>
 
@@ -680,7 +945,18 @@ Returns: a L<Paws::CloudFormation::DescribeStackSetOperationOutput> instance
 Returns the description of the specified stack set operation.
 
 
-=head2 EstimateTemplateCost([Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], TemplateBody => Str, TemplateURL => Str])
+=head2 EstimateTemplateCost
+
+=over
+
+=item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
+
+=item [TemplateBody => Str]
+
+=item [TemplateURL => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::EstimateTemplateCost>
 
@@ -691,7 +967,18 @@ an AWS Simple Monthly Calculator URL with a query string that describes
 the resources required to run the template.
 
 
-=head2 ExecuteChangeSet(ChangeSetName => Str, [ClientRequestToken => Str, StackName => Str])
+=head2 ExecuteChangeSet
+
+=over
+
+=item ChangeSetName => Str
+
+=item [ClientRequestToken => Str]
+
+=item [StackName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::ExecuteChangeSet>
 
@@ -711,7 +998,14 @@ enforces the policy during the update. You can't specify a temporary
 stack policy that overrides the current policy.
 
 
-=head2 GetStackPolicy(StackName => Str)
+=head2 GetStackPolicy
+
+=over
+
+=item StackName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::GetStackPolicy>
 
@@ -721,7 +1015,18 @@ Returns the stack policy for a specified stack. If a stack doesn't have
 a policy, a null value is returned.
 
 
-=head2 GetTemplate([ChangeSetName => Str, StackName => Str, TemplateStage => Str])
+=head2 GetTemplate
+
+=over
+
+=item [ChangeSetName => Str]
+
+=item [StackName => Str]
+
+=item [TemplateStage => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::GetTemplate>
 
@@ -736,7 +1041,20 @@ after the stack has been deleted.
 If the template does not exist, a C<ValidationError> is returned.
 
 
-=head2 GetTemplateSummary([StackName => Str, StackSetName => Str, TemplateBody => Str, TemplateURL => Str])
+=head2 GetTemplateSummary
+
+=over
+
+=item [StackName => Str]
+
+=item [StackSetName => Str]
+
+=item [TemplateBody => Str]
+
+=item [TemplateURL => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::GetTemplateSummary>
 
@@ -756,7 +1074,16 @@ information for up to 90 days after the stack has been deleted. If the
 template does not exist, a C<ValidationError> is returned.
 
 
-=head2 ListChangeSets(StackName => Str, [NextToken => Str])
+=head2 ListChangeSets
+
+=over
+
+=item StackName => Str
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::ListChangeSets>
 
@@ -767,7 +1094,14 @@ example, AWS CloudFormation lists change sets that are in the
 C<CREATE_IN_PROGRESS> or C<CREATE_PENDING> state.
 
 
-=head2 ListExports([NextToken => Str])
+=head2 ListExports
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::ListExports>
 
@@ -784,7 +1118,16 @@ For more information, see AWS CloudFormation Export Stack Output Values
 (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html).
 
 
-=head2 ListImports(ExportName => Str, [NextToken => Str])
+=head2 ListImports
+
+=over
+
+=item ExportName => Str
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::ListImports>
 
@@ -801,7 +1144,22 @@ C<Fn::ImportValue>
 function.
 
 
-=head2 ListStackInstances(StackSetName => Str, [MaxResults => Int, NextToken => Str, StackInstanceAccount => Str, StackInstanceRegion => Str])
+=head2 ListStackInstances
+
+=over
+
+=item StackSetName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [StackInstanceAccount => Str]
+
+=item [StackInstanceRegion => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::ListStackInstances>
 
@@ -812,7 +1170,16 @@ with the specified stack set. You can filter for stack instances that
 are associated with a specific AWS account name or region.
 
 
-=head2 ListStackResources(StackName => Str, [NextToken => Str])
+=head2 ListStackResources
+
+=over
+
+=item StackName => Str
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::ListStackResources>
 
@@ -824,7 +1191,16 @@ For deleted stacks, ListStackResources returns resource information for
 up to 90 days after the stack has been deleted.
 
 
-=head2 ListStacks([NextToken => Str, StackStatusFilter => ArrayRef[Str|Undef]])
+=head2 ListStacks
+
+=over
+
+=item [NextToken => Str]
+
+=item [StackStatusFilter => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::ListStacks>
 
@@ -837,7 +1213,20 @@ StackStatusFilter is specified, summary information for all stacks is
 returned (including existing stacks and stacks that have been deleted).
 
 
-=head2 ListStackSetOperationResults(OperationId => Str, StackSetName => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListStackSetOperationResults
+
+=over
+
+=item OperationId => Str
+
+=item StackSetName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::ListStackSetOperationResults>
 
@@ -846,7 +1235,18 @@ Returns: a L<Paws::CloudFormation::ListStackSetOperationResultsOutput> instance
 Returns summary information about the results of a stack set operation.
 
 
-=head2 ListStackSetOperations(StackSetName => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListStackSetOperations
+
+=over
+
+=item StackSetName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::ListStackSetOperations>
 
@@ -855,7 +1255,18 @@ Returns: a L<Paws::CloudFormation::ListStackSetOperationsOutput> instance
 Returns summary information about operations performed on a stack set.
 
 
-=head2 ListStackSets([MaxResults => Int, NextToken => Str, Status => Str])
+=head2 ListStackSets
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::ListStackSets>
 
@@ -865,7 +1276,18 @@ Returns summary information about stack sets that are associated with
 the user.
 
 
-=head2 SetStackPolicy(StackName => Str, [StackPolicyBody => Str, StackPolicyURL => Str])
+=head2 SetStackPolicy
+
+=over
+
+=item StackName => Str
+
+=item [StackPolicyBody => Str]
+
+=item [StackPolicyURL => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::SetStackPolicy>
 
@@ -874,7 +1296,20 @@ Returns: nothing
 Sets a stack policy for a specified stack.
 
 
-=head2 SignalResource(LogicalResourceId => Str, StackName => Str, Status => Str, UniqueId => Str)
+=head2 SignalResource
+
+=over
+
+=item LogicalResourceId => Str
+
+=item StackName => Str
+
+=item Status => Str
+
+=item UniqueId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::SignalResource>
 
@@ -889,7 +1324,16 @@ API is useful in cases where you want to send signals from anywhere
 other than an Amazon EC2 instance.
 
 
-=head2 StopStackSetOperation(OperationId => Str, StackSetName => Str)
+=head2 StopStackSetOperation
+
+=over
+
+=item OperationId => Str
+
+=item StackSetName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::StopStackSetOperation>
 
@@ -899,7 +1343,44 @@ Stops an in-progress operation on a stack set and its associated stack
 instances.
 
 
-=head2 UpdateStack(StackName => Str, [Capabilities => ArrayRef[Str|Undef], ClientRequestToken => Str, NotificationARNs => ArrayRef[Str|Undef], Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str|Undef], RoleARN => Str, RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>, StackPolicyBody => Str, StackPolicyDuringUpdateBody => Str, StackPolicyDuringUpdateURL => Str, StackPolicyURL => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
+=head2 UpdateStack
+
+=over
+
+=item StackName => Str
+
+=item [Capabilities => ArrayRef[Str|Undef]]
+
+=item [ClientRequestToken => Str]
+
+=item [NotificationARNs => ArrayRef[Str|Undef]]
+
+=item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
+
+=item [ResourceTypes => ArrayRef[Str|Undef]]
+
+=item [RoleARN => Str]
+
+=item [RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>]
+
+=item [StackPolicyBody => Str]
+
+=item [StackPolicyDuringUpdateBody => Str]
+
+=item [StackPolicyDuringUpdateURL => Str]
+
+=item [StackPolicyURL => Str]
+
+=item [Tags => ArrayRef[L<Paws::CloudFormation::Tag>]]
+
+=item [TemplateBody => Str]
+
+=item [TemplateURL => Str]
+
+=item [UsePreviousTemplate => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::UpdateStack>
 
@@ -917,7 +1398,24 @@ stack, and monitoring the progress of the update, see Updating a Stack
 (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html).
 
 
-=head2 UpdateStackInstances(Accounts => ArrayRef[Str|Undef], Regions => ArrayRef[Str|Undef], StackSetName => Str, [OperationId => Str, OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>, ParameterOverrides => ArrayRef[L<Paws::CloudFormation::Parameter>]])
+=head2 UpdateStackInstances
+
+=over
+
+=item Accounts => ArrayRef[Str|Undef]
+
+=item Regions => ArrayRef[Str|Undef]
+
+=item StackSetName => Str
+
+=item [OperationId => Str]
+
+=item [OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>]
+
+=item [ParameterOverrides => ArrayRef[L<Paws::CloudFormation::Parameter>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::UpdateStackInstances>
 
@@ -948,7 +1446,34 @@ updated with the new parameter, you can then override the parameter
 value using C<UpdateStackInstances>.
 
 
-=head2 UpdateStackSet(StackSetName => Str, [AdministrationRoleARN => Str, Capabilities => ArrayRef[Str|Undef], Description => Str, OperationId => Str, OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>, Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
+=head2 UpdateStackSet
+
+=over
+
+=item StackSetName => Str
+
+=item [AdministrationRoleARN => Str]
+
+=item [Capabilities => ArrayRef[Str|Undef]]
+
+=item [Description => Str]
+
+=item [OperationId => Str]
+
+=item [OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>]
+
+=item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
+
+=item [Tags => ArrayRef[L<Paws::CloudFormation::Tag>]]
+
+=item [TemplateBody => Str]
+
+=item [TemplateURL => Str]
+
+=item [UsePreviousTemplate => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::UpdateStackSet>
 
@@ -963,7 +1488,16 @@ CreateStackInstances calls on the specified stack set use the updated
 stack set.
 
 
-=head2 UpdateTerminationProtection(EnableTerminationProtection => Bool, StackName => Str)
+=head2 UpdateTerminationProtection
+
+=over
+
+=item EnableTerminationProtection => Bool
+
+=item StackName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::UpdateTerminationProtection>
 
@@ -982,7 +1516,16 @@ termination protection is set on the root stack and cannot be changed
 directly on the nested stack.
 
 
-=head2 ValidateTemplate([TemplateBody => Str, TemplateURL => Str])
+=head2 ValidateTemplate
+
+=over
+
+=item [TemplateBody => Str]
+
+=item [TemplateURL => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFormation::ValidateTemplate>
 

@@ -946,7 +946,18 @@ rules.
 
 =head1 METHODS
 
-=head2 AcceptMatch(AcceptanceType => Str, PlayerIds => ArrayRef[Str|Undef], TicketId => Str)
+=head2 AcceptMatch
+
+=over
+
+=item AcceptanceType => Str
+
+=item PlayerIds => ArrayRef[Str|Undef]
+
+=item TicketId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::AcceptMatch>
 
@@ -1006,7 +1017,18 @@ StartMatchBackfill
 
 
 
-=head2 CreateAlias(Name => Str, RoutingStrategy => L<Paws::GameLift::RoutingStrategy>, [Description => Str])
+=head2 CreateAlias
+
+=over
+
+=item Name => Str
+
+=item RoutingStrategy => L<Paws::GameLift::RoutingStrategy>
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreateAlias>
 
@@ -1065,7 +1087,20 @@ ResolveAlias
 
 
 
-=head2 CreateBuild([Name => Str, OperatingSystem => Str, StorageLocation => L<Paws::GameLift::S3Location>, Version => Str])
+=head2 CreateBuild
+
+=over
+
+=item [Name => Str]
+
+=item [OperatingSystem => Str]
+
+=item [StorageLocation => L<Paws::GameLift::S3Location>]
+
+=item [Version => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreateBuild>
 
@@ -1150,7 +1185,42 @@ DeleteBuild
 
 
 
-=head2 CreateFleet(BuildId => Str, EC2InstanceType => Str, Name => Str, [Description => Str, EC2InboundPermissions => ArrayRef[L<Paws::GameLift::IpPermission>], FleetType => Str, LogPaths => ArrayRef[Str|Undef], MetricGroups => ArrayRef[Str|Undef], NewGameSessionProtectionPolicy => Str, PeerVpcAwsAccountId => Str, PeerVpcId => Str, ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>, RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>, ServerLaunchParameters => Str, ServerLaunchPath => Str])
+=head2 CreateFleet
+
+=over
+
+=item BuildId => Str
+
+=item EC2InstanceType => Str
+
+=item Name => Str
+
+=item [Description => Str]
+
+=item [EC2InboundPermissions => ArrayRef[L<Paws::GameLift::IpPermission>]]
+
+=item [FleetType => Str]
+
+=item [LogPaths => ArrayRef[Str|Undef]]
+
+=item [MetricGroups => ArrayRef[Str|Undef]]
+
+=item [NewGameSessionProtectionPolicy => Str]
+
+=item [PeerVpcAwsAccountId => Str]
+
+=item [PeerVpcId => Str]
+
+=item [ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>]
+
+=item [RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>]
+
+=item [ServerLaunchParameters => Str]
+
+=item [ServerLaunchPath => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreateFleet>
 
@@ -1345,7 +1415,30 @@ DeleteFleet
 
 
 
-=head2 CreateGameSession(MaximumPlayerSessionCount => Int, [AliasId => Str, CreatorId => Str, FleetId => Str, GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>], GameSessionData => Str, GameSessionId => Str, IdempotencyToken => Str, Name => Str])
+=head2 CreateGameSession
+
+=over
+
+=item MaximumPlayerSessionCount => Int
+
+=item [AliasId => Str]
+
+=item [CreatorId => Str]
+
+=item [FleetId => Str]
+
+=item [GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]]
+
+=item [GameSessionData => Str]
+
+=item [GameSessionId => Str]
+
+=item [IdempotencyToken => Str]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreateGameSession>
 
@@ -1437,7 +1530,20 @@ StopGameSessionPlacement
 
 
 
-=head2 CreateGameSessionQueue(Name => Str, [Destinations => ArrayRef[L<Paws::GameLift::GameSessionQueueDestination>], PlayerLatencyPolicies => ArrayRef[L<Paws::GameLift::PlayerLatencyPolicy>], TimeoutInSeconds => Int])
+=head2 CreateGameSessionQueue
+
+=over
+
+=item Name => Str
+
+=item [Destinations => ArrayRef[L<Paws::GameLift::GameSessionQueueDestination>]]
+
+=item [PlayerLatencyPolicies => ArrayRef[L<Paws::GameLift::PlayerLatencyPolicy>]]
+
+=item [TimeoutInSeconds => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreateGameSessionQueue>
 
@@ -1501,7 +1607,36 @@ DeleteGameSessionQueue
 
 
 
-=head2 CreateMatchmakingConfiguration(AcceptanceRequired => Bool, GameSessionQueueArns => ArrayRef[Str|Undef], Name => Str, RequestTimeoutSeconds => Int, RuleSetName => Str, [AcceptanceTimeoutSeconds => Int, AdditionalPlayerCount => Int, CustomEventData => Str, Description => Str, GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>], GameSessionData => Str, NotificationTarget => Str])
+=head2 CreateMatchmakingConfiguration
+
+=over
+
+=item AcceptanceRequired => Bool
+
+=item GameSessionQueueArns => ArrayRef[Str|Undef]
+
+=item Name => Str
+
+=item RequestTimeoutSeconds => Int
+
+=item RuleSetName => Str
+
+=item [AcceptanceTimeoutSeconds => Int]
+
+=item [AdditionalPlayerCount => Int]
+
+=item [CustomEventData => Str]
+
+=item [Description => Str]
+
+=item [GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]]
+
+=item [GameSessionData => Str]
+
+=item [NotificationTarget => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreateMatchmakingConfiguration>
 
@@ -1576,7 +1711,16 @@ ValidateMatchmakingRuleSet
 
 
 
-=head2 CreateMatchmakingRuleSet(Name => Str, RuleSetBody => Str)
+=head2 CreateMatchmakingRuleSet
+
+=over
+
+=item Name => Str
+
+=item RuleSetBody => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreateMatchmakingRuleSet>
 
@@ -1642,7 +1786,18 @@ ValidateMatchmakingRuleSet
 
 
 
-=head2 CreatePlayerSession(GameSessionId => Str, PlayerId => Str, [PlayerData => Str])
+=head2 CreatePlayerSession
+
+=over
+
+=item GameSessionId => Str
+
+=item PlayerId => Str
+
+=item [PlayerData => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreatePlayerSession>
 
@@ -1701,7 +1856,18 @@ StopGameSessionPlacement
 
 
 
-=head2 CreatePlayerSessions(GameSessionId => Str, PlayerIds => ArrayRef[Str|Undef], [PlayerDataMap => L<Paws::GameLift::PlayerDataMap>])
+=head2 CreatePlayerSessions
+
+=over
+
+=item GameSessionId => Str
+
+=item PlayerIds => ArrayRef[Str|Undef]
+
+=item [PlayerDataMap => L<Paws::GameLift::PlayerDataMap>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreatePlayerSessions>
 
@@ -1760,7 +1926,16 @@ StopGameSessionPlacement
 
 
 
-=head2 CreateVpcPeeringAuthorization(GameLiftAwsAccountId => Str, PeerVpcId => Str)
+=head2 CreateVpcPeeringAuthorization
+
+=over
+
+=item GameLiftAwsAccountId => Str
+
+=item PeerVpcId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreateVpcPeeringAuthorization>
 
@@ -1831,7 +2006,18 @@ DeleteVpcPeeringConnection
 
 
 
-=head2 CreateVpcPeeringConnection(FleetId => Str, PeerVpcAwsAccountId => Str, PeerVpcId => Str)
+=head2 CreateVpcPeeringConnection
+
+=over
+
+=item FleetId => Str
+
+=item PeerVpcAwsAccountId => Str
+
+=item PeerVpcId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreateVpcPeeringConnection>
 
@@ -1896,7 +2082,14 @@ DeleteVpcPeeringConnection
 
 
 
-=head2 DeleteAlias(AliasId => Str)
+=head2 DeleteAlias
+
+=over
+
+=item AliasId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DeleteAlias>
 
@@ -1939,7 +2132,14 @@ ResolveAlias
 
 
 
-=head2 DeleteBuild(BuildId => Str)
+=head2 DeleteBuild
+
+=over
+
+=item BuildId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DeleteBuild>
 
@@ -1980,7 +2180,14 @@ DeleteBuild
 
 
 
-=head2 DeleteFleet(FleetId => Str)
+=head2 DeleteFleet
+
+=over
+
+=item FleetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DeleteFleet>
 
@@ -2096,7 +2303,14 @@ DeleteFleet
 
 
 
-=head2 DeleteGameSessionQueue(Name => Str)
+=head2 DeleteGameSessionQueue
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DeleteGameSessionQueue>
 
@@ -2130,7 +2344,14 @@ DeleteGameSessionQueue
 
 
 
-=head2 DeleteMatchmakingConfiguration(Name => Str)
+=head2 DeleteMatchmakingConfiguration
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DeleteMatchmakingConfiguration>
 
@@ -2176,7 +2397,16 @@ ValidateMatchmakingRuleSet
 
 
 
-=head2 DeleteScalingPolicy(FleetId => Str, Name => Str)
+=head2 DeleteScalingPolicy
+
+=over
+
+=item FleetId => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DeleteScalingPolicy>
 
@@ -2291,7 +2521,16 @@ DeleteFleet
 
 
 
-=head2 DeleteVpcPeeringAuthorization(GameLiftAwsAccountId => Str, PeerVpcId => Str)
+=head2 DeleteVpcPeeringAuthorization
+
+=over
+
+=item GameLiftAwsAccountId => Str
+
+=item PeerVpcId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DeleteVpcPeeringAuthorization>
 
@@ -2333,7 +2572,16 @@ DeleteVpcPeeringConnection
 
 
 
-=head2 DeleteVpcPeeringConnection(FleetId => Str, VpcPeeringConnectionId => Str)
+=head2 DeleteVpcPeeringConnection
+
+=over
+
+=item FleetId => Str
+
+=item VpcPeeringConnectionId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DeleteVpcPeeringConnection>
 
@@ -2382,7 +2630,14 @@ DeleteVpcPeeringConnection
 
 
 
-=head2 DescribeAlias(AliasId => Str)
+=head2 DescribeAlias
+
+=over
+
+=item AliasId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeAlias>
 
@@ -2427,7 +2682,14 @@ ResolveAlias
 
 
 
-=head2 DescribeBuild(BuildId => Str)
+=head2 DescribeBuild
+
+=over
+
+=item BuildId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeBuild>
 
@@ -2465,7 +2727,14 @@ DeleteBuild
 
 
 
-=head2 DescribeEC2InstanceLimits([EC2InstanceType => Str])
+=head2 DescribeEC2InstanceLimits
+
+=over
+
+=item [EC2InstanceType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeEC2InstanceLimits>
 
@@ -2594,7 +2863,18 @@ DeleteFleet
 
 
 
-=head2 DescribeFleetAttributes([FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+=head2 DescribeFleetAttributes
+
+=over
+
+=item [FleetIds => ArrayRef[Str|Undef]]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeFleetAttributes>
 
@@ -2717,7 +2997,18 @@ DeleteFleet
 
 
 
-=head2 DescribeFleetCapacity([FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+=head2 DescribeFleetCapacity
+
+=over
+
+=item [FleetIds => ArrayRef[Str|Undef]]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeFleetCapacity>
 
@@ -2841,7 +3132,22 @@ DeleteFleet
 
 
 
-=head2 DescribeFleetEvents(FleetId => Str, [EndTime => Str, Limit => Int, NextToken => Str, StartTime => Str])
+=head2 DescribeFleetEvents
+
+=over
+
+=item FleetId => Str
+
+=item [EndTime => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [StartTime => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeFleetEvents>
 
@@ -2956,7 +3262,14 @@ DeleteFleet
 
 
 
-=head2 DescribeFleetPortSettings(FleetId => Str)
+=head2 DescribeFleetPortSettings
+
+=over
+
+=item FleetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeFleetPortSettings>
 
@@ -3074,7 +3387,18 @@ DeleteFleet
 
 
 
-=head2 DescribeFleetUtilization([FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+=head2 DescribeFleetUtilization
+
+=over
+
+=item [FleetIds => ArrayRef[Str|Undef]]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeFleetUtilization>
 
@@ -3196,7 +3520,24 @@ DeleteFleet
 
 
 
-=head2 DescribeGameSessionDetails([AliasId => Str, FleetId => Str, GameSessionId => Str, Limit => Int, NextToken => Str, StatusFilter => Str])
+=head2 DescribeGameSessionDetails
+
+=over
+
+=item [AliasId => Str]
+
+=item [FleetId => Str]
+
+=item [GameSessionId => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [StatusFilter => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeGameSessionDetails>
 
@@ -3267,7 +3608,14 @@ StopGameSessionPlacement
 
 
 
-=head2 DescribeGameSessionPlacement(PlacementId => Str)
+=head2 DescribeGameSessionPlacement
+
+=over
+
+=item PlacementId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeGameSessionPlacement>
 
@@ -3329,7 +3677,18 @@ StopGameSessionPlacement
 
 
 
-=head2 DescribeGameSessionQueues([Limit => Int, Names => ArrayRef[Str|Undef], NextToken => Str])
+=head2 DescribeGameSessionQueues
+
+=over
+
+=item [Limit => Int]
+
+=item [Names => ArrayRef[Str|Undef]]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeGameSessionQueues>
 
@@ -3366,7 +3725,24 @@ DeleteGameSessionQueue
 
 
 
-=head2 DescribeGameSessions([AliasId => Str, FleetId => Str, GameSessionId => Str, Limit => Int, NextToken => Str, StatusFilter => Str])
+=head2 DescribeGameSessions
+
+=over
+
+=item [AliasId => Str]
+
+=item [FleetId => Str]
+
+=item [GameSessionId => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [StatusFilter => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeGameSessions>
 
@@ -3438,7 +3814,20 @@ StopGameSessionPlacement
 
 
 
-=head2 DescribeInstances(FleetId => Str, [InstanceId => Str, Limit => Int, NextToken => Str])
+=head2 DescribeInstances
+
+=over
+
+=item FleetId => Str
+
+=item [InstanceId => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeInstances>
 
@@ -3454,7 +3843,14 @@ parameters to retrieve results as a set of sequential pages. If
 successful, an Instance object is returned for each result.
 
 
-=head2 DescribeMatchmaking(TicketIds => ArrayRef[Str|Undef])
+=head2 DescribeMatchmaking
+
+=over
+
+=item TicketIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeMatchmaking>
 
@@ -3502,7 +3898,20 @@ StartMatchBackfill
 
 
 
-=head2 DescribeMatchmakingConfigurations([Limit => Int, Names => ArrayRef[Str|Undef], NextToken => Str, RuleSetName => Str])
+=head2 DescribeMatchmakingConfigurations
+
+=over
+
+=item [Limit => Int]
+
+=item [Names => ArrayRef[Str|Undef]]
+
+=item [NextToken => Str]
+
+=item [RuleSetName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeMatchmakingConfigurations>
 
@@ -3554,7 +3963,18 @@ ValidateMatchmakingRuleSet
 
 
 
-=head2 DescribeMatchmakingRuleSets([Limit => Int, Names => ArrayRef[Str|Undef], NextToken => Str])
+=head2 DescribeMatchmakingRuleSets
+
+=over
+
+=item [Limit => Int]
+
+=item [Names => ArrayRef[Str|Undef]]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeMatchmakingRuleSets>
 
@@ -3602,7 +4022,24 @@ ValidateMatchmakingRuleSet
 
 
 
-=head2 DescribePlayerSessions([GameSessionId => Str, Limit => Int, NextToken => Str, PlayerId => Str, PlayerSessionId => Str, PlayerSessionStatusFilter => Str])
+=head2 DescribePlayerSessions
+
+=over
+
+=item [GameSessionId => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [PlayerId => Str]
+
+=item [PlayerSessionId => Str]
+
+=item [PlayerSessionStatusFilter => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribePlayerSessions>
 
@@ -3663,7 +4100,14 @@ StopGameSessionPlacement
 
 
 
-=head2 DescribeRuntimeConfiguration(FleetId => Str)
+=head2 DescribeRuntimeConfiguration
+
+=over
+
+=item FleetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeRuntimeConfiguration>
 
@@ -3777,7 +4221,20 @@ DeleteFleet
 
 
 
-=head2 DescribeScalingPolicies(FleetId => Str, [Limit => Int, NextToken => Str, StatusFilter => Str])
+=head2 DescribeScalingPolicies
+
+=over
+
+=item FleetId => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [StatusFilter => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeScalingPolicies>
 
@@ -3895,7 +4352,12 @@ DeleteFleet
 
 
 
-=head2 DescribeVpcPeeringAuthorizations()
+=head2 DescribeVpcPeeringAuthorizations
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeVpcPeeringAuthorizations>
 
@@ -3938,7 +4400,14 @@ DeleteVpcPeeringConnection
 
 
 
-=head2 DescribeVpcPeeringConnections([FleetId => Str])
+=head2 DescribeVpcPeeringConnections
+
+=over
+
+=item [FleetId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeVpcPeeringConnections>
 
@@ -3986,7 +4455,14 @@ DeleteVpcPeeringConnection
 
 
 
-=head2 GetGameSessionLogUrl(GameSessionId => Str)
+=head2 GetGameSessionLogUrl
+
+=over
+
+=item GameSessionId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::GetGameSessionLogUrl>
 
@@ -4054,7 +4530,16 @@ StopGameSessionPlacement
 
 
 
-=head2 GetInstanceAccess(FleetId => Str, InstanceId => Str)
+=head2 GetInstanceAccess
+
+=over
+
+=item FleetId => Str
+
+=item InstanceId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::GetInstanceAccess>
 
@@ -4082,7 +4567,20 @@ object is returned containing the instance's IP address and a set of
 credentials.
 
 
-=head2 ListAliases([Limit => Int, Name => Str, NextToken => Str, RoutingStrategyType => Str])
+=head2 ListAliases
+
+=over
+
+=item [Limit => Int]
+
+=item [Name => Str]
+
+=item [NextToken => Str]
+
+=item [RoutingStrategyType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::ListAliases>
 
@@ -4126,7 +4624,18 @@ ResolveAlias
 
 
 
-=head2 ListBuilds([Limit => Int, NextToken => Str, Status => Str])
+=head2 ListBuilds
+
+=over
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::ListBuilds>
 
@@ -4167,7 +4676,18 @@ DeleteBuild
 
 
 
-=head2 ListFleets([BuildId => Str, Limit => Int, NextToken => Str])
+=head2 ListFleets
+
+=over
+
+=item [BuildId => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::ListFleets>
 
@@ -4283,7 +4803,28 @@ DeleteFleet
 
 
 
-=head2 PutScalingPolicy(ComparisonOperator => Str, EvaluationPeriods => Int, FleetId => Str, MetricName => Str, Name => Str, ScalingAdjustment => Int, ScalingAdjustmentType => Str, Threshold => Num)
+=head2 PutScalingPolicy
+
+=over
+
+=item ComparisonOperator => Str
+
+=item EvaluationPeriods => Int
+
+=item FleetId => Str
+
+=item MetricName => Str
+
+=item Name => Str
+
+=item ScalingAdjustment => Int
+
+=item ScalingAdjustmentType => Str
+
+=item Threshold => Num
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::PutScalingPolicy>
 
@@ -4418,7 +4959,14 @@ DeleteFleet
 
 
 
-=head2 RequestUploadCredentials(BuildId => Str)
+=head2 RequestUploadCredentials
+
+=over
+
+=item BuildId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::RequestUploadCredentials>
 
@@ -4434,7 +4982,14 @@ are returned, along with the S3 storage location associated with the
 build ID.
 
 
-=head2 ResolveAlias(AliasId => Str)
+=head2 ResolveAlias
+
+=over
+
+=item AliasId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::ResolveAlias>
 
@@ -4474,7 +5029,24 @@ ResolveAlias
 
 
 
-=head2 SearchGameSessions([AliasId => Str, FilterExpression => Str, FleetId => Str, Limit => Int, NextToken => Str, SortExpression => Str])
+=head2 SearchGameSessions
+
+=over
+
+=item [AliasId => Str]
+
+=item [FilterExpression => Str]
+
+=item [FleetId => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [SortExpression => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::SearchGameSessions>
 
@@ -4605,7 +5177,28 @@ StopGameSessionPlacement
 
 
 
-=head2 StartGameSessionPlacement(GameSessionQueueName => Str, MaximumPlayerSessionCount => Int, PlacementId => Str, [DesiredPlayerSessions => ArrayRef[L<Paws::GameLift::DesiredPlayerSession>], GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>], GameSessionData => Str, GameSessionName => Str, PlayerLatencies => ArrayRef[L<Paws::GameLift::PlayerLatency>]])
+=head2 StartGameSessionPlacement
+
+=over
+
+=item GameSessionQueueName => Str
+
+=item MaximumPlayerSessionCount => Int
+
+=item PlacementId => Str
+
+=item [DesiredPlayerSessions => ArrayRef[L<Paws::GameLift::DesiredPlayerSession>]]
+
+=item [GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]]
+
+=item [GameSessionData => Str]
+
+=item [GameSessionName => Str]
+
+=item [PlayerLatencies => ArrayRef[L<Paws::GameLift::PlayerLatency>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::StartGameSessionPlacement>
 
@@ -4719,7 +5312,20 @@ StopGameSessionPlacement
 
 
 
-=head2 StartMatchBackfill(ConfigurationName => Str, GameSessionArn => Str, Players => ArrayRef[L<Paws::GameLift::Player>], [TicketId => Str])
+=head2 StartMatchBackfill
+
+=over
+
+=item ConfigurationName => Str
+
+=item GameSessionArn => Str
+
+=item Players => ArrayRef[L<Paws::GameLift::Player>]
+
+=item [TicketId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::StartMatchBackfill>
 
@@ -4782,7 +5388,18 @@ StartMatchBackfill
 
 
 
-=head2 StartMatchmaking(ConfigurationName => Str, Players => ArrayRef[L<Paws::GameLift::Player>], [TicketId => Str])
+=head2 StartMatchmaking
+
+=over
+
+=item ConfigurationName => Str
+
+=item Players => ArrayRef[L<Paws::GameLift::Player>]
+
+=item [TicketId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::StartMatchmaking>
 
@@ -4905,7 +5522,14 @@ StartMatchBackfill
 
 
 
-=head2 StopGameSessionPlacement(PlacementId => Str)
+=head2 StopGameSessionPlacement
+
+=over
+
+=item PlacementId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::StopGameSessionPlacement>
 
@@ -4967,7 +5591,14 @@ StopGameSessionPlacement
 
 
 
-=head2 StopMatchmaking(TicketId => Str)
+=head2 StopMatchmaking
+
+=over
+
+=item TicketId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::StopMatchmaking>
 
@@ -5006,7 +5637,20 @@ StartMatchBackfill
 
 
 
-=head2 UpdateAlias(AliasId => Str, [Description => Str, Name => Str, RoutingStrategy => L<Paws::GameLift::RoutingStrategy>])
+=head2 UpdateAlias
+
+=over
+
+=item AliasId => Str
+
+=item [Description => Str]
+
+=item [Name => Str]
+
+=item [RoutingStrategy => L<Paws::GameLift::RoutingStrategy>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateAlias>
 
@@ -5049,7 +5693,18 @@ ResolveAlias
 
 
 
-=head2 UpdateBuild(BuildId => Str, [Name => Str, Version => Str])
+=head2 UpdateBuild
+
+=over
+
+=item BuildId => Str
+
+=item [Name => Str]
+
+=item [Version => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateBuild>
 
@@ -5088,7 +5743,24 @@ DeleteBuild
 
 
 
-=head2 UpdateFleetAttributes(FleetId => Str, [Description => Str, MetricGroups => ArrayRef[Str|Undef], Name => Str, NewGameSessionProtectionPolicy => Str, ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>])
+=head2 UpdateFleetAttributes
+
+=over
+
+=item FleetId => Str
+
+=item [Description => Str]
+
+=item [MetricGroups => ArrayRef[Str|Undef]]
+
+=item [Name => Str]
+
+=item [NewGameSessionProtectionPolicy => Str]
+
+=item [ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateFleetAttributes>
 
@@ -5203,7 +5875,20 @@ DeleteFleet
 
 
 
-=head2 UpdateFleetCapacity(FleetId => Str, [DesiredInstances => Int, MaxSize => Int, MinSize => Int])
+=head2 UpdateFleetCapacity
+
+=over
+
+=item FleetId => Str
+
+=item [DesiredInstances => Int]
+
+=item [MaxSize => Int]
+
+=item [MinSize => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateFleetCapacity>
 
@@ -5333,7 +6018,18 @@ DeleteFleet
 
 
 
-=head2 UpdateFleetPortSettings(FleetId => Str, [InboundPermissionAuthorizations => ArrayRef[L<Paws::GameLift::IpPermission>], InboundPermissionRevocations => ArrayRef[L<Paws::GameLift::IpPermission>]])
+=head2 UpdateFleetPortSettings
+
+=over
+
+=item FleetId => Str
+
+=item [InboundPermissionAuthorizations => ArrayRef[L<Paws::GameLift::IpPermission>]]
+
+=item [InboundPermissionRevocations => ArrayRef[L<Paws::GameLift::IpPermission>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateFleetPortSettings>
 
@@ -5451,7 +6147,22 @@ DeleteFleet
 
 
 
-=head2 UpdateGameSession(GameSessionId => Str, [MaximumPlayerSessionCount => Int, Name => Str, PlayerSessionCreationPolicy => Str, ProtectionPolicy => Str])
+=head2 UpdateGameSession
+
+=over
+
+=item GameSessionId => Str
+
+=item [MaximumPlayerSessionCount => Int]
+
+=item [Name => Str]
+
+=item [PlayerSessionCreationPolicy => Str]
+
+=item [ProtectionPolicy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateGameSession>
 
@@ -5517,7 +6228,20 @@ StopGameSessionPlacement
 
 
 
-=head2 UpdateGameSessionQueue(Name => Str, [Destinations => ArrayRef[L<Paws::GameLift::GameSessionQueueDestination>], PlayerLatencyPolicies => ArrayRef[L<Paws::GameLift::PlayerLatencyPolicy>], TimeoutInSeconds => Int])
+=head2 UpdateGameSessionQueue
+
+=over
+
+=item Name => Str
+
+=item [Destinations => ArrayRef[L<Paws::GameLift::GameSessionQueueDestination>]]
+
+=item [PlayerLatencyPolicies => ArrayRef[L<Paws::GameLift::PlayerLatencyPolicy>]]
+
+=item [TimeoutInSeconds => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateGameSessionQueue>
 
@@ -5552,7 +6276,36 @@ DeleteGameSessionQueue
 
 
 
-=head2 UpdateMatchmakingConfiguration(Name => Str, [AcceptanceRequired => Bool, AcceptanceTimeoutSeconds => Int, AdditionalPlayerCount => Int, CustomEventData => Str, Description => Str, GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>], GameSessionData => Str, GameSessionQueueArns => ArrayRef[Str|Undef], NotificationTarget => Str, RequestTimeoutSeconds => Int, RuleSetName => Str])
+=head2 UpdateMatchmakingConfiguration
+
+=over
+
+=item Name => Str
+
+=item [AcceptanceRequired => Bool]
+
+=item [AcceptanceTimeoutSeconds => Int]
+
+=item [AdditionalPlayerCount => Int]
+
+=item [CustomEventData => Str]
+
+=item [Description => Str]
+
+=item [GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]]
+
+=item [GameSessionData => Str]
+
+=item [GameSessionQueueArns => ArrayRef[Str|Undef]]
+
+=item [NotificationTarget => Str]
+
+=item [RequestTimeoutSeconds => Int]
+
+=item [RuleSetName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateMatchmakingConfiguration>
 
@@ -5598,7 +6351,16 @@ ValidateMatchmakingRuleSet
 
 
 
-=head2 UpdateRuntimeConfiguration(FleetId => Str, RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>)
+=head2 UpdateRuntimeConfiguration
+
+=over
+
+=item FleetId => Str
+
+=item RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateRuntimeConfiguration>
 
@@ -5728,7 +6490,14 @@ DeleteFleet
 
 
 
-=head2 ValidateMatchmakingRuleSet(RuleSetBody => Str)
+=head2 ValidateMatchmakingRuleSet
+
+=over
+
+=item RuleSetBody => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::ValidateMatchmakingRuleSet>
 

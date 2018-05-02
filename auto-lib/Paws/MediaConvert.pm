@@ -148,7 +148,14 @@ AWS Elemental MediaConvert
 
 =head1 METHODS
 
-=head2 CancelJob(Id => Str)
+=head2 CancelJob
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaConvert::CancelJob>
 
@@ -158,7 +165,24 @@ Permanently remove a job from a queue. Once you have canceled a job,
 you can't start it again. You can't delete a running job.
 
 
-=head2 CreateJob([ClientRequestToken => Str, JobTemplate => Str, Queue => Str, Role => Str, Settings => L<Paws::MediaConvert::JobSettings>, UserMetadata => L<Paws::MediaConvert::MapOf__string>])
+=head2 CreateJob
+
+=over
+
+=item [ClientRequestToken => Str]
+
+=item [JobTemplate => Str]
+
+=item [Queue => Str]
+
+=item [Role => Str]
+
+=item [Settings => L<Paws::MediaConvert::JobSettings>]
+
+=item [UserMetadata => L<Paws::MediaConvert::MapOf__string>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaConvert::CreateJob>
 
@@ -169,7 +193,22 @@ settings, see the User Guide at
 http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 
 
-=head2 CreateJobTemplate([Category => Str, Description => Str, Name => Str, Queue => Str, Settings => L<Paws::MediaConvert::JobTemplateSettings>])
+=head2 CreateJobTemplate
+
+=over
+
+=item [Category => Str]
+
+=item [Description => Str]
+
+=item [Name => Str]
+
+=item [Queue => Str]
+
+=item [Settings => L<Paws::MediaConvert::JobTemplateSettings>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaConvert::CreateJobTemplate>
 
@@ -180,7 +219,20 @@ User Guide at
 http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 
 
-=head2 CreatePreset([Category => Str, Description => Str, Name => Str, Settings => L<Paws::MediaConvert::PresetSettings>])
+=head2 CreatePreset
+
+=over
+
+=item [Category => Str]
+
+=item [Description => Str]
+
+=item [Name => Str]
+
+=item [Settings => L<Paws::MediaConvert::PresetSettings>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaConvert::CreatePreset>
 
@@ -190,7 +242,16 @@ Create a new preset. For information about job templates see the User
 Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 
 
-=head2 CreateQueue([Description => Str, Name => Str])
+=head2 CreateQueue
+
+=over
+
+=item [Description => Str]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaConvert::CreateQueue>
 
@@ -201,7 +262,14 @@ the User Guide at
 http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 
 
-=head2 DeleteJobTemplate(Name => Str)
+=head2 DeleteJobTemplate
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaConvert::DeleteJobTemplate>
 
@@ -210,7 +278,14 @@ Returns: a L<Paws::MediaConvert::DeleteJobTemplateResponse> instance
 Permanently delete a job template you have created.
 
 
-=head2 DeletePreset(Name => Str)
+=head2 DeletePreset
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaConvert::DeletePreset>
 
@@ -219,7 +294,14 @@ Returns: a L<Paws::MediaConvert::DeletePresetResponse> instance
 Permanently delete a preset you have created.
 
 
-=head2 DeleteQueue(Name => Str)
+=head2 DeleteQueue
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaConvert::DeleteQueue>
 
@@ -228,7 +310,16 @@ Returns: a L<Paws::MediaConvert::DeleteQueueResponse> instance
 Permanently delete a queue you have created.
 
 
-=head2 DescribeEndpoints([MaxResults => Int, NextToken => Str])
+=head2 DescribeEndpoints
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaConvert::DescribeEndpoints>
 
@@ -238,7 +329,14 @@ Send an request with an empty body to the regional API endpoint to get
 your account API endpoint.
 
 
-=head2 GetJob(Id => Str)
+=head2 GetJob
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaConvert::GetJob>
 
@@ -247,7 +345,14 @@ Returns: a L<Paws::MediaConvert::GetJobResponse> instance
 Retrieve the JSON for a specific completed transcoding job.
 
 
-=head2 GetJobTemplate(Name => Str)
+=head2 GetJobTemplate
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaConvert::GetJobTemplate>
 
@@ -256,7 +361,14 @@ Returns: a L<Paws::MediaConvert::GetJobTemplateResponse> instance
 Retrieve the JSON for a specific job template.
 
 
-=head2 GetPreset(Name => Str)
+=head2 GetPreset
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaConvert::GetPreset>
 
@@ -265,7 +377,14 @@ Returns: a L<Paws::MediaConvert::GetPresetResponse> instance
 Retrieve the JSON for a specific preset.
 
 
-=head2 GetQueue(Name => Str)
+=head2 GetQueue
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaConvert::GetQueue>
 
@@ -274,7 +393,22 @@ Returns: a L<Paws::MediaConvert::GetQueueResponse> instance
 Retrieve the JSON for a specific queue.
 
 
-=head2 ListJobs([MaxResults => Int, NextToken => Str, Order => Str, Queue => Str, Status => Str])
+=head2 ListJobs
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Order => Str]
+
+=item [Queue => Str]
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaConvert::ListJobs>
 
@@ -287,7 +421,22 @@ retrieve the twenty next most recent jobs, use the nextToken string
 returned with the array.
 
 
-=head2 ListJobTemplates([Category => Str, ListBy => Str, MaxResults => Int, NextToken => Str, Order => Str])
+=head2 ListJobTemplates
+
+=over
+
+=item [Category => Str]
+
+=item [ListBy => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Order => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaConvert::ListJobTemplates>
 
@@ -299,7 +448,22 @@ the next twenty templates, use the nextToken string returned with the
 array
 
 
-=head2 ListPresets([Category => Str, ListBy => Str, MaxResults => Int, NextToken => Str, Order => Str])
+=head2 ListPresets
+
+=over
+
+=item [Category => Str]
+
+=item [ListBy => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Order => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaConvert::ListPresets>
 
@@ -310,7 +474,20 @@ the presets themselves, not just a list of them. To retrieve the next
 twenty presets, use the nextToken string returned with the array.
 
 
-=head2 ListQueues([ListBy => Str, MaxResults => Int, NextToken => Str, Order => Str])
+=head2 ListQueues
+
+=over
+
+=item [ListBy => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Order => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaConvert::ListQueues>
 
@@ -321,7 +498,22 @@ the queues themselves, not just a list of them. To retrieve the next
 twenty queues, use the nextToken string returned with the array.
 
 
-=head2 UpdateJobTemplate(Name => Str, [Category => Str, Description => Str, Queue => Str, Settings => L<Paws::MediaConvert::JobTemplateSettings>])
+=head2 UpdateJobTemplate
+
+=over
+
+=item Name => Str
+
+=item [Category => Str]
+
+=item [Description => Str]
+
+=item [Queue => Str]
+
+=item [Settings => L<Paws::MediaConvert::JobTemplateSettings>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaConvert::UpdateJobTemplate>
 
@@ -330,7 +522,20 @@ Returns: a L<Paws::MediaConvert::UpdateJobTemplateResponse> instance
 Modify one of your existing job templates.
 
 
-=head2 UpdatePreset(Name => Str, [Category => Str, Description => Str, Settings => L<Paws::MediaConvert::PresetSettings>])
+=head2 UpdatePreset
+
+=over
+
+=item Name => Str
+
+=item [Category => Str]
+
+=item [Description => Str]
+
+=item [Settings => L<Paws::MediaConvert::PresetSettings>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaConvert::UpdatePreset>
 
@@ -339,7 +544,18 @@ Returns: a L<Paws::MediaConvert::UpdatePresetResponse> instance
 Modify one of your existing presets.
 
 
-=head2 UpdateQueue(Name => Str, [Description => Str, Status => Str])
+=head2 UpdateQueue
+
+=over
+
+=item Name => Str
+
+=item [Description => Str]
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaConvert::UpdateQueue>
 

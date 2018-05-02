@@ -139,7 +139,16 @@ the I<AWS Certificate Manager User Guide>
 
 =head1 METHODS
 
-=head2 AddTagsToCertificate(CertificateArn => Str, Tags => ArrayRef[L<Paws::ACM::Tag>])
+=head2 AddTagsToCertificate
+
+=over
+
+=item CertificateArn => Str
+
+=item Tags => ArrayRef[L<Paws::ACM::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::AddTagsToCertificate>
 
@@ -167,7 +176,14 @@ To view all of the tags that have been applied to the certificate, use
 the ListTagsForCertificate action.
 
 
-=head2 DeleteCertificate(CertificateArn => Str)
+=head2 DeleteCertificate
+
+=over
+
+=item CertificateArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::DeleteCertificate>
 
@@ -184,7 +200,14 @@ service. To delete a certificate that is in use, the certificate
 association must first be removed.
 
 
-=head2 DescribeCertificate(CertificateArn => Str)
+=head2 DescribeCertificate
+
+=over
+
+=item CertificateArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::DescribeCertificate>
 
@@ -193,7 +216,16 @@ Returns: a L<Paws::ACM::DescribeCertificateResponse> instance
 Returns detailed metadata about the specified ACM certificate.
 
 
-=head2 ExportCertificate(CertificateArn => Str, Passphrase => Str)
+=head2 ExportCertificate
+
+=over
+
+=item CertificateArn => Str
+
+=item Passphrase => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::ExportCertificate>
 
@@ -210,7 +242,14 @@ when prompted.
 C<openssl rsa -in encrypted_key.pem -out decrypted_key.pem>
 
 
-=head2 GetCertificate(CertificateArn => Str)
+=head2 GetCertificate
+
+=over
+
+=item CertificateArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::GetCertificate>
 
@@ -224,7 +263,20 @@ chain are base64 encoded. If you want to decode the certificate to see
 the individual fields, you can use OpenSSL.
 
 
-=head2 ImportCertificate(Certificate => Str, PrivateKey => Str, [CertificateArn => Str, CertificateChain => Str])
+=head2 ImportCertificate
+
+=over
+
+=item Certificate => Str
+
+=item PrivateKey => Str
+
+=item [CertificateArn => Str]
+
+=item [CertificateChain => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::ImportCertificate>
 
@@ -310,7 +362,20 @@ This operation returns the Amazon Resource Name (ARN)
 of the imported certificate.
 
 
-=head2 ListCertificates([CertificateStatuses => ArrayRef[Str|Undef], Includes => L<Paws::ACM::Filters>, MaxItems => Int, NextToken => Str])
+=head2 ListCertificates
+
+=over
+
+=item [CertificateStatuses => ArrayRef[Str|Undef]]
+
+=item [Includes => L<Paws::ACM::Filters>]
+
+=item [MaxItems => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::ListCertificates>
 
@@ -321,7 +386,14 @@ that only certificates that match a specific status be listed. You can
 also filter by specific attributes of the certificate.
 
 
-=head2 ListTagsForCertificate(CertificateArn => Str)
+=head2 ListTagsForCertificate
+
+=over
+
+=item CertificateArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::ListTagsForCertificate>
 
@@ -333,7 +405,16 @@ add a tag to an ACM certificate, use the AddTagsToCertificate action.
 To delete a tag, use the RemoveTagsFromCertificate action.
 
 
-=head2 RemoveTagsFromCertificate(CertificateArn => Str, Tags => ArrayRef[L<Paws::ACM::Tag>])
+=head2 RemoveTagsFromCertificate
+
+=over
+
+=item CertificateArn => Str
+
+=item Tags => ArrayRef[L<Paws::ACM::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::RemoveTagsFromCertificate>
 
@@ -350,7 +431,26 @@ view all of the tags that have been applied to a specific ACM
 certificate, use the ListTagsForCertificate action.
 
 
-=head2 RequestCertificate(DomainName => Str, [CertificateAuthorityArn => Str, DomainValidationOptions => ArrayRef[L<Paws::ACM::DomainValidationOption>], IdempotencyToken => Str, Options => L<Paws::ACM::CertificateOptions>, SubjectAlternativeNames => ArrayRef[Str|Undef], ValidationMethod => Str])
+=head2 RequestCertificate
+
+=over
+
+=item DomainName => Str
+
+=item [CertificateAuthorityArn => Str]
+
+=item [DomainValidationOptions => ArrayRef[L<Paws::ACM::DomainValidationOption>]]
+
+=item [IdempotencyToken => Str]
+
+=item [Options => L<Paws::ACM::CertificateOptions>]
+
+=item [SubjectAlternativeNames => ArrayRef[Str|Undef]]
+
+=item [ValidationMethod => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::RequestCertificate>
 
@@ -380,7 +480,18 @@ After receiving approval from the domain owner, the ACM certificate is
 issued.
 
 
-=head2 ResendValidationEmail(CertificateArn => Str, Domain => Str, ValidationDomain => Str)
+=head2 ResendValidationEmail
+
+=over
+
+=item CertificateArn => Str
+
+=item Domain => Str
+
+=item ValidationDomain => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::ResendValidationEmail>
 
@@ -401,7 +512,16 @@ Configure Email for your Domain
 (http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/setup-email.html).
 
 
-=head2 UpdateCertificateOptions(CertificateArn => Str, Options => L<Paws::ACM::CertificateOptions>)
+=head2 UpdateCertificateOptions
+
+=over
+
+=item CertificateArn => Str
+
+=item Options => L<Paws::ACM::CertificateOptions>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::UpdateCertificateOptions>
 

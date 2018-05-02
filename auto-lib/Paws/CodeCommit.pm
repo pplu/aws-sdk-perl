@@ -615,7 +615,14 @@ User Guide
 
 =head1 METHODS
 
-=head2 BatchGetRepositories(RepositoryNames => ArrayRef[Str|Undef])
+=head2 BatchGetRepositories
+
+=over
+
+=item RepositoryNames => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::BatchGetRepositories>
 
@@ -631,7 +638,18 @@ description field in any application that uses this API to display the
 repository description on a web page.
 
 
-=head2 CreateBranch(BranchName => Str, CommitId => Str, RepositoryName => Str)
+=head2 CreateBranch
+
+=over
+
+=item BranchName => Str
+
+=item CommitId => Str
+
+=item RepositoryName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::CreateBranch>
 
@@ -643,7 +661,20 @@ Calling the create branch operation does not set a repository's default
 branch. To do this, call the update default branch operation.
 
 
-=head2 CreatePullRequest(Targets => ArrayRef[L<Paws::CodeCommit::Target>], Title => Str, [ClientRequestToken => Str, Description => Str])
+=head2 CreatePullRequest
+
+=over
+
+=item Targets => ArrayRef[L<Paws::CodeCommit::Target>]
+
+=item Title => Str
+
+=item [ClientRequestToken => Str]
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::CreatePullRequest>
 
@@ -652,7 +683,16 @@ Returns: a L<Paws::CodeCommit::CreatePullRequestOutput> instance
 Creates a pull request in the specified repository.
 
 
-=head2 CreateRepository(RepositoryName => Str, [RepositoryDescription => Str])
+=head2 CreateRepository
+
+=over
+
+=item RepositoryName => Str
+
+=item [RepositoryDescription => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::CreateRepository>
 
@@ -661,7 +701,16 @@ Returns: a L<Paws::CodeCommit::CreateRepositoryOutput> instance
 Creates a new, empty repository.
 
 
-=head2 DeleteBranch(BranchName => Str, RepositoryName => Str)
+=head2 DeleteBranch
+
+=over
+
+=item BranchName => Str
+
+=item RepositoryName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::DeleteBranch>
 
@@ -671,7 +720,14 @@ Deletes a branch from a repository, unless that branch is the default
 branch for the repository.
 
 
-=head2 DeleteCommentContent(CommentId => Str)
+=head2 DeleteCommentContent
+
+=over
+
+=item CommentId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::DeleteCommentContent>
 
@@ -681,7 +737,14 @@ Deletes the content of a comment made on a change, file, or commit in a
 repository.
 
 
-=head2 DeleteRepository(RepositoryName => Str)
+=head2 DeleteRepository
+
+=over
+
+=item RepositoryName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::DeleteRepository>
 
@@ -695,7 +758,22 @@ After a repository is deleted, all future push calls to the deleted
 repository will fail.
 
 
-=head2 DescribePullRequestEvents(PullRequestId => Str, [ActorArn => Str, MaxResults => Int, NextToken => Str, PullRequestEventType => Str])
+=head2 DescribePullRequestEvents
+
+=over
+
+=item PullRequestId => Str
+
+=item [ActorArn => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [PullRequestEventType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::DescribePullRequestEvents>
 
@@ -704,7 +782,16 @@ Returns: a L<Paws::CodeCommit::DescribePullRequestEventsOutput> instance
 Returns information about one or more pull request events.
 
 
-=head2 GetBlob(BlobId => Str, RepositoryName => Str)
+=head2 GetBlob
+
+=over
+
+=item BlobId => Str
+
+=item RepositoryName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::GetBlob>
 
@@ -714,7 +801,16 @@ Returns the base-64 encoded content of an individual blob within a
 repository.
 
 
-=head2 GetBranch([BranchName => Str, RepositoryName => Str])
+=head2 GetBranch
+
+=over
+
+=item [BranchName => Str]
+
+=item [RepositoryName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::GetBranch>
 
@@ -724,7 +820,14 @@ Returns information about a repository branch, including its name and
 the last commit ID.
 
 
-=head2 GetComment(CommentId => Str)
+=head2 GetComment
+
+=over
+
+=item CommentId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::GetComment>
 
@@ -734,7 +837,22 @@ Returns the content of a comment made on a change, file, or commit in a
 repository.
 
 
-=head2 GetCommentsForComparedCommit(AfterCommitId => Str, RepositoryName => Str, [BeforeCommitId => Str, MaxResults => Int, NextToken => Str])
+=head2 GetCommentsForComparedCommit
+
+=over
+
+=item AfterCommitId => Str
+
+=item RepositoryName => Str
+
+=item [BeforeCommitId => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::GetCommentsForComparedCommit>
 
@@ -744,7 +862,24 @@ Returns information about comments made on the comparison between two
 commits.
 
 
-=head2 GetCommentsForPullRequest(PullRequestId => Str, [AfterCommitId => Str, BeforeCommitId => Str, MaxResults => Int, NextToken => Str, RepositoryName => Str])
+=head2 GetCommentsForPullRequest
+
+=over
+
+=item PullRequestId => Str
+
+=item [AfterCommitId => Str]
+
+=item [BeforeCommitId => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [RepositoryName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::GetCommentsForPullRequest>
 
@@ -753,7 +888,16 @@ Returns: a L<Paws::CodeCommit::GetCommentsForPullRequestOutput> instance
 Returns comments made on a pull request.
 
 
-=head2 GetCommit(CommitId => Str, RepositoryName => Str)
+=head2 GetCommit
+
+=over
+
+=item CommitId => Str
+
+=item RepositoryName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::GetCommit>
 
@@ -763,7 +907,26 @@ Returns information about a commit, including commit message and
 committer information.
 
 
-=head2 GetDifferences(AfterCommitSpecifier => Str, RepositoryName => Str, [AfterPath => Str, BeforeCommitSpecifier => Str, BeforePath => Str, MaxResults => Int, NextToken => Str])
+=head2 GetDifferences
+
+=over
+
+=item AfterCommitSpecifier => Str
+
+=item RepositoryName => Str
+
+=item [AfterPath => Str]
+
+=item [BeforeCommitSpecifier => Str]
+
+=item [BeforePath => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::GetDifferences>
 
@@ -774,7 +937,20 @@ Returns information about the differences in a valid commit specifier
 reference). Results can be limited to a specified path.
 
 
-=head2 GetMergeConflicts(DestinationCommitSpecifier => Str, MergeOption => Str, RepositoryName => Str, SourceCommitSpecifier => Str)
+=head2 GetMergeConflicts
+
+=over
+
+=item DestinationCommitSpecifier => Str
+
+=item MergeOption => Str
+
+=item RepositoryName => Str
+
+=item SourceCommitSpecifier => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::GetMergeConflicts>
 
@@ -784,7 +960,14 @@ Returns information about merge conflicts between the before and after
 commit IDs for a pull request in a repository.
 
 
-=head2 GetPullRequest(PullRequestId => Str)
+=head2 GetPullRequest
+
+=over
+
+=item PullRequestId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::GetPullRequest>
 
@@ -793,7 +976,14 @@ Returns: a L<Paws::CodeCommit::GetPullRequestOutput> instance
 Gets information about a pull request in a specified repository.
 
 
-=head2 GetRepository(RepositoryName => Str)
+=head2 GetRepository
+
+=over
+
+=item RepositoryName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::GetRepository>
 
@@ -809,7 +999,14 @@ description field in any application that uses this API to display the
 repository description on a web page.
 
 
-=head2 GetRepositoryTriggers(RepositoryName => Str)
+=head2 GetRepositoryTriggers
+
+=over
+
+=item RepositoryName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::GetRepositoryTriggers>
 
@@ -818,7 +1015,16 @@ Returns: a L<Paws::CodeCommit::GetRepositoryTriggersOutput> instance
 Gets information about triggers configured for a repository.
 
 
-=head2 ListBranches(RepositoryName => Str, [NextToken => Str])
+=head2 ListBranches
+
+=over
+
+=item RepositoryName => Str
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::ListBranches>
 
@@ -827,7 +1033,22 @@ Returns: a L<Paws::CodeCommit::ListBranchesOutput> instance
 Gets information about one or more branches in a repository.
 
 
-=head2 ListPullRequests(RepositoryName => Str, [AuthorArn => Str, MaxResults => Int, NextToken => Str, PullRequestStatus => Str])
+=head2 ListPullRequests
+
+=over
+
+=item RepositoryName => Str
+
+=item [AuthorArn => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [PullRequestStatus => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::ListPullRequests>
 
@@ -837,7 +1058,18 @@ Returns a list of pull requests for a specified repository. The return
 list can be refined by pull request status or pull request author ARN.
 
 
-=head2 ListRepositories([NextToken => Str, Order => Str, SortBy => Str])
+=head2 ListRepositories
+
+=over
+
+=item [NextToken => Str]
+
+=item [Order => Str]
+
+=item [SortBy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::ListRepositories>
 
@@ -846,7 +1078,18 @@ Returns: a L<Paws::CodeCommit::ListRepositoriesOutput> instance
 Gets information about one or more repositories.
 
 
-=head2 MergePullRequestByFastForward(PullRequestId => Str, RepositoryName => Str, [SourceCommitId => Str])
+=head2 MergePullRequestByFastForward
+
+=over
+
+=item PullRequestId => Str
+
+=item RepositoryName => Str
+
+=item [SourceCommitId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::MergePullRequestByFastForward>
 
@@ -857,7 +1100,24 @@ request into the specified destination branch for that pull request at
 the specified commit using the fast-forward merge option.
 
 
-=head2 PostCommentForComparedCommit(AfterCommitId => Str, Content => Str, RepositoryName => Str, [BeforeCommitId => Str, ClientRequestToken => Str, Location => L<Paws::CodeCommit::Location>])
+=head2 PostCommentForComparedCommit
+
+=over
+
+=item AfterCommitId => Str
+
+=item Content => Str
+
+=item RepositoryName => Str
+
+=item [BeforeCommitId => Str]
+
+=item [ClientRequestToken => Str]
+
+=item [Location => L<Paws::CodeCommit::Location>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::PostCommentForComparedCommit>
 
@@ -866,7 +1126,26 @@ Returns: a L<Paws::CodeCommit::PostCommentForComparedCommitOutput> instance
 Posts a comment on the comparison between two commits.
 
 
-=head2 PostCommentForPullRequest(AfterCommitId => Str, BeforeCommitId => Str, Content => Str, PullRequestId => Str, RepositoryName => Str, [ClientRequestToken => Str, Location => L<Paws::CodeCommit::Location>])
+=head2 PostCommentForPullRequest
+
+=over
+
+=item AfterCommitId => Str
+
+=item BeforeCommitId => Str
+
+=item Content => Str
+
+=item PullRequestId => Str
+
+=item RepositoryName => Str
+
+=item [ClientRequestToken => Str]
+
+=item [Location => L<Paws::CodeCommit::Location>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::PostCommentForPullRequest>
 
@@ -875,7 +1154,18 @@ Returns: a L<Paws::CodeCommit::PostCommentForPullRequestOutput> instance
 Posts a comment on a pull request.
 
 
-=head2 PostCommentReply(Content => Str, InReplyTo => Str, [ClientRequestToken => Str])
+=head2 PostCommentReply
+
+=over
+
+=item Content => Str
+
+=item InReplyTo => Str
+
+=item [ClientRequestToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::PostCommentReply>
 
@@ -885,7 +1175,30 @@ Posts a comment in reply to an existing comment on a comparison between
 commits or a pull request.
 
 
-=head2 PutFile(BranchName => Str, FileContent => Str, FilePath => Str, RepositoryName => Str, [CommitMessage => Str, Email => Str, FileMode => Str, Name => Str, ParentCommitId => Str])
+=head2 PutFile
+
+=over
+
+=item BranchName => Str
+
+=item FileContent => Str
+
+=item FilePath => Str
+
+=item RepositoryName => Str
+
+=item [CommitMessage => Str]
+
+=item [Email => Str]
+
+=item [FileMode => Str]
+
+=item [Name => Str]
+
+=item [ParentCommitId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::PutFile>
 
@@ -894,7 +1207,16 @@ Returns: a L<Paws::CodeCommit::PutFileOutput> instance
 Adds or updates a file in an AWS CodeCommit repository.
 
 
-=head2 PutRepositoryTriggers(RepositoryName => Str, Triggers => ArrayRef[L<Paws::CodeCommit::RepositoryTrigger>])
+=head2 PutRepositoryTriggers
+
+=over
+
+=item RepositoryName => Str
+
+=item Triggers => ArrayRef[L<Paws::CodeCommit::RepositoryTrigger>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::PutRepositoryTriggers>
 
@@ -904,7 +1226,16 @@ Replaces all triggers for a repository. This can be used to create or
 delete triggers.
 
 
-=head2 TestRepositoryTriggers(RepositoryName => Str, Triggers => ArrayRef[L<Paws::CodeCommit::RepositoryTrigger>])
+=head2 TestRepositoryTriggers
+
+=over
+
+=item RepositoryName => Str
+
+=item Triggers => ArrayRef[L<Paws::CodeCommit::RepositoryTrigger>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::TestRepositoryTriggers>
 
@@ -916,7 +1247,16 @@ test will send data from the last commit. If no data is available,
 sample data will be generated.
 
 
-=head2 UpdateComment(CommentId => Str, Content => Str)
+=head2 UpdateComment
+
+=over
+
+=item CommentId => Str
+
+=item Content => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::UpdateComment>
 
@@ -925,7 +1265,16 @@ Returns: a L<Paws::CodeCommit::UpdateCommentOutput> instance
 Replaces the contents of a comment.
 
 
-=head2 UpdateDefaultBranch(DefaultBranchName => Str, RepositoryName => Str)
+=head2 UpdateDefaultBranch
+
+=over
+
+=item DefaultBranchName => Str
+
+=item RepositoryName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::UpdateDefaultBranch>
 
@@ -938,7 +1287,16 @@ current default branch name, a success message is returned even though
 the default branch did not change.
 
 
-=head2 UpdatePullRequestDescription(Description => Str, PullRequestId => Str)
+=head2 UpdatePullRequestDescription
+
+=over
+
+=item Description => Str
+
+=item PullRequestId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::UpdatePullRequestDescription>
 
@@ -947,7 +1305,16 @@ Returns: a L<Paws::CodeCommit::UpdatePullRequestDescriptionOutput> instance
 Replaces the contents of the description of a pull request.
 
 
-=head2 UpdatePullRequestStatus(PullRequestId => Str, PullRequestStatus => Str)
+=head2 UpdatePullRequestStatus
+
+=over
+
+=item PullRequestId => Str
+
+=item PullRequestStatus => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::UpdatePullRequestStatus>
 
@@ -956,7 +1323,16 @@ Returns: a L<Paws::CodeCommit::UpdatePullRequestStatusOutput> instance
 Updates the status of a pull request.
 
 
-=head2 UpdatePullRequestTitle(PullRequestId => Str, Title => Str)
+=head2 UpdatePullRequestTitle
+
+=over
+
+=item PullRequestId => Str
+
+=item Title => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::UpdatePullRequestTitle>
 
@@ -965,7 +1341,16 @@ Returns: a L<Paws::CodeCommit::UpdatePullRequestTitleOutput> instance
 Replaces the title of a pull request.
 
 
-=head2 UpdateRepositoryDescription(RepositoryName => Str, [RepositoryDescription => Str])
+=head2 UpdateRepositoryDescription
+
+=over
+
+=item RepositoryName => Str
+
+=item [RepositoryDescription => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::UpdateRepositoryDescription>
 
@@ -981,7 +1366,16 @@ description field in any application that uses this API to display the
 repository description on a web page.
 
 
-=head2 UpdateRepositoryName(NewName => Str, OldName => Str)
+=head2 UpdateRepositoryName
+
+=over
+
+=item NewName => Str
+
+=item OldName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeCommit::UpdateRepositoryName>
 

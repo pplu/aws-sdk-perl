@@ -220,7 +220,16 @@ Service User Guide>
 
 =head1 METHODS
 
-=head2 AssociateConfigurationItemsToApplication(ApplicationConfigurationId => Str, ConfigurationIds => ArrayRef[Str|Undef])
+=head2 AssociateConfigurationItemsToApplication
+
+=over
+
+=item ApplicationConfigurationId => Str
+
+=item ConfigurationIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Discovery::AssociateConfigurationItemsToApplication>
 
@@ -229,7 +238,16 @@ Returns: a L<Paws::Discovery::AssociateConfigurationItemsToApplicationResponse> 
 Associates one or more configuration items with an application.
 
 
-=head2 CreateApplication(Name => Str, [Description => Str])
+=head2 CreateApplication
+
+=over
+
+=item Name => Str
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Discovery::CreateApplication>
 
@@ -238,7 +256,16 @@ Returns: a L<Paws::Discovery::CreateApplicationResponse> instance
 Creates an application with the given name and description.
 
 
-=head2 CreateTags(ConfigurationIds => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::Discovery::Tag>])
+=head2 CreateTags
+
+=over
+
+=item ConfigurationIds => ArrayRef[Str|Undef]
+
+=item Tags => ArrayRef[L<Paws::Discovery::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Discovery::CreateTags>
 
@@ -249,7 +276,14 @@ that help you categorize IT assets. This API accepts a list of multiple
 configuration items.
 
 
-=head2 DeleteApplications(ConfigurationIds => ArrayRef[Str|Undef])
+=head2 DeleteApplications
+
+=over
+
+=item ConfigurationIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Discovery::DeleteApplications>
 
@@ -259,7 +293,16 @@ Deletes a list of applications and their associations with
 configuration items.
 
 
-=head2 DeleteTags(ConfigurationIds => ArrayRef[Str|Undef], [Tags => ArrayRef[L<Paws::Discovery::Tag>]])
+=head2 DeleteTags
+
+=over
+
+=item ConfigurationIds => ArrayRef[Str|Undef]
+
+=item [Tags => ArrayRef[L<Paws::Discovery::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Discovery::DeleteTags>
 
@@ -269,7 +312,20 @@ Deletes the association between configuration items and one or more
 tags. This API accepts a list of multiple configuration items.
 
 
-=head2 DescribeAgents([AgentIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Discovery::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAgents
+
+=over
+
+=item [AgentIds => ArrayRef[Str|Undef]]
+
+=item [Filters => ArrayRef[L<Paws::Discovery::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Discovery::DescribeAgents>
 
@@ -279,7 +335,14 @@ Lists agents or the Connector by ID or lists all agents/Connectors
 associated with your user account if you did not specify an ID.
 
 
-=head2 DescribeConfigurations(ConfigurationIds => ArrayRef[Str|Undef])
+=head2 DescribeConfigurations
+
+=over
+
+=item ConfigurationIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Discovery::DescribeConfigurations>
 
@@ -297,7 +360,18 @@ DescribeConfigurations Action
 (http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#DescribeConfigurations).
 
 
-=head2 DescribeExportConfigurations([ExportIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeExportConfigurations
+
+=over
+
+=item [ExportIds => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Discovery::DescribeExportConfigurations>
 
@@ -309,7 +383,20 @@ Retrieves the status of a given export process. You can retrieve status
 from a maximum of 100 processes.
 
 
-=head2 DescribeExportTasks([ExportIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Discovery::ExportFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeExportTasks
+
+=over
+
+=item [ExportIds => ArrayRef[Str|Undef]]
+
+=item [Filters => ArrayRef[L<Paws::Discovery::ExportFilter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Discovery::DescribeExportTasks>
 
@@ -319,7 +406,18 @@ Retrieve status of one or more export tasks. You can retrieve the
 status of up to 100 export tasks.
 
 
-=head2 DescribeTags([Filters => ArrayRef[L<Paws::Discovery::TagFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeTags
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::Discovery::TagFilter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Discovery::DescribeTags>
 
@@ -330,7 +428,16 @@ tag. Or retrieves a list of all tags assigned to a specific
 configuration item.
 
 
-=head2 DisassociateConfigurationItemsFromApplication(ApplicationConfigurationId => Str, ConfigurationIds => ArrayRef[Str|Undef])
+=head2 DisassociateConfigurationItemsFromApplication
+
+=over
+
+=item ApplicationConfigurationId => Str
+
+=item ConfigurationIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Discovery::DisassociateConfigurationItemsFromApplication>
 
@@ -339,7 +446,14 @@ Returns: a L<Paws::Discovery::DisassociateConfigurationItemsFromApplicationRespo
 Disassociates one or more configuration items from an application.
 
 
-=head2 ExportConfigurations( => )
+=head2 ExportConfigurations
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Discovery::ExportConfigurations>
 
@@ -355,7 +469,12 @@ query using the I<DescribeExportConfigurations> API. The system imposes
 a limit of two configuration exports in six hours.
 
 
-=head2 GetDiscoverySummary()
+=head2 GetDiscoverySummary
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::Discovery::GetDiscoverySummary>
 
@@ -364,7 +483,22 @@ Returns: a L<Paws::Discovery::GetDiscoverySummaryResponse> instance
 Retrieves a short summary of discovered assets.
 
 
-=head2 ListConfigurations(ConfigurationType => Str, [Filters => ArrayRef[L<Paws::Discovery::Filter>], MaxResults => Int, NextToken => Str, OrderBy => ArrayRef[L<Paws::Discovery::OrderByElement>]])
+=head2 ListConfigurations
+
+=over
+
+=item ConfigurationType => Str
+
+=item [Filters => ArrayRef[L<Paws::Discovery::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [OrderBy => ArrayRef[L<Paws::Discovery::OrderByElement>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Discovery::ListConfigurations>
 
@@ -375,7 +509,22 @@ specify in a filter. The filter criteria identifies the relationship
 requirements.
 
 
-=head2 ListServerNeighbors(ConfigurationId => Str, [MaxResults => Int, NeighborConfigurationIds => ArrayRef[Str|Undef], NextToken => Str, PortInformationNeeded => Bool])
+=head2 ListServerNeighbors
+
+=over
+
+=item ConfigurationId => Str
+
+=item [MaxResults => Int]
+
+=item [NeighborConfigurationIds => ArrayRef[Str|Undef]]
+
+=item [NextToken => Str]
+
+=item [PortInformationNeeded => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Discovery::ListServerNeighbors>
 
@@ -385,7 +534,14 @@ Retrieves a list of servers that are one network hop away from a
 specified server.
 
 
-=head2 StartDataCollectionByAgentIds(AgentIds => ArrayRef[Str|Undef])
+=head2 StartDataCollectionByAgentIds
+
+=over
+
+=item AgentIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Discovery::StartDataCollectionByAgentIds>
 
@@ -394,7 +550,20 @@ Returns: a L<Paws::Discovery::StartDataCollectionByAgentIdsResponse> instance
 Instructs the specified agents or connectors to start collecting data.
 
 
-=head2 StartExportTask([EndTime => Str, ExportDataFormat => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Discovery::ExportFilter>], StartTime => Str])
+=head2 StartExportTask
+
+=over
+
+=item [EndTime => Str]
+
+=item [ExportDataFormat => ArrayRef[Str|Undef]]
+
+=item [Filters => ArrayRef[L<Paws::Discovery::ExportFilter>]]
+
+=item [StartTime => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Discovery::StartExportTask>
 
@@ -415,7 +584,14 @@ data from AWS Discovery Agents. Export of summary data is limited to
 two exports per day.
 
 
-=head2 StopDataCollectionByAgentIds(AgentIds => ArrayRef[Str|Undef])
+=head2 StopDataCollectionByAgentIds
+
+=over
+
+=item AgentIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Discovery::StopDataCollectionByAgentIds>
 
@@ -424,7 +600,18 @@ Returns: a L<Paws::Discovery::StopDataCollectionByAgentIdsResponse> instance
 Instructs the specified agents or connectors to stop collecting data.
 
 
-=head2 UpdateApplication(ConfigurationId => Str, [Description => Str, Name => Str])
+=head2 UpdateApplication
+
+=over
+
+=item ConfigurationId => Str
+
+=item [Description => Str]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Discovery::UpdateApplication>
 

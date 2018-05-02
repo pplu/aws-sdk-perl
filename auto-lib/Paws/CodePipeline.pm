@@ -361,7 +361,16 @@ PutThirdPartyJobSuccessResult, which provides details of a job success.
 
 =head1 METHODS
 
-=head2 AcknowledgeJob(JobId => Str, Nonce => Str)
+=head2 AcknowledgeJob
+
+=over
+
+=item JobId => Str
+
+=item Nonce => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::AcknowledgeJob>
 
@@ -371,7 +380,18 @@ Returns information about a specified job and whether that job has been
 received by the job worker. Only used for custom actions.
 
 
-=head2 AcknowledgeThirdPartyJob(ClientToken => Str, JobId => Str, Nonce => Str)
+=head2 AcknowledgeThirdPartyJob
+
+=over
+
+=item ClientToken => Str
+
+=item JobId => Str
+
+=item Nonce => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::AcknowledgeThirdPartyJob>
 
@@ -381,7 +401,26 @@ Confirms a job worker has received the specified job. Only used for
 partner actions.
 
 
-=head2 CreateCustomActionType(Category => Str, InputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>, OutputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>, Provider => Str, Version => Str, [ConfigurationProperties => ArrayRef[L<Paws::CodePipeline::ActionConfigurationProperty>], Settings => L<Paws::CodePipeline::ActionTypeSettings>])
+=head2 CreateCustomActionType
+
+=over
+
+=item Category => Str
+
+=item InputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
+
+=item OutputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
+
+=item Provider => Str
+
+=item Version => Str
+
+=item [ConfigurationProperties => ArrayRef[L<Paws::CodePipeline::ActionConfigurationProperty>]]
+
+=item [Settings => L<Paws::CodePipeline::ActionTypeSettings>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::CreateCustomActionType>
 
@@ -391,7 +430,14 @@ Creates a new custom action that can be used in all pipelines
 associated with the AWS account. Only used for custom actions.
 
 
-=head2 CreatePipeline(Pipeline => L<Paws::CodePipeline::PipelineDeclaration>)
+=head2 CreatePipeline
+
+=over
+
+=item Pipeline => L<Paws::CodePipeline::PipelineDeclaration>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::CreatePipeline>
 
@@ -400,7 +446,18 @@ Returns: a L<Paws::CodePipeline::CreatePipelineOutput> instance
 Creates a pipeline.
 
 
-=head2 DeleteCustomActionType(Category => Str, Provider => Str, Version => Str)
+=head2 DeleteCustomActionType
+
+=over
+
+=item Category => Str
+
+=item Provider => Str
+
+=item Version => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::DeleteCustomActionType>
 
@@ -414,7 +471,14 @@ You cannot recreate a custom action after it has been deleted unless
 you increase the version number of the action.
 
 
-=head2 DeletePipeline(Name => Str)
+=head2 DeletePipeline
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::DeletePipeline>
 
@@ -423,7 +487,20 @@ Returns: nothing
 Deletes the specified pipeline.
 
 
-=head2 DisableStageTransition(PipelineName => Str, Reason => Str, StageName => Str, TransitionType => Str)
+=head2 DisableStageTransition
+
+=over
+
+=item PipelineName => Str
+
+=item Reason => Str
+
+=item StageName => Str
+
+=item TransitionType => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::DisableStageTransition>
 
@@ -433,7 +510,18 @@ Prevents artifacts in a pipeline from transitioning to the next stage
 in the pipeline.
 
 
-=head2 EnableStageTransition(PipelineName => Str, StageName => Str, TransitionType => Str)
+=head2 EnableStageTransition
+
+=over
+
+=item PipelineName => Str
+
+=item StageName => Str
+
+=item TransitionType => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::EnableStageTransition>
 
@@ -442,7 +530,14 @@ Returns: nothing
 Enables artifacts in a pipeline to transition to a stage in a pipeline.
 
 
-=head2 GetJobDetails(JobId => Str)
+=head2 GetJobDetails
+
+=over
+
+=item JobId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::GetJobDetails>
 
@@ -457,7 +552,16 @@ artifacts. Additionally, this API returns any secret values defined for
 the action.
 
 
-=head2 GetPipeline(Name => Str, [Version => Int])
+=head2 GetPipeline
+
+=over
+
+=item Name => Str
+
+=item [Version => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::GetPipeline>
 
@@ -469,7 +573,16 @@ which can then be modified and used to update the pipeline structure
 with UpdatePipeline.
 
 
-=head2 GetPipelineExecution(PipelineExecutionId => Str, PipelineName => Str)
+=head2 GetPipelineExecution
+
+=over
+
+=item PipelineExecutionId => Str
+
+=item PipelineName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::GetPipelineExecution>
 
@@ -480,7 +593,14 @@ about artifacts, the pipeline execution ID, and the name, version, and
 status of the pipeline.
 
 
-=head2 GetPipelineState(Name => Str)
+=head2 GetPipelineState
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::GetPipelineState>
 
@@ -490,7 +610,16 @@ Returns information about the state of a pipeline, including the stages
 and actions.
 
 
-=head2 GetThirdPartyJobDetails(ClientToken => Str, JobId => Str)
+=head2 GetThirdPartyJobDetails
+
+=over
+
+=item ClientToken => Str
+
+=item JobId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::GetThirdPartyJobDetails>
 
@@ -506,7 +635,16 @@ artifacts. Additionally, this API returns any secret values defined for
 the action.
 
 
-=head2 ListActionTypes([ActionOwnerFilter => Str, NextToken => Str])
+=head2 ListActionTypes
+
+=over
+
+=item [ActionOwnerFilter => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::ListActionTypes>
 
@@ -516,7 +654,18 @@ Gets a summary of all AWS CodePipeline action types associated with
 your account.
 
 
-=head2 ListPipelineExecutions(PipelineName => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListPipelineExecutions
+
+=over
+
+=item PipelineName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::ListPipelineExecutions>
 
@@ -525,7 +674,14 @@ Returns: a L<Paws::CodePipeline::ListPipelineExecutionsOutput> instance
 Gets a summary of the most recent executions for a pipeline.
 
 
-=head2 ListPipelines([NextToken => Str])
+=head2 ListPipelines
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::ListPipelines>
 
@@ -534,7 +690,18 @@ Returns: a L<Paws::CodePipeline::ListPipelinesOutput> instance
 Gets a summary of all of the pipelines associated with your account.
 
 
-=head2 PollForJobs(ActionTypeId => L<Paws::CodePipeline::ActionTypeId>, [MaxBatchSize => Int, QueryParam => L<Paws::CodePipeline::QueryParamMap>])
+=head2 PollForJobs
+
+=over
+
+=item ActionTypeId => L<Paws::CodePipeline::ActionTypeId>
+
+=item [MaxBatchSize => Int]
+
+=item [QueryParam => L<Paws::CodePipeline::QueryParamMap>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::PollForJobs>
 
@@ -549,7 +716,16 @@ artifacts. Additionally, this API returns any secret values defined for
 the action.
 
 
-=head2 PollForThirdPartyJobs(ActionTypeId => L<Paws::CodePipeline::ActionTypeId>, [MaxBatchSize => Int])
+=head2 PollForThirdPartyJobs
+
+=over
+
+=item ActionTypeId => L<Paws::CodePipeline::ActionTypeId>
+
+=item [MaxBatchSize => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::PollForThirdPartyJobs>
 
@@ -564,7 +740,20 @@ the action requires access to that Amazon S3 bucket for input or output
 artifacts.
 
 
-=head2 PutActionRevision(ActionName => Str, ActionRevision => L<Paws::CodePipeline::ActionRevision>, PipelineName => Str, StageName => Str)
+=head2 PutActionRevision
+
+=over
+
+=item ActionName => Str
+
+=item ActionRevision => L<Paws::CodePipeline::ActionRevision>
+
+=item PipelineName => Str
+
+=item StageName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::PutActionRevision>
 
@@ -574,7 +763,22 @@ Provides information to AWS CodePipeline about new revisions to a
 source.
 
 
-=head2 PutApprovalResult(ActionName => Str, PipelineName => Str, Result => L<Paws::CodePipeline::ApprovalResult>, StageName => Str, Token => Str)
+=head2 PutApprovalResult
+
+=over
+
+=item ActionName => Str
+
+=item PipelineName => Str
+
+=item Result => L<Paws::CodePipeline::ApprovalResult>
+
+=item StageName => Str
+
+=item Token => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::PutApprovalResult>
 
@@ -584,7 +788,16 @@ Provides the response to a manual approval request to AWS CodePipeline.
 Valid responses include Approved and Rejected.
 
 
-=head2 PutJobFailureResult(FailureDetails => L<Paws::CodePipeline::FailureDetails>, JobId => Str)
+=head2 PutJobFailureResult
+
+=over
+
+=item FailureDetails => L<Paws::CodePipeline::FailureDetails>
+
+=item JobId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::PutJobFailureResult>
 
@@ -594,7 +807,20 @@ Represents the failure of a job as returned to the pipeline by a job
 worker. Only used for custom actions.
 
 
-=head2 PutJobSuccessResult(JobId => Str, [ContinuationToken => Str, CurrentRevision => L<Paws::CodePipeline::CurrentRevision>, ExecutionDetails => L<Paws::CodePipeline::ExecutionDetails>])
+=head2 PutJobSuccessResult
+
+=over
+
+=item JobId => Str
+
+=item [ContinuationToken => Str]
+
+=item [CurrentRevision => L<Paws::CodePipeline::CurrentRevision>]
+
+=item [ExecutionDetails => L<Paws::CodePipeline::ExecutionDetails>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::PutJobSuccessResult>
 
@@ -604,7 +830,18 @@ Represents the success of a job as returned to the pipeline by a job
 worker. Only used for custom actions.
 
 
-=head2 PutThirdPartyJobFailureResult(ClientToken => Str, FailureDetails => L<Paws::CodePipeline::FailureDetails>, JobId => Str)
+=head2 PutThirdPartyJobFailureResult
+
+=over
+
+=item ClientToken => Str
+
+=item FailureDetails => L<Paws::CodePipeline::FailureDetails>
+
+=item JobId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::PutThirdPartyJobFailureResult>
 
@@ -614,7 +851,22 @@ Represents the failure of a third party job as returned to the pipeline
 by a job worker. Only used for partner actions.
 
 
-=head2 PutThirdPartyJobSuccessResult(ClientToken => Str, JobId => Str, [ContinuationToken => Str, CurrentRevision => L<Paws::CodePipeline::CurrentRevision>, ExecutionDetails => L<Paws::CodePipeline::ExecutionDetails>])
+=head2 PutThirdPartyJobSuccessResult
+
+=over
+
+=item ClientToken => Str
+
+=item JobId => Str
+
+=item [ContinuationToken => Str]
+
+=item [CurrentRevision => L<Paws::CodePipeline::CurrentRevision>]
+
+=item [ExecutionDetails => L<Paws::CodePipeline::ExecutionDetails>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::PutThirdPartyJobSuccessResult>
 
@@ -624,7 +876,20 @@ Represents the success of a third party job as returned to the pipeline
 by a job worker. Only used for partner actions.
 
 
-=head2 RetryStageExecution(PipelineExecutionId => Str, PipelineName => Str, RetryMode => Str, StageName => Str)
+=head2 RetryStageExecution
+
+=over
+
+=item PipelineExecutionId => Str
+
+=item PipelineName => Str
+
+=item RetryMode => Str
+
+=item StageName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::RetryStageExecution>
 
@@ -634,7 +899,14 @@ Resumes the pipeline execution by retrying the last failed actions in a
 stage.
 
 
-=head2 StartPipelineExecution(Name => Str)
+=head2 StartPipelineExecution
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::StartPipelineExecution>
 
@@ -644,7 +916,14 @@ Starts the specified pipeline. Specifically, it begins processing the
 latest commit to the source location specified as part of the pipeline.
 
 
-=head2 UpdatePipeline(Pipeline => L<Paws::CodePipeline::PipelineDeclaration>)
+=head2 UpdatePipeline
+
+=over
+
+=item Pipeline => L<Paws::CodePipeline::PipelineDeclaration>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodePipeline::UpdatePipeline>
 

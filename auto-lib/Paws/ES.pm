@@ -173,7 +173,16 @@ Endpoints
 
 =head1 METHODS
 
-=head2 AddTags(ARN => Str, TagList => ArrayRef[L<Paws::ES::Tag>])
+=head2 AddTags
+
+=over
+
+=item ARN => Str
+
+=item TagList => ArrayRef[L<Paws::ES::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ES::AddTags>
 
@@ -186,7 +195,34 @@ information.
 (http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-awsresorcetagging)
 
 
-=head2 CreateElasticsearchDomain(DomainName => Str, [AccessPolicies => Str, AdvancedOptions => L<Paws::ES::AdvancedOptions>, CognitoOptions => L<Paws::ES::CognitoOptions>, EBSOptions => L<Paws::ES::EBSOptions>, ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>, ElasticsearchVersion => Str, EncryptionAtRestOptions => L<Paws::ES::EncryptionAtRestOptions>, LogPublishingOptions => L<Paws::ES::LogPublishingOptions>, SnapshotOptions => L<Paws::ES::SnapshotOptions>, VPCOptions => L<Paws::ES::VPCOptions>])
+=head2 CreateElasticsearchDomain
+
+=over
+
+=item DomainName => Str
+
+=item [AccessPolicies => Str]
+
+=item [AdvancedOptions => L<Paws::ES::AdvancedOptions>]
+
+=item [CognitoOptions => L<Paws::ES::CognitoOptions>]
+
+=item [EBSOptions => L<Paws::ES::EBSOptions>]
+
+=item [ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>]
+
+=item [ElasticsearchVersion => Str]
+
+=item [EncryptionAtRestOptions => L<Paws::ES::EncryptionAtRestOptions>]
+
+=item [LogPublishingOptions => L<Paws::ES::LogPublishingOptions>]
+
+=item [SnapshotOptions => L<Paws::ES::SnapshotOptions>]
+
+=item [VPCOptions => L<Paws::ES::VPCOptions>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ES::CreateElasticsearchDomain>
 
@@ -198,7 +234,14 @@ Elasticsearch Domains
 in the I<Amazon Elasticsearch Service Developer Guide>.
 
 
-=head2 DeleteElasticsearchDomain(DomainName => Str)
+=head2 DeleteElasticsearchDomain
+
+=over
+
+=item DomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ES::DeleteElasticsearchDomain>
 
@@ -208,7 +251,14 @@ Permanently deletes the specified Elasticsearch domain and all of its
 data. Once a domain is deleted, it cannot be recovered.
 
 
-=head2 DeleteElasticsearchServiceRole( => )
+=head2 DeleteElasticsearchServiceRole
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ES::DeleteElasticsearchServiceRole>
 
@@ -223,7 +273,14 @@ Elasticsearch Service Role
 in I<VPC Endpoints for Amazon Elasticsearch Service Domains>.
 
 
-=head2 DescribeElasticsearchDomain(DomainName => Str)
+=head2 DescribeElasticsearchDomain
+
+=over
+
+=item DomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ES::DescribeElasticsearchDomain>
 
@@ -234,7 +291,14 @@ Elasticsearch domain, including the domain ID, domain endpoint, and
 domain ARN.
 
 
-=head2 DescribeElasticsearchDomainConfig(DomainName => Str)
+=head2 DescribeElasticsearchDomainConfig
+
+=over
+
+=item DomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ES::DescribeElasticsearchDomainConfig>
 
@@ -245,7 +309,14 @@ Elasticsearch domain, such as the state, creation date, update version,
 and update date for cluster options.
 
 
-=head2 DescribeElasticsearchDomains(DomainNames => ArrayRef[Str|Undef])
+=head2 DescribeElasticsearchDomains
+
+=over
+
+=item DomainNames => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ES::DescribeElasticsearchDomains>
 
@@ -256,7 +327,18 @@ Elasticsearch domains, including the domain ID, domain endpoint, and
 domain ARN.
 
 
-=head2 DescribeElasticsearchInstanceTypeLimits(ElasticsearchVersion => Str, InstanceType => Str, [DomainName => Str])
+=head2 DescribeElasticsearchInstanceTypeLimits
+
+=over
+
+=item ElasticsearchVersion => Str
+
+=item InstanceType => Str
+
+=item [DomainName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ES::DescribeElasticsearchInstanceTypeLimits>
 
@@ -267,7 +349,14 @@ ElasticsearchVersion. When modifying existing Domain, specify the C<
 DomainName > to know what Limits are supported for modifying.
 
 
-=head2 ListDomainNames( => )
+=head2 ListDomainNames
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ES::ListDomainNames>
 
@@ -277,7 +366,20 @@ Returns the name of all Elasticsearch domains owned by the current
 user's account.
 
 
-=head2 ListElasticsearchInstanceTypes(ElasticsearchVersion => Str, [DomainName => Str, MaxResults => Int, NextToken => Str])
+=head2 ListElasticsearchInstanceTypes
+
+=over
+
+=item ElasticsearchVersion => Str
+
+=item [DomainName => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ES::ListElasticsearchInstanceTypes>
 
@@ -287,7 +389,16 @@ List all Elasticsearch instance types that are supported for given
 ElasticsearchVersion
 
 
-=head2 ListElasticsearchVersions([MaxResults => Int, NextToken => Str])
+=head2 ListElasticsearchVersions
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ES::ListElasticsearchVersions>
 
@@ -296,7 +407,14 @@ Returns: a L<Paws::ES::ListElasticsearchVersionsResponse> instance
 List all supported Elasticsearch versions
 
 
-=head2 ListTags(ARN => Str)
+=head2 ListTags
+
+=over
+
+=item ARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ES::ListTags>
 
@@ -305,7 +423,16 @@ Returns: a L<Paws::ES::ListTagsResponse> instance
 Returns all tags for the given Elasticsearch domain.
 
 
-=head2 RemoveTags(ARN => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 RemoveTags
+
+=over
+
+=item ARN => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ES::RemoveTags>
 
@@ -315,7 +442,30 @@ Removes the specified set of tags from the specified Elasticsearch
 domain.
 
 
-=head2 UpdateElasticsearchDomainConfig(DomainName => Str, [AccessPolicies => Str, AdvancedOptions => L<Paws::ES::AdvancedOptions>, CognitoOptions => L<Paws::ES::CognitoOptions>, EBSOptions => L<Paws::ES::EBSOptions>, ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>, LogPublishingOptions => L<Paws::ES::LogPublishingOptions>, SnapshotOptions => L<Paws::ES::SnapshotOptions>, VPCOptions => L<Paws::ES::VPCOptions>])
+=head2 UpdateElasticsearchDomainConfig
+
+=over
+
+=item DomainName => Str
+
+=item [AccessPolicies => Str]
+
+=item [AdvancedOptions => L<Paws::ES::AdvancedOptions>]
+
+=item [CognitoOptions => L<Paws::ES::CognitoOptions>]
+
+=item [EBSOptions => L<Paws::ES::EBSOptions>]
+
+=item [ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>]
+
+=item [LogPublishingOptions => L<Paws::ES::LogPublishingOptions>]
+
+=item [SnapshotOptions => L<Paws::ES::SnapshotOptions>]
+
+=item [VPCOptions => L<Paws::ES::VPCOptions>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ES::UpdateElasticsearchDomainConfig>
 

@@ -137,7 +137,40 @@ applications.
 
 =head1 METHODS
 
-=head2 CreateApplication([Author => Str, Description => Str, HomePageUrl => Str, Labels => ArrayRef[Str|Undef], LicenseBody => Str, LicenseUrl => Str, Name => Str, ReadmeBody => Str, ReadmeUrl => Str, SemanticVersion => Str, SourceCodeUrl => Str, SpdxLicenseId => Str, TemplateBody => Str, TemplateUrl => Str])
+=head2 CreateApplication
+
+=over
+
+=item [Author => Str]
+
+=item [Description => Str]
+
+=item [HomePageUrl => Str]
+
+=item [Labels => ArrayRef[Str|Undef]]
+
+=item [LicenseBody => Str]
+
+=item [LicenseUrl => Str]
+
+=item [Name => Str]
+
+=item [ReadmeBody => Str]
+
+=item [ReadmeUrl => Str]
+
+=item [SemanticVersion => Str]
+
+=item [SourceCodeUrl => Str]
+
+=item [SpdxLicenseId => Str]
+
+=item [TemplateBody => Str]
+
+=item [TemplateUrl => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServerlessRepo::CreateApplication>
 
@@ -147,7 +180,22 @@ Creates an application, optionally including an AWS SAM file to create
 the first application version in the same call.
 
 
-=head2 CreateApplicationVersion(ApplicationId => Str, SemanticVersion => Str, [SourceCodeUrl => Str, TemplateBody => Str, TemplateUrl => Str])
+=head2 CreateApplicationVersion
+
+=over
+
+=item ApplicationId => Str
+
+=item SemanticVersion => Str
+
+=item [SourceCodeUrl => Str]
+
+=item [TemplateBody => Str]
+
+=item [TemplateUrl => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServerlessRepo::CreateApplicationVersion>
 
@@ -156,7 +204,20 @@ Returns: a L<Paws::ServerlessRepo::CreateApplicationVersionResponse> instance
 Creates an application version.
 
 
-=head2 CreateCloudFormationChangeSet(ApplicationId => Str, [ParameterOverrides => ArrayRef[L<Paws::ServerlessRepo::ParameterValue>], SemanticVersion => Str, StackName => Str])
+=head2 CreateCloudFormationChangeSet
+
+=over
+
+=item ApplicationId => Str
+
+=item [ParameterOverrides => ArrayRef[L<Paws::ServerlessRepo::ParameterValue>]]
+
+=item [SemanticVersion => Str]
+
+=item [StackName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServerlessRepo::CreateCloudFormationChangeSet>
 
@@ -165,7 +226,14 @@ Returns: a L<Paws::ServerlessRepo::CreateCloudFormationChangeSetResponse> instan
 Creates an AWS CloudFormation ChangeSet for the given application.
 
 
-=head2 DeleteApplication(ApplicationId => Str)
+=head2 DeleteApplication
+
+=over
+
+=item ApplicationId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServerlessRepo::DeleteApplication>
 
@@ -174,7 +242,16 @@ Returns: nothing
 Deletes the specified application.
 
 
-=head2 GetApplication(ApplicationId => Str, [SemanticVersion => Str])
+=head2 GetApplication
+
+=over
+
+=item ApplicationId => Str
+
+=item [SemanticVersion => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServerlessRepo::GetApplication>
 
@@ -183,7 +260,14 @@ Returns: a L<Paws::ServerlessRepo::GetApplicationResponse> instance
 Gets the specified application.
 
 
-=head2 GetApplicationPolicy(ApplicationId => Str)
+=head2 GetApplicationPolicy
+
+=over
+
+=item ApplicationId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServerlessRepo::GetApplicationPolicy>
 
@@ -192,7 +276,16 @@ Returns: a L<Paws::ServerlessRepo::GetApplicationPolicyResponse> instance
 Gets the policy for the specified application.
 
 
-=head2 ListApplications([MaxItems => Int, NextToken => Str])
+=head2 ListApplications
+
+=over
+
+=item [MaxItems => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServerlessRepo::ListApplications>
 
@@ -201,7 +294,18 @@ Returns: a L<Paws::ServerlessRepo::ListApplicationsResponse> instance
 Lists applications owned by the requester.
 
 
-=head2 ListApplicationVersions(ApplicationId => Str, [MaxItems => Int, NextToken => Str])
+=head2 ListApplicationVersions
+
+=over
+
+=item ApplicationId => Str
+
+=item [MaxItems => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServerlessRepo::ListApplicationVersions>
 
@@ -210,7 +314,16 @@ Returns: a L<Paws::ServerlessRepo::ListApplicationVersionsResponse> instance
 Lists versions for the specified application.
 
 
-=head2 PutApplicationPolicy(ApplicationId => Str, [Statements => ArrayRef[L<Paws::ServerlessRepo::ApplicationPolicyStatement>]])
+=head2 PutApplicationPolicy
+
+=over
+
+=item ApplicationId => Str
+
+=item [Statements => ArrayRef[L<Paws::ServerlessRepo::ApplicationPolicyStatement>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServerlessRepo::PutApplicationPolicy>
 
@@ -219,7 +332,26 @@ Returns: a L<Paws::ServerlessRepo::PutApplicationPolicyResponse> instance
 Puts the policy for the specified application.
 
 
-=head2 UpdateApplication(ApplicationId => Str, [Author => Str, Description => Str, HomePageUrl => Str, Labels => ArrayRef[Str|Undef], ReadmeBody => Str, ReadmeUrl => Str])
+=head2 UpdateApplication
+
+=over
+
+=item ApplicationId => Str
+
+=item [Author => Str]
+
+=item [Description => Str]
+
+=item [HomePageUrl => Str]
+
+=item [Labels => ArrayRef[Str|Undef]]
+
+=item [ReadmeBody => Str]
+
+=item [ReadmeUrl => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServerlessRepo::UpdateApplication>
 

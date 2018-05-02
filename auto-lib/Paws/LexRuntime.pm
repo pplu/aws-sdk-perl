@@ -69,7 +69,28 @@ operations, see the build-time API, .
 
 =head1 METHODS
 
-=head2 PostContent(BotAlias => Str, BotName => Str, ContentType => Str, InputStream => Str, UserId => Str, [Accept => Str, RequestAttributes => Str, SessionAttributes => Str])
+=head2 PostContent
+
+=over
+
+=item BotAlias => Str
+
+=item BotName => Str
+
+=item ContentType => Str
+
+=item InputStream => Str
+
+=item UserId => Str
+
+=item [Accept => Str]
+
+=item [RequestAttributes => Str]
+
+=item [SessionAttributes => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexRuntime::PostContent>
 
@@ -167,7 +188,24 @@ C<sessionAttributes>. For more information, see Managing Conversation
 Context (http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html).
 
 
-=head2 PostText(BotAlias => Str, BotName => Str, InputText => Str, UserId => Str, [RequestAttributes => L<Paws::LexRuntime::StringMap>, SessionAttributes => L<Paws::LexRuntime::StringMap>])
+=head2 PostText
+
+=over
+
+=item BotAlias => Str
+
+=item BotName => Str
+
+=item InputText => Str
+
+=item UserId => Str
+
+=item [RequestAttributes => L<Paws::LexRuntime::StringMap>]
+
+=item [SessionAttributes => L<Paws::LexRuntime::StringMap>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexRuntime::PostText>
 

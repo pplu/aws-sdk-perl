@@ -75,7 +75,14 @@ stored in AWS Elemental MediaStore.
 
 =head1 METHODS
 
-=head2 DeleteObject(Path => Str)
+=head2 DeleteObject
+
+=over
+
+=item Path => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStoreData::DeleteObject>
 
@@ -84,7 +91,14 @@ Returns: a L<Paws::MediaStoreData::DeleteObjectResponse> instance
 Deletes an object at the specified path.
 
 
-=head2 DescribeObject(Path => Str)
+=head2 DescribeObject
+
+=over
+
+=item Path => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStoreData::DescribeObject>
 
@@ -93,7 +107,16 @@ Returns: a L<Paws::MediaStoreData::DescribeObjectResponse> instance
 Gets the headers for an object at the specified path.
 
 
-=head2 GetObject(Path => Str, [Range => Str])
+=head2 GetObject
+
+=over
+
+=item Path => Str
+
+=item [Range => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStoreData::GetObject>
 
@@ -102,7 +125,18 @@ Returns: a L<Paws::MediaStoreData::GetObjectResponse> instance
 Downloads the object at the specified path.
 
 
-=head2 ListItems([MaxResults => Int, NextToken => Str, Path => Str])
+=head2 ListItems
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Path => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStoreData::ListItems>
 
@@ -112,7 +146,22 @@ Provides a list of metadata entries about folders and objects in the
 specified folder.
 
 
-=head2 PutObject(Body => Str, Path => Str, [CacheControl => Str, ContentType => Str, StorageClass => Str])
+=head2 PutObject
+
+=over
+
+=item Body => Str
+
+=item Path => Str
+
+=item [CacheControl => Str]
+
+=item [ContentType => Str]
+
+=item [StorageClass => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStoreData::PutObject>
 
