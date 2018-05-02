@@ -43,7 +43,7 @@ previous call.)
 
 =head2 WorkspaceIds => ArrayRef[Str|Undef]
 
-The identifiers of the WorkSpaces.
+The identifiers of the WorkSpaces. You can specify up to 25 WorkSpaces.
 
 
 

@@ -1,13 +1,14 @@
-package Paws::WorkSpaces::RebuildRequest;
+package Paws::WorkSpaces::IpRuleItem;
   use Moose;
-  has WorkspaceId => (is => 'ro', isa => 'Str', required => 1);
+  has IpRule => (is => 'ro', isa => 'Str', request_name => 'ipRule', traits => ['NameInRequest']);
+  has RuleDesc => (is => 'ro', isa => 'Str', request_name => 'ruleDesc', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::WorkSpaces::RebuildRequest
+Paws::WorkSpaces::IpRuleItem
 
 =head1 USAGE
 
@@ -18,27 +19,32 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::WorkSpaces::RebuildRequest object:
+As an example, if Att1 is expected to be a Paws::WorkSpaces::IpRuleItem object:
 
-  $service_obj->Method(Att1 => { WorkspaceId => $value, ..., WorkspaceId => $value  });
+  $service_obj->Method(Att1 => { IpRule => $value, ..., RuleDesc => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces::RebuildRequest object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces::IpRuleItem object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->WorkspaceId
+  $result->Att1->IpRule
 
 =head1 DESCRIPTION
 
-Information used to rebuild a WorkSpace.
+Information about a rule for an IP access control group.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> WorkspaceId => Str
+=head2 IpRule => Str
 
-  The ID of the WorkSpace.
+  The IP address range, in CIDR notation.
+
+
+=head2 RuleDesc => Str
+
+  The description.
 
 
 
