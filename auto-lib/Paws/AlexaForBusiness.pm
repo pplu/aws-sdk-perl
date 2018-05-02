@@ -144,6 +144,11 @@ package Paws::AlexaForBusiness;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::GetSkillGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListDeviceEvents {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::ListDeviceEvents', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListSkills {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::ListSkills', @_);
@@ -418,7 +423,7 @@ package Paws::AlexaForBusiness;
   }
 
 
-  sub operations { qw/AssociateContactWithAddressBook AssociateDeviceWithRoom AssociateSkillGroupWithRoom CreateAddressBook CreateContact CreateProfile CreateRoom CreateSkillGroup CreateUser DeleteAddressBook DeleteContact DeleteProfile DeleteRoom DeleteRoomSkillParameter DeleteSkillGroup DeleteUser DisassociateContactFromAddressBook DisassociateDeviceFromRoom DisassociateSkillGroupFromRoom GetAddressBook GetContact GetDevice GetProfile GetRoom GetRoomSkillParameter GetSkillGroup ListSkills ListTags PutRoomSkillParameter ResolveRoom RevokeInvitation SearchAddressBooks SearchContacts SearchDevices SearchProfiles SearchRooms SearchSkillGroups SearchUsers SendInvitation StartDeviceSync TagResource UntagResource UpdateAddressBook UpdateContact UpdateDevice UpdateProfile UpdateRoom UpdateSkillGroup / }
+  sub operations { qw/AssociateContactWithAddressBook AssociateDeviceWithRoom AssociateSkillGroupWithRoom CreateAddressBook CreateContact CreateProfile CreateRoom CreateSkillGroup CreateUser DeleteAddressBook DeleteContact DeleteProfile DeleteRoom DeleteRoomSkillParameter DeleteSkillGroup DeleteUser DisassociateContactFromAddressBook DisassociateDeviceFromRoom DisassociateSkillGroupFromRoom GetAddressBook GetContact GetDevice GetProfile GetRoom GetRoomSkillParameter GetSkillGroup ListDeviceEvents ListSkills ListTags PutRoomSkillParameter ResolveRoom RevokeInvitation SearchAddressBooks SearchContacts SearchDevices SearchProfiles SearchRooms SearchSkillGroups SearchUsers SendInvitation StartDeviceSync TagResource UntagResource UpdateAddressBook UpdateContact UpdateDevice UpdateProfile UpdateRoom UpdateSkillGroup / }
 
 1;
 
@@ -447,13 +452,13 @@ Paws::AlexaForBusiness - Perl Interface to AWS Alexa For Business
 =head1 DESCRIPTION
 
 Alexa for Business makes it easy for you to use Alexa in your
-organization. Alexa for Business gives you the tools you need to manage
-Alexa devices, enroll your users, and assign skills, at scale. You can
-build your own context-aware voice skills using the Alexa Skills Kit,
-and the Alexa for Business APIs, and you can make these available as
-private skills for your organization. Alexa for Business also makes it
-easy to voice-enable your products and services, providing
-context-aware voice experiences for your customers.
+organization. Alexa for Business gives you the tools you need for
+managing Alexa devices, enroll your users, and assign skills, at scale.
+You can build your own context-aware voice skills using the Alexa
+Skills Kit and the Alexa for Business API operations. You can make also
+these available as private skills for your organization. Alexa for
+Business makes it easy to voice-enable your products and services,
+providing context-aware voice experiences for your customers.
 
 =head1 METHODS
 
@@ -463,7 +468,7 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::AssociateCont
 
 Returns: a L<Paws::AlexaForBusiness::AssociateContactWithAddressBookResponse> instance
 
-Associates a contact to a given address book.
+Associates a contact with a given address book.
 
 
 =head2 AssociateDeviceWithRoom([DeviceArn => Str, RoomArn => Str])
@@ -472,10 +477,10 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::AssociateDevi
 
 Returns: a L<Paws::AlexaForBusiness::AssociateDeviceWithRoomResponse> instance
 
-Associates a device to a given room. This applies all the settings from
-the room profile to the device, and all the skills in any skill groups
-added to that room. This operation requires the device to be online, or
-a manual sync is required.
+Associates a device with a given room. This applies all the settings
+from the room profile to the device, and all the skills in any skill
+groups added to that room. This operation requires the device to be
+online, or else a manual sync is required.
 
 
 =head2 AssociateSkillGroupWithRoom([RoomArn => Str, SkillGroupArn => Str])
@@ -484,7 +489,7 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::AssociateSkil
 
 Returns: a L<Paws::AlexaForBusiness::AssociateSkillGroupWithRoomResponse> instance
 
-Associates a skill group to a given room. This enables all skills in
+Associates a skill group with a given room. This enables all skills in
 the associated skill group on all devices in the room.
 
 
@@ -700,6 +705,19 @@ Returns: a L<Paws::AlexaForBusiness::GetSkillGroupResponse> instance
 Gets skill group details by skill group ARN.
 
 
+=head2 ListDeviceEvents(DeviceArn => Str, [EventType => Str, MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::ListDeviceEvents>
+
+Returns: a L<Paws::AlexaForBusiness::ListDeviceEventsResponse> instance
+
+Lists the Device Event history for up to 30 days. If EventType isn't
+specified in the request, this returns a list of all device events in
+reverse chronological order. If EventType is specified, this returns a
+list of device events for that EventType in reverse chronological
+order.
+
+
 =head2 ListSkills([MaxResults => Int, NextToken => Str, SkillGroupArn => Str])
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::ListSkills>
@@ -833,7 +851,7 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::StartDeviceSy
 
 Returns: a L<Paws::AlexaForBusiness::StartDeviceSyncResponse> instance
 
-Resets a device and its account to the known default settings by
+Resets a device and its account to the known default settings, by
 clearing all information and settings set by previous users.
 
 

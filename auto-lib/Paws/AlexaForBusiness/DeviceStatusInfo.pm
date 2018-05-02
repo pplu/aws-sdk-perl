@@ -1,5 +1,6 @@
 package Paws::AlexaForBusiness::DeviceStatusInfo;
   use Moose;
+  has ConnectionStatus => (is => 'ro', isa => 'Str');
   has DeviceStatusDetails => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::DeviceStatusDetail]');
 1;
 
@@ -20,20 +21,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AlexaForBusiness::DeviceStatusInfo object:
 
-  $service_obj->Method(Att1 => { DeviceStatusDetails => $value, ..., DeviceStatusDetails => $value  });
+  $service_obj->Method(Att1 => { ConnectionStatus => $value, ..., DeviceStatusDetails => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::AlexaForBusiness::DeviceStatusInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DeviceStatusDetails
+  $result->Att1->ConnectionStatus
 
 =head1 DESCRIPTION
 
 Detailed information about a device's status.
 
 =head1 ATTRIBUTES
+
+
+=head2 ConnectionStatus => Str
+
+  The latest available information about the connection status of a
+device.
 
 
 =head2 DeviceStatusDetails => ArrayRef[L<Paws::AlexaForBusiness::DeviceStatusDetail>]

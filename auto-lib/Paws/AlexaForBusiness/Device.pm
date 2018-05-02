@@ -62,7 +62,7 @@ A device with attributes.
 =head2 DeviceStatus => Str
 
   The status of a device. If the status is not READY, check the
-DeviceStatusInfo for details.
+DeviceStatusInfo value for details.
 
 
 =head2 DeviceStatusInfo => L<Paws::AlexaForBusiness::DeviceStatusInfo>
