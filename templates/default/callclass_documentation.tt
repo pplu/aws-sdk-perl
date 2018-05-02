@@ -10,6 +10,8 @@ This class represents the parameters used for calling the method [% operation.na
 L<[% c.api_struct.metadata.serviceFullName %]|[% c.api %]> service. Use the attributes of this class
 as arguments to method [% operation.name %].
 
+For the AWS API documentation, see <[% c.service_url %]>
+
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to [% operation.name %].
 
 As an example:
@@ -31,8 +33,6 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 [% END %]
 
 =head1 SEE ALSO
-
-For the AWS API documentation, see <[% c.service_url %]>
 
 This class forms part of L<Paws>, documenting arguments for method [% operation.name %] in L<[% c.api %]>
 
