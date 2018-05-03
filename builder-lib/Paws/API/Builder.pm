@@ -21,6 +21,7 @@ package Paws::API::Builder {
     return $svc;
   }
 
+  has service_full_name => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ serviceFullName } });
   has service => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ endpointPrefix } });
   has version => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ apiVersion } });
   has endpoint_role => (is => 'ro', lazy => 1, default => 'Paws::API::EndpointResolver' );
@@ -29,17 +30,57 @@ package Paws::API::Builder {
 
   has template_path => (is => 'ro', required => 1);
 
-  has service_url => (is => 'ro', lazy => 1, default => sub {
-    my $self = shift;
-    my $url = 'https://aws.amazon.com/documentation/';
-    my $service_url = $url . $self->service;
-    my $ua = LWP::UserAgent->new;
+  has service_url_overrides => (is => 'ro', isa => 'HashRef', default => sub { {
+    mq => 'https://aws.amazon.com/documentation/amazon-mq/',
+    email => 'https://aws.amazon.com/documentation/ses/',
+    es => 'https://aws.amazon.com/documentation/elasticsearch-service/',
+    support => 'https://aws.amazon.com/documentation/aws-support/',
+    sts => 'https://aws.amazon.com/documentation/iam/',
+    states => 'https://aws.amazon.com/documentation/step-functions/',     
+   'opsworks-cm' => 'https://aws.amazon.com/documentation/opsworks/',
+    monitoring => 'https://aws.amazon.com/documentation/cloudwatch/',
+    events => 'https://aws.amazon.com/documentation/cloudwatch/',
+    logs => 'https://aws.amazon.com/documentation/cloudwatch/',
+   'cognito-identity' => 'https://aws.amazon.com/documentation/cognito/',
+   'cognito-idp' => 'https://aws.amazon.com/documentation/cognito/',
+   'cognito-sync' => 'https://aws.amazon.com/documentation/cognito/',
+   'api.pricing' => 'https://aws.amazon.com/documentation/account-billing/',
+    ce => 'https://aws.amazon.com/documentation/asccount-billing/',
+    budgets => 'https://aws.amazon.com/documentation/account-billing/',
+  } });
+
+  sub is_url_working {
+    my ($self, $url) = @_;
+     my $ua = LWP::UserAgent->new;
     $ua->timeout(10);
     $ua->env_proxy;
-    my $res = $ua->head($service_url);
+    my $res = $ua->head($url);
     if ($res->is_success) {
+      return 1;
+    } else {
+      return 0;
+    }
+   
+  }
+
+  has service_url => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+
+    my $override = $self->service_url_overrides->{ $self->service };
+    if (defined $override) {
+      if ($self->is_url_working($override)) {
+        return $override;
+      } else {
+        die "Looks like documentation for " . $self->service . " has disappeared";
+      }
+    }
+
+    my $url = 'https://aws.amazon.com/documentation/';
+    my $service_url = $url . $self->service;
+    if ($self->is_url_working($service_url)) {
       return $service_url;
     } else {
+      warn "Using default url for '" . $self->service . "' " . $self->service_full_name;
       return $url;
     }
   });
