@@ -43,7 +43,7 @@ on 'develop' => sub {
   requires 'Dist::Zilla::Plugin::Git::GatherDir';
   requires 'Dist::Zilla::Plugin::Git::Push';
   requires 'Dist::Zilla::Plugin::Git::Tag';
-  requires 'Dist::Zilla::Plugin::ModuleBuildTiny';
+  requires 'Dist::Zilla::Plugin::StaticInstall';
   requires 'Carp::Always';
   requires 'Devel::Cover';
   requires 'Data::Printer';
