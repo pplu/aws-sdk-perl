@@ -199,6 +199,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateEgressOnlyInternetGateway', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateFleet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateFleet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateFlowLogs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateFlowLogs', @_);
@@ -367,6 +372,11 @@ package Paws::EC2;
   sub DeleteEgressOnlyInternetGateway {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteEgressOnlyInternetGateway', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteFleets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteFleets', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteFlowLogs {
@@ -572,6 +582,21 @@ package Paws::EC2;
   sub DescribeExportTasks {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeExportTasks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeFleetHistory {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeFleetHistory', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeFleetInstances {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeFleetInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeFleets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeFleets', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeFlowLogs {
@@ -1052,6 +1077,11 @@ package Paws::EC2;
   sub ImportVolume {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ImportVolume', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyFleet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyFleet', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyFpgaImageAttribute {
@@ -1678,7 +1708,7 @@ package Paws::EC2;
   }
 
 
-  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcEndpointConnections AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCreditSpecification ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress / }
+  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcEndpointConnections AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFleet CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFleets DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFleetHistory DescribeFleetInstances DescribeFleets DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyFleet ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCreditSpecification ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress / }
 
 1;
 
@@ -2549,7 +2579,7 @@ instances that Amazon EC2 starts on your behalf when the maximum price
 that you specify exceeds the current Spot price. For more information,
 see Spot Instance Requests
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 Canceling a Spot Instance request does not terminate running Spot
 Instances associated with the request.
@@ -2894,6 +2924,52 @@ egress-only Internet gateway is used to enable outbound communication
 over IPv6 from instances in your VPC to the Internet, and prevents
 hosts outside of your VPC from initiating an IPv6 connection with your
 instance.
+
+
+=head2 CreateFleet
+
+=over
+
+=item LaunchTemplateConfigs => ArrayRef[L<Paws::EC2::FleetLaunchTemplateConfigRequest>]
+
+=item TargetCapacitySpecification => L<Paws::EC2::TargetCapacitySpecificationRequest>
+
+=item [ClientToken => Str]
+
+=item [DryRun => Bool]
+
+=item [ExcessCapacityTerminationPolicy => Str]
+
+=item [ReplaceUnhealthyInstances => Bool]
+
+=item [SpotOptions => L<Paws::EC2::SpotOptionsRequest>]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
+=item [TerminateInstancesWithExpiration => Bool]
+
+=item [Type => Str]
+
+=item [ValidFrom => Str]
+
+=item [ValidUntil => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateFleet>
+
+Returns: a L<Paws::EC2::CreateFleetResult> instance
+
+Launches an EC2 Fleet.
+
+You can create a single EC2 Fleet that includes multiple launch
+specifications that vary by instance type, AMI, Availability Zone, or
+subnet.
+
+For more information, see Launching an EC2 Fleet
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-launch-ec2-fleet.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 CreateFlowLogs
@@ -3612,7 +3688,7 @@ Creates a data feed for Spot Instances, enabling you to view Spot
 Instance usage logs. You can create one data feed per AWS account. For
 more information, see Spot Instance Data Feed
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 
 =head2 CreateSubnet
@@ -4111,6 +4187,33 @@ Each argument is described in detail in: L<Paws::EC2::DeleteEgressOnlyInternetGa
 Returns: a L<Paws::EC2::DeleteEgressOnlyInternetGatewayResult> instance
 
 Deletes an egress-only Internet gateway.
+
+
+=head2 DeleteFleets
+
+=over
+
+=item FleetIds => ArrayRef[Str|Undef]
+
+=item TerminateInstances => Bool
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteFleets>
+
+Returns: a L<Paws::EC2::DeleteFleetsResult> instance
+
+Deletes the specified EC2 Fleet.
+
+After you delete an EC2 Fleet, the EC2 Fleet launches no new instances.
+You must specify whether the EC2 Fleet should also terminate its
+instances. If you terminate the instances, the EC2 Fleet enters the
+C<deleted_terminating> state. Otherwise, the EC2 Fleet enters the
+C<deleted_running> state, and the instances continue to run until they
+are interrupted or you terminate them manually.
 
 
 =head2 DeleteFlowLogs
@@ -5075,6 +5178,81 @@ Each argument is described in detail in: L<Paws::EC2::DescribeExportTasks>
 Returns: a L<Paws::EC2::DescribeExportTasksResult> instance
 
 Describes one or more of your export tasks.
+
+
+=head2 DescribeFleetHistory
+
+=over
+
+=item FleetId => Str
+
+=item StartTime => Str
+
+=item [DryRun => Bool]
+
+=item [EventType => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeFleetHistory>
+
+Returns: a L<Paws::EC2::DescribeFleetHistoryResult> instance
+
+Describes the events for the specified EC2 Fleet during the specified
+time.
+
+
+=head2 DescribeFleetInstances
+
+=over
+
+=item FleetId => Str
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeFleetInstances>
+
+Returns: a L<Paws::EC2::DescribeFleetInstancesResult> instance
+
+Describes the running instances for the specified EC2 Fleet.
+
+
+=head2 DescribeFleets
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [FleetIds => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeFleets>
+
+Returns: a L<Paws::EC2::DescribeFleetsResult> instance
+
+Describes the specified EC2 Fleet.
 
 
 =head2 DescribeFlowLogs
@@ -6396,7 +6574,7 @@ Returns: a L<Paws::EC2::DescribeSpotDatafeedSubscriptionResult> instance
 Describes the data feed for Spot Instances. For more information, see
 Spot Instance Data Feed
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 
 =head2 DescribeSpotFleetInstances
@@ -6499,7 +6677,7 @@ Instances are instances that Amazon EC2 launches when the Spot price
 that you specify exceeds the current Spot price. For more information,
 see Spot Instance Requests
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 You can use C<DescribeSpotInstanceRequests> to find a running Spot
 Instance by examining the response. If the status of the Spot Instance
@@ -6508,8 +6686,8 @@ the identifier of the instance. Alternatively, you can use
 DescribeInstances with a filter to look for instances where the
 instance lifecycle is C<spot>.
 
-Spot Instance requests are deleted 4 hours after they are canceled and
-their instances are terminated.
+Spot Instance requests are deleted four hours after they are canceled
+and their instances are terminated.
 
 
 =head2 DescribeSpotPriceHistory
@@ -6544,7 +6722,7 @@ Returns: a L<Paws::EC2::DescribeSpotPriceHistoryResult> instance
 Describes the Spot price history. For more information, see Spot
 Instance Pricing History
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 When you specify a start and end time, this operation returns the
 prices of the instance types within the time range that you specified
@@ -7806,6 +7984,30 @@ image.For more information, see Importing Disks to Amazon EBS
 For information about the import manifest referenced by this API
 action, see VM Import Manifest
 (http://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html).
+
+
+=head2 ModifyFleet
+
+=over
+
+=item FleetId => Str
+
+=item TargetCapacitySpecification => L<Paws::EC2::TargetCapacitySpecificationRequest>
+
+=item [DryRun => Bool]
+
+=item [ExcessCapacityTerminationPolicy => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ModifyFleet>
+
+Returns: a L<Paws::EC2::ModifyFleetResult> instance
+
+Modifies the specified EC2 Fleet.
+
+While the EC2 Fleet is being modified, it is in the C<modifying> state.
 
 
 =head2 ModifyFpgaImageAttribute
@@ -9214,6 +9416,11 @@ Returns: a L<Paws::EC2::RequestSpotFleetResponse> instance
 
 Creates a Spot Fleet request.
 
+The Spot Fleet request specifies the total target capacity and the
+On-Demand target capacity. Amazon EC2 calculates the difference between
+the total capacity and On-Demand capacity, and launches the difference
+as Spot capacity.
+
 You can submit a single request that includes multiple launch
 specifications that vary by instance type, AMI, Availability Zone, or
 subnet.
@@ -9230,12 +9437,12 @@ are in different Spot pools, you can improve the availability of your
 fleet.
 
 You can specify tags for the Spot Instances. You cannot tag other
-resource types in a Spot Fleet request; only the C<instance> resource
-type is supported.
+resource types in a Spot Fleet request because only the C<instance>
+resource type is supported.
 
 For more information, see Spot Fleet Requests
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 
 =head2 RequestSpotInstances
@@ -9277,7 +9484,7 @@ Creates a Spot Instance request. Spot Instances are instances that
 Amazon EC2 launches when the maximum price that you specify exceeds the
 current Spot price. For more information, see Spot Instance Requests
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 
 =head2 ResetFpgaImageAttribute

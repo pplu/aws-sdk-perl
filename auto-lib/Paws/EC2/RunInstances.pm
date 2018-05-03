@@ -227,7 +227,8 @@ to log in.
 
 The launch template to use to launch the instances. Any parameters that
 you specify in RunInstances override the same parameters in the launch
-template.
+template. You can specify either the name or ID of a launch template,
+but not both.
 
 
 

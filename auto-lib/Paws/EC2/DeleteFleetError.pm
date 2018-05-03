@@ -1,15 +1,14 @@
-package Paws::EC2::SpotInstanceStatus;
+package Paws::EC2::DeleteFleetError;
   use Moose;
   has Code => (is => 'ro', isa => 'Str', request_name => 'code', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has UpdateTime => (is => 'ro', isa => 'Str', request_name => 'updateTime', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::EC2::SpotInstanceStatus
+Paws::EC2::DeleteFleetError
 
 =head1 USAGE
 
@@ -20,13 +19,13 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::EC2::SpotInstanceStatus object:
+As an example, if Att1 is expected to be a Paws::EC2::DeleteFleetError object:
 
-  $service_obj->Method(Att1 => { Code => $value, ..., UpdateTime => $value  });
+  $service_obj->Method(Att1 => { Code => $value, ..., Message => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::SpotInstanceStatus object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::DeleteFleetError object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Code
@@ -40,20 +39,12 @@ This class has no description
 
 =head2 Code => Str
 
-  The status code. For a list of status codes, see Spot Status Codes
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html#spot-instance-bid-status-understand)
-in the I<Amazon EC2 User Guide for Linux Instances>.
+  The error code.
 
 
 =head2 Message => Str
 
-  The description for the status code.
-
-
-=head2 UpdateTime => Str
-
-  The date and time of the most recent status update, in UTC format (for
-example, I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
+  The description for the error code.
 
 
 
