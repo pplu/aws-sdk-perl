@@ -53,7 +53,7 @@ C<www.example.com> or C<example.com>.
   Contains the CNAME record that you add to your DNS database for domain
 validation. For more information, see Use DNS to Validate Domain
 Ownership
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/gs-acm-validate-dns.html).
+(http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html).
 
 
 =head2 ValidationDomain => Str

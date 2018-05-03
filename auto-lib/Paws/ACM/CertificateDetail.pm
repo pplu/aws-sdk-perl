@@ -110,7 +110,7 @@ used and consists of a name and an object identifier (OID).
   The reason the certificate request failed. This value exists only when
 the certificate status is C<FAILED>. For more information, see
 Certificate Request Failed
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/troubleshooting.html#troubleshooting-failed)
+(http://docs.aws.amazon.com/acm/latest/userguide/troubleshooting.html#troubleshooting-failed)
 in the I<AWS Certificate Manager User Guide>.
 
 
@@ -178,9 +178,9 @@ error message. The logs are cryptographically secure.
 =head2 RenewalSummary => L<Paws::ACM::RenewalSummary>
 
   Contains information about the status of ACM's managed renewal
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/acm-renewal.html)
-for the certificate. This field exists only when the certificate type
-is C<AMAZON_ISSUED>.
+(http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for
+the certificate. This field exists only when the certificate type is
+C<AMAZON_ISSUED>.
 
 
 =head2 RevocationReason => Str
@@ -232,11 +232,11 @@ the website.
 value is C<AMAZON_ISSUED>. For certificates that you imported with
 ImportCertificate, this value is C<IMPORTED>. ACM does not provide
 managed renewal
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/acm-renewal.html)
-for imported certificates. For more information about the differences
+(http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for
+imported certificates. For more information about the differences
 between certificates that you import and those that ACM provides, see
 Importing Certificates
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/import-certificate.html)
+(http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html)
 in the I<AWS Certificate Manager User Guide>.
 
 
