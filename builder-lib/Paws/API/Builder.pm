@@ -10,7 +10,7 @@ package Paws::API::Builder {
   use LWP::UserAgent;
   use v5.10;
 
-  use Paws::API::RegionBuilder; 
+  use Paws::API::RegionBuilder;
 
   has api => (is => 'ro', required => 1);
 
@@ -36,7 +36,7 @@ package Paws::API::Builder {
     my $ua = LWP::UserAgent->new;
     $ua->timeout(10);
     $ua->env_proxy;
-    my $res = $ua->head($url);
+    my $res = $ua->head($service_url);
     if ($res->is_success) {
       return $service_url;
     } else {
@@ -144,20 +144,20 @@ package Paws::API::Builder {
   has enums => (is => 'rw', isa => 'HashRef', default => sub { {} });
 
   has signature_role => (
-    is => 'ro', 
-    lazy => 1, 
-    default => sub { 
-      sprintf "Paws::Net::%sSignature", uc $_[0]->api_struct->{metadata}{signatureVersion} 
-    } 
+    is => 'ro',
+    lazy => 1,
+    default => sub {
+      sprintf "Paws::Net::%sSignature", uc $_[0]->api_struct->{metadata}{signatureVersion}
+    }
   );
 
   has parameter_role => (
-    is => 'ro', 
-    lazy => 1, 
-    default => sub { 
-      my $type = $_[0]->api_struct->{metadata}->{protocol}; 
-      substr($type,0,1) = uc substr($type,0,1); 
-      return "Paws::Net::${type}Caller" 
+    is => 'ro',
+    lazy => 1,
+    default => sub {
+      my $type = $_[0]->api_struct->{metadata}->{protocol};
+      substr($type,0,1) = uc substr($type,0,1);
+      return "Paws::Net::${type}Caller"
     },
   );
 
@@ -165,18 +165,18 @@ package Paws::API::Builder {
     'botocore/botocore/data/_endpoints.json';
   });
 
-  has service_endpoint_rules => (is => 'ro', lazy => 1, default => sub { 
-    my $self = shift; 
-    my $s = Paws::API::RegionBuilder->new( 
-      rules    => $self->endpoints_file, 
-      service  => $self->service, 
-    ); 
-    $s->region_accessor; 
+  has service_endpoint_rules => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    my $s = Paws::API::RegionBuilder->new(
+      rules    => $self->endpoints_file,
+      service  => $self->service,
+    );
+    $s->region_accessor;
   });
 
   has operations_struct => (
-    is => 'ro', 
-    lazy => 1, 
+    is => 'ro',
+    lazy => 1,
     default => sub { $_[0]->api_struct->{operations} },
     isa => 'HashRef',
     traits => [ 'Hash' ],
@@ -190,7 +190,7 @@ package Paws::API::Builder {
   has shape_struct => (
     is => 'ro',
     lazy => 1,
-    default => sub { 
+    default => sub {
       my $self = shift;
       my $shapes = $self->api_struct->{shapes};
       return $shapes;
@@ -304,7 +304,7 @@ package Paws::API::Builder {
     is => 'ro',
     lazy => 1,
     isa => 'HashRef',
-    default => sub { 
+    default => sub {
       my $self = shift;
       my $ret = {};
       foreach my $shape_name ($self->shapes) {
@@ -356,7 +356,7 @@ package Paws::API::Builder {
     return if (not $op);
 
     my $shape = $op->{ output }->{ shape };
-    return $shape;    
+    return $shape;
   }
 
   sub result_for_operation {
@@ -375,7 +375,7 @@ package Paws::API::Builder {
     return if (not $op);
 
     my $shape = $op->{ input }->{ shape };
-    return $shape;  
+    return $shape;
   }
 
   sub input_for_operation {
@@ -575,7 +575,7 @@ package Paws::API::Builder {
       return $type;
     } else {
       return "L<$type>" if ($type =~ m/\:\:/);
-      return $type;  
+      return $type;
     }
   }
 
@@ -643,12 +643,12 @@ package Paws::API::Builder {
 
   sub paginator_accessor {
     my ($self, $accessor, $wanted_prefix) = @_;
-  
+
     my $prefix = '$' . ((defined $wanted_prefix) ? $wanted_prefix : 'result');
     if (ref($accessor) eq 'ARRAY'){
       warn "Complex accessor ", join ',', @$accessor;
     }
- 
+
     if ($accessor =~ m/ /) {
       warn "Complex accessor $accessor";
     }
@@ -713,7 +713,7 @@ package Paws::API::Builder {
         $self->process_template('map_str_to_native.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => 'HashRef[Num]' });
       } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'list') {
         my $type = $self->get_caller_class_type($iclass->{value}->{shape});
-        
+
         #Sometimes it's a list of objects, and sometimes it's a list of native things
         my $inner_shape = $self->shape($values_shape->{member}->{shape});
 
