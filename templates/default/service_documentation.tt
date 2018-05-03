@@ -24,6 +24,8 @@
 
 [% c.doc_for_service() %]
 
+For the AWS API documentation, see L<[% c.service_url %]>
+
 =head1 METHODS
 [% FOR op IN c.api_struct.operations.keys.sort %]
   [%- op_name = op %]
