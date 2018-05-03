@@ -1911,6 +1911,9 @@ Retrieves the default patch baseline. Note that Systems Manager
 supports creating multiple default patch baselines. For example, you
 can create a default patch baseline for each operating system.
 
+If you do not specify an operating system value, the default patch
+baseline for Windows is returned.
+
 
 =head2 GetDeployablePatchSnapshotForInstance
 
@@ -2680,7 +2683,7 @@ Each argument is described in detail in: L<Paws::SSM::PutParameter>
 
 Returns: a L<Paws::SSM::PutParameterResult> instance
 
-Add one or more parameters to the system.
+Add a parameter to the system.
 
 
 =head2 RegisterDefaultPatchBaseline
@@ -2839,6 +2842,8 @@ behavior or status of the execution.
 =item [DocumentHash => Str]
 
 =item [DocumentHashType => Str]
+
+=item [DocumentVersion => Str]
 
 =item [InstanceIds => ArrayRef[Str|Undef]]
 

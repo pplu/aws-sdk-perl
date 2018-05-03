@@ -5,6 +5,7 @@ package Paws::SSM::SendCommand;
   has DocumentHash => (is => 'ro', isa => 'Str');
   has DocumentHashType => (is => 'ro', isa => 'Str');
   has DocumentName => (is => 'ro', isa => 'Str', required => 1);
+  has DocumentVersion => (is => 'ro', isa => 'Str');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaxConcurrency => (is => 'ro', isa => 'Str');
   has MaxErrors => (is => 'ro', isa => 'Str');
@@ -75,6 +76,13 @@ Valid values are: C<"Sha256">, C<"Sha1">
 
 Required. The name of the Systems Manager document to execute. This can
 be a public document or a custom document.
+
+
+
+=head2 DocumentVersion => Str
+
+The SSM document version to use in the request. You can specify
+Default, Latest, or a specific version number.
 
 
 

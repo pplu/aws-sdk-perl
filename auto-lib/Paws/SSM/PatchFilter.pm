@@ -453,9 +453,9 @@ C<Low>
 
 =back
 
-B<SUSE Linux Enterprise Server (SUSE) Operating Systems>
+B<SUSE Linux Enterprise Server (SLES) Operating Systems>
 
-The supported keys for SUSE operating systems are C<PRODUCT>,
+The supported keys for SLES operating systems are C<PRODUCT>,
 C<CLASSIFICATION>, and C<SEVERITY>. See the following lists for valid
 values for each of these keys.
 
@@ -556,6 +556,112 @@ C<Important>
 =item *
 
 C<Moderate>
+
+=item *
+
+C<Low>
+
+=back
+
+B<CentOS Operating Systems>
+
+The supported keys for CentOS operating systems are C<PRODUCT>,
+C<CLASSIFICATION>, and C<SEVERITY>. See the following lists for valid
+values for each of these keys.
+
+I<Supported key:> C<PRODUCT>
+
+I<Supported values:>
+
+=over
+
+=item *
+
+C<CentOS6.5>
+
+=item *
+
+C<CentOS6.6>
+
+=item *
+
+C<CentOS6.7>
+
+=item *
+
+C<CentOS6.8>
+
+=item *
+
+C<CentOS6.9>
+
+=item *
+
+C<CentOS7.0>
+
+=item *
+
+C<CentOS7.1>
+
+=item *
+
+C<CentOS7.2>
+
+=item *
+
+C<CentOS7.3>
+
+=item *
+
+C<CentOS7.4>
+
+=back
+
+I<Supported key:> C<CLASSIFICATION>
+
+I<Supported values:>
+
+=over
+
+=item *
+
+C<Security>
+
+=item *
+
+C<Bugfix>
+
+=item *
+
+C<Enhancement>
+
+=item *
+
+C<Recommended>
+
+=item *
+
+C<Newpackage>
+
+=back
+
+I<Supported key:> C<SEVERITY>
+
+I<Supported values:>
+
+=over
+
+=item *
+
+C<Critical>
+
+=item *
+
+C<Important>
+
+=item *
+
+C<Medium>
 
 =item *
 

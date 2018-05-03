@@ -4,6 +4,7 @@ package Paws::SSM::GetCommandInvocationResult;
   has CommandId => (is => 'ro', isa => 'Str');
   has Comment => (is => 'ro', isa => 'Str');
   has DocumentName => (is => 'ro', isa => 'Str');
+  has DocumentVersion => (is => 'ro', isa => 'Str');
   has ExecutionElapsedTime => (is => 'ro', isa => 'Str');
   has ExecutionEndDateTime => (is => 'ro', isa => 'Str');
   has ExecutionStartDateTime => (is => 'ro', isa => 'Str');
@@ -42,6 +43,11 @@ The comment text for the command.
 
 The name of the document that was executed. For example,
 AWS-RunShellScript.
+
+
+=head2 DocumentVersion => Str
+
+The SSM document version used in the request.
 
 
 =head2 ExecutionElapsedTime => Str
