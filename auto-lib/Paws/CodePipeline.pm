@@ -44,6 +44,16 @@ package Paws::CodePipeline;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::DeletePipeline', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteWebhook {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodePipeline::DeleteWebhook', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeregisterWebhookWithThirdParty {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodePipeline::DeregisterWebhookWithThirdParty', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisableStageTransition {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::DisableStageTransition', @_);
@@ -94,6 +104,11 @@ package Paws::CodePipeline;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::ListPipelines', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListWebhooks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodePipeline::ListWebhooks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PollForJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::PollForJobs', @_);
@@ -134,6 +149,16 @@ package Paws::CodePipeline;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::PutThirdPartyJobSuccessResult', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutWebhook {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodePipeline::PutWebhook', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RegisterWebhookWithThirdParty {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodePipeline::RegisterWebhookWithThirdParty', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RetryStageExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::RetryStageExecution', @_);
@@ -152,7 +177,7 @@ package Paws::CodePipeline;
   
 
 
-  sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DisableStageTransition EnableStageTransition GetJobDetails GetPipeline GetPipelineExecution GetPipelineState GetThirdPartyJobDetails ListActionTypes ListPipelineExecutions ListPipelines PollForJobs PollForThirdPartyJobs PutActionRevision PutApprovalResult PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult RetryStageExecution StartPipelineExecution UpdatePipeline / }
+  sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DeleteWebhook DeregisterWebhookWithThirdParty DisableStageTransition EnableStageTransition GetJobDetails GetPipeline GetPipelineExecution GetPipelineState GetThirdPartyJobDetails ListActionTypes ListPipelineExecutions ListPipelines ListWebhooks PollForJobs PollForThirdPartyJobs PutActionRevision PutApprovalResult PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult PutWebhook RegisterWebhookWithThirdParty RetryStageExecution StartPipelineExecution UpdatePipeline / }
 
 1;
 
@@ -191,10 +216,10 @@ For additional information, see the AWS CodePipeline User Guide
 (http://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html).
 
 You can use the AWS CodePipeline API to work with pipelines, stages,
-actions, gates, and transitions, as described below.
+actions, and transitions, as described below.
 
 I<Pipelines> are models of automated release processes. Each pipeline
-is uniquely named, and consists of actions, gates, and stages.
+is uniquely named, and consists of stages, actions, and transitions.
 
 You can work with pipelines by calling:
 
@@ -245,18 +270,18 @@ structure of the pipeline.
 
 =back
 
-Pipelines include I<stages>, which are logical groupings of gates and
-actions. Each stage contains one or more actions that must complete
-before the next stage begins. A stage will result in success or
-failure. If a stage fails, then the pipeline stops at that stage and
-will remain stopped until either a new version of an artifact appears
-in the source location, or a user takes action to re-run the most
-recent artifact through the pipeline. You can call GetPipelineState,
-which displays the status of a pipeline, including the status of stages
-in the pipeline, or GetPipeline, which returns the entire structure of
-the pipeline, including the stages of that pipeline. For more
-information about the structure of stages and actions, also refer to
-the AWS CodePipeline Pipeline Structure Reference
+Pipelines include I<stages>. Each stage contains one or more actions
+that must complete before the next stage begins. A stage will result in
+success or failure. If a stage fails, then the pipeline stops at that
+stage and will remain stopped until either a new version of an artifact
+appears in the source location, or a user takes action to re-run the
+most recent artifact through the pipeline. You can call
+GetPipelineState, which displays the status of a pipeline, including
+the status of stages in the pipeline, or GetPipeline, which returns the
+entire structure of the pipeline, including the stages of that
+pipeline. For more information about the structure of stages and
+actions, also refer to the AWS CodePipeline Pipeline Structure
+Reference
 (http://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html).
 
 Pipeline stages include I<actions>, which are categorized into
@@ -265,7 +290,35 @@ a pipeline. For example, you can use a source action to import
 artifacts into a pipeline from a source such as Amazon S3. Like stages,
 you do not work with actions directly in most cases, but you do define
 and interact with actions when working with pipeline operations such as
-CreatePipeline and GetPipelineState.
+CreatePipeline and GetPipelineState. Valid action categories are:
+
+=over
+
+=item *
+
+Source
+
+=item *
+
+Build
+
+=item *
+
+Test
+
+=item *
+
+Deploy
+
+=item *
+
+Approval
+
+=item *
+
+Invoke
+
+=back
 
 Pipelines also include I<transitions>, which allow the transition of
 artifacts from one stage to the next in a pipeline after the actions in
@@ -467,8 +520,11 @@ Marks a custom action as deleted. PollForJobs for the custom action
 will fail after the action is marked for deletion. Only used for custom
 actions.
 
-You cannot recreate a custom action after it has been deleted unless
-you increase the version number of the action.
+To re-create a custom action after it has been deleted you must use a
+string in the version field that has never been used before. This
+string can be an incremented version number, for example. To restore a
+deleted custom action, use a JSON file that is identical to the deleted
+action, including the original string in the version field.
 
 
 =head2 DeletePipeline
@@ -485,6 +541,45 @@ Each argument is described in detail in: L<Paws::CodePipeline::DeletePipeline>
 Returns: nothing
 
 Deletes the specified pipeline.
+
+
+=head2 DeleteWebhook
+
+=over
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodePipeline::DeleteWebhook>
+
+Returns: a L<Paws::CodePipeline::DeleteWebhookOutput> instance
+
+Deletes a previously created webhook by name. Deleting the webhook
+stops AWS CodePipeline from starting a pipeline every time an external
+event occurs. The API will return successfully when trying to delete a
+webhook that is already deleted. If a deleted webhook is re-created by
+calling PutWebhook with the same name, it will have a different URL.
+
+
+=head2 DeregisterWebhookWithThirdParty
+
+=over
+
+=item [WebhookName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodePipeline::DeregisterWebhookWithThirdParty>
+
+Returns: a L<Paws::CodePipeline::DeregisterWebhookWithThirdPartyOutput> instance
+
+Removes the connection between the webhook that was created by
+CodePipeline and the external tool with events to be detected.
+Currently only supported for webhooks that target an action type of
+GitHub.
 
 
 =head2 DisableStageTransition
@@ -690,6 +785,26 @@ Returns: a L<Paws::CodePipeline::ListPipelinesOutput> instance
 Gets a summary of all of the pipelines associated with your account.
 
 
+=head2 ListWebhooks
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodePipeline::ListWebhooks>
+
+Returns: a L<Paws::CodePipeline::ListWebhooksOutput> instance
+
+Gets a listing of all the webhooks in this region for this account. The
+output lists all webhooks and includes the webhook URL and ARN, as well
+the configuration for each webhook.
+
+
 =head2 PollForJobs
 
 =over
@@ -708,6 +823,9 @@ Each argument is described in detail in: L<Paws::CodePipeline::PollForJobs>
 Returns: a L<Paws::CodePipeline::PollForJobsOutput> instance
 
 Returns information about any jobs for AWS CodePipeline to act upon.
+PollForJobs is only valid for action types with "Custom" in the owner
+field. If the action type contains "AWS" or "ThirdParty" in the owner
+field, the PollForJobs action returns an error.
 
 When this API is called, AWS CodePipeline returns temporary credentials
 for the Amazon S3 bucket used to store artifacts for the pipeline, if
@@ -874,6 +992,47 @@ Returns: nothing
 
 Represents the success of a third party job as returned to the pipeline
 by a job worker. Only used for partner actions.
+
+
+=head2 PutWebhook
+
+=over
+
+=item Webhook => L<Paws::CodePipeline::WebhookDefinition>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodePipeline::PutWebhook>
+
+Returns: a L<Paws::CodePipeline::PutWebhookOutput> instance
+
+Defines a webhook and returns a unique webhook URL generated by
+CodePipeline. This URL can be supplied to third party source hosting
+providers to call every time there's a code change. When CodePipeline
+receives a POST request on this URL, the pipeline defined in the
+webhook is started as long as the POST request satisfied the
+authentication and filtering requirements supplied when defining the
+webhook. RegisterWebhookWithThirdParty and
+DeregisterWebhookWithThirdParty APIs can be used to automatically
+configure supported third parties to call the generated webhook URL.
+
+
+=head2 RegisterWebhookWithThirdParty
+
+=over
+
+=item [WebhookName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodePipeline::RegisterWebhookWithThirdParty>
+
+Returns: a L<Paws::CodePipeline::RegisterWebhookWithThirdPartyOutput> instance
+
+Configures a connection between the webhook that was created and the
+external tool with events to be detected.
 
 
 =head2 RetryStageExecution
