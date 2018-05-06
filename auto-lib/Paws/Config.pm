@@ -433,97 +433,6 @@ Console, see What Is AWS Config
 (http://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html)
 in the I<AWS Config Developer Guide>.
 
-=over
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=back
-
-=over
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=back
-
-=over
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=item *
-
-=back
-
-
 =head1 METHODS
 
 =head2 BatchGetResourceConfig
@@ -1499,10 +1408,16 @@ Each argument is described in detail in: L<Paws::Config::PutConfigurationAggrega
 Returns: a L<Paws::Config::PutConfigurationAggregatorResponse> instance
 
 Creates and updates the configuration aggregator with the selected
-source accounts and regions.
+source accounts and regions. The source account can be individual
+account(s) or an organization.
 
-AWS Config should be enabled in accounts and regions you want to
-aggreagate.
+AWS Config should be enabled in source accounts and regions you want to
+aggregate.
+
+If your source type is an organization, you must be signed in to the
+master account and all features must be enabled in your organization.
+AWS Config calls C<EnableAwsServiceAccess> API to enable integration
+between AWS Config and AWS Organizations.
 
 
 =head2 PutConfigurationRecorder
