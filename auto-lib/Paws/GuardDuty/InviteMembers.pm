@@ -53,7 +53,9 @@ want to invite members.
 
 =head2 DisableEmailNotification => Bool
 
-
+A boolean value that specifies whether you want to disable email
+notification to the accounts that youE<rsquo>re inviting to GuardDuty
+as members.
 
 
 

@@ -28,6 +28,11 @@ package Paws::GuardDuty;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::CreateDetector', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateFilter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::CreateFilter', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateIPSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::CreateIPSet', @_);
@@ -56,6 +61,11 @@ package Paws::GuardDuty;
   sub DeleteDetector {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::DeleteDetector', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteFilter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::DeleteFilter', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteInvitations {
@@ -91,6 +101,11 @@ package Paws::GuardDuty;
   sub GetDetector {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::GetDetector', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetFilter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::GetFilter', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetFindings {
@@ -138,6 +153,11 @@ package Paws::GuardDuty;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::ListDetectors', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListFilters {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::ListFilters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListFindings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::ListFindings', @_);
@@ -183,6 +203,11 @@ package Paws::GuardDuty;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::UpdateDetector', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateFilter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::UpdateFilter', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateFindingsFeedback {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::UpdateFindingsFeedback', @_);
@@ -218,6 +243,29 @@ package Paws::GuardDuty;
         $result = $self->ListDetectors(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'DetectorIds') foreach (@{ $result->DetectorIds });
+    }
+
+    return undef
+  }
+  sub ListAllFilters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListFilters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListFilters(@_, NextToken => $next_result->NextToken);
+        push @{ $result->FilterNames }, @{ $next_result->FilterNames };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'FilterNames') foreach (@{ $result->FilterNames });
+        $result = $self->ListFilters(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'FilterNames') foreach (@{ $result->FilterNames });
     }
 
     return undef
@@ -339,7 +387,7 @@ package Paws::GuardDuty;
   }
 
 
-  sub operations { qw/AcceptInvitation ArchiveFindings CreateDetector CreateIPSet CreateMembers CreateSampleFindings CreateThreatIntelSet DeclineInvitations DeleteDetector DeleteInvitations DeleteIPSet DeleteMembers DeleteThreatIntelSet DisassociateFromMasterAccount DisassociateMembers GetDetector GetFindings GetFindingsStatistics GetInvitationsCount GetIPSet GetMasterAccount GetMembers GetThreatIntelSet InviteMembers ListDetectors ListFindings ListInvitations ListIPSets ListMembers ListThreatIntelSets StartMonitoringMembers StopMonitoringMembers UnarchiveFindings UpdateDetector UpdateFindingsFeedback UpdateIPSet UpdateThreatIntelSet / }
+  sub operations { qw/AcceptInvitation ArchiveFindings CreateDetector CreateFilter CreateIPSet CreateMembers CreateSampleFindings CreateThreatIntelSet DeclineInvitations DeleteDetector DeleteFilter DeleteInvitations DeleteIPSet DeleteMembers DeleteThreatIntelSet DisassociateFromMasterAccount DisassociateMembers GetDetector GetFilter GetFindings GetFindingsStatistics GetInvitationsCount GetIPSet GetMasterAccount GetMembers GetThreatIntelSet InviteMembers ListDetectors ListFilters ListFindings ListInvitations ListIPSets ListMembers ListThreatIntelSets StartMonitoringMembers StopMonitoringMembers UnarchiveFindings UpdateDetector UpdateFilter UpdateFindingsFeedback UpdateIPSet UpdateThreatIntelSet / }
 
 1;
 
@@ -427,6 +475,34 @@ Returns: a L<Paws::GuardDuty::CreateDetectorResponse> instance
 Creates a single Amazon GuardDuty detector. A detector is an object
 that represents the GuardDuty service. A detector must be created in
 order for GuardDuty to become operational.
+
+
+=head2 CreateFilter
+
+=over
+
+=item DetectorId => Str
+
+=item [Action => Str]
+
+=item [ClientToken => Str]
+
+=item [Description => Str]
+
+=item [FindingCriteria => L<Paws::GuardDuty::FindingCriteria>]
+
+=item [Name => Str]
+
+=item [Rank => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::CreateFilter>
+
+Returns: a L<Paws::GuardDuty::CreateFilterResponse> instance
+
+Creates a filter using the specified finding criteria.
 
 
 =head2 CreateIPSet
@@ -553,6 +629,24 @@ Returns: a L<Paws::GuardDuty::DeleteDetectorResponse> instance
 Deletes a Amazon GuardDuty detector specified by the detector ID.
 
 
+=head2 DeleteFilter
+
+=over
+
+=item DetectorId => Str
+
+=item FilterName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::DeleteFilter>
+
+Returns: a L<Paws::GuardDuty::DeleteFilterResponse> instance
+
+Deletes the filter specified by the filter name.
+
+
 =head2 DeleteInvitations
 
 =over
@@ -675,6 +769,24 @@ Each argument is described in detail in: L<Paws::GuardDuty::GetDetector>
 Returns: a L<Paws::GuardDuty::GetDetectorResponse> instance
 
 Retrieves an Amazon GuardDuty detector specified by the detectorId.
+
+
+=head2 GetFilter
+
+=over
+
+=item DetectorId => Str
+
+=item FilterName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::GetFilter>
+
+Returns: a L<Paws::GuardDuty::GetFilterResponse> instance
+
+Returns the details of the filter specified by the filter name.
 
 
 =head2 GetFindings
@@ -849,6 +961,26 @@ Returns: a L<Paws::GuardDuty::ListDetectorsResponse> instance
 
 Lists detectorIds of all the existing Amazon GuardDuty detector
 resources.
+
+
+=head2 ListFilters
+
+=over
+
+=item DetectorId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::ListFilters>
+
+Returns: a L<Paws::GuardDuty::ListFiltersResponse> instance
+
+Returns a paginated list of the current filters.
 
 
 =head2 ListFindings
@@ -1037,6 +1169,32 @@ Returns: a L<Paws::GuardDuty::UpdateDetectorResponse> instance
 Updates an Amazon GuardDuty detector specified by the detectorId.
 
 
+=head2 UpdateFilter
+
+=over
+
+=item DetectorId => Str
+
+=item FilterName => Str
+
+=item [Action => Str]
+
+=item [Description => Str]
+
+=item [FindingCriteria => L<Paws::GuardDuty::FindingCriteria>]
+
+=item [Rank => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::UpdateFilter>
+
+Returns: a L<Paws::GuardDuty::UpdateFilterResponse> instance
+
+Updates the filter specified by the filter name.
+
+
 =head2 UpdateFindingsFeedback
 
 =over
@@ -1123,6 +1281,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - DetectorIds, passing the object as the first parameter, and the string 'DetectorIds' as the second parameter 
 
 If not, it will return a a L<Paws::GuardDuty::ListDetectorsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllFilters(sub { },DetectorId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllFilters(DetectorId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FilterNames, passing the object as the first parameter, and the string 'FilterNames' as the second parameter 
+
+If not, it will return a a L<Paws::GuardDuty::ListFiltersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllFindings(sub { },DetectorId => Str, [FindingCriteria => L<Paws::GuardDuty::FindingCriteria>, MaxResults => Int, NextToken => Str, SortCriteria => L<Paws::GuardDuty::SortCriteria>])

@@ -2,6 +2,7 @@ package Paws::GuardDuty::InstanceDetails;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
   has IamInstanceProfile => (is => 'ro', isa => 'Paws::GuardDuty::IamInstanceProfile', request_name => 'iamInstanceProfile', traits => ['NameInRequest']);
+  has ImageDescription => (is => 'ro', isa => 'Str', request_name => 'imageDescription', traits => ['NameInRequest']);
   has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest']);
   has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
   has InstanceState => (is => 'ro', isa => 'Str', request_name => 'instanceState', traits => ['NameInRequest']);
@@ -55,6 +56,11 @@ that prompted GuardDuty to generate a finding.
 =head2 IamInstanceProfile => L<Paws::GuardDuty::IamInstanceProfile>
 
   
+
+
+=head2 ImageDescription => Str
+
+  The image description of the EC2 instance.
 
 
 =head2 ImageId => Str
