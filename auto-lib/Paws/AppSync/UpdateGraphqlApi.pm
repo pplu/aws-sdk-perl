@@ -3,7 +3,9 @@ package Paws::AppSync::UpdateGraphqlApi;
   use Moose;
   has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
   has AuthenticationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authenticationType');
+  has LogConfig => (is => 'ro', isa => 'Paws::AppSync::LogConfig', traits => ['NameInRequest'], request_name => 'logConfig');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
+  has OpenIDConnectConfig => (is => 'ro', isa => 'Paws::AppSync::OpenIDConnectConfig', traits => ['NameInRequest'], request_name => 'openIDConnectConfig');
   has UserPoolConfig => (is => 'ro', isa => 'Paws::AppSync::UserPoolConfig', traits => ['NameInRequest'], request_name => 'userPoolConfig');
 
   use MooseX::ClassAttribute;
@@ -47,11 +49,24 @@ The API ID.
 
 The new authentication type for the C<GraphqlApi> object.
 
-Valid values are: C<"API_KEY">, C<"AWS_IAM">, C<"AMAZON_COGNITO_USER_POOLS">
+Valid values are: C<"API_KEY">, C<"AWS_IAM">, C<"AMAZON_COGNITO_USER_POOLS">, C<"OPENID_CONNECT">
+
+=head2 LogConfig => L<Paws::AppSync::LogConfig>
+
+The Amazon CloudWatch logs configuration for the C<GraphqlApi> object.
+
+
 
 =head2 B<REQUIRED> Name => Str
 
 The new name for the C<GraphqlApi> object.
+
+
+
+=head2 OpenIDConnectConfig => L<Paws::AppSync::OpenIDConnectConfig>
+
+The Open Id Connect configuration configuration for the C<GraphqlApi>
+object.
 
 
 

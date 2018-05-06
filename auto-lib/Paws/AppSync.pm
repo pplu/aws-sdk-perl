@@ -243,6 +243,10 @@ Creates a C<DataSource> object.
 
 =item Name => Str
 
+=item [LogConfig => L<Paws::AppSync::LogConfig>]
+
+=item [OpenIDConnectConfig => L<Paws::AppSync::OpenIDConnectConfig>]
+
 =item [UserPoolConfig => L<Paws::AppSync::UserPoolConfig>]
 
 
@@ -521,6 +525,11 @@ Returns: a L<Paws::AppSync::ListApiKeysResponse> instance
 
 Lists the API keys for a given API.
 
+API keys are deleted automatically sometime after they expire. However,
+they may still be included in the response until they have actually
+been deleted. You can safely call C<DeleteApiKey> to manually delete a
+key before it's automatically deleted.
+
 
 =head2 ListDataSources
 
@@ -685,6 +694,10 @@ Updates a C<DataSource> object.
 =item Name => Str
 
 =item [AuthenticationType => Str]
+
+=item [LogConfig => L<Paws::AppSync::LogConfig>]
+
+=item [OpenIDConnectConfig => L<Paws::AppSync::OpenIDConnectConfig>]
 
 =item [UserPoolConfig => L<Paws::AppSync::UserPoolConfig>]
 
