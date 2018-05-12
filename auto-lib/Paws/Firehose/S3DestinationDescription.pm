@@ -44,7 +44,9 @@ Describes a destination in Amazon S3.
 
 =head2 B<REQUIRED> BucketARN => Str
 
-  The ARN of the S3 bucket.
+  The ARN of the S3 bucket. For more information, see Amazon Resource
+Names (ARNs) and AWS Service Namespaces
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
 =head2 B<REQUIRED> BufferingHints => L<Paws::Firehose::BufferingHints>
@@ -55,7 +57,7 @@ object default values are used.
 
 =head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
 
-  The CloudWatch logging options for your delivery stream.
+  The Amazon CloudWatch logging options for your delivery stream.
 
 
 =head2 B<REQUIRED> CompressionFormat => Str
@@ -83,7 +85,10 @@ in the I<Amazon Kinesis Data Firehose Developer Guide>.
 
 =head2 B<REQUIRED> RoleARN => Str
 
-  The Amazon Resource Name (ARN) of the AWS credentials.
+  The Amazon Resource Name (ARN) of the AWS credentials. For more
+information, see Amazon Resource Names (ARNs) and AWS Service
+Namespaces
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
 

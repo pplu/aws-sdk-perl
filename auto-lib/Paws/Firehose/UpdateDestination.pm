@@ -42,8 +42,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CurrentDeliveryStreamVersionId => Str
 
-Obtain this value from the C<VersionId> result of
-DeliveryStreamDescription. This value is required, and it helps the
+Obtain this value from the B<VersionId> result of
+DeliveryStreamDescription. This value is required, and helps the
 service perform conditional operations. For example, if there is an
 interleaving update and this value is null, then the update destination
 fails. After the update is successful, the C<VersionId> value is

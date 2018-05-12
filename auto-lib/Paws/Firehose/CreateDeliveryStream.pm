@@ -43,9 +43,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> DeliveryStreamName => Str
 
 The name of the delivery stream. This name must be unique per AWS
-account in the same Region. If the delivery streams are in different
-accounts or different Regions, you can have multiple delivery streams
-with the same name.
+account in the same AWS Region. If the delivery streams are in
+different accounts or different Regions, you can have multiple delivery
+streams with the same name.
 
 
 

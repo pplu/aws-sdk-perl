@@ -46,7 +46,7 @@ Describes a destination in Splunk.
 
 =head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
 
-  The CloudWatch logging options for your delivery stream.
+  The Amazon CloudWatch logging options for your delivery stream.
 
 
 =head2 HECAcknowledgmentTimeoutInSeconds => Int
@@ -70,8 +70,8 @@ sends your data.
 
 =head2 HECToken => Str
 
-  This is a GUID you obtain from your Splunk cluster when you create a
-new HEC endpoint.
+  A GUID you obtain from your Splunk cluster when you create a new HEC
+endpoint.
 
 
 =head2 ProcessingConfiguration => L<Paws::Firehose::ProcessingConfiguration>
