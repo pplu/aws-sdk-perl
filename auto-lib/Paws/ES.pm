@@ -53,6 +53,16 @@ package Paws::ES;
     my $call_object = $self->new_with_coercions('Paws::ES::DescribeElasticsearchInstanceTypeLimits', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeReservedElasticsearchInstanceOfferings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::DescribeReservedElasticsearchInstanceOfferings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeReservedElasticsearchInstances {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::DescribeReservedElasticsearchInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListDomainNames {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ES::ListDomainNames', @_);
@@ -71,6 +81,11 @@ package Paws::ES;
   sub ListTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ES::ListTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PurchaseReservedElasticsearchInstanceOffering {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::PurchaseReservedElasticsearchInstanceOffering', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveTags {
@@ -132,7 +147,7 @@ package Paws::ES;
   }
 
 
-  sub operations { qw/AddTags CreateElasticsearchDomain DeleteElasticsearchDomain DeleteElasticsearchServiceRole DescribeElasticsearchDomain DescribeElasticsearchDomainConfig DescribeElasticsearchDomains DescribeElasticsearchInstanceTypeLimits ListDomainNames ListElasticsearchInstanceTypes ListElasticsearchVersions ListTags RemoveTags UpdateElasticsearchDomainConfig / }
+  sub operations { qw/AddTags CreateElasticsearchDomain DeleteElasticsearchDomain DeleteElasticsearchServiceRole DescribeElasticsearchDomain DescribeElasticsearchDomainConfig DescribeElasticsearchDomains DescribeElasticsearchInstanceTypeLimits DescribeReservedElasticsearchInstanceOfferings DescribeReservedElasticsearchInstances ListDomainNames ListElasticsearchInstanceTypes ListElasticsearchVersions ListTags PurchaseReservedElasticsearchInstanceOffering RemoveTags UpdateElasticsearchDomainConfig / }
 
 1;
 
@@ -349,6 +364,47 @@ ElasticsearchVersion. When modifying existing Domain, specify the C<
 DomainName > to know what Limits are supported for modifying.
 
 
+=head2 DescribeReservedElasticsearchInstanceOfferings
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ReservedElasticsearchInstanceOfferingId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::DescribeReservedElasticsearchInstanceOfferings>
+
+Returns: a L<Paws::ES::DescribeReservedElasticsearchInstanceOfferingsResponse> instance
+
+Lists available reserved Elasticsearch instance offerings.
+
+
+=head2 DescribeReservedElasticsearchInstances
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ReservedElasticsearchInstanceId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::DescribeReservedElasticsearchInstances>
+
+Returns: a L<Paws::ES::DescribeReservedElasticsearchInstancesResponse> instance
+
+Returns information about reserved Elasticsearch instances for this
+account.
+
+
 =head2 ListDomainNames
 
 =over
@@ -421,6 +477,26 @@ Each argument is described in detail in: L<Paws::ES::ListTags>
 Returns: a L<Paws::ES::ListTagsResponse> instance
 
 Returns all tags for the given Elasticsearch domain.
+
+
+=head2 PurchaseReservedElasticsearchInstanceOffering
+
+=over
+
+=item ReservationName => Str
+
+=item ReservedElasticsearchInstanceOfferingId => Str
+
+=item [InstanceCount => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::PurchaseReservedElasticsearchInstanceOffering>
+
+Returns: a L<Paws::ES::PurchaseReservedElasticsearchInstanceOfferingResponse> instance
+
+Allows you to purchase reserved Elasticsearch instances.
 
 
 =head2 RemoveTags
