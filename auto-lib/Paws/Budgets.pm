@@ -158,10 +158,13 @@ The AWS Budgets API provides the following endpoint:
 
 =item *
 
-https://budgets.us-east-1.amazonaws.com
+https://budgets.amazonaws.com
 
 =back
 
+For information about costs associated with the AWS Budgets API, see
+AWS Cost Management Pricing
+(https://aws.amazon.com/aws-cost-management/pricing/).
 
 =head1 METHODS
 
