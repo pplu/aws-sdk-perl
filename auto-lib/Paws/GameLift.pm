@@ -264,6 +264,11 @@ package Paws::GameLift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::SearchGameSessions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartFleetActions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::StartFleetActions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartGameSessionPlacement {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::StartGameSessionPlacement', @_);
@@ -277,6 +282,11 @@ package Paws::GameLift;
   sub StartMatchmaking {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::StartMatchmaking', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopFleetActions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::StopFleetActions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StopGameSessionPlacement {
@@ -342,7 +352,7 @@ package Paws::GameLift;
   
 
 
-  sub operations { qw/AcceptMatch CreateAlias CreateBuild CreateFleet CreateGameSession CreateGameSessionQueue CreateMatchmakingConfiguration CreateMatchmakingRuleSet CreatePlayerSession CreatePlayerSessions CreateVpcPeeringAuthorization CreateVpcPeeringConnection DeleteAlias DeleteBuild DeleteFleet DeleteGameSessionQueue DeleteMatchmakingConfiguration DeleteScalingPolicy DeleteVpcPeeringAuthorization DeleteVpcPeeringConnection DescribeAlias DescribeBuild DescribeEC2InstanceLimits DescribeFleetAttributes DescribeFleetCapacity DescribeFleetEvents DescribeFleetPortSettings DescribeFleetUtilization DescribeGameSessionDetails DescribeGameSessionPlacement DescribeGameSessionQueues DescribeGameSessions DescribeInstances DescribeMatchmaking DescribeMatchmakingConfigurations DescribeMatchmakingRuleSets DescribePlayerSessions DescribeRuntimeConfiguration DescribeScalingPolicies DescribeVpcPeeringAuthorizations DescribeVpcPeeringConnections GetGameSessionLogUrl GetInstanceAccess ListAliases ListBuilds ListFleets PutScalingPolicy RequestUploadCredentials ResolveAlias SearchGameSessions StartGameSessionPlacement StartMatchBackfill StartMatchmaking StopGameSessionPlacement StopMatchmaking UpdateAlias UpdateBuild UpdateFleetAttributes UpdateFleetCapacity UpdateFleetPortSettings UpdateGameSession UpdateGameSessionQueue UpdateMatchmakingConfiguration UpdateRuntimeConfiguration ValidateMatchmakingRuleSet / }
+  sub operations { qw/AcceptMatch CreateAlias CreateBuild CreateFleet CreateGameSession CreateGameSessionQueue CreateMatchmakingConfiguration CreateMatchmakingRuleSet CreatePlayerSession CreatePlayerSessions CreateVpcPeeringAuthorization CreateVpcPeeringConnection DeleteAlias DeleteBuild DeleteFleet DeleteGameSessionQueue DeleteMatchmakingConfiguration DeleteScalingPolicy DeleteVpcPeeringAuthorization DeleteVpcPeeringConnection DescribeAlias DescribeBuild DescribeEC2InstanceLimits DescribeFleetAttributes DescribeFleetCapacity DescribeFleetEvents DescribeFleetPortSettings DescribeFleetUtilization DescribeGameSessionDetails DescribeGameSessionPlacement DescribeGameSessionQueues DescribeGameSessions DescribeInstances DescribeMatchmaking DescribeMatchmakingConfigurations DescribeMatchmakingRuleSets DescribePlayerSessions DescribeRuntimeConfiguration DescribeScalingPolicies DescribeVpcPeeringAuthorizations DescribeVpcPeeringConnections GetGameSessionLogUrl GetInstanceAccess ListAliases ListBuilds ListFleets PutScalingPolicy RequestUploadCredentials ResolveAlias SearchGameSessions StartFleetActions StartGameSessionPlacement StartMatchBackfill StartMatchmaking StopFleetActions StopGameSessionPlacement StopMatchmaking UpdateAlias UpdateBuild UpdateFleetAttributes UpdateFleetCapacity UpdateFleetPortSettings UpdateGameSession UpdateGameSessionQueue UpdateMatchmakingConfiguration UpdateRuntimeConfiguration ValidateMatchmakingRuleSet / }
 
 1;
 
@@ -393,7 +403,7 @@ to join a game session.
 =item *
 
 B<Configure and manage game server resources> -- Manage builds, fleets,
-queues, and aliases; set autoscaling policies; retrieve logs and
+queues, and aliases; set auto-scaling policies; retrieve logs and
 metrics.
 
 =back
@@ -734,23 +744,31 @@ capacity settings to scale up or down.
 
 =item *
 
-Autoscale -- Manage autoscaling rules and apply them to a fleet.
+Autoscale -- Manage auto-scaling rules and apply them to a fleet.
 
 =over
 
 =item *
 
-PutScalingPolicy -- Create a new autoscaling policy, or update an
+PutScalingPolicy -- Create a new auto-scaling policy, or update an
 existing one.
 
 =item *
 
-DescribeScalingPolicies -- Retrieve an existing autoscaling policy.
+DescribeScalingPolicies -- Retrieve an existing auto-scaling policy.
 
 =item *
 
-DeleteScalingPolicy -- Delete an autoscaling policy and stop it from
+DeleteScalingPolicy -- Delete an auto-scaling policy and stop it from
 affecting a fleet's capacity.
+
+=item *
+
+StartFleetActions -- Restart a fleet's auto-scaling policies.
+
+=item *
+
+StopFleetActions -- Suspend a fleet's auto-scaling policies.
 
 =back
 
@@ -1325,6 +1343,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -1332,6 +1354,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -1344,6 +1370,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -1377,39 +1407,19 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
@@ -2213,6 +2223,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -2220,6 +2234,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -2232,6 +2250,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -2265,39 +2287,19 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
@@ -2417,73 +2419,10 @@ longer in force and removes all record of it. To delete a scaling
 policy, specify both the scaling policy name and the fleet ID it is
 associated with.
 
-Fleet-related operations include:
+To temporarily suspend scaling policies, call StopFleetActions. This
+operation suspends all policies for the fleet.
 
-=over
-
-=item *
-
-CreateFleet
-
-=item *
-
-ListFleets
-
-=item *
-
-Describe fleets:
-
-=over
-
-=item *
-
-DescribeFleetAttributes
-
-=item *
-
-DescribeFleetPortSettings
-
-=item *
-
-DescribeFleetUtilization
-
-=item *
-
-DescribeRuntimeConfiguration
-
-=item *
-
-DescribeFleetEvents
-
-=back
-
-=item *
-
-Update fleets:
-
-=over
-
-=item *
-
-UpdateFleetAttributes
-
-=item *
-
-UpdateFleetCapacity
-
-=item *
-
-UpdateFleetPortSettings
-
-=item *
-
-UpdateRuntimeConfiguration
-
-=back
-
-=item *
-
-Manage fleet capacity:
+Operations related to fleet capacity scaling include:
 
 =over
 
@@ -2497,25 +2436,43 @@ UpdateFleetCapacity
 
 =item *
 
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
 DescribeEC2InstanceLimits
+
+=item *
+
+Manage scaling policies:
+
+=over
+
+=item *
+
+PutScalingPolicy (auto-scaling)
+
+=item *
+
+DescribeScalingPolicies (auto-scaling)
+
+=item *
+
+DeleteScalingPolicy (auto-scaling)
 
 =back
 
 =item *
 
-DeleteFleet
+Manage fleet actions:
+
+=over
+
+=item *
+
+StartFleetActions
+
+=item *
+
+StopFleetActions
+
+=back
 
 =back
 
@@ -2773,6 +2730,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -2780,6 +2741,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -2792,6 +2757,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -2825,39 +2794,19 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
@@ -2907,6 +2856,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -2914,6 +2867,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -2926,6 +2883,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -2959,39 +2920,19 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
@@ -3042,6 +2983,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -3049,6 +2994,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -3061,6 +3010,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -3094,39 +3047,19 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
@@ -3172,6 +3105,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -3179,6 +3116,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -3191,6 +3132,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -3224,39 +3169,19 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
@@ -3297,6 +3222,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -3304,6 +3233,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -3316,6 +3249,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -3349,39 +3286,19 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
@@ -3430,6 +3347,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -3437,6 +3358,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -3449,6 +3374,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -3482,39 +3411,19 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
@@ -4131,6 +4040,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -4138,6 +4051,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -4150,6 +4067,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -4183,39 +4104,19 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
@@ -4248,73 +4149,13 @@ policies. Use the pagination parameters to retrieve results as a set of
 sequential pages. If successful, set of ScalingPolicy objects is
 returned for the fleet.
 
-Fleet-related operations include:
+A fleet may have all of its scaling policies suspended
+(StopFleetActions). This action does not affect the status of the
+scaling policies, which remains ACTIVE. To see whether a fleet's
+scaling policies are in force or suspended, call
+DescribeFleetAttributes and check the stopped actions.
 
-=over
-
-=item *
-
-CreateFleet
-
-=item *
-
-ListFleets
-
-=item *
-
-Describe fleets:
-
-=over
-
-=item *
-
-DescribeFleetAttributes
-
-=item *
-
-DescribeFleetPortSettings
-
-=item *
-
-DescribeFleetUtilization
-
-=item *
-
-DescribeRuntimeConfiguration
-
-=item *
-
-DescribeFleetEvents
-
-=back
-
-=item *
-
-Update fleets:
-
-=over
-
-=item *
-
-UpdateFleetAttributes
-
-=item *
-
-UpdateFleetCapacity
-
-=item *
-
-UpdateFleetPortSettings
-
-=item *
-
-UpdateRuntimeConfiguration
-
-=back
-
-=item *
-
-Manage fleet capacity:
+Operations related to fleet capacity scaling include:
 
 =over
 
@@ -4328,25 +4169,43 @@ UpdateFleetCapacity
 
 =item *
 
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
 DescribeEC2InstanceLimits
+
+=item *
+
+Manage scaling policies:
+
+=over
+
+=item *
+
+PutScalingPolicy (auto-scaling)
+
+=item *
+
+DescribeScalingPolicies (auto-scaling)
+
+=item *
+
+DeleteScalingPolicy (auto-scaling)
 
 =back
 
 =item *
 
-DeleteFleet
+Manage fleet actions:
+
+=over
+
+=item *
+
+StartFleetActions
+
+=item *
+
+StopFleetActions
+
+=back
 
 =back
 
@@ -4713,6 +4572,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -4720,6 +4583,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -4732,6 +4599,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -4765,39 +4636,19 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
@@ -4807,21 +4658,25 @@ DeleteFleet
 
 =over
 
-=item ComparisonOperator => Str
-
-=item EvaluationPeriods => Int
-
 =item FleetId => Str
 
 =item MetricName => Str
 
 =item Name => Str
 
-=item ScalingAdjustment => Int
+=item [ComparisonOperator => Str]
 
-=item ScalingAdjustmentType => Str
+=item [EvaluationPeriods => Int]
 
-=item Threshold => Num
+=item [PolicyType => Str]
+
+=item [ScalingAdjustment => Int]
+
+=item [ScalingAdjustmentType => Str]
+
+=item [TargetConfiguration => L<Paws::GameLift::TargetConfiguration>]
+
+=item [Threshold => Num]
 
 
 =back
@@ -4830,98 +4685,91 @@ Each argument is described in detail in: L<Paws::GameLift::PutScalingPolicy>
 
 Returns: a L<Paws::GameLift::PutScalingPolicyOutput> instance
 
-Creates or updates a scaling policy for a fleet. An active scaling
-policy prompts Amazon GameLift to track a certain metric for a fleet
-and automatically change the fleet's capacity in specific
-circumstances. Each scaling policy contains one rule statement. Fleets
-can have multiple scaling policies in force simultaneously.
+Creates or updates a scaling policy for a fleet. Scaling policies are
+used to automatically scale a fleet's hosting capacity to meet player
+demand. An active scaling policy instructs Amazon GameLift to track a
+fleet metric and automatically change the fleet's capacity when a
+certain threshold is reached. There are two types of scaling policies:
+target-based and rule-based. Use a target-based policy to quickly and
+efficiently manage fleet scaling; this option is the most commonly
+used. Use rule-based policies when you need to exert fine-grained
+control over auto-scaling.
 
-A scaling policy rule statement has the following structure:
+Fleets can have multiple scaling policies of each type in force at the
+same time; you can have one target-based policy, one or multiple
+rule-based scaling policies, or both. We recommend caution, however,
+because multiple auto-scaling policies can have unintended
+consequences.
+
+You can temporarily suspend all scaling policies for a fleet by calling
+StopFleetActions with the fleet action AUTO_SCALING. To resume scaling
+policies, call StartFleetActions with the same fleet action. To stop
+just one scaling policy--or to permanently remove it, you must delete
+the policy with DeleteScalingPolicy.
+
+Learn more about how to work with auto-scaling in Set Up Fleet
+Automatic Scaling
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-autoscaling.html).
+
+B<Target-based policy>
+
+A target-based policy tracks a single metric:
+PercentAvailableGameSessions. This metric tells us how much of a
+fleet's hosting capacity is ready to host game sessions but is not
+currently in use. This is the fleet's buffer; it measures the
+additional player demand that the fleet could handle at current
+capacity. With a target-based policy, you set your ideal buffer size
+and leave it to Amazon GameLift to take whatever action is needed to
+maintain that target.
+
+For example, you might choose to maintain a 10% buffer for a fleet that
+has the capacity to host 100 simultaneous game sessions. This policy
+tells Amazon GameLift to take action whenever the fleet's available
+capacity falls below or rises above 10 game sessions. Amazon GameLift
+will start new instances or stop unused instances in order to return to
+the 10% buffer.
+
+To create or update a target-based policy, specify a fleet ID and name,
+and set the policy type to "TargetBased". Specify the metric to track
+(PercentAvailableGameSessions) and reference a TargetConfiguration
+object with your desired buffer value. Exclude all other parameters. On
+a successful request, the policy name is returned. The scaling policy
+is automatically in force as soon as it's successfully created. If the
+fleet's auto-scaling actions are temporarily suspended, the new policy
+will be in force once the fleet actions are restarted.
+
+B<Rule-based policy>
+
+A rule-based policy tracks specified fleet metric, sets a threshold
+value, and specifies the type of action to initiate when triggered.
+With a rule-based policy, you can select from several available fleet
+metrics. Each policy specifies whether to scale up or scale down (and
+by how much), so you need one policy for each type of action.
+
+For example, a policy may make the following statement: "If the
+percentage of idle instances is greater than 20% for more than 15
+minutes, then reduce the fleet capacity by 10%."
+
+A policy's rule statement has the following structure:
 
 If C<[MetricName]> is C<[ComparisonOperator]> C<[Threshold]> for
 C<[EvaluationPeriods]> minutes, then C<[ScalingAdjustmentType]> to/by
 C<[ScalingAdjustment]>.
 
-For example, this policy: "If the number of idle instances exceeds 20
-for more than 15 minutes, then reduce the fleet capacity by 10
-instances" could be implemented as the following rule statement:
+To implement the example, the rule statement would look like this:
 
-If [IdleInstances] is [GreaterThanOrEqualToThreshold] [20] for [15]
-minutes, then [ChangeInCapacity] by [-10].
+If C<[PercentIdleInstances]> is C<[GreaterThanThreshold]> C<[20]> for
+C<[15]> minutes, then C<[PercentChangeInCapacity]> to/by C<[10]>.
 
 To create or update a scaling policy, specify a unique combination of
-name and fleet ID, and set the rule values. All parameters for this
-action are required. If successful, the policy name is returned.
-Scaling policies cannot be suspended or made inactive. To stop
-enforcing a scaling policy, call DeleteScalingPolicy.
+name and fleet ID, and set the policy type to "RuleBased". Specify the
+parameter values for a policy rule statement. On a successful request,
+the policy name is returned. Scaling policies are automatically in
+force as soon as they're successfully created. If the fleet's
+auto-scaling actions are temporarily suspended, the new policy will be
+in force once the fleet actions are restarted.
 
-Fleet-related operations include:
-
-=over
-
-=item *
-
-CreateFleet
-
-=item *
-
-ListFleets
-
-=item *
-
-Describe fleets:
-
-=over
-
-=item *
-
-DescribeFleetAttributes
-
-=item *
-
-DescribeFleetPortSettings
-
-=item *
-
-DescribeFleetUtilization
-
-=item *
-
-DescribeRuntimeConfiguration
-
-=item *
-
-DescribeFleetEvents
-
-=back
-
-=item *
-
-Update fleets:
-
-=over
-
-=item *
-
-UpdateFleetAttributes
-
-=item *
-
-UpdateFleetCapacity
-
-=item *
-
-UpdateFleetPortSettings
-
-=item *
-
-UpdateRuntimeConfiguration
-
-=back
-
-=item *
-
-Manage fleet capacity:
+Operations related to fleet capacity scaling include:
 
 =over
 
@@ -4935,25 +4783,43 @@ UpdateFleetCapacity
 
 =item *
 
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
 DescribeEC2InstanceLimits
+
+=item *
+
+Manage scaling policies:
+
+=over
+
+=item *
+
+PutScalingPolicy (auto-scaling)
+
+=item *
+
+DescribeScalingPolicies (auto-scaling)
+
+=item *
+
+DeleteScalingPolicy (auto-scaling)
 
 =back
 
 =item *
 
-DeleteFleet
+Manage fleet actions:
+
+=over
+
+=item *
+
+StartFleetActions
+
+=item *
+
+StopFleetActions
+
+=back
 
 =back
 
@@ -5077,8 +4943,9 @@ C<GameProperty> parameter. C<GameProperty> values are stored as
 key:value pairs; the filter expression must indicate the key and a
 string to search the data values for. For example, to search for game
 sessions with custom data containing the key:value pair
-"gameMode:brawl", specify the following: gameSessionProperties.gameMode
-= "brawl". All custom data values are searched as strings.
+"gameMode:brawl", specify the following:
+C<gameSessionProperties.gameMode = "brawl">. All custom data values are
+searched as strings.
 
 =item *
 
@@ -5170,6 +5037,88 @@ DescribeGameSessionPlacement
 =item *
 
 StopGameSessionPlacement
+
+=back
+
+=back
+
+
+
+=head2 StartFleetActions
+
+=over
+
+=item Actions => ArrayRef[Str|Undef]
+
+=item FleetId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GameLift::StartFleetActions>
+
+Returns: a L<Paws::GameLift::StartFleetActionsOutput> instance
+
+Resumes activity on a fleet that was suspended with StopFleetActions.
+Currently, this operation is used to restart a fleet's auto-scaling
+activity.
+
+To start fleet actions, specify the fleet ID and the type of actions to
+restart. When auto-scaling fleet actions are restarted, Amazon GameLift
+once again initiates scaling events as triggered by the fleet's scaling
+policies. If actions on the fleet were never stopped, this operation
+will have no effect. You can view a fleet's stopped actions using
+DescribeFleetAttributes.
+
+Operations related to fleet capacity scaling include:
+
+=over
+
+=item *
+
+DescribeFleetCapacity
+
+=item *
+
+UpdateFleetCapacity
+
+=item *
+
+DescribeEC2InstanceLimits
+
+=item *
+
+Manage scaling policies:
+
+=over
+
+=item *
+
+PutScalingPolicy (auto-scaling)
+
+=item *
+
+DescribeScalingPolicies (auto-scaling)
+
+=item *
+
+DeleteScalingPolicy (auto-scaling)
+
+=back
+
+=item *
+
+Manage fleet actions:
+
+=over
+
+=item *
+
+StartFleetActions
+
+=item *
+
+StopFleetActions
 
 =back
 
@@ -5522,6 +5471,35 @@ StartMatchBackfill
 
 
 
+=head2 StopFleetActions
+
+=over
+
+=item Actions => ArrayRef[Str|Undef]
+
+=item FleetId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GameLift::StopFleetActions>
+
+Returns: a L<Paws::GameLift::StopFleetActionsOutput> instance
+
+Suspends activity on a fleet. Currently, this operation is used to stop
+a fleet's auto-scaling activity. It is used to temporarily stop scaling
+events triggered by the fleet's scaling policies. The policies can be
+retained and auto-scaling activity can be restarted using
+StartFleetActions. You can view a fleet's stopped actions using
+DescribeFleetAttributes.
+
+To stop fleet actions, specify the fleet ID and the type of actions to
+suspend. When auto-scaling fleet actions are stopped, Amazon GameLift
+no longer initiates scaling events except to maintain the fleet's
+desired instances setting (FleetCapacity. Changes to the fleet's
+capacity must be done manually using UpdateFleetCapacity.
+
+
 =head2 StopGameSessionPlacement
 
 =over
@@ -5785,6 +5763,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -5792,6 +5774,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -5804,6 +5790,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -5837,39 +5827,19 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
@@ -5900,11 +5870,11 @@ Before calling this action, you may want to call
 DescribeEC2InstanceLimits to get the maximum capacity based on the
 fleet's EC2 instance type.
 
-If you're using autoscaling (see PutScalingPolicy), you may want to
-specify a minimum and/or maximum capacity. If you don't provide these,
-autoscaling can set capacity anywhere between zero and the service
-limits
-(http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift).
+Specify minimum and maximum number of instances. Amazon GameLift will
+not change fleet capacity to values fall outside of this range. This is
+particularly important when using auto-scaling (see PutScalingPolicy)
+to allow capacity to adjust based on player demand while imposing
+limits on automatic adjustments.
 
 To update fleet capacity, specify the fleet ID and the number of
 instances you want the fleet to host. If successful, Amazon GameLift
@@ -5928,6 +5898,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -5935,6 +5909,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -5947,6 +5925,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -5980,39 +5962,19 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
@@ -6057,6 +6019,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -6064,6 +6030,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -6076,6 +6046,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -6109,39 +6083,19 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
@@ -6400,6 +6354,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -6407,6 +6365,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -6419,6 +6381,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -6452,39 +6418,19 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 

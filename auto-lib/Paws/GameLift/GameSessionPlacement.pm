@@ -141,7 +141,7 @@ C<FULFILLED>).
 =head2 MatchmakerData => Str
 
   Information on the matchmaking process for this game. Data is in JSON
-syntax, formated as a string. It identifies the matchmaking
+syntax, formatted as a string. It identifies the matchmaking
 configuration used to create the match, and contains data on all
 players assigned to the match, including player attributes and team
 assignments. For more details on matchmaker data, see Match Data
