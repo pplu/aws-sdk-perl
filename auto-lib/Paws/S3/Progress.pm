@@ -1,6 +1,7 @@
 package Paws::S3::Progress;
   use Moose;
   has BytesProcessed => (is => 'ro', isa => 'Int');
+  has BytesReturned => (is => 'ro', isa => 'Int');
   has BytesScanned => (is => 'ro', isa => 'Int');
 1;
 
@@ -40,6 +41,11 @@ This class has no description
 =head2 BytesProcessed => Int
 
   Current number of uncompressed object bytes processed.
+
+
+=head2 BytesReturned => Int
+
+  Current number of bytes of records payload data returned.
 
 
 =head2 BytesScanned => Int
