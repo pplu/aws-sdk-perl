@@ -1,6 +1,7 @@
 
 package Paws::RDS::RestoreDBClusterToPointInTime;
   use Moose;
+  has BacktrackWindow => (is => 'ro', isa => 'Int');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
@@ -42,6 +43,27 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 BacktrackWindow => Int
+
+The target backtrack window, in seconds. To disable backtracking, set
+this value to 0.
+
+Default: 0
+
+Constraints:
+
+=over
+
+=item *
+
+If specified, this value must be set to a number from 0 to 259,200 (72
+hours).
+
+=back
+
+
 
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str

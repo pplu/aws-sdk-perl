@@ -56,6 +56,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::AuthorizeDBSecurityGroupIngress', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub BacktrackDBCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::BacktrackDBCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CopyDBClusterParameterGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::CopyDBClusterParameterGroup', @_);
@@ -194,6 +199,11 @@ package Paws::RDS;
   sub DescribeCertificates {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeCertificates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDBClusterBacktracks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBClusterBacktracks', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDBClusterParameterGroups {
@@ -926,7 +936,7 @@ package Paws::RDS;
   }
 
 
-  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartDBInstance StopDBInstance / }
+  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterBacktracks DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartDBInstance StopDBInstance / }
 
 1;
 
@@ -1154,6 +1164,34 @@ instance in another.
 
 For an overview of CIDR ranges, go to the Wikipedia Tutorial
 (http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+
+
+=head2 BacktrackDBCluster
+
+=over
+
+=item BacktrackTo => Str
+
+=item DBClusterIdentifier => Str
+
+=item [Force => Bool]
+
+=item [UseEarliestTimeOnPointInTimeUnavailable => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::BacktrackDBCluster>
+
+Returns: a L<Paws::RDS::DBClusterBacktrack> instance
+
+Backtracks a DB cluster to a specific time, without creating a new DB
+cluster.
+
+For more information on backtracking, see Backtracking an Aurora DB
+Cluster
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AuroraMySQL.Managing.Backtrack.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 CopyDBClusterParameterGroup
@@ -1387,6 +1425,8 @@ Copies the specified option group.
 =item Engine => Str
 
 =item [AvailabilityZones => ArrayRef[Str|Undef]]
+
+=item [BacktrackWindow => Int]
 
 =item [BackupRetentionPeriod => Int]
 
@@ -2147,6 +2187,34 @@ Returns: a L<Paws::RDS::CertificateMessage> instance
 
 Lists the set of CA certificates provided by Amazon RDS for this AWS
 account.
+
+
+=head2 DescribeDBClusterBacktracks
+
+=over
+
+=item DBClusterIdentifier => Str
+
+=item [BacktrackIdentifier => Str]
+
+=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DescribeDBClusterBacktracks>
+
+Returns: a L<Paws::RDS::DBClusterBacktrackMessage> instance
+
+Returns information about backtracks for a DB cluster.
+
+For more information on Amazon Aurora, see Aurora on Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 DescribeDBClusterParameterGroups
@@ -2973,6 +3041,8 @@ RDS Resources
 
 =item [ApplyImmediately => Bool]
 
+=item [BacktrackWindow => Int]
+
 =item [BackupRetentionPeriod => Int]
 
 =item [DBClusterParameterGroupName => Str]
@@ -3609,6 +3679,8 @@ or C<RebootDBInstance> request.
 
 =item [AvailabilityZones => ArrayRef[Str|Undef]]
 
+=item [BacktrackWindow => Int]
+
 =item [BackupRetentionPeriod => Int]
 
 =item [CharacterSetName => Str]
@@ -3667,6 +3739,8 @@ described in Migrating Data from MySQL by Using an Amazon S3 Bucket
 
 =item [AvailabilityZones => ArrayRef[Str|Undef]]
 
+=item [BacktrackWindow => Int]
+
 =item [DatabaseName => Str]
 
 =item [DBSubnetGroupName => Str]
@@ -3715,6 +3789,8 @@ in the I<Amazon RDS User Guide.>
 =item DBClusterIdentifier => Str
 
 =item SourceDBClusterIdentifier => Str
+
+=item [BacktrackWindow => Int]
 
 =item [DBSubnetGroupName => Str]
 

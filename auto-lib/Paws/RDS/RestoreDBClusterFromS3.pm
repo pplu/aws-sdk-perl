@@ -2,6 +2,7 @@
 package Paws::RDS::RestoreDBClusterFromS3;
   use Moose;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has BacktrackWindow => (is => 'ro', isa => 'Int');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CharacterSetName => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
@@ -61,6 +62,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 A list of EC2 Availability Zones that instances in the restored DB
 cluster can be created in.
+
+
+
+=head2 BacktrackWindow => Int
+
+The target backtrack window, in seconds. To disable backtracking, set
+this value to 0.
+
+Default: 0
+
+Constraints:
+
+=over
+
+=item *
+
+If specified, this value must be set to a number from 0 to 259,200 (72
+hours).
+
+=back
+
 
 
 
