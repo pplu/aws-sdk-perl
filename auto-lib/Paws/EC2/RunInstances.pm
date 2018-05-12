@@ -4,6 +4,7 @@ package Paws::EC2::RunInstances;
   has AdditionalInfo => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'additionalInfo' );
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'BlockDeviceMapping' );
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
+  has CpuOptions => (is => 'ro', isa => 'Paws::EC2::CpuOptionsRequest');
   has CreditSpecification => (is => 'ro', isa => 'Paws::EC2::CreditSpecificationRequest');
   has DisableApiTermination => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'disableApiTermination' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -85,6 +86,15 @@ of the request. For more information, see Ensuring Idempotency
 (http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 Constraints: Maximum 64 ASCII characters
+
+
+
+=head2 CpuOptions => L<Paws::EC2::CpuOptionsRequest>
+
+The CPU options for the instance. For more information, see Optimizing
+CPU Options
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 

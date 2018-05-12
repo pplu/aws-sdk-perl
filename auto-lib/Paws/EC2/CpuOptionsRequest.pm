@@ -1,14 +1,14 @@
-package Paws::EC2::DiskImageVolumeDescription;
+package Paws::EC2::CpuOptionsRequest;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has Size => (is => 'ro', isa => 'Int', request_name => 'size', traits => ['NameInRequest']);
+  has CoreCount => (is => 'ro', isa => 'Int');
+  has ThreadsPerCore => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::EC2::DiskImageVolumeDescription
+Paws::EC2::CpuOptionsRequest
 
 =head1 USAGE
 
@@ -19,16 +19,16 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::EC2::DiskImageVolumeDescription object:
+As an example, if Att1 is expected to be a Paws::EC2::CpuOptionsRequest object:
 
-  $service_obj->Method(Att1 => { Id => $value, ..., Size => $value  });
+  $service_obj->Method(Att1 => { CoreCount => $value, ..., ThreadsPerCore => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::DiskImageVolumeDescription object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::CpuOptionsRequest object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Id
+  $result->Att1->CoreCount
 
 =head1 DESCRIPTION
 
@@ -37,14 +37,16 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Id => Str
+=head2 CoreCount => Int
 
-  The volume identifier.
+  The number of CPU cores for the instance.
 
 
-=head2 Size => Int
+=head2 ThreadsPerCore => Int
 
-  The size of the volume, in GiB.
+  The number of threads per CPU core. To disable Intel Hyper-Threading
+Technology for the instance, specify a value of C<1>. Otherwise,
+specify the default value of C<2>.
 
 
 

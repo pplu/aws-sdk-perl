@@ -3,6 +3,7 @@ package Paws::EC2::GetConsoleOutput;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
+  has Latest => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
 
@@ -46,6 +47,14 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 =head2 B<REQUIRED> InstanceId => Str
 
 The ID of the instance.
+
+
+
+=head2 Latest => Bool
+
+When enabled, retrieves the latest console output for the instance.
+
+Default: disabled (C<false>)
 
 
 
