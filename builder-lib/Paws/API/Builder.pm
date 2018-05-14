@@ -9,7 +9,8 @@ package Paws::API::Builder {
   use JSON::MaybeXS;
   use v5.10;
 
-  use Paws::API::RegionBuilder; 
+  use Paws::API::RegionBuilder;
+  use Paws::API::ServiceToClass;
 
   has api => (is => 'ro', required => 1);
 
@@ -25,6 +26,11 @@ package Paws::API::Builder {
   has endpoint_role => (is => 'ro', lazy => 1, default => 'Paws::API::EndpointResolver' );
 
   has api_file => (is => 'ro', required => 1);
+
+  has api_ns => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    return Paws::API::ServiceToClass::service_to_class($self->service);
+  });
 
   has template_path => (is => 'ro', required => 1);
 
