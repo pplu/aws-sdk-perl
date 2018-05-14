@@ -927,7 +927,16 @@ For more information about how AWS IoT works, see the Developer Guide
 
 =head1 METHODS
 
-=head2 AcceptCertificateTransfer(CertificateId => Str, [SetAsActive => Bool])
+=head2 AcceptCertificateTransfer
+
+=over
+
+=item CertificateId => Str
+
+=item [SetAsActive => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::AcceptCertificateTransfer>
 
@@ -940,7 +949,20 @@ To check for pending certificate transfers, call ListCertificates to
 enumerate your certificates.
 
 
-=head2 AddThingToThingGroup([ThingArn => Str, ThingGroupArn => Str, ThingGroupName => Str, ThingName => Str])
+=head2 AddThingToThingGroup
+
+=over
+
+=item [ThingArn => Str]
+
+=item [ThingGroupArn => Str]
+
+=item [ThingGroupName => Str]
+
+=item [ThingName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::AddThingToThingGroup>
 
@@ -949,7 +971,18 @@ Returns: a L<Paws::IoT::AddThingToThingGroupResponse> instance
 Adds a thing to a thing group.
 
 
-=head2 AssociateTargetsWithJob(JobId => Str, Targets => ArrayRef[Str|Undef], [Comment => Str])
+=head2 AssociateTargetsWithJob
+
+=over
+
+=item JobId => Str
+
+=item Targets => ArrayRef[Str|Undef]
+
+=item [Comment => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::AssociateTargetsWithJob>
 
@@ -977,7 +1010,16 @@ The total number of targets associated with a job must not exceed 100.
 
 
 
-=head2 AttachPolicy(PolicyName => Str, Target => Str)
+=head2 AttachPolicy
+
+=over
+
+=item PolicyName => Str
+
+=item Target => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::AttachPolicy>
 
@@ -986,7 +1028,16 @@ Returns: nothing
 Attaches a policy to the specified target.
 
 
-=head2 AttachPrincipalPolicy(PolicyName => Str, Principal => Str)
+=head2 AttachPrincipalPolicy
+
+=over
+
+=item PolicyName => Str
+
+=item Principal => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::AttachPrincipalPolicy>
 
@@ -998,7 +1049,16 @@ or other credential).
 B<Note:> This API is deprecated. Please use AttachPolicy instead.
 
 
-=head2 AttachThingPrincipal(Principal => Str, ThingName => Str)
+=head2 AttachThingPrincipal
+
+=over
+
+=item Principal => Str
+
+=item ThingName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::AttachThingPrincipal>
 
@@ -1007,7 +1067,14 @@ Returns: a L<Paws::IoT::AttachThingPrincipalResponse> instance
 Attaches the specified principal to the specified thing.
 
 
-=head2 CancelCertificateTransfer(CertificateId => Str)
+=head2 CancelCertificateTransfer
+
+=over
+
+=item CertificateId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::CancelCertificateTransfer>
 
@@ -1026,7 +1093,16 @@ After a certificate transfer is cancelled, the status of the
 certificate changes from PENDING_TRANSFER to INACTIVE.
 
 
-=head2 CancelJob(JobId => Str, [Comment => Str])
+=head2 CancelJob
+
+=over
+
+=item JobId => Str
+
+=item [Comment => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::CancelJob>
 
@@ -1035,7 +1111,12 @@ Returns: a L<Paws::IoT::CancelJobResponse> instance
 Cancels a job.
 
 
-=head2 ClearDefaultAuthorizer()
+=head2 ClearDefaultAuthorizer
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::IoT::ClearDefaultAuthorizer>
 
@@ -1044,7 +1125,22 @@ Returns: a L<Paws::IoT::ClearDefaultAuthorizerResponse> instance
 Clears the default authorizer.
 
 
-=head2 CreateAuthorizer(AuthorizerFunctionArn => Str, AuthorizerName => Str, TokenKeyName => Str, TokenSigningPublicKeys => L<Paws::IoT::PublicKeyMap>, [Status => Str])
+=head2 CreateAuthorizer
+
+=over
+
+=item AuthorizerFunctionArn => Str
+
+=item AuthorizerName => Str
+
+=item TokenKeyName => Str
+
+=item TokenSigningPublicKeys => L<Paws::IoT::PublicKeyMap>
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::CreateAuthorizer>
 
@@ -1053,7 +1149,16 @@ Returns: a L<Paws::IoT::CreateAuthorizerResponse> instance
 Creates an authorizer.
 
 
-=head2 CreateCertificateFromCsr(CertificateSigningRequest => Str, [SetAsActive => Bool])
+=head2 CreateCertificateFromCsr
+
+=over
+
+=item CertificateSigningRequest => Str
+
+=item [SetAsActive => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::CreateCertificateFromCsr>
 
@@ -1107,7 +1212,30 @@ E<gt> forfiles /p my-csr-directory /c "cmd /c aws iot
 create-certificate-from-csr --certificate-signing-request file://@path"
 
 
-=head2 CreateJob(JobId => Str, Targets => ArrayRef[Str|Undef], [Description => Str, Document => Str, DocumentParameters => L<Paws::IoT::JobDocumentParameters>, DocumentSource => Str, JobExecutionsRolloutConfig => L<Paws::IoT::JobExecutionsRolloutConfig>, PresignedUrlConfig => L<Paws::IoT::PresignedUrlConfig>, TargetSelection => Str])
+=head2 CreateJob
+
+=over
+
+=item JobId => Str
+
+=item Targets => ArrayRef[Str|Undef]
+
+=item [Description => Str]
+
+=item [Document => Str]
+
+=item [DocumentParameters => L<Paws::IoT::JobDocumentParameters>]
+
+=item [DocumentSource => Str]
+
+=item [JobExecutionsRolloutConfig => L<Paws::IoT::JobExecutionsRolloutConfig>]
+
+=item [PresignedUrlConfig => L<Paws::IoT::PresignedUrlConfig>]
+
+=item [TargetSelection => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::CreateJob>
 
@@ -1116,7 +1244,14 @@ Returns: a L<Paws::IoT::CreateJobResponse> instance
 Creates a job.
 
 
-=head2 CreateKeysAndCertificate([SetAsActive => Bool])
+=head2 CreateKeysAndCertificate
+
+=over
+
+=item [SetAsActive => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::CreateKeysAndCertificate>
 
@@ -1129,7 +1264,26 @@ B<Note> This is the only time AWS IoT issues the private key for this
 certificate, so it is important to keep it in a secure location.
 
 
-=head2 CreateOTAUpdate(Files => ArrayRef[L<Paws::IoT::OTAUpdateFile>], OtaUpdateId => Str, RoleArn => Str, Targets => ArrayRef[Str|Undef], [AdditionalParameters => L<Paws::IoT::AdditionalParameterMap>, Description => Str, TargetSelection => Str])
+=head2 CreateOTAUpdate
+
+=over
+
+=item Files => ArrayRef[L<Paws::IoT::OTAUpdateFile>]
+
+=item OtaUpdateId => Str
+
+=item RoleArn => Str
+
+=item Targets => ArrayRef[Str|Undef]
+
+=item [AdditionalParameters => L<Paws::IoT::AdditionalParameterMap>]
+
+=item [Description => Str]
+
+=item [TargetSelection => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::CreateOTAUpdate>
 
@@ -1138,7 +1292,16 @@ Returns: a L<Paws::IoT::CreateOTAUpdateResponse> instance
 Creates an AWS IoT OTAUpdate on a target group of things or groups.
 
 
-=head2 CreatePolicy(PolicyDocument => Str, PolicyName => Str)
+=head2 CreatePolicy
+
+=over
+
+=item PolicyDocument => Str
+
+=item PolicyName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::CreatePolicy>
 
@@ -1151,7 +1314,18 @@ operation creates a policy version with a version identifier of B<1>
 and sets B<1> as the policy's default version.
 
 
-=head2 CreatePolicyVersion(PolicyDocument => Str, PolicyName => Str, [SetAsDefault => Bool])
+=head2 CreatePolicyVersion
+
+=over
+
+=item PolicyDocument => Str
+
+=item PolicyName => Str
+
+=item [SetAsDefault => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::CreatePolicyVersion>
 
@@ -1169,7 +1343,18 @@ version that is in effect for the certificates to which the policy is
 attached).
 
 
-=head2 CreateRoleAlias(RoleAlias => Str, RoleArn => Str, [CredentialDurationSeconds => Int])
+=head2 CreateRoleAlias
+
+=over
+
+=item RoleAlias => Str
+
+=item RoleArn => Str
+
+=item [CredentialDurationSeconds => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::CreateRoleAlias>
 
@@ -1178,7 +1363,20 @@ Returns: a L<Paws::IoT::CreateRoleAliasResponse> instance
 Creates a role alias.
 
 
-=head2 CreateStream(Files => ArrayRef[L<Paws::IoT::StreamFile>], RoleArn => Str, StreamId => Str, [Description => Str])
+=head2 CreateStream
+
+=over
+
+=item Files => ArrayRef[L<Paws::IoT::StreamFile>]
+
+=item RoleArn => Str
+
+=item StreamId => Str
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::CreateStream>
 
@@ -1194,7 +1392,18 @@ that existed and was deleted within last 90 days, we will resurrect
 that old stream by incrementing the version by 1.
 
 
-=head2 CreateThing(ThingName => Str, [AttributePayload => L<Paws::IoT::AttributePayload>, ThingTypeName => Str])
+=head2 CreateThing
+
+=over
+
+=item ThingName => Str
+
+=item [AttributePayload => L<Paws::IoT::AttributePayload>]
+
+=item [ThingTypeName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::CreateThing>
 
@@ -1203,7 +1412,18 @@ Returns: a L<Paws::IoT::CreateThingResponse> instance
 Creates a thing record in the registry.
 
 
-=head2 CreateThingGroup(ThingGroupName => Str, [ParentGroupName => Str, ThingGroupProperties => L<Paws::IoT::ThingGroupProperties>])
+=head2 CreateThingGroup
+
+=over
+
+=item ThingGroupName => Str
+
+=item [ParentGroupName => Str]
+
+=item [ThingGroupProperties => L<Paws::IoT::ThingGroupProperties>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::CreateThingGroup>
 
@@ -1212,7 +1432,16 @@ Returns: a L<Paws::IoT::CreateThingGroupResponse> instance
 Create a thing group.
 
 
-=head2 CreateThingType(ThingTypeName => Str, [ThingTypeProperties => L<Paws::IoT::ThingTypeProperties>])
+=head2 CreateThingType
+
+=over
+
+=item ThingTypeName => Str
+
+=item [ThingTypeProperties => L<Paws::IoT::ThingTypeProperties>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::CreateThingType>
 
@@ -1221,7 +1450,16 @@ Returns: a L<Paws::IoT::CreateThingTypeResponse> instance
 Creates a new thing type.
 
 
-=head2 CreateTopicRule(RuleName => Str, TopicRulePayload => L<Paws::IoT::TopicRulePayload>)
+=head2 CreateTopicRule
+
+=over
+
+=item RuleName => Str
+
+=item TopicRulePayload => L<Paws::IoT::TopicRulePayload>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::CreateTopicRule>
 
@@ -1232,7 +1470,14 @@ user who has permission to create rules will be able to access data
 processed by the rule.
 
 
-=head2 DeleteAuthorizer(AuthorizerName => Str)
+=head2 DeleteAuthorizer
+
+=over
+
+=item AuthorizerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DeleteAuthorizer>
 
@@ -1241,7 +1486,14 @@ Returns: a L<Paws::IoT::DeleteAuthorizerResponse> instance
 Deletes an authorizer.
 
 
-=head2 DeleteCACertificate(CertificateId => Str)
+=head2 DeleteCACertificate
+
+=over
+
+=item CertificateId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DeleteCACertificate>
 
@@ -1250,7 +1502,16 @@ Returns: a L<Paws::IoT::DeleteCACertificateResponse> instance
 Deletes a registered CA certificate.
 
 
-=head2 DeleteCertificate(CertificateId => Str, [ForceDelete => Bool])
+=head2 DeleteCertificate
+
+=over
+
+=item CertificateId => Str
+
+=item [ForceDelete => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DeleteCertificate>
 
@@ -1264,7 +1525,14 @@ DetachPrincipalPolicy API to detach all policies. Next, use the
 UpdateCertificate API to set the certificate to the INACTIVE status.
 
 
-=head2 DeleteOTAUpdate(OtaUpdateId => Str)
+=head2 DeleteOTAUpdate
+
+=over
+
+=item OtaUpdateId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DeleteOTAUpdate>
 
@@ -1273,7 +1541,14 @@ Returns: a L<Paws::IoT::DeleteOTAUpdateResponse> instance
 Delete an OTA update.
 
 
-=head2 DeletePolicy(PolicyName => Str)
+=head2 DeletePolicy
+
+=over
+
+=item PolicyName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DeletePolicy>
 
@@ -1293,7 +1568,16 @@ When a policy is deleted using DeletePolicy, its default version is
 deleted with it.
 
 
-=head2 DeletePolicyVersion(PolicyName => Str, PolicyVersionId => Str)
+=head2 DeletePolicyVersion
+
+=over
+
+=item PolicyName => Str
+
+=item PolicyVersionId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DeletePolicyVersion>
 
@@ -1306,7 +1590,12 @@ version of a policy is marked as the default version, use
 ListPolicyVersions.
 
 
-=head2 DeleteRegistrationCode()
+=head2 DeleteRegistrationCode
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::IoT::DeleteRegistrationCode>
 
@@ -1315,7 +1604,14 @@ Returns: a L<Paws::IoT::DeleteRegistrationCodeResponse> instance
 Deletes a CA certificate registration code.
 
 
-=head2 DeleteRoleAlias(RoleAlias => Str)
+=head2 DeleteRoleAlias
+
+=over
+
+=item RoleAlias => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DeleteRoleAlias>
 
@@ -1324,7 +1620,14 @@ Returns: a L<Paws::IoT::DeleteRoleAliasResponse> instance
 Deletes a role alias
 
 
-=head2 DeleteStream(StreamId => Str)
+=head2 DeleteStream
+
+=over
+
+=item StreamId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DeleteStream>
 
@@ -1333,7 +1636,16 @@ Returns: a L<Paws::IoT::DeleteStreamResponse> instance
 Deletes a stream.
 
 
-=head2 DeleteThing(ThingName => Str, [ExpectedVersion => Int])
+=head2 DeleteThing
+
+=over
+
+=item ThingName => Str
+
+=item [ExpectedVersion => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DeleteThing>
 
@@ -1342,7 +1654,16 @@ Returns: a L<Paws::IoT::DeleteThingResponse> instance
 Deletes the specified thing.
 
 
-=head2 DeleteThingGroup(ThingGroupName => Str, [ExpectedVersion => Int])
+=head2 DeleteThingGroup
+
+=over
+
+=item ThingGroupName => Str
+
+=item [ExpectedVersion => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DeleteThingGroup>
 
@@ -1351,7 +1672,14 @@ Returns: a L<Paws::IoT::DeleteThingGroupResponse> instance
 Deletes a thing group.
 
 
-=head2 DeleteThingType(ThingTypeName => Str)
+=head2 DeleteThingType
+
+=over
+
+=item ThingTypeName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DeleteThingType>
 
@@ -1365,7 +1693,14 @@ associated thing, and finally use DeleteThingType to delete the thing
 type.
 
 
-=head2 DeleteTopicRule(RuleName => Str)
+=head2 DeleteTopicRule
+
+=over
+
+=item RuleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DeleteTopicRule>
 
@@ -1374,7 +1709,16 @@ Returns: nothing
 Deletes the rule.
 
 
-=head2 DeleteV2LoggingLevel(TargetName => Str, TargetType => Str)
+=head2 DeleteV2LoggingLevel
+
+=over
+
+=item TargetName => Str
+
+=item TargetType => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DeleteV2LoggingLevel>
 
@@ -1383,7 +1727,16 @@ Returns: nothing
 Deletes a logging level.
 
 
-=head2 DeprecateThingType(ThingTypeName => Str, [UndoDeprecate => Bool])
+=head2 DeprecateThingType
+
+=over
+
+=item ThingTypeName => Str
+
+=item [UndoDeprecate => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DeprecateThingType>
 
@@ -1393,7 +1746,14 @@ Deprecates a thing type. You can not associate new things with
 deprecated thing type.
 
 
-=head2 DescribeAuthorizer(AuthorizerName => Str)
+=head2 DescribeAuthorizer
+
+=over
+
+=item AuthorizerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DescribeAuthorizer>
 
@@ -1402,7 +1762,14 @@ Returns: a L<Paws::IoT::DescribeAuthorizerResponse> instance
 Describes an authorizer.
 
 
-=head2 DescribeCACertificate(CertificateId => Str)
+=head2 DescribeCACertificate
+
+=over
+
+=item CertificateId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DescribeCACertificate>
 
@@ -1411,7 +1778,14 @@ Returns: a L<Paws::IoT::DescribeCACertificateResponse> instance
 Describes a registered CA certificate.
 
 
-=head2 DescribeCertificate(CertificateId => Str)
+=head2 DescribeCertificate
+
+=over
+
+=item CertificateId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DescribeCertificate>
 
@@ -1420,7 +1794,12 @@ Returns: a L<Paws::IoT::DescribeCertificateResponse> instance
 Gets information about the specified certificate.
 
 
-=head2 DescribeDefaultAuthorizer()
+=head2 DescribeDefaultAuthorizer
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::IoT::DescribeDefaultAuthorizer>
 
@@ -1429,7 +1808,14 @@ Returns: a L<Paws::IoT::DescribeDefaultAuthorizerResponse> instance
 Describes the default authorizer.
 
 
-=head2 DescribeEndpoint([EndpointType => Str])
+=head2 DescribeEndpoint
+
+=over
+
+=item [EndpointType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DescribeEndpoint>
 
@@ -1438,7 +1824,12 @@ Returns: a L<Paws::IoT::DescribeEndpointResponse> instance
 Returns a unique endpoint specific to the AWS account making the call.
 
 
-=head2 DescribeEventConfigurations()
+=head2 DescribeEventConfigurations
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::IoT::DescribeEventConfigurations>
 
@@ -1447,7 +1838,14 @@ Returns: a L<Paws::IoT::DescribeEventConfigurationsResponse> instance
 Describes event configurations.
 
 
-=head2 DescribeIndex(IndexName => Str)
+=head2 DescribeIndex
+
+=over
+
+=item IndexName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DescribeIndex>
 
@@ -1456,7 +1854,14 @@ Returns: a L<Paws::IoT::DescribeIndexResponse> instance
 Describes a search index.
 
 
-=head2 DescribeJob(JobId => Str)
+=head2 DescribeJob
+
+=over
+
+=item JobId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DescribeJob>
 
@@ -1465,7 +1870,18 @@ Returns: a L<Paws::IoT::DescribeJobResponse> instance
 Describes a job.
 
 
-=head2 DescribeJobExecution(JobId => Str, ThingName => Str, [ExecutionNumber => Int])
+=head2 DescribeJobExecution
+
+=over
+
+=item JobId => Str
+
+=item ThingName => Str
+
+=item [ExecutionNumber => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DescribeJobExecution>
 
@@ -1474,7 +1890,14 @@ Returns: a L<Paws::IoT::DescribeJobExecutionResponse> instance
 Describes a job execution.
 
 
-=head2 DescribeRoleAlias(RoleAlias => Str)
+=head2 DescribeRoleAlias
+
+=over
+
+=item RoleAlias => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DescribeRoleAlias>
 
@@ -1483,7 +1906,14 @@ Returns: a L<Paws::IoT::DescribeRoleAliasResponse> instance
 Describes a role alias.
 
 
-=head2 DescribeStream(StreamId => Str)
+=head2 DescribeStream
+
+=over
+
+=item StreamId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DescribeStream>
 
@@ -1492,7 +1922,14 @@ Returns: a L<Paws::IoT::DescribeStreamResponse> instance
 Gets information about a stream.
 
 
-=head2 DescribeThing(ThingName => Str)
+=head2 DescribeThing
+
+=over
+
+=item ThingName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DescribeThing>
 
@@ -1501,7 +1938,14 @@ Returns: a L<Paws::IoT::DescribeThingResponse> instance
 Gets information about the specified thing.
 
 
-=head2 DescribeThingGroup(ThingGroupName => Str)
+=head2 DescribeThingGroup
+
+=over
+
+=item ThingGroupName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DescribeThingGroup>
 
@@ -1510,7 +1954,14 @@ Returns: a L<Paws::IoT::DescribeThingGroupResponse> instance
 Describe a thing group.
 
 
-=head2 DescribeThingRegistrationTask(TaskId => Str)
+=head2 DescribeThingRegistrationTask
+
+=over
+
+=item TaskId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DescribeThingRegistrationTask>
 
@@ -1519,7 +1970,14 @@ Returns: a L<Paws::IoT::DescribeThingRegistrationTaskResponse> instance
 Describes a bulk thing provisioning task.
 
 
-=head2 DescribeThingType(ThingTypeName => Str)
+=head2 DescribeThingType
+
+=over
+
+=item ThingTypeName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DescribeThingType>
 
@@ -1528,7 +1986,16 @@ Returns: a L<Paws::IoT::DescribeThingTypeResponse> instance
 Gets information about the specified thing type.
 
 
-=head2 DetachPolicy(PolicyName => Str, Target => Str)
+=head2 DetachPolicy
+
+=over
+
+=item PolicyName => Str
+
+=item Target => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DetachPolicy>
 
@@ -1537,7 +2004,16 @@ Returns: nothing
 Detaches a policy from the specified target.
 
 
-=head2 DetachPrincipalPolicy(PolicyName => Str, Principal => Str)
+=head2 DetachPrincipalPolicy
+
+=over
+
+=item PolicyName => Str
+
+=item Principal => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DetachPrincipalPolicy>
 
@@ -1548,7 +2024,16 @@ Removes the specified policy from the specified certificate.
 B<Note:> This API is deprecated. Please use DetachPolicy instead.
 
 
-=head2 DetachThingPrincipal(Principal => Str, ThingName => Str)
+=head2 DetachThingPrincipal
+
+=over
+
+=item Principal => Str
+
+=item ThingName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DetachThingPrincipal>
 
@@ -1557,7 +2042,14 @@ Returns: a L<Paws::IoT::DetachThingPrincipalResponse> instance
 Detaches the specified principal from the specified thing.
 
 
-=head2 DisableTopicRule(RuleName => Str)
+=head2 DisableTopicRule
+
+=over
+
+=item RuleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::DisableTopicRule>
 
@@ -1566,7 +2058,14 @@ Returns: nothing
 Disables the rule.
 
 
-=head2 EnableTopicRule(RuleName => Str)
+=head2 EnableTopicRule
+
+=over
+
+=item RuleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::EnableTopicRule>
 
@@ -1575,7 +2074,18 @@ Returns: nothing
 Enables the rule.
 
 
-=head2 GetEffectivePolicies([CognitoIdentityPoolId => Str, Principal => Str, ThingName => Str])
+=head2 GetEffectivePolicies
+
+=over
+
+=item [CognitoIdentityPoolId => Str]
+
+=item [Principal => Str]
+
+=item [ThingName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::GetEffectivePolicies>
 
@@ -1584,7 +2094,12 @@ Returns: a L<Paws::IoT::GetEffectivePoliciesResponse> instance
 Gets effective policies.
 
 
-=head2 GetIndexingConfiguration()
+=head2 GetIndexingConfiguration
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::IoT::GetIndexingConfiguration>
 
@@ -1593,7 +2108,14 @@ Returns: a L<Paws::IoT::GetIndexingConfigurationResponse> instance
 Gets the search configuration.
 
 
-=head2 GetJobDocument(JobId => Str)
+=head2 GetJobDocument
+
+=over
+
+=item JobId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::GetJobDocument>
 
@@ -1602,7 +2124,12 @@ Returns: a L<Paws::IoT::GetJobDocumentResponse> instance
 Gets a job document.
 
 
-=head2 GetLoggingOptions()
+=head2 GetLoggingOptions
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::IoT::GetLoggingOptions>
 
@@ -1611,7 +2138,14 @@ Returns: a L<Paws::IoT::GetLoggingOptionsResponse> instance
 Gets the logging options.
 
 
-=head2 GetOTAUpdate(OtaUpdateId => Str)
+=head2 GetOTAUpdate
+
+=over
+
+=item OtaUpdateId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::GetOTAUpdate>
 
@@ -1620,7 +2154,14 @@ Returns: a L<Paws::IoT::GetOTAUpdateResponse> instance
 Gets an OTA update.
 
 
-=head2 GetPolicy(PolicyName => Str)
+=head2 GetPolicy
+
+=over
+
+=item PolicyName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::GetPolicy>
 
@@ -1630,7 +2171,16 @@ Gets information about the specified policy with the policy document of
 the default version.
 
 
-=head2 GetPolicyVersion(PolicyName => Str, PolicyVersionId => Str)
+=head2 GetPolicyVersion
+
+=over
+
+=item PolicyName => Str
+
+=item PolicyVersionId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::GetPolicyVersion>
 
@@ -1639,7 +2189,12 @@ Returns: a L<Paws::IoT::GetPolicyVersionResponse> instance
 Gets information about the specified policy version.
 
 
-=head2 GetRegistrationCode()
+=head2 GetRegistrationCode
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::IoT::GetRegistrationCode>
 
@@ -1649,7 +2204,14 @@ Gets a registration code used to register a CA certificate with AWS
 IoT.
 
 
-=head2 GetTopicRule(RuleName => Str)
+=head2 GetTopicRule
+
+=over
+
+=item RuleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::GetTopicRule>
 
@@ -1658,7 +2220,12 @@ Returns: a L<Paws::IoT::GetTopicRuleResponse> instance
 Gets information about the rule.
 
 
-=head2 GetV2LoggingOptions()
+=head2 GetV2LoggingOptions
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::IoT::GetV2LoggingOptions>
 
@@ -1667,7 +2234,20 @@ Returns: a L<Paws::IoT::GetV2LoggingOptionsResponse> instance
 Gets the fine grained logging options.
 
 
-=head2 ListAttachedPolicies(Target => Str, [Marker => Str, PageSize => Int, Recursive => Bool])
+=head2 ListAttachedPolicies
+
+=over
+
+=item Target => Str
+
+=item [Marker => Str]
+
+=item [PageSize => Int]
+
+=item [Recursive => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListAttachedPolicies>
 
@@ -1676,7 +2256,20 @@ Returns: a L<Paws::IoT::ListAttachedPoliciesResponse> instance
 Lists the policies attached to the specified thing group.
 
 
-=head2 ListAuthorizers([AscendingOrder => Bool, Marker => Str, PageSize => Int, Status => Str])
+=head2 ListAuthorizers
+
+=over
+
+=item [AscendingOrder => Bool]
+
+=item [Marker => Str]
+
+=item [PageSize => Int]
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListAuthorizers>
 
@@ -1685,7 +2278,18 @@ Returns: a L<Paws::IoT::ListAuthorizersResponse> instance
 Lists the authorizers registered in your account.
 
 
-=head2 ListCACertificates([AscendingOrder => Bool, Marker => Str, PageSize => Int])
+=head2 ListCACertificates
+
+=over
+
+=item [AscendingOrder => Bool]
+
+=item [Marker => Str]
+
+=item [PageSize => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListCACertificates>
 
@@ -1697,7 +2301,18 @@ The results are paginated with a default page size of 25. You can use
 the returned marker to retrieve additional results.
 
 
-=head2 ListCertificates([AscendingOrder => Bool, Marker => Str, PageSize => Int])
+=head2 ListCertificates
+
+=over
+
+=item [AscendingOrder => Bool]
+
+=item [Marker => Str]
+
+=item [PageSize => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListCertificates>
 
@@ -1709,7 +2324,20 @@ The results are paginated with a default page size of 25. You can use
 the returned marker to retrieve additional results.
 
 
-=head2 ListCertificatesByCA(CaCertificateId => Str, [AscendingOrder => Bool, Marker => Str, PageSize => Int])
+=head2 ListCertificatesByCA
+
+=over
+
+=item CaCertificateId => Str
+
+=item [AscendingOrder => Bool]
+
+=item [Marker => Str]
+
+=item [PageSize => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListCertificatesByCA>
 
@@ -1718,7 +2346,16 @@ Returns: a L<Paws::IoT::ListCertificatesByCAResponse> instance
 List the device certificates signed by the specified CA certificate.
 
 
-=head2 ListIndices([MaxResults => Int, NextToken => Str])
+=head2 ListIndices
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListIndices>
 
@@ -1727,7 +2364,20 @@ Returns: a L<Paws::IoT::ListIndicesResponse> instance
 Lists the search indices.
 
 
-=head2 ListJobExecutionsForJob(JobId => Str, [MaxResults => Int, NextToken => Str, Status => Str])
+=head2 ListJobExecutionsForJob
+
+=over
+
+=item JobId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListJobExecutionsForJob>
 
@@ -1736,7 +2386,20 @@ Returns: a L<Paws::IoT::ListJobExecutionsForJobResponse> instance
 Lists the job executions for a job.
 
 
-=head2 ListJobExecutionsForThing(ThingName => Str, [MaxResults => Int, NextToken => Str, Status => Str])
+=head2 ListJobExecutionsForThing
+
+=over
+
+=item ThingName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListJobExecutionsForThing>
 
@@ -1745,7 +2408,24 @@ Returns: a L<Paws::IoT::ListJobExecutionsForThingResponse> instance
 Lists the job executions for the specified thing.
 
 
-=head2 ListJobs([MaxResults => Int, NextToken => Str, Status => Str, TargetSelection => Str, ThingGroupId => Str, ThingGroupName => Str])
+=head2 ListJobs
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Status => Str]
+
+=item [TargetSelection => Str]
+
+=item [ThingGroupId => Str]
+
+=item [ThingGroupName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListJobs>
 
@@ -1754,7 +2434,18 @@ Returns: a L<Paws::IoT::ListJobsResponse> instance
 Lists jobs.
 
 
-=head2 ListOTAUpdates([MaxResults => Int, NextToken => Str, OtaUpdateStatus => Str])
+=head2 ListOTAUpdates
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [OtaUpdateStatus => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListOTAUpdates>
 
@@ -1763,7 +2454,18 @@ Returns: a L<Paws::IoT::ListOTAUpdatesResponse> instance
 Lists OTA updates.
 
 
-=head2 ListOutgoingCertificates([AscendingOrder => Bool, Marker => Str, PageSize => Int])
+=head2 ListOutgoingCertificates
+
+=over
+
+=item [AscendingOrder => Bool]
+
+=item [Marker => Str]
+
+=item [PageSize => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListOutgoingCertificates>
 
@@ -1772,7 +2474,18 @@ Returns: a L<Paws::IoT::ListOutgoingCertificatesResponse> instance
 Lists certificates that are being transferred but not yet accepted.
 
 
-=head2 ListPolicies([AscendingOrder => Bool, Marker => Str, PageSize => Int])
+=head2 ListPolicies
+
+=over
+
+=item [AscendingOrder => Bool]
+
+=item [Marker => Str]
+
+=item [PageSize => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListPolicies>
 
@@ -1781,7 +2494,20 @@ Returns: a L<Paws::IoT::ListPoliciesResponse> instance
 Lists your policies.
 
 
-=head2 ListPolicyPrincipals(PolicyName => Str, [AscendingOrder => Bool, Marker => Str, PageSize => Int])
+=head2 ListPolicyPrincipals
+
+=over
+
+=item PolicyName => Str
+
+=item [AscendingOrder => Bool]
+
+=item [Marker => Str]
+
+=item [PageSize => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListPolicyPrincipals>
 
@@ -1793,7 +2519,14 @@ B<Note:> This API is deprecated. Please use ListTargetsForPolicy
 instead.
 
 
-=head2 ListPolicyVersions(PolicyName => Str)
+=head2 ListPolicyVersions
+
+=over
+
+=item PolicyName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListPolicyVersions>
 
@@ -1803,7 +2536,20 @@ Lists the versions of the specified policy and identifies the default
 version.
 
 
-=head2 ListPrincipalPolicies(Principal => Str, [AscendingOrder => Bool, Marker => Str, PageSize => Int])
+=head2 ListPrincipalPolicies
+
+=over
+
+=item Principal => Str
+
+=item [AscendingOrder => Bool]
+
+=item [Marker => Str]
+
+=item [PageSize => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListPrincipalPolicies>
 
@@ -1817,7 +2563,18 @@ B<Note:> This API is deprecated. Please use ListAttachedPolicies
 instead.
 
 
-=head2 ListPrincipalThings(Principal => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListPrincipalThings
+
+=over
+
+=item Principal => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListPrincipalThings>
 
@@ -1826,7 +2583,18 @@ Returns: a L<Paws::IoT::ListPrincipalThingsResponse> instance
 Lists the things associated with the specified principal.
 
 
-=head2 ListRoleAliases([AscendingOrder => Bool, Marker => Str, PageSize => Int])
+=head2 ListRoleAliases
+
+=over
+
+=item [AscendingOrder => Bool]
+
+=item [Marker => Str]
+
+=item [PageSize => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListRoleAliases>
 
@@ -1835,7 +2603,18 @@ Returns: a L<Paws::IoT::ListRoleAliasesResponse> instance
 Lists the role aliases registered in your account.
 
 
-=head2 ListStreams([AscendingOrder => Bool, MaxResults => Int, NextToken => Str])
+=head2 ListStreams
+
+=over
+
+=item [AscendingOrder => Bool]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListStreams>
 
@@ -1844,7 +2623,18 @@ Returns: a L<Paws::IoT::ListStreamsResponse> instance
 Lists all of the streams in your AWS account.
 
 
-=head2 ListTargetsForPolicy(PolicyName => Str, [Marker => Str, PageSize => Int])
+=head2 ListTargetsForPolicy
+
+=over
+
+=item PolicyName => Str
+
+=item [Marker => Str]
+
+=item [PageSize => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListTargetsForPolicy>
 
@@ -1853,7 +2643,22 @@ Returns: a L<Paws::IoT::ListTargetsForPolicyResponse> instance
 List targets for the specified policy.
 
 
-=head2 ListThingGroups([MaxResults => Int, NamePrefixFilter => Str, NextToken => Str, ParentGroup => Str, Recursive => Bool])
+=head2 ListThingGroups
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NamePrefixFilter => Str]
+
+=item [NextToken => Str]
+
+=item [ParentGroup => Str]
+
+=item [Recursive => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListThingGroups>
 
@@ -1862,7 +2667,18 @@ Returns: a L<Paws::IoT::ListThingGroupsResponse> instance
 List the thing groups in your account.
 
 
-=head2 ListThingGroupsForThing(ThingName => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListThingGroupsForThing
+
+=over
+
+=item ThingName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListThingGroupsForThing>
 
@@ -1871,7 +2687,14 @@ Returns: a L<Paws::IoT::ListThingGroupsForThingResponse> instance
 List the thing groups to which the specified thing belongs.
 
 
-=head2 ListThingPrincipals(ThingName => Str)
+=head2 ListThingPrincipals
+
+=over
+
+=item ThingName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListThingPrincipals>
 
@@ -1880,7 +2703,20 @@ Returns: a L<Paws::IoT::ListThingPrincipalsResponse> instance
 Lists the principals associated with the specified thing.
 
 
-=head2 ListThingRegistrationTaskReports(ReportType => Str, TaskId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListThingRegistrationTaskReports
+
+=over
+
+=item ReportType => Str
+
+=item TaskId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListThingRegistrationTaskReports>
 
@@ -1889,7 +2725,18 @@ Returns: a L<Paws::IoT::ListThingRegistrationTaskReportsResponse> instance
 Information about the thing registration tasks.
 
 
-=head2 ListThingRegistrationTasks([MaxResults => Int, NextToken => Str, Status => Str])
+=head2 ListThingRegistrationTasks
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListThingRegistrationTasks>
 
@@ -1898,7 +2745,22 @@ Returns: a L<Paws::IoT::ListThingRegistrationTasksResponse> instance
 List bulk thing provisioning tasks.
 
 
-=head2 ListThings([AttributeName => Str, AttributeValue => Str, MaxResults => Int, NextToken => Str, ThingTypeName => Str])
+=head2 ListThings
+
+=over
+
+=item [AttributeName => Str]
+
+=item [AttributeValue => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ThingTypeName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListThings>
 
@@ -1910,7 +2772,20 @@ with attributeName=Color and attributeValue=Red retrieves all things in
 the registry that contain an attribute B<Color> with the value B<Red>.
 
 
-=head2 ListThingsInThingGroup(ThingGroupName => Str, [MaxResults => Int, NextToken => Str, Recursive => Bool])
+=head2 ListThingsInThingGroup
+
+=over
+
+=item ThingGroupName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Recursive => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListThingsInThingGroup>
 
@@ -1919,7 +2794,18 @@ Returns: a L<Paws::IoT::ListThingsInThingGroupResponse> instance
 Lists the things in the specified group.
 
 
-=head2 ListThingTypes([MaxResults => Int, NextToken => Str, ThingTypeName => Str])
+=head2 ListThingTypes
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ThingTypeName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListThingTypes>
 
@@ -1928,7 +2814,20 @@ Returns: a L<Paws::IoT::ListThingTypesResponse> instance
 Lists the existing thing types.
 
 
-=head2 ListTopicRules([MaxResults => Int, NextToken => Str, RuleDisabled => Bool, Topic => Str])
+=head2 ListTopicRules
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [RuleDisabled => Bool]
+
+=item [Topic => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListTopicRules>
 
@@ -1937,7 +2836,18 @@ Returns: a L<Paws::IoT::ListTopicRulesResponse> instance
 Lists the rules for the specific topic.
 
 
-=head2 ListV2LoggingLevels([MaxResults => Int, NextToken => Str, TargetType => Str])
+=head2 ListV2LoggingLevels
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TargetType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ListV2LoggingLevels>
 
@@ -1946,7 +2856,22 @@ Returns: a L<Paws::IoT::ListV2LoggingLevelsResponse> instance
 Lists logging levels.
 
 
-=head2 RegisterCACertificate(CaCertificate => Str, VerificationCertificate => Str, [AllowAutoRegistration => Bool, RegistrationConfig => L<Paws::IoT::RegistrationConfig>, SetAsActive => Bool])
+=head2 RegisterCACertificate
+
+=over
+
+=item CaCertificate => Str
+
+=item VerificationCertificate => Str
+
+=item [AllowAutoRegistration => Bool]
+
+=item [RegistrationConfig => L<Paws::IoT::RegistrationConfig>]
+
+=item [SetAsActive => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::RegisterCACertificate>
 
@@ -1962,7 +2887,20 @@ certificate when you register your device certificates with the
 RegisterCertificate API.
 
 
-=head2 RegisterCertificate(CertificatePem => Str, [CaCertificatePem => Str, SetAsActive => Bool, Status => Str])
+=head2 RegisterCertificate
+
+=over
+
+=item CertificatePem => Str
+
+=item [CaCertificatePem => Str]
+
+=item [SetAsActive => Bool]
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::RegisterCertificate>
 
@@ -1974,7 +2912,16 @@ certificate that was used to sign the device certificate being
 registered.
 
 
-=head2 RegisterThing(TemplateBody => Str, [Parameters => L<Paws::IoT::Parameters>])
+=head2 RegisterThing
+
+=over
+
+=item TemplateBody => Str
+
+=item [Parameters => L<Paws::IoT::Parameters>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::RegisterThing>
 
@@ -1983,7 +2930,16 @@ Returns: a L<Paws::IoT::RegisterThingResponse> instance
 Provisions a thing.
 
 
-=head2 RejectCertificateTransfer(CertificateId => Str, [RejectReason => Str])
+=head2 RejectCertificateTransfer
+
+=over
+
+=item CertificateId => Str
+
+=item [RejectReason => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::RejectCertificateTransfer>
 
@@ -2001,7 +2957,20 @@ is called, the certificate will be returned to the source's account in
 the INACTIVE state.
 
 
-=head2 RemoveThingFromThingGroup([ThingArn => Str, ThingGroupArn => Str, ThingGroupName => Str, ThingName => Str])
+=head2 RemoveThingFromThingGroup
+
+=over
+
+=item [ThingArn => Str]
+
+=item [ThingGroupArn => Str]
+
+=item [ThingGroupName => Str]
+
+=item [ThingName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::RemoveThingFromThingGroup>
 
@@ -2010,7 +2979,16 @@ Returns: a L<Paws::IoT::RemoveThingFromThingGroupResponse> instance
 Remove the specified thing from the specified group.
 
 
-=head2 ReplaceTopicRule(RuleName => Str, TopicRulePayload => L<Paws::IoT::TopicRulePayload>)
+=head2 ReplaceTopicRule
+
+=over
+
+=item RuleName => Str
+
+=item TopicRulePayload => L<Paws::IoT::TopicRulePayload>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::ReplaceTopicRule>
 
@@ -2022,7 +3000,22 @@ permission to create rules will be able to access data processed by the
 rule.
 
 
-=head2 SearchIndex(QueryString => Str, [IndexName => Str, MaxResults => Int, NextToken => Str, QueryVersion => Str])
+=head2 SearchIndex
+
+=over
+
+=item QueryString => Str
+
+=item [IndexName => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [QueryVersion => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::SearchIndex>
 
@@ -2031,7 +3024,14 @@ Returns: a L<Paws::IoT::SearchIndexResponse> instance
 The query search index.
 
 
-=head2 SetDefaultAuthorizer(AuthorizerName => Str)
+=head2 SetDefaultAuthorizer
+
+=over
+
+=item AuthorizerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::SetDefaultAuthorizer>
 
@@ -2041,7 +3041,16 @@ Sets the default authorizer. This will be used if a websocket
 connection is made without specifying an authorizer.
 
 
-=head2 SetDefaultPolicyVersion(PolicyName => Str, PolicyVersionId => Str)
+=head2 SetDefaultPolicyVersion
+
+=over
+
+=item PolicyName => Str
+
+=item PolicyVersionId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::SetDefaultPolicyVersion>
 
@@ -2053,7 +3062,14 @@ which the policy is attached. To list the principals the policy is
 attached to, use the ListPrincipalPolicy API.
 
 
-=head2 SetLoggingOptions(LoggingOptionsPayload => L<Paws::IoT::LoggingOptionsPayload>)
+=head2 SetLoggingOptions
+
+=over
+
+=item LoggingOptionsPayload => L<Paws::IoT::LoggingOptionsPayload>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::SetLoggingOptions>
 
@@ -2062,7 +3078,16 @@ Returns: nothing
 Sets the logging options.
 
 
-=head2 SetV2LoggingLevel(LogLevel => Str, LogTarget => L<Paws::IoT::LogTarget>)
+=head2 SetV2LoggingLevel
+
+=over
+
+=item LogLevel => Str
+
+=item LogTarget => L<Paws::IoT::LogTarget>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::SetV2LoggingLevel>
 
@@ -2071,7 +3096,18 @@ Returns: nothing
 Sets the logging level.
 
 
-=head2 SetV2LoggingOptions([DefaultLogLevel => Str, DisableAllLogs => Bool, RoleArn => Str])
+=head2 SetV2LoggingOptions
+
+=over
+
+=item [DefaultLogLevel => Str]
+
+=item [DisableAllLogs => Bool]
+
+=item [RoleArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::SetV2LoggingOptions>
 
@@ -2080,7 +3116,20 @@ Returns: nothing
 Sets the logging options for the V2 logging service.
 
 
-=head2 StartThingRegistrationTask(InputFileBucket => Str, InputFileKey => Str, RoleArn => Str, TemplateBody => Str)
+=head2 StartThingRegistrationTask
+
+=over
+
+=item InputFileBucket => Str
+
+=item InputFileKey => Str
+
+=item RoleArn => Str
+
+=item TemplateBody => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::StartThingRegistrationTask>
 
@@ -2089,7 +3138,14 @@ Returns: a L<Paws::IoT::StartThingRegistrationTaskResponse> instance
 Creates a bulk thing provisioning task.
 
 
-=head2 StopThingRegistrationTask(TaskId => Str)
+=head2 StopThingRegistrationTask
+
+=over
+
+=item TaskId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::StopThingRegistrationTask>
 
@@ -2098,7 +3154,24 @@ Returns: a L<Paws::IoT::StopThingRegistrationTaskResponse> instance
 Cancels a bulk thing provisioning task.
 
 
-=head2 TestAuthorization(AuthInfos => ArrayRef[L<Paws::IoT::AuthInfo>], [ClientId => Str, CognitoIdentityPoolId => Str, PolicyNamesToAdd => ArrayRef[Str|Undef], PolicyNamesToSkip => ArrayRef[Str|Undef], Principal => Str])
+=head2 TestAuthorization
+
+=over
+
+=item AuthInfos => ArrayRef[L<Paws::IoT::AuthInfo>]
+
+=item [ClientId => Str]
+
+=item [CognitoIdentityPoolId => Str]
+
+=item [PolicyNamesToAdd => ArrayRef[Str|Undef]]
+
+=item [PolicyNamesToSkip => ArrayRef[Str|Undef]]
+
+=item [Principal => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::TestAuthorization>
 
@@ -2107,7 +3180,18 @@ Returns: a L<Paws::IoT::TestAuthorizationResponse> instance
 Test custom authorization.
 
 
-=head2 TestInvokeAuthorizer(AuthorizerName => Str, Token => Str, TokenSignature => Str)
+=head2 TestInvokeAuthorizer
+
+=over
+
+=item AuthorizerName => Str
+
+=item Token => Str
+
+=item TokenSignature => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::TestInvokeAuthorizer>
 
@@ -2116,7 +3200,18 @@ Returns: a L<Paws::IoT::TestInvokeAuthorizerResponse> instance
 Invoke the specified custom authorizer for testing purposes.
 
 
-=head2 TransferCertificate(CertificateId => Str, TargetAwsAccount => Str, [TransferMessage => Str])
+=head2 TransferCertificate
+
+=over
+
+=item CertificateId => Str
+
+=item TargetAwsAccount => Str
+
+=item [TransferMessage => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::TransferCertificate>
 
@@ -2136,7 +3231,22 @@ The certificate must not have any policies attached to it. You can use
 the DetachPrincipalPolicy API to detach them.
 
 
-=head2 UpdateAuthorizer(AuthorizerName => Str, [AuthorizerFunctionArn => Str, Status => Str, TokenKeyName => Str, TokenSigningPublicKeys => L<Paws::IoT::PublicKeyMap>])
+=head2 UpdateAuthorizer
+
+=over
+
+=item AuthorizerName => Str
+
+=item [AuthorizerFunctionArn => Str]
+
+=item [Status => Str]
+
+=item [TokenKeyName => Str]
+
+=item [TokenSigningPublicKeys => L<Paws::IoT::PublicKeyMap>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::UpdateAuthorizer>
 
@@ -2145,7 +3255,22 @@ Returns: a L<Paws::IoT::UpdateAuthorizerResponse> instance
 Updates an authorizer.
 
 
-=head2 UpdateCACertificate(CertificateId => Str, [NewAutoRegistrationStatus => Str, NewStatus => Str, RegistrationConfig => L<Paws::IoT::RegistrationConfig>, RemoveAutoRegistration => Bool])
+=head2 UpdateCACertificate
+
+=over
+
+=item CertificateId => Str
+
+=item [NewAutoRegistrationStatus => Str]
+
+=item [NewStatus => Str]
+
+=item [RegistrationConfig => L<Paws::IoT::RegistrationConfig>]
+
+=item [RemoveAutoRegistration => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::UpdateCACertificate>
 
@@ -2154,7 +3279,16 @@ Returns: nothing
 Updates a registered CA certificate.
 
 
-=head2 UpdateCertificate(CertificateId => Str, NewStatus => Str)
+=head2 UpdateCertificate
+
+=over
+
+=item CertificateId => Str
+
+=item NewStatus => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::UpdateCertificate>
 
@@ -2171,7 +3305,14 @@ The ACTIVE state is required to authenticate devices connecting to AWS
 IoT using a certificate.
 
 
-=head2 UpdateEventConfigurations([EventConfigurations => L<Paws::IoT::EventConfigurations>])
+=head2 UpdateEventConfigurations
+
+=over
+
+=item [EventConfigurations => L<Paws::IoT::EventConfigurations>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::UpdateEventConfigurations>
 
@@ -2180,7 +3321,14 @@ Returns: a L<Paws::IoT::UpdateEventConfigurationsResponse> instance
 Updates the event configurations.
 
 
-=head2 UpdateIndexingConfiguration([ThingIndexingConfiguration => L<Paws::IoT::ThingIndexingConfiguration>])
+=head2 UpdateIndexingConfiguration
+
+=over
+
+=item [ThingIndexingConfiguration => L<Paws::IoT::ThingIndexingConfiguration>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::UpdateIndexingConfiguration>
 
@@ -2189,7 +3337,18 @@ Returns: a L<Paws::IoT::UpdateIndexingConfigurationResponse> instance
 Updates the search configuration.
 
 
-=head2 UpdateRoleAlias(RoleAlias => Str, [CredentialDurationSeconds => Int, RoleArn => Str])
+=head2 UpdateRoleAlias
+
+=over
+
+=item RoleAlias => Str
+
+=item [CredentialDurationSeconds => Int]
+
+=item [RoleArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::UpdateRoleAlias>
 
@@ -2198,7 +3357,20 @@ Returns: a L<Paws::IoT::UpdateRoleAliasResponse> instance
 Updates a role alias.
 
 
-=head2 UpdateStream(StreamId => Str, [Description => Str, Files => ArrayRef[L<Paws::IoT::StreamFile>], RoleArn => Str])
+=head2 UpdateStream
+
+=over
+
+=item StreamId => Str
+
+=item [Description => Str]
+
+=item [Files => ArrayRef[L<Paws::IoT::StreamFile>]]
+
+=item [RoleArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::UpdateStream>
 
@@ -2208,7 +3380,22 @@ Updates an existing stream. The stream version will be incremented by
 one.
 
 
-=head2 UpdateThing(ThingName => Str, [AttributePayload => L<Paws::IoT::AttributePayload>, ExpectedVersion => Int, RemoveThingType => Bool, ThingTypeName => Str])
+=head2 UpdateThing
+
+=over
+
+=item ThingName => Str
+
+=item [AttributePayload => L<Paws::IoT::AttributePayload>]
+
+=item [ExpectedVersion => Int]
+
+=item [RemoveThingType => Bool]
+
+=item [ThingTypeName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::UpdateThing>
 
@@ -2217,7 +3404,18 @@ Returns: a L<Paws::IoT::UpdateThingResponse> instance
 Updates the data for a thing.
 
 
-=head2 UpdateThingGroup(ThingGroupName => Str, ThingGroupProperties => L<Paws::IoT::ThingGroupProperties>, [ExpectedVersion => Int])
+=head2 UpdateThingGroup
+
+=over
+
+=item ThingGroupName => Str
+
+=item ThingGroupProperties => L<Paws::IoT::ThingGroupProperties>
+
+=item [ExpectedVersion => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::UpdateThingGroup>
 
@@ -2226,7 +3424,18 @@ Returns: a L<Paws::IoT::UpdateThingGroupResponse> instance
 Update a thing group.
 
 
-=head2 UpdateThingGroupsForThing([ThingGroupsToAdd => ArrayRef[Str|Undef], ThingGroupsToRemove => ArrayRef[Str|Undef], ThingName => Str])
+=head2 UpdateThingGroupsForThing
+
+=over
+
+=item [ThingGroupsToAdd => ArrayRef[Str|Undef]]
+
+=item [ThingGroupsToRemove => ArrayRef[Str|Undef]]
+
+=item [ThingName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoT::UpdateThingGroupsForThing>
 

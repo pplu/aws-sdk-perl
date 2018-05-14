@@ -1,9 +1,9 @@
 package Paws::EC2::DiskImageDescription;
   use Moose;
   has Checksum => (is => 'ro', isa => 'Str', request_name => 'checksum', traits => ['NameInRequest']);
-  has Format => (is => 'ro', isa => 'Str', request_name => 'format', traits => ['NameInRequest'], required => 1);
-  has ImportManifestUrl => (is => 'ro', isa => 'Str', request_name => 'importManifestUrl', traits => ['NameInRequest'], required => 1);
-  has Size => (is => 'ro', isa => 'Int', request_name => 'size', traits => ['NameInRequest'], required => 1);
+  has Format => (is => 'ro', isa => 'Str', request_name => 'format', traits => ['NameInRequest']);
+  has ImportManifestUrl => (is => 'ro', isa => 'Str', request_name => 'importManifestUrl', traits => ['NameInRequest']);
+  has Size => (is => 'ro', isa => 'Int', request_name => 'size', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -44,12 +44,12 @@ This class has no description
   The checksum computed for the disk image.
 
 
-=head2 B<REQUIRED> Format => Str
+=head2 Format => Str
 
   The disk image format.
 
 
-=head2 B<REQUIRED> ImportManifestUrl => Str
+=head2 ImportManifestUrl => Str
 
   A presigned URL for the import manifest stored in Amazon S3. For
 information about creating a presigned URL for an Amazon S3 object,
@@ -63,7 +63,7 @@ action, see VM Import Manifest
 (http://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html).
 
 
-=head2 B<REQUIRED> Size => Int
+=head2 Size => Int
 
   The size of the disk image, in GiB.
 

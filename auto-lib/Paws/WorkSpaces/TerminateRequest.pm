@@ -38,7 +38,7 @@ Information used to terminate a WorkSpace.
 
 =head2 B<REQUIRED> WorkspaceId => Str
 
-  The identifier of the WorkSpace.
+  The ID of the WorkSpace.
 
 
 

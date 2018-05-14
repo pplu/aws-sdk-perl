@@ -692,7 +692,14 @@ CloudTrail User Guide
 
 =head1 METHODS
 
-=head2 AcceptHandshake(HandshakeId => Str)
+=head2 AcceptHandshake
+
+=over
+
+=item HandshakeId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::AcceptHandshake>
 
@@ -741,7 +748,16 @@ After you accept a handshake, it continues to appear in the results of
 relevant APIs for only 30 days. After that it is deleted.
 
 
-=head2 AttachPolicy(PolicyId => Str, TargetId => Str)
+=head2 AttachPolicy
+
+=over
+
+=item PolicyId => Str
+
+=item TargetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::AttachPolicy>
 
@@ -809,7 +825,14 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 CancelHandshake(HandshakeId => Str)
+=head2 CancelHandshake
+
+=over
+
+=item HandshakeId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::CancelHandshake>
 
@@ -827,7 +850,20 @@ After you cancel a handshake, it continues to appear in the results of
 relevant APIs for only 30 days. After that it is deleted.
 
 
-=head2 CreateAccount(AccountName => Str, Email => Str, [IamUserAccessToBilling => Str, RoleName => Str])
+=head2 CreateAccount
+
+=over
+
+=item AccountName => Str
+
+=item Email => Str
+
+=item [IamUserAccessToBilling => Str]
+
+=item [RoleName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::CreateAccount>
 
@@ -897,7 +933,14 @@ your organization is still initializing, please contact AWS Customer
 Support (https://console.aws.amazon.com/support/home#/).
 
 
-=head2 CreateOrganization([FeatureSet => Str])
+=head2 CreateOrganization
+
+=over
+
+=item [FeatureSet => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::CreateOrganization>
 
@@ -921,7 +964,16 @@ C<CONSOLIDATED_BILLING">, then no policy types are enabled by default
 and you cannot use organization policies.
 
 
-=head2 CreateOrganizationalUnit(Name => Str, ParentId => Str)
+=head2 CreateOrganizationalUnit
+
+=over
+
+=item Name => Str
+
+=item ParentId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::CreateOrganizationalUnit>
 
@@ -941,7 +993,20 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 CreatePolicy(Content => Str, Description => Str, Name => Str, Type => Str)
+=head2 CreatePolicy
+
+=over
+
+=item Content => Str
+
+=item Description => Str
+
+=item Name => Str
+
+=item Type => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::CreatePolicy>
 
@@ -958,7 +1023,14 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 DeclineHandshake(HandshakeId => Str)
+=head2 DeclineHandshake
+
+=over
+
+=item HandshakeId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::DeclineHandshake>
 
@@ -976,7 +1048,14 @@ After you decline a handshake, it continues to appear in the results of
 relevant APIs for only 30 days. After that it is deleted.
 
 
-=head2 DeleteOrganization( => )
+=head2 DeleteOrganization
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::DeleteOrganization>
 
@@ -987,7 +1066,14 @@ credentials from the master account. The organization must be empty of
 member accounts, OUs, and policies.
 
 
-=head2 DeleteOrganizationalUnit(OrganizationalUnitId => Str)
+=head2 DeleteOrganizationalUnit
+
+=over
+
+=item OrganizationalUnitId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::DeleteOrganizationalUnit>
 
@@ -1001,7 +1087,14 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 DeletePolicy(PolicyId => Str)
+=head2 DeletePolicy
+
+=over
+
+=item PolicyId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::DeletePolicy>
 
@@ -1015,7 +1108,14 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 DescribeAccount(AccountId => Str)
+=head2 DescribeAccount
+
+=over
+
+=item AccountId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::DescribeAccount>
 
@@ -1028,7 +1128,14 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 DescribeCreateAccountStatus(CreateAccountRequestId => Str)
+=head2 DescribeCreateAccountStatus
+
+=over
+
+=item CreateAccountRequestId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::DescribeCreateAccountStatus>
 
@@ -1041,7 +1148,14 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 DescribeHandshake(HandshakeId => Str)
+=head2 DescribeHandshake
+
+=over
+
+=item HandshakeId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::DescribeHandshake>
 
@@ -1058,7 +1172,14 @@ no longer accessible.
 This operation can be called from any account in the organization.
 
 
-=head2 DescribeOrganization( => )
+=head2 DescribeOrganization
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::DescribeOrganization>
 
@@ -1074,7 +1195,14 @@ be disabled separately at the root level with DisablePolicyType. Use
 ListRoots to see the status of policy types for a specified root.
 
 
-=head2 DescribeOrganizationalUnit(OrganizationalUnitId => Str)
+=head2 DescribeOrganizationalUnit
+
+=over
+
+=item OrganizationalUnitId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::DescribeOrganizationalUnit>
 
@@ -1086,7 +1214,14 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 DescribePolicy(PolicyId => Str)
+=head2 DescribePolicy
+
+=over
+
+=item PolicyId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::DescribePolicy>
 
@@ -1098,7 +1233,16 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 DetachPolicy(PolicyId => Str, TargetId => Str)
+=head2 DetachPolicy
+
+=over
+
+=item PolicyId => Str
+
+=item TargetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::DetachPolicy>
 
@@ -1126,7 +1270,14 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 DisableAWSServiceAccess(ServicePrincipal => Str)
+=head2 DisableAWSServiceAccess
+
+=over
+
+=item ServicePrincipal => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::DisableAWSServiceAccess>
 
@@ -1167,7 +1318,16 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 DisablePolicyType(PolicyType => Str, RootId => Str)
+=head2 DisablePolicyType
+
+=over
+
+=item PolicyType => Str
+
+=item RootId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::DisablePolicyType>
 
@@ -1190,7 +1350,12 @@ DescribeOrganization to see the status of policy types in the
 organization.
 
 
-=head2 EnableAllFeatures()
+=head2 EnableAllFeatures
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::Organizations::EnableAllFeatures>
 
@@ -1235,7 +1400,14 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 EnableAWSServiceAccess(ServicePrincipal => Str)
+=head2 EnableAWSServiceAccess
+
+=over
+
+=item ServicePrincipal => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::EnableAWSServiceAccess>
 
@@ -1269,7 +1441,16 @@ account and only if the organization has enabled all features
 (http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html).
 
 
-=head2 EnablePolicyType(PolicyType => Str, RootId => Str)
+=head2 EnablePolicyType
+
+=over
+
+=item PolicyType => Str
+
+=item RootId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::EnablePolicyType>
 
@@ -1290,7 +1471,16 @@ status of available policy types in the organization.
 To view the status of policy type in a root, use ListRoots.
 
 
-=head2 InviteAccountToOrganization(Target => L<Paws::Organizations::HandshakeParty>, [Notes => Str])
+=head2 InviteAccountToOrganization
+
+=over
+
+=item Target => L<Paws::Organizations::HandshakeParty>
+
+=item [Notes => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::InviteAccountToOrganization>
 
@@ -1319,7 +1509,14 @@ your organization is still initializing, please contact AWS Customer
 Support (https://console.aws.amazon.com/support/home#/).
 
 
-=head2 LeaveOrganization( => )
+=head2 LeaveOrganization
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::LeaveOrganization>
 
@@ -1371,7 +1568,16 @@ in the I<AWS Billing and Cost Management User Guide>.
 
 
 
-=head2 ListAccounts([MaxResults => Int, NextToken => Str])
+=head2 ListAccounts
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::ListAccounts>
 
@@ -1391,7 +1597,18 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 ListAccountsForParent(ParentId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListAccountsForParent
+
+=over
+
+=item ParentId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::ListAccountsForParent>
 
@@ -1414,7 +1631,16 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 ListAWSServiceAccessForOrganization([MaxResults => Int, NextToken => Str])
+=head2 ListAWSServiceAccessForOrganization
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::ListAWSServiceAccessForOrganization>
 
@@ -1436,7 +1662,20 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 ListChildren(ChildType => Str, ParentId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListChildren
+
+=over
+
+=item ChildType => Str
+
+=item ParentId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::ListChildren>
 
@@ -1456,7 +1695,18 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 ListCreateAccountStatus([MaxResults => Int, NextToken => Str, States => ArrayRef[Str|Undef]])
+=head2 ListCreateAccountStatus
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [States => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::ListCreateAccountStatus>
 
@@ -1475,7 +1725,18 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 ListHandshakesForAccount([Filter => L<Paws::Organizations::HandshakeFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListHandshakesForAccount
+
+=over
+
+=item [Filter => L<Paws::Organizations::HandshakeFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::ListHandshakesForAccount>
 
@@ -1497,7 +1758,18 @@ when there are no more results to display.
 This operation can be called from any account in the organization.
 
 
-=head2 ListHandshakesForOrganization([Filter => L<Paws::Organizations::HandshakeFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListHandshakesForOrganization
+
+=over
+
+=item [Filter => L<Paws::Organizations::HandshakeFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::ListHandshakesForOrganization>
 
@@ -1522,7 +1794,18 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 ListOrganizationalUnitsForParent(ParentId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListOrganizationalUnitsForParent
+
+=over
+
+=item ParentId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::ListOrganizationalUnitsForParent>
 
@@ -1541,7 +1824,18 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 ListParents(ChildId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListParents
+
+=over
+
+=item ChildId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::ListParents>
 
@@ -1564,7 +1858,18 @@ account.
 In the current release, a child can have only a single parent.
 
 
-=head2 ListPolicies(Filter => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListPolicies
+
+=over
+
+=item Filter => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::ListPolicies>
 
@@ -1583,7 +1888,20 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 ListPoliciesForTarget(Filter => Str, TargetId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListPoliciesForTarget
+
+=over
+
+=item Filter => Str
+
+=item TargetId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::ListPoliciesForTarget>
 
@@ -1603,7 +1921,16 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 ListRoots([MaxResults => Int, NextToken => Str])
+=head2 ListRoots
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::ListRoots>
 
@@ -1628,7 +1955,18 @@ in a root. To see the availability of a policy type in an organization,
 use DescribeOrganization.
 
 
-=head2 ListTargetsForPolicy(PolicyId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListTargetsForPolicy
+
+=over
+
+=item PolicyId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::ListTargetsForPolicy>
 
@@ -1647,7 +1985,18 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 MoveAccount(AccountId => Str, DestinationParentId => Str, SourceParentId => Str)
+=head2 MoveAccount
+
+=over
+
+=item AccountId => Str
+
+=item DestinationParentId => Str
+
+=item SourceParentId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::MoveAccount>
 
@@ -1660,7 +2009,14 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 RemoveAccountFromOrganization(AccountId => Str)
+=head2 RemoveAccountFromOrganization
+
+=over
+
+=item AccountId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::RemoveAccountFromOrganization>
 
@@ -1711,7 +2067,16 @@ in the I<AWS Billing and Cost Management User Guide>.
 
 
 
-=head2 UpdateOrganizationalUnit(OrganizationalUnitId => Str, [Name => Str])
+=head2 UpdateOrganizationalUnit
+
+=over
+
+=item OrganizationalUnitId => Str
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::UpdateOrganizationalUnit>
 
@@ -1725,7 +2090,20 @@ This operation can be called only from the organization's master
 account.
 
 
-=head2 UpdatePolicy(PolicyId => Str, [Content => Str, Description => Str, Name => Str])
+=head2 UpdatePolicy
+
+=over
+
+=item PolicyId => Str
+
+=item [Content => Str]
+
+=item [Description => Str]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Organizations::UpdatePolicy>
 

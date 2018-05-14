@@ -102,7 +102,16 @@ obtain a CustomerIdentifier and Product Code.
 
 =head1 METHODS
 
-=head2 BatchMeterUsage(ProductCode => Str, UsageRecords => ArrayRef[L<Paws::MarketplaceMetering::UsageRecord>])
+=head2 BatchMeterUsage
+
+=over
+
+=item ProductCode => Str
+
+=item UsageRecords => ArrayRef[L<Paws::MarketplaceMetering::UsageRecord>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MarketplaceMetering::BatchMeterUsage>
 
@@ -121,7 +130,22 @@ BatchMeterUsage.
 BatchMeterUsage can process up to 25 UsageRecords at a time.
 
 
-=head2 MeterUsage(DryRun => Bool, ProductCode => Str, Timestamp => Str, UsageDimension => Str, UsageQuantity => Int)
+=head2 MeterUsage
+
+=over
+
+=item DryRun => Bool
+
+=item ProductCode => Str
+
+=item Timestamp => Str
+
+=item UsageDimension => Str
+
+=item UsageQuantity => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MarketplaceMetering::MeterUsage>
 
@@ -134,7 +158,14 @@ MeterUsage is authenticated on the buyer's AWS account, generally when
 running from an EC2 instance on the AWS Marketplace.
 
 
-=head2 ResolveCustomer(RegistrationToken => Str)
+=head2 ResolveCustomer
+
+=over
+
+=item RegistrationToken => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MarketplaceMetering::ResolveCustomer>
 

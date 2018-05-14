@@ -253,7 +253,20 @@ in the I<AWS General Reference>.
 
 =head1 METHODS
 
-=head2 DeleteScalingPolicy(PolicyName => Str, ResourceId => Str, ScalableDimension => Str, ServiceNamespace => Str)
+=head2 DeleteScalingPolicy
+
+=over
+
+=item PolicyName => Str
+
+=item ResourceId => Str
+
+=item ScalableDimension => Str
+
+=item ServiceNamespace => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DeleteScalingPolicy>
 
@@ -269,7 +282,20 @@ To create a scaling policy or update an existing one, see
 PutScalingPolicy.
 
 
-=head2 DeleteScheduledAction(ResourceId => Str, ScheduledActionName => Str, ServiceNamespace => Str, [ScalableDimension => Str])
+=head2 DeleteScheduledAction
+
+=over
+
+=item ResourceId => Str
+
+=item ScheduledActionName => Str
+
+=item ServiceNamespace => Str
+
+=item [ScalableDimension => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DeleteScheduledAction>
 
@@ -278,7 +304,18 @@ Returns: a L<Paws::ApplicationAutoScaling::DeleteScheduledActionResponse> instan
 Deletes the specified Application Auto Scaling scheduled action.
 
 
-=head2 DeregisterScalableTarget(ResourceId => Str, ScalableDimension => Str, ServiceNamespace => Str)
+=head2 DeregisterScalableTarget
+
+=over
+
+=item ResourceId => Str
+
+=item ScalableDimension => Str
+
+=item ServiceNamespace => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DeregisterScalableTarget>
 
@@ -293,7 +330,22 @@ To create a scalable target or update an existing one, see
 RegisterScalableTarget.
 
 
-=head2 DescribeScalableTargets(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ScalableDimension => Str])
+=head2 DescribeScalableTargets
+
+=over
+
+=item ServiceNamespace => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceIds => ArrayRef[Str|Undef]]
+
+=item [ScalableDimension => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DescribeScalableTargets>
 
@@ -309,7 +361,22 @@ RegisterScalableTarget. If you are no longer using a scalable target,
 you can deregister it using DeregisterScalableTarget.
 
 
-=head2 DescribeScalingActivities(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceId => Str, ScalableDimension => Str])
+=head2 DescribeScalingActivities
+
+=over
+
+=item ServiceNamespace => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceId => Str]
+
+=item [ScalableDimension => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DescribeScalingActivities>
 
@@ -327,7 +394,24 @@ service namespace, see DescribeScalingPolicies. To create a scaling
 policy or update an existing one, see PutScalingPolicy.
 
 
-=head2 DescribeScalingPolicies(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, PolicyNames => ArrayRef[Str|Undef], ResourceId => Str, ScalableDimension => Str])
+=head2 DescribeScalingPolicies
+
+=over
+
+=item ServiceNamespace => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [PolicyNames => ArrayRef[Str|Undef]]
+
+=item [ResourceId => Str]
+
+=item [ScalableDimension => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DescribeScalingPolicies>
 
@@ -343,7 +427,24 @@ PutScalingPolicy. If you are no longer using a scaling policy, you can
 delete it using DeleteScalingPolicy.
 
 
-=head2 DescribeScheduledActions(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceId => Str, ScalableDimension => Str, ScheduledActionNames => ArrayRef[Str|Undef]])
+=head2 DescribeScheduledActions
+
+=over
+
+=item ServiceNamespace => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceId => Str]
+
+=item [ScalableDimension => Str]
+
+=item [ScheduledActionNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DescribeScheduledActions>
 
@@ -359,7 +460,26 @@ PutScheduledAction. If you are no longer using a scheduled action, you
 can delete it using DeleteScheduledAction.
 
 
-=head2 PutScalingPolicy(PolicyName => Str, ResourceId => Str, ScalableDimension => Str, ServiceNamespace => Str, [PolicyType => Str, StepScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration>, TargetTrackingScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::TargetTrackingScalingPolicyConfiguration>])
+=head2 PutScalingPolicy
+
+=over
+
+=item PolicyName => Str
+
+=item ResourceId => Str
+
+=item ScalableDimension => Str
+
+=item ServiceNamespace => Str
+
+=item [PolicyType => Str]
+
+=item [StepScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration>]
+
+=item [TargetTrackingScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::TargetTrackingScalingPolicyConfiguration>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ApplicationAutoScaling::PutScalingPolicy>
 
@@ -383,7 +503,28 @@ DescribeScalingPolicies. If you are no longer using a scaling policy,
 you can delete it using DeleteScalingPolicy.
 
 
-=head2 PutScheduledAction(ResourceId => Str, ScheduledActionName => Str, ServiceNamespace => Str, [EndTime => Str, ScalableDimension => Str, ScalableTargetAction => L<Paws::ApplicationAutoScaling::ScalableTargetAction>, Schedule => Str, StartTime => Str])
+=head2 PutScheduledAction
+
+=over
+
+=item ResourceId => Str
+
+=item ScheduledActionName => Str
+
+=item ServiceNamespace => Str
+
+=item [EndTime => Str]
+
+=item [ScalableDimension => Str]
+
+=item [ScalableTargetAction => L<Paws::ApplicationAutoScaling::ScalableTargetAction>]
+
+=item [Schedule => Str]
+
+=item [StartTime => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ApplicationAutoScaling::PutScheduledAction>
 
@@ -408,7 +549,24 @@ you are no longer using a scheduled action, you can delete it using
 DeleteScheduledAction.
 
 
-=head2 RegisterScalableTarget(ResourceId => Str, ScalableDimension => Str, ServiceNamespace => Str, [MaxCapacity => Int, MinCapacity => Int, RoleARN => Str])
+=head2 RegisterScalableTarget
+
+=over
+
+=item ResourceId => Str
+
+=item ScalableDimension => Str
+
+=item ServiceNamespace => Str
+
+=item [MaxCapacity => Int]
+
+=item [MinCapacity => Int]
+
+=item [RoleARN => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ApplicationAutoScaling::RegisterScalableTarget>
 

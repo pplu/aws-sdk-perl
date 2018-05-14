@@ -843,6 +843,9 @@ gadgetjunkie for contributing the ECS credential provider
 mla for contributing a fix to correct dependencies
 
 castaway for contributing to fixing documentation problems
+ - properly providing backlinks between related pages
+ - making TOCs render correctly on search.cpan.org
+
 
 
 =cut

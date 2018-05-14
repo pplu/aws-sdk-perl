@@ -4,6 +4,7 @@ package Paws::Firehose::ExtendedS3DestinationDescription;
   has BufferingHints => (is => 'ro', isa => 'Paws::Firehose::BufferingHints', required => 1);
   has CloudWatchLoggingOptions => (is => 'ro', isa => 'Paws::Firehose::CloudWatchLoggingOptions');
   has CompressionFormat => (is => 'ro', isa => 'Str', required => 1);
+  has DataFormatConversionConfiguration => (is => 'ro', isa => 'Paws::Firehose::DataFormatConversionConfiguration');
   has EncryptionConfiguration => (is => 'ro', isa => 'Paws::Firehose::EncryptionConfiguration', required => 1);
   has Prefix => (is => 'ro', isa => 'Str');
   has ProcessingConfiguration => (is => 'ro', isa => 'Paws::Firehose::ProcessingConfiguration');
@@ -47,7 +48,9 @@ Describes a destination in Amazon S3.
 
 =head2 B<REQUIRED> BucketARN => Str
 
-  The ARN of the S3 bucket.
+  The ARN of the S3 bucket. For more information, see Amazon Resource
+Names (ARNs) and AWS Service Namespaces
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
 =head2 B<REQUIRED> BufferingHints => L<Paws::Firehose::BufferingHints>
@@ -57,13 +60,20 @@ Describes a destination in Amazon S3.
 
 =head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
 
-  The CloudWatch logging options for your delivery stream.
+  The Amazon CloudWatch logging options for your delivery stream.
 
 
 =head2 B<REQUIRED> CompressionFormat => Str
 
   The compression format. If no value is specified, the default is
 C<UNCOMPRESSED>.
+
+
+=head2 DataFormatConversionConfiguration => L<Paws::Firehose::DataFormatConversionConfiguration>
+
+  The serializer, deserializer, and schema for converting data from the
+JSON format to the Parquet or ORC format before writing it to Amazon
+S3.
 
 
 =head2 B<REQUIRED> EncryptionConfiguration => L<Paws::Firehose::EncryptionConfiguration>
@@ -75,8 +85,8 @@ no encryption.
 =head2 Prefix => Str
 
   The "YYYY/MM/DD/HH" time format prefix is automatically used for
-delivered S3 files. You can specify an extra prefix to be added in
-front of the time format prefix. If the prefix ends with a slash, it
+delivered Amazon S3 files. You can specify an extra prefix to be added
+in front of the time format prefix. If the prefix ends with a slash, it
 appears as a folder in the S3 bucket. For more information, see Amazon
 S3 Object Name Format
 (http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#s3-object-name)
@@ -90,7 +100,10 @@ in the I<Amazon Kinesis Data Firehose Developer Guide>.
 
 =head2 B<REQUIRED> RoleARN => Str
 
-  The Amazon Resource Name (ARN) of the AWS credentials.
+  The Amazon Resource Name (ARN) of the AWS credentials. For more
+information, see Amazon Resource Names (ARNs) and AWS Service
+Namespaces
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
 =head2 S3BackupDescription => L<Paws::Firehose::S3DestinationDescription>

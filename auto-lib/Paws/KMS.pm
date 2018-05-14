@@ -421,7 +421,14 @@ GenerateDataKeyWithoutPlaintext
 
 =head1 METHODS
 
-=head2 CancelKeyDeletion(KeyId => Str)
+=head2 CancelKeyDeletion
+
+=over
+
+=item KeyId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::CancelKeyDeletion>
 
@@ -438,7 +445,16 @@ see Deleting Customer Master Keys
 in the I<AWS Key Management Service Developer Guide>.
 
 
-=head2 CreateAlias(AliasName => Str, TargetKeyId => Str)
+=head2 CreateAlias
+
+=over
+
+=item AliasName => Str
+
+=item TargetKeyId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::CreateAlias>
 
@@ -471,7 +487,26 @@ different AWS account.
 To map an existing alias to a different CMK, call UpdateAlias.
 
 
-=head2 CreateGrant(GranteePrincipal => Str, KeyId => Str, Operations => ArrayRef[Str|Undef], [Constraints => L<Paws::KMS::GrantConstraints>, GrantTokens => ArrayRef[Str|Undef], Name => Str, RetiringPrincipal => Str])
+=head2 CreateGrant
+
+=over
+
+=item GranteePrincipal => Str
+
+=item KeyId => Str
+
+=item Operations => ArrayRef[Str|Undef]
+
+=item [Constraints => L<Paws::KMS::GrantConstraints>]
+
+=item [GrantTokens => ArrayRef[Str|Undef]]
+
+=item [Name => Str]
+
+=item [RetiringPrincipal => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::CreateGrant>
 
@@ -488,7 +523,24 @@ about grants, see Grants
 the I<AWS Key Management Service Developer Guide>.
 
 
-=head2 CreateKey([BypassPolicyLockoutSafetyCheck => Bool, Description => Str, KeyUsage => Str, Origin => Str, Policy => Str, Tags => ArrayRef[L<Paws::KMS::Tag>]])
+=head2 CreateKey
+
+=over
+
+=item [BypassPolicyLockoutSafetyCheck => Bool]
+
+=item [Description => Str]
+
+=item [KeyUsage => Str]
+
+=item [Origin => Str]
+
+=item [Policy => Str]
+
+=item [Tags => ArrayRef[L<Paws::KMS::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::CreateKey>
 
@@ -519,7 +571,18 @@ You cannot use this operation to create a CMK in a different AWS
 account.
 
 
-=head2 Decrypt(CiphertextBlob => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str|Undef]])
+=head2 Decrypt
+
+=over
+
+=item CiphertextBlob => Str
+
+=item [EncryptionContext => L<Paws::KMS::EncryptionContextType>]
+
+=item [GrantTokens => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::Decrypt>
 
@@ -555,7 +618,14 @@ IAM user policy, you should scope the resource to specific keys or to
 specific trusted accounts.
 
 
-=head2 DeleteAlias(AliasName => Str)
+=head2 DeleteAlias
+
+=over
+
+=item AliasName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::DeleteAlias>
 
@@ -575,7 +645,14 @@ alias. To associate an existing alias with a different customer master
 key (CMK), call UpdateAlias.
 
 
-=head2 DeleteImportedKeyMaterial(KeyId => Str)
+=head2 DeleteImportedKeyMaterial
+
+=over
+
+=item KeyId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::DeleteImportedKeyMaterial>
 
@@ -596,7 +673,16 @@ After you delete key material, you can use ImportKeyMaterial to
 reimport the same key material into the CMK.
 
 
-=head2 DescribeKey(KeyId => Str, [GrantTokens => ArrayRef[Str|Undef]])
+=head2 DescribeKey
+
+=over
+
+=item KeyId => Str
+
+=item [GrantTokens => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::DescribeKey>
 
@@ -609,7 +695,14 @@ To perform this operation on a CMK in a different AWS account, specify
 the key ARN or alias ARN in the value of the KeyId parameter.
 
 
-=head2 DisableKey(KeyId => Str)
+=head2 DisableKey
+
+=over
+
+=item KeyId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::DisableKey>
 
@@ -625,7 +718,14 @@ How Key State Affects the Use of a Customer Master Key
 in the I<AWS Key Management Service Developer Guide>.
 
 
-=head2 DisableKeyRotation(KeyId => Str)
+=head2 DisableKeyRotation
+
+=over
+
+=item KeyId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::DisableKeyRotation>
 
@@ -636,7 +736,14 @@ customer master key (CMK). You cannot perform this operation on a CMK
 in a different AWS account.
 
 
-=head2 EnableKey(KeyId => Str)
+=head2 EnableKey
+
+=over
+
+=item KeyId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::EnableKey>
 
@@ -647,7 +754,14 @@ permitting its use for cryptographic operations. You cannot perform
 this operation on a CMK in a different AWS account.
 
 
-=head2 EnableKeyRotation(KeyId => Str)
+=head2 EnableKeyRotation
+
+=over
+
+=item KeyId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::EnableKeyRotation>
 
@@ -658,7 +772,20 @@ customer master key (CMK). You cannot perform this operation on a CMK
 in a different AWS account.
 
 
-=head2 Encrypt(KeyId => Str, Plaintext => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str|Undef]])
+=head2 Encrypt
+
+=over
+
+=item KeyId => Str
+
+=item Plaintext => Str
+
+=item [EncryptionContext => L<Paws::KMS::EncryptionContextType>]
+
+=item [GrantTokens => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::Encrypt>
 
@@ -698,7 +825,22 @@ operation to return a plaintext data encryption key and a copy of the
 key encrypted under the CMK of your choosing.
 
 
-=head2 GenerateDataKey(KeyId => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str|Undef], KeySpec => Str, NumberOfBytes => Int])
+=head2 GenerateDataKey
+
+=over
+
+=item KeyId => Str
+
+=item [EncryptionContext => L<Paws::KMS::EncryptionContextType>]
+
+=item [GrantTokens => ArrayRef[Str|Undef]]
+
+=item [KeySpec => Str]
+
+=item [NumberOfBytes => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::GenerateDataKey>
 
@@ -772,7 +914,22 @@ information, see Encryption Context
 in the I<AWS Key Management Service Developer Guide>.
 
 
-=head2 GenerateDataKeyWithoutPlaintext(KeyId => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str|Undef], KeySpec => Str, NumberOfBytes => Int])
+=head2 GenerateDataKeyWithoutPlaintext
+
+=over
+
+=item KeyId => Str
+
+=item [EncryptionContext => L<Paws::KMS::EncryptionContextType>]
+
+=item [GrantTokens => ArrayRef[Str|Undef]]
+
+=item [KeySpec => Str]
+
+=item [NumberOfBytes => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::GenerateDataKeyWithoutPlaintext>
 
@@ -800,7 +957,14 @@ and finally stores the encrypted data in the container. In this system,
 the control plane never sees the plaintext data key.
 
 
-=head2 GenerateRandom([NumberOfBytes => Int])
+=head2 GenerateRandom
+
+=over
+
+=item [NumberOfBytes => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::GenerateRandom>
 
@@ -814,7 +978,16 @@ the AWS Key Management Service Cryptographic Details
 whitepaper.
 
 
-=head2 GetKeyPolicy(KeyId => Str, PolicyName => Str)
+=head2 GetKeyPolicy
+
+=over
+
+=item KeyId => Str
+
+=item PolicyName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::GetKeyPolicy>
 
@@ -824,7 +997,14 @@ Gets a key policy attached to the specified customer master key (CMK).
 You cannot perform this operation on a CMK in a different AWS account.
 
 
-=head2 GetKeyRotationStatus(KeyId => Str)
+=head2 GetKeyRotationStatus
+
+=over
+
+=item KeyId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::GetKeyRotationStatus>
 
@@ -837,7 +1017,18 @@ To perform this operation on a CMK in a different AWS account, specify
 the key ARN in the value of the KeyId parameter.
 
 
-=head2 GetParametersForImport(KeyId => Str, WrappingAlgorithm => Str, WrappingKeySpec => Str)
+=head2 GetParametersForImport
+
+=over
+
+=item KeyId => Str
+
+=item WrappingAlgorithm => Str
+
+=item WrappingKeySpec => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::GetParametersForImport>
 
@@ -864,7 +1055,22 @@ ImportKeyMaterial request. To get new ones, send another
 C<GetParametersForImport> request.
 
 
-=head2 ImportKeyMaterial(EncryptedKeyMaterial => Str, ImportToken => Str, KeyId => Str, [ExpirationModel => Str, ValidTo => Str])
+=head2 ImportKeyMaterial
+
+=over
+
+=item EncryptedKeyMaterial => Str
+
+=item ImportToken => Str
+
+=item KeyId => Str
+
+=item [ExpirationModel => Str]
+
+=item [ValidTo => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::ImportKeyMaterial>
 
@@ -924,7 +1130,16 @@ key material into that CMK, but you cannot import different key
 material.
 
 
-=head2 ListAliases([Limit => Int, Marker => Str])
+=head2 ListAliases
+
+=over
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::ListAliases>
 
@@ -943,7 +1158,18 @@ count against the alias limit
 for your account.
 
 
-=head2 ListGrants(KeyId => Str, [Limit => Int, Marker => Str])
+=head2 ListGrants
+
+=over
+
+=item KeyId => Str
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::ListGrants>
 
@@ -955,7 +1181,18 @@ To perform this operation on a CMK in a different AWS account, specify
 the key ARN in the value of the KeyId parameter.
 
 
-=head2 ListKeyPolicies(KeyId => Str, [Limit => Int, Marker => Str])
+=head2 ListKeyPolicies
+
+=over
+
+=item KeyId => Str
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::ListKeyPolicies>
 
@@ -968,7 +1205,16 @@ name is C<default>. You cannot perform this operation on a CMK in a
 different AWS account.
 
 
-=head2 ListKeys([Limit => Int, Marker => Str])
+=head2 ListKeys
+
+=over
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::ListKeys>
 
@@ -978,7 +1224,18 @@ Gets a list of all customer master keys (CMKs) in the caller's AWS
 account and region.
 
 
-=head2 ListResourceTags(KeyId => Str, [Limit => Int, Marker => Str])
+=head2 ListResourceTags
+
+=over
+
+=item KeyId => Str
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::ListResourceTags>
 
@@ -989,7 +1246,18 @@ Returns a list of all tags for the specified customer master key (CMK).
 You cannot perform this operation on a CMK in a different AWS account.
 
 
-=head2 ListRetirableGrants(RetiringPrincipal => Str, [Limit => Int, Marker => Str])
+=head2 ListRetirableGrants
+
+=over
+
+=item RetiringPrincipal => Str
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::ListRetirableGrants>
 
@@ -1002,7 +1270,20 @@ A typical use is to list all grants that you are able to retire. To
 retire a grant, use RetireGrant.
 
 
-=head2 PutKeyPolicy(KeyId => Str, Policy => Str, PolicyName => Str, [BypassPolicyLockoutSafetyCheck => Bool])
+=head2 PutKeyPolicy
+
+=over
+
+=item KeyId => Str
+
+=item Policy => Str
+
+=item PolicyName => Str
+
+=item [BypassPolicyLockoutSafetyCheck => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::PutKeyPolicy>
 
@@ -1016,7 +1297,22 @@ For more information about key policies, see Key Policies
 in the I<AWS Key Management Service Developer Guide>.
 
 
-=head2 ReEncrypt(CiphertextBlob => Str, DestinationKeyId => Str, [DestinationEncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str|Undef], SourceEncryptionContext => L<Paws::KMS::EncryptionContextType>])
+=head2 ReEncrypt
+
+=over
+
+=item CiphertextBlob => Str
+
+=item DestinationKeyId => Str
+
+=item [DestinationEncryptionContext => L<Paws::KMS::EncryptionContextType>]
+
+=item [GrantTokens => ArrayRef[Str|Undef]]
+
+=item [SourceEncryptionContext => L<Paws::KMS::EncryptionContextType>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::ReEncrypt>
 
@@ -1041,7 +1337,18 @@ programmatically or when you set a key policy with the PutKeyPolicy
 operation.
 
 
-=head2 RetireGrant([GrantId => Str, GrantToken => Str, KeyId => Str])
+=head2 RetireGrant
+
+=over
+
+=item [GrantId => Str]
+
+=item [GrantToken => Str]
+
+=item [KeyId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::RetireGrant>
 
@@ -1076,7 +1383,16 @@ base64-encoded string. A grant ID is a 64 character unique identifier
 of a grant. The CreateGrant operation returns both.
 
 
-=head2 RevokeGrant(GrantId => Str, KeyId => Str)
+=head2 RevokeGrant
+
+=over
+
+=item GrantId => Str
+
+=item KeyId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::RevokeGrant>
 
@@ -1090,7 +1406,16 @@ To perform this operation on a CMK in a different AWS account, specify
 the key ARN in the value of the KeyId parameter.
 
 
-=head2 ScheduleKeyDeletion(KeyId => Str, [PendingWindowInDays => Int])
+=head2 ScheduleKeyDeletion
+
+=over
+
+=item KeyId => Str
+
+=item [PendingWindowInDays => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::ScheduleKeyDeletion>
 
@@ -1118,7 +1443,16 @@ Customer Master Keys
 in the I<AWS Key Management Service Developer Guide>.
 
 
-=head2 TagResource(KeyId => Str, Tags => ArrayRef[L<Paws::KMS::Tag>])
+=head2 TagResource
+
+=over
+
+=item KeyId => Str
+
+=item Tags => ArrayRef[L<Paws::KMS::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::TagResource>
 
@@ -1144,7 +1478,16 @@ see User-Defined Tag Restrictions
 in the I<AWS Billing and Cost Management User Guide>.
 
 
-=head2 UntagResource(KeyId => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 UntagResource
+
+=over
+
+=item KeyId => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::UntagResource>
 
@@ -1159,7 +1502,16 @@ not specify the tag value. To overwrite the tag value for an existing
 tag, use TagResource.
 
 
-=head2 UpdateAlias(AliasName => Str, TargetKeyId => Str)
+=head2 UpdateAlias
+
+=over
+
+=item AliasName => Str
+
+=item TargetKeyId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::UpdateAlias>
 
@@ -1188,7 +1540,16 @@ contain only alphanumeric characters, forward slashes (/), underscores
 name prefix is reserved by Amazon Web Services (AWS).
 
 
-=head2 UpdateKeyDescription(Description => Str, KeyId => Str)
+=head2 UpdateKeyDescription
+
+=over
+
+=item Description => Str
+
+=item KeyId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KMS::UpdateKeyDescription>
 

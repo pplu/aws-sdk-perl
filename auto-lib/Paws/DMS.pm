@@ -580,7 +580,16 @@ Is AWS Database Migration Service?
 
 =head1 METHODS
 
-=head2 AddTagsToResource(ResourceArn => Str, Tags => ArrayRef[L<Paws::DMS::Tag>])
+=head2 AddTagsToResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::DMS::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::AddTagsToResource>
 
@@ -593,7 +602,48 @@ with DMS resources, or used in a Condition statement in an IAM policy
 for DMS.
 
 
-=head2 CreateEndpoint(EndpointIdentifier => Str, EndpointType => Str, EngineName => Str, [CertificateArn => Str, DatabaseName => Str, DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>, ExternalTableDefinition => Str, ExtraConnectionAttributes => Str, KmsKeyId => Str, MongoDbSettings => L<Paws::DMS::MongoDbSettings>, Password => Str, Port => Int, S3Settings => L<Paws::DMS::S3Settings>, ServerName => Str, ServiceAccessRoleArn => Str, SslMode => Str, Tags => ArrayRef[L<Paws::DMS::Tag>], Username => Str])
+=head2 CreateEndpoint
+
+=over
+
+=item EndpointIdentifier => Str
+
+=item EndpointType => Str
+
+=item EngineName => Str
+
+=item [CertificateArn => Str]
+
+=item [DatabaseName => Str]
+
+=item [DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>]
+
+=item [ExternalTableDefinition => Str]
+
+=item [ExtraConnectionAttributes => Str]
+
+=item [KmsKeyId => Str]
+
+=item [MongoDbSettings => L<Paws::DMS::MongoDbSettings>]
+
+=item [Password => Str]
+
+=item [Port => Int]
+
+=item [S3Settings => L<Paws::DMS::S3Settings>]
+
+=item [ServerName => Str]
+
+=item [ServiceAccessRoleArn => Str]
+
+=item [SslMode => Str]
+
+=item [Tags => ArrayRef[L<Paws::DMS::Tag>]]
+
+=item [Username => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::CreateEndpoint>
 
@@ -602,7 +652,26 @@ Returns: a L<Paws::DMS::CreateEndpointResponse> instance
 Creates an endpoint using the provided settings.
 
 
-=head2 CreateEventSubscription(SnsTopicArn => Str, SubscriptionName => Str, [Enabled => Bool, EventCategories => ArrayRef[Str|Undef], SourceIds => ArrayRef[Str|Undef], SourceType => Str, Tags => ArrayRef[L<Paws::DMS::Tag>]])
+=head2 CreateEventSubscription
+
+=over
+
+=item SnsTopicArn => Str
+
+=item SubscriptionName => Str
+
+=item [Enabled => Bool]
+
+=item [EventCategories => ArrayRef[Str|Undef]]
+
+=item [SourceIds => ArrayRef[Str|Undef]]
+
+=item [SourceType => Str]
+
+=item [Tags => ArrayRef[L<Paws::DMS::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::CreateEventSubscription>
 
@@ -629,7 +698,38 @@ Notifications
 the AWS Database MIgration Service User Guide.
 
 
-=head2 CreateReplicationInstance(ReplicationInstanceClass => Str, ReplicationInstanceIdentifier => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, EngineVersion => Str, KmsKeyId => Str, MultiAZ => Bool, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, ReplicationSubnetGroupIdentifier => Str, Tags => ArrayRef[L<Paws::DMS::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 CreateReplicationInstance
+
+=over
+
+=item ReplicationInstanceClass => Str
+
+=item ReplicationInstanceIdentifier => Str
+
+=item [AllocatedStorage => Int]
+
+=item [AutoMinorVersionUpgrade => Bool]
+
+=item [AvailabilityZone => Str]
+
+=item [EngineVersion => Str]
+
+=item [KmsKeyId => Str]
+
+=item [MultiAZ => Bool]
+
+=item [PreferredMaintenanceWindow => Str]
+
+=item [PubliclyAccessible => Bool]
+
+=item [ReplicationSubnetGroupIdentifier => Str]
+
+=item [Tags => ArrayRef[L<Paws::DMS::Tag>]]
+
+=item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::CreateReplicationInstance>
 
@@ -638,7 +738,20 @@ Returns: a L<Paws::DMS::CreateReplicationInstanceResponse> instance
 Creates the replication instance using the specified parameters.
 
 
-=head2 CreateReplicationSubnetGroup(ReplicationSubnetGroupDescription => Str, ReplicationSubnetGroupIdentifier => Str, SubnetIds => ArrayRef[Str|Undef], [Tags => ArrayRef[L<Paws::DMS::Tag>]])
+=head2 CreateReplicationSubnetGroup
+
+=over
+
+=item ReplicationSubnetGroupDescription => Str
+
+=item ReplicationSubnetGroupIdentifier => Str
+
+=item SubnetIds => ArrayRef[Str|Undef]
+
+=item [Tags => ArrayRef[L<Paws::DMS::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::CreateReplicationSubnetGroup>
 
@@ -648,7 +761,34 @@ Creates a replication subnet group given a list of the subnet IDs in a
 VPC.
 
 
-=head2 CreateReplicationTask(MigrationType => Str, ReplicationInstanceArn => Str, ReplicationTaskIdentifier => Str, SourceEndpointArn => Str, TableMappings => Str, TargetEndpointArn => Str, [CdcStartPosition => Str, CdcStartTime => Str, CdcStopPosition => Str, ReplicationTaskSettings => Str, Tags => ArrayRef[L<Paws::DMS::Tag>]])
+=head2 CreateReplicationTask
+
+=over
+
+=item MigrationType => Str
+
+=item ReplicationInstanceArn => Str
+
+=item ReplicationTaskIdentifier => Str
+
+=item SourceEndpointArn => Str
+
+=item TableMappings => Str
+
+=item TargetEndpointArn => Str
+
+=item [CdcStartPosition => Str]
+
+=item [CdcStartTime => Str]
+
+=item [CdcStopPosition => Str]
+
+=item [ReplicationTaskSettings => Str]
+
+=item [Tags => ArrayRef[L<Paws::DMS::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::CreateReplicationTask>
 
@@ -657,7 +797,14 @@ Returns: a L<Paws::DMS::CreateReplicationTaskResponse> instance
 Creates a replication task using the specified parameters.
 
 
-=head2 DeleteCertificate(CertificateArn => Str)
+=head2 DeleteCertificate
+
+=over
+
+=item CertificateArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DeleteCertificate>
 
@@ -666,7 +813,14 @@ Returns: a L<Paws::DMS::DeleteCertificateResponse> instance
 Deletes the specified certificate.
 
 
-=head2 DeleteEndpoint(EndpointArn => Str)
+=head2 DeleteEndpoint
+
+=over
+
+=item EndpointArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DeleteEndpoint>
 
@@ -678,7 +832,14 @@ All tasks associated with the endpoint must be deleted before you can
 delete the endpoint.
 
 
-=head2 DeleteEventSubscription(SubscriptionName => Str)
+=head2 DeleteEventSubscription
+
+=over
+
+=item SubscriptionName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DeleteEventSubscription>
 
@@ -687,7 +848,14 @@ Returns: a L<Paws::DMS::DeleteEventSubscriptionResponse> instance
 Deletes an AWS DMS event subscription.
 
 
-=head2 DeleteReplicationInstance(ReplicationInstanceArn => Str)
+=head2 DeleteReplicationInstance
+
+=over
+
+=item ReplicationInstanceArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DeleteReplicationInstance>
 
@@ -699,7 +867,14 @@ You must delete any migration tasks that are associated with the
 replication instance before you can delete it.
 
 
-=head2 DeleteReplicationSubnetGroup(ReplicationSubnetGroupIdentifier => Str)
+=head2 DeleteReplicationSubnetGroup
+
+=over
+
+=item ReplicationSubnetGroupIdentifier => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DeleteReplicationSubnetGroup>
 
@@ -708,7 +883,14 @@ Returns: a L<Paws::DMS::DeleteReplicationSubnetGroupResponse> instance
 Deletes a subnet group.
 
 
-=head2 DeleteReplicationTask(ReplicationTaskArn => Str)
+=head2 DeleteReplicationTask
+
+=over
+
+=item ReplicationTaskArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DeleteReplicationTask>
 
@@ -717,7 +899,12 @@ Returns: a L<Paws::DMS::DeleteReplicationTaskResponse> instance
 Deletes the specified replication task.
 
 
-=head2 DescribeAccountAttributes()
+=head2 DescribeAccountAttributes
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::DMS::DescribeAccountAttributes>
 
@@ -732,7 +919,18 @@ maximum value.
 This command does not take any parameters.
 
 
-=head2 DescribeCertificates([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeCertificates
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DescribeCertificates>
 
@@ -741,7 +939,18 @@ Returns: a L<Paws::DMS::DescribeCertificatesResponse> instance
 Provides a description of the certificate.
 
 
-=head2 DescribeConnections([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeConnections
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DescribeConnections>
 
@@ -752,7 +961,18 @@ replication instance and an endpoint. Connections are created when you
 test an endpoint.
 
 
-=head2 DescribeEndpoints([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeEndpoints
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DescribeEndpoints>
 
@@ -762,7 +982,18 @@ Returns information about the endpoints for your account in the current
 region.
 
 
-=head2 DescribeEndpointTypes([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeEndpointTypes
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DescribeEndpointTypes>
 
@@ -771,7 +1002,16 @@ Returns: a L<Paws::DMS::DescribeEndpointTypesResponse> instance
 Returns information about the type of endpoints available.
 
 
-=head2 DescribeEventCategories([Filters => ArrayRef[L<Paws::DMS::Filter>], SourceType => Str])
+=head2 DescribeEventCategories
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+
+=item [SourceType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DescribeEventCategories>
 
@@ -784,7 +1024,30 @@ source types in Working with Events and Notifications
 the AWS Database Migration Service User Guide.
 
 
-=head2 DescribeEvents([Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+=head2 DescribeEvents
+
+=over
+
+=item [Duration => Int]
+
+=item [EndTime => Str]
+
+=item [EventCategories => ArrayRef[Str|Undef]]
+
+=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [SourceIdentifier => Str]
+
+=item [SourceType => Str]
+
+=item [StartTime => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DescribeEvents>
 
@@ -796,7 +1059,20 @@ events, see Working with Events and Notifications
 (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html).
 
 
-=head2 DescribeEventSubscriptions([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
+=head2 DescribeEventSubscriptions
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [SubscriptionName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DescribeEventSubscriptions>
 
@@ -811,7 +1087,16 @@ If you specify C<SubscriptionName>, this action lists the description
 for that subscription.
 
 
-=head2 DescribeOrderableReplicationInstances([Marker => Str, MaxRecords => Int])
+=head2 DescribeOrderableReplicationInstances
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DescribeOrderableReplicationInstances>
 
@@ -821,7 +1106,14 @@ Returns information about the replication instance types that can be
 created in the specified region.
 
 
-=head2 DescribeRefreshSchemasStatus(EndpointArn => Str)
+=head2 DescribeRefreshSchemasStatus
+
+=over
+
+=item EndpointArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DescribeRefreshSchemasStatus>
 
@@ -830,7 +1122,18 @@ Returns: a L<Paws::DMS::DescribeRefreshSchemasStatusResponse> instance
 Returns the status of the RefreshSchemas operation.
 
 
-=head2 DescribeReplicationInstances([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeReplicationInstances
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DescribeReplicationInstances>
 
@@ -840,7 +1143,18 @@ Returns information about replication instances for your account in the
 current region.
 
 
-=head2 DescribeReplicationInstanceTaskLogs(ReplicationInstanceArn => Str, [Marker => Str, MaxRecords => Int])
+=head2 DescribeReplicationInstanceTaskLogs
+
+=over
+
+=item ReplicationInstanceArn => Str
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DescribeReplicationInstanceTaskLogs>
 
@@ -849,7 +1163,18 @@ Returns: a L<Paws::DMS::DescribeReplicationInstanceTaskLogsResponse> instance
 Returns information about the task logs for the specified task.
 
 
-=head2 DescribeReplicationSubnetGroups([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeReplicationSubnetGroups
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DescribeReplicationSubnetGroups>
 
@@ -858,7 +1183,18 @@ Returns: a L<Paws::DMS::DescribeReplicationSubnetGroupsResponse> instance
 Returns information about the replication subnet groups.
 
 
-=head2 DescribeReplicationTaskAssessmentResults([Marker => Str, MaxRecords => Int, ReplicationTaskArn => Str])
+=head2 DescribeReplicationTaskAssessmentResults
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [ReplicationTaskArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DescribeReplicationTaskAssessmentResults>
 
@@ -868,7 +1204,18 @@ Returns the task assessment results from Amazon S3. This action always
 returns the latest results.
 
 
-=head2 DescribeReplicationTasks([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeReplicationTasks
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DescribeReplicationTasks>
 
@@ -878,7 +1225,18 @@ Returns information about replication tasks for your account in the
 current region.
 
 
-=head2 DescribeSchemas(EndpointArn => Str, [Marker => Str, MaxRecords => Int])
+=head2 DescribeSchemas
+
+=over
+
+=item EndpointArn => Str
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DescribeSchemas>
 
@@ -887,7 +1245,20 @@ Returns: a L<Paws::DMS::DescribeSchemasResponse> instance
 Returns information about the schema for the specified endpoint.
 
 
-=head2 DescribeTableStatistics(ReplicationTaskArn => Str, [Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeTableStatistics
+
+=over
+
+=item ReplicationTaskArn => Str
+
+=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::DescribeTableStatistics>
 
@@ -901,7 +1272,20 @@ time that AWS DMS last updated the table statistics record for a table.
 It does not indicate the time of the last update to the table.
 
 
-=head2 ImportCertificate(CertificateIdentifier => Str, [CertificatePem => Str, CertificateWallet => Str, Tags => ArrayRef[L<Paws::DMS::Tag>]])
+=head2 ImportCertificate
+
+=over
+
+=item CertificateIdentifier => Str
+
+=item [CertificatePem => Str]
+
+=item [CertificateWallet => Str]
+
+=item [Tags => ArrayRef[L<Paws::DMS::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::ImportCertificate>
 
@@ -910,7 +1294,14 @@ Returns: a L<Paws::DMS::ImportCertificateResponse> instance
 Uploads the specified certificate.
 
 
-=head2 ListTagsForResource(ResourceArn => Str)
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::ListTagsForResource>
 
@@ -919,7 +1310,46 @@ Returns: a L<Paws::DMS::ListTagsForResourceResponse> instance
 Lists all tags for an AWS DMS resource.
 
 
-=head2 ModifyEndpoint(EndpointArn => Str, [CertificateArn => Str, DatabaseName => Str, DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>, EndpointIdentifier => Str, EndpointType => Str, EngineName => Str, ExternalTableDefinition => Str, ExtraConnectionAttributes => Str, MongoDbSettings => L<Paws::DMS::MongoDbSettings>, Password => Str, Port => Int, S3Settings => L<Paws::DMS::S3Settings>, ServerName => Str, ServiceAccessRoleArn => Str, SslMode => Str, Username => Str])
+=head2 ModifyEndpoint
+
+=over
+
+=item EndpointArn => Str
+
+=item [CertificateArn => Str]
+
+=item [DatabaseName => Str]
+
+=item [DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>]
+
+=item [EndpointIdentifier => Str]
+
+=item [EndpointType => Str]
+
+=item [EngineName => Str]
+
+=item [ExternalTableDefinition => Str]
+
+=item [ExtraConnectionAttributes => Str]
+
+=item [MongoDbSettings => L<Paws::DMS::MongoDbSettings>]
+
+=item [Password => Str]
+
+=item [Port => Int]
+
+=item [S3Settings => L<Paws::DMS::S3Settings>]
+
+=item [ServerName => Str]
+
+=item [ServiceAccessRoleArn => Str]
+
+=item [SslMode => Str]
+
+=item [Username => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::ModifyEndpoint>
 
@@ -928,7 +1358,22 @@ Returns: a L<Paws::DMS::ModifyEndpointResponse> instance
 Modifies the specified endpoint.
 
 
-=head2 ModifyEventSubscription(SubscriptionName => Str, [Enabled => Bool, EventCategories => ArrayRef[Str|Undef], SnsTopicArn => Str, SourceType => Str])
+=head2 ModifyEventSubscription
+
+=over
+
+=item SubscriptionName => Str
+
+=item [Enabled => Bool]
+
+=item [EventCategories => ArrayRef[Str|Undef]]
+
+=item [SnsTopicArn => Str]
+
+=item [SourceType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::ModifyEventSubscription>
 
@@ -937,7 +1382,34 @@ Returns: a L<Paws::DMS::ModifyEventSubscriptionResponse> instance
 Modifies an existing AWS DMS event notification subscription.
 
 
-=head2 ModifyReplicationInstance(ReplicationInstanceArn => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, EngineVersion => Str, MultiAZ => Bool, PreferredMaintenanceWindow => Str, ReplicationInstanceClass => Str, ReplicationInstanceIdentifier => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 ModifyReplicationInstance
+
+=over
+
+=item ReplicationInstanceArn => Str
+
+=item [AllocatedStorage => Int]
+
+=item [AllowMajorVersionUpgrade => Bool]
+
+=item [ApplyImmediately => Bool]
+
+=item [AutoMinorVersionUpgrade => Bool]
+
+=item [EngineVersion => Str]
+
+=item [MultiAZ => Bool]
+
+=item [PreferredMaintenanceWindow => Str]
+
+=item [ReplicationInstanceClass => Str]
+
+=item [ReplicationInstanceIdentifier => Str]
+
+=item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::ModifyReplicationInstance>
 
@@ -950,7 +1422,18 @@ values in the request.
 Some settings are applied during the maintenance window.
 
 
-=head2 ModifyReplicationSubnetGroup(ReplicationSubnetGroupIdentifier => Str, SubnetIds => ArrayRef[Str|Undef], [ReplicationSubnetGroupDescription => Str])
+=head2 ModifyReplicationSubnetGroup
+
+=over
+
+=item ReplicationSubnetGroupIdentifier => Str
+
+=item SubnetIds => ArrayRef[Str|Undef]
+
+=item [ReplicationSubnetGroupDescription => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::ModifyReplicationSubnetGroup>
 
@@ -959,7 +1442,28 @@ Returns: a L<Paws::DMS::ModifyReplicationSubnetGroupResponse> instance
 Modifies the settings for the specified replication subnet group.
 
 
-=head2 ModifyReplicationTask(ReplicationTaskArn => Str, [CdcStartPosition => Str, CdcStartTime => Str, CdcStopPosition => Str, MigrationType => Str, ReplicationTaskIdentifier => Str, ReplicationTaskSettings => Str, TableMappings => Str])
+=head2 ModifyReplicationTask
+
+=over
+
+=item ReplicationTaskArn => Str
+
+=item [CdcStartPosition => Str]
+
+=item [CdcStartTime => Str]
+
+=item [CdcStopPosition => Str]
+
+=item [MigrationType => Str]
+
+=item [ReplicationTaskIdentifier => Str]
+
+=item [ReplicationTaskSettings => Str]
+
+=item [TableMappings => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::ModifyReplicationTask>
 
@@ -975,7 +1479,16 @@ Working with Migration Tasks
 (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html)
 
 
-=head2 RebootReplicationInstance(ReplicationInstanceArn => Str, [ForceFailover => Bool])
+=head2 RebootReplicationInstance
+
+=over
+
+=item ReplicationInstanceArn => Str
+
+=item [ForceFailover => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::RebootReplicationInstance>
 
@@ -985,7 +1498,16 @@ Reboots a replication instance. Rebooting results in a momentary
 outage, until the replication instance becomes available again.
 
 
-=head2 RefreshSchemas(EndpointArn => Str, ReplicationInstanceArn => Str)
+=head2 RefreshSchemas
+
+=over
+
+=item EndpointArn => Str
+
+=item ReplicationInstanceArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::RefreshSchemas>
 
@@ -997,7 +1519,16 @@ status of this operation by calling the DescribeRefreshSchemasStatus
 operation.
 
 
-=head2 ReloadTables(ReplicationTaskArn => Str, TablesToReload => ArrayRef[L<Paws::DMS::TableToReload>])
+=head2 ReloadTables
+
+=over
+
+=item ReplicationTaskArn => Str
+
+=item TablesToReload => ArrayRef[L<Paws::DMS::TableToReload>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::ReloadTables>
 
@@ -1006,7 +1537,16 @@ Returns: a L<Paws::DMS::ReloadTablesResponse> instance
 Reloads the target database table with the source data.
 
 
-=head2 RemoveTagsFromResource(ResourceArn => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 RemoveTagsFromResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::RemoveTagsFromResource>
 
@@ -1015,7 +1555,22 @@ Returns: a L<Paws::DMS::RemoveTagsFromResourceResponse> instance
 Removes metadata tags from a DMS resource.
 
 
-=head2 StartReplicationTask(ReplicationTaskArn => Str, StartReplicationTaskType => Str, [CdcStartPosition => Str, CdcStartTime => Str, CdcStopPosition => Str])
+=head2 StartReplicationTask
+
+=over
+
+=item ReplicationTaskArn => Str
+
+=item StartReplicationTaskType => Str
+
+=item [CdcStartPosition => Str]
+
+=item [CdcStartTime => Str]
+
+=item [CdcStopPosition => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::StartReplicationTask>
 
@@ -1028,7 +1583,14 @@ Working with Migration Tasks
 (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html)
 
 
-=head2 StartReplicationTaskAssessment(ReplicationTaskArn => Str)
+=head2 StartReplicationTaskAssessment
+
+=over
+
+=item ReplicationTaskArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::StartReplicationTaskAssessment>
 
@@ -1038,7 +1600,14 @@ Starts the replication task assessment for unsupported data types in
 the source database.
 
 
-=head2 StopReplicationTask(ReplicationTaskArn => Str)
+=head2 StopReplicationTask
+
+=over
+
+=item ReplicationTaskArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::StopReplicationTask>
 
@@ -1047,7 +1616,16 @@ Returns: a L<Paws::DMS::StopReplicationTaskResponse> instance
 Stops the replication task.
 
 
-=head2 TestConnection(EndpointArn => Str, ReplicationInstanceArn => Str)
+=head2 TestConnection
+
+=over
+
+=item EndpointArn => Str
+
+=item ReplicationInstanceArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DMS::TestConnection>
 

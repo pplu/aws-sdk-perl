@@ -5,6 +5,7 @@ package Paws::SageMaker::CreateModel;
   has ModelName => (is => 'ro', isa => 'Str', required => 1);
   has PrimaryContainer => (is => 'ro', isa => 'Paws::SageMaker::ContainerDefinition', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
+  has VpcConfig => (is => 'ro', isa => 'Paws::SageMaker::VpcConfig');
 
   use MooseX::ClassAttribute;
 
@@ -66,6 +67,14 @@ An array of key-value pairs. For more information, see Using Cost
 Allocation Tags
 (http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 in the I<AWS Billing and Cost Management User Guide>.
+
+
+
+=head2 VpcConfig => L<Paws::SageMaker::VpcConfig>
+
+A object that specifies the VPC that you want your model to connect to.
+Control access to and from your training container by configuring the
+VPC. For more information, see host-vpc.
 
 
 

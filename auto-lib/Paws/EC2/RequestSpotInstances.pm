@@ -82,8 +82,8 @@ Spot Instance for termination and provides a Spot Instance termination
 notice, which gives the instance a two-minute warning before it
 terminates.
 
-Note that you can't specify an Availability Zone group or a launch
-group if you specify a duration.
+You can't specify an Availability Zone group or a launch group if you
+specify a duration.
 
 
 
@@ -93,7 +93,7 @@ Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see How to Ensure
 Idempotency
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 
 

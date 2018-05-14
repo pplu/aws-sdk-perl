@@ -350,7 +350,18 @@ retrieving the job output, and deleting archives.
 
 =head1 METHODS
 
-=head2 AbortMultipartUpload(AccountId => Str, UploadId => Str, VaultName => Str)
+=head2 AbortMultipartUpload
+
+=over
+
+=item AccountId => Str
+
+=item UploadId => Str
+
+=item VaultName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::AbortMultipartUpload>
 
@@ -382,7 +393,16 @@ and Abort Multipart Upload
 in the I<Amazon Glacier Developer Guide>.
 
 
-=head2 AbortVaultLock(AccountId => Str, VaultName => Str)
+=head2 AbortVaultLock
+
+=over
+
+=item AccountId => Str
+
+=item VaultName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::AbortVaultLock>
 
@@ -409,7 +429,18 @@ operation multiple times, if the vault lock is in the C<InProgress>
 state or if there is no policy associated with the vault.
 
 
-=head2 AddTagsToVault(AccountId => Str, VaultName => Str, [Tags => L<Paws::Glacier::TagMap>])
+=head2 AddTagsToVault
+
+=over
+
+=item AccountId => Str
+
+=item VaultName => Str
+
+=item [Tags => L<Paws::Glacier::TagMap>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::AddTagsToVault>
 
@@ -425,7 +456,22 @@ Glacier Resources
 (http://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html).
 
 
-=head2 CompleteMultipartUpload(AccountId => Str, UploadId => Str, VaultName => Str, [ArchiveSize => Str, Checksum => Str])
+=head2 CompleteMultipartUpload
+
+=over
+
+=item AccountId => Str
+
+=item UploadId => Str
+
+=item VaultName => Str
+
+=item [ArchiveSize => Str]
+
+=item [Checksum => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::CompleteMultipartUpload>
 
@@ -482,7 +528,18 @@ and Complete Multipart Upload
 in the I<Amazon Glacier Developer Guide>.
 
 
-=head2 CompleteVaultLock(AccountId => Str, LockId => Str, VaultName => Str)
+=head2 CompleteVaultLock
+
+=over
+
+=item AccountId => Str
+
+=item LockId => Str
+
+=item VaultName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::CompleteVaultLock>
 
@@ -507,7 +564,16 @@ request when the vault lock is in the C<InProgress> state, the
 operation throws an C<InvalidParameter> error.
 
 
-=head2 CreateVault(AccountId => Str, VaultName => Str)
+=head2 CreateVault
+
+=over
+
+=item AccountId => Str
+
+=item VaultName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::CreateVault>
 
@@ -550,7 +616,18 @@ and Create Vault
 in the I<Amazon Glacier Developer Guide>.
 
 
-=head2 DeleteArchive(AccountId => Str, ArchiveId => Str, VaultName => Str)
+=head2 DeleteArchive
+
+=over
+
+=item AccountId => Str
+
+=item ArchiveId => Str
+
+=item VaultName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::DeleteArchive>
 
@@ -595,7 +672,16 @@ and Delete Archive
 in the I<Amazon Glacier Developer Guide>.
 
 
-=head2 DeleteVault(AccountId => Str, VaultName => Str)
+=head2 DeleteVault
+
+=over
+
+=item AccountId => Str
+
+=item VaultName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::DeleteVault>
 
@@ -631,7 +717,16 @@ and Delete Vault
 in the I<Amazon Glacier Developer Guide>.
 
 
-=head2 DeleteVaultAccessPolicy(AccountId => Str, VaultName => Str)
+=head2 DeleteVaultAccessPolicy
+
+=over
+
+=item AccountId => Str
+
+=item VaultName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::DeleteVaultAccessPolicy>
 
@@ -650,7 +745,16 @@ Control with Vault Access Policies
 (http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html).
 
 
-=head2 DeleteVaultNotifications(AccountId => Str, VaultName => Str)
+=head2 DeleteVaultNotifications
+
+=over
+
+=item AccountId => Str
+
+=item VaultName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::DeleteVaultNotifications>
 
@@ -677,7 +781,18 @@ and Delete Vault Notification Configuration
 in the Amazon Glacier Developer Guide.
 
 
-=head2 DescribeJob(AccountId => Str, JobId => Str, VaultName => Str)
+=head2 DescribeJob
+
+=over
+
+=item AccountId => Str
+
+=item JobId => Str
+
+=item VaultName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::DescribeJob>
 
@@ -710,7 +825,16 @@ for the underlying REST API Describe Job
 in the I<Amazon Glacier Developer Guide>.
 
 
-=head2 DescribeVault(AccountId => Str, VaultName => Str)
+=head2 DescribeVault
+
+=over
+
+=item AccountId => Str
+
+=item VaultName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::DescribeVault>
 
@@ -743,7 +867,14 @@ and Describe Vault
 in the I<Amazon Glacier Developer Guide>.
 
 
-=head2 GetDataRetrievalPolicy(AccountId => Str)
+=head2 GetDataRetrievalPolicy
+
+=over
+
+=item AccountId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::GetDataRetrievalPolicy>
 
@@ -756,7 +887,20 @@ Policies
 (http://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html).
 
 
-=head2 GetJobOutput(AccountId => Str, JobId => Str, VaultName => Str, [Range => Str])
+=head2 GetJobOutput
+
+=over
+
+=item AccountId => Str
+
+=item JobId => Str
+
+=item VaultName => Str
+
+=item [Range => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::GetJobOutput>
 
@@ -814,7 +958,16 @@ and Get Job Output
 (http://docs.aws.amazon.com/amazonglacier/latest/dev/api-job-output-get.html)
 
 
-=head2 GetVaultAccessPolicy(AccountId => Str, VaultName => Str)
+=head2 GetVaultAccessPolicy
+
+=over
+
+=item AccountId => Str
+
+=item VaultName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::GetVaultAccessPolicy>
 
@@ -830,7 +983,16 @@ policies, see Amazon Glacier Access Control with Vault Access Policies
 (http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html).
 
 
-=head2 GetVaultLock(AccountId => Str, VaultName => Str)
+=head2 GetVaultLock
+
+=over
+
+=item AccountId => Str
+
+=item VaultName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::GetVaultLock>
 
@@ -873,7 +1035,16 @@ policies, Amazon Glacier Access Control with Vault Lock Policies
 (http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock-policy.html).
 
 
-=head2 GetVaultNotifications(AccountId => Str, VaultName => Str)
+=head2 GetVaultNotifications
+
+=over
+
+=item AccountId => Str
+
+=item VaultName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::GetVaultNotifications>
 
@@ -904,7 +1075,18 @@ and Get Vault Notification Configuration
 in the I<Amazon Glacier Developer Guide>.
 
 
-=head2 InitiateJob(AccountId => Str, VaultName => Str, [JobParameters => L<Paws::Glacier::JobParameters>])
+=head2 InitiateJob
+
+=over
+
+=item AccountId => Str
+
+=item VaultName => Str
+
+=item [JobParameters => L<Paws::Glacier::JobParameters>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::InitiateJob>
 
@@ -917,7 +1099,20 @@ underlying REST API Initiate a Job
 (http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html).
 
 
-=head2 InitiateMultipartUpload(AccountId => Str, VaultName => Str, [ArchiveDescription => Str, PartSize => Str])
+=head2 InitiateMultipartUpload
+
+=over
+
+=item AccountId => Str
+
+=item VaultName => Str
+
+=item [ArchiveDescription => Str]
+
+=item [PartSize => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::InitiateMultipartUpload>
 
@@ -965,7 +1160,18 @@ and Initiate Multipart Upload
 in the I<Amazon Glacier Developer Guide>.
 
 
-=head2 InitiateVaultLock(AccountId => Str, VaultName => Str, [Policy => L<Paws::Glacier::VaultLockPolicy>])
+=head2 InitiateVaultLock
+
+=over
+
+=item AccountId => Str
+
+=item VaultName => Str
+
+=item [Policy => L<Paws::Glacier::VaultLockPolicy>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::InitiateVaultLock>
 
@@ -1017,7 +1223,24 @@ the vault lock is in the C<InProgress> state you must call
 AbortVaultLock before you can initiate a new vault lock policy.
 
 
-=head2 ListJobs(AccountId => Str, VaultName => Str, [Completed => Str, Limit => Str, Marker => Str, Statuscode => Str])
+=head2 ListJobs
+
+=over
+
+=item AccountId => Str
+
+=item VaultName => Str
+
+=item [Completed => Str]
+
+=item [Limit => Str]
+
+=item [Marker => Str]
+
+=item [Statuscode => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::ListJobs>
 
@@ -1065,7 +1288,20 @@ for the underlying REST API List Jobs
 (http://docs.aws.amazon.com/amazonglacier/latest/dev/api-jobs-get.html).
 
 
-=head2 ListMultipartUploads(AccountId => Str, VaultName => Str, [Limit => Str, Marker => Str])
+=head2 ListMultipartUploads
+
+=over
+
+=item AccountId => Str
+
+=item VaultName => Str
+
+=item [Limit => Str]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::ListMultipartUploads>
 
@@ -1108,7 +1344,22 @@ and List Multipart Uploads
 in the I<Amazon Glacier Developer Guide>.
 
 
-=head2 ListParts(AccountId => Str, UploadId => Str, VaultName => Str, [Limit => Str, Marker => Str])
+=head2 ListParts
+
+=over
+
+=item AccountId => Str
+
+=item UploadId => Str
+
+=item VaultName => Str
+
+=item [Limit => Str]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::ListParts>
 
@@ -1145,7 +1396,14 @@ and List Parts
 in the I<Amazon Glacier Developer Guide>.
 
 
-=head2 ListProvisionedCapacity(AccountId => Str)
+=head2 ListProvisionedCapacity
+
+=over
+
+=item AccountId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::ListProvisionedCapacity>
 
@@ -1155,7 +1413,16 @@ This operation lists the provisioned capacity units for the specified
 AWS account.
 
 
-=head2 ListTagsForVault(AccountId => Str, VaultName => Str)
+=head2 ListTagsForVault
+
+=over
+
+=item AccountId => Str
+
+=item VaultName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::ListTagsForVault>
 
@@ -1167,7 +1434,18 @@ tags, see Tagging Amazon Glacier Resources
 (http://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html).
 
 
-=head2 ListVaults(AccountId => Str, [Limit => Str, Marker => Str])
+=head2 ListVaults
+
+=over
+
+=item AccountId => Str
+
+=item [Limit => Str]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::ListVaults>
 
@@ -1200,7 +1478,14 @@ and List Vaults
 in the I<Amazon Glacier Developer Guide>.
 
 
-=head2 PurchaseProvisionedCapacity(AccountId => Str)
+=head2 PurchaseProvisionedCapacity
+
+=over
+
+=item AccountId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::PurchaseProvisionedCapacity>
 
@@ -1210,7 +1495,18 @@ This operation purchases a provisioned capacity unit for an AWS
 account.
 
 
-=head2 RemoveTagsFromVault(AccountId => Str, VaultName => Str, [TagKeys => ArrayRef[Str|Undef]])
+=head2 RemoveTagsFromVault
+
+=over
+
+=item AccountId => Str
+
+=item VaultName => Str
+
+=item [TagKeys => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::RemoveTagsFromVault>
 
@@ -1224,7 +1520,16 @@ This operation is idempotent. The operation will be successful, even if
 there are no tags attached to the vault.
 
 
-=head2 SetDataRetrievalPolicy(AccountId => Str, [Policy => L<Paws::Glacier::DataRetrievalPolicy>])
+=head2 SetDataRetrievalPolicy
+
+=over
+
+=item AccountId => Str
+
+=item [Policy => L<Paws::Glacier::DataRetrievalPolicy>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::SetDataRetrievalPolicy>
 
@@ -1241,7 +1546,18 @@ retrieval policies, see Amazon Glacier Data Retrieval Policies
 (http://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html).
 
 
-=head2 SetVaultAccessPolicy(AccountId => Str, VaultName => Str, [Policy => L<Paws::Glacier::VaultAccessPolicy>])
+=head2 SetVaultAccessPolicy
+
+=over
+
+=item AccountId => Str
+
+=item VaultName => Str
+
+=item [Policy => L<Paws::Glacier::VaultAccessPolicy>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::SetVaultAccessPolicy>
 
@@ -1257,7 +1573,18 @@ policies, see Amazon Glacier Access Control with Vault Access Policies
 (http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html).
 
 
-=head2 SetVaultNotifications(AccountId => Str, VaultName => Str, [VaultNotificationConfig => L<Paws::Glacier::VaultNotificationConfig>])
+=head2 SetVaultNotifications
+
+=over
+
+=item AccountId => Str
+
+=item VaultName => Str
+
+=item [VaultNotificationConfig => L<Paws::Glacier::VaultNotificationConfig>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::SetVaultNotifications>
 
@@ -1311,7 +1638,22 @@ and Set Vault Notification Configuration
 in the I<Amazon Glacier Developer Guide>.
 
 
-=head2 UploadArchive(AccountId => Str, VaultName => Str, [ArchiveDescription => Str, Body => Str, Checksum => Str])
+=head2 UploadArchive
+
+=over
+
+=item AccountId => Str
+
+=item VaultName => Str
+
+=item [ArchiveDescription => Str]
+
+=item [Body => Str]
+
+=item [Checksum => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::UploadArchive>
 
@@ -1362,7 +1704,24 @@ and Upload Archive
 in the I<Amazon Glacier Developer Guide>.
 
 
-=head2 UploadMultipartPart(AccountId => Str, UploadId => Str, VaultName => Str, [Body => Str, Checksum => Str, Range => Str])
+=head2 UploadMultipartPart
+
+=over
+
+=item AccountId => Str
+
+=item UploadId => Str
+
+=item VaultName => Str
+
+=item [Body => Str]
+
+=item [Checksum => Str]
+
+=item [Range => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Glacier::UploadMultipartPart>
 

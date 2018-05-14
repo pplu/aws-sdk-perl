@@ -49,6 +49,14 @@ foreach my $status (503, 400) {
     "Paws::Exception",
   );
   cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
+  throws_ok(
+    sub { 
+      $s->Method3(response => '{"__type":"SerializationException"}', status => $status); 
+    },
+    "Paws::Exception",
+  );
+  cmp_ok($@->code, 'eq', 'SerializationException', 'Exception of type SerializationException');
+  cmp_ok($@->message, 'eq', 'SerializationException', 'Message is not in the json, so the code gets used');
 
   throws_ok(
     sub { 
@@ -79,6 +87,14 @@ foreach my $status (503, 400) {
     "Paws::Exception",
   );
   cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
+  throws_ok(
+    sub { 
+      $s->Method1(response => '{"__type":"SerializationException"}', status => $status); 
+    },
+    "Paws::Exception",
+  );
+  cmp_ok($@->code, 'eq', 'SerializationException', 'Exception of type SerializationException');
+  cmp_ok($@->message, 'eq', 'SerializationException', 'Message is not in the json, so the code gets used');
 }
 
 foreach my $status (503, 400) {

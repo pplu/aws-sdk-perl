@@ -135,11 +135,20 @@ Welcome to the AWS Certificate Manager (ACM) API documentation.
 You can use ACM to manage SSL/TLS certificates for your AWS-based
 websites and applications. For general information about using ACM, see
 the I<AWS Certificate Manager User Guide>
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/).
+(http://docs.aws.amazon.com/acm/latest/userguide/).
 
 =head1 METHODS
 
-=head2 AddTagsToCertificate(CertificateArn => Str, Tags => ArrayRef[L<Paws::ACM::Tag>])
+=head2 AddTagsToCertificate
+
+=over
+
+=item CertificateArn => Str
+
+=item Tags => ArrayRef[L<Paws::ACM::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::AddTagsToCertificate>
 
@@ -160,14 +169,21 @@ among those resources. For example, you can add the same tag to an ACM
 certificate and an Elastic Load Balancing load balancer to indicate
 that they are both used by the same website. For more information, see
 Tagging ACM certificates
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/tags.html).
+(http://docs.aws.amazon.com/acm/latest/userguide/tags.html).
 
 To remove one or more tags, use the RemoveTagsFromCertificate action.
 To view all of the tags that have been applied to the certificate, use
 the ListTagsForCertificate action.
 
 
-=head2 DeleteCertificate(CertificateArn => Str)
+=head2 DeleteCertificate
+
+=over
+
+=item CertificateArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::DeleteCertificate>
 
@@ -184,7 +200,14 @@ service. To delete a certificate that is in use, the certificate
 association must first be removed.
 
 
-=head2 DescribeCertificate(CertificateArn => Str)
+=head2 DescribeCertificate
+
+=over
+
+=item CertificateArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::DescribeCertificate>
 
@@ -193,24 +216,41 @@ Returns: a L<Paws::ACM::DescribeCertificateResponse> instance
 Returns detailed metadata about the specified ACM certificate.
 
 
-=head2 ExportCertificate(CertificateArn => Str, Passphrase => Str)
+=head2 ExportCertificate
+
+=over
+
+=item CertificateArn => Str
+
+=item Passphrase => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::ExportCertificate>
 
 Returns: a L<Paws::ACM::ExportCertificateResponse> instance
 
-Exports a certificate for use anywhere. You can export the certificate,
-the certificate chain, and the encrypted private key associated with
-the public key embedded in the certificate. You must store the private
-key securely. The private key is a 2048 bit RSA key. You must provide a
-passphrase for the private key when exporting it. You can use the
-following OpenSSL command to decrypt it later. Provide the passphrase
-when prompted.
+Exports a private certificate issued by a private certificate authority
+(CA) for use anywhere. You can export the certificate, the certificate
+chain, and the encrypted private key associated with the public key
+embedded in the certificate. You must store the private key securely.
+The private key is a 2048 bit RSA key. You must provide a passphrase
+for the private key when exporting it. You can use the following
+OpenSSL command to decrypt it later. Provide the passphrase when
+prompted.
 
 C<openssl rsa -in encrypted_key.pem -out decrypted_key.pem>
 
 
-=head2 GetCertificate(CertificateArn => Str)
+=head2 GetCertificate
+
+=over
+
+=item CertificateArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::GetCertificate>
 
@@ -224,7 +264,20 @@ chain are base64 encoded. If you want to decode the certificate to see
 the individual fields, you can use OpenSSL.
 
 
-=head2 ImportCertificate(Certificate => Str, PrivateKey => Str, [CertificateArn => Str, CertificateChain => Str])
+=head2 ImportCertificate
+
+=over
+
+=item Certificate => Str
+
+=item PrivateKey => Str
+
+=item [CertificateArn => Str]
+
+=item [CertificateChain => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::ImportCertificate>
 
@@ -232,19 +285,19 @@ Returns: a L<Paws::ACM::ImportCertificateResponse> instance
 
 Imports a certificate into AWS Certificate Manager (ACM) to use with
 services that are integrated with ACM. Note that integrated services
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/acm-services.html)
+(http://docs.aws.amazon.com/acm/latest/userguide/acm-services.html)
 allow only certificate types and keys they support to be associated
 with their resources. Further, their support differs depending on
 whether the certificate is imported into IAM or into ACM. For more
 information, see the documentation for each service. For more
 information about importing certificates into ACM, see Importing
 Certificates
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/import-certificate.html)
+(http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html)
 in the I<AWS Certificate Manager User Guide>.
 
 ACM does not provide managed renewal
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/acm-renewal.html)
-for certificates that you import.
+(http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for
+certificates that you import.
 
 Note the following guidelines when importing third party certificates:
 
@@ -296,12 +349,18 @@ imported certificate.
 
 =item *
 
-When you import a certificate by using the CLI or one of the SDKs, you
-must specify the certificate, the certificate chain, and the private
-key by their file names preceded by C<file://>. For example, you can
-specify a certificate saved in the C<C:\temp> folder as
+When you import a certificate by using the CLI, you must specify the
+certificate, the certificate chain, and the private key by their file
+names preceded by C<file://>. For example, you can specify a
+certificate saved in the C<C:\temp> folder as
 C<file://C:\temp\certificate_to_import.pem>. If you are making an HTTP
 or HTTPS Query request, include these arguments as BLOBs.
+
+=item *
+
+When you import a certificate by using an SDK, you must specify the
+certificate, the certificate chain, and the private key files in the
+manner required by the programming language you're using.
 
 =back
 
@@ -310,7 +369,20 @@ This operation returns the Amazon Resource Name (ARN)
 of the imported certificate.
 
 
-=head2 ListCertificates([CertificateStatuses => ArrayRef[Str|Undef], Includes => L<Paws::ACM::Filters>, MaxItems => Int, NextToken => Str])
+=head2 ListCertificates
+
+=over
+
+=item [CertificateStatuses => ArrayRef[Str|Undef]]
+
+=item [Includes => L<Paws::ACM::Filters>]
+
+=item [MaxItems => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::ListCertificates>
 
@@ -321,7 +393,14 @@ that only certificates that match a specific status be listed. You can
 also filter by specific attributes of the certificate.
 
 
-=head2 ListTagsForCertificate(CertificateArn => Str)
+=head2 ListTagsForCertificate
+
+=over
+
+=item CertificateArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::ListTagsForCertificate>
 
@@ -333,7 +412,16 @@ add a tag to an ACM certificate, use the AddTagsToCertificate action.
 To delete a tag, use the RemoveTagsFromCertificate action.
 
 
-=head2 RemoveTagsFromCertificate(CertificateArn => Str, Tags => ArrayRef[L<Paws::ACM::Tag>])
+=head2 RemoveTagsFromCertificate
+
+=over
+
+=item CertificateArn => Str
+
+=item Tags => ArrayRef[L<Paws::ACM::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::RemoveTagsFromCertificate>
 
@@ -350,37 +438,59 @@ view all of the tags that have been applied to a specific ACM
 certificate, use the ListTagsForCertificate action.
 
 
-=head2 RequestCertificate(DomainName => Str, [CertificateAuthorityArn => Str, DomainValidationOptions => ArrayRef[L<Paws::ACM::DomainValidationOption>], IdempotencyToken => Str, Options => L<Paws::ACM::CertificateOptions>, SubjectAlternativeNames => ArrayRef[Str|Undef], ValidationMethod => Str])
+=head2 RequestCertificate
+
+=over
+
+=item DomainName => Str
+
+=item [CertificateAuthorityArn => Str]
+
+=item [DomainValidationOptions => ArrayRef[L<Paws::ACM::DomainValidationOption>]]
+
+=item [IdempotencyToken => Str]
+
+=item [Options => L<Paws::ACM::CertificateOptions>]
+
+=item [SubjectAlternativeNames => ArrayRef[Str|Undef]]
+
+=item [ValidationMethod => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::RequestCertificate>
 
 Returns: a L<Paws::ACM::RequestCertificateResponse> instance
 
 Requests an ACM certificate for use with other AWS services. To request
-an ACM certificate, you must specify the fully qualified domain name
-(FQDN) for your site in the C<DomainName> parameter. You can also
-specify additional FQDNs in the C<SubjectAlternativeNames> parameter.
+an ACM certificate, you must specify a fully qualified domain name
+(FQDN) in the C<DomainName> parameter. You can also specify additional
+FQDNs in the C<SubjectAlternativeNames> parameter.
 
-Each domain name that you specify must be validated to verify that you
-own or control the domain. You can use DNS validation
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/gs-acm-validate-dns.html)
+If you are requesting a private certificate, domain validation is not
+required. If you are requesting a public certificate, each domain name
+that you specify must be validated to verify that you own or control
+the domain. You can use DNS validation
+(http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html)
 or email validation
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/gs-acm-validate-email.html).
-We recommend that you use DNS validation.
-
-If you choose email validation, email is sent to the domain owner to
-request approval to issue the certificate. Email is sent to three
-registered contact addresses in the WHOIS database and to five common
-system administration addresses formed from the C<DomainName> you enter
-or the optional C<ValidationDomain> parameter. For more information,
-see Validate with Email
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/gs-acm-validate-email.html).
-
-After receiving approval from the domain owner, the ACM certificate is
-issued.
+(http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html).
+We recommend that you use DNS validation. ACM issues public
+certificates after receiving approval from the domain owner.
 
 
-=head2 ResendValidationEmail(CertificateArn => Str, Domain => Str, ValidationDomain => Str)
+=head2 ResendValidationEmail
+
+=over
+
+=item CertificateArn => Str
+
+=item Domain => Str
+
+=item ValidationDomain => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::ResendValidationEmail>
 
@@ -398,10 +508,19 @@ since your original request or since your last attempt to resend
 validation mail, you must request a new certificate. For more
 information about setting up your contact email addresses, see
 Configure Email for your Domain
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/setup-email.html).
+(http://docs.aws.amazon.com/acm/latest/userguide/setup-email.html).
 
 
-=head2 UpdateCertificateOptions(CertificateArn => Str, Options => L<Paws::ACM::CertificateOptions>)
+=head2 UpdateCertificateOptions
+
+=over
+
+=item CertificateArn => Str
+
+=item Options => L<Paws::ACM::CertificateOptions>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACM::UpdateCertificateOptions>
 
@@ -411,7 +530,7 @@ Updates a certificate. Currently, you can use this function to specify
 whether to opt in to or out of recording your certificate in a
 certificate transparency log. For more information, see Opting Out of
 Certificate Transparency Logging
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
+(http://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
 
 
 

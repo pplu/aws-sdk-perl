@@ -44,7 +44,7 @@ The name of the DB parameter group family.
 
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-Not currently supported.
+This parameter is not currently supported.
 
 
 

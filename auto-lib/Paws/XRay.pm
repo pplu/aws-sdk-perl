@@ -181,7 +181,16 @@ service maps and other data created by processing those traces.
 
 =head1 METHODS
 
-=head2 BatchGetTraces(TraceIds => ArrayRef[Str|Undef], [NextToken => Str])
+=head2 BatchGetTraces
+
+=over
+
+=item TraceIds => ArrayRef[Str|Undef]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::XRay::BatchGetTraces>
 
@@ -192,7 +201,12 @@ of segment documents that originates from a single request. Use
 C<GetTraceSummaries> to get a list of trace IDs.
 
 
-=head2 GetEncryptionConfig()
+=head2 GetEncryptionConfig
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::XRay::GetEncryptionConfig>
 
@@ -201,7 +215,18 @@ Returns: a L<Paws::XRay::GetEncryptionConfigResult> instance
 Retrieves the current encryption configuration for X-Ray data.
 
 
-=head2 GetServiceGraph(EndTime => Str, StartTime => Str, [NextToken => Str])
+=head2 GetServiceGraph
+
+=over
+
+=item EndTime => Str
+
+=item StartTime => Str
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::XRay::GetServiceGraph>
 
@@ -215,7 +240,16 @@ Downstream services can be other applications, AWS resources, HTTP web
 APIs, or SQL databases.
 
 
-=head2 GetTraceGraph(TraceIds => ArrayRef[Str|Undef], [NextToken => Str])
+=head2 GetTraceGraph
+
+=over
+
+=item TraceIds => ArrayRef[Str|Undef]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::XRay::GetTraceGraph>
 
@@ -224,7 +258,22 @@ Returns: a L<Paws::XRay::GetTraceGraphResult> instance
 Retrieves a service graph for one or more specific trace IDs.
 
 
-=head2 GetTraceSummaries(EndTime => Str, StartTime => Str, [FilterExpression => Str, NextToken => Str, Sampling => Bool])
+=head2 GetTraceSummaries
+
+=over
+
+=item EndTime => Str
+
+=item StartTime => Str
+
+=item [FilterExpression => Str]
+
+=item [NextToken => Str]
+
+=item [Sampling => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::XRay::GetTraceSummaries>
 
@@ -252,7 +301,16 @@ filter expressions, see Using Filter Expressions
 in the I<AWS X-Ray Developer Guide>.
 
 
-=head2 PutEncryptionConfig(Type => Str, [KeyId => Str])
+=head2 PutEncryptionConfig
+
+=over
+
+=item Type => Str
+
+=item [KeyId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::XRay::PutEncryptionConfig>
 
@@ -261,7 +319,20 @@ Returns: a L<Paws::XRay::PutEncryptionConfigResult> instance
 Updates the encryption configuration for X-Ray data.
 
 
-=head2 PutTelemetryRecords(TelemetryRecords => ArrayRef[L<Paws::XRay::TelemetryRecord>], [EC2InstanceId => Str, Hostname => Str, ResourceARN => Str])
+=head2 PutTelemetryRecords
+
+=over
+
+=item TelemetryRecords => ArrayRef[L<Paws::XRay::TelemetryRecord>]
+
+=item [EC2InstanceId => Str]
+
+=item [Hostname => Str]
+
+=item [ResourceARN => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::XRay::PutTelemetryRecords>
 
@@ -270,7 +341,14 @@ Returns: a L<Paws::XRay::PutTelemetryRecordsResult> instance
 Used by the AWS X-Ray daemon to upload telemetry.
 
 
-=head2 PutTraceSegments(TraceSegmentDocuments => ArrayRef[Str|Undef])
+=head2 PutTraceSegments
+
+=over
+
+=item TraceSegmentDocuments => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::XRay::PutTraceSegments>
 

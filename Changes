@@ -6,6 +6,11 @@
  - Documentation update: Now POD contains links from the botocore documentation
  - Bump XML::Simple dependency to 2.21 (mla)
  - Documentation improvement: Link back to Service class from method parameters classes (castaway)
+ - Documentation improvement: New way of rendering parameters to methods (avoids very long method signatures in TOCs). This
+   also fixes the fact that search.cpan.org didn't like very long lines in its TOC, so was not putting some methods in the
+   TOC (castaway)
+ - Json services will now return the code of the exception as the message of the exception if no message was found (instead
+   of 'unrecognized error format')
  - New API: Pricing
  - New API: CostExplorer
  - New API: Translate

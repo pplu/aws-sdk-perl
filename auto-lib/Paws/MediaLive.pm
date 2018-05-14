@@ -202,7 +202,28 @@ API for AWS Elemental MediaLive
 
 =head1 METHODS
 
-=head2 CreateChannel([Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>], EncoderSettings => L<Paws::MediaLive::EncoderSettings>, InputAttachments => ArrayRef[L<Paws::MediaLive::InputAttachment>], InputSpecification => L<Paws::MediaLive::InputSpecification>, Name => Str, RequestId => Str, Reserved => Str, RoleArn => Str])
+=head2 CreateChannel
+
+=over
+
+=item [Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>]]
+
+=item [EncoderSettings => L<Paws::MediaLive::EncoderSettings>]
+
+=item [InputAttachments => ArrayRef[L<Paws::MediaLive::InputAttachment>]]
+
+=item [InputSpecification => L<Paws::MediaLive::InputSpecification>]
+
+=item [Name => Str]
+
+=item [RequestId => Str]
+
+=item [Reserved => Str]
+
+=item [RoleArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaLive::CreateChannel>
 
@@ -211,7 +232,24 @@ Returns: a L<Paws::MediaLive::CreateChannelResponse> instance
 Creates a new channel
 
 
-=head2 CreateInput([Destinations => ArrayRef[L<Paws::MediaLive::InputDestinationRequest>], InputSecurityGroups => ArrayRef[Str|Undef], Name => Str, RequestId => Str, Sources => ArrayRef[L<Paws::MediaLive::InputSourceRequest>], Type => Str])
+=head2 CreateInput
+
+=over
+
+=item [Destinations => ArrayRef[L<Paws::MediaLive::InputDestinationRequest>]]
+
+=item [InputSecurityGroups => ArrayRef[Str|Undef]]
+
+=item [Name => Str]
+
+=item [RequestId => Str]
+
+=item [Sources => ArrayRef[L<Paws::MediaLive::InputSourceRequest>]]
+
+=item [Type => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaLive::CreateInput>
 
@@ -220,7 +258,14 @@ Returns: a L<Paws::MediaLive::CreateInputResponse> instance
 Create an input
 
 
-=head2 CreateInputSecurityGroup([WhitelistRules => ArrayRef[L<Paws::MediaLive::InputWhitelistRuleCidr>]])
+=head2 CreateInputSecurityGroup
+
+=over
+
+=item [WhitelistRules => ArrayRef[L<Paws::MediaLive::InputWhitelistRuleCidr>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaLive::CreateInputSecurityGroup>
 
@@ -229,7 +274,14 @@ Returns: a L<Paws::MediaLive::CreateInputSecurityGroupResponse> instance
 Creates a Input Security Group
 
 
-=head2 DeleteChannel(ChannelId => Str)
+=head2 DeleteChannel
+
+=over
+
+=item ChannelId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaLive::DeleteChannel>
 
@@ -238,7 +290,14 @@ Returns: a L<Paws::MediaLive::DeleteChannelResponse> instance
 Starts deletion of channel. The associated outputs are also deleted.
 
 
-=head2 DeleteInput(InputId => Str)
+=head2 DeleteInput
+
+=over
+
+=item InputId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaLive::DeleteInput>
 
@@ -247,7 +306,14 @@ Returns: a L<Paws::MediaLive::DeleteInputResponse> instance
 Deletes the input end point
 
 
-=head2 DeleteInputSecurityGroup(InputSecurityGroupId => Str)
+=head2 DeleteInputSecurityGroup
+
+=over
+
+=item InputSecurityGroupId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaLive::DeleteInputSecurityGroup>
 
@@ -256,7 +322,14 @@ Returns: a L<Paws::MediaLive::DeleteInputSecurityGroupResponse> instance
 Deletes an Input Security Group
 
 
-=head2 DescribeChannel(ChannelId => Str)
+=head2 DescribeChannel
+
+=over
+
+=item ChannelId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaLive::DescribeChannel>
 
@@ -265,7 +338,14 @@ Returns: a L<Paws::MediaLive::DescribeChannelResponse> instance
 Gets details about a channel
 
 
-=head2 DescribeInput(InputId => Str)
+=head2 DescribeInput
+
+=over
+
+=item InputId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaLive::DescribeInput>
 
@@ -274,7 +354,14 @@ Returns: a L<Paws::MediaLive::DescribeInputResponse> instance
 Produces details about an input
 
 
-=head2 DescribeInputSecurityGroup(InputSecurityGroupId => Str)
+=head2 DescribeInputSecurityGroup
+
+=over
+
+=item InputSecurityGroupId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaLive::DescribeInputSecurityGroup>
 
@@ -283,7 +370,16 @@ Returns: a L<Paws::MediaLive::DescribeInputSecurityGroupResponse> instance
 Produces a summary of an Input Security Group
 
 
-=head2 ListChannels([MaxResults => Int, NextToken => Str])
+=head2 ListChannels
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaLive::ListChannels>
 
@@ -292,7 +388,16 @@ Returns: a L<Paws::MediaLive::ListChannelsResponse> instance
 Produces list of channels that have been created
 
 
-=head2 ListInputs([MaxResults => Int, NextToken => Str])
+=head2 ListInputs
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaLive::ListInputs>
 
@@ -301,7 +406,16 @@ Returns: a L<Paws::MediaLive::ListInputsResponse> instance
 Produces list of inputs that have been created
 
 
-=head2 ListInputSecurityGroups([MaxResults => Int, NextToken => Str])
+=head2 ListInputSecurityGroups
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaLive::ListInputSecurityGroups>
 
@@ -310,7 +424,14 @@ Returns: a L<Paws::MediaLive::ListInputSecurityGroupsResponse> instance
 Produces a list of Input Security Groups for an account
 
 
-=head2 StartChannel(ChannelId => Str)
+=head2 StartChannel
+
+=over
+
+=item ChannelId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaLive::StartChannel>
 
@@ -319,7 +440,14 @@ Returns: a L<Paws::MediaLive::StartChannelResponse> instance
 Starts an existing channel
 
 
-=head2 StopChannel(ChannelId => Str)
+=head2 StopChannel
+
+=over
+
+=item ChannelId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaLive::StopChannel>
 
@@ -328,7 +456,26 @@ Returns: a L<Paws::MediaLive::StopChannelResponse> instance
 Stops a running channel
 
 
-=head2 UpdateChannel(ChannelId => Str, [Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>], EncoderSettings => L<Paws::MediaLive::EncoderSettings>, InputAttachments => ArrayRef[L<Paws::MediaLive::InputAttachment>], InputSpecification => L<Paws::MediaLive::InputSpecification>, Name => Str, RoleArn => Str])
+=head2 UpdateChannel
+
+=over
+
+=item ChannelId => Str
+
+=item [Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>]]
+
+=item [EncoderSettings => L<Paws::MediaLive::EncoderSettings>]
+
+=item [InputAttachments => ArrayRef[L<Paws::MediaLive::InputAttachment>]]
+
+=item [InputSpecification => L<Paws::MediaLive::InputSpecification>]
+
+=item [Name => Str]
+
+=item [RoleArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaLive::UpdateChannel>
 
@@ -337,7 +484,22 @@ Returns: a L<Paws::MediaLive::UpdateChannelResponse> instance
 Updates a channel.
 
 
-=head2 UpdateInput(InputId => Str, [Destinations => ArrayRef[L<Paws::MediaLive::InputDestinationRequest>], InputSecurityGroups => ArrayRef[Str|Undef], Name => Str, Sources => ArrayRef[L<Paws::MediaLive::InputSourceRequest>]])
+=head2 UpdateInput
+
+=over
+
+=item InputId => Str
+
+=item [Destinations => ArrayRef[L<Paws::MediaLive::InputDestinationRequest>]]
+
+=item [InputSecurityGroups => ArrayRef[Str|Undef]]
+
+=item [Name => Str]
+
+=item [Sources => ArrayRef[L<Paws::MediaLive::InputSourceRequest>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaLive::UpdateInput>
 
@@ -346,7 +508,16 @@ Returns: a L<Paws::MediaLive::UpdateInputResponse> instance
 Updates an input.
 
 
-=head2 UpdateInputSecurityGroup(InputSecurityGroupId => Str, [WhitelistRules => ArrayRef[L<Paws::MediaLive::InputWhitelistRuleCidr>]])
+=head2 UpdateInputSecurityGroup
+
+=over
+
+=item InputSecurityGroupId => Str
+
+=item [WhitelistRules => ArrayRef[L<Paws::MediaLive::InputWhitelistRuleCidr>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaLive::UpdateInputSecurityGroup>
 

@@ -1,15 +1,15 @@
-package Paws::GuardDuty::MapOfCondition;
+package Paws::Firehose::ColumnToJsonKeyMappings;
   use Moose;
-  with 'Paws::API::StrToObjMapParser';
+  with 'Paws::API::StrToNativeMapParser';
 
-  has Map => (is => 'ro', isa => 'HashRef[Paws::GuardDuty::Condition]');
+  has Map => (is => 'ro', isa => 'HashRef[Maybe[Str]]');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::GuardDuty::MapOfCondition
+Paws::Firehose::ColumnToJsonKeyMappings
 
 =head1 USAGE
 
@@ -20,13 +20,13 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::GuardDuty::MapOfCondition object:
+As an example, if Att1 is expected to be a Paws::Firehose::ColumnToJsonKeyMappings object:
 
   $service_obj->Method(Att1 => { key1 => $value, ..., keyN => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::MapOfCondition object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::ColumnToJsonKeyMappings object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Map->{ key1 }
@@ -37,13 +37,13 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => L<Paws::GuardDuty::Condition>
+=head2 Map => Str
 
 Use the Map method to retrieve a HashRef to the map
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, describing an object used in L<Paws::GuardDuty>
+This class forms part of L<Paws>, describing an object used in L<Paws::Firehose>
 
 =head1 BUGS and CONTRIBUTIONS
 

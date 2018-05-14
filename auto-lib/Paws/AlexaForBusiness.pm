@@ -144,6 +144,11 @@ package Paws::AlexaForBusiness;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::GetSkillGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListDeviceEvents {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::ListDeviceEvents', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListSkills {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::ListSkills', @_);
@@ -418,7 +423,7 @@ package Paws::AlexaForBusiness;
   }
 
 
-  sub operations { qw/AssociateContactWithAddressBook AssociateDeviceWithRoom AssociateSkillGroupWithRoom CreateAddressBook CreateContact CreateProfile CreateRoom CreateSkillGroup CreateUser DeleteAddressBook DeleteContact DeleteProfile DeleteRoom DeleteRoomSkillParameter DeleteSkillGroup DeleteUser DisassociateContactFromAddressBook DisassociateDeviceFromRoom DisassociateSkillGroupFromRoom GetAddressBook GetContact GetDevice GetProfile GetRoom GetRoomSkillParameter GetSkillGroup ListSkills ListTags PutRoomSkillParameter ResolveRoom RevokeInvitation SearchAddressBooks SearchContacts SearchDevices SearchProfiles SearchRooms SearchSkillGroups SearchUsers SendInvitation StartDeviceSync TagResource UntagResource UpdateAddressBook UpdateContact UpdateDevice UpdateProfile UpdateRoom UpdateSkillGroup / }
+  sub operations { qw/AssociateContactWithAddressBook AssociateDeviceWithRoom AssociateSkillGroupWithRoom CreateAddressBook CreateContact CreateProfile CreateRoom CreateSkillGroup CreateUser DeleteAddressBook DeleteContact DeleteProfile DeleteRoom DeleteRoomSkillParameter DeleteSkillGroup DeleteUser DisassociateContactFromAddressBook DisassociateDeviceFromRoom DisassociateSkillGroupFromRoom GetAddressBook GetContact GetDevice GetProfile GetRoom GetRoomSkillParameter GetSkillGroup ListDeviceEvents ListSkills ListTags PutRoomSkillParameter ResolveRoom RevokeInvitation SearchAddressBooks SearchContacts SearchDevices SearchProfiles SearchRooms SearchSkillGroups SearchUsers SendInvitation StartDeviceSync TagResource UntagResource UpdateAddressBook UpdateContact UpdateDevice UpdateProfile UpdateRoom UpdateSkillGroup / }
 
 1;
 
@@ -447,48 +452,86 @@ Paws::AlexaForBusiness - Perl Interface to AWS Alexa For Business
 =head1 DESCRIPTION
 
 Alexa for Business makes it easy for you to use Alexa in your
-organization. Alexa for Business gives you the tools you need to manage
-Alexa devices, enroll your users, and assign skills, at scale. You can
-build your own context-aware voice skills using the Alexa Skills Kit,
-and the Alexa for Business APIs, and you can make these available as
-private skills for your organization. Alexa for Business also makes it
-easy to voice-enable your products and services, providing
-context-aware voice experiences for your customers.
+organization. Alexa for Business gives you the tools you need for
+managing Alexa devices, enroll your users, and assign skills, at scale.
+You can build your own context-aware voice skills using the Alexa
+Skills Kit and the Alexa for Business API operations. You can make also
+these available as private skills for your organization. Alexa for
+Business makes it easy to voice-enable your products and services,
+providing context-aware voice experiences for your customers.
 
 =head1 METHODS
 
-=head2 AssociateContactWithAddressBook(AddressBookArn => Str, ContactArn => Str)
+=head2 AssociateContactWithAddressBook
+
+=over
+
+=item AddressBookArn => Str
+
+=item ContactArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::AssociateContactWithAddressBook>
 
 Returns: a L<Paws::AlexaForBusiness::AssociateContactWithAddressBookResponse> instance
 
-Associates a contact to a given address book.
+Associates a contact with a given address book.
 
 
-=head2 AssociateDeviceWithRoom([DeviceArn => Str, RoomArn => Str])
+=head2 AssociateDeviceWithRoom
+
+=over
+
+=item [DeviceArn => Str]
+
+=item [RoomArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::AssociateDeviceWithRoom>
 
 Returns: a L<Paws::AlexaForBusiness::AssociateDeviceWithRoomResponse> instance
 
-Associates a device to a given room. This applies all the settings from
-the room profile to the device, and all the skills in any skill groups
-added to that room. This operation requires the device to be online, or
-a manual sync is required.
+Associates a device with a given room. This applies all the settings
+from the room profile to the device, and all the skills in any skill
+groups added to that room. This operation requires the device to be
+online, or else a manual sync is required.
 
 
-=head2 AssociateSkillGroupWithRoom([RoomArn => Str, SkillGroupArn => Str])
+=head2 AssociateSkillGroupWithRoom
+
+=over
+
+=item [RoomArn => Str]
+
+=item [SkillGroupArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::AssociateSkillGroupWithRoom>
 
 Returns: a L<Paws::AlexaForBusiness::AssociateSkillGroupWithRoomResponse> instance
 
-Associates a skill group to a given room. This enables all skills in
+Associates a skill group with a given room. This enables all skills in
 the associated skill group on all devices in the room.
 
 
-=head2 CreateAddressBook(Name => Str, [ClientRequestToken => Str, Description => Str])
+=head2 CreateAddressBook
+
+=over
+
+=item Name => Str
+
+=item [ClientRequestToken => Str]
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::CreateAddressBook>
 
@@ -497,7 +540,22 @@ Returns: a L<Paws::AlexaForBusiness::CreateAddressBookResponse> instance
 Creates an address book with the specified details.
 
 
-=head2 CreateContact(FirstName => Str, PhoneNumber => Str, [ClientRequestToken => Str, DisplayName => Str, LastName => Str])
+=head2 CreateContact
+
+=over
+
+=item FirstName => Str
+
+=item PhoneNumber => Str
+
+=item [ClientRequestToken => Str]
+
+=item [DisplayName => Str]
+
+=item [LastName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::CreateContact>
 
@@ -506,7 +564,32 @@ Returns: a L<Paws::AlexaForBusiness::CreateContactResponse> instance
 Creates a contact with the specified details.
 
 
-=head2 CreateProfile(Address => Str, DistanceUnit => Str, ProfileName => Str, TemperatureUnit => Str, Timezone => Str, WakeWord => Str, [ClientRequestToken => Str, MaxVolumeLimit => Int, PSTNEnabled => Bool, SetupModeDisabled => Bool])
+=head2 CreateProfile
+
+=over
+
+=item Address => Str
+
+=item DistanceUnit => Str
+
+=item ProfileName => Str
+
+=item TemperatureUnit => Str
+
+=item Timezone => Str
+
+=item WakeWord => Str
+
+=item [ClientRequestToken => Str]
+
+=item [MaxVolumeLimit => Int]
+
+=item [PSTNEnabled => Bool]
+
+=item [SetupModeDisabled => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::CreateProfile>
 
@@ -515,7 +598,24 @@ Returns: a L<Paws::AlexaForBusiness::CreateProfileResponse> instance
 Creates a new room profile with the specified details.
 
 
-=head2 CreateRoom(RoomName => Str, [ClientRequestToken => Str, Description => Str, ProfileArn => Str, ProviderCalendarId => Str, Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]])
+=head2 CreateRoom
+
+=over
+
+=item RoomName => Str
+
+=item [ClientRequestToken => Str]
+
+=item [Description => Str]
+
+=item [ProfileArn => Str]
+
+=item [ProviderCalendarId => Str]
+
+=item [Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::CreateRoom>
 
@@ -524,7 +624,18 @@ Returns: a L<Paws::AlexaForBusiness::CreateRoomResponse> instance
 Creates a room with the specified details.
 
 
-=head2 CreateSkillGroup(SkillGroupName => Str, [ClientRequestToken => Str, Description => Str])
+=head2 CreateSkillGroup
+
+=over
+
+=item SkillGroupName => Str
+
+=item [ClientRequestToken => Str]
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::CreateSkillGroup>
 
@@ -533,7 +644,24 @@ Returns: a L<Paws::AlexaForBusiness::CreateSkillGroupResponse> instance
 Creates a skill group with a specified name and description.
 
 
-=head2 CreateUser(UserId => Str, [ClientRequestToken => Str, Email => Str, FirstName => Str, LastName => Str, Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]])
+=head2 CreateUser
+
+=over
+
+=item UserId => Str
+
+=item [ClientRequestToken => Str]
+
+=item [Email => Str]
+
+=item [FirstName => Str]
+
+=item [LastName => Str]
+
+=item [Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::CreateUser>
 
@@ -542,7 +670,14 @@ Returns: a L<Paws::AlexaForBusiness::CreateUserResponse> instance
 Creates a user.
 
 
-=head2 DeleteAddressBook(AddressBookArn => Str)
+=head2 DeleteAddressBook
+
+=over
+
+=item AddressBookArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::DeleteAddressBook>
 
@@ -551,7 +686,14 @@ Returns: a L<Paws::AlexaForBusiness::DeleteAddressBookResponse> instance
 Deletes an address book by the address book ARN.
 
 
-=head2 DeleteContact(ContactArn => Str)
+=head2 DeleteContact
+
+=over
+
+=item ContactArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::DeleteContact>
 
@@ -560,7 +702,14 @@ Returns: a L<Paws::AlexaForBusiness::DeleteContactResponse> instance
 Deletes a contact by the contact ARN.
 
 
-=head2 DeleteProfile([ProfileArn => Str])
+=head2 DeleteProfile
+
+=over
+
+=item [ProfileArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::DeleteProfile>
 
@@ -569,7 +718,14 @@ Returns: a L<Paws::AlexaForBusiness::DeleteProfileResponse> instance
 Deletes a room profile by the profile ARN.
 
 
-=head2 DeleteRoom([RoomArn => Str])
+=head2 DeleteRoom
+
+=over
+
+=item [RoomArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::DeleteRoom>
 
@@ -578,7 +734,18 @@ Returns: a L<Paws::AlexaForBusiness::DeleteRoomResponse> instance
 Deletes a room by the room ARN.
 
 
-=head2 DeleteRoomSkillParameter(ParameterKey => Str, SkillId => Str, [RoomArn => Str])
+=head2 DeleteRoomSkillParameter
+
+=over
+
+=item ParameterKey => Str
+
+=item SkillId => Str
+
+=item [RoomArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::DeleteRoomSkillParameter>
 
@@ -588,7 +755,14 @@ Deletes room skill parameter details by room, skill, and parameter key
 ID.
 
 
-=head2 DeleteSkillGroup([SkillGroupArn => Str])
+=head2 DeleteSkillGroup
+
+=over
+
+=item [SkillGroupArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::DeleteSkillGroup>
 
@@ -597,7 +771,16 @@ Returns: a L<Paws::AlexaForBusiness::DeleteSkillGroupResponse> instance
 Deletes a skill group by skill group ARN.
 
 
-=head2 DeleteUser(EnrollmentId => Str, [UserArn => Str])
+=head2 DeleteUser
+
+=over
+
+=item EnrollmentId => Str
+
+=item [UserArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::DeleteUser>
 
@@ -606,7 +789,16 @@ Returns: a L<Paws::AlexaForBusiness::DeleteUserResponse> instance
 Deletes a specified user by user ARN and enrollment ARN.
 
 
-=head2 DisassociateContactFromAddressBook(AddressBookArn => Str, ContactArn => Str)
+=head2 DisassociateContactFromAddressBook
+
+=over
+
+=item AddressBookArn => Str
+
+=item ContactArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::DisassociateContactFromAddressBook>
 
@@ -615,7 +807,14 @@ Returns: a L<Paws::AlexaForBusiness::DisassociateContactFromAddressBookResponse>
 Disassociates a contact from a given address book.
 
 
-=head2 DisassociateDeviceFromRoom([DeviceArn => Str])
+=head2 DisassociateDeviceFromRoom
+
+=over
+
+=item [DeviceArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::DisassociateDeviceFromRoom>
 
@@ -626,7 +825,16 @@ be connected to the Wi-Fi network and is still registered to the
 account. The device settings and skills are removed from the room.
 
 
-=head2 DisassociateSkillGroupFromRoom([RoomArn => Str, SkillGroupArn => Str])
+=head2 DisassociateSkillGroupFromRoom
+
+=over
+
+=item [RoomArn => Str]
+
+=item [SkillGroupArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::DisassociateSkillGroupFromRoom>
 
@@ -636,7 +844,14 @@ Disassociates a skill group from a specified room. This disables all
 skills in the skill group on all devices in the room.
 
 
-=head2 GetAddressBook(AddressBookArn => Str)
+=head2 GetAddressBook
+
+=over
+
+=item AddressBookArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::GetAddressBook>
 
@@ -645,7 +860,14 @@ Returns: a L<Paws::AlexaForBusiness::GetAddressBookResponse> instance
 Gets address the book details by the address book ARN.
 
 
-=head2 GetContact(ContactArn => Str)
+=head2 GetContact
+
+=over
+
+=item ContactArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::GetContact>
 
@@ -654,7 +876,14 @@ Returns: a L<Paws::AlexaForBusiness::GetContactResponse> instance
 Gets the contact details by the contact ARN.
 
 
-=head2 GetDevice([DeviceArn => Str])
+=head2 GetDevice
+
+=over
+
+=item [DeviceArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::GetDevice>
 
@@ -663,7 +892,14 @@ Returns: a L<Paws::AlexaForBusiness::GetDeviceResponse> instance
 Gets the details of a device by device ARN.
 
 
-=head2 GetProfile([ProfileArn => Str])
+=head2 GetProfile
+
+=over
+
+=item [ProfileArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::GetProfile>
 
@@ -672,7 +908,14 @@ Returns: a L<Paws::AlexaForBusiness::GetProfileResponse> instance
 Gets the details of a room profile by profile ARN.
 
 
-=head2 GetRoom([RoomArn => Str])
+=head2 GetRoom
+
+=over
+
+=item [RoomArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::GetRoom>
 
@@ -681,7 +924,18 @@ Returns: a L<Paws::AlexaForBusiness::GetRoomResponse> instance
 Gets room details by room ARN.
 
 
-=head2 GetRoomSkillParameter(ParameterKey => Str, SkillId => Str, [RoomArn => Str])
+=head2 GetRoomSkillParameter
+
+=over
+
+=item ParameterKey => Str
+
+=item SkillId => Str
+
+=item [RoomArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::GetRoomSkillParameter>
 
@@ -691,7 +945,14 @@ Gets room skill parameter details by room, skill, and parameter key
 ARN.
 
 
-=head2 GetSkillGroup([SkillGroupArn => Str])
+=head2 GetSkillGroup
+
+=over
+
+=item [SkillGroupArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::GetSkillGroup>
 
@@ -700,7 +961,44 @@ Returns: a L<Paws::AlexaForBusiness::GetSkillGroupResponse> instance
 Gets skill group details by skill group ARN.
 
 
-=head2 ListSkills([MaxResults => Int, NextToken => Str, SkillGroupArn => Str])
+=head2 ListDeviceEvents
+
+=over
+
+=item DeviceArn => Str
+
+=item [EventType => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::ListDeviceEvents>
+
+Returns: a L<Paws::AlexaForBusiness::ListDeviceEventsResponse> instance
+
+Lists the Device Event history for up to 30 days. If EventType isn't
+specified in the request, this returns a list of all device events in
+reverse chronological order. If EventType is specified, this returns a
+list of device events for that EventType in reverse chronological
+order.
+
+
+=head2 ListSkills
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SkillGroupArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::ListSkills>
 
@@ -709,7 +1007,18 @@ Returns: a L<Paws::AlexaForBusiness::ListSkillsResponse> instance
 Lists all enabled skills in a specific skill group.
 
 
-=head2 ListTags(Arn => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListTags
+
+=over
+
+=item Arn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::ListTags>
 
@@ -718,7 +1027,18 @@ Returns: a L<Paws::AlexaForBusiness::ListTagsResponse> instance
 Lists all tags for a specific resource.
 
 
-=head2 PutRoomSkillParameter(RoomSkillParameter => L<Paws::AlexaForBusiness::RoomSkillParameter>, SkillId => Str, [RoomArn => Str])
+=head2 PutRoomSkillParameter
+
+=over
+
+=item RoomSkillParameter => L<Paws::AlexaForBusiness::RoomSkillParameter>
+
+=item SkillId => Str
+
+=item [RoomArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::PutRoomSkillParameter>
 
@@ -728,7 +1048,16 @@ Updates room skill parameter details by room, skill, and parameter key
 ID. Not all skills have a room skill parameter.
 
 
-=head2 ResolveRoom(SkillId => Str, UserId => Str)
+=head2 ResolveRoom
+
+=over
+
+=item SkillId => Str
+
+=item UserId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::ResolveRoom>
 
@@ -738,7 +1067,16 @@ Determines the details for the room from which a skill request was
 invoked. This operation is used by skill developers.
 
 
-=head2 RevokeInvitation([EnrollmentId => Str, UserArn => Str])
+=head2 RevokeInvitation
+
+=over
+
+=item [EnrollmentId => Str]
+
+=item [UserArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::RevokeInvitation>
 
@@ -747,7 +1085,20 @@ Returns: a L<Paws::AlexaForBusiness::RevokeInvitationResponse> instance
 Revokes an invitation and invalidates the enrollment URL.
 
 
-=head2 SearchAddressBooks([Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+=head2 SearchAddressBooks
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::SearchAddressBooks>
 
@@ -757,7 +1108,20 @@ Searches address books and lists the ones that meet a set of filter and
 sort criteria.
 
 
-=head2 SearchContacts([Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+=head2 SearchContacts
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::SearchContacts>
 
@@ -767,7 +1131,20 @@ Searches contacts and lists the ones that meet a set of filter and sort
 criteria.
 
 
-=head2 SearchDevices([Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+=head2 SearchDevices
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::SearchDevices>
 
@@ -776,7 +1153,20 @@ Returns: a L<Paws::AlexaForBusiness::SearchDevicesResponse> instance
 Searches devices and lists the ones that meet a set of filter criteria.
 
 
-=head2 SearchProfiles([Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+=head2 SearchProfiles
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::SearchProfiles>
 
@@ -786,7 +1176,20 @@ Searches room profiles and lists the ones that meet a set of filter
 criteria.
 
 
-=head2 SearchRooms([Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+=head2 SearchRooms
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::SearchRooms>
 
@@ -796,7 +1199,20 @@ Searches rooms and lists the ones that meet a set of filter and sort
 criteria.
 
 
-=head2 SearchSkillGroups([Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+=head2 SearchSkillGroups
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::SearchSkillGroups>
 
@@ -806,7 +1222,20 @@ Searches skill groups and lists the ones that meet a set of filter and
 sort criteria.
 
 
-=head2 SearchUsers([Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+=head2 SearchUsers
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::SearchUsers>
 
@@ -816,7 +1245,14 @@ Searches users and lists the ones that meet a set of filter and sort
 criteria.
 
 
-=head2 SendInvitation([UserArn => Str])
+=head2 SendInvitation
+
+=over
+
+=item [UserArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::SendInvitation>
 
@@ -827,17 +1263,37 @@ valid for 72 hours or until you call this operation again, whichever
 comes first.
 
 
-=head2 StartDeviceSync(Features => ArrayRef[Str|Undef], [DeviceArn => Str, RoomArn => Str])
+=head2 StartDeviceSync
+
+=over
+
+=item Features => ArrayRef[Str|Undef]
+
+=item [DeviceArn => Str]
+
+=item [RoomArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::StartDeviceSync>
 
 Returns: a L<Paws::AlexaForBusiness::StartDeviceSyncResponse> instance
 
-Resets a device and its account to the known default settings by
+Resets a device and its account to the known default settings, by
 clearing all information and settings set by previous users.
 
 
-=head2 TagResource(Arn => Str, Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>])
+=head2 TagResource
+
+=over
+
+=item Arn => Str
+
+=item Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::TagResource>
 
@@ -846,7 +1302,16 @@ Returns: a L<Paws::AlexaForBusiness::TagResourceResponse> instance
 Adds metadata tags to a specified resource.
 
 
-=head2 UntagResource(Arn => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 UntagResource
+
+=over
+
+=item Arn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::UntagResource>
 
@@ -855,7 +1320,18 @@ Returns: a L<Paws::AlexaForBusiness::UntagResourceResponse> instance
 Removes metadata tags from a specified resource.
 
 
-=head2 UpdateAddressBook(AddressBookArn => Str, [Description => Str, Name => Str])
+=head2 UpdateAddressBook
+
+=over
+
+=item AddressBookArn => Str
+
+=item [Description => Str]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::UpdateAddressBook>
 
@@ -864,7 +1340,22 @@ Returns: a L<Paws::AlexaForBusiness::UpdateAddressBookResponse> instance
 Updates address book details by the address book ARN.
 
 
-=head2 UpdateContact(ContactArn => Str, [DisplayName => Str, FirstName => Str, LastName => Str, PhoneNumber => Str])
+=head2 UpdateContact
+
+=over
+
+=item ContactArn => Str
+
+=item [DisplayName => Str]
+
+=item [FirstName => Str]
+
+=item [LastName => Str]
+
+=item [PhoneNumber => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::UpdateContact>
 
@@ -873,7 +1364,16 @@ Returns: a L<Paws::AlexaForBusiness::UpdateContactResponse> instance
 Updates the contact details by the contact ARN.
 
 
-=head2 UpdateDevice([DeviceArn => Str, DeviceName => Str])
+=head2 UpdateDevice
+
+=over
+
+=item [DeviceArn => Str]
+
+=item [DeviceName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::UpdateDevice>
 
@@ -882,7 +1382,32 @@ Returns: a L<Paws::AlexaForBusiness::UpdateDeviceResponse> instance
 Updates the device name by device ARN.
 
 
-=head2 UpdateProfile([Address => Str, DistanceUnit => Str, MaxVolumeLimit => Int, ProfileArn => Str, ProfileName => Str, PSTNEnabled => Bool, SetupModeDisabled => Bool, TemperatureUnit => Str, Timezone => Str, WakeWord => Str])
+=head2 UpdateProfile
+
+=over
+
+=item [Address => Str]
+
+=item [DistanceUnit => Str]
+
+=item [MaxVolumeLimit => Int]
+
+=item [ProfileArn => Str]
+
+=item [ProfileName => Str]
+
+=item [PSTNEnabled => Bool]
+
+=item [SetupModeDisabled => Bool]
+
+=item [TemperatureUnit => Str]
+
+=item [Timezone => Str]
+
+=item [WakeWord => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::UpdateProfile>
 
@@ -891,7 +1416,22 @@ Returns: a L<Paws::AlexaForBusiness::UpdateProfileResponse> instance
 Updates an existing room profile by room profile ARN.
 
 
-=head2 UpdateRoom([Description => Str, ProfileArn => Str, ProviderCalendarId => Str, RoomArn => Str, RoomName => Str])
+=head2 UpdateRoom
+
+=over
+
+=item [Description => Str]
+
+=item [ProfileArn => Str]
+
+=item [ProviderCalendarId => Str]
+
+=item [RoomArn => Str]
+
+=item [RoomName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::UpdateRoom>
 
@@ -900,7 +1440,18 @@ Returns: a L<Paws::AlexaForBusiness::UpdateRoomResponse> instance
 Updates room details by room ARN.
 
 
-=head2 UpdateSkillGroup([Description => Str, SkillGroupArn => Str, SkillGroupName => Str])
+=head2 UpdateSkillGroup
+
+=over
+
+=item [Description => Str]
+
+=item [SkillGroupArn => Str]
+
+=item [SkillGroupName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AlexaForBusiness::UpdateSkillGroup>
 

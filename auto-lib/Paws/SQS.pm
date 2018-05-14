@@ -266,7 +266,20 @@ Regions and Endpoints
 
 =head1 METHODS
 
-=head2 AddPermission(Actions => ArrayRef[Str|Undef], AWSAccountIds => ArrayRef[Str|Undef], Label => Str, QueueUrl => Str)
+=head2 AddPermission
+
+=over
+
+=item Actions => ArrayRef[Str|Undef]
+
+=item AWSAccountIds => ArrayRef[Str|Undef]
+
+=item Label => Str
+
+=item QueueUrl => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SQS::AddPermission>
 
@@ -299,7 +312,18 @@ C<&Attribute.1=this>
 C<&Attribute.2=that>
 
 
-=head2 ChangeMessageVisibility(QueueUrl => Str, ReceiptHandle => Str, VisibilityTimeout => Int)
+=head2 ChangeMessageVisibility
+
+=over
+
+=item QueueUrl => Str
+
+=item ReceiptHandle => Str
+
+=item VisibilityTimeout => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SQS::ChangeMessageVisibility>
 
@@ -348,7 +372,16 @@ C<ChangeMessageVisibility> action) the next time the message is
 received.
 
 
-=head2 ChangeMessageVisibilityBatch(Entries => ArrayRef[L<Paws::SQS::ChangeMessageVisibilityBatchRequestEntry>], QueueUrl => Str)
+=head2 ChangeMessageVisibilityBatch
+
+=over
+
+=item Entries => ArrayRef[L<Paws::SQS::ChangeMessageVisibilityBatchRequestEntry>]
+
+=item QueueUrl => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SQS::ChangeMessageVisibilityBatch>
 
@@ -373,7 +406,16 @@ C<&Attribute.1=this>
 C<&Attribute.2=that>
 
 
-=head2 CreateQueue(QueueName => Str, [Attributes => L<Paws::SQS::QueueAttributeMap>])
+=head2 CreateQueue
+
+=over
+
+=item QueueName => Str
+
+=item [Attributes => L<Paws::SQS::QueueAttributeMap>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SQS::CreateQueue>
 
@@ -442,7 +484,16 @@ C<&Attribute.1=this>
 C<&Attribute.2=that>
 
 
-=head2 DeleteMessage(QueueUrl => Str, ReceiptHandle => Str)
+=head2 DeleteMessage
+
+=over
+
+=item QueueUrl => Str
+
+=item ReceiptHandle => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SQS::DeleteMessage>
 
@@ -472,7 +523,16 @@ your application is idempotent, so that receiving a message more than
 once does not cause issues.
 
 
-=head2 DeleteMessageBatch(Entries => ArrayRef[L<Paws::SQS::DeleteMessageBatchRequestEntry>], QueueUrl => Str)
+=head2 DeleteMessageBatch
+
+=over
+
+=item Entries => ArrayRef[L<Paws::SQS::DeleteMessageBatchRequestEntry>]
+
+=item QueueUrl => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SQS::DeleteMessageBatch>
 
@@ -495,7 +555,14 @@ C<&Attribute.1=this>
 C<&Attribute.2=that>
 
 
-=head2 DeleteQueue(QueueUrl => Str)
+=head2 DeleteQueue
+
+=over
+
+=item QueueUrl => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SQS::DeleteQueue>
 
@@ -517,7 +584,16 @@ When you delete a queue, you must wait at least 60 seconds before
 creating a queue with the same name.
 
 
-=head2 GetQueueAttributes(QueueUrl => Str, [AttributeNames => ArrayRef[Str|Undef]])
+=head2 GetQueueAttributes
+
+=over
+
+=item QueueUrl => Str
+
+=item [AttributeNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SQS::GetQueueAttributes>
 
@@ -538,7 +614,16 @@ C<&Attribute.1=this>
 C<&Attribute.2=that>
 
 
-=head2 GetQueueUrl(QueueName => Str, [QueueOwnerAWSAccountId => Str])
+=head2 GetQueueUrl
+
+=over
+
+=item QueueName => Str
+
+=item [QueueOwnerAWSAccountId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SQS::GetQueueUrl>
 
@@ -556,7 +641,14 @@ AddPermission > or see Shared Queues
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 
-=head2 ListDeadLetterSourceQueues(QueueUrl => Str)
+=head2 ListDeadLetterSourceQueues
+
+=over
+
+=item QueueUrl => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SQS::ListDeadLetterSourceQueues>
 
@@ -571,7 +663,14 @@ SQS Dead-Letter Queues
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 
-=head2 ListQueues([QueueNamePrefix => Str])
+=head2 ListQueues
+
+=over
+
+=item [QueueNamePrefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SQS::ListQueues>
 
@@ -583,7 +682,14 @@ C<QueueNamePrefix> parameter, only queues with a name that begins with
 the specified value are returned.
 
 
-=head2 ListQueueTags(QueueUrl => Str)
+=head2 ListQueueTags
+
+=over
+
+=item QueueUrl => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SQS::ListQueueTags>
 
@@ -630,7 +736,14 @@ For a full list of tag restrictions, see Limits Related to Queues
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 
-=head2 PurgeQueue(QueueUrl => Str)
+=head2 PurgeQueue
+
+=over
+
+=item QueueUrl => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SQS::PurgeQueue>
 
@@ -649,7 +762,26 @@ messages sent to the queue before C<PurgeQueue> is called might be
 received, but are deleted within the next minute.
 
 
-=head2 ReceiveMessage(QueueUrl => Str, [AttributeNames => ArrayRef[Str|Undef], MaxNumberOfMessages => Int, MessageAttributeNames => ArrayRef[Str|Undef], ReceiveRequestAttemptId => Str, VisibilityTimeout => Int, WaitTimeSeconds => Int])
+=head2 ReceiveMessage
+
+=over
+
+=item QueueUrl => Str
+
+=item [AttributeNames => ArrayRef[Str|Undef]]
+
+=item [MaxNumberOfMessages => Int]
+
+=item [MessageAttributeNames => ArrayRef[Str|Undef]]
+
+=item [ReceiveRequestAttemptId => Str]
+
+=item [VisibilityTimeout => Int]
+
+=item [WaitTimeSeconds => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SQS::ReceiveMessage>
 
@@ -724,7 +856,16 @@ calls this action, we recommend that you structure your code so that it
 can handle new attributes gracefully.
 
 
-=head2 RemovePermission(Label => Str, QueueUrl => Str)
+=head2 RemovePermission
+
+=over
+
+=item Label => Str
+
+=item QueueUrl => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SQS::RemovePermission>
 
@@ -734,7 +875,24 @@ Revokes any permissions in the queue policy that matches the specified
 C<Label> parameter. Only the owner of the queue can remove permissions.
 
 
-=head2 SendMessage(MessageBody => Str, QueueUrl => Str, [DelaySeconds => Int, MessageAttributes => L<Paws::SQS::MessageBodyAttributeMap>, MessageDeduplicationId => Str, MessageGroupId => Str])
+=head2 SendMessage
+
+=over
+
+=item MessageBody => Str
+
+=item QueueUrl => Str
+
+=item [DelaySeconds => Int]
+
+=item [MessageAttributes => L<Paws::SQS::MessageBodyAttributeMap>]
+
+=item [MessageDeduplicationId => Str]
+
+=item [MessageGroupId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SQS::SendMessage>
 
@@ -753,7 +911,16 @@ information, see the W3C specification for characters
 (http://www.w3.org/TR/REC-xml/#charsets).
 
 
-=head2 SendMessageBatch(Entries => ArrayRef[L<Paws::SQS::SendMessageBatchRequestEntry>], QueueUrl => Str)
+=head2 SendMessageBatch
+
+=over
+
+=item Entries => ArrayRef[L<Paws::SQS::SendMessageBatchRequestEntry>]
+
+=item QueueUrl => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SQS::SendMessageBatch>
 
@@ -794,7 +961,16 @@ C<&Attribute.1=this>
 C<&Attribute.2=that>
 
 
-=head2 SetQueueAttributes(Attributes => L<Paws::SQS::QueueAttributeMap>, QueueUrl => Str)
+=head2 SetQueueAttributes
+
+=over
+
+=item Attributes => L<Paws::SQS::QueueAttributeMap>
+
+=item QueueUrl => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SQS::SetQueueAttributes>
 
@@ -811,7 +987,16 @@ calls this action, we recommend that you structure your code so that it
 can handle new attributes gracefully.
 
 
-=head2 TagQueue(QueueUrl => Str, Tags => L<Paws::SQS::TagMap>)
+=head2 TagQueue
+
+=over
+
+=item QueueUrl => Str
+
+=item Tags => L<Paws::SQS::TagMap>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SQS::TagQueue>
 
@@ -858,7 +1043,16 @@ For a full list of tag restrictions, see Limits Related to Queues
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 
-=head2 UntagQueue(QueueUrl => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 UntagQueue
+
+=over
+
+=item QueueUrl => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SQS::UntagQueue>
 

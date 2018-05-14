@@ -40,7 +40,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The filters to use to list a specified set of devices. Supported filter
 keys are DeviceName, DeviceStatus, DeviceStatusDetailCode, RoomName,
-DeviceType, DeviceSerialNumber, and UnassociatedOnly.
+DeviceType, DeviceSerialNumber, UnassociatedOnly, and ConnectionStatus
+(ONLINE and OFFLINE).
 
 
 
@@ -66,7 +67,7 @@ specified by C<MaxResults>.
 
 The sort order to use in listing the specified set of devices.
 Supported sort keys are DeviceName, DeviceStatus, RoomName, DeviceType,
-and DeviceSerialNumber.
+DeviceSerialNumber, and ConnectionStatus.
 
 
 

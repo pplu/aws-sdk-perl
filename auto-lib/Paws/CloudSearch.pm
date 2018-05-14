@@ -181,7 +181,14 @@ regions and endpoints, see Regions and Endpoints
 
 =head1 METHODS
 
-=head2 BuildSuggesters(DomainName => Str)
+=head2 BuildSuggesters
+
+=over
+
+=item DomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::BuildSuggesters>
 
@@ -193,7 +200,14 @@ Suggesters
 in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 CreateDomain(DomainName => Str)
+=head2 CreateDomain
+
+=over
+
+=item DomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::CreateDomain>
 
@@ -205,7 +219,16 @@ Search Domain
 in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 DefineAnalysisScheme(AnalysisScheme => L<Paws::CloudSearch::AnalysisScheme>, DomainName => Str)
+=head2 DefineAnalysisScheme
+
+=over
+
+=item AnalysisScheme => L<Paws::CloudSearch::AnalysisScheme>
+
+=item DomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::DefineAnalysisScheme>
 
@@ -218,7 +241,16 @@ options. For more information, see Configuring Analysis Schemes
 in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 DefineExpression(DomainName => Str, Expression => L<Paws::CloudSearch::Expression>)
+=head2 DefineExpression
+
+=over
+
+=item DomainName => Str
+
+=item Expression => L<Paws::CloudSearch::Expression>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::DefineExpression>
 
@@ -232,7 +264,16 @@ Configuring Expressions
 in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 DefineIndexField(DomainName => Str, IndexField => L<Paws::CloudSearch::IndexField>)
+=head2 DefineIndexField
+
+=over
+
+=item DomainName => Str
+
+=item IndexField => L<Paws::CloudSearch::IndexField>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::DefineIndexField>
 
@@ -250,7 +291,16 @@ Configuring Index Fields
 in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 DefineSuggester(DomainName => Str, Suggester => L<Paws::CloudSearch::Suggester>)
+=head2 DefineSuggester
+
+=over
+
+=item DomainName => Str
+
+=item Suggester => L<Paws::CloudSearch::Suggester>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::DefineSuggester>
 
@@ -265,7 +315,16 @@ suggester. For more information, see Getting Search Suggestions
 in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 DeleteAnalysisScheme(AnalysisSchemeName => Str, DomainName => Str)
+=head2 DeleteAnalysisScheme
+
+=over
+
+=item AnalysisSchemeName => Str
+
+=item DomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::DeleteAnalysisScheme>
 
@@ -277,7 +336,14 @@ Analysis Schemes
 in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 DeleteDomain(DomainName => Str)
+=head2 DeleteDomain
+
+=over
+
+=item DomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::DeleteDomain>
 
@@ -290,7 +356,16 @@ Deleting a Search Domain
 in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 DeleteExpression(DomainName => Str, ExpressionName => Str)
+=head2 DeleteExpression
+
+=over
+
+=item DomainName => Str
+
+=item ExpressionName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::DeleteExpression>
 
@@ -302,7 +377,16 @@ see Configuring Expressions
 in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 DeleteIndexField(DomainName => Str, IndexFieldName => Str)
+=head2 DeleteIndexField
+
+=over
+
+=item DomainName => Str
+
+=item IndexFieldName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::DeleteIndexField>
 
@@ -314,7 +398,16 @@ see Configuring Index Fields
 in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 DeleteSuggester(DomainName => Str, SuggesterName => Str)
+=head2 DeleteSuggester
+
+=over
+
+=item DomainName => Str
+
+=item SuggesterName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::DeleteSuggester>
 
@@ -326,7 +419,18 @@ Suggestions
 in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 DescribeAnalysisSchemes(DomainName => Str, [AnalysisSchemeNames => ArrayRef[Str|Undef], Deployed => Bool])
+=head2 DescribeAnalysisSchemes
+
+=over
+
+=item DomainName => Str
+
+=item [AnalysisSchemeNames => ArrayRef[Str|Undef]]
+
+=item [Deployed => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::DescribeAnalysisSchemes>
 
@@ -343,7 +447,16 @@ Configuring Analysis Schemes
 in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 DescribeAvailabilityOptions(DomainName => Str, [Deployed => Bool])
+=head2 DescribeAvailabilityOptions
+
+=over
+
+=item DomainName => Str
+
+=item [Deployed => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::DescribeAvailabilityOptions>
 
@@ -357,7 +470,14 @@ changes. For more information, see Configuring Availability Options
 in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 DescribeDomains([DomainNames => ArrayRef[Str|Undef]])
+=head2 DescribeDomains
+
+=over
+
+=item [DomainNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::DescribeDomains>
 
@@ -373,7 +493,18 @@ see Getting Information about a Search Domain
 in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 DescribeExpressions(DomainName => Str, [Deployed => Bool, ExpressionNames => ArrayRef[Str|Undef]])
+=head2 DescribeExpressions
+
+=over
+
+=item DomainName => Str
+
+=item [Deployed => Bool]
+
+=item [ExpressionNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::DescribeExpressions>
 
@@ -388,7 +519,18 @@ changes. For more information, see Configuring Expressions
 in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 DescribeIndexFields(DomainName => Str, [Deployed => Bool, FieldNames => ArrayRef[Str|Undef]])
+=head2 DescribeIndexFields
+
+=over
+
+=item DomainName => Str
+
+=item [Deployed => Bool]
+
+=item [FieldNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::DescribeIndexFields>
 
@@ -404,7 +546,14 @@ Information
 in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 DescribeScalingParameters(DomainName => Str)
+=head2 DescribeScalingParameters
+
+=over
+
+=item DomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::DescribeScalingParameters>
 
@@ -417,7 +566,16 @@ count. For more information, see Configuring Scaling Options
 in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 DescribeServiceAccessPolicies(DomainName => Str, [Deployed => Bool])
+=head2 DescribeServiceAccessPolicies
+
+=over
+
+=item DomainName => Str
+
+=item [Deployed => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::DescribeServiceAccessPolicies>
 
@@ -432,7 +590,18 @@ For more information, see Configuring Access for a Search Domain
 in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 DescribeSuggesters(DomainName => Str, [Deployed => Bool, SuggesterNames => ArrayRef[Str|Undef]])
+=head2 DescribeSuggesters
+
+=over
+
+=item DomainName => Str
+
+=item [Deployed => Bool]
+
+=item [SuggesterNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::DescribeSuggesters>
 
@@ -449,7 +618,14 @@ Suggestions
 in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 IndexDocuments(DomainName => Str)
+=head2 IndexDocuments
+
+=over
+
+=item DomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::IndexDocuments>
 
@@ -460,7 +636,14 @@ latest indexing options. This operation must be invoked to activate
 options whose OptionStatus is C<RequiresIndexDocuments>.
 
 
-=head2 ListDomainNames( => )
+=head2 ListDomainNames
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::ListDomainNames>
 
@@ -469,7 +652,16 @@ Returns: a L<Paws::CloudSearch::ListDomainNamesResponse> instance
 Lists all search domains owned by an account.
 
 
-=head2 UpdateAvailabilityOptions(DomainName => Str, MultiAZ => Bool)
+=head2 UpdateAvailabilityOptions
+
+=over
+
+=item DomainName => Str
+
+=item MultiAZ => Bool
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::UpdateAvailabilityOptions>
 
@@ -485,7 +677,16 @@ Configuring Availability Options
 in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 UpdateScalingParameters(DomainName => Str, ScalingParameters => L<Paws::CloudSearch::ScalingParameters>)
+=head2 UpdateScalingParameters
+
+=over
+
+=item DomainName => Str
+
+=item ScalingParameters => L<Paws::CloudSearch::ScalingParameters>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::UpdateScalingParameters>
 
@@ -502,7 +703,16 @@ information, see Configuring Scaling Options
 in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 UpdateServiceAccessPolicies(AccessPolicies => Str, DomainName => Str)
+=head2 UpdateServiceAccessPolicies
+
+=over
+
+=item AccessPolicies => Str
+
+=item DomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearch::UpdateServiceAccessPolicies>
 

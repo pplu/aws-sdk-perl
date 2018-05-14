@@ -361,7 +361,14 @@ systems or worry about scaling your management infrastructure.
 
 =head1 METHODS
 
-=head2 CreateCluster([ClusterName => Str])
+=head2 CreateCluster
+
+=over
+
+=item [ClusterName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::CreateCluster>
 
@@ -382,7 +389,42 @@ Using Service-Linked Roles for Amazon ECS
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 CreateService(DesiredCount => Int, ServiceName => Str, TaskDefinition => Str, [ClientToken => Str, Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, HealthCheckGracePeriodSeconds => Int, LaunchType => Str, LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>], NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>, PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>], PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>], PlatformVersion => Str, Role => Str, ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]])
+=head2 CreateService
+
+=over
+
+=item DesiredCount => Int
+
+=item ServiceName => Str
+
+=item TaskDefinition => Str
+
+=item [ClientToken => Str]
+
+=item [Cluster => Str]
+
+=item [DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>]
+
+=item [HealthCheckGracePeriodSeconds => Int]
+
+=item [LaunchType => Str]
+
+=item [LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]]
+
+=item [NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>]
+
+=item [PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>]]
+
+=item [PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>]]
+
+=item [PlatformVersion => Str]
+
+=item [Role => Str]
+
+=item [ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::CreateService>
 
@@ -472,7 +514,16 @@ instances with the fewest number of running tasks for this service.
 
 
 
-=head2 DeleteAttributes(Attributes => ArrayRef[L<Paws::ECS::Attribute>], [Cluster => Str])
+=head2 DeleteAttributes
+
+=over
+
+=item Attributes => ArrayRef[L<Paws::ECS::Attribute>]
+
+=item [Cluster => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DeleteAttributes>
 
@@ -481,7 +532,14 @@ Returns: a L<Paws::ECS::DeleteAttributesResponse> instance
 Deletes one or more custom attributes from an Amazon ECS resource.
 
 
-=head2 DeleteCluster(Cluster => Str)
+=head2 DeleteCluster
+
+=over
+
+=item Cluster => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DeleteCluster>
 
@@ -493,7 +551,16 @@ container instances in a cluster with ListContainerInstances and
 deregister them with DeregisterContainerInstance.
 
 
-=head2 DeleteService(Service => Str, [Cluster => Str])
+=head2 DeleteService
+
+=over
+
+=item Service => Str
+
+=item [Cluster => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DeleteService>
 
@@ -517,7 +584,18 @@ and DescribeServices API operations on those services return a
 C<ServiceNotFoundException> error.
 
 
-=head2 DeregisterContainerInstance(ContainerInstance => Str, [Cluster => Str, Force => Bool])
+=head2 DeregisterContainerInstance
+
+=over
+
+=item ContainerInstance => Str
+
+=item [Cluster => Str]
+
+=item [Force => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DeregisterContainerInstance>
 
@@ -542,7 +620,14 @@ or instances with disconnected agents are not automatically
 deregistered when terminated).
 
 
-=head2 DeregisterTaskDefinition(TaskDefinition => Str)
+=head2 DeregisterTaskDefinition
+
+=over
+
+=item TaskDefinition => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DeregisterTaskDefinition>
 
@@ -567,7 +652,16 @@ the future, so you should not rely on C<INACTIVE> task definitions
 persisting beyond the lifecycle of any associated tasks and services.
 
 
-=head2 DescribeClusters([Clusters => ArrayRef[Str|Undef], Include => ArrayRef[Str|Undef]])
+=head2 DescribeClusters
+
+=over
+
+=item [Clusters => ArrayRef[Str|Undef]]
+
+=item [Include => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DescribeClusters>
 
@@ -576,7 +670,16 @@ Returns: a L<Paws::ECS::DescribeClustersResponse> instance
 Describes one or more of your clusters.
 
 
-=head2 DescribeContainerInstances(ContainerInstances => ArrayRef[Str|Undef], [Cluster => Str])
+=head2 DescribeContainerInstances
+
+=over
+
+=item ContainerInstances => ArrayRef[Str|Undef]
+
+=item [Cluster => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DescribeContainerInstances>
 
@@ -587,7 +690,16 @@ metadata about registered and remaining resources on each container
 instance requested.
 
 
-=head2 DescribeServices(Services => ArrayRef[Str|Undef], [Cluster => Str])
+=head2 DescribeServices
+
+=over
+
+=item Services => ArrayRef[Str|Undef]
+
+=item [Cluster => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DescribeServices>
 
@@ -596,7 +708,14 @@ Returns: a L<Paws::ECS::DescribeServicesResponse> instance
 Describes the specified services running in your cluster.
 
 
-=head2 DescribeTaskDefinition(TaskDefinition => Str)
+=head2 DescribeTaskDefinition
+
+=over
+
+=item TaskDefinition => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DescribeTaskDefinition>
 
@@ -611,7 +730,16 @@ You can only describe C<INACTIVE> task definitions while an active task
 or service references them.
 
 
-=head2 DescribeTasks(Tasks => ArrayRef[Str|Undef], [Cluster => Str])
+=head2 DescribeTasks
+
+=over
+
+=item Tasks => ArrayRef[Str|Undef]
+
+=item [Cluster => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DescribeTasks>
 
@@ -620,7 +748,16 @@ Returns: a L<Paws::ECS::DescribeTasksResponse> instance
 Describes a specified task or tasks.
 
 
-=head2 DiscoverPollEndpoint([Cluster => Str, ContainerInstance => Str])
+=head2 DiscoverPollEndpoint
+
+=over
+
+=item [Cluster => Str]
+
+=item [ContainerInstance => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DiscoverPollEndpoint>
 
@@ -632,7 +769,24 @@ intended for use outside of the agent.
 Returns an endpoint for the Amazon ECS agent to poll for updates.
 
 
-=head2 ListAttributes(TargetType => Str, [AttributeName => Str, AttributeValue => Str, Cluster => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAttributes
+
+=over
+
+=item TargetType => Str
+
+=item [AttributeName => Str]
+
+=item [AttributeValue => Str]
+
+=item [Cluster => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::ListAttributes>
 
@@ -648,7 +802,16 @@ to see which container instances in a cluster are running a Linux AMI
 (C<ecs.os-type=linux>).
 
 
-=head2 ListClusters([MaxResults => Int, NextToken => Str])
+=head2 ListClusters
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::ListClusters>
 
@@ -657,7 +820,22 @@ Returns: a L<Paws::ECS::ListClustersResponse> instance
 Returns a list of existing clusters.
 
 
-=head2 ListContainerInstances([Cluster => Str, Filter => Str, MaxResults => Int, NextToken => Str, Status => Str])
+=head2 ListContainerInstances
+
+=over
+
+=item [Cluster => Str]
+
+=item [Filter => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::ListContainerInstances>
 
@@ -671,7 +849,20 @@ more information, see Cluster Query Language
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 ListServices([Cluster => Str, LaunchType => Str, MaxResults => Int, NextToken => Str])
+=head2 ListServices
+
+=over
+
+=item [Cluster => Str]
+
+=item [LaunchType => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::ListServices>
 
@@ -680,7 +871,20 @@ Returns: a L<Paws::ECS::ListServicesResponse> instance
 Lists the services that are running in a specified cluster.
 
 
-=head2 ListTaskDefinitionFamilies([FamilyPrefix => Str, MaxResults => Int, NextToken => Str, Status => Str])
+=head2 ListTaskDefinitionFamilies
+
+=over
+
+=item [FamilyPrefix => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::ListTaskDefinitionFamilies>
 
@@ -696,7 +900,22 @@ to C<ACTIVE>. You can also filter the results with the C<familyPrefix>
 parameter.
 
 
-=head2 ListTaskDefinitions([FamilyPrefix => Str, MaxResults => Int, NextToken => Str, Sort => Str, Status => Str])
+=head2 ListTaskDefinitions
+
+=over
+
+=item [FamilyPrefix => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Sort => Str]
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::ListTaskDefinitions>
 
@@ -707,7 +926,30 @@ You can filter the results by family name with the C<familyPrefix>
 parameter or by status with the C<status> parameter.
 
 
-=head2 ListTasks([Cluster => Str, ContainerInstance => Str, DesiredStatus => Str, Family => Str, LaunchType => Str, MaxResults => Int, NextToken => Str, ServiceName => Str, StartedBy => Str])
+=head2 ListTasks
+
+=over
+
+=item [Cluster => Str]
+
+=item [ContainerInstance => Str]
+
+=item [DesiredStatus => Str]
+
+=item [Family => Str]
+
+=item [LaunchType => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ServiceName => Str]
+
+=item [StartedBy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::ListTasks>
 
@@ -722,7 +964,16 @@ Recently stopped tasks might appear in the returned results. Currently,
 stopped tasks appear in the returned results for at least one hour.
 
 
-=head2 PutAttributes(Attributes => ArrayRef[L<Paws::ECS::Attribute>], [Cluster => Str])
+=head2 PutAttributes
+
+=over
+
+=item Attributes => ArrayRef[L<Paws::ECS::Attribute>]
+
+=item [Cluster => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::PutAttributes>
 
@@ -736,7 +987,26 @@ DeleteAttributes. For more information, see Attributes
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 RegisterContainerInstance([Attributes => ArrayRef[L<Paws::ECS::Attribute>], Cluster => Str, ContainerInstanceArn => Str, InstanceIdentityDocument => Str, InstanceIdentityDocumentSignature => Str, TotalResources => ArrayRef[L<Paws::ECS::Resource>], VersionInfo => L<Paws::ECS::VersionInfo>])
+=head2 RegisterContainerInstance
+
+=over
+
+=item [Attributes => ArrayRef[L<Paws::ECS::Attribute>]]
+
+=item [Cluster => Str]
+
+=item [ContainerInstanceArn => Str]
+
+=item [InstanceIdentityDocument => Str]
+
+=item [InstanceIdentityDocumentSignature => Str]
+
+=item [TotalResources => ArrayRef[L<Paws::ECS::Resource>]]
+
+=item [VersionInfo => L<Paws::ECS::VersionInfo>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::RegisterContainerInstance>
 
@@ -749,7 +1019,32 @@ Registers an EC2 instance into the specified cluster. This instance
 becomes available to place containers on.
 
 
-=head2 RegisterTaskDefinition(ContainerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>], Family => Str, [Cpu => Str, ExecutionRoleArn => Str, Memory => Str, NetworkMode => Str, PlacementConstraints => ArrayRef[L<Paws::ECS::TaskDefinitionPlacementConstraint>], RequiresCompatibilities => ArrayRef[Str|Undef], TaskRoleArn => Str, Volumes => ArrayRef[L<Paws::ECS::Volume>]])
+=head2 RegisterTaskDefinition
+
+=over
+
+=item ContainerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>]
+
+=item Family => Str
+
+=item [Cpu => Str]
+
+=item [ExecutionRoleArn => Str]
+
+=item [Memory => Str]
+
+=item [NetworkMode => Str]
+
+=item [PlacementConstraints => ArrayRef[L<Paws::ECS::TaskDefinitionPlacementConstraint>]]
+
+=item [RequiresCompatibilities => ArrayRef[Str|Undef]]
+
+=item [TaskRoleArn => Str]
+
+=item [Volumes => ArrayRef[L<Paws::ECS::Volume>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::RegisterTaskDefinition>
 
@@ -783,7 +1078,34 @@ with the task definition. For more information, see Task Networking
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 RunTask(TaskDefinition => Str, [Cluster => Str, Count => Int, Group => Str, LaunchType => Str, NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>, Overrides => L<Paws::ECS::TaskOverride>, PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>], PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>], PlatformVersion => Str, StartedBy => Str])
+=head2 RunTask
+
+=over
+
+=item TaskDefinition => Str
+
+=item [Cluster => Str]
+
+=item [Count => Int]
+
+=item [Group => Str]
+
+=item [LaunchType => Str]
+
+=item [NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>]
+
+=item [Overrides => L<Paws::ECS::TaskOverride>]
+
+=item [PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>]]
+
+=item [PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>]]
+
+=item [PlatformVersion => Str]
+
+=item [StartedBy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::RunTask>
 
@@ -831,7 +1153,26 @@ gradually up to about five minutes of wait time.
 
 
 
-=head2 StartTask(ContainerInstances => ArrayRef[Str|Undef], TaskDefinition => Str, [Cluster => Str, Group => Str, NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>, Overrides => L<Paws::ECS::TaskOverride>, StartedBy => Str])
+=head2 StartTask
+
+=over
+
+=item ContainerInstances => ArrayRef[Str|Undef]
+
+=item TaskDefinition => Str
+
+=item [Cluster => Str]
+
+=item [Group => Str]
+
+=item [NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>]
+
+=item [Overrides => L<Paws::ECS::TaskOverride>]
+
+=item [StartedBy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::StartTask>
 
@@ -846,7 +1187,18 @@ information, see Scheduling Tasks
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 StopTask(Task => Str, [Cluster => Str, Reason => Str])
+=head2 StopTask
+
+=over
+
+=item Task => Str
+
+=item [Cluster => Str]
+
+=item [Reason => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::StopTask>
 
@@ -868,7 +1220,26 @@ more information, see Amazon ECS Container Agent Configuration
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 SubmitContainerStateChange([Cluster => Str, ContainerName => Str, ExitCode => Int, NetworkBindings => ArrayRef[L<Paws::ECS::NetworkBinding>], Reason => Str, Status => Str, Task => Str])
+=head2 SubmitContainerStateChange
+
+=over
+
+=item [Cluster => Str]
+
+=item [ContainerName => Str]
+
+=item [ExitCode => Int]
+
+=item [NetworkBindings => ArrayRef[L<Paws::ECS::NetworkBinding>]]
+
+=item [Reason => Str]
+
+=item [Status => Str]
+
+=item [Task => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::SubmitContainerStateChange>
 
@@ -880,7 +1251,30 @@ intended for use outside of the agent.
 Sent to acknowledge that a container changed states.
 
 
-=head2 SubmitTaskStateChange([Attachments => ArrayRef[L<Paws::ECS::AttachmentStateChange>], Cluster => Str, Containers => ArrayRef[L<Paws::ECS::ContainerStateChange>], ExecutionStoppedAt => Str, PullStartedAt => Str, PullStoppedAt => Str, Reason => Str, Status => Str, Task => Str])
+=head2 SubmitTaskStateChange
+
+=over
+
+=item [Attachments => ArrayRef[L<Paws::ECS::AttachmentStateChange>]]
+
+=item [Cluster => Str]
+
+=item [Containers => ArrayRef[L<Paws::ECS::ContainerStateChange>]]
+
+=item [ExecutionStoppedAt => Str]
+
+=item [PullStartedAt => Str]
+
+=item [PullStoppedAt => Str]
+
+=item [Reason => Str]
+
+=item [Status => Str]
+
+=item [Task => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::SubmitTaskStateChange>
 
@@ -892,7 +1286,16 @@ intended for use outside of the agent.
 Sent to acknowledge that a task changed states.
 
 
-=head2 UpdateContainerAgent(ContainerInstance => Str, [Cluster => Str])
+=head2 UpdateContainerAgent
+
+=over
+
+=item ContainerInstance => Str
+
+=item [Cluster => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::UpdateContainerAgent>
 
@@ -913,7 +1316,18 @@ Manually Updating the Amazon ECS Container Agent
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 UpdateContainerInstancesState(ContainerInstances => ArrayRef[Str|Undef], Status => Str, [Cluster => Str])
+=head2 UpdateContainerInstancesState
+
+=over
+
+=item ContainerInstances => ArrayRef[Str|Undef]
+
+=item Status => Str
+
+=item [Cluster => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::UpdateContainerInstancesState>
 
@@ -977,7 +1391,30 @@ When you set a container instance to C<ACTIVE>, the Amazon ECS
 scheduler can begin scheduling tasks on the instance again.
 
 
-=head2 UpdateService(Service => Str, [Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, DesiredCount => Int, ForceNewDeployment => Bool, HealthCheckGracePeriodSeconds => Int, NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>, PlatformVersion => Str, TaskDefinition => Str])
+=head2 UpdateService
+
+=over
+
+=item Service => Str
+
+=item [Cluster => Str]
+
+=item [DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>]
+
+=item [DesiredCount => Int]
+
+=item [ForceNewDeployment => Bool]
+
+=item [HealthCheckGracePeriodSeconds => Int]
+
+=item [NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>]
+
+=item [PlatformVersion => Str]
+
+=item [TaskDefinition => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::UpdateService>
 

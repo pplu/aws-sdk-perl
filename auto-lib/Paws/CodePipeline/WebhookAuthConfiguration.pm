@@ -1,15 +1,14 @@
-package Paws::GuardDuty::MapOfCountBySeverityFindingStatistic;
+package Paws::CodePipeline::WebhookAuthConfiguration;
   use Moose;
-  with 'Paws::API::StrToNativeMapParser';
-
-  has Map => (is => 'ro', isa => 'HashRef[Int]');
+  has AllowedIPRange => (is => 'ro', isa => 'Str');
+  has SecretToken => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::GuardDuty::MapOfCountBySeverityFindingStatistic
+Paws::CodePipeline::WebhookAuthConfiguration
 
 =head1 USAGE
 
@@ -20,16 +19,16 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::GuardDuty::MapOfCountBySeverityFindingStatistic object:
+As an example, if Att1 is expected to be a Paws::CodePipeline::WebhookAuthConfiguration object:
 
-  $service_obj->Method(Att1 => { key1 => $value, ..., keyN => $value  });
+  $service_obj->Method(Att1 => { AllowedIPRange => $value, ..., SecretToken => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::MapOfCountBySeverityFindingStatistic object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::WebhookAuthConfiguration object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Map->{ key1 }
+  $result->Att1->AllowedIPRange
 
 =head1 DESCRIPTION
 
@@ -37,13 +36,21 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => Int
 
-Use the Map method to retrieve a HashRef to the map
+=head2 AllowedIPRange => Str
+
+  
+
+
+=head2 SecretToken => Str
+
+  
+
+
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, describing an object used in L<Paws::GuardDuty>
+This class forms part of L<Paws>, describing an object used in L<Paws::CodePipeline>
 
 =head1 BUGS and CONTRIBUTIONS
 

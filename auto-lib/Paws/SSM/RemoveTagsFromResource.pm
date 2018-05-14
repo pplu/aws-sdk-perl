@@ -37,13 +37,32 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceId => Str
 
-The resource ID for which you want to remove tags.
+The resource ID for which you want to remove tags. Use the ID of the
+resource. Here are some examples:
+
+ManagedInstance: mi-012345abcde
+
+MaintenanceWindow: mw-012345abcde
+
+PatchBaseline: pb-012345abcde
+
+For the Document and Parameter values, use the name of the resource.
+
+The ManagedInstance type for this API action is only for on-premises
+managed instances. You must specify the the name of the managed
+instance in the following format: mi-ID_number. For example,
+mi-1a2b3c4d5e6f.
 
 
 
 =head2 B<REQUIRED> ResourceType => Str
 
 The type of resource of which you want to remove a tag.
+
+The ManagedInstance type for this API action is only for on-premises
+managed instances. You must specify the the name of the managed
+instance in the following format: mi-ID_number. For example,
+mi-1a2b3c4d5e6f.
 
 Valid values are: C<"Document">, C<"ManagedInstance">, C<"MaintenanceWindow">, C<"Parameter">, C<"PatchBaseline">
 

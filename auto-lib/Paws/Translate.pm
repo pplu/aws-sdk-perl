@@ -55,7 +55,18 @@ between one of the six languages and English.
 
 =head1 METHODS
 
-=head2 TranslateText(SourceLanguageCode => Str, TargetLanguageCode => Str, Text => Str)
+=head2 TranslateText
+
+=over
+
+=item SourceLanguageCode => Str
+
+=item TargetLanguageCode => Str
+
+=item Text => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Translate::TranslateText>
 

@@ -9,6 +9,8 @@ package Paws::EC2::SpotFleetRequestConfigData;
   has LaunchSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SpotFleetLaunchSpecification]', request_name => 'launchSpecifications', traits => ['NameInRequest']);
   has LaunchTemplateConfigs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateConfig]', request_name => 'launchTemplateConfigs', traits => ['NameInRequest']);
   has LoadBalancersConfig => (is => 'ro', isa => 'Paws::EC2::LoadBalancersConfig', request_name => 'loadBalancersConfig', traits => ['NameInRequest']);
+  has OnDemandFulfilledCapacity => (is => 'ro', isa => 'Num', request_name => 'onDemandFulfilledCapacity', traits => ['NameInRequest']);
+  has OnDemandTargetCapacity => (is => 'ro', isa => 'Int', request_name => 'onDemandTargetCapacity', traits => ['NameInRequest']);
   has ReplaceUnhealthyInstances => (is => 'ro', isa => 'Bool', request_name => 'replaceUnhealthyInstances', traits => ['NameInRequest']);
   has SpotPrice => (is => 'ro', isa => 'Str', request_name => 'spotPrice', traits => ['NameInRequest']);
   has TargetCapacity => (is => 'ro', isa => 'Int', request_name => 'targetCapacity', traits => ['NameInRequest'], required => 1);
@@ -59,9 +61,9 @@ specified by the Spot Fleet request. The default is C<lowestPrice>.
 
 =head2 ClientToken => Str
 
-  A unique, case-sensitive identifier you provide to ensure idempotency
-of your listings. This helps avoid duplicate listings. For more
-information, see Ensuring Idempotency
+  A unique, case-sensitive identifier that you provide to ensure the
+idempotency of your listings. This helps to avoid duplicate listings.
+For more information, see Ensuring Idempotency
 (http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 
@@ -113,6 +115,21 @@ have the following instance types: C1, CC1, CC2, CG1, CG2, CR1, CS1,
 G1, G2, HI1, HS1, M1, M2, M3, and T1.
 
 
+=head2 OnDemandFulfilledCapacity => Num
+
+  The number of On-Demand units fulfilled by this request compared to the
+set target On-Demand capacity.
+
+
+=head2 OnDemandTargetCapacity => Int
+
+  The number of On-Demand units to request. You can choose to set the
+target capacity in terms of instances or a performance characteristic
+that is important to your application workload, such as vCPUs, memory,
+or I/O. If the request type is C<maintain>, you can specify a target
+capacity of 0 and add capacity later.
+
+
 =head2 ReplaceUnhealthyInstances => Bool
 
   Indicates whether Spot Fleet should replace unhealthy instances.
@@ -141,15 +158,14 @@ Spot Fleet request expires.
 
 =head2 Type => Str
 
-  The type of request. Indicates whether the fleet will only C<request>
-the target capacity or also attempt to C<maintain> it. When you
-C<request> a certain target capacity, the fleet will only place the
-required requests. It will not attempt to replenish Spot Instances if
-capacity is diminished, nor will it submit requests in alternative Spot
-pools if capacity is not available. When you want to C<maintain> a
-certain target capacity, fleet will place the required requests to meet
-this target capacity. It will also automatically replenish any
-interrupted instances. Default: C<maintain>.
+  The type of request. Indicates whether the Spot Fleet only requests the
+target capacity or also attempts to maintain it. When this value is
+C<request>, the Spot Fleet only places the required requests. It does
+not attempt to replenish Spot Instances if capacity is diminished, nor
+does it submit requests in alternative Spot pools if capacity is not
+available. To maintain a certain target capacity, the Spot Fleet places
+the required requests to meet capacity and automatically replenishes
+any interrupted instances. Default: C<maintain>.
 
 
 =head2 ValidFrom => Str

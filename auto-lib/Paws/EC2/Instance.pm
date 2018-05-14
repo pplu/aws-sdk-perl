@@ -4,6 +4,7 @@ package Paws::EC2::Instance;
   has Architecture => (is => 'ro', isa => 'Str', request_name => 'architecture', traits => ['NameInRequest']);
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceBlockDeviceMapping]', request_name => 'blockDeviceMapping', traits => ['NameInRequest']);
   has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest']);
+  has CpuOptions => (is => 'ro', isa => 'Paws::EC2::CpuOptions', request_name => 'cpuOptions', traits => ['NameInRequest']);
   has EbsOptimized => (is => 'ro', isa => 'Bool', request_name => 'ebsOptimized', traits => ['NameInRequest']);
   has ElasticGpuAssociations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticGpuAssociation]', request_name => 'elasticGpuAssociationSet', traits => ['NameInRequest']);
   has EnaSupport => (is => 'ro', isa => 'Bool', request_name => 'enaSupport', traits => ['NameInRequest']);
@@ -94,6 +95,11 @@ launch group.
 
   The idempotency token you provided when you launched the instance, if
 applicable.
+
+
+=head2 CpuOptions => L<Paws::EC2::CpuOptions>
+
+  The CPU options for the instance.
 
 
 =head2 EbsOptimized => Bool

@@ -39,7 +39,60 @@ ExtraParam includes the following elements.
 
 =head2 B<REQUIRED> Name => Str
 
-  Name of the additional parameter required by the top-level domain.
+  Name of the additional parameter required by the top-level domain. Here
+are the top-level domains that require additional parameters and which
+parameters they require:
+
+=over
+
+=item *
+
+B<.com.au and .net.au:> C<AU_ID_NUMBER> and C<AU_ID_TYPE>
+
+=item *
+
+B<.ca:> C<BRAND_NUMBER>, C<CA_LEGAL_TYPE>, and
+C<CA_BUSINESS_ENTITY_TYPE>
+
+=item *
+
+B<.es:> C<ES_IDENTIFICATION>, C<ES_IDENTIFICATION_TYPE>, and
+C<ES_LEGAL_FORM>
+
+=item *
+
+B<.fi:> C<BIRTH_DATE_IN_YYYY_MM_DD>, C<FI_BUSINESS_NUMBER>,
+C<FI_ID_NUMBER>, C<FI_NATIONALITY>, and C<FI_ORGANIZATION_TYPE>
+
+=item *
+
+B<.fr:> C<BRAND_NUMBER>, C<BIRTH_DEPARTMENT>,
+C<BIRTH_DATE_IN_YYYY_MM_DD>, C<BIRTH_COUNTRY>, and C<BIRTH_CITY>
+
+=item *
+
+B<.it:> C<BIRTH_COUNTRY>, C<IT_PIN>, and C<IT_REGISTRANT_ENTITY_TYPE>
+
+=item *
+
+B<.ru:> C<BIRTH_DATE_IN_YYYY_MM_DD> and C<RU_PASSPORT_DATA>
+
+=item *
+
+B<.se:> C<BIRTH_COUNTRY> and C<SE_ID_NUMBER>
+
+=item *
+
+B<.sg:> C<SG_ID_NUMBER>
+
+=item *
+
+B<.co.uk, .me.uk, and .org.uk:> C<UK_CONTACT_TYPE> and
+C<UK_COMPANY_NUMBER>
+
+=back
+
+In addition, many TLDs require C<VAT_NUMBER>.
 
 
 =head2 B<REQUIRED> Value => Str

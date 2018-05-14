@@ -36,13 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceId => Str
 
-The ID of the resource.
+The ID of the WorkSpace. To find this ID, use DescribeWorkspaces.
 
 
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]
 
-The tags. Each resource can have a maximum of 50 tags.
+The tags. Each WorkSpace can have a maximum of 50 tags.
 
 
 

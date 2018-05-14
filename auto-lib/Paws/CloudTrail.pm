@@ -166,7 +166,16 @@ listed in the log files.
 
 =head1 METHODS
 
-=head2 AddTags(ResourceId => Str, [TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]])
+=head2 AddTags
+
+=over
+
+=item ResourceId => Str
+
+=item [TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudTrail::AddTags>
 
@@ -180,7 +189,32 @@ null. You can tag a trail that applies to all regions only from the
 region in which the trail was created (that is, from its home region).
 
 
-=head2 CreateTrail(Name => Str, S3BucketName => Str, [CloudWatchLogsLogGroupArn => Str, CloudWatchLogsRoleArn => Str, EnableLogFileValidation => Bool, IncludeGlobalServiceEvents => Bool, IsMultiRegionTrail => Bool, KmsKeyId => Str, S3KeyPrefix => Str, SnsTopicName => Str])
+=head2 CreateTrail
+
+=over
+
+=item Name => Str
+
+=item S3BucketName => Str
+
+=item [CloudWatchLogsLogGroupArn => Str]
+
+=item [CloudWatchLogsRoleArn => Str]
+
+=item [EnableLogFileValidation => Bool]
+
+=item [IncludeGlobalServiceEvents => Bool]
+
+=item [IsMultiRegionTrail => Bool]
+
+=item [KmsKeyId => Str]
+
+=item [S3KeyPrefix => Str]
+
+=item [SnsTopicName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudTrail::CreateTrail>
 
@@ -191,7 +225,14 @@ an Amazon S3 bucket. A maximum of five trails can exist in a region,
 irrespective of the region in which they were created.
 
 
-=head2 DeleteTrail(Name => Str)
+=head2 DeleteTrail
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudTrail::DeleteTrail>
 
@@ -203,7 +244,16 @@ trails (replicated trails in other regions) of a trail that is enabled
 in all regions.
 
 
-=head2 DescribeTrails([IncludeShadowTrails => Bool, TrailNameList => ArrayRef[Str|Undef]])
+=head2 DescribeTrails
+
+=over
+
+=item [IncludeShadowTrails => Bool]
+
+=item [TrailNameList => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudTrail::DescribeTrails>
 
@@ -213,7 +263,14 @@ Retrieves settings for the trail associated with the current region for
 your account.
 
 
-=head2 GetEventSelectors(TrailName => Str)
+=head2 GetEventSelectors
+
+=over
+
+=item TrailName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudTrail::GetEventSelectors>
 
@@ -245,7 +302,14 @@ For more information, see Logging Data and Management Events for Trails
 in the I<AWS CloudTrail User Guide>.
 
 
-=head2 GetTrailStatus(Name => Str)
+=head2 GetTrailStatus
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudTrail::GetTrailStatus>
 
@@ -258,7 +322,18 @@ returns trail status from a single region. To return trail status from
 all regions, you must call the operation on each region.
 
 
-=head2 ListPublicKeys([EndTime => Str, NextToken => Str, StartTime => Str])
+=head2 ListPublicKeys
+
+=over
+
+=item [EndTime => Str]
+
+=item [NextToken => Str]
+
+=item [StartTime => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudTrail::ListPublicKeys>
 
@@ -275,7 +350,16 @@ Therefore, when you validate a digest file from a particular region,
 you must look in the same region for its corresponding public key.
 
 
-=head2 ListTags(ResourceIdList => ArrayRef[Str|Undef], [NextToken => Str])
+=head2 ListTags
+
+=over
+
+=item ResourceIdList => ArrayRef[Str|Undef]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudTrail::ListTags>
 
@@ -284,7 +368,22 @@ Returns: a L<Paws::CloudTrail::ListTagsResponse> instance
 Lists the tags for the trail in the current region.
 
 
-=head2 LookupEvents([EndTime => Str, LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>], MaxResults => Int, NextToken => Str, StartTime => Str])
+=head2 LookupEvents
+
+=over
+
+=item [EndTime => Str]
+
+=item [LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [StartTime => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudTrail::LookupEvents>
 
@@ -336,7 +435,16 @@ available for lookup if CloudTrail logging was not enabled when the
 events occurred.
 
 
-=head2 PutEventSelectors(EventSelectors => ArrayRef[L<Paws::CloudTrail::EventSelector>], TrailName => Str)
+=head2 PutEventSelectors
+
+=over
+
+=item EventSelectors => ArrayRef[L<Paws::CloudTrail::EventSelector>]
+
+=item TrailName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudTrail::PutEventSelectors>
 
@@ -389,7 +497,16 @@ information, see Logging Data and Management Events for Trails
 in the I<AWS CloudTrail User Guide>.
 
 
-=head2 RemoveTags(ResourceId => Str, [TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]])
+=head2 RemoveTags
+
+=over
+
+=item ResourceId => Str
+
+=item [TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudTrail::RemoveTags>
 
@@ -398,7 +515,14 @@ Returns: a L<Paws::CloudTrail::RemoveTagsResponse> instance
 Removes the specified tags from a trail.
 
 
-=head2 StartLogging(Name => Str)
+=head2 StartLogging
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudTrail::StartLogging>
 
@@ -411,7 +535,14 @@ operation cannot be called on the shadow trails (replicated trails in
 other regions) of a trail that is enabled in all regions.
 
 
-=head2 StopLogging(Name => Str)
+=head2 StopLogging
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudTrail::StopLogging>
 
@@ -427,7 +558,32 @@ cannot be called on the shadow trails (replicated trails in other
 regions) of a trail enabled in all regions.
 
 
-=head2 UpdateTrail(Name => Str, [CloudWatchLogsLogGroupArn => Str, CloudWatchLogsRoleArn => Str, EnableLogFileValidation => Bool, IncludeGlobalServiceEvents => Bool, IsMultiRegionTrail => Bool, KmsKeyId => Str, S3BucketName => Str, S3KeyPrefix => Str, SnsTopicName => Str])
+=head2 UpdateTrail
+
+=over
+
+=item Name => Str
+
+=item [CloudWatchLogsLogGroupArn => Str]
+
+=item [CloudWatchLogsRoleArn => Str]
+
+=item [EnableLogFileValidation => Bool]
+
+=item [IncludeGlobalServiceEvents => Bool]
+
+=item [IsMultiRegionTrail => Bool]
+
+=item [KmsKeyId => Str]
+
+=item [S3BucketName => Str]
+
+=item [S3KeyPrefix => Str]
+
+=item [SnsTopicName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudTrail::UpdateTrail>
 

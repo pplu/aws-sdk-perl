@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Workspaces => ArrayRef[L<Paws::WorkSpaces::WorkspaceRequest>]
 
-Information about the WorkSpaces to create.
+The WorkSpaces to create. You can specify up to 25 WorkSpaces.
 
 
 

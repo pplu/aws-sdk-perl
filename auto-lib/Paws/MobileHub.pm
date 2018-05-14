@@ -142,7 +142,20 @@ and samples to make use of those resources.
 
 =head1 METHODS
 
-=head2 CreateProject([Contents => Str, Name => Str, Region => Str, SnapshotId => Str])
+=head2 CreateProject
+
+=over
+
+=item [Contents => Str]
+
+=item [Name => Str]
+
+=item [Region => Str]
+
+=item [SnapshotId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MobileHub::CreateProject>
 
@@ -151,7 +164,14 @@ Returns: a L<Paws::MobileHub::CreateProjectResult> instance
 Creates an AWS Mobile Hub project.
 
 
-=head2 DeleteProject(ProjectId => Str)
+=head2 DeleteProject
+
+=over
+
+=item ProjectId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MobileHub::DeleteProject>
 
@@ -160,7 +180,14 @@ Returns: a L<Paws::MobileHub::DeleteProjectResult> instance
 Delets a project in AWS Mobile Hub.
 
 
-=head2 DescribeBundle(BundleId => Str)
+=head2 DescribeBundle
+
+=over
+
+=item BundleId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MobileHub::DescribeBundle>
 
@@ -169,7 +196,16 @@ Returns: a L<Paws::MobileHub::DescribeBundleResult> instance
 Get the bundle details for the requested bundle id.
 
 
-=head2 DescribeProject(ProjectId => Str, [SyncFromResources => Bool])
+=head2 DescribeProject
+
+=over
+
+=item ProjectId => Str
+
+=item [SyncFromResources => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MobileHub::DescribeProject>
 
@@ -178,7 +214,18 @@ Returns: a L<Paws::MobileHub::DescribeProjectResult> instance
 Gets details about a project in AWS Mobile Hub.
 
 
-=head2 ExportBundle(BundleId => Str, [Platform => Str, ProjectId => Str])
+=head2 ExportBundle
+
+=over
+
+=item BundleId => Str
+
+=item [Platform => Str]
+
+=item [ProjectId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MobileHub::ExportBundle>
 
@@ -189,7 +236,14 @@ packages used to integrate mobile web or mobile app clients with
 backend AWS resources.
 
 
-=head2 ExportProject(ProjectId => Str)
+=head2 ExportProject
+
+=over
+
+=item ProjectId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MobileHub::ExportProject>
 
@@ -201,7 +255,16 @@ projects, so they can only be shared successfully within the same AWS
 account.
 
 
-=head2 ListBundles([MaxResults => Int, NextToken => Str])
+=head2 ListBundles
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MobileHub::ListBundles>
 
@@ -210,7 +273,16 @@ Returns: a L<Paws::MobileHub::ListBundlesResult> instance
 List all available bundles.
 
 
-=head2 ListProjects([MaxResults => Int, NextToken => Str])
+=head2 ListProjects
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MobileHub::ListProjects>
 
@@ -219,7 +291,16 @@ Returns: a L<Paws::MobileHub::ListProjectsResult> instance
 Lists projects in AWS Mobile Hub.
 
 
-=head2 UpdateProject(ProjectId => Str, [Contents => Str])
+=head2 UpdateProject
+
+=over
+
+=item ProjectId => Str
+
+=item [Contents => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MobileHub::UpdateProject>
 

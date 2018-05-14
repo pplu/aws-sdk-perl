@@ -1,20 +1,20 @@
 package Paws::GuardDuty::Finding;
   use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest'], required => 1);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
   has Confidence => (is => 'ro', isa => 'Num', request_name => 'confidence', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
+  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest'], required => 1);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
   has Partition => (is => 'ro', isa => 'Str', request_name => 'partition', traits => ['NameInRequest']);
-  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
-  has Resource => (is => 'ro', isa => 'Paws::GuardDuty::Resource', request_name => 'resource', traits => ['NameInRequest']);
-  has SchemaVersion => (is => 'ro', isa => 'Str', request_name => 'schemaVersion', traits => ['NameInRequest']);
+  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest'], required => 1);
+  has Resource => (is => 'ro', isa => 'Paws::GuardDuty::Resource', request_name => 'resource', traits => ['NameInRequest'], required => 1);
+  has SchemaVersion => (is => 'ro', isa => 'Str', request_name => 'schemaVersion', traits => ['NameInRequest'], required => 1);
   has Service => (is => 'ro', isa => 'Paws::GuardDuty::Service', request_name => 'service', traits => ['NameInRequest']);
-  has Severity => (is => 'ro', isa => 'Num', request_name => 'severity', traits => ['NameInRequest']);
+  has Severity => (is => 'ro', isa => 'Num', request_name => 'severity', traits => ['NameInRequest'], required => 1);
   has Title => (is => 'ro', isa => 'Str', request_name => 'title', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
-  has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+  has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -50,13 +50,13 @@ Representation of a abnormal or suspicious activity.
 =head1 ATTRIBUTES
 
 
-=head2 AccountId => Str
+=head2 B<REQUIRED> AccountId => Str
 
   AWS account ID where the activity occurred that prompted GuardDuty to
 generate a finding.
 
 
-=head2 Arn => Str
+=head2 B<REQUIRED> Arn => Str
 
   The ARN of a finding described by the action.
 
@@ -66,7 +66,7 @@ generate a finding.
   The confidence level of a finding.
 
 
-=head2 CreatedAt => Str
+=head2 B<REQUIRED> CreatedAt => Str
 
   The time stamp at which a finding was generated.
 
@@ -76,7 +76,7 @@ generate a finding.
   The description of a finding.
 
 
-=head2 Id => Str
+=head2 B<REQUIRED> Id => Str
 
   The identifier that corresponds to a finding described by the action.
 
@@ -86,19 +86,19 @@ generate a finding.
   The AWS resource partition.
 
 
-=head2 Region => Str
+=head2 B<REQUIRED> Region => Str
 
   The AWS region where the activity occurred that prompted GuardDuty to
 generate a finding.
 
 
-=head2 Resource => L<Paws::GuardDuty::Resource>
+=head2 B<REQUIRED> Resource => L<Paws::GuardDuty::Resource>
 
   The AWS resource associated with the activity that prompted GuardDuty
 to generate a finding.
 
 
-=head2 SchemaVersion => Str
+=head2 B<REQUIRED> SchemaVersion => Str
 
   Findings' schema version.
 
@@ -108,7 +108,7 @@ to generate a finding.
   Additional information assigned to the generated finding by GuardDuty.
 
 
-=head2 Severity => Num
+=head2 B<REQUIRED> Severity => Num
 
   The severity of a finding.
 
@@ -118,12 +118,12 @@ to generate a finding.
   The title of a finding.
 
 
-=head2 Type => Str
+=head2 B<REQUIRED> Type => Str
 
   The type of a finding described by the action.
 
 
-=head2 UpdatedAt => Str
+=head2 B<REQUIRED> UpdatedAt => Str
 
   The time stamp at which a finding was last updated.
 

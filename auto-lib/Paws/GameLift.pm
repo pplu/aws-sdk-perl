@@ -264,6 +264,11 @@ package Paws::GameLift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::SearchGameSessions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartFleetActions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::StartFleetActions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartGameSessionPlacement {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::StartGameSessionPlacement', @_);
@@ -277,6 +282,11 @@ package Paws::GameLift;
   sub StartMatchmaking {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::StartMatchmaking', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopFleetActions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::StopFleetActions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StopGameSessionPlacement {
@@ -342,7 +352,7 @@ package Paws::GameLift;
   
 
 
-  sub operations { qw/AcceptMatch CreateAlias CreateBuild CreateFleet CreateGameSession CreateGameSessionQueue CreateMatchmakingConfiguration CreateMatchmakingRuleSet CreatePlayerSession CreatePlayerSessions CreateVpcPeeringAuthorization CreateVpcPeeringConnection DeleteAlias DeleteBuild DeleteFleet DeleteGameSessionQueue DeleteMatchmakingConfiguration DeleteScalingPolicy DeleteVpcPeeringAuthorization DeleteVpcPeeringConnection DescribeAlias DescribeBuild DescribeEC2InstanceLimits DescribeFleetAttributes DescribeFleetCapacity DescribeFleetEvents DescribeFleetPortSettings DescribeFleetUtilization DescribeGameSessionDetails DescribeGameSessionPlacement DescribeGameSessionQueues DescribeGameSessions DescribeInstances DescribeMatchmaking DescribeMatchmakingConfigurations DescribeMatchmakingRuleSets DescribePlayerSessions DescribeRuntimeConfiguration DescribeScalingPolicies DescribeVpcPeeringAuthorizations DescribeVpcPeeringConnections GetGameSessionLogUrl GetInstanceAccess ListAliases ListBuilds ListFleets PutScalingPolicy RequestUploadCredentials ResolveAlias SearchGameSessions StartGameSessionPlacement StartMatchBackfill StartMatchmaking StopGameSessionPlacement StopMatchmaking UpdateAlias UpdateBuild UpdateFleetAttributes UpdateFleetCapacity UpdateFleetPortSettings UpdateGameSession UpdateGameSessionQueue UpdateMatchmakingConfiguration UpdateRuntimeConfiguration ValidateMatchmakingRuleSet / }
+  sub operations { qw/AcceptMatch CreateAlias CreateBuild CreateFleet CreateGameSession CreateGameSessionQueue CreateMatchmakingConfiguration CreateMatchmakingRuleSet CreatePlayerSession CreatePlayerSessions CreateVpcPeeringAuthorization CreateVpcPeeringConnection DeleteAlias DeleteBuild DeleteFleet DeleteGameSessionQueue DeleteMatchmakingConfiguration DeleteScalingPolicy DeleteVpcPeeringAuthorization DeleteVpcPeeringConnection DescribeAlias DescribeBuild DescribeEC2InstanceLimits DescribeFleetAttributes DescribeFleetCapacity DescribeFleetEvents DescribeFleetPortSettings DescribeFleetUtilization DescribeGameSessionDetails DescribeGameSessionPlacement DescribeGameSessionQueues DescribeGameSessions DescribeInstances DescribeMatchmaking DescribeMatchmakingConfigurations DescribeMatchmakingRuleSets DescribePlayerSessions DescribeRuntimeConfiguration DescribeScalingPolicies DescribeVpcPeeringAuthorizations DescribeVpcPeeringConnections GetGameSessionLogUrl GetInstanceAccess ListAliases ListBuilds ListFleets PutScalingPolicy RequestUploadCredentials ResolveAlias SearchGameSessions StartFleetActions StartGameSessionPlacement StartMatchBackfill StartMatchmaking StopFleetActions StopGameSessionPlacement StopMatchmaking UpdateAlias UpdateBuild UpdateFleetAttributes UpdateFleetCapacity UpdateFleetPortSettings UpdateGameSession UpdateGameSessionQueue UpdateMatchmakingConfiguration UpdateRuntimeConfiguration ValidateMatchmakingRuleSet / }
 
 1;
 
@@ -393,7 +403,7 @@ to join a game session.
 =item *
 
 B<Configure and manage game server resources> -- Manage builds, fleets,
-queues, and aliases; set autoscaling policies; retrieve logs and
+queues, and aliases; set auto-scaling policies; retrieve logs and
 metrics.
 
 =back
@@ -734,23 +744,31 @@ capacity settings to scale up or down.
 
 =item *
 
-Autoscale -- Manage autoscaling rules and apply them to a fleet.
+Autoscale -- Manage auto-scaling rules and apply them to a fleet.
 
 =over
 
 =item *
 
-PutScalingPolicy -- Create a new autoscaling policy, or update an
+PutScalingPolicy -- Create a new auto-scaling policy, or update an
 existing one.
 
 =item *
 
-DescribeScalingPolicies -- Retrieve an existing autoscaling policy.
+DescribeScalingPolicies -- Retrieve an existing auto-scaling policy.
 
 =item *
 
-DeleteScalingPolicy -- Delete an autoscaling policy and stop it from
+DeleteScalingPolicy -- Delete an auto-scaling policy and stop it from
 affecting a fleet's capacity.
+
+=item *
+
+StartFleetActions -- Restart a fleet's auto-scaling policies.
+
+=item *
+
+StopFleetActions -- Suspend a fleet's auto-scaling policies.
 
 =back
 
@@ -946,7 +964,18 @@ rules.
 
 =head1 METHODS
 
-=head2 AcceptMatch(AcceptanceType => Str, PlayerIds => ArrayRef[Str|Undef], TicketId => Str)
+=head2 AcceptMatch
+
+=over
+
+=item AcceptanceType => Str
+
+=item PlayerIds => ArrayRef[Str|Undef]
+
+=item TicketId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::AcceptMatch>
 
@@ -1006,7 +1035,18 @@ StartMatchBackfill
 
 
 
-=head2 CreateAlias(Name => Str, RoutingStrategy => L<Paws::GameLift::RoutingStrategy>, [Description => Str])
+=head2 CreateAlias
+
+=over
+
+=item Name => Str
+
+=item RoutingStrategy => L<Paws::GameLift::RoutingStrategy>
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreateAlias>
 
@@ -1065,7 +1105,20 @@ ResolveAlias
 
 
 
-=head2 CreateBuild([Name => Str, OperatingSystem => Str, StorageLocation => L<Paws::GameLift::S3Location>, Version => Str])
+=head2 CreateBuild
+
+=over
+
+=item [Name => Str]
+
+=item [OperatingSystem => Str]
+
+=item [StorageLocation => L<Paws::GameLift::S3Location>]
+
+=item [Version => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreateBuild>
 
@@ -1150,7 +1203,42 @@ DeleteBuild
 
 
 
-=head2 CreateFleet(BuildId => Str, EC2InstanceType => Str, Name => Str, [Description => Str, EC2InboundPermissions => ArrayRef[L<Paws::GameLift::IpPermission>], FleetType => Str, LogPaths => ArrayRef[Str|Undef], MetricGroups => ArrayRef[Str|Undef], NewGameSessionProtectionPolicy => Str, PeerVpcAwsAccountId => Str, PeerVpcId => Str, ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>, RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>, ServerLaunchParameters => Str, ServerLaunchPath => Str])
+=head2 CreateFleet
+
+=over
+
+=item BuildId => Str
+
+=item EC2InstanceType => Str
+
+=item Name => Str
+
+=item [Description => Str]
+
+=item [EC2InboundPermissions => ArrayRef[L<Paws::GameLift::IpPermission>]]
+
+=item [FleetType => Str]
+
+=item [LogPaths => ArrayRef[Str|Undef]]
+
+=item [MetricGroups => ArrayRef[Str|Undef]]
+
+=item [NewGameSessionProtectionPolicy => Str]
+
+=item [PeerVpcAwsAccountId => Str]
+
+=item [PeerVpcId => Str]
+
+=item [ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>]
+
+=item [RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>]
+
+=item [ServerLaunchParameters => Str]
+
+=item [ServerLaunchPath => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreateFleet>
 
@@ -1255,6 +1343,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -1262,6 +1354,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -1274,6 +1370,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -1307,45 +1407,48 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
 
 
-=head2 CreateGameSession(MaximumPlayerSessionCount => Int, [AliasId => Str, CreatorId => Str, FleetId => Str, GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>], GameSessionData => Str, GameSessionId => Str, IdempotencyToken => Str, Name => Str])
+=head2 CreateGameSession
+
+=over
+
+=item MaximumPlayerSessionCount => Int
+
+=item [AliasId => Str]
+
+=item [CreatorId => Str]
+
+=item [FleetId => Str]
+
+=item [GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]]
+
+=item [GameSessionData => Str]
+
+=item [GameSessionId => Str]
+
+=item [IdempotencyToken => Str]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreateGameSession>
 
@@ -1437,7 +1540,20 @@ StopGameSessionPlacement
 
 
 
-=head2 CreateGameSessionQueue(Name => Str, [Destinations => ArrayRef[L<Paws::GameLift::GameSessionQueueDestination>], PlayerLatencyPolicies => ArrayRef[L<Paws::GameLift::PlayerLatencyPolicy>], TimeoutInSeconds => Int])
+=head2 CreateGameSessionQueue
+
+=over
+
+=item Name => Str
+
+=item [Destinations => ArrayRef[L<Paws::GameLift::GameSessionQueueDestination>]]
+
+=item [PlayerLatencyPolicies => ArrayRef[L<Paws::GameLift::PlayerLatencyPolicy>]]
+
+=item [TimeoutInSeconds => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreateGameSessionQueue>
 
@@ -1501,7 +1617,36 @@ DeleteGameSessionQueue
 
 
 
-=head2 CreateMatchmakingConfiguration(AcceptanceRequired => Bool, GameSessionQueueArns => ArrayRef[Str|Undef], Name => Str, RequestTimeoutSeconds => Int, RuleSetName => Str, [AcceptanceTimeoutSeconds => Int, AdditionalPlayerCount => Int, CustomEventData => Str, Description => Str, GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>], GameSessionData => Str, NotificationTarget => Str])
+=head2 CreateMatchmakingConfiguration
+
+=over
+
+=item AcceptanceRequired => Bool
+
+=item GameSessionQueueArns => ArrayRef[Str|Undef]
+
+=item Name => Str
+
+=item RequestTimeoutSeconds => Int
+
+=item RuleSetName => Str
+
+=item [AcceptanceTimeoutSeconds => Int]
+
+=item [AdditionalPlayerCount => Int]
+
+=item [CustomEventData => Str]
+
+=item [Description => Str]
+
+=item [GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]]
+
+=item [GameSessionData => Str]
+
+=item [NotificationTarget => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreateMatchmakingConfiguration>
 
@@ -1576,7 +1721,16 @@ ValidateMatchmakingRuleSet
 
 
 
-=head2 CreateMatchmakingRuleSet(Name => Str, RuleSetBody => Str)
+=head2 CreateMatchmakingRuleSet
+
+=over
+
+=item Name => Str
+
+=item RuleSetBody => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreateMatchmakingRuleSet>
 
@@ -1642,7 +1796,18 @@ ValidateMatchmakingRuleSet
 
 
 
-=head2 CreatePlayerSession(GameSessionId => Str, PlayerId => Str, [PlayerData => Str])
+=head2 CreatePlayerSession
+
+=over
+
+=item GameSessionId => Str
+
+=item PlayerId => Str
+
+=item [PlayerData => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreatePlayerSession>
 
@@ -1701,7 +1866,18 @@ StopGameSessionPlacement
 
 
 
-=head2 CreatePlayerSessions(GameSessionId => Str, PlayerIds => ArrayRef[Str|Undef], [PlayerDataMap => L<Paws::GameLift::PlayerDataMap>])
+=head2 CreatePlayerSessions
+
+=over
+
+=item GameSessionId => Str
+
+=item PlayerIds => ArrayRef[Str|Undef]
+
+=item [PlayerDataMap => L<Paws::GameLift::PlayerDataMap>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreatePlayerSessions>
 
@@ -1760,7 +1936,16 @@ StopGameSessionPlacement
 
 
 
-=head2 CreateVpcPeeringAuthorization(GameLiftAwsAccountId => Str, PeerVpcId => Str)
+=head2 CreateVpcPeeringAuthorization
+
+=over
+
+=item GameLiftAwsAccountId => Str
+
+=item PeerVpcId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreateVpcPeeringAuthorization>
 
@@ -1831,7 +2016,18 @@ DeleteVpcPeeringConnection
 
 
 
-=head2 CreateVpcPeeringConnection(FleetId => Str, PeerVpcAwsAccountId => Str, PeerVpcId => Str)
+=head2 CreateVpcPeeringConnection
+
+=over
+
+=item FleetId => Str
+
+=item PeerVpcAwsAccountId => Str
+
+=item PeerVpcId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::CreateVpcPeeringConnection>
 
@@ -1896,7 +2092,14 @@ DeleteVpcPeeringConnection
 
 
 
-=head2 DeleteAlias(AliasId => Str)
+=head2 DeleteAlias
+
+=over
+
+=item AliasId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DeleteAlias>
 
@@ -1939,7 +2142,14 @@ ResolveAlias
 
 
 
-=head2 DeleteBuild(BuildId => Str)
+=head2 DeleteBuild
+
+=over
+
+=item BuildId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DeleteBuild>
 
@@ -1980,7 +2190,14 @@ DeleteBuild
 
 
 
-=head2 DeleteFleet(FleetId => Str)
+=head2 DeleteFleet
+
+=over
+
+=item FleetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DeleteFleet>
 
@@ -2006,6 +2223,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -2013,6 +2234,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -2025,6 +2250,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -2058,45 +2287,32 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
 
 
-=head2 DeleteGameSessionQueue(Name => Str)
+=head2 DeleteGameSessionQueue
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DeleteGameSessionQueue>
 
@@ -2130,7 +2346,14 @@ DeleteGameSessionQueue
 
 
 
-=head2 DeleteMatchmakingConfiguration(Name => Str)
+=head2 DeleteMatchmakingConfiguration
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DeleteMatchmakingConfiguration>
 
@@ -2176,7 +2399,16 @@ ValidateMatchmakingRuleSet
 
 
 
-=head2 DeleteScalingPolicy(FleetId => Str, Name => Str)
+=head2 DeleteScalingPolicy
+
+=over
+
+=item FleetId => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DeleteScalingPolicy>
 
@@ -2187,73 +2419,10 @@ longer in force and removes all record of it. To delete a scaling
 policy, specify both the scaling policy name and the fleet ID it is
 associated with.
 
-Fleet-related operations include:
+To temporarily suspend scaling policies, call StopFleetActions. This
+operation suspends all policies for the fleet.
 
-=over
-
-=item *
-
-CreateFleet
-
-=item *
-
-ListFleets
-
-=item *
-
-Describe fleets:
-
-=over
-
-=item *
-
-DescribeFleetAttributes
-
-=item *
-
-DescribeFleetPortSettings
-
-=item *
-
-DescribeFleetUtilization
-
-=item *
-
-DescribeRuntimeConfiguration
-
-=item *
-
-DescribeFleetEvents
-
-=back
-
-=item *
-
-Update fleets:
-
-=over
-
-=item *
-
-UpdateFleetAttributes
-
-=item *
-
-UpdateFleetCapacity
-
-=item *
-
-UpdateFleetPortSettings
-
-=item *
-
-UpdateRuntimeConfiguration
-
-=back
-
-=item *
-
-Manage fleet capacity:
+Operations related to fleet capacity scaling include:
 
 =over
 
@@ -2267,31 +2436,58 @@ UpdateFleetCapacity
 
 =item *
 
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
 DescribeEC2InstanceLimits
 
+=item *
+
+Manage scaling policies:
+
+=over
+
+=item *
+
+PutScalingPolicy (auto-scaling)
+
+=item *
+
+DescribeScalingPolicies (auto-scaling)
+
+=item *
+
+DeleteScalingPolicy (auto-scaling)
+
 =back
 
 =item *
 
-DeleteFleet
+Manage fleet actions:
+
+=over
+
+=item *
+
+StartFleetActions
+
+=item *
+
+StopFleetActions
+
+=back
 
 =back
 
 
 
-=head2 DeleteVpcPeeringAuthorization(GameLiftAwsAccountId => Str, PeerVpcId => Str)
+=head2 DeleteVpcPeeringAuthorization
+
+=over
+
+=item GameLiftAwsAccountId => Str
+
+=item PeerVpcId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DeleteVpcPeeringAuthorization>
 
@@ -2333,7 +2529,16 @@ DeleteVpcPeeringConnection
 
 
 
-=head2 DeleteVpcPeeringConnection(FleetId => Str, VpcPeeringConnectionId => Str)
+=head2 DeleteVpcPeeringConnection
+
+=over
+
+=item FleetId => Str
+
+=item VpcPeeringConnectionId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DeleteVpcPeeringConnection>
 
@@ -2382,7 +2587,14 @@ DeleteVpcPeeringConnection
 
 
 
-=head2 DescribeAlias(AliasId => Str)
+=head2 DescribeAlias
+
+=over
+
+=item AliasId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeAlias>
 
@@ -2427,7 +2639,14 @@ ResolveAlias
 
 
 
-=head2 DescribeBuild(BuildId => Str)
+=head2 DescribeBuild
+
+=over
+
+=item BuildId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeBuild>
 
@@ -2465,7 +2684,14 @@ DeleteBuild
 
 
 
-=head2 DescribeEC2InstanceLimits([EC2InstanceType => Str])
+=head2 DescribeEC2InstanceLimits
+
+=over
+
+=item [EC2InstanceType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeEC2InstanceLimits>
 
@@ -2504,6 +2730,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -2511,6 +2741,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -2523,6 +2757,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -2556,45 +2794,36 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
 
 
-=head2 DescribeFleetAttributes([FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+=head2 DescribeFleetAttributes
+
+=over
+
+=item [FleetIds => ArrayRef[Str|Undef]]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeFleetAttributes>
 
@@ -2627,6 +2856,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -2634,6 +2867,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -2646,6 +2883,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -2679,45 +2920,36 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
 
 
-=head2 DescribeFleetCapacity([FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+=head2 DescribeFleetCapacity
+
+=over
+
+=item [FleetIds => ArrayRef[Str|Undef]]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeFleetCapacity>
 
@@ -2751,6 +2983,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -2758,6 +2994,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -2770,6 +3010,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -2803,45 +3047,40 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
 
 
-=head2 DescribeFleetEvents(FleetId => Str, [EndTime => Str, Limit => Int, NextToken => Str, StartTime => Str])
+=head2 DescribeFleetEvents
+
+=over
+
+=item FleetId => Str
+
+=item [EndTime => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [StartTime => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeFleetEvents>
 
@@ -2866,6 +3105,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -2873,6 +3116,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -2885,6 +3132,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -2918,45 +3169,32 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
 
 
-=head2 DescribeFleetPortSettings(FleetId => Str)
+=head2 DescribeFleetPortSettings
+
+=over
+
+=item FleetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeFleetPortSettings>
 
@@ -2984,6 +3222,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -2991,6 +3233,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -3003,6 +3249,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -3036,45 +3286,36 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
 
 
-=head2 DescribeFleetUtilization([FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+=head2 DescribeFleetUtilization
+
+=over
+
+=item [FleetIds => ArrayRef[Str|Undef]]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeFleetUtilization>
 
@@ -3106,6 +3347,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -3113,6 +3358,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -3125,6 +3374,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -3158,45 +3411,42 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
 
 
-=head2 DescribeGameSessionDetails([AliasId => Str, FleetId => Str, GameSessionId => Str, Limit => Int, NextToken => Str, StatusFilter => Str])
+=head2 DescribeGameSessionDetails
+
+=over
+
+=item [AliasId => Str]
+
+=item [FleetId => Str]
+
+=item [GameSessionId => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [StatusFilter => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeGameSessionDetails>
 
@@ -3267,7 +3517,14 @@ StopGameSessionPlacement
 
 
 
-=head2 DescribeGameSessionPlacement(PlacementId => Str)
+=head2 DescribeGameSessionPlacement
+
+=over
+
+=item PlacementId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeGameSessionPlacement>
 
@@ -3329,7 +3586,18 @@ StopGameSessionPlacement
 
 
 
-=head2 DescribeGameSessionQueues([Limit => Int, Names => ArrayRef[Str|Undef], NextToken => Str])
+=head2 DescribeGameSessionQueues
+
+=over
+
+=item [Limit => Int]
+
+=item [Names => ArrayRef[Str|Undef]]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeGameSessionQueues>
 
@@ -3366,7 +3634,24 @@ DeleteGameSessionQueue
 
 
 
-=head2 DescribeGameSessions([AliasId => Str, FleetId => Str, GameSessionId => Str, Limit => Int, NextToken => Str, StatusFilter => Str])
+=head2 DescribeGameSessions
+
+=over
+
+=item [AliasId => Str]
+
+=item [FleetId => Str]
+
+=item [GameSessionId => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [StatusFilter => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeGameSessions>
 
@@ -3438,7 +3723,20 @@ StopGameSessionPlacement
 
 
 
-=head2 DescribeInstances(FleetId => Str, [InstanceId => Str, Limit => Int, NextToken => Str])
+=head2 DescribeInstances
+
+=over
+
+=item FleetId => Str
+
+=item [InstanceId => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeInstances>
 
@@ -3454,7 +3752,14 @@ parameters to retrieve results as a set of sequential pages. If
 successful, an Instance object is returned for each result.
 
 
-=head2 DescribeMatchmaking(TicketIds => ArrayRef[Str|Undef])
+=head2 DescribeMatchmaking
+
+=over
+
+=item TicketIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeMatchmaking>
 
@@ -3502,7 +3807,20 @@ StartMatchBackfill
 
 
 
-=head2 DescribeMatchmakingConfigurations([Limit => Int, Names => ArrayRef[Str|Undef], NextToken => Str, RuleSetName => Str])
+=head2 DescribeMatchmakingConfigurations
+
+=over
+
+=item [Limit => Int]
+
+=item [Names => ArrayRef[Str|Undef]]
+
+=item [NextToken => Str]
+
+=item [RuleSetName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeMatchmakingConfigurations>
 
@@ -3554,7 +3872,18 @@ ValidateMatchmakingRuleSet
 
 
 
-=head2 DescribeMatchmakingRuleSets([Limit => Int, Names => ArrayRef[Str|Undef], NextToken => Str])
+=head2 DescribeMatchmakingRuleSets
+
+=over
+
+=item [Limit => Int]
+
+=item [Names => ArrayRef[Str|Undef]]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeMatchmakingRuleSets>
 
@@ -3602,7 +3931,24 @@ ValidateMatchmakingRuleSet
 
 
 
-=head2 DescribePlayerSessions([GameSessionId => Str, Limit => Int, NextToken => Str, PlayerId => Str, PlayerSessionId => Str, PlayerSessionStatusFilter => Str])
+=head2 DescribePlayerSessions
+
+=over
+
+=item [GameSessionId => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [PlayerId => Str]
+
+=item [PlayerSessionId => Str]
+
+=item [PlayerSessionStatusFilter => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribePlayerSessions>
 
@@ -3663,7 +4009,14 @@ StopGameSessionPlacement
 
 
 
-=head2 DescribeRuntimeConfiguration(FleetId => Str)
+=head2 DescribeRuntimeConfiguration
+
+=over
+
+=item FleetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeRuntimeConfiguration>
 
@@ -3687,6 +4040,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -3694,6 +4051,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -3706,6 +4067,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -3739,45 +4104,38 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
 
 
-=head2 DescribeScalingPolicies(FleetId => Str, [Limit => Int, NextToken => Str, StatusFilter => Str])
+=head2 DescribeScalingPolicies
+
+=over
+
+=item FleetId => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [StatusFilter => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeScalingPolicies>
 
@@ -3791,73 +4149,13 @@ policies. Use the pagination parameters to retrieve results as a set of
 sequential pages. If successful, set of ScalingPolicy objects is
 returned for the fleet.
 
-Fleet-related operations include:
+A fleet may have all of its scaling policies suspended
+(StopFleetActions). This action does not affect the status of the
+scaling policies, which remains ACTIVE. To see whether a fleet's
+scaling policies are in force or suspended, call
+DescribeFleetAttributes and check the stopped actions.
 
-=over
-
-=item *
-
-CreateFleet
-
-=item *
-
-ListFleets
-
-=item *
-
-Describe fleets:
-
-=over
-
-=item *
-
-DescribeFleetAttributes
-
-=item *
-
-DescribeFleetPortSettings
-
-=item *
-
-DescribeFleetUtilization
-
-=item *
-
-DescribeRuntimeConfiguration
-
-=item *
-
-DescribeFleetEvents
-
-=back
-
-=item *
-
-Update fleets:
-
-=over
-
-=item *
-
-UpdateFleetAttributes
-
-=item *
-
-UpdateFleetCapacity
-
-=item *
-
-UpdateFleetPortSettings
-
-=item *
-
-UpdateRuntimeConfiguration
-
-=back
-
-=item *
-
-Manage fleet capacity:
+Operations related to fleet capacity scaling include:
 
 =over
 
@@ -3871,31 +4169,54 @@ UpdateFleetCapacity
 
 =item *
 
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
 DescribeEC2InstanceLimits
 
+=item *
+
+Manage scaling policies:
+
+=over
+
+=item *
+
+PutScalingPolicy (auto-scaling)
+
+=item *
+
+DescribeScalingPolicies (auto-scaling)
+
+=item *
+
+DeleteScalingPolicy (auto-scaling)
+
 =back
 
 =item *
 
-DeleteFleet
+Manage fleet actions:
+
+=over
+
+=item *
+
+StartFleetActions
+
+=item *
+
+StopFleetActions
+
+=back
 
 =back
 
 
 
-=head2 DescribeVpcPeeringAuthorizations()
+=head2 DescribeVpcPeeringAuthorizations
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeVpcPeeringAuthorizations>
 
@@ -3938,7 +4259,14 @@ DeleteVpcPeeringConnection
 
 
 
-=head2 DescribeVpcPeeringConnections([FleetId => Str])
+=head2 DescribeVpcPeeringConnections
+
+=over
+
+=item [FleetId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeVpcPeeringConnections>
 
@@ -3986,7 +4314,14 @@ DeleteVpcPeeringConnection
 
 
 
-=head2 GetGameSessionLogUrl(GameSessionId => Str)
+=head2 GetGameSessionLogUrl
+
+=over
+
+=item GameSessionId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::GetGameSessionLogUrl>
 
@@ -4054,7 +4389,16 @@ StopGameSessionPlacement
 
 
 
-=head2 GetInstanceAccess(FleetId => Str, InstanceId => Str)
+=head2 GetInstanceAccess
+
+=over
+
+=item FleetId => Str
+
+=item InstanceId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::GetInstanceAccess>
 
@@ -4082,7 +4426,20 @@ object is returned containing the instance's IP address and a set of
 credentials.
 
 
-=head2 ListAliases([Limit => Int, Name => Str, NextToken => Str, RoutingStrategyType => Str])
+=head2 ListAliases
+
+=over
+
+=item [Limit => Int]
+
+=item [Name => Str]
+
+=item [NextToken => Str]
+
+=item [RoutingStrategyType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::ListAliases>
 
@@ -4126,7 +4483,18 @@ ResolveAlias
 
 
 
-=head2 ListBuilds([Limit => Int, NextToken => Str, Status => Str])
+=head2 ListBuilds
+
+=over
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::ListBuilds>
 
@@ -4167,7 +4535,18 @@ DeleteBuild
 
 
 
-=head2 ListFleets([BuildId => Str, Limit => Int, NextToken => Str])
+=head2 ListFleets
+
+=over
+
+=item [BuildId => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::ListFleets>
 
@@ -4193,6 +4572,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -4200,6 +4583,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -4212,6 +4599,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -4245,142 +4636,140 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
 
 
-=head2 PutScalingPolicy(ComparisonOperator => Str, EvaluationPeriods => Int, FleetId => Str, MetricName => Str, Name => Str, ScalingAdjustment => Int, ScalingAdjustmentType => Str, Threshold => Num)
+=head2 PutScalingPolicy
+
+=over
+
+=item FleetId => Str
+
+=item MetricName => Str
+
+=item Name => Str
+
+=item [ComparisonOperator => Str]
+
+=item [EvaluationPeriods => Int]
+
+=item [PolicyType => Str]
+
+=item [ScalingAdjustment => Int]
+
+=item [ScalingAdjustmentType => Str]
+
+=item [TargetConfiguration => L<Paws::GameLift::TargetConfiguration>]
+
+=item [Threshold => Num]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::PutScalingPolicy>
 
 Returns: a L<Paws::GameLift::PutScalingPolicyOutput> instance
 
-Creates or updates a scaling policy for a fleet. An active scaling
-policy prompts Amazon GameLift to track a certain metric for a fleet
-and automatically change the fleet's capacity in specific
-circumstances. Each scaling policy contains one rule statement. Fleets
-can have multiple scaling policies in force simultaneously.
+Creates or updates a scaling policy for a fleet. Scaling policies are
+used to automatically scale a fleet's hosting capacity to meet player
+demand. An active scaling policy instructs Amazon GameLift to track a
+fleet metric and automatically change the fleet's capacity when a
+certain threshold is reached. There are two types of scaling policies:
+target-based and rule-based. Use a target-based policy to quickly and
+efficiently manage fleet scaling; this option is the most commonly
+used. Use rule-based policies when you need to exert fine-grained
+control over auto-scaling.
 
-A scaling policy rule statement has the following structure:
+Fleets can have multiple scaling policies of each type in force at the
+same time; you can have one target-based policy, one or multiple
+rule-based scaling policies, or both. We recommend caution, however,
+because multiple auto-scaling policies can have unintended
+consequences.
+
+You can temporarily suspend all scaling policies for a fleet by calling
+StopFleetActions with the fleet action AUTO_SCALING. To resume scaling
+policies, call StartFleetActions with the same fleet action. To stop
+just one scaling policy--or to permanently remove it, you must delete
+the policy with DeleteScalingPolicy.
+
+Learn more about how to work with auto-scaling in Set Up Fleet
+Automatic Scaling
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-autoscaling.html).
+
+B<Target-based policy>
+
+A target-based policy tracks a single metric:
+PercentAvailableGameSessions. This metric tells us how much of a
+fleet's hosting capacity is ready to host game sessions but is not
+currently in use. This is the fleet's buffer; it measures the
+additional player demand that the fleet could handle at current
+capacity. With a target-based policy, you set your ideal buffer size
+and leave it to Amazon GameLift to take whatever action is needed to
+maintain that target.
+
+For example, you might choose to maintain a 10% buffer for a fleet that
+has the capacity to host 100 simultaneous game sessions. This policy
+tells Amazon GameLift to take action whenever the fleet's available
+capacity falls below or rises above 10 game sessions. Amazon GameLift
+will start new instances or stop unused instances in order to return to
+the 10% buffer.
+
+To create or update a target-based policy, specify a fleet ID and name,
+and set the policy type to "TargetBased". Specify the metric to track
+(PercentAvailableGameSessions) and reference a TargetConfiguration
+object with your desired buffer value. Exclude all other parameters. On
+a successful request, the policy name is returned. The scaling policy
+is automatically in force as soon as it's successfully created. If the
+fleet's auto-scaling actions are temporarily suspended, the new policy
+will be in force once the fleet actions are restarted.
+
+B<Rule-based policy>
+
+A rule-based policy tracks specified fleet metric, sets a threshold
+value, and specifies the type of action to initiate when triggered.
+With a rule-based policy, you can select from several available fleet
+metrics. Each policy specifies whether to scale up or scale down (and
+by how much), so you need one policy for each type of action.
+
+For example, a policy may make the following statement: "If the
+percentage of idle instances is greater than 20% for more than 15
+minutes, then reduce the fleet capacity by 10%."
+
+A policy's rule statement has the following structure:
 
 If C<[MetricName]> is C<[ComparisonOperator]> C<[Threshold]> for
 C<[EvaluationPeriods]> minutes, then C<[ScalingAdjustmentType]> to/by
 C<[ScalingAdjustment]>.
 
-For example, this policy: "If the number of idle instances exceeds 20
-for more than 15 minutes, then reduce the fleet capacity by 10
-instances" could be implemented as the following rule statement:
+To implement the example, the rule statement would look like this:
 
-If [IdleInstances] is [GreaterThanOrEqualToThreshold] [20] for [15]
-minutes, then [ChangeInCapacity] by [-10].
+If C<[PercentIdleInstances]> is C<[GreaterThanThreshold]> C<[20]> for
+C<[15]> minutes, then C<[PercentChangeInCapacity]> to/by C<[10]>.
 
 To create or update a scaling policy, specify a unique combination of
-name and fleet ID, and set the rule values. All parameters for this
-action are required. If successful, the policy name is returned.
-Scaling policies cannot be suspended or made inactive. To stop
-enforcing a scaling policy, call DeleteScalingPolicy.
+name and fleet ID, and set the policy type to "RuleBased". Specify the
+parameter values for a policy rule statement. On a successful request,
+the policy name is returned. Scaling policies are automatically in
+force as soon as they're successfully created. If the fleet's
+auto-scaling actions are temporarily suspended, the new policy will be
+in force once the fleet actions are restarted.
 
-Fleet-related operations include:
-
-=over
-
-=item *
-
-CreateFleet
-
-=item *
-
-ListFleets
-
-=item *
-
-Describe fleets:
-
-=over
-
-=item *
-
-DescribeFleetAttributes
-
-=item *
-
-DescribeFleetPortSettings
-
-=item *
-
-DescribeFleetUtilization
-
-=item *
-
-DescribeRuntimeConfiguration
-
-=item *
-
-DescribeFleetEvents
-
-=back
-
-=item *
-
-Update fleets:
-
-=over
-
-=item *
-
-UpdateFleetAttributes
-
-=item *
-
-UpdateFleetCapacity
-
-=item *
-
-UpdateFleetPortSettings
-
-=item *
-
-UpdateRuntimeConfiguration
-
-=back
-
-=item *
-
-Manage fleet capacity:
+Operations related to fleet capacity scaling include:
 
 =over
 
@@ -4394,31 +4783,56 @@ UpdateFleetCapacity
 
 =item *
 
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
 DescribeEC2InstanceLimits
 
+=item *
+
+Manage scaling policies:
+
+=over
+
+=item *
+
+PutScalingPolicy (auto-scaling)
+
+=item *
+
+DescribeScalingPolicies (auto-scaling)
+
+=item *
+
+DeleteScalingPolicy (auto-scaling)
+
 =back
 
 =item *
 
-DeleteFleet
+Manage fleet actions:
+
+=over
+
+=item *
+
+StartFleetActions
+
+=item *
+
+StopFleetActions
+
+=back
 
 =back
 
 
 
-=head2 RequestUploadCredentials(BuildId => Str)
+=head2 RequestUploadCredentials
+
+=over
+
+=item BuildId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::RequestUploadCredentials>
 
@@ -4434,7 +4848,14 @@ are returned, along with the S3 storage location associated with the
 build ID.
 
 
-=head2 ResolveAlias(AliasId => Str)
+=head2 ResolveAlias
+
+=over
+
+=item AliasId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::ResolveAlias>
 
@@ -4474,7 +4895,24 @@ ResolveAlias
 
 
 
-=head2 SearchGameSessions([AliasId => Str, FilterExpression => Str, FleetId => Str, Limit => Int, NextToken => Str, SortExpression => Str])
+=head2 SearchGameSessions
+
+=over
+
+=item [AliasId => Str]
+
+=item [FilterExpression => Str]
+
+=item [FleetId => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [SortExpression => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::SearchGameSessions>
 
@@ -4505,8 +4943,9 @@ C<GameProperty> parameter. C<GameProperty> values are stored as
 key:value pairs; the filter expression must indicate the key and a
 string to search the data values for. For example, to search for game
 sessions with custom data containing the key:value pair
-"gameMode:brawl", specify the following: gameSessionProperties.gameMode
-= "brawl". All custom data values are searched as strings.
+"gameMode:brawl", specify the following:
+C<gameSessionProperties.gameMode = "brawl">. All custom data values are
+searched as strings.
 
 =item *
 
@@ -4605,7 +5044,110 @@ StopGameSessionPlacement
 
 
 
-=head2 StartGameSessionPlacement(GameSessionQueueName => Str, MaximumPlayerSessionCount => Int, PlacementId => Str, [DesiredPlayerSessions => ArrayRef[L<Paws::GameLift::DesiredPlayerSession>], GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>], GameSessionData => Str, GameSessionName => Str, PlayerLatencies => ArrayRef[L<Paws::GameLift::PlayerLatency>]])
+=head2 StartFleetActions
+
+=over
+
+=item Actions => ArrayRef[Str|Undef]
+
+=item FleetId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GameLift::StartFleetActions>
+
+Returns: a L<Paws::GameLift::StartFleetActionsOutput> instance
+
+Resumes activity on a fleet that was suspended with StopFleetActions.
+Currently, this operation is used to restart a fleet's auto-scaling
+activity.
+
+To start fleet actions, specify the fleet ID and the type of actions to
+restart. When auto-scaling fleet actions are restarted, Amazon GameLift
+once again initiates scaling events as triggered by the fleet's scaling
+policies. If actions on the fleet were never stopped, this operation
+will have no effect. You can view a fleet's stopped actions using
+DescribeFleetAttributes.
+
+Operations related to fleet capacity scaling include:
+
+=over
+
+=item *
+
+DescribeFleetCapacity
+
+=item *
+
+UpdateFleetCapacity
+
+=item *
+
+DescribeEC2InstanceLimits
+
+=item *
+
+Manage scaling policies:
+
+=over
+
+=item *
+
+PutScalingPolicy (auto-scaling)
+
+=item *
+
+DescribeScalingPolicies (auto-scaling)
+
+=item *
+
+DeleteScalingPolicy (auto-scaling)
+
+=back
+
+=item *
+
+Manage fleet actions:
+
+=over
+
+=item *
+
+StartFleetActions
+
+=item *
+
+StopFleetActions
+
+=back
+
+=back
+
+
+
+=head2 StartGameSessionPlacement
+
+=over
+
+=item GameSessionQueueName => Str
+
+=item MaximumPlayerSessionCount => Int
+
+=item PlacementId => Str
+
+=item [DesiredPlayerSessions => ArrayRef[L<Paws::GameLift::DesiredPlayerSession>]]
+
+=item [GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]]
+
+=item [GameSessionData => Str]
+
+=item [GameSessionName => Str]
+
+=item [PlayerLatencies => ArrayRef[L<Paws::GameLift::PlayerLatency>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::StartGameSessionPlacement>
 
@@ -4719,7 +5261,20 @@ StopGameSessionPlacement
 
 
 
-=head2 StartMatchBackfill(ConfigurationName => Str, GameSessionArn => Str, Players => ArrayRef[L<Paws::GameLift::Player>], [TicketId => Str])
+=head2 StartMatchBackfill
+
+=over
+
+=item ConfigurationName => Str
+
+=item GameSessionArn => Str
+
+=item Players => ArrayRef[L<Paws::GameLift::Player>]
+
+=item [TicketId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::StartMatchBackfill>
 
@@ -4782,7 +5337,18 @@ StartMatchBackfill
 
 
 
-=head2 StartMatchmaking(ConfigurationName => Str, Players => ArrayRef[L<Paws::GameLift::Player>], [TicketId => Str])
+=head2 StartMatchmaking
+
+=over
+
+=item ConfigurationName => Str
+
+=item Players => ArrayRef[L<Paws::GameLift::Player>]
+
+=item [TicketId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::StartMatchmaking>
 
@@ -4905,7 +5471,43 @@ StartMatchBackfill
 
 
 
-=head2 StopGameSessionPlacement(PlacementId => Str)
+=head2 StopFleetActions
+
+=over
+
+=item Actions => ArrayRef[Str|Undef]
+
+=item FleetId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GameLift::StopFleetActions>
+
+Returns: a L<Paws::GameLift::StopFleetActionsOutput> instance
+
+Suspends activity on a fleet. Currently, this operation is used to stop
+a fleet's auto-scaling activity. It is used to temporarily stop scaling
+events triggered by the fleet's scaling policies. The policies can be
+retained and auto-scaling activity can be restarted using
+StartFleetActions. You can view a fleet's stopped actions using
+DescribeFleetAttributes.
+
+To stop fleet actions, specify the fleet ID and the type of actions to
+suspend. When auto-scaling fleet actions are stopped, Amazon GameLift
+no longer initiates scaling events except to maintain the fleet's
+desired instances setting (FleetCapacity. Changes to the fleet's
+capacity must be done manually using UpdateFleetCapacity.
+
+
+=head2 StopGameSessionPlacement
+
+=over
+
+=item PlacementId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::StopGameSessionPlacement>
 
@@ -4967,7 +5569,14 @@ StopGameSessionPlacement
 
 
 
-=head2 StopMatchmaking(TicketId => Str)
+=head2 StopMatchmaking
+
+=over
+
+=item TicketId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::StopMatchmaking>
 
@@ -5006,7 +5615,20 @@ StartMatchBackfill
 
 
 
-=head2 UpdateAlias(AliasId => Str, [Description => Str, Name => Str, RoutingStrategy => L<Paws::GameLift::RoutingStrategy>])
+=head2 UpdateAlias
+
+=over
+
+=item AliasId => Str
+
+=item [Description => Str]
+
+=item [Name => Str]
+
+=item [RoutingStrategy => L<Paws::GameLift::RoutingStrategy>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateAlias>
 
@@ -5049,7 +5671,18 @@ ResolveAlias
 
 
 
-=head2 UpdateBuild(BuildId => Str, [Name => Str, Version => Str])
+=head2 UpdateBuild
+
+=over
+
+=item BuildId => Str
+
+=item [Name => Str]
+
+=item [Version => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateBuild>
 
@@ -5088,7 +5721,24 @@ DeleteBuild
 
 
 
-=head2 UpdateFleetAttributes(FleetId => Str, [Description => Str, MetricGroups => ArrayRef[Str|Undef], Name => Str, NewGameSessionProtectionPolicy => Str, ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>])
+=head2 UpdateFleetAttributes
+
+=over
+
+=item FleetId => Str
+
+=item [Description => Str]
+
+=item [MetricGroups => ArrayRef[Str|Undef]]
+
+=item [Name => Str]
+
+=item [NewGameSessionProtectionPolicy => Str]
+
+=item [ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateFleetAttributes>
 
@@ -5113,6 +5763,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -5120,6 +5774,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -5132,6 +5790,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -5165,45 +5827,38 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
 
 
-=head2 UpdateFleetCapacity(FleetId => Str, [DesiredInstances => Int, MaxSize => Int, MinSize => Int])
+=head2 UpdateFleetCapacity
+
+=over
+
+=item FleetId => Str
+
+=item [DesiredInstances => Int]
+
+=item [MaxSize => Int]
+
+=item [MinSize => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateFleetCapacity>
 
@@ -5215,11 +5870,11 @@ Before calling this action, you may want to call
 DescribeEC2InstanceLimits to get the maximum capacity based on the
 fleet's EC2 instance type.
 
-If you're using autoscaling (see PutScalingPolicy), you may want to
-specify a minimum and/or maximum capacity. If you don't provide these,
-autoscaling can set capacity anywhere between zero and the service
-limits
-(http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift).
+Specify minimum and maximum number of instances. Amazon GameLift will
+not change fleet capacity to values fall outside of this range. This is
+particularly important when using auto-scaling (see PutScalingPolicy)
+to allow capacity to adjust based on player demand while imposing
+limits on automatic adjustments.
 
 To update fleet capacity, specify the fleet ID and the number of
 instances you want the fleet to host. If successful, Amazon GameLift
@@ -5243,6 +5898,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -5250,6 +5909,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -5262,6 +5925,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -5295,45 +5962,36 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
 
 
-=head2 UpdateFleetPortSettings(FleetId => Str, [InboundPermissionAuthorizations => ArrayRef[L<Paws::GameLift::IpPermission>], InboundPermissionRevocations => ArrayRef[L<Paws::GameLift::IpPermission>]])
+=head2 UpdateFleetPortSettings
+
+=over
+
+=item FleetId => Str
+
+=item [InboundPermissionAuthorizations => ArrayRef[L<Paws::GameLift::IpPermission>]]
+
+=item [InboundPermissionRevocations => ArrayRef[L<Paws::GameLift::IpPermission>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateFleetPortSettings>
 
@@ -5361,6 +6019,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -5368,6 +6030,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -5380,6 +6046,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -5413,45 +6083,40 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
 
 
-=head2 UpdateGameSession(GameSessionId => Str, [MaximumPlayerSessionCount => Int, Name => Str, PlayerSessionCreationPolicy => Str, ProtectionPolicy => Str])
+=head2 UpdateGameSession
+
+=over
+
+=item GameSessionId => Str
+
+=item [MaximumPlayerSessionCount => Int]
+
+=item [Name => Str]
+
+=item [PlayerSessionCreationPolicy => Str]
+
+=item [ProtectionPolicy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateGameSession>
 
@@ -5517,7 +6182,20 @@ StopGameSessionPlacement
 
 
 
-=head2 UpdateGameSessionQueue(Name => Str, [Destinations => ArrayRef[L<Paws::GameLift::GameSessionQueueDestination>], PlayerLatencyPolicies => ArrayRef[L<Paws::GameLift::PlayerLatencyPolicy>], TimeoutInSeconds => Int])
+=head2 UpdateGameSessionQueue
+
+=over
+
+=item Name => Str
+
+=item [Destinations => ArrayRef[L<Paws::GameLift::GameSessionQueueDestination>]]
+
+=item [PlayerLatencyPolicies => ArrayRef[L<Paws::GameLift::PlayerLatencyPolicy>]]
+
+=item [TimeoutInSeconds => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateGameSessionQueue>
 
@@ -5552,7 +6230,36 @@ DeleteGameSessionQueue
 
 
 
-=head2 UpdateMatchmakingConfiguration(Name => Str, [AcceptanceRequired => Bool, AcceptanceTimeoutSeconds => Int, AdditionalPlayerCount => Int, CustomEventData => Str, Description => Str, GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>], GameSessionData => Str, GameSessionQueueArns => ArrayRef[Str|Undef], NotificationTarget => Str, RequestTimeoutSeconds => Int, RuleSetName => Str])
+=head2 UpdateMatchmakingConfiguration
+
+=over
+
+=item Name => Str
+
+=item [AcceptanceRequired => Bool]
+
+=item [AcceptanceTimeoutSeconds => Int]
+
+=item [AdditionalPlayerCount => Int]
+
+=item [CustomEventData => Str]
+
+=item [Description => Str]
+
+=item [GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]]
+
+=item [GameSessionData => Str]
+
+=item [GameSessionQueueArns => ArrayRef[Str|Undef]]
+
+=item [NotificationTarget => Str]
+
+=item [RequestTimeoutSeconds => Int]
+
+=item [RuleSetName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateMatchmakingConfiguration>
 
@@ -5598,7 +6305,16 @@ ValidateMatchmakingRuleSet
 
 
 
-=head2 UpdateRuntimeConfiguration(FleetId => Str, RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>)
+=head2 UpdateRuntimeConfiguration
+
+=over
+
+=item FleetId => Str
+
+=item RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateRuntimeConfiguration>
 
@@ -5638,6 +6354,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -5645,6 +6365,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -5657,6 +6381,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -5690,45 +6418,32 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
 
 
-=head2 ValidateMatchmakingRuleSet(RuleSetBody => Str)
+=head2 ValidateMatchmakingRuleSet
+
+=over
+
+=item RuleSetBody => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GameLift::ValidateMatchmakingRuleSet>
 

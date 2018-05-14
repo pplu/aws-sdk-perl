@@ -40,13 +40,17 @@ stream used as the source for a delivery stream.
 
 =head2 B<REQUIRED> KinesisStreamARN => Str
 
-  The ARN of the source Kinesis data stream.
+  The ARN of the source Kinesis data stream. For more information, see
+Amazon Kinesis Data Streams ARN Format
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams).
 
 
 =head2 B<REQUIRED> RoleARN => Str
 
   The ARN of the role that provides access to the source Kinesis data
-stream.
+stream. For more information, see AWS Identity and Access Management
+(IAM) ARN Format
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam).
 
 
 

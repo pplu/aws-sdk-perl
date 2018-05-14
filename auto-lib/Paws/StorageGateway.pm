@@ -579,7 +579,26 @@ Storage Gateway volume and snapshot IDs coming in 2016
 
 =head1 METHODS
 
-=head2 ActivateGateway(ActivationKey => Str, GatewayName => Str, GatewayRegion => Str, GatewayTimezone => Str, [GatewayType => Str, MediumChangerType => Str, TapeDriveType => Str])
+=head2 ActivateGateway
+
+=over
+
+=item ActivationKey => Str
+
+=item GatewayName => Str
+
+=item GatewayRegion => Str
+
+=item GatewayTimezone => Str
+
+=item [GatewayType => Str]
+
+=item [MediumChangerType => Str]
+
+=item [TapeDriveType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::ActivateGateway>
 
@@ -596,7 +615,16 @@ UpdateGatewayInformation.
 You must turn on the gateway VM before you can activate your gateway.
 
 
-=head2 AddCache(DiskIds => ArrayRef[Str|Undef], GatewayARN => Str)
+=head2 AddCache
+
+=over
+
+=item DiskIds => ArrayRef[Str|Undef]
+
+=item GatewayARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::AddCache>
 
@@ -612,7 +640,16 @@ which you want to add cache, and one or more disk IDs that you want to
 configure as cache.
 
 
-=head2 AddTagsToResource(ResourceARN => Str, Tags => ArrayRef[L<Paws::StorageGateway::Tag>])
+=head2 AddTagsToResource
+
+=over
+
+=item ResourceARN => Str
+
+=item Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::AddTagsToResource>
 
@@ -654,7 +691,16 @@ and storage volumes that are recovered to a new gateway maintain their
 tags.
 
 
-=head2 AddUploadBuffer(DiskIds => ArrayRef[Str|Undef], GatewayARN => Str)
+=head2 AddUploadBuffer
+
+=over
+
+=item DiskIds => ArrayRef[Str|Undef]
+
+=item GatewayARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::AddUploadBuffer>
 
@@ -669,7 +715,16 @@ which you want to add upload buffer, and one or more disk IDs that you
 want to configure as upload buffer.
 
 
-=head2 AddWorkingStorage(DiskIds => ArrayRef[Str|Undef], GatewayARN => Str)
+=head2 AddWorkingStorage
+
+=over
+
+=item DiskIds => ArrayRef[Str|Undef]
+
+=item GatewayARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::AddWorkingStorage>
 
@@ -689,7 +744,16 @@ which you want to add working storage, and one or more disk IDs that
 you want to configure as working storage.
 
 
-=head2 CancelArchival(GatewayARN => Str, TapeARN => Str)
+=head2 CancelArchival
+
+=over
+
+=item GatewayARN => Str
+
+=item TapeARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::CancelArchival>
 
@@ -700,7 +764,16 @@ after the archiving process is initiated. This operation is only
 supported in the tape gateway type.
 
 
-=head2 CancelRetrieval(GatewayARN => Str, TapeARN => Str)
+=head2 CancelRetrieval
+
+=over
+
+=item GatewayARN => Str
+
+=item TapeARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::CancelRetrieval>
 
@@ -712,7 +785,26 @@ is returned to the VTS. This operation is only supported in the tape
 gateway type.
 
 
-=head2 CreateCachediSCSIVolume(ClientToken => Str, GatewayARN => Str, NetworkInterfaceId => Str, TargetName => Str, VolumeSizeInBytes => Int, [SnapshotId => Str, SourceVolumeARN => Str])
+=head2 CreateCachediSCSIVolume
+
+=over
+
+=item ClientToken => Str
+
+=item GatewayARN => Str
+
+=item NetworkInterfaceId => Str
+
+=item TargetName => Str
+
+=item VolumeSizeInBytes => Int
+
+=item [SnapshotId => Str]
+
+=item [SourceVolumeARN => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::CreateCachediSCSIVolume>
 
@@ -739,7 +831,40 @@ C<VolumeSizeInBytes> value must be equal to or larger than the size of
 the copied volume, in bytes.
 
 
-=head2 CreateNFSFileShare(ClientToken => Str, GatewayARN => Str, LocationARN => Str, Role => Str, [ClientList => ArrayRef[Str|Undef], DefaultStorageClass => Str, GuessMIMETypeEnabled => Bool, KMSEncrypted => Bool, KMSKey => Str, NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>, ObjectACL => Str, ReadOnly => Bool, RequesterPays => Bool, Squash => Str])
+=head2 CreateNFSFileShare
+
+=over
+
+=item ClientToken => Str
+
+=item GatewayARN => Str
+
+=item LocationARN => Str
+
+=item Role => Str
+
+=item [ClientList => ArrayRef[Str|Undef]]
+
+=item [DefaultStorageClass => Str]
+
+=item [GuessMIMETypeEnabled => Bool]
+
+=item [KMSEncrypted => Bool]
+
+=item [KMSKey => Str]
+
+=item [NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>]
+
+=item [ObjectACL => Str]
+
+=item [ReadOnly => Bool]
+
+=item [RequesterPays => Bool]
+
+=item [Squash => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::CreateNFSFileShare>
 
@@ -762,7 +887,16 @@ File gateway does not support creating hard or symbolic links on a file
 share.
 
 
-=head2 CreateSnapshot(SnapshotDescription => Str, VolumeARN => Str)
+=head2 CreateSnapshot
+
+=over
+
+=item SnapshotDescription => Str
+
+=item VolumeARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::CreateSnapshot>
 
@@ -799,7 +933,16 @@ more information, see the important note on the Welcome
 page.
 
 
-=head2 CreateSnapshotFromVolumeRecoveryPoint(SnapshotDescription => Str, VolumeARN => Str)
+=head2 CreateSnapshotFromVolumeRecoveryPoint
+
+=over
+
+=item SnapshotDescription => Str
+
+=item VolumeARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::CreateSnapshotFromVolumeRecoveryPoint>
 
@@ -826,7 +969,24 @@ To list or delete a snapshot, you must use the Amazon EC2 API. For more
 information, in I<Amazon Elastic Compute Cloud API Reference>.
 
 
-=head2 CreateStorediSCSIVolume(DiskId => Str, GatewayARN => Str, NetworkInterfaceId => Str, PreserveExistingData => Bool, TargetName => Str, [SnapshotId => Str])
+=head2 CreateStorediSCSIVolume
+
+=over
+
+=item DiskId => Str
+
+=item GatewayARN => Str
+
+=item NetworkInterfaceId => Str
+
+=item PreserveExistingData => Bool
+
+=item TargetName => Str
+
+=item [SnapshotId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::CreateStorediSCSIVolume>
 
@@ -847,7 +1007,22 @@ Resource Name (ARN), its size, and the iSCSI target ARN that initiators
 can use to connect to the volume target.
 
 
-=head2 CreateTapes(ClientToken => Str, GatewayARN => Str, NumTapesToCreate => Int, TapeBarcodePrefix => Str, TapeSizeInBytes => Int)
+=head2 CreateTapes
+
+=over
+
+=item ClientToken => Str
+
+=item GatewayARN => Str
+
+=item NumTapesToCreate => Int
+
+=item TapeBarcodePrefix => Str
+
+=item TapeSizeInBytes => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::CreateTapes>
 
@@ -862,7 +1037,18 @@ virtual tapes. Use the AddCache operation to add cache storage to a
 gateway.
 
 
-=head2 CreateTapeWithBarcode(GatewayARN => Str, TapeBarcode => Str, TapeSizeInBytes => Int)
+=head2 CreateTapeWithBarcode
+
+=over
+
+=item GatewayARN => Str
+
+=item TapeBarcode => Str
+
+=item TapeSizeInBytes => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::CreateTapeWithBarcode>
 
@@ -879,7 +1065,16 @@ virtual tape. Use the AddCache operation to add cache storage to a
 gateway.
 
 
-=head2 DeleteBandwidthRateLimit(BandwidthType => Str, GatewayARN => Str)
+=head2 DeleteBandwidthRateLimit
+
+=over
+
+=item BandwidthType => Str
+
+=item GatewayARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DeleteBandwidthRateLimit>
 
@@ -892,7 +1087,16 @@ unchanged. To specify which gateway to work with, use the Amazon
 Resource Name (ARN) of the gateway in your request.
 
 
-=head2 DeleteChapCredentials(InitiatorName => Str, TargetARN => Str)
+=head2 DeleteChapCredentials
+
+=over
+
+=item InitiatorName => Str
+
+=item TargetARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DeleteChapCredentials>
 
@@ -902,7 +1106,16 @@ Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials
 for a specified iSCSI target and initiator pair.
 
 
-=head2 DeleteFileShare(FileShareARN => Str, [ForceDelete => Bool])
+=head2 DeleteFileShare
+
+=over
+
+=item FileShareARN => Str
+
+=item [ForceDelete => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DeleteFileShare>
 
@@ -912,7 +1125,14 @@ Deletes a file share from a file gateway. This operation is only
 supported in the file gateway type.
 
 
-=head2 DeleteGateway(GatewayARN => Str)
+=head2 DeleteGateway
+
+=over
+
+=item GatewayARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DeleteGateway>
 
@@ -938,7 +1158,14 @@ information, see the AWS Storage Gateway Detail Page
 (http://aws.amazon.com/storagegateway).
 
 
-=head2 DeleteSnapshotSchedule(VolumeARN => Str)
+=head2 DeleteSnapshotSchedule
+
+=over
+
+=item VolumeARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DeleteSnapshotSchedule>
 
@@ -958,7 +1185,16 @@ To list or delete a snapshot, you must use the Amazon EC2 API. in
 I<Amazon Elastic Compute Cloud API Reference>.
 
 
-=head2 DeleteTape(GatewayARN => Str, TapeARN => Str)
+=head2 DeleteTape
+
+=over
+
+=item GatewayARN => Str
+
+=item TapeARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DeleteTape>
 
@@ -968,7 +1204,14 @@ Deletes the specified virtual tape. This operation is only supported in
 the tape gateway type.
 
 
-=head2 DeleteTapeArchive(TapeARN => Str)
+=head2 DeleteTapeArchive
+
+=over
+
+=item TapeARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DeleteTapeArchive>
 
@@ -978,7 +1221,14 @@ Deletes the specified virtual tape from the virtual tape shelf (VTS).
 This operation is only supported in the tape gateway type.
 
 
-=head2 DeleteVolume(VolumeARN => Str)
+=head2 DeleteVolume
+
+=over
+
+=item VolumeARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DeleteVolume>
 
@@ -1004,7 +1254,14 @@ In the request, you must provide the Amazon Resource Name (ARN) of the
 storage volume you want to delete.
 
 
-=head2 DescribeBandwidthRateLimit(GatewayARN => Str)
+=head2 DescribeBandwidthRateLimit
+
+=over
+
+=item GatewayARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeBandwidthRateLimit>
 
@@ -1021,7 +1278,14 @@ which gateway to describe, use the Amazon Resource Name (ARN) of the
 gateway in your request.
 
 
-=head2 DescribeCache(GatewayARN => Str)
+=head2 DescribeCache
+
+=over
+
+=item GatewayARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeCache>
 
@@ -1034,7 +1298,14 @@ The response includes disk IDs that are configured as cache, and it
 includes the amount of cache allocated and used.
 
 
-=head2 DescribeCachediSCSIVolumes(VolumeARNs => ArrayRef[Str|Undef])
+=head2 DescribeCachediSCSIVolumes
+
+=over
+
+=item VolumeARNs => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeCachediSCSIVolumes>
 
@@ -1048,7 +1319,14 @@ the response Amazon Storage Gateway returns volume information sorted
 by volume Amazon Resource Name (ARN).
 
 
-=head2 DescribeChapCredentials(TargetARN => Str)
+=head2 DescribeChapCredentials
+
+=over
+
+=item TargetARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeChapCredentials>
 
@@ -1059,7 +1337,14 @@ credentials information for a specified iSCSI target, one for each
 target-initiator pair.
 
 
-=head2 DescribeGatewayInformation(GatewayARN => Str)
+=head2 DescribeGatewayInformation
+
+=over
+
+=item GatewayARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeGatewayInformation>
 
@@ -1071,7 +1356,14 @@ not). To specify which gateway to describe, use the Amazon Resource
 Name (ARN) of the gateway in your request.
 
 
-=head2 DescribeMaintenanceStartTime(GatewayARN => Str)
+=head2 DescribeMaintenanceStartTime
+
+=over
+
+=item GatewayARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeMaintenanceStartTime>
 
@@ -1082,7 +1374,14 @@ and time of the week. Note that values are in terms of the gateway's
 time zone.
 
 
-=head2 DescribeNFSFileShares(FileShareARNList => ArrayRef[Str|Undef])
+=head2 DescribeNFSFileShares
+
+=over
+
+=item FileShareARNList => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeNFSFileShares>
 
@@ -1092,7 +1391,14 @@ Gets a description for one or more file shares from a file gateway.
 This operation is only supported in the file gateway type.
 
 
-=head2 DescribeSnapshotSchedule(VolumeARN => Str)
+=head2 DescribeSnapshotSchedule
+
+=over
+
+=item VolumeARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeSnapshotSchedule>
 
@@ -1104,7 +1410,14 @@ automatically initiated on the volume. This operation is only supported
 in the cached volume and stored volume types.
 
 
-=head2 DescribeStorediSCSIVolumes(VolumeARNs => ArrayRef[Str|Undef])
+=head2 DescribeStorediSCSIVolumes
+
+=over
+
+=item VolumeARNs => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeStorediSCSIVolumes>
 
@@ -1117,7 +1430,18 @@ information sorted by volume ARNs. This operation is only supported in
 stored volume gateway type.
 
 
-=head2 DescribeTapeArchives([Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])
+=head2 DescribeTapeArchives
+
+=over
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+=item [TapeARNs => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeTapeArchives>
 
@@ -1131,7 +1455,18 @@ a description of all virtual tapes found in the VTS associated with
 your account.
 
 
-=head2 DescribeTapeRecoveryPoints(GatewayARN => Str, [Limit => Int, Marker => Str])
+=head2 DescribeTapeRecoveryPoints
+
+=over
+
+=item GatewayARN => Str
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeTapeRecoveryPoints>
 
@@ -1146,7 +1481,20 @@ virtual tapes that have recovery points can be recovered to a new
 gateway. This operation is only supported in the tape gateway type.
 
 
-=head2 DescribeTapes(GatewayARN => Str, [Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])
+=head2 DescribeTapes
+
+=over
+
+=item GatewayARN => Str
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+=item [TapeARNs => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeTapes>
 
@@ -1158,7 +1506,14 @@ of all virtual tapes associated with the specified gateway. This
 operation is only supported in the tape gateway type.
 
 
-=head2 DescribeUploadBuffer(GatewayARN => Str)
+=head2 DescribeUploadBuffer
+
+=over
+
+=item GatewayARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeUploadBuffer>
 
@@ -1173,7 +1528,20 @@ space, and it includes the amount of upload buffer space allocated and
 used.
 
 
-=head2 DescribeVTLDevices(GatewayARN => Str, [Limit => Int, Marker => Str, VTLDeviceARNs => ArrayRef[Str|Undef]])
+=head2 DescribeVTLDevices
+
+=over
+
+=item GatewayARN => Str
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+=item [VTLDeviceARNs => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeVTLDevices>
 
@@ -1186,7 +1554,14 @@ VTL device information.
 This operation is only supported in the tape gateway type.
 
 
-=head2 DescribeWorkingStorage(GatewayARN => Str)
+=head2 DescribeWorkingStorage
+
+=over
+
+=item GatewayARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeWorkingStorage>
 
@@ -1205,7 +1580,14 @@ The response includes disk IDs that are configured as working storage,
 and it includes the amount of working storage allocated and used.
 
 
-=head2 DisableGateway(GatewayARN => Str)
+=head2 DisableGateway
+
+=over
+
+=item GatewayARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::DisableGateway>
 
@@ -1221,7 +1603,18 @@ functioning. This operation is only supported in the tape gateway type.
 Once a gateway is disabled it cannot be enabled.
 
 
-=head2 ListFileShares([GatewayARN => Str, Limit => Int, Marker => Str])
+=head2 ListFileShares
+
+=over
+
+=item [GatewayARN => Str]
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::ListFileShares>
 
@@ -1232,7 +1625,16 @@ of file shares that belong to the calling user account. This operation
 is only supported in the file gateway type.
 
 
-=head2 ListGateways([Limit => Int, Marker => Str])
+=head2 ListGateways
+
+=over
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::ListGateways>
 
@@ -1252,7 +1654,14 @@ contains a marker that you can specify in your next request to fetch
 the next page of gateways.
 
 
-=head2 ListLocalDisks(GatewayARN => Str)
+=head2 ListLocalDisks
+
+=over
+
+=item GatewayARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::ListLocalDisks>
 
@@ -1271,7 +1680,18 @@ missing (the disk is no longer connected to the gateway), or mismatch
 disk content is corrupted).
 
 
-=head2 ListTagsForResource(ResourceARN => Str, [Limit => Int, Marker => Str])
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceARN => Str
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::ListTagsForResource>
 
@@ -1282,7 +1702,18 @@ operation is only supported in the cached volume, stored volume and
 tape gateway type.
 
 
-=head2 ListTapes([Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])
+=head2 ListTapes
+
+=over
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+=item [TapeARNs => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::ListTapes>
 
@@ -1302,7 +1733,14 @@ request to retrieve the next set of tapes. This operation is only
 supported in the tape gateway type.
 
 
-=head2 ListVolumeInitiators(VolumeARN => Str)
+=head2 ListVolumeInitiators
+
+=over
+
+=item VolumeARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::ListVolumeInitiators>
 
@@ -1314,7 +1752,14 @@ operation is only supported in the cached volume and stored volume
 gateway types.
 
 
-=head2 ListVolumeRecoveryPoints(GatewayARN => Str)
+=head2 ListVolumeRecoveryPoints
+
+=over
+
+=item GatewayARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::ListVolumeRecoveryPoints>
 
@@ -1330,7 +1775,18 @@ source volume. To create a snapshot from a volume recovery point use
 the CreateSnapshotFromVolumeRecoveryPoint operation.
 
 
-=head2 ListVolumes([GatewayARN => Str, Limit => Int, Marker => Str])
+=head2 ListVolumes
+
+=over
+
+=item [GatewayARN => Str]
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::ListVolumes>
 
@@ -1350,7 +1806,14 @@ subsequent request to retrieve the next set of volumes. This operation
 is only supported in the cached volume and stored volume gateway types.
 
 
-=head2 NotifyWhenUploaded(FileShareARN => Str)
+=head2 NotifyWhenUploaded
+
+=over
+
+=item FileShareARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::NotifyWhenUploaded>
 
@@ -1374,7 +1837,14 @@ Storage Gateway User Guide
 (https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-upload-notification).
 
 
-=head2 RefreshCache(FileShareARN => Str)
+=head2 RefreshCache
+
+=over
+
+=item FileShareARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::RefreshCache>
 
@@ -1386,7 +1856,16 @@ since the gateway last listed the bucket's contents and cached the
 results. This operation is only supported in the file gateway type.
 
 
-=head2 RemoveTagsFromResource(ResourceARN => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 RemoveTagsFromResource
+
+=over
+
+=item ResourceARN => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::RemoveTagsFromResource>
 
@@ -1397,7 +1876,14 @@ only supported in the cached volume, stored volume and tape gateway
 types.
 
 
-=head2 ResetCache(GatewayARN => Str)
+=head2 ResetCache
+
+=over
+
+=item GatewayARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::ResetCache>
 
@@ -1419,7 +1905,16 @@ you must configure at least one new cache disk for your gateway to
 function properly.
 
 
-=head2 RetrieveTapeArchive(GatewayARN => Str, TapeARN => Str)
+=head2 RetrieveTapeArchive
+
+=over
+
+=item GatewayARN => Str
+
+=item TapeARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::RetrieveTapeArchive>
 
@@ -1437,7 +1932,16 @@ before you can retrieve it to another gateway. This operation is only
 supported in the tape gateway type.
 
 
-=head2 RetrieveTapeRecoveryPoint(GatewayARN => Str, TapeARN => Str)
+=head2 RetrieveTapeRecoveryPoint
+
+=over
+
+=item GatewayARN => Str
+
+=item TapeARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::RetrieveTapeRecoveryPoint>
 
@@ -1455,7 +1959,16 @@ tape is read-only. The virtual tape can be retrieved to only a tape
 gateway. There is no charge for retrieving recovery points.
 
 
-=head2 SetLocalConsolePassword(GatewayARN => Str, LocalConsolePassword => Str)
+=head2 SetLocalConsolePassword
+
+=over
+
+=item GatewayARN => Str
+
+=item LocalConsolePassword => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::SetLocalConsolePassword>
 
@@ -1467,7 +1980,14 @@ credentials. We recommend that you set a new password. You don't need
 to know the default password to set a new password.
 
 
-=head2 ShutdownGateway(GatewayARN => Str)
+=head2 ShutdownGateway
+
+=over
+
+=item GatewayARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::ShutdownGateway>
 
@@ -1498,7 +2018,14 @@ If do not intend to use the gateway again, you must delete the gateway
 the gateway.
 
 
-=head2 StartGateway(GatewayARN => Str)
+=head2 StartGateway
+
+=over
+
+=item GatewayARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::StartGateway>
 
@@ -1519,7 +2046,18 @@ To specify which gateway to start, use the Amazon Resource Name (ARN)
 of the gateway in your request.
 
 
-=head2 UpdateBandwidthRateLimit(GatewayARN => Str, [AverageDownloadRateLimitInBitsPerSec => Int, AverageUploadRateLimitInBitsPerSec => Int])
+=head2 UpdateBandwidthRateLimit
+
+=over
+
+=item GatewayARN => Str
+
+=item [AverageDownloadRateLimitInBitsPerSec => Int]
+
+=item [AverageUploadRateLimitInBitsPerSec => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::UpdateBandwidthRateLimit>
 
@@ -1539,7 +2077,20 @@ To specify which gateway to update, use the Amazon Resource Name (ARN)
 of the gateway in your request.
 
 
-=head2 UpdateChapCredentials(InitiatorName => Str, SecretToAuthenticateInitiator => Str, TargetARN => Str, [SecretToAuthenticateTarget => Str])
+=head2 UpdateChapCredentials
+
+=over
+
+=item InitiatorName => Str
+
+=item SecretToAuthenticateInitiator => Str
+
+=item TargetARN => Str
+
+=item [SecretToAuthenticateTarget => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::UpdateChapCredentials>
 
@@ -1554,7 +2105,18 @@ target are closed and initiators must reconnect with the new
 credentials.
 
 
-=head2 UpdateGatewayInformation(GatewayARN => Str, [GatewayName => Str, GatewayTimezone => Str])
+=head2 UpdateGatewayInformation
+
+=over
+
+=item GatewayARN => Str
+
+=item [GatewayName => Str]
+
+=item [GatewayTimezone => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::UpdateGatewayInformation>
 
@@ -1569,7 +2131,14 @@ contains the gateway ID rather than the gateway name. However, changing
 the name of the gateway has no effect on the gateway's ARN.
 
 
-=head2 UpdateGatewaySoftwareNow(GatewayARN => Str)
+=head2 UpdateGatewaySoftwareNow
+
+=over
+
+=item GatewayARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::UpdateGatewaySoftwareNow>
 
@@ -1594,7 +2163,20 @@ and Customizing Your Linux iSCSI Settings
 respectively.
 
 
-=head2 UpdateMaintenanceStartTime(DayOfWeek => Int, GatewayARN => Str, HourOfDay => Int, MinuteOfHour => Int)
+=head2 UpdateMaintenanceStartTime
+
+=over
+
+=item DayOfWeek => Int
+
+=item GatewayARN => Str
+
+=item HourOfDay => Int
+
+=item MinuteOfHour => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::UpdateMaintenanceStartTime>
 
@@ -1605,7 +2187,34 @@ including day and time of the week. The maintenance time is the time in
 your gateway's time zone.
 
 
-=head2 UpdateNFSFileShare(FileShareARN => Str, [ClientList => ArrayRef[Str|Undef], DefaultStorageClass => Str, GuessMIMETypeEnabled => Bool, KMSEncrypted => Bool, KMSKey => Str, NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>, ObjectACL => Str, ReadOnly => Bool, RequesterPays => Bool, Squash => Str])
+=head2 UpdateNFSFileShare
+
+=over
+
+=item FileShareARN => Str
+
+=item [ClientList => ArrayRef[Str|Undef]]
+
+=item [DefaultStorageClass => Str]
+
+=item [GuessMIMETypeEnabled => Bool]
+
+=item [KMSEncrypted => Bool]
+
+=item [KMSKey => Str]
+
+=item [NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>]
+
+=item [ObjectACL => Str]
+
+=item [ReadOnly => Bool]
+
+=item [RequesterPays => Bool]
+
+=item [Squash => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::UpdateNFSFileShare>
 
@@ -1647,7 +2256,20 @@ To leave a file share field unchanged, set the corresponding input
 field to null. This operation is only supported in file gateways.
 
 
-=head2 UpdateSnapshotSchedule(RecurrenceInHours => Int, StartAt => Int, VolumeARN => Str, [Description => Str])
+=head2 UpdateSnapshotSchedule
+
+=over
+
+=item RecurrenceInHours => Int
+
+=item StartAt => Int
+
+=item VolumeARN => Str
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::UpdateSnapshotSchedule>
 
@@ -1667,7 +2289,16 @@ when you want the snapshot to begin on a day and the frequency (in
 hours) of snapshots.
 
 
-=head2 UpdateVTLDeviceType(DeviceType => Str, VTLDeviceARN => Str)
+=head2 UpdateVTLDeviceType
+
+=over
+
+=item DeviceType => Str
+
+=item VTLDeviceARN => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StorageGateway::UpdateVTLDeviceType>
 

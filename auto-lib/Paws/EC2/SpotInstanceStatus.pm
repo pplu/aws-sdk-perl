@@ -42,7 +42,7 @@ This class has no description
 
   The status code. For a list of status codes, see Spot Status Codes
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html#spot-instance-bid-status-understand)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 
 =head2 Message => Str

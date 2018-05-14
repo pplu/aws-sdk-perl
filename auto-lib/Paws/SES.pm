@@ -455,7 +455,16 @@ the Amazon SES Developer Guide
 
 =head1 METHODS
 
-=head2 CloneReceiptRuleSet(OriginalRuleSetName => Str, RuleSetName => Str)
+=head2 CloneReceiptRuleSet
+
+=over
+
+=item OriginalRuleSetName => Str
+
+=item RuleSetName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::CloneReceiptRuleSet>
 
@@ -472,7 +481,14 @@ Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 CreateConfigurationSet(ConfigurationSet => L<Paws::SES::ConfigurationSet>)
+=head2 CreateConfigurationSet
+
+=over
+
+=item ConfigurationSet => L<Paws::SES::ConfigurationSet>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::CreateConfigurationSet>
 
@@ -488,7 +504,16 @@ Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 CreateConfigurationSetEventDestination(ConfigurationSetName => Str, EventDestination => L<Paws::SES::EventDestination>)
+=head2 CreateConfigurationSetEventDestination
+
+=over
+
+=item ConfigurationSetName => Str
+
+=item EventDestination => L<Paws::SES::EventDestination>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::CreateConfigurationSetEventDestination>
 
@@ -510,7 +535,16 @@ Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 CreateConfigurationSetTrackingOptions(ConfigurationSetName => Str, TrackingOptions => L<Paws::SES::TrackingOptions>)
+=head2 CreateConfigurationSetTrackingOptions
+
+=over
+
+=item ConfigurationSetName => Str
+
+=item TrackingOptions => L<Paws::SES::TrackingOptions>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::CreateConfigurationSetTrackingOptions>
 
@@ -529,7 +563,24 @@ in the Amazon SES Developer Guide
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
 
 
-=head2 CreateCustomVerificationEmailTemplate(FailureRedirectionURL => Str, FromEmailAddress => Str, SuccessRedirectionURL => Str, TemplateContent => Str, TemplateName => Str, TemplateSubject => Str)
+=head2 CreateCustomVerificationEmailTemplate
+
+=over
+
+=item FailureRedirectionURL => Str
+
+=item FromEmailAddress => Str
+
+=item SuccessRedirectionURL => Str
+
+=item TemplateContent => Str
+
+=item TemplateName => Str
+
+=item TemplateSubject => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::CreateCustomVerificationEmailTemplate>
 
@@ -545,7 +596,14 @@ in the I<Amazon SES Developer Guide>.
 You can execute this operation no more than once per second.
 
 
-=head2 CreateReceiptFilter(Filter => L<Paws::SES::ReceiptFilter>)
+=head2 CreateReceiptFilter
+
+=over
+
+=item Filter => L<Paws::SES::ReceiptFilter>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::CreateReceiptFilter>
 
@@ -560,7 +618,18 @@ Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 CreateReceiptRule(Rule => L<Paws::SES::ReceiptRule>, RuleSetName => Str, [After => Str])
+=head2 CreateReceiptRule
+
+=over
+
+=item Rule => L<Paws::SES::ReceiptRule>
+
+=item RuleSetName => Str
+
+=item [After => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::CreateReceiptRule>
 
@@ -575,7 +644,14 @@ Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 CreateReceiptRuleSet(RuleSetName => Str)
+=head2 CreateReceiptRuleSet
+
+=over
+
+=item RuleSetName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::CreateReceiptRuleSet>
 
@@ -590,7 +666,14 @@ Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 CreateTemplate(Template => L<Paws::SES::Template>)
+=head2 CreateTemplate
+
+=over
+
+=item Template => L<Paws::SES::Template>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::CreateTemplate>
 
@@ -604,7 +687,14 @@ operation. For more information, see the Amazon SES Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 DeleteConfigurationSet(ConfigurationSetName => Str)
+=head2 DeleteConfigurationSet
+
+=over
+
+=item ConfigurationSetName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::DeleteConfigurationSet>
 
@@ -618,7 +708,16 @@ see the Amazon SES Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 DeleteConfigurationSetEventDestination(ConfigurationSetName => Str, EventDestinationName => Str)
+=head2 DeleteConfigurationSetEventDestination
+
+=over
+
+=item ConfigurationSetName => Str
+
+=item EventDestinationName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::DeleteConfigurationSetEventDestination>
 
@@ -633,7 +732,14 @@ configuration sets, see the Amazon SES Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 DeleteConfigurationSetTrackingOptions(ConfigurationSetName => Str)
+=head2 DeleteConfigurationSetTrackingOptions
+
+=over
+
+=item ConfigurationSetName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::DeleteConfigurationSetTrackingOptions>
 
@@ -656,7 +762,14 @@ specified configuration set to capture open and click events using the
 standard, Amazon SES-operated domains.
 
 
-=head2 DeleteCustomVerificationEmailTemplate(TemplateName => Str)
+=head2 DeleteCustomVerificationEmailTemplate
+
+=over
+
+=item TemplateName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::DeleteCustomVerificationEmailTemplate>
 
@@ -672,7 +785,14 @@ in the I<Amazon SES Developer Guide>.
 You can execute this operation no more than once per second.
 
 
-=head2 DeleteIdentity(Identity => Str)
+=head2 DeleteIdentity
+
+=over
+
+=item Identity => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::DeleteIdentity>
 
@@ -684,7 +804,16 @@ list of verified identities.
 You can execute this operation no more than once per second.
 
 
-=head2 DeleteIdentityPolicy(Identity => Str, PolicyName => Str)
+=head2 DeleteIdentityPolicy
+
+=over
+
+=item Identity => Str
+
+=item PolicyName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::DeleteIdentityPolicy>
 
@@ -705,7 +834,14 @@ using sending authorization, see the Amazon SES Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 DeleteReceiptFilter(FilterName => Str)
+=head2 DeleteReceiptFilter
+
+=over
+
+=item FilterName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::DeleteReceiptFilter>
 
@@ -720,7 +856,16 @@ Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 DeleteReceiptRule(RuleName => Str, RuleSetName => Str)
+=head2 DeleteReceiptRule
+
+=over
+
+=item RuleName => Str
+
+=item RuleSetName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::DeleteReceiptRule>
 
@@ -735,7 +880,14 @@ Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 DeleteReceiptRuleSet(RuleSetName => Str)
+=head2 DeleteReceiptRuleSet
+
+=over
+
+=item RuleSetName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::DeleteReceiptRuleSet>
 
@@ -753,7 +905,14 @@ Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 DeleteTemplate(TemplateName => Str)
+=head2 DeleteTemplate
+
+=over
+
+=item TemplateName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::DeleteTemplate>
 
@@ -764,7 +923,14 @@ Deletes an email template.
 You can execute this operation no more than once per second.
 
 
-=head2 DeleteVerifiedEmailAddress(EmailAddress => Str)
+=head2 DeleteVerifiedEmailAddress
+
+=over
+
+=item EmailAddress => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::DeleteVerifiedEmailAddress>
 
@@ -774,7 +940,12 @@ Deprecated. Use the C<DeleteIdentity> operation to delete email
 addresses and domains.
 
 
-=head2 DescribeActiveReceiptRuleSet()
+=head2 DescribeActiveReceiptRuleSet
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::SES::DescribeActiveReceiptRuleSet>
 
@@ -790,7 +961,16 @@ Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 DescribeConfigurationSet(ConfigurationSetName => Str, [ConfigurationSetAttributeNames => ArrayRef[Str|Undef]])
+=head2 DescribeConfigurationSet
+
+=over
+
+=item ConfigurationSetName => Str
+
+=item [ConfigurationSetAttributeNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::DescribeConfigurationSet>
 
@@ -803,7 +983,16 @@ about using configuration sets, see the Amazon SES Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 DescribeReceiptRule(RuleName => Str, RuleSetName => Str)
+=head2 DescribeReceiptRule
+
+=over
+
+=item RuleName => Str
+
+=item RuleSetName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::DescribeReceiptRule>
 
@@ -818,7 +1007,14 @@ Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 DescribeReceiptRuleSet(RuleSetName => Str)
+=head2 DescribeReceiptRuleSet
+
+=over
+
+=item RuleSetName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::DescribeReceiptRuleSet>
 
@@ -833,7 +1029,14 @@ Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 GetAccountSendingEnabled( => )
+=head2 GetAccountSendingEnabled
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::GetAccountSendingEnabled>
 
@@ -844,7 +1047,14 @@ Returns the email sending status of the Amazon SES account.
 You can execute this operation no more than once per second.
 
 
-=head2 GetCustomVerificationEmailTemplate(TemplateName => Str)
+=head2 GetCustomVerificationEmailTemplate
+
+=over
+
+=item TemplateName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::GetCustomVerificationEmailTemplate>
 
@@ -861,7 +1071,14 @@ in the I<Amazon SES Developer Guide>.
 You can execute this operation no more than once per second.
 
 
-=head2 GetIdentityDkimAttributes(Identities => ArrayRef[Str|Undef])
+=head2 GetIdentityDkimAttributes
+
+=over
+
+=item Identities => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::GetIdentityDkimAttributes>
 
@@ -902,7 +1119,14 @@ to the Amazon SES Developer Guide
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html).
 
 
-=head2 GetIdentityMailFromDomainAttributes(Identities => ArrayRef[Str|Undef])
+=head2 GetIdentityMailFromDomainAttributes
+
+=over
+
+=item Identities => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::GetIdentityMailFromDomainAttributes>
 
@@ -915,7 +1139,14 @@ This operation is throttled at one request per second and can only get
 custom MAIL FROM attributes for up to 100 identities at a time.
 
 
-=head2 GetIdentityNotificationAttributes(Identities => ArrayRef[Str|Undef])
+=head2 GetIdentityNotificationAttributes
+
+=over
+
+=item Identities => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::GetIdentityNotificationAttributes>
 
@@ -932,7 +1163,16 @@ Amazon SES Developer Guide
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).
 
 
-=head2 GetIdentityPolicies(Identity => Str, PolicyNames => ArrayRef[Str|Undef])
+=head2 GetIdentityPolicies
+
+=over
+
+=item Identity => Str
+
+=item PolicyNames => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::GetIdentityPolicies>
 
@@ -954,7 +1194,14 @@ using sending authorization, see the Amazon SES Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 GetIdentityVerificationAttributes(Identities => ArrayRef[Str|Undef])
+=head2 GetIdentityVerificationAttributes
+
+=over
+
+=item Identities => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::GetIdentityVerificationAttributes>
 
@@ -985,7 +1232,14 @@ This operation is throttled at one request per second and can only get
 verification attributes for up to 100 identities at a time.
 
 
-=head2 GetSendQuota( => )
+=head2 GetSendQuota
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::GetSendQuota>
 
@@ -996,7 +1250,14 @@ Provides the sending limits for the Amazon SES account.
 You can execute this operation no more than once per second.
 
 
-=head2 GetSendStatistics( => )
+=head2 GetSendStatistics
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::GetSendStatistics>
 
@@ -1010,7 +1271,14 @@ activity. Each data point in the list contains statistics for a
 You can execute this operation no more than once per second.
 
 
-=head2 GetTemplate(TemplateName => Str)
+=head2 GetTemplate
+
+=over
+
+=item TemplateName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::GetTemplate>
 
@@ -1022,7 +1290,16 @@ part and text part) for the template you specify.
 You can execute this operation no more than once per second.
 
 
-=head2 ListConfigurationSets([MaxItems => Int, NextToken => Str])
+=head2 ListConfigurationSets
+
+=over
+
+=item [MaxItems => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::ListConfigurationSets>
 
@@ -1043,7 +1320,16 @@ C<NextToken> parameter and the value of the NextToken element to
 retrieve additional results.
 
 
-=head2 ListCustomVerificationEmailTemplates([MaxResults => Int, NextToken => Str])
+=head2 ListCustomVerificationEmailTemplates
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::ListCustomVerificationEmailTemplates>
 
@@ -1060,7 +1346,18 @@ in the I<Amazon SES Developer Guide>.
 You can execute this operation no more than once per second.
 
 
-=head2 ListIdentities([IdentityType => Str, MaxItems => Int, NextToken => Str])
+=head2 ListIdentities
+
+=over
+
+=item [IdentityType => Str]
+
+=item [MaxItems => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::ListIdentities>
 
@@ -1072,7 +1369,14 @@ domains) for your AWS account, regardless of verification status.
 You can execute this operation no more than once per second.
 
 
-=head2 ListIdentityPolicies(Identity => Str)
+=head2 ListIdentityPolicies
+
+=over
+
+=item Identity => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::ListIdentityPolicies>
 
@@ -1094,7 +1398,12 @@ using sending authorization, see the Amazon SES Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 ListReceiptFilters()
+=head2 ListReceiptFilters
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::SES::ListReceiptFilters>
 
@@ -1109,7 +1418,14 @@ Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 ListReceiptRuleSets([NextToken => Str])
+=head2 ListReceiptRuleSets
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::ListReceiptRuleSets>
 
@@ -1127,7 +1443,16 @@ Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 ListTemplates([MaxItems => Int, NextToken => Str])
+=head2 ListTemplates
+
+=over
+
+=item [MaxItems => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::ListTemplates>
 
@@ -1138,7 +1463,14 @@ Lists the email templates present in your Amazon SES account.
 You can execute this operation no more than once per second.
 
 
-=head2 ListVerifiedEmailAddresses( => )
+=head2 ListVerifiedEmailAddresses
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::ListVerifiedEmailAddresses>
 
@@ -1148,7 +1480,18 @@ Deprecated. Use the C<ListIdentities> operation to list the email
 addresses and domains associated with your account.
 
 
-=head2 PutIdentityPolicy(Identity => Str, Policy => Str, PolicyName => Str)
+=head2 PutIdentityPolicy
+
+=over
+
+=item Identity => Str
+
+=item Policy => Str
+
+=item PolicyName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::PutIdentityPolicy>
 
@@ -1168,7 +1511,16 @@ using sending authorization, see the Amazon SES Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 ReorderReceiptRuleSet(RuleNames => ArrayRef[Str|Undef], RuleSetName => Str)
+=head2 ReorderReceiptRuleSet
+
+=over
+
+=item RuleNames => ArrayRef[Str|Undef]
+
+=item RuleSetName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::ReorderReceiptRuleSet>
 
@@ -1187,7 +1539,24 @@ Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 SendBounce(BouncedRecipientInfoList => ArrayRef[L<Paws::SES::BouncedRecipientInfo>], BounceSender => Str, OriginalMessageId => Str, [BounceSenderArn => Str, Explanation => Str, MessageDsn => L<Paws::SES::MessageDsn>])
+=head2 SendBounce
+
+=over
+
+=item BouncedRecipientInfoList => ArrayRef[L<Paws::SES::BouncedRecipientInfo>]
+
+=item BounceSender => Str
+
+=item OriginalMessageId => Str
+
+=item [BounceSenderArn => Str]
+
+=item [Explanation => Str]
+
+=item [MessageDsn => L<Paws::SES::MessageDsn>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::SendBounce>
 
@@ -1207,7 +1576,34 @@ Amazon SES Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 SendBulkTemplatedEmail(Destinations => ArrayRef[L<Paws::SES::BulkEmailDestination>], Source => Str, Template => Str, [ConfigurationSetName => Str, DefaultTags => ArrayRef[L<Paws::SES::MessageTag>], DefaultTemplateData => Str, ReplyToAddresses => ArrayRef[Str|Undef], ReturnPath => Str, ReturnPathArn => Str, SourceArn => Str, TemplateArn => Str])
+=head2 SendBulkTemplatedEmail
+
+=over
+
+=item Destinations => ArrayRef[L<Paws::SES::BulkEmailDestination>]
+
+=item Source => Str
+
+=item Template => Str
+
+=item [ConfigurationSetName => Str]
+
+=item [DefaultTags => ArrayRef[L<Paws::SES::MessageTag>]]
+
+=item [DefaultTemplateData => Str]
+
+=item [ReplyToAddresses => ArrayRef[Str|Undef]]
+
+=item [ReturnPath => Str]
+
+=item [ReturnPathArn => Str]
+
+=item [SourceArn => Str]
+
+=item [TemplateArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::SendBulkTemplatedEmail>
 
@@ -1257,7 +1653,18 @@ recipients that are valid.
 
 
 
-=head2 SendCustomVerificationEmail(EmailAddress => Str, TemplateName => Str, [ConfigurationSetName => Str])
+=head2 SendCustomVerificationEmail
+
+=over
+
+=item EmailAddress => Str
+
+=item TemplateName => Str
+
+=item [ConfigurationSetName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::SendCustomVerificationEmail>
 
@@ -1278,7 +1685,30 @@ in the I<Amazon SES Developer Guide>.
 You can execute this operation no more than once per second.
 
 
-=head2 SendEmail(Destination => L<Paws::SES::Destination>, Message => L<Paws::SES::Message>, Source => Str, [ConfigurationSetName => Str, ReplyToAddresses => ArrayRef[Str|Undef], ReturnPath => Str, ReturnPathArn => Str, SourceArn => Str, Tags => ArrayRef[L<Paws::SES::MessageTag>]])
+=head2 SendEmail
+
+=over
+
+=item Destination => L<Paws::SES::Destination>
+
+=item Message => L<Paws::SES::Message>
+
+=item Source => Str
+
+=item [ConfigurationSetName => Str]
+
+=item [ReplyToAddresses => ArrayRef[Str|Undef]]
+
+=item [ReturnPath => Str]
+
+=item [ReturnPathArn => Str]
+
+=item [SourceArn => Str]
+
+=item [Tags => ArrayRef[L<Paws::SES::MessageTag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::SendEmail>
 
@@ -1338,7 +1768,28 @@ Amazon SES, see Managing Your Amazon SES Sending Limits
 in the I<Amazon SES Developer Guide.>
 
 
-=head2 SendRawEmail(RawMessage => L<Paws::SES::RawMessage>, [ConfigurationSetName => Str, Destinations => ArrayRef[Str|Undef], FromArn => Str, ReturnPathArn => Str, Source => Str, SourceArn => Str, Tags => ArrayRef[L<Paws::SES::MessageTag>]])
+=head2 SendRawEmail
+
+=over
+
+=item RawMessage => L<Paws::SES::RawMessage>
+
+=item [ConfigurationSetName => Str]
+
+=item [Destinations => ArrayRef[Str|Undef]]
+
+=item [FromArn => Str]
+
+=item [ReturnPathArn => Str]
+
+=item [Source => Str]
+
+=item [SourceArn => Str]
+
+=item [Tags => ArrayRef[L<Paws::SES::MessageTag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::SendRawEmail>
 
@@ -1457,7 +1908,34 @@ in the I<Amazon SES Developer Guide.>
 
 
 
-=head2 SendTemplatedEmail(Destination => L<Paws::SES::Destination>, Source => Str, Template => Str, TemplateData => Str, [ConfigurationSetName => Str, ReplyToAddresses => ArrayRef[Str|Undef], ReturnPath => Str, ReturnPathArn => Str, SourceArn => Str, Tags => ArrayRef[L<Paws::SES::MessageTag>], TemplateArn => Str])
+=head2 SendTemplatedEmail
+
+=over
+
+=item Destination => L<Paws::SES::Destination>
+
+=item Source => Str
+
+=item Template => Str
+
+=item TemplateData => Str
+
+=item [ConfigurationSetName => Str]
+
+=item [ReplyToAddresses => ArrayRef[Str|Undef]]
+
+=item [ReturnPath => Str]
+
+=item [ReturnPathArn => Str]
+
+=item [SourceArn => Str]
+
+=item [Tags => ArrayRef[L<Paws::SES::MessageTag>]]
+
+=item [TemplateArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::SendTemplatedEmail>
 
@@ -1514,7 +1992,14 @@ recipients that are valid.
 
 
 
-=head2 SetActiveReceiptRuleSet([RuleSetName => Str])
+=head2 SetActiveReceiptRuleSet
+
+=over
+
+=item [RuleSetName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::SetActiveReceiptRuleSet>
 
@@ -1532,7 +2017,16 @@ Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 SetIdentityDkimEnabled(DkimEnabled => Bool, Identity => Str)
+=head2 SetIdentityDkimEnabled
+
+=over
+
+=item DkimEnabled => Bool
+
+=item Identity => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::SetIdentityDkimEnabled>
 
@@ -1567,7 +2061,16 @@ Developer Guide
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html).
 
 
-=head2 SetIdentityFeedbackForwardingEnabled(ForwardingEnabled => Bool, Identity => Str)
+=head2 SetIdentityFeedbackForwardingEnabled
+
+=over
+
+=item ForwardingEnabled => Bool
+
+=item Identity => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::SetIdentityFeedbackForwardingEnabled>
 
@@ -1589,7 +2092,18 @@ Amazon SES Developer Guide
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).
 
 
-=head2 SetIdentityHeadersInNotificationsEnabled(Enabled => Bool, Identity => Str, NotificationType => Str)
+=head2 SetIdentityHeadersInNotificationsEnabled
+
+=over
+
+=item Enabled => Bool
+
+=item Identity => Str
+
+=item NotificationType => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::SetIdentityHeadersInNotificationsEnabled>
 
@@ -1606,7 +2120,18 @@ Amazon SES Developer Guide
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).
 
 
-=head2 SetIdentityMailFromDomain(Identity => Str, [BehaviorOnMXFailure => Str, MailFromDomain => Str])
+=head2 SetIdentityMailFromDomain
+
+=over
+
+=item Identity => Str
+
+=item [BehaviorOnMXFailure => Str]
+
+=item [MailFromDomain => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::SetIdentityMailFromDomain>
 
@@ -1625,7 +2150,18 @@ Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 SetIdentityNotificationTopic(Identity => Str, NotificationType => Str, [SnsTopic => Str])
+=head2 SetIdentityNotificationTopic
+
+=over
+
+=item Identity => Str
+
+=item NotificationType => Str
+
+=item [SnsTopic => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::SetIdentityNotificationTopic>
 
@@ -1647,7 +2183,18 @@ Developer Guide
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).
 
 
-=head2 SetReceiptRulePosition(RuleName => Str, RuleSetName => Str, [After => Str])
+=head2 SetReceiptRulePosition
+
+=over
+
+=item RuleName => Str
+
+=item RuleSetName => Str
+
+=item [After => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::SetReceiptRulePosition>
 
@@ -1663,7 +2210,16 @@ Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 TestRenderTemplate(TemplateData => Str, TemplateName => Str)
+=head2 TestRenderTemplate
+
+=over
+
+=item TemplateData => Str
+
+=item TemplateName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::TestRenderTemplate>
 
@@ -1675,7 +2231,14 @@ template and a set of replacement data.
 You can execute this operation no more than once per second.
 
 
-=head2 UpdateAccountSendingEnabled([Enabled => Bool])
+=head2 UpdateAccountSendingEnabled
+
+=over
+
+=item [Enabled => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::UpdateAccountSendingEnabled>
 
@@ -1690,7 +2253,16 @@ rate) reach certain thresholds.
 You can execute this operation no more than once per second.
 
 
-=head2 UpdateConfigurationSetEventDestination(ConfigurationSetName => Str, EventDestination => L<Paws::SES::EventDestination>)
+=head2 UpdateConfigurationSetEventDestination
+
+=over
+
+=item ConfigurationSetName => Str
+
+=item EventDestination => L<Paws::SES::EventDestination>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::UpdateConfigurationSetEventDestination>
 
@@ -1713,7 +2285,16 @@ SNS).
 You can execute this operation no more than once per second.
 
 
-=head2 UpdateConfigurationSetReputationMetricsEnabled(ConfigurationSetName => Str, Enabled => Bool)
+=head2 UpdateConfigurationSetReputationMetricsEnabled
+
+=over
+
+=item ConfigurationSetName => Str
+
+=item Enabled => Bool
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::UpdateConfigurationSetReputationMetricsEnabled>
 
@@ -1728,7 +2309,16 @@ bounce or complaint rates exceed a certain threshold.
 You can execute this operation no more than once per second.
 
 
-=head2 UpdateConfigurationSetSendingEnabled(ConfigurationSetName => Str, Enabled => Bool)
+=head2 UpdateConfigurationSetSendingEnabled
+
+=over
+
+=item ConfigurationSetName => Str
+
+=item Enabled => Bool
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::UpdateConfigurationSetSendingEnabled>
 
@@ -1743,7 +2333,16 @@ set (such as your bounce on complaint rate) reach certain thresholds.
 You can execute this operation no more than once per second.
 
 
-=head2 UpdateConfigurationSetTrackingOptions(ConfigurationSetName => Str, TrackingOptions => L<Paws::SES::TrackingOptions>)
+=head2 UpdateConfigurationSetTrackingOptions
+
+=over
+
+=item ConfigurationSetName => Str
+
+=item TrackingOptions => L<Paws::SES::TrackingOptions>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::UpdateConfigurationSetTrackingOptions>
 
@@ -1762,7 +2361,24 @@ in the Amazon SES Developer Guide
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
 
 
-=head2 UpdateCustomVerificationEmailTemplate(TemplateName => Str, [FailureRedirectionURL => Str, FromEmailAddress => Str, SuccessRedirectionURL => Str, TemplateContent => Str, TemplateSubject => Str])
+=head2 UpdateCustomVerificationEmailTemplate
+
+=over
+
+=item TemplateName => Str
+
+=item [FailureRedirectionURL => Str]
+
+=item [FromEmailAddress => Str]
+
+=item [SuccessRedirectionURL => Str]
+
+=item [TemplateContent => Str]
+
+=item [TemplateSubject => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::UpdateCustomVerificationEmailTemplate>
 
@@ -1778,7 +2394,16 @@ in the I<Amazon SES Developer Guide>.
 You can execute this operation no more than once per second.
 
 
-=head2 UpdateReceiptRule(Rule => L<Paws::SES::ReceiptRule>, RuleSetName => Str)
+=head2 UpdateReceiptRule
+
+=over
+
+=item Rule => L<Paws::SES::ReceiptRule>
+
+=item RuleSetName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::UpdateReceiptRule>
 
@@ -1793,7 +2418,14 @@ Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 UpdateTemplate(Template => L<Paws::SES::Template>)
+=head2 UpdateTemplate
+
+=over
+
+=item Template => L<Paws::SES::Template>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::UpdateTemplate>
 
@@ -1807,7 +2439,14 @@ operation. For more information, see the Amazon SES Developer Guide
 You can execute this operation no more than once per second.
 
 
-=head2 VerifyDomainDkim(Domain => Str)
+=head2 VerifyDomainDkim
+
+=over
+
+=item Domain => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::VerifyDomainDkim>
 
@@ -1831,7 +2470,14 @@ to the Amazon SES Developer Guide
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html).
 
 
-=head2 VerifyDomainIdentity(Domain => Str)
+=head2 VerifyDomainIdentity
+
+=over
+
+=item Domain => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::VerifyDomainIdentity>
 
@@ -1846,7 +2492,14 @@ in the I<Amazon SES Developer Guide.>
 You can execute this operation no more than once per second.
 
 
-=head2 VerifyEmailAddress(EmailAddress => Str)
+=head2 VerifyEmailAddress
+
+=over
+
+=item EmailAddress => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::VerifyEmailAddress>
 
@@ -1856,7 +2509,14 @@ Deprecated. Use the C<VerifyEmailIdentity> operation to verify a new
 email address.
 
 
-=head2 VerifyEmailIdentity(EmailAddress => Str)
+=head2 VerifyEmailIdentity
+
+=over
+
+=item EmailAddress => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SES::VerifyEmailIdentity>
 

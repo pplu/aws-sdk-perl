@@ -237,7 +237,20 @@ healthy records.
 
 =head1 METHODS
 
-=head2 CreatePrivateDnsNamespace(Name => Str, Vpc => Str, [CreatorRequestId => Str, Description => Str])
+=head2 CreatePrivateDnsNamespace
+
+=over
+
+=item Name => Str
+
+=item Vpc => Str
+
+=item [CreatorRequestId => Str]
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServiceDiscovery::CreatePrivateDnsNamespace>
 
@@ -254,7 +267,18 @@ see Limits on Auto Naming
 in the I<Route 53 Developer Guide>.
 
 
-=head2 CreatePublicDnsNamespace(Name => Str, [CreatorRequestId => Str, Description => Str])
+=head2 CreatePublicDnsNamespace
+
+=over
+
+=item Name => Str
+
+=item [CreatorRequestId => Str]
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServiceDiscovery::CreatePublicDnsNamespace>
 
@@ -271,7 +295,24 @@ on Auto Naming
 in the I<Route 53 Developer Guide>.
 
 
-=head2 CreateService(DnsConfig => L<Paws::ServiceDiscovery::DnsConfig>, Name => Str, [CreatorRequestId => Str, Description => Str, HealthCheckConfig => L<Paws::ServiceDiscovery::HealthCheckConfig>, HealthCheckCustomConfig => L<Paws::ServiceDiscovery::HealthCheckCustomConfig>])
+=head2 CreateService
+
+=over
+
+=item DnsConfig => L<Paws::ServiceDiscovery::DnsConfig>
+
+=item Name => Str
+
+=item [CreatorRequestId => Str]
+
+=item [Description => Str]
+
+=item [HealthCheckConfig => L<Paws::ServiceDiscovery::HealthCheckConfig>]
+
+=item [HealthCheckCustomConfig => L<Paws::ServiceDiscovery::HealthCheckCustomConfig>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServiceDiscovery::CreateService>
 
@@ -303,7 +344,14 @@ Naming
 in the I<Route 53 Developer Guide>.
 
 
-=head2 DeleteNamespace(Id => Str)
+=head2 DeleteNamespace
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServiceDiscovery::DeleteNamespace>
 
@@ -313,7 +361,14 @@ Deletes a namespace from the current account. If the namespace still
 contains one or more services, the request fails.
 
 
-=head2 DeleteService(Id => Str)
+=head2 DeleteService
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServiceDiscovery::DeleteService>
 
@@ -323,7 +378,16 @@ Deletes a specified service. If the service still contains one or more
 registered instances, the request fails.
 
 
-=head2 DeregisterInstance(InstanceId => Str, ServiceId => Str)
+=head2 DeregisterInstance
+
+=over
+
+=item InstanceId => Str
+
+=item ServiceId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServiceDiscovery::DeregisterInstance>
 
@@ -333,7 +397,16 @@ Deletes the records and the health check, if any, that Amazon Route 53
 created for the specified instance.
 
 
-=head2 GetInstance(InstanceId => Str, ServiceId => Str)
+=head2 GetInstance
+
+=over
+
+=item InstanceId => Str
+
+=item ServiceId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServiceDiscovery::GetInstance>
 
@@ -342,7 +415,20 @@ Returns: a L<Paws::ServiceDiscovery::GetInstanceResponse> instance
 Gets information about a specified instance.
 
 
-=head2 GetInstancesHealthStatus(ServiceId => Str, [Instances => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 GetInstancesHealthStatus
+
+=over
+
+=item ServiceId => Str
+
+=item [Instances => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServiceDiscovery::GetInstancesHealthStatus>
 
@@ -356,7 +442,14 @@ There is a brief delay between when you register an instance and when
 the health status for the instance is available.
 
 
-=head2 GetNamespace(Id => Str)
+=head2 GetNamespace
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServiceDiscovery::GetNamespace>
 
@@ -365,7 +458,14 @@ Returns: a L<Paws::ServiceDiscovery::GetNamespaceResponse> instance
 Gets information about a namespace.
 
 
-=head2 GetOperation(OperationId => Str)
+=head2 GetOperation
+
+=over
+
+=item OperationId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServiceDiscovery::GetOperation>
 
@@ -378,7 +478,14 @@ To get a list of operations that match specified criteria, see
 ListOperations.
 
 
-=head2 GetService(Id => Str)
+=head2 GetService
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServiceDiscovery::GetService>
 
@@ -387,7 +494,18 @@ Returns: a L<Paws::ServiceDiscovery::GetServiceResponse> instance
 Gets the settings for a specified service.
 
 
-=head2 ListInstances(ServiceId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListInstances
+
+=over
+
+=item ServiceId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServiceDiscovery::ListInstances>
 
@@ -397,7 +515,18 @@ Lists summary information about the instances that you registered by
 using a specified service.
 
 
-=head2 ListNamespaces([Filters => ArrayRef[L<Paws::ServiceDiscovery::NamespaceFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListNamespaces
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::ServiceDiscovery::NamespaceFilter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServiceDiscovery::ListNamespaces>
 
@@ -407,7 +536,18 @@ Lists summary information about the namespaces that were created by the
 current AWS account.
 
 
-=head2 ListOperations([Filters => ArrayRef[L<Paws::ServiceDiscovery::OperationFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListOperations
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::ServiceDiscovery::OperationFilter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServiceDiscovery::ListOperations>
 
@@ -416,7 +556,18 @@ Returns: a L<Paws::ServiceDiscovery::ListOperationsResponse> instance
 Lists operations that match the criteria that you specify.
 
 
-=head2 ListServices([Filters => ArrayRef[L<Paws::ServiceDiscovery::ServiceFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListServices
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::ServiceDiscovery::ServiceFilter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServiceDiscovery::ListServices>
 
@@ -426,7 +577,20 @@ Lists summary information for all the services that are associated with
 one or more specified namespaces.
 
 
-=head2 RegisterInstance(Attributes => L<Paws::ServiceDiscovery::Attributes>, InstanceId => Str, ServiceId => Str, [CreatorRequestId => Str])
+=head2 RegisterInstance
+
+=over
+
+=item Attributes => L<Paws::ServiceDiscovery::Attributes>
+
+=item InstanceId => Str
+
+=item ServiceId => Str
+
+=item [CreatorRequestId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServiceDiscovery::RegisterInstance>
 
@@ -488,7 +652,18 @@ Naming
 in the I<Route 53 Developer Guide>.
 
 
-=head2 UpdateInstanceCustomHealthStatus(InstanceId => Str, ServiceId => Str, Status => Str)
+=head2 UpdateInstanceCustomHealthStatus
+
+=over
+
+=item InstanceId => Str
+
+=item ServiceId => Str
+
+=item Status => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServiceDiscovery::UpdateInstanceCustomHealthStatus>
 
@@ -497,7 +672,16 @@ Returns: nothing
 
 
 
-=head2 UpdateService(Id => Str, Service => L<Paws::ServiceDiscovery::ServiceChange>)
+=head2 UpdateService
+
+=over
+
+=item Id => Str
+
+=item Service => L<Paws::ServiceDiscovery::ServiceChange>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ServiceDiscovery::UpdateService>
 

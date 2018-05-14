@@ -42,10 +42,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 CertificateAuthorityArn => Str
 
 The Amazon Resource Name (ARN) of the private certificate authority
-(CA) that will be used to issue the certificate. For more information
-about private CAs, see the AWS Certificate Manager Private Certificate
+(CA) that will be used to issue the certificate. If you do not provide
+an ARN and you are trying to request a private certificate, ACM will
+attempt to issue a public certificate. For more information about
+private CAs, see the AWS Certificate Manager Private Certificate
 Authority (PCA)
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm-pca/latest/userguide/PcaWelcome.html)
+(http://docs.aws.amazon.com/acm-pca/latest/userguide/PcaWelcome.html)
 user guide. The ARN must have the following form:
 
 C<arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012>
@@ -54,11 +56,11 @@ C<arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-1
 
 =head2 B<REQUIRED> DomainName => Str
 
-Fully qualified domain name (FQDN), such as www.example.com, of the
-site that you want to secure with an ACM Certificate. Use an asterisk
-(*) to create a wildcard certificate that protects several sites in the
-same domain. For example, *.example.com protects www.example.com,
-site.example.com, and images.example.com.
+Fully qualified domain name (FQDN), such as www.example.com, that you
+want to secure with an ACM certificate. Use an asterisk (*) to create a
+wildcard certificate that protects several sites in the same domain.
+For example, *.example.com protects www.example.com, site.example.com,
+and images.example.com.
 
 The first domain name you enter cannot exceed 63 octets, including
 periods. Each subsequent Subject Alternative Name (SAN), however, can
@@ -93,7 +95,7 @@ makes it possible to detect SSL/TLS certificates that have been
 mistakenly or maliciously issued. Certificates that have not been
 logged typically produce an error message in a browser. For more
 information, see Opting Out of Certificate Transparency Logging
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
+(http://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
 
 
 
@@ -107,7 +109,7 @@ maximum number of domain names that you can add to an ACM certificate
 is 100. However, the initial limit is 10 domain names. If you need more
 than 10 names, you must request a limit increase. For more information,
 see Limits
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/acm-limits.html).
+(http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html).
 
 The maximum length of a SAN DNS name is 253 octets. The name is made up
 of multiple labels separated by periods. No label can be longer than 63
@@ -140,11 +142,11 @@ octets.
 
 =head2 ValidationMethod => Str
 
-The method you want to use to validate that you own or control domain.
-You can validate with DNS
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/gs-acm-validate-dns.html)
+The method you want to use if you are requesting a public certificate
+to validate that you own or control domain. You can validate with DNS
+(http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html)
 or validate with email
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.comacm/latest/userguide/gs-acm-validate-email.html).
+(http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html).
 We recommend that you use DNS validation.
 
 Valid values are: C<"EMAIL">, C<"DNS">

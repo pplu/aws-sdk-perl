@@ -197,7 +197,14 @@ the AWS CloudTrail User Guide
 
 =head1 METHODS
 
-=head2 CancelRotateSecret(SecretId => Str)
+=head2 CancelRotateSecret
+
+=over
+
+=item SecretId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SecretsManager::CancelRotateSecret>
 
@@ -277,7 +284,26 @@ ListSecretVersionIds.
 
 
 
-=head2 CreateSecret(Name => Str, [ClientRequestToken => Str, Description => Str, KmsKeyId => Str, SecretBinary => Str, SecretString => Str, Tags => ArrayRef[L<Paws::SecretsManager::Tag>]])
+=head2 CreateSecret
+
+=over
+
+=item Name => Str
+
+=item [ClientRequestToken => Str]
+
+=item [Description => Str]
+
+=item [KmsKeyId => Str]
+
+=item [SecretBinary => Str]
+
+=item [SecretString => Str]
+
+=item [Tags => ArrayRef[L<Paws::SecretsManager::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SecretsManager::CreateSecret>
 
@@ -300,8 +326,8 @@ You provide the secret data to be encrypted by putting text in either
 the C<SecretString> parameter or binary data in the C<SecretBinary>
 parameter, but not both. If you include C<SecretString> or
 C<SecretBinary> then Secrets Manager also creates an initial secret
-version and, if you don't supply a staging label, automatically maps
-the new version's ID to the staging label C<AWSCURRENT>.
+version and automatically attaches the staging label C<AWSCURRENT> to
+the new version.
 
 =over
 
@@ -394,7 +420,16 @@ response value.
 
 
 
-=head2 DeleteSecret(SecretId => Str, [RecoveryWindowInDays => Int])
+=head2 DeleteSecret
+
+=over
+
+=item SecretId => Str
+
+=item [RecoveryWindowInDays => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SecretsManager::DeleteSecret>
 
@@ -464,7 +499,14 @@ has expired, use RestoreSecret.
 
 
 
-=head2 DescribeSecret(SecretId => Str)
+=head2 DescribeSecret
+
+=over
+
+=item SecretId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SecretsManager::DescribeSecret>
 
@@ -511,7 +553,28 @@ To list all of the secrets in the AWS account, use ListSecrets.
 
 
 
-=head2 GetRandomPassword([ExcludeCharacters => Str, ExcludeLowercase => Bool, ExcludeNumbers => Bool, ExcludePunctuation => Bool, ExcludeUppercase => Bool, IncludeSpace => Bool, PasswordLength => Int, RequireEachIncludedType => Bool])
+=head2 GetRandomPassword
+
+=over
+
+=item [ExcludeCharacters => Str]
+
+=item [ExcludeLowercase => Bool]
+
+=item [ExcludeNumbers => Bool]
+
+=item [ExcludePunctuation => Bool]
+
+=item [ExcludeUppercase => Bool]
+
+=item [IncludeSpace => Bool]
+
+=item [PasswordLength => Int]
+
+=item [RequireEachIncludedType => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SecretsManager::GetRandomPassword>
 
@@ -537,7 +600,18 @@ secretsmanager:GetRandomPassword
 
 
 
-=head2 GetSecretValue(SecretId => Str, [VersionId => Str, VersionStage => Str])
+=head2 GetSecretValue
+
+=over
+
+=item SecretId => Str
+
+=item [VersionId => Str]
+
+=item [VersionStage => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SecretsManager::GetSecretValue>
 
@@ -583,7 +657,16 @@ DescribeSecret.
 
 
 
-=head2 ListSecrets([MaxResults => Int, NextToken => Str])
+=head2 ListSecrets
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SecretsManager::ListSecrets>
 
@@ -626,7 +709,20 @@ To list the versions attached to a secret, use ListSecretVersionIds.
 
 
 
-=head2 ListSecretVersionIds(SecretId => Str, [IncludeDeprecated => Bool, MaxResults => Int, NextToken => Str])
+=head2 ListSecretVersionIds
+
+=over
+
+=item SecretId => Str
+
+=item [IncludeDeprecated => Bool]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SecretsManager::ListSecretVersionIds>
 
@@ -668,7 +764,22 @@ To list the secrets in an account, use ListSecrets.
 
 
 
-=head2 PutSecretValue(SecretId => Str, [ClientRequestToken => Str, SecretBinary => Str, SecretString => Str, VersionStages => ArrayRef[Str|Undef]])
+=head2 PutSecretValue
+
+=over
+
+=item SecretId => Str
+
+=item [ClientRequestToken => Str]
+
+=item [SecretBinary => Str]
+
+=item [SecretString => Str]
+
+=item [VersionStages => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SecretsManager::PutSecretValue>
 
@@ -677,7 +788,8 @@ Returns: a L<Paws::SecretsManager::PutSecretValueResponse> instance
 Stores a new encrypted secret value in the specified secret. To do
 this, the operation creates a new version and attaches it to the
 secret. The version can contain a new C<SecretString> value or a new
-C<SecretBinary> value.
+C<SecretBinary> value. You can also specify the staging labels that are
+initially attached to the new version.
 
 The Secrets Manager console uses only the C<SecretString> field. To add
 binary data to a secret with the C<SecretBinary> field you must use the
@@ -695,7 +807,15 @@ new version.
 
 If another version of this secret already exists, then this operation
 does not automatically move any staging labels other than those that
-you specify in the C<VersionStages> parameter.
+you explicitly specify in the C<VersionStages> parameter.
+
+=item *
+
+If this operation moves the staging label C<AWSCURRENT> from another
+version to this version (because you included it in the
+C<StagingLabels> parameter) then Secrets Manager also automatically
+moves the staging label C<AWSPREVIOUS> to the version that
+C<AWSCURRENT> was removed from.
 
 =item *
 
@@ -705,13 +825,6 @@ exists and you specify the same secret data, the operation succeeds but
 does nothing. However, if the secret data is different, then the
 operation fails because you cannot modify an existing version; you can
 only create new ones.
-
-=item *
-
-If this operation moves the staging label C<AWSCURRENT> to this version
-(because you included it in the C<StagingLabels> parameter) then
-Secrets Manager also automatically moves the staging label
-C<AWSPREVIOUS> to the version that C<AWSCURRENT> was removed from.
 
 =back
 
@@ -795,7 +908,14 @@ To list the versions attached to a secret, use ListSecretVersionIds.
 
 
 
-=head2 RestoreSecret(SecretId => Str)
+=head2 RestoreSecret
+
+=over
+
+=item SecretId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SecretsManager::RestoreSecret>
 
@@ -829,7 +949,20 @@ To delete a secret, use DeleteSecret.
 
 
 
-=head2 RotateSecret(SecretId => Str, [ClientRequestToken => Str, RotationLambdaARN => Str, RotationRules => L<Paws::SecretsManager::RotationRulesType>])
+=head2 RotateSecret
+
+=over
+
+=item SecretId => Str
+
+=item [ClientRequestToken => Str]
+
+=item [RotationLambdaARN => Str]
+
+=item [RotationRules => L<Paws::SecretsManager::RotationRulesType>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SecretsManager::RotateSecret>
 
@@ -919,7 +1052,16 @@ a secret, use UpdateSecretVersionStage.
 
 
 
-=head2 TagResource(SecretId => Str, Tags => ArrayRef[L<Paws::SecretsManager::Tag>])
+=head2 TagResource
+
+=over
+
+=item SecretId => Str
+
+=item Tags => ArrayRef[L<Paws::SecretsManager::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SecretsManager::TagResource>
 
@@ -1002,7 +1144,16 @@ To view the list of tags attached to a secret, use DescribeSecret.
 
 
 
-=head2 UntagResource(SecretId => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 UntagResource
+
+=over
+
+=item SecretId => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SecretsManager::UntagResource>
 
@@ -1047,7 +1198,24 @@ To view the list of tags attached to a secret, use DescribeSecret.
 
 
 
-=head2 UpdateSecret(SecretId => Str, [ClientRequestToken => Str, Description => Str, KmsKeyId => Str, SecretBinary => Str, SecretString => Str])
+=head2 UpdateSecret
+
+=over
+
+=item SecretId => Str
+
+=item [ClientRequestToken => Str]
+
+=item [Description => Str]
+
+=item [KmsKeyId => Str]
+
+=item [SecretBinary => Str]
+
+=item [SecretString => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SecretsManager::UpdateSecret>
 
@@ -1069,19 +1237,16 @@ must use either the AWS CLI or one of the AWS SDKs.
 
 =item *
 
-If this update creates the first version of the secret or if you did
-not include the C<VersionStages> parameter then Secrets Manager
-automatically attaches the staging label C<AWSCURRENT> to the new
-version and removes it from any version that had it previously. The
-previous version (if any) is then given the staging label
-C<AWSPREVIOUS>.
-
-=item *
-
 If a version with a C<SecretVersionId> with the same value as the
 C<ClientRequestToken> parameter already exists, the operation generates
 an error. You cannot modify an existing version, you can only create
 new ones.
+
+=item *
+
+If you include C<SecretString> or C<SecretBinary> to create a new
+secret version, Secrets Manager automatically attaches the staging
+label C<AWSCURRENT> to the new version.
 
 =back
 
@@ -1164,7 +1329,20 @@ To list the versions contained in a secret, use ListSecretVersionIds.
 
 
 
-=head2 UpdateSecretVersionStage(SecretId => Str, VersionStage => Str, [MoveToVersionId => Str, RemoveFromVersionId => Str])
+=head2 UpdateSecretVersionStage
+
+=over
+
+=item SecretId => Str
+
+=item VersionStage => Str
+
+=item [MoveToVersionId => Str]
+
+=item [RemoveFromVersionId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SecretsManager::UpdateSecretVersionStage>
 

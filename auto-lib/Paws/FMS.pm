@@ -115,7 +115,14 @@ Firewall Manager features, see the AWS Firewall Manager Developer Guide
 
 =head1 METHODS
 
-=head2 AssociateAdminAccount(AdminAccount => Str)
+=head2 AssociateAdminAccount
+
+=over
+
+=item AdminAccount => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::FMS::AssociateAdminAccount>
 
@@ -132,7 +139,12 @@ The account that you associate with AWS Firewall Manager is called the
 AWS Firewall manager administrator account.
 
 
-=head2 DeleteNotificationChannel()
+=head2 DeleteNotificationChannel
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::FMS::DeleteNotificationChannel>
 
@@ -143,7 +155,14 @@ Amazon Simple Notification Service (SNS) topic that is used to record
 AWS Firewall Manager SNS logs.
 
 
-=head2 DeletePolicy(PolicyId => Str)
+=head2 DeletePolicy
+
+=over
+
+=item PolicyId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::FMS::DeletePolicy>
 
@@ -152,7 +171,12 @@ Returns: nothing
 Permanently deletes an AWS Firewall Manager policy.
 
 
-=head2 DisassociateAdminAccount()
+=head2 DisassociateAdminAccount
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::FMS::DisassociateAdminAccount>
 
@@ -164,7 +188,12 @@ C<AssociateAdminAccount> request to set a new account as the AWS
 Firewall administrator.
 
 
-=head2 GetAdminAccount()
+=head2 GetAdminAccount
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::FMS::GetAdminAccount>
 
@@ -174,7 +203,16 @@ Returns the AWS Organizations master account that is associated with
 AWS Firewall Manager as the AWS Firewall Manager administrator.
 
 
-=head2 GetComplianceDetail(MemberAccount => Str, PolicyId => Str)
+=head2 GetComplianceDetail
+
+=over
+
+=item MemberAccount => Str
+
+=item PolicyId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::FMS::GetComplianceDetail>
 
@@ -186,7 +224,12 @@ with the specified policy. Resources are considered non-compliant if
 the specified policy has not been applied to them.
 
 
-=head2 GetNotificationChannel()
+=head2 GetNotificationChannel
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::FMS::GetNotificationChannel>
 
@@ -196,7 +239,14 @@ Returns information about the Amazon Simple Notification Service (SNS)
 topic that is used to record AWS Firewall Manager SNS logs.
 
 
-=head2 GetPolicy(PolicyId => Str)
+=head2 GetPolicy
+
+=over
+
+=item PolicyId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::FMS::GetPolicy>
 
@@ -205,7 +255,18 @@ Returns: a L<Paws::FMS::GetPolicyResponse> instance
 Returns information about the specified AWS Firewall Manager policy.
 
 
-=head2 ListComplianceStatus(PolicyId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListComplianceStatus
+
+=over
+
+=item PolicyId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::FMS::ListComplianceStatus>
 
@@ -216,7 +277,16 @@ Use C<PolicyComplianceStatus> to get a summary of which member accounts
 are protected by the specified policy.
 
 
-=head2 ListPolicies([MaxResults => Int, NextToken => Str])
+=head2 ListPolicies
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::FMS::ListPolicies>
 
@@ -225,7 +295,16 @@ Returns: a L<Paws::FMS::ListPoliciesResponse> instance
 Returns an array of C<PolicySummary> objects in the response.
 
 
-=head2 PutNotificationChannel(SnsRoleName => Str, SnsTopicArn => Str)
+=head2 PutNotificationChannel
+
+=over
+
+=item SnsRoleName => Str
+
+=item SnsTopicArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::FMS::PutNotificationChannel>
 
@@ -235,7 +314,14 @@ Designates the IAM role and Amazon Simple Notification Service (SNS)
 topic that AWS Firewall Manager uses to record SNS logs.
 
 
-=head2 PutPolicy(Policy => L<Paws::FMS::Policy>)
+=head2 PutPolicy
+
+=over
+
+=item Policy => L<Paws::FMS::Policy>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::FMS::PutPolicy>
 

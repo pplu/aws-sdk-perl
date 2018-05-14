@@ -247,7 +247,16 @@ Advisor for results of checks on your resources.
 
 =head1 METHODS
 
-=head2 AddAttachmentsToSet(Attachments => ArrayRef[L<Paws::Support::Attachment>], [AttachmentSetId => Str])
+=head2 AddAttachmentsToSet
+
+=over
+
+=item Attachments => ArrayRef[L<Paws::Support::Attachment>]
+
+=item [AttachmentSetId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Support::AddAttachmentsToSet>
 
@@ -266,7 +275,20 @@ indicates when the set expires. The maximum number of attachments in a
 set is 3, and the maximum size of any attachment in the set is 5 MB.
 
 
-=head2 AddCommunicationToCase(CommunicationBody => Str, [AttachmentSetId => Str, CaseId => Str, CcEmailAddresses => ArrayRef[Str|Undef]])
+=head2 AddCommunicationToCase
+
+=over
+
+=item CommunicationBody => Str
+
+=item [AttachmentSetId => Str]
+
+=item [CaseId => Str]
+
+=item [CcEmailAddresses => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Support::AddCommunicationToCase>
 
@@ -284,7 +306,30 @@ This operation implements a subset of the features of the AWS Support
 Center.
 
 
-=head2 CreateCase(CommunicationBody => Str, Subject => Str, [AttachmentSetId => Str, CategoryCode => Str, CcEmailAddresses => ArrayRef[Str|Undef], IssueType => Str, Language => Str, ServiceCode => Str, SeverityCode => Str])
+=head2 CreateCase
+
+=over
+
+=item CommunicationBody => Str
+
+=item Subject => Str
+
+=item [AttachmentSetId => Str]
+
+=item [CategoryCode => Str]
+
+=item [CcEmailAddresses => ArrayRef[Str|Undef]]
+
+=item [IssueType => Str]
+
+=item [Language => Str]
+
+=item [ServiceCode => Str]
+
+=item [SeverityCode => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Support::CreateCase>
 
@@ -363,7 +408,14 @@ Case numbers are used by the DescribeCases operation to retrieve
 existing AWS Support cases.
 
 
-=head2 DescribeAttachment(AttachmentId => Str)
+=head2 DescribeAttachment
+
+=over
+
+=item AttachmentId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Support::DescribeAttachment>
 
@@ -376,7 +428,30 @@ AttachmentDetails objects that are returned by the
 DescribeCommunications operation.
 
 
-=head2 DescribeCases([AfterTime => Str, BeforeTime => Str, CaseIdList => ArrayRef[Str|Undef], DisplayId => Str, IncludeCommunications => Bool, IncludeResolvedCases => Bool, Language => Str, MaxResults => Int, NextToken => Str])
+=head2 DescribeCases
+
+=over
+
+=item [AfterTime => Str]
+
+=item [BeforeTime => Str]
+
+=item [CaseIdList => ArrayRef[Str|Undef]]
+
+=item [DisplayId => Str]
+
+=item [IncludeCommunications => Bool]
+
+=item [IncludeResolvedCases => Bool]
+
+=item [Language => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Support::DescribeCases>
 
@@ -409,7 +484,22 @@ returned records represented by the C<CaseDetails> objects.
 
 
 
-=head2 DescribeCommunications(CaseId => Str, [AfterTime => Str, BeforeTime => Str, MaxResults => Int, NextToken => Str])
+=head2 DescribeCommunications
+
+=over
+
+=item CaseId => Str
+
+=item [AfterTime => Str]
+
+=item [BeforeTime => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Support::DescribeCommunications>
 
@@ -430,7 +520,16 @@ cases you want displayed on each page, and use C<nextToken> to specify
 the resumption of pagination.
 
 
-=head2 DescribeServices([Language => Str, ServiceCodeList => ArrayRef[Str|Undef]])
+=head2 DescribeServices
+
+=over
+
+=item [Language => Str]
+
+=item [ServiceCodeList => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Support::DescribeServices>
 
@@ -452,7 +551,14 @@ This practice ensures that you always have the most recent set of
 service and category codes.
 
 
-=head2 DescribeSeverityLevels([Language => Str])
+=head2 DescribeSeverityLevels
+
+=over
+
+=item [Language => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Support::DescribeSeverityLevels>
 
@@ -463,7 +569,14 @@ Support case. The severity level for a case is also a field in the
 CaseDetails data type included in any CreateCase request.
 
 
-=head2 DescribeTrustedAdvisorCheckRefreshStatuses(CheckIds => ArrayRef[Str|Undef])
+=head2 DescribeTrustedAdvisorCheckRefreshStatuses
+
+=over
+
+=item CheckIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Support::DescribeTrustedAdvisorCheckRefreshStatuses>
 
@@ -479,7 +592,16 @@ C<DescribeTrustedAdvisorCheckRefreshStatuses> operation for these
 checks causes an C<InvalidParameterValue> error.
 
 
-=head2 DescribeTrustedAdvisorCheckResult(CheckId => Str, [Language => Str])
+=head2 DescribeTrustedAdvisorCheckResult
+
+=over
+
+=item CheckId => Str
+
+=item [Language => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Support::DescribeTrustedAdvisorCheckResult>
 
@@ -529,7 +651,14 @@ B<checkId.> The unique identifier for the check.
 
 
 
-=head2 DescribeTrustedAdvisorChecks(Language => Str)
+=head2 DescribeTrustedAdvisorChecks
+
+=over
+
+=item Language => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Support::DescribeTrustedAdvisorChecks>
 
@@ -542,7 +671,14 @@ currently supported. The response contains a
 TrustedAdvisorCheckDescription for each check.
 
 
-=head2 DescribeTrustedAdvisorCheckSummaries(CheckIds => ArrayRef[Str|Undef])
+=head2 DescribeTrustedAdvisorCheckSummaries
+
+=over
+
+=item CheckIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Support::DescribeTrustedAdvisorCheckSummaries>
 
@@ -555,7 +691,14 @@ DescribeTrustedAdvisorChecks.
 The response contains an array of TrustedAdvisorCheckSummary objects.
 
 
-=head2 RefreshTrustedAdvisorCheck(CheckId => Str)
+=head2 RefreshTrustedAdvisorCheck
+
+=over
+
+=item CheckId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Support::RefreshTrustedAdvisorCheck>
 
@@ -592,7 +735,14 @@ B<checkId.> The unique identifier for the check.
 
 
 
-=head2 ResolveCase([CaseId => Str])
+=head2 ResolveCase
+
+=over
+
+=item [CaseId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Support::ResolveCase>
 

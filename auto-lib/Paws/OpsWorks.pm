@@ -580,7 +580,16 @@ possible.
 
 =head1 METHODS
 
-=head2 AssignInstance(InstanceId => Str, LayerIds => ArrayRef[Str|Undef])
+=head2 AssignInstance
+
+=over
+
+=item InstanceId => Str
+
+=item LayerIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::AssignInstance>
 
@@ -612,7 +621,16 @@ more information on user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 AssignVolume(VolumeId => Str, [InstanceId => Str])
+=head2 AssignVolume
+
+=over
+
+=item VolumeId => Str
+
+=item [InstanceId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::AssignVolume>
 
@@ -632,7 +650,16 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 AssociateElasticIp(ElasticIp => Str, [InstanceId => Str])
+=head2 AssociateElasticIp
+
+=over
+
+=item ElasticIp => Str
+
+=item [InstanceId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::AssociateElasticIp>
 
@@ -651,7 +678,16 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 AttachElasticLoadBalancer(ElasticLoadBalancerName => Str, LayerId => Str)
+=head2 AttachElasticLoadBalancer
+
+=over
+
+=item ElasticLoadBalancerName => Str
+
+=item LayerId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::AttachElasticLoadBalancer>
 
@@ -675,7 +711,56 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 CloneStack(ServiceRoleArn => Str, SourceStackId => Str, [AgentVersion => Str, Attributes => L<Paws::OpsWorks::StackAttributes>, ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>, CloneAppIds => ArrayRef[Str|Undef], ClonePermissions => Bool, ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>, CustomCookbooksSource => L<Paws::OpsWorks::Source>, CustomJson => Str, DefaultAvailabilityZone => Str, DefaultInstanceProfileArn => Str, DefaultOs => Str, DefaultRootDeviceType => Str, DefaultSshKeyName => Str, DefaultSubnetId => Str, HostnameTheme => Str, Name => Str, Region => Str, UseCustomCookbooks => Bool, UseOpsworksSecurityGroups => Bool, VpcId => Str])
+=head2 CloneStack
+
+=over
+
+=item ServiceRoleArn => Str
+
+=item SourceStackId => Str
+
+=item [AgentVersion => Str]
+
+=item [Attributes => L<Paws::OpsWorks::StackAttributes>]
+
+=item [ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>]
+
+=item [CloneAppIds => ArrayRef[Str|Undef]]
+
+=item [ClonePermissions => Bool]
+
+=item [ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>]
+
+=item [CustomCookbooksSource => L<Paws::OpsWorks::Source>]
+
+=item [CustomJson => Str]
+
+=item [DefaultAvailabilityZone => Str]
+
+=item [DefaultInstanceProfileArn => Str]
+
+=item [DefaultOs => Str]
+
+=item [DefaultRootDeviceType => Str]
+
+=item [DefaultSshKeyName => Str]
+
+=item [DefaultSubnetId => Str]
+
+=item [HostnameTheme => Str]
+
+=item [Name => Str]
+
+=item [Region => Str]
+
+=item [UseCustomCookbooks => Bool]
+
+=item [UseOpsworksSecurityGroups => Bool]
+
+=item [VpcId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::CloneStack>
 
@@ -693,7 +778,36 @@ information on user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 CreateApp(Name => Str, StackId => Str, Type => Str, [AppSource => L<Paws::OpsWorks::Source>, Attributes => L<Paws::OpsWorks::AppAttributes>, DataSources => ArrayRef[L<Paws::OpsWorks::DataSource>], Description => Str, Domains => ArrayRef[Str|Undef], EnableSsl => Bool, Environment => ArrayRef[L<Paws::OpsWorks::EnvironmentVariable>], Shortname => Str, SslConfiguration => L<Paws::OpsWorks::SslConfiguration>])
+=head2 CreateApp
+
+=over
+
+=item Name => Str
+
+=item StackId => Str
+
+=item Type => Str
+
+=item [AppSource => L<Paws::OpsWorks::Source>]
+
+=item [Attributes => L<Paws::OpsWorks::AppAttributes>]
+
+=item [DataSources => ArrayRef[L<Paws::OpsWorks::DataSource>]]
+
+=item [Description => Str]
+
+=item [Domains => ArrayRef[Str|Undef]]
+
+=item [EnableSsl => Bool]
+
+=item [Environment => ArrayRef[L<Paws::OpsWorks::EnvironmentVariable>]]
+
+=item [Shortname => Str]
+
+=item [SslConfiguration => L<Paws::OpsWorks::SslConfiguration>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::CreateApp>
 
@@ -710,7 +824,26 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 CreateDeployment(Command => L<Paws::OpsWorks::DeploymentCommand>, StackId => Str, [AppId => Str, Comment => Str, CustomJson => Str, InstanceIds => ArrayRef[Str|Undef], LayerIds => ArrayRef[Str|Undef]])
+=head2 CreateDeployment
+
+=over
+
+=item Command => L<Paws::OpsWorks::DeploymentCommand>
+
+=item StackId => Str
+
+=item [AppId => Str]
+
+=item [Comment => Str]
+
+=item [CustomJson => Str]
+
+=item [InstanceIds => ArrayRef[Str|Undef]]
+
+=item [LayerIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::CreateDeployment>
 
@@ -729,7 +862,48 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 CreateInstance(InstanceType => Str, LayerIds => ArrayRef[Str|Undef], StackId => Str, [AgentVersion => Str, AmiId => Str, Architecture => Str, AutoScalingType => Str, AvailabilityZone => Str, BlockDeviceMappings => ArrayRef[L<Paws::OpsWorks::BlockDeviceMapping>], EbsOptimized => Bool, Hostname => Str, InstallUpdatesOnBoot => Bool, Os => Str, RootDeviceType => Str, SshKeyName => Str, SubnetId => Str, Tenancy => Str, VirtualizationType => Str])
+=head2 CreateInstance
+
+=over
+
+=item InstanceType => Str
+
+=item LayerIds => ArrayRef[Str|Undef]
+
+=item StackId => Str
+
+=item [AgentVersion => Str]
+
+=item [AmiId => Str]
+
+=item [Architecture => Str]
+
+=item [AutoScalingType => Str]
+
+=item [AvailabilityZone => Str]
+
+=item [BlockDeviceMappings => ArrayRef[L<Paws::OpsWorks::BlockDeviceMapping>]]
+
+=item [EbsOptimized => Bool]
+
+=item [Hostname => Str]
+
+=item [InstallUpdatesOnBoot => Bool]
+
+=item [Os => Str]
+
+=item [RootDeviceType => Str]
+
+=item [SshKeyName => Str]
+
+=item [SubnetId => Str]
+
+=item [Tenancy => Str]
+
+=item [VirtualizationType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::CreateInstance>
 
@@ -746,7 +920,48 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 CreateLayer(Name => Str, Shortname => Str, StackId => Str, Type => Str, [Attributes => L<Paws::OpsWorks::LayerAttributes>, AutoAssignElasticIps => Bool, AutoAssignPublicIps => Bool, CloudWatchLogsConfiguration => L<Paws::OpsWorks::CloudWatchLogsConfiguration>, CustomInstanceProfileArn => Str, CustomJson => Str, CustomRecipes => L<Paws::OpsWorks::Recipes>, CustomSecurityGroupIds => ArrayRef[Str|Undef], EnableAutoHealing => Bool, InstallUpdatesOnBoot => Bool, LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>, Packages => ArrayRef[Str|Undef], UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]])
+=head2 CreateLayer
+
+=over
+
+=item Name => Str
+
+=item Shortname => Str
+
+=item StackId => Str
+
+=item Type => Str
+
+=item [Attributes => L<Paws::OpsWorks::LayerAttributes>]
+
+=item [AutoAssignElasticIps => Bool]
+
+=item [AutoAssignPublicIps => Bool]
+
+=item [CloudWatchLogsConfiguration => L<Paws::OpsWorks::CloudWatchLogsConfiguration>]
+
+=item [CustomInstanceProfileArn => Str]
+
+=item [CustomJson => Str]
+
+=item [CustomRecipes => L<Paws::OpsWorks::Recipes>]
+
+=item [CustomSecurityGroupIds => ArrayRef[Str|Undef]]
+
+=item [EnableAutoHealing => Bool]
+
+=item [InstallUpdatesOnBoot => Bool]
+
+=item [LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>]
+
+=item [Packages => ArrayRef[Str|Undef]]
+
+=item [UseEbsOptimizedInstances => Bool]
+
+=item [VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::CreateLayer>
 
@@ -769,7 +984,50 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 CreateStack(DefaultInstanceProfileArn => Str, Name => Str, Region => Str, ServiceRoleArn => Str, [AgentVersion => Str, Attributes => L<Paws::OpsWorks::StackAttributes>, ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>, ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>, CustomCookbooksSource => L<Paws::OpsWorks::Source>, CustomJson => Str, DefaultAvailabilityZone => Str, DefaultOs => Str, DefaultRootDeviceType => Str, DefaultSshKeyName => Str, DefaultSubnetId => Str, HostnameTheme => Str, UseCustomCookbooks => Bool, UseOpsworksSecurityGroups => Bool, VpcId => Str])
+=head2 CreateStack
+
+=over
+
+=item DefaultInstanceProfileArn => Str
+
+=item Name => Str
+
+=item Region => Str
+
+=item ServiceRoleArn => Str
+
+=item [AgentVersion => Str]
+
+=item [Attributes => L<Paws::OpsWorks::StackAttributes>]
+
+=item [ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>]
+
+=item [ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>]
+
+=item [CustomCookbooksSource => L<Paws::OpsWorks::Source>]
+
+=item [CustomJson => Str]
+
+=item [DefaultAvailabilityZone => Str]
+
+=item [DefaultOs => Str]
+
+=item [DefaultRootDeviceType => Str]
+
+=item [DefaultSshKeyName => Str]
+
+=item [DefaultSubnetId => Str]
+
+=item [HostnameTheme => Str]
+
+=item [UseCustomCookbooks => Bool]
+
+=item [UseOpsworksSecurityGroups => Bool]
+
+=item [VpcId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::CreateStack>
 
@@ -784,7 +1042,20 @@ information on user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 CreateUserProfile(IamUserArn => Str, [AllowSelfManagement => Bool, SshPublicKey => Str, SshUsername => Str])
+=head2 CreateUserProfile
+
+=over
+
+=item IamUserArn => Str
+
+=item [AllowSelfManagement => Bool]
+
+=item [SshPublicKey => Str]
+
+=item [SshUsername => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::CreateUserProfile>
 
@@ -798,7 +1069,14 @@ information on user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DeleteApp(AppId => Str)
+=head2 DeleteApp
+
+=over
+
+=item AppId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DeleteApp>
 
@@ -813,7 +1091,18 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DeleteInstance(InstanceId => Str, [DeleteElasticIp => Bool, DeleteVolumes => Bool])
+=head2 DeleteInstance
+
+=over
+
+=item InstanceId => Str
+
+=item [DeleteElasticIp => Bool]
+
+=item [DeleteVolumes => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DeleteInstance>
 
@@ -832,7 +1121,14 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DeleteLayer(LayerId => Str)
+=head2 DeleteLayer
+
+=over
+
+=item LayerId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DeleteLayer>
 
@@ -850,7 +1146,14 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DeleteStack(StackId => Str)
+=head2 DeleteStack
+
+=over
+
+=item StackId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DeleteStack>
 
@@ -868,7 +1171,14 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DeleteUserProfile(IamUserArn => Str)
+=head2 DeleteUserProfile
+
+=over
+
+=item IamUserArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DeleteUserProfile>
 
@@ -882,7 +1192,14 @@ information on user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DeregisterEcsCluster(EcsClusterArn => Str)
+=head2 DeregisterEcsCluster
+
+=over
+
+=item EcsClusterArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DeregisterEcsCluster>
 
@@ -900,7 +1217,14 @@ http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.htm
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DeregisterElasticIp(ElasticIp => Str)
+=head2 DeregisterElasticIp
+
+=over
+
+=item ElasticIp => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DeregisterElasticIp>
 
@@ -918,7 +1242,14 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DeregisterInstance(InstanceId => Str)
+=head2 DeregisterInstance
+
+=over
+
+=item InstanceId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DeregisterInstance>
 
@@ -936,7 +1267,14 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DeregisterRdsDbInstance(RdsDbInstanceArn => Str)
+=head2 DeregisterRdsDbInstance
+
+=over
+
+=item RdsDbInstanceArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DeregisterRdsDbInstance>
 
@@ -951,7 +1289,14 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DeregisterVolume(VolumeId => Str)
+=head2 DeregisterVolume
+
+=over
+
+=item VolumeId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DeregisterVolume>
 
@@ -968,7 +1313,16 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DescribeAgentVersions([ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>, StackId => Str])
+=head2 DescribeAgentVersions
+
+=over
+
+=item [ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>]
+
+=item [StackId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeAgentVersions>
 
@@ -980,7 +1334,16 @@ returns a list of available agent versions for the specified stack or
 configuration manager.
 
 
-=head2 DescribeApps([AppIds => ArrayRef[Str|Undef], StackId => Str])
+=head2 DescribeApps
+
+=over
+
+=item [AppIds => ArrayRef[Str|Undef]]
+
+=item [StackId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeApps>
 
@@ -997,7 +1360,18 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DescribeCommands([CommandIds => ArrayRef[Str|Undef], DeploymentId => Str, InstanceId => Str])
+=head2 DescribeCommands
+
+=over
+
+=item [CommandIds => ArrayRef[Str|Undef]]
+
+=item [DeploymentId => Str]
+
+=item [InstanceId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeCommands>
 
@@ -1014,7 +1388,18 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DescribeDeployments([AppId => Str, DeploymentIds => ArrayRef[Str|Undef], StackId => Str])
+=head2 DescribeDeployments
+
+=over
+
+=item [AppId => Str]
+
+=item [DeploymentIds => ArrayRef[Str|Undef]]
+
+=item [StackId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeDeployments>
 
@@ -1031,7 +1416,20 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DescribeEcsClusters([EcsClusterArns => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, StackId => Str])
+=head2 DescribeEcsClusters
+
+=over
+
+=item [EcsClusterArns => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [StackId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeEcsClusters>
 
@@ -1052,7 +1450,18 @@ permissions, see Managing User Permissions
 This call accepts only one resource-identifying parameter.
 
 
-=head2 DescribeElasticIps([InstanceId => Str, Ips => ArrayRef[Str|Undef], StackId => Str])
+=head2 DescribeElasticIps
+
+=over
+
+=item [InstanceId => Str]
+
+=item [Ips => ArrayRef[Str|Undef]]
+
+=item [StackId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeElasticIps>
 
@@ -1070,7 +1479,16 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DescribeElasticLoadBalancers([LayerIds => ArrayRef[Str|Undef], StackId => Str])
+=head2 DescribeElasticLoadBalancers
+
+=over
+
+=item [LayerIds => ArrayRef[Str|Undef]]
+
+=item [StackId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeElasticLoadBalancers>
 
@@ -1087,7 +1505,18 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DescribeInstances([InstanceIds => ArrayRef[Str|Undef], LayerId => Str, StackId => Str])
+=head2 DescribeInstances
+
+=over
+
+=item [InstanceIds => ArrayRef[Str|Undef]]
+
+=item [LayerId => Str]
+
+=item [StackId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeInstances>
 
@@ -1104,7 +1533,16 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DescribeLayers([LayerIds => ArrayRef[Str|Undef], StackId => Str])
+=head2 DescribeLayers
+
+=over
+
+=item [LayerIds => ArrayRef[Str|Undef]]
+
+=item [StackId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeLayers>
 
@@ -1121,7 +1559,14 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DescribeLoadBasedAutoScaling(LayerIds => ArrayRef[Str|Undef])
+=head2 DescribeLoadBasedAutoScaling
+
+=over
+
+=item LayerIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeLoadBasedAutoScaling>
 
@@ -1138,7 +1583,14 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DescribeMyUserProfile( => )
+=head2 DescribeMyUserProfile
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeMyUserProfile>
 
@@ -1153,7 +1605,14 @@ User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DescribeOperatingSystems( => )
+=head2 DescribeOperatingSystems
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeOperatingSystems>
 
@@ -1163,7 +1622,16 @@ Describes the operating systems that are supported by AWS OpsWorks
 Stacks.
 
 
-=head2 DescribePermissions([IamUserArn => Str, StackId => Str])
+=head2 DescribePermissions
+
+=over
+
+=item [IamUserArn => Str]
+
+=item [StackId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribePermissions>
 
@@ -1178,7 +1646,18 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DescribeRaidArrays([InstanceId => Str, RaidArrayIds => ArrayRef[Str|Undef], StackId => Str])
+=head2 DescribeRaidArrays
+
+=over
+
+=item [InstanceId => Str]
+
+=item [RaidArrayIds => ArrayRef[Str|Undef]]
+
+=item [StackId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeRaidArrays>
 
@@ -1195,7 +1674,16 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DescribeRdsDbInstances(StackId => Str, [RdsDbInstanceArns => ArrayRef[Str|Undef]])
+=head2 DescribeRdsDbInstances
+
+=over
+
+=item StackId => Str
+
+=item [RdsDbInstanceArns => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeRdsDbInstances>
 
@@ -1212,7 +1700,18 @@ permissions, see Managing User Permissions
 This call accepts only one resource-identifying parameter.
 
 
-=head2 DescribeServiceErrors([InstanceId => Str, ServiceErrorIds => ArrayRef[Str|Undef], StackId => Str])
+=head2 DescribeServiceErrors
+
+=over
+
+=item [InstanceId => Str]
+
+=item [ServiceErrorIds => ArrayRef[Str|Undef]]
+
+=item [StackId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeServiceErrors>
 
@@ -1229,7 +1728,14 @@ permissions, see Managing User Permissions
 This call accepts only one resource-identifying parameter.
 
 
-=head2 DescribeStackProvisioningParameters(StackId => Str)
+=head2 DescribeStackProvisioningParameters
+
+=over
+
+=item StackId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeStackProvisioningParameters>
 
@@ -1244,7 +1750,14 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DescribeStacks([StackIds => ArrayRef[Str|Undef]])
+=head2 DescribeStacks
+
+=over
+
+=item [StackIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeStacks>
 
@@ -1259,7 +1772,14 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DescribeStackSummary(StackId => Str)
+=head2 DescribeStackSummary
+
+=over
+
+=item StackId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeStackSummary>
 
@@ -1276,7 +1796,14 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DescribeTimeBasedAutoScaling(InstanceIds => ArrayRef[Str|Undef])
+=head2 DescribeTimeBasedAutoScaling
+
+=over
+
+=item InstanceIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeTimeBasedAutoScaling>
 
@@ -1294,7 +1821,14 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DescribeUserProfiles([IamUserArns => ArrayRef[Str|Undef]])
+=head2 DescribeUserProfiles
+
+=over
+
+=item [IamUserArns => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeUserProfiles>
 
@@ -1308,7 +1842,20 @@ information on user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DescribeVolumes([InstanceId => Str, RaidArrayId => Str, StackId => Str, VolumeIds => ArrayRef[Str|Undef]])
+=head2 DescribeVolumes
+
+=over
+
+=item [InstanceId => Str]
+
+=item [RaidArrayId => Str]
+
+=item [StackId => Str]
+
+=item [VolumeIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeVolumes>
 
@@ -1325,7 +1872,16 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DetachElasticLoadBalancer(ElasticLoadBalancerName => Str, LayerId => Str)
+=head2 DetachElasticLoadBalancer
+
+=over
+
+=item ElasticLoadBalancerName => Str
+
+=item LayerId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DetachElasticLoadBalancer>
 
@@ -1340,7 +1896,14 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 DisassociateElasticIp(ElasticIp => Str)
+=head2 DisassociateElasticIp
+
+=over
+
+=item ElasticIp => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::DisassociateElasticIp>
 
@@ -1358,7 +1921,14 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 GetHostnameSuggestion(LayerId => Str)
+=head2 GetHostnameSuggestion
+
+=over
+
+=item LayerId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::GetHostnameSuggestion>
 
@@ -1374,7 +1944,16 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 GrantAccess(InstanceId => Str, [ValidForInMinutes => Int])
+=head2 GrantAccess
+
+=over
+
+=item InstanceId => Str
+
+=item [ValidForInMinutes => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::GrantAccess>
 
@@ -1385,7 +1964,18 @@ This action can be used only with Windows stacks.
 Grants RDP access to a Windows instance for a specified time period.
 
 
-=head2 ListTags(ResourceArn => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListTags
+
+=over
+
+=item ResourceArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::ListTags>
 
@@ -1395,7 +1985,14 @@ Returns a list of tags that are applied to the specified stack or
 layer.
 
 
-=head2 RebootInstance(InstanceId => Str)
+=head2 RebootInstance
+
+=over
+
+=item InstanceId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::RebootInstance>
 
@@ -1412,7 +2009,16 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 RegisterEcsCluster(EcsClusterArn => Str, StackId => Str)
+=head2 RegisterEcsCluster
+
+=over
+
+=item EcsClusterArn => Str
+
+=item StackId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::RegisterEcsCluster>
 
@@ -1430,7 +2036,16 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 RegisterElasticIp(ElasticIp => Str, StackId => Str)
+=head2 RegisterElasticIp
+
+=over
+
+=item ElasticIp => Str
+
+=item StackId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::RegisterElasticIp>
 
@@ -1449,7 +2064,26 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 RegisterInstance(StackId => Str, [Hostname => Str, InstanceIdentity => L<Paws::OpsWorks::InstanceIdentity>, PrivateIp => Str, PublicIp => Str, RsaPublicKey => Str, RsaPublicKeyFingerprint => Str])
+=head2 RegisterInstance
+
+=over
+
+=item StackId => Str
+
+=item [Hostname => Str]
+
+=item [InstanceIdentity => L<Paws::OpsWorks::InstanceIdentity>]
+
+=item [PrivateIp => Str]
+
+=item [PublicIp => Str]
+
+=item [RsaPublicKey => Str]
+
+=item [RsaPublicKeyFingerprint => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::RegisterInstance>
 
@@ -1482,7 +2116,20 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 RegisterRdsDbInstance(DbPassword => Str, DbUser => Str, RdsDbInstanceArn => Str, StackId => Str)
+=head2 RegisterRdsDbInstance
+
+=over
+
+=item DbPassword => Str
+
+=item DbUser => Str
+
+=item RdsDbInstanceArn => Str
+
+=item StackId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::RegisterRdsDbInstance>
 
@@ -1497,7 +2144,16 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 RegisterVolume(StackId => Str, [Ec2VolumeId => Str])
+=head2 RegisterVolume
+
+=over
+
+=item StackId => Str
+
+=item [Ec2VolumeId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::RegisterVolume>
 
@@ -1516,7 +2172,20 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 SetLoadBasedAutoScaling(LayerId => Str, [DownScaling => L<Paws::OpsWorks::AutoScalingThresholds>, Enable => Bool, UpScaling => L<Paws::OpsWorks::AutoScalingThresholds>])
+=head2 SetLoadBasedAutoScaling
+
+=over
+
+=item LayerId => Str
+
+=item [DownScaling => L<Paws::OpsWorks::AutoScalingThresholds>]
+
+=item [Enable => Bool]
+
+=item [UpScaling => L<Paws::OpsWorks::AutoScalingThresholds>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::SetLoadBasedAutoScaling>
 
@@ -1539,7 +2208,22 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 SetPermission(IamUserArn => Str, StackId => Str, [AllowSsh => Bool, AllowSudo => Bool, Level => Str])
+=head2 SetPermission
+
+=over
+
+=item IamUserArn => Str
+
+=item StackId => Str
+
+=item [AllowSsh => Bool]
+
+=item [AllowSudo => Bool]
+
+=item [Level => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::SetPermission>
 
@@ -1556,7 +2240,16 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 SetTimeBasedAutoScaling(InstanceId => Str, [AutoScalingSchedule => L<Paws::OpsWorks::WeeklyAutoScalingSchedule>])
+=head2 SetTimeBasedAutoScaling
+
+=over
+
+=item InstanceId => Str
+
+=item [AutoScalingSchedule => L<Paws::OpsWorks::WeeklyAutoScalingSchedule>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::SetTimeBasedAutoScaling>
 
@@ -1574,7 +2267,14 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 StartInstance(InstanceId => Str)
+=head2 StartInstance
+
+=over
+
+=item InstanceId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::StartInstance>
 
@@ -1591,7 +2291,14 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 StartStack(StackId => Str)
+=head2 StartStack
+
+=over
+
+=item StackId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::StartStack>
 
@@ -1606,7 +2313,16 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 StopInstance(InstanceId => Str, [Force => Bool])
+=head2 StopInstance
+
+=over
+
+=item InstanceId => Str
+
+=item [Force => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::StopInstance>
 
@@ -1625,7 +2341,14 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 StopStack(StackId => Str)
+=head2 StopStack
+
+=over
+
+=item StackId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::StopStack>
 
@@ -1640,7 +2363,16 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 TagResource(ResourceArn => Str, Tags => L<Paws::OpsWorks::Tags>)
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::OpsWorks::Tags>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::TagResource>
 
@@ -1652,7 +2384,14 @@ OpsWorks Stacks. For more information about how tagging works, see Tags
 the AWS OpsWorks User Guide.
 
 
-=head2 UnassignInstance(InstanceId => Str)
+=head2 UnassignInstance
+
+=over
+
+=item InstanceId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::UnassignInstance>
 
@@ -1670,7 +2409,14 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 UnassignVolume(VolumeId => Str)
+=head2 UnassignVolume
+
+=over
+
+=item VolumeId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::UnassignVolume>
 
@@ -1687,7 +2433,16 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 UntagResource(ResourceArn => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::UntagResource>
 
@@ -1696,7 +2451,34 @@ Returns: nothing
 Removes tags from a specified stack or layer.
 
 
-=head2 UpdateApp(AppId => Str, [AppSource => L<Paws::OpsWorks::Source>, Attributes => L<Paws::OpsWorks::AppAttributes>, DataSources => ArrayRef[L<Paws::OpsWorks::DataSource>], Description => Str, Domains => ArrayRef[Str|Undef], EnableSsl => Bool, Environment => ArrayRef[L<Paws::OpsWorks::EnvironmentVariable>], Name => Str, SslConfiguration => L<Paws::OpsWorks::SslConfiguration>, Type => Str])
+=head2 UpdateApp
+
+=over
+
+=item AppId => Str
+
+=item [AppSource => L<Paws::OpsWorks::Source>]
+
+=item [Attributes => L<Paws::OpsWorks::AppAttributes>]
+
+=item [DataSources => ArrayRef[L<Paws::OpsWorks::DataSource>]]
+
+=item [Description => Str]
+
+=item [Domains => ArrayRef[Str|Undef]]
+
+=item [EnableSsl => Bool]
+
+=item [Environment => ArrayRef[L<Paws::OpsWorks::EnvironmentVariable>]]
+
+=item [Name => Str]
+
+=item [SslConfiguration => L<Paws::OpsWorks::SslConfiguration>]
+
+=item [Type => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::UpdateApp>
 
@@ -1711,7 +2493,16 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 UpdateElasticIp(ElasticIp => Str, [Name => Str])
+=head2 UpdateElasticIp
+
+=over
+
+=item ElasticIp => Str
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::UpdateElasticIp>
 
@@ -1728,7 +2519,36 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 UpdateInstance(InstanceId => Str, [AgentVersion => Str, AmiId => Str, Architecture => Str, AutoScalingType => Str, EbsOptimized => Bool, Hostname => Str, InstallUpdatesOnBoot => Bool, InstanceType => Str, LayerIds => ArrayRef[Str|Undef], Os => Str, SshKeyName => Str])
+=head2 UpdateInstance
+
+=over
+
+=item InstanceId => Str
+
+=item [AgentVersion => Str]
+
+=item [AmiId => Str]
+
+=item [Architecture => Str]
+
+=item [AutoScalingType => Str]
+
+=item [EbsOptimized => Bool]
+
+=item [Hostname => Str]
+
+=item [InstallUpdatesOnBoot => Bool]
+
+=item [InstanceType => Str]
+
+=item [LayerIds => ArrayRef[Str|Undef]]
+
+=item [Os => Str]
+
+=item [SshKeyName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::UpdateInstance>
 
@@ -1743,7 +2563,46 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 UpdateLayer(LayerId => Str, [Attributes => L<Paws::OpsWorks::LayerAttributes>, AutoAssignElasticIps => Bool, AutoAssignPublicIps => Bool, CloudWatchLogsConfiguration => L<Paws::OpsWorks::CloudWatchLogsConfiguration>, CustomInstanceProfileArn => Str, CustomJson => Str, CustomRecipes => L<Paws::OpsWorks::Recipes>, CustomSecurityGroupIds => ArrayRef[Str|Undef], EnableAutoHealing => Bool, InstallUpdatesOnBoot => Bool, LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>, Name => Str, Packages => ArrayRef[Str|Undef], Shortname => Str, UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]])
+=head2 UpdateLayer
+
+=over
+
+=item LayerId => Str
+
+=item [Attributes => L<Paws::OpsWorks::LayerAttributes>]
+
+=item [AutoAssignElasticIps => Bool]
+
+=item [AutoAssignPublicIps => Bool]
+
+=item [CloudWatchLogsConfiguration => L<Paws::OpsWorks::CloudWatchLogsConfiguration>]
+
+=item [CustomInstanceProfileArn => Str]
+
+=item [CustomJson => Str]
+
+=item [CustomRecipes => L<Paws::OpsWorks::Recipes>]
+
+=item [CustomSecurityGroupIds => ArrayRef[Str|Undef]]
+
+=item [EnableAutoHealing => Bool]
+
+=item [InstallUpdatesOnBoot => Bool]
+
+=item [LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>]
+
+=item [Name => Str]
+
+=item [Packages => ArrayRef[Str|Undef]]
+
+=item [Shortname => Str]
+
+=item [UseEbsOptimizedInstances => Bool]
+
+=item [VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::UpdateLayer>
 
@@ -1758,7 +2617,14 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 UpdateMyUserProfile([SshPublicKey => Str])
+=head2 UpdateMyUserProfile
+
+=over
+
+=item [SshPublicKey => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::UpdateMyUserProfile>
 
@@ -1773,7 +2639,18 @@ User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 UpdateRdsDbInstance(RdsDbInstanceArn => Str, [DbPassword => Str, DbUser => Str])
+=head2 UpdateRdsDbInstance
+
+=over
+
+=item RdsDbInstanceArn => Str
+
+=item [DbPassword => Str]
+
+=item [DbUser => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::UpdateRdsDbInstance>
 
@@ -1788,7 +2665,48 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 UpdateStack(StackId => Str, [AgentVersion => Str, Attributes => L<Paws::OpsWorks::StackAttributes>, ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>, ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>, CustomCookbooksSource => L<Paws::OpsWorks::Source>, CustomJson => Str, DefaultAvailabilityZone => Str, DefaultInstanceProfileArn => Str, DefaultOs => Str, DefaultRootDeviceType => Str, DefaultSshKeyName => Str, DefaultSubnetId => Str, HostnameTheme => Str, Name => Str, ServiceRoleArn => Str, UseCustomCookbooks => Bool, UseOpsworksSecurityGroups => Bool])
+=head2 UpdateStack
+
+=over
+
+=item StackId => Str
+
+=item [AgentVersion => Str]
+
+=item [Attributes => L<Paws::OpsWorks::StackAttributes>]
+
+=item [ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>]
+
+=item [ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>]
+
+=item [CustomCookbooksSource => L<Paws::OpsWorks::Source>]
+
+=item [CustomJson => Str]
+
+=item [DefaultAvailabilityZone => Str]
+
+=item [DefaultInstanceProfileArn => Str]
+
+=item [DefaultOs => Str]
+
+=item [DefaultRootDeviceType => Str]
+
+=item [DefaultSshKeyName => Str]
+
+=item [DefaultSubnetId => Str]
+
+=item [HostnameTheme => Str]
+
+=item [Name => Str]
+
+=item [ServiceRoleArn => Str]
+
+=item [UseCustomCookbooks => Bool]
+
+=item [UseOpsworksSecurityGroups => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::UpdateStack>
 
@@ -1803,7 +2721,20 @@ permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 UpdateUserProfile(IamUserArn => Str, [AllowSelfManagement => Bool, SshPublicKey => Str, SshUsername => Str])
+=head2 UpdateUserProfile
+
+=over
+
+=item IamUserArn => Str
+
+=item [AllowSelfManagement => Bool]
+
+=item [SshPublicKey => Str]
+
+=item [SshUsername => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::UpdateUserProfile>
 
@@ -1817,7 +2748,18 @@ information on user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
-=head2 UpdateVolume(VolumeId => Str, [MountPoint => Str, Name => Str])
+=head2 UpdateVolume
+
+=over
+
+=item VolumeId => Str
+
+=item [MountPoint => Str]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorks::UpdateVolume>
 

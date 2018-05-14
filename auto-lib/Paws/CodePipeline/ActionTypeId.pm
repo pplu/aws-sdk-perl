@@ -61,7 +61,7 @@ would be specified as CodeDeploy.
 
 =head2 B<REQUIRED> Version => Str
 
-  A string that identifies the action type.
+  A string that describes the action version.
 
 
 

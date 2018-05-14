@@ -2,7 +2,9 @@
 package Paws::AppSync::CreateGraphqlApi;
   use Moose;
   has AuthenticationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authenticationType', required => 1);
+  has LogConfig => (is => 'ro', isa => 'Paws::AppSync::LogConfig', traits => ['NameInRequest'], request_name => 'logConfig');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
+  has OpenIDConnectConfig => (is => 'ro', isa => 'Paws::AppSync::OpenIDConnectConfig', traits => ['NameInRequest'], request_name => 'openIDConnectConfig');
   has UserPoolConfig => (is => 'ro', isa => 'Paws::AppSync::UserPoolConfig', traits => ['NameInRequest'], request_name => 'userPoolConfig');
 
   use MooseX::ClassAttribute;
@@ -40,11 +42,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The authentication type: API key, IAM, or Amazon Cognito User Pools.
 
-Valid values are: C<"API_KEY">, C<"AWS_IAM">, C<"AMAZON_COGNITO_USER_POOLS">
+Valid values are: C<"API_KEY">, C<"AWS_IAM">, C<"AMAZON_COGNITO_USER_POOLS">, C<"OPENID_CONNECT">
+
+=head2 LogConfig => L<Paws::AppSync::LogConfig>
+
+The Amazon CloudWatch logs configuration.
+
+
 
 =head2 B<REQUIRED> Name => Str
 
 A user-supplied name for the C<GraphqlApi>.
+
+
+
+=head2 OpenIDConnectConfig => L<Paws::AppSync::OpenIDConnectConfig>
+
+The Open Id Connect configuration configuration.
 
 
 

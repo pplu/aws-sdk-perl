@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceId => Str
 
-The ID of the resource.
+The ID of the WorkSpace. To find this ID, use DescribeWorkspaces.
 
 
 

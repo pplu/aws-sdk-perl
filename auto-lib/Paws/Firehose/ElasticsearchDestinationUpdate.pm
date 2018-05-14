@@ -48,7 +48,7 @@ Describes an update for a destination in Amazon ES.
 =head2 BufferingHints => L<Paws::Firehose::ElasticsearchBufferingHints>
 
   The buffering options. If no value is specified,
-C<ElasticsearchBufferingHints> object default values are used.
+B<ElasticsearchBufferingHints> object default values are used.
 
 
 =head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
@@ -61,7 +61,9 @@ C<ElasticsearchBufferingHints> object default values are used.
   The ARN of the Amazon ES domain. The IAM role must have permissions for
 C<DescribeElasticsearchDomain>, C<DescribeElasticsearchDomains>, and
 C<DescribeElasticsearchDomainConfig> after assuming the IAM role
-specified in C<RoleARN>.
+specified in B<RoleARN>. For more information, see Amazon Resource
+Names (ARNs) and AWS Service Namespaces
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
 =head2 IndexName => Str
@@ -72,8 +74,8 @@ specified in C<RoleARN>.
 =head2 IndexRotationPeriod => Str
 
   The Elasticsearch index rotation period. Index rotation appends a time
-stamp to IndexName to facilitate the expiration of old data. For more
-information, see Index Rotation for the Amazon ES Destination
+stamp to C<IndexName> to facilitate the expiration of old data. For
+more information, see Index Rotation for the Amazon ES Destination
 (http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#es-index-rotation).
 Default value is C<OneDay>.
 
@@ -95,7 +97,9 @@ documents to Amazon ES. The default value is 300 (5 minutes).
 Data Firehose for calling the Amazon ES Configuration API and for
 indexing documents. For more information, see Grant Kinesis Data
 Firehose Access to an Amazon S3 Destination
-(http://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3).
+(http://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3)
+and Amazon Resource Names (ARNs) and AWS Service Namespaces
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
 =head2 S3Update => L<Paws::Firehose::S3DestinationUpdate>
@@ -105,7 +109,10 @@ Firehose Access to an Amazon S3 Destination
 
 =head2 TypeName => Str
 
-  The Elasticsearch type name.
+  The Elasticsearch type name. For Elasticsearch 6.x, there can be only
+one type per index. If you try to specify a new type for an existing
+index that already has another type, Kinesis Data Firehose returns an
+error during runtime.
 
 
 

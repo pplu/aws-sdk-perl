@@ -98,7 +98,8 @@ evaluation when AWS Config delivers a configuration snapshot.
 =back
 
 If you want your custom rule to be triggered by configuration changes,
-specify both C<ConfigurationItemChangeNotification> and
+specify two SourceDetail objects, one for
+C<ConfigurationItemChangeNotification> and one for
 C<OversizedConfigurationItemChangeNotification>.
 
 

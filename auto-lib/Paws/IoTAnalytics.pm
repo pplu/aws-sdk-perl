@@ -225,7 +225,16 @@ wearable devices.
 
 =head1 METHODS
 
-=head2 BatchPutMessage(ChannelName => Str, Messages => ArrayRef[L<Paws::IoTAnalytics::Message>])
+=head2 BatchPutMessage
+
+=over
+
+=item ChannelName => Str
+
+=item Messages => ArrayRef[L<Paws::IoTAnalytics::Message>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::BatchPutMessage>
 
@@ -234,7 +243,16 @@ Returns: a L<Paws::IoTAnalytics::BatchPutMessageResponse> instance
 Sends messages to a channel.
 
 
-=head2 CancelPipelineReprocessing(PipelineName => Str, ReprocessingId => Str)
+=head2 CancelPipelineReprocessing
+
+=over
+
+=item PipelineName => Str
+
+=item ReprocessingId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::CancelPipelineReprocessing>
 
@@ -243,7 +261,16 @@ Returns: a L<Paws::IoTAnalytics::CancelPipelineReprocessingResponse> instance
 Cancels the reprocessing of data through the pipeline.
 
 
-=head2 CreateChannel(ChannelName => Str, [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>])
+=head2 CreateChannel
+
+=over
+
+=item ChannelName => Str
+
+=item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::CreateChannel>
 
@@ -254,7 +281,18 @@ archives the raw, unprocessed messages before publishing the data to a
 pipeline.
 
 
-=head2 CreateDataset(Actions => ArrayRef[L<Paws::IoTAnalytics::DatasetAction>], DatasetName => Str, [Triggers => ArrayRef[L<Paws::IoTAnalytics::DatasetTrigger>]])
+=head2 CreateDataset
+
+=over
+
+=item Actions => ArrayRef[L<Paws::IoTAnalytics::DatasetAction>]
+
+=item DatasetName => Str
+
+=item [Triggers => ArrayRef[L<Paws::IoTAnalytics::DatasetTrigger>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::CreateDataset>
 
@@ -267,7 +305,14 @@ This operation creates the skeleton of a data set. To populate the data
 set, call "CreateDatasetContent".
 
 
-=head2 CreateDatasetContent(DatasetName => Str)
+=head2 CreateDatasetContent
+
+=over
+
+=item DatasetName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::CreateDatasetContent>
 
@@ -276,7 +321,16 @@ Returns: nothing
 Creates the content of a data set by applying an SQL action.
 
 
-=head2 CreateDatastore(DatastoreName => Str, [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>])
+=head2 CreateDatastore
+
+=over
+
+=item DatastoreName => Str
+
+=item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::CreateDatastore>
 
@@ -285,7 +339,16 @@ Returns: a L<Paws::IoTAnalytics::CreateDatastoreResponse> instance
 Creates a data store, which is a repository for messages.
 
 
-=head2 CreatePipeline(PipelineActivities => ArrayRef[L<Paws::IoTAnalytics::PipelineActivity>], PipelineName => Str)
+=head2 CreatePipeline
+
+=over
+
+=item PipelineActivities => ArrayRef[L<Paws::IoTAnalytics::PipelineActivity>]
+
+=item PipelineName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::CreatePipeline>
 
@@ -296,7 +359,14 @@ channels and allows you to process the messages before storing them in
 a data store.
 
 
-=head2 DeleteChannel(ChannelName => Str)
+=head2 DeleteChannel
+
+=over
+
+=item ChannelName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::DeleteChannel>
 
@@ -305,7 +375,14 @@ Returns: nothing
 Deletes the specified channel.
 
 
-=head2 DeleteDataset(DatasetName => Str)
+=head2 DeleteDataset
+
+=over
+
+=item DatasetName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::DeleteDataset>
 
@@ -317,7 +394,16 @@ You do not have to delete the content of the data set before you
 perform this operation.
 
 
-=head2 DeleteDatasetContent(DatasetName => Str, [VersionId => Str])
+=head2 DeleteDatasetContent
+
+=over
+
+=item DatasetName => Str
+
+=item [VersionId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::DeleteDatasetContent>
 
@@ -326,7 +412,14 @@ Returns: nothing
 Deletes the content of the specified data set.
 
 
-=head2 DeleteDatastore(DatastoreName => Str)
+=head2 DeleteDatastore
+
+=over
+
+=item DatastoreName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::DeleteDatastore>
 
@@ -335,7 +428,14 @@ Returns: nothing
 Deletes the specified data store.
 
 
-=head2 DeletePipeline(PipelineName => Str)
+=head2 DeletePipeline
+
+=over
+
+=item PipelineName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::DeletePipeline>
 
@@ -344,7 +444,14 @@ Returns: nothing
 Deletes the specified pipeline.
 
 
-=head2 DescribeChannel(ChannelName => Str)
+=head2 DescribeChannel
+
+=over
+
+=item ChannelName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::DescribeChannel>
 
@@ -353,7 +460,14 @@ Returns: a L<Paws::IoTAnalytics::DescribeChannelResponse> instance
 Retrieves information about a channel.
 
 
-=head2 DescribeDataset(DatasetName => Str)
+=head2 DescribeDataset
+
+=over
+
+=item DatasetName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::DescribeDataset>
 
@@ -362,7 +476,14 @@ Returns: a L<Paws::IoTAnalytics::DescribeDatasetResponse> instance
 Retrieves information about a data set.
 
 
-=head2 DescribeDatastore(DatastoreName => Str)
+=head2 DescribeDatastore
+
+=over
+
+=item DatastoreName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::DescribeDatastore>
 
@@ -371,7 +492,12 @@ Returns: a L<Paws::IoTAnalytics::DescribeDatastoreResponse> instance
 Retrieves information about a data store.
 
 
-=head2 DescribeLoggingOptions()
+=head2 DescribeLoggingOptions
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::DescribeLoggingOptions>
 
@@ -381,7 +507,14 @@ Retrieves the current settings of the AWS IoT Analytics logging
 options.
 
 
-=head2 DescribePipeline(PipelineName => Str)
+=head2 DescribePipeline
+
+=over
+
+=item PipelineName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::DescribePipeline>
 
@@ -390,7 +523,16 @@ Returns: a L<Paws::IoTAnalytics::DescribePipelineResponse> instance
 Retrieves information about a pipeline.
 
 
-=head2 GetDatasetContent(DatasetName => Str, [VersionId => Str])
+=head2 GetDatasetContent
+
+=over
+
+=item DatasetName => Str
+
+=item [VersionId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::GetDatasetContent>
 
@@ -399,7 +541,16 @@ Returns: a L<Paws::IoTAnalytics::GetDatasetContentResponse> instance
 Retrieves the contents of a data set as pre-signed URIs.
 
 
-=head2 ListChannels([MaxResults => Int, NextToken => Str])
+=head2 ListChannels
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::ListChannels>
 
@@ -408,7 +559,16 @@ Returns: a L<Paws::IoTAnalytics::ListChannelsResponse> instance
 Retrieves a list of channels.
 
 
-=head2 ListDatasets([MaxResults => Int, NextToken => Str])
+=head2 ListDatasets
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::ListDatasets>
 
@@ -417,7 +577,16 @@ Returns: a L<Paws::IoTAnalytics::ListDatasetsResponse> instance
 Retrieves information about data sets.
 
 
-=head2 ListDatastores([MaxResults => Int, NextToken => Str])
+=head2 ListDatastores
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::ListDatastores>
 
@@ -426,7 +595,16 @@ Returns: a L<Paws::IoTAnalytics::ListDatastoresResponse> instance
 Retrieves a list of data stores.
 
 
-=head2 ListPipelines([MaxResults => Int, NextToken => Str])
+=head2 ListPipelines
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::ListPipelines>
 
@@ -435,7 +613,14 @@ Returns: a L<Paws::IoTAnalytics::ListPipelinesResponse> instance
 Retrieves a list of pipelines.
 
 
-=head2 PutLoggingOptions(LoggingOptions => L<Paws::IoTAnalytics::LoggingOptions>)
+=head2 PutLoggingOptions
+
+=over
+
+=item LoggingOptions => L<Paws::IoTAnalytics::LoggingOptions>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::PutLoggingOptions>
 
@@ -444,7 +629,16 @@ Returns: nothing
 Sets or updates the AWS IoT Analytics logging options.
 
 
-=head2 RunPipelineActivity(Payloads => ArrayRef[Str|Undef], PipelineActivity => L<Paws::IoTAnalytics::PipelineActivity>)
+=head2 RunPipelineActivity
+
+=over
+
+=item Payloads => ArrayRef[Str|Undef]
+
+=item PipelineActivity => L<Paws::IoTAnalytics::PipelineActivity>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::RunPipelineActivity>
 
@@ -454,7 +648,20 @@ Simulates the results of running a pipeline activity on a message
 payload.
 
 
-=head2 SampleChannelData(ChannelName => Str, [EndTime => Str, MaxMessages => Int, StartTime => Str])
+=head2 SampleChannelData
+
+=over
+
+=item ChannelName => Str
+
+=item [EndTime => Str]
+
+=item [MaxMessages => Int]
+
+=item [StartTime => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::SampleChannelData>
 
@@ -464,7 +671,18 @@ Retrieves a sample of messages from the specified channel ingested
 during the specified timeframe. Up to 10 messages can be retrieved.
 
 
-=head2 StartPipelineReprocessing(PipelineName => Str, [EndTime => Str, StartTime => Str])
+=head2 StartPipelineReprocessing
+
+=over
+
+=item PipelineName => Str
+
+=item [EndTime => Str]
+
+=item [StartTime => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::StartPipelineReprocessing>
 
@@ -473,7 +691,16 @@ Returns: a L<Paws::IoTAnalytics::StartPipelineReprocessingResponse> instance
 Starts the reprocessing of raw message data through the pipeline.
 
 
-=head2 UpdateChannel(ChannelName => Str, [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>])
+=head2 UpdateChannel
+
+=over
+
+=item ChannelName => Str
+
+=item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::UpdateChannel>
 
@@ -482,7 +709,18 @@ Returns: nothing
 Updates the settings of a channel.
 
 
-=head2 UpdateDataset(Actions => ArrayRef[L<Paws::IoTAnalytics::DatasetAction>], DatasetName => Str, [Triggers => ArrayRef[L<Paws::IoTAnalytics::DatasetTrigger>]])
+=head2 UpdateDataset
+
+=over
+
+=item Actions => ArrayRef[L<Paws::IoTAnalytics::DatasetAction>]
+
+=item DatasetName => Str
+
+=item [Triggers => ArrayRef[L<Paws::IoTAnalytics::DatasetTrigger>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::UpdateDataset>
 
@@ -491,7 +729,16 @@ Returns: nothing
 Updates the settings of a data set.
 
 
-=head2 UpdateDatastore(DatastoreName => Str, [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>])
+=head2 UpdateDatastore
+
+=over
+
+=item DatastoreName => Str
+
+=item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::UpdateDatastore>
 
@@ -500,7 +747,16 @@ Returns: nothing
 Updates the settings of a data store.
 
 
-=head2 UpdatePipeline(PipelineActivities => ArrayRef[L<Paws::IoTAnalytics::PipelineActivity>], PipelineName => Str)
+=head2 UpdatePipeline
+
+=over
+
+=item PipelineActivities => ArrayRef[L<Paws::IoTAnalytics::PipelineActivity>]
+
+=item PipelineName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::UpdatePipeline>
 

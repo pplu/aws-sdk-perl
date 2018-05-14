@@ -156,7 +156,14 @@ and the Developer Guide for iOS
 
 =head1 METHODS
 
-=head2 BulkPublish(IdentityPoolId => Str)
+=head2 BulkPublish
+
+=over
+
+=item IdentityPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoSync::BulkPublish>
 
@@ -173,7 +180,18 @@ this API with the temporary user credentials provided by Cognito
 Identity.
 
 
-=head2 DeleteDataset(DatasetName => Str, IdentityId => Str, IdentityPoolId => Str)
+=head2 DeleteDataset
+
+=over
+
+=item DatasetName => Str
+
+=item IdentityId => Str
+
+=item IdentityPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoSync::DeleteDataset>
 
@@ -188,7 +206,18 @@ This API can be called with temporary user credentials provided by
 Cognito Identity or with developer credentials.
 
 
-=head2 DescribeDataset(DatasetName => Str, IdentityId => Str, IdentityPoolId => Str)
+=head2 DescribeDataset
+
+=over
+
+=item DatasetName => Str
+
+=item IdentityId => Str
+
+=item IdentityPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoSync::DescribeDataset>
 
@@ -204,7 +233,14 @@ Cognito Identity or with developer credentials. You should use Cognito
 Identity credentials to make this API call.
 
 
-=head2 DescribeIdentityPoolUsage(IdentityPoolId => Str)
+=head2 DescribeIdentityPoolUsage
+
+=over
+
+=item IdentityPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoSync::DescribeIdentityPoolUsage>
 
@@ -218,7 +254,16 @@ this API with the temporary user credentials provided by Cognito
 Identity.
 
 
-=head2 DescribeIdentityUsage(IdentityId => Str, IdentityPoolId => Str)
+=head2 DescribeIdentityUsage
+
+=over
+
+=item IdentityId => Str
+
+=item IdentityPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoSync::DescribeIdentityUsage>
 
@@ -231,7 +276,14 @@ This API can be called with temporary user credentials provided by
 Cognito Identity or with developer credentials.
 
 
-=head2 GetBulkPublishDetails(IdentityPoolId => Str)
+=head2 GetBulkPublishDetails
+
+=over
+
+=item IdentityPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoSync::GetBulkPublishDetails>
 
@@ -244,7 +296,14 @@ this API with the temporary user credentials provided by Cognito
 Identity.
 
 
-=head2 GetCognitoEvents(IdentityPoolId => Str)
+=head2 GetCognitoEvents
+
+=over
+
+=item IdentityPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoSync::GetCognitoEvents>
 
@@ -258,7 +317,14 @@ this API with the temporary user credentials provided by Cognito
 Identity.
 
 
-=head2 GetIdentityPoolConfiguration(IdentityPoolId => Str)
+=head2 GetIdentityPoolConfiguration
+
+=over
+
+=item IdentityPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoSync::GetIdentityPoolConfiguration>
 
@@ -271,7 +337,20 @@ this API with the temporary user credentials provided by Cognito
 Identity.
 
 
-=head2 ListDatasets(IdentityId => Str, IdentityPoolId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListDatasets
+
+=over
+
+=item IdentityId => Str
+
+=item IdentityPoolId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoSync::ListDatasets>
 
@@ -286,7 +365,16 @@ Cognito Identity or with developer credentials. You should use the
 Cognito Identity credentials to make this API call.
 
 
-=head2 ListIdentityPoolUsage([MaxResults => Int, NextToken => Str])
+=head2 ListIdentityPoolUsage
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoSync::ListIdentityPoolUsage>
 
@@ -299,7 +387,26 @@ You cannot make this API call with the temporary user credentials
 provided by Cognito Identity.
 
 
-=head2 ListRecords(DatasetName => Str, IdentityId => Str, IdentityPoolId => Str, [LastSyncCount => Int, MaxResults => Int, NextToken => Str, SyncSessionToken => Str])
+=head2 ListRecords
+
+=over
+
+=item DatasetName => Str
+
+=item IdentityId => Str
+
+=item IdentityPoolId => Str
+
+=item [LastSyncCount => Int]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SyncSessionToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoSync::ListRecords>
 
@@ -315,7 +422,20 @@ Cognito Identity or with developer credentials. You should use Cognito
 Identity credentials to make this API call.
 
 
-=head2 RegisterDevice(IdentityId => Str, IdentityPoolId => Str, Platform => Str, Token => Str)
+=head2 RegisterDevice
+
+=over
+
+=item IdentityId => Str
+
+=item IdentityPoolId => Str
+
+=item Platform => Str
+
+=item Token => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoSync::RegisterDevice>
 
@@ -327,7 +447,16 @@ This API can only be called with temporary credentials provided by
 Cognito Identity. You cannot call this API with developer credentials.
 
 
-=head2 SetCognitoEvents(Events => L<Paws::CognitoSync::Events>, IdentityPoolId => Str)
+=head2 SetCognitoEvents
+
+=over
+
+=item Events => L<Paws::CognitoSync::Events>
+
+=item IdentityPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoSync::SetCognitoEvents>
 
@@ -343,7 +472,18 @@ this API with the temporary user credentials provided by Cognito
 Identity.
 
 
-=head2 SetIdentityPoolConfiguration(IdentityPoolId => Str, [CognitoStreams => L<Paws::CognitoSync::CognitoStreams>, PushSync => L<Paws::CognitoSync::PushSync>])
+=head2 SetIdentityPoolConfiguration
+
+=over
+
+=item IdentityPoolId => Str
+
+=item [CognitoStreams => L<Paws::CognitoSync::CognitoStreams>]
+
+=item [PushSync => L<Paws::CognitoSync::PushSync>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoSync::SetIdentityPoolConfiguration>
 
@@ -356,7 +496,20 @@ this API with the temporary user credentials provided by Cognito
 Identity.
 
 
-=head2 SubscribeToDataset(DatasetName => Str, DeviceId => Str, IdentityId => Str, IdentityPoolId => Str)
+=head2 SubscribeToDataset
+
+=over
+
+=item DatasetName => Str
+
+=item DeviceId => Str
+
+=item IdentityId => Str
+
+=item IdentityPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoSync::SubscribeToDataset>
 
@@ -369,7 +522,20 @@ This API can only be called with temporary credentials provided by
 Cognito Identity. You cannot call this API with developer credentials.
 
 
-=head2 UnsubscribeFromDataset(DatasetName => Str, DeviceId => Str, IdentityId => Str, IdentityPoolId => Str)
+=head2 UnsubscribeFromDataset
+
+=over
+
+=item DatasetName => Str
+
+=item DeviceId => Str
+
+=item IdentityId => Str
+
+=item IdentityPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoSync::UnsubscribeFromDataset>
 
@@ -382,7 +548,26 @@ This API can only be called with temporary credentials provided by
 Cognito Identity. You cannot call this API with developer credentials.
 
 
-=head2 UpdateRecords(DatasetName => Str, IdentityId => Str, IdentityPoolId => Str, SyncSessionToken => Str, [ClientContext => Str, DeviceId => Str, RecordPatches => ArrayRef[L<Paws::CognitoSync::RecordPatch>]])
+=head2 UpdateRecords
+
+=over
+
+=item DatasetName => Str
+
+=item IdentityId => Str
+
+=item IdentityPoolId => Str
+
+=item SyncSessionToken => Str
+
+=item [ClientContext => Str]
+
+=item [DeviceId => Str]
+
+=item [RecordPatches => ArrayRef[L<Paws::CognitoSync::RecordPatch>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoSync::UpdateRecords>
 

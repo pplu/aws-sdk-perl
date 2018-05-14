@@ -167,7 +167,20 @@ https://api.pricing.ap-south-1.amazonaws.com
 
 =head1 METHODS
 
-=head2 DescribeServices([FormatVersion => Str, MaxResults => Int, NextToken => Str, ServiceCode => Str])
+=head2 DescribeServices
+
+=over
+
+=item [FormatVersion => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ServiceCode => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Pricing::DescribeServices>
 
@@ -182,7 +195,20 @@ available for EC2 are C<volumeType>, C<maxIopsVolume>, C<operation>,
 C<locationType>, and C<instanceCapacity10xlarge>.
 
 
-=head2 GetAttributeValues(AttributeName => Str, ServiceCode => Str, [MaxResults => Int, NextToken => Str])
+=head2 GetAttributeValues
+
+=over
+
+=item AttributeName => Str
+
+=item ServiceCode => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Pricing::GetAttributeValues>
 
@@ -196,7 +222,22 @@ in the AWS Billing and Cost Management User Guide
 (http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html).
 
 
-=head2 GetProducts([Filters => ArrayRef[L<Paws::Pricing::Filter>], FormatVersion => Str, MaxResults => Int, NextToken => Str, ServiceCode => Str])
+=head2 GetProducts
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::Pricing::Filter>]]
+
+=item [FormatVersion => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ServiceCode => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Pricing::GetProducts>
 

@@ -438,7 +438,18 @@ Amazon Route 53 detail page.
 
 =head1 METHODS
 
-=head2 AssociateVPCWithHostedZone(HostedZoneId => Str, VPC => L<Paws::Route53::VPC>, [Comment => Str])
+=head2 AssociateVPCWithHostedZone
+
+=over
+
+=item HostedZoneId => Str
+
+=item VPC => L<Paws::Route53::VPC>
+
+=item [Comment => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::AssociateVPCWithHostedZone>
 
@@ -458,7 +469,16 @@ the account that created the VPC must submit an
 C<AssociateVPCWithHostedZone> request.
 
 
-=head2 ChangeResourceRecordSets(ChangeBatch => L<Paws::Route53::ChangeBatch>, HostedZoneId => Str)
+=head2 ChangeResourceRecordSets
+
+=over
+
+=item ChangeBatch => L<Paws::Route53::ChangeBatch>
+
+=item HostedZoneId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::ChangeResourceRecordSets>
 
@@ -563,7 +583,20 @@ request, see Limits
 in the I<Amazon Route 53 Developer Guide>.
 
 
-=head2 ChangeTagsForResource(ResourceId => Str, ResourceType => Str, [AddTags => ArrayRef[L<Paws::Route53::Tag>], RemoveTagKeys => ArrayRef[Str|Undef]])
+=head2 ChangeTagsForResource
+
+=over
+
+=item ResourceId => Str
+
+=item ResourceType => Str
+
+=item [AddTags => ArrayRef[L<Paws::Route53::Tag>]]
+
+=item [RemoveTagKeys => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::ChangeTagsForResource>
 
@@ -577,7 +610,16 @@ Allocation Tags
 in the I<AWS Billing and Cost Management User Guide>.
 
 
-=head2 CreateHealthCheck(CallerReference => Str, HealthCheckConfig => L<Paws::Route53::HealthCheckConfig>)
+=head2 CreateHealthCheck
+
+=over
+
+=item CallerReference => Str
+
+=item HealthCheckConfig => L<Paws::Route53::HealthCheckConfig>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::CreateHealthCheck>
 
@@ -630,7 +672,22 @@ Guide
 
 
 
-=head2 CreateHostedZone(CallerReference => Str, Name => Str, [DelegationSetId => Str, HostedZoneConfig => L<Paws::Route53::HostedZoneConfig>, VPC => L<Paws::Route53::VPC>])
+=head2 CreateHostedZone
+
+=over
+
+=item CallerReference => Str
+
+=item Name => Str
+
+=item [DelegationSetId => Str]
+
+=item [HostedZoneConfig => L<Paws::Route53::HostedZoneConfig>]
+
+=item [VPC => L<Paws::Route53::VPC>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::CreateHostedZone>
 
@@ -685,7 +742,16 @@ and SOA records are available, the status of the zone changes to
 C<INSYNC>.
 
 
-=head2 CreateQueryLoggingConfig(CloudWatchLogsLogGroupArn => Str, HostedZoneId => Str)
+=head2 CreateQueryLoggingConfig
+
+=over
+
+=item CloudWatchLogsLogGroupArn => Str
+
+=item HostedZoneId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::CreateQueryLoggingConfig>
 
@@ -851,7 +917,16 @@ DeleteQueryLoggingConfig.
 
 
 
-=head2 CreateReusableDelegationSet(CallerReference => Str, [HostedZoneId => Str])
+=head2 CreateReusableDelegationSet
+
+=over
+
+=item CallerReference => Str
+
+=item [HostedZoneId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::CreateReusableDelegationSet>
 
@@ -933,7 +1008,18 @@ the reusable delegation set.
 
 
 
-=head2 CreateTrafficPolicy(Document => Str, Name => Str, [Comment => Str])
+=head2 CreateTrafficPolicy
+
+=over
+
+=item Document => Str
+
+=item Name => Str
+
+=item [Comment => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::CreateTrafficPolicy>
 
@@ -944,7 +1030,22 @@ record sets for one domain name (such as example.com) or one subdomain
 name (such as www.example.com).
 
 
-=head2 CreateTrafficPolicyInstance(HostedZoneId => Str, Name => Str, TrafficPolicyId => Str, TrafficPolicyVersion => Int, TTL => Int)
+=head2 CreateTrafficPolicyInstance
+
+=over
+
+=item HostedZoneId => Str
+
+=item Name => Str
+
+=item TrafficPolicyId => Str
+
+=item TrafficPolicyVersion => Int
+
+=item TTL => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::CreateTrafficPolicyInstance>
 
@@ -959,7 +1060,18 @@ domain or subdomain name by using the resource record sets that
 C<CreateTrafficPolicyInstance> created.
 
 
-=head2 CreateTrafficPolicyVersion(Document => Str, Id => Str, [Comment => Str])
+=head2 CreateTrafficPolicyVersion
+
+=over
+
+=item Document => Str
+
+=item Id => Str
+
+=item [Comment => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::CreateTrafficPolicyVersion>
 
@@ -975,7 +1087,16 @@ of 1000 versions of a traffic policy. If you reach the limit and need
 to create another version, you'll need to start a new traffic policy.
 
 
-=head2 CreateVPCAssociationAuthorization(HostedZoneId => Str, VPC => L<Paws::Route53::VPC>)
+=head2 CreateVPCAssociationAuthorization
+
+=over
+
+=item HostedZoneId => Str
+
+=item VPC => L<Paws::Route53::VPC>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::CreateVPCAssociationAuthorization>
 
@@ -994,7 +1115,14 @@ account with a hosted zone that you created by using a different
 account, you must submit one authorization request for each VPC.
 
 
-=head2 DeleteHealthCheck(HealthCheckId => Str)
+=head2 DeleteHealthCheck
+
+=over
+
+=item HealthCheckId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::DeleteHealthCheck>
 
@@ -1013,7 +1141,14 @@ Replacing and Deleting Health Checks
 in the I<Amazon Route 53 Developer Guide>.
 
 
-=head2 DeleteHostedZone(Id => Str)
+=head2 DeleteHostedZone
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::DeleteHostedZone>
 
@@ -1063,7 +1198,14 @@ associated with the current AWS account.
 
 
 
-=head2 DeleteQueryLoggingConfig(Id => Str)
+=head2 DeleteQueryLoggingConfig
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::DeleteQueryLoggingConfig>
 
@@ -1078,7 +1220,14 @@ For more information about DNS query logs, see
 CreateQueryLoggingConfig.
 
 
-=head2 DeleteReusableDelegationSet(Id => Str)
+=head2 DeleteReusableDelegationSet
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::DeleteReusableDelegationSet>
 
@@ -1094,7 +1243,16 @@ hosted zones, submit a GetReusableDelegationSet request and specify the
 ID of the reusable delegation set that you want to delete.
 
 
-=head2 DeleteTrafficPolicy(Id => Str, Version => Int)
+=head2 DeleteTrafficPolicy
+
+=over
+
+=item Id => Str
+
+=item Version => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::DeleteTrafficPolicy>
 
@@ -1103,7 +1261,14 @@ Returns: a L<Paws::Route53::DeleteTrafficPolicyResponse> instance
 Deletes a traffic policy.
 
 
-=head2 DeleteTrafficPolicyInstance(Id => Str)
+=head2 DeleteTrafficPolicyInstance
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::DeleteTrafficPolicyInstance>
 
@@ -1116,7 +1281,16 @@ In the Amazon Route 53 console, traffic policy instances are known as
 policy records.
 
 
-=head2 DeleteVPCAssociationAuthorization(HostedZoneId => Str, VPC => L<Paws::Route53::VPC>)
+=head2 DeleteVPCAssociationAuthorization
+
+=over
+
+=item HostedZoneId => Str
+
+=item VPC => L<Paws::Route53::VPC>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::DeleteVPCAssociationAuthorization>
 
@@ -1136,7 +1310,18 @@ the hosted zone. If you want to delete an existing association, use
 C<DisassociateVPCFromHostedZone>.
 
 
-=head2 DisassociateVPCFromHostedZone(HostedZoneId => Str, VPC => L<Paws::Route53::VPC>, [Comment => Str])
+=head2 DisassociateVPCFromHostedZone
+
+=over
+
+=item HostedZoneId => Str
+
+=item VPC => L<Paws::Route53::VPC>
+
+=item [Comment => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::DisassociateVPCFromHostedZone>
 
@@ -1151,7 +1336,14 @@ VPC is associated with the hosted zone. You also can't convert a
 private hosted zone into a public hosted zone.
 
 
-=head2 GetAccountLimit(Type => Str)
+=head2 GetAccountLimit
+
+=over
+
+=item Type => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::GetAccountLimit>
 
@@ -1167,7 +1359,14 @@ open a case
 (https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53).
 
 
-=head2 GetChange(Id => Str)
+=head2 GetChange
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::GetChange>
 
@@ -1193,7 +1392,12 @@ Route 53 DNS servers.
 
 
 
-=head2 GetCheckerIpRanges()
+=head2 GetCheckerIpRanges
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::Route53::GetCheckerIpRanges>
 
@@ -1206,7 +1410,18 @@ For more information, see IP Address Ranges of Amazon Route 53 Servers
 in the I<Amazon Route 53 Developer Guide>.
 
 
-=head2 GetGeoLocation([ContinentCode => Str, CountryCode => Str, SubdivisionCode => Str])
+=head2 GetGeoLocation
+
+=over
+
+=item [ContinentCode => Str]
+
+=item [CountryCode => Str]
+
+=item [SubdivisionCode => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::GetGeoLocation>
 
@@ -1234,7 +1449,14 @@ C<GET /2013-04-01/geolocation?CountryCode=I<two-character country
 code>&SubdivisionCode=I<subdivision code>>
 
 
-=head2 GetHealthCheck(HealthCheckId => Str)
+=head2 GetHealthCheck
+
+=over
+
+=item HealthCheckId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::GetHealthCheck>
 
@@ -1243,7 +1465,12 @@ Returns: a L<Paws::Route53::GetHealthCheckResponse> instance
 Gets information about a specified health check.
 
 
-=head2 GetHealthCheckCount()
+=head2 GetHealthCheckCount
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::Route53::GetHealthCheckCount>
 
@@ -1253,7 +1480,14 @@ Retrieves the number of health checks that are associated with the
 current AWS account.
 
 
-=head2 GetHealthCheckLastFailureReason(HealthCheckId => Str)
+=head2 GetHealthCheckLastFailureReason
+
+=over
+
+=item HealthCheckId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::GetHealthCheckLastFailureReason>
 
@@ -1262,7 +1496,14 @@ Returns: a L<Paws::Route53::GetHealthCheckLastFailureReasonResponse> instance
 Gets the reason that a specified health check failed most recently.
 
 
-=head2 GetHealthCheckStatus(HealthCheckId => Str)
+=head2 GetHealthCheckStatus
+
+=over
+
+=item HealthCheckId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::GetHealthCheckStatus>
 
@@ -1271,7 +1512,14 @@ Returns: a L<Paws::Route53::GetHealthCheckStatusResponse> instance
 Gets status of a specified health check.
 
 
-=head2 GetHostedZone(Id => Str)
+=head2 GetHostedZone
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::GetHostedZone>
 
@@ -1281,7 +1529,12 @@ Gets information about a specified hosted zone including the four name
 servers assigned to the hosted zone.
 
 
-=head2 GetHostedZoneCount()
+=head2 GetHostedZoneCount
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::Route53::GetHostedZoneCount>
 
@@ -1291,7 +1544,16 @@ Retrieves the number of hosted zones that are associated with the
 current AWS account.
 
 
-=head2 GetHostedZoneLimit(HostedZoneId => Str, Type => Str)
+=head2 GetHostedZoneLimit
+
+=over
+
+=item HostedZoneId => Str
+
+=item Type => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::GetHostedZoneLimit>
 
@@ -1307,7 +1569,14 @@ open a case
 (https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53).
 
 
-=head2 GetQueryLoggingConfig(Id => Str)
+=head2 GetQueryLoggingConfig
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::GetQueryLoggingConfig>
 
@@ -1320,7 +1589,14 @@ and Logging DNS Queries
 (http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html).
 
 
-=head2 GetReusableDelegationSet(Id => Str)
+=head2 GetReusableDelegationSet
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::GetReusableDelegationSet>
 
@@ -1331,7 +1607,16 @@ including the four name servers that are assigned to the delegation
 set.
 
 
-=head2 GetReusableDelegationSetLimit(DelegationSetId => Str, Type => Str)
+=head2 GetReusableDelegationSetLimit
+
+=over
+
+=item DelegationSetId => Str
+
+=item Type => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::GetReusableDelegationSetLimit>
 
@@ -1347,7 +1632,16 @@ open a case
 (https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53).
 
 
-=head2 GetTrafficPolicy(Id => Str, Version => Int)
+=head2 GetTrafficPolicy
+
+=over
+
+=item Id => Str
+
+=item Version => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::GetTrafficPolicy>
 
@@ -1356,7 +1650,14 @@ Returns: a L<Paws::Route53::GetTrafficPolicyResponse> instance
 Gets information about a specific traffic policy version.
 
 
-=head2 GetTrafficPolicyInstance(Id => Str)
+=head2 GetTrafficPolicyInstance
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::GetTrafficPolicyInstance>
 
@@ -1374,7 +1675,12 @@ In the Amazon Route 53 console, traffic policy instances are known as
 policy records.
 
 
-=head2 GetTrafficPolicyInstanceCount()
+=head2 GetTrafficPolicyInstanceCount
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::Route53::GetTrafficPolicyInstanceCount>
 
@@ -1384,7 +1690,20 @@ Gets the number of traffic policy instances that are associated with
 the current AWS account.
 
 
-=head2 ListGeoLocations([MaxItems => Str, StartContinentCode => Str, StartCountryCode => Str, StartSubdivisionCode => Str])
+=head2 ListGeoLocations
+
+=over
+
+=item [MaxItems => Str]
+
+=item [StartContinentCode => Str]
+
+=item [StartCountryCode => Str]
+
+=item [StartSubdivisionCode => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::ListGeoLocations>
 
@@ -1398,7 +1717,16 @@ provinces), the subdivisions for that country are listed in
 alphabetical order immediately after the corresponding country.
 
 
-=head2 ListHealthChecks([Marker => Str, MaxItems => Str])
+=head2 ListHealthChecks
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::ListHealthChecks>
 
@@ -1408,7 +1736,18 @@ Retrieve a list of the health checks that are associated with the
 current AWS account.
 
 
-=head2 ListHostedZones([DelegationSetId => Str, Marker => Str, MaxItems => Str])
+=head2 ListHostedZones
+
+=over
+
+=item [DelegationSetId => Str]
+
+=item [Marker => Str]
+
+=item [MaxItems => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::ListHostedZones>
 
@@ -1423,7 +1762,18 @@ have a lot of hosted zones, you can use the C<maxitems> parameter to
 list them in groups of up to 100.
 
 
-=head2 ListHostedZonesByName([DNSName => Str, HostedZoneId => Str, MaxItems => Str])
+=head2 ListHostedZonesByName
+
+=over
+
+=item [DNSName => Str]
+
+=item [HostedZoneId => Str]
+
+=item [MaxItems => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::ListHostedZonesByName>
 
@@ -1497,7 +1847,18 @@ C<dnsname> and C<hostedzoneid> parameters, respectively.
 
 
 
-=head2 ListQueryLoggingConfigs([HostedZoneId => Str, MaxResults => Str, NextToken => Str])
+=head2 ListQueryLoggingConfigs
+
+=over
+
+=item [HostedZoneId => Str]
+
+=item [MaxResults => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::ListQueryLoggingConfigs>
 
@@ -1514,7 +1875,22 @@ of DNS query logs, appears in Logging DNS Queries
 in the I<Amazon Route 53 Developer Guide>.
 
 
-=head2 ListResourceRecordSets(HostedZoneId => Str, [MaxItems => Str, StartRecordIdentifier => Str, StartRecordName => Str, StartRecordType => Str])
+=head2 ListResourceRecordSets
+
+=over
+
+=item HostedZoneId => Str
+
+=item [MaxItems => Str]
+
+=item [StartRecordIdentifier => Str]
+
+=item [StartRecordName => Str]
+
+=item [StartRecordType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::ListResourceRecordSets>
 
@@ -1574,7 +1950,16 @@ may display results without the latest changes while other pages
 display results with the latest changes.
 
 
-=head2 ListReusableDelegationSets([Marker => Str, MaxItems => Str])
+=head2 ListReusableDelegationSets
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::ListReusableDelegationSets>
 
@@ -1584,7 +1969,16 @@ Retrieves a list of the reusable delegation sets that are associated
 with the current AWS account.
 
 
-=head2 ListTagsForResource(ResourceId => Str, ResourceType => Str)
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceId => Str
+
+=item ResourceType => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::ListTagsForResource>
 
@@ -1598,7 +1992,16 @@ Allocation Tags
 in the I<AWS Billing and Cost Management User Guide>.
 
 
-=head2 ListTagsForResources(ResourceIds => ArrayRef[Str|Undef], ResourceType => Str)
+=head2 ListTagsForResources
+
+=over
+
+=item ResourceIds => ArrayRef[Str|Undef]
+
+=item ResourceType => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::ListTagsForResources>
 
@@ -1612,7 +2015,16 @@ Allocation Tags
 in the I<AWS Billing and Cost Management User Guide>.
 
 
-=head2 ListTrafficPolicies([MaxItems => Str, TrafficPolicyIdMarker => Str])
+=head2 ListTrafficPolicies
+
+=over
+
+=item [MaxItems => Str]
+
+=item [TrafficPolicyIdMarker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::ListTrafficPolicies>
 
@@ -1623,7 +2035,20 @@ is associated with the current AWS account. Policies are listed in the
 order in which they were created.
 
 
-=head2 ListTrafficPolicyInstances([HostedZoneIdMarker => Str, MaxItems => Str, TrafficPolicyInstanceNameMarker => Str, TrafficPolicyInstanceTypeMarker => Str])
+=head2 ListTrafficPolicyInstances
+
+=over
+
+=item [HostedZoneIdMarker => Str]
+
+=item [MaxItems => Str]
+
+=item [TrafficPolicyInstanceNameMarker => Str]
+
+=item [TrafficPolicyInstanceTypeMarker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::ListTrafficPolicyInstances>
 
@@ -1642,7 +2067,20 @@ have a lot of traffic policy instances, you can use the C<MaxItems>
 parameter to list them in groups of up to 100.
 
 
-=head2 ListTrafficPolicyInstancesByHostedZone(HostedZoneId => Str, [MaxItems => Str, TrafficPolicyInstanceNameMarker => Str, TrafficPolicyInstanceTypeMarker => Str])
+=head2 ListTrafficPolicyInstancesByHostedZone
+
+=over
+
+=item HostedZoneId => Str
+
+=item [MaxItems => Str]
+
+=item [TrafficPolicyInstanceNameMarker => Str]
+
+=item [TrafficPolicyInstanceTypeMarker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::ListTrafficPolicyInstancesByHostedZone>
 
@@ -1662,7 +2100,24 @@ have a lot of traffic policy instances, you can use the C<MaxItems>
 parameter to list them in groups of up to 100.
 
 
-=head2 ListTrafficPolicyInstancesByPolicy(TrafficPolicyId => Str, TrafficPolicyVersion => Int, [HostedZoneIdMarker => Str, MaxItems => Str, TrafficPolicyInstanceNameMarker => Str, TrafficPolicyInstanceTypeMarker => Str])
+=head2 ListTrafficPolicyInstancesByPolicy
+
+=over
+
+=item TrafficPolicyId => Str
+
+=item TrafficPolicyVersion => Int
+
+=item [HostedZoneIdMarker => Str]
+
+=item [MaxItems => Str]
+
+=item [TrafficPolicyInstanceNameMarker => Str]
+
+=item [TrafficPolicyInstanceTypeMarker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::ListTrafficPolicyInstancesByPolicy>
 
@@ -1682,7 +2137,18 @@ have a lot of traffic policy instances, you can use the C<MaxItems>
 parameter to list them in groups of up to 100.
 
 
-=head2 ListTrafficPolicyVersions(Id => Str, [MaxItems => Str, TrafficPolicyVersionMarker => Str])
+=head2 ListTrafficPolicyVersions
+
+=over
+
+=item Id => Str
+
+=item [MaxItems => Str]
+
+=item [TrafficPolicyVersionMarker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::ListTrafficPolicyVersions>
 
@@ -1695,7 +2161,18 @@ Traffic policy versions are listed in numerical order by
 C<VersionNumber>.
 
 
-=head2 ListVPCAssociationAuthorizations(HostedZoneId => Str, [MaxResults => Str, NextToken => Str])
+=head2 ListVPCAssociationAuthorizations
+
+=over
+
+=item HostedZoneId => Str
+
+=item [MaxResults => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::ListVPCAssociationAuthorizations>
 
@@ -1709,7 +2186,24 @@ The response includes a C<VPCs> element with a C<VPC> child element for
 each VPC that can be associated with the hosted zone.
 
 
-=head2 TestDNSAnswer(HostedZoneId => Str, RecordName => Str, RecordType => Str, [EDNS0ClientSubnetIP => Str, EDNS0ClientSubnetMask => Str, ResolverIP => Str])
+=head2 TestDNSAnswer
+
+=over
+
+=item HostedZoneId => Str
+
+=item RecordName => Str
+
+=item RecordType => Str
+
+=item [EDNS0ClientSubnetIP => Str]
+
+=item [EDNS0ClientSubnetMask => Str]
+
+=item [ResolverIP => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::TestDNSAnswer>
 
@@ -1721,7 +2215,44 @@ specify the IP address of a DNS resolver, an EDNS0 client subnet IP
 address, and a subnet mask.
 
 
-=head2 UpdateHealthCheck(HealthCheckId => Str, [AlarmIdentifier => L<Paws::Route53::AlarmIdentifier>, ChildHealthChecks => ArrayRef[Str|Undef], EnableSNI => Bool, FailureThreshold => Int, FullyQualifiedDomainName => Str, HealthCheckVersion => Int, HealthThreshold => Int, InsufficientDataHealthStatus => Str, Inverted => Bool, IPAddress => Str, Port => Int, Regions => ArrayRef[Str|Undef], ResetElements => ArrayRef[Str|Undef], ResourcePath => Str, SearchString => Str])
+=head2 UpdateHealthCheck
+
+=over
+
+=item HealthCheckId => Str
+
+=item [AlarmIdentifier => L<Paws::Route53::AlarmIdentifier>]
+
+=item [ChildHealthChecks => ArrayRef[Str|Undef]]
+
+=item [EnableSNI => Bool]
+
+=item [FailureThreshold => Int]
+
+=item [FullyQualifiedDomainName => Str]
+
+=item [HealthCheckVersion => Int]
+
+=item [HealthThreshold => Int]
+
+=item [InsufficientDataHealthStatus => Str]
+
+=item [Inverted => Bool]
+
+=item [IPAddress => Str]
+
+=item [Port => Int]
+
+=item [Regions => ArrayRef[Str|Undef]]
+
+=item [ResetElements => ArrayRef[Str|Undef]]
+
+=item [ResourcePath => Str]
+
+=item [SearchString => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::UpdateHealthCheck>
 
@@ -1736,7 +2267,16 @@ Updating, and Deleting Health Checks
 in the I<Amazon Route 53 Developer Guide>.
 
 
-=head2 UpdateHostedZoneComment(Id => Str, [Comment => Str])
+=head2 UpdateHostedZoneComment
+
+=over
+
+=item Id => Str
+
+=item [Comment => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::UpdateHostedZoneComment>
 
@@ -1745,7 +2285,18 @@ Returns: a L<Paws::Route53::UpdateHostedZoneCommentResponse> instance
 Updates the comment for a specified hosted zone.
 
 
-=head2 UpdateTrafficPolicyComment(Comment => Str, Id => Str, Version => Int)
+=head2 UpdateTrafficPolicyComment
+
+=over
+
+=item Comment => Str
+
+=item Id => Str
+
+=item Version => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::UpdateTrafficPolicyComment>
 
@@ -1754,7 +2305,20 @@ Returns: a L<Paws::Route53::UpdateTrafficPolicyCommentResponse> instance
 Updates the comment for a specified traffic policy version.
 
 
-=head2 UpdateTrafficPolicyInstance(Id => Str, TrafficPolicyId => Str, TrafficPolicyVersion => Int, TTL => Int)
+=head2 UpdateTrafficPolicyInstance
+
+=over
+
+=item Id => Str
+
+=item TrafficPolicyId => Str
+
+=item TrafficPolicyVersion => Int
+
+=item TTL => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Route53::UpdateTrafficPolicyInstance>
 

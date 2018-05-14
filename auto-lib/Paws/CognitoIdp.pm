@@ -531,7 +531,16 @@ For more information, see the Amazon Cognito Documentation.
 
 =head1 METHODS
 
-=head2 AddCustomAttributes(CustomAttributes => ArrayRef[L<Paws::CognitoIdp::SchemaAttributeType>], UserPoolId => Str)
+=head2 AddCustomAttributes
+
+=over
+
+=item CustomAttributes => ArrayRef[L<Paws::CognitoIdp::SchemaAttributeType>]
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AddCustomAttributes>
 
@@ -540,7 +549,18 @@ Returns: a L<Paws::CognitoIdp::AddCustomAttributesResponse> instance
 Adds additional user attributes to the user pool schema.
 
 
-=head2 AdminAddUserToGroup(GroupName => Str, Username => Str, UserPoolId => Str)
+=head2 AdminAddUserToGroup
+
+=over
+
+=item GroupName => Str
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminAddUserToGroup>
 
@@ -551,7 +571,16 @@ Adds the specified user to the specified group.
 Requires developer credentials.
 
 
-=head2 AdminConfirmSignUp(Username => Str, UserPoolId => Str)
+=head2 AdminConfirmSignUp
+
+=over
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminConfirmSignUp>
 
@@ -563,7 +592,28 @@ code. Works on any user.
 Requires developer credentials.
 
 
-=head2 AdminCreateUser(Username => Str, UserPoolId => Str, [DesiredDeliveryMediums => ArrayRef[Str|Undef], ForceAliasCreation => Bool, MessageAction => Str, TemporaryPassword => Str, UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>], ValidationData => ArrayRef[L<Paws::CognitoIdp::AttributeType>]])
+=head2 AdminCreateUser
+
+=over
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+=item [DesiredDeliveryMediums => ArrayRef[Str|Undef]]
+
+=item [ForceAliasCreation => Bool]
+
+=item [MessageAction => Str]
+
+=item [TemporaryPassword => Str]
+
+=item [UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]]
+
+=item [ValidationData => ArrayRef[L<Paws::CognitoIdp::AttributeType>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminCreateUser>
 
@@ -588,7 +638,16 @@ until they sign in and change their password.
 AdminCreateUser requires developer credentials.
 
 
-=head2 AdminDeleteUser(Username => Str, UserPoolId => Str)
+=head2 AdminDeleteUser
+
+=over
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminDeleteUser>
 
@@ -599,7 +658,18 @@ Deletes a user as an administrator. Works on any user.
 Requires developer credentials.
 
 
-=head2 AdminDeleteUserAttributes(UserAttributeNames => ArrayRef[Str|Undef], Username => Str, UserPoolId => Str)
+=head2 AdminDeleteUserAttributes
+
+=over
+
+=item UserAttributeNames => ArrayRef[Str|Undef]
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminDeleteUserAttributes>
 
@@ -611,7 +681,16 @@ on any user.
 Requires developer credentials.
 
 
-=head2 AdminDisableProviderForUser(User => L<Paws::CognitoIdp::ProviderUserIdentifierType>, UserPoolId => Str)
+=head2 AdminDisableProviderForUser
+
+=over
+
+=item User => L<Paws::CognitoIdp::ProviderUserIdentifierType>
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminDisableProviderForUser>
 
@@ -653,7 +732,16 @@ C<Cognito_Subject> and C<ProviderAttributeValue> must be the subject of
 the SAML assertion.
 
 
-=head2 AdminDisableUser(Username => Str, UserPoolId => Str)
+=head2 AdminDisableUser
+
+=over
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminDisableUser>
 
@@ -664,7 +752,16 @@ Disables the specified user as an administrator. Works on any user.
 Requires developer credentials.
 
 
-=head2 AdminEnableUser(Username => Str, UserPoolId => Str)
+=head2 AdminEnableUser
+
+=over
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminEnableUser>
 
@@ -675,7 +772,18 @@ Enables the specified user as an administrator. Works on any user.
 Requires developer credentials.
 
 
-=head2 AdminForgetDevice(DeviceKey => Str, Username => Str, UserPoolId => Str)
+=head2 AdminForgetDevice
+
+=over
+
+=item DeviceKey => Str
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminForgetDevice>
 
@@ -686,7 +794,18 @@ Forgets the device, as an administrator.
 Requires developer credentials.
 
 
-=head2 AdminGetDevice(DeviceKey => Str, Username => Str, UserPoolId => Str)
+=head2 AdminGetDevice
+
+=over
+
+=item DeviceKey => Str
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminGetDevice>
 
@@ -697,7 +816,16 @@ Gets the device, as an administrator.
 Requires developer credentials.
 
 
-=head2 AdminGetUser(Username => Str, UserPoolId => Str)
+=head2 AdminGetUser
+
+=over
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminGetUser>
 
@@ -709,7 +837,26 @@ administrator. Works on any user.
 Requires developer credentials.
 
 
-=head2 AdminInitiateAuth(AuthFlow => Str, ClientId => Str, UserPoolId => Str, [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>, AuthParameters => L<Paws::CognitoIdp::AuthParametersType>, ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>, ContextData => L<Paws::CognitoIdp::ContextDataType>])
+=head2 AdminInitiateAuth
+
+=over
+
+=item AuthFlow => Str
+
+=item ClientId => Str
+
+=item UserPoolId => Str
+
+=item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
+
+=item [AuthParameters => L<Paws::CognitoIdp::AuthParametersType>]
+
+=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
+
+=item [ContextData => L<Paws::CognitoIdp::ContextDataType>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminInitiateAuth>
 
@@ -720,7 +867,18 @@ Initiates the authentication flow, as an administrator.
 Requires developer credentials.
 
 
-=head2 AdminLinkProviderForUser(DestinationUser => L<Paws::CognitoIdp::ProviderUserIdentifierType>, SourceUser => L<Paws::CognitoIdp::ProviderUserIdentifierType>, UserPoolId => Str)
+=head2 AdminLinkProviderForUser
+
+=over
+
+=item DestinationUser => L<Paws::CognitoIdp::ProviderUserIdentifierType>
+
+=item SourceUser => L<Paws::CognitoIdp::ProviderUserIdentifierType>
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminLinkProviderForUser>
 
@@ -750,7 +908,20 @@ This action is enabled only for admin access and requires developer
 credentials.
 
 
-=head2 AdminListDevices(Username => Str, UserPoolId => Str, [Limit => Int, PaginationToken => Str])
+=head2 AdminListDevices
+
+=over
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+=item [Limit => Int]
+
+=item [PaginationToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminListDevices>
 
@@ -761,7 +932,20 @@ Lists devices, as an administrator.
 Requires developer credentials.
 
 
-=head2 AdminListGroupsForUser(Username => Str, UserPoolId => Str, [Limit => Int, NextToken => Str])
+=head2 AdminListGroupsForUser
+
+=over
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminListGroupsForUser>
 
@@ -772,7 +956,20 @@ Lists the groups that the user belongs to.
 Requires developer credentials.
 
 
-=head2 AdminListUserAuthEvents(Username => Str, UserPoolId => Str, [MaxResults => Int, NextToken => Str])
+=head2 AdminListUserAuthEvents
+
+=over
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminListUserAuthEvents>
 
@@ -782,7 +979,18 @@ Lists a history of user activity and any risks detected as part of
 Amazon Cognito advanced security.
 
 
-=head2 AdminRemoveUserFromGroup(GroupName => Str, Username => Str, UserPoolId => Str)
+=head2 AdminRemoveUserFromGroup
+
+=over
+
+=item GroupName => Str
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminRemoveUserFromGroup>
 
@@ -793,7 +1001,16 @@ Removes the specified user from the specified group.
 Requires developer credentials.
 
 
-=head2 AdminResetUserPassword(Username => Str, UserPoolId => Str)
+=head2 AdminResetUserPassword
+
+=over
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminResetUserPassword>
 
@@ -815,7 +1032,26 @@ message to the end user with the code to change their password.
 Requires developer credentials.
 
 
-=head2 AdminRespondToAuthChallenge(ChallengeName => Str, ClientId => Str, UserPoolId => Str, [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>, ChallengeResponses => L<Paws::CognitoIdp::ChallengeResponsesType>, ContextData => L<Paws::CognitoIdp::ContextDataType>, Session => Str])
+=head2 AdminRespondToAuthChallenge
+
+=over
+
+=item ChallengeName => Str
+
+=item ClientId => Str
+
+=item UserPoolId => Str
+
+=item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
+
+=item [ChallengeResponses => L<Paws::CognitoIdp::ChallengeResponsesType>]
+
+=item [ContextData => L<Paws::CognitoIdp::ContextDataType>]
+
+=item [Session => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminRespondToAuthChallenge>
 
@@ -826,7 +1062,20 @@ Responds to an authentication challenge, as an administrator.
 Requires developer credentials.
 
 
-=head2 AdminSetUserMFAPreference(Username => Str, UserPoolId => Str, [SMSMfaSettings => L<Paws::CognitoIdp::SMSMfaSettingsType>, SoftwareTokenMfaSettings => L<Paws::CognitoIdp::SoftwareTokenMfaSettingsType>])
+=head2 AdminSetUserMFAPreference
+
+=over
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+=item [SMSMfaSettings => L<Paws::CognitoIdp::SMSMfaSettingsType>]
+
+=item [SoftwareTokenMfaSettings => L<Paws::CognitoIdp::SoftwareTokenMfaSettingsType>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminSetUserMFAPreference>
 
@@ -835,7 +1084,18 @@ Returns: a L<Paws::CognitoIdp::AdminSetUserMFAPreferenceResponse> instance
 Sets the user's multi-factor authentication (MFA) preference.
 
 
-=head2 AdminSetUserSettings(MFAOptions => ArrayRef[L<Paws::CognitoIdp::MFAOptionType>], Username => Str, UserPoolId => Str)
+=head2 AdminSetUserSettings
+
+=over
+
+=item MFAOptions => ArrayRef[L<Paws::CognitoIdp::MFAOptionType>]
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminSetUserSettings>
 
@@ -847,7 +1107,20 @@ user.
 Requires developer credentials.
 
 
-=head2 AdminUpdateAuthEventFeedback(EventId => Str, FeedbackValue => Str, Username => Str, UserPoolId => Str)
+=head2 AdminUpdateAuthEventFeedback
+
+=over
+
+=item EventId => Str
+
+=item FeedbackValue => Str
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminUpdateAuthEventFeedback>
 
@@ -858,7 +1131,20 @@ a valid user. This feedback is used for improving the risk evaluation
 decision for the user pool as part of Amazon Cognito advanced security.
 
 
-=head2 AdminUpdateDeviceStatus(DeviceKey => Str, Username => Str, UserPoolId => Str, [DeviceRememberedStatus => Str])
+=head2 AdminUpdateDeviceStatus
+
+=over
+
+=item DeviceKey => Str
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+=item [DeviceRememberedStatus => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminUpdateDeviceStatus>
 
@@ -869,7 +1155,18 @@ Updates the device status as an administrator.
 Requires developer credentials.
 
 
-=head2 AdminUpdateUserAttributes(UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>], Username => Str, UserPoolId => Str)
+=head2 AdminUpdateUserAttributes
+
+=over
+
+=item UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminUpdateUserAttributes>
 
@@ -887,7 +1184,16 @@ mark phone and email as verified.
 Requires developer credentials.
 
 
-=head2 AdminUserGlobalSignOut(Username => Str, UserPoolId => Str)
+=head2 AdminUserGlobalSignOut
+
+=over
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminUserGlobalSignOut>
 
@@ -898,7 +1204,16 @@ Signs out users from all devices, as an administrator.
 Requires developer credentials.
 
 
-=head2 AssociateSoftwareToken([AccessToken => Str, Session => Str])
+=head2 AssociateSoftwareToken
+
+=over
+
+=item [AccessToken => Str]
+
+=item [Session => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AssociateSoftwareToken>
 
@@ -908,7 +1223,18 @@ Returns a unique generated shared secret key code for the user account.
 The request takes an access token or a session string, but not both.
 
 
-=head2 ChangePassword(AccessToken => Str, PreviousPassword => Str, ProposedPassword => Str)
+=head2 ChangePassword
+
+=over
+
+=item AccessToken => Str
+
+=item PreviousPassword => Str
+
+=item ProposedPassword => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ChangePassword>
 
@@ -917,7 +1243,20 @@ Returns: a L<Paws::CognitoIdp::ChangePasswordResponse> instance
 Changes the password for a specified user in a user pool.
 
 
-=head2 ConfirmDevice(AccessToken => Str, DeviceKey => Str, [DeviceName => Str, DeviceSecretVerifierConfig => L<Paws::CognitoIdp::DeviceSecretVerifierConfigType>])
+=head2 ConfirmDevice
+
+=over
+
+=item AccessToken => Str
+
+=item DeviceKey => Str
+
+=item [DeviceName => Str]
+
+=item [DeviceSecretVerifierConfig => L<Paws::CognitoIdp::DeviceSecretVerifierConfigType>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ConfirmDevice>
 
@@ -927,7 +1266,26 @@ Confirms tracking of the device. This API call is the call that begins
 device tracking.
 
 
-=head2 ConfirmForgotPassword(ClientId => Str, ConfirmationCode => Str, Password => Str, Username => Str, [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>, SecretHash => Str, UserContextData => L<Paws::CognitoIdp::UserContextDataType>])
+=head2 ConfirmForgotPassword
+
+=over
+
+=item ClientId => Str
+
+=item ConfirmationCode => Str
+
+=item Password => Str
+
+=item Username => Str
+
+=item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
+
+=item [SecretHash => Str]
+
+=item [UserContextData => L<Paws::CognitoIdp::UserContextDataType>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ConfirmForgotPassword>
 
@@ -937,7 +1295,26 @@ Allows a user to enter a confirmation code to reset a forgotten
 password.
 
 
-=head2 ConfirmSignUp(ClientId => Str, ConfirmationCode => Str, Username => Str, [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>, ForceAliasCreation => Bool, SecretHash => Str, UserContextData => L<Paws::CognitoIdp::UserContextDataType>])
+=head2 ConfirmSignUp
+
+=over
+
+=item ClientId => Str
+
+=item ConfirmationCode => Str
+
+=item Username => Str
+
+=item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
+
+=item [ForceAliasCreation => Bool]
+
+=item [SecretHash => Str]
+
+=item [UserContextData => L<Paws::CognitoIdp::UserContextDataType>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ConfirmSignUp>
 
@@ -947,7 +1324,22 @@ Confirms registration of a user and handles the existing alias from a
 previous user.
 
 
-=head2 CreateGroup(GroupName => Str, UserPoolId => Str, [Description => Str, Precedence => Int, RoleArn => Str])
+=head2 CreateGroup
+
+=over
+
+=item GroupName => Str
+
+=item UserPoolId => Str
+
+=item [Description => Str]
+
+=item [Precedence => Int]
+
+=item [RoleArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::CreateGroup>
 
@@ -958,7 +1350,24 @@ Creates a new group in the specified user pool.
 Requires developer credentials.
 
 
-=head2 CreateIdentityProvider(ProviderDetails => L<Paws::CognitoIdp::ProviderDetailsType>, ProviderName => Str, ProviderType => Str, UserPoolId => Str, [AttributeMapping => L<Paws::CognitoIdp::AttributeMappingType>, IdpIdentifiers => ArrayRef[Str|Undef]])
+=head2 CreateIdentityProvider
+
+=over
+
+=item ProviderDetails => L<Paws::CognitoIdp::ProviderDetailsType>
+
+=item ProviderName => Str
+
+=item ProviderType => Str
+
+=item UserPoolId => Str
+
+=item [AttributeMapping => L<Paws::CognitoIdp::AttributeMappingType>]
+
+=item [IdpIdentifiers => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::CreateIdentityProvider>
 
@@ -967,7 +1376,20 @@ Returns: a L<Paws::CognitoIdp::CreateIdentityProviderResponse> instance
 Creates an identity provider for a user pool.
 
 
-=head2 CreateResourceServer(Identifier => Str, Name => Str, UserPoolId => Str, [Scopes => ArrayRef[L<Paws::CognitoIdp::ResourceServerScopeType>]])
+=head2 CreateResourceServer
+
+=over
+
+=item Identifier => Str
+
+=item Name => Str
+
+=item UserPoolId => Str
+
+=item [Scopes => ArrayRef[L<Paws::CognitoIdp::ResourceServerScopeType>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::CreateResourceServer>
 
@@ -976,7 +1398,18 @@ Returns: a L<Paws::CognitoIdp::CreateResourceServerResponse> instance
 Creates a new OAuth2.0 resource server and defines custom scopes in it.
 
 
-=head2 CreateUserImportJob(CloudWatchLogsRoleArn => Str, JobName => Str, UserPoolId => Str)
+=head2 CreateUserImportJob
+
+=over
+
+=item CloudWatchLogsRoleArn => Str
+
+=item JobName => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::CreateUserImportJob>
 
@@ -985,7 +1418,50 @@ Returns: a L<Paws::CognitoIdp::CreateUserImportJobResponse> instance
 Creates the user import job.
 
 
-=head2 CreateUserPool(PoolName => Str, [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>, AliasAttributes => ArrayRef[Str|Undef], AutoVerifiedAttributes => ArrayRef[Str|Undef], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, Schema => ArrayRef[L<Paws::CognitoIdp::SchemaAttributeType>], SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str, UsernameAttributes => ArrayRef[Str|Undef], UserPoolAddOns => L<Paws::CognitoIdp::UserPoolAddOnsType>, UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>, VerificationMessageTemplate => L<Paws::CognitoIdp::VerificationMessageTemplateType>])
+=head2 CreateUserPool
+
+=over
+
+=item PoolName => Str
+
+=item [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>]
+
+=item [AliasAttributes => ArrayRef[Str|Undef]]
+
+=item [AutoVerifiedAttributes => ArrayRef[Str|Undef]]
+
+=item [DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>]
+
+=item [EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>]
+
+=item [EmailVerificationMessage => Str]
+
+=item [EmailVerificationSubject => Str]
+
+=item [LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>]
+
+=item [MfaConfiguration => Str]
+
+=item [Policies => L<Paws::CognitoIdp::UserPoolPolicyType>]
+
+=item [Schema => ArrayRef[L<Paws::CognitoIdp::SchemaAttributeType>]]
+
+=item [SmsAuthenticationMessage => Str]
+
+=item [SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>]
+
+=item [SmsVerificationMessage => Str]
+
+=item [UsernameAttributes => ArrayRef[Str|Undef]]
+
+=item [UserPoolAddOns => L<Paws::CognitoIdp::UserPoolAddOnsType>]
+
+=item [UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>]
+
+=item [VerificationMessageTemplate => L<Paws::CognitoIdp::VerificationMessageTemplateType>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::CreateUserPool>
 
@@ -995,7 +1471,42 @@ Creates a new Amazon Cognito user pool and sets the password policy for
 the pool.
 
 
-=head2 CreateUserPoolClient(ClientName => Str, UserPoolId => Str, [AllowedOAuthFlows => ArrayRef[Str|Undef], AllowedOAuthFlowsUserPoolClient => Bool, AllowedOAuthScopes => ArrayRef[Str|Undef], AnalyticsConfiguration => L<Paws::CognitoIdp::AnalyticsConfigurationType>, CallbackURLs => ArrayRef[Str|Undef], DefaultRedirectURI => Str, ExplicitAuthFlows => ArrayRef[Str|Undef], GenerateSecret => Bool, LogoutURLs => ArrayRef[Str|Undef], ReadAttributes => ArrayRef[Str|Undef], RefreshTokenValidity => Int, SupportedIdentityProviders => ArrayRef[Str|Undef], WriteAttributes => ArrayRef[Str|Undef]])
+=head2 CreateUserPoolClient
+
+=over
+
+=item ClientName => Str
+
+=item UserPoolId => Str
+
+=item [AllowedOAuthFlows => ArrayRef[Str|Undef]]
+
+=item [AllowedOAuthFlowsUserPoolClient => Bool]
+
+=item [AllowedOAuthScopes => ArrayRef[Str|Undef]]
+
+=item [AnalyticsConfiguration => L<Paws::CognitoIdp::AnalyticsConfigurationType>]
+
+=item [CallbackURLs => ArrayRef[Str|Undef]]
+
+=item [DefaultRedirectURI => Str]
+
+=item [ExplicitAuthFlows => ArrayRef[Str|Undef]]
+
+=item [GenerateSecret => Bool]
+
+=item [LogoutURLs => ArrayRef[Str|Undef]]
+
+=item [ReadAttributes => ArrayRef[Str|Undef]]
+
+=item [RefreshTokenValidity => Int]
+
+=item [SupportedIdentityProviders => ArrayRef[Str|Undef]]
+
+=item [WriteAttributes => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::CreateUserPoolClient>
 
@@ -1004,7 +1515,16 @@ Returns: a L<Paws::CognitoIdp::CreateUserPoolClientResponse> instance
 Creates the user pool client.
 
 
-=head2 CreateUserPoolDomain(Domain => Str, UserPoolId => Str)
+=head2 CreateUserPoolDomain
+
+=over
+
+=item Domain => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::CreateUserPoolDomain>
 
@@ -1013,7 +1533,16 @@ Returns: a L<Paws::CognitoIdp::CreateUserPoolDomainResponse> instance
 Creates a new domain for a user pool.
 
 
-=head2 DeleteGroup(GroupName => Str, UserPoolId => Str)
+=head2 DeleteGroup
+
+=over
+
+=item GroupName => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DeleteGroup>
 
@@ -1024,7 +1553,16 @@ Deletes a group. Currently only groups with no members can be deleted.
 Requires developer credentials.
 
 
-=head2 DeleteIdentityProvider(ProviderName => Str, UserPoolId => Str)
+=head2 DeleteIdentityProvider
+
+=over
+
+=item ProviderName => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DeleteIdentityProvider>
 
@@ -1033,7 +1571,16 @@ Returns: nothing
 Deletes an identity provider for a user pool.
 
 
-=head2 DeleteResourceServer(Identifier => Str, UserPoolId => Str)
+=head2 DeleteResourceServer
+
+=over
+
+=item Identifier => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DeleteResourceServer>
 
@@ -1042,7 +1589,14 @@ Returns: nothing
 Deletes a resource server.
 
 
-=head2 DeleteUser(AccessToken => Str)
+=head2 DeleteUser
+
+=over
+
+=item AccessToken => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DeleteUser>
 
@@ -1051,7 +1605,16 @@ Returns: nothing
 Allows a user to delete himself or herself.
 
 
-=head2 DeleteUserAttributes(AccessToken => Str, UserAttributeNames => ArrayRef[Str|Undef])
+=head2 DeleteUserAttributes
+
+=over
+
+=item AccessToken => Str
+
+=item UserAttributeNames => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DeleteUserAttributes>
 
@@ -1060,7 +1623,14 @@ Returns: a L<Paws::CognitoIdp::DeleteUserAttributesResponse> instance
 Deletes the attributes for a user.
 
 
-=head2 DeleteUserPool(UserPoolId => Str)
+=head2 DeleteUserPool
+
+=over
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DeleteUserPool>
 
@@ -1069,7 +1639,16 @@ Returns: nothing
 Deletes the specified Amazon Cognito user pool.
 
 
-=head2 DeleteUserPoolClient(ClientId => Str, UserPoolId => Str)
+=head2 DeleteUserPoolClient
+
+=over
+
+=item ClientId => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DeleteUserPoolClient>
 
@@ -1078,7 +1657,16 @@ Returns: nothing
 Allows the developer to delete the user pool client.
 
 
-=head2 DeleteUserPoolDomain(Domain => Str, UserPoolId => Str)
+=head2 DeleteUserPoolDomain
+
+=over
+
+=item Domain => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DeleteUserPoolDomain>
 
@@ -1087,7 +1675,16 @@ Returns: a L<Paws::CognitoIdp::DeleteUserPoolDomainResponse> instance
 Deletes a domain for a user pool.
 
 
-=head2 DescribeIdentityProvider(ProviderName => Str, UserPoolId => Str)
+=head2 DescribeIdentityProvider
+
+=over
+
+=item ProviderName => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DescribeIdentityProvider>
 
@@ -1096,7 +1693,16 @@ Returns: a L<Paws::CognitoIdp::DescribeIdentityProviderResponse> instance
 Gets information about a specific identity provider.
 
 
-=head2 DescribeResourceServer(Identifier => Str, UserPoolId => Str)
+=head2 DescribeResourceServer
+
+=over
+
+=item Identifier => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DescribeResourceServer>
 
@@ -1105,7 +1711,16 @@ Returns: a L<Paws::CognitoIdp::DescribeResourceServerResponse> instance
 Describes a resource server.
 
 
-=head2 DescribeRiskConfiguration(UserPoolId => Str, [ClientId => Str])
+=head2 DescribeRiskConfiguration
+
+=over
+
+=item UserPoolId => Str
+
+=item [ClientId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DescribeRiskConfiguration>
 
@@ -1114,7 +1729,16 @@ Returns: a L<Paws::CognitoIdp::DescribeRiskConfigurationResponse> instance
 Describes the risk configuration.
 
 
-=head2 DescribeUserImportJob(JobId => Str, UserPoolId => Str)
+=head2 DescribeUserImportJob
+
+=over
+
+=item JobId => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DescribeUserImportJob>
 
@@ -1123,7 +1747,14 @@ Returns: a L<Paws::CognitoIdp::DescribeUserImportJobResponse> instance
 Describes the user import job.
 
 
-=head2 DescribeUserPool(UserPoolId => Str)
+=head2 DescribeUserPool
+
+=over
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DescribeUserPool>
 
@@ -1133,7 +1764,16 @@ Returns the configuration information and metadata of the specified
 user pool.
 
 
-=head2 DescribeUserPoolClient(ClientId => Str, UserPoolId => Str)
+=head2 DescribeUserPoolClient
+
+=over
+
+=item ClientId => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DescribeUserPoolClient>
 
@@ -1143,7 +1783,14 @@ Client method for returning the configuration information and metadata
 of the specified user pool client.
 
 
-=head2 DescribeUserPoolDomain(Domain => Str)
+=head2 DescribeUserPoolDomain
+
+=over
+
+=item Domain => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DescribeUserPoolDomain>
 
@@ -1152,7 +1799,16 @@ Returns: a L<Paws::CognitoIdp::DescribeUserPoolDomainResponse> instance
 Gets information about a domain.
 
 
-=head2 ForgetDevice(DeviceKey => Str, [AccessToken => Str])
+=head2 ForgetDevice
+
+=over
+
+=item DeviceKey => Str
+
+=item [AccessToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ForgetDevice>
 
@@ -1161,7 +1817,22 @@ Returns: nothing
 Forgets the specified device.
 
 
-=head2 ForgotPassword(ClientId => Str, Username => Str, [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>, SecretHash => Str, UserContextData => L<Paws::CognitoIdp::UserContextDataType>])
+=head2 ForgotPassword
+
+=over
+
+=item ClientId => Str
+
+=item Username => Str
+
+=item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
+
+=item [SecretHash => Str]
+
+=item [UserContextData => L<Paws::CognitoIdp::UserContextDataType>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ForgotPassword>
 
@@ -1177,7 +1848,14 @@ number nor a verified email exists, C<InvalidParameterException> is
 thrown. To use the confirmation code for resetting the password, call .
 
 
-=head2 GetCSVHeader(UserPoolId => Str)
+=head2 GetCSVHeader
+
+=over
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::GetCSVHeader>
 
@@ -1187,7 +1865,16 @@ Gets the header information for the .csv file to be used as input for
 the user import job.
 
 
-=head2 GetDevice(DeviceKey => Str, [AccessToken => Str])
+=head2 GetDevice
+
+=over
+
+=item DeviceKey => Str
+
+=item [AccessToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::GetDevice>
 
@@ -1196,7 +1883,16 @@ Returns: a L<Paws::CognitoIdp::GetDeviceResponse> instance
 Gets the device.
 
 
-=head2 GetGroup(GroupName => Str, UserPoolId => Str)
+=head2 GetGroup
+
+=over
+
+=item GroupName => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::GetGroup>
 
@@ -1207,7 +1903,16 @@ Gets a group.
 Requires developer credentials.
 
 
-=head2 GetIdentityProviderByIdentifier(IdpIdentifier => Str, UserPoolId => Str)
+=head2 GetIdentityProviderByIdentifier
+
+=over
+
+=item IdpIdentifier => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::GetIdentityProviderByIdentifier>
 
@@ -1216,7 +1921,14 @@ Returns: a L<Paws::CognitoIdp::GetIdentityProviderByIdentifierResponse> instance
 Gets the specified identity provider.
 
 
-=head2 GetSigningCertificate(UserPoolId => Str)
+=head2 GetSigningCertificate
+
+=over
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::GetSigningCertificate>
 
@@ -1225,7 +1937,16 @@ Returns: a L<Paws::CognitoIdp::GetSigningCertificateResponse> instance
 This method takes a user pool ID, and returns the signing certificate.
 
 
-=head2 GetUICustomization(UserPoolId => Str, [ClientId => Str])
+=head2 GetUICustomization
+
+=over
+
+=item UserPoolId => Str
+
+=item [ClientId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::GetUICustomization>
 
@@ -1238,7 +1959,14 @@ C<clientId> will be C<ALL>), then that is returned. If nothing is
 present, then an empty shape is returned.
 
 
-=head2 GetUser(AccessToken => Str)
+=head2 GetUser
+
+=over
+
+=item AccessToken => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::GetUser>
 
@@ -1247,7 +1975,16 @@ Returns: a L<Paws::CognitoIdp::GetUserResponse> instance
 Gets the user attributes and metadata for a user.
 
 
-=head2 GetUserAttributeVerificationCode(AccessToken => Str, AttributeName => Str)
+=head2 GetUserAttributeVerificationCode
+
+=over
+
+=item AccessToken => Str
+
+=item AttributeName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::GetUserAttributeVerificationCode>
 
@@ -1257,7 +1994,14 @@ Gets the user attribute verification code for the specified attribute
 name.
 
 
-=head2 GetUserPoolMfaConfig(UserPoolId => Str)
+=head2 GetUserPoolMfaConfig
+
+=over
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::GetUserPoolMfaConfig>
 
@@ -1266,7 +2010,14 @@ Returns: a L<Paws::CognitoIdp::GetUserPoolMfaConfigResponse> instance
 Gets the user pool multi-factor authentication (MFA) configuration.
 
 
-=head2 GlobalSignOut(AccessToken => Str)
+=head2 GlobalSignOut
+
+=over
+
+=item AccessToken => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::GlobalSignOut>
 
@@ -1275,7 +2026,24 @@ Returns: a L<Paws::CognitoIdp::GlobalSignOutResponse> instance
 Signs out users from all devices.
 
 
-=head2 InitiateAuth(AuthFlow => Str, ClientId => Str, [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>, AuthParameters => L<Paws::CognitoIdp::AuthParametersType>, ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>, UserContextData => L<Paws::CognitoIdp::UserContextDataType>])
+=head2 InitiateAuth
+
+=over
+
+=item AuthFlow => Str
+
+=item ClientId => Str
+
+=item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
+
+=item [AuthParameters => L<Paws::CognitoIdp::AuthParametersType>]
+
+=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
+
+=item [UserContextData => L<Paws::CognitoIdp::UserContextDataType>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::InitiateAuth>
 
@@ -1284,7 +2052,18 @@ Returns: a L<Paws::CognitoIdp::InitiateAuthResponse> instance
 Initiates the authentication flow.
 
 
-=head2 ListDevices(AccessToken => Str, [Limit => Int, PaginationToken => Str])
+=head2 ListDevices
+
+=over
+
+=item AccessToken => Str
+
+=item [Limit => Int]
+
+=item [PaginationToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ListDevices>
 
@@ -1293,7 +2072,18 @@ Returns: a L<Paws::CognitoIdp::ListDevicesResponse> instance
 Lists the devices.
 
 
-=head2 ListGroups(UserPoolId => Str, [Limit => Int, NextToken => Str])
+=head2 ListGroups
+
+=over
+
+=item UserPoolId => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ListGroups>
 
@@ -1304,7 +2094,18 @@ Lists the groups associated with a user pool.
 Requires developer credentials.
 
 
-=head2 ListIdentityProviders(UserPoolId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListIdentityProviders
+
+=over
+
+=item UserPoolId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ListIdentityProviders>
 
@@ -1313,7 +2114,18 @@ Returns: a L<Paws::CognitoIdp::ListIdentityProvidersResponse> instance
 Lists information about all identity providers for a user pool.
 
 
-=head2 ListResourceServers(UserPoolId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListResourceServers
+
+=over
+
+=item UserPoolId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ListResourceServers>
 
@@ -1322,7 +2134,18 @@ Returns: a L<Paws::CognitoIdp::ListResourceServersResponse> instance
 Lists the resource servers for a user pool.
 
 
-=head2 ListUserImportJobs(MaxResults => Int, UserPoolId => Str, [PaginationToken => Str])
+=head2 ListUserImportJobs
+
+=over
+
+=item MaxResults => Int
+
+=item UserPoolId => Str
+
+=item [PaginationToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ListUserImportJobs>
 
@@ -1331,7 +2154,18 @@ Returns: a L<Paws::CognitoIdp::ListUserImportJobsResponse> instance
 Lists the user import jobs.
 
 
-=head2 ListUserPoolClients(UserPoolId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListUserPoolClients
+
+=over
+
+=item UserPoolId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ListUserPoolClients>
 
@@ -1340,7 +2174,16 @@ Returns: a L<Paws::CognitoIdp::ListUserPoolClientsResponse> instance
 Lists the clients that have been created for the specified user pool.
 
 
-=head2 ListUserPools(MaxResults => Int, [NextToken => Str])
+=head2 ListUserPools
+
+=over
+
+=item MaxResults => Int
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ListUserPools>
 
@@ -1349,7 +2192,22 @@ Returns: a L<Paws::CognitoIdp::ListUserPoolsResponse> instance
 Lists the user pools associated with an AWS account.
 
 
-=head2 ListUsers(UserPoolId => Str, [AttributesToGet => ArrayRef[Str|Undef], Filter => Str, Limit => Int, PaginationToken => Str])
+=head2 ListUsers
+
+=over
+
+=item UserPoolId => Str
+
+=item [AttributesToGet => ArrayRef[Str|Undef]]
+
+=item [Filter => Str]
+
+=item [Limit => Int]
+
+=item [PaginationToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ListUsers>
 
@@ -1358,7 +2216,20 @@ Returns: a L<Paws::CognitoIdp::ListUsersResponse> instance
 Lists the users in the Amazon Cognito user pool.
 
 
-=head2 ListUsersInGroup(GroupName => Str, UserPoolId => Str, [Limit => Int, NextToken => Str])
+=head2 ListUsersInGroup
+
+=over
+
+=item GroupName => Str
+
+=item UserPoolId => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ListUsersInGroup>
 
@@ -1369,7 +2240,22 @@ Lists the users in the specified group.
 Requires developer credentials.
 
 
-=head2 ResendConfirmationCode(ClientId => Str, Username => Str, [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>, SecretHash => Str, UserContextData => L<Paws::CognitoIdp::UserContextDataType>])
+=head2 ResendConfirmationCode
+
+=over
+
+=item ClientId => Str
+
+=item Username => Str
+
+=item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
+
+=item [SecretHash => Str]
+
+=item [UserContextData => L<Paws::CognitoIdp::UserContextDataType>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ResendConfirmationCode>
 
@@ -1379,7 +2265,24 @@ Resends the confirmation (for confirmation of registration) to a
 specific user in the user pool.
 
 
-=head2 RespondToAuthChallenge(ChallengeName => Str, ClientId => Str, [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>, ChallengeResponses => L<Paws::CognitoIdp::ChallengeResponsesType>, Session => Str, UserContextData => L<Paws::CognitoIdp::UserContextDataType>])
+=head2 RespondToAuthChallenge
+
+=over
+
+=item ChallengeName => Str
+
+=item ClientId => Str
+
+=item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
+
+=item [ChallengeResponses => L<Paws::CognitoIdp::ChallengeResponsesType>]
+
+=item [Session => Str]
+
+=item [UserContextData => L<Paws::CognitoIdp::UserContextDataType>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::RespondToAuthChallenge>
 
@@ -1388,7 +2291,22 @@ Returns: a L<Paws::CognitoIdp::RespondToAuthChallengeResponse> instance
 Responds to the authentication challenge.
 
 
-=head2 SetRiskConfiguration(UserPoolId => Str, [AccountTakeoverRiskConfiguration => L<Paws::CognitoIdp::AccountTakeoverRiskConfigurationType>, ClientId => Str, CompromisedCredentialsRiskConfiguration => L<Paws::CognitoIdp::CompromisedCredentialsRiskConfigurationType>, RiskExceptionConfiguration => L<Paws::CognitoIdp::RiskExceptionConfigurationType>])
+=head2 SetRiskConfiguration
+
+=over
+
+=item UserPoolId => Str
+
+=item [AccountTakeoverRiskConfiguration => L<Paws::CognitoIdp::AccountTakeoverRiskConfigurationType>]
+
+=item [ClientId => Str]
+
+=item [CompromisedCredentialsRiskConfiguration => L<Paws::CognitoIdp::CompromisedCredentialsRiskConfigurationType>]
+
+=item [RiskExceptionConfiguration => L<Paws::CognitoIdp::RiskExceptionConfigurationType>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::SetRiskConfiguration>
 
@@ -1404,7 +2322,20 @@ pool to include the C<UserPoolAddOns> keyC<AdvancedSecurityMode>.
 See .
 
 
-=head2 SetUICustomization(UserPoolId => Str, [ClientId => Str, CSS => Str, ImageFile => Str])
+=head2 SetUICustomization
+
+=over
+
+=item UserPoolId => Str
+
+=item [ClientId => Str]
+
+=item [CSS => Str]
+
+=item [ImageFile => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::SetUICustomization>
 
@@ -1425,7 +2356,18 @@ Otherwise, there is no place to host the app's pages, and the service
 will throw an error.
 
 
-=head2 SetUserMFAPreference(AccessToken => Str, [SMSMfaSettings => L<Paws::CognitoIdp::SMSMfaSettingsType>, SoftwareTokenMfaSettings => L<Paws::CognitoIdp::SoftwareTokenMfaSettingsType>])
+=head2 SetUserMFAPreference
+
+=over
+
+=item AccessToken => Str
+
+=item [SMSMfaSettings => L<Paws::CognitoIdp::SMSMfaSettingsType>]
+
+=item [SoftwareTokenMfaSettings => L<Paws::CognitoIdp::SoftwareTokenMfaSettingsType>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::SetUserMFAPreference>
 
@@ -1434,7 +2376,20 @@ Returns: a L<Paws::CognitoIdp::SetUserMFAPreferenceResponse> instance
 Set the user's multi-factor authentication (MFA) method preference.
 
 
-=head2 SetUserPoolMfaConfig(UserPoolId => Str, [MfaConfiguration => Str, SmsMfaConfiguration => L<Paws::CognitoIdp::SmsMfaConfigType>, SoftwareTokenMfaConfiguration => L<Paws::CognitoIdp::SoftwareTokenMfaConfigType>])
+=head2 SetUserPoolMfaConfig
+
+=over
+
+=item UserPoolId => Str
+
+=item [MfaConfiguration => Str]
+
+=item [SmsMfaConfiguration => L<Paws::CognitoIdp::SmsMfaConfigType>]
+
+=item [SoftwareTokenMfaConfiguration => L<Paws::CognitoIdp::SoftwareTokenMfaConfigType>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::SetUserPoolMfaConfig>
 
@@ -1443,7 +2398,16 @@ Returns: a L<Paws::CognitoIdp::SetUserPoolMfaConfigResponse> instance
 Set the user pool MFA configuration.
 
 
-=head2 SetUserSettings(AccessToken => Str, MFAOptions => ArrayRef[L<Paws::CognitoIdp::MFAOptionType>])
+=head2 SetUserSettings
+
+=over
+
+=item AccessToken => Str
+
+=item MFAOptions => ArrayRef[L<Paws::CognitoIdp::MFAOptionType>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::SetUserSettings>
 
@@ -1455,7 +2419,28 @@ code delivery as null. If null list is passed, all MFA options are
 removed.
 
 
-=head2 SignUp(ClientId => Str, Password => Str, Username => Str, [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>, SecretHash => Str, UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>], UserContextData => L<Paws::CognitoIdp::UserContextDataType>, ValidationData => ArrayRef[L<Paws::CognitoIdp::AttributeType>]])
+=head2 SignUp
+
+=over
+
+=item ClientId => Str
+
+=item Password => Str
+
+=item Username => Str
+
+=item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
+
+=item [SecretHash => Str]
+
+=item [UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]]
+
+=item [UserContextData => L<Paws::CognitoIdp::UserContextDataType>]
+
+=item [ValidationData => ArrayRef[L<Paws::CognitoIdp::AttributeType>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::SignUp>
 
@@ -1465,7 +2450,16 @@ Registers the user in the specified user pool and creates a user name,
 password, and user attributes.
 
 
-=head2 StartUserImportJob(JobId => Str, UserPoolId => Str)
+=head2 StartUserImportJob
+
+=over
+
+=item JobId => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::StartUserImportJob>
 
@@ -1474,7 +2468,16 @@ Returns: a L<Paws::CognitoIdp::StartUserImportJobResponse> instance
 Starts the user import.
 
 
-=head2 StopUserImportJob(JobId => Str, UserPoolId => Str)
+=head2 StopUserImportJob
+
+=over
+
+=item JobId => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::StopUserImportJob>
 
@@ -1483,7 +2486,22 @@ Returns: a L<Paws::CognitoIdp::StopUserImportJobResponse> instance
 Stops the user import job.
 
 
-=head2 UpdateAuthEventFeedback(EventId => Str, FeedbackToken => Str, FeedbackValue => Str, Username => Str, UserPoolId => Str)
+=head2 UpdateAuthEventFeedback
+
+=over
+
+=item EventId => Str
+
+=item FeedbackToken => Str
+
+=item FeedbackValue => Str
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::UpdateAuthEventFeedback>
 
@@ -1495,7 +2513,18 @@ evaluation decision for the user pool as part of Amazon Cognito
 advanced security.
 
 
-=head2 UpdateDeviceStatus(AccessToken => Str, DeviceKey => Str, [DeviceRememberedStatus => Str])
+=head2 UpdateDeviceStatus
+
+=over
+
+=item AccessToken => Str
+
+=item DeviceKey => Str
+
+=item [DeviceRememberedStatus => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::UpdateDeviceStatus>
 
@@ -1504,7 +2533,22 @@ Returns: a L<Paws::CognitoIdp::UpdateDeviceStatusResponse> instance
 Updates the device status.
 
 
-=head2 UpdateGroup(GroupName => Str, UserPoolId => Str, [Description => Str, Precedence => Int, RoleArn => Str])
+=head2 UpdateGroup
+
+=over
+
+=item GroupName => Str
+
+=item UserPoolId => Str
+
+=item [Description => Str]
+
+=item [Precedence => Int]
+
+=item [RoleArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::UpdateGroup>
 
@@ -1515,7 +2559,22 @@ Updates the specified group with the specified attributes.
 Requires developer credentials.
 
 
-=head2 UpdateIdentityProvider(ProviderName => Str, UserPoolId => Str, [AttributeMapping => L<Paws::CognitoIdp::AttributeMappingType>, IdpIdentifiers => ArrayRef[Str|Undef], ProviderDetails => L<Paws::CognitoIdp::ProviderDetailsType>])
+=head2 UpdateIdentityProvider
+
+=over
+
+=item ProviderName => Str
+
+=item UserPoolId => Str
+
+=item [AttributeMapping => L<Paws::CognitoIdp::AttributeMappingType>]
+
+=item [IdpIdentifiers => ArrayRef[Str|Undef]]
+
+=item [ProviderDetails => L<Paws::CognitoIdp::ProviderDetailsType>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::UpdateIdentityProvider>
 
@@ -1524,7 +2583,20 @@ Returns: a L<Paws::CognitoIdp::UpdateIdentityProviderResponse> instance
 Updates identity provider information for a user pool.
 
 
-=head2 UpdateResourceServer(Identifier => Str, Name => Str, UserPoolId => Str, [Scopes => ArrayRef[L<Paws::CognitoIdp::ResourceServerScopeType>]])
+=head2 UpdateResourceServer
+
+=over
+
+=item Identifier => Str
+
+=item Name => Str
+
+=item UserPoolId => Str
+
+=item [Scopes => ArrayRef[L<Paws::CognitoIdp::ResourceServerScopeType>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::UpdateResourceServer>
 
@@ -1534,7 +2606,16 @@ Updates the name and scopes of resource server. All other fields are
 read-only.
 
 
-=head2 UpdateUserAttributes(AccessToken => Str, UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>])
+=head2 UpdateUserAttributes
+
+=over
+
+=item AccessToken => Str
+
+=item UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserAttributes>
 
@@ -1543,7 +2624,44 @@ Returns: a L<Paws::CognitoIdp::UpdateUserAttributesResponse> instance
 Allows a user to update a specific attribute (one at a time).
 
 
-=head2 UpdateUserPool(UserPoolId => Str, [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>, AutoVerifiedAttributes => ArrayRef[Str|Undef], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str, UserPoolAddOns => L<Paws::CognitoIdp::UserPoolAddOnsType>, UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>, VerificationMessageTemplate => L<Paws::CognitoIdp::VerificationMessageTemplateType>])
+=head2 UpdateUserPool
+
+=over
+
+=item UserPoolId => Str
+
+=item [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>]
+
+=item [AutoVerifiedAttributes => ArrayRef[Str|Undef]]
+
+=item [DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>]
+
+=item [EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>]
+
+=item [EmailVerificationMessage => Str]
+
+=item [EmailVerificationSubject => Str]
+
+=item [LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>]
+
+=item [MfaConfiguration => Str]
+
+=item [Policies => L<Paws::CognitoIdp::UserPoolPolicyType>]
+
+=item [SmsAuthenticationMessage => Str]
+
+=item [SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>]
+
+=item [SmsVerificationMessage => Str]
+
+=item [UserPoolAddOns => L<Paws::CognitoIdp::UserPoolAddOnsType>]
+
+=item [UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>]
+
+=item [VerificationMessageTemplate => L<Paws::CognitoIdp::VerificationMessageTemplateType>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserPool>
 
@@ -1552,7 +2670,42 @@ Returns: a L<Paws::CognitoIdp::UpdateUserPoolResponse> instance
 Updates the specified user pool with the specified attributes.
 
 
-=head2 UpdateUserPoolClient(ClientId => Str, UserPoolId => Str, [AllowedOAuthFlows => ArrayRef[Str|Undef], AllowedOAuthFlowsUserPoolClient => Bool, AllowedOAuthScopes => ArrayRef[Str|Undef], AnalyticsConfiguration => L<Paws::CognitoIdp::AnalyticsConfigurationType>, CallbackURLs => ArrayRef[Str|Undef], ClientName => Str, DefaultRedirectURI => Str, ExplicitAuthFlows => ArrayRef[Str|Undef], LogoutURLs => ArrayRef[Str|Undef], ReadAttributes => ArrayRef[Str|Undef], RefreshTokenValidity => Int, SupportedIdentityProviders => ArrayRef[Str|Undef], WriteAttributes => ArrayRef[Str|Undef]])
+=head2 UpdateUserPoolClient
+
+=over
+
+=item ClientId => Str
+
+=item UserPoolId => Str
+
+=item [AllowedOAuthFlows => ArrayRef[Str|Undef]]
+
+=item [AllowedOAuthFlowsUserPoolClient => Bool]
+
+=item [AllowedOAuthScopes => ArrayRef[Str|Undef]]
+
+=item [AnalyticsConfiguration => L<Paws::CognitoIdp::AnalyticsConfigurationType>]
+
+=item [CallbackURLs => ArrayRef[Str|Undef]]
+
+=item [ClientName => Str]
+
+=item [DefaultRedirectURI => Str]
+
+=item [ExplicitAuthFlows => ArrayRef[Str|Undef]]
+
+=item [LogoutURLs => ArrayRef[Str|Undef]]
+
+=item [ReadAttributes => ArrayRef[Str|Undef]]
+
+=item [RefreshTokenValidity => Int]
+
+=item [SupportedIdentityProviders => ArrayRef[Str|Undef]]
+
+=item [WriteAttributes => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserPoolClient>
 
@@ -1562,7 +2715,20 @@ Allows the developer to update the specified user pool client and
 password policy.
 
 
-=head2 VerifySoftwareToken(UserCode => Str, [AccessToken => Str, FriendlyDeviceName => Str, Session => Str])
+=head2 VerifySoftwareToken
+
+=over
+
+=item UserCode => Str
+
+=item [AccessToken => Str]
+
+=item [FriendlyDeviceName => Str]
+
+=item [Session => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::VerifySoftwareToken>
 
@@ -1572,7 +2738,18 @@ Use this API to register a user's entered TOTP code and mark the user's
 software token MFA status as "verified" if successful,
 
 
-=head2 VerifyUserAttribute(AccessToken => Str, AttributeName => Str, Code => Str)
+=head2 VerifyUserAttribute
+
+=over
+
+=item AccessToken => Str
+
+=item AttributeName => Str
+
+=item Code => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdp::VerifyUserAttribute>
 

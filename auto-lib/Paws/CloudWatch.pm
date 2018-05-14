@@ -235,7 +235,14 @@ performance, and operational health.
 
 =head1 METHODS
 
-=head2 DeleteAlarms(AlarmNames => ArrayRef[Str|Undef])
+=head2 DeleteAlarms
+
+=over
+
+=item AlarmNames => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatch::DeleteAlarms>
 
@@ -245,7 +252,14 @@ Deletes the specified alarms. In the event of an error, no alarms are
 deleted.
 
 
-=head2 DeleteDashboards(DashboardNames => ArrayRef[Str|Undef])
+=head2 DeleteDashboards
+
+=over
+
+=item DashboardNames => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatch::DeleteDashboards>
 
@@ -256,7 +270,24 @@ dashboards to delete. If there is an error during this call, no
 dashboards are deleted.
 
 
-=head2 DescribeAlarmHistory([AlarmName => Str, EndDate => Str, HistoryItemType => Str, MaxRecords => Int, NextToken => Str, StartDate => Str])
+=head2 DescribeAlarmHistory
+
+=over
+
+=item [AlarmName => Str]
+
+=item [EndDate => Str]
+
+=item [HistoryItemType => Str]
+
+=item [MaxRecords => Int]
+
+=item [NextToken => Str]
+
+=item [StartDate => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarmHistory>
 
@@ -270,7 +301,24 @@ CloudWatch retains the history of an alarm even if you delete the
 alarm.
 
 
-=head2 DescribeAlarms([ActionPrefix => Str, AlarmNamePrefix => Str, AlarmNames => ArrayRef[Str|Undef], MaxRecords => Int, NextToken => Str, StateValue => Str])
+=head2 DescribeAlarms
+
+=over
+
+=item [ActionPrefix => Str]
+
+=item [AlarmNamePrefix => Str]
+
+=item [AlarmNames => ArrayRef[Str|Undef]]
+
+=item [MaxRecords => Int]
+
+=item [NextToken => Str]
+
+=item [StateValue => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarms>
 
@@ -281,7 +329,26 @@ are returned. Alarms can be retrieved by using only a prefix for the
 alarm name, the alarm state, or a prefix for any action.
 
 
-=head2 DescribeAlarmsForMetric(MetricName => Str, Namespace => Str, [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], ExtendedStatistic => Str, Period => Int, Statistic => Str, Unit => Str])
+=head2 DescribeAlarmsForMetric
+
+=over
+
+=item MetricName => Str
+
+=item Namespace => Str
+
+=item [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]]
+
+=item [ExtendedStatistic => Str]
+
+=item [Period => Int]
+
+=item [Statistic => Str]
+
+=item [Unit => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarmsForMetric>
 
@@ -291,7 +358,14 @@ Retrieves the alarms for the specified metric. To filter the results,
 specify a statistic, period, or unit.
 
 
-=head2 DisableAlarmActions(AlarmNames => ArrayRef[Str|Undef])
+=head2 DisableAlarmActions
+
+=over
+
+=item AlarmNames => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatch::DisableAlarmActions>
 
@@ -302,7 +376,14 @@ are disabled, the alarm actions do not execute when the alarm state
 changes.
 
 
-=head2 EnableAlarmActions(AlarmNames => ArrayRef[Str|Undef])
+=head2 EnableAlarmActions
+
+=over
+
+=item AlarmNames => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatch::EnableAlarmActions>
 
@@ -311,7 +392,14 @@ Returns: nothing
 Enables the actions for the specified alarms.
 
 
-=head2 GetDashboard(DashboardName => Str)
+=head2 GetDashboard
+
+=over
+
+=item DashboardName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatch::GetDashboard>
 
@@ -324,7 +412,24 @@ data returned within C<DashboardBody> as the template for the new
 dashboard when you call C<PutDashboard> to create the copy.
 
 
-=head2 GetMetricData(EndTime => Str, MetricDataQueries => ArrayRef[L<Paws::CloudWatch::MetricDataQuery>], StartTime => Str, [MaxDatapoints => Int, NextToken => Str, ScanBy => Str])
+=head2 GetMetricData
+
+=over
+
+=item EndTime => Str
+
+=item MetricDataQueries => ArrayRef[L<Paws::CloudWatch::MetricDataQuery>]
+
+=item StartTime => Str
+
+=item [MaxDatapoints => Int]
+
+=item [NextToken => Str]
+
+=item [ScanBy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatch::GetMetricData>
 
@@ -347,7 +452,30 @@ pricing, see Amazon CloudWatch Pricing
 (https://aws.amazon.com/cloudwatch/pricing/).
 
 
-=head2 GetMetricStatistics(EndTime => Str, MetricName => Str, Namespace => Str, Period => Int, StartTime => Str, [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], ExtendedStatistics => ArrayRef[Str|Undef], Statistics => ArrayRef[Str|Undef], Unit => Str])
+=head2 GetMetricStatistics
+
+=over
+
+=item EndTime => Str
+
+=item MetricName => Str
+
+=item Namespace => Str
+
+=item Period => Int
+
+=item StartTime => Str
+
+=item [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]]
+
+=item [ExtendedStatistics => ArrayRef[Str|Undef]]
+
+=item [Statistics => ArrayRef[Str|Undef]]
+
+=item [Unit => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatch::GetMetricStatistics>
 
@@ -431,7 +559,16 @@ see the Amazon CloudWatch Metrics and Dimensions Reference
 in the I<Amazon CloudWatch User Guide>.
 
 
-=head2 ListDashboards([DashboardNamePrefix => Str, NextToken => Str])
+=head2 ListDashboards
+
+=over
+
+=item [DashboardNamePrefix => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatch::ListDashboards>
 
@@ -443,7 +580,20 @@ the prefix are listed. Otherwise, all dashboards in your account are
 listed.
 
 
-=head2 ListMetrics([Dimensions => ArrayRef[L<Paws::CloudWatch::DimensionFilter>], MetricName => Str, Namespace => Str, NextToken => Str])
+=head2 ListMetrics
+
+=over
+
+=item [Dimensions => ArrayRef[L<Paws::CloudWatch::DimensionFilter>]]
+
+=item [MetricName => Str]
+
+=item [Namespace => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatch::ListMetrics>
 
@@ -460,7 +610,16 @@ metric appears. Statistics about the metric, however, are available
 sooner using GetMetricStatistics.
 
 
-=head2 PutDashboard(DashboardBody => Str, DashboardName => Str)
+=head2 PutDashboard
+
+=over
+
+=item DashboardBody => Str
+
+=item DashboardName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatch::PutDashboard>
 
@@ -489,7 +648,50 @@ the C<DashboardBody> script or the CloudFormation template used to
 create the dashboard.
 
 
-=head2 PutMetricAlarm(AlarmName => Str, ComparisonOperator => Str, EvaluationPeriods => Int, MetricName => Str, Namespace => Str, Period => Int, Threshold => Num, [ActionsEnabled => Bool, AlarmActions => ArrayRef[Str|Undef], AlarmDescription => Str, DatapointsToAlarm => Int, Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], EvaluateLowSampleCountPercentile => Str, ExtendedStatistic => Str, InsufficientDataActions => ArrayRef[Str|Undef], OKActions => ArrayRef[Str|Undef], Statistic => Str, TreatMissingData => Str, Unit => Str])
+=head2 PutMetricAlarm
+
+=over
+
+=item AlarmName => Str
+
+=item ComparisonOperator => Str
+
+=item EvaluationPeriods => Int
+
+=item MetricName => Str
+
+=item Namespace => Str
+
+=item Period => Int
+
+=item Threshold => Num
+
+=item [ActionsEnabled => Bool]
+
+=item [AlarmActions => ArrayRef[Str|Undef]]
+
+=item [AlarmDescription => Str]
+
+=item [DatapointsToAlarm => Int]
+
+=item [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]]
+
+=item [EvaluateLowSampleCountPercentile => Str]
+
+=item [ExtendedStatistic => Str]
+
+=item [InsufficientDataActions => ArrayRef[Str|Undef]]
+
+=item [OKActions => ArrayRef[Str|Undef]]
+
+=item [Statistic => Str]
+
+=item [TreatMissingData => Str]
+
+=item [Unit => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatch::PutMetricAlarm>
 
@@ -557,7 +759,16 @@ create stop, terminate, or reboot alarms using a command-line interface
 or API.
 
 
-=head2 PutMetricData(MetricData => ArrayRef[L<Paws::CloudWatch::MetricDatum>], Namespace => Str)
+=head2 PutMetricData
+
+=over
+
+=item MetricData => ArrayRef[L<Paws::CloudWatch::MetricDatum>]
+
+=item Namespace => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatch::PutMetricData>
 
@@ -607,7 +818,20 @@ The Min and the Max values of the statistic set are equal
 
 
 
-=head2 SetAlarmState(AlarmName => Str, StateReason => Str, StateValue => Str, [StateReasonData => Str])
+=head2 SetAlarmState
+
+=over
+
+=item AlarmName => Str
+
+=item StateReason => Str
+
+=item StateValue => Str
+
+=item [StateReasonData => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatch::SetAlarmState>
 

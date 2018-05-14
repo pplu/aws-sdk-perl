@@ -28,6 +28,11 @@ package Paws::GuardDuty;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::CreateDetector', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateFilter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::CreateFilter', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateIPSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::CreateIPSet', @_);
@@ -56,6 +61,11 @@ package Paws::GuardDuty;
   sub DeleteDetector {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::DeleteDetector', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteFilter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::DeleteFilter', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteInvitations {
@@ -91,6 +101,11 @@ package Paws::GuardDuty;
   sub GetDetector {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::GetDetector', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetFilter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::GetFilter', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetFindings {
@@ -138,6 +153,11 @@ package Paws::GuardDuty;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::ListDetectors', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListFilters {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::ListFilters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListFindings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::ListFindings', @_);
@@ -183,6 +203,11 @@ package Paws::GuardDuty;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::UpdateDetector', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateFilter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::UpdateFilter', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateFindingsFeedback {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::UpdateFindingsFeedback', @_);
@@ -218,6 +243,29 @@ package Paws::GuardDuty;
         $result = $self->ListDetectors(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'DetectorIds') foreach (@{ $result->DetectorIds });
+    }
+
+    return undef
+  }
+  sub ListAllFilters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListFilters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListFilters(@_, NextToken => $next_result->NextToken);
+        push @{ $result->FilterNames }, @{ $next_result->FilterNames };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'FilterNames') foreach (@{ $result->FilterNames });
+        $result = $self->ListFilters(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'FilterNames') foreach (@{ $result->FilterNames });
     }
 
     return undef
@@ -339,7 +387,7 @@ package Paws::GuardDuty;
   }
 
 
-  sub operations { qw/AcceptInvitation ArchiveFindings CreateDetector CreateIPSet CreateMembers CreateSampleFindings CreateThreatIntelSet DeclineInvitations DeleteDetector DeleteInvitations DeleteIPSet DeleteMembers DeleteThreatIntelSet DisassociateFromMasterAccount DisassociateMembers GetDetector GetFindings GetFindingsStatistics GetInvitationsCount GetIPSet GetMasterAccount GetMembers GetThreatIntelSet InviteMembers ListDetectors ListFindings ListInvitations ListIPSets ListMembers ListThreatIntelSets StartMonitoringMembers StopMonitoringMembers UnarchiveFindings UpdateDetector UpdateFindingsFeedback UpdateIPSet UpdateThreatIntelSet / }
+  sub operations { qw/AcceptInvitation ArchiveFindings CreateDetector CreateFilter CreateIPSet CreateMembers CreateSampleFindings CreateThreatIntelSet DeclineInvitations DeleteDetector DeleteFilter DeleteInvitations DeleteIPSet DeleteMembers DeleteThreatIntelSet DisassociateFromMasterAccount DisassociateMembers GetDetector GetFilter GetFindings GetFindingsStatistics GetInvitationsCount GetIPSet GetMasterAccount GetMembers GetThreatIntelSet InviteMembers ListDetectors ListFilters ListFindings ListInvitations ListIPSets ListMembers ListThreatIntelSets StartMonitoringMembers StopMonitoringMembers UnarchiveFindings UpdateDetector UpdateFilter UpdateFindingsFeedback UpdateIPSet UpdateThreatIntelSet / }
 
 1;
 
@@ -372,7 +420,18 @@ infrastructure, applications, and data.
 
 =head1 METHODS
 
-=head2 AcceptInvitation(DetectorId => Str, [InvitationId => Str, MasterId => Str])
+=head2 AcceptInvitation
+
+=over
+
+=item DetectorId => Str
+
+=item [InvitationId => Str]
+
+=item [MasterId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::AcceptInvitation>
 
@@ -381,7 +440,16 @@ Returns: a L<Paws::GuardDuty::AcceptInvitationResponse> instance
 Accepts the invitation to be monitored by a master GuardDuty account.
 
 
-=head2 ArchiveFindings(DetectorId => Str, [FindingIds => ArrayRef[Str|Undef]])
+=head2 ArchiveFindings
+
+=over
+
+=item DetectorId => Str
+
+=item [FindingIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::ArchiveFindings>
 
@@ -391,7 +459,14 @@ Archives Amazon GuardDuty findings specified by the list of finding
 IDs.
 
 
-=head2 CreateDetector([Enable => Bool])
+=head2 CreateDetector
+
+=over
+
+=item [Enable => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::CreateDetector>
 
@@ -402,7 +477,50 @@ that represents the GuardDuty service. A detector must be created in
 order for GuardDuty to become operational.
 
 
-=head2 CreateIPSet(DetectorId => Str, [Activate => Bool, Format => Str, Location => Str, Name => Str])
+=head2 CreateFilter
+
+=over
+
+=item DetectorId => Str
+
+=item [Action => Str]
+
+=item [ClientToken => Str]
+
+=item [Description => Str]
+
+=item [FindingCriteria => L<Paws::GuardDuty::FindingCriteria>]
+
+=item [Name => Str]
+
+=item [Rank => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::CreateFilter>
+
+Returns: a L<Paws::GuardDuty::CreateFilterResponse> instance
+
+Creates a filter using the specified finding criteria.
+
+
+=head2 CreateIPSet
+
+=over
+
+=item DetectorId => Str
+
+=item [Activate => Bool]
+
+=item [Format => Str]
+
+=item [Location => Str]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::CreateIPSet>
 
@@ -413,7 +531,16 @@ whitelisted for secure communication with AWS infrastructure and
 applications.
 
 
-=head2 CreateMembers(DetectorId => Str, [AccountDetails => ArrayRef[L<Paws::GuardDuty::AccountDetail>]])
+=head2 CreateMembers
+
+=over
+
+=item DetectorId => Str
+
+=item [AccountDetails => ArrayRef[L<Paws::GuardDuty::AccountDetail>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::CreateMembers>
 
@@ -424,7 +551,16 @@ of AWS account IDs. The current AWS account can then invite these
 members to manage GuardDuty in their accounts.
 
 
-=head2 CreateSampleFindings(DetectorId => Str, [FindingTypes => ArrayRef[Str|Undef]])
+=head2 CreateSampleFindings
+
+=over
+
+=item DetectorId => Str
+
+=item [FindingTypes => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::CreateSampleFindings>
 
@@ -435,7 +571,22 @@ types. If 'NULL' is specified for findingTypes, the API generates
 example findings of all supported finding types.
 
 
-=head2 CreateThreatIntelSet(DetectorId => Str, [Activate => Bool, Format => Str, Location => Str, Name => Str])
+=head2 CreateThreatIntelSet
+
+=over
+
+=item DetectorId => Str
+
+=item [Activate => Bool]
+
+=item [Format => Str]
+
+=item [Location => Str]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::CreateThreatIntelSet>
 
@@ -445,7 +596,14 @@ Create a new ThreatIntelSet. ThreatIntelSets consist of known malicious
 IP addresses. GuardDuty generates findings based on ThreatIntelSets.
 
 
-=head2 DeclineInvitations([AccountIds => ArrayRef[Str|Undef]])
+=head2 DeclineInvitations
+
+=over
+
+=item [AccountIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::DeclineInvitations>
 
@@ -455,7 +613,14 @@ Declines invitations sent to the current member account by AWS account
 specified by their account IDs.
 
 
-=head2 DeleteDetector(DetectorId => Str)
+=head2 DeleteDetector
+
+=over
+
+=item DetectorId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::DeleteDetector>
 
@@ -464,7 +629,32 @@ Returns: a L<Paws::GuardDuty::DeleteDetectorResponse> instance
 Deletes a Amazon GuardDuty detector specified by the detector ID.
 
 
-=head2 DeleteInvitations([AccountIds => ArrayRef[Str|Undef]])
+=head2 DeleteFilter
+
+=over
+
+=item DetectorId => Str
+
+=item FilterName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::DeleteFilter>
+
+Returns: a L<Paws::GuardDuty::DeleteFilterResponse> instance
+
+Deletes the filter specified by the filter name.
+
+
+=head2 DeleteInvitations
+
+=over
+
+=item [AccountIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::DeleteInvitations>
 
@@ -474,7 +664,16 @@ Deletes invitations sent to the current member account by AWS accounts
 specified by their account IDs.
 
 
-=head2 DeleteIPSet(DetectorId => Str, IpSetId => Str)
+=head2 DeleteIPSet
+
+=over
+
+=item DetectorId => Str
+
+=item IpSetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::DeleteIPSet>
 
@@ -483,7 +682,16 @@ Returns: a L<Paws::GuardDuty::DeleteIPSetResponse> instance
 Deletes the IPSet specified by the IPSet ID.
 
 
-=head2 DeleteMembers(DetectorId => Str, [AccountIds => ArrayRef[Str|Undef]])
+=head2 DeleteMembers
+
+=over
+
+=item DetectorId => Str
+
+=item [AccountIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::DeleteMembers>
 
@@ -493,7 +701,16 @@ Deletes GuardDuty member accounts (to the current GuardDuty master
 account) specified by the account IDs.
 
 
-=head2 DeleteThreatIntelSet(DetectorId => Str, ThreatIntelSetId => Str)
+=head2 DeleteThreatIntelSet
+
+=over
+
+=item DetectorId => Str
+
+=item ThreatIntelSetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::DeleteThreatIntelSet>
 
@@ -502,7 +719,14 @@ Returns: a L<Paws::GuardDuty::DeleteThreatIntelSetResponse> instance
 Deletes ThreatIntelSet specified by the ThreatIntelSet ID.
 
 
-=head2 DisassociateFromMasterAccount(DetectorId => Str)
+=head2 DisassociateFromMasterAccount
+
+=over
+
+=item DetectorId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::DisassociateFromMasterAccount>
 
@@ -512,7 +736,16 @@ Disassociates the current GuardDuty member account from its master
 account.
 
 
-=head2 DisassociateMembers(DetectorId => Str, [AccountIds => ArrayRef[Str|Undef]])
+=head2 DisassociateMembers
+
+=over
+
+=item DetectorId => Str
+
+=item [AccountIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::DisassociateMembers>
 
@@ -522,7 +755,14 @@ Disassociates GuardDuty member accounts (to the current GuardDuty
 master account) specified by the account IDs.
 
 
-=head2 GetDetector(DetectorId => Str)
+=head2 GetDetector
+
+=over
+
+=item DetectorId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::GetDetector>
 
@@ -531,7 +771,36 @@ Returns: a L<Paws::GuardDuty::GetDetectorResponse> instance
 Retrieves an Amazon GuardDuty detector specified by the detectorId.
 
 
-=head2 GetFindings(DetectorId => Str, [FindingIds => ArrayRef[Str|Undef], SortCriteria => L<Paws::GuardDuty::SortCriteria>])
+=head2 GetFilter
+
+=over
+
+=item DetectorId => Str
+
+=item FilterName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::GetFilter>
+
+Returns: a L<Paws::GuardDuty::GetFilterResponse> instance
+
+Returns the details of the filter specified by the filter name.
+
+
+=head2 GetFindings
+
+=over
+
+=item DetectorId => Str
+
+=item [FindingIds => ArrayRef[Str|Undef]]
+
+=item [SortCriteria => L<Paws::GuardDuty::SortCriteria>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::GetFindings>
 
@@ -540,7 +809,18 @@ Returns: a L<Paws::GuardDuty::GetFindingsResponse> instance
 Describes Amazon GuardDuty findings specified by finding IDs.
 
 
-=head2 GetFindingsStatistics(DetectorId => Str, [FindingCriteria => L<Paws::GuardDuty::FindingCriteria>, FindingStatisticTypes => ArrayRef[Str|Undef]])
+=head2 GetFindingsStatistics
+
+=over
+
+=item DetectorId => Str
+
+=item [FindingCriteria => L<Paws::GuardDuty::FindingCriteria>]
+
+=item [FindingStatisticTypes => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::GetFindingsStatistics>
 
@@ -550,7 +830,12 @@ Lists Amazon GuardDuty findings' statistics for the specified detector
 ID.
 
 
-=head2 GetInvitationsCount()
+=head2 GetInvitationsCount
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::GuardDuty::GetInvitationsCount>
 
@@ -561,7 +846,16 @@ sent to the current member account except the currently accepted
 invitation.
 
 
-=head2 GetIPSet(DetectorId => Str, IpSetId => Str)
+=head2 GetIPSet
+
+=over
+
+=item DetectorId => Str
+
+=item IpSetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::GetIPSet>
 
@@ -570,7 +864,14 @@ Returns: a L<Paws::GuardDuty::GetIPSetResponse> instance
 Retrieves the IPSet specified by the IPSet ID.
 
 
-=head2 GetMasterAccount(DetectorId => Str)
+=head2 GetMasterAccount
+
+=over
+
+=item DetectorId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::GetMasterAccount>
 
@@ -580,7 +881,16 @@ Provides the details for the GuardDuty master account to the current
 GuardDuty member account.
 
 
-=head2 GetMembers(DetectorId => Str, [AccountIds => ArrayRef[Str|Undef]])
+=head2 GetMembers
+
+=over
+
+=item DetectorId => Str
+
+=item [AccountIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::GetMembers>
 
@@ -590,7 +900,16 @@ Retrieves GuardDuty member accounts (to the current GuardDuty master
 account) specified by the account IDs.
 
 
-=head2 GetThreatIntelSet(DetectorId => Str, ThreatIntelSetId => Str)
+=head2 GetThreatIntelSet
+
+=over
+
+=item DetectorId => Str
+
+=item ThreatIntelSetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::GetThreatIntelSet>
 
@@ -600,7 +919,20 @@ Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet
 ID.
 
 
-=head2 InviteMembers(DetectorId => Str, [AccountIds => ArrayRef[Str|Undef], Message => Str])
+=head2 InviteMembers
+
+=over
+
+=item DetectorId => Str
+
+=item [AccountIds => ArrayRef[Str|Undef]]
+
+=item [DisableEmailNotification => Bool]
+
+=item [Message => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::InviteMembers>
 
@@ -612,7 +944,16 @@ account to view and manage these accounts' GuardDuty findings on their
 behalf as the master account.
 
 
-=head2 ListDetectors([MaxResults => Int, NextToken => Str])
+=head2 ListDetectors
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::ListDetectors>
 
@@ -622,7 +963,42 @@ Lists detectorIds of all the existing Amazon GuardDuty detector
 resources.
 
 
-=head2 ListFindings(DetectorId => Str, [FindingCriteria => L<Paws::GuardDuty::FindingCriteria>, MaxResults => Int, NextToken => Str, SortCriteria => L<Paws::GuardDuty::SortCriteria>])
+=head2 ListFilters
+
+=over
+
+=item DetectorId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::ListFilters>
+
+Returns: a L<Paws::GuardDuty::ListFiltersResponse> instance
+
+Returns a paginated list of the current filters.
+
+
+=head2 ListFindings
+
+=over
+
+=item DetectorId => Str
+
+=item [FindingCriteria => L<Paws::GuardDuty::FindingCriteria>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortCriteria => L<Paws::GuardDuty::SortCriteria>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::ListFindings>
 
@@ -631,7 +1007,16 @@ Returns: a L<Paws::GuardDuty::ListFindingsResponse> instance
 Lists Amazon GuardDuty findings for the specified detector ID.
 
 
-=head2 ListInvitations([MaxResults => Int, NextToken => Str])
+=head2 ListInvitations
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::ListInvitations>
 
@@ -641,7 +1026,18 @@ Lists all GuardDuty membership invitations that were sent to the
 current AWS account.
 
 
-=head2 ListIPSets(DetectorId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListIPSets
+
+=over
+
+=item DetectorId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::ListIPSets>
 
@@ -650,7 +1046,20 @@ Returns: a L<Paws::GuardDuty::ListIPSetsResponse> instance
 Lists the IPSets of the GuardDuty service specified by the detector ID.
 
 
-=head2 ListMembers(DetectorId => Str, [MaxResults => Int, NextToken => Str, OnlyAssociated => Str])
+=head2 ListMembers
+
+=over
+
+=item DetectorId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [OnlyAssociated => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::ListMembers>
 
@@ -660,7 +1069,18 @@ Lists details about all member accounts for the current GuardDuty
 master account.
 
 
-=head2 ListThreatIntelSets(DetectorId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListThreatIntelSets
+
+=over
+
+=item DetectorId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::ListThreatIntelSets>
 
@@ -670,7 +1090,16 @@ Lists the ThreatIntelSets of the GuardDuty service specified by the
 detector ID.
 
 
-=head2 StartMonitoringMembers(DetectorId => Str, [AccountIds => ArrayRef[Str|Undef]])
+=head2 StartMonitoringMembers
+
+=over
+
+=item DetectorId => Str
+
+=item [AccountIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::StartMonitoringMembers>
 
@@ -682,7 +1111,16 @@ command after disabling GuardDuty from monitoring these members'
 findings by running StopMonitoringMembers.
 
 
-=head2 StopMonitoringMembers(DetectorId => Str, [AccountIds => ArrayRef[Str|Undef]])
+=head2 StopMonitoringMembers
+
+=over
+
+=item DetectorId => Str
+
+=item [AccountIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::StopMonitoringMembers>
 
@@ -691,10 +1129,19 @@ Returns: a L<Paws::GuardDuty::StopMonitoringMembersResponse> instance
 Disables GuardDuty from monitoring findings of the member accounts
 specified by the account IDs. After running this command, a master
 GuardDuty account can run StartMonitoringMembers to re-enable GuardDuty
-to monitor these members' findings.
+to monitor these membersE<rsquo> findings.
 
 
-=head2 UnarchiveFindings(DetectorId => Str, [FindingIds => ArrayRef[Str|Undef]])
+=head2 UnarchiveFindings
+
+=over
+
+=item DetectorId => Str
+
+=item [FindingIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::UnarchiveFindings>
 
@@ -704,7 +1151,16 @@ Unarchives Amazon GuardDuty findings specified by the list of finding
 IDs.
 
 
-=head2 UpdateDetector(DetectorId => Str, [Enable => Bool])
+=head2 UpdateDetector
+
+=over
+
+=item DetectorId => Str
+
+=item [Enable => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::UpdateDetector>
 
@@ -713,7 +1169,46 @@ Returns: a L<Paws::GuardDuty::UpdateDetectorResponse> instance
 Updates an Amazon GuardDuty detector specified by the detectorId.
 
 
-=head2 UpdateFindingsFeedback(DetectorId => Str, [Comments => Str, Feedback => Str, FindingIds => ArrayRef[Str|Undef]])
+=head2 UpdateFilter
+
+=over
+
+=item DetectorId => Str
+
+=item FilterName => Str
+
+=item [Action => Str]
+
+=item [Description => Str]
+
+=item [FindingCriteria => L<Paws::GuardDuty::FindingCriteria>]
+
+=item [Rank => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::UpdateFilter>
+
+Returns: a L<Paws::GuardDuty::UpdateFilterResponse> instance
+
+Updates the filter specified by the filter name.
+
+
+=head2 UpdateFindingsFeedback
+
+=over
+
+=item DetectorId => Str
+
+=item [Comments => Str]
+
+=item [Feedback => Str]
+
+=item [FindingIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::UpdateFindingsFeedback>
 
@@ -722,7 +1217,22 @@ Returns: a L<Paws::GuardDuty::UpdateFindingsFeedbackResponse> instance
 Marks specified Amazon GuardDuty findings as useful or not useful.
 
 
-=head2 UpdateIPSet(DetectorId => Str, IpSetId => Str, [Activate => Bool, Location => Str, Name => Str])
+=head2 UpdateIPSet
+
+=over
+
+=item DetectorId => Str
+
+=item IpSetId => Str
+
+=item [Activate => Bool]
+
+=item [Location => Str]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::UpdateIPSet>
 
@@ -731,7 +1241,22 @@ Returns: a L<Paws::GuardDuty::UpdateIPSetResponse> instance
 Updates the IPSet specified by the IPSet ID.
 
 
-=head2 UpdateThreatIntelSet(DetectorId => Str, ThreatIntelSetId => Str, [Activate => Bool, Location => Str, Name => Str])
+=head2 UpdateThreatIntelSet
+
+=over
+
+=item DetectorId => Str
+
+=item ThreatIntelSetId => Str
+
+=item [Activate => Bool]
+
+=item [Location => Str]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::GuardDuty::UpdateThreatIntelSet>
 
@@ -756,6 +1281,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - DetectorIds, passing the object as the first parameter, and the string 'DetectorIds' as the second parameter 
 
 If not, it will return a a L<Paws::GuardDuty::ListDetectorsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllFilters(sub { },DetectorId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllFilters(DetectorId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FilterNames, passing the object as the first parameter, and the string 'FilterNames' as the second parameter 
+
+If not, it will return a a L<Paws::GuardDuty::ListFiltersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllFindings(sub { },DetectorId => Str, [FindingCriteria => L<Paws::GuardDuty::FindingCriteria>, MaxResults => Int, NextToken => Str, SortCriteria => L<Paws::GuardDuty::SortCriteria>])

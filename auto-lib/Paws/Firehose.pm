@@ -104,13 +104,34 @@ Redshift, and Splunk.
 
 =head1 METHODS
 
-=head2 CreateDeliveryStream(DeliveryStreamName => Str, [DeliveryStreamType => Str, ElasticsearchDestinationConfiguration => L<Paws::Firehose::ElasticsearchDestinationConfiguration>, ExtendedS3DestinationConfiguration => L<Paws::Firehose::ExtendedS3DestinationConfiguration>, KinesisStreamSourceConfiguration => L<Paws::Firehose::KinesisStreamSourceConfiguration>, RedshiftDestinationConfiguration => L<Paws::Firehose::RedshiftDestinationConfiguration>, S3DestinationConfiguration => L<Paws::Firehose::S3DestinationConfiguration>, SplunkDestinationConfiguration => L<Paws::Firehose::SplunkDestinationConfiguration>])
+=head2 CreateDeliveryStream
+
+=over
+
+=item DeliveryStreamName => Str
+
+=item [DeliveryStreamType => Str]
+
+=item [ElasticsearchDestinationConfiguration => L<Paws::Firehose::ElasticsearchDestinationConfiguration>]
+
+=item [ExtendedS3DestinationConfiguration => L<Paws::Firehose::ExtendedS3DestinationConfiguration>]
+
+=item [KinesisStreamSourceConfiguration => L<Paws::Firehose::KinesisStreamSourceConfiguration>]
+
+=item [RedshiftDestinationConfiguration => L<Paws::Firehose::RedshiftDestinationConfiguration>]
+
+=item [S3DestinationConfiguration => L<Paws::Firehose::S3DestinationConfiguration>]
+
+=item [SplunkDestinationConfiguration => L<Paws::Firehose::SplunkDestinationConfiguration>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Firehose::CreateDeliveryStream>
 
 Returns: a L<Paws::Firehose::CreateDeliveryStreamOutput> instance
 
-Creates a delivery stream.
+Creates a Kinesis Data Firehose delivery stream.
 
 By default, you can create up to 50 delivery streams per AWS Region.
 
@@ -123,28 +144,28 @@ DescribeDeliveryStream.
 
 A Kinesis Data Firehose delivery stream can be configured to receive
 records directly from providers using PutRecord or PutRecordBatch, or
-it can be configured to use an existing Kinesis data stream as its
-source. To specify a Kinesis data stream as input, set the
+it can be configured to use an existing Kinesis stream as its source.
+To specify a Kinesis data stream as input, set the
 C<DeliveryStreamType> parameter to C<KinesisStreamAsSource>, and
-provide the Kinesis data stream Amazon Resource Name (ARN) and role ARN
-in the C<KinesisStreamSourceConfiguration> parameter.
+provide the Kinesis stream Amazon Resource Name (ARN) and role ARN in
+the C<KinesisStreamSourceConfiguration> parameter.
 
 A delivery stream is configured with a single destination: Amazon S3,
-Amazon ES, Amazon Redshift, or Splunk. Specify only one of the
+Amazon ES, Amazon Redshift, or Splunk. You must specify only one of the
 following destination configuration parameters:
-C<ExtendedS3DestinationConfiguration>, C<S3DestinationConfiguration>,
-C<ElasticsearchDestinationConfiguration>,
-C<RedshiftDestinationConfiguration>, or
-C<SplunkDestinationConfiguration>.
+B<ExtendedS3DestinationConfiguration>, B<S3DestinationConfiguration>,
+B<ElasticsearchDestinationConfiguration>,
+B<RedshiftDestinationConfiguration>, or
+B<SplunkDestinationConfiguration>.
 
-When you specify C<S3DestinationConfiguration>, you can also provide
-the following optional values: C<BufferingHints>,
-C<EncryptionConfiguration>, and C<CompressionFormat>. By default, if no
-C<BufferingHints> value is provided, Kinesis Data Firehose buffers data
+When you specify B<S3DestinationConfiguration>, you can also provide
+the following optional values: B<BufferingHints>,
+B<EncryptionConfiguration>, and B<CompressionFormat>. By default, if no
+B<BufferingHints> value is provided, Kinesis Data Firehose buffers data
 up to 5 MB or for 5 minutes, whichever condition is satisfied first.
-C<BufferingHints> is a hint, so there are some cases where the service
+B<BufferingHints> is a hint, so there are some cases where the service
 cannot adhere to these conditions strictly. For example, record
-boundaries are such that the size is a little over or under the
+boundaries might be such that the size is a little over or under the
 configured buffering size. By default, no encryption is performed. We
 strongly recommend that you enable encryption to ensure secure data
 storage in Amazon S3.
@@ -156,10 +177,10 @@ A few notes about Amazon Redshift as a destination:
 =item *
 
 An Amazon Redshift destination requires an S3 bucket as intermediate
-location. This is because Kinesis Data Firehose first delivers data to
-Amazon S3 and then uses C<COPY> syntax to load data into an Amazon
-Redshift table. This is specified in the
-C<RedshiftDestinationConfiguration.S3Configuration> parameter.
+location. Kinesis Data Firehose first delivers data to Amazon S3 and
+then uses C<COPY> syntax to load data into an Amazon Redshift table.
+This is specified in the
+B<RedshiftDestinationConfiguration.S3Configuration> parameter.
 
 =item *
 
@@ -170,9 +191,9 @@ support these compression formats.
 
 =item *
 
-We strongly recommend that you use the user name and password that you
-provide exclusively with Kinesis Data Firehose. In addition, the
-permissions for the account should be restricted for Amazon Redshift
+We strongly recommend that you use the user name and password you
+provide exclusively with Kinesis Data Firehose, and that the
+permissions for the account are restricted for Amazon Redshift
 C<INSERT> permissions.
 
 =back
@@ -181,12 +202,19 @@ Kinesis Data Firehose assumes the IAM role that is configured as part
 of the destination. The role should allow the Kinesis Data Firehose
 principal to assume the role, and the role should have permissions that
 allow the service to deliver the data. For more information, see Grant
-Kinesis Firehose Access to an Amazon S3 Destination
+Kinesis Data Firehose Access to an Amazon S3 Destination
 (http://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3)
 in the I<Amazon Kinesis Data Firehose Developer Guide>.
 
 
-=head2 DeleteDeliveryStream(DeliveryStreamName => Str)
+=head2 DeleteDeliveryStream
+
+=over
+
+=item DeliveryStreamName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Firehose::DeleteDeliveryStream>
 
@@ -200,14 +228,25 @@ request is in process, the delivery stream is in the C<DELETING> state.
 
 To check the state of a delivery stream, use DescribeDeliveryStream.
 
-While the delivery stream is C<DELETING> state, the service may
-continue to accept the records, but the service doesn't make any
-guarantees with respect to delivering the data. Therefore, as a best
-practice, you should first stop any applications that are sending
-records before deleting a delivery stream.
+While the delivery stream is C<DELETING> state, the service might
+continue to accept the records, but it doesn't make any guarantees with
+respect to delivering the data. Therefore, as a best practice, you
+should first stop any applications that are sending records before
+deleting a delivery stream.
 
 
-=head2 DescribeDeliveryStream(DeliveryStreamName => Str, [ExclusiveStartDestinationId => Str, Limit => Int])
+=head2 DescribeDeliveryStream
+
+=over
+
+=item DeliveryStreamName => Str
+
+=item [ExclusiveStartDestinationId => Str]
+
+=item [Limit => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Firehose::DescribeDeliveryStream>
 
@@ -219,7 +258,18 @@ C<DescribeDeliveryStream> to see whether the delivery stream is
 C<ACTIVE> and therefore ready for data to be sent to it.
 
 
-=head2 ListDeliveryStreams([DeliveryStreamType => Str, ExclusiveStartDeliveryStreamName => Str, Limit => Int])
+=head2 ListDeliveryStreams
+
+=over
+
+=item [DeliveryStreamType => Str]
+
+=item [ExclusiveStartDeliveryStreamName => Str]
+
+=item [Limit => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Firehose::ListDeliveryStreams>
 
@@ -237,7 +287,18 @@ last delivery stream returned in the call in the
 C<ExclusiveStartDeliveryStreamName> parameter of a subsequent call.
 
 
-=head2 ListTagsForDeliveryStream(DeliveryStreamName => Str, [ExclusiveStartTagKey => Str, Limit => Int])
+=head2 ListTagsForDeliveryStream
+
+=over
+
+=item DeliveryStreamName => Str
+
+=item [ExclusiveStartTagKey => Str]
+
+=item [Limit => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Firehose::ListTagsForDeliveryStream>
 
@@ -247,7 +308,16 @@ Lists the tags for the specified delivery stream. This operation has a
 limit of five transactions per second per account.
 
 
-=head2 PutRecord(DeliveryStreamName => Str, Record => L<Paws::Firehose::Record>)
+=head2 PutRecord
+
+=over
+
+=item DeliveryStreamName => Str
+
+=item Record => L<Paws::Firehose::Record>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Firehose::PutRecord>
 
@@ -259,17 +329,16 @@ use PutRecordBatch. Applications using these operations are referred to
 as producers.
 
 By default, each delivery stream can take in up to 2,000 transactions
-per second, 5,000 records per second, or 5 MB per second. Note that if
-you use C<PutRecord> and PutRecordBatch, the limits are an aggregate
-across these two operations for each delivery stream. For more
-information about limits and how to request an increase, see Amazon
-Kinesis Data Firehose Limits
-(http://docs.aws.amazon.com/firehose/latest/dev/limits.html).
+per second, 5,000 records per second, or 5 MB per second. If you use
+PutRecord and PutRecordBatch, the limits are an aggregate across these
+two operations for each delivery stream. For more information about
+limits and how to request an increase, see Amazon Kinesis Data Firehose
+Limits (http://docs.aws.amazon.com/firehose/latest/dev/limits.html).
 
 You must specify the name of the delivery stream and the data record
-when using C<PutRecord>. The data record consists of a data blob that
-can be up to 1,000 KB in size and any kind of data. For example, it can
-be a segment from a log file, geographic location data, website
+when using PutRecord. The data record consists of a data blob that can
+be up to 1,000 KB in size, and any kind of data. For example, it can be
+a segment from a log file, geographic location data, website
 clickstream data, and so on.
 
 Kinesis Data Firehose buffers records before delivering them to the
@@ -288,12 +357,21 @@ back off and retry. If the exception persists, it is possible that the
 throughput limits have been exceeded for the delivery stream.
 
 Data records sent to Kinesis Data Firehose are stored for 24 hours from
-the time they are added to a delivery stream as it attempts to send the
+the time they are added to a delivery stream as it tries to send the
 records to the destination. If the destination is unreachable for more
 than 24 hours, the data is no longer available.
 
 
-=head2 PutRecordBatch(DeliveryStreamName => Str, Records => ArrayRef[L<Paws::Firehose::Record>])
+=head2 PutRecordBatch
+
+=over
+
+=item DeliveryStreamName => Str
+
+=item Records => ArrayRef[L<Paws::Firehose::Record>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Firehose::PutRecordBatch>
 
@@ -307,19 +385,18 @@ producers.
 
 By default, each delivery stream can take in up to 2,000 transactions
 per second, 5,000 records per second, or 5 MB per second. If you use
-PutRecord and C<PutRecordBatch>, the limits are an aggregate across
-these two operations for each delivery stream. For more information
-about limits, see Amazon Kinesis Data Firehose Limits
+PutRecord and PutRecordBatch, the limits are an aggregate across these
+two operations for each delivery stream. For more information about
+limits, see Amazon Kinesis Data Firehose Limits
 (http://docs.aws.amazon.com/firehose/latest/dev/limits.html).
 
-Each C<PutRecordBatch> request supports up to 500 records. Each record
-in the request can be as large as 1,000 KB (before 64-bit encoding), up
-to a limit of 4 MB for the entire request. These limits cannot be
-changed.
+Each PutRecordBatch request supports up to 500 records. Each record in
+the request can be as large as 1,000 KB (before 64-bit encoding), up to
+a limit of 4 MB for the entire request. These limits cannot be changed.
 
 You must specify the name of the delivery stream and the data record
 when using PutRecord. The data record consists of a data blob that can
-be up to 1,000 KB in size and any kind of data. For example, it could
+be up to 1,000 KB in size, and any kind of data. For example, it could
 be a segment from a log file, geographic location data, website
 clickstream data, and so on.
 
@@ -330,34 +407,34 @@ common solution is to use delimiters in the data, such as a newline
 consumer application to parse individual data items when reading the
 data from the destination.
 
-The C<PutRecordBatch> response includes a count of failed records,
-C<FailedPutCount>, and an array of responses, C<RequestResponses>. Each
-entry in the C<RequestResponses> array provides additional information
+The PutRecordBatch response includes a count of failed records,
+B<FailedPutCount>, and an array of responses, B<RequestResponses>. Each
+entry in the B<RequestResponses> array provides additional information
 about the processed record. It directly correlates with a record in the
 request array using the same ordering, from the top to the bottom. The
 response array always includes the same number of records as the
-request array. C<RequestResponses> includes both successfully and
-unsuccessfully processed records. Kinesis Data Firehose attempts to
-process all records in each C<PutRecordBatch> request. A single record
+request array. B<RequestResponses> includes both successfully and
+unsuccessfully processed records. Kinesis Data Firehose tries to
+process all records in each PutRecordBatch request. A single record
 failure does not stop the processing of subsequent records.
 
-A successfully processed record includes a C<RecordId> value, which is
+A successfully processed record includes a B<RecordId> value, which is
 unique for the record. An unsuccessfully processed record includes
-C<ErrorCode> and C<ErrorMessage> values. C<ErrorCode> reflects the type
+B<ErrorCode> and B<ErrorMessage> values. B<ErrorCode> reflects the type
 of error, and is one of the following values: C<ServiceUnavailable> or
-C<InternalFailure>. C<ErrorMessage> provides more detailed information
+C<InternalFailure>. B<ErrorMessage> provides more detailed information
 about the error.
 
 If there is an internal server error or a timeout, the write might have
-completed or it might have failed. If C<FailedPutCount> is greater than
+completed or it might have failed. If B<FailedPutCount> is greater than
 0, retry the request, resending only those records that might have
 failed processing. This minimizes the possible duplicate records and
 also reduces the total bytes sent (and corresponding charges). We
 recommend that you handle any duplicates at the destination.
 
-If C<PutRecordBatch> throws C<ServiceUnavailableException>, back off
-and retry. If the exception persists, it is possible that the
-throughput limits have been exceeded for the delivery stream.
+If PutRecordBatch throws B<ServiceUnavailableException>, back off and
+retry. If the exception persists, it is possible that the throughput
+limits have been exceeded for the delivery stream.
 
 Data records sent to Kinesis Data Firehose are stored for 24 hours from
 the time they are added to a delivery stream as it attempts to send the
@@ -365,7 +442,16 @@ records to the destination. If the destination is unreachable for more
 than 24 hours, the data is no longer available.
 
 
-=head2 TagDeliveryStream(DeliveryStreamName => Str, Tags => ArrayRef[L<Paws::Firehose::Tag>])
+=head2 TagDeliveryStream
+
+=over
+
+=item DeliveryStreamName => Str
+
+=item Tags => ArrayRef[L<Paws::Firehose::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Firehose::TagDeliveryStream>
 
@@ -387,7 +473,16 @@ Each delivery stream can have up to 50 tags.
 This operation has a limit of five transactions per second per account.
 
 
-=head2 UntagDeliveryStream(DeliveryStreamName => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 UntagDeliveryStream
+
+=over
+
+=item DeliveryStreamName => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Firehose::UntagDeliveryStream>
 
@@ -402,7 +497,28 @@ If you specify a tag that doesn't exist, the operation ignores it.
 This operation has a limit of five transactions per second per account.
 
 
-=head2 UpdateDestination(CurrentDeliveryStreamVersionId => Str, DeliveryStreamName => Str, DestinationId => Str, [ElasticsearchDestinationUpdate => L<Paws::Firehose::ElasticsearchDestinationUpdate>, ExtendedS3DestinationUpdate => L<Paws::Firehose::ExtendedS3DestinationUpdate>, RedshiftDestinationUpdate => L<Paws::Firehose::RedshiftDestinationUpdate>, S3DestinationUpdate => L<Paws::Firehose::S3DestinationUpdate>, SplunkDestinationUpdate => L<Paws::Firehose::SplunkDestinationUpdate>])
+=head2 UpdateDestination
+
+=over
+
+=item CurrentDeliveryStreamVersionId => Str
+
+=item DeliveryStreamName => Str
+
+=item DestinationId => Str
+
+=item [ElasticsearchDestinationUpdate => L<Paws::Firehose::ElasticsearchDestinationUpdate>]
+
+=item [ExtendedS3DestinationUpdate => L<Paws::Firehose::ExtendedS3DestinationUpdate>]
+
+=item [RedshiftDestinationUpdate => L<Paws::Firehose::RedshiftDestinationUpdate>]
+
+=item [S3DestinationUpdate => L<Paws::Firehose::S3DestinationUpdate>]
+
+=item [SplunkDestinationUpdate => L<Paws::Firehose::SplunkDestinationUpdate>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Firehose::UpdateDestination>
 
@@ -436,13 +552,13 @@ destination from Amazon S3 to Amazon Redshift, Kinesis Data Firehose
 does not merge any parameters. In this case, all parameters must be
 specified.
 
-Kinesis Data Firehose uses C<CurrentDeliveryStreamVersionId> to avoid
+Kinesis Data Firehose uses B<CurrentDeliveryStreamVersionId> to avoid
 race conditions and conflicting merges. This is a required field, and
 the service updates the configuration only if the existing
 configuration has a version ID that matches. After the update is
-applied successfully, the version ID is updated, and you can retrieve
-it using DescribeDeliveryStream. Use the new version ID to set
-C<CurrentDeliveryStreamVersionId> in the next call.
+applied successfully, the version ID is updated, and can be retrieved
+using DescribeDeliveryStream. Use the new version ID to set
+B<CurrentDeliveryStreamVersionId> in the next call.
 
 
 

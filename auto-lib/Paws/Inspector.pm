@@ -403,7 +403,16 @@ information, see Amazon Inspector User Guide
 
 =head1 METHODS
 
-=head2 AddAttributesToFindings(Attributes => ArrayRef[L<Paws::Inspector::Attribute>], FindingArns => ArrayRef[Str|Undef])
+=head2 AddAttributesToFindings
+
+=over
+
+=item Attributes => ArrayRef[L<Paws::Inspector::Attribute>]
+
+=item FindingArns => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::AddAttributesToFindings>
 
@@ -413,7 +422,16 @@ Assigns attributes (key and value pairs) to the findings that are
 specified by the ARNs of the findings.
 
 
-=head2 CreateAssessmentTarget(AssessmentTargetName => Str, ResourceGroupArn => Str)
+=head2 CreateAssessmentTarget
+
+=over
+
+=item AssessmentTargetName => Str
+
+=item ResourceGroupArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::CreateAssessmentTarget>
 
@@ -431,7 +449,22 @@ Assessment Targets
 (http://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html).
 
 
-=head2 CreateAssessmentTemplate(AssessmentTargetArn => Str, AssessmentTemplateName => Str, DurationInSeconds => Int, RulesPackageArns => ArrayRef[Str|Undef], [UserAttributesForFindings => ArrayRef[L<Paws::Inspector::Attribute>]])
+=head2 CreateAssessmentTemplate
+
+=over
+
+=item AssessmentTargetArn => Str
+
+=item AssessmentTemplateName => Str
+
+=item DurationInSeconds => Int
+
+=item RulesPackageArns => ArrayRef[Str|Undef]
+
+=item [UserAttributesForFindings => ArrayRef[L<Paws::Inspector::Attribute>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::CreateAssessmentTemplate>
 
@@ -446,7 +479,14 @@ service-linked role to grant Amazon Inspector access to AWS Services
 needed to perform security assessments.
 
 
-=head2 CreateResourceGroup(ResourceGroupTags => ArrayRef[L<Paws::Inspector::ResourceGroupTag>])
+=head2 CreateResourceGroup
+
+=over
+
+=item ResourceGroupTags => ArrayRef[L<Paws::Inspector::ResourceGroupTag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::CreateResourceGroup>
 
@@ -459,7 +499,14 @@ used to create an Amazon Inspector assessment target. For more
 information, see CreateAssessmentTarget.
 
 
-=head2 DeleteAssessmentRun(AssessmentRunArn => Str)
+=head2 DeleteAssessmentRun
+
+=over
+
+=item AssessmentRunArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::DeleteAssessmentRun>
 
@@ -469,7 +516,14 @@ Deletes the assessment run that is specified by the ARN of the
 assessment run.
 
 
-=head2 DeleteAssessmentTarget(AssessmentTargetArn => Str)
+=head2 DeleteAssessmentTarget
+
+=over
+
+=item AssessmentTargetArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::DeleteAssessmentTarget>
 
@@ -479,7 +533,14 @@ Deletes the assessment target that is specified by the ARN of the
 assessment target.
 
 
-=head2 DeleteAssessmentTemplate(AssessmentTemplateArn => Str)
+=head2 DeleteAssessmentTemplate
+
+=over
+
+=item AssessmentTemplateArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::DeleteAssessmentTemplate>
 
@@ -489,7 +550,14 @@ Deletes the assessment template that is specified by the ARN of the
 assessment template.
 
 
-=head2 DescribeAssessmentRuns(AssessmentRunArns => ArrayRef[Str|Undef])
+=head2 DescribeAssessmentRuns
+
+=over
+
+=item AssessmentRunArns => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeAssessmentRuns>
 
@@ -499,7 +567,14 @@ Describes the assessment runs that are specified by the ARNs of the
 assessment runs.
 
 
-=head2 DescribeAssessmentTargets(AssessmentTargetArns => ArrayRef[Str|Undef])
+=head2 DescribeAssessmentTargets
+
+=over
+
+=item AssessmentTargetArns => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeAssessmentTargets>
 
@@ -509,7 +584,14 @@ Describes the assessment targets that are specified by the ARNs of the
 assessment targets.
 
 
-=head2 DescribeAssessmentTemplates(AssessmentTemplateArns => ArrayRef[Str|Undef])
+=head2 DescribeAssessmentTemplates
+
+=over
+
+=item AssessmentTemplateArns => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeAssessmentTemplates>
 
@@ -519,7 +601,14 @@ Describes the assessment templates that are specified by the ARNs of
 the assessment templates.
 
 
-=head2 DescribeCrossAccountAccessRole( => )
+=head2 DescribeCrossAccountAccessRole
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeCrossAccountAccessRole>
 
@@ -529,7 +618,16 @@ Describes the IAM role that enables Amazon Inspector to access your AWS
 account.
 
 
-=head2 DescribeFindings(FindingArns => ArrayRef[Str|Undef], [Locale => Str])
+=head2 DescribeFindings
+
+=over
+
+=item FindingArns => ArrayRef[Str|Undef]
+
+=item [Locale => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeFindings>
 
@@ -538,7 +636,14 @@ Returns: a L<Paws::Inspector::DescribeFindingsResponse> instance
 Describes the findings that are specified by the ARNs of the findings.
 
 
-=head2 DescribeResourceGroups(ResourceGroupArns => ArrayRef[Str|Undef])
+=head2 DescribeResourceGroups
+
+=over
+
+=item ResourceGroupArns => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeResourceGroups>
 
@@ -548,7 +653,16 @@ Describes the resource groups that are specified by the ARNs of the
 resource groups.
 
 
-=head2 DescribeRulesPackages(RulesPackageArns => ArrayRef[Str|Undef], [Locale => Str])
+=head2 DescribeRulesPackages
+
+=over
+
+=item RulesPackageArns => ArrayRef[Str|Undef]
+
+=item [Locale => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeRulesPackages>
 
@@ -558,7 +672,18 @@ Describes the rules packages that are specified by the ARNs of the
 rules packages.
 
 
-=head2 GetAssessmentReport(AssessmentRunArn => Str, ReportFileFormat => Str, ReportType => Str)
+=head2 GetAssessmentReport
+
+=over
+
+=item AssessmentRunArn => Str
+
+=item ReportFileFormat => Str
+
+=item ReportType => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::GetAssessmentReport>
 
@@ -568,7 +693,14 @@ Produces an assessment report that includes detailed and comprehensive
 results of a specified assessment run.
 
 
-=head2 GetTelemetryMetadata(AssessmentRunArn => Str)
+=head2 GetTelemetryMetadata
+
+=over
+
+=item AssessmentRunArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::GetTelemetryMetadata>
 
@@ -578,7 +710,20 @@ Information about the data that is collected for the specified
 assessment run.
 
 
-=head2 ListAssessmentRunAgents(AssessmentRunArn => Str, [Filter => L<Paws::Inspector::AgentFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAssessmentRunAgents
+
+=over
+
+=item AssessmentRunArn => Str
+
+=item [Filter => L<Paws::Inspector::AgentFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::ListAssessmentRunAgents>
 
@@ -588,7 +733,20 @@ Lists the agents of the assessment runs that are specified by the ARNs
 of the assessment runs.
 
 
-=head2 ListAssessmentRuns([AssessmentTemplateArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::AssessmentRunFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAssessmentRuns
+
+=over
+
+=item [AssessmentTemplateArns => ArrayRef[Str|Undef]]
+
+=item [Filter => L<Paws::Inspector::AssessmentRunFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::ListAssessmentRuns>
 
@@ -598,7 +756,18 @@ Lists the assessment runs that correspond to the assessment templates
 that are specified by the ARNs of the assessment templates.
 
 
-=head2 ListAssessmentTargets([Filter => L<Paws::Inspector::AssessmentTargetFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAssessmentTargets
+
+=over
+
+=item [Filter => L<Paws::Inspector::AssessmentTargetFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::ListAssessmentTargets>
 
@@ -610,7 +779,20 @@ Assessment Targets
 (http://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html).
 
 
-=head2 ListAssessmentTemplates([AssessmentTargetArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::AssessmentTemplateFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAssessmentTemplates
+
+=over
+
+=item [AssessmentTargetArns => ArrayRef[Str|Undef]]
+
+=item [Filter => L<Paws::Inspector::AssessmentTemplateFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::ListAssessmentTemplates>
 
@@ -620,7 +802,18 @@ Lists the assessment templates that correspond to the assessment
 targets that are specified by the ARNs of the assessment targets.
 
 
-=head2 ListEventSubscriptions([MaxResults => Int, NextToken => Str, ResourceArn => Str])
+=head2 ListEventSubscriptions
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::ListEventSubscriptions>
 
@@ -631,7 +824,20 @@ specified by the ARN of the assessment template. For more information,
 see SubscribeToEvent and UnsubscribeFromEvent.
 
 
-=head2 ListFindings([AssessmentRunArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::FindingFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListFindings
+
+=over
+
+=item [AssessmentRunArns => ArrayRef[Str|Undef]]
+
+=item [Filter => L<Paws::Inspector::FindingFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::ListFindings>
 
@@ -641,7 +847,16 @@ Lists findings that are generated by the assessment runs that are
 specified by the ARNs of the assessment runs.
 
 
-=head2 ListRulesPackages([MaxResults => Int, NextToken => Str])
+=head2 ListRulesPackages
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::ListRulesPackages>
 
@@ -650,7 +865,14 @@ Returns: a L<Paws::Inspector::ListRulesPackagesResponse> instance
 Lists all available Amazon Inspector rules packages.
 
 
-=head2 ListTagsForResource(ResourceArn => Str)
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::ListTagsForResource>
 
@@ -659,7 +881,18 @@ Returns: a L<Paws::Inspector::ListTagsForResourceResponse> instance
 Lists all tags associated with an assessment template.
 
 
-=head2 PreviewAgents(PreviewAgentsArn => Str, [MaxResults => Int, NextToken => Str])
+=head2 PreviewAgents
+
+=over
+
+=item PreviewAgentsArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::PreviewAgents>
 
@@ -669,7 +902,14 @@ Previews the agents installed on the EC2 instances that are part of the
 specified assessment target.
 
 
-=head2 RegisterCrossAccountAccessRole(RoleArn => Str)
+=head2 RegisterCrossAccountAccessRole
+
+=over
+
+=item RoleArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::RegisterCrossAccountAccessRole>
 
@@ -679,7 +919,16 @@ Registers the IAM role that grants Amazon Inspector access to AWS
 Services needed to perform security assessments.
 
 
-=head2 RemoveAttributesFromFindings(AttributeKeys => ArrayRef[Str|Undef], FindingArns => ArrayRef[Str|Undef])
+=head2 RemoveAttributesFromFindings
+
+=over
+
+=item AttributeKeys => ArrayRef[Str|Undef]
+
+=item FindingArns => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::RemoveAttributesFromFindings>
 
@@ -690,7 +939,16 @@ are specified by the ARNs of the findings where an attribute with the
 specified key exists.
 
 
-=head2 SetTagsForResource(ResourceArn => Str, [Tags => ArrayRef[L<Paws::Inspector::Tag>]])
+=head2 SetTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+=item [Tags => ArrayRef[L<Paws::Inspector::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::SetTagsForResource>
 
@@ -700,7 +958,16 @@ Sets tags (key and value pairs) to the assessment template that is
 specified by the ARN of the assessment template.
 
 
-=head2 StartAssessmentRun(AssessmentTemplateArn => Str, [AssessmentRunName => Str])
+=head2 StartAssessmentRun
+
+=over
+
+=item AssessmentTemplateArn => Str
+
+=item [AssessmentRunName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::StartAssessmentRun>
 
@@ -711,7 +978,16 @@ template. For this API to function properly, you must not exceed the
 limit of running up to 500 concurrent agents per AWS account.
 
 
-=head2 StopAssessmentRun(AssessmentRunArn => Str, [StopAction => Str])
+=head2 StopAssessmentRun
+
+=over
+
+=item AssessmentRunArn => Str
+
+=item [StopAction => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::StopAssessmentRun>
 
@@ -721,7 +997,18 @@ Stops the assessment run that is specified by the ARN of the assessment
 run.
 
 
-=head2 SubscribeToEvent(Event => Str, ResourceArn => Str, TopicArn => Str)
+=head2 SubscribeToEvent
+
+=over
+
+=item Event => Str
+
+=item ResourceArn => Str
+
+=item TopicArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::SubscribeToEvent>
 
@@ -731,7 +1018,18 @@ Enables the process of sending Amazon Simple Notification Service (SNS)
 notifications about a specified event to a specified SNS topic.
 
 
-=head2 UnsubscribeFromEvent(Event => Str, ResourceArn => Str, TopicArn => Str)
+=head2 UnsubscribeFromEvent
+
+=over
+
+=item Event => Str
+
+=item ResourceArn => Str
+
+=item TopicArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::UnsubscribeFromEvent>
 
@@ -741,7 +1039,18 @@ Disables the process of sending Amazon Simple Notification Service
 (SNS) notifications about a specified event to a specified SNS topic.
 
 
-=head2 UpdateAssessmentTarget(AssessmentTargetArn => Str, AssessmentTargetName => Str, ResourceGroupArn => Str)
+=head2 UpdateAssessmentTarget
+
+=over
+
+=item AssessmentTargetArn => Str
+
+=item AssessmentTargetName => Str
+
+=item ResourceGroupArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::UpdateAssessmentTarget>
 

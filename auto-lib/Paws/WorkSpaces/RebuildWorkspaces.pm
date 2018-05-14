@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> RebuildWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::RebuildRequest>]
 
-The WorkSpaces to rebuild.
+The WorkSpace to rebuild. You can specify a single WorkSpace.
 
 
 

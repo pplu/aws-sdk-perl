@@ -179,7 +179,20 @@ need, when they need it. For more information, see the User Guide
 
 =head1 METHODS
 
-=head2 CreateFileSystem(CreationToken => Str, [Encrypted => Bool, KmsKeyId => Str, PerformanceMode => Str])
+=head2 CreateFileSystem
+
+=over
+
+=item CreationToken => Str
+
+=item [Encrypted => Bool]
+
+=item [KmsKeyId => Str]
+
+=item [PerformanceMode => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EFS::CreateFileSystem>
 
@@ -247,7 +260,20 @@ This operation requires permissions for the
 C<elasticfilesystem:CreateFileSystem> action.
 
 
-=head2 CreateMountTarget(FileSystemId => Str, SubnetId => Str, [IpAddress => Str, SecurityGroups => ArrayRef[Str|Undef]])
+=head2 CreateMountTarget
+
+=over
+
+=item FileSystemId => Str
+
+=item SubnetId => Str
+
+=item [IpAddress => Str]
+
+=item [SecurityGroups => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EFS::CreateMountTarget>
 
@@ -417,7 +443,16 @@ C<ec2:CreateNetworkInterface>
 
 
 
-=head2 CreateTags(FileSystemId => Str, Tags => ArrayRef[L<Paws::EFS::Tag>])
+=head2 CreateTags
+
+=over
+
+=item FileSystemId => Str
+
+=item Tags => ArrayRef[L<Paws::EFS::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EFS::CreateTags>
 
@@ -434,7 +469,14 @@ This operation requires permission for the
 C<elasticfilesystem:CreateTags> action.
 
 
-=head2 DeleteFileSystem(FileSystemId => Str)
+=head2 DeleteFileSystem
+
+=over
+
+=item FileSystemId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EFS::DeleteFileSystem>
 
@@ -459,7 +501,14 @@ This operation requires permissions for the
 C<elasticfilesystem:DeleteFileSystem> action.
 
 
-=head2 DeleteMountTarget(MountTargetId => Str)
+=head2 DeleteMountTarget
+
+=over
+
+=item MountTargetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EFS::DeleteMountTarget>
 
@@ -506,7 +555,16 @@ C<ec2:DeleteNetworkInterface>
 
 
 
-=head2 DeleteTags(FileSystemId => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 DeleteTags
+
+=over
+
+=item FileSystemId => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EFS::DeleteTags>
 
@@ -523,7 +581,20 @@ This operation requires permissions for the
 C<elasticfilesystem:DeleteTags> action.
 
 
-=head2 DescribeFileSystems([CreationToken => Str, FileSystemId => Str, Marker => Str, MaxItems => Int])
+=head2 DescribeFileSystems
+
+=over
+
+=item [CreationToken => Str]
+
+=item [FileSystemId => Str]
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EFS::DescribeFileSystems>
 
@@ -559,7 +630,20 @@ This operation requires permissions for the
 C<elasticfilesystem:DescribeFileSystems> action.
 
 
-=head2 DescribeMountTargets([FileSystemId => Str, Marker => Str, MaxItems => Int, MountTargetId => Str])
+=head2 DescribeMountTargets
+
+=over
+
+=item [FileSystemId => Str]
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [MountTargetId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EFS::DescribeMountTargets>
 
@@ -576,7 +660,14 @@ system ID that you specify in C<FileSystemId>, or on the file system of
 the mount target that you specify in C<MountTargetId>.
 
 
-=head2 DescribeMountTargetSecurityGroups(MountTargetId => Str)
+=head2 DescribeMountTargetSecurityGroups
+
+=over
+
+=item MountTargetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EFS::DescribeMountTargetSecurityGroups>
 
@@ -605,7 +696,18 @@ network interface.
 
 
 
-=head2 DescribeTags(FileSystemId => Str, [Marker => Str, MaxItems => Int])
+=head2 DescribeTags
+
+=over
+
+=item FileSystemId => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EFS::DescribeTags>
 
@@ -620,7 +722,16 @@ This operation requires permissions for the
 C<elasticfilesystem:DescribeTags> action.
 
 
-=head2 ModifyMountTargetSecurityGroups(MountTargetId => Str, [SecurityGroups => ArrayRef[Str|Undef]])
+=head2 ModifyMountTargetSecurityGroups
+
+=over
+
+=item MountTargetId => Str
+
+=item [SecurityGroups => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EFS::ModifyMountTargetSecurityGroups>
 
