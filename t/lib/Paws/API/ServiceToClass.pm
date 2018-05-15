@@ -78,6 +78,8 @@ package Paws::API::ServiceToClass;
     iotanalytics => 'IoTAnalytics',
    'iot-jobs-data' => 'IoTJobsData',
    'iot-data' => 'IoTData',
+   'iot1click-devices' => 'IoT1ClickDevices',
+   'iot1click-projects' => 'IoT1ClickProjects',
     inspector => 'Inspector',
     importexport => 'ImportExport',
     kinesis => 'Kinesis',

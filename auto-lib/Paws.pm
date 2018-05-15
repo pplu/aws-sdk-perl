@@ -380,6 +380,10 @@ L<Paws::Inspector>
 
 L<Paws::IoT>
 
+L<Paws::IoT1ClickDevices>
+
+L<Paws::IoT1ClickProjects>
+
 L<Paws::IoTAnalytics>
 
 L<Paws::IoTData>
