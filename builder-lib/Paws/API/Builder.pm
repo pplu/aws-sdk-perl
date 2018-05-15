@@ -571,6 +571,18 @@ package Paws::API::Builder {
     return $output;
   }
 
+  sub operation_aws_url {
+    my ($self, $op_name) = @_;
+
+    #TODO insert custom override link to regex add self stuff like below instead of $goto_url
+
+    my $goto_url = 'https://docs.aws.amazon.com/goto/WebAPI/';
+    my $goto_op_url = $goto_url . $self->service . '-' . $self->version . '/' . $op_name;
+    if ($self->is_url_not_base_redirect($goto_op_url)) {
+      return $goto_op_url;
+    }
+  };
+
   sub process_api {
     my $self = shift;
     my $output = '';
@@ -584,9 +596,10 @@ package Paws::API::Builder {
     foreach my $op_name ($self->operations) {
       if (defined $self->operation($op_name)->{name}) {
         my $class_name = $self->namespace_shape($op_name);
+        my $aws_url = $self->operation_aws_url($op_name);
         my $output = $self->process_template(
           'callargs_class.tt',
-          { c => $self, op_name => $op_name }
+          { c => $self, op_name => $op_name, aws_url => $aws_url }
         );
         $self->save_class($class_name, $output);
       }
