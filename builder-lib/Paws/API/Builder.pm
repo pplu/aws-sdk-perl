@@ -89,6 +89,7 @@ package Paws::API::Builder {
 
     my $goto_url = 'https://docs.aws.amazon.com/goto/WebAPI/';
     my $goto_service_url = $base_goto_url . $self->service . '-' . $self->version;
+    my $goto_service_url = $goto_url . $self->service . '-' . $self->version;
     if ($self->is_url_not_base_redirect($goto_service_url) {
       return $goto_service_url;
     }
