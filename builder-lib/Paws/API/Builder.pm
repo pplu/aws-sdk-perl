@@ -626,10 +626,9 @@ package Paws::API::Builder {
     foreach my $op_name ($self->operations) {
       if (defined $self->operation($op_name)->{name}) {
         my $class_name = $self->namespace_shape($op_name);
-        my $aws_url = $self->operation_aws_url($op_name);
         my $output = $self->process_template(
           'callargs_class.tt',
-          { c => $self, op_name => $op_name, aws_url => $aws_url }
+          { c => $self, op_name => $op_name }
         );
         $self->save_class($class_name, $output);
       }
