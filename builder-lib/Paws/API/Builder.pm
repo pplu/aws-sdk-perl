@@ -49,6 +49,10 @@ package Paws::API::Builder {
     budgets => 'https://aws.amazon.com/documentation/account-billing/',
   } });
 
+  has operation_url_overrides => (is => 'ro', isa => 'HashRef', default => sub { {
+   'opsworks-cm' => 'https://docs.aws.amazon.com/opsworks-cm/latest/APIReference/API_',
+  } });
+
   sub is_url_working {
     my ($self, $url) = @_;
      my $ua = LWP::UserAgent->new;
@@ -574,10 +578,15 @@ package Paws::API::Builder {
   sub operation_aws_url {
     my ($self, $op_name) = @_;
 
-    #TODO insert custom override link to regex add self stuff like below instead of $goto_url
+    my $override = $self->operation_url_overrides->{ $self->service };
+    if (defined $override) {
+      if ($self->is_url_working($override)) {
+        my $override_url = $override . $op_name . '.html';
+        return $override_url;
+      }
+    }
 
     my $goto_url = 'https://docs.aws.amazon.com/goto/WebAPI/';
-    my $goto_op_url = $goto_url . $self->service . '-' . $self->version . '/' . $op_name;
     my $goto_op_url = $goto_url . $self->service . '/' . $op_name;
     if ($self->is_url_not_base_redirect($goto_op_url)) {
       return $goto_op_url;
