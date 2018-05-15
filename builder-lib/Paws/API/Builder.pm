@@ -595,22 +595,31 @@ package Paws::API::Builder {
     return $output;
   }
 
-  sub operation_aws_url {
-    my ($self, $op_name) = @_;
+  use Future::HTTP::Mojo; 
+  has operation_urls => (is => 'ro', isa => 'HashRef[Str]', lazy => 1, default => sub {
+    my $self = shift;
+    my $ua = Future::HTTP::Mojo->new();
 
     my $override = $self->operation_url_overrides->{ $self->service };
-    if (defined $override) {
-      if ($self->is_url_working($override)) {
-        my $override_url = $override . $op_name . '.html';
-        return $override_url;
-      }
+    my $goto_url = 'https://docs.aws.amazon.com/goto/WebAPI/';
+
+    my $urls = {};
+    my @futures;
+    foreach my $op_name ($self->operations) {
+      my $op_url = (defined $override) ? $override . $op_name . '.html' : $goto_url . $self->service . '/' . $op_name;
+      push @futures, $ua->http_head($op_url)->then(sub {
+        print "Got $op_url for $op_name\n";
+        $urls->{ $op_name } = $op_url;
+      });
     }
 
-    my $goto_url = 'https://docs.aws.amazon.com/goto/WebAPI/';
-    my $goto_op_url = $goto_url . $self->service . '/' . $op_name;
-    if ($self->is_url_not_base_redirect($goto_op_url)) {
-      return $goto_op_url;
-    }
+    Future->wait_all(@futures)->get;
+    return $urls;
+  });
+
+  sub operation_aws_url {
+    my ($self, $op_name) = @_;
+    return $self->operation_urls->{ $op_name };
   };
 
   sub process_api {
