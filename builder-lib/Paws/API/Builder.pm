@@ -36,7 +36,7 @@ package Paws::API::Builder {
     es => 'https://aws.amazon.com/documentation/elasticsearch-service/',
     support => 'https://aws.amazon.com/documentation/aws-support/',
     sts => 'https://aws.amazon.com/documentation/iam/',
-    states => 'https://aws.amazon.com/documentation/step-functions/',     
+    states => 'https://aws.amazon.com/documentation/step-functions/',
    'opsworks-cm' => 'https://aws.amazon.com/documentation/opsworks/',
     monitoring => 'https://aws.amazon.com/documentation/cloudwatch/',
     events => 'https://aws.amazon.com/documentation/cloudwatch/',
@@ -47,6 +47,13 @@ package Paws::API::Builder {
    'api.pricing' => 'https://aws.amazon.com/documentation/account-billing/',
     ce => 'https://aws.amazon.com/documentation/asccount-billing/',
     budgets => 'https://aws.amazon.com/documentation/account-billing/',
+    greengrass => 'https://aws.amazon.com/documentation/greengrass/',
+    glacier => 'https://aws.amazon.com/documentation/glacier/',
+    apigateway => 'https://aws.amazon.com/documentation/apigateway/',
+  } });
+
+  has operation_url_overrides => (is => 'ro', isa => 'HashRef', default => sub { {
+   'opsworks-cm' => 'https://docs.aws.amazon.com/opsworks-cm/latest/APIReference/API_',
   } });
 
   sub is_url_working {
@@ -60,7 +67,19 @@ package Paws::API::Builder {
     } else {
       return 0;
     }
-   
+  }
+
+  sub is_url_not_base_redirect {
+    my ($self, $url) = @_;
+     my $ua = LWP::UserAgent->new;
+    $ua->timeout(10);
+    $ua->env_proxy;
+    my $res = $ua->head($url);
+    if ($res->request->uri->as_string ne 'https://aws.amazon.com/documentation/') {
+      return 1;
+    } else {
+      return 0;
+    }
   }
 
   has service_url => (is => 'ro', lazy => 1, default => sub {
@@ -73,6 +92,12 @@ package Paws::API::Builder {
       } else {
         die "Looks like documentation for " . $self->service . " has disappeared";
       }
+    }
+
+    my $goto_url = 'https://docs.aws.amazon.com/goto/WebAPI/';
+    my $goto_service_url = $goto_url . $self->service . '-' . $self->version;
+    if ($self->is_url_not_base_redirect($goto_service_url)) {
+      return $goto_service_url;
     }
 
     my $url = 'https://aws.amazon.com/documentation/';
@@ -553,6 +578,24 @@ package Paws::API::Builder {
     return $output;
   }
 
+  sub operation_aws_url {
+    my ($self, $op_name) = @_;
+
+    my $override = $self->operation_url_overrides->{ $self->service };
+    if (defined $override) {
+      if ($self->is_url_working($override)) {
+        my $override_url = $override . $op_name . '.html';
+        return $override_url;
+      }
+    }
+
+    my $goto_url = 'https://docs.aws.amazon.com/goto/WebAPI/';
+    my $goto_op_url = $goto_url . $self->service . '/' . $op_name;
+    if ($self->is_url_not_base_redirect($goto_op_url)) {
+      return $goto_op_url;
+    }
+  };
+
   sub process_api {
     my $self = shift;
     my $output = '';
@@ -566,9 +609,10 @@ package Paws::API::Builder {
     foreach my $op_name ($self->operations) {
       if (defined $self->operation($op_name)->{name}) {
         my $class_name = $self->namespace_shape($op_name);
+        my $aws_url = $self->operation_aws_url($op_name);
         my $output = $self->process_template(
           'callargs_class.tt',
-          { c => $self, op_name => $op_name }
+          { c => $self, op_name => $op_name, aws_url => $aws_url }
         );
         $self->save_class($class_name, $output);
       }
