@@ -47,6 +47,9 @@ package Paws::API::Builder {
    'api.pricing' => 'https://aws.amazon.com/documentation/account-billing/',
     ce => 'https://aws.amazon.com/documentation/asccount-billing/',
     budgets => 'https://aws.amazon.com/documentation/account-billing/',
+    greengrass => 'https://aws.amazon.com/documentation/greengrass/',
+    glacier => 'https://aws.amazon.com/documentation/glacier/',
+    apigateway => 'https://aws.amazon.com/documentation/apigateway/',
   } });
 
   has operation_url_overrides => (is => 'ro', isa => 'HashRef', default => sub { {
