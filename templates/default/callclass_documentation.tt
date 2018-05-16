@@ -14,7 +14,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-  my $[% c.service %] = Paws->service('[% c.api_ns %]'));
+  my $[% c.service %] = Paws->service('[% c.api_ns %]');
+[% IF synopsis; synopsis; ELSE %]
   [% out_shape = c.shapename_for_operation_output(op_name); IF (out_shape) %]my $[% out_shape %] = [% END -%]
 $[% c.service %]->[% operation.name %](
 [%- out_shape = c.input_for_operation(operation.name) -%]
@@ -35,7 +36,7 @@ $[% c.service %]->[% operation.name %](
 [%- END %]
 [%- END %]
   );
-
+[% END %]
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES

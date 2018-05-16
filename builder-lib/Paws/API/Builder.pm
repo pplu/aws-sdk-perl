@@ -7,6 +7,7 @@ package Paws::API::Builder {
   use Template;
   use File::Slurper 'read_binary';
   use JSON::MaybeXS;
+  use Scalar::Util;
   use Pod::Escapes();
   use Data::Munge;
       
@@ -32,7 +33,8 @@ package Paws::API::Builder {
 
   has api_ns => (is => 'ro', lazy => 1, default => sub {
     my $self = shift;
-    return Paws::API::ServiceToClass::service_to_class($self->service);
+    my ($service_dir) = ($self->api_file =~ m/data\/(.*?)\/.*?\/service-2.json/);
+    return Paws::API::ServiceToClass::service_to_class($service_dir);
   });
 
   has template_path => (is => 'ro', required => 1);
@@ -100,6 +102,17 @@ package Paws::API::Builder {
   has encoders_struct => (is => 'ro', lazy => 1, default => sub {
     my $self = shift;
     return $self->_load_json_file($self->encoders_file)->{ encoding };
+  });
+
+  has example_file => (is => 'ro', lazy => 1, default => sub {
+    my $file = shift->api_file;
+    $file =~ s/\/service-2\./\/examples-1./;
+    return $file;
+  });
+
+  has example_struct => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    return $self->_load_json_file($self->example_file)->{ examples };
   });
 
   sub get_paginator_name {
@@ -578,6 +591,69 @@ package Paws::API::Builder {
     return ($example_str, $comment_str);
   }
 
+  sub create_example_from_file {
+    my ($self, $op_name) = @_;
+
+    my $out_shape_name = $self->shapename_for_operation_output($op_name);
+    my $out_shape = '';
+    if ($out_shape_name) {
+      $out_shape = $self->shape($out_shape_name);
+    }
+    my $example_str = '';
+    my $indent = '  ';
+    foreach my $ex (@{ $self->example_struct->{ $op_name } }) {
+      $example_str .= "${indent}# $ex->{title}\n";
+      $example_str .= "${indent}# $ex->{description}\n\n";
+      if ($out_shape) {
+        $example_str .= "${indent}my \$${out_shape_name} = ";
+      }
+      $example_str .= "\$" . $self->service . "->" . $op_name . "(";
+      $example_str .= $self->dump_perl($ex->{ input }, 1) if $ex->{ input } && %{ $ex->{ input } };
+      $example_str .= "\n${indent});\n\n";
+
+      if ($out_shape) {
+        $example_str .= "${indent}# Results:\n";
+        $example_str .= "${indent}print \$${out_shape_name}->{$_};\n${indent}# " . $self->dump_perl($ex->{ output }{$_}, 1) . "\n" for keys( %{$ex->{ output }});
+        $example_str .= "\n\n";
+      }
+    }
+
+    return $example_str;
+  }
+
+  sub dump_perl {
+    my ($self, $val, $depth, $is_key) = @_;
+
+    my $indent = '  ' x $depth;
+    my $sub_indent = '  ' x ($depth+1);
+
+    if (!ref $val) {
+      return $val
+        if (Scalar::Util::looks_like_number($val));
+
+      return qq{'} . ucfirst($val) . qq{'}
+        if ($is_key);
+      
+      return qq{'$val'};
+    } elsif ( ref ($val) =~ /Boolean/) {
+      return "$val";
+    } elsif (ref $val eq 'ARRAY') {
+      return "\n${indent}[\n${sub_indent}"
+        . join(",\n${sub_indent}", (map { $self->dump_perl($_, $depth+1) } (@$val) ))
+        . "\n$indent]";
+    } elsif( ref $val eq 'HASH' ) {
+      return "\n${indent}{\n${sub_indent}"
+        . join(",\n${sub_indent}", (map { $self->dump_perl($_, $depth+1, 1)
+                                       . ' => '
+                                       . $self->dump_perl($val->{$_}, $depth+1) }
+                                 (keys %$val) ))
+        . "\n${indent}}";
+      
+    } else {
+      die "Tried to dump something strange when creating an example: $val ", ref $val;
+    }
+  }
+  
   sub namespace_shape {
     my ($self, $shape) = @_;
     substr($shape,0,1) = uc(substr($shape,0,1));
@@ -608,16 +684,21 @@ package Paws::API::Builder {
     $self->validate_shapes;
 
     foreach my $shape_name ($self->shapes) {
-      $self->shape($shape_name)->{perl_type} = $self->get_caller_class_type($shape_name);
-      $self->shape($shape_name)->{example_code} = ( $self->get_example_code($shape_name) )[0];
+      $self->shape($shape_name)->{ perl_type } = $self->get_caller_class_type($shape_name);
+      $self->shape($shape_name)->{ example_code } = ( $self->get_example_code($shape_name) )[0];
+      
     }
 
     foreach my $op_name ($self->operations) {
+      my $op_example = '';
+      if ( -e $self->example_file ) {
+        $op_example = $self->create_example_from_file( $op_name );
+      }
       if (defined $self->operation($op_name)->{name}) {
         my $class_name = $self->namespace_shape($op_name);
         my $output = $self->process_template(
           'callargs_class.tt',
-          { c => $self, op_name => $op_name }
+          { c => $self, op_name => $op_name, synopsis => $op_example  }
         );
         $self->save_class($class_name, $output);
       }
