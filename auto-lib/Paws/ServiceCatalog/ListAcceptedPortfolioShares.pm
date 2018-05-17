@@ -4,6 +4,7 @@ package Paws::ServiceCatalog::ListAcceptedPortfolioShares;
   has AcceptLanguage => (is => 'ro', isa => 'Str');
   has PageSize => (is => 'ro', isa => 'Int');
   has PageToken => (is => 'ro', isa => 'Str');
+  has PortfolioShareType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -70,6 +71,26 @@ The page token for the next set of results. To retrieve the first set
 of results, use null.
 
 
+
+=head2 PortfolioShareType => Str
+
+The type of shared portfolios to list. The default is to list imported
+portfolios.
+
+=over
+
+=item *
+
+C<AWS_SERVICECATALOG> - List default portfolios
+
+=item *
+
+C<IMPORTED> - List imported portfolios
+
+=back
+
+
+Valid values are: C<"IMPORTED">, C<"AWS_SERVICECATALOG">
 
 
 =head1 SEE ALSO

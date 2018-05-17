@@ -1361,6 +1361,8 @@ specified plan.
 
 =item [PageToken => Str]
 
+=item [PortfolioShareType => Str]
+
 
 =back
 
@@ -1990,9 +1992,9 @@ Updates the specified TagOption.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllAcceptedPortfolioShares(sub { },[AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+=head2 ListAllAcceptedPortfolioShares(sub { },[AcceptLanguage => Str, PageSize => Int, PageToken => Str, PortfolioShareType => Str])
 
-=head2 ListAllAcceptedPortfolioShares([AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+=head2 ListAllAcceptedPortfolioShares([AcceptLanguage => Str, PageSize => Int, PageToken => Str, PortfolioShareType => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
