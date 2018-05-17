@@ -126,6 +126,14 @@ see Using JSON for Parameters
 (http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 in the I<AWS CLI User Guide>.
 
+For example:
+
+C<[{"username":"bob"},{"password":"abc123xyz456"}]>
+
+If your command-line tool or SDK requires quotation marks around the
+parameter, you should use single quotes to avoid confusion with the
+double quotes required in the JSON text.
+
 
 
 =head2 VersionStages => ArrayRef[Str|Undef]
