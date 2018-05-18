@@ -39,9 +39,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 AdminPrivacy => Bool
 
 Whether you want to conceal contact information from WHOIS queries. If
-you specify C<true>, WHOIS ("who is") queries will return contact
-information for our registrar partner, Gandi, instead of the contact
-information that you enter.
+you specify C<true>, WHOIS ("who is") queries return contact
+information either for Amazon Registrar (for .com, .net, and .org
+domains) or for our registrar associate, Gandi (for all other TLDs). If
+you specify C<false>, WHOIS queries return the information that you
+entered for the admin contact.
 
 
 
@@ -54,18 +56,22 @@ The name of the domain that you want to update the privacy setting for.
 =head2 RegistrantPrivacy => Bool
 
 Whether you want to conceal contact information from WHOIS queries. If
-you specify C<true>, WHOIS ("who is") queries will return contact
-information for our registrar partner, Gandi, instead of the contact
-information that you enter.
+you specify C<true>, WHOIS ("who is") queries return contact
+information either for Amazon Registrar (for .com, .net, and .org
+domains) or for our registrar associate, Gandi (for all other TLDs). If
+you specify C<false>, WHOIS queries return the information that you
+entered for the registrant contact (domain owner).
 
 
 
 =head2 TechPrivacy => Bool
 
 Whether you want to conceal contact information from WHOIS queries. If
-you specify C<true>, WHOIS ("who is") queries will return contact
-information for our registrar partner, Gandi, instead of the contact
-information that you enter.
+you specify C<true>, WHOIS ("who is") queries return contact
+information either for Amazon Registrar (for .com, .net, and .org
+domains) or for our registrar associate, Gandi (for all other TLDs). If
+you specify C<false>, WHOIS queries return the information that you
+entered for the technical contact.
 
 
 

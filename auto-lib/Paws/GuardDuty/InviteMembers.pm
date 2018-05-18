@@ -3,6 +3,7 @@ package Paws::GuardDuty::InviteMembers;
   use Moose;
   has AccountIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'accountIds');
   has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
+  has DisableEmailNotification => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'disableEmailNotification');
   has Message => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'message');
 
   use MooseX::ClassAttribute;
@@ -50,10 +51,16 @@ want to invite members.
 
 
 
+=head2 DisableEmailNotification => Bool
+
+
+
+
+
 =head2 Message => Str
 
 The invitation message that you want to send to the accounts that
-you're inviting to GuardDuty as members.
+youE<rsquo>re inviting to GuardDuty as members.
 
 
 

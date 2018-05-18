@@ -46,7 +46,7 @@ idempotency.
 
 =head2 DisplayName => Str
 
-The name of the contact to display on the AWS management console.
+The name of the contact to display on the console.
 
 
 
@@ -66,7 +66,7 @@ device.
 
 =head2 B<REQUIRED> PhoneNumber => Str
 
-The phone number of the contact in E164 format.
+The phone number of the contact in E.164 format.
 
 
 

@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> TerminateWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::TerminateRequest>]
 
-The WorkSpaces to terminate.
+The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.
 
 
 

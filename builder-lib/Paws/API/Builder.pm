@@ -45,11 +45,28 @@ package Paws::API::Builder {
    'cognito-idp' => 'https://aws.amazon.com/documentation/cognito/',
    'cognito-sync' => 'https://aws.amazon.com/documentation/cognito/',
    'api.pricing' => 'https://aws.amazon.com/documentation/account-billing/',
-    ce => 'https://aws.amazon.com/documentation/asccount-billing/',
+    ce => 'https://aws.amazon.com/documentation/account-billing/',
     budgets => 'https://aws.amazon.com/documentation/account-billing/',
     greengrass => 'https://aws.amazon.com/documentation/greengrass/',
     glacier => 'https://aws.amazon.com/documentation/glacier/',
     apigateway => 'https://aws.amazon.com/documentation/apigateway/',
+   'streams.dynamodb' => 'https://aws.amazon.com/documentation/dynamodb/',
+    lex => 'https://aws.amazon.com/documentation/lex/',
+   'models.lex' => 'https://aws.amazon.com/documentation/lex/',
+   'entitlement.marketplace' => 'https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/Welcome.html',
+    marketplacecommerceanalytics => 'https://docs.aws.amazon.com/marketplace/latest/userguide/commerce-analytics-service.html',
+   'data.mediastore' => 'https://aws.amazon.com/documentation/mediastore/',
+   'metering.marketplace' => 'https://docs.aws.amazon.com/marketplacemetering/latest/APIReference/Welcome.html',
+    mgh => 'https://aws.amazon.com/documentation/migrationhub/',
+    mobile => 'https://aws.amazon.com/documentation/mobile-hub/',
+   'mturk-requester' => 'https://aws.amazon.com/documentation/mturk/',
+    tagging => 'https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html',
+    sdb => 'https://aws.amazon.com/documentation/simpledb/',
+    clouddirectory => 'https://aws.amazon.com/documentation/directory-service/',
+    cloudsearchdomain => 'https://aws.amazon.com/documentation/cloudsearch/',
+    'data.iot' => 'https://aws.amazon.com/documentation/iot/',
+    'data.jobs.iot' => 'https://aws.amazon.com/documentation/iot/',
+    cur => 'https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html',
   } });
 
   has operation_url_overrides => (is => 'ro', isa => 'HashRef', default => sub { {
@@ -578,22 +595,31 @@ package Paws::API::Builder {
     return $output;
   }
 
-  sub operation_aws_url {
-    my ($self, $op_name) = @_;
+  use Future::HTTP::Mojo; 
+  has operation_urls => (is => 'ro', isa => 'HashRef[Str]', lazy => 1, default => sub {
+    my $self = shift;
+    my $ua = Future::HTTP::Mojo->new();
 
     my $override = $self->operation_url_overrides->{ $self->service };
-    if (defined $override) {
-      if ($self->is_url_working($override)) {
-        my $override_url = $override . $op_name . '.html';
-        return $override_url;
-      }
+    my $goto_url = 'https://docs.aws.amazon.com/goto/WebAPI/';
+
+    my $urls = {};
+    my @futures;
+    foreach my $op_name ($self->operations) {
+      my $op_url = (defined $override) ? $override . $op_name . '.html' : $goto_url . $self->service . '/' . $op_name;
+      push @futures, $ua->http_head($op_url)->then(sub {
+        print "Got $op_url for $op_name\n";
+        $urls->{ $op_name } = $op_url;
+      });
     }
 
-    my $goto_url = 'https://docs.aws.amazon.com/goto/WebAPI/';
-    my $goto_op_url = $goto_url . $self->service . '/' . $op_name;
-    if ($self->is_url_not_base_redirect($goto_op_url)) {
-      return $goto_op_url;
-    }
+    Future->wait_all(@futures)->get;
+    return $urls;
+  });
+
+  sub operation_aws_url {
+    my ($self, $op_name) = @_;
+    return $self->operation_urls->{ $op_name };
   };
 
   sub process_api {
@@ -609,10 +635,9 @@ package Paws::API::Builder {
     foreach my $op_name ($self->operations) {
       if (defined $self->operation($op_name)->{name}) {
         my $class_name = $self->namespace_shape($op_name);
-        my $aws_url = $self->operation_aws_url($op_name);
         my $output = $self->process_template(
           'callargs_class.tt',
-          { c => $self, op_name => $op_name, aws_url => $aws_url }
+          { c => $self, op_name => $op_name }
         );
         $self->save_class($class_name, $output);
       }

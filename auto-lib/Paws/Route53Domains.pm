@@ -287,9 +287,10 @@ The period during which you can renew a domain name varies by TLD. For
 a list of TLDs and their renewal policies, see "Renewal, restoration,
 and deletion times"
 (http://wiki.gandi.net/en/domains/renew#renewal_restoration_and_deletion_times)
-on the website for our registrar partner, Gandi. Route 53 requires that
-you renew before the end of the renewal period that is listed on the
-Gandi website so we can complete processing before the deadline.
+on the website for our registrar associate, Gandi. Amazon Route 53
+requires that you renew before the end of the renewal period that is
+listed on the Gandi website so we can complete processing before the
+deadline.
 
 
 =head2 EnableDomainTransferLock(DomainName => Str)
@@ -363,7 +364,7 @@ This operation returns all the domain names registered with Amazon
 Route 53 for the current AWS account.
 
 
-=head2 ListOperations([Marker => Str, MaxItems => Int])
+=head2 ListOperations([Marker => Str, MaxItems => Int, SubmittedSince => Str])
 
 Each argument is described in detail in: L<Paws::Route53Domains::ListOperations>
 
@@ -392,9 +393,10 @@ Each argument is described in detail in: L<Paws::Route53Domains::RegisterDomain>
 
 Returns: a L<Paws::Route53Domains::RegisterDomainResponse> instance
 
-This operation registers a domain. Domains are registered by the AWS
-registrar partner, Gandi. For some top-level domains (TLDs), this
-operation requires extra parameters.
+This operation registers a domain. Domains are registered either by
+Amazon Registrar (for .com, .net, and .org domains) or by our registrar
+associate, Gandi (for all other domains). For some top-level domains
+(TLDs), this operation requires extra parameters.
 
 When you register a domain, Amazon Route 53 does the following:
 
@@ -416,8 +418,11 @@ choose whether to renew the registration.
 =item *
 
 Optionally enables privacy protection, so WHOIS queries return contact
-information for our registrar partner, Gandi, instead of the
-information you entered for registrant, admin, and tech contacts.
+information either for Amazon Registrar (for .com, .net, and .org
+domains) or for our registrar associate, Gandi (for all other TLDs). If
+you don't enable privacy protection, WHOIS queries return the
+information that you entered for the registrant, admin, and tech
+contacts.
 
 =item *
 
@@ -483,8 +488,9 @@ Each argument is described in detail in: L<Paws::Route53Domains::TransferDomain>
 Returns: a L<Paws::Route53Domains::TransferDomainResponse> instance
 
 This operation transfers a domain from another registrar to Amazon
-Route 53. When the transfer is complete, the domain is registered with
-the AWS registrar partner, Gandi.
+Route 53. When the transfer is complete, the domain is registered
+either with Amazon Registrar (for .com, .net, and .org domains) or with
+our registrar associate, Gandi (for all other TLDs).
 
 For transfer requirements, a detailed procedure, and information about
 viewing the status of a domain transfer, see Transferring Registration
@@ -518,8 +524,8 @@ Each argument is described in detail in: L<Paws::Route53Domains::UpdateDomainCon
 Returns: a L<Paws::Route53Domains::UpdateDomainContactResponse> instance
 
 This operation updates the contact information for a particular domain.
-Information for at least one contact (registrant, administrator, or
-technical) must be supplied for update.
+You must specify information for at least one contact: registrant,
+administrator, or technical.
 
 If the update is successful, this method returns an operation ID that
 you can use to track the progress and completion of the action. If the
@@ -534,17 +540,17 @@ Each argument is described in detail in: L<Paws::Route53Domains::UpdateDomainCon
 Returns: a L<Paws::Route53Domains::UpdateDomainContactPrivacyResponse> instance
 
 This operation updates the specified domain contact's privacy setting.
-When the privacy option is enabled, personal information such as postal
-or email address is hidden from the results of a public WHOIS query.
-The privacy services are provided by the AWS registrar, Gandi. For more
-information, see the Gandi privacy features
-(http://www.gandi.net/domain/whois/?currency=USD&amp;lang=en).
+When privacy protection is enabled, contact information such as email
+address is replaced either with contact information for Amazon
+Registrar (for .com, .net, and .org domains) or with contact
+information for our registrar associate, Gandi.
 
-This operation only affects the privacy of the specified contact type
-(registrant, administrator, or tech). Successful acceptance returns an
-operation ID that you can use with GetOperationDetail to track the
-progress and completion of the action. If the request is not completed
-successfully, the domain registrant will be notified by email.
+This operation affects only the contact information for the specified
+contact type (registrant, administrator, or tech). If the request
+succeeds, Amazon Route 53 returns an operation ID that you can use with
+GetOperationDetail to track the progress and completion of the action.
+If the request doesn't complete successfully, the domain registrant
+will be notified by email.
 
 
 =head2 UpdateDomainNameservers(DomainName => Str, Nameservers => ArrayRef[L<Paws::Route53Domains::Nameserver>], [FIAuthKey => Str])
@@ -604,9 +610,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Route53Domains::ListDomainsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllOperations(sub { },[Marker => Str, MaxItems => Int])
+=head2 ListAllOperations(sub { },[Marker => Str, MaxItems => Int, SubmittedSince => Str])
 
-=head2 ListAllOperations([Marker => Str, MaxItems => Int])
+=head2 ListAllOperations([Marker => Str, MaxItems => Int, SubmittedSince => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

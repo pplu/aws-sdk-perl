@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> StopWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::StopRequest>]
 
-The WorkSpaces to stop.
+The WorkSpaces to stop. You can specify up to 25 WorkSpaces.
 
 
 

@@ -7,6 +7,7 @@ package Paws::WorkSpaces::WorkspaceDirectory;
   has DirectoryType => (is => 'ro', isa => 'Str');
   has DnsIpAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has IamRoleId => (is => 'ro', isa => 'Str');
+  has IpGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ipGroupIds', traits => ['NameInRequest']);
   has RegistrationCode => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -42,8 +43,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Contains information about an AWS Directory Service directory for use
-with Amazon WorkSpaces.
+Information about an AWS Directory Service directory for use with
+Amazon WorkSpaces.
 
 =head1 ATTRIBUTES
 
@@ -83,6 +84,12 @@ with Amazon WorkSpaces.
   The identifier of the IAM role. This is the role that allows Amazon
 WorkSpaces to make calls to other services, such as Amazon EC2, on your
 behalf.
+
+
+=head2 IpGroupIds => ArrayRef[Str|Undef]
+
+  The identifiers of the IP access control groups associated with the
+directory.
 
 
 =head2 RegistrationCode => Str

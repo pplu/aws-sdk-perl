@@ -41,14 +41,14 @@ The description of the point in time settings applied to the table.
 =head2 EarliestRestorableDateTime => Str
 
   Specifies the earliest point in time you can restore your table to. It
-is equal to the maximum of point in time recovery enabled time and
-C<CurrentTime> - C<PointInTimeRecoveryPeriod>.
+You can restore your table to any point in time during the last 35
+days.
 
 
 =head2 LatestRestorableDateTime => Str
 
-  C<LatestRestorableDateTime> is 5 minutes from now and there is a +/- 1
-minute fuzziness on the restore times.
+  C<LatestRestorableDateTime> is typically 5 minutes before the current
+time.
 
 
 =head2 PointInTimeRecoveryStatus => Str

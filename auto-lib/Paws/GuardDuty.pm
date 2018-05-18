@@ -600,7 +600,7 @@ Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet
 ID.
 
 
-=head2 InviteMembers(DetectorId => Str, [AccountIds => ArrayRef[Str|Undef], Message => Str])
+=head2 InviteMembers(DetectorId => Str, [AccountIds => ArrayRef[Str|Undef], DisableEmailNotification => Bool, Message => Str])
 
 Each argument is described in detail in: L<Paws::GuardDuty::InviteMembers>
 
@@ -691,7 +691,7 @@ Returns: a L<Paws::GuardDuty::StopMonitoringMembersResponse> instance
 Disables GuardDuty from monitoring findings of the member accounts
 specified by the account IDs. After running this command, a master
 GuardDuty account can run StartMonitoringMembers to re-enable GuardDuty
-to monitor these members' findings.
+to monitor these membersE<rsquo> findings.
 
 
 =head2 UnarchiveFindings(DetectorId => Str, [FindingIds => ArrayRef[Str|Undef]])

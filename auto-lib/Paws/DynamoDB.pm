@@ -95,6 +95,11 @@ package Paws::DynamoDB;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeGlobalTable', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeGlobalTableSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeGlobalTableSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeLimits {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeLimits', @_);
@@ -178,6 +183,11 @@ package Paws::DynamoDB;
   sub UpdateGlobalTable {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::UpdateGlobalTable', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateGlobalTableSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::UpdateGlobalTableSettings', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateItem {
@@ -302,7 +312,7 @@ package Paws::DynamoDB;
   }
 
 
-  sub operations { qw/BatchGetItem BatchWriteItem CreateBackup CreateGlobalTable CreateTable DeleteBackup DeleteItem DeleteTable DescribeBackup DescribeContinuousBackups DescribeGlobalTable DescribeLimits DescribeTable DescribeTimeToLive GetItem ListBackups ListGlobalTables ListTables ListTagsOfResource PutItem Query RestoreTableFromBackup RestoreTableToPointInTime Scan TagResource UntagResource UpdateContinuousBackups UpdateGlobalTable UpdateItem UpdateTable UpdateTimeToLive / }
+  sub operations { qw/BatchGetItem BatchWriteItem CreateBackup CreateGlobalTable CreateTable DeleteBackup DeleteItem DeleteTable DescribeBackup DescribeContinuousBackups DescribeGlobalTable DescribeGlobalTableSettings DescribeLimits DescribeTable DescribeTimeToLive GetItem ListBackups ListGlobalTables ListTables ListTagsOfResource PutItem Query RestoreTableFromBackup RestoreTableToPointInTime Scan TagResource UntagResource UpdateContinuousBackups UpdateGlobalTable UpdateGlobalTableSettings UpdateItem UpdateTable UpdateTimeToLive / }
 
 1;
 
@@ -615,6 +625,31 @@ The tables must have the same hash key and sort key (if present).
 
 The tables must have DynamoDB Streams enabled (NEW_AND_OLD_IMAGES).
 
+=item *
+
+The tables must have same provisioned and maximum write capacity units.
+
+=back
+
+If global secondary indexes are specified, then the following
+conditions must also be met:
+
+=over
+
+=item *
+
+The global secondary indexes must have the same name.
+
+=item *
+
+The global secondary indexes must have the same hash key and sort key
+(if present).
+
+=item *
+
+The global secondary indexes must have the same provisioned and maximum
+write capacity units.
+
 =back
 
 
@@ -736,7 +771,7 @@ C<LatestRestorableDateTime>.
 
 C<LatestRestorableDateTime> is typically 5 minutes before the current
 time. You can restore your table to any point in time during the last
-35 days with a 1-minute granularity.
+35 days.
 
 You can call C<DescribeContinuousBackups> at a maximum rate of 10 times
 per second.
@@ -749,6 +784,15 @@ Each argument is described in detail in: L<Paws::DynamoDB::DescribeGlobalTable>
 Returns: a L<Paws::DynamoDB::DescribeGlobalTableOutput> instance
 
 Returns information about the specified global table.
+
+
+=head2 DescribeGlobalTableSettings(GlobalTableName => Str)
+
+Each argument is described in detail in: L<Paws::DynamoDB::DescribeGlobalTableSettings>
+
+Returns: a L<Paws::DynamoDB::DescribeGlobalTableSettingsOutput> instance
+
+Describes region specific settings for a global table.
 
 
 =head2 DescribeLimits()
@@ -1147,9 +1191,39 @@ Returns: a L<Paws::DynamoDB::RestoreTableToPointInTimeOutput> instance
 
 Restores the specified table to the specified point in time within
 C<EarliestRestorableDateTime> and C<LatestRestorableDateTime>. You can
-restore your table to any point in time during the last 35 days with a
-1-minute granularity. Any number of users can execute up to 4
-concurrent restores (any type of restore) in a given account.
+restore your table to any point in time during the last 35 days. Any
+number of users can execute up to 4 concurrent restores (any type of
+restore) in a given account.
+
+When you restore using point in time recovery, DynamoDB restores your
+table data to the state based on the selected date and time
+(day:hour:minute:second) to a new table.
+
+Along with data, the following are also included on the new restored
+table using point in time recovery:
+
+=over
+
+=item *
+
+Global secondary indexes (GSIs)
+
+=item *
+
+Local secondary indexes (LSIs)
+
+=item *
+
+Provisioned read and write capacity
+
+=item *
+
+Encryption settings
+
+All these settings come from the current settings of the source table
+at the time of restore.
+
+=back
 
 You must manually set up the following on the restored table:
 
@@ -1275,7 +1349,7 @@ C<LatestRestorableDateTime>.
 
 C<LatestRestorableDateTime> is typically 5 minutes before the current
 time. You can restore your table to any point in time during the last
-35 days with a 1-minute granularity.
+35 days..
 
 
 =head2 UpdateGlobalTable(GlobalTableName => Str, ReplicaUpdates => ArrayRef[L<Paws::DynamoDB::ReplicaUpdate>])
@@ -1287,11 +1361,43 @@ Returns: a L<Paws::DynamoDB::UpdateGlobalTableOutput> instance
 Adds or removes replicas in the specified global table. The global
 table must already exist to be able to use this operation. Any replica
 to be added must be empty, must have the same name as the global table,
-must have the same key schema, and must have DynamoDB Streams enabled.
+must have the same key schema, and must have DynamoDB Streams enabled
+and must have same provisioned and maximum write capacity units.
 
 Although you can use C<UpdateGlobalTable> to add replicas and remove
 replicas in a single request, for simplicity we recommend that you
 issue separate requests for adding or removing replicas.
+
+If global secondary indexes are specified, then the following
+conditions must also be met:
+
+=over
+
+=item *
+
+The global secondary indexes must have the same name.
+
+=item *
+
+The global secondary indexes must have the same hash key and sort key
+(if present).
+
+=item *
+
+The global secondary indexes must have the same provisioned and maximum
+write capacity units.
+
+=back
+
+
+
+=head2 UpdateGlobalTableSettings(GlobalTableName => Str, [GlobalTableGlobalSecondaryIndexSettingsUpdate => ArrayRef[L<Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate>], GlobalTableProvisionedWriteCapacityUnits => Int, ReplicaSettingsUpdate => ArrayRef[L<Paws::DynamoDB::ReplicaSettingsUpdate>]])
+
+Each argument is described in detail in: L<Paws::DynamoDB::UpdateGlobalTableSettings>
+
+Returns: a L<Paws::DynamoDB::UpdateGlobalTableSettingsOutput> instance
+
+Updates settings for a global table.
 
 
 =head2 UpdateItem(Key => L<Paws::DynamoDB::Key>, TableName => Str, [AttributeUpdates => L<Paws::DynamoDB::AttributeUpdates>, ConditionalOperator => Str, ConditionExpression => Str, Expected => L<Paws::DynamoDB::ExpectedAttributeMap>, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>, ReturnConsumedCapacity => Str, ReturnItemCollectionMetrics => Str, ReturnValues => Str, UpdateExpression => Str])

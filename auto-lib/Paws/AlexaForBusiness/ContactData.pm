@@ -47,19 +47,17 @@ Information related to a contact.
 
 =head2 DisplayName => Str
 
-  The name of the contact to display on the AWS management console.
+  The name of the contact to display on the console.
 
 
 =head2 FirstName => Str
 
-  The first name of the contact that is used to call the contact on the
-device.
+  The first name of the contact, used to call the contact on the device.
 
 
 =head2 LastName => Str
 
-  The last name of the contact that is used to call the contact on the
-device.
+  The last name of the contact, used to call the contact on the device.
 
 
 =head2 PhoneNumber => Str

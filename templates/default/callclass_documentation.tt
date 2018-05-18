@@ -6,7 +6,7 @@
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method [% operation.name %] on the
+This class represents the parameters used for calling the method [% operation.name %] on the 
 L<[% c.api_struct.metadata.serviceFullName %]|[% c.api %]> service. Use the attributes of this class
 as arguments to method [% operation.name %].
 
@@ -18,7 +18,7 @@ As an example:
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
-[%- IF defined(aws_url) %]For the AWS API documentation, see L<[% aws_url %]>[% END -%]
+[%- aws_url = c.operation_aws_url(op_name); IF (aws_url.defined) %]For the AWS API documentation, see L<[% aws_url %]>[% END -%]
 
 =head1 ATTRIBUTES
 

@@ -10,6 +10,7 @@ package Paws::SageMaker::CreateTrainingJob;
   has StoppingCondition => (is => 'ro', isa => 'Paws::SageMaker::StoppingCondition', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
   has TrainingJobName => (is => 'ro', isa => 'Str', required => 1);
+  has VpcConfig => (is => 'ro', isa => 'Paws::SageMaker::VpcConfig');
 
   use MooseX::ClassAttribute;
 
@@ -150,6 +151,14 @@ in the I<AWS Billing and Cost Management User Guide>.
 
 The name of the training job. The name must be unique within an AWS
 Region in an AWS account. It appears in the Amazon SageMaker console.
+
+
+
+=head2 VpcConfig => L<Paws::SageMaker::VpcConfig>
+
+A object that specifies the VPC that you want your training job to
+connect to. Control access to and from your training container by
+configuring the VPC. For more information, see train-vpc
 
 
 
