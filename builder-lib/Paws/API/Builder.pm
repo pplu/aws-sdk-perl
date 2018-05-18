@@ -84,11 +84,8 @@ package Paws::API::Builder {
     }
   }
 
-  use Devel::Dwarn;
-
   sub is_url_not_base_redirect {
     my ($self, $url) = @_;
-    Dwarn $url;
     my $ua = Mojo::UserAgent->new;
     my $res = $ua->max_redirects(5)->head($url)->req->url->to_string;
     if ($res ne 'https://aws.amazon.com/documentation/') {
@@ -610,9 +607,14 @@ package Paws::API::Builder {
       my $op_url = defined($override)
         ? $override . $op_name . '.html'
         : $goto_url . $self->service . '/' . $op_name;
-      my $f = $ua->head_p( $op_url )->then(sub {
-        print "Got $op_url for $op_name\n";
-        $urls->{ $op_name } = $op_url;
+      $ua->max_redirects(5)->head_p( $op_url )->then(sub {
+        my $res = shift;
+        if ($res->req->url->to_string ne 'https://aws.amazon.com/documentation/') {
+          print "Got $op_url for $op_name\n";
+          $urls->{ $op_name } = $op_url;
+        } else {
+          warn "Using default url for '" . $op_name;
+        }
       })->with_roles('+Futurify')->futurify
     } foreach => \@op_urls, concurrent => 10;
 
