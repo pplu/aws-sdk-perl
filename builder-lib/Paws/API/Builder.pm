@@ -7,7 +7,7 @@ package Paws::API::Builder {
   use Template;
   use File::Slurper 'read_binary';
   use JSON::MaybeXS;
-  use LWP::UserAgent;
+  use Mojo::UserAgent;
   use v5.10;
 
   use Paws::API::RegionBuilder;
@@ -75,10 +75,8 @@ package Paws::API::Builder {
 
   sub is_url_working {
     my ($self, $url) = @_;
-     my $ua = LWP::UserAgent->new;
-    $ua->timeout(10);
-    $ua->env_proxy;
-    my $res = $ua->head($url);
+    my $ua = Mojo::UserAgent->new;
+    my $res = $ua->head($url)->result;
     if ($res->is_success) {
       return 1;
     } else {
@@ -86,13 +84,14 @@ package Paws::API::Builder {
     }
   }
 
+  use Devel::Dwarn;
+
   sub is_url_not_base_redirect {
     my ($self, $url) = @_;
-     my $ua = LWP::UserAgent->new;
-    $ua->timeout(10);
-    $ua->env_proxy;
-    my $res = $ua->head($url);
-    if ($res->request->uri->as_string ne 'https://aws.amazon.com/documentation/') {
+    Dwarn $url;
+    my $ua = Mojo::UserAgent->new;
+    my $res = $ua->max_redirects(5)->head($url)->req->url->to_string;
+    if ($res ne 'https://aws.amazon.com/documentation/') {
       return 1;
     } else {
       return 0;
@@ -113,7 +112,8 @@ package Paws::API::Builder {
 
     my $goto_url = 'https://docs.aws.amazon.com/goto/WebAPI/';
     my $goto_service_url = $goto_url . $self->service . '-' . $self->version;
-    if ($self->is_url_not_base_redirect($goto_service_url)) {
+    my $test_goto_service_url = $goto_url .'flip_flop';
+    if ($self->is_url_not_base_redirect($test_goto_service_url)) {
       return $goto_service_url;
     }
 
@@ -595,25 +595,29 @@ package Paws::API::Builder {
     return $output;
   }
 
-  use Future::HTTP::Mojo; 
+  use Future::Utils qw(fmap_scalar);
+  use Mojo::Promise::Role::Futurify;
   has operation_urls => (is => 'ro', isa => 'HashRef[Str]', lazy => 1, default => sub {
     my $self = shift;
-    my $ua = Future::HTTP::Mojo->new();
+    my $ua = Mojo::UserAgent->new;
 
     my $override = $self->operation_url_overrides->{ $self->service };
     my $goto_url = 'https://docs.aws.amazon.com/goto/WebAPI/';
-
     my $urls = {};
-    my @futures;
-    foreach my $op_name ($self->operations) {
-      my $op_url = (defined $override) ? $override . $op_name . '.html' : $goto_url . $self->service . '/' . $op_name;
-      push @futures, $ua->http_head($op_url)->then(sub {
+    my @op_urls = $self->operations;
+
+    my @results = fmap_scalar {
+      my $op_name = shift;
+      my $op_url = defined($override)
+        ? $override . $op_name . '.html'
+        : $goto_url . $self->service . '/' . $op_name;
+      my $f = $ua->head_p( $op_url )->then(sub {
         print "Got $op_url for $op_name\n";
         $urls->{ $op_name } = $op_url;
-      });
-    }
+      })->with_roles('+Futurify')->futurify
+    } foreach => \@op_urls, concurrent => 10;
 
-    Future->wait_all(@futures)->get;
+    Future->wait_all(@results)->get;
     return $urls;
   });
 
