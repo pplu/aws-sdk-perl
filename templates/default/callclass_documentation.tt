@@ -22,9 +22,7 @@ $[% c.service %]->[% operation.name %](
 [%- req_list = out_shape.required.sort -%]
 [%- FOREACH out_name IN req_list.sort -%]
 [%- member = c.shape(out_shape.members.$out_name.shape) %]
-    [% out_name %] => [% member.example_code -%]
-  [%- IF (NOT loop.last) %],
-  [%- END -%]
+    [% out_name %] => [% member.example_code -%][%- IF (NOT loop.last) %],[% END -%]
 [%- END %]
 [%- opt_list = c.optional_params_in_shape(out_shape) -%]
 [%- IF (opt_list.size > 0) -%]
