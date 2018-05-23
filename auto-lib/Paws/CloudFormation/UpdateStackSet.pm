@@ -1,12 +1,15 @@
 
 package Paws::CloudFormation::UpdateStackSet;
   use Moose;
+  has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has AdministrationRoleARN => (is => 'ro', isa => 'Str');
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Description => (is => 'ro', isa => 'Str');
+  has ExecutionRoleName => (is => 'ro', isa => 'Str');
   has OperationId => (is => 'ro', isa => 'Str');
   has OperationPreferences => (is => 'ro', isa => 'Paws::CloudFormation::StackSetOperationPreferences');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
+  has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has StackSetName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
   has TemplateBody => (is => 'ro', isa => 'Str');
@@ -41,6 +44,27 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 Accounts => ArrayRef[Str|Undef]
+
+The accounts in which to update associated stack instances. If you
+specify accounts, you must also specify the regions in which to update
+stack set instances.
+
+To update I<all> the stack instances associated with this stack set, do
+not specify the C<Accounts> or C<Regions> properties.
+
+If the stack set update includes changes to the template (that is, if
+the C<TemplateBody> or C<TemplateURL> properties are specified), or the
+C<Parameters> property, AWS CloudFormation marks all stack instances
+with a status of C<OUTDATED> prior to updating the stack instances in
+the specified accounts and regions. If the stack set update does not
+include changes to the template or parameters, AWS CloudFormation
+updates the stack instances in the specified accounts and regions,
+while leaving all other stack instances with their existing stack
+instance status.
+
 
 
 =head2 AdministrationRoleARN => Str
@@ -128,6 +152,25 @@ A brief description of updates that you are making.
 
 
 
+=head2 ExecutionRoleName => Str
+
+The name of the IAM execution role to use to update the stack set. If
+you do not specify an execution role, AWS CloudFormation uses the
+C<AWSCloudFormationStackSetExecutionRole> role for the stack set
+operation.
+
+Specify an IAM role only if you are using customized execution roles to
+control which stack resources users and groups can include in their
+stack sets.
+
+If you specify a customized execution role, AWS CloudFormation uses
+that role to update the stack. If you do not specify a customized
+execution role, AWS CloudFormation performs the update using the role
+previously associated with the stack set, so long as you have
+permissions to perform operations on the stack set.
+
+
+
 =head2 OperationId => Str
 
 The unique ID for this stack set operation.
@@ -156,6 +199,27 @@ operation.
 =head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
 
 A list of input parameters for the stack set template.
+
+
+
+=head2 Regions => ArrayRef[Str|Undef]
+
+The regions in which to update associated stack instances. If you
+specify regions, you must also specify accounts in which to update
+stack set instances.
+
+To update I<all> the stack instances associated with this stack set, do
+not specify the C<Accounts> or C<Regions> properties.
+
+If the stack set update includes changes to the template (that is, if
+the C<TemplateBody> or C<TemplateURL> properties are specified), or the
+C<Parameters> property, AWS CloudFormation marks all stack instances
+with a status of C<OUTDATED> prior to updating the stack instances in
+the specified accounts and regions. If the stack set update does not
+include changes to the template or parameters, AWS CloudFormation
+updates the stack instances in the specified accounts and regions,
+while leaving all other stack instances with their existing stack
+instance status.
 
 
 

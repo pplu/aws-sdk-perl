@@ -4,6 +4,7 @@ package Paws::CloudFormation::StackSetOperation;
   has AdministrationRoleARN => (is => 'ro', isa => 'Str');
   has CreationTimestamp => (is => 'ro', isa => 'Str');
   has EndTimestamp => (is => 'ro', isa => 'Str');
+  has ExecutionRoleName => (is => 'ro', isa => 'Str');
   has OperationId => (is => 'ro', isa => 'Str');
   has OperationPreferences => (is => 'ro', isa => 'Paws::CloudFormation::StackSetOperationPreferences');
   has RetainStacks => (is => 'ro', isa => 'Bool');
@@ -81,6 +82,15 @@ the first stacks.
 and regions specified. Note that this doesn't necessarily mean that the
 stack set operation was successful, or even attempted, in each account
 or region.
+
+
+=head2 ExecutionRoleName => Str
+
+  The name of the IAM execution role used to create or update the stack
+set.
+
+Use customized execution roles to control which stack resources users
+and groups can include in their stack sets.
 
 
 =head2 OperationId => Str

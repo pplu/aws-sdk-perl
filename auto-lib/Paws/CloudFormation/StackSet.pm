@@ -3,6 +3,7 @@ package Paws::CloudFormation::StackSet;
   has AdministrationRoleARN => (is => 'ro', isa => 'Str');
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Description => (is => 'ro', isa => 'Str');
+  has ExecutionRoleName => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
   has StackSetARN => (is => 'ro', isa => 'Str');
   has StackSetId => (is => 'ro', isa => 'Str');
@@ -56,7 +57,8 @@ update the stack set.
 
 Use customized administrator roles to control which users or groups can
 manage specific stack sets within the same administrator account. For
-more information, see Define Permissions for Multiple Administrators
+more information, see Prerequisites: Granting Permissions for Stack Set
+Operations
 (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
 in the I<AWS CloudFormation User Guide>.
 
@@ -75,6 +77,15 @@ Resources in AWS CloudFormation Templates.
 
   A description of the stack set that you specify when the stack set is
 created or updated.
+
+
+=head2 ExecutionRoleName => Str
+
+  The name of the IAM execution role used to create or update the stack
+set.
+
+Use customized execution roles to control which stack resources users
+and groups can include in their stack sets.
 
 
 =head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
