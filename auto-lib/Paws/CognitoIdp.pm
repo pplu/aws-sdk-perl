@@ -2735,7 +2735,8 @@ Each argument is described in detail in: L<Paws::CognitoIdp::VerifySoftwareToken
 Returns: a L<Paws::CognitoIdp::VerifySoftwareTokenResponse> instance
 
 Use this API to register a user's entered TOTP code and mark the user's
-software token MFA status as "verified" if successful,
+software token MFA status as "verified" if successful. The request
+takes an access token or a session string, but not both.
 
 
 =head2 VerifyUserAttribute

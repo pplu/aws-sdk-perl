@@ -81,7 +81,32 @@ this user pool.
 
 =head2 CallbackURLs => ArrayRef[Str|Undef]
 
-A list of allowed callback URLs for the identity providers.
+A list of allowed redirect (callback) URLs for the identity providers.
+
+A redirect URI must:
+
+=over
+
+=item *
+
+Be an absolute URI.
+
+=item *
+
+Be registered with the authorization server.
+
+=item *
+
+Not use HTTP without TLS (i.e. use HTTPS instead of HTTP).
+
+=item *
+
+Not include a fragment component.
+
+=back
+
+See OAuth 2.0 - Redirection Endpoint
+(https://tools.ietf.org/html/rfc6749#section-3.1.2).
 
 
 
@@ -100,6 +125,31 @@ The client name from the update user pool client request.
 =head2 DefaultRedirectURI => Str
 
 The default redirect URI. Must be in the C<CallbackURLs> list.
+
+A redirect URI must:
+
+=over
+
+=item *
+
+Be an absolute URI.
+
+=item *
+
+Be registered with the authorization server.
+
+=item *
+
+Not use HTTP without TLS (i.e. use HTTPS instead of HTTP).
+
+=item *
+
+Not include a fragment component.
+
+=back
+
+See OAuth 2.0 - Redirection Endpoint
+(https://tools.ietf.org/html/rfc6749#section-3.1.2).
 
 
 
