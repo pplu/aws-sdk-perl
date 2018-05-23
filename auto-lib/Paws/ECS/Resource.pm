@@ -61,8 +61,8 @@ extended precision floating-point type.
 
 =head2 Name => Str
 
-  The name of the resource, such as C<cpu>, C<memory>, C<ports>, or a
-user-defined resource.
+  The name of the resource, such as C<CPU>, C<MEMORY>, C<PORTS>,
+C<PORTS_UDP>, or a user-defined resource.
 
 
 =head2 StringSetValue => ArrayRef[Str|Undef]

@@ -77,16 +77,22 @@ following command: C<sudo docker version | grep "Server API version">
 
 =head2 SharedMemorySize => Int
 
-  The value for the size of the C</dev/shm> volume. This parameter maps
-to the C<--shm-size> option to docker run
+  The value for the size (in MiB) of the C</dev/shm> volume. This
+parameter maps to the C<--shm-size> option to docker run
 (https://docs.docker.com/engine/reference/run/).
+
+If you are using tasks that use the Fargate launch type, the
+C<sharedMemorySize> parameter is not supported.
 
 
 =head2 Tmpfs => ArrayRef[L<Paws::ECS::Tmpfs>]
 
-  The container path, mount options, and size of the tmpfs mount. This
-parameter maps to the C<--tmpfs> option to docker run
+  The container path, mount options, and size (in MiB) of the tmpfs
+mount. This parameter maps to the C<--tmpfs> option to docker run
 (https://docs.docker.com/engine/reference/run/).
+
+If you are using tasks that use the Fargate launch type, the C<tmpfs>
+parameter is not supported.
 
 
 

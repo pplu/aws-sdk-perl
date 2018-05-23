@@ -36,6 +36,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::LoadBa
 
 Details on a load balancer that is used with a service.
 
+Services with tasks that use the C<awsvpc> network mode (for example,
+those with the Fargate launch type) only support Application Load
+Balancers and Network Load Balancers; Classic Load Balancers are not
+supported. Also, when you create any target groups for these services,
+you must choose C<ip> as the target type, not C<instance>, because
+tasks that use the C<awsvpc> network mode are associated with an
+elastic network interface, not an Amazon EC2 instance.
+
 =head1 ATTRIBUTES
 
 
@@ -62,6 +70,12 @@ C<hostPort> of the port mapping.
 
   The full Amazon Resource Name (ARN) of the Elastic Load Balancing
 target group associated with a service.
+
+If your service's task definition uses the C<awsvpc> network mode
+(which is required for the Fargate launch type), you must choose C<ip>
+as the target type, not C<instance>, because tasks that use the
+C<awsvpc> network mode are associated with an elastic network
+interface, not an Amazon EC2 instance.
 
 
 

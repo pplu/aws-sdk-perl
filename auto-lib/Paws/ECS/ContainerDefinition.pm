@@ -313,6 +313,9 @@ section of the Docker Remote API
 and the C<--hostname> option to docker run
 (https://docs.docker.com/engine/reference/run/).
 
+The C<hostname> parameter is not supported if using the C<awsvpc>
+networkMode.
+
 
 =head2 Image => Str
 

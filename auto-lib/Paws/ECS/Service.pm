@@ -108,6 +108,14 @@ task has first started.
 load balancer name, the container name (as it appears in a container
 definition), and the container port to access from the load balancer.
 
+Services with tasks that use the C<awsvpc> network mode (for example,
+those with the Fargate launch type) only support Application Load
+Balancers and Network Load Balancers; Classic Load Balancers are not
+supported. Also, when you create any target groups for these services,
+you must choose C<ip> as the target type, not C<instance>, because
+tasks that use the C<awsvpc> network mode are associated with an
+elastic network interface, not an Amazon EC2 instance.
+
 
 =head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
 
