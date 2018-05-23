@@ -2,7 +2,7 @@
 package Paws::Inspector::CreateAssessmentTarget;
   use Moose;
   has AssessmentTargetName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentTargetName' , required => 1);
-  has ResourceGroupArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceGroupArn' , required => 1);
+  has ResourceGroupArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceGroupArn' );
 
   use MooseX::ClassAttribute;
 
@@ -41,7 +41,7 @@ want to create. The name must be unique within the AWS account.
 
 
 
-=head2 B<REQUIRED> ResourceGroupArn => Str
+=head2 ResourceGroupArn => Str
 
 The ARN that specifies the resource group that is used to create the
 assessment target.

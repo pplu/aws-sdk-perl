@@ -3,7 +3,7 @@ package Paws::Inspector::AssessmentTarget;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has ResourceGroupArn => (is => 'ro', isa => 'Str', request_name => 'resourceGroupArn', traits => ['NameInRequest'], required => 1);
+  has ResourceGroupArn => (is => 'ro', isa => 'Str', request_name => 'resourceGroupArn', traits => ['NameInRequest']);
   has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -57,7 +57,7 @@ action.
   The name of the Amazon Inspector assessment target.
 
 
-=head2 B<REQUIRED> ResourceGroupArn => Str
+=head2 ResourceGroupArn => Str
 
   The ARN that specifies the resource group that is associated with the
 assessment target.

@@ -428,7 +428,7 @@ specified by the ARNs of the findings.
 
 =item AssessmentTargetName => Str
 
-=item ResourceGroupArn => Str
+=item [ResourceGroupArn => Str]
 
 
 =back
@@ -1047,7 +1047,7 @@ Disables the process of sending Amazon Simple Notification Service
 
 =item AssessmentTargetName => Str
 
-=item ResourceGroupArn => Str
+=item [ResourceGroupArn => Str]
 
 
 =back
