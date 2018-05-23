@@ -1,6 +1,7 @@
 package Paws::MediaStore;
   use Moose;
   sub service { 'mediastore' }
+  sub signing_name { 'mediastore' }
   sub version { '2017-09-01' }
   sub target_prefix { 'MediaStore_20170901' }
   sub json_version { "1.1" }

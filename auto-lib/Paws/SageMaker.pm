@@ -1,6 +1,7 @@
 package Paws::SageMaker;
   use Moose;
   sub service { 'sagemaker' }
+  sub signing_name { 'sagemaker' }
   sub version { '2017-07-24' }
   sub target_prefix { 'SageMaker' }
   sub json_version { "1.1" }

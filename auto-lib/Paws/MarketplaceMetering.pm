@@ -1,6 +1,7 @@
 package Paws::MarketplaceMetering;
   use Moose;
   sub service { 'metering.marketplace' }
+  sub signing_name { 'aws-marketplace' }
   sub version { '2016-01-14' }
   sub target_prefix { 'AWSMPMeteringService' }
   sub json_version { "1.1" }

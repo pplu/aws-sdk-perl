@@ -1,6 +1,7 @@
 package Paws::Translate;
   use Moose;
   sub service { 'translate' }
+  sub signing_name { 'translate' }
   sub version { '2017-07-01' }
   sub target_prefix { 'AWSShineFrontendService_20170701' }
   sub json_version { "1.1" }
