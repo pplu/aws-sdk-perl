@@ -496,6 +496,36 @@ package Paws::API::Builder {
     return $type;
   }
 
+  sub generate_example_code {
+    my ($self, $op_name) = @_;
+
+    my $out_shape = $self->shapename_for_operation_output($op_name);
+    my $inputs = $self->input_for_operation($op_name);
+
+    my $example_str = '';
+    if ($out_shape) {
+      $example_str .= "my \$${out_shape} = ";
+    }
+    $example_str .= "\$" . $self->service . "->" . $op_name . "(";
+
+    my @args = ();
+    my $shape_cache = {};
+    foreach my $input ( sort { $a cmp $b } (@{ $inputs->{ required } || [] }) ) {
+      push @args, "$input => " . ( $self->get_example_code( $inputs->{ members }{ $input }{ shape }, $shape_cache ) )[0];
+    }
+    $example_str .= join(",\n", @args);
+    $example_str .= ",\n" if @args;
+    @args = ();
+    foreach my $input ( sort { $a cmp $b } (@{ $self->optional_params_in_shape( $inputs ) } ) ) {
+      push @args, "$input => " . ( $self->get_example_code( $inputs->{ members }{ $input }{ shape }, $shape_cache ) )[0] . ', # OPTIONAL';
+    }
+    $example_str .= join("\n", @args);
+    $example_str .= "\n);";
+
+
+    return $self->perltidy_source( $example_str );
+  }
+
   sub get_example_code {
     my ($self, $shape_name, $cache, $depth, $optional) = @_;
     $depth ||= 0;
@@ -552,7 +582,7 @@ package Paws::API::Builder {
 
 
       $example_str = "{\n" 
-        . ($req_struct_str ? $req_struct_str . ", \n": '')
+        . ($req_struct_str ? $req_struct_str . " \n": '')
         .  $opt_struct_str ."\n}";
     }
     elsif ($shape->{ type } eq 'map') {
@@ -653,7 +683,7 @@ package Paws::API::Builder {
   }
 
   sub perltidy_source {
-    my ($self, $source);
+    my ($self, $source) = @_;
     my $tidied_source = '';
     my $tidy_error = '';
 
@@ -707,6 +737,9 @@ package Paws::API::Builder {
       my $op_example = '';
       if ( -e $self->example_file ) {
         $op_example = $self->create_example_from_file( $op_name );
+      }
+      if(!$op_example) {
+        $op_example = $self->generate_example_code( $op_name );
       }
       if (defined $self->operation($op_name)->{name}) {
         my $class_name = $self->namespace_shape($op_name);
