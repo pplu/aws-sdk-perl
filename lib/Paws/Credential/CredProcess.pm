@@ -2,6 +2,7 @@ package Paws::Credential::CredProcess;
   use Moose;
   use JSON::MaybeXS qw/decode_json/;
   use Paws::Exception;
+  use DateTime::Format::ISO8601;
 
   has credential_process => (is => 'ro', isa => 'Str', required => 1);
 
