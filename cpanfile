@@ -49,10 +49,10 @@ on 'develop' => sub {
   requires 'Carp::Always';
   requires 'Test::Pod';
   requires 'Devel::CoverReport';
-  requires 'Future::HTTP::Mojo';
   # For developing / testing the pluggable callers
   requires 'Mojolicious';
   requires 'Future::Mojo', '>= 0.003';
+  requires 'Mojo::Promise::Role::Futurify';
   requires 'EV';
   requires 'LWP::UserAgent';
   requires 'Furl';
