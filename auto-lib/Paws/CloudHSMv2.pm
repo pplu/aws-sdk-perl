@@ -1,6 +1,7 @@
 package Paws::CloudHSMv2;
   use Moose;
   sub service { 'cloudhsmv2' }
+  sub signing_name { 'cloudhsm' }
   sub version { '2017-04-28' }
   sub target_prefix { 'BaldrApiService' }
   sub json_version { "1.1" }

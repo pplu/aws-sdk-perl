@@ -1,6 +1,7 @@
 package Paws::Comprehend;
   use Moose;
   sub service { 'comprehend' }
+  sub signing_name { 'comprehend' }
   sub version { '2017-11-27' }
   sub target_prefix { 'Comprehend_20171127' }
   sub json_version { "1.1" }

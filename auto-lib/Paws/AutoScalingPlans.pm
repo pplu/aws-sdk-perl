@@ -1,6 +1,7 @@
 package Paws::AutoScalingPlans;
   use Moose;
   sub service { 'autoscaling' }
+  sub signing_name { 'autoscaling-plans' }
   sub version { '2018-01-06' }
   sub target_prefix { 'AnyScaleScalingPlannerFrontendService' }
   sub json_version { "1.1" }

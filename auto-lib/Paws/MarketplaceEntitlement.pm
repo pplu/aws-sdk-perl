@@ -1,6 +1,7 @@
 package Paws::MarketplaceEntitlement;
   use Moose;
   sub service { 'entitlement.marketplace' }
+  sub signing_name { 'aws-marketplace' }
   sub version { '2017-01-11' }
   sub target_prefix { 'AWSMPEntitlementService' }
   sub json_version { "1.1" }

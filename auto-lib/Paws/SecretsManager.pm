@@ -1,6 +1,7 @@
 package Paws::SecretsManager;
   use Moose;
   sub service { 'secretsmanager' }
+  sub signing_name { 'secretsmanager' }
   sub version { '2017-10-17' }
   sub target_prefix { 'secretsmanager' }
   sub json_version { "1.1" }
