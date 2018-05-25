@@ -1,6 +1,7 @@
 package Paws::Support;
   use Moose;
   sub service { 'support' }
+  sub signing_name { 'support' }
   sub version { '2013-04-15' }
   sub target_prefix { 'AWSSupport_20130415' }
   sub json_version { "1.1" }

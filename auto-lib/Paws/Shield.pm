@@ -1,6 +1,7 @@
 package Paws::Shield;
   use Moose;
   sub service { 'shield' }
+  sub signing_name { 'shield' }
   sub version { '2016-06-02' }
   sub target_prefix { 'AWSShield_20160616' }
   sub json_version { "1.1" }

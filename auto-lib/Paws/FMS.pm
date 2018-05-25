@@ -1,6 +1,7 @@
 package Paws::FMS;
   use Moose;
   sub service { 'fms' }
+  sub signing_name { 'fms' }
   sub version { '2018-01-01' }
   sub target_prefix { 'AWSFMS_20180101' }
   sub json_version { "1.1" }

@@ -1,6 +1,7 @@
 package Paws::GuardDuty;
   use Moose;
   sub service { 'guardduty' }
+  sub signing_name { 'guardduty' }
   sub version { '2017-11-28' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

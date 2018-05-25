@@ -1,6 +1,7 @@
 package Paws::MediaConvert;
   use Moose;
   sub service { 'mediaconvert' }
+  sub signing_name { 'mediaconvert' }
   sub version { '2017-08-29' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

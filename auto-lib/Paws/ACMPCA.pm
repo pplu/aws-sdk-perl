@@ -1,6 +1,7 @@
 package Paws::ACMPCA;
   use Moose;
   sub service { 'acm-pca' }
+  sub signing_name { 'acm-pca' }
   sub version { '2017-08-22' }
   sub target_prefix { 'ACMPrivateCA' }
   sub json_version { "1.1" }

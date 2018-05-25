@@ -1,6 +1,7 @@
 package Paws::CloudFormation;
   use Moose;
   sub service { 'cloudformation' }
+  sub signing_name { 'cloudformation' }
   sub version { '2010-05-15' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

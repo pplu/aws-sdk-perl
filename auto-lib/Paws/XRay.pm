@@ -1,6 +1,7 @@
 package Paws::XRay;
   use Moose;
   sub service { 'xray' }
+  sub signing_name { 'xray' }
   sub version { '2016-04-12' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

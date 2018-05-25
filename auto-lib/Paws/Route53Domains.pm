@@ -1,6 +1,7 @@
 package Paws::Route53Domains;
   use Moose;
   sub service { 'route53domains' }
+  sub signing_name { 'route53domains' }
   sub version { '2014-05-15' }
   sub target_prefix { 'Route53Domains_v20140515' }
   sub json_version { "1.1" }

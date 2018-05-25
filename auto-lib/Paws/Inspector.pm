@@ -1,6 +1,7 @@
 package Paws::Inspector;
   use Moose;
   sub service { 'inspector' }
+  sub signing_name { 'inspector' }
   sub version { '2016-02-16' }
   sub target_prefix { 'InspectorService' }
   sub json_version { "1.1" }

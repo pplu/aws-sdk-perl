@@ -1,6 +1,7 @@
 package Paws::MarketplaceCommerceAnalytics;
   use Moose;
   sub service { 'marketplacecommerceanalytics' }
+  sub signing_name { 'marketplacecommerceanalytics' }
   sub version { '2015-07-01' }
   sub target_prefix { 'MarketplaceCommerceAnalytics20150701' }
   sub json_version { "1.1" }

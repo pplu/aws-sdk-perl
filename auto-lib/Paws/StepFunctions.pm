@@ -1,6 +1,7 @@
 package Paws::StepFunctions;
   use Moose;
   sub service { 'states' }
+  sub signing_name { 'states' }
   sub version { '2016-11-23' }
   sub target_prefix { 'AWSStepFunctions' }
   sub json_version { "1.0" }

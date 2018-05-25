@@ -1,6 +1,7 @@
 package Paws::Glacier;
   use Moose;
   sub service { 'glacier' }
+  sub signing_name { 'glacier' }
   sub version { '2012-06-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

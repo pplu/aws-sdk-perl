@@ -1,6 +1,7 @@
 package Paws::CodeCommit;
   use Moose;
   sub service { 'codecommit' }
+  sub signing_name { 'codecommit' }
   sub version { '2015-04-13' }
   sub target_prefix { 'CodeCommit_20150413' }
   sub json_version { "1.1" }

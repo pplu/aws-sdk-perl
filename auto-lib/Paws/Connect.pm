@@ -1,6 +1,7 @@
 package Paws::Connect;
   use Moose;
   sub service { 'connect' }
+  sub signing_name { 'connect' }
   sub version { '2017-08-08' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

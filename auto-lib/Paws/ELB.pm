@@ -1,6 +1,7 @@
 package Paws::ELB;
   use Moose;
   sub service { 'elasticloadbalancing' }
+  sub signing_name { 'elasticloadbalancing' }
   sub version { '2012-06-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

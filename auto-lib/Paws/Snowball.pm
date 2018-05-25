@@ -1,6 +1,7 @@
 package Paws::Snowball;
   use Moose;
   sub service { 'snowball' }
+  sub signing_name { 'snowball' }
   sub version { '2016-06-30' }
   sub target_prefix { 'AWSIESnowballJobManagementService' }
   sub json_version { "1.1" }

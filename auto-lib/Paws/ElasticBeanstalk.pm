@@ -1,6 +1,7 @@
 package Paws::ElasticBeanstalk;
   use Moose;
   sub service { 'elasticbeanstalk' }
+  sub signing_name { 'elasticbeanstalk' }
   sub version { '2010-12-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

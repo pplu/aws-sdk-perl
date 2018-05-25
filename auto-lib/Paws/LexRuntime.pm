@@ -1,6 +1,7 @@
 package Paws::LexRuntime;
   use Moose;
   sub service { 'runtime.lex' }
+  sub signing_name { 'lex' }
   sub version { '2016-11-28' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

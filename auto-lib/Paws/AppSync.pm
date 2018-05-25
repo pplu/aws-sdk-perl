@@ -1,6 +1,7 @@
 package Paws::AppSync;
   use Moose;
   sub service { 'appsync' }
+  sub signing_name { 'appsync' }
   sub version { '2017-07-25' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

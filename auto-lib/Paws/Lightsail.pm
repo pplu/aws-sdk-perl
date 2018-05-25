@@ -1,6 +1,7 @@
 package Paws::Lightsail;
   use Moose;
   sub service { 'lightsail' }
+  sub signing_name { 'lightsail' }
   sub version { '2016-11-28' }
   sub target_prefix { 'Lightsail_20161128' }
   sub json_version { "1.1" }

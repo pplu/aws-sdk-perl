@@ -1,6 +1,7 @@
 package Paws::CodeBuild;
   use Moose;
   sub service { 'codebuild' }
+  sub signing_name { 'codebuild' }
   sub version { '2016-10-06' }
   sub target_prefix { 'CodeBuild_20161006' }
   sub json_version { "1.1" }

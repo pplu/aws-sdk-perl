@@ -1,6 +1,7 @@
 package Paws::CUR;
   use Moose;
   sub service { 'cur' }
+  sub signing_name { 'cur' }
   sub version { '2017-01-06' }
   sub target_prefix { 'AWSOrigamiServiceGatewayService' }
   sub json_version { "1.1" }

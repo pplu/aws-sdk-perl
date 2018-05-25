@@ -1,6 +1,7 @@
 package Paws::WorkMail;
   use Moose;
   sub service { 'workmail' }
+  sub signing_name { 'workmail' }
   sub version { '2017-10-01' }
   sub target_prefix { 'WorkMailService' }
   sub json_version { "1.1" }

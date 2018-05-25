@@ -1,6 +1,7 @@
 package Paws::SDB;
   use Moose;
   sub service { 'sdb' }
+  sub signing_name { 'sdb' }
   sub version { '2009-04-15' }
   sub flattened_arrays { 1 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

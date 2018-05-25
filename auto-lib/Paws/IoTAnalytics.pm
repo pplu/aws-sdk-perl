@@ -1,6 +1,7 @@
 package Paws::IoTAnalytics;
   use Moose;
   sub service { 'iotanalytics' }
+  sub signing_name { 'iotanalytics' }
   sub version { '2017-11-27' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

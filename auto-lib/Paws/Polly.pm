@@ -1,6 +1,7 @@
 package Paws::Polly;
   use Moose;
   sub service { 'polly' }
+  sub signing_name { 'polly' }
   sub version { '2016-06-10' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

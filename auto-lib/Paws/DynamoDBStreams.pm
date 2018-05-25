@@ -1,6 +1,7 @@
 package Paws::DynamoDBStreams;
   use Moose;
   sub service { 'streams.dynamodb' }
+  sub signing_name { 'dynamodb' }
   sub version { '2012-08-10' }
   sub target_prefix { 'DynamoDBStreams_20120810' }
   sub json_version { "1.0" }

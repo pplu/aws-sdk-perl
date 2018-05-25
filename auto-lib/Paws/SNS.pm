@@ -1,6 +1,7 @@
 package Paws::SNS;
   use Moose;
   sub service { 'sns' }
+  sub signing_name { 'sns' }
   sub version { '2010-03-31' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

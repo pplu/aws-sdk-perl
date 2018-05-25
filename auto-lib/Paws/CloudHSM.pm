@@ -1,6 +1,7 @@
 package Paws::CloudHSM;
   use Moose;
   sub service { 'cloudhsm' }
+  sub signing_name { 'cloudhsm' }
   sub version { '2014-05-30' }
   sub target_prefix { 'CloudHsmFrontendService' }
   sub json_version { "1.1" }

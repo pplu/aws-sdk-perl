@@ -1,6 +1,7 @@
 package Paws::ES;
   use Moose;
   sub service { 'es' }
+  sub signing_name { 'es' }
   sub version { '2015-01-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

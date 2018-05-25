@@ -1,6 +1,7 @@
 package Paws::MediaLive;
   use Moose;
   sub service { 'medialive' }
+  sub signing_name { 'medialive' }
   sub version { '2017-10-14' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

@@ -1,6 +1,7 @@
 package Paws::ImportExport;
   use Moose;
   sub service { 'importexport' }
+  sub signing_name { 'importexport' }
   sub version { '2010-06-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

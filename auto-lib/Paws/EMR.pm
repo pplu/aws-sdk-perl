@@ -1,6 +1,7 @@
 package Paws::EMR;
   use Moose;
   sub service { 'elasticmapreduce' }
+  sub signing_name { 'elasticmapreduce' }
   sub version { '2009-03-31' }
   sub target_prefix { 'ElasticMapReduce' }
   sub json_version { "1.1" }

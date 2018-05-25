@@ -1,6 +1,7 @@
 package Paws::EFS;
   use Moose;
   sub service { 'elasticfilesystem' }
+  sub signing_name { 'elasticfilesystem' }
   sub version { '2015-02-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

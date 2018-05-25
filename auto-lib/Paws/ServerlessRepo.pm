@@ -1,6 +1,7 @@
 package Paws::ServerlessRepo;
   use Moose;
   sub service { 'serverlessrepo' }
+  sub signing_name { 'serverlessrepo' }
   sub version { '2017-09-08' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

@@ -1,6 +1,7 @@
 package Paws::Glue;
   use Moose;
   sub service { 'glue' }
+  sub signing_name { 'glue' }
   sub version { '2017-03-31' }
   sub target_prefix { 'AWSGlue' }
   sub json_version { "1.1" }

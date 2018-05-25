@@ -1,6 +1,7 @@
 package Paws::WorkSpaces;
   use Moose;
   sub service { 'workspaces' }
+  sub signing_name { 'workspaces' }
   sub version { '2015-04-08' }
   sub target_prefix { 'WorkspacesService' }
   sub json_version { "1.1" }

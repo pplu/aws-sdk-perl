@@ -1,6 +1,7 @@
 package Paws::SES;
   use Moose;
   sub service { 'email' }
+  sub signing_name { 'ses' }
   sub version { '2010-12-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
