@@ -1,6 +1,7 @@
 package Paws::Greengrass;
   use Moose;
   sub service { 'greengrass' }
+  sub signing_name { 'greengrass' }
   sub version { '2017-06-07' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

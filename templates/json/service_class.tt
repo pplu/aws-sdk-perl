@@ -7,9 +7,7 @@ enum '[% enum_name %]', [[% FOR val IN c.enums.$enum_name %]'[% val %]',[% END %
 package [% c.api %];
   use Moose;
   sub service { '[% c.service %]' }
-  [%- IF c.signing_name %]
   sub signing_name { '[% c.signing_name %]' }
-  [%- END %]
   sub version { '[% c.version %]' }
   sub target_prefix { '[% c.target_prefix %]' }
   sub json_version { "[% c.json_version %]" }

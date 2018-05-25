@@ -1,6 +1,7 @@
 package Paws::DMS;
   use Moose;
   sub service { 'dms' }
+  sub signing_name { 'dms' }
   sub version { '2016-01-01' }
   sub target_prefix { 'AmazonDMSv20160101' }
   sub json_version { "1.1" }

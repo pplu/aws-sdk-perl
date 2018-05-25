@@ -1,6 +1,7 @@
 package Paws::ApiGateway;
   use Moose;
   sub service { 'apigateway' }
+  sub signing_name { 'apigateway' }
   sub version { '2015-07-09' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

@@ -2,6 +2,7 @@ package Paws::Route53;
   warn "Paws::Route53 is not stable / supported / entirely developed";
   use Moose;
   sub service { 'route53' }
+  sub signing_name { 'route53' }
   sub version { '2013-04-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

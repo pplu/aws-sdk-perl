@@ -1,6 +1,7 @@
 package Paws::MigrationHub;
   use Moose;
   sub service { 'mgh' }
+  sub signing_name { 'mgh' }
   sub version { '2017-05-31' }
   sub target_prefix { 'AWSMigrationHub' }
   sub json_version { "1.1" }

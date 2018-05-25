@@ -1,6 +1,7 @@
 package Paws::ResourceGroups;
   use Moose;
   sub service { 'resource-groups' }
+  sub signing_name { 'resource-groups' }
   sub version { '2017-11-27' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

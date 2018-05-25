@@ -1,6 +1,7 @@
 package Paws::ResourceTagging;
   use Moose;
   sub service { 'tagging' }
+  sub signing_name { 'tagging' }
   sub version { '2017-01-26' }
   sub target_prefix { 'ResourceGroupsTaggingAPI_20170126' }
   sub json_version { "1.1" }

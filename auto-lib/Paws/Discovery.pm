@@ -1,6 +1,7 @@
 package Paws::Discovery;
   use Moose;
   sub service { 'discovery' }
+  sub signing_name { 'discovery' }
   sub version { '2015-11-01' }
   sub target_prefix { 'AWSPoseidonService_V2015_11_01' }
   sub json_version { "1.1" }

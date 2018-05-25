@@ -1,6 +1,7 @@
 package Paws::WorkDocs;
   use Moose;
   sub service { 'workdocs' }
+  sub signing_name { 'workdocs' }
   sub version { '2016-05-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

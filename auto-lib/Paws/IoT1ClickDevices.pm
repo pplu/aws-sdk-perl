@@ -1,6 +1,7 @@
 package Paws::IoT1ClickDevices;
   use Moose;
   sub service { 'devices.iot1click' }
+  sub signing_name { 'iot1click' }
   sub version { '2018-05-14' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

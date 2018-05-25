@@ -1,6 +1,7 @@
 package Paws::AlexaForBusiness;
   use Moose;
   sub service { 'a4b' }
+  sub signing_name { 'a4b' }
   sub version { '2017-11-09' }
   sub target_prefix { 'AlexaForBusiness' }
   sub json_version { "1.1" }

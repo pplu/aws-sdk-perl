@@ -1,6 +1,7 @@
 package Paws::SMS;
   use Moose;
   sub service { 'sms' }
+  sub signing_name { 'sms' }
   sub version { '2016-10-24' }
   sub target_prefix { 'AWSServerMigrationService_V2016_10_24' }
   sub json_version { "1.1" }

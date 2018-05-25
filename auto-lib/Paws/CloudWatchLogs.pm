@@ -1,6 +1,7 @@
 package Paws::CloudWatchLogs;
   use Moose;
   sub service { 'logs' }
+  sub signing_name { 'logs' }
   sub version { '2014-03-28' }
   sub target_prefix { 'Logs_20140328' }
   sub json_version { "1.1" }

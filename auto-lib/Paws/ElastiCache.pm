@@ -1,6 +1,7 @@
 package Paws::ElastiCache;
   use Moose;
   sub service { 'elasticache' }
+  sub signing_name { 'elasticache' }
   sub version { '2015-02-02' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

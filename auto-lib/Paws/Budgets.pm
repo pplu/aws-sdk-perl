@@ -1,6 +1,7 @@
 package Paws::Budgets;
   use Moose;
   sub service { 'budgets' }
+  sub signing_name { 'budgets' }
   sub version { '2016-10-20' }
   sub target_prefix { 'AWSBudgetServiceGateway' }
   sub json_version { "1.1" }

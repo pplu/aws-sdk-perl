@@ -1,6 +1,7 @@
 package Paws::CloudWatchEvents;
   use Moose;
   sub service { 'events' }
+  sub signing_name { 'events' }
   sub version { '2015-10-07' }
   sub target_prefix { 'AWSEvents' }
   sub json_version { "1.1" }

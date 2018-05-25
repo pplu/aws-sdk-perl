@@ -1,6 +1,7 @@
 package Paws::CodePipeline;
   use Moose;
   sub service { 'codepipeline' }
+  sub signing_name { 'codepipeline' }
   sub version { '2015-07-09' }
   sub target_prefix { 'CodePipeline_20150709' }
   sub json_version { "1.1" }

@@ -1,6 +1,7 @@
 package Paws::ECS;
   use Moose;
   sub service { 'ecs' }
+  sub signing_name { 'ecs' }
   sub version { '2014-11-13' }
   sub target_prefix { 'AmazonEC2ContainerServiceV20141113' }
   sub json_version { "1.1" }

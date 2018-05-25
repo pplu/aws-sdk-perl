@@ -1,6 +1,7 @@
 package Paws::Cloud9;
   use Moose;
   sub service { 'cloud9' }
+  sub signing_name { 'cloud9' }
   sub version { '2017-09-23' }
   sub target_prefix { 'AWSCloud9WorkspaceManagementService' }
   sub json_version { "1.1" }

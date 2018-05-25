@@ -1,6 +1,7 @@
 package Paws::ServiceCatalog;
   use Moose;
   sub service { 'servicecatalog' }
+  sub signing_name { 'servicecatalog' }
   sub version { '2015-12-10' }
   sub target_prefix { 'AWS242ServiceCatalogService' }
   sub json_version { "1.1" }

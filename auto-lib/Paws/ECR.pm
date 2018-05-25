@@ -1,6 +1,7 @@
 package Paws::ECR;
   use Moose;
   sub service { 'ecr' }
+  sub signing_name { 'ecr' }
   sub version { '2015-09-21' }
   sub target_prefix { 'AmazonEC2ContainerRegistry_V20150921' }
   sub json_version { "1.1" }

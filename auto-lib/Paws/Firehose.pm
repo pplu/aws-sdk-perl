@@ -1,6 +1,7 @@
 package Paws::Firehose;
   use Moose;
   sub service { 'firehose' }
+  sub signing_name { 'firehose' }
   sub version { '2015-08-04' }
   sub target_prefix { 'Firehose_20150804' }
   sub json_version { "1.1" }

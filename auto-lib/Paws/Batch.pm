@@ -1,6 +1,7 @@
 package Paws::Batch;
   use Moose;
   sub service { 'batch' }
+  sub signing_name { 'batch' }
   sub version { '2016-08-10' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
