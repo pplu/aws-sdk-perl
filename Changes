@@ -11,6 +11,8 @@
    TOC (castaway)
  - Json services will now return the code of the exception as the message of the exception if no message was found (instead
    of 'unrecognized error format')
+ - Some services were signing requests with the incorrect strings. Pricing, Opsworks, MarketplaceMetering, MarketplaceEntitlement,
+   MarketplaceCommerceAnalytics, DynamoDBStreams, CloudHSMv2, ApplicationAutoScaling and AutoScalingPlans now sign correctly. (autarch)
  - New API: Pricing
  - New API: CostExplorer
  - New API: Translate
