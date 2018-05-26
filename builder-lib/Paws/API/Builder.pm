@@ -7,12 +7,15 @@ package Paws::API::Builder {
   use Template;
   use File::Slurper 'read_binary';
   use JSON::MaybeXS;
+  use Scalar::Util;
   use Pod::Escapes();
   use Data::Munge;
-      
+  use Perl::Tidy;
+
   use v5.10;
 
-  use Paws::API::RegionBuilder; 
+  use Paws::API::RegionBuilder;
+  use Paws::API::ServiceToClass;
 
   has api => (is => 'ro', required => 1);
 
@@ -29,6 +32,12 @@ package Paws::API::Builder {
   has endpoint_role => (is => 'ro', lazy => 1, default => 'Paws::API::EndpointResolver' );
 
   has api_file => (is => 'ro', required => 1);
+
+  has api_ns => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    my ($service_dir) = ($self->api_file =~ m/data\/(.*?)\/.*?\/service-2.json/);
+    return Paws::API::ServiceToClass::service_to_class($service_dir);
+  });
 
   has template_path => (is => 'ro', required => 1);
 
@@ -95,6 +104,17 @@ package Paws::API::Builder {
   has encoders_struct => (is => 'ro', lazy => 1, default => sub {
     my $self = shift;
     return $self->_load_json_file($self->encoders_file)->{ encoding };
+  });
+
+  has example_file => (is => 'ro', lazy => 1, default => sub {
+    my $file = shift->api_file;
+    $file =~ s/\/service-2\./\/examples-1./;
+    return $file;
+  });
+
+  has example_struct => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    return $self->_load_json_file($self->example_file)->{ examples };
   });
 
   sub get_paginator_name {
@@ -477,6 +497,208 @@ package Paws::API::Builder {
     return $type;
   }
 
+  sub generate_example_code {
+    my ($self, $op_name) = @_;
+
+    my $out_shape = $self->shapename_for_operation_output($op_name);
+    my $inputs = $self->input_for_operation($op_name);
+
+    my $example_str = '';
+    if ($out_shape) {
+      $example_str .= "my \$${out_shape} = ";
+    }
+    $example_str .= "\$" . $self->service . "->" . $op_name . "(";
+
+    my @args = ();
+    my $shape_cache = {};
+    foreach my $input ( sort { $a cmp $b } (@{ $inputs->{ required } || [] }) ) {
+      push @args, "$input => " . ( $self->get_example_code( $inputs->{ members }{ $input }{ shape }, $shape_cache ) )[0];
+    }
+    $example_str .= join(",\n", @args);
+    $example_str .= ",\n" if @args;
+    @args = ();
+    foreach my $input ( sort { $a cmp $b } (@{ $self->optional_params_in_shape( $inputs ) } ) ) {
+      push @args, "$input => " . ( $self->get_example_code( $inputs->{ members }{ $input }{ shape }, $shape_cache ) )[0] . ', # OPTIONAL';
+    }
+    $example_str .= join("\n", @args);
+    $example_str .= "\n);";
+
+
+    return $self->perltidy_source( $example_str );
+  }
+
+  sub get_example_code {
+    my ($self, $shape_name, $cache, $depth, $optional) = @_;
+    $depth ||= 0;
+    $cache ||= {};
+
+    # Recursion exit - AttributeValue contains itself, so stop after 1
+    return @{ $cache->{ $shape_name } } if exists $cache->{ $shape_name };
+    $cache->{ $shape_name } = ["<$shape_name>",''];
+
+    my $shape = $self->shape($shape_name);
+
+    # Saftey net
+    return "<$shape_name>" if $depth >= 20;
+
+    my %simple_defaults = (
+      timestamp => qq{'1970-01-01T01:00:00'},
+      string    => qq{'My%s'},
+      double    => '1',
+      float     => '1.0',
+      long      => '1',
+      integer   => '1',
+      boolean   => '1',
+      blob      => qq{'Blob%s'},
+    );
+
+    my $example_str = '';
+    my $comment_str = '';
+
+    if (exists( $simple_defaults{ $shape->{ type } } ) ) {
+      $example_str = sprintf($simple_defaults{ $shape->{ type } }, $shape_name);
+      if ($shape->{ enum }) {
+        $comment_str .= 'values: ' . join(', ', @{ $shape->{ enum } });
+      }
+    } elsif ($shape->{ type } eq 'list' ) {
+        my ($inner_example_code, $comment) = $self->get_example_code($shape->{ member }->{ shape }, $cache, $depth+1);
+        $example_str = "[\n${inner_example_code}, ... ";
+        $example_str .= "# ${comment}" if ($comment);
+        $example_str .= "\n]";
+    }
+    elsif ($shape->{ type } eq 'structure') {
+      # Required items first:
+      my %struct = ( map { my $sub_shape = $shape->{ members }{$_}{ shape };
+                           $_ => [ $self->get_example_code($sub_shape, $cache, $depth+1)] } 
+                     (@{ $shape->{ required } }) );
+
+      my $req_struct_str = join("\n", map { "$_  => $struct{$_}[0], " . ($struct{$_}[1] ? "# $struct{$_}[1]" : "") } (keys %struct));
+
+
+      # Followed by optional:
+      %struct = ( map { my $sub_shape = $shape->{ members }{$_}{ shape };
+                           $_ => [ $self->get_example_code( $sub_shape, $cache, $depth+1, 1 ) ] } 
+                     (@{ $self->optional_params_in_shape( $shape, $cache )} ) );
+      my $opt_struct_str = join("\n", map { "$_   => $struct{$_}[0], " . ($struct{$_}[1] ? "# $struct{$_}[1]" : "") } (keys %struct));
+
+
+      $example_str = "{\n" 
+        . ($req_struct_str ? $req_struct_str . " \n": '')
+        .  $opt_struct_str ."\n}";
+    }
+    elsif ($shape->{ type } eq 'map') {
+      my ($key_code, $key_comment) = $self->get_example_code($shape->{ key }{ shape }, $cache, $depth+1 );
+      my ($value_code, $value_comment) = $self->get_example_code($shape->{ value }{ shape }, $cache, $depth+1 );
+
+      my $struct_str = "$key_code => $value_code,";
+      $struct_str .= " # key: $key_comment" if ($key_comment);
+      $struct_str .= " # " if (!$key_comment && $value_comment);
+      $struct_str .= ", value: $value_comment" if ($value_comment);
+
+      $example_str = "{\n${struct_str}\n}";
+    }
+
+    if (exists $shape->{ max } || exists $shape->{ min } ) {
+      if( $shape->{ min } ) {
+        $comment_str .= 'min: '. $shape->{ min } . ', ';
+      }
+      if( $shape->{ max } ) {
+        $comment_str .= 'max: '. $shape->{ max };
+      }
+    }
+
+    if ($optional) {
+      $comment_str .= ($comment_str ? '; ' : '') . 'OPTIONAL';
+    }
+
+    # Extra comma if this is a top level response:
+    if ($depth == 0) {
+      $example_str =~ s/,$//;
+    }
+
+    my $tidied_example = $self->perltidy_source($example_str);
+
+    $cache->{ $shape_name } = [ $tidied_example, $comment_str ];
+    return ($tidied_example, $comment_str);
+  }
+
+  sub create_example_from_file {
+    my ($self, $op_name) = @_;
+
+    my $out_shape_name = $self->shapename_for_operation_output($op_name);
+    my $out_shape = '';
+    if ($out_shape_name) {
+      $out_shape = $self->shape($out_shape_name);
+    }
+    my $example_str = '';
+    foreach my $ex (@{ $self->example_struct->{ $op_name } }) {
+      $example_str .= "# $ex->{title}\n";
+      $example_str .= "# $ex->{description}\n\n";
+      if ($out_shape) {
+        $example_str .= "my \$${out_shape_name} = ";
+      }
+      $example_str .= "\$" . $self->service . "->" . $op_name . "(";
+      $example_str .= $self->dump_perl($ex->{ input }, 1) if $ex->{ input } && %{ $ex->{ input } };
+      $example_str .= "\n});\n\n";
+
+      if ($out_shape) {
+        $example_str .= "# Results:\n";
+        $example_str .= "print \$${out_shape_name}->{$_};\n# " . $self->dump_perl($ex->{ output }{$_}, 1) . "\n" for keys( %{$ex->{ output }});
+        $example_str .= "\n\n";
+      }
+    }
+
+    my $tidied_example = $self->perltidy_source($example_str);
+
+    return $tidied_example;
+  }
+
+  sub dump_perl {
+    my ($self, $val, $depth, $is_key) = @_;
+
+    if (!ref $val) {
+      return $val
+        if (Scalar::Util::looks_like_number($val));
+
+      return qq{'} . ucfirst($val) . qq{'}
+        if ($is_key);
+
+      return qq{'$val'};
+    } elsif ( ref ($val) =~ /Boolean/) {
+      return "$val";
+    } elsif (ref $val eq 'ARRAY') {
+      return "\n[\n"
+        . join(",\n", (map { $self->dump_perl($_, $depth+1) } (@$val) ))
+        . "\n]";
+    } elsif( ref $val eq 'HASH' ) {
+      return "\n{\n"
+        . join(",\n", (map { $self->dump_perl($_, $depth+1, 1)
+                             . ' => '
+                             . $self->dump_perl($val->{$_}, $depth+1) }
+                                 (keys %$val) ))
+        . "\n}";
+
+    } else {
+      die "Tried to dump something strange when creating an example: $val ", ref $val;
+    }
+  }
+
+  sub perltidy_source {
+    my ($self, $source) = @_;
+    my $tidied_source = '';
+    my $tidy_error = '';
+
+    my $error_flag = Perl::Tidy::perltidy(
+      source => \$source,
+      destination => \$tidied_source,
+      errorfile => \$tidy_error,
+      argv => [],
+    );
+    chomp($tidied_source);
+
+    return $tidied_source;
+  }
+
   sub namespace_shape {
     my ($self, $shape) = @_;
     substr($shape,0,1) = uc(substr($shape,0,1));
@@ -490,7 +712,7 @@ package Paws::API::Builder {
     $string =~ s/($rekeys)/E<$char2names{$1}>/g;
     return $string;
   }
-  
+
   sub process_template {
     my ($self, $template, $vars) = @_;
     my $tt = Template->new(INCLUDE_PATH => $self->template_path,
@@ -507,15 +729,24 @@ package Paws::API::Builder {
     $self->validate_shapes;
 
     foreach my $shape_name ($self->shapes) {
-      $self->shape($shape_name)->{perl_type} = $self->get_caller_class_type($shape_name);
+      $self->shape($shape_name)->{ perl_type } = $self->get_caller_class_type($shape_name);
+      $self->shape($shape_name)->{ example_code } = ( $self->get_example_code($shape_name) )[0];
+
     }
 
     foreach my $op_name ($self->operations) {
+      my $op_example = '';
+      if ( -e $self->example_file ) {
+        $op_example = $self->create_example_from_file( $op_name );
+      }
+      if(!$op_example) {
+        $op_example = $self->generate_example_code( $op_name );
+      }
       if (defined $self->operation($op_name)->{name}) {
         my $class_name = $self->namespace_shape($op_name);
         my $output = $self->process_template(
           'callargs_class.tt',
-          { c => $self, op_name => $op_name }
+          { c => $self, op_name => $op_name, synopsis => $op_example  }
         );
         $self->save_class($class_name, $output);
       }
