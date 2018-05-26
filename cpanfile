@@ -58,7 +58,7 @@ on 'develop' => sub {
   requires 'Furl';
 };
 on 'test' => sub {
-  requires 'File::Slurper';
+  requires 'Path::Class';
   requires 'YAML';
   requires 'Test::More';
   requires 'Test::Timer';

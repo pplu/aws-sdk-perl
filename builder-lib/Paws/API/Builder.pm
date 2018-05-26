@@ -5,7 +5,7 @@ package Paws::API::Builder {
   use Data::Dumper;
   use Data::Printer;
   use Template;
-  use File::Slurper 'read_binary';
+  use Path::Class;
   use JSON::MaybeXS;
   use Mojo::UserAgent;
   use v5.10;
@@ -97,30 +97,16 @@ package Paws::API::Builder {
 
   has service_url => (is => 'ro', lazy => 1, default => sub {
     my $self = shift;
-
-    my $override = $self->service_url_overrides->{ $self->service };
-    if (defined $override) {
-      if ($self->is_url_working($override)) {
-        return $override;
-      } else {
-        die "Looks like documentation for " . $self->service . " has disappeared";
-      }
-    }
-
-    my $goto_url = 'https://docs.aws.amazon.com/goto/WebAPI/';
-    my $goto_service_url = $goto_url . $self->service . '-' . $self->version;
-    if ($self->is_url_not_base_redirect($goto_service_url)) {
-      return $goto_service_url;
-    }
-
-    my $url = 'https://aws.amazon.com/documentation/';
-    my $service_url = $url . $self->service;
-    if ($self->is_url_working($service_url)) {
-      return $service_url;
+    if (defined $self->documentation_struct->{ api_url }){
+      return $self->documentation_struct->{ api_url };
     } else {
-      warn "Using default url for '" . $self->service . "' " . $self->service_full_name;
-      return $url;
+      return 'https://aws.amazon.com/documentation/';
     }
+  });
+
+  has operation_urls => (is => 'ro', isa => 'HashRef[Str]', lazy => 1, default => sub {
+    my $self = shift;
+    $self->documentation_struct->{ methods };
   });
 
   has api_struct => (is => 'ro', lazy => 1, default => sub {
@@ -187,6 +173,30 @@ package Paws::API::Builder {
     my $self = shift;
     return $self->_load_json_file($self->encoders_file)->{ encoding };
   });
+
+  has documentation_file => (is => 'ro', lazy => 1, default => sub {
+    my $file = shift->api_file;
+    $file =~ s/\/service-2\./\/documentation-1./;
+    return Path::Class::File->new($file);
+  });
+
+  has documentation_struct => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    return $self->_load_json_file($self->documentation_file)->{ documentation };
+  });
+
+  sub write_documentation_file {
+    my ($self) = @_;
+    my $json = JSON::MaybeXS->new(utf8 => 1, pretty => 1, canonical => 1);
+    $self->documentation_file->spew($json->encode(
+      {
+        documentation => {
+          api_url => $self->_get_service_url,
+          methods => $self->_get_method_urls,
+        }
+      }
+    ));
+  }
 
   sub get_paginator_name {
     my ($self,$name) = @_;
@@ -410,9 +420,10 @@ package Paws::API::Builder {
   has flattened_arrays => (is => 'rw', isa => 'Bool', default => sub { 0 });
 
   sub _load_json_file {
-    my ($self,$file) = @_;
+    my ($self, $file) = @_;
     return {} if (not -e $file);
-    return decode_json(read_binary($file));
+    my $f = Path::Class::File->new($file);
+    return decode_json($f->slurp);
   }
 
   sub required_in_shape {
@@ -591,9 +602,34 @@ package Paws::API::Builder {
     return $output;
   }
 
+  sub _get_service_url {
+    my $self = shift;
+    my $override = $self->service_url_overrides->{ $self->service };
+    if (defined $override) {
+      if ($self->is_url_working($override)) {
+        return $override;
+      } else {
+        die "Looks like documentation for " . $self->service . " has disappeared";
+      }
+    }
+
+    my $goto_url = 'https://docs.aws.amazon.com/goto/WebAPI/';
+    my $goto_service_url = $goto_url . $self->service . '-' . $self->version;
+    if ($self->is_url_not_base_redirect($goto_service_url)) {
+      return $goto_service_url;
+    }
+
+    my $service_url = 'https://aws.amazon.com/documentation/' . $self->service;
+    if ($self->is_url_working($service_url)) {
+      return $service_url;
+    }
+    
+    return undef;
+  }
+
   use Future::Utils qw(fmap_scalar);
   use Mojo::Promise::Role::Futurify;
-  has operation_urls => (is => 'ro', isa => 'HashRef[Str]', lazy => 1, default => sub {
+  sub _get_method_urls {
     my $self = shift;
     my $ua = Mojo::UserAgent->new;
 
@@ -610,21 +646,18 @@ package Paws::API::Builder {
       $ua->max_redirects(5)->head_p( $op_url )->then(sub {
         my $res = shift;
         if ($res->req->url->to_string ne 'https://aws.amazon.com/documentation/') {
-          print "Got $op_url for $op_name\n";
           $urls->{ $op_name } = $op_url;
-        } else {
-          warn "Using default url for '" . $op_name;
-        }
+        } 
       })->with_roles('+Futurify')->futurify
     } foreach => \@op_urls, concurrent => 10;
 
     Future->wait_all(@results)->get;
     return $urls;
-  });
+  }
 
   sub operation_aws_url {
     my ($self, $op_name) = @_;
-    return $self->operation_urls->{ $op_name };
+    return $self->operation_urls->{ $op_name } // $self->service_url;
   };
 
   sub process_api {
