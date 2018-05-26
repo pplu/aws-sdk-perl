@@ -556,7 +556,12 @@ package Paws::API::Builder {
     my $comment_str = '';
 
     if (exists( $simple_defaults{ $shape->{ type } } ) ) {
-      $example_str = sprintf($simple_defaults{ $shape->{ type } }, $shape_name);
+      {
+        # sprintfs without %s are warning about extra arguments. Most simple_defaults
+        # don't have a %s in them
+        no warnings;
+        $example_str = sprintf($simple_defaults{ $shape->{ type } }, $shape_name);
+      }
       if ($shape->{ enum }) {
         $comment_str .= 'values: ' . join(', ', @{ $shape->{ enum } });
       }
