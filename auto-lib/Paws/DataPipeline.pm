@@ -235,6 +235,8 @@ progress to the web service as it does so. When the task is done, the
 task runner reports the final success or failure of the task to the web
 service.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29>
+
 =head1 METHODS
 
 =head2 ActivatePipeline

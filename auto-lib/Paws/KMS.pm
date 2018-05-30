@@ -420,6 +420,8 @@ GenerateDataKeyWithoutPlaintext
 =back
 
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01>
+
 =head1 METHODS
 
 =head2 CancelKeyDeletion

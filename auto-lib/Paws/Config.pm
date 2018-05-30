@@ -449,6 +449,8 @@ Console, see What Is AWS Config
 (http://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html)
 in the I<AWS Config Developer Guide>.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12>
+
 =head1 METHODS
 
 =head2 BatchGetResourceConfig

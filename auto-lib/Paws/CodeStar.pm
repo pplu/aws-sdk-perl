@@ -238,6 +238,8 @@ C<UpdateUserProfile>, which updates the profile for a user.
 =back
 
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19>
+
 =head1 METHODS
 
 =head2 AssociateTeamMember

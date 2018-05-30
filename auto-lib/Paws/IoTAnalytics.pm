@@ -224,6 +224,8 @@ common IoT use cases so you can answer questions like which devices are
 about to fail or which customers are at risk of abandoning their
 wearable devices.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iotanalytics-2017-11-27>
+
 =head1 METHODS
 
 =head2 BatchPutMessage

@@ -4,7 +4,7 @@ package Paws::API::RegionBuilder {
   use JSON::MaybeXS;
   use Data::Dumper;
   use Template;
-  use File::Slurper 'read_text';
+  use Path::Class;
 
   has rules =>   (is => 'rw', isa => 'Str', required => 1);
   has service => (is => 'ro', isa => 'Str', required => 1);
@@ -14,8 +14,8 @@ package Paws::API::RegionBuilder {
     lazy => 1,
     default => sub {
       my $self = shift;
-      my $json = read_text($self->rules);
-      return decode_json($json)->{ $self->service };
+      my $f = Path::Class::File->new($self->rules);
+      return decode_json($f->slurp)->{ $self->service };
     }
   );
 

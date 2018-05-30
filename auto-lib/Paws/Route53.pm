@@ -437,6 +437,8 @@ of the locations of Amazon Route 53 DNS servers, see The Amazon Route
 53 Global Network (http://aws.amazon.com/route53/#details) on the
 Amazon Route 53 detail page.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01>
+
 =head1 METHODS
 
 =head2 AssociateVPCWithHostedZone

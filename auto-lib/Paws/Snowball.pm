@@ -188,6 +188,8 @@ client or the Amazon S3 API adapter for Snowball. For more information,
 see the User Guide
 (http://docs.aws.amazon.com/AWSImportExport/latest/ug/api-reference.html).
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30>
+
 =head1 METHODS
 
 =head2 CancelCluster

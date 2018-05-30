@@ -363,6 +363,8 @@ performance. All of your data is stored on solid state disks (SSDs) and
 automatically replicated across multiple Availability Zones in an AWS
 region, providing built-in high availability and data durability.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10>
+
 =head1 METHODS
 
 =head2 BatchGetItem

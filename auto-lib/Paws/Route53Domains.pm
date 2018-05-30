@@ -215,6 +215,8 @@ Paws::Route53Domains - Perl Interface to AWS Amazon Route 53 Domains
 Amazon Route 53 API actions let you register domain names and perform
 related operations.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15>
+
 =head1 METHODS
 
 =head2 CheckDomainAvailability

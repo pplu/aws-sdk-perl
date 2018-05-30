@@ -691,6 +691,8 @@ including how to turn it on and find your log files, see the AWS
 CloudTrail User Guide
 (http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28>
+
 =head1 METHODS
 
 =head2 AcceptHandshake

@@ -234,6 +234,8 @@ can monitor your own custom metrics. With CloudWatch, you gain
 system-wide visibility into resource utilization, application
 performance, and operational health.
 
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/cloudwatch/>
+
 =head1 METHODS
 
 =head2 DeleteAlarms

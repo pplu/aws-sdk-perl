@@ -101,6 +101,8 @@ obtain a CustomerIdentifier and Product Code.
 =back
 
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/marketplacemetering/latest/APIReference/Welcome.html>
+
 =head1 METHODS
 
 =head2 BatchMeterUsage

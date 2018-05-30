@@ -18,6 +18,8 @@ As an example:
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
+[%- aws_url = c.operation_aws_url(op_name); IF (aws_url.defined) %]For the AWS API documentation, see L<[% aws_url %]>[% END -%]
+
 =head1 ATTRIBUTES
 
 [% FOREACH param_name IN shape.members.keys.sort -%]

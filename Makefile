@@ -19,12 +19,15 @@ pull-boto-develop:
 	cd botocore && git pull boto develop
 
 gen-paws:
-	ONLY_PAWS=1 carton exec ./gen_classes.pl
+	carton exec ./builder-bin/gen_classes.pl --paws_pm
 
 gen-classes:
 	mkdir auto-lib/Paws/DeleteMe
 	rm -r auto-lib/Paws/*
-	./gen_classes.pl
+	./builder-bin/gen_classes.pl --paws_pm --classes
+
+docu-links:
+	./builder-bin/gen_classes.pl --docu_links
 
 copy-tests:
 	cp botocore/tests/unit/response_parsing/xml/responses/* t/10_responses/

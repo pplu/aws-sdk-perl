@@ -5,14 +5,15 @@ package Paws::API::Builder {
   use Data::Dumper;
   use Data::Printer;
   use Template;
-  use File::Slurper 'read_binary';
+  use Path::Class;
   use JSON::MaybeXS;
+  use Mojo::UserAgent;
   use Pod::Escapes();
   use Data::Munge;
       
   use v5.10;
 
-  use Paws::API::RegionBuilder; 
+  use Paws::API::RegionBuilder;
 
   has api => (is => 'ro', required => 1);
 
@@ -23,6 +24,7 @@ package Paws::API::Builder {
     return $svc;
   }
 
+  has service_full_name => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ serviceFullName } });
   has service => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ endpointPrefix } });
   has signing_name => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ signingName } // $_[0]->api_struct->{metadata}->{ endpointPrefix } });
   has version => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ apiVersion } });
@@ -31,6 +33,85 @@ package Paws::API::Builder {
   has api_file => (is => 'ro', required => 1);
 
   has template_path => (is => 'ro', required => 1);
+
+  has service_url_overrides => (is => 'ro', isa => 'HashRef', default => sub { {
+    mq => 'https://aws.amazon.com/documentation/amazon-mq/',
+    email => 'https://aws.amazon.com/documentation/ses/',
+    es => 'https://aws.amazon.com/documentation/elasticsearch-service/',
+    support => 'https://aws.amazon.com/documentation/aws-support/',
+    sts => 'https://aws.amazon.com/documentation/iam/',
+    states => 'https://aws.amazon.com/documentation/step-functions/',
+   'opsworks-cm' => 'https://aws.amazon.com/documentation/opsworks/',
+    monitoring => 'https://aws.amazon.com/documentation/cloudwatch/',
+    events => 'https://aws.amazon.com/documentation/cloudwatch/',
+    logs => 'https://aws.amazon.com/documentation/cloudwatch/',
+   'cognito-identity' => 'https://aws.amazon.com/documentation/cognito/',
+   'cognito-idp' => 'https://aws.amazon.com/documentation/cognito/',
+   'cognito-sync' => 'https://aws.amazon.com/documentation/cognito/',
+   'api.pricing' => 'https://aws.amazon.com/documentation/account-billing/',
+    ce => 'https://aws.amazon.com/documentation/account-billing/',
+    budgets => 'https://aws.amazon.com/documentation/account-billing/',
+    greengrass => 'https://aws.amazon.com/documentation/greengrass/',
+    glacier => 'https://aws.amazon.com/documentation/glacier/',
+    apigateway => 'https://aws.amazon.com/documentation/apigateway/',
+   'streams.dynamodb' => 'https://aws.amazon.com/documentation/dynamodb/',
+    lex => 'https://aws.amazon.com/documentation/lex/',
+   'models.lex' => 'https://aws.amazon.com/documentation/lex/',
+   'entitlement.marketplace' => 'https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/Welcome.html',
+    marketplacecommerceanalytics => 'https://docs.aws.amazon.com/marketplace/latest/userguide/commerce-analytics-service.html',
+   'data.mediastore' => 'https://aws.amazon.com/documentation/mediastore/',
+   'metering.marketplace' => 'https://docs.aws.amazon.com/marketplacemetering/latest/APIReference/Welcome.html',
+    mgh => 'https://aws.amazon.com/documentation/migrationhub/',
+    mobile => 'https://aws.amazon.com/documentation/mobile-hub/',
+   'mturk-requester' => 'https://aws.amazon.com/documentation/mturk/',
+    tagging => 'https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html',
+    sdb => 'https://aws.amazon.com/documentation/simpledb/',
+    clouddirectory => 'https://aws.amazon.com/documentation/directory-service/',
+    cloudsearchdomain => 'https://aws.amazon.com/documentation/cloudsearch/',
+    'data.iot' => 'https://aws.amazon.com/documentation/iot/',
+    'data.jobs.iot' => 'https://aws.amazon.com/documentation/iot/',
+    cur => 'https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html',
+  } });
+
+  has operation_url_overrides => (is => 'ro', isa => 'HashRef', default => sub { {
+   'opsworks-cm' => 'https://docs.aws.amazon.com/opsworks-cm/latest/APIReference/API_',
+  } });
+
+  sub is_url_working {
+    my ($self, $url) = @_;
+    my $ua = Mojo::UserAgent->new;
+    my $res = $ua->head($url)->result;
+    if ($res->is_success) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  sub is_url_not_base_redirect {
+    my ($self, $url) = @_;
+    my $ua = Mojo::UserAgent->new;
+    my $res = $ua->max_redirects(5)->head($url)->req->url->to_string;
+    if ($res ne 'https://aws.amazon.com/documentation/') {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  has service_url => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    if (defined $self->documentation_struct->{ api_url }){
+      return $self->documentation_struct->{ api_url };
+    } else {
+      return 'https://aws.amazon.com/documentation/';
+    }
+  });
+
+  has operation_urls => (is => 'ro', isa => 'HashRef[Str]', lazy => 1, default => sub {
+    my $self = shift;
+    $self->documentation_struct->{ methods };
+  });
 
   has api_struct => (is => 'ro', lazy => 1, default => sub {
     my $self = shift;
@@ -97,6 +178,30 @@ package Paws::API::Builder {
     return $self->_load_json_file($self->encoders_file)->{ encoding };
   });
 
+  has documentation_file => (is => 'ro', lazy => 1, default => sub {
+    my $file = shift->api_file;
+    $file =~ s/\/service-2\./\/documentation-1./;
+    return Path::Class::File->new($file);
+  });
+
+  has documentation_struct => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    return $self->_load_json_file($self->documentation_file)->{ documentation };
+  });
+
+  sub write_documentation_file {
+    my ($self) = @_;
+    my $json = JSON::MaybeXS->new(utf8 => 1, pretty => 1, canonical => 1);
+    $self->documentation_file->spew($json->encode(
+      {
+        documentation => {
+          api_url => $self->_get_service_url,
+          methods => $self->_get_method_urls,
+        }
+      }
+    ));
+  }
+
   sub get_paginator_name {
     my ($self,$name) = @_;
     return $name if ($name =~ s/^Describe/DescribeAll/);
@@ -123,20 +228,20 @@ package Paws::API::Builder {
   has enums => (is => 'rw', isa => 'HashRef', default => sub { {} });
 
   has signature_role => (
-    is => 'ro', 
-    lazy => 1, 
-    default => sub { 
-      sprintf "Paws::Net::%sSignature", uc $_[0]->api_struct->{metadata}{signatureVersion} 
-    } 
+    is => 'ro',
+    lazy => 1,
+    default => sub {
+      sprintf "Paws::Net::%sSignature", uc $_[0]->api_struct->{metadata}{signatureVersion}
+    }
   );
 
   has parameter_role => (
-    is => 'ro', 
-    lazy => 1, 
-    default => sub { 
-      my $type = $_[0]->api_struct->{metadata}->{protocol}; 
-      substr($type,0,1) = uc substr($type,0,1); 
-      return "Paws::Net::${type}Caller" 
+    is => 'ro',
+    lazy => 1,
+    default => sub {
+      my $type = $_[0]->api_struct->{metadata}->{protocol};
+      substr($type,0,1) = uc substr($type,0,1);
+      return "Paws::Net::${type}Caller"
     },
   );
 
@@ -144,18 +249,18 @@ package Paws::API::Builder {
     'botocore/botocore/data/_endpoints.json';
   });
 
-  has service_endpoint_rules => (is => 'ro', lazy => 1, default => sub { 
-    my $self = shift; 
-    my $s = Paws::API::RegionBuilder->new( 
-      rules    => $self->endpoints_file, 
-      service  => $self->service, 
-    ); 
-    $s->region_accessor; 
+  has service_endpoint_rules => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    my $s = Paws::API::RegionBuilder->new(
+      rules    => $self->endpoints_file,
+      service  => $self->service,
+    );
+    $s->region_accessor;
   });
 
   has operations_struct => (
-    is => 'ro', 
-    lazy => 1, 
+    is => 'ro',
+    lazy => 1,
     default => sub { $_[0]->api_struct->{operations} },
     isa => 'HashRef',
     traits => [ 'Hash' ],
@@ -169,7 +274,7 @@ package Paws::API::Builder {
   has shape_struct => (
     is => 'ro',
     lazy => 1,
-    default => sub { 
+    default => sub {
       my $self = shift;
       my $shapes = $self->api_struct->{shapes};
       return $shapes;
@@ -283,7 +388,7 @@ package Paws::API::Builder {
     is => 'ro',
     lazy => 1,
     isa => 'HashRef',
-    default => sub { 
+    default => sub {
       my $self = shift;
       my $ret = {};
       foreach my $shape_name ($self->shapes) {
@@ -310,9 +415,10 @@ package Paws::API::Builder {
   has flattened_arrays => (is => 'rw', isa => 'Bool', default => sub { 0 });
 
   sub _load_json_file {
-    my ($self,$file) = @_;
+    my ($self, $file) = @_;
     return {} if (not -e $file);
-    return decode_json(read_binary($file));
+    my $f = Path::Class::File->new($file);
+    return decode_json($f->slurp);
   }
 
   sub required_in_shape {
@@ -335,7 +441,7 @@ package Paws::API::Builder {
     return if (not $op);
 
     my $shape = $op->{ output }->{ shape };
-    return $shape;    
+    return $shape;
   }
 
   sub result_for_operation {
@@ -354,7 +460,7 @@ package Paws::API::Builder {
     return if (not $op);
 
     my $shape = $op->{ input }->{ shape };
-    return $shape;  
+    return $shape;
   }
 
   sub input_for_operation {
@@ -500,6 +606,64 @@ package Paws::API::Builder {
     return $output;
   }
 
+  sub _get_service_url {
+    my $self = shift;
+    my $override = $self->service_url_overrides->{ $self->service };
+    if (defined $override) {
+      if ($self->is_url_working($override)) {
+        return $override;
+      } else {
+        die "Looks like documentation for " . $self->service . " has disappeared";
+      }
+    }
+
+    my $goto_url = 'https://docs.aws.amazon.com/goto/WebAPI/';
+    my $goto_service_url = $goto_url . $self->service . '-' . $self->version;
+    if ($self->is_url_not_base_redirect($goto_service_url)) {
+      return $goto_service_url;
+    }
+
+    my $service_url = 'https://aws.amazon.com/documentation/' . $self->service;
+    if ($self->is_url_working($service_url)) {
+      return $service_url;
+    }
+    
+    return undef;
+  }
+
+  use Future::Utils qw(fmap_scalar);
+  use Mojo::Promise::Role::Futurify;
+  sub _get_method_urls {
+    my $self = shift;
+    my $ua = Mojo::UserAgent->new;
+
+    my $override = $self->operation_url_overrides->{ $self->service };
+    my $goto_url = 'https://docs.aws.amazon.com/goto/WebAPI/';
+    my $urls = {};
+    my @op_urls = $self->operations;
+
+    my @results = fmap_scalar {
+      my $op_name = shift;
+      my $op_url = defined($override)
+        ? $override . $op_name . '.html'
+        : $goto_url . $self->service . '/' . $op_name;
+      $ua->max_redirects(5)->head_p( $op_url )->then(sub {
+        my $res = shift;
+        if ($res->req->url->to_string ne 'https://aws.amazon.com/documentation/') {
+          $urls->{ $op_name } = $op_url;
+        } 
+      })->with_roles('+Futurify')->futurify
+    } foreach => \@op_urls, concurrent => 10;
+
+    Future->wait_all(@results)->get;
+    return $urls;
+  }
+
+  sub operation_aws_url {
+    my ($self, $op_name) = @_;
+    return $self->operation_urls->{ $op_name } // $self->service_url;
+  };
+
   sub process_api {
     my $self = shift;
     my $output = '';
@@ -563,7 +727,7 @@ package Paws::API::Builder {
       return $type;
     } else {
       return "L<$type>" if ($type =~ m/\:\:/);
-      return $type;  
+      return $type;
     }
   }
 
@@ -631,12 +795,12 @@ package Paws::API::Builder {
 
   sub paginator_accessor {
     my ($self, $accessor, $wanted_prefix) = @_;
-  
+
     my $prefix = '$' . ((defined $wanted_prefix) ? $wanted_prefix : 'result');
     if (ref($accessor) eq 'ARRAY'){
       warn "Complex accessor ", join ',', @$accessor;
     }
- 
+
     if ($accessor =~ m/ /) {
       warn "Complex accessor $accessor";
     }
@@ -701,7 +865,7 @@ package Paws::API::Builder {
         $self->process_template('map_str_to_native.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => 'HashRef[Num]' });
       } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'list') {
         my $type = $self->get_caller_class_type($iclass->{value}->{shape});
-        
+
         #Sometimes it's a list of objects, and sometimes it's a list of native things
         my $inner_shape = $self->shape($values_shape->{member}->{shape});
 

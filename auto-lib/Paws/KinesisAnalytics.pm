@@ -133,6 +133,8 @@ Paws::KinesisAnalytics - Perl Interface to AWS Amazon Kinesis Analytics
 
 
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14>
+
 =head1 METHODS
 
 =head2 AddApplicationCloudWatchLoggingOption

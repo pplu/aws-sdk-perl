@@ -311,6 +311,8 @@ supports, go to Regions and Endpoints
 (http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region)
 in the I<Amazon Web Services Glossary>.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01>
+
 =head1 METHODS
 
 =head2 AbortEnvironmentUpdate

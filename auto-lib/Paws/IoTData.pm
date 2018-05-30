@@ -75,6 +75,8 @@ retrieve, update, and delete thing shadows. A thing shadow is a
 persistent representation of your things and their state in the AWS
 cloud.
 
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/iot/>
+
 =head1 METHODS
 
 =head2 DeleteThingShadow
