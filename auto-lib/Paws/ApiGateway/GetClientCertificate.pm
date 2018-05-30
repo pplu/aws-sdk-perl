@@ -1,7 +1,7 @@
 
 package Paws::ApiGateway::GetClientCertificate;
   use Moose;
-  has ClientCertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'clientCertificateId', required => 1);
+  has ClientCertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'clientcertificate_id', required => 1);
 
   use MooseX::ClassAttribute;
 

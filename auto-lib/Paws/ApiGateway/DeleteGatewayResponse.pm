@@ -1,8 +1,8 @@
 
 package Paws::ApiGateway::DeleteGatewayResponse;
   use Moose;
-  has ResponseType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'responseType', required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has ResponseType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'response_type', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
 
   use MooseX::ClassAttribute;
 

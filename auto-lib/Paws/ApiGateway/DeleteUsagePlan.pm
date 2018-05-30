@@ -1,7 +1,7 @@
 
 package Paws::ApiGateway::DeleteUsagePlan;
   use Moose;
-  has UsagePlanId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'usagePlanId', required => 1);
+  has UsagePlanId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'usageplanId', required => 1);
 
   use MooseX::ClassAttribute;
 

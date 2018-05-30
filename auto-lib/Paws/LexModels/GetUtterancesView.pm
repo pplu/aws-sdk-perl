@@ -1,9 +1,9 @@
 
 package Paws::LexModels::GetUtterancesView;
   use Moose;
-  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName', required => 1);
-  has BotVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'botVersions', required => 1);
-  has StatusType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'statusType', required => 1);
+  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botname', required => 1);
+  has BotVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'bot_versions', required => 1);
+  has StatusType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'status_type', required => 1);
 
   use MooseX::ClassAttribute;
 

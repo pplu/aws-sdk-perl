@@ -375,7 +375,7 @@ package Paws::API::Builder {
       foreach my $member (keys %{ $shape->{ members } }){
         next if ($member =~ m/^[A-Z]/); # if we already start with capital, don't touch
         my $s = delete $shape->{ members }->{ $member };
-        $s->{ locationName } = $member;
+        $s->{ locationName } = $member if (not defined $s->{ locationName });
         $shape->{ members }->{ $self->capitalize($member) } = $s;
       }
       $shape->{ required } = [ map { $self->capitalize($_) } @{ $shape->{ required } } ];

@@ -3,7 +3,7 @@ package Paws::Glacier::GetJobOutput;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
   has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId', required => 1);
-  has Range => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'range');
+  has Range => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Range');
   has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName', required => 1);
 
   use MooseX::ClassAttribute;

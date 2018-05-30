@@ -2,7 +2,7 @@
 package Paws::IoT::AttachPrincipalPolicy;
   use Moose;
   has PolicyName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyName', required => 1);
-  has Principal => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'principal', required => 1);
+  has Principal => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amzn-iot-principal', required => 1);
 
   use MooseX::ClassAttribute;
 

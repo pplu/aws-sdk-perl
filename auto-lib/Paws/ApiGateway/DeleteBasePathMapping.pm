@@ -1,8 +1,8 @@
 
 package Paws::ApiGateway::DeleteBasePathMapping;
   use Moose;
-  has BasePath => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'basePath', required => 1);
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domainName', required => 1);
+  has BasePath => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'base_path', required => 1);
+  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domain_name', required => 1);
 
   use MooseX::ClassAttribute;
 

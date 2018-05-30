@@ -2,8 +2,8 @@
 package Paws::ApiGateway::GetModel;
   use Moose;
   has Flatten => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'flatten');
-  has ModelName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'modelName', required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has ModelName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'model_name', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
 
   use MooseX::ClassAttribute;
 

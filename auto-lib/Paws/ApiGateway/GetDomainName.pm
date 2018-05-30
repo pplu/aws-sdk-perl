@@ -1,7 +1,7 @@
 
 package Paws::ApiGateway::GetDomainName;
   use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domainName', required => 1);
+  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domain_name', required => 1);
 
   use MooseX::ClassAttribute;
 

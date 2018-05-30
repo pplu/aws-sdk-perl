@@ -1,7 +1,7 @@
 
 package Paws::ApiGateway::DeleteApiKey;
   use Moose;
-  has ApiKey => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiKey', required => 1);
+  has ApiKey => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'api_Key', required => 1);
 
   use MooseX::ClassAttribute;
 

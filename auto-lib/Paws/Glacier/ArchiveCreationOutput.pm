@@ -1,9 +1,9 @@
 
 package Paws::Glacier::ArchiveCreationOutput;
   use Moose;
-  has ArchiveId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'archiveId');
-  has Checksum => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'checksum');
-  has Location => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'location');
+  has ArchiveId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-archive-id');
+  has Checksum => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-sha256-tree-hash');
+  has Location => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Location');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
