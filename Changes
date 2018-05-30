@@ -35,6 +35,7 @@
  - New API: SecretsManager
  - New API: IoTAnalytics
  - New APIs: IoT1ClickDevices and IOT1ClickProjects
+ - New API: PerformanceInsights
  - API updates for any service up to the date of release
 
 0.36 03 Nov 2017

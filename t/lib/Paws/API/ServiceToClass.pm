@@ -110,6 +110,7 @@ package Paws::API::ServiceToClass;
     opsworks => 'OpsWorks',
     opsworkscm => 'OpsWorksCM',
     organizations => 'Organizations',
+    pi => 'PerformanceInsights',
     pinpoint => 'Pinpoint',
     pricing => 'Pricing',
     polly => 'Polly',

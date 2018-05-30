@@ -442,6 +442,8 @@ L<Paws::OpsWorksCM>
 
 L<Paws::Organizations>
 
+L<Paws::PerformanceInsights>
+
 L<Paws::Pinpoint>
 
 L<Paws::Polly>
