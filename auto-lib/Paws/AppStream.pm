@@ -386,6 +386,8 @@ Creates a URL to start an image builder streaming session.
 
 =item [StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]]
 
+=item [UserSettings => ArrayRef[L<Paws::AppStream::UserSetting>]]
+
 
 =back
 
@@ -926,6 +928,8 @@ fleet is in the C<STARTING> or C<STOPPING> state, you can't update it.
 =item [RedirectURL => Str]
 
 =item [StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]]
+
+=item [UserSettings => ArrayRef[L<Paws::AppStream::UserSetting>]]
 
 
 =back

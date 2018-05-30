@@ -7,6 +7,7 @@ package Paws::AppStream::CreateStack;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has RedirectURL => (is => 'ro', isa => 'Str');
   has StorageConnectors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::StorageConnector]');
+  has UserSettings => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::UserSetting]');
 
   use MooseX::ClassAttribute;
 
@@ -73,6 +74,13 @@ ends.
 =head2 StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]
 
 The storage connectors to enable.
+
+
+
+=head2 UserSettings => ArrayRef[L<Paws::AppStream::UserSetting>]
+
+The actions that are enabled or disabled for users during their
+streaming sessions. By default, these actions are enabled.
 
 
 
