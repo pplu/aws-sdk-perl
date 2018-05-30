@@ -737,6 +737,8 @@ Guide (http://docs.aws.amazon.com/redshift/latest/dg/welcome.html)
 explains how to design, build, query, and maintain the databases that
 make up your data warehouse.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01>
+
 =head1 METHODS
 
 =head2 AuthorizeClusterSecurityGroupIngress

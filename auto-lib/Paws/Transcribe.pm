@@ -88,6 +88,8 @@ Paws::Transcribe - Perl Interface to AWS Amazon Transcribe Service
 
 Operations and objects for transcribing speech to text.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26>
+
 =head1 METHODS
 
 =head2 CreateVocabulary

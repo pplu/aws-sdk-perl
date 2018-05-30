@@ -361,6 +361,8 @@ All Elastic Load Balancing operations are idempotent, which means that
 they complete at most one time. If you repeat an operation, it
 succeeds.
 
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+
 =head1 METHODS
 
 =head2 AddListenerCertificates

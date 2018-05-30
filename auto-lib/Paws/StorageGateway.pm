@@ -578,6 +578,8 @@ For more information, see Announcement: Heads-up E<ndash> Longer AWS
 Storage Gateway volume and snapshot IDs coming in 2016
 (https://forums.aws.amazon.com/ann.jspa?annID=3557).
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30>
+
 =head1 METHODS
 
 =head2 ActivateGateway

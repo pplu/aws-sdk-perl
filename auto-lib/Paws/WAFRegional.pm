@@ -424,6 +424,8 @@ about AWS WAF features and an overview of how to use the AWS WAF API,
 see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28>
+
 =head1 METHODS
 
 =head2 AssociateWebACL

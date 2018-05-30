@@ -85,6 +85,8 @@ scaling policies adjust the capacity of your scalable resource as
 required to maintain resource utilization at the target value that you
 specified.
 
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+
 =head1 METHODS
 
 =head2 CreateScalingPlan

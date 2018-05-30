@@ -228,6 +228,8 @@ Searching AWS resources based on a resource query
 =back
 
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/resource-groups-2017-11-27>
+
 =head1 METHODS
 
 =head2 CreateGroup

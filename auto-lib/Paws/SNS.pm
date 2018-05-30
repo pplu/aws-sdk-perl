@@ -328,6 +328,8 @@ your service requests, retrying requests, and handling error responses.
 For a list of available SDKs, go to Tools for Amazon Web Services
 (http://aws.amazon.com/tools/).
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31>
+
 =head1 METHODS
 
 =head2 AddPermission

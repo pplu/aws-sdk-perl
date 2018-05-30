@@ -158,6 +158,8 @@ an optional audit report that lists every time the CA private key is
 used. The private key is used for signing when the B<IssueCertificate>
 or B<RevokeCertificate> function is called.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm-pca-2017-08-22>
+
 =head1 METHODS
 
 =head2 CreateCertificateAuthority

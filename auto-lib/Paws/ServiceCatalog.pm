@@ -562,6 +562,8 @@ should be familiar with the terminology discussed in AWS Service
 Catalog Concepts
 (http://docs.aws.amazon.com/servicecatalog/latest/adminguide/what-is_concepts.html).
 
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+
 =head1 METHODS
 
 =head2 AcceptPortfolioShare

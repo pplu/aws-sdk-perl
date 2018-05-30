@@ -73,6 +73,8 @@ suggest requests to the search endpoint.
 For more information, see the Amazon CloudSearch Developer Guide
 (http://docs.aws.amazon.com/cloudsearch/latest/developerguide).
 
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/cloudsearch/>
+
 =head1 METHODS
 
 =head2 Search

@@ -740,6 +740,8 @@ Directory Services features, see AWS Directory Service
 Service Administration Guide
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html).
 
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/directory-service/>
+
 =head1 METHODS
 
 =head2 AddFacetToObject

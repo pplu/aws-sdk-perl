@@ -246,6 +246,8 @@ I<AWS Support User Guide> for information about how to use this service
 to create and manage your support cases, and how to call Trusted
 Advisor for results of checks on your resources.
 
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/aws-support/>
+
 =head1 METHODS
 
 =head2 AddAttachmentsToSet

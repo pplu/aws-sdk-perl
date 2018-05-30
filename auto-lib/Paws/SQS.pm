@@ -265,6 +265,8 @@ Regions and Endpoints
 =back
 
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05>
+
 =head1 METHODS
 
 =head2 AddPermission

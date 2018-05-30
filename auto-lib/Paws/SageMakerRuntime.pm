@@ -52,6 +52,8 @@ Paws::SageMakerRuntime - Perl Interface to AWS Amazon SageMaker Runtime
 
 Amazon SageMaker runtime API.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/runtime.sagemaker-2017-05-13>
+
 =head1 METHODS
 
 =head2 InvokeEndpoint

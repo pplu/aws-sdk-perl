@@ -361,6 +361,8 @@ to any user. This allows developers to perform the three use cases
 above, as well as give users the ability to grant access on a selective
 basis using the IAM model.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01>
+
 =head1 METHODS
 
 =head2 AbortDocumentVersionUpload

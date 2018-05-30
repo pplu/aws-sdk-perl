@@ -165,6 +165,8 @@ See the AWS CloudTrail User Guide
 for information about the data that is included with each AWS API call
 listed in the log files.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01>
+
 =head1 METHODS
 
 =head2 AddTags

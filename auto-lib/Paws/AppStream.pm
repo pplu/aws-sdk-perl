@@ -216,6 +216,8 @@ Amazon AppStream 2.0
 You can use Amazon AppStream 2.0 to stream desktop applications to any
 device running a web browser, without rewriting them.
 
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+
 =head1 METHODS
 
 =head2 AssociateFleet

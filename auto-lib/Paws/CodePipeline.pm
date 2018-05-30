@@ -413,6 +413,8 @@ PutThirdPartyJobSuccessResult, which provides details of a job success.
 =back
 
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09>
+
 =head1 METHODS
 
 =head2 AcknowledgeJob

@@ -114,6 +114,8 @@ API actions, data types, and errors. For detailed information about AWS
 Firewall Manager features, see the AWS Firewall Manager Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html).
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fms-2018-01-01>
+
 =head1 METHODS
 
 =head2 AssociateAdminAccount

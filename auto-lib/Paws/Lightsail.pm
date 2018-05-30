@@ -624,6 +624,8 @@ and Access Management (IAM) to generate access keys. For details about
 how to set this up, see the Lightsail Dev Guide
 (http://lightsail.aws.amazon.com/ls/docs/how-to/article/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli).
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28>
+
 =head1 METHODS
 
 =head2 AllocateStaticIp

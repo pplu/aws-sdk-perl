@@ -1744,6 +1744,8 @@ capacity in the AWS Cloud. Using Amazon EC2 eliminates the need to
 invest in hardware up front, so you can develop and deploy applications
 faster.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15>
+
 =head1 METHODS
 
 =head2 AcceptReservedInstancesExchangeQuote

@@ -393,6 +393,8 @@ groups, and resources. This allows developers to perform the scenarios
 listed above, as well as give users the ability to grant access on a
 selective basis using the IAM model.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workmail-2017-10-01>
+
 =head1 METHODS
 
 =head2 AssociateDelegateToResource

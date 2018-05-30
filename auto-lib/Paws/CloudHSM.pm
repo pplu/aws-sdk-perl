@@ -162,6 +162,8 @@ CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
 CloudHSM API Reference
 (http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30>
+
 =head1 METHODS
 
 =head2 AddTagsToResource

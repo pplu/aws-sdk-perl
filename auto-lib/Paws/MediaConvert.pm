@@ -147,6 +147,8 @@ Paws::MediaConvert - Perl Interface to AWS AWS Elemental MediaConvert
 
 AWS Elemental MediaConvert
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29>
+
 =head1 METHODS
 
 =head2 CancelJob

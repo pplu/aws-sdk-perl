@@ -129,6 +129,8 @@ AWS WAF and AWS Shield Advanced APIs, see the AWS WAF and AWS Shield
 Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/shield-2016-06-02>
+
 =head1 METHODS
 
 =head2 CreateProtection

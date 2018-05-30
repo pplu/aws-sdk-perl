@@ -100,6 +100,8 @@ An AWS Elemental MediaStore container is a namespace that holds folders
 and objects. You use a container endpoint to create, read, and delete
 objects.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mediastore-2017-09-01>
+
 =head1 METHODS
 
 =head2 CreateContainer

@@ -61,6 +61,8 @@ parameters, and errors. Amazon Connect is a cloud-based contact center
 solution that makes it easy to set up and manage a customer contact
 center and provide reliable customer engagement at any scale.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/connect-2017-08-08>
+
 =head1 METHODS
 
 =head2 StartOutboundVoiceContact

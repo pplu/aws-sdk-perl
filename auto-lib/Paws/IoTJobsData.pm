@@ -84,6 +84,8 @@ its progress to AWS IoT. The Jobs service provides commands to track
 the progress of a job on a specific target and for all the targets of
 the job
 
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/iot/>
+
 =head1 METHODS
 
 =head2 DescribeJobExecution

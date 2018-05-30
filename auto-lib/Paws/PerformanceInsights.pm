@@ -1,6 +1,7 @@
 package Paws::PerformanceInsights;
   use Moose;
   sub service { 'pi' }
+  sub signing_name { 'pi' }
   sub version { '2018-02-27' }
   sub target_prefix { 'PerformanceInsightsv20180227' }
   sub json_version { "1.1" }
@@ -75,6 +76,8 @@ provides DB load data for each time point in the queried time range,
 and each time point decomposes overall load in relation to the
 requested dimensions, such as SQL, Wait-event, User or Host, measured
 at that time point.
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head1 METHODS
 

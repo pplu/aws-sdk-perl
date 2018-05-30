@@ -461,6 +461,8 @@ these available as private skills for your organization. Alexa for
 Business makes it easy to voice-enable your products and services,
 providing context-aware voice experiences for your customers.
 
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+
 =head1 METHODS
 
 =head2 AssociateContactWithAddressBook

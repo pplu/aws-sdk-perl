@@ -455,6 +455,8 @@ Regions and Amazon SES
 the Amazon SES Developer Guide
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
 
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/ses/>
+
 =head1 METHODS
 
 =head2 CloneReceiptRuleSet

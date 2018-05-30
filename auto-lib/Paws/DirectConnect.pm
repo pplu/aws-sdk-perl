@@ -280,6 +280,8 @@ you can provision a single connection to any AWS Direct Connect
 location in the US and use it to access public AWS services in all US
 Regions and AWS GovCloud (US).
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25>
+
 =head1 METHODS
 
 =head2 AllocateConnectionOnInterconnect

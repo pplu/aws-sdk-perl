@@ -653,6 +653,8 @@ fast, inexpensive data storage infrastructure that Amazon uses to run
 its own global network of web sites. The service aims to maximize
 benefits of scale and to pass those benefits on to developers.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01>
+
 =head1 METHODS
 
 =head2 AbortMultipartUpload
