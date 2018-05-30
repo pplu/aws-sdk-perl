@@ -185,7 +185,7 @@ instance.
 =head2 CloudwatchLogsExportConfiguration => L<Paws::RDS::CloudwatchLogsExportConfiguration>
 
 The configuration setting for the log types to be enabled for export to
-CloudWatch Logs for a specific DB instance or DB cluster.
+CloudWatch Logs for a specific DB instance.
 
 
 
@@ -387,6 +387,10 @@ Default: C<false>
 
 True to enable Performance Insights for the DB instance, and otherwise
 false.
+
+For more information, see Using Amazon Performance Insights
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
+in the I<Amazon Relational Database Service User Guide>.
 
 
 
