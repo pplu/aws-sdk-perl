@@ -115,6 +115,9 @@ create a custom CMK and specify the ARN in this field.
 
 Specifies the friendly name of the new secret.
 
+The secret name must be ASCII letters, digits, or the following
+characters : /_+=,.@-
+
 
 
 =head2 SecretBinary => Str
