@@ -1032,6 +1032,8 @@ Creates a new DevEndpoint.
 
 =item [MaxRetries => Int]
 
+=item [NotificationProperty => L<Paws::Glue::NotificationProperty>]
+
 =item [Timeout => Int]
 
 
@@ -2008,6 +2010,8 @@ C<SCHEDULED>.
 =item [Arguments => L<Paws::Glue::GenericMap>]
 
 =item [JobRunId => Str]
+
+=item [NotificationProperty => L<Paws::Glue::NotificationProperty>]
 
 =item [Timeout => Int]
 

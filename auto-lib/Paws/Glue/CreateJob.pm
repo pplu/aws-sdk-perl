@@ -10,6 +10,7 @@ package Paws::Glue::CreateJob;
   has LogUri => (is => 'ro', isa => 'Str');
   has MaxRetries => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
   has Role => (is => 'ro', isa => 'Str', required => 1);
   has Timeout => (is => 'ro', isa => 'Int');
 
@@ -113,6 +114,12 @@ The maximum number of times to retry this job if it fails.
 
 The name you assign to this job definition. It must be unique in your
 account.
+
+
+
+=head2 NotificationProperty => L<Paws::Glue::NotificationProperty>
+
+Specifies configuration properties of a job notification.
 
 
 

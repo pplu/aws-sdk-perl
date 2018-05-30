@@ -10,6 +10,7 @@ package Paws::Glue::JobRun;
   has JobName => (is => 'ro', isa => 'Str');
   has JobRunState => (is => 'ro', isa => 'Str');
   has LastModifiedOn => (is => 'ro', isa => 'Str');
+  has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
   has PredecessorRuns => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Predecessor]');
   has PreviousRunId => (is => 'ro', isa => 'Str');
   has StartedOn => (is => 'ro', isa => 'Str');
@@ -116,6 +117,11 @@ topic in the developer guide.
 =head2 LastModifiedOn => Str
 
   The last time this job run was modified.
+
+
+=head2 NotificationProperty => L<Paws::Glue::NotificationProperty>
+
+  Specifies configuration properties of a job run notification.
 
 
 =head2 PredecessorRuns => ArrayRef[L<Paws::Glue::Predecessor>]
