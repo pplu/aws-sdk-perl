@@ -299,6 +299,7 @@ $request = $s3->PutObject(
 );
 
 my $md5_r1 = $request->headers->header('Content-MD5');
+ok(defined $md5_r1, "Content-MD5 header is defined $md5_r1");
 
 $request = $s3->PutObject(
   Bucket => 'test_bucket',
@@ -307,6 +308,7 @@ $request = $s3->PutObject(
 );
 
 my $md5_r2 = $request->headers->header('Content-MD5');
+ok(defined $md5_r2, "Content-MD5 header is defined $md5_r2");
 
 cmp_ok($md5_r1, 'ne', $md5_r2, 'Content-MD5 of different values is different');
 
