@@ -60,6 +60,7 @@ on 'develop' => sub {
   requires 'Pod::Escapes';
   requires 'Data::Munge';
 };
+
 on 'test' => sub {
   requires 'Path::Class';
   requires 'YAML';
@@ -68,4 +69,5 @@ on 'test' => sub {
   requires 'Test::Exception';
   requires 'Test::Warnings';
   requires 'Class::Unload';
+  requires 'File::Slurper';
 };
