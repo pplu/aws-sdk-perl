@@ -91,7 +91,7 @@ Valid values are: C<"BUILD_GENERAL1_SMALL">, C<"BUILD_GENERAL1_MEDIUM">, C<"BUIL
 A container type for this build that overrides the one specified in the
 build project.
 
-Valid values are: C<"LINUX_CONTAINER">
+Valid values are: C<"WINDOWS_CONTAINER">, C<"LINUX_CONTAINER">
 
 =head2 EnvironmentVariablesOverride => ArrayRef[L<Paws::CodeBuild::EnvironmentVariable>]
 
