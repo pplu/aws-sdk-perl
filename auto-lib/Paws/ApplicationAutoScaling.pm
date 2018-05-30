@@ -1,6 +1,7 @@
 package Paws::ApplicationAutoScaling;
   use Moose;
   sub service { 'autoscaling' }
+  sub signing_name { 'application-autoscaling' }
   sub version { '2016-02-06' }
   sub target_prefix { 'AnyScaleFrontendService' }
   sub json_version { "1.1" }

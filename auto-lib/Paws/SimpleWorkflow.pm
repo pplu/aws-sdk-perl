@@ -1,6 +1,7 @@
 package Paws::SimpleWorkflow;
   use Moose;
   sub service { 'swf' }
+  sub signing_name { 'swf' }
   sub version { '2012-01-25' }
   sub target_prefix { 'SimpleWorkflowService' }
   sub json_version { "1.0" }

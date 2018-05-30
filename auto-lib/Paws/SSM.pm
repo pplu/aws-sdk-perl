@@ -1,6 +1,7 @@
 package Paws::SSM;
   use Moose;
   sub service { 'ssm' }
+  sub signing_name { 'ssm' }
   sub version { '2014-11-06' }
   sub target_prefix { 'AmazonSSM' }
   sub json_version { "1.1" }

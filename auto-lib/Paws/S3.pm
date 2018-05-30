@@ -2,6 +2,7 @@ package Paws::S3;
   warn "Paws::S3 is not stable / supported / entirely developed";
   use Moose;
   sub service { 's3' }
+  sub signing_name { 's3' }
   sub version { '2006-03-01' }
   sub flattened_arrays { 1 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

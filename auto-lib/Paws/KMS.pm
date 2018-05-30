@@ -1,6 +1,7 @@
 package Paws::KMS;
   use Moose;
   sub service { 'kms' }
+  sub signing_name { 'kms' }
   sub version { '2014-11-01' }
   sub target_prefix { 'TrentService' }
   sub json_version { "1.1" }

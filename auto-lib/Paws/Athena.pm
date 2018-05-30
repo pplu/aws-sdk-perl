@@ -1,6 +1,7 @@
 package Paws::Athena;
   use Moose;
   sub service { 'athena' }
+  sub signing_name { 'athena' }
   sub version { '2017-05-18' }
   sub target_prefix { 'AmazonAthena' }
   sub json_version { "1.1" }

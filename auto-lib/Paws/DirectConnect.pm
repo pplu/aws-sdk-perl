@@ -1,6 +1,7 @@
 package Paws::DirectConnect;
   use Moose;
   sub service { 'directconnect' }
+  sub signing_name { 'directconnect' }
   sub version { '2012-10-25' }
   sub target_prefix { 'OvertureService' }
   sub json_version { "1.1" }

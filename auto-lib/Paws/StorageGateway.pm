@@ -1,6 +1,7 @@
 package Paws::StorageGateway;
   use Moose;
   sub service { 'storagegateway' }
+  sub signing_name { 'storagegateway' }
   sub version { '2013-06-30' }
   sub target_prefix { 'StorageGateway_20130630' }
   sub json_version { "1.1" }

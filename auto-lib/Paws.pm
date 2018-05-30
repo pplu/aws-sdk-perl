@@ -852,6 +852,7 @@ castaway for contributing to fixing documentation problems
  - properly providing backlinks between related pages
  - making TOCs render correctly on search.cpan.org
 
+autarch for correcting signature generation for a bunch of services
 
 
 =cut

@@ -1,6 +1,7 @@
 package Paws::WAFRegional;
   use Moose;
   sub service { 'waf-regional' }
+  sub signing_name { 'waf-regional' }
   sub version { '2016-11-28' }
   sub target_prefix { 'AWSWAF_Regional_20161128' }
   sub json_version { "1.1" }

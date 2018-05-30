@@ -1,6 +1,7 @@
 package Paws::WAF;
   use Moose;
   sub service { 'waf' }
+  sub signing_name { 'waf' }
   sub version { '2015-08-24' }
   sub target_prefix { 'AWSWAF_20150824' }
   sub json_version { "1.1" }

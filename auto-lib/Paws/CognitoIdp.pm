@@ -1,6 +1,7 @@
 package Paws::CognitoIdp;
   use Moose;
   sub service { 'cognito-idp' }
+  sub signing_name { 'cognito-idp' }
   sub version { '2016-04-18' }
   sub target_prefix { 'AWSCognitoIdentityProviderService' }
   sub json_version { "1.1" }

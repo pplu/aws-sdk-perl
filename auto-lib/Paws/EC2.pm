@@ -1,6 +1,7 @@
 package Paws::EC2;
   use Moose;
   sub service { 'ec2' }
+  sub signing_name { 'ec2' }
   sub version { '2016-11-15' }
   sub flattened_arrays { 1 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

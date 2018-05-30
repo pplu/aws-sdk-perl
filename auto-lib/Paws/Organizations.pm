@@ -1,6 +1,7 @@
 package Paws::Organizations;
   use Moose;
   sub service { 'organizations' }
+  sub signing_name { 'organizations' }
   sub version { '2016-11-28' }
   sub target_prefix { 'AWSOrganizationsV20161128' }
   sub json_version { "1.1" }

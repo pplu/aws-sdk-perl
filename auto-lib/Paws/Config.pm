@@ -1,6 +1,7 @@
 package Paws::Config;
   use Moose;
   sub service { 'config' }
+  sub signing_name { 'config' }
   sub version { '2014-11-12' }
   sub target_prefix { 'StarlingDoveService' }
   sub json_version { "1.1" }

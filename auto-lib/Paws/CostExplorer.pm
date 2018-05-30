@@ -1,6 +1,7 @@
 package Paws::CostExplorer;
   use Moose;
   sub service { 'ce' }
+  sub signing_name { 'ce' }
   sub version { '2017-10-25' }
   sub target_prefix { 'AWSInsightsIndexService' }
   sub json_version { "1.1" }

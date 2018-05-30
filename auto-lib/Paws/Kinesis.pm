@@ -1,6 +1,7 @@
 package Paws::Kinesis;
   use Moose;
   sub service { 'kinesis' }
+  sub signing_name { 'kinesis' }
   sub version { '2013-12-02' }
   sub target_prefix { 'Kinesis_20131202' }
   sub json_version { "1.1" }

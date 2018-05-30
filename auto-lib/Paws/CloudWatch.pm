@@ -1,6 +1,7 @@
 package Paws::CloudWatch;
   use Moose;
   sub service { 'monitoring' }
+  sub signing_name { 'monitoring' }
   sub version { '2010-08-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

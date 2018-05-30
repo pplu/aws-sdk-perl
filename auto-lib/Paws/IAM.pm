@@ -1,6 +1,7 @@
 package Paws::IAM;
   use Moose;
   sub service { 'iam' }
+  sub signing_name { 'iam' }
   sub version { '2010-05-08' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

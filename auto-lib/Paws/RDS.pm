@@ -1,6 +1,7 @@
 package Paws::RDS;
   use Moose;
   sub service { 'rds' }
+  sub signing_name { 'rds' }
   sub version { '2014-10-31' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

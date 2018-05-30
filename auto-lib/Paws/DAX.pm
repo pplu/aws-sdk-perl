@@ -1,6 +1,7 @@
 package Paws::DAX;
   use Moose;
   sub service { 'dax' }
+  sub signing_name { 'dax' }
   sub version { '2017-04-19' }
   sub target_prefix { 'AmazonDAXV3' }
   sub json_version { "1.1" }

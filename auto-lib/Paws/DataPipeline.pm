@@ -1,6 +1,7 @@
 package Paws::DataPipeline;
   use Moose;
   sub service { 'datapipeline' }
+  sub signing_name { 'datapipeline' }
   sub version { '2012-10-29' }
   sub target_prefix { 'DataPipeline' }
   sub json_version { "1.1" }

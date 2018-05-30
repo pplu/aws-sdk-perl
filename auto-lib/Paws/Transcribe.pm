@@ -1,6 +1,7 @@
 package Paws::Transcribe;
   use Moose;
   sub service { 'transcribe' }
+  sub signing_name { 'transcribe' }
   sub version { '2017-10-26' }
   sub target_prefix { 'Transcribe' }
   sub json_version { "1.1" }

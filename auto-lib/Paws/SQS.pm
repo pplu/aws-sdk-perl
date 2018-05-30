@@ -1,6 +1,7 @@
 package Paws::SQS;
   use Moose;
   sub service { 'sqs' }
+  sub signing_name { 'sqs' }
   sub version { '2012-11-05' }
   sub flattened_arrays { 1 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

@@ -1,6 +1,7 @@
 package Paws::OpsWorks;
   use Moose;
   sub service { 'opsworks' }
+  sub signing_name { 'opsworks' }
   sub version { '2013-02-18' }
   sub target_prefix { 'OpsWorks_20130218' }
   sub json_version { "1.1" }

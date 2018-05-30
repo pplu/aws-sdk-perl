@@ -1,6 +1,7 @@
 package Paws::GameLift;
   use Moose;
   sub service { 'gamelift' }
+  sub signing_name { 'gamelift' }
   sub version { '2015-10-01' }
   sub target_prefix { 'GameLift' }
   sub json_version { "1.1" }

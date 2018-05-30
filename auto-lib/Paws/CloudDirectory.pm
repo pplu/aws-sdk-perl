@@ -1,6 +1,7 @@
 package Paws::CloudDirectory;
   use Moose;
   sub service { 'clouddirectory' }
+  sub signing_name { 'clouddirectory' }
   sub version { '2016-05-10' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

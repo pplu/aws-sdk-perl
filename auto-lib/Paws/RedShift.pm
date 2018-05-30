@@ -1,6 +1,7 @@
 package Paws::RedShift;
   use Moose;
   sub service { 'redshift' }
+  sub signing_name { 'redshift' }
   sub version { '2012-12-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

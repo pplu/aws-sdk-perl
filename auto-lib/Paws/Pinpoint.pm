@@ -1,6 +1,7 @@
 package Paws::Pinpoint;
   use Moose;
   sub service { 'pinpoint' }
+  sub signing_name { 'mobiletargeting' }
   sub version { '2016-12-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

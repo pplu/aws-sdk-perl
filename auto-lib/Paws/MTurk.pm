@@ -1,6 +1,7 @@
 package Paws::MTurk;
   use Moose;
   sub service { 'mturk-requester' }
+  sub signing_name { 'mturk-requester' }
   sub version { '2017-01-17' }
   sub target_prefix { 'MTurkRequesterServiceV20170117' }
   sub json_version { "1.1" }

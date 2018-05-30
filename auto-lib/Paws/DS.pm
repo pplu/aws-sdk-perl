@@ -1,6 +1,7 @@
 package Paws::DS;
   use Moose;
   sub service { 'ds' }
+  sub signing_name { 'ds' }
   sub version { '2015-04-16' }
   sub target_prefix { 'DirectoryService_20150416' }
   sub json_version { "1.1" }

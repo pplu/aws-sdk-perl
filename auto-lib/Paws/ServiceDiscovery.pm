@@ -1,6 +1,7 @@
 package Paws::ServiceDiscovery;
   use Moose;
   sub service { 'servicediscovery' }
+  sub signing_name { 'servicediscovery' }
   sub version { '2017-03-14' }
   sub target_prefix { 'Route53AutoNaming_v20170314' }
   sub json_version { "1.1" }

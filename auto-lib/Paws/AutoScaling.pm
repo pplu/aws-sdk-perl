@@ -1,6 +1,7 @@
 package Paws::AutoScaling;
   use Moose;
   sub service { 'autoscaling' }
+  sub signing_name { 'autoscaling' }
   sub version { '2011-01-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

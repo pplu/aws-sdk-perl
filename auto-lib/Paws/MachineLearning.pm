@@ -1,6 +1,7 @@
 package Paws::MachineLearning;
   use Moose;
   sub service { 'machinelearning' }
+  sub signing_name { 'machinelearning' }
   sub version { '2014-12-12' }
   sub target_prefix { 'AmazonML_20141212' }
   sub json_version { "1.1" }

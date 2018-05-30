@@ -1,6 +1,7 @@
 package Paws::Lambda;
   use Moose;
   sub service { 'lambda' }
+  sub signing_name { 'lambda' }
   sub version { '2015-03-31' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

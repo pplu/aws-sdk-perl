@@ -1,6 +1,7 @@
 package Paws::AppStream;
   use Moose;
   sub service { 'appstream2' }
+  sub signing_name { 'appstream' }
   sub version { '2016-12-01' }
   sub target_prefix { 'PhotonAdminProxyService' }
   sub json_version { "1.1" }

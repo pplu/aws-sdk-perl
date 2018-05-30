@@ -1,6 +1,7 @@
 package Paws::MQ;
   use Moose;
   sub service { 'mq' }
+  sub signing_name { 'mq' }
   sub version { '2017-11-27' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

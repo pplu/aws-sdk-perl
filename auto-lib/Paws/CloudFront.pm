@@ -2,6 +2,7 @@ package Paws::CloudFront;
   warn "Paws::CloudFront is not stable / supported / entirely developed";
   use Moose;
   sub service { 'cloudfront' }
+  sub signing_name { 'cloudfront' }
   sub version { '2017-10-30' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

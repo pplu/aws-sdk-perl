@@ -1,6 +1,7 @@
 package Paws::CloudSearch;
   use Moose;
   sub service { 'cloudsearch' }
+  sub signing_name { 'cloudsearch' }
   sub version { '2013-01-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

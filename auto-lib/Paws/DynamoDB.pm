@@ -1,6 +1,7 @@
 package Paws::DynamoDB;
   use Moose;
   sub service { 'dynamodb' }
+  sub signing_name { 'dynamodb' }
   sub version { '2012-08-10' }
   sub target_prefix { 'DynamoDB_20120810' }
   sub json_version { "1.0" }

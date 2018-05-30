@@ -1,6 +1,7 @@
 package Paws::CloudTrail;
   use Moose;
   sub service { 'cloudtrail' }
+  sub signing_name { 'cloudtrail' }
   sub version { '2013-11-01' }
   sub target_prefix { 'com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101' }
   sub json_version { "1.1" }

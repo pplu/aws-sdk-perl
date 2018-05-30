@@ -1,6 +1,7 @@
 package Paws::KinesisVideoMedia;
   use Moose;
   sub service { 'kinesisvideo' }
+  sub signing_name { 'kinesisvideo' }
   sub version { '2017-09-30' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

@@ -1,6 +1,7 @@
 package Paws::CognitoSync;
   use Moose;
   sub service { 'cognito-sync' }
+  sub signing_name { 'cognito-sync' }
   sub version { '2014-06-30' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

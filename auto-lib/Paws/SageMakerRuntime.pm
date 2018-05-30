@@ -1,6 +1,7 @@
 package Paws::SageMakerRuntime;
   use Moose;
   sub service { 'runtime.sagemaker' }
+  sub signing_name { 'sagemaker' }
   sub version { '2017-05-13' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

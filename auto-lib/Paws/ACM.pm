@@ -1,6 +1,7 @@
 package Paws::ACM;
   use Moose;
   sub service { 'acm' }
+  sub signing_name { 'acm' }
   sub version { '2015-12-08' }
   sub target_prefix { 'CertificateManager' }
   sub json_version { "1.1" }

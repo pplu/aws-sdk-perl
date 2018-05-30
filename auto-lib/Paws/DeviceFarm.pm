@@ -1,6 +1,7 @@
 package Paws::DeviceFarm;
   use Moose;
   sub service { 'devicefarm' }
+  sub signing_name { 'devicefarm' }
   sub version { '2015-06-23' }
   sub target_prefix { 'DeviceFarm_20150623' }
   sub json_version { "1.1" }

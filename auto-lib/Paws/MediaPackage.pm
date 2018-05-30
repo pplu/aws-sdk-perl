@@ -1,6 +1,7 @@
 package Paws::MediaPackage;
   use Moose;
   sub service { 'mediapackage' }
+  sub signing_name { 'mediapackage' }
   sub version { '2017-10-12' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);

@@ -1,6 +1,7 @@
 package Paws::MediaStoreData;
   use Moose;
   sub service { 'data.mediastore' }
+  sub signing_name { 'mediastore' }
   sub version { '2017-09-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
