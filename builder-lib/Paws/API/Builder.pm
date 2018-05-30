@@ -9,6 +9,7 @@ package Paws::API::Builder {
   use JSON::MaybeXS;
   use Scalar::Util;
   use Pod::Escapes();
+  use Text::Wrap;
   use Data::Munge;
   use Perl::Tidy;
 
@@ -555,9 +556,11 @@ package Paws::API::Builder {
     my $comment_str = '';
 
     if (exists( $simple_defaults{ $shape->{ type } } ) ) {
-      $example_str = sprintf($simple_defaults{ $shape->{ type } }, $shape_name);
       if ($shape->{ enum }) {
         $comment_str .= 'values: ' . join(', ', @{ $shape->{ enum } });
+        $example_str = qq{'} . $shape->{ enum }[0] . qq{'};
+      } else {
+        $example_str = sprintf($simple_defaults{ $shape->{ type } }, $shape_name);
       }
     } elsif ($shape->{ type } eq 'list' ) {
         my ($inner_example_code, $comment) = $self->get_example_code($shape->{ member }->{ shape }, $cache, $depth+1);
@@ -632,15 +635,19 @@ package Paws::API::Builder {
     my $example_str = '';
     foreach my $ex (@{ $self->example_struct->{ $op_name } }) {
       $example_str .= "# $ex->{title}\n";
-      $example_str .= "# $ex->{description}\n\n";
+      if ($ex->{ description }) {
+        local $Text::Wrap::coloumns = 79;
+        local $Text::Wrap::separator = "\n# ";
+        $example_str .= '# ' . Text::Wrap::wrap('','',$ex->{ description }) . "\n";
+      }
       if ($out_shape) {
         $example_str .= "my \$${out_shape_name} = ";
       }
       $example_str .= "\$" . $self->service . "->" . $op_name . "(";
       $example_str .= $self->dump_perl($ex->{ input }, 1) if $ex->{ input } && %{ $ex->{ input } };
-      $example_str .= "\n});\n\n";
+      $example_str .= "\n);\n\n";
 
-      if ($out_shape) {
+      if ($out_shape && %{ $ex->{ output } || {} }) {
         $example_str .= "# Results:\n";
         $example_str .= "print \$${out_shape_name}->{$_};\n# " . $self->dump_perl($ex->{ output }{$_}, 1) . "\n" for keys( %{$ex->{ output }});
         $example_str .= "\n\n";
