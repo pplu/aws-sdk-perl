@@ -56,7 +56,7 @@ The token to retrieve the next set of results.
 An optional filter that lets you search for jobs that have the
 specified status.
 
-Valid values are: C<"IN_PROGRESS">, C<"CANCELED">, C<"COMPLETED">
+Valid values are: C<"IN_PROGRESS">, C<"CANCELED">, C<"COMPLETED">, C<"DELETION_IN_PROGRESS">
 
 =head2 TargetSelection => Str
 
