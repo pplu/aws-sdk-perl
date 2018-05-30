@@ -1,6 +1,7 @@
 package Paws::Snowball;
   use Moose;
   sub service { 'snowball' }
+  sub signing_name { 'snowball' }
   sub version { '2016-06-30' }
   sub target_prefix { 'AWSIESnowballJobManagementService' }
   sub json_version { "1.1" }
@@ -189,7 +190,14 @@ see the User Guide
 
 =head1 METHODS
 
-=head2 CancelCluster(ClusterId => Str)
+=head2 CancelCluster
+
+=over
+
+=item ClusterId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Snowball::CancelCluster>
 
@@ -200,7 +208,14 @@ the C<AwaitingQuorum> status. You'll have at least an hour after
 creating a cluster job to cancel it.
 
 
-=head2 CancelJob(JobId => Str)
+=head2 CancelJob
+
+=over
+
+=item JobId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Snowball::CancelJob>
 
@@ -212,7 +227,14 @@ C<ListJobs> or C<DescribeJob> action will return a job's C<JobState> as
 part of the response element data returned.
 
 
-=head2 CreateAddress(Address => L<Paws::Snowball::Address>)
+=head2 CreateAddress
+
+=over
+
+=item Address => L<Paws::Snowball::Address>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Snowball::CreateAddress>
 
@@ -224,7 +246,32 @@ provide must be located within the serviceable area of your region. If
 the address is invalid or unsupported, then an exception is thrown.
 
 
-=head2 CreateCluster(AddressId => Str, JobType => Str, Resources => L<Paws::Snowball::JobResource>, RoleARN => Str, ShippingOption => Str, [Description => Str, ForwardingAddressId => Str, KmsKeyARN => Str, Notification => L<Paws::Snowball::Notification>, SnowballType => Str])
+=head2 CreateCluster
+
+=over
+
+=item AddressId => Str
+
+=item JobType => Str
+
+=item Resources => L<Paws::Snowball::JobResource>
+
+=item RoleARN => Str
+
+=item ShippingOption => Str
+
+=item [Description => Str]
+
+=item [ForwardingAddressId => Str]
+
+=item [KmsKeyARN => Str]
+
+=item [Notification => L<Paws::Snowball::Notification>]
+
+=item [SnowballType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Snowball::CreateCluster>
 
@@ -235,7 +282,36 @@ CreateJob action separately to create the jobs for each of these nodes.
 The cluster does not ship until these five node jobs have been created.
 
 
-=head2 CreateJob([AddressId => Str, ClusterId => Str, Description => Str, ForwardingAddressId => Str, JobType => Str, KmsKeyARN => Str, Notification => L<Paws::Snowball::Notification>, Resources => L<Paws::Snowball::JobResource>, RoleARN => Str, ShippingOption => Str, SnowballCapacityPreference => Str, SnowballType => Str])
+=head2 CreateJob
+
+=over
+
+=item [AddressId => Str]
+
+=item [ClusterId => Str]
+
+=item [Description => Str]
+
+=item [ForwardingAddressId => Str]
+
+=item [JobType => Str]
+
+=item [KmsKeyARN => Str]
+
+=item [Notification => L<Paws::Snowball::Notification>]
+
+=item [Resources => L<Paws::Snowball::JobResource>]
+
+=item [RoleARN => Str]
+
+=item [ShippingOption => Str]
+
+=item [SnowballCapacityPreference => Str]
+
+=item [SnowballType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Snowball::CreateJob>
 
@@ -249,7 +325,14 @@ the C<clusterId> value; the other job attributes are inherited from the
 cluster.
 
 
-=head2 DescribeAddress(AddressId => Str)
+=head2 DescribeAddress
+
+=over
+
+=item AddressId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Snowball::DescribeAddress>
 
@@ -259,7 +342,16 @@ Takes an C<AddressId> and returns specific details about that address
 in the form of an C<Address> object.
 
 
-=head2 DescribeAddresses([MaxResults => Int, NextToken => Str])
+=head2 DescribeAddresses
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Snowball::DescribeAddresses>
 
@@ -270,7 +362,14 @@ one of the US regions will return addresses from the list of all
 addresses associated with this account in all US regions.
 
 
-=head2 DescribeCluster(ClusterId => Str)
+=head2 DescribeCluster
+
+=over
+
+=item ClusterId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Snowball::DescribeCluster>
 
@@ -280,7 +379,14 @@ Returns information about a specific cluster including shipping
 information, cluster status, and other important metadata.
 
 
-=head2 DescribeJob(JobId => Str)
+=head2 DescribeJob
+
+=over
+
+=item JobId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Snowball::DescribeJob>
 
@@ -290,7 +396,14 @@ Returns information about a specific job including shipping
 information, job status, and other important metadata.
 
 
-=head2 GetJobManifest(JobId => Str)
+=head2 GetJobManifest
+
+=over
+
+=item JobId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Snowball::GetJobManifest>
 
@@ -317,7 +430,14 @@ The credentials of a given job, including its manifest file and unlock
 code, expire 90 days after the job is created.
 
 
-=head2 GetJobUnlockCode(JobId => Str)
+=head2 GetJobUnlockCode
+
+=over
+
+=item JobId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Snowball::GetJobUnlockCode>
 
@@ -338,7 +458,12 @@ Saving these separately helps prevent unauthorized parties from gaining
 access to the Snowball associated with that job.
 
 
-=head2 GetSnowballUsage()
+=head2 GetSnowballUsage
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::Snowball::GetSnowballUsage>
 
@@ -352,7 +477,18 @@ at one time is 1. If you want to increase your service limit, contact
 AWS Support.
 
 
-=head2 ListClusterJobs(ClusterId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListClusterJobs
+
+=over
+
+=item ClusterId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Snowball::ListClusterJobs>
 
@@ -363,7 +499,16 @@ Each C<JobListEntry> object is for a job in the specified cluster and
 contains a job's state, a job's ID, and other information.
 
 
-=head2 ListClusters([MaxResults => Int, NextToken => Str])
+=head2 ListClusters
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Snowball::ListClusters>
 
@@ -374,7 +519,16 @@ length. Each C<ClusterListEntry> object contains a cluster's state, a
 cluster's ID, and other important status information.
 
 
-=head2 ListJobs([MaxResults => Int, NextToken => Str])
+=head2 ListJobs
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Snowball::ListJobs>
 
@@ -388,7 +542,28 @@ return jobs from the list of all jobs associated with this account in
 all US regions.
 
 
-=head2 UpdateCluster(ClusterId => Str, [AddressId => Str, Description => Str, ForwardingAddressId => Str, Notification => L<Paws::Snowball::Notification>, Resources => L<Paws::Snowball::JobResource>, RoleARN => Str, ShippingOption => Str])
+=head2 UpdateCluster
+
+=over
+
+=item ClusterId => Str
+
+=item [AddressId => Str]
+
+=item [Description => Str]
+
+=item [ForwardingAddressId => Str]
+
+=item [Notification => L<Paws::Snowball::Notification>]
+
+=item [Resources => L<Paws::Snowball::JobResource>]
+
+=item [RoleARN => Str]
+
+=item [ShippingOption => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Snowball::UpdateCluster>
 
@@ -401,7 +576,30 @@ minutes after the cluster being created, this action is no longer
 available.
 
 
-=head2 UpdateJob(JobId => Str, [AddressId => Str, Description => Str, ForwardingAddressId => Str, Notification => L<Paws::Snowball::Notification>, Resources => L<Paws::Snowball::JobResource>, RoleARN => Str, ShippingOption => Str, SnowballCapacityPreference => Str])
+=head2 UpdateJob
+
+=over
+
+=item JobId => Str
+
+=item [AddressId => Str]
+
+=item [Description => Str]
+
+=item [ForwardingAddressId => Str]
+
+=item [Notification => L<Paws::Snowball::Notification>]
+
+=item [Resources => L<Paws::Snowball::JobResource>]
+
+=item [RoleARN => Str]
+
+=item [ShippingOption => Str]
+
+=item [SnowballCapacityPreference => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Snowball::UpdateJob>
 

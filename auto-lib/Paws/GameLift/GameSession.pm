@@ -170,7 +170,7 @@ server, an app needs both the IP address and port number.
 =head2 MatchmakerData => Str
 
   Information about the matchmaking process that was used to create the
-game session. It is in JSON syntax, formated as a string. In addition
+game session. It is in JSON syntax, formatted as a string. In addition
 the matchmaking configuration used, it contains data on all players
 assigned to the match, including player attributes and team
 assignments. For more details on matchmaker data, see Match Data

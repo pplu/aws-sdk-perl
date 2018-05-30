@@ -1,6 +1,7 @@
 package Paws::KinesisVideoMedia;
   use Moose;
   sub service { 'kinesisvideo' }
+  sub signing_name { 'kinesisvideo' }
   sub version { '2017-09-30' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -53,7 +54,18 @@ Paws::KinesisVideoMedia - Perl Interface to AWS Amazon Kinesis Video Streams Med
 
 =head1 METHODS
 
-=head2 GetMedia(StartSelector => L<Paws::KinesisVideoMedia::StartSelector>, [StreamARN => Str, StreamName => Str])
+=head2 GetMedia
+
+=over
+
+=item StartSelector => L<Paws::KinesisVideoMedia::StartSelector>
+
+=item [StreamARN => Str]
+
+=item [StreamName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisVideoMedia::GetMedia>
 

@@ -1,6 +1,7 @@
 package Paws::MTurk;
   use Moose;
   sub service { 'mturk-requester' }
+  sub signing_name { 'mturk-requester' }
   sub version { '2017-01-17' }
   sub target_prefix { 'MTurkRequesterServiceV20170117' }
   sub json_version { "1.1" }
@@ -451,7 +452,16 @@ Amazon Mechanical Turk API Reference
 
 =head1 METHODS
 
-=head2 AcceptQualificationRequest(QualificationRequestId => Str, [IntegerValue => Int])
+=head2 AcceptQualificationRequest
+
+=over
+
+=item QualificationRequestId => Str
+
+=item [IntegerValue => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::AcceptQualificationRequest>
 
@@ -467,7 +477,18 @@ A successful request for the C<AcceptQualificationRequest> operation
 returns with no errors and an empty body.
 
 
-=head2 ApproveAssignment(AssignmentId => Str, [OverrideRejection => Bool, RequesterFeedback => Str])
+=head2 ApproveAssignment
+
+=over
+
+=item AssignmentId => Str
+
+=item [OverrideRejection => Bool]
+
+=item [RequesterFeedback => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::ApproveAssignment>
 
@@ -505,7 +526,20 @@ within the previous 30 days and only if the assignment's related HIT
 has not been deleted.
 
 
-=head2 AssociateQualificationWithWorker(QualificationTypeId => Str, WorkerId => Str, [IntegerValue => Int, SendNotification => Bool])
+=head2 AssociateQualificationWithWorker
+
+=over
+
+=item QualificationTypeId => Str
+
+=item WorkerId => Str
+
+=item [IntegerValue => Int]
+
+=item [SendNotification => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::AssociateQualificationWithWorker>
 
@@ -528,7 +562,18 @@ affecting the Qualification the Worker already has, reject the request
 with the C<RejectQualificationRequest> operation.
 
 
-=head2 CreateAdditionalAssignmentsForHIT(HITId => Str, NumberOfAdditionalAssignments => Int, [UniqueRequestToken => Str])
+=head2 CreateAdditionalAssignmentsForHIT
+
+=over
+
+=item HITId => Str
+
+=item NumberOfAdditionalAssignments => Int
+
+=item [UniqueRequestToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::CreateAdditionalAssignmentsForHIT>
 
@@ -560,7 +605,44 @@ result in an C<AWS.MechanicalTurk.HITTooOldForExtension> exception.
 
 
 
-=head2 CreateHIT(AssignmentDurationInSeconds => Int, Description => Str, LifetimeInSeconds => Int, Reward => Str, Title => Str, [AssignmentReviewPolicy => L<Paws::MTurk::ReviewPolicy>, AutoApprovalDelayInSeconds => Int, HITLayoutId => Str, HITLayoutParameters => ArrayRef[L<Paws::MTurk::HITLayoutParameter>], HITReviewPolicy => L<Paws::MTurk::ReviewPolicy>, Keywords => Str, MaxAssignments => Int, QualificationRequirements => ArrayRef[L<Paws::MTurk::QualificationRequirement>], Question => Str, RequesterAnnotation => Str, UniqueRequestToken => Str])
+=head2 CreateHIT
+
+=over
+
+=item AssignmentDurationInSeconds => Int
+
+=item Description => Str
+
+=item LifetimeInSeconds => Int
+
+=item Reward => Str
+
+=item Title => Str
+
+=item [AssignmentReviewPolicy => L<Paws::MTurk::ReviewPolicy>]
+
+=item [AutoApprovalDelayInSeconds => Int]
+
+=item [HITLayoutId => Str]
+
+=item [HITLayoutParameters => ArrayRef[L<Paws::MTurk::HITLayoutParameter>]]
+
+=item [HITReviewPolicy => L<Paws::MTurk::ReviewPolicy>]
+
+=item [Keywords => Str]
+
+=item [MaxAssignments => Int]
+
+=item [QualificationRequirements => ArrayRef[L<Paws::MTurk::QualificationRequirement>]]
+
+=item [Question => Str]
+
+=item [RequesterAnnotation => Str]
+
+=item [UniqueRequestToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::CreateHIT>
 
@@ -593,7 +675,26 @@ additional fee. For more information, see Amazon Mechanical Turk
 Pricing (https://requester.mturk.com/pricing).
 
 
-=head2 CreateHITType(AssignmentDurationInSeconds => Int, Description => Str, Reward => Str, Title => Str, [AutoApprovalDelayInSeconds => Int, Keywords => Str, QualificationRequirements => ArrayRef[L<Paws::MTurk::QualificationRequirement>]])
+=head2 CreateHITType
+
+=over
+
+=item AssignmentDurationInSeconds => Int
+
+=item Description => Str
+
+=item Reward => Str
+
+=item Title => Str
+
+=item [AutoApprovalDelayInSeconds => Int]
+
+=item [Keywords => Str]
+
+=item [QualificationRequirements => ArrayRef[L<Paws::MTurk::QualificationRequirement>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::CreateHITType>
 
@@ -606,7 +707,32 @@ existing HIT type, the HIT type ID of the existing type will be
 returned.
 
 
-=head2 CreateHITWithHITType(HITTypeId => Str, LifetimeInSeconds => Int, [AssignmentReviewPolicy => L<Paws::MTurk::ReviewPolicy>, HITLayoutId => Str, HITLayoutParameters => ArrayRef[L<Paws::MTurk::HITLayoutParameter>], HITReviewPolicy => L<Paws::MTurk::ReviewPolicy>, MaxAssignments => Int, Question => Str, RequesterAnnotation => Str, UniqueRequestToken => Str])
+=head2 CreateHITWithHITType
+
+=over
+
+=item HITTypeId => Str
+
+=item LifetimeInSeconds => Int
+
+=item [AssignmentReviewPolicy => L<Paws::MTurk::ReviewPolicy>]
+
+=item [HITLayoutId => Str]
+
+=item [HITLayoutParameters => ArrayRef[L<Paws::MTurk::HITLayoutParameter>]]
+
+=item [HITReviewPolicy => L<Paws::MTurk::ReviewPolicy>]
+
+=item [MaxAssignments => Int]
+
+=item [Question => Str]
+
+=item [RequesterAnnotation => Str]
+
+=item [UniqueRequestToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::CreateHITWithHITType>
 
@@ -630,7 +756,32 @@ additional fee. For more information, see Amazon Mechanical Turk
 Pricing (https://requester.mturk.com/pricing).
 
 
-=head2 CreateQualificationType(Description => Str, Name => Str, QualificationTypeStatus => Str, [AnswerKey => Str, AutoGranted => Bool, AutoGrantedValue => Int, Keywords => Str, RetryDelayInSeconds => Int, Test => Str, TestDurationInSeconds => Int])
+=head2 CreateQualificationType
+
+=over
+
+=item Description => Str
+
+=item Name => Str
+
+=item QualificationTypeStatus => Str
+
+=item [AnswerKey => Str]
+
+=item [AutoGranted => Bool]
+
+=item [AutoGrantedValue => Int]
+
+=item [Keywords => Str]
+
+=item [RetryDelayInSeconds => Int]
+
+=item [Test => Str]
+
+=item [TestDurationInSeconds => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::CreateQualificationType>
 
@@ -640,7 +791,16 @@ The C<CreateQualificationType> operation creates a new Qualification
 type, which is represented by a C<QualificationType> data structure.
 
 
-=head2 CreateWorkerBlock(Reason => Str, WorkerId => Str)
+=head2 CreateWorkerBlock
+
+=over
+
+=item Reason => Str
+
+=item WorkerId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::CreateWorkerBlock>
 
@@ -651,7 +811,14 @@ working on your HITs. For example, you can block a Worker who is
 producing poor quality work. You can block up to 100,000 Workers.
 
 
-=head2 DeleteHIT(HITId => Str)
+=head2 DeleteHIT
+
+=over
+
+=item HITId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::DeleteHIT>
 
@@ -692,7 +859,14 @@ ListReviewableHITs and ListHITs.
 
 
 
-=head2 DeleteQualificationType(QualificationTypeId => Str)
+=head2 DeleteQualificationType
+
+=over
+
+=item QualificationTypeId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::DeleteQualificationType>
 
@@ -715,7 +889,16 @@ of the Qualification type is available for reuse with
 CreateQualificationType.
 
 
-=head2 DeleteWorkerBlock(WorkerId => Str, [Reason => Str])
+=head2 DeleteWorkerBlock
+
+=over
+
+=item WorkerId => Str
+
+=item [Reason => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::DeleteWorkerBlock>
 
@@ -729,7 +912,18 @@ and returns the message E<ldquo>WorkerId is invalid.E<rdquo> If the
 specified Worker is not blocked, this operation returns successfully.
 
 
-=head2 DisassociateQualificationFromWorker(QualificationTypeId => Str, WorkerId => Str, [Reason => Str])
+=head2 DisassociateQualificationFromWorker
+
+=over
+
+=item QualificationTypeId => Str
+
+=item WorkerId => Str
+
+=item [Reason => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::DisassociateQualificationFromWorker>
 
@@ -742,7 +936,12 @@ You can provide a text message explaining why the Qualification was
 revoked. The user who had the Qualification can see this message.
 
 
-=head2 GetAccountBalance()
+=head2 GetAccountBalance
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::MTurk::GetAccountBalance>
 
@@ -752,7 +951,14 @@ The C<GetAccountBalance> operation retrieves the amount of money in
 your Amazon Mechanical Turk account.
 
 
-=head2 GetAssignment(AssignmentId => Str)
+=head2 GetAssignment
+
+=over
+
+=item AssignmentId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::GetAssignment>
 
@@ -762,7 +968,16 @@ The C<GetAssignment> operation retrieves the details of the specified
 Assignment.
 
 
-=head2 GetFileUploadURL(AssignmentId => Str, QuestionIdentifier => Str)
+=head2 GetFileUploadURL
+
+=over
+
+=item AssignmentId => Str
+
+=item QuestionIdentifier => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::GetFileUploadURL>
 
@@ -782,7 +997,14 @@ who want to create HITs asking Workers to upload files to use Amazon
 S3.
 
 
-=head2 GetHIT(HITId => Str)
+=head2 GetHIT
+
+=over
+
+=item HITId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::GetHIT>
 
@@ -791,7 +1013,16 @@ Returns: a L<Paws::MTurk::GetHITResponse> instance
 The C<GetHIT> operation retrieves the details of the specified HIT.
 
 
-=head2 GetQualificationScore(QualificationTypeId => Str, WorkerId => Str)
+=head2 GetQualificationScore
+
+=over
+
+=item QualificationTypeId => Str
+
+=item WorkerId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::GetQualificationScore>
 
@@ -808,7 +1039,14 @@ Only the owner of a Qualification type can query the value of a
 Worker's Qualification of that type.
 
 
-=head2 GetQualificationType(QualificationTypeId => Str)
+=head2 GetQualificationType
+
+=over
+
+=item QualificationTypeId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::GetQualificationType>
 
@@ -818,7 +1056,20 @@ The C<GetQualificationType>operation retrieves information about a
 Qualification type using its ID.
 
 
-=head2 ListAssignmentsForHIT(HITId => Str, [AssignmentStatuses => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 ListAssignmentsForHIT
+
+=over
+
+=item HITId => Str
+
+=item [AssignmentStatuses => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::ListAssignmentsForHIT>
 
@@ -848,7 +1099,20 @@ returns a single page of results. You can use the parameters of the
 operation to control sorting and pagination.
 
 
-=head2 ListBonusPayments([AssignmentId => Str, HITId => Str, MaxResults => Int, NextToken => Str])
+=head2 ListBonusPayments
+
+=over
+
+=item [AssignmentId => Str]
+
+=item [HITId => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::ListBonusPayments>
 
@@ -858,7 +1122,16 @@ The C<ListBonusPayments> operation retrieves the amounts of bonuses you
 have paid to Workers for a given HIT or assignment.
 
 
-=head2 ListHITs([MaxResults => Int, NextToken => Str])
+=head2 ListHITs
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::ListHITs>
 
@@ -869,7 +1142,18 @@ operation returns HITs of any status, except for HITs that have been
 deleted of with the DeleteHIT operation or that have been auto-deleted.
 
 
-=head2 ListHITsForQualificationType(QualificationTypeId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListHITsForQualificationType
+
+=over
+
+=item QualificationTypeId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::ListHITsForQualificationType>
 
@@ -881,7 +1165,18 @@ operation returns HITs of any status, except for HITs that have been
 deleted with the C<DeleteHIT> operation or that have been auto-deleted.
 
 
-=head2 ListQualificationRequests([MaxResults => Int, NextToken => Str, QualificationTypeId => Str])
+=head2 ListQualificationRequests
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [QualificationTypeId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::ListQualificationRequests>
 
@@ -893,7 +1188,22 @@ Qualification type calls this operation to poll for pending requests,
 and accepts them using the AcceptQualification operation.
 
 
-=head2 ListQualificationTypes(MustBeRequestable => Bool, [MaxResults => Int, MustBeOwnedByCaller => Bool, NextToken => Str, Query => Str])
+=head2 ListQualificationTypes
+
+=over
+
+=item MustBeRequestable => Bool
+
+=item [MaxResults => Int]
+
+=item [MustBeOwnedByCaller => Bool]
+
+=item [NextToken => Str]
+
+=item [Query => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::ListQualificationTypes>
 
@@ -903,7 +1213,20 @@ The C<ListQualificationTypes> operation returns a list of Qualification
 types, filtered by an optional search term.
 
 
-=head2 ListReviewableHITs([HITTypeId => Str, MaxResults => Int, NextToken => Str, Status => Str])
+=head2 ListReviewableHITs
+
+=over
+
+=item [HITTypeId => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::ListReviewableHITs>
 
@@ -914,7 +1237,24 @@ equal to Reviewable or Status equal to Reviewing that belong to the
 Requester calling the operation.
 
 
-=head2 ListReviewPolicyResultsForHIT(HITId => Str, [MaxResults => Int, NextToken => Str, PolicyLevels => ArrayRef[Str|Undef], RetrieveActions => Bool, RetrieveResults => Bool])
+=head2 ListReviewPolicyResultsForHIT
+
+=over
+
+=item HITId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [PolicyLevels => ArrayRef[Str|Undef]]
+
+=item [RetrieveActions => Bool]
+
+=item [RetrieveResults => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::ListReviewPolicyResultsForHIT>
 
@@ -928,7 +1268,16 @@ ListReviewPolicyResultsForHIT operation can return results for both
 Assignment-level and HIT-level review results.
 
 
-=head2 ListWorkerBlocks([MaxResults => Int, NextToken => Str])
+=head2 ListWorkerBlocks
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::ListWorkerBlocks>
 
@@ -938,7 +1287,20 @@ The C<ListWorkersBlocks> operation retrieves a list of Workers who are
 blocked from working on your HITs.
 
 
-=head2 ListWorkersWithQualificationType(QualificationTypeId => Str, [MaxResults => Int, NextToken => Str, Status => Str])
+=head2 ListWorkersWithQualificationType
+
+=over
+
+=item QualificationTypeId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::ListWorkersWithQualificationType>
 
@@ -948,7 +1310,18 @@ The C<ListWorkersWithQualificationType> operation returns all of the
 Workers that have been associated with a given Qualification type.
 
 
-=head2 NotifyWorkers(MessageText => Str, Subject => Str, WorkerIds => ArrayRef[Str|Undef])
+=head2 NotifyWorkers
+
+=over
+
+=item MessageText => Str
+
+=item Subject => Str
+
+=item WorkerIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::NotifyWorkers>
 
@@ -962,7 +1335,16 @@ to a Worker only if you have previously approved or rejected work from
 the Worker.
 
 
-=head2 RejectAssignment(AssignmentId => Str, RequesterFeedback => Str)
+=head2 RejectAssignment
+
+=over
+
+=item AssignmentId => Str
+
+=item RequesterFeedback => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::RejectAssignment>
 
@@ -981,7 +1363,16 @@ Only the Requester who created the HIT can reject an assignment for the
 HIT.
 
 
-=head2 RejectQualificationRequest(QualificationRequestId => Str, [Reason => Str])
+=head2 RejectQualificationRequest
+
+=over
+
+=item QualificationRequestId => Str
+
+=item [Reason => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::RejectQualificationRequest>
 
@@ -994,7 +1385,22 @@ You can provide a text message explaining why the request was rejected.
 The Worker who made the request can see this message.
 
 
-=head2 SendBonus(AssignmentId => Str, BonusAmount => Str, Reason => Str, WorkerId => Str, [UniqueRequestToken => Str])
+=head2 SendBonus
+
+=over
+
+=item AssignmentId => Str
+
+=item BonusAmount => Str
+
+=item Reason => Str
+
+=item WorkerId => Str
+
+=item [UniqueRequestToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::SendBonus>
 
@@ -1012,7 +1418,16 @@ account does not have enough funds to pay for both the bonus and the
 fees.
 
 
-=head2 SendTestEventNotification(Notification => L<Paws::MTurk::NotificationSpecification>, TestEventType => Str)
+=head2 SendTestEventNotification
+
+=over
+
+=item Notification => L<Paws::MTurk::NotificationSpecification>
+
+=item TestEventType => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::SendTestEventNotification>
 
@@ -1027,7 +1442,16 @@ operation, the service attempts to send the test notification
 immediately.
 
 
-=head2 UpdateExpirationForHIT(ExpireAt => Str, HITId => Str)
+=head2 UpdateExpirationForHIT
+
+=over
+
+=item ExpireAt => Str
+
+=item HITId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::UpdateExpirationForHIT>
 
@@ -1038,7 +1462,16 @@ expiration time of a HIT. If you update it to a time in the past, the
 HIT will be immediately expired.
 
 
-=head2 UpdateHITReviewStatus(HITId => Str, [Revert => Bool])
+=head2 UpdateHITReviewStatus
+
+=over
+
+=item HITId => Str
+
+=item [Revert => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::UpdateHITReviewStatus>
 
@@ -1050,7 +1483,16 @@ Reviewing, or it can revert a Reviewing HIT back to the Reviewable
 status.
 
 
-=head2 UpdateHITTypeOfHIT(HITId => Str, HITTypeId => Str)
+=head2 UpdateHITTypeOfHIT
+
+=over
+
+=item HITId => Str
+
+=item HITTypeId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::UpdateHITTypeOfHIT>
 
@@ -1063,7 +1505,18 @@ The HIT takes on the properties of the new HITType in place of the old
 ones.
 
 
-=head2 UpdateNotificationSettings(HITTypeId => Str, [Active => Bool, Notification => L<Paws::MTurk::NotificationSpecification>])
+=head2 UpdateNotificationSettings
+
+=over
+
+=item HITTypeId => Str
+
+=item [Active => Bool]
+
+=item [Notification => L<Paws::MTurk::NotificationSpecification>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::UpdateNotificationSettings>
 
@@ -1083,7 +1536,30 @@ notification specification, or one must be provided in the same call to
 C<UpdateNotificationSettings>.
 
 
-=head2 UpdateQualificationType(QualificationTypeId => Str, [AnswerKey => Str, AutoGranted => Bool, AutoGrantedValue => Int, Description => Str, QualificationTypeStatus => Str, RetryDelayInSeconds => Int, Test => Str, TestDurationInSeconds => Int])
+=head2 UpdateQualificationType
+
+=over
+
+=item QualificationTypeId => Str
+
+=item [AnswerKey => Str]
+
+=item [AutoGranted => Bool]
+
+=item [AutoGrantedValue => Int]
+
+=item [Description => Str]
+
+=item [QualificationTypeStatus => Str]
+
+=item [RetryDelayInSeconds => Int]
+
+=item [Test => Str]
+
+=item [TestDurationInSeconds => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MTurk::UpdateQualificationType>
 

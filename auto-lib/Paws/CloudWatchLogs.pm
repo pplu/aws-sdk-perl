@@ -1,6 +1,7 @@
 package Paws::CloudWatchLogs;
   use Moose;
   sub service { 'logs' }
+  sub signing_name { 'logs' }
   sub version { '2014-03-28' }
   sub target_prefix { 'Logs_20140328' }
   sub json_version { "1.1" }
@@ -397,7 +398,16 @@ can then access the raw log data when you need it.
 
 =head1 METHODS
 
-=head2 AssociateKmsKey(KmsKeyId => Str, LogGroupName => Str)
+=head2 AssociateKmsKey
+
+=over
+
+=item KmsKeyId => Str
+
+=item LogGroupName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::AssociateKmsKey>
 
@@ -422,7 +432,14 @@ exist or the CMK is disabled, you will receive an
 C<InvalidParameterException> error.
 
 
-=head2 CancelExportTask(TaskId => Str)
+=head2 CancelExportTask
+
+=over
+
+=item TaskId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::CancelExportTask>
 
@@ -433,7 +450,26 @@ Cancels the specified export task.
 The task must be in the C<PENDING> or C<RUNNING> state.
 
 
-=head2 CreateExportTask(Destination => Str, From => Int, LogGroupName => Str, To => Int, [DestinationPrefix => Str, LogStreamNamePrefix => Str, TaskName => Str])
+=head2 CreateExportTask
+
+=over
+
+=item Destination => Str
+
+=item From => Int
+
+=item LogGroupName => Str
+
+=item To => Int
+
+=item [DestinationPrefix => Str]
+
+=item [LogStreamNamePrefix => Str]
+
+=item [TaskName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::CreateExportTask>
 
@@ -455,7 +491,18 @@ can specify a prefix to be used as the Amazon S3 key prefix for all
 exported objects.
 
 
-=head2 CreateLogGroup(LogGroupName => Str, [KmsKeyId => Str, Tags => L<Paws::CloudWatchLogs::Tags>])
+=head2 CreateLogGroup
+
+=over
+
+=item LogGroupName => Str
+
+=item [KmsKeyId => Str]
+
+=item [Tags => L<Paws::CloudWatchLogs::Tags>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::CreateLogGroup>
 
@@ -495,7 +542,16 @@ not exist or the CMK is disabled, you will receive an
 C<InvalidParameterException> error.
 
 
-=head2 CreateLogStream(LogGroupName => Str, LogStreamName => Str)
+=head2 CreateLogStream
+
+=over
+
+=item LogGroupName => Str
+
+=item LogStreamName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::CreateLogStream>
 
@@ -526,7 +582,14 @@ The ':' (colon) and '*' (asterisk) characters are not allowed.
 
 
 
-=head2 DeleteDestination(DestinationName => Str)
+=head2 DeleteDestination
+
+=over
+
+=item DestinationName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteDestination>
 
@@ -537,7 +600,14 @@ subscription filters that publish to it. This operation does not delete
 the physical resource encapsulated by the destination.
 
 
-=head2 DeleteLogGroup(LogGroupName => Str)
+=head2 DeleteLogGroup
+
+=over
+
+=item LogGroupName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteLogGroup>
 
@@ -547,7 +617,16 @@ Deletes the specified log group and permanently deletes all the
 archived log events associated with the log group.
 
 
-=head2 DeleteLogStream(LogGroupName => Str, LogStreamName => Str)
+=head2 DeleteLogStream
+
+=over
+
+=item LogGroupName => Str
+
+=item LogStreamName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteLogStream>
 
@@ -557,7 +636,16 @@ Deletes the specified log stream and permanently deletes all the
 archived log events associated with the log stream.
 
 
-=head2 DeleteMetricFilter(FilterName => Str, LogGroupName => Str)
+=head2 DeleteMetricFilter
+
+=over
+
+=item FilterName => Str
+
+=item LogGroupName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteMetricFilter>
 
@@ -566,7 +654,14 @@ Returns: nothing
 Deletes the specified metric filter.
 
 
-=head2 DeleteResourcePolicy([PolicyName => Str])
+=head2 DeleteResourcePolicy
+
+=over
+
+=item [PolicyName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteResourcePolicy>
 
@@ -576,7 +671,14 @@ Deletes a resource policy from this account. This revokes the access of
 the identities in that policy to put log events to this account.
 
 
-=head2 DeleteRetentionPolicy(LogGroupName => Str)
+=head2 DeleteRetentionPolicy
+
+=over
+
+=item LogGroupName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteRetentionPolicy>
 
@@ -588,7 +690,16 @@ Log events do not expire if they belong to log groups without a
 retention policy.
 
 
-=head2 DeleteSubscriptionFilter(FilterName => Str, LogGroupName => Str)
+=head2 DeleteSubscriptionFilter
+
+=over
+
+=item FilterName => Str
+
+=item LogGroupName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteSubscriptionFilter>
 
@@ -597,7 +708,18 @@ Returns: nothing
 Deletes the specified subscription filter.
 
 
-=head2 DescribeDestinations([DestinationNamePrefix => Str, Limit => Int, NextToken => Str])
+=head2 DescribeDestinations
+
+=over
+
+=item [DestinationNamePrefix => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeDestinations>
 
@@ -607,7 +729,20 @@ Lists all your destinations. The results are ASCII-sorted by
 destination name.
 
 
-=head2 DescribeExportTasks([Limit => Int, NextToken => Str, StatusCode => Str, TaskId => Str])
+=head2 DescribeExportTasks
+
+=over
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [StatusCode => Str]
+
+=item [TaskId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeExportTasks>
 
@@ -617,7 +752,18 @@ Lists the specified export tasks. You can list all your export tasks or
 filter the results based on task ID or task status.
 
 
-=head2 DescribeLogGroups([Limit => Int, LogGroupNamePrefix => Str, NextToken => Str])
+=head2 DescribeLogGroups
+
+=over
+
+=item [Limit => Int]
+
+=item [LogGroupNamePrefix => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeLogGroups>
 
@@ -628,7 +774,24 @@ filter the results by prefix. The results are ASCII-sorted by log group
 name.
 
 
-=head2 DescribeLogStreams(LogGroupName => Str, [Descending => Bool, Limit => Int, LogStreamNamePrefix => Str, NextToken => Str, OrderBy => Str])
+=head2 DescribeLogStreams
+
+=over
+
+=item LogGroupName => Str
+
+=item [Descending => Bool]
+
+=item [Limit => Int]
+
+=item [LogStreamNamePrefix => Str]
+
+=item [NextToken => Str]
+
+=item [OrderBy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeLogStreams>
 
@@ -642,7 +805,24 @@ This operation has a limit of five transactions per second, after which
 transactions are throttled.
 
 
-=head2 DescribeMetricFilters([FilterNamePrefix => Str, Limit => Int, LogGroupName => Str, MetricName => Str, MetricNamespace => Str, NextToken => Str])
+=head2 DescribeMetricFilters
+
+=over
+
+=item [FilterNamePrefix => Str]
+
+=item [Limit => Int]
+
+=item [LogGroupName => Str]
+
+=item [MetricName => Str]
+
+=item [MetricNamespace => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeMetricFilters>
 
@@ -653,7 +833,16 @@ or filter the results by log name, prefix, metric name, or metric
 namespace. The results are ASCII-sorted by filter name.
 
 
-=head2 DescribeResourcePolicies([Limit => Int, NextToken => Str])
+=head2 DescribeResourcePolicies
+
+=over
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeResourcePolicies>
 
@@ -662,7 +851,20 @@ Returns: a L<Paws::CloudWatchLogs::DescribeResourcePoliciesResponse> instance
 Lists the resource policies in this account.
 
 
-=head2 DescribeSubscriptionFilters(LogGroupName => Str, [FilterNamePrefix => Str, Limit => Int, NextToken => Str])
+=head2 DescribeSubscriptionFilters
+
+=over
+
+=item LogGroupName => Str
+
+=item [FilterNamePrefix => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeSubscriptionFilters>
 
@@ -673,7 +875,14 @@ list all the subscription filters or filter the results by prefix. The
 results are ASCII-sorted by filter name.
 
 
-=head2 DisassociateKmsKey(LogGroupName => Str)
+=head2 DisassociateKmsKey
+
+=over
+
+=item LogGroupName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DisassociateKmsKey>
 
@@ -692,7 +901,28 @@ Note that it can take up to 5 minutes for this operation to take
 effect.
 
 
-=head2 FilterLogEvents(LogGroupName => Str, [EndTime => Int, FilterPattern => Str, Interleaved => Bool, Limit => Int, LogStreamNames => ArrayRef[Str|Undef], NextToken => Str, StartTime => Int])
+=head2 FilterLogEvents
+
+=over
+
+=item LogGroupName => Str
+
+=item [EndTime => Int]
+
+=item [FilterPattern => Str]
+
+=item [Interleaved => Bool]
+
+=item [Limit => Int]
+
+=item [LogStreamNames => ArrayRef[Str|Undef]]
+
+=item [NextToken => Str]
+
+=item [StartTime => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::FilterLogEvents>
 
@@ -709,7 +939,26 @@ more log events available, and you can get additional results by
 specifying the token in a subsequent call.
 
 
-=head2 GetLogEvents(LogGroupName => Str, LogStreamName => Str, [EndTime => Int, Limit => Int, NextToken => Str, StartFromHead => Bool, StartTime => Int])
+=head2 GetLogEvents
+
+=over
+
+=item LogGroupName => Str
+
+=item LogStreamName => Str
+
+=item [EndTime => Int]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [StartFromHead => Bool]
+
+=item [StartTime => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::GetLogEvents>
 
@@ -723,7 +972,14 @@ response size of 1MB (up to 10,000 log events). You can get additional
 log events by specifying one of the tokens in a subsequent call.
 
 
-=head2 ListTagsLogGroup(LogGroupName => Str)
+=head2 ListTagsLogGroup
+
+=over
+
+=item LogGroupName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::ListTagsLogGroup>
 
@@ -732,7 +988,18 @@ Returns: a L<Paws::CloudWatchLogs::ListTagsLogGroupResponse> instance
 Lists the tags for the specified log group.
 
 
-=head2 PutDestination(DestinationName => Str, RoleArn => Str, TargetArn => Str)
+=head2 PutDestination
+
+=over
+
+=item DestinationName => Str
+
+=item RoleArn => Str
+
+=item TargetArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::PutDestination>
 
@@ -753,7 +1020,16 @@ the destination owner must call PutDestinationPolicy after
 C<PutDestination>.
 
 
-=head2 PutDestinationPolicy(AccessPolicy => Str, DestinationName => Str)
+=head2 PutDestinationPolicy
+
+=over
+
+=item AccessPolicy => Str
+
+=item DestinationName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::PutDestinationPolicy>
 
@@ -766,7 +1042,20 @@ that is used to authorize claims to register a subscription filter
 against a given destination.
 
 
-=head2 PutLogEvents(LogEvents => ArrayRef[L<Paws::CloudWatchLogs::InputLogEvent>], LogGroupName => Str, LogStreamName => Str, [SequenceToken => Str])
+=head2 PutLogEvents
+
+=over
+
+=item LogEvents => ArrayRef[L<Paws::CloudWatchLogs::InputLogEvent>]
+
+=item LogGroupName => Str
+
+=item LogStreamName => Str
+
+=item [SequenceToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::PutLogEvents>
 
@@ -820,7 +1109,20 @@ hours. Otherwise, the operation fails.
 
 
 
-=head2 PutMetricFilter(FilterName => Str, FilterPattern => Str, LogGroupName => Str, MetricTransformations => ArrayRef[L<Paws::CloudWatchLogs::MetricTransformation>])
+=head2 PutMetricFilter
+
+=over
+
+=item FilterName => Str
+
+=item FilterPattern => Str
+
+=item LogGroupName => Str
+
+=item MetricTransformations => ArrayRef[L<Paws::CloudWatchLogs::MetricTransformation>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::PutMetricFilter>
 
@@ -834,7 +1136,16 @@ The maximum number of metric filters that can be associated with a log
 group is 100.
 
 
-=head2 PutResourcePolicy([PolicyDocument => Str, PolicyName => Str])
+=head2 PutResourcePolicy
+
+=over
+
+=item [PolicyDocument => Str]
+
+=item [PolicyName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::PutResourcePolicy>
 
@@ -845,7 +1156,16 @@ log events to this account, such as Amazon Route 53. An account can
 have up to 50 resource policies per region.
 
 
-=head2 PutRetentionPolicy(LogGroupName => Str, RetentionInDays => Int)
+=head2 PutRetentionPolicy
+
+=over
+
+=item LogGroupName => Str
+
+=item RetentionInDays => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::PutRetentionPolicy>
 
@@ -856,7 +1176,24 @@ allows you to configure the number of days for which to retain log
 events in the specified log group.
 
 
-=head2 PutSubscriptionFilter(DestinationArn => Str, FilterName => Str, FilterPattern => Str, LogGroupName => Str, [Distribution => Str, RoleArn => Str])
+=head2 PutSubscriptionFilter
+
+=over
+
+=item DestinationArn => Str
+
+=item FilterName => Str
+
+=item FilterPattern => Str
+
+=item LogGroupName => Str
+
+=item [Distribution => Str]
+
+=item [RoleArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::PutSubscriptionFilter>
 
@@ -898,7 +1235,16 @@ name in C<filterName>. Otherwise, the call fails because you cannot
 associate a second filter with a log group.
 
 
-=head2 TagLogGroup(LogGroupName => Str, Tags => L<Paws::CloudWatchLogs::Tags>)
+=head2 TagLogGroup
+
+=over
+
+=item LogGroupName => Str
+
+=item Tags => L<Paws::CloudWatchLogs::Tags>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::TagLogGroup>
 
@@ -915,7 +1261,16 @@ CloudWatch Logs
 in the I<Amazon CloudWatch Logs User Guide>.
 
 
-=head2 TestMetricFilter(FilterPattern => Str, LogEventMessages => ArrayRef[Str|Undef])
+=head2 TestMetricFilter
+
+=over
+
+=item FilterPattern => Str
+
+=item LogEventMessages => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::TestMetricFilter>
 
@@ -926,7 +1281,16 @@ event messages. You can use this operation to validate the correctness
 of a metric filter pattern.
 
 
-=head2 UntagLogGroup(LogGroupName => Str, Tags => ArrayRef[Str|Undef])
+=head2 UntagLogGroup
+
+=over
+
+=item LogGroupName => Str
+
+=item Tags => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::UntagLogGroup>
 

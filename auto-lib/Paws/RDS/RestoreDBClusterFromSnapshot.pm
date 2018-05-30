@@ -2,9 +2,11 @@
 package Paws::RDS::RestoreDBClusterFromSnapshot;
   use Moose;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has BacktrackWindow => (is => 'ro', isa => 'Int');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -52,6 +54,27 @@ restored DB cluster can be created in.
 
 
 
+=head2 BacktrackWindow => Int
+
+The target backtrack window, in seconds. To disable backtracking, set
+this value to 0.
+
+Default: 0
+
+Constraints:
+
+=over
+
+=item *
+
+If specified, this value must be set to a number from 0 to 259,200 (72
+hours).
+
+=back
+
+
+
+
 =head2 DatabaseName => Str
 
 The database name for the restored DB cluster.
@@ -93,6 +116,13 @@ Constraints: If supplied, must match the name of an existing
 DBSubnetGroup.
 
 Example: C<mySubnetgroup>
+
+
+
+=head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
+
+The list of logs that the restored DB cluster is to export to
+CloudWatch Logs.
 
 
 

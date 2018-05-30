@@ -46,7 +46,7 @@ Describes the configuration of a destination in Splunk.
 
 =head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
 
-  The CloudWatch logging options for your delivery stream.
+  The Amazon CloudWatch logging options for your delivery stream.
 
 
 =head2 HECAcknowledgmentTimeoutInSeconds => Int

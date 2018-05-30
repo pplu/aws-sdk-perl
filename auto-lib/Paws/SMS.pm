@@ -1,6 +1,7 @@
 package Paws::SMS;
   use Moose;
   sub service { 'sms' }
+  sub signing_name { 'sms' }
   sub version { '2016-10-24' }
   sub target_prefix { 'AWSServerMigrationService_V2016_10_24' }
   sub json_version { "1.1" }
@@ -197,7 +198,24 @@ servers to EC2.
 
 =head1 METHODS
 
-=head2 CreateReplicationJob(Frequency => Int, SeedReplicationTime => Str, ServerId => Str, [Description => Str, LicenseType => Str, RoleName => Str])
+=head2 CreateReplicationJob
+
+=over
+
+=item Frequency => Int
+
+=item SeedReplicationTime => Str
+
+=item ServerId => Str
+
+=item [Description => Str]
+
+=item [LicenseType => Str]
+
+=item [RoleName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SMS::CreateReplicationJob>
 
@@ -210,7 +228,14 @@ replicate your server to AWS. Each ReplicationRun will result in the
 creation of an AWS AMI.
 
 
-=head2 DeleteReplicationJob(ReplicationJobId => Str)
+=head2 DeleteReplicationJob
+
+=over
+
+=item ReplicationJobId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SMS::DeleteReplicationJob>
 
@@ -222,7 +247,12 @@ of the S3 bucket used to store SMS artifacts, but will not delete any
 AMIs created by the SMS service.
 
 
-=head2 DeleteServerCatalog()
+=head2 DeleteServerCatalog
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::SMS::DeleteServerCatalog>
 
@@ -233,7 +263,14 @@ catalog. This means that these servers will no longer be accessible to
 the Server Migration Service.
 
 
-=head2 DisassociateConnector(ConnectorId => Str)
+=head2 DisassociateConnector
+
+=over
+
+=item ConnectorId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SMS::DisassociateConnector>
 
@@ -244,7 +281,16 @@ Server Migration Service, rendering it unavailable to support
 replication jobs.
 
 
-=head2 GetConnectors([MaxResults => Int, NextToken => Str])
+=head2 GetConnectors
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SMS::GetConnectors>
 
@@ -254,7 +300,18 @@ The GetConnectors API returns a list of connectors that are registered
 with the Server Migration Service.
 
 
-=head2 GetReplicationJobs([MaxResults => Int, NextToken => Str, ReplicationJobId => Str])
+=head2 GetReplicationJobs
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ReplicationJobId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SMS::GetReplicationJobs>
 
@@ -265,7 +322,18 @@ their details. This API returns a paginated list, that may be
 consecutively called with nextToken to retrieve all ReplicationJobs.
 
 
-=head2 GetReplicationRuns(ReplicationJobId => Str, [MaxResults => Int, NextToken => Str])
+=head2 GetReplicationRuns
+
+=over
+
+=item ReplicationJobId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SMS::GetReplicationRuns>
 
@@ -277,7 +345,16 @@ consecutively called with nextToken to retrieve all ReplicationRuns for
 a ReplicationJob.
 
 
-=head2 GetServers([MaxResults => Int, NextToken => Str])
+=head2 GetServers
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SMS::GetServers>
 
@@ -288,7 +365,12 @@ catalog. For this call to succeed, you must previously have called
 ImportServerCatalog.
 
 
-=head2 ImportServerCatalog()
+=head2 ImportServerCatalog
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::SMS::ImportServerCatalog>
 
@@ -301,7 +383,16 @@ This API call returns immediately, but may take some time to retrieve
 all of the servers.
 
 
-=head2 StartOnDemandReplicationRun(ReplicationJobId => Str, [Description => Str])
+=head2 StartOnDemandReplicationRun
+
+=over
+
+=item ReplicationJobId => Str
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SMS::StartOnDemandReplicationRun>
 
@@ -314,7 +405,24 @@ StartOnDemandReplicationRun is subject to limits on how many on demand
 ReplicationRuns you may call per 24-hour period.
 
 
-=head2 UpdateReplicationJob(ReplicationJobId => Str, [Description => Str, Frequency => Int, LicenseType => Str, NextReplicationRunStartTime => Str, RoleName => Str])
+=head2 UpdateReplicationJob
+
+=over
+
+=item ReplicationJobId => Str
+
+=item [Description => Str]
+
+=item [Frequency => Int]
+
+=item [LicenseType => Str]
+
+=item [NextReplicationRunStartTime => Str]
+
+=item [RoleName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SMS::UpdateReplicationJob>
 

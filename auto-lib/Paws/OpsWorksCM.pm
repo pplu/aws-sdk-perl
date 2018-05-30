@@ -1,6 +1,7 @@
 package Paws::OpsWorksCM;
   use Moose;
   sub service { 'opsworks-cm' }
+  sub signing_name { 'opsworks-cm' }
   sub version { '2016-11-01' }
   sub target_prefix { 'OpsWorksCM_V2016_11_01' }
   sub json_version { "1.1" }
@@ -199,7 +200,18 @@ All API operations allow for five requests per second with a burst of
 
 =head1 METHODS
 
-=head2 AssociateNode(EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>], NodeName => Str, ServerName => Str)
+=head2 AssociateNode
+
+=over
+
+=item EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]
+
+=item NodeName => Str
+
+=item ServerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorksCM::AssociateNode>
 
@@ -231,7 +243,16 @@ Scaling configurations, AWS Cloudformation templates, or the user data
 of a server's instance.
 
 
-=head2 CreateBackup(ServerName => Str, [Description => Str])
+=head2 CreateBackup
+
+=over
+
+=item ServerName => Str
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorksCM::CreateBackup>
 
@@ -255,7 +276,46 @@ not found. A C<ValidationException> is thrown when parameters of the
 request are not valid.
 
 
-=head2 CreateServer(InstanceProfileArn => Str, InstanceType => Str, ServerName => Str, ServiceRoleArn => Str, [AssociatePublicIpAddress => Bool, BackupId => Str, BackupRetentionCount => Int, DisableAutomatedBackup => Bool, Engine => Str, EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>], EngineModel => Str, EngineVersion => Str, KeyPair => Str, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, SecurityGroupIds => ArrayRef[Str|Undef], SubnetIds => ArrayRef[Str|Undef]])
+=head2 CreateServer
+
+=over
+
+=item InstanceProfileArn => Str
+
+=item InstanceType => Str
+
+=item ServerName => Str
+
+=item ServiceRoleArn => Str
+
+=item [AssociatePublicIpAddress => Bool]
+
+=item [BackupId => Str]
+
+=item [BackupRetentionCount => Int]
+
+=item [DisableAutomatedBackup => Bool]
+
+=item [Engine => Str]
+
+=item [EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]]
+
+=item [EngineModel => Str]
+
+=item [EngineVersion => Str]
+
+=item [KeyPair => Str]
+
+=item [PreferredBackupWindow => Str]
+
+=item [PreferredMaintenanceWindow => Str]
+
+=item [SecurityGroupIds => ArrayRef[Str|Undef]]
+
+=item [SubnetIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorksCM::CreateServer>
 
@@ -294,7 +354,14 @@ addresses and address ranges only. To edit security group rules, open
 Security Groups in the navigation pane of the EC2 management console.
 
 
-=head2 DeleteBackup(BackupId => Str)
+=head2 DeleteBackup
+
+=over
+
+=item BackupId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorksCM::DeleteBackup>
 
@@ -309,7 +376,14 @@ does not exist. A C<ValidationException> is thrown when parameters of
 the request are not valid.
 
 
-=head2 DeleteServer(ServerName => Str)
+=head2 DeleteServer
+
+=over
+
+=item ServerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorksCM::DeleteServer>
 
@@ -329,7 +403,12 @@ does not exist. A C<ValidationException> is raised when parameters of
 the request are not valid.
 
 
-=head2 DescribeAccountAttributes()
+=head2 DescribeAccountAttributes
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::OpsWorksCM::DescribeAccountAttributes>
 
@@ -341,7 +420,20 @@ limits before they are reached or exceeded.
 This operation is synchronous.
 
 
-=head2 DescribeBackups([BackupId => Str, MaxResults => Int, NextToken => Str, ServerName => Str])
+=head2 DescribeBackups
+
+=over
+
+=item [BackupId => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ServerName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorksCM::DescribeBackups>
 
@@ -358,7 +450,18 @@ exist. A C<ValidationException> is raised when parameters of the
 request are not valid.
 
 
-=head2 DescribeEvents(ServerName => Str, [MaxResults => Int, NextToken => Str])
+=head2 DescribeEvents
+
+=over
+
+=item ServerName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorksCM::DescribeEvents>
 
@@ -374,7 +477,16 @@ exist. A C<ValidationException> is raised when parameters of the
 request are not valid.
 
 
-=head2 DescribeNodeAssociationStatus(NodeAssociationStatusToken => Str, ServerName => Str)
+=head2 DescribeNodeAssociationStatus
+
+=over
+
+=item NodeAssociationStatusToken => Str
+
+=item ServerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorksCM::DescribeNodeAssociationStatus>
 
@@ -389,7 +501,18 @@ server does not exist. A C<ValidationException> is raised when
 parameters of the request are not valid.
 
 
-=head2 DescribeServers([MaxResults => Int, NextToken => Str, ServerName => Str])
+=head2 DescribeServers
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ServerName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorksCM::DescribeServers>
 
@@ -406,7 +529,18 @@ exist. A C<ValidationException> is raised when parameters of the
 request are not valid.
 
 
-=head2 DisassociateNode(NodeName => Str, ServerName => Str, [EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]])
+=head2 DisassociateNode
+
+=over
+
+=item NodeName => Str
+
+=item ServerName => Str
+
+=item [EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorksCM::DisassociateNode>
 
@@ -425,7 +559,20 @@ A C<ValidationException> is raised when parameters of the request are
 not valid.
 
 
-=head2 RestoreServer(BackupId => Str, ServerName => Str, [InstanceType => Str, KeyPair => Str])
+=head2 RestoreServer
+
+=over
+
+=item BackupId => Str
+
+=item ServerName => Str
+
+=item [InstanceType => Str]
+
+=item [KeyPair => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorksCM::RestoreServer>
 
@@ -446,7 +593,16 @@ not exist. A C<ValidationException> is raised when parameters of the
 request are not valid.
 
 
-=head2 StartMaintenance(ServerName => Str, [EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]])
+=head2 StartMaintenance
+
+=over
+
+=item ServerName => Str
+
+=item [EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorksCM::StartMaintenance>
 
@@ -464,7 +620,22 @@ exist. A C<ValidationException> is raised when parameters of the
 request are not valid.
 
 
-=head2 UpdateServer(ServerName => Str, [BackupRetentionCount => Int, DisableAutomatedBackup => Bool, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str])
+=head2 UpdateServer
+
+=over
+
+=item ServerName => Str
+
+=item [BackupRetentionCount => Int]
+
+=item [DisableAutomatedBackup => Bool]
+
+=item [PreferredBackupWindow => Str]
+
+=item [PreferredMaintenanceWindow => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorksCM::UpdateServer>
 
@@ -475,7 +646,18 @@ Updates settings for a server.
 This operation is synchronous.
 
 
-=head2 UpdateServerEngineAttributes(AttributeName => Str, ServerName => Str, [AttributeValue => Str])
+=head2 UpdateServerEngineAttributes
+
+=over
+
+=item AttributeName => Str
+
+=item ServerName => Str
+
+=item [AttributeValue => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::OpsWorksCM::UpdateServerEngineAttributes>
 

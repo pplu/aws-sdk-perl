@@ -1,6 +1,7 @@
 package Paws::CloudWatchEvents;
   use Moose;
   sub service { 'events' }
+  sub signing_name { 'events' }
   sub version { '2015-10-07' }
   sub target_prefix { 'AWSEvents' }
   sub json_version { "1.1" }
@@ -153,7 +154,14 @@ see the Amazon CloudWatch Events User Guide
 
 =head1 METHODS
 
-=head2 DeleteRule(Name => Str)
+=head2 DeleteRule
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::DeleteRule>
 
@@ -169,7 +177,12 @@ deleted rule. Please allow a short period of time for changes to take
 effect.
 
 
-=head2 DescribeEventBus()
+=head2 DescribeEventBus
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::DescribeEventBus>
 
@@ -181,7 +194,14 @@ policy. To enable your account to receive events from other accounts,
 use PutPermission.
 
 
-=head2 DescribeRule(Name => Str)
+=head2 DescribeRule
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::DescribeRule>
 
@@ -190,7 +210,14 @@ Returns: a L<Paws::CloudWatchEvents::DescribeRuleResponse> instance
 Describes the specified rule.
 
 
-=head2 DisableRule(Name => Str)
+=head2 DisableRule
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::DisableRule>
 
@@ -204,7 +231,14 @@ disabled rule. Please allow a short period of time for changes to take
 effect.
 
 
-=head2 EnableRule(Name => Str)
+=head2 EnableRule
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::EnableRule>
 
@@ -218,7 +252,18 @@ matching to a newly enabled rule. Please allow a short period of time
 for changes to take effect.
 
 
-=head2 ListRuleNamesByTarget(TargetArn => Str, [Limit => Int, NextToken => Str])
+=head2 ListRuleNamesByTarget
+
+=over
+
+=item TargetArn => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::ListRuleNamesByTarget>
 
@@ -229,7 +274,18 @@ rules in Amazon CloudWatch Events can invoke a specific target in your
 account.
 
 
-=head2 ListRules([Limit => Int, NamePrefix => Str, NextToken => Str])
+=head2 ListRules
+
+=over
+
+=item [Limit => Int]
+
+=item [NamePrefix => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::ListRules>
 
@@ -239,7 +295,18 @@ Lists your Amazon CloudWatch Events rules. You can either list all the
 rules or you can provide a prefix to match to the rule names.
 
 
-=head2 ListTargetsByRule(Rule => Str, [Limit => Int, NextToken => Str])
+=head2 ListTargetsByRule
+
+=over
+
+=item Rule => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::ListTargetsByRule>
 
@@ -248,7 +315,14 @@ Returns: a L<Paws::CloudWatchEvents::ListTargetsByRuleResponse> instance
 Lists the targets assigned to the specified rule.
 
 
-=head2 PutEvents(Entries => ArrayRef[L<Paws::CloudWatchEvents::PutEventsRequestEntry>])
+=head2 PutEvents
+
+=over
+
+=item Entries => ArrayRef[L<Paws::CloudWatchEvents::PutEventsRequestEntry>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::PutEvents>
 
@@ -258,7 +332,18 @@ Sends custom events to Amazon CloudWatch Events so that they can be
 matched to rules.
 
 
-=head2 PutPermission(Action => Str, Principal => Str, StatementId => Str)
+=head2 PutPermission
+
+=over
+
+=item Action => Str
+
+=item Principal => Str
+
+=item StatementId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::PutPermission>
 
@@ -280,7 +365,24 @@ The permission policy on the default event bus cannot exceed 10KB in
 size.
 
 
-=head2 PutRule(Name => Str, [Description => Str, EventPattern => Str, RoleArn => Str, ScheduleExpression => Str, State => Str])
+=head2 PutRule
+
+=over
+
+=item Name => Str
+
+=item [Description => Str]
+
+=item [EventPattern => Str]
+
+=item [RoleArn => Str]
+
+=item [ScheduleExpression => Str]
+
+=item [State => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::PutRule>
 
@@ -312,7 +414,16 @@ when creating event patterns so that they match the ARN syntax in the
 event you want to match.
 
 
-=head2 PutTargets(Rule => Str, Targets => ArrayRef[L<Paws::CloudWatchEvents::Target>])
+=head2 PutTargets
+
+=over
+
+=item Rule => Str
+
+=item Targets => ArrayRef[L<Paws::CloudWatchEvents::Target>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::PutTargets>
 
@@ -456,7 +567,14 @@ response and each entry in C<FailedEntries> provides the ID of the
 failed target and the error code.
 
 
-=head2 RemovePermission(StatementId => Str)
+=head2 RemovePermission
+
+=over
+
+=item StatementId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::RemovePermission>
 
@@ -469,7 +587,16 @@ granted it permission with C<PutPermission>. You can find the
 C<StatementId> by using DescribeEventBus.
 
 
-=head2 RemoveTargets(Ids => ArrayRef[Str|Undef], Rule => Str)
+=head2 RemoveTargets
+
+=over
+
+=item Ids => ArrayRef[Str|Undef]
+
+=item Rule => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::RemoveTargets>
 
@@ -488,7 +615,16 @@ response and each entry in C<FailedEntries> provides the ID of the
 failed target and the error code.
 
 
-=head2 TestEventPattern(Event => Str, EventPattern => Str)
+=head2 TestEventPattern
+
+=over
+
+=item Event => Str
+
+=item EventPattern => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::TestEventPattern>
 

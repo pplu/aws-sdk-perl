@@ -4,6 +4,7 @@ package Paws::SSM::Command;
   has Comment => (is => 'ro', isa => 'Str');
   has CompletedCount => (is => 'ro', isa => 'Int');
   has DocumentName => (is => 'ro', isa => 'Str');
+  has DocumentVersion => (is => 'ro', isa => 'Str');
   has ErrorCount => (is => 'ro', isa => 'Int');
   has ExpiresAfter => (is => 'ro', isa => 'Str');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -77,6 +78,11 @@ Undeliverable.
 =head2 DocumentName => Str
 
   The name of the document requested for execution.
+
+
+=head2 DocumentVersion => Str
+
+  The SSM document version.
 
 
 =head2 ErrorCount => Int

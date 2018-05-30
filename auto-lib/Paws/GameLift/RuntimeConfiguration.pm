@@ -71,6 +71,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -78,6 +82,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -90,6 +98,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -123,39 +135,19 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 

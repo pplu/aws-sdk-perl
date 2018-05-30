@@ -92,7 +92,7 @@ wildcards; greater than or less than comparison is not supported).
 
 =item *
 
-C<timestamp> - The timestamp of the Spot price history, in UTC format
+C<timestamp> - The time stamp of the Spot price history, in UTC format
 (for example, I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). You can use
 wildcards (* and ?). Greater than or less than comparison is not
 supported.

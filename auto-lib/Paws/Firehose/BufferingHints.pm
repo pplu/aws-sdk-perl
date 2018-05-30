@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::B
 
 Describes hints for the buffering to perform before delivering data to
 the destination. These options are treated as hints, and therefore
-Kinesis Data Firehose might choose to use different values whenever it
-is optimal.
+Kinesis Data Firehose might choose to use different values when it is
+optimal.
 
 =head1 ATTRIBUTES
 

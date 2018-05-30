@@ -1,6 +1,7 @@
 package Paws::LexModels;
   use Moose;
   sub service { 'models.lex' }
+  sub signing_name { 'lex' }
   sub version { '2017-04-19' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -462,7 +463,16 @@ conversational bots for new and existing client applications.
 
 =head1 METHODS
 
-=head2 CreateBotVersion(Name => Str, [Checksum => Str])
+=head2 CreateBotVersion
+
+=over
+
+=item Name => Str
+
+=item [Checksum => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::CreateBotVersion>
 
@@ -485,7 +495,16 @@ This operation requires permission for the C<lex:CreateBotVersion>
 action.
 
 
-=head2 CreateIntentVersion(Name => Str, [Checksum => Str])
+=head2 CreateIntentVersion
+
+=over
+
+=item Name => Str
+
+=item [Checksum => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::CreateIntentVersion>
 
@@ -508,7 +527,16 @@ This operation requires permissions to perform the
 C<lex:CreateIntentVersion> action.
 
 
-=head2 CreateSlotTypeVersion(Name => Str, [Checksum => Str])
+=head2 CreateSlotTypeVersion
+
+=over
+
+=item Name => Str
+
+=item [Checksum => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::CreateSlotTypeVersion>
 
@@ -531,7 +559,14 @@ This operation requires permissions for the
 C<lex:CreateSlotTypeVersion> action.
 
 
-=head2 DeleteBot(Name => Str)
+=head2 DeleteBot
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::DeleteBot>
 
@@ -551,7 +586,16 @@ successful.
 This operation requires permissions for the C<lex:DeleteBot> action.
 
 
-=head2 DeleteBotAlias(BotName => Str, Name => Str)
+=head2 DeleteBotAlias
+
+=over
+
+=item BotName => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::DeleteBotAlias>
 
@@ -569,7 +613,18 @@ delete the referring association until the C<DeleteBotAlias> operation
 is successful.
 
 
-=head2 DeleteBotChannelAssociation(BotAlias => Str, BotName => Str, Name => Str)
+=head2 DeleteBotChannelAssociation
+
+=over
+
+=item BotAlias => Str
+
+=item BotName => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::DeleteBotChannelAssociation>
 
@@ -582,7 +637,16 @@ This operation requires permission for the
 C<lex:DeleteBotChannelAssociation> action.
 
 
-=head2 DeleteBotVersion(Name => Str, Version => Str)
+=head2 DeleteBotVersion
+
+=over
+
+=item Name => Str
+
+=item Version => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::DeleteBotVersion>
 
@@ -595,7 +659,14 @@ This operation requires permissions for the C<lex:DeleteBotVersion>
 action.
 
 
-=head2 DeleteIntent(Name => Str)
+=head2 DeleteIntent
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::DeleteIntent>
 
@@ -619,7 +690,16 @@ C<DeleteIntent> is successful.
 This operation requires permission for the C<lex:DeleteIntent> action.
 
 
-=head2 DeleteIntentVersion(Name => Str, Version => Str)
+=head2 DeleteIntentVersion
+
+=over
+
+=item Name => Str
+
+=item Version => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::DeleteIntentVersion>
 
@@ -632,7 +712,14 @@ This operation requires permissions for the C<lex:DeleteIntentVersion>
 action.
 
 
-=head2 DeleteSlotType(Name => Str)
+=head2 DeleteSlotType
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::DeleteSlotType>
 
@@ -657,7 +744,16 @@ This operation requires permission for the C<lex:DeleteSlotType>
 action.
 
 
-=head2 DeleteSlotTypeVersion(Name => Str, Version => Str)
+=head2 DeleteSlotTypeVersion
+
+=over
+
+=item Name => Str
+
+=item Version => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::DeleteSlotTypeVersion>
 
@@ -670,7 +766,16 @@ This operation requires permissions for the
 C<lex:DeleteSlotTypeVersion> action.
 
 
-=head2 DeleteUtterances(BotName => Str, UserId => Str)
+=head2 DeleteUtterances
+
+=over
+
+=item BotName => Str
+
+=item UserId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::DeleteUtterances>
 
@@ -690,7 +795,16 @@ This operation requires permissions for the C<lex:DeleteUtterances>
 action.
 
 
-=head2 GetBot(Name => Str, VersionOrAlias => Str)
+=head2 GetBot
+
+=over
+
+=item Name => Str
+
+=item VersionOrAlias => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetBot>
 
@@ -702,7 +816,16 @@ bot name and the bot version or alias.
 This operation requires permissions for the C<lex:GetBot> action.
 
 
-=head2 GetBotAlias(BotName => Str, Name => Str)
+=head2 GetBotAlias
+
+=over
+
+=item BotName => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetBotAlias>
 
@@ -714,7 +837,20 @@ about aliases, see versioning-aliases.
 This operation requires permissions for the C<lex:GetBotAlias> action.
 
 
-=head2 GetBotAliases(BotName => Str, [MaxResults => Int, NameContains => Str, NextToken => Str])
+=head2 GetBotAliases
+
+=over
+
+=item BotName => Str
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetBotAliases>
 
@@ -726,7 +862,18 @@ This operation requires permissions for the C<lex:GetBotAliases>
 action.
 
 
-=head2 GetBotChannelAssociation(BotAlias => Str, BotName => Str, Name => Str)
+=head2 GetBotChannelAssociation
+
+=over
+
+=item BotAlias => Str
+
+=item BotName => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetBotChannelAssociation>
 
@@ -739,7 +886,22 @@ This operation requires permissions for the
 C<lex:GetBotChannelAssociation> action.
 
 
-=head2 GetBotChannelAssociations(BotAlias => Str, BotName => Str, [MaxResults => Int, NameContains => Str, NextToken => Str])
+=head2 GetBotChannelAssociations
+
+=over
+
+=item BotAlias => Str
+
+=item BotName => Str
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetBotChannelAssociations>
 
@@ -752,7 +914,18 @@ The C<GetBotChannelAssociations> operation requires permissions for the
 C<lex:GetBotChannelAssociations> action.
 
 
-=head2 GetBots([MaxResults => Int, NameContains => Str, NextToken => Str])
+=head2 GetBots
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetBots>
 
@@ -778,7 +951,18 @@ information about the C<$LATEST> version of all of your bots.
 This operation requires permission for the C<lex:GetBots> action.
 
 
-=head2 GetBotVersions(Name => Str, [MaxResults => Int, NextToken => Str])
+=head2 GetBotVersions
+
+=over
+
+=item Name => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetBotVersions>
 
@@ -799,7 +983,14 @@ This operation requires permissions for the C<lex:GetBotVersions>
 action.
 
 
-=head2 GetBuiltinIntent(Signature => Str)
+=head2 GetBuiltinIntent
+
+=over
+
+=item Signature => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetBuiltinIntent>
 
@@ -811,7 +1002,20 @@ This operation requires permission for the C<lex:GetBuiltinIntent>
 action.
 
 
-=head2 GetBuiltinIntents([Locale => Str, MaxResults => Int, NextToken => Str, SignatureContains => Str])
+=head2 GetBuiltinIntents
+
+=over
+
+=item [Locale => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SignatureContains => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetBuiltinIntents>
 
@@ -823,7 +1027,20 @@ This operation requires permission for the C<lex:GetBuiltinIntents>
 action.
 
 
-=head2 GetBuiltinSlotTypes([Locale => Str, MaxResults => Int, NextToken => Str, SignatureContains => Str])
+=head2 GetBuiltinSlotTypes
+
+=over
+
+=item [Locale => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SignatureContains => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetBuiltinSlotTypes>
 
@@ -839,7 +1056,20 @@ This operation requires permission for the C<lex:GetBuiltInSlotTypes>
 action.
 
 
-=head2 GetExport(ExportType => Str, Name => Str, ResourceType => Str, Version => Str)
+=head2 GetExport
+
+=over
+
+=item ExportType => Str
+
+=item Name => Str
+
+=item ResourceType => Str
+
+=item Version => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetExport>
 
@@ -848,7 +1078,14 @@ Returns: a L<Paws::LexModels::GetExportResponse> instance
 Exports the contents of a Amazon Lex resource in a specified format.
 
 
-=head2 GetImport(ImportId => Str)
+=head2 GetImport
+
+=over
+
+=item ImportId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetImport>
 
@@ -858,7 +1095,16 @@ Gets information about an import job started with the C<StartImport>
 operation.
 
 
-=head2 GetIntent(Name => Str, Version => Str)
+=head2 GetIntent
+
+=over
+
+=item Name => Str
+
+=item Version => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetIntent>
 
@@ -871,7 +1117,18 @@ This operation requires permissions to perform the C<lex:GetIntent>
 action.
 
 
-=head2 GetIntents([MaxResults => Int, NameContains => Str, NextToken => Str])
+=head2 GetIntents
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetIntents>
 
@@ -896,7 +1153,18 @@ about the C<$LATEST> version of all intents.
 The operation requires permission for the C<lex:GetIntents> action.
 
 
-=head2 GetIntentVersions(Name => Str, [MaxResults => Int, NextToken => Str])
+=head2 GetIntentVersions
+
+=over
+
+=item Name => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetIntentVersions>
 
@@ -917,7 +1185,16 @@ This operation requires permissions for the C<lex:GetIntentVersions>
 action.
 
 
-=head2 GetSlotType(Name => Str, Version => Str)
+=head2 GetSlotType
+
+=over
+
+=item Name => Str
+
+=item Version => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetSlotType>
 
@@ -930,7 +1207,18 @@ type version.
 This operation requires permissions for the C<lex:GetSlotType> action.
 
 
-=head2 GetSlotTypes([MaxResults => Int, NameContains => Str, NextToken => Str])
+=head2 GetSlotTypes
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetSlotTypes>
 
@@ -955,7 +1243,18 @@ about the C<$LATEST> version of all slot types.
 The operation requires permission for the C<lex:GetSlotTypes> action.
 
 
-=head2 GetSlotTypeVersions(Name => Str, [MaxResults => Int, NextToken => Str])
+=head2 GetSlotTypeVersions
+
+=over
+
+=item Name => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetSlotTypeVersions>
 
@@ -976,7 +1275,18 @@ This operation requires permissions for the C<lex:GetSlotTypeVersions>
 action.
 
 
-=head2 GetUtterancesView(BotName => Str, BotVersions => ArrayRef[Str|Undef], StatusType => Str)
+=head2 GetUtterancesView
+
+=over
+
+=item BotName => Str
+
+=item BotVersions => ArrayRef[Str|Undef]
+
+=item StatusType => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetUtterancesView>
 
@@ -1006,7 +1316,36 @@ This operation requires permissions for the C<lex:GetUtterancesView>
 action.
 
 
-=head2 PutBot(ChildDirected => Bool, Locale => Str, Name => Str, [AbortStatement => L<Paws::LexModels::Statement>, Checksum => Str, ClarificationPrompt => L<Paws::LexModels::Prompt>, CreateVersion => Bool, Description => Str, IdleSessionTTLInSeconds => Int, Intents => ArrayRef[L<Paws::LexModels::Intent>], ProcessBehavior => Str, VoiceId => Str])
+=head2 PutBot
+
+=over
+
+=item ChildDirected => Bool
+
+=item Locale => Str
+
+=item Name => Str
+
+=item [AbortStatement => L<Paws::LexModels::Statement>]
+
+=item [Checksum => Str]
+
+=item [ClarificationPrompt => L<Paws::LexModels::Prompt>]
+
+=item [CreateVersion => Bool]
+
+=item [Description => Str]
+
+=item [IdleSessionTTLInSeconds => Int]
+
+=item [Intents => ArrayRef[L<Paws::LexModels::Intent>]]
+
+=item [ProcessBehavior => Str]
+
+=item [VoiceId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::PutBot>
 
@@ -1032,7 +1371,22 @@ This operation requires permissions for the C<lex:PutBot> action. For
 more information, see auth-and-access-control.
 
 
-=head2 PutBotAlias(BotName => Str, BotVersion => Str, Name => Str, [Checksum => Str, Description => Str])
+=head2 PutBotAlias
+
+=over
+
+=item BotName => Str
+
+=item BotVersion => Str
+
+=item Name => Str
+
+=item [Checksum => Str]
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::PutBotAlias>
 
@@ -1046,7 +1400,38 @@ see versioning-aliases.
 This operation requires permissions for the C<lex:PutBotAlias> action.
 
 
-=head2 PutIntent(Name => Str, [Checksum => Str, ConclusionStatement => L<Paws::LexModels::Statement>, ConfirmationPrompt => L<Paws::LexModels::Prompt>, CreateVersion => Bool, Description => Str, DialogCodeHook => L<Paws::LexModels::CodeHook>, FollowUpPrompt => L<Paws::LexModels::FollowUpPrompt>, FulfillmentActivity => L<Paws::LexModels::FulfillmentActivity>, ParentIntentSignature => Str, RejectionStatement => L<Paws::LexModels::Statement>, SampleUtterances => ArrayRef[Str|Undef], Slots => ArrayRef[L<Paws::LexModels::Slot>]])
+=head2 PutIntent
+
+=over
+
+=item Name => Str
+
+=item [Checksum => Str]
+
+=item [ConclusionStatement => L<Paws::LexModels::Statement>]
+
+=item [ConfirmationPrompt => L<Paws::LexModels::Prompt>]
+
+=item [CreateVersion => Bool]
+
+=item [Description => Str]
+
+=item [DialogCodeHook => L<Paws::LexModels::CodeHook>]
+
+=item [FollowUpPrompt => L<Paws::LexModels::FollowUpPrompt>]
+
+=item [FulfillmentActivity => L<Paws::LexModels::FulfillmentActivity>]
+
+=item [ParentIntentSignature => Str]
+
+=item [RejectionStatement => L<Paws::LexModels::Statement>]
+
+=item [SampleUtterances => ArrayRef[Str|Undef]]
+
+=item [Slots => ArrayRef[L<Paws::LexModels::Slot>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::PutIntent>
 
@@ -1124,7 +1509,24 @@ For more information, see how-it-works.
 This operation requires permissions for the C<lex:PutIntent> action.
 
 
-=head2 PutSlotType(Name => Str, [Checksum => Str, CreateVersion => Bool, Description => Str, EnumerationValues => ArrayRef[L<Paws::LexModels::EnumerationValue>], ValueSelectionStrategy => Str])
+=head2 PutSlotType
+
+=over
+
+=item Name => Str
+
+=item [Checksum => Str]
+
+=item [CreateVersion => Bool]
+
+=item [Description => Str]
+
+=item [EnumerationValues => ArrayRef[L<Paws::LexModels::EnumerationValue>]]
+
+=item [ValueSelectionStrategy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::PutSlotType>
 
@@ -1147,7 +1549,18 @@ type, the bot's C<status> field is set to C<NOT_BUILT>.
 This operation requires permissions for the C<lex:PutSlotType> action.
 
 
-=head2 StartImport(MergeStrategy => Str, Payload => Str, ResourceType => Str)
+=head2 StartImport
+
+=over
+
+=item MergeStrategy => Str
+
+=item Payload => Str
+
+=item ResourceType => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::StartImport>
 

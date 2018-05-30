@@ -1,6 +1,7 @@
 package Paws::DAX;
   use Moose;
   sub service { 'dax' }
+  sub signing_name { 'dax' }
   sub version { '2017-04-19' }
   sub target_prefix { 'AmazonDAXV3' }
   sub json_version { "1.1" }
@@ -160,7 +161,36 @@ realize significant improvements in read performance.
 
 =head1 METHODS
 
-=head2 CreateCluster(ClusterName => Str, IamRoleArn => Str, NodeType => Str, ReplicationFactor => Int, [AvailabilityZones => ArrayRef[Str|Undef], Description => Str, NotificationTopicArn => Str, ParameterGroupName => Str, PreferredMaintenanceWindow => Str, SecurityGroupIds => ArrayRef[Str|Undef], SubnetGroupName => Str, Tags => ArrayRef[L<Paws::DAX::Tag>]])
+=head2 CreateCluster
+
+=over
+
+=item ClusterName => Str
+
+=item IamRoleArn => Str
+
+=item NodeType => Str
+
+=item ReplicationFactor => Int
+
+=item [AvailabilityZones => ArrayRef[Str|Undef]]
+
+=item [Description => Str]
+
+=item [NotificationTopicArn => Str]
+
+=item [ParameterGroupName => Str]
+
+=item [PreferredMaintenanceWindow => Str]
+
+=item [SecurityGroupIds => ArrayRef[Str|Undef]]
+
+=item [SubnetGroupName => Str]
+
+=item [Tags => ArrayRef[L<Paws::DAX::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DAX::CreateCluster>
 
@@ -170,7 +200,16 @@ Creates a DAX cluster. All nodes in the cluster run the same DAX
 caching software.
 
 
-=head2 CreateParameterGroup(ParameterGroupName => Str, [Description => Str])
+=head2 CreateParameterGroup
+
+=over
+
+=item ParameterGroupName => Str
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DAX::CreateParameterGroup>
 
@@ -180,7 +219,18 @@ Creates a new parameter group. A parameter group is a collection of
 parameters that you apply to all of the nodes in a DAX cluster.
 
 
-=head2 CreateSubnetGroup(SubnetGroupName => Str, SubnetIds => ArrayRef[Str|Undef], [Description => Str])
+=head2 CreateSubnetGroup
+
+=over
+
+=item SubnetGroupName => Str
+
+=item SubnetIds => ArrayRef[Str|Undef]
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DAX::CreateSubnetGroup>
 
@@ -189,7 +239,20 @@ Returns: a L<Paws::DAX::CreateSubnetGroupResponse> instance
 Creates a new subnet group.
 
 
-=head2 DecreaseReplicationFactor(ClusterName => Str, NewReplicationFactor => Int, [AvailabilityZones => ArrayRef[Str|Undef], NodeIdsToRemove => ArrayRef[Str|Undef]])
+=head2 DecreaseReplicationFactor
+
+=over
+
+=item ClusterName => Str
+
+=item NewReplicationFactor => Int
+
+=item [AvailabilityZones => ArrayRef[Str|Undef]]
+
+=item [NodeIdsToRemove => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DAX::DecreaseReplicationFactor>
 
@@ -201,7 +264,14 @@ You cannot use C<DecreaseReplicationFactor> to remove the last node in
 a DAX cluster. If you need to do this, use C<DeleteCluster> instead.
 
 
-=head2 DeleteCluster(ClusterName => Str)
+=head2 DeleteCluster
+
+=over
+
+=item ClusterName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DAX::DeleteCluster>
 
@@ -213,7 +283,14 @@ you receive a successful response from this action, DAX immediately
 begins deleting the cluster; you cannot cancel or revert this action.
 
 
-=head2 DeleteParameterGroup(ParameterGroupName => Str)
+=head2 DeleteParameterGroup
+
+=over
+
+=item ParameterGroupName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DAX::DeleteParameterGroup>
 
@@ -223,7 +300,14 @@ Deletes the specified parameter group. You cannot delete a parameter
 group if it is associated with any DAX clusters.
 
 
-=head2 DeleteSubnetGroup(SubnetGroupName => Str)
+=head2 DeleteSubnetGroup
+
+=over
+
+=item SubnetGroupName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DAX::DeleteSubnetGroup>
 
@@ -235,7 +319,18 @@ You cannot delete a subnet group if it is associated with any DAX
 clusters.
 
 
-=head2 DescribeClusters([ClusterNames => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeClusters
+
+=over
+
+=item [ClusterNames => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DAX::DescribeClusters>
 
@@ -260,7 +355,16 @@ If nodes are currently being removed from the DAX cluster, no endpoint
 information for the removed nodes is displayed.
 
 
-=head2 DescribeDefaultParameters([MaxResults => Int, NextToken => Str])
+=head2 DescribeDefaultParameters
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DAX::DescribeDefaultParameters>
 
@@ -270,7 +374,26 @@ Returns the default system parameter information for the DAX caching
 software.
 
 
-=head2 DescribeEvents([Duration => Int, EndTime => Str, MaxResults => Int, NextToken => Str, SourceName => Str, SourceType => Str, StartTime => Str])
+=head2 DescribeEvents
+
+=over
+
+=item [Duration => Int]
+
+=item [EndTime => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SourceName => Str]
+
+=item [SourceType => Str]
+
+=item [StartTime => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DAX::DescribeEvents>
 
@@ -285,7 +408,18 @@ returned; however, you can retrieve up to 14 days' worth of events if
 necessary.
 
 
-=head2 DescribeParameterGroups([MaxResults => Int, NextToken => Str, ParameterGroupNames => ArrayRef[Str|Undef]])
+=head2 DescribeParameterGroups
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ParameterGroupNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DAX::DescribeParameterGroups>
 
@@ -296,7 +430,20 @@ name is specified, the list will contain only the descriptions for that
 group.
 
 
-=head2 DescribeParameters(ParameterGroupName => Str, [MaxResults => Int, NextToken => Str, Source => Str])
+=head2 DescribeParameters
+
+=over
+
+=item ParameterGroupName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Source => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DAX::DescribeParameters>
 
@@ -305,7 +452,18 @@ Returns: a L<Paws::DAX::DescribeParametersResponse> instance
 Returns the detailed parameter list for a particular parameter group.
 
 
-=head2 DescribeSubnetGroups([MaxResults => Int, NextToken => Str, SubnetGroupNames => ArrayRef[Str|Undef]])
+=head2 DescribeSubnetGroups
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SubnetGroupNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DAX::DescribeSubnetGroups>
 
@@ -315,7 +473,18 @@ Returns a list of subnet group descriptions. If a subnet group name is
 specified, the list will contain only the description of that group.
 
 
-=head2 IncreaseReplicationFactor(ClusterName => Str, NewReplicationFactor => Int, [AvailabilityZones => ArrayRef[Str|Undef]])
+=head2 IncreaseReplicationFactor
+
+=over
+
+=item ClusterName => Str
+
+=item NewReplicationFactor => Int
+
+=item [AvailabilityZones => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DAX::IncreaseReplicationFactor>
 
@@ -324,7 +493,16 @@ Returns: a L<Paws::DAX::IncreaseReplicationFactorResponse> instance
 Adds one or more nodes to a DAX cluster.
 
 
-=head2 ListTags(ResourceName => Str, [NextToken => Str])
+=head2 ListTags
+
+=over
+
+=item ResourceName => Str
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DAX::ListTags>
 
@@ -334,7 +512,16 @@ List all of the tags for a DAX cluster. You can call C<ListTags> up to
 10 times per second, per account.
 
 
-=head2 RebootNode(ClusterName => Str, NodeId => Str)
+=head2 RebootNode
+
+=over
+
+=item ClusterName => Str
+
+=item NodeId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DAX::RebootNode>
 
@@ -345,7 +532,16 @@ as soon as possible. During the reboot, the node status is set to
 REBOOTING.
 
 
-=head2 TagResource(ResourceName => Str, Tags => ArrayRef[L<Paws::DAX::Tag>])
+=head2 TagResource
+
+=over
+
+=item ResourceName => Str
+
+=item Tags => ArrayRef[L<Paws::DAX::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DAX::TagResource>
 
@@ -355,7 +551,16 @@ Associates a set of tags with a DAX resource. You can call
 C<TagResource> up to 5 times per second, per account.
 
 
-=head2 UntagResource(ResourceName => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 UntagResource
+
+=over
+
+=item ResourceName => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DAX::UntagResource>
 
@@ -365,7 +570,26 @@ Removes the association of tags from a DAX resource. You can call
 C<UntagResource> up to 5 times per second, per account.
 
 
-=head2 UpdateCluster(ClusterName => Str, [Description => Str, NotificationTopicArn => Str, NotificationTopicStatus => Str, ParameterGroupName => Str, PreferredMaintenanceWindow => Str, SecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 UpdateCluster
+
+=over
+
+=item ClusterName => Str
+
+=item [Description => Str]
+
+=item [NotificationTopicArn => Str]
+
+=item [NotificationTopicStatus => Str]
+
+=item [ParameterGroupName => Str]
+
+=item [PreferredMaintenanceWindow => Str]
+
+=item [SecurityGroupIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DAX::UpdateCluster>
 
@@ -376,7 +600,16 @@ change one or more cluster configuration parameters by specifying the
 parameters and the new values.
 
 
-=head2 UpdateParameterGroup(ParameterGroupName => Str, ParameterNameValues => ArrayRef[L<Paws::DAX::ParameterNameValue>])
+=head2 UpdateParameterGroup
+
+=over
+
+=item ParameterGroupName => Str
+
+=item ParameterNameValues => ArrayRef[L<Paws::DAX::ParameterNameValue>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DAX::UpdateParameterGroup>
 
@@ -387,7 +620,18 @@ parameters in a single request by submitting a list parameter name and
 value pairs.
 
 
-=head2 UpdateSubnetGroup(SubnetGroupName => Str, [Description => Str, SubnetIds => ArrayRef[Str|Undef]])
+=head2 UpdateSubnetGroup
+
+=over
+
+=item SubnetGroupName => Str
+
+=item [Description => Str]
+
+=item [SubnetIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DAX::UpdateSubnetGroup>
 

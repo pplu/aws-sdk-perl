@@ -1,6 +1,7 @@
 package Paws::MigrationHub;
   use Moose;
   sub service { 'mgh' }
+  sub signing_name { 'mgh' }
   sub version { '2017-05-31' }
   sub target_prefix { 'AWSMigrationHub' }
   sub json_version { "1.1" }
@@ -131,7 +132,20 @@ providing a programmatic interface to Migration Hub.
 
 =head1 METHODS
 
-=head2 AssociateCreatedArtifact(CreatedArtifact => L<Paws::MigrationHub::CreatedArtifact>, MigrationTaskName => Str, ProgressUpdateStream => Str, [DryRun => Bool])
+=head2 AssociateCreatedArtifact
+
+=over
+
+=item CreatedArtifact => L<Paws::MigrationHub::CreatedArtifact>
+
+=item MigrationTaskName => Str
+
+=item ProgressUpdateStream => Str
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::AssociateCreatedArtifact>
 
@@ -163,7 +177,20 @@ EC2 instance, or DMS endpoint, etc.
 
 
 
-=head2 AssociateDiscoveredResource(DiscoveredResource => L<Paws::MigrationHub::DiscoveredResource>, MigrationTaskName => Str, ProgressUpdateStream => Str, [DryRun => Bool])
+=head2 AssociateDiscoveredResource
+
+=over
+
+=item DiscoveredResource => L<Paws::MigrationHub::DiscoveredResource>
+
+=item MigrationTaskName => Str
+
+=item ProgressUpdateStream => Str
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::AssociateDiscoveredResource>
 
@@ -173,7 +200,16 @@ Associates a discovered resource ID from Application Discovery Service
 (ADS) with a migration task.
 
 
-=head2 CreateProgressUpdateStream(ProgressUpdateStreamName => Str, [DryRun => Bool])
+=head2 CreateProgressUpdateStream
+
+=over
+
+=item ProgressUpdateStreamName => Str
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::CreateProgressUpdateStream>
 
@@ -187,7 +223,16 @@ it does not need to be unique for each AWS account because it is scoped
 to the AWS account.
 
 
-=head2 DeleteProgressUpdateStream(ProgressUpdateStreamName => Str, [DryRun => Bool])
+=head2 DeleteProgressUpdateStream
+
+=over
+
+=item ProgressUpdateStreamName => Str
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::DeleteProgressUpdateStream>
 
@@ -233,7 +278,14 @@ succeed, and that stream will be an entirely new logical resource
 
 
 
-=head2 DescribeApplicationState(ApplicationId => Str)
+=head2 DescribeApplicationState
+
+=over
+
+=item ApplicationId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::DescribeApplicationState>
 
@@ -242,7 +294,16 @@ Returns: a L<Paws::MigrationHub::DescribeApplicationStateResult> instance
 Gets the migration status of an application.
 
 
-=head2 DescribeMigrationTask(MigrationTaskName => Str, ProgressUpdateStream => Str)
+=head2 DescribeMigrationTask
+
+=over
+
+=item MigrationTaskName => Str
+
+=item ProgressUpdateStream => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::DescribeMigrationTask>
 
@@ -252,7 +313,20 @@ Retrieves a list of all attributes associated with a specific migration
 task.
 
 
-=head2 DisassociateCreatedArtifact(CreatedArtifactName => Str, MigrationTaskName => Str, ProgressUpdateStream => Str, [DryRun => Bool])
+=head2 DisassociateCreatedArtifact
+
+=over
+
+=item CreatedArtifactName => Str
+
+=item MigrationTaskName => Str
+
+=item ProgressUpdateStream => Str
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::DisassociateCreatedArtifact>
 
@@ -284,7 +358,20 @@ EC2 instance, or RDS instance, etc.
 
 
 
-=head2 DisassociateDiscoveredResource(ConfigurationId => Str, MigrationTaskName => Str, ProgressUpdateStream => Str, [DryRun => Bool])
+=head2 DisassociateDiscoveredResource
+
+=over
+
+=item ConfigurationId => Str
+
+=item MigrationTaskName => Str
+
+=item ProgressUpdateStream => Str
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::DisassociateDiscoveredResource>
 
@@ -294,7 +381,18 @@ Disassociate an Application Discovery Service (ADS) discovered resource
 from a migration task.
 
 
-=head2 ImportMigrationTask(MigrationTaskName => Str, ProgressUpdateStream => Str, [DryRun => Bool])
+=head2 ImportMigrationTask
+
+=over
+
+=item MigrationTaskName => Str
+
+=item ProgressUpdateStream => Str
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::ImportMigrationTask>
 
@@ -308,7 +406,20 @@ API as the migration tool must first register the migration task with
 Migration Hub.
 
 
-=head2 ListCreatedArtifacts(MigrationTaskName => Str, ProgressUpdateStream => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListCreatedArtifacts
+
+=over
+
+=item MigrationTaskName => Str
+
+=item ProgressUpdateStream => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::ListCreatedArtifacts>
 
@@ -336,7 +447,20 @@ Lists created artifacts in a paginated interface.
 
 
 
-=head2 ListDiscoveredResources(MigrationTaskName => Str, ProgressUpdateStream => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListDiscoveredResources
+
+=over
+
+=item MigrationTaskName => Str
+
+=item ProgressUpdateStream => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::ListDiscoveredResources>
 
@@ -345,7 +469,18 @@ Returns: a L<Paws::MigrationHub::ListDiscoveredResourcesResult> instance
 Lists discovered resources associated with the given C<MigrationTask>.
 
 
-=head2 ListMigrationTasks([MaxResults => Int, NextToken => Str, ResourceName => Str])
+=head2 ListMigrationTasks
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::ListMigrationTasks>
 
@@ -374,7 +509,16 @@ Lists migration tasks in a paginated interface.
 
 
 
-=head2 ListProgressUpdateStreams([MaxResults => Int, NextToken => Str])
+=head2 ListProgressUpdateStreams
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::ListProgressUpdateStreams>
 
@@ -384,7 +528,18 @@ Lists progress update streams associated with the user account making
 this call.
 
 
-=head2 NotifyApplicationState(ApplicationId => Str, Status => Str, [DryRun => Bool])
+=head2 NotifyApplicationState
+
+=over
+
+=item ApplicationId => Str
+
+=item Status => Str
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::NotifyApplicationState>
 
@@ -396,7 +551,24 @@ or updated by passing one of three values to C<Status>: C<NOT_STARTED |
 IN_PROGRESS | COMPLETED>.
 
 
-=head2 NotifyMigrationTaskState(MigrationTaskName => Str, NextUpdateSeconds => Int, ProgressUpdateStream => Str, Task => L<Paws::MigrationHub::Task>, UpdateDateTime => Str, [DryRun => Bool])
+=head2 NotifyMigrationTaskState
+
+=over
+
+=item MigrationTaskName => Str
+
+=item NextUpdateSeconds => Int
+
+=item ProgressUpdateStream => Str
+
+=item Task => L<Paws::MigrationHub::Task>
+
+=item UpdateDateTime => Str
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::NotifyMigrationTaskState>
 
@@ -426,7 +598,20 @@ namespace for each migration tool.
 
 
 
-=head2 PutResourceAttributes(MigrationTaskName => Str, ProgressUpdateStream => Str, ResourceAttributeList => ArrayRef[L<Paws::MigrationHub::ResourceAttribute>], [DryRun => Bool])
+=head2 PutResourceAttributes
+
+=over
+
+=item MigrationTaskName => Str
+
+=item ProgressUpdateStream => Str
+
+=item ResourceAttributeList => ArrayRef[L<Paws::MigrationHub::ResourceAttribute>]
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::PutResourceAttributes>
 

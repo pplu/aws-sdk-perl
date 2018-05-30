@@ -49,8 +49,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ClientToken => Str
 
-Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. Up to 32 ASCII characters are allowed.
+Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. Up to 32 ASCII characters are allowed.
 
 
 
@@ -116,6 +116,14 @@ it appears in a container definition), and the container port to access
 from the load balancer. When a task from this service is placed on a
 container instance, the container instance and port combination is
 registered as a target in the target group specified here.
+
+Services with tasks that use the C<awsvpc> network mode (for example,
+those with the Fargate launch type) only support Application Load
+Balancers and Network Load Balancers; Classic Load Balancers are not
+supported. Also, when you create any target groups for these services,
+you must choose C<ip> as the target type, not C<instance>, because
+tasks that use the C<awsvpc> network mode are associated with an
+elastic network interface, not an Amazon EC2 instance.
 
 
 
@@ -194,7 +202,12 @@ multiple clusters within a region or across multiple regions.
 
 The details of the service discovery registries you want to assign to
 this service. For more information, see Service Discovery
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguideservice-discovery.html).
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
+
+Service discovery is supported for Fargate tasks if using platform
+version v1.1.0 or later. For more information, see AWS Fargate Platform
+Versions
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
 
 
 

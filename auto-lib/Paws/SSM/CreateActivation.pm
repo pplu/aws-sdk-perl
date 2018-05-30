@@ -49,7 +49,7 @@ Do not enter personally identifiable information in this field.
 
 =head2 Description => Str
 
-A userdefined description of the resource that you want to register
+A user-defined description of the resource that you want to register
 with Amazon EC2.
 
 Do not enter personally identifiable information in this field.

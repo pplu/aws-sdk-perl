@@ -1,6 +1,7 @@
 package Paws::MarketplaceEntitlement;
   use Moose;
   sub service { 'entitlement.marketplace' }
+  sub signing_name { 'aws-marketplace' }
   sub version { '2017-01-11' }
   sub target_prefix { 'AWSMPEntitlementService' }
   sub json_version { "1.1" }
@@ -74,7 +75,20 @@ I<GetEntitlements>- Gets the entitlements for a Marketplace product.
 
 =head1 METHODS
 
-=head2 GetEntitlements(ProductCode => Str, [Filter => L<Paws::MarketplaceEntitlement::GetEntitlementFilters>, MaxResults => Int, NextToken => Str])
+=head2 GetEntitlements
+
+=over
+
+=item ProductCode => Str
+
+=item [Filter => L<Paws::MarketplaceEntitlement::GetEntitlementFilters>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MarketplaceEntitlement::GetEntitlements>
 

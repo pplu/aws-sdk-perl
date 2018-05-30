@@ -1,6 +1,7 @@
 package Paws::CloudDirectory;
   use Moose;
   sub service { 'clouddirectory' }
+  sub signing_name { 'clouddirectory' }
   sub version { '2016-05-10' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -741,7 +742,20 @@ Service Administration Guide
 
 =head1 METHODS
 
-=head2 AddFacetToObject(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, SchemaFacet => L<Paws::CloudDirectory::SchemaFacet>, [ObjectAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>]])
+=head2 AddFacetToObject
+
+=over
+
+=item DirectoryArn => Str
+
+=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item SchemaFacet => L<Paws::CloudDirectory::SchemaFacet>
+
+=item [ObjectAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::AddFacetToObject>
 
@@ -751,7 +765,16 @@ Adds a new Facet to an object. An object can have more than one facet
 applied on it.
 
 
-=head2 ApplySchema(DirectoryArn => Str, PublishedSchemaArn => Str)
+=head2 ApplySchema
+
+=over
+
+=item DirectoryArn => Str
+
+=item PublishedSchemaArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ApplySchema>
 
@@ -762,7 +785,20 @@ Directory with the same name and version as that of the published
 schema.
 
 
-=head2 AttachObject(ChildReference => L<Paws::CloudDirectory::ObjectReference>, DirectoryArn => Str, LinkName => Str, ParentReference => L<Paws::CloudDirectory::ObjectReference>)
+=head2 AttachObject
+
+=over
+
+=item ChildReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item DirectoryArn => Str
+
+=item LinkName => Str
+
+=item ParentReference => L<Paws::CloudDirectory::ObjectReference>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::AttachObject>
 
@@ -785,7 +821,18 @@ Using C<ObjectIdentifier>
 
 
 
-=head2 AttachPolicy(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, PolicyReference => L<Paws::CloudDirectory::ObjectReference>)
+=head2 AttachPolicy
+
+=over
+
+=item DirectoryArn => Str
+
+=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item PolicyReference => L<Paws::CloudDirectory::ObjectReference>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::AttachPolicy>
 
@@ -795,7 +842,18 @@ Attaches a policy object to a regular object. An object can have a
 limited number of attached policies.
 
 
-=head2 AttachToIndex(DirectoryArn => Str, IndexReference => L<Paws::CloudDirectory::ObjectReference>, TargetReference => L<Paws::CloudDirectory::ObjectReference>)
+=head2 AttachToIndex
+
+=over
+
+=item DirectoryArn => Str
+
+=item IndexReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item TargetReference => L<Paws::CloudDirectory::ObjectReference>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::AttachToIndex>
 
@@ -804,7 +862,22 @@ Returns: a L<Paws::CloudDirectory::AttachToIndexResponse> instance
 Attaches the specified object to the specified index.
 
 
-=head2 AttachTypedLink(Attributes => ArrayRef[L<Paws::CloudDirectory::AttributeNameAndValue>], DirectoryArn => Str, SourceObjectReference => L<Paws::CloudDirectory::ObjectReference>, TargetObjectReference => L<Paws::CloudDirectory::ObjectReference>, TypedLinkFacet => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>)
+=head2 AttachTypedLink
+
+=over
+
+=item Attributes => ArrayRef[L<Paws::CloudDirectory::AttributeNameAndValue>]
+
+=item DirectoryArn => Str
+
+=item SourceObjectReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item TargetObjectReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item TypedLinkFacet => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::AttachTypedLink>
 
@@ -815,7 +888,18 @@ information, see Typed link
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
-=head2 BatchRead(DirectoryArn => Str, Operations => ArrayRef[L<Paws::CloudDirectory::BatchReadOperation>], [ConsistencyLevel => Str])
+=head2 BatchRead
+
+=over
+
+=item DirectoryArn => Str
+
+=item Operations => ArrayRef[L<Paws::CloudDirectory::BatchReadOperation>]
+
+=item [ConsistencyLevel => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::BatchRead>
 
@@ -824,7 +908,16 @@ Returns: a L<Paws::CloudDirectory::BatchReadResponse> instance
 Performs all the read operations in a batch.
 
 
-=head2 BatchWrite(DirectoryArn => Str, Operations => ArrayRef[L<Paws::CloudDirectory::BatchWriteOperation>])
+=head2 BatchWrite
+
+=over
+
+=item DirectoryArn => Str
+
+=item Operations => ArrayRef[L<Paws::CloudDirectory::BatchWriteOperation>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::BatchWrite>
 
@@ -834,7 +927,16 @@ Performs all the write operations in a batch. Either all the operations
 succeed or none.
 
 
-=head2 CreateDirectory(Name => Str, SchemaArn => Str)
+=head2 CreateDirectory
+
+=over
+
+=item Name => Str
+
+=item SchemaArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::CreateDirectory>
 
@@ -844,7 +946,20 @@ Creates a Directory by copying the published schema into the directory.
 A directory cannot be created without a schema.
 
 
-=head2 CreateFacet(Name => Str, ObjectType => Str, SchemaArn => Str, [Attributes => ArrayRef[L<Paws::CloudDirectory::FacetAttribute>]])
+=head2 CreateFacet
+
+=over
+
+=item Name => Str
+
+=item ObjectType => Str
+
+=item SchemaArn => Str
+
+=item [Attributes => ArrayRef[L<Paws::CloudDirectory::FacetAttribute>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::CreateFacet>
 
@@ -854,7 +969,22 @@ Creates a new Facet in a schema. Facet creation is allowed only in
 development or applied schemas.
 
 
-=head2 CreateIndex(DirectoryArn => Str, IsUnique => Bool, OrderedIndexedAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKey>], [LinkName => Str, ParentReference => L<Paws::CloudDirectory::ObjectReference>])
+=head2 CreateIndex
+
+=over
+
+=item DirectoryArn => Str
+
+=item IsUnique => Bool
+
+=item OrderedIndexedAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKey>]
+
+=item [LinkName => Str]
+
+=item [ParentReference => L<Paws::CloudDirectory::ObjectReference>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::CreateIndex>
 
@@ -865,7 +995,22 @@ Creates an index object. See Indexing
 for more information.
 
 
-=head2 CreateObject(DirectoryArn => Str, SchemaFacets => ArrayRef[L<Paws::CloudDirectory::SchemaFacet>], [LinkName => Str, ObjectAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>], ParentReference => L<Paws::CloudDirectory::ObjectReference>])
+=head2 CreateObject
+
+=over
+
+=item DirectoryArn => Str
+
+=item SchemaFacets => ArrayRef[L<Paws::CloudDirectory::SchemaFacet>]
+
+=item [LinkName => Str]
+
+=item [ObjectAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>]]
+
+=item [ParentReference => L<Paws::CloudDirectory::ObjectReference>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::CreateObject>
 
@@ -878,7 +1023,14 @@ call to create a policy object, if the facet from which you create the
 object is a policy facet.
 
 
-=head2 CreateSchema(Name => Str)
+=head2 CreateSchema
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::CreateSchema>
 
@@ -911,7 +1063,16 @@ directories.
 
 
 
-=head2 CreateTypedLinkFacet(Facet => L<Paws::CloudDirectory::TypedLinkFacet>, SchemaArn => Str)
+=head2 CreateTypedLinkFacet
+
+=over
+
+=item Facet => L<Paws::CloudDirectory::TypedLinkFacet>
+
+=item SchemaArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::CreateTypedLinkFacet>
 
@@ -921,7 +1082,14 @@ Creates a TypedLinkFacet. For more information, see Typed link
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
-=head2 DeleteDirectory(DirectoryArn => Str)
+=head2 DeleteDirectory
+
+=over
+
+=item DirectoryArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::DeleteDirectory>
 
@@ -932,7 +1100,16 @@ deleted directory cannot be undone. Exercise extreme caution when
 deleting directories.
 
 
-=head2 DeleteFacet(Name => Str, SchemaArn => Str)
+=head2 DeleteFacet
+
+=over
+
+=item Name => Str
+
+=item SchemaArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::DeleteFacet>
 
@@ -943,7 +1120,16 @@ with the facet will be deleted. Only development schema facets are
 allowed deletion.
 
 
-=head2 DeleteObject(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>)
+=head2 DeleteObject
+
+=over
+
+=item DirectoryArn => Str
+
+=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::DeleteObject>
 
@@ -953,7 +1139,14 @@ Deletes an object and its associated attributes. Only objects with no
 children and no parents can be deleted.
 
 
-=head2 DeleteSchema(SchemaArn => Str)
+=head2 DeleteSchema
+
+=over
+
+=item SchemaArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::DeleteSchema>
 
@@ -963,7 +1156,16 @@ Deletes a given schema. Schemas in a development and published state
 can only be deleted.
 
 
-=head2 DeleteTypedLinkFacet(Name => Str, SchemaArn => Str)
+=head2 DeleteTypedLinkFacet
+
+=over
+
+=item Name => Str
+
+=item SchemaArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::DeleteTypedLinkFacet>
 
@@ -973,7 +1175,18 @@ Deletes a TypedLinkFacet. For more information, see Typed link
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
-=head2 DetachFromIndex(DirectoryArn => Str, IndexReference => L<Paws::CloudDirectory::ObjectReference>, TargetReference => L<Paws::CloudDirectory::ObjectReference>)
+=head2 DetachFromIndex
+
+=over
+
+=item DirectoryArn => Str
+
+=item IndexReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item TargetReference => L<Paws::CloudDirectory::ObjectReference>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::DetachFromIndex>
 
@@ -982,7 +1195,18 @@ Returns: a L<Paws::CloudDirectory::DetachFromIndexResponse> instance
 Detaches the specified object from the specified index.
 
 
-=head2 DetachObject(DirectoryArn => Str, LinkName => Str, ParentReference => L<Paws::CloudDirectory::ObjectReference>)
+=head2 DetachObject
+
+=over
+
+=item DirectoryArn => Str
+
+=item LinkName => Str
+
+=item ParentReference => L<Paws::CloudDirectory::ObjectReference>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::DetachObject>
 
@@ -992,7 +1216,18 @@ Detaches a given object from the parent object. The object that is to
 be detached from the parent is specified by the link name.
 
 
-=head2 DetachPolicy(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, PolicyReference => L<Paws::CloudDirectory::ObjectReference>)
+=head2 DetachPolicy
+
+=over
+
+=item DirectoryArn => Str
+
+=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item PolicyReference => L<Paws::CloudDirectory::ObjectReference>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::DetachPolicy>
 
@@ -1001,7 +1236,16 @@ Returns: a L<Paws::CloudDirectory::DetachPolicyResponse> instance
 Detaches a policy from an object.
 
 
-=head2 DetachTypedLink(DirectoryArn => Str, TypedLinkSpecifier => L<Paws::CloudDirectory::TypedLinkSpecifier>)
+=head2 DetachTypedLink
+
+=over
+
+=item DirectoryArn => Str
+
+=item TypedLinkSpecifier => L<Paws::CloudDirectory::TypedLinkSpecifier>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::DetachTypedLink>
 
@@ -1012,7 +1256,14 @@ more information, see Typed link
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
-=head2 DisableDirectory(DirectoryArn => Str)
+=head2 DisableDirectory
+
+=over
+
+=item DirectoryArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::DisableDirectory>
 
@@ -1023,7 +1274,14 @@ or written to. Only enabled directories can be disabled. Disabled
 directories may be reenabled.
 
 
-=head2 EnableDirectory(DirectoryArn => Str)
+=head2 EnableDirectory
+
+=over
+
+=item DirectoryArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::EnableDirectory>
 
@@ -1033,7 +1291,14 @@ Enables the specified directory. Only disabled directories can be
 enabled. Once enabled, the directory can then be read and written to.
 
 
-=head2 GetAppliedSchemaVersion(SchemaArn => Str)
+=head2 GetAppliedSchemaVersion
+
+=over
+
+=item SchemaArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::GetAppliedSchemaVersion>
 
@@ -1043,7 +1308,14 @@ Returns current applied schema version ARN, including the minor version
 in use.
 
 
-=head2 GetDirectory(DirectoryArn => Str)
+=head2 GetDirectory
+
+=over
+
+=item DirectoryArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::GetDirectory>
 
@@ -1052,7 +1324,16 @@ Returns: a L<Paws::CloudDirectory::GetDirectoryResponse> instance
 Retrieves metadata about a directory.
 
 
-=head2 GetFacet(Name => Str, SchemaArn => Str)
+=head2 GetFacet
+
+=over
+
+=item Name => Str
+
+=item SchemaArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::GetFacet>
 
@@ -1063,7 +1344,22 @@ C<ObjectType>. You can call this on all kinds of schema facets --
 published, development, or applied.
 
 
-=head2 GetObjectAttributes(AttributeNames => ArrayRef[Str|Undef], DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, SchemaFacet => L<Paws::CloudDirectory::SchemaFacet>, [ConsistencyLevel => Str])
+=head2 GetObjectAttributes
+
+=over
+
+=item AttributeNames => ArrayRef[Str|Undef]
+
+=item DirectoryArn => Str
+
+=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item SchemaFacet => L<Paws::CloudDirectory::SchemaFacet>
+
+=item [ConsistencyLevel => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::GetObjectAttributes>
 
@@ -1072,7 +1368,18 @@ Returns: a L<Paws::CloudDirectory::GetObjectAttributesResponse> instance
 Retrieves attributes within a facet that are associated with an object.
 
 
-=head2 GetObjectInformation(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str])
+=head2 GetObjectInformation
+
+=over
+
+=item DirectoryArn => Str
+
+=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item [ConsistencyLevel => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::GetObjectInformation>
 
@@ -1081,7 +1388,14 @@ Returns: a L<Paws::CloudDirectory::GetObjectInformationResponse> instance
 Retrieves metadata about an object.
 
 
-=head2 GetSchemaAsJson(SchemaArn => Str)
+=head2 GetSchemaAsJson
+
+=over
+
+=item SchemaArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::GetSchemaAsJson>
 
@@ -1092,7 +1406,16 @@ Retrieves a JSON representation of the schema. See JSON Schema Format
 for more information.
 
 
-=head2 GetTypedLinkFacetInformation(Name => Str, SchemaArn => Str)
+=head2 GetTypedLinkFacetInformation
+
+=over
+
+=item Name => Str
+
+=item SchemaArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::GetTypedLinkFacetInformation>
 
@@ -1103,7 +1426,20 @@ more information, see Typed link
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
-=head2 ListAppliedSchemaArns(DirectoryArn => Str, [MaxResults => Int, NextToken => Str, SchemaArn => Str])
+=head2 ListAppliedSchemaArns
+
+=over
+
+=item DirectoryArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SchemaArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListAppliedSchemaArns>
 
@@ -1113,7 +1449,22 @@ Lists schema major versions applied to a directory. If C<SchemaArn> is
 provided, lists the minor version.
 
 
-=head2 ListAttachedIndices(DirectoryArn => Str, TargetReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAttachedIndices
+
+=over
+
+=item DirectoryArn => Str
+
+=item TargetReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item [ConsistencyLevel => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListAttachedIndices>
 
@@ -1122,7 +1473,16 @@ Returns: a L<Paws::CloudDirectory::ListAttachedIndicesResponse> instance
 Lists indices attached to the specified object.
 
 
-=head2 ListDevelopmentSchemaArns([MaxResults => Int, NextToken => Str])
+=head2 ListDevelopmentSchemaArns
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListDevelopmentSchemaArns>
 
@@ -1132,7 +1492,18 @@ Retrieves each Amazon Resource Name (ARN) of schemas in the development
 state.
 
 
-=head2 ListDirectories([MaxResults => Int, NextToken => Str, State => Str])
+=head2 ListDirectories
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [State => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListDirectories>
 
@@ -1141,7 +1512,20 @@ Returns: a L<Paws::CloudDirectory::ListDirectoriesResponse> instance
 Lists directories created within an account.
 
 
-=head2 ListFacetAttributes(Name => Str, SchemaArn => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListFacetAttributes
+
+=over
+
+=item Name => Str
+
+=item SchemaArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListFacetAttributes>
 
@@ -1150,7 +1534,18 @@ Returns: a L<Paws::CloudDirectory::ListFacetAttributesResponse> instance
 Retrieves attributes attached to the facet.
 
 
-=head2 ListFacetNames(SchemaArn => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListFacetNames
+
+=over
+
+=item SchemaArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListFacetNames>
 
@@ -1159,7 +1554,26 @@ Returns: a L<Paws::CloudDirectory::ListFacetNamesResponse> instance
 Retrieves the names of facets that exist in a schema.
 
 
-=head2 ListIncomingTypedLinks(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FilterAttributeRanges => ArrayRef[L<Paws::CloudDirectory::TypedLinkAttributeRange>], FilterTypedLink => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>, MaxResults => Int, NextToken => Str])
+=head2 ListIncomingTypedLinks
+
+=over
+
+=item DirectoryArn => Str
+
+=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item [ConsistencyLevel => Str]
+
+=item [FilterAttributeRanges => ArrayRef[L<Paws::CloudDirectory::TypedLinkAttributeRange>]]
+
+=item [FilterTypedLink => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListIncomingTypedLinks>
 
@@ -1171,7 +1585,24 @@ facet and identity attributes. For more information, see Typed link
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
-=head2 ListIndex(DirectoryArn => Str, IndexReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str, RangesOnIndexedValues => ArrayRef[L<Paws::CloudDirectory::ObjectAttributeRange>]])
+=head2 ListIndex
+
+=over
+
+=item DirectoryArn => Str
+
+=item IndexReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item [ConsistencyLevel => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [RangesOnIndexedValues => ArrayRef[L<Paws::CloudDirectory::ObjectAttributeRange>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListIndex>
 
@@ -1180,7 +1611,24 @@ Returns: a L<Paws::CloudDirectory::ListIndexResponse> instance
 Lists objects attached to the specified index.
 
 
-=head2 ListObjectAttributes(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FacetFilter => L<Paws::CloudDirectory::SchemaFacet>, MaxResults => Int, NextToken => Str])
+=head2 ListObjectAttributes
+
+=over
+
+=item DirectoryArn => Str
+
+=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item [ConsistencyLevel => Str]
+
+=item [FacetFilter => L<Paws::CloudDirectory::SchemaFacet>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListObjectAttributes>
 
@@ -1189,7 +1637,22 @@ Returns: a L<Paws::CloudDirectory::ListObjectAttributesResponse> instance
 Lists all attributes that are associated with an object.
 
 
-=head2 ListObjectChildren(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
+=head2 ListObjectChildren
+
+=over
+
+=item DirectoryArn => Str
+
+=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item [ConsistencyLevel => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListObjectChildren>
 
@@ -1199,7 +1662,20 @@ Returns a paginated list of child objects that are associated with a
 given object.
 
 
-=head2 ListObjectParentPaths(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [MaxResults => Int, NextToken => Str])
+=head2 ListObjectParentPaths
+
+=over
+
+=item DirectoryArn => Str
+
+=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListObjectParentPaths>
 
@@ -1219,7 +1695,22 @@ calls unless the objects are deleted or moved. Paths not leading to the
 directory root are ignored from the target object.
 
 
-=head2 ListObjectParents(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
+=head2 ListObjectParents
+
+=over
+
+=item DirectoryArn => Str
+
+=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item [ConsistencyLevel => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListObjectParents>
 
@@ -1229,7 +1720,22 @@ Lists parent objects that are associated with a given object in
 pagination fashion.
 
 
-=head2 ListObjectPolicies(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
+=head2 ListObjectPolicies
+
+=over
+
+=item DirectoryArn => Str
+
+=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item [ConsistencyLevel => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListObjectPolicies>
 
@@ -1238,7 +1744,26 @@ Returns: a L<Paws::CloudDirectory::ListObjectPoliciesResponse> instance
 Returns policies attached to an object in pagination fashion.
 
 
-=head2 ListOutgoingTypedLinks(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FilterAttributeRanges => ArrayRef[L<Paws::CloudDirectory::TypedLinkAttributeRange>], FilterTypedLink => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>, MaxResults => Int, NextToken => Str])
+=head2 ListOutgoingTypedLinks
+
+=over
+
+=item DirectoryArn => Str
+
+=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item [ConsistencyLevel => Str]
+
+=item [FilterAttributeRanges => ArrayRef[L<Paws::CloudDirectory::TypedLinkAttributeRange>]]
+
+=item [FilterTypedLink => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListOutgoingTypedLinks>
 
@@ -1250,7 +1775,22 @@ facet and identity attributes. For more information, see Typed link
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
-=head2 ListPolicyAttachments(DirectoryArn => Str, PolicyReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
+=head2 ListPolicyAttachments
+
+=over
+
+=item DirectoryArn => Str
+
+=item PolicyReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item [ConsistencyLevel => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListPolicyAttachments>
 
@@ -1260,7 +1800,18 @@ Returns all of the C<ObjectIdentifiers> to which a given policy is
 attached.
 
 
-=head2 ListPublishedSchemaArns([MaxResults => Int, NextToken => Str, SchemaArn => Str])
+=head2 ListPublishedSchemaArns
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SchemaArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListPublishedSchemaArns>
 
@@ -1271,7 +1822,18 @@ version ARN is provided as C<SchemaArn>, the minor version revisions in
 that family are listed instead.
 
 
-=head2 ListTagsForResource(ResourceArn => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListTagsForResource>
 
@@ -1282,7 +1844,20 @@ directories with a limit of 50 tags per directory. All 50 tags are
 returned for a given directory with this API call.
 
 
-=head2 ListTypedLinkFacetAttributes(Name => Str, SchemaArn => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListTypedLinkFacetAttributes
+
+=over
+
+=item Name => Str
+
+=item SchemaArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListTypedLinkFacetAttributes>
 
@@ -1293,7 +1868,18 @@ TypedLinkFacet. For more information, see Typed link
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
-=head2 ListTypedLinkFacetNames(SchemaArn => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListTypedLinkFacetNames
+
+=over
+
+=item SchemaArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListTypedLinkFacetNames>
 
@@ -1304,7 +1890,20 @@ schema. For more information, see Typed link
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
-=head2 LookupPolicy(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [MaxResults => Int, NextToken => Str])
+=head2 LookupPolicy
+
+=over
+
+=item DirectoryArn => Str
+
+=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::LookupPolicy>
 
@@ -1320,7 +1919,20 @@ are ignored. For more information, see Policies
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies).
 
 
-=head2 PublishSchema(DevelopmentSchemaArn => Str, Version => Str, [MinorVersion => Str, Name => Str])
+=head2 PublishSchema
+
+=over
+
+=item DevelopmentSchemaArn => Str
+
+=item Version => Str
+
+=item [MinorVersion => Str]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::PublishSchema>
 
@@ -1330,7 +1942,16 @@ Publishes a development schema with a major version and a recommended
 minor version.
 
 
-=head2 PutSchemaFromJson(Document => Str, SchemaArn => Str)
+=head2 PutSchemaFromJson
+
+=over
+
+=item Document => Str
+
+=item SchemaArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::PutSchemaFromJson>
 
@@ -1342,7 +1963,18 @@ development schemas. See JSON Schema Format
 for more information.
 
 
-=head2 RemoveFacetFromObject(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, SchemaFacet => L<Paws::CloudDirectory::SchemaFacet>)
+=head2 RemoveFacetFromObject
+
+=over
+
+=item DirectoryArn => Str
+
+=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+
+=item SchemaFacet => L<Paws::CloudDirectory::SchemaFacet>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::RemoveFacetFromObject>
 
@@ -1351,7 +1983,16 @@ Returns: a L<Paws::CloudDirectory::RemoveFacetFromObjectResponse> instance
 Removes the specified facet from the specified object.
 
 
-=head2 TagResource(ResourceArn => Str, Tags => ArrayRef[L<Paws::CloudDirectory::Tag>])
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::CloudDirectory::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::TagResource>
 
@@ -1360,7 +2001,16 @@ Returns: a L<Paws::CloudDirectory::TagResourceResponse> instance
 An API operation for adding tags to a resource.
 
 
-=head2 UntagResource(ResourceArn => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::UntagResource>
 
@@ -1369,7 +2019,20 @@ Returns: a L<Paws::CloudDirectory::UntagResourceResponse> instance
 An API operation for removing tags from a resource.
 
 
-=head2 UpdateFacet(Name => Str, SchemaArn => Str, [AttributeUpdates => ArrayRef[L<Paws::CloudDirectory::FacetAttributeUpdate>], ObjectType => Str])
+=head2 UpdateFacet
+
+=over
+
+=item Name => Str
+
+=item SchemaArn => Str
+
+=item [AttributeUpdates => ArrayRef[L<Paws::CloudDirectory::FacetAttributeUpdate>]]
+
+=item [ObjectType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::UpdateFacet>
 
@@ -1395,7 +2058,18 @@ Deletes existing C<Attributes>, C<Rules>, or C<ObjectTypes>.
 
 
 
-=head2 UpdateObjectAttributes(AttributeUpdates => ArrayRef[L<Paws::CloudDirectory::ObjectAttributeUpdate>], DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>)
+=head2 UpdateObjectAttributes
+
+=over
+
+=item AttributeUpdates => ArrayRef[L<Paws::CloudDirectory::ObjectAttributeUpdate>]
+
+=item DirectoryArn => Str
+
+=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::UpdateObjectAttributes>
 
@@ -1404,7 +2078,16 @@ Returns: a L<Paws::CloudDirectory::UpdateObjectAttributesResponse> instance
 Updates a given object's attributes.
 
 
-=head2 UpdateSchema(Name => Str, SchemaArn => Str)
+=head2 UpdateSchema
+
+=over
+
+=item Name => Str
+
+=item SchemaArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::UpdateSchema>
 
@@ -1414,7 +2097,20 @@ Updates the schema name with a new name. Only development schema names
 can be updated.
 
 
-=head2 UpdateTypedLinkFacet(AttributeUpdates => ArrayRef[L<Paws::CloudDirectory::TypedLinkFacetAttributeUpdate>], IdentityAttributeOrder => ArrayRef[Str|Undef], Name => Str, SchemaArn => Str)
+=head2 UpdateTypedLinkFacet
+
+=over
+
+=item AttributeUpdates => ArrayRef[L<Paws::CloudDirectory::TypedLinkFacetAttributeUpdate>]
+
+=item IdentityAttributeOrder => ArrayRef[Str|Undef]
+
+=item Name => Str
+
+=item SchemaArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::UpdateTypedLinkFacet>
 
@@ -1424,7 +2120,18 @@ Updates a TypedLinkFacet. For more information, see Typed link
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
-=head2 UpgradeAppliedSchema(DirectoryArn => Str, PublishedSchemaArn => Str, [DryRun => Bool])
+=head2 UpgradeAppliedSchema
+
+=over
+
+=item DirectoryArn => Str
+
+=item PublishedSchemaArn => Str
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::UpgradeAppliedSchema>
 
@@ -1439,7 +2146,20 @@ multiple directories from one schema, you would need to call this API
 on each directory.
 
 
-=head2 UpgradePublishedSchema(DevelopmentSchemaArn => Str, MinorVersion => Str, PublishedSchemaArn => Str, [DryRun => Bool])
+=head2 UpgradePublishedSchema
+
+=over
+
+=item DevelopmentSchemaArn => Str
+
+=item MinorVersion => Str
+
+=item PublishedSchemaArn => Str
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudDirectory::UpgradePublishedSchema>
 

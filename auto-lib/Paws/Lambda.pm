@@ -1,6 +1,7 @@
 package Paws::Lambda;
   use Moose;
   sub service { 'lambda' }
+  sub signing_name { 'lambda' }
   sub version { '2015-03-31' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -277,7 +278,30 @@ in the B<AWS Lambda Developer Guide>.
 
 =head1 METHODS
 
-=head2 AddPermission(Action => Str, FunctionName => Str, Principal => Str, StatementId => Str, [EventSourceToken => Str, Qualifier => Str, RevisionId => Str, SourceAccount => Str, SourceArn => Str])
+=head2 AddPermission
+
+=over
+
+=item Action => Str
+
+=item FunctionName => Str
+
+=item Principal => Str
+
+=item StatementId => Str
+
+=item [EventSourceToken => Str]
+
+=item [Qualifier => Str]
+
+=item [RevisionId => Str]
+
+=item [SourceAccount => Str]
+
+=item [SourceArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::AddPermission>
 
@@ -304,7 +328,22 @@ This operation requires permission for the C<lambda:AddPermission>
 action.
 
 
-=head2 CreateAlias(FunctionName => Str, FunctionVersion => Str, Name => Str, [Description => Str, RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>])
+=head2 CreateAlias
+
+=over
+
+=item FunctionName => Str
+
+=item FunctionVersion => Str
+
+=item Name => Str
+
+=item [Description => Str]
+
+=item [RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::CreateAlias>
 
@@ -318,7 +357,24 @@ Alias names are unique for a given function. This requires permission
 for the lambda:CreateAlias action.
 
 
-=head2 CreateEventSourceMapping(EventSourceArn => Str, FunctionName => Str, StartingPosition => Str, [BatchSize => Int, Enabled => Bool, StartingPositionTimestamp => Str])
+=head2 CreateEventSourceMapping
+
+=over
+
+=item EventSourceArn => Str
+
+=item FunctionName => Str
+
+=item StartingPosition => Str
+
+=item [BatchSize => Int]
+
+=item [Enabled => Bool]
+
+=item [StartingPositionTimestamp => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::CreateEventSourceMapping>
 
@@ -349,7 +405,42 @@ This operation requires permission for the
 C<lambda:CreateEventSourceMapping> action.
 
 
-=head2 CreateFunction(Code => L<Paws::Lambda::FunctionCode>, FunctionName => Str, Handler => Str, Role => Str, Runtime => Str, [DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>, Description => Str, Environment => L<Paws::Lambda::Environment>, KMSKeyArn => Str, MemorySize => Int, Publish => Bool, Tags => L<Paws::Lambda::Tags>, Timeout => Int, TracingConfig => L<Paws::Lambda::TracingConfig>, VpcConfig => L<Paws::Lambda::VpcConfig>])
+=head2 CreateFunction
+
+=over
+
+=item Code => L<Paws::Lambda::FunctionCode>
+
+=item FunctionName => Str
+
+=item Handler => Str
+
+=item Role => Str
+
+=item Runtime => Str
+
+=item [DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>]
+
+=item [Description => Str]
+
+=item [Environment => L<Paws::Lambda::Environment>]
+
+=item [KMSKeyArn => Str]
+
+=item [MemorySize => Int]
+
+=item [Publish => Bool]
+
+=item [Tags => L<Paws::Lambda::Tags>]
+
+=item [Timeout => Int]
+
+=item [TracingConfig => L<Paws::Lambda::TracingConfig>]
+
+=item [VpcConfig => L<Paws::Lambda::VpcConfig>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::CreateFunction>
 
@@ -370,7 +461,16 @@ This operation requires permission for the C<lambda:CreateFunction>
 action.
 
 
-=head2 DeleteAlias(FunctionName => Str, Name => Str)
+=head2 DeleteAlias
+
+=over
+
+=item FunctionName => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::DeleteAlias>
 
@@ -383,7 +483,14 @@ Introduction to AWS Lambda Aliases
 This requires permission for the lambda:DeleteAlias action.
 
 
-=head2 DeleteEventSourceMapping(UUID => Str)
+=head2 DeleteEventSourceMapping
+
+=over
+
+=item UUID => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::DeleteEventSourceMapping>
 
@@ -396,7 +503,16 @@ This operation requires permission for the
 C<lambda:DeleteEventSourceMapping> action.
 
 
-=head2 DeleteFunction(FunctionName => Str, [Qualifier => Str])
+=head2 DeleteFunction
+
+=over
+
+=item FunctionName => Str
+
+=item [Qualifier => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::DeleteFunction>
 
@@ -420,7 +536,14 @@ This operation requires permission for the C<lambda:DeleteFunction>
 action.
 
 
-=head2 DeleteFunctionConcurrency(FunctionName => Str)
+=head2 DeleteFunctionConcurrency
+
+=over
+
+=item FunctionName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::DeleteFunctionConcurrency>
 
@@ -430,7 +553,12 @@ Removes concurrent execution limits from this function. For more
 information, see concurrent-executions.
 
 
-=head2 GetAccountSettings()
+=head2 GetAccountSettings
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::Lambda::GetAccountSettings>
 
@@ -446,7 +574,16 @@ retrieve resource usage statistics, such as code storage usage and
 function count.
 
 
-=head2 GetAlias(FunctionName => Str, Name => Str)
+=head2 GetAlias
+
+=over
+
+=item FunctionName => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::GetAlias>
 
@@ -460,7 +597,14 @@ information, see Introduction to AWS Lambda Aliases
 This requires permission for the C<lambda:GetAlias> action.
 
 
-=head2 GetEventSourceMapping(UUID => Str)
+=head2 GetEventSourceMapping
+
+=over
+
+=item UUID => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::GetEventSourceMapping>
 
@@ -473,7 +617,16 @@ This operation requires permission for the
 C<lambda:GetEventSourceMapping> action.
 
 
-=head2 GetFunction(FunctionName => Str, [Qualifier => Str])
+=head2 GetFunction
+
+=over
+
+=item FunctionName => Str
+
+=item [Qualifier => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::GetFunction>
 
@@ -496,7 +649,16 @@ This operation requires permission for the C<lambda:GetFunction>
 action.
 
 
-=head2 GetFunctionConfiguration(FunctionName => Str, [Qualifier => Str])
+=head2 GetFunctionConfiguration
+
+=over
+
+=item FunctionName => Str
+
+=item [Qualifier => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::GetFunctionConfiguration>
 
@@ -518,7 +680,16 @@ This operation requires permission for the
 C<lambda:GetFunctionConfiguration> operation.
 
 
-=head2 GetPolicy(FunctionName => Str, [Qualifier => Str])
+=head2 GetPolicy
+
+=over
+
+=item FunctionName => Str
+
+=item [Qualifier => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::GetPolicy>
 
@@ -537,7 +708,24 @@ Versioning and Aliases
 You need permission for the C<lambda:GetPolicy action.>
 
 
-=head2 Invoke(FunctionName => Str, [ClientContext => Str, InvocationType => Str, LogType => Str, Payload => Str, Qualifier => Str])
+=head2 Invoke
+
+=over
+
+=item FunctionName => Str
+
+=item [ClientContext => Str]
+
+=item [InvocationType => Str]
+
+=item [LogType => Str]
+
+=item [Payload => Str]
+
+=item [Qualifier => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::Invoke>
 
@@ -570,7 +758,16 @@ when a function with reserved concurrency exceeds its configured
 concurrency limit.
 
 
-=head2 InvokeAsync(FunctionName => Str, InvokeArgs => Str)
+=head2 InvokeAsync
+
+=over
+
+=item FunctionName => Str
+
+=item InvokeArgs => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::InvokeAsync>
 
@@ -588,7 +785,20 @@ This operation requires permission for the C<lambda:InvokeFunction>
 action.
 
 
-=head2 ListAliases(FunctionName => Str, [FunctionVersion => Str, Marker => Str, MaxItems => Int])
+=head2 ListAliases
+
+=over
+
+=item FunctionName => Str
+
+=item [FunctionVersion => Str]
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::ListAliases>
 
@@ -603,7 +813,20 @@ information, see Introduction to AWS Lambda Aliases
 This requires permission for the lambda:ListAliases action.
 
 
-=head2 ListEventSourceMappings([EventSourceArn => Str, FunctionName => Str, Marker => Str, MaxItems => Int])
+=head2 ListEventSourceMappings
+
+=over
+
+=item [EventSourceArn => Str]
+
+=item [FunctionName => Str]
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::ListEventSourceMappings>
 
@@ -625,7 +848,20 @@ This operation requires permission for the
 C<lambda:ListEventSourceMappings> action.
 
 
-=head2 ListFunctions([FunctionVersion => Str, Marker => Str, MasterRegion => Str, MaxItems => Int])
+=head2 ListFunctions
+
+=over
+
+=item [FunctionVersion => Str]
+
+=item [Marker => Str]
+
+=item [MasterRegion => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::ListFunctions>
 
@@ -644,7 +880,14 @@ versioning feature, see AWS Lambda Function Versioning and Aliases
 (http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
 
 
-=head2 ListTags(Resource => Str)
+=head2 ListTags
+
+=over
+
+=item Resource => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::ListTags>
 
@@ -657,7 +900,18 @@ see Tagging Lambda Functions
 Lambda Developer Guide>.
 
 
-=head2 ListVersionsByFunction(FunctionName => Str, [Marker => Str, MaxItems => Int])
+=head2 ListVersionsByFunction
+
+=over
+
+=item FunctionName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::ListVersionsByFunction>
 
@@ -668,7 +922,20 @@ feature, see AWS Lambda Function Versioning and Aliases
 (http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
 
 
-=head2 PublishVersion(FunctionName => Str, [CodeSha256 => Str, Description => Str, RevisionId => Str])
+=head2 PublishVersion
+
+=over
+
+=item FunctionName => Str
+
+=item [CodeSha256 => Str]
+
+=item [Description => Str]
+
+=item [RevisionId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::PublishVersion>
 
@@ -683,7 +950,16 @@ Versioning and Aliases
 (http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
 
 
-=head2 PutFunctionConcurrency(FunctionName => Str, ReservedConcurrentExecutions => Int)
+=head2 PutFunctionConcurrency
+
+=over
+
+=item FunctionName => Str
+
+=item ReservedConcurrentExecutions => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::PutFunctionConcurrency>
 
@@ -698,7 +974,20 @@ total of 900 available to allocate to individual functions. For more
 information, see concurrent-executions.
 
 
-=head2 RemovePermission(FunctionName => Str, StatementId => Str, [Qualifier => Str, RevisionId => Str])
+=head2 RemovePermission
+
+=over
+
+=item FunctionName => Str
+
+=item StatementId => Str
+
+=item [Qualifier => Str]
+
+=item [RevisionId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::RemovePermission>
 
@@ -721,7 +1010,16 @@ lose permission to the function.
 You need permission for the C<lambda:RemovePermission> action.
 
 
-=head2 TagResource(Resource => Str, Tags => L<Paws::Lambda::Tags>)
+=head2 TagResource
+
+=over
+
+=item Resource => Str
+
+=item Tags => L<Paws::Lambda::Tags>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::TagResource>
 
@@ -735,7 +1033,16 @@ and a value of null. For more information, see Tagging Lambda Functions
 Lambda Developer Guide>.
 
 
-=head2 UntagResource(Resource => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 UntagResource
+
+=over
+
+=item Resource => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::UntagResource>
 
@@ -747,7 +1054,24 @@ Resource Name). For more information, see Tagging Lambda Functions
 Lambda Developer Guide>.
 
 
-=head2 UpdateAlias(FunctionName => Str, Name => Str, [Description => Str, FunctionVersion => Str, RevisionId => Str, RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>])
+=head2 UpdateAlias
+
+=over
+
+=item FunctionName => Str
+
+=item Name => Str
+
+=item [Description => Str]
+
+=item [FunctionVersion => Str]
+
+=item [RevisionId => Str]
+
+=item [RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::UpdateAlias>
 
@@ -761,7 +1085,20 @@ Introduction to AWS Lambda Aliases
 This requires permission for the lambda:UpdateAlias action.
 
 
-=head2 UpdateEventSourceMapping(UUID => Str, [BatchSize => Int, Enabled => Bool, FunctionName => Str])
+=head2 UpdateEventSourceMapping
+
+=over
+
+=item UUID => Str
+
+=item [BatchSize => Int]
+
+=item [Enabled => Bool]
+
+=item [FunctionName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::UpdateEventSourceMapping>
 
@@ -788,7 +1125,28 @@ This operation requires permission for the
 C<lambda:UpdateEventSourceMapping> action.
 
 
-=head2 UpdateFunctionCode(FunctionName => Str, [DryRun => Bool, Publish => Bool, RevisionId => Str, S3Bucket => Str, S3Key => Str, S3ObjectVersion => Str, ZipFile => Str])
+=head2 UpdateFunctionCode
+
+=over
+
+=item FunctionName => Str
+
+=item [DryRun => Bool]
+
+=item [Publish => Bool]
+
+=item [RevisionId => Str]
+
+=item [S3Bucket => Str]
+
+=item [S3Key => Str]
+
+=item [S3ObjectVersion => Str]
+
+=item [ZipFile => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::UpdateFunctionCode>
 
@@ -808,7 +1166,38 @@ This operation requires permission for the C<lambda:UpdateFunctionCode>
 action.
 
 
-=head2 UpdateFunctionConfiguration(FunctionName => Str, [DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>, Description => Str, Environment => L<Paws::Lambda::Environment>, Handler => Str, KMSKeyArn => Str, MemorySize => Int, RevisionId => Str, Role => Str, Runtime => Str, Timeout => Int, TracingConfig => L<Paws::Lambda::TracingConfig>, VpcConfig => L<Paws::Lambda::VpcConfig>])
+=head2 UpdateFunctionConfiguration
+
+=over
+
+=item FunctionName => Str
+
+=item [DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>]
+
+=item [Description => Str]
+
+=item [Environment => L<Paws::Lambda::Environment>]
+
+=item [Handler => Str]
+
+=item [KMSKeyArn => Str]
+
+=item [MemorySize => Int]
+
+=item [RevisionId => Str]
+
+=item [Role => Str]
+
+=item [Runtime => Str]
+
+=item [Timeout => Int]
+
+=item [TracingConfig => L<Paws::Lambda::TracingConfig>]
+
+=item [VpcConfig => L<Paws::Lambda::VpcConfig>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Lambda::UpdateFunctionConfiguration>
 

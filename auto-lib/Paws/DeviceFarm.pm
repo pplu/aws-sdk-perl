@@ -1,6 +1,7 @@
 package Paws::DeviceFarm;
   use Moose;
   sub service { 'devicefarm' }
+  sub signing_name { 'devicefarm' }
   sub version { '2015-06-23' }
   sub target_prefix { 'DeviceFarm_20150623' }
   sub json_version { "1.1" }
@@ -686,7 +687,20 @@ devices in the cloud.
 
 =head1 METHODS
 
-=head2 CreateDevicePool(Name => Str, ProjectArn => Str, Rules => ArrayRef[L<Paws::DeviceFarm::Rule>], [Description => Str])
+=head2 CreateDevicePool
+
+=over
+
+=item Name => Str
+
+=item ProjectArn => Str
+
+=item Rules => ArrayRef[L<Paws::DeviceFarm::Rule>]
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::CreateDevicePool>
 
@@ -695,7 +709,22 @@ Returns: a L<Paws::DeviceFarm::CreateDevicePoolResult> instance
 Creates a device pool.
 
 
-=head2 CreateInstanceProfile(Name => Str, [Description => Str, ExcludeAppPackagesFromCleanup => ArrayRef[Str|Undef], PackageCleanup => Bool, RebootAfterUse => Bool])
+=head2 CreateInstanceProfile
+
+=over
+
+=item Name => Str
+
+=item [Description => Str]
+
+=item [ExcludeAppPackagesFromCleanup => ArrayRef[Str|Undef]]
+
+=item [PackageCleanup => Bool]
+
+=item [RebootAfterUse => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::CreateInstanceProfile>
 
@@ -705,7 +734,36 @@ Creates a profile that can be applied to one or more private fleet
 device instances.
 
 
-=head2 CreateNetworkProfile(Name => Str, ProjectArn => Str, [Description => Str, DownlinkBandwidthBits => Int, DownlinkDelayMs => Int, DownlinkJitterMs => Int, DownlinkLossPercent => Int, Type => Str, UplinkBandwidthBits => Int, UplinkDelayMs => Int, UplinkJitterMs => Int, UplinkLossPercent => Int])
+=head2 CreateNetworkProfile
+
+=over
+
+=item Name => Str
+
+=item ProjectArn => Str
+
+=item [Description => Str]
+
+=item [DownlinkBandwidthBits => Int]
+
+=item [DownlinkDelayMs => Int]
+
+=item [DownlinkJitterMs => Int]
+
+=item [DownlinkLossPercent => Int]
+
+=item [Type => Str]
+
+=item [UplinkBandwidthBits => Int]
+
+=item [UplinkDelayMs => Int]
+
+=item [UplinkJitterMs => Int]
+
+=item [UplinkLossPercent => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::CreateNetworkProfile>
 
@@ -714,7 +772,16 @@ Returns: a L<Paws::DeviceFarm::CreateNetworkProfileResult> instance
 Creates a network profile.
 
 
-=head2 CreateProject(Name => Str, [DefaultJobTimeoutMinutes => Int])
+=head2 CreateProject
+
+=over
+
+=item Name => Str
+
+=item [DefaultJobTimeoutMinutes => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::CreateProject>
 
@@ -723,7 +790,36 @@ Returns: a L<Paws::DeviceFarm::CreateProjectResult> instance
 Creates a new project.
 
 
-=head2 CreateRemoteAccessSession(DeviceArn => Str, ProjectArn => Str, [ClientId => Str, Configuration => L<Paws::DeviceFarm::CreateRemoteAccessSessionConfiguration>, InstanceArn => Str, InteractionMode => Str, Name => Str, RemoteDebugEnabled => Bool, RemoteRecordAppArn => Str, RemoteRecordEnabled => Bool, SkipAppResign => Bool, SshPublicKey => Str])
+=head2 CreateRemoteAccessSession
+
+=over
+
+=item DeviceArn => Str
+
+=item ProjectArn => Str
+
+=item [ClientId => Str]
+
+=item [Configuration => L<Paws::DeviceFarm::CreateRemoteAccessSessionConfiguration>]
+
+=item [InstanceArn => Str]
+
+=item [InteractionMode => Str]
+
+=item [Name => Str]
+
+=item [RemoteDebugEnabled => Bool]
+
+=item [RemoteRecordAppArn => Str]
+
+=item [RemoteRecordEnabled => Bool]
+
+=item [SkipAppResign => Bool]
+
+=item [SshPublicKey => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::CreateRemoteAccessSession>
 
@@ -732,7 +828,20 @@ Returns: a L<Paws::DeviceFarm::CreateRemoteAccessSessionResult> instance
 Specifies and starts a remote access session.
 
 
-=head2 CreateUpload(Name => Str, ProjectArn => Str, Type => Str, [ContentType => Str])
+=head2 CreateUpload
+
+=over
+
+=item Name => Str
+
+=item ProjectArn => Str
+
+=item Type => Str
+
+=item [ContentType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::CreateUpload>
 
@@ -741,7 +850,20 @@ Returns: a L<Paws::DeviceFarm::CreateUploadResult> instance
 Uploads an app or test scripts.
 
 
-=head2 CreateVPCEConfiguration(ServiceDnsName => Str, VpceConfigurationName => Str, VpceServiceName => Str, [VpceConfigurationDescription => Str])
+=head2 CreateVPCEConfiguration
+
+=over
+
+=item ServiceDnsName => Str
+
+=item VpceConfigurationName => Str
+
+=item VpceServiceName => Str
+
+=item [VpceConfigurationDescription => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::CreateVPCEConfiguration>
 
@@ -751,7 +873,14 @@ Creates a configuration record in Device Farm for your Amazon Virtual
 Private Cloud (VPC) endpoint.
 
 
-=head2 DeleteDevicePool(Arn => Str)
+=head2 DeleteDevicePool
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::DeleteDevicePool>
 
@@ -761,7 +890,14 @@ Deletes a device pool given the pool ARN. Does not allow deletion of
 curated pools owned by the system.
 
 
-=head2 DeleteInstanceProfile(Arn => Str)
+=head2 DeleteInstanceProfile
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::DeleteInstanceProfile>
 
@@ -771,7 +907,14 @@ Deletes a profile that can be applied to one or more private device
 instances.
 
 
-=head2 DeleteNetworkProfile(Arn => Str)
+=head2 DeleteNetworkProfile
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::DeleteNetworkProfile>
 
@@ -780,7 +923,14 @@ Returns: a L<Paws::DeviceFarm::DeleteNetworkProfileResult> instance
 Deletes a network profile.
 
 
-=head2 DeleteProject(Arn => Str)
+=head2 DeleteProject
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::DeleteProject>
 
@@ -791,7 +941,14 @@ Deletes an AWS Device Farm project, given the project ARN.
 B<Note> Deleting this resource does not stop an in-progress run.
 
 
-=head2 DeleteRemoteAccessSession(Arn => Str)
+=head2 DeleteRemoteAccessSession
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::DeleteRemoteAccessSession>
 
@@ -800,7 +957,14 @@ Returns: a L<Paws::DeviceFarm::DeleteRemoteAccessSessionResult> instance
 Deletes a completed remote access session and its results.
 
 
-=head2 DeleteRun(Arn => Str)
+=head2 DeleteRun
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::DeleteRun>
 
@@ -811,7 +975,14 @@ Deletes the run, given the run ARN.
 B<Note> Deleting this resource does not stop an in-progress run.
 
 
-=head2 DeleteUpload(Arn => Str)
+=head2 DeleteUpload
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::DeleteUpload>
 
@@ -820,7 +991,14 @@ Returns: a L<Paws::DeviceFarm::DeleteUploadResult> instance
 Deletes an upload given the upload ARN.
 
 
-=head2 DeleteVPCEConfiguration(Arn => Str)
+=head2 DeleteVPCEConfiguration
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::DeleteVPCEConfiguration>
 
@@ -830,7 +1008,12 @@ Deletes a configuration for your Amazon Virtual Private Cloud (VPC)
 endpoint.
 
 
-=head2 GetAccountSettings()
+=head2 GetAccountSettings
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetAccountSettings>
 
@@ -840,7 +1023,14 @@ Returns the number of unmetered iOS and/or unmetered Android devices
 that have been purchased by the account.
 
 
-=head2 GetDevice(Arn => Str)
+=head2 GetDevice
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetDevice>
 
@@ -849,7 +1039,14 @@ Returns: a L<Paws::DeviceFarm::GetDeviceResult> instance
 Gets information about a unique device type.
 
 
-=head2 GetDeviceInstance(Arn => Str)
+=head2 GetDeviceInstance
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetDeviceInstance>
 
@@ -859,7 +1056,14 @@ Returns information about a device instance belonging to a private
 device fleet.
 
 
-=head2 GetDevicePool(Arn => Str)
+=head2 GetDevicePool
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetDevicePool>
 
@@ -868,7 +1072,22 @@ Returns: a L<Paws::DeviceFarm::GetDevicePoolResult> instance
 Gets information about a device pool.
 
 
-=head2 GetDevicePoolCompatibility(DevicePoolArn => Str, [AppArn => Str, Configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>, Test => L<Paws::DeviceFarm::ScheduleRunTest>, TestType => Str])
+=head2 GetDevicePoolCompatibility
+
+=over
+
+=item DevicePoolArn => Str
+
+=item [AppArn => Str]
+
+=item [Configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>]
+
+=item [Test => L<Paws::DeviceFarm::ScheduleRunTest>]
+
+=item [TestType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetDevicePoolCompatibility>
 
@@ -877,7 +1096,14 @@ Returns: a L<Paws::DeviceFarm::GetDevicePoolCompatibilityResult> instance
 Gets information about compatibility with a device pool.
 
 
-=head2 GetInstanceProfile(Arn => Str)
+=head2 GetInstanceProfile
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetInstanceProfile>
 
@@ -886,7 +1112,14 @@ Returns: a L<Paws::DeviceFarm::GetInstanceProfileResult> instance
 Returns information about the specified instance profile.
 
 
-=head2 GetJob(Arn => Str)
+=head2 GetJob
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetJob>
 
@@ -895,7 +1128,14 @@ Returns: a L<Paws::DeviceFarm::GetJobResult> instance
 Gets information about a job.
 
 
-=head2 GetNetworkProfile(Arn => Str)
+=head2 GetNetworkProfile
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetNetworkProfile>
 
@@ -904,7 +1144,14 @@ Returns: a L<Paws::DeviceFarm::GetNetworkProfileResult> instance
 Returns information about a network profile.
 
 
-=head2 GetOfferingStatus([NextToken => Str])
+=head2 GetOfferingStatus
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetOfferingStatus>
 
@@ -919,7 +1166,14 @@ invoke the operation. Please contact aws-devicefarm-support@amazon.com
 should be able to invoke this operation.
 
 
-=head2 GetProject(Arn => Str)
+=head2 GetProject
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetProject>
 
@@ -928,7 +1182,14 @@ Returns: a L<Paws::DeviceFarm::GetProjectResult> instance
 Gets information about a project.
 
 
-=head2 GetRemoteAccessSession(Arn => Str)
+=head2 GetRemoteAccessSession
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetRemoteAccessSession>
 
@@ -937,7 +1198,14 @@ Returns: a L<Paws::DeviceFarm::GetRemoteAccessSessionResult> instance
 Returns a link to a currently running remote access session.
 
 
-=head2 GetRun(Arn => Str)
+=head2 GetRun
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetRun>
 
@@ -946,7 +1214,14 @@ Returns: a L<Paws::DeviceFarm::GetRunResult> instance
 Gets information about a run.
 
 
-=head2 GetSuite(Arn => Str)
+=head2 GetSuite
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetSuite>
 
@@ -955,7 +1230,14 @@ Returns: a L<Paws::DeviceFarm::GetSuiteResult> instance
 Gets information about a suite.
 
 
-=head2 GetTest(Arn => Str)
+=head2 GetTest
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetTest>
 
@@ -964,7 +1246,14 @@ Returns: a L<Paws::DeviceFarm::GetTestResult> instance
 Gets information about a test.
 
 
-=head2 GetUpload(Arn => Str)
+=head2 GetUpload
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetUpload>
 
@@ -973,7 +1262,14 @@ Returns: a L<Paws::DeviceFarm::GetUploadResult> instance
 Gets information about an upload.
 
 
-=head2 GetVPCEConfiguration(Arn => Str)
+=head2 GetVPCEConfiguration
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetVPCEConfiguration>
 
@@ -983,7 +1279,16 @@ Returns information about the configuration settings for your Amazon
 Virtual Private Cloud (VPC) endpoint.
 
 
-=head2 InstallToRemoteAccessSession(AppArn => Str, RemoteAccessSessionArn => Str)
+=head2 InstallToRemoteAccessSession
+
+=over
+
+=item AppArn => Str
+
+=item RemoteAccessSessionArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::InstallToRemoteAccessSession>
 
@@ -994,7 +1299,18 @@ Android applications, the file must be in .apk format. For iOS
 applications, the file must be in .ipa format.
 
 
-=head2 ListArtifacts(Arn => Str, Type => Str, [NextToken => Str])
+=head2 ListArtifacts
+
+=over
+
+=item Arn => Str
+
+=item Type => Str
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListArtifacts>
 
@@ -1003,7 +1319,16 @@ Returns: a L<Paws::DeviceFarm::ListArtifactsResult> instance
 Gets information about artifacts.
 
 
-=head2 ListDeviceInstances([MaxResults => Int, NextToken => Str])
+=head2 ListDeviceInstances
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListDeviceInstances>
 
@@ -1013,7 +1338,18 @@ Returns information about the private device instances associated with
 one or more AWS accounts.
 
 
-=head2 ListDevicePools(Arn => Str, [NextToken => Str, Type => Str])
+=head2 ListDevicePools
+
+=over
+
+=item Arn => Str
+
+=item [NextToken => Str]
+
+=item [Type => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListDevicePools>
 
@@ -1022,7 +1358,16 @@ Returns: a L<Paws::DeviceFarm::ListDevicePoolsResult> instance
 Gets information about device pools.
 
 
-=head2 ListDevices([Arn => Str, NextToken => Str])
+=head2 ListDevices
+
+=over
+
+=item [Arn => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListDevices>
 
@@ -1031,7 +1376,16 @@ Returns: a L<Paws::DeviceFarm::ListDevicesResult> instance
 Gets information about unique device types.
 
 
-=head2 ListInstanceProfiles([MaxResults => Int, NextToken => Str])
+=head2 ListInstanceProfiles
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListInstanceProfiles>
 
@@ -1040,7 +1394,16 @@ Returns: a L<Paws::DeviceFarm::ListInstanceProfilesResult> instance
 Returns information about all the instance profiles in an AWS account.
 
 
-=head2 ListJobs(Arn => Str, [NextToken => Str])
+=head2 ListJobs
+
+=over
+
+=item Arn => Str
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListJobs>
 
@@ -1049,7 +1412,18 @@ Returns: a L<Paws::DeviceFarm::ListJobsResult> instance
 Gets information about jobs for a given test run.
 
 
-=head2 ListNetworkProfiles(Arn => Str, [NextToken => Str, Type => Str])
+=head2 ListNetworkProfiles
+
+=over
+
+=item Arn => Str
+
+=item [NextToken => Str]
+
+=item [Type => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListNetworkProfiles>
 
@@ -1058,7 +1432,14 @@ Returns: a L<Paws::DeviceFarm::ListNetworkProfilesResult> instance
 Returns the list of available network profiles.
 
 
-=head2 ListOfferingPromotions([NextToken => Str])
+=head2 ListOfferingPromotions
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListOfferingPromotions>
 
@@ -1072,7 +1453,14 @@ operation. Contact aws-devicefarm-support@amazon.com
 should be able to invoke this operation.
 
 
-=head2 ListOfferings([NextToken => Str])
+=head2 ListOfferings
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListOfferings>
 
@@ -1087,7 +1475,14 @@ operation. Please contact aws-devicefarm-support@amazon.com
 should be able to invoke this operation.
 
 
-=head2 ListOfferingTransactions([NextToken => Str])
+=head2 ListOfferingTransactions
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListOfferingTransactions>
 
@@ -1102,7 +1497,16 @@ invoke the operation. Please contact aws-devicefarm-support@amazon.com
 should be able to invoke this operation.
 
 
-=head2 ListProjects([Arn => Str, NextToken => Str])
+=head2 ListProjects
+
+=over
+
+=item [Arn => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListProjects>
 
@@ -1111,7 +1515,16 @@ Returns: a L<Paws::DeviceFarm::ListProjectsResult> instance
 Gets information about projects.
 
 
-=head2 ListRemoteAccessSessions(Arn => Str, [NextToken => Str])
+=head2 ListRemoteAccessSessions
+
+=over
+
+=item Arn => Str
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListRemoteAccessSessions>
 
@@ -1120,7 +1533,16 @@ Returns: a L<Paws::DeviceFarm::ListRemoteAccessSessionsResult> instance
 Returns a list of all currently running remote access sessions.
 
 
-=head2 ListRuns(Arn => Str, [NextToken => Str])
+=head2 ListRuns
+
+=over
+
+=item Arn => Str
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListRuns>
 
@@ -1129,7 +1551,16 @@ Returns: a L<Paws::DeviceFarm::ListRunsResult> instance
 Gets information about runs, given an AWS Device Farm project ARN.
 
 
-=head2 ListSamples(Arn => Str, [NextToken => Str])
+=head2 ListSamples
+
+=over
+
+=item Arn => Str
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListSamples>
 
@@ -1138,7 +1569,16 @@ Returns: a L<Paws::DeviceFarm::ListSamplesResult> instance
 Gets information about samples, given an AWS Device Farm project ARN
 
 
-=head2 ListSuites(Arn => Str, [NextToken => Str])
+=head2 ListSuites
+
+=over
+
+=item Arn => Str
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListSuites>
 
@@ -1147,7 +1587,16 @@ Returns: a L<Paws::DeviceFarm::ListSuitesResult> instance
 Gets information about test suites for a given job.
 
 
-=head2 ListTests(Arn => Str, [NextToken => Str])
+=head2 ListTests
+
+=over
+
+=item Arn => Str
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListTests>
 
@@ -1156,7 +1605,16 @@ Returns: a L<Paws::DeviceFarm::ListTestsResult> instance
 Gets information about tests in a given test suite.
 
 
-=head2 ListUniqueProblems(Arn => Str, [NextToken => Str])
+=head2 ListUniqueProblems
+
+=over
+
+=item Arn => Str
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListUniqueProblems>
 
@@ -1165,7 +1623,16 @@ Returns: a L<Paws::DeviceFarm::ListUniqueProblemsResult> instance
 Gets information about unique problems.
 
 
-=head2 ListUploads(Arn => Str, [NextToken => Str])
+=head2 ListUploads
+
+=over
+
+=item Arn => Str
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListUploads>
 
@@ -1174,7 +1641,16 @@ Returns: a L<Paws::DeviceFarm::ListUploadsResult> instance
 Gets information about uploads, given an AWS Device Farm project ARN.
 
 
-=head2 ListVPCEConfigurations([MaxResults => Int, NextToken => Str])
+=head2 ListVPCEConfigurations
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListVPCEConfigurations>
 
@@ -1184,7 +1660,18 @@ Returns information about all Amazon Virtual Private Cloud (VPC)
 endpoint configurations in the AWS account.
 
 
-=head2 PurchaseOffering([OfferingId => Str, OfferingPromotionId => Str, Quantity => Int])
+=head2 PurchaseOffering
+
+=over
+
+=item [OfferingId => Str]
+
+=item [OfferingPromotionId => Str]
+
+=item [Quantity => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::PurchaseOffering>
 
@@ -1199,7 +1686,16 @@ aws-devicefarm-support@amazon.com
 should be able to invoke this operation.
 
 
-=head2 RenewOffering([OfferingId => Str, Quantity => Int])
+=head2 RenewOffering
+
+=over
+
+=item [OfferingId => Str]
+
+=item [Quantity => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::RenewOffering>
 
@@ -1213,7 +1709,26 @@ operation. Please contact aws-devicefarm-support@amazon.com
 should be able to invoke this operation.
 
 
-=head2 ScheduleRun(DevicePoolArn => Str, ProjectArn => Str, Test => L<Paws::DeviceFarm::ScheduleRunTest>, [AppArn => Str, Configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>, ExecutionConfiguration => L<Paws::DeviceFarm::ExecutionConfiguration>, Name => Str])
+=head2 ScheduleRun
+
+=over
+
+=item DevicePoolArn => Str
+
+=item ProjectArn => Str
+
+=item Test => L<Paws::DeviceFarm::ScheduleRunTest>
+
+=item [AppArn => Str]
+
+=item [Configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>]
+
+=item [ExecutionConfiguration => L<Paws::DeviceFarm::ExecutionConfiguration>]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ScheduleRun>
 
@@ -1222,7 +1737,14 @@ Returns: a L<Paws::DeviceFarm::ScheduleRunResult> instance
 Schedules a run.
 
 
-=head2 StopRemoteAccessSession(Arn => Str)
+=head2 StopRemoteAccessSession
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::StopRemoteAccessSession>
 
@@ -1231,7 +1753,14 @@ Returns: a L<Paws::DeviceFarm::StopRemoteAccessSessionResult> instance
 Ends a specified remote access session.
 
 
-=head2 StopRun(Arn => Str)
+=head2 StopRun
+
+=over
+
+=item Arn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::StopRun>
 
@@ -1246,7 +1775,18 @@ devices. You will be billed for Setup, Teardown, and any tests that
 were in progress or already completed.
 
 
-=head2 UpdateDeviceInstance(Arn => Str, [Labels => ArrayRef[Str|Undef], ProfileArn => Str])
+=head2 UpdateDeviceInstance
+
+=over
+
+=item Arn => Str
+
+=item [Labels => ArrayRef[Str|Undef]]
+
+=item [ProfileArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::UpdateDeviceInstance>
 
@@ -1255,7 +1795,20 @@ Returns: a L<Paws::DeviceFarm::UpdateDeviceInstanceResult> instance
 Updates information about an existing private device instance.
 
 
-=head2 UpdateDevicePool(Arn => Str, [Description => Str, Name => Str, Rules => ArrayRef[L<Paws::DeviceFarm::Rule>]])
+=head2 UpdateDevicePool
+
+=over
+
+=item Arn => Str
+
+=item [Description => Str]
+
+=item [Name => Str]
+
+=item [Rules => ArrayRef[L<Paws::DeviceFarm::Rule>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::UpdateDevicePool>
 
@@ -1266,7 +1819,24 @@ attributes and the pool ARN. Rule updates are all-or-nothing, meaning
 they can only be updated as a whole (or not at all).
 
 
-=head2 UpdateInstanceProfile(Arn => Str, [Description => Str, ExcludeAppPackagesFromCleanup => ArrayRef[Str|Undef], Name => Str, PackageCleanup => Bool, RebootAfterUse => Bool])
+=head2 UpdateInstanceProfile
+
+=over
+
+=item Arn => Str
+
+=item [Description => Str]
+
+=item [ExcludeAppPackagesFromCleanup => ArrayRef[Str|Undef]]
+
+=item [Name => Str]
+
+=item [PackageCleanup => Bool]
+
+=item [RebootAfterUse => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::UpdateInstanceProfile>
 
@@ -1275,7 +1845,36 @@ Returns: a L<Paws::DeviceFarm::UpdateInstanceProfileResult> instance
 Updates information about an existing private device instance profile.
 
 
-=head2 UpdateNetworkProfile(Arn => Str, [Description => Str, DownlinkBandwidthBits => Int, DownlinkDelayMs => Int, DownlinkJitterMs => Int, DownlinkLossPercent => Int, Name => Str, Type => Str, UplinkBandwidthBits => Int, UplinkDelayMs => Int, UplinkJitterMs => Int, UplinkLossPercent => Int])
+=head2 UpdateNetworkProfile
+
+=over
+
+=item Arn => Str
+
+=item [Description => Str]
+
+=item [DownlinkBandwidthBits => Int]
+
+=item [DownlinkDelayMs => Int]
+
+=item [DownlinkJitterMs => Int]
+
+=item [DownlinkLossPercent => Int]
+
+=item [Name => Str]
+
+=item [Type => Str]
+
+=item [UplinkBandwidthBits => Int]
+
+=item [UplinkDelayMs => Int]
+
+=item [UplinkJitterMs => Int]
+
+=item [UplinkLossPercent => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::UpdateNetworkProfile>
 
@@ -1284,7 +1883,18 @@ Returns: a L<Paws::DeviceFarm::UpdateNetworkProfileResult> instance
 Updates the network profile with specific settings.
 
 
-=head2 UpdateProject(Arn => Str, [DefaultJobTimeoutMinutes => Int, Name => Str])
+=head2 UpdateProject
+
+=over
+
+=item Arn => Str
+
+=item [DefaultJobTimeoutMinutes => Int]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::UpdateProject>
 
@@ -1294,7 +1904,22 @@ Modifies the specified project name, given the project ARN and a new
 name.
 
 
-=head2 UpdateVPCEConfiguration(Arn => Str, [ServiceDnsName => Str, VpceConfigurationDescription => Str, VpceConfigurationName => Str, VpceServiceName => Str])
+=head2 UpdateVPCEConfiguration
+
+=over
+
+=item Arn => Str
+
+=item [ServiceDnsName => Str]
+
+=item [VpceConfigurationDescription => Str]
+
+=item [VpceConfigurationName => Str]
+
+=item [VpceServiceName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DeviceFarm::UpdateVPCEConfiguration>
 

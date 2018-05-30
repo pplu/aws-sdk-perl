@@ -17,7 +17,7 @@ Paws::Config::DescribeConfigurationAggregatorSourcesStatusResponse
 
 =head2 AggregatedSourceStatusList => ArrayRef[L<Paws::Config::AggregatedSourceStatus>]
 
-Retuns an AggregatedSourceStatus object.
+Returns an AggregatedSourceStatus object.
 
 
 =head2 NextToken => Str

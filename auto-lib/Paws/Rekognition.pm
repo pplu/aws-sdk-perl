@@ -1,6 +1,7 @@
 package Paws::Rekognition;
   use Moose;
   sub service { 'rekognition' }
+  sub signing_name { 'rekognition' }
   sub version { '2016-06-27' }
   sub target_prefix { 'RekognitionService' }
   sub json_version { "1.1" }
@@ -286,7 +287,18 @@ This is the Amazon Rekognition API reference.
 
 =head1 METHODS
 
-=head2 CompareFaces(SourceImage => L<Paws::Rekognition::Image>, TargetImage => L<Paws::Rekognition::Image>, [SimilarityThreshold => Num])
+=head2 CompareFaces
+
+=over
+
+=item SourceImage => L<Paws::Rekognition::Image>
+
+=item TargetImage => L<Paws::Rekognition::Image>
+
+=item [SimilarityThreshold => Num]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::CompareFaces>
 
@@ -339,7 +351,14 @@ This operation requires permissions to perform the
 C<rekognition:CompareFaces> action.
 
 
-=head2 CreateCollection(CollectionId => Str)
+=head2 CreateCollection
+
+=over
+
+=item CollectionId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::CreateCollection>
 
@@ -359,7 +378,22 @@ This operation requires permissions to perform the
 C<rekognition:CreateCollection> action.
 
 
-=head2 CreateStreamProcessor(Input => L<Paws::Rekognition::StreamProcessorInput>, Name => Str, Output => L<Paws::Rekognition::StreamProcessorOutput>, RoleArn => Str, Settings => L<Paws::Rekognition::StreamProcessorSettings>)
+=head2 CreateStreamProcessor
+
+=over
+
+=item Input => L<Paws::Rekognition::StreamProcessorInput>
+
+=item Name => Str
+
+=item Output => L<Paws::Rekognition::StreamProcessorOutput>
+
+=item RoleArn => Str
+
+=item Settings => L<Paws::Rekognition::StreamProcessorSettings>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::CreateStreamProcessor>
 
@@ -384,7 +418,14 @@ After you have finished analyzing a streaming video, use to stop
 processing. You can delete the stream processor by calling .
 
 
-=head2 DeleteCollection(CollectionId => Str)
+=head2 DeleteCollection
+
+=over
+
+=item CollectionId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::DeleteCollection>
 
@@ -398,7 +439,16 @@ This operation requires permissions to perform the
 C<rekognition:DeleteCollection> action.
 
 
-=head2 DeleteFaces(CollectionId => Str, FaceIds => ArrayRef[Str|Undef])
+=head2 DeleteFaces
+
+=over
+
+=item CollectionId => Str
+
+=item FaceIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::DeleteFaces>
 
@@ -411,7 +461,14 @@ This operation requires permissions to perform the
 C<rekognition:DeleteFaces> action.
 
 
-=head2 DeleteStreamProcessor(Name => Str)
+=head2 DeleteStreamProcessor
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::DeleteStreamProcessor>
 
@@ -423,7 +480,14 @@ not be able to use the same name for a stream processor for a few
 seconds after calling C<DeleteStreamProcessor>.
 
 
-=head2 DescribeStreamProcessor(Name => Str)
+=head2 DescribeStreamProcessor
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::DescribeStreamProcessor>
 
@@ -435,7 +499,16 @@ for the face recognition being performed, and the current status of the
 stream processor.
 
 
-=head2 DetectFaces(Image => L<Paws::Rekognition::Image>, [Attributes => ArrayRef[Str|Undef]])
+=head2 DetectFaces
+
+=over
+
+=item Image => L<Paws::Rekognition::Image>
+
+=item [Attributes => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::DetectFaces>
 
@@ -468,7 +541,18 @@ This operation requires permissions to perform the
 C<rekognition:DetectFaces> action.
 
 
-=head2 DetectLabels(Image => L<Paws::Rekognition::Image>, [MaxLabels => Int, MinConfidence => Num])
+=head2 DetectLabels
+
+=over
+
+=item Image => L<Paws::Rekognition::Image>
+
+=item [MaxLabels => Int]
+
+=item [MinConfidence => Num]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::DetectLabels>
 
@@ -531,7 +615,16 @@ This operation requires permissions to perform the
 C<rekognition:DetectLabels> action.
 
 
-=head2 DetectModerationLabels(Image => L<Paws::Rekognition::Image>, [MinConfidence => Num])
+=head2 DetectModerationLabels
+
+=over
+
+=item Image => L<Paws::Rekognition::Image>
+
+=item [MinConfidence => Num]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::DetectModerationLabels>
 
@@ -553,7 +646,14 @@ to call Amazon Rekognition operations, passing image bytes is not
 supported. The image must be either a PNG or JPEG formatted file.
 
 
-=head2 DetectText(Image => L<Paws::Rekognition::Image>)
+=head2 DetectText
+
+=over
+
+=item Image => L<Paws::Rekognition::Image>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::DetectText>
 
@@ -595,7 +695,14 @@ horizontal axis.
 For more information, see text-detection.
 
 
-=head2 GetCelebrityInfo(Id => Str)
+=head2 GetCelebrityInfo
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::GetCelebrityInfo>
 
@@ -611,7 +718,20 @@ This operation requires permissions to perform the
 C<rekognition:GetCelebrityInfo> action.
 
 
-=head2 GetCelebrityRecognition(JobId => Str, [MaxResults => Int, NextToken => Str, SortBy => Str])
+=head2 GetCelebrityRecognition
+
+=over
+
+=item JobId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::GetCelebrityRecognition>
 
@@ -661,7 +781,20 @@ parameter with the token value returned from the previous call to
 C<GetCelebrityRecognition>.
 
 
-=head2 GetContentModeration(JobId => Str, [MaxResults => Int, NextToken => Str, SortBy => Str])
+=head2 GetContentModeration
+
+=over
+
+=item JobId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::GetContentModeration>
 
@@ -703,7 +836,18 @@ C<GetContentModeration>.
 For more information, see moderation.
 
 
-=head2 GetFaceDetection(JobId => Str, [MaxResults => Int, NextToken => Str])
+=head2 GetFaceDetection
+
+=over
+
+=item JobId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::GetFaceDetection>
 
@@ -734,7 +878,20 @@ with the token value returned from the previous call to
 C<GetFaceDetection>.
 
 
-=head2 GetFaceSearch(JobId => Str, [MaxResults => Int, NextToken => Str, SortBy => Str])
+=head2 GetFaceSearch
+
+=over
+
+=item JobId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::GetFaceSearch>
 
@@ -771,7 +928,20 @@ from the start of the video, persons are matched. You can also sort by
 persons by specifying C<INDEX> for the C<SORTBY> input parameter.
 
 
-=head2 GetLabelDetection(JobId => Str, [MaxResults => Int, NextToken => Str, SortBy => Str])
+=head2 GetLabelDetection
+
+=over
+
+=item JobId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::GetLabelDetection>
 
@@ -806,7 +976,20 @@ with the token value returned from the previous call to
 C<GetLabelDetection>.
 
 
-=head2 GetPersonTracking(JobId => Str, [MaxResults => Int, NextToken => Str, SortBy => Str])
+=head2 GetPersonTracking
+
+=over
+
+=item JobId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::GetPersonTracking>
 
@@ -847,7 +1030,20 @@ with the token value returned from the previous call to
 C<GetPersonTracking>.
 
 
-=head2 IndexFaces(CollectionId => Str, Image => L<Paws::Rekognition::Image>, [DetectionAttributes => ArrayRef[Str|Undef], ExternalImageId => Str])
+=head2 IndexFaces
+
+=over
+
+=item CollectionId => Str
+
+=item Image => L<Paws::Rekognition::Image>
+
+=item [DetectionAttributes => ArrayRef[Str|Undef]]
+
+=item [ExternalImageId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::IndexFaces>
 
@@ -898,7 +1094,16 @@ This operation requires permissions to perform the
 C<rekognition:IndexFaces> action.
 
 
-=head2 ListCollections([MaxResults => Int, NextToken => Str])
+=head2 ListCollections
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::ListCollections>
 
@@ -914,7 +1119,18 @@ This operation requires permissions to perform the
 C<rekognition:ListCollections> action.
 
 
-=head2 ListFaces(CollectionId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListFaces
+
+=over
+
+=item CollectionId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::ListFaces>
 
@@ -929,7 +1145,16 @@ This operation requires permissions to perform the
 C<rekognition:ListFaces> action.
 
 
-=head2 ListStreamProcessors([MaxResults => Int, NextToken => Str])
+=head2 ListStreamProcessors
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::ListStreamProcessors>
 
@@ -938,7 +1163,14 @@ Returns: a L<Paws::Rekognition::ListStreamProcessorsResponse> instance
 Gets a list of stream processors that you have created with .
 
 
-=head2 RecognizeCelebrities(Image => L<Paws::Rekognition::Image>)
+=head2 RecognizeCelebrities
+
+=over
+
+=item Image => L<Paws::Rekognition::Image>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::RecognizeCelebrities>
 
@@ -977,7 +1209,20 @@ This operation requires permissions to perform the
 C<rekognition:RecognizeCelebrities> operation.
 
 
-=head2 SearchFaces(CollectionId => Str, FaceId => Str, [FaceMatchThreshold => Num, MaxFaces => Int])
+=head2 SearchFaces
+
+=over
+
+=item CollectionId => Str
+
+=item FaceId => Str
+
+=item [FaceMatchThreshold => Num]
+
+=item [MaxFaces => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::SearchFaces>
 
@@ -1005,7 +1250,20 @@ This operation requires permissions to perform the
 C<rekognition:SearchFaces> action.
 
 
-=head2 SearchFacesByImage(CollectionId => Str, Image => L<Paws::Rekognition::Image>, [FaceMatchThreshold => Num, MaxFaces => Int])
+=head2 SearchFacesByImage
+
+=over
+
+=item CollectionId => Str
+
+=item Image => L<Paws::Rekognition::Image>
+
+=item [FaceMatchThreshold => Num]
+
+=item [MaxFaces => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::SearchFacesByImage>
 
@@ -1044,7 +1302,20 @@ This operation requires permissions to perform the
 C<rekognition:SearchFacesByImage> action.
 
 
-=head2 StartCelebrityRecognition(Video => L<Paws::Rekognition::Video>, [ClientRequestToken => Str, JobTag => Str, NotificationChannel => L<Paws::Rekognition::NotificationChannel>])
+=head2 StartCelebrityRecognition
+
+=over
+
+=item Video => L<Paws::Rekognition::Video>
+
+=item [ClientRequestToken => Str]
+
+=item [JobTag => Str]
+
+=item [NotificationChannel => L<Paws::Rekognition::NotificationChannel>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::StartCelebrityRecognition>
 
@@ -1065,7 +1336,22 @@ the job identifier (C<JobId>) from the initial call to
 C<StartCelebrityRecognition>. For more information, see celebrities.
 
 
-=head2 StartContentModeration(Video => L<Paws::Rekognition::Video>, [ClientRequestToken => Str, JobTag => Str, MinConfidence => Num, NotificationChannel => L<Paws::Rekognition::NotificationChannel>])
+=head2 StartContentModeration
+
+=over
+
+=item Video => L<Paws::Rekognition::Video>
+
+=item [ClientRequestToken => Str]
+
+=item [JobTag => Str]
+
+=item [MinConfidence => Num]
+
+=item [NotificationChannel => L<Paws::Rekognition::NotificationChannel>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::StartContentModeration>
 
@@ -1088,7 +1374,22 @@ so, call and pass the job identifier (C<JobId>) from the initial call
 to C<StartContentModeration>. For more information, see moderation.
 
 
-=head2 StartFaceDetection(Video => L<Paws::Rekognition::Video>, [ClientRequestToken => Str, FaceAttributes => Str, JobTag => Str, NotificationChannel => L<Paws::Rekognition::NotificationChannel>])
+=head2 StartFaceDetection
+
+=over
+
+=item Video => L<Paws::Rekognition::Video>
+
+=item [ClientRequestToken => Str]
+
+=item [FaceAttributes => Str]
+
+=item [JobTag => Str]
+
+=item [NotificationChannel => L<Paws::Rekognition::NotificationChannel>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::StartFaceDetection>
 
@@ -1109,7 +1410,24 @@ SNS topic is C<SUCCEEDED>. If so, call and pass the job identifier
 information, see faces-video.
 
 
-=head2 StartFaceSearch(CollectionId => Str, Video => L<Paws::Rekognition::Video>, [ClientRequestToken => Str, FaceMatchThreshold => Num, JobTag => Str, NotificationChannel => L<Paws::Rekognition::NotificationChannel>])
+=head2 StartFaceSearch
+
+=over
+
+=item CollectionId => Str
+
+=item Video => L<Paws::Rekognition::Video>
+
+=item [ClientRequestToken => Str]
+
+=item [FaceMatchThreshold => Num]
+
+=item [JobTag => Str]
+
+=item [NotificationChannel => L<Paws::Rekognition::NotificationChannel>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::StartFaceSearch>
 
@@ -1130,7 +1448,22 @@ identifier (C<JobId>) from the initial call to C<StartFaceSearch>. For
 more information, see collections-search-person.
 
 
-=head2 StartLabelDetection(Video => L<Paws::Rekognition::Video>, [ClientRequestToken => Str, JobTag => Str, MinConfidence => Num, NotificationChannel => L<Paws::Rekognition::NotificationChannel>])
+=head2 StartLabelDetection
+
+=over
+
+=item Video => L<Paws::Rekognition::Video>
+
+=item [ClientRequestToken => Str]
+
+=item [JobTag => Str]
+
+=item [MinConfidence => Num]
+
+=item [NotificationChannel => L<Paws::Rekognition::NotificationChannel>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::StartLabelDetection>
 
@@ -1157,7 +1490,20 @@ so, call and pass the job identifier (C<JobId>) from the initial call
 to C<StartLabelDetection>.
 
 
-=head2 StartPersonTracking(Video => L<Paws::Rekognition::Video>, [ClientRequestToken => Str, JobTag => Str, NotificationChannel => L<Paws::Rekognition::NotificationChannel>])
+=head2 StartPersonTracking
+
+=over
+
+=item Video => L<Paws::Rekognition::Video>
+
+=item [ClientRequestToken => Str]
+
+=item [JobTag => Str]
+
+=item [NotificationChannel => L<Paws::Rekognition::NotificationChannel>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::StartPersonTracking>
 
@@ -1179,7 +1525,14 @@ so, call and pass the job identifier (C<JobId>) from the initial call
 to C<StartPersonTracking>.
 
 
-=head2 StartStreamProcessor(Name => Str)
+=head2 StartStreamProcessor
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::StartStreamProcessor>
 
@@ -1191,7 +1544,14 @@ start, use the value of the C<Name> field specified in the call to
 C<CreateStreamProcessor>.
 
 
-=head2 StopStreamProcessor(Name => Str)
+=head2 StopStreamProcessor
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Rekognition::StopStreamProcessor>
 

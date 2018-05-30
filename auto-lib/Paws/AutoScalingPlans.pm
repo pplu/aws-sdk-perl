@@ -1,6 +1,7 @@
 package Paws::AutoScalingPlans;
   use Moose;
   sub service { 'autoscaling' }
+  sub signing_name { 'autoscaling-plans' }
   sub version { '2018-01-06' }
   sub target_prefix { 'AnyScaleScalingPlannerFrontendService' }
   sub json_version { "1.1" }
@@ -86,7 +87,18 @@ specified.
 
 =head1 METHODS
 
-=head2 CreateScalingPlan(ApplicationSource => L<Paws::AutoScalingPlans::ApplicationSource>, ScalingInstructions => ArrayRef[L<Paws::AutoScalingPlans::ScalingInstruction>], ScalingPlanName => Str)
+=head2 CreateScalingPlan
+
+=over
+
+=item ApplicationSource => L<Paws::AutoScalingPlans::ApplicationSource>
+
+=item ScalingInstructions => ArrayRef[L<Paws::AutoScalingPlans::ScalingInstruction>]
+
+=item ScalingPlanName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AutoScalingPlans::CreateScalingPlan>
 
@@ -100,7 +112,16 @@ Scaling creates target tracking scaling policies based on the scaling
 instructions in your scaling plan.
 
 
-=head2 DeleteScalingPlan(ScalingPlanName => Str, ScalingPlanVersion => Int)
+=head2 DeleteScalingPlan
+
+=over
+
+=item ScalingPlanName => Str
+
+=item ScalingPlanVersion => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AutoScalingPlans::DeleteScalingPlan>
 
@@ -109,7 +130,20 @@ Returns: a L<Paws::AutoScalingPlans::DeleteScalingPlanResponse> instance
 Deletes the specified scaling plan.
 
 
-=head2 DescribeScalingPlanResources(ScalingPlanName => Str, ScalingPlanVersion => Int, [MaxResults => Int, NextToken => Str])
+=head2 DescribeScalingPlanResources
+
+=over
+
+=item ScalingPlanName => Str
+
+=item ScalingPlanVersion => Int
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AutoScalingPlans::DescribeScalingPlanResources>
 
@@ -118,7 +152,22 @@ Returns: a L<Paws::AutoScalingPlans::DescribeScalingPlanResourcesResponse> insta
 Describes the scalable resources in the specified scaling plan.
 
 
-=head2 DescribeScalingPlans([ApplicationSources => ArrayRef[L<Paws::AutoScalingPlans::ApplicationSource>], MaxResults => Int, NextToken => Str, ScalingPlanNames => ArrayRef[Str|Undef], ScalingPlanVersion => Int])
+=head2 DescribeScalingPlans
+
+=over
+
+=item [ApplicationSources => ArrayRef[L<Paws::AutoScalingPlans::ApplicationSource>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ScalingPlanNames => ArrayRef[Str|Undef]]
+
+=item [ScalingPlanVersion => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AutoScalingPlans::DescribeScalingPlans>
 
@@ -127,7 +176,20 @@ Returns: a L<Paws::AutoScalingPlans::DescribeScalingPlansResponse> instance
 Describes the specified scaling plans or all of your scaling plans.
 
 
-=head2 UpdateScalingPlan(ScalingPlanName => Str, ScalingPlanVersion => Int, [ApplicationSource => L<Paws::AutoScalingPlans::ApplicationSource>, ScalingInstructions => ArrayRef[L<Paws::AutoScalingPlans::ScalingInstruction>]])
+=head2 UpdateScalingPlan
+
+=over
+
+=item ScalingPlanName => Str
+
+=item ScalingPlanVersion => Int
+
+=item [ApplicationSource => L<Paws::AutoScalingPlans::ApplicationSource>]
+
+=item [ScalingInstructions => ArrayRef[L<Paws::AutoScalingPlans::ScalingInstruction>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::AutoScalingPlans::UpdateScalingPlan>
 

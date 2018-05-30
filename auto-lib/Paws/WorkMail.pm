@@ -1,6 +1,7 @@
 package Paws::WorkMail;
   use Moose;
   sub service { 'workmail' }
+  sub signing_name { 'workmail' }
   sub version { '2017-10-01' }
   sub target_prefix { 'WorkMailService' }
   sub json_version { "1.1" }
@@ -394,7 +395,18 @@ selective basis using the IAM model.
 
 =head1 METHODS
 
-=head2 AssociateDelegateToResource(EntityId => Str, OrganizationId => Str, ResourceId => Str)
+=head2 AssociateDelegateToResource
+
+=over
+
+=item EntityId => Str
+
+=item OrganizationId => Str
+
+=item ResourceId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::AssociateDelegateToResource>
 
@@ -403,7 +415,18 @@ Returns: a L<Paws::WorkMail::AssociateDelegateToResourceResponse> instance
 Adds a member to the resource's set of delegates.
 
 
-=head2 AssociateMemberToGroup(GroupId => Str, MemberId => Str, OrganizationId => Str)
+=head2 AssociateMemberToGroup
+
+=over
+
+=item GroupId => Str
+
+=item MemberId => Str
+
+=item OrganizationId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::AssociateMemberToGroup>
 
@@ -412,7 +435,18 @@ Returns: a L<Paws::WorkMail::AssociateMemberToGroupResponse> instance
 Adds a member to the group's set.
 
 
-=head2 CreateAlias(Alias => Str, EntityId => Str, OrganizationId => Str)
+=head2 CreateAlias
+
+=over
+
+=item Alias => Str
+
+=item EntityId => Str
+
+=item OrganizationId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::CreateAlias>
 
@@ -421,7 +455,16 @@ Returns: a L<Paws::WorkMail::CreateAliasResponse> instance
 Adds an alias to the set of a given member of Amazon WorkMail.
 
 
-=head2 CreateGroup(Name => Str, OrganizationId => Str)
+=head2 CreateGroup
+
+=over
+
+=item Name => Str
+
+=item OrganizationId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::CreateGroup>
 
@@ -431,7 +474,18 @@ Creates a group that can be used in Amazon WorkMail by calling the
 RegisterToWorkMail operation.
 
 
-=head2 CreateResource(Name => Str, OrganizationId => Str, Type => Str)
+=head2 CreateResource
+
+=over
+
+=item Name => Str
+
+=item OrganizationId => Str
+
+=item Type => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::CreateResource>
 
@@ -441,7 +495,20 @@ Creates a new Amazon WorkMail resource. The available types are
 equipment and room.
 
 
-=head2 CreateUser(DisplayName => Str, Name => Str, OrganizationId => Str, Password => Str)
+=head2 CreateUser
+
+=over
+
+=item DisplayName => Str
+
+=item Name => Str
+
+=item OrganizationId => Str
+
+=item Password => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::CreateUser>
 
@@ -451,7 +518,18 @@ Creates a user who can be used in Amazon WorkMail by calling the
 RegisterToWorkMail operation.
 
 
-=head2 DeleteAlias(Alias => Str, EntityId => Str, OrganizationId => Str)
+=head2 DeleteAlias
+
+=over
+
+=item Alias => Str
+
+=item EntityId => Str
+
+=item OrganizationId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::DeleteAlias>
 
@@ -460,7 +538,16 @@ Returns: a L<Paws::WorkMail::DeleteAliasResponse> instance
 Remove the alias from a set of aliases for a given user.
 
 
-=head2 DeleteGroup(GroupId => Str, OrganizationId => Str)
+=head2 DeleteGroup
+
+=over
+
+=item GroupId => Str
+
+=item OrganizationId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::DeleteGroup>
 
@@ -469,7 +556,18 @@ Returns: a L<Paws::WorkMail::DeleteGroupResponse> instance
 Deletes a group from Amazon WorkMail.
 
 
-=head2 DeleteMailboxPermissions(EntityId => Str, GranteeId => Str, OrganizationId => Str)
+=head2 DeleteMailboxPermissions
+
+=over
+
+=item EntityId => Str
+
+=item GranteeId => Str
+
+=item OrganizationId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::DeleteMailboxPermissions>
 
@@ -478,7 +576,16 @@ Returns: a L<Paws::WorkMail::DeleteMailboxPermissionsResponse> instance
 Deletes permissions granted to a user or group.
 
 
-=head2 DeleteResource(OrganizationId => Str, ResourceId => Str)
+=head2 DeleteResource
+
+=over
+
+=item OrganizationId => Str
+
+=item ResourceId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::DeleteResource>
 
@@ -487,7 +594,16 @@ Returns: a L<Paws::WorkMail::DeleteResourceResponse> instance
 Deletes the specified resource.
 
 
-=head2 DeleteUser(OrganizationId => Str, UserId => Str)
+=head2 DeleteUser
+
+=over
+
+=item OrganizationId => Str
+
+=item UserId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::DeleteUser>
 
@@ -498,7 +614,16 @@ action can't be undone. The mailbox is kept as-is for a minimum of 30
 days, without any means to restore it.
 
 
-=head2 DeregisterFromWorkMail(EntityId => Str, OrganizationId => Str)
+=head2 DeregisterFromWorkMail
+
+=over
+
+=item EntityId => Str
+
+=item OrganizationId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::DeregisterFromWorkMail>
 
@@ -510,7 +635,16 @@ Amazon WorkMail keeps mailboxes for 30 days before they are permanently
 removed. The functionality in the console is I<Disable>.
 
 
-=head2 DescribeGroup(GroupId => Str, OrganizationId => Str)
+=head2 DescribeGroup
+
+=over
+
+=item GroupId => Str
+
+=item OrganizationId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::DescribeGroup>
 
@@ -519,7 +653,14 @@ Returns: a L<Paws::WorkMail::DescribeGroupResponse> instance
 Returns the data available for the group.
 
 
-=head2 DescribeOrganization(OrganizationId => Str)
+=head2 DescribeOrganization
+
+=over
+
+=item OrganizationId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::DescribeOrganization>
 
@@ -529,7 +670,16 @@ Provides more information regarding a given organization based on its
 identifier.
 
 
-=head2 DescribeResource(OrganizationId => Str, ResourceId => Str)
+=head2 DescribeResource
+
+=over
+
+=item OrganizationId => Str
+
+=item ResourceId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::DescribeResource>
 
@@ -538,7 +688,16 @@ Returns: a L<Paws::WorkMail::DescribeResourceResponse> instance
 Returns the data available for the resource.
 
 
-=head2 DescribeUser(OrganizationId => Str, UserId => Str)
+=head2 DescribeUser
+
+=over
+
+=item OrganizationId => Str
+
+=item UserId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::DescribeUser>
 
@@ -547,7 +706,18 @@ Returns: a L<Paws::WorkMail::DescribeUserResponse> instance
 Provides information regarding the user.
 
 
-=head2 DisassociateDelegateFromResource(EntityId => Str, OrganizationId => Str, ResourceId => Str)
+=head2 DisassociateDelegateFromResource
+
+=over
+
+=item EntityId => Str
+
+=item OrganizationId => Str
+
+=item ResourceId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::DisassociateDelegateFromResource>
 
@@ -556,7 +726,18 @@ Returns: a L<Paws::WorkMail::DisassociateDelegateFromResourceResponse> instance
 Removes a member from the resource's set of delegates.
 
 
-=head2 DisassociateMemberFromGroup(GroupId => Str, MemberId => Str, OrganizationId => Str)
+=head2 DisassociateMemberFromGroup
+
+=over
+
+=item GroupId => Str
+
+=item MemberId => Str
+
+=item OrganizationId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::DisassociateMemberFromGroup>
 
@@ -565,7 +746,20 @@ Returns: a L<Paws::WorkMail::DisassociateMemberFromGroupResponse> instance
 Removes a member from a group.
 
 
-=head2 ListAliases(EntityId => Str, OrganizationId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListAliases
+
+=over
+
+=item EntityId => Str
+
+=item OrganizationId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::ListAliases>
 
@@ -575,7 +769,20 @@ Creates a paginated call to list the aliases associated with a given
 entity.
 
 
-=head2 ListGroupMembers(GroupId => Str, OrganizationId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListGroupMembers
+
+=over
+
+=item GroupId => Str
+
+=item OrganizationId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::ListGroupMembers>
 
@@ -584,7 +791,18 @@ Returns: a L<Paws::WorkMail::ListGroupMembersResponse> instance
 Returns an overview of the members of a group.
 
 
-=head2 ListGroups(OrganizationId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListGroups
+
+=over
+
+=item OrganizationId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::ListGroups>
 
@@ -593,7 +811,20 @@ Returns: a L<Paws::WorkMail::ListGroupsResponse> instance
 Returns summaries of the organization's groups.
 
 
-=head2 ListMailboxPermissions(EntityId => Str, OrganizationId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListMailboxPermissions
+
+=over
+
+=item EntityId => Str
+
+=item OrganizationId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::ListMailboxPermissions>
 
@@ -602,7 +833,16 @@ Returns: a L<Paws::WorkMail::ListMailboxPermissionsResponse> instance
 Lists the mailbox permissions associated with a mailbox.
 
 
-=head2 ListOrganizations([MaxResults => Int, NextToken => Str])
+=head2 ListOrganizations
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::ListOrganizations>
 
@@ -611,7 +851,20 @@ Returns: a L<Paws::WorkMail::ListOrganizationsResponse> instance
 Returns summaries of the customer's non-deleted organizations.
 
 
-=head2 ListResourceDelegates(OrganizationId => Str, ResourceId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListResourceDelegates
+
+=over
+
+=item OrganizationId => Str
+
+=item ResourceId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::ListResourceDelegates>
 
@@ -621,7 +874,18 @@ Lists the delegates associated with a resource. Users and groups can be
 resource delegates and answer requests on behalf of the resource.
 
 
-=head2 ListResources(OrganizationId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListResources
+
+=over
+
+=item OrganizationId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::ListResources>
 
@@ -630,7 +894,18 @@ Returns: a L<Paws::WorkMail::ListResourcesResponse> instance
 Returns summaries of the organization's resources.
 
 
-=head2 ListUsers(OrganizationId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListUsers
+
+=over
+
+=item OrganizationId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::ListUsers>
 
@@ -639,7 +914,20 @@ Returns: a L<Paws::WorkMail::ListUsersResponse> instance
 Returns summaries of the organization's users.
 
 
-=head2 PutMailboxPermissions(EntityId => Str, GranteeId => Str, OrganizationId => Str, PermissionValues => ArrayRef[Str|Undef])
+=head2 PutMailboxPermissions
+
+=over
+
+=item EntityId => Str
+
+=item GranteeId => Str
+
+=item OrganizationId => Str
+
+=item PermissionValues => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::PutMailboxPermissions>
 
@@ -649,7 +937,18 @@ Sets permissions for a user or group. This replaces any pre-existing
 permissions set for the entity.
 
 
-=head2 RegisterToWorkMail(Email => Str, EntityId => Str, OrganizationId => Str)
+=head2 RegisterToWorkMail
+
+=over
+
+=item Email => Str
+
+=item EntityId => Str
+
+=item OrganizationId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::RegisterToWorkMail>
 
@@ -666,7 +965,18 @@ created by calling the CreateUser API or they can be synchronized from
 your directory. For more information, see DeregisterFromWorkMail.
 
 
-=head2 ResetPassword(OrganizationId => Str, Password => Str, UserId => Str)
+=head2 ResetPassword
+
+=over
+
+=item OrganizationId => Str
+
+=item Password => Str
+
+=item UserId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::ResetPassword>
 
@@ -675,7 +985,18 @@ Returns: a L<Paws::WorkMail::ResetPasswordResponse> instance
 Allows the administrator to reset the password for a user.
 
 
-=head2 UpdatePrimaryEmailAddress(Email => Str, EntityId => Str, OrganizationId => Str)
+=head2 UpdatePrimaryEmailAddress
+
+=over
+
+=item Email => Str
+
+=item EntityId => Str
+
+=item OrganizationId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::UpdatePrimaryEmailAddress>
 
@@ -687,7 +1008,20 @@ current primary email) and the email provided in the input is promoted
 as the primary.
 
 
-=head2 UpdateResource(OrganizationId => Str, ResourceId => Str, [BookingOptions => L<Paws::WorkMail::BookingOptions>, Name => Str])
+=head2 UpdateResource
+
+=over
+
+=item OrganizationId => Str
+
+=item ResourceId => Str
+
+=item [BookingOptions => L<Paws::WorkMail::BookingOptions>]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkMail::UpdateResource>
 

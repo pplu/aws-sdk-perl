@@ -5,6 +5,7 @@ package Paws::Glue::StartJobRun;
   has Arguments => (is => 'ro', isa => 'Paws::Glue::GenericMap');
   has JobName => (is => 'ro', isa => 'Str', required => 1);
   has JobRunId => (is => 'ro', isa => 'Str');
+  has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
   has Timeout => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
@@ -76,6 +77,12 @@ The name of the job definition to use.
 =head2 JobRunId => Str
 
 The ID of a previous JobRun to retry.
+
+
+
+=head2 NotificationProperty => L<Paws::Glue::NotificationProperty>
+
+Specifies configuration properties of a job run notification.
 
 
 

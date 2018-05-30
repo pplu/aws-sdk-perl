@@ -6,6 +6,13 @@
  - Documentation update: Now POD contains links from the botocore documentation
  - Bump XML::Simple dependency to 2.21 (mla)
  - Documentation improvement: Link back to Service class from method parameters classes (castaway)
+ - Documentation improvement: New way of rendering parameters to methods (avoids very long method signatures in TOCs). This
+   also fixes the fact that search.cpan.org didn't like very long lines in its TOC, so was not putting some methods in the
+   TOC (castaway)
+ - Json services will now return the code of the exception as the message of the exception if no message was found (instead
+   of 'unrecognized error format')
+ - Some services were signing requests with the incorrect strings. Pricing, Opsworks, MarketplaceMetering, MarketplaceEntitlement,
+   MarketplaceCommerceAnalytics, DynamoDBStreams, CloudHSMv2, ApplicationAutoScaling and AutoScalingPlans now sign correctly. (autarch)
  - New API: Pricing
  - New API: CostExplorer
  - New API: Translate
@@ -29,63 +36,9 @@
  - New API: FMS
  - New API: SecretsManager
  - New API: IoTAnalytics
- - API update: IoT
- - API update: Shield
- - API update: Rekognition
- - API update: Route53
- - API update: Glue
- - API update: Organizations
- - API update: CodeBuild
- - API update: StepFunctions
- - API update: WorkDocs
- - API update: CloudFormation
- - API update: Firehose
- - API update: Kinesis
- - API update: StorageGateway
- - API update: EMR
- - API update: XRay
- - API update: ACM
- - API update: S3
- - API update: ApiGateway
- - API update: ApplicationAutoscaling
- - API update: ECS
- - API update: EC2
- - API update: ELBv2
- - API update: OpsWorksCM
- - API update: WAFRegional
- - API update: WAF
- - API update: SQS
- - API update: SES
- - API update: ES
- - API update: CodeCommit
- - API update: ECR
- - API update: RDS
- - API update: DMS
- - API update: ElasticBeanstalk
- - API update: Lightsail
- - API update: SSM
- - API update: Pinpoint
- - API update: DirectConnect
- - API update: ApiGateway
- - API update: CloudFront
- - API update: Glue
- - API update: ElastiCache
- - API update: Lambda
- - API update: SSM
- - API update: CodeDeploy
- - API update: Batch
- - API update: CognitoIdp
- - API update: Greengrass
- - API update: ECS
- - API update: AutoScaling
- - API update: DynamoDB
- - API update: Glacier
- - API update: CloudDirectory
- - API update: ServiceCatalog
- - API update: CloudWatch
- - API update: AppStream
- - API update: Budgets
- - API update: LexModels
+ - New APIs: IoT1ClickDevices and IOT1ClickProjects
+ - New API: PerformanceInsights
+ - API updates for any service up to the date of release
 
 0.36 03 Nov 2017
  - Fix Bug: #210: S3 PutObject was not working: the Content-MD5 header was not 

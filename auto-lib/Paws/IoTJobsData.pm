@@ -1,6 +1,7 @@
 package Paws::IoTJobsData;
   use Moose;
   sub service { 'data.jobs.iot' }
+  sub signing_name { 'iot-jobs-data' }
   sub version { '2017-09-29' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -85,7 +86,20 @@ the job
 
 =head1 METHODS
 
-=head2 DescribeJobExecution(JobId => Str, ThingName => Str, [ExecutionNumber => Int, IncludeJobDocument => Bool])
+=head2 DescribeJobExecution
+
+=over
+
+=item JobId => Str
+
+=item ThingName => Str
+
+=item [ExecutionNumber => Int]
+
+=item [IncludeJobDocument => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTJobsData::DescribeJobExecution>
 
@@ -94,7 +108,14 @@ Returns: a L<Paws::IoTJobsData::DescribeJobExecutionResponse> instance
 Gets details of a job execution.
 
 
-=head2 GetPendingJobExecutions(ThingName => Str)
+=head2 GetPendingJobExecutions
+
+=over
+
+=item ThingName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTJobsData::GetPendingJobExecutions>
 
@@ -104,7 +125,16 @@ Gets the list of all jobs for a thing that are not in a terminal
 status.
 
 
-=head2 StartNextPendingJobExecution(ThingName => Str, [StatusDetails => L<Paws::IoTJobsData::DetailsMap>])
+=head2 StartNextPendingJobExecution
+
+=over
+
+=item ThingName => Str
+
+=item [StatusDetails => L<Paws::IoTJobsData::DetailsMap>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTJobsData::StartNextPendingJobExecution>
 
@@ -114,7 +144,28 @@ Gets and starts the next pending (status IN_PROGRESS or QUEUED) job
 execution for a thing.
 
 
-=head2 UpdateJobExecution(JobId => Str, Status => Str, ThingName => Str, [ExecutionNumber => Int, ExpectedVersion => Int, IncludeJobDocument => Bool, IncludeJobExecutionState => Bool, StatusDetails => L<Paws::IoTJobsData::DetailsMap>])
+=head2 UpdateJobExecution
+
+=over
+
+=item JobId => Str
+
+=item Status => Str
+
+=item ThingName => Str
+
+=item [ExecutionNumber => Int]
+
+=item [ExpectedVersion => Int]
+
+=item [IncludeJobDocument => Bool]
+
+=item [IncludeJobExecutionState => Bool]
+
+=item [StatusDetails => L<Paws::IoTJobsData::DetailsMap>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTJobsData::UpdateJobExecution>
 

@@ -1,6 +1,7 @@
 package Paws::ELBv2;
   use Moose;
   sub service { 'elasticloadbalancing' }
+  sub signing_name { 'elasticloadbalancing' }
   sub version { '2015-12-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -362,7 +363,16 @@ succeeds.
 
 =head1 METHODS
 
-=head2 AddListenerCertificates(Certificates => ArrayRef[L<Paws::ELBv2::Certificate>], ListenerArn => Str)
+=head2 AddListenerCertificates
+
+=over
+
+=item Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]
+
+=item ListenerArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::AddListenerCertificates>
 
@@ -378,7 +388,16 @@ DescribeListenerCertificates. To remove certificates from your
 listener, use RemoveListenerCertificates.
 
 
-=head2 AddTags(ResourceArns => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELBv2::Tag>])
+=head2 AddTags
+
+=over
+
+=item ResourceArns => ArrayRef[Str|Undef]
+
+=item Tags => ArrayRef[L<Paws::ELBv2::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::AddTags>
 
@@ -395,7 +414,24 @@ To list the current tags for your resources, use DescribeTags. To
 remove tags from your resources, use RemoveTags.
 
 
-=head2 CreateListener(DefaultActions => ArrayRef[L<Paws::ELBv2::Action>], LoadBalancerArn => Str, Port => Int, Protocol => Str, [Certificates => ArrayRef[L<Paws::ELBv2::Certificate>], SslPolicy => Str])
+=head2 CreateListener
+
+=over
+
+=item DefaultActions => ArrayRef[L<Paws::ELBv2::Action>]
+
+=item LoadBalancerArn => Str
+
+=item Port => Int
+
+=item Protocol => Str
+
+=item [Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]]
+
+=item [SslPolicy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::CreateListener>
 
@@ -421,7 +457,28 @@ Network Load Balancers
 in the I<Network Load Balancers Guide>.
 
 
-=head2 CreateLoadBalancer(Name => Str, [IpAddressType => Str, Scheme => Str, SecurityGroups => ArrayRef[Str|Undef], SubnetMappings => ArrayRef[L<Paws::ELBv2::SubnetMapping>], Subnets => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELBv2::Tag>], Type => Str])
+=head2 CreateLoadBalancer
+
+=over
+
+=item Name => Str
+
+=item [IpAddressType => Str]
+
+=item [Scheme => Str]
+
+=item [SecurityGroups => ArrayRef[Str|Undef]]
+
+=item [SubnetMappings => ArrayRef[L<Paws::ELBv2::SubnetMapping>]]
+
+=item [Subnets => ArrayRef[Str|Undef]]
+
+=item [Tags => ArrayRef[L<Paws::ELBv2::Tag>]]
+
+=item [Type => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::CreateLoadBalancer>
 
@@ -457,7 +514,20 @@ in the I<Application Load Balancers Guide> and Network Load Balancers
 in the I<Network Load Balancers Guide>.
 
 
-=head2 CreateRule(Actions => ArrayRef[L<Paws::ELBv2::Action>], Conditions => ArrayRef[L<Paws::ELBv2::RuleCondition>], ListenerArn => Str, Priority => Int)
+=head2 CreateRule
+
+=over
+
+=item Actions => ArrayRef[L<Paws::ELBv2::Action>]
+
+=item Conditions => ArrayRef[L<Paws::ELBv2::RuleCondition>]
+
+=item ListenerArn => Str
+
+=item Priority => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::CreateRule>
 
@@ -478,7 +548,38 @@ ModifyRule. To set the priorities of your rules, use SetRulePriorities.
 To delete a rule, use DeleteRule.
 
 
-=head2 CreateTargetGroup(Name => Str, Port => Int, Protocol => Str, VpcId => Str, [HealthCheckIntervalSeconds => Int, HealthCheckPath => Str, HealthCheckPort => Str, HealthCheckProtocol => Str, HealthCheckTimeoutSeconds => Int, HealthyThresholdCount => Int, Matcher => L<Paws::ELBv2::Matcher>, TargetType => Str, UnhealthyThresholdCount => Int])
+=head2 CreateTargetGroup
+
+=over
+
+=item Name => Str
+
+=item Port => Int
+
+=item Protocol => Str
+
+=item VpcId => Str
+
+=item [HealthCheckIntervalSeconds => Int]
+
+=item [HealthCheckPath => Str]
+
+=item [HealthCheckPort => Str]
+
+=item [HealthCheckProtocol => Str]
+
+=item [HealthCheckTimeoutSeconds => Int]
+
+=item [HealthyThresholdCount => Int]
+
+=item [Matcher => L<Paws::ELBv2::Matcher>]
+
+=item [TargetType => Str]
+
+=item [UnhealthyThresholdCount => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::CreateTargetGroup>
 
@@ -509,7 +610,14 @@ Network Load Balancers
 in the I<Network Load Balancers Guide>.
 
 
-=head2 DeleteListener(ListenerArn => Str)
+=head2 DeleteListener
+
+=over
+
+=item ListenerArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::DeleteListener>
 
@@ -521,7 +629,14 @@ Alternatively, your listener is deleted when you delete the load
 balancer it is attached to using DeleteLoadBalancer.
 
 
-=head2 DeleteLoadBalancer(LoadBalancerArn => Str)
+=head2 DeleteLoadBalancer
+
+=over
+
+=item LoadBalancerArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::DeleteLoadBalancer>
 
@@ -540,7 +655,14 @@ their target groups. If you no longer need these EC2 instances, you can
 stop or terminate them.
 
 
-=head2 DeleteRule(RuleArn => Str)
+=head2 DeleteRule
+
+=over
+
+=item RuleArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::DeleteRule>
 
@@ -549,7 +671,14 @@ Returns: a L<Paws::ELBv2::DeleteRuleOutput> instance
 Deletes the specified rule.
 
 
-=head2 DeleteTargetGroup(TargetGroupArn => Str)
+=head2 DeleteTargetGroup
+
+=over
+
+=item TargetGroupArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::DeleteTargetGroup>
 
@@ -561,7 +690,16 @@ You can delete a target group if it is not referenced by any actions.
 Deleting a target group also deletes any associated health checks.
 
 
-=head2 DeregisterTargets(TargetGroupArn => Str, Targets => ArrayRef[L<Paws::ELBv2::TargetDescription>])
+=head2 DeregisterTargets
+
+=over
+
+=item TargetGroupArn => Str
+
+=item Targets => ArrayRef[L<Paws::ELBv2::TargetDescription>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::DeregisterTargets>
 
@@ -572,7 +710,16 @@ After the targets are deregistered, they no longer receive traffic from
 the load balancer.
 
 
-=head2 DescribeAccountLimits([Marker => Str, PageSize => Int])
+=head2 DescribeAccountLimits
+
+=over
+
+=item [Marker => Str]
+
+=item [PageSize => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::DescribeAccountLimits>
 
@@ -589,7 +736,18 @@ Load Balancers
 in the I<Network Load Balancers Guide>.
 
 
-=head2 DescribeListenerCertificates(ListenerArn => Str, [Marker => Str, PageSize => Int])
+=head2 DescribeListenerCertificates
+
+=over
+
+=item ListenerArn => Str
+
+=item [Marker => Str]
+
+=item [PageSize => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::DescribeListenerCertificates>
 
@@ -598,7 +756,20 @@ Returns: a L<Paws::ELBv2::DescribeListenerCertificatesOutput> instance
 Describes the certificates for the specified secure listener.
 
 
-=head2 DescribeListeners([ListenerArns => ArrayRef[Str|Undef], LoadBalancerArn => Str, Marker => Str, PageSize => Int])
+=head2 DescribeListeners
+
+=over
+
+=item [ListenerArns => ArrayRef[Str|Undef]]
+
+=item [LoadBalancerArn => Str]
+
+=item [Marker => Str]
+
+=item [PageSize => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::DescribeListeners>
 
@@ -609,7 +780,14 @@ Application Load Balancer or Network Load Balancer. You must specify
 either a load balancer or one or more listeners.
 
 
-=head2 DescribeLoadBalancerAttributes(LoadBalancerArn => Str)
+=head2 DescribeLoadBalancerAttributes
+
+=over
+
+=item LoadBalancerArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::DescribeLoadBalancerAttributes>
 
@@ -618,8 +796,27 @@ Returns: a L<Paws::ELBv2::DescribeLoadBalancerAttributesOutput> instance
 Describes the attributes for the specified Application Load Balancer or
 Network Load Balancer.
 
+For more information, see Load Balancer Attributes
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-attributes)
+in the I<Application Load Balancers Guide> or Load Balancer Attributes
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#load-balancer-attributes)
+in the I<Network Load Balancers Guide>.
 
-=head2 DescribeLoadBalancers([LoadBalancerArns => ArrayRef[Str|Undef], Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int])
+
+=head2 DescribeLoadBalancers
+
+=over
+
+=item [LoadBalancerArns => ArrayRef[Str|Undef]]
+
+=item [Marker => Str]
+
+=item [Names => ArrayRef[Str|Undef]]
+
+=item [PageSize => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::DescribeLoadBalancers>
 
@@ -632,7 +829,20 @@ To describe the attributes for a load balancer, use
 DescribeLoadBalancerAttributes.
 
 
-=head2 DescribeRules([ListenerArn => Str, Marker => Str, PageSize => Int, RuleArns => ArrayRef[Str|Undef]])
+=head2 DescribeRules
+
+=over
+
+=item [ListenerArn => Str]
+
+=item [Marker => Str]
+
+=item [PageSize => Int]
+
+=item [RuleArns => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::DescribeRules>
 
@@ -642,7 +852,18 @@ Describes the specified rules or the rules for the specified listener.
 You must specify either a listener or one or more rules.
 
 
-=head2 DescribeSSLPolicies([Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int])
+=head2 DescribeSSLPolicies
+
+=over
+
+=item [Marker => Str]
+
+=item [Names => ArrayRef[Str|Undef]]
+
+=item [PageSize => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::DescribeSSLPolicies>
 
@@ -656,7 +877,14 @@ For more information, see Security Policies
 in the I<Application Load Balancers Guide>.
 
 
-=head2 DescribeTags(ResourceArns => ArrayRef[Str|Undef])
+=head2 DescribeTags
+
+=over
+
+=item ResourceArns => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::DescribeTags>
 
@@ -667,7 +895,14 @@ tags for one or more Application Load Balancers, Network Load
 Balancers, and target groups.
 
 
-=head2 DescribeTargetGroupAttributes(TargetGroupArn => Str)
+=head2 DescribeTargetGroupAttributes
+
+=over
+
+=item TargetGroupArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::DescribeTargetGroupAttributes>
 
@@ -675,8 +910,29 @@ Returns: a L<Paws::ELBv2::DescribeTargetGroupAttributesOutput> instance
 
 Describes the attributes for the specified target group.
 
+For more information, see Target Group Attributes
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#target-group-attributes)
+in the I<Application Load Balancers Guide> or Target Group Attributes
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#target-group-attributes)
+in the I<Network Load Balancers Guide>.
 
-=head2 DescribeTargetGroups([LoadBalancerArn => Str, Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int, TargetGroupArns => ArrayRef[Str|Undef]])
+
+=head2 DescribeTargetGroups
+
+=over
+
+=item [LoadBalancerArn => Str]
+
+=item [Marker => Str]
+
+=item [Names => ArrayRef[Str|Undef]]
+
+=item [PageSize => Int]
+
+=item [TargetGroupArns => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::DescribeTargetGroups>
 
@@ -693,7 +949,16 @@ To describe the attributes of a target group, use
 DescribeTargetGroupAttributes.
 
 
-=head2 DescribeTargetHealth(TargetGroupArn => Str, [Targets => ArrayRef[L<Paws::ELBv2::TargetDescription>]])
+=head2 DescribeTargetHealth
+
+=over
+
+=item TargetGroupArn => Str
+
+=item [Targets => ArrayRef[L<Paws::ELBv2::TargetDescription>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::DescribeTargetHealth>
 
@@ -702,7 +967,24 @@ Returns: a L<Paws::ELBv2::DescribeTargetHealthOutput> instance
 Describes the health of the specified targets or all of your targets.
 
 
-=head2 ModifyListener(ListenerArn => Str, [Certificates => ArrayRef[L<Paws::ELBv2::Certificate>], DefaultActions => ArrayRef[L<Paws::ELBv2::Action>], Port => Int, Protocol => Str, SslPolicy => Str])
+=head2 ModifyListener
+
+=over
+
+=item ListenerArn => Str
+
+=item [Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]]
+
+=item [DefaultActions => ArrayRef[L<Paws::ELBv2::Action>]]
+
+=item [Port => Int]
+
+=item [Protocol => Str]
+
+=item [SslPolicy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::ModifyListener>
 
@@ -716,7 +998,16 @@ policy and SSL certificate properties. If you change the protocol from
 HTTP to HTTPS, you must add the security policy and server certificate.
 
 
-=head2 ModifyLoadBalancerAttributes(Attributes => ArrayRef[L<Paws::ELBv2::LoadBalancerAttribute>], LoadBalancerArn => Str)
+=head2 ModifyLoadBalancerAttributes
+
+=over
+
+=item Attributes => ArrayRef[L<Paws::ELBv2::LoadBalancerAttribute>]
+
+=item LoadBalancerArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::ModifyLoadBalancerAttributes>
 
@@ -730,7 +1021,18 @@ call fails. Any existing attributes that you do not modify retain their
 current values.
 
 
-=head2 ModifyRule(RuleArn => Str, [Actions => ArrayRef[L<Paws::ELBv2::Action>], Conditions => ArrayRef[L<Paws::ELBv2::RuleCondition>]])
+=head2 ModifyRule
+
+=over
+
+=item RuleArn => Str
+
+=item [Actions => ArrayRef[L<Paws::ELBv2::Action>]]
+
+=item [Conditions => ArrayRef[L<Paws::ELBv2::RuleCondition>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::ModifyRule>
 
@@ -744,7 +1046,30 @@ values.
 To modify the default action, use ModifyListener.
 
 
-=head2 ModifyTargetGroup(TargetGroupArn => Str, [HealthCheckIntervalSeconds => Int, HealthCheckPath => Str, HealthCheckPort => Str, HealthCheckProtocol => Str, HealthCheckTimeoutSeconds => Int, HealthyThresholdCount => Int, Matcher => L<Paws::ELBv2::Matcher>, UnhealthyThresholdCount => Int])
+=head2 ModifyTargetGroup
+
+=over
+
+=item TargetGroupArn => Str
+
+=item [HealthCheckIntervalSeconds => Int]
+
+=item [HealthCheckPath => Str]
+
+=item [HealthCheckPort => Str]
+
+=item [HealthCheckProtocol => Str]
+
+=item [HealthCheckTimeoutSeconds => Int]
+
+=item [HealthyThresholdCount => Int]
+
+=item [Matcher => L<Paws::ELBv2::Matcher>]
+
+=item [UnhealthyThresholdCount => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::ModifyTargetGroup>
 
@@ -756,7 +1081,16 @@ targets in the specified target group.
 To monitor the health of the targets, use DescribeTargetHealth.
 
 
-=head2 ModifyTargetGroupAttributes(Attributes => ArrayRef[L<Paws::ELBv2::TargetGroupAttribute>], TargetGroupArn => Str)
+=head2 ModifyTargetGroupAttributes
+
+=over
+
+=item Attributes => ArrayRef[L<Paws::ELBv2::TargetGroupAttribute>]
+
+=item TargetGroupArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::ModifyTargetGroupAttributes>
 
@@ -765,7 +1099,16 @@ Returns: a L<Paws::ELBv2::ModifyTargetGroupAttributesOutput> instance
 Modifies the specified attributes of the specified target group.
 
 
-=head2 RegisterTargets(TargetGroupArn => Str, Targets => ArrayRef[L<Paws::ELBv2::TargetDescription>])
+=head2 RegisterTargets
+
+=over
+
+=item TargetGroupArn => Str
+
+=item Targets => ArrayRef[L<Paws::ELBv2::TargetDescription>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::RegisterTargets>
 
@@ -791,7 +1134,16 @@ instances of these types by IP address.
 To remove a target from a target group, use DeregisterTargets.
 
 
-=head2 RemoveListenerCertificates(Certificates => ArrayRef[L<Paws::ELBv2::Certificate>], ListenerArn => Str)
+=head2 RemoveListenerCertificates
+
+=over
+
+=item Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]
+
+=item ListenerArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::RemoveListenerCertificates>
 
@@ -806,7 +1158,16 @@ To list the certificates for your listener, use
 DescribeListenerCertificates.
 
 
-=head2 RemoveTags(ResourceArns => ArrayRef[Str|Undef], TagKeys => ArrayRef[Str|Undef])
+=head2 RemoveTags
+
+=over
+
+=item ResourceArns => ArrayRef[Str|Undef]
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::RemoveTags>
 
@@ -818,7 +1179,16 @@ resource.
 To list the current tags for your resources, use DescribeTags.
 
 
-=head2 SetIpAddressType(IpAddressType => Str, LoadBalancerArn => Str)
+=head2 SetIpAddressType
+
+=over
+
+=item IpAddressType => Str
+
+=item LoadBalancerArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::SetIpAddressType>
 
@@ -830,7 +1200,14 @@ Application Load Balancer or Network Load Balancer.
 Note that Network Load Balancers must use C<ipv4>.
 
 
-=head2 SetRulePriorities(RulePriorities => ArrayRef[L<Paws::ELBv2::RulePriorityPair>])
+=head2 SetRulePriorities
+
+=over
+
+=item RulePriorities => ArrayRef[L<Paws::ELBv2::RulePriorityPair>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::SetRulePriorities>
 
@@ -843,7 +1220,16 @@ the new order. Any existing rules that you do not specify retain their
 current priority.
 
 
-=head2 SetSecurityGroups(LoadBalancerArn => Str, SecurityGroups => ArrayRef[Str|Undef])
+=head2 SetSecurityGroups
+
+=over
+
+=item LoadBalancerArn => Str
+
+=item SecurityGroups => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::SetSecurityGroups>
 
@@ -857,7 +1243,18 @@ Note that you can't specify a security group for a Network Load
 Balancer.
 
 
-=head2 SetSubnets(LoadBalancerArn => Str, Subnets => ArrayRef[Str|Undef], [SubnetMappings => ArrayRef[L<Paws::ELBv2::SubnetMapping>]])
+=head2 SetSubnets
+
+=over
+
+=item LoadBalancerArn => Str
+
+=item Subnets => ArrayRef[Str|Undef]
+
+=item [SubnetMappings => ArrayRef[L<Paws::ELBv2::SubnetMapping>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELBv2::SetSubnets>
 

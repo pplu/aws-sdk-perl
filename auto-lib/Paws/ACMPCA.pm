@@ -1,6 +1,7 @@
 package Paws::ACMPCA;
   use Moose;
   sub service { 'acm-pca' }
+  sub signing_name { 'acm-pca' }
   sub version { '2017-08-22' }
   sub target_prefix { 'ACMPrivateCA' }
   sub json_version { "1.1" }
@@ -159,7 +160,20 @@ or B<RevokeCertificate> function is called.
 
 =head1 METHODS
 
-=head2 CreateCertificateAuthority(CertificateAuthorityConfiguration => L<Paws::ACMPCA::CertificateAuthorityConfiguration>, CertificateAuthorityType => Str, [IdempotencyToken => Str, RevocationConfiguration => L<Paws::ACMPCA::RevocationConfiguration>])
+=head2 CreateCertificateAuthority
+
+=over
+
+=item CertificateAuthorityConfiguration => L<Paws::ACMPCA::CertificateAuthorityConfiguration>
+
+=item CertificateAuthorityType => Str
+
+=item [IdempotencyToken => Str]
+
+=item [RevocationConfiguration => L<Paws::ACMPCA::RevocationConfiguration>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACMPCA::CreateCertificateAuthority>
 
@@ -178,7 +192,18 @@ by the CA. If successful, this function returns the Amazon Resource
 Name (ARN) of the CA.
 
 
-=head2 CreateCertificateAuthorityAuditReport(AuditReportResponseFormat => Str, CertificateAuthorityArn => Str, S3BucketName => Str)
+=head2 CreateCertificateAuthorityAuditReport
+
+=over
+
+=item AuditReportResponseFormat => Str
+
+=item CertificateAuthorityArn => Str
+
+=item S3BucketName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACMPCA::CreateCertificateAuthorityAuditReport>
 
@@ -190,7 +215,14 @@ specify on input. The IssueCertificate and RevokeCertificate functions
 use the private key. You can generate a new report every 30 minutes.
 
 
-=head2 DeleteCertificateAuthority(CertificateAuthorityArn => Str)
+=head2 DeleteCertificateAuthority
+
+=over
+
+=item CertificateAuthorityArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACMPCA::DeleteCertificateAuthority>
 
@@ -211,7 +243,14 @@ function and set the B<CertificateAuthorityStatus> argument to
 C<DISABLED>.
 
 
-=head2 DescribeCertificateAuthority(CertificateAuthorityArn => Str)
+=head2 DescribeCertificateAuthority
+
+=over
+
+=item CertificateAuthorityArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACMPCA::DescribeCertificateAuthority>
 
@@ -256,7 +295,16 @@ CA can never return to the pending state. You must create a new CA.
 
 
 
-=head2 DescribeCertificateAuthorityAuditReport(AuditReportId => Str, CertificateAuthorityArn => Str)
+=head2 DescribeCertificateAuthorityAuditReport
+
+=over
+
+=item AuditReportId => Str
+
+=item CertificateAuthorityArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACMPCA::DescribeCertificateAuthorityAuditReport>
 
@@ -269,7 +317,16 @@ The private key is used when you call the IssueCertificate function or
 the RevokeCertificate function.
 
 
-=head2 GetCertificate(CertificateArn => Str, CertificateAuthorityArn => Str)
+=head2 GetCertificate
+
+=over
+
+=item CertificateArn => Str
+
+=item CertificateAuthorityArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACMPCA::GetCertificate>
 
@@ -285,7 +342,14 @@ that contains information about all of the certificates issued and
 revoked by your private CA.
 
 
-=head2 GetCertificateAuthorityCertificate(CertificateAuthorityArn => Str)
+=head2 GetCertificateAuthorityCertificate
+
+=over
+
+=item CertificateAuthorityArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACMPCA::GetCertificateAuthorityCertificate>
 
@@ -297,7 +361,14 @@ base64 PEM-encoded. The chain does not include the CA certificate. Each
 certificate in the chain signs the one before it.
 
 
-=head2 GetCertificateAuthorityCsr(CertificateAuthorityArn => Str)
+=head2 GetCertificateAuthorityCsr
+
+=over
+
+=item CertificateAuthorityArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACMPCA::GetCertificateAuthorityCsr>
 
@@ -312,7 +383,18 @@ ImportCertificateAuthorityCertificate function. The CSR is returned as
 a base64 PEM-encoded string.
 
 
-=head2 ImportCertificateAuthorityCertificate(Certificate => Str, CertificateAuthorityArn => Str, CertificateChain => Str)
+=head2 ImportCertificateAuthorityCertificate
+
+=over
+
+=item Certificate => Str
+
+=item CertificateAuthorityArn => Str
+
+=item CertificateChain => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACMPCA::ImportCertificateAuthorityCertificate>
 
@@ -339,7 +421,22 @@ built.
 The chain must be PEM-encoded.
 
 
-=head2 IssueCertificate(CertificateAuthorityArn => Str, Csr => Str, SigningAlgorithm => Str, Validity => L<Paws::ACMPCA::Validity>, [IdempotencyToken => Str])
+=head2 IssueCertificate
+
+=over
+
+=item CertificateAuthorityArn => Str
+
+=item Csr => Str
+
+=item SigningAlgorithm => Str
+
+=item Validity => L<Paws::ACMPCA::Validity>
+
+=item [IdempotencyToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACMPCA::IssueCertificate>
 
@@ -354,7 +451,16 @@ You cannot use the ACM B<ListCertificateAuthorities> function to
 retrieve the ARNs of the certificates that you issue by using ACM PCA.
 
 
-=head2 ListCertificateAuthorities([MaxResults => Int, NextToken => Str])
+=head2 ListCertificateAuthorities
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACMPCA::ListCertificateAuthorities>
 
@@ -364,7 +470,18 @@ Lists the private certificate authorities that you created by using the
 CreateCertificateAuthority function.
 
 
-=head2 ListTags(CertificateAuthorityArn => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListTags
+
+=over
+
+=item CertificateAuthorityArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACMPCA::ListTags>
 
@@ -377,7 +494,18 @@ TagCertificateAuthority function to add one or more tags to your CA.
 Call the UntagCertificateAuthority function to remove tags.
 
 
-=head2 RevokeCertificate(CertificateAuthorityArn => Str, CertificateSerial => Str, RevocationReason => Str)
+=head2 RevokeCertificate
+
+=over
+
+=item CertificateAuthorityArn => Str
+
+=item CertificateSerial => Str
+
+=item RevocationReason => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACMPCA::RevokeCertificate>
 
@@ -393,7 +521,16 @@ information to the audit report. For more information, see
 CreateCertificateAuthorityAuditReport.
 
 
-=head2 TagCertificateAuthority(CertificateAuthorityArn => Str, Tags => ArrayRef[L<Paws::ACMPCA::Tag>])
+=head2 TagCertificateAuthority
+
+=over
+
+=item CertificateAuthorityArn => Str
+
+=item Tags => ArrayRef[L<Paws::ACMPCA::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACMPCA::TagCertificateAuthority>
 
@@ -411,7 +548,16 @@ UntagCertificateAuthority function. Call the ListTags function to see
 what tags are associated with your CA.
 
 
-=head2 UntagCertificateAuthority(CertificateAuthorityArn => Str, Tags => ArrayRef[L<Paws::ACMPCA::Tag>])
+=head2 UntagCertificateAuthority
+
+=over
+
+=item CertificateAuthorityArn => Str
+
+=item Tags => ArrayRef[L<Paws::ACMPCA::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACMPCA::UntagCertificateAuthority>
 
@@ -426,7 +572,18 @@ TagCertificateAuthority. Call the ListTags function to see what tags
 are associated with your CA.
 
 
-=head2 UpdateCertificateAuthority(CertificateAuthorityArn => Str, [RevocationConfiguration => L<Paws::ACMPCA::RevocationConfiguration>, Status => Str])
+=head2 UpdateCertificateAuthority
+
+=over
+
+=item CertificateAuthorityArn => Str
+
+=item [RevocationConfiguration => L<Paws::ACMPCA::RevocationConfiguration>]
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ACMPCA::UpdateCertificateAuthority>
 

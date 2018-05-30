@@ -217,6 +217,10 @@ Default: C<false>
 True to enable Performance Insights for the DB instance, and otherwise
 false.
 
+For more information, see Using Amazon Performance Insights
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
+in the I<Amazon Relational Database Service User Guide>.
+
 
 
 =head2 B<REQUIRED> Engine => Str

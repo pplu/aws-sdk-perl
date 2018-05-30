@@ -1,6 +1,7 @@
 package Paws::Kinesis;
   use Moose;
   sub service { 'kinesis' }
+  sub signing_name { 'kinesis' }
   sub version { '2013-12-02' }
   sub target_prefix { 'Kinesis_20131202' }
   sub json_version { "1.1" }
@@ -213,7 +214,16 @@ elastically for real-time processing of streaming big data.
 
 =head1 METHODS
 
-=head2 AddTagsToStream(StreamName => Str, Tags => L<Paws::Kinesis::TagMap>)
+=head2 AddTagsToStream
+
+=over
+
+=item StreamName => Str
+
+=item Tags => L<Paws::Kinesis::TagMap>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::AddTagsToStream>
 
@@ -229,7 +239,16 @@ AddTagsToStream has a limit of five transactions per second per
 account.
 
 
-=head2 CreateStream(ShardCount => Int, StreamName => Str)
+=head2 CreateStream
+
+=over
+
+=item ShardCount => Int
+
+=item StreamName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::CreateStream>
 
@@ -289,7 +308,16 @@ returned in C<StreamStatus>.
 CreateStream has a limit of five transactions per second per account.
 
 
-=head2 DecreaseStreamRetentionPeriod(RetentionPeriodHours => Int, StreamName => Str)
+=head2 DecreaseStreamRetentionPeriod
+
+=over
+
+=item RetentionPeriodHours => Int
+
+=item StreamName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::DecreaseStreamRetentionPeriod>
 
@@ -304,7 +332,14 @@ retention period is 48 hours and is decreased to 24 hours, any data
 already in the stream that is older than 24 hours is inaccessible.
 
 
-=head2 DeleteStream(StreamName => Str)
+=head2 DeleteStream
+
+=over
+
+=item StreamName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::DeleteStream>
 
@@ -332,7 +367,12 @@ stream, which is returned in C<StreamStatus>.
 DeleteStream has a limit of five transactions per second per account.
 
 
-=head2 DescribeLimits()
+=head2 DescribeLimits
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::Kinesis::DescribeLimits>
 
@@ -346,7 +386,18 @@ a few minutes.
 This operation has a limit of one transaction per second per account.
 
 
-=head2 DescribeStream(StreamName => Str, [ExclusiveStartShardId => Str, Limit => Int])
+=head2 DescribeStream
+
+=over
+
+=item StreamName => Str
+
+=item [ExclusiveStartShardId => Str]
+
+=item [Limit => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::DescribeStream>
 
@@ -374,7 +425,14 @@ shard to track the lineage to the oldest shard.
 This operation has a limit of 10 transactions per second per account.
 
 
-=head2 DescribeStreamSummary(StreamName => Str)
+=head2 DescribeStreamSummary
+
+=over
+
+=item StreamName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::DescribeStreamSummary>
 
@@ -388,7 +446,16 @@ The information returned includes the stream name, Amazon Resource Name
 monitoring, encryption details, and open shard count.
 
 
-=head2 DisableEnhancedMonitoring(ShardLevelMetrics => ArrayRef[Str|Undef], StreamName => Str)
+=head2 DisableEnhancedMonitoring
+
+=over
+
+=item ShardLevelMetrics => ArrayRef[Str|Undef]
+
+=item StreamName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::DisableEnhancedMonitoring>
 
@@ -397,7 +464,16 @@ Returns: a L<Paws::Kinesis::EnhancedMonitoringOutput> instance
 Disables enhanced monitoring.
 
 
-=head2 EnableEnhancedMonitoring(ShardLevelMetrics => ArrayRef[Str|Undef], StreamName => Str)
+=head2 EnableEnhancedMonitoring
+
+=over
+
+=item ShardLevelMetrics => ArrayRef[Str|Undef]
+
+=item StreamName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::EnableEnhancedMonitoring>
 
@@ -407,7 +483,16 @@ Enables enhanced Kinesis data stream monitoring for shard-level
 metrics.
 
 
-=head2 GetRecords(ShardIterator => Str, [Limit => Int])
+=head2 GetRecords
+
+=over
+
+=item ShardIterator => Str
+
+=item [Limit => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::GetRecords>
 
@@ -476,7 +561,22 @@ always increasing. For example, records in a shard or across a stream
 might have time stamps that are out of order.
 
 
-=head2 GetShardIterator(ShardId => Str, ShardIteratorType => Str, StreamName => Str, [StartingSequenceNumber => Str, Timestamp => Str])
+=head2 GetShardIterator
+
+=over
+
+=item ShardId => Str
+
+=item ShardIteratorType => Str
+
+=item StreamName => Str
+
+=item [StartingSequenceNumber => Str]
+
+=item [Timestamp => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::GetShardIterator>
 
@@ -527,7 +627,16 @@ GetShardIterator has a limit of five transactions per second per
 account per open shard.
 
 
-=head2 IncreaseStreamRetentionPeriod(RetentionPeriodHours => Int, StreamName => Str)
+=head2 IncreaseStreamRetentionPeriod
+
+=over
+
+=item RetentionPeriodHours => Int
+
+=item StreamName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::IncreaseStreamRetentionPeriod>
 
@@ -548,7 +657,22 @@ data that is older than 24 hours remains inaccessible to consumer
 applications.
 
 
-=head2 ListShards([ExclusiveStartShardId => Str, MaxResults => Int, NextToken => Str, StreamCreationTimestamp => Str, StreamName => Str])
+=head2 ListShards
+
+=over
+
+=item [ExclusiveStartShardId => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [StreamCreationTimestamp => Str]
+
+=item [StreamName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::ListShards>
 
@@ -564,7 +688,16 @@ Data Streams Resources Using IAM
 (https://docs.aws.amazon.com/streams/latest/dev/controlling-access.html).
 
 
-=head2 ListStreams([ExclusiveStartStreamName => Str, Limit => Int])
+=head2 ListStreams
+
+=over
+
+=item [ExclusiveStartStreamName => Str]
+
+=item [Limit => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::ListStreams>
 
@@ -590,7 +723,18 @@ all the stream names have been collected in the list.
 ListStreams has a limit of five transactions per second per account.
 
 
-=head2 ListTagsForStream(StreamName => Str, [ExclusiveStartTagKey => Str, Limit => Int])
+=head2 ListTagsForStream
+
+=over
+
+=item StreamName => Str
+
+=item [ExclusiveStartTagKey => Str]
+
+=item [Limit => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::ListTagsForStream>
 
@@ -600,7 +744,18 @@ Lists the tags for the specified Kinesis data stream. This operation
 has a limit of five transactions per second per account.
 
 
-=head2 MergeShards(AdjacentShardToMerge => Str, ShardToMerge => Str, StreamName => Str)
+=head2 MergeShards
+
+=over
+
+=item AdjacentShardToMerge => Str
+
+=item ShardToMerge => Str
+
+=item StreamName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::MergeShards>
 
@@ -649,7 +804,22 @@ a C<LimitExceededException>.
 C<MergeShards> has a limit of five transactions per second per account.
 
 
-=head2 PutRecord(Data => Str, PartitionKey => Str, StreamName => Str, [ExplicitHashKey => Str, SequenceNumberForOrdering => Str])
+=head2 PutRecord
+
+=over
+
+=item Data => Str
+
+=item PartitionKey => Str
+
+=item StreamName => Str
+
+=item [ExplicitHashKey => Str]
+
+=item [SequenceNumberForOrdering => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::PutRecord>
 
@@ -704,7 +874,16 @@ they are added to a stream. You can use IncreaseStreamRetentionPeriod
 or DecreaseStreamRetentionPeriod to modify this retention period.
 
 
-=head2 PutRecords(Records => ArrayRef[L<Paws::Kinesis::PutRecordsRequestEntry>], StreamName => Str)
+=head2 PutRecords
+
+=over
+
+=item Records => ArrayRef[L<Paws::Kinesis::PutRecordsRequestEntry>]
+
+=item StreamName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::PutRecords>
 
@@ -782,7 +961,16 @@ they are added to a stream. You can use IncreaseStreamRetentionPeriod
 or DecreaseStreamRetentionPeriod to modify this retention period.
 
 
-=head2 RemoveTagsFromStream(StreamName => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 RemoveTagsFromStream
+
+=over
+
+=item StreamName => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::RemoveTagsFromStream>
 
@@ -798,7 +986,18 @@ RemoveTagsFromStream has a limit of five transactions per second per
 account.
 
 
-=head2 SplitShard(NewStartingHashKey => Str, ShardToSplit => Str, StreamName => Str)
+=head2 SplitShard
+
+=over
+
+=item NewStartingHashKey => Str
+
+=item ShardToSplit => Str
+
+=item StreamName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::SplitShard>
 
@@ -859,7 +1058,18 @@ a C<LimitExceededException>.
 C<SplitShard> has a limit of five transactions per second per account.
 
 
-=head2 StartStreamEncryption(EncryptionType => Str, KeyId => Str, StreamName => Str)
+=head2 StartStreamEncryption
+
+=over
+
+=item EncryptionType => Str
+
+=item KeyId => Str
+
+=item StreamName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::StartStreamEncryption>
 
@@ -887,7 +1097,18 @@ is applied by inspecting the API response from C<PutRecord> or
 C<PutRecords>.
 
 
-=head2 StopStreamEncryption(EncryptionType => Str, KeyId => Str, StreamName => Str)
+=head2 StopStreamEncryption
+
+=over
+
+=item EncryptionType => Str
+
+=item KeyId => Str
+
+=item StreamName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::StopStreamEncryption>
 
@@ -915,7 +1136,18 @@ that encryption is not applied by inspecting the API response from
 C<PutRecord> or C<PutRecords>.
 
 
-=head2 UpdateShardCount(ScalingType => Str, StreamName => Str, TargetShardCount => Int)
+=head2 UpdateShardCount
+
+=over
+
+=item ScalingType => Str
+
+=item StreamName => Str
+
+=item TargetShardCount => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Kinesis::UpdateShardCount>
 

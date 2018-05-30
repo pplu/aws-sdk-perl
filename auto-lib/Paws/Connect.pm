@@ -1,6 +1,7 @@
 package Paws::Connect;
   use Moose;
   sub service { 'connect' }
+  sub signing_name { 'connect' }
   sub version { '2017-08-08' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -62,7 +63,26 @@ center and provide reliable customer engagement at any scale.
 
 =head1 METHODS
 
-=head2 StartOutboundVoiceContact(ContactFlowId => Str, DestinationPhoneNumber => Str, InstanceId => Str, [Attributes => L<Paws::Connect::Attributes>, ClientToken => Str, QueueId => Str, SourcePhoneNumber => Str])
+=head2 StartOutboundVoiceContact
+
+=over
+
+=item ContactFlowId => Str
+
+=item DestinationPhoneNumber => Str
+
+=item InstanceId => Str
+
+=item [Attributes => L<Paws::Connect::Attributes>]
+
+=item [ClientToken => Str]
+
+=item [QueueId => Str]
+
+=item [SourcePhoneNumber => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Connect::StartOutboundVoiceContact>
 
@@ -78,7 +98,16 @@ If you are using an IAM account, it must have permissions to the
 C<connect:StartOutboundVoiceContact> action.
 
 
-=head2 StopContact(ContactId => Str, InstanceId => Str)
+=head2 StopContact
+
+=over
+
+=item ContactId => Str
+
+=item InstanceId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Connect::StopContact>
 

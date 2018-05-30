@@ -1,6 +1,7 @@
 package Paws::ELB;
   use Moose;
   sub service { 'elasticloadbalancing' }
+  sub signing_name { 'elasticloadbalancing' }
   sub version { '2012-06-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -244,7 +245,16 @@ succeeds with a 200 OK response code.
 
 =head1 METHODS
 
-=head2 AddTags(LoadBalancerNames => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELB::Tag>])
+=head2 AddTags
+
+=over
+
+=item LoadBalancerNames => ArrayRef[Str|Undef]
+
+=item Tags => ArrayRef[L<Paws::ELB::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::AddTags>
 
@@ -262,7 +272,16 @@ For more information, see Tag Your Classic Load Balancer
 in the I<Classic Load Balancer Guide>.
 
 
-=head2 ApplySecurityGroupsToLoadBalancer(LoadBalancerName => Str, SecurityGroups => ArrayRef[Str|Undef])
+=head2 ApplySecurityGroupsToLoadBalancer
+
+=over
+
+=item LoadBalancerName => Str
+
+=item SecurityGroups => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::ApplySecurityGroupsToLoadBalancer>
 
@@ -277,7 +296,16 @@ For more information, see Security Groups for Load Balancers in a VPC
 in the I<Classic Load Balancer Guide>.
 
 
-=head2 AttachLoadBalancerToSubnets(LoadBalancerName => Str, Subnets => ArrayRef[Str|Undef])
+=head2 AttachLoadBalancerToSubnets
+
+=over
+
+=item LoadBalancerName => Str
+
+=item Subnets => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::AttachLoadBalancerToSubnets>
 
@@ -293,7 +321,16 @@ Balancer in a VPC
 in the I<Classic Load Balancer Guide>.
 
 
-=head2 ConfigureHealthCheck(HealthCheck => L<Paws::ELB::HealthCheck>, LoadBalancerName => Str)
+=head2 ConfigureHealthCheck
+
+=over
+
+=item HealthCheck => L<Paws::ELB::HealthCheck>
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::ConfigureHealthCheck>
 
@@ -308,7 +345,18 @@ Balancer
 in the I<Classic Load Balancer Guide>.
 
 
-=head2 CreateAppCookieStickinessPolicy(CookieName => Str, LoadBalancerName => Str, PolicyName => Str)
+=head2 CreateAppCookieStickinessPolicy
+
+=over
+
+=item CookieName => Str
+
+=item LoadBalancerName => Str
+
+=item PolicyName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::CreateAppCookieStickinessPolicy>
 
@@ -333,7 +381,18 @@ For more information, see Application-Controlled Session Stickiness
 in the I<Classic Load Balancer Guide>.
 
 
-=head2 CreateLBCookieStickinessPolicy(LoadBalancerName => Str, PolicyName => Str, [CookieExpirationPeriod => Int])
+=head2 CreateLBCookieStickinessPolicy
+
+=over
+
+=item LoadBalancerName => Str
+
+=item PolicyName => Str
+
+=item [CookieExpirationPeriod => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::CreateLBCookieStickinessPolicy>
 
@@ -361,7 +420,26 @@ For more information, see Duration-Based Session Stickiness
 in the I<Classic Load Balancer Guide>.
 
 
-=head2 CreateLoadBalancer(Listeners => ArrayRef[L<Paws::ELB::Listener>], LoadBalancerName => Str, [AvailabilityZones => ArrayRef[Str|Undef], Scheme => Str, SecurityGroups => ArrayRef[Str|Undef], Subnets => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELB::Tag>]])
+=head2 CreateLoadBalancer
+
+=over
+
+=item Listeners => ArrayRef[L<Paws::ELB::Listener>]
+
+=item LoadBalancerName => Str
+
+=item [AvailabilityZones => ArrayRef[Str|Undef]]
+
+=item [Scheme => Str]
+
+=item [SecurityGroups => ArrayRef[Str|Undef]]
+
+=item [Subnets => ArrayRef[Str|Undef]]
+
+=item [Tags => ArrayRef[L<Paws::ELB::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::CreateLoadBalancer>
 
@@ -385,7 +463,16 @@ For more information, see Limits for Your Classic Load Balancer
 in the I<Classic Load Balancer Guide>.
 
 
-=head2 CreateLoadBalancerListeners(Listeners => ArrayRef[L<Paws::ELB::Listener>], LoadBalancerName => Str)
+=head2 CreateLoadBalancerListeners
+
+=over
+
+=item Listeners => ArrayRef[L<Paws::ELB::Listener>]
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::CreateLoadBalancerListeners>
 
@@ -401,7 +488,20 @@ For more information, see Listeners for Your Classic Load Balancer
 in the I<Classic Load Balancer Guide>.
 
 
-=head2 CreateLoadBalancerPolicy(LoadBalancerName => Str, PolicyName => Str, PolicyTypeName => Str, [PolicyAttributes => ArrayRef[L<Paws::ELB::PolicyAttribute>]])
+=head2 CreateLoadBalancerPolicy
+
+=over
+
+=item LoadBalancerName => Str
+
+=item PolicyName => Str
+
+=item PolicyTypeName => Str
+
+=item [PolicyAttributes => ArrayRef[L<Paws::ELB::PolicyAttribute>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::CreateLoadBalancerPolicy>
 
@@ -415,7 +515,14 @@ can be applied to the listener or the application server, depending on
 the policy type.
 
 
-=head2 DeleteLoadBalancer(LoadBalancerName => Str)
+=head2 DeleteLoadBalancer
+
+=over
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DeleteLoadBalancer>
 
@@ -433,7 +540,16 @@ If the load balancer does not exist or has already been deleted, the
 call to C<DeleteLoadBalancer> still succeeds.
 
 
-=head2 DeleteLoadBalancerListeners(LoadBalancerName => Str, LoadBalancerPorts => ArrayRef[Int])
+=head2 DeleteLoadBalancerListeners
+
+=over
+
+=item LoadBalancerName => Str
+
+=item LoadBalancerPorts => ArrayRef[Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DeleteLoadBalancerListeners>
 
@@ -442,7 +558,16 @@ Returns: a L<Paws::ELB::DeleteLoadBalancerListenerOutput> instance
 Deletes the specified listeners from the specified load balancer.
 
 
-=head2 DeleteLoadBalancerPolicy(LoadBalancerName => Str, PolicyName => Str)
+=head2 DeleteLoadBalancerPolicy
+
+=over
+
+=item LoadBalancerName => Str
+
+=item PolicyName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DeleteLoadBalancerPolicy>
 
@@ -452,7 +577,16 @@ Deletes the specified policy from the specified load balancer. This
 policy must not be enabled for any listeners.
 
 
-=head2 DeregisterInstancesFromLoadBalancer(Instances => ArrayRef[L<Paws::ELB::Instance>], LoadBalancerName => Str)
+=head2 DeregisterInstancesFromLoadBalancer
+
+=over
+
+=item Instances => ArrayRef[L<Paws::ELB::Instance>]
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DeregisterInstancesFromLoadBalancer>
 
@@ -470,7 +604,16 @@ For more information, see Register or De-Register EC2 Instances
 in the I<Classic Load Balancer Guide>.
 
 
-=head2 DescribeAccountLimits([Marker => Str, PageSize => Int])
+=head2 DescribeAccountLimits
+
+=over
+
+=item [Marker => Str]
+
+=item [PageSize => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DescribeAccountLimits>
 
@@ -484,7 +627,16 @@ For more information, see Limits for Your Classic Load Balancer
 in the I<Classic Load Balancer Guide>.
 
 
-=head2 DescribeInstanceHealth(LoadBalancerName => Str, [Instances => ArrayRef[L<Paws::ELB::Instance>]])
+=head2 DescribeInstanceHealth
+
+=over
+
+=item LoadBalancerName => Str
+
+=item [Instances => ArrayRef[L<Paws::ELB::Instance>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DescribeInstanceHealth>
 
@@ -498,7 +650,14 @@ even if they are no longer registered with the load balancer. The state
 of terminated instances is not returned.
 
 
-=head2 DescribeLoadBalancerAttributes(LoadBalancerName => Str)
+=head2 DescribeLoadBalancerAttributes
+
+=over
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DescribeLoadBalancerAttributes>
 
@@ -507,7 +666,16 @@ Returns: a L<Paws::ELB::DescribeLoadBalancerAttributesOutput> instance
 Describes the attributes for the specified load balancer.
 
 
-=head2 DescribeLoadBalancerPolicies([LoadBalancerName => Str, PolicyNames => ArrayRef[Str|Undef]])
+=head2 DescribeLoadBalancerPolicies
+
+=over
+
+=item [LoadBalancerName => Str]
+
+=item [PolicyNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DescribeLoadBalancerPolicies>
 
@@ -524,7 +692,14 @@ policies, or descriptions of all sample policies. The names of the
 sample policies have the C<ELBSample-> prefix.
 
 
-=head2 DescribeLoadBalancerPolicyTypes([PolicyTypeNames => ArrayRef[Str|Undef]])
+=head2 DescribeLoadBalancerPolicyTypes
+
+=over
+
+=item [PolicyTypeNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DescribeLoadBalancerPolicyTypes>
 
@@ -544,7 +719,18 @@ either SetLoadBalancerPoliciesOfListener or
 SetLoadBalancerPoliciesForBackendServer to set the policy.
 
 
-=head2 DescribeLoadBalancers([LoadBalancerNames => ArrayRef[Str|Undef], Marker => Str, PageSize => Int])
+=head2 DescribeLoadBalancers
+
+=over
+
+=item [LoadBalancerNames => ArrayRef[Str|Undef]]
+
+=item [Marker => Str]
+
+=item [PageSize => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DescribeLoadBalancers>
 
@@ -554,7 +740,14 @@ Describes the specified the load balancers. If no load balancers are
 specified, the call describes all of your load balancers.
 
 
-=head2 DescribeTags(LoadBalancerNames => ArrayRef[Str|Undef])
+=head2 DescribeTags
+
+=over
+
+=item LoadBalancerNames => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DescribeTags>
 
@@ -563,7 +756,16 @@ Returns: a L<Paws::ELB::DescribeTagsOutput> instance
 Describes the tags associated with the specified load balancers.
 
 
-=head2 DetachLoadBalancerFromSubnets(LoadBalancerName => Str, Subnets => ArrayRef[Str|Undef])
+=head2 DetachLoadBalancerFromSubnets
+
+=over
+
+=item LoadBalancerName => Str
+
+=item Subnets => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DetachLoadBalancerFromSubnets>
 
@@ -578,7 +780,16 @@ the load balancer balances the traffic among the remaining routable
 subnets.
 
 
-=head2 DisableAvailabilityZonesForLoadBalancer(AvailabilityZones => ArrayRef[Str|Undef], LoadBalancerName => Str)
+=head2 DisableAvailabilityZonesForLoadBalancer
+
+=over
+
+=item AvailabilityZones => ArrayRef[Str|Undef]
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DisableAvailabilityZonesForLoadBalancer>
 
@@ -599,7 +810,16 @@ For more information, see Add or Remove Availability Zones
 in the I<Classic Load Balancer Guide>.
 
 
-=head2 EnableAvailabilityZonesForLoadBalancer(AvailabilityZones => ArrayRef[Str|Undef], LoadBalancerName => Str)
+=head2 EnableAvailabilityZonesForLoadBalancer
+
+=over
+
+=item AvailabilityZones => ArrayRef[Str|Undef]
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::EnableAvailabilityZonesForLoadBalancer>
 
@@ -616,7 +836,16 @@ For more information, see Add or Remove Availability Zones
 in the I<Classic Load Balancer Guide>.
 
 
-=head2 ModifyLoadBalancerAttributes(LoadBalancerAttributes => L<Paws::ELB::LoadBalancerAttributes>, LoadBalancerName => Str)
+=head2 ModifyLoadBalancerAttributes
+
+=over
+
+=item LoadBalancerAttributes => L<Paws::ELB::LoadBalancerAttributes>
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::ModifyLoadBalancerAttributes>
 
@@ -659,7 +888,16 @@ Idle Connection Timeout
 
 
 
-=head2 RegisterInstancesWithLoadBalancer(Instances => ArrayRef[L<Paws::ELB::Instance>], LoadBalancerName => Str)
+=head2 RegisterInstancesWithLoadBalancer
+
+=over
+
+=item Instances => ArrayRef[L<Paws::ELB::Instance>]
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::RegisterInstancesWithLoadBalancer>
 
@@ -693,7 +931,16 @@ For more information, see Register or De-Register EC2 Instances
 in the I<Classic Load Balancer Guide>.
 
 
-=head2 RemoveTags(LoadBalancerNames => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELB::TagKeyOnly>])
+=head2 RemoveTags
+
+=over
+
+=item LoadBalancerNames => ArrayRef[Str|Undef]
+
+=item Tags => ArrayRef[L<Paws::ELB::TagKeyOnly>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::RemoveTags>
 
@@ -702,7 +949,18 @@ Returns: a L<Paws::ELB::RemoveTagsOutput> instance
 Removes one or more tags from the specified load balancer.
 
 
-=head2 SetLoadBalancerListenerSSLCertificate(LoadBalancerName => Str, LoadBalancerPort => Int, SSLCertificateId => Str)
+=head2 SetLoadBalancerListenerSSLCertificate
+
+=over
+
+=item LoadBalancerName => Str
+
+=item LoadBalancerPort => Int
+
+=item SSLCertificateId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::SetLoadBalancerListenerSSLCertificate>
 
@@ -718,7 +976,18 @@ the SSL Certificate for Your Load Balancer
 in the I<Classic Load Balancer Guide>.
 
 
-=head2 SetLoadBalancerPoliciesForBackendServer(InstancePort => Int, LoadBalancerName => Str, PolicyNames => ArrayRef[Str|Undef])
+=head2 SetLoadBalancerPoliciesForBackendServer
+
+=over
+
+=item InstancePort => Int
+
+=item LoadBalancerName => Str
+
+=item PolicyNames => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::SetLoadBalancerPoliciesForBackendServer>
 
@@ -746,7 +1015,18 @@ Protocol, see Configure Proxy Protocol Support
 in the I<Classic Load Balancer Guide>.
 
 
-=head2 SetLoadBalancerPoliciesOfListener(LoadBalancerName => Str, LoadBalancerPort => Int, PolicyNames => ArrayRef[Str|Undef])
+=head2 SetLoadBalancerPoliciesOfListener
+
+=over
+
+=item LoadBalancerName => Str
+
+=item LoadBalancerPort => Int
+
+=item PolicyNames => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::SetLoadBalancerPoliciesOfListener>
 

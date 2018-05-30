@@ -52,7 +52,10 @@ Contains information about a delivery stream.
 
 =head2 B<REQUIRED> DeliveryStreamARN => Str
 
-  The Amazon Resource Name (ARN) of the delivery stream.
+  The Amazon Resource Name (ARN) of the delivery stream. For more
+information, see Amazon Resource Names (ARNs) and AWS Service
+Namespaces
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
 =head2 B<REQUIRED> DeliveryStreamName => Str

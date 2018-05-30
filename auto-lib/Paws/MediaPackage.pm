@@ -1,6 +1,7 @@
 package Paws::MediaPackage;
   use Moose;
   sub service { 'mediapackage' }
+  sub signing_name { 'mediapackage' }
   sub version { '2017-10-12' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -149,7 +150,16 @@ AWS Elemental MediaPackage
 
 =head1 METHODS
 
-=head2 CreateChannel(Id => Str, [Description => Str])
+=head2 CreateChannel
+
+=over
+
+=item Id => Str
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaPackage::CreateChannel>
 
@@ -158,7 +168,34 @@ Returns: a L<Paws::MediaPackage::CreateChannelResponse> instance
 Creates a new Channel.
 
 
-=head2 CreateOriginEndpoint(ChannelId => Str, Id => Str, [CmafPackage => L<Paws::MediaPackage::CmafPackageCreateOrUpdateParameters>, DashPackage => L<Paws::MediaPackage::DashPackage>, Description => Str, HlsPackage => L<Paws::MediaPackage::HlsPackage>, ManifestName => Str, MssPackage => L<Paws::MediaPackage::MssPackage>, StartoverWindowSeconds => Int, TimeDelaySeconds => Int, Whitelist => ArrayRef[Str|Undef]])
+=head2 CreateOriginEndpoint
+
+=over
+
+=item ChannelId => Str
+
+=item Id => Str
+
+=item [CmafPackage => L<Paws::MediaPackage::CmafPackageCreateOrUpdateParameters>]
+
+=item [DashPackage => L<Paws::MediaPackage::DashPackage>]
+
+=item [Description => Str]
+
+=item [HlsPackage => L<Paws::MediaPackage::HlsPackage>]
+
+=item [ManifestName => Str]
+
+=item [MssPackage => L<Paws::MediaPackage::MssPackage>]
+
+=item [StartoverWindowSeconds => Int]
+
+=item [TimeDelaySeconds => Int]
+
+=item [Whitelist => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaPackage::CreateOriginEndpoint>
 
@@ -167,7 +204,14 @@ Returns: a L<Paws::MediaPackage::CreateOriginEndpointResponse> instance
 Creates a new OriginEndpoint record.
 
 
-=head2 DeleteChannel(Id => Str)
+=head2 DeleteChannel
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaPackage::DeleteChannel>
 
@@ -176,7 +220,14 @@ Returns: a L<Paws::MediaPackage::DeleteChannelResponse> instance
 Deletes an existing Channel.
 
 
-=head2 DeleteOriginEndpoint(Id => Str)
+=head2 DeleteOriginEndpoint
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaPackage::DeleteOriginEndpoint>
 
@@ -185,7 +236,14 @@ Returns: a L<Paws::MediaPackage::DeleteOriginEndpointResponse> instance
 Deletes an existing OriginEndpoint.
 
 
-=head2 DescribeChannel(Id => Str)
+=head2 DescribeChannel
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaPackage::DescribeChannel>
 
@@ -194,7 +252,14 @@ Returns: a L<Paws::MediaPackage::DescribeChannelResponse> instance
 Gets details about a Channel.
 
 
-=head2 DescribeOriginEndpoint(Id => Str)
+=head2 DescribeOriginEndpoint
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaPackage::DescribeOriginEndpoint>
 
@@ -203,7 +268,16 @@ Returns: a L<Paws::MediaPackage::DescribeOriginEndpointResponse> instance
 Gets details about an existing OriginEndpoint.
 
 
-=head2 ListChannels([MaxResults => Int, NextToken => Str])
+=head2 ListChannels
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaPackage::ListChannels>
 
@@ -212,7 +286,18 @@ Returns: a L<Paws::MediaPackage::ListChannelsResponse> instance
 Returns a collection of Channels.
 
 
-=head2 ListOriginEndpoints([ChannelId => Str, MaxResults => Int, NextToken => Str])
+=head2 ListOriginEndpoints
+
+=over
+
+=item [ChannelId => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaPackage::ListOriginEndpoints>
 
@@ -221,7 +306,14 @@ Returns: a L<Paws::MediaPackage::ListOriginEndpointsResponse> instance
 Returns a collection of OriginEndpoint records.
 
 
-=head2 RotateChannelCredentials(Id => Str)
+=head2 RotateChannelCredentials
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaPackage::RotateChannelCredentials>
 
@@ -230,7 +322,16 @@ Returns: a L<Paws::MediaPackage::RotateChannelCredentialsResponse> instance
 Changes the Channel ingest username and password.
 
 
-=head2 UpdateChannel(Id => Str, [Description => Str])
+=head2 UpdateChannel
+
+=over
+
+=item Id => Str
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaPackage::UpdateChannel>
 
@@ -239,7 +340,32 @@ Returns: a L<Paws::MediaPackage::UpdateChannelResponse> instance
 Updates an existing Channel.
 
 
-=head2 UpdateOriginEndpoint(Id => Str, [CmafPackage => L<Paws::MediaPackage::CmafPackageCreateOrUpdateParameters>, DashPackage => L<Paws::MediaPackage::DashPackage>, Description => Str, HlsPackage => L<Paws::MediaPackage::HlsPackage>, ManifestName => Str, MssPackage => L<Paws::MediaPackage::MssPackage>, StartoverWindowSeconds => Int, TimeDelaySeconds => Int, Whitelist => ArrayRef[Str|Undef]])
+=head2 UpdateOriginEndpoint
+
+=over
+
+=item Id => Str
+
+=item [CmafPackage => L<Paws::MediaPackage::CmafPackageCreateOrUpdateParameters>]
+
+=item [DashPackage => L<Paws::MediaPackage::DashPackage>]
+
+=item [Description => Str]
+
+=item [HlsPackage => L<Paws::MediaPackage::HlsPackage>]
+
+=item [ManifestName => Str]
+
+=item [MssPackage => L<Paws::MediaPackage::MssPackage>]
+
+=item [StartoverWindowSeconds => Int]
+
+=item [TimeDelaySeconds => Int]
+
+=item [Whitelist => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaPackage::UpdateOriginEndpoint>
 

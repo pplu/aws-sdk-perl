@@ -1,6 +1,7 @@
 package Paws::SageMaker;
   use Moose;
   sub service { 'sagemaker' }
+  sub signing_name { 'sagemaker' }
   sub version { '2017-07-24' }
   sub target_prefix { 'SageMaker' }
   sub json_version { "1.1" }
@@ -357,7 +358,16 @@ Definition of the public APIs exposed by SageMaker
 
 =head1 METHODS
 
-=head2 AddTags(ResourceArn => Str, Tags => ArrayRef[L<Paws::SageMaker::Tag>])
+=head2 AddTags
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::SageMaker::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::AddTags>
 
@@ -374,7 +384,18 @@ Allocation Tags
 in the I<AWS Billing and Cost Management User Guide>.
 
 
-=head2 CreateEndpoint(EndpointConfigName => Str, EndpointName => Str, [Tags => ArrayRef[L<Paws::SageMaker::Tag>]])
+=head2 CreateEndpoint
+
+=over
+
+=item EndpointConfigName => Str
+
+=item EndpointName => Str
+
+=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::CreateEndpoint>
 
@@ -410,7 +431,20 @@ Amazon SageMaker
 (http://docs.aws.amazon.com/sagemaker/latest/dg/ex1.html).
 
 
-=head2 CreateEndpointConfig(EndpointConfigName => Str, ProductionVariants => ArrayRef[L<Paws::SageMaker::ProductionVariant>], [KmsKeyId => Str, Tags => ArrayRef[L<Paws::SageMaker::Tag>]])
+=head2 CreateEndpointConfig
+
+=over
+
+=item EndpointConfigName => Str
+
+=item ProductionVariants => ArrayRef[L<Paws::SageMaker::ProductionVariant>]
+
+=item [KmsKeyId => Str]
+
+=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::CreateEndpointConfig>
 
@@ -440,7 +474,22 @@ distributes two-thirds of the traffic to Model A, and one-third to
 model B.
 
 
-=head2 CreateModel(ExecutionRoleArn => Str, ModelName => Str, PrimaryContainer => L<Paws::SageMaker::ContainerDefinition>, [Tags => ArrayRef[L<Paws::SageMaker::Tag>], VpcConfig => L<Paws::SageMaker::VpcConfig>])
+=head2 CreateModel
+
+=over
+
+=item ExecutionRoleArn => Str
+
+=item ModelName => Str
+
+=item PrimaryContainer => L<Paws::SageMaker::ContainerDefinition>
+
+=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+=item [VpcConfig => L<Paws::SageMaker::VpcConfig>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::CreateModel>
 
@@ -471,7 +520,30 @@ inference code access any other AWS resources, you grant necessary
 permissions via this role.
 
 
-=head2 CreateNotebookInstance(InstanceType => Str, NotebookInstanceName => Str, RoleArn => Str, [DirectInternetAccess => Str, KmsKeyId => Str, LifecycleConfigName => Str, SecurityGroupIds => ArrayRef[Str|Undef], SubnetId => Str, Tags => ArrayRef[L<Paws::SageMaker::Tag>]])
+=head2 CreateNotebookInstance
+
+=over
+
+=item InstanceType => Str
+
+=item NotebookInstanceName => Str
+
+=item RoleArn => Str
+
+=item [DirectInternetAccess => Str]
+
+=item [KmsKeyId => Str]
+
+=item [LifecycleConfigName => Str]
+
+=item [SecurityGroupIds => ArrayRef[Str|Undef]]
+
+=item [SubnetId => Str]
+
+=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::CreateNotebookInstance>
 
@@ -529,7 +601,18 @@ For more information, see How It Works
 (http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
 
 
-=head2 CreateNotebookInstanceLifecycleConfig(NotebookInstanceLifecycleConfigName => Str, [OnCreate => ArrayRef[L<Paws::SageMaker::NotebookInstanceLifecycleHook>], OnStart => ArrayRef[L<Paws::SageMaker::NotebookInstanceLifecycleHook>]])
+=head2 CreateNotebookInstanceLifecycleConfig
+
+=over
+
+=item NotebookInstanceLifecycleConfigName => Str
+
+=item [OnCreate => ArrayRef[L<Paws::SageMaker::NotebookInstanceLifecycleHook>]]
+
+=item [OnStart => ArrayRef[L<Paws::SageMaker::NotebookInstanceLifecycleHook>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::CreateNotebookInstanceLifecycleConfig>
 
@@ -556,7 +639,16 @@ For information about notebook instance lifestyle configurations, see
 notebook-lifecycle-config.
 
 
-=head2 CreatePresignedNotebookInstanceUrl(NotebookInstanceName => Str, [SessionExpirationDurationInSeconds => Int])
+=head2 CreatePresignedNotebookInstanceUrl
+
+=over
+
+=item NotebookInstanceName => Str
+
+=item [SessionExpirationDurationInSeconds => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::CreatePresignedNotebookInstanceUrl>
 
@@ -569,7 +661,32 @@ showing the Jupyter server home page from the notebook instance. The
 console uses this API to get the URL and show the page.
 
 
-=head2 CreateTrainingJob(AlgorithmSpecification => L<Paws::SageMaker::AlgorithmSpecification>, InputDataConfig => ArrayRef[L<Paws::SageMaker::Channel>], OutputDataConfig => L<Paws::SageMaker::OutputDataConfig>, ResourceConfig => L<Paws::SageMaker::ResourceConfig>, RoleArn => Str, StoppingCondition => L<Paws::SageMaker::StoppingCondition>, TrainingJobName => Str, [HyperParameters => L<Paws::SageMaker::HyperParameters>, Tags => ArrayRef[L<Paws::SageMaker::Tag>], VpcConfig => L<Paws::SageMaker::VpcConfig>])
+=head2 CreateTrainingJob
+
+=over
+
+=item AlgorithmSpecification => L<Paws::SageMaker::AlgorithmSpecification>
+
+=item InputDataConfig => ArrayRef[L<Paws::SageMaker::Channel>]
+
+=item OutputDataConfig => L<Paws::SageMaker::OutputDataConfig>
+
+=item ResourceConfig => L<Paws::SageMaker::ResourceConfig>
+
+=item RoleArn => Str
+
+=item StoppingCondition => L<Paws::SageMaker::StoppingCondition>
+
+=item TrainingJobName => Str
+
+=item [HyperParameters => L<Paws::SageMaker::HyperParameters>]
+
+=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+=item [VpcConfig => L<Paws::SageMaker::VpcConfig>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::CreateTrainingJob>
 
@@ -634,7 +751,14 @@ For more information about Amazon SageMaker, see How It Works
 (http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
 
 
-=head2 DeleteEndpoint(EndpointName => Str)
+=head2 DeleteEndpoint
+
+=over
+
+=item EndpointName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::DeleteEndpoint>
 
@@ -644,7 +768,14 @@ Deletes an endpoint. Amazon SageMaker frees up all of the resources
 that were deployed when the endpoint was created.
 
 
-=head2 DeleteEndpointConfig(EndpointConfigName => Str)
+=head2 DeleteEndpointConfig
+
+=over
+
+=item EndpointConfigName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::DeleteEndpointConfig>
 
@@ -655,7 +786,14 @@ deletes only the specified configuration. It does not delete endpoints
 created using the configuration.
 
 
-=head2 DeleteModel(ModelName => Str)
+=head2 DeleteModel
+
+=over
+
+=item ModelName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::DeleteModel>
 
@@ -668,7 +806,14 @@ API. It does not delete model artifacts, inference code, or the IAM
 role that you specified when creating the model.
 
 
-=head2 DeleteNotebookInstance(NotebookInstanceName => Str)
+=head2 DeleteNotebookInstance
+
+=over
+
+=item NotebookInstanceName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::DeleteNotebookInstance>
 
@@ -682,7 +827,14 @@ SageMaker removes the ML compute instance, and deletes the ML storage
 volume and the network interface associated with the notebook instance.
 
 
-=head2 DeleteNotebookInstanceLifecycleConfig(NotebookInstanceLifecycleConfigName => Str)
+=head2 DeleteNotebookInstanceLifecycleConfig
+
+=over
+
+=item NotebookInstanceLifecycleConfigName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::DeleteNotebookInstanceLifecycleConfig>
 
@@ -691,7 +843,16 @@ Returns: nothing
 Deletes a notebook instance lifecycle configuration.
 
 
-=head2 DeleteTags(ResourceArn => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 DeleteTags
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::DeleteTags>
 
@@ -702,7 +863,14 @@ Deletes the specified tags from an Amazon SageMaker resource.
 To list a resource's tags, use the C<ListTags> API.
 
 
-=head2 DescribeEndpoint(EndpointName => Str)
+=head2 DescribeEndpoint
+
+=over
+
+=item EndpointName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::DescribeEndpoint>
 
@@ -711,7 +879,14 @@ Returns: a L<Paws::SageMaker::DescribeEndpointOutput> instance
 Returns the description of an endpoint.
 
 
-=head2 DescribeEndpointConfig(EndpointConfigName => Str)
+=head2 DescribeEndpointConfig
+
+=over
+
+=item EndpointConfigName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::DescribeEndpointConfig>
 
@@ -721,7 +896,14 @@ Returns the description of an endpoint configuration created using the
 C<CreateEndpointConfig> API.
 
 
-=head2 DescribeModel(ModelName => Str)
+=head2 DescribeModel
+
+=over
+
+=item ModelName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::DescribeModel>
 
@@ -730,7 +912,14 @@ Returns: a L<Paws::SageMaker::DescribeModelOutput> instance
 Describes a model that you created using the C<CreateModel> API.
 
 
-=head2 DescribeNotebookInstance(NotebookInstanceName => Str)
+=head2 DescribeNotebookInstance
+
+=over
+
+=item NotebookInstanceName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::DescribeNotebookInstance>
 
@@ -739,7 +928,14 @@ Returns: a L<Paws::SageMaker::DescribeNotebookInstanceOutput> instance
 Returns information about a notebook instance.
 
 
-=head2 DescribeNotebookInstanceLifecycleConfig(NotebookInstanceLifecycleConfigName => Str)
+=head2 DescribeNotebookInstanceLifecycleConfig
+
+=over
+
+=item NotebookInstanceLifecycleConfigName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::DescribeNotebookInstanceLifecycleConfig>
 
@@ -751,7 +947,14 @@ For information about notebook instance lifestyle configurations, see
 notebook-lifecycle-config.
 
 
-=head2 DescribeTrainingJob(TrainingJobName => Str)
+=head2 DescribeTrainingJob
+
+=over
+
+=item TrainingJobName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::DescribeTrainingJob>
 
@@ -760,7 +963,26 @@ Returns: a L<Paws::SageMaker::DescribeTrainingJobResponse> instance
 Returns information about a training job.
 
 
-=head2 ListEndpointConfigs([CreationTimeAfter => Str, CreationTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
+=head2 ListEndpointConfigs
+
+=over
+
+=item [CreationTimeAfter => Str]
+
+=item [CreationTimeBefore => Str]
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::ListEndpointConfigs>
 
@@ -769,7 +991,32 @@ Returns: a L<Paws::SageMaker::ListEndpointConfigsOutput> instance
 Lists endpoint configurations.
 
 
-=head2 ListEndpoints([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+=head2 ListEndpoints
+
+=over
+
+=item [CreationTimeAfter => Str]
+
+=item [CreationTimeBefore => Str]
+
+=item [LastModifiedTimeAfter => Str]
+
+=item [LastModifiedTimeBefore => Str]
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+=item [StatusEquals => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::ListEndpoints>
 
@@ -778,7 +1025,26 @@ Returns: a L<Paws::SageMaker::ListEndpointsOutput> instance
 Lists endpoints.
 
 
-=head2 ListModels([CreationTimeAfter => Str, CreationTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
+=head2 ListModels
+
+=over
+
+=item [CreationTimeAfter => Str]
+
+=item [CreationTimeBefore => Str]
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::ListModels>
 
@@ -789,7 +1055,30 @@ Lists models created with the CreateModel
 API.
 
 
-=head2 ListNotebookInstanceLifecycleConfigs([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
+=head2 ListNotebookInstanceLifecycleConfigs
+
+=over
+
+=item [CreationTimeAfter => Str]
+
+=item [CreationTimeBefore => Str]
+
+=item [LastModifiedTimeAfter => Str]
+
+=item [LastModifiedTimeBefore => Str]
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::ListNotebookInstanceLifecycleConfigs>
 
@@ -798,7 +1087,34 @@ Returns: a L<Paws::SageMaker::ListNotebookInstanceLifecycleConfigsOutput> instan
 Lists notebook instance lifestyle configurations created with the API.
 
 
-=head2 ListNotebookInstances([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, NotebookInstanceLifecycleConfigNameContains => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+=head2 ListNotebookInstances
+
+=over
+
+=item [CreationTimeAfter => Str]
+
+=item [CreationTimeBefore => Str]
+
+=item [LastModifiedTimeAfter => Str]
+
+=item [LastModifiedTimeBefore => Str]
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+=item [NotebookInstanceLifecycleConfigNameContains => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+=item [StatusEquals => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::ListNotebookInstances>
 
@@ -808,7 +1124,18 @@ Returns a list of the Amazon SageMaker notebook instances in the
 requester's account in an AWS Region.
 
 
-=head2 ListTags(ResourceArn => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListTags
+
+=over
+
+=item ResourceArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::ListTags>
 
@@ -817,7 +1144,32 @@ Returns: a L<Paws::SageMaker::ListTagsOutput> instance
 Returns the tags for the specified Amazon SageMaker resource.
 
 
-=head2 ListTrainingJobs([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+=head2 ListTrainingJobs
+
+=over
+
+=item [CreationTimeAfter => Str]
+
+=item [CreationTimeBefore => Str]
+
+=item [LastModifiedTimeAfter => Str]
+
+=item [LastModifiedTimeBefore => Str]
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+=item [StatusEquals => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::ListTrainingJobs>
 
@@ -826,7 +1178,14 @@ Returns: a L<Paws::SageMaker::ListTrainingJobsResponse> instance
 Lists training jobs.
 
 
-=head2 StartNotebookInstance(NotebookInstanceName => Str)
+=head2 StartNotebookInstance
+
+=over
+
+=item NotebookInstanceName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::StartNotebookInstance>
 
@@ -839,7 +1198,14 @@ to C<InService>. A notebook instance's status must be C<InService>
 before you can connect to your Jupyter notebook.
 
 
-=head2 StopNotebookInstance(NotebookInstanceName => Str)
+=head2 StopNotebookInstance
+
+=over
+
+=item NotebookInstanceName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::StopNotebookInstance>
 
@@ -856,7 +1222,14 @@ configures it, and attaches the preserved ML storage volume so you can
 continue your work.
 
 
-=head2 StopTrainingJob(TrainingJobName => Str)
+=head2 StopTrainingJob
+
+=over
+
+=item TrainingJobName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::StopTrainingJob>
 
@@ -877,7 +1250,16 @@ the status of the job to C<Stopping>. After Amazon SageMaker stops the
 job, it sets the status to C<Stopped>.
 
 
-=head2 UpdateEndpoint(EndpointConfigName => Str, EndpointName => Str)
+=head2 UpdateEndpoint
+
+=over
+
+=item EndpointConfigName => Str
+
+=item EndpointName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::UpdateEndpoint>
 
@@ -896,7 +1278,16 @@ DescribeEndpoint
 API.
 
 
-=head2 UpdateEndpointWeightsAndCapacities(DesiredWeightsAndCapacities => ArrayRef[L<Paws::SageMaker::DesiredWeightAndCapacity>], EndpointName => Str)
+=head2 UpdateEndpointWeightsAndCapacities
+
+=over
+
+=item DesiredWeightsAndCapacities => ArrayRef[L<Paws::SageMaker::DesiredWeightAndCapacity>]
+
+=item EndpointName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::UpdateEndpointWeightsAndCapacities>
 
@@ -912,7 +1303,18 @@ use the DescribeEndpoint
 API.
 
 
-=head2 UpdateNotebookInstance(NotebookInstanceName => Str, [InstanceType => Str, RoleArn => Str])
+=head2 UpdateNotebookInstance
+
+=over
+
+=item NotebookInstanceName => Str
+
+=item [InstanceType => Str]
+
+=item [RoleArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::UpdateNotebookInstance>
 
@@ -924,7 +1326,18 @@ to accommodate changes in your workload requirements. You can also
 update the VPC security groups.
 
 
-=head2 UpdateNotebookInstanceLifecycleConfig(NotebookInstanceLifecycleConfigName => Str, [OnCreate => ArrayRef[L<Paws::SageMaker::NotebookInstanceLifecycleHook>], OnStart => ArrayRef[L<Paws::SageMaker::NotebookInstanceLifecycleHook>]])
+=head2 UpdateNotebookInstanceLifecycleConfig
+
+=over
+
+=item NotebookInstanceLifecycleConfigName => Str
+
+=item [OnCreate => ArrayRef[L<Paws::SageMaker::NotebookInstanceLifecycleHook>]]
+
+=item [OnStart => ArrayRef[L<Paws::SageMaker::NotebookInstanceLifecycleHook>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMaker::UpdateNotebookInstanceLifecycleConfig>
 

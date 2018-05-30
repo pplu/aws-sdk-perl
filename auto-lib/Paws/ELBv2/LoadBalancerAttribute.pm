@@ -41,50 +41,62 @@ Information about a load balancer attribute.
 
   The name of the attribute.
 
+The following attributes are supported by both Application Load
+Balancers and Network Load Balancers:
+
 =over
 
 =item *
 
-C<access_logs.s3.enabled> - [Application Load Balancers] Indicates
-whether access logs stored in Amazon S3 are enabled. The value is
-C<true> or C<false>.
-
-=item *
-
-C<access_logs.s3.bucket> - [Application Load Balancers] The name of the
-S3 bucket for the access logs. This attribute is required if access
-logs in Amazon S3 are enabled. The bucket must exist in the same region
-as the load balancer and have a bucket policy that grants Elastic Load
-Balancing permission to write to the bucket.
-
-=item *
-
-C<access_logs.s3.prefix> - [Application Load Balancers] The prefix for
-the location in the S3 bucket. If you don't specify a prefix, the
-access logs are stored in the root of the bucket.
-
-=item *
-
 C<deletion_protection.enabled> - Indicates whether deletion protection
-is enabled. The value is C<true> or C<false>.
+is enabled. The value is C<true> or C<false>. The default is C<false>.
+
+=back
+
+The following attributes are supported by only Application Load
+Balancers:
+
+=over
 
 =item *
 
-C<idle_timeout.timeout_seconds> - [Application Load Balancers] The idle
-timeout value, in seconds. The valid range is 1-4000. The default is 60
-seconds.
+C<access_logs.s3.enabled> - Indicates whether access logs are enabled.
+The value is C<true> or C<false>. The default is C<false>.
 
 =item *
 
-C<load_balancing.cross_zone.enabled> - [Network Load Balancers]
-Indicates whether cross-zone load balancing is enabled. The value is
-C<true> or C<false>. The default is C<false>.
+C<access_logs.s3.bucket> - The name of the S3 bucket for the access
+logs. This attribute is required if access logs are enabled. The bucket
+must exist in the same region as the load balancer and have a bucket
+policy that grants Elastic Load Balancing permission to write to the
+bucket.
 
 =item *
 
-C<routing.http2.enabled> - [Application Load Balancers] Indicates
-whether HTTP/2 is enabled. The value is C<true> or C<false>. The
-default is C<true>.
+C<access_logs.s3.prefix> - The prefix for the location in the S3 bucket
+for the access logs.
+
+=item *
+
+C<idle_timeout.timeout_seconds> - The idle timeout value, in seconds.
+The valid range is 1-4000 seconds. The default is 60 seconds.
+
+=item *
+
+C<routing.http2.enabled> - Indicates whether HTTP/2 is enabled. The
+value is C<true> or C<false>. The default is C<true>.
+
+=back
+
+The following attributes are supported by only Network Load Balancers:
+
+=over
+
+=item *
+
+C<load_balancing.cross_zone.enabled> - Indicates whether cross-zone
+load balancing is enabled. The value is C<true> or C<false>. The
+default is C<false>.
 
 =back
 

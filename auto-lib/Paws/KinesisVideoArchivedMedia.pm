@@ -1,6 +1,7 @@
 package Paws::KinesisVideoArchivedMedia;
   use Moose;
   sub service { 'kinesisvideo' }
+  sub signing_name { 'kinesisvideo' }
   sub version { '2017-09-30' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -58,7 +59,16 @@ Paws::KinesisVideoArchivedMedia - Perl Interface to AWS Amazon Kinesis Video Str
 
 =head1 METHODS
 
-=head2 GetMediaForFragmentList(Fragments => ArrayRef[Str|Undef], StreamName => Str)
+=head2 GetMediaForFragmentList
+
+=over
+
+=item Fragments => ArrayRef[Str|Undef]
+
+=item StreamName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisVideoArchivedMedia::GetMediaForFragmentList>
 
@@ -90,7 +100,20 @@ C<GetMediaForFragmentList> session.
 
 
 
-=head2 ListFragments(StreamName => Str, [FragmentSelector => L<Paws::KinesisVideoArchivedMedia::FragmentSelector>, MaxResults => Int, NextToken => Str])
+=head2 ListFragments
+
+=over
+
+=item StreamName => Str
+
+=item [FragmentSelector => L<Paws::KinesisVideoArchivedMedia::FragmentSelector>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisVideoArchivedMedia::ListFragments>
 

@@ -1,6 +1,7 @@
 package Paws::SageMakerRuntime;
   use Moose;
   sub service { 'runtime.sagemaker' }
+  sub signing_name { 'sagemaker' }
   sub version { '2017-05-13' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -53,7 +54,20 @@ Amazon SageMaker runtime API.
 
 =head1 METHODS
 
-=head2 InvokeEndpoint(Body => Str, EndpointName => Str, [Accept => Str, ContentType => Str])
+=head2 InvokeEndpoint
+
+=over
+
+=item Body => Str
+
+=item EndpointName => Str
+
+=item [Accept => Str]
+
+=item [ContentType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMakerRuntime::InvokeEndpoint>
 

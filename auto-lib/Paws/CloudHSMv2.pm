@@ -1,6 +1,7 @@
 package Paws::CloudHSMv2;
   use Moose;
   sub service { 'cloudhsmv2' }
+  sub signing_name { 'cloudhsm' }
   sub version { '2017-04-28' }
   sub target_prefix { 'BaldrApiService' }
   sub json_version { "1.1" }
@@ -170,7 +171,18 @@ For more information about AWS CloudHSM, see AWS CloudHSM
 
 =head1 METHODS
 
-=head2 CreateCluster(HsmType => Str, SubnetIds => ArrayRef[Str|Undef], [SourceBackupId => Str])
+=head2 CreateCluster
+
+=over
+
+=item HsmType => Str
+
+=item SubnetIds => ArrayRef[Str|Undef]
+
+=item [SourceBackupId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSMv2::CreateCluster>
 
@@ -179,7 +191,18 @@ Returns: a L<Paws::CloudHSMv2::CreateClusterResponse> instance
 Creates a new AWS CloudHSM cluster.
 
 
-=head2 CreateHsm(AvailabilityZone => Str, ClusterId => Str, [IpAddress => Str])
+=head2 CreateHsm
+
+=over
+
+=item AvailabilityZone => Str
+
+=item ClusterId => Str
+
+=item [IpAddress => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSMv2::CreateHsm>
 
@@ -189,7 +212,14 @@ Creates a new hardware security module (HSM) in the specified AWS
 CloudHSM cluster.
 
 
-=head2 DeleteCluster(ClusterId => Str)
+=head2 DeleteCluster
+
+=over
+
+=item ClusterId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSMv2::DeleteCluster>
 
@@ -201,7 +231,20 @@ contains any HSMs, use DescribeClusters. To delete an HSM, use
 DeleteHsm.
 
 
-=head2 DeleteHsm(ClusterId => Str, [EniId => Str, EniIp => Str, HsmId => Str])
+=head2 DeleteHsm
+
+=over
+
+=item ClusterId => Str
+
+=item [EniId => Str]
+
+=item [EniIp => Str]
+
+=item [HsmId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSMv2::DeleteHsm>
 
@@ -213,7 +256,18 @@ identifier (ID), the IP address of the HSM's elastic network interface
 these values. To find these values, use DescribeClusters.
 
 
-=head2 DescribeBackups([Filters => L<Paws::CloudHSMv2::Filters>, MaxResults => Int, NextToken => Str])
+=head2 DescribeBackups
+
+=over
+
+=item [Filters => L<Paws::CloudHSMv2::Filters>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSMv2::DescribeBackups>
 
@@ -229,7 +283,18 @@ When you receive a response with no C<NextToken> (or an empty or null
 value), that means there are no more backups to get.
 
 
-=head2 DescribeClusters([Filters => L<Paws::CloudHSMv2::Filters>, MaxResults => Int, NextToken => Str])
+=head2 DescribeClusters
+
+=over
+
+=item [Filters => L<Paws::CloudHSMv2::Filters>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSMv2::DescribeClusters>
 
@@ -245,7 +310,18 @@ When you receive a response with no C<NextToken> (or an empty or null
 value), that means there are no more clusters to get.
 
 
-=head2 InitializeCluster(ClusterId => Str, SignedCert => Str, TrustAnchor => Str)
+=head2 InitializeCluster
+
+=over
+
+=item ClusterId => Str
+
+=item SignedCert => Str
+
+=item TrustAnchor => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSMv2::InitializeCluster>
 
@@ -258,7 +334,18 @@ cluster's certificate signing request (CSR) with your issuing CA. To
 get the cluster's CSR, use DescribeClusters.
 
 
-=head2 ListTags(ResourceId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListTags
+
+=over
+
+=item ResourceId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSMv2::ListTags>
 
@@ -274,7 +361,16 @@ response with no C<NextToken> (or an empty or null value), that means
 there are no more tags to get.
 
 
-=head2 TagResource(ResourceId => Str, TagList => ArrayRef[L<Paws::CloudHSMv2::Tag>])
+=head2 TagResource
+
+=over
+
+=item ResourceId => Str
+
+=item TagList => ArrayRef[L<Paws::CloudHSMv2::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSMv2::TagResource>
 
@@ -284,7 +380,16 @@ Adds or overwrites one or more tags for the specified AWS CloudHSM
 cluster.
 
 
-=head2 UntagResource(ResourceId => Str, TagKeyList => ArrayRef[Str|Undef])
+=head2 UntagResource
+
+=over
+
+=item ResourceId => Str
+
+=item TagKeyList => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSMv2::UntagResource>
 

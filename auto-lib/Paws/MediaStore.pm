@@ -1,6 +1,7 @@
 package Paws::MediaStore;
   use Moose;
   sub service { 'mediastore' }
+  sub signing_name { 'mediastore' }
   sub version { '2017-09-01' }
   sub target_prefix { 'MediaStore_20170901' }
   sub json_version { "1.1" }
@@ -101,7 +102,14 @@ objects.
 
 =head1 METHODS
 
-=head2 CreateContainer(ContainerName => Str)
+=head2 CreateContainer
+
+=over
+
+=item ContainerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStore::CreateContainer>
 
@@ -111,7 +119,14 @@ Creates a storage container to hold objects. A container is similar to
 a bucket in the Amazon S3 service.
 
 
-=head2 DeleteContainer(ContainerName => Str)
+=head2 DeleteContainer
+
+=over
+
+=item ContainerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStore::DeleteContainer>
 
@@ -122,7 +137,14 @@ request, delete any objects in the container or in any folders in the
 container. You can delete only empty containers.
 
 
-=head2 DeleteContainerPolicy(ContainerName => Str)
+=head2 DeleteContainerPolicy
+
+=over
+
+=item ContainerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStore::DeleteContainerPolicy>
 
@@ -132,7 +154,14 @@ Deletes the access policy that is associated with the specified
 container.
 
 
-=head2 DeleteCorsPolicy(ContainerName => Str)
+=head2 DeleteCorsPolicy
+
+=over
+
+=item ContainerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStore::DeleteCorsPolicy>
 
@@ -146,7 +175,14 @@ C<MediaStore:DeleteCorsPolicy> action. The container owner has this
 permission by default and can grant this permission to others.
 
 
-=head2 DescribeContainer([ContainerName => Str])
+=head2 DescribeContainer
+
+=over
+
+=item [ContainerName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStore::DescribeContainer>
 
@@ -161,7 +197,14 @@ on C<ContainerName>. To return all C<Container> objects that are
 associated with a specified AWS account, use ListContainers.
 
 
-=head2 GetContainerPolicy(ContainerName => Str)
+=head2 GetContainerPolicy
+
+=over
+
+=item ContainerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStore::GetContainerPolicy>
 
@@ -173,7 +216,14 @@ the AWS Identity and Access Management User Guide
 (https://aws.amazon.com/documentation/iam/).
 
 
-=head2 GetCorsPolicy(ContainerName => Str)
+=head2 GetCorsPolicy
+
+=over
+
+=item ContainerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStore::GetCorsPolicy>
 
@@ -187,7 +237,16 @@ C<MediaStore:GetCorsPolicy> action. By default, the container owner has
 this permission and can grant it to others.
 
 
-=head2 ListContainers([MaxResults => Int, NextToken => Str])
+=head2 ListContainers
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStore::ListContainers>
 
@@ -206,7 +265,16 @@ still more containers to receive.
 See also DescribeContainer, which gets the properties of one container.
 
 
-=head2 PutContainerPolicy(ContainerName => Str, Policy => Str)
+=head2 PutContainerPolicy
+
+=over
+
+=item ContainerName => Str
+
+=item Policy => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStore::PutContainerPolicy>
 
@@ -222,7 +290,16 @@ container. If you enter C<PutContainerPolicy> twice, the second command
 modifies the existing policy.
 
 
-=head2 PutCorsPolicy(ContainerName => Str, CorsPolicy => ArrayRef[L<Paws::MediaStore::CorsRule>])
+=head2 PutCorsPolicy
+
+=over
+
+=item ContainerName => Str
+
+=item CorsPolicy => ArrayRef[L<Paws::MediaStore::CorsRule>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStore::PutCorsPolicy>
 

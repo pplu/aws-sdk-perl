@@ -47,12 +47,16 @@ stream starting with this time stamp.
 
 =head2 KinesisStreamARN => Str
 
-  The Amazon Resource Name (ARN) of the source Kinesis data stream.
+  The Amazon Resource Name (ARN) of the source Kinesis data stream. For
+more information, see Amazon Kinesis Data Streams ARN Format
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams).
 
 
 =head2 RoleARN => Str
 
-  The ARN of the role used by the source Kinesis data stream.
+  The ARN of the role used by the source Kinesis data stream. For more
+information, see AWS Identity and Access Management (IAM) ARN Format
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam).
 
 
 

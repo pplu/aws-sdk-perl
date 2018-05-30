@@ -1,6 +1,7 @@
 package Paws::EMR;
   use Moose;
   sub service { 'elasticmapreduce' }
+  sub signing_name { 'elasticmapreduce' }
   sub version { '2009-03-31' }
   sub target_prefix { 'ElasticMapReduce' }
   sub json_version { "1.1" }
@@ -374,7 +375,16 @@ warehousing.
 
 =head1 METHODS
 
-=head2 AddInstanceFleet(ClusterId => Str, InstanceFleet => L<Paws::EMR::InstanceFleetConfig>)
+=head2 AddInstanceFleet
+
+=over
+
+=item ClusterId => Str
+
+=item InstanceFleet => L<Paws::EMR::InstanceFleetConfig>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::AddInstanceFleet>
 
@@ -386,7 +396,16 @@ The instance fleet configuration is available only in Amazon EMR
 versions 4.8.0 and later, excluding 5.0.x.
 
 
-=head2 AddInstanceGroups(InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupConfig>], JobFlowId => Str)
+=head2 AddInstanceGroups
+
+=over
+
+=item InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupConfig>]
+
+=item JobFlowId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::AddInstanceGroups>
 
@@ -395,7 +414,16 @@ Returns: a L<Paws::EMR::AddInstanceGroupsOutput> instance
 Adds one or more instance groups to a running cluster.
 
 
-=head2 AddJobFlowSteps(JobFlowId => Str, Steps => ArrayRef[L<Paws::EMR::StepConfig>])
+=head2 AddJobFlowSteps
+
+=over
+
+=item JobFlowId => Str
+
+=item Steps => ArrayRef[L<Paws::EMR::StepConfig>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::AddJobFlowSteps>
 
@@ -428,7 +456,16 @@ You can only add steps to a cluster that is in one of the following
 states: STARTING, BOOTSTRAPPING, RUNNING, or WAITING.
 
 
-=head2 AddTags(ResourceId => Str, Tags => ArrayRef[L<Paws::EMR::Tag>])
+=head2 AddTags
+
+=over
+
+=item ResourceId => Str
+
+=item Tags => ArrayRef[L<Paws::EMR::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::AddTags>
 
@@ -441,7 +478,16 @@ Clusters
 (http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
 
 
-=head2 CancelSteps([ClusterId => Str, StepIds => ArrayRef[Str|Undef]])
+=head2 CancelSteps
+
+=over
+
+=item [ClusterId => Str]
+
+=item [StepIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::CancelSteps>
 
@@ -455,7 +501,16 @@ canceled, even if the request is successfully submitted. You can only
 cancel steps that are in a C<PENDING> state.
 
 
-=head2 CreateSecurityConfiguration(Name => Str, SecurityConfiguration => Str)
+=head2 CreateSecurityConfiguration
+
+=over
+
+=item Name => Str
+
+=item SecurityConfiguration => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::CreateSecurityConfiguration>
 
@@ -465,7 +520,14 @@ Creates a security configuration, which is stored in the service and
 can be specified when a cluster is created.
 
 
-=head2 DeleteSecurityConfiguration(Name => Str)
+=head2 DeleteSecurityConfiguration
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::DeleteSecurityConfiguration>
 
@@ -474,7 +536,14 @@ Returns: a L<Paws::EMR::DeleteSecurityConfigurationOutput> instance
 Deletes a security configuration.
 
 
-=head2 DescribeCluster(ClusterId => Str)
+=head2 DescribeCluster
+
+=over
+
+=item ClusterId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::DescribeCluster>
 
@@ -485,7 +554,20 @@ configuration, VPC settings, and so on. For information about the
 cluster steps, see ListSteps.
 
 
-=head2 DescribeJobFlows([CreatedAfter => Str, CreatedBefore => Str, JobFlowIds => ArrayRef[Str|Undef], JobFlowStates => ArrayRef[Str|Undef]])
+=head2 DescribeJobFlows
+
+=over
+
+=item [CreatedAfter => Str]
+
+=item [CreatedBefore => Str]
+
+=item [JobFlowIds => ArrayRef[Str|Undef]]
+
+=item [JobFlowStates => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::DescribeJobFlows>
 
@@ -521,7 +603,14 @@ following states: C<RUNNING>, C<WAITING>, C<SHUTTING_DOWN>, C<STARTING>
 Amazon EMR can return a maximum of 512 job flow descriptions.
 
 
-=head2 DescribeSecurityConfiguration(Name => Str)
+=head2 DescribeSecurityConfiguration
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::DescribeSecurityConfiguration>
 
@@ -531,7 +620,16 @@ Provides the details of a security configuration by returning the
 configuration JSON.
 
 
-=head2 DescribeStep(ClusterId => Str, StepId => Str)
+=head2 DescribeStep
+
+=over
+
+=item ClusterId => Str
+
+=item StepId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::DescribeStep>
 
@@ -540,7 +638,16 @@ Returns: a L<Paws::EMR::DescribeStepOutput> instance
 Provides more detail about the cluster step.
 
 
-=head2 ListBootstrapActions(ClusterId => Str, [Marker => Str])
+=head2 ListBootstrapActions
+
+=over
+
+=item ClusterId => Str
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::ListBootstrapActions>
 
@@ -550,7 +657,20 @@ Provides information about the bootstrap actions associated with a
 cluster.
 
 
-=head2 ListClusters([ClusterStates => ArrayRef[Str|Undef], CreatedAfter => Str, CreatedBefore => Str, Marker => Str])
+=head2 ListClusters
+
+=over
+
+=item [ClusterStates => ArrayRef[Str|Undef]]
+
+=item [CreatedAfter => Str]
+
+=item [CreatedBefore => Str]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::ListClusters>
 
@@ -564,7 +684,16 @@ track the paging of the cluster list across multiple ListClusters
 calls.
 
 
-=head2 ListInstanceFleets(ClusterId => Str, [Marker => Str])
+=head2 ListInstanceFleets
+
+=over
+
+=item ClusterId => Str
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::ListInstanceFleets>
 
@@ -576,7 +705,16 @@ The instance fleet configuration is available only in Amazon EMR
 versions 4.8.0 and later, excluding 5.0.x versions.
 
 
-=head2 ListInstanceGroups(ClusterId => Str, [Marker => Str])
+=head2 ListInstanceGroups
+
+=over
+
+=item ClusterId => Str
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::ListInstanceGroups>
 
@@ -585,7 +723,26 @@ Returns: a L<Paws::EMR::ListInstanceGroupsOutput> instance
 Provides all available details about the instance groups in a cluster.
 
 
-=head2 ListInstances(ClusterId => Str, [InstanceFleetId => Str, InstanceFleetType => Str, InstanceGroupId => Str, InstanceGroupTypes => ArrayRef[Str|Undef], InstanceStates => ArrayRef[Str|Undef], Marker => Str])
+=head2 ListInstances
+
+=over
+
+=item ClusterId => Str
+
+=item [InstanceFleetId => Str]
+
+=item [InstanceFleetType => Str]
+
+=item [InstanceGroupId => Str]
+
+=item [InstanceGroupTypes => ArrayRef[Str|Undef]]
+
+=item [InstanceStates => ArrayRef[Str|Undef]]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::ListInstances>
 
@@ -597,7 +754,14 @@ in any of the following states are considered active:
 AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
 
 
-=head2 ListSecurityConfigurations([Marker => Str])
+=head2 ListSecurityConfigurations
+
+=over
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::ListSecurityConfigurations>
 
@@ -610,7 +774,20 @@ track the paging of the cluster list across multiple
 ListSecurityConfigurations calls.
 
 
-=head2 ListSteps(ClusterId => Str, [Marker => Str, StepIds => ArrayRef[Str|Undef], StepStates => ArrayRef[Str|Undef]])
+=head2 ListSteps
+
+=over
+
+=item ClusterId => Str
+
+=item [Marker => Str]
+
+=item [StepIds => ArrayRef[Str|Undef]]
+
+=item [StepStates => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::ListSteps>
 
@@ -620,7 +797,16 @@ Provides a list of steps for the cluster in reverse order unless you
 specify stepIds with the request.
 
 
-=head2 ModifyInstanceFleet(ClusterId => Str, InstanceFleet => L<Paws::EMR::InstanceFleetModifyConfig>)
+=head2 ModifyInstanceFleet
+
+=over
+
+=item ClusterId => Str
+
+=item InstanceFleet => L<Paws::EMR::InstanceFleetModifyConfig>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::ModifyInstanceFleet>
 
@@ -635,7 +821,16 @@ The instance fleet configuration is available only in Amazon EMR
 versions 4.8.0 and later, excluding 5.0.x versions.
 
 
-=head2 ModifyInstanceGroups([ClusterId => Str, InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupModifyConfig>]])
+=head2 ModifyInstanceGroups
+
+=over
+
+=item [ClusterId => Str]
+
+=item [InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupModifyConfig>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::ModifyInstanceGroups>
 
@@ -647,7 +842,18 @@ target instance count for the group and the instance group ID. The call
 will either succeed or fail atomically.
 
 
-=head2 PutAutoScalingPolicy(AutoScalingPolicy => L<Paws::EMR::AutoScalingPolicy>, ClusterId => Str, InstanceGroupId => Str)
+=head2 PutAutoScalingPolicy
+
+=over
+
+=item AutoScalingPolicy => L<Paws::EMR::AutoScalingPolicy>
+
+=item ClusterId => Str
+
+=item InstanceGroupId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::PutAutoScalingPolicy>
 
@@ -660,7 +866,16 @@ terminates EC2 instances in response to the value of a CloudWatch
 metric.
 
 
-=head2 RemoveAutoScalingPolicy(ClusterId => Str, InstanceGroupId => Str)
+=head2 RemoveAutoScalingPolicy
+
+=over
+
+=item ClusterId => Str
+
+=item InstanceGroupId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::RemoveAutoScalingPolicy>
 
@@ -670,7 +885,16 @@ Removes an automatic scaling policy from a specified instance group
 within an EMR cluster.
 
 
-=head2 RemoveTags(ResourceId => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 RemoveTags
+
+=over
+
+=item ResourceId => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::RemoveTags>
 
@@ -686,7 +910,58 @@ The following example removes the stack tag with value Prod from a
 cluster:
 
 
-=head2 RunJobFlow(Instances => L<Paws::EMR::JobFlowInstancesConfig>, Name => Str, [AdditionalInfo => Str, AmiVersion => Str, Applications => ArrayRef[L<Paws::EMR::Application>], AutoScalingRole => Str, BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionConfig>], Configurations => ArrayRef[L<Paws::EMR::Configuration>], CustomAmiId => Str, EbsRootVolumeSize => Int, JobFlowRole => Str, KerberosAttributes => L<Paws::EMR::KerberosAttributes>, LogUri => Str, NewSupportedProducts => ArrayRef[L<Paws::EMR::SupportedProductConfig>], ReleaseLabel => Str, RepoUpgradeOnBoot => Str, ScaleDownBehavior => Str, SecurityConfiguration => Str, ServiceRole => Str, Steps => ArrayRef[L<Paws::EMR::StepConfig>], SupportedProducts => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::EMR::Tag>], VisibleToAllUsers => Bool])
+=head2 RunJobFlow
+
+=over
+
+=item Instances => L<Paws::EMR::JobFlowInstancesConfig>
+
+=item Name => Str
+
+=item [AdditionalInfo => Str]
+
+=item [AmiVersion => Str]
+
+=item [Applications => ArrayRef[L<Paws::EMR::Application>]]
+
+=item [AutoScalingRole => Str]
+
+=item [BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionConfig>]]
+
+=item [Configurations => ArrayRef[L<Paws::EMR::Configuration>]]
+
+=item [CustomAmiId => Str]
+
+=item [EbsRootVolumeSize => Int]
+
+=item [JobFlowRole => Str]
+
+=item [KerberosAttributes => L<Paws::EMR::KerberosAttributes>]
+
+=item [LogUri => Str]
+
+=item [NewSupportedProducts => ArrayRef[L<Paws::EMR::SupportedProductConfig>]]
+
+=item [ReleaseLabel => Str]
+
+=item [RepoUpgradeOnBoot => Str]
+
+=item [ScaleDownBehavior => Str]
+
+=item [SecurityConfiguration => Str]
+
+=item [ServiceRole => Str]
+
+=item [Steps => ArrayRef[L<Paws::EMR::StepConfig>]]
+
+=item [SupportedProducts => ArrayRef[Str|Undef]]
+
+=item [Tags => ArrayRef[L<Paws::EMR::Tag>]]
+
+=item [VisibleToAllUsers => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::RunJobFlow>
 
@@ -726,7 +1001,16 @@ request can contain InstanceFleets parameters or InstanceGroups
 parameters, but not both.
 
 
-=head2 SetTerminationProtection(JobFlowIds => ArrayRef[Str|Undef], TerminationProtected => Bool)
+=head2 SetTerminationProtection
+
+=over
+
+=item JobFlowIds => ArrayRef[Str|Undef]
+
+=item TerminationProtected => Bool
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::SetTerminationProtection>
 
@@ -755,7 +1039,16 @@ For more information, seeManaging Cluster Termination
 in the I<Amazon EMR Management Guide>.
 
 
-=head2 SetVisibleToAllUsers(JobFlowIds => ArrayRef[Str|Undef], VisibleToAllUsers => Bool)
+=head2 SetVisibleToAllUsers
+
+=over
+
+=item JobFlowIds => ArrayRef[Str|Undef]
+
+=item VisibleToAllUsers => Bool
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::SetVisibleToAllUsers>
 
@@ -770,7 +1063,14 @@ IAM user who created the cluster or the AWS account that owns the
 cluster.
 
 
-=head2 TerminateJobFlows(JobFlowIds => ArrayRef[Str|Undef])
+=head2 TerminateJobFlows
+
+=over
+
+=item JobFlowIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::EMR::TerminateJobFlows>
 

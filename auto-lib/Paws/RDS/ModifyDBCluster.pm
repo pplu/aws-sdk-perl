@@ -2,7 +2,9 @@
 package Paws::RDS::ModifyDBCluster;
   use Moose;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
+  has BacktrackWindow => (is => 'ro', isa => 'Int');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
+  has CloudwatchLogsExportConfiguration => (is => 'ro', isa => 'Paws::RDS::CloudwatchLogsExportConfiguration');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
@@ -65,6 +67,27 @@ Default: C<false>
 
 
 
+=head2 BacktrackWindow => Int
+
+The target backtrack window, in seconds. To disable backtracking, set
+this value to 0.
+
+Default: 0
+
+Constraints:
+
+=over
+
+=item *
+
+If specified, this value must be set to a number from 0 to 259,200 (72
+hours).
+
+=back
+
+
+
+
 =head2 BackupRetentionPeriod => Int
 
 The number of days for which automated backups are retained. You must
@@ -82,6 +105,13 @@ Must be a value from 1 to 35
 
 =back
 
+
+
+
+=head2 CloudwatchLogsExportConfiguration => L<Paws::RDS::CloudwatchLogsExportConfiguration>
+
+The configuration setting for the log types to be enabled for export to
+CloudWatch Logs for a specific DB cluster.
 
 
 

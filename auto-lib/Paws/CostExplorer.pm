@@ -1,6 +1,7 @@
 package Paws::CostExplorer;
   use Moose;
   sub service { 'ce' }
+  sub signing_name { 'ce' }
   sub version { '2017-10-25' }
   sub target_prefix { 'AWSInsightsIndexService' }
   sub json_version { "1.1" }
@@ -99,7 +100,24 @@ AWS Cost Management Pricing
 
 =head1 METHODS
 
-=head2 GetCostAndUsage([Filter => L<Paws::CostExplorer::Expression>, Granularity => Str, GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>], Metrics => ArrayRef[Str|Undef], NextPageToken => Str, TimePeriod => L<Paws::CostExplorer::DateInterval>])
+=head2 GetCostAndUsage
+
+=over
+
+=item [Filter => L<Paws::CostExplorer::Expression>]
+
+=item [Granularity => Str]
+
+=item [GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]]
+
+=item [Metrics => ArrayRef[Str|Undef]]
+
+=item [NextPageToken => Str]
+
+=item [TimePeriod => L<Paws::CostExplorer::DateInterval>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CostExplorer::GetCostAndUsage>
 
@@ -116,7 +134,22 @@ dimensions, see the C< GetDimensionValues
 have access to all member accounts.
 
 
-=head2 GetDimensionValues(Dimension => Str, TimePeriod => L<Paws::CostExplorer::DateInterval>, [Context => Str, NextPageToken => Str, SearchString => Str])
+=head2 GetDimensionValues
+
+=over
+
+=item Dimension => Str
+
+=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+
+=item [Context => Str]
+
+=item [NextPageToken => Str]
+
+=item [SearchString => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CostExplorer::GetDimensionValues>
 
@@ -127,7 +160,22 @@ period of time. You can search the dimension values for an arbitrary
 string.
 
 
-=head2 GetReservationCoverage(TimePeriod => L<Paws::CostExplorer::DateInterval>, [Filter => L<Paws::CostExplorer::Expression>, Granularity => Str, GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>], NextPageToken => Str])
+=head2 GetReservationCoverage
+
+=over
+
+=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+
+=item [Filter => L<Paws::CostExplorer::Expression>]
+
+=item [Granularity => Str]
+
+=item [GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]]
+
+=item [NextPageToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CostExplorer::GetReservationCoverage>
 
@@ -196,7 +244,30 @@ To determine valid values for a dimension, use the
 C<GetDimensionValues> operation.
 
 
-=head2 GetReservationPurchaseRecommendation(Service => Str, [AccountId => Str, AccountScope => Str, LookbackPeriodInDays => Str, NextPageToken => Str, PageSize => Int, PaymentOption => Str, ServiceSpecification => L<Paws::CostExplorer::ServiceSpecification>, TermInYears => Str])
+=head2 GetReservationPurchaseRecommendation
+
+=over
+
+=item Service => Str
+
+=item [AccountId => Str]
+
+=item [AccountScope => Str]
+
+=item [LookbackPeriodInDays => Str]
+
+=item [NextPageToken => Str]
+
+=item [PageSize => Int]
+
+=item [PaymentOption => Str]
+
+=item [ServiceSpecification => L<Paws::CostExplorer::ServiceSpecification>]
+
+=item [TermInYears => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CostExplorer::GetReservationPurchaseRecommendation>
 
@@ -224,7 +295,22 @@ recommendation would be for C<c4.large>, because that is the smallest
 size instance in the c4 instance family.
 
 
-=head2 GetReservationUtilization(TimePeriod => L<Paws::CostExplorer::DateInterval>, [Filter => L<Paws::CostExplorer::Expression>, Granularity => Str, GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>], NextPageToken => Str])
+=head2 GetReservationUtilization
+
+=over
+
+=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+
+=item [Filter => L<Paws::CostExplorer::Expression>]
+
+=item [Granularity => Str]
+
+=item [GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]]
+
+=item [NextPageToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CostExplorer::GetReservationUtilization>
 
@@ -237,7 +323,20 @@ determine the possible dimension values. Currently, you can group only
 by C<SUBSCRIPTION_ID>.
 
 
-=head2 GetTags(TimePeriod => L<Paws::CostExplorer::DateInterval>, [NextPageToken => Str, SearchString => Str, TagKey => Str])
+=head2 GetTags
+
+=over
+
+=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+
+=item [NextPageToken => Str]
+
+=item [SearchString => Str]
+
+=item [TagKey => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CostExplorer::GetTags>
 

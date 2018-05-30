@@ -57,7 +57,7 @@ Valid values: C<"defaults" | "ro" | "rw" | "suid" | "nosuid" | "dev" |
 
 =head2 B<REQUIRED> Size => Int
 
-  The size of the tmpfs volume.
+  The size (in MiB) of the tmpfs volume.
 
 
 

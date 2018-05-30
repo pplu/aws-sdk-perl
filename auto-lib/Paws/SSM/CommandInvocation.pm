@@ -4,6 +4,7 @@ package Paws::SSM::CommandInvocation;
   has CommandPlugins => (is => 'ro', isa => 'ArrayRef[Paws::SSM::CommandPlugin]');
   has Comment => (is => 'ro', isa => 'Str');
   has DocumentName => (is => 'ro', isa => 'Str');
+  has DocumentVersion => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has InstanceName => (is => 'ro', isa => 'Str');
   has NotificationConfig => (is => 'ro', isa => 'Paws::SSM::NotificationConfig');
@@ -73,6 +74,11 @@ description of what the command should do.
 =head2 DocumentName => Str
 
   The document name that was requested for execution.
+
+
+=head2 DocumentVersion => Str
+
+  The SSM document version.
 
 
 =head2 InstanceId => Str

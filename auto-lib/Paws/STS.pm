@@ -1,6 +1,7 @@
 package Paws::STS;
   use Moose;
   sub service { 'sts' }
+  sub signing_name { 'sts' }
   sub version { '2011-06-15' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -186,7 +187,26 @@ turn it on and find your log files, see the AWS CloudTrail User Guide
 
 =head1 METHODS
 
-=head2 AssumeRole(RoleArn => Str, RoleSessionName => Str, [DurationSeconds => Int, ExternalId => Str, Policy => Str, SerialNumber => Str, TokenCode => Str])
+=head2 AssumeRole
+
+=over
+
+=item RoleArn => Str
+
+=item RoleSessionName => Str
+
+=item [DurationSeconds => Int]
+
+=item [ExternalId => Str]
+
+=item [Policy => Str]
+
+=item [SerialNumber => Str]
+
+=item [TokenCode => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::STS::AssumeRole>
 
@@ -313,7 +333,22 @@ user's hardware or virtual MFA device. The C<TokenCode> is the
 time-based one-time password (TOTP) that the MFA devices produces.
 
 
-=head2 AssumeRoleWithSAML(PrincipalArn => Str, RoleArn => Str, SAMLAssertion => Str, [DurationSeconds => Int, Policy => Str])
+=head2 AssumeRoleWithSAML
+
+=over
+
+=item PrincipalArn => Str
+
+=item RoleArn => Str
+
+=item SAMLAssertion => Str
+
+=item [DurationSeconds => Int]
+
+=item [Policy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::STS::AssumeRoleWithSAML>
 
@@ -428,7 +463,24 @@ in the I<IAM User Guide>.
 
 
 
-=head2 AssumeRoleWithWebIdentity(RoleArn => Str, RoleSessionName => Str, WebIdentityToken => Str, [DurationSeconds => Int, Policy => Str, ProviderId => Str])
+=head2 AssumeRoleWithWebIdentity
+
+=over
+
+=item RoleArn => Str
+
+=item RoleSessionName => Str
+
+=item WebIdentityToken => Str
+
+=item [DurationSeconds => Int]
+
+=item [Policy => Str]
+
+=item [ProviderId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::STS::AssumeRoleWithWebIdentity>
 
@@ -567,7 +619,14 @@ S3.
 
 
 
-=head2 DecodeAuthorizationMessage(EncodedMessage => Str)
+=head2 DecodeAuthorizationMessage
+
+=over
+
+=item EncodedMessage => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::STS::DecodeAuthorizationMessage>
 
@@ -625,7 +684,12 @@ The values of condition keys in the context of the user's request.
 
 
 
-=head2 GetCallerIdentity()
+=head2 GetCallerIdentity
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::STS::GetCallerIdentity>
 
@@ -635,7 +699,18 @@ Returns details about the IAM identity whose credentials are used to
 call the API.
 
 
-=head2 GetFederationToken(Name => Str, [DurationSeconds => Int, Policy => Str])
+=head2 GetFederationToken
+
+=over
+
+=item Name => Str
+
+=item [DurationSeconds => Int]
+
+=item [Policy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::STS::GetFederationToken>
 
@@ -751,7 +826,18 @@ a Custom Identity Broker
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getfederationtoken).
 
 
-=head2 GetSessionToken([DurationSeconds => Int, SerialNumber => Str, TokenCode => Str])
+=head2 GetSessionToken
+
+=over
+
+=item [DurationSeconds => Int]
+
+=item [SerialNumber => Str]
+
+=item [TokenCode => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::STS::GetSessionToken>
 

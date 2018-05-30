@@ -5,6 +5,7 @@ package Paws::CloudFormation::CreateStackSet;
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ClientRequestToken => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has ExecutionRoleName => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
   has StackSetName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
@@ -48,8 +49,8 @@ stack set.
 
 Specify an IAM role only if you are using customized administrator
 roles to control which users or groups can manage specific stack sets
-within the same administrator account. For more information, see Define
-Permissions for Multiple Administrators
+within the same administrator account. For more information, see
+Prerequisites: Granting Permissions for Stack Set Operations
 (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
 in the I<AWS CloudFormation User Guide>.
 
@@ -131,6 +132,19 @@ automatically.
 
 A description of the stack set. You can use the description to identify
 the stack set's purpose or other important information.
+
+
+
+=head2 ExecutionRoleName => Str
+
+The name of the IAM execution role to use to create the stack set. If
+you do not specify an execution role, AWS CloudFormation uses the
+C<AWSCloudFormationStackSetExecutionRole> role for the stack set
+operation.
+
+Specify an IAM role only if you are using customized execution roles to
+control which stack resources users and groups can include in their
+stack sets.
 
 
 

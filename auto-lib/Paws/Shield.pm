@@ -1,6 +1,7 @@
 package Paws::Shield;
   use Moose;
   sub service { 'shield' }
+  sub signing_name { 'shield' }
   sub version { '2016-06-02' }
   sub target_prefix { 'AWSShield_20160616' }
   sub json_version { "1.1" }
@@ -130,7 +131,16 @@ Developer Guide
 
 =head1 METHODS
 
-=head2 CreateProtection(Name => Str, ResourceArn => Str)
+=head2 CreateProtection
+
+=over
+
+=item Name => Str
+
+=item ResourceArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Shield::CreateProtection>
 
@@ -141,7 +151,12 @@ can be an Amazon CloudFront distribution, Elastic Load Balancing load
 balancer, Elastic IP Address, or an Amazon Route 53 hosted zone.
 
 
-=head2 CreateSubscription()
+=head2 CreateSubscription
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::Shield::CreateSubscription>
 
@@ -150,7 +165,14 @@ Returns: a L<Paws::Shield::CreateSubscriptionResponse> instance
 Activates AWS Shield Advanced for an account.
 
 
-=head2 DeleteProtection(ProtectionId => Str)
+=head2 DeleteProtection
+
+=over
+
+=item ProtectionId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Shield::DeleteProtection>
 
@@ -159,7 +181,12 @@ Returns: a L<Paws::Shield::DeleteProtectionResponse> instance
 Deletes an AWS Shield Advanced Protection.
 
 
-=head2 DeleteSubscription()
+=head2 DeleteSubscription
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::Shield::DeleteSubscription>
 
@@ -170,7 +197,14 @@ requires a 1-year subscription commitment. You cannot delete a
 subscription prior to the completion of that commitment.
 
 
-=head2 DescribeAttack(AttackId => Str)
+=head2 DescribeAttack
+
+=over
+
+=item AttackId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Shield::DescribeAttack>
 
@@ -179,7 +213,14 @@ Returns: a L<Paws::Shield::DescribeAttackResponse> instance
 Describes the details of a DDoS attack.
 
 
-=head2 DescribeProtection(ProtectionId => Str)
+=head2 DescribeProtection
+
+=over
+
+=item ProtectionId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Shield::DescribeProtection>
 
@@ -188,7 +229,12 @@ Returns: a L<Paws::Shield::DescribeProtectionResponse> instance
 Lists the details of a Protection object.
 
 
-=head2 DescribeSubscription()
+=head2 DescribeSubscription
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::Shield::DescribeSubscription>
 
@@ -198,7 +244,12 @@ Provides details about the AWS Shield Advanced subscription for an
 account.
 
 
-=head2 GetSubscriptionState()
+=head2 GetSubscriptionState
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::Shield::GetSubscriptionState>
 
@@ -207,7 +258,22 @@ Returns: a L<Paws::Shield::GetSubscriptionStateResponse> instance
 Returns the C<SubscriptionState>, either C<Active> or C<Inactive>.
 
 
-=head2 ListAttacks([EndTime => L<Paws::Shield::TimeRange>, MaxResults => Int, NextToken => Str, ResourceArns => ArrayRef[Str|Undef], StartTime => L<Paws::Shield::TimeRange>])
+=head2 ListAttacks
+
+=over
+
+=item [EndTime => L<Paws::Shield::TimeRange>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceArns => ArrayRef[Str|Undef]]
+
+=item [StartTime => L<Paws::Shield::TimeRange>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Shield::ListAttacks>
 
@@ -217,7 +283,16 @@ Returns all ongoing DDoS attacks or all DDoS attacks during a specified
 time period.
 
 
-=head2 ListProtections([MaxResults => Int, NextToken => Str])
+=head2 ListProtections
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Shield::ListProtections>
 

@@ -1,6 +1,7 @@
 package Paws::Comprehend;
   use Moose;
   sub service { 'comprehend' }
+  sub signing_name { 'comprehend' }
   sub version { '2017-11-27' }
   sub target_prefix { 'Comprehend_20171127' }
   sub json_version { "1.1" }
@@ -130,7 +131,14 @@ sentiment expressed in them, the predominant language used, and more.
 
 =head1 METHODS
 
-=head2 BatchDetectDominantLanguage(TextList => ArrayRef[Str|Undef])
+=head2 BatchDetectDominantLanguage
+
+=over
+
+=item TextList => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Comprehend::BatchDetectDominantLanguage>
 
@@ -142,7 +150,16 @@ see Amazon Comprehend Supported Languages
 (http://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html).
 
 
-=head2 BatchDetectEntities(LanguageCode => Str, TextList => ArrayRef[Str|Undef])
+=head2 BatchDetectEntities
+
+=over
+
+=item LanguageCode => Str
+
+=item TextList => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Comprehend::BatchDetectEntities>
 
@@ -152,7 +169,16 @@ Inspects the text of a batch of documents and returns information about
 them. For more information about entities, see how-entities
 
 
-=head2 BatchDetectKeyPhrases(LanguageCode => Str, TextList => ArrayRef[Str|Undef])
+=head2 BatchDetectKeyPhrases
+
+=over
+
+=item LanguageCode => Str
+
+=item TextList => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Comprehend::BatchDetectKeyPhrases>
 
@@ -161,7 +187,16 @@ Returns: a L<Paws::Comprehend::BatchDetectKeyPhrasesResponse> instance
 Detects the key noun phrases found in a batch of documents.
 
 
-=head2 BatchDetectSentiment(LanguageCode => Str, TextList => ArrayRef[Str|Undef])
+=head2 BatchDetectSentiment
+
+=over
+
+=item LanguageCode => Str
+
+=item TextList => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Comprehend::BatchDetectSentiment>
 
@@ -172,7 +207,14 @@ prevailing sentiment, C<POSITIVE>, C<NEUTRAL>, C<MIXED>, or
 C<NEGATIVE>, in each one.
 
 
-=head2 DescribeTopicsDetectionJob(JobId => Str)
+=head2 DescribeTopicsDetectionJob
+
+=over
+
+=item JobId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Comprehend::DescribeTopicsDetectionJob>
 
@@ -182,7 +224,14 @@ Gets the properties associated with a topic detection job. Use this
 operation to get the status of a detection job.
 
 
-=head2 DetectDominantLanguage(Text => Str)
+=head2 DetectDominantLanguage
+
+=over
+
+=item Text => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Comprehend::DetectDominantLanguage>
 
@@ -194,7 +243,16 @@ Supported Languages
 (http://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html).
 
 
-=head2 DetectEntities(LanguageCode => Str, Text => Str)
+=head2 DetectEntities
+
+=over
+
+=item LanguageCode => Str
+
+=item Text => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Comprehend::DetectEntities>
 
@@ -204,7 +262,16 @@ Inspects text for entities, and returns information about them. For
 more information, about entities, see how-entities.
 
 
-=head2 DetectKeyPhrases(LanguageCode => Str, Text => Str)
+=head2 DetectKeyPhrases
+
+=over
+
+=item LanguageCode => Str
+
+=item Text => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Comprehend::DetectKeyPhrases>
 
@@ -213,7 +280,16 @@ Returns: a L<Paws::Comprehend::DetectKeyPhrasesResponse> instance
 Detects the key noun phrases found in the text.
 
 
-=head2 DetectSentiment(LanguageCode => Str, Text => Str)
+=head2 DetectSentiment
+
+=over
+
+=item LanguageCode => Str
+
+=item Text => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Comprehend::DetectSentiment>
 
@@ -223,7 +299,18 @@ Inspects text and returns an inference of the prevailing sentiment
 (C<POSITIVE>, C<NEUTRAL>, C<MIXED>, or C<NEGATIVE>).
 
 
-=head2 ListTopicsDetectionJobs([Filter => L<Paws::Comprehend::TopicsDetectionJobFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListTopicsDetectionJobs
+
+=over
+
+=item [Filter => L<Paws::Comprehend::TopicsDetectionJobFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Comprehend::ListTopicsDetectionJobs>
 
@@ -232,7 +319,24 @@ Returns: a L<Paws::Comprehend::ListTopicsDetectionJobsResponse> instance
 Gets a list of the topic detection jobs that you have submitted.
 
 
-=head2 StartTopicsDetectionJob(DataAccessRoleArn => Str, InputDataConfig => L<Paws::Comprehend::InputDataConfig>, OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>, [ClientRequestToken => Str, JobName => Str, NumberOfTopics => Int])
+=head2 StartTopicsDetectionJob
+
+=over
+
+=item DataAccessRoleArn => Str
+
+=item InputDataConfig => L<Paws::Comprehend::InputDataConfig>
+
+=item OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
+
+=item [ClientRequestToken => Str]
+
+=item [JobName => Str]
+
+=item [NumberOfTopics => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Comprehend::StartTopicsDetectionJob>
 

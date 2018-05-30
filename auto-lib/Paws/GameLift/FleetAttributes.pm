@@ -16,6 +16,7 @@ package Paws::GameLift::FleetAttributes;
   has ServerLaunchParameters => (is => 'ro', isa => 'Str');
   has ServerLaunchPath => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+  has StoppedActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has TerminationTime => (is => 'ro', isa => 'Str');
 1;
 
@@ -63,6 +64,10 @@ ListFleets
 
 =item *
 
+DeleteFleet
+
+=item *
+
 Describe fleets:
 
 =over
@@ -70,6 +75,10 @@ Describe fleets:
 =item *
 
 DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
 
 =item *
 
@@ -82,6 +91,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -115,39 +128,19 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 
@@ -311,6 +304,12 @@ B<TERMINATED> -- The fleet no longer exists.
 
 =back
 
+
+
+=head2 StoppedActions => ArrayRef[Str|Undef]
+
+  List of fleet actions that have been suspended using StopFleetActions.
+This includes auto-scaling.
 
 
 =head2 TerminationTime => Str

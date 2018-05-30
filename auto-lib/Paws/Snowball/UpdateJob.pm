@@ -27,7 +27,7 @@ Paws::Snowball::UpdateJob - Arguments for method UpdateJob on L<Paws::Snowball>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UpdateJob on the 
-L<Amazon Import/Export Snowball|Paws::Snowball> service. Use the attributes of this class
+L<Amazon ImportE<sol>Export Snowball|Paws::Snowball> service. Use the attributes of this class
 as arguments to method UpdateJob.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateJob.

@@ -8,6 +8,9 @@ package Paws::API::Builder {
   use Path::Class;
   use JSON::MaybeXS;
   use Mojo::UserAgent;
+  use Pod::Escapes();
+  use Data::Munge;
+      
   use v5.10;
 
   use Paws::API::RegionBuilder;
@@ -23,6 +26,7 @@ package Paws::API::Builder {
 
   has service_full_name => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ serviceFullName } });
   has service => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ endpointPrefix } });
+  has signing_name => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ signingName } // $_[0]->api_struct->{metadata}->{ endpointPrefix } });
   has version => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ apiVersion } });
   has endpoint_role => (is => 'ro', lazy => 1, default => 'Paws::API::EndpointResolver' );
 
@@ -204,27 +208,18 @@ package Paws::API::Builder {
     return $name if ($name =~ s/^List/ListAll/);
     return $name if ($name =~ s/^Query/QueryAll/);
     return $name if ($name =~ s/^Get/GetAll/);
-    return 'GetAllGroups' if ($name eq 'GetGroup');
+    return $name if ($name =~ s/^Search/SearchAll/);
+    return 'BatchGetAllTraces' if ($name eq 'BatchGetTraces');
     return 'DownloadAllDBLogFilePortions' if ($name eq 'DownloadDBLogFilePortion');
-    return 'SelectAll' if ($name eq 'Select');
-    return 'GetAllWorkflowExecutionHistories' if ($name eq 'GetWorkflowExecutionHistory');
-    return 'ScanAll' if ($name eq 'Scan');
-    return 'PollForAllDecisionTasks' if ($name eq 'PollForDecisionTask');
     return 'FilterAllLogEvents' if ($name eq 'FilterLogEvents');
+    return 'LookupAllEvents' if ($name eq 'LookupEvents');
+    return 'LookupAllPolicies' if ($name eq 'LookupPolicy');
+    return 'ScanAll' if ($name eq 'Scan');
+    return 'SelectAll' if ($name eq 'Select');
     return 'SimulateAllCustomPolicies' if ($name eq 'SimulateCustomPolicy');
     return 'SimulateAllPrincipalPolicies' if ($name eq 'SimulatePrincipalPolicy');
-    return 'LookupAllEvents' if ($name eq 'LookupEvents');
-    return 'BatchGetAllTraces' if ($name eq 'BatchGetTraces');
-    return 'SearchAllDevices' if ($name eq 'SearchDevices');
-    return 'SearchAllProfiles' if ($name eq 'SearchProfiles');
-    return 'SearchAllRooms' if ($name eq 'SearchRooms');
-    return 'SearchAllSkillGroups' if ($name eq 'SearchSkillGroups');
-    return 'SearchAllUsers' if ($name eq 'SearchUsers');
-    return 'LookupAllPolicies' if ($name eq 'LookupPolicy');
+    return 'PollForAllDecisionTasks' if ($name eq 'PollForDecisionTask');
     return 'PreviewAllAgents' if ($name eq 'PreviewAgents');
-    return 'SearchAllResources' if ($name eq 'SearchResources');
-    return 'SearchAllProductsAsAdmin' if ($name eq 'SearchProductsAsAdmin');
-    return '' if ($name eq '');
 
     die "Please help me generate a good name for the paginator $name";
   }
@@ -594,9 +589,18 @@ package Paws::API::Builder {
     return $self->api . '::' . $shape;
   }
 
+  sub escape_pod {
+    my ($string) = @_;
+    my %char2names = reverse %Pod::Escapes::Name2character;
+    my $rekeys = list2re(keys %char2names);
+    $string =~ s/($rekeys)/E<$char2names{$1}>/g;
+    return $string;
+  }
+  
   sub process_template {
     my ($self, $template, $vars) = @_;
-    my $tt = Template->new(INCLUDE_PATH => $self->template_path);
+    my $tt = Template->new(INCLUDE_PATH => $self->template_path,
+        FILTERS => { escape_pod => \&escape_pod });
     my $output = '';
     $tt->process($template, $vars, \$output) || die $tt->error();
     return $output;

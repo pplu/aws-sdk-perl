@@ -1,6 +1,7 @@
 package Paws::WorkSpaces;
   use Moose;
   sub service { 'workspaces' }
+  sub signing_name { 'workspaces' }
   sub version { '2015-04-08' }
   sub target_prefix { 'WorkspacesService' }
   sub json_version { "1.1" }
@@ -236,7 +237,16 @@ Microsoft Windows desktops for your users.
 
 =head1 METHODS
 
-=head2 AssociateIpGroups(DirectoryId => Str, GroupIds => ArrayRef[Str|Undef])
+=head2 AssociateIpGroups
+
+=over
+
+=item DirectoryId => Str
+
+=item GroupIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::AssociateIpGroups>
 
@@ -246,7 +256,16 @@ Associates the specified IP access control group with the specified
 directory.
 
 
-=head2 AuthorizeIpRules(GroupId => Str, UserRules => ArrayRef[L<Paws::WorkSpaces::IpRuleItem>])
+=head2 AuthorizeIpRules
+
+=over
+
+=item GroupId => Str
+
+=item UserRules => ArrayRef[L<Paws::WorkSpaces::IpRuleItem>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::AuthorizeIpRules>
 
@@ -258,7 +277,18 @@ This action gives users permission to access their WorkSpaces from the
 CIDR address ranges specified in the rules.
 
 
-=head2 CreateIpGroup(GroupName => Str, [GroupDesc => Str, UserRules => ArrayRef[L<Paws::WorkSpaces::IpRuleItem>]])
+=head2 CreateIpGroup
+
+=over
+
+=item GroupName => Str
+
+=item [GroupDesc => Str]
+
+=item [UserRules => ArrayRef[L<Paws::WorkSpaces::IpRuleItem>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::CreateIpGroup>
 
@@ -280,7 +310,16 @@ anywhere. You cannot modify the default IP access control group for
 your directory.
 
 
-=head2 CreateTags(ResourceId => Str, Tags => ArrayRef[L<Paws::WorkSpaces::Tag>])
+=head2 CreateTags
+
+=over
+
+=item ResourceId => Str
+
+=item Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::CreateTags>
 
@@ -289,7 +328,14 @@ Returns: a L<Paws::WorkSpaces::CreateTagsResult> instance
 Creates the specified tags for the specified WorkSpace.
 
 
-=head2 CreateWorkspaces(Workspaces => ArrayRef[L<Paws::WorkSpaces::WorkspaceRequest>])
+=head2 CreateWorkspaces
+
+=over
+
+=item Workspaces => ArrayRef[L<Paws::WorkSpaces::WorkspaceRequest>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::CreateWorkspaces>
 
@@ -301,7 +347,14 @@ This operation is asynchronous and returns before the WorkSpaces are
 created.
 
 
-=head2 DeleteIpGroup(GroupId => Str)
+=head2 DeleteIpGroup
+
+=over
+
+=item GroupId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::DeleteIpGroup>
 
@@ -313,7 +366,16 @@ You cannot delete an IP access control group that is associated with a
 directory.
 
 
-=head2 DeleteTags(ResourceId => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 DeleteTags
+
+=over
+
+=item ResourceId => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::DeleteTags>
 
@@ -322,7 +384,18 @@ Returns: a L<Paws::WorkSpaces::DeleteTagsResult> instance
 Deletes the specified tags from the specified WorkSpace.
 
 
-=head2 DescribeIpGroups([GroupIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeIpGroups
+
+=over
+
+=item [GroupIds => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::DescribeIpGroups>
 
@@ -331,7 +404,14 @@ Returns: a L<Paws::WorkSpaces::DescribeIpGroupsResult> instance
 Describes one or more of your IP access control groups.
 
 
-=head2 DescribeTags(ResourceId => Str)
+=head2 DescribeTags
+
+=over
+
+=item ResourceId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::DescribeTags>
 
@@ -340,7 +420,18 @@ Returns: a L<Paws::WorkSpaces::DescribeTagsResult> instance
 Describes the specified tags for the specified WorkSpace.
 
 
-=head2 DescribeWorkspaceBundles([BundleIds => ArrayRef[Str|Undef], NextToken => Str, Owner => Str])
+=head2 DescribeWorkspaceBundles
+
+=over
+
+=item [BundleIds => ArrayRef[Str|Undef]]
+
+=item [NextToken => Str]
+
+=item [Owner => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaceBundles>
 
@@ -352,7 +443,16 @@ You can filter the results using either bundle ID or owner, but not
 both.
 
 
-=head2 DescribeWorkspaceDirectories([DirectoryIds => ArrayRef[Str|Undef], NextToken => Str])
+=head2 DescribeWorkspaceDirectories
+
+=over
+
+=item [DirectoryIds => ArrayRef[Str|Undef]]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaceDirectories>
 
@@ -362,7 +462,24 @@ Describes the available AWS Directory Service directories that are
 registered with Amazon WorkSpaces.
 
 
-=head2 DescribeWorkspaces([BundleId => Str, DirectoryId => Str, Limit => Int, NextToken => Str, UserName => Str, WorkspaceIds => ArrayRef[Str|Undef]])
+=head2 DescribeWorkspaces
+
+=over
+
+=item [BundleId => Str]
+
+=item [DirectoryId => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [UserName => Str]
+
+=item [WorkspaceIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaces>
 
@@ -374,7 +491,16 @@ You can filter the results using bundle ID, directory ID, or owner, but
 you can specify only one filter at a time.
 
 
-=head2 DescribeWorkspacesConnectionStatus([NextToken => Str, WorkspaceIds => ArrayRef[Str|Undef]])
+=head2 DescribeWorkspacesConnectionStatus
+
+=over
+
+=item [NextToken => Str]
+
+=item [WorkspaceIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspacesConnectionStatus>
 
@@ -383,7 +509,16 @@ Returns: a L<Paws::WorkSpaces::DescribeWorkspacesConnectionStatusResult> instanc
 Describes the connection status of the specified WorkSpaces.
 
 
-=head2 DisassociateIpGroups(DirectoryId => Str, GroupIds => ArrayRef[Str|Undef])
+=head2 DisassociateIpGroups
+
+=over
+
+=item DirectoryId => Str
+
+=item GroupIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::DisassociateIpGroups>
 
@@ -393,7 +528,16 @@ Disassociates the specified IP access control group from the specified
 directory.
 
 
-=head2 ModifyWorkspaceProperties(WorkspaceId => Str, WorkspaceProperties => L<Paws::WorkSpaces::WorkspaceProperties>)
+=head2 ModifyWorkspaceProperties
+
+=over
+
+=item WorkspaceId => Str
+
+=item WorkspaceProperties => L<Paws::WorkSpaces::WorkspaceProperties>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::ModifyWorkspaceProperties>
 
@@ -402,7 +546,16 @@ Returns: a L<Paws::WorkSpaces::ModifyWorkspacePropertiesResult> instance
 Modifies the specified WorkSpace properties.
 
 
-=head2 ModifyWorkspaceState(WorkspaceId => Str, WorkspaceState => Str)
+=head2 ModifyWorkspaceState
+
+=over
+
+=item WorkspaceId => Str
+
+=item WorkspaceState => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::ModifyWorkspaceState>
 
@@ -417,7 +570,14 @@ in this state is not stopped. Users can log into a WorkSpace in the
 C<ADMIN_MAINTENANCE> state.
 
 
-=head2 RebootWorkspaces(RebootWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::RebootRequest>])
+=head2 RebootWorkspaces
+
+=over
+
+=item RebootWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::RebootRequest>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::RebootWorkspaces>
 
@@ -432,7 +592,14 @@ This operation is asynchronous and returns before the WorkSpaces have
 rebooted.
 
 
-=head2 RebuildWorkspaces(RebuildWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::RebuildRequest>])
+=head2 RebuildWorkspaces
+
+=over
+
+=item RebuildWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::RebuildRequest>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::RebuildWorkspaces>
 
@@ -452,7 +619,16 @@ This operation is asynchronous and returns before the WorkSpaces have
 been completely rebuilt.
 
 
-=head2 RevokeIpRules(GroupId => Str, UserRules => ArrayRef[Str|Undef])
+=head2 RevokeIpRules
+
+=over
+
+=item GroupId => Str
+
+=item UserRules => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::RevokeIpRules>
 
@@ -461,7 +637,14 @@ Returns: a L<Paws::WorkSpaces::RevokeIpRulesResult> instance
 Removes one or more rules from the specified IP access control group.
 
 
-=head2 StartWorkspaces(StartWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::StartRequest>])
+=head2 StartWorkspaces
+
+=over
+
+=item StartWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::StartRequest>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::StartWorkspaces>
 
@@ -473,7 +656,14 @@ You cannot start a WorkSpace unless it has a running mode of
 C<AutoStop> and a state of C<STOPPED>.
 
 
-=head2 StopWorkspaces(StopWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::StopRequest>])
+=head2 StopWorkspaces
+
+=over
+
+=item StopWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::StopRequest>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::StopWorkspaces>
 
@@ -485,7 +675,14 @@ You cannot stop a WorkSpace unless it has a running mode of C<AutoStop>
 and a state of C<AVAILABLE>, C<IMPAIRED>, C<UNHEALTHY>, or C<ERROR>.
 
 
-=head2 TerminateWorkspaces(TerminateWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::TerminateRequest>])
+=head2 TerminateWorkspaces
+
+=over
+
+=item TerminateWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::TerminateRequest>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::TerminateWorkspaces>
 
@@ -503,7 +700,16 @@ This operation is asynchronous and returns before the WorkSpaces have
 been completely terminated.
 
 
-=head2 UpdateRulesOfIpGroup(GroupId => Str, UserRules => ArrayRef[L<Paws::WorkSpaces::IpRuleItem>])
+=head2 UpdateRulesOfIpGroup
+
+=over
+
+=item GroupId => Str
+
+=item UserRules => ArrayRef[L<Paws::WorkSpaces::IpRuleItem>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkSpaces::UpdateRulesOfIpGroup>
 

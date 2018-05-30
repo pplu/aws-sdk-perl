@@ -150,7 +150,7 @@ foreach my $caller_name ('Paws::Net::FurlCaller', 'Paws::Net::Caller', 'Paws::Ne
     $p->service('Kinesis', region => 'eu-west-1')->ListStreams;
   } 'Paws::Exception', 'got exception';
 
-  cmp_ok($@->message, 'eq', 'Unrecognized error format', 'Kinesis exception');
+  cmp_ok($@->message, 'eq', 'InternalError', 'Kinesis exception');
   cmp_ok($@->code, 'eq', 'InternalError', 'Correct code');
   cmp_ok($@->request_id, 'eq', '000000000000000000000000000000000000', 'Correct Request ID');
 

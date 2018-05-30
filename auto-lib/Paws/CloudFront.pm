@@ -2,6 +2,7 @@ package Paws::CloudFront;
   warn "Paws::CloudFront is not stable / supported / entirely developed";
   use Moose;
   sub service { 'cloudfront' }
+  sub signing_name { 'cloudfront' }
   sub version { '2017-10-30' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -399,7 +400,14 @@ features, see the I<Amazon CloudFront Developer Guide>.
 
 =head1 METHODS
 
-=head2 CreateCloudFrontOriginAccessIdentity(CloudFrontOriginAccessIdentityConfig => L<Paws::CloudFront::CloudFrontOriginAccessIdentityConfig>)
+=head2 CreateCloudFrontOriginAccessIdentity
+
+=over
+
+=item CloudFrontOriginAccessIdentityConfig => L<Paws::CloudFront::CloudFrontOriginAccessIdentityConfig>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::CreateCloudFrontOriginAccessIdentity>
 
@@ -414,7 +422,14 @@ see Serving Private Content through CloudFront
 in the I<Amazon CloudFront Developer Guide>.
 
 
-=head2 CreateDistribution(DistributionConfig => L<Paws::CloudFront::DistributionConfig>)
+=head2 CreateDistribution
+
+=over
+
+=item DistributionConfig => L<Paws::CloudFront::DistributionConfig>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::CreateDistribution>
 
@@ -424,7 +439,14 @@ Creates a new web distribution. Send a C<POST> request to the
 C</I<CloudFront API version>/distribution>/C<distribution ID> resource.
 
 
-=head2 CreateDistributionWithTags(DistributionConfigWithTags => L<Paws::CloudFront::DistributionConfigWithTags>)
+=head2 CreateDistributionWithTags
+
+=over
+
+=item DistributionConfigWithTags => L<Paws::CloudFront::DistributionConfigWithTags>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::CreateDistributionWithTags>
 
@@ -433,7 +455,14 @@ Returns: a L<Paws::CloudFront::CreateDistributionWithTagsResult> instance
 Create a new distribution with tags.
 
 
-=head2 CreateFieldLevelEncryptionConfig(FieldLevelEncryptionConfig => L<Paws::CloudFront::FieldLevelEncryptionConfig>)
+=head2 CreateFieldLevelEncryptionConfig
+
+=over
+
+=item FieldLevelEncryptionConfig => L<Paws::CloudFront::FieldLevelEncryptionConfig>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::CreateFieldLevelEncryptionConfig>
 
@@ -442,7 +471,14 @@ Returns: a L<Paws::CloudFront::CreateFieldLevelEncryptionConfigResult> instance
 Create a new field-level encryption configuration.
 
 
-=head2 CreateFieldLevelEncryptionProfile(FieldLevelEncryptionProfileConfig => L<Paws::CloudFront::FieldLevelEncryptionProfileConfig>)
+=head2 CreateFieldLevelEncryptionProfile
+
+=over
+
+=item FieldLevelEncryptionProfileConfig => L<Paws::CloudFront::FieldLevelEncryptionProfileConfig>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::CreateFieldLevelEncryptionProfile>
 
@@ -451,7 +487,16 @@ Returns: a L<Paws::CloudFront::CreateFieldLevelEncryptionProfileResult> instance
 Create a field-level encryption profile.
 
 
-=head2 CreateInvalidation(DistributionId => Str, InvalidationBatch => L<Paws::CloudFront::InvalidationBatch>)
+=head2 CreateInvalidation
+
+=over
+
+=item DistributionId => Str
+
+=item InvalidationBatch => L<Paws::CloudFront::InvalidationBatch>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::CreateInvalidation>
 
@@ -460,7 +505,14 @@ Returns: a L<Paws::CloudFront::CreateInvalidationResult> instance
 Create a new invalidation.
 
 
-=head2 CreatePublicKey(PublicKeyConfig => L<Paws::CloudFront::PublicKeyConfig>)
+=head2 CreatePublicKey
+
+=over
+
+=item PublicKeyConfig => L<Paws::CloudFront::PublicKeyConfig>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::CreatePublicKey>
 
@@ -471,7 +523,14 @@ encryption. You can add a maximum of 10 public keys with one AWS
 account.
 
 
-=head2 CreateStreamingDistribution(StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>)
+=head2 CreateStreamingDistribution
+
+=over
+
+=item StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::CreateStreamingDistribution>
 
@@ -511,7 +570,14 @@ you're specifying in the C<Quantity> element and the number of values
 specified.
 
 
-=head2 CreateStreamingDistributionWithTags(StreamingDistributionConfigWithTags => L<Paws::CloudFront::StreamingDistributionConfigWithTags>)
+=head2 CreateStreamingDistributionWithTags
+
+=over
+
+=item StreamingDistributionConfigWithTags => L<Paws::CloudFront::StreamingDistributionConfigWithTags>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::CreateStreamingDistributionWithTags>
 
@@ -520,7 +586,16 @@ Returns: a L<Paws::CloudFront::CreateStreamingDistributionWithTagsResult> instan
 Create a new streaming distribution with tags.
 
 
-=head2 DeleteCloudFrontOriginAccessIdentity(Id => Str, [IfMatch => Str])
+=head2 DeleteCloudFrontOriginAccessIdentity
+
+=over
+
+=item Id => Str
+
+=item [IfMatch => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::DeleteCloudFrontOriginAccessIdentity>
 
@@ -529,7 +604,16 @@ Returns: nothing
 Delete an origin access identity.
 
 
-=head2 DeleteDistribution(Id => Str, [IfMatch => Str])
+=head2 DeleteDistribution
+
+=over
+
+=item Id => Str
+
+=item [IfMatch => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::DeleteDistribution>
 
@@ -538,7 +622,16 @@ Returns: nothing
 Delete a distribution.
 
 
-=head2 DeleteFieldLevelEncryptionConfig(Id => Str, [IfMatch => Str])
+=head2 DeleteFieldLevelEncryptionConfig
+
+=over
+
+=item Id => Str
+
+=item [IfMatch => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::DeleteFieldLevelEncryptionConfig>
 
@@ -547,7 +640,16 @@ Returns: nothing
 Remove a field-level encryption configuration.
 
 
-=head2 DeleteFieldLevelEncryptionProfile(Id => Str, [IfMatch => Str])
+=head2 DeleteFieldLevelEncryptionProfile
+
+=over
+
+=item Id => Str
+
+=item [IfMatch => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::DeleteFieldLevelEncryptionProfile>
 
@@ -556,7 +658,16 @@ Returns: nothing
 Remove a field-level encryption profile.
 
 
-=head2 DeletePublicKey(Id => Str, [IfMatch => Str])
+=head2 DeletePublicKey
+
+=over
+
+=item Id => Str
+
+=item [IfMatch => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::DeletePublicKey>
 
@@ -565,7 +676,14 @@ Returns: nothing
 Remove a public key you previously added to CloudFront.
 
 
-=head2 DeleteServiceLinkedRole(RoleName => Str)
+=head2 DeleteServiceLinkedRole
+
+=over
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::DeleteServiceLinkedRole>
 
@@ -574,7 +692,16 @@ Returns: nothing
 
 
 
-=head2 DeleteStreamingDistribution(Id => Str, [IfMatch => Str])
+=head2 DeleteStreamingDistribution
+
+=over
+
+=item Id => Str
+
+=item [IfMatch => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::DeleteStreamingDistribution>
 
@@ -642,7 +769,14 @@ console, see Deleting a Distribution
 in the I<Amazon CloudFront Developer Guide>.
 
 
-=head2 GetCloudFrontOriginAccessIdentity(Id => Str)
+=head2 GetCloudFrontOriginAccessIdentity
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::GetCloudFrontOriginAccessIdentity>
 
@@ -651,7 +785,14 @@ Returns: a L<Paws::CloudFront::GetCloudFrontOriginAccessIdentityResult> instance
 Get the information about an origin access identity.
 
 
-=head2 GetCloudFrontOriginAccessIdentityConfig(Id => Str)
+=head2 GetCloudFrontOriginAccessIdentityConfig
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::GetCloudFrontOriginAccessIdentityConfig>
 
@@ -660,7 +801,14 @@ Returns: a L<Paws::CloudFront::GetCloudFrontOriginAccessIdentityConfigResult> in
 Get the configuration information about an origin access identity.
 
 
-=head2 GetDistribution(Id => Str)
+=head2 GetDistribution
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::GetDistribution>
 
@@ -669,7 +817,14 @@ Returns: a L<Paws::CloudFront::GetDistributionResult> instance
 Get the information about a distribution.
 
 
-=head2 GetDistributionConfig(Id => Str)
+=head2 GetDistributionConfig
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::GetDistributionConfig>
 
@@ -678,7 +833,14 @@ Returns: a L<Paws::CloudFront::GetDistributionConfigResult> instance
 Get the configuration information about a distribution.
 
 
-=head2 GetFieldLevelEncryption(Id => Str)
+=head2 GetFieldLevelEncryption
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::GetFieldLevelEncryption>
 
@@ -687,7 +849,14 @@ Returns: a L<Paws::CloudFront::GetFieldLevelEncryptionResult> instance
 Get the field-level encryption configuration information.
 
 
-=head2 GetFieldLevelEncryptionConfig(Id => Str)
+=head2 GetFieldLevelEncryptionConfig
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::GetFieldLevelEncryptionConfig>
 
@@ -696,7 +865,14 @@ Returns: a L<Paws::CloudFront::GetFieldLevelEncryptionConfigResult> instance
 Get the field-level encryption configuration information.
 
 
-=head2 GetFieldLevelEncryptionProfile(Id => Str)
+=head2 GetFieldLevelEncryptionProfile
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::GetFieldLevelEncryptionProfile>
 
@@ -705,7 +881,14 @@ Returns: a L<Paws::CloudFront::GetFieldLevelEncryptionProfileResult> instance
 Get the field-level encryption profile information.
 
 
-=head2 GetFieldLevelEncryptionProfileConfig(Id => Str)
+=head2 GetFieldLevelEncryptionProfileConfig
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::GetFieldLevelEncryptionProfileConfig>
 
@@ -714,7 +897,16 @@ Returns: a L<Paws::CloudFront::GetFieldLevelEncryptionProfileConfigResult> insta
 Get the field-level encryption profile configuration information.
 
 
-=head2 GetInvalidation(DistributionId => Str, Id => Str)
+=head2 GetInvalidation
+
+=over
+
+=item DistributionId => Str
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::GetInvalidation>
 
@@ -723,7 +915,14 @@ Returns: a L<Paws::CloudFront::GetInvalidationResult> instance
 Get the information about an invalidation.
 
 
-=head2 GetPublicKey(Id => Str)
+=head2 GetPublicKey
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::GetPublicKey>
 
@@ -732,7 +931,14 @@ Returns: a L<Paws::CloudFront::GetPublicKeyResult> instance
 Get the public key information.
 
 
-=head2 GetPublicKeyConfig(Id => Str)
+=head2 GetPublicKeyConfig
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::GetPublicKeyConfig>
 
@@ -741,7 +947,14 @@ Returns: a L<Paws::CloudFront::GetPublicKeyConfigResult> instance
 Return public key configuration informaation
 
 
-=head2 GetStreamingDistribution(Id => Str)
+=head2 GetStreamingDistribution
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::GetStreamingDistribution>
 
@@ -751,7 +964,14 @@ Gets information about a specified RTMP distribution, including the
 distribution configuration.
 
 
-=head2 GetStreamingDistributionConfig(Id => Str)
+=head2 GetStreamingDistributionConfig
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::GetStreamingDistributionConfig>
 
@@ -760,7 +980,16 @@ Returns: a L<Paws::CloudFront::GetStreamingDistributionConfigResult> instance
 Get the configuration information about a streaming distribution.
 
 
-=head2 ListCloudFrontOriginAccessIdentities([Marker => Str, MaxItems => Str])
+=head2 ListCloudFrontOriginAccessIdentities
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::ListCloudFrontOriginAccessIdentities>
 
@@ -769,7 +998,16 @@ Returns: a L<Paws::CloudFront::ListCloudFrontOriginAccessIdentitiesResult> insta
 Lists origin access identities.
 
 
-=head2 ListDistributions([Marker => Str, MaxItems => Str])
+=head2 ListDistributions
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::ListDistributions>
 
@@ -778,7 +1016,18 @@ Returns: a L<Paws::CloudFront::ListDistributionsResult> instance
 List distributions.
 
 
-=head2 ListDistributionsByWebACLId(WebACLId => Str, [Marker => Str, MaxItems => Str])
+=head2 ListDistributionsByWebACLId
+
+=over
+
+=item WebACLId => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::ListDistributionsByWebACLId>
 
@@ -788,7 +1037,16 @@ List the distributions that are associated with a specified AWS WAF web
 ACL.
 
 
-=head2 ListFieldLevelEncryptionConfigs([Marker => Str, MaxItems => Str])
+=head2 ListFieldLevelEncryptionConfigs
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::ListFieldLevelEncryptionConfigs>
 
@@ -798,7 +1056,16 @@ List all field-level encryption configurations that have been created
 in CloudFront for this account.
 
 
-=head2 ListFieldLevelEncryptionProfiles([Marker => Str, MaxItems => Str])
+=head2 ListFieldLevelEncryptionProfiles
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::ListFieldLevelEncryptionProfiles>
 
@@ -808,7 +1075,18 @@ Request a list of field-level encryption profiles that have been
 created in CloudFront for this account.
 
 
-=head2 ListInvalidations(DistributionId => Str, [Marker => Str, MaxItems => Str])
+=head2 ListInvalidations
+
+=over
+
+=item DistributionId => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::ListInvalidations>
 
@@ -817,7 +1095,16 @@ Returns: a L<Paws::CloudFront::ListInvalidationsResult> instance
 Lists invalidation batches.
 
 
-=head2 ListPublicKeys([Marker => Str, MaxItems => Str])
+=head2 ListPublicKeys
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::ListPublicKeys>
 
@@ -827,7 +1114,16 @@ List all public keys that have been added to CloudFront for this
 account.
 
 
-=head2 ListStreamingDistributions([Marker => Str, MaxItems => Str])
+=head2 ListStreamingDistributions
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::ListStreamingDistributions>
 
@@ -836,7 +1132,14 @@ Returns: a L<Paws::CloudFront::ListStreamingDistributionsResult> instance
 List streaming distributions.
 
 
-=head2 ListTagsForResource(Resource => Str)
+=head2 ListTagsForResource
+
+=over
+
+=item Resource => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::ListTagsForResource>
 
@@ -845,7 +1148,16 @@ Returns: a L<Paws::CloudFront::ListTagsForResourceResult> instance
 List tags for a CloudFront resource.
 
 
-=head2 TagResource(Resource => Str, Tags => L<Paws::CloudFront::Tags>)
+=head2 TagResource
+
+=over
+
+=item Resource => Str
+
+=item Tags => L<Paws::CloudFront::Tags>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::TagResource>
 
@@ -854,7 +1166,16 @@ Returns: nothing
 Add tags to a CloudFront resource.
 
 
-=head2 UntagResource(Resource => Str, TagKeys => L<Paws::CloudFront::TagKeys>)
+=head2 UntagResource
+
+=over
+
+=item Resource => Str
+
+=item TagKeys => L<Paws::CloudFront::TagKeys>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::UntagResource>
 
@@ -863,7 +1184,18 @@ Returns: nothing
 Remove tags from a CloudFront resource.
 
 
-=head2 UpdateCloudFrontOriginAccessIdentity(CloudFrontOriginAccessIdentityConfig => L<Paws::CloudFront::CloudFrontOriginAccessIdentityConfig>, Id => Str, [IfMatch => Str])
+=head2 UpdateCloudFrontOriginAccessIdentity
+
+=over
+
+=item CloudFrontOriginAccessIdentityConfig => L<Paws::CloudFront::CloudFrontOriginAccessIdentityConfig>
+
+=item Id => Str
+
+=item [IfMatch => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity>
 
@@ -872,7 +1204,18 @@ Returns: a L<Paws::CloudFront::UpdateCloudFrontOriginAccessIdentityResult> insta
 Update an origin access identity.
 
 
-=head2 UpdateDistribution(DistributionConfig => L<Paws::CloudFront::DistributionConfig>, Id => Str, [IfMatch => Str])
+=head2 UpdateDistribution
+
+=over
+
+=item DistributionConfig => L<Paws::CloudFront::DistributionConfig>
+
+=item Id => Str
+
+=item [IfMatch => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::UpdateDistribution>
 
@@ -961,7 +1304,18 @@ number of values you're actually specifying.
 
 
 
-=head2 UpdateFieldLevelEncryptionConfig(FieldLevelEncryptionConfig => L<Paws::CloudFront::FieldLevelEncryptionConfig>, Id => Str, [IfMatch => Str])
+=head2 UpdateFieldLevelEncryptionConfig
+
+=over
+
+=item FieldLevelEncryptionConfig => L<Paws::CloudFront::FieldLevelEncryptionConfig>
+
+=item Id => Str
+
+=item [IfMatch => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::UpdateFieldLevelEncryptionConfig>
 
@@ -970,7 +1324,18 @@ Returns: a L<Paws::CloudFront::UpdateFieldLevelEncryptionConfigResult> instance
 Update a field-level encryption configuration.
 
 
-=head2 UpdateFieldLevelEncryptionProfile(FieldLevelEncryptionProfileConfig => L<Paws::CloudFront::FieldLevelEncryptionProfileConfig>, Id => Str, [IfMatch => Str])
+=head2 UpdateFieldLevelEncryptionProfile
+
+=over
+
+=item FieldLevelEncryptionProfileConfig => L<Paws::CloudFront::FieldLevelEncryptionProfileConfig>
+
+=item Id => Str
+
+=item [IfMatch => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::UpdateFieldLevelEncryptionProfile>
 
@@ -979,7 +1344,18 @@ Returns: a L<Paws::CloudFront::UpdateFieldLevelEncryptionProfileResult> instance
 Update a field-level encryption profile.
 
 
-=head2 UpdatePublicKey(Id => Str, PublicKeyConfig => L<Paws::CloudFront::PublicKeyConfig>, [IfMatch => Str])
+=head2 UpdatePublicKey
+
+=over
+
+=item Id => Str
+
+=item PublicKeyConfig => L<Paws::CloudFront::PublicKeyConfig>
+
+=item [IfMatch => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::UpdatePublicKey>
 
@@ -989,7 +1365,18 @@ Update public key information. Note that the only value you can change
 is the comment.
 
 
-=head2 UpdateStreamingDistribution(Id => Str, StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>, [IfMatch => Str])
+=head2 UpdateStreamingDistribution
+
+=over
+
+=item Id => Str
+
+=item StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>
+
+=item [IfMatch => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudFront::UpdateStreamingDistribution>
 

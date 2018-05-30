@@ -380,6 +380,10 @@ L<Paws::Inspector>
 
 L<Paws::IoT>
 
+L<Paws::IoT1ClickDevices>
+
+L<Paws::IoT1ClickProjects>
+
 L<Paws::IoTAnalytics>
 
 L<Paws::IoTData>
@@ -437,6 +441,8 @@ L<Paws::OpsWorks>
 L<Paws::OpsWorksCM>
 
 L<Paws::Organizations>
+
+L<Paws::PerformanceInsights>
 
 L<Paws::Pinpoint>
 
@@ -843,6 +849,10 @@ gadgetjunkie for contributing the ECS credential provider
 mla for contributing a fix to correct dependencies
 
 castaway for contributing to fixing documentation problems
+ - properly providing backlinks between related pages
+ - making TOCs render correctly on search.cpan.org
+
+autarch for correcting signature generation for a bunch of services
 
 
 =cut

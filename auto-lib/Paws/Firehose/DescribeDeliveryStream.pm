@@ -44,15 +44,15 @@ The name of the delivery stream.
 =head2 ExclusiveStartDestinationId => Str
 
 The ID of the destination to start returning the destination
-information. Currently, Kinesis Data Firehose supports one destination
-per delivery stream.
+information. Kinesis Data Firehose supports one destination per
+delivery stream.
 
 
 
 =head2 Limit => Int
 
-The limit on the number of destinations to return. Currently, you can
-have one destination per delivery stream.
+The limit on the number of destinations to return. You can have one
+destination per delivery stream.
 
 
 

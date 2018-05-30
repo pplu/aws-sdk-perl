@@ -79,7 +79,10 @@ documents to Amazon Redshift. Default value is 3600 (60 minutes).
 
 =head2 B<REQUIRED> RoleARN => Str
 
-  The Amazon Resource Name (ARN) of the AWS credentials.
+  The Amazon Resource Name (ARN) of the AWS credentials. For more
+information, see Amazon Resource Names (ARNs) and AWS Service
+Namespaces
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
 =head2 S3BackupConfiguration => L<Paws::Firehose::S3DestinationConfiguration>

@@ -1,6 +1,7 @@
 package Paws::KinesisAnalytics;
   use Moose;
   sub service { 'kinesisanalytics' }
+  sub signing_name { 'kinesisanalytics' }
   sub version { '2015-08-14' }
   sub target_prefix { 'KinesisAnalytics_20150814' }
   sub json_version { "1.1" }
@@ -134,7 +135,18 @@ Paws::KinesisAnalytics - Perl Interface to AWS Amazon Kinesis Analytics
 
 =head1 METHODS
 
-=head2 AddApplicationCloudWatchLoggingOption(ApplicationName => Str, CloudWatchLoggingOption => L<Paws::KinesisAnalytics::CloudWatchLoggingOption>, CurrentApplicationVersionId => Int)
+=head2 AddApplicationCloudWatchLoggingOption
+
+=over
+
+=item ApplicationName => Str
+
+=item CloudWatchLoggingOption => L<Paws::KinesisAnalytics::CloudWatchLoggingOption>
+
+=item CurrentApplicationVersionId => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::AddApplicationCloudWatchLoggingOption>
 
@@ -147,7 +159,18 @@ CloudWatch Logs
 (http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html).
 
 
-=head2 AddApplicationInput(ApplicationName => Str, CurrentApplicationVersionId => Int, Input => L<Paws::KinesisAnalytics::Input>)
+=head2 AddApplicationInput
+
+=over
+
+=item ApplicationName => Str
+
+=item CurrentApplicationVersionId => Int
+
+=item Input => L<Paws::KinesisAnalytics::Input>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::AddApplicationInput>
 
@@ -170,7 +193,20 @@ This operation requires permissions to perform the
 C<kinesisanalytics:AddApplicationInput> action.
 
 
-=head2 AddApplicationInputProcessingConfiguration(ApplicationName => Str, CurrentApplicationVersionId => Int, InputId => Str, InputProcessingConfiguration => L<Paws::KinesisAnalytics::InputProcessingConfiguration>)
+=head2 AddApplicationInputProcessingConfiguration
+
+=over
+
+=item ApplicationName => Str
+
+=item CurrentApplicationVersionId => Int
+
+=item InputId => Str
+
+=item InputProcessingConfiguration => L<Paws::KinesisAnalytics::InputProcessingConfiguration>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::AddApplicationInputProcessingConfiguration>
 
@@ -182,7 +218,18 @@ application's SQL code executes. Currently, the only input processor
 available is AWS Lambda (https://aws.amazon.com/documentation/lambda/).
 
 
-=head2 AddApplicationOutput(ApplicationName => Str, CurrentApplicationVersionId => Int, Output => L<Paws::KinesisAnalytics::Output>)
+=head2 AddApplicationOutput
+
+=over
+
+=item ApplicationName => Str
+
+=item CurrentApplicationVersionId => Int
+
+=item Output => L<Paws::KinesisAnalytics::Output>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::AddApplicationOutput>
 
@@ -219,7 +266,18 @@ This operation requires permissions to perform the
 C<kinesisanalytics:AddApplicationOutput> action.
 
 
-=head2 AddApplicationReferenceDataSource(ApplicationName => Str, CurrentApplicationVersionId => Int, ReferenceDataSource => L<Paws::KinesisAnalytics::ReferenceDataSource>)
+=head2 AddApplicationReferenceDataSource
+
+=over
+
+=item ApplicationName => Str
+
+=item CurrentApplicationVersionId => Int
+
+=item ReferenceDataSource => L<Paws::KinesisAnalytics::ReferenceDataSource>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::AddApplicationReferenceDataSource>
 
@@ -244,7 +302,24 @@ This operation requires permissions to perform the
 C<kinesisanalytics:AddApplicationOutput> action.
 
 
-=head2 CreateApplication(ApplicationName => Str, [ApplicationCode => Str, ApplicationDescription => Str, CloudWatchLoggingOptions => ArrayRef[L<Paws::KinesisAnalytics::CloudWatchLoggingOption>], Inputs => ArrayRef[L<Paws::KinesisAnalytics::Input>], Outputs => ArrayRef[L<Paws::KinesisAnalytics::Output>]])
+=head2 CreateApplication
+
+=over
+
+=item ApplicationName => Str
+
+=item [ApplicationCode => Str]
+
+=item [ApplicationDescription => Str]
+
+=item [CloudWatchLoggingOptions => ArrayRef[L<Paws::KinesisAnalytics::CloudWatchLoggingOption>]]
+
+=item [Inputs => ArrayRef[L<Paws::KinesisAnalytics::Input>]]
+
+=item [Outputs => ArrayRef[L<Paws::KinesisAnalytics::Output>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::CreateApplication>
 
@@ -282,7 +357,16 @@ application, see Getting Started
 (http://docs.aws.amazon.com/kinesisanalytics/latest/dev/getting-started.html).
 
 
-=head2 DeleteApplication(ApplicationName => Str, CreateTimestamp => Str)
+=head2 DeleteApplication
+
+=over
+
+=item ApplicationName => Str
+
+=item CreateTimestamp => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::DeleteApplication>
 
@@ -297,7 +381,18 @@ This operation requires permissions to perform the
 C<kinesisanalytics:DeleteApplication> action.
 
 
-=head2 DeleteApplicationCloudWatchLoggingOption(ApplicationName => Str, CloudWatchLoggingOptionId => Str, CurrentApplicationVersionId => Int)
+=head2 DeleteApplicationCloudWatchLoggingOption
+
+=over
+
+=item ApplicationName => Str
+
+=item CloudWatchLoggingOptionId => Str
+
+=item CurrentApplicationVersionId => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::DeleteApplicationCloudWatchLoggingOption>
 
@@ -309,7 +404,18 @@ Analytics applications, see Working with Amazon CloudWatch Logs
 (http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html).
 
 
-=head2 DeleteApplicationInputProcessingConfiguration(ApplicationName => Str, CurrentApplicationVersionId => Int, InputId => Str)
+=head2 DeleteApplicationInputProcessingConfiguration
+
+=over
+
+=item ApplicationName => Str
+
+=item CurrentApplicationVersionId => Int
+
+=item InputId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::DeleteApplicationInputProcessingConfiguration>
 
@@ -318,7 +424,18 @@ Returns: a L<Paws::KinesisAnalytics::DeleteApplicationInputProcessingConfigurati
 Deletes an InputProcessingConfiguration from an input.
 
 
-=head2 DeleteApplicationOutput(ApplicationName => Str, CurrentApplicationVersionId => Int, OutputId => Str)
+=head2 DeleteApplicationOutput
+
+=over
+
+=item ApplicationName => Str
+
+=item CurrentApplicationVersionId => Int
+
+=item OutputId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::DeleteApplicationOutput>
 
@@ -333,7 +450,18 @@ This operation requires permissions to perform the
 C<kinesisanalytics:DeleteApplicationOutput> action.
 
 
-=head2 DeleteApplicationReferenceDataSource(ApplicationName => Str, CurrentApplicationVersionId => Int, ReferenceId => Str)
+=head2 DeleteApplicationReferenceDataSource
+
+=over
+
+=item ApplicationName => Str
+
+=item CurrentApplicationVersionId => Int
+
+=item ReferenceId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::DeleteApplicationReferenceDataSource>
 
@@ -350,7 +478,14 @@ This operation requires permissions to perform the
 C<kinesisanalytics.DeleteApplicationReferenceDataSource> action.
 
 
-=head2 DescribeApplication(ApplicationName => Str)
+=head2 DescribeApplication
+
+=over
+
+=item ApplicationName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::DescribeApplication>
 
@@ -368,7 +503,22 @@ C<DescribeApplication> to get the current application versionId, which
 you need to call other operations such as C<Update>.
 
 
-=head2 DiscoverInputSchema([InputProcessingConfiguration => L<Paws::KinesisAnalytics::InputProcessingConfiguration>, InputStartingPositionConfiguration => L<Paws::KinesisAnalytics::InputStartingPositionConfiguration>, ResourceARN => Str, RoleARN => Str, S3Configuration => L<Paws::KinesisAnalytics::S3Configuration>])
+=head2 DiscoverInputSchema
+
+=over
+
+=item [InputProcessingConfiguration => L<Paws::KinesisAnalytics::InputProcessingConfiguration>]
+
+=item [InputStartingPositionConfiguration => L<Paws::KinesisAnalytics::InputStartingPositionConfiguration>]
+
+=item [ResourceARN => Str]
+
+=item [RoleARN => Str]
+
+=item [S3Configuration => L<Paws::KinesisAnalytics::S3Configuration>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::DiscoverInputSchema>
 
@@ -392,7 +542,16 @@ This operation requires permissions to perform the
 C<kinesisanalytics:DiscoverInputSchema> action.
 
 
-=head2 ListApplications([ExclusiveStartApplicationName => Str, Limit => Int])
+=head2 ListApplications
+
+=over
+
+=item [ExclusiveStartApplicationName => Str]
+
+=item [Limit => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::ListApplications>
 
@@ -413,7 +572,16 @@ This operation requires permissions to perform the
 C<kinesisanalytics:ListApplications> action.
 
 
-=head2 StartApplication(ApplicationName => Str, InputConfigurations => ArrayRef[L<Paws::KinesisAnalytics::InputConfiguration>])
+=head2 StartApplication
+
+=over
+
+=item ApplicationName => Str
+
+=item InputConfigurations => ArrayRef[L<Paws::KinesisAnalytics::InputConfiguration>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::StartApplication>
 
@@ -437,7 +605,14 @@ This operation requires permissions to perform the
 C<kinesisanalytics:StartApplication> action.
 
 
-=head2 StopApplication(ApplicationName => Str)
+=head2 StopApplication
+
+=over
+
+=item ApplicationName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::StopApplication>
 
@@ -454,7 +629,18 @@ This operation requires permissions to perform the
 C<kinesisanalytics:StopApplication> action.
 
 
-=head2 UpdateApplication(ApplicationName => Str, ApplicationUpdate => L<Paws::KinesisAnalytics::ApplicationUpdate>, CurrentApplicationVersionId => Int)
+=head2 UpdateApplication
+
+=over
+
+=item ApplicationName => Str
+
+=item ApplicationUpdate => L<Paws::KinesisAnalytics::ApplicationUpdate>
+
+=item CurrentApplicationVersionId => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::UpdateApplication>
 

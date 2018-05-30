@@ -18,7 +18,7 @@ Paws::SES::GetAccountSendingEnabledResponse
 =head2 Enabled => Bool
 
 Describes whether email sending is enabled or disabled for your Amazon
-SES account.
+SES account in the current AWS Region.
 
 
 =head2 _request_id => Str

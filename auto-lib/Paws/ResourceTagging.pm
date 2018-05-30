@@ -1,6 +1,7 @@
 package Paws::ResourceTagging;
   use Moose;
   sub service { 'tagging' }
+  sub signing_name { 'tagging' }
   sub version { '2017-01-26' }
   sub target_prefix { 'ResourceGroupsTaggingAPI_20170126' }
   sub json_version { "1.1" }
@@ -203,7 +204,22 @@ in the I<AWS Resource Groups and Tag Editor User Guide>.
 
 =head1 METHODS
 
-=head2 GetResources([PaginationToken => Str, ResourcesPerPage => Int, ResourceTypeFilters => ArrayRef[Str|Undef], TagFilters => ArrayRef[L<Paws::ResourceTagging::TagFilter>], TagsPerPage => Int])
+=head2 GetResources
+
+=over
+
+=item [PaginationToken => Str]
+
+=item [ResourcesPerPage => Int]
+
+=item [ResourceTypeFilters => ArrayRef[Str|Undef]]
+
+=item [TagFilters => ArrayRef[L<Paws::ResourceTagging::TagFilter>]]
+
+=item [TagsPerPage => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ResourceTagging::GetResources>
 
@@ -217,7 +233,14 @@ are associated with the requested resources. If no filter is provided,
 this action returns a paginated resource list with the associated tags.
 
 
-=head2 GetTagKeys([PaginationToken => Str])
+=head2 GetTagKeys
+
+=over
+
+=item [PaginationToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ResourceTagging::GetTagKeys>
 
@@ -226,7 +249,16 @@ Returns: a L<Paws::ResourceTagging::GetTagKeysOutput> instance
 Returns all tag keys in the specified region for the AWS account.
 
 
-=head2 GetTagValues(Key => Str, [PaginationToken => Str])
+=head2 GetTagValues
+
+=over
+
+=item Key => Str
+
+=item [PaginationToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ResourceTagging::GetTagValues>
 
@@ -236,7 +268,16 @@ Returns all tag values for the specified key in the specified region
 for the AWS account.
 
 
-=head2 TagResources(ResourceARNList => ArrayRef[Str|Undef], Tags => L<Paws::ResourceTagging::TagMap>)
+=head2 TagResources
+
+=over
+
+=item ResourceARNList => ArrayRef[Str|Undef]
+
+=item Tags => L<Paws::ResourceTagging::TagMap>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ResourceTagging::TagResources>
 
@@ -278,7 +319,16 @@ in the I<AWS Resource Groups and Tag Editor User Guide>.
 
 
 
-=head2 UntagResources(ResourceARNList => ArrayRef[Str|Undef], TagKeys => ArrayRef[Str|Undef])
+=head2 UntagResources
+
+=over
+
+=item ResourceARNList => ArrayRef[Str|Undef]
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ResourceTagging::UntagResources>
 

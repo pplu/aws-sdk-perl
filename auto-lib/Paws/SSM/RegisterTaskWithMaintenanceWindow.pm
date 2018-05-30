@@ -108,10 +108,15 @@ The role that should be assumed when executing the task.
 
 =head2 B<REQUIRED> Targets => ArrayRef[L<Paws::SSM::Target>]
 
-The targets (either instances or tags). Instances are specified using
-Key=instanceids,Values=E<lt>instanceid1E<gt>,E<lt>instanceid2E<gt>.
-Tags are specified using Key=E<lt>tag nameE<gt>,Values=E<lt>tag
-valueE<gt>.
+The targets (either instances or Maintenance Window targets).
+
+Specify instances using the following format:
+
+C<Key=InstanceIds,Values=E<lt>instance-id-1E<gt>,E<lt>instance-id-2E<gt>>
+
+Specify Maintenance Window targets using the following format:
+
+C<Key=E<lt>WindowTargetIdsE<gt>,Values=E<lt>window-target-id-1E<gt>,E<lt>window-target-id-2E<gt>>
 
 
 
@@ -148,7 +153,7 @@ Valid values are: C<"RUN_COMMAND">, C<"AUTOMATION">, C<"STEP_FUNCTIONS">, C<"LAM
 
 =head2 B<REQUIRED> WindowId => Str
 
-The id of the Maintenance Window the task should be added to.
+The ID of the Maintenance Window the task should be added to.
 
 
 

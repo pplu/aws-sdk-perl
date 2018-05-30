@@ -46,7 +46,7 @@ The ARN of a device.
 
 The event type to filter device events.
 
-Valid values are: C<"CONNECTION_STATUS">
+Valid values are: C<"CONNECTION_STATUS">, C<"DEVICE_STATUS">
 
 =head2 MaxResults => Int
 

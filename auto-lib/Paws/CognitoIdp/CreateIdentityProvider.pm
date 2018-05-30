@@ -68,7 +68,7 @@ The identity provider name.
 
 The identity provider type.
 
-Valid values are: C<"SAML">, C<"Facebook">, C<"Google">, C<"LoginWithAmazon">
+Valid values are: C<"SAML">, C<"Facebook">, C<"Google">, C<"LoginWithAmazon">, C<"OIDC">
 
 =head2 B<REQUIRED> UserPoolId => Str
 

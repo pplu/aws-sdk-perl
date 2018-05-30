@@ -117,13 +117,13 @@ agent when it registered the container instance with Amazon ECS.
 =head2 RemainingResources => ArrayRef[L<Paws::ECS::Resource>]
 
   For CPU and memory resource types, this parameter describes the
-remaining CPU and memory on the that has not already been allocated to
-tasks (and is therefore available for new tasks). For port resource
-types, this parameter describes the ports that were reserved by the
-Amazon ECS container agent (at instance registration time) and any task
-containers that have reserved port mappings on the host (with the
-C<host> or C<bridge> network mode). Any port that is not specified here
-is available for new tasks.
+remaining CPU and memory that has not already been allocated to tasks
+and is therefore available for new tasks. For port resource types, this
+parameter describes the ports that were reserved by the Amazon ECS
+container agent (at instance registration time) and any task containers
+that have reserved port mappings on the host (with the C<host> or
+C<bridge> network mode). Any port that is not specified here is
+available for new tasks.
 
 
 =head2 RunningTasksCount => Int

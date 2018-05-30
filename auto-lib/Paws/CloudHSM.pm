@@ -1,6 +1,7 @@
 package Paws::CloudHSM;
   use Moose;
   sub service { 'cloudhsm' }
+  sub signing_name { 'cloudhsm' }
   sub version { '2014-05-30' }
   sub target_prefix { 'CloudHsmFrontendService' }
   sub json_version { "1.1" }
@@ -163,7 +164,16 @@ CloudHSM API Reference
 
 =head1 METHODS
 
-=head2 AddTagsToResource(ResourceArn => Str, TagList => ArrayRef[L<Paws::CloudHSM::Tag>])
+=head2 AddTagsToResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagList => ArrayRef[L<Paws::CloudHSM::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSM::AddTagsToResource>
 
@@ -190,7 +200,14 @@ Each tag consists of a key and a value. Tag keys must be unique to each
 resource.
 
 
-=head2 CreateHapg(Label => Str)
+=head2 CreateHapg
+
+=over
+
+=item Label => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSM::CreateHapg>
 
@@ -215,7 +232,28 @@ partition group is a group of partitions that spans multiple physical
 HSMs.
 
 
-=head2 CreateHsm(IamRoleArn => Str, SshKey => Str, SubnetId => Str, SubscriptionType => Str, [ClientToken => Str, EniIp => Str, ExternalId => Str, SyslogIp => Str])
+=head2 CreateHsm
+
+=over
+
+=item IamRoleArn => Str
+
+=item SshKey => Str
+
+=item SubnetId => Str
+
+=item SubscriptionType => Str
+
+=item [ClientToken => Str]
+
+=item [EniIp => Str]
+
+=item [ExternalId => Str]
+
+=item [SyslogIp => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSM::CreateHsm>
 
@@ -249,7 +287,16 @@ monitor the status of the HSM with the DescribeHsm operation. The HSM
 is ready to be initialized when the status changes to C<RUNNING>.
 
 
-=head2 CreateLunaClient(Certificate => Str, [Label => Str])
+=head2 CreateLunaClient
+
+=over
+
+=item Certificate => Str
+
+=item [Label => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSM::CreateLunaClient>
 
@@ -272,7 +319,14 @@ CloudHSM API Reference
 Creates an HSM client.
 
 
-=head2 DeleteHapg(HapgArn => Str)
+=head2 DeleteHapg
+
+=over
+
+=item HapgArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSM::DeleteHapg>
 
@@ -295,7 +349,14 @@ CloudHSM API Reference
 Deletes a high-availability partition group.
 
 
-=head2 DeleteHsm(HsmArn => Str)
+=head2 DeleteHsm
+
+=over
+
+=item HsmArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSM::DeleteHsm>
 
@@ -319,7 +380,14 @@ Deletes an HSM. After completion, this operation cannot be undone and
 your key material cannot be recovered.
 
 
-=head2 DeleteLunaClient(ClientArn => Str)
+=head2 DeleteLunaClient
+
+=over
+
+=item ClientArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSM::DeleteLunaClient>
 
@@ -342,7 +410,14 @@ CloudHSM API Reference
 Deletes a client.
 
 
-=head2 DescribeHapg(HapgArn => Str)
+=head2 DescribeHapg
+
+=over
+
+=item HapgArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSM::DescribeHapg>
 
@@ -365,7 +440,16 @@ CloudHSM API Reference
 Retrieves information about a high-availability partition group.
 
 
-=head2 DescribeHsm([HsmArn => Str, HsmSerialNumber => Str])
+=head2 DescribeHsm
+
+=over
+
+=item [HsmArn => Str]
+
+=item [HsmSerialNumber => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSM::DescribeHsm>
 
@@ -389,7 +473,16 @@ Retrieves information about an HSM. You can identify the HSM by its ARN
 or its serial number.
 
 
-=head2 DescribeLunaClient([CertificateFingerprint => Str, ClientArn => Str])
+=head2 DescribeLunaClient
+
+=over
+
+=item [CertificateFingerprint => Str]
+
+=item [ClientArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSM::DescribeLunaClient>
 
@@ -412,7 +505,18 @@ CloudHSM API Reference
 Retrieves information about an HSM client.
 
 
-=head2 GetConfig(ClientArn => Str, ClientVersion => Str, HapgList => ArrayRef[Str|Undef])
+=head2 GetConfig
+
+=over
+
+=item ClientArn => Str
+
+=item ClientVersion => Str
+
+=item HapgList => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSM::GetConfig>
 
@@ -436,7 +540,12 @@ Gets the configuration files necessary to connect to all high
 availability partition groups the client is associated with.
 
 
-=head2 ListAvailableZones()
+=head2 ListAvailableZones
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::CloudHSM::ListAvailableZones>
 
@@ -459,7 +568,14 @@ CloudHSM API Reference
 Lists the Availability Zones that have available AWS CloudHSM capacity.
 
 
-=head2 ListHapgs([NextToken => Str])
+=head2 ListHapgs
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSM::ListHapgs>
 
@@ -487,7 +603,14 @@ response contains a token that you pass in the next call to
 C<ListHapgs> to retrieve the next set of items.
 
 
-=head2 ListHsms([NextToken => Str])
+=head2 ListHsms
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSM::ListHsms>
 
@@ -516,7 +639,14 @@ response contains a token that you pass in the next call to C<ListHsms>
 to retrieve the next set of items.
 
 
-=head2 ListLunaClients([NextToken => Str])
+=head2 ListLunaClients
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSM::ListLunaClients>
 
@@ -544,7 +674,14 @@ response contains a token that you pass in the next call to
 C<ListLunaClients> to retrieve the next set of items.
 
 
-=head2 ListTagsForResource(ResourceArn => Str)
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSM::ListTagsForResource>
 
@@ -567,7 +704,18 @@ CloudHSM API Reference
 Returns a list of all tags for the specified AWS CloudHSM resource.
 
 
-=head2 ModifyHapg(HapgArn => Str, [Label => Str, PartitionSerialList => ArrayRef[Str|Undef]])
+=head2 ModifyHapg
+
+=over
+
+=item HapgArn => Str
+
+=item [Label => Str]
+
+=item [PartitionSerialList => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSM::ModifyHapg>
 
@@ -590,7 +738,24 @@ CloudHSM API Reference
 Modifies an existing high-availability partition group.
 
 
-=head2 ModifyHsm(HsmArn => Str, [EniIp => Str, ExternalId => Str, IamRoleArn => Str, SubnetId => Str, SyslogIp => Str])
+=head2 ModifyHsm
+
+=over
+
+=item HsmArn => Str
+
+=item [EniIp => Str]
+
+=item [ExternalId => Str]
+
+=item [IamRoleArn => Str]
+
+=item [SubnetId => Str]
+
+=item [SyslogIp => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSM::ModifyHsm>
 
@@ -619,7 +784,16 @@ configured for high availability, and consider executing this operation
 during a maintenance window.
 
 
-=head2 ModifyLunaClient(Certificate => Str, ClientArn => Str)
+=head2 ModifyLunaClient
+
+=over
+
+=item Certificate => Str
+
+=item ClientArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSM::ModifyLunaClient>
 
@@ -645,7 +819,16 @@ This action can potentially start a workflow to install the new
 certificate on the client's HSMs.
 
 
-=head2 RemoveTagsFromResource(ResourceArn => Str, TagKeyList => ArrayRef[Str|Undef])
+=head2 RemoveTagsFromResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeyList => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSM::RemoveTagsFromResource>
 

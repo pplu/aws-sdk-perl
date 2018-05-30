@@ -1,6 +1,7 @@
 package Paws::Polly;
   use Moose;
   sub service { 'polly' }
+  sub signing_name { 'polly' }
   sub version { '2016-06-10' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -107,7 +108,14 @@ enable you to get the best results for your application domain.
 
 =head1 METHODS
 
-=head2 DeleteLexicon(Name => Str)
+=head2 DeleteLexicon
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Polly::DeleteLexicon>
 
@@ -122,7 +130,16 @@ For more information, see Managing Lexicons
 (http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
 
 
-=head2 DescribeVoices([LanguageCode => Str, NextToken => Str])
+=head2 DescribeVoices
+
+=over
+
+=item [LanguageCode => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Polly::DescribeVoices>
 
@@ -150,7 +167,14 @@ This operation requires permissions to perform the
 C<polly:DescribeVoices> action.
 
 
-=head2 GetLexicon(Name => Str)
+=head2 GetLexicon
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Polly::GetLexicon>
 
@@ -161,7 +185,14 @@ AWS Region. For more information, see Managing Lexicons
 (http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
 
 
-=head2 ListLexicons([NextToken => Str])
+=head2 ListLexicons
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Polly::ListLexicons>
 
@@ -172,7 +203,16 @@ more information, see Managing Lexicons
 (http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
 
 
-=head2 PutLexicon(Content => Str, Name => Str)
+=head2 PutLexicon
+
+=over
+
+=item Content => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Polly::PutLexicon>
 
@@ -188,7 +228,26 @@ For more information, see Managing Lexicons
 (http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
 
 
-=head2 SynthesizeSpeech(OutputFormat => Str, Text => Str, VoiceId => Str, [LexiconNames => ArrayRef[Str|Undef], SampleRate => Str, SpeechMarkTypes => ArrayRef[Str|Undef], TextType => Str])
+=head2 SynthesizeSpeech
+
+=over
+
+=item OutputFormat => Str
+
+=item Text => Str
+
+=item VoiceId => Str
+
+=item [LexiconNames => ArrayRef[Str|Undef]]
+
+=item [SampleRate => Str]
+
+=item [SpeechMarkTypes => ArrayRef[Str|Undef]]
+
+=item [TextType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Polly::SynthesizeSpeech>
 

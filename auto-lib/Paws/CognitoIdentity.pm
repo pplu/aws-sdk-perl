@@ -1,6 +1,7 @@
 package Paws::CognitoIdentity;
   use Moose;
   sub service { 'cognito-identity' }
+  sub signing_name { 'cognito-identity' }
   sub version { '2014-06-30' }
   sub target_prefix { 'AWSCognitoIdentityService' }
   sub json_version { "1.1" }
@@ -176,7 +177,26 @@ Mobile SDK. To learn more, see the AWS Mobile SDK Developer Guide
 
 =head1 METHODS
 
-=head2 CreateIdentityPool(AllowUnauthenticatedIdentities => Bool, IdentityPoolName => Str, [CognitoIdentityProviders => ArrayRef[L<Paws::CognitoIdentity::CognitoIdentityProvider>], DeveloperProviderName => Str, OpenIdConnectProviderARNs => ArrayRef[Str|Undef], SamlProviderARNs => ArrayRef[Str|Undef], SupportedLoginProviders => L<Paws::CognitoIdentity::IdentityProviders>])
+=head2 CreateIdentityPool
+
+=over
+
+=item AllowUnauthenticatedIdentities => Bool
+
+=item IdentityPoolName => Str
+
+=item [CognitoIdentityProviders => ArrayRef[L<Paws::CognitoIdentity::CognitoIdentityProvider>]]
+
+=item [DeveloperProviderName => Str]
+
+=item [OpenIdConnectProviderARNs => ArrayRef[Str|Undef]]
+
+=item [SamlProviderARNs => ArrayRef[Str|Undef]]
+
+=item [SupportedLoginProviders => L<Paws::CognitoIdentity::IdentityProviders>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::CreateIdentityPool>
 
@@ -214,7 +234,14 @@ Digits: C<www.digits.com>
 You must use AWS Developer credentials to call this API.
 
 
-=head2 DeleteIdentities(IdentityIdsToDelete => ArrayRef[Str|Undef])
+=head2 DeleteIdentities
+
+=over
+
+=item IdentityIdsToDelete => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::DeleteIdentities>
 
@@ -226,7 +253,14 @@ Deletes identities from an identity pool. You can specify a list of
 You must use AWS Developer credentials to call this API.
 
 
-=head2 DeleteIdentityPool(IdentityPoolId => Str)
+=head2 DeleteIdentityPool
+
+=over
+
+=item IdentityPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::DeleteIdentityPool>
 
@@ -238,7 +272,14 @@ authenticate with the pool.
 You must use AWS Developer credentials to call this API.
 
 
-=head2 DescribeIdentity(IdentityId => Str)
+=head2 DescribeIdentity
+
+=over
+
+=item IdentityId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::DescribeIdentity>
 
@@ -250,7 +291,14 @@ identity was created and any associated linked logins.
 You must use AWS Developer credentials to call this API.
 
 
-=head2 DescribeIdentityPool(IdentityPoolId => Str)
+=head2 DescribeIdentityPool
+
+=over
+
+=item IdentityPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::DescribeIdentityPool>
 
@@ -262,7 +310,18 @@ ID description, creation date, and current number of users.
 You must use AWS Developer credentials to call this API.
 
 
-=head2 GetCredentialsForIdentity(IdentityId => Str, [CustomRoleArn => Str, Logins => L<Paws::CognitoIdentity::LoginsMap>])
+=head2 GetCredentialsForIdentity
+
+=over
+
+=item IdentityId => Str
+
+=item [CustomRoleArn => Str]
+
+=item [Logins => L<Paws::CognitoIdentity::LoginsMap>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::GetCredentialsForIdentity>
 
@@ -276,7 +335,18 @@ Security Token Service with the appropriate role for the token.
 This is a public API. You do not need any credentials to call this API.
 
 
-=head2 GetId(IdentityPoolId => Str, [AccountId => Str, Logins => L<Paws::CognitoIdentity::LoginsMap>])
+=head2 GetId
+
+=over
+
+=item IdentityPoolId => Str
+
+=item [AccountId => Str]
+
+=item [Logins => L<Paws::CognitoIdentity::LoginsMap>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::GetId>
 
@@ -288,7 +358,14 @@ create an implicit linked account.
 This is a public API. You do not need any credentials to call this API.
 
 
-=head2 GetIdentityPoolRoles(IdentityPoolId => Str)
+=head2 GetIdentityPoolRoles
+
+=over
+
+=item IdentityPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::GetIdentityPoolRoles>
 
@@ -299,7 +376,16 @@ Gets the roles for an identity pool.
 You must use AWS Developer credentials to call this API.
 
 
-=head2 GetOpenIdToken(IdentityId => Str, [Logins => L<Paws::CognitoIdentity::LoginsMap>])
+=head2 GetOpenIdToken
+
+=over
+
+=item IdentityId => Str
+
+=item [Logins => L<Paws::CognitoIdentity::LoginsMap>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::GetOpenIdToken>
 
@@ -314,7 +400,20 @@ The OpenId token is valid for 15 minutes.
 This is a public API. You do not need any credentials to call this API.
 
 
-=head2 GetOpenIdTokenForDeveloperIdentity(IdentityPoolId => Str, Logins => L<Paws::CognitoIdentity::LoginsMap>, [IdentityId => Str, TokenDuration => Int])
+=head2 GetOpenIdTokenForDeveloperIdentity
+
+=over
+
+=item IdentityPoolId => Str
+
+=item Logins => L<Paws::CognitoIdentity::LoginsMap>
+
+=item [IdentityId => Str]
+
+=item [TokenDuration => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::GetOpenIdTokenForDeveloperIdentity>
 
@@ -339,7 +438,20 @@ specified C<IdentityPoolId>.
 You must use AWS Developer credentials to call this API.
 
 
-=head2 ListIdentities(IdentityPoolId => Str, MaxResults => Int, [HideDisabled => Bool, NextToken => Str])
+=head2 ListIdentities
+
+=over
+
+=item IdentityPoolId => Str
+
+=item MaxResults => Int
+
+=item [HideDisabled => Bool]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::ListIdentities>
 
@@ -350,7 +462,16 @@ Lists the identities in a pool.
 You must use AWS Developer credentials to call this API.
 
 
-=head2 ListIdentityPools(MaxResults => Int, [NextToken => Str])
+=head2 ListIdentityPools
+
+=over
+
+=item MaxResults => Int
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::ListIdentityPools>
 
@@ -361,7 +482,22 @@ Lists all of the Cognito identity pools registered for your account.
 You must use AWS Developer credentials to call this API.
 
 
-=head2 LookupDeveloperIdentity(IdentityPoolId => Str, [DeveloperUserIdentifier => Str, IdentityId => Str, MaxResults => Int, NextToken => Str])
+=head2 LookupDeveloperIdentity
+
+=over
+
+=item IdentityPoolId => Str
+
+=item [DeveloperUserIdentifier => Str]
+
+=item [IdentityId => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::LookupDeveloperIdentity>
 
@@ -381,7 +517,20 @@ C<ResourceConflictException> is thrown.
 You must use AWS Developer credentials to call this API.
 
 
-=head2 MergeDeveloperIdentities(DestinationUserIdentifier => Str, DeveloperProviderName => Str, IdentityPoolId => Str, SourceUserIdentifier => Str)
+=head2 MergeDeveloperIdentities
+
+=over
+
+=item DestinationUserIdentifier => Str
+
+=item DeveloperProviderName => Str
+
+=item IdentityPoolId => Str
+
+=item SourceUserIdentifier => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::MergeDeveloperIdentities>
 
@@ -400,7 +549,18 @@ thrown.
 You must use AWS Developer credentials to call this API.
 
 
-=head2 SetIdentityPoolRoles(IdentityPoolId => Str, Roles => L<Paws::CognitoIdentity::RolesMap>, [RoleMappings => L<Paws::CognitoIdentity::RoleMappingMap>])
+=head2 SetIdentityPoolRoles
+
+=over
+
+=item IdentityPoolId => Str
+
+=item Roles => L<Paws::CognitoIdentity::RolesMap>
+
+=item [RoleMappings => L<Paws::CognitoIdentity::RoleMappingMap>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::SetIdentityPoolRoles>
 
@@ -412,7 +572,20 @@ calls to GetCredentialsForIdentity action.
 You must use AWS Developer credentials to call this API.
 
 
-=head2 UnlinkDeveloperIdentity(DeveloperProviderName => Str, DeveloperUserIdentifier => Str, IdentityId => Str, IdentityPoolId => Str)
+=head2 UnlinkDeveloperIdentity
+
+=over
+
+=item DeveloperProviderName => Str
+
+=item DeveloperUserIdentifier => Str
+
+=item IdentityId => Str
+
+=item IdentityPoolId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::UnlinkDeveloperIdentity>
 
@@ -427,7 +600,18 @@ Cognito identity becomes inaccessible.
 You must use AWS Developer credentials to call this API.
 
 
-=head2 UnlinkIdentity(IdentityId => Str, Logins => L<Paws::CognitoIdentity::LoginsMap>, LoginsToRemove => ArrayRef[Str|Undef])
+=head2 UnlinkIdentity
+
+=over
+
+=item IdentityId => Str
+
+=item Logins => L<Paws::CognitoIdentity::LoginsMap>
+
+=item LoginsToRemove => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::UnlinkIdentity>
 
@@ -440,7 +624,28 @@ last linked login will make this identity inaccessible.
 This is a public API. You do not need any credentials to call this API.
 
 
-=head2 UpdateIdentityPool(AllowUnauthenticatedIdentities => Bool, IdentityPoolId => Str, IdentityPoolName => Str, [CognitoIdentityProviders => ArrayRef[L<Paws::CognitoIdentity::CognitoIdentityProvider>], DeveloperProviderName => Str, OpenIdConnectProviderARNs => ArrayRef[Str|Undef], SamlProviderARNs => ArrayRef[Str|Undef], SupportedLoginProviders => L<Paws::CognitoIdentity::IdentityProviders>])
+=head2 UpdateIdentityPool
+
+=over
+
+=item AllowUnauthenticatedIdentities => Bool
+
+=item IdentityPoolId => Str
+
+=item IdentityPoolName => Str
+
+=item [CognitoIdentityProviders => ArrayRef[L<Paws::CognitoIdentity::CognitoIdentityProvider>]]
+
+=item [DeveloperProviderName => Str]
+
+=item [OpenIdConnectProviderARNs => ArrayRef[Str|Undef]]
+
+=item [SamlProviderARNs => ArrayRef[Str|Undef]]
+
+=item [SupportedLoginProviders => L<Paws::CognitoIdentity::IdentityProviders>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::UpdateIdentityPool>
 

@@ -1,6 +1,7 @@
 package Paws::Health;
   use Moose;
   sub service { 'health' }
+  sub signing_name { 'health' }
   sub version { '2016-08-04' }
   sub target_prefix { 'AWSHealth_20160804' }
   sub json_version { "1.1" }
@@ -241,7 +242,20 @@ https://health.us-east-1.amazonaws.com
 
 =head1 METHODS
 
-=head2 DescribeAffectedEntities(Filter => L<Paws::Health::EntityFilter>, [Locale => Str, MaxResults => Int, NextToken => Str])
+=head2 DescribeAffectedEntities
+
+=over
+
+=item Filter => L<Paws::Health::EntityFilter>
+
+=item [Locale => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Health::DescribeAffectedEntities>
 
@@ -258,7 +272,14 @@ At least one event ARN is required. Results are sorted by the
 C<lastUpdatedTime> of the entity, starting with the most recent.
 
 
-=head2 DescribeEntityAggregates([EventArns => ArrayRef[Str|Undef]])
+=head2 DescribeEntityAggregates
+
+=over
+
+=item [EventArns => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Health::DescribeEntityAggregates>
 
@@ -269,7 +290,20 @@ specified events. If no events are specified, the counts of all
 affected entities are returned.
 
 
-=head2 DescribeEventAggregates(AggregateField => Str, [Filter => L<Paws::Health::EventFilter>, MaxResults => Int, NextToken => Str])
+=head2 DescribeEventAggregates
+
+=over
+
+=item AggregateField => Str
+
+=item [Filter => L<Paws::Health::EventFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Health::DescribeEventAggregates>
 
@@ -280,7 +314,16 @@ change, and account notification). If no filter is specified, the
 counts of all events in each category are returned.
 
 
-=head2 DescribeEventDetails(EventArns => ArrayRef[Str|Undef], [Locale => Str])
+=head2 DescribeEventDetails
+
+=over
+
+=item EventArns => ArrayRef[Str|Undef]
+
+=item [Locale => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Health::DescribeEventDetails>
 
@@ -297,7 +340,20 @@ If a specified event cannot be retrieved, an error message is returned
 for that event.
 
 
-=head2 DescribeEvents([Filter => L<Paws::Health::EventFilter>, Locale => Str, MaxResults => Int, NextToken => Str])
+=head2 DescribeEvents
+
+=over
+
+=item [Filter => L<Paws::Health::EventFilter>]
+
+=item [Locale => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Health::DescribeEvents>
 
@@ -313,7 +369,20 @@ If no filter criteria are specified, all events are returned. Results
 are sorted by C<lastModifiedTime>, starting with the most recent.
 
 
-=head2 DescribeEventTypes([Filter => L<Paws::Health::EventTypeFilter>, Locale => Str, MaxResults => Int, NextToken => Str])
+=head2 DescribeEventTypes
+
+=over
+
+=item [Filter => L<Paws::Health::EventTypeFilter>]
+
+=item [Locale => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Health::DescribeEventTypes>
 

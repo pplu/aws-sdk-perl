@@ -203,7 +203,7 @@ C<state> - The state of the Spot Instance request (C<open> | C<active>
 information can help you track your Amazon EC2 Spot Instance requests.
 For more information, see Spot Request Status
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html)
-in the Amazon Elastic Compute Cloud User Guide.
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 =item *
 

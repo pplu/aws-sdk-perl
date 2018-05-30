@@ -1,6 +1,7 @@
 package Paws::MQ;
   use Moose;
   sub service { 'mq' }
+  sub signing_name { 'mq' }
   sub version { '2017-11-27' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -137,7 +138,38 @@ formal messaging protocols.
 
 =head1 METHODS
 
-=head2 CreateBroker([AutoMinorVersionUpgrade => Bool, BrokerName => Str, Configuration => L<Paws::MQ::ConfigurationId>, CreatorRequestId => Str, DeploymentMode => Str, EngineType => Str, EngineVersion => Str, HostInstanceType => Str, MaintenanceWindowStartTime => L<Paws::MQ::WeeklyStartTime>, PubliclyAccessible => Bool, SecurityGroups => ArrayRef[Str|Undef], SubnetIds => ArrayRef[Str|Undef], Users => ArrayRef[L<Paws::MQ::User>]])
+=head2 CreateBroker
+
+=over
+
+=item [AutoMinorVersionUpgrade => Bool]
+
+=item [BrokerName => Str]
+
+=item [Configuration => L<Paws::MQ::ConfigurationId>]
+
+=item [CreatorRequestId => Str]
+
+=item [DeploymentMode => Str]
+
+=item [EngineType => Str]
+
+=item [EngineVersion => Str]
+
+=item [HostInstanceType => Str]
+
+=item [MaintenanceWindowStartTime => L<Paws::MQ::WeeklyStartTime>]
+
+=item [PubliclyAccessible => Bool]
+
+=item [SecurityGroups => ArrayRef[Str|Undef]]
+
+=item [SubnetIds => ArrayRef[Str|Undef]]
+
+=item [Users => ArrayRef[L<Paws::MQ::User>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MQ::CreateBroker>
 
@@ -146,7 +178,18 @@ Returns: a L<Paws::MQ::CreateBrokerResponse> instance
 Creates a broker. Note: This API is asynchronous.
 
 
-=head2 CreateConfiguration([EngineType => Str, EngineVersion => Str, Name => Str])
+=head2 CreateConfiguration
+
+=over
+
+=item [EngineType => Str]
+
+=item [EngineVersion => Str]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MQ::CreateConfiguration>
 
@@ -158,7 +201,22 @@ Note: If the configuration name already exists, Amazon MQ doesn't
 create a configuration.
 
 
-=head2 CreateUser(BrokerId => Str, Username => Str, [ConsoleAccess => Bool, Groups => ArrayRef[Str|Undef], Password => Str])
+=head2 CreateUser
+
+=over
+
+=item BrokerId => Str
+
+=item Username => Str
+
+=item [ConsoleAccess => Bool]
+
+=item [Groups => ArrayRef[Str|Undef]]
+
+=item [Password => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MQ::CreateUser>
 
@@ -167,7 +225,14 @@ Returns: a L<Paws::MQ::CreateUserResponse> instance
 Creates an ActiveMQ user.
 
 
-=head2 DeleteBroker(BrokerId => Str)
+=head2 DeleteBroker
+
+=over
+
+=item BrokerId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MQ::DeleteBroker>
 
@@ -176,7 +241,16 @@ Returns: a L<Paws::MQ::DeleteBrokerResponse> instance
 Deletes a broker. Note: This API is asynchronous.
 
 
-=head2 DeleteUser(BrokerId => Str, Username => Str)
+=head2 DeleteUser
+
+=over
+
+=item BrokerId => Str
+
+=item Username => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MQ::DeleteUser>
 
@@ -185,7 +259,14 @@ Returns: a L<Paws::MQ::DeleteUserResponse> instance
 Deletes an ActiveMQ user.
 
 
-=head2 DescribeBroker(BrokerId => Str)
+=head2 DescribeBroker
+
+=over
+
+=item BrokerId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MQ::DescribeBroker>
 
@@ -194,7 +275,14 @@ Returns: a L<Paws::MQ::DescribeBrokerResponse> instance
 Returns information about the specified broker.
 
 
-=head2 DescribeConfiguration(ConfigurationId => Str)
+=head2 DescribeConfiguration
+
+=over
+
+=item ConfigurationId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MQ::DescribeConfiguration>
 
@@ -203,7 +291,16 @@ Returns: a L<Paws::MQ::DescribeConfigurationResponse> instance
 Returns information about the specified configuration.
 
 
-=head2 DescribeConfigurationRevision(ConfigurationId => Str, ConfigurationRevision => Str)
+=head2 DescribeConfigurationRevision
+
+=over
+
+=item ConfigurationId => Str
+
+=item ConfigurationRevision => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MQ::DescribeConfigurationRevision>
 
@@ -213,7 +310,16 @@ Returns the specified configuration revision for the specified
 configuration.
 
 
-=head2 DescribeUser(BrokerId => Str, Username => Str)
+=head2 DescribeUser
+
+=over
+
+=item BrokerId => Str
+
+=item Username => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MQ::DescribeUser>
 
@@ -222,7 +328,16 @@ Returns: a L<Paws::MQ::DescribeUserResponse> instance
 Returns information about an ActiveMQ user.
 
 
-=head2 ListBrokers([MaxResults => Int, NextToken => Str])
+=head2 ListBrokers
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MQ::ListBrokers>
 
@@ -231,7 +346,18 @@ Returns: a L<Paws::MQ::ListBrokersResponse> instance
 Returns a list of all brokers.
 
 
-=head2 ListConfigurationRevisions(ConfigurationId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListConfigurationRevisions
+
+=over
+
+=item ConfigurationId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MQ::ListConfigurationRevisions>
 
@@ -240,7 +366,16 @@ Returns: a L<Paws::MQ::ListConfigurationRevisionsResponse> instance
 Returns a list of all revisions for the specified configuration.
 
 
-=head2 ListConfigurations([MaxResults => Int, NextToken => Str])
+=head2 ListConfigurations
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MQ::ListConfigurations>
 
@@ -249,7 +384,18 @@ Returns: a L<Paws::MQ::ListConfigurationsResponse> instance
 Returns a list of all configurations.
 
 
-=head2 ListUsers(BrokerId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListUsers
+
+=over
+
+=item BrokerId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MQ::ListUsers>
 
@@ -258,7 +404,14 @@ Returns: a L<Paws::MQ::ListUsersResponse> instance
 Returns a list of all ActiveMQ users.
 
 
-=head2 RebootBroker(BrokerId => Str)
+=head2 RebootBroker
+
+=over
+
+=item BrokerId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MQ::RebootBroker>
 
@@ -267,7 +420,16 @@ Returns: a L<Paws::MQ::RebootBrokerResponse> instance
 Reboots a broker. Note: This API is asynchronous.
 
 
-=head2 UpdateBroker(BrokerId => Str, [Configuration => L<Paws::MQ::ConfigurationId>])
+=head2 UpdateBroker
+
+=over
+
+=item BrokerId => Str
+
+=item [Configuration => L<Paws::MQ::ConfigurationId>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MQ::UpdateBroker>
 
@@ -276,7 +438,18 @@ Returns: a L<Paws::MQ::UpdateBrokerResponse> instance
 Adds a pending configuration change to a broker.
 
 
-=head2 UpdateConfiguration(ConfigurationId => Str, [Data => Str, Description => Str])
+=head2 UpdateConfiguration
+
+=over
+
+=item ConfigurationId => Str
+
+=item [Data => Str]
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MQ::UpdateConfiguration>
 
@@ -285,7 +458,22 @@ Returns: a L<Paws::MQ::UpdateConfigurationResponse> instance
 Updates the specified configuration.
 
 
-=head2 UpdateUser(BrokerId => Str, Username => Str, [ConsoleAccess => Bool, Groups => ArrayRef[Str|Undef], Password => Str])
+=head2 UpdateUser
+
+=over
+
+=item BrokerId => Str
+
+=item Username => Str
+
+=item [ConsoleAccess => Bool]
+
+=item [Groups => ArrayRef[Str|Undef]]
+
+=item [Password => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MQ::UpdateUser>
 

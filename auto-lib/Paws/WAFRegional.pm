@@ -1,6 +1,7 @@
 package Paws::WAFRegional;
   use Moose;
   sub service { 'waf-regional' }
+  sub signing_name { 'waf-regional' }
   sub version { '2016-11-28' }
   sub target_prefix { 'AWSWAF_Regional_20161128' }
   sub json_version { "1.1" }
@@ -425,7 +426,16 @@ see the AWS WAF Developer Guide
 
 =head1 METHODS
 
-=head2 AssociateWebACL(ResourceArn => Str, WebACLId => Str)
+=head2 AssociateWebACL
+
+=over
+
+=item ResourceArn => Str
+
+=item WebACLId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::AssociateWebACL>
 
@@ -434,7 +444,16 @@ Returns: a L<Paws::WAFRegional::AssociateWebACLResponse> instance
 Associates a web ACL with a resource.
 
 
-=head2 CreateByteMatchSet(ChangeToken => Str, Name => Str)
+=head2 CreateByteMatchSet
+
+=over
+
+=item ChangeToken => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::CreateByteMatchSet>
 
@@ -478,7 +497,16 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 CreateGeoMatchSet(ChangeToken => Str, Name => Str)
+=head2 CreateGeoMatchSet
+
+=over
+
+=item ChangeToken => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::CreateGeoMatchSet>
 
@@ -521,7 +549,16 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 CreateIPSet(ChangeToken => Str, Name => Str)
+=head2 CreateIPSet
+
+=over
+
+=item ChangeToken => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::CreateIPSet>
 
@@ -565,7 +602,22 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 CreateRateBasedRule(ChangeToken => Str, MetricName => Str, Name => Str, RateKey => Str, RateLimit => Int)
+=head2 CreateRateBasedRule
+
+=over
+
+=item ChangeToken => Str
+
+=item MetricName => Str
+
+=item Name => Str
+
+=item RateKey => Str
+
+=item RateLimit => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::CreateRateBasedRule>
 
@@ -674,7 +726,16 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 CreateRegexMatchSet(ChangeToken => Str, Name => Str)
+=head2 CreateRegexMatchSet
+
+=over
+
+=item ChangeToken => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::CreateRegexMatchSet>
 
@@ -721,7 +782,16 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 CreateRegexPatternSet(ChangeToken => Str, Name => Str)
+=head2 CreateRegexPatternSet
+
+=over
+
+=item ChangeToken => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::CreateRegexPatternSet>
 
@@ -763,7 +833,18 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 CreateRule(ChangeToken => Str, MetricName => Str, Name => Str)
+=head2 CreateRule
+
+=over
+
+=item ChangeToken => Str
+
+=item MetricName => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::CreateRule>
 
@@ -833,7 +914,18 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 CreateRuleGroup(ChangeToken => Str, MetricName => Str, Name => Str)
+=head2 CreateRuleGroup
+
+=over
+
+=item ChangeToken => Str
+
+=item MetricName => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::CreateRuleGroup>
 
@@ -867,7 +959,16 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 CreateSizeConstraintSet(ChangeToken => Str, Name => Str)
+=head2 CreateSizeConstraintSet
+
+=over
+
+=item ChangeToken => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::CreateSizeConstraintSet>
 
@@ -912,7 +1013,16 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 CreateSqlInjectionMatchSet(ChangeToken => Str, Name => Str)
+=head2 CreateSqlInjectionMatchSet
+
+=over
+
+=item ChangeToken => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::CreateSqlInjectionMatchSet>
 
@@ -955,7 +1065,20 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 CreateWebACL(ChangeToken => Str, DefaultAction => L<Paws::WAFRegional::WafAction>, MetricName => Str, Name => Str)
+=head2 CreateWebACL
+
+=over
+
+=item ChangeToken => Str
+
+=item DefaultAction => L<Paws::WAFRegional::WafAction>
+
+=item MetricName => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::CreateWebACL>
 
@@ -1013,7 +1136,16 @@ Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 CreateXssMatchSet(ChangeToken => Str, Name => Str)
+=head2 CreateXssMatchSet
+
+=over
+
+=item ChangeToken => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::CreateXssMatchSet>
 
@@ -1055,7 +1187,16 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 DeleteByteMatchSet(ByteMatchSetId => Str, ChangeToken => Str)
+=head2 DeleteByteMatchSet
+
+=over
+
+=item ByteMatchSetId => Str
+
+=item ChangeToken => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::DeleteByteMatchSet>
 
@@ -1090,7 +1231,16 @@ Submit a C<DeleteByteMatchSet> request.
 
 
 
-=head2 DeleteGeoMatchSet(ChangeToken => Str, GeoMatchSetId => Str)
+=head2 DeleteGeoMatchSet
+
+=over
+
+=item ChangeToken => Str
+
+=item GeoMatchSetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::DeleteGeoMatchSet>
 
@@ -1125,7 +1275,16 @@ Submit a C<DeleteGeoMatchSet> request.
 
 
 
-=head2 DeleteIPSet(ChangeToken => Str, IPSetId => Str)
+=head2 DeleteIPSet
+
+=over
+
+=item ChangeToken => Str
+
+=item IPSetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::DeleteIPSet>
 
@@ -1159,7 +1318,14 @@ Submit a C<DeleteIPSet> request.
 
 
 
-=head2 DeletePermissionPolicy(ResourceArn => Str)
+=head2 DeletePermissionPolicy
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::DeletePermissionPolicy>
 
@@ -1170,7 +1336,16 @@ Permanently deletes an IAM policy from the specified RuleGroup.
 The user making the request must be the owner of the RuleGroup.
 
 
-=head2 DeleteRateBasedRule(ChangeToken => Str, RuleId => Str)
+=head2 DeleteRateBasedRule
+
+=over
+
+=item ChangeToken => Str
+
+=item RuleId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::DeleteRateBasedRule>
 
@@ -1205,7 +1380,16 @@ Submit a C<DeleteRateBasedRule> request.
 
 
 
-=head2 DeleteRegexMatchSet(ChangeToken => Str, RegexMatchSetId => Str)
+=head2 DeleteRegexMatchSet
+
+=over
+
+=item ChangeToken => Str
+
+=item RegexMatchSetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::DeleteRegexMatchSet>
 
@@ -1240,7 +1424,16 @@ Submit a C<DeleteRegexMatchSet> request.
 
 
 
-=head2 DeleteRegexPatternSet(ChangeToken => Str, RegexPatternSetId => Str)
+=head2 DeleteRegexPatternSet
+
+=over
+
+=item ChangeToken => Str
+
+=item RegexPatternSetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::DeleteRegexPatternSet>
 
@@ -1251,7 +1444,16 @@ C<RegexPatternSet> if it's still used in any C<RegexMatchSet> or if the
 C<RegexPatternSet> is not empty.
 
 
-=head2 DeleteRule(ChangeToken => Str, RuleId => Str)
+=head2 DeleteRule
+
+=over
+
+=item ChangeToken => Str
+
+=item RuleId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::DeleteRule>
 
@@ -1287,7 +1489,16 @@ Submit a C<DeleteRule> request.
 
 
 
-=head2 DeleteRuleGroup(ChangeToken => Str, RuleGroupId => Str)
+=head2 DeleteRuleGroup
+
+=over
+
+=item ChangeToken => Str
+
+=item RuleGroupId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::DeleteRuleGroup>
 
@@ -1323,7 +1534,16 @@ Submit a C<DeleteRuleGroup> request.
 
 
 
-=head2 DeleteSizeConstraintSet(ChangeToken => Str, SizeConstraintSetId => Str)
+=head2 DeleteSizeConstraintSet
+
+=over
+
+=item ChangeToken => Str
+
+=item SizeConstraintSetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::DeleteSizeConstraintSet>
 
@@ -1359,7 +1579,16 @@ Submit a C<DeleteSizeConstraintSet> request.
 
 
 
-=head2 DeleteSqlInjectionMatchSet(ChangeToken => Str, SqlInjectionMatchSetId => Str)
+=head2 DeleteSqlInjectionMatchSet
+
+=over
+
+=item ChangeToken => Str
+
+=item SqlInjectionMatchSetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::DeleteSqlInjectionMatchSet>
 
@@ -1395,7 +1624,16 @@ Submit a C<DeleteSqlInjectionMatchSet> request.
 
 
 
-=head2 DeleteWebACL(ChangeToken => Str, WebACLId => Str)
+=head2 DeleteWebACL
+
+=over
+
+=item ChangeToken => Str
+
+=item WebACLId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::DeleteWebACL>
 
@@ -1426,7 +1664,16 @@ Submit a C<DeleteWebACL> request.
 
 
 
-=head2 DeleteXssMatchSet(ChangeToken => Str, XssMatchSetId => Str)
+=head2 DeleteXssMatchSet
+
+=over
+
+=item ChangeToken => Str
+
+=item XssMatchSetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::DeleteXssMatchSet>
 
@@ -1462,7 +1709,14 @@ Submit a C<DeleteXssMatchSet> request.
 
 
 
-=head2 DisassociateWebACL(ResourceArn => Str)
+=head2 DisassociateWebACL
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::DisassociateWebACL>
 
@@ -1471,7 +1725,14 @@ Returns: a L<Paws::WAFRegional::DisassociateWebACLResponse> instance
 Removes a web ACL from the specified resource.
 
 
-=head2 GetByteMatchSet(ByteMatchSetId => Str)
+=head2 GetByteMatchSet
+
+=over
+
+=item ByteMatchSetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::GetByteMatchSet>
 
@@ -1480,7 +1741,12 @@ Returns: a L<Paws::WAFRegional::GetByteMatchSetResponse> instance
 Returns the ByteMatchSet specified by C<ByteMatchSetId>.
 
 
-=head2 GetChangeToken()
+=head2 GetChangeToken
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::WAFRegional::GetChangeToken>
 
@@ -1503,7 +1769,14 @@ AWS WAF is propagating the change to all AWS WAF servers. Use
 C<GetChangeTokenStatus> to determine the status of your change token.
 
 
-=head2 GetChangeTokenStatus(ChangeToken => Str)
+=head2 GetChangeTokenStatus
+
+=over
+
+=item ChangeToken => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::GetChangeTokenStatus>
 
@@ -1533,7 +1806,14 @@ C<IN_SYNC>: Propagation is complete.
 
 
 
-=head2 GetGeoMatchSet(GeoMatchSetId => Str)
+=head2 GetGeoMatchSet
+
+=over
+
+=item GeoMatchSetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::GetGeoMatchSet>
 
@@ -1542,7 +1822,14 @@ Returns: a L<Paws::WAFRegional::GetGeoMatchSetResponse> instance
 Returns the GeoMatchSet that is specified by C<GeoMatchSetId>.
 
 
-=head2 GetIPSet(IPSetId => Str)
+=head2 GetIPSet
+
+=over
+
+=item IPSetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::GetIPSet>
 
@@ -1551,7 +1838,14 @@ Returns: a L<Paws::WAFRegional::GetIPSetResponse> instance
 Returns the IPSet that is specified by C<IPSetId>.
 
 
-=head2 GetPermissionPolicy(ResourceArn => Str)
+=head2 GetPermissionPolicy
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::GetPermissionPolicy>
 
@@ -1560,7 +1854,14 @@ Returns: a L<Paws::WAFRegional::GetPermissionPolicyResponse> instance
 Returns the IAM policy attached to the RuleGroup.
 
 
-=head2 GetRateBasedRule(RuleId => Str)
+=head2 GetRateBasedRule
+
+=over
+
+=item RuleId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::GetRateBasedRule>
 
@@ -1570,7 +1871,16 @@ Returns the RateBasedRule that is specified by the C<RuleId> that you
 included in the C<GetRateBasedRule> request.
 
 
-=head2 GetRateBasedRuleManagedKeys(RuleId => Str, [NextMarker => Str])
+=head2 GetRateBasedRuleManagedKeys
+
+=over
+
+=item RuleId => Str
+
+=item [NextMarker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::GetRateBasedRuleManagedKeys>
 
@@ -1583,7 +1893,14 @@ addresses exceed the rate limit, the 10,000 addresses with the highest
 rates will be blocked.
 
 
-=head2 GetRegexMatchSet(RegexMatchSetId => Str)
+=head2 GetRegexMatchSet
+
+=over
+
+=item RegexMatchSetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::GetRegexMatchSet>
 
@@ -1592,7 +1909,14 @@ Returns: a L<Paws::WAFRegional::GetRegexMatchSetResponse> instance
 Returns the RegexMatchSet specified by C<RegexMatchSetId>.
 
 
-=head2 GetRegexPatternSet(RegexPatternSetId => Str)
+=head2 GetRegexPatternSet
+
+=over
+
+=item RegexPatternSetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::GetRegexPatternSet>
 
@@ -1601,7 +1925,14 @@ Returns: a L<Paws::WAFRegional::GetRegexPatternSetResponse> instance
 Returns the RegexPatternSet specified by C<RegexPatternSetId>.
 
 
-=head2 GetRule(RuleId => Str)
+=head2 GetRule
+
+=over
+
+=item RuleId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::GetRule>
 
@@ -1611,7 +1942,14 @@ Returns the Rule that is specified by the C<RuleId> that you included
 in the C<GetRule> request.
 
 
-=head2 GetRuleGroup(RuleGroupId => Str)
+=head2 GetRuleGroup
+
+=over
+
+=item RuleGroupId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::GetRuleGroup>
 
@@ -1623,7 +1961,20 @@ included in the C<GetRuleGroup> request.
 To view the rules in a rule group, use ListActivatedRulesInRuleGroup.
 
 
-=head2 GetSampledRequests(MaxItems => Int, RuleId => Str, TimeWindow => L<Paws::WAFRegional::TimeWindow>, WebAclId => Str)
+=head2 GetSampledRequests
+
+=over
+
+=item MaxItems => Int
+
+=item RuleId => Str
+
+=item TimeWindow => L<Paws::WAFRegional::TimeWindow>
+
+=item WebAclId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::GetSampledRequests>
 
@@ -1643,7 +1994,14 @@ range. This new time range indicates the actual period during which AWS
 WAF selected the requests in the sample.
 
 
-=head2 GetSizeConstraintSet(SizeConstraintSetId => Str)
+=head2 GetSizeConstraintSet
+
+=over
+
+=item SizeConstraintSetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::GetSizeConstraintSet>
 
@@ -1652,7 +2010,14 @@ Returns: a L<Paws::WAFRegional::GetSizeConstraintSetResponse> instance
 Returns the SizeConstraintSet specified by C<SizeConstraintSetId>.
 
 
-=head2 GetSqlInjectionMatchSet(SqlInjectionMatchSetId => Str)
+=head2 GetSqlInjectionMatchSet
+
+=over
+
+=item SqlInjectionMatchSetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::GetSqlInjectionMatchSet>
 
@@ -1662,7 +2027,14 @@ Returns the SqlInjectionMatchSet that is specified by
 C<SqlInjectionMatchSetId>.
 
 
-=head2 GetWebACL(WebACLId => Str)
+=head2 GetWebACL
+
+=over
+
+=item WebACLId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::GetWebACL>
 
@@ -1671,7 +2043,14 @@ Returns: a L<Paws::WAFRegional::GetWebACLResponse> instance
 Returns the WebACL that is specified by C<WebACLId>.
 
 
-=head2 GetWebACLForResource(ResourceArn => Str)
+=head2 GetWebACLForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::GetWebACLForResource>
 
@@ -1680,7 +2059,14 @@ Returns: a L<Paws::WAFRegional::GetWebACLForResourceResponse> instance
 Returns the web ACL for the specified resource.
 
 
-=head2 GetXssMatchSet(XssMatchSetId => Str)
+=head2 GetXssMatchSet
+
+=over
+
+=item XssMatchSetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::GetXssMatchSet>
 
@@ -1689,7 +2075,18 @@ Returns: a L<Paws::WAFRegional::GetXssMatchSetResponse> instance
 Returns the XssMatchSet that is specified by C<XssMatchSetId>.
 
 
-=head2 ListActivatedRulesInRuleGroup([Limit => Int, NextMarker => Str, RuleGroupId => Str])
+=head2 ListActivatedRulesInRuleGroup
+
+=over
+
+=item [Limit => Int]
+
+=item [NextMarker => Str]
+
+=item [RuleGroupId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::ListActivatedRulesInRuleGroup>
 
@@ -1698,7 +2095,16 @@ Returns: a L<Paws::WAFRegional::ListActivatedRulesInRuleGroupResponse> instance
 Returns an array of ActivatedRule objects.
 
 
-=head2 ListByteMatchSets([Limit => Int, NextMarker => Str])
+=head2 ListByteMatchSets
+
+=over
+
+=item [Limit => Int]
+
+=item [NextMarker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::ListByteMatchSets>
 
@@ -1707,7 +2113,16 @@ Returns: a L<Paws::WAFRegional::ListByteMatchSetsResponse> instance
 Returns an array of ByteMatchSetSummary objects.
 
 
-=head2 ListGeoMatchSets([Limit => Int, NextMarker => Str])
+=head2 ListGeoMatchSets
+
+=over
+
+=item [Limit => Int]
+
+=item [NextMarker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::ListGeoMatchSets>
 
@@ -1716,7 +2131,16 @@ Returns: a L<Paws::WAFRegional::ListGeoMatchSetsResponse> instance
 Returns an array of GeoMatchSetSummary objects in the response.
 
 
-=head2 ListIPSets([Limit => Int, NextMarker => Str])
+=head2 ListIPSets
+
+=over
+
+=item [Limit => Int]
+
+=item [NextMarker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::ListIPSets>
 
@@ -1725,7 +2149,16 @@ Returns: a L<Paws::WAFRegional::ListIPSetsResponse> instance
 Returns an array of IPSetSummary objects in the response.
 
 
-=head2 ListRateBasedRules([Limit => Int, NextMarker => Str])
+=head2 ListRateBasedRules
+
+=over
+
+=item [Limit => Int]
+
+=item [NextMarker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::ListRateBasedRules>
 
@@ -1734,7 +2167,16 @@ Returns: a L<Paws::WAFRegional::ListRateBasedRulesResponse> instance
 Returns an array of RuleSummary objects.
 
 
-=head2 ListRegexMatchSets([Limit => Int, NextMarker => Str])
+=head2 ListRegexMatchSets
+
+=over
+
+=item [Limit => Int]
+
+=item [NextMarker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::ListRegexMatchSets>
 
@@ -1743,7 +2185,16 @@ Returns: a L<Paws::WAFRegional::ListRegexMatchSetsResponse> instance
 Returns an array of RegexMatchSetSummary objects.
 
 
-=head2 ListRegexPatternSets([Limit => Int, NextMarker => Str])
+=head2 ListRegexPatternSets
+
+=over
+
+=item [Limit => Int]
+
+=item [NextMarker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::ListRegexPatternSets>
 
@@ -1752,7 +2203,14 @@ Returns: a L<Paws::WAFRegional::ListRegexPatternSetsResponse> instance
 Returns an array of RegexPatternSetSummary objects.
 
 
-=head2 ListResourcesForWebACL(WebACLId => Str)
+=head2 ListResourcesForWebACL
+
+=over
+
+=item WebACLId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::ListResourcesForWebACL>
 
@@ -1761,7 +2219,16 @@ Returns: a L<Paws::WAFRegional::ListResourcesForWebACLResponse> instance
 Returns an array of resources associated with the specified web ACL.
 
 
-=head2 ListRuleGroups([Limit => Int, NextMarker => Str])
+=head2 ListRuleGroups
+
+=over
+
+=item [Limit => Int]
+
+=item [NextMarker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::ListRuleGroups>
 
@@ -1770,7 +2237,16 @@ Returns: a L<Paws::WAFRegional::ListRuleGroupsResponse> instance
 Returns an array of RuleGroup objects.
 
 
-=head2 ListRules([Limit => Int, NextMarker => Str])
+=head2 ListRules
+
+=over
+
+=item [Limit => Int]
+
+=item [NextMarker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::ListRules>
 
@@ -1779,7 +2255,16 @@ Returns: a L<Paws::WAFRegional::ListRulesResponse> instance
 Returns an array of RuleSummary objects.
 
 
-=head2 ListSizeConstraintSets([Limit => Int, NextMarker => Str])
+=head2 ListSizeConstraintSets
+
+=over
+
+=item [Limit => Int]
+
+=item [NextMarker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::ListSizeConstraintSets>
 
@@ -1788,7 +2273,16 @@ Returns: a L<Paws::WAFRegional::ListSizeConstraintSetsResponse> instance
 Returns an array of SizeConstraintSetSummary objects.
 
 
-=head2 ListSqlInjectionMatchSets([Limit => Int, NextMarker => Str])
+=head2 ListSqlInjectionMatchSets
+
+=over
+
+=item [Limit => Int]
+
+=item [NextMarker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::ListSqlInjectionMatchSets>
 
@@ -1797,7 +2291,16 @@ Returns: a L<Paws::WAFRegional::ListSqlInjectionMatchSetsResponse> instance
 Returns an array of SqlInjectionMatchSet objects.
 
 
-=head2 ListSubscribedRuleGroups([Limit => Int, NextMarker => Str])
+=head2 ListSubscribedRuleGroups
+
+=over
+
+=item [Limit => Int]
+
+=item [NextMarker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::ListSubscribedRuleGroups>
 
@@ -1806,7 +2309,16 @@ Returns: a L<Paws::WAFRegional::ListSubscribedRuleGroupsResponse> instance
 Returns an array of RuleGroup objects that you are subscribed to.
 
 
-=head2 ListWebACLs([Limit => Int, NextMarker => Str])
+=head2 ListWebACLs
+
+=over
+
+=item [Limit => Int]
+
+=item [NextMarker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::ListWebACLs>
 
@@ -1815,7 +2327,16 @@ Returns: a L<Paws::WAFRegional::ListWebACLsResponse> instance
 Returns an array of WebACLSummary objects in the response.
 
 
-=head2 ListXssMatchSets([Limit => Int, NextMarker => Str])
+=head2 ListXssMatchSets
+
+=over
+
+=item [Limit => Int]
+
+=item [NextMarker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::ListXssMatchSets>
 
@@ -1824,7 +2345,16 @@ Returns: a L<Paws::WAFRegional::ListXssMatchSetsResponse> instance
 Returns an array of XssMatchSet objects.
 
 
-=head2 PutPermissionPolicy(Policy => Str, ResourceArn => Str)
+=head2 PutPermissionPolicy
+
+=over
+
+=item Policy => Str
+
+=item ResourceArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::PutPermissionPolicy>
 
@@ -1882,7 +2412,18 @@ An example of a valid policy parameter is shown in the Examples section
 below.
 
 
-=head2 UpdateByteMatchSet(ByteMatchSetId => Str, ChangeToken => Str, Updates => ArrayRef[L<Paws::WAFRegional::ByteMatchSetUpdate>])
+=head2 UpdateByteMatchSet
+
+=over
+
+=item ByteMatchSetId => Str
+
+=item ChangeToken => Str
+
+=item Updates => ArrayRef[L<Paws::WAFRegional::ByteMatchSetUpdate>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::UpdateByteMatchSet>
 
@@ -1952,7 +2493,18 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 UpdateGeoMatchSet(ChangeToken => Str, GeoMatchSetId => Str, Updates => ArrayRef[L<Paws::WAFRegional::GeoMatchSetUpdate>])
+=head2 UpdateGeoMatchSet
+
+=over
+
+=item ChangeToken => Str
+
+=item GeoMatchSetId => Str
+
+=item Updates => ArrayRef[L<Paws::WAFRegional::GeoMatchSetUpdate>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::UpdateGeoMatchSet>
 
@@ -2010,7 +2562,18 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 UpdateIPSet(ChangeToken => Str, IPSetId => Str, Updates => ArrayRef[L<Paws::WAFRegional::IPSetUpdate>])
+=head2 UpdateIPSet
+
+=over
+
+=item ChangeToken => Str
+
+=item IPSetId => Str
+
+=item Updates => ArrayRef[L<Paws::WAFRegional::IPSetUpdate>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::UpdateIPSet>
 
@@ -2103,7 +2666,20 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 UpdateRateBasedRule(ChangeToken => Str, RateLimit => Int, RuleId => Str, Updates => ArrayRef[L<Paws::WAFRegional::RuleUpdate>])
+=head2 UpdateRateBasedRule
+
+=over
+
+=item ChangeToken => Str
+
+=item RateLimit => Int
+
+=item RuleId => Str
+
+=item Updates => ArrayRef[L<Paws::WAFRegional::RuleUpdate>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::UpdateRateBasedRule>
 
@@ -2170,7 +2746,18 @@ By adding this C<RateBasedRule> to a C<WebACL>, you could limit
 requests to your login page without affecting the rest of your site.
 
 
-=head2 UpdateRegexMatchSet(ChangeToken => Str, RegexMatchSetId => Str, Updates => ArrayRef[L<Paws::WAFRegional::RegexMatchSetUpdate>])
+=head2 UpdateRegexMatchSet
+
+=over
+
+=item ChangeToken => Str
+
+=item RegexMatchSetId => Str
+
+=item Updates => ArrayRef[L<Paws::WAFRegional::RegexMatchSetUpdate>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::UpdateRegexMatchSet>
 
@@ -2239,7 +2826,18 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 UpdateRegexPatternSet(ChangeToken => Str, RegexPatternSetId => Str, Updates => ArrayRef[L<Paws::WAFRegional::RegexPatternSetUpdate>])
+=head2 UpdateRegexPatternSet
+
+=over
+
+=item ChangeToken => Str
+
+=item RegexPatternSetId => Str
+
+=item Updates => ArrayRef[L<Paws::WAFRegional::RegexPatternSetUpdate>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::UpdateRegexPatternSet>
 
@@ -2312,7 +2910,18 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 UpdateRule(ChangeToken => Str, RuleId => Str, Updates => ArrayRef[L<Paws::WAFRegional::RuleUpdate>])
+=head2 UpdateRule
+
+=over
+
+=item ChangeToken => Str
+
+=item RuleId => Str
+
+=item Updates => ArrayRef[L<Paws::WAFRegional::RuleUpdate>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::UpdateRule>
 
@@ -2381,7 +2990,18 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 UpdateRuleGroup(ChangeToken => Str, RuleGroupId => Str, Updates => ArrayRef[L<Paws::WAFRegional::RuleGroupUpdate>])
+=head2 UpdateRuleGroup
+
+=over
+
+=item ChangeToken => Str
+
+=item RuleGroupId => Str
+
+=item Updates => ArrayRef[L<Paws::WAFRegional::RuleGroupUpdate>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::UpdateRuleGroup>
 
@@ -2427,7 +3047,18 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 UpdateSizeConstraintSet(ChangeToken => Str, SizeConstraintSetId => Str, Updates => ArrayRef[L<Paws::WAFRegional::SizeConstraintSetUpdate>])
+=head2 UpdateSizeConstraintSet
+
+=over
+
+=item ChangeToken => Str
+
+=item SizeConstraintSetId => Str
+
+=item Updates => ArrayRef[L<Paws::WAFRegional::SizeConstraintSetUpdate>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::UpdateSizeConstraintSet>
 
@@ -2505,7 +3136,18 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 UpdateSqlInjectionMatchSet(ChangeToken => Str, SqlInjectionMatchSetId => Str, Updates => ArrayRef[L<Paws::WAFRegional::SqlInjectionMatchSetUpdate>])
+=head2 UpdateSqlInjectionMatchSet
+
+=over
+
+=item ChangeToken => Str
+
+=item SqlInjectionMatchSetId => Str
+
+=item Updates => ArrayRef[L<Paws::WAFRegional::SqlInjectionMatchSetUpdate>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::UpdateSqlInjectionMatchSet>
 
@@ -2570,7 +3212,20 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 UpdateWebACL(ChangeToken => Str, WebACLId => Str, [DefaultAction => L<Paws::WAFRegional::WafAction>, Updates => ArrayRef[L<Paws::WAFRegional::WebACLUpdate>]])
+=head2 UpdateWebACL
+
+=over
+
+=item ChangeToken => Str
+
+=item WebACLId => Str
+
+=item [DefaultAction => L<Paws::WAFRegional::WafAction>]
+
+=item [Updates => ArrayRef[L<Paws::WAFRegional::WebACLUpdate>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::UpdateWebACL>
 
@@ -2656,7 +3311,18 @@ HTTP requests, see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
-=head2 UpdateXssMatchSet(ChangeToken => Str, Updates => ArrayRef[L<Paws::WAFRegional::XssMatchSetUpdate>], XssMatchSetId => Str)
+=head2 UpdateXssMatchSet
+
+=over
+
+=item ChangeToken => Str
+
+=item Updates => ArrayRef[L<Paws::WAFRegional::XssMatchSetUpdate>]
+
+=item XssMatchSetId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WAFRegional::UpdateXssMatchSet>
 

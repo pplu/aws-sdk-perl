@@ -54,8 +54,7 @@ Contains information about the schema attribute.
 
 =head2 Mutable => Bool
 
-  Specifies whether the attribute can be changed once it has been
-created.
+  Specifies whether the value of the attribute can be changed.
 
 
 =head2 Name => Str
