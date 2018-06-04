@@ -523,6 +523,9 @@ package Paws::API::Builder {
     $example_str .= join("\n", @args);
     $example_str .= "\n);";
 
+    if ($out_shape) {
+      $example_str .= $self->example_results($out_shape);
+    }
 
     return $self->perltidy_source( $example_str );
   }
@@ -649,8 +652,8 @@ package Paws::API::Builder {
 
       if ($out_shape && %{ $ex->{ output } || {} }) {
         $example_str .= "# Results:\n";
-        $example_str .= "print \$${out_shape_name}->{$_};\n# " . $self->dump_perl($ex->{ output }{$_}, 1) . "\n" for keys( %{$ex->{ output }});
-        $example_str .= "\n\n";
+        $example_str .= "my \$$_ = \$${out_shape_name}->$_;\n" for keys( %{$ex->{ output }});
+        $example_str .= "\n# Returns a L<" . $self->api . "::$out_shape_name> object.\n";
       }
     }
 
@@ -659,28 +662,40 @@ package Paws::API::Builder {
     return $tidied_example;
   }
 
+  sub example_results {
+    my ($self, $out_shape_name) = @_;
+
+    my $example_str = '';
+    my $out_shape = $self->shape($out_shape_name);
+    return '' if !%{ $out_shape->{members} };
+    $example_str .= "\n\n# Results:\n";
+    $example_str .= "my \$$_ = \$$out_shape_name->$_;\n"
+      for (keys %{ $out_shape->{members} });
+    $example_str .= "\n# Returns a L<" . $self->api . "::$out_shape_name> object.\n";
+    return $example_str;
+  }
+
   sub dump_perl {
-    my ($self, $val, $depth, $is_key) = @_;
+    my ($self, $val, $depth, %args) = @_;
 
     if (!ref $val) {
       return $val
         if (Scalar::Util::looks_like_number($val));
 
-      return qq{'} . ucfirst($val) . qq{'}
-        if ($is_key);
+      my $quote_key = qq{'};
+      return $quote_key . ($args{is_key} ? ucfirst($val) : $val ) . $quote_key
 
-      return qq{'$val'};
     } elsif ( ref ($val) =~ /Boolean/) {
       return "$val";
     } elsif (ref $val eq 'ARRAY') {
       return "\n[\n"
-        . join(",\n", (map { $self->dump_perl($_, $depth+1) } (@$val) ))
+        . join(",\n", (map { $self->dump_perl($_, $depth+1, %args) } (@$val) ))
         . "\n]";
     } elsif( ref $val eq 'HASH' ) {
       return "\n{\n"
-        . join(",\n", (map { $self->dump_perl($_, $depth+1, 1)
+        . join(",\n", (map { $self->dump_perl($_, $depth+1, %args, is_key => 1)
                              . ' => '
-                             . $self->dump_perl($val->{$_}, $depth+1) }
+                             . $self->dump_perl($val->{$_}, $depth+1, %args, no_quote => 1) }
                                  (keys %$val) ))
         . "\n}";
 
