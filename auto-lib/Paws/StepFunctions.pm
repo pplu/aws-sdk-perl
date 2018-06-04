@@ -1,6 +1,7 @@
 package Paws::StepFunctions;
   use Moose;
   sub service { 'states' }
+  sub signing_name { 'states' }
   sub version { '2016-11-23' }
   sub target_prefix { 'AWSStepFunctions' }
   sub json_version { "1.0" }
@@ -254,6 +255,8 @@ access and use Step Functions using the console, the AWS SDKs, or an
 HTTP API. For more information about Step Functions, see the I< AWS
 Step Functions Developer Guide
 (http://docs.aws.amazon.com/step-functions/latest/dg/welcome.html) >.
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/step-functions/>
 
 =head1 METHODS
 

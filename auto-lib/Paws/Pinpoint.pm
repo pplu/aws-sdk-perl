@@ -1,6 +1,7 @@
 package Paws::Pinpoint;
   use Moose;
   sub service { 'pinpoint' }
+  sub signing_name { 'mobiletargeting' }
   sub version { '2016-12-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -370,6 +371,8 @@ Paws::Pinpoint - Perl Interface to AWS Amazon Pinpoint
 =head1 DESCRIPTION
 
 
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head1 METHODS
 

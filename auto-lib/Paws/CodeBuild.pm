@@ -1,6 +1,7 @@
 package Paws::CodeBuild;
   use Moose;
   sub service { 'codebuild' }
+  sub signing_name { 'codebuild' }
   sub version { '2016-10-06' }
   sub target_prefix { 'CodeBuild_20161006' }
   sub json_version { "1.1" }
@@ -292,6 +293,8 @@ that are managed by AWS CodeBuild.
 =back
 
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06>
+
 =head1 METHODS
 
 =head2 BatchDeleteBuilds
@@ -407,7 +410,7 @@ webhooks, and one through AWS CodePipeline. Because billing is on a
 per-build basis, you will be billed for both builds. Therefore, if you
 are using AWS CodePipeline, we recommend that you disable webhooks in
 CodeBuild. In the AWS CodeBuild console, clear the Webhook box. For
-more information, see step 9 in Change a Build Project's Settings
+more information, see step 5 in Change a Build Project's Settings
 (http://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console).
 
 
@@ -547,9 +550,33 @@ representing a single build project.
 
 =item [BuildspecOverride => Str]
 
+=item [CacheOverride => L<Paws::CodeBuild::ProjectCache>]
+
+=item [CertificateOverride => Str]
+
+=item [ComputeTypeOverride => Str]
+
+=item [EnvironmentTypeOverride => Str]
+
 =item [EnvironmentVariablesOverride => ArrayRef[L<Paws::CodeBuild::EnvironmentVariable>]]
 
 =item [GitCloneDepthOverride => Int]
+
+=item [IdempotencyToken => Str]
+
+=item [ImageOverride => Str]
+
+=item [InsecureSslOverride => Bool]
+
+=item [PrivilegedModeOverride => Bool]
+
+=item [ServiceRoleOverride => Str]
+
+=item [SourceAuthOverride => L<Paws::CodeBuild::SourceAuth>]
+
+=item [SourceLocationOverride => Str]
+
+=item [SourceTypeOverride => Str]
 
 =item [SourceVersion => Str]
 

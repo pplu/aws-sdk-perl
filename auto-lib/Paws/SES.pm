@@ -1,6 +1,7 @@
 package Paws::SES;
   use Moose;
   sub service { 'email' }
+  sub signing_name { 'ses' }
   sub version { '2010-12-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -442,9 +443,10 @@ Paws::SES - Perl Interface to AWS Amazon Simple Email Service
 
 Amazon Simple Email Service
 
-This is the API Reference for Amazon Simple Email Service
-(https://aws.amazon.com/ses/) (Amazon SES). This documentation is
-intended to be used in conjunction with the Amazon SES Developer Guide
+This document contains reference information for the Amazon Simple
+Email Service (https://aws.amazon.com/ses/) (Amazon SES) API, version
+2010-12-01. This document is best used in conjunction with the Amazon
+SES Developer Guide
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
 
 For a list of Amazon SES endpoints to use in service requests, see
@@ -452,6 +454,8 @@ Regions and Amazon SES
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/regions.html) in
 the Amazon SES Developer Guide
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/ses/>
 
 =head1 METHODS
 
@@ -522,9 +526,8 @@ Returns: a L<Paws::SES::CreateConfigurationSetEventDestinationResponse> instance
 Creates a configuration set event destination.
 
 When you create or update an event destination, you must provide one,
-and only one, destination. The destination can be Amazon CloudWatch,
-Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon
-SNS).
+and only one, destination. The destination can be CloudWatch, Amazon
+Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS).
 
 An event destination is the AWS service to which Amazon SES publishes
 the email sending events associated with a configuration set. For
@@ -556,11 +559,8 @@ for open and click event tracking.
 By default, images and links used for tracking open and click events
 are hosted on domains operated by Amazon SES. You can configure a
 subdomain of your own to handle these events. For information about
-using configuration sets, see Configuring Custom Domains to Handle Open
-and Click Tracking
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html)
-in the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
+using custom domains, see the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html).
 
 
 =head2 CreateCustomVerificationEmailTemplate
@@ -590,7 +590,7 @@ Creates a new custom verification email template.
 
 For more information about custom verification email templates, see
 Using Custom Verification Email Templates
-(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
 in the I<Amazon SES Developer Guide>.
 
 You can execute this operation no more than once per second.
@@ -751,11 +751,8 @@ for open and click event tracking.
 By default, images and links used for tracking open and click events
 are hosted on domains operated by Amazon SES. You can configure a
 subdomain of your own to handle these events. For information about
-using configuration sets, see Configuring Custom Domains to Handle Open
-and Click Tracking
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html)
-in the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
+using custom domains, see the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html).
 
 Deleting this kind of association will result in emails sent using the
 specified configuration set to capture open and click events using the
@@ -779,7 +776,7 @@ Deletes an existing custom verification email template.
 
 For more information about custom verification email templates, see
 Using Custom Verification Email Templates
-(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
 in the I<Amazon SES Developer Guide>.
 
 You can execute this operation no more than once per second.
@@ -1042,7 +1039,8 @@ Each argument is described in detail in: L<Paws::SES::GetAccountSendingEnabled>
 
 Returns: a L<Paws::SES::GetAccountSendingEnabledResponse> instance
 
-Returns the email sending status of the Amazon SES account.
+Returns the email sending status of the Amazon SES account for the
+current region.
 
 You can execute this operation no more than once per second.
 
@@ -1065,7 +1063,7 @@ you specify.
 
 For more information about custom verification email templates, see
 Using Custom Verification Email Templates
-(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
 in the I<Amazon SES Developer Guide>.
 
 You can execute this operation no more than once per second.
@@ -1263,7 +1261,7 @@ Each argument is described in detail in: L<Paws::SES::GetSendStatistics>
 
 Returns: a L<Paws::SES::GetSendStatisticsResponse> instance
 
-Provides sending statistics for the Amazon SES account. The result is a
+Provides sending statistics for the current AWS Region. The result is a
 list of data points, representing the last two weeks of sending
 activity. Each data point in the list contains statistics for a
 15-minute period of time.
@@ -1306,8 +1304,8 @@ Each argument is described in detail in: L<Paws::SES::ListConfigurationSets>
 Returns: a L<Paws::SES::ListConfigurationSetsResponse> instance
 
 Provides a list of the configuration sets associated with your Amazon
-SES account. For information about using configuration sets, see
-Monitoring Your Amazon SES Sending Activity
+SES account in the current AWS Region. For information about using
+configuration sets, see Monitoring Your Amazon SES Sending Activity
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html)
 in the I<Amazon SES Developer Guide.>
 
@@ -1335,12 +1333,12 @@ Each argument is described in detail in: L<Paws::SES::ListCustomVerificationEmai
 
 Returns: a L<Paws::SES::ListCustomVerificationEmailTemplatesResponse> instance
 
-Lists the existing custom verification email templates for your
-account.
+Lists the existing custom verification email templates for your account
+in the current AWS Region.
 
 For more information about custom verification email templates, see
 Using Custom Verification Email Templates
-(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
 in the I<Amazon SES Developer Guide>.
 
 You can execute this operation no more than once per second.
@@ -1364,7 +1362,8 @@ Each argument is described in detail in: L<Paws::SES::ListIdentities>
 Returns: a L<Paws::SES::ListIdentitiesResponse> instance
 
 Returns a list containing all of the identities (email addresses and
-domains) for your AWS account, regardless of verification status.
+domains) for your AWS account in the current AWS Region, regardless of
+verification status.
 
 You can execute this operation no more than once per second.
 
@@ -1409,7 +1408,8 @@ Each argument is described in detail in: L<Paws::SES::ListReceiptFilters>
 
 Returns: a L<Paws::SES::ListReceiptFiltersResponse> instance
 
-Lists the IP address filters associated with your AWS account.
+Lists the IP address filters associated with your AWS account in the
+current AWS Region.
 
 For information about managing IP address filters, see the Amazon SES
 Developer Guide
@@ -1431,10 +1431,10 @@ Each argument is described in detail in: L<Paws::SES::ListReceiptRuleSets>
 
 Returns: a L<Paws::SES::ListReceiptRuleSetsResponse> instance
 
-Lists the receipt rule sets that exist under your AWS account. If there
-are additional receipt rule sets to be retrieved, you will receive a
-C<NextToken> that you can provide to the next call to
-C<ListReceiptRuleSets> to retrieve the additional entries.
+Lists the receipt rule sets that exist under your AWS account in the
+current AWS Region. If there are additional receipt rule sets to be
+retrieved, you will receive a C<NextToken> that you can provide to the
+next call to C<ListReceiptRuleSets> to retrieve the additional entries.
 
 For information about managing receipt rule sets, see the Amazon SES
 Developer Guide
@@ -1458,7 +1458,8 @@ Each argument is described in detail in: L<Paws::SES::ListTemplates>
 
 Returns: a L<Paws::SES::ListTemplatesResponse> instance
 
-Lists the email templates present in your Amazon SES account.
+Lists the email templates present in your Amazon SES account in the
+current AWS Region.
 
 You can execute this operation no more than once per second.
 
@@ -1671,15 +1672,15 @@ Each argument is described in detail in: L<Paws::SES::SendCustomVerificationEmai
 Returns: a L<Paws::SES::SendCustomVerificationEmailResponse> instance
 
 Adds an email address to the list of identities for your Amazon SES
-account and attempts to verify it. As a result of executing this
-operation, a customized verification email is sent to the specified
-address.
+account in the current AWS Region and attempts to verify it. As a
+result of executing this operation, a customized verification email is
+sent to the specified address.
 
 To use this operation, you must first create a custom verification
 email template. For more information about creating and using custom
 verification email templates, see Using Custom Verification Email
 Templates
-(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
 in the I<Amazon SES Developer Guide>.
 
 You can execute this operation no more than once per second.
@@ -1990,6 +1991,18 @@ recipients that are valid.
 
 =back
 
+If your call to the C<SendTemplatedEmail> operation includes all of the
+required parameters, Amazon SES accepts it and returns a Message ID.
+However, if Amazon SES can't render the email because the template
+contains errors, it doesn't send the email. Additionally, because it
+already accepted the message, Amazon SES doesn't return a message
+stating that it was unable to send the email.
+
+For these reasons, we highly recommend that you set up Amazon SES to
+send you notifications when Rendering Failure events occur. For more
+information, see Sending Personalized Email Using the Amazon SES API
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html)
+in the I<Amazon Simple Email Service Developer Guide>.
 
 
 =head2 SetActiveReceiptRuleSet
@@ -2244,11 +2257,11 @@ Each argument is described in detail in: L<Paws::SES::UpdateAccountSendingEnable
 
 Returns: nothing
 
-Enables or disables email sending across your entire Amazon SES
-account. You can use this operation in conjunction with Amazon
-CloudWatch alarms to temporarily pause email sending across your Amazon
-SES account when reputation metrics (such as your bounce on complaint
-rate) reach certain thresholds.
+Enables or disables email sending across your entire Amazon SES account
+in the current AWS Region. You can use this operation in conjunction
+with Amazon CloudWatch alarms to temporarily pause email sending across
+your Amazon SES account in a given AWS Region when reputation metrics
+(such as your bounce or complaint rates) reach certain thresholds.
 
 You can execute this operation no more than once per second.
 
@@ -2301,10 +2314,10 @@ Each argument is described in detail in: L<Paws::SES::UpdateConfigurationSetRepu
 Returns: nothing
 
 Enables or disables the publishing of reputation metrics for emails
-sent using a specific configuration set. Reputation metrics include
-bounce and complaint rates. These metrics are published to Amazon
-CloudWatch. By using Amazon CloudWatch, you can create alarms when
-bounce or complaint rates exceed a certain threshold.
+sent using a specific configuration set in a given AWS Region.
+Reputation metrics include bounce and complaint rates. These metrics
+are published to Amazon CloudWatch. By using CloudWatch, you can create
+alarms when bounce or complaint rates exceed certain thresholds.
 
 You can execute this operation no more than once per second.
 
@@ -2325,10 +2338,11 @@ Each argument is described in detail in: L<Paws::SES::UpdateConfigurationSetSend
 Returns: nothing
 
 Enables or disables email sending for messages sent using a specific
-configuration set. You can use this operation in conjunction with
-Amazon CloudWatch alarms to temporarily pause email sending for a
-configuration set when the reputation metrics for that configuration
-set (such as your bounce on complaint rate) reach certain thresholds.
+configuration set in a given AWS Region. You can use this operation in
+conjunction with Amazon CloudWatch alarms to temporarily pause email
+sending for a configuration set when the reputation metrics for that
+configuration set (such as your bounce on complaint rate) exceed
+certain thresholds.
 
 You can execute this operation no more than once per second.
 
@@ -2354,11 +2368,8 @@ for open and click event tracking.
 By default, images and links used for tracking open and click events
 are hosted on domains operated by Amazon SES. You can configure a
 subdomain of your own to handle these events. For information about
-using configuration sets, see Configuring Custom Domains to Handle Open
-and Click Tracking
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html)
-in the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
+using custom domains, see the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html).
 
 
 =head2 UpdateCustomVerificationEmailTemplate
@@ -2388,7 +2399,7 @@ Updates an existing custom verification email template.
 
 For more information about custom verification email templates, see
 Using Custom Verification Email Templates
-(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
 in the I<Amazon SES Developer Guide>.
 
 You can execute this operation no more than once per second.
@@ -2483,9 +2494,9 @@ Each argument is described in detail in: L<Paws::SES::VerifyDomainIdentity>
 
 Returns: a L<Paws::SES::VerifyDomainIdentityResponse> instance
 
-Adds a domain to the list of identities for your Amazon SES account and
-attempts to verify it. For more information about verifying domains,
-see Verifying Email Addresses and Domains
+Adds a domain to the list of identities for your Amazon SES account in
+the current AWS Region and attempts to verify it. For more information
+about verifying domains, see Verifying Email Addresses and Domains
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html)
 in the I<Amazon SES Developer Guide.>
 
@@ -2523,8 +2534,9 @@ Each argument is described in detail in: L<Paws::SES::VerifyEmailIdentity>
 Returns: a L<Paws::SES::VerifyEmailIdentityResponse> instance
 
 Adds an email address to the list of identities for your Amazon SES
-account and attempts to verify it. As a result of executing this
-operation, a verification email is sent to the specified address.
+account in the current AWS region and attempts to verify it. As a
+result of executing this operation, a verification email is sent to the
+specified address.
 
 You can execute this operation no more than once per second.
 

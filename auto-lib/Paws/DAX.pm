@@ -1,6 +1,7 @@
 package Paws::DAX;
   use Moose;
   sub service { 'dax' }
+  sub signing_name { 'dax' }
   sub version { '2017-04-19' }
   sub target_prefix { 'AmazonDAXV3' }
   sub json_version { "1.1" }
@@ -157,6 +158,8 @@ sub-millisecond latency. You can create a DAX cluster easily, using the
 AWS Management Console. With a few simple modifications to your code,
 your application can begin taking advantage of the DAX cluster and
 realize significant improvements in read performance.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19>
 
 =head1 METHODS
 

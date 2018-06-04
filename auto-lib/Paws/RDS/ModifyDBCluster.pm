@@ -4,6 +4,7 @@ package Paws::RDS::ModifyDBCluster;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
   has BacktrackWindow => (is => 'ro', isa => 'Int');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
+  has CloudwatchLogsExportConfiguration => (is => 'ro', isa => 'Paws::RDS::CloudwatchLogsExportConfiguration');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
@@ -42,7 +43,7 @@ As an example:
   $service_obj->ModifyDBCluster(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/ModifyDBCluster>
 =head1 ATTRIBUTES
 
 
@@ -104,6 +105,13 @@ Must be a value from 1 to 35
 
 =back
 
+
+
+
+=head2 CloudwatchLogsExportConfiguration => L<Paws::RDS::CloudwatchLogsExportConfiguration>
+
+The configuration setting for the log types to be enabled for export to
+CloudWatch Logs for a specific DB cluster.
 
 
 

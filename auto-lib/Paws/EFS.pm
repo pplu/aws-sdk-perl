@@ -1,6 +1,7 @@
 package Paws::EFS;
   use Moose;
   sub service { 'elasticfilesystem' }
+  sub signing_name { 'elasticfilesystem' }
   sub version { '2015-02-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -176,6 +177,8 @@ EFS, storage capacity is elastic, growing and shrinking automatically
 as you add and remove files, so your applications have the storage they
 need, when they need it. For more information, see the User Guide
 (http://docs.aws.amazon.com/efs/latest/ug/api-reference.html).
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01>
 
 =head1 METHODS
 

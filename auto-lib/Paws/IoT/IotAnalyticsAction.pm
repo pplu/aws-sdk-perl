@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::IotAna
 
 =head1 DESCRIPTION
 
-Sends message data to an AWS IoT Analytics channel.
+Sends messge data to an AWS IoT Analytics channel.
 
 =head1 ATTRIBUTES
 
@@ -52,8 +52,9 @@ sent.
 
 =head2 RoleArn => Str
 
-  The ARN of the role which has a policy that grants IoT permission to
-send message data via IoT Analytics (iotanalytics:BatchPutMessage).
+  The ARN of the role which has a policy that grants IoT Analytics
+permission to send message data via IoT Analytics
+(iotanalytics:BatchPutMessage).
 
 
 

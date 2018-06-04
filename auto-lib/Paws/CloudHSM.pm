@@ -1,6 +1,7 @@
 package Paws::CloudHSM;
   use Moose;
   sub service { 'cloudhsm' }
+  sub signing_name { 'cloudhsm' }
   sub version { '2014-05-30' }
   sub target_prefix { 'CloudHsmFrontendService' }
   sub json_version { "1.1" }
@@ -160,6 +161,8 @@ CloudHSM (http://aws.amazon.com/cloudhsm/), the AWS CloudHSM User Guide
 (http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the AWS
 CloudHSM API Reference
 (http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30>
 
 =head1 METHODS
 

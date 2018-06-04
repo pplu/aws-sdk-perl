@@ -1,6 +1,7 @@
 package Paws::Lambda;
   use Moose;
   sub service { 'lambda' }
+  sub signing_name { 'lambda' }
   sub version { '2015-03-31' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -274,6 +275,8 @@ and for information about how the service works, see AWS Lambda: How it
 Works
 (http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html)
 in the B<AWS Lambda Developer Guide>.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31>
 
 =head1 METHODS
 

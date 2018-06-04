@@ -35,7 +35,7 @@ As an example:
   $service_obj->CreateSecret(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/secretsmanager/CreateSecret>
 =head1 ATTRIBUTES
 
 
@@ -115,6 +115,9 @@ create a custom CMK and specify the ARN in this field.
 
 Specifies the friendly name of the new secret.
 
+The secret name must be ASCII letters, digits, or the following
+characters : /_+=,.@-
+
 
 
 =head2 SecretBinary => Str
@@ -154,7 +157,7 @@ see Using JSON for Parameters
 (http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 in the I<AWS CLI User Guide>. For example:
 
-C<[{"Key":"username","Value":"bob"},{"Key":"password","Value":"abc123xyz456"}]>
+C<[{"username":"bob"},{"password":"abc123xyz456"}]>
 
 If your command-line tool or SDK requires quotation marks around the
 parameter, you should use single quotes to avoid confusion with the

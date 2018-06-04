@@ -8,6 +8,7 @@ package [% c.api %];
   warn "[% c.api %] is not stable / supported / entirely developed";
   use Moose;
   sub service { '[% c.service %]' }
+  sub signing_name { '[% c.signing_name %]' }
   sub version { '[% c.version %]' }
   sub flattened_arrays { [% c.flattened_arrays %] }
   has max_attempts => (is => 'ro', isa => 'Int', default => [% c.service_max_attempts %]);

@@ -1,6 +1,7 @@
 package Paws::CloudWatch;
   use Moose;
   sub service { 'monitoring' }
+  sub signing_name { 'monitoring' }
   sub version { '2010-08-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -232,6 +233,8 @@ In addition to monitoring the built-in metrics that come with AWS, you
 can monitor your own custom metrics. With CloudWatch, you gain
 system-wide visibility into resource utilization, application
 performance, and operational health.
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/cloudwatch/>
 
 =head1 METHODS
 

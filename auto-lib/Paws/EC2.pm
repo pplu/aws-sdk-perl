@@ -1,6 +1,7 @@
 package Paws::EC2;
   use Moose;
   sub service { 'ec2' }
+  sub signing_name { 'ec2' }
   sub version { '2016-11-15' }
   sub flattened_arrays { 1 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -1743,6 +1744,8 @@ capacity in the AWS Cloud. Using Amazon EC2 eliminates the need to
 invest in hardware up front, so you can develop and deploy applications
 faster.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15>
+
 =head1 METHODS
 
 =head2 AcceptReservedInstancesExchangeQuote
@@ -2574,12 +2577,7 @@ Each argument is described in detail in: L<Paws::EC2::CancelSpotInstanceRequests
 
 Returns: a L<Paws::EC2::CancelSpotInstanceRequestsResult> instance
 
-Cancels one or more Spot Instance requests. Spot Instances are
-instances that Amazon EC2 starts on your behalf when the maximum price
-that you specify exceeds the current Spot price. For more information,
-see Spot Instance Requests
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html)
-in the I<Amazon EC2 User Guide for Linux Instances>.
+Cancels one or more Spot Instance requests.
 
 Canceling a Spot Instance request does not terminate running Spot
 Instances associated with the request.
@@ -3385,8 +3383,8 @@ Each argument is described in detail in: L<Paws::EC2::CreateNetworkInterfacePerm
 
 Returns: a L<Paws::EC2::CreateNetworkInterfacePermissionResult> instance
 
-Grants an AWS authorized partner account permission to attach the
-specified network interface to an instance in their account.
+Grants an AWS-authorized account permission to attach the specified
+network interface to an instance in their account.
 
 You can grant permission to a single AWS account only, and only one
 account at a time.
@@ -6673,12 +6671,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSpotInstanceReques
 
 Returns: a L<Paws::EC2::DescribeSpotInstanceRequestsResult> instance
 
-Describes the Spot Instance requests that belong to your account. Spot
-Instances are instances that Amazon EC2 launches when the Spot price
-that you specify exceeds the current Spot price. For more information,
-see Spot Instance Requests
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html)
-in the I<Amazon EC2 User Guide for Linux Instances>.
+Describes the specified Spot Instance requests.
 
 You can use C<DescribeSpotInstanceRequests> to find a running Spot
 Instance by examining the response. If the status of the Spot Instance
@@ -9480,9 +9473,9 @@ Each argument is described in detail in: L<Paws::EC2::RequestSpotInstances>
 
 Returns: a L<Paws::EC2::RequestSpotInstancesResult> instance
 
-Creates a Spot Instance request. Spot Instances are instances that
-Amazon EC2 launches when the maximum price that you specify exceeds the
-current Spot price. For more information, see Spot Instance Requests
+Creates a Spot Instance request.
+
+For more information, see Spot Instance Requests
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 

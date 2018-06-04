@@ -1,6 +1,7 @@
 package Paws::ImportExport;
   use Moose;
   sub service { 'importexport' }
+  sub signing_name { 'importexport' }
   sub version { '2010-06-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -122,6 +123,8 @@ onto and off of your storage devices using Amazon's high-speed internal
 network and bypassing the Internet. For large data sets, AWS
 Import/Export is often faster than Internet transfer and more cost
 effective than upgrading your connectivity.
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head1 METHODS
 

@@ -1,6 +1,7 @@
 package Paws::Kinesis;
   use Moose;
   sub service { 'kinesis' }
+  sub signing_name { 'kinesis' }
   sub version { '2013-12-02' }
   sub target_prefix { 'Kinesis_20131202' }
   sub json_version { "1.1" }
@@ -210,6 +211,8 @@ Amazon Kinesis Data Streams Service API Reference
 
 Amazon Kinesis Data Streams is a managed service that scales
 elastically for real-time processing of streaming big data.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02>
 
 =head1 METHODS
 

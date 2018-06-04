@@ -1,6 +1,7 @@
 package Paws::ECS;
   use Moose;
   sub service { 'ecs' }
+  sub signing_name { 'ecs' }
   sub version { '2014-11-13' }
   sub target_prefix { 'AmazonEC2ContainerServiceV20141113' }
   sub json_version { "1.1" }
@@ -359,6 +360,8 @@ availability requirements. Amazon ECS eliminates the need for you to
 operate your own cluster management and configuration management
 systems or worry about scaling your management infrastructure.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13>
+
 =head1 METHODS
 
 =head2 CreateCluster
@@ -496,11 +499,11 @@ placement strategy) with the C<placementStrategy> parameter):
 
 =item *
 
-Sort the valid container instances by the fewest number of running
-tasks for this service in the same Availability Zone as the instance.
-For example, if zone A has one running service task and zones B and C
-each have zero, valid container instances in either zone B or C are
-considered optimal for placement.
+Sort the valid container instances, giving priority to instances that
+have the fewest number of running tasks for this service in their
+respective Availability Zone. For example, if zone A has one running
+service task and zones B and C each have zero, valid container
+instances in either zone B or C are considered optimal for placement.
 
 =item *
 

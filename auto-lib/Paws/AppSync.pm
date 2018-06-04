@@ -1,6 +1,7 @@
 package Paws::AppSync;
   use Moose;
   sub service { 'appsync' }
+  sub signing_name { 'appsync' }
   sub version { '2017-07-25' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -181,6 +182,8 @@ Paws::AppSync - Perl Interface to AWS AWS AppSync
 
 AWS AppSync provides API actions for creating and interacting with data
 sources using GraphQL from your application.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/appsync-2017-07-25>
 
 =head1 METHODS
 

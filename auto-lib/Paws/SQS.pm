@@ -1,6 +1,7 @@
 package Paws::SQS;
   use Moose;
   sub service { 'sqs' }
+  sub signing_name { 'sqs' }
   sub version { '2012-11-05' }
   sub flattened_arrays { 1 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -263,6 +264,8 @@ Regions and Endpoints
 
 =back
 
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05>
 
 =head1 METHODS
 

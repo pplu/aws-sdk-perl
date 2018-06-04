@@ -1,6 +1,7 @@
 package Paws::ResourceTagging;
   use Moose;
   sub service { 'tagging' }
+  sub signing_name { 'tagging' }
   sub version { '2017-01-26' }
   sub target_prefix { 'ResourceGroupsTaggingAPI_20170126' }
   sub json_version { "1.1" }
@@ -200,6 +201,8 @@ apply tags to those resources. For more information, see Obtaining
 Permissions for Tagging
 (http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html)
 in the I<AWS Resource Groups and Tag Editor User Guide>.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html>
 
 =head1 METHODS
 

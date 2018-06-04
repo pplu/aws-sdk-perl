@@ -1,6 +1,7 @@
 package Paws::CloudHSMv2;
   use Moose;
   sub service { 'cloudhsmv2' }
+  sub signing_name { 'cloudhsm' }
   sub version { '2017-04-28' }
   sub target_prefix { 'BaldrApiService' }
   sub json_version { "1.1" }
@@ -167,6 +168,8 @@ Paws::CloudHSMv2 - Perl Interface to AWS AWS CloudHSM V2
 For more information about AWS CloudHSM, see AWS CloudHSM
 (http://aws.amazon.com/cloudhsm/) and the AWS CloudHSM User Guide
 (http://docs.aws.amazon.com/cloudhsm/latest/userguide/).
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudhsmv2-2017-04-28>
 
 =head1 METHODS
 

@@ -1,6 +1,7 @@
 package Paws::Budgets;
   use Moose;
   sub service { 'budgets' }
+  sub signing_name { 'budgets' }
   sub version { '2016-10-20' }
   sub target_prefix { 'AWSBudgetServiceGateway' }
   sub json_version { "1.1" }
@@ -165,6 +166,8 @@ https://budgets.amazonaws.com
 For information about costs associated with the AWS Budgets API, see
 AWS Cost Management Pricing
 (https://aws.amazon.com/aws-cost-management/pricing/).
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/account-billing/>
 
 =head1 METHODS
 

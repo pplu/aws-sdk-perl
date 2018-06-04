@@ -1,6 +1,7 @@
 package Paws::Greengrass;
   use Moose;
   sub service { 'greengrass' }
+  sub signing_name { 'greengrass' }
   sub version { '2017-06-07' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -421,6 +422,8 @@ devices can respond quickly to local events and operate with
 intermittent connectivity. AWS Greengrass minimizes the cost of
 transmitting data to the cloud by allowing you to author AWS Lambda
 functions that execute locally.
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
 
 =head1 METHODS
 

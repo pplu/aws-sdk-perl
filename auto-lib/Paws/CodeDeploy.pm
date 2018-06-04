@@ -1,6 +1,7 @@
 package Paws::CodeDeploy;
   use Moose;
   sub service { 'codedeploy' }
+  sub signing_name { 'codedeploy' }
   sub version { '2014-10-06' }
   sub target_prefix { 'CodeDeploy_20141006' }
   sub json_version { "1.1" }
@@ -480,6 +481,8 @@ AWS CodeDeploy Developer Forum
 
 =back
 
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06>
 
 =head1 METHODS
 

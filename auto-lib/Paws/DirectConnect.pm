@@ -1,6 +1,7 @@
 package Paws::DirectConnect;
   use Moose;
   sub service { 'directconnect' }
+  sub signing_name { 'directconnect' }
   sub version { '2012-10-25' }
   sub target_prefix { 'OvertureService' }
   sub json_version { "1.1" }
@@ -278,6 +279,8 @@ associated with, as well as access to other US regions. For example,
 you can provision a single connection to any AWS Direct Connect
 location in the US and use it to access public AWS services in all US
 Regions and AWS GovCloud (US).
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25>
 
 =head1 METHODS
 

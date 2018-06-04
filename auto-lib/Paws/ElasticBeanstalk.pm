@@ -1,6 +1,7 @@
 package Paws::ElasticBeanstalk;
   use Moose;
   sub service { 'elasticbeanstalk' }
+  sub signing_name { 'elasticbeanstalk' }
   sub version { '2010-12-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -309,6 +310,8 @@ For a list of region-specific endpoints that AWS Elastic Beanstalk
 supports, go to Regions and Endpoints
 (http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region)
 in the I<Amazon Web Services Glossary>.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01>
 
 =head1 METHODS
 

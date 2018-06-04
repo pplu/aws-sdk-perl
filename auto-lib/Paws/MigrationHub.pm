@@ -1,6 +1,7 @@
 package Paws::MigrationHub;
   use Moose;
   sub service { 'mgh' }
+  sub signing_name { 'mgh' }
   sub version { '2017-05-31' }
   sub target_prefix { 'AWSMigrationHub' }
   sub json_version { "1.1" }
@@ -128,6 +129,8 @@ Paws::MigrationHub - Perl Interface to AWS AWS Migration Hub
 The AWS Migration Hub API methods help to obtain server and application
 migration status and integrate your resource-specific migration tool by
 providing a programmatic interface to Migration Hub.
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/migrationhub/>
 
 =head1 METHODS
 

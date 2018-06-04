@@ -1,6 +1,7 @@
 package Paws::GameLift;
   use Moose;
   sub service { 'gamelift' }
+  sub signing_name { 'gamelift' }
   sub version { '2015-10-01' }
   sub target_prefix { 'GameLift' }
   sub json_version { "1.1" }
@@ -961,6 +962,8 @@ rules.
 
 =back
 
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01>
 
 =head1 METHODS
 

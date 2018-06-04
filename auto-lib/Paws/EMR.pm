@@ -1,6 +1,7 @@
 package Paws::EMR;
   use Moose;
   sub service { 'elasticmapreduce' }
+  sub signing_name { 'elasticmapreduce' }
   sub version { '2009-03-31' }
   sub target_prefix { 'ElasticMapReduce' }
   sub json_version { "1.1" }
@@ -371,6 +372,8 @@ of data efficiently. Amazon EMR uses Hadoop processing combined with
 several AWS products to do tasks such as web indexing, data mining, log
 file analysis, machine learning, scientific simulation, and data
 warehousing.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31>
 
 =head1 METHODS
 

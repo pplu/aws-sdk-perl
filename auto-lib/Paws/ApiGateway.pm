@@ -1,6 +1,7 @@
 package Paws::ApiGateway;
   use Moose;
   sub service { 'apigateway' }
+  sub signing_name { 'apigateway' }
   sub version { '2015-07-09' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -927,6 +928,8 @@ scalable mobile and web application back ends. API Gateway allows
 developers to securely connect mobile and web applications to APIs that
 run on AWS Lambda, Amazon EC2, or other publicly addressable web
 services that are hosted outside of AWS.
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
 
 =head1 METHODS
 

@@ -1,6 +1,7 @@
 package Paws::WAFRegional;
   use Moose;
   sub service { 'waf-regional' }
+  sub signing_name { 'waf-regional' }
   sub version { '2016-11-28' }
   sub target_prefix { 'AWSWAF_Regional_20161128' }
   sub json_version { "1.1" }
@@ -422,6 +423,8 @@ AWS WAF API actions, data types, and errors. For detailed information
 about AWS WAF features and an overview of how to use the AWS WAF API,
 see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28>
 
 =head1 METHODS
 

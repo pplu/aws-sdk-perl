@@ -1,6 +1,7 @@
 package Paws::CostExplorer;
   use Moose;
   sub service { 'ce' }
+  sub signing_name { 'ce' }
   sub version { '2017-10-25' }
   sub target_prefix { 'AWSInsightsIndexService' }
   sub json_version { "1.1" }
@@ -96,6 +97,8 @@ https://ce.us-east-1.amazonaws.com
 For information about costs associated with the Cost Explorer API, see
 AWS Cost Management Pricing
 (https://aws.amazon.com/aws-cost-management/pricing/).
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/account-billing/>
 
 =head1 METHODS
 

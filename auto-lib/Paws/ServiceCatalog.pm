@@ -1,6 +1,7 @@
 package Paws::ServiceCatalog;
   use Moose;
   sub service { 'servicecatalog' }
+  sub signing_name { 'servicecatalog' }
   sub version { '2015-12-10' }
   sub target_prefix { 'AWS242ServiceCatalogService' }
   sub json_version { "1.1" }
@@ -560,6 +561,8 @@ approved for use on AWS. To get the most out of this documentation, you
 should be familiar with the terminology discussed in AWS Service
 Catalog Concepts
 (http://docs.aws.amazon.com/servicecatalog/latest/adminguide/what-is_concepts.html).
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head1 METHODS
 
@@ -1361,6 +1364,8 @@ specified plan.
 
 =item [PageToken => Str]
 
+=item [PortfolioShareType => Str]
+
 
 =back
 
@@ -1990,9 +1995,9 @@ Updates the specified TagOption.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllAcceptedPortfolioShares(sub { },[AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+=head2 ListAllAcceptedPortfolioShares(sub { },[AcceptLanguage => Str, PageSize => Int, PageToken => Str, PortfolioShareType => Str])
 
-=head2 ListAllAcceptedPortfolioShares([AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+=head2 ListAllAcceptedPortfolioShares([AcceptLanguage => Str, PageSize => Int, PageToken => Str, PortfolioShareType => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

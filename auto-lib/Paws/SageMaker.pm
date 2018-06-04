@@ -1,6 +1,7 @@
 package Paws::SageMaker;
   use Moose;
   sub service { 'sagemaker' }
+  sub signing_name { 'sagemaker' }
   sub version { '2017-07-24' }
   sub target_prefix { 'SageMaker' }
   sub json_version { "1.1" }
@@ -354,6 +355,8 @@ Paws::SageMaker - Perl Interface to AWS Amazon SageMaker Service
 =head1 DESCRIPTION
 
 Definition of the public APIs exposed by SageMaker
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24>
 
 =head1 METHODS
 

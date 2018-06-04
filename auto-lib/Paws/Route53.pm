@@ -2,6 +2,7 @@ package Paws::Route53;
   warn "Paws::Route53 is not stable / supported / entirely developed";
   use Moose;
   sub service { 'route53' }
+  sub signing_name { 'route53' }
   sub version { '2013-04-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -435,6 +436,8 @@ network of authoritative DNS servers, which reduces latency. For a list
 of the locations of Amazon Route 53 DNS servers, see The Amazon Route
 53 Global Network (http://aws.amazon.com/route53/#details) on the
 Amazon Route 53 detail page.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01>
 
 =head1 METHODS
 

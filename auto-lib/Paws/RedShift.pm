@@ -1,6 +1,7 @@
 package Paws::RedShift;
   use Moose;
   sub service { 'redshift' }
+  sub signing_name { 'redshift' }
   sub version { '2012-12-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -735,6 +736,8 @@ If you are a database developer, the Amazon Redshift Database Developer
 Guide (http://docs.aws.amazon.com/redshift/latest/dg/welcome.html)
 explains how to design, build, query, and maintain the databases that
 make up your data warehouse.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01>
 
 =head1 METHODS
 

@@ -1,6 +1,7 @@
 package Paws::Transcribe;
   use Moose;
   sub service { 'transcribe' }
+  sub signing_name { 'transcribe' }
   sub version { '2017-10-26' }
   sub target_prefix { 'Transcribe' }
   sub json_version { "1.1" }
@@ -86,6 +87,8 @@ Paws::Transcribe - Perl Interface to AWS Amazon Transcribe Service
 =head1 DESCRIPTION
 
 Operations and objects for transcribing speech to text.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26>
 
 =head1 METHODS
 

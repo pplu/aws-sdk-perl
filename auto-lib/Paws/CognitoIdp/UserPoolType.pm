@@ -2,6 +2,7 @@ package Paws::CognitoIdp::UserPoolType;
   use Moose;
   has AdminCreateUserConfig => (is => 'ro', isa => 'Paws::CognitoIdp::AdminCreateUserConfigType');
   has AliasAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Arn => (is => 'ro', isa => 'Str');
   has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CreationDate => (is => 'ro', isa => 'Str');
   has DeviceConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::DeviceConfigurationType');
@@ -72,6 +73,11 @@ A container for information about the user pool.
   Specifies the attributes that are aliased in a user pool.
 
 
+=head2 Arn => Str
+
+  The Amazon Resource Name (ARN) for the user pool.
+
+
 =head2 AutoVerifiedAttributes => ArrayRef[Str|Undef]
 
   Specifies the attributes that are auto-verified in a user pool.
@@ -126,7 +132,7 @@ users.
 
 =head2 LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>
 
-  The AWS Lambda triggers associated with tue user pool.
+  The AWS Lambda triggers associated with the user pool.
 
 
 =head2 LastModifiedDate => Str

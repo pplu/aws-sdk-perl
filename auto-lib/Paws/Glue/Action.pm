@@ -2,6 +2,7 @@ package Paws::Glue::Action;
   use Moose;
   has Arguments => (is => 'ro', isa => 'Paws::Glue::GenericMap');
   has JobName => (is => 'ro', isa => 'Str');
+  has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
   has Timeout => (is => 'ro', isa => 'Int');
 1;
 
@@ -59,6 +60,11 @@ topic in the developer guide.
 =head2 JobName => Str
 
   The name of a job to be executed.
+
+
+=head2 NotificationProperty => L<Paws::Glue::NotificationProperty>
+
+  Specifies configuration properties of a job run notification.
 
 
 =head2 Timeout => Int

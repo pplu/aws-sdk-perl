@@ -1,6 +1,7 @@
 package Paws::ServerlessRepo;
   use Moose;
   sub service { 'serverlessrepo' }
+  sub signing_name { 'serverlessrepo' }
   sub version { '2017-09-08' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -134,6 +135,8 @@ applications.
 
 =back
 
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/serverlessrepo-2017-09-08>
 
 =head1 METHODS
 

@@ -1,6 +1,7 @@
 package Paws::ApplicationAutoScaling;
   use Moose;
   sub service { 'autoscaling' }
+  sub signing_name { 'application-autoscaling' }
   sub version { '2016-02-06' }
   sub target_prefix { 'AnyScaleFrontendService' }
   sub json_version { "1.1" }
@@ -250,6 +251,8 @@ For a list of supported regions, see AWS Regions and Endpoints:
 Application Auto Scaling
 (http://docs.aws.amazon.com/general/latest/gr/rande.html#as-app_region)
 in the I<AWS General Reference>.
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head1 METHODS
 

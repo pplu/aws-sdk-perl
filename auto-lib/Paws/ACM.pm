@@ -1,6 +1,7 @@
 package Paws::ACM;
   use Moose;
   sub service { 'acm' }
+  sub signing_name { 'acm' }
   sub version { '2015-12-08' }
   sub target_prefix { 'CertificateManager' }
   sub json_version { "1.1" }
@@ -136,6 +137,8 @@ You can use ACM to manage SSL/TLS certificates for your AWS-based
 websites and applications. For general information about using ACM, see
 the I<AWS Certificate Manager User Guide>
 (http://docs.aws.amazon.com/acm/latest/userguide/).
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08>
 
 =head1 METHODS
 

@@ -3,10 +3,10 @@ package Paws::ApiGateway::GetDocumentationParts;
   use Moose;
   has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
   has LocationStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'locationStatus');
-  has NameQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nameQuery');
+  has NameQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'name');
   has Path => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'path');
   has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
   has Type => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'type');
 
   use MooseX::ClassAttribute;
@@ -36,7 +36,7 @@ As an example:
   $service_obj->GetDocumentationParts(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
 =head1 ATTRIBUTES
 
 

@@ -1,6 +1,7 @@
 package Paws::SSM;
   use Moose;
   sub service { 'ssm' }
+  sub signing_name { 'ssm' }
   sub version { '2014-11-06' }
   sub target_prefix { 'AmazonSSM' }
   sub json_version { "1.1" }
@@ -770,6 +771,8 @@ instances, see the Amazon EC2 API Reference
 (http://docs.aws.amazon.com/AWSEC2/latest/APIReference/). For
 information about how to use a Query API, see Making API Requests
 (http://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html).
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06>
 
 =head1 METHODS
 

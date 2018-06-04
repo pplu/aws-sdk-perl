@@ -1,7 +1,7 @@
 
 package Paws::CloudSearchDomain::Suggest;
   use Moose;
-  has Query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'query', required => 1);
+  has Query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'q', required => 1);
   has Size => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'size');
   has Suggester => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'suggester', required => 1);
 
@@ -32,7 +32,7 @@ As an example:
   $service_obj->Suggest(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/cloudsearch/>
 =head1 ATTRIBUTES
 
 

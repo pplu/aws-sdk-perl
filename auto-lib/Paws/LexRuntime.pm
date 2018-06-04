@@ -1,6 +1,7 @@
 package Paws::LexRuntime;
   use Moose;
   sub service { 'runtime.lex' }
+  sub signing_name { 'lex' }
   sub version { '2016-11-28' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -66,6 +67,8 @@ pizza size and crust type), and then performs fulfillment activity
 (that you configured when you created the bot). You use the build-time
 API to create and manage your Amazon Lex bot. For a list of build-time
 operations, see the build-time API, .
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/runtime.lex-2016-11-28>
 
 =head1 METHODS
 

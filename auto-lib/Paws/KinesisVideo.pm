@@ -1,6 +1,7 @@
 package Paws::KinesisVideo;
   use Moose;
   sub service { 'kinesisvideo' }
+  sub signing_name { 'kinesisvideo' }
   sub version { '2017-09-30' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -95,6 +96,8 @@ Paws::KinesisVideo - Perl Interface to AWS Amazon Kinesis Video Streams
 =head1 DESCRIPTION
 
 
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kinesisvideo-2017-09-30>
 
 =head1 METHODS
 

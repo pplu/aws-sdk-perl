@@ -1,6 +1,7 @@
 package Paws::ElastiCache;
   use Moose;
   sub service { 'elasticache' }
+  sub signing_name { 'elasticache' }
   sub version { '2015-02-02' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -534,6 +535,8 @@ than in a self-managed cache deployment.
 In addition, through integration with Amazon CloudWatch, customers get
 enhanced visibility into the key performance statistics associated with
 their cache and can receive alarms if a part of their cache runs hot.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02>
 
 =head1 METHODS
 

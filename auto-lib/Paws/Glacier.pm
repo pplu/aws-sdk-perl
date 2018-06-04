@@ -1,6 +1,7 @@
 package Paws::Glacier;
   use Moose;
   sub service { 'glacier' }
+  sub signing_name { 'glacier' }
   sub version { '2012-06-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -11,7 +12,7 @@ package Paws::Glacier;
        sub { defined $_[0]->http_status and $_[0]->http_status == 408 and $_[0]->code eq 'RequestTimeoutException' },
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::GlacierCaller';
 
   
   sub AbortMultipartUpload {
@@ -347,6 +348,8 @@ retrieving the job output, and deleting archives.
 
 =back
 
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/glacier/>
 
 =head1 METHODS
 

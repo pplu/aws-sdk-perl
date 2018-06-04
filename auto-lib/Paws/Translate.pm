@@ -1,6 +1,7 @@
 package Paws::Translate;
   use Moose;
   sub service { 'translate' }
+  sub signing_name { 'translate' }
   sub version { '2017-07-01' }
   sub target_prefix { 'AWSShineFrontendService_20170701' }
   sub json_version { "1.1" }
@@ -52,6 +53,8 @@ Paws::Translate - Perl Interface to AWS Amazon Translate
 
 Provides translation between English and one of six languages, or
 between one of the six languages and English.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/translate-2017-07-01>
 
 =head1 METHODS
 

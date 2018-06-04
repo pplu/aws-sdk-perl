@@ -1,6 +1,7 @@
 package Paws::Pricing;
   use Moose;
   sub service { 'api.pricing' }
+  sub signing_name { 'pricing' }
   sub version { '2017-10-15' }
   sub target_prefix { 'AWSPriceListService' }
   sub json_version { "1.1" }
@@ -164,6 +165,8 @@ https://api.pricing.ap-south-1.amazonaws.com
 
 =back
 
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/account-billing/>
 
 =head1 METHODS
 

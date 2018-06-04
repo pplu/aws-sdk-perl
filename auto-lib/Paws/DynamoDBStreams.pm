@@ -1,6 +1,7 @@
 package Paws::DynamoDBStreams;
   use Moose;
   sub service { 'streams.dynamodb' }
+  sub signing_name { 'dynamodb' }
   sub version { '2012-08-10' }
   sub target_prefix { 'DynamoDBStreams_20120810' }
   sub json_version { "1.0" }
@@ -72,6 +73,8 @@ processing stream records. To learn more about application development
 with Streams, see Capturing Table Activity with DynamoDB Streams
 (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html)
 in the Amazon DynamoDB Developer Guide.
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/dynamodb/>
 
 =head1 METHODS
 

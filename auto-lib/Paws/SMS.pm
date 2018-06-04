@@ -1,6 +1,7 @@
 package Paws::SMS;
   use Moose;
   sub service { 'sms' }
+  sub signing_name { 'sms' }
   sub version { '2016-10-24' }
   sub target_prefix { 'AWSServerMigrationService_V2016_10_24' }
   sub json_version { "1.1" }
@@ -194,6 +195,8 @@ Paws::SMS - Perl Interface to AWS AWS Server Migration Service
 
 Amazon Server Migration Service automates the process of migrating
 servers to EC2.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24>
 
 =head1 METHODS
 

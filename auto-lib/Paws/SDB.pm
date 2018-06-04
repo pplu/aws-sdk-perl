@@ -1,6 +1,7 @@
 package Paws::SDB;
   use Moose;
   sub service { 'sdb' }
+  sub signing_name { 'sdb' }
   sub version { '2009-04-15' }
   sub flattened_arrays { 1 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -176,6 +177,8 @@ pay only for what they use.
 
 Visit http://aws.amazon.com/simpledb/ (http://aws.amazon.com/simpledb/)
 for more information.
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/simpledb/>
 
 =head1 METHODS
 

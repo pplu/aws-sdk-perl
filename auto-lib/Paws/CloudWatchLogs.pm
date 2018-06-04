@@ -1,6 +1,7 @@
 package Paws::CloudWatchLogs;
   use Moose;
   sub service { 'logs' }
+  sub signing_name { 'logs' }
   sub version { '2014-03-28' }
   sub target_prefix { 'Logs_20140328' }
   sub json_version { "1.1" }
@@ -394,6 +395,8 @@ can then access the raw log data when you need it.
 
 =back
 
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/cloudwatch/>
 
 =head1 METHODS
 

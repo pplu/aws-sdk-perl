@@ -1,6 +1,7 @@
 package Paws::CloudTrail;
   use Moose;
   sub service { 'cloudtrail' }
+  sub signing_name { 'cloudtrail' }
   sub version { '2013-11-01' }
   sub target_prefix { 'com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101' }
   sub json_version { "1.1" }
@@ -163,6 +164,8 @@ See the AWS CloudTrail User Guide
 (http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)
 for information about the data that is included with each AWS API call
 listed in the log files.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01>
 
 =head1 METHODS
 

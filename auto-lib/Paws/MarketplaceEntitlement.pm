@@ -1,6 +1,7 @@
 package Paws::MarketplaceEntitlement;
   use Moose;
   sub service { 'entitlement.marketplace' }
+  sub signing_name { 'aws-marketplace' }
   sub version { '2017-01-11' }
   sub target_prefix { 'AWSMPEntitlementService' }
   sub json_version { "1.1" }
@@ -71,6 +72,8 @@ I<GetEntitlements>- Gets the entitlements for a Marketplace product.
 
 =back
 
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/Welcome.html>
 
 =head1 METHODS
 

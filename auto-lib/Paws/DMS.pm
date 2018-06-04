@@ -1,6 +1,7 @@
 package Paws::DMS;
   use Moose;
   sub service { 'dms' }
+  sub signing_name { 'dms' }
   sub version { '2016-01-01' }
   sub target_prefix { 'AmazonDMSv20160101' }
   sub json_version { "1.1" }
@@ -577,6 +578,8 @@ such as Oracle to MySQL or SQL Server to PostgreSQL.
 For more information about AWS DMS, see the AWS DMS user guide at What
 Is AWS Database Migration Service?
 (http://docs.aws.amazon.com/dms/latest/userguide/Welcome.html)
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01>
 
 =head1 METHODS
 

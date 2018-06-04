@@ -1,6 +1,7 @@
 package Paws::AutoScaling;
   use Moose;
   sub service { 'autoscaling' }
+  sub signing_name { 'autoscaling' }
   sub version { '2011-01-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -494,6 +495,8 @@ Amazon EC2 Auto Scaling is designed to automatically launch or
 terminate EC2 instances based on user-defined policies, schedules, and
 health checks. Use this service in conjunction with the AWS Auto
 Scaling, Amazon CloudWatch, and Elastic Load Balancing services.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01>
 
 =head1 METHODS
 

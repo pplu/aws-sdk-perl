@@ -1,6 +1,7 @@
 package Paws::Lightsail;
   use Moose;
   sub service { 'lightsail' }
+  sub signing_name { 'lightsail' }
   sub version { '2016-11-28' }
   sub target_prefix { 'Lightsail_20161128' }
   sub json_version { "1.1" }
@@ -622,6 +623,8 @@ To use the Lightsail API or the CLI, you will need to use AWS Identity
 and Access Management (IAM) to generate access keys. For details about
 how to set this up, see the Lightsail Dev Guide
 (http://lightsail.aws.amazon.com/ls/docs/how-to/article/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli).
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28>
 
 =head1 METHODS
 

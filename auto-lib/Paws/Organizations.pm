@@ -1,6 +1,7 @@
 package Paws::Organizations;
   use Moose;
   sub service { 'organizations' }
+  sub signing_name { 'organizations' }
   sub version { '2016-11-28' }
   sub target_prefix { 'AWSOrganizationsV20161128' }
   sub json_version { "1.1" }
@@ -684,11 +685,13 @@ determine which requests were successfully made to Organizations, who
 made the request, when it was made, and so on. For more about AWS
 Organizations and its support for AWS CloudTrail, see Logging AWS
 Organizations Events with AWS CloudTrail
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_cloudtrail-integration.html)
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html#orgs_cloudtrail-integration)
 in the I<AWS Organizations User Guide>. To learn more about CloudTrail,
 including how to turn it on and find your log files, see the AWS
 CloudTrail User Guide
 (http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28>
 
 =head1 METHODS
 
@@ -763,8 +766,9 @@ Each argument is described in detail in: L<Paws::Organizations::AttachPolicy>
 
 Returns: nothing
 
-Attaches a policy to a root, an organizational unit, or an individual
-account. How the policy affects accounts depends on the type of policy:
+Attaches a policy to a root, an organizational unit (OU), or an
+individual account. How the policy affects accounts depends on the type
+of policy:
 
 =over
 
@@ -903,6 +907,10 @@ Account in Your Organization
 (http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html)
 in the I<AWS Organizations User Guide>.
 
+=over
+
+=item *
+
 When you create an account in an organization using the AWS
 Organizations console, API, or CLI commands, the information required
 for the account to operate as a standalone account, such as a payment
@@ -914,6 +922,23 @@ required account information has not yet been provided
 (http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info)
 in the I<AWS Organizations User Guide>.
 
+=item *
+
+If you get an exception that indicates that you exceeded your account
+limits for the organization or that the operation failed because your
+organization is still initializing, wait one hour and then try again.
+If the error persists after an hour, then contact AWS Customer Support
+(https://console.aws.amazon.com/support/home#/).
+
+=item *
+
+Because C<CreateAccount> operates asynchronously, it can return a
+successful completion message even though account initialization might
+still be in progress. You might need to wait a few minutes before you
+can successfully access the account.
+
+=back
+
 When you create a member account with this operation, you can choose
 whether to create the account with the B<IAM User and Role Access to
 Billing Information> switch enabled. If you enable it, IAM users and
@@ -923,14 +948,6 @@ can access billing information. For information about how to disable
 this for an account, see Granting Access to Your Billing Information
 and Tools
 (http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html).
-
-This operation can be called only from the organization's master
-account.
-
-If you get an exception that indicates that you exceeded your account
-limits for the organization or that you can"t add an account because
-your organization is still initializing, please contact AWS Customer
-Support (https://console.aws.amazon.com/support/home#/).
 
 
 =head2 CreateOrganization
@@ -1063,7 +1080,7 @@ Returns: nothing
 
 Deletes the organization. You can delete an organization only by using
 credentials from the master account. The organization must be empty of
-member accounts, OUs, and policies.
+member accounts, organizational units (OUs), and policies.
 
 
 =head2 DeleteOrganizationalUnit
@@ -1079,7 +1096,7 @@ Each argument is described in detail in: L<Paws::Organizations::DeleteOrganizati
 
 Returns: nothing
 
-Deletes an organizational unit from a root or another OU. You must
+Deletes an organizational unit (OU) from a root or another OU. You must
 first remove all accounts and child OUs from the OU that you want to
 delete.
 
@@ -1101,8 +1118,8 @@ Each argument is described in detail in: L<Paws::Organizations::DeletePolicy>
 Returns: nothing
 
 Deletes the specified policy from your organization. Before you perform
-this operation, you must first detach the policy from all OUs, roots,
-and accounts.
+this operation, you must first detach the policy from all
+organizational units (OUs), roots, and accounts.
 
 This operation can be called only from the organization's master
 account.
@@ -1248,10 +1265,10 @@ Each argument is described in detail in: L<Paws::Organizations::DetachPolicy>
 
 Returns: nothing
 
-Detaches a policy from a target root, organizational unit, or account.
-If the policy being detached is a service control policy (SCP), the
-changes to permissions for IAM users and roles in affected accounts are
-immediate.
+Detaches a policy from a target root, organizational unit (OU), or
+account. If the policy being detached is a service control policy
+(SCP), the changes to permissions for IAM users and roles in affected
+accounts are immediate.
 
 B<Note:> Every root, OU, and account must have at least one SCP
 attached. If you want to replace the default C<FullAWSAccess> policy
@@ -1336,9 +1353,9 @@ Returns: a L<Paws::Organizations::DisablePolicyTypeResponse> instance
 Disables an organizational control policy type in a root. A policy of a
 certain type can be attached to entities in a root only if that type is
 enabled in the root. After you perform this operation, you no longer
-can attach policies of the specified type to that root or to any OU or
-account in that root. You can undo this by using the EnablePolicyType
-operation.
+can attach policies of the specified type to that root or to any
+organizational unit (OU) or account in that root. You can undo this by
+using the EnablePolicyType operation.
 
 This operation can be called only from the organization's master
 account.
@@ -1372,13 +1389,11 @@ Organization
 in the I<AWS Organizations User Guide>.
 
 This operation is required only for organizations that were created
-explicitly with only the consolidated billing features enabled, or that
-were migrated from a Consolidated Billing account family to
-Organizations. Calling this operation sends a handshake to every
-invited account in the organization. The feature set change can be
-finalized and the additional features enabled only after all
-administrators in the invited accounts approve the change by accepting
-the handshake.
+explicitly with only the consolidated billing features enabled. Calling
+this operation sends a handshake to every invited account in the
+organization. The feature set change can be finalized and the
+additional features enabled only after all administrators in the
+invited accounts approve the change by accepting the handshake.
 
 After you enable all features, you can separately enable or disable
 individual policy types in a root using EnablePolicyType and
@@ -1457,9 +1472,9 @@ Each argument is described in detail in: L<Paws::Organizations::EnablePolicyType
 Returns: a L<Paws::Organizations::EnablePolicyTypeResponse> instance
 
 Enables a policy type in a root. After you enable a policy type in a
-root, you can attach policies of that type to the root, any OU, or
-account in that root. You can undo this by using the DisablePolicyType
-operation.
+root, you can attach policies of that type to the root, any
+organizational unit (OU), or account in that root. You can undo this by
+using the DisablePolicyType operation.
 
 This operation can be called only from the organization's master
 account.
@@ -1492,6 +1507,10 @@ address that is associated with the other account's owner. The
 invitation is implemented as a Handshake whose details are in the
 response.
 
+=over
+
+=item *
+
 You can invite AWS accounts only from the same seller as the master
 account. For example, if your organization's master account was created
 by Amazon Internet Services Pvt. Ltd (AISPL), an AWS seller in India,
@@ -1500,13 +1519,18 @@ can't combine accounts from AISPL and AWS, or any other AWS seller. For
 more information, see Consolidated Billing in India
 (http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilliing-India.html).
 
+=item *
+
+If you receive an exception that indicates that you exceeded your
+account limits for the organization or that the operation failed
+because your organization is still initializing, wait one hour and then
+try again. If the error persists after an hour, then contact AWS
+Customer Support (https://console.aws.amazon.com/support/home#/).
+
+=back
+
 This operation can be called only from the organization's master
 account.
-
-If you get an exception that indicates that you exceeded your account
-limits for the organization or that you can"t add an account because
-your organization is still initializing, please contact AWS Customer
-Support (https://console.aws.amazon.com/support/home#/).
 
 
 =head2 LeaveOrganization
@@ -1584,8 +1608,8 @@ Each argument is described in detail in: L<Paws::Organizations::ListAccounts>
 Returns: a L<Paws::Organizations::ListAccountsResponse> instance
 
 Lists all the accounts in the organization. To request only the
-accounts in a specified root or OU, use the ListAccountsForParent
-operation instead.
+accounts in a specified root or organizational unit (OU), use the
+ListAccountsForParent operation instead.
 
 Always check the C<NextToken> response parameter for a C<null> value
 when calling a C<List*> operation. These operations can occasionally
@@ -1681,9 +1705,10 @@ Each argument is described in detail in: L<Paws::Organizations::ListChildren>
 
 Returns: a L<Paws::Organizations::ListChildrenResponse> instance
 
-Lists all of the OUs or accounts that are contained in the specified
-parent OU or root. This operation, along with ListParents enables you
-to traverse the tree structure that makes up this root.
+Lists all of the organizational units (OUs) or accounts that are
+contained in the specified parent OU or root. This operation, along
+with ListParents enables you to traverse the tree structure that makes
+up this root.
 
 Always check the C<NextToken> response parameter for a C<null> value
 when calling a C<List*> operation. These operations can occasionally
@@ -1972,8 +1997,8 @@ Each argument is described in detail in: L<Paws::Organizations::ListTargetsForPo
 
 Returns: a L<Paws::Organizations::ListTargetsForPolicyResponse> instance
 
-Lists all the roots, OUs, and accounts to which the specified policy is
-attached.
+Lists all the roots, organizaitonal units (OUs), and accounts to which
+the specified policy is attached.
 
 Always check the C<NextToken> response parameter for a C<null> value
 when calling a C<List*> operation. These operations can occasionally
@@ -2002,8 +2027,8 @@ Each argument is described in detail in: L<Paws::Organizations::MoveAccount>
 
 Returns: nothing
 
-Moves an account from its current source parent root or OU to the
-specified destination parent root or OU.
+Moves an account from its current source parent root or organizational
+unit (OU) to the specified destination parent root or OU.
 
 This operation can be called only from the organization's master
 account.
@@ -2034,10 +2059,6 @@ This operation can be called only from the organization's master
 account. Member accounts can remove themselves with LeaveOrganization
 instead.
 
-=over
-
-=item *
-
 You can remove an account from your organization only if the account is
 configured with the information required to operate as a standalone
 account. When you create an account in an organization using the AWS
@@ -2054,17 +2075,6 @@ steps at To leave an organization when all required account information
 has not yet been provided
 (http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info)
 in the I<AWS Organizations User Guide>.
-
-=item *
-
-You can remove a member account only after you enable IAM user access
-to billing in the member account. For more information, see Activating
-Access to the Billing and Cost Management Console
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate)
-in the I<AWS Billing and Cost Management User Guide>.
-
-=back
-
 
 
 =head2 UpdateOrganizationalUnit

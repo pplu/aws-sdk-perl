@@ -1,6 +1,7 @@
 package Paws::WorkSpaces;
   use Moose;
   sub service { 'workspaces' }
+  sub signing_name { 'workspaces' }
   sub version { '2015-04-08' }
   sub target_prefix { 'WorkspacesService' }
   sub json_version { "1.1" }
@@ -233,6 +234,8 @@ Amazon WorkSpaces Service
 
 Amazon WorkSpaces enables you to provision virtual, cloud-based
 Microsoft Windows desktops for your users.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08>
 
 =head1 METHODS
 

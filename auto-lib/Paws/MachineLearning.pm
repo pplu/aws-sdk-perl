@@ -1,6 +1,7 @@
 package Paws::MachineLearning;
   use Moose;
   sub service { 'machinelearning' }
+  sub signing_name { 'machinelearning' }
   sub version { '2014-12-12' }
   sub target_prefix { 'AmazonML_20141212' }
   sub json_version { "1.1" }
@@ -278,6 +279,8 @@ Paws::MachineLearning - Perl Interface to AWS Amazon Machine Learning
 =head1 DESCRIPTION
 
 Definition of the public APIs exposed by Amazon Machine Learning
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12>
 
 =head1 METHODS
 

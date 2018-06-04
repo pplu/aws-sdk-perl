@@ -1,6 +1,7 @@
 package Paws::IAM;
   use Moose;
   sub service { 'iam' }
+  sub signing_name { 'iam' }
   sub version { '2010-05-08' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -1383,6 +1384,8 @@ using an access key ID and secret access key.
 
 =back
 
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08>
 
 =head1 METHODS
 

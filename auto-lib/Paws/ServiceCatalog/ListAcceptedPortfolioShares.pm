@@ -4,6 +4,7 @@ package Paws::ServiceCatalog::ListAcceptedPortfolioShares;
   has AcceptLanguage => (is => 'ro', isa => 'Str');
   has PageSize => (is => 'ro', isa => 'Int');
   has PageToken => (is => 'ro', isa => 'Str');
+  has PortfolioShareType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -31,7 +32,7 @@ As an example:
   $service_obj->ListAcceptedPortfolioShares(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/servicecatalog/ListAcceptedPortfolioShares>
 =head1 ATTRIBUTES
 
 
@@ -70,6 +71,26 @@ The page token for the next set of results. To retrieve the first set
 of results, use null.
 
 
+
+=head2 PortfolioShareType => Str
+
+The type of shared portfolios to list. The default is to list imported
+portfolios.
+
+=over
+
+=item *
+
+C<AWS_SERVICECATALOG> - List default portfolios
+
+=item *
+
+C<IMPORTED> - List imported portfolios
+
+=back
+
+
+Valid values are: C<"IMPORTED">, C<"AWS_SERVICECATALOG">
 
 
 =head1 SEE ALSO

@@ -87,14 +87,35 @@ if specified, because no build output will be produced.
 =item *
 
 If C<type> is set to C<S3>, this is the name of the output artifact
-object.
+object. If you set the name to be a forward slash ("/"), then the
+artifact is stored in the root of the output bucket.
 
 =back
 
-For example, if C<path> is set to C<MyArtifacts>, C<namespaceType> is
-set to C<BUILD_ID>, and C<name> is set to C<MyArtifact.zip>, then the
-output artifact would be stored in
-C<MyArtifacts/I<build-ID>/MyArtifact.zip>.
+For example:
+
+=over
+
+=item *
+
+If C<path> is set to C<MyArtifacts>, C<namespaceType> is set to
+C<BUILD_ID>, and C<name> is set to C<MyArtifact.zip>, then the output
+artifact would be stored in C<MyArtifacts/I<build-ID>/MyArtifact.zip>.
+
+=item *
+
+If C<path> is empty, C<namespaceType> is set to C<NONE>, and C<name> is
+set to "C</>", then the output artifact would be stored in the root of
+the output bucket.
+
+=item *
+
+If C<path> is set to C<MyArtifacts>, C<namespaceType> is set to
+C<BUILD_ID>, and C<name> is set to "C</>", then the output artifact
+would be stored in C<MyArtifacts/I<build-ID> >.
+
+=back
+
 
 
 =head2 NamespaceType => Str

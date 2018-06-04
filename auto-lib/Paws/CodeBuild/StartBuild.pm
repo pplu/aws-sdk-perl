@@ -3,9 +3,21 @@ package Paws::CodeBuild::StartBuild;
   use Moose;
   has ArtifactsOverride => (is => 'ro', isa => 'Paws::CodeBuild::ProjectArtifacts', traits => ['NameInRequest'], request_name => 'artifactsOverride' );
   has BuildspecOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'buildspecOverride' );
+  has CacheOverride => (is => 'ro', isa => 'Paws::CodeBuild::ProjectCache', traits => ['NameInRequest'], request_name => 'cacheOverride' );
+  has CertificateOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateOverride' );
+  has ComputeTypeOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'computeTypeOverride' );
+  has EnvironmentTypeOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'environmentTypeOverride' );
   has EnvironmentVariablesOverride => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::EnvironmentVariable]', traits => ['NameInRequest'], request_name => 'environmentVariablesOverride' );
   has GitCloneDepthOverride => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'gitCloneDepthOverride' );
+  has IdempotencyToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'idempotencyToken' );
+  has ImageOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imageOverride' );
+  has InsecureSslOverride => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'insecureSslOverride' );
+  has PrivilegedModeOverride => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'privilegedModeOverride' );
   has ProjectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectName' , required => 1);
+  has ServiceRoleOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRoleOverride' );
+  has SourceAuthOverride => (is => 'ro', isa => 'Paws::CodeBuild::SourceAuth', traits => ['NameInRequest'], request_name => 'sourceAuthOverride' );
+  has SourceLocationOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceLocationOverride' );
+  has SourceTypeOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceTypeOverride' );
   has SourceVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceVersion' );
   has TimeoutInMinutesOverride => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'timeoutInMinutesOverride' );
 
@@ -35,7 +47,7 @@ As an example:
   $service_obj->StartBuild(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codebuild/StartBuild>
 =head1 ATTRIBUTES
 
 
@@ -53,6 +65,34 @@ latest one already defined in the build project.
 
 
 
+=head2 CacheOverride => L<Paws::CodeBuild::ProjectCache>
+
+A ProjectCache object specified for this build that overrides the one
+defined in the build project.
+
+
+
+=head2 CertificateOverride => Str
+
+The name of a certificate for this build that overrides the one
+specified in the build project.
+
+
+
+=head2 ComputeTypeOverride => Str
+
+The name of a compute type for this build that overrides the one
+specified in the build project.
+
+Valid values are: C<"BUILD_GENERAL1_SMALL">, C<"BUILD_GENERAL1_MEDIUM">, C<"BUILD_GENERAL1_LARGE">
+
+=head2 EnvironmentTypeOverride => Str
+
+A container type for this build that overrides the one specified in the
+build project.
+
+Valid values are: C<"WINDOWS_CONTAINER">, C<"LINUX_CONTAINER">
+
 =head2 EnvironmentVariablesOverride => ArrayRef[L<Paws::CodeBuild::EnvironmentVariable>]
 
 A set of environment variables that overrides, for this build only, the
@@ -68,11 +108,72 @@ in the build project.
 
 
 
+=head2 IdempotencyToken => Str
+
+A unique, case sensitive identifier you provide to ensure the
+idempotency of the StartBuild request. The token is included in the
+StartBuild request and is valid for 12 hours. If you repeat the
+StartBuild request with the same token, but change a parameter, AWS
+CodeBuild returns a parameter mismatch error.
+
+
+
+=head2 ImageOverride => Str
+
+The name of an image for this build that overrides the one specified in
+the build project.
+
+
+
+=head2 InsecureSslOverride => Bool
+
+Enable this flag to override the insecure SSL setting that is specified
+in the build project. The insecure SSL setting determines whether to
+ignore SSL warnings while connecting to the project source code. This
+override applies only if the build's source is GitHub Enterprise.
+
+
+
+=head2 PrivilegedModeOverride => Bool
+
+Enable this flag to override privileged mode in the build project.
+
+
+
 =head2 B<REQUIRED> ProjectName => Str
 
 The name of the AWS CodeBuild build project to start running a build.
 
 
+
+=head2 ServiceRoleOverride => Str
+
+The name of a service role for this build that overrides the one
+specified in the build project.
+
+
+
+=head2 SourceAuthOverride => L<Paws::CodeBuild::SourceAuth>
+
+An authorization type for this build that overrides the one defined in
+the build project. This override applies only if the build project's
+source is BitBucket or GitHub.
+
+
+
+=head2 SourceLocationOverride => Str
+
+A location that overrides for this build the source location for the
+one defined in the build project.
+
+
+
+=head2 SourceTypeOverride => Str
+
+A source input type for this build that overrides the source input
+defined in the build project
+
+Valid values are: C<"CODECOMMIT">, C<"CODEPIPELINE">, C<"GITHUB">, C<"S3">, C<"BITBUCKET">, C<"GITHUB_ENTERPRISE">
 
 =head2 SourceVersion => Str
 

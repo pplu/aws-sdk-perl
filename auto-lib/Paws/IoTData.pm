@@ -1,6 +1,7 @@
 package Paws::IoTData;
   use Moose;
   sub service { 'data.iot' }
+  sub signing_name { 'iotdata' }
   sub version { '2015-05-28' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -73,6 +74,8 @@ for applications and things to publish messages over HTTP (Publish) and
 retrieve, update, and delete thing shadows. A thing shadow is a
 persistent representation of your things and their state in the AWS
 cloud.
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/iot/>
 
 =head1 METHODS
 

@@ -1,6 +1,7 @@
 package Paws::SageMakerRuntime;
   use Moose;
   sub service { 'runtime.sagemaker' }
+  sub signing_name { 'sagemaker' }
   sub version { '2017-05-13' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -50,6 +51,8 @@ Paws::SageMakerRuntime - Perl Interface to AWS Amazon SageMaker Runtime
 =head1 DESCRIPTION
 
 Amazon SageMaker runtime API.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/runtime.sagemaker-2017-05-13>
 
 =head1 METHODS
 

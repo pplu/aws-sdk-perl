@@ -1,6 +1,7 @@
 package Paws::AutoScalingPlans;
   use Moose;
   sub service { 'autoscaling' }
+  sub signing_name { 'autoscaling-plans' }
   sub version { '2018-01-06' }
   sub target_prefix { 'AnyScaleScalingPlannerFrontendService' }
   sub json_version { "1.1" }
@@ -83,6 +84,8 @@ for the scalable resources in your scaling plan. Target tracking
 scaling policies adjust the capacity of your scalable resource as
 required to maintain resource utilization at the target value that you
 specified.
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head1 METHODS
 

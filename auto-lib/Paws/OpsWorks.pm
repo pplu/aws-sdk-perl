@@ -1,6 +1,7 @@
 package Paws::OpsWorks;
   use Moose;
   sub service { 'opsworks' }
+  sub signing_name { 'opsworks' }
   sub version { '2013-02-18' }
   sub target_prefix { 'OpsWorks_20130218' }
   sub json_version { "1.1" }
@@ -577,6 +578,8 @@ Windows stacks use Chef 12.2. For more information, see Chef Versions
 You can specify Chef 12, 11.10, or 11.4 for your Linux stack. We
 recommend migrating your existing Linux stacks to Chef 12 as soon as
 possible.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18>
 
 =head1 METHODS
 

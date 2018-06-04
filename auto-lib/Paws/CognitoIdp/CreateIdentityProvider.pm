@@ -34,7 +34,7 @@ As an example:
   $service_obj->CreateIdentityProvider(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-idp/CreateIdentityProvider>
 =head1 ATTRIBUTES
 
 
@@ -68,7 +68,7 @@ The identity provider name.
 
 The identity provider type.
 
-Valid values are: C<"SAML">, C<"Facebook">, C<"Google">, C<"LoginWithAmazon">
+Valid values are: C<"SAML">, C<"Facebook">, C<"Google">, C<"LoginWithAmazon">, C<"OIDC">
 
 =head2 B<REQUIRED> UserPoolId => Str
 

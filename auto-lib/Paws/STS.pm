@@ -1,6 +1,7 @@
 package Paws::STS;
   use Moose;
   sub service { 'sts' }
+  sub signing_name { 'sts' }
   sub version { '2011-06-15' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -183,6 +184,8 @@ requests were successfully made to STS, who made the request, when it
 was made, and so on. To learn more about CloudTrail, including how to
 turn it on and find your log files, see the AWS CloudTrail User Guide
 (http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/iam/>
 
 =head1 METHODS
 

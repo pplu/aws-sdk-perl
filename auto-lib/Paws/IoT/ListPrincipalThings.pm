@@ -3,7 +3,7 @@ package Paws::IoT::ListPrincipalThings;
   use Moose;
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has Principal => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'principal', required => 1);
+  has Principal => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amzn-principal', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ As an example:
   $service_obj->ListPrincipalThings(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot/ListPrincipalThings>
 =head1 ATTRIBUTES
 
 

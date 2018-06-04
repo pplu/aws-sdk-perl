@@ -1,6 +1,7 @@
 package Paws::ServiceDiscovery;
   use Moose;
   sub service { 'servicediscovery' }
+  sub signing_name { 'servicediscovery' }
   sub version { '2017-03-14' }
   sub target_prefix { 'Route53AutoNaming_v20170314' }
   sub json_version { "1.1" }
@@ -234,6 +235,8 @@ register the instance, and Route 53 automatically creates up to five
 DNS records and an optional health check. Clients that submit DNS
 queries for the service receive an answer that contains up to eight
 healthy records.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/servicediscovery-2017-03-14>
 
 =head1 METHODS
 

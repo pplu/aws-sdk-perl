@@ -5,6 +5,7 @@ package Paws::Glue::StartJobRun;
   has Arguments => (is => 'ro', isa => 'Paws::Glue::GenericMap');
   has JobName => (is => 'ro', isa => 'Str', required => 1);
   has JobRunId => (is => 'ro', isa => 'Str');
+  has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
   has Timeout => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
@@ -33,7 +34,7 @@ As an example:
   $service_obj->StartJobRun(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/StartJobRun>
 =head1 ATTRIBUTES
 
 
@@ -76,6 +77,12 @@ The name of the job definition to use.
 =head2 JobRunId => Str
 
 The ID of a previous JobRun to retry.
+
+
+
+=head2 NotificationProperty => L<Paws::Glue::NotificationProperty>
+
+Specifies configuration properties of a job run notification.
 
 
 

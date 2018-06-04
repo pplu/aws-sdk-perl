@@ -1,6 +1,7 @@
 package Paws::CodeStar;
   use Moose;
   sub service { 'codestar' }
+  sub signing_name { 'codestar' }
   sub version { '2017-04-19' }
   sub target_prefix { 'CodeStar_20170419' }
   sub json_version { "1.1" }
@@ -236,6 +237,8 @@ C<UpdateUserProfile>, which updates the profile for a user.
 
 =back
 
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19>
 
 =head1 METHODS
 

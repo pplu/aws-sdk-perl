@@ -1,6 +1,7 @@
 package Paws::MarketplaceCommerceAnalytics;
   use Moose;
   sub service { 'marketplacecommerceanalytics' }
+  sub signing_name { 'marketplacecommerceanalytics' }
   sub version { '2015-07-01' }
   sub target_prefix { 'MarketplaceCommerceAnalytics20150701' }
   sub json_version { "1.1" }
@@ -56,6 +57,8 @@ Paws::MarketplaceCommerceAnalytics - Perl Interface to AWS AWS Marketplace Comme
 =head1 DESCRIPTION
 
 Provides AWS Marketplace business intelligence data on-demand.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/marketplace/latest/userguide/commerce-analytics-service.html>
 
 =head1 METHODS
 

@@ -1,6 +1,7 @@
 package Paws::ElasticTranscoder;
   use Moose;
   sub service { 'elastictranscoder' }
+  sub signing_name { 'elastictranscoder' }
   sub version { '2012-09-25' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -224,6 +225,8 @@ Paws::ElasticTranscoder - Perl Interface to AWS Amazon Elastic Transcoder
 AWS Elastic Transcoder Service
 
 The AWS Elastic Transcoder Service.
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head1 METHODS
 

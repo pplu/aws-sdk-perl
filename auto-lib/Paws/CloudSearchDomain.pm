@@ -1,6 +1,7 @@
 package Paws::CloudSearchDomain;
   use Moose;
   sub service { 'cloudsearchdomain' }
+  sub signing_name { 'cloudsearch' }
   sub version { '2013-01-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -71,6 +72,8 @@ suggest requests to the search endpoint.
 
 For more information, see the Amazon CloudSearch Developer Guide
 (http://docs.aws.amazon.com/cloudsearch/latest/developerguide).
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/cloudsearch/>
 
 =head1 METHODS
 

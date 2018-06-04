@@ -1,6 +1,7 @@
 package Paws::ES;
   use Moose;
   sub service { 'es' }
+  sub signing_name { 'es' }
   sub version { '2015-01-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -185,6 +186,8 @@ es.I<region>.amazonaws.com. For example, es.us-east-1.amazonaws.com.
 For a current list of supported regions and endpoints, see Regions and
 Endpoints
 (http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions).
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/elasticsearch-service/>
 
 =head1 METHODS
 

@@ -1,6 +1,7 @@
 package Paws::Support;
   use Moose;
   sub service { 'support' }
+  sub signing_name { 'support' }
   sub version { '2013-04-15' }
   sub target_prefix { 'AWSSupport_20130415' }
   sub json_version { "1.1" }
@@ -244,6 +245,8 @@ See About the AWS Support API
 I<AWS Support User Guide> for information about how to use this service
 to create and manage your support cases, and how to call Trusted
 Advisor for results of checks on your resources.
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/aws-support/>
 
 =head1 METHODS
 

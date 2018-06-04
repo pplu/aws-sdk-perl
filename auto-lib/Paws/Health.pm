@@ -1,6 +1,7 @@
 package Paws::Health;
   use Moose;
   sub service { 'health' }
+  sub signing_name { 'health' }
   sub version { '2016-08-04' }
   sub target_prefix { 'AWSHealth_20160804' }
   sub json_version { "1.1" }
@@ -238,6 +239,8 @@ https://health.us-east-1.amazonaws.com
 
 =back
 
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/health-2016-08-04>
 
 =head1 METHODS
 

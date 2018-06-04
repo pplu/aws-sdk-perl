@@ -35,7 +35,7 @@ As an example:
   $service_obj->ListJobs(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot/ListJobs>
 =head1 ATTRIBUTES
 
 
@@ -56,7 +56,7 @@ The token to retrieve the next set of results.
 An optional filter that lets you search for jobs that have the
 specified status.
 
-Valid values are: C<"IN_PROGRESS">, C<"CANCELED">, C<"COMPLETED">
+Valid values are: C<"IN_PROGRESS">, C<"CANCELED">, C<"COMPLETED">, C<"DELETION_IN_PROGRESS">
 
 =head2 TargetSelection => Str
 

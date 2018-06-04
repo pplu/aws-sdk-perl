@@ -35,6 +35,18 @@ need to pass another challenge.
 
 =item *
 
+C<MFA_SETUP>: If MFA is required, users who do not have at least one of
+the MFA methods set up are presented with an C<MFA_SETUP> challenge.
+The user must set up at least one MFA type to continue to authenticate.
+
+=item *
+
+C<SELECT_MFA_TYPE>: Selects the MFA type. Valid MFA options are
+C<SMS_MFA> for text SMS MFA, and C<SOFTWARE_TOKEN_MFA> for TOTP
+software token MFA.
+
+=item *
+
 C<SMS_MFA>: Next challenge is to supply an C<SMS_MFA_CODE>, delivered
 via SMS.
 

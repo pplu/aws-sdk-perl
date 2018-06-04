@@ -1,6 +1,7 @@
 package Paws::WAF;
   use Moose;
   sub service { 'waf' }
+  sub signing_name { 'waf' }
   sub version { '2015-08-24' }
   sub target_prefix { 'AWSWAF_20150824' }
   sub json_version { "1.1" }
@@ -583,6 +584,8 @@ AWS WAF API actions, data types, and errors. For detailed information
 about AWS WAF features and an overview of how to use the AWS WAF API,
 see the AWS WAF Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf-2015-08-24>
 
 =head1 METHODS
 

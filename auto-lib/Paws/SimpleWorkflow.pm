@@ -1,6 +1,7 @@
 package Paws::SimpleWorkflow;
   use Moose;
   sub service { 'swf' }
+  sub signing_name { 'swf' }
   sub version { '2012-01-25' }
   sub target_prefix { 'SimpleWorkflowService' }
   sub json_version { "1.0" }
@@ -378,6 +379,8 @@ as tracking their progress and maintaining their state.
 This documentation serves as reference only. For a broader overview of
 the Amazon SWF programming model, see the I< Amazon SWF Developer Guide
 (http://docs.aws.amazon.com/amazonswf/latest/developerguide/) >.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25>
 
 =head1 METHODS
 

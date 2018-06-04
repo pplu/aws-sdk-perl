@@ -1,6 +1,7 @@
 package Paws::Rekognition;
   use Moose;
   sub service { 'rekognition' }
+  sub signing_name { 'rekognition' }
   sub version { '2016-06-27' }
   sub target_prefix { 'RekognitionService' }
   sub json_version { "1.1" }
@@ -283,6 +284,8 @@ Paws::Rekognition - Perl Interface to AWS Amazon Rekognition
 =head1 DESCRIPTION
 
 This is the Amazon Rekognition API reference.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rekognition-2016-06-27>
 
 =head1 METHODS
 

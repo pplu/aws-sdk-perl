@@ -1,5 +1,7 @@
 package Paws::ECS::ServiceRegistry;
   use Moose;
+  has ContainerName => (is => 'ro', isa => 'Str', request_name => 'containerName', traits => ['NameInRequest']);
+  has ContainerPort => (is => 'ro', isa => 'Int', request_name => 'containerPort', traits => ['NameInRequest']);
   has Port => (is => 'ro', isa => 'Int', request_name => 'port', traits => ['NameInRequest']);
   has RegistryArn => (is => 'ro', isa => 'Str', request_name => 'registryArn', traits => ['NameInRequest']);
 1;
@@ -21,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::ServiceRegistry object:
 
-  $service_obj->Method(Att1 => { Port => $value, ..., RegistryArn => $value  });
+  $service_obj->Method(Att1 => { ContainerName => $value, ..., RegistryArn => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::ServiceRegistry object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Port
+  $result->Att1->ContainerName
 
 =head1 DESCRIPTION
 
@@ -37,17 +39,42 @@ Details of the service registry.
 =head1 ATTRIBUTES
 
 
+=head2 ContainerName => Str
+
+  The container name value, already specified in the task definition, to
+be used for your service discovery service. If the task definition that
+your service task specifies uses the C<bridge> or C<host> network mode,
+you must specify a C<containerName> and C<containerPort> combination
+from the task definition. If the task definition that your service task
+specifies uses the C<awsvpc> network mode and a type SRV DNS record is
+used, you must specify either a C<containerName> and C<containerPort>
+combination or a C<port> value, but not both.
+
+
+=head2 ContainerPort => Int
+
+  The port value, already specified in the task definition, to be used
+for your service discovery service. If the task definition your service
+task specifies uses the C<bridge> or C<host> network mode, you must
+specify a C<containerName> and C<containerPort> combination from the
+task definition. If the task definition your service task specifies
+uses the C<awsvpc> network mode and a type SRV DNS record is used, you
+must specify either a C<containerName> and C<containerPort> combination
+or a C<port> value, but not both.
+
+
 =head2 Port => Int
 
-  The port value used if your Service Discovery service specified an SRV
-record.
+  The port value used if your service discovery service specified an SRV
+record. This field is required if both the C<awsvpc> network mode and
+SRV records are used.
 
 
 =head2 RegistryArn => Str
 
-  The Amazon Resource Name (ARN) of the Service Registry. The currently
-supported service registry is Amazon Route 53 Auto Naming Service. For
-more information, see Service
+  The Amazon Resource Name (ARN) of the service registry. The currently
+supported service registry is Amazon Route 53 Auto Naming. For more
+information, see Service
 (https://docs.aws.amazon.com/Route53/latest/APIReference/API_autonaming_Service.html).
 
 

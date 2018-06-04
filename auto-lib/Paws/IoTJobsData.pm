@@ -1,6 +1,7 @@
 package Paws::IoTJobsData;
   use Moose;
   sub service { 'data.jobs.iot' }
+  sub signing_name { 'iot-jobs-data' }
   sub version { '2017-09-29' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -82,6 +83,8 @@ the job document, performing the operations it specifies, and reporting
 its progress to AWS IoT. The Jobs service provides commands to track
 the progress of a job on a specific target and for all the targets of
 the job
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/iot/>
 
 =head1 METHODS
 

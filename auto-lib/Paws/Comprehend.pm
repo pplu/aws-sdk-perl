@@ -1,6 +1,7 @@
 package Paws::Comprehend;
   use Moose;
   sub service { 'comprehend' }
+  sub signing_name { 'comprehend' }
   sub version { '2017-11-27' }
   sub target_prefix { 'Comprehend_20171127' }
   sub json_version { "1.1" }
@@ -127,6 +128,8 @@ Amazon Comprehend is an AWS service for gaining insight into the
 content of documents. Use these actions to determine the topics
 contained in your documents, the topics they discuss, the predominant
 sentiment expressed in them, the predominant language used, and more.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27>
 
 =head1 METHODS
 

@@ -1,6 +1,7 @@
 package Paws::CloudSearch;
   use Moose;
   sub service { 'cloudsearch' }
+  sub signing_name { 'cloudsearch' }
   sub version { '2013-01-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -178,6 +179,8 @@ cloudsearch.I<region>.amazonaws.com. For example,
 cloudsearch.us-east-1.amazonaws.com. For a current list of supported
 regions and endpoints, see Regions and Endpoints
 (http://docs.aws.amazon.com/general/latest/gr/rande.html#cloudsearch_region).
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head1 METHODS
 

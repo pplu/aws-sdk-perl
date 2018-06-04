@@ -1,6 +1,7 @@
 package Paws::CloudFormation;
   use Moose;
   sub service { 'cloudformation' }
+  sub signing_name { 'cloudformation' }
   sub version { '2010-05-15' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -411,6 +412,8 @@ additional technical information about a specific AWS product, you can
 find the product's technical documentation at docs.aws.amazon.com
 (http://docs.aws.amazon.com/).
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15>
+
 =head1 METHODS
 
 =head2 CancelUpdateStack
@@ -628,6 +631,8 @@ parametersE<mdash>you must specify at least one account and one region.
 =item [ClientRequestToken => Str]
 
 =item [Description => Str]
+
+=item [ExecutionRoleName => Str]
 
 =item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
 
@@ -1452,17 +1457,23 @@ value using C<UpdateStackInstances>.
 
 =item StackSetName => Str
 
+=item [Accounts => ArrayRef[Str|Undef]]
+
 =item [AdministrationRoleARN => Str]
 
 =item [Capabilities => ArrayRef[Str|Undef]]
 
 =item [Description => Str]
 
+=item [ExecutionRoleName => Str]
+
 =item [OperationId => Str]
 
 =item [OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>]
 
 =item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
+
+=item [Regions => ArrayRef[Str|Undef]]
 
 =item [Tags => ArrayRef[L<Paws::CloudFormation::Tag>]]
 
@@ -1479,7 +1490,8 @@ Each argument is described in detail in: L<Paws::CloudFormation::UpdateStackSet>
 
 Returns: a L<Paws::CloudFormation::UpdateStackSetOutput> instance
 
-Updates the stack set and I<all> associated stack instances.
+Updates the stack set, and associated stack instances in the specified
+accounts and regions.
 
 Even if the stack set operation created by updating the stack set fails
 (completely or partially, below or above a specified failure

@@ -1,6 +1,7 @@
 package Paws::Snowball;
   use Moose;
   sub service { 'snowball' }
+  sub signing_name { 'snowball' }
   sub version { '2016-06-30' }
   sub target_prefix { 'AWSIESnowballJobManagementService' }
   sub json_version { "1.1" }
@@ -186,6 +187,8 @@ data locally with a Snowball appliance, you'll need to use the Snowball
 client or the Amazon S3 API adapter for Snowball. For more information,
 see the User Guide
 (http://docs.aws.amazon.com/AWSImportExport/latest/ug/api-reference.html).
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30>
 
 =head1 METHODS
 

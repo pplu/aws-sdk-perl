@@ -1,6 +1,7 @@
 package Paws::StorageGateway;
   use Moose;
   sub service { 'storagegateway' }
+  sub signing_name { 'storagegateway' }
   sub version { '2013-06-30' }
   sub target_prefix { 'StorageGateway_20130630' }
   sub json_version { "1.1" }
@@ -576,6 +577,8 @@ C<snap-78e226633445566ee>.
 For more information, see Announcement: Heads-up E<ndash> Longer AWS
 Storage Gateway volume and snapshot IDs coming in 2016
 (https://forums.aws.amazon.com/ann.jspa?annID=3557).
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30>
 
 =head1 METHODS
 

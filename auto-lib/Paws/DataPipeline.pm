@@ -1,6 +1,7 @@
 package Paws::DataPipeline;
   use Moose;
   sub service { 'datapipeline' }
+  sub signing_name { 'datapipeline' }
   sub version { '2012-10-29' }
   sub target_prefix { 'DataPipeline' }
   sub json_version { "1.1" }
@@ -233,6 +234,8 @@ runner performs the task assigned to it by the web service, reporting
 progress to the web service as it does so. When the task is done, the
 task runner reports the final success or failure of the task to the web
 service.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29>
 
 =head1 METHODS
 

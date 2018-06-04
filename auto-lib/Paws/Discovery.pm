@@ -1,6 +1,7 @@
 package Paws::Discovery;
   use Moose;
   sub service { 'discovery' }
+  sub signing_name { 'discovery' }
   sub version { '2015-11-01' }
   sub target_prefix { 'AWSPoseidonService_V2015_11_01' }
   sub json_version { "1.1" }
@@ -217,6 +218,8 @@ you're using. For more information, see AWS SDKs
 This guide is intended for use with the I<AWS Application Discovery
 Service User Guide>
 (http://docs.aws.amazon.com/application-discovery/latest/userguide/).
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01>
 
 =head1 METHODS
 

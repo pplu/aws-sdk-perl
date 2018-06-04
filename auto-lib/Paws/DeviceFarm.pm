@@ -1,6 +1,7 @@
 package Paws::DeviceFarm;
   use Moose;
   sub service { 'devicefarm' }
+  sub signing_name { 'devicefarm' }
   sub version { '2015-06-23' }
   sub target_prefix { 'DeviceFarm_20150623' }
   sub json_version { "1.1" }
@@ -683,6 +684,8 @@ Paws::DeviceFarm - Perl Interface to AWS AWS Device Farm
 AWS Device Farm is a service that enables mobile app developers to test
 Android, iOS, and Fire OS apps on physical phones, tablets, and other
 devices in the cloud.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23>
 
 =head1 METHODS
 

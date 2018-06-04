@@ -1,6 +1,7 @@
 package Paws::MediaStoreData;
   use Moose;
   sub service { 'data.mediastore' }
+  sub signing_name { 'mediastore' }
   sub version { '2017-09-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -72,6 +73,8 @@ Paws::MediaStoreData - Perl Interface to AWS AWS Elemental MediaStore Data Plane
 An AWS Elemental MediaStore asset is an object, similar to an object in
 the Amazon S3 service. Objects are the fundamental entities that are
 stored in AWS Elemental MediaStore.
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/mediastore/>
 
 =head1 METHODS
 

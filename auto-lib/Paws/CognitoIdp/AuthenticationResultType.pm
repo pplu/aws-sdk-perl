@@ -48,7 +48,7 @@ The authentication result.
 
 =head2 ExpiresIn => Int
 
-  The expiration period of the authentication result.
+  The expiration period of the authentication result in seconds.
 
 
 =head2 IdToken => Str

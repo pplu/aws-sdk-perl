@@ -1,6 +1,7 @@
 package Paws::CUR;
   use Moose;
   sub service { 'cur' }
+  sub signing_name { 'cur' }
   sub version { '2017-01-06' }
   sub target_prefix { 'AWSOrigamiServiceGatewayService' }
   sub json_version { "1.1" }
@@ -84,6 +85,8 @@ Paws::CUR - Perl Interface to AWS AWS Cost and Usage Report Service
 =head1 DESCRIPTION
 
 All public APIs for AWS Cost and Usage Report service
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html>
 
 =head1 METHODS
 

@@ -53,6 +53,7 @@ on 'develop' => sub {
   # For developing / testing the pluggable callers
   requires 'Mojolicious';
   requires 'Future::Mojo', '>= 0.003';
+  requires 'Mojo::Promise::Role::Futurify';
   requires 'EV';
   requires 'LWP::UserAgent';
   requires 'Furl';
@@ -60,12 +61,14 @@ on 'develop' => sub {
   requires 'Pod::Escapes';
   requires 'Data::Munge';
 };
+
 on 'test' => sub {
-  requires 'File::Slurper';
+  requires 'Path::Class';
   requires 'YAML';
   requires 'Test::More';
   requires 'Test::Timer';
   requires 'Test::Exception';
   requires 'Test::Warnings';
   requires 'Class::Unload';
+  requires 'File::Slurper';
 };

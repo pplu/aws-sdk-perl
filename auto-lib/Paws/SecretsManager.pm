@@ -1,6 +1,7 @@
 package Paws::SecretsManager;
   use Moose;
   sub service { 'secretsmanager' }
+  sub signing_name { 'secretsmanager' }
   sub version { '2017-10-17' }
   sub target_prefix { 'secretsmanager' }
   sub json_version { "1.1" }
@@ -194,6 +195,8 @@ in the I<AWS Secrets Manager User Guide>. To learn more about
 CloudTrail, including how to turn it on and find your log files, see
 the AWS CloudTrail User Guide
 (http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/secretsmanager-2017-10-17>
 
 =head1 METHODS
 

@@ -1,6 +1,7 @@
 package Paws::MediaConvert;
   use Moose;
   sub service { 'mediaconvert' }
+  sub signing_name { 'mediaconvert' }
   sub version { '2017-08-29' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -145,6 +146,8 @@ Paws::MediaConvert - Perl Interface to AWS AWS Elemental MediaConvert
 =head1 DESCRIPTION
 
 AWS Elemental MediaConvert
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29>
 
 =head1 METHODS
 

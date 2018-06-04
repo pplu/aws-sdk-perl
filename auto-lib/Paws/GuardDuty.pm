@@ -1,6 +1,7 @@
 package Paws::GuardDuty;
   use Moose;
   sub service { 'guardduty' }
+  sub signing_name { 'guardduty' }
   sub version { '2017-11-28' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -417,6 +418,8 @@ Paws::GuardDuty - Perl Interface to AWS Amazon GuardDuty
 
 Assess, monitor, manage, and remediate security issues across your AWS
 infrastructure, applications, and data.
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head1 METHODS
 

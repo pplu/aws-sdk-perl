@@ -1,6 +1,7 @@
 package Paws::Polly;
   use Moose;
   sub service { 'polly' }
+  sub signing_name { 'polly' }
   sub version { '2016-06-10' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -104,6 +105,8 @@ The Amazon Polly service provides API operations for synthesizing
 high-quality speech from plain text and Speech Synthesis Markup
 Language (SSML), along with managing pronunciations lexicons that
 enable you to get the best results for your application domain.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/polly-2016-06-10>
 
 =head1 METHODS
 

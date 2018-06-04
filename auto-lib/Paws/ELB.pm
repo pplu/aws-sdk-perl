@@ -1,6 +1,7 @@
 package Paws::ELB;
   use Moose;
   sub service { 'elasticloadbalancing' }
+  sub signing_name { 'elasticloadbalancing' }
   sub version { '2012-06-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -241,6 +242,8 @@ using RegisterInstancesWithLoadBalancer.
 All Elastic Load Balancing operations are I<idempotent>, which means
 that they complete at most one time. If you repeat an operation, it
 succeeds with a 200 OK response code.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01>
 
 =head1 METHODS
 

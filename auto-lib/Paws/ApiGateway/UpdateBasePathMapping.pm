@@ -1,8 +1,8 @@
 
 package Paws::ApiGateway::UpdateBasePathMapping;
   use Moose;
-  has BasePath => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'basePath', required => 1);
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domainName', required => 1);
+  has BasePath => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'base_path', required => 1);
+  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domain_name', required => 1);
   has PatchOperations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::PatchOperation]', traits => ['NameInRequest'], request_name => 'patchOperations');
 
   use MooseX::ClassAttribute;
@@ -32,7 +32,7 @@ As an example:
   $service_obj->UpdateBasePathMapping(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
 =head1 ATTRIBUTES
 
 

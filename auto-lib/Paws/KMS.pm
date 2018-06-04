@@ -1,6 +1,7 @@
 package Paws::KMS;
   use Moose;
   sub service { 'kms' }
+  sub signing_name { 'kms' }
   sub version { '2014-11-01' }
   sub target_prefix { 'TrentService' }
   sub json_version { "1.1" }
@@ -418,6 +419,8 @@ GenerateDataKeyWithoutPlaintext
 
 =back
 
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01>
 
 =head1 METHODS
 

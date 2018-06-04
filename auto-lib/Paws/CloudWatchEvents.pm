@@ -1,6 +1,7 @@
 package Paws::CloudWatchEvents;
   use Moose;
   sub service { 'events' }
+  sub signing_name { 'events' }
   sub version { '2015-10-07' }
   sub target_prefix { 'AWSEvents' }
   sub json_version { "1.1" }
@@ -150,6 +151,8 @@ EBS volume.
 For more information about the features of Amazon CloudWatch Events,
 see the Amazon CloudWatch Events User Guide
 (http://docs.aws.amazon.com/AmazonCloudWatch/latest/events).
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/cloudwatch/>
 
 =head1 METHODS
 

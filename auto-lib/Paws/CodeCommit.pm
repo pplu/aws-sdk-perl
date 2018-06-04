@@ -1,6 +1,7 @@
 package Paws::CodeCommit;
   use Moose;
   sub service { 'codecommit' }
+  sub signing_name { 'codecommit' }
   sub version { '2015-04-13' }
   sub target_prefix { 'CodeCommit_20150413' }
   sub json_version { "1.1" }
@@ -612,6 +613,8 @@ trigger by sending data to the trigger target.
 For information about how to use AWS CodeCommit, see the AWS CodeCommit
 User Guide
 (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html).
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13>
 
 =head1 METHODS
 

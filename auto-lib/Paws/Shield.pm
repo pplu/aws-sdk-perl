@@ -1,6 +1,7 @@
 package Paws::Shield;
   use Moose;
   sub service { 'shield' }
+  sub signing_name { 'shield' }
   sub version { '2016-06-02' }
   sub target_prefix { 'AWSShield_20160616' }
   sub json_version { "1.1" }
@@ -127,6 +128,8 @@ WAF and AWS Shield Advanced features and an overview of how to use the
 AWS WAF and AWS Shield Advanced APIs, see the AWS WAF and AWS Shield
 Developer Guide
 (http://docs.aws.amazon.com/waf/latest/developerguide/).
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/shield-2016-06-02>
 
 =head1 METHODS
 

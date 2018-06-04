@@ -1,6 +1,7 @@
 package Paws::WorkDocs;
   use Moose;
   sub service { 'workdocs' }
+  sub signing_name { 'workdocs' }
   sub version { '2016-05-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -359,6 +360,8 @@ limited to, the ability to modify file permissions and upload any file
 to any user. This allows developers to perform the three use cases
 above, as well as give users the ability to grant access on a selective
 basis using the IAM model.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01>
 
 =head1 METHODS
 

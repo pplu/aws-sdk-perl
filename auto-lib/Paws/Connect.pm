@@ -1,6 +1,7 @@
 package Paws::Connect;
   use Moose;
   sub service { 'connect' }
+  sub signing_name { 'connect' }
   sub version { '2017-08-08' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -59,6 +60,8 @@ usage examples for each of the Amazon Connect actions, data types,
 parameters, and errors. Amazon Connect is a cloud-based contact center
 solution that makes it easy to set up and manage a customer contact
 center and provide reliable customer engagement at any scale.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/connect-2017-08-08>
 
 =head1 METHODS
 

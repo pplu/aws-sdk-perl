@@ -1,6 +1,7 @@
 package Paws::CloudDirectory;
   use Moose;
   sub service { 'clouddirectory' }
+  sub signing_name { 'clouddirectory' }
   sub version { '2016-05-10' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -738,6 +739,8 @@ Directory Services features, see AWS Directory Service
 (https://aws.amazon.com/directoryservice/) and the AWS Directory
 Service Administration Guide
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html).
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/directory-service/>
 
 =head1 METHODS
 

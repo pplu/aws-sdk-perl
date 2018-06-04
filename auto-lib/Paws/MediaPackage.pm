@@ -1,6 +1,7 @@
 package Paws::MediaPackage;
   use Moose;
   sub service { 'mediapackage' }
+  sub signing_name { 'mediapackage' }
   sub version { '2017-10-12' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -146,6 +147,8 @@ Paws::MediaPackage - Perl Interface to AWS AWS Elemental MediaPackage
 =head1 DESCRIPTION
 
 AWS Elemental MediaPackage
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mediapackage-2017-10-12>
 
 =head1 METHODS
 

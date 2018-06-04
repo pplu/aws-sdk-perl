@@ -1,6 +1,7 @@
 package Paws::LexModels;
   use Moose;
   sub service { 'models.lex' }
+  sub signing_name { 'lex' }
   sub version { '2017-04-19' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -459,6 +460,8 @@ Amazon Lex Build-Time Actions
 Amazon Lex is an AWS service for building conversational voice and text
 interfaces. Use these actions to create, update, and delete
 conversational bots for new and existing client applications.
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/lex/>
 
 =head1 METHODS
 

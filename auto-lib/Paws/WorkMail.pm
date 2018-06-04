@@ -1,6 +1,7 @@
 package Paws::WorkMail;
   use Moose;
   sub service { 'workmail' }
+  sub signing_name { 'workmail' }
   sub version { '2017-10-01' }
   sub target_prefix { 'WorkMailService' }
   sub json_version { "1.1" }
@@ -391,6 +392,8 @@ is not limited to, the ability to create, update, and delete users,
 groups, and resources. This allows developers to perform the scenarios
 listed above, as well as give users the ability to grant access on a
 selective basis using the IAM model.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workmail-2017-10-01>
 
 =head1 METHODS
 

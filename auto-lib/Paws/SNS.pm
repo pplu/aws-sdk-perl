@@ -1,6 +1,7 @@
 package Paws::SNS;
   use Moose;
   sub service { 'sns' }
+  sub signing_name { 'sns' }
   sub version { '2010-03-31' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -326,6 +327,8 @@ automatically takes care of tasks such as: cryptographically signing
 your service requests, retrying requests, and handling error responses.
 For a list of available SDKs, go to Tools for Amazon Web Services
 (http://aws.amazon.com/tools/).
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31>
 
 =head1 METHODS
 

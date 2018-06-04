@@ -1,6 +1,7 @@
 package Paws::IoTAnalytics;
   use Moose;
   sub service { 'iotanalytics' }
+  sub signing_name { 'iotanalytics' }
   sub version { '2017-11-27' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -222,6 +223,8 @@ and machine learning inference. AWS IoT Analytics includes models for
 common IoT use cases so you can answer questions like which devices are
 about to fail or which customers are at risk of abandoning their
 wearable devices.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iotanalytics-2017-11-27>
 
 =head1 METHODS
 

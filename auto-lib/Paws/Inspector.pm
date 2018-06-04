@@ -1,6 +1,7 @@
 package Paws::Inspector;
   use Moose;
   sub service { 'inspector' }
+  sub signing_name { 'inspector' }
   sub version { '2016-02-16' }
   sub target_prefix { 'InspectorService' }
   sub json_version { "1.1" }
@@ -401,6 +402,8 @@ resources and to identify potential security issues. For more
 information, see Amazon Inspector User Guide
 (http://docs.aws.amazon.com/inspector/latest/userguide/inspector_introduction.html).
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16>
+
 =head1 METHODS
 
 =head2 AddAttributesToFindings
@@ -428,7 +431,7 @@ specified by the ARNs of the findings.
 
 =item AssessmentTargetName => Str
 
-=item ResourceGroupArn => Str
+=item [ResourceGroupArn => Str]
 
 
 =back
@@ -1047,7 +1050,7 @@ Disables the process of sending Amazon Simple Notification Service
 
 =item AssessmentTargetName => Str
 
-=item ResourceGroupArn => Str
+=item [ResourceGroupArn => Str]
 
 
 =back

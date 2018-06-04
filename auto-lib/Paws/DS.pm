@@ -1,6 +1,7 @@
 package Paws::DS;
   use Moose;
   sub service { 'ds' }
+  sub signing_name { 'ds' }
   sub version { '2015-04-16' }
   sub target_prefix { 'DirectoryService_20150416' }
   sub json_version { "1.1" }
@@ -286,6 +287,8 @@ etc.). The SDKs provide a convenient way to create programmatic access
 to AWS Directory Service and other AWS services. For more information
 about the AWS SDKs, including how to download and install them, see
 Tools for Amazon Web Services (http://aws.amazon.com/tools/).
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16>
 
 =head1 METHODS
 

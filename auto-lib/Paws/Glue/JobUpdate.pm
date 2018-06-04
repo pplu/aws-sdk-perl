@@ -8,6 +8,7 @@ package Paws::Glue::JobUpdate;
   has ExecutionProperty => (is => 'ro', isa => 'Paws::Glue::ExecutionProperty');
   has LogUri => (is => 'ro', isa => 'Str');
   has MaxRetries => (is => 'ro', isa => 'Int');
+  has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
   has Role => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
 1;
@@ -103,6 +104,11 @@ allowed for this job.
 =head2 MaxRetries => Int
 
   The maximum number of times to retry this job if it fails.
+
+
+=head2 NotificationProperty => L<Paws::Glue::NotificationProperty>
+
+  Specifies configuration properties of a job notification.
 
 
 =head2 Role => Str

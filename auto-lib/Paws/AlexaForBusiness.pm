@@ -1,6 +1,7 @@
 package Paws::AlexaForBusiness;
   use Moose;
   sub service { 'a4b' }
+  sub signing_name { 'a4b' }
   sub version { '2017-11-09' }
   sub target_prefix { 'AlexaForBusiness' }
   sub json_version { "1.1" }
@@ -459,6 +460,8 @@ Skills Kit and the Alexa for Business API operations. You can make also
 these available as private skills for your organization. Alexa for
 Business makes it easy to voice-enable your products and services,
 providing context-aware voice experiences for your customers.
+
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head1 METHODS
 

@@ -1,6 +1,7 @@
 package Paws::MediaLive;
   use Moose;
   sub service { 'medialive' }
+  sub signing_name { 'medialive' }
   sub version { '2017-10-14' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -199,6 +200,8 @@ Paws::MediaLive - Perl Interface to AWS AWS Elemental MediaLive
 =head1 DESCRIPTION
 
 API for AWS Elemental MediaLive
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14>
 
 =head1 METHODS
 

@@ -3,7 +3,7 @@ package Paws::Glacier::GetJobOutput;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
   has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId', required => 1);
-  has Range => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'range');
+  has Range => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Range');
   has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName', required => 1);
 
   use MooseX::ClassAttribute;
@@ -33,7 +33,7 @@ As an example:
   $service_obj->GetJobOutput(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/glacier/>
 =head1 ATTRIBUTES
 
 

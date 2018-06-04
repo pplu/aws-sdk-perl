@@ -1,6 +1,7 @@
 package Paws::ECR;
   use Moose;
   sub service { 'ecr' }
+  sub signing_name { 'ecr' }
   sub version { '2015-09-21' }
   sub target_prefix { 'AmazonEC2ContainerRegistry_V20150921' }
   sub json_version { "1.1" }
@@ -231,6 +232,8 @@ reliable registry. Amazon ECR supports private Docker repositories with
 resource-based permissions using IAM so that specific users or Amazon
 EC2 instances can access repositories and images. Developers can use
 the Docker CLI to author and manage images.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21>
 
 =head1 METHODS
 

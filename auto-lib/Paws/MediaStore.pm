@@ -1,6 +1,7 @@
 package Paws::MediaStore;
   use Moose;
   sub service { 'mediastore' }
+  sub signing_name { 'mediastore' }
   sub version { '2017-09-01' }
   sub target_prefix { 'MediaStore_20170901' }
   sub json_version { "1.1" }
@@ -98,6 +99,8 @@ Paws::MediaStore - Perl Interface to AWS AWS Elemental MediaStore
 An AWS Elemental MediaStore container is a namespace that holds folders
 and objects. You use a container endpoint to create, read, and delete
 objects.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mediastore-2017-09-01>
 
 =head1 METHODS
 

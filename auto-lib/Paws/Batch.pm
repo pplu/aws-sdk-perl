@@ -1,6 +1,7 @@
 package Paws::Batch;
   use Moose;
   sub service { 'batch' }
+  sub signing_name { 'batch' }
   sub version { '2016-08-10' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -143,6 +144,8 @@ which allows you to focus on analyzing results and solving problems.
 AWS Batch reduces operational complexities, saves time, and reduces
 costs, which makes it easy for developers, scientists, and engineers to
 run their batch jobs in the AWS Cloud.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10>
 
 =head1 METHODS
 

@@ -45,7 +45,7 @@ A collection of accounts and regions.
 
 =head2 AllAwsRegions => Bool
 
-  If true, aggreagate existing AWS Config regions and future regions.
+  If true, aggregate existing AWS Config regions and future regions.
 
 
 =head2 AwsRegions => ArrayRef[Str|Undef]
