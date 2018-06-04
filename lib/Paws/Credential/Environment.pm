@@ -22,7 +22,7 @@ Paws::Credential::Environment
   use Paws::Credential::Environment;
 
   my $paws = Paws->new(config => {
-    credentials => Paws::Credential::Enviroment->new
+    credentials => Paws::Credential::Environment->new
   });
 
 =head1 DESCRIPTION
