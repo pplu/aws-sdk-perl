@@ -676,7 +676,10 @@ package Paws::API::Builder {
         $comment_str .= 'values: ' . join(', ', @{ $shape->{ enum } });
         $example_str = qq{'} . $shape->{ enum }[0] . qq{'};
       } else {
-        $example_str = sprintf($simple_defaults{ $shape->{ type } }, $shape_name);
+        {
+          no warnings;
+          $example_str = sprintf($simple_defaults{ $shape->{ type } }, $shape_name);
+        }
       }
     } elsif ($shape->{ type } eq 'list' ) {
         my ($inner_example_code, $comment) = $self->get_example_code($shape->{ member }->{ shape }, $cache, $depth+1);
