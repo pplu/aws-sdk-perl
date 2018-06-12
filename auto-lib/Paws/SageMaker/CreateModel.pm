@@ -45,6 +45,9 @@ ML compute instances. Deploying on ML compute instances is part of
 model hosting. For more information, see Amazon SageMaker Roles
 (http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
 
+To be able to pass this role to Amazon SageMaker, the caller of this
+API must have the C<iam:PassRole> permission.
+
 
 
 =head2 B<REQUIRED> ModelName => Str
@@ -73,8 +76,8 @@ in the I<AWS Billing and Cost Management User Guide>.
 =head2 VpcConfig => L<Paws::SageMaker::VpcConfig>
 
 A object that specifies the VPC that you want your model to connect to.
-Control access to and from your training container by configuring the
-VPC. For more information, see host-vpc.
+Control access to and from your model container by configuring the VPC.
+For more information, see host-vpc.
 
 
 

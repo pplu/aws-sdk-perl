@@ -48,7 +48,7 @@ A channel is a named input source that training algorithms can consume.
 =head2 CompressionType => Str
 
   If training data is compressed, the compression type. The default value
-is C<None>. C<CompressionType> is used only in PIPE input mode. In FILE
+is C<None>. C<CompressionType> is used only in Pipe input mode. In File
 mode, leave this field unset or set it to None.
 
 
@@ -65,7 +65,7 @@ mode, leave this field unset or set it to None.
 =head2 RecordWrapperType => Str
 
   Specify RecordIO as the value when input data is in raw format but the
-training algorithm requires the RecordIO format, in which caseAmazon
+training algorithm requires the RecordIO format, in which case, Amazon
 SageMaker wraps each individual S3 object in a RecordIO record. If the
 input data is already in RecordIO format, you don't need to set this
 attribute. For more information, see Create a Dataset Using RecordIO

@@ -78,8 +78,8 @@ The maximum number of training jobs to return in the response.
 
 =head2 NameContains => Str
 
-A string in the training job name. This filter returns only models
-whose name contains the specified string.
+A string in the training job name. This filter returns only training
+jobs whose name contains the specified string.
 
 
 

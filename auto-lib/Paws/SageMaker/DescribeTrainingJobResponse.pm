@@ -18,6 +18,7 @@ package Paws::SageMaker::DescribeTrainingJobResponse;
   has TrainingJobName => (is => 'ro', isa => 'Str', required => 1);
   has TrainingJobStatus => (is => 'ro', isa => 'Str', required => 1);
   has TrainingStartTime => (is => 'ro', isa => 'Str');
+  has TuningJobArn => (is => 'ro', isa => 'Str');
   has VpcConfig => (is => 'ro', isa => 'Paws::SageMaker::VpcConfig');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -101,7 +102,11 @@ The condition under which to stop the training job.
 
 =head2 TrainingEndTime => Str
 
-A timestamp that indicates when model training ended.
+Indicates the time when the training job ends on training instances.
+You are billed for the time interval between the value of
+C<TrainingStartTime> and this time. For successful jobs and stopped
+jobs, this is the time after model artifacts are uploaded. For failed
+jobs, this is the time when Amazon SageMaker detects a job failure.
 
 
 =head2 B<REQUIRED> TrainingJobArn => Str
@@ -159,7 +164,17 @@ exceeded.
 Valid values are: C<"InProgress">, C<"Completed">, C<"Failed">, C<"Stopping">, C<"Stopped">
 =head2 TrainingStartTime => Str
 
-A timestamp that indicates when training started.
+Indicates the time when the training job starts on training instances.
+You are billed for the time interval between this time and the value of
+C<TrainingEndTime>. The start time in CloudWatch Logs might be later
+than this time. The difference is due to the time it takes to download
+the training data and to the size of the training container.
+
+
+=head2 TuningJobArn => Str
+
+The Amazon Resource Name (ARN) of the associated hyperparameter tuning
+job if the training job was launched by a hyperparameter tuning job.
 
 
 =head2 VpcConfig => L<Paws::SageMaker::VpcConfig>

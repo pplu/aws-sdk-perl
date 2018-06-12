@@ -44,10 +44,9 @@ artifacts).
 to encrypt the model artifacts at rest using Amazon S3 server-side
 encryption.
 
-If the configuration of the output S3 bucket requires server-side
-encryption for objects, and you don't provide the KMS key ID, Amazon
-SageMaker uses the default service key. For more information, see
-KMS-Managed Encryption Keys
+If you don't provide the KMS key ID, Amazon SageMaker uses the default
+KMS key for Amazon S3 for your role's account. For more information,
+see KMS-Managed Encryption Keys
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html)
 in Amazon Simple Storage Service developer guide.
 

@@ -55,10 +55,10 @@ your-algorithms.
 
 =head2 HyperParameters => L<Paws::SageMaker::HyperParameters>
 
-Algorithm-specific parameters. You set hyperparameters before you start
-the learning process. Hyperparameters influence the quality of the
-model. For a list of hyperparameters for each training algorithm
-provided by Amazon SageMaker, see Algorithms
+Algorithm-specific parameters that influence the quality of the model.
+You set hyperparameters before you start the learning process. For a
+list of hyperparameters for each training algorithm provided by Amazon
+SageMaker, see Algorithms
 (http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
 
 You can specify a maximum of 100 hyperparameters. Each hyperparameter
@@ -119,6 +119,9 @@ Amazon CloudWatch Logs, and publish metrics to Amazon CloudWatch. You
 grant permissions for all of these tasks to an IAM role. For more
 information, see Amazon SageMaker Roles
 (http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
+
+To be able to pass this role to Amazon SageMaker, the caller of this
+API must have the C<iam:PassRole> permission.
 
 
 

@@ -93,6 +93,9 @@ principal (sagemaker.amazonaws.com) permissions to assume this role.
 For more information, see Amazon SageMaker Roles
 (http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
 
+To be able to pass this role to Amazon SageMaker, the caller of this
+API must have the C<iam:PassRole> permission.
+
 
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]

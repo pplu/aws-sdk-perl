@@ -30,6 +30,11 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateEndpointConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateHyperParameterTuningJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateHyperParameterTuningJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateModel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateModel', @_);
@@ -95,6 +100,11 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeEndpointConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeHyperParameterTuningJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeHyperParameterTuningJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeModel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeModel', @_);
@@ -125,6 +135,11 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListEndpoints', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListHyperParameterTuningJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::ListHyperParameterTuningJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListModels {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListModels', @_);
@@ -150,9 +165,19 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListTrainingJobs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTrainingJobsForHyperParameterTuningJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::ListTrainingJobsForHyperParameterTuningJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartNotebookInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::StartNotebookInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopHyperParameterTuningJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::StopHyperParameterTuningJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StopNotebookInstance {
@@ -326,7 +351,7 @@ package Paws::SageMaker;
   }
 
 
-  sub operations { qw/AddTags CreateEndpoint CreateEndpointConfig CreateModel CreateNotebookInstance CreateNotebookInstanceLifecycleConfig CreatePresignedNotebookInstanceUrl CreateTrainingJob DeleteEndpoint DeleteEndpointConfig DeleteModel DeleteNotebookInstance DeleteNotebookInstanceLifecycleConfig DeleteTags DescribeEndpoint DescribeEndpointConfig DescribeModel DescribeNotebookInstance DescribeNotebookInstanceLifecycleConfig DescribeTrainingJob ListEndpointConfigs ListEndpoints ListModels ListNotebookInstanceLifecycleConfigs ListNotebookInstances ListTags ListTrainingJobs StartNotebookInstance StopNotebookInstance StopTrainingJob UpdateEndpoint UpdateEndpointWeightsAndCapacities UpdateNotebookInstance UpdateNotebookInstanceLifecycleConfig / }
+  sub operations { qw/AddTags CreateEndpoint CreateEndpointConfig CreateHyperParameterTuningJob CreateModel CreateNotebookInstance CreateNotebookInstanceLifecycleConfig CreatePresignedNotebookInstanceUrl CreateTrainingJob DeleteEndpoint DeleteEndpointConfig DeleteModel DeleteNotebookInstance DeleteNotebookInstanceLifecycleConfig DeleteTags DescribeEndpoint DescribeEndpointConfig DescribeHyperParameterTuningJob DescribeModel DescribeNotebookInstance DescribeNotebookInstanceLifecycleConfig DescribeTrainingJob ListEndpointConfigs ListEndpoints ListHyperParameterTuningJobs ListModels ListNotebookInstanceLifecycleConfigs ListNotebookInstances ListTags ListTrainingJobs ListTrainingJobsForHyperParameterTuningJob StartNotebookInstance StopHyperParameterTuningJob StopNotebookInstance StopTrainingJob UpdateEndpoint UpdateEndpointWeightsAndCapacities UpdateNotebookInstance UpdateNotebookInstanceLifecycleConfig / }
 
 1;
 
@@ -474,6 +499,28 @@ example, suppose that you want to host two models, A and B, and you
 assign traffic weight 2 for model A and 1 for model B. Amazon SageMaker
 distributes two-thirds of the traffic to Model A, and one-third to
 model B.
+
+
+=head2 CreateHyperParameterTuningJob
+
+=over
+
+=item HyperParameterTuningJobConfig => L<Paws::SageMaker::HyperParameterTuningJobConfig>
+
+=item HyperParameterTuningJobName => Str
+
+=item TrainingJobDefinition => L<Paws::SageMaker::HyperParameterTrainingJobDefinition>
+
+=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::CreateHyperParameterTuningJob>
+
+Returns: a L<Paws::SageMaker::CreateHyperParameterTuningJobResponse> instance
+
+Starts a hyperparameter tuning job.
 
 
 =head2 CreateModel
@@ -656,7 +703,7 @@ Each argument is described in detail in: L<Paws::SageMaker::CreatePresignedNoteb
 
 Returns: a L<Paws::SageMaker::CreatePresignedNotebookInstanceUrlOutput> instance
 
-Returns a URL that you can use to connect to the Juypter server from a
+Returns a URL that you can use to connect to the Jupyter server from a
 notebook instance. In the Amazon SageMaker console, when you choose
 C<Open> next to a notebook instance, Amazon SageMaker opens a new tab
 showing the Jupyter server home page from the notebook instance. The
@@ -783,7 +830,7 @@ Each argument is described in detail in: L<Paws::SageMaker::DeleteEndpointConfig
 
 Returns: nothing
 
-Deletes an endpoint configuration. The C<DeleteEndpoingConfig> API
+Deletes an endpoint configuration. The C<DeleteEndpointConfig> API
 deletes only the specified configuration. It does not delete endpoints
 created using the configuration.
 
@@ -896,6 +943,22 @@ Returns: a L<Paws::SageMaker::DescribeEndpointConfigOutput> instance
 
 Returns the description of an endpoint configuration created using the
 C<CreateEndpointConfig> API.
+
+
+=head2 DescribeHyperParameterTuningJob
+
+=over
+
+=item HyperParameterTuningJobName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DescribeHyperParameterTuningJob>
+
+Returns: a L<Paws::SageMaker::DescribeHyperParameterTuningJobResponse> instance
+
+Gets a description of a hyperparameter tuning job.
 
 
 =head2 DescribeModel
@@ -1025,6 +1088,41 @@ Each argument is described in detail in: L<Paws::SageMaker::ListEndpoints>
 Returns: a L<Paws::SageMaker::ListEndpointsOutput> instance
 
 Lists endpoints.
+
+
+=head2 ListHyperParameterTuningJobs
+
+=over
+
+=item [CreationTimeAfter => Str]
+
+=item [CreationTimeBefore => Str]
+
+=item [LastModifiedTimeAfter => Str]
+
+=item [LastModifiedTimeBefore => Str]
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+=item [StatusEquals => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::ListHyperParameterTuningJobs>
+
+Returns: a L<Paws::SageMaker::ListHyperParameterTuningJobsResponse> instance
+
+Gets a list of objects that describe the hyperparameter tuning jobs
+launched in your account.
 
 
 =head2 ListModels
@@ -1180,6 +1278,33 @@ Returns: a L<Paws::SageMaker::ListTrainingJobsResponse> instance
 Lists training jobs.
 
 
+=head2 ListTrainingJobsForHyperParameterTuningJob
+
+=over
+
+=item HyperParameterTuningJobName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+=item [StatusEquals => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::ListTrainingJobsForHyperParameterTuningJob>
+
+Returns: a L<Paws::SageMaker::ListTrainingJobsForHyperParameterTuningJobResponse> instance
+
+Gets a list of objects that describe the training jobs that a
+hyperparameter tuning job launched.
+
+
 =head2 StartNotebookInstance
 
 =over
@@ -1198,6 +1323,29 @@ libraries and attaches your ML storage volume. After configuring the
 notebook instance, Amazon SageMaker sets the notebook instance status
 to C<InService>. A notebook instance's status must be C<InService>
 before you can connect to your Jupyter notebook.
+
+
+=head2 StopHyperParameterTuningJob
+
+=over
+
+=item HyperParameterTuningJobName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::StopHyperParameterTuningJob>
+
+Returns: nothing
+
+Stops a running hyperparameter tuning job and all running training jobs
+that the tuning job launched.
+
+All model artifacts output from the training jobs are stored in Amazon
+Simple Storage Service (Amazon S3). All data that the training jobs
+write toAmazon CloudWatch Logs are still available in CloudWatch. After
+the tuning job moves to the C<Stopped> state, it releases all reserved
+resources for the tuning job.
 
 
 =head2 StopNotebookInstance
