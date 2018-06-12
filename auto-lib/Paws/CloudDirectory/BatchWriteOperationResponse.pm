@@ -13,6 +13,7 @@ package Paws::CloudDirectory::BatchWriteOperationResponse;
   has DetachPolicy => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachPolicyResponse');
   has DetachTypedLink => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachTypedLinkResponse');
   has RemoveFacetFromObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchRemoveFacetFromObjectResponse');
+  has UpdateLinkAttributes => (is => 'ro', isa => 'Paws::CloudDirectory::BatchUpdateLinkAttributesResponse');
   has UpdateObjectAttributes => (is => 'ro', isa => 'Paws::CloudDirectory::BatchUpdateObjectAttributesResponse');
 1;
 
@@ -119,6 +120,11 @@ more information, see Typed link
 =head2 RemoveFacetFromObject => L<Paws::CloudDirectory::BatchRemoveFacetFromObjectResponse>
 
   The result of a batch remove facet from object operation.
+
+
+=head2 UpdateLinkAttributes => L<Paws::CloudDirectory::BatchUpdateLinkAttributesResponse>
+
+  Represents the output of a C<BatchWrite> response operation.
 
 
 =head2 UpdateObjectAttributes => L<Paws::CloudDirectory::BatchUpdateObjectAttributesResponse>

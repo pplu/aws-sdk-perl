@@ -1,5 +1,6 @@
 package Paws::CloudDirectory::BatchReadSuccessfulResponse;
   use Moose;
+  has GetLinkAttributes => (is => 'ro', isa => 'Paws::CloudDirectory::BatchGetLinkAttributesResponse');
   has GetObjectAttributes => (is => 'ro', isa => 'Paws::CloudDirectory::BatchGetObjectAttributesResponse');
   has GetObjectInformation => (is => 'ro', isa => 'Paws::CloudDirectory::BatchGetObjectInformationResponse');
   has ListAttachedIndices => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListAttachedIndicesResponse');
@@ -31,20 +32,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudDirectory::BatchReadSuccessfulResponse object:
 
-  $service_obj->Method(Att1 => { GetObjectAttributes => $value, ..., LookupPolicy => $value  });
+  $service_obj->Method(Att1 => { GetLinkAttributes => $value, ..., LookupPolicy => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirectory::BatchReadSuccessfulResponse object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->GetObjectAttributes
+  $result->Att1->GetLinkAttributes
 
 =head1 DESCRIPTION
 
 Represents the output of a C<BatchRead> success response operation.
 
 =head1 ATTRIBUTES
+
+
+=head2 GetLinkAttributes => L<Paws::CloudDirectory::BatchGetLinkAttributesResponse>
+
+  The list of attributes to retrieve from the typed link.
 
 
 =head2 GetObjectAttributes => L<Paws::CloudDirectory::BatchGetObjectAttributesResponse>

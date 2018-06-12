@@ -154,6 +154,11 @@ package Paws::CloudDirectory;
     my $call_object = $self->new_with_coercions('Paws::CloudDirectory::GetFacet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetLinkAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudDirectory::GetLinkAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetObjectAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudDirectory::GetObjectAttributes', @_);
@@ -302,6 +307,11 @@ package Paws::CloudDirectory;
   sub UpdateFacet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudDirectory::UpdateFacet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateLinkAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudDirectory::UpdateLinkAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateObjectAttributes {
@@ -700,7 +710,7 @@ package Paws::CloudDirectory;
   }
 
 
-  sub operations { qw/AddFacetToObject ApplySchema AttachObject AttachPolicy AttachToIndex AttachTypedLink BatchRead BatchWrite CreateDirectory CreateFacet CreateIndex CreateObject CreateSchema CreateTypedLinkFacet DeleteDirectory DeleteFacet DeleteObject DeleteSchema DeleteTypedLinkFacet DetachFromIndex DetachObject DetachPolicy DetachTypedLink DisableDirectory EnableDirectory GetAppliedSchemaVersion GetDirectory GetFacet GetObjectAttributes GetObjectInformation GetSchemaAsJson GetTypedLinkFacetInformation ListAppliedSchemaArns ListAttachedIndices ListDevelopmentSchemaArns ListDirectories ListFacetAttributes ListFacetNames ListIncomingTypedLinks ListIndex ListObjectAttributes ListObjectChildren ListObjectParentPaths ListObjectParents ListObjectPolicies ListOutgoingTypedLinks ListPolicyAttachments ListPublishedSchemaArns ListTagsForResource ListTypedLinkFacetAttributes ListTypedLinkFacetNames LookupPolicy PublishSchema PutSchemaFromJson RemoveFacetFromObject TagResource UntagResource UpdateFacet UpdateObjectAttributes UpdateSchema UpdateTypedLinkFacet UpgradeAppliedSchema UpgradePublishedSchema / }
+  sub operations { qw/AddFacetToObject ApplySchema AttachObject AttachPolicy AttachToIndex AttachTypedLink BatchRead BatchWrite CreateDirectory CreateFacet CreateIndex CreateObject CreateSchema CreateTypedLinkFacet DeleteDirectory DeleteFacet DeleteObject DeleteSchema DeleteTypedLinkFacet DetachFromIndex DetachObject DetachPolicy DetachTypedLink DisableDirectory EnableDirectory GetAppliedSchemaVersion GetDirectory GetFacet GetLinkAttributes GetObjectAttributes GetObjectInformation GetSchemaAsJson GetTypedLinkFacetInformation ListAppliedSchemaArns ListAttachedIndices ListDevelopmentSchemaArns ListDirectories ListFacetAttributes ListFacetNames ListIncomingTypedLinks ListIndex ListObjectAttributes ListObjectChildren ListObjectParentPaths ListObjectParents ListObjectPolicies ListOutgoingTypedLinks ListPolicyAttachments ListPublishedSchemaArns ListTagsForResource ListTypedLinkFacetAttributes ListTypedLinkFacetNames LookupPolicy PublishSchema PutSchemaFromJson RemoveFacetFromObject TagResource UntagResource UpdateFacet UpdateLinkAttributes UpdateObjectAttributes UpdateSchema UpdateTypedLinkFacet UpgradeAppliedSchema UpgradePublishedSchema / }
 
 1;
 
@@ -1344,6 +1354,28 @@ Returns: a L<Paws::CloudDirectory::GetFacetResponse> instance
 Gets details of the Facet, such as facet name, attributes, Rules, or
 C<ObjectType>. You can call this on all kinds of schema facets --
 published, development, or applied.
+
+
+=head2 GetLinkAttributes
+
+=over
+
+=item AttributeNames => ArrayRef[Str|Undef]
+
+=item DirectoryArn => Str
+
+=item TypedLinkSpecifier => L<Paws::CloudDirectory::TypedLinkSpecifier>
+
+=item [ConsistencyLevel => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudDirectory::GetLinkAttributes>
+
+Returns: a L<Paws::CloudDirectory::GetLinkAttributesResponse> instance
+
+Retrieves attributes that are associated with a typed link.
 
 
 =head2 GetObjectAttributes
@@ -2058,6 +2090,28 @@ Deletes existing C<Attributes>, C<Rules>, or C<ObjectTypes>.
 
 =back
 
+
+
+=head2 UpdateLinkAttributes
+
+=over
+
+=item AttributeUpdates => ArrayRef[L<Paws::CloudDirectory::LinkAttributeUpdate>]
+
+=item DirectoryArn => Str
+
+=item TypedLinkSpecifier => L<Paws::CloudDirectory::TypedLinkSpecifier>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudDirectory::UpdateLinkAttributes>
+
+Returns: a L<Paws::CloudDirectory::UpdateLinkAttributesResponse> instance
+
+Updates a given typed linkE<rsquo>s attributes. Attributes to be
+updated must not contribute to the typed linkE<rsquo>s identity, as
+defined by its C<IdentityAttributeOrder>.
 
 
 =head2 UpdateObjectAttributes

@@ -13,6 +13,7 @@ package Paws::CloudDirectory::BatchWriteOperation;
   has DetachPolicy => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachPolicy');
   has DetachTypedLink => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachTypedLink');
   has RemoveFacetFromObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchRemoveFacetFromObject');
+  has UpdateLinkAttributes => (is => 'ro', isa => 'Paws::CloudDirectory::BatchUpdateLinkAttributes');
   has UpdateObjectAttributes => (is => 'ro', isa => 'Paws::CloudDirectory::BatchUpdateObjectAttributes');
 1;
 
@@ -119,6 +120,11 @@ more information, see Typed link
 =head2 RemoveFacetFromObject => L<Paws::CloudDirectory::BatchRemoveFacetFromObject>
 
   A batch operation that removes a facet from an object.
+
+
+=head2 UpdateLinkAttributes => L<Paws::CloudDirectory::BatchUpdateLinkAttributes>
+
+  Updates a given object's attributes.
 
 
 =head2 UpdateObjectAttributes => L<Paws::CloudDirectory::BatchUpdateObjectAttributes>
