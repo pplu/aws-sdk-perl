@@ -7,6 +7,7 @@ package Paws::MediaLive::Channel;
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has InputAttachments => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputAttachment]', request_name => 'inputAttachments', traits => ['NameInRequest']);
   has InputSpecification => (is => 'ro', isa => 'Paws::MediaLive::InputSpecification', request_name => 'inputSpecification', traits => ['NameInRequest']);
+  has LogLevel => (is => 'ro', isa => 'Str', request_name => 'logLevel', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has PipelinesRunningCount => (is => 'ro', isa => 'Int', request_name => 'pipelinesRunningCount', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
@@ -81,6 +82,11 @@ one destination per packager.
 =head2 InputSpecification => L<Paws::MediaLive::InputSpecification>
 
   
+
+
+=head2 LogLevel => Str
+
+  The log level being written to CloudWatch Logs.
 
 
 =head2 Name => Str

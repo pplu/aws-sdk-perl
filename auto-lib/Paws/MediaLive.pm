@@ -217,6 +217,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 
 =item [InputSpecification => L<Paws::MediaLive::InputSpecification>]
 
+=item [LogLevel => Str]
+
 =item [Name => Str]
 
 =item [RequestId => Str]
@@ -472,6 +474,8 @@ Stops a running channel
 =item [InputAttachments => ArrayRef[L<Paws::MediaLive::InputAttachment>]]
 
 =item [InputSpecification => L<Paws::MediaLive::InputSpecification>]
+
+=item [LogLevel => Str]
 
 =item [Name => Str]
 

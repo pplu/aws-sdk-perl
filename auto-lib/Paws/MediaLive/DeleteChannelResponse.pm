@@ -8,6 +8,7 @@ package Paws::MediaLive::DeleteChannelResponse;
   has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
   has InputAttachments => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputAttachment]', traits => ['NameInRequest'], request_name => 'inputAttachments');
   has InputSpecification => (is => 'ro', isa => 'Paws::MediaLive::InputSpecification', traits => ['NameInRequest'], request_name => 'inputSpecification');
+  has LogLevel => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logLevel');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
   has PipelinesRunningCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'pipelinesRunningCount');
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
@@ -62,6 +63,11 @@ List of input attachments for channel.
 
 
 
+=head2 LogLevel => Str
+
+The log level being written to CloudWatch Logs.
+
+Valid values are: C<"ERROR">, C<"WARNING">, C<"INFO">, C<"DEBUG">, C<"DISABLED">
 =head2 Name => Str
 
 The name of the channel. (user-mutable)

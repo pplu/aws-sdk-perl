@@ -5,6 +5,7 @@ package Paws::MediaLive::CreateChannel;
   has EncoderSettings => (is => 'ro', isa => 'Paws::MediaLive::EncoderSettings', traits => ['NameInRequest'], request_name => 'encoderSettings');
   has InputAttachments => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputAttachment]', traits => ['NameInRequest'], request_name => 'inputAttachments');
   has InputSpecification => (is => 'ro', isa => 'Paws::MediaLive::InputSpecification', traits => ['NameInRequest'], request_name => 'inputSpecification');
+  has LogLevel => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logLevel');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
   has RequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestId');
   has Reserved => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reserved');
@@ -65,6 +66,12 @@ Specification of input for this channel (max. bitrate, resolution,
 codec, etc.)
 
 
+
+=head2 LogLevel => Str
+
+The log level to write to CloudWatch Logs.
+
+Valid values are: C<"ERROR">, C<"WARNING">, C<"INFO">, C<"DEBUG">, C<"DISABLED">
 
 =head2 Name => Str
 
