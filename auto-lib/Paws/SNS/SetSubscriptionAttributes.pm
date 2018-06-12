@@ -40,7 +40,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns
 The name of the attribute you want to set. Only a subset of the
 subscriptions attributes are mutable.
 
-Valid values: C<DeliveryPolicy> | C<RawMessageDelivery>
+Valid values: C<DeliveryPolicy> | C<FilterPolicy> |
+C<RawMessageDelivery>
 
 
 

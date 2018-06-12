@@ -1,8 +1,10 @@
 
 package Paws::SNS::Subscribe;
   use Moose;
+  has Attributes => (is => 'ro', isa => 'Paws::SNS::SubscriptionAttributesMap');
   has Endpoint => (is => 'ro', isa => 'Str');
   has Protocol => (is => 'ro', isa => 'Str', required => 1);
+  has ReturnSubscriptionArn => (is => 'ro', isa => 'Bool');
   has TopicArn => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -33,6 +35,14 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns/Subscribe>
 =head1 ATTRIBUTES
+
+
+=head2 Attributes => L<Paws::SNS::SubscriptionAttributesMap>
+
+Assigns attributes to the subscription as a map of key-value pairs. You
+can assign any attribute that is supported by the
+C<SetSubscriptionAttributes> action.
+
 
 
 =head2 Endpoint => Str
@@ -126,6 +136,24 @@ function.
 
 =back
 
+
+
+
+=head2 ReturnSubscriptionArn => Bool
+
+Sets whether the response from the C<Subscribe> request includes the
+subscription ARN, even if the subscription is not yet confirmed.
+
+If you set this parameter to C<false>, the response includes the ARN
+for confirmed subscriptions, but it includes an ARN value of "pending
+subscription" for subscriptions that are not yet confirmed. A
+subscription becomes confirmed when the subscriber calls the
+C<ConfirmSubscription> action with a confirmation token.
+
+If you set this parameter to C<true>, the response includes the ARN in
+all cases, even if the subscription is not yet confirmed.
+
+The default value is C<false>.
 
 
 

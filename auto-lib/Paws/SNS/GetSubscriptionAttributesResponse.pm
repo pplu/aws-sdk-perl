@@ -24,31 +24,48 @@ the following:
 
 =item *
 
-C<SubscriptionArn> -- the subscription's ARN
+C<ConfirmationWasAuthenticated> -- C<true> if the subscription
+confirmation request was authenticated.
 
 =item *
 
-C<TopicArn> -- the topic ARN that the subscription is associated with
+C<DeliveryPolicy> -- The JSON serialization of the subscription's
+delivery policy.
 
 =item *
 
-C<Owner> -- the AWS account ID of the subscription's owner
-
-=item *
-
-C<ConfirmationWasAuthenticated> -- true if the subscription
-confirmation request was authenticated
-
-=item *
-
-C<DeliveryPolicy> -- the JSON serialization of the subscription's
-delivery policy
-
-=item *
-
-C<EffectiveDeliveryPolicy> -- the JSON serialization of the effective
+C<EffectiveDeliveryPolicy> -- The JSON serialization of the effective
 delivery policy that takes into account the topic delivery policy and
-account system defaults
+account system defaults.
+
+=item *
+
+C<FilterPolicy> -- The filter policy JSON that is assigned to the
+subscription.
+
+=item *
+
+C<Owner> -- The AWS account ID of the subscription's owner.
+
+=item *
+
+C<PendingConfirmation> -- C<true> if the subscription hasn't been
+confirmed. To confirm a pending subscription, call the
+C<ConfirmSubscription> action with a confirmation token.
+
+=item *
+
+C<RawMessageDelivery> -- C<true> if raw message delivery is enabled for
+the subscription. Raw messages are free of JSON formatting and can be
+sent to HTTP/S and Amazon SQS endpoints.
+
+=item *
+
+C<SubscriptionArn> -- The subscription's ARN.
+
+=item *
+
+C<TopicArn> -- The topic ARN that the subscription is associated with.
 
 =back
 
