@@ -637,8 +637,9 @@ MAC addresses to prevent overiding the MAC address.
 =item *
 
 Note the instructions regarding the special use case of the
-C<ResourceAttributeList> parameter when specifying any "VM" related
-value.
+C<ResourceAttributeList>
+(https://docs.aws.amazon.com/migrationhub/latest/ug/API_PutResourceAttributes.html#migrationhub-PutResourceAttributes-request-ResourceAttributeList)
+parameter when specifying any "VM" related value.
 
 =back
 
