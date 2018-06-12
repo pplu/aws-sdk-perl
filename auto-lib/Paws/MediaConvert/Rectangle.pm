@@ -1,9 +1,9 @@
 package Paws::MediaConvert::Rectangle;
   use Moose;
-  has Height => (is => 'ro', isa => 'Int', request_name => 'height', traits => ['NameInRequest']);
-  has Width => (is => 'ro', isa => 'Int', request_name => 'width', traits => ['NameInRequest']);
-  has X => (is => 'ro', isa => 'Int', request_name => 'x', traits => ['NameInRequest']);
-  has Y => (is => 'ro', isa => 'Int', request_name => 'y', traits => ['NameInRequest']);
+  has Height => (is => 'ro', isa => 'Int', request_name => 'height', traits => ['NameInRequest'], required => 1);
+  has Width => (is => 'ro', isa => 'Int', request_name => 'width', traits => ['NameInRequest'], required => 1);
+  has X => (is => 'ro', isa => 'Int', request_name => 'x', traits => ['NameInRequest'], required => 1);
+  has Y => (is => 'ro', isa => 'Int', request_name => 'y', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -39,23 +39,23 @@ Use Rectangle to identify a specific area of the video frame.
 =head1 ATTRIBUTES
 
 
-=head2 Height => Int
+=head2 B<REQUIRED> Height => Int
 
   Height of rectangle in pixels.
 
 
-=head2 Width => Int
+=head2 B<REQUIRED> Width => Int
 
   Width of rectangle in pixels.
 
 
-=head2 X => Int
+=head2 B<REQUIRED> X => Int
 
   The distance, in pixels, between the rectangle and the left edge of the
 video frame.
 
 
-=head2 Y => Int
+=head2 B<REQUIRED> Y => Int
 
   The distance, in pixels, between the rectangle and the top edge of the
 video frame.

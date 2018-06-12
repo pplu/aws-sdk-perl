@@ -73,18 +73,23 @@ PID 0x101).
 
 =head2 ProgramSelection => Int
 
-  Applies only when input streams contain Dolby E. Enter the program ID
-(according to the metadata in the audio) of the Dolby E program to
-extract from the specified track. One program extracted per audio
-selector. To select multiple programs, create multiple selectors with
-the same Track and different Program numbers. "All channels" means to
-ignore the program IDs and include all the channels in this selector;
-useful if metadata is known to be incorrect.
+  Use this setting for input streams that contain Dolby E, to have the
+service extract specific program data from the track. To select
+multiple programs, create multiple selectors with the same Track and
+different Program numbers. In the console, this setting is visible when
+you set Selector type to Track. Choose the program number from the
+dropdown list. If you are sending a JSON file, provide the program ID,
+which is part of the audio metadata. If your input file has incorrect
+metadata, you can choose All channels instead of a program number to
+have the service ignore the program IDs and include all the programs in
+the track.
 
 
 =head2 RemixSettings => L<Paws::MediaConvert::RemixSettings>
 
-  Advanced audio remixing settings.
+  Use these settings to reorder the audio channels of one input to match
+those of another input. This allows you to combine the two files into a
+single output, one after the other.
 
 
 =head2 SelectorType => Str
@@ -94,9 +99,12 @@ useful if metadata is known to be incorrect.
 
 =head2 Tracks => ArrayRef[Int]
 
-  Identify the channel to include in this selector by entering the
-1-based track index. To combine several tracks, enter a comma-separated
-list, e.g. "1,2,3" for tracks 1-3.
+  Identify a track from the input audio to include in this selector by
+entering the track index number. To include several tracks in a single
+audio selector, specify multiple tracks as follows. Using the console,
+enter a comma-separated list. For examle, type "1,2,3" to include
+tracks 1 through 3. Specifying directly in your JSON job file, provide
+the track numbers in an array. For example, "tracks": [1,2,3].
 
 
 

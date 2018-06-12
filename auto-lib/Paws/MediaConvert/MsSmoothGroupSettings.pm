@@ -3,7 +3,7 @@ package Paws::MediaConvert::MsSmoothGroupSettings;
   has AudioDeduplication => (is => 'ro', isa => 'Str', request_name => 'audioDeduplication', traits => ['NameInRequest']);
   has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
   has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::MsSmoothEncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
-  has FragmentLength => (is => 'ro', isa => 'Int', request_name => 'fragmentLength', traits => ['NameInRequest']);
+  has FragmentLength => (is => 'ro', isa => 'Int', request_name => 'fragmentLength', traits => ['NameInRequest'], required => 1);
   has ManifestEncoding => (is => 'ro', isa => 'Str', request_name => 'manifestEncoding', traits => ['NameInRequest']);
 1;
 
@@ -60,7 +60,7 @@ service uses the filename of the first input file.
   
 
 
-=head2 FragmentLength => Int
+=head2 B<REQUIRED> FragmentLength => Int
 
   Use Fragment length (FragmentLength) to specify the mp4 fragment sizes
 in seconds. Fragment length must be compatible with GOP size and

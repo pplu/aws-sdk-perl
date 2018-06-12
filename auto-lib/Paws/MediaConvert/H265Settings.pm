@@ -36,6 +36,7 @@ package Paws::MediaConvert::H265Settings;
   has TemporalIds => (is => 'ro', isa => 'Str', request_name => 'temporalIds', traits => ['NameInRequest']);
   has Tiles => (is => 'ro', isa => 'Str', request_name => 'tiles', traits => ['NameInRequest']);
   has UnregisteredSeiTimecode => (is => 'ro', isa => 'Str', request_name => 'unregisteredSeiTimecode', traits => ['NameInRequest']);
+  has WriteMp4PackagingType => (is => 'ro', isa => 'Str', request_name => 'writeMp4PackagingType', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +56,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::H265Settings object:
 
-  $service_obj->Method(Att1 => { AdaptiveQuantization => $value, ..., UnregisteredSeiTimecode => $value  });
+  $service_obj->Method(Att1 => { AdaptiveQuantization => $value, ..., WriteMp4PackagingType => $value  });
 
 =head3 Results returned from an API call
 
@@ -83,10 +84,9 @@ Settings for H265 codec
 
 =head2 Bitrate => Int
 
-  Average bitrate in bits/second. Required for VBR, CBR, and ABR. Five
-megabits can be entered as 5000000 or 5m. Five hundred kilobits can be
-entered as 500000 or 0.5m. For MS Smooth outputs, bitrates must be
-unique when rounded down to the nearest multiple of 1000.
+  Average bitrate in bits/second. Required for VBR and CBR. For MS Smooth
+outputs, bitrates must be unique when rounded down to the nearest
+multiple of 1000.
 
 
 =head2 CodecLevel => Str
@@ -157,8 +157,8 @@ model).
 
 =head2 HrdBufferSize => Int
 
-  Size of buffer (HRD buffer model). Five megabits can be entered as
-5000000 or 5m. Five hundred kilobits can be entered as 500000 or 0.5m.
+  Size of buffer (HRD buffer model) in bits. For example, enter five
+megabits as 5000000.
 
 
 =head2 InterlaceMode => Str
@@ -168,9 +168,7 @@ model).
 
 =head2 MaxBitrate => Int
 
-  Maximum bitrate in bits/second (for VBR mode only). Five megabits can
-be entered as 5000000 or 5m. Five hundred kilobits can be entered as
-500000 or 0.5m.
+  Maximum bitrate in bits/second.
 
 
 =head2 MinIInterval => Int
@@ -268,6 +266,11 @@ half the number of macroblock rows for interlaced pictures.
 
 
 =head2 UnregisteredSeiTimecode => Str
+
+  
+
+
+=head2 WriteMp4PackagingType => Str
 
   
 

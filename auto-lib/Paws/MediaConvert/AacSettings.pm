@@ -3,10 +3,10 @@ package Paws::MediaConvert::AacSettings;
   has AudioDescriptionBroadcasterMix => (is => 'ro', isa => 'Str', request_name => 'audioDescriptionBroadcasterMix', traits => ['NameInRequest']);
   has Bitrate => (is => 'ro', isa => 'Int', request_name => 'bitrate', traits => ['NameInRequest']);
   has CodecProfile => (is => 'ro', isa => 'Str', request_name => 'codecProfile', traits => ['NameInRequest']);
-  has CodingMode => (is => 'ro', isa => 'Str', request_name => 'codingMode', traits => ['NameInRequest']);
+  has CodingMode => (is => 'ro', isa => 'Str', request_name => 'codingMode', traits => ['NameInRequest'], required => 1);
   has RateControlMode => (is => 'ro', isa => 'Str', request_name => 'rateControlMode', traits => ['NameInRequest']);
   has RawFormat => (is => 'ro', isa => 'Str', request_name => 'rawFormat', traits => ['NameInRequest']);
-  has SampleRate => (is => 'ro', isa => 'Int', request_name => 'sampleRate', traits => ['NameInRequest']);
+  has SampleRate => (is => 'ro', isa => 'Int', request_name => 'sampleRate', traits => ['NameInRequest'], required => 1);
   has Specification => (is => 'ro', isa => 'Str', request_name => 'specification', traits => ['NameInRequest']);
   has VbrQuality => (is => 'ro', isa => 'Str', request_name => 'vbrQuality', traits => ['NameInRequest']);
 1;
@@ -40,7 +40,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 =head1 DESCRIPTION
 
 Required when you set (Codec) under
-(AudioDescriptions)E<gt>(CodecSettings) to the value AAC.
+(AudioDescriptions)E<gt>(CodecSettings) to the value AAC. The service
+accepts one of two mutually exclusive groups of AAC settings--VBR and
+CBR. To select one of these modes, set the value of Bitrate control
+mode (rateControlMode) to "VBR" or "CBR". In VBR mode, you control the
+audio quality with the setting VBR quality (vbrQuality). In CBR mode,
+you use the setting Bitrate (bitrate). Defaults and valid values depend
+on the rate control mode.
 
 =head1 ATTRIBUTES
 
@@ -52,8 +58,8 @@ Required when you set (Codec) under
 
 =head2 Bitrate => Int
 
-  Average bitrate in bits/second. Valid values depend on rate control
-mode and profile.
+  Average bitrate in bits/second. Defaults and valid values depend on
+rate control mode and profile.
 
 
 =head2 CodecProfile => Str
@@ -61,7 +67,7 @@ mode and profile.
   
 
 
-=head2 CodingMode => Str
+=head2 B<REQUIRED> CodingMode => Str
 
   
 
@@ -76,7 +82,7 @@ mode and profile.
   
 
 
-=head2 SampleRate => Int
+=head2 B<REQUIRED> SampleRate => Int
 
   Sample rate in Hz. Valid values depend on rate control mode and
 profile.

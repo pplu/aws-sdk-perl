@@ -2,7 +2,7 @@ package Paws::MediaConvert::VideoDescription;
   use Moose;
   has AfdSignaling => (is => 'ro', isa => 'Str', request_name => 'afdSignaling', traits => ['NameInRequest']);
   has AntiAlias => (is => 'ro', isa => 'Str', request_name => 'antiAlias', traits => ['NameInRequest']);
-  has CodecSettings => (is => 'ro', isa => 'Paws::MediaConvert::VideoCodecSettings', request_name => 'codecSettings', traits => ['NameInRequest']);
+  has CodecSettings => (is => 'ro', isa => 'Paws::MediaConvert::VideoCodecSettings', request_name => 'codecSettings', traits => ['NameInRequest'], required => 1);
   has ColorMetadata => (is => 'ro', isa => 'Str', request_name => 'colorMetadata', traits => ['NameInRequest']);
   has Crop => (is => 'ro', isa => 'Paws::MediaConvert::Rectangle', request_name => 'crop', traits => ['NameInRequest']);
   has DropFrameTimecode => (is => 'ro', isa => 'Str', request_name => 'dropFrameTimecode', traits => ['NameInRequest']);
@@ -60,7 +60,7 @@ Settings for video outputs
   
 
 
-=head2 CodecSettings => L<Paws::MediaConvert::VideoCodecSettings>
+=head2 B<REQUIRED> CodecSettings => L<Paws::MediaConvert::VideoCodecSettings>
 
   
 

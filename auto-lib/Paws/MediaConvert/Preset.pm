@@ -5,8 +5,8 @@ package Paws::MediaConvert::Preset;
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has LastUpdated => (is => 'ro', isa => 'Str', request_name => 'lastUpdated', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Settings => (is => 'ro', isa => 'Paws::MediaConvert::PresetSettings', request_name => 'settings', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has Settings => (is => 'ro', isa => 'Paws::MediaConvert::PresetSettings', request_name => 'settings', traits => ['NameInRequest'], required => 1);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
@@ -70,13 +70,13 @@ process.
   The timestamp in epoch seconds when the preset was last updated.
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
   A name you create for each preset. Each name must be unique within your
 account.
 
 
-=head2 Settings => L<Paws::MediaConvert::PresetSettings>
+=head2 B<REQUIRED> Settings => L<Paws::MediaConvert::PresetSettings>
 
   
 

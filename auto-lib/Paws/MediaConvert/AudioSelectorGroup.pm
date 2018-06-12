@@ -1,6 +1,6 @@
 package Paws::MediaConvert::AudioSelectorGroup;
   use Moose;
-  has AudioSelectorNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'audioSelectorNames', traits => ['NameInRequest']);
+  has AudioSelectorNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'audioSelectorNames', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -36,13 +36,13 @@ Group of Audio Selectors
 =head1 ATTRIBUTES
 
 
-=head2 AudioSelectorNames => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> AudioSelectorNames => ArrayRef[Str|Undef]
 
-  Name of an "Audio Selector":#inputs-audio_selector within the same
-input to include in the group. Audio selector names are standardized,
-based on their order within the input (e.g. "Audio Selector 1"). The
-audio_selector_name parameter can be repeated to add any number of
-audio selectors to the group.
+  Name of an Audio Selector within the same input to include in the
+group. Audio selector names are standardized, based on their order
+within the input (e.g., "Audio Selector 1"). The audio selector name
+parameter can be repeated to add any number of audio selectors to the
+group.
 
 
 

@@ -1,8 +1,8 @@
 package Paws::MediaConvert::RemixSettings;
   use Moose;
-  has ChannelMapping => (is => 'ro', isa => 'Paws::MediaConvert::ChannelMapping', request_name => 'channelMapping', traits => ['NameInRequest']);
-  has ChannelsIn => (is => 'ro', isa => 'Int', request_name => 'channelsIn', traits => ['NameInRequest']);
-  has ChannelsOut => (is => 'ro', isa => 'Int', request_name => 'channelsOut', traits => ['NameInRequest']);
+  has ChannelMapping => (is => 'ro', isa => 'Paws::MediaConvert::ChannelMapping', request_name => 'channelMapping', traits => ['NameInRequest'], required => 1);
+  has ChannelsIn => (is => 'ro', isa => 'Int', request_name => 'channelsIn', traits => ['NameInRequest'], required => 1);
+  has ChannelsOut => (is => 'ro', isa => 'Int', request_name => 'channelsOut', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -34,18 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 =head1 DESCRIPTION
 
 Use Manual audio remixing (RemixSettings) to adjust audio levels for
-each output channel. With audio remixing, you can output more or fewer
-audio channels than your input audio source provides.
+each audio channel in each output of your job. With audio remixing, you
+can output more or fewer audio channels than your input audio source
+provides.
 
 =head1 ATTRIBUTES
 
 
-=head2 ChannelMapping => L<Paws::MediaConvert::ChannelMapping>
+=head2 B<REQUIRED> ChannelMapping => L<Paws::MediaConvert::ChannelMapping>
 
   
 
 
-=head2 ChannelsIn => Int
+=head2 B<REQUIRED> ChannelsIn => Int
 
   Specify the number of audio channels from your input that you want to
 use in your output. With remixing, you might combine or split the data
@@ -53,7 +54,7 @@ in these channels, so the number of channels in your final output might
 be different.
 
 
-=head2 ChannelsOut => Int
+=head2 B<REQUIRED> ChannelsOut => Int
 
   Specify the number of channels in this output after remixing. Valid
 values: 1, 2, 4, 6, 8

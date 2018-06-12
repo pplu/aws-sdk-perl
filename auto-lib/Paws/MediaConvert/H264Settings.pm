@@ -80,10 +80,9 @@ Required when you set (Codec) under
 
 =head2 Bitrate => Int
 
-  Average bitrate in bits/second. Required for VBR, CBR, and ABR. Five
-megabits can be entered as 5000000 or 5m. Five hundred kilobits can be
-entered as 500000 or 0.5m. For MS Smooth outputs, bitrates must be
-unique when rounded down to the nearest multiple of 1000.
+  Average bitrate in bits/second. Required for VBR and CBR. For MS Smooth
+outputs, bitrates must be unique when rounded down to the nearest
+multiple of 1000.
 
 
 =head2 CodecLevel => Str
@@ -170,8 +169,8 @@ model).
 
 =head2 HrdBufferSize => Int
 
-  Size of buffer (HRD buffer model). Five megabits can be entered as
-5000000 or 5m. Five hundred kilobits can be entered as 500000 or 0.5m.
+  Size of buffer (HRD buffer model) in bits. For example, enter five
+megabits as 5000000.
 
 
 =head2 InterlaceMode => Str
@@ -181,9 +180,8 @@ model).
 
 =head2 MaxBitrate => Int
 
-  Maximum bitrate in bits/second (for VBR mode only). Five megabits can
-be entered as 5000000 or 5m. Five hundred kilobits can be entered as
-500000 or 0.5m.
+  Maximum bitrate in bits/second. For example, enter five megabits per
+second as 5000000.
 
 
 =head2 MinIInterval => Int

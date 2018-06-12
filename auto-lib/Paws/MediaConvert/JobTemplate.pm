@@ -5,9 +5,9 @@ package Paws::MediaConvert::JobTemplate;
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has LastUpdated => (is => 'ro', isa => 'Str', request_name => 'lastUpdated', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has Queue => (is => 'ro', isa => 'Str', request_name => 'queue', traits => ['NameInRequest']);
-  has Settings => (is => 'ro', isa => 'Paws::MediaConvert::JobTemplateSettings', request_name => 'settings', traits => ['NameInRequest']);
+  has Settings => (is => 'ro', isa => 'Paws::MediaConvert::JobTemplateSettings', request_name => 'settings', traits => ['NameInRequest'], required => 1);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
@@ -70,7 +70,7 @@ use to quickly create a job.
   The timestamp in epoch seconds when the Job template was last updated.
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
   A name you create for each job template. Each name must be unique
 within your account.
@@ -82,7 +82,7 @@ within your account.
 to. If you don't specify this, jobs will go to the default queue.
 
 
-=head2 Settings => L<Paws::MediaConvert::JobTemplateSettings>
+=head2 B<REQUIRED> Settings => L<Paws::MediaConvert::JobTemplateSettings>
 
   
 

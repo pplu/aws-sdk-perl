@@ -1,10 +1,11 @@
 package Paws::MediaConvert::OutputGroupSettings;
   use Moose;
+  has CmafGroupSettings => (is => 'ro', isa => 'Paws::MediaConvert::CmafGroupSettings', request_name => 'cmafGroupSettings', traits => ['NameInRequest']);
   has DashIsoGroupSettings => (is => 'ro', isa => 'Paws::MediaConvert::DashIsoGroupSettings', request_name => 'dashIsoGroupSettings', traits => ['NameInRequest']);
   has FileGroupSettings => (is => 'ro', isa => 'Paws::MediaConvert::FileGroupSettings', request_name => 'fileGroupSettings', traits => ['NameInRequest']);
   has HlsGroupSettings => (is => 'ro', isa => 'Paws::MediaConvert::HlsGroupSettings', request_name => 'hlsGroupSettings', traits => ['NameInRequest']);
   has MsSmoothGroupSettings => (is => 'ro', isa => 'Paws::MediaConvert::MsSmoothGroupSettings', request_name => 'msSmoothGroupSettings', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -24,20 +25,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::OutputGroupSettings object:
 
-  $service_obj->Method(Att1 => { DashIsoGroupSettings => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { CmafGroupSettings => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConvert::OutputGroupSettings object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DashIsoGroupSettings
+  $result->Att1->CmafGroupSettings
 
 =head1 DESCRIPTION
 
 Output Group settings, including type
 
 =head1 ATTRIBUTES
+
+
+=head2 CmafGroupSettings => L<Paws::MediaConvert::CmafGroupSettings>
+
+  
 
 
 =head2 DashIsoGroupSettings => L<Paws::MediaConvert::DashIsoGroupSettings>
@@ -60,7 +66,7 @@ Output Group settings, including type
   
 
 
-=head2 Type => Str
+=head2 B<REQUIRED> Type => Str
 
   
 

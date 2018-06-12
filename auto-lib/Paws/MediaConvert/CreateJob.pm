@@ -4,9 +4,9 @@ package Paws::MediaConvert::CreateJob;
   has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken');
   has JobTemplate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobTemplate');
   has Queue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queue');
-  has Role => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'role');
-  has Settings => (is => 'ro', isa => 'Paws::MediaConvert::JobSettings', traits => ['NameInRequest'], request_name => 'settings');
-  has UserMetadata => (is => 'ro', isa => 'Paws::MediaConvert::MapOf__string', traits => ['NameInRequest'], request_name => 'userMetadata');
+  has Role => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'role', required => 1);
+  has Settings => (is => 'ro', isa => 'Paws::MediaConvert::JobSettings', traits => ['NameInRequest'], request_name => 'settings', required => 1);
+  has UserMetadata => (is => 'ro', isa => 'Paws::MediaConvert::__mapOf__string', traits => ['NameInRequest'], request_name => 'userMetadata');
 
   use MooseX::ClassAttribute;
 
@@ -61,7 +61,7 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html.
 
 
 
-=head2 Role => Str
+=head2 B<REQUIRED> Role => Str
 
 Required. The IAM role you use for creating this job. For details about
 permissions, see the User Guide topic at the User Guide at
@@ -69,13 +69,13 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html.
 
 
 
-=head2 Settings => L<Paws::MediaConvert::JobSettings>
+=head2 B<REQUIRED> Settings => L<Paws::MediaConvert::JobSettings>
 
 
 
 
 
-=head2 UserMetadata => L<Paws::MediaConvert::MapOf__string>
+=head2 UserMetadata => L<Paws::MediaConvert::__mapOf__string>
 
 User-defined metadata that you want to associate with an MediaConvert
 job. You specify metadata in key/value pairs.

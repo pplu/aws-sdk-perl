@@ -4,7 +4,7 @@ package Paws::MediaConvert::AudioDescription;
   has AudioSourceName => (is => 'ro', isa => 'Str', request_name => 'audioSourceName', traits => ['NameInRequest']);
   has AudioType => (is => 'ro', isa => 'Int', request_name => 'audioType', traits => ['NameInRequest']);
   has AudioTypeControl => (is => 'ro', isa => 'Str', request_name => 'audioTypeControl', traits => ['NameInRequest']);
-  has CodecSettings => (is => 'ro', isa => 'Paws::MediaConvert::AudioCodecSettings', request_name => 'codecSettings', traits => ['NameInRequest']);
+  has CodecSettings => (is => 'ro', isa => 'Paws::MediaConvert::AudioCodecSettings', request_name => 'codecSettings', traits => ['NameInRequest'], required => 1);
   has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
   has LanguageCodeControl => (is => 'ro', isa => 'Str', request_name => 'languageCodeControl', traits => ['NameInRequest']);
   has RemixSettings => (is => 'ro', isa => 'Paws::MediaConvert::RemixSettings', request_name => 'remixSettings', traits => ['NameInRequest']);
@@ -77,7 +77,7 @@ Impaired Commentary, 4-255 = Reserved.
   
 
 
-=head2 CodecSettings => L<Paws::MediaConvert::AudioCodecSettings>
+=head2 B<REQUIRED> CodecSettings => L<Paws::MediaConvert::AudioCodecSettings>
 
   
 

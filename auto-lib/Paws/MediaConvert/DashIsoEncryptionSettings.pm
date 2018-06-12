@@ -1,6 +1,6 @@
 package Paws::MediaConvert::DashIsoEncryptionSettings;
   use Moose;
-  has SpekeKeyProvider => (is => 'ro', isa => 'Paws::MediaConvert::SpekeKeyProvider', request_name => 'spekeKeyProvider', traits => ['NameInRequest']);
+  has SpekeKeyProvider => (is => 'ro', isa => 'Paws::MediaConvert::SpekeKeyProvider', request_name => 'spekeKeyProvider', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +36,7 @@ Specifies DRM settings for DASH outputs.
 =head1 ATTRIBUTES
 
 
-=head2 SpekeKeyProvider => L<Paws::MediaConvert::SpekeKeyProvider>
+=head2 B<REQUIRED> SpekeKeyProvider => L<Paws::MediaConvert::SpekeKeyProvider>
 
   
 

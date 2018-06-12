@@ -1,20 +1,26 @@
-package Paws::MediaConvert::DashIsoGroupSettings;
+package Paws::MediaConvert::CmafGroupSettings;
   use Moose;
   has BaseUrl => (is => 'ro', isa => 'Str', request_name => 'baseUrl', traits => ['NameInRequest']);
+  has ClientCache => (is => 'ro', isa => 'Str', request_name => 'clientCache', traits => ['NameInRequest']);
+  has CodecSpecification => (is => 'ro', isa => 'Str', request_name => 'codecSpecification', traits => ['NameInRequest']);
   has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
-  has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::DashIsoEncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
+  has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::CmafEncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
   has FragmentLength => (is => 'ro', isa => 'Int', request_name => 'fragmentLength', traits => ['NameInRequest'], required => 1);
-  has HbbtvCompliance => (is => 'ro', isa => 'Str', request_name => 'hbbtvCompliance', traits => ['NameInRequest']);
+  has ManifestCompression => (is => 'ro', isa => 'Str', request_name => 'manifestCompression', traits => ['NameInRequest']);
+  has ManifestDurationFormat => (is => 'ro', isa => 'Str', request_name => 'manifestDurationFormat', traits => ['NameInRequest']);
   has MinBufferTime => (is => 'ro', isa => 'Int', request_name => 'minBufferTime', traits => ['NameInRequest']);
   has SegmentControl => (is => 'ro', isa => 'Str', request_name => 'segmentControl', traits => ['NameInRequest']);
   has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest'], required => 1);
+  has StreamInfResolution => (is => 'ro', isa => 'Str', request_name => 'streamInfResolution', traits => ['NameInRequest']);
+  has WriteDashManifest => (is => 'ro', isa => 'Str', request_name => 'writeDashManifest', traits => ['NameInRequest']);
+  has WriteHlsManifest => (is => 'ro', isa => 'Str', request_name => 'writeHlsManifest', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::MediaConvert::DashIsoGroupSettings
+Paws::MediaConvert::CmafGroupSettings
 
 =head1 USAGE
 
@@ -25,13 +31,13 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::MediaConvert::DashIsoGroupSettings object:
+As an example, if Att1 is expected to be a Paws::MediaConvert::CmafGroupSettings object:
 
-  $service_obj->Method(Att1 => { BaseUrl => $value, ..., SegmentLength => $value  });
+  $service_obj->Method(Att1 => { BaseUrl => $value, ..., WriteHlsManifest => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConvert::DashIsoGroupSettings object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConvert::CmafGroupSettings object:
 
   $result = $service_obj->Method(...);
   $result->Att1->BaseUrl
@@ -39,16 +45,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 =head1 DESCRIPTION
 
 Required when you set (Type) under
-(OutputGroups)E<gt>(OutputGroupSettings) to DASH_ISO_GROUP_SETTINGS.
+(OutputGroups)E<gt>(OutputGroupSettings) to CMAF_GROUP_SETTINGS.
 
 =head1 ATTRIBUTES
 
 
 =head2 BaseUrl => Str
 
-  A partial URI prefix that will be put in the manifest (.mpd) file at
-the top level BaseURL element. Can be used if streams are delivered
-from a different URL than the manifest file.
+  A partial URI prefix that will be put in the manifest file at the top
+level BaseURL element. Can be used if streams are delivered from a
+different URL than the manifest file.
+
+
+=head2 ClientCache => Str
+
+  
+
+
+=head2 CodecSpecification => Str
+
+  
 
 
 =head2 Destination => Str
@@ -60,7 +76,7 @@ filename of the input file. If your job has multiple inputs, the
 service uses the filename of the first input file.
 
 
-=head2 Encryption => L<Paws::MediaConvert::DashIsoEncryptionSettings>
+=head2 Encryption => L<Paws::MediaConvert::CmafEncryptionSettings>
 
   DRM settings.
 
@@ -75,7 +91,12 @@ fragmentation is internal to a single output file and it does not cause
 the creation of many output files as in other output types.
 
 
-=head2 HbbtvCompliance => Str
+=head2 ManifestCompression => Str
+
+  
+
+
+=head2 ManifestDurationFormat => Str
 
   
 
@@ -93,11 +114,30 @@ smooth playout.
 
 =head2 B<REQUIRED> SegmentLength => Int
 
-  Length of mpd segments to create (in seconds). Note that segments will
-end on the next keyframe after this number of seconds, so actual
-segment length may be longer. When Emit Single File is checked, the
-segmentation is internal to a single output file and it does not cause
-the creation of many output files as in other output types.
+  Use this setting to specify the length, in seconds, of each individual
+CMAF segment. This value applies to the whole package; that is, to
+every output in the output group. Note that segments end on the first
+keyframe after this number of seconds, so the actual segment length
+might be slightly longer. If you set Segment control
+(CmafSegmentControl) to single file, the service puts the content of
+each output in a single file that has metadata that marks these
+segments. If you set it to segmented files, the service creates
+multiple files for each output, each with the content of one segment.
+
+
+=head2 StreamInfResolution => Str
+
+  
+
+
+=head2 WriteDashManifest => Str
+
+  
+
+
+=head2 WriteHlsManifest => Str
+
+  
 
 
 

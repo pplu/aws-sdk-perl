@@ -1,7 +1,7 @@
 package Paws::MediaConvert::CaptionSelector;
   use Moose;
   has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
-  has SourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::CaptionSourceSettings', request_name => 'sourceSettings', traits => ['NameInRequest']);
+  has SourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::CaptionSourceSettings', request_name => 'sourceSettings', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -32,7 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Caption inputs to be mapped to caption outputs.
+Set up captions in your outputs by first selecting them from your input
+here.
 
 =head1 ATTRIBUTES
 
@@ -48,7 +49,7 @@ field (and PID field); there is no way to extract a specific language
 with pass-through captions.
 
 
-=head2 SourceSettings => L<Paws::MediaConvert::CaptionSourceSettings>
+=head2 B<REQUIRED> SourceSettings => L<Paws::MediaConvert::CaptionSourceSettings>
 
   
 

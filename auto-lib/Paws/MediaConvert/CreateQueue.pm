@@ -2,7 +2,7 @@
 package Paws::MediaConvert::CreateQueue;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -41,7 +41,7 @@ Optional. A description of the queue you are creating.
 
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
 The name of the queue you are creating.
 

@@ -172,17 +172,17 @@ you can't start it again. You can't delete a running job.
 
 =over
 
+=item Role => Str
+
+=item Settings => L<Paws::MediaConvert::JobSettings>
+
 =item [ClientRequestToken => Str]
 
 =item [JobTemplate => Str]
 
 =item [Queue => Str]
 
-=item [Role => Str]
-
-=item [Settings => L<Paws::MediaConvert::JobSettings>]
-
-=item [UserMetadata => L<Paws::MediaConvert::MapOf__string>]
+=item [UserMetadata => L<Paws::MediaConvert::__mapOf__string>]
 
 
 =back
@@ -200,15 +200,15 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 
 =over
 
+=item Name => Str
+
+=item Settings => L<Paws::MediaConvert::JobTemplateSettings>
+
 =item [Category => Str]
 
 =item [Description => Str]
 
-=item [Name => Str]
-
 =item [Queue => Str]
-
-=item [Settings => L<Paws::MediaConvert::JobTemplateSettings>]
 
 
 =back
@@ -226,13 +226,13 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 
 =over
 
+=item Name => Str
+
+=item Settings => L<Paws::MediaConvert::PresetSettings>
+
 =item [Category => Str]
 
 =item [Description => Str]
-
-=item [Name => Str]
-
-=item [Settings => L<Paws::MediaConvert::PresetSettings>]
 
 
 =back
@@ -249,9 +249,9 @@ Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 
 =over
 
-=item [Description => Str]
+=item Name => Str
 
-=item [Name => Str]
+=item [Description => Str]
 
 
 =back

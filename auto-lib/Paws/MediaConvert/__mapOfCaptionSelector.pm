@@ -1,4 +1,4 @@
-package Paws::MediaConvert::MapOfCaptionSelector;
+package Paws::MediaConvert::__mapOfCaptionSelector;
   use Moose;
   with 'Paws::API::StrToObjMapParser';
 
@@ -9,7 +9,7 @@ package Paws::MediaConvert::MapOfCaptionSelector;
 
 =head1 NAME
 
-Paws::MediaConvert::MapOfCaptionSelector
+Paws::MediaConvert::__mapOfCaptionSelector
 
 =head1 USAGE
 
@@ -20,13 +20,13 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::MediaConvert::MapOfCaptionSelector object:
+As an example, if Att1 is expected to be a Paws::MediaConvert::__mapOfCaptionSelector object:
 
   $service_obj->Method(Att1 => { key1 => $value, ..., keyN => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConvert::MapOfCaptionSelector object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConvert::__mapOfCaptionSelector object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Map->{ key1 }

@@ -3,8 +3,8 @@ package Paws::MediaConvert::CreatePreset;
   use Moose;
   has Category => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'category');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has Settings => (is => 'ro', isa => 'Paws::MediaConvert::PresetSettings', traits => ['NameInRequest'], request_name => 'settings');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
+  has Settings => (is => 'ro', isa => 'Paws::MediaConvert::PresetSettings', traits => ['NameInRequest'], request_name => 'settings', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -49,13 +49,13 @@ Optional. A description of the preset you are creating.
 
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
 The name of the preset you are creating.
 
 
 
-=head2 Settings => L<Paws::MediaConvert::PresetSettings>
+=head2 B<REQUIRED> Settings => L<Paws::MediaConvert::PresetSettings>
 
 
 

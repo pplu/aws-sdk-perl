@@ -1,11 +1,11 @@
 package Paws::MediaConvert::Input;
   use Moose;
-  has AudioSelectorGroups => (is => 'ro', isa => 'Paws::MediaConvert::MapOfAudioSelectorGroup', request_name => 'audioSelectorGroups', traits => ['NameInRequest']);
-  has AudioSelectors => (is => 'ro', isa => 'Paws::MediaConvert::MapOfAudioSelector', request_name => 'audioSelectors', traits => ['NameInRequest']);
-  has CaptionSelectors => (is => 'ro', isa => 'Paws::MediaConvert::MapOfCaptionSelector', request_name => 'captionSelectors', traits => ['NameInRequest']);
+  has AudioSelectorGroups => (is => 'ro', isa => 'Paws::MediaConvert::__mapOfAudioSelectorGroup', request_name => 'audioSelectorGroups', traits => ['NameInRequest']);
+  has AudioSelectors => (is => 'ro', isa => 'Paws::MediaConvert::__mapOfAudioSelector', request_name => 'audioSelectors', traits => ['NameInRequest']);
+  has CaptionSelectors => (is => 'ro', isa => 'Paws::MediaConvert::__mapOfCaptionSelector', request_name => 'captionSelectors', traits => ['NameInRequest']);
   has DeblockFilter => (is => 'ro', isa => 'Str', request_name => 'deblockFilter', traits => ['NameInRequest']);
   has DenoiseFilter => (is => 'ro', isa => 'Str', request_name => 'denoiseFilter', traits => ['NameInRequest']);
-  has FileInput => (is => 'ro', isa => 'Str', request_name => 'fileInput', traits => ['NameInRequest']);
+  has FileInput => (is => 'ro', isa => 'Str', request_name => 'fileInput', traits => ['NameInRequest'], required => 1);
   has FilterEnable => (is => 'ro', isa => 'Str', request_name => 'filterEnable', traits => ['NameInRequest']);
   has FilterStrength => (is => 'ro', isa => 'Int', request_name => 'filterStrength', traits => ['NameInRequest']);
   has InputClippings => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::InputClipping]', request_name => 'inputClippings', traits => ['NameInRequest']);
@@ -48,21 +48,21 @@ Specifies media input
 =head1 ATTRIBUTES
 
 
-=head2 AudioSelectorGroups => L<Paws::MediaConvert::MapOfAudioSelectorGroup>
+=head2 AudioSelectorGroups => L<Paws::MediaConvert::__mapOfAudioSelectorGroup>
 
   Specifies set of audio selectors within an input to combine. An input
 may have multiple audio selector groups. See "Audio Selector
 Group":#inputs-audio_selector_group for more information.
 
 
-=head2 AudioSelectors => L<Paws::MediaConvert::MapOfAudioSelector>
+=head2 AudioSelectors => L<Paws::MediaConvert::__mapOfAudioSelector>
 
   Use Audio selectors (AudioSelectors) to specify a track or set of
 tracks from the input that you will use in your outputs. You can use
 mutiple Audio selectors per input.
 
 
-=head2 CaptionSelectors => L<Paws::MediaConvert::MapOfCaptionSelector>
+=head2 CaptionSelectors => L<Paws::MediaConvert::__mapOfCaptionSelector>
 
   Use Captions selectors (CaptionSelectors) to specify the captions data
 from the input that you will use in your outputs. You can use mutiple
@@ -79,7 +79,7 @@ captions selectors per input.
   
 
 
-=head2 FileInput => Str
+=head2 B<REQUIRED> FileInput => Str
 
   Use Input (fileInput) to define the source file used in the transcode
 job. There can be multiple inputs in a job. These inputs are

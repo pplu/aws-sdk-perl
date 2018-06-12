@@ -2,6 +2,7 @@ package Paws::MediaConvert::WavSettings;
   use Moose;
   has BitDepth => (is => 'ro', isa => 'Int', request_name => 'bitDepth', traits => ['NameInRequest']);
   has Channels => (is => 'ro', isa => 'Int', request_name => 'channels', traits => ['NameInRequest']);
+  has Format => (is => 'ro', isa => 'Str', request_name => 'format', traits => ['NameInRequest']);
   has SampleRate => (is => 'ro', isa => 'Int', request_name => 'sampleRate', traits => ['NameInRequest']);
 1;
 
@@ -50,6 +51,11 @@ encoding quality for this audio track.
   Set Channels to specify the number of channels in this output audio
 track. With WAV, valid values 1, 2, 4, and 8. In the console, these
 values are Mono, Stereo, 4-Channel, and 8-Channel, respectively.
+
+
+=head2 Format => Str
+
+  
 
 
 =head2 SampleRate => Int

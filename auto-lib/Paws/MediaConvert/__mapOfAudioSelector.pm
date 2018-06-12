@@ -1,15 +1,15 @@
-package Paws::MediaConvert::MapOf__string;
+package Paws::MediaConvert::__mapOfAudioSelector;
   use Moose;
-  with 'Paws::API::StrToNativeMapParser';
+  with 'Paws::API::StrToObjMapParser';
 
-  has Map => (is => 'ro', isa => 'HashRef[Maybe[Str]]');
+  has Map => (is => 'ro', isa => 'HashRef[Paws::MediaConvert::AudioSelector]');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::MediaConvert::MapOf__string
+Paws::MediaConvert::__mapOfAudioSelector
 
 =head1 USAGE
 
@@ -20,13 +20,13 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::MediaConvert::MapOf__string object:
+As an example, if Att1 is expected to be a Paws::MediaConvert::__mapOfAudioSelector object:
 
   $service_obj->Method(Att1 => { key1 => $value, ..., keyN => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConvert::MapOf__string object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConvert::__mapOfAudioSelector object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Map->{ key1 }
@@ -37,7 +37,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => Str
+=head2 Map => L<Paws::MediaConvert::AudioSelector>
 
 Use the Map method to retrieve a HashRef to the map
 

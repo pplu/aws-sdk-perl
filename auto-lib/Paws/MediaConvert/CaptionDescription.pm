@@ -1,7 +1,7 @@
 package Paws::MediaConvert::CaptionDescription;
   use Moose;
-  has CaptionSelectorName => (is => 'ro', isa => 'Str', request_name => 'captionSelectorName', traits => ['NameInRequest']);
-  has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::CaptionDestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
+  has CaptionSelectorName => (is => 'ro', isa => 'Str', request_name => 'captionSelectorName', traits => ['NameInRequest'], required => 1);
+  has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::CaptionDestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest'], required => 1);
   has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
   has LanguageDescription => (is => 'ro', isa => 'Str', request_name => 'languageDescription', traits => ['NameInRequest']);
 1;
@@ -39,7 +39,7 @@ Description of Caption output
 =head1 ATTRIBUTES
 
 
-=head2 CaptionSelectorName => Str
+=head2 B<REQUIRED> CaptionSelectorName => Str
 
   Specifies which "Caption Selector":#inputs-caption_selector to use from
 each input when generating captions. The name should be of the format
@@ -47,7 +47,7 @@ each input when generating captions. The name should be of the format
 be used from each input.
 
 
-=head2 DestinationSettings => L<Paws::MediaConvert::CaptionDestinationSettings>
+=head2 B<REQUIRED> DestinationSettings => L<Paws::MediaConvert::CaptionDestinationSettings>
 
   
 

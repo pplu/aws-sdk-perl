@@ -3,9 +3,9 @@ package Paws::MediaConvert::CreateJobTemplate;
   use Moose;
   has Category => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'category');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has Queue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queue');
-  has Settings => (is => 'ro', isa => 'Paws::MediaConvert::JobTemplateSettings', traits => ['NameInRequest'], request_name => 'settings');
+  has Settings => (is => 'ro', isa => 'Paws::MediaConvert::JobTemplateSettings', traits => ['NameInRequest'], request_name => 'settings', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -50,7 +50,7 @@ Optional. A description of the job template you are creating.
 
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
 The name of the job template you are creating.
 
@@ -63,7 +63,7 @@ to. If you don't specify this, jobs will go to the default queue.
 
 
 
-=head2 Settings => L<Paws::MediaConvert::JobTemplateSettings>
+=head2 B<REQUIRED> Settings => L<Paws::MediaConvert::JobTemplateSettings>
 
 
 
