@@ -10,7 +10,7 @@ package Paws::API::Builder {
   use Mojo::UserAgent;
   use Pod::Escapes();
   use Data::Munge;
-      
+
   use v5.10;
 
   use Paws::API::RegionBuilder;
@@ -181,6 +181,9 @@ package Paws::API::Builder {
   has documentation_file => (is => 'ro', lazy => 1, default => sub {
     my $file = shift->api_file;
     $file =~ s/\/service-2\./\/documentation-1./;
+    if (not -e $file) {
+      die "documentation-1.json missing for the service, run 'make docu-links'."; 
+    }
     return Path::Class::File->new($file);
   });
 
@@ -596,7 +599,7 @@ package Paws::API::Builder {
     $string =~ s/($rekeys)/E<$char2names{$1}>/g;
     return $string;
   }
-  
+
   sub process_template {
     my ($self, $template, $vars) = @_;
     my $tt = Template->new(INCLUDE_PATH => $self->template_path,
@@ -627,7 +630,7 @@ package Paws::API::Builder {
     if ($self->is_url_working($service_url)) {
       return $service_url;
     }
-    
+
     return undef;
   }
 
@@ -651,7 +654,7 @@ package Paws::API::Builder {
         my $res = shift;
         if ($res->req->url->to_string ne 'https://aws.amazon.com/documentation/') {
           $urls->{ $op_name } = $op_url;
-        } 
+        }
       })->with_roles('+Futurify')->futurify
     } foreach => \@op_urls, concurrent => 10;
 
