@@ -13,6 +13,9 @@
    of 'unrecognized error format')
  - Some services were signing requests with the incorrect strings. Pricing, Opsworks, MarketplaceMetering, MarketplaceEntitlement,
    MarketplaceCommerceAnalytics, DynamoDBStreams, CloudHSMv2, ApplicationAutoScaling and AutoScalingPlans now sign correctly. (autarch)
+ - New API: EKS
+ - New API: Neptune
+ - New API: MediaTailor
  - New API: Pricing
  - New API: CostExplorer
  - New API: Translate

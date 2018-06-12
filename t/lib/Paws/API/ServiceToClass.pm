@@ -49,6 +49,7 @@ package Paws::API::ServiceToClass;
     dynamodbstreams => 'DynamoDBStreams',
     ec2 => 'EC2',
     ecr => 'ECR',
+    eks => 'EKS',
     # The API definitions use "efs"
     efs => 'EFS',
     # The service code is "elasticfilesystem"
@@ -101,12 +102,14 @@ package Paws::API::ServiceToClass;
     mediapackage => 'MediaPackage',
     mediastore => 'MediaStore',
    'mediastore-data' => 'MediaStoreData',
+    mediatailor => 'MediaTailor',
     meteringmarketplace => 'MarketplaceMetering',
     mgh => 'MigrationHub',
     mq => 'MQ',
     mobile => 'MobileHub',
     monitoring => 'CloudWatch',
     mturk => 'MTurk',
+    neptune => 'Neptune',
     opsworks => 'OpsWorks',
     opsworkscm => 'OpsWorksCM',
     organizations => 'Organizations',

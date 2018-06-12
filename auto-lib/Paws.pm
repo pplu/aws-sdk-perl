@@ -338,6 +338,8 @@ L<Paws::EFS>
 
 L<Paws::EFS>
 
+L<Paws::EKS>
+
 L<Paws::ElastiCache>
 
 L<Paws::ElasticBeanstalk>
@@ -428,6 +430,8 @@ L<Paws::MediaStore>
 
 L<Paws::MediaStoreData>
 
+L<Paws::MediaTailor>
+
 L<Paws::MigrationHub>
 
 L<Paws::MobileHub>
@@ -435,6 +439,8 @@ L<Paws::MobileHub>
 L<Paws::MQ>
 
 L<Paws::MTurk>
+
+L<Paws::Neptune>
 
 L<Paws::OpsWorks>
 
