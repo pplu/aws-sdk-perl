@@ -2,6 +2,7 @@
 package Paws::IoT::CancelJob;
   use Moose;
   has Comment => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'comment');
+  has Force => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'force');
   has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId', required => 1);
 
   use MooseX::ClassAttribute;
@@ -38,6 +39,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head2 Comment => Str
 
 An optional comment string describing why the job was canceled.
+
+
+
+=head2 Force => Bool
+
+(Optional) If C<true> job executions with status "IN_PROGRESS" and
+"QUEUED" are canceled, otherwise only job executions with status
+"QUEUED" are canceled. The default is C<false>.
+
+Canceling a job which is "IN_PROGRESS", will cause a device which is
+executing the job to be unable to update the job execution status. Use
+caution and ensure that each device executing a job which is canceled
+is able to recover to a valid state.
 
 
 

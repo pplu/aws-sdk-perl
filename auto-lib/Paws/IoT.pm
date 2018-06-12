@@ -54,6 +54,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::CancelJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CancelJobExecution {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CancelJobExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ClearDefaultAuthorizer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ClearDefaultAuthorizer', @_);
@@ -895,7 +900,7 @@ package Paws::IoT;
   }
 
 
-  sub operations { qw/AcceptCertificateTransfer AddThingToThingGroup AssociateTargetsWithJob AttachPolicy AttachPrincipalPolicy AttachThingPrincipal CancelCertificateTransfer CancelJob ClearDefaultAuthorizer CreateAuthorizer CreateCertificateFromCsr CreateJob CreateKeysAndCertificate CreateOTAUpdate CreatePolicy CreatePolicyVersion CreateRoleAlias CreateStream CreateThing CreateThingGroup CreateThingType CreateTopicRule DeleteAuthorizer DeleteCACertificate DeleteCertificate DeleteJob DeleteJobExecution DeleteOTAUpdate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteRoleAlias DeleteStream DeleteThing DeleteThingGroup DeleteThingType DeleteTopicRule DeleteV2LoggingLevel DeprecateThingType DescribeAuthorizer DescribeCACertificate DescribeCertificate DescribeDefaultAuthorizer DescribeEndpoint DescribeEventConfigurations DescribeIndex DescribeJob DescribeJobExecution DescribeRoleAlias DescribeStream DescribeThing DescribeThingGroup DescribeThingRegistrationTask DescribeThingType DetachPolicy DetachPrincipalPolicy DetachThingPrincipal DisableTopicRule EnableTopicRule GetEffectivePolicies GetIndexingConfiguration GetJobDocument GetLoggingOptions GetOTAUpdate GetPolicy GetPolicyVersion GetRegistrationCode GetTopicRule GetV2LoggingOptions ListAttachedPolicies ListAuthorizers ListCACertificates ListCertificates ListCertificatesByCA ListIndices ListJobExecutionsForJob ListJobExecutionsForThing ListJobs ListOTAUpdates ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListRoleAliases ListStreams ListTargetsForPolicy ListThingGroups ListThingGroupsForThing ListThingPrincipals ListThingRegistrationTaskReports ListThingRegistrationTasks ListThings ListThingsInThingGroup ListThingTypes ListTopicRules ListV2LoggingLevels RegisterCACertificate RegisterCertificate RegisterThing RejectCertificateTransfer RemoveThingFromThingGroup ReplaceTopicRule SearchIndex SetDefaultAuthorizer SetDefaultPolicyVersion SetLoggingOptions SetV2LoggingLevel SetV2LoggingOptions StartThingRegistrationTask StopThingRegistrationTask TestAuthorization TestInvokeAuthorizer TransferCertificate UpdateAuthorizer UpdateCACertificate UpdateCertificate UpdateEventConfigurations UpdateIndexingConfiguration UpdateRoleAlias UpdateStream UpdateThing UpdateThingGroup UpdateThingGroupsForThing / }
+  sub operations { qw/AcceptCertificateTransfer AddThingToThingGroup AssociateTargetsWithJob AttachPolicy AttachPrincipalPolicy AttachThingPrincipal CancelCertificateTransfer CancelJob CancelJobExecution ClearDefaultAuthorizer CreateAuthorizer CreateCertificateFromCsr CreateJob CreateKeysAndCertificate CreateOTAUpdate CreatePolicy CreatePolicyVersion CreateRoleAlias CreateStream CreateThing CreateThingGroup CreateThingType CreateTopicRule DeleteAuthorizer DeleteCACertificate DeleteCertificate DeleteJob DeleteJobExecution DeleteOTAUpdate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteRoleAlias DeleteStream DeleteThing DeleteThingGroup DeleteThingType DeleteTopicRule DeleteV2LoggingLevel DeprecateThingType DescribeAuthorizer DescribeCACertificate DescribeCertificate DescribeDefaultAuthorizer DescribeEndpoint DescribeEventConfigurations DescribeIndex DescribeJob DescribeJobExecution DescribeRoleAlias DescribeStream DescribeThing DescribeThingGroup DescribeThingRegistrationTask DescribeThingType DetachPolicy DetachPrincipalPolicy DetachThingPrincipal DisableTopicRule EnableTopicRule GetEffectivePolicies GetIndexingConfiguration GetJobDocument GetLoggingOptions GetOTAUpdate GetPolicy GetPolicyVersion GetRegistrationCode GetTopicRule GetV2LoggingOptions ListAttachedPolicies ListAuthorizers ListCACertificates ListCertificates ListCertificatesByCA ListIndices ListJobExecutionsForJob ListJobExecutionsForThing ListJobs ListOTAUpdates ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListRoleAliases ListStreams ListTargetsForPolicy ListThingGroups ListThingGroupsForThing ListThingPrincipals ListThingRegistrationTaskReports ListThingRegistrationTasks ListThings ListThingsInThingGroup ListThingTypes ListTopicRules ListV2LoggingLevels RegisterCACertificate RegisterCertificate RegisterThing RejectCertificateTransfer RemoveThingFromThingGroup ReplaceTopicRule SearchIndex SetDefaultAuthorizer SetDefaultPolicyVersion SetLoggingOptions SetV2LoggingLevel SetV2LoggingOptions StartThingRegistrationTask StopThingRegistrationTask TestAuthorization TestInvokeAuthorizer TransferCertificate UpdateAuthorizer UpdateCACertificate UpdateCertificate UpdateEventConfigurations UpdateIndexingConfiguration UpdateRoleAlias UpdateStream UpdateThing UpdateThingGroup UpdateThingGroupsForThing / }
 
 1;
 
@@ -1114,6 +1119,8 @@ certificate changes from PENDING_TRANSFER to INACTIVE.
 
 =item [Comment => Str]
 
+=item [Force => Bool]
+
 
 =back
 
@@ -1122,6 +1129,30 @@ Each argument is described in detail in: L<Paws::IoT::CancelJob>
 Returns: a L<Paws::IoT::CancelJobResponse> instance
 
 Cancels a job.
+
+
+=head2 CancelJobExecution
+
+=over
+
+=item JobId => Str
+
+=item ThingName => Str
+
+=item [ExpectedVersion => Int]
+
+=item [Force => Bool]
+
+=item [StatusDetails => L<Paws::IoT::DetailsMap>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::CancelJobExecution>
+
+Returns: nothing
+
+Cancels the execution of a job for a given thing.
 
 
 =head2 ClearDefaultAuthorizer
@@ -2153,7 +2184,9 @@ Each argument is described in detail in: L<Paws::IoT::GetEffectivePolicies>
 
 Returns: a L<Paws::IoT::GetEffectivePoliciesResponse> instance
 
-Gets effective policies.
+Gets a list of the policies that have an effect on the authorization
+behavior of the specified device when it connects to the AWS IoT device
+gateway.
 
 
 =head2 GetIndexingConfiguration
@@ -3239,7 +3272,10 @@ Each argument is described in detail in: L<Paws::IoT::TestAuthorization>
 
 Returns: a L<Paws::IoT::TestAuthorizationResponse> instance
 
-Test custom authorization.
+Tests if a specified principal is authorized to perform an AWS IoT
+action on a specified resource. Use this to test and debug the
+authorization behavior of devices that connect to the AWS IoT device
+gateway.
 
 
 =head2 TestInvokeAuthorizer
@@ -3259,7 +3295,9 @@ Each argument is described in detail in: L<Paws::IoT::TestInvokeAuthorizer>
 
 Returns: a L<Paws::IoT::TestInvokeAuthorizerResponse> instance
 
-Invoke the specified custom authorizer for testing purposes.
+Tests a custom authorization behavior by invoking a specified custom
+authorizer. Use this to test and debug the custom authorization
+behavior of devices that connect to the AWS IoT device gateway.
 
 
 =head2 TransferCertificate

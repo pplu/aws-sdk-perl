@@ -82,7 +82,9 @@ was a target of the job.
 
 =head2 ProcessingTargets => ArrayRef[Str|Undef]
 
-  The devices on which the job is executing.
+  The target devices to which the job execution is being rolled out. This
+value will be null after the job execution has finished rolling out to
+all the target devices.
 
 
 
