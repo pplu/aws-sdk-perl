@@ -421,6 +421,7 @@ infrastructure, applications, and data.
 
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
+
 =head1 METHODS
 
 =head2 AcceptInvitation

@@ -741,6 +741,7 @@ Defines the public endpoint for the AWS Glue service.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31>
 
+
 =head1 METHODS
 
 =head2 BatchCreatePartition

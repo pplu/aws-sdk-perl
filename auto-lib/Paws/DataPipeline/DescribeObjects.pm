@@ -21,7 +21,7 @@ Paws::DataPipeline::DescribeObjects - Arguments for method DescribeObjects on L<
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeObjects on the 
+This class represents the parameters used for calling the method DescribeObjects on the
 L<AWS Data Pipeline|Paws::DataPipeline> service. Use the attributes of this class
 as arguments to method DescribeObjects.
 
@@ -33,6 +33,7 @@ As an example:
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/datapipeline/DescribeObjects>
+
 =head1 ATTRIBUTES
 
 

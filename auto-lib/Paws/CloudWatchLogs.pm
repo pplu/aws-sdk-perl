@@ -398,6 +398,7 @@ can then access the raw log data when you need it.
 
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/cloudwatch/>
 
+
 =head1 METHODS
 
 =head2 AssociateKmsKey

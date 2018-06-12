@@ -24,7 +24,7 @@ Paws::Route53::UpdateTrafficPolicyInstance - Arguments for method UpdateTrafficP
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateTrafficPolicyInstance on the 
+This class represents the parameters used for calling the method UpdateTrafficPolicyInstance on the
 L<Amazon Route 53|Paws::Route53> service. Use the attributes of this class
 as arguments to method UpdateTrafficPolicyInstance.
 
@@ -36,6 +36,7 @@ As an example:
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53/UpdateTrafficPolicyInstance>
+
 =head1 ATTRIBUTES
 
 

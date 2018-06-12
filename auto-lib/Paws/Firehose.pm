@@ -105,6 +105,7 @@ Redshift, and Splunk.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04>
 
+
 =head1 METHODS
 
 =head2 CreateDeliveryStream

@@ -19,7 +19,7 @@ Paws::CodePipeline::GetPipeline - Arguments for method GetPipeline on L<Paws::Co
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetPipeline on the 
+This class represents the parameters used for calling the method GetPipeline on the
 L<AWS CodePipeline|Paws::CodePipeline> service. Use the attributes of this class
 as arguments to method GetPipeline.
 
@@ -31,6 +31,7 @@ As an example:
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codepipeline/GetPipeline>
+
 =head1 ATTRIBUTES
 
 

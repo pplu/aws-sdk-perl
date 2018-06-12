@@ -1746,6 +1746,7 @@ faster.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15>
 
+
 =head1 METHODS
 
 =head2 AcceptReservedInstancesExchangeQuote

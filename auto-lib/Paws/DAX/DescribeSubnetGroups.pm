@@ -20,7 +20,7 @@ Paws::DAX::DescribeSubnetGroups - Arguments for method DescribeSubnetGroups on L
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeSubnetGroups on the 
+This class represents the parameters used for calling the method DescribeSubnetGroups on the
 L<Amazon DynamoDB Accelerator (DAX)|Paws::DAX> service. Use the attributes of this class
 as arguments to method DescribeSubnetGroups.
 
@@ -32,6 +32,7 @@ As an example:
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dax/DescribeSubnetGroups>
+
 =head1 ATTRIBUTES
 
 

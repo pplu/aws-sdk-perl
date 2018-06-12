@@ -943,6 +943,7 @@ For more information about how AWS IoT works, see the Developer Guide
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28>
 
+
 =head1 METHODS
 
 =head2 AcceptCertificateTransfer

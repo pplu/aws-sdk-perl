@@ -237,6 +237,7 @@ Microsoft Windows desktops for your users.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08>
 
+
 =head1 METHODS
 
 =head2 AssociateIpGroups

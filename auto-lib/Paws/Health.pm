@@ -242,6 +242,7 @@ https://health.us-east-1.amazonaws.com
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/health-2016-08-04>
 
+
 =head1 METHODS
 
 =head2 DescribeAffectedEntities

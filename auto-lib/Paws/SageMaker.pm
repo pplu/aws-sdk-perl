@@ -383,6 +383,7 @@ Definition of the public APIs exposed by SageMaker
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24>
 
+
 =head1 METHODS
 
 =head2 AddTags

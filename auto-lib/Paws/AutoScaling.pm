@@ -498,6 +498,7 @@ Scaling, Amazon CloudWatch, and Elastic Load Balancing services.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01>
 
+
 =head1 METHODS
 
 =head2 AttachInstances

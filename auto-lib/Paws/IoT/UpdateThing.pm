@@ -23,7 +23,7 @@ Paws::IoT::UpdateThing - Arguments for method UpdateThing on L<Paws::IoT>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateThing on the 
+This class represents the parameters used for calling the method UpdateThing on the
 L<AWS IoT|Paws::IoT> service. Use the attributes of this class
 as arguments to method UpdateThing.
 
@@ -35,6 +35,7 @@ As an example:
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot/UpdateThing>
+
 =head1 ATTRIBUTES
 
 

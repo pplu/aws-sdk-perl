@@ -189,6 +189,7 @@ Endpoints
 
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/elasticsearch-service/>
 
+
 =head1 METHODS
 
 =head2 AddTags

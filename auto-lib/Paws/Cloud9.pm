@@ -207,6 +207,7 @@ environment member for an environment.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloud9-2017-09-23>
 
+
 =head1 METHODS
 
 =head2 CreateEnvironmentEC2

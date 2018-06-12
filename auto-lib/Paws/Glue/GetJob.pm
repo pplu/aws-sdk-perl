@@ -18,7 +18,7 @@ Paws::Glue::GetJob - Arguments for method GetJob on L<Paws::Glue>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetJob on the 
+This class represents the parameters used for calling the method GetJob on the
 L<AWS Glue|Paws::Glue> service. Use the attributes of this class
 as arguments to method GetJob.
 
@@ -30,6 +30,7 @@ As an example:
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/GetJob>
+
 =head1 ATTRIBUTES
 
 

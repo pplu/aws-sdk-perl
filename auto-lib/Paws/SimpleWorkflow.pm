@@ -382,6 +382,7 @@ the Amazon SWF programming model, see the I< Amazon SWF Developer Guide
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25>
 
+
 =head1 METHODS
 
 =head2 CountClosedWorkflowExecutions

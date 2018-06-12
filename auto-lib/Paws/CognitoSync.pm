@@ -157,6 +157,7 @@ and the Developer Guide for iOS
 
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/cognito/>
 
+
 =head1 METHODS
 
 =head2 BulkPublish

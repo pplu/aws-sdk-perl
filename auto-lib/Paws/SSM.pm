@@ -774,6 +774,7 @@ information about how to use a Query API, see Making API Requests
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06>
 
+
 =head1 METHODS
 
 =head2 AddTagsToResource

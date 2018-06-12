@@ -221,6 +221,7 @@ Service User Guide>
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01>
 
+
 =head1 METHODS
 
 =head2 AssociateConfigurationItemsToApplication

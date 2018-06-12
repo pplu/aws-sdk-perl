@@ -752,6 +752,7 @@ Service Administration Guide
 
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/directory-service/>
 
+
 =head1 METHODS
 
 =head2 AddFacetToObject

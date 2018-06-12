@@ -138,6 +138,7 @@ formal messaging protocols.
 
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/amazon-mq/>
 
+
 =head1 METHODS
 
 =head2 CreateBroker

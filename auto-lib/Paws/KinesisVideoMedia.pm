@@ -54,6 +54,7 @@ Paws::KinesisVideoMedia - Perl Interface to AWS Amazon Kinesis Video Streams Med
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kinesisvideo-2017-09-30>
 
+
 =head1 METHODS
 
 =head2 GetMedia

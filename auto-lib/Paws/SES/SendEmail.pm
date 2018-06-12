@@ -26,7 +26,7 @@ Paws::SES::SendEmail - Arguments for method SendEmail on L<Paws::SES>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method SendEmail on the 
+This class represents the parameters used for calling the method SendEmail on the
 L<Amazon Simple Email Service|Paws::SES> service. Use the attributes of this class
 as arguments to method SendEmail.
 
@@ -38,6 +38,7 @@ As an example:
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/email/SendEmail>
+
 =head1 ATTRIBUTES
 
 

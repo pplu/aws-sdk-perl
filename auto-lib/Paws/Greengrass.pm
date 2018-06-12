@@ -425,6 +425,7 @@ functions that execute locally.
 
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
 
+
 =head1 METHODS
 
 =head2 AssociateRoleToGroup

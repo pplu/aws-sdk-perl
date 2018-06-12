@@ -687,6 +687,7 @@ devices in the cloud.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23>
 
+
 =head1 METHODS
 
 =head2 CreateDevicePool

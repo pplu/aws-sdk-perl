@@ -1387,6 +1387,7 @@ using an access key ID and secret access key.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08>
 
+
 =head1 METHODS
 
 =head2 AddClientIDToOpenIDConnectProvider

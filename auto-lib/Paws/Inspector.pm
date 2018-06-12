@@ -404,6 +404,7 @@ information, see Amazon Inspector User Guide
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16>
 
+
 =head1 METHODS
 
 =head2 AddAttributesToFindings

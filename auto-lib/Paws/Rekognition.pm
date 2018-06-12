@@ -287,6 +287,7 @@ This is the Amazon Rekognition API reference.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rekognition-2016-06-27>
 
+
 =head1 METHODS
 
 =head2 CompareFaces

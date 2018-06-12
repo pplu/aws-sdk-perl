@@ -177,6 +177,7 @@ Mobile SDK. To learn more, see the AWS Mobile SDK Developer Guide
 
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/cognito/>
 
+
 =head1 METHODS
 
 =head2 CreateIdentityPool

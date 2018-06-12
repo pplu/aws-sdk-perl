@@ -187,6 +187,7 @@ turn it on and find your log files, see the AWS CloudTrail User Guide
 
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/iam/>
 
+
 =head1 METHODS
 
 =head2 AssumeRole

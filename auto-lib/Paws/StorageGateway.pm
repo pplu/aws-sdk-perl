@@ -580,6 +580,7 @@ Storage Gateway volume and snapshot IDs coming in 2016
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30>
 
+
 =head1 METHODS
 
 =head2 ActivateGateway

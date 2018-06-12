@@ -330,6 +330,7 @@ For a list of available SDKs, go to Tools for Amazon Web Services
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31>
 
+
 =head1 METHODS
 
 =head2 AddPermission

@@ -217,6 +217,7 @@ related operations.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15>
 
+
 =head1 METHODS
 
 =head2 CheckDomainAvailability

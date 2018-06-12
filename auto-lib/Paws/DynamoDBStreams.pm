@@ -76,6 +76,7 @@ in the Amazon DynamoDB Developer Guide.
 
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/dynamodb/>
 
+
 =head1 METHODS
 
 =head2 DescribeStream

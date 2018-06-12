@@ -414,6 +414,7 @@ find the product's technical documentation at docs.aws.amazon.com
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15>
 
+
 =head1 METHODS
 
 =head2 CancelUpdateStack

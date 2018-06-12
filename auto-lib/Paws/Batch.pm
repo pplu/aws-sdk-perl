@@ -147,6 +147,7 @@ run their batch jobs in the AWS Cloud.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10>
 
+
 =head1 METHODS
 
 =head2 CancelJob

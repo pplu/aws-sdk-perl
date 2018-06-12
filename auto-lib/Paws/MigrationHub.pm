@@ -132,6 +132,7 @@ providing a programmatic interface to Migration Hub.
 
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/migrationhub/>
 
+
 =head1 METHODS
 
 =head2 AssociateCreatedArtifact

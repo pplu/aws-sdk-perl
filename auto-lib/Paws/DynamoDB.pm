@@ -10,8 +10,8 @@ package Paws::DynamoDB;
     { base => '0.05', type => 'exponential', growth_factor => 2 }
   });
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
-       sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'ProvisionedThroughputExceededException' },
        sub { $_[0]->code eq 'Crc32Error' },
+       sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'ProvisionedThroughputExceededException' },
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -364,6 +364,7 @@ automatically replicated across multiple Availability Zones in an AWS
 region, providing built-in high availability and data durability.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10>
+
 
 =head1 METHODS
 

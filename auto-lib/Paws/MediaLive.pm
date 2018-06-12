@@ -203,6 +203,7 @@ API for AWS Elemental MediaLive
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14>
 
+
 =head1 METHODS
 
 =head2 CreateChannel

@@ -21,7 +21,7 @@ Paws::Rekognition::IndexFaces - Arguments for method IndexFaces on L<Paws::Rekog
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method IndexFaces on the 
+This class represents the parameters used for calling the method IndexFaces on the
 L<Amazon Rekognition|Paws::Rekognition> service. Use the attributes of this class
 as arguments to method IndexFaces.
 
@@ -33,6 +33,7 @@ As an example:
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rekognition/IndexFaces>
+
 =head1 ATTRIBUTES
 
 

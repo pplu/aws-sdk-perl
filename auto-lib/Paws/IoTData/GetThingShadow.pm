@@ -19,7 +19,7 @@ Paws::IoTData::GetThingShadow - Arguments for method GetThingShadow on L<Paws::I
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetThingShadow on the 
+This class represents the parameters used for calling the method GetThingShadow on the
 L<AWS IoT Data Plane|Paws::IoTData> service. Use the attributes of this class
 as arguments to method GetThingShadow.
 
@@ -31,6 +31,7 @@ As an example:
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/iot/>
+
 =head1 ATTRIBUTES
 
 

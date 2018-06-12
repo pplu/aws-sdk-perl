@@ -20,7 +20,7 @@ Paws::SDB::Select - Arguments for method Select on L<Paws::SDB>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method Select on the 
+This class represents the parameters used for calling the method Select on the
 L<Amazon SimpleDB|Paws::SDB> service. Use the attributes of this class
 as arguments to method Select.
 
@@ -32,6 +32,7 @@ As an example:
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/simpledb/>
+
 =head1 ATTRIBUTES
 
 

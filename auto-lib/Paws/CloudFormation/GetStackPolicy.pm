@@ -18,7 +18,7 @@ Paws::CloudFormation::GetStackPolicy - Arguments for method GetStackPolicy on L<
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetStackPolicy on the 
+This class represents the parameters used for calling the method GetStackPolicy on the
 L<AWS CloudFormation|Paws::CloudFormation> service. Use the attributes of this class
 as arguments to method GetStackPolicy.
 
@@ -30,6 +30,7 @@ As an example:
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudformation/GetStackPolicy>
+
 =head1 ATTRIBUTES
 
 

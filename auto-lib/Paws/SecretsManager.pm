@@ -198,6 +198,7 @@ the AWS CloudTrail User Guide
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/secretsmanager-2017-10-17>
 
+
 =head1 METHODS
 
 =head2 CancelRotateSecret

@@ -769,10 +769,10 @@ This code is distributed under the Apache 2 License. The full text of the licens
 =head1 CONTRIBUITIONS
 
 
-CAPSiDE (http://www.capside.com) for letting Paws be contributed in an open source model 
+CAPSiDE (http://www.capside.com) for letting Paws be contributed in an open source model
 and giving me time to build and maintain it regularly
 
-Luis Alberto Gimenez (@agimenez) for 
+Luis Alberto Gimenez (@agimenez) for
  - The git-fu cleaning up the "pull other sdks" code
  - Credential Providers code
  - Fixes for users that have no HOME env variable
@@ -803,7 +803,7 @@ karenetheridge for bug reporting, pull requests and help
 ioanrogers for fixing unicode issues in tests
 
 ilmari for fixing issues with timestamps in Date and X-Amz-Date headers,
-test fixes and 5.10 support fixes, documentation issue fixes for S3, 
+test fixes and 5.10 support fixes, documentation issue fixes for S3,
 CloudFront and Route53, help with number stringification
 
 stevecaldwell77 for contributing support for temporary credentials in S3
@@ -846,7 +846,7 @@ PopeFelix for solving issues around S3 and MojoAsyncCaller
 meis for contributing Paws::Credential::Explicit
 
 sven-schubert for contributing fixes to RestXML services,
-working on fixing S3 to work correctly. 
+working on fixing S3 to work correctly.
 
 SeptamusNonovant for fixing paginators in non-callback mode
 

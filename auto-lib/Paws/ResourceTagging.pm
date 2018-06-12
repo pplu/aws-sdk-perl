@@ -204,6 +204,7 @@ in the I<AWS Resource Groups and Tag Editor User Guide>.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html>
 
+
 =head1 METHODS
 
 =head2 GetResources

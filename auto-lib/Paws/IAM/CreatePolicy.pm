@@ -21,7 +21,7 @@ Paws::IAM::CreatePolicy - Arguments for method CreatePolicy on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreatePolicy on the 
+This class represents the parameters used for calling the method CreatePolicy on the
 L<AWS Identity and Access Management|Paws::IAM> service. Use the attributes of this class
 as arguments to method CreatePolicy.
 
@@ -33,6 +33,7 @@ As an example:
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/CreatePolicy>
+
 =head1 ATTRIBUTES
 
 

@@ -187,6 +187,7 @@ in the I<Amazon Athena User Guide>.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/athena-2017-05-18>
 
+
 =head1 METHODS
 
 =head2 BatchGetNamedQuery

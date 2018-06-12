@@ -60,6 +60,7 @@ Provides AWS Marketplace business intelligence data on-demand.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/marketplace/latest/userguide/commerce-analytics-service.html>
 
+
 =head1 METHODS
 
 =head2 GenerateDataSet

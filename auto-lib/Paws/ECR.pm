@@ -235,6 +235,7 @@ the Docker CLI to author and manage images.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21>
 
+
 =head1 METHODS
 
 =head2 BatchCheckLayerAvailability

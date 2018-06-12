@@ -76,6 +76,7 @@ stored in AWS Elemental MediaStore.
 
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/mediastore/>
 
+
 =head1 METHODS
 
 =head2 DeleteObject

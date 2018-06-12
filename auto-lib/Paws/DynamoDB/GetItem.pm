@@ -24,7 +24,7 @@ Paws::DynamoDB::GetItem - Arguments for method GetItem on L<Paws::DynamoDB>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetItem on the 
+This class represents the parameters used for calling the method GetItem on the
 L<Amazon DynamoDB|Paws::DynamoDB> service. Use the attributes of this class
 as arguments to method GetItem.
 
@@ -36,6 +36,7 @@ As an example:
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dynamodb/GetItem>
+
 =head1 ATTRIBUTES
 
 

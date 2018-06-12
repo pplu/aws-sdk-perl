@@ -185,6 +185,7 @@ sources using GraphQL from your application.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/appsync-2017-07-25>
 
+
 =head1 METHODS
 
 =head2 CreateApiKey
