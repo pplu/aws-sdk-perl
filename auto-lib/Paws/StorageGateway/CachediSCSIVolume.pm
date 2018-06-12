@@ -1,6 +1,7 @@
 package Paws::StorageGateway::CachediSCSIVolume;
   use Moose;
   has CreatedDate => (is => 'ro', isa => 'Str');
+  has KMSKey => (is => 'ro', isa => 'Str');
   has SourceSnapshotId => (is => 'ro', isa => 'Str');
   has VolumeARN => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str');
@@ -49,6 +50,11 @@ Describes an iSCSI cached volume.
 
   The date the volume was created. Volumes created prior to March 28,
 2017 donE<rsquo>t have this time stamp.
+
+
+=head2 KMSKey => Str
+
+  
 
 
 =head2 SourceSnapshotId => Str

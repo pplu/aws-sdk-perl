@@ -1,6 +1,7 @@
 package Paws::StorageGateway::TapeArchive;
   use Moose;
   has CompletionTime => (is => 'ro', isa => 'Str');
+  has KMSKey => (is => 'ro', isa => 'Str');
   has RetrievedTo => (is => 'ro', isa => 'Str');
   has TapeARN => (is => 'ro', isa => 'Str');
   has TapeBarcode => (is => 'ro', isa => 'Str');
@@ -48,8 +49,13 @@ Represents a virtual tape that is archived in the virtual tape shelf
 
   The time that the archiving of the virtual tape was completed.
 
-The string format of the completion time is in the ISO8601 extended
+The default time stamp format is in the ISO8601 extended
 YYYY-MM-DD'T'HH:MM:SS'Z' format.
+
+
+=head2 KMSKey => Str
+
+  
 
 
 =head2 RetrievedTo => Str
@@ -72,7 +78,7 @@ The virtual tape is retrieved from the virtual tape shelf (VTS).
 
 =head2 TapeCreatedDate => Str
 
-  
+  The date the virtual tape was created.
 
 
 =head2 TapeSizeInBytes => Int

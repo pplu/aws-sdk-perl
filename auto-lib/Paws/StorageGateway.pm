@@ -802,6 +802,10 @@ gateway type.
 
 =item VolumeSizeInBytes => Int
 
+=item [KMSEncrypted => Bool]
+
+=item [KMSKey => Str]
+
 =item [SnapshotId => Str]
 
 =item [SourceVolumeARN => Str]
@@ -1024,6 +1028,10 @@ can use to connect to the volume target.
 
 =item TapeSizeInBytes => Int
 
+=item [KMSEncrypted => Bool]
+
+=item [KMSKey => Str]
+
 
 =back
 
@@ -1049,6 +1057,10 @@ gateway.
 =item TapeBarcode => Str
 
 =item TapeSizeInBytes => Int
+
+=item [KMSEncrypted => Bool]
+
+=item [KMSKey => Str]
 
 
 =back

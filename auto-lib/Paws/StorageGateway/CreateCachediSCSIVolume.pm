@@ -3,6 +3,8 @@ package Paws::StorageGateway::CreateCachediSCSIVolume;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str', required => 1);
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
+  has KMSEncrypted => (is => 'ro', isa => 'Bool');
+  has KMSKey => (is => 'ro', isa => 'Str');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
   has SnapshotId => (is => 'ro', isa => 'Str');
   has SourceVolumeARN => (is => 'ro', isa => 'Str');
@@ -48,6 +50,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 =head2 B<REQUIRED> GatewayARN => Str
 
 
+
+
+
+=head2 KMSEncrypted => Bool
+
+True to use Amazon S3 server side encryption with your own AWS KMS key,
+or false to use a key managed by Amazon S3. Optional.
+
+
+
+=head2 KMSKey => Str
+
+The Amazon Resource Name (ARN) of the KMS key used for Amazon S3 server
+side encryption. This value can only be set when KMSEncrypted is true.
+Optional.
 
 
 

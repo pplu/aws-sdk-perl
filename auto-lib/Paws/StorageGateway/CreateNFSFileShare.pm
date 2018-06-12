@@ -63,9 +63,9 @@ ensure idempotent file share creation.
 =head2 DefaultStorageClass => Str
 
 The default storage class for objects put into an Amazon S3 bucket by
-file gateway. Possible values are S3_STANDARD or S3_STANDARD_IA. If
-this field is not populated, the default value S3_STANDARD is used.
-Optional.
+file gateway. Possible values are S3_STANDARD, S3_STANDARD_IA or
+S3_ONEZONE_IA. If this field is not populated, the default value
+S3_STANDARD is used. Optional.
 
 
 
@@ -93,8 +93,9 @@ or false to use a key managed by Amazon S3. Optional.
 
 =head2 KMSKey => Str
 
-The KMS key used for Amazon S3 server side encryption. This value can
-only be set when KmsEncrypted is true. Optional.
+The Amazon Resource Name (ARN) KMS key used for Amazon S3 server side
+encryption. This value can only be set when KMSEncrypted is true.
+Optional.
 
 
 

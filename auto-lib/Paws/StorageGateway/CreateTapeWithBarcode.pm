@@ -2,6 +2,8 @@
 package Paws::StorageGateway::CreateTapeWithBarcode;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
+  has KMSEncrypted => (is => 'ro', isa => 'Bool');
+  has KMSKey => (is => 'ro', isa => 'Str');
   has TapeBarcode => (is => 'ro', isa => 'Str', required => 1);
   has TapeSizeInBytes => (is => 'ro', isa => 'Int', required => 1);
 
@@ -40,6 +42,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 The unique Amazon Resource Name (ARN) that represents the gateway to
 associate the virtual tape with. Use the ListGateways operation to
 return a list of gateways for your account and region.
+
+
+
+=head2 KMSEncrypted => Bool
+
+True to use Amazon S3 server side encryption with your own AWS KMS key,
+or false to use a key managed by Amazon S3. Optional.
+
+
+
+=head2 KMSKey => Str
+
+The Amazon Resource Name (ARN) of the KMS Key used for Amazon S3 server
+side encryption. This value can only be set when KMSEncrypted is true.
+Optional.
 
 
 
