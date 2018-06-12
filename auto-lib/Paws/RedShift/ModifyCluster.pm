@@ -345,7 +345,8 @@ clusters in VPCs can be set to be publicly available.
 =head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
 
 A list of virtual private cloud (VPC) security groups to be associated
-with the cluster.
+with the cluster. This change is asynchronously applied as soon as
+possible.
 
 
 
