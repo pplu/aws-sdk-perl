@@ -1331,7 +1331,7 @@ For more information on copying encrypted DB cluster snapshots from one
 AWS Region to another, see Copying a DB Cluster Snapshot in the Same
 Account, Either in the Same Region or Across Regions
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopyDBClusterSnapshot.CrossRegion)
-in the Amazon RDS User Guide.
+in the I<Amazon RDS User Guide.>
 
 For more information on Amazon Aurora, see Aurora on Amazon RDS
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
@@ -1394,7 +1394,7 @@ destination AWS Region for the DB snapshot copy.
 
 For more information about copying snapshots, see Copying a DB Snapshot
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopyDBSnapshot.html)
-in the Amazon RDS User Guide.
+in the I<Amazon RDS User Guide.>
 
 
 =head2 CopyOptionGroup
@@ -1636,6 +1636,8 @@ in the I<Amazon RDS User Guide.>
 
 =item [PreferredMaintenanceWindow => Str]
 
+=item [ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]]
+
 =item [PromotionTier => Int]
 
 =item [PubliclyAccessible => Bool]
@@ -1706,11 +1708,15 @@ Creates a new DB instance.
 
 =item [PreSignedUrl => Str]
 
+=item [ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]]
+
 =item [PubliclyAccessible => Bool]
 
 =item [StorageType => Str]
 
 =item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+
+=item [UseDefaultProcessorFeatures => Bool]
 
 
 =back
@@ -3235,6 +3241,8 @@ private, use the DescribeDBClusterSnapshotAttributes API action.
 
 =item [PreferredMaintenanceWindow => Str]
 
+=item [ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]]
+
 =item [PromotionTier => Int]
 
 =item [PubliclyAccessible => Bool]
@@ -3244,6 +3252,8 @@ private, use the DescribeDBClusterSnapshotAttributes API action.
 =item [TdeCredentialArn => Str]
 
 =item [TdeCredentialPassword => Str]
+
+=item [UseDefaultProcessorFeatures => Bool]
 
 =item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
 
@@ -3894,6 +3904,8 @@ in the I<Amazon RDS User Guide.>
 
 =item [Port => Int]
 
+=item [ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]]
+
 =item [PubliclyAccessible => Bool]
 
 =item [StorageType => Str]
@@ -3903,6 +3915,8 @@ in the I<Amazon RDS User Guide.>
 =item [TdeCredentialArn => Str]
 
 =item [TdeCredentialPassword => Str]
+
+=item [UseDefaultProcessorFeatures => Bool]
 
 
 =back
@@ -4007,6 +4021,8 @@ Aurora, use RestoreDBClusterFromSnapshot.
 
 =item [PreferredMaintenanceWindow => Str]
 
+=item [ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]]
+
 =item [PubliclyAccessible => Bool]
 
 =item [S3Prefix => Str]
@@ -4016,6 +4032,8 @@ Aurora, use RestoreDBClusterFromSnapshot.
 =item [StorageType => Str]
 
 =item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+
+=item [UseDefaultProcessorFeatures => Bool]
 
 =item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
 
@@ -4075,6 +4093,8 @@ RDS MySQL DB Instance
 
 =item [Port => Int]
 
+=item [ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]]
+
 =item [PubliclyAccessible => Bool]
 
 =item [RestoreTime => Str]
@@ -4086,6 +4106,8 @@ RDS MySQL DB Instance
 =item [TdeCredentialArn => Str]
 
 =item [TdeCredentialPassword => Str]
+
+=item [UseDefaultProcessorFeatures => Bool]
 
 =item [UseLatestRestorableTime => Bool]
 
@@ -4102,7 +4124,7 @@ LatestRestorableTime property. You can restore to a point up to the
 number of days specified by the BackupRetentionPeriod property.
 
 The target database is created with most of the original configuration,
-but in a system-selected availability zone, with the default security
+but in a system-selected Availability Zone, with the default security
 group, the default subnet group, and the default DB parameter group. By
 default, the new DB instance is created as a single-AZ deployment
 except when the instance is a SQL Server instance that has an option

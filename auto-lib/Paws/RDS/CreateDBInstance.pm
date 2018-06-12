@@ -34,6 +34,7 @@ package Paws::RDS::CreateDBInstance;
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]');
   has PromotionTier => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
@@ -327,7 +328,7 @@ C<db.m4.large>. Not all DB instance classes are available in all AWS
 Regions, or for all database engines. For the full list of DB instance
 classes, and availability for your engine, see DB Instance Class
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
-in the Amazon RDS User Guide.
+in the I<Amazon RDS User Guide.>
 
 
 
@@ -655,9 +656,11 @@ C<sqlserver-web>
 
 The version number of the database engine to use.
 
-The following are the database engines and major and minor versions
-that are available with Amazon RDS. Not every database engine is
-available for every AWS Region.
+For a list of valid engine versions, call DescribeDBEngineVersions.
+
+The following are the database engines and links to information about
+the major and minor versions that are available with Amazon RDS. Not
+every database engine is available for every AWS Region.
 
 B<Amazon Aurora>
 
@@ -667,369 +670,33 @@ CreateDBCluster.
 
 B<MariaDB>
 
-=over
-
-=item *
-
-C<10.2.12> (supported in all AWS Regions)
-
-=item *
-
-C<10.2.11> (supported in all AWS Regions)
-
-=back
-
-=over
-
-=item *
-
-C<10.1.31> (supported in all AWS Regions)
-
-=item *
-
-C<10.1.26> (supported in all AWS Regions)
-
-=item *
-
-C<10.1.23> (supported in all AWS Regions)
-
-=item *
-
-C<10.1.19> (supported in all AWS Regions)
-
-=item *
-
-C<10.1.14> (supported in all AWS Regions except us-east-2)
-
-=back
-
-=over
-
-=item *
-
-C<10.0.34> (supported in all AWS Regions)
-
-=item *
-
-C<10.0.32> (supported in all AWS Regions)
-
-=item *
-
-C<10.0.31> (supported in all AWS Regions)
-
-=item *
-
-C<10.0.28> (supported in all AWS Regions)
-
-=item *
-
-C<10.0.24> (supported in all AWS Regions)
-
-=item *
-
-C<10.0.17> (supported in all AWS Regions except us-east-2,
-ca-central-1, eu-west-2)
-
-=back
-
-B<Microsoft SQL Server 2017>
-
-=over
-
-=item *
-
-C<14.00.1000.169.v1> (supported for all editions, and all AWS Regions)
-
-=back
-
-B<Microsoft SQL Server 2016>
-
-=over
-
-=item *
-
-C<13.00.4451.0.v1> (supported for all editions, and all AWS Regions)
-
-=item *
-
-C<13.00.4422.0.v1> (supported for all editions, and all AWS Regions)
-
-=item *
-
-C<13.00.2164.0.v1> (supported for all editions, and all AWS Regions)
-
-=back
-
-B<Microsoft SQL Server 2014>
-
-=over
-
-=item *
-
-C<12.00.5546.0.v1> (supported for all editions, and all AWS Regions)
-
-=item *
-
-C<12.00.5000.0.v1> (supported for all editions, and all AWS Regions)
-
-=item *
-
-C<12.00.4422.0.v1> (supported for all editions except Enterprise
-Edition, and all AWS Regions except ca-central-1 and eu-west-2)
-
-=back
-
-B<Microsoft SQL Server 2012>
-
-=over
-
-=item *
-
-C<11.00.6594.0.v1> (supported for all editions, and all AWS Regions)
-
-=item *
-
-C<11.00.6020.0.v1> (supported for all editions, and all AWS Regions)
-
-=item *
-
-C<11.00.5058.0.v1> (supported for all editions, and all AWS Regions
-except us-east-2, ca-central-1, and eu-west-2)
-
-=item *
-
-C<11.00.2100.60.v1> (supported for all editions, and all AWS Regions
-except us-east-2, ca-central-1, and eu-west-2)
-
-=back
-
-B<Microsoft SQL Server 2008 R2>
-
-=over
-
-=item *
-
-C<10.50.6529.0.v1> (supported for all editions, and all AWS Regions
-except us-east-2, ca-central-1, and eu-west-2)
-
-=item *
-
-C<10.50.6000.34.v1> (supported for all editions, and all AWS Regions
-except us-east-2, ca-central-1, and eu-west-2)
-
-=item *
-
-C<10.50.2789.0.v1> (supported for all editions, and all AWS Regions
-except us-east-2, ca-central-1, and eu-west-2)
-
-=back
+See MariaDB on Amazon RDS Versions
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MariaDB.html#MariaDB.Concepts.VersionMgmt)
+in the I<Amazon RDS User Guide.>
+
+B<Microsoft SQL Server>
+
+See Version and Feature Support on Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.FeatureSupport)
+in the I<Amazon RDS User Guide.>
 
 B<MySQL>
 
-=over
-
-=item *
-
-C<5.7.21> (supported in all AWS regions)
-
-=item *
-
-C<5.7.19> (supported in all AWS regions)
-
-=item *
-
-C<5.7.17> (supported in all AWS regions)
-
-=item *
-
-C<5.7.16> (supported in all AWS regions)
-
-=back
-
-=over
-
-=item *
-
-C<5.6.39> (supported in all AWS Regions)
-
-=item *
-
-C<5.6.37> (supported in all AWS Regions)
-
-=item *
-
-C<5.6.35> (supported in all AWS Regions)
-
-=item *
-
-C<5.6.34> (supported in all AWS Regions)
-
-=item *
-
-C<5.6.29> (supported in all AWS Regions)
-
-=item *
-
-C<5.6.27> (supported in all AWS Regions except us-east-2, ca-central-1,
-eu-west-2)
-
-=back
-
-=over
-
-=item *
-
-C<5.5.59> (supported in all AWS Regions)
-
-=item *
-
-C<5.5.57> (supported in all AWS Regions)
-
-=item *
-
-C<5.5.54> (supported in all AWS Regions)
-
-=item *
-
-C<5.5.53> (supported in all AWS Regions)
-
-=item *
-
-C<5.5.46> (supported in all AWS Regions)
-
-=back
-
-B<Oracle 12c>
-
-=over
-
-=item *
-
-C<12.1.0.2.v9> (supported for EE in all AWS regions, and SE2 in all AWS
-regions except us-gov-west-1)
-
-=item *
-
-C<12.1.0.2.v8> (supported for EE in all AWS regions, and SE2 in all AWS
-regions except us-gov-west-1)
-
-=item *
-
-C<12.1.0.2.v7> (supported for EE in all AWS regions, and SE2 in all AWS
-regions except us-gov-west-1)
-
-=item *
-
-C<12.1.0.2.v6> (supported for EE in all AWS regions, and SE2 in all AWS
-regions except us-gov-west-1)
-
-=item *
-
-C<12.1.0.2.v5> (supported for EE in all AWS regions, and SE2 in all AWS
-regions except us-gov-west-1)
-
-=item *
-
-C<12.1.0.2.v4> (supported for EE in all AWS regions, and SE2 in all AWS
-regions except us-gov-west-1)
-
-=item *
-
-C<12.1.0.2.v3> (supported for EE in all AWS regions, and SE2 in all AWS
-regions except us-gov-west-1)
-
-=item *
-
-C<12.1.0.2.v2> (supported for EE in all AWS regions, and SE2 in all AWS
-regions except us-gov-west-1)
-
-=item *
-
-C<12.1.0.2.v1> (supported for EE in all AWS regions, and SE2 in all AWS
-regions except us-gov-west-1)
-
-=back
-
-B<Oracle 11g>
-
-=over
-
-=item *
-
-C<11.2.0.4.v13> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v12> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v11> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v10> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v9> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v8> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v7> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v6> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v5> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v4> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v3> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v1> (supported for EE, SE1, and SE, in all AWS regions)
-
-=back
+See MySQL on Amazon RDS Versions
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html#MySQL.Concepts.VersionMgmt)
+in the I<Amazon RDS User Guide.>
+
+B<Oracle>
+
+See Oracle Database Engine Release Notes
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.PatchComposition.html)
+in the I<Amazon RDS User Guide.>
 
 B<PostgreSQL>
 
-=over
-
-=item *
-
-B<Version 10.1>
-
-=item *
-
-B<Version 9.6.x:> C< 9.6.6 | 9.6.5 | 9.6.3 | 9.6.2 | 9.6.1>
-
-=item *
-
-B<Version 9.5.x:> C< 9.5.9 | 9.5.7 | 9.5.6 | 9.5.4 | 9.5.2>
-
-=item *
-
-B<Version 9.4.x:> C< 9.4.14 | 9.4.12 | 9.4.11 | 9.4.9 | 9.4.7>
-
-=item *
-
-B<Version 9.3.x:> C< 9.3.19 | 9.3.17 | 9.3.16 | 9.3.14 | 9.3.12>
-
-=back
-
+See Supported PostgreSQL Database Versions
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.DBVersions)
+in the I<Amazon RDS User Guide.>
 
 
 
@@ -1401,6 +1068,13 @@ week.
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 
 Constraints: Minimum 30-minute window.
+
+
+
+=head2 ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]
+
+The number of CPU cores and the number of threads per core for the DB
+instance class of the DB instance.
 
 
 

@@ -30,6 +30,7 @@ package Paws::RDS::RestoreDBInstanceFromS3;
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has S3BucketName => (is => 'ro', isa => 'Str', required => 1);
   has S3IngestionRoleArn => (is => 'ro', isa => 'Str', required => 1);
@@ -39,6 +40,7 @@ package Paws::RDS::RestoreDBInstanceFromS3;
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has StorageType => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
+  has UseDefaultProcessorFeatures => (is => 'ro', isa => 'Bool');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
@@ -133,7 +135,7 @@ C<db.m4.large>. Not all DB instance classes are available in all AWS
 Regions, or for all database engines. For the full list of DB instance
 classes, and availability for your engine, see DB Instance Class
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
-in the Amazon RDS User Guide.
+in the I<Amazon RDS User Guide.>
 
 Importing from Amazon S3 is not supported on the db.t2.micro DB
 instance class.
@@ -234,7 +236,8 @@ Valid Values: C<mysql>
 =head2 EngineVersion => Str
 
 The version number of the database engine to use. Choose the latest
-minor version of your database engine as specified in CreateDBInstance.
+minor version of your database engine. For information about engine
+versions, see CreateDBInstance, or call DescribeDBEngineVersions.
 
 
 
@@ -437,6 +440,13 @@ Must be at least 30 minutes.
 
 
 
+=head2 ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]
+
+The number of CPU cores and the number of threads per core for the DB
+instance class of the DB instance.
+
+
+
 =head2 PubliclyAccessible => Bool
 
 Specifies whether the DB instance is publicly accessible or not. For
@@ -505,6 +515,13 @@ C<standard>
 A list of tags to associate with this DB instance. For more
 information, see Tagging Amazon RDS Resources
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html).
+
+
+
+=head2 UseDefaultProcessorFeatures => Bool
+
+A value that specifies that the DB instance class of the DB instance
+uses its default processor features.
 
 
 

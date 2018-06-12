@@ -19,10 +19,12 @@ package Paws::RDS::CreateDBInstanceReadReplica;
   has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PreSignedUrl => (is => 'ro', isa => 'Str');
+  has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has SourceDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has StorageType => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
+  has UseDefaultProcessorFeatures => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
 
@@ -88,7 +90,7 @@ C<db.m4.large>. Not all DB instance classes are available in all AWS
 Regions, or for all database engines. For the full list of DB instance
 classes, and availability for your engine, see DB Instance Class
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
-in the Amazon RDS User Guide.
+in the I<Amazon RDS User Guide.>
 
 Default: Inherits from the source DB instance.
 
@@ -353,6 +355,13 @@ and Signature Version 4 Signing Process
 
 
 
+=head2 ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]
+
+The number of CPU cores and the number of threads per core for the DB
+instance class of the DB instance.
+
+
+
 =head2 PubliclyAccessible => Bool
 
 Specifies the accessibility options for the DB instance. A value of
@@ -449,6 +458,13 @@ C<standard>
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
 
+
+
+
+=head2 UseDefaultProcessorFeatures => Bool
+
+A value that specifies that the DB instance class of the DB instance
+uses its default processor features.
 
 
 

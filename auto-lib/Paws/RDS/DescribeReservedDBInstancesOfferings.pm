@@ -103,7 +103,9 @@ Valid Values: C<"Partial Upfront" | "All Upfront" | "No Upfront">
 =head2 ProductDescription => Str
 
 Product description filter value. Specify this parameter to show only
-the available offerings matching the specified product description.
+the available offerings that contain the specified product description.
+
+The results show offerings that partially match the filter value.
 
 
 

@@ -168,9 +168,9 @@ The name of the option group for the new DB cluster.
 
 The port number on which the new DB cluster accepts connections.
 
-Constraints: Value must be C<1150-65535>
+Constraints: A value from C<1150-65535>.
 
-Default: The same port as the original DB cluster.
+Default: The default port for the engine.
 
 
 

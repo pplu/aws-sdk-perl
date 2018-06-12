@@ -31,11 +31,13 @@ package Paws::RDS::ModifyDBInstance;
   has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]');
   has PromotionTier => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has StorageType => (is => 'ro', isa => 'Str');
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
   has TdeCredentialPassword => (is => 'ro', isa => 'Str');
+  has UseDefaultProcessorFeatures => (is => 'ro', isa => 'Bool');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
@@ -203,7 +205,7 @@ C<db.m4.large>. Not all DB instance classes are available in all AWS
 Regions, or for all database engines. For the full list of DB instance
 classes, and availability for your engine, see DB Instance Class
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
-in the Amazon RDS User Guide.
+in the I<Amazon RDS User Guide.>
 
 If you modify the DB instance class, an outage occurs during the
 change. The change is applied during the next maintenance window,
@@ -406,7 +408,8 @@ currently in use, a new DB parameter group in the DB parameter group
 family for the new engine version must be specified. The new DB
 parameter group can be the default for that DB parameter group family.
 
-For a list of valid engine versions, see CreateDBInstance.
+For information about valid engine versions, see CreateDBInstance, or
+call DescribeDBEngineVersions.
 
 
 
@@ -651,6 +654,13 @@ Constraints: Must be at least 30 minutes
 
 
 
+=head2 ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]
+
+The number of CPU cores and the number of threads per core for the DB
+instance class of the DB instance.
+
+
+
 =head2 PromotionTier => Int
 
 A value that specifies the order in which an Aurora Replica is promoted
@@ -724,6 +734,13 @@ encryption.
 
 The password for the given ARN from the key store in order to access
 the device.
+
+
+
+=head2 UseDefaultProcessorFeatures => Bool
+
+A value that specifies that the DB instance class of the DB instance
+uses its default processor features.
 
 
 

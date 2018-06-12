@@ -40,6 +40,7 @@ package Paws::RDS::DBInstance;
   has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]', request_name => 'ProcessorFeature', traits => ['NameInRequest']);
   has PromotionTier => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has ReadReplicaDBClusterIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ReadReplicaDBClusterIdentifier', traits => ['NameInRequest']);
@@ -357,6 +358,12 @@ C<BackupRetentionPeriod>.
 
   Specifies the weekly time range during which system maintenance can
 occur, in Universal Coordinated Time (UTC).
+
+
+=head2 ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]
+
+  The number of CPU cores and the number of threads per core for the DB
+instance class of the DB instance.
 
 
 =head2 PromotionTier => Int

@@ -17,6 +17,7 @@ package Paws::RDS::DBSnapshot;
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has PercentProgress => (is => 'ro', isa => 'Int');
   has Port => (is => 'ro', isa => 'Int');
+  has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]', request_name => 'ProcessorFeature', traits => ['NameInRequest']);
   has SnapshotCreateTime => (is => 'ro', isa => 'Str');
   has SnapshotType => (is => 'ro', isa => 'Str');
   has SourceDBSnapshotIdentifier => (is => 'ro', isa => 'Str');
@@ -154,6 +155,12 @@ DB snapshot.
 
   Specifies the port that the database engine was listening on at the
 time of the snapshot.
+
+
+=head2 ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]
+
+  The number of CPU cores and the number of threads per core for the DB
+instance class of the DB instance when the DB snapshot was created.
 
 
 =head2 SnapshotCreateTime => Str

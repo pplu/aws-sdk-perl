@@ -17,6 +17,7 @@ package Paws::RDS::RestoreDBInstanceToPointInTime;
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
+  has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has RestoreTime => (is => 'ro', isa => 'Str');
   has SourceDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -25,6 +26,7 @@ package Paws::RDS::RestoreDBInstanceToPointInTime;
   has TargetDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
   has TdeCredentialPassword => (is => 'ro', isa => 'Str');
+  has UseDefaultProcessorFeatures => (is => 'ro', isa => 'Bool');
   has UseLatestRestorableTime => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
@@ -92,7 +94,7 @@ all AWS Regions, or for all database engines. For the full list of DB
 instance classes, and availability for your engine, see DB Instance
 Class
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
-in the Amazon RDS User Guide.
+in the I<Amazon RDS User Guide.>
 
 Default: The same DBInstanceClass as the original DB instance.
 
@@ -276,6 +278,13 @@ Default: The same port as the original DB instance.
 
 
 
+=head2 ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]
+
+The number of CPU cores and the number of threads per core for the DB
+instance class of the DB instance.
+
+
+
 =head2 PubliclyAccessible => Bool
 
 Specifies the accessibility options for the DB instance. A value of
@@ -406,6 +415,13 @@ encryption.
 
 The password for the given ARN from the key store in order to access
 the device.
+
+
+
+=head2 UseDefaultProcessorFeatures => Bool
+
+A value that specifies that the DB instance class of the DB instance
+uses its default processor features.
 
 
 

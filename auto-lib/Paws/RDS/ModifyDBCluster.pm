@@ -155,7 +155,7 @@ Changing this parameter results in an outage. The change is applied
 during the next maintenance window unless the ApplyImmediately
 parameter is set to true.
 
-For a list of valid engine versions, see CreateDBInstance, or call
+For a list of valid engine versions, see CreateDBCluster, or call
 DescribeDBEngineVersions.
 
 
