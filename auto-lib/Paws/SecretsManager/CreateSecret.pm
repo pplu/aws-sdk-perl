@@ -47,8 +47,8 @@ specifies a unique identifier for the new version.
 
 If you use the AWS CLI or one of the AWS SDK to call this operation,
 then you can leave this parameter empty. The CLI or SDK generates a
-random UUID for you and includes as the value for this parameter in the
-request. If you don't use the SDK and instead generate a raw HTTP
+random UUID for you and includes it as the value for this parameter in
+the request. If you don't use the SDK and instead generate a raw HTTP
 request to the Secrets Manager service endpoint, then you must generate
 a C<ClientRequestToken> yourself for the new version and include that
 value in the request.
@@ -94,13 +94,17 @@ This value becomes the C<SecretVersionId> of the new version.
 
 =head2 KmsKeyId => Str
 
-(Optional) Specifies the ARN or alias of the AWS KMS customer master
-key (CMK) to be used to encrypt the C<SecretString> or C<SecretBinary>
-values in the versions stored in this secret.
+(Optional) Specifies the ARN, Key ID, or alias of the AWS KMS customer
+master key (CMK) to be used to encrypt the C<SecretString> or
+C<SecretBinary> values in the versions stored in this secret.
+
+You can specify any of the supported ways to identify a AWS KMS key ID.
+If you need to reference a CMK in a different account, you can use only
+the key ARN or the alias ARN.
 
 If you don't specify this value, then Secrets Manager defaults to using
 the AWS account's default CMK (the one named C<aws/secretsmanager>). If
-a KMS CMK with that name doesn't yet exist, then Secrets Manager
+a AWS KMS CMK with that name doesn't yet exist, then Secrets Manager
 creates it for you automatically the first time it needs to encrypt a
 version's C<SecretString> or C<SecretBinary> fields.
 

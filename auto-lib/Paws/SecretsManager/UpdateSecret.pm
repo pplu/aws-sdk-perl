@@ -95,15 +95,15 @@ This value becomes the C<SecretVersionId> of the new version.
 
 =head2 KmsKeyId => Str
 
-(Optional) Specifies the ARN or alias of the KMS customer master key
-(CMK) to be used to encrypt the protected text in the versions of this
-secret.
+(Optional) Specifies the ARN or alias of the AWS KMS customer master
+key (CMK) to be used to encrypt the protected text in the versions of
+this secret.
 
 If you don't specify this value, then Secrets Manager defaults to using
 the default CMK in the account (the one named C<aws/secretsmanager>).
-If a KMS CMK with that name doesn't exist, then Secrets Manager creates
-it for you automatically the first time it needs to encrypt a version's
-C<Plaintext> or C<PlaintextString> fields.
+If a AWS KMS CMK with that name doesn't exist, then Secrets Manager
+creates it for you automatically the first time it needs to encrypt a
+version's C<Plaintext> or C<PlaintextString> fields.
 
 You can only use the account's default CMK to encrypt and decrypt if
 you call this operation using credentials from the same account that
