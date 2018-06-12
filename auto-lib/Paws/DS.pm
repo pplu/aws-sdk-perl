@@ -185,6 +185,11 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::RemoveTagsFromResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ResetUserPassword {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::ResetUserPassword', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RestoreFromSnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::RestoreFromSnapshot', @_);
@@ -241,7 +246,7 @@ package Paws::DS;
   }
 
 
-  sub operations { qw/AddIpRoutes AddTagsToResource CancelSchemaExtension ConnectDirectory CreateAlias CreateComputer CreateConditionalForwarder CreateDirectory CreateMicrosoftAD CreateSnapshot CreateTrust DeleteConditionalForwarder DeleteDirectory DeleteSnapshot DeleteTrust DeregisterEventTopic DescribeConditionalForwarders DescribeDirectories DescribeDomainControllers DescribeEventTopics DescribeSnapshots DescribeTrusts DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits ListIpRoutes ListSchemaExtensions ListTagsForResource RegisterEventTopic RemoveIpRoutes RemoveTagsFromResource RestoreFromSnapshot StartSchemaExtension UpdateConditionalForwarder UpdateNumberOfDomainControllers UpdateRadius VerifyTrust / }
+  sub operations { qw/AddIpRoutes AddTagsToResource CancelSchemaExtension ConnectDirectory CreateAlias CreateComputer CreateConditionalForwarder CreateDirectory CreateMicrosoftAD CreateSnapshot CreateTrust DeleteConditionalForwarder DeleteDirectory DeleteSnapshot DeleteTrust DeregisterEventTopic DescribeConditionalForwarders DescribeDirectories DescribeDomainControllers DescribeEventTopics DescribeSnapshots DescribeTrusts DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits ListIpRoutes ListSchemaExtensions ListTagsForResource RegisterEventTopic RemoveIpRoutes RemoveTagsFromResource ResetUserPassword RestoreFromSnapshot StartSchemaExtension UpdateConditionalForwarder UpdateNumberOfDomainControllers UpdateRadius VerifyTrust / }
 
 1;
 
@@ -1068,6 +1073,27 @@ Each argument is described in detail in: L<Paws::DS::RemoveTagsFromResource>
 Returns: a L<Paws::DS::RemoveTagsFromResourceResult> instance
 
 Removes tags from a directory.
+
+
+=head2 ResetUserPassword
+
+=over
+
+=item DirectoryId => Str
+
+=item NewPassword => Str
+
+=item UserName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DS::ResetUserPassword>
+
+Returns: a L<Paws::DS::ResetUserPasswordResult> instance
+
+Resets the password for any user in your AWS Managed Microsoft AD or
+Simple AD directory.
 
 
 =head2 RestoreFromSnapshot
