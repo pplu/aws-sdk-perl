@@ -73,6 +73,8 @@ I<GetEntitlements>- Gets the entitlements for a Marketplace product.
 =back
 
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/Welcome.html>
+
 =head1 METHODS
 
 =head2 GetEntitlements

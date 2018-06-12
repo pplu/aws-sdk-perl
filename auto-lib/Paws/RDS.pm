@@ -1040,6 +1040,8 @@ Query API
 =back
 
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31>
+
 =head1 METHODS
 
 =head2 AddRoleToDBCluster
@@ -1439,6 +1441,8 @@ Copies the specified option group.
 
 =item [DBSubnetGroupName => Str]
 
+=item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
+
 =item [EnableIAMDatabaseAuthentication => Bool]
 
 =item [EngineVersion => Str]
@@ -1797,6 +1801,9 @@ Returns: a L<Paws::RDS::CreateDBSecurityGroupResult> instance
 
 Creates a new DB security group. DB security groups control access to a
 DB instance.
+
+A DB security group controls access to EC2-Classic DB instances that
+are not in a VPC.
 
 
 =head2 CreateDBSnapshot
@@ -3046,6 +3053,8 @@ RDS Resources
 
 =item [BackupRetentionPeriod => Int]
 
+=item [CloudwatchLogsExportConfiguration => L<Paws::RDS::CloudwatchLogsExportConfiguration>]
+
 =item [DBClusterParameterGroupName => Str]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
@@ -3692,6 +3701,8 @@ or C<RebootDBInstance> request.
 
 =item [DBSubnetGroupName => Str]
 
+=item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
+
 =item [EnableIAMDatabaseAuthentication => Bool]
 
 =item [EngineVersion => Str]
@@ -3746,6 +3757,8 @@ described in Migrating Data from MySQL by Using an Amazon S3 Bucket
 
 =item [DBSubnetGroupName => Str]
 
+=item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
+
 =item [EnableIAMDatabaseAuthentication => Bool]
 
 =item [EngineVersion => Str]
@@ -3794,6 +3807,8 @@ in the I<Amazon RDS User Guide.>
 =item [BacktrackWindow => Int]
 
 =item [DBSubnetGroupName => Str]
+
+=item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
 

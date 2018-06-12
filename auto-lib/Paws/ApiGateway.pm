@@ -929,6 +929,8 @@ developers to securely connect mobile and web applications to APIs that
 run on AWS Lambda, Amazon EC2, or other publicly addressable web
 services that are hosted outside of AWS.
 
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
+
 =head1 METHODS
 
 =head2 CreateApiKey

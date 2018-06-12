@@ -361,6 +361,8 @@ All Elastic Load Balancing operations are idempotent, which means that
 they complete at most one time. If you repeat an operation, it
 succeeds.
 
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+
 =head1 METHODS
 
 =head2 AddListenerCertificates
@@ -796,6 +798,12 @@ Returns: a L<Paws::ELBv2::DescribeLoadBalancerAttributesOutput> instance
 Describes the attributes for the specified Application Load Balancer or
 Network Load Balancer.
 
+For more information, see Load Balancer Attributes
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-attributes)
+in the I<Application Load Balancers Guide> or Load Balancer Attributes
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#load-balancer-attributes)
+in the I<Network Load Balancers Guide>.
+
 
 =head2 DescribeLoadBalancers
 
@@ -903,6 +911,12 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeTargetGroupAttri
 Returns: a L<Paws::ELBv2::DescribeTargetGroupAttributesOutput> instance
 
 Describes the attributes for the specified target group.
+
+For more information, see Target Group Attributes
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#target-group-attributes)
+in the I<Application Load Balancers Guide> or Target Group Attributes
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#target-group-attributes)
+in the I<Network Load Balancers Guide>.
 
 
 =head2 DescribeTargetGroups

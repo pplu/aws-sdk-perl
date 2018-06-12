@@ -373,6 +373,8 @@ several AWS products to do tasks such as web indexing, data mining, log
 file analysis, machine learning, scientific simulation, and data
 warehousing.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31>
+
 =head1 METHODS
 
 =head2 AddInstanceFleet

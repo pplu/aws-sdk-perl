@@ -252,6 +252,8 @@ Application Auto Scaling
 (http://docs.aws.amazon.com/general/latest/gr/rande.html#as-app_region)
 in the I<AWS General Reference>.
 
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+
 =head1 METHODS
 
 =head2 DeleteScalingPolicy

@@ -3,6 +3,7 @@
 use strict;
 use warnings;
 
+use Getopt::Long;
 use Data::Printer;
 use Data::Dumper;
 use Cwd;
@@ -14,7 +15,16 @@ use lib 'builder-lib', 't/lib';
 
 use Paws::API::Builder::Paws;
 use Paws::API::ServiceToClass;
- 
+
+my $gen_paws_pm    = 0;
+my $gen_classes    = 0;
+my $gen_docu_links = 0;
+
+GetOptions ("paws_pm"    => \$gen_paws_pm,
+            "classes"    => \$gen_classes,
+            "docu_links" => \$gen_docu_links)
+or die "Error in command line arguments\n";
+
 my (@files) = @ARGV;
 
 # If no files specified, get the last version of each json for each service
@@ -30,10 +40,12 @@ if (not @files) {
   }
 }
 
-my $p = Paws::API::Builder::Paws->new;
-$p->process;
+if ($gen_paws_pm) {
+  my $p = Paws::API::Builder::Paws->new;
+  $p->process;
+}
 
-exit 0 if (defined $ENV{ONLY_PAWS} and $ENV{ONLY_PAWS} == 1);
+exit 0 if (not $gen_docu_links and not $gen_classes);
 
 my @failures;
 foreach my $file (@files) {
@@ -42,7 +54,9 @@ foreach my $file (@files) {
     next if ($f eq '_retry' or $f eq '_regions');
     my $ns = Paws::API::ServiceToClass::service_to_class($f);
     eval {
-      process_api("Paws::$ns", $file);
+      my $builder = get_builder("Paws::$ns", $file);
+      $builder->write_documentation_file if ($gen_docu_links);
+      $builder->process_api if ($gen_classes);
     };
     if ($@) { warn $@; push @failures, "$file $@\n" }
   }
@@ -51,7 +65,7 @@ foreach my $file (@files) {
 print "Summary of fails:\n" if @failures;
 print @failures;
 
-sub process_api {
+sub get_builder {
   my ($api, $file) = @_;
 
   my $struct = decode_json(read_binary($file));
@@ -71,6 +85,6 @@ sub process_api {
                                 getcwd() . "/templates/${type}",
                                 getcwd() . '/templates/default',
                             ]);
-  $c->process_api;
+  return $c;
 }
 

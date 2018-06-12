@@ -212,6 +212,8 @@ Amazon Kinesis Data Streams Service API Reference
 Amazon Kinesis Data Streams is a managed service that scales
 elastically for real-time processing of streaming big data.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02>
+
 =head1 METHODS
 
 =head2 AddTagsToStream

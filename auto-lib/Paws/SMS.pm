@@ -196,6 +196,8 @@ Paws::SMS - Perl Interface to AWS AWS Server Migration Service
 Amazon Server Migration Service automates the process of migrating
 servers to EC2.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24>
+
 =head1 METHODS
 
 =head2 CreateReplicationJob

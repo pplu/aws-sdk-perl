@@ -187,6 +187,8 @@ For a current list of supported regions and endpoints, see Regions and
 Endpoints
 (http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions).
 
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/elasticsearch-service/>
+
 =head1 METHODS
 
 =head2 AddTags

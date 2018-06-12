@@ -9,6 +9,7 @@ package Paws::AppStream::UpdateStack;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has RedirectURL => (is => 'ro', isa => 'Str');
   has StorageConnectors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::StorageConnector]');
+  has UserSettings => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::UserSetting]');
 
   use MooseX::ClassAttribute;
 
@@ -36,7 +37,7 @@ As an example:
   $service_obj->UpdateStack(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 =head1 ATTRIBUTES
 
 
@@ -87,6 +88,13 @@ ends.
 =head2 StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]
 
 The storage connectors to enable.
+
+
+
+=head2 UserSettings => ArrayRef[L<Paws::AppStream::UserSetting>]
+
+The actions that are enabled or disabled for users during their
+streaming sessions. By default, these actions are enabled.
 
 
 

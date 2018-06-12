@@ -1,9 +1,9 @@
 
 package Paws::ApiGateway::CreateResource;
   use Moose;
-  has ParentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'parentId', required => 1);
+  has ParentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'parent_id', required => 1);
   has PathPart => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pathPart', required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ As an example:
   $service_obj->CreateResource(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
 =head1 ATTRIBUTES
 
 

@@ -138,6 +138,8 @@ websites and applications. For general information about using ACM, see
 the I<AWS Certificate Manager User Guide>
 (http://docs.aws.amazon.com/acm/latest/userguide/).
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08>
+
 =head1 METHODS
 
 =head2 AddTagsToCertificate

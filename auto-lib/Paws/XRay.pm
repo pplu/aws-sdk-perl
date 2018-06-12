@@ -180,6 +180,8 @@ Paws::XRay - Perl Interface to AWS AWS X-Ray
 AWS X-Ray provides APIs for managing debug traces and retrieving
 service maps and other data created by processing those traces.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/xray-2016-04-12>
+
 =head1 METHODS
 
 =head2 BatchGetTraces

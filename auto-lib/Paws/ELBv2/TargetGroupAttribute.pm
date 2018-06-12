@@ -41,37 +41,62 @@ Information about a target group attribute.
 
   The name of the attribute.
 
+The following attributes are supported by both Application Load
+Balancers and Network Load Balancers:
+
 =over
 
 =item *
 
-C<deregistration_delay.timeout_seconds> - The amount time for Elastic
-Load Balancing to wait before changing the state of a deregistering
-target from C<draining> to C<unused>. The range is 0-3600 seconds. The
-default value is 300 seconds.
+C<deregistration_delay.timeout_seconds> - The amount of time, in
+seconds, for Elastic Load Balancing to wait before changing the state
+of a deregistering target from C<draining> to C<unused>. The range is
+0-3600 seconds. The default value is 300 seconds.
+
+=back
+
+The following attributes are supported by only Application Load
+Balancers:
+
+=over
 
 =item *
 
-C<proxy_protocol_v2.enabled> - [Network Load Balancers] Indicates
-whether Proxy Protocol version 2 is enabled.
+C<slow_start.duration_seconds> - The time period, in seconds, during
+which a newly registered target receives a linearly increasing share of
+the traffic to the target group. After this time period ends, the
+target receives its full share of traffic. The range is 30-900 seconds
+(15 minutes). Slow start mode is disabled by default.
 
 =item *
 
-C<stickiness.enabled> - [Application Load Balancers] Indicates whether
-sticky sessions are enabled. The value is C<true> or C<false>.
+C<stickiness.enabled> - Indicates whether sticky sessions are enabled.
+The value is C<true> or C<false>. The default is C<false>.
 
 =item *
 
-C<stickiness.type> - [Application Load Balancers] The type of sticky
-sessions. The possible value is C<lb_cookie>.
+C<stickiness.type> - The type of sticky sessions. The possible value is
+C<lb_cookie>.
 
 =item *
 
-C<stickiness.lb_cookie.duration_seconds> - [Application Load Balancers]
-The time period, in seconds, during which requests from a client should
-be routed to the same target. After this time period expires, the load
-balancer-generated cookie is considered stale. The range is 1 second to
-1 week (604800 seconds). The default value is 1 day (86400 seconds).
+C<stickiness.lb_cookie.duration_seconds> - The time period, in seconds,
+during which requests from a client should be routed to the same
+target. After this time period expires, the load balancer-generated
+cookie is considered stale. The range is 1 second to 1 week (604800
+seconds). The default value is 1 day (86400 seconds).
+
+=back
+
+The following attributes are supported by only Network Load Balancers:
+
+=over
+
+=item *
+
+C<proxy_protocol_v2.enabled> - Indicates whether Proxy Protocol version
+2 is enabled. The value is C<true> or C<false>. The default is
+C<false>.
 
 =back
 

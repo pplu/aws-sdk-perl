@@ -3,7 +3,7 @@
  - Support for credential_process in credential handlers
    https://docs.aws.amazon.com/cli/latest/topic/config-vars.html#sourcing-credentials-from-external-processes
  - Better docu generation (osoriano)
- - Documentation update: Now POD contains links from the botocore documentation
+ - Documentation update: Now POD contains links from the botocore documentation in services and methods
  - Bump XML::Simple dependency to 2.21 (mla)
  - Documentation improvement: Link back to Service class from method parameters classes (castaway)
  - Documentation improvement: New way of rendering parameters to methods (avoids very long method signatures in TOCs). This
@@ -37,6 +37,7 @@
  - New API: SecretsManager
  - New API: IoTAnalytics
  - New APIs: IoT1ClickDevices and IOT1ClickProjects
+ - New API: PerformanceInsights
  - API updates for any service up to the date of release
 
 0.36 03 Nov 2017

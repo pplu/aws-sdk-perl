@@ -19,12 +19,15 @@ pull-boto-develop:
 	cd botocore && git pull boto develop
 
 gen-paws:
-	ONLY_PAWS=1 carton exec ./gen_classes.pl
+	carton exec ./builder-bin/gen_classes.pl --paws_pm
 
 gen-classes:
 	mkdir auto-lib/Paws/DeleteMe
 	rm -r auto-lib/Paws/*
-	./gen_classes.pl
+	./builder-bin/gen_classes.pl --paws_pm --classes
+
+docu-links:
+	./builder-bin/gen_classes.pl --docu_links
 
 copy-tests:
 	cp botocore/tests/unit/response_parsing/xml/responses/* t/10_responses/
@@ -45,7 +48,7 @@ numbers:
 	echo "EC2Caller" ; grep "::EC2Caller" auto-lib/Paws/*.pm | wc -l
 
 run_dynamo_local:
-	( mkdir /tmp/dynamodb-local && curl https://s3.eu-central-1.amazonaws.com/dynamodb-local-frankfurt/dynamodb_local_latest.tar.gz | tar xvz --directory /tmp/dynamodb-local ) ; java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb -inMemory
+	( mkdir /tmp/dynamodb-local && curl https://s3.eu-central-1.amazonaws.com/dynamodb-local-frankfurt/dynamodb_local_latest.tar.gz | tar xvz --directory /tmp/dynamodb-local ) ; cd /tmp/dynamodb-local; java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb -inMemory
 
 run_minio_local:
 	( mkdir /tmp/minio_data && wget -O /tmp/minio_data/minio https://dl.minio.io/server/minio/release/linux-amd64/minio && chmod +x /tmp/minio_data/minio ) ; /tmp/minio_data/minio server /tmp/minio_data/

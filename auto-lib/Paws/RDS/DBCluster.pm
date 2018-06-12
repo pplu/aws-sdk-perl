@@ -19,6 +19,7 @@ package Paws::RDS::DBCluster;
   has DBSubnetGroup => (is => 'ro', isa => 'Str');
   has EarliestBacktrackTime => (is => 'ro', isa => 'Str');
   has EarliestRestorableTime => (is => 'ro', isa => 'Str');
+  has EnabledCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Endpoint => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -190,6 +191,12 @@ group.
 
   The earliest time to which a database can be restored with
 point-in-time restore.
+
+
+=head2 EnabledCloudwatchLogsExports => ArrayRef[Str|Undef]
+
+  A list of log types that this DB cluster is configured to export to
+CloudWatch Logs.
 
 
 =head2 Endpoint => Str

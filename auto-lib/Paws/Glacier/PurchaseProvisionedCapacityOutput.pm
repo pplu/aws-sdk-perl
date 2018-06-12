@@ -1,7 +1,7 @@
 
 package Paws::Glacier::PurchaseProvisionedCapacityOutput;
   use Moose;
-  has CapacityId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'capacityId');
+  has CapacityId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-capacity-id');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

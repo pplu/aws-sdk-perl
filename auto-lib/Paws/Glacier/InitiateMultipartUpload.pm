@@ -2,8 +2,8 @@
 package Paws::Glacier::InitiateMultipartUpload;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has ArchiveDescription => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'archiveDescription');
-  has PartSize => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'partSize');
+  has ArchiveDescription => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-archive-description');
+  has PartSize => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-part-size');
   has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName', required => 1);
 
   use MooseX::ClassAttribute;
@@ -33,7 +33,7 @@ As an example:
   $service_obj->InitiateMultipartUpload(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/glacier/>
 =head1 ATTRIBUTES
 
 

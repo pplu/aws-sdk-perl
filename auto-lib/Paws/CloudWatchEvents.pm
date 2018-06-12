@@ -152,6 +152,8 @@ For more information about the features of Amazon CloudWatch Events,
 see the Amazon CloudWatch Events User Guide
 (http://docs.aws.amazon.com/AmazonCloudWatch/latest/events).
 
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/cloudwatch/>
+
 =head1 METHODS
 
 =head2 DeleteRule

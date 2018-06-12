@@ -216,6 +216,8 @@ Amazon AppStream 2.0
 You can use Amazon AppStream 2.0 to stream desktop applications to any
 device running a web browser, without rewriting them.
 
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+
 =head1 METHODS
 
 =head2 AssociateFleet
@@ -386,6 +388,8 @@ Creates a URL to start an image builder streaming session.
 =item [RedirectURL => Str]
 
 =item [StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]]
+
+=item [UserSettings => ArrayRef[L<Paws::AppStream::UserSetting>]]
 
 
 =back
@@ -927,6 +931,8 @@ fleet is in the C<STARTING> or C<STOPPING> state, you can't update it.
 =item [RedirectURL => Str]
 
 =item [StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]]
+
+=item [UserSettings => ArrayRef[L<Paws::AppStream::UserSetting>]]
 
 
 =back

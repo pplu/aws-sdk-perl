@@ -159,6 +159,8 @@ AWS Management Console. With a few simple modifications to your code,
 your application can begin taking advantage of the DAX cluster and
 realize significant improvements in read performance.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19>
+
 =head1 METHODS
 
 =head2 CreateCluster

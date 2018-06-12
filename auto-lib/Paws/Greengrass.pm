@@ -423,6 +423,8 @@ intermittent connectivity. AWS Greengrass minimizes the cost of
 transmitting data to the cloud by allowing you to author AWS Lambda
 functions that execute locally.
 
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
+
 =head1 METHODS
 
 =head2 AssociateRoleToGroup

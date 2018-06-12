@@ -185,6 +185,8 @@ For code samples using the AWS SDK for Java, see Examples and Code
 Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
 in the I<Amazon Athena User Guide>.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/athena-2017-05-18>
+
 =head1 METHODS
 
 =head2 BatchGetNamedQuery

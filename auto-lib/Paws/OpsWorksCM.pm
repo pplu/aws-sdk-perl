@@ -198,6 +198,8 @@ B<Throttling limits>
 All API operations allow for five requests per second with a burst of
 10 requests per second.
 
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/opsworks/>
+
 =head1 METHODS
 
 =head2 AssociateNode

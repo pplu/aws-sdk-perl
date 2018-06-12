@@ -4,12 +4,12 @@ package Paws::CloudSearchDomain::Search;
   has Cursor => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'cursor');
   has Expr => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'expr');
   has Facet => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'facet');
-  has FilterQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'filterQuery');
+  has FilterQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'fq');
   has Highlight => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'highlight');
   has Partial => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'partial');
-  has Query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'query', required => 1);
-  has QueryOptions => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'queryOptions');
-  has QueryParser => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'queryParser');
+  has Query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'q', required => 1);
+  has QueryOptions => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'q.options');
+  has QueryParser => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'q.parser');
   has Return => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'return');
   has Size => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'size');
   has Sort => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'sort');
@@ -43,7 +43,7 @@ As an example:
   $service_obj->Search(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/cloudsearch/>
 =head1 ATTRIBUTES
 
 

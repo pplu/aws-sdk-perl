@@ -10,6 +10,7 @@ package Paws::Glue::CreateJob;
   has LogUri => (is => 'ro', isa => 'Str');
   has MaxRetries => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
   has Role => (is => 'ro', isa => 'Str', required => 1);
   has Timeout => (is => 'ro', isa => 'Int');
 
@@ -39,7 +40,7 @@ As an example:
   $service_obj->CreateJob(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/CreateJob>
 =head1 ATTRIBUTES
 
 
@@ -113,6 +114,12 @@ The maximum number of times to retry this job if it fails.
 
 The name you assign to this job definition. It must be unique in your
 account.
+
+
+
+=head2 NotificationProperty => L<Paws::Glue::NotificationProperty>
+
+Specifies configuration properties of a job notification.
 
 
 

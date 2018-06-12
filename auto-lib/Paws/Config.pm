@@ -55,6 +55,11 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::DeletePendingAggregationRequest', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteRetentionConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DeleteRetentionConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeliverConfigSnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DeliverConfigSnapshot', @_);
@@ -123,6 +128,11 @@ package Paws::Config;
   sub DescribePendingAggregationRequests {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DescribePendingAggregationRequests', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeRetentionConfigurations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeRetentionConfigurations', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetAggregateComplianceDetailsByConfigRule {
@@ -198,6 +208,11 @@ package Paws::Config;
   sub PutEvaluations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::PutEvaluations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutRetentionConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::PutRetentionConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartConfigRulesEvaluation {
@@ -379,7 +394,7 @@ package Paws::Config;
   }
 
 
-  sub operations { qw/BatchGetResourceConfig DeleteAggregationAuthorization DeleteConfigRule DeleteConfigurationAggregator DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeletePendingAggregationRequest DeliverConfigSnapshot DescribeAggregateComplianceByConfigRules DescribeAggregationAuthorizations DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationAggregators DescribeConfigurationAggregatorSourcesStatus DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus DescribePendingAggregationRequests GetAggregateComplianceDetailsByConfigRule GetAggregateConfigRuleComplianceSummary GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetDiscoveredResourceCounts GetResourceConfigHistory ListDiscoveredResources PutAggregationAuthorization PutConfigRule PutConfigurationAggregator PutConfigurationRecorder PutDeliveryChannel PutEvaluations StartConfigRulesEvaluation StartConfigurationRecorder StopConfigurationRecorder / }
+  sub operations { qw/BatchGetResourceConfig DeleteAggregationAuthorization DeleteConfigRule DeleteConfigurationAggregator DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeletePendingAggregationRequest DeleteRetentionConfiguration DeliverConfigSnapshot DescribeAggregateComplianceByConfigRules DescribeAggregationAuthorizations DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationAggregators DescribeConfigurationAggregatorSourcesStatus DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus DescribePendingAggregationRequests DescribeRetentionConfigurations GetAggregateComplianceDetailsByConfigRule GetAggregateConfigRuleComplianceSummary GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetDiscoveredResourceCounts GetResourceConfigHistory ListDiscoveredResources PutAggregationAuthorization PutConfigRule PutConfigurationAggregator PutConfigurationRecorder PutDeliveryChannel PutEvaluations PutRetentionConfiguration StartConfigRulesEvaluation StartConfigurationRecorder StopConfigurationRecorder / }
 
 1;
 
@@ -433,6 +448,8 @@ actions or commands, as well as how to work with AWS Management
 Console, see What Is AWS Config
 (http://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html)
 in the I<AWS Config Developer Guide>.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12>
 
 =head1 METHODS
 
@@ -612,6 +629,22 @@ Returns: nothing
 
 Deletes pending authorization requests for a specified aggregator
 account in a specified region.
+
+
+=head2 DeleteRetentionConfiguration
+
+=over
+
+=item RetentionConfigurationName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DeleteRetentionConfiguration>
+
+Returns: nothing
+
+Deletes the retention configuration.
 
 
 =head2 DeliverConfigSnapshot
@@ -1002,6 +1035,29 @@ Returns: a L<Paws::Config::DescribePendingAggregationRequestsResponse> instance
 Returns a list of all pending aggregation requests.
 
 
+=head2 DescribeRetentionConfigurations
+
+=over
+
+=item [NextToken => Str]
+
+=item [RetentionConfigurationNames => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DescribeRetentionConfigurations>
+
+Returns: a L<Paws::Config::DescribeRetentionConfigurationsResponse> instance
+
+Returns the details of one or more retention configurations. If the
+retention configuration name is not specified, this action returns the
+details for all the retention configurations for that account.
+
+Currently, AWS Config supports only one retention configuration per
+region in your account.
+
+
 =head2 GetAggregateComplianceDetailsByConfigRule
 
 =over
@@ -1261,7 +1317,10 @@ Returns: a L<Paws::Config::GetResourceConfigHistoryResponse> instance
 
 Returns a list of configuration items for the specified resource. The
 list contains details about each state of the resource during the
-specified time interval.
+specified time interval. If you specified a retention period to retain
+your C<ConfigurationItems> between a minimum of 30 days and a maximum
+of 7 years (2557 days), AWS Config returns the C<ConfigurationItems>
+for the specified retention period.
 
 The response is paginated. By default, AWS Config returns a limit of 10
 configuration items per page. You can customize this number with the
@@ -1498,6 +1557,30 @@ Returns: a L<Paws::Config::PutEvaluationsResponse> instance
 Used by an AWS Lambda function to deliver evaluation results to AWS
 Config. This action is required in every AWS Lambda function that is
 invoked by an AWS Config rule.
+
+
+=head2 PutRetentionConfiguration
+
+=over
+
+=item RetentionPeriodInDays => Int
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::PutRetentionConfiguration>
+
+Returns: a L<Paws::Config::PutRetentionConfigurationResponse> instance
+
+Creates and updates the retention configuration with details about
+retention period (number of days) that AWS Config stores your
+historical information. The API creates the C<RetentionConfiguration>
+object and names the object as B<default>. When you have a
+C<RetentionConfiguration> object named B<default>, calling the API
+modifies the default object.
+
+Currently, AWS Config supports only one retention configuration per
+region in your account.
 
 
 =head2 StartConfigRulesEvaluation

@@ -129,6 +129,8 @@ content of documents. Use these actions to determine the topics
 contained in your documents, the topics they discuss, the predominant
 sentiment expressed in them, the predominant language used, and more.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27>
+
 =head1 METHODS
 
 =head2 BatchDetectDominantLanguage

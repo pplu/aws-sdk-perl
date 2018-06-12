@@ -1,7 +1,7 @@
 
 package Paws::CloudSearchDomain::UploadDocuments;
   use Moose;
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'contentType', required => 1);
+  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type', required => 1);
   has Documents => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'documents', required => 1);
 
   use MooseX::ClassAttribute;
@@ -31,7 +31,7 @@ As an example:
   $service_obj->UploadDocuments(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/cloudsearch/>
 =head1 ATTRIBUTES
 
 

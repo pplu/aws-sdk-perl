@@ -9,6 +9,7 @@ package Paws::AppStream::Stack;
   has RedirectURL => (is => 'ro', isa => 'Str');
   has StackErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::StackError]');
   has StorageConnectors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::StorageConnector]');
+  has UserSettings => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::UserSetting]');
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AppStream::Stack object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., StorageConnectors => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., UserSettings => $value  });
 
 =head3 Results returned from an API call
 
@@ -89,6 +90,12 @@ ends.
 =head2 StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]
 
   The storage connectors to enable.
+
+
+=head2 UserSettings => ArrayRef[L<Paws::AppStream::UserSetting>]
+
+  The actions that are enabled or disabled for users during their
+streaming sessions. By default these actions are enabled.
 
 
 

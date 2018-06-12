@@ -496,6 +496,8 @@ terminate EC2 instances based on user-defined policies, schedules, and
 health checks. Use this service in conjunction with the AWS Auto
 Scaling, Amazon CloudWatch, and Elastic Load Balancing services.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01>
+
 =head1 METHODS
 
 =head2 AttachInstances

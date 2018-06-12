@@ -98,6 +98,8 @@ For information about costs associated with the Cost Explorer API, see
 AWS Cost Management Pricing
 (https://aws.amazon.com/aws-cost-management/pricing/).
 
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/account-billing/>
+
 =head1 METHODS
 
 =head2 GetCostAndUsage
