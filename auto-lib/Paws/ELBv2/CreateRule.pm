@@ -38,8 +38,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> Actions => ArrayRef[L<Paws::ELBv2::Action>]
 
-An action. Each action has the type C<forward> and specifies a target
+The actions. Each rule must include one forward action.
+
+If the action type is C<forward>, you can specify a single target
 group.
+
+If the action type is C<authenticate-oidc>, you can use an identity
+provider that is OpenID Connect (OIDC) compliant to authenticate users
+as they access your application.
+
+If the action type is C<authenticate-cognito>, you can use Amazon
+Cognito to authenticate users as they access your application.
 
 
 
@@ -113,8 +122,8 @@ The Amazon Resource Name (ARN) of the listener.
 
 =head2 B<REQUIRED> Priority => Int
 
-The priority for the rule. A listener can't have multiple rules with
-the same priority.
+The rule priority. A listener can't have multiple rules with the same
+priority.
 
 
 

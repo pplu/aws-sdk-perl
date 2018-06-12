@@ -539,9 +539,9 @@ Creates a rule for the specified listener. The listener must be
 associated with an Application Load Balancer.
 
 Rules are evaluated in priority order, from the lowest value to the
-highest value. When the condition for a rule is met, the specified
-action is taken. If no conditions are met, the action for the default
-rule is taken. For more information, see Listener Rules
+highest value. When the conditions for a rule are met, its actions are
+performed. If the conditions for no rules are met, the actions for the
+default rule are performed. For more information, see Listener Rules
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules)
 in the I<Application Load Balancers Guide>.
 
@@ -1045,7 +1045,7 @@ Modifies the specified rule.
 Any existing properties that you do not modify retain their current
 values.
 
-To modify the default action, use ModifyListener.
+To modify the actions for the default rule, use ModifyListener.
 
 
 =head2 ModifyTargetGroup
@@ -1251,9 +1251,9 @@ Balancer.
 
 =item LoadBalancerArn => Str
 
-=item Subnets => ArrayRef[Str|Undef]
-
 =item [SubnetMappings => ArrayRef[L<Paws::ELBv2::SubnetMapping>]]
+
+=item [Subnets => ArrayRef[Str|Undef]]
 
 
 =back

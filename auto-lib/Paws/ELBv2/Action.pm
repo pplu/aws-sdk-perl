@@ -1,6 +1,9 @@
 package Paws::ELBv2::Action;
   use Moose;
-  has TargetGroupArn => (is => 'ro', isa => 'Str', required => 1);
+  has AuthenticateCognitoConfig => (is => 'ro', isa => 'Paws::ELBv2::AuthenticateCognitoActionConfig');
+  has AuthenticateOidcConfig => (is => 'ro', isa => 'Paws::ELBv2::AuthenticateOidcActionConfig');
+  has Order => (is => 'ro', isa => 'Int');
+  has TargetGroupArn => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -21,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ELBv2::Action object:
 
-  $service_obj->Method(Att1 => { TargetGroupArn => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { AuthenticateCognitoConfig => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ELBv2::Action object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->TargetGroupArn
+  $result->Att1->AuthenticateCognitoConfig
 
 =head1 DESCRIPTION
 
@@ -37,14 +40,39 @@ Information about an action.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> TargetGroupArn => Str
+=head2 AuthenticateCognitoConfig => L<Paws::ELBv2::AuthenticateCognitoActionConfig>
 
-  The Amazon Resource Name (ARN) of the target group.
+  [HTTPS listener] Information for using Amazon Cognito to authenticate
+users. Specify only when C<Type> is C<authenticate-cognito>.
+
+
+=head2 AuthenticateOidcConfig => L<Paws::ELBv2::AuthenticateOidcActionConfig>
+
+  [HTTPS listener] Information about an identity provider that is
+compliant with OpenID Connect (OIDC). Specify only when C<Type> is
+C<authenticate-oidc>.
+
+
+=head2 Order => Int
+
+  The order for the action. This value is required for rules with
+multiple actions. The action with the lowest value for order is
+performed first. The forward action must be performed last.
+
+
+=head2 TargetGroupArn => Str
+
+  The Amazon Resource Name (ARN) of the target group. Specify only when
+C<Type> is C<forward>.
+
+For a default rule, the protocol of the target group must be HTTP or
+HTTPS for an Application Load Balancer or TCP for a Network Load
+Balancer.
 
 
 =head2 B<REQUIRED> Type => Str
 
-  The type of action.
+  The type of action. Each rule must include one forward action.
 
 
 

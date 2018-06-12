@@ -17,7 +17,7 @@ Paws::ELBv2::ModifyRuleOutput
 
 =head2 Rules => ArrayRef[L<Paws::ELBv2::Rule>]
 
-Information about the rule.
+Information about the modified rule.
 
 
 =head2 _request_id => Str

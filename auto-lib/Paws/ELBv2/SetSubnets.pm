@@ -3,7 +3,7 @@ package Paws::ELBv2::SetSubnets;
   use Moose;
   has LoadBalancerArn => (is => 'ro', isa => 'Str', required => 1);
   has SubnetMappings => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::SubnetMapping]');
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -51,7 +51,7 @@ You cannot specify Elastic IP addresses for your subnets.
 
 
 
-=head2 B<REQUIRED> Subnets => ArrayRef[Str|Undef]
+=head2 Subnets => ArrayRef[Str|Undef]
 
 The IDs of the public subnets. You must specify subnets from at least
 two Availability Zones. You can specify only one subnet per

@@ -17,7 +17,7 @@ Paws::ELBv2::ModifyTargetGroupOutput
 
 =head2 TargetGroups => ArrayRef[L<Paws::ELBv2::TargetGroup>]
 
-Information about the target group.
+Information about the modified target group.
 
 
 =head2 _request_id => Str

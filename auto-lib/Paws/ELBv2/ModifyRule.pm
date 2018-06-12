@@ -37,13 +37,79 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 Actions => ArrayRef[L<Paws::ELBv2::Action>]
 
-The actions. The target group must use the HTTP or HTTPS protocol.
+The actions.
+
+If the action type is C<forward>, you can specify a single target
+group.
+
+If the action type is C<authenticate-oidc>, you can use an identity
+provider that is OpenID Connect (OIDC) compliant to authenticate users
+as they access your application.
+
+If the action type is C<authenticate-cognito>, you can use Amazon
+Cognito to authenticate users as they access your application.
 
 
 
 =head2 Conditions => ArrayRef[L<Paws::ELBv2::RuleCondition>]
 
-The conditions.
+The conditions. Each condition specifies a field name and a single
+value.
+
+If the field name is C<host-header>, you can specify a single host name
+(for example, my.example.com). A host name is case insensitive, can be
+up to 128 characters in length, and can contain any of the following
+characters. Note that you can include up to three wildcard characters.
+
+=over
+
+=item *
+
+A-Z, a-z, 0-9
+
+=item *
+
+- .
+
+=item *
+
+* (matches 0 or more characters)
+
+=item *
+
+? (matches exactly 1 character)
+
+=back
+
+If the field name is C<path-pattern>, you can specify a single path
+pattern. A path pattern is case sensitive, can be up to 128 characters
+in length, and can contain any of the following characters. Note that
+you can include up to three wildcard characters.
+
+=over
+
+=item *
+
+A-Z, a-z, 0-9
+
+=item *
+
+_ - . $ / ~ " ' @ : +
+
+=item *
+
+& (using &)
+
+=item *
+
+* (matches 0 or more characters)
+
+=item *
+
+? (matches exactly 1 character)
+
+=back
+
 
 
 
