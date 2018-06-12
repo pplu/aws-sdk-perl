@@ -65,8 +65,8 @@ C<((INSTANCE_TYPE == m4.large OR INSTANCE_TYPE == m3.large) OR
 C<Expression> for that looks like this:
 
 C<{ "And": [ {"Or": [ {"Dimensions": { "Key": "INSTANCE_TYPE",
-"Values": [ "m4.x.large", "c4.large" ] }}, {"Tag": { "Key": "TagName",
-"Values": ["Value1"] } } ]}, {"Not": {"dimensions": { "Key":
+"Values": [ "m4.x.large", "c4.large" ] }}, {"Tags": { "Key": "TagName",
+"Values": ["Value1"] } } ]}, {"Not": {"Dimensions": { "Key":
 "USAGE_TYPE", "Values": ["DataTransfer"] }}} ] }>
 
 Because each C<Expression> can have only one operator, the service
