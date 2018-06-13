@@ -346,6 +346,7 @@ mla for contributing a fix to correct dependencies
 castaway for contributing to fixing documentation problems
  - properly providing backlinks between related pages
  - making TOCs render correctly on search.cpan.org
+ - generating helpful copy-paste ready scenarios in the synopsis of each method call
 
 autarch for correcting signature generation for a bunch of services
 

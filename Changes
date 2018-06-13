@@ -9,6 +9,7 @@
  - Documentation improvement: New way of rendering parameters to methods (avoids very long method signatures in TOCs). This
    also fixes the fact that search.cpan.org didn't like very long lines in its TOC, so was not putting some methods in the
    TOC (castaway)
+ - Documentation improvement: Synopsis for methods now has relevant examples for each method call with hints about the size of parameters, if they're optional, etc. (castaway)
  - Json services will now return the code of the exception as the message of the exception if no message was found (instead
    of 'unrecognized error format')
  - Some services were signing requests with the incorrect strings. Pricing, Opsworks, MarketplaceMetering, MarketplaceEntitlement,
