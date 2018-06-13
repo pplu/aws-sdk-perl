@@ -1,4 +1,7 @@
-0.37
+0.38
+ - 
+
+0.37 13 Jun 2018
  - Big refactor of all result handling for all services
  - Support for credential_process in credential handlers
    https://docs.aws.amazon.com/cli/latest/topic/config-vars.html#sourcing-credentials-from-external-processes
