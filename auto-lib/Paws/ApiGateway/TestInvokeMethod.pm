@@ -32,9 +32,28 @@ as arguments to method TestInvokeMethod.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to TestInvokeMethod.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->TestInvokeMethod(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $TestInvokeMethodResponse = $apigateway->TestInvokeMethod(
+      HttpMethod          => 'MyString',
+      ResourceId          => 'MyString',
+      RestApiId           => 'MyString',
+      Body                => 'MyString',                       # OPTIONAL
+      ClientCertificateId => 'MyString',                       # OPTIONAL
+      Headers             => { 'MyString' => 'MyString', },    # OPTIONAL
+      PathWithQueryString => 'MyString',                       # OPTIONAL
+      StageVariables      => { 'MyString' => 'MyString', },    # OPTIONAL
+    );
+
+    # Results:
+    my $Log     = $TestInvokeMethodResponse->Log;
+    my $Status  = $TestInvokeMethodResponse->Status;
+    my $Latency = $TestInvokeMethodResponse->Latency;
+    my $Body    = $TestInvokeMethodResponse->Body;
+    my $Headers = $TestInvokeMethodResponse->Headers;
+
+    # Returns a L<Paws::ApiGateway::TestInvokeMethodResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>

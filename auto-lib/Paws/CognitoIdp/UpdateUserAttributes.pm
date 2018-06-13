@@ -25,9 +25,26 @@ as arguments to method UpdateUserAttributes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateUserAttributes.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateUserAttributes(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-idp = Paws->service('CognitoIdp');
+    my $UpdateUserAttributesResponse = $cognito -idp->UpdateUserAttributes(
+      AccessToken    => 'MyTokenModelType',
+      UserAttributes => [
+        {
+          Name  => 'MyAttributeNameType',     # min: 1, max: 32
+          Value => 'MyAttributeValueType',    # max: 2048; OPTIONAL
+        },
+        ...
+      ],
+
+    );
+
+    # Results:
+    my $CodeDeliveryDetailsList =
+      $UpdateUserAttributesResponse->CodeDeliveryDetailsList;
+
+    # Returns a L<Paws::CognitoIdp::UpdateUserAttributesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-idp/UpdateUserAttributes>

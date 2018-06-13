@@ -27,9 +27,18 @@ as arguments to method ListServices.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListServices.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListServices(Att1 => $value1, Att2 => $value2, ...);
+    my $ecs = Paws->service('ECS');
+    # To list the services in a cluster
+    # This example lists the services running in the default cluster for an
+    # account.
+    my $ListServicesResponse = $ecs->ListServices();
+
+    # Results:
+    my $serviceArns = $ListServicesResponse->serviceArns;
+
+    # Returns a L<Paws::ECS::ListServicesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs/ListServices>

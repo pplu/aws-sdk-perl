@@ -26,9 +26,23 @@ as arguments to method GetDocument.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDocument.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetDocument(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $GetDocumentResult = $ssm->GetDocument(
+      Name            => 'MyDocumentARN',
+      DocumentFormat  => 'YAML',                 # OPTIONAL
+      DocumentVersion => 'MyDocumentVersion',    # OPTIONAL
+    );
+
+    # Results:
+    my $DocumentType    = $GetDocumentResult->DocumentType;
+    my $Name            = $GetDocumentResult->Name;
+    my $Content         = $GetDocumentResult->Content;
+    my $DocumentVersion = $GetDocumentResult->DocumentVersion;
+    my $DocumentFormat  = $GetDocumentResult->DocumentFormat;
+
+    # Returns a L<Paws::SSM::GetDocumentResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/GetDocument>

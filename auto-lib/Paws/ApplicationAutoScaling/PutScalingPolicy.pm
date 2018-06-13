@@ -30,9 +30,69 @@ as arguments to method PutScalingPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutScalingPolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutScalingPolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('ApplicationAutoScaling');
+    # To apply a scaling policy to an Amazon ECS service
+    # This example applies a scaling policy to an Amazon ECS service called
+    # web-app in the default cluster. The policy increases the desired count of
+    # the service by 200%, with a cool down period of 60 seconds.
+    my $PutScalingPolicyResponse = $autoscaling->PutScalingPolicy(
+      {
+        'StepScalingPolicyConfiguration' => {
+          'StepAdjustments' => [
+
+            {
+              'MetricIntervalLowerBound' => 0,
+              'ScalingAdjustment'        => 200
+            }
+          ],
+          'AdjustmentType' => 'PercentChangeInCapacity',
+          'Cooldown'       => 60
+        },
+        'PolicyType'        => 'StepScaling',
+        'ServiceNamespace'  => 'ecs',
+        'PolicyName'        => 'web-app-cpu-gt-75',
+        'ResourceId'        => 'service/default/web-app',
+        'ScalableDimension' => 'ecs:service:DesiredCount'
+      }
+    );
+
+    # Results:
+    my $PolicyARN = $PutScalingPolicyResponse->PolicyARN;
+
+   # Returns a L<Paws::ApplicationAutoScaling::PutScalingPolicyResponse> object.
+   # To apply a scaling policy to an Amazon EC2 Spot fleet
+   # This example applies a scaling policy to an Amazon EC2 Spot fleet. The
+   # policy increases the target capacity of the spot fleet by 200%, with a cool
+   # down period of 180 seconds.",
+
+    my $PutScalingPolicyResponse = $autoscaling->PutScalingPolicy(
+      {
+        'PolicyName'        => 'fleet-cpu-gt-75',
+        'ScalableDimension' => 'ec2:spot-fleet-request:TargetCapacity',
+        'ResourceId' =>
+          'spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3',
+        'ServiceNamespace'               => 'ec2',
+        'PolicyType'                     => 'StepScaling',
+        'StepScalingPolicyConfiguration' => {
+          'StepAdjustments' => [
+
+            {
+              'MetricIntervalLowerBound' => 0,
+              'ScalingAdjustment'        => 200
+            }
+          ],
+          'AdjustmentType' => 'PercentChangeInCapacity',
+          'Cooldown'       => 180
+        }
+      }
+    );
+
+    # Results:
+    my $PolicyARN = $PutScalingPolicyResponse->PolicyARN;
+
+   # Returns a L<Paws::ApplicationAutoScaling::PutScalingPolicyResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/PutScalingPolicy>

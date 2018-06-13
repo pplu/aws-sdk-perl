@@ -25,9 +25,25 @@ as arguments to method CreateSqlInjectionMatchSet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateSqlInjectionMatchSet.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateSqlInjectionMatchSet(Att1 => $value1, Att2 => $value2, ...);
+    my $waf = Paws->service('WAF');
+    # To create a SQL injection match set
+    # The following example creates a SQL injection match set named
+    # MySQLInjectionMatchSet.
+    my $CreateSqlInjectionMatchSetResponse = $waf->CreateSqlInjectionMatchSet(
+      {
+        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+        'Name'        => 'MySQLInjectionMatchSet'
+      }
+    );
+
+    # Results:
+    my $SqlInjectionMatchSet =
+      $CreateSqlInjectionMatchSetResponse->SqlInjectionMatchSet;
+    my $ChangeToken = $CreateSqlInjectionMatchSetResponse->ChangeToken;
+
+    # Returns a L<Paws::WAF::CreateSqlInjectionMatchSetResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf/CreateSqlInjectionMatchSet>

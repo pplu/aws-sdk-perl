@@ -25,9 +25,18 @@ as arguments to method DescribeConversionTasks.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeConversionTasks.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeConversionTasks(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $DescribeConversionTasksResult = $ec2->DescribeConversionTasks(
+      ConversionTaskIds => [ 'MyString', ... ],    # OPTIONAL
+      DryRun => 1,                                 # OPTIONAL
+    );
+
+    # Results:
+    my $ConversionTasks = $DescribeConversionTasksResult->ConversionTasks;
+
+    # Returns a L<Paws::EC2::DescribeConversionTasksResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeConversionTasks>

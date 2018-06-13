@@ -24,9 +24,24 @@ as arguments to method CheckDNSAvailability.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CheckDNSAvailability.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CheckDNSAvailability(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticbeanstalk = Paws->service('ElasticBeanstalk');
+    # To check the availability of a CNAME
+    # The following operation checks the availability of the subdomain my-cname:
+    my $CheckDNSAvailabilityResultMessage =
+      $elasticbeanstalk->CheckDNSAvailability(
+      {
+        'CNAMEPrefix' => 'my-cname'
+      }
+      );
+
+    # Results:
+    my $FullyQualifiedCNAME =
+      $CheckDNSAvailabilityResultMessage->FullyQualifiedCNAME;
+    my $Available = $CheckDNSAvailabilityResultMessage->Available;
+
+# Returns a L<Paws::ElasticBeanstalk::CheckDNSAvailabilityResultMessage> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk/CheckDNSAvailability>

@@ -29,9 +29,19 @@ as arguments to method GetGeoLocation.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetGeoLocation.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetGeoLocation(Att1 => $value1, Att2 => $value2, ...);
+    my $route53 = Paws->service('Route53');
+    my $GetGeoLocationResponse = $route53->GetGeoLocation(
+      ContinentCode   => 'MyGeoLocationContinentCode',      # OPTIONAL
+      CountryCode     => 'MyGeoLocationCountryCode',        # OPTIONAL
+      SubdivisionCode => 'MyGeoLocationSubdivisionCode',    # OPTIONAL
+    );
+
+    # Results:
+    my $GeoLocationDetails = $GetGeoLocationResponse->GeoLocationDetails;
+
+    # Returns a L<Paws::Route53::GetGeoLocationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53/GetGeoLocation>

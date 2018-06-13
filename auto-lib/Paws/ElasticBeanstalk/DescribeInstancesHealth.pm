@@ -27,9 +27,25 @@ as arguments to method DescribeInstancesHealth.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeInstancesHealth.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeInstancesHealth(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticbeanstalk = Paws->service('ElasticBeanstalk');
+    # To view environment health
+    # The following operation retrieves health information for instances in an
+    # environment named my-env:
+    my $DescribeInstancesHealthResult =
+      $elasticbeanstalk->DescribeInstancesHealth(
+      {
+        'AttributeNames'  => ['All'],
+        'EnvironmentName' => 'my-env'
+      }
+      );
+
+    # Results:
+    my $InstanceHealthList = $DescribeInstancesHealthResult->InstanceHealthList;
+    my $RefreshedAt        = $DescribeInstancesHealthResult->RefreshedAt;
+
+    # Returns a L<Paws::ElasticBeanstalk::DescribeInstancesHealthResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk/DescribeInstancesHealth>

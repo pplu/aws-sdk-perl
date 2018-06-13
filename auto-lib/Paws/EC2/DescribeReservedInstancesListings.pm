@@ -26,9 +26,29 @@ as arguments to method DescribeReservedInstancesListings.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeReservedInstancesListings.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeReservedInstancesListings(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $DescribeReservedInstancesListingsResult =
+      $ec2->DescribeReservedInstancesListings(
+      Filters => [
+        {
+          Values => [
+            'MyString', ...    # OPTIONAL
+          ],                   # OPTIONAL
+          Name => 'MyString',  # OPTIONAL
+        },
+        ...
+      ],                       # OPTIONAL
+      ReservedInstancesId        => 'MyString',    # OPTIONAL
+      ReservedInstancesListingId => 'MyString',    # OPTIONAL
+      );
+
+    # Results:
+    my $ReservedInstancesListings =
+      $DescribeReservedInstancesListingsResult->ReservedInstancesListings;
+
+    # Returns a L<Paws::EC2::DescribeReservedInstancesListingsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeReservedInstancesListings>

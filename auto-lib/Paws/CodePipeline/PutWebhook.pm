@@ -24,9 +24,38 @@ as arguments to method PutWebhook.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutWebhook.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutWebhook(Att1 => $value1, Att2 => $value2, ...);
+    my $codepipeline = Paws->service('CodePipeline');
+    my $PutWebhookOutput = $codepipeline->PutWebhook(
+      Webhook => {
+        targetPipeline => 'MyPipelineName',    # min: 1, max: 100
+        filters        => [
+          {
+            jsonPath    => 'MyJsonPath',       # min: 1, max: 150
+            matchEquals => 'MyMatchEquals',    # min: 1, max: 150; OPTIONAL
+          },
+          ...
+        ],                                     # max: 5
+        targetAction => 'MyActionName',        # min: 1, max: 100
+        authentication =>
+          'GITHUB_HMAC',    # values: GITHUB_HMAC, IP, UNAUTHENTICATED
+        authenticationConfiguration => {
+          AllowedIPRange => 'MyWebhookAuthConfigurationAllowedIPRange'
+          ,                 # min: 1, max: 100; OPTIONAL
+          SecretToken => 'MyWebhookAuthConfigurationSecretToken'
+          ,                 # min: 1, max: 100; OPTIONAL
+        },
+        name => 'MyWebhookName',    # min: 1, max: 100
+
+      },
+
+    );
+
+    # Results:
+    my $Webhook = $PutWebhookOutput->Webhook;
+
+    # Returns a L<Paws::CodePipeline::PutWebhookOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codepipeline/PutWebhook>

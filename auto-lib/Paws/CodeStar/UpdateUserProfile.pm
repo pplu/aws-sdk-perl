@@ -27,9 +27,25 @@ as arguments to method UpdateUserProfile.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateUserProfile.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateUserProfile(Att1 => $value1, Att2 => $value2, ...);
+    my $codestar = Paws->service('CodeStar');
+    my $UpdateUserProfileResult = $codestar->UpdateUserProfile(
+      UserArn      => 'MyUserArn',
+      DisplayName  => 'MyUserProfileDisplayName',    # OPTIONAL
+      EmailAddress => 'MyEmail',                     # OPTIONAL
+      SshPublicKey => 'MySshPublicKey',              # OPTIONAL
+    );
+
+    # Results:
+    my $DisplayName           = $UpdateUserProfileResult->DisplayName;
+    my $UserArn               = $UpdateUserProfileResult->UserArn;
+    my $CreatedTimestamp      = $UpdateUserProfileResult->CreatedTimestamp;
+    my $EmailAddress          = $UpdateUserProfileResult->EmailAddress;
+    my $SshPublicKey          = $UpdateUserProfileResult->SshPublicKey;
+    my $LastModifiedTimestamp = $UpdateUserProfileResult->LastModifiedTimestamp;
+
+    # Returns a L<Paws::CodeStar::UpdateUserProfileResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codestar/UpdateUserProfile>

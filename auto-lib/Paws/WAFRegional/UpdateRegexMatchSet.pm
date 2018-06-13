@@ -26,9 +26,36 @@ as arguments to method UpdateRegexMatchSet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateRegexMatchSet.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateRegexMatchSet(Att1 => $value1, Att2 => $value2, ...);
+    my $waf-regional = Paws->service('WAFRegional');
+    my $UpdateRegexMatchSetResponse = $waf -regional->UpdateRegexMatchSet(
+      ChangeToken     => 'MyChangeToken',
+      RegexMatchSetId => 'MyResourceId',
+      Updates         => [
+        {
+          RegexMatchTuple => {
+            RegexPatternSetId  => 'MyResourceId',    # min: 1, max: 128
+            TextTransformation => 'NONE'
+            , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE
+            FieldToMatch => {
+              Type => 'URI',   # values: URI, QUERY_STRING, HEADER, METHOD, BODY
+              Data => 'MyMatchFieldData',    # OPTIONAL
+            },
+
+          },
+          Action => 'INSERT',                # values: INSERT, DELETE
+
+        },
+        ...
+      ],
+
+    );
+
+    # Results:
+    my $ChangeToken = $UpdateRegexMatchSetResponse->ChangeToken;
+
+    # Returns a L<Paws::WAFRegional::UpdateRegexMatchSetResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf-regional/UpdateRegexMatchSet>

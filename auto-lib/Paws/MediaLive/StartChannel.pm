@@ -25,9 +25,29 @@ as arguments to method StartChannel.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartChannel.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->StartChannel(Att1 => $value1, Att2 => $value2, ...);
+    my $medialive = Paws->service('MediaLive');
+    my $StartChannelResponse = $medialive->StartChannel(
+      ChannelId => 'My__string',
+
+    );
+
+    # Results:
+    my $EncoderSettings       = $StartChannelResponse->EncoderSettings;
+    my $EgressEndpoints       = $StartChannelResponse->EgressEndpoints;
+    my $Destinations          = $StartChannelResponse->Destinations;
+    my $LogLevel              = $StartChannelResponse->LogLevel;
+    my $PipelinesRunningCount = $StartChannelResponse->PipelinesRunningCount;
+    my $State                 = $StartChannelResponse->State;
+    my $RoleArn               = $StartChannelResponse->RoleArn;
+    my $InputSpecification    = $StartChannelResponse->InputSpecification;
+    my $Arn                   = $StartChannelResponse->Arn;
+    my $Name                  = $StartChannelResponse->Name;
+    my $InputAttachments      = $StartChannelResponse->InputAttachments;
+    my $Id                    = $StartChannelResponse->Id;
+
+    # Returns a L<Paws::MediaLive::StartChannelResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/medialive/StartChannel>

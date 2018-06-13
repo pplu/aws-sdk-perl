@@ -26,9 +26,68 @@ as arguments to method PutAutoScalingPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutAutoScalingPolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutAutoScalingPolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticmapreduce = Paws->service('EMR');
+    my $PutAutoScalingPolicyOutput = $elasticmapreduce->PutAutoScalingPolicy(
+      AutoScalingPolicy => {
+        Constraints => {
+          MinCapacity => 1,
+          MaxCapacity => 1,
+
+        },
+        Rules => [
+          {
+            Action => {
+              SimpleScalingPolicyConfiguration => {
+                ScalingAdjustment => 1,
+                CoolDown          => 1,
+                AdjustmentType    => 'CHANGE_IN_CAPACITY'
+                , # values: CHANGE_IN_CAPACITY, PERCENT_CHANGE_IN_CAPACITY, EXACT_CAPACITY; OPTIONAL
+              },
+              Market => 'ON_DEMAND',    # values: ON_DEMAND, SPOT; OPTIONAL
+            },
+            Trigger => {
+              CloudWatchAlarmDefinition => {
+                Period             => 1,
+                Threshold          => 1,
+                ComparisonOperator => 'GREATER_THAN_OR_EQUAL'
+                , # values: GREATER_THAN_OR_EQUAL, GREATER_THAN, LESS_THAN, LESS_THAN_OR_EQUAL
+                MetricName => 'MyString',
+                Statistic  => 'SAMPLE_COUNT'
+                , # values: SAMPLE_COUNT, AVERAGE, SUM, MINIMUM, MAXIMUM; OPTIONAL
+                Namespace  => 'MyString',
+                Dimensions => [
+                  {
+                    Value => 'MyString',
+                    Key   => 'MyString',
+                  },
+                  ...
+                ],    # OPTIONAL
+                Unit => 'NONE'
+                , # values: NONE, SECONDS, MICRO_SECONDS, MILLI_SECONDS, BYTES, KILO_BYTES, MEGA_BYTES, GIGA_BYTES, TERA_BYTES, BITS, KILO_BITS, MEGA_BITS, GIGA_BITS, TERA_BITS, PERCENT, COUNT, BYTES_PER_SECOND, KILO_BYTES_PER_SECOND, MEGA_BYTES_PER_SECOND, GIGA_BYTES_PER_SECOND, TERA_BYTES_PER_SECOND, BITS_PER_SECOND, KILO_BITS_PER_SECOND, MEGA_BITS_PER_SECOND, GIGA_BITS_PER_SECOND, TERA_BITS_PER_SECOND, COUNT_PER_SECOND; OPTIONAL
+                EvaluationPeriods => 1,
+              },
+
+            },
+            Name        => 'MyString',
+            Description => 'MyString',
+          },
+          ...
+        ],
+
+      },
+      ClusterId       => 'MyClusterId',
+      InstanceGroupId => 'MyInstanceGroupId',
+
+    );
+
+    # Results:
+    my $InstanceGroupId   = $PutAutoScalingPolicyOutput->InstanceGroupId;
+    my $AutoScalingPolicy = $PutAutoScalingPolicyOutput->AutoScalingPolicy;
+    my $ClusterId         = $PutAutoScalingPolicyOutput->ClusterId;
+
+    # Returns a L<Paws::EMR::PutAutoScalingPolicyOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce/PutAutoScalingPolicy>

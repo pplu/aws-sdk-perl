@@ -40,9 +40,45 @@ as arguments to method PutIntegration.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutIntegration.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutIntegration(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $Integration = $apigateway->PutIntegration(
+      HttpMethod            => 'MyString',
+      ResourceId            => 'MyString',
+      RestApiId             => 'MyString',
+      Type                  => 'HTTP',
+      CacheKeyParameters    => [ 'MyString', ... ],              # OPTIONAL
+      CacheNamespace        => 'MyString',                       # OPTIONAL
+      ConnectionId          => 'MyString',                       # OPTIONAL
+      ConnectionType        => 'INTERNET',                       # OPTIONAL
+      ContentHandling       => 'CONVERT_TO_BINARY',              # OPTIONAL
+      Credentials           => 'MyString',                       # OPTIONAL
+      IntegrationHttpMethod => 'MyString',                       # OPTIONAL
+      PassthroughBehavior   => 'MyString',                       # OPTIONAL
+      RequestParameters     => { 'MyString' => 'MyString', },    # OPTIONAL
+      RequestTemplates      => { 'MyString' => 'MyString', },    # OPTIONAL
+      TimeoutInMillis       => 1,                                # OPTIONAL
+      Uri                   => 'MyString',                       # OPTIONAL
+    );
+
+    # Results:
+    my $Type                 = $Integration->Type;
+    my $TimeoutInMillis      = $Integration->TimeoutInMillis;
+    my $RequestTemplates     = $Integration->RequestTemplates;
+    my $RequestParameters    = $Integration->RequestParameters;
+    my $CacheKeyParameters   = $Integration->CacheKeyParameters;
+    my $ConnectionId         = $Integration->ConnectionId;
+    my $PassthroughBehavior  = $Integration->PassthroughBehavior;
+    my $CacheNamespace       = $Integration->CacheNamespace;
+    my $IntegrationResponses = $Integration->IntegrationResponses;
+    my $Uri                  = $Integration->Uri;
+    my $Credentials          = $Integration->Credentials;
+    my $HttpMethod           = $Integration->HttpMethod;
+    my $ContentHandling      = $Integration->ContentHandling;
+    my $ConnectionType       = $Integration->ConnectionType;
+
+    # Returns a L<Paws::ApiGateway::Integration> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>

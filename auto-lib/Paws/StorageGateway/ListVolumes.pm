@@ -26,9 +26,27 @@ as arguments to method ListVolumes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListVolumes.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListVolumes(Att1 => $value1, Att2 => $value2, ...);
+    my $storagegateway = Paws->service('StorageGateway');
+    # To list the iSCSI stored volumes of a gateway
+    # Lists the iSCSI stored volumes of a gateway. Results are sorted by volume
+    # ARN up to a maximum of 100 volumes.
+    my $ListVolumesOutput = $storagegateway->ListVolumes(
+      {
+        'Marker' => 1,
+        'GatewayARN' =>
+          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
+        'Limit' => 2
+      }
+    );
+
+    # Results:
+    my $Marker      = $ListVolumesOutput->Marker;
+    my $GatewayARN  = $ListVolumesOutput->GatewayARN;
+    my $VolumeInfos = $ListVolumesOutput->VolumeInfos;
+
+    # Returns a L<Paws::StorageGateway::ListVolumesOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/storagegateway/ListVolumes>

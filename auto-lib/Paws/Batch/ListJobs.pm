@@ -29,9 +29,35 @@ as arguments to method ListJobs.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListJobs.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListJobs(Att1 => $value1, Att2 => $value2, ...);
+    my $batch = Paws->service('Batch');
+    # To list running jobs
+    # This example lists the running jobs in the HighPriority job queue.
+    my $ListJobsResponse = $batch->ListJobs(
+      {
+        'JobQueue' => 'HighPriority'
+      }
+    );
+
+    # Results:
+    my $jobSummaryList = $ListJobsResponse->jobSummaryList;
+
+    # Returns a L<Paws::Batch::ListJobsResponse> object.
+    # To list submitted jobs
+    # This example lists jobs in the HighPriority job queue that are in the
+    # SUBMITTED job status.
+    my $ListJobsResponse = $batch->ListJobs(
+      {
+        'JobStatus' => 'SUBMITTED',
+        'JobQueue'  => 'HighPriority'
+      }
+    );
+
+    # Results:
+    my $jobSummaryList = $ListJobsResponse->jobSummaryList;
+
+    # Returns a L<Paws::Batch::ListJobsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/batch/ListJobs>

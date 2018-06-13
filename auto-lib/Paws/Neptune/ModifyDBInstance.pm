@@ -59,9 +59,55 @@ as arguments to method ModifyDBInstance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyDBInstance.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyDBInstance(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('Neptune');
+    my $ModifyDBInstanceResult = $rds->ModifyDBInstance(
+      DBInstanceIdentifier              => 'MyString',
+      AllocatedStorage                  => 1,             # OPTIONAL
+      AllowMajorVersionUpgrade          => 1,             # OPTIONAL
+      ApplyImmediately                  => 1,             # OPTIONAL
+      AutoMinorVersionUpgrade           => 1,             # OPTIONAL
+      BackupRetentionPeriod             => 1,             # OPTIONAL
+      CACertificateIdentifier           => 'MyString',    # OPTIONAL
+      CloudwatchLogsExportConfiguration => {
+        EnableLogTypes  => [ 'MyString', ... ],           # OPTIONAL
+        DisableLogTypes => [ 'MyString', ... ],           # OPTIONAL
+      },    # OPTIONAL
+      CopyTagsToSnapshot              => 1,                      # OPTIONAL
+      DBInstanceClass                 => 'MyString',             # OPTIONAL
+      DBParameterGroupName            => 'MyString',             # OPTIONAL
+      DBPortNumber                    => 1,                      # OPTIONAL
+      DBSecurityGroups                => [ 'MyString', ... ],    # OPTIONAL
+      DBSubnetGroupName               => 'MyString',             # OPTIONAL
+      Domain                          => 'MyString',             # OPTIONAL
+      DomainIAMRoleName               => 'MyString',             # OPTIONAL
+      EnableIAMDatabaseAuthentication => 1,                      # OPTIONAL
+      EnablePerformanceInsights       => 1,                      # OPTIONAL
+      EngineVersion                   => 'MyString',             # OPTIONAL
+      Iops                            => 1,                      # OPTIONAL
+      LicenseModel                    => 'MyString',             # OPTIONAL
+      MasterUserPassword              => 'MyString',             # OPTIONAL
+      MonitoringInterval              => 1,                      # OPTIONAL
+      MonitoringRoleArn               => 'MyString',             # OPTIONAL
+      MultiAZ                         => 1,                      # OPTIONAL
+      NewDBInstanceIdentifier         => 'MyString',             # OPTIONAL
+      OptionGroupName                 => 'MyString',             # OPTIONAL
+      PerformanceInsightsKMSKeyId     => 'MyString',             # OPTIONAL
+      PreferredBackupWindow           => 'MyString',             # OPTIONAL
+      PreferredMaintenanceWindow      => 'MyString',             # OPTIONAL
+      PromotionTier                   => 1,                      # OPTIONAL
+      PubliclyAccessible              => 1,                      # OPTIONAL
+      StorageType                     => 'MyString',             # OPTIONAL
+      TdeCredentialArn                => 'MyString',             # OPTIONAL
+      TdeCredentialPassword           => 'MyString',             # OPTIONAL
+      VpcSecurityGroupIds             => [ 'MyString', ... ],    # OPTIONAL
+    );
+
+    # Results:
+    my $DBInstance = $ModifyDBInstanceResult->DBInstance;
+
+    # Returns a L<Paws::Neptune::ModifyDBInstanceResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/ModifyDBInstance>

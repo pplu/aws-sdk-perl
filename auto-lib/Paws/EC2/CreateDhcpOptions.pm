@@ -25,9 +25,27 @@ as arguments to method CreateDhcpOptions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDhcpOptions.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDhcpOptions(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To create a DHCP options set
+    # This example creates a DHCP options set.
+    my $CreateDhcpOptionsResult = $ec2->CreateDhcpOptions(
+      {
+        'DhcpConfigurations' => [
+
+          {
+            'Values' => [ '10.2.5.1', '10.2.5.2' ],
+            'Key'    => 'domain-name-servers'
+          }
+        ]
+      }
+    );
+
+    # Results:
+    my $DhcpOptions = $CreateDhcpOptionsResult->DhcpOptions;
+
+    # Returns a L<Paws::EC2::CreateDhcpOptionsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/CreateDhcpOptions>

@@ -26,9 +26,26 @@ as arguments to method GetVaultLock.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetVaultLock.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetVaultLock(Att1 => $value1, Att2 => $value2, ...);
+    my $glacier = Paws->service('Glacier');
+    # To retrieve vault lock-policy related attributes that are set on a vault
+    # The example retrieves the attributes from the lock-policy subresource set
+    # on the vault named examplevault.
+    my $GetVaultLockOutput = $glacier->GetVaultLock(
+      {
+        'AccountId' => '-',
+        'VaultName' => 'examplevault'
+      }
+    );
+
+    # Results:
+    my $CreationDate   = $GetVaultLockOutput->CreationDate;
+    my $ExpirationDate = $GetVaultLockOutput->ExpirationDate;
+    my $Policy         = $GetVaultLockOutput->Policy;
+    my $State          = $GetVaultLockOutput->State;
+
+    # Returns a L<Paws::Glacier::GetVaultLockOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/glacier/>

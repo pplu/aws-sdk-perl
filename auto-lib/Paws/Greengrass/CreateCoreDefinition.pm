@@ -27,9 +27,36 @@ as arguments to method CreateCoreDefinition.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCoreDefinition.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateCoreDefinition(Att1 => $value1, Att2 => $value2, ...);
+    my $greengrass = Paws->service('Greengrass');
+    my $CreateCoreDefinitionResponse = $greengrass->CreateCoreDefinition(
+      AmznClientToken => 'My__string',    # OPTIONAL
+      InitialVersion  => {
+        Cores => [
+          {
+            SyncShadow     => 1,              # OPTIONAL
+            ThingArn       => 'My__string',
+            Id             => 'My__string',
+            CertificateArn => 'My__string',
+          },
+          ...
+        ],                                    # OPTIONAL
+      },    # OPTIONAL
+      Name => 'My__string',    # OPTIONAL
+    );
+
+    # Results:
+    my $Id = $CreateCoreDefinitionResponse->Id;
+    my $LastUpdatedTimestamp =
+      $CreateCoreDefinitionResponse->LastUpdatedTimestamp;
+    my $LatestVersion     = $CreateCoreDefinitionResponse->LatestVersion;
+    my $CreationTimestamp = $CreateCoreDefinitionResponse->CreationTimestamp;
+    my $Name              = $CreateCoreDefinitionResponse->Name;
+    my $Arn               = $CreateCoreDefinitionResponse->Arn;
+    my $LatestVersionArn  = $CreateCoreDefinitionResponse->LatestVersionArn;
+
+    # Returns a L<Paws::Greengrass::CreateCoreDefinitionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>

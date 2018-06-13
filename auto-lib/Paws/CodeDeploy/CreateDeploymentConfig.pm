@@ -27,9 +27,34 @@ as arguments to method CreateDeploymentConfig.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDeploymentConfig.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDeploymentConfig(Att1 => $value1, Att2 => $value2, ...);
+    my $codedeploy = Paws->service('CodeDeploy');
+    my $CreateDeploymentConfigOutput = $codedeploy->CreateDeploymentConfig(
+      DeploymentConfigName => 'MyDeploymentConfigName',
+      ComputePlatform      => 'Server',                   # OPTIONAL
+      MinimumHealthyHosts  => {
+        value => 1,               # OPTIONAL
+        type  => 'HOST_COUNT',    # values: HOST_COUNT, FLEET_PERCENT; OPTIONAL
+      },    # OPTIONAL
+      TrafficRoutingConfig => {
+        timeBasedLinear => {
+          linearInterval   => 1,    # OPTIONAL
+          linearPercentage => 1,    # OPTIONAL
+        },    # OPTIONAL
+        type => 'TimeBasedCanary'
+        ,     # values: TimeBasedCanary, TimeBasedLinear, AllAtOnce; OPTIONAL
+        timeBasedCanary => {
+          canaryPercentage => 1,    # OPTIONAL
+          canaryInterval   => 1,    # OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $DeploymentConfigId = $CreateDeploymentConfigOutput->DeploymentConfigId;
+
+    # Returns a L<Paws::CodeDeploy::CreateDeploymentConfigOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codedeploy/CreateDeploymentConfig>

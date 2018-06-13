@@ -28,9 +28,47 @@ as arguments to method GetReservationUtilization.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetReservationUtilization.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetReservationUtilization(Att1 => $value1, Att2 => $value2, ...);
+    my $ce = Paws->service('CostExplorer');
+    my $GetReservationUtilizationResponse = $ce->GetReservationUtilization(
+      TimePeriod => {
+        End   => 'MyYearMonthDay',
+        Start => 'MyYearMonthDay',
+
+      },
+      Filter => {
+        Dimensions => {
+          Key => 'AZ'
+          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY; OPTIONAL
+          Values => [ 'MyValue', ... ],    # OPTIONAL
+        },    # OPTIONAL
+        Or => [ <Expression>, ... ],    # OPTIONAL
+        Tags => {
+          Values => [ 'MyValue', ... ],    # OPTIONAL
+          Key => 'MyTagKey',               # OPTIONAL
+        },    # OPTIONAL
+        And => [ <Expression>, ... ],    # OPTIONAL
+        Not => <Expression>,
+      },    # OPTIONAL
+      Granularity => 'DAILY',    # OPTIONAL
+      GroupBy     => [
+        {
+          Key  => 'MyGroupDefinitionKey',    # OPTIONAL
+          Type => 'DIMENSION',               # values: DIMENSION, TAG; OPTIONAL
+        },
+        ...
+      ],                                     # OPTIONAL
+      NextPageToken => 'MyNextPageToken',    # OPTIONAL
+    );
+
+    # Results:
+    my $NextPageToken = $GetReservationUtilizationResponse->NextPageToken;
+    my $UtilizationsByTime =
+      $GetReservationUtilizationResponse->UtilizationsByTime;
+    my $Total = $GetReservationUtilizationResponse->Total;
+
+    # Returns a L<Paws::CostExplorer::GetReservationUtilizationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ce/GetReservationUtilization>

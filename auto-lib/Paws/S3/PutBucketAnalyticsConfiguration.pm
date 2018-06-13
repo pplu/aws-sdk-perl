@@ -29,9 +29,51 @@ as arguments to method PutBucketAnalyticsConfiguration.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutBucketAnalyticsConfiguration.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutBucketAnalyticsConfiguration(Att1 => $value1, Att2 => $value2, ...);
+    my $s3 = Paws->service('S3');
+    $s3->PutBucketAnalyticsConfiguration(
+      AnalyticsConfiguration => {
+        Id                   => 'MyAnalyticsId',
+        StorageClassAnalysis => {
+          DataExport => {
+            Destination => {
+              S3BucketDestination => {
+                Bucket          => 'MyBucketName',
+                Format          => 'CSV',            # values: CSV
+                Prefix          => 'MyPrefix',       # OPTIONAL
+                BucketAccountId => 'MyAccountId',    # OPTIONAL
+              },
+
+            },
+            OutputSchemaVersion => 'V_1',            # values: V_1
+
+          },    # OPTIONAL
+        },
+        Filter => {
+          Prefix => 'MyPrefix',    # OPTIONAL
+          Tag    => {
+            Value => 'MyValue',
+            Key   => 'MyObjectKey',    # min: 1,
+
+          },    # OPTIONAL
+          And => {
+            Tags => [
+              {
+                Value => 'MyValue',
+                Key   => 'MyObjectKey',    # min: 1,
+
+              },
+              ...                          # OPTIONAL
+            ],                             # OPTIONAL
+            Prefix => 'MyPrefix',          # OPTIONAL
+          },    # OPTIONAL
+        },    # OPTIONAL
+      },
+      Bucket => 'MyBucketName',
+      Id     => 'MyAnalyticsId',
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/PutBucketAnalyticsConfiguration>

@@ -24,9 +24,21 @@ as arguments to method CreateCluster.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCluster.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateCluster(Att1 => $value1, Att2 => $value2, ...);
+    my $ecs = Paws->service('ECS');
+    # To create a new cluster
+    # This example creates a cluster in your default region.
+    my $CreateClusterResponse = $ecs->CreateCluster(
+      {
+        'ClusterName' => 'my_cluster'
+      }
+    );
+
+    # Results:
+    my $cluster = $CreateClusterResponse->cluster;
+
+    # Returns a L<Paws::ECS::CreateClusterResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs/CreateCluster>

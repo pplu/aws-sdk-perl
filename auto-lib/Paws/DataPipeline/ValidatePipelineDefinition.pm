@@ -27,9 +27,60 @@ as arguments to method ValidatePipelineDefinition.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ValidatePipelineDefinition.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ValidatePipelineDefinition(Att1 => $value1, Att2 => $value2, ...);
+    my $datapipeline = Paws->service('DataPipeline');
+    my $ValidatePipelineDefinitionOutput =
+      $datapipeline->ValidatePipelineDefinition(
+      PipelineId      => 'Myid',
+      PipelineObjects => [
+        {
+          name   => 'Myid',    # min: 1, max: 1024
+          id     => 'Myid',    # min: 1, max: 1024
+          fields => [
+            {
+              key         => 'MyfieldNameString',     # min: 1, max: 256
+              stringValue => 'MyfieldStringValue',    # max: 10240; OPTIONAL
+              refValue    => 'MyfieldNameString',     # min: 1, max: 256
+            },
+            ...
+          ],
+
+        },
+        ...
+      ],
+      ParameterObjects => [
+        {
+          attributes => [
+            {
+              stringValue => 'MyattributeValueString',    # max: 10240
+              key         => 'MyattributeNameString',     # min: 1, max: 256
+
+            },
+            ...
+          ],
+          id => 'MyfieldNameString',                      # min: 1, max: 256
+
+        },
+        ...
+      ],                                                  # OPTIONAL
+      ParameterValues => [
+        {
+          id          => 'MyfieldNameString',             # min: 1, max: 256
+          stringValue => 'MyfieldStringValue',            # max: 10240; OPTIONAL
+
+        },
+        ...
+      ],                                                  # OPTIONAL
+      );
+
+    # Results:
+    my $ValidationErrors = $ValidatePipelineDefinitionOutput->ValidationErrors;
+    my $ValidationWarnings =
+      $ValidatePipelineDefinitionOutput->ValidationWarnings;
+    my $Errored = $ValidatePipelineDefinitionOutput->Errored;
+
+    # Returns a L<Paws::DataPipeline::ValidatePipelineDefinitionOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/datapipeline/ValidatePipelineDefinition>

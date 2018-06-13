@@ -24,9 +24,24 @@ as arguments to method GetIdentityVerificationAttributes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetIdentityVerificationAttributes.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetIdentityVerificationAttributes(Att1 => $value1, Att2 => $value2, ...);
+    my $email = Paws->service('SES');
+    # GetIdentityVerificationAttributes
+    # The following example returns the verification status and the verification
+    # token for a domain identity:
+    my $GetIdentityVerificationAttributesResponse =
+      $email->GetIdentityVerificationAttributes(
+      {
+        'Identities' => ['example.com']
+      }
+      );
+
+    # Results:
+    my $VerificationAttributes =
+      $GetIdentityVerificationAttributesResponse->VerificationAttributes;
+
+    # Returns a L<Paws::SES::GetIdentityVerificationAttributesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/email/GetIdentityVerificationAttributes>

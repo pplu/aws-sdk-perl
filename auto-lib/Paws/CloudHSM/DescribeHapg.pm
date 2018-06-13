@@ -24,9 +24,27 @@ as arguments to method DescribeHapg.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeHapg.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeHapg(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudhsm = Paws->service('CloudHSM');
+    my $DescribeHapgResponse = $cloudhsm->DescribeHapg(
+      HapgArn => 'MyHapgArn',
+
+    );
+
+    # Results:
+    my $LastModifiedTimestamp = $DescribeHapgResponse->LastModifiedTimestamp;
+    my $HapgArn               = $DescribeHapgResponse->HapgArn;
+    my $PartitionSerialList   = $DescribeHapgResponse->PartitionSerialList;
+    my $State                 = $DescribeHapgResponse->State;
+    my $HapgSerial            = $DescribeHapgResponse->HapgSerial;
+    my $Label                 = $DescribeHapgResponse->Label;
+    my $HsmsPendingDeletion   = $DescribeHapgResponse->HsmsPendingDeletion;
+    my $HsmsLastActionFailed  = $DescribeHapgResponse->HsmsLastActionFailed;
+    my $HsmsPendingRegistration =
+      $DescribeHapgResponse->HsmsPendingRegistration;
+
+    # Returns a L<Paws::CloudHSM::DescribeHapgResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudhsm/DescribeHapg>

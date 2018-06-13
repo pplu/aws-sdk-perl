@@ -47,9 +47,30 @@ as arguments to method CreateDBInstanceReadReplica.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBInstanceReadReplica.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDBInstanceReadReplica(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    # To create a DB instance read replica.
+    # This example creates a DB instance read replica.
+    my $CreateDBInstanceReadReplicaResult = $rds->CreateDBInstanceReadReplica(
+      {
+        'CopyTagsToSnapshot' => true,
+        'PubliclyAccessible' => true,
+        'AvailabilityZone'   => 'us-east-1a',
+        'StorageType'        => 'gp2',
+        'DBInstanceClass'    => 'db.t2.micro',
+        'Tags'               => [
+
+          {
+            'Value' => 'mydbreadreplicavalue',
+            'Key'   => 'mydbreadreplicakey'
+          }
+        ],
+        'SourceDBInstanceIdentifier' => 'mymysqlinstance',
+        'DBInstanceIdentifier'       => 'mydbreadreplica'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/CreateDBInstanceReadReplica>

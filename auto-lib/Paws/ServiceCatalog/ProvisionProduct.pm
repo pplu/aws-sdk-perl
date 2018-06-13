@@ -32,9 +32,40 @@ as arguments to method ProvisionProduct.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ProvisionProduct.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ProvisionProduct(Att1 => $value1, Att2 => $value2, ...);
+    my $servicecatalog = Paws->service('ServiceCatalog');
+    my $ProvisionProductOutput = $servicecatalog->ProvisionProduct(
+      ProductId              => 'MyId',
+      ProvisionToken         => 'MyIdempotencyToken',
+      ProvisionedProductName => 'MyProvisionedProductName',
+      ProvisioningArtifactId => 'MyId',
+      AcceptLanguage         => 'MyAcceptLanguage',           # OPTIONAL
+      NotificationArns       => [
+        'MyNotificationArn', ...    # min: 1, max: 1224
+      ],                            # OPTIONAL
+      PathId                 => 'MyId',    # OPTIONAL
+      ProvisioningParameters => [
+        {
+          Value => 'MyParameterValue',     # max: 4096; OPTIONAL
+          Key   => 'MyParameterKey',       # min: 1, max: 1000; OPTIONAL
+        },
+        ...
+      ],                                   # OPTIONAL
+      Tags => [
+        {
+          Value => 'MyTagValue',           # min: 1, max: 256
+          Key   => 'MyTagKey',             # min: 1, max: 128
+
+        },
+        ...
+      ],                                   # OPTIONAL
+    );
+
+    # Results:
+    my $RecordDetail = $ProvisionProductOutput->RecordDetail;
+
+    # Returns a L<Paws::ServiceCatalog::ProvisionProductOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/servicecatalog/ProvisionProduct>

@@ -32,9 +32,52 @@ as arguments to method SendEmail.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SendEmail.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SendEmail(Att1 => $value1, Att2 => $value2, ...);
+    my $email = Paws->service('SES');
+    # SendEmail
+    # The following example sends a formatted email:
+    my $SendEmailResponse = $email->SendEmail(
+      {
+        'Source'           => 'sender@example.com',
+        'ReplyToAddresses' => [
+
+        ],
+        'SourceArn'     => '',
+        'ReturnPathArn' => '',
+        'ReturnPath'    => '',
+        'Message'       => {
+          'Body' => {
+            'Text' => {
+              'Charset' => 'UTF-8',
+              'Data'    => 'This is the message body in text format.'
+            },
+            'Html' => {
+              'Data' =>
+'This message body contains HTML formatting. It can, for example, contain links like this one: <a class="ulink" href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide" target="_blank">Amazon SES Developer Guide</a>.',
+              'Charset' => 'UTF-8'
+            }
+          },
+          'Subject' => {
+            'Charset' => 'UTF-8',
+            'Data'    => 'Test email'
+          }
+        },
+        'Destination' => {
+          'CcAddresses' => ['recipient3@example.com'],
+          'ToAddresses' =>
+            [ 'recipient1@example.com', 'recipient2@example.com' ],
+          'BccAddresses' => [
+
+          ]
+        }
+      }
+    );
+
+    # Results:
+    my $MessageId = $SendEmailResponse->MessageId;
+
+    # Returns a L<Paws::SES::SendEmailResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/email/SendEmail>

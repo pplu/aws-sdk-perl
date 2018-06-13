@@ -28,9 +28,27 @@ as arguments to method GetExport.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetExport.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetExport(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    my $GetExportResponse = $models . lex->GetExport(
+      ExportType   => 'ALEXA_SKILLS_KIT',
+      Name         => 'MyName',
+      ResourceType => 'BOT',
+      Version      => 'MyNumericalVersion',
+
+    );
+
+    # Results:
+    my $ExportStatus  = $GetExportResponse->ExportStatus;
+    my $Name          = $GetExportResponse->Name;
+    my $Version       = $GetExportResponse->Version;
+    my $ExportType    = $GetExportResponse->ExportType;
+    my $ResourceType  = $GetExportResponse->ResourceType;
+    my $FailureReason = $GetExportResponse->FailureReason;
+    my $Url           = $GetExportResponse->Url;
+
+    # Returns a L<Paws::LexModels::GetExportResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/lex/>

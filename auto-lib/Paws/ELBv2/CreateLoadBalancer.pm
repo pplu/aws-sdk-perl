@@ -31,9 +31,41 @@ as arguments to method CreateLoadBalancer.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateLoadBalancer.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateLoadBalancer(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticloadbalancing = Paws->service('ELBv2');
+    # To create an Internet-facing load balancer
+    # This example creates an Internet-facing load balancer and enables the
+    # Availability Zones for the specified subnets.
+    my $CreateLoadBalancerOutput = $elasticloadbalancing->CreateLoadBalancer(
+      {
+        'Subnets' => [ 'subnet-b7d581c0', 'subnet-8360a9e7' ],
+        'Name'    => 'my-load-balancer'
+      }
+    );
+
+    # Results:
+    my $LoadBalancers = $CreateLoadBalancerOutput->LoadBalancers;
+
+   # Returns a L<Paws::ELBv2::CreateLoadBalancerOutput> object.
+   # To create an internal load balancer
+   # This example creates an internal load balancer and enables the Availability
+   # Zones for the specified subnets.
+    my $CreateLoadBalancerOutput = $elasticloadbalancing->CreateLoadBalancer(
+      {
+        'Subnets'        => [ 'subnet-b7d581c0', 'subnet-8360a9e7' ],
+        'Name'           => 'my-internal-load-balancer',
+        'SecurityGroups' => [
+
+        ],
+        'Scheme' => 'internal'
+      }
+    );
+
+    # Results:
+    my $LoadBalancers = $CreateLoadBalancerOutput->LoadBalancers;
+
+    # Returns a L<Paws::ELBv2::CreateLoadBalancerOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing/CreateLoadBalancer>

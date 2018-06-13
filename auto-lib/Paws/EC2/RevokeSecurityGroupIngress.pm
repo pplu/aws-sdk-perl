@@ -33,9 +33,61 @@ as arguments to method RevokeSecurityGroupIngress.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RevokeSecurityGroupIngress.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RevokeSecurityGroupIngress(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    $ec2->RevokeSecurityGroupIngress(
+      CidrIp        => 'MyString',    # OPTIONAL
+      DryRun        => 1,             # OPTIONAL
+      FromPort      => 1,             # OPTIONAL
+      GroupId       => 'MyString',    # OPTIONAL
+      GroupName     => 'MyString',    # OPTIONAL
+      IpPermissions => [
+        {
+          FromPort => 1,
+          IpRanges => [
+            {
+              Description => 'MyString',
+              CidrIp      => 'MyString',
+            },
+            ...
+          ],                          # OPTIONAL
+          UserIdGroupPairs => [
+            {
+              Description            => 'MyString',
+              PeeringStatus          => 'MyString',
+              GroupName              => 'MyString',
+              VpcPeeringConnectionId => 'MyString',
+              UserId                 => 'MyString',
+              GroupId                => 'MyString',
+              VpcId                  => 'MyString',
+            },
+            ...
+          ],                          # OPTIONAL
+          ToPort        => 1,
+          PrefixListIds => [
+            {
+              Description  => 'MyString',
+              PrefixListId => 'MyString',
+            },
+            ...
+          ],                          # OPTIONAL
+          Ipv6Ranges => [
+            {
+              CidrIpv6    => 'MyString',
+              Description => 'MyString',
+            },
+            ...
+          ],                          # OPTIONAL
+          IpProtocol => 'MyString',
+        },
+        ...
+      ],                              # OPTIONAL
+      IpProtocol                 => 'MyString',    # OPTIONAL
+      SourceSecurityGroupName    => 'MyString',    # OPTIONAL
+      SourceSecurityGroupOwnerId => 'MyString',    # OPTIONAL
+      ToPort                     => 1,             # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/RevokeSecurityGroupIngress>

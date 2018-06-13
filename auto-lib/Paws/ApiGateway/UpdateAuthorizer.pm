@@ -27,9 +27,39 @@ as arguments to method UpdateAuthorizer.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAuthorizer.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateAuthorizer(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $Authorizer = $apigateway->UpdateAuthorizer(
+      AuthorizerId    => 'MyString',
+      RestApiId       => 'MyString',
+      PatchOperations => [
+        {
+          from => 'MyString',
+          op =>
+            'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
+          path  => 'MyString',
+          value => 'MyString',
+        },
+        ...
+      ],              # OPTIONAL
+    );
+
+    # Results:
+    my $Type         = $Authorizer->Type;
+    my $ProviderARNs = $Authorizer->ProviderARNs;
+    my $IdentityValidationExpression =
+      $Authorizer->IdentityValidationExpression;
+    my $AuthorizerResultTtlInSeconds =
+      $Authorizer->AuthorizerResultTtlInSeconds;
+    my $AuthType              = $Authorizer->AuthType;
+    my $Name                  = $Authorizer->Name;
+    my $AuthorizerUri         = $Authorizer->AuthorizerUri;
+    my $Id                    = $Authorizer->Id;
+    my $AuthorizerCredentials = $Authorizer->AuthorizerCredentials;
+    my $IdentitySource        = $Authorizer->IdentitySource;
+
+    # Returns a L<Paws::ApiGateway::Authorizer> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>

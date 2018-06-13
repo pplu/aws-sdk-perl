@@ -25,9 +25,21 @@ as arguments to method GetRolePolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetRolePolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetRolePolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $iam = Paws->service('IAM');
+    my $GetRolePolicyResponse = $iam->GetRolePolicy(
+      PolicyName => 'MypolicyNameType',
+      RoleName   => 'MyroleNameType',
+
+    );
+
+    # Results:
+    my $RoleName       = $GetRolePolicyResponse->RoleName;
+    my $PolicyName     = $GetRolePolicyResponse->PolicyName;
+    my $PolicyDocument = $GetRolePolicyResponse->PolicyDocument;
+
+    # Returns a L<Paws::IAM::GetRolePolicyResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/GetRolePolicy>

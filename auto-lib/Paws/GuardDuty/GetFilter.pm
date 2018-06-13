@@ -26,9 +26,23 @@ as arguments to method GetFilter.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetFilter.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetFilter(Att1 => $value1, Att2 => $value2, ...);
+    my $guardduty = Paws->service('GuardDuty');
+    my $GetFilterResponse = $guardduty->GetFilter(
+      DetectorId => 'My__string',
+      FilterName => 'My__string',
+
+    );
+
+    # Results:
+    my $Name            = $GetFilterResponse->Name;
+    my $Action          = $GetFilterResponse->Action;
+    my $Rank            = $GetFilterResponse->Rank;
+    my $FindingCriteria = $GetFilterResponse->FindingCriteria;
+    my $Description     = $GetFilterResponse->Description;
+
+    # Returns a L<Paws::GuardDuty::GetFilterResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

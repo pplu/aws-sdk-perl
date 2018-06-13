@@ -26,9 +26,18 @@ as arguments to method SetInstanceHealth.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetInstanceHealth.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SetInstanceHealth(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('AutoScaling');
+   # To set the health status of an instance
+   # This example sets the health status of the specified instance to Unhealthy.
+    $autoscaling->SetInstanceHealth(
+      {
+        'InstanceId'   => 'i-93633f9b',
+        'HealthStatus' => 'Unhealthy'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/SetInstanceHealth>

@@ -31,9 +31,31 @@ as arguments to method SendRawEmail.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SendRawEmail.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SendRawEmail(Att1 => $value1, Att2 => $value2, ...);
+    my $email = Paws->service('SES');
+    # SendRawEmail
+    # The following example sends an email with an attachment:
+    my $SendRawEmailResponse = $email->SendRawEmail(
+      {
+        'Source'       => '',
+        'Destinations' => [
+
+        ],
+        'SourceArn'  => '',
+        'RawMessage' => {
+          'Data' =>
+'From: sender@example.com\nTo: recipient@example.com\nSubject: Test email (contains an attachment)\nMIME-Version: 1.0\nContent-type: Multipart/Mixed; boundary="NextPart"\n\n--NextPart\nContent-Type: text/plain\n\nThis is the message body.\n\n--NextPart\nContent-Type: text/plain;\nContent-Disposition: attachment; filename="attachment.txt"\n\nThis is the text in the attachment.\n\n--NextPart--'
+        },
+        'ReturnPathArn' => '',
+        'FromArn'       => ''
+      }
+    );
+
+    # Results:
+    my $MessageId = $SendRawEmailResponse->MessageId;
+
+    # Returns a L<Paws::SES::SendRawEmailResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/email/SendRawEmail>

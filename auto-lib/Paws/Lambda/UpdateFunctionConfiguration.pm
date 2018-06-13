@@ -37,9 +37,42 @@ as arguments to method UpdateFunctionConfiguration.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateFunctionConfiguration.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateFunctionConfiguration(Att1 => $value1, Att2 => $value2, ...);
+    my $lambda = Paws->service('Lambda');
+    # To update a Lambda function's configuration
+    # This operation updates a Lambda function's configuration
+    my $FunctionConfiguration = $lambda->UpdateFunctionConfiguration(
+      {
+        'Description'  => '',
+        'FunctionName' => 'myFunction',
+        'VpcConfig'    => {
+
+        },
+        'Role'       => 'arn:aws:iam::123456789012:role/lambda_basic_execution',
+        'Timeout'    => 123,
+        'Runtime'    => 'python2.7',
+        'MemorySize' => 128,
+        'Handler'    => 'index.handler'
+      }
+    );
+
+    # Results:
+    my $FunctionArn  = $FunctionConfiguration->FunctionArn;
+    my $Handler      = $FunctionConfiguration->Handler;
+    my $Runtime      = $FunctionConfiguration->Runtime;
+    my $MemorySize   = $FunctionConfiguration->MemorySize;
+    my $Role         = $FunctionConfiguration->Role;
+    my $Timeout      = $FunctionConfiguration->Timeout;
+    my $LastModified = $FunctionConfiguration->LastModified;
+    my $Description  = $FunctionConfiguration->Description;
+    my $Version      = $FunctionConfiguration->Version;
+    my $FunctionName = $FunctionConfiguration->FunctionName;
+    my $CodeSize     = $FunctionConfiguration->CodeSize;
+    my $VpcConfig    = $FunctionConfiguration->VpcConfig;
+    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
+
+    # Returns a L<Paws::Lambda::FunctionConfiguration> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lambda/UpdateFunctionConfiguration>

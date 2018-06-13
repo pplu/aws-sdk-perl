@@ -27,9 +27,29 @@ as arguments to method DescribeInstancePatches.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeInstancePatches.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeInstancePatches(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $DescribeInstancePatchesResult = $ssm->DescribeInstancePatches(
+      InstanceId => 'MyInstanceId',
+      Filters    => [
+        {
+          Key    => 'MyPatchOrchestratorFilterKey', # min: 1, max: 128; OPTIONAL
+          Values => [
+            'MyPatchOrchestratorFilterValue', ...    # min: 1, max: 256
+          ],                                         # OPTIONAL
+        },
+        ...
+      ],                                             # OPTIONAL
+      MaxResults => 1,                               # OPTIONAL
+      NextToken  => 'MyNextToken',                   # OPTIONAL
+    );
+
+    # Results:
+    my $Patches   = $DescribeInstancePatchesResult->Patches;
+    my $NextToken = $DescribeInstancePatchesResult->NextToken;
+
+    # Returns a L<Paws::SSM::DescribeInstancePatchesResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/DescribeInstancePatches>

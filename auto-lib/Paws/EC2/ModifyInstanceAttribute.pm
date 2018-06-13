@@ -39,9 +39,48 @@ as arguments to method ModifyInstanceAttribute.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyInstanceAttribute.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyInstanceAttribute(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    $ec2->ModifyInstanceAttribute(
+      InstanceId          => 'MyString',
+      Attribute           => 'instanceType',    # OPTIONAL
+      BlockDeviceMappings => [
+        {
+          NoDevice => 'MyString',
+          Ebs      => {
+            VolumeId            => 'MyString',
+            DeleteOnTermination => 1,            # OPTIONAL
+          },    # OPTIONAL
+          DeviceName  => 'MyString',
+          VirtualName => 'MyString',
+        },
+        ...
+      ],        # OPTIONAL
+      DisableApiTermination => {
+        Value => 1,    # OPTIONAL
+      },    # OPTIONAL
+      DryRun       => 1,    # OPTIONAL
+      EbsOptimized => {
+        Value => 1,         # OPTIONAL
+      },    # OPTIONAL
+      EnaSupport => {
+        Value => 1,    # OPTIONAL
+      },    # OPTIONAL
+      Groups                            => [ 'MyString', ... ],       # OPTIONAL
+      InstanceInitiatedShutdownBehavior => { Value => 'MyString', },  # OPTIONAL
+      InstanceType                      => { Value => 'MyString', },  # OPTIONAL
+      Kernel                            => { Value => 'MyString', },  # OPTIONAL
+      Ramdisk                           => { Value => 'MyString', },  # OPTIONAL
+      SourceDestCheck                   => {
+        Value => 1,                                                   # OPTIONAL
+      },    # OPTIONAL
+      SriovNetSupport => { Value => 'MyString', },    # OPTIONAL
+      UserData => {
+        Value => 'BlobBlob',                          # OPTIONAL
+      },    # OPTIONAL
+      Value => 'MyString',    # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/ModifyInstanceAttribute>

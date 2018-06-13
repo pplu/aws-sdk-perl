@@ -25,9 +25,23 @@ as arguments to method OpenInstancePublicPorts.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to OpenInstancePublicPorts.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->OpenInstancePublicPorts(Att1 => $value1, Att2 => $value2, ...);
+    my $lightsail = Paws->service('Lightsail');
+    my $OpenInstancePublicPortsResult = $lightsail->OpenInstancePublicPorts(
+      InstanceName => 'MyResourceName',
+      PortInfo     => {
+        toPort   => 1,        # max: 65535; OPTIONAL
+        protocol => 'tcp',    # values: tcp, all, udp; OPTIONAL
+        fromPort => 1,        # max: 65535; OPTIONAL
+      },
+
+    );
+
+    # Results:
+    my $Operation = $OpenInstancePublicPortsResult->Operation;
+
+    # Returns a L<Paws::Lightsail::OpenInstancePublicPortsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lightsail/OpenInstancePublicPorts>

@@ -29,9 +29,23 @@ as arguments to method DescribeLogStreams.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLogStreams.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeLogStreams(Att1 => $value1, Att2 => $value2, ...);
+    my $logs = Paws->service('CloudWatchLogs');
+    my $DescribeLogStreamsResponse = $logs->DescribeLogStreams(
+      LogGroupName        => 'MyLogGroupName',
+      Descending          => 1,                    # OPTIONAL
+      Limit               => 1,                    # OPTIONAL
+      LogStreamNamePrefix => 'MyLogStreamName',    # OPTIONAL
+      NextToken           => 'MyNextToken',        # OPTIONAL
+      OrderBy             => 'LogStreamName',      # OPTIONAL
+    );
+
+    # Results:
+    my $LogStreams = $DescribeLogStreamsResponse->LogStreams;
+    my $NextToken  = $DescribeLogStreamsResponse->NextToken;
+
+    # Returns a L<Paws::CloudWatchLogs::DescribeLogStreamsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/logs/DescribeLogStreams>

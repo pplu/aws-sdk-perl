@@ -27,9 +27,52 @@ as arguments to method CreateCertificateAuthority.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCertificateAuthority.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateCertificateAuthority(Att1 => $value1, Att2 => $value2, ...);
+    my $acm-pca = Paws->service('ACMPCA');
+    my $CreateCertificateAuthorityResponse =
+      $acm -pca->CreateCertificateAuthority(
+      CertificateAuthorityConfiguration => {
+        Subject => {
+          Surname             => 'MyString40',     # max: 40; OPTIONAL
+          Title               => 'MyString64',     # max: 64; OPTIONAL
+          Pseudonym           => 'MyString128',    # max: 128; OPTIONAL
+          State               => 'MyString128',    # max: 128; OPTIONAL
+          OrganizationalUnit  => 'MyString64',     # max: 64; OPTIONAL
+          Organization        => 'MyString64',     # max: 64; OPTIONAL
+          GivenName           => 'MyString16',     # max: 16; OPTIONAL
+          GenerationQualifier => 'MyString3',      # max: 3; OPTIONAL
+          Locality            => 'MyString128',    # max: 128; OPTIONAL
+          Initials            => 'MyString5',      # max: 5; OPTIONAL
+          CommonName          => 'MyString64',     # max: 64; OPTIONAL
+          SerialNumber        => 'MyString64',     # max: 64; OPTIONAL
+          DistinguishedNameQualifier =>
+            'MyDistinguishedNameQualifierString',    # max: 64; OPTIONAL
+          Country => 'MyCountryCodeString',          # OPTIONAL
+        },
+        KeyAlgorithm =>
+          'RSA_2048',  # values: RSA_2048, RSA_4096, EC_prime256v1, EC_secp384r1
+        SigningAlgorithm => 'SHA256WITHECDSA'
+        , # values: SHA256WITHECDSA, SHA384WITHECDSA, SHA512WITHECDSA, SHA256WITHRSA, SHA384WITHRSA, SHA512WITHRSA
+
+      },
+      CertificateAuthorityType => 'SUBORDINATE',
+      IdempotencyToken         => 'MyIdempotencyToken',    # OPTIONAL
+      RevocationConfiguration  => {
+        CrlConfiguration => {
+          Enabled          => 1,
+          S3BucketName     => 'MyString3To255',    # min: 3, max: 255; OPTIONAL
+          ExpirationInDays => 1,                   # min: 1, max: 5000; OPTIONAL
+          CustomCname      => 'MyString253',       # max: 253; OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
+      );
+
+    # Results:
+    my $CertificateAuthorityArn =
+      $CreateCertificateAuthorityResponse->CertificateAuthorityArn;
+
+    # Returns a L<Paws::ACMPCA::CreateCertificateAuthorityResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm-pca/CreateCertificateAuthority>

@@ -29,9 +29,28 @@ as arguments to method CreateApplicationVersion.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateApplicationVersion.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateApplicationVersion(Att1 => $value1, Att2 => $value2, ...);
+    my $serverlessrepo = Paws->service('ServerlessRepo');
+    my $CreateApplicationVersionResponse =
+      $serverlessrepo->CreateApplicationVersion(
+      ApplicationId   => 'My__string',
+      SemanticVersion => 'My__string',
+      SourceCodeUrl   => 'My__string',    # OPTIONAL
+      TemplateBody    => 'My__string',    # OPTIONAL
+      TemplateUrl     => 'My__string',    # OPTIONAL
+      );
+
+    # Results:
+    my $SemanticVersion = $CreateApplicationVersionResponse->SemanticVersion;
+    my $ApplicationId   = $CreateApplicationVersionResponse->ApplicationId;
+    my $TemplateUrl     = $CreateApplicationVersionResponse->TemplateUrl;
+    my $SourceCodeUrl   = $CreateApplicationVersionResponse->SourceCodeUrl;
+    my $CreationTime    = $CreateApplicationVersionResponse->CreationTime;
+    my $ParameterDefinitions =
+      $CreateApplicationVersionResponse->ParameterDefinitions;
+
+   # Returns a L<Paws::ServerlessRepo::CreateApplicationVersionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/serverlessrepo/CreateApplicationVersion>

@@ -26,9 +26,25 @@ as arguments to method GetResourceDefinitionVersion.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetResourceDefinitionVersion.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetResourceDefinitionVersion(Att1 => $value1, Att2 => $value2, ...);
+    my $greengrass = Paws->service('Greengrass');
+    my $GetResourceDefinitionVersionResponse =
+      $greengrass->GetResourceDefinitionVersion(
+      ResourceDefinitionId        => 'My__string',
+      ResourceDefinitionVersionId => 'My__string',
+
+      );
+
+    # Results:
+    my $Id      = $GetResourceDefinitionVersionResponse->Id;
+    my $Version = $GetResourceDefinitionVersionResponse->Version;
+    my $CreationTimestamp =
+      $GetResourceDefinitionVersionResponse->CreationTimestamp;
+    my $Definition = $GetResourceDefinitionVersionResponse->Definition;
+    my $Arn        = $GetResourceDefinitionVersionResponse->Arn;
+
+   # Returns a L<Paws::Greengrass::GetResourceDefinitionVersionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>

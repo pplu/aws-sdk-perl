@@ -29,9 +29,30 @@ as arguments to method CreateStorediSCSIVolume.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateStorediSCSIVolume.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateStorediSCSIVolume(Att1 => $value1, Att2 => $value2, ...);
+    my $storagegateway = Paws->service('StorageGateway');
+    # To create a stored iSCSI volume
+    # Creates a stored volume on a specified stored gateway.
+    my $CreateStorediSCSIVolumeOutput =
+      $storagegateway->CreateStorediSCSIVolume(
+      {
+        'DiskId'               => 'pci-0000:03:00.0-scsi-0:0:0:0',
+        'TargetName'           => 'my-volume',
+        'NetworkInterfaceId'   => '10.1.1.1',
+        'PreserveExistingData' => true,
+        'GatewayARN' =>
+          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
+        'SnapshotId' => 'snap-f47b7b94'
+      }
+      );
+
+    # Results:
+    my $TargetARN         = $CreateStorediSCSIVolumeOutput->TargetARN;
+    my $VolumeSizeInBytes = $CreateStorediSCSIVolumeOutput->VolumeSizeInBytes;
+    my $VolumeARN         = $CreateStorediSCSIVolumeOutput->VolumeARN;
+
+    # Returns a L<Paws::StorageGateway::CreateStorediSCSIVolumeOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/storagegateway/CreateStorediSCSIVolume>

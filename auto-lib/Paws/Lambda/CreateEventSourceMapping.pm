@@ -30,9 +30,31 @@ as arguments to method CreateEventSourceMapping.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateEventSourceMapping.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateEventSourceMapping(Att1 => $value1, Att2 => $value2, ...);
+    my $lambda = Paws->service('Lambda');
+    my $EventSourceMappingConfiguration = $lambda->CreateEventSourceMapping(
+      EventSourceArn            => 'MyArn',
+      FunctionName              => 'MyFunctionName',
+      StartingPosition          => 'TRIM_HORIZON',
+      BatchSize                 => 1,                        # OPTIONAL
+      Enabled                   => 1,                        # OPTIONAL
+      StartingPositionTimestamp => '1970-01-01T01:00:00',    # OPTIONAL
+    );
+
+    # Results:
+    my $BatchSize    = $EventSourceMappingConfiguration->BatchSize;
+    my $LastModified = $EventSourceMappingConfiguration->LastModified;
+    my $State        = $EventSourceMappingConfiguration->State;
+    my $StateTransitionReason =
+      $EventSourceMappingConfiguration->StateTransitionReason;
+    my $EventSourceArn = $EventSourceMappingConfiguration->EventSourceArn;
+    my $UUID           = $EventSourceMappingConfiguration->UUID;
+    my $FunctionArn    = $EventSourceMappingConfiguration->FunctionArn;
+    my $LastProcessingResult =
+      $EventSourceMappingConfiguration->LastProcessingResult;
+
+    # Returns a L<Paws::Lambda::EventSourceMappingConfiguration> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lambda/CreateEventSourceMapping>

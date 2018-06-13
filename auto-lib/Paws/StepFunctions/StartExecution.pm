@@ -26,9 +26,20 @@ as arguments to method StartExecution.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartExecution.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->StartExecution(Att1 => $value1, Att2 => $value2, ...);
+    my $states = Paws->service('StepFunctions');
+    my $StartExecutionOutput = $states->StartExecution(
+      StateMachineArn => 'MyArn',
+      Input           => 'MyData',    # OPTIONAL
+      Name            => 'MyName',    # OPTIONAL
+    );
+
+    # Results:
+    my $StartDate    = $StartExecutionOutput->StartDate;
+    my $ExecutionArn = $StartExecutionOutput->ExecutionArn;
+
+    # Returns a L<Paws::StepFunctions::StartExecutionOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/states/StartExecution>

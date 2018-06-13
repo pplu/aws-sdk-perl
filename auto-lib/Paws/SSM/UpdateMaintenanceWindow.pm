@@ -32,9 +32,33 @@ as arguments to method UpdateMaintenanceWindow.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateMaintenanceWindow.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateMaintenanceWindow(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $UpdateMaintenanceWindowResult = $ssm->UpdateMaintenanceWindow(
+      WindowId                 => 'MyMaintenanceWindowId',
+      AllowUnassociatedTargets => 1,                                  # OPTIONAL
+      Cutoff                   => 1,                                  # OPTIONAL
+      Description              => 'MyMaintenanceWindowDescription',   # OPTIONAL
+      Duration                 => 1,                                  # OPTIONAL
+      Enabled                  => 1,                                  # OPTIONAL
+      Name                     => 'MyMaintenanceWindowName',          # OPTIONAL
+      Replace                  => 1,                                  # OPTIONAL
+      Schedule                 => 'MyMaintenanceWindowSchedule',      # OPTIONAL
+    );
+
+    # Results:
+    my $Duration = $UpdateMaintenanceWindowResult->Duration;
+    my $AllowUnassociatedTargets =
+      $UpdateMaintenanceWindowResult->AllowUnassociatedTargets;
+    my $Schedule    = $UpdateMaintenanceWindowResult->Schedule;
+    my $Name        = $UpdateMaintenanceWindowResult->Name;
+    my $Enabled     = $UpdateMaintenanceWindowResult->Enabled;
+    my $Cutoff      = $UpdateMaintenanceWindowResult->Cutoff;
+    my $WindowId    = $UpdateMaintenanceWindowResult->WindowId;
+    my $Description = $UpdateMaintenanceWindowResult->Description;
+
+    # Returns a L<Paws::SSM::UpdateMaintenanceWindowResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/UpdateMaintenanceWindow>

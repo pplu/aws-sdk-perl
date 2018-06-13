@@ -27,9 +27,55 @@ as arguments to method CreateFunctionDefinition.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateFunctionDefinition.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateFunctionDefinition(Att1 => $value1, Att2 => $value2, ...);
+    my $greengrass = Paws->service('Greengrass');
+    my $CreateFunctionDefinitionResponse =
+      $greengrass->CreateFunctionDefinition(
+      AmznClientToken => 'My__string',    # OPTIONAL
+      InitialVersion  => {
+        Functions => [
+          {
+            FunctionArn           => 'My__string',
+            FunctionConfiguration => {
+              Timeout      => 1,              # OPTIONAL
+              EncodingType => 'binary',       # values: binary, json; OPTIONAL
+              Executable   => 'My__string',
+              Environment  => {
+                AccessSysfs => 1,                                  # OPTIONAL
+                Variables => { 'My__string' => 'My__string', },    # OPTIONAL
+                ResourceAccessPolicies => [
+                  {
+                    ResourceId => 'My__string',
+                    Permission => 'ro',           # values: ro, rw; OPTIONAL
+                  },
+                  ...
+                ],                                # OPTIONAL
+              },    # OPTIONAL
+              MemorySize => 1,              # OPTIONAL
+              Pinned     => 1,              # OPTIONAL
+              ExecArgs   => 'My__string',
+            },    # OPTIONAL
+            Id => 'My__string',
+          },
+          ...
+        ],        # OPTIONAL
+      },    # OPTIONAL
+      Name => 'My__string',    # OPTIONAL
+      );
+
+    # Results:
+    my $LastUpdatedTimestamp =
+      $CreateFunctionDefinitionResponse->LastUpdatedTimestamp;
+    my $Id               = $CreateFunctionDefinitionResponse->Id;
+    my $LatestVersionArn = $CreateFunctionDefinitionResponse->LatestVersionArn;
+    my $Arn              = $CreateFunctionDefinitionResponse->Arn;
+    my $CreationTimestamp =
+      $CreateFunctionDefinitionResponse->CreationTimestamp;
+    my $Name          = $CreateFunctionDefinitionResponse->Name;
+    my $LatestVersion = $CreateFunctionDefinitionResponse->LatestVersion;
+
+    # Returns a L<Paws::Greengrass::CreateFunctionDefinitionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>

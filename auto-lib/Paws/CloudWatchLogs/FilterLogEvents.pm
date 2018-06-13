@@ -31,9 +31,28 @@ as arguments to method FilterLogEvents.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to FilterLogEvents.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->FilterLogEvents(Att1 => $value1, Att2 => $value2, ...);
+    my $logs = Paws->service('CloudWatchLogs');
+    my $FilterLogEventsResponse = $logs->FilterLogEvents(
+      LogGroupName   => 'MyLogGroupName',
+      EndTime        => 1,                    # OPTIONAL
+      FilterPattern  => 'MyFilterPattern',    # OPTIONAL
+      Interleaved    => 1,                    # OPTIONAL
+      Limit          => 1,                    # OPTIONAL
+      LogStreamNames => [
+        'MyLogStreamName', ...                # min: 1, max: 512
+      ],                                      # OPTIONAL
+      NextToken => 'MyNextToken',             # OPTIONAL
+      StartTime => 1,                         # OPTIONAL
+    );
+
+    # Results:
+    my $Events             = $FilterLogEventsResponse->Events;
+    my $NextToken          = $FilterLogEventsResponse->NextToken;
+    my $SearchedLogStreams = $FilterLogEventsResponse->SearchedLogStreams;
+
+    # Returns a L<Paws::CloudWatchLogs::FilterLogEventsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/logs/FilterLogEvents>

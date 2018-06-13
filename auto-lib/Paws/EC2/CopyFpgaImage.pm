@@ -29,9 +29,22 @@ as arguments to method CopyFpgaImage.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CopyFpgaImage.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CopyFpgaImage(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $CopyFpgaImageResult = $ec2->CopyFpgaImage(
+      SourceFpgaImageId => 'MyString',
+      SourceRegion      => 'MyString',
+      ClientToken       => 'MyString',    # OPTIONAL
+      Description       => 'MyString',    # OPTIONAL
+      DryRun            => 1,             # OPTIONAL
+      Name              => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $FpgaImageId = $CopyFpgaImageResult->FpgaImageId;
+
+    # Returns a L<Paws::EC2::CopyFpgaImageResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/CopyFpgaImage>

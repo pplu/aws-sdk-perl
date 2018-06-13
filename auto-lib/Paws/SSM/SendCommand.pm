@@ -39,9 +39,46 @@ as arguments to method SendCommand.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SendCommand.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SendCommand(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $SendCommandResult = $ssm->SendCommand(
+      DocumentName       => 'MyDocumentARN',
+      Comment            => 'MyComment',                # OPTIONAL
+      DocumentHash       => 'MyDocumentHash',           # OPTIONAL
+      DocumentHashType   => 'Sha256',                   # OPTIONAL
+      DocumentVersion    => 'MyDocumentVersion',        # OPTIONAL
+      InstanceIds        => [ 'MyInstanceId', ... ],    # OPTIONAL
+      MaxConcurrency     => 'MyMaxConcurrency',         # OPTIONAL
+      MaxErrors          => 'MyMaxErrors',              # OPTIONAL
+      NotificationConfig => {
+        NotificationArn => 'MyNotificationArn',         # OPTIONAL
+        NotificationType   => 'Command', # values: Command, Invocation; OPTIONAL
+        NotificationEvents => [
+          'All',
+          ...    # values: All, InProgress, Success, TimedOut, Cancelled, Failed
+        ],       # OPTIONAL
+      },    # OPTIONAL
+      OutputS3BucketName => 'MyS3BucketName',    # OPTIONAL
+      OutputS3KeyPrefix  => 'MyS3KeyPrefix',     # OPTIONAL
+      OutputS3Region     => 'MyS3Region',        # OPTIONAL
+      Parameters => { 'MyParameterName' => [ 'MyParameterValue', ... ], }
+      ,                                          # OPTIONAL
+      ServiceRoleArn => 'MyServiceRole',         # OPTIONAL
+      Targets        => [
+        {
+          Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
+          Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
+        },
+        ...
+      ],                                         # OPTIONAL
+      TimeoutSeconds => 1,                       # OPTIONAL
+    );
+
+    # Results:
+    my $Command = $SendCommandResult->Command;
+
+    # Returns a L<Paws::SSM::SendCommandResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/SendCommand>

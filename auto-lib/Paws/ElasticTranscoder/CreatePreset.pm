@@ -30,9 +30,77 @@ as arguments to method CreatePreset.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreatePreset.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreatePreset(Att1 => $value1, Att2 => $value2, ...);
+    my $elastictranscoder = Paws->service('ElasticTranscoder');
+    my $CreatePresetResponse = $elastictranscoder->CreatePreset(
+      Container => 'MyPresetContainer',
+      Name      => 'MyName',
+      Audio     => {
+        Channels     => 'MyAudioChannels',    # OPTIONAL
+        CodecOptions => {
+          BitDepth => 'MyAudioBitDepth',        # OPTIONAL
+          Profile  => 'MyAudioCodecProfile',    # OPTIONAL
+          BitOrder => 'MyAudioBitOrder',        # OPTIONAL
+          Signed   => 'MyAudioSigned',          # OPTIONAL
+        },    # OPTIONAL
+        AudioPackingMode => 'MyAudioPackingMode',    # OPTIONAL
+        BitRate          => 'MyAudioBitRate',        # OPTIONAL
+        SampleRate       => 'MyAudioSampleRate',     # OPTIONAL
+        Codec            => 'MyAudioCodec',          # OPTIONAL
+      },    # OPTIONAL
+      Description => 'MyDescription',    # OPTIONAL
+      Thumbnails  => {
+        AspectRatio   => 'MyAspectRatio',            # OPTIONAL
+        Format        => 'MyJpgOrPng',               # OPTIONAL
+        MaxWidth      => 'MyDigitsOrAuto',           # OPTIONAL
+        PaddingPolicy => 'MyPaddingPolicy',          # OPTIONAL
+        MaxHeight     => 'MyDigitsOrAuto',           # OPTIONAL
+        Interval      => 'MyDigits',                 # OPTIONAL
+        Resolution    => 'MyThumbnailResolution',    # OPTIONAL
+        SizingPolicy  => 'MySizingPolicy',           # OPTIONAL
+      },    # OPTIONAL
+      Video => {
+        MaxFrameRate => 'MyMaxFrameRate',    # OPTIONAL
+        AspectRatio  => 'MyAspectRatio',     # OPTIONAL
+        MaxWidth     => 'MyDigitsOrAuto',    # OPTIONAL
+        FixedGOP     => 'MyFixedGOP',        # OPTIONAL
+        Codec        => 'MyVideoCodec',      # OPTIONAL
+        FrameRate    => 'MyFrameRate',       # OPTIONAL
+        CodecOptions => {
+          'MyCodecOption' =>
+            'MyCodecOption',    # key: min: 1, max: 255, value: min: 1, max: 255
+        },    # max: 30; OPTIONAL
+        BitRate    => 'MyVideoBitRate',    # OPTIONAL
+        Watermarks => [
+          {
+            Opacity        => 'MyOpacity',           # OPTIONAL
+            Target         => 'MyTarget',            # OPTIONAL
+            MaxWidth       => 'MyPixelsOrPercent',   # OPTIONAL
+            VerticalOffset => 'MyPixelsOrPercent',   # OPTIONAL
+            Id             => 'MyPresetWatermarkId', # min: 1, max: 40; OPTIONAL
+            VerticalAlign  => 'MyVerticalAlign',     # OPTIONAL
+            SizingPolicy     => 'MyWatermarkSizingPolicy',    # OPTIONAL
+            MaxHeight        => 'MyPixelsOrPercent',          # OPTIONAL
+            HorizontalAlign  => 'MyHorizontalAlign',          # OPTIONAL
+            HorizontalOffset => 'MyPixelsOrPercent',          # OPTIONAL
+          },
+          ...
+        ],                                                    # OPTIONAL
+        MaxHeight          => 'MyDigitsOrAuto',               # OPTIONAL
+        PaddingPolicy      => 'MyPaddingPolicy',              # OPTIONAL
+        DisplayAspectRatio => 'MyAspectRatio',                # OPTIONAL
+        Resolution         => 'MyResolution',                 # OPTIONAL
+        SizingPolicy       => 'MySizingPolicy',               # OPTIONAL
+        KeyframesMaxDist   => 'MyKeyframesMaxDist',           # OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $Preset  = $CreatePresetResponse->Preset;
+    my $Warning = $CreatePresetResponse->Warning;
+
+    # Returns a L<Paws::ElasticTranscoder::CreatePresetResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

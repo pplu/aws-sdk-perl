@@ -37,9 +37,89 @@ as arguments to method RegisterTaskWithMaintenanceWindow.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RegisterTaskWithMaintenanceWindow.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RegisterTaskWithMaintenanceWindow(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $RegisterTaskWithMaintenanceWindowResult =
+      $ssm->RegisterTaskWithMaintenanceWindow(
+      MaxConcurrency => 'MyMaxConcurrency',
+      MaxErrors      => 'MyMaxErrors',
+      ServiceRoleArn => 'MyServiceRole',
+      Targets        => [
+        {
+          Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
+          Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
+        },
+        ...
+      ],
+      TaskArn     => 'MyMaintenanceWindowTaskArn',
+      TaskType    => 'RUN_COMMAND',
+      WindowId    => 'MyMaintenanceWindowId',
+      ClientToken => 'MyClientToken',                     # OPTIONAL
+      Description => 'MyMaintenanceWindowDescription',    # OPTIONAL
+      LoggingInfo => {
+        S3Region     => 'MyS3Region',                     # min: 3, max: 20
+        S3BucketName => 'MyS3BucketName',                 # min: 3, max: 63
+        S3KeyPrefix  => 'MyS3KeyPrefix',                  # max: 500; OPTIONAL
+      },    # OPTIONAL
+      Name                     => 'MyMaintenanceWindowName',    # OPTIONAL
+      Priority                 => 1,                            # OPTIONAL
+      TaskInvocationParameters => {
+        Lambda => {
+          Payload => 'BlobMaintenanceWindowLambdaPayload', # max: 4096; OPTIONAL
+          ClientContext => 'MyMaintenanceWindowLambdaClientContext'
+          ,    # min: 1, max: 8000; OPTIONAL
+          Qualifier =>
+            'MyMaintenanceWindowLambdaQualifier',   # min: 1, max: 128; OPTIONAL
+        },    # OPTIONAL
+        RunCommand => {
+          Comment            => 'MyComment',         # max: 100; OPTIONAL
+          OutputS3BucketName => 'MyS3BucketName',    # min: 3, max: 63
+          DocumentHash       => 'MyDocumentHash',    # max: 256; OPTIONAL
+          NotificationConfig => {
+            NotificationEvents => [
+              'All',
+              ... # values: All, InProgress, Success, TimedOut, Cancelled, Failed
+            ],    # OPTIONAL
+            NotificationType =>
+              'Command',    # values: Command, Invocation; OPTIONAL
+            NotificationArn => 'MyNotificationArn',    # OPTIONAL
+          },    # OPTIONAL
+          TimeoutSeconds => 1,    # min: 30, max: 2592000; OPTIONAL
+          OutputS3KeyPrefix => 'MyS3KeyPrefix', # max: 500; OPTIONAL
+          DocumentHashType  => 'Sha256',        # values: Sha256, Sha1; OPTIONAL
+          Parameters => { 'MyParameterName' => [ 'MyParameterValue', ... ], }
+          ,                                     # OPTIONAL
+          ServiceRoleArn => 'MyServiceRole',
+        },    # OPTIONAL
+        StepFunctions => {
+          Input =>
+            'MyMaintenanceWindowStepFunctionsInput',    # max: 4096; OPTIONAL
+          Name =>
+            'MyMaintenanceWindowStepFunctionsName',  # min: 1, max: 80; OPTIONAL
+        },    # OPTIONAL
+        Automation => {
+          DocumentVersion => 'MyDocumentVersion',    # OPTIONAL
+          Parameters      => {
+            'MyAutomationParameterKey' => [
+              'MyAutomationParameterValue', ...      # min: 1, max: 512
+            ],    # key: min: 1, max: 30, value: max: 10
+          },    # min: 1, max: 200; OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
+      TaskParameters => {
+        'MyMaintenanceWindowTaskParameterName' => {
+          Values => [
+            'MyMaintenanceWindowTaskParameterValue', ...    # min: 1, max: 255
+          ],                                                # OPTIONAL
+        },    # key: min: 1, max: 255
+      },    # OPTIONAL
+      );
+
+    # Results:
+    my $WindowTaskId = $RegisterTaskWithMaintenanceWindowResult->WindowTaskId;
+
+    # Returns a L<Paws::SSM::RegisterTaskWithMaintenanceWindowResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/RegisterTaskWithMaintenanceWindow>

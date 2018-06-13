@@ -61,9 +61,25 @@ as arguments to method ModifyDBInstance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyDBInstance.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyDBInstance(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    # To change DB instance settings
+    # This example immediately changes the specified settings for the specified
+    # DB instance.
+    my $ModifyDBInstanceResult = $rds->ModifyDBInstance(
+      {
+        'PreferredBackupWindow'      => '04:00-04:30',
+        'DBInstanceClass'            => 'db.t2.small',
+        'MasterUserPassword'         => 'mynewpassword',
+        'PreferredMaintenanceWindow' => 'Tue:05:00-Tue:05:30',
+        'AllocatedStorage'           => 10,
+        'BackupRetentionPeriod'      => 1,
+        'DBInstanceIdentifier'       => 'mymysqlinstance',
+        'ApplyImmediately'           => true
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/ModifyDBInstance>

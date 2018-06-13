@@ -65,9 +65,64 @@ as arguments to method CreateDBInstance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBInstance.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDBInstance(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('Neptune');
+    my $CreateDBInstanceResult = $rds->CreateDBInstance(
+      DBInstanceClass                 => 'MyString',
+      DBInstanceIdentifier            => 'MyString',
+      Engine                          => 'MyString',
+      AllocatedStorage                => 1,                      # OPTIONAL
+      AutoMinorVersionUpgrade         => 1,                      # OPTIONAL
+      AvailabilityZone                => 'MyString',             # OPTIONAL
+      BackupRetentionPeriod           => 1,                      # OPTIONAL
+      CharacterSetName                => 'MyString',             # OPTIONAL
+      CopyTagsToSnapshot              => 1,                      # OPTIONAL
+      DBClusterIdentifier             => 'MyString',             # OPTIONAL
+      DBName                          => 'MyString',             # OPTIONAL
+      DBParameterGroupName            => 'MyString',             # OPTIONAL
+      DBSecurityGroups                => [ 'MyString', ... ],    # OPTIONAL
+      DBSubnetGroupName               => 'MyString',             # OPTIONAL
+      Domain                          => 'MyString',             # OPTIONAL
+      DomainIAMRoleName               => 'MyString',             # OPTIONAL
+      EnableCloudwatchLogsExports     => [ 'MyString', ... ],    # OPTIONAL
+      EnableIAMDatabaseAuthentication => 1,                      # OPTIONAL
+      EnablePerformanceInsights       => 1,                      # OPTIONAL
+      EngineVersion                   => 'MyString',             # OPTIONAL
+      Iops                            => 1,                      # OPTIONAL
+      KmsKeyId                        => 'MyString',             # OPTIONAL
+      LicenseModel                    => 'MyString',             # OPTIONAL
+      MasterUserPassword              => 'MyString',             # OPTIONAL
+      MasterUsername                  => 'MyString',             # OPTIONAL
+      MonitoringInterval              => 1,                      # OPTIONAL
+      MonitoringRoleArn               => 'MyString',             # OPTIONAL
+      MultiAZ                         => 1,                      # OPTIONAL
+      OptionGroupName                 => 'MyString',             # OPTIONAL
+      PerformanceInsightsKMSKeyId     => 'MyString',             # OPTIONAL
+      Port                            => 1,                      # OPTIONAL
+      PreferredBackupWindow           => 'MyString',             # OPTIONAL
+      PreferredMaintenanceWindow      => 'MyString',             # OPTIONAL
+      PromotionTier                   => 1,                      # OPTIONAL
+      PubliclyAccessible              => 1,                      # OPTIONAL
+      StorageEncrypted                => 1,                      # OPTIONAL
+      StorageType                     => 'MyString',             # OPTIONAL
+      Tags                            => [
+        {
+          Key   => 'MyString',
+          Value => 'MyString',
+        },
+        ...
+      ],                                                         # OPTIONAL
+      TdeCredentialArn      => 'MyString',                       # OPTIONAL
+      TdeCredentialPassword => 'MyString',                       # OPTIONAL
+      Timezone              => 'MyString',                       # OPTIONAL
+      VpcSecurityGroupIds   => [ 'MyString', ... ],              # OPTIONAL
+    );
+
+    # Results:
+    my $DBInstance = $CreateDBInstanceResult->DBInstance;
+
+    # Returns a L<Paws::Neptune::CreateDBInstanceResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/CreateDBInstance>

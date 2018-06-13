@@ -26,9 +26,22 @@ as arguments to method UploadDocuments.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UploadDocuments.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UploadDocuments(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudsearchdomain = Paws->service('CloudSearchDomain');
+    my $UploadDocumentsResponse = $cloudsearchdomain->UploadDocuments(
+      ContentType => 'application/json',
+      Documents   => 'BlobBlob',
+
+    );
+
+    # Results:
+    my $Adds     = $UploadDocumentsResponse->Adds;
+    my $Status   = $UploadDocumentsResponse->Status;
+    my $Deletes  = $UploadDocumentsResponse->Deletes;
+    my $Warnings = $UploadDocumentsResponse->Warnings;
+
+    # Returns a L<Paws::CloudSearchDomain::UploadDocumentsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/cloudsearch/>

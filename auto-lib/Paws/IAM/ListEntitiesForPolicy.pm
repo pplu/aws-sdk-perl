@@ -28,9 +28,25 @@ as arguments to method ListEntitiesForPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListEntitiesForPolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListEntitiesForPolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $iam = Paws->service('IAM');
+    my $ListEntitiesForPolicyResponse = $iam->ListEntitiesForPolicy(
+      PolicyArn    => 'MyarnType',
+      EntityFilter => 'User',            # OPTIONAL
+      Marker       => 'MymarkerType',    # OPTIONAL
+      MaxItems     => 1,                 # OPTIONAL
+      PathPrefix   => 'MypathType',      # OPTIONAL
+    );
+
+    # Results:
+    my $Marker       = $ListEntitiesForPolicyResponse->Marker;
+    my $PolicyUsers  = $ListEntitiesForPolicyResponse->PolicyUsers;
+    my $PolicyGroups = $ListEntitiesForPolicyResponse->PolicyGroups;
+    my $PolicyRoles  = $ListEntitiesForPolicyResponse->PolicyRoles;
+    my $IsTruncated  = $ListEntitiesForPolicyResponse->IsTruncated;
+
+    # Returns a L<Paws::IAM::ListEntitiesForPolicyResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/ListEntitiesForPolicy>

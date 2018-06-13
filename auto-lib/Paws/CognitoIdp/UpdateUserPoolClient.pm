@@ -38,9 +38,53 @@ as arguments to method UpdateUserPoolClient.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateUserPoolClient.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateUserPoolClient(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-idp = Paws->service('CognitoIdp');
+    my $UpdateUserPoolClientResponse = $cognito -idp->UpdateUserPoolClient(
+      ClientId          => 'MyClientIdType',
+      UserPoolId        => 'MyUserPoolIdType',
+      AllowedOAuthFlows => [
+        'code', ...    # values: code, implicit, client_credentials
+      ],               # OPTIONAL
+      AllowedOAuthFlowsUserPoolClient => 1,    # OPTIONAL
+      AllowedOAuthScopes              => [
+        'MyScopeType', ...                     # min: 1, max: 256
+      ],                                       # OPTIONAL
+      AnalyticsConfiguration => {
+        ApplicationId  => 'MyHexStringType',
+        RoleArn        => 'MyArnType',         # min: 20, max: 2048
+        ExternalId     => 'MyStringType',
+        UserDataShared => 1,
+      },    # OPTIONAL
+      CallbackURLs => [
+        'MyRedirectUrlType', ...    # min: 1, max: 1024
+      ],                            # OPTIONAL
+      ClientName         => 'MyClientNameType',     # OPTIONAL
+      DefaultRedirectURI => 'MyRedirectUrlType',    # OPTIONAL
+      ExplicitAuthFlows  => [
+        'ADMIN_NO_SRP_AUTH',
+        ... # values: ADMIN_NO_SRP_AUTH, CUSTOM_AUTH_FLOW_ONLY, USER_PASSWORD_AUTH
+      ],    # OPTIONAL
+      LogoutURLs => [
+        'MyRedirectUrlType', ...    # min: 1, max: 1024
+      ],                            # OPTIONAL
+      ReadAttributes => [
+        'MyClientPermissionType', ...    # min: 1, max: 2048
+      ],                                 # OPTIONAL
+      RefreshTokenValidity       => 1,   # OPTIONAL
+      SupportedIdentityProviders => [
+        'MyProviderNameType', ...        # min: 1, max: 32
+      ],                                 # OPTIONAL
+      WriteAttributes => [
+        'MyClientPermissionType', ...    # min: 1, max: 2048
+      ],                                 # OPTIONAL
+    );
+
+    # Results:
+    my $UserPoolClient = $UpdateUserPoolClientResponse->UserPoolClient;
+
+    # Returns a L<Paws::CognitoIdp::UpdateUserPoolClientResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-idp/UpdateUserPoolClient>

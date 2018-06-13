@@ -38,9 +38,61 @@ as arguments to method CreateChangeSet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateChangeSet.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateChangeSet(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudformation = Paws->service('CloudFormation');
+    my $CreateChangeSetOutput = $cloudformation->CreateChangeSet(
+      ChangeSetName => 'MyChangeSetName',
+      StackName     => 'MyStackNameOrId',
+      Capabilities  => [
+        'CAPABILITY_IAM', ...    # values: CAPABILITY_IAM, CAPABILITY_NAMED_IAM
+      ],                         # OPTIONAL
+      ChangeSetType    => 'CREATE',                        # OPTIONAL
+      ClientToken      => 'MyClientToken',                 # OPTIONAL
+      Description      => 'MyDescription',                 # OPTIONAL
+      NotificationARNs => [ 'MyNotificationARN', ... ],    # OPTIONAL
+      Parameters       => [
+        {
+          ResolvedValue    => 'MyParameterValue',          # OPTIONAL
+          ParameterKey     => 'MyParameterKey',            # OPTIONAL
+          ParameterValue   => 'MyParameterValue',          # OPTIONAL
+          UsePreviousValue => 1,                           # OPTIONAL
+        },
+        ...
+      ],                                                   # OPTIONAL
+      ResourceTypes => [
+        'MyResourceType', ...                              # min: 1, max: 256
+      ],                                                   # OPTIONAL
+      RoleARN               => 'MyRoleARN',                # OPTIONAL
+      RollbackConfiguration => {
+        MonitoringTimeInMinutes => 1,                      # max: 180; OPTIONAL
+        RollbackTriggers        => [
+          {
+            Type => 'MyType',
+            Arn  => 'MyArn',
+
+          },
+          ...
+        ],                                                 # max: 5; OPTIONAL
+      },    # OPTIONAL
+      Tags => [
+        {
+          Value => 'MyTagValue',    # min: 1, max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+
+        },
+        ...
+      ],                            # OPTIONAL
+      TemplateBody        => 'MyTemplateBody',    # OPTIONAL
+      TemplateURL         => 'MyTemplateURL',     # OPTIONAL
+      UsePreviousTemplate => 1,                   # OPTIONAL
+    );
+
+    # Results:
+    my $Id      = $CreateChangeSetOutput->Id;
+    my $StackId = $CreateChangeSetOutput->StackId;
+
+    # Returns a L<Paws::CloudFormation::CreateChangeSetOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudformation/CreateChangeSet>

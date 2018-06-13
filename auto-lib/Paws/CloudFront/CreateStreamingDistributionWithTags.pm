@@ -27,9 +27,60 @@ as arguments to method CreateStreamingDistributionWithTags2017_10_30.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateStreamingDistributionWithTags2017_10_30.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateStreamingDistributionWithTags2017_10_30(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudfront = Paws->service('CloudFront');
+    my $CreateStreamingDistributionWithTagsResult =
+      $cloudfront->CreateStreamingDistributionWithTags(
+      StreamingDistributionConfigWithTags => {
+        Tags => {
+          Items => [
+            {
+              Key   => 'MyTagKey',      # min: 1, max: 128
+              Value => 'MyTagValue',    # max: 256; OPTIONAL
+            },
+            ...
+          ],                            # OPTIONAL
+        },
+        StreamingDistributionConfig => {
+          S3Origin => {
+            OriginAccessIdentity => 'Mystring',
+            DomainName           => 'Mystring',
+
+          },
+          Enabled         => 1,
+          Comment         => 'Mystring',
+          CallerReference => 'Mystring',
+          TrustedSigners  => {
+            Quantity => 1,
+            Enabled  => 1,
+            Items    => [ 'Mystring', ... ],    # OPTIONAL
+          },
+          Aliases => {
+            Quantity => 1,
+            Items    => [ 'Mystring', ... ],    # OPTIONAL
+          },    # OPTIONAL
+          Logging => {
+            Bucket  => 'Mystring',
+            Prefix  => 'Mystring',
+            Enabled => 1,
+
+          },    # OPTIONAL
+          PriceClass => 'PriceClass_100'
+          ,   # values: PriceClass_100, PriceClass_200, PriceClass_All; OPTIONAL
+        },
+
+      },
+
+      );
+
+    # Results:
+    my $StreamingDistribution =
+      $CreateStreamingDistributionWithTagsResult->StreamingDistribution;
+    my $Location = $CreateStreamingDistributionWithTagsResult->Location;
+    my $ETag     = $CreateStreamingDistributionWithTagsResult->ETag;
+
+# Returns a L<Paws::CloudFront::CreateStreamingDistributionWithTagsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudfront/CreateStreamingDistributionWithTags>

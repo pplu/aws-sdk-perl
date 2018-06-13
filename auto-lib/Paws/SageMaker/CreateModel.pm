@@ -28,9 +28,44 @@ as arguments to method CreateModel.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateModel.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateModel(Att1 => $value1, Att2 => $value2, ...);
+    my $sagemaker = Paws->service('SageMaker');
+    my $CreateModelOutput = $sagemaker->CreateModel(
+      ExecutionRoleArn => 'MyRoleArn',
+      ModelName        => 'MyModelName',
+      PrimaryContainer => {
+        Image             => 'MyImage',                # max: 255
+        ContainerHostname => 'MyContainerHostname',    # max: 63; OPTIONAL
+        ModelDataUrl      => 'MyUrl',                  # max: 1024; OPTIONAL
+        Environment       => {
+          'MyEnvironmentKey' =>
+            'MyEnvironmentValue',    # key: max: 1024, value: max: 1024
+        },    # max: 16; OPTIONAL
+      },
+      Tags => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
+        },
+        ...
+      ],                            # OPTIONAL
+      VpcConfig => {
+        Subnets => [
+          'MySubnetId', ...         # max: 32
+        ],                          # min: 1, max: 16
+        SecurityGroupIds => [
+          'MySecurityGroupId', ...    # max: 32
+        ],                            # min: 1, max: 5
+
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $ModelArn = $CreateModelOutput->ModelArn;
+
+    # Returns a L<Paws::SageMaker::CreateModelOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker/CreateModel>

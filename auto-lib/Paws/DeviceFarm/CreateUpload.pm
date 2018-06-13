@@ -27,9 +27,25 @@ as arguments to method CreateUpload.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateUpload.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateUpload(Att1 => $value1, Att2 => $value2, ...);
+    my $devicefarm = Paws->service('DeviceFarm');
+    # To create a new test package upload
+    # The following example creates a new Appium Python test package upload
+    # inside an existing project.
+    my $CreateUploadResult = $devicefarm->CreateUpload(
+      {
+        'Type' => 'APPIUM_PYTHON_TEST_PACKAGE',
+        'ProjectArn' =>
+'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456',
+        'Name' => 'MyAppiumPythonUpload'
+      }
+    );
+
+    # Results:
+    my $upload = $CreateUploadResult->upload;
+
+    # Returns a L<Paws::DeviceFarm::CreateUploadResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/devicefarm/CreateUpload>

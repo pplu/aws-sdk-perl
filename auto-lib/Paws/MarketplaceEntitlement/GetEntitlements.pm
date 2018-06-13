@@ -27,9 +27,24 @@ as arguments to method GetEntitlements.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetEntitlements.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetEntitlements(Att1 => $value1, Att2 => $value2, ...);
+    my $entitlement.marketplace = Paws->service('MarketplaceEntitlement');
+    my $GetEntitlementsResult = $entitlement . marketplace->GetEntitlements(
+      ProductCode => 'MyProductCode',
+      Filter      => {
+        'CUSTOMER_IDENTIFIER' => [ 'MyFilterValue', ... ]
+        ,    # key: values: CUSTOMER_IDENTIFIER, DIMENSION, value: min: 1,
+      },    # OPTIONAL
+      MaxResults => 1,                     # OPTIONAL
+      NextToken  => 'MyNonEmptyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $Entitlements = $GetEntitlementsResult->Entitlements;
+    my $NextToken    = $GetEntitlementsResult->NextToken;
+
+    # Returns a L<Paws::MarketplaceEntitlement::GetEntitlementsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/Welcome.html>

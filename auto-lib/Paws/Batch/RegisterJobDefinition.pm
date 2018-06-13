@@ -30,9 +30,30 @@ as arguments to method RegisterJobDefinition.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RegisterJobDefinition.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RegisterJobDefinition(Att1 => $value1, Att2 => $value2, ...);
+    my $batch = Paws->service('Batch');
+    # To register a job definition
+    # This example registers a job definition for a simple container job.
+    my $RegisterJobDefinitionResponse = $batch->RegisterJobDefinition(
+      {
+        'Type'                => 'container',
+        'JobDefinitionName'   => 'sleep10',
+        'ContainerProperties' => {
+          'Memory'  => 128,
+          'Command' => [ 'sleep', 10 ],
+          'Image'   => 'busybox',
+          'Vcpus'   => 1
+        }
+      }
+    );
+
+    # Results:
+    my $revision          = $RegisterJobDefinitionResponse->revision;
+    my $jobDefinitionName = $RegisterJobDefinitionResponse->jobDefinitionName;
+    my $jobDefinitionArn  = $RegisterJobDefinitionResponse->jobDefinitionArn;
+
+    # Returns a L<Paws::Batch::RegisterJobDefinitionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/batch/RegisterJobDefinition>

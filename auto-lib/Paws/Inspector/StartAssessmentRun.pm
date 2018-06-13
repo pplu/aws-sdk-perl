@@ -25,9 +25,25 @@ as arguments to method StartAssessmentRun.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartAssessmentRun.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->StartAssessmentRun(Att1 => $value1, Att2 => $value2, ...);
+    my $inspector = Paws->service('Inspector');
+   # Start assessment run
+   # Starts the assessment run specified by the ARN of the assessment template.
+   # For this API to function properly, you must not exceed the limit of running
+   # up to 500 concurrent agents per AWS account.
+    my $StartAssessmentRunResponse = $inspector->StartAssessmentRun(
+      {
+        'AssessmentTemplateArn' =>
+'arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-it5r2S4T',
+        'AssessmentRunName' => 'examplerun'
+      }
+    );
+
+    # Results:
+    my $assessmentRunArn = $StartAssessmentRunResponse->assessmentRunArn;
+
+    # Returns a L<Paws::Inspector::StartAssessmentRunResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/inspector/StartAssessmentRun>

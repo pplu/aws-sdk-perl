@@ -25,9 +25,21 @@ as arguments to method ListWebACLs.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListWebACLs.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListWebACLs(Att1 => $value1, Att2 => $value2, ...);
+    my $waf = Paws->service('WAF');
+    # To list Web ACLs
+    # The following example returns an array of up to 100 web ACLs.
+    my $ListWebACLsResponse = $waf->ListWebACLs(
+      {
+        'Limit' => 100
+      }
+    );
+
+    # Results:
+    my $WebACLs = $ListWebACLsResponse->WebACLs;
+
+    # Returns a L<Paws::WAF::ListWebACLsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf/ListWebACLs>

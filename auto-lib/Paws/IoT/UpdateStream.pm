@@ -28,9 +28,33 @@ as arguments to method UpdateStream.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateStream.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateStream(Att1 => $value1, Att2 => $value2, ...);
+    my $iot = Paws->service('IoT');
+    my $UpdateStreamResponse = $iot->UpdateStream(
+      StreamId    => 'MyStreamId',
+      Description => 'MyStreamDescription',    # OPTIONAL
+      Files       => [
+        {
+          s3Location => {
+            bucket  => 'MyS3Bucket',           # min: 1,
+            key     => 'MyS3Key',              # min: 1,
+            version => 'MyS3Version',          # OPTIONAL
+          },    # OPTIONAL
+          fileId => 1,    # max: 255; OPTIONAL
+        },
+        ...
+      ],                  # OPTIONAL
+      RoleArn => 'MyRoleArn',    # OPTIONAL
+    );
+
+    # Results:
+    my $StreamId      = $UpdateStreamResponse->StreamId;
+    my $StreamArn     = $UpdateStreamResponse->StreamArn;
+    my $Description   = $UpdateStreamResponse->Description;
+    my $StreamVersion = $UpdateStreamResponse->StreamVersion;
+
+    # Returns a L<Paws::IoT::UpdateStreamResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot/UpdateStream>

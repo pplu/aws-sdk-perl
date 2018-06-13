@@ -32,9 +32,29 @@ as arguments to method UpdateService.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateService.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateService(Att1 => $value1, Att2 => $value2, ...);
+    my $ecs = Paws->service('ECS');
+    # To change the task definition used in a service
+    # This example updates the my-http-service service to use the
+    # amazon-ecs-sample task definition.
+    my $UpdateServiceResponse = $ecs->UpdateService(
+      {
+        'TaskDefinition' => 'amazon-ecs-sample',
+        'Service'        => 'my-http-service'
+      }
+    );
+
+    # To change the number of tasks in a service
+    # This example updates the desired count of the my-http-service service to
+    # 10.
+    my $UpdateServiceResponse = $ecs->UpdateService(
+      {
+        'Service'      => 'my-http-service',
+        'DesiredCount' => 10
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs/UpdateService>

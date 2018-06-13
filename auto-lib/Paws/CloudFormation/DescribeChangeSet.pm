@@ -26,9 +26,34 @@ as arguments to method DescribeChangeSet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeChangeSet.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeChangeSet(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudformation = Paws->service('CloudFormation');
+    my $DescribeChangeSetOutput = $cloudformation->DescribeChangeSet(
+      ChangeSetName => 'MyChangeSetNameOrId',
+      NextToken     => 'MyNextToken',           # OPTIONAL
+      StackName     => 'MyStackNameOrId',       # OPTIONAL
+    );
+
+    # Results:
+    my $Capabilities          = $DescribeChangeSetOutput->Capabilities;
+    my $ChangeSetName         = $DescribeChangeSetOutput->ChangeSetName;
+    my $Description           = $DescribeChangeSetOutput->Description;
+    my $ChangeSetId           = $DescribeChangeSetOutput->ChangeSetId;
+    my $Tags                  = $DescribeChangeSetOutput->Tags;
+    my $ExecutionStatus       = $DescribeChangeSetOutput->ExecutionStatus;
+    my $NotificationARNs      = $DescribeChangeSetOutput->NotificationARNs;
+    my $StatusReason          = $DescribeChangeSetOutput->StatusReason;
+    my $NextToken             = $DescribeChangeSetOutput->NextToken;
+    my $Changes               = $DescribeChangeSetOutput->Changes;
+    my $Parameters            = $DescribeChangeSetOutput->Parameters;
+    my $StackName             = $DescribeChangeSetOutput->StackName;
+    my $StackId               = $DescribeChangeSetOutput->StackId;
+    my $RollbackConfiguration = $DescribeChangeSetOutput->RollbackConfiguration;
+    my $Status                = $DescribeChangeSetOutput->Status;
+    my $CreationTime          = $DescribeChangeSetOutput->CreationTime;
+
+    # Returns a L<Paws::CloudFormation::DescribeChangeSetOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudformation/DescribeChangeSet>

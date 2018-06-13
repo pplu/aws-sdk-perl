@@ -27,9 +27,30 @@ as arguments to method DescribeIamInstanceProfileAssociations.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeIamInstanceProfileAssociations.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeIamInstanceProfileAssociations(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $DescribeIamInstanceProfileAssociationsResult =
+      $ec2->DescribeIamInstanceProfileAssociations(
+      AssociationIds => [ 'MyString', ... ],    # OPTIONAL
+      Filters => [
+        {
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],        # OPTIONAL
+        },
+        ...
+      ],                                        # OPTIONAL
+      MaxResults => 1,                          # OPTIONAL
+      NextToken  => 'MyNextToken',              # OPTIONAL
+      );
+
+    # Results:
+    my $IamInstanceProfileAssociations =
+      $DescribeIamInstanceProfileAssociationsResult
+      ->IamInstanceProfileAssociations;
+    my $NextToken = $DescribeIamInstanceProfileAssociationsResult->NextToken;
+
+  # Returns a L<Paws::EC2::DescribeIamInstanceProfileAssociationsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeIamInstanceProfileAssociations>

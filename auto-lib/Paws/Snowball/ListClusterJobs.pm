@@ -26,9 +26,23 @@ as arguments to method ListClusterJobs.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListClusterJobs.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListClusterJobs(Att1 => $value1, Att2 => $value2, ...);
+    my $snowball = Paws->service('Snowball');
+    # To get a list of jobs in a cluster that you've created for AWS Snowball
+    # Returns an array of JobListEntry objects of the specified length. Each
+    # JobListEntry object is for a job in the specified cluster and contains a
+    # job's state, a job's ID, and other information.
+    my $ListClusterJobsResult = $snowball->ListClusterJobs(
+      {
+        'ClusterId' => 'CID123e4567-e89b-12d3-a456-426655440000'
+      }
+    );
+
+    # Results:
+    my $JobListEntries = $ListClusterJobsResult->JobListEntries;
+
+    # Returns a L<Paws::Snowball::ListClusterJobsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/snowball/ListClusterJobs>

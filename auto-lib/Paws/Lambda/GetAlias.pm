@@ -26,9 +26,25 @@ as arguments to method GetAlias.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetAlias.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetAlias(Att1 => $value1, Att2 => $value2, ...);
+    my $lambda = Paws->service('Lambda');
+    # To retrieve a Lambda function alias
+    # This operation retrieves a Lambda function alias
+    my $AliasConfiguration = $lambda->GetAlias(
+      {
+        'FunctionName' => 'myFunction',
+        'Name'         => 'myFunctionAlias'
+      }
+    );
+
+    # Results:
+    my $Name            = $AliasConfiguration->Name;
+    my $Description     = $AliasConfiguration->Description;
+    my $AliasArn        = $AliasConfiguration->AliasArn;
+    my $FunctionVersion = $AliasConfiguration->FunctionVersion;
+
+    # Returns a L<Paws::Lambda::AliasConfiguration> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lambda/GetAlias>

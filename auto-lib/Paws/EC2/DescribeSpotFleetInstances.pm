@@ -27,9 +27,24 @@ as arguments to method DescribeSpotFleetInstances.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSpotFleetInstances.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeSpotFleetInstances(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To describe the Spot Instances associated with a Spot fleet
+    # This example lists the Spot Instances associated with the specified Spot
+    # fleet.
+    my $DescribeSpotFleetInstancesResponse = $ec2->DescribeSpotFleetInstances(
+      {
+        'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE'
+      }
+    );
+
+    # Results:
+    my $SpotFleetRequestId =
+      $DescribeSpotFleetInstancesResponse->SpotFleetRequestId;
+    my $ActiveInstances = $DescribeSpotFleetInstancesResponse->ActiveInstances;
+
+    # Returns a L<Paws::EC2::DescribeSpotFleetInstancesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeSpotFleetInstances>

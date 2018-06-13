@@ -25,9 +25,53 @@ as arguments to method ModifyLoadBalancerAttributes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyLoadBalancerAttributes.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyLoadBalancerAttributes(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticloadbalancing = Paws->service('ELB');
+    # To enable cross-zone load balancing
+    # This example enables cross-zone load balancing for the specified load
+    # balancer.
+    my $ModifyLoadBalancerAttributesOutput =
+      $elasticloadbalancing->ModifyLoadBalancerAttributes(
+      {
+        'LoadBalancerAttributes' => {
+          'CrossZoneLoadBalancing' => {
+            'Enabled' => true
+          }
+        },
+        'LoadBalancerName' => 'my-load-balancer'
+      }
+      );
+
+    # Results:
+    my $LoadBalancerName =
+      $ModifyLoadBalancerAttributesOutput->LoadBalancerName;
+    my $LoadBalancerAttributes =
+      $ModifyLoadBalancerAttributesOutput->LoadBalancerAttributes;
+
+    # Returns a L<Paws::ELB::ModifyLoadBalancerAttributesOutput> object.
+    # To enable connection draining
+    # This example enables connection draining for the specified load balancer.
+    my $ModifyLoadBalancerAttributesOutput =
+      $elasticloadbalancing->ModifyLoadBalancerAttributes(
+      {
+        'LoadBalancerAttributes' => {
+          'ConnectionDraining' => {
+            'Enabled' => true,
+            'Timeout' => 300
+          }
+        },
+        'LoadBalancerName' => 'my-load-balancer'
+      }
+      );
+
+    # Results:
+    my $LoadBalancerAttributes =
+      $ModifyLoadBalancerAttributesOutput->LoadBalancerAttributes;
+    my $LoadBalancerName =
+      $ModifyLoadBalancerAttributesOutput->LoadBalancerName;
+
+    # Returns a L<Paws::ELB::ModifyLoadBalancerAttributesOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing/ModifyLoadBalancerAttributes>

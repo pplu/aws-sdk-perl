@@ -25,9 +25,21 @@ as arguments to method ListJobs.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListJobs.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListJobs(Att1 => $value1, Att2 => $value2, ...);
+    my $snowball = Paws->service('Snowball');
+    # To get a list of jobs that you've created for AWS Snowball
+    # Returns an array of JobListEntry objects of the specified length. Each
+    # JobListEntry object contains a job's state, a job's ID, and a value that
+    # indicates whether the job is a job part, in the case of export jobs.
+    # Calling this API action in one of the US regions will return jobs from the
+    # list of all jobs associated with this account in all US regions.
+    my $ListJobsResult = $snowball->ListJobs();
+
+    # Results:
+    my $JobListEntries = $ListJobsResult->JobListEntries;
+
+    # Returns a L<Paws::Snowball::ListJobsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/snowball/ListJobs>

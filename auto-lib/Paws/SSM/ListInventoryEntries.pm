@@ -28,9 +28,34 @@ as arguments to method ListInventoryEntries.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListInventoryEntries.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListInventoryEntries(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $ListInventoryEntriesResult = $ssm->ListInventoryEntries(
+      InstanceId => 'MyInstanceId',
+      TypeName   => 'MyInventoryItemTypeName',
+      Filters    => [
+        {
+          Key    => 'MyInventoryFilterKey',               # min: 1, max: 200
+          Values => [ 'MyInventoryFilterValue', ... ],    # min: 1, max: 20
+          Type   => 'Equal'
+          , # values: Equal, NotEqual, BeginWith, LessThan, GreaterThan; OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
+    );
+
+    # Results:
+    my $CaptureTime   = $ListInventoryEntriesResult->CaptureTime;
+    my $Entries       = $ListInventoryEntriesResult->Entries;
+    my $TypeName      = $ListInventoryEntriesResult->TypeName;
+    my $NextToken     = $ListInventoryEntriesResult->NextToken;
+    my $InstanceId    = $ListInventoryEntriesResult->InstanceId;
+    my $SchemaVersion = $ListInventoryEntriesResult->SchemaVersion;
+
+    # Returns a L<Paws::SSM::ListInventoryEntriesResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/ListInventoryEntries>

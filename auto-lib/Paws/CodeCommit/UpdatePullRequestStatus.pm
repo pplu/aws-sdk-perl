@@ -25,9 +25,19 @@ as arguments to method UpdatePullRequestStatus.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdatePullRequestStatus.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdatePullRequestStatus(Att1 => $value1, Att2 => $value2, ...);
+    my $codecommit = Paws->service('CodeCommit');
+    my $UpdatePullRequestStatusOutput = $codecommit->UpdatePullRequestStatus(
+      PullRequestId     => 'MyPullRequestId',
+      PullRequestStatus => 'OPEN',
+
+    );
+
+    # Results:
+    my $PullRequest = $UpdatePullRequestStatusOutput->PullRequest;
+
+    # Returns a L<Paws::CodeCommit::UpdatePullRequestStatusOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codecommit/UpdatePullRequestStatus>

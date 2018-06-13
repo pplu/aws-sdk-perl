@@ -24,9 +24,21 @@ as arguments to method DescribeTaskDefinition.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeTaskDefinition.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeTaskDefinition(Att1 => $value1, Att2 => $value2, ...);
+    my $ecs = Paws->service('ECS');
+    # To describe a task definition
+    # This example provides a description of the specified task definition.
+    my $DescribeTaskDefinitionResponse = $ecs->DescribeTaskDefinition(
+      {
+        'TaskDefinition' => 'hello_world:8'
+      }
+    );
+
+    # Results:
+    my $taskDefinition = $DescribeTaskDefinitionResponse->taskDefinition;
+
+    # Returns a L<Paws::ECS::DescribeTaskDefinitionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs/DescribeTaskDefinition>

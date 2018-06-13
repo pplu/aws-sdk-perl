@@ -31,9 +31,24 @@ as arguments to method GetRandomPassword.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetRandomPassword.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetRandomPassword(Att1 => $value1, Att2 => $value2, ...);
+    my $secretsmanager = Paws->service('SecretsManager');
+    my $GetRandomPasswordResponse = $secretsmanager->GetRandomPassword(
+      ExcludeCharacters       => 'MyExcludeCharactersType',    # OPTIONAL
+      ExcludeLowercase        => 1,                            # OPTIONAL
+      ExcludeNumbers          => 1,                            # OPTIONAL
+      ExcludePunctuation      => 1,                            # OPTIONAL
+      ExcludeUppercase        => 1,                            # OPTIONAL
+      IncludeSpace            => 1,                            # OPTIONAL
+      PasswordLength          => 1,                            # OPTIONAL
+      RequireEachIncludedType => 1,                            # OPTIONAL
+    );
+
+    # Results:
+    my $RandomPassword = $GetRandomPasswordResponse->RandomPassword;
+
+    # Returns a L<Paws::SecretsManager::GetRandomPasswordResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/secretsmanager/GetRandomPassword>

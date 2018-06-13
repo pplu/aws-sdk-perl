@@ -27,9 +27,32 @@ as arguments to method CreateCoreDefinitionVersion.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCoreDefinitionVersion.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateCoreDefinitionVersion(Att1 => $value1, Att2 => $value2, ...);
+    my $greengrass = Paws->service('Greengrass');
+    my $CreateCoreDefinitionVersionResponse =
+      $greengrass->CreateCoreDefinitionVersion(
+      CoreDefinitionId => 'My__string',
+      AmznClientToken  => 'My__string',    # OPTIONAL
+      Cores            => [
+        {
+          SyncShadow     => 1,              # OPTIONAL
+          ThingArn       => 'My__string',
+          Id             => 'My__string',
+          CertificateArn => 'My__string',
+        },
+        ...
+      ],                                    # OPTIONAL
+      );
+
+    # Results:
+    my $Id      = $CreateCoreDefinitionVersionResponse->Id;
+    my $Version = $CreateCoreDefinitionVersionResponse->Version;
+    my $CreationTimestamp =
+      $CreateCoreDefinitionVersionResponse->CreationTimestamp;
+    my $Arn = $CreateCoreDefinitionVersionResponse->Arn;
+
+    # Returns a L<Paws::Greengrass::CreateCoreDefinitionVersionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>

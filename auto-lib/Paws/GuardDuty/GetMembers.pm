@@ -26,9 +26,19 @@ as arguments to method GetMembers.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetMembers.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetMembers(Att1 => $value1, Att2 => $value2, ...);
+    my $guardduty = Paws->service('GuardDuty');
+    my $GetMembersResponse = $guardduty->GetMembers(
+      DetectorId => 'My__string',
+      AccountIds => [ 'My__string', ... ],    # OPTIONAL
+    );
+
+    # Results:
+    my $Members             = $GetMembersResponse->Members;
+    my $UnprocessedAccounts = $GetMembersResponse->UnprocessedAccounts;
+
+    # Returns a L<Paws::GuardDuty::GetMembersResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

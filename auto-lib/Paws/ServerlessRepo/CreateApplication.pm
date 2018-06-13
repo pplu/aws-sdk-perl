@@ -38,9 +38,40 @@ as arguments to method CreateApplication.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateApplication.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateApplication(Att1 => $value1, Att2 => $value2, ...);
+    my $serverlessrepo = Paws->service('ServerlessRepo');
+    my $CreateApplicationResponse = $serverlessrepo->CreateApplication(
+      Author          => 'My__string',             # OPTIONAL
+      Description     => 'My__string',             # OPTIONAL
+      HomePageUrl     => 'My__string',             # OPTIONAL
+      Labels          => [ 'My__string', ... ],    # OPTIONAL
+      LicenseBody     => 'My__string',             # OPTIONAL
+      LicenseUrl      => 'My__string',             # OPTIONAL
+      Name            => 'My__string',             # OPTIONAL
+      ReadmeBody      => 'My__string',             # OPTIONAL
+      ReadmeUrl       => 'My__string',             # OPTIONAL
+      SemanticVersion => 'My__string',             # OPTIONAL
+      SourceCodeUrl   => 'My__string',             # OPTIONAL
+      SpdxLicenseId   => 'My__string',             # OPTIONAL
+      TemplateBody    => 'My__string',             # OPTIONAL
+      TemplateUrl     => 'My__string',             # OPTIONAL
+    );
+
+    # Results:
+    my $HomePageUrl   = $CreateApplicationResponse->HomePageUrl;
+    my $LicenseUrl    = $CreateApplicationResponse->LicenseUrl;
+    my $Labels        = $CreateApplicationResponse->Labels;
+    my $ApplicationId = $CreateApplicationResponse->ApplicationId;
+    my $Description   = $CreateApplicationResponse->Description;
+    my $Version       = $CreateApplicationResponse->Version;
+    my $Name          = $CreateApplicationResponse->Name;
+    my $CreationTime  = $CreateApplicationResponse->CreationTime;
+    my $ReadmeUrl     = $CreateApplicationResponse->ReadmeUrl;
+    my $Author        = $CreateApplicationResponse->Author;
+    my $SpdxLicenseId = $CreateApplicationResponse->SpdxLicenseId;
+
+    # Returns a L<Paws::ServerlessRepo::CreateApplicationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/serverlessrepo/CreateApplication>

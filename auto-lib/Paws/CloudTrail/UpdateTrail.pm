@@ -33,9 +33,40 @@ as arguments to method UpdateTrail.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateTrail.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateTrail(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudtrail = Paws->service('CloudTrail');
+    my $UpdateTrailResponse = $cloudtrail->UpdateTrail(
+      Name                       => 'MyString',
+      CloudWatchLogsLogGroupArn  => 'MyString',    # OPTIONAL
+      CloudWatchLogsRoleArn      => 'MyString',    # OPTIONAL
+      EnableLogFileValidation    => 1,             # OPTIONAL
+      IncludeGlobalServiceEvents => 1,             # OPTIONAL
+      IsMultiRegionTrail         => 1,             # OPTIONAL
+      KmsKeyId                   => 'MyString',    # OPTIONAL
+      S3BucketName               => 'MyString',    # OPTIONAL
+      S3KeyPrefix                => 'MyString',    # OPTIONAL
+      SnsTopicName               => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $LogFileValidationEnabled =
+      $UpdateTrailResponse->LogFileValidationEnabled;
+    my $S3BucketName          = $UpdateTrailResponse->S3BucketName;
+    my $IsMultiRegionTrail    = $UpdateTrailResponse->IsMultiRegionTrail;
+    my $KmsKeyId              = $UpdateTrailResponse->KmsKeyId;
+    my $TrailARN              = $UpdateTrailResponse->TrailARN;
+    my $SnsTopicARN           = $UpdateTrailResponse->SnsTopicARN;
+    my $SnsTopicName          = $UpdateTrailResponse->SnsTopicName;
+    my $Name                  = $UpdateTrailResponse->Name;
+    my $CloudWatchLogsRoleArn = $UpdateTrailResponse->CloudWatchLogsRoleArn;
+    my $S3KeyPrefix           = $UpdateTrailResponse->S3KeyPrefix;
+    my $CloudWatchLogsLogGroupArn =
+      $UpdateTrailResponse->CloudWatchLogsLogGroupArn;
+    my $IncludeGlobalServiceEvents =
+      $UpdateTrailResponse->IncludeGlobalServiceEvents;
+
+    # Returns a L<Paws::CloudTrail::UpdateTrailResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudtrail/UpdateTrail>

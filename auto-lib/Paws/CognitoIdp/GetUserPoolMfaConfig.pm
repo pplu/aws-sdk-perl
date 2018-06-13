@@ -24,9 +24,22 @@ as arguments to method GetUserPoolMfaConfig.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetUserPoolMfaConfig.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetUserPoolMfaConfig(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-idp = Paws->service('CognitoIdp');
+    my $GetUserPoolMfaConfigResponse = $cognito -idp->GetUserPoolMfaConfig(
+      UserPoolId => 'MyUserPoolIdType',
+
+    );
+
+    # Results:
+    my $MfaConfiguration = $GetUserPoolMfaConfigResponse->MfaConfiguration;
+    my $SmsMfaConfiguration =
+      $GetUserPoolMfaConfigResponse->SmsMfaConfiguration;
+    my $SoftwareTokenMfaConfiguration =
+      $GetUserPoolMfaConfigResponse->SoftwareTokenMfaConfiguration;
+
+    # Returns a L<Paws::CognitoIdp::GetUserPoolMfaConfigResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-idp/GetUserPoolMfaConfig>

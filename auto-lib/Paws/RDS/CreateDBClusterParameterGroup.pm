@@ -27,9 +27,20 @@ as arguments to method CreateDBClusterParameterGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBClusterParameterGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDBClusterParameterGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    # To create a DB cluster parameter group
+    # This example creates a DB cluster parameter group.
+    my $CreateDBClusterParameterGroupResult =
+      $rds->CreateDBClusterParameterGroup(
+      {
+        'DBParameterGroupFamily'      => 'aurora5.6',
+        'DBClusterParameterGroupName' => 'mydbclusterparametergroup',
+        'Description'                 => 'My DB cluster parameter group'
+      }
+      );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/CreateDBClusterParameterGroup>

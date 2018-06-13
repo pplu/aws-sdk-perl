@@ -27,9 +27,20 @@ as arguments to method DescribePendingMaintenanceActions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribePendingMaintenanceActions.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribePendingMaintenanceActions(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    # To list information about pending maintenance actions
+    # This example lists information for all pending maintenance actions for the
+    # specified DB instance.
+    my $PendingMaintenanceActionsMessage =
+      $rds->DescribePendingMaintenanceActions(
+      {
+        'ResourceIdentifier' =>
+          'arn:aws:rds:us-east-1:992648334831:db:mymysqlinstance'
+      }
+      );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/DescribePendingMaintenanceActions>

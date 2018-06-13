@@ -26,9 +26,25 @@ as arguments to method GetSubscriptionDefinitionVersion.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetSubscriptionDefinitionVersion.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetSubscriptionDefinitionVersion(Att1 => $value1, Att2 => $value2, ...);
+    my $greengrass = Paws->service('Greengrass');
+    my $GetSubscriptionDefinitionVersionResponse =
+      $greengrass->GetSubscriptionDefinitionVersion(
+      SubscriptionDefinitionId        => 'My__string',
+      SubscriptionDefinitionVersionId => 'My__string',
+
+      );
+
+    # Results:
+    my $Definition = $GetSubscriptionDefinitionVersionResponse->Definition;
+    my $CreationTimestamp =
+      $GetSubscriptionDefinitionVersionResponse->CreationTimestamp;
+    my $Arn     = $GetSubscriptionDefinitionVersionResponse->Arn;
+    my $Id      = $GetSubscriptionDefinitionVersionResponse->Id;
+    my $Version = $GetSubscriptionDefinitionVersionResponse->Version;
+
+# Returns a L<Paws::Greengrass::GetSubscriptionDefinitionVersionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>

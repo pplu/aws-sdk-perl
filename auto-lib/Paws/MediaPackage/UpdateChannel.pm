@@ -26,9 +26,21 @@ as arguments to method UpdateChannel.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateChannel.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateChannel(Att1 => $value1, Att2 => $value2, ...);
+    my $mediapackage = Paws->service('MediaPackage');
+    my $UpdateChannelResponse = $mediapackage->UpdateChannel(
+      Id          => 'My__string',
+      Description => 'My__string',    # OPTIONAL
+    );
+
+    # Results:
+    my $Arn         = $UpdateChannelResponse->Arn;
+    my $Description = $UpdateChannelResponse->Description;
+    my $HlsIngest   = $UpdateChannelResponse->HlsIngest;
+    my $Id          = $UpdateChannelResponse->Id;
+
+    # Returns a L<Paws::MediaPackage::UpdateChannelResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mediapackage/UpdateChannel>

@@ -28,9 +28,28 @@ as arguments to method AssumeRoleWithSAML.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AssumeRoleWithSAML.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AssumeRoleWithSAML(Att1 => $value1, Att2 => $value2, ...);
+    my $sts = Paws->service('STS');
+    my $AssumeRoleWithSAMLResponse = $sts->AssumeRoleWithSAML(
+      PrincipalArn    => 'MyarnType',
+      RoleArn         => 'MyarnType',
+      SAMLAssertion   => 'MySAMLAssertionType',
+      DurationSeconds => 1,                                # OPTIONAL
+      Policy          => 'MysessionPolicyDocumentType',    # OPTIONAL
+    );
+
+    # Results:
+    my $NameQualifier    = $AssumeRoleWithSAMLResponse->NameQualifier;
+    my $PackedPolicySize = $AssumeRoleWithSAMLResponse->PackedPolicySize;
+    my $Subject          = $AssumeRoleWithSAMLResponse->Subject;
+    my $Audience         = $AssumeRoleWithSAMLResponse->Audience;
+    my $AssumedRoleUser  = $AssumeRoleWithSAMLResponse->AssumedRoleUser;
+    my $Credentials      = $AssumeRoleWithSAMLResponse->Credentials;
+    my $Issuer           = $AssumeRoleWithSAMLResponse->Issuer;
+    my $SubjectType      = $AssumeRoleWithSAMLResponse->SubjectType;
+
+    # Returns a L<Paws::STS::AssumeRoleWithSAMLResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sts/AssumeRoleWithSAML>

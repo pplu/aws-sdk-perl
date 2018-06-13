@@ -33,9 +33,35 @@ as arguments to method ListObjectVersions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListObjectVersions.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListObjectVersions(Att1 => $value1, Att2 => $value2, ...);
+    my $s3 = Paws->service('S3');
+    my $ListObjectVersionsOutput = $s3->ListObjectVersions(
+      Bucket          => 'MyBucketName',
+      Delimiter       => 'MyDelimiter',          # OPTIONAL
+      EncodingType    => 'url',                  # OPTIONAL
+      KeyMarker       => 'MyKeyMarker',          # OPTIONAL
+      MaxKeys         => 1,                      # OPTIONAL
+      Prefix          => 'MyPrefix',             # OPTIONAL
+      VersionIdMarker => 'MyVersionIdMarker',    # OPTIONAL
+    );
+
+    # Results:
+    my $IsTruncated         = $ListObjectVersionsOutput->IsTruncated;
+    my $NextKeyMarker       = $ListObjectVersionsOutput->NextKeyMarker;
+    my $Versions            = $ListObjectVersionsOutput->Versions;
+    my $Delimiter           = $ListObjectVersionsOutput->Delimiter;
+    my $KeyMarker           = $ListObjectVersionsOutput->KeyMarker;
+    my $Name                = $ListObjectVersionsOutput->Name;
+    my $CommonPrefixes      = $ListObjectVersionsOutput->CommonPrefixes;
+    my $VersionIdMarker     = $ListObjectVersionsOutput->VersionIdMarker;
+    my $MaxKeys             = $ListObjectVersionsOutput->MaxKeys;
+    my $NextVersionIdMarker = $ListObjectVersionsOutput->NextVersionIdMarker;
+    my $Prefix              = $ListObjectVersionsOutput->Prefix;
+    my $EncodingType        = $ListObjectVersionsOutput->EncodingType;
+    my $DeleteMarkers       = $ListObjectVersionsOutput->DeleteMarkers;
+
+    # Returns a L<Paws::S3::ListObjectVersionsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/ListObjectVersions>

@@ -26,9 +26,33 @@ as arguments to method CreateIntentVersion.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateIntentVersion.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateIntentVersion(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    my $CreateIntentVersionResponse = $models . lex->CreateIntentVersion(
+      Name     => 'MyIntentName',
+      Checksum => 'MyString',       # OPTIONAL
+    );
+
+    # Results:
+    my $SampleUtterances    = $CreateIntentVersionResponse->SampleUtterances;
+    my $ConfirmationPrompt  = $CreateIntentVersionResponse->ConfirmationPrompt;
+    my $CreatedDate         = $CreateIntentVersionResponse->CreatedDate;
+    my $FollowUpPrompt      = $CreateIntentVersionResponse->FollowUpPrompt;
+    my $Version             = $CreateIntentVersionResponse->Version;
+    my $Description         = $CreateIntentVersionResponse->Description;
+    my $RejectionStatement  = $CreateIntentVersionResponse->RejectionStatement;
+    my $ConclusionStatement = $CreateIntentVersionResponse->ConclusionStatement;
+    my $LastUpdatedDate     = $CreateIntentVersionResponse->LastUpdatedDate;
+    my $Checksum            = $CreateIntentVersionResponse->Checksum;
+    my $ParentIntentSignature =
+      $CreateIntentVersionResponse->ParentIntentSignature;
+    my $Name                = $CreateIntentVersionResponse->Name;
+    my $FulfillmentActivity = $CreateIntentVersionResponse->FulfillmentActivity;
+    my $DialogCodeHook      = $CreateIntentVersionResponse->DialogCodeHook;
+    my $Slots               = $CreateIntentVersionResponse->Slots;
+
+    # Returns a L<Paws::LexModels::CreateIntentVersionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/lex/>

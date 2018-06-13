@@ -25,9 +25,20 @@ as arguments to method AddClientIDToOpenIDConnectProvider.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddClientIDToOpenIDConnectProvider.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AddClientIDToOpenIDConnectProvider(Att1 => $value1, Att2 => $value2, ...);
+    my $iam = Paws->service('IAM');
+    # To add a client ID (audience) to an Open-ID Connect (OIDC) provider
+    # The following add-client-id-to-open-id-connect-provider command adds the
+    # client ID my-application-ID to the OIDC provider named server.example.com:
+    $iam->AddClientIDToOpenIDConnectProvider(
+      {
+        'ClientID' => 'my-application-ID',
+        'OpenIDConnectProviderArn' =>
+          'arn:aws:iam::123456789012:oidc-provider/server.example.com'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/AddClientIDToOpenIDConnectProvider>

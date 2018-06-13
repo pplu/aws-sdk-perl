@@ -30,9 +30,29 @@ as arguments to method ListInstances.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListInstances.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListInstances(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticmapreduce = Paws->service('EMR');
+    my $ListInstancesOutput = $elasticmapreduce->ListInstances(
+      ClusterId          => 'MyClusterId',
+      InstanceFleetId    => 'MyInstanceFleetId',    # OPTIONAL
+      InstanceFleetType  => 'MASTER',               # OPTIONAL
+      InstanceGroupId    => 'MyInstanceGroupId',    # OPTIONAL
+      InstanceGroupTypes => [
+        'MASTER', ...                               # values: MASTER, CORE, TASK
+      ],                                            # OPTIONAL
+      InstanceStates => [
+        'AWAITING_FULFILLMENT',
+        ... # values: AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING, TERMINATED
+      ],    # OPTIONAL
+      Marker => 'MyMarker',    # OPTIONAL
+    );
+
+    # Results:
+    my $Instances = $ListInstancesOutput->Instances;
+    my $Marker    = $ListInstancesOutput->Marker;
+
+    # Returns a L<Paws::EMR::ListInstancesOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce/ListInstances>

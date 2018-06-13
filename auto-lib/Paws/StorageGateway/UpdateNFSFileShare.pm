@@ -34,9 +34,32 @@ as arguments to method UpdateNFSFileShare.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateNFSFileShare.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateNFSFileShare(Att1 => $value1, Att2 => $value2, ...);
+    my $storagegateway = Paws->service('StorageGateway');
+    my $UpdateNFSFileShareOutput = $storagegateway->UpdateNFSFileShare(
+      FileShareARN         => 'MyFileShareARN',
+      ClientList           => [ 'MyIPV4AddressCIDR', ... ],    # OPTIONAL
+      DefaultStorageClass  => 'MyStorageClass',                # OPTIONAL
+      GuessMIMETypeEnabled => 1,                               # OPTIONAL
+      KMSEncrypted         => 1,                               # OPTIONAL
+      KMSKey               => 'MyKMSKey',                      # OPTIONAL
+      NFSFileShareDefaults => {
+        OwnerId       => 1,                     # max: 4294967294; OPTIONAL
+        FileMode      => 'MyPermissionMode',    # min: 1, max: 4; OPTIONAL
+        GroupId       => 1,                     # max: 4294967294; OPTIONAL
+        DirectoryMode => 'MyPermissionMode',    # min: 1, max: 4; OPTIONAL
+      },    # OPTIONAL
+      ObjectACL     => 'private',     # OPTIONAL
+      ReadOnly      => 1,             # OPTIONAL
+      RequesterPays => 1,             # OPTIONAL
+      Squash        => 'MySquash',    # OPTIONAL
+    );
+
+    # Results:
+    my $FileShareARN = $UpdateNFSFileShareOutput->FileShareARN;
+
+    # Returns a L<Paws::StorageGateway::UpdateNFSFileShareOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/storagegateway/UpdateNFSFileShare>

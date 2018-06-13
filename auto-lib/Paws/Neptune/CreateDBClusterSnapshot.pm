@@ -26,9 +26,25 @@ as arguments to method CreateDBClusterSnapshot.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBClusterSnapshot.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDBClusterSnapshot(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('Neptune');
+    my $CreateDBClusterSnapshotResult = $rds->CreateDBClusterSnapshot(
+      DBClusterIdentifier         => 'MyString',
+      DBClusterSnapshotIdentifier => 'MyString',
+      Tags                        => [
+        {
+          Key   => 'MyString',
+          Value => 'MyString',
+        },
+        ...
+      ],    # OPTIONAL
+    );
+
+    # Results:
+    my $DBClusterSnapshot = $CreateDBClusterSnapshotResult->DBClusterSnapshot;
+
+    # Returns a L<Paws::Neptune::CreateDBClusterSnapshotResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/CreateDBClusterSnapshot>

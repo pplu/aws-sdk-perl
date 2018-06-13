@@ -25,9 +25,37 @@ as arguments to method AssociateVirtualInterface.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AssociateVirtualInterface.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AssociateVirtualInterface(Att1 => $value1, Att2 => $value2, ...);
+    my $directconnect = Paws->service('DirectConnect');
+    my $VirtualInterface = $directconnect->AssociateVirtualInterface(
+      ConnectionId       => 'MyConnectionId',
+      VirtualInterfaceId => 'MyVirtualInterfaceId',
+
+    );
+
+    # Results:
+    my $VirtualGatewayId       = $VirtualInterface->VirtualGatewayId;
+    my $DirectConnectGatewayId = $VirtualInterface->DirectConnectGatewayId;
+    my $AddressFamily          = $VirtualInterface->AddressFamily;
+    my $VirtualInterfaceType   = $VirtualInterface->VirtualInterfaceType;
+    my $AuthKey                = $VirtualInterface->AuthKey;
+    my $Asn                    = $VirtualInterface->Asn;
+    my $VirtualInterfaceName   = $VirtualInterface->VirtualInterfaceName;
+    my $BgpPeers               = $VirtualInterface->BgpPeers;
+    my $VirtualInterfaceId     = $VirtualInterface->VirtualInterfaceId;
+    my $Location               = $VirtualInterface->Location;
+    my $RouteFilterPrefixes    = $VirtualInterface->RouteFilterPrefixes;
+    my $Vlan                   = $VirtualInterface->Vlan;
+    my $ConnectionId           = $VirtualInterface->ConnectionId;
+    my $CustomerRouterConfig   = $VirtualInterface->CustomerRouterConfig;
+    my $CustomerAddress        = $VirtualInterface->CustomerAddress;
+    my $AmazonSideAsn          = $VirtualInterface->AmazonSideAsn;
+    my $AmazonAddress          = $VirtualInterface->AmazonAddress;
+    my $VirtualInterfaceState  = $VirtualInterface->VirtualInterfaceState;
+    my $OwnerAccount           = $VirtualInterface->OwnerAccount;
+
+    # Returns a L<Paws::DirectConnect::VirtualInterface> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/directconnect/AssociateVirtualInterface>

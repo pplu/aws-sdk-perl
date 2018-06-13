@@ -29,9 +29,33 @@ as arguments to method PostCommentForComparedCommit.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PostCommentForComparedCommit.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PostCommentForComparedCommit(Att1 => $value1, Att2 => $value2, ...);
+    my $codecommit = Paws->service('CodeCommit');
+    my $PostCommentForComparedCommitOutput =
+      $codecommit->PostCommentForComparedCommit(
+      AfterCommitId      => 'MyCommitId',
+      Content            => 'MyContent',
+      RepositoryName     => 'MyRepositoryName',
+      BeforeCommitId     => 'MyCommitId',              # OPTIONAL
+      ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
+      Location           => {
+        filePosition        => 1,           # OPTIONAL
+        relativeFileVersion => 'BEFORE',    # values: BEFORE, AFTER; OPTIONAL
+        filePath            => 'MyPath',    # OPTIONAL
+      },    # OPTIONAL
+      );
+
+    # Results:
+    my $Location       = $PostCommentForComparedCommitOutput->Location;
+    my $RepositoryName = $PostCommentForComparedCommitOutput->RepositoryName;
+    my $BeforeBlobId   = $PostCommentForComparedCommitOutput->BeforeBlobId;
+    my $AfterBlobId    = $PostCommentForComparedCommitOutput->AfterBlobId;
+    my $Comment        = $PostCommentForComparedCommitOutput->Comment;
+    my $AfterCommitId  = $PostCommentForComparedCommitOutput->AfterCommitId;
+    my $BeforeCommitId = $PostCommentForComparedCommitOutput->BeforeCommitId;
+
+    # Returns a L<Paws::CodeCommit::PostCommentForComparedCommitOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codecommit/PostCommentForComparedCommit>

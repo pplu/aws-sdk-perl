@@ -26,9 +26,21 @@ as arguments to method UnsubscribeFromEvent.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UnsubscribeFromEvent.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UnsubscribeFromEvent(Att1 => $value1, Att2 => $value2, ...);
+    my $inspector = Paws->service('Inspector');
+    # Unsubscribe from event
+    # Disables the process of sending Amazon Simple Notification Service (SNS)
+    # notifications about a specified event to a specified SNS topic.
+    $inspector->UnsubscribeFromEvent(
+      {
+        'Event' => 'ASSESSMENT_RUN_COMPLETED',
+        'ResourceArn' =>
+'arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-7sbz2Kz0',
+        'TopicArn' => 'arn:aws:sns:us-west-2:123456789012:exampletopic'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/inspector/UnsubscribeFromEvent>

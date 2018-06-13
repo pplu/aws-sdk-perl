@@ -39,9 +39,110 @@ as arguments to method UpdateStack.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateStack.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateStack(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudformation = Paws->service('CloudFormation');
+    # To update an AWS CloudFormation stack
+    # This example updates the template and input parameters for the specified
+    # stack.
+    my $UpdateStackOutput = $cloudformation->UpdateStack(
+      {
+        'ResourceTypes' => [
+
+        ],
+        'TemplateURL' => 'https://s3.amazonaws.com/example/updated.template',
+        'Tags'        => [
+
+        ],
+        'StackName'        => 'MyStack',
+        'NotificationARNs' => [
+
+        ],
+        'Parameters' => [
+
+          {
+            'ParameterValue' => 'ExampleKeyPair',
+            'ParameterKey'   => 'KeyPairName'
+          },
+
+          {
+            'ParameterValue' => 'ExampleSubnetID1, ExampleSubnetID2',
+            'ParameterKey'   => 'SubnetIDs'
+          }
+        ]
+      }
+    );
+
+    # Results:
+    my $StackId = $UpdateStackOutput->StackId;
+
+   # Returns a L<Paws::CloudFormation::UpdateStackOutput> object.
+   # To update an AWS CloudFormation stack
+   # This example updates only the the specified parameter value for the
+   # specified stack. If you don't specify a parameter value, AWS CloudFormation
+   # uses the default value from the template.
+    my $UpdateStackOutput = $cloudformation->UpdateStack(
+      {
+        'Parameters' => [
+
+          {
+            'UsePreviousValue' => true,
+            'ParameterKey'     => 'KeyPairName'
+          },
+
+          {
+            'ParameterKey'   => 'SubnetIDs',
+            'ParameterValue' => 'SampleSubnetID1, UpdatedSampleSubnetID2'
+          }
+        ],
+        'NotificationARNs' => [
+
+        ],
+        'TemplateURL'   => 'https://s3.amazonaws.com/example/updated.template',
+        'ResourceTypes' => [
+
+        ],
+        'Tags' => [
+
+        ],
+        'StackName' => 'MyStack'
+      }
+    );
+
+    # Results:
+    my $StackId = $UpdateStackOutput->StackId;
+
+    # Returns a L<Paws::CloudFormation::UpdateStackOutput> object.
+    # To update an AWS CloudFormation stack
+    # This example adds two stack notification topics to the specified stack.
+    my $UpdateStackOutput = $cloudformation->UpdateStack(
+      {
+        'ResourceTypes' => [
+
+        ],
+        'StackName'   => 'MyStack',
+        'TemplateURL' => 'https://s3.amazonaws.com/example/updated.template',
+        'UsePreviousTemplate' => true,
+        'Capabilities'        => [
+
+        ],
+        'NotificationARNs' => [
+          'arn:aws:sns:use-east-1:123456789012:mytopic1',
+          'arn:aws:sns:us-east-1:123456789012:mytopic2'
+        ],
+        'Tags' => [
+
+        ],
+        'Parameters' => [
+
+        ]
+      }
+    );
+
+    # Results:
+    my $StackId = $UpdateStackOutput->StackId;
+
+    # Returns a L<Paws::CloudFormation::UpdateStackOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudformation/UpdateStack>

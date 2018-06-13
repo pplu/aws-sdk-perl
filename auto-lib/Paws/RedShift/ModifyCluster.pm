@@ -41,9 +41,34 @@ as arguments to method ModifyCluster.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyCluster.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyCluster(Att1 => $value1, Att2 => $value2, ...);
+    my $redshift = Paws->service('RedShift');
+    my $ModifyClusterResult = $redshift->ModifyCluster(
+      ClusterIdentifier                => 'MyString',
+      AllowVersionUpgrade              => 1,                      # OPTIONAL
+      AutomatedSnapshotRetentionPeriod => 1,                      # OPTIONAL
+      ClusterParameterGroupName        => 'MyString',             # OPTIONAL
+      ClusterSecurityGroups            => [ 'MyString', ... ],    # OPTIONAL
+      ClusterType                      => 'MyString',             # OPTIONAL
+      ClusterVersion                   => 'MyString',             # OPTIONAL
+      ElasticIp                        => 'MyString',             # OPTIONAL
+      EnhancedVpcRouting               => 1,                      # OPTIONAL
+      HsmClientCertificateIdentifier   => 'MyString',             # OPTIONAL
+      HsmConfigurationIdentifier       => 'MyString',             # OPTIONAL
+      MasterUserPassword               => 'MyString',             # OPTIONAL
+      NewClusterIdentifier             => 'MyString',             # OPTIONAL
+      NodeType                         => 'MyString',             # OPTIONAL
+      NumberOfNodes                    => 1,                      # OPTIONAL
+      PreferredMaintenanceWindow       => 'MyString',             # OPTIONAL
+      PubliclyAccessible               => 1,                      # OPTIONAL
+      VpcSecurityGroupIds              => [ 'MyString', ... ],    # OPTIONAL
+    );
+
+    # Results:
+    my $Cluster = $ModifyClusterResult->Cluster;
+
+    # Returns a L<Paws::RedShift::ModifyClusterResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/redshift/ModifyCluster>

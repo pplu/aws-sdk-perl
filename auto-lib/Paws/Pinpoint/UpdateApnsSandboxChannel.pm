@@ -26,9 +26,29 @@ as arguments to method UpdateApnsSandboxChannel.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateApnsSandboxChannel.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateApnsSandboxChannel(Att1 => $value1, Att2 => $value2, ...);
+    my $pinpoint = Paws->service('Pinpoint');
+    my $UpdateApnsSandboxChannelResponse = $pinpoint->UpdateApnsSandboxChannel(
+      APNSSandboxChannelRequest => {
+        TeamId                      => 'My__string',    # OPTIONAL
+        TokenKeyId                  => 'My__string',    # OPTIONAL
+        BundleId                    => 'My__string',    # OPTIONAL
+        Certificate                 => 'My__string',    # OPTIONAL
+        DefaultAuthenticationMethod => 'My__string',    # OPTIONAL
+        Enabled                     => 1,               # OPTIONAL
+        PrivateKey                  => 'My__string',    # OPTIONAL
+        TokenKey                    => 'My__string',    # OPTIONAL
+      },
+      ApplicationId => 'My__string',
+
+    );
+
+    # Results:
+    my $APNSSandboxChannelResponse =
+      $UpdateApnsSandboxChannelResponse->APNSSandboxChannelResponse;
+
+    # Returns a L<Paws::Pinpoint::UpdateApnsSandboxChannelResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

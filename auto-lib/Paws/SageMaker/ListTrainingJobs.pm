@@ -33,9 +33,27 @@ as arguments to method ListTrainingJobs.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTrainingJobs.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListTrainingJobs(Att1 => $value1, Att2 => $value2, ...);
+    my $sagemaker = Paws->service('SageMaker');
+    my $ListTrainingJobsResponse = $sagemaker->ListTrainingJobs(
+      CreationTimeAfter      => '1970-01-01T01:00:00',    # OPTIONAL
+      CreationTimeBefore     => '1970-01-01T01:00:00',    # OPTIONAL
+      LastModifiedTimeAfter  => '1970-01-01T01:00:00',    # OPTIONAL
+      LastModifiedTimeBefore => '1970-01-01T01:00:00',    # OPTIONAL
+      MaxResults             => 1,                        # OPTIONAL
+      NameContains           => 'MyNameContains',         # OPTIONAL
+      NextToken              => 'MyNextToken',            # OPTIONAL
+      SortBy                 => 'Name',                   # OPTIONAL
+      SortOrder              => 'Ascending',              # OPTIONAL
+      StatusEquals           => 'InProgress',             # OPTIONAL
+    );
+
+    # Results:
+    my $TrainingJobSummaries = $ListTrainingJobsResponse->TrainingJobSummaries;
+    my $NextToken            = $ListTrainingJobsResponse->NextToken;
+
+    # Returns a L<Paws::SageMaker::ListTrainingJobsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker/ListTrainingJobs>

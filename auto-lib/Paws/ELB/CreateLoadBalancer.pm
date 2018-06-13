@@ -30,9 +30,142 @@ as arguments to method CreateLoadBalancer.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateLoadBalancer.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateLoadBalancer(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticloadbalancing = Paws->service('ELB');
+    # To create an HTTP load balancer in a VPC
+    # This example creates a load balancer with an HTTP listener in a VPC.
+    my $CreateAccessPointOutput = $elasticloadbalancing->CreateLoadBalancer(
+      {
+        'Subnets'          => ['subnet-15aaab61'],
+        'SecurityGroups'   => ['sg-a61988c3'],
+        'LoadBalancerName' => 'my-load-balancer',
+        'Listeners'        => [
+
+          {
+            'InstanceProtocol' => 'HTTP',
+            'LoadBalancerPort' => 80,
+            'InstancePort'     => 80,
+            'Protocol'         => 'HTTP'
+          }
+        ]
+      }
+    );
+
+    # Results:
+    my $DNSName = $CreateAccessPointOutput->DNSName;
+
+    # Returns a L<Paws::ELB::CreateAccessPointOutput> object.
+    # To create an HTTP load balancer in EC2-Classic
+    # This example creates a load balancer with an HTTP listener in EC2-Classic.
+    my $CreateAccessPointOutput = $elasticloadbalancing->CreateLoadBalancer(
+      {
+        'Listeners' => [
+
+          {
+            'Protocol'         => 'HTTP',
+            'LoadBalancerPort' => 80,
+            'InstancePort'     => 80,
+            'InstanceProtocol' => 'HTTP'
+          }
+        ],
+        'LoadBalancerName'  => 'my-load-balancer',
+        'AvailabilityZones' => ['us-west-2a']
+      }
+    );
+
+    # Results:
+    my $DNSName = $CreateAccessPointOutput->DNSName;
+
+    # Returns a L<Paws::ELB::CreateAccessPointOutput> object.
+    # To create an HTTPS load balancer in a VPC
+    # This example creates a load balancer with an HTTPS listener in a VPC.
+    my $CreateAccessPointOutput = $elasticloadbalancing->CreateLoadBalancer(
+      {
+        'Listeners' => [
+
+          {
+            'InstancePort'     => 80,
+            'LoadBalancerPort' => 80,
+            'InstanceProtocol' => 'HTTP',
+            'Protocol'         => 'HTTP'
+          },
+
+          {
+            'LoadBalancerPort' => 443,
+            'InstancePort'     => 80,
+            'SSLCertificateId' =>
+              'arn:aws:iam::123456789012:server-certificate/my-server-cert',
+            'InstanceProtocol' => 'HTTP',
+            'Protocol'         => 'HTTPS'
+          }
+        ],
+        'LoadBalancerName' => 'my-load-balancer',
+        'Subnets'          => ['subnet-15aaab61'],
+        'SecurityGroups'   => ['sg-a61988c3']
+      }
+    );
+
+    # Results:
+    my $DNSName = $CreateAccessPointOutput->DNSName;
+
+   # Returns a L<Paws::ELB::CreateAccessPointOutput> object.
+   # To create an HTTPS load balancer in EC2-Classic
+   # This example creates a load balancer with an HTTPS listener in EC2-Classic.
+    my $CreateAccessPointOutput = $elasticloadbalancing->CreateLoadBalancer(
+      {
+        'Listeners' => [
+
+          {
+            'InstanceProtocol' => 'HTTP',
+            'InstancePort'     => 80,
+            'LoadBalancerPort' => 80,
+            'Protocol'         => 'HTTP'
+          },
+
+          {
+            'Protocol'         => 'HTTPS',
+            'LoadBalancerPort' => 443,
+            'InstancePort'     => 80,
+            'SSLCertificateId' =>
+              'arn:aws:iam::123456789012:server-certificate/my-server-cert',
+            'InstanceProtocol' => 'HTTP'
+          }
+        ],
+        'LoadBalancerName'  => 'my-load-balancer',
+        'AvailabilityZones' => ['us-west-2a']
+      }
+    );
+
+    # Results:
+    my $DNSName = $CreateAccessPointOutput->DNSName;
+
+    # Returns a L<Paws::ELB::CreateAccessPointOutput> object.
+    # To create an internal load balancer
+    # This example creates an internal load balancer with an HTTP listener in a
+    # VPC.
+    my $CreateAccessPointOutput = $elasticloadbalancing->CreateLoadBalancer(
+      {
+        'LoadBalancerName' => 'my-load-balancer',
+        'Subnets'          => ['subnet-15aaab61'],
+        'SecurityGroups'   => ['sg-a61988c3'],
+        'Listeners'        => [
+
+          {
+            'InstanceProtocol' => 'HTTP',
+            'LoadBalancerPort' => 80,
+            'InstancePort'     => 80,
+            'Protocol'         => 'HTTP'
+          }
+        ],
+        'Scheme' => 'internal'
+      }
+    );
+
+    # Results:
+    my $DNSName = $CreateAccessPointOutput->DNSName;
+
+    # Returns a L<Paws::ELB::CreateAccessPointOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing/CreateLoadBalancer>

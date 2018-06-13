@@ -46,9 +46,269 @@ as arguments to method RunJobFlow.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RunJobFlow.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RunJobFlow(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticmapreduce = Paws->service('EMR');
+    my $RunJobFlowOutput = $elasticmapreduce->RunJobFlow(
+      Instances => {
+        MasterInstanceType            => 'MyInstanceType',    # min: 1, max: 256
+        AdditionalSlaveSecurityGroups => [
+          'MyXmlStringMaxLen256', ...    # max: 256; OPTIONAL
+        ],                               # OPTIONAL
+        InstanceCount  => 1,
+        InstanceGroups => [
+          {
+            InstanceRole      => 'MASTER',          # values: MASTER, CORE, TASK
+            InstanceCount     => 1,
+            InstanceType      => 'MyInstanceType',  # min: 1, max: 256
+            AutoScalingPolicy => {
+              Rules => [
+                {
+                  Trigger => {
+                    CloudWatchAlarmDefinition => {
+                      Period             => 1,
+                      MetricName         => 'MyString',
+                      Threshold          => 1,                        # OPTIONAL
+                      ComparisonOperator => 'GREATER_THAN_OR_EQUAL'
+                      , # values: GREATER_THAN_OR_EQUAL, GREATER_THAN, LESS_THAN, LESS_THAN_OR_EQUAL
+                      Unit => 'NONE'
+                      , # values: NONE, SECONDS, MICRO_SECONDS, MILLI_SECONDS, BYTES, KILO_BYTES, MEGA_BYTES, GIGA_BYTES, TERA_BYTES, BITS, KILO_BITS, MEGA_BITS, GIGA_BITS, TERA_BITS, PERCENT, COUNT, BYTES_PER_SECOND, KILO_BYTES_PER_SECOND, MEGA_BYTES_PER_SECOND, GIGA_BYTES_PER_SECOND, TERA_BYTES_PER_SECOND, BITS_PER_SECOND, KILO_BITS_PER_SECOND, MEGA_BITS_PER_SECOND, GIGA_BITS_PER_SECOND, TERA_BITS_PER_SECOND, COUNT_PER_SECOND; OPTIONAL
+                      Dimensions => [
+                        {
+                          Value => 'MyString',
+                          Key   => 'MyString',
+                        },
+                        ...
+                      ],    # OPTIONAL
+                      Statistic => 'SAMPLE_COUNT'
+                      , # values: SAMPLE_COUNT, AVERAGE, SUM, MINIMUM, MAXIMUM; OPTIONAL
+                      EvaluationPeriods => 1,
+                      Namespace         => 'MyString',
+                    },
+
+                  },
+                  Action => {
+                    SimpleScalingPolicyConfiguration => {
+                      ScalingAdjustment => 1,
+                      AdjustmentType    => 'CHANGE_IN_CAPACITY'
+                      , # values: CHANGE_IN_CAPACITY, PERCENT_CHANGE_IN_CAPACITY, EXACT_CAPACITY; OPTIONAL
+                      CoolDown => 1,
+                    },
+                    Market => 'ON_DEMAND',   # values: ON_DEMAND, SPOT; OPTIONAL
+                  },
+                  Name        => 'MyString',
+                  Description => 'MyString',
+                },
+                ...
+              ],
+              Constraints => {
+                MaxCapacity => 1,
+                MinCapacity => 1,
+
+              },
+
+            },    # OPTIONAL
+            Market           => 'ON_DEMAND', # values: ON_DEMAND, SPOT; OPTIONAL
+            EbsConfiguration => {
+              EbsOptimized          => 1,    # OPTIONAL
+              EbsBlockDeviceConfigs => [
+                {
+                  VolumeSpecification => {
+                    VolumeType => 'MyString',
+                    SizeInGB   => 1,
+                    Iops       => 1,
+                  },
+                  VolumesPerInstance => 1,
+                },
+                ...
+              ],                             # OPTIONAL
+            },    # OPTIONAL
+            Configurations => [
+              {
+                Configurations => <ConfigurationList>,
+                Classification => 'MyString',
+                Properties     => { 'MyString' => 'MyString', },    # OPTIONAL
+              },
+              ...
+            ],                                                      # OPTIONAL
+            Name     => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+            BidPrice => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+          },
+          ...
+        ],                                         # OPTIONAL
+        TerminationProtected => 1,                         # OPTIONAL
+        HadoopVersion        => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+        InstanceFleets       => [
+          {
+            InstanceFleetType   => 'MASTER',    # values: MASTER, CORE, TASK
+            TargetSpotCapacity  => 1,           # OPTIONAL
+            InstanceTypeConfigs => [
+              {
+                InstanceType => 'MyInstanceType',          # min: 1, max: 256
+                BidPrice     => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+                BidPriceAsPercentageOfOnDemandPrice => 1,  # OPTIONAL
+                WeightedCapacity                    => 1,  # OPTIONAL
+                Configurations                      => [
+                  {
+                    Configurations => <ConfigurationList>,
+                    Classification => 'MyString',
+                    Properties     => { 'MyString' => 'MyString', },  # OPTIONAL
+                  },
+                  ...
+                ],                                                    # OPTIONAL
+                EbsConfiguration => {
+                  EbsOptimized          => 1,                         # OPTIONAL
+                  EbsBlockDeviceConfigs => [
+                    {
+                      VolumeSpecification => {
+                        VolumeType => 'MyString',
+                        SizeInGB   => 1,
+                        Iops       => 1,
+                      },
+                      VolumesPerInstance => 1,
+                    },
+                    ...
+                  ],                                                  # OPTIONAL
+                },    # OPTIONAL
+              },
+              ...
+            ],        # OPTIONAL
+            Name                 => 'MyXmlStringMaxLen256', # max: 256; OPTIONAL
+            LaunchSpecifications => {
+              SpotSpecification => {
+                TimeoutAction => 'SWITCH_TO_ON_DEMAND'
+                ,    # values: SWITCH_TO_ON_DEMAND, TERMINATE_CLUSTER
+                TimeoutDurationMinutes => 1,    # OPTIONAL
+                BlockDurationMinutes   => 1,    # OPTIONAL
+              },
+
+            },    # OPTIONAL
+            TargetOnDemandCapacity => 1,    # OPTIONAL
+          },
+          ...
+        ],                                  # OPTIONAL
+        EmrManagedMasterSecurityGroup =>
+          'MyXmlStringMaxLen256',           # max: 256; OPTIONAL
+        ServiceAccessSecurityGroup =>
+          'MyXmlStringMaxLen256',           # max: 256; OPTIONAL
+        KeepJobFlowAliveWhenNoSteps => 1,   # OPTIONAL
+        Ec2SubnetIds                => [
+          'MyXmlStringMaxLen256', ...       # max: 256; OPTIONAL
+        ],                                  # OPTIONAL
+        AdditionalMasterSecurityGroups => [
+          'MyXmlStringMaxLen256', ...       # max: 256; OPTIONAL
+        ],                                  # OPTIONAL
+        Ec2SubnetId => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+        Ec2KeyName  => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+        Placement   => {
+          AvailabilityZones => [
+            'MyXmlStringMaxLen256', ...           # max: 256; OPTIONAL
+          ],                                      # OPTIONAL
+          AvailabilityZone => 'MyXmlString',      # max: 10280; OPTIONAL
+        },    # OPTIONAL
+        SlaveInstanceType => 'MyInstanceType',    # min: 1, max: 256
+        EmrManagedSlaveSecurityGroup =>
+          'MyXmlStringMaxLen256',                 # max: 256; OPTIONAL
+      },
+      Name           => 'MyXmlStringMaxLen256',
+      AdditionalInfo => 'MyXmlString',             # OPTIONAL
+      AmiVersion     => 'MyXmlStringMaxLen256',    # OPTIONAL
+      Applications   => [
+        {
+          Version        => 'MyString',
+          Name           => 'MyString',
+          AdditionalInfo => { 'MyString' => 'MyString', },    # OPTIONAL
+          Args           => [ 'MyString', ... ],              # OPTIONAL
+        },
+        ...
+      ],                                                      # OPTIONAL
+      AutoScalingRole  => 'MyXmlString',                      # OPTIONAL
+      BootstrapActions => [
+        {
+          Name                  => 'MyXmlStringMaxLen256',  # max: 256; OPTIONAL
+          ScriptBootstrapAction => {
+            Path => 'MyXmlString',    # max: 10280; OPTIONAL
+            Args => [
+              'MyXmlString', ...      # max: 10280; OPTIONAL
+            ],                        # OPTIONAL
+          },
+
+        },
+        ...
+      ],                              # OPTIONAL
+      Configurations => [
+        {
+          Configurations => <ConfigurationList>,
+          Classification => 'MyString',
+          Properties     => { 'MyString' => 'MyString', },    # OPTIONAL
+        },
+        ...
+      ],                                                      # OPTIONAL
+      CustomAmiId        => 'MyXmlStringMaxLen256',           # OPTIONAL
+      EbsRootVolumeSize  => 1,                                # OPTIONAL
+      JobFlowRole        => 'MyXmlString',                    # OPTIONAL
+      KerberosAttributes => {
+        KdcAdminPassword     => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+        Realm                => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+        ADDomainJoinPassword => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+        ADDomainJoinUser     => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+        CrossRealmTrustPrincipalPassword =>
+          'MyXmlStringMaxLen256',                          # max: 256; OPTIONAL
+      },    # OPTIONAL
+      LogUri               => 'MyXmlString',    # OPTIONAL
+      NewSupportedProducts => [
+        {
+          Args => [
+            'MyXmlString', ...                  # max: 10280; OPTIONAL
+          ],                                    # OPTIONAL
+          Name => 'MyXmlStringMaxLen256',       # max: 256; OPTIONAL
+        },
+        ...
+      ],                                        # OPTIONAL
+      ReleaseLabel          => 'MyXmlStringMaxLen256',          # OPTIONAL
+      RepoUpgradeOnBoot     => 'SECURITY',                      # OPTIONAL
+      ScaleDownBehavior     => 'TERMINATE_AT_INSTANCE_HOUR',    # OPTIONAL
+      SecurityConfiguration => 'MyXmlString',                   # OPTIONAL
+      ServiceRole           => 'MyXmlString',                   # OPTIONAL
+      Steps                 => [
+        {
+          HadoopJarStep => {
+            Jar        => 'MyXmlString',    # max: 10280; OPTIONAL
+            Properties => [
+              {
+                Key   => 'MyXmlString',     # max: 10280; OPTIONAL
+                Value => 'MyXmlString',     # max: 10280; OPTIONAL
+              },
+              ...
+            ],                              # OPTIONAL
+            Args => [
+              'MyXmlString', ...            # max: 10280; OPTIONAL
+            ],                              # OPTIONAL
+            MainClass => 'MyXmlString',     # max: 10280; OPTIONAL
+          },
+          Name            => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+          ActionOnFailure => 'TERMINATE_JOB_FLOW'
+          , # values: TERMINATE_JOB_FLOW, TERMINATE_CLUSTER, CANCEL_AND_WAIT, CONTINUE; OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
+      SupportedProducts => [
+        'MyXmlStringMaxLen256', ...    # max: 256; OPTIONAL
+      ],                               # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyString',
+          Value => 'MyString',
+        },
+        ...
+      ],                               # OPTIONAL
+      VisibleToAllUsers => 1,          # OPTIONAL
+    );
+
+    # Results:
+    my $JobFlowId = $RunJobFlowOutput->JobFlowId;
+
+    # Returns a L<Paws::EMR::RunJobFlowOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce/RunJobFlow>

@@ -26,9 +26,24 @@ as arguments to method ReplaceRouteTableAssociation.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ReplaceRouteTableAssociation.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ReplaceRouteTableAssociation(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To replace the route table associated with a subnet
+    # This example associates the specified route table with the subnet for the
+    # specified route table association.
+    my $ReplaceRouteTableAssociationResult = $ec2->ReplaceRouteTableAssociation(
+      {
+        'RouteTableId'  => 'rtb-22574640',
+        'AssociationId' => 'rtbassoc-781d0d1a'
+      }
+    );
+
+    # Results:
+    my $NewAssociationId =
+      $ReplaceRouteTableAssociationResult->NewAssociationId;
+
+    # Returns a L<Paws::EC2::ReplaceRouteTableAssociationResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/ReplaceRouteTableAssociation>

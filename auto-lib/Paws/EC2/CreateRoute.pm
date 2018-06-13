@@ -33,9 +33,21 @@ as arguments to method CreateRoute.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateRoute.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateRoute(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To create a route
+    # This example creates a route for the specified route table. The route
+    # matches all traffic (0.0.0.0/0) and routes it to the specified Internet
+    # gateway.
+    my $CreateRouteResult = $ec2->CreateRoute(
+      {
+        'DestinationCidrBlock' => '0.0.0.0/0',
+        'RouteTableId'         => 'rtb-22574640',
+        'GatewayId'            => 'igw-c0a643a9'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/CreateRoute>

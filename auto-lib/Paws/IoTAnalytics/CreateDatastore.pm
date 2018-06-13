@@ -26,9 +26,23 @@ as arguments to method CreateDatastore.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDatastore.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDatastore(Att1 => $value1, Att2 => $value2, ...);
+    my $iotanalytics = Paws->service('IoTAnalytics');
+    my $CreateDatastoreResponse = $iotanalytics->CreateDatastore(
+      DatastoreName   => 'MyDatastoreName',
+      RetentionPeriod => {
+        numberOfDays => 1,    # min: 1, ; OPTIONAL
+        unlimited    => 1,    # OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $DatastoreName   = $CreateDatastoreResponse->DatastoreName;
+    my $RetentionPeriod = $CreateDatastoreResponse->RetentionPeriod;
+    my $DatastoreArn    = $CreateDatastoreResponse->DatastoreArn;
+
+    # Returns a L<Paws::IoTAnalytics::CreateDatastoreResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iotanalytics/CreateDatastore>

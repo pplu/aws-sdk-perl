@@ -27,9 +27,21 @@ as arguments to method ListDomains.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListDomains.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListDomains(Att1 => $value1, Att2 => $value2, ...);
+    my $swf = Paws->service('SimpleWorkflow');
+    my $DomainInfos = $swf->ListDomains(
+      RegistrationStatus => 'REGISTERED',
+      MaximumPageSize    => 1,                # OPTIONAL
+      NextPageToken      => 'MyPageToken',    # OPTIONAL
+      ReverseOrder       => 1,                # OPTIONAL
+    );
+
+    # Results:
+    my $DomainInfos   = $DomainInfos->DomainInfos;
+    my $NextPageToken = $DomainInfos->NextPageToken;
+
+    # Returns a L<Paws::SimpleWorkflow::DomainInfos> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/swf/ListDomains>

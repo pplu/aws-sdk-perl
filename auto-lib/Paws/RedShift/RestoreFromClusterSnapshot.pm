@@ -45,9 +45,39 @@ as arguments to method RestoreFromClusterSnapshot.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RestoreFromClusterSnapshot.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RestoreFromClusterSnapshot(Att1 => $value1, Att2 => $value2, ...);
+    my $redshift = Paws->service('RedShift');
+    my $RestoreFromClusterSnapshotResult =
+      $redshift->RestoreFromClusterSnapshot(
+      ClusterIdentifier                => 'MyString',
+      SnapshotIdentifier               => 'MyString',
+      AdditionalInfo                   => 'MyString',             # OPTIONAL
+      AllowVersionUpgrade              => 1,                      # OPTIONAL
+      AutomatedSnapshotRetentionPeriod => 1,                      # OPTIONAL
+      AvailabilityZone                 => 'MyString',             # OPTIONAL
+      ClusterParameterGroupName        => 'MyString',             # OPTIONAL
+      ClusterSecurityGroups            => [ 'MyString', ... ],    # OPTIONAL
+      ClusterSubnetGroupName           => 'MyString',             # OPTIONAL
+      ElasticIp                        => 'MyString',             # OPTIONAL
+      EnhancedVpcRouting               => 1,                      # OPTIONAL
+      HsmClientCertificateIdentifier   => 'MyString',             # OPTIONAL
+      HsmConfigurationIdentifier       => 'MyString',             # OPTIONAL
+      IamRoles                         => [ 'MyString', ... ],    # OPTIONAL
+      KmsKeyId                         => 'MyString',             # OPTIONAL
+      NodeType                         => 'MyString',             # OPTIONAL
+      OwnerAccount                     => 'MyString',             # OPTIONAL
+      Port                             => 1,                      # OPTIONAL
+      PreferredMaintenanceWindow       => 'MyString',             # OPTIONAL
+      PubliclyAccessible               => 1,                      # OPTIONAL
+      SnapshotClusterIdentifier        => 'MyString',             # OPTIONAL
+      VpcSecurityGroupIds              => [ 'MyString', ... ],    # OPTIONAL
+      );
+
+    # Results:
+    my $Cluster = $RestoreFromClusterSnapshotResult->Cluster;
+
+    # Returns a L<Paws::RedShift::RestoreFromClusterSnapshotResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/redshift/RestoreFromClusterSnapshot>

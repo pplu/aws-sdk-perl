@@ -28,9 +28,26 @@ as arguments to method CreateJob.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateJob.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateJob(Att1 => $value1, Att2 => $value2, ...);
+    my $importexport = Paws->service('ImportExport');
+    my $CreateJobOutput = $importexport->CreateJob(
+      JobType          => 'Import',
+      Manifest         => 'MyManifest',
+      ValidateOnly     => 1,
+      APIVersion       => 'MyAPIVersion',          # OPTIONAL
+      ManifestAddendum => 'MyManifestAddendum',    # OPTIONAL
+    );
+
+    # Results:
+    my $ArtifactList          = $CreateJobOutput->ArtifactList;
+    my $JobType               = $CreateJobOutput->JobType;
+    my $WarningMessage        = $CreateJobOutput->WarningMessage;
+    my $JobId                 = $CreateJobOutput->JobId;
+    my $SignatureFileContents = $CreateJobOutput->SignatureFileContents;
+    my $Signature             = $CreateJobOutput->Signature;
+
+    # Returns a L<Paws::ImportExport::CreateJobOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

@@ -29,9 +29,31 @@ as arguments to method AssumeRoleWithWebIdentity.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AssumeRoleWithWebIdentity.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AssumeRoleWithWebIdentity(Att1 => $value1, Att2 => $value2, ...);
+    my $sts = Paws->service('STS');
+    # To assume a role as an OpenID Connect-federated user
+    my $AssumeRoleWithWebIdentityResponse = $sts->AssumeRoleWithWebIdentity(
+      {
+        'RoleArn' => 'arn:aws:iam::123456789012:role/FederatedWebIdentityRole',
+        'WebIdentityToken' =>
+'Atza%7CIQEBLjAsAhRFiXuWpUXuRvQ9PZL3GMFcYevydwIUFAHZwXZXXXXXXXXJnrulxKDHwy87oGKPznh0D6bEQZTSCzyoCtL_8S07pLpr0zMbn6w1lfVZKNTBdDansFBmtGnIsIapjI6xKR02Yc_2bQ8LZbUXSGm6Ry6_BG7PrtLZtj_dfCTj92xNGed-CrKqjG7nPBjNIL016GGvuS5gSvPRUxWES3VYfm1wl7WTI7jn-Pcb6M-buCgHhFOzTQxod27L9CqnOLio7N3gZAGpsp6n1-AJBOCJckcyXe2c6uD0srOJeZlKUm2eTDVMf8IehDVI0r1QOnTV6KzzAI3OY87Vd_cVMQ',
+        'RoleSessionName' => 'app1',
+        'DurationSeconds' => 3600,
+        'ProviderId'      => 'www.amazon.com'
+      }
+    );
+
+    # Results:
+    my $Provider         = $AssumeRoleWithWebIdentityResponse->Provider;
+    my $PackedPolicySize = $AssumeRoleWithWebIdentityResponse->PackedPolicySize;
+    my $Audience         = $AssumeRoleWithWebIdentityResponse->Audience;
+    my $SubjectFromWebIdentityToken =
+      $AssumeRoleWithWebIdentityResponse->SubjectFromWebIdentityToken;
+    my $Credentials     = $AssumeRoleWithWebIdentityResponse->Credentials;
+    my $AssumedRoleUser = $AssumeRoleWithWebIdentityResponse->AssumedRoleUser;
+
+    # Returns a L<Paws::STS::AssumeRoleWithWebIdentityResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sts/AssumeRoleWithWebIdentity>

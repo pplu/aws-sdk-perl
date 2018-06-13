@@ -30,9 +30,29 @@ as arguments to method Invoke.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to Invoke.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->Invoke(Att1 => $value1, Att2 => $value2, ...);
+    my $lambda = Paws->service('Lambda');
+    # To invoke a Lambda function
+    # This operation invokes a Lambda function
+    my $InvocationResponse = $lambda->Invoke(
+      {
+        'InvocationType' => 'Event',
+        'FunctionName'   => 'MyFunction',
+        'Qualifier'      => 1,
+        'Payload'        => 'fileb://file-path/input.json',
+        'LogType'        => 'Tail',
+        'ClientContext'  => 'MyApp'
+      }
+    );
+
+    # Results:
+    my $StatusCode    = $InvocationResponse->StatusCode;
+    my $FunctionError = $InvocationResponse->FunctionError;
+    my $LogResult     = $InvocationResponse->LogResult;
+    my $Payload       = $InvocationResponse->Payload;
+
+    # Returns a L<Paws::Lambda::InvocationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lambda/Invoke>

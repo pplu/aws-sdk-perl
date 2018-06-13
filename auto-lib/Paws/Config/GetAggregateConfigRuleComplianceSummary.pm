@@ -28,9 +28,30 @@ as arguments to method GetAggregateConfigRuleComplianceSummary.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetAggregateConfigRuleComplianceSummary.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetAggregateConfigRuleComplianceSummary(Att1 => $value1, Att2 => $value2, ...);
+    my $config = Paws->service('Config');
+    my $GetAggregateConfigRuleComplianceSummaryResponse =
+      $config->GetAggregateConfigRuleComplianceSummary(
+      ConfigurationAggregatorName => 'MyConfigurationAggregatorName',
+      Filters                     => {
+        AccountId => 'MyAccountId',    # OPTIONAL
+        AwsRegion => 'MyAwsRegion',    # min: 1, max: 64; OPTIONAL
+      },    # OPTIONAL
+      GroupByKey => 'ACCOUNT_ID',     # OPTIONAL
+      Limit      => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
+      );
+
+    # Results:
+    my $GroupByKey =
+      $GetAggregateConfigRuleComplianceSummaryResponse->GroupByKey;
+    my $AggregateComplianceCounts =
+      $GetAggregateConfigRuleComplianceSummaryResponse
+      ->AggregateComplianceCounts;
+    my $NextToken = $GetAggregateConfigRuleComplianceSummaryResponse->NextToken;
+
+# Returns a L<Paws::Config::GetAggregateConfigRuleComplianceSummaryResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/config/GetAggregateConfigRuleComplianceSummary>

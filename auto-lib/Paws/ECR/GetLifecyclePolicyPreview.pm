@@ -29,9 +29,37 @@ as arguments to method GetLifecyclePolicyPreview.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetLifecyclePolicyPreview.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetLifecyclePolicyPreview(Att1 => $value1, Att2 => $value2, ...);
+    my $ecr = Paws->service('ECR');
+    my $GetLifecyclePolicyPreviewResponse = $ecr->GetLifecyclePolicyPreview(
+      RepositoryName => 'MyRepositoryName',
+      Filter         => {
+        tagStatus => 'TAGGED',    # values: TAGGED, UNTAGGED; OPTIONAL
+      },    # OPTIONAL
+      ImageIds => [
+        {
+          imageDigest => 'MyImageDigest',    # OPTIONAL
+          imageTag    => 'MyImageTag',       # OPTIONAL
+        },
+        ...
+      ],                                     # OPTIONAL
+      MaxResults => 1,                       # OPTIONAL
+      NextToken  => 'MyNextToken',           # OPTIONAL
+      RegistryId => 'MyRegistryId',          # OPTIONAL
+    );
+
+    # Results:
+    my $RegistryId     = $GetLifecyclePolicyPreviewResponse->RegistryId;
+    my $Status         = $GetLifecyclePolicyPreviewResponse->Status;
+    my $NextToken      = $GetLifecyclePolicyPreviewResponse->NextToken;
+    my $Summary        = $GetLifecyclePolicyPreviewResponse->Summary;
+    my $PreviewResults = $GetLifecyclePolicyPreviewResponse->PreviewResults;
+    my $RepositoryName = $GetLifecyclePolicyPreviewResponse->RepositoryName;
+    my $LifecyclePolicyText =
+      $GetLifecyclePolicyPreviewResponse->LifecyclePolicyText;
+
+    # Returns a L<Paws::ECR::GetLifecyclePolicyPreviewResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecr/GetLifecyclePolicyPreview>

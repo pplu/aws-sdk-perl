@@ -28,9 +28,35 @@ as arguments to method CreateStreamProcessor.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateStreamProcessor.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateStreamProcessor(Att1 => $value1, Att2 => $value2, ...);
+    my $rekognition = Paws->service('Rekognition');
+    my $CreateStreamProcessorResponse = $rekognition->CreateStreamProcessor(
+      Input => {
+        KinesisVideoStream => {
+          Arn => 'MyKinesisVideoArn',    # OPTIONAL
+        },    # OPTIONAL
+      },
+      Name   => 'MyStreamProcessorName',
+      Output => {
+        KinesisDataStream => {
+          Arn => 'MyKinesisDataArn',    # OPTIONAL
+        },    # OPTIONAL
+      },
+      RoleArn  => 'MyRoleArn',
+      Settings => {
+        FaceSearch => {
+          CollectionId       => 'MyCollectionId',   # min: 1, max: 255; OPTIONAL
+          FaceMatchThreshold => 1.0,                # max: 100; OPTIONAL
+        },    # OPTIONAL
+      },
+
+    );
+
+    # Results:
+    my $StreamProcessorArn = $CreateStreamProcessorResponse->StreamProcessorArn;
+
+    # Returns a L<Paws::Rekognition::CreateStreamProcessorResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rekognition/CreateStreamProcessor>

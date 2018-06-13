@@ -27,9 +27,20 @@ as arguments to method ListJobsByStatus.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListJobsByStatus.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListJobsByStatus(Att1 => $value1, Att2 => $value2, ...);
+    my $elastictranscoder = Paws->service('ElasticTranscoder');
+    my $ListJobsByStatusResponse = $elastictranscoder->ListJobsByStatus(
+      Status    => 'MyJobStatus',
+      Ascending => 'MyAscending',    # OPTIONAL
+      PageToken => 'MyId',           # OPTIONAL
+    );
+
+    # Results:
+    my $NextPageToken = $ListJobsByStatusResponse->NextPageToken;
+    my $Jobs          = $ListJobsByStatusResponse->Jobs;
+
+    # Returns a L<Paws::ElasticTranscoder::ListJobsByStatusResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

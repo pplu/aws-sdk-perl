@@ -26,9 +26,19 @@ as arguments to method AbortVaultLock.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AbortVaultLock.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AbortVaultLock(Att1 => $value1, Att2 => $value2, ...);
+    my $glacier = Paws->service('Glacier');
+    # To abort a vault lock
+    # The example aborts the vault locking process if the vault lock is not in
+    # the Locked state for the vault named examplevault.
+    $glacier->AbortVaultLock(
+      {
+        'AccountId' => '-',
+        'VaultName' => 'examplevault'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/glacier/>

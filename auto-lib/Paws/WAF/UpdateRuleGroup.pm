@@ -26,9 +26,39 @@ as arguments to method UpdateRuleGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateRuleGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateRuleGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $waf = Paws->service('WAF');
+    my $UpdateRuleGroupResponse = $waf->UpdateRuleGroup(
+      ChangeToken => 'MyChangeToken',
+      RuleGroupId => 'MyResourceId',
+      Updates     => [
+        {
+          Action        => 'INSERT',    # values: INSERT, DELETE
+          ActivatedRule => {
+            RuleId   => 'MyResourceId',    # min: 1, max: 128
+            Priority => 1,
+            Action   => {
+              Type => 'BLOCK',             # values: BLOCK, ALLOW, COUNT
+
+            },    # OPTIONAL
+            Type => 'REGULAR',    # values: REGULAR, RATE_BASED, GROUP; OPTIONAL
+            OverrideAction => {
+              Type => 'NONE',     # values: NONE, COUNT
+
+            },    # OPTIONAL
+          },
+
+        },
+        ...
+      ],
+
+    );
+
+    # Results:
+    my $ChangeToken = $UpdateRuleGroupResponse->ChangeToken;
+
+    # Returns a L<Paws::WAF::UpdateRuleGroupResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf/UpdateRuleGroup>

@@ -40,9 +40,58 @@ as arguments to method ModifyEndpoint.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyEndpoint.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyEndpoint(Att1 => $value1, Att2 => $value2, ...);
+    my $dms = Paws->service('DMS');
+    my $ModifyEndpointResponse = $dms->ModifyEndpoint(
+      EndpointArn      => 'MyString',
+      CertificateArn   => 'MyString',    # OPTIONAL
+      DatabaseName     => 'MyString',    # OPTIONAL
+      DynamoDbSettings => {
+        ServiceAccessRoleArn => 'MyString',
+
+      },                                 # OPTIONAL
+      EndpointIdentifier        => 'MyString',    # OPTIONAL
+      EndpointType              => 'source',      # OPTIONAL
+      EngineName                => 'MyString',    # OPTIONAL
+      ExternalTableDefinition   => 'MyString',    # OPTIONAL
+      ExtraConnectionAttributes => 'MyString',    # OPTIONAL
+      MongoDbSettings           => {
+        KmsKeyId   => 'MyString',
+        ServerName => 'MyString',
+        AuthMechanism =>
+          'default',    # values: default, mongodb_cr, scram_sha_1; OPTIONAL
+        ExtractDocId      => 'MyString',
+        Password          => 'MySecretString',  # OPTIONAL
+        AuthSource        => 'MyString',
+        Username          => 'MyString',
+        DocsToInvestigate => 'MyString',
+        NestingLevel      => 'none',            # values: none, one; OPTIONAL
+        AuthType          => 'no',              # values: no, password; OPTIONAL
+        DatabaseName      => 'MyString',
+        Port              => 1,                 # OPTIONAL
+      },    # OPTIONAL
+      Password   => 'MySecretString',    # OPTIONAL
+      Port       => 1,                   # OPTIONAL
+      S3Settings => {
+        ExternalTableDefinition => 'MyString',
+        CsvRowDelimiter         => 'MyString',
+        BucketName              => 'MyString',
+        BucketFolder            => 'MyString',
+        CompressionType         => 'none',       # values: none, gzip; OPTIONAL
+        ServiceAccessRoleArn    => 'MyString',
+        CsvDelimiter            => 'MyString',
+      },    # OPTIONAL
+      ServerName           => 'MyString',    # OPTIONAL
+      ServiceAccessRoleArn => 'MyString',    # OPTIONAL
+      SslMode              => 'none',        # OPTIONAL
+      Username             => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $Endpoint = $ModifyEndpointResponse->Endpoint;
+
+    # Returns a L<Paws::DMS::ModifyEndpointResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dms/ModifyEndpoint>

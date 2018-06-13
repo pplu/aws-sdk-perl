@@ -26,9 +26,24 @@ as arguments to method CreateSpotDatafeedSubscription.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateSpotDatafeedSubscription.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateSpotDatafeedSubscription(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To create a Spot Instance datafeed
+    # This example creates a Spot Instance data feed for your AWS account.
+    my $CreateSpotDatafeedSubscriptionResult =
+      $ec2->CreateSpotDatafeedSubscription(
+      {
+        'Bucket' => 'my-s3-bucket',
+        'Prefix' => 'spotdata'
+      }
+      );
+
+    # Results:
+    my $SpotDatafeedSubscription =
+      $CreateSpotDatafeedSubscriptionResult->SpotDatafeedSubscription;
+
+    # Returns a L<Paws::EC2::CreateSpotDatafeedSubscriptionResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/CreateSpotDatafeedSubscription>

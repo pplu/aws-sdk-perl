@@ -30,9 +30,27 @@ as arguments to method ActivateGateway.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ActivateGateway.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ActivateGateway(Att1 => $value1, Att2 => $value2, ...);
+    my $storagegateway = Paws->service('StorageGateway');
+    # To activate the gateway
+    # Activates the gateway you previously deployed on your host.
+    my $ActivateGatewayOutput = $storagegateway->ActivateGateway(
+      {
+        'GatewayRegion'     => 'us-east-1',
+        'GatewayTimezone'   => 'GMT-12:00',
+        'TapeDriveType'     => 'IBM-ULT3580-TD5',
+        'MediumChangerType' => 'AWS-Gateway-VTL',
+        'GatewayType'       => 'STORED',
+        'GatewayName'       => 'My_Gateway',
+        'ActivationKey'     => '29AV1-3OFV9-VVIUB-NKT0I-LRO6V'
+      }
+    );
+
+    # Results:
+    my $GatewayARN = $ActivateGatewayOutput->GatewayARN;
+
+    # Returns a L<Paws::StorageGateway::ActivateGatewayOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/storagegateway/ActivateGateway>

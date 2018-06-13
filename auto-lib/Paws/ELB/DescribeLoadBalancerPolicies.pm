@@ -25,9 +25,25 @@ as arguments to method DescribeLoadBalancerPolicies.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLoadBalancerPolicies.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeLoadBalancerPolicies(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticloadbalancing = Paws->service('ELB');
+    # To describe a policy associated with a load balancer
+    # This example describes the specified policy associated with the specified
+    # load balancer.
+    my $DescribeLoadBalancerPoliciesOutput =
+      $elasticloadbalancing->DescribeLoadBalancerPolicies(
+      {
+        'PolicyNames'      => ['my-authentication-policy'],
+        'LoadBalancerName' => 'my-load-balancer'
+      }
+      );
+
+    # Results:
+    my $PolicyDescriptions =
+      $DescribeLoadBalancerPoliciesOutput->PolicyDescriptions;
+
+    # Returns a L<Paws::ELB::DescribeLoadBalancerPoliciesOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing/DescribeLoadBalancerPolicies>

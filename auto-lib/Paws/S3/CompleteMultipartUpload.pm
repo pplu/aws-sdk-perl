@@ -31,9 +31,38 @@ as arguments to method CompleteMultipartUpload.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CompleteMultipartUpload.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CompleteMultipartUpload(Att1 => $value1, Att2 => $value2, ...);
+    my $s3 = Paws->service('S3');
+    my $CompleteMultipartUploadOutput = $s3->CompleteMultipartUpload(
+      Bucket          => 'MyBucketName',
+      Key             => 'MyObjectKey',
+      UploadId        => 'MyMultipartUploadId',
+      MultipartUpload => {
+        Parts => [
+          {
+            ETag       => 'MyETag',    # OPTIONAL
+            PartNumber => 1,           # OPTIONAL
+          },
+          ...
+        ],                             # OPTIONAL
+      },    # OPTIONAL
+      RequestPayer => 'requester',    # OPTIONAL
+    );
+
+    # Results:
+    my $SSEKMSKeyId    = $CompleteMultipartUploadOutput->SSEKMSKeyId;
+    my $ETag           = $CompleteMultipartUploadOutput->ETag;
+    my $Expiration     = $CompleteMultipartUploadOutput->Expiration;
+    my $RequestCharged = $CompleteMultipartUploadOutput->RequestCharged;
+    my $ServerSideEncryption =
+      $CompleteMultipartUploadOutput->ServerSideEncryption;
+    my $VersionId = $CompleteMultipartUploadOutput->VersionId;
+    my $Bucket    = $CompleteMultipartUploadOutput->Bucket;
+    my $Key       = $CompleteMultipartUploadOutput->Key;
+    my $Location  = $CompleteMultipartUploadOutput->Location;
+
+    # Returns a L<Paws::S3::CompleteMultipartUploadOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/CompleteMultipartUpload>

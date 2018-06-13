@@ -28,9 +28,21 @@ as arguments to method StartReplicationTask.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartReplicationTask.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->StartReplicationTask(Att1 => $value1, Att2 => $value2, ...);
+    my $dms = Paws->service('DMS');
+    my $StartReplicationTaskResponse = $dms->StartReplicationTask(
+      ReplicationTaskArn       => 'MyString',
+      StartReplicationTaskType => 'start-replication',
+      CdcStartPosition         => 'MyString',               # OPTIONAL
+      CdcStartTime             => '1970-01-01T01:00:00',    # OPTIONAL
+      CdcStopPosition          => 'MyString',               # OPTIONAL
+    );
+
+    # Results:
+    my $ReplicationTask = $StartReplicationTaskResponse->ReplicationTask;
+
+    # Returns a L<Paws::DMS::StartReplicationTaskResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dms/StartReplicationTask>

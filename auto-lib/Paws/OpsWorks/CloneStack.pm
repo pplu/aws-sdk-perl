@@ -45,9 +45,53 @@ as arguments to method CloneStack.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CloneStack.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CloneStack(Att1 => $value1, Att2 => $value2, ...);
+    my $opsworks = Paws->service('OpsWorks');
+    my $CloneStackResult = $opsworks->CloneStack(
+      ServiceRoleArn => 'MyString',
+      SourceStackId  => 'MyString',
+      AgentVersion   => 'MyString',    # OPTIONAL
+      Attributes     => {
+        'Color' => 'MyString',         # key: values: Color
+      },    # OPTIONAL
+      ChefConfiguration => {
+        BerkshelfVersion => 'MyString',
+        ManageBerkshelf  => 1,            # OPTIONAL
+      },    # OPTIONAL
+      CloneAppIds          => [ 'MyString', ... ],    # OPTIONAL
+      ClonePermissions     => 1,                      # OPTIONAL
+      ConfigurationManager => {
+        Name    => 'MyString',
+        Version => 'MyString',
+      },                                              # OPTIONAL
+      CustomCookbooksSource => {
+        Url      => 'MyString',
+        Type     => 'git',        # values: git, svn, archive, s3; OPTIONAL
+        SshKey   => 'MyString',
+        Revision => 'MyString',
+        Username => 'MyString',
+        Password => 'MyString',
+      },    # OPTIONAL
+      CustomJson                => 'MyString',    # OPTIONAL
+      DefaultAvailabilityZone   => 'MyString',    # OPTIONAL
+      DefaultInstanceProfileArn => 'MyString',    # OPTIONAL
+      DefaultOs                 => 'MyString',    # OPTIONAL
+      DefaultRootDeviceType     => 'ebs',         # OPTIONAL
+      DefaultSshKeyName         => 'MyString',    # OPTIONAL
+      DefaultSubnetId           => 'MyString',    # OPTIONAL
+      HostnameTheme             => 'MyString',    # OPTIONAL
+      Name                      => 'MyString',    # OPTIONAL
+      Region                    => 'MyString',    # OPTIONAL
+      UseCustomCookbooks        => 1,             # OPTIONAL
+      UseOpsworksSecurityGroups => 1,             # OPTIONAL
+      VpcId                     => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $StackId = $CloneStackResult->StackId;
+
+    # Returns a L<Paws::OpsWorks::CloneStackResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/opsworks/CloneStack>

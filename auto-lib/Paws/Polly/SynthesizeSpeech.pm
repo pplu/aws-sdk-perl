@@ -31,9 +31,28 @@ as arguments to method SynthesizeSpeech.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SynthesizeSpeech.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SynthesizeSpeech(Att1 => $value1, Att2 => $value2, ...);
+    my $polly = Paws->service('Polly');
+    # To synthesize speech
+    # Synthesizes plain text or SSML into a file of human-like speech.
+    my $SynthesizeSpeechOutput = $polly->SynthesizeSpeech(
+      {
+        'OutputFormat' => 'mp3',
+        'Text'         => 'All Gaul is divided into three parts',
+        'LexiconNames' => ['example'],
+        'VoiceId'      => 'Joanna',
+        'SampleRate'   => 8000,
+        'TextType'     => 'text'
+      }
+    );
+
+    # Results:
+    my $RequestCharacters = $SynthesizeSpeechOutput->RequestCharacters;
+    my $AudioStream       = $SynthesizeSpeechOutput->AudioStream;
+    my $ContentType       = $SynthesizeSpeechOutput->ContentType;
+
+    # Returns a L<Paws::Polly::SynthesizeSpeechOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/polly/SynthesizeSpeech>

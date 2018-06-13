@@ -29,9 +29,44 @@ as arguments to method PutBucketReplication.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutBucketReplication.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutBucketReplication(Att1 => $value1, Att2 => $value2, ...);
+    my $s3 = Paws->service('S3');
+    $s3->PutBucketReplication(
+      Bucket                   => 'MyBucketName',
+      ReplicationConfiguration => {
+        Role  => 'MyRole',
+        Rules => [
+          {
+            Status      => 'Enabled',    # values: Enabled, Disabled
+            Prefix      => 'MyPrefix',
+            Destination => {
+              Bucket                   => 'MyBucketName',
+              AccessControlTranslation => {
+                Owner => 'Destination',    # values: Destination
+
+              },    # OPTIONAL
+              StorageClass => 'STANDARD'
+              , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA; OPTIONAL
+              Account                 => 'MyAccountId',    # OPTIONAL
+              EncryptionConfiguration => {
+                ReplicaKmsKeyID => 'MyReplicaKmsKeyID',    # OPTIONAL
+              },    # OPTIONAL
+            },
+            SourceSelectionCriteria => {
+              SseKmsEncryptedObjects => {
+                Status => 'Enabled',    # values: Enabled, Disabled
+
+              },    # OPTIONAL
+            },    # OPTIONAL
+            ID => 'MyID',    # OPTIONAL
+          },
+          ...
+        ],
+
+      },
+      ContentMD5 => 'MyContentMD5',    # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/PutBucketReplication>

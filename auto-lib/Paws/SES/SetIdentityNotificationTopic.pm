@@ -26,9 +26,22 @@ as arguments to method SetIdentityNotificationTopic.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetIdentityNotificationTopic.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SetIdentityNotificationTopic(Att1 => $value1, Att2 => $value2, ...);
+    my $email = Paws->service('SES');
+    # SetIdentityNotificationTopic
+    # The following example sets the Amazon SNS topic to which Amazon SES will
+    # publish bounce, complaint, and/or delivery notifications for emails sent
+    # with the specified identity as the Source:
+    my $SetIdentityNotificationTopicResponse =
+      $email->SetIdentityNotificationTopic(
+      {
+        'NotificationType' => 'Bounce',
+        'Identity'         => 'user@example.com',
+        'SnsTopic'         => 'arn:aws:sns:us-west-2:111122223333:MyTopic'
+      }
+      );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/email/SetIdentityNotificationTopic>

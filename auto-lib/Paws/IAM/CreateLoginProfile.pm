@@ -26,9 +26,24 @@ as arguments to method CreateLoginProfile.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateLoginProfile.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateLoginProfile(Att1 => $value1, Att2 => $value2, ...);
+    my $iam = Paws->service('IAM');
+    # To create an instance profile
+    # The following command changes IAM user Bob's password and sets the flag
+    # that required Bob to change the password the next time he signs in.
+    my $CreateLoginProfileResponse = $iam->CreateLoginProfile(
+      {
+        'UserName'              => 'Bob',
+        'Password'              => 'h]6EszR}vJ*m',
+        'PasswordResetRequired' => true
+      }
+    );
+
+    # Results:
+    my $LoginProfile = $CreateLoginProfileResponse->LoginProfile;
+
+    # Returns a L<Paws::IAM::CreateLoginProfileResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/CreateLoginProfile>

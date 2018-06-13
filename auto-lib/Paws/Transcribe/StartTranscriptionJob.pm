@@ -29,9 +29,28 @@ as arguments to method StartTranscriptionJob.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartTranscriptionJob.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->StartTranscriptionJob(Att1 => $value1, Att2 => $value2, ...);
+    my $transcribe = Paws->service('Transcribe');
+    my $StartTranscriptionJobResponse = $transcribe->StartTranscriptionJob(
+      LanguageCode => 'en-US',
+      Media        => {
+        MediaFileUri => 'MyUri',    # min: 1, max: 2000; OPTIONAL
+      },
+      MediaFormat          => 'mp3',
+      TranscriptionJobName => 'MyTranscriptionJobName',
+      MediaSampleRateHertz => 1,                          # OPTIONAL
+      Settings             => {
+        VocabularyName    => 'MyVocabularyName',    # min: 1, max: 200; OPTIONAL
+        ShowSpeakerLabels => 1,                     # OPTIONAL
+        MaxSpeakerLabels  => 1,                     # min: 2, max: 10; OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $TranscriptionJob = $StartTranscriptionJobResponse->TranscriptionJob;
+
+    # Returns a L<Paws::Transcribe::StartTranscriptionJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/transcribe/StartTranscriptionJob>

@@ -35,9 +35,142 @@ as arguments to method CreateOriginEndpoint.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateOriginEndpoint.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateOriginEndpoint(Att1 => $value1, Att2 => $value2, ...);
+    my $mediapackage = Paws->service('MediaPackage');
+    my $CreateOriginEndpointResponse = $mediapackage->CreateOriginEndpoint(
+      ChannelId   => 'My__string',
+      Id          => 'My__string',
+      CmafPackage => {
+        SegmentPrefix => 'My__string',
+        Encryption    => {
+          SpekeKeyProvider => {
+            ResourceId => 'My__string',
+            RoleArn    => 'My__string',
+            SystemIds  => [ 'My__string', ... ],
+            Url        => 'My__string',
+
+          },
+          KeyRotationIntervalSeconds => 1,    # OPTIONAL
+        },    # OPTIONAL
+        HlsManifests => [
+          {
+            Id                    => 'My__string',
+            PlaylistWindowSeconds => 1,              # OPTIONAL
+            AdMarkers =>
+              'NONE',    # values: NONE, SCTE35_ENHANCED, PASSTHROUGH; OPTIONAL
+            ProgramDateTimeIntervalSeconds => 1,    # OPTIONAL
+            IncludeIframeOnlyStream        => 1,    # OPTIONAL
+            PlaylistType => 'NONE',         # values: NONE, EVENT, VOD; OPTIONAL
+            ManifestName => 'My__string',
+          },
+          ...
+        ],                                  # OPTIONAL
+        StreamSelection => {
+          MaxVideoBitsPerSecond => 1,           # OPTIONAL
+          MinVideoBitsPerSecond => 1,           # OPTIONAL
+          StreamOrder           => 'ORIGINAL'
+          , # values: ORIGINAL, VIDEO_BITRATE_ASCENDING, VIDEO_BITRATE_DESCENDING; OPTIONAL
+        },    # OPTIONAL
+        SegmentDurationSeconds => 1,    # OPTIONAL
+      },    # OPTIONAL
+      DashPackage => {
+        Profile => 'NONE',    # values: NONE, HBBTV_1_5; OPTIONAL
+        SuggestedPresentationDelaySeconds => 1,    # OPTIONAL
+        MinBufferTimeSeconds              => 1,    # OPTIONAL
+        ManifestWindowSeconds             => 1,    # OPTIONAL
+        MinUpdatePeriodSeconds            => 1,    # OPTIONAL
+        StreamSelection                   => {
+          MaxVideoBitsPerSecond => 1,              # OPTIONAL
+          MinVideoBitsPerSecond => 1,              # OPTIONAL
+          StreamOrder           => 'ORIGINAL'
+          , # values: ORIGINAL, VIDEO_BITRATE_ASCENDING, VIDEO_BITRATE_DESCENDING; OPTIONAL
+        },    # OPTIONAL
+        SegmentDurationSeconds => 1,    # OPTIONAL
+        Encryption             => {
+          SpekeKeyProvider => {
+            ResourceId => 'My__string',
+            RoleArn    => 'My__string',
+            SystemIds  => [ 'My__string', ... ],
+            Url        => 'My__string',
+
+          },
+          KeyRotationIntervalSeconds => 1,    # OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
+      Description => 'My__string',    # OPTIONAL
+      HlsPackage  => {
+        PlaylistWindowSeconds => 1,    # OPTIONAL
+        AdMarkers =>
+          'NONE',    # values: NONE, SCTE35_ENHANCED, PASSTHROUGH; OPTIONAL
+        ProgramDateTimeIntervalSeconds => 1,    # OPTIONAL
+        IncludeIframeOnlyStream        => 1,    # OPTIONAL
+        UseAudioRenditionGroup         => 1,    # OPTIONAL
+        SegmentDurationSeconds         => 1,    # OPTIONAL
+        StreamSelection                => {
+          MaxVideoBitsPerSecond => 1,           # OPTIONAL
+          MinVideoBitsPerSecond => 1,           # OPTIONAL
+          StreamOrder           => 'ORIGINAL'
+          , # values: ORIGINAL, VIDEO_BITRATE_ASCENDING, VIDEO_BITRATE_DESCENDING; OPTIONAL
+        },    # OPTIONAL
+        PlaylistType => 'NONE',    # values: NONE, EVENT, VOD; OPTIONAL
+        Encryption   => {
+          SpekeKeyProvider => {
+            ResourceId => 'My__string',
+            RoleArn    => 'My__string',
+            SystemIds  => [ 'My__string', ... ],
+            Url        => 'My__string',
+
+          },
+          EncryptionMethod => 'AES_128', # values: AES_128, SAMPLE_AES; OPTIONAL
+          RepeatExtXKey    => 1,         # OPTIONAL
+          KeyRotationIntervalSeconds   => 1,              # OPTIONAL
+          ConstantInitializationVector => 'My__string',
+        },    # OPTIONAL
+      },    # OPTIONAL
+      ManifestName => 'My__string',    # OPTIONAL
+      MssPackage   => {
+        ManifestWindowSeconds => 1,    # OPTIONAL
+        Encryption            => {
+          SpekeKeyProvider => {
+            ResourceId => 'My__string',
+            RoleArn    => 'My__string',
+            SystemIds  => [ 'My__string', ... ],
+            Url        => 'My__string',
+
+          },
+
+        },                             # OPTIONAL
+        StreamSelection => {
+          MaxVideoBitsPerSecond => 1,           # OPTIONAL
+          MinVideoBitsPerSecond => 1,           # OPTIONAL
+          StreamOrder           => 'ORIGINAL'
+          , # values: ORIGINAL, VIDEO_BITRATE_ASCENDING, VIDEO_BITRATE_DESCENDING; OPTIONAL
+        },    # OPTIONAL
+        SegmentDurationSeconds => 1,    # OPTIONAL
+      },    # OPTIONAL
+      StartoverWindowSeconds => 1,                        # OPTIONAL
+      TimeDelaySeconds       => 1,                        # OPTIONAL
+      Whitelist              => [ 'My__string', ... ],    # OPTIONAL
+    );
+
+    # Results:
+    my $CmafPackage      = $CreateOriginEndpointResponse->CmafPackage;
+    my $ChannelId        = $CreateOriginEndpointResponse->ChannelId;
+    my $Description      = $CreateOriginEndpointResponse->Description;
+    my $MssPackage       = $CreateOriginEndpointResponse->MssPackage;
+    my $Whitelist        = $CreateOriginEndpointResponse->Whitelist;
+    my $DashPackage      = $CreateOriginEndpointResponse->DashPackage;
+    my $HlsPackage       = $CreateOriginEndpointResponse->HlsPackage;
+    my $Id               = $CreateOriginEndpointResponse->Id;
+    my $Url              = $CreateOriginEndpointResponse->Url;
+    my $TimeDelaySeconds = $CreateOriginEndpointResponse->TimeDelaySeconds;
+    my $StartoverWindowSeconds =
+      $CreateOriginEndpointResponse->StartoverWindowSeconds;
+    my $ManifestName = $CreateOriginEndpointResponse->ManifestName;
+    my $Arn          = $CreateOriginEndpointResponse->Arn;
+
+    # Returns a L<Paws::MediaPackage::CreateOriginEndpointResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mediapackage/CreateOriginEndpoint>

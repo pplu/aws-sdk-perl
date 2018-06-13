@@ -37,9 +37,143 @@ as arguments to method PutIntent.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutIntent.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutIntent(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    my $PutIntentResponse = $models . lex->PutIntent(
+      Name                => 'MyIntentName',
+      Checksum            => 'MyString',       # OPTIONAL
+      ConclusionStatement => {
+        messages => [
+          {
+            content => 'MyContentString',      # min: 1, max: 1000
+            contentType => 'PlainText', # values: PlainText, SSML, CustomPayload
+            groupNumber => 1,           # min: 1, max: 5; OPTIONAL
+          },
+          ...
+        ],                              # min: 1, max: 15
+        responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+      },    # OPTIONAL
+      ConfirmationPrompt => {
+        messages => [
+          {
+            content => 'MyContentString',    # min: 1, max: 1000
+            contentType => 'PlainText', # values: PlainText, SSML, CustomPayload
+            groupNumber => 1,           # min: 1, max: 5; OPTIONAL
+          },
+          ...
+        ],                              # min: 1, max: 15
+        maxAttempts  => 1,                   # min: 1, max: 5
+        responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+      },    # OPTIONAL
+      CreateVersion  => 1,                  # OPTIONAL
+      Description    => 'MyDescription',    # OPTIONAL
+      DialogCodeHook => {
+        uri            => 'MyLambdaARN',         # min: 20, max: 2048
+        messageVersion => 'MyMessageVersion',    # min: 1, max: 5
+
+      },    # OPTIONAL
+      FollowUpPrompt => {
+        prompt => {
+          messages => [
+            {
+              content => 'MyContentString',    # min: 1, max: 1000
+              contentType =>
+                'PlainText',    # values: PlainText, SSML, CustomPayload
+              groupNumber => 1, # min: 1, max: 5; OPTIONAL
+            },
+            ...
+          ],                    # min: 1, max: 15
+          maxAttempts  => 1,                   # min: 1, max: 5
+          responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+        },
+        rejectionStatement => {
+          messages => [
+            {
+              content => 'MyContentString',    # min: 1, max: 1000
+              contentType =>
+                'PlainText',    # values: PlainText, SSML, CustomPayload
+              groupNumber => 1, # min: 1, max: 5; OPTIONAL
+            },
+            ...
+          ],                    # min: 1, max: 15
+          responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+        },
+
+      },    # OPTIONAL
+      FulfillmentActivity => {
+        type     => 'ReturnIntent',    # values: ReturnIntent, CodeHook
+        codeHook => {
+          uri            => 'MyLambdaARN',         # min: 20, max: 2048
+          messageVersion => 'MyMessageVersion',    # min: 1, max: 5
+
+        },
+      },    # OPTIONAL
+      ParentIntentSignature => 'MyBuiltinIntentSignature',    # OPTIONAL
+      RejectionStatement    => {
+        messages => [
+          {
+            content => 'MyContentString',    # min: 1, max: 1000
+            contentType => 'PlainText', # values: PlainText, SSML, CustomPayload
+            groupNumber => 1,           # min: 1, max: 5; OPTIONAL
+          },
+          ...
+        ],                              # min: 1, max: 15
+        responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+      },    # OPTIONAL
+      SampleUtterances => [
+        'MyUtterance', ...    # min: 1, max: 200
+      ],                      # OPTIONAL
+      Slots => [
+        {
+          slotConstraint   => 'Required',      # values: Required, Optional
+          name             => 'MySlotName',    # min: 1, max: 100
+          sampleUtterances => [
+            'MyUtterance', ...                 # min: 1, max: 200
+          ],                                   # max: 10; OPTIONAL
+          priority => 1,                       # max: 100; OPTIONAL
+          slotType =>
+            'MyCustomOrBuiltinSlotTypeName',    # min: 1, max: 100; OPTIONAL
+          valueElicitationPrompt => {
+            messages => [
+              {
+                content => 'MyContentString',    # min: 1, max: 1000
+                contentType =>
+                  'PlainText',    # values: PlainText, SSML, CustomPayload
+                groupNumber => 1, # min: 1, max: 5; OPTIONAL
+              },
+              ...
+            ],                    # min: 1, max: 15
+            maxAttempts  => 1,                   # min: 1, max: 5
+            responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+          },
+          responseCard    => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+          slotTypeVersion => 'MyVersion',         # min: 1, max: 64; OPTIONAL
+          description     => 'MyDescription',     # max: 200
+        },
+        ...
+      ],                                          # OPTIONAL
+    );
+
+    # Results:
+    my $LastUpdatedDate       = $PutIntentResponse->LastUpdatedDate;
+    my $Description           = $PutIntentResponse->Description;
+    my $FollowUpPrompt        = $PutIntentResponse->FollowUpPrompt;
+    my $SampleUtterances      = $PutIntentResponse->SampleUtterances;
+    my $ConfirmationPrompt    = $PutIntentResponse->ConfirmationPrompt;
+    my $CreateVersion         = $PutIntentResponse->CreateVersion;
+    my $DialogCodeHook        = $PutIntentResponse->DialogCodeHook;
+    my $Checksum              = $PutIntentResponse->Checksum;
+    my $ConclusionStatement   = $PutIntentResponse->ConclusionStatement;
+    my $Version               = $PutIntentResponse->Version;
+    my $RejectionStatement    = $PutIntentResponse->RejectionStatement;
+    my $CreatedDate           = $PutIntentResponse->CreatedDate;
+    my $Slots                 = $PutIntentResponse->Slots;
+    my $Name                  = $PutIntentResponse->Name;
+    my $FulfillmentActivity   = $PutIntentResponse->FulfillmentActivity;
+    my $ParentIntentSignature = $PutIntentResponse->ParentIntentSignature;
+
+    # Returns a L<Paws::LexModels::PutIntentResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/lex/>

@@ -27,9 +27,42 @@ as arguments to method UpdateStage.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateStage.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateStage(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $Stage = $apigateway->UpdateStage(
+      RestApiId       => 'MyString',
+      StageName       => 'MyString',
+      PatchOperations => [
+        {
+          path  => 'MyString',
+          value => 'MyString',
+          from  => 'MyString',
+          op =>
+            'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
+        },
+        ...
+      ],              # OPTIONAL
+    );
+
+    # Results:
+    my $Variables            = $Stage->Variables;
+    my $CacheClusterStatus   = $Stage->CacheClusterStatus;
+    my $StageName            = $Stage->StageName;
+    my $CacheClusterEnabled  = $Stage->CacheClusterEnabled;
+    my $AccessLogSettings    = $Stage->AccessLogSettings;
+    my $MethodSettings       = $Stage->MethodSettings;
+    my $Tags                 = $Stage->Tags;
+    my $ClientCertificateId  = $Stage->ClientCertificateId;
+    my $Description          = $Stage->Description;
+    my $DeploymentId         = $Stage->DeploymentId;
+    my $LastUpdatedDate      = $Stage->LastUpdatedDate;
+    my $DocumentationVersion = $Stage->DocumentationVersion;
+    my $CreatedDate          = $Stage->CreatedDate;
+    my $CanarySettings       = $Stage->CanarySettings;
+    my $CacheClusterSize     = $Stage->CacheClusterSize;
+
+    # Returns a L<Paws::ApiGateway::Stage> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>

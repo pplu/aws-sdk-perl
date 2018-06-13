@@ -24,9 +24,19 @@ as arguments to method RefreshTrustedAdvisorCheck.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RefreshTrustedAdvisorCheck.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RefreshTrustedAdvisorCheck(Att1 => $value1, Att2 => $value2, ...);
+    my $support = Paws->service('Support');
+    my $RefreshTrustedAdvisorCheckResponse =
+      $support->RefreshTrustedAdvisorCheck(
+      CheckId => 'MyString',
+
+      );
+
+    # Results:
+    my $Status = $RefreshTrustedAdvisorCheckResponse->Status;
+
+    # Returns a L<Paws::Support::RefreshTrustedAdvisorCheckResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/support/RefreshTrustedAdvisorCheck>

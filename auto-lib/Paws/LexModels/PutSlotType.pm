@@ -30,9 +30,38 @@ as arguments to method PutSlotType.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutSlotType.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutSlotType(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    my $PutSlotTypeResponse = $models . lex->PutSlotType(
+      Name              => 'MySlotTypeName',
+      Checksum          => 'MyString',         # OPTIONAL
+      CreateVersion     => 1,                  # OPTIONAL
+      Description       => 'MyDescription',    # OPTIONAL
+      EnumerationValues => [
+        {
+          value    => 'MyValue',               # min: 1, max: 140
+          synonyms => [
+            'MyValue', ...                     # min: 1, max: 140
+          ],                                   # OPTIONAL
+        },
+        ...
+      ],                                       # OPTIONAL
+      ValueSelectionStrategy => 'ORIGINAL_VALUE',    # OPTIONAL
+    );
+
+    # Results:
+    my $CreatedDate            = $PutSlotTypeResponse->CreatedDate;
+    my $LastUpdatedDate        = $PutSlotTypeResponse->LastUpdatedDate;
+    my $Checksum               = $PutSlotTypeResponse->Checksum;
+    my $Description            = $PutSlotTypeResponse->Description;
+    my $Version                = $PutSlotTypeResponse->Version;
+    my $Name                   = $PutSlotTypeResponse->Name;
+    my $ValueSelectionStrategy = $PutSlotTypeResponse->ValueSelectionStrategy;
+    my $EnumerationValues      = $PutSlotTypeResponse->EnumerationValues;
+    my $CreateVersion          = $PutSlotTypeResponse->CreateVersion;
+
+    # Returns a L<Paws::LexModels::PutSlotTypeResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/lex/>

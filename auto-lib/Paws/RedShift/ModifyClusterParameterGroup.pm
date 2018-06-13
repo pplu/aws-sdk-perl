@@ -25,9 +25,36 @@ as arguments to method ModifyClusterParameterGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyClusterParameterGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyClusterParameterGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $redshift = Paws->service('RedShift');
+    my $ClusterParameterGroupNameMessage =
+      $redshift->ModifyClusterParameterGroup(
+      ParameterGroupName => 'MyString',
+      Parameters         => [
+        {
+          Source               => 'MyString',
+          ParameterName        => 'MyString',
+          Description          => 'MyString',
+          ParameterValue       => 'MyString',
+          AllowedValues        => 'MyString',
+          DataType             => 'MyString',
+          MinimumEngineVersion => 'MyString',
+          IsModifiable         => 1,         # OPTIONAL
+          ApplyType            => 'static',  # values: static, dynamic; OPTIONAL
+        },
+        ...
+      ],
+
+      );
+
+    # Results:
+    my $ParameterGroupName =
+      $ClusterParameterGroupNameMessage->ParameterGroupName;
+    my $ParameterGroupStatus =
+      $ClusterParameterGroupNameMessage->ParameterGroupStatus;
+
+    # Returns a L<Paws::RedShift::ClusterParameterGroupNameMessage> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/redshift/ModifyClusterParameterGroup>

@@ -33,9 +33,47 @@ as arguments to method UpdateCrawler.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateCrawler.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateCrawler(Att1 => $value1, Att2 => $value2, ...);
+    my $glue = Paws->service('Glue');
+    my $UpdateCrawlerResponse = $glue->UpdateCrawler(
+      Name        => 'MyNameString',
+      Classifiers => [
+        'MyNameString', ...    # min: 1, max: 255
+      ],                       # OPTIONAL
+      Configuration      => 'MyCrawlerConfiguration',          # OPTIONAL
+      DatabaseName       => 'MyDatabaseName',                  # OPTIONAL
+      Description        => 'MyDescriptionStringRemovable',    # OPTIONAL
+      Role               => 'MyRole',                          # OPTIONAL
+      Schedule           => 'MyCronExpression',                # OPTIONAL
+      SchemaChangePolicy => {
+        UpdateBehavior => 'LOG',    # values: LOG, UPDATE_IN_DATABASE; OPTIONAL
+        DeleteBehavior => 'LOG'
+        ,   # values: LOG, DELETE_FROM_DATABASE, DEPRECATE_IN_DATABASE; OPTIONAL
+      },    # OPTIONAL
+      TablePrefix => 'MyTablePrefix',    # OPTIONAL
+      Targets     => {
+        JdbcTargets => [
+          {
+            Exclusions => [
+              'MyPath', ...              # OPTIONAL
+            ],                           # OPTIONAL
+            ConnectionName => 'MyConnectionName',    # OPTIONAL
+            Path           => 'MyPath',              # OPTIONAL
+          },
+          ...
+        ],                                           # OPTIONAL
+        S3Targets => [
+          {
+            Path       => 'MyPath',                  # OPTIONAL
+            Exclusions => [
+              'MyPath', ...                          # OPTIONAL
+            ],                                       # OPTIONAL
+          },
+          ...
+        ],                                           # OPTIONAL
+      },    # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/UpdateCrawler>

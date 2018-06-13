@@ -28,9 +28,49 @@ as arguments to method UpdateTypedLinkFacet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateTypedLinkFacet.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateTypedLinkFacet(Att1 => $value1, Att2 => $value2, ...);
+    my $clouddirectory = Paws->service('CloudDirectory');
+    my $UpdateTypedLinkFacetResponse = $clouddirectory->UpdateTypedLinkFacet(
+      AttributeUpdates => [
+        {
+          Action    => 'CREATE_OR_UPDATE',    # values: CREATE_OR_UPDATE, DELETE
+          Attribute => {
+            RequiredBehavior =>
+              'REQUIRED_ALWAYS',    # values: REQUIRED_ALWAYS, NOT_REQUIRED
+            Type =>
+              'STRING',    # values: STRING, BINARY, BOOLEAN, NUMBER, DATETIME
+            Name         => 'MyAttributeName',    # min: 1, max: 64
+            DefaultValue => {
+              BooleanValue  => 1,                             # OPTIONAL
+              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+            },    # OPTIONAL
+            Rules => {
+              'MyRuleKey' => {
+                Type => 'BINARY_LENGTH'
+                , # values: BINARY_LENGTH, NUMBER_COMPARISON, STRING_FROM_SET, STRING_LENGTH; OPTIONAL
+                Parameters =>
+                  { 'MyRuleParameterKey' => 'MyRuleParameterValue', }
+                ,    # OPTIONAL
+              },    # key: min: 1, max: 64
+            },    # OPTIONAL
+            IsImmutable => 1,    # OPTIONAL
+          },
+
+        },
+        ...
+      ],
+      IdentityAttributeOrder => [
+        'MyAttributeName',
+        ...                      # min: 1, max: 64
+      ],
+      Name      => 'MyTypedLinkName',
+      SchemaArn => 'MyArn',
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clouddirectory/UpdateTypedLinkFacet>

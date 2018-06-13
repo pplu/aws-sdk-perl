@@ -52,9 +52,49 @@ as arguments to method PutObject.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutObject.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutObject(Att1 => $value1, Att2 => $value2, ...);
+    my $s3 = Paws->service('S3');
+    my $PutObjectOutput = $s3->PutObject(
+      Bucket             => 'MyBucketName',
+      Key                => 'MyObjectKey',
+      ACL                => 'private',                 # OPTIONAL
+      Body               => 'BlobBody',                # OPTIONAL
+      CacheControl       => 'MyCacheControl',          # OPTIONAL
+      ContentDisposition => 'MyContentDisposition',    # OPTIONAL
+      ContentEncoding    => 'MyContentEncoding',       # OPTIONAL
+      ContentLanguage    => 'MyContentLanguage',       # OPTIONAL
+      ContentLength      => 1,                         # OPTIONAL
+      ContentMD5         => 'MyContentMD5',            # OPTIONAL
+      ContentType        => 'MyContentType',           # OPTIONAL
+      Expires            => '1970-01-01T01:00:00',     # OPTIONAL
+      GrantFullControl   => 'MyGrantFullControl',      # OPTIONAL
+      GrantRead          => 'MyGrantRead',             # OPTIONAL
+      GrantReadACP       => 'MyGrantReadACP',          # OPTIONAL
+      GrantWriteACP      => 'MyGrantWriteACP',         # OPTIONAL
+      Metadata     => { 'MyMetadataKey' => 'MyMetadataValue', },    # OPTIONAL
+      RequestPayer => 'requester',                                  # OPTIONAL
+      SSECustomerAlgorithm    => 'MySSECustomerAlgorithm',          # OPTIONAL
+      SSECustomerKey          => 'MySSECustomerKey',                # OPTIONAL
+      SSECustomerKeyMD5       => 'MySSECustomerKeyMD5',             # OPTIONAL
+      SSEKMSKeyId             => 'MySSEKMSKeyId',                   # OPTIONAL
+      ServerSideEncryption    => 'AES256',                          # OPTIONAL
+      StorageClass            => 'STANDARD',                        # OPTIONAL
+      Tagging                 => 'MyTaggingHeader',                 # OPTIONAL
+      WebsiteRedirectLocation => 'MyWebsiteRedirectLocation',       # OPTIONAL
+    );
+
+    # Results:
+    my $ServerSideEncryption = $PutObjectOutput->ServerSideEncryption;
+    my $SSECustomerKeyMD5    = $PutObjectOutput->SSECustomerKeyMD5;
+    my $Expiration           = $PutObjectOutput->Expiration;
+    my $ETag                 = $PutObjectOutput->ETag;
+    my $RequestCharged       = $PutObjectOutput->RequestCharged;
+    my $SSEKMSKeyId          = $PutObjectOutput->SSEKMSKeyId;
+    my $SSECustomerAlgorithm = $PutObjectOutput->SSECustomerAlgorithm;
+    my $VersionId            = $PutObjectOutput->VersionId;
+
+    # Returns a L<Paws::S3::PutObjectOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/PutObject>

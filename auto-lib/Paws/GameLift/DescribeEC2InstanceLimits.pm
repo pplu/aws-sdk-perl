@@ -24,9 +24,17 @@ as arguments to method DescribeEC2InstanceLimits.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEC2InstanceLimits.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeEC2InstanceLimits(Att1 => $value1, Att2 => $value2, ...);
+    my $gamelift = Paws->service('GameLift');
+    my $DescribeEC2InstanceLimitsOutput = $gamelift->DescribeEC2InstanceLimits(
+      EC2InstanceType => 't2.micro',    # OPTIONAL
+    );
+
+    # Results:
+    my $EC2InstanceLimits = $DescribeEC2InstanceLimitsOutput->EC2InstanceLimits;
+
+    # Returns a L<Paws::GameLift::DescribeEC2InstanceLimitsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/DescribeEC2InstanceLimits>

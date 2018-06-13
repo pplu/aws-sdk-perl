@@ -29,9 +29,32 @@ as arguments to method UpdateMethodResponse.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateMethodResponse.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateMethodResponse(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $MethodResponse = $apigateway->UpdateMethodResponse(
+      HttpMethod      => 'MyString',
+      ResourceId      => 'MyString',
+      RestApiId       => 'MyString',
+      StatusCode      => 'MyStatusCode',
+      PatchOperations => [
+        {
+          op =>
+            'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
+          from  => 'MyString',
+          path  => 'MyString',
+          value => 'MyString',
+        },
+        ...
+      ],              # OPTIONAL
+    );
+
+    # Results:
+    my $ResponseParameters = $MethodResponse->ResponseParameters;
+    my $StatusCode         = $MethodResponse->StatusCode;
+    my $ResponseModels     = $MethodResponse->ResponseModels;
+
+    # Returns a L<Paws::ApiGateway::MethodResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>

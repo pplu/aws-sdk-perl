@@ -27,9 +27,25 @@ as arguments to method ListAssignmentsForHIT.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListAssignmentsForHIT.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListAssignmentsForHIT(Att1 => $value1, Att2 => $value2, ...);
+    my $mturk-requester = Paws->service('MTurk');
+    my $ListAssignmentsForHITResponse =
+      $mturk -requester->ListAssignmentsForHIT(
+      HITId              => 'MyEntityId',
+      AssignmentStatuses => [
+        'Submitted', ...    # values: Submitted, Approved, Rejected
+      ],                    # OPTIONAL
+      MaxResults => 1,                      # OPTIONAL
+      NextToken  => 'MyPaginationToken',    # OPTIONAL
+      );
+
+    # Results:
+    my $NumResults  = $ListAssignmentsForHITResponse->NumResults;
+    my $Assignments = $ListAssignmentsForHITResponse->Assignments;
+    my $NextToken   = $ListAssignmentsForHITResponse->NextToken;
+
+    # Returns a L<Paws::MTurk::ListAssignmentsForHITResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/mturk/>

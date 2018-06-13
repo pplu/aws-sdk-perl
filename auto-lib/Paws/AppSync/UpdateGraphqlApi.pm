@@ -30,9 +30,36 @@ as arguments to method UpdateGraphqlApi.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateGraphqlApi.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateGraphqlApi(Att1 => $value1, Att2 => $value2, ...);
+    my $appsync = Paws->service('AppSync');
+    my $UpdateGraphqlApiResponse = $appsync->UpdateGraphqlApi(
+      ApiId              => 'MyString',
+      Name               => 'MyString',
+      AuthenticationType => 'API_KEY',    # OPTIONAL
+      LogConfig          => {
+        cloudWatchLogsRoleArn => 'MyString',
+        fieldLogLevel         => 'NONE',       # values: NONE, ERROR, ALL
+
+      },    # OPTIONAL
+      OpenIDConnectConfig => {
+        issuer   => 'MyString',
+        authTTL  => 1,            # OPTIONAL
+        clientId => 'MyString',
+        iatTTL   => 1,            # OPTIONAL
+      },    # OPTIONAL
+      UserPoolConfig => {
+        defaultAction    => 'ALLOW',      # values: ALLOW, DENY
+        userPoolId       => 'MyString',
+        awsRegion        => 'MyString',
+        appIdClientRegex => 'MyString',
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $GraphqlApi = $UpdateGraphqlApiResponse->GraphqlApi;
+
+    # Returns a L<Paws::AppSync::UpdateGraphqlApiResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/appsync/UpdateGraphqlApi>

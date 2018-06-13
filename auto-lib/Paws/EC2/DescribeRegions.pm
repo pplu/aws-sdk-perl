@@ -26,9 +26,17 @@ as arguments to method DescribeRegions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeRegions.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeRegions(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To describe your regions
+    # This example describes all the regions that are available to you.
+    my $DescribeRegionsResult = $ec2->DescribeRegions();
+
+    # Results:
+    my $Regions = $DescribeRegionsResult->Regions;
+
+    # Returns a L<Paws::EC2::DescribeRegionsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeRegions>

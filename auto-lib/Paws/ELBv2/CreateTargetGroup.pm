@@ -36,9 +36,26 @@ as arguments to method CreateTargetGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateTargetGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateTargetGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticloadbalancing = Paws->service('ELBv2');
+    # To create a target group
+    # This example creates a target group that you can use to route traffic to
+    # targets using HTTP on port 80. This target group uses the default health
+    # check configuration.
+    my $CreateTargetGroupOutput = $elasticloadbalancing->CreateTargetGroup(
+      {
+        'Protocol' => 'HTTP',
+        'Port'     => 80,
+        'VpcId'    => 'vpc-3ac0fb5f',
+        'Name'     => 'my-targets'
+      }
+    );
+
+    # Results:
+    my $TargetGroups = $CreateTargetGroupOutput->TargetGroups;
+
+    # Returns a L<Paws::ELBv2::CreateTargetGroupOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing/CreateTargetGroup>

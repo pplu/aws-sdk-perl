@@ -33,9 +33,74 @@ as arguments to method CreateDeployment.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDeployment.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDeployment(Att1 => $value1, Att2 => $value2, ...);
+    my $codedeploy = Paws->service('CodeDeploy');
+    my $CreateDeploymentOutput = $codedeploy->CreateDeployment(
+      ApplicationName           => 'MyApplicationName',
+      AutoRollbackConfiguration => {
+        events => [
+          'DEPLOYMENT_FAILURE',
+          ... # values: DEPLOYMENT_FAILURE, DEPLOYMENT_STOP_ON_ALARM, DEPLOYMENT_STOP_ON_REQUEST
+        ],    # OPTIONAL
+        enabled => 1,    # OPTIONAL
+      },    # OPTIONAL
+      DeploymentConfigName          => 'MyDeploymentConfigName',    # OPTIONAL
+      DeploymentGroupName           => 'MyDeploymentGroupName',     # OPTIONAL
+      Description                   => 'MyDescription',             # OPTIONAL
+      FileExistsBehavior            => 'DISALLOW',                  # OPTIONAL
+      IgnoreApplicationStopFailures => 1,                           # OPTIONAL
+      Revision                      => {
+        gitHubLocation => {
+          repository => 'MyRepository',                             # OPTIONAL
+          commitId   => 'MyCommitId',                               # OPTIONAL
+        },    # OPTIONAL
+        s3Location => {
+          bundleType => 'tar',    # values: tar, tgz, zip, YAML, JSON; OPTIONAL
+          version => 'MyVersionId',    # OPTIONAL
+          eTag    => 'MyETag',         # OPTIONAL
+          bucket  => 'MyS3Bucket',     # OPTIONAL
+          key     => 'MyS3Key',        # OPTIONAL
+        },    # OPTIONAL
+        string => {
+          sha256  => 'MyRawStringSha256',     # OPTIONAL
+          content => 'MyRawStringContent',    # OPTIONAL
+        },    # OPTIONAL
+        revisionType => 'S3',    # values: S3, GitHub, String; OPTIONAL
+      },    # OPTIONAL
+      TargetInstances => {
+        ec2TagSet => {
+          ec2TagSetList => [
+            [
+              {
+                Type => 'KEY_ONLY'
+                ,    # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
+                Key   => 'MyKey',      # OPTIONAL
+                Value => 'MyValue',    # OPTIONAL
+              },
+              ...
+            ],
+            ...                        # OPTIONAL
+          ],                           # OPTIONAL
+        },    # OPTIONAL
+        tagFilters => [
+          {
+            Type => 'KEY_ONLY'
+            ,    # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
+            Key   => 'MyKey',      # OPTIONAL
+            Value => 'MyValue',    # OPTIONAL
+          },
+          ...
+        ],                         # OPTIONAL
+        autoScalingGroups => [ 'MyAutoScalingGroupName', ... ],    # OPTIONAL
+      },    # OPTIONAL
+      UpdateOutdatedInstancesOnly => 1,    # OPTIONAL
+    );
+
+    # Results:
+    my $DeploymentId = $CreateDeploymentOutput->DeploymentId;
+
+    # Returns a L<Paws::CodeDeploy::CreateDeploymentOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codedeploy/CreateDeployment>

@@ -27,9 +27,32 @@ as arguments to method GetFindingsStatistics.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetFindingsStatistics.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetFindingsStatistics(Att1 => $value1, Att2 => $value2, ...);
+    my $guardduty = Paws->service('GuardDuty');
+    my $GetFindingsStatisticsResponse = $guardduty->GetFindingsStatistics(
+      DetectorId      => 'My__string',
+      FindingCriteria => {
+        Criterion => {
+          'My__string' => {
+            Lt  => 1,                        # OPTIONAL
+            Eq  => [ 'My__string', ... ],    # OPTIONAL
+            Neq => [ 'My__string', ... ],    # OPTIONAL
+            Gte => 1,                        # OPTIONAL
+            Gt  => 1,                        # OPTIONAL
+            Lte => 1,                        # OPTIONAL
+          },
+        },    # OPTIONAL
+      },    # OPTIONAL
+      FindingStatisticTypes => [
+        'COUNT_BY_SEVERITY', ...    # values: COUNT_BY_SEVERITY
+      ],                            # OPTIONAL
+    );
+
+    # Results:
+    my $FindingStatistics = $GetFindingsStatisticsResponse->FindingStatistics;
+
+    # Returns a L<Paws::GuardDuty::GetFindingsStatisticsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

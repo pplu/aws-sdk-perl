@@ -29,9 +29,24 @@ as arguments to method GetBotChannelAssociations.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetBotChannelAssociations.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetBotChannelAssociations(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    my $GetBotChannelAssociationsResponse =
+      $models . lex->GetBotChannelAssociations(
+      BotAlias     => 'MyAliasNameOrListAll',
+      BotName      => 'MyBotName',
+      MaxResults   => 1,                        # OPTIONAL
+      NameContains => 'MyBotChannelName',       # OPTIONAL
+      NextToken    => 'MyNextToken',            # OPTIONAL
+      );
+
+    # Results:
+    my $BotChannelAssociations =
+      $GetBotChannelAssociationsResponse->BotChannelAssociations;
+    my $NextToken = $GetBotChannelAssociationsResponse->NextToken;
+
+    # Returns a L<Paws::LexModels::GetBotChannelAssociationsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/lex/>

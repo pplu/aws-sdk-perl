@@ -38,9 +38,59 @@ as arguments to method CreateFleet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateFleet.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateFleet(Att1 => $value1, Att2 => $value2, ...);
+    my $gamelift = Paws->service('GameLift');
+    my $CreateFleetOutput = $gamelift->CreateFleet(
+      BuildId               => 'MyBuildId',
+      EC2InstanceType       => 't2.micro',
+      Name                  => 'MyNonZeroAndMaxString',
+      Description           => 'MyNonZeroAndMaxString',    # OPTIONAL
+      EC2InboundPermissions => [
+        {
+          IpRange  => 'MyNonBlankString',
+          FromPort => 1,                                   # min: 1, max: 60000
+          ToPort   => 1,                                   # min: 1, max: 60000
+          Protocol => 'TCP',                               # values: TCP, UDP
+
+        },
+        ...
+      ],                                                   # OPTIONAL
+      FleetType => 'ON_DEMAND',                            # OPTIONAL
+      LogPaths  => [
+        'MyNonZeroAndMaxString', ...                       # min: 1, max: 1024
+      ],                                                   # OPTIONAL
+      MetricGroups => [
+        'MyMetricGroup', ...                               # min: 1, max: 255
+      ],                                                   # OPTIONAL
+      NewGameSessionProtectionPolicy => 'NoProtection',             # OPTIONAL
+      PeerVpcAwsAccountId            => 'MyNonZeroAndMaxString',    # OPTIONAL
+      PeerVpcId                      => 'MyNonZeroAndMaxString',    # OPTIONAL
+      ResourceCreationLimitPolicy    => {
+        NewGameSessionsPerCreator => 1,                             # OPTIONAL
+        PolicyPeriodInMinutes     => 1,                             # OPTIONAL
+      },    # OPTIONAL
+      RuntimeConfiguration => {
+        MaxConcurrentGameSessionActivations =>
+          1,    # min: 1, max: 2147483647; OPTIONAL
+        GameSessionActivationTimeoutSeconds => 1,   # min: 1, max: 600; OPTIONAL
+        ServerProcesses                     => [
+          {
+            LaunchPath           => 'MyNonZeroAndMaxString', # min: 1, max: 1024
+            ConcurrentExecutions => 1,                       # min: 1,
+            Parameters           => 'MyNonZeroAndMaxString', # min: 1, max: 1024
+          },
+          ...
+        ],    # min: 1, max: 50; OPTIONAL
+      },    # OPTIONAL
+      ServerLaunchParameters => 'MyNonZeroAndMaxString',    # OPTIONAL
+      ServerLaunchPath       => 'MyNonZeroAndMaxString',    # OPTIONAL
+    );
+
+    # Results:
+    my $FleetAttributes = $CreateFleetOutput->FleetAttributes;
+
+    # Returns a L<Paws::GameLift::CreateFleetOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/CreateFleet>

@@ -27,9 +27,20 @@ as arguments to method CopyImage.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CopyImage.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CopyImage(Att1 => $value1, Att2 => $value2, ...);
+    my $appstream2 = Paws->service('AppStream');
+    my $CopyImageResponse = $appstream2->CopyImage(
+      DestinationImageName        => 'MyName',
+      DestinationRegion           => 'MyRegionName',
+      SourceImageName             => 'MyName',
+      DestinationImageDescription => 'MyDescription',    # OPTIONAL
+    );
+
+    # Results:
+    my $DestinationImageName = $CopyImageResponse->DestinationImageName;
+
+    # Returns a L<Paws::AppStream::CopyImageResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

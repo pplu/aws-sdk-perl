@@ -28,9 +28,43 @@ as arguments to method GetInventory.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetInventory.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetInventory(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $GetInventoryResult = $ssm->GetInventory(
+      Aggregators => [
+        {
+          Aggregators => <InventoryAggregatorList>,
+          Expression =>
+            'MyInventoryAggregatorExpression',    # min: 1, max: 1000; OPTIONAL
+        },
+        ...
+      ],                                          # OPTIONAL
+      Filters => [
+        {
+          Key    => 'MyInventoryFilterKey',               # min: 1, max: 200
+          Values => [ 'MyInventoryFilterValue', ... ],    # min: 1, max: 20
+          Type   => 'Equal'
+          , # values: Equal, NotEqual, BeginWith, LessThan, GreaterThan; OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
+      MaxResults       => 1,                # OPTIONAL
+      NextToken        => 'MyNextToken',    # OPTIONAL
+      ResultAttributes => [
+        {
+          TypeName => 'MyInventoryItemTypeName',    # min: 1, max: 100
+
+        },
+        ...
+      ],                                            # OPTIONAL
+    );
+
+    # Results:
+    my $Entities  = $GetInventoryResult->Entities;
+    my $NextToken = $GetInventoryResult->NextToken;
+
+    # Returns a L<Paws::SSM::GetInventoryResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/GetInventory>

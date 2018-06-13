@@ -23,9 +23,25 @@ as arguments to method DescribeLimits.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLimits.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeLimits(Att1 => $value1, Att2 => $value2, ...);
+    my $dynamodb = Paws->service('DynamoDB');
+ # To determine capacity limits per table and account, in the current AWS region
+ # The following example returns the maximum read and write capacity units per
+ # table, and for the AWS account, in the current AWS region.
+    my $DescribeLimitsOutput = $dynamodb->DescribeLimits();
+
+    # Results:
+    my $TableMaxWriteCapacityUnits =
+      $DescribeLimitsOutput->TableMaxWriteCapacityUnits;
+    my $AccountMaxWriteCapacityUnits =
+      $DescribeLimitsOutput->AccountMaxWriteCapacityUnits;
+    my $AccountMaxReadCapacityUnits =
+      $DescribeLimitsOutput->AccountMaxReadCapacityUnits;
+    my $TableMaxReadCapacityUnits =
+      $DescribeLimitsOutput->TableMaxReadCapacityUnits;
+
+    # Returns a L<Paws::DynamoDB::DescribeLimitsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dynamodb/DescribeLimits>

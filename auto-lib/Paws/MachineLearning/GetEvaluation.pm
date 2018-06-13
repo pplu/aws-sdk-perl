@@ -24,9 +24,32 @@ as arguments to method GetEvaluation.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetEvaluation.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetEvaluation(Att1 => $value1, Att2 => $value2, ...);
+    my $machinelearning = Paws->service('MachineLearning');
+    my $GetEvaluationOutput = $machinelearning->GetEvaluation(
+      EvaluationId => 'MyEntityId',
+
+    );
+
+    # Results:
+    my $Message                = $GetEvaluationOutput->Message;
+    my $CreatedAt              = $GetEvaluationOutput->CreatedAt;
+    my $Status                 = $GetEvaluationOutput->Status;
+    my $StartedAt              = $GetEvaluationOutput->StartedAt;
+    my $FinishedAt             = $GetEvaluationOutput->FinishedAt;
+    my $ComputeTime            = $GetEvaluationOutput->ComputeTime;
+    my $MLModelId              = $GetEvaluationOutput->MLModelId;
+    my $CreatedByIamUser       = $GetEvaluationOutput->CreatedByIamUser;
+    my $EvaluationId           = $GetEvaluationOutput->EvaluationId;
+    my $LastUpdatedAt          = $GetEvaluationOutput->LastUpdatedAt;
+    my $EvaluationDataSourceId = $GetEvaluationOutput->EvaluationDataSourceId;
+    my $InputDataLocationS3    = $GetEvaluationOutput->InputDataLocationS3;
+    my $LogUri                 = $GetEvaluationOutput->LogUri;
+    my $Name                   = $GetEvaluationOutput->Name;
+    my $PerformanceMetrics     = $GetEvaluationOutput->PerformanceMetrics;
+
+    # Returns a L<Paws::MachineLearning::GetEvaluationOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/machinelearning/GetEvaluation>

@@ -33,9 +33,35 @@ as arguments to method CreateJob.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateJob.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateJob(Att1 => $value1, Att2 => $value2, ...);
+    my $iot = Paws->service('IoT');
+    my $CreateJobResponse = $iot->CreateJob(
+      JobId              => 'MyJobId',
+      Targets            => [ 'MyTargetArn', ... ],
+      Description        => 'MyJobDescription',       # OPTIONAL
+      Document           => 'MyJobDocument',          # OPTIONAL
+      DocumentParameters => {
+        'MyParameterKey' =>
+          'MyParameterValue',  # key: min: 1, max: 128, value: min: 1, max: 1024
+      },    # OPTIONAL
+      DocumentSource             => 'MyJobDocumentSource',    # OPTIONAL
+      JobExecutionsRolloutConfig => {
+        maximumPerMinute => 1,    # min: 1, max: 1000; OPTIONAL
+      },    # OPTIONAL
+      PresignedUrlConfig => {
+        roleArn      => 'MyRoleArn',    # min: 20, max: 2048; OPTIONAL
+        expiresInSec => 1,              # min: 60, max: 3600; OPTIONAL
+      },    # OPTIONAL
+      TargetSelection => 'CONTINUOUS',    # OPTIONAL
+    );
+
+    # Results:
+    my $Description = $CreateJobResponse->Description;
+    my $JobId       = $CreateJobResponse->JobId;
+    my $JobArn      = $CreateJobResponse->JobArn;
+
+    # Returns a L<Paws::IoT::CreateJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot/CreateJob>

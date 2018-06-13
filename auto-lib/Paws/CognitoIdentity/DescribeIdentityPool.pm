@@ -24,9 +24,26 @@ as arguments to method DescribeIdentityPool.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeIdentityPool.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeIdentityPool(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-identity = Paws->service('CognitoIdentity');
+    my $IdentityPool = $cognito -identity->DescribeIdentityPool(
+      IdentityPoolId => 'MyIdentityPoolId',
+
+    );
+
+    # Results:
+    my $SupportedLoginProviders   = $IdentityPool->SupportedLoginProviders;
+    my $CognitoIdentityProviders  = $IdentityPool->CognitoIdentityProviders;
+    my $OpenIdConnectProviderARNs = $IdentityPool->OpenIdConnectProviderARNs;
+    my $SamlProviderARNs          = $IdentityPool->SamlProviderARNs;
+    my $IdentityPoolId            = $IdentityPool->IdentityPoolId;
+    my $IdentityPoolName          = $IdentityPool->IdentityPoolName;
+    my $AllowUnauthenticatedIdentities =
+      $IdentityPool->AllowUnauthenticatedIdentities;
+    my $DeveloperProviderName = $IdentityPool->DeveloperProviderName;
+
+    # Returns a L<Paws::CognitoIdentity::IdentityPool> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-identity/DescribeIdentityPool>

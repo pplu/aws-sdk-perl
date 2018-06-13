@@ -34,9 +34,50 @@ as arguments to method UpdateApp.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateApp.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateApp(Att1 => $value1, Att2 => $value2, ...);
+    my $opsworks = Paws->service('OpsWorks');
+    $opsworks->UpdateApp(
+      AppId     => 'MyString',
+      AppSource => {
+        Type     => 'git',        # values: git, svn, archive, s3; OPTIONAL
+        Url      => 'MyString',
+        Password => 'MyString',
+        SshKey   => 'MyString',
+        Revision => 'MyString',
+        Username => 'MyString',
+      },    # OPTIONAL
+      Attributes => {
+        'DocumentRoot' => 'MyString'
+        , # key: values: DocumentRoot, RailsEnv, AutoBundleOnDeploy, AwsFlowRubySettings
+      },    # OPTIONAL
+      DataSources => [
+        {
+          Type         => 'MyString',
+          DatabaseName => 'MyString',
+          Arn          => 'MyString',
+        },
+        ...
+      ],    # OPTIONAL
+      Description => 'MyString',             # OPTIONAL
+      Domains     => [ 'MyString', ... ],    # OPTIONAL
+      EnableSsl   => 1,                      # OPTIONAL
+      Environment => [
+        {
+          Value  => 'MyString',
+          Key    => 'MyString',
+          Secure => 1,
+        },
+        ...
+      ],                                     # OPTIONAL
+      Name             => 'MyString',        # OPTIONAL
+      SslConfiguration => {
+        Certificate => 'MyString',
+        PrivateKey  => 'MyString',
+        Chain       => 'MyString',
+      },                                     # OPTIONAL
+      Type => 'aws-flow-ruby',               # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/opsworks/UpdateApp>

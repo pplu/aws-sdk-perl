@@ -27,9 +27,21 @@ as arguments to method AbortMultipartUpload.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AbortMultipartUpload.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AbortMultipartUpload(Att1 => $value1, Att2 => $value2, ...);
+    my $glacier = Paws->service('Glacier');
+    # To abort a multipart upload identified by the upload ID
+    # The example deletes an in-progress multipart upload to a vault named
+    # my-vault:
+    $glacier->AbortMultipartUpload(
+      {
+        'UploadId' =>
+'19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV6NtcV5zpsJ',
+        'AccountId' => '-',
+        'VaultName' => 'my-vault'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/glacier/>

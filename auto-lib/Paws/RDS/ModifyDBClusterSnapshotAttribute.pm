@@ -27,9 +27,23 @@ as arguments to method ModifyDBClusterSnapshotAttribute.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyDBClusterSnapshotAttribute.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyDBClusterSnapshotAttribute(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    # To add or remove access to a manual DB cluster snapshot
+    # The following example gives two AWS accounts access to a manual DB cluster
+    # snapshot and ensures that the DB cluster snapshot is private by removing
+    # the value "all".
+    my $ModifyDBClusterSnapshotAttributeResult =
+      $rds->ModifyDBClusterSnapshotAttribute(
+      {
+        'ValuesToAdd'                 => [ 123451234512, 123456789012 ],
+        'ValuesToRemove'              => ['all'],
+        'AttributeName'               => 'restore',
+        'DBClusterSnapshotIdentifier' => 'manual-cluster-snapshot1'
+      }
+      );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/ModifyDBClusterSnapshotAttribute>

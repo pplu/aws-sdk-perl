@@ -24,9 +24,23 @@ as arguments to method DescribeTags.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeTags.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeTags(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticloadbalancing = Paws->service('ELBv2');
+    # To describe the tags assigned to a load balancer
+    # This example describes the tags assigned to the specified load balancer.
+    my $DescribeTagsOutput = $elasticloadbalancing->DescribeTags(
+      {
+        'ResourceArns' => [
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188'
+        ]
+      }
+    );
+
+    # Results:
+    my $TagDescriptions = $DescribeTagsOutput->TagDescriptions;
+
+    # Returns a L<Paws::ELBv2::DescribeTagsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing/DescribeTags>

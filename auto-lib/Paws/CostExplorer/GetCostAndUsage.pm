@@ -29,9 +29,47 @@ as arguments to method GetCostAndUsage.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetCostAndUsage.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetCostAndUsage(Att1 => $value1, Att2 => $value2, ...);
+    my $ce = Paws->service('CostExplorer');
+    my $GetCostAndUsageResponse = $ce->GetCostAndUsage(
+      Filter => {
+        And => [ <Expression>, ... ],    # OPTIONAL
+        Tags => {
+          Key => 'MyTagKey',               # OPTIONAL
+          Values => [ 'MyValue', ... ],    # OPTIONAL
+        },    # OPTIONAL
+        Not        => <Expression>,
+        Or         => [ <Expression>, ... ],    # OPTIONAL
+        Dimensions => {
+          Key => 'AZ'
+          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY; OPTIONAL
+          Values => [ 'MyValue', ... ],    # OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
+      Granularity => 'DAILY',    # OPTIONAL
+      GroupBy     => [
+        {
+          Key  => 'MyGroupDefinitionKey',    # OPTIONAL
+          Type => 'DIMENSION',               # values: DIMENSION, TAG; OPTIONAL
+        },
+        ...
+      ],                                     # OPTIONAL
+      Metrics       => [ 'MyMetricName', ... ],    # OPTIONAL
+      NextPageToken => 'MyNextPageToken',          # OPTIONAL
+      TimePeriod    => {
+        Start => 'MyYearMonthDay',
+        End   => 'MyYearMonthDay',
+
+      },                                           # OPTIONAL
+    );
+
+    # Results:
+    my $NextPageToken    = $GetCostAndUsageResponse->NextPageToken;
+    my $ResultsByTime    = $GetCostAndUsageResponse->ResultsByTime;
+    my $GroupDefinitions = $GetCostAndUsageResponse->GroupDefinitions;
+
+    # Returns a L<Paws::CostExplorer::GetCostAndUsageResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ce/GetCostAndUsage>

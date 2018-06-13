@@ -27,9 +27,18 @@ as arguments to method GetBucketLocation.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetBucketLocation.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetBucketLocation(Att1 => $value1, Att2 => $value2, ...);
+    my $s3 = Paws->service('S3');
+    my $GetBucketLocationOutput = $s3->GetBucketLocation(
+      Bucket => 'MyBucketName',
+
+    );
+
+    # Results:
+    my $LocationConstraint = $GetBucketLocationOutput->LocationConstraint;
+
+    # Returns a L<Paws::S3::GetBucketLocationOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/GetBucketLocation>

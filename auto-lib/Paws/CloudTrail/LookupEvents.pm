@@ -28,9 +28,30 @@ as arguments to method LookupEvents.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to LookupEvents.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->LookupEvents(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudtrail = Paws->service('CloudTrail');
+    my $LookupEventsResponse = $cloudtrail->LookupEvents(
+      EndTime          => '1970-01-01T01:00:00',    # OPTIONAL
+      LookupAttributes => [
+        {
+          AttributeKey => 'EventId'
+          , # values: EventId, EventName, Username, ResourceType, ResourceName, EventSource
+          AttributeValue => 'MyString',
+
+        },
+        ...
+      ],    # OPTIONAL
+      MaxResults => 1,                        # OPTIONAL
+      NextToken  => 'MyNextToken',            # OPTIONAL
+      StartTime  => '1970-01-01T01:00:00',    # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken = $LookupEventsResponse->NextToken;
+    my $Events    = $LookupEventsResponse->Events;
+
+    # Returns a L<Paws::CloudTrail::LookupEventsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudtrail/LookupEvents>

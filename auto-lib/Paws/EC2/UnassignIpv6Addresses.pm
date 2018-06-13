@@ -25,9 +25,21 @@ as arguments to method UnassignIpv6Addresses.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UnassignIpv6Addresses.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UnassignIpv6Addresses(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $UnassignIpv6AddressesResult = $ec2->UnassignIpv6Addresses(
+      Ipv6Addresses      => [ 'MyString', ... ],
+      NetworkInterfaceId => 'MyString',
+
+    );
+
+    # Results:
+    my $UnassignedIpv6Addresses =
+      $UnassignIpv6AddressesResult->UnassignedIpv6Addresses;
+    my $NetworkInterfaceId = $UnassignIpv6AddressesResult->NetworkInterfaceId;
+
+    # Returns a L<Paws::EC2::UnassignIpv6AddressesResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/UnassignIpv6Addresses>

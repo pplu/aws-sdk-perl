@@ -26,9 +26,24 @@ as arguments to method DetachInstances.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DetachInstances.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DetachInstances(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('AutoScaling');
+    # To detach an instance from an Auto Scaling group
+    # This example detaches the specified instance from the specified Auto
+    # Scaling group.
+    my $DetachInstancesAnswer = $autoscaling->DetachInstances(
+      {
+        'ShouldDecrementDesiredCapacity' => true,
+        'InstanceIds'                    => ['i-93633f9b'],
+        'AutoScalingGroupName'           => 'my-auto-scaling-group'
+      }
+    );
+
+    # Results:
+    my $Activities = $DetachInstancesAnswer->Activities;
+
+    # Returns a L<Paws::AutoScaling::DetachInstancesAnswer> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/DetachInstances>

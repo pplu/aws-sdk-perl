@@ -25,9 +25,30 @@ as arguments to method DescribeAccountAttributes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAccountAttributes.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeAccountAttributes(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To describe a single attribute for your AWS account
+    # This example describes the supported-platforms attribute for your AWS
+    # account.
+    my $DescribeAccountAttributesResult = $ec2->DescribeAccountAttributes(
+      {
+        'AttributeNames' => ['supported-platforms']
+      }
+    );
+
+    # Results:
+    my $AccountAttributes = $DescribeAccountAttributesResult->AccountAttributes;
+
+    # Returns a L<Paws::EC2::DescribeAccountAttributesResult> object.
+    # To describe all attributes for your AWS account
+    # This example describes the attributes for your AWS account.
+    my $DescribeAccountAttributesResult = $ec2->DescribeAccountAttributes();
+
+    # Results:
+    my $AccountAttributes = $DescribeAccountAttributesResult->AccountAttributes;
+
+    # Returns a L<Paws::EC2::DescribeAccountAttributesResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeAccountAttributes>

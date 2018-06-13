@@ -24,9 +24,18 @@ as arguments to method GetTemplate.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetTemplate.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetTemplate(Att1 => $value1, Att2 => $value2, ...);
+    my $email = Paws->service('SES');
+    my $GetTemplateResponse = $email->GetTemplate(
+      TemplateName => 'MyTemplateName',
+
+    );
+
+    # Results:
+    my $Template = $GetTemplateResponse->Template;
+
+    # Returns a L<Paws::SES::GetTemplateResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/email/GetTemplate>

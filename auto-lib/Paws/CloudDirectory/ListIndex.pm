@@ -30,9 +30,55 @@ as arguments to method ListIndex.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListIndex.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListIndex(Att1 => $value1, Att2 => $value2, ...);
+    my $clouddirectory = Paws->service('CloudDirectory');
+    my $ListIndexResponse = $clouddirectory->ListIndex(
+      DirectoryArn   => 'MyArn',
+      IndexReference => {
+        Selector => 'MySelectorObjectReference',    # OPTIONAL
+      },
+      ConsistencyLevel      => 'SERIALIZABLE',      # OPTIONAL
+      MaxResults            => 1,                   # OPTIONAL
+      NextToken             => 'MyNextToken',       # OPTIONAL
+      RangesOnIndexedValues => [
+        {
+          Range => {
+            StartMode => 'FIRST'
+            , # values: FIRST, LAST, LAST_BEFORE_MISSING_VALUES, INCLUSIVE, EXCLUSIVE
+            EndMode => 'FIRST'
+            , # values: FIRST, LAST, LAST_BEFORE_MISSING_VALUES, INCLUSIVE, EXCLUSIVE
+            EndValue => {
+              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+              BooleanValue  => 1,                             # OPTIONAL
+              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+            },    # OPTIONAL
+            StartValue => {
+              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+              BooleanValue  => 1,                             # OPTIONAL
+              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+            },    # OPTIONAL
+          },    # OPTIONAL
+          AttributeKey => {
+            FacetName => 'MyFacetName',        # min: 1, max: 64
+            SchemaArn => 'MyArn',
+            Name      => 'MyAttributeName',    # min: 1, max: 64
+
+          },    # OPTIONAL
+        },
+        ...
+      ],        # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken        = $ListIndexResponse->NextToken;
+    my $IndexAttachments = $ListIndexResponse->IndexAttachments;
+
+    # Returns a L<Paws::CloudDirectory::ListIndexResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clouddirectory/ListIndex>

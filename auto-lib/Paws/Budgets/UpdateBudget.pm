@@ -25,9 +25,55 @@ as arguments to method UpdateBudget.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateBudget.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateBudget(Att1 => $value1, Att2 => $value2, ...);
+    my $budgets = Paws->service('Budgets');
+    my $UpdateBudgetResponse = $budgets->UpdateBudget(
+      AccountId => 'MyAccountId',
+      NewBudget => {
+        BudgetType =>
+          'USAGE',    # values: USAGE, COST, RI_UTILIZATION, RI_COVERAGE
+        TimeUnit => 'DAILY',    # values: DAILY, MONTHLY, QUARTERLY, ANNUALLY
+        BudgetName => 'MyBudgetName',    # max: 100
+        CostTypes  => {
+          IncludeCredit            => 1,    # OPTIONAL
+          UseAmortized             => 1,    # OPTIONAL
+          IncludeRefund            => 1,    # OPTIONAL
+          IncludeRecurring         => 1,    # OPTIONAL
+          UseBlended               => 1,    # OPTIONAL
+          IncludeOtherSubscription => 1,    # OPTIONAL
+          IncludeDiscount          => 1,    # OPTIONAL
+          IncludeSubscription      => 1,    # OPTIONAL
+          IncludeSupport           => 1,    # OPTIONAL
+          IncludeUpfront           => 1,    # OPTIONAL
+          IncludeTax               => 1,    # OPTIONAL
+        },    # OPTIONAL
+        TimePeriod => {
+          Start => '1970-01-01T01:00:00',    # OPTIONAL
+          End   => '1970-01-01T01:00:00',    # OPTIONAL
+        },    # OPTIONAL
+        CalculatedSpend => {
+          ActualSpend => {
+            Unit   => 'MyUnitValue',      # min: 1,
+            Amount => 'MyNumericValue',
+
+          },
+          ForecastedSpend => {
+            Unit   => 'MyUnitValue',      # min: 1,
+            Amount => 'MyNumericValue',
+
+          },
+        },    # OPTIONAL
+        CostFilters => { 'MyGenericString' => [ 'MyGenericString', ... ], }
+        ,     # OPTIONAL
+        BudgetLimit => {
+          Unit   => 'MyUnitValue',      # min: 1,
+          Amount => 'MyNumericValue',
+
+        },
+      },
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/budgets/UpdateBudget>

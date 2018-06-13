@@ -36,9 +36,52 @@ as arguments to method SelectObjectContent.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SelectObjectContent.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SelectObjectContent(Att1 => $value1, Att2 => $value2, ...);
+    my $s3 = Paws->service('S3');
+    my $SelectObjectContentOutput = $s3->SelectObjectContent(
+      Bucket             => 'MyBucketName',
+      Expression         => 'MyExpression',
+      ExpressionType     => 'SQL',
+      InputSerialization => {
+        CompressionType => 'NONE',    # values: NONE, GZIP; OPTIONAL
+        JSON            => {
+          Type => 'DOCUMENT',         # values: DOCUMENT, LINES; OPTIONAL
+        },    # OPTIONAL
+        CSV => {
+          FileHeaderInfo => 'USE',    # values: USE, IGNORE, NONE; OPTIONAL
+          RecordDelimiter      => 'MyRecordDelimiter',         # OPTIONAL
+          QuoteCharacter       => 'MyQuoteCharacter',          # OPTIONAL
+          QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
+          Comments             => 'MyComments',                # OPTIONAL
+          FieldDelimiter       => 'MyFieldDelimiter',          # OPTIONAL
+        },    # OPTIONAL
+      },
+      Key                 => 'MyObjectKey',
+      OutputSerialization => {
+        CSV => {
+          QuoteFields => 'ALWAYS',    # values: ALWAYS, ASNEEDED; OPTIONAL
+          RecordDelimiter      => 'MyRecordDelimiter',         # OPTIONAL
+          QuoteCharacter       => 'MyQuoteCharacter',          # OPTIONAL
+          QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
+          FieldDelimiter       => 'MyFieldDelimiter',          # OPTIONAL
+        },    # OPTIONAL
+        JSON => {
+          RecordDelimiter => 'MyRecordDelimiter',    # OPTIONAL
+        },    # OPTIONAL
+      },
+      RequestProgress => {
+        Enabled => 1,    # OPTIONAL
+      },    # OPTIONAL
+      SSECustomerAlgorithm => 'MySSECustomerAlgorithm',    # OPTIONAL
+      SSECustomerKey       => 'MySSECustomerKey',          # OPTIONAL
+      SSECustomerKeyMD5    => 'MySSECustomerKeyMD5',       # OPTIONAL
+    );
+
+    # Results:
+    my $Payload = $SelectObjectContentOutput->Payload;
+
+    # Returns a L<Paws::S3::SelectObjectContentOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/SelectObjectContent>

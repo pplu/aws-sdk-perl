@@ -25,9 +25,24 @@ as arguments to method DescribeGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $workmail = Paws->service('WorkMail');
+    my $DescribeGroupResponse = $workmail->DescribeGroup(
+      GroupId        => 'MyWorkMailIdentifier',
+      OrganizationId => 'MyOrganizationId',
+
+    );
+
+    # Results:
+    my $Name         = $DescribeGroupResponse->Name;
+    my $GroupId      = $DescribeGroupResponse->GroupId;
+    my $State        = $DescribeGroupResponse->State;
+    my $DisabledDate = $DescribeGroupResponse->DisabledDate;
+    my $EnabledDate  = $DescribeGroupResponse->EnabledDate;
+    my $Email        = $DescribeGroupResponse->Email;
+
+    # Returns a L<Paws::WorkMail::DescribeGroupResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workmail/DescribeGroup>

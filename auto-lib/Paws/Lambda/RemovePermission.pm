@@ -28,9 +28,19 @@ as arguments to method RemovePermission.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemovePermission.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RemovePermission(Att1 => $value1, Att2 => $value2, ...);
+    my $lambda = Paws->service('Lambda');
+    # To remove a Lambda function's permissions
+    # This operation removes a Lambda function's permissions
+    $lambda->RemovePermission(
+      {
+        'StatementId'  => 'role-statement-id',
+        'FunctionName' => 'myFunction',
+        'Qualifier'    => 1
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lambda/RemovePermission>

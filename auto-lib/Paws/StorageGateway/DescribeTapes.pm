@@ -27,9 +27,31 @@ as arguments to method DescribeTapes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeTapes.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeTapes(Att1 => $value1, Att2 => $value2, ...);
+    my $storagegateway = Paws->service('StorageGateway');
+    # To describe virtual tape(s) associated with gateway
+    # Returns a description of the specified Amazon Resource Name (ARN) of
+    # virtual tapes. If a TapeARN is not specified, returns a description of all
+    # virtual tapes.
+    my $DescribeTapesOutput = $storagegateway->DescribeTapes(
+      {
+        'TapeARNs' => [
+          'arn:aws:storagegateway:us-east-1:999999999999:tape/TEST04A2A1',
+          'arn:aws:storagegateway:us-east-1:999999999999:tape/TEST05A2A0'
+        ],
+        'Limit'  => 2,
+        'Marker' => 1,
+        'GatewayARN' =>
+          'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B'
+      }
+    );
+
+    # Results:
+    my $Marker = $DescribeTapesOutput->Marker;
+    my $Tapes  = $DescribeTapesOutput->Tapes;
+
+    # Returns a L<Paws::StorageGateway::DescribeTapesOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/storagegateway/DescribeTapes>

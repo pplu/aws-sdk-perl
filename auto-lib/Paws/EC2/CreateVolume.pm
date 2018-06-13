@@ -32,9 +32,57 @@ as arguments to method CreateVolume.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateVolume.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateVolume(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To create a new volume
+    # This example creates an 80 GiB General Purpose (SSD) volume in the
+    # Availability Zone ``us-east-1a``.
+    my $Volume = $ec2->CreateVolume(
+      {
+        'AvailabilityZone' => 'us-east-1a',
+        'Size'             => 80,
+        'VolumeType'       => 'gp2'
+      }
+    );
+
+    # Results:
+    my $Encrypted        = $Volume->Encrypted;
+    my $AvailabilityZone = $Volume->AvailabilityZone;
+    my $VolumeType       = $Volume->VolumeType;
+    my $State            = $Volume->State;
+    my $Iops             = $Volume->Iops;
+    my $VolumeId         = $Volume->VolumeId;
+    my $SnapshotId       = $Volume->SnapshotId;
+    my $Size             = $Volume->Size;
+    my $CreateTime       = $Volume->CreateTime;
+
+    # Returns a L<Paws::EC2::Volume> object.
+    # To create a new Provisioned IOPS (SSD) volume from a snapshot
+    # This example creates a new Provisioned IOPS (SSD) volume with 1000
+    # provisioned IOPS from a snapshot in the Availability Zone ``us-east-1a``.
+    my $Volume = $ec2->CreateVolume(
+      {
+        'Iops'             => 1000,
+        'AvailabilityZone' => 'us-east-1a',
+        'SnapshotId'       => 'snap-066877671789bd71b',
+        'VolumeType'       => 'io1'
+      }
+    );
+
+    # Results:
+    my $Size             = $Volume->Size;
+    my $SnapshotId       = $Volume->SnapshotId;
+    my $VolumeId         = $Volume->VolumeId;
+    my $CreateTime       = $Volume->CreateTime;
+    my $Tags             = $Volume->Tags;
+    my $Attachments      = $Volume->Attachments;
+    my $AvailabilityZone = $Volume->AvailabilityZone;
+    my $VolumeType       = $Volume->VolumeType;
+    my $State            = $Volume->State;
+    my $Iops             = $Volume->Iops;
+
+    # Returns a L<Paws::EC2::Volume> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/CreateVolume>

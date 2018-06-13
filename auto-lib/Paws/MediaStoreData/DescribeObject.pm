@@ -25,9 +25,22 @@ as arguments to method DescribeObject.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeObject.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeObject(Att1 => $value1, Att2 => $value2, ...);
+    my $data.mediastore = Paws->service('MediaStoreData');
+    my $DescribeObjectResponse = $data . mediastore->DescribeObject(
+      Path => 'MyPathNaming',
+
+    );
+
+    # Results:
+    my $ContentType   = $DescribeObjectResponse->ContentType;
+    my $ETag          = $DescribeObjectResponse->ETag;
+    my $CacheControl  = $DescribeObjectResponse->CacheControl;
+    my $ContentLength = $DescribeObjectResponse->ContentLength;
+    my $LastModified  = $DescribeObjectResponse->LastModified;
+
+    # Returns a L<Paws::MediaStoreData::DescribeObjectResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/mediastore/>

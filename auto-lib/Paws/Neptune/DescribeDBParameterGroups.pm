@@ -27,9 +27,28 @@ as arguments to method DescribeDBParameterGroups.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDBParameterGroups.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeDBParameterGroups(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('Neptune');
+    my $DBParameterGroupsMessage = $rds->DescribeDBParameterGroups(
+      DBParameterGroupName => 'MyString',    # OPTIONAL
+      Filters              => [
+        {
+          Values => [ 'MyString', ... ],
+          Name   => 'MyString',
+
+        },
+        ...
+      ],                                     # OPTIONAL
+      Marker     => 'MyString',              # OPTIONAL
+      MaxRecords => 1,                       # OPTIONAL
+    );
+
+    # Results:
+    my $DBParameterGroups = $DBParameterGroupsMessage->DBParameterGroups;
+    my $Marker            = $DBParameterGroupsMessage->Marker;
+
+    # Returns a L<Paws::Neptune::DBParameterGroupsMessage> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/DescribeDBParameterGroups>

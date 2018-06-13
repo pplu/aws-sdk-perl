@@ -24,9 +24,25 @@ as arguments to method DescribeOrganization.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeOrganization.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeOrganization(Att1 => $value1, Att2 => $value2, ...);
+    my $workmail = Paws->service('WorkMail');
+    my $DescribeOrganizationResponse = $workmail->DescribeOrganization(
+      OrganizationId => 'MyOrganizationId',
+
+    );
+
+    # Results:
+    my $DirectoryId       = $DescribeOrganizationResponse->DirectoryId;
+    my $DefaultMailDomain = $DescribeOrganizationResponse->DefaultMailDomain;
+    my $Alias             = $DescribeOrganizationResponse->Alias;
+    my $OrganizationId    = $DescribeOrganizationResponse->OrganizationId;
+    my $ErrorMessage      = $DescribeOrganizationResponse->ErrorMessage;
+    my $DirectoryType     = $DescribeOrganizationResponse->DirectoryType;
+    my $State             = $DescribeOrganizationResponse->State;
+    my $CompletedDate     = $DescribeOrganizationResponse->CompletedDate;
+
+    # Returns a L<Paws::WorkMail::DescribeOrganizationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workmail/DescribeOrganization>

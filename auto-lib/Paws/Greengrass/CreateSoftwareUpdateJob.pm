@@ -31,9 +31,24 @@ as arguments to method CreateSoftwareUpdateJob.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateSoftwareUpdateJob.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateSoftwareUpdateJob(Att1 => $value1, Att2 => $value2, ...);
+    my $greengrass = Paws->service('Greengrass');
+    my $CreateSoftwareUpdateJobResponse = $greengrass->CreateSoftwareUpdateJob(
+      AmznClientToken              => 'My__string',             # OPTIONAL
+      S3UrlSignerRole              => 'MyS3UrlSignerRole',      # OPTIONAL
+      SoftwareToUpdate             => 'core',                   # OPTIONAL
+      UpdateAgentLogLevel          => 'NONE',                   # OPTIONAL
+      UpdateTargets                => [ 'My__string', ... ],    # OPTIONAL
+      UpdateTargetsArchitecture    => 'armv7l',                 # OPTIONAL
+      UpdateTargetsOperatingSystem => 'ubuntu',                 # OPTIONAL
+    );
+
+    # Results:
+    my $IotJobArn = $CreateSoftwareUpdateJobResponse->IotJobArn;
+    my $IotJobId  = $CreateSoftwareUpdateJobResponse->IotJobId;
+
+    # Returns a L<Paws::Greengrass::CreateSoftwareUpdateJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>

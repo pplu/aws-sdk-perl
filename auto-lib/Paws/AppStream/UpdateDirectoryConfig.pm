@@ -26,9 +26,25 @@ as arguments to method UpdateDirectoryConfig.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateDirectoryConfig.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateDirectoryConfig(Att1 => $value1, Att2 => $value2, ...);
+    my $appstream2 = Paws->service('AppStream');
+    my $UpdateDirectoryConfigResult = $appstream2->UpdateDirectoryConfig(
+      DirectoryName                        => 'MyDirectoryName',
+      OrganizationalUnitDistinguishedNames => [
+        'MyOrganizationalUnitDistinguishedName', ...    # max: 2000
+      ],                                                # OPTIONAL
+      ServiceAccountCredentials => {
+        AccountName     => 'MyAccountName',             # min: 1,
+        AccountPassword => 'MyAccountPassword',         # min: 1, max: 127
+
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $DirectoryConfig = $UpdateDirectoryConfigResult->DirectoryConfig;
+
+    # Returns a L<Paws::AppStream::UpdateDirectoryConfigResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

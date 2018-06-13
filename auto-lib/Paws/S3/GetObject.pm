@@ -45,9 +45,62 @@ as arguments to method GetObject.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetObject.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetObject(Att1 => $value1, Att2 => $value2, ...);
+    my $s3 = Paws->service('S3');
+    my $GetObjectOutput = $s3->GetObject(
+      Bucket                     => 'MyBucketName',
+      Key                        => 'MyObjectKey',
+      IfMatch                    => 'MyIfMatch',                      # OPTIONAL
+      IfModifiedSince            => '1970-01-01T01:00:00',            # OPTIONAL
+      IfNoneMatch                => 'MyIfNoneMatch',                  # OPTIONAL
+      IfUnmodifiedSince          => '1970-01-01T01:00:00',            # OPTIONAL
+      PartNumber                 => 1,                                # OPTIONAL
+      Range                      => 'MyRange',                        # OPTIONAL
+      RequestPayer               => 'requester',                      # OPTIONAL
+      ResponseCacheControl       => 'MyResponseCacheControl',         # OPTIONAL
+      ResponseContentDisposition => 'MyResponseContentDisposition',   # OPTIONAL
+      ResponseContentEncoding    => 'MyResponseContentEncoding',      # OPTIONAL
+      ResponseContentLanguage    => 'MyResponseContentLanguage',      # OPTIONAL
+      ResponseContentType        => 'MyResponseContentType',          # OPTIONAL
+      ResponseExpires            => '1970-01-01T01:00:00',            # OPTIONAL
+      SSECustomerAlgorithm       => 'MySSECustomerAlgorithm',         # OPTIONAL
+      SSECustomerKey             => 'MySSECustomerKey',               # OPTIONAL
+      SSECustomerKeyMD5          => 'MySSECustomerKeyMD5',            # OPTIONAL
+      VersionId                  => 'MyObjectVersionId',              # OPTIONAL
+    );
+
+    # Results:
+    my $SSEKMSKeyId             = $GetObjectOutput->SSEKMSKeyId;
+    my $Body                    = $GetObjectOutput->Body;
+    my $ContentRange            = $GetObjectOutput->ContentRange;
+    my $DeleteMarker            = $GetObjectOutput->DeleteMarker;
+    my $ServerSideEncryption    = $GetObjectOutput->ServerSideEncryption;
+    my $SSECustomerKeyMD5       = $GetObjectOutput->SSECustomerKeyMD5;
+    my $ReplicationStatus       = $GetObjectOutput->ReplicationStatus;
+    my $ETag                    = $GetObjectOutput->ETag;
+    my $ContentType             = $GetObjectOutput->ContentType;
+    my $Restore                 = $GetObjectOutput->Restore;
+    my $VersionId               = $GetObjectOutput->VersionId;
+    my $TagCount                = $GetObjectOutput->TagCount;
+    my $Expires                 = $GetObjectOutput->Expires;
+    my $WebsiteRedirectLocation = $GetObjectOutput->WebsiteRedirectLocation;
+    my $StorageClass            = $GetObjectOutput->StorageClass;
+    my $ContentEncoding         = $GetObjectOutput->ContentEncoding;
+    my $AcceptRanges            = $GetObjectOutput->AcceptRanges;
+    my $ContentLanguage         = $GetObjectOutput->ContentLanguage;
+    my $SSECustomerAlgorithm    = $GetObjectOutput->SSECustomerAlgorithm;
+    my $Metadata                = $GetObjectOutput->Metadata;
+    my $Expiration              = $GetObjectOutput->Expiration;
+    my $RequestCharged          = $GetObjectOutput->RequestCharged;
+    my $ContentLength           = $GetObjectOutput->ContentLength;
+    my $ContentDisposition      = $GetObjectOutput->ContentDisposition;
+    my $CacheControl            = $GetObjectOutput->CacheControl;
+    my $LastModified            = $GetObjectOutput->LastModified;
+    my $MissingMeta             = $GetObjectOutput->MissingMeta;
+    my $PartsCount              = $GetObjectOutput->PartsCount;
+
+    # Returns a L<Paws::S3::GetObjectOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/GetObject>

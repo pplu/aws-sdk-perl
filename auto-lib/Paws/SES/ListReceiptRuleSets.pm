@@ -24,9 +24,23 @@ as arguments to method ListReceiptRuleSets.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListReceiptRuleSets.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListReceiptRuleSets(Att1 => $value1, Att2 => $value2, ...);
+    my $email = Paws->service('SES');
+    # ListReceiptRuleSets
+    # The following example lists the receipt rule sets that exist under an AWS
+    # account:
+    my $ListReceiptRuleSetsResponse = $email->ListReceiptRuleSets(
+      {
+        'NextToken' => ''
+      }
+    );
+
+    # Results:
+    my $NextToken = $ListReceiptRuleSetsResponse->NextToken;
+    my $RuleSets  = $ListReceiptRuleSetsResponse->RuleSets;
+
+    # Returns a L<Paws::SES::ListReceiptRuleSetsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/email/ListReceiptRuleSets>

@@ -27,9 +27,53 @@ as arguments to method CreateFieldLevelEncryptionConfig2017_10_30.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateFieldLevelEncryptionConfig2017_10_30.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateFieldLevelEncryptionConfig2017_10_30(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudfront = Paws->service('CloudFront');
+    my $CreateFieldLevelEncryptionConfigResult =
+      $cloudfront->CreateFieldLevelEncryptionConfig(
+      FieldLevelEncryptionConfig => {
+        CallerReference       => 'Mystring',
+        QueryArgProfileConfig => {
+          ForwardWhenQueryArgProfileIsUnknown => 1,
+          QueryArgProfiles                    => {
+            Quantity => 1,
+            Items    => [
+              {
+                QueryArg  => 'Mystring',
+                ProfileId => 'Mystring',
+
+              },
+              ...
+            ],    # OPTIONAL
+          },    # OPTIONAL
+        },    # OPTIONAL
+        Comment                  => 'Mystring',
+        ContentTypeProfileConfig => {
+          ForwardWhenContentTypeIsUnknown => 1,
+          ContentTypeProfiles             => {
+            Quantity => 1,
+            Items    => [
+              {
+                Format      => 'URLEncoded',    # values: URLEncoded
+                ContentType => 'Mystring',
+                ProfileId   => 'Mystring',
+              },
+              ...
+            ],                                  # OPTIONAL
+          },    # OPTIONAL
+        },    # OPTIONAL
+      },
+
+      );
+
+    # Results:
+    my $ETag = $CreateFieldLevelEncryptionConfigResult->ETag;
+    my $FieldLevelEncryption =
+      $CreateFieldLevelEncryptionConfigResult->FieldLevelEncryption;
+    my $Location = $CreateFieldLevelEncryptionConfigResult->Location;
+
+ # Returns a L<Paws::CloudFront::CreateFieldLevelEncryptionConfigResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudfront/CreateFieldLevelEncryptionConfig>

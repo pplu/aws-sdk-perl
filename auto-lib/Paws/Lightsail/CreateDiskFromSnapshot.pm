@@ -27,9 +27,21 @@ as arguments to method CreateDiskFromSnapshot.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDiskFromSnapshot.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDiskFromSnapshot(Att1 => $value1, Att2 => $value2, ...);
+    my $lightsail = Paws->service('Lightsail');
+    my $CreateDiskFromSnapshotResult = $lightsail->CreateDiskFromSnapshot(
+      AvailabilityZone => 'MyNonEmptyString',
+      DiskName         => 'MyResourceName',
+      DiskSnapshotName => 'MyResourceName',
+      SizeInGb         => 1,
+
+    );
+
+    # Results:
+    my $Operations = $CreateDiskFromSnapshotResult->Operations;
+
+    # Returns a L<Paws::Lightsail::CreateDiskFromSnapshotResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lightsail/CreateDiskFromSnapshot>

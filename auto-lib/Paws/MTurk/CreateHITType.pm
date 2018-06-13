@@ -30,9 +30,41 @@ as arguments to method CreateHITType.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateHITType.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateHITType(Att1 => $value1, Att2 => $value2, ...);
+    my $mturk-requester = Paws->service('MTurk');
+    my $CreateHITTypeResponse = $mturk -requester->CreateHITType(
+      AssignmentDurationInSeconds => 1,
+      Description                 => 'MyString',
+      Reward                      => 'MyCurrencyAmount',
+      Title                       => 'MyString',
+      AutoApprovalDelayInSeconds  => 1,                    # OPTIONAL
+      Keywords                    => 'MyString',           # OPTIONAL
+      QualificationRequirements   => [
+        {
+          QualificationTypeId => 'MyString',
+          Comparator          => 'LessThan'
+          , # values: LessThan, LessThanOrEqualTo, GreaterThan, GreaterThanOrEqualTo, EqualTo, NotEqualTo, Exists, DoesNotExist, In, NotIn
+          ActionsGuarded => 'Accept'
+          , # values: Accept, PreviewAndAccept, DiscoverPreviewAndAccept; OPTIONAL
+          LocaleValues => [
+            {
+              Country     => 'MyCountryParameters',    # min: 2, max: 2
+              Subdivision => 'MyCountryParameters',    # min: 2, max: 2
+            },
+            ...
+          ],                                           # OPTIONAL
+          RequiredToPreview => 1,                      # OPTIONAL
+          IntegerValues => [ 1, ... ],                 # OPTIONAL
+        },
+        ...
+      ],                                               # OPTIONAL
+    );
+
+    # Results:
+    my $HITTypeId = $CreateHITTypeResponse->HITTypeId;
+
+    # Returns a L<Paws::MTurk::CreateHITTypeResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/mturk/>

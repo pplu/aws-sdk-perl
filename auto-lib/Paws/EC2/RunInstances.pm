@@ -54,9 +54,143 @@ as arguments to method RunInstances.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RunInstances.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RunInstances(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $Reservation = $ec2->RunInstances(
+      MaxCount            => 1,
+      MinCount            => 1,
+      AdditionalInfo      => 'MyString',    # OPTIONAL
+      BlockDeviceMappings => [
+        {
+          DeviceName  => 'MyString',
+          VirtualName => 'MyString',
+          NoDevice    => 'MyString',
+          Ebs         => {
+            VolumeType =>
+              'standard',    # values: standard, io1, gp2, sc1, st1; OPTIONAL
+            Iops                => 1,
+            Encrypted           => 1,            # OPTIONAL
+            KmsKeyId            => 'MyString',
+            SnapshotId          => 'MyString',
+            DeleteOnTermination => 1,            # OPTIONAL
+            VolumeSize          => 1,
+          },    # OPTIONAL
+        },
+        ...
+      ],        # OPTIONAL
+      ClientToken => 'MyString',    # OPTIONAL
+      CpuOptions  => {
+        CoreCount      => 1,
+        ThreadsPerCore => 1,
+      },                            # OPTIONAL
+      CreditSpecification => {
+        CpuCredits => 'MyString',
+
+      },                            # OPTIONAL
+      DisableApiTermination   => 1, # OPTIONAL
+      DryRun                  => 1, # OPTIONAL
+      EbsOptimized            => 1, # OPTIONAL
+      ElasticGpuSpecification => [
+        {
+          Type => 'MyString',
+
+        },
+        ...
+      ],                            # OPTIONAL
+      IamInstanceProfile => {
+        Arn  => 'MyString',
+        Name => 'MyString',
+      },                            # OPTIONAL
+      ImageId                           => 'MyString',    # OPTIONAL
+      InstanceInitiatedShutdownBehavior => 'stop',        # OPTIONAL
+      InstanceMarketOptions             => {
+        MarketType  => 'spot',    # values: spot; OPTIONAL
+        SpotOptions => {
+          BlockDurationMinutes => 1,
+          SpotInstanceType =>
+            'one-time',           # values: one-time, persistent; OPTIONAL
+          ValidUntil => '1970-01-01T01:00:00',    # OPTIONAL
+          InstanceInterruptionBehavior =>
+            'hibernate',    # values: hibernate, stop, terminate; OPTIONAL
+          MaxPrice => 'MyString',
+        },    # OPTIONAL
+      },    # OPTIONAL
+      InstanceType     => 't1.micro',                                 # OPTIONAL
+      Ipv6AddressCount => 1,                                          # OPTIONAL
+      Ipv6Addresses    => [ { Ipv6Address => 'MyString', }, ... ],    # OPTIONAL
+      KernelId         => 'MyString',                                 # OPTIONAL
+      KeyName          => 'MyString',                                 # OPTIONAL
+      LaunchTemplate   => {
+        LaunchTemplateName => 'MyString',
+        LaunchTemplateId   => 'MyString',
+        Version            => 'MyString',
+      },                                                              # OPTIONAL
+      Monitoring => {
+        Enabled => 1,                                                 # OPTIONAL
+
+      },    # OPTIONAL
+      NetworkInterfaces => [
+        {
+          SubnetId                       => 'MyString',
+          DeviceIndex                    => 1,
+          Groups                         => [ 'MyString', ... ],    # OPTIONAL
+          DeleteOnTermination            => 1,                      # OPTIONAL
+          PrivateIpAddress               => 'MyString',
+          SecondaryPrivateIpAddressCount => 1,
+          NetworkInterfaceId             => 'MyString',
+          Ipv6Addresses      => [ { Ipv6Address => 'MyString', }, ... ],
+          Description        => 'MyString',
+          PrivateIpAddresses => [
+            {
+              PrivateIpAddress => 'MyString',
+              Primary          => 1,                                # OPTIONAL
+            },
+            ...
+          ],                                                        # OPTIONAL
+          AssociatePublicIpAddress => 1,                            # OPTIONAL
+          Ipv6AddressCount         => 1,
+        },
+        ...
+      ],                                                            # OPTIONAL
+      Placement => {
+        SpreadDomain => 'MyString',
+        Affinity     => 'MyString',
+        Tenancy      => 'default',  # values: default, dedicated, host; OPTIONAL
+        AvailabilityZone => 'MyString',
+        HostId           => 'MyString',
+        GroupName        => 'MyString',
+      },    # OPTIONAL
+      PrivateIpAddress  => 'MyString',             # OPTIONAL
+      RamdiskId         => 'MyString',             # OPTIONAL
+      SecurityGroupIds  => [ 'MyString', ... ],    # OPTIONAL
+      SecurityGroups    => [ 'MyString', ... ],    # OPTIONAL
+      SubnetId          => 'MyString',             # OPTIONAL
+      TagSpecifications => [
+        {
+          Tags => [
+            {
+              Key   => 'MyString',
+              Value => 'MyString',
+            },
+            ...
+          ],                                       # OPTIONAL
+          ResourceType => 'customer-gateway'
+          , # values: customer-gateway, dhcp-options, image, instance, internet-gateway, network-acl, network-interface, reserved-instances, route-table, snapshot, spot-instances-request, subnet, security-group, volume, vpc, vpn-connection, vpn-gateway; OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
+      UserData => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $RequesterId   = $Reservation->RequesterId;
+    my $ReservationId = $Reservation->ReservationId;
+    my $OwnerId       = $Reservation->OwnerId;
+    my $Groups        = $Reservation->Groups;
+    my $Instances     = $Reservation->Instances;
+
+    # Returns a L<Paws::EC2::Reservation> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/RunInstances>

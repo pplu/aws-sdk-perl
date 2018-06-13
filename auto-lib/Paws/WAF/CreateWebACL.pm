@@ -27,9 +27,27 @@ as arguments to method CreateWebACL.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateWebACL.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateWebACL(Att1 => $value1, Att2 => $value2, ...);
+    my $waf = Paws->service('WAF');
+    # To create a web ACL
+    # The following example creates a web ACL named CreateExample.
+    my $CreateWebACLResponse = $waf->CreateWebACL(
+      {
+        'Name'          => 'CreateExample',
+        'DefaultAction' => {
+          'Type' => 'ALLOW'
+        },
+        'MetricName'  => 'CreateExample',
+        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f'
+      }
+    );
+
+    # Results:
+    my $WebACL      = $CreateWebACLResponse->WebACL;
+    my $ChangeToken = $CreateWebACLResponse->ChangeToken;
+
+    # Returns a L<Paws::WAF::CreateWebACLResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf/CreateWebACL>

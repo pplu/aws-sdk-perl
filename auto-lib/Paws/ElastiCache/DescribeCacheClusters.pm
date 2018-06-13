@@ -28,9 +28,22 @@ as arguments to method DescribeCacheClusters.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCacheClusters.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeCacheClusters(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticache = Paws->service('ElastiCache');
+    my $CacheClusterMessage = $elasticache->DescribeCacheClusters(
+      CacheClusterId                          => 'MyString',    # OPTIONAL
+      Marker                                  => 'MyString',    # OPTIONAL
+      MaxRecords                              => 1,             # OPTIONAL
+      ShowCacheClustersNotInReplicationGroups => 1,             # OPTIONAL
+      ShowCacheNodeInfo                       => 1,             # OPTIONAL
+    );
+
+    # Results:
+    my $CacheClusters = $CacheClusterMessage->CacheClusters;
+    my $Marker        = $CacheClusterMessage->Marker;
+
+    # Returns a L<Paws::ElastiCache::CacheClusterMessage> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticache/DescribeCacheClusters>

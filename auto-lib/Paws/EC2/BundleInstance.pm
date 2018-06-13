@@ -26,9 +26,27 @@ as arguments to method BundleInstance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to BundleInstance.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->BundleInstance(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $BundleInstanceResult = $ec2->BundleInstance(
+      InstanceId => 'MyString',
+      Storage    => {
+        S3 => {
+          UploadPolicySignature => 'MyString',
+          Prefix                => 'MyString',
+          AWSAccessKeyId        => 'MyString',
+          Bucket                => 'MyString',
+          UploadPolicy          => 'BlobBlob',    # OPTIONAL
+        },    # OPTIONAL
+      },
+      DryRun => 1,    # OPTIONAL
+    );
+
+    # Results:
+    my $BundleTask = $BundleInstanceResult->BundleTask;
+
+    # Returns a L<Paws::EC2::BundleInstanceResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/BundleInstance>

@@ -27,9 +27,34 @@ as arguments to method TerminateEnvironment.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to TerminateEnvironment.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->TerminateEnvironment(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticbeanstalk = Paws->service('ElasticBeanstalk');
+    # To terminate an environment
+    # The following operation terminates an Elastic Beanstalk environment named
+    # my-env:
+    my $EnvironmentDescription = $elasticbeanstalk->TerminateEnvironment(
+      {
+        'EnvironmentName' => 'my-env'
+      }
+    );
+
+    # Results:
+    my $EndpointURL     = $EnvironmentDescription->EndpointURL;
+    my $Tier            = $EnvironmentDescription->Tier;
+    my $ApplicationName = $EnvironmentDescription->ApplicationName;
+    my $DateCreated     = $EnvironmentDescription->DateCreated;
+    my $DateUpdated     = $EnvironmentDescription->DateUpdated;
+    my $CNAME           = $EnvironmentDescription->CNAME;
+    my $Health          = $EnvironmentDescription->Health;
+    my $EnvironmentName = $EnvironmentDescription->EnvironmentName;
+    my $AbortableOperationInProgress =
+      $EnvironmentDescription->AbortableOperationInProgress;
+    my $SolutionStackName = $EnvironmentDescription->SolutionStackName;
+    my $EnvironmentId     = $EnvironmentDescription->EnvironmentId;
+    my $Status            = $EnvironmentDescription->Status;
+
+    # Returns a L<Paws::ElasticBeanstalk::EnvironmentDescription> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk/TerminateEnvironment>

@@ -35,9 +35,36 @@ as arguments to method ListObjectsV2.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListObjectsV2.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListObjectsV2(Att1 => $value1, Att2 => $value2, ...);
+    my $s3 = Paws->service('S3');
+    my $ListObjectsV2Output = $s3->ListObjectsV2(
+      Bucket            => 'MyBucketName',
+      ContinuationToken => 'MyToken',         # OPTIONAL
+      Delimiter         => 'MyDelimiter',     # OPTIONAL
+      EncodingType      => 'url',             # OPTIONAL
+      FetchOwner        => 1,                 # OPTIONAL
+      MaxKeys           => 1,                 # OPTIONAL
+      Prefix            => 'MyPrefix',        # OPTIONAL
+      RequestPayer      => 'requester',       # OPTIONAL
+      StartAfter        => 'MyStartAfter',    # OPTIONAL
+    );
+
+    # Results:
+    my $CommonPrefixes        = $ListObjectsV2Output->CommonPrefixes;
+    my $Name                  = $ListObjectsV2Output->Name;
+    my $StartAfter            = $ListObjectsV2Output->StartAfter;
+    my $Delimiter             = $ListObjectsV2Output->Delimiter;
+    my $IsTruncated           = $ListObjectsV2Output->IsTruncated;
+    my $NextContinuationToken = $ListObjectsV2Output->NextContinuationToken;
+    my $Prefix                = $ListObjectsV2Output->Prefix;
+    my $EncodingType          = $ListObjectsV2Output->EncodingType;
+    my $MaxKeys               = $ListObjectsV2Output->MaxKeys;
+    my $Contents              = $ListObjectsV2Output->Contents;
+    my $ContinuationToken     = $ListObjectsV2Output->ContinuationToken;
+    my $KeyCount              = $ListObjectsV2Output->KeyCount;
+
+    # Returns a L<Paws::S3::ListObjectsV2Output> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/ListObjectsV2>

@@ -26,9 +26,30 @@ as arguments to method PutEvaluations.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutEvaluations.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutEvaluations(Att1 => $value1, Att2 => $value2, ...);
+    my $config = Paws->service('Config');
+    my $PutEvaluationsResponse = $config->PutEvaluations(
+      ResultToken => 'MyString',
+      Evaluations => [
+        {
+          ComplianceResourceId => 'MyBaseResourceId',      # min: 1, max: 768
+          OrderingTimestamp    => '1970-01-01T01:00:00',
+          ComplianceResourceType =>
+            'MyStringWithCharLimit256',                    # min: 1, max: 256
+          ComplianceType => 'COMPLIANT'
+          , # values: COMPLIANT, NON_COMPLIANT, NOT_APPLICABLE, INSUFFICIENT_DATA
+          Annotation => 'MyStringWithCharLimit256',    # min: 1, max: 256
+        },
+        ...
+      ],                                               # OPTIONAL
+      TestMode => 1,                                   # OPTIONAL
+    );
+
+    # Results:
+    my $FailedEvaluations = $PutEvaluationsResponse->FailedEvaluations;
+
+    # Returns a L<Paws::Config::PutEvaluationsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/config/PutEvaluations>

@@ -28,9 +28,23 @@ as arguments to method PutRecord.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutRecord.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutRecord(Att1 => $value1, Att2 => $value2, ...);
+    my $kinesis = Paws->service('Kinesis');
+    my $PutRecordOutput = $kinesis->PutRecord(
+      Data                      => 'BlobData',
+      PartitionKey              => 'MyPartitionKey',
+      StreamName                => 'MyStreamName',
+      ExplicitHashKey           => 'MyHashKey',           # OPTIONAL
+      SequenceNumberForOrdering => 'MySequenceNumber',    # OPTIONAL
+    );
+
+    # Results:
+    my $ShardId        = $PutRecordOutput->ShardId;
+    my $SequenceNumber = $PutRecordOutput->SequenceNumber;
+    my $EncryptionType = $PutRecordOutput->EncryptionType;
+
+    # Returns a L<Paws::Kinesis::PutRecordOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kinesis/PutRecord>

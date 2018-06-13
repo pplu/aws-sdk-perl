@@ -25,9 +25,35 @@ as arguments to method DescribeBroker.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeBroker.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeBroker(Att1 => $value1, Att2 => $value2, ...);
+    my $mq = Paws->service('MQ');
+    my $DescribeBrokerResponse = $mq->DescribeBroker(
+      BrokerId => 'My__string',
+
+    );
+
+    # Results:
+    my $EngineVersion      = $DescribeBrokerResponse->EngineVersion;
+    my $SubnetIds          = $DescribeBrokerResponse->SubnetIds;
+    my $EngineType         = $DescribeBrokerResponse->EngineType;
+    my $BrokerId           = $DescribeBrokerResponse->BrokerId;
+    my $BrokerInstances    = $DescribeBrokerResponse->BrokerInstances;
+    my $SecurityGroups     = $DescribeBrokerResponse->SecurityGroups;
+    my $BrokerState        = $DescribeBrokerResponse->BrokerState;
+    my $Users              = $DescribeBrokerResponse->Users;
+    my $BrokerName         = $DescribeBrokerResponse->BrokerName;
+    my $Configurations     = $DescribeBrokerResponse->Configurations;
+    my $PubliclyAccessible = $DescribeBrokerResponse->PubliclyAccessible;
+    my $AutoMinorVersionUpgrade =
+      $DescribeBrokerResponse->AutoMinorVersionUpgrade;
+    my $HostInstanceType = $DescribeBrokerResponse->HostInstanceType;
+    my $BrokerArn        = $DescribeBrokerResponse->BrokerArn;
+    my $DeploymentMode   = $DescribeBrokerResponse->DeploymentMode;
+    my $MaintenanceWindowStartTime =
+      $DescribeBrokerResponse->MaintenanceWindowStartTime;
+
+    # Returns a L<Paws::MQ::DescribeBrokerResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/amazon-mq/>

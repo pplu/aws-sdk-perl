@@ -26,9 +26,21 @@ as arguments to method AssignIpv6Addresses.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AssignIpv6Addresses.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AssignIpv6Addresses(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $AssignIpv6AddressesResult = $ec2->AssignIpv6Addresses(
+      NetworkInterfaceId => 'MyString',
+      Ipv6AddressCount   => 1,                      # OPTIONAL
+      Ipv6Addresses      => [ 'MyString', ... ],    # OPTIONAL
+    );
+
+    # Results:
+    my $NetworkInterfaceId = $AssignIpv6AddressesResult->NetworkInterfaceId;
+    my $AssignedIpv6Addresses =
+      $AssignIpv6AddressesResult->AssignedIpv6Addresses;
+
+    # Returns a L<Paws::EC2::AssignIpv6AddressesResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/AssignIpv6Addresses>

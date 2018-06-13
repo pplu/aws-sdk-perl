@@ -31,9 +31,42 @@ as arguments to method SignUp.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SignUp.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SignUp(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-idp = Paws->service('CognitoIdp');
+    my $SignUpResponse = $cognito -idp->SignUp(
+      ClientId          => 'MyClientIdType',
+      Password          => 'MyPasswordType',
+      Username          => 'MyUsernameType',
+      AnalyticsMetadata => {
+        AnalyticsEndpointId => 'MyStringType',    # OPTIONAL
+      },    # OPTIONAL
+      SecretHash     => 'MySecretHashType',    # OPTIONAL
+      UserAttributes => [
+        {
+          Name  => 'MyAttributeNameType',      # min: 1, max: 32
+          Value => 'MyAttributeValueType',     # max: 2048; OPTIONAL
+        },
+        ...
+      ],                                       # OPTIONAL
+      UserContextData => {
+        EncodedData => 'MyStringType',         # OPTIONAL
+      },    # OPTIONAL
+      ValidationData => [
+        {
+          Name  => 'MyAttributeNameType',     # min: 1, max: 32
+          Value => 'MyAttributeValueType',    # max: 2048; OPTIONAL
+        },
+        ...
+      ],                                      # OPTIONAL
+    );
+
+    # Results:
+    my $UserConfirmed       = $SignUpResponse->UserConfirmed;
+    my $CodeDeliveryDetails = $SignUpResponse->CodeDeliveryDetails;
+    my $UserSub             = $SignUpResponse->UserSub;
+
+    # Returns a L<Paws::CognitoIdp::SignUpResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-idp/SignUp>

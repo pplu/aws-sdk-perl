@@ -24,9 +24,22 @@ as arguments to method CreateRepository.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateRepository.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateRepository(Att1 => $value1, Att2 => $value2, ...);
+    my $ecr = Paws->service('ECR');
+   # To create a new repository
+   # This example creates a repository called nginx-web-app inside the project-a
+   # namespace in the default registry for an account.
+    my $CreateRepositoryResponse = $ecr->CreateRepository(
+      {
+        'RepositoryName' => 'project-a/nginx-web-app'
+      }
+    );
+
+    # Results:
+    my $repository = $CreateRepositoryResponse->repository;
+
+    # Returns a L<Paws::ECR::CreateRepositoryResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecr/CreateRepository>

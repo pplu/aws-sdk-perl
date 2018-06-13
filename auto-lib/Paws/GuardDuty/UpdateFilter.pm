@@ -30,9 +30,33 @@ as arguments to method UpdateFilter.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateFilter.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateFilter(Att1 => $value1, Att2 => $value2, ...);
+    my $guardduty = Paws->service('GuardDuty');
+    my $UpdateFilterResponse = $guardduty->UpdateFilter(
+      DetectorId      => 'My__string',
+      FilterName      => 'My__string',
+      Action          => 'NOOP',                   # OPTIONAL
+      Description     => 'MyFilterDescription',    # OPTIONAL
+      FindingCriteria => {
+        Criterion => {
+          'My__string' => {
+            Gte => 1,                              # OPTIONAL
+            Neq => [ 'My__string', ... ],          # OPTIONAL
+            Lte => 1,                              # OPTIONAL
+            Gt  => 1,                              # OPTIONAL
+            Eq  => [ 'My__string', ... ],          # OPTIONAL
+            Lt  => 1,                              # OPTIONAL
+          },
+        },    # OPTIONAL
+      },    # OPTIONAL
+      Rank => 1,    # OPTIONAL
+    );
+
+    # Results:
+    my $Name = $UpdateFilterResponse->Name;
+
+    # Returns a L<Paws::GuardDuty::UpdateFilterResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

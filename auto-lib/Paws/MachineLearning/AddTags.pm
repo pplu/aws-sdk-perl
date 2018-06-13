@@ -26,9 +26,27 @@ as arguments to method AddTags.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddTags.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AddTags(Att1 => $value1, Att2 => $value2, ...);
+    my $machinelearning = Paws->service('MachineLearning');
+    my $AddTagsOutput = $machinelearning->AddTags(
+      ResourceId   => 'MyEntityId',
+      ResourceType => 'BatchPrediction',
+      Tags         => [
+        {
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
+        },
+        ...
+      ],
+
+    );
+
+    # Results:
+    my $ResourceId   = $AddTagsOutput->ResourceId;
+    my $ResourceType = $AddTagsOutput->ResourceType;
+
+    # Returns a L<Paws::MachineLearning::AddTagsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/machinelearning/AddTags>

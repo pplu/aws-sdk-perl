@@ -26,9 +26,24 @@ as arguments to method AdminLinkProviderForUser.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AdminLinkProviderForUser.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AdminLinkProviderForUser(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-idp = Paws->service('CognitoIdp');
+    my $AdminLinkProviderForUserResponse =
+      $cognito -idp->AdminLinkProviderForUser(
+      DestinationUser => {
+        ProviderName => 'MyProviderNameType',    # min: 1, max: 32; OPTIONAL
+        ProviderAttributeValue => 'MyStringType',    # OPTIONAL
+        ProviderAttributeName  => 'MyStringType',    # OPTIONAL
+      },
+      SourceUser => {
+        ProviderName => 'MyProviderNameType',        # min: 1, max: 32; OPTIONAL
+        ProviderAttributeValue => 'MyStringType',    # OPTIONAL
+        ProviderAttributeName  => 'MyStringType',    # OPTIONAL
+      },
+      UserPoolId => 'MyStringType',
+
+      );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-idp/AdminLinkProviderForUser>

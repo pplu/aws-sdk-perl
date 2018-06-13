@@ -30,9 +30,26 @@ as arguments to method ListGeoLocations.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListGeoLocations.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListGeoLocations(Att1 => $value1, Att2 => $value2, ...);
+    my $route53 = Paws->service('Route53');
+    my $ListGeoLocationsResponse = $route53->ListGeoLocations(
+      MaxItems             => 'MyPageMaxItems',                  # OPTIONAL
+      StartContinentCode   => 'MyGeoLocationContinentCode',      # OPTIONAL
+      StartCountryCode     => 'MyGeoLocationCountryCode',        # OPTIONAL
+      StartSubdivisionCode => 'MyGeoLocationSubdivisionCode',    # OPTIONAL
+    );
+
+    # Results:
+    my $IsTruncated = $ListGeoLocationsResponse->IsTruncated;
+    my $GeoLocationDetailsList =
+      $ListGeoLocationsResponse->GeoLocationDetailsList;
+    my $NextContinentCode   = $ListGeoLocationsResponse->NextContinentCode;
+    my $NextCountryCode     = $ListGeoLocationsResponse->NextCountryCode;
+    my $NextSubdivisionCode = $ListGeoLocationsResponse->NextSubdivisionCode;
+    my $MaxItems            = $ListGeoLocationsResponse->MaxItems;
+
+    # Returns a L<Paws::Route53::ListGeoLocationsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53/ListGeoLocations>

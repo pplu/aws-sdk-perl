@@ -25,9 +25,25 @@ as arguments to method GetFunctionDefinition.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetFunctionDefinition.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetFunctionDefinition(Att1 => $value1, Att2 => $value2, ...);
+    my $greengrass = Paws->service('Greengrass');
+    my $GetFunctionDefinitionResponse = $greengrass->GetFunctionDefinition(
+      FunctionDefinitionId => 'My__string',
+
+    );
+
+    # Results:
+    my $LastUpdatedTimestamp =
+      $GetFunctionDefinitionResponse->LastUpdatedTimestamp;
+    my $Id                = $GetFunctionDefinitionResponse->Id;
+    my $LatestVersionArn  = $GetFunctionDefinitionResponse->LatestVersionArn;
+    my $Arn               = $GetFunctionDefinitionResponse->Arn;
+    my $Name              = $GetFunctionDefinitionResponse->Name;
+    my $CreationTimestamp = $GetFunctionDefinitionResponse->CreationTimestamp;
+    my $LatestVersion     = $GetFunctionDefinitionResponse->LatestVersion;
+
+    # Returns a L<Paws::Greengrass::GetFunctionDefinitionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>

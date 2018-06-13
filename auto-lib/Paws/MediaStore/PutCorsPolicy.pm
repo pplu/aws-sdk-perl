@@ -25,9 +25,29 @@ as arguments to method PutCorsPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutCorsPolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutCorsPolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $mediastore = Paws->service('MediaStore');
+    my $PutCorsPolicyOutput = $mediastore->PutCorsPolicy(
+      ContainerName => 'MyContainerName',
+      CorsPolicy    => [
+        {
+          AllowedMethods => [
+            'PUT', ...    # values: PUT, GET, DELETE, HEAD
+          ],              # OPTIONAL
+          AllowedOrigins => [ 'MyOrigin', ... ],    # OPTIONAL
+          MaxAgeSeconds  => 1,                      # max: 2147483647; OPTIONAL
+          ExposeHeaders  => [
+            'MyHeader', ...                         # min: 1, max: 8192
+          ],                                        # max: 100; OPTIONAL
+          AllowedHeaders => [
+            'MyHeader', ...                         # min: 1, max: 8192
+          ],                                        # max: 100; OPTIONAL
+        },
+        ...
+      ],
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mediastore/PutCorsPolicy>

@@ -28,9 +28,23 @@ as arguments to method ListPolicies.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListPolicies.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListPolicies(Att1 => $value1, Att2 => $value2, ...);
+    my $iam = Paws->service('IAM');
+    my $ListPoliciesResponse = $iam->ListPolicies(
+      Marker       => 'MymarkerType',        # OPTIONAL
+      MaxItems     => 1,                     # OPTIONAL
+      OnlyAttached => 1,                     # OPTIONAL
+      PathPrefix   => 'MypolicyPathType',    # OPTIONAL
+      Scope        => 'All',                 # OPTIONAL
+    );
+
+    # Results:
+    my $IsTruncated = $ListPoliciesResponse->IsTruncated;
+    my $Policies    = $ListPoliciesResponse->Policies;
+    my $Marker      = $ListPoliciesResponse->Marker;
+
+    # Returns a L<Paws::IAM::ListPoliciesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/ListPolicies>

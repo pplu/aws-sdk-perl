@@ -27,9 +27,30 @@ as arguments to method GetMethod.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetMethod.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetMethod(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $Method = $apigateway->GetMethod(
+      HttpMethod => 'MyString',
+      ResourceId => 'MyString',
+      RestApiId  => 'MyString',
+
+    );
+
+    # Results:
+    my $RequestParameters   = $Method->RequestParameters;
+    my $OperationName       = $Method->OperationName;
+    my $AuthorizerId        = $Method->AuthorizerId;
+    my $ApiKeyRequired      = $Method->ApiKeyRequired;
+    my $AuthorizationType   = $Method->AuthorizationType;
+    my $MethodResponses     = $Method->MethodResponses;
+    my $RequestValidatorId  = $Method->RequestValidatorId;
+    my $RequestModels       = $Method->RequestModels;
+    my $AuthorizationScopes = $Method->AuthorizationScopes;
+    my $HttpMethod          = $Method->HttpMethod;
+    my $MethodIntegration   = $Method->MethodIntegration;
+
+    # Returns a L<Paws::ApiGateway::Method> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>

@@ -25,9 +25,24 @@ as arguments to method GetImport.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetImport.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetImport(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    my $GetImportResponse = $models . lex->GetImport(
+      ImportId => 'MyString',
+
+    );
+
+    # Results:
+    my $FailureReason = $GetImportResponse->FailureReason;
+    my $MergeStrategy = $GetImportResponse->MergeStrategy;
+    my $ResourceType  = $GetImportResponse->ResourceType;
+    my $Name          = $GetImportResponse->Name;
+    my $ImportStatus  = $GetImportResponse->ImportStatus;
+    my $ImportId      = $GetImportResponse->ImportId;
+    my $CreatedDate   = $GetImportResponse->CreatedDate;
+
+    # Returns a L<Paws::LexModels::GetImportResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/lex/>

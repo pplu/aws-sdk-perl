@@ -30,9 +30,50 @@ as arguments to method StartTask.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartTask.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->StartTask(Att1 => $value1, Att2 => $value2, ...);
+    my $ecs = Paws->service('ECS');
+    my $StartTaskResponse = $ecs->StartTask(
+      ContainerInstances   => [ 'MyString', ... ],
+      TaskDefinition       => 'MyString',
+      Cluster              => 'MyString',            # OPTIONAL
+      Group                => 'MyString',            # OPTIONAL
+      NetworkConfiguration => {
+        awsvpcConfiguration => {
+          subnets        => [ 'MyString', ... ],
+          securityGroups => [ 'MyString', ... ],
+          assignPublicIp => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
+      Overrides => {
+        taskRoleArn        => 'MyString',
+        executionRoleArn   => 'MyString',
+        containerOverrides => [
+          {
+            memoryReservation => 1,                     # OPTIONAL
+            command           => [ 'MyString', ... ],
+            environment       => [
+              {
+                value => 'MyString',
+                name  => 'MyString',
+              },
+              ...
+            ],                                          # OPTIONAL
+            name   => 'MyString',
+            memory => 1,                                # OPTIONAL
+            cpu    => 1,                                # OPTIONAL
+          },
+          ...
+        ],                                              # OPTIONAL
+      },    # OPTIONAL
+      StartedBy => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $Failures = $StartTaskResponse->Failures;
+    my $Tasks    = $StartTaskResponse->Tasks;
+
+    # Returns a L<Paws::ECS::StartTaskResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs/StartTask>

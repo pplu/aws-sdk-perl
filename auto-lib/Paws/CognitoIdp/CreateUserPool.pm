@@ -42,9 +42,117 @@ as arguments to method CreateUserPool.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateUserPool.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateUserPool(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-idp = Paws->service('CognitoIdp');
+    my $CreateUserPoolResponse = $cognito -idp->CreateUserPool(
+      PoolName              => 'MyUserPoolNameType',
+      AdminCreateUserConfig => {
+        AllowAdminCreateUserOnly => 1,    # OPTIONAL
+        InviteMessageTemplate    => {
+          SMSMessage =>
+            'MySmsVerificationMessageType',    # min: 6, max: 140; OPTIONAL
+          EmailMessage =>
+            'MyEmailVerificationMessageType',    # min: 6, max: 20000; OPTIONAL
+          EmailSubject =>
+            'MyEmailVerificationSubjectType',    # min: 1, max: 140; OPTIONAL
+        },    # OPTIONAL
+        UnusedAccountValidityDays => 1,    # max: 365; OPTIONAL
+      },    # OPTIONAL
+      AliasAttributes => [
+        'phone_number', ...    # values: phone_number, email, preferred_username
+      ],                       # OPTIONAL
+      AutoVerifiedAttributes => [
+        'phone_number', ...    # values: phone_number, email
+      ],                       # OPTIONAL
+      DeviceConfiguration => {
+        DeviceOnlyRememberedOnUserPrompt => 1,    # OPTIONAL
+        ChallengeRequiredOnNewDevice     => 1,    # OPTIONAL
+      },    # OPTIONAL
+      EmailConfiguration => {
+        SourceArn => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        ReplyToEmailAddress => 'MyEmailAddressType',    # OPTIONAL
+      },    # OPTIONAL
+      EmailVerificationMessage => 'MyEmailVerificationMessageType',   # OPTIONAL
+      EmailVerificationSubject => 'MyEmailVerificationSubjectType',   # OPTIONAL
+      LambdaConfig             => {
+        UserMigration       => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        PreTokenGeneration  => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        DefineAuthChallenge => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        CreateAuthChallenge => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        VerifyAuthChallengeResponse =>
+          'MyArnType',                         # min: 20, max: 2048; OPTIONAL
+        PostAuthentication => 'MyArnType',     # min: 20, max: 2048; OPTIONAL
+        PostConfirmation   => 'MyArnType',     # min: 20, max: 2048; OPTIONAL
+        PreAuthentication  => 'MyArnType',     # min: 20, max: 2048; OPTIONAL
+        CustomMessage      => 'MyArnType',     # min: 20, max: 2048; OPTIONAL
+        PreSignUp          => 'MyArnType',     # min: 20, max: 2048; OPTIONAL
+      },    # OPTIONAL
+      MfaConfiguration => 'OFF',    # OPTIONAL
+      Policies         => {
+        PasswordPolicy => {
+          RequireNumbers   => 1,    # OPTIONAL
+          RequireUppercase => 1,    # OPTIONAL
+          RequireSymbols   => 1,    # OPTIONAL
+          RequireLowercase => 1,    # OPTIONAL
+          MinimumLength    => 1,    # min: 6, max: 99; OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
+      Schema => [
+        {
+          AttributeDataType =>
+            'String',    # values: String, Number, DateTime, Boolean; OPTIONAL
+          NumberAttributeConstraints => {
+            MinValue => 'MyStringType',    # OPTIONAL
+            MaxValue => 'MyStringType',    # OPTIONAL
+          },    # OPTIONAL
+          StringAttributeConstraints => {
+            MinLength => 'MyStringType',    # OPTIONAL
+            MaxLength => 'MyStringType',    # OPTIONAL
+          },    # OPTIONAL
+          Mutable                => 1,    # OPTIONAL
+          Required               => 1,    # OPTIONAL
+          DeveloperOnlyAttribute => 1,    # OPTIONAL
+          Name => 'MyCustomAttributeNameType',    # min: 1, max: 20; OPTIONAL
+        },
+        ...
+      ],                                          # OPTIONAL
+      SmsAuthenticationMessage => 'MySmsVerificationMessageType',    # OPTIONAL
+      SmsConfiguration         => {
+        SnsCallerArn => 'MyArnType',       # min: 20, max: 2048; OPTIONAL
+        ExternalId   => 'MyStringType',    # OPTIONAL
+      },    # OPTIONAL
+      SmsVerificationMessage => 'MySmsVerificationMessageType',    # OPTIONAL
+      UserPoolAddOns         => {
+        AdvancedSecurityMode => 'OFF',    # values: OFF, AUDIT, ENFORCED
+
+      },    # OPTIONAL
+      UserPoolTags => {
+        'MyStringType' => 'MyStringType',    # key: OPTIONAL, value: OPTIONAL
+      },    # OPTIONAL
+      UsernameAttributes => [
+        'phone_number', ...    # values: phone_number, email
+      ],                       # OPTIONAL
+      VerificationMessageTemplate => {
+        SmsMessage =>
+          'MySmsVerificationMessageType',    # min: 6, max: 140; OPTIONAL
+        DefaultEmailOption => 'CONFIRM_WITH_LINK'
+        ,    # values: CONFIRM_WITH_LINK, CONFIRM_WITH_CODE; OPTIONAL
+        EmailMessageByLink =>
+          'MyEmailVerificationMessageByLinkType', # min: 6, max: 20000; OPTIONAL
+        EmailSubject =>
+          'MyEmailVerificationSubjectType',       # min: 1, max: 140; OPTIONAL
+        EmailMessage =>
+          'MyEmailVerificationMessageType',       # min: 6, max: 20000; OPTIONAL
+        EmailSubjectByLink =>
+          'MyEmailVerificationSubjectByLinkType',   # min: 1, max: 140; OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $UserPool = $CreateUserPoolResponse->UserPool;
+
+    # Returns a L<Paws::CognitoIdp::CreateUserPoolResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-idp/CreateUserPool>

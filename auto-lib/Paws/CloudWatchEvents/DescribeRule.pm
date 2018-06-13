@@ -24,9 +24,24 @@ as arguments to method DescribeRule.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeRule.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeRule(Att1 => $value1, Att2 => $value2, ...);
+    my $events = Paws->service('CloudWatchEvents');
+    my $DescribeRuleResponse = $events->DescribeRule(
+      Name => 'MyRuleName',
+
+    );
+
+    # Results:
+    my $Description        = $DescribeRuleResponse->Description;
+    my $RoleArn            = $DescribeRuleResponse->RoleArn;
+    my $State              = $DescribeRuleResponse->State;
+    my $ScheduleExpression = $DescribeRuleResponse->ScheduleExpression;
+    my $EventPattern       = $DescribeRuleResponse->EventPattern;
+    my $Arn                = $DescribeRuleResponse->Arn;
+    my $Name               = $DescribeRuleResponse->Name;
+
+    # Returns a L<Paws::CloudWatchEvents::DescribeRuleResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/events/DescribeRule>

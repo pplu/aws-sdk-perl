@@ -35,9 +35,35 @@ as arguments to method RestoreDBClusterToPointInTime.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RestoreDBClusterToPointInTime.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RestoreDBClusterToPointInTime(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('Neptune');
+    my $RestoreDBClusterToPointInTimeResult =
+      $rds->RestoreDBClusterToPointInTime(
+      DBClusterIdentifier             => 'MyString',
+      SourceDBClusterIdentifier       => 'MyString',
+      DBSubnetGroupName               => 'MyString',               # OPTIONAL
+      EnableIAMDatabaseAuthentication => 1,                        # OPTIONAL
+      KmsKeyId                        => 'MyString',               # OPTIONAL
+      OptionGroupName                 => 'MyString',               # OPTIONAL
+      Port                            => 1,                        # OPTIONAL
+      RestoreToTime                   => '1970-01-01T01:00:00',    # OPTIONAL
+      RestoreType                     => 'MyString',               # OPTIONAL
+      Tags                            => [
+        {
+          Key   => 'MyString',
+          Value => 'MyString',
+        },
+        ...
+      ],                                                           # OPTIONAL
+      UseLatestRestorableTime => 1,                                # OPTIONAL
+      VpcSecurityGroupIds => [ 'MyString', ... ],                  # OPTIONAL
+      );
+
+    # Results:
+    my $DBCluster = $RestoreDBClusterToPointInTimeResult->DBCluster;
+
+    # Returns a L<Paws::Neptune::RestoreDBClusterToPointInTimeResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/RestoreDBClusterToPointInTime>

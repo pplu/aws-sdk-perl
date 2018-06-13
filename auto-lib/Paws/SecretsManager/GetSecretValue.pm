@@ -26,9 +26,25 @@ as arguments to method GetSecretValue.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetSecretValue.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetSecretValue(Att1 => $value1, Att2 => $value2, ...);
+    my $secretsmanager = Paws->service('SecretsManager');
+    my $GetSecretValueResponse = $secretsmanager->GetSecretValue(
+      SecretId     => 'MySecretIdType',
+      VersionId    => 'MySecretVersionIdType',       # OPTIONAL
+      VersionStage => 'MySecretVersionStageType',    # OPTIONAL
+    );
+
+    # Results:
+    my $ARN           = $GetSecretValueResponse->ARN;
+    my $SecretBinary  = $GetSecretValueResponse->SecretBinary;
+    my $SecretString  = $GetSecretValueResponse->SecretString;
+    my $VersionStages = $GetSecretValueResponse->VersionStages;
+    my $Name          = $GetSecretValueResponse->Name;
+    my $VersionId     = $GetSecretValueResponse->VersionId;
+    my $CreatedDate   = $GetSecretValueResponse->CreatedDate;
+
+    # Returns a L<Paws::SecretsManager::GetSecretValueResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/secretsmanager/GetSecretValue>

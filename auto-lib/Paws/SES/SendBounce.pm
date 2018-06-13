@@ -29,9 +29,58 @@ as arguments to method SendBounce.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SendBounce.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SendBounce(Att1 => $value1, Att2 => $value2, ...);
+    my $email = Paws->service('SES');
+    my $SendBounceResponse = $email->SendBounce(
+      BounceSender             => 'MyAddress',
+      BouncedRecipientInfoList => [
+        {
+          Recipient    => 'MyAddress',
+          RecipientArn => 'MyAmazonResourceName',    # OPTIONAL
+          BounceType   => 'DoesNotExist'
+          , # values: DoesNotExist, MessageTooLarge, ExceededQuota, ContentRejected, Undefined, TemporaryFailure; OPTIONAL
+          RecipientDsnFields => {
+            Status => 'MyDsnStatus',
+            Action =>
+              'failed',  # values: failed, delayed, delivered, relayed, expanded
+            DiagnosticCode  => 'MyDiagnosticCode',    # OPTIONAL
+            RemoteMta       => 'MyRemoteMta',         # OPTIONAL
+            ExtensionFields => [
+              {
+                Name  => 'MyExtensionFieldName',
+                Value => 'MyExtensionFieldValue',
+
+              },
+              ...
+            ],                                        # OPTIONAL
+            FinalRecipient  => 'MyAddress',
+            LastAttemptDate => '1970-01-01T01:00:00',    # OPTIONAL
+          },    # OPTIONAL
+        },
+        ...
+      ],
+      OriginalMessageId => 'MyMessageId',
+      BounceSenderArn   => 'MyAmazonResourceName',    # OPTIONAL
+      Explanation       => 'MyExplanation',           # OPTIONAL
+      MessageDsn        => {
+        ReportingMta    => 'MyReportingMta',
+        ExtensionFields => [
+          {
+            Name  => 'MyExtensionFieldName',
+            Value => 'MyExtensionFieldValue',
+
+          },
+          ...
+        ],                                            # OPTIONAL
+        ArrivalDate => '1970-01-01T01:00:00',         # OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $MessageId = $SendBounceResponse->MessageId;
+
+    # Returns a L<Paws::SES::SendBounceResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/email/SendBounce>

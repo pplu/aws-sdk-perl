@@ -25,9 +25,18 @@ as arguments to method DescribeApps.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeApps.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeApps(Att1 => $value1, Att2 => $value2, ...);
+    my $opsworks = Paws->service('OpsWorks');
+    my $DescribeAppsResult = $opsworks->DescribeApps(
+      AppIds => [ 'MyString', ... ],    # OPTIONAL
+      StackId => 'MyString',            # OPTIONAL
+    );
+
+    # Results:
+    my $Apps = $DescribeAppsResult->Apps;
+
+    # Returns a L<Paws::OpsWorks::DescribeAppsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/opsworks/DescribeApps>

@@ -31,9 +31,38 @@ as arguments to method CreateAssociation.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateAssociation.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateAssociation(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $CreateAssociationResult = $ssm->CreateAssociation(
+      Name            => 'MyDocumentName',
+      AssociationName => 'MyAssociationName',    # OPTIONAL
+      DocumentVersion => 'MyDocumentVersion',    # OPTIONAL
+      InstanceId      => 'MyInstanceId',         # OPTIONAL
+      OutputLocation  => {
+        S3Location => {
+          OutputS3KeyPrefix  => 'MyS3KeyPrefix',     # max: 500; OPTIONAL
+          OutputS3Region     => 'MyS3Region',        # min: 3, max: 20; OPTIONAL
+          OutputS3BucketName => 'MyS3BucketName',    # min: 3, max: 63; OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
+      Parameters => { 'MyParameterName' => [ 'MyParameterValue', ... ], }
+      ,     # OPTIONAL
+      ScheduleExpression => 'MyScheduleExpression',    # OPTIONAL
+      Targets            => [
+        {
+          Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
+          Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
+        },
+        ...
+      ],                                         # OPTIONAL
+    );
+
+    # Results:
+    my $AssociationDescription =
+      $CreateAssociationResult->AssociationDescription;
+
+    # Returns a L<Paws::SSM::CreateAssociationResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/CreateAssociation>

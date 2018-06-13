@@ -31,9 +31,39 @@ as arguments to method CreateDevEndpoint.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDevEndpoint.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDevEndpoint(Att1 => $value1, Att2 => $value2, ...);
+    my $glue = Paws->service('Glue');
+    my $CreateDevEndpointResponse = $glue->CreateDevEndpoint(
+      EndpointName          => 'MyGenericString',
+      RoleArn               => 'MyRoleArn',
+      ExtraJarsS3Path       => 'MyGenericString',             # OPTIONAL
+      ExtraPythonLibsS3Path => 'MyGenericString',             # OPTIONAL
+      NumberOfNodes         => 1,                             # OPTIONAL
+      PublicKey             => 'MyGenericString',             # OPTIONAL
+      SecurityGroupIds      => [ 'MyGenericString', ... ],    # OPTIONAL
+      SubnetId              => 'MyGenericString',             # OPTIONAL
+    );
+
+    # Results:
+    my $RoleArn       = $CreateDevEndpointResponse->RoleArn;
+    my $Status        = $CreateDevEndpointResponse->Status;
+    my $FailureReason = $CreateDevEndpointResponse->FailureReason;
+    my $EndpointName  = $CreateDevEndpointResponse->EndpointName;
+    my $ZeppelinRemoteSparkInterpreterPort =
+      $CreateDevEndpointResponse->ZeppelinRemoteSparkInterpreterPort;
+    my $ExtraJarsS3Path  = $CreateDevEndpointResponse->ExtraJarsS3Path;
+    my $AvailabilityZone = $CreateDevEndpointResponse->AvailabilityZone;
+    my $SubnetId         = $CreateDevEndpointResponse->SubnetId;
+    my $VpcId            = $CreateDevEndpointResponse->VpcId;
+    my $ExtraPythonLibsS3Path =
+      $CreateDevEndpointResponse->ExtraPythonLibsS3Path;
+    my $CreatedTimestamp    = $CreateDevEndpointResponse->CreatedTimestamp;
+    my $SecurityGroupIds    = $CreateDevEndpointResponse->SecurityGroupIds;
+    my $YarnEndpointAddress = $CreateDevEndpointResponse->YarnEndpointAddress;
+    my $NumberOfNodes       = $CreateDevEndpointResponse->NumberOfNodes;
+
+    # Returns a L<Paws::Glue::CreateDevEndpointResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/CreateDevEndpoint>

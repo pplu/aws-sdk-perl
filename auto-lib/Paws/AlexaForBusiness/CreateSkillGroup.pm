@@ -26,9 +26,19 @@ as arguments to method CreateSkillGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateSkillGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateSkillGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $a4b = Paws->service('AlexaForBusiness');
+    my $CreateSkillGroupResponse = $a4b->CreateSkillGroup(
+      SkillGroupName     => 'MySkillGroupName',
+      ClientRequestToken => 'MyClientRequestToken',       # OPTIONAL
+      Description        => 'MySkillGroupDescription',    # OPTIONAL
+    );
+
+    # Results:
+    my $SkillGroupArn = $CreateSkillGroupResponse->SkillGroupArn;
+
+    # Returns a L<Paws::AlexaForBusiness::CreateSkillGroupResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

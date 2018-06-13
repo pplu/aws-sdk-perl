@@ -25,9 +25,27 @@ as arguments to method DefineSuggester.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DefineSuggester.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DefineSuggester(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudsearch = Paws->service('CloudSearch');
+    my $DefineSuggesterResponse = $cloudsearch->DefineSuggester(
+      DomainName => 'MyDomainName',
+      Suggester  => {
+        DocumentSuggesterOptions => {
+          SourceField    => 'MyFieldName',   # min: 1, max: 64
+          SortExpression => 'MyString',      # OPTIONAL
+          FuzzyMatching  => 'none',          # values: none, low, high; OPTIONAL
+        },
+        SuggesterName => 'MyStandardName',    # min: 1, max: 64
+
+      },
+
+    );
+
+    # Results:
+    my $Suggester = $DefineSuggesterResponse->Suggester;
+
+    # Returns a L<Paws::CloudSearch::DefineSuggesterResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

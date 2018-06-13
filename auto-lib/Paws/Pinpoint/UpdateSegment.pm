@@ -27,9 +27,84 @@ as arguments to method UpdateSegment.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateSegment.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateSegment(Att1 => $value1, Att2 => $value2, ...);
+    my $pinpoint = Paws->service('Pinpoint');
+    my $UpdateSegmentResponse = $pinpoint->UpdateSegment(
+      ApplicationId       => 'My__string',
+      SegmentId           => 'My__string',
+      WriteSegmentRequest => {
+        Dimensions => {
+          UserAttributes => {
+            'My__string' => {
+              Values => [ 'My__string', ... ],    # OPTIONAL
+              AttributeType =>
+                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+            },
+          },    # OPTIONAL
+          Behavior => {
+            Recency => {
+              RecencyType => 'ACTIVE',    # values: ACTIVE, INACTIVE; OPTIONAL
+              Duration =>
+                'HR_24',    # values: HR_24, DAY_7, DAY_14, DAY_30; OPTIONAL
+            },    # OPTIONAL
+          },    # OPTIONAL
+          Demographic => {
+            Platform => {
+              Values => [ 'My__string', ... ],    # OPTIONAL
+              DimensionType =>
+                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+            },    # OPTIONAL
+            DeviceType => {
+              Values => [ 'My__string', ... ],    # OPTIONAL
+              DimensionType =>
+                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+            },    # OPTIONAL
+            AppVersion => {
+              Values => [ 'My__string', ... ],    # OPTIONAL
+              DimensionType =>
+                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+            },    # OPTIONAL
+            Make => {
+              Values => [ 'My__string', ... ],    # OPTIONAL
+              DimensionType =>
+                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+            },    # OPTIONAL
+            Model => {
+              Values => [ 'My__string', ... ],    # OPTIONAL
+              DimensionType =>
+                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+            },    # OPTIONAL
+            Channel => {
+              Values => [ 'My__string', ... ],    # OPTIONAL
+              DimensionType =>
+                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+            },    # OPTIONAL
+          },    # OPTIONAL
+          Location => {
+            Country => {
+              Values => [ 'My__string', ... ],    # OPTIONAL
+              DimensionType =>
+                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+            },    # OPTIONAL
+          },    # OPTIONAL
+          Attributes => {
+            'My__string' => {
+              Values => [ 'My__string', ... ],    # OPTIONAL
+              AttributeType =>
+                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+            },
+          },    # OPTIONAL
+        },    # OPTIONAL
+        Name => 'My__string',
+      },
+
+    );
+
+    # Results:
+    my $SegmentResponse = $UpdateSegmentResponse->SegmentResponse;
+
+    # Returns a L<Paws::Pinpoint::UpdateSegmentResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

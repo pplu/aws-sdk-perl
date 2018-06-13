@@ -27,9 +27,72 @@ as arguments to method CreatePartition.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreatePartition.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreatePartition(Att1 => $value1, Att2 => $value2, ...);
+    my $glue = Paws->service('Glue');
+    my $CreatePartitionResponse = $glue->CreatePartition(
+      DatabaseName   => 'MyNameString',
+      PartitionInput => {
+        Parameters => {
+          'MyKeyString' =>
+            'MyParametersMapValue',  # key: min: 1, max: 255, value: max: 512000
+        },    # OPTIONAL
+        LastAccessTime => '1970-01-01T01:00:00',    # OPTIONAL
+        Values         => [
+          'MyValueString', ...                      # max: 1024
+        ],                                          # OPTIONAL
+        StorageDescriptor => {
+          SerdeInfo => {
+            SerializationLibrary => 'MyNameString',    # min: 1, max: 255
+            Name                 => 'MyNameString',    # min: 1, max: 255
+            Parameters           => {
+              'MyKeyString' => 'MyParametersMapValue'
+              ,    # key: min: 1, max: 255, value: max: 512000
+            },    # OPTIONAL
+          },    # OPTIONAL
+          Parameters => {
+            'MyKeyString' => 'MyParametersMapValue'
+            ,    # key: min: 1, max: 255, value: max: 512000
+          },    # OPTIONAL
+          SortColumns => [
+            {
+              SortOrder => 1,                 # max: 1
+              Column    => 'MyNameString',    # min: 1, max: 255
+
+            },
+            ...
+          ],                                  # OPTIONAL
+          Columns => [
+            {
+              Name    => 'MyNameString',          # min: 1, max: 255
+              Type    => 'MyColumnTypeString',    # max: 131072; OPTIONAL
+              Comment => 'MyCommentString',       # max: 255; OPTIONAL
+            },
+            ...
+          ],                                      # OPTIONAL
+          StoredAsSubDirectories => 1,                     # OPTIONAL
+          OutputFormat           => 'MyFormatString',      # max: 128; OPTIONAL
+          Location               => 'MyLocationString',    # max: 2056; OPTIONAL
+          SkewedInfo             => {
+            SkewedColumnNames => [
+              'MyNameString', ...                          # min: 1, max: 255
+            ],                                             # OPTIONAL
+            SkewedColumnValues => [ 'MyColumnValuesString', ... ],    # OPTIONAL
+            SkewedColumnValueLocationMaps =>
+              { 'MyColumnValuesString' => 'MyColumnValuesString', },  # OPTIONAL
+          },    # OPTIONAL
+          BucketColumns => [
+            'MyNameString', ...    # min: 1, max: 255
+          ],                       # OPTIONAL
+          Compressed      => 1,                   # OPTIONAL
+          InputFormat     => 'MyFormatString',    # max: 128; OPTIONAL
+          NumberOfBuckets => 1,                   # OPTIONAL
+        },    # OPTIONAL
+        LastAnalyzedTime => '1970-01-01T01:00:00',    # OPTIONAL
+      },
+      TableName => 'MyNameString',
+      CatalogId => 'MyCatalogIdString',               # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/CreatePartition>

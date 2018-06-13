@@ -35,9 +35,29 @@ as arguments to method CreateRemoteAccessSession.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateRemoteAccessSession.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateRemoteAccessSession(Att1 => $value1, Att2 => $value2, ...);
+    my $devicefarm = Paws->service('DeviceFarm');
+    # To create a remote access session
+    # The following example creates a remote access session named MySession.
+    my $CreateRemoteAccessSessionResult =
+      $devicefarm->CreateRemoteAccessSession(
+      {
+        'ProjectArn' =>
+'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456',
+        'Name'          => 'MySession',
+        'Configuration' => {
+          'BillingMethod' => 'METERED'
+        },
+        'DeviceArn' => 'arn:aws:devicefarm:us-west-2::device:123EXAMPLE'
+      }
+      );
+
+    # Results:
+    my $remoteAccessSession =
+      $CreateRemoteAccessSessionResult->remoteAccessSession;
+
+    # Returns a L<Paws::DeviceFarm::CreateRemoteAccessSessionResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/devicefarm/CreateRemoteAccessSession>

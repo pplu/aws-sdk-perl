@@ -35,9 +35,38 @@ as arguments to method UpdateMatchmakingConfiguration.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateMatchmakingConfiguration.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateMatchmakingConfiguration(Att1 => $value1, Att2 => $value2, ...);
+    my $gamelift = Paws->service('GameLift');
+    my $UpdateMatchmakingConfigurationOutput =
+      $gamelift->UpdateMatchmakingConfiguration(
+      Name                     => 'MyMatchmakingIdStringModel',
+      AcceptanceRequired       => 1,                              # OPTIONAL
+      AcceptanceTimeoutSeconds => 1,                              # OPTIONAL
+      AdditionalPlayerCount    => 1,                              # OPTIONAL
+      CustomEventData          => 'MyCustomEventData',            # OPTIONAL
+      Description              => 'MyNonZeroAndMaxString',        # OPTIONAL
+      GameProperties           => [
+        {
+          Value => 'MyGamePropertyValue',                         # max: 96
+          Key   => 'MyGamePropertyKey',                           # max: 32
+
+        },
+        ...
+      ],                                                          # OPTIONAL
+      GameSessionData      => 'MyGameSessionData',                # OPTIONAL
+      GameSessionQueueArns => [
+        'MyArnStringModel', ...    # min: 1, max: 256
+      ],                           # OPTIONAL
+      NotificationTarget    => 'MySnsArnStringModel',           # OPTIONAL
+      RequestTimeoutSeconds => 1,                               # OPTIONAL
+      RuleSetName           => 'MyMatchmakingIdStringModel',    # OPTIONAL
+      );
+
+    # Results:
+    my $Configuration = $UpdateMatchmakingConfigurationOutput->Configuration;
+
+    # Returns a L<Paws::GameLift::UpdateMatchmakingConfigurationOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/UpdateMatchmakingConfiguration>

@@ -25,9 +25,19 @@ as arguments to method ListQueryExecutions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListQueryExecutions.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListQueryExecutions(Att1 => $value1, Att2 => $value2, ...);
+    my $athena = Paws->service('Athena');
+    my $ListQueryExecutionsOutput = $athena->ListQueryExecutions(
+      MaxResults => 1,            # OPTIONAL
+      NextToken  => 'MyToken',    # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken         = $ListQueryExecutionsOutput->NextToken;
+    my $QueryExecutionIds = $ListQueryExecutionsOutput->QueryExecutionIds;
+
+    # Returns a L<Paws::Athena::ListQueryExecutionsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/athena/ListQueryExecutions>

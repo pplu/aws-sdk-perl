@@ -26,9 +26,20 @@ as arguments to method ListConfigurations.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListConfigurations.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListConfigurations(Att1 => $value1, Att2 => $value2, ...);
+    my $mq = Paws->service('MQ');
+    my $ListConfigurationsResponse = $mq->ListConfigurations(
+      MaxResults => 1,               # OPTIONAL
+      NextToken  => 'My__string',    # OPTIONAL
+    );
+
+    # Results:
+    my $MaxResults     = $ListConfigurationsResponse->MaxResults;
+    my $NextToken      = $ListConfigurationsResponse->NextToken;
+    my $Configurations = $ListConfigurationsResponse->Configurations;
+
+    # Returns a L<Paws::MQ::ListConfigurationsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/amazon-mq/>

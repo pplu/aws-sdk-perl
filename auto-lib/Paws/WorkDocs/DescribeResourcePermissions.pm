@@ -29,9 +29,23 @@ as arguments to method DescribeResourcePermissions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeResourcePermissions.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeResourcePermissions(Att1 => $value1, Att2 => $value2, ...);
+    my $workdocs = Paws->service('WorkDocs');
+    my $DescribeResourcePermissionsResponse =
+      $workdocs->DescribeResourcePermissions(
+      ResourceId          => 'MyResourceIdType',
+      AuthenticationToken => 'MyAuthenticationHeaderType',    # OPTIONAL
+      Limit               => 1,                               # OPTIONAL
+      Marker              => 'MyPageMarkerType',              # OPTIONAL
+      PrincipalId         => 'MyIdType',                      # OPTIONAL
+      );
+
+    # Results:
+    my $Marker     = $DescribeResourcePermissionsResponse->Marker;
+    my $Principals = $DescribeResourcePermissionsResponse->Principals;
+
+    # Returns a L<Paws::WorkDocs::DescribeResourcePermissionsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workdocs/DescribeResourcePermissions>

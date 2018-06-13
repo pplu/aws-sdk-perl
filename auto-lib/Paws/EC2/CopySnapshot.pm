@@ -31,9 +31,26 @@ as arguments to method CopySnapshot.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CopySnapshot.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CopySnapshot(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+   # To copy a snapshot
+   # This example copies a snapshot with the snapshot ID of
+   # ``snap-066877671789bd71b`` from the ``us-west-2`` region to the
+   # ``us-east-1`` region and adds a short description to identify the snapshot.
+    my $CopySnapshotResult = $ec2->CopySnapshot(
+      {
+        'SourceSnapshotId'  => 'snap-066877671789bd71b',
+        'Description'       => 'This is my copied snapshot.',
+        'DestinationRegion' => 'us-east-1',
+        'SourceRegion'      => 'us-west-2'
+      }
+    );
+
+    # Results:
+    my $SnapshotId = $CopySnapshotResult->SnapshotId;
+
+    # Returns a L<Paws::EC2::CopySnapshotResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/CopySnapshot>

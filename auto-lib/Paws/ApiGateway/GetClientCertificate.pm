@@ -25,9 +25,22 @@ as arguments to method GetClientCertificate.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetClientCertificate.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetClientCertificate(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $ClientCertificate = $apigateway->GetClientCertificate(
+      ClientCertificateId => 'MyString',
+
+    );
+
+    # Results:
+    my $CreatedDate           = $ClientCertificate->CreatedDate;
+    my $ExpirationDate        = $ClientCertificate->ExpirationDate;
+    my $ClientCertificateId   = $ClientCertificate->ClientCertificateId;
+    my $Description           = $ClientCertificate->Description;
+    my $PemEncodedCertificate = $ClientCertificate->PemEncodedCertificate;
+
+    # Returns a L<Paws::ApiGateway::ClientCertificate> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>

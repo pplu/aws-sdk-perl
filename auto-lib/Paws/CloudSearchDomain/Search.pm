@@ -38,9 +38,33 @@ as arguments to method Search.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to Search.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->Search(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudsearchdomain = Paws->service('CloudSearchDomain');
+    my $SearchResponse = $cloudsearchdomain->Search(
+      Query        => 'MyQuery',
+      Cursor       => 'MyCursor',          # OPTIONAL
+      Expr         => 'MyExpr',            # OPTIONAL
+      Facet        => 'MyFacet',           # OPTIONAL
+      FilterQuery  => 'MyFilterQuery',     # OPTIONAL
+      Highlight    => 'MyHighlight',       # OPTIONAL
+      Partial      => 1,                   # OPTIONAL
+      QueryOptions => 'MyQueryOptions',    # OPTIONAL
+      QueryParser  => 'simple',            # OPTIONAL
+      Return       => 'MyReturn',          # OPTIONAL
+      Size         => 1,                   # OPTIONAL
+      Sort         => 'MySort',            # OPTIONAL
+      Start        => 1,                   # OPTIONAL
+      Stats        => 'MyStat',            # OPTIONAL
+    );
+
+    # Results:
+    my $hits   = $SearchResponse->hits;
+    my $facets = $SearchResponse->facets;
+    my $stats  = $SearchResponse->stats;
+    my $status = $SearchResponse->status;
+
+    # Returns a L<Paws::CloudSearchDomain::SearchResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/cloudsearch/>

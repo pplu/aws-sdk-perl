@@ -26,9 +26,23 @@ as arguments to method UpdateGroupQuery.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateGroupQuery.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateGroupQuery(Att1 => $value1, Att2 => $value2, ...);
+    my $resource-groups = Paws->service('ResourceGroups');
+    my $UpdateGroupQueryOutput = $resource -groups->UpdateGroupQuery(
+      GroupName     => 'MyGroupName',
+      ResourceQuery => {
+        Query => 'MyQuery',            # max: 2048
+        Type  => 'TAG_FILTERS_1_0',    # values: TAG_FILTERS_1_0
+
+      },
+
+    );
+
+    # Results:
+    my $GroupQuery = $UpdateGroupQueryOutput->GroupQuery;
+
+    # Returns a L<Paws::ResourceGroups::UpdateGroupQueryOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/resource-groups/UpdateGroupQuery>

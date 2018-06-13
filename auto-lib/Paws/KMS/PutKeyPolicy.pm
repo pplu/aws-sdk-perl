@@ -27,9 +27,92 @@ as arguments to method PutKeyPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutKeyPolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutKeyPolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $kms = Paws->service('KMS');
+    # To attach a key policy to a customer master key (CMK)
+    # The following example attaches a key policy to the specified CMK.
+    $kms->PutKeyPolicy(
+      {
+        'Policy' => '{
+    "Version": "2012-10-17",
+    "Id": "custom-policy-2016-12-07",
+    "Statement": [
+        {
+            "Sid": "Enable IAM User Permissions",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::111122223333:root"
+            },
+            "Action": "kms:*",
+            "Resource": "*"
+        },
+        {
+            "Sid": "Allow access for Key Administrators",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": [
+                    "arn:aws:iam::111122223333:user/ExampleAdminUser",
+                    "arn:aws:iam::111122223333:role/ExampleAdminRole"
+                ]
+            },
+            "Action": [
+                "kms:Create*",
+                "kms:Describe*",
+                "kms:Enable*",
+                "kms:List*",
+                "kms:Put*",
+                "kms:Update*",
+                "kms:Revoke*",
+                "kms:Disable*",
+                "kms:Get*",
+                "kms:Delete*",
+                "kms:ScheduleKeyDeletion",
+                "kms:CancelKeyDeletion"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "Allow use of the key",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::111122223333:role/ExamplePowerUserRole"
+            },
+            "Action": [
+                "kms:Encrypt",
+                "kms:Decrypt",
+                "kms:ReEncrypt*",
+                "kms:GenerateDataKey*",
+                "kms:DescribeKey"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "Allow attachment of persistent resources",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::111122223333:role/ExamplePowerUserRole"
+            },
+            "Action": [
+                "kms:CreateGrant",
+                "kms:ListGrants",
+                "kms:RevokeGrant"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "Bool": {
+                    "kms:GrantIsForAWSResource": "true"
+                }
+            }
+        }
+    ]
+}
+',
+        'PolicyName' => 'default',
+        'KeyId'      => '1234abcd-12ab-34cd-56ef-1234567890ab'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms/PutKeyPolicy>

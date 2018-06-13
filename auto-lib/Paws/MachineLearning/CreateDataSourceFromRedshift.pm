@@ -28,9 +28,38 @@ as arguments to method CreateDataSourceFromRedshift.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDataSourceFromRedshift.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDataSourceFromRedshift(Att1 => $value1, Att2 => $value2, ...);
+    my $machinelearning = Paws->service('MachineLearning');
+    my $CreateDataSourceFromRedshiftOutput =
+      $machinelearning->CreateDataSourceFromRedshift(
+      DataSourceId => 'MyEntityId',
+      DataSpec     => {
+        DatabaseInformation => {
+          DatabaseName      => 'MyRedshiftDatabaseName',       # min: 1, max: 64
+          ClusterIdentifier => 'MyRedshiftClusterIdentifier',  # min: 1, max: 63
+
+        },
+        DatabaseCredentials => {
+          Password => 'MyRedshiftDatabasePassword',    # min: 8, max: 64
+          Username => 'MyRedshiftDatabaseUsername',    # min: 1, max: 128
+
+        },
+        S3StagingLocation => 'MyS3Url',                  # max: 2048
+        SelectSqlQuery    => 'MyRedshiftSelectSqlQuery', # min: 1, max: 16777216
+        DataSchemaUri     => 'MyS3Url',                  # max: 2048
+        DataSchema        => 'MyDataSchema',             # max: 131071; OPTIONAL
+        DataRearrangement => 'MyDataRearrangement',      # OPTIONAL
+      },
+      RoleARN           => 'MyRoleARN',
+      ComputeStatistics => 1,                            # OPTIONAL
+      DataSourceName    => 'MyEntityName',               # OPTIONAL
+      );
+
+    # Results:
+    my $DataSourceId = $CreateDataSourceFromRedshiftOutput->DataSourceId;
+
+# Returns a L<Paws::MachineLearning::CreateDataSourceFromRedshiftOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/machinelearning/CreateDataSourceFromRedshift>

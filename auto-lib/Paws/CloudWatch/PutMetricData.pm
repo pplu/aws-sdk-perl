@@ -25,9 +25,39 @@ as arguments to method PutMetricData.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutMetricData.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutMetricData(Att1 => $value1, Att2 => $value2, ...);
+    my $monitoring = Paws->service('CloudWatch');
+    $monitoring->PutMetricData(
+      MetricData => [
+        {
+          MetricName        => 'MyMetricName',           # min: 1, max: 255
+          Value             => 1,
+          StorageResolution => 1,                        # min: 1, ; OPTIONAL
+          Timestamp         => '1970-01-01T01:00:00',    # OPTIONAL
+          StatisticValues   => {
+            Maximum     => 1,
+            SampleCount => 1,
+            Sum         => 1,
+            Minimum     => 1,
+
+          },                                             # OPTIONAL
+          Dimensions => [
+            {
+              Name  => 'MyDimensionName',                # min: 1, max: 255
+              Value => 'MyDimensionValue',               # min: 1, max: 255
+
+            },
+            ...
+          ],                                             # max: 10; OPTIONAL
+          Unit => 'Seconds'
+          , # values: Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None; OPTIONAL
+        },
+        ...
+      ],
+      Namespace => 'MyNamespace',
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/monitoring/PutMetricData>

@@ -24,9 +24,23 @@ as arguments to method GetTelemetryMetadata.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetTelemetryMetadata.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetTelemetryMetadata(Att1 => $value1, Att2 => $value2, ...);
+    my $inspector = Paws->service('Inspector');
+    # Get telemetry metadata
+    # Information about the data that is collected for the specified assessment
+    # run.
+    my $GetTelemetryMetadataResponse = $inspector->GetTelemetryMetadata(
+      {
+        'AssessmentRunArn' =>
+'arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw/run/0-MKkpXXPE'
+      }
+    );
+
+    # Results:
+    my $telemetryMetadata = $GetTelemetryMetadataResponse->telemetryMetadata;
+
+    # Returns a L<Paws::Inspector::GetTelemetryMetadataResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/inspector/GetTelemetryMetadata>

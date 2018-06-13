@@ -26,9 +26,24 @@ as arguments to method DescribeVoices.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeVoices.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeVoices(Att1 => $value1, Att2 => $value2, ...);
+    my $polly = Paws->service('Polly');
+    # To describe available voices
+    # Returns the list of voices that are available for use when requesting
+    # speech synthesis. Displayed languages are those within the specified
+    # language code. If no language code is specified, voices for all available
+    # languages are displayed.
+    my $DescribeVoicesOutput = $polly->DescribeVoices(
+      {
+        'LanguageCode' => 'en-GB'
+      }
+    );
+
+    # Results:
+    my $Voices = $DescribeVoicesOutput->Voices;
+
+    # Returns a L<Paws::Polly::DescribeVoicesOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/polly/DescribeVoices>

@@ -26,9 +26,25 @@ as arguments to method GetObject.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetObject.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetObject(Att1 => $value1, Att2 => $value2, ...);
+    my $data.mediastore = Paws->service('MediaStoreData');
+    my $GetObjectResponse = $data . mediastore->GetObject(
+      Path  => 'MyPathNaming',
+      Range => 'MyRangePattern',    # OPTIONAL
+    );
+
+    # Results:
+    my $LastModified  = $GetObjectResponse->LastModified;
+    my $ContentLength = $GetObjectResponse->ContentLength;
+    my $CacheControl  = $GetObjectResponse->CacheControl;
+    my $Body          = $GetObjectResponse->Body;
+    my $ETag          = $GetObjectResponse->ETag;
+    my $ContentType   = $GetObjectResponse->ContentType;
+    my $StatusCode    = $GetObjectResponse->StatusCode;
+    my $ContentRange  = $GetObjectResponse->ContentRange;
+
+    # Returns a L<Paws::MediaStoreData::GetObjectResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/mediastore/>

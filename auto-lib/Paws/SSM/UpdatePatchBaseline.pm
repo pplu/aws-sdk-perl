@@ -34,9 +34,93 @@ as arguments to method UpdatePatchBaseline.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdatePatchBaseline.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdatePatchBaseline(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $UpdatePatchBaselineResult = $ssm->UpdatePatchBaseline(
+      BaselineId    => 'MyBaselineId',
+      ApprovalRules => {
+        PatchRules => [
+          {
+            PatchFilterGroup => {
+              PatchFilters => [
+                {
+                  Key => 'PRODUCT'
+                  , # values: PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
+                  Values => [
+                    'MyPatchFilterValue', ...    # min: 1, max: 64
+                  ],                             # min: 1, max: 20
+
+                },
+                ...
+              ],                                 # max: 4
+
+            },
+            ApproveAfterDays  => 1,              # max: 100
+            EnableNonSecurity => 1,              # OPTIONAL
+            ComplianceLevel   => 'CRITICAL'
+            , # values: CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED; OPTIONAL
+          },
+          ...
+        ],    # max: 10
+
+      },    # OPTIONAL
+      ApprovedPatches => [
+        'MyPatchId', ...    # min: 1, max: 100
+      ],                    # OPTIONAL
+      ApprovedPatchesComplianceLevel   => 'CRITICAL',                 # OPTIONAL
+      ApprovedPatchesEnableNonSecurity => 1,                          # OPTIONAL
+      Description                      => 'MyBaselineDescription',    # OPTIONAL
+      GlobalFilters                    => {
+        PatchFilters => [
+          {
+            Key => 'PRODUCT'
+            , # values: PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
+            Values => [
+              'MyPatchFilterValue', ...    # min: 1, max: 64
+            ],                             # min: 1, max: 20
+
+          },
+          ...
+        ],                                 # max: 4
+
+      },    # OPTIONAL
+      Name            => 'MyBaselineName',    # OPTIONAL
+      RejectedPatches => [
+        'MyPatchId', ...                      # min: 1, max: 100
+      ],                                      # OPTIONAL
+      Replace => 1,                           # OPTIONAL
+      Sources => [
+        {
+          Configuration => 'MyPatchSourceConfiguration',    # min: 1, max: 512
+          Name          => 'MyPatchSourceName',
+          Products      => [
+            'MyPatchSourceProduct', ...                     # min: 1, max: 128
+          ],                                                # min: 1, max: 20
+
+        },
+        ...
+      ],                                                    # OPTIONAL
+    );
+
+    # Results:
+    my $ApprovedPatchesEnableNonSecurity =
+      $UpdatePatchBaselineResult->ApprovedPatchesEnableNonSecurity;
+    my $ApprovalRules = $UpdatePatchBaselineResult->ApprovalRules;
+    my $GlobalFilters = $UpdatePatchBaselineResult->GlobalFilters;
+    my $Description   = $UpdatePatchBaselineResult->Description;
+    my $ApprovedPatchesComplianceLevel =
+      $UpdatePatchBaselineResult->ApprovedPatchesComplianceLevel;
+    my $CreatedDate     = $UpdatePatchBaselineResult->CreatedDate;
+    my $RejectedPatches = $UpdatePatchBaselineResult->RejectedPatches;
+    my $Sources         = $UpdatePatchBaselineResult->Sources;
+    my $ModifiedDate    = $UpdatePatchBaselineResult->ModifiedDate;
+    my $Name            = $UpdatePatchBaselineResult->Name;
+    my $OperatingSystem = $UpdatePatchBaselineResult->OperatingSystem;
+    my $ApprovedPatches = $UpdatePatchBaselineResult->ApprovedPatches;
+    my $BaselineId      = $UpdatePatchBaselineResult->BaselineId;
+
+    # Returns a L<Paws::SSM::UpdatePatchBaselineResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/UpdatePatchBaseline>

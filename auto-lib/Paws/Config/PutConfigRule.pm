@@ -24,9 +24,47 @@ as arguments to method PutConfigRule.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutConfigRule.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutConfigRule(Att1 => $value1, Att2 => $value2, ...);
+    my $config = Paws->service('Config');
+    $config->PutConfigRule(
+      ConfigRule => {
+        Source => {
+          SourceIdentifier => 'MyStringWithCharLimit256',    # min: 1, max: 256
+          Owner         => 'CUSTOM_LAMBDA',    # values: CUSTOM_LAMBDA, AWS
+          SourceDetails => [
+            {
+              MessageType => 'ConfigurationItemChangeNotification'
+              , # values: ConfigurationItemChangeNotification, ConfigurationSnapshotDeliveryCompleted, ScheduledNotification, OversizedConfigurationItemChangeNotification; OPTIONAL
+              MaximumExecutionFrequency => 'One_Hour'
+              , # values: One_Hour, Three_Hours, Six_Hours, Twelve_Hours, TwentyFour_Hours; OPTIONAL
+              EventSource => 'aws.config',    # values: aws.config; OPTIONAL
+            },
+            ...
+          ],                                  # max: 25; OPTIONAL
+        },
+        MaximumExecutionFrequency => 'One_Hour'
+        , # values: One_Hour, Three_Hours, Six_Hours, Twelve_Hours, TwentyFour_Hours; OPTIONAL
+        ConfigRuleName => 'MyStringWithCharLimit64', # min: 1, max: 64; OPTIONAL
+        ConfigRuleState => 'ACTIVE'
+        ,    # values: ACTIVE, DELETING, DELETING_RESULTS, EVALUATING; OPTIONAL
+        InputParameters =>
+          'MyStringWithCharLimit1024',    # min: 1, max: 1024; OPTIONAL
+        Scope => {
+          ComplianceResourceTypes => [
+            'MyStringWithCharLimit256', ...    # min: 1, max: 256
+          ],                                   # max: 100; OPTIONAL
+          TagValue => 'MyStringWithCharLimit256',   # min: 1, max: 256
+          TagKey   => 'MyStringWithCharLimit128',   # min: 1, max: 128; OPTIONAL
+          ComplianceResourceId =>
+            'MyBaseResourceId',                     # min: 1, max: 768; OPTIONAL
+        },    # OPTIONAL
+        ConfigRuleArn => 'MyString',    # OPTIONAL
+        ConfigRuleId  => 'MyString',    # OPTIONAL
+        Description => 'MyEmptiableStringWithCharLimit256', # max: 256; OPTIONAL
+      },
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/config/PutConfigRule>

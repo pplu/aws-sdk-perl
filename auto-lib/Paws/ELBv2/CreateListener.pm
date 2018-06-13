@@ -29,9 +29,70 @@ as arguments to method CreateListener.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateListener.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateListener(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticloadbalancing = Paws->service('ELBv2');
+    # To create an HTTP listener
+    # This example creates an HTTP listener for the specified load balancer that
+    # forwards requests to the specified target group.
+    my $CreateListenerOutput = $elasticloadbalancing->CreateListener(
+      {
+        'DefaultActions' => [
+
+          {
+            'TargetGroupArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067',
+            'Type' => 'forward'
+          }
+        ],
+        'LoadBalancerArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
+        'Port'     => 80,
+        'Protocol' => 'HTTP'
+      }
+    );
+
+    # Results:
+    my $Listeners = $CreateListenerOutput->Listeners;
+
+   # Returns a L<Paws::ELBv2::CreateListenerOutput> object.
+   # To create an HTTPS listener
+   # This example creates an HTTPS listener for the specified load balancer that
+   # forwards requests to the specified target group. Note that you must specify
+   # an SSL certificate for an HTTPS listener. You can create and manage
+   # certificates using AWS Certificate Manager (ACM). Alternatively, you can
+   # create a certificate using SSL/TLS tools, get the certificate signed by a
+   # certificate authority (CA), and upload the certificate to AWS Identity and
+   # Access Management (IAM).
+    my $CreateListenerOutput = $elasticloadbalancing->CreateListener(
+      {
+        'Certificates' => [
+
+          {
+            'CertificateArn' =>
+              'arn:aws:iam::123456789012:server-certificate/my-server-cert'
+          }
+        ],
+        'LoadBalancerArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
+        'DefaultActions' => [
+
+          {
+            'Type' => 'forward',
+            'TargetGroupArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067'
+          }
+        ],
+        'Port'      => 443,
+        'SslPolicy' => 'ELBSecurityPolicy-2015-05',
+        'Protocol'  => 'HTTPS'
+      }
+    );
+
+    # Results:
+    my $Listeners = $CreateListenerOutput->Listeners;
+
+    # Returns a L<Paws::ELBv2::CreateListenerOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing/CreateListener>

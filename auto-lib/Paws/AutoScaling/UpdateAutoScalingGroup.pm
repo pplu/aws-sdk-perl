@@ -38,9 +38,40 @@ as arguments to method UpdateAutoScalingGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAutoScalingGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateAutoScalingGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('AutoScaling');
+   # To update the launch configuration
+   # This example updates the launch configuration of the specified Auto Scaling
+   # group.
+    $autoscaling->UpdateAutoScalingGroup(
+      {
+        'AutoScalingGroupName'    => 'my-auto-scaling-group',
+        'LaunchConfigurationName' => 'new-launch-config'
+      }
+    );
+
+    # To update the minimum and maximum size
+    # This example updates the minimum size and maximum size of the specified
+    # Auto Scaling group.
+    $autoscaling->UpdateAutoScalingGroup(
+      {
+        'AutoScalingGroupName' => 'my-auto-scaling-group',
+        'MinSize'              => 1,
+        'MaxSize'              => 3
+      }
+    );
+
+    # To enable instance protection
+    # This example enables instance protection for the specified Auto Scaling
+    # group.
+    $autoscaling->UpdateAutoScalingGroup(
+      {
+        'AutoScalingGroupName'             => 'my-auto-scaling-group',
+        'NewInstancesProtectedFromScaleIn' => true
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/UpdateAutoScalingGroup>

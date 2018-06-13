@@ -31,9 +31,28 @@ as arguments to method ListResourceRecordSets.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListResourceRecordSets.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListResourceRecordSets(Att1 => $value1, Att2 => $value2, ...);
+    my $route53 = Paws->service('Route53');
+    my $ListResourceRecordSetsResponse = $route53->ListResourceRecordSets(
+      HostedZoneId          => 'MyResourceId',
+      MaxItems              => 'MyPageMaxItems',                   # OPTIONAL
+      StartRecordIdentifier => 'MyResourceRecordSetIdentifier',    # OPTIONAL
+      StartRecordName       => 'MyDNSName',                        # OPTIONAL
+      StartRecordType       => 'SOA',                              # OPTIONAL
+    );
+
+    # Results:
+    my $NextRecordName = $ListResourceRecordSetsResponse->NextRecordName;
+    my $IsTruncated    = $ListResourceRecordSetsResponse->IsTruncated;
+    my $NextRecordType = $ListResourceRecordSetsResponse->NextRecordType;
+    my $NextRecordIdentifier =
+      $ListResourceRecordSetsResponse->NextRecordIdentifier;
+    my $MaxItems = $ListResourceRecordSetsResponse->MaxItems;
+    my $ResourceRecordSets =
+      $ListResourceRecordSetsResponse->ResourceRecordSets;
+
+    # Returns a L<Paws::Route53::ListResourceRecordSetsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53/ListResourceRecordSets>

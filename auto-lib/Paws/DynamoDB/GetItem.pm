@@ -30,9 +30,31 @@ as arguments to method GetItem.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetItem.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetItem(Att1 => $value1, Att2 => $value2, ...);
+    my $dynamodb = Paws->service('DynamoDB');
+    # To read an item from a table
+    # This example retrieves an item from the Music table. The table has a
+    # partition key and a sort key (Artist and SongTitle), so you must specify
+    # both of these attributes.
+    my $GetItemOutput = $dynamodb->GetItem(
+      {
+        'Key' => {
+          'SongTitle' => {
+            'S' => 'Happy Day'
+          },
+          'Artist' => {
+            'S' => 'Acme Band'
+          }
+        },
+        'TableName' => 'Music'
+      }
+    );
+
+    # Results:
+    my $Item = $GetItemOutput->Item;
+
+    # Returns a L<Paws::DynamoDB::GetItemOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dynamodb/GetItem>

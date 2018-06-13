@@ -25,9 +25,22 @@ as arguments to method ListStacks.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListStacks.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListStacks(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudformation = Paws->service('CloudFormation');
+    my $ListStacksOutput = $cloudformation->ListStacks(
+      NextToken         => 'MyNextToken',    # OPTIONAL
+      StackStatusFilter => [
+        'CREATE_IN_PROGRESS',
+        ... # values: CREATE_IN_PROGRESS, CREATE_FAILED, CREATE_COMPLETE, ROLLBACK_IN_PROGRESS, ROLLBACK_FAILED, ROLLBACK_COMPLETE, DELETE_IN_PROGRESS, DELETE_FAILED, DELETE_COMPLETE, UPDATE_IN_PROGRESS, UPDATE_COMPLETE_CLEANUP_IN_PROGRESS, UPDATE_COMPLETE, UPDATE_ROLLBACK_IN_PROGRESS, UPDATE_ROLLBACK_FAILED, UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS, UPDATE_ROLLBACK_COMPLETE, REVIEW_IN_PROGRESS
+      ],    # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken      = $ListStacksOutput->NextToken;
+    my $StackSummaries = $ListStacksOutput->StackSummaries;
+
+    # Returns a L<Paws::CloudFormation::ListStacksOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudformation/ListStacks>

@@ -25,9 +25,18 @@ as arguments to method CreateApplication.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateApplication.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateApplication(Att1 => $value1, Att2 => $value2, ...);
+    my $discovery = Paws->service('Discovery');
+    my $CreateApplicationResponse = $discovery->CreateApplication(
+      Name        => 'MyString',
+      Description => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $ConfigurationId = $CreateApplicationResponse->ConfigurationId;
+
+    # Returns a L<Paws::Discovery::CreateApplicationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/discovery/CreateApplication>

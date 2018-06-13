@@ -24,9 +24,22 @@ as arguments to method PutDeliveryChannel.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutDeliveryChannel.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutDeliveryChannel(Att1 => $value1, Att2 => $value2, ...);
+    my $config = Paws->service('Config');
+    $config->PutDeliveryChannel(
+      DeliveryChannel => {
+        configSnapshotDeliveryProperties => {
+          deliveryFrequency => 'One_Hour'
+          , # values: One_Hour, Three_Hours, Six_Hours, Twelve_Hours, TwentyFour_Hours; OPTIONAL
+        },    # OPTIONAL
+        snsTopicARN  => 'MyString',         # OPTIONAL
+        s3KeyPrefix  => 'MyString',         # OPTIONAL
+        name         => 'MyChannelName',    # min: 1, max: 256; OPTIONAL
+        s3BucketName => 'MyString',         # OPTIONAL
+      },
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/config/PutDeliveryChannel>

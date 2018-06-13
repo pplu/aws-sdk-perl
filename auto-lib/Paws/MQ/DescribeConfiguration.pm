@@ -25,9 +25,24 @@ as arguments to method DescribeConfiguration.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeConfiguration.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeConfiguration(Att1 => $value1, Att2 => $value2, ...);
+    my $mq = Paws->service('MQ');
+    my $DescribeConfigurationResponse = $mq->DescribeConfiguration(
+      ConfigurationId => 'My__string',
+
+    );
+
+    # Results:
+    my $Arn            = $DescribeConfigurationResponse->Arn;
+    my $LatestRevision = $DescribeConfigurationResponse->LatestRevision;
+    my $Name           = $DescribeConfigurationResponse->Name;
+    my $EngineVersion  = $DescribeConfigurationResponse->EngineVersion;
+    my $EngineType     = $DescribeConfigurationResponse->EngineType;
+    my $Description    = $DescribeConfigurationResponse->Description;
+    my $Id             = $DescribeConfigurationResponse->Id;
+
+    # Returns a L<Paws::MQ::DescribeConfigurationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/amazon-mq/>

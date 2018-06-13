@@ -34,9 +34,52 @@ as arguments to method SendBulkTemplatedEmail.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SendBulkTemplatedEmail.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SendBulkTemplatedEmail(Att1 => $value1, Att2 => $value2, ...);
+    my $email = Paws->service('SES');
+    my $SendBulkTemplatedEmailResponse = $email->SendBulkTemplatedEmail(
+      Destinations => [
+        {
+          Destination => {
+            ToAddresses  => [ 'MyAddress', ... ],    # OPTIONAL
+            CcAddresses  => [ 'MyAddress', ... ],    # OPTIONAL
+            BccAddresses => [ 'MyAddress', ... ],    # OPTIONAL
+          },
+          ReplacementTemplateData => 'MyTemplateData',   # max: 262144; OPTIONAL
+          ReplacementTags         => [
+            {
+              Value => 'MyMessageTagValue',
+              Name  => 'MyMessageTagName',
+
+            },
+            ...
+          ],                                             # OPTIONAL
+        },
+        ...
+      ],
+      Source               => 'MyAddress',
+      Template             => 'MyTemplateName',
+      ConfigurationSetName => 'MyConfigurationSetName',    # OPTIONAL
+      DefaultTags          => [
+        {
+          Value => 'MyMessageTagValue',
+          Name  => 'MyMessageTagName',
+
+        },
+        ...
+      ],                                                   # OPTIONAL
+      DefaultTemplateData => 'MyTemplateData',             # OPTIONAL
+      ReplyToAddresses    => [ 'MyAddress', ... ],         # OPTIONAL
+      ReturnPath          => 'MyAddress',                  # OPTIONAL
+      ReturnPathArn       => 'MyAmazonResourceName',       # OPTIONAL
+      SourceArn           => 'MyAmazonResourceName',       # OPTIONAL
+      TemplateArn         => 'MyAmazonResourceName',       # OPTIONAL
+    );
+
+    # Results:
+    my $Status = $SendBulkTemplatedEmailResponse->Status;
+
+    # Returns a L<Paws::SES::SendBulkTemplatedEmailResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/email/SendBulkTemplatedEmail>

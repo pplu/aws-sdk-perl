@@ -31,9 +31,60 @@ as arguments to method CreateOTAUpdate.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateOTAUpdate.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateOTAUpdate(Att1 => $value1, Att2 => $value2, ...);
+    my $iot = Paws->service('IoT');
+    my $CreateOTAUpdateResponse = $iot->CreateOTAUpdate(
+      Files => [
+        {
+          fileName    => 'MyFileName',    # OPTIONAL
+          codeSigning => {
+            awsSignerJobId    => 'MySigningJobId',    # OPTIONAL
+            customCodeSigning => {
+              hashAlgorithm      => 'MyHashAlgorithm',         # OPTIONAL
+              signatureAlgorithm => 'MySignatureAlgorithm',    # OPTIONAL
+              signature          => {
+                inlineDocument => 'BlobSignature',             # OPTIONAL
+                stream         => {
+                  streamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
+                  fileId   => 1,               # max: 255; OPTIONAL
+                },    # OPTIONAL
+              },    # OPTIONAL
+              certificateChain => {
+                inlineDocument  => 'MyInlineDocument',     # OPTIONAL
+                certificateName => 'MyCertificateName',    # OPTIONAL
+                stream          => {
+                  streamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
+                  fileId   => 1,               # max: 255; OPTIONAL
+                },    # OPTIONAL
+              },    # OPTIONAL
+            },    # OPTIONAL
+          },    # OPTIONAL
+          fileSource => {
+            streamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
+            fileId   => 1,               # max: 255; OPTIONAL
+          },    # OPTIONAL
+          attributes => { 'MyKey' => 'MyValue', },    # OPTIONAL
+          fileVersion => 'MyOTAUpdateFileVersion',    # OPTIONAL
+        },
+        ...
+      ],
+      OtaUpdateId          => 'MyOTAUpdateId',
+      RoleArn              => 'MyRoleArn',
+      Targets              => [ 'MyTarget', ... ],
+      AdditionalParameters => { 'MyKey' => 'MyValue', },    # OPTIONAL
+      Description          => 'MyOTAUpdateDescription',     # OPTIONAL
+      TargetSelection      => 'CONTINUOUS',                 # OPTIONAL
+    );
+
+    # Results:
+    my $OtaUpdateId     = $CreateOTAUpdateResponse->OtaUpdateId;
+    my $OtaUpdateStatus = $CreateOTAUpdateResponse->OtaUpdateStatus;
+    my $AwsIotJobArn    = $CreateOTAUpdateResponse->AwsIotJobArn;
+    my $AwsIotJobId     = $CreateOTAUpdateResponse->AwsIotJobId;
+    my $OtaUpdateArn    = $CreateOTAUpdateResponse->OtaUpdateArn;
+
+    # Returns a L<Paws::IoT::CreateOTAUpdateResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot/CreateOTAUpdate>

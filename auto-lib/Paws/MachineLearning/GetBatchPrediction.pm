@@ -24,9 +24,35 @@ as arguments to method GetBatchPrediction.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetBatchPrediction.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetBatchPrediction(Att1 => $value1, Att2 => $value2, ...);
+    my $machinelearning = Paws->service('MachineLearning');
+    my $GetBatchPredictionOutput = $machinelearning->GetBatchPrediction(
+      BatchPredictionId => 'MyEntityId',
+
+    );
+
+    # Results:
+    my $InputDataLocationS3 = $GetBatchPredictionOutput->InputDataLocationS3;
+    my $LogUri              = $GetBatchPredictionOutput->LogUri;
+    my $Name                = $GetBatchPredictionOutput->Name;
+    my $Status              = $GetBatchPredictionOutput->Status;
+    my $TotalRecordCount    = $GetBatchPredictionOutput->TotalRecordCount;
+    my $StartedAt           = $GetBatchPredictionOutput->StartedAt;
+    my $InvalidRecordCount  = $GetBatchPredictionOutput->InvalidRecordCount;
+    my $MLModelId           = $GetBatchPredictionOutput->MLModelId;
+    my $ComputeTime         = $GetBatchPredictionOutput->ComputeTime;
+    my $CreatedByIamUser    = $GetBatchPredictionOutput->CreatedByIamUser;
+    my $LastUpdatedAt       = $GetBatchPredictionOutput->LastUpdatedAt;
+    my $BatchPredictionDataSourceId =
+      $GetBatchPredictionOutput->BatchPredictionDataSourceId;
+    my $BatchPredictionId = $GetBatchPredictionOutput->BatchPredictionId;
+    my $Message           = $GetBatchPredictionOutput->Message;
+    my $CreatedAt         = $GetBatchPredictionOutput->CreatedAt;
+    my $FinishedAt        = $GetBatchPredictionOutput->FinishedAt;
+    my $OutputUri         = $GetBatchPredictionOutput->OutputUri;
+
+    # Returns a L<Paws::MachineLearning::GetBatchPredictionOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/machinelearning/GetBatchPrediction>

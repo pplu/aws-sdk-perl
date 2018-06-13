@@ -28,9 +28,22 @@ as arguments to method ListImages.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListImages.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListImages(Att1 => $value1, Att2 => $value2, ...);
+    my $ecr = Paws->service('ECR');
+    # To list all images in a repository
+    # This example lists all of the images in the repository named ubuntu in the
+    # default registry in the current account.
+    my $ListImagesResponse = $ecr->ListImages(
+      {
+        'RepositoryName' => 'ubuntu'
+      }
+    );
+
+    # Results:
+    my $imageIds = $ListImagesResponse->imageIds;
+
+    # Returns a L<Paws::ECR::ListImagesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecr/ListImages>

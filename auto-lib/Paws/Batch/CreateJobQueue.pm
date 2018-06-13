@@ -28,9 +28,61 @@ as arguments to method CreateJobQueue.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateJobQueue.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateJobQueue(Att1 => $value1, Att2 => $value2, ...);
+    my $batch = Paws->service('Batch');
+    # To create a job queue with a single compute environment
+    # This example creates a job queue called LowPriority that uses the M4Spot
+    # compute environment.
+    my $CreateJobQueueResponse = $batch->CreateJobQueue(
+      {
+        'JobQueueName'            => 'LowPriority',
+        'State'                   => 'ENABLED',
+        'Priority'                => 10,
+        'ComputeEnvironmentOrder' => [
+
+          {
+            'ComputeEnvironment' => 'M4Spot',
+            'Order'              => 1
+          }
+        ]
+      }
+    );
+
+    # Results:
+    my $jobQueueName = $CreateJobQueueResponse->jobQueueName;
+    my $jobQueueArn  = $CreateJobQueueResponse->jobQueueArn;
+
+    # Returns a L<Paws::Batch::CreateJobQueueResponse> object.
+    # To create a job queue with multiple compute environments
+    # This example creates a job queue called HighPriority that uses the
+    # C4OnDemand compute environment with an order of 1 and the M4Spot compute
+    # environment with an order of 2.
+    my $CreateJobQueueResponse = $batch->CreateJobQueue(
+      {
+        'State'                   => 'ENABLED',
+        'JobQueueName'            => 'HighPriority',
+        'Priority'                => 1,
+        'ComputeEnvironmentOrder' => [
+
+          {
+            'ComputeEnvironment' => 'C4OnDemand',
+            'Order'              => 1
+          },
+
+          {
+            'ComputeEnvironment' => 'M4Spot',
+            'Order'              => 2
+          }
+        ]
+      }
+    );
+
+    # Results:
+    my $jobQueueArn  = $CreateJobQueueResponse->jobQueueArn;
+    my $jobQueueName = $CreateJobQueueResponse->jobQueueName;
+
+    # Returns a L<Paws::Batch::CreateJobQueueResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/batch/CreateJobQueue>

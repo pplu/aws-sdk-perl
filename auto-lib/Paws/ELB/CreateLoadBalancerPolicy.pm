@@ -27,9 +27,66 @@ as arguments to method CreateLoadBalancerPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateLoadBalancerPolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateLoadBalancerPolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticloadbalancing = Paws->service('ELB');
+    # To create a policy that enables Proxy Protocol on a load balancer
+    # This example creates a policy that enables Proxy Protocol on the specified
+    # load balancer.
+    my $CreateLoadBalancerPolicyOutput =
+      $elasticloadbalancing->CreateLoadBalancerPolicy(
+      {
+        'PolicyAttributes' => [
+
+          {
+            'AttributeValue' => 'true',
+            'AttributeName'  => 'ProxyProtocol'
+          }
+        ],
+        'PolicyName'       => 'my-ProxyProtocol-policy',
+        'LoadBalancerName' => 'my-load-balancer',
+        'PolicyTypeName'   => 'ProxyProtocolPolicyType'
+      }
+      );
+
+    # To create a public key policy
+    # This example creates a public key policy.
+    my $CreateLoadBalancerPolicyOutput =
+      $elasticloadbalancing->CreateLoadBalancerPolicy(
+      {
+        'LoadBalancerName' => 'my-load-balancer',
+        'PolicyTypeName'   => 'PublicKeyPolicyType',
+        'PolicyAttributes' => [
+
+          {
+            'AttributeName' => 'PublicKey',
+            'AttributeValue' =>
+'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwAYUjnfyEyXr1pxjhFWBpMlggUcqoi3kl+dS74kj//c6x7ROtusUaeQCTgIUkayttRDWchuqo1pHC1u+n5xxXnBBe2ejbb2WRsKIQ5rXEeixsjFpFsojpSQKkzhVGI6mJVZBJDVKSHmswnwLBdofLhzvllpovBPTHe+o4haAWvDBALJU0pkSI1FecPHcs2hwxf14zHoXy1e2k36A64nXW43wtfx5qcVSIxtCEOjnYRg7RPvybaGfQ+v6Iaxb/+7J5kEvZhTFQId+bSiJImF1FSUT1W1xwzBZPUbcUkkXDj45vC2s3Z8E+Lk7a3uZhvsQHLZnrfuWjBWGWvZ/MhZYgEXAMPLE'
+          }
+        ],
+        'PolicyName' => 'my-PublicKey-policy'
+      }
+      );
+
+    # To create a backend server authentication policy
+    # This example creates a backend server authentication policy that enables
+    # authentication on your backend instance using a public key policy.
+    my $CreateLoadBalancerPolicyOutput =
+      $elasticloadbalancing->CreateLoadBalancerPolicy(
+      {
+        'PolicyTypeName'   => 'BackendServerAuthenticationPolicyType',
+        'LoadBalancerName' => 'my-load-balancer',
+        'PolicyName'       => 'my-authentication-policy',
+        'PolicyAttributes' => [
+
+          {
+            'AttributeValue' => 'my-PublicKey-policy',
+            'AttributeName'  => 'PublicKeyPolicyName'
+          }
+        ]
+      }
+      );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing/CreateLoadBalancerPolicy>

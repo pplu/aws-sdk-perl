@@ -50,9 +50,49 @@ as arguments to method CreateCluster.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCluster.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateCluster(Att1 => $value1, Att2 => $value2, ...);
+    my $redshift = Paws->service('RedShift');
+    my $CreateClusterResult = $redshift->CreateCluster(
+      ClusterIdentifier                => 'MyString',
+      MasterUserPassword               => 'MyString',
+      MasterUsername                   => 'MyString',
+      NodeType                         => 'MyString',
+      AdditionalInfo                   => 'MyString',             # OPTIONAL
+      AllowVersionUpgrade              => 1,                      # OPTIONAL
+      AutomatedSnapshotRetentionPeriod => 1,                      # OPTIONAL
+      AvailabilityZone                 => 'MyString',             # OPTIONAL
+      ClusterParameterGroupName        => 'MyString',             # OPTIONAL
+      ClusterSecurityGroups            => [ 'MyString', ... ],    # OPTIONAL
+      ClusterSubnetGroupName           => 'MyString',             # OPTIONAL
+      ClusterType                      => 'MyString',             # OPTIONAL
+      ClusterVersion                   => 'MyString',             # OPTIONAL
+      DBName                           => 'MyString',             # OPTIONAL
+      ElasticIp                        => 'MyString',             # OPTIONAL
+      Encrypted                        => 1,                      # OPTIONAL
+      EnhancedVpcRouting               => 1,                      # OPTIONAL
+      HsmClientCertificateIdentifier   => 'MyString',             # OPTIONAL
+      HsmConfigurationIdentifier       => 'MyString',             # OPTIONAL
+      IamRoles                         => [ 'MyString', ... ],    # OPTIONAL
+      KmsKeyId                         => 'MyString',             # OPTIONAL
+      NumberOfNodes                    => 1,                      # OPTIONAL
+      Port                             => 1,                      # OPTIONAL
+      PreferredMaintenanceWindow       => 'MyString',             # OPTIONAL
+      PubliclyAccessible               => 1,                      # OPTIONAL
+      Tags                             => [
+        {
+          Key   => 'MyString',
+          Value => 'MyString',
+        },
+        ...
+      ],                                                          # OPTIONAL
+      VpcSecurityGroupIds => [ 'MyString', ... ],                 # OPTIONAL
+    );
+
+    # Results:
+    my $Cluster = $CreateClusterResult->Cluster;
+
+    # Returns a L<Paws::RedShift::CreateClusterResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/redshift/CreateCluster>

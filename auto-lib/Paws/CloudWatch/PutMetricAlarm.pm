@@ -42,9 +42,44 @@ as arguments to method PutMetricAlarm.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutMetricAlarm.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutMetricAlarm(Att1 => $value1, Att2 => $value2, ...);
+    my $monitoring = Paws->service('CloudWatch');
+    $monitoring->PutMetricAlarm(
+      AlarmName          => 'MyAlarmName',
+      ComparisonOperator => 'GreaterThanOrEqualToThreshold',
+      EvaluationPeriods  => 1,
+      MetricName         => 'MyMetricName',
+      Namespace          => 'MyNamespace',
+      Period             => 1,
+      Threshold          => 1,
+      ActionsEnabled     => 1,                                 # OPTIONAL
+      AlarmActions       => [
+        'MyResourceName', ...    # min: 1, max: 1024
+      ],                         # OPTIONAL
+      AlarmDescription  => 'MyAlarmDescription',    # OPTIONAL
+      DatapointsToAlarm => 1,                       # OPTIONAL
+      Dimensions        => [
+        {
+          Name  => 'MyDimensionName',               # min: 1, max: 255
+          Value => 'MyDimensionValue',              # min: 1, max: 255
+
+        },
+        ...
+      ],                                            # OPTIONAL
+      EvaluateLowSampleCountPercentile =>
+        'MyEvaluateLowSampleCountPercentile',       # OPTIONAL
+      ExtendedStatistic       => 'MyExtendedStatistic',    # OPTIONAL
+      InsufficientDataActions => [
+        'MyResourceName', ...                              # min: 1, max: 1024
+      ],                                                   # OPTIONAL
+      OKActions => [
+        'MyResourceName', ...                              # min: 1, max: 1024
+      ],                                                   # OPTIONAL
+      Statistic        => 'SampleCount',                   # OPTIONAL
+      TreatMissingData => 'MyTreatMissingData',            # OPTIONAL
+      Unit             => 'Seconds',                       # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/monitoring/PutMetricAlarm>

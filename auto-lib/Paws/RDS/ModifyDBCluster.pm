@@ -38,9 +38,22 @@ as arguments to method ModifyDBCluster.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyDBCluster.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyDBCluster(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    # To change DB cluster settings
+    # This example changes the specified settings for the specified DB cluster.
+    my $ModifyDBClusterResult = $rds->ModifyDBCluster(
+      {
+        'NewDBClusterIdentifier'     => 'mynewdbcluster',
+        'PreferredBackupWindow'      => '04:00-04:30',
+        'PreferredMaintenanceWindow' => 'Tue:05:00-Tue:05:30',
+        'DBClusterIdentifier'        => 'mydbcluster',
+        'MasterUserPassword'         => 'mynewpassword',
+        'ApplyImmediately'           => true
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/ModifyDBCluster>

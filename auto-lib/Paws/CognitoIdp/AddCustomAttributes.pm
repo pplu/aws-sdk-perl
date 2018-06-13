@@ -25,9 +25,32 @@ as arguments to method AddCustomAttributes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddCustomAttributes.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AddCustomAttributes(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-idp = Paws->service('CognitoIdp');
+    my $AddCustomAttributesResponse = $cognito -idp->AddCustomAttributes(
+      CustomAttributes => [
+        {
+          AttributeDataType =>
+            'String',    # values: String, Number, DateTime, Boolean; OPTIONAL
+          NumberAttributeConstraints => {
+            MinValue => 'MyStringType',    # OPTIONAL
+            MaxValue => 'MyStringType',    # OPTIONAL
+          },    # OPTIONAL
+          StringAttributeConstraints => {
+            MinLength => 'MyStringType',    # OPTIONAL
+            MaxLength => 'MyStringType',    # OPTIONAL
+          },    # OPTIONAL
+          Mutable                => 1,    # OPTIONAL
+          Required               => 1,    # OPTIONAL
+          DeveloperOnlyAttribute => 1,    # OPTIONAL
+          Name => 'MyCustomAttributeNameType',    # min: 1, max: 20; OPTIONAL
+        },
+        ...
+      ],
+      UserPoolId => 'MyUserPoolIdType',
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-idp/AddCustomAttributes>

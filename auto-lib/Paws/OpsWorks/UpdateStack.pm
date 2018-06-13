@@ -41,9 +41,44 @@ as arguments to method UpdateStack.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateStack.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateStack(Att1 => $value1, Att2 => $value2, ...);
+    my $opsworks = Paws->service('OpsWorks');
+    $opsworks->UpdateStack(
+      StackId      => 'MyString',
+      AgentVersion => 'MyString',    # OPTIONAL
+      Attributes   => {
+        'Color' => 'MyString',       # key: values: Color
+      },    # OPTIONAL
+      ChefConfiguration => {
+        ManageBerkshelf  => 1,            # OPTIONAL
+        BerkshelfVersion => 'MyString',
+      },    # OPTIONAL
+      ConfigurationManager => {
+        Name    => 'MyString',
+        Version => 'MyString',
+      },    # OPTIONAL
+      CustomCookbooksSource => {
+        Revision => 'MyString',
+        SshKey   => 'MyString',
+        Username => 'MyString',
+        Password => 'MyString',
+        Url      => 'MyString',
+        Type     => 'git',        # values: git, svn, archive, s3; OPTIONAL
+      },    # OPTIONAL
+      CustomJson                => 'MyString',    # OPTIONAL
+      DefaultAvailabilityZone   => 'MyString',    # OPTIONAL
+      DefaultInstanceProfileArn => 'MyString',    # OPTIONAL
+      DefaultOs                 => 'MyString',    # OPTIONAL
+      DefaultRootDeviceType     => 'ebs',         # OPTIONAL
+      DefaultSshKeyName         => 'MyString',    # OPTIONAL
+      DefaultSubnetId           => 'MyString',    # OPTIONAL
+      HostnameTheme             => 'MyString',    # OPTIONAL
+      Name                      => 'MyString',    # OPTIONAL
+      ServiceRoleArn            => 'MyString',    # OPTIONAL
+      UseCustomCookbooks        => 1,             # OPTIONAL
+      UseOpsworksSecurityGroups => 1,             # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/opsworks/UpdateStack>

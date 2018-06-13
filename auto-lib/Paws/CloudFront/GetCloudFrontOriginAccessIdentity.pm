@@ -27,9 +27,21 @@ as arguments to method GetCloudFrontOriginAccessIdentity2017_10_30.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetCloudFrontOriginAccessIdentity2017_10_30.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetCloudFrontOriginAccessIdentity2017_10_30(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudfront = Paws->service('CloudFront');
+    my $GetCloudFrontOriginAccessIdentityResult =
+      $cloudfront->GetCloudFrontOriginAccessIdentity(
+      Id => 'Mystring',
+
+      );
+
+    # Results:
+    my $CloudFrontOriginAccessIdentity =
+      $GetCloudFrontOriginAccessIdentityResult->CloudFrontOriginAccessIdentity;
+    my $ETag = $GetCloudFrontOriginAccessIdentityResult->ETag;
+
+# Returns a L<Paws::CloudFront::GetCloudFrontOriginAccessIdentityResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudfront/GetCloudFrontOriginAccessIdentity>

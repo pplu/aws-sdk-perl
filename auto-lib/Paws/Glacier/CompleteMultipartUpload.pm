@@ -29,9 +29,29 @@ as arguments to method CompleteMultipartUpload.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CompleteMultipartUpload.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CompleteMultipartUpload(Att1 => $value1, Att2 => $value2, ...);
+    my $glacier = Paws->service('Glacier');
+    # To complete a multipart upload
+    # The example completes a multipart upload for a 3 MiB archive.
+    my $ArchiveCreationOutput = $glacier->CompleteMultipartUpload(
+      {
+        'AccountId' => '-',
+        'UploadId' =>
+'19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV6NtcV5zpsJ',
+        'ArchiveSize' => 3145728,
+        'Checksum' =>
+          '9628195fcdbcbbe76cdde456d4646fa7de5f219fb39823836d81f0cc0e18aa67',
+        'VaultName' => 'my-vault'
+      }
+    );
+
+    # Results:
+    my $location  = $ArchiveCreationOutput->location;
+    my $checksum  = $ArchiveCreationOutput->checksum;
+    my $archiveId = $ArchiveCreationOutput->archiveId;
+
+    # Returns a L<Paws::Glacier::ArchiveCreationOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/glacier/>

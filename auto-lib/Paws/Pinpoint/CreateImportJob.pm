@@ -26,9 +26,28 @@ as arguments to method CreateImportJob.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateImportJob.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateImportJob(Att1 => $value1, Att2 => $value2, ...);
+    my $pinpoint = Paws->service('Pinpoint');
+    my $CreateImportJobResponse = $pinpoint->CreateImportJob(
+      ApplicationId    => 'My__string',
+      ImportJobRequest => {
+        RoleArn           => 'My__string',
+        ExternalId        => 'My__string',
+        S3Url             => 'My__string',
+        RegisterEndpoints => 1,              # OPTIONAL
+        SegmentId         => 'My__string',
+        SegmentName       => 'My__string',
+        DefineSegment     => 1,              # OPTIONAL
+        Format            => 'CSV',          # values: CSV, JSON; OPTIONAL
+      },
+
+    );
+
+    # Results:
+    my $ImportJobResponse = $CreateImportJobResponse->ImportJobResponse;
+
+    # Returns a L<Paws::Pinpoint::CreateImportJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

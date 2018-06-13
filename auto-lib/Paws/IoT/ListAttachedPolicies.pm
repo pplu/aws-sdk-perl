@@ -28,9 +28,21 @@ as arguments to method ListAttachedPolicies.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListAttachedPolicies.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListAttachedPolicies(Att1 => $value1, Att2 => $value2, ...);
+    my $iot = Paws->service('IoT');
+    my $ListAttachedPoliciesResponse = $iot->ListAttachedPolicies(
+      Target    => 'MyPolicyTarget',
+      Marker    => 'MyMarker',         # OPTIONAL
+      PageSize  => 1,                  # OPTIONAL
+      Recursive => 1,                  # OPTIONAL
+    );
+
+    # Results:
+    my $Policies   = $ListAttachedPoliciesResponse->Policies;
+    my $NextMarker = $ListAttachedPoliciesResponse->NextMarker;
+
+    # Returns a L<Paws::IoT::ListAttachedPoliciesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot/ListAttachedPolicies>

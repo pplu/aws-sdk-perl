@@ -27,9 +27,19 @@ as arguments to method UpdateResource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateResource.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateResource(Att1 => $value1, Att2 => $value2, ...);
+    my $workmail = Paws->service('WorkMail');
+    my $UpdateResourceResponse = $workmail->UpdateResource(
+      OrganizationId => 'MyOrganizationId',
+      ResourceId     => 'MyResourceId',
+      BookingOptions => {
+        AutoDeclineConflictingRequests => 1,    # OPTIONAL
+        AutoDeclineRecurringRequests   => 1,    # OPTIONAL
+        AutoAcceptRequests             => 1,    # OPTIONAL
+      },    # OPTIONAL
+      Name => 'MyResourceName',    # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workmail/UpdateResource>

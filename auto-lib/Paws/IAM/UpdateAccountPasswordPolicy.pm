@@ -32,9 +32,19 @@ as arguments to method UpdateAccountPasswordPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAccountPasswordPolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateAccountPasswordPolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $iam = Paws->service('IAM');
+    # To set or change the current account password policy
+    # The following command sets the password policy to require a minimum length
+    # of eight characters and to require one or more numbers in the password:
+    $iam->UpdateAccountPasswordPolicy(
+      {
+        'MinimumPasswordLength' => 8,
+        'RequireNumbers'        => true
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/UpdateAccountPasswordPolicy>

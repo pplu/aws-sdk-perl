@@ -25,9 +25,17 @@ as arguments to method DeclineInvitations.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeclineInvitations.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DeclineInvitations(Att1 => $value1, Att2 => $value2, ...);
+    my $guardduty = Paws->service('GuardDuty');
+    my $DeclineInvitationsResponse = $guardduty->DeclineInvitations(
+      AccountIds => [ 'My__string', ... ],    # OPTIONAL
+    );
+
+    # Results:
+    my $UnprocessedAccounts = $DeclineInvitationsResponse->UnprocessedAccounts;
+
+    # Returns a L<Paws::GuardDuty::DeclineInvitationsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

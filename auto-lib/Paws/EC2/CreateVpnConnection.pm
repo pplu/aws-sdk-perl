@@ -28,9 +28,30 @@ as arguments to method CreateVpnConnection.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateVpnConnection.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateVpnConnection(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $CreateVpnConnectionResult = $ec2->CreateVpnConnection(
+      CustomerGatewayId => 'MyString',
+      Type              => 'MyString',
+      VpnGatewayId      => 'MyString',
+      DryRun            => 1,            # OPTIONAL
+      Options           => {
+        StaticRoutesOnly => 1,
+        TunnelOptions    => [
+          {
+            PreSharedKey     => 'MyString',
+            TunnelInsideCidr => 'MyString',
+          },
+          ...
+        ],                               # OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $VpnConnection = $CreateVpnConnectionResult->VpnConnection;
+
+    # Returns a L<Paws::EC2::CreateVpnConnectionResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/CreateVpnConnection>

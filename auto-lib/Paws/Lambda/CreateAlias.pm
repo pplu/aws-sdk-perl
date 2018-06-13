@@ -29,9 +29,30 @@ as arguments to method CreateAlias.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateAlias.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateAlias(Att1 => $value1, Att2 => $value2, ...);
+    my $lambda = Paws->service('Lambda');
+    my $AliasConfiguration = $lambda->CreateAlias(
+      FunctionName    => 'MyFunctionName',
+      FunctionVersion => 'MyVersion',
+      Name            => 'MyAlias',
+      Description     => 'MyDescription',    # OPTIONAL
+      RoutingConfig   => {
+        AdditionalVersionWeights => {
+          'MyAdditionalVersion' => 1,    # key: min: 1, max: 1024, value: max: 1
+        },    # OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $Name            = $AliasConfiguration->Name;
+    my $RoutingConfig   = $AliasConfiguration->RoutingConfig;
+    my $RevisionId      = $AliasConfiguration->RevisionId;
+    my $FunctionVersion = $AliasConfiguration->FunctionVersion;
+    my $Description     = $AliasConfiguration->Description;
+    my $AliasArn        = $AliasConfiguration->AliasArn;
+
+    # Returns a L<Paws::Lambda::AliasConfiguration> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lambda/CreateAlias>

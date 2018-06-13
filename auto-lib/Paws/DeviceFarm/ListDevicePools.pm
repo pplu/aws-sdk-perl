@@ -26,9 +26,24 @@ as arguments to method ListDevicePools.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListDevicePools.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListDevicePools(Att1 => $value1, Att2 => $value2, ...);
+    my $devicefarm = Paws->service('DeviceFarm');
+   # To get information about device pools
+   # The following example returns information about the private device pools in
+   # a specific project.
+    my $ListDevicePoolsResult = $devicefarm->ListDevicePools(
+      {
+        'Arn' =>
+'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456',
+        'Type' => 'PRIVATE'
+      }
+    );
+
+    # Results:
+    my $devicePools = $ListDevicePoolsResult->devicePools;
+
+    # Returns a L<Paws::DeviceFarm::ListDevicePoolsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/devicefarm/ListDevicePools>

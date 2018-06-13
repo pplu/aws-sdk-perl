@@ -29,9 +29,41 @@ as arguments to method RegisterScalableTarget.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RegisterScalableTarget.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RegisterScalableTarget(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('ApplicationAutoScaling');
+    # To register an ECS service as a scalable target
+    # This example registers a scalable target from an Amazon ECS service called
+    # web-app that is running on the default cluster, with a minimum desired
+    # count of 1 task and a maximum desired count of 10 tasks.
+    my $RegisterScalableTargetResponse = $autoscaling->RegisterScalableTarget(
+      {
+        'ServiceNamespace' => 'ecs',
+        'RoleARN' =>
+          'arn:aws:iam::012345678910:role/ApplicationAutoscalingECSRole',
+        'MaxCapacity'       => 10,
+        'MinCapacity'       => 1,
+        'ResourceId'        => 'service/default/web-app',
+        'ScalableDimension' => 'ecs:service:DesiredCount'
+      }
+    );
+
+   # To register an EC2 Spot fleet as a scalable target
+   # This example registers a scalable target from an Amazon EC2 Spot fleet with
+   # a minimum target capacity of 1 and a maximum of 10.
+    my $RegisterScalableTargetResponse = $autoscaling->RegisterScalableTarget(
+      {
+        'ServiceNamespace' => 'ec2',
+        'RoleARN' =>
+          'arn:aws:iam::012345678910:role/ApplicationAutoscalingSpotRole',
+        'MinCapacity'       => 1,
+        'MaxCapacity'       => 10,
+        'ScalableDimension' => 'ec2:spot-fleet-request:TargetCapacity',
+        'ResourceId' =>
+          'spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/RegisterScalableTarget>

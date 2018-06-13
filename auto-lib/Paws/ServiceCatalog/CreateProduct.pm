@@ -35,9 +35,46 @@ as arguments to method CreateProduct.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateProduct.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateProduct(Att1 => $value1, Att2 => $value2, ...);
+    my $servicecatalog = Paws->service('ServiceCatalog');
+    my $CreateProductOutput = $servicecatalog->CreateProduct(
+      IdempotencyToken               => 'MyIdempotencyToken',
+      Name                           => 'MyProductViewName',
+      Owner                          => 'MyProductViewOwner',
+      ProductType                    => 'CLOUD_FORMATION_TEMPLATE',
+      ProvisioningArtifactParameters => {
+        Info => {
+          'MyProvisioningArtifactInfoKey' => 'MyProvisioningArtifactInfoValue',
+        },    # min: 1, max: 100
+        Name        => 'MyProvisioningArtifactName',           # OPTIONAL
+        Description => 'MyProvisioningArtifactDescription',    # OPTIONAL
+        Type        => 'CLOUD_FORMATION_TEMPLATE'
+        , # values: CLOUD_FORMATION_TEMPLATE, MARKETPLACE_AMI, MARKETPLACE_CAR; OPTIONAL
+      },
+      AcceptLanguage     => 'MyAcceptLanguage',                 # OPTIONAL
+      Description        => 'MyProductViewShortDescription',    # OPTIONAL
+      Distributor        => 'MyProductViewOwner',               # OPTIONAL
+      SupportDescription => 'MySupportDescription',             # OPTIONAL
+      SupportEmail       => 'MySupportEmail',                   # OPTIONAL
+      SupportUrl         => 'MySupportUrl',                     # OPTIONAL
+      Tags               => [
+        {
+          Value => 'MyTagValue',    # min: 1, max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+
+        },
+        ...
+      ],                            # OPTIONAL
+    );
+
+    # Results:
+    my $ProductViewDetail = $CreateProductOutput->ProductViewDetail;
+    my $ProvisioningArtifactDetail =
+      $CreateProductOutput->ProvisioningArtifactDetail;
+    my $Tags = $CreateProductOutput->Tags;
+
+    # Returns a L<Paws::ServiceCatalog::CreateProductOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/servicecatalog/CreateProduct>

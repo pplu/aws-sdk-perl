@@ -27,9 +27,24 @@ as arguments to method SearchResources.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SearchResources.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SearchResources(Att1 => $value1, Att2 => $value2, ...);
+    my $resource-groups = Paws->service('ResourceGroups');
+    my $SearchResourcesOutput = $resource -groups->SearchResources(
+      ResourceQuery => {
+        Type  => 'TAG_FILTERS_1_0',    # values: TAG_FILTERS_1_0
+        Query => 'MyQuery',            # max: 2048
+
+      },
+      MaxResults => 1,                 # OPTIONAL
+      NextToken  => 'MyNextToken',     # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken           = $SearchResourcesOutput->NextToken;
+    my $ResourceIdentifiers = $SearchResourcesOutput->ResourceIdentifiers;
+
+    # Returns a L<Paws::ResourceGroups::SearchResourcesOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/resource-groups/SearchResources>

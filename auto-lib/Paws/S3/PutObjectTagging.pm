@@ -31,9 +31,31 @@ as arguments to method PutObjectTagging.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutObjectTagging.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutObjectTagging(Att1 => $value1, Att2 => $value2, ...);
+    my $s3 = Paws->service('S3');
+    my $PutObjectTaggingOutput = $s3->PutObjectTagging(
+      Bucket  => 'MyBucketName',
+      Key     => 'MyObjectKey',
+      Tagging => {
+        TagSet => [
+          {
+            Value => 'MyValue',
+            Key   => 'MyObjectKey',    # min: 1,
+
+          },
+          ...
+        ],
+
+      },
+      ContentMD5 => 'MyContentMD5',         # OPTIONAL
+      VersionId  => 'MyObjectVersionId',    # OPTIONAL
+    );
+
+    # Results:
+    my $VersionId = $PutObjectTaggingOutput->VersionId;
+
+    # Returns a L<Paws::S3::PutObjectTaggingOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/PutObjectTagging>

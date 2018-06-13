@@ -24,9 +24,25 @@ as arguments to method DetectText.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DetectText.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DetectText(Att1 => $value1, Att2 => $value2, ...);
+    my $rekognition = Paws->service('Rekognition');
+    my $DetectTextResponse = $rekognition->DetectText(
+      Image => {
+        Bytes    => 'BlobImageBlob',    # min: 1, max: 5242880; OPTIONAL
+        S3Object => {
+          Version => 'MyS3ObjectVersion',    # min: 1, max: 1024; OPTIONAL
+          Name    => 'MyS3ObjectName',       # min: 1, max: 1024; OPTIONAL
+          Bucket  => 'MyS3Bucket',           # min: 3, max: 255; OPTIONAL
+        },    # OPTIONAL
+      },
+
+    );
+
+    # Results:
+    my $TextDetections = $DetectTextResponse->TextDetections;
+
+    # Returns a L<Paws::Rekognition::DetectTextResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rekognition/DetectText>

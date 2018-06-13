@@ -25,9 +25,21 @@ as arguments to method GetIdentityPoolConfiguration.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetIdentityPoolConfiguration.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetIdentityPoolConfiguration(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-sync = Paws->service('CognitoSync');
+    my $GetIdentityPoolConfigurationResponse =
+      $cognito -sync->GetIdentityPoolConfiguration(
+      IdentityPoolId => 'MyIdentityPoolId',
+
+      );
+
+    # Results:
+    my $IdentityPoolId = $GetIdentityPoolConfigurationResponse->IdentityPoolId;
+    my $CognitoStreams = $GetIdentityPoolConfigurationResponse->CognitoStreams;
+    my $PushSync       = $GetIdentityPoolConfigurationResponse->PushSync;
+
+  # Returns a L<Paws::CognitoSync::GetIdentityPoolConfigurationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-sync/GetIdentityPoolConfiguration>

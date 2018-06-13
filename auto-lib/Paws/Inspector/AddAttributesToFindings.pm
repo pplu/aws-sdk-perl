@@ -25,9 +25,31 @@ as arguments to method AddAttributesToFindings.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddAttributesToFindings.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AddAttributesToFindings(Att1 => $value1, Att2 => $value2, ...);
+    my $inspector = Paws->service('Inspector');
+   # Add attributes to findings
+   # Assigns attributes (key and value pairs) to the findings that are specified
+   # by the ARNs of the findings.
+    my $AddAttributesToFindingsResponse = $inspector->AddAttributesToFindings(
+      {
+        'Attributes' => [
+
+          {
+            'Value' => 'example',
+            'Key'   => 'Example'
+          }
+        ],
+        'FindingArns' => [
+'arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-8l1VIE0D/run/0-Z02cjjug/finding/0-T8yM9mEU'
+        ]
+      }
+    );
+
+    # Results:
+    my $failedItems = $AddAttributesToFindingsResponse->failedItems;
+
+    # Returns a L<Paws::Inspector::AddAttributesToFindingsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/inspector/AddAttributesToFindings>

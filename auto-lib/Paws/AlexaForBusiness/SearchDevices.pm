@@ -27,9 +27,38 @@ as arguments to method SearchDevices.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SearchDevices.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SearchDevices(Att1 => $value1, Att2 => $value2, ...);
+    my $a4b = Paws->service('AlexaForBusiness');
+    my $SearchDevicesResponse = $a4b->SearchDevices(
+      Filters => [
+        {
+          Values => [
+            'MyFilterValue', ...    # min: 1, max: 500
+          ],                        # max: 5
+          Key => 'MyFilterKey',     # min: 1, max: 500
+
+        },
+        ...
+      ],                            # OPTIONAL
+      MaxResults   => 1,                # OPTIONAL
+      NextToken    => 'MyNextToken',    # OPTIONAL
+      SortCriteria => [
+        {
+          Key   => 'MySortKey',         # min: 1, max: 500
+          Value => 'ASC',               # values: ASC, DESC
+
+        },
+        ...
+      ],                                # OPTIONAL
+    );
+
+    # Results:
+    my $TotalCount = $SearchDevicesResponse->TotalCount;
+    my $NextToken  = $SearchDevicesResponse->NextToken;
+    my $Devices    = $SearchDevicesResponse->Devices;
+
+    # Returns a L<Paws::AlexaForBusiness::SearchDevicesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

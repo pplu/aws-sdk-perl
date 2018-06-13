@@ -27,9 +27,39 @@ as arguments to method DescribeParameters.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeParameters.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeParameters(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $DescribeParametersResult = $ssm->DescribeParameters(
+      Filters => [
+        {
+          Key    => 'Name',    # values: Name, Type, KeyId
+          Values => [
+            'MyParametersFilterValue', ...    # min: 1, max: 1024
+          ],                                  # min: 1, max: 50
+
+        },
+        ...
+      ],                                      # OPTIONAL
+      MaxResults       => 1,                  # OPTIONAL
+      NextToken        => 'MyNextToken',      # OPTIONAL
+      ParameterFilters => [
+        {
+          Key    => 'MyParameterStringFilterKey',    # min: 1, max: 132
+          Values => [
+            'MyParameterStringFilterValue', ...      # min: 1, max: 1024
+          ],                                         # min: 1, max: 50; OPTIONAL
+          Option => 'MyParameterStringQueryOption',  # min: 1, max: 10; OPTIONAL
+        },
+        ...
+      ],                                             # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken  = $DescribeParametersResult->NextToken;
+    my $Parameters = $DescribeParametersResult->Parameters;
+
+    # Returns a L<Paws::SSM::DescribeParametersResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/DescribeParameters>

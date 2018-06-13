@@ -27,9 +27,27 @@ as arguments to method CreateSubscriber.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateSubscriber.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateSubscriber(Att1 => $value1, Att2 => $value2, ...);
+    my $budgets = Paws->service('Budgets');
+    my $CreateSubscriberResponse = $budgets->CreateSubscriber(
+      AccountId    => 'MyAccountId',
+      BudgetName   => 'MyBudgetName',
+      Notification => {
+        NotificationType => 'ACTUAL',    # values: ACTUAL, FORECASTED
+        ComparisonOperator =>
+          'GREATER_THAN',    # values: GREATER_THAN, LESS_THAN, EQUAL_TO
+        Threshold => 1,      # min: 0.1, max: 1000000000
+        ThresholdType =>
+          'PERCENTAGE',      # values: PERCENTAGE, ABSOLUTE_VALUE; OPTIONAL
+      },
+      Subscriber => {
+        SubscriptionType => 'SNS',                    # values: SNS, EMAIL
+        Address          => 'MySubscriberAddress',    # min: 1,
+
+      },
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/budgets/CreateSubscriber>

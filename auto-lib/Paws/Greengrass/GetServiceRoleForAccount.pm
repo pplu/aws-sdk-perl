@@ -24,9 +24,17 @@ as arguments to method GetServiceRoleForAccount.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetServiceRoleForAccount.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetServiceRoleForAccount(Att1 => $value1, Att2 => $value2, ...);
+    my $greengrass = Paws->service('Greengrass');
+    my $GetServiceRoleForAccountResponse =
+      $greengrass->GetServiceRoleForAccount();
+
+    # Results:
+    my $RoleArn      = $GetServiceRoleForAccountResponse->RoleArn;
+    my $AssociatedAt = $GetServiceRoleForAccountResponse->AssociatedAt;
+
+    # Returns a L<Paws::Greengrass::GetServiceRoleForAccountResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>

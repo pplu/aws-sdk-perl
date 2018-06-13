@@ -41,9 +41,34 @@ as arguments to method ModifyReplicationGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyReplicationGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyReplicationGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticache = Paws->service('ElastiCache');
+    my $ModifyReplicationGroupResult = $elasticache->ModifyReplicationGroup(
+      ReplicationGroupId          => 'MyString',
+      ApplyImmediately            => 1,                      # OPTIONAL
+      AutoMinorVersionUpgrade     => 1,                      # OPTIONAL
+      AutomaticFailoverEnabled    => 1,                      # OPTIONAL
+      CacheNodeType               => 'MyString',             # OPTIONAL
+      CacheParameterGroupName     => 'MyString',             # OPTIONAL
+      CacheSecurityGroupNames     => [ 'MyString', ... ],    # OPTIONAL
+      EngineVersion               => 'MyString',             # OPTIONAL
+      NodeGroupId                 => 'MyString',             # OPTIONAL
+      NotificationTopicArn        => 'MyString',             # OPTIONAL
+      NotificationTopicStatus     => 'MyString',             # OPTIONAL
+      PreferredMaintenanceWindow  => 'MyString',             # OPTIONAL
+      PrimaryClusterId            => 'MyString',             # OPTIONAL
+      ReplicationGroupDescription => 'MyString',             # OPTIONAL
+      SecurityGroupIds            => [ 'MyString', ... ],    # OPTIONAL
+      SnapshotRetentionLimit      => 1,                      # OPTIONAL
+      SnapshotWindow              => 'MyString',             # OPTIONAL
+      SnapshottingClusterId       => 'MyString',             # OPTIONAL
+    );
+
+    # Results:
+    my $ReplicationGroup = $ModifyReplicationGroupResult->ReplicationGroup;
+
+    # Returns a L<Paws::ElastiCache::ModifyReplicationGroupResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticache/ModifyReplicationGroup>

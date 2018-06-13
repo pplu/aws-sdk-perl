@@ -33,9 +33,28 @@ as arguments to method ReplaceNetworkAclEntry.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ReplaceNetworkAclEntry.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ReplaceNetworkAclEntry(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To replace a network ACL entry
+    # This example replaces an entry for the specified network ACL. The new rule
+    # 100 allows ingress traffic from 203.0.113.12/24 on UDP port 53 (DNS) into
+    # any associated subnet.
+    $ec2->ReplaceNetworkAclEntry(
+      {
+        'CidrBlock' => '203.0.113.12/24',
+        'Egress'    => 0,
+        'PortRange' => {
+          'From' => 53,
+          'To'   => 53
+        },
+        'NetworkAclId' => 'acl-5fb85d36',
+        'Protocol'     => 'udp',
+        'RuleNumber'   => 100,
+        'RuleAction'   => 'allow'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/ReplaceNetworkAclEntry>

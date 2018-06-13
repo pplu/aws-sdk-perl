@@ -26,9 +26,43 @@ as arguments to method DescribeVpcAttribute.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeVpcAttribute.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeVpcAttribute(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+   # To describe the enableDnsSupport attribute
+   # This example describes the enableDnsSupport attribute. This attribute
+   # indicates whether DNS resolution is enabled for the VPC. If this attribute
+   # is true, the Amazon DNS server resolves DNS hostnames for your instances to
+   # their corresponding IP addresses; otherwise, it does not.
+    my $DescribeVpcAttributeResult = $ec2->DescribeVpcAttribute(
+      {
+        'Attribute' => 'enableDnsSupport',
+        'VpcId'     => 'vpc-a01106c2'
+      }
+    );
+
+    # Results:
+    my $EnableDnsSupport = $DescribeVpcAttributeResult->EnableDnsSupport;
+    my $VpcId            = $DescribeVpcAttributeResult->VpcId;
+
+    # Returns a L<Paws::EC2::DescribeVpcAttributeResult> object.
+    # To describe the enableDnsHostnames attribute
+    # This example describes the enableDnsHostnames attribute. This attribute
+    # indicates whether the instances launched in the VPC get DNS hostnames. If
+    # this attribute is true, instances in the VPC get DNS hostnames; otherwise,
+    # they do not.
+    my $DescribeVpcAttributeResult = $ec2->DescribeVpcAttribute(
+      {
+        'VpcId'     => 'vpc-a01106c2',
+        'Attribute' => 'enableDnsHostnames'
+      }
+    );
+
+    # Results:
+    my $VpcId              = $DescribeVpcAttributeResult->VpcId;
+    my $EnableDnsHostnames = $DescribeVpcAttributeResult->EnableDnsHostnames;
+
+    # Returns a L<Paws::EC2::DescribeVpcAttributeResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeVpcAttribute>

@@ -29,9 +29,36 @@ as arguments to method PutPlaybackConfiguration.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutPlaybackConfiguration.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutPlaybackConfiguration(Att1 => $value1, Att2 => $value2, ...);
+    my $api.mediatailor = Paws->service('MediaTailor');
+    my $PutPlaybackConfigurationResponse =
+      $api . mediatailor->PutPlaybackConfiguration(
+      AdDecisionServerUrl => 'My__string',    # OPTIONAL
+      CdnConfiguration    => {
+        ContentSegmentUrlPrefix => 'My__string',
+        AdSegmentUrlPrefix      => 'My__string',
+      },                                      # OPTIONAL
+      Name                  => 'My__string',  # OPTIONAL
+      SlateAdUrl            => 'My__string',  # OPTIONAL
+      VideoContentSourceUrl => 'My__string',  # OPTIONAL
+      );
+
+    # Results:
+    my $SessionInitializationEndpointPrefix =
+      $PutPlaybackConfigurationResponse->SessionInitializationEndpointPrefix;
+    my $SlateAdUrl = $PutPlaybackConfigurationResponse->SlateAdUrl;
+    my $VideoContentSourceUrl =
+      $PutPlaybackConfigurationResponse->VideoContentSourceUrl;
+    my $CdnConfiguration = $PutPlaybackConfigurationResponse->CdnConfiguration;
+    my $PlaybackEndpointPrefix =
+      $PutPlaybackConfigurationResponse->PlaybackEndpointPrefix;
+    my $Name             = $PutPlaybackConfigurationResponse->Name;
+    my $HlsConfiguration = $PutPlaybackConfigurationResponse->HlsConfiguration;
+    my $AdDecisionServerUrl =
+      $PutPlaybackConfigurationResponse->AdDecisionServerUrl;
+
+    # Returns a L<Paws::MediaTailor::PutPlaybackConfigurationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

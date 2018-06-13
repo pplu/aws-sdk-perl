@@ -34,9 +34,43 @@ as arguments to method SimulatePrincipalPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SimulatePrincipalPolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SimulatePrincipalPolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $iam = Paws->service('IAM');
+    my $SimulatePolicyResponse = $iam->SimulatePrincipalPolicy(
+      ActionNames => [
+        'MyActionNameType', ...    # min: 3, max: 128
+      ],
+      PolicySourceArn => 'MyarnType',
+      CallerArn       => 'MyResourceNameType',    # OPTIONAL
+      ContextEntries  => [
+        {
+          ContextKeyName => 'MyContextKeyNameType', # min: 5, max: 256; OPTIONAL
+          ContextKeyType => 'string'
+          , # values: string, stringList, numeric, numericList, boolean, booleanList, ip, ipList, binary, binaryList, date, dateList; OPTIONAL
+          ContextKeyValues => [ 'MyContextKeyValueType', ... ],    # OPTIONAL
+        },
+        ...
+      ],                                                           # OPTIONAL
+      Marker          => 'MymarkerType',                           # OPTIONAL
+      MaxItems        => 1,                                        # OPTIONAL
+      PolicyInputList => [
+        'MypolicyDocumentType', ...    # min: 1, max: 131072
+      ],                               # OPTIONAL
+      ResourceArns => [
+        'MyResourceNameType', ...      # min: 1, max: 2048
+      ],                               # OPTIONAL
+      ResourceHandlingOption => 'MyResourceHandlingOptionType',    # OPTIONAL
+      ResourceOwner          => 'MyResourceNameType',              # OPTIONAL
+      ResourcePolicy         => 'MypolicyDocumentType',            # OPTIONAL
+    );
+
+    # Results:
+    my $IsTruncated       = $SimulatePolicyResponse->IsTruncated;
+    my $Marker            = $SimulatePolicyResponse->Marker;
+    my $EvaluationResults = $SimulatePolicyResponse->EvaluationResults;
+
+    # Returns a L<Paws::IAM::SimulatePolicyResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/SimulatePrincipalPolicy>

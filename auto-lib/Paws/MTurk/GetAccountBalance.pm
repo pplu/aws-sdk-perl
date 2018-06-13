@@ -23,9 +23,16 @@ as arguments to method GetAccountBalance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetAccountBalance.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetAccountBalance(Att1 => $value1, Att2 => $value2, ...);
+    my $mturk-requester = Paws->service('MTurk');
+    my $GetAccountBalanceResponse = $mturk -requester->GetAccountBalance();
+
+    # Results:
+    my $AvailableBalance = $GetAccountBalanceResponse->AvailableBalance;
+    my $OnHoldBalance    = $GetAccountBalanceResponse->OnHoldBalance;
+
+    # Returns a L<Paws::MTurk::GetAccountBalanceResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/mturk/>

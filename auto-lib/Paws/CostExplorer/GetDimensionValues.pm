@@ -28,9 +28,28 @@ as arguments to method GetDimensionValues.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDimensionValues.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetDimensionValues(Att1 => $value1, Att2 => $value2, ...);
+    my $ce = Paws->service('CostExplorer');
+    my $GetDimensionValuesResponse = $ce->GetDimensionValues(
+      Dimension  => 'AZ',
+      TimePeriod => {
+        Start => 'MyYearMonthDay',
+        End   => 'MyYearMonthDay',
+
+      },
+      Context       => 'COST_AND_USAGE',     # OPTIONAL
+      NextPageToken => 'MyNextPageToken',    # OPTIONAL
+      SearchString  => 'MySearchString',     # OPTIONAL
+    );
+
+    # Results:
+    my $DimensionValues = $GetDimensionValuesResponse->DimensionValues;
+    my $ReturnSize      = $GetDimensionValuesResponse->ReturnSize;
+    my $TotalSize       = $GetDimensionValuesResponse->TotalSize;
+    my $NextPageToken   = $GetDimensionValuesResponse->NextPageToken;
+
+    # Returns a L<Paws::CostExplorer::GetDimensionValuesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ce/GetDimensionValues>

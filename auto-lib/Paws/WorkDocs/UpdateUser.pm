@@ -33,9 +33,28 @@ as arguments to method UpdateUser.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateUser.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateUser(Att1 => $value1, Att2 => $value2, ...);
+    my $workdocs = Paws->service('WorkDocs');
+    my $UpdateUserResponse = $workdocs->UpdateUser(
+      UserId                   => 'MyIdType',
+      AuthenticationToken      => 'MyAuthenticationHeaderType',    # OPTIONAL
+      GivenName                => 'MyUserAttributeValueType',      # OPTIONAL
+      GrantPoweruserPrivileges => 'TRUE',                          # OPTIONAL
+      Locale                   => 'en',                            # OPTIONAL
+      StorageRule              => {
+        StorageAllocatedInBytes => 1,                              # OPTIONAL
+        StorageType => 'UNLIMITED',    # values: UNLIMITED, QUOTA; OPTIONAL
+      },    # OPTIONAL
+      Surname    => 'MyUserAttributeValueType',    # OPTIONAL
+      TimeZoneId => 'MyTimeZoneIdType',            # OPTIONAL
+      Type       => 'USER',                        # OPTIONAL
+    );
+
+    # Results:
+    my $User = $UpdateUserResponse->User;
+
+    # Returns a L<Paws::WorkDocs::UpdateUserResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workdocs/UpdateUser>

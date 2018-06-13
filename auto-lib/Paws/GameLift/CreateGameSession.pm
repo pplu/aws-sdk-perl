@@ -32,9 +32,32 @@ as arguments to method CreateGameSession.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateGameSession.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateGameSession(Att1 => $value1, Att2 => $value2, ...);
+    my $gamelift = Paws->service('GameLift');
+    my $CreateGameSessionOutput = $gamelift->CreateGameSession(
+      MaximumPlayerSessionCount => 1,
+      AliasId                   => 'MyAliasId',                # OPTIONAL
+      CreatorId                 => 'MyNonZeroAndMaxString',    # OPTIONAL
+      FleetId                   => 'MyFleetId',                # OPTIONAL
+      GameProperties            => [
+        {
+          Value => 'MyGamePropertyValue',                      # max: 96
+          Key   => 'MyGamePropertyKey',                        # max: 32
+
+        },
+        ...
+      ],                                                       # OPTIONAL
+      GameSessionData  => 'MyGameSessionData',                 # OPTIONAL
+      GameSessionId    => 'MyIdStringModel',                   # OPTIONAL
+      IdempotencyToken => 'MyIdStringModel',                   # OPTIONAL
+      Name             => 'MyNonZeroAndMaxString',             # OPTIONAL
+    );
+
+    # Results:
+    my $GameSession = $CreateGameSessionOutput->GameSession;
+
+    # Returns a L<Paws::GameLift::CreateGameSessionOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/CreateGameSession>

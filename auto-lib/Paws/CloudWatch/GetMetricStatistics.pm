@@ -32,9 +32,35 @@ as arguments to method GetMetricStatistics.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetMetricStatistics.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetMetricStatistics(Att1 => $value1, Att2 => $value2, ...);
+    my $monitoring = Paws->service('CloudWatch');
+    my $GetMetricStatisticsOutput = $monitoring->GetMetricStatistics(
+      EndTime    => '1970-01-01T01:00:00',
+      MetricName => 'MyMetricName',
+      Namespace  => 'MyNamespace',
+      Period     => 1,
+      StartTime  => '1970-01-01T01:00:00',
+      Dimensions => [
+        {
+          Name  => 'MyDimensionName',     # min: 1, max: 255
+          Value => 'MyDimensionValue',    # min: 1, max: 255
+
+        },
+        ...
+      ],                                  # OPTIONAL
+      ExtendedStatistics => [ 'MyExtendedStatistic', ... ],    # OPTIONAL
+      Statistics => [
+        'SampleCount', ... # values: SampleCount, Average, Sum, Minimum, Maximum
+      ],                   # OPTIONAL
+      Unit => 'Seconds',   # OPTIONAL
+    );
+
+    # Results:
+    my $Datapoints = $GetMetricStatisticsOutput->Datapoints;
+    my $Label      = $GetMetricStatisticsOutput->Label;
+
+    # Returns a L<Paws::CloudWatch::GetMetricStatisticsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/monitoring/GetMetricStatistics>

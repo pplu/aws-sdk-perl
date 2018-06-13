@@ -25,9 +25,38 @@ as arguments to method GetApplicationRevision.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetApplicationRevision.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetApplicationRevision(Att1 => $value1, Att2 => $value2, ...);
+    my $codedeploy = Paws->service('CodeDeploy');
+    my $GetApplicationRevisionOutput = $codedeploy->GetApplicationRevision(
+      ApplicationName => 'MyApplicationName',
+      Revision        => {
+        string => {
+          sha256  => 'MyRawStringSha256',     # OPTIONAL
+          content => 'MyRawStringContent',    # OPTIONAL
+        },    # OPTIONAL
+        revisionType => 'S3',    # values: S3, GitHub, String; OPTIONAL
+        s3Location   => {
+          eTag       => 'MyETag',  # OPTIONAL
+          bundleType => 'tar',     # values: tar, tgz, zip, YAML, JSON; OPTIONAL
+          version => 'MyVersionId',    # OPTIONAL
+          key     => 'MyS3Key',        # OPTIONAL
+          bucket  => 'MyS3Bucket',     # OPTIONAL
+        },    # OPTIONAL
+        gitHubLocation => {
+          repository => 'MyRepository',    # OPTIONAL
+          commitId   => 'MyCommitId',      # OPTIONAL
+        },    # OPTIONAL
+      },
+
+    );
+
+    # Results:
+    my $Revision        = $GetApplicationRevisionOutput->Revision;
+    my $ApplicationName = $GetApplicationRevisionOutput->ApplicationName;
+    my $RevisionInfo    = $GetApplicationRevisionOutput->RevisionInfo;
+
+    # Returns a L<Paws::CodeDeploy::GetApplicationRevisionOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codedeploy/GetApplicationRevision>

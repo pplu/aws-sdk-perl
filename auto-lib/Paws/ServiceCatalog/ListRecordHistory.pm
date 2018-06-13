@@ -28,9 +28,28 @@ as arguments to method ListRecordHistory.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListRecordHistory.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListRecordHistory(Att1 => $value1, Att2 => $value2, ...);
+    my $servicecatalog = Paws->service('ServiceCatalog');
+    my $ListRecordHistoryOutput = $servicecatalog->ListRecordHistory(
+      AcceptLanguage    => 'MyAcceptLanguage',    # OPTIONAL
+      AccessLevelFilter => {
+        Key => 'Account',    # values: Account, Role, User; OPTIONAL
+        Value => 'MyAccessLevelFilterValue',    # OPTIONAL
+      },    # OPTIONAL
+      PageSize     => 1,                # OPTIONAL
+      PageToken    => 'MyPageToken',    # OPTIONAL
+      SearchFilter => {
+        Value => 'MySearchFilterValue',    # OPTIONAL
+        Key   => 'MySearchFilterKey',      # OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $RecordDetails = $ListRecordHistoryOutput->RecordDetails;
+    my $NextPageToken = $ListRecordHistoryOutput->NextPageToken;
+
+    # Returns a L<Paws::ServiceCatalog::ListRecordHistoryOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/servicecatalog/ListRecordHistory>

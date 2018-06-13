@@ -29,9 +29,20 @@ as arguments to method CopyDBClusterSnapshot.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CopyDBClusterSnapshot.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CopyDBClusterSnapshot(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+   # To copy a DB cluster snapshot
+   # The following example copies an automated snapshot of a DB cluster to a new
+   # DB cluster snapshot.
+    my $CopyDBClusterSnapshotResult = $rds->CopyDBClusterSnapshot(
+      {
+        'TargetDBClusterSnapshotIdentifier' => 'cluster-snapshot-copy-1',
+        'SourceDBClusterSnapshotIdentifier' =>
+          'rds:sample-cluster-2016-09-14-10-38'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/CopyDBClusterSnapshot>

@@ -29,9 +29,23 @@ as arguments to method GetApiKeys.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetApiKeys.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetApiKeys(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $ApiKeys = $apigateway->GetApiKeys(
+      CustomerId    => 'MyString',    # OPTIONAL
+      IncludeValues => 1,             # OPTIONAL
+      Limit         => 1,             # OPTIONAL
+      NameQuery     => 'MyString',    # OPTIONAL
+      Position      => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $Items    = $ApiKeys->Items;
+    my $Position = $ApiKeys->Position;
+    my $Warnings = $ApiKeys->Warnings;
+
+    # Returns a L<Paws::ApiGateway::ApiKeys> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>

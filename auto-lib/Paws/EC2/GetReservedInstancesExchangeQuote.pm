@@ -26,9 +26,42 @@ as arguments to method GetReservedInstancesExchangeQuote.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetReservedInstancesExchangeQuote.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetReservedInstancesExchangeQuote(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $GetReservedInstancesExchangeQuoteResult =
+      $ec2->GetReservedInstancesExchangeQuote(
+      ReservedInstanceIds  => [ 'MyString', ... ],
+      DryRun               => 1,                     # OPTIONAL
+      TargetConfigurations => [
+        {
+          OfferingId    => 'MyString',
+          InstanceCount => 1,                        # OPTIONAL
+        },
+        ...
+      ],                                             # OPTIONAL
+      );
+
+    # Results:
+    my $PaymentDue   = $GetReservedInstancesExchangeQuoteResult->PaymentDue;
+    my $CurrencyCode = $GetReservedInstancesExchangeQuoteResult->CurrencyCode;
+    my $ReservedInstanceValueSet =
+      $GetReservedInstancesExchangeQuoteResult->ReservedInstanceValueSet;
+    my $TargetConfigurationValueSet =
+      $GetReservedInstancesExchangeQuoteResult->TargetConfigurationValueSet;
+    my $OutputReservedInstancesWillExpireAt =
+      $GetReservedInstancesExchangeQuoteResult
+      ->OutputReservedInstancesWillExpireAt;
+    my $ReservedInstanceValueRollup =
+      $GetReservedInstancesExchangeQuoteResult->ReservedInstanceValueRollup;
+    my $IsValidExchange =
+      $GetReservedInstancesExchangeQuoteResult->IsValidExchange;
+    my $ValidationFailureReason =
+      $GetReservedInstancesExchangeQuoteResult->ValidationFailureReason;
+    my $TargetConfigurationValueRollup =
+      $GetReservedInstancesExchangeQuoteResult->TargetConfigurationValueRollup;
+
+    # Returns a L<Paws::EC2::GetReservedInstancesExchangeQuoteResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/GetReservedInstancesExchangeQuote>

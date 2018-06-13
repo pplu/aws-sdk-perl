@@ -24,9 +24,23 @@ as arguments to method GetVocabulary.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetVocabulary.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetVocabulary(Att1 => $value1, Att2 => $value2, ...);
+    my $transcribe = Paws->service('Transcribe');
+    my $GetVocabularyResponse = $transcribe->GetVocabulary(
+      VocabularyName => 'MyVocabularyName',
+
+    );
+
+    # Results:
+    my $LanguageCode     = $GetVocabularyResponse->LanguageCode;
+    my $DownloadUri      = $GetVocabularyResponse->DownloadUri;
+    my $FailureReason    = $GetVocabularyResponse->FailureReason;
+    my $VocabularyState  = $GetVocabularyResponse->VocabularyState;
+    my $VocabularyName   = $GetVocabularyResponse->VocabularyName;
+    my $LastModifiedTime = $GetVocabularyResponse->LastModifiedTime;
+
+    # Returns a L<Paws::Transcribe::GetVocabularyResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/transcribe/GetVocabulary>

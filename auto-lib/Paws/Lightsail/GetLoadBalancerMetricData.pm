@@ -30,9 +30,27 @@ as arguments to method GetLoadBalancerMetricData.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetLoadBalancerMetricData.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetLoadBalancerMetricData(Att1 => $value1, Att2 => $value2, ...);
+    my $lightsail = Paws->service('Lightsail');
+    my $GetLoadBalancerMetricDataResult = $lightsail->GetLoadBalancerMetricData(
+      EndTime          => '1970-01-01T01:00:00',
+      LoadBalancerName => 'MyResourceName',
+      MetricName       => 'ClientTLSNegotiationErrorCount',
+      Period           => 1,
+      StartTime        => '1970-01-01T01:00:00',
+      Statistics       => [
+        'Minimum', ...    # values: Minimum, Maximum, Sum, Average, SampleCount
+      ],
+      Unit => 'Seconds',
+
+    );
+
+    # Results:
+    my $MetricData = $GetLoadBalancerMetricDataResult->MetricData;
+    my $MetricName = $GetLoadBalancerMetricDataResult->MetricName;
+
+    # Returns a L<Paws::Lightsail::GetLoadBalancerMetricDataResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lightsail/GetLoadBalancerMetricData>

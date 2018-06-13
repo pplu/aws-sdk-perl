@@ -28,9 +28,23 @@ as arguments to method DescribeClusterParameterGroups.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeClusterParameterGroups.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeClusterParameterGroups(Att1 => $value1, Att2 => $value2, ...);
+    my $redshift = Paws->service('RedShift');
+    my $ClusterParameterGroupsMessage =
+      $redshift->DescribeClusterParameterGroups(
+      Marker             => 'MyString',             # OPTIONAL
+      MaxRecords         => 1,                      # OPTIONAL
+      ParameterGroupName => 'MyString',             # OPTIONAL
+      TagKeys            => [ 'MyString', ... ],    # OPTIONAL
+      TagValues          => [ 'MyString', ... ],    # OPTIONAL
+      );
+
+    # Results:
+    my $Marker          = $ClusterParameterGroupsMessage->Marker;
+    my $ParameterGroups = $ClusterParameterGroupsMessage->ParameterGroups;
+
+    # Returns a L<Paws::RedShift::ClusterParameterGroupsMessage> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/redshift/DescribeClusterParameterGroups>

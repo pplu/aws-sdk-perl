@@ -30,9 +30,18 @@ as arguments to method PutBucketVersioning.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutBucketVersioning.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutBucketVersioning(Att1 => $value1, Att2 => $value2, ...);
+    my $s3 = Paws->service('S3');
+    $s3->PutBucketVersioning(
+      Bucket                  => 'MyBucketName',
+      VersioningConfiguration => {
+        MFADelete => 'Enabled',    # values: Enabled, Disabled; OPTIONAL
+        Status    => 'Enabled',    # values: Enabled, Suspended; OPTIONAL
+      },
+      ContentMD5 => 'MyContentMD5',    # OPTIONAL
+      MFA        => 'MyMFA',           # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/PutBucketVersioning>

@@ -35,9 +35,23 @@ as arguments to method UpdateInstance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateInstance.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateInstance(Att1 => $value1, Att2 => $value2, ...);
+    my $opsworks = Paws->service('OpsWorks');
+    $opsworks->UpdateInstance(
+      InstanceId           => 'MyString',
+      AgentVersion         => 'MyString',             # OPTIONAL
+      AmiId                => 'MyString',             # OPTIONAL
+      Architecture         => 'x86_64',               # OPTIONAL
+      AutoScalingType      => 'load',                 # OPTIONAL
+      EbsOptimized         => 1,                      # OPTIONAL
+      Hostname             => 'MyString',             # OPTIONAL
+      InstallUpdatesOnBoot => 1,                      # OPTIONAL
+      InstanceType         => 'MyString',             # OPTIONAL
+      LayerIds             => [ 'MyString', ... ],    # OPTIONAL
+      Os                   => 'MyString',             # OPTIONAL
+      SshKeyName           => 'MyString',             # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/opsworks/UpdateInstance>

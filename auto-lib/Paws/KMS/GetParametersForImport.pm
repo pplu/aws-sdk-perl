@@ -26,9 +26,27 @@ as arguments to method GetParametersForImport.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetParametersForImport.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetParametersForImport(Att1 => $value1, Att2 => $value2, ...);
+    my $kms = Paws->service('KMS');
+   # To retrieve the public key and import token for a customer master key (CMK)
+   # The following example retrieves the public key and import token for the
+   # specified CMK.
+    my $GetParametersForImportResponse = $kms->GetParametersForImport(
+      {
+        'KeyId'             => '1234abcd-12ab-34cd-56ef-1234567890ab',
+        'WrappingAlgorithm' => 'RSAES_OAEP_SHA_1',
+        'WrappingKeySpec'   => 'RSA_2048'
+      }
+    );
+
+    # Results:
+    my $ImportToken       = $GetParametersForImportResponse->ImportToken;
+    my $ParametersValidTo = $GetParametersForImportResponse->ParametersValidTo;
+    my $KeyId             = $GetParametersForImportResponse->KeyId;
+    my $PublicKey         = $GetParametersForImportResponse->PublicKey;
+
+    # Returns a L<Paws::KMS::GetParametersForImportResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms/GetParametersForImport>

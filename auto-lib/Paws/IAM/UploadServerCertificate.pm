@@ -28,9 +28,28 @@ as arguments to method UploadServerCertificate.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UploadServerCertificate.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UploadServerCertificate(Att1 => $value1, Att2 => $value2, ...);
+    my $iam = Paws->service('IAM');
+    # To upload a server certificate to your AWS account
+    # The following upload-server-certificate command uploads a server
+    # certificate to your AWS account:
+    my $UploadServerCertificateResponse = $iam->UploadServerCertificate(
+      {
+        'CertificateBody' =>
+'-----BEGIN CERTIFICATE-----<a very long certificate text string>-----END CERTIFICATE-----',
+        'ServerCertificateName' => 'ProdServerCert',
+        'PrivateKey' =>
+'-----BEGIN DSA PRIVATE KEY-----<a very long private key string>-----END DSA PRIVATE KEY-----',
+        'Path' => '/company/servercerts/'
+      }
+    );
+
+    # Results:
+    my $ServerCertificateMetadata =
+      $UploadServerCertificateResponse->ServerCertificateMetadata;
+
+    # Returns a L<Paws::IAM::UploadServerCertificateResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/UploadServerCertificate>

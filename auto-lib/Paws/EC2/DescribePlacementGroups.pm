@@ -26,9 +26,29 @@ as arguments to method DescribePlacementGroups.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribePlacementGroups.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribePlacementGroups(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $DescribePlacementGroupsResult = $ec2->DescribePlacementGroups(
+      DryRun  => 1,    # OPTIONAL
+      Filters => [
+        {
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
+        },
+        ...
+      ],                           # OPTIONAL
+      GroupNames => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
+    );
+
+    # Results:
+    my $PlacementGroups = $DescribePlacementGroupsResult->PlacementGroups;
+
+    # Returns a L<Paws::EC2::DescribePlacementGroupsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribePlacementGroups>

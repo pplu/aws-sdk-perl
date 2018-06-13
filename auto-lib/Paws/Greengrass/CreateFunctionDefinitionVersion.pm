@@ -27,9 +27,49 @@ as arguments to method CreateFunctionDefinitionVersion.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateFunctionDefinitionVersion.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateFunctionDefinitionVersion(Att1 => $value1, Att2 => $value2, ...);
+    my $greengrass = Paws->service('Greengrass');
+    my $CreateFunctionDefinitionVersionResponse =
+      $greengrass->CreateFunctionDefinitionVersion(
+      FunctionDefinitionId => 'My__string',
+      AmznClientToken      => 'My__string',    # OPTIONAL
+      Functions            => [
+        {
+          Id                    => 'My__string',
+          FunctionArn           => 'My__string',
+          FunctionConfiguration => {
+            Pinned      => 1,                  # OPTIONAL
+            ExecArgs    => 'My__string',
+            Environment => {
+              ResourceAccessPolicies => [
+                {
+                  Permission => 'ro',           # values: ro, rw; OPTIONAL
+                  ResourceId => 'My__string',
+                },
+                ...
+              ],                                # OPTIONAL
+              Variables => { 'My__string' => 'My__string', },    # OPTIONAL
+              AccessSysfs => 1,                                  # OPTIONAL
+            },    # OPTIONAL
+            MemorySize   => 1,              # OPTIONAL
+            EncodingType => 'binary',       # values: binary, json; OPTIONAL
+            Executable   => 'My__string',
+            Timeout      => 1,              # OPTIONAL
+          },    # OPTIONAL
+        },
+        ...
+      ],        # OPTIONAL
+      );
+
+    # Results:
+    my $CreationTimestamp =
+      $CreateFunctionDefinitionVersionResponse->CreationTimestamp;
+    my $Arn     = $CreateFunctionDefinitionVersionResponse->Arn;
+    my $Id      = $CreateFunctionDefinitionVersionResponse->Id;
+    my $Version = $CreateFunctionDefinitionVersionResponse->Version;
+
+# Returns a L<Paws::Greengrass::CreateFunctionDefinitionVersionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>

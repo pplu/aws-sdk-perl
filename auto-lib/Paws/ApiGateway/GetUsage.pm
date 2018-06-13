@@ -30,9 +30,26 @@ as arguments to method GetUsage.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetUsage.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetUsage(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $Usage = $apigateway->GetUsage(
+      EndDate     => 'MyString',
+      StartDate   => 'MyString',
+      UsagePlanId => 'MyString',
+      KeyId       => 'MyString',    # OPTIONAL
+      Limit       => 1,             # OPTIONAL
+      Position    => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $UsagePlanId = $Usage->UsagePlanId;
+    my $Items       = $Usage->Items;
+    my $StartDate   = $Usage->StartDate;
+    my $Position    = $Usage->Position;
+    my $EndDate     = $Usage->EndDate;
+
+    # Returns a L<Paws::ApiGateway::Usage> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>

@@ -30,9 +30,28 @@ as arguments to method GetPartitions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetPartitions.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetPartitions(Att1 => $value1, Att2 => $value2, ...);
+    my $glue = Paws->service('Glue');
+    my $GetPartitionsResponse = $glue->GetPartitions(
+      DatabaseName => 'MyNameString',
+      TableName    => 'MyNameString',
+      CatalogId    => 'MyCatalogIdString',    # OPTIONAL
+      Expression   => 'MyPredicateString',    # OPTIONAL
+      MaxResults   => 1,                      # OPTIONAL
+      NextToken    => 'MyToken',              # OPTIONAL
+      Segment      => {
+        TotalSegments => 1,                   # min: 1, max: 10
+        SegmentNumber => 1,
+
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken  = $GetPartitionsResponse->NextToken;
+    my $Partitions = $GetPartitionsResponse->Partitions;
+
+    # Returns a L<Paws::Glue::GetPartitionsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/GetPartitions>

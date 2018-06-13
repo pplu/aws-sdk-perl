@@ -26,9 +26,21 @@ as arguments to method SubscribeToEvent.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SubscribeToEvent.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SubscribeToEvent(Att1 => $value1, Att2 => $value2, ...);
+    my $inspector = Paws->service('Inspector');
+    # Subscribe to event
+    # Enables the process of sending Amazon Simple Notification Service (SNS)
+    # notifications about a specified event to a specified SNS topic.
+    $inspector->SubscribeToEvent(
+      {
+        'TopicArn' => 'arn:aws:sns:us-west-2:123456789012:exampletopic',
+        'ResourceArn' =>
+'arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-7sbz2Kz0',
+        'Event' => 'ASSESSMENT_RUN_COMPLETED'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/inspector/SubscribeToEvent>

@@ -26,9 +26,20 @@ as arguments to method UpdateAccessKey.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAccessKey.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateAccessKey(Att1 => $value1, Att2 => $value2, ...);
+    my $iam = Paws->service('IAM');
+    # To activate or deactivate an access key for an IAM user
+    # The following command deactivates the specified access key (access key ID
+    # and secret access key) for the IAM user named Bob.
+    $iam->UpdateAccessKey(
+      {
+        'Status'      => 'Inactive',
+        'AccessKeyId' => 'AKIAIOSFODNN7EXAMPLE',
+        'UserName'    => 'Bob'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/UpdateAccessKey>

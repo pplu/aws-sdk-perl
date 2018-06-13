@@ -45,9 +45,44 @@ as arguments to method CreateDBCluster.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBCluster.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDBCluster(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('Neptune');
+    my $CreateDBClusterResult = $rds->CreateDBCluster(
+      DBClusterIdentifier             => 'MyString',
+      Engine                          => 'MyString',
+      AvailabilityZones               => [ 'MyString', ... ],    # OPTIONAL
+      BackupRetentionPeriod           => 1,                      # OPTIONAL
+      CharacterSetName                => 'MyString',             # OPTIONAL
+      DBClusterParameterGroupName     => 'MyString',             # OPTIONAL
+      DBSubnetGroupName               => 'MyString',             # OPTIONAL
+      DatabaseName                    => 'MyString',             # OPTIONAL
+      EnableIAMDatabaseAuthentication => 1,                      # OPTIONAL
+      EngineVersion                   => 'MyString',             # OPTIONAL
+      KmsKeyId                        => 'MyString',             # OPTIONAL
+      MasterUserPassword              => 'MyString',             # OPTIONAL
+      MasterUsername                  => 'MyString',             # OPTIONAL
+      OptionGroupName                 => 'MyString',             # OPTIONAL
+      Port                            => 1,                      # OPTIONAL
+      PreSignedUrl                    => 'MyString',             # OPTIONAL
+      PreferredBackupWindow           => 'MyString',             # OPTIONAL
+      PreferredMaintenanceWindow      => 'MyString',             # OPTIONAL
+      ReplicationSourceIdentifier     => 'MyString',             # OPTIONAL
+      StorageEncrypted                => 1,                      # OPTIONAL
+      Tags                            => [
+        {
+          Key   => 'MyString',
+          Value => 'MyString',
+        },
+        ...
+      ],                                                         # OPTIONAL
+      VpcSecurityGroupIds => [ 'MyString', ... ],                # OPTIONAL
+    );
+
+    # Results:
+    my $DBCluster = $CreateDBClusterResult->DBCluster;
+
+    # Returns a L<Paws::Neptune::CreateDBClusterResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/CreateDBCluster>

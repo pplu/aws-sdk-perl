@@ -39,9 +39,37 @@ as arguments to method Scan.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to Scan.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->Scan(Att1 => $value1, Att2 => $value2, ...);
+    my $dynamodb = Paws->service('DynamoDB');
+    # To scan a table
+    # This example scans the entire Music table, and then narrows the results to
+    # songs by the artist "No One You Know". For each item, only the album title
+    # and song title are returned.
+    my $ScanOutput = $dynamodb->Scan(
+      {
+        'ProjectionExpression'      => '#ST, #AT',
+        'TableName'                 => 'Music',
+        'ExpressionAttributeValues' => {
+          ':a' => {
+            'S' => 'No One You Know'
+          }
+        },
+        'ExpressionAttributeNames' => {
+          'AT' => 'AlbumTitle',
+          'ST' => 'SongTitle'
+        },
+        'FilterExpression' => 'Artist = :a'
+      }
+    );
+
+    # Results:
+    my $ConsumedCapacity = $ScanOutput->ConsumedCapacity;
+    my $ScannedCount     = $ScanOutput->ScannedCount;
+    my $Items            = $ScanOutput->Items;
+    my $Count            = $ScanOutput->Count;
+
+    # Returns a L<Paws::DynamoDB::ScanOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dynamodb/Scan>

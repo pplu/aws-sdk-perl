@@ -26,9 +26,42 @@ as arguments to method CreateScript.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateScript.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateScript(Att1 => $value1, Att2 => $value2, ...);
+    my $glue = Paws->service('Glue');
+    my $CreateScriptResponse = $glue->CreateScript(
+      DagEdges => [
+        {
+          Source          => 'MyCodeGenIdentifier',    # min: 1, max: 255
+          Target          => 'MyCodeGenIdentifier',    # min: 1, max: 255
+          TargetParameter => 'MyCodeGenArgName',       # OPTIONAL
+        },
+        ...
+      ],                                               # OPTIONAL
+      DagNodes => [
+        {
+          NodeType => 'MyCodeGenNodeType',
+          Args     => [
+            {
+              Name  => 'MyCodeGenArgName',             # OPTIONAL
+              Value => 'MyCodeGenArgValue',
+              Param => 1,                              # OPTIONAL
+            },
+            ...
+          ],                                           # max: 50
+          Id         => 'MyCodeGenIdentifier',         # min: 1, max: 255
+          LineNumber => 1,                             # OPTIONAL
+        },
+        ...
+      ],                                               # OPTIONAL
+      Language => 'PYTHON',                            # OPTIONAL
+    );
+
+    # Results:
+    my $PythonScript = $CreateScriptResponse->PythonScript;
+    my $ScalaCode    = $CreateScriptResponse->ScalaCode;
+
+    # Returns a L<Paws::Glue::CreateScriptResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/CreateScript>

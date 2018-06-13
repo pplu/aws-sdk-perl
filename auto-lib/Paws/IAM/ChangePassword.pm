@@ -25,9 +25,18 @@ as arguments to method ChangePassword.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ChangePassword.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ChangePassword(Att1 => $value1, Att2 => $value2, ...);
+    my $iam = Paws->service('IAM');
+    # To change the password for your IAM user
+    # The following command changes the password for the current IAM user.
+    $iam->ChangePassword(
+      {
+        'NewPassword' => ']35d/{pB9Fo9wJ',
+        'OldPassword' => '3s0K_;xh4~8XXI'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/ChangePassword>

@@ -29,9 +29,56 @@ as arguments to method PutBucketLifecycle.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutBucketLifecycle.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutBucketLifecycle(Att1 => $value1, Att2 => $value2, ...);
+    my $s3 = Paws->service('S3');
+    $s3->PutBucketLifecycle(
+      Bucket                 => 'MyBucketName',
+      ContentMD5             => 'MyContentMD5',    # OPTIONAL
+      LifecycleConfiguration => {
+        Rules => [
+          {
+            Status => 'Enabled',                   # values: Enabled, Disabled
+            Filter => {
+              And => {
+                Tag => {
+                  Value => 'MyValue',
+                  Key   => 'MyObjectKey',          # min: 1,
+
+                },    # OPTIONAL
+                Prefix => 'MyRuleFilterAnd',    # OPTIONAL
+              },    # OPTIONAL
+              Prefix => 'MyRuleFilterPrefix',    # OPTIONAL
+            },
+            NoncurrentVersionTransition => {
+              StorageClass =>
+                'GLACIER',  # values: GLACIER, STANDARD_IA, ONEZONE_IA; OPTIONAL
+              NoncurrentDays => 1,    # OPTIONAL
+            },    # OPTIONAL
+            Expiration => {
+              Date                      => '1970-01-01T01:00:00',    # OPTIONAL
+              ExpiredObjectDeleteMarker => 1,                        # OPTIONAL
+              Days                      => 1,                        # OPTIONAL
+            },    # OPTIONAL
+            ID                             => 'MyID',    # OPTIONAL
+            AbortIncompleteMultipartUpload => {
+              DaysAfterInitiation => 1,                  # OPTIONAL
+            },    # OPTIONAL
+            NoncurrentVersionExpiration => {
+              NoncurrentDays => 1,    # OPTIONAL
+            },    # OPTIONAL
+            Transition => {
+              Days => 1,                        # OPTIONAL
+              Date => '1970-01-01T01:00:00',    # OPTIONAL
+              StorageClass =>
+                'GLACIER',  # values: GLACIER, STANDARD_IA, ONEZONE_IA; OPTIONAL
+            },    # OPTIONAL
+          },
+          ...
+        ],
+
+      },    # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/PutBucketLifecycle>

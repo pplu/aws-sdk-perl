@@ -30,9 +30,33 @@ as arguments to method SearchProvisionedProducts.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SearchProvisionedProducts.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SearchProvisionedProducts(Att1 => $value1, Att2 => $value2, ...);
+    my $servicecatalog = Paws->service('ServiceCatalog');
+    my $SearchProvisionedProductsOutput =
+      $servicecatalog->SearchProvisionedProducts(
+      AcceptLanguage    => 'MyAcceptLanguage',    # OPTIONAL
+      AccessLevelFilter => {
+        Value => 'MyAccessLevelFilterValue',      # OPTIONAL
+        Key => 'Account',    # values: Account, Role, User; OPTIONAL
+      },    # OPTIONAL
+      Filters => {
+        'SearchQuery' => [ 'MyProvisionedProductViewFilterValue', ... ]
+        ,    # key: values: SearchQuery
+      },    # OPTIONAL
+      PageSize  => 1,                # OPTIONAL
+      PageToken => 'MyPageToken',    # OPTIONAL
+      SortBy    => 'MySortField',    # OPTIONAL
+      SortOrder => 'ASCENDING',      # OPTIONAL
+      );
+
+    # Results:
+    my $TotalResultsCount = $SearchProvisionedProductsOutput->TotalResultsCount;
+    my $NextPageToken     = $SearchProvisionedProductsOutput->NextPageToken;
+    my $ProvisionedProducts =
+      $SearchProvisionedProductsOutput->ProvisionedProducts;
+
+    # Returns a L<Paws::ServiceCatalog::SearchProvisionedProductsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/servicecatalog/SearchProvisionedProducts>

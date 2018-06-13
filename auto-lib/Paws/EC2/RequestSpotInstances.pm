@@ -35,9 +35,57 @@ as arguments to method RequestSpotInstances.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RequestSpotInstances.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RequestSpotInstances(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+   # To create a one-time Spot Instance request
+   # This example creates a one-time Spot Instance request for five instances in
+   # the specified Availability Zone. If your account supports EC2-VPC only,
+   # Amazon EC2 launches the instances in the default subnet of the specified
+   # Availability Zone. If your account supports EC2-Classic, Amazon EC2
+   # launches the instances in EC2-Classic in the specified Availability Zone.
+    my $RequestSpotInstancesResult = $ec2->RequestSpotInstances(
+      {
+        'Type'                => 'one-time',
+        'InstanceCount'       => 5,
+        'SpotPrice'           => 0.03,
+        'LaunchSpecification' => {
+          'IamInstanceProfile' => {
+            'Arn' => 'arn:aws:iam::123456789012:instance-profile/my-iam-role'
+          },
+          'InstanceType' => 'm3.medium',
+          'ImageId'      => 'ami-1a2b3c4d',
+          'KeyName'      => 'my-key-pair',
+          'Placement'    => {
+            'AvailabilityZone' => 'us-west-2a'
+          },
+          'SecurityGroupIds' => ['sg-1a2b3c4d']
+        }
+      }
+    );
+
+   # To create a one-time Spot Instance request
+   # This example command creates a one-time Spot Instance request for five
+   # instances in the specified subnet. Amazon EC2 launches the instances in the
+   # specified subnet. If the VPC is a nondefault VPC, the instances do not
+   # receive a public IP address by default.
+    my $RequestSpotInstancesResult = $ec2->RequestSpotInstances(
+      {
+        'LaunchSpecification' => {
+          'ImageId'            => 'ami-1a2b3c4d',
+          'InstanceType'       => 'm3.medium',
+          'IamInstanceProfile' => {
+            'Arn' => 'arn:aws:iam::123456789012:instance-profile/my-iam-role'
+          },
+          'SubnetId'         => 'subnet-1a2b3c4d',
+          'SecurityGroupIds' => ['sg-1a2b3c4d']
+        },
+        'InstanceCount' => 5,
+        'SpotPrice'     => 0.050,
+        'Type'          => 'one-time'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/RequestSpotInstances>

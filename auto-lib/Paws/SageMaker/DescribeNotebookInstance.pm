@@ -24,9 +24,38 @@ as arguments to method DescribeNotebookInstance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeNotebookInstance.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeNotebookInstance(Att1 => $value1, Att2 => $value2, ...);
+    my $sagemaker = Paws->service('SageMaker');
+    my $DescribeNotebookInstanceOutput = $sagemaker->DescribeNotebookInstance(
+      NotebookInstanceName => 'MyNotebookInstanceName',
+
+    );
+
+    # Results:
+    my $NotebookInstanceStatus =
+      $DescribeNotebookInstanceOutput->NotebookInstanceStatus;
+    my $DirectInternetAccess =
+      $DescribeNotebookInstanceOutput->DirectInternetAccess;
+    my $InstanceType = $DescribeNotebookInstanceOutput->InstanceType;
+    my $RoleArn      = $DescribeNotebookInstanceOutput->RoleArn;
+    my $NotebookInstanceLifecycleConfigName =
+      $DescribeNotebookInstanceOutput->NotebookInstanceLifecycleConfigName;
+    my $FailureReason = $DescribeNotebookInstanceOutput->FailureReason;
+    my $NetworkInterfaceId =
+      $DescribeNotebookInstanceOutput->NetworkInterfaceId;
+    my $KmsKeyId = $DescribeNotebookInstanceOutput->KmsKeyId;
+    my $SubnetId = $DescribeNotebookInstanceOutput->SubnetId;
+    my $Url      = $DescribeNotebookInstanceOutput->Url;
+    my $NotebookInstanceArn =
+      $DescribeNotebookInstanceOutput->NotebookInstanceArn;
+    my $LastModifiedTime = $DescribeNotebookInstanceOutput->LastModifiedTime;
+    my $CreationTime     = $DescribeNotebookInstanceOutput->CreationTime;
+    my $SecurityGroups   = $DescribeNotebookInstanceOutput->SecurityGroups;
+    my $NotebookInstanceName =
+      $DescribeNotebookInstanceOutput->NotebookInstanceName;
+
+    # Returns a L<Paws::SageMaker::DescribeNotebookInstanceOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker/DescribeNotebookInstance>

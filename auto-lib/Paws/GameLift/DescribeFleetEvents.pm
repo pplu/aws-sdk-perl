@@ -28,9 +28,22 @@ as arguments to method DescribeFleetEvents.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeFleetEvents.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeFleetEvents(Att1 => $value1, Att2 => $value2, ...);
+    my $gamelift = Paws->service('GameLift');
+    my $DescribeFleetEventsOutput = $gamelift->DescribeFleetEvents(
+      FleetId   => 'MyFleetId',
+      EndTime   => '1970-01-01T01:00:00',      # OPTIONAL
+      Limit     => 1,                          # OPTIONAL
+      NextToken => 'MyNonZeroAndMaxString',    # OPTIONAL
+      StartTime => '1970-01-01T01:00:00',      # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken = $DescribeFleetEventsOutput->NextToken;
+    my $Events    = $DescribeFleetEventsOutput->Events;
+
+    # Returns a L<Paws::GameLift::DescribeFleetEventsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/DescribeFleetEvents>

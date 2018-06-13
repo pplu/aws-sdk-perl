@@ -33,9 +33,47 @@ as arguments to method CreateCluster.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCluster.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateCluster(Att1 => $value1, Att2 => $value2, ...);
+    my $snowball = Paws->service('Snowball');
+   # To create a cluster
+   # Creates an empty cluster. Each cluster supports five nodes. You use the
+   # CreateJob action separately to create the jobs for each of these nodes. The
+   # cluster does not ship until these five node jobs have been created.
+    my $CreateClusterResult = $snowball->CreateCluster(
+      {
+        'Resources' => {
+          'S3Resources' => [
+
+            {
+              'KeyRange' => {
+
+              },
+              'BucketArn' => 'arn:aws:s3:::MyBucket'
+            }
+          ]
+        },
+        'Description' => 'MyCluster',
+        'KmsKeyARN' =>
+'arn:aws:kms:us-east-1:123456789012:key/abcd1234-12ab-34cd-56ef-123456123456',
+        'JobType'        => 'LOCAL_USE',
+        'ShippingOption' => 'SECOND_DAY',
+        'Notification'   => {
+          'NotifyAll'         => 0,
+          'JobStatesToNotify' => [
+
+          ]
+        },
+        'SnowballType' => 'EDGE',
+        'RoleARN'   => 'arn:aws:iam::123456789012:role/snowball-import-S3-role',
+        'AddressId' => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b'
+      }
+    );
+
+    # Results:
+    my $ClusterId = $CreateClusterResult->ClusterId;
+
+    # Returns a L<Paws::Snowball::CreateClusterResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/snowball/CreateCluster>

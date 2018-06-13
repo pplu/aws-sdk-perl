@@ -26,9 +26,37 @@ as arguments to method ModifyVpcAttribute.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyVpcAttribute.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyVpcAttribute(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To modify the enableDnsSupport attribute
+    # This example modifies the enableDnsSupport attribute. This attribute
+    # indicates whether DNS resolution is enabled for the VPC. If this attribute
+    # is true, the Amazon DNS server resolves DNS hostnames for instances in the
+    # VPC to their corresponding IP addresses; otherwise, it does not.
+    $ec2->ModifyVpcAttribute(
+      {
+        'EnableDnsSupport' => {
+          'Value' => 0
+        },
+        'VpcId' => 'vpc-a01106c2'
+      }
+    );
+
+    # To modify the enableDnsHostnames attribute
+    # This example modifies the enableDnsHostnames attribute. This attribute
+    # indicates whether instances launched in the VPC get DNS hostnames. If this
+    # attribute is true, instances in the VPC get DNS hostnames; otherwise, they
+    # do not.
+    $ec2->ModifyVpcAttribute(
+      {
+        'VpcId'              => 'vpc-a01106c2',
+        'EnableDnsHostnames' => {
+          'Value' => 0
+        }
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/ModifyVpcAttribute>

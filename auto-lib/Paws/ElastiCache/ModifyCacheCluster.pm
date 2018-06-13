@@ -40,9 +40,33 @@ as arguments to method ModifyCacheCluster.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyCacheCluster.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyCacheCluster(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticache = Paws->service('ElastiCache');
+    my $ModifyCacheClusterResult = $elasticache->ModifyCacheCluster(
+      CacheClusterId             => 'MyString',
+      AZMode                     => 'single-az',            # OPTIONAL
+      ApplyImmediately           => 1,                      # OPTIONAL
+      AutoMinorVersionUpgrade    => 1,                      # OPTIONAL
+      CacheNodeIdsToRemove       => [ 'MyString', ... ],    # OPTIONAL
+      CacheNodeType              => 'MyString',             # OPTIONAL
+      CacheParameterGroupName    => 'MyString',             # OPTIONAL
+      CacheSecurityGroupNames    => [ 'MyString', ... ],    # OPTIONAL
+      EngineVersion              => 'MyString',             # OPTIONAL
+      NewAvailabilityZones       => [ 'MyString', ... ],    # OPTIONAL
+      NotificationTopicArn       => 'MyString',             # OPTIONAL
+      NotificationTopicStatus    => 'MyString',             # OPTIONAL
+      NumCacheNodes              => 1,                      # OPTIONAL
+      PreferredMaintenanceWindow => 'MyString',             # OPTIONAL
+      SecurityGroupIds           => [ 'MyString', ... ],    # OPTIONAL
+      SnapshotRetentionLimit     => 1,                      # OPTIONAL
+      SnapshotWindow             => 'MyString',             # OPTIONAL
+    );
+
+    # Results:
+    my $CacheCluster = $ModifyCacheClusterResult->CacheCluster;
+
+    # Returns a L<Paws::ElastiCache::ModifyCacheClusterResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticache/ModifyCacheCluster>

@@ -25,9 +25,25 @@ as arguments to method ListProjects.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListProjects.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListProjects(Att1 => $value1, Att2 => $value2, ...);
+    my $devicefarm = Paws->service('DeviceFarm');
+    # To get information about a Device Farm project
+    # The following example returns information about the specified project in
+    # Device Farm.
+    my $ListProjectsResult = $devicefarm->ListProjects(
+      {
+        'Arn' =>
+'arn:aws:devicefarm:us-west-2:123456789101:project:7ad300ed-8183-41a7-bf94-12345EXAMPLE',
+        'NextToken' =>
+          'RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE'
+      }
+    );
+
+    # Results:
+    my $projects = $ListProjectsResult->projects;
+
+    # Returns a L<Paws::DeviceFarm::ListProjectsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/devicefarm/ListProjects>

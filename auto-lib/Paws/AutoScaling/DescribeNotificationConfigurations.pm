@@ -26,9 +26,24 @@ as arguments to method DescribeNotificationConfigurations.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeNotificationConfigurations.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeNotificationConfigurations(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('AutoScaling');
+    # To describe Auto Scaling notification configurations
+    # This example describes the notification configurations for the specified
+    # Auto Scaling group.
+    my $DescribeNotificationConfigurationsAnswer =
+      $autoscaling->DescribeNotificationConfigurations(
+      {
+        'AutoScalingGroupNames' => ['my-auto-scaling-group']
+      }
+      );
+
+    # Results:
+    my $NotificationConfigurations =
+      $DescribeNotificationConfigurationsAnswer->NotificationConfigurations;
+
+# Returns a L<Paws::AutoScaling::DescribeNotificationConfigurationsAnswer> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/DescribeNotificationConfigurations>

@@ -30,9 +30,27 @@ as arguments to method CreateDeployment.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDeployment.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDeployment(Att1 => $value1, Att2 => $value2, ...);
+    my $opsworks = Paws->service('OpsWorks');
+    my $CreateDeploymentResult = $opsworks->CreateDeployment(
+      Command => {
+        Name => 'install_dependencies'
+        , # values: install_dependencies, update_dependencies, update_custom_cookbooks, execute_recipes, configure, setup, deploy, rollback, start, stop, restart, undeploy
+        Args => { 'MyString' => [ 'MyString', ... ], },    # OPTIONAL
+      },
+      StackId     => 'MyString',
+      AppId       => 'MyString',                           # OPTIONAL
+      Comment     => 'MyString',                           # OPTIONAL
+      CustomJson  => 'MyString',                           # OPTIONAL
+      InstanceIds => [ 'MyString', ... ],                  # OPTIONAL
+      LayerIds    => [ 'MyString', ... ],                  # OPTIONAL
+    );
+
+    # Results:
+    my $DeploymentId = $CreateDeploymentResult->DeploymentId;
+
+    # Returns a L<Paws::OpsWorks::CreateDeploymentResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/opsworks/CreateDeployment>

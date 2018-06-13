@@ -27,9 +27,73 @@ as arguments to method DescribeEvents.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEvents.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeEvents(Att1 => $value1, Att2 => $value2, ...);
+    my $health = Paws->service('Health');
+    my $DescribeEventsResponse = $health->DescribeEvents(
+      Filter => {
+        regions => [ 'Myregion', ... ],    # min: 1, max: 10; OPTIONAL
+        services => [
+          'Myservice', ...                 # min: 2, max: 30
+        ],                                 # min: 1, max: 10; OPTIONAL
+        availabilityZones => [ 'MyavailabilityZone', ... ],    # OPTIONAL
+        eventArns => [
+          'MyeventArn', ...                                    # max: 1600
+        ],    # min: 1, max: 10; OPTIONAL
+        tags => [
+          {
+            'MytagKey' => 'MytagValue',    # key: max: 127, value: max: 255
+          },
+          ...                              # max: 50
+        ],                                 # max: 50; OPTIONAL
+        eventTypeCategories => [
+          'issue',
+          ... # values: issue, accountNotification, scheduledChangemin: 3, max: 255
+        ],    # min: 1, max: 10; OPTIONAL
+        entityValues => [
+          'MyentityValue', ...    # max: 256
+        ],                        # min: 1, max: 100; OPTIONAL
+        lastUpdatedTimes => [
+          {
+            to   => '1970-01-01T01:00:00',    # OPTIONAL
+            from => '1970-01-01T01:00:00',    # OPTIONAL
+          },
+          ...
+        ],                                    # min: 1, max: 10; OPTIONAL
+        eventStatusCodes => [
+          'open', ...                         # values: open, closed, upcoming
+        ],                                    # min: 1, max: 6; OPTIONAL
+        entityArns => [
+          'MyentityArn', ...                  # max: 1600
+        ],                                    # min: 1, max: 100; OPTIONAL
+        endTimes => [
+          {
+            to   => '1970-01-01T01:00:00',    # OPTIONAL
+            from => '1970-01-01T01:00:00',    # OPTIONAL
+          },
+          ...
+        ],                                    # min: 1, max: 10; OPTIONAL
+        startTimes => [
+          {
+            to   => '1970-01-01T01:00:00',    # OPTIONAL
+            from => '1970-01-01T01:00:00',    # OPTIONAL
+          },
+          ...
+        ],                                    # min: 1, max: 10; OPTIONAL
+        eventTypeCodes => [
+          'MyeventType', ...                  # min: 3, max: 100
+        ],                                    # min: 1, max: 10; OPTIONAL
+      },    # OPTIONAL
+      Locale     => 'Mylocale',       # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MynextToken',    # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken = $DescribeEventsResponse->NextToken;
+    my $Events    = $DescribeEventsResponse->Events;
+
+    # Returns a L<Paws::Health::DescribeEventsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/health/DescribeEvents>

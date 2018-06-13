@@ -26,9 +26,33 @@ as arguments to method UpdateUsagePlan.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateUsagePlan.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateUsagePlan(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $UsagePlan = $apigateway->UpdateUsagePlan(
+      UsagePlanId     => 'MyString',
+      PatchOperations => [
+        {
+          path  => 'MyString',
+          value => 'MyString',
+          op =>
+            'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
+          from => 'MyString',
+        },
+        ...
+      ],              # OPTIONAL
+    );
+
+    # Results:
+    my $Id          = $UsagePlan->Id;
+    my $Throttle    = $UsagePlan->Throttle;
+    my $Description = $UsagePlan->Description;
+    my $Name        = $UsagePlan->Name;
+    my $ProductCode = $UsagePlan->ProductCode;
+    my $Quota       = $UsagePlan->Quota;
+    my $ApiStages   = $UsagePlan->ApiStages;
+
+    # Returns a L<Paws::ApiGateway::UsagePlan> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>

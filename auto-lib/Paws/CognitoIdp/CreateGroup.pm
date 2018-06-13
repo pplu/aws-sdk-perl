@@ -28,9 +28,21 @@ as arguments to method CreateGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-idp = Paws->service('CognitoIdp');
+    my $CreateGroupResponse = $cognito -idp->CreateGroup(
+      GroupName   => 'MyGroupNameType',
+      UserPoolId  => 'MyUserPoolIdType',
+      Description => 'MyDescriptionType',    # OPTIONAL
+      Precedence  => 1,                      # OPTIONAL
+      RoleArn     => 'MyArnType',            # OPTIONAL
+    );
+
+    # Results:
+    my $Group = $CreateGroupResponse->Group;
+
+    # Returns a L<Paws::CognitoIdp::CreateGroupResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-idp/CreateGroup>

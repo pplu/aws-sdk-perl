@@ -48,9 +48,54 @@ as arguments to method RestoreDBInstanceFromDBSnapshot.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RestoreDBInstanceFromDBSnapshot.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RestoreDBInstanceFromDBSnapshot(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    my $RestoreDBInstanceFromDBSnapshotResult =
+      $rds->RestoreDBInstanceFromDBSnapshot(
+      DBInstanceIdentifier            => 'MyString',
+      DBSnapshotIdentifier            => 'MyString',
+      AutoMinorVersionUpgrade         => 1,                      # OPTIONAL
+      AvailabilityZone                => 'MyString',             # OPTIONAL
+      CopyTagsToSnapshot              => 1,                      # OPTIONAL
+      DBInstanceClass                 => 'MyString',             # OPTIONAL
+      DBName                          => 'MyString',             # OPTIONAL
+      DBSubnetGroupName               => 'MyString',             # OPTIONAL
+      Domain                          => 'MyString',             # OPTIONAL
+      DomainIAMRoleName               => 'MyString',             # OPTIONAL
+      EnableCloudwatchLogsExports     => [ 'MyString', ... ],    # OPTIONAL
+      EnableIAMDatabaseAuthentication => 1,                      # OPTIONAL
+      Engine                          => 'MyString',             # OPTIONAL
+      Iops                            => 1,                      # OPTIONAL
+      LicenseModel                    => 'MyString',             # OPTIONAL
+      MultiAZ                         => 1,                      # OPTIONAL
+      OptionGroupName                 => 'MyString',             # OPTIONAL
+      Port                            => 1,                      # OPTIONAL
+      ProcessorFeatures               => [
+        {
+          Value => 'MyString',
+          Name  => 'MyString',
+        },
+        ...
+      ],                                                         # OPTIONAL
+      PubliclyAccessible => 1,                                   # OPTIONAL
+      StorageType        => 'MyString',                          # OPTIONAL
+      Tags               => [
+        {
+          Value => 'MyString',
+          Key   => 'MyString',
+        },
+        ...
+      ],                                                         # OPTIONAL
+      TdeCredentialArn            => 'MyString',                 # OPTIONAL
+      TdeCredentialPassword       => 'MyString',                 # OPTIONAL
+      UseDefaultProcessorFeatures => 1,                          # OPTIONAL
+      );
+
+    # Results:
+    my $DBInstance = $RestoreDBInstanceFromDBSnapshotResult->DBInstance;
+
+    # Returns a L<Paws::RDS::RestoreDBInstanceFromDBSnapshotResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/RestoreDBInstanceFromDBSnapshot>

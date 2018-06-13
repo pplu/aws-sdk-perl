@@ -27,9 +27,24 @@ as arguments to method RotateSecret.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RotateSecret.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RotateSecret(Att1 => $value1, Att2 => $value2, ...);
+    my $secretsmanager = Paws->service('SecretsManager');
+    my $RotateSecretResponse = $secretsmanager->RotateSecret(
+      SecretId           => 'MySecretIdType',
+      ClientRequestToken => 'MyClientRequestTokenType',    # OPTIONAL
+      RotationLambdaARN  => 'MyRotationLambdaARNType',     # OPTIONAL
+      RotationRules      => {
+        AutomaticallyAfterDays => 1,    # min: 1, max: 1000; OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $ARN       = $RotateSecretResponse->ARN;
+    my $Name      = $RotateSecretResponse->Name;
+    my $VersionId = $RotateSecretResponse->VersionId;
+
+    # Returns a L<Paws::SecretsManager::RotateSecretResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/secretsmanager/RotateSecret>

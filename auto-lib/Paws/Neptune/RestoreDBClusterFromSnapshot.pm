@@ -36,9 +36,35 @@ as arguments to method RestoreDBClusterFromSnapshot.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RestoreDBClusterFromSnapshot.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RestoreDBClusterFromSnapshot(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('Neptune');
+    my $RestoreDBClusterFromSnapshotResult = $rds->RestoreDBClusterFromSnapshot(
+      DBClusterIdentifier             => 'MyString',
+      Engine                          => 'MyString',
+      SnapshotIdentifier              => 'MyString',
+      AvailabilityZones               => [ 'MyString', ... ],    # OPTIONAL
+      DBSubnetGroupName               => 'MyString',             # OPTIONAL
+      DatabaseName                    => 'MyString',             # OPTIONAL
+      EnableIAMDatabaseAuthentication => 1,                      # OPTIONAL
+      EngineVersion                   => 'MyString',             # OPTIONAL
+      KmsKeyId                        => 'MyString',             # OPTIONAL
+      OptionGroupName                 => 'MyString',             # OPTIONAL
+      Port                            => 1,                      # OPTIONAL
+      Tags                            => [
+        {
+          Value => 'MyString',
+          Key   => 'MyString',
+        },
+        ...
+      ],                                                         # OPTIONAL
+      VpcSecurityGroupIds => [ 'MyString', ... ],                # OPTIONAL
+    );
+
+    # Results:
+    my $DBCluster = $RestoreDBClusterFromSnapshotResult->DBCluster;
+
+    # Returns a L<Paws::Neptune::RestoreDBClusterFromSnapshotResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/RestoreDBClusterFromSnapshot>

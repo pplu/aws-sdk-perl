@@ -27,9 +27,30 @@ as arguments to method DescribeDBClusterParameterGroups.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDBClusterParameterGroups.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeDBClusterParameterGroups(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('Neptune');
+    my $DBClusterParameterGroupsMessage =
+      $rds->DescribeDBClusterParameterGroups(
+      DBClusterParameterGroupName => 'MyString',    # OPTIONAL
+      Filters                     => [
+        {
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],
+
+        },
+        ...
+      ],                                            # OPTIONAL
+      Marker     => 'MyString',                     # OPTIONAL
+      MaxRecords => 1,                              # OPTIONAL
+      );
+
+    # Results:
+    my $Marker = $DBClusterParameterGroupsMessage->Marker;
+    my $DBClusterParameterGroups =
+      $DBClusterParameterGroupsMessage->DBClusterParameterGroups;
+
+    # Returns a L<Paws::Neptune::DBClusterParameterGroupsMessage> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/DescribeDBClusterParameterGroups>

@@ -27,9 +27,27 @@ as arguments to method UpdateUserDefinedFunction.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateUserDefinedFunction.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateUserDefinedFunction(Att1 => $value1, Att2 => $value2, ...);
+    my $glue = Paws->service('Glue');
+    my $UpdateUserDefinedFunctionResponse = $glue->UpdateUserDefinedFunction(
+      DatabaseName  => 'MyNameString',
+      FunctionInput => {
+        OwnerName    => 'MyNameString',    # min: 1, max: 255
+        ResourceUris => [
+          {
+            ResourceType => 'JAR',      # values: JAR, FILE, ARCHIVE; OPTIONAL
+            Uri          => 'MyURI',    # min: 1, max: 1024; OPTIONAL
+          },
+          ...
+        ],                              # max: 1000; OPTIONAL
+        ClassName    => 'MyNameString', # min: 1, max: 255
+        OwnerType    => 'USER',         # values: USER, ROLE, GROUP; OPTIONAL
+        FunctionName => 'MyNameString', # min: 1, max: 255
+      },
+      FunctionName => 'MyNameString',
+      CatalogId    => 'MyCatalogIdString',    # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/UpdateUserDefinedFunction>

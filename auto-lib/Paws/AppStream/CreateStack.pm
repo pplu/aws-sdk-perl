@@ -30,9 +30,40 @@ as arguments to method CreateStack.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateStack.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateStack(Att1 => $value1, Att2 => $value2, ...);
+    my $appstream2 = Paws->service('AppStream');
+    my $CreateStackResult = $appstream2->CreateStack(
+      Name              => 'MyString',
+      Description       => 'MyDescription',    # OPTIONAL
+      DisplayName       => 'MyDisplayName',    # OPTIONAL
+      FeedbackURL       => 'MyFeedbackURL',    # OPTIONAL
+      RedirectURL       => 'MyRedirectURL',    # OPTIONAL
+      StorageConnectors => [
+        {
+          ConnectorType => 'HOMEFOLDERS',    # values: HOMEFOLDERS, GOOGLE_DRIVE
+          ResourceIdentifier => 'MyResourceIdentifier',    # min: 1, ; OPTIONAL
+          Domains            => [
+            'MyDomain', ...                                # max: 64
+          ],                                               # max: 10; OPTIONAL
+        },
+        ...
+      ],                                                   # OPTIONAL
+      UserSettings => [
+        {
+          Permission => 'ENABLED',    # values: ENABLED, DISABLED
+          Action => 'CLIPBOARD_COPY_FROM_LOCAL_DEVICE'
+          , # values: CLIPBOARD_COPY_FROM_LOCAL_DEVICE, CLIPBOARD_COPY_TO_LOCAL_DEVICE, FILE_UPLOAD, FILE_DOWNLOAD, PRINTING_TO_LOCAL_DEVICE
+
+        },
+        ...
+      ],    # OPTIONAL
+    );
+
+    # Results:
+    my $Stack = $CreateStackResult->Stack;
+
+    # Returns a L<Paws::AppStream::CreateStackResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

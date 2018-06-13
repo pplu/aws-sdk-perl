@@ -24,9 +24,18 @@ as arguments to method DeleteInstance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteInstance.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DeleteInstance(Att1 => $value1, Att2 => $value2, ...);
+    my $lightsail = Paws->service('Lightsail');
+    my $DeleteInstanceResult = $lightsail->DeleteInstance(
+      InstanceName => 'MyResourceName',
+
+    );
+
+    # Results:
+    my $Operations = $DeleteInstanceResult->Operations;
+
+    # Returns a L<Paws::Lightsail::DeleteInstanceResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lightsail/DeleteInstance>

@@ -30,9 +30,27 @@ as arguments to method AssumeRole.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AssumeRole.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AssumeRole(Att1 => $value1, Att2 => $value2, ...);
+    my $sts = Paws->service('STS');
+    # To assume a role
+    my $AssumeRoleResponse = $sts->AssumeRole(
+      {
+        'RoleArn' => 'arn:aws:iam::123456789012:role/demo',
+        'Policy' =>
+'{"Version":"2012-10-17","Statement":[{"Sid":"Stmt1","Effect":"Allow","Action":"s3:*","Resource":"*"}]}',
+        'ExternalId'      => '123ABC',
+        'DurationSeconds' => 3600,
+        'RoleSessionName' => 'Bob'
+      }
+    );
+
+    # Results:
+    my $PackedPolicySize = $AssumeRoleResponse->PackedPolicySize;
+    my $AssumedRoleUser  = $AssumeRoleResponse->AssumedRoleUser;
+    my $Credentials      = $AssumeRoleResponse->Credentials;
+
+    # Returns a L<Paws::STS::AssumeRoleResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sts/AssumeRole>

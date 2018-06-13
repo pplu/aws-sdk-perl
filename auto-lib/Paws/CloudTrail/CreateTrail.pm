@@ -33,9 +33,40 @@ as arguments to method CreateTrail.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateTrail.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateTrail(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudtrail = Paws->service('CloudTrail');
+    my $CreateTrailResponse = $cloudtrail->CreateTrail(
+      Name                       => 'MyString',
+      S3BucketName               => 'MyString',
+      CloudWatchLogsLogGroupArn  => 'MyString',    # OPTIONAL
+      CloudWatchLogsRoleArn      => 'MyString',    # OPTIONAL
+      EnableLogFileValidation    => 1,             # OPTIONAL
+      IncludeGlobalServiceEvents => 1,             # OPTIONAL
+      IsMultiRegionTrail         => 1,             # OPTIONAL
+      KmsKeyId                   => 'MyString',    # OPTIONAL
+      S3KeyPrefix                => 'MyString',    # OPTIONAL
+      SnsTopicName               => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $IncludeGlobalServiceEvents =
+      $CreateTrailResponse->IncludeGlobalServiceEvents;
+    my $CloudWatchLogsLogGroupArn =
+      $CreateTrailResponse->CloudWatchLogsLogGroupArn;
+    my $CloudWatchLogsRoleArn = $CreateTrailResponse->CloudWatchLogsRoleArn;
+    my $S3KeyPrefix           = $CreateTrailResponse->S3KeyPrefix;
+    my $Name                  = $CreateTrailResponse->Name;
+    my $SnsTopicName          = $CreateTrailResponse->SnsTopicName;
+    my $SnsTopicARN           = $CreateTrailResponse->SnsTopicARN;
+    my $TrailARN              = $CreateTrailResponse->TrailARN;
+    my $S3BucketName          = $CreateTrailResponse->S3BucketName;
+    my $LogFileValidationEnabled =
+      $CreateTrailResponse->LogFileValidationEnabled;
+    my $KmsKeyId           = $CreateTrailResponse->KmsKeyId;
+    my $IsMultiRegionTrail = $CreateTrailResponse->IsMultiRegionTrail;
+
+    # Returns a L<Paws::CloudTrail::CreateTrailResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudtrail/CreateTrail>

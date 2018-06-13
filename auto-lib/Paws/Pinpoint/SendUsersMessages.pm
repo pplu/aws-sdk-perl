@@ -26,9 +26,133 @@ as arguments to method SendUsersMessages.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SendUsersMessages.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SendUsersMessages(Att1 => $value1, Att2 => $value2, ...);
+    my $pinpoint = Paws->service('Pinpoint');
+    my $SendUsersMessagesResponse = $pinpoint->SendUsersMessages(
+      ApplicationId           => 'My__string',
+      SendUsersMessageRequest => {
+        Context => { 'My__string' => 'My__string', },    # OPTIONAL
+        Users => {
+          'My__string' => {
+            Context       => { 'My__string' => 'My__string', },    # OPTIONAL
+            RawContent    => 'My__string',
+            TitleOverride => 'My__string',
+            Substitutions => { 'My__string' => [ 'My__string', ... ], }
+            ,                                                      # OPTIONAL
+            BodyOverride => 'My__string',
+          },
+        },    # OPTIONAL
+        MessageConfiguration => {
+          DefaultMessage => {
+            Body          => 'My__string',
+            Substitutions => { 'My__string' => [ 'My__string', ... ], }
+            ,    # OPTIONAL
+          },    # OPTIONAL
+          ADMMessage => {
+            Data              => { 'My__string' => 'My__string', },   # OPTIONAL
+            Title             => 'My__string',
+            ConsolidationKey  => 'My__string',
+            SilentPush        => 1,                                   # OPTIONAL
+            SmallImageIconUrl => 'My__string',
+            Sound             => 'My__string',
+            ExpiresAfter      => 'My__string',
+            RawContent        => 'My__string',
+            Body              => 'My__string',
+            ImageIconUrl      => 'My__string',
+            Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
+            IconReference => 'My__string',
+            Url           => 'My__string',
+            ImageUrl      => 'My__string',
+            MD5           => 'My__string',
+            Substitutions => { 'My__string' => [ 'My__string', ... ], }
+            ,                       # OPTIONAL
+          },    # OPTIONAL
+          BaiduMessage => {
+            ImageUrl => 'My__string',
+            Url      => 'My__string',
+            Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
+            Body   => 'My__string',
+            ImageIconUrl  => 'My__string',
+            IconReference => 'My__string',
+            Substitutions => { 'My__string' => [ 'My__string', ... ], }
+            ,                       # OPTIONAL
+            Title             => 'My__string',
+            Data              => { 'My__string' => 'My__string', },   # OPTIONAL
+            RawContent        => 'My__string',
+            SmallImageIconUrl => 'My__string',
+            Sound             => 'My__string',
+            SilentPush        => 1,                                   # OPTIONAL
+          },    # OPTIONAL
+          SMSMessage => {
+            Body => 'My__string',
+            MessageType =>
+              'TRANSACTIONAL',    # values: TRANSACTIONAL, PROMOTIONAL; OPTIONAL
+            Substitutions => { 'My__string' => [ 'My__string', ... ], }
+            ,                     # OPTIONAL
+            SenderId          => 'My__string',
+            OriginationNumber => 'My__string',
+          },    # OPTIONAL
+          DefaultPushNotificationMessage => {
+            Data       => { 'My__string' => 'My__string', },    # OPTIONAL
+            Title      => 'My__string',
+            SilentPush => 1,                                    # OPTIONAL
+            Url        => 'My__string',
+            Body       => 'My__string',
+            Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
+            Substitutions => { 'My__string' => [ 'My__string', ... ], }
+            ,                       # OPTIONAL
+          },    # OPTIONAL
+          APNSMessage => {
+            TimeToLive => 1,    # OPTIONAL
+            Substitutions => { 'My__string' => [ 'My__string', ... ], }
+            ,                   # OPTIONAL
+            CollapseId => 'My__string',
+            Url        => 'My__string',
+            Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
+            Body   => 'My__string',
+            ThreadId   => 'My__string',
+            Sound      => 'My__string',
+            SilentPush => 1,                                    # OPTIONAL
+            RawContent => 'My__string',
+            Data       => { 'My__string' => 'My__string', },    # OPTIONAL
+            Badge      => 1,                                    # OPTIONAL
+            Category   => 'My__string',
+            Priority   => 'My__string',
+            MediaUrl   => 'My__string',
+            PreferredAuthenticationMethod => 'My__string',
+            Title                         => 'My__string',
+          },    # OPTIONAL
+          GCMMessage => {
+            Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
+            CollapseKey           => 'My__string',
+            ImageIconUrl          => 'My__string',
+            Body                  => 'My__string',
+            IconReference         => 'My__string',
+            Url                   => 'My__string',
+            ImageUrl              => 'My__string',
+            RestrictedPackageName => 'My__string',
+            TimeToLive            => 1,              # OPTIONAL
+            Substitutions => { 'My__string' => [ 'My__string', ... ], }
+            ,                                        # OPTIONAL
+            Data              => { 'My__string' => 'My__string', },   # OPTIONAL
+            Priority          => 'My__string',
+            Title             => 'My__string',
+            SilentPush        => 1,                                   # OPTIONAL
+            Sound             => 'My__string',
+            SmallImageIconUrl => 'My__string',
+            RawContent        => 'My__string',
+          },    # OPTIONAL
+        },    # OPTIONAL
+      },
+
+    );
+
+    # Results:
+    my $SendUsersMessageResponse =
+      $SendUsersMessagesResponse->SendUsersMessageResponse;
+
+    # Returns a L<Paws::Pinpoint::SendUsersMessagesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

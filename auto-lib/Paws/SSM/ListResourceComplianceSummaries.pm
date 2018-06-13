@@ -26,9 +26,31 @@ as arguments to method ListResourceComplianceSummaries.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListResourceComplianceSummaries.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListResourceComplianceSummaries(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $ListResourceComplianceSummariesResult =
+      $ssm->ListResourceComplianceSummaries(
+      Filters => [
+        {
+          Key => 'MyComplianceStringFilterKey',    # min: 1, max: 200; OPTIONAL
+          Values => [ 'MyComplianceFilterValue', ... ]
+          ,                                        # min: 1, max: 20; OPTIONAL
+          Type => 'EQUAL'
+          , # values: EQUAL, NOT_EQUAL, BEGIN_WITH, LESS_THAN, GREATER_THAN; OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
+      );
+
+    # Results:
+    my $ResourceComplianceSummaryItems =
+      $ListResourceComplianceSummariesResult->ResourceComplianceSummaryItems;
+    my $NextToken = $ListResourceComplianceSummariesResult->NextToken;
+
+    # Returns a L<Paws::SSM::ListResourceComplianceSummariesResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/ListResourceComplianceSummaries>

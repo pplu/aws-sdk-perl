@@ -32,9 +32,27 @@ as arguments to method CreateGroupVersion.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateGroupVersion.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateGroupVersion(Att1 => $value1, Att2 => $value2, ...);
+    my $greengrass = Paws->service('Greengrass');
+    my $CreateGroupVersionResponse = $greengrass->CreateGroupVersion(
+      GroupId                          => 'My__string',
+      AmznClientToken                  => 'My__string',    # OPTIONAL
+      CoreDefinitionVersionArn         => 'My__string',    # OPTIONAL
+      DeviceDefinitionVersionArn       => 'My__string',    # OPTIONAL
+      FunctionDefinitionVersionArn     => 'My__string',    # OPTIONAL
+      LoggerDefinitionVersionArn       => 'My__string',    # OPTIONAL
+      ResourceDefinitionVersionArn     => 'My__string',    # OPTIONAL
+      SubscriptionDefinitionVersionArn => 'My__string',    # OPTIONAL
+    );
+
+    # Results:
+    my $CreationTimestamp = $CreateGroupVersionResponse->CreationTimestamp;
+    my $Arn               = $CreateGroupVersionResponse->Arn;
+    my $Id                = $CreateGroupVersionResponse->Id;
+    my $Version           = $CreateGroupVersionResponse->Version;
+
+    # Returns a L<Paws::Greengrass::CreateGroupVersionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>

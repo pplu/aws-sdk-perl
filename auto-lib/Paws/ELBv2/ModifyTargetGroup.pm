@@ -32,9 +32,25 @@ as arguments to method ModifyTargetGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyTargetGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyTargetGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticloadbalancing = Paws->service('ELBv2');
+    # To modify the health check configuration for a target group
+    # This example changes the configuration of the health checks used to
+    # evaluate the health of the targets for the specified target group.
+    my $ModifyTargetGroupOutput = $elasticloadbalancing->ModifyTargetGroup(
+      {
+        'HealthCheckProtocol' => 'HTTPS',
+        'HealthCheckPort'     => 443,
+        'TargetGroupArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-https-targets/2453ed029918f21f'
+      }
+    );
+
+    # Results:
+    my $TargetGroups = $ModifyTargetGroupOutput->TargetGroups;
+
+    # Returns a L<Paws::ELBv2::ModifyTargetGroupOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing/ModifyTargetGroup>

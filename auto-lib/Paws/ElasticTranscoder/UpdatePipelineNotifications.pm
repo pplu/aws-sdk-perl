@@ -26,9 +26,25 @@ as arguments to method UpdatePipelineNotifications.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdatePipelineNotifications.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdatePipelineNotifications(Att1 => $value1, Att2 => $value2, ...);
+    my $elastictranscoder = Paws->service('ElasticTranscoder');
+    my $UpdatePipelineNotificationsResponse =
+      $elastictranscoder->UpdatePipelineNotifications(
+      Id            => 'MyId',
+      Notifications => {
+        Error       => 'MySnsTopic',    # OPTIONAL
+        Warning     => 'MySnsTopic',    # OPTIONAL
+        Completed   => 'MySnsTopic',    # OPTIONAL
+        Progressing => 'MySnsTopic',    # OPTIONAL
+      },
+
+      );
+
+    # Results:
+    my $Pipeline = $UpdatePipelineNotificationsResponse->Pipeline;
+
+# Returns a L<Paws::ElasticTranscoder::UpdatePipelineNotificationsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

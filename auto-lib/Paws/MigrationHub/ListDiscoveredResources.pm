@@ -27,9 +27,22 @@ as arguments to method ListDiscoveredResources.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListDiscoveredResources.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListDiscoveredResources(Att1 => $value1, Att2 => $value2, ...);
+    my $mgh = Paws->service('MigrationHub');
+    my $ListDiscoveredResourcesResult = $mgh->ListDiscoveredResources(
+      MigrationTaskName    => 'MyMigrationTaskName',
+      ProgressUpdateStream => 'MyProgressUpdateStream',
+      MaxResults           => 1,                          # OPTIONAL
+      NextToken            => 'MyToken',                  # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken = $ListDiscoveredResourcesResult->NextToken;
+    my $DiscoveredResourceList =
+      $ListDiscoveredResourcesResult->DiscoveredResourceList;
+
+    # Returns a L<Paws::MigrationHub::ListDiscoveredResourcesResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/migrationhub/>

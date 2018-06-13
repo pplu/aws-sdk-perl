@@ -42,9 +42,55 @@ as arguments to method StartBuild.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartBuild.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->StartBuild(Att1 => $value1, Att2 => $value2, ...);
+    my $codebuild = Paws->service('CodeBuild');
+    my $StartBuildOutput = $codebuild->StartBuild(
+      ProjectName       => 'MyNonEmptyString',
+      ArtifactsOverride => {
+        type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+        namespaceType => 'NONE',        # values: NONE, BUILD_ID; OPTIONAL
+        name          => 'MyString',    # OPTIONAL
+        path          => 'MyString',    # OPTIONAL
+        location      => 'MyString',    # OPTIONAL
+        packaging     => 'NONE',        # values: NONE, ZIP; OPTIONAL
+      },    # OPTIONAL
+      BuildspecOverride => 'MyString',    # OPTIONAL
+      CacheOverride     => {
+        type     => 'NO_CACHE',           # values: NO_CACHE, S3
+        location => 'MyString',           # OPTIONAL
+      },    # OPTIONAL
+      CertificateOverride          => 'MyString',                # OPTIONAL
+      ComputeTypeOverride          => 'BUILD_GENERAL1_SMALL',    # OPTIONAL
+      EnvironmentTypeOverride      => 'WINDOWS_CONTAINER',       # OPTIONAL
+      EnvironmentVariablesOverride => [
+        {
+          value => 'MyString',                                   # OPTIONAL
+          name  => 'MyNonEmptyString',                           # min: 1,
+          type => 'PLAINTEXT',    # values: PLAINTEXT, PARAMETER_STORE; OPTIONAL
+        },
+        ...
+      ],                          # OPTIONAL
+      GitCloneDepthOverride  => 1,                     # OPTIONAL
+      IdempotencyToken       => 'MyString',            # OPTIONAL
+      ImageOverride          => 'MyNonEmptyString',    # OPTIONAL
+      InsecureSslOverride    => 1,                     # OPTIONAL
+      PrivilegedModeOverride => 1,                     # OPTIONAL
+      ServiceRoleOverride    => 'MyNonEmptyString',    # OPTIONAL
+      SourceAuthOverride     => {
+        type     => 'OAUTH',                           # values: OAUTH
+        resource => 'MyString',                        # OPTIONAL
+      },    # OPTIONAL
+      SourceLocationOverride   => 'MyString',      # OPTIONAL
+      SourceTypeOverride       => 'CODECOMMIT',    # OPTIONAL
+      SourceVersion            => 'MyString',      # OPTIONAL
+      TimeoutInMinutesOverride => 1,               # OPTIONAL
+    );
+
+    # Results:
+    my $Build = $StartBuildOutput->Build;
+
+    # Returns a L<Paws::CodeBuild::StartBuildOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codebuild/StartBuild>

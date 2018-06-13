@@ -27,9 +27,55 @@ as arguments to method CreateResourceDefinitionVersion.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateResourceDefinitionVersion.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateResourceDefinitionVersion(Att1 => $value1, Att2 => $value2, ...);
+    my $greengrass = Paws->service('Greengrass');
+    my $CreateResourceDefinitionVersionResponse =
+      $greengrass->CreateResourceDefinitionVersion(
+      ResourceDefinitionId => 'My__string',
+      AmznClientToken      => 'My__string',    # OPTIONAL
+      Resources            => [
+        {
+          ResourceDataContainer => {
+            SageMakerMachineLearningModelResourceData => {
+              SageMakerJobArn => 'My__string',
+              DestinationPath => 'My__string',
+            },                                 # OPTIONAL
+            LocalDeviceResourceData => {
+              SourcePath        => 'My__string',
+              GroupOwnerSetting => {
+                AutoAddGroupOwner => 1,              # OPTIONAL
+                GroupOwner        => 'My__string',
+              },    # OPTIONAL
+            },    # OPTIONAL
+            S3MachineLearningModelResourceData => {
+              S3Uri           => 'My__string',
+              DestinationPath => 'My__string',
+            },    # OPTIONAL
+            LocalVolumeResourceData => {
+              SourcePath        => 'My__string',
+              GroupOwnerSetting => {
+                AutoAddGroupOwner => 1,              # OPTIONAL
+                GroupOwner        => 'My__string',
+              },    # OPTIONAL
+              DestinationPath => 'My__string',
+            },    # OPTIONAL
+          },    # OPTIONAL
+          Id   => 'My__string',
+          Name => 'My__string',
+        },
+        ...
+      ],        # OPTIONAL
+      );
+
+    # Results:
+    my $Id      = $CreateResourceDefinitionVersionResponse->Id;
+    my $Version = $CreateResourceDefinitionVersionResponse->Version;
+    my $CreationTimestamp =
+      $CreateResourceDefinitionVersionResponse->CreationTimestamp;
+    my $Arn = $CreateResourceDefinitionVersionResponse->Arn;
+
+# Returns a L<Paws::Greengrass::CreateResourceDefinitionVersionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>

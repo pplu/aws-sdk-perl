@@ -28,9 +28,33 @@ as arguments to method CreateStream.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateStream.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateStream(Att1 => $value1, Att2 => $value2, ...);
+    my $iot = Paws->service('IoT');
+    my $CreateStreamResponse = $iot->CreateStream(
+      Files => [
+        {
+          s3Location => {
+            key     => 'MyS3Key',        # min: 1,
+            bucket  => 'MyS3Bucket',     # min: 1,
+            version => 'MyS3Version',    # OPTIONAL
+          },    # OPTIONAL
+          fileId => 1,    # max: 255; OPTIONAL
+        },
+        ...
+      ],
+      RoleArn     => 'MyRoleArn',
+      StreamId    => 'MyStreamId',
+      Description => 'MyStreamDescription',    # OPTIONAL
+    );
+
+    # Results:
+    my $StreamVersion = $CreateStreamResponse->StreamVersion;
+    my $Description   = $CreateStreamResponse->Description;
+    my $StreamId      = $CreateStreamResponse->StreamId;
+    my $StreamArn     = $CreateStreamResponse->StreamArn;
+
+    # Returns a L<Paws::IoT::CreateStreamResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot/CreateStream>

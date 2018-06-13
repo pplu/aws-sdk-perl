@@ -26,9 +26,21 @@ as arguments to method DescribeExportConfigurations.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeExportConfigurations.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeExportConfigurations(Att1 => $value1, Att2 => $value2, ...);
+    my $discovery = Paws->service('Discovery');
+    my $DescribeExportConfigurationsResponse =
+      $discovery->DescribeExportConfigurations(
+      ExportIds  => [ 'MyConfigurationsExportId', ... ],    # OPTIONAL
+      MaxResults => 1,                                      # OPTIONAL
+      NextToken  => 'MyNextToken',                          # OPTIONAL
+      );
+
+    # Results:
+    my $NextToken   = $DescribeExportConfigurationsResponse->NextToken;
+    my $ExportsInfo = $DescribeExportConfigurationsResponse->ExportsInfo;
+
+    # Returns a L<Paws::Discovery::DescribeExportConfigurationsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/discovery/DescribeExportConfigurations>

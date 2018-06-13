@@ -26,9 +26,24 @@ as arguments to method CreateTags.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateTags.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateTags(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticfilesystem = Paws->service('EFS');
+    # To create a new tag
+    # This operation creates a new tag for an EFS file system.
+    $elasticfilesystem->CreateTags(
+      {
+        'Tags' => [
+
+          {
+            'Value' => 'MyFileSystem',
+            'Key'   => 'Name'
+          }
+        ],
+        'FileSystemId' => 'fs-01234567'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem/CreateTags>

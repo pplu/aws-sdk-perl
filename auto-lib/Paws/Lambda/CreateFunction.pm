@@ -39,9 +39,46 @@ as arguments to method CreateFunction.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateFunction.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateFunction(Att1 => $value1, Att2 => $value2, ...);
+    my $lambda = Paws->service('Lambda');
+    # create-function
+    # This example creates a Lambda function.
+    my $FunctionConfiguration = $lambda->CreateFunction(
+      {
+        'Handler' => 'souce_file.handler_name',
+        'Runtime' => 'nodejs4.3',
+        'Code'    => {
+
+        },
+        'Publish'    => true,
+        'MemorySize' => 128,
+        'Role'       => 'arn:aws:iam::123456789012:role/service-role/role-name',
+        'Timeout'    => 15,
+        'Description'  => '',
+        'FunctionName' => 'MyFunction',
+        'VpcConfig'    => {
+
+        }
+      }
+    );
+
+    # Results:
+    my $Handler      = $FunctionConfiguration->Handler;
+    my $FunctionArn  = $FunctionConfiguration->FunctionArn;
+    my $Runtime      = $FunctionConfiguration->Runtime;
+    my $MemorySize   = $FunctionConfiguration->MemorySize;
+    my $Role         = $FunctionConfiguration->Role;
+    my $Timeout      = $FunctionConfiguration->Timeout;
+    my $LastModified = $FunctionConfiguration->LastModified;
+    my $Version      = $FunctionConfiguration->Version;
+    my $FunctionName = $FunctionConfiguration->FunctionName;
+    my $Description  = $FunctionConfiguration->Description;
+    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
+    my $VpcConfig    = $FunctionConfiguration->VpcConfig;
+    my $CodeSize     = $FunctionConfiguration->CodeSize;
+
+    # Returns a L<Paws::Lambda::FunctionConfiguration> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lambda/CreateFunction>

@@ -28,9 +28,25 @@ as arguments to method InitiateMultipartUpload.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to InitiateMultipartUpload.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->InitiateMultipartUpload(Att1 => $value1, Att2 => $value2, ...);
+    my $glacier = Paws->service('Glacier');
+    # To initiate a multipart upload
+    # The example initiates a multipart upload to a vault named my-vault with a
+    # part size of 1 MiB (1024 x 1024 bytes) per file.
+    my $InitiateMultipartUploadOutput = $glacier->InitiateMultipartUpload(
+      {
+        'VaultName' => 'my-vault',
+        'AccountId' => '-',
+        'PartSize'  => 1048576
+      }
+    );
+
+    # Results:
+    my $uploadId = $InitiateMultipartUploadOutput->uploadId;
+    my $location = $InitiateMultipartUploadOutput->location;
+
+    # Returns a L<Paws::Glacier::InitiateMultipartUploadOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/glacier/>

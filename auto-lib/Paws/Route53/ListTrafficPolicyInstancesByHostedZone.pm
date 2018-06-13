@@ -30,9 +30,31 @@ as arguments to method ListTrafficPolicyInstancesByHostedZone.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTrafficPolicyInstancesByHostedZone.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListTrafficPolicyInstancesByHostedZone(Att1 => $value1, Att2 => $value2, ...);
+    my $route53 = Paws->service('Route53');
+    my $ListTrafficPolicyInstancesByHostedZoneResponse =
+      $route53->ListTrafficPolicyInstancesByHostedZone(
+      HostedZoneId                    => 'MyResourceId',
+      MaxItems                        => 'MyPageMaxItems',    # OPTIONAL
+      TrafficPolicyInstanceNameMarker => 'MyDNSName',         # OPTIONAL
+      TrafficPolicyInstanceTypeMarker => 'SOA',               # OPTIONAL
+      );
+
+    # Results:
+    my $IsTruncated =
+      $ListTrafficPolicyInstancesByHostedZoneResponse->IsTruncated;
+    my $TrafficPolicyInstanceNameMarker =
+      $ListTrafficPolicyInstancesByHostedZoneResponse
+      ->TrafficPolicyInstanceNameMarker;
+    my $MaxItems = $ListTrafficPolicyInstancesByHostedZoneResponse->MaxItems;
+    my $TrafficPolicyInstances =
+      $ListTrafficPolicyInstancesByHostedZoneResponse->TrafficPolicyInstances;
+    my $TrafficPolicyInstanceTypeMarker =
+      $ListTrafficPolicyInstancesByHostedZoneResponse
+      ->TrafficPolicyInstanceTypeMarker;
+
+# Returns a L<Paws::Route53::ListTrafficPolicyInstancesByHostedZoneResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53/ListTrafficPolicyInstancesByHostedZone>

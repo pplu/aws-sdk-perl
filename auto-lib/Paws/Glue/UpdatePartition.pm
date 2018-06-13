@@ -28,9 +28,75 @@ as arguments to method UpdatePartition.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdatePartition.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdatePartition(Att1 => $value1, Att2 => $value2, ...);
+    my $glue = Paws->service('Glue');
+    my $UpdatePartitionResponse = $glue->UpdatePartition(
+      DatabaseName   => 'MyNameString',
+      PartitionInput => {
+        LastAnalyzedTime  => '1970-01-01T01:00:00',    # OPTIONAL
+        StorageDescriptor => {
+          Parameters => {
+            'MyKeyString' => 'MyParametersMapValue'
+            ,    # key: min: 1, max: 255, value: max: 512000
+          },    # OPTIONAL
+          SerdeInfo => {
+            Parameters => {
+              'MyKeyString' => 'MyParametersMapValue'
+              ,    # key: min: 1, max: 255, value: max: 512000
+            },    # OPTIONAL
+            Name                 => 'MyNameString',    # min: 1, max: 255
+            SerializationLibrary => 'MyNameString',    # min: 1, max: 255
+          },    # OPTIONAL
+          Columns => [
+            {
+              Name    => 'MyNameString',          # min: 1, max: 255
+              Comment => 'MyCommentString',       # max: 255; OPTIONAL
+              Type    => 'MyColumnTypeString',    # max: 131072; OPTIONAL
+            },
+            ...
+          ],                                      # OPTIONAL
+          SortColumns => [
+            {
+              Column    => 'MyNameString',        # min: 1, max: 255
+              SortOrder => 1,                     # max: 1
+
+            },
+            ...
+          ],                                      # OPTIONAL
+          StoredAsSubDirectories => 1,            # OPTIONAL
+          SkewedInfo             => {
+            SkewedColumnValueLocationMaps =>
+              { 'MyColumnValuesString' => 'MyColumnValuesString', },  # OPTIONAL
+            SkewedColumnValues => [ 'MyColumnValuesString', ... ],    # OPTIONAL
+            SkewedColumnNames => [
+              'MyNameString', ...    # min: 1, max: 255
+            ],                       # OPTIONAL
+          },    # OPTIONAL
+          Location      => 'MyLocationString',    # max: 2056; OPTIONAL
+          OutputFormat  => 'MyFormatString',      # max: 128; OPTIONAL
+          Compressed    => 1,                     # OPTIONAL
+          InputFormat   => 'MyFormatString',      # max: 128; OPTIONAL
+          BucketColumns => [
+            'MyNameString', ...                   # min: 1, max: 255
+          ],                                      # OPTIONAL
+          NumberOfBuckets => 1,                   # OPTIONAL
+        },    # OPTIONAL
+        Values => [
+          'MyValueString', ...    # max: 1024
+        ],                        # OPTIONAL
+        LastAccessTime => '1970-01-01T01:00:00',    # OPTIONAL
+        Parameters     => {
+          'MyKeyString' =>
+            'MyParametersMapValue',  # key: min: 1, max: 255, value: max: 512000
+        },    # OPTIONAL
+      },
+      PartitionValueList => [
+        'MyValueString', ...    # max: 1024
+      ],
+      TableName => 'MyNameString',
+      CatalogId => 'MyCatalogIdString',    # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/UpdatePartition>

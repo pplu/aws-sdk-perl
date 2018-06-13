@@ -41,9 +41,65 @@ as arguments to method CreateEndpoint.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateEndpoint.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateEndpoint(Att1 => $value1, Att2 => $value2, ...);
+    my $dms = Paws->service('DMS');
+    my $CreateEndpointResponse = $dms->CreateEndpoint(
+      EndpointIdentifier => 'MyString',
+      EndpointType       => 'source',
+      EngineName         => 'MyString',
+      CertificateArn     => 'MyString',    # OPTIONAL
+      DatabaseName       => 'MyString',    # OPTIONAL
+      DynamoDbSettings   => {
+        ServiceAccessRoleArn => 'MyString',
+
+      },                                   # OPTIONAL
+      ExternalTableDefinition   => 'MyString',    # OPTIONAL
+      ExtraConnectionAttributes => 'MyString',    # OPTIONAL
+      KmsKeyId                  => 'MyString',    # OPTIONAL
+      MongoDbSettings           => {
+        ServerName => 'MyString',
+        AuthMechanism =>
+          'default',    # values: default, mongodb_cr, scram_sha_1; OPTIONAL
+        KmsKeyId          => 'MyString',
+        Password          => 'MySecretString',  # OPTIONAL
+        AuthSource        => 'MyString',
+        ExtractDocId      => 'MyString',
+        Username          => 'MyString',
+        NestingLevel      => 'none',            # values: none, one; OPTIONAL
+        AuthType          => 'no',              # values: no, password; OPTIONAL
+        DocsToInvestigate => 'MyString',
+        DatabaseName      => 'MyString',
+        Port              => 1,                 # OPTIONAL
+      },    # OPTIONAL
+      Password   => 'MySecretString',    # OPTIONAL
+      Port       => 1,                   # OPTIONAL
+      S3Settings => {
+        CsvDelimiter            => 'MyString',
+        ServiceAccessRoleArn    => 'MyString',
+        CompressionType         => 'none',       # values: none, gzip; OPTIONAL
+        BucketFolder            => 'MyString',
+        BucketName              => 'MyString',
+        CsvRowDelimiter         => 'MyString',
+        ExternalTableDefinition => 'MyString',
+      },    # OPTIONAL
+      ServerName           => 'MyString',    # OPTIONAL
+      ServiceAccessRoleArn => 'MyString',    # OPTIONAL
+      SslMode              => 'none',        # OPTIONAL
+      Tags                 => [
+        {
+          Value => 'MyString',
+          Key   => 'MyString',
+        },
+        ...
+      ],                                     # OPTIONAL
+      Username => 'MyString',                # OPTIONAL
+    );
+
+    # Results:
+    my $Endpoint = $CreateEndpointResponse->Endpoint;
+
+    # Returns a L<Paws::DMS::CreateEndpointResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dms/CreateEndpoint>

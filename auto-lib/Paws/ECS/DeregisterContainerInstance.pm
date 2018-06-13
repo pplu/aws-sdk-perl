@@ -26,9 +26,22 @@ as arguments to method DeregisterContainerInstance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeregisterContainerInstance.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DeregisterContainerInstance(Att1 => $value1, Att2 => $value2, ...);
+    my $ecs = Paws->service('ECS');
+   # To deregister a container instance from a cluster
+   # This example deregisters a container instance from the specified cluster in
+   # your default region. If there are still tasks running on the container
+   # instance, you must either stop those tasks before deregistering, or use the
+   # force option.
+    my $DeregisterContainerInstanceResponse = $ecs->DeregisterContainerInstance(
+      {
+        'ContainerInstance' => 'container_instance_UUID',
+        'Force'             => true,
+        'Cluster'           => 'default'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs/DeregisterContainerInstance>

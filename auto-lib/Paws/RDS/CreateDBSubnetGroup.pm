@@ -27,9 +27,19 @@ as arguments to method CreateDBSubnetGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBSubnetGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDBSubnetGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    # To create a DB subnet group.
+    # This example creates a DB subnet group.
+    my $CreateDBSubnetGroupResult = $rds->CreateDBSubnetGroup(
+      {
+        'DBSubnetGroupName'        => 'mydbsubnetgroup',
+        'DBSubnetGroupDescription' => 'My DB subnet group',
+        'SubnetIds'                => [ 'subnet-1fab8a69', 'subnet-d43a468c' ]
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/CreateDBSubnetGroup>

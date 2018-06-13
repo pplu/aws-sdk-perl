@@ -26,9 +26,23 @@ as arguments to method GetRequestValidator.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetRequestValidator.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetRequestValidator(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $RequestValidator = $apigateway->GetRequestValidator(
+      RequestValidatorId => 'MyString',
+      RestApiId          => 'MyString',
+
+    );
+
+    # Results:
+    my $ValidateRequestBody = $RequestValidator->ValidateRequestBody;
+    my $Id                  = $RequestValidator->Id;
+    my $ValidateRequestParameters =
+      $RequestValidator->ValidateRequestParameters;
+    my $Name = $RequestValidator->Name;
+
+    # Returns a L<Paws::ApiGateway::RequestValidator> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>

@@ -50,9 +50,49 @@ as arguments to method RestoreDBClusterFromS3.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RestoreDBClusterFromS3.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RestoreDBClusterFromS3(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    my $RestoreDBClusterFromS3Result = $rds->RestoreDBClusterFromS3(
+      DBClusterIdentifier             => 'MyString',
+      Engine                          => 'MyString',
+      MasterUserPassword              => 'MyString',
+      MasterUsername                  => 'MyString',
+      S3BucketName                    => 'MyString',
+      S3IngestionRoleArn              => 'MyString',
+      SourceEngine                    => 'MyString',
+      SourceEngineVersion             => 'MyString',
+      AvailabilityZones               => [ 'MyString', ... ],    # OPTIONAL
+      BacktrackWindow                 => 1,                      # OPTIONAL
+      BackupRetentionPeriod           => 1,                      # OPTIONAL
+      CharacterSetName                => 'MyString',             # OPTIONAL
+      DBClusterParameterGroupName     => 'MyString',             # OPTIONAL
+      DBSubnetGroupName               => 'MyString',             # OPTIONAL
+      DatabaseName                    => 'MyString',             # OPTIONAL
+      EnableCloudwatchLogsExports     => [ 'MyString', ... ],    # OPTIONAL
+      EnableIAMDatabaseAuthentication => 1,                      # OPTIONAL
+      EngineVersion                   => 'MyString',             # OPTIONAL
+      KmsKeyId                        => 'MyString',             # OPTIONAL
+      OptionGroupName                 => 'MyString',             # OPTIONAL
+      Port                            => 1,                      # OPTIONAL
+      PreferredBackupWindow           => 'MyString',             # OPTIONAL
+      PreferredMaintenanceWindow      => 'MyString',             # OPTIONAL
+      S3Prefix                        => 'MyString',             # OPTIONAL
+      StorageEncrypted                => 1,                      # OPTIONAL
+      Tags                            => [
+        {
+          Value => 'MyString',
+          Key   => 'MyString',
+        },
+        ...
+      ],                                                         # OPTIONAL
+      VpcSecurityGroupIds => [ 'MyString', ... ],                # OPTIONAL
+    );
+
+    # Results:
+    my $DBCluster = $RestoreDBClusterFromS3Result->DBCluster;
+
+    # Returns a L<Paws::RDS::RestoreDBClusterFromS3Result> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/RestoreDBClusterFromS3>

@@ -29,9 +29,27 @@ as arguments to method UploadArchive.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UploadArchive.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UploadArchive(Att1 => $value1, Att2 => $value2, ...);
+    my $glacier = Paws->service('Glacier');
+    # To upload an archive
+    # The example adds an archive to a vault.
+    my $ArchiveCreationOutput = $glacier->UploadArchive(
+      {
+        'ArchiveDescription' => '',
+        'AccountId'          => '-',
+        'Body'               => 'example-data-to-upload',
+        'VaultName'          => 'my-vault',
+        'Checksum'           => ''
+      }
+    );
+
+    # Results:
+    my $location  = $ArchiveCreationOutput->location;
+    my $archiveId = $ArchiveCreationOutput->archiveId;
+    my $checksum  = $ArchiveCreationOutput->checksum;
+
+    # Returns a L<Paws::Glacier::ArchiveCreationOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/glacier/>

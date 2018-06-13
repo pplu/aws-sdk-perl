@@ -31,9 +31,48 @@ as arguments to method UpdateIdentityPool.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateIdentityPool.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateIdentityPool(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-identity = Paws->service('CognitoIdentity');
+    my $IdentityPool = $cognito -identity->UpdateIdentityPool(
+      AllowUnauthenticatedIdentities => 1,
+      IdentityPoolId                 => 'MyIdentityPoolId',
+      IdentityPoolName               => 'MyIdentityPoolName',
+      CognitoIdentityProviders       => [
+        {
+          ProviderName =>
+            'MyCognitoIdentityProviderName',    # min: 1, max: 128; OPTIONAL
+          ClientId =>
+            'MyCognitoIdentityProviderClientId',    # min: 1, max: 128; OPTIONAL
+          ServerSideTokenCheck => 1,                # OPTIONAL
+        },
+        ...
+      ],                                            # OPTIONAL
+      DeveloperProviderName     => 'MyDeveloperProviderName',    # OPTIONAL
+      OpenIdConnectProviderARNs => [
+        'MyARNString', ...    # min: 20, max: 2048
+      ],                      # OPTIONAL
+      SamlProviderARNs => [
+        'MyARNString', ...    # min: 20, max: 2048
+      ],                      # OPTIONAL
+      SupportedLoginProviders => {
+        'MyIdentityProviderName' => 'MyIdentityProviderId'
+        ,                     # key: min: 1, max: 128, value: min: 1, max: 128
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $SupportedLoginProviders   = $IdentityPool->SupportedLoginProviders;
+    my $CognitoIdentityProviders  = $IdentityPool->CognitoIdentityProviders;
+    my $OpenIdConnectProviderARNs = $IdentityPool->OpenIdConnectProviderARNs;
+    my $SamlProviderARNs          = $IdentityPool->SamlProviderARNs;
+    my $IdentityPoolId            = $IdentityPool->IdentityPoolId;
+    my $IdentityPoolName          = $IdentityPool->IdentityPoolName;
+    my $AllowUnauthenticatedIdentities =
+      $IdentityPool->AllowUnauthenticatedIdentities;
+    my $DeveloperProviderName = $IdentityPool->DeveloperProviderName;
+
+    # Returns a L<Paws::CognitoIdentity::IdentityPool> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-identity/UpdateIdentityPool>

@@ -34,9 +34,39 @@ as arguments to method DescribeDimensionKeys.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDimensionKeys.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeDimensionKeys(Att1 => $value1, Att2 => $value2, ...);
+    my $pi = Paws->service('PerformanceInsights');
+    my $DescribeDimensionKeysResponse = $pi->DescribeDimensionKeys(
+      EndTime => '1970-01-01T01:00:00',
+      GroupBy => {
+        Group      => 'MyString',
+        Limit      => 1,                      # min: 1, max: 10; OPTIONAL
+        Dimensions => [ 'MyString', ... ],    # min: 1, max: 10; OPTIONAL
+      },
+      Identifier  => 'MyString',
+      Metric      => 'MyString',
+      ServiceType => 'RDS',
+      StartTime   => '1970-01-01T01:00:00',
+      Filter      => { 'MyString' => 'MyString', },    # OPTIONAL
+      MaxResults  => 1,                                # OPTIONAL
+      NextToken   => 'MyString',                       # OPTIONAL
+      PartitionBy => {
+        Group      => 'MyString',
+        Limit      => 1,                      # min: 1, max: 10; OPTIONAL
+        Dimensions => [ 'MyString', ... ],    # min: 1, max: 10; OPTIONAL
+      },    # OPTIONAL
+      PeriodInSeconds => 1,    # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken        = $DescribeDimensionKeysResponse->NextToken;
+    my $PartitionKeys    = $DescribeDimensionKeysResponse->PartitionKeys;
+    my $Keys             = $DescribeDimensionKeysResponse->Keys;
+    my $AlignedStartTime = $DescribeDimensionKeysResponse->AlignedStartTime;
+    my $AlignedEndTime   = $DescribeDimensionKeysResponse->AlignedEndTime;
+
+ # Returns a L<Paws::PerformanceInsights::DescribeDimensionKeysResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

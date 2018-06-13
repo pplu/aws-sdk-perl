@@ -26,9 +26,25 @@ as arguments to method ListHandshakesForAccount.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListHandshakesForAccount.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListHandshakesForAccount(Att1 => $value1, Att2 => $value2, ...);
+    my $organizations = Paws->service('Organizations');
+    my $ListHandshakesForAccountResponse =
+      $organizations->ListHandshakesForAccount(
+      Filter => {
+        ParentHandshakeId => 'MyHandshakeId',    # OPTIONAL
+        ActionType        => 'INVITE'
+        , # values: INVITE, ENABLE_ALL_FEATURES, APPROVE_ALL_FEATURES, ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE; OPTIONAL
+      },    # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
+      );
+
+    # Results:
+    my $NextToken  = $ListHandshakesForAccountResponse->NextToken;
+    my $Handshakes = $ListHandshakesForAccountResponse->Handshakes;
+
+    # Returns a L<Paws::Organizations::ListHandshakesForAccountResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/organizations/ListHandshakesForAccount>

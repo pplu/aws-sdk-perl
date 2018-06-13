@@ -40,9 +40,34 @@ as arguments to method Query.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to Query.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->Query(Att1 => $value1, Att2 => $value2, ...);
+    my $dynamodb = Paws->service('DynamoDB');
+   # To query an item
+   # This example queries items in the Music table. The table has a partition
+   # key and sort key (Artist and SongTitle), but this query only specifies the
+   # partition key value. It returns song titles by the artist named "No One You
+   # Know".
+    my $QueryOutput = $dynamodb->Query(
+      {
+        'KeyConditionExpression'    => 'Artist = :v1',
+        'ProjectionExpression'      => 'SongTitle',
+        'ExpressionAttributeValues' => {
+          ':v1' => {
+            'S' => 'No One You Know'
+          }
+        },
+        'TableName' => 'Music'
+      }
+    );
+
+    # Results:
+    my $Items            = $QueryOutput->Items;
+    my $Count            = $QueryOutput->Count;
+    my $ScannedCount     = $QueryOutput->ScannedCount;
+    my $ConsumedCapacity = $QueryOutput->ConsumedCapacity;
+
+    # Returns a L<Paws::DynamoDB::QueryOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dynamodb/Query>

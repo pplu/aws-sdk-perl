@@ -30,9 +30,23 @@ as arguments to method CreateMLModel.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateMLModel.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateMLModel(Att1 => $value1, Att2 => $value2, ...);
+    my $machinelearning = Paws->service('MachineLearning');
+    my $CreateMLModelOutput = $machinelearning->CreateMLModel(
+      MLModelId            => 'MyEntityId',
+      MLModelType          => 'REGRESSION',
+      TrainingDataSourceId => 'MyEntityId',
+      MLModelName          => 'MyEntityName',                         # OPTIONAL
+      Parameters           => { 'MyStringType' => 'MyStringType', },  # OPTIONAL
+      Recipe               => 'MyRecipe',                             # OPTIONAL
+      RecipeUri            => 'MyS3Url',                              # OPTIONAL
+    );
+
+    # Results:
+    my $MLModelId = $CreateMLModelOutput->MLModelId;
+
+    # Returns a L<Paws::MachineLearning::CreateMLModelOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/machinelearning/CreateMLModel>

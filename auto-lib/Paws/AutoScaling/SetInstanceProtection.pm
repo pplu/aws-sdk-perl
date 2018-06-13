@@ -26,9 +26,29 @@ as arguments to method SetInstanceProtection.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetInstanceProtection.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SetInstanceProtection(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('AutoScaling');
+    # To enable instance protection for an instance
+    # This example enables instance protection for the specified instance.
+    my $SetInstanceProtectionAnswer = $autoscaling->SetInstanceProtection(
+      {
+        'AutoScalingGroupName' => 'my-auto-scaling-group',
+        'ProtectedFromScaleIn' => true,
+        'InstanceIds'          => ['i-93633f9b']
+      }
+    );
+
+    # To disable instance protection for an instance
+    # This example disables instance protection for the specified instance.
+    my $SetInstanceProtectionAnswer = $autoscaling->SetInstanceProtection(
+      {
+        'ProtectedFromScaleIn' => 0,
+        'AutoScalingGroupName' => 'my-auto-scaling-group',
+        'InstanceIds'          => ['i-93633f9b']
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/SetInstanceProtection>

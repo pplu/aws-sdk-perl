@@ -25,9 +25,29 @@ as arguments to method AddTags.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddTags.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AddTags(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticloadbalancing = Paws->service('ELB');
+    # To add tags to a load balancer
+    # This example adds two tags to the specified load balancer.
+    my $AddTagsOutput = $elasticloadbalancing->AddTags(
+      {
+        'LoadBalancerNames' => ['my-load-balancer'],
+        'Tags'              => [
+
+          {
+            'Key'   => 'project',
+            'Value' => 'lima'
+          },
+
+          {
+            'Value' => 'digital-media',
+            'Key'   => 'department'
+          }
+        ]
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing/AddTags>

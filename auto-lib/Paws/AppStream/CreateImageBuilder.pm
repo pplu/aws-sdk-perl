@@ -32,9 +32,36 @@ as arguments to method CreateImageBuilder.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateImageBuilder.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateImageBuilder(Att1 => $value1, Att2 => $value2, ...);
+    my $appstream2 = Paws->service('AppStream');
+    my $CreateImageBuilderResult = $appstream2->CreateImageBuilder(
+      ImageName             => 'MyString',
+      InstanceType          => 'MyString',
+      Name                  => 'MyName',
+      AppstreamAgentVersion => 'MyAppstreamAgentVersion',    # OPTIONAL
+      Description           => 'MyDescription',              # OPTIONAL
+      DisplayName           => 'MyDisplayName',              # OPTIONAL
+      DomainJoinInfo        => {
+        DirectoryName => 'MyDirectoryName',                  # OPTIONAL
+        OrganizationalUnitDistinguishedName =>
+          'MyOrganizationalUnitDistinguishedName',    # max: 2000; OPTIONAL
+      },    # OPTIONAL
+      EnableDefaultInternetAccess => 1,    # OPTIONAL
+      VpcConfig                   => {
+        SubnetIds => [
+          'MyString', ...                  # min: 1,
+        ],                                 # OPTIONAL
+        SecurityGroupIds => [
+          'MyString', ...                  # min: 1,
+        ],                                 # max: 5; OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $ImageBuilder = $CreateImageBuilderResult->ImageBuilder;
+
+    # Returns a L<Paws::AppStream::CreateImageBuilderResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

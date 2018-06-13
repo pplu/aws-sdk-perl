@@ -25,9 +25,25 @@ as arguments to method GetLoggerDefinition.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetLoggerDefinition.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetLoggerDefinition(Att1 => $value1, Att2 => $value2, ...);
+    my $greengrass = Paws->service('Greengrass');
+    my $GetLoggerDefinitionResponse = $greengrass->GetLoggerDefinition(
+      LoggerDefinitionId => 'My__string',
+
+    );
+
+    # Results:
+    my $LatestVersion     = $GetLoggerDefinitionResponse->LatestVersion;
+    my $Name              = $GetLoggerDefinitionResponse->Name;
+    my $CreationTimestamp = $GetLoggerDefinitionResponse->CreationTimestamp;
+    my $Arn               = $GetLoggerDefinitionResponse->Arn;
+    my $LatestVersionArn  = $GetLoggerDefinitionResponse->LatestVersionArn;
+    my $Id                = $GetLoggerDefinitionResponse->Id;
+    my $LastUpdatedTimestamp =
+      $GetLoggerDefinitionResponse->LastUpdatedTimestamp;
+
+    # Returns a L<Paws::Greengrass::GetLoggerDefinitionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>

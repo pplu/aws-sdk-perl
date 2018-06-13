@@ -35,9 +35,41 @@ as arguments to method CreateJob.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateJob.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateJob(Att1 => $value1, Att2 => $value2, ...);
+    my $glue = Paws->service('Glue');
+    my $CreateJobResponse = $glue->CreateJob(
+      Command => {
+        Name           => 'MyGenericString',           # OPTIONAL
+        ScriptLocation => 'MyScriptLocationString',    # OPTIONAL
+      },
+      Name              => 'MyNameString',
+      Role              => 'MyRoleString',
+      AllocatedCapacity => 1,                          # OPTIONAL
+      Connections       => {
+        Connections => [
+          'MyGenericString', ...                       # OPTIONAL
+        ],                                             # OPTIONAL
+      },    # OPTIONAL
+      DefaultArguments => {
+        'MyGenericString' => 'MyGenericString', # key: OPTIONAL, value: OPTIONAL
+      },    # OPTIONAL
+      Description       => 'MyDescriptionString',    # OPTIONAL
+      ExecutionProperty => {
+        MaxConcurrentRuns => 1,                      # OPTIONAL
+      },    # OPTIONAL
+      LogUri               => 'MyUriString',    # OPTIONAL
+      MaxRetries           => 1,                # OPTIONAL
+      NotificationProperty => {
+        NotifyDelayAfter => 1,                  # min: 1, ; OPTIONAL
+      },    # OPTIONAL
+      Timeout => 1,    # OPTIONAL
+    );
+
+    # Results:
+    my $Name = $CreateJobResponse->Name;
+
+    # Returns a L<Paws::Glue::CreateJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/CreateJob>

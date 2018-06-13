@@ -29,9 +29,103 @@ as arguments to method CreateApplication.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateApplication.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateApplication(Att1 => $value1, Att2 => $value2, ...);
+    my $kinesisanalytics = Paws->service('KinesisAnalytics');
+    my $CreateApplicationResponse = $kinesisanalytics->CreateApplication(
+      ApplicationName          => 'MyApplicationName',
+      ApplicationCode          => 'MyApplicationCode',           # OPTIONAL
+      ApplicationDescription   => 'MyApplicationDescription',    # OPTIONAL
+      CloudWatchLoggingOptions => [
+        {
+          RoleARN      => 'MyRoleARN',         # min: 1, max: 2048
+          LogStreamARN => 'MyLogStreamARN',    # min: 1, max: 2048
+
+        },
+        ...
+      ],                                       # OPTIONAL
+      Inputs => [
+        {
+          NamePrefix  => 'MyInAppStreamName',    # min: 1, max: 32
+          InputSchema => {
+            RecordFormat => {
+              RecordFormatType  => 'JSON',       # values: JSON, CSV
+              MappingParameters => {
+                CSVMappingParameters => {
+                  RecordColumnDelimiter => 'MyRecordColumnDelimiter',  # min: 1,
+                  RecordRowDelimiter    => 'MyRecordRowDelimiter',     # min: 1,
+
+                },    # OPTIONAL
+                JSONMappingParameters => {
+                  RecordRowPath => 'MyRecordRowPath',    # min: 1,
+
+                },    # OPTIONAL
+              },    # OPTIONAL
+            },
+            RecordColumns => [
+              {
+                SqlType => 'MyRecordColumnSqlType',    # min: 1,
+                Name    => 'MyRecordColumnName',
+                Mapping => 'MyRecordColumnMapping',    # OPTIONAL
+              },
+              ...
+            ],                                         # min: 1, max: 1000
+            RecordEncoding => 'MyRecordEncoding',      # OPTIONAL
+          },
+          InputProcessingConfiguration => {
+            InputLambdaProcessor => {
+              ResourceARN => 'MyResourceARN',          # min: 1, max: 2048
+              RoleARN     => 'MyRoleARN',              # min: 1, max: 2048
+
+            },
+
+          },    # OPTIONAL
+          InputParallelism => {
+            Count => 1,    # min: 1, max: 64; OPTIONAL
+          },    # OPTIONAL
+          KinesisStreamsInput => {
+            RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
+            ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
+
+          },    # OPTIONAL
+          KinesisFirehoseInput => {
+            RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
+            ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
+
+          },    # OPTIONAL
+        },
+        ...
+      ],        # OPTIONAL
+      Outputs => [
+        {
+          Name              => 'MyInAppStreamName',    # min: 1, max: 32
+          DestinationSchema => {
+            RecordFormatType => 'JSON',                # values: JSON, CSV
+          },
+          KinesisStreamsOutput => {
+            ResourceARN => 'MyResourceARN',            # min: 1, max: 2048
+            RoleARN     => 'MyRoleARN',                # min: 1, max: 2048
+
+          },    # OPTIONAL
+          KinesisFirehoseOutput => {
+            RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
+            ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
+
+          },    # OPTIONAL
+          LambdaOutput => {
+            ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
+            RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
+
+          },    # OPTIONAL
+        },
+        ...
+      ],        # OPTIONAL
+    );
+
+    # Results:
+    my $ApplicationSummary = $CreateApplicationResponse->ApplicationSummary;
+
+    # Returns a L<Paws::KinesisAnalytics::CreateApplicationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics/CreateApplication>

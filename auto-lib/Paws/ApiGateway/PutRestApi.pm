@@ -29,9 +29,31 @@ as arguments to method PutRestApi.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutRestApi.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutRestApi(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $RestApi = $apigateway->PutRestApi(
+      Body           => 'BlobBlob',
+      RestApiId      => 'MyString',
+      FailOnWarnings => 1,                                # OPTIONAL
+      Mode           => 'merge',                          # OPTIONAL
+      Parameters     => { 'MyString' => 'MyString', },    # OPTIONAL
+    );
+
+    # Results:
+    my $Version                = $RestApi->Version;
+    my $ApiKeySource           = $RestApi->ApiKeySource;
+    my $Description            = $RestApi->Description;
+    my $EndpointConfiguration  = $RestApi->EndpointConfiguration;
+    my $CreatedDate            = $RestApi->CreatedDate;
+    my $Policy                 = $RestApi->Policy;
+    my $Warnings               = $RestApi->Warnings;
+    my $Id                     = $RestApi->Id;
+    my $Name                   = $RestApi->Name;
+    my $BinaryMediaTypes       = $RestApi->BinaryMediaTypes;
+    my $MinimumCompressionSize = $RestApi->MinimumCompressionSize;
+
+    # Returns a L<Paws::ApiGateway::RestApi> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>

@@ -26,9 +26,76 @@ as arguments to method CreateBudget.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateBudget.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateBudget(Att1 => $value1, Att2 => $value2, ...);
+    my $budgets = Paws->service('Budgets');
+    my $CreateBudgetResponse = $budgets->CreateBudget(
+      AccountId => 'MyAccountId',
+      Budget    => {
+        BudgetType =>
+          'USAGE',    # values: USAGE, COST, RI_UTILIZATION, RI_COVERAGE
+        TimeUnit => 'DAILY',    # values: DAILY, MONTHLY, QUARTERLY, ANNUALLY
+        BudgetName  => 'MyBudgetName',    # max: 100
+        BudgetLimit => {
+          Unit   => 'MyUnitValue',        # min: 1,
+          Amount => 'MyNumericValue',
+
+        },
+        CostFilters => { 'MyGenericString' => [ 'MyGenericString', ... ], }
+        ,                                 # OPTIONAL
+        CalculatedSpend => {
+          ActualSpend => {
+            Unit   => 'MyUnitValue',      # min: 1,
+            Amount => 'MyNumericValue',
+
+          },
+          ForecastedSpend => {
+            Unit   => 'MyUnitValue',      # min: 1,
+            Amount => 'MyNumericValue',
+
+          },
+        },    # OPTIONAL
+        CostTypes => {
+          UseBlended               => 1,    # OPTIONAL
+          IncludeRecurring         => 1,    # OPTIONAL
+          IncludeRefund            => 1,    # OPTIONAL
+          IncludeTax               => 1,    # OPTIONAL
+          IncludeSupport           => 1,    # OPTIONAL
+          IncludeSubscription      => 1,    # OPTIONAL
+          IncludeUpfront           => 1,    # OPTIONAL
+          IncludeDiscount          => 1,    # OPTIONAL
+          IncludeOtherSubscription => 1,    # OPTIONAL
+          UseAmortized             => 1,    # OPTIONAL
+          IncludeCredit            => 1,    # OPTIONAL
+        },    # OPTIONAL
+        TimePeriod => {
+          Start => '1970-01-01T01:00:00',    # OPTIONAL
+          End   => '1970-01-01T01:00:00',    # OPTIONAL
+        },    # OPTIONAL
+      },
+      NotificationsWithSubscribers => [
+        {
+          Notification => {
+            Threshold => 1,    # min: 0.1, max: 1000000000
+            ComparisonOperator =>
+              'GREATER_THAN',    # values: GREATER_THAN, LESS_THAN, EQUAL_TO
+            NotificationType => 'ACTUAL',    # values: ACTUAL, FORECASTED
+            ThresholdType =>
+              'PERCENTAGE',    # values: PERCENTAGE, ABSOLUTE_VALUE; OPTIONAL
+          },
+          Subscribers => [
+            {
+              Address          => 'MySubscriberAddress',    # min: 1,
+              SubscriptionType => 'SNS',                    # values: SNS, EMAIL
+
+            },
+            ...
+          ],                                                # min: 1, max: 11
+
+        },
+        ...
+      ],                                                    # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/budgets/CreateBudget>

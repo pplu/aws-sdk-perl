@@ -27,9 +27,30 @@ as arguments to method CreateNotification.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateNotification.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateNotification(Att1 => $value1, Att2 => $value2, ...);
+    my $budgets = Paws->service('Budgets');
+    my $CreateNotificationResponse = $budgets->CreateNotification(
+      AccountId    => 'MyAccountId',
+      BudgetName   => 'MyBudgetName',
+      Notification => {
+        NotificationType => 'ACTUAL',    # values: ACTUAL, FORECASTED
+        Threshold        => 1,           # min: 0.1, max: 1000000000
+        ComparisonOperator =>
+          'GREATER_THAN',    # values: GREATER_THAN, LESS_THAN, EQUAL_TO
+        ThresholdType =>
+          'PERCENTAGE',      # values: PERCENTAGE, ABSOLUTE_VALUE; OPTIONAL
+      },
+      Subscribers => [
+        {
+          Address          => 'MySubscriberAddress',    # min: 1,
+          SubscriptionType => 'SNS',                    # values: SNS, EMAIL
+
+        },
+        ...
+      ],
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/budgets/CreateNotification>

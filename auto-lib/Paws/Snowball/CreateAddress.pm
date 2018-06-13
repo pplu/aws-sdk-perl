@@ -24,9 +24,34 @@ as arguments to method CreateAddress.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateAddress.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateAddress(Att1 => $value1, Att2 => $value2, ...);
+    my $snowball = Paws->service('Snowball');
+# To create an address for a job
+# This operation creates an address for a job. Addresses are validated at the
+# time of creation. The address you provide must be located within the
+# serviceable area of your region. If the address is invalid or unsupported,
+# then an exception is thrown.
+my $CreateAddressResult = $snowball->CreateAddress(
+{
+'Address' => 
+{
+'Name' => 'My Name',
+'PhoneNumber' => '425-555-5555',
+'Country' => 'USA',
+'StateOrProvince' => 'WA',
+'City' => 'Seattle',
+'Street1' => '123 Main Street',
+'PostalCode' => 98101,
+'Company' => 'My Company's Name'
+}
+}
+);
+
+# Results:
+my $AddressId = $CreateAddressResult->AddressId;
+
+# Returns a L<Paws::Snowball::CreateAddressResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/snowball/CreateAddress>

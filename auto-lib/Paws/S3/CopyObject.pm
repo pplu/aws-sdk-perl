@@ -59,9 +59,58 @@ as arguments to method CopyObject.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CopyObject.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CopyObject(Att1 => $value1, Att2 => $value2, ...);
+    my $s3 = Paws->service('S3');
+    my $CopyObjectOutput = $s3->CopyObject(
+      Bucket                      => 'MyBucketName',
+      CopySource                  => 'MyCopySource',
+      Key                         => 'MyObjectKey',
+      ACL                         => 'private',                    # OPTIONAL
+      CacheControl                => 'MyCacheControl',             # OPTIONAL
+      ContentDisposition          => 'MyContentDisposition',       # OPTIONAL
+      ContentEncoding             => 'MyContentEncoding',          # OPTIONAL
+      ContentLanguage             => 'MyContentLanguage',          # OPTIONAL
+      ContentType                 => 'MyContentType',              # OPTIONAL
+      CopySourceIfMatch           => 'MyCopySourceIfMatch',        # OPTIONAL
+      CopySourceIfModifiedSince   => '1970-01-01T01:00:00',        # OPTIONAL
+      CopySourceIfNoneMatch       => 'MyCopySourceIfNoneMatch',    # OPTIONAL
+      CopySourceIfUnmodifiedSince => '1970-01-01T01:00:00',        # OPTIONAL
+      CopySourceSSECustomerAlgorithm =>
+        'MyCopySourceSSECustomerAlgorithm',                        # OPTIONAL
+      CopySourceSSECustomerKey    => 'MyCopySourceSSECustomerKey',    # OPTIONAL
+      CopySourceSSECustomerKeyMD5 => 'MyCopySourceSSECustomerKeyMD5', # OPTIONAL
+      Expires                     => '1970-01-01T01:00:00',           # OPTIONAL
+      GrantFullControl            => 'MyGrantFullControl',            # OPTIONAL
+      GrantRead                   => 'MyGrantRead',                   # OPTIONAL
+      GrantReadACP                => 'MyGrantReadACP',                # OPTIONAL
+      GrantWriteACP               => 'MyGrantWriteACP',               # OPTIONAL
+      Metadata          => { 'MyMetadataKey' => 'MyMetadataValue', }, # OPTIONAL
+      MetadataDirective => 'COPY',                                    # OPTIONAL
+      RequestPayer      => 'requester',                               # OPTIONAL
+      SSECustomerAlgorithm    => 'MySSECustomerAlgorithm',            # OPTIONAL
+      SSECustomerKey          => 'MySSECustomerKey',                  # OPTIONAL
+      SSECustomerKeyMD5       => 'MySSECustomerKeyMD5',               # OPTIONAL
+      SSEKMSKeyId             => 'MySSEKMSKeyId',                     # OPTIONAL
+      ServerSideEncryption    => 'AES256',                            # OPTIONAL
+      StorageClass            => 'STANDARD',                          # OPTIONAL
+      Tagging                 => 'MyTaggingHeader',                   # OPTIONAL
+      TaggingDirective        => 'COPY',                              # OPTIONAL
+      WebsiteRedirectLocation => 'MyWebsiteRedirectLocation',         # OPTIONAL
+    );
+
+    # Results:
+    my $Expiration           = $CopyObjectOutput->Expiration;
+    my $SSECustomerKeyMD5    = $CopyObjectOutput->SSECustomerKeyMD5;
+    my $RequestCharged       = $CopyObjectOutput->RequestCharged;
+    my $ServerSideEncryption = $CopyObjectOutput->ServerSideEncryption;
+    my $SSEKMSKeyId          = $CopyObjectOutput->SSEKMSKeyId;
+    my $CopySourceVersionId  = $CopyObjectOutput->CopySourceVersionId;
+    my $SSECustomerAlgorithm = $CopyObjectOutput->SSECustomerAlgorithm;
+    my $CopyObjectResult     = $CopyObjectOutput->CopyObjectResult;
+    my $VersionId            = $CopyObjectOutput->VersionId;
+
+    # Returns a L<Paws::S3::CopyObjectOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/CopyObject>

@@ -26,9 +26,202 @@ as arguments to method ReplaceTopicRule.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ReplaceTopicRule.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ReplaceTopicRule(Att1 => $value1, Att2 => $value2, ...);
+    my $iot = Paws->service('IoT');
+    $iot->ReplaceTopicRule(
+      RuleName         => 'MyRuleName',
+      TopicRulePayload => {
+        actions => [
+          {
+            firehose => {
+              deliveryStreamName => 'MyDeliveryStreamName',
+              roleArn            => 'MyAwsArn',
+              separator          => 'MyFirehoseSeparator',    # OPTIONAL
+            },    # OPTIONAL
+            sns => {
+              targetArn     => 'MyAwsArn',
+              roleArn       => 'MyAwsArn',
+              messageFormat => 'RAW',        # values: RAW, JSON; OPTIONAL
+            },    # OPTIONAL
+            cloudwatchMetric => {
+              metricName      => 'MyMetricName',
+              metricValue     => 'MyMetricValue',
+              roleArn         => 'MyAwsArn',
+              metricNamespace => 'MyMetricNamespace',
+              metricUnit      => 'MyMetricUnit',
+              metricTimestamp => 'MyMetricTimestamp',    # OPTIONAL
+            },    # OPTIONAL
+            lambda => {
+              functionArn => 'MyFunctionArn',
+
+            },    # OPTIONAL
+            dynamoDB => {
+              hashKeyValue  => 'MyHashKeyValue',
+              hashKeyField  => 'MyHashKeyField',
+              tableName     => 'MyTableName',
+              roleArn       => 'MyAwsArn',
+              rangeKeyField => 'MyRangeKeyField',    # OPTIONAL
+              rangeKeyType => 'STRING',    # values: STRING, NUMBER; OPTIONAL
+              hashKeyType  => 'STRING',    # values: STRING, NUMBER; OPTIONAL
+              payloadField  => 'MyPayloadField',       # OPTIONAL
+              operation     => 'MyDynamoOperation',    # OPTIONAL
+              rangeKeyValue => 'MyRangeKeyValue',      # OPTIONAL
+            },    # OPTIONAL
+            sqs => {
+              queueUrl  => 'MyQueueUrl',
+              roleArn   => 'MyAwsArn',
+              useBase64 => 1,              # OPTIONAL
+            },    # OPTIONAL
+            iotAnalytics => {
+              channelName => 'MyChannelName',    # OPTIONAL
+              channelArn  => 'MyAwsArn',
+              roleArn     => 'MyAwsArn',
+            },    # OPTIONAL
+            dynamoDBv2 => {
+              roleArn => 'MyAwsArn',
+              putItem => {
+                tableName => 'MyTableName',
+
+              },    # OPTIONAL
+            },    # OPTIONAL
+            cloudwatchAlarm => {
+              stateValue  => 'MyStateValue',
+              roleArn     => 'MyAwsArn',
+              alarmName   => 'MyAlarmName',
+              stateReason => 'MyStateReason',
+
+            },    # OPTIONAL
+            kinesis => {
+              streamName   => 'MyStreamName',
+              roleArn      => 'MyAwsArn',
+              partitionKey => 'MyPartitionKey',    # OPTIONAL
+            },    # OPTIONAL
+            s3 => {
+              bucketName => 'MyBucketName',
+              key        => 'MyKey',
+              roleArn    => 'MyAwsArn',
+              cannedAcl  => 'private'
+              , # values: private, public-read, public-read-write, aws-exec-read, authenticated-read, bucket-owner-read, bucket-owner-full-control, log-delivery-write; OPTIONAL
+            },    # OPTIONAL
+            elasticsearch => {
+              index    => 'MyElasticsearchIndex',
+              type     => 'MyElasticsearchType',
+              roleArn  => 'MyAwsArn',
+              id       => 'MyElasticsearchId',
+              endpoint => 'MyElasticsearchEndpoint',
+
+            },    # OPTIONAL
+            salesforce => {
+              url   => 'MySalesforceEndpoint',    # max: 2000
+              token => 'MySalesforceToken',       # min: 40,
+
+            },    # OPTIONAL
+            republish => {
+              roleArn => 'MyAwsArn',
+              topic   => 'MyTopicPattern',
+
+            },    # OPTIONAL
+          },
+          ...
+        ],        # max: 10
+        sql              => 'MySQL',
+        awsIotSqlVersion => 'MyAwsIotSqlVersion',    # OPTIONAL
+        description      => 'MyDescription',         # OPTIONAL
+        errorAction      => {
+          firehose => {
+            deliveryStreamName => 'MyDeliveryStreamName',
+            roleArn            => 'MyAwsArn',
+            separator          => 'MyFirehoseSeparator',    # OPTIONAL
+          },    # OPTIONAL
+          sns => {
+            targetArn     => 'MyAwsArn',
+            roleArn       => 'MyAwsArn',
+            messageFormat => 'RAW',        # values: RAW, JSON; OPTIONAL
+          },    # OPTIONAL
+          cloudwatchMetric => {
+            metricName      => 'MyMetricName',
+            metricValue     => 'MyMetricValue',
+            roleArn         => 'MyAwsArn',
+            metricNamespace => 'MyMetricNamespace',
+            metricUnit      => 'MyMetricUnit',
+            metricTimestamp => 'MyMetricTimestamp',    # OPTIONAL
+          },    # OPTIONAL
+          lambda => {
+            functionArn => 'MyFunctionArn',
+
+          },    # OPTIONAL
+          dynamoDB => {
+            hashKeyValue  => 'MyHashKeyValue',
+            hashKeyField  => 'MyHashKeyField',
+            tableName     => 'MyTableName',
+            roleArn       => 'MyAwsArn',
+            rangeKeyField => 'MyRangeKeyField',    # OPTIONAL
+            rangeKeyType => 'STRING',         # values: STRING, NUMBER; OPTIONAL
+            hashKeyType  => 'STRING',         # values: STRING, NUMBER; OPTIONAL
+            payloadField => 'MyPayloadField', # OPTIONAL
+            operation     => 'MyDynamoOperation',    # OPTIONAL
+            rangeKeyValue => 'MyRangeKeyValue',      # OPTIONAL
+          },    # OPTIONAL
+          sqs => {
+            queueUrl  => 'MyQueueUrl',
+            roleArn   => 'MyAwsArn',
+            useBase64 => 1,              # OPTIONAL
+          },    # OPTIONAL
+          iotAnalytics => {
+            channelName => 'MyChannelName',    # OPTIONAL
+            channelArn  => 'MyAwsArn',
+            roleArn     => 'MyAwsArn',
+          },    # OPTIONAL
+          dynamoDBv2 => {
+            roleArn => 'MyAwsArn',
+            putItem => {
+              tableName => 'MyTableName',
+
+            },    # OPTIONAL
+          },    # OPTIONAL
+          cloudwatchAlarm => {
+            stateValue  => 'MyStateValue',
+            roleArn     => 'MyAwsArn',
+            alarmName   => 'MyAlarmName',
+            stateReason => 'MyStateReason',
+
+          },    # OPTIONAL
+          kinesis => {
+            streamName   => 'MyStreamName',
+            roleArn      => 'MyAwsArn',
+            partitionKey => 'MyPartitionKey',    # OPTIONAL
+          },    # OPTIONAL
+          s3 => {
+            bucketName => 'MyBucketName',
+            key        => 'MyKey',
+            roleArn    => 'MyAwsArn',
+            cannedAcl  => 'private'
+            , # values: private, public-read, public-read-write, aws-exec-read, authenticated-read, bucket-owner-read, bucket-owner-full-control, log-delivery-write; OPTIONAL
+          },    # OPTIONAL
+          elasticsearch => {
+            index    => 'MyElasticsearchIndex',
+            type     => 'MyElasticsearchType',
+            roleArn  => 'MyAwsArn',
+            id       => 'MyElasticsearchId',
+            endpoint => 'MyElasticsearchEndpoint',
+
+          },    # OPTIONAL
+          salesforce => {
+            url   => 'MySalesforceEndpoint',    # max: 2000
+            token => 'MySalesforceToken',       # min: 40,
+
+          },    # OPTIONAL
+          republish => {
+            roleArn => 'MyAwsArn',
+            topic   => 'MyTopicPattern',
+
+          },    # OPTIONAL
+        },
+        ruleDisabled => 1,    # OPTIONAL
+      },
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot/ReplaceTopicRule>

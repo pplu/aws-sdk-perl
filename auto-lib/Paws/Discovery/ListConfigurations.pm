@@ -28,9 +28,36 @@ as arguments to method ListConfigurations.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListConfigurations.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListConfigurations(Att1 => $value1, Att2 => $value2, ...);
+    my $discovery = Paws->service('Discovery');
+    my $ListConfigurationsResponse = $discovery->ListConfigurations(
+      ConfigurationType => 'SERVER',
+      Filters           => [
+        {
+          values    => [ 'MyFilterValue', ... ],
+          name      => 'MyString',
+          condition => 'MyCondition',
+
+        },
+        ...
+      ],    # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
+      OrderBy    => [
+        {
+          fieldName => 'MyString',
+          sortOrder => 'ASC',         # values: ASC, DESC; OPTIONAL
+        },
+        ...
+      ],                              # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken      = $ListConfigurationsResponse->NextToken;
+    my $Configurations = $ListConfigurationsResponse->Configurations;
+
+    # Returns a L<Paws::Discovery::ListConfigurationsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/discovery/ListConfigurations>

@@ -33,9 +33,29 @@ as arguments to method PutScalingPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutScalingPolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutScalingPolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $gamelift = Paws->service('GameLift');
+    my $PutScalingPolicyOutput = $gamelift->PutScalingPolicy(
+      FleetId               => 'MyFleetId',
+      MetricName            => 'ActivatingGameSessions',
+      Name                  => 'MyNonZeroAndMaxString',
+      ComparisonOperator    => 'GreaterThanOrEqualToThreshold',    # OPTIONAL
+      EvaluationPeriods     => 1,                                  # OPTIONAL
+      PolicyType            => 'RuleBased',                        # OPTIONAL
+      ScalingAdjustment     => 1,                                  # OPTIONAL
+      ScalingAdjustmentType => 'ChangeInCapacity',                 # OPTIONAL
+      TargetConfiguration   => {
+        TargetValue => 1,
+
+      },                                                           # OPTIONAL
+      Threshold => 1,                                              # OPTIONAL
+    );
+
+    # Results:
+    my $Name = $PutScalingPolicyOutput->Name;
+
+    # Returns a L<Paws::GameLift::PutScalingPolicyOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/PutScalingPolicy>

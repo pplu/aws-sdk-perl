@@ -25,9 +25,65 @@ as arguments to method AddInstanceFleet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddInstanceFleet.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AddInstanceFleet(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticmapreduce = Paws->service('EMR');
+    my $AddInstanceFleetOutput = $elasticmapreduce->AddInstanceFleet(
+      ClusterId     => 'MyXmlStringMaxLen256',
+      InstanceFleet => {
+        InstanceFleetType    => 'MASTER',    # values: MASTER, CORE, TASK
+        LaunchSpecifications => {
+          SpotSpecification => {
+            TimeoutDurationMinutes => 1,                      # OPTIONAL
+            TimeoutAction          => 'SWITCH_TO_ON_DEMAND'
+            ,    # values: SWITCH_TO_ON_DEMAND, TERMINATE_CLUSTER
+            BlockDurationMinutes => 1,    # OPTIONAL
+          },
+
+        },    # OPTIONAL
+        TargetOnDemandCapacity => 1,                         # OPTIONAL
+        Name                   => 'MyXmlStringMaxLen256',    # max: 256
+        TargetSpotCapacity     => 1,                         # OPTIONAL
+        InstanceTypeConfigs    => [
+          {
+            InstanceType => 'MyInstanceType',                # min: 1, max: 256
+            BidPriceAsPercentageOfOnDemandPrice => 1,        # OPTIONAL
+            BidPrice         => 'MyXmlStringMaxLen256',      # max: 256
+            WeightedCapacity => 1,                           # OPTIONAL
+            Configurations   => [
+              {
+                Properties     => { 'MyString' => 'MyString', },    # OPTIONAL
+                Configurations => <ConfigurationList>,
+                Classification => 'MyString',
+              },
+              ...
+            ],                                                      # OPTIONAL
+            EbsConfiguration => {
+              EbsBlockDeviceConfigs => [
+                {
+                  VolumeSpecification => {
+                    SizeInGB   => 1,
+                    VolumeType => 'MyString',
+                    Iops       => 1,
+                  },
+                  VolumesPerInstance => 1,
+                },
+                ...
+              ],                                                    # OPTIONAL
+              EbsOptimized => 1,                                    # OPTIONAL
+            },    # OPTIONAL
+          },
+          ...
+        ],        # OPTIONAL
+      },
+
+    );
+
+    # Results:
+    my $InstanceFleetId = $AddInstanceFleetOutput->InstanceFleetId;
+    my $ClusterId       = $AddInstanceFleetOutput->ClusterId;
+
+    # Returns a L<Paws::EMR::AddInstanceFleetOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce/AddInstanceFleet>

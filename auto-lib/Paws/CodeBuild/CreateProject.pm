@@ -35,9 +35,79 @@ as arguments to method CreateProject.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateProject.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateProject(Att1 => $value1, Att2 => $value2, ...);
+    my $codebuild = Paws->service('CodeBuild');
+    my $CreateProjectOutput = $codebuild->CreateProject(
+      Artifacts => {
+        type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+        namespaceType => 'NONE',        # values: NONE, BUILD_ID; OPTIONAL
+        name          => 'MyString',    # OPTIONAL
+        path          => 'MyString',    # OPTIONAL
+        location      => 'MyString',    # OPTIONAL
+        packaging     => 'NONE',        # values: NONE, ZIP; OPTIONAL
+      },
+      Environment => {
+        type =>
+          'WINDOWS_CONTAINER',    # values: WINDOWS_CONTAINER, LINUX_CONTAINER
+        computeType => 'BUILD_GENERAL1_SMALL'
+        , # values: BUILD_GENERAL1_SMALL, BUILD_GENERAL1_MEDIUM, BUILD_GENERAL1_LARGE
+        image                => 'MyNonEmptyString',    # min: 1,
+        certificate          => 'MyString',            # OPTIONAL
+        privilegedMode       => 1,                     # OPTIONAL
+        environmentVariables => [
+          {
+            value => 'MyString',                       # OPTIONAL
+            name  => 'MyNonEmptyString',               # min: 1,
+            type => 'PLAINTEXT',  # values: PLAINTEXT, PARAMETER_STORE; OPTIONAL
+          },
+          ...
+        ],                        # OPTIONAL
+      },
+      Name   => 'MyProjectName',
+      Source => {
+        type => 'CODECOMMIT'
+        , # values: CODECOMMIT, CODEPIPELINE, GITHUB, S3, BITBUCKET, GITHUB_ENTERPRISE
+        location      => 'MyString',    # OPTIONAL
+        gitCloneDepth => 1,             # OPTIONAL
+        buildspec     => 'MyString',    # OPTIONAL
+        insecureSsl   => 1,             # OPTIONAL
+        auth          => {
+          type     => 'OAUTH',          # values: OAUTH
+          resource => 'MyString',       # OPTIONAL
+        },    # OPTIONAL
+      },
+      BadgeEnabled => 1,    # OPTIONAL
+      Cache        => {
+        type     => 'NO_CACHE',    # values: NO_CACHE, S3
+        location => 'MyString',    # OPTIONAL
+      },    # OPTIONAL
+      Description   => 'MyProjectDescription',    # OPTIONAL
+      EncryptionKey => 'MyNonEmptyString',        # OPTIONAL
+      ServiceRole   => 'MyNonEmptyString',        # OPTIONAL
+      Tags          => [
+        {
+          key   => 'MyKeyInput',                  # min: 1, max: 127; OPTIONAL
+          value => 'MyValueInput',                # min: 1, max: 255; OPTIONAL
+        },
+        ...
+      ],                                          # OPTIONAL
+      TimeoutInMinutes => 1,                      # OPTIONAL
+      VpcConfig        => {
+        subnets => [
+          'MyNonEmptyString', ...                 # min: 1,
+        ],                                        # max: 16; OPTIONAL
+        vpcId            => 'MyNonEmptyString',   # min: 1,
+        securityGroupIds => [
+          'MyNonEmptyString', ...                 # min: 1,
+        ],                                        # max: 5; OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $Project = $CreateProjectOutput->Project;
+
+    # Returns a L<Paws::CodeBuild::CreateProjectOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codebuild/CreateProject>

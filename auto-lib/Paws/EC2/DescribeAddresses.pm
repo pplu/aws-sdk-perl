@@ -27,9 +27,55 @@ as arguments to method DescribeAddresses.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAddresses.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeAddresses(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To describe your Elastic IP addresses
+    # This example describes your Elastic IP addresses.
+    my $DescribeAddressesResult = $ec2->DescribeAddresses();
+
+    # Results:
+    my $Addresses = $DescribeAddressesResult->Addresses;
+
+    # Returns a L<Paws::EC2::DescribeAddressesResult> object.
+    # To describe your Elastic IP addresses for EC2-VPC
+    # This example describes your Elastic IP addresses for use with instances in
+    # a VPC.
+    my $DescribeAddressesResult = $ec2->DescribeAddresses(
+      {
+        'Filters' => [
+
+          {
+            'Name'   => 'domain',
+            'Values' => ['vpc']
+          }
+        ]
+      }
+    );
+
+    # Results:
+    my $Addresses = $DescribeAddressesResult->Addresses;
+
+    # Returns a L<Paws::EC2::DescribeAddressesResult> object.
+    # To describe your Elastic IP addresses for EC2-Classic
+    # This example describes your Elastic IP addresses for use with instances in
+    # EC2-Classic.
+    my $DescribeAddressesResult = $ec2->DescribeAddresses(
+      {
+        'Filters' => [
+
+          {
+            'Values' => ['standard'],
+            'Name'   => 'domain'
+          }
+        ]
+      }
+    );
+
+    # Results:
+    my $Addresses = $DescribeAddressesResult->Addresses;
+
+    # Returns a L<Paws::EC2::DescribeAddressesResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeAddresses>

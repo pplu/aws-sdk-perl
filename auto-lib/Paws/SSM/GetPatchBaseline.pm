@@ -24,9 +24,33 @@ as arguments to method GetPatchBaseline.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetPatchBaseline.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetPatchBaseline(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $GetPatchBaselineResult = $ssm->GetPatchBaseline(
+      BaselineId => 'MyBaselineId',
+
+    );
+
+    # Results:
+    my $ApprovedPatchesEnableNonSecurity =
+      $GetPatchBaselineResult->ApprovedPatchesEnableNonSecurity;
+    my $ApprovalRules = $GetPatchBaselineResult->ApprovalRules;
+    my $GlobalFilters = $GetPatchBaselineResult->GlobalFilters;
+    my $Description   = $GetPatchBaselineResult->Description;
+    my $ApprovedPatchesComplianceLevel =
+      $GetPatchBaselineResult->ApprovedPatchesComplianceLevel;
+    my $PatchGroups     = $GetPatchBaselineResult->PatchGroups;
+    my $CreatedDate     = $GetPatchBaselineResult->CreatedDate;
+    my $RejectedPatches = $GetPatchBaselineResult->RejectedPatches;
+    my $Sources         = $GetPatchBaselineResult->Sources;
+    my $OperatingSystem = $GetPatchBaselineResult->OperatingSystem;
+    my $ModifiedDate    = $GetPatchBaselineResult->ModifiedDate;
+    my $Name            = $GetPatchBaselineResult->Name;
+    my $BaselineId      = $GetPatchBaselineResult->BaselineId;
+    my $ApprovedPatches = $GetPatchBaselineResult->ApprovedPatches;
+
+    # Returns a L<Paws::SSM::GetPatchBaselineResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/GetPatchBaseline>

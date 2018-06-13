@@ -30,9 +30,31 @@ as arguments to method CreateSecret.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateSecret.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateSecret(Att1 => $value1, Att2 => $value2, ...);
+    my $secretsmanager = Paws->service('SecretsManager');
+    my $CreateSecretResponse = $secretsmanager->CreateSecret(
+      Name               => 'MyNameType',
+      ClientRequestToken => 'MyClientRequestTokenType',    # OPTIONAL
+      Description        => 'MyDescriptionType',           # OPTIONAL
+      KmsKeyId           => 'MyKmsKeyIdType',              # OPTIONAL
+      SecretBinary       => 'BlobSecretBinaryType',        # OPTIONAL
+      SecretString       => 'MySecretStringType',          # OPTIONAL
+      Tags               => [
+        {
+          Key   => 'MyTagKeyType',      # min: 1, max: 128; OPTIONAL
+          Value => 'MyTagValueType',    # max: 256; OPTIONAL
+        },
+        ...
+      ],                                # OPTIONAL
+    );
+
+    # Results:
+    my $ARN       = $CreateSecretResponse->ARN;
+    my $Name      = $CreateSecretResponse->Name;
+    my $VersionId = $CreateSecretResponse->VersionId;
+
+    # Returns a L<Paws::SecretsManager::CreateSecretResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/secretsmanager/CreateSecret>

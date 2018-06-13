@@ -26,9 +26,20 @@ as arguments to method Predict.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to Predict.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->Predict(Att1 => $value1, Att2 => $value2, ...);
+    my $machinelearning = Paws->service('MachineLearning');
+    my $PredictOutput = $machinelearning->Predict(
+      MLModelId       => 'MyEntityId',
+      PredictEndpoint => 'MyVipURL',
+      Record          => { 'MyVariableName' => 'MyVariableValue', },
+
+    );
+
+    # Results:
+    my $Prediction = $PredictOutput->Prediction;
+
+    # Returns a L<Paws::MachineLearning::PredictOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/machinelearning/Predict>

@@ -27,9 +27,39 @@ as arguments to method CreateRule.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateRule.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateRule(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticloadbalancing = Paws->service('ELBv2');
+    # To create a rule
+    # This example creates a rule that forwards requests to the specified target
+    # group if the URL contains the specified pattern (for example, /img/*).
+    my $CreateRuleOutput = $elasticloadbalancing->CreateRule(
+      {
+        'Priority' => 10,
+        'Actions'  => [
+
+          {
+            'TargetGroupArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067',
+            'Type' => 'forward'
+          }
+        ],
+        'ListenerArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2',
+        'Conditions' => [
+
+          {
+            'Field'  => 'path-pattern',
+            'Values' => ['/img/*']
+          }
+        ]
+      }
+    );
+
+    # Results:
+    my $Rules = $CreateRuleOutput->Rules;
+
+    # Returns a L<Paws::ELBv2::CreateRuleOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing/CreateRule>

@@ -32,9 +32,33 @@ as arguments to method PostContent.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PostContent.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PostContent(Att1 => $value1, Att2 => $value2, ...);
+    my $runtime.lex = Paws->service('LexRuntime');
+    my $PostContentResponse = $runtime . lex->PostContent(
+      BotAlias          => 'MyBotAlias',
+      BotName           => 'MyBotName',
+      ContentType       => 'MyHttpContentType',
+      InputStream       => 'BlobBlobStream',
+      UserId            => 'MyUserId',
+      Accept            => 'MyAccept',              # OPTIONAL
+      RequestAttributes => 'MyAttributesString',    # OPTIONAL
+      SessionAttributes => 'MyAttributesString',    # OPTIONAL
+    );
+
+    # Results:
+    my $ContentType       = $PostContentResponse->ContentType;
+    my $Slots             = $PostContentResponse->Slots;
+    my $SessionAttributes = $PostContentResponse->SessionAttributes;
+    my $DialogState       = $PostContentResponse->DialogState;
+    my $MessageFormat     = $PostContentResponse->MessageFormat;
+    my $InputTranscript   = $PostContentResponse->InputTranscript;
+    my $AudioStream       = $PostContentResponse->AudioStream;
+    my $SlotToElicit      = $PostContentResponse->SlotToElicit;
+    my $Message           = $PostContentResponse->Message;
+    my $IntentName        = $PostContentResponse->IntentName;
+
+    # Returns a L<Paws::LexRuntime::PostContentResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/runtime.lex/PostContent>

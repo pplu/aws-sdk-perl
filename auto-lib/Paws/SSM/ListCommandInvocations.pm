@@ -29,9 +29,30 @@ as arguments to method ListCommandInvocations.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListCommandInvocations.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListCommandInvocations(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $ListCommandInvocationsResult = $ssm->ListCommandInvocations(
+      CommandId => 'MyCommandId',    # OPTIONAL
+      Details   => 1,                # OPTIONAL
+      Filters   => [
+        {
+          key => 'InvokedAfter',   # values: InvokedAfter, InvokedBefore, Status
+          value => 'MyCommandFilterValue',    # min: 1,
+
+        },
+        ...
+      ],                                      # OPTIONAL
+      InstanceId => 'MyInstanceId',           # OPTIONAL
+      MaxResults => 1,                        # OPTIONAL
+      NextToken  => 'MyNextToken',            # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken          = $ListCommandInvocationsResult->NextToken;
+    my $CommandInvocations = $ListCommandInvocationsResult->CommandInvocations;
+
+    # Returns a L<Paws::SSM::ListCommandInvocationsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/ListCommandInvocations>

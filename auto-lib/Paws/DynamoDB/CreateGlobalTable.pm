@@ -25,9 +25,25 @@ as arguments to method CreateGlobalTable.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateGlobalTable.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateGlobalTable(Att1 => $value1, Att2 => $value2, ...);
+    my $dynamodb = Paws->service('DynamoDB');
+    my $CreateGlobalTableOutput = $dynamodb->CreateGlobalTable(
+      GlobalTableName  => 'MyTableName',
+      ReplicationGroup => [
+        {
+          RegionName => 'MyRegionName',    # OPTIONAL
+        },
+        ...
+      ],
+
+    );
+
+    # Results:
+    my $GlobalTableDescription =
+      $CreateGlobalTableOutput->GlobalTableDescription;
+
+    # Returns a L<Paws::DynamoDB::CreateGlobalTableOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dynamodb/CreateGlobalTable>

@@ -26,9 +26,28 @@ as arguments to method ListAssociations.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListAssociations.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListAssociations(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $ListAssociationsResult = $ssm->ListAssociations(
+      AssociationFilterList => [
+        {
+          key => 'InstanceId'
+          , # values: InstanceId, Name, AssociationId, AssociationStatusName, LastExecutedBefore, LastExecutedAfter, AssociationName
+          value => 'MyAssociationFilterValue',    # min: 1,
+
+        },
+        ...
+      ],                                          # OPTIONAL
+      MaxResults => 1,                            # OPTIONAL
+      NextToken  => 'MyNextToken',                # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken    = $ListAssociationsResult->NextToken;
+    my $Associations = $ListAssociationsResult->Associations;
+
+    # Returns a L<Paws::SSM::ListAssociationsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/ListAssociations>

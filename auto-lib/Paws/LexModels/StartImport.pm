@@ -27,9 +27,25 @@ as arguments to method StartImport.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartImport.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->StartImport(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    my $StartImportResponse = $models . lex->StartImport(
+      MergeStrategy => 'OVERWRITE_LATEST',
+      Payload       => 'BlobBlob',
+      ResourceType  => 'BOT',
+
+    );
+
+    # Results:
+    my $ImportStatus  = $StartImportResponse->ImportStatus;
+    my $Name          = $StartImportResponse->Name;
+    my $ImportId      = $StartImportResponse->ImportId;
+    my $CreatedDate   = $StartImportResponse->CreatedDate;
+    my $MergeStrategy = $StartImportResponse->MergeStrategy;
+    my $ResourceType  = $StartImportResponse->ResourceType;
+
+    # Returns a L<Paws::LexModels::StartImportResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/lex/>

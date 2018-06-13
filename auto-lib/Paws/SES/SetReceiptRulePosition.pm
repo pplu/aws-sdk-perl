@@ -26,9 +26,20 @@ as arguments to method SetReceiptRulePosition.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetReceiptRulePosition.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SetReceiptRulePosition(Att1 => $value1, Att2 => $value2, ...);
+    my $email = Paws->service('SES');
+   # SetReceiptRulePosition
+   # The following example sets the position of a receipt rule in a receipt rule
+   # set:
+    my $SetReceiptRulePositionResponse = $email->SetReceiptRulePosition(
+      {
+        'RuleSetName' => 'MyRuleSet',
+        'After'       => 'PutRuleAfterThisRule',
+        'RuleName'    => 'RuleToReposition'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/email/SetReceiptRulePosition>

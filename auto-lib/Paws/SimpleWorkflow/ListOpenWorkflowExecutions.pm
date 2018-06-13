@@ -31,9 +31,37 @@ as arguments to method ListOpenWorkflowExecutions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListOpenWorkflowExecutions.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListOpenWorkflowExecutions(Att1 => $value1, Att2 => $value2, ...);
+    my $swf = Paws->service('SimpleWorkflow');
+    my $WorkflowExecutionInfos = $swf->ListOpenWorkflowExecutions(
+      Domain          => 'MyDomainName',
+      StartTimeFilter => {
+        oldestDate => '1970-01-01T01:00:00',
+        latestDate => '1970-01-01T01:00:00',
+      },
+      ExecutionFilter => {
+        workflowId => 'MyWorkflowId',    # min: 1, max: 256
+
+      },    # OPTIONAL
+      MaximumPageSize => 1,                # OPTIONAL
+      NextPageToken   => 'MyPageToken',    # OPTIONAL
+      ReverseOrder    => 1,                # OPTIONAL
+      TagFilter       => {
+        tag => 'MyTag',                    # max: 256
+
+      },    # OPTIONAL
+      TypeFilter => {
+        name    => 'MyName',               # min: 1, max: 256
+        version => 'MyVersionOptional',    # max: 64; OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $NextPageToken  = $WorkflowExecutionInfos->NextPageToken;
+    my $ExecutionInfos = $WorkflowExecutionInfos->ExecutionInfos;
+
+    # Returns a L<Paws::SimpleWorkflow::WorkflowExecutionInfos> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/swf/ListOpenWorkflowExecutions>

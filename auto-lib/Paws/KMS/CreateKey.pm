@@ -29,9 +29,17 @@ as arguments to method CreateKey.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateKey.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateKey(Att1 => $value1, Att2 => $value2, ...);
+    my $kms = Paws->service('KMS');
+    # To create a customer master key (CMK)
+    # The following example creates a CMK.
+    my $CreateKeyResponse = $kms->CreateKey();
+
+    # Results:
+    my $KeyMetadata = $CreateKeyResponse->KeyMetadata;
+
+    # Returns a L<Paws::KMS::CreateKeyResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms/CreateKey>

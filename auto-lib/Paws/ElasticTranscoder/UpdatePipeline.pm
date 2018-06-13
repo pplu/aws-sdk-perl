@@ -32,9 +32,52 @@ as arguments to method UpdatePipeline.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdatePipeline.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdatePipeline(Att1 => $value1, Att2 => $value2, ...);
+    my $elastictranscoder = Paws->service('ElasticTranscoder');
+    my $UpdatePipelineResponse = $elastictranscoder->UpdatePipeline(
+      Id            => 'MyId',
+      AwsKmsKeyArn  => 'MyKeyArn',    # OPTIONAL
+      ContentConfig => {
+        Permissions => [
+          {
+            Access => [ 'MyAccessControl', ... ],    # max: 30; OPTIONAL
+            GranteeType => 'MyGranteeType',          # OPTIONAL
+            Grantee => 'MyGrantee',    # min: 1, max: 255; OPTIONAL
+          },
+          ...
+        ],                             # max: 30; OPTIONAL
+        Bucket       => 'MyBucketName',      # OPTIONAL
+        StorageClass => 'MyStorageClass',    # OPTIONAL
+      },    # OPTIONAL
+      InputBucket   => 'MyBucketName',    # OPTIONAL
+      Name          => 'MyName',          # OPTIONAL
+      Notifications => {
+        Error       => 'MySnsTopic',      # OPTIONAL
+        Progressing => 'MySnsTopic',      # OPTIONAL
+        Completed   => 'MySnsTopic',      # OPTIONAL
+        Warning     => 'MySnsTopic',      # OPTIONAL
+      },    # OPTIONAL
+      Role            => 'MyRole',    # OPTIONAL
+      ThumbnailConfig => {
+        Permissions => [
+          {
+            Access => [ 'MyAccessControl', ... ],    # max: 30; OPTIONAL
+            GranteeType => 'MyGranteeType',          # OPTIONAL
+            Grantee => 'MyGrantee',    # min: 1, max: 255; OPTIONAL
+          },
+          ...
+        ],                             # max: 30; OPTIONAL
+        Bucket       => 'MyBucketName',      # OPTIONAL
+        StorageClass => 'MyStorageClass',    # OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $Warnings = $UpdatePipelineResponse->Warnings;
+    my $Pipeline = $UpdatePipelineResponse->Pipeline;
+
+    # Returns a L<Paws::ElasticTranscoder::UpdatePipelineResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

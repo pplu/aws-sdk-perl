@@ -26,9 +26,23 @@ as arguments to method DescribeStream.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeStream.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeStream(Att1 => $value1, Att2 => $value2, ...);
+    my $streams.dynamodb = Paws->service('DynamoDBStreams');
+    # To describe a stream with a given stream ARN
+    # The following example describes a stream with a given stream ARN.
+    my $DescribeStreamOutput = $streams
+      . dynamodb->DescribeStream(
+      {
+        'StreamArn' =>
+'arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:10.252'
+      }
+      );
+
+    # Results:
+    my $StreamDescription = $DescribeStreamOutput->StreamDescription;
+
+    # Returns a L<Paws::DynamoDBStreams::DescribeStreamOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/dynamodb/>

@@ -26,9 +26,21 @@ as arguments to method GetReplicationRuns.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetReplicationRuns.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetReplicationRuns(Att1 => $value1, Att2 => $value2, ...);
+    my $sms = Paws->service('SMS');
+    my $GetReplicationRunsResponse = $sms->GetReplicationRuns(
+      ReplicationJobId => 'MyReplicationJobId',
+      MaxResults       => 1,                      # OPTIONAL
+      NextToken        => 'MyNextToken',          # OPTIONAL
+    );
+
+    # Results:
+    my $ReplicationRunList = $GetReplicationRunsResponse->ReplicationRunList;
+    my $NextToken          = $GetReplicationRunsResponse->NextToken;
+    my $ReplicationJob     = $GetReplicationRunsResponse->ReplicationJob;
+
+    # Returns a L<Paws::SMS::GetReplicationRunsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sms/GetReplicationRuns>

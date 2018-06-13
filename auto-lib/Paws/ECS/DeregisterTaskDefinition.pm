@@ -24,9 +24,18 @@ as arguments to method DeregisterTaskDefinition.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeregisterTaskDefinition.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DeregisterTaskDefinition(Att1 => $value1, Att2 => $value2, ...);
+    my $ecs = Paws->service('ECS');
+    my $DeregisterTaskDefinitionResponse = $ecs->DeregisterTaskDefinition(
+      TaskDefinition => 'MyString',
+
+    );
+
+    # Results:
+    my $taskDefinition = $DeregisterTaskDefinitionResponse->taskDefinition;
+
+    # Returns a L<Paws::ECS::DeregisterTaskDefinitionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs/DeregisterTaskDefinition>

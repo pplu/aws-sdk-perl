@@ -24,9 +24,22 @@ as arguments to method ListOfferings.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListOfferings.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListOfferings(Att1 => $value1, Att2 => $value2, ...);
+    my $devicefarm = Paws->service('DeviceFarm');
+   # To get information about device offerings
+   # The following example returns information about available device offerings.
+    my $ListOfferingsResult = $devicefarm->ListOfferings(
+      {
+        'NextToken' =>
+          'RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE='
+      }
+    );
+
+    # Results:
+    my $offerings = $ListOfferingsResult->offerings;
+
+    # Returns a L<Paws::DeviceFarm::ListOfferingsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/devicefarm/ListOfferings>

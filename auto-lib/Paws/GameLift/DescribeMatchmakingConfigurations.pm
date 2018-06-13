@@ -27,9 +27,25 @@ as arguments to method DescribeMatchmakingConfigurations.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeMatchmakingConfigurations.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeMatchmakingConfigurations(Att1 => $value1, Att2 => $value2, ...);
+    my $gamelift = Paws->service('GameLift');
+    my $DescribeMatchmakingConfigurationsOutput =
+      $gamelift->DescribeMatchmakingConfigurations(
+      Limit => 1,    # OPTIONAL
+      Names => [
+        'MyMatchmakingIdStringModel', ...    # min: 1, max: 128
+      ],                                     # OPTIONAL
+      NextToken   => 'MyNonZeroAndMaxString',         # OPTIONAL
+      RuleSetName => 'MyMatchmakingIdStringModel',    # OPTIONAL
+      );
+
+    # Results:
+    my $NextToken = $DescribeMatchmakingConfigurationsOutput->NextToken;
+    my $Configurations =
+      $DescribeMatchmakingConfigurationsOutput->Configurations;
+
+  # Returns a L<Paws::GameLift::DescribeMatchmakingConfigurationsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/DescribeMatchmakingConfigurations>

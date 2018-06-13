@@ -35,9 +35,79 @@ as arguments to method UpdateProject.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateProject.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateProject(Att1 => $value1, Att2 => $value2, ...);
+    my $codebuild = Paws->service('CodeBuild');
+    my $UpdateProjectOutput = $codebuild->UpdateProject(
+      Name      => 'MyNonEmptyString',
+      Artifacts => {
+        type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+        name => 'MyString',        # OPTIONAL
+        namespaceType => 'NONE',        # values: NONE, BUILD_ID; OPTIONAL
+        packaging     => 'NONE',        # values: NONE, ZIP; OPTIONAL
+        location      => 'MyString',    # OPTIONAL
+        path          => 'MyString',    # OPTIONAL
+      },    # OPTIONAL
+      BadgeEnabled => 1,    # OPTIONAL
+      Cache        => {
+        type     => 'NO_CACHE',    # values: NO_CACHE, S3
+        location => 'MyString',    # OPTIONAL
+      },    # OPTIONAL
+      Description   => 'MyProjectDescription',    # OPTIONAL
+      EncryptionKey => 'MyNonEmptyString',        # OPTIONAL
+      Environment   => {
+        type =>
+          'WINDOWS_CONTAINER',    # values: WINDOWS_CONTAINER, LINUX_CONTAINER
+        computeType => 'BUILD_GENERAL1_SMALL'
+        , # values: BUILD_GENERAL1_SMALL, BUILD_GENERAL1_MEDIUM, BUILD_GENERAL1_LARGE
+        image                => 'MyNonEmptyString',    # min: 1,
+        privilegedMode       => 1,
+        environmentVariables => [
+          {
+            name  => 'MyNonEmptyString',               # min: 1,
+            value => 'MyString',                       # OPTIONAL
+            type => 'PLAINTEXT',  # values: PLAINTEXT, PARAMETER_STORE; OPTIONAL
+          },
+          ...
+        ],                        # OPTIONAL
+        certificate => 'MyString',    # OPTIONAL
+      },    # OPTIONAL
+      ServiceRole => 'MyNonEmptyString',    # OPTIONAL
+      Source      => {
+        type => 'CODECOMMIT'
+        , # values: CODECOMMIT, CODEPIPELINE, GITHUB, S3, BITBUCKET, GITHUB_ENTERPRISE
+        gitCloneDepth => 1,             # OPTIONAL
+        location      => 'MyString',    # OPTIONAL
+        insecureSsl   => 1,
+        auth          => {
+          type     => 'OAUTH',          # values: OAUTH
+          resource => 'MyString',       # OPTIONAL
+        },    # OPTIONAL
+        buildspec => 'MyString',    # OPTIONAL
+      },    # OPTIONAL
+      Tags => [
+        {
+          key   => 'MyKeyInput',      # min: 1, max: 127; OPTIONAL
+          value => 'MyValueInput',    # min: 1, max: 255; OPTIONAL
+        },
+        ...
+      ],                              # OPTIONAL
+      TimeoutInMinutes => 1,          # OPTIONAL
+      VpcConfig        => {
+        vpcId   => 'MyNonEmptyString',    # min: 1,
+        subnets => [
+          'MyNonEmptyString', ...         # min: 1,
+        ],                                # max: 16; OPTIONAL
+        securityGroupIds => [
+          'MyNonEmptyString', ...         # min: 1,
+        ],                                # max: 5; OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $Project = $UpdateProjectOutput->Project;
+
+    # Returns a L<Paws::CodeBuild::UpdateProjectOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codebuild/UpdateProject>

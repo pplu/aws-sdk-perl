@@ -31,9 +31,34 @@ as arguments to method CreateFilter.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateFilter.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateFilter(Att1 => $value1, Att2 => $value2, ...);
+    my $guardduty = Paws->service('GuardDuty');
+    my $CreateFilterResponse = $guardduty->CreateFilter(
+      DetectorId      => 'My__string',
+      Action          => 'NOOP',                   # OPTIONAL
+      ClientToken     => 'My__stringMin0Max64',    # OPTIONAL
+      Description     => 'MyFilterDescription',    # OPTIONAL
+      FindingCriteria => {
+        Criterion => {
+          'My__string' => {
+            Neq => [ 'My__string', ... ],          # OPTIONAL
+            Gte => 1,                              # OPTIONAL
+            Lte => 1,                              # OPTIONAL
+            Gt  => 1,                              # OPTIONAL
+            Eq  => [ 'My__string', ... ],          # OPTIONAL
+            Lt  => 1,                              # OPTIONAL
+          },
+        },    # OPTIONAL
+      },    # OPTIONAL
+      Name => 'MyFilterName',    # OPTIONAL
+      Rank => 1,                 # OPTIONAL
+    );
+
+    # Results:
+    my $Name = $CreateFilterResponse->Name;
+
+    # Returns a L<Paws::GuardDuty::CreateFilterResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

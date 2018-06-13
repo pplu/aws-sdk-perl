@@ -27,9 +27,27 @@ as arguments to method DescribeConfigurationAggregatorSourcesStatus.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeConfigurationAggregatorSourcesStatus.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeConfigurationAggregatorSourcesStatus(Att1 => $value1, Att2 => $value2, ...);
+    my $config = Paws->service('Config');
+    my $DescribeConfigurationAggregatorSourcesStatusResponse =
+      $config->DescribeConfigurationAggregatorSourcesStatus(
+      ConfigurationAggregatorName => 'MyConfigurationAggregatorName',
+      Limit                       => 1,                               # OPTIONAL
+      NextToken                   => 'MyString',                      # OPTIONAL
+      UpdateStatus                => [
+        'FAILED', ...    # values: FAILED, SUCCEEDED, OUTDATED
+      ],                 # OPTIONAL
+      );
+
+    # Results:
+    my $AggregatedSourceStatusList =
+      $DescribeConfigurationAggregatorSourcesStatusResponse
+      ->AggregatedSourceStatusList;
+    my $NextToken =
+      $DescribeConfigurationAggregatorSourcesStatusResponse->NextToken;
+
+# Returns a L<Paws::Config::DescribeConfigurationAggregatorSourcesStatusResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/config/DescribeConfigurationAggregatorSourcesStatus>

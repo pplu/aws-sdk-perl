@@ -27,9 +27,23 @@ as arguments to method GetMergeConflicts.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetMergeConflicts.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetMergeConflicts(Att1 => $value1, Att2 => $value2, ...);
+    my $codecommit = Paws->service('CodeCommit');
+    my $GetMergeConflictsOutput = $codecommit->GetMergeConflicts(
+      DestinationCommitSpecifier => 'MyCommitName',
+      MergeOption                => 'FAST_FORWARD_MERGE',
+      RepositoryName             => 'MyRepositoryName',
+      SourceCommitSpecifier      => 'MyCommitName',
+
+    );
+
+    # Results:
+    my $SourceCommitId      = $GetMergeConflictsOutput->SourceCommitId;
+    my $Mergeable           = $GetMergeConflictsOutput->Mergeable;
+    my $DestinationCommitId = $GetMergeConflictsOutput->DestinationCommitId;
+
+    # Returns a L<Paws::CodeCommit::GetMergeConflictsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codecommit/GetMergeConflicts>

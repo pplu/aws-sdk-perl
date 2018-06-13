@@ -24,9 +24,30 @@ as arguments to method DescribeSecret.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSecret.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeSecret(Att1 => $value1, Att2 => $value2, ...);
+    my $secretsmanager = Paws->service('SecretsManager');
+    my $DescribeSecretResponse = $secretsmanager->DescribeSecret(
+      SecretId => 'MySecretIdType',
+
+    );
+
+    # Results:
+    my $KmsKeyId           = $DescribeSecretResponse->KmsKeyId;
+    my $LastAccessedDate   = $DescribeSecretResponse->LastAccessedDate;
+    my $LastRotatedDate    = $DescribeSecretResponse->LastRotatedDate;
+    my $Description        = $DescribeSecretResponse->Description;
+    my $ARN                = $DescribeSecretResponse->ARN;
+    my $VersionIdsToStages = $DescribeSecretResponse->VersionIdsToStages;
+    my $Name               = $DescribeSecretResponse->Name;
+    my $RotationRules      = $DescribeSecretResponse->RotationRules;
+    my $Tags               = $DescribeSecretResponse->Tags;
+    my $LastChangedDate    = $DescribeSecretResponse->LastChangedDate;
+    my $RotationLambdaARN  = $DescribeSecretResponse->RotationLambdaARN;
+    my $RotationEnabled    = $DescribeSecretResponse->RotationEnabled;
+    my $DeletedDate        = $DescribeSecretResponse->DeletedDate;
+
+    # Returns a L<Paws::SecretsManager::DescribeSecretResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/secretsmanager/DescribeSecret>

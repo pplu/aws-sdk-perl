@@ -34,9 +34,51 @@ as arguments to method CreateProvisionedProductPlan.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateProvisionedProductPlan.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateProvisionedProductPlan(Att1 => $value1, Att2 => $value2, ...);
+    my $servicecatalog = Paws->service('ServiceCatalog');
+    my $CreateProvisionedProductPlanOutput =
+      $servicecatalog->CreateProvisionedProductPlan(
+      IdempotencyToken       => 'MyIdempotencyToken',
+      PlanName               => 'MyProvisionedProductPlanName',
+      PlanType               => 'CLOUDFORMATION',
+      ProductId              => 'MyId',
+      ProvisionedProductName => 'MyProvisionedProductName',
+      ProvisioningArtifactId => 'MyId',
+      AcceptLanguage         => 'MyAcceptLanguage',               # OPTIONAL
+      NotificationArns       => [
+        'MyNotificationArn', ...    # min: 1, max: 1224
+      ],                            # OPTIONAL
+      PathId                 => 'MyId',    # OPTIONAL
+      ProvisioningParameters => [
+        {
+          Key              => 'MyParameterKey',    # min: 1, max: 1000; OPTIONAL
+          UsePreviousValue => 1,                   # OPTIONAL
+          Value            => 'MyParameterValue',  # max: 4096; OPTIONAL
+        },
+        ...
+      ],                                           # OPTIONAL
+      Tags => [
+        {
+          Value => 'MyTagValue',                   # min: 1, max: 256
+          Key   => 'MyTagKey',                     # min: 1, max: 128
+
+        },
+        ...
+      ],                                           # OPTIONAL
+      );
+
+    # Results:
+    my $ProvisionedProductName =
+      $CreateProvisionedProductPlanOutput->ProvisionedProductName;
+    my $ProvisioningArtifactId =
+      $CreateProvisionedProductPlanOutput->ProvisioningArtifactId;
+    my $PlanId   = $CreateProvisionedProductPlanOutput->PlanId;
+    my $PlanName = $CreateProvisionedProductPlanOutput->PlanName;
+    my $ProvisionProductId =
+      $CreateProvisionedProductPlanOutput->ProvisionProductId;
+
+ # Returns a L<Paws::ServiceCatalog::CreateProvisionedProductPlanOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/servicecatalog/CreateProvisionedProductPlan>

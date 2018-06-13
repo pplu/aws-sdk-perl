@@ -29,9 +29,30 @@ as arguments to method ListParts.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListParts.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListParts(Att1 => $value1, Att2 => $value2, ...);
+    my $glacier = Paws->service('Glacier');
+ # To list the parts of an archive that have been uploaded in a multipart upload
+ # The example lists all the parts of a multipart upload.
+    my $ListPartsOutput = $glacier->ListParts(
+      {
+        'VaultName' => 'examplevault',
+        'UploadId' =>
+'OW2fM5iVylEpFEMM9_HpKowRapC3vn5sSL39_396UW9zLFUWVrnRHaPjUJddQ5OxSHVXjYtrN47NBZ-khxOjyEXAMPLE',
+        'AccountId' => '-'
+      }
+    );
+
+    # Results:
+    my $VaultARN           = $ListPartsOutput->VaultARN;
+    my $PartSizeInBytes    = $ListPartsOutput->PartSizeInBytes;
+    my $Parts              = $ListPartsOutput->Parts;
+    my $Marker             = $ListPartsOutput->Marker;
+    my $ArchiveDescription = $ListPartsOutput->ArchiveDescription;
+    my $CreationDate       = $ListPartsOutput->CreationDate;
+    my $MultipartUploadId  = $ListPartsOutput->MultipartUploadId;
+
+    # Returns a L<Paws::Glacier::ListPartsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/glacier/>

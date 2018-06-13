@@ -26,9 +26,25 @@ as arguments to method CreateThingType.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateThingType.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateThingType(Att1 => $value1, Att2 => $value2, ...);
+    my $iot = Paws->service('IoT');
+    my $CreateThingTypeResponse = $iot->CreateThingType(
+      ThingTypeName       => 'MyThingTypeName',
+      ThingTypeProperties => {
+        searchableAttributes => [
+          'MyAttributeName', ...    # max: 128
+        ],                          # OPTIONAL
+        thingTypeDescription => 'MyThingTypeDescription',  # max: 2028; OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $ThingTypeId   = $CreateThingTypeResponse->ThingTypeId;
+    my $ThingTypeArn  = $CreateThingTypeResponse->ThingTypeArn;
+    my $ThingTypeName = $CreateThingTypeResponse->ThingTypeName;
+
+    # Returns a L<Paws::IoT::CreateThingTypeResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot/CreateThingType>

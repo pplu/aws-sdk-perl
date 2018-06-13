@@ -24,9 +24,39 @@ as arguments to method PutPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutPolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutPolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $fms = Paws->service('FMS');
+    my $PutPolicyResponse = $fms->PutPolicy(
+      Policy => {
+        RemediationEnabled        => 1,
+        PolicyName                => 'MyResourceName',    # min: 1, max: 128
+        SecurityServicePolicyData => {
+          Type => 'WAF',                                  # values: WAF
+          ManagedServiceData =>
+            'MyManagedServiceData',    # min: 1, max: 1024; OPTIONAL
+        },
+        ResourceType        => 'MyResourceType',    # min: 1, max: 128
+        ExcludeResourceTags => 1,
+        PolicyUpdateToken =>
+          'MyPolicyUpdateToken',    # min: 1, max: 1024; OPTIONAL
+        ResourceTags => [
+          {
+            Key   => 'MyTagKey',      # min: 1, max: 128
+            Value => 'MyTagValue',    # max: 256; OPTIONAL
+          },
+          ...
+        ],                            # max: 8; OPTIONAL
+        PolicyId => 'MyPolicyId',     # min: 36, max: 36; OPTIONAL
+      },
+
+    );
+
+    # Results:
+    my $Policy    = $PutPolicyResponse->Policy;
+    my $PolicyArn = $PutPolicyResponse->PolicyArn;
+
+    # Returns a L<Paws::FMS::PutPolicyResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fms/PutPolicy>

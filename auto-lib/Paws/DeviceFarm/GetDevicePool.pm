@@ -24,9 +24,23 @@ as arguments to method GetDevicePool.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDevicePool.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetDevicePool(Att1 => $value1, Att2 => $value2, ...);
+    my $devicefarm = Paws->service('DeviceFarm');
+    # To get information about a device pool
+    # The following example returns information about a specific device pool,
+    # given a project ARN.
+    my $GetDevicePoolResult = $devicefarm->GetDevicePool(
+      {
+        'Arn' =>
+'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456'
+      }
+    );
+
+    # Results:
+    my $devicePool = $GetDevicePoolResult->devicePool;
+
+    # Returns a L<Paws::DeviceFarm::GetDevicePoolResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/devicefarm/GetDevicePool>

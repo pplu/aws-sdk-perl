@@ -28,9 +28,35 @@ as arguments to method ListComplianceItems.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListComplianceItems.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListComplianceItems(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $ListComplianceItemsResult = $ssm->ListComplianceItems(
+      Filters => [
+        {
+          Values => [ 'MyComplianceFilterValue', ... ]
+          ,    # min: 1, max: 20; OPTIONAL
+          Type => 'EQUAL'
+          , # values: EQUAL, NOT_EQUAL, BEGIN_WITH, LESS_THAN, GREATER_THAN; OPTIONAL
+          Key => 'MyComplianceStringFilterKey',    # min: 1, max: 200; OPTIONAL
+        },
+        ...
+      ],                                           # OPTIONAL
+      MaxResults  => 1,                            # OPTIONAL
+      NextToken   => 'MyNextToken',                # OPTIONAL
+      ResourceIds => [
+        'MyComplianceResourceId', ...              # min: 1, max: 100
+      ],                                           # OPTIONAL
+      ResourceTypes => [
+        'MyComplianceResourceType', ...            # min: 1, max: 50
+      ],                                           # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken       = $ListComplianceItemsResult->NextToken;
+    my $ComplianceItems = $ListComplianceItemsResult->ComplianceItems;
+
+    # Returns a L<Paws::SSM::ListComplianceItemsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/ListComplianceItems>

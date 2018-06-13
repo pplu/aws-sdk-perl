@@ -33,9 +33,47 @@ as arguments to method CreateCrawler.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCrawler.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateCrawler(Att1 => $value1, Att2 => $value2, ...);
+    my $glue = Paws->service('Glue');
+    my $CreateCrawlerResponse = $glue->CreateCrawler(
+      DatabaseName => 'MyDatabaseName',
+      Name         => 'MyNameString',
+      Role         => 'MyRole',
+      Targets      => {
+        S3Targets => [
+          {
+            Exclusions => [
+              'MyPath', ...    # OPTIONAL
+            ],                 # OPTIONAL
+            Path => 'MyPath',  # OPTIONAL
+          },
+          ...
+        ],                     # OPTIONAL
+        JdbcTargets => [
+          {
+            Path           => 'MyPath',              # OPTIONAL
+            ConnectionName => 'MyConnectionName',    # OPTIONAL
+            Exclusions     => [
+              'MyPath', ...                          # OPTIONAL
+            ],                                       # OPTIONAL
+          },
+          ...
+        ],                                           # OPTIONAL
+      },
+      Classifiers => [
+        'MyNameString', ...                          # min: 1, max: 255
+      ],                                             # OPTIONAL
+      Configuration      => 'MyCrawlerConfiguration',    # OPTIONAL
+      Description        => 'MyDescriptionString',       # OPTIONAL
+      Schedule           => 'MyCronExpression',          # OPTIONAL
+      SchemaChangePolicy => {
+        UpdateBehavior => 'LOG',    # values: LOG, UPDATE_IN_DATABASE; OPTIONAL
+        DeleteBehavior => 'LOG'
+        ,   # values: LOG, DELETE_FROM_DATABASE, DEPRECATE_IN_DATABASE; OPTIONAL
+      },    # OPTIONAL
+      TablePrefix => 'MyTablePrefix',    # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/CreateCrawler>

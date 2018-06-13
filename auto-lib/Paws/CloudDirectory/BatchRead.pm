@@ -27,9 +27,243 @@ as arguments to method BatchRead.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to BatchRead.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->BatchRead(Att1 => $value1, Att2 => $value2, ...);
+    my $clouddirectory = Paws->service('CloudDirectory');
+    my $BatchReadResponse = $clouddirectory->BatchRead(
+      DirectoryArn => 'MyArn',
+      Operations   => [
+        {
+          GetObjectInformation => {
+            ObjectReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },
+
+          },    # OPTIONAL
+          LookupPolicy => {
+            ObjectReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },
+            NextToken  => 'MyNextToken',                  # OPTIONAL
+            MaxResults => 1,                              # min: 1, ; OPTIONAL
+          },    # OPTIONAL
+          ListObjectChildren => {
+            ObjectReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },
+            NextToken  => 'MyNextToken',                  # OPTIONAL
+            MaxResults => 1,                              # min: 1, ; OPTIONAL
+          },    # OPTIONAL
+          ListObjectAttributes => {
+            ObjectReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },
+            FacetFilter => {
+              SchemaArn => 'MyArn',
+              FacetName => 'MyFacetName',                 # min: 1, max: 64
+            },
+            MaxResults => 1,                              # min: 1, ; OPTIONAL
+            NextToken  => 'MyNextToken',                  # OPTIONAL
+          },    # OPTIONAL
+          ListIncomingTypedLinks => {
+            ObjectReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },
+            NextToken             => 'MyNextToken',       # OPTIONAL
+            MaxResults            => 1,                   # min: 1, ; OPTIONAL
+            FilterAttributeRanges => [
+              {
+                Range => {
+                  StartMode => 'FIRST'
+                  , # values: FIRST, LAST, LAST_BEFORE_MISSING_VALUES, INCLUSIVE, EXCLUSIVE
+                  EndMode => 'FIRST'
+                  , # values: FIRST, LAST, LAST_BEFORE_MISSING_VALUES, INCLUSIVE, EXCLUSIVE
+                  EndValue => {
+                    DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+                    BooleanValue  => 1,                             # OPTIONAL
+                    NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+                    BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+                    StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+                  },    # OPTIONAL
+                  StartValue => {
+                    DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+                    BooleanValue  => 1,                             # OPTIONAL
+                    NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+                    BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+                    StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+                  },    # OPTIONAL
+                },    # OPTIONAL
+                AttributeName => 'MyAttributeName',    # min: 1, max: 64
+              },
+              ...
+            ],                                         # OPTIONAL
+            FilterTypedLink => {
+              SchemaArn     => 'MyArn',
+              TypedLinkName => 'MyTypedLinkName',
+
+            },                                         # OPTIONAL
+          },    # OPTIONAL
+          ListOutgoingTypedLinks => {
+            ObjectReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },
+            MaxResults      => 1,                         # min: 1, ; OPTIONAL
+            NextToken       => 'MyNextToken',             # OPTIONAL
+            FilterTypedLink => {
+              SchemaArn     => 'MyArn',
+              TypedLinkName => 'MyTypedLinkName',
+
+            },                                            # OPTIONAL
+            FilterAttributeRanges => [
+              {
+                Range => {
+                  StartMode => 'FIRST'
+                  , # values: FIRST, LAST, LAST_BEFORE_MISSING_VALUES, INCLUSIVE, EXCLUSIVE
+                  EndMode => 'FIRST'
+                  , # values: FIRST, LAST, LAST_BEFORE_MISSING_VALUES, INCLUSIVE, EXCLUSIVE
+                  EndValue => {
+                    DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+                    BooleanValue  => 1,                             # OPTIONAL
+                    NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+                    BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+                    StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+                  },    # OPTIONAL
+                  StartValue => {
+                    DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+                    BooleanValue  => 1,                             # OPTIONAL
+                    NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+                    BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+                    StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+                  },    # OPTIONAL
+                },    # OPTIONAL
+                AttributeName => 'MyAttributeName',    # min: 1, max: 64
+              },
+              ...
+            ],                                         # OPTIONAL
+          },    # OPTIONAL
+          ListAttachedIndices => {
+            TargetReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },
+            MaxResults => 1,                              # min: 1, ; OPTIONAL
+            NextToken  => 'MyNextToken',                  # OPTIONAL
+          },    # OPTIONAL
+          GetObjectAttributes => {
+            AttributeNames => [
+              'MyAttributeName', ...    # min: 1, max: 64
+            ],
+            SchemaFacet => {
+              SchemaArn => 'MyArn',
+              FacetName => 'MyFacetName',    # min: 1, max: 64
+            },
+            ObjectReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },
+
+          },    # OPTIONAL
+          ListPolicyAttachments => {
+            PolicyReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },
+            MaxResults => 1,                              # min: 1, ; OPTIONAL
+            NextToken  => 'MyNextToken',                  # OPTIONAL
+          },    # OPTIONAL
+          ListObjectParentPaths => {
+            ObjectReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },
+            MaxResults => 1,                              # min: 1, ; OPTIONAL
+            NextToken  => 'MyNextToken',                  # OPTIONAL
+          },    # OPTIONAL
+          GetLinkAttributes => {
+            AttributeNames => [
+              'MyAttributeName', ...    # min: 1, max: 64
+            ],
+            TypedLinkSpecifier => {
+              SourceObjectReference => {
+                Selector => 'MySelectorObjectReference',    # OPTIONAL
+              },
+              TypedLinkFacet => {
+                SchemaArn     => 'MyArn',
+                TypedLinkName => 'MyTypedLinkName',
+
+              },    # OPTIONAL
+              TargetObjectReference => {
+                Selector => 'MySelectorObjectReference',    # OPTIONAL
+              },
+              IdentityAttributeValues => [
+                {
+                  Value => {
+                    DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+                    BooleanValue  => 1,                             # OPTIONAL
+                    NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+                    BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+                    StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+                  },    # OPTIONAL
+                  AttributeName => 'MyAttributeName',    # min: 1, max: 64
+
+                },
+                ...
+              ],
+
+            },
+
+          },    # OPTIONAL
+          ListObjectPolicies => {
+            ObjectReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },
+            NextToken  => 'MyNextToken',                  # OPTIONAL
+            MaxResults => 1,                              # min: 1, ; OPTIONAL
+          },    # OPTIONAL
+          ListIndex => {
+            IndexReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },
+            NextToken             => 'MyNextToken',       # OPTIONAL
+            MaxResults            => 1,                   # min: 1, ; OPTIONAL
+            RangesOnIndexedValues => [
+              {
+                Range => {
+                  StartMode => 'FIRST'
+                  , # values: FIRST, LAST, LAST_BEFORE_MISSING_VALUES, INCLUSIVE, EXCLUSIVE
+                  EndMode => 'FIRST'
+                  , # values: FIRST, LAST, LAST_BEFORE_MISSING_VALUES, INCLUSIVE, EXCLUSIVE
+                  EndValue => {
+                    DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+                    BooleanValue  => 1,                             # OPTIONAL
+                    NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+                    BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+                    StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+                  },    # OPTIONAL
+                  StartValue => {
+                    DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+                    BooleanValue  => 1,                             # OPTIONAL
+                    NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+                    BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+                    StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+                  },    # OPTIONAL
+                },    # OPTIONAL
+                AttributeKey => {
+                  FacetName => 'MyFacetName',        # min: 1, max: 64
+                  Name      => 'MyAttributeName',    # min: 1, max: 64
+                  SchemaArn => 'MyArn',
+
+                },    # OPTIONAL
+              },
+              ...
+            ],        # OPTIONAL
+          },    # OPTIONAL
+        },
+        ...
+      ],
+      ConsistencyLevel => 'SERIALIZABLE',    # OPTIONAL
+    );
+
+    # Results:
+    my $Responses = $BatchReadResponse->Responses;
+
+    # Returns a L<Paws::CloudDirectory::BatchReadResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clouddirectory/BatchRead>

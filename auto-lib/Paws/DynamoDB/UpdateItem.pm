@@ -35,9 +35,45 @@ as arguments to method UpdateItem.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateItem.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateItem(Att1 => $value1, Att2 => $value2, ...);
+    my $dynamodb = Paws->service('DynamoDB');
+   # To update an item in a table
+   # This example updates an item in the Music table. It adds a new attribute
+   # (Year) and modifies the AlbumTitle attribute.  All of the attributes in the
+   # item, as they appear after the update, are returned in the response.
+    my $UpdateItemOutput = $dynamodb->UpdateItem(
+      {
+        'ReturnValues'             => 'ALL_NEW',
+        'ExpressionAttributeNames' => {
+          '#AT' => 'AlbumTitle',
+          '#Y'  => 'Year'
+        },
+        'UpdateExpression' => 'SET #Y = :y, #AT = :t',
+        'Key'              => {
+          'SongTitle' => {
+            'S' => 'Happy Day'
+          },
+          'Artist' => {
+            'S' => 'Acme Band'
+          }
+        },
+        'ExpressionAttributeValues' => {
+          ':y' => {
+            'N' => 2015
+          },
+          ':t' => {
+            'S' => 'Louder Than Ever'
+          }
+        },
+        'TableName' => 'Music'
+      }
+    );
+
+    # Results:
+    my $Attributes = $UpdateItemOutput->Attributes;
+
+    # Returns a L<Paws::DynamoDB::UpdateItemOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dynamodb/UpdateItem>

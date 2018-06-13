@@ -27,9 +27,24 @@ as arguments to method AttachNetworkInterface.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AttachNetworkInterface.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AttachNetworkInterface(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To attach a network interface to an instance
+    # This example attaches the specified network interface to the specified
+    # instance.
+    my $AttachNetworkInterfaceResult = $ec2->AttachNetworkInterface(
+      {
+        'InstanceId'         => 'i-1234567890abcdef0',
+        'DeviceIndex'        => 1,
+        'NetworkInterfaceId' => 'eni-e5aa89a3'
+      }
+    );
+
+    # Results:
+    my $AttachmentId = $AttachNetworkInterfaceResult->AttachmentId;
+
+    # Returns a L<Paws::EC2::AttachNetworkInterfaceResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/AttachNetworkInterface>

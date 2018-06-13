@@ -30,9 +30,44 @@ as arguments to method CreateTrigger.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateTrigger.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateTrigger(Att1 => $value1, Att2 => $value2, ...);
+    my $glue = Paws->service('Glue');
+    my $CreateTriggerResponse = $glue->CreateTrigger(
+      Actions => [
+        {
+          Timeout              => 1,                # min: 1, ; OPTIONAL
+          JobName              => 'MyNameString',   # min: 1, max: 255; OPTIONAL
+          NotificationProperty => {
+            NotifyDelayAfter => 1,                  # min: 1, ; OPTIONAL
+          },    # OPTIONAL
+          Arguments => { 'MyGenericString' => 'MyGenericString', },   # OPTIONAL
+        },
+        ...
+      ],
+      Name        => 'MyNameString',
+      Type        => 'SCHEDULED',
+      Description => 'MyDescriptionString',                           # OPTIONAL
+      Predicate   => {
+        Conditions => [
+          {
+            JobName => 'MyNameString',    # min: 1, max: 255; OPTIONAL
+            State   => 'STARTING'
+            , # values: STARTING, RUNNING, STOPPING, STOPPED, SUCCEEDED, FAILED, TIMEOUT; OPTIONAL
+            LogicalOperator => 'EQUALS',    # values: EQUALS; OPTIONAL
+          },
+          ...
+        ],                                  # OPTIONAL
+        Logical => 'AND',                   # values: AND, ANY; OPTIONAL
+      },    # OPTIONAL
+      Schedule        => 'MyGenericString',    # OPTIONAL
+      StartOnCreation => 1,                    # OPTIONAL
+    );
+
+    # Results:
+    my $Name = $CreateTriggerResponse->Name;
+
+    # Returns a L<Paws::Glue::CreateTriggerResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/CreateTrigger>

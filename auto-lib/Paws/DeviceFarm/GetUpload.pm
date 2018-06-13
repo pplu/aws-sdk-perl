@@ -24,9 +24,22 @@ as arguments to method GetUpload.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetUpload.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetUpload(Att1 => $value1, Att2 => $value2, ...);
+    my $devicefarm = Paws->service('DeviceFarm');
+    # To get information about a specific upload
+    # The following example gets information about a specific upload.
+    my $GetUploadResult = $devicefarm->GetUpload(
+      {
+        'Arn' =>
+'arn:aws:devicefarm:us-west-2:123456789101:upload:EXAMPLE-GUID-123-456'
+      }
+    );
+
+    # Results:
+    my $upload = $GetUploadResult->upload;
+
+    # Returns a L<Paws::DeviceFarm::GetUploadResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/devicefarm/GetUpload>

@@ -27,9 +27,81 @@ as arguments to method BatchCreatePartition.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to BatchCreatePartition.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->BatchCreatePartition(Att1 => $value1, Att2 => $value2, ...);
+    my $glue = Paws->service('Glue');
+    my $BatchCreatePartitionResponse = $glue->BatchCreatePartition(
+      DatabaseName       => 'MyNameString',
+      PartitionInputList => [
+        {
+          LastAnalyzedTime => '1970-01-01T01:00:00',    # OPTIONAL
+          Values           => [
+            'MyValueString', ...                        # max: 1024
+          ],                                            # OPTIONAL
+          StorageDescriptor => {
+            SkewedInfo => {
+              SkewedColumnValueLocationMaps =>
+                { 'MyColumnValuesString' => 'MyColumnValuesString', }
+              ,                                         # OPTIONAL
+              SkewedColumnValues => [ 'MyColumnValuesString', ... ],  # OPTIONAL
+              SkewedColumnNames => [
+                'MyNameString', ...    # min: 1, max: 255
+              ],                       # OPTIONAL
+            },    # OPTIONAL
+            OutputFormat           => 'MyFormatString',    # max: 128; OPTIONAL
+            Location               => 'MyLocationString',  # max: 2056; OPTIONAL
+            StoredAsSubDirectories => 1,                   # OPTIONAL
+            Columns                => [
+              {
+                Name    => 'MyNameString',          # min: 1, max: 255
+                Comment => 'MyCommentString',       # max: 255; OPTIONAL
+                Type    => 'MyColumnTypeString',    # max: 131072; OPTIONAL
+              },
+              ...
+            ],                                      # OPTIONAL
+            SortColumns => [
+              {
+                SortOrder => 1,                     # max: 1
+                Column    => 'MyNameString',        # min: 1, max: 255
+
+              },
+              ...
+            ],                                      # OPTIONAL
+            Parameters => {
+              'MyKeyString' => 'MyParametersMapValue'
+              ,    # key: min: 1, max: 255, value: max: 512000
+            },    # OPTIONAL
+            SerdeInfo => {
+              Parameters => {
+                'MyKeyString' => 'MyParametersMapValue'
+                ,    # key: min: 1, max: 255, value: max: 512000
+              },    # OPTIONAL
+              Name                 => 'MyNameString',    # min: 1, max: 255
+              SerializationLibrary => 'MyNameString',    # min: 1, max: 255
+            },    # OPTIONAL
+            NumberOfBuckets => 1,                   # OPTIONAL
+            Compressed      => 1,                   # OPTIONAL
+            InputFormat     => 'MyFormatString',    # max: 128; OPTIONAL
+            BucketColumns   => [
+              'MyNameString', ...                   # min: 1, max: 255
+            ],                                      # OPTIONAL
+          },    # OPTIONAL
+          Parameters => {
+            'MyKeyString' => 'MyParametersMapValue'
+            ,    # key: min: 1, max: 255, value: max: 512000
+          },    # OPTIONAL
+          LastAccessTime => '1970-01-01T01:00:00',    # OPTIONAL
+        },
+        ...
+      ],
+      TableName => 'MyNameString',
+      CatalogId => 'MyCatalogIdString',               # OPTIONAL
+    );
+
+    # Results:
+    my $Errors = $BatchCreatePartitionResponse->Errors;
+
+    # Returns a L<Paws::Glue::BatchCreatePartitionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/BatchCreatePartition>

@@ -31,9 +31,26 @@ as arguments to method RestoreTableFromClusterSnapshot.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RestoreTableFromClusterSnapshot.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RestoreTableFromClusterSnapshot(Att1 => $value1, Att2 => $value2, ...);
+    my $redshift = Paws->service('RedShift');
+    my $RestoreTableFromClusterSnapshotResult =
+      $redshift->RestoreTableFromClusterSnapshot(
+      ClusterIdentifier  => 'MyString',
+      NewTableName       => 'MyString',
+      SnapshotIdentifier => 'MyString',
+      SourceDatabaseName => 'MyString',
+      SourceTableName    => 'MyString',
+      SourceSchemaName   => 'MyString',    # OPTIONAL
+      TargetDatabaseName => 'MyString',    # OPTIONAL
+      TargetSchemaName   => 'MyString',    # OPTIONAL
+      );
+
+    # Results:
+    my $TableRestoreStatus =
+      $RestoreTableFromClusterSnapshotResult->TableRestoreStatus;
+
+    # Returns a L<Paws::RedShift::RestoreTableFromClusterSnapshotResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/redshift/RestoreTableFromClusterSnapshot>

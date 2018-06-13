@@ -26,9 +26,33 @@ as arguments to method GetBot.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetBot.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetBot(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    my $GetBotResponse = $models . lex->GetBot(
+      Name           => 'MyBotName',
+      VersionOrAlias => 'MyString',
+
+    );
+
+    # Results:
+    my $status                  = $GetBotResponse->status;
+    my $voiceId                 = $GetBotResponse->voiceId;
+    my $lastUpdatedDate         = $GetBotResponse->lastUpdatedDate;
+    my $description             = $GetBotResponse->description;
+    my $version                 = $GetBotResponse->version;
+    my $childDirected           = $GetBotResponse->childDirected;
+    my $name                    = $GetBotResponse->name;
+    my $failureReason           = $GetBotResponse->failureReason;
+    my $intents                 = $GetBotResponse->intents;
+    my $locale                  = $GetBotResponse->locale;
+    my $createdDate             = $GetBotResponse->createdDate;
+    my $abortStatement          = $GetBotResponse->abortStatement;
+    my $checksum                = $GetBotResponse->checksum;
+    my $idleSessionTTLInSeconds = $GetBotResponse->idleSessionTTLInSeconds;
+    my $clarificationPrompt     = $GetBotResponse->clarificationPrompt;
+
+    # Returns a L<Paws::LexModels::GetBotResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/lex/>

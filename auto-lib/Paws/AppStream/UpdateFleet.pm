@@ -36,9 +36,46 @@ as arguments to method UpdateFleet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateFleet.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateFleet(Att1 => $value1, Att2 => $value2, ...);
+    my $appstream2 = Paws->service('AppStream');
+    my $UpdateFleetResult = $appstream2->UpdateFleet(
+      Name               => 'MyString',
+      AttributesToDelete => [
+        'VPC_CONFIGURATION',
+        ... # values: VPC_CONFIGURATION, VPC_CONFIGURATION_SECURITY_GROUP_IDS, DOMAIN_JOIN_INFO
+      ],    # OPTIONAL
+      ComputeCapacity => {
+        DesiredInstances => 1,
+
+      },    # OPTIONAL
+      DeleteVpcConfig            => 1,                  # OPTIONAL
+      Description                => 'MyDescription',    # OPTIONAL
+      DisconnectTimeoutInSeconds => 1,                  # OPTIONAL
+      DisplayName                => 'MyDisplayName',    # OPTIONAL
+      DomainJoinInfo             => {
+        DirectoryName => 'MyDirectoryName',             # OPTIONAL
+        OrganizationalUnitDistinguishedName =>
+          'MyOrganizationalUnitDistinguishedName',      # max: 2000; OPTIONAL
+      },    # OPTIONAL
+      EnableDefaultInternetAccess => 1,             # OPTIONAL
+      ImageName                   => 'MyString',    # OPTIONAL
+      InstanceType                => 'MyString',    # OPTIONAL
+      MaxUserDurationInSeconds    => 1,             # OPTIONAL
+      VpcConfig                   => {
+        SubnetIds => [
+          'MyString', ...                           # min: 1,
+        ],                                          # OPTIONAL
+        SecurityGroupIds => [
+          'MyString', ...                           # min: 1,
+        ],                                          # max: 5; OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $Fleet = $UpdateFleetResult->Fleet;
+
+    # Returns a L<Paws::AppStream::UpdateFleetResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>

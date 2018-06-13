@@ -32,9 +32,34 @@ as arguments to method GetReservationPurchaseRecommendation.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetReservationPurchaseRecommendation.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetReservationPurchaseRecommendation(Att1 => $value1, Att2 => $value2, ...);
+    my $ce = Paws->service('CostExplorer');
+    my $GetReservationPurchaseRecommendationResponse =
+      $ce->GetReservationPurchaseRecommendation(
+      Service              => 'MyGenericString',
+      AccountId            => 'MyGenericString',    # OPTIONAL
+      AccountScope         => 'PAYER',              # OPTIONAL
+      LookbackPeriodInDays => 'SEVEN_DAYS',         # OPTIONAL
+      NextPageToken        => 'MyNextPageToken',    # OPTIONAL
+      PageSize             => 1,                    # OPTIONAL
+      PaymentOption        => 'NO_UPFRONT',         # OPTIONAL
+      ServiceSpecification => {
+        EC2Specification => {
+          OfferingClass => 'STANDARD', # values: STANDARD, CONVERTIBLE; OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
+      TermInYears => 'ONE_YEAR',    # OPTIONAL
+      );
+
+    # Results:
+    my $NextPageToken =
+      $GetReservationPurchaseRecommendationResponse->NextPageToken;
+    my $Recommendations =
+      $GetReservationPurchaseRecommendationResponse->Recommendations;
+    my $Metadata = $GetReservationPurchaseRecommendationResponse->Metadata;
+
+# Returns a L<Paws::CostExplorer::GetReservationPurchaseRecommendationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ce/GetReservationPurchaseRecommendation>

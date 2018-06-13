@@ -32,9 +32,27 @@ as arguments to method PutFile.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutFile.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutFile(Att1 => $value1, Att2 => $value2, ...);
+    my $codecommit = Paws->service('CodeCommit');
+    my $PutFileOutput = $codecommit->PutFile(
+      BranchName     => 'MyBranchName',
+      FileContent    => 'BlobFileContent',
+      FilePath       => 'MyPath',
+      RepositoryName => 'MyRepositoryName',
+      CommitMessage  => 'MyMessage',          # OPTIONAL
+      Email          => 'MyEmail',            # OPTIONAL
+      FileMode       => 'EXECUTABLE',         # OPTIONAL
+      Name           => 'MyName',             # OPTIONAL
+      ParentCommitId => 'MyCommitId',         # OPTIONAL
+    );
+
+    # Results:
+    my $TreeId   = $PutFileOutput->TreeId;
+    my $BlobId   = $PutFileOutput->BlobId;
+    my $CommitId = $PutFileOutput->CommitId;
+
+    # Returns a L<Paws::CodeCommit::PutFileOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codecommit/PutFile>

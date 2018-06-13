@@ -32,9 +32,28 @@ as arguments to method PutIntegrationResponse.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutIntegrationResponse.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutIntegrationResponse(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $IntegrationResponse = $apigateway->PutIntegrationResponse(
+      HttpMethod         => 'MyString',
+      ResourceId         => 'MyString',
+      RestApiId          => 'MyString',
+      StatusCode         => 'MyStatusCode',
+      ContentHandling    => 'CONVERT_TO_BINARY',              # OPTIONAL
+      ResponseParameters => { 'MyString' => 'MyString', },    # OPTIONAL
+      ResponseTemplates  => { 'MyString' => 'MyString', },    # OPTIONAL
+      SelectionPattern   => 'MyString',                       # OPTIONAL
+    );
+
+    # Results:
+    my $ContentHandling    = $IntegrationResponse->ContentHandling;
+    my $ResponseParameters = $IntegrationResponse->ResponseParameters;
+    my $StatusCode         = $IntegrationResponse->StatusCode;
+    my $ResponseTemplates  = $IntegrationResponse->ResponseTemplates;
+    my $SelectionPattern   = $IntegrationResponse->SelectionPattern;
+
+    # Returns a L<Paws::ApiGateway::IntegrationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>

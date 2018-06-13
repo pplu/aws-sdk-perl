@@ -25,9 +25,24 @@ as arguments to method CreateBGPPeer.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateBGPPeer.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateBGPPeer(Att1 => $value1, Att2 => $value2, ...);
+    my $directconnect = Paws->service('DirectConnect');
+    my $CreateBGPPeerResponse = $directconnect->CreateBGPPeer(
+      NewBGPPeer => {
+        customerAddress => 'MyCustomerAddress',   # OPTIONAL
+        addressFamily   => 'ipv4',                # values: ipv4, ipv6; OPTIONAL
+        authKey         => 'MyBGPAuthKey',        # OPTIONAL
+        amazonAddress   => 'MyAmazonAddress',     # OPTIONAL
+        asn             => 1,                     # OPTIONAL
+      },    # OPTIONAL
+      VirtualInterfaceId => 'MyVirtualInterfaceId',    # OPTIONAL
+    );
+
+    # Results:
+    my $VirtualInterface = $CreateBGPPeerResponse->VirtualInterface;
+
+    # Returns a L<Paws::DirectConnect::CreateBGPPeerResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/directconnect/CreateBGPPeer>

@@ -32,9 +32,31 @@ as arguments to method CreateDeployment.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDeployment.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDeployment(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $Deployment = $apigateway->CreateDeployment(
+      RestApiId           => 'MyString',
+      CacheClusterEnabled => 1,            # OPTIONAL
+      CacheClusterSize    => '0.5',        # OPTIONAL
+      CanarySettings      => {
+        stageVariableOverrides => { 'MyString' => 'MyString', },    # OPTIONAL
+        percentTraffic         => 1,                                # OPTIONAL
+        useStageCache          => 1,                                # OPTIONAL
+      },    # OPTIONAL
+      Description      => 'MyString',                       # OPTIONAL
+      StageDescription => 'MyString',                       # OPTIONAL
+      StageName        => 'MyString',                       # OPTIONAL
+      Variables        => { 'MyString' => 'MyString', },    # OPTIONAL
+    );
+
+    # Results:
+    my $CreatedDate = $Deployment->CreatedDate;
+    my $ApiSummary  = $Deployment->ApiSummary;
+    my $Description = $Deployment->Description;
+    my $Id          = $Deployment->Id;
+
+    # Returns a L<Paws::ApiGateway::Deployment> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>

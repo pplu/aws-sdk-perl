@@ -34,9 +34,27 @@ as arguments to method ModifyVpcEndpoint.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyVpcEndpoint.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyVpcEndpoint(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $ModifyVpcEndpointResult = $ec2->ModifyVpcEndpoint(
+      VpcEndpointId          => 'MyString',
+      AddRouteTableIds       => [ 'MyString', ... ],    # OPTIONAL
+      AddSecurityGroupIds    => [ 'MyString', ... ],    # OPTIONAL
+      AddSubnetIds           => [ 'MyString', ... ],    # OPTIONAL
+      DryRun                 => 1,                      # OPTIONAL
+      PolicyDocument         => 'MyString',             # OPTIONAL
+      PrivateDnsEnabled      => 1,                      # OPTIONAL
+      RemoveRouteTableIds    => [ 'MyString', ... ],    # OPTIONAL
+      RemoveSecurityGroupIds => [ 'MyString', ... ],    # OPTIONAL
+      RemoveSubnetIds        => [ 'MyString', ... ],    # OPTIONAL
+      ResetPolicy            => 1,                      # OPTIONAL
+    );
+
+    # Results:
+    my $Return = $ModifyVpcEndpointResult->Return;
+
+    # Returns a L<Paws::EC2::ModifyVpcEndpointResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/ModifyVpcEndpoint>

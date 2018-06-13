@@ -25,9 +25,19 @@ as arguments to method AttachRolePolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AttachRolePolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AttachRolePolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $iam = Paws->service('IAM');
+    # To attach a managed policy to an IAM role
+    # The following command attaches the AWS managed policy named ReadOnlyAccess
+    # to the IAM role named ReadOnlyRole.
+    $iam->AttachRolePolicy(
+      {
+        'RoleName'  => 'ReadOnlyRole',
+        'PolicyArn' => 'arn:aws:iam::aws:policy/ReadOnlyAccess'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/AttachRolePolicy>

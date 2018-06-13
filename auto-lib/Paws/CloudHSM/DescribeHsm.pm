@@ -25,9 +25,38 @@ as arguments to method DescribeHsm.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeHsm.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeHsm(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudhsm = Paws->service('CloudHSM');
+    my $DescribeHsmResponse = $cloudhsm->DescribeHsm(
+      HsmArn          => 'MyHsmArn',             # OPTIONAL
+      HsmSerialNumber => 'MyHsmSerialNumber',    # OPTIONAL
+    );
+
+    # Results:
+    my $ServerCertLastUpdated = $DescribeHsmResponse->ServerCertLastUpdated;
+    my $ServerCertUri         = $DescribeHsmResponse->ServerCertUri;
+    my $AvailabilityZone      = $DescribeHsmResponse->AvailabilityZone;
+    my $Partitions            = $DescribeHsmResponse->Partitions;
+    my $HsmType               = $DescribeHsmResponse->HsmType;
+    my $HsmArn                = $DescribeHsmResponse->HsmArn;
+    my $Status                = $DescribeHsmResponse->Status;
+    my $SubscriptionType      = $DescribeHsmResponse->SubscriptionType;
+    my $StatusDetails         = $DescribeHsmResponse->StatusDetails;
+    my $SerialNumber          = $DescribeHsmResponse->SerialNumber;
+    my $SshPublicKey          = $DescribeHsmResponse->SshPublicKey;
+    my $EniId                 = $DescribeHsmResponse->EniId;
+    my $SshKeyLastUpdated     = $DescribeHsmResponse->SshKeyLastUpdated;
+    my $EniIp                 = $DescribeHsmResponse->EniIp;
+    my $VendorName            = $DescribeHsmResponse->VendorName;
+    my $VpcId                 = $DescribeHsmResponse->VpcId;
+    my $IamRoleArn            = $DescribeHsmResponse->IamRoleArn;
+    my $SubnetId              = $DescribeHsmResponse->SubnetId;
+    my $SoftwareVersion       = $DescribeHsmResponse->SoftwareVersion;
+    my $SubscriptionEndDate   = $DescribeHsmResponse->SubscriptionEndDate;
+    my $SubscriptionStartDate = $DescribeHsmResponse->SubscriptionStartDate;
+
+    # Returns a L<Paws::CloudHSM::DescribeHsmResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudhsm/DescribeHsm>

@@ -29,9 +29,26 @@ as arguments to method CreateIdentityProvider.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateIdentityProvider.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateIdentityProvider(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-idp = Paws->service('CognitoIdp');
+    my $CreateIdentityProviderResponse = $cognito -idp->CreateIdentityProvider(
+      ProviderDetails  => { 'MyStringType' => 'MyStringType', },
+      ProviderName     => 'MyProviderNameTypeV1',
+      ProviderType     => 'SAML',
+      UserPoolId       => 'MyUserPoolIdType',
+      AttributeMapping => {
+        'MyAttributeMappingKeyType' => 'MyStringType',    # key: min: 1, max: 32
+      },    # OPTIONAL
+      IdpIdentifiers => [
+        'MyIdpIdentifierType', ...    # min: 1, max: 40
+      ],                              # OPTIONAL
+    );
+
+    # Results:
+    my $IdentityProvider = $CreateIdentityProviderResponse->IdentityProvider;
+
+    # Returns a L<Paws::CognitoIdp::CreateIdentityProviderResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-idp/CreateIdentityProvider>

@@ -24,9 +24,19 @@ as arguments to method RegisterCrossAccountAccessRole.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RegisterCrossAccountAccessRole.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RegisterCrossAccountAccessRole(Att1 => $value1, Att2 => $value2, ...);
+    my $inspector = Paws->service('Inspector');
+    # Register cross account access role
+    # Registers the IAM role that Amazon Inspector uses to list your EC2
+    # instances at the start of the assessment run or when you call the
+    # PreviewAgents action.
+    $inspector->RegisterCrossAccountAccessRole(
+      {
+        'RoleArn' => 'arn:aws:iam::123456789012:role/inspector'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/inspector/RegisterCrossAccountAccessRole>

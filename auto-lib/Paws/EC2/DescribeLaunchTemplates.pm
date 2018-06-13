@@ -29,9 +29,35 @@ as arguments to method DescribeLaunchTemplates.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLaunchTemplates.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeLaunchTemplates(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $DescribeLaunchTemplatesResult = $ec2->DescribeLaunchTemplates(
+      DryRun  => 1,    # OPTIONAL
+      Filters => [
+        {
+          Values => [
+            'MyString', ...    # OPTIONAL
+          ],                   # OPTIONAL
+          Name => 'MyString',  # OPTIONAL
+        },
+        ...
+      ],                       # OPTIONAL
+      LaunchTemplateIds => [
+        'MyString', ...        # OPTIONAL
+      ],                       # OPTIONAL
+      LaunchTemplateNames => [
+        'MyLaunchTemplateName', ...    # min: 3, max: 128
+      ],                               # OPTIONAL
+      MaxResults => 1,                 # OPTIONAL
+      NextToken  => 'MyString',        # OPTIONAL
+    );
+
+    # Results:
+    my $LaunchTemplates = $DescribeLaunchTemplatesResult->LaunchTemplates;
+    my $NextToken       = $DescribeLaunchTemplatesResult->NextToken;
+
+    # Returns a L<Paws::EC2::DescribeLaunchTemplatesResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeLaunchTemplates>

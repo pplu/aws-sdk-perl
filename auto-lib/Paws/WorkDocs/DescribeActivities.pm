@@ -31,9 +31,24 @@ as arguments to method DescribeActivities.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeActivities.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeActivities(Att1 => $value1, Att2 => $value2, ...);
+    my $workdocs = Paws->service('WorkDocs');
+    my $DescribeActivitiesResponse = $workdocs->DescribeActivities(
+      AuthenticationToken => 'MyAuthenticationHeaderType',    # OPTIONAL
+      EndTime             => '1970-01-01T01:00:00',           # OPTIONAL
+      Limit               => 1,                               # OPTIONAL
+      Marker              => 'MyMarkerType',                  # OPTIONAL
+      OrganizationId      => 'MyIdType',                      # OPTIONAL
+      StartTime           => '1970-01-01T01:00:00',           # OPTIONAL
+      UserId              => 'MyIdType',                      # OPTIONAL
+    );
+
+    # Results:
+    my $UserActivities = $DescribeActivitiesResponse->UserActivities;
+    my $Marker         = $DescribeActivitiesResponse->Marker;
+
+    # Returns a L<Paws::WorkDocs::DescribeActivitiesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workdocs/DescribeActivities>

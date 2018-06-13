@@ -43,9 +43,55 @@ as arguments to method CreateAutoScalingGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateAutoScalingGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateAutoScalingGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('AutoScaling');
+    # To create an Auto Scaling group
+    # This example creates an Auto Scaling group.
+    $autoscaling->CreateAutoScalingGroup(
+      {
+        'MinSize'                 => 1,
+        'VPCZoneIdentifier'       => 'subnet-4176792c',
+        'MaxSize'                 => 3,
+        'LaunchConfigurationName' => 'my-launch-config',
+        'AutoScalingGroupName'    => 'my-auto-scaling-group'
+      }
+    );
+
+    # To create an Auto Scaling group with an attached load balancer
+    # This example creates an Auto Scaling group and attaches the specified
+    # Classic Load Balancer.
+    $autoscaling->CreateAutoScalingGroup(
+      {
+        'AutoScalingGroupName'    => 'my-auto-scaling-group',
+        'LaunchConfigurationName' => 'my-launch-config',
+        'HealthCheckType'         => 'ELB',
+        'MaxSize'                 => 3,
+        'HealthCheckGracePeriod'  => 120,
+        'LoadBalancerNames'       => ['my-load-balancer'],
+        'AvailabilityZones'       => ['us-west-2c'],
+        'MinSize'                 => 1
+      }
+    );
+
+    # To create an Auto Scaling group with an attached target group
+    # This example creates an Auto Scaling group and attaches the specified
+    # target group.
+    $autoscaling->CreateAutoScalingGroup(
+      {
+        'TargetGroupARNs' => [
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067'
+        ],
+        'HealthCheckGracePeriod'  => 120,
+        'MinSize'                 => 1,
+        'AutoScalingGroupName'    => 'my-auto-scaling-group',
+        'LaunchConfigurationName' => 'my-launch-config',
+        'VPCZoneIdentifier'       => 'subnet-4176792c, subnet-65ea5f08',
+        'HealthCheckType'         => 'ELB',
+        'MaxSize'                 => 3
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/CreateAutoScalingGroup>

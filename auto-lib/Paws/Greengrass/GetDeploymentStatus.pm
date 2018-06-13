@@ -26,9 +26,23 @@ as arguments to method GetDeploymentStatus.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDeploymentStatus.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetDeploymentStatus(Att1 => $value1, Att2 => $value2, ...);
+    my $greengrass = Paws->service('Greengrass');
+    my $GetDeploymentStatusResponse = $greengrass->GetDeploymentStatus(
+      DeploymentId => 'My__string',
+      GroupId      => 'My__string',
+
+    );
+
+    # Results:
+    my $UpdatedAt        = $GetDeploymentStatusResponse->UpdatedAt;
+    my $DeploymentStatus = $GetDeploymentStatusResponse->DeploymentStatus;
+    my $ErrorMessage     = $GetDeploymentStatusResponse->ErrorMessage;
+    my $ErrorDetails     = $GetDeploymentStatusResponse->ErrorDetails;
+    my $DeploymentType   = $GetDeploymentStatusResponse->DeploymentType;
+
+    # Returns a L<Paws::Greengrass::GetDeploymentStatusResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>

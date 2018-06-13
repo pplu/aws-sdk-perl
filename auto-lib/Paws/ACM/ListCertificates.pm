@@ -27,9 +27,38 @@ as arguments to method ListCertificates.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListCertificates.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListCertificates(Att1 => $value1, Att2 => $value2, ...);
+    my $acm = Paws->service('ACM');
+    my $ListCertificatesResponse = $acm->ListCertificates(
+      CertificateStatuses => [
+        'PENDING_VALIDATION',
+        ... # values: PENDING_VALIDATION, ISSUED, INACTIVE, EXPIRED, VALIDATION_TIMED_OUT, REVOKED, FAILED
+      ],    # OPTIONAL
+      Includes => {
+        extendedKeyUsage => [
+          'TLS_WEB_SERVER_AUTHENTICATION',
+          ... # values: TLS_WEB_SERVER_AUTHENTICATION, TLS_WEB_CLIENT_AUTHENTICATION, CODE_SIGNING, EMAIL_PROTECTION, TIME_STAMPING, OCSP_SIGNING, IPSEC_END_SYSTEM, IPSEC_TUNNEL, IPSEC_USER, ANY, NONE, CUSTOM
+        ],    # OPTIONAL
+        keyTypes => [
+          'RSA_2048',
+          ... # values: RSA_2048, RSA_1024, RSA_4096, EC_prime256v1, EC_secp384r1, EC_secp521r1
+        ],    # OPTIONAL
+        keyUsage => [
+          'DIGITAL_SIGNATURE',
+          ... # values: DIGITAL_SIGNATURE, NON_REPUDIATION, KEY_ENCIPHERMENT, DATA_ENCIPHERMENT, KEY_AGREEMENT, CERTIFICATE_SIGNING, CRL_SIGNING, ENCIPHER_ONLY, DECIPHER_ONLY, ANY, CUSTOM
+        ],    # OPTIONAL
+      },    # OPTIONAL
+      MaxItems  => 1,                # OPTIONAL
+      NextToken => 'MyNextToken',    # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken = $ListCertificatesResponse->NextToken;
+    my $CertificateSummaryList =
+      $ListCertificatesResponse->CertificateSummaryList;
+
+    # Returns a L<Paws::ACM::ListCertificatesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm/ListCertificates>

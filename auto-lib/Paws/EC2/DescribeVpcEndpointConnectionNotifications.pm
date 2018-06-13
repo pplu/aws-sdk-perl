@@ -28,9 +28,32 @@ as arguments to method DescribeVpcEndpointConnectionNotifications.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeVpcEndpointConnectionNotifications.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeVpcEndpointConnectionNotifications(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $DescribeVpcEndpointConnectionNotificationsResult =
+      $ec2->DescribeVpcEndpointConnectionNotifications(
+      ConnectionNotificationId => 'MyString',    # OPTIONAL
+      DryRun                   => 1,             # OPTIONAL
+      Filters                  => [
+        {
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],         # OPTIONAL
+        },
+        ...
+      ],                                         # OPTIONAL
+      MaxResults => 1,                           # OPTIONAL
+      NextToken  => 'MyString',                  # OPTIONAL
+      );
+
+    # Results:
+    my $ConnectionNotificationSet =
+      $DescribeVpcEndpointConnectionNotificationsResult
+      ->ConnectionNotificationSet;
+    my $NextToken =
+      $DescribeVpcEndpointConnectionNotificationsResult->NextToken;
+
+# Returns a L<Paws::EC2::DescribeVpcEndpointConnectionNotificationsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeVpcEndpointConnectionNotifications>

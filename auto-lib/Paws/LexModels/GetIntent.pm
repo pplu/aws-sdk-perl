@@ -26,9 +26,33 @@ as arguments to method GetIntent.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetIntent.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetIntent(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    my $GetIntentResponse = $models . lex->GetIntent(
+      Name    => 'MyIntentName',
+      Version => 'MyVersion',
+
+    );
+
+    # Results:
+    my $CreatedDate           = $GetIntentResponse->CreatedDate;
+    my $SampleUtterances      = $GetIntentResponse->SampleUtterances;
+    my $ConfirmationPrompt    = $GetIntentResponse->ConfirmationPrompt;
+    my $FollowUpPrompt        = $GetIntentResponse->FollowUpPrompt;
+    my $ConclusionStatement   = $GetIntentResponse->ConclusionStatement;
+    my $Checksum              = $GetIntentResponse->Checksum;
+    my $LastUpdatedDate       = $GetIntentResponse->LastUpdatedDate;
+    my $RejectionStatement    = $GetIntentResponse->RejectionStatement;
+    my $Description           = $GetIntentResponse->Description;
+    my $Version               = $GetIntentResponse->Version;
+    my $FulfillmentActivity   = $GetIntentResponse->FulfillmentActivity;
+    my $Name                  = $GetIntentResponse->Name;
+    my $ParentIntentSignature = $GetIntentResponse->ParentIntentSignature;
+    my $Slots                 = $GetIntentResponse->Slots;
+    my $DialogCodeHook        = $GetIntentResponse->DialogCodeHook;
+
+    # Returns a L<Paws::LexModels::GetIntentResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/lex/>
