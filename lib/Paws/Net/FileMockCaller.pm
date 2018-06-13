@@ -63,11 +63,19 @@ package Paws::Net::FileMockCaller;
     default => sub { shift->file_contents->{ request }->{ params } }
   );
 
+  has actual_request => (
+    is => 'rw',
+    isa => 'Object',
+    lazy => 1,
+    default => sub { '' },
+    );
+
   has _encoder => (is => 'ro', default => sub { JSON::MaybeXS->new(canonical => 1) });
 
   sub send_request {
     my ($self, $service, $call_object) = @_;
 
+    $self->actual_request($service->prepare_request_for_call($call_object));
     my $actual_call = $self->_encoder->encode($service->to_hash($call_object));
     my $recorded_call = $self->_encoder->encode($self->params);
 

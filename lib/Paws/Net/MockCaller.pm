@@ -60,6 +60,10 @@ package Paws::Net::MockCaller;
     isa => 'CodeRef',
   );
 
+  sub actual_request {
+    return $_[0]->caller->actual_request;
+  }
+
   sub send_request {
     my ($self, $service, $call_object) = @_;
 
