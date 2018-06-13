@@ -32,6 +32,7 @@ suggests "Future::Mojo";
 on 'develop' => sub {
   requires 'Template';
   requires 'Pod::HTML2Pod';
+  requires 'Perl::Tidy';
   requires 'Dist::Zilla';
   requires 'Dist::Zilla::Plugin::Prereqs::FromCPANfile';
   requires 'Dist::Zilla::Plugin::VersionFromMainModule';
